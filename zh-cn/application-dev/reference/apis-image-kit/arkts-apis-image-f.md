@@ -2,7 +2,7 @@
 
 > **说明：**
 > 
-> - 本模块同时支持ArkTS-Dyn、ArkTs-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -21,7 +21,7 @@ createPicture(mainPixelmap : PixelMap): Picture
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -106,7 +106,7 @@ createPictureFromParcel(sequence: rpc.MessageSequence): Picture
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -256,7 +256,7 @@ createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise\<Pi
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -324,7 +324,7 @@ createPixelMap(colors: ArrayBuffer, options: InitializationOptions, callback: As
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -434,7 +434,7 @@ createPixelMapFromParcel(sequence: rpc.MessageSequence): PixelMap
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -536,7 +536,7 @@ createPixelMapFromSurface(surfaceId: string, region: Region): Promise\<PixelMap>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -589,7 +589,7 @@ createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -636,7 +636,7 @@ createPixelMapFromSurface(surfaceId: string): Promise\<PixelMap>
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -684,7 +684,7 @@ createPixelMapFromSurfaceSync(surfaceId: string): PixelMap
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -863,7 +863,7 @@ createPixelMapSync(colors: ArrayBuffer, options: InitializationOptions): PixelMa
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -909,7 +909,7 @@ createPixelMapSync(options: InitializationOptions): PixelMap
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1047,7 +1047,7 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallbac
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1107,7 +1107,7 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1169,7 +1169,7 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallb
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1229,7 +1229,7 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1281,19 +1281,21 @@ async function CreateUnpremultipliedPixelMap() {
 }
 ```
 
-## image.createImageSource<sup>6+</sup>
+## image.createImageSource
 
-createImageSource(uri: string): ImageSource
+ArkTS-Dyn: createImageSource(uri: string): ImageSource
+
+ArkTS-Sta: createImageSource(uri: string): ImageSource | undefined
 
 通过传入的uri创建ImageSource实例。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1305,10 +1307,11 @@ createImageSource(uri: string): ImageSource
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md)d | 返回ImageSource类实例，失败时返回undefined。 |
+|  ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md)  <br>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1320,32 +1323,7 @@ const path: string = context.filesDir + "/test.jpg";
 const imageSourceApi: image.ImageSource = image.createImageSource(path);
 ```
 
-## image.createImageSource<sup>22+</sup>
-
-createImageSource(uri: string): ImageSource | undefined
-
-通过传入的uri创建ImageSource实例。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageSource
-
-**ArkTS-Sta起始版本：** 22
-
-**参数：**
-
-| 参数名 | 类型   | 必填 | 说明                               |
-| ------ | ------ | ---- | ---------------------------------- |
-| uri    | string | 是   | 图片路径，当前仅支持应用沙箱路径。</br>当前支持格式有：.jpg .png .gif .bmp .webp .dng .heic<sup>12+</sup>（不同硬件设备支持情况不同） [.svg<sup>10+</sup>](#svg标签说明) .ico<sup>11+</sup>。 |
-
-**返回值：**
-
-| 类型                        | 说明                                         |
-| --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
 import { image } from '@kit.ImageKit';
@@ -1375,11 +1353,11 @@ function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSou
 
 ## image.createImageSource<sup>9+</sup>
 
-createImageSource(uri: string, options: SourceOptions): ImageSource
+ArkTS-Dyn: createImageSource(uri: string, options: SourceOptions): ImageSource
+
+ArkTS-Sta: createImageSource(uri: string, options: SourceOptions): ImageSource | undefined
 
 通过传入的uri创建ImageSource实例。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1388,6 +1366,8 @@ createImageSource(uri: string, options: SourceOptions): ImageSource
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1400,10 +1380,11 @@ createImageSource(uri: string, options: SourceOptions): ImageSource
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) <br>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1416,33 +1397,7 @@ const path: string = context.filesDir + "/test.png";
 let imageSourceApi: image.ImageSource = image.createImageSource(path, sourceOptions);
 ```
 
-## image.createImageSource<sup>22+</sup>
-
-createImageSource(uri: string, options: SourceOptions): ImageSource | undefined
-
-通过传入的uri创建ImageSource实例。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageSource
-
-**ArkTS-Sta起始版本：** 22
-
-**参数：**
-
-| 参数名  | 类型                            | 必填 | 说明                                |
-| ------- | ------------------------------- | ---- | ----------------------------------- |
-| uri     | string                          | 是   | 图片路径，当前仅支持应用沙箱路径。</br>当前支持格式有：.jpg .png .gif .bmp .webp .dng .heic<sup>12+</sup>（不同硬件设备支持情况不同）[.svg<sup>10+</sup>](#svg标签说明) .ico<sup>11+</sup>。 |
-| options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 是   | 图片属性，包括图片像素密度、像素格式和图片尺寸。|
-
-**返回值：**
-
-| 类型                        | 说明                                         |
-| --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
 import { image } from '@kit.ImageKit';
@@ -1473,11 +1428,11 @@ function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSou
 
 ## image.createImageSource<sup>7+</sup>
 
-createImageSource(fd: number): ImageSource
+ArkTS-Dyn: createImageSource(fd: number): ImageSource
+
+ArkTS-Sta: createImageSource(fd: int): ImageSource | undefined
 
 通过传入文件描述符来创建ImageSource实例。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1485,20 +1440,23 @@ createImageSource(fd: number): ImageSource
 
 **ArkTS-Dyn起始版本：** 7
 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明          |
 | ------ | ------ | ---- | ------------- |
-| fd     | number | 是   | 文件描述符fd。|
+| fd     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符fd。|
 
 **返回值：**
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) <br>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { fileIo as fs } from '@kit.CoreFileKit';
@@ -1512,32 +1470,7 @@ let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
 const imageSourceApi: image.ImageSource = image.createImageSource(file.fd);
 ```
 
-## image.createImageSource<sup>22+</sup>
-
-createImageSource(fd: int): ImageSource | undefined
-
-通过传入文件描述符来创建ImageSource实例。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageSource
-
-**ArkTS-Sta起始版本：** 22
-
-**参数：**
-
-| 参数名 | 类型   | 必填 | 说明          |
-| ------ | ------ | ---- | ------------- |
-| fd     | int | 是   | 文件描述符fd。|
-
-**返回值：**
-
-| 类型                        | 说明                                         |
-| --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
 import { image } from '@kit.ImageKit';
@@ -1569,11 +1502,11 @@ function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSou
 
 ## image.createImageSource<sup>9+</sup>
 
-createImageSource(fd: number, options: SourceOptions): ImageSource
+ArkTS-Dyn: createImageSource(fd: number, options: SourceOptions): ImageSource
+
+ArkTS-Sta: createImageSource(fd: int, options: SourceOptions): ImageSource | undefined
 
 通过传入文件描述符来创建ImageSource实例。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1583,21 +1516,24 @@ createImageSource(fd: number, options: SourceOptions): ImageSource
 
 **ArkTS-Dyn起始版本：** 9
 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                            | 必填 | 说明                                |
 | ------- | ------------------------------- | ---- | ----------------------------------- |
-| fd      | number | 是   | 文件描述符fd。                      |
+| fd      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符fd。                      |
 | options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 是   | 图片属性，包括图片像素密度、像素格式和图片尺寸。|
 
 **返回值：**
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) <br>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { fileIo as fs } from '@kit.CoreFileKit';
@@ -1612,33 +1548,7 @@ let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
 const imageSourceApi: image.ImageSource = image.createImageSource(file.fd, sourceOptions);
 ```
 
-## image.createImageSource<sup>22+</sup>
-
-createImageSource(fd: int, options: SourceOptions): ImageSource | undefined
-
-通过传入文件描述符来创建ImageSource实例。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageSource
-
-**ArkTS-Sta起始版本：** 22
-
-**参数：**
-
-| 参数名  | 类型                            | 必填 | 说明                                |
-| ------- | ------------------------------- | ---- | ----------------------------------- |
-| fd      | int | 是   | 文件描述符fd。                      |
-| options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 是   | 图片属性，包括图片像素密度、像素格式和图片尺寸。|
-
-**返回值：**
-
-| 类型                        | 说明                                         |
-| --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
 import { image } from '@kit.ImageKit';
@@ -1671,11 +1581,11 @@ function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSou
 
 ## image.createImageSource<sup>9+</sup>
 
-createImageSource(buf: ArrayBuffer): ImageSource
+ArkTS-Dyn: createImageSource(buf: ArrayBuffer): ImageSource
+
+ArkTS-Sta: createImageSource(buf: ArrayBuffer): ImageSource | undefined
 
 通过缓冲区创建ImageSource实例。buf数据应该是未解码的数据，不要传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12)这一类接口。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1685,6 +1595,8 @@ createImageSource(buf: ArrayBuffer): ImageSource
 
 **ArkTS-Dyn起始版本：** 9
 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明             |
@@ -1695,39 +1607,17 @@ createImageSource(buf: ArrayBuffer): ImageSource
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
-
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) <br>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const buf: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width * 4。
 const imageSourceApi: image.ImageSource = image.createImageSource(buf);
 ```
 
-## image.createImageSource<sup>22+</sup>
-createImageSource(buf: ArrayBuffer): ImageSource | undefined
-
-通过缓冲区创建ImageSource实例。buf数据应该是未解码的数据，不要传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12)这一类接口。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageSource
-
-**ArkTS-Sta起始版本：** 22
-
-**参数：**
-
-| 参数名 | 类型        | 必填 | 说明             |
-| ------ | ----------- | ---- | ---------------- |
-| buf    | ArrayBuffer | 是   | 图像缓冲区数组。 |
-
-**返回值：**
-
-| 类型                        | 说明                                         |
-| --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
-
+ArkTS-Sta示例：
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -1751,11 +1641,11 @@ function CreateImageSourceFunc(): image.ImageSource | undefined {
 
 ## image.createImageSource<sup>9+</sup>
 
-createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
+ArkTS-Dyn: createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
+
+ArkTS-Sta: createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource | undefined
 
 通过缓冲区创建ImageSource实例。buf数据应该是未解码的数据，不要传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12)这一类接口。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1765,6 +1655,8 @@ createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
 
 **ArkTS-Dyn起始版本：** 9
 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                             | 必填 | 说明                                 |
@@ -1776,43 +1668,18 @@ createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md)  <br>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const data: ArrayBuffer = new ArrayBuffer(112);
 let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
 const imageSourceApi: image.ImageSource = image.createImageSource(data, sourceOptions);
 ```
 
-## image.createImageSource<sup>22+</sup>
-
-createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource | undefined
-
-通过缓冲区创建ImageSource实例。buf数据应该是未解码的数据，不要传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12)这一类接口。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageSource
-
-**ArkTS-Sta起始版本：** 22
-
-**参数：**
-
-| 参数名 | 类型                             | 必填 | 说明                                 |
-| ------ | -------------------------------- | ---- | ------------------------------------ |
-| buf    | ArrayBuffer                      | 是   | 图像缓冲区数组。                     |
-| options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 是   | 图片属性，包括图片像素密度、像素格式和图片尺寸。 |
-
-**返回值：**
-
-| 类型                        | 说明                                         |
-| --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -1837,17 +1704,19 @@ function CreateImageSourceFunc(): image.ImageSource | undefined {
 
 ## image.createImageSource<sup>11+</sup>
 
-createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource
+ArkTS-Dyn: createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource
+
+ArkTS-Sta: createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource | undefined
 
 通过图像资源文件的RawFileDescriptor创建ImageSource实例。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1860,10 +1729,11 @@ createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOp
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) <br>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { resourceManager } from '@kit.LocalizationKit';
@@ -1881,33 +1751,7 @@ resourceMgr.getRawFd('test.jpg').then((rawFileDescriptor: resourceManager.RawFil
 })
 ```
 
-## image.createImageSource<sup>22+</sup>
-
-createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource | undefined
-
-通过图像资源文件的RawFileDescriptor创建ImageSource实例。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageSource
-
-**ArkTS-Sta起始版本：** 22
-
-**参数：**
-
-| 参数名 | 类型                             | 必填 | 说明                                 |
-| ------ | -------------------------------- | ---- | ------------------------------------ |
-| rawfile | [resourceManager.RawFileDescriptor](../apis-localization-kit/js-apis-resource-manager.md#rawfiledescriptor9) | 是 | 图像资源文件的RawFileDescriptor。 |
-| options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 否 | 图片属性，包括图片像素密度、像素格式和图片尺寸。 |
-
-**返回值：**
-
-| 类型                        | 说明                                         |
-| --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
 import { image } from '@kit.ImageKit';
@@ -1940,7 +1784,9 @@ function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSou
 
 ## image.CreateIncrementalSource<sup>9+</sup>
 
-CreateIncrementalSource(buf: ArrayBuffer): ImageSource
+ArkTS-Dyn: CreateIncrementalSource(buf: ArrayBuffer): ImageSource
+
+ArkTS-Sta: CreateIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
 
 通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
 
@@ -1953,11 +1799,11 @@ CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 - 创建PixelMap对象：通过图片解码参数创建-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7)、通过默认参数创建-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-1) 、通过图片解码参数-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-2)
 - 释放ImageSource实例：[release](arkts-apis-image-ImageSource.md#release)
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1969,10 +1815,11 @@ CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) <br>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1997,41 +1844,7 @@ imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLengt
 })
 ```
 
-## image.createIncrementalSource<sup>22+</sup>
-
-createIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
-
-通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
-
-以增量方式创建的ImageSource实例，仅支持使用以下功能，同步、异步callback、异步Promise均支持。
-
-- 获取图片信息：指定序号-[getImageInfo](arkts-apis-image-ImageSource.md#getimageinfo)、直接获取-[getImageInfo](arkts-apis-image-ImageSource.md#getimageinfo-1)
-- 获取图片中给定索引处图像的指定属性键的值：[getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11)
-- 批量获取图片中的指定属性键的值：[getImageProperties](arkts-apis-image-ImageSource.md#getimageproperties12)
-- 更新增量数据：[updateData](arkts-apis-image-ImageSource.md#updatedata9)
-- 创建PixelMap对象：通过图片解码参数创建-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7)、通过默认参数创建-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-1) 、通过图片解码参数-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-2)
-- 释放ImageSource实例：[release](arkts-apis-image-ImageSource.md#release)
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageSource
-
-**ArkTS-Sta起始版本：** 22
-
-**参数：**
-
-| 参数名  | 类型        | 必填 | 说明      |
-| ------- | ------------| ---- | ----------|
-| buf     | ArrayBuffer | 是   | 增量数据。|
-
-**返回值：**
-
-| 类型                        | 说明                              |
-| --------------------------- | --------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
 import { image } from '@kit.ImageKit';
@@ -2057,17 +1870,19 @@ function CreateIncrementalSourceFunc(context: common.UIAbilityContext): image.Im
 
 ## image.CreateIncrementalSource<sup>9+</sup>
 
-CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
+ArkTS-Dyn: CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
+
+ArkTS-Sta: CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource | undefined
 
 通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
 
 此接口支持的功能与[CreateIncrementalSource(buf: ArrayBuffer): ImageSource](#imagecreateincrementalsource9)所生成的实例支持的功能相同。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2080,10 +1895,11 @@ CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) <br>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -2110,35 +1926,7 @@ imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLengt
 })
 ```
 
-## image.createIncrementalSource<sup>22+</sup>
-
-createIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource | undefined
-
-通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
-
-此接口支持的功能与[CreateIncrementalSource(buf: ArrayBuffer): ImageSource](#imagecreateincrementalsource9)所生成的实例支持的功能相同。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageSource
-
-**ArkTS-Sta起始版本：** 22
-
-**参数：**
-
-| 参数名  | 类型                            | 必填 | 说明                                 |
-| ------- | ------------------------------- | ---- | ------------------------------------ |
-| buf     | ArrayBuffer                     | 是   | 增量数据。                           |
-| options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 否   | 图片属性，包括图片像素密度、像素格式和图片尺寸。 |
-
-**返回值：**
-
-| 类型                        | 说明                              |
-| --------------------------- | --------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
 import { image } from '@kit.ImageKit';
@@ -2191,7 +1979,7 @@ function GetImageSourceSupportedFormats() {
 }
 ```
 
-## image.createImagePacker<sup>6+</sup>
+## image.createImagePacker
 
 createImagePacker(): ImagePacker
 
@@ -2203,7 +1991,7 @@ createImagePacker(): ImagePacker
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2233,6 +2021,10 @@ getImagePackerSupportedFormats(): string[]
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明                                       |
@@ -2259,7 +2051,7 @@ createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureTy
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2344,17 +2136,77 @@ function CreateAuxiliaryPictureFunc(context: common.UIAbilityContext): image.Aux
 }
 ```
 
+## image.createAuxiliaryPictureUsingAllocator<sup>24+</sup>
+
+createAuxiliaryPictureUsingAllocator(auxiliaryPictureInfo: AuxiliaryPictureInfo, allocatorType?: AllocatorType, pixels?: ArrayBuffer): AuxiliaryPicture
+
+使用指定的内存类型，根据辅助图信息和像素数据创建辅助图对象。
+
+> **说明：**
+>
+> - 在处理此接口返回的AuxiliaryPicture时，需要考虑内存中每行像素所占的空间的影响。
+> - 创建的辅助图像会使用输入的像素进行初始化。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 |              类型             | 必填 | 说明                         |
+| ------ | ----------------------------------------------- | ---- | ---------------------------- |
+| auxiliaryPictureInfo | [AuxiliaryPictureInfo](arkts-apis-image-i.md#auxiliarypictureinfo13) | 是 | 辅助图图像信息。<br>- 输入的ArrayBuffer的pixelFormat和最终创建出的辅助图的实际pixelFormat需与auxiliaryPictureInfo中指定的pixelFormat保持一致。<br>- 当AuxiliaryPictureType为GAINMAP时，AllocatorType仅支持传入AUTO/DMA。<br>- 当传入SHARE_MEMORY时，返回错误码7600205。  |
+| allocatorType | [AllocatorType](arkts-apis-image-e.md#allocatortype15) | 否 | 图像解码的内存类型，AUTO及默认情况下按照DMA处理。  |
+| pixels | ArrayBuffer | 否 | 以buffer形式存放的图像数据。<br>当未提供ArrayBuffer参数时，默认创建空白辅助图。  |
+
+**返回值：**
+
+| 类型                                    | 说明                                       |
+| --------------------------------------- | ------------------------------------------ |
+| [AuxiliaryPicture](arkts-apis-image-AuxiliaryPicture.md) | 如果操作成功，则返回AuxiliaryPicture实例。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                      |
+| -------- | ------------------------------------------------------------ |
+| 7600205  | Unsupported allocator type,e.g., use shared memory to create a gainmap as only DMA supported hdr metadata. |
+| 7600206  | Invalid parameter, size.height or size.width is less than or equal to 0. |
+| 7600301  | Alloc memory failed. |
+
+**示例：**
+
+```ts
+import { image } from '@kit.ImageKit';
+
+function CreateAuxiliaryPictureUsingAllocator(info: image.AuxiliaryPictureInfo,  allocatorType?: image.AllocatorType, pixels?: ArrayBuffer ) {
+  let res : image.AuxiliaryPicture;
+  try {
+    res = image.createAuxiliaryPictureUsingAllocator(info, allocatorType, pixels);
+  } catch (error) {
+    console.error(`Failed to create auxiliary picture using allocator=${allocatorType} and pixels=${pixels?.byteLength}.`);
+  }
+}
+```
+
 ## image.createImageReceiver<sup>11+</sup>
 
-createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageReceiver
+ArkTS-Dyn: createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageReceiver
+
+ArkTS-Sta: createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiver | undefined
 
 通过图片大小、图片格式、容量创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，它的参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2362,13 +2214,13 @@ createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageRec
 | -------- | ------ | ---- | ---------------------- |
 | size    | [Size](arkts-apis-image-i.md#size)  | 是   | 图像的默认大小。该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。       |
 | format   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | 是   | 图像格式，取值为[ImageFormat](arkts-apis-image-e.md#imageformat9)常量（目前仅支持 ImageFormat:JPEG，实际返回格式由生产者决定，如相机）。             |
-| capacity | number | 是   | 同时访问的最大图像数。 |
+| capacity | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 同时访问的最大图像数。 |
 
 **返回值：**
 
 | 类型                             | 说明                                    |
 | -------------------------------- | --------------------------------------- |
-| [ImageReceiver](arkts-apis-image-ImageReceiver.md) | 如果操作成功，则返回ImageReceiver实例。 |
+| ArkTS-Dyn: [ImageReceiver](arkts-apis-image-ImageReceiver.md) <br>ArkTS-Sta: [ImageReceiver](arkts-apis-image-ImageReceiver.md) \| undefined | 如果操作成功，则返回ImageReceiver实例。 |
 
 **错误码：**
 
@@ -2376,7 +2228,7 @@ createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageRec
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401| Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;   |
+| 401| Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;  <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 |
 
 **示例：**
 
@@ -2389,34 +2241,7 @@ let size: image.Size = {
 let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
 ```
 
-## image.createImageReceiver<sup>22+</sup>
-
-createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiver | undefined
-
-通过图片大小、图片格式、容量创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，它的参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
-**ArkTS-Sta起始版本：** 22
-
-**参数：**
-
-| 参数名   | 类型   | 必填 | 说明                   |
-| -------- | ------ | ---- | ---------------------- |
-| size    | [Size](arkts-apis-image-i.md#size)  | 是   | 图像的默认大小。该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。       |
-| format   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | 是   | 图像格式，取值为[ImageFormat](arkts-apis-image-e.md#imageformat9)常量（目前仅支持 ImageFormat:JPEG，实际返回格式由生产者决定，如相机）。             |
-| capacity | int | 是   | 同时访问的最大图像数。 |
-
-**返回值：**
-
-| 类型                             | 说明                                    |
-| -------------------------------- | --------------------------------------- |
-| [ImageReceiver](arkts-apis-image-ImageReceiver.md) \| undefined | 如果操作成功，则返回ImageReceiver实例。 |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -2425,6 +2250,62 @@ let size: image.Size = {
   width: 8
 }
 let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
+```
+
+## image.createImageReceiver<sup>23+</sup>
+
+createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined
+
+通过ImageReceiverOptions创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，其参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
+
+由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用[release](./arkts-apis-image-ImageReceiver.md#release9)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                   |
+| -------- | ------ | ---- | ---------------------- |
+| options  | [ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23)  | 否   | 创建ImageReceiver的属性，包括图片的默认大小和同时访问的最大图片数。<br>未传入options时，默认的size为1920*1080，单位为像素（px），表示期望接收宽为1920px，高为1080px的图片。<br>未传入options时，默认的capacity为3，表示期望同时最多有3张图片等待读取。       |
+
+**返回值：**
+
+| 类型                             | 说明                                    |
+| -------------------------------- | --------------------------------------- |
+| [ImageReceiver](arkts-apis-image-ImageReceiver.md) \| undefined | 操作成功时返回ImageReceiver实例，否则返回undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 7900201| Invalid parameter.   |
+
+**示例：**
+
+ArkTS-Dyn示例:
+```ts
+let options: image.ImageReceiverOptions = {
+  size: {480, 480},
+  capacity: 3
+}
+let receiver: image.ImageReceiver = image.createImageReceiver(options);
+```
+
+ArkTS-Sta示例:
+```ts
+let options: image.ImageReceiverOptions = {
+  size: { width: 480, height: 480 },
+  capacity: 3
+};
+let receiver: image.ImageReceiver = image.createImageReceiver(options)!;
 ```
 
 ## image.createImageCreator<sup>11+</sup>
@@ -2439,7 +2320,7 @@ ArkTS-Sta: createImageCreator(size: Size, format: ImageFormat, capacity: int): I
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2482,7 +2363,7 @@ createImageReceiver(width: number, height: number, format: number, capacity: num
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始不再维护，建议使用[createImageReceiver](#imagecreateimagereceiver11)代替。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[createImageReceiver](#imagecreateimagereceiver11)代替。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2519,7 +2400,7 @@ createImageCreator(width: number, height: number, format: number, capacity: numb
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始不再维护，建议使用[createImageCreator](#imagecreateimagecreator11)代替。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[createImageCreator](#imagecreateimagecreator11)代替。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
