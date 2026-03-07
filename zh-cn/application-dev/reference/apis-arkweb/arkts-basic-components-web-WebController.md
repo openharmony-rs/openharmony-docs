@@ -76,7 +76,7 @@ requestFocus()
 
 使当前web页面获取焦点。
 
-从API version 9开始不再维护，建议使用[requestFocus<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#requestfocus)代替。
+从API version 9开始废弃，建议使用[requestFocus<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#requestfocus)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

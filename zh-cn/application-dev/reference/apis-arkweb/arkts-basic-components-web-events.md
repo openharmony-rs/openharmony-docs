@@ -5549,7 +5549,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onRequestSelected(callback: () => void)
 
-ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined): this
+ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined)
 
 当Web组件获取焦点时触发回调。如果组件在未获焦状态下加载网页并成功获取焦点，将触发两次回调。
 

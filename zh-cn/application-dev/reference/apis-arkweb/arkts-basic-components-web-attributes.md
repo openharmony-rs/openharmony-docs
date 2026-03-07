@@ -4532,7 +4532,7 @@ struct WebComponent {
 
 ArkTS-Dyn: enableHapticFeedback(enabled: boolean)
 
-ArkTS-Sta: enableHapticFeedback(enabled: boolean | undefined): this
+ArkTS-Sta: enableHapticFeedback(enabled: boolean | undefined)
 
 设置Web组件长按文本选择是否开启振动。需配置"ohos.permission.VIBRATE"。该属性没有显式调用时，默认开启振动。
 
