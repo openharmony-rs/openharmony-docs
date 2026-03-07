@@ -974,7 +974,7 @@ ArkTS-Sta: brightness(bright: double): Filter
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  bright   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高亮程度，取值范围在0-1之间之间，取值为0时图像保持不变。 |
+|  bright   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高亮程度，取值范围在0-1之间，取值为0时图像保持不变。 |
 
 **返回值：**
 
