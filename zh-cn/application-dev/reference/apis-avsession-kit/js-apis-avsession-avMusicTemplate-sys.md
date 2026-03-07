@@ -48,7 +48,7 @@ createAVMusicTemplateController(sessionId: string): AVMusicTemplateController
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -272,7 +272,7 @@ getAllAVMusicTemplateDescriptors(userId?: number): AVMusicTemplateDescriptor[]
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -317,7 +317,7 @@ export class ControllerManager {
 
 onAVMusicTemplateCreate(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): void
 
-注册音频模板创建的监听。
+注册音频模板创建的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -335,7 +335,7 @@ onAVMusicTemplateCreate(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -382,7 +382,7 @@ export class ControllerManager {
 
 offAVMusicTemplateCreate(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;): void
 
-注销音频模板创建监听。
+注销音频模板创建监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -400,7 +400,7 @@ offAVMusicTemplateCreate(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -433,7 +433,7 @@ export class ControllerManager {
 
 onAVMusicTemplateDestroy(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): void
 
-注册音频模板销毁监听。
+注册音频模板销毁监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -451,7 +451,7 @@ onAVMusicTemplateDestroy(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -489,7 +489,7 @@ export class ControllerManager {
 
 offAVMusicTemplateDestroy(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;): void
 
-注销音频模板销毁监听。
+注销音频模板销毁监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -507,7 +507,7 @@ offAVMusicTemplateDestroy(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |

@@ -87,7 +87,7 @@ export class TemplateManager {
 
 startTemplate(): Promise&lt;OperResult&gt;
 
-启动音频模板界面。接口采用Promise异步返回形式，返回操作结果。
+启动音频模板界面。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -101,7 +101,7 @@ startTemplate(): Promise&lt;OperResult&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
@@ -142,7 +142,7 @@ onQueryMainTabs(callback: QueryMainTabsEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -221,7 +221,7 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -251,7 +251,7 @@ onQueryMediaTabContent(callback: QueryMediaTabContentEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -364,7 +364,7 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -394,7 +394,7 @@ onQueryMediaEntity(callback: QueryMediaEntityEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -493,7 +493,7 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -523,7 +523,7 @@ onQueryCompilation(callback: QueryCompilationEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -622,7 +622,7 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -652,7 +652,7 @@ onQueryPlaylist(callback: QueryPlaylistEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -751,7 +751,7 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -781,7 +781,7 @@ onQueryCurrentSingle(callback: QueryCurrentSingleEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -891,7 +891,7 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -921,7 +921,7 @@ onQueryCompilationByKeyword(callback: QueryCompilationByKeywordEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1020,7 +1020,7 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1050,7 +1050,7 @@ onQueryMediaEntityByKeyword(callback: QueryMediaEntityByKeywordEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1149,7 +1149,7 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1179,7 +1179,7 @@ onQueryRecommendMediaEntityList(callback: QueryRecommendMediaEntityListEvent): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1259,7 +1259,7 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1289,7 +1289,7 @@ onQueryHotWords(callback: QueryHotWordsEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1350,7 +1350,7 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1380,7 +1380,7 @@ onQuerySearchHistory(callback: QuerySearchHistoryEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1441,7 +1441,7 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1471,7 +1471,7 @@ onClearSearchHistory(callback: ClearSearchHistoryEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1544,7 +1544,7 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1574,7 +1574,7 @@ onLogin(callback: LoginEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1654,7 +1654,7 @@ offLogin(callback?: LoginEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1684,7 +1684,7 @@ onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1770,7 +1770,7 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1800,7 +1800,7 @@ onHandleMemberPurchase(callback: HandleMemberPurchaseEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1886,7 +1886,7 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1916,7 +1916,7 @@ onQueryMemberPurchase(callback: QueryMemberPurchaseEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1994,7 +1994,7 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2024,7 +2024,7 @@ onQueryCustomContent(callback: QueryCustomContentEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2118,7 +2118,7 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2148,7 +2148,7 @@ onDownloadMediaEntity(callback: DownloadMediaEntityEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2245,7 +2245,7 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2275,7 +2275,7 @@ onSettingsChange(callback: SettingsChangeEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2354,7 +2354,7 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2384,7 +2384,7 @@ onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2457,7 +2457,7 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2487,7 +2487,7 @@ onPlayForSearch(callback: PlayForSearchEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2561,7 +2561,7 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2591,7 +2591,7 @@ onExecuteAction(callback: ExecuteActionEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2651,7 +2651,7 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2681,7 +2681,7 @@ onPlayMediaEntity(callback: PlayMediaEntityEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2736,7 +2736,7 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2766,7 +2766,7 @@ onFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2840,7 +2840,7 @@ offFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2876,7 +2876,7 @@ setUserInfo(userInfo: UserInfo): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2945,7 +2945,7 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3008,7 +3008,7 @@ setCurrentSingle(single: Single): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3104,7 +3104,7 @@ setMediaEntities(entities: MediaEntity[]): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3162,7 +3162,7 @@ setTabContent(tabId: string, tabContent: MediaTabContent): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3234,7 +3234,7 @@ setPlaylist(playlist: PageMediaEntity): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3302,7 +3302,7 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3340,7 +3340,7 @@ setCustomElements(actionType: ActionType, customType: CustomType, customElement:
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3412,7 +3412,7 @@ setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3470,7 +3470,7 @@ reportExecuteAction(actionType: string, params: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3521,7 +3521,7 @@ setExtensionAbility(want: WantAgent): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
@@ -3585,7 +3585,7 @@ destroy(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |

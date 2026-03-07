@@ -194,7 +194,7 @@ queryMainTabs(): Promise&lt;MediaTab[]&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -257,7 +257,7 @@ queryMediaTabContent(tabId: string): Promise&lt;MediaTabContent&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -322,7 +322,7 @@ queryMediaEntity(params: QueryMediaEntityParam): Promise&lt;PageMediaEntity&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -395,7 +395,7 @@ queryCompilation(compilationId: string, pageIndex: number): Promise&lt;PageMedia
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -464,7 +464,7 @@ queryPlaylist(pageIndex: number, sort: Sort): Promise&lt;PageMediaEntity&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -526,7 +526,7 @@ queryCurrentSingle(): Promise&lt;Single&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -591,7 +591,7 @@ queryCompilationByKeyword(keyword: string): Promise&lt;Compilation[]&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -659,7 +659,7 @@ queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: nu
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -722,7 +722,7 @@ queryRecommendMediaEntityList(): Promise&lt;MediaEntity[]&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -781,7 +781,7 @@ queryHotWords(): Promise&lt;string[]&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -840,7 +840,7 @@ querySearchHistory(): Promise&lt;string[]&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -899,7 +899,7 @@ clearSearchHistory(): Promise&lt;OperResult&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -964,7 +964,7 @@ updateSettings(settingItem: SettingItem): Promise&lt;SettingItem&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1037,7 +1037,7 @@ reportProblemAndAdvice(advice: string): Promise&lt;OperResult&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1104,7 +1104,7 @@ login(controlType: LoginType, id?: string): Promise&lt;QrCodeInfo[]&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1173,7 +1173,7 @@ requestDialogInfo(actionType: DialogActionType, actionInfo?: DialogActionInfo): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1246,7 +1246,7 @@ handleMemberPurchase(info: MemberPurchaseInfo): Promise&lt;DialogInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1318,7 +1318,7 @@ queryMemberPurchase(memberPurchaseType: MemberPurchaseType): Promise&lt;MemberPu
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1384,7 +1384,7 @@ queryCustomContent(queryType: CustomType[]): Promise&lt;CustomElement&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1452,7 +1452,7 @@ downloadMediaEntity(controlType: DownloadControlType, mediaEntity: MediaEntity):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1529,7 +1529,7 @@ playForSearch(command: SearchPlayInfoType, args: SearchPlayInfo): Promise&lt;Ope
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1609,7 +1609,7 @@ executeAction(actionType: string, params: string): Promise&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1676,7 +1676,7 @@ playMediaEntity(mediaEntity: MediaEntity): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1736,7 +1736,7 @@ favoriteMediaEntity(actionType: MediaFavoriteType, mediaEntity: MediaEntity): Pr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1792,7 +1792,7 @@ export class ControllerManager {
 
 onUserInfoChange(callback: Callback&lt;UserInfo&gt;): void
 
-注册用户信息改变的回调。
+注册用户信息改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1806,7 +1806,7 @@ onUserInfoChange(callback: Callback&lt;UserInfo&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1838,7 +1838,7 @@ export class ControllerManager {
 
 offUserInfoChange(callback?: Callback&lt;UserInfo&gt;): void
 
-注销用户信息改变的回调。
+注销用户信息改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1852,7 +1852,7 @@ offUserInfoChange(callback?: Callback&lt;UserInfo&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1896,7 +1896,7 @@ onDialogCommandChange(callback: ReportDialogCommandEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1943,7 +1943,7 @@ offDialogCommandChange(callback?: ReportDialogCommandEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1973,7 +1973,7 @@ export class ControllerManager {
 
 onCurrentSingleChange(callback: Callback&lt;Single&gt;): void
 
-注册当前单曲改变的回调。
+注册当前单曲改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1987,7 +1987,7 @@ onCurrentSingleChange(callback: Callback&lt;Single&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2019,7 +2019,7 @@ export class ControllerManager {
 
 offCurrentSingleChange(callback?: Callback&lt;Single&gt;): void
 
-注销当前单曲改变的回调。
+注销当前单曲改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2033,7 +2033,7 @@ offCurrentSingleChange(callback?: Callback&lt;Single&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2063,7 +2063,7 @@ export class ControllerManager {
 
 onMediaEntitiesChange(callback: Callback&lt;MediaEntity[]&gt;): void
 
-注册媒体实体改变的回调。
+注册媒体实体改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2077,7 +2077,7 @@ onMediaEntitiesChange(callback: Callback&lt;MediaEntity[]&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2110,7 +2110,7 @@ export class ControllerManager {
 
 offMediaEntitiesChange(callback?: Callback&lt;MediaEntity[]&gt;): void
 
-注销媒体实体改变的回调。
+注销媒体实体改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2124,7 +2124,7 @@ offMediaEntitiesChange(callback?: Callback&lt;MediaEntity[]&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2168,7 +2168,7 @@ onTabContentChange(callback: ReportTabContentEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2215,7 +2215,7 @@ offTabContentChange(callback?: ReportTabContentEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2245,7 +2245,7 @@ export class ControllerManager {
 
 onPlaylistChange(callback: Callback&lt;PageMediaEntity&gt;): void
 
-注册上报播放列表改变的回调。
+注册上报播放列表改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2259,7 +2259,7 @@ onPlaylistChange(callback: Callback&lt;PageMediaEntity&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2292,7 +2292,7 @@ export class ControllerManager {
 
 offPlaylistChange(callback?: Callback&lt;PageMediaEntity&gt;): void
 
-注销上报播放列表改变的回调。
+注销上报播放列表改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2306,7 +2306,7 @@ offPlaylistChange(callback?: Callback&lt;PageMediaEntity&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2336,7 +2336,7 @@ export class ControllerManager {
 
 onDownloadMediaEntityStatusChange(callback: Callback&lt;MediaEntity&gt;): void
 
-注册上报下载媒体状态改变的回调。
+注册上报下载媒体状态改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2350,7 +2350,7 @@ onDownloadMediaEntityStatusChange(callback: Callback&lt;MediaEntity&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2383,7 +2383,7 @@ export class ControllerManager {
 
 offDownloadMediaEntityStatusChange(callback?: Callback&lt;MediaEntity&gt;): void
 
-注销上报下载媒体状态改变的回调。
+注销上报下载媒体状态改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2397,7 +2397,7 @@ offDownloadMediaEntityStatusChange(callback?: Callback&lt;MediaEntity&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2441,7 +2441,7 @@ onCustomElementsChange(callback: ReportCustomElementsChangeEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2489,7 +2489,7 @@ offCustomElementsChange(callback?: ReportCustomElementsChangeEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2519,7 +2519,7 @@ export class ControllerManager {
 
 onSettingsChange(callback: Callback&lt;SettingItem[]&gt;): void
 
-注册上报设置改变的回调。
+注册上报设置改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2533,7 +2533,7 @@ onSettingsChange(callback: Callback&lt;SettingItem[]&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2566,7 +2566,7 @@ export class ControllerManager {
 
 offSettingsChange(callback?: Callback&lt;SettingItem[]&gt;): void
 
-注销上报设置改变的回调。
+注销上报设置改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2580,7 +2580,7 @@ offSettingsChange(callback?: Callback&lt;SettingItem[]&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2624,7 +2624,7 @@ onReportExecuteAction(callback: ReportExecuteActionEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2671,7 +2671,7 @@ offReportExecuteAction(callback?: ReportExecuteActionEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2715,7 +2715,7 @@ onExtensionAbilityChange(callback: ReportExecuteAbilityEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2762,7 +2762,7 @@ offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
