@@ -20,7 +20,9 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
 ## abilityConnectionManager.createAbilityConnectionSession
 
-createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Context,&nbsp;peerInfo:&nbsp;PeerInfo ,&nbsp;connectOptions:&nbsp;ConnectOptions):&nbsp;int
+ArkTS-Dyn: createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Context,&nbsp;peerInfo:&nbsp;PeerInfo ,&nbsp;connectOptions:&nbsp;ConnectOptions):&nbsp;number
+
+ArkTS-Sta: createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Context,&nbsp;peerInfo:&nbsp;PeerInfo ,&nbsp;connectOptions:&nbsp;ConnectOptions):&nbsp;int
 
 创建应用间的协同会话。
 
@@ -47,7 +49,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| int | 成功创建的协同会话ID。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 成功创建的协同会话ID。 |
 
 **错误码：**
 
@@ -305,7 +307,9 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 ## abilityConnectionManager.destroyAbilityConnectionSession
 
-destroyAbilityConnectionSession(sessionId:&nbsp;int):&nbsp;void
+ArkTS-Dyn: destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
+
+ArkTS-Sta: destroyAbilityConnectionSession(sessionId:&nbsp;int):&nbsp;void
 
 销毁应用间的协同会话。
 
@@ -321,7 +325,7 @@ destroyAbilityConnectionSession(sessionId:&nbsp;int):&nbsp;void
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | int | 是    | 待销毁的协同会话ID。   |
+| sessionId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 待销毁的协同会话ID。   |
 
 **示例：**
 
@@ -348,7 +352,7 @@ abilityConnectionManager.destroyAbilityConnectionSession(sessionId);
 
 ## abilityConnectionManager.getPeerInfoById
 
-getPeerInfoById(sessionId:&nbsp;int):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
+getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 获取指定会话中对端应用信息。
 
@@ -366,7 +370,7 @@ getPeerInfoById(sessionId:&nbsp;int):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | int | 是    | 协同会话ID。   |
+| sessionId | number | 是    | 协同会话ID。   |
 
 **返回值：**
 
@@ -440,7 +444,9 @@ const peerInfo = abilityConnectionManager.getPeerInfoById(sessionId);
 
 ## abilityConnectionManager.connect
 
-connect(sessionId:&nbsp;int):&nbsp;Promise&lt;ConnectResult&gt;
+ArkTS-Dyn: connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
+
+ArkTS-Sta: connect(sessionId:&nbsp;int):&nbsp;Promise&lt;ConnectResult>
 
 创建协同会话成功并获得会话ID后，设备A上可进行UIAbility的连接。使用Promise异步回调。
 
@@ -456,7 +462,7 @@ connect(sessionId:&nbsp;int):&nbsp;Promise&lt;ConnectResult&gt;
 
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
-| sessionId | int | 是    | 已创建的协同会话ID。    |
+| sessionId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 已创建的协同会话ID。    |
 
 **返回值：**
 
@@ -512,7 +518,9 @@ abilityConnectionManager.connect(sessionId).then((ConnectResult) => {
 
 ## abilityConnectionManager.acceptConnect
 
-acceptConnect(sessionId:&nbsp;int,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;void&gt;
+ArkTS-Dyn: acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;void&gt;
+
+ArkTS-Sta: acceptConnect(sessionId:&nbsp;int,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;void>
 
 设备B上的应用，在创建协同会话成功并获得会话ID后，调用acceptConnect()方法接受连接。
 
@@ -528,7 +536,7 @@ acceptConnect(sessionId:&nbsp;int,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;voi
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | int | 是    | 已创建的协同会话ID。    |
+| sessionId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 已创建的协同会话ID。    |
 | token | string | 是    | 设备A应用传入的token值。    |
 
 **返回值：**
@@ -659,7 +667,9 @@ export default class EntryAbility extends UIAbility {
 
 ## abilityConnectionManager.disconnect
 
-disconnect(sessionId:&nbsp;int):&nbsp;void
+ArkTS-Dyn: disconnect(sessionId:&nbsp;number):&nbsp;void
+
+ArkTS-Sta: disconnect(sessionId:&nbsp;int):&nbsp;void
 
 当协同业务执行完毕后，协同双端的任意一台设备，应断开UIAbility的连接，结束协同状态。
 
@@ -675,7 +685,7 @@ disconnect(sessionId:&nbsp;int):&nbsp;void
 
 | 参数名       | 类型                                    | 必填   | 说明        |
 | --------- | ------------------------------------- | ---- | --------- |
-| sessionId | int | 是    | 协同会话ID     |
+| sessionId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 协同会话ID     |
 
 **示例：**
 
@@ -836,7 +846,7 @@ onConnect(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| sessionId | int  | 是    | 创建的协同会话ID。    |
+| sessionId | int | 是    | 创建的协同会话ID。    |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 注册的回调函数。    |
 
 **错误码：**
@@ -1457,7 +1467,9 @@ abilityConnectionManager.offReceiveData(sessionId,(callbackInfo) => {
 
 ## abilityConnectionManager.sendMessage
 
-sendMessage(sessionId:&nbsp;int,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt;
+ArkTS-Dyn: sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt;
+
+ArkTS-Sta: sendMessage(sessionId:&nbsp;int,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void>
 
 应用连接成功后，设备A或设备B可向对端设备发送文本信息。
 
@@ -1473,7 +1485,7 @@ sendMessage(sessionId:&nbsp;int,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | int | 是    | 协同会话ID。 |
+| sessionId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 协同会话ID。 |
 | msg | string | 是    | 文本信息内容（内容最大限制为1KB）。 |
 
 **返回值：**
@@ -1522,7 +1534,9 @@ abilityConnectionManager.sendMessage(sessionId, "message send success").then(() 
 
 ## abilityConnectionManager.sendData
 
-sendData(sessionId:&nbsp;int,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;
+ArkTS-Dyn: sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;
+
+ArkTS-Sta: sendData(sessionId:&nbsp;int,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;
 
 应用连接成功后，设备A或设备B可向对端设备发送[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)字节流。
 
@@ -1538,7 +1552,7 @@ sendData(sessionId:&nbsp;int,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | int | 是    | 协同会话ID。 |
+| sessionId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 协同会话ID。 |
 | data | [ArrayBuffer](../../arkts-utils/arraybuffer-object.md) | 是    | 字节流信息。 |
 
 **返回值：**
@@ -1663,7 +1677,7 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 
 | 名称       | 类型    | 只读 | 可选 | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| sessionId | int | 否   | 否   |   表示当前事件对应的协同会话ID。 |
+| sessionId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   |   表示当前事件对应的协同会话ID。 |
 | reason | [DisconnectReason](#disconnectreason)     | 否   | 是   |   表示断连原因。 |
 | msg | string   | 否   | 是   |   表示接收的消息。 |
 | data  | ArrayBuffer | 否   | 是   |   表示接收的字节流。 |
