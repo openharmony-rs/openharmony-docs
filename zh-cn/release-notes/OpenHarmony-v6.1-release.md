@@ -32,9 +32,9 @@ OpenHarmony 6.1 Release版本进一步增强应用开发功能，支持对应用
 
 - 新增支持设置和获取当前网页麦克风使用状态的能力。（[API参考](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.1-Release/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-WebviewController.md#resumemicrophone23)）
 - 提供支持查询当前网页的摄像头使用状态的能力。（[API参考](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.1-Release/zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-events.md#oncameracapturestatechange23)）
-- 新增支持选区文本内容上报能力。（[API参考]([docs/zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-events.md](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.1-Release/zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-events.md#ontextselectionchange23))）
-- 新增支持屏蔽密码保险箱和智能填充功能。（[API参考]([docs/zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-componentapi.md](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.1-Release/zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-attributes.md#enableautofill23))）
-- 新增上下文菜单事件支持拉起autofill。（[API参考]([docs/zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-WebContextMenuParam.md](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.1-Release/zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#requestpasswordautofill23))）
+- 新增支持选区文本内容上报能力。（[API参考](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.1-Release/zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-events.md#ontextselectionchange23)）
+- 新增支持屏蔽密码保险箱和智能填充功能。（[API参考](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.1-Release/zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-attributes.md#enableautofill23)）
+- 新增上下文菜单事件支持拉起autofill。（[API参考](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.1-Release/zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#requestpasswordautofill23)）
 
 ### 窗口
 
