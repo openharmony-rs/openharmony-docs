@@ -5,6 +5,8 @@
 > **说明：**
 > 
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 
 ## 导入模块
@@ -19,6 +21,10 @@ import { wallpaper } from '@kit.BasicServicesKit';
 定义壁纸的枚举类型。
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
+
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
@@ -36,12 +42,12 @@ import { wallpaper } from '@kit.BasicServicesKit';
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
-| 名称 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| red | number | 是 | 是 | 表示红色值，范围为 0 到 255。 |
-| green | number | 是 | 是 | 表示绿色值，范围为 0 到 255。 |
-| blue | number | 是 | 是 | 表示蓝色值，范围为 0 到 255。 |
-| alpha | number | 是 | 是 | 表示 alpha 值，范围为 0 到 255。 |
+| red | number | 否 | 否 | 表示红色值，范围为 0 到 255。 |
+| green | number | 否 | 否 | 表示绿色值，范围为 0 到 255。 |
+| blue | number | 否 | 否 | 表示蓝色值，范围为 0 到 255。 |
+| alpha | number | 否 | 否 | 表示 alpha 值，范围为 0 到 255。 |
 
 
 ## wallpaper.on('colorChange')<sup>(deprecated)</sup>

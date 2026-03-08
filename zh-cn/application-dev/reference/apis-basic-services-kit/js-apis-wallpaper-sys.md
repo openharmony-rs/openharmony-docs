@@ -132,7 +132,7 @@ setVideo(source: string, wallpaperType: WallpaperType, callback: AsyncCallback&l
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string | 是 | mp4文件的Uri路径。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
 
 **错误码：**
@@ -186,7 +186,7 @@ setVideo(source: string, wallpaperType: WallpaperType): Promise&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string | 是 | mp4文件的Uri路径。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **错误码：**
 
@@ -242,7 +242,7 @@ setCustomWallpaper(source: string, wallpaperType: WallpaperType, callback: Async
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string | 是 | 指定的zip资源包。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
 
 **错误码：**
@@ -296,7 +296,7 @@ setCustomWallpaper(source: string, wallpaperType: WallpaperType): Promise&lt;voi
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string | 是 | 指定的zip资源包。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -453,7 +453,7 @@ getColorsSync(wallpaperType: WallpaperType): Array&lt;RgbaColor&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **返回值**：
 
@@ -609,7 +609,7 @@ restore(wallpaperType: WallpaperType, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，移除壁纸成功，error为undefined，否则返回error信息。 |
 
 **错误码：**
@@ -656,7 +656,7 @@ restore(wallpaperType: WallpaperType): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -707,7 +707,7 @@ setImage(source: string | image.PixelMap, wallpaperType: WallpaperType, callback
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | JPEG或PNG文件的Uri路径，或者PNG格式文件的位图。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
 
 **错误码：**
@@ -778,7 +778,7 @@ setImage(source: string | image.PixelMap, wallpaperType: WallpaperType): Promise
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | JPEG或PNG文件的Uri路径，或者PNG格式文件的位图。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -849,7 +849,7 @@ getImage(wallpaperType: WallpaperType, callback: AsyncCallback&lt;image.PixelMap
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 | callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是 | 回调函数，调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
 
 **错误码：**
@@ -897,7 +897,7 @@ getImage(wallpaperType: WallpaperType): Promise&lt;image.PixelMap&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -947,7 +947,7 @@ getWallpaperByState(wallpaperType:WallpaperType, foldState:FoldState, rotateStat
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 | foldState | [FoldState](#foldstate14) | 是 | 折展状态类型。 |
 | rotateState | [RotateState](#rotatestate14) | 是 | 横竖屏状态类型。 |
 
@@ -1002,7 +1002,7 @@ setAllWallpapers(wallpaperInfos: Array\<WallpaperInfo>\, wallpaperType: Wallpape
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | wallpaperInfos | Array\<[WallpaperInfo](#wallpaperinfo14)> | 是 | 所有壁纸的信息结构。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -1075,7 +1075,7 @@ getPixelMap(wallpaperType: WallpaperType, callback: AsyncCallback&lt;image.Pixel
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 | callback | AsyncCallback&lt;image.PixelMap&gt; | 是 | 回调函数，调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
 
 **示例：**
@@ -1117,7 +1117,7 @@ getPixelMap(wallpaperType: WallpaperType): Promise&lt;image.PixelMap&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -1154,7 +1154,7 @@ type WallpaperChangeObserver = (wallpaperType: WallpaperType, resourceType: Wall
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](./js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 | resourceType | [WallpaperResourceType](js-apis-wallpaper-sys.md#wallpaperresourcetype10)| 是 | 壁纸资源类型。 |
 |  uri | string | 否 | 壁纸资源地址。 |
 
