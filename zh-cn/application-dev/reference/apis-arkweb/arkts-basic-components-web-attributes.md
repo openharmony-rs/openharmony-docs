@@ -2296,7 +2296,7 @@ ArkTS-Sta: forceDarkAccess(access: boolean | undefined): this
 
 ArkTS-Dyn: pinchSmooth(isEnabled: boolean)
 
-ArkTS-Sta: pinchSmooth(isEnabled: boolean | undefined): this
+ArkTS-Sta: pinchSmooth(isEnabled: boolean | undefined)
 
 设置网页是否开启捏合流畅模式。该属性没有显式调用时，默认不开启捏合流畅模式。
 
@@ -2304,7 +2304,7 @@ ArkTS-Sta: pinchSmooth(isEnabled: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
