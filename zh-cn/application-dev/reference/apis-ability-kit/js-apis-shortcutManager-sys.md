@@ -19,7 +19,8 @@ import { shortcutManager } from '@kit.AbilityKit';
 
 ## shortcutManager.addDesktopShortcutInfo<sup>12+</sup>
 
-ArkTS-Dyn: addDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<void><br>
+ArkTS-Dyn: addDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<void>
+
 ArkTS-Sta: addDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: int): Promise\<void>
 
 增加指定用户的快捷方式信息。
@@ -142,7 +143,8 @@ try {
 
 ## shortcutManager.deleteDesktopShortcutInfo<sup>12+</sup>
 
-ArkTS-Dyn: deleteDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<void><br>
+ArkTS-Dyn: deleteDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<void>
+
 ArkTS-Sta: deleteDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: int): Promise\<void>
 
 删除指定用户的快捷方式信息。
@@ -261,7 +263,8 @@ try {
 
 ## shortcutManager.getAllDesktopShortcutInfo<sup>12+</sup>
 
-ArkTS-Dyn: getAllDesktopShortcutInfo(userId: number) : Promise<Array\<ShortcutInfo>><br>
+ArkTS-Dyn: getAllDesktopShortcutInfo(userId: number) : Promise<Array\<ShortcutInfo>>
+
 ArkTS-Sta: getAllDesktopShortcutInfo(userId: int) : Promise<Array\<ShortcutInfo>>
 
 查询指定用户的所有快捷方式信息。
@@ -353,7 +356,8 @@ try {
 
 ## shortcutManager.addDynamicShortcutInfos<sup>23+</sup>
 
-ArkTS-Dyn: addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: number): Promise\<void><br>
+ArkTS-Dyn: addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: number): Promise\<void>
+
 ArkTS-Sta: addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: int): Promise\<void>
 
 添加指定用户的动态快捷方式。
@@ -431,7 +435,8 @@ try {
 
 ## shortcutManager.deleteDynamicShortcutInfos<sup>23+</sup>
 
-ArkTS-Dyn: deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId: number, ids?: Array<string>): Promise\<void><br>
+ArkTS-Dyn: deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId: number, ids?: Array<string>): Promise\<void>
+
 ArkTS-Sta: deleteDynamicShortcutInfos(bundleName: string, appIndex: int, userId: int, ids?: Array<string>): Promise\<void>
 
 删除指定的动态快捷方式。
