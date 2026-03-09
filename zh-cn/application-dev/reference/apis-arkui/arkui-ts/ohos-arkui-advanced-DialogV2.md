@@ -248,7 +248,7 @@ type AdvancedDialogV2ButtonAction = () => void
 | role         | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明)           | 否  | 是  | 按钮的角色。<br />默认值：ButtonRole.NORMAL<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | defaultFocus | boolean                                                                | 否  | 是  | 是否为默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | enabled       | boolean                                                                | 否  | 是  | 是否可用。<br/>true：按钮可用。<br/>false：按钮不可用。<br />默认值：true<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。  |
-| textAlign<sup>24+</sup> | [TextAlign](ts-appendix-enums.md#textalign) | 否 | 是 | 按钮文本的对齐方式。<br/>默认值：TextAlign.Start<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。          |
+| textAlign<sup>24+</sup> | [TextAlign](ts-appendix-enums.md#textalign) | 否 | 是 | 按钮文本的对齐方式。<br/>默认值：TextAlign.Start<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。          |
 
 > **说明：**
 >
