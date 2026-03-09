@@ -210,7 +210,7 @@ isEqual(other: Region): boolean
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -872,7 +872,7 @@ setRegion(region: Region): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 

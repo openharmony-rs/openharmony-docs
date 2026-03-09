@@ -86,7 +86,7 @@ ArkTS-Sta: static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.R
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -151,7 +151,7 @@ ArkTS-Sta: static createBlendImageFilter(mode: BlendMode, background: ImageFilte
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -274,6 +274,9 @@ let colorMatrix:Array<double> = [
   0.0, 0.0, 0.0, 1.0, 0.0
 ];
 let redRemovalFilter = drawing.ColorFilter.createMatrixColorFilter(colorMatrix);
+if (redRemovalFilter == undefined) {
+  return;
+}
 let colorFilter = drawing.ImageFilter.createFromColorFilter(redRemovalFilter, null);
 if (colorFilter == undefined || blurFilter == undefined) {
   return;
