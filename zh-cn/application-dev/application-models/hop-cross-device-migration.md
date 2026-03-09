@@ -1179,3 +1179,6 @@ export default class MigrationAbility extends UIAbility {
 针对跨端迁移的开发，有以下相关实例可供参考：
 
 [跨端迁移随手记（ArkTS）（Public SDK）（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributedJotNote)
+
+<!--RP1-->
+<!--RP1End-->
