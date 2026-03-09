@@ -3417,6 +3417,7 @@ getFormIdsByFormLocation(location: formInfo.FormLocation): Promise&lt;Array&lt;s
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getFormIdsByFormLocation(formInfo.FormLocation.DESKTOP).then((formIds: Array<string>) => {
