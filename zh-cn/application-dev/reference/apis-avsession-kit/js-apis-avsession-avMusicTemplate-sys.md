@@ -10,21 +10,19 @@
 
 该模块提供如下功能：
 
-- [AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplateDescriptor-sys.md): 音频模板描述，包含音频模板唯一标识，应用的包名和用户ID信息。
+[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplateDescriptor-sys.md)：音频模板描述，包含音频模板唯一标识，应用的包名和用户ID信息。
 
 > **说明：**
 >
 > 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[Functions](arkts-apis-avsession-AVMusicTemplate-f.md)。
 
 ## 导入模块
 
 ```ts
 import { avMusicTemplate } from '@kit.AVSessionKit';
 ```
-
-## 使用说明
-
-本文档仅提供系统接口说明，以下接口的使用说明均需先创建实例，请参考公开接口[avMusicTemplate.createAVMusicTemplate](arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplate)的说明及示例，创建对应实例。
 
 ## avMusicTemplate.createAVMusicTemplateController
 
