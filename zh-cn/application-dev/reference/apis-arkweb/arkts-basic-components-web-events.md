@@ -3795,7 +3795,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
-ArkTS-Sta: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\> | undefined): this
+ArkTS-Sta: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\> | undefined)
 
 通知用户收到地理位置信息获取请求。
 
@@ -3920,7 +3920,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onGeolocationHide(callback: () => void)
 
-ArkTS-Sta: onGeolocationHide(callback: () => void | undefined): this
+ArkTS-Sta: onGeolocationHide(callback: (() => void) | undefined)
 
 通知用户先前被调用[onGeolocationShow](#ongeolocationshow)时收到地理位置信息获取请求已被取消。
 
@@ -3934,7 +3934,7 @@ ArkTS-Sta: onGeolocationHide(callback: () => void | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: () => void \| undefined | 是 | 地理位置信息获取请求已被取消的回调函数。 |
+| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: (() => void) \| undefined | 是 | 地理位置信息获取请求已被取消的回调函数。 |
 
 **示例：**
 
