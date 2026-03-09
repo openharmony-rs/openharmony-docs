@@ -1086,7 +1086,9 @@ export default class MigrationAbility extends UIAbility {
             ![hop-cross-device-migration](figures/hop-cross-device-migration1.png)
 
         2. 自动签名，编译安装。
+
         ​DevEco的自动签名模板默认签名权限为`normal`级。而本应用所需`ohos.permission.MANAGE_MISSIONS`权限为`system_core`级别。自动生成的签名无法获得足够的权限，所以需要将权限升级为`system_core`级别，然后签名。
+        
             1. 将Sdk目录下的`openharmony\api版本 (如：10)\toolchains\lib\UnsignedReleasedProfileTemplate.json`文件中的`"apl":"normal"`改为`"apl":"system_core"`。
 
             2. 点击 **file->Project Structure**。
