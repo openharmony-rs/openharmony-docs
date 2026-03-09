@@ -280,14 +280,14 @@
 | 名称        | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | id          | string                                                       | 否   | 否   | 用于唯一标识用户登录的二维码会话。<br>当二维码过期时，MediaUI将使用此ID从第三方查询并更新新的二维码。 |
-| price       | string                                                       | 否   | 否   | 购买价格。                                                   |
-| titleName   | string                                                       | 否   | 否   | 标题名称。                                                   |
-| detailName  | string                                                       | 否   | 否   | 详情名称。                                                   |
-| tips        | string                                                       | 否   | 否   | 提示信息。                                                   |
-| icon        | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 与二维码关联的应用图标，用于微信登录的二维码应显示微信图标。 |
+| price       | string                                                       | 否   | 否   | 购买价格。|
+| titleName   | string                                                       | 否   | 否   | 标题名称。|
+| detailName  | string                                                       | 否   | 否   | 详情名称。|
+| tips        | string                                                       | 否   | 否   | 提示信息。|
+| icon        | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 与二维码关联的应用图标，用于应用登录的二维码应显示目标应用的图标。 |
 | content     | string                                                       | 否   | 否   | 二维码的内容。                                               |
-| codeData    | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 二维码图片。                                                 |
-| validPeriod | number                                                       | 否   | 否   | 二维码有效期（单位：秒）。当QR码到期时，QR码ID将用于再次查询并获得新的QR码。 |
+| codeData    | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 二维码图片。|
+| validPeriod | number                                                       | 否   | 否   | 二维码有效期（单位：秒）。当二维码到期时，二维码ID将用于再次查询并获得新的二维码。 |
 
 ## DialogActionInfo
 
