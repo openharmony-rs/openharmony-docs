@@ -9,7 +9,6 @@
 ## 概述
 
 提供Neural Network Runtime加速模型推理的相关接口。
-在API version 23之前，支持在Phone、PC、Tablet设备上使用Neural Network Runtime；从API version 23开始，新增支持在TV设备上使用Neural Network Runtime。
 
 **起始版本：** 9
 ## 文件汇总
