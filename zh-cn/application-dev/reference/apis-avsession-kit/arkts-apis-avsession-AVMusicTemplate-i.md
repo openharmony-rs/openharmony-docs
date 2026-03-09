@@ -318,7 +318,7 @@
 | title       | string                                                       | 否   | 是   | 对话框的标题。                                               |
 | text        | string                                                       | 否   | 是   | 对话框的内容。                                               |
 | buttons     | [DialogButtonInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogbuttoninfo)[] | 否   | 是   | 对话框按钮的数组。                                           |
-| qrCodes     | [QrCodeInfo](#qrcodeinfo)[]                                  | 否   | 是   | 对话框二维码的数组。一旦设置了二维码信息，此对话框将被识别为二维码对话框，并将优先显示二维码信息。最多可以设置两个。 |
+| qrCodes     | [QrCodeInfo](#qrcodeinfo)[]                                  | 否   | 是   | 对话框二维码的数组。<br>当设置了二维码信息时，此对话框将被识别为二维码对话框，并将优先显示二维码信息。最多可以设置两个。 |
 | description | string                                                       | 否   | 是   | 对话框的其他信息。                                           |
 
 ## DialogButtonInfo
