@@ -3,6 +3,7 @@
 PerfTest提供白盒性能测试能力，供开发者在测试场景使用，支持对指定代码段或指定场景的性能数据测试，支持自动化执行测试代码段，并采集耗时、CPU、内存、时延、帧率等性能数据。
 
 > **说明：**
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/arkxtest-guidelines.md)<!--RP1End-->中使用。
 > - 本模块接口不支持并发调用。
@@ -108,10 +109,6 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 ## PerfTest
 
 PerfTest类为白盒性能测试框架的总入口，提供测试任务创建、测试代码段执行和数据采集、测量结果获取等能力。
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
 
 ### create
 
