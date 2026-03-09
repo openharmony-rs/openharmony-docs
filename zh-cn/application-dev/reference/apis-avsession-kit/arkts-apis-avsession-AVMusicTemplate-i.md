@@ -18,12 +18,12 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称          | 类型                                                         | 只读 | 可选 | 说明                     |
-| ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------ |
-| tabId         | string                                                       | 否   | 否   | 标签页的标识。           |
-| tabName       | string                                                       | 否   | 否   | 标签页的名称。           |
-| tabIcon       | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 标签页的图标，需要主页。 |
-| extraDataJson | string                                                       | 否   | 是   | 标签页上的附加内容。     |
+| 名称          | 类型                                                         | 只读 | 可选 | 说明                                               |
+| ------------- | ------------------------------------------------------------ | ---- | ---- | -------------------------------------------------- |
+| tabId         | string                                                       | 否   | 否   | 标签页的标识。                                     |
+| tabName       | string                                                       | 否   | 否   | 标签页的名称。                                     |
+| tabIcon       | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 标签页的图标（接入模板时在主界面的标签页中必填）。 |
+| extraDataJson | string                                                       | 否   | 是   | 标签页上的附加内容。                               |
 
 ## OperResult
 
