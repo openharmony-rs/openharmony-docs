@@ -26,8 +26,6 @@ import { DistributedExtensionAbility} from '@kit.DistributedServiceKit';
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称    | 类型                          | 只读 | 可选 | 说明                                                       |
