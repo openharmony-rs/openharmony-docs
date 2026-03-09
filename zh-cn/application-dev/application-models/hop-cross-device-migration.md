@@ -53,11 +53,9 @@
    ```json
    {
      "module": {
-       // ...
        "abilities": [
          {
-           // ...
-           "continuable": true, // 配置UIAbility支持迁移
+           "continuable": true,
          }
        ]
      }
@@ -259,11 +257,11 @@
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       build() {
         Column() {
-          //...
+          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ...
               }
               .onClick(() => {
                 // 点击该按钮时，将应用设置为可迁移状态
@@ -275,11 +273,11 @@
                 });
               })
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
     }
     ```
@@ -377,29 +375,23 @@ export default class MigrationAbility extends UIAbility {
    > continueType标签类型为字符串数组，如果配置了多个字段，当前仅第一个字段会生效。
 
 ```json
-   // 设备A
    {
      "module": {
-       // ...
        "abilities": [
          {
-           // ...
            "name": "Ability-deviceA",
-           "continueType": ['continueType1'], // continueType标签配置
+           "continueType": ['continueType1'],
          }
        ]
      }
    }
 
-   // 设备B
    {
      "module": {
-       // ...
        "abilities": [
          {
-           // ...
            "name": "Ability-deviceB",
-           "continueType": ['continueType1'], // 与设备A相同的continueType标签
+           "continueType": ['continueType1'],
          }
        ]
      }
@@ -422,16 +414,13 @@ export default class MigrationAbility extends UIAbility {
    不同BundleName的相同应用在设备A和设备B之间相互迁移，设备A应用的BundleName为com.demo.example1，设备B应用的BundleName为com.demo.example2。
 
 ```JSON
-// 在设备A的应用配置文件中，continueBundleName字段配置包含设备B上应用的BundleName。
 {
   "module": {
-    // ···
     "abilities": [
       {
         "name": "EntryAbility",
-        // ···
         "continueType": ["continueType"],
-        "continueBundleName": ["com.demo.example2"], // continueBundleName标签配置，com.demo.example2为设备B上应用的BundleName。
+        "continueBundleName": ["com.demo.example2"],
        
       }
     ]
@@ -441,16 +430,13 @@ export default class MigrationAbility extends UIAbility {
 ```
 
 ```JSON
-// 在设备B的应用配置文件中，continueBundleName字段配置包含设备A上应用的BundleName。
 {
   "module": {
-    // ···
     "abilities": [
       {
         "name": "EntryAbility",
-        // ···
         "continueType": ["continueType"],
-        "continueBundleName": ["com.demo.example1"], // continueBundleName标签配置，com.demo.example1为设备A上应用的BundleName。
+        "continueBundleName": ["com.demo.example1"],
        
       }
     ]
@@ -466,12 +452,10 @@ export default class MigrationAbility extends UIAbility {
    ```json
    {
      "module": {
-       // ...
        "abilities": [
          {
-           // ...
            "name": "EntryAbility"
-           "continueType": ['EntryAbility_ContinueQuickStart'], // 如果已经配置了continueType标签，可以在该标签值后添加'_ContinueQuickStart'后缀；如果没有配置continueType标签，可以使用AbilityName + '_ContinueQuickStart'作为continueType标签实现快速拉起目标应用
+           "continueType": ['EntryAbility_ContinueQuickStart'],
          }
        ]
      }
@@ -515,8 +499,8 @@ export default class MigrationAbility extends UIAbility {
 
     // 1.已配置快速拉起功能，应用立即启动时触发应用生命周期回调
     if (launchParam.launchReason === AbilityConstant.LaunchReason.PREPARE_CONTINUATION) {
-      //若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
-      //可处理应用自定义跳转、时序等问题
+      // 若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
+      // 可处理应用自定义跳转、时序等问题
       // ...
     }
   }
@@ -526,8 +510,8 @@ export default class MigrationAbility extends UIAbility {
       
     // 1.已配置快速拉起功能，应用立即启动时触发应用生命周期回调
     if (launchParam.launchReason === AbilityConstant.LaunchReason.PREPARE_CONTINUATION) {
-      //若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
-      //可处理应用自定义跳转、时序等问题
+      // 若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
+      // 可处理应用自定义跳转、时序等问题
       // ...
     }
       
