@@ -26,6 +26,8 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 
 注册collaborateEvent事件的回调监听,使用callback异步回调。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **系统API**：此接口为系统接口。
@@ -65,6 +67,8 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 
 注册receiveImage事件的回调监听。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **系统API**：此接口为系统接口。
@@ -103,6 +107,8 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 
 取消collaborateEvent事件的回调监听。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **系统API**：此接口为系统接口。
@@ -139,6 +145,8 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
 取消receiveImage事件的回调监听。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **系统API**：此接口为系统接口。
@@ -174,6 +182,8 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?:&nbsp;number):&nbsp;Promise&lt;void&gt;
 
 应用连接成功并创建传输流后，设备A或设备B可向对端设备发送图片，使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -246,6 +256,8 @@ createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise
 
 应用连接成功后，设备A或设备B可创建传输流，发送图片和视频流，使用Promise异步回调。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **系统API**：此接口为系统接口。
@@ -303,6 +315,8 @@ setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbs
 
 设置传输流与Surface的绑定关系。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **系统API**：此接口为系统接口。
@@ -348,6 +362,8 @@ setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbs
 getSurfaceId(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
 获取指定传输流绑定的Surface的唯一标识符。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -399,6 +415,8 @@ updateSurfaceParam(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;
 
 更新与传输流绑定的Surface的配置信息。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **系统API**：此接口为系统接口。
@@ -443,6 +461,8 @@ destroyStream(sessionId:&nbsp;number):&nbsp;void
 
 发送图片和视频流等业务结束后，创建传输流的应用应及时销毁传输流，否则会增加系统功耗。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **系统API**：此接口为系统接口。
@@ -479,6 +499,8 @@ destroyStream(sessionId:&nbsp;number):&nbsp;void
 startStream(sessionId:&nbsp;number):&nbsp;void
 
 启动指定传输流。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -517,6 +539,8 @@ stopStream(sessionId:&nbsp;number):&nbsp;void
 
 停止指定传输流。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **系统API**：此接口为系统接口。
@@ -551,6 +575,8 @@ stopStream(sessionId:&nbsp;number):&nbsp;void
 
 协作事件信息。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称       | 类型   | 只读 | 可选 | 说明      |
@@ -561,6 +587,8 @@ stopStream(sessionId:&nbsp;number):&nbsp;void
 ## StreamParam
 
 流传输配置的参数。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -574,6 +602,8 @@ stopStream(sessionId:&nbsp;number):&nbsp;void
 ## SurfaceParam
 
 Surface配置参数。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -589,6 +619,8 @@ Surface配置参数。
 
 协作事件的类型的枚举。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称|  值 | 说明 |
@@ -599,6 +631,8 @@ Surface配置参数。
 ## FlipOptions
 
 翻转选项的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -611,6 +645,8 @@ Surface配置参数。
 
 流传输的方式。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称|  值 | 说明 |
@@ -621,6 +657,8 @@ Surface配置参数。
 ## VideoPixelFormat
 
 视频像素格式的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -634,6 +672,8 @@ Surface配置参数。
 
 应用连接时所需的连接选项。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称          | 类型    | 只读   | 可选   | 说明          |
@@ -645,6 +685,8 @@ Surface配置参数。
 
 回调方法的接收信息。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称       | 类型    | 只读  | 可选  | 说明          |
@@ -654,6 +696,8 @@ Surface配置参数。
 ## StartOptionParams
 
 启动选项参数的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
