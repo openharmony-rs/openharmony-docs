@@ -739,13 +739,13 @@ Web同层渲染的配置。
 | title | string | 否 | 否 | document标题内容。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
 | isRealTitle<sup>20+</sup> | boolean | 否 | 是 | document标题来源，true表示来自网页的title标签，false表示该title是根据url自动生成。 <br>默认值：false。<br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
 
-## OnGeolocationShowEvent<sup>8+</sup>
+## OnGeolocationShowEvent<sup>12+</sup>
 
 定义通知用户收到地理位置信息获取请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
