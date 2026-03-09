@@ -4807,7 +4807,7 @@
 
 允许应用从文件管理目录读取录音文件。
 
-**权限级别**：system_core
+**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
@@ -4821,7 +4821,7 @@
 
 允许应用向文件管理目录写入录音文件。
 
-**权限级别**：system_core
+**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
