@@ -115,16 +115,16 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称            | 类型                                                         | 只读                                                         | 可选 | 说明                    |
-| --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- | ----------------------- |
-| mediaId         | string                                                       | 否                                                           | 否   | 媒体资源的ID。          |
-| mediaType       | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否                                                           | 否   | 媒体资源的类型。        |
-| parentId        | string                                                       | 否                                                           | 否   | 父节点的媒体资源ID。    |
-| parentMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否                                                           | 否   | 父节点的媒体资源类型。  |
-| title           | string                                                       | xxxxxxxxxx import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';​const TAG: string = 'ControllerManager';​export class ControllerManager {  /**   * 反注册模板监听。   */  public unregisterAVMusicTemplateListener() {    try {      avMusicTemplate.offAVMusicTemplateDestroy();    } catch (e) {      console.error(TAG, `unregisterAVMusicTemplateListener: errCode: ${e?.code}`);    }  }}ts | 否   | 媒体资源的标题。        |
-| desc            | string                                                       | 否                                                           | 是   | 媒体资源的描述。        |
-| imageUrl        | string                                                       | 否                                                           | 否   | 媒体资源的封面图片URL。 |
-| playState       | [PlaybackState](arkts-apis-avsession-AVMusicTemplate-e.md#playbackstate) | 否                                                           | 否   | 媒体资源的播放状态。    |
+| 名称            | 类型                                                         | 只读 | 可选 | 说明                    |
+| --------------- | ------------------------------------------------------------ | ---- | ---- | ----------------------- |
+| mediaId         | string                                                       | 否   | 否   | 媒体资源的ID。          |
+| mediaType       | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源的类型。        |
+| parentId        | string                                                       | 否   | 否   | 父节点的媒体资源ID。    |
+| parentMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 父节点的媒体资源类型。  |
+| title           | string                                                       | 否   | 否   | 媒体资源的标题。        |
+| desc            | string                                                       | 否   | 是   | 媒体资源的描述。        |
+| imageUrl        | string                                                       | 否   | 否   | 媒体资源的封面图片URL。 |
+| playState       | [PlaybackState](arkts-apis-avsession-AVMusicTemplate-e.md#playbackstate) | 否   | 否   | 媒体资源的播放状态。    |
 
 ## QueryMediaEntityParam
 
@@ -313,7 +313,7 @@
 
 | 名称        | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| dialogId    | string                                                       | 否   | 否   | 对话框的唯一id。                                             |
+| dialogId    | string                                                       | 否   | 否   | 对话框的唯一ID。                                             |
 | dialogType  | [DialogType](arkts-apis-avsession-AVMusicTemplate-e.md#dialogtype) | 否   | 否   | 对话框的类型。                                               |
 | title       | string                                                       | 否   | 是   | 对话框的标题。                                               |
 | text        | string                                                       | 否   | 是   | 对话框的内容。                                               |
@@ -345,7 +345,7 @@
 
 | 名称               | 类型                                                         | 只读 | 可选 | 说明                                        |
 | ------------------ | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------- |
-| id                 | string                                                       | 否   | 否   | 会员购买信息的唯一id。                      |
+| id                 | string                                                       | 否   | 否   | 会员购买信息的唯一ID。                      |
 | diagramUrl         | string                                                       | 否   | 否   | 会员购买演示的URL（必须采用21:9的宽高比）。 |
 | diagramData        | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 会员购买图片。                              |
 | diagramContent     | string                                                       | 否   | 否   | 会员购买图片的内容。                        |
@@ -376,7 +376,7 @@
 
 | 名称          | 类型    | 只读 | 可选 | 说明                                            |
 | ------------- | ------- | ---- | ---- | ----------------------------------------------- |
-| userInfoId    | string  | 否   | 否   | 用户的唯一id。                                  |
+| userInfoId    | string  | 否   | 否   | 用户的唯一ID。                                  |
 | nickName      | string  | 否   | 否   | 用户昵称。                                      |
 | profilePicUrl | string  | 否   | 否   | 用户的头像图片URL。                             |
 | tips          | string  | 否   | 否   | 其他关于用户的描述。                            |

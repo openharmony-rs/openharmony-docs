@@ -321,7 +321,7 @@ type LoginEvent = (controlType: LoginType, id?: string) => Promise&lt;QrCodeInfo
 | 参数名      | 类型                    | 必填 | 说明       |
 | ----------- | ----------------------- | ---- | ---------- |
 | controlType | [LoginType](#logintype) | 是   | 登录类型。 |
-| id          | string                  | 否   | 二维码id。 |
+| id          | string                  | 否   | 二维码ID。 |
 
 **返回值：**
 
