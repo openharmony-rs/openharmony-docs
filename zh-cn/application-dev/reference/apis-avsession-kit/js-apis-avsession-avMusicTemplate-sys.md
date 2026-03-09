@@ -443,9 +443,9 @@ onAVMusicTemplateDestroy(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): v
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplateDescriptor-sys.md)> | 是   | 回调函数，返回音频模板描述。不填该参数则注销该类型对应的所有回调。 |
+| 参数名   | 类型                                                         | 必填 | 说明                         |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
+| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplateDescriptor-sys.md)> | 是   | 回调函数，返回音频模板描述。 |
 
 **错误码：**
 
