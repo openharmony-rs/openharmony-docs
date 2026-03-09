@@ -27,6 +27,7 @@ typedef struct {...} JSVM_CompileOptions
 | 名称                                                                            | 描述            |
 |-------------------------------------------------------------------------------|---------------|
 | [JSVM_CompileOptionId](capi-jsvm-types-h.md#jsvm_compileoptionid) id | 编译选项对应的ID。 |
-| void* ptr   | void*类型。      |
-| int num      | int类型。        |
-| bool boolean   | bool类型。            |
+| content     | id对应的编译选项值联合体。 |
+| content.ptr   | 指向编译选项值的指针。 |
+| content.num      | 存储整数类型的编译选项值。 |
+| content.boolean   | 存储布尔类型的编译选项值。|
