@@ -1441,7 +1441,7 @@ try {
 **系统能力：** SystemCapability.USB.USBManager
 
 **ArkTS-Dyn起始版本：** 9
-
+ArkTS模式：该返回值仅适用于ArkTS-Sta
 **ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型                                        | 只读  | 可选  |说明            |
@@ -1451,7 +1451,7 @@ try {
 | interval      | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点间隔。         |
 | maxPacketSize | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点最大数据包大小。    |
 | direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 否 |端点的方向。        |
-| endpointAddr        | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点地址。          |
+| endpointAddr        | ArkTS-Sta: int                                         | 否   | 否 |端点地址。           |
 | type          | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点类型。取值见[UsbEndpointTransferType](#usbendpointtransfertype18)         |
 | interfaceId   | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点所属的接口的唯一标识。 |
 
