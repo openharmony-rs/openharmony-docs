@@ -235,13 +235,13 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 
 | 参数| 含义| 说明
 | ------- | ------- | ------- |
-| monitorObjectTypes: MonitorObjectType | 被监测对象类型（如五大组件）| 指定监测以下组件类型：<br>CUSTOM_COMPONENT、WINDOW、NODE_CONTAINER、X_COMPONENT、ABILITY。 |
+| monitorObjectTypes: MonitorObjectType | 被监测对象类型（如五大组件）| 指定监测以下组件类型：<br>XComponent，NodeContainer，Window，CustomComponent和Ability。 |
 | objectUniqueIDs : Array<number> | 被监测对象ID列表（如自定义组件ID） | 只作用于自定义组件，不会影响其他组件类型的监测。<br>例如：白名单中设置的对象类名id与自定义ID列表存在相同值时，生效ID列表参数。 |
 | checkInterval : number | 每轮泄漏检测间隔时间 | 默认为30秒。 |
 | fgLeakCountThreshold : number | 应用在前台泄漏个数达到设定值触发dump（如 5个） | GC/Dump阶段，阈值默认为5，大于等于5时触发Dump。 |
 | bgLeakCountThreshold : number | 应用在后台泄漏个数达到设定值触发dump（如 1个） | GC/Dump阶段，阈值默认为1，大于等于1时触发Dump。 |
 | maxStoredHeapDumps : number | 最大dump保存个数（如 10个），避免磁盘空间占满 | 默认保存10个rawheap、10个jsleaklist文件，超过则删除时间戳最小的rawheap、jsleaklist文件。 |
-| dumpHeapWaitTimeMs : number | 延迟执行dump，保证GC能调度且执行完再执行dump（如延迟5秒） | GC结束后默认延迟5秒执行dump，延迟间隔小于等于泄漏检测间隔时间。<br>设置延迟时长超过泄漏间隔时长则默认与泄漏间隔时长保持一致。 |
+| dumpHeapWaitTimeMs : number | 延迟执行dump，保证GC能调度且执行完再执行dump（如延迟5秒） | GC结束后默认延迟5秒执行dump，延迟间隔小于等于泄漏检测间隔时间。<br>设置延迟时长超过泄漏间隔时长则默认与泄漏间隔时长保持一致。<br>若无新增泄漏对象将不会触发dump。 |
 | exclusionList : Array<string> | 过滤不想监测的对象类名（ClassName） | 默认为空数组；只作用于自定义组件，不会影响其他组件类型的过滤。<br>配置项冲突优先级：ID列表 > 白名单。 |
 
 
