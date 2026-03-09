@@ -242,7 +242,7 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 | bgLeakCountThreshold : number | 应用在后台泄漏个数达到设定值触发dump（如 1个） | GC/Dump阶段，阈值默认为1，大于等于1时触发Dump。 |
 | maxStoredHeapDumps : number | 最大dump保存个数（如 10个），避免磁盘空间占满 | 默认保存10个rawheap、10个jsleaklist文件，超过则删除时间戳最小的rawheap、jsleaklist文件。 |
 | dumpHeapWaitTimeMs : number | 延迟执行dump，保证GC能调度且执行完再执行dump（如延迟5秒） | GC结束后默认延迟5秒执行dump，延迟间隔小于等于泄漏检测间隔时间。<br>设置延迟时长超过泄漏间隔时长则默认与泄漏间隔时长保持一致。<br>若无新增泄漏对象将不会触发dump。 |
-| exclusionList : Array<string> | 过滤不想监测的对象类名（ClassName） | 默认为空数组；只作用于自定义组件，不会影响其他组件类型的过滤。<br>配置项冲突优先级：ID列表 > 白名单。 |
+| exclusionList : Array<string> | 过滤不想监测的对象类名（ClassName） | 默认为空数组；只作用于自定义组件，不会影响其他组件类型的过滤。<br>存在混淆问题时无法进行过滤，只在开发态生效。<br>配置项冲突优先级：ID列表 > 白名单。 |
 
 
 ## MonitorObjectType
