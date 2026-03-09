@@ -39,7 +39,7 @@ ArkTS-Sta: static createDashPathEffect(intervals: Array\<double>, phase: double)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -104,7 +104,7 @@ ArkTS-Sta: static createPathDashEffect(path: Path, advance: double, phase: doubl
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -219,7 +219,7 @@ ArkTS-Sta: static createSumPathEffect(firstPathEffect: PathEffect, secondPathEff
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -283,7 +283,7 @@ ArkTS-Sta: static createCornerPathEffect(radius: double): PathEffect | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -345,7 +345,7 @@ ArkTS-Sta: static createDiscretePathEffect(segLength: double, dev: double, seedA
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -387,7 +387,7 @@ ArkTS-Sta: static createComposePathEffect(outer: PathEffect, inner: PathEffect):
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
