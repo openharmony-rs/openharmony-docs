@@ -65,7 +65,7 @@
            // 开发者可以获取抛滑阶段发生丢帧的最大时长
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.max_app_frame_time=${eventInfo.params['max_app_frame_time']}`);
            const webId: number = eventInfo.params['web_id'];
-           //webIdToUrlMap时定义的变量用于实现webId到url的映射，通过系统侧获取的web_id查询到发生丢帧的网页
+           // webIdToUrlMap时定义的变量用于实现webId到url的映射，通过系统侧获取的web_id查询到发生丢帧的网页
            const currentUrl = webIdToUrlMap.get(webId);
            // 开发者可以获取到发生卡顿的页面
            hilog.info(0x0000, 'testTag', `HiAppEvent get currentUrl=${currentUrl}`);
@@ -125,7 +125,7 @@
    <!-- @[ArkWeb_Fling_Jank_ArkTs_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   //按钮跳转到易出现滑动丢帧的web场景，触发ArkWeb抛滑丢帧事件。
+   // 按钮跳转到易出现滑动丢帧的web场景，触发ArkWeb抛滑丢帧事件。
    Button('ArkWebFlingJank ArkTs')
      .type(ButtonType.Capsule)
      .margin({
