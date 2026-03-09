@@ -251,7 +251,7 @@
 | title        | string                                                       | 否   | 否   | 设置项的标题。                                               |
 | desc         | string                                                       | 否   | 否   | 设置项的描述。                                               |
 | settingType  | [SettingType](arkts-apis-avsession-AVMusicTemplate-e.md#settingtype) | 否   | 是   | 设置项的类型。                                               |
-| settingValue | string \| boolean \| [SettingContent](arkts-apis-avsession-AVMusicTemplate-i.md#settingcontent)[] \| [WantAgent](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#WantAgent) | 否   | 是   | 设置项的值。当settingType类型是SettingType.SWITCH时，本值数据类型是boolean。当settingType类型是SettingType.LIST时，本值数据类型是SettingContent数组。当settingType类型是SettingType.JUMP时，本值数据类型是string。 |
+| settingValue | string \| boolean \| [SettingContent](arkts-apis-avsession-AVMusicTemplate-i.md#settingcontent)[] \| [WantAgent](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#WantAgent) | 否   | 是   | 设置项的值。<br>- 当settingType类型是SettingType.SWITCH时，本值数据类型是boolean。<br>- 当settingType类型是SettingType.LIST时，本值数据类型是SettingContent数组。<br>- 当settingType类型是SettingType.JUMP时，本值数据类型是string。 |
 | mediaId      | string                                                       | 否   | 否   | 与当前设置关联的媒体id。如果设置与当前媒体信息相关联，您需要设置mediaId；否则，不需要设置mediaId。 |
 
 ## SettingContent
