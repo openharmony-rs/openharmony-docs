@@ -202,7 +202,7 @@ int OH_WebSocketClient_Destroy(struct WebSocket *client)
 
 **最佳实践**
 
-1、调用[WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback)订阅WebSocket连接关闭事件，并在该回调函数中调用OH_WebSocketClient_Destroy方法。
+1、调用[WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback)订阅WebSocket连接关闭事件，并在该回调函数中调用[OH_WebSocketClient_Destroy](capi-net-websocket-h.md#oh_websocketclient_destroy)方法。
 
 2、调用[OH_WebSocketClient_Close](capi-net-websocket-h.md#oh_websocketclient_close)关闭WebSocket连接。
 
