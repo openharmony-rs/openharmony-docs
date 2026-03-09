@@ -1800,9 +1800,9 @@ onUserInfoChange(callback: Callback&lt;UserInfo&gt;): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                               |
-| -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | Callback<[UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo)> | 是   | Callback类型的回调。返回用户信息。 |
+| 参数名   | 类型                                                         | 必填 | 说明            |
+| -------- | ------------------------------------------------------------ | ---- |---------------|
+| callback | Callback<[UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo)> | 是   | 回调函数，返回用户信息。 |
 
 **错误码：**
 
@@ -1848,7 +1848,7 @@ offUserInfoChange(callback?: Callback&lt;UserInfo&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | Callback<[UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo)> | 否   | Callback类型的回调。返回用户信息。 |
+| callback | Callback<[UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo)> | 否   | Callback类型的回调。返回用户信息。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -1882,7 +1882,7 @@ export class ControllerManager {
 
 onDialogCommandChange(callback: ReportDialogCommandEvent): void
 
-注册弹框命令改变的回调。
+注册弹框命令改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1890,9 +1890,9 @@ onDialogCommandChange(callback: ReportDialogCommandEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明               |
-| -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent) | 是   | 上报弹框命令事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明             |
+| -------- | ------------------------------------------------------------ | ---- | ---------------- |
+| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent) | 是   | 回调函数，上报弹框命令事件。 |
 
 **错误码：**
 
@@ -1937,9 +1937,9 @@ offDialogCommandChange(callback?: ReportDialogCommandEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明               |
-| -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent) | 否   | 上报弹框命令事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                           |
+| -------- | ------------------------------------------------------------ | ---- |------------------------------|
+| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent) | 否   | 上报弹框命令事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -1983,7 +1983,7 @@ onCurrentSingleChange(callback: Callback&lt;Single&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                     |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| callback | Callback<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single)> | 是   | Callback类型的回调。返回当前单曲的信息。 |
+| callback | Callback<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single)> | 是   | 回调函数，返回当前单曲的信息。 |
 
 **错误码：**
 
@@ -2029,7 +2029,7 @@ offCurrentSingleChange(callback?: Callback&lt;Single&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                     |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| callback | Callback<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single)> | 否   | Callback类型的回调。返回当前单曲的信息。 |
+| callback | Callback<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single)> | 否   | Callback类型的回调。返回当前单曲的信息。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2073,7 +2073,7 @@ onMediaEntitiesChange(callback: Callback&lt;MediaEntity[]&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | 是   | Callback类型的回调。返回媒体实体数组。 |
+| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | 是   | 回调函数，返回媒体实体数组。 |
 
 **错误码：**
 
@@ -2120,7 +2120,7 @@ offMediaEntitiesChange(callback?: Callback&lt;MediaEntity[]&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | 否   | Callback类型的回调。返回媒体实体数组。 |
+| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | 否   | Callback类型的回调。返回媒体实体数组。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2154,7 +2154,7 @@ export class ControllerManager {
 
 onTabContentChange(callback: ReportTabContentEvent): void
 
-注册标签页内容改变的回调。
+注册标签页内容改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2162,9 +2162,9 @@ onTabContentChange(callback: ReportTabContentEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ReportTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reporttabcontentevent) | 是   | 上报标签页内容事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明               |
+| -------- | ------------------------------------------------------------ | ---- | ------------------ |
+| callback | [ReportTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reporttabcontentevent) | 是   | 回调函数，上报标签页内容事件。 |
 
 **错误码：**
 
@@ -2211,7 +2211,7 @@ offTabContentChange(callback?: ReportTabContentEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ReportTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reporttabcontentevent) | 否   | 上报标签页内容事件。 |
+| callback | [ReportTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reporttabcontentevent) | 否   | 上报标签页内容事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2255,7 +2255,7 @@ onPlaylistChange(callback: Callback&lt;PageMediaEntity&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                         |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------- |
-| callback | Callback<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | 是   | Callback类型的回调。返回标签页媒体实体信息。 |
+| callback | Callback<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | 是   | 回调函数，返回标签页媒体实体信息。 |
 
 **错误码：**
 
@@ -2302,7 +2302,7 @@ offPlaylistChange(callback?: Callback&lt;PageMediaEntity&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                         |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------- |
-| callback | Callback<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | 否   | Callback类型的回调。返回标签页媒体实体信息。 |
+| callback | Callback<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | 否   | Callback类型的回调。返回标签页媒体实体信息。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2346,7 +2346,7 @@ onDownloadMediaEntityStatusChange(callback: Callback&lt;MediaEntity&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)> | 是   | Callback类型的回调。返回媒体实体信息。 |
+| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)> | 是   | 回调函数，返回媒体实体信息。 |
 
 **错误码：**
 
@@ -2393,7 +2393,7 @@ offDownloadMediaEntityStatusChange(callback?: Callback&lt;MediaEntity&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)> | 否   | Callback类型的回调。返回媒体实体信息。 |
+| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)> | 否   | Callback类型的回调。返回媒体实体信息。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2427,7 +2427,7 @@ export class ControllerManager {
 
 onCustomElementsChange(callback: ReportCustomElementsChangeEvent): void
 
-注册上报自定义元素改变的回调。
+注册上报自定义元素改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2435,9 +2435,9 @@ onCustomElementsChange(callback: ReportCustomElementsChangeEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                     |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [ReportCustomElementsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportcustomelementschangeevent) | 是   | 上报自定义元素改变事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                   |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------- |
+| callback | [ReportCustomElementsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportcustomelementschangeevent) | 是   | 回调函数，上报自定义元素改变事件。 |
 
 **错误码：**
 
@@ -2485,7 +2485,7 @@ offCustomElementsChange(callback?: ReportCustomElementsChangeEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [ReportCustomElementsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportcustomelementschangeevent) | 否   | 上报自定义元素改变事件。 |
+| callback | [ReportCustomElementsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportcustomelementschangeevent) | 否   | 上报自定义元素改变事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2529,7 +2529,7 @@ onSettingsChange(callback: Callback&lt;SettingItem[]&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                 |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
-| callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem)[]> | 是   | Callback类型的回调。返回设置项数组。 |
+| callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem)[]> | 是   | 回调函数，返回设置项数组。 |
 
 **错误码：**
 
@@ -2576,7 +2576,7 @@ offSettingsChange(callback?: Callback&lt;SettingItem[]&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                 |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
-| callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem)[]> | 否   | 回调函数，用于接收并处理设置项数组。 |
+| callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem)[]> | 否   | 回调函数，用于接收并处理设置项数组。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2610,7 +2610,7 @@ export class ControllerManager {
 
 onReportExecuteAction(callback: ReportExecuteActionEvent): void
 
-注册上报执行动作的回调。
+注册上报执行动作的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2618,9 +2618,9 @@ onReportExecuteAction(callback: ReportExecuteActionEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                   |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
-| callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteactionevent) | 是   | 当用户点击音频模板界面按钮时，上报对应按钮动作的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                 |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
+| callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteactionevent) | 是   | 回调函数，上报对应按钮动作的事件。 |
 
 **错误码：**
 
@@ -2667,7 +2667,7 @@ offReportExecuteAction(callback?: ReportExecuteActionEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteactionevent) | 否   | 上报执行动作的事件。 |
+| callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteactionevent) | 否   | 上报执行动作的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2701,7 +2701,7 @@ export class ControllerManager {
 
 onExtensionAbilityChange(callback: ReportExecuteAbilityEvent): void
 
-注册通知音频模板控制方拉起由用户指定的媒体应用界面的信息的回调。
+注册通知音频模板控制方拉起由用户指定的媒体应用界面的信息的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2709,9 +2709,9 @@ onExtensionAbilityChange(callback: ReportExecuteAbilityEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent) | 是   | 通知音频模板控制方拉起指定三方应用界面的事件，包含应用包名和界面名称等信息。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent) | 是   | 回调函数，通知音频模板控制方拉起指定三方应用界面的事件，包含应用包名和界面名称等信息。 |
 
 **错误码：**
 
@@ -2758,7 +2758,7 @@ offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                 |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent) | 否   | 通知音频模板控制方拉起特定三方应用界面的事件回调。 |
+| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent) | 否   | 通知音频模板控制方拉起特定三方应用界面的事件回调。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
