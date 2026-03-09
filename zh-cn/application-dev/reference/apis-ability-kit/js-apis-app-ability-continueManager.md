@@ -32,6 +32,8 @@ on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;Continu
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[onPrepareContinue](#continueManageronPrepareContinue23)。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 **ArkTS-Dyn起始版本：** 18
@@ -102,6 +104,8 @@ onPrepareContinue(context: Context, callback: AsyncCallback&lt;ContinueResultInf
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('prepareContinue')](#continueManageron)。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -174,6 +178,8 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[offPrepareContinue](#continueManageroffPrepareContinue23)。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 **ArkTS-Dyn起始版本：** 18
@@ -245,6 +251,8 @@ offPrepareContinue(context: Context, callback: AsyncCallback&lt;ContinueResultIn
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[off('prepareContinue')](#continueManageroff)。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 **ArkTS-Sta起始版本：** 23
@@ -310,6 +318,8 @@ export default class MigrationAbility extends UIAbility {
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
@@ -324,6 +334,8 @@ export default class MigrationAbility extends UIAbility {
 快速拉起的结果状态码的枚举值。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 18
 
