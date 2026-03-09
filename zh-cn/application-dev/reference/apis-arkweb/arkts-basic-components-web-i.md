@@ -957,11 +957,11 @@ Web组件进入全屏回调事件的详情。
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称             | 类型                                  | 必填   | 说明                    |
-| -----------     | ------------------------------------ | ---- | --------------------- |
-| embedId     | string   | 否    | 同层标签的唯一id。 |
-| mouseEvent  | [MouseEvent](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)  | 否    | 鼠标/触摸板点击/长按信息。 |
-| result     | [EventResult](./arkts-basic-components-web-EventResult.md)   | 否    | 通知Web组件鼠标事件的消费结果。 |
+| 名称             | 类型                                  | 只读 | 可选 | 说明                    |
+| -----------     | ------------------------------------ | -----|------| --------------------- |
+| embedId     | string   | 否 | 是    | 同层标签的唯一id。 |
+| mouseEvent  | [MouseEvent](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)  | 否 | 是    | 鼠标/触摸板点击/长按信息。 |
+| result     | [EventResult](./arkts-basic-components-web-EventResult.md)   | 否 | 是    | 通知Web组件鼠标事件的消费结果。 |
 
 ## OnLoadStartedEvent<sup>20+</sup>
 
