@@ -579,3 +579,43 @@ try {
     console.error(`Failed to open ukey authorization dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+## certificateManagerDialog.supportsCACertDialog
+
+supportsCACertDialog(): boolean
+
+设备是否支持打开CA证书管理对话框，包括[openInstallCertificateDialog](#certificatemanagerdialogopeninstallcertificatedialog14)、[openUninstallCertificateDialog](#certificatemanagerdialogopenuninstallcertificatedialog18)和[openCertificateDetailDialog](#certificatemanagerdialogopencertificatedetaildialog18)方法。
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值**：
+
+| 类型               | 说明                                   |
+|------------------|--------------------------------------|
+| boolean | 设备是否支持打开CA证书管理对话框。true：支持，false：不支持。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+
+| 错误码ID    | 错误信息                                                                                                                                            |
+|----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.           |
+
+**示例**：
+```ts
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isSupport: boolean = certificateManagerDialog.supportsCACertDialog();
+  console.info(`Success to check whether the device supports CA dialog.`)
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to check whether the device supports CA dialog. Code: ${error.code}, message: ${error.message}`);
+}
+```
