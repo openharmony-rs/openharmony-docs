@@ -500,3 +500,80 @@ try {
   console.error(`deleteDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
 ```
+
+## shortcutManager.getShortcutInfoByAbility<sup>24+</sup>
+
+ArkTS-Dyn: getShortcutInfoByAbility(bundleName: string, moduleName: string, abilityName: string, userId?: number, appIndex?: number): Array\<ShortcutInfo>
+
+ArkTS-Sta: getShortcutInfoByAbility(bundleName: string, moduleName: string, abilityName: string, userId?: int, appIndex?: int): Array\<ShortcutInfo>
+
+查询指定用户下指定UIAbility的快捷方式信息。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 或 (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+
+ - 获取当前用户下应用的快捷方式时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED。
+
+ - 获取其他用户下应用的快捷方式时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明         |
+| ----------  | ------ | ---- | -------------- |
+| bundleName  | string | 是   | 表示应用程序的包名。  |
+| moduleName  | string | 是   | 表示模块的名称。  |
+| abilityName | string | 是   | 表示UIAbility组件的名称。 |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br/>默认值：调用方所在用户。<br/>取值范围：大于等于0。  |
+| appIndex    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示应用索引。取值范围0~5的整数，取值为0表示主应用，取值1~5表示分身应用的索引。<br/>默认值：0 |
+
+**返回值：**
+
+| 类型                   | 说明                                            |
+| ---------------------- | ----------------------------------------------- |
+| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)\> | Array形式返回指定用户下指定UIAbility的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 801 | Capability not supported. |
+| 17700001 | The specified bundle is not found.  |
+| 17700002 | The specified module is not found.  |
+| 17700003 | The specified ability is not found. |
+| 17700004 | The specified user id is not found.     |
+| 17700026 | The specified bundle is disabled.       |
+| 17700061 | The specified app index is invalid.     |
+
+**示例：**
+
+```ts
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 请开发者替换为实际要查询的bundleName、moduleName、abilityName、userId和appIndex。
+const bundleName = 'com.example.myapplication';
+const moduleName = 'application';
+const abilityName = 'ApplicationAbility';
+let userId = 100;
+let appIndex = 0;
+
+try {
+  let shortcutInfos: Array<shortcutManager.ShortcutInfo> = shortcutManager.getShortcutInfoByAbility(bundleName, moduleName, abilityName, userId, appIndex);
+  console.info('getShortcutInfoByAbility shortcutInfos is' + JSON.stringify(shortcutInfos));
+} catch (err) {
+  console.error(`getShortcutInfoByAbility errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+}
+```
