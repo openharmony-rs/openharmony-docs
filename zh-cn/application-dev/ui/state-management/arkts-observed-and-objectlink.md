@@ -511,7 +511,11 @@ struct Index {
 <!-- @[Object_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/ObjectArray.ets) -->
 
 ``` TypeScript
-let NextID: number = 1;
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArkTSObservedAndObjectlink';
+let nextID: number = 1;
 
 @Observed
 class Info {
@@ -519,7 +523,7 @@ class Info {
   public info: number;
 
   constructor(info: number) {
-    this.id = NextID++;
+    this.id = nextID++;
     this.info = info;
   }
 }
@@ -579,18 +583,14 @@ struct Parent {
           if (this.arrA.length > 0) {
             this.arrA.shift();
           } else {
-            console.info('length <= 0');
+            hilog.info(DOMAIN, TAG, 'length <= 0');
           }
         })
       Button('ViewParent: item property in middle')
         .width(320)
         .margin(10)
         .onClick(() => {
-          if (this.arrA[Math.floor(this.arrA.length / 2)]) {
-            this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
-          } else {
-            console.info('middle element does not exist');
-          }
+          this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
         })
       Button('ViewParent: item property in middle')
         .width(320)
