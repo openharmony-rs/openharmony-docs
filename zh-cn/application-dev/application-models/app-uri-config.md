@@ -67,7 +67,7 @@
     |QueryByLocation|指示按起降地查询航班功能。使用场景详见[拉起航班类应用](./start-flight-apps.md)。|
     |QueryExpress|指示快递查询功能。使用场景详见[拉起快递类应用](./start-express-apps.md)。|    
     |AppNotificationMgmt|指示应用内通知设置的功能。|
-    |PrimaryContactMgmt|指示接入优先通知的应用跳转应用内“特别关注”设置。|
+    |PrimaryContactMgmt|从API version 23开始，新增支持该字段。指示接入优先通知的应用应接入设置跳转入口，实现跳转至应用内“重要联系人列表”页面。|
 2. 指定类型的应用被拉起时免跳转弹框：正常情况下，拉起指定类型的应用时，都会弹出确认是否打开应用的弹窗。如果您的应用有向其他应用提供登录/分享/支付的功能，可以在应用中声明对应的LinkFeature（取值参见下表）。应用通过上架审核后，当其他应用拉起您的应用时将不再弹窗提示。
 
     ![exempted-dialog-between-apps](figures/exempted-dialog-between-apps.png)
