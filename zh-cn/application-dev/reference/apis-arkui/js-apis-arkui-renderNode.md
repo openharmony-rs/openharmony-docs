@@ -13,6 +13,8 @@
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 > - 不建议对[BuilderNode](./js-apis-arkui-builderNode.md)中的RenderNode进行修改操作。BuilderNode中持有的[FrameNode](./js-apis-arkui-frameNode.md)仅用于将该BuilderNode作为子节点挂载到其他FrameNode上，对该FrameNode或对应的RenderNode进行属性设置与子节点操作可能会产生未定义行为，包括但不限于显示异常、事件异常、稳定性问题等。
+>
+> - RenderNode对象不支持使用JSON序列化。
 
 ## 导入模块
 
@@ -1244,7 +1246,7 @@ renderNode.backgroundColor = 0xffff0000;
 renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
 // 设置renderNode的比例
 renderNode.scale = { x: 0.5, y: 1 };
-// 获取renderNode的轴心
+// 获取renderNode的比例
 const scale = renderNode.scale;
 
 // 继承NodeController实现自定义UI控制器

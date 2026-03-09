@@ -66,23 +66,23 @@
 | [uint32_t OH_ArkUI_PointerEvent_GetPointerCount(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getpointercount) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取多点触控的接触点数量。指向性事件一般是附带有事件发生位置信息的事件，如触摸事件，用户操作时，可以感知事件在什么位置发生。而非指向性事件，如按键事件，一般没有位置信息，没有触点的说法，所以该接口对按键事件无效。对于触摸事件，该接口多用于处理多指触控，判断用户有几根手指在操作当前控件。而对于鼠标和轴事件，可认为触点只有1个，该接口永远返回1。                                                                                                                                                                                                                                                                                                                                                                                  |
 | [int32_t OH_ArkUI_PointerEvent_GetPointerId(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getpointerid) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取多点触控的接触点标识。返回事件发生时，事件触点的唯一标识符，用于区分同类输入设备的多点触控信息。其数值没有除标识触点外的其他含义。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | [int32_t OH_ArkUI_PointerEvent_GetChangedPointerId(const ArkUI_UIInputEvent* event, uint32_t* pointerIndex)](#oh_arkui_pointerevent_getchangedpointerid) | 获取当前触摸事件触发的id。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| [float OH_ArkUI_PointerEvent_GetX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getx) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前组件左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [float OH_ArkUI_PointerEvent_GetX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getx) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前组件左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [float OH_ArkUI_PointerEvent_GetXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getxbyindex) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定接触点相对于当前组件左上角的X坐标。对于鼠标和轴事件，当给定的索引大于0时，返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| [float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_gety) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前组件左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_gety) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前组件左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [float OH_ArkUI_PointerEvent_GetYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getybyindex) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定接触点相对于当前组件左上角的Y坐标。对于鼠标和轴事件，当给定的索引大于0时，返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| [float OH_ArkUI_PointerEvent_GetWindowX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getwindowx) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前应用窗口左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| [float OH_ArkUI_PointerEvent_GetWindowX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getwindowx) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前应用窗口左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | [float OH_ArkUI_PointerEvent_GetWindowXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getwindowxbyindex) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定接触点相对于当前应用窗口左上角的X坐标。对于鼠标和轴事件，当给定的索引大于0时，总是返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| [float OH_ArkUI_PointerEvent_GetWindowY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getwindowy) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前应用窗口左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| [float OH_ArkUI_PointerEvent_GetWindowY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getwindowy) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前应用窗口左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | [float OH_ArkUI_PointerEvent_GetWindowYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getwindowybyindex) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定接触点相对于当前应用窗口左上角的Y坐标。对于鼠标和轴事件，当给定的索引大于0时，总是返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| [float OH_ArkUI_PointerEvent_GetDisplayX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getdisplayx) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前屏幕左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [float OH_ArkUI_PointerEvent_GetDisplayX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getdisplayx) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前屏幕左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [float OH_ArkUI_PointerEvent_GetDisplayXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getdisplayxbyindex) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定接触点相对于当前屏幕左上角的X坐标。对于鼠标和轴事件，当给定的索引大于0时，总是返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| [float OH_ArkUI_PointerEvent_GetDisplayY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getdisplayy) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前屏幕左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [float OH_ArkUI_PointerEvent_GetDisplayY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getdisplayy) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前屏幕左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [float OH_ArkUI_PointerEvent_GetDisplayYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getdisplayybyindex) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定接触点相对于当前屏幕左上角的Y坐标。对于鼠标和轴事件，当给定的索引大于0时，总是返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| [float OH_ArkUI_PointerEvent_GetGlobalDisplayX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getglobaldisplayx) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于全局显示的X坐标。只能从pointer-likely事件中获取位置信息。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [float OH_ArkUI_PointerEvent_GetGlobalDisplayX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getglobaldisplayx) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于全局显示的X坐标。只能从[ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)事件中获取位置信息。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | [float OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getglobaldisplayxbyindex) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于全局显示的X坐标。只能从指针事件中获取位置信息，对于鼠标和轴事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| [float OH_ArkUI_PointerEvent_GetGlobalDisplayY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getglobaldisplayy) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于全局显示的Y坐标。只能从pointer-likely事件中获取位置信息。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [float OH_ArkUI_PointerEvent_GetGlobalDisplayY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getglobaldisplayy) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于全局显示的Y坐标。只能从[ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)事件中获取位置信息。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | [float OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getglobaldisplayybyindex) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于全局显示的Y坐标。只能从指针事件中获取位置信息，对于鼠标和轴事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| [float OH_ArkUI_PointerEvent_GetPressure(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getpressure) | 从带有指向性的输入事件（如触摸事件）中获取触屏压力。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| [float OH_ArkUI_PointerEvent_GetPressure(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getpressure) | 从指向性输入事件（如触摸事件）中获取触屏压力。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | [float OH_ArkUI_PointerEvent_GetTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettiltx) | 从指向性输入事件（如触摸事件）中获取相对YZ平面的角度，取值的范围[-90, 90]，单位为deg，其中正值是向右倾斜。仅适用于支持倾角上报的触控笔操作产生的触控事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [float OH_ArkUI_PointerEvent_GetTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettilty) | 从指向性输入事件（如触摸事件）中获取相对XZ平面的角度，取值的范围[-90, 90]，单位为deg，其中正值是向下倾斜。仅适用于支持倾角上报的触控笔操作产生的触控事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [int32_t OH_ArkUI_PointerEvent_GetRollAngle(const ArkUI_UIInputEvent* event, double* rollAngle)](#oh_arkui_pointerevent_getrollangle) | 获取触控笔绕Z轴旋转的角度。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -91,22 +91,22 @@
 | [int32_t OH_ArkUI_PointerEvent_GetInteractionHand(const ArkUI_UIInputEvent *event, ArkUI_InteractionHand *hand)](#oh_arkui_pointerevent_getinteractionhand) | 获取当前触摸事件是左手点击触发还是右手点击触发。仅在部分触控产品上有效。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | [int32_t OH_ArkUI_PointerEvent_GetInteractionHandByIndex(const ArkUI_UIInputEvent *event, int32_t pointerIndex, ArkUI_InteractionHand *hand)](#oh_arkui_pointerevent_getinteractionhandbyindex) | 获取当前触摸事件是左手点击触发还是右手点击触发。仅在部分触控产品上有效。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | [uint32_t OH_ArkUI_PointerEvent_GetHistorySize(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_gethistorysize) | 从指向性输入事件（如触摸事件）中获取历史事件数量。历史事件为此次事件与上一次事件之间发生的原始事件，仅在指向性输入事件的移动阶段（即触摸移动或鼠标移动）中适用，在其他状态中调用返回默认值0。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| [int64_t OH_ArkUI_PointerEvent_GetHistoryEventTime(const ArkUI_UIInputEvent* event, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryeventtime) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取历史事件发生的时间。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| [uint32_t OH_ArkUI_PointerEvent_GetHistoryPointerCount(const ArkUI_UIInputEvent* event, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypointercount) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中多点触控的接触点数量。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [int64_t OH_ArkUI_PointerEvent_GetHistoryEventTime(const ArkUI_UIInputEvent* event, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryeventtime) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取历史事件发生的时间。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| [uint32_t OH_ArkUI_PointerEvent_GetHistoryPointerCount(const ArkUI_UIInputEvent* event, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypointercount) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中多点触控的接触点数量。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | [int32_t OH_ArkUI_PointerEvent_GetHistoryPointerId(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypointerid) | 从指向性输入事件（如触摸事件）的历史点中获取多点触控的接触点标识。返回事件发生时，事件触点的唯一标识符，用于区分同类输入设备的多点触控信息。其数值没有除标识触点外的其他含义。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| [float OH_ArkUI_PointerEvent_GetHistoryX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryx) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前组件左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| [float OH_ArkUI_PointerEvent_GetHistoryY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryy) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前组件左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| [float OH_ArkUI_PointerEvent_GetHistoryWindowX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorywindowx) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前应用窗口左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| [float OH_ArkUI_PointerEvent_GetHistoryWindowY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorywindowy) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前应用窗口左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| [float OH_ArkUI_PointerEvent_GetHistoryDisplayX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorydisplayx) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前屏幕左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| [float OH_ArkUI_PointerEvent_GetHistoryDisplayY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorydisplayy) | 从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前屏幕左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| [float OH_ArkUI_PointerEvent_GetHistoryX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryx) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前组件左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| [float OH_ArkUI_PointerEvent_GetHistoryY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryy) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前组件左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| [float OH_ArkUI_PointerEvent_GetHistoryWindowX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorywindowx) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前应用窗口左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| [float OH_ArkUI_PointerEvent_GetHistoryWindowY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorywindowy) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前应用窗口左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| [float OH_ArkUI_PointerEvent_GetHistoryDisplayX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorydisplayx) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前屏幕左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| [float OH_ArkUI_PointerEvent_GetHistoryDisplayY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorydisplayy) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前屏幕左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | [float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryglobaldisplayx) | 从给定指针索引和历史记录索引的输入事件（如触摸事件、鼠标事件、轴事件）中获取历史事件中相对于全局显示的特定触摸点的X坐标。只能从指针事件中获取位置信息，对于鼠标和轴事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | [float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryglobaldisplayy) | 从给定指针索引和历史记录索引的输入事件（如触摸事件、鼠标事件、轴事件）中获取历史事件中相对于全局显示的特定触摸点的Y坐标。只能从指针事件中获取位置信息，对于鼠标和轴事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| [float OH_ArkUI_PointerEvent_GetHistoryPressure(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypressure) | 从带有指向性的输入事件（如触摸事件）中获取特定历史事件中的触屏压力。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| [float OH_ArkUI_PointerEvent_GetHistoryTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytiltx) | 从带有指向性的输入事件（如触摸事件）中获取特定历史事件中的相对YZ平面的角度，取值的范围[-90, 90]，单位为deg，其中正值是向右倾斜。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| [float OH_ArkUI_PointerEvent_GetHistoryTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytilty) | 从带有指向性的输入事件（如触摸事件）中获取特定历史事件中的相对XZ平面的角度，值的范围[-90, 90]，单位为deg，其中正值是向下倾斜。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| [float OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytouchareawidth) | 从带有指向性的输入事件（如触摸事件）中获取特定历史事件中的触屏区域的宽度。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| [float OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytouchareaheight) | 从带有指向性的输入事件（如触摸事件）中获取特定历史事件中的触屏区域的高度。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [float OH_ArkUI_PointerEvent_GetHistoryPressure(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypressure) | 从指向性输入事件（如触摸事件）中获取特定历史事件中的触屏压力。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [float OH_ArkUI_PointerEvent_GetHistoryTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytiltx) | 从指向性输入事件（如触摸事件）中获取特定历史事件中的相对YZ平面的角度，取值的范围[-90, 90]，单位为deg，其中正值是向右倾斜。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [float OH_ArkUI_PointerEvent_GetHistoryTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytilty) | 从指向性输入事件（如触摸事件）中获取特定历史事件中的相对XZ平面的角度，值的范围[-90, 90]，单位为deg，其中正值是向下倾斜。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| [float OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytouchareawidth) | 从指向性输入事件（如触摸事件）中获取特定历史事件中的触屏区域的宽度。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [float OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytouchareaheight) | 从指向性输入事件（如触摸事件）中获取特定历史事件中的触屏区域的高度。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | [double OH_ArkUI_AxisEvent_GetVerticalAxisValue(const ArkUI_UIInputEvent* event)](#oh_arkui_axisevent_getverticalaxisvalue) | 获取当前轴事件的垂直滚动轴的值。通常由鼠标滚轮，或用户在触控板上双指竖向滑动产生。当通过鼠标滚动触发时：1.上报的数值单位为角度，为单次滚动角度增量，非滚动总量；2.上报的数值已与用户配置的放大系数[OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)叠加运算；3.数值的正负代表方向，向前滚动鼠标滚轮时上报数值为正数，向后滚动鼠标滚轮时上报数值为负数；当通过触控板双指竖向滑动时：1.上报的数值单位为PX，为单次滚动增量，非滚动总量；2.上报的数值不受用户配置的放大系数[OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)影响；3.数值的正负代表方向，双指从上往下滑动时上报数值为负数，双指从下往上滑动时上报数值为正数；4.方向会受系统设置中"自然滚动"配置的影响。通常情况下，垂直滚动轴事件只能驱动竖向的滑动手势响应，但当鼠标指针下命中的可滑动手势里，如果可响应的方向都是一致的，那么垂直滚动轴事件可以驱动这些滑动手势得到响应，即使这些手势所定义的方向是横向的。 |
 | [double OH_ArkUI_AxisEvent_GetHorizontalAxisValue(const ArkUI_UIInputEvent* event)](#oh_arkui_axisevent_gethorizontalaxisvalue) | 获取当前轴事件的水平滚动轴的值，通过在触控板上双指横向滑动产生。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | [double OH_ArkUI_AxisEvent_GetPinchAxisScaleValue(const ArkUI_UIInputEvent* event)](#oh_arkui_axisevent_getpinchaxisscalevalue) | 获取当前轴事件的捏合轴缩放的值。通过触控板双指缩放/捏合操作产生。上报的scale数值，为相对于初始状态时的当前scale值。初始状态为系统识别到用户通过触控板发生了捏合操作时的两指位置状态，此时的scale数值为1.0。在手指抬起前的本次捏合操作过程中，所上报的scale数值均将初始状态作为参考系，从初始状态往中心捏合，则上报的scale会从1.0逐步往0.0缩小；当从初始化状态往外扩大双指距离时，会从1.0逐步变大。                                                                                                                                                                                                                                                                                                                                                                   |
@@ -115,7 +115,7 @@
 | [int32_t OH_ArkUI_PointerEvent_SetInterceptHitTestMode(const ArkUI_UIInputEvent* event, HitTestMode mode)](#oh_arkui_pointerevent_setintercepthittestmode) | 配置触摸测试模式。仅适用于接收基础事件的场景，如使用NODE_ON_TOUCH接收触摸事件场景。对于通过[OH_ArkUI_GestureEvent_GetRawInputEvent](capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent)接口从一个手势事件中获取到的ArkUI_UIInputEvent对象，无法使用该接口。                                                                                                                                                                                                                                                                                                                                                                         |
 | [int32_t OH_ArkUI_MouseEvent_GetMouseButton(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getmousebutton) | 获取鼠标事件的按键类型的值。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [int32_t OH_ArkUI_MouseEvent_GetMouseAction(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getmouseaction) | 获取鼠标事件的鼠标动作类型的值。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| [int32_t OH_ArkUI_PointerEvent_SetStopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)](#oh_arkui_pointerevent_setstoppropagation) | 设置是否阻止事件冒泡。仅适用于接收基础事件的场景，如使用NODE_ON_TOUCH接收touch事件场景。对于通过 [OH_ArkUI_GestureEvent_GetRawInputEvent](capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent)接口从一个手势事件中获取到的ArkUI_UIInputEvent对象，无法使用该接口。                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| [int32_t OH_ArkUI_PointerEvent_SetStopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)](#oh_arkui_pointerevent_setstoppropagation) | 设置是否阻止事件冒泡。仅适用于接收基础事件的场景，如使用NODE_ON_TOUCH接收触摸事件场景。对于通过 [OH_ArkUI_GestureEvent_GetRawInputEvent](capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent)接口从一个手势事件中获取到的ArkUI_UIInputEvent对象，无法使用该接口。                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | [int32_t OH_ArkUI_UIInputEvent_GetDeviceId(const ArkUI_UIInputEvent* event)](#oh_arkui_uiinputevent_getdeviceid) | 获取当前按键的输入设备ID。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [int32_t OH_ArkUI_UIInputEvent_GetPressedKeys(const ArkUI_UIInputEvent* event, int32_t* pressedKeyCodes, int32_t* length)](#oh_arkui_uiinputevent_getpressedkeys) | 获取所有按下的按键，当前只支持按键事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | [double OH_ArkUI_FocusAxisEvent_GetAxisValue(const ArkUI_UIInputEvent* event, int32_t axis)](#oh_arkui_focusaxisevent_getaxisvalue) | 获取焦点轴事件的轴值。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
@@ -143,7 +143,7 @@
 | [int32_t OH_ArkUI_PointerEvent_SetClonedEventChangedFingerId(const ArkUI_UIInputEvent* event, int32_t fingerId)](#oh_arkui_pointerevent_setclonedeventchangedfingerid) | 设置当前带有指向性的克隆输入事件的触摸点ID。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | [int32_t OH_ArkUI_PointerEvent_SetClonedEventFingerIdByIndex(const ArkUI_UIInputEvent* event, int32_t fingerId, int32_t pointerIndex)](#oh_arkui_pointerevent_setclonedeventfingeridbyindex) | 设置带有指向性的克隆输入事件特定接触点的触摸点ID。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | [int32_t OH_ArkUI_PointerEvent_PostClonedEvent(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_postclonedevent) | 转发克隆事件到特定节点。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| [ArkUI_ErrorCode OH_ArkUI_UIInputEvent_GetLatestStatus()](#oh_arkui_uiinputevent_getlateststatus) | 调用该方法获取最近一次UIInput相关方法的执行情况。通常情况下不需要使用该方法，仅在返回值结果不确定是否异常时使用。以下是一个使用示例（对于返回的float类型，0.0并不代表错误，因此可以进一步使用OH_ArkUI_UIInputEvent_GetLatestStatus方法来确认是否发生异常）。float x = OH_ArkUI_PointerEvent_GetX(event);if (ARKUI_ERROR_CODE_NO_ERROR != OH_ArkUI_UIInputEvent_GetlatestStatus()) {// errorreturn;}系统将在每次执行UIInput相关函数时主动清空上一次函数调用的状态，以确保每次通过该接口获取的均为最近一次的状态。                                                                                                                                                                                                                              |
+| [ArkUI_ErrorCode OH_ArkUI_UIInputEvent_GetLatestStatus()](#oh_arkui_uiinputevent_getlateststatus) | 调用该方法获取最近一次UIInput相关方法的执行情况。通常情况下不需要使用该方法，仅在返回值结果不确定是否异常时使用。                                                                                                                                                                                                                              |
 | [ArkUI_CoastingAxisEvent OH_ArkUI_UIInputEvent_GetCoastingAxisEvent(ArkUI_UIInputEvent* event)](#oh_arkui_uiinputevent_getcoastingaxisevent) | 获取惯性滚动轴事件的指针。  |
 | [int64_t OH_ArkUI_CoastingAxisEvent_GetEventTime(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_geteventtime) | 获取惯性滚动轴事件发生的时间。  |
 | [ArkUI_CoastingAxisEventPhase OH_ArkUI_CoastingAxisEvent_GetPhase(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_getphase) | 获取惯性滚动轴事件发生时的滚动阶段。  |
@@ -157,7 +157,7 @@
 | [float OH_ArkUI_TouchTestInfoItem_GetWindowY(const ArkUI_TouchTestInfoItem* info)](#oh_arkui_touchtestinfoitem_getwindowy) | 从触摸测试信息项中获取相对于当前应用窗口左上角的Y坐标，单位为px。 |
 | [float OH_ArkUI_TouchTestInfoItem_GetXRelativeToParent(const ArkUI_TouchTestInfoItem* info)](#oh_arkui_touchtestinfoitem_getxrelativetoparent) | 从触摸测试信息项中获取相对于父组件左上角的X坐标，单位为px。 |
 | [float OH_ArkUI_TouchTestInfoItem_GetYRelativeToParent(const ArkUI_TouchTestInfoItem* info)](#oh_arkui_touchtestinfoitem_getyrelativetoparent) | 从触摸测试信息项中获取相对于父组件左上角的Y坐标，单位为px。 |
-| [ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildRect(const ArkUI_TouchTestInfoItem* info, ArkUI_Rect* childRect)](#oh_arkui_touchtestinfoitem_getchildrect) | 从触摸测试信息项中获取子组件的帧矩形信息。 |
+| [ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildRect(const ArkUI_TouchTestInfoItem* info, ArkUI_Rect* childRect)](#oh_arkui_touchtestinfoitem_getchildrect) | 从触摸测试信息项中获取子组件的边界矩形信息。 |
 | [ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildId(const ArkUI_TouchTestInfoItem* info, char* buffer, int32_t bufferSize)](#oh_arkui_touchtestinfoitem_getchildid) | 从触摸测试信息项中获取子组件的ID。 |
 | [ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultStrategy(ArkUI_TouchTestInfo* info, ArkUI_TouchTestStrategy strategy)](#oh_arkui_touchtestinfo_settouchresultstrategy) | 设置触摸测试策略，即组件及其子组件在命中测试过程中的行为方式。 |
 | [ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultId(ArkUI_TouchTestInfo* info, const char* id)](#oh_arkui_touchtestinfo_settouchresultid) | 设置命中测试过程中需要作用的子组件ID。 |
@@ -622,7 +622,7 @@ uint32_t OH_ArkUI_PointerEvent_GetPointerCount(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | 返回当前带有指向性的输入事件的接触点数量。 |
+| uint32_t | 返回当前指向性输入事件的接触点数量。 |
 
 ### OH_ArkUI_PointerEvent_GetPointerId()
 
@@ -687,7 +687,7 @@ float OH_ArkUI_PointerEvent_GetX(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前组件左上角的X坐标。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前组件左上角的X坐标。
 
 **起始版本：** 12
 
@@ -702,7 +702,7 @@ float OH_ArkUI_PointerEvent_GetX(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前组件左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前组件左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetXByIndex()
 
@@ -729,7 +729,7 @@ float OH_ArkUI_PointerEvent_GetXByIndex(const ArkUI_UIInputEvent* event, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前组件左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前组件左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetY()
 
@@ -740,7 +740,7 @@ float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前组件左上角的Y坐标。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前组件左上角的Y坐标。
 
 **起始版本：** 12
 
@@ -755,7 +755,7 @@ float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前组件左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前组件左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetYByIndex()
 
@@ -782,7 +782,7 @@ float OH_ArkUI_PointerEvent_GetYByIndex(const ArkUI_UIInputEvent* event, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前组件左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件事件中特定接触点相对于当前组件左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetWindowX()
 
@@ -793,7 +793,7 @@ float OH_ArkUI_PointerEvent_GetWindowX(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前应用窗口左上角的X坐标。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前应用窗口左上角的X坐标。
 
 **起始版本：** 12
 
@@ -808,7 +808,7 @@ float OH_ArkUI_PointerEvent_GetWindowX(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前应用窗口左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前应用窗口左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetWindowXByIndex()
 
@@ -835,7 +835,7 @@ float OH_ArkUI_PointerEvent_GetWindowXByIndex(const ArkUI_UIInputEvent* event, u
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前应用窗口左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前应用窗口左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetWindowY()
 
@@ -846,7 +846,7 @@ float OH_ArkUI_PointerEvent_GetWindowY(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前应用窗口左上角的Y坐标。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前应用窗口左上角的Y坐标。
 
 **起始版本：** 12
 
@@ -861,7 +861,7 @@ float OH_ArkUI_PointerEvent_GetWindowY(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前应用窗口左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前应用窗口左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetWindowYByIndex()
 
@@ -888,7 +888,7 @@ float OH_ArkUI_PointerEvent_GetWindowYByIndex(const ArkUI_UIInputEvent* event, u
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前应用窗口左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前应用窗口左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetDisplayX()
 
@@ -899,7 +899,7 @@ float OH_ArkUI_PointerEvent_GetDisplayX(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前屏幕左上角的X坐标。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前屏幕左上角的X坐标。
 
 **起始版本：** 12
 
@@ -914,7 +914,7 @@ float OH_ArkUI_PointerEvent_GetDisplayX(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前屏幕左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前屏幕左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetDisplayXByIndex()
 
@@ -941,7 +941,7 @@ float OH_ArkUI_PointerEvent_GetDisplayXByIndex(const ArkUI_UIInputEvent* event, 
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前屏幕左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前屏幕左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetDisplayY()
 
@@ -952,7 +952,7 @@ float OH_ArkUI_PointerEvent_GetDisplayY(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前屏幕左上角的Y坐标。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前屏幕左上角的Y坐标。
 
 **起始版本：** 12
 
@@ -967,7 +967,7 @@ float OH_ArkUI_PointerEvent_GetDisplayY(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前屏幕左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前屏幕左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetDisplayYByIndex()
 
@@ -994,7 +994,7 @@ float OH_ArkUI_PointerEvent_GetDisplayYByIndex(const ArkUI_UIInputEvent* event, 
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前屏幕左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前屏幕左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayX()
 
@@ -1005,7 +1005,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayX(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于全局显示的X坐标。只能从pointer-likely事件中获取位置信息。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于全局显示的X坐标。只能从[ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)事件中获取位置信息。
 
 **起始版本：** 20
 
@@ -1020,7 +1020,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayX(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | float 返回相对于全局显示的X坐标，单位为px。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0.0f。 |
+| float | 返回相对于全局显示的X坐标，单位为px。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex()
 
@@ -1047,7 +1047,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex(const ArkUI_UIInputEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| float | float 返回相对于全局显示的X坐标，单位为px。如果发生任何参数错误，则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于全局显示的X坐标，单位为px。如果发生任何参数错误，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayY()
 
@@ -1058,7 +1058,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayY(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于全局显示的Y坐标。只能从pointer-likely事件中获取位置信息。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于全局显示的Y坐标。只能从[ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)事件中获取位置信息。
 
 **起始版本：** 20
 
@@ -1111,7 +1111,7 @@ float OH_ArkUI_PointerEvent_GetPressure(const ArkUI_UIInputEvent* event, uint32_
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件）中获取触屏压力。
+从指向性输入事件（如触摸事件）中获取触屏压力。
 
 **起始版本：** 12
 
@@ -1127,7 +1127,7 @@ float OH_ArkUI_PointerEvent_GetPressure(const ArkUI_UIInputEvent* event, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件产生的触屏压力。取值范围为[0, 1]，压感大小与数值正相关。如果参数异常则返回默认值0.0f。在部分设备中，由于设备的硬件参数配置不同，可能会返回大于1的值。 |
+| float | 返回当前指向性输入事件产生的触屏压力。取值范围为[0, 1]，压感大小与数值正相关。如果参数异常则返回默认值0.0f。在部分设备中，由于设备的硬件参数配置不同，可能会返回大于1的值。 |
 
 ### OH_ArkUI_PointerEvent_GetTiltX()
 
@@ -1154,7 +1154,7 @@ float OH_ArkUI_PointerEvent_GetTiltX(const ArkUI_UIInputEvent* event, uint32_t p
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件中相对YZ平面的角度。 |
+| float | 返回当前指向性输入事件中相对YZ平面的角度。 |
 
 ### OH_ArkUI_PointerEvent_GetTiltY()
 
@@ -1181,7 +1181,7 @@ float OH_ArkUI_PointerEvent_GetTiltY(const ArkUI_UIInputEvent* event, uint32_t p
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件中相对XZ平面的角度。 |
+| float | 返回当前指向性输入事件中相对XZ平面的角度。 |
 
 ### OH_ArkUI_PointerEvent_GetRollAngle()
 
@@ -1235,7 +1235,7 @@ float OH_ArkUI_PointerEvent_GetTouchAreaWidth(const ArkUI_UIInputEvent* event, u
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件中触屏区域的宽度，单位为px。 |
+| float | 返回当前指向性输入事件中触屏区域的宽度，单位为px。 |
 
 ### OH_ArkUI_PointerEvent_GetTouchAreaHeight()
 
@@ -1262,7 +1262,7 @@ float OH_ArkUI_PointerEvent_GetTouchAreaHeight(const ArkUI_UIInputEvent* event, 
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件中触屏区域的高度，单位为px。 |
+| float | 返回当前指向性输入事件中触屏区域的高度，单位为px。 |
 
 ### OH_ArkUI_PointerEvent_GetInteractionHand()
 
@@ -1354,7 +1354,7 @@ int64_t OH_ArkUI_PointerEvent_GetHistoryEventTime(const ArkUI_UIInputEvent* even
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取历史事件发生的时间。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取历史事件发生的时间。
 
 **起始版本：** 12
 
@@ -1381,7 +1381,7 @@ uint32_t OH_ArkUI_PointerEvent_GetHistoryPointerCount(const ArkUI_UIInputEvent* 
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中多点触控的接触点数量。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中多点触控的接触点数量。
 
 **起始版本：** 12
 
@@ -1436,7 +1436,7 @@ float OH_ArkUI_PointerEvent_GetHistoryX(const ArkUI_UIInputEvent* event, uint32_
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前组件左上角的X坐标。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前组件左上角的X坐标。
 
 **起始版本：** 12
 
@@ -1453,7 +1453,7 @@ float OH_ArkUI_PointerEvent_GetHistoryX(const ArkUI_UIInputEvent* event, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前组件左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回在指向性输入事件中，特定历史事件内特定接触点相对于当前组件左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetHistoryY()
 
@@ -1464,7 +1464,7 @@ float OH_ArkUI_PointerEvent_GetHistoryY(const ArkUI_UIInputEvent* event, uint32_
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前组件左上角的Y坐标。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前组件左上角的Y坐标。
 
 **起始版本：** 12
 
@@ -1481,7 +1481,7 @@ float OH_ArkUI_PointerEvent_GetHistoryY(const ArkUI_UIInputEvent* event, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前组件左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回在指向性输入事件中，特定历史事件内特定接触点相对于当前组件左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetHistoryWindowX()
 
@@ -1492,7 +1492,7 @@ float OH_ArkUI_PointerEvent_GetHistoryWindowX(const ArkUI_UIInputEvent* event, u
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前应用窗口左上角的X坐标。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前应用窗口左上角的X坐标。
 
 **起始版本：** 12
 
@@ -1509,7 +1509,7 @@ float OH_ArkUI_PointerEvent_GetHistoryWindowX(const ArkUI_UIInputEvent* event, u
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前应用窗口左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回在指向性输入事件中，特定历史事件内特定接触点相对于当前应用窗口左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetHistoryWindowY()
 
@@ -1520,7 +1520,7 @@ float OH_ArkUI_PointerEvent_GetHistoryWindowY(const ArkUI_UIInputEvent* event, u
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前应用窗口左上角的Y坐标。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前应用窗口左上角的Y坐标。
 
 **起始版本：** 12
 
@@ -1537,7 +1537,7 @@ float OH_ArkUI_PointerEvent_GetHistoryWindowY(const ArkUI_UIInputEvent* event, u
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前应用窗口左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回在指向性输入事件中，特定历史事件内特定接触点相对于当前应用窗口左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetHistoryDisplayX()
 
@@ -1548,7 +1548,7 @@ float OH_ArkUI_PointerEvent_GetHistoryDisplayX(const ArkUI_UIInputEvent* event, 
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前屏幕左上角的X坐标。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前屏幕左上角的X坐标。
 
 **起始版本：** 12
 
@@ -1565,7 +1565,7 @@ float OH_ArkUI_PointerEvent_GetHistoryDisplayX(const ArkUI_UIInputEvent* event, 
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前屏幕左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回在指向性输入事件中，特定历史事件内特定接触点相对于当前屏幕左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetHistoryDisplayY()
 
@@ -1576,7 +1576,7 @@ float OH_ArkUI_PointerEvent_GetHistoryDisplayY(const ArkUI_UIInputEvent* event, 
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前屏幕左上角的Y坐标。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前屏幕左上角的Y坐标。
 
 **起始版本：** 12
 
@@ -1593,7 +1593,7 @@ float OH_ArkUI_PointerEvent_GetHistoryDisplayY(const ArkUI_UIInputEvent* event, 
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件相对于当前屏幕左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回在指向性输入事件中，特定历史事件内特定接触点相对于当前屏幕左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX()
 
@@ -1621,7 +1621,7 @@ float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX(const ArkUI_UIInputEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| float | float 返回相对于全局显示的X坐标，单位为px。如果发生任何参数错误，则返回0.0f。 |
+| float | 返回在指向性输入事件中，特定历史事件内特定接触点相对于全局显示的X坐标，单位为px。如果发生任何参数错误，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY()
 
@@ -1649,7 +1649,7 @@ float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY(const ArkUI_UIInputEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| float | float 返回相对于全局显示的Y坐标，如果发生任何参数错误，则返回0.0f。 |
+| float | 返回在指向性输入事件中，特定历史事件内特定接触点相对于全局显示的Y坐标，单位为px。如果发生任何参数错误，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetHistoryPressure()
 
@@ -1660,7 +1660,7 @@ float OH_ArkUI_PointerEvent_GetHistoryPressure(const ArkUI_UIInputEvent* event, 
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件）中获取特定历史事件中的触屏压力。
+从指向性输入事件（如触摸事件）中获取特定历史事件中的触屏压力。
 
 **起始版本：** 12
 
@@ -1677,7 +1677,7 @@ float OH_ArkUI_PointerEvent_GetHistoryPressure(const ArkUI_UIInputEvent* event, 
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件产生的触屏压力。取值范围为[0, 1]，压感大小与数值正相关。如果参数异常则返回默认值0.0f。在部分设备中，由于设备的硬件参数配置不同，可能会返回大于1的值。 |
+| float | 返回当前指向性输入事件产生的触屏压力。取值范围为[0, 1]，压感大小与数值正相关。如果参数异常则返回默认值0.0f。在部分设备中，由于设备的硬件参数配置不同，可能会返回大于1的值。 |
 
 ### OH_ArkUI_PointerEvent_GetHistoryTiltX()
 
@@ -1688,7 +1688,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTiltX(const ArkUI_UIInputEvent* event, uin
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件）中获取特定历史事件中的相对YZ平面的角度，取值的范围[-90, 90]，单位为deg，其中正值是向右倾斜。
+从指向性输入事件（如触摸事件）中获取特定历史事件中的相对YZ平面的角度，取值的范围[-90, 90]，单位为deg，其中正值是向右倾斜。
 
 **起始版本：** 12
 
@@ -1705,7 +1705,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTiltX(const ArkUI_UIInputEvent* event, uin
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件中相对YZ平面的角度。 |
+| float | 返回当前指向性输入事件中相对YZ平面的角度。 |
 
 ### OH_ArkUI_PointerEvent_GetHistoryTiltY()
 
@@ -1716,7 +1716,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTiltY(const ArkUI_UIInputEvent* event, uin
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件）中获取特定历史事件中的相对XZ平面的角度，值的范围[-90, 90]，单位为deg，其中正值是向下倾斜。
+从指向性输入事件（如触摸事件）中获取特定历史事件中的相对XZ平面的角度，值的范围[-90, 90]，单位为deg，其中正值是向下倾斜。
 
 **起始版本：** 12
 
@@ -1733,7 +1733,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTiltY(const ArkUI_UIInputEvent* event, uin
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件中相对XZ平面的角度。 |
+| float | 返回当前指向性输入事件中相对XZ平面的角度。 |
 
 ### OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth()
 
@@ -1744,7 +1744,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth(const ArkUI_UIInputEvent* e
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件）中获取特定历史事件中的触屏区域的宽度。
+从指向性输入事件（如触摸事件）中获取特定历史事件中的触屏区域的宽度。
 
 **起始版本：** 12
 
@@ -1761,7 +1761,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth(const ArkUI_UIInputEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件中触屏区域的宽度，单位为px。 |
+| float | 返回当前指向性输入事件中触屏区域的宽度，单位为px。 |
 
 ### OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight()
 
@@ -1772,7 +1772,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight(const ArkUI_UIInputEvent* 
 **描述：**
 
 
-从带有指向性的输入事件（如触摸事件）中获取特定历史事件中的触屏区域的高度。
+从指向性输入事件（如触摸事件）中获取特定历史事件中的触屏区域的高度。
 
 **起始版本：** 12
 
@@ -1789,7 +1789,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight(const ArkUI_UIInputEvent* 
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前带有指向性的输入事件中触屏区域的高度，单位为px。 |
+| float | 返回当前指向性输入事件中触屏区域的高度，单位为px。 |
 
 ### OH_ArkUI_AxisEvent_GetVerticalAxisValue()
 
@@ -1893,7 +1893,7 @@ int32_t OH_ArkUI_AxisEvent_GetAxisAction(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回当前轴事件的操作类型。 |
+| int32_t | 返回当前轴事件的操作类型，取值可参考[anonymous7](#anonymous7)。当输入非轴事件时，默认返回0。 |
 
 ### OH_ArkUI_AxisEvent_HasAxis()
 
@@ -2010,7 +2010,7 @@ int32_t OH_ArkUI_PointerEvent_SetStopPropagation(const ArkUI_UIInputEvent* event
 **描述：**
 
 
-设置是否阻止事件冒泡。仅适用于接收基础事件的场景，如使用NODE_ON_TOUCH接收touch事件场景，不适用于轴事件。对于通过[OH_ArkUI_GestureEvent_GetRawInputEvent](capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent)接口从一个手势事件中获取到的ArkUI_UIInputEvent对象，无法使用该接口。
+设置是否阻止事件冒泡。仅适用于接收基础事件的场景，如使用NODE_ON_TOUCH接收触摸事件场景，不适用于轴事件。对于通过[OH_ArkUI_GestureEvent_GetRawInputEvent](capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent)接口从一个手势事件中获取到的ArkUI_UIInputEvent对象，无法使用该接口。
 
 **起始版本：** 12
 
@@ -2037,7 +2037,7 @@ int32_t OH_ArkUI_UIInputEvent_GetDeviceId(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-获取当前按键的输入设备ID。
+获取当前UI输入事件的设备ID。
 
 **起始版本：** 14
 
@@ -2052,7 +2052,7 @@ int32_t OH_ArkUI_UIInputEvent_GetDeviceId(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 当前按键的输入设备ID。 |
+| int32_t | 当前UI输入事件的设备ID。 |
 
 ### OH_ArkUI_UIInputEvent_GetPressedKeys()
 
@@ -2101,7 +2101,7 @@ double OH_ArkUI_FocusAxisEvent_GetAxisValue(const ArkUI_UIInputEvent* event, int
 | 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
-| int32_t axis | 焦点轴事件的轴类型。 |
+| int32_t axis | 焦点轴事件的轴类型，取值可参考[anonymous6](#anonymous6)。 |
 
 **返回：**
 
@@ -2603,8 +2603,8 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventLocalPosition(const ArkUI_UIInputEve
 | 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
-| float x | 当前带有指向性的输入事件相对于当前组件左上角的X坐标，单位为px。 |
-| float y | 当前带有指向性的输入事件相对于当前组件左上角的Y坐标，单位为px。 |
+| float x | 当前指向性输入事件相对于当前组件左上角的X坐标，单位为px。 |
+| float y | 当前指向性输入事件相对于当前组件左上角的Y坐标，单位为px。 |
 
 **返回：**
 
@@ -2631,8 +2631,8 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventLocalPositionByIndex(const ArkUI_UII
 | 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
-| float x | 当前带有指向性的输入事件相对于当前组件左上角的X坐标，单位为px。 |
-| float y | 当前带有指向性的输入事件相对于当前组件左上角的Y坐标，单位为px。 |
+| float x | 当前指向性输入事件相对于当前组件左上角的X坐标，单位为px。 |
+| float y | 当前指向性输入事件相对于当前组件左上角的Y坐标，单位为px。 |
 | int32_t pointerIndex | 表示多点触控数据列表中的序号。 |
 
 **返回：**
@@ -2759,7 +2759,7 @@ ArkUI_ErrorCode OH_ArkUI_UIInputEvent_GetLatestStatus()
 **描述：**
 
 
-调用该方法获取最近一次UIInput相关方法的执行情况。通常情况下不需要使用该方法，仅在返回值结果不确定是否异常时使用。以下是一个使用示例（对于返回的float类型，0.0并不代表错误，因此可以进一步使用OH_ArkUI_UIInputEvent_GetLatestStatus方法来确认是否发生异常）。float x = OH_ArkUI_PointerEvent_GetX(event);if (ARKUI_ERROR_CODE_NO_ERROR != OH_ArkUI_UIInputEvent_GetlatestStatus()) {// errorreturn;}系统将在每次执行UIInput相关函数时主动清空上一次函数调用的状态，以确保每次通过该接口获取的均为最近一次的状态。
+调用该方法获取最近一次UIInput相关方法的执行情况。通常情况下不需要使用该方法，仅在返回值结果不确定是否异常时使用。
 
 **起始版本：** 20
 
@@ -2778,7 +2778,7 @@ ArkUI_CoastingAxisEvent* OH_ArkUI_UIInputEvent_GetCoastingAxisEvent(ArkUI_UIInpu
 
 从组件事件中获取惯性滚动轴事件，仅当用户在触摸板上使用双指滑动一定距离并快速抬手，且指针位置下存在注册了[NODE_ON_COASTING_AXIS_EVENT](capi-native-node-h.md#arkui_nodeeventtype)事件的组件时，才能获取到有效事件。在从[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象获取到[ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)对象后调用此方法。
 
-惯性滚动轴事件仅在双指抛滑并离开触控板时触发，因此仅支持触控板。惯性滚动轴事件会在手指离开触控板后，根据抛滑速度产生轴值逐渐衰减的事件。由于刷新频率和性能的影响，当前事件轴值可能高于或低于上一个事件值。在惯性滚动轴事件期间，以下四种行为会中断事件，并立即收到`ARKUI_COASTING_AXIS_EVENT_PHASE_END`。
+惯性滚动轴事件仅在双指抛滑并离开触控板时触发，因此仅支持触控板。惯性滚动轴事件会在手指离开触控板后，根据抛滑速度产生轴值逐渐衰减的事件。由于刷新频率和性能的影响，当前事件轴值可能高于或低于上一个事件值。在惯性滚动轴事件期间，以下四种行为会中断事件，并立即收到[ARKUI_COASTING_AXIS_EVENT_PHASE_END](#arkui_coastingaxiseventphase)。
 1. 手指触摸触控板。
 2. 滚动鼠标滚轮。
 3. 手指或鼠标点击注册了惯性滚动轴事件的节点。需要注意的是，点击未注册此事件的节点不会产生任何效果。例如，A节点注册了惯性滚动轴事件，当事件发生时，让B节点滚动，但点击B节点不会中断此事件。点击事件的中断行为受[HitTest模式](#oh_arkui_pointerevent_setintercepthittestmode)的影响。此外，如果用户点击区域存在已收集的可响应惯性滚动轴事件的节点，本次惯性滚动轴事件会被强制终止。
@@ -3087,7 +3087,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildRect(const ArkUI_TouchTestInf
 ```
 **描述：**
 
-从触摸测试信息项中获取子组件的帧矩形信息。
+从触摸测试信息项中获取子组件的边界矩形信息。
 
 **起始版本：** 22
 
@@ -3096,7 +3096,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildRect(const ArkUI_TouchTestInf
 | 参数项 | 描述 |
 | -- | -- |
 | const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
-| [ArkUI_Rect](./capi-arkui-nativemodule-arkui-rect.md)* childRect | 指向子组件帧矩形的指针，用于存储获取到的帧矩形信息。 |
+| [ArkUI_Rect](./capi-arkui-nativemodule-arkui-rect.md)* childRect | 指向子组件边界矩形的指针，用于存储获取到的边界矩形信息。 |
 
 **返回：**
 

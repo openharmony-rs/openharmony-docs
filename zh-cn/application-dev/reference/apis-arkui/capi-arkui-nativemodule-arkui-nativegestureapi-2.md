@@ -60,6 +60,6 @@ int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData, Ar
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>            401 - 参数错误。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 参数错误。 |
 
 

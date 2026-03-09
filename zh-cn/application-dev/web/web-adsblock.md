@@ -160,7 +160,7 @@ struct WebComponent {
 
 AdsBlockManager中缓存有2组域名列表，分别为DisallowedList和AllowList，其中DisallowedList用于禁用网页的广告过滤，而AllowList用于重新开启被DisallowedList关闭的广告过滤开关，其中AllowList优先级更高。页面加载时会先使用网页url和AllowList进行匹配，匹配成功的网页广告过滤将保持开启，否则将会继续使用DisallowedList进行匹配，匹配成功将关闭网页的广告过滤。如果访问的网页不在AllowList和DisallowedList中，那么默认网页的广告过滤会保持开启状态。
 
-例如，应用想要开启域名为'news.example.com'和'sport.example.com'的广告过滤，但需要关闭'example.com'的其他域名下网页的广告过滤，就可以先使用addAdsBlockDisallowedList()接口添加'example.com'域名到DisallowedList，再使用[addAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12)接口添加'news.example.com'和'sport.example.com'域名。
+例如，应用想要开启域名为'news.example.com'和'sport.example.com'的广告过滤，但需要关闭'example.com'的其他域名下网页的广告过滤，就可以先使用[addAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12)接口添加'example.com'域名到DisallowedList，再使用[addAdsBlockAllowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockallowedlist12)接口添加'news.example.com'和'sport.example.com'域名。
 <!-- @[set_up_page_level_ad_filtering_switch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/DisAdsBlockSpecDomPages_two.ets) -->    
 
 ``` TypeScript

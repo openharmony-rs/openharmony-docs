@@ -260,14 +260,15 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_RenderFrame(OH_AudioSuitePipeline* audi
 
 应用调用此接口获取管线处理后的音频数据（针对单输出效果节点）。
 
->**说明：** 
->应用程序需调用此接口获取经过效果处理后的音频数据。
- * 调用后，管线会从输出节点向前依次拉取数据、应用效果处理，
- * 最终将处理后的数据填充到应用程序传入的audioData指针中。
- * 系统会尝试按requestFrameSize请求的大小填充数据，实际处理的数据大小通过responseSize返回给应用程序。
- * 当应用程序为所有输入节点准备好数据并通过回调提交最后一次数据时，应在回调中设置finish标志位。
- * 当管线中所有输入都传递了finish标志后，处理完成后会通过finishedFlag通知应用程序。
- * 若finishedFlag为true，应用程序不应再调用此接口。
+> **说明：** 
+>
+> 应用程序需调用此接口获取经过效果处理后的音频数据。
+> * 调用后，管线会从输出节点向前依次拉取数据、应用效果处理，
+> * 最终将处理后的数据填充到应用程序传入的audioData指针中。
+> * 系统会尝试按requestFrameSize请求的大小填充数据，实际处理的数据大小通过responseSize返回给应用程序。
+> * 当应用程序为所有输入节点准备好数据并通过回调提交最后一次数据时，应在回调中设置finish标志位。
+> * 当管线中所有输入都传递了finish标志后，处理完成后会通过finishedFlag通知应用程序。
+> * 若finishedFlag为true，应用程序不应再调用此接口。
 
 **起始版本：** 22
 
@@ -446,11 +447,12 @@ typedef int32_t (*OH_InputNode_RequestDataCallback)(OH_AudioNode* audioNode, voi
 
 配置输入节点的请求数据回调函数。
 
->**说明：** 
->用户把需要处理的PCM音频数据写入到audioData，OHAudioSuite从audioData拿到数据进行音频编创。
- * 应用程序在此回调中向audioData写入不超过audioDataSize大小的数据。
- * 当所有数据通过回调传递给管线后，应用程序应在最后一次回调中将finished设为true，此后管线不再调用此接口。
- * 只有输入节点需要配置，其余节点不配置。
+> **说明：**
+>  
+> 用户把需要处理的PCM音频数据写入到audioData，OHAudioSuite从audioData拿到数据进行音频编创。
+> * 应用程序在此回调中向audioData写入不超过audioDataSize大小的数据。
+> * 当所有数据通过回调传递给管线后，应用程序应在最后一次回调中将finished设为true，此后管线不再调用此接口。
+> * 只有输入节点需要配置，其余节点不配置。
 
 **起始版本：** 22
 

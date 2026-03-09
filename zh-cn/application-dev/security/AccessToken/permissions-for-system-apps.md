@@ -4807,7 +4807,7 @@
 
 允许应用从文件管理目录读取录音文件。
 
-**权限级别**：system_core
+**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
@@ -4821,7 +4821,7 @@
 
 允许应用向文件管理目录写入录音文件。
 
-**权限级别**：system_core
+**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
@@ -5499,24 +5499,23 @@
 
 **起始版本**：23
 
-## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
+## ohos.permission.MANAGE_STANDBY
 
-允许应用管理系统本地教育空间账号。
+允许应用管理页面的Standby状态，如进入、退出Standby状态等。
 
-**权限级别**：system_basic
+**权限级别**：system_core
 
 **授权方式**：系统授权（system_grant）
 
 **ACL使能**：true
 
-
-**支持设备**：Tablet
+**支持设备**：Phone | TV | PC/2in1 | Tablet | Car
 
 **起始版本**：23
 
-## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
+## ohos.permission.ACCESS_STANDBY
 
-允许应用查询系统本地教育空间账号属性。
+允许应用查询页面是否处于Standby状态，并在Standby状态时接入。
 
 **权限级别**：system_basic
 
@@ -5524,6 +5523,34 @@
 
 **ACL使能**：true
 
-**支持设备**：Tablet
+**支持设备**：Phone | TV | PC/2in1 | Tablet | Car
 
+**起始版本**：23
+
+ ## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
+ 	 
+允许应用管理系统本地教育空间账号。
+ 	 
+**权限级别**：system_basic
+ 	 
+**授权方式**：系统授权（system_grant）
+ 	 
+**ACL使能**：true
+ 	 
+**支持设备**：Tablet
+ 	 
+**起始版本**：23
+ 	 
+## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
+ 	 
+允许应用查询系统本地教育空间账号属性。
+ 	 
+**权限级别**：system_basic
+ 	 
+**授权方式**：系统授权（system_grant）
+ 	 
+**ACL使能**：true
+ 	 
+**支持设备**：Tablet
+ 	 
 **起始版本**：23

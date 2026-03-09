@@ -602,7 +602,7 @@ Queries the list of added printers.
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode): Operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode): The ohos.permission.PRINT permission is required.<br>         [PRINT_ERROR_INVALID_PARAMETER](capi-ohprint-h.md#print_errorcode): printerIdList is null.<br>         [PRINT_ERROR_INVALID_PRINTER](capi-ohprint-h.md#print_errorcode): Filed to query any connected printers.<br>         [PRINT_ERROR_GENERIC_FAILURE](capi-ohprint-h.md#print_errorcode): Failed to copy printer ID list.|
+| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode): Operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode): The ohos.permission.PRINT permission is required.<br>         [PRINT_ERROR_INVALID_PARAMETER](capi-ohprint-h.md#print_errorcode): printerIdList is null.<br>         [PRINT_ERROR_INVALID_PRINTER](capi-ohprint-h.md#print_errorcode): Failed to query any connected printers.<br>         [PRINT_ERROR_GENERIC_FAILURE](capi-ohprint-h.md#print_errorcode): Failed to copy printer ID list.|
 
 ### OH_Print_ReleasePrinterList()
 

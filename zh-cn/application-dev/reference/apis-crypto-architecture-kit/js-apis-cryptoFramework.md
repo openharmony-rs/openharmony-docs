@@ -212,7 +212,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | RSA_PK_BN | 303 | RSA算法中的公钥pk（即公钥指数e）。 |
 | DH_P_BN<sup>11+</sup> | 401 | DH算法中的素数p。 |
 | DH_G_BN<sup>11+</sup> | 402 | DH算法中的参数g。 |
-| DH_L_NUM<sup>11+</sup> | 403 | DH算法中私钥长度，单位为bit。 |
+| DH_L_NUM<sup>11+</sup> | 403 | DH算法中私钥长度，单位为bits。 |
 | DH_SK_BN<sup>11+</sup> | 404 | DH算法中的私钥sk。 |
 | DH_PK_BN<sup>11+</sup> | 405 | DH算法中的公钥pk。 |
 | ED25519_SK_BN<sup>11+</sup> | 501 | Ed25519算法中的私钥sk。 |
@@ -627,7 +627,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | ---- | ------ | ---- | ---- | ----------------------------------- |
 | p    | bigint | 否   | 否   | 指定DH算法中大素数p。               |
 | g    | bigint | 否   | 否   | 指定DH算法中参数g。                 |
-| l    | number | 否   | 否   | 指定DH算法中私钥的长度，单位为bit。 |
+| l    | number | 否   | 否   | 指定DH算法中私钥的长度，单位为bits。 |
 
 ## DHPriKeySpec<sup>11+</sup>
 
@@ -3654,8 +3654,8 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 | 参数名 | 类型   | 必填 | 说明                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| pLen   | number | 是   | 用于指定DH公共密钥参数中素数P的长度，单位为bit。 |
-| skLen  | number | 否   | 用于指定DH公共密钥参数中私钥的长度，单位为bit。  |
+| pLen   | number | 是   | 用于指定DH公共密钥参数中素数P的长度，单位为bits。 |
+| skLen  | number | 否   | 用于指定生成DH私钥的最大长度，单位为bits，默认值为0。<br>当参数值设置为0时，生成DH私钥的最大长度为：<br>ffdhe2048：255 bits。<br>ffdhe3072：275 bits。<br>ffdhe4096：325 bits。<br>ffdhe6144：375 bits。<br>ffdhe8192：400 bits。|
 
 **返回值：**
 

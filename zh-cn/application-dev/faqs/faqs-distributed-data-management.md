@@ -45,7 +45,7 @@
 通过PersistentStorage类实现管理应用持久化数据，可以将特定标记的持久化数据链接到AppStorage中，并由AppStorage接口访问对应持久化数据。PersistentStorage持久化后的数据会生成本地xml文件保存，文件路径为/data/app/el2/100/base/&lt;bundleName&gt;/haps/&lt;hapName&gt;/files/persistent_storage。
 
 示例：
-
+<!--deprecated_code_no_check-->
 ```ts
 AppStorage.Link('varA')
 PersistentStorage.PersistProp("varA", "111");

@@ -787,7 +787,7 @@ requestPermissionsFromUserWithWindowId(context: Context, windowId: number, permi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| context | [Context](js-apis-inner-application-context.md) | 是 | 请求权限的UIAbility的Context。 |
+| context | [Context](js-apis-inner-application-context.md#context) | 是 | 应用上下文Context。 |
 | windowId | number | 是 | 应用窗口的ID。 |
 | permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | 是 | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 

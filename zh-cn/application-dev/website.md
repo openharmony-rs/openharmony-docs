@@ -112,6 +112,7 @@
           - 拉起指定应用<!--directional-redirection-->
             - [拉起指定应用概述](application-models/app-startup-overview.md)
             - [（可选）使用canOpenLink判断应用是否可访问](application-models/canopenlink.md)
+            - [获取目标应用的URL信息](application-models/obtaining-target-app-url-info.md)
             - [使用Deep Linking实现应用间跳转](application-models/deep-linking-startup.md)
             - [使用App Linking实现应用间跳转](application-models/app-linking-startup.md)
             - [显式Want跳转切换应用链接跳转适配指导](application-models/uiability-startup-adjust.md)
@@ -799,7 +800,7 @@
         - [使用运动和方向传感器监测设备状态](web/web-sensor.md)
       - Web渲染和布局<!--web-render-layout-->
         - [Web渲染模式](web/web-render-mode.md)
-        - [使用Web组件大小自适应页面内容布局](web/web-fit-content.md)
+        - [Web组件大小自适应页面内容布局](web/web-fit-content.md)
         - [优化跳转至新Web组件过程中的页面闪烁现象](web/web-router-flash-optimization.md)
         - [获取网页内容高度](web/web-getpage-height.md)
       - 在应用中使用前端页面JavaScript<!--web-use-frontend-page-js-->
@@ -834,7 +835,7 @@
         - [使用Web组件上传文件](web/web-file-upload.md)
         - [使用Web组件的下载能力](web/web-download.md)
       - 使用网页多媒体<!--web-use-multimedia-->
-        - [使用WebRTC进行Web视频会议](web/web-rtc.md)
+        - [在Web中打开摄像头和麦克风](web/web-rtc.md)
         - [托管网页中的媒体播放](web/app-takeovers-web-media.md)
         - [使用Web组件支持画中画](web/web-picture-in-picture.md)
         - [Web组件支持视频沉浸式全屏播放](web/web_full_screen.md)
@@ -919,10 +920,6 @@
             - [ArkTS卡片使用画布组件绘制自定义图形](form/arkts-ui-widget-page-custom-drawing.md)
             - [ArkTS卡片界面适配深浅色模式](form/arkts-ui-widget-dark-light-color-adapt.md)
             - [ArkTS卡片使用自定义字体](form/arkts-ui-widget-load-custom-font.md)
-            <!--Del-->
-            - [ArkTS卡片玻璃材质适配（仅对系统应用开放）](form/arkts-ui-widget-visual-effect-sys.md)
-            - [ArkTS卡片新材质适配（仅对系统应用开放）](form/arkts-ui-widget-effect-sys.md)
-            <!--DelEnd-->
           - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
             - [ArkTS卡片页面刷新概述](form/arkts-ui-widget-interaction-overview.md)
             - [ArkTS卡片主动刷新](form/arkts-ui-widget-active-refresh.md)
@@ -1333,7 +1330,7 @@
         - [Connectivity Kit术语](connectivity/terminology.md)
       - Distributed Service Kit（分布式管理服务）<!--distributed-service-kit-->
         - [Distributed Service Kit简介](distributedservice/distributedservice-kit-intro.md)
-        - [分布式设备管理](distributedservice/devicemanager-guidelines.md)
+        - [分布式设备管理开发指南](distributedservice/devicemanager-guidelines.md)
         - 应用跨设备连接管理<!--abilityconnect-distributed-->
           - [UIAbility与UIAbility连接开发指南](distributedservice/abilityconnectmanager-guidelines.md)
           <!--Del-->
@@ -4437,6 +4434,7 @@
           - [@ohos.telephony.radio (网络搜索)](reference/apis-telephony-kit/js-apis-radio.md)
           - [@ohos.telephony.sim (SIM卡管理)](reference/apis-telephony-kit/js-apis-sim.md)
           - [@ohos.telephony.sms (短信服务)](reference/apis-telephony-kit/js-apis-sms.md)
+          - [@ohos.telephony.vcard (VCard模块)](reference/apis-telephony-kit/js-apis-vcard.md)
           <!--Del-->
           - [@ohos.telephony.call (拨打电话)（系统接口）](reference/apis-telephony-kit/js-apis-call-sys.md)
           - [@ohos.telephony.data (蜂窝数据)（系统接口）](reference/apis-telephony-kit/js-apis-telephony-data-sys.md)
@@ -4445,7 +4443,6 @@
           - [@ohos.telephony.radio (网络搜索)（系统接口）](reference/apis-telephony-kit/js-apis-radio-sys.md)
           - [@ohos.telephony.sim (SIM卡管理)（系统接口）](reference/apis-telephony-kit/js-apis-sim-sys.md)
           - [@ohos.telephony.sms (短信服务)（系统接口）](reference/apis-telephony-kit/js-apis-sms-sys.md)
-          - [@ohos.telephony.vcard (VCard模块)（系统接口）](reference/apis-telephony-kit/js-apis-vcard-sys.md)
           <!--DelEnd-->
         - C API<!--telephony-c-->
           - 模块<!--telephony-module-->
