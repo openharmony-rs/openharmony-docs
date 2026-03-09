@@ -64,9 +64,9 @@
 | id              | string                                                       | 否   | 否   | 合集的标识。                                      |
 | title           | string                                                       | 否   | 否   | 合集的标题。                                      |
 | hasMoreData     | boolean                                                      | 否   | 否   | 是否有更多的合集数据。true表示有，false表示没有。 |
-| totalSize       | number                                                       | 否   | 否   | 合集的总个数。                                          |
-| memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 合集的媒体资源类型                                |
-| topElements     | [MediaEntity](#mediaentity)                                  | 否   | 否   | 合集的内容                                        |
+| totalSize       | number                                                       | 否   | 否   | 合集的总个数。                                    |
+| memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 合集的媒体资源类型。                              |
+| topElements     | [MediaEntity](#mediaentity)                                  | 否   | 否   | 合集的内容。                                      |
 
 ## Banner
 
@@ -251,7 +251,7 @@
 | title        | string                                                       | 否   | 否   | 设置项的标题。                                               |
 | desc         | string                                                       | 否   | 否   | 设置项的描述。                                               |
 | settingType  | [SettingType](arkts-apis-avsession-AVMusicTemplate-e.md#settingtype) | 否   | 是   | 设置项的类型。                                               |
-| settingValue | string \| boolean \| [SettingContent](arkts-apis-avsession-AVMusicTemplate-i.md#settingcontent)[] \| [WantAgent](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#WantAgent) | 否   | 是   | 设置项的值。<br>- 当settingType类型是SettingType.SWITCH时，本值数据类型是boolean。<br>- 当settingType类型是SettingType.LIST时，本值数据类型是SettingContent数组。<br>- 当settingType类型是SettingType.JUMP时，本值数据类型是string。 |
+| settingValue | string \| boolean \| [SettingContent](arkts-apis-avsession-AVMusicTemplate-i.md#settingcontent)[] \| [WantAgent](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否   | 是   | 设置项的值。<br>- 当settingType类型是SettingType.SWITCH时，本值数据类型是boolean。<br>- 当settingType类型是SettingType.LIST时，本值数据类型是SettingContent数组。<br>- 当settingType类型是SettingType.JUMP时，本值数据类型是string。 |
 | mediaId      | string                                                       | 否   | 否   | 与当前设置关联的媒体ID。<br>如果设置与当前媒体信息相关联，需要设置mediaId；否则，不需要设置mediaId。 |
 
 ## SettingContent
@@ -280,14 +280,14 @@
 | 名称        | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | id          | string                                                       | 否   | 否   | 用于唯一标识用户登录的二维码会话。<br>当二维码过期时，MediaUI将使用此ID从第三方查询并更新新的二维码。 |
-| price       | string                                                       | 否   | 否   | 购买价格。|
-| titleName   | string                                                       | 否   | 否   | 标题名称。|
-| detailName  | string                                                       | 否   | 否   | 详情名称。|
-| tips        | string                                                       | 否   | 否   | 提示信息。|
+| price       | string                                                       | 否   | 否   | 购买价格。                                                   |
+| titleName   | string                                                       | 否   | 否   | 标题名称。                                                   |
+| detailName  | string                                                       | 否   | 否   | 详情名称。                                                   |
+| tips        | string                                                       | 否   | 否   | 提示信息。                                                   |
 | icon        | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 与二维码关联的应用图标，用于应用登录的二维码应显示目标应用的图标。 |
 | content     | string                                                       | 否   | 否   | 二维码的内容。                                               |
-| codeData    | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 二维码图片。|
-| validPeriod | number                                                       | 否   | 否   | 二维码有效期（单位：秒）。当二维码到期时，二维码ID将用于再次查询并获得新的二维码。 |
+| codeData    | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 二维码图片。                                                 |
+| validPeriod | number                                                       | 否   | 否   | 二维码有效期（单位：秒）。<br/>当二维码到期时，二维码ID将用于再次查询并获得新的二维码。 |
 
 ## DialogActionInfo
 
