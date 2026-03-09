@@ -194,7 +194,7 @@ int OH_WebSocketClient_Destroy(struct WebSocket *client)
 
 **描述**
 
-释放websocket连接上下文和资源。有以下两种调用方式：
+释放websocket连接上下文和资源。使用方式如下：
 1. 调用[WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback)订阅WebSocket连接关闭事件，并在该回调函数中调用[OH_WebSocketClient_Destroy](capi-net-websocket-h.md#oh_websocketclient_destroy)方法。
 
 2. 调用[OH_WebSocketClient_Close](capi-net-websocket-h.md#oh_websocketclient_close)关闭WebSocket连接。
