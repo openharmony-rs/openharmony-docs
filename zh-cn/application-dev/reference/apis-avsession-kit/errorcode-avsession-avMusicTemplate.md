@@ -18,7 +18,7 @@ Failed to create the AVMusicTemplate.
 
 **错误描述**
 
-音频模板创建失败。
+ import { aVMusicTemplate } from '@kit.AVSessionKit';ts
 
 **可能原因**
 
@@ -84,19 +84,19 @@ controller callback 注册失败。
 1. 检查应用是否正常创建AVMusicTemplateController实例。
 2. 检查应用内其他核心功能是否出现了异常。
 
-## 35000005 未注册模板控制器回调
+## 35000005 音频模板不存在
 
 **错误信息**
 
-Controller callback not registered.
+AVMusicTemplate does not exist.
 
 **错误描述**
 
-未注册模板控制器回调。
+音频模板不存在。
 
 **可能原因**
 
-AVMusicTemplate不存在。
+音频模板还未创建。
 
 **处理步骤**
 
@@ -195,7 +195,7 @@ The data exceeds the maximum allowable transmission capacity.
 
 针对超过1MB的数据采用分批传输。
 
-## 350000011 写数据失败，数据不可用
+## 350000011 数据写入错误，数据无效
 
 **错误信息**
 
