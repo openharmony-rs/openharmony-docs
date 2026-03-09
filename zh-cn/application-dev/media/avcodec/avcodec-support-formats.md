@@ -159,9 +159,9 @@ DRM解密能力支持的解封装格式：<!--RP10-->mp4(H.264，AAC)、mpeg-ts(
    | OH_MD_KEY_CREATION_TIME            | 媒体文件创建时间的元数据，值类型为string（API14开始支持）。        |
    | OH_MD_KEY_COMMENT                  | 媒体文件注释的键，值类型为string（API20开始支持）。               |
    | OH_MD_KEY_ENABLE_MOOV_FRONT        | 媒体文件moov元数据是否前置标志，值类型为int32_t（API20开始支持）。 |
-   | OH_MD_KEY_LATITUDE                 | 纬度的键，值类型为float，范围为[-90.0, 90.0]（从API version 24开始支持）。 |
-   | OH_MD_KEY_LONGITUDE                | 经度的键，值类型为float，范围为[-180.0, 180.0]（从API version 24开始支持）。 |
-   | OH_MD_KEY_ALTITUDE                 | 海拔的键，值类型为float，该键是可选的（从API version 24开始支持）。 |
+   | OH_MD_KEY_LATITUDE                 | 纬度的键，值类型为float，范围为[-90.0, 90.0]。表示地理位置信息中的纬度（从API version 24开始支持）。 |
+   | OH_MD_KEY_LONGITUDE                | 经度的键，值类型为float，范围为[-180.0, 180.0]。表示地理位置信息中的经度（从API version 24开始支持）。 |
+   | OH_MD_KEY_ALTITUDE                 | 海拔的键，值类型为float，该键是可选的。表示地理位置信息中的海拔（从API version 24开始支持）。 |
 
 > **说明：**
 >
