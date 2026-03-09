@@ -388,4 +388,4 @@ try {
 | 名称 | 值   | 说明           |
 | ---- | ---- | -------------- |
 | DEVICE_NAME   | 0    | 设备名称。 |
-| FLOATING_NAVIGATION   | 1   | 三键导航。 |
+| FLOATING_NAVIGATION<sup>24+</sup>   | 1   | 三键导航。 |
