@@ -8873,7 +8873,9 @@ try {
 
 ## getPriorityStrategyByBundles<sup>23+</sup>
 
-getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, long\>\>;
+ArkTS-Dyn: getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, number\>\>
+
+ArkTS-Sta: getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, long\>\>
 
 批量获取应用通知优先策略。使用Promise异步回调。
 
@@ -8899,7 +8901,7 @@ getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<Bund
 
 | 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), long\>\> | Promise对象，返回应用通知优先策略的键值对集合的Promise对象。 |
+| ArkTS-Dyn: Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), number\>\> <br/>ArkTS-Sta: Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), long\>\> | Promise对象，返回应用通知优先策略的键值对集合的Promise对象。 |
 
 **错误码**：
 
@@ -8955,7 +8957,9 @@ try {
 
 ## setPriorityStrategyByBundles<sup>23+</sup>
 
-setPriorityStrategyByBundles(strategies: Map\<BundleOption, long\>): Promise\<void\>
+ArkTS-Dyn: setPriorityStrategyByBundles(strategies: Map\<BundleOption, number\>): Promise\<void\>
+
+ArkTS-Sta: setPriorityStrategyByBundles(strategies: Map\<BundleOption, long\>): Promise\<void\>
 
 批量设置应用通知优先策略。使用Promise异步回调。
 
@@ -8975,7 +8979,7 @@ setPriorityStrategyByBundles(strategies: Map\<BundleOption, long\>): Promise\<vo
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| strategies | Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), long\> | 是 | 应用通知优先策略的键值对集合。与[PriorityStrategyStatus](#prioritystrategystatus23)的枚举进行按位或运算得到值。|
+| strategies | ArkTS-Dyn: Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), number\> <br/>ArkTS-Sta: Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), long\> | 是 | 应用通知优先策略的键值对集合。与[PriorityStrategyStatus](#prioritystrategystatus23)的枚举进行按位或运算得到值。|
 
 **返回值：**
 
@@ -9345,6 +9349,10 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 | 类型 | 说明 |
 | --- | --- |
