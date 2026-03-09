@@ -186,11 +186,13 @@ Failed to install the HAP because the HAP path is invalid or the HAP is too larg
 1. 输入错误，HAP的文件路径不存在。
 2. HAP的路径无法访问。
 3. HAP的大小超过最大限制4G。
+4.  HAP中配置了可执行二进制文件（即module.json5中配置了[executableBinaryPaths标签](../../quick-start/module-configuration-file.md#executablebinarypaths标签)），但是没有配置解压模式，或当前设备不支持安装配置了该标签的HAP。
 
 **处理步骤**<br/>
-1. 确认hap是否存在。
-2. 查看hap的可执行权限，是否可读。
+1. 确认HAP是否存在。
+2. 查看HAP的可执行权限，是否可读。
 3. 查看HAP的大小是否超过4G。
+4. 配置应用为解压模式，即在应用的[module.json5配置文件](../../quick-start/module-configuration-file.md#配置文件标签)中设置compressNativeLibs标签为true；或更换为PC/2in1设备。
 
 ## 17700015 多个HAP配置信息不同导致应用安装失败
 

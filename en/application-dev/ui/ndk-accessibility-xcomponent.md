@@ -24,7 +24,7 @@ In these callbacks, third-party frameworks must handle accessibility [actions](.
 
 This example demonstrates accessibility integration. For the complete implementation, see [AccessibilityCapiSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCapi). Once integrated, third-party framework components in **XComponent** will support accessibility interactions when accessibility features are enabled.
 
-1. Create a project based on [OH_ArkUI_SurfaceHolder for surface lifecycle management](napi-xcomponent-guidelines.md#managing-the-surface-lifecycle-with-oh_arkui_surfaceholder) in custom rendering (XComponent).
+1. Create a project based on [OH_ArkUI_SurfaceHolder for surface lifecycle management](napi-xcomponent-guidelines.md#managing-the-lifecycle-of-the-surface-held-by-xcomponent) in custom rendering (XComponent).
 
 2. Obtain the accessibility provider and register callbacks (the following uses the multi-instance scenario as an example).
 

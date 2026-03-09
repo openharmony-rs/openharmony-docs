@@ -169,7 +169,7 @@ int32_t (*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>             [ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST](capi-native-type-h.md#arkui_errorcode) NodeAdapter已经存在。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>             [ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST](capi-native-type-h.md#arkui_errorcode) [NodeAdapter](capi-arkui-nativemodule-arkui-nodeadapter8h.md)已经存在。 |
 
 ### insertChildAfter()
 
@@ -244,7 +244,7 @@ int32_t (*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) parent | 父节点指针。 |
 |  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | 子节点指针。 |
-| int32_t position | 插入位置，如果插入位置为负数或者不存在，则默认插入位置在最后面。 |
+| int32_t position | 插入位置，取值范围为[-2147483648, 2147483647]，如果插入位置为负数或者不存在，则默认插入位置在最后面。 |
 
 **返回：**
 
@@ -388,7 +388,7 @@ void (*registerNodeEventReceiver)(void (*eventReceiver)(ArkUI_NodeEvent* event))
 **描述：**
 
 
-注册事件回调统一入口函数。ArkUI框架会统一收集过程中产生的组件事件并通过注册的eventReceiver函数回调给开发者。<br> 重复调用时会覆盖前一次注册的函数。 避免直接保存[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象指针，数据会在回调结束后销毁。<br> 如果需要和组件实例绑定，可以使用addNodeEventReceiver函数接口。<br>
+注册事件回调统一入口函数。ArkUI框架会统一收集过程中产生的组件事件并通过注册的eventReceiver函数回调给开发者。<br> 重复调用时会覆盖前一次注册的函数。 避免直接保存[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象指针，数据会在回调结束后销毁。<br> 如果需要和组件实例绑定，可以使用[addNodeEventReceiver](#addnodeeventreceiver)函数接口。<br>
 
 **起始版本：** 12
 

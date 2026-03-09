@@ -1,18 +1,18 @@
-# ArkUI_GestureRecognizerHandle*
+# ArkUI_GestureRecognizer*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
-typedef ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray
+typedef ArkUI_GestureRecognizer* ArkUI_GestureRecognizerHandle
 ```
 
 ## Overview
 
-Defines the gesture recognizer handle array.
+Defines a gesture recognizer handle.
 
 **Since**: 12
 

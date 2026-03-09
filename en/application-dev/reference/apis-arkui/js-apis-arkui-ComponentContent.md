@@ -1,9 +1,9 @@
 # ComponentContent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyi0309-->
-<!--Designer: @liyi0309-->
-<!--Tester: @lxl007-->
+<!--Owner: @ZhangYu-Home-->
+<!--Designer: @ZhangYu-Home-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 You can create an entity encapsulation component in either of the following ways: You can select either of the following methods during development:
@@ -171,6 +171,7 @@ import { ComponentContent } from "@kit.ArkUI";
 
 class Params {
   text: string = "";
+
   constructor(text: string) {
     this.text = text;
   }
@@ -182,7 +183,7 @@ function buildText(params: Params) {
     Text(params.text)
       .fontSize(50)
       .fontWeight(FontWeight.Bold)
-      .margin({bottom: 36})
+      .margin({ bottom: 36 })
   }.backgroundColor('#FFF0F0F0')
 }
 
@@ -195,16 +196,16 @@ struct Index {
     Row() {
       Column() {
         Button("click me")
-            .onClick(() => {
-                let uiContext = this.getUIContext();
-                let promptAction = uiContext.getPromptAction();
-                let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText), new Params(this.message));
-                promptAction.openCustomDialog(contentNode);
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let promptAction = uiContext.getPromptAction();
+            let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText), new Params(this.message));
+            promptAction.openCustomDialog(contentNode);
 
-                setTimeout(() => {
-                  contentNode.update(new Params("new message"));
-                }, 2000);    // Automatically update the text in the dialog box after 2 seconds.
-            })
+            setTimeout(() => {
+              contentNode.update(new Params("new message"));
+            }, 2000); // Automatically update the text in the dialog box after 2 seconds.
+          })
       }
       .width('100%')
       .height('100%')
@@ -287,7 +288,7 @@ class Params {
 function buildNode(param: Params = new Params("hello")) {
   Row() {
     Text(`C${param.item} -- `)
-    ReusableChildComponent2({ item: param.item }) // This custom component cannot be correctly reused in the ComponentContent.
+    ReusableChildComponent2({ item: param.item }) // This custom component cannot be correctly reused in ComponentContent.
   }
 }
 
@@ -314,7 +315,7 @@ struct ReusableChildComponent {
   aboutToRecycle(): void {
     console.info(`${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
 
-    // When the switch is open, pass the recycle event to the nested custom component, such as ReusableChildComponent2, through the ComponentContent's recycle API to complete recycling.
+    // When the switch is open, pass the recycle event to the nested custom component, such as ReusableChildComponent2, through the ComponentContent's recycle API to complete reuse.
     if (this.switch === 'open') {
       this.componentContent.recycle();
     }
@@ -401,7 +402,7 @@ struct Index {
           ListItem() {
             ReusableChildComponent({
               item: item,
-              switch: 'open' // Changing open to close can be used to observe the behavior of custom components inside the ComponentContent when reuse and recycle events are not passed through the ComponentContent's reuse and recycle APIs.
+              switch: 'open' // Changing open to close can be used to observe the behavior of custom components inside the ComponentContent when reuse and recycle events are not passed through ComponentContent's reuse and recycle APIs.
             })
           }
         }, (item: string) => item)
@@ -435,6 +436,7 @@ import { ComponentContent } from '@kit.ArkUI';
 
 class Params {
   text: string = "";
+
   constructor(text: string) {
     this.text = text;
   }
@@ -459,26 +461,26 @@ struct Index {
     Row() {
       Column() {
         Button("click me")
-            .onClick(() => {
-                let uiContext = this.getUIContext();
-                let promptAction = uiContext.getPromptAction();
-                let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText), new Params(this.message));
-                promptAction.openCustomDialog(contentNode);
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let promptAction = uiContext.getPromptAction();
+            let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText), new Params(this.message));
+            promptAction.openCustomDialog(contentNode);
 
-                setTimeout(() => {
-                  promptAction.closeCustomDialog(contentNode)
-                    .then(() => {
-                      console.info('customDialog closed.');
-                      if (contentNode !== null) {
-                        contentNode.dispose();   // Dispose of the contentNode object.
-                      }
-                    }).catch((error: BusinessError) => {
-                      let message = (error as BusinessError).message;
-                      let code = (error as BusinessError).code;
-                      console.error(`closeCustomDialog args error code is ${code}, message is ${message}`);
-                    })
-                }, 2000);     // Automatically close the dialog box after 2 seconds.
-            })
+            setTimeout(() => {
+              promptAction.closeCustomDialog(contentNode)
+                .then(() => {
+                  console.info('customDialog closed.');
+                  if (contentNode !== null) {
+                    contentNode.dispose(); // Dispose the contentNode object.
+                  }
+                }).catch((error: BusinessError) => {
+                let message = (error as BusinessError).message;
+                let code = (error as BusinessError).code;
+                console.error(`closeCustomDialog args error code is ${code}, message is ${message}`);
+              })
+            }, 2000); // Automatically close the dialog box after 2 seconds.
+          })
       }
       .width('100%')
       .height('100%')
@@ -606,7 +608,7 @@ struct FrameNodeTypeTest {
 
 isDisposed(): boolean
 
-Checks whether this **ComponentContent** object has released its reference to its backend entity node. All frontend nodes are bound to corresponding backend entity nodes. After **dispose()** is called, subsequent calls may cause crashes or return default values. This API facilitates validation of node validity prior to operations, thereby mitigating risks in scenarios where calls after disposal are required.
+Checks whether this **ComponentContent** object has released its reference to its backend entity node. Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values. This API facilitates validation of node validity prior to operations, thereby mitigating risks in scenarios where calls after disposal are required.
 
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
@@ -627,6 +629,7 @@ import { ComponentContent } from '@kit.ArkUI';
 
 class Params {
   text: string = "";
+
   constructor(text: string) {
     this.text = text;
   }
@@ -664,9 +667,12 @@ struct Index {
                 .then(() => {
                   console.info('customDialog closed.');
                   if (contentNode !== null) {
-                    this.beforeDispose = contentNode.isDisposed() ? 'before dispose componentContent isDisposed is true' : 'before dispose componentContent isDisposed is false';
-                    contentNode.dispose();   // Dispose of the contentNode object.
-                    this.afterDispose = contentNode.isDisposed() ? 'after dispose componentContent isDisposed is true' : 'after dispose componentContent isDisposed is false';
+                    this.beforeDispose =
+                      contentNode.isDisposed() ? 'before dispose componentContent isDisposed is true' :
+                        'before dispose componentContent isDisposed is false';
+                    contentNode.dispose(); // Dispose the contentNode object.
+                    this.afterDispose = contentNode.isDisposed() ? 'after dispose componentContent isDisposed is true' :
+                      'after dispose componentContent isDisposed is false';
                   }
                 }).catch((error: BusinessError) => {
                 let message = (error as BusinessError).message;
@@ -714,7 +720,6 @@ Sets whether this **ComponentContent** object inherits the freeze policy from it
 **Example**
 
 ```ts
-
 import { ComponentContent, FrameNode, NodeController } from '@kit.ArkUI';
 
 class Params {
@@ -725,7 +730,8 @@ class Params {
   }
 }
 
-@Builder // Builder component
+@Builder
+// Builder component
 function buildText(params: Params) {
 
   Column() {
@@ -740,7 +746,8 @@ class TextNodeController extends NodeController {
 
   makeNode(context: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(context);
-    this.contentNode = new ComponentContent(context, wrapBuilder(buildText), new Params(this.count)); // Create ComponentContent using buildText.
+    this.contentNode =
+      new ComponentContent(context, wrapBuilder(buildText), new Params(this.count)); // Create ComponentContent using buildText.
     this.contentNode.inheritFreezeOptions(true); // Configure the ComponentContent object to inherit the freeze policy from its parent component.
     if (this.rootNode !== null) {
       this.rootNode.addComponentContent(this.contentNode); // Add ComponentContent to the tree.
@@ -861,7 +868,8 @@ struct pageTwoStack { // Page 2
   }
 }
 
-@Component({ freezeWhenInactive: true }) // Set the freeze policy to freeze when inactive.
+@Component({ freezeWhenInactive: true })
+  // Set the freeze policy to inactive freeze.
 struct NavigationContentMsgStack {
   @Link message: number;
   @Link index: number;
@@ -876,7 +884,8 @@ struct NavigationContentMsgStack {
   }
 }
 
-@Component({ freezeWhenInactive: true }) // Set the freeze policy to freeze when inactive.
+@Component({ freezeWhenInactive: true })
+  // Set the freeze policy to inactive freeze.
 struct TextBuilder {
   @Prop @Watch("info") message: number = 0;
 
@@ -920,7 +929,7 @@ Constructor of ReactiveComponentContent.
 
 | Name   | Type                                     | Mandatory| Description                              |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | UI context for node creation.|
+| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | UI context required for creating a node.|
 | builder  | [WrappedBuilder\<T>](../../ui/state-management/arkts-wrapBuilder.md) | Yes  |   Encapsulates the WrappedBuilder object of the @Builder function with parameters.|
 | config | [BuildOptions](./js-apis-arkui-builderNode.md#buildoptions12)  | Yes  |  Configures the build behavior of the builder. All attributes in BuildOptions are optional. The default value is the corresponding default value in BuildOptions.                                       |
 | ...args     | T      | No  | Parameters of the builder function encapsulated in the **WrappedBuilder** object. Transfers external data to the WrappedBuilder&lt;T&gt and build functions specified in the constructor. Multiple input parameters are supported. The default value is **undefined**.|
@@ -1017,7 +1026,7 @@ recycle(): void
 
 Recycles the custom component in ReactiveComponentContent. Component recycling is part of the component reuse mechanism. For details, see [@Reusable Decorator: Reusing V1 Components](../../ui/state-management/arkts-reusable.md).
 
-ReactiveBuilderNode completes the reuse event transfer between internal and external custom components through [reuse](#reuse22) and **recycle**. For specific usage scenarios, see [Implementing Node Reuse with the BuilderNode reuse and recycle APIs](../../ui/arkts-user-defined-arktsNode-builderNode.md#implementing-node-reuse-with-the-buildernode-reuse-and-recycle-apis).
+**ReactiveComponentContent** completes the reuse event transfer between internal and external custom components through [reuse](#reuse) and **recycle**. For specific usage scenarios, see [Implementing Node Reuse with the BuilderNode reuse and recycle APIs](../../ui/arkts-user-defined-arktsNode-builderNode.md#implementing-node-reuse-with-the-buildernode-reuse-and-recycle-apis).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1076,7 +1085,6 @@ struct ReusableChildComponent {
   @Prop item: string = '';
   @Prop switch: string = '';
   private content: NodeContent = new NodeContent();
-  
   // Create a ReactiveComponentContent instance and encapsulate the builder dynamic content.
   private componentContent: ReactiveComponentContent<[string]> = new ReactiveComponentContent<[string]>(
     this.getUIContext(),
@@ -1202,11 +1210,11 @@ struct Index {
 
 dispose(): void
 
+Immediately releases the reference relationship between this **ReactiveComponentContent** object and its [entity node](../../ui/arkts-user-defined-node.md#basic-concepts). For details about the scenarios involving **ReactiveComponentContent** unbinding, see [Canceling the Reference to the Entity Node](../../ui/arkts-user-defined-arktsNode-builderNode.md#canceling-the-reference-to-the-entity-node).
+
 > **NOTE**
 >
 > After calling **dispose**, the **ReactiveComponentContent** object cancels its reference to the backend entity node. If the frontend object **ReactiveComponentContent** cannot be released, memory leaks may occur. To avoid this, be sure to call **dispose** on the **ReactiveComponentContent** object when you no longer need it. This reduces the complexity of reference relationships and lowers the risk of memory leaks.
-
-Immediately releases the reference relationship between this **ReactiveComponentContent** object and its [entity node](../../ui/arkts-user-defined-node.md#basic-concepts). For details about the scenarios involving **ReactiveComponentContent** unbinding, see [Canceling the Reference to the Entity Node](../../ui/arkts-user-defined-arktsNode-builderNode.md#canceling-the-reference-to-the-entity-node).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1227,7 +1235,7 @@ import {
   FrameNode
 } from '@kit.ArkUI';
 
-//dispose
+// dispose
 @Builder
 function buildText(
   MsgAge: MutableBinding<number>,
@@ -1469,6 +1477,7 @@ class GeneratedObjectLiteralInterface_1 {
   constructor(age: number) {
     this.age = age;
   }
+
   @Trace age: number = 0; // Use the @Trace decorator to trace attribute changes.
 }
 
@@ -1477,6 +1486,7 @@ class GeneratedObjectLiteralInterface_2 {
   constructor(age: number) {
     this.age = age;
   }
+
   age: number = 0; // Common attribute, no automatic tracking.
 }
 
@@ -1488,7 +1498,6 @@ struct Index {
   params: GeneratedObjectLiteralInterface_1 = new GeneratedObjectLiteralInterface_1(25);
   // Data object of the V1 decorator, which needs to be manually updated
   params2: GeneratedObjectLiteralInterface_2 = new GeneratedObjectLiteralInterface_2(25);
-
   private componentContent: ReactiveComponentContent<[Binding<number>]> | null = null
 
   build() {
@@ -1510,7 +1519,7 @@ struct Index {
 
               this.content.addFrameNode(column);
             })
-          
+
           // Create ReactiveComponentContent using the V1 decorator.
           Button('Bound parameters are decorated by the V1 decorator').onClick(
             () => {
@@ -1528,19 +1537,19 @@ struct Index {
               column.addComponentContent(this.componentContent);
               this.content.addFrameNode(column);
             })
-          
+
           // Update the data of the V2 decorator (automatically updated).
           Button('change age - V2 can be automatically updated').onClick(() => {
             this.params.age += 1; // The V2 decorator automatically detects changes and updates the UI.
           })
-          
+
           // Update the data of the V1 decorator (manual update required).
           Button('change age - V1 must be manually updated').onClick(() => {
             this.params2.age += 1;
             // For the data of the V1 decorator, you need to manually call flushState to trigger UI update.
             this.componentContent?.flushState();
           })
-          
+
           // Display the dynamically created content.
           ContentSlot(this.content)
         }
@@ -1769,7 +1778,7 @@ struct TextBuilder {
 
 isDisposed(): boolean
 
-Queries whether the current **ReactiveComponentContent** object has been unbound from the backend entity node. All frontend nodes are bound to corresponding backend entity nodes. After **dispose()** is called, subsequent calls may cause crashes or return default values. This API facilitates validation of node validity prior to operations, thereby mitigating risks in scenarios where calls after disposal are required.
+Checks whether this **ReactiveComponentContent** object has released its reference to its backend entity node. Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values. This API facilitates validation of node validity prior to operations, thereby mitigating risks in scenarios where calls after disposal are required.
 
 
 **Atomic service API**: This API can be used in atomic services since API version 22.

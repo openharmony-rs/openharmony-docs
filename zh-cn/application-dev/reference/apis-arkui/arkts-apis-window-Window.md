@@ -878,7 +878,7 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
 若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用不报错不生效。
 
 > **说明：**
 >
@@ -941,7 +941,7 @@ resize(width: number, height: number): Promise&lt;void&gt;
 
 若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用不报错不生效。
 
 > **说明：**
 >
@@ -2584,7 +2584,7 @@ setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | -------------------- |
-| path     | string                    | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path     | string                    | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。          |
 
 **错误码：**
@@ -2629,7 +2629,7 @@ setUIContent(path: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ------ | -- | ------------------ |
-| path | string | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path | string | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
 
 **返回值：**
 
@@ -2679,7 +2679,7 @@ loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void
 
 | 参数名   | 类型                                            | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path     | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。 |
+| path     | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。不支持相对路径写法，需与main_pages.json中的src取值保持一致。 |
 | storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
 | callback | AsyncCallback&lt;void&gt;                       | 是   | 回调函数。                                                   |
 
@@ -2725,7 +2725,7 @@ loadContent(path: string, storage: LocalStorage): Promise&lt;void&gt;
 
 | 参数名  | 类型                                            | 必填 | 说明                                                         |
 | ------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path    | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。 |
+| path    | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。不支持相对路径写法，需与main_pages.json中的src取值保持一致。 |
 | storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
 
 **返回值：**
@@ -2934,7 +2934,7 @@ loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | name    | string                                                  | 是   | 命名路由页面的名称。                                             |
-| storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
+| storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性，默认值为空。 |
 
 **返回值：**
 
@@ -5342,7 +5342,15 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备上调用会返回801错误码，在非2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：**
+
+针对PC/2in1设备：在API version 23之前，调用该接口会返回801错误码；从API version 23开始，可正常调用该接口且立即生效。
+
+针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：可正常调用且立即生效。
+
+针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+
+针对其他设备：调用该接口不生效也不报错。
 
 **参数：**
 
@@ -5364,7 +5372,7 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 **示例：**
 
 ```ts
-function calculateRect(info: window.RotationChangeInfo): window.Rect {
+let calculateRect(info: window.RotationChangeInfo): window.Rect {
     // calculate result with info
     let rect : window.Rect = {
       left: 0,
@@ -5412,7 +5420,15 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备上调用会返回801错误码，在非2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：**
+
+针对PC/2in1设备：在API version 23之前，调用该接口会返回801错误码；从API version 23开始，可正常调用该接口且立即生效。
+
+针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：可正常调用且立即生效。
+
+针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+
+针对其他设备：调用该接口不生效也不报错。
 
 **参数：**
 
@@ -7115,7 +7131,7 @@ maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---------------------------- | -- | --------------------------------- |
 | presentation | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12) | 否 | 主窗口或子窗口最大化时的布局枚举。默认值window.MaximizePresentation.ENTER_IMMERSIVE，即默认最大化时进入全屏模式。 |
-| acrossDisplay | boolean | 否 | 控制悬停态下主窗口在最大化时的瀑布流模式行为。仅主窗口可设置此参数，非主窗口调用时返回错误码`1300004`。<br>取值为`true`时：<br>- 悬停态下，窗口将直接进入瀑布流模式；<br>- 展开态下，窗口进入最大化，并在悬停态下保持瀑布流模式。<br>取值为`false`时：<br>- 悬停态下，窗口将退出瀑布流模式，进入单面最大化（即窗口最大化时只在上半屏或下半屏显示）；<br>- 展开态下，窗口进入最大化，并在悬停态下退出瀑布流模式。<br>取值为`undefined`或不传值时，不修改窗口瀑布流模式行为：<br>- 悬停态下，窗口进入单面最大化；<br>- 展开态下，窗口进入最大化，并在悬停态下默认保持瀑布流模式。<br>**设备行为差异：** 仅在具备折叠功能的2in1设备可正常调用；在其他设备上调用不生效。 |
+| acrossDisplay | boolean | 否 | 控制悬停态下主窗口在最大化时的瀑布流模式行为。默认值为`undefined`。<br>仅主窗口可设置此参数，非主窗口调用时返回错误码`1300004`。<br>取值为`true`时：<br>- 悬停态下，窗口将直接进入瀑布流模式；<br>- 展开态下，窗口进入最大化，并在悬停态下保持瀑布流模式。<br>取值为`false`时：<br>- 悬停态下，窗口将退出瀑布流模式，进入单面最大化（即窗口最大化时只在上半屏或下半屏显示）；<br>- 展开态下，窗口进入最大化，并在悬停态下退出瀑布流模式。<br>取值为`undefined`时，不修改窗口瀑布流模式行为：<br>- 悬停态下，窗口进入单面最大化；<br>- 展开态下，窗口进入最大化，并在悬停态下默认保持瀑布流模式。<br>**设备行为差异：** 仅在具备折叠功能的2in1设备可正常调用；在其他设备上调用不生效。 |
 
 **返回值：**
 
@@ -7385,8 +7401,6 @@ restoreMainWindow(wantParameters?: Record<string, Object>): Promise&lt;void&gt;
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
-
-**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备上可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -7937,11 +7951,7 @@ getWindowDecorVisible(): boolean
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 
-
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错，返回false。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **返回值：**
 
@@ -7981,11 +7991,7 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：**
-
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
 
 **参数：**
 
@@ -8036,11 +8042,7 @@ setWindowTitleMoveEnabled(enabled: boolean): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：**
-
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -8297,8 +8299,6 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 在OpenHarmony 5.1.0之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
 从OpenHarmony 5.1.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -8746,11 +8746,7 @@ setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVi
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：**
-
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -10253,7 +10249,7 @@ export default class EntryAbility extends UIAbility {
 
 setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor, offsetX?: number, offsetY?: number): Promise&lt;void&gt;
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，用于设置一级子窗是否支持与主窗保持相对位置不变。使用Promise异步回调。
+用于设置一级子窗是否支持与主窗保持相对位置不变。使用Promise异步回调。
 
 该相对位置通过一级子窗与主窗之间锚点的偏移量表示，子窗和主窗使用的窗口锚点相同。
 
@@ -10267,7 +10263,11 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：**
+
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备（Phone设备除外，在Phone设备上调用该接口会返回801错误码）上可正常调用；在支持并不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错不生效；在不支持自由窗口的设备中返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持并不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错不生效；在不支持自由窗口的设备中返回801错误码。
 
 **参数：**
 
@@ -11959,7 +11959,7 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                 |
 | -------- | ------------------------- | ---- | -------------------- |
-| path     | string                    | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path     | string                    | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。           |
 
 **示例：**
@@ -11993,7 +11993,7 @@ loadContent(path: string): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| path   | string | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path   | string | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。|
 
 **返回值：**
 

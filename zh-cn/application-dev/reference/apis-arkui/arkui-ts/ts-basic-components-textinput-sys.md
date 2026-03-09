@@ -40,7 +40,7 @@ voiceButton(options: Optional\<VoiceButtonOptions\>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ----- | ---- | ---- |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)<[VoiceButtonOptions](./ts-text-common-sys.md#voicebuttonoptions23)> | 是  | 语音按钮选项参数。 |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)<[VoiceButtonOptions](./ts-text-common-sys.md#voicebuttonoptions23)> | 是  | 语音按钮选项参数。 |
 
 
 ## 示例

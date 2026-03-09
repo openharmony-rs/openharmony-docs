@@ -48,6 +48,7 @@
 | autoPlayScenes<sup>23+</sup>      | Array\<[AutoPlayScene](#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | globalMovingPhotoState<sup>23+</sup>       | [MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | 否   | 是 | 设置全局动态照片的效果，当前仅支持MOVING_PHOTO_ENABLED和MOVING_PHOTO_DISABLED。默认为MOVING_PHOTO_ENABLED。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | gridPinchMode<sup>23+</sup>       | [GridPinchMode](arkts-apis-photoAccessHelper-i.md#gridpinchmode23) | 否   | 是 | picker内宫格捏合模式。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| showDateOnScrollBar<sup>24+</sup>       | boolean | 否   | 是 | 是否在拖动滚动条时展示日期分组信息，true表示展示，false表示不展示，默认为false。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## PhotoSelectOptions
 

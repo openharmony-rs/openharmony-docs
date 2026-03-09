@@ -357,6 +357,33 @@ cachedCount(count: number, isShown: boolean)
 | count  | number | 是   | 预加载子组件个数。<br/>默认值：1<br/>取值范围：[0, +∞)，设置小于0的值时，按照默认值处理。 |
 | isShown  | boolean | 是   | 预加载范围内的节点是否进行绘制，不下渲染树。<br/>true：预加载范围内的节点进行绘制；false：预加载范围内的节点不进行绘制。<br/>传入非法值时，按false处理。 |
 
+### cachedCount<sup>24+</sup>
+
+cachedCount(count: number, options: CachedCountOptions)
+
+设置预加载子组件个数和配置选项。
+
+> **说明：**
+>
+> - 当options的independent设置为true时，预加载子组件个数按count个数计算，与[displaycount](#displaycount22)的分组swipeByGroup计算解耦。例如cachedCount的count为1时，会将当前显示子节点的前一个和后一个子组件预加载。
+> - 当displayCount的swipeByGroup参数设为true，且options的independent为false（默认值）时，预加载子组件个数以组为基本单位。例如cachedCount的count为1，displayCount的value为2，displayCount的swipeByGroup为true时，会将当前显示组的前一组和后一组的各两个子组件预加载。
+> - 只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了virtualScroll开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效，生效后超出缓存范围的子节点会被释放。
+
+**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ---- |
+| count | number | 是 | 预加载子组件个数。<br/>取值范围：[0, +∞)，设置小于0的值时，按照1处理。 |
+| options | [CachedCountOptions](#cachedcountoptions24对象说明) | 是 | 预加载子组件的配置选项。 |
+
 ### disableSwipe<sup>8+</sup>
 
 disableSwipe(value: boolean)
@@ -584,7 +611,7 @@ pageFlipMode(mode: Optional\<PageFlipMode>)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>取undefined时，按取值为PageFlipMode.CONTINUOUS处理。 |
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>取undefined时，按取值为PageFlipMode.CONTINUOUS处理。 |
 
 ### maintainVisibleContentPosition<sup>20+</sup>
 
@@ -780,7 +807,7 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
 | 参数名   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
-| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<Array\<number>> | 是 | 需预加载的子节点的下标数组。|
+| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<Array\<number>> | 是 | 需预加载的子节点的下标数组。|
 
 **返回值：**
 
@@ -831,9 +858,9 @@ fakeDragBy(offset: number): boolean
 
 > **说明：**
 >
-> - 模拟拖拽的距离需要依赖布局体现，建议接口在布局之前调用，拖拽效果可以在当前帧布局后体现。如果在未布局前调用了多次该接口，当前帧布局时只生效最后一次调用传入的拖拽距离。
+> - 模拟拖拽的距离需要依赖布局体现，建议接口在布局前调用，拖拽效果可以在当前帧布局后体现。如果在未布局前调用了多次该接口，当前帧布局时只生效最后一次调用传入的拖拽距离。
 >
-> - 在循环场景下，传入模拟拖拽的距离过大，导致布局过程中套圈，会多次布局当前视窗显示的子节点时，当次传入的拖拽距离会被调整为拖拽到刚好显示第一个子节点（向布局起点拖拽）或者最后一个子节点（向布局终点方向拖拽）。
+> - 在[loop](#loop)设置为true的循环场景下，如果设置的模拟拖拽的距离大于布局总长度，此时模拟拖拽距离会被调整为拖拽到刚好显示第一个子节点（向布局起点拖拽）或者最后一个子节点（向布局终点方向拖拽）的距离。
 >
 > - [onGestureSwipe](#ongestureswipe10)事件、[onContentWillScroll](#oncontentwillscroll15)事件在拖拽过程中不触发。[customContentTransition](#customcontenttransition12)会在布局前触发，由于真实的拖拽距离可能在布局时被调整，在传入拖拽距离过大时，触发事件时的返回的节点显示信息可能与布局结果不一致。
 
@@ -1549,6 +1576,23 @@ DigitIndicator的构造函数。
 | ---------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | stopWhenTouched   | boolean                              | 否   | 否    | 在按下事件中配置子组件是否立即停止播放。<br/>设置为true时，停止播放。设置为false时，自动播放不中断。<br/>默认值：true |
 
+## CachedCountOptions<sup>24+</sup>对象说明
+
+预加载子组件的配置选项。
+
+**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 类型    | 只读  | 可选  | 说明                                     |
+| ------------ | ------- | ---- | ---- | ---------------------------------------- |
+| isShown      | boolean | 否    | 是    | 预加载范围内的节点是否进行绘制。<br/>设置为true时，预加载范围内的节点进行绘制。<br/>设置为false时，预加载范围内的节点不进行绘制。<br/>默认值：false |
+| independent  | boolean | 否    | 是    | [cachedCount](#cachedcount24)是否按组计算。<br/>设置为true时，cachedCount按实际子组件个数计算，不按组计算。<br/>设置为false时，如果displayCount.swipeByGroup=true，则cachedCount按组计算，否则按实际子组件个数计算。<br/>默认值：false |
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
@@ -2196,6 +2240,8 @@ struct SwiperExample {
 
 该示例通过[displayCount](#displaycount8)属性实现了按组翻页效果。
 
+从API version 24开始，新增[CachedCountOptions](#cachedcountoptions24对象说明)参数，通过该参数实现缓存的节点个数和displayCount的按组显示数量解耦。
+
 ```ts
 // xxx.ets
 class MyDataSource implements IDataSource {
@@ -2247,6 +2293,7 @@ struct SwiperExample {
         }, (item: string) => item)
       }
       .displayCount(3, true) // 开启按组翻页：每页显示3个轮播项，且翻页时整组切换
+      .cachedCount(1, { independent: true }) // 从API version 24开始，新增CachedCountOptions.independent参数。在显示区域外各缓存一个子节点，和displayCount的按组显示数量解耦
       .autoPlay(true)
       .interval(4000)
       .loop(true)

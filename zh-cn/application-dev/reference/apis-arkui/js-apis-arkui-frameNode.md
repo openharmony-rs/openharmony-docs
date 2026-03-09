@@ -10,11 +10,13 @@ FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeC
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前不支持在预览器中使用FrameNode节点。
+> - 当前不支持在预览器中使用FrameNode节点。
 >
-> FrameNode节点暂不支持拖拽。
+> - FrameNode节点暂不支持拖拽。
+>
+> - FrameNode对象不支持使用JSON序列化。
 
 ## 导入模块
 
@@ -1367,7 +1369,7 @@ getInspectorInfo(): Object
 | Object | 节点的结构信息。 |
 
 以查询[Button](arkui-ts/ts-basic-components-button.md)组件节点为例获取到的Object结果部分值如下。
-```json
+```json5
 {
     "$type": "Button",
     "$ID": 44,
@@ -2574,7 +2576,7 @@ struct Index {
     if (isOnRenderTree) {
       hilog.info(1, 'frameNode', 'is on render tree');
     } else {
-      hilog.info(1, 'frameNode', 'is not no render tree');
+      hilog.info(1, 'frameNode', 'is not on render tree');
     }
   }
 
@@ -2608,7 +2610,7 @@ struct Index {
         let textNode1 = this.getUIContext().getFrameNodeById("hello1");
         if (textNode1 != null) {
           let isOnRenderTree = textNode1!.isInRenderState();
-          isOnRenderTree ? this.message = 'is on render tree' : 'is not no render tree'
+          isOnRenderTree ? this.message = 'is on render tree' : 'is not on render tree'
           hilog.info(1, 'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
         }
       })

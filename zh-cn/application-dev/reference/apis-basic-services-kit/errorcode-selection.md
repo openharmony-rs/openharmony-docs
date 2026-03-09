@@ -49,11 +49,11 @@ This selection window has been destroyed.
 1. 在操作划词窗口前，检查窗口对象是否有效。
 2. 避免操作已销毁的窗口对象。
 
-## 33600003 无效的划词应用
+## 33600003 调用API的应用程序与系统设置中选择的应用程序不匹配
 
 **错误信息**
 
-Invalid operation. The selection app is not valid.
+The application calling the API does not match the application selected in the system settings.
 
 **错误描述**
 
