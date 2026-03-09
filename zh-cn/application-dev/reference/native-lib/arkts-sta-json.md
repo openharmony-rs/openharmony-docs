@@ -322,6 +322,41 @@ try {
 }
 ```
 
+## JsonSerializable
+
+JsonSerializable提供了一个接口，供外部类通过重写toJSON方法来实现自定义JSON序列化行为。
+
+### toJSON
+
+toJSON(): string
+
+外部类通过重写toJSON方法来实现自定义JSON序列化行为。
+
+**返回值：**
+
+| 类型   | 说明             |
+| ------ | --------------- |
+| string | 自定义toJSON方法转换后的返回的字符串。 |
+
+**示例：**
+
+```ts
+class testA {
+    a: string = 'Hello'
+}
+
+console.info(JSON.stringify(new testA())) // {"a":"Hello"}
+
+class testB implements JsonSerializable {
+    a: string = 'Hello'
+
+    toJSON(): string {
+        return "testB Hello World"
+    }
+}
+
+console.info(JSON.stringify(new testB())) // "testB Hello World"
+```
 
 ## JsonParseError
 
