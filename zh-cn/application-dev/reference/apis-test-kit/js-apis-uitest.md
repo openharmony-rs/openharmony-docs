@@ -328,10 +328,6 @@ UI事件的相关信息。
 UiTest框架从API version 9开始，通过On类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br>
 On提供的API能力具有以下几个特点:<br>1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。<br>2、控件属性支持多种匹配模式。<br>3、支持控件绝对定位，相对定位，可通过[ON.isBefore](#isbefore9)和[ON.isAfter](#isafter9)等API限定邻近控件特征进行辅助定位。<br>On类提供的所有API均为同步接口，建议使用者通过静态构造器ON来链式创建On对象。
 
-**ArkTS-Dyn起始版本：** 9 
-
-**ArkTS-Sta起始版本：** 23
-
 ```ts
 import { ON } from '@kit.TestKit';
 
@@ -1231,10 +1227,6 @@ let on: On = ON.originalText('123'); // 使用静态构造器ON创建On对象，
 
 UiTest框架在API9中，Component类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。
 该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。
-
-**ArkTS-Dyn起始版本：** 9 
-
-**ArkTS-Sta起始版本：** 23
 
 ### click<sup>9+</sup>
 
@@ -2303,7 +2295,7 @@ dragTo(target: Component): Promise\<void>
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **ArkTS-Dyn起始版本：** 9 
 
@@ -2617,10 +2609,6 @@ async function demo() {
 
 Driver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。
 该类提供的方法除Driver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
-
-**ArkTS-Dyn起始版本：** 9 
-
-**ArkTS-Sta起始版本：** 23
 
 ### create<sup>9+</sup>
 
@@ -3654,7 +3642,7 @@ ArkTS-Sta: drag(startx: int, starty: int, endx: int, endy: int, speed?: int): Pr
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **ArkTS-Dyn起始版本：** 9 
 
@@ -3709,7 +3697,7 @@ ArkTS-Sta: dragBetween(from: Point, to: Point, speed?: int, duration?: int): Pro
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **ArkTS-Dyn起始版本：** 20 
 
@@ -3855,7 +3843,7 @@ setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **ArkTS-Dyn起始版本：** 9 
 
@@ -3989,7 +3977,7 @@ setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **ArkTS-Dyn起始版本：** 9 
 
@@ -4243,7 +4231,7 @@ pressHome(): Promise\<void>
 
 设备注入返回桌面操作。使用Promise异步回调。
 
-**设备行为差异：**该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4285,7 +4273,7 @@ ArkTS-Sta: pressHome(displayId: int): Promise\<void>
 
 设备指定屏幕上注入返回桌面操作。使用Promise异步回调。
 
-**设备行为差异：**该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -5074,7 +5062,7 @@ mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
 鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点。使用Promise异步回调。
 
-**设备行为差异：**该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5130,7 +5118,7 @@ ArkTS-Sta: mouseDrag(from: Point, to: Point, speed?: int, duration?: int): Promi
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **ArkTS-Dyn起始版本：** 20 
 
@@ -5292,7 +5280,7 @@ ArkTS-Sta: touchPadMultiFingerSwipe(fingers: int, direction: UiDirection, option
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**该接口在PC/2in1设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回17000005错误码。
 
 **ArkTS-Dyn起始版本：** 18 
 
@@ -5344,7 +5332,7 @@ ArkTS-Sta: touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: int
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**该接口在PC/2in1设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回17000005错误码。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -5641,7 +5629,7 @@ ArkTS-Sta: crownRotate(d: int, speed?: int): Promise\<void>
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**该接口在Wearable设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Wearable设备中可正常调用，在其他设备中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 20 
 
@@ -5696,7 +5684,7 @@ ArkTS-Sta: knuckleKnock(pointers: Array\<Point>, times: int): Promise\<void>
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**该接口在支持指关节操作的Phone、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异：** 该接口在支持指关节操作的Phone、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -5750,7 +5738,7 @@ ArkTS-Sta: injectKnucklePointerAction(pointers: PointerMatrix, speed?: int): Pro
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**该接口在支持指关节操作的Phone、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异：** 该接口在支持指关节操作的Phone、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -5955,10 +5943,6 @@ async function demo() {
 
 存储多指操作中每根手指每一步动作的坐标点及其行为的二维数组。
 
-**ArkTS-Dyn起始版本：** 9 
-
-**ArkTS-Sta起始版本：** 23
-
 ### create<sup>9+</sup>
 
 ArkTS-Dyn: static create(fingers: number, steps: number): PointerMatrix
@@ -6062,10 +6046,6 @@ async function demo() {
 
 UiWindow代表了UI界面上的一个窗口，提供窗口属性获取，窗口拖动、调整窗口大小等能力。
 该类提供的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
-
-**ArkTS-Dyn起始版本：** 9 
-
-**ArkTS-Sta起始版本：** 23
 
 ### getBundleName<sup>9+</sup>
 
@@ -6377,7 +6357,7 @@ ArkTS-Sta: moveTo(x: int, y: int): Promise\<void>
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异：** 对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **ArkTS-Dyn起始版本：** 9 
 
@@ -6433,7 +6413,7 @@ ArkTS-Sta: resize(wide: int, height: int, direction: ResizeDirection): Promise\<
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异：** 对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **ArkTS-Dyn起始版本：** 9 
 
@@ -6486,7 +6466,7 @@ split(): Promise\<void>
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异：** 对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **ArkTS-Dyn起始版本：** 9 
 
@@ -6532,7 +6512,7 @@ maximize(): Promise\<void>
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异：** 对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **ArkTS-Dyn起始版本：** 9 
 
@@ -6578,7 +6558,7 @@ minimize(): Promise\<void>
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异：** 对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 
 **ArkTS-Dyn起始版本：** 9 
@@ -6625,7 +6605,7 @@ resume(): Promise\<void>
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异：** 对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **ArkTS-Dyn起始版本：** 9 
 
@@ -6671,7 +6651,7 @@ close(): Promise\<void>
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**设备行为差异：**对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异：** 对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **ArkTS-Dyn起始版本：** 9 
 
@@ -6797,10 +6777,6 @@ async function demo() {
 ## UIEventObserver<sup>10+</sup>
 
 UI事件监听器。
-
-**ArkTS-Dyn起始版本：** 10 
-
-**ArkTS-Sta起始版本：** 23
 
 ### once('toastShow')<sup>10+</sup>
 
