@@ -3113,10 +3113,10 @@ try {
 
 on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 
-开启当前应用窗口系统规避区变化的监听。
+开启当前应用窗口系统避让区域变化的监听。
 
 主窗口/子窗口：
-- [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下触发回调时，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
+- [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](../../windowmanager/window-terminology.md)）下触发回调时，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
 - 主窗口在非自由窗口状态的自由悬浮窗口模式下触发回调时，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
 - 主窗口在其余场景下触发回调时，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能返回计算后的避让区域，否则直接返回空的避让区域。
 - 子窗口在非自由窗口状态或非自由悬浮窗口模式下触发回调时，仅当子窗口的位置和大小与主窗口一致时，才能返回计算后的子窗口避让区域，否则直接返回空的避让区域。
@@ -3124,7 +3124,7 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 全局悬浮窗、模态窗或系统窗口：
 - 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，触发回调时才能返回计算后的避让区域，否则直接返回空的避让区域。
 
-<!--RP7-->常见的触发避让区回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；多折叠设备在屏幕折叠态和展开态之间的切换；应用窗口在多设备之间的流转。<!--RP7End-->
+<!--RP7-->常见的触发避让区回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；可折叠设备在屏幕折叠状态发生变化；应用窗口在多设备之间的流转。<!--RP7End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
