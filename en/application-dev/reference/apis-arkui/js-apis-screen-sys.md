@@ -1452,7 +1452,7 @@ Before calling any API in Screen, you must use [getAllScreens()](#screengetallsc
 
 setOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the screen orientation. This API uses an asynchronous callback to return the result.
+Sets the screen orientation. This API uses an asynchronous callback to return the result. The screen orientation changes only when the specified orientation complies with the [application rotation policy](../../quick-start/module-configuration-file.md#abilities) (you can configure the application rotation policy by setting the **orientation** field in the **abilities** tag in the **module.json5** file). If the specified orientation does not comply with the application rotation policy, the screen orientation does not change and no exception is thrown.
 
 **System API**: This is a system API.
 
@@ -1518,7 +1518,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 setOrientation(orientation: Orientation): Promise&lt;void&gt;
 
-Sets the screen orientation. This API uses a promise to return the result.
+Sets the screen orientation. This API uses a promise to return the result. The screen orientation changes only when the specified orientation complies with the [application rotation policy](../../quick-start/module-configuration-file.md#abilities) (you can configure the application rotation policy by setting the **orientation** field in the **abilities** tag in the **module.json5** file). If the specified orientation does not comply with the application rotation policy, the screen orientation does not change and no exception is thrown.
 
 **System API**: This is a system API.
 

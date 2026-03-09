@@ -98,7 +98,7 @@ Initializes the C API environment and obtains the native module API collection o
 ### OH_ArkUI_GetModuleInterface()
 
 ```c
-OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                             \
+#define OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                     \
 do {                                                                                                 \
         void* anyNativeAPI = OH_ArkUI_QueryModuleInterfaceByName(nativeAPIVariantKind, #structType); \
         if (anyNativeAPI) {                                                                          \
