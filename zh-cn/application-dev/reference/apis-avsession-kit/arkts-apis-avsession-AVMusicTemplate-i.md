@@ -234,7 +234,7 @@
 | 名称         | 类型    | 只读 | 可选 | 说明                                                       |
 | ------------ | ------- | ---- | ---- | ---------------------------------------------------------- |
 | isSupportFav | boolean | 否   | 否   | 是否支持收藏/订阅。true表示支持，false表示不支持。         |
-| isFavorite   | boolean | 否   | 否   | 是否收藏/订阅。true表示已收藏/订阅，false表示未收藏/订阅。 |
+| isFavorite   | boolean | 否   | 否   | 是否已收藏/订阅。true表示已收藏/订阅，false表示未收藏/订阅。 |
 | favCounts    | string  | 否   | 否   | 收藏/订阅的数量。                                          |
 
 ## SettingItem
