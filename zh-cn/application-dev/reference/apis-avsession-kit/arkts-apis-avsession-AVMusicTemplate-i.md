@@ -187,8 +187,8 @@
 | ---------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------ |
 | isVip            | boolean                                                      | 否   | 否   | 是否是VIP歌曲。true表示是，false表示不是。 |
 | singer           | string                                                       | 否   | 否   | 歌手的名字。                               |
-| playInfo         | [PlayInfo](arkts-apis-avsession-AVMusicTemplate-i.md#playinfo) | 否   | 否   | 播放信息。                                 |
-| favSubscribeData | [FavoriteData](arkts-apis-avsession-AVMusicTemplate-i.md#favoritedata) | 否   | 否   | 收藏或订阅的信息。                         |
+| playInfo         | [PlayInfo](arkts-apis-avsession-AVMusicTemplate-i.md#playinfo) | 否   | 否   | 播放歌曲信息。                             |
+| favSubscribeData | [FavoriteData](arkts-apis-avsession-AVMusicTemplate-i.md#favoritedata) | 否   | 否   | 收藏或订阅的歌曲的信息。                   |
 | tags             | string[]                                                     | 否   | 是   | 歌曲标签信息的数组。                       |
 | settings         | [SettingItem](#settingitem)[]                                | 否   | 是   | 歌曲设置项的数组。                         |
 | downloadStatus   | [DownloadStatus](arkts-apis-avsession-AVMusicTemplate-e.md#downloadstatus) | 否   | 是   | 歌曲下载状态。                             |

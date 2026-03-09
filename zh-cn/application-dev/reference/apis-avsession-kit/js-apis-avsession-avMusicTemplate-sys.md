@@ -44,6 +44,12 @@ createAVMusicTemplateController(sessionId: string): AVMusicTemplateController
 | --------- | ------ | ---- | ----------------------------- |
 | sessionId | string | 是   | AVSession对象唯一的会话标识。 |
 
+**返回值：**
+
+| 类型                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [AVMusicTemplateController](arkts-apis-avsession-AVMusicTemplateController.md) | 音频模板控制器，可以获得音频模板控制器唯一的标识，用于与接入音频模板的媒体应用数据交互。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
