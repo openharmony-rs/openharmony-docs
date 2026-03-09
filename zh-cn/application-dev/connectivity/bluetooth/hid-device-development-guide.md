@@ -203,7 +203,7 @@ try {
 
 ### 设备端
 ```ts
-import { baseProfile, hid, common } from '@kit.ConnectivityKit'
+import { baseProfile, hid, common } from '@kit.ConnectivityKit';
 
 class HidDeviceManager {
     device: common.BluetoothAddress = {
