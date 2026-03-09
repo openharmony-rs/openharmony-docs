@@ -5537,3 +5537,31 @@ Allows an application to query whether the page is in the standby state and acce
 **Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
 
 **Since**: 23
+
+## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
+ 	 
+Allows a system application to manage the education space.
+ 	 
+**Permission level**: system_basic
+ 	 
+**Authorization mode**: system_grant
+ 	 
+**Enable via ACL**: true
+ 	 
+**Supported devices**: tablets
+ 	 
+**Since**: 23
+ 	 
+## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
+ 	 
+Allows a system application to query the education space properties.
+ 	 
+**Permission level**: system_basic
+ 	 
+**Authorization mode**: system_grant
+ 	 
+**Enable via ACL**: true
+ 	 
+**Supported devices**: tablets
+ 	 
+**Since**: 23
