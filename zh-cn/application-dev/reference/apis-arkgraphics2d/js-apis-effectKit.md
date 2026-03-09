@@ -10,8 +10,9 @@
 
 > **说明：**
 > 
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -30,7 +31,7 @@ createEffect(source: image.PixelMap): Filter
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -78,7 +79,7 @@ createColorPicker(source: image.PixelMap): Promise\<ColorPicker>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -142,7 +143,7 @@ ArkTS-Sta: createColorPicker(source: image.PixelMap, region: Array\<double>): Pr
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -205,7 +206,7 @@ createColorPicker(source: image.PixelMap, callback: AsyncCallback\<ColorPicker>)
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -264,7 +265,7 @@ ArkTS-Sta: createColorPicker(source: image.PixelMap, region: Array\<double>, cal
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -320,7 +321,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -364,7 +365,7 @@ getMainColor(): Promise\<Color>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -416,7 +417,7 @@ getMainColorSync(): Color
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -467,7 +468,7 @@ getLargestProportionColor(): Color
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -520,7 +521,7 @@ ArkTS-Sta: getTopProportionColors(colorCount: int): Array<Color | null>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -580,7 +581,7 @@ getHighestSaturationColor(): Color
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -631,7 +632,7 @@ getAverageColor(): Color
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -684,7 +685,7 @@ ArkTS-Sta: isBlackOrWhiteOrGrayColor(color: long): boolean
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -750,7 +751,7 @@ ArkTS-Sta: blur(radius: double): Filter
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -855,7 +856,7 @@ invert(): Filter
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -899,7 +900,7 @@ ArkTS-Sta: setColorMatrix(colorMatrix: Array\<double>): Filter
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -966,7 +967,7 @@ ArkTS-Sta: brightness(bright: double): Filter
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1019,7 +1020,7 @@ grayscale(): Filter
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1065,7 +1066,7 @@ getEffectPixelMap(): Promise<image.PixelMap>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1106,8 +1107,11 @@ getPixelMap(): image.PixelMap
 
 > **说明：**
 >
-> 此接口仅支持ArkTS-Dyn。
 > 此接口从API version 9开始支持，从API version 11开始废弃，推荐使用[getEffectPixelMap](#geteffectpixelmap11)。
+
+**ArkTS模式：** 此接口仅支持ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
