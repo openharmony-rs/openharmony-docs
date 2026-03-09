@@ -50,7 +50,7 @@ getAllAppPrivateCertificates(callback: AsyncCallback\<CMResult>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -69,7 +69,7 @@ try {
       console.error(`Failed to get all app private certificates. Code: ${err.code}, message: ${err.message}`);
     } else {
       if (cmResult === undefined) { // 私有凭据个数为0时，返回cmResult为undefined。
-        console.info('the count of the app private certificates is 0');
+        console.info('The count of the app private certificates is 0.');
       } else if (cmResult.credentialList == undefined) {
         console.info('The result of getting all app private certificates is undefined.');
       } else {
@@ -99,11 +99,11 @@ getAllAppPrivateCertificates(): Promise\<CMResult>
 
 | 类型                                                  | 说明                                                         |
 | ----------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象。表示获取所有私有凭据列表的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的credentialList属性。 |
+| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象，返回获取所有私有凭据列表的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的credentialList属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -119,7 +119,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   certificateManager.getAllAppPrivateCertificates().then((cmResult) => {
     if (cmResult === undefined) { // 私有凭据个数为0时，返回cmResult为undefined。
-      console.info('the count of the app private certificates is 0');
+      console.info('The count of the app private certificates is 0.');
     } else if (cmResult.credentialList == undefined) {
       console.info('The result of getting all app private certificates is undefined.');
     } else {
@@ -150,11 +150,11 @@ getAllSystemAppCertificates(): Promise\<CMResult>
 
 | 类型                                                  | 说明                                                         |
 | ----------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象。表示获取所有系统凭据列表的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的credentialList属性。 |
+| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象，返回获取所有系统凭据列表的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的credentialList属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -170,7 +170,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   certificateManager.getAllSystemAppCertificates().then((cmResult) => {
     if (cmResult === undefined) { // 系统凭据个数为0时，返回cmResult为undefined。
-      console.info('the count of the system certificates is 0');
+      console.info('The count of the system certificates is 0.');
     } else if (cmResult.credentialList == undefined) {
       console.info('The result of getting all system app certificates is undefined.');
     } else {
@@ -189,7 +189,7 @@ try {
 
 getSystemTrustedCertificate(certUri: string): Promise\<CMResult>
 
-表示获取系统信任CA证书的详细信息。此接口仅提供给证书管理应用使用。
+获取系统信任的CA证书详情，仅证书管理应用调用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
@@ -203,17 +203,17 @@ getSystemTrustedCertificate(certUri: string): Promise\<CMResult>
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| certUri | string                   | 是   | 表示证书的唯一标识符。可通过getSystemTrustedCertificateList接口获取。 |
+| certUri | string                   | 是   | 表示证书的唯一标识符。可通过[getSystemTrustedCertificateList](#certificatemanagergetsystemtrustedcertificatelist)接口获取。 |
 
 **返回值**：
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象。表示获取系统信任CA证书详细信息的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的certInfo属性。 |
+| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象，返回获取系统信任CA证书详细信息的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的certInfo属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -249,7 +249,7 @@ try {
 
 getSystemTrustedCertificateList(): Promise\<CMResult>
 
-表示获取系统信任CA证书列表。此接口仅提供给证书管理应用使用。
+获取系统信任的CA证书列表，仅证书管理应用调用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
@@ -263,11 +263,11 @@ getSystemTrustedCertificateList(): Promise\<CMResult>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象。表示获取系统信任CA证书列表的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的certList属性。 |
+| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象，返回获取系统信任CA证书列表的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的certList属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -283,7 +283,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   certificateManager.getSystemTrustedCertificateList().then((cmResult: certificateManager.CMResult) => {
     if (cmResult === undefined) { // 系统信任CA证书个数为为0时，返回cmResult为undefined。
-      console.info('the count of system trusted certificates is 0');
+      console.info('The count of system trusted certificates is 0.');
     } else if (cmResult.certList == undefined) {
       console.info('The result of getting system trusted certificates is undefined.');
     } else {
@@ -302,7 +302,7 @@ try {
 
 setCertificateStatus(certUri: string, certType: CertType, enabled: boolean) : Promise\<void>
 
-表示设置证书状态。此接口仅提供给证书管理应用使用。当前仅支持设置用户CA证书状态。
+设置CA证书的状态，当前仅支持设置用户CA证书状态，仅证书管理应用调用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_USER_TRUSTED_CERT
 
@@ -317,18 +317,18 @@ setCertificateStatus(certUri: string, certType: CertType, enabled: boolean) : Pr
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | certUri | string                   | 是   | 表示证书的唯一标识符。当前仅支持用户CA证书。 |
-| certType | [CertType](js-apis-certManager.md#certtype18) | 是   | 表示证书类型。当前仅支持设置用户CA证书(CA_CERT_USER)的状态。 |
-| enabled | boolean                   | 是   | 表示证书状态是否启用。 |
+| certType | [CertType](js-apis-certManager.md#certtype18) | 是   | 表示证书类型。当前仅支持设置用户CA证书（CA_CERT_USER）的状态。 |
+| enabled | boolean                   | 是   | 表示证书状态是否启用。true：已启用，false：已禁用。 |
 
 **返回值**：
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -360,9 +360,9 @@ try {
 
 uninstallAllUserTrustedCertificate() : Promise\<void>
 
-表示卸载所有用户信任CA证书。此接口仅提供给证书管理应用使用。
+卸载所有用户信任的CA证书，仅证书管理应用调用。使用Promise异步回调。
 
-**需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL 和 ohos.permission.ACCESS_USER_TRUSTED_CERT
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_USER_TRUSTED_CERT
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -374,11 +374,11 @@ uninstallAllUserTrustedCertificate() : Promise\<void>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -406,7 +406,7 @@ try {
 
 installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : Promise\<CMResult>
 
-表示安装用户公共凭据。此接口仅提供给证书管理应用使用。
+安装用户的公共凭据，仅证书管理应用调用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
@@ -427,11 +427,11 @@ installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : Promise\<C
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象。表示安装用户公共凭据的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的uri属性。 |
+| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象，返回安装用户公共凭据的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的uri属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -470,7 +470,7 @@ try {
 
 uninstallPublicCertificate(keyUri: string) : Promise\<void>
 
-表示卸载用户公共凭据。此接口仅提供给证书管理应用使用。
+卸载用的户公共凭据，仅证书管理应用调用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
@@ -490,11 +490,11 @@ uninstallPublicCertificate(keyUri: string) : Promise\<void>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -526,7 +526,7 @@ try {
 
 getAllPublicCertificates() : Promise\<CMResult>
 
-表示获取所有用户公共凭据。此接口仅提供给证书管理应用使用。
+获取所有用户的公共凭据，仅证书管理应用调用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
@@ -540,11 +540,11 @@ getAllPublicCertificates() : Promise\<CMResult>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象。表示获取所有用户公共凭据的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的credentialDetailList属性。 |
+| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象，返回获取所有用户公共凭据的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的credentialDetailList属性。<br>**说明**：用户公共凭据个数为0时，返回CMResult为undefined。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -561,7 +561,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
     certificateManager.getAllPublicCertificates().then((cmResult: certificateManager.CMResult) => {
         if (cmResult === undefined) { // 用户公共凭据个数为0时，返回cmResult为undefined。
-            console.info('the count of public certificates is 0');
+            console.info('The count of public certificates is 0.');
         } else if (cmResult.credentialDetailList == undefined) {
             console.info('The result of getting all public certificates is undefined.');
         } else {
@@ -578,9 +578,9 @@ try {
 
 ## certificateManager.grantPublicCertificate
 
-grantPublicCertificate(keyUri: string, clientAppUid: int) : Promise\<CMResult>
+grantPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<CMResult>
 
-表示授予应用使用用户公共凭据的权限。此接口仅提供给证书管理应用使用。
+授予应用使用用户公共凭据的权限，仅证书管理应用调用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
@@ -601,11 +601,11 @@ grantPublicCertificate(keyUri: string, clientAppUid: int) : Promise\<CMResult>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象。表示授予应用使用用户公共凭据权限的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的uri属性。 |
+| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象，返回授予应用使用用户公共凭据权限的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的uri属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -639,7 +639,7 @@ try {
 
 getAuthorizedAppList(keyUri: string) : Promise\<CMResult>
 
-表示获取用户公共凭据的授权应用列表。此接口仅提供给证书管理应用使用。
+获取用户公共凭据的授权应用列表，仅证书管理应用调用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
@@ -659,11 +659,11 @@ getAuthorizedAppList(keyUri: string) : Promise\<CMResult>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象。表示获取授权应用列表的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的appUidList属性。 |
+| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象，返回获取授权应用列表的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的appUidList属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -698,9 +698,9 @@ try {
 
 ## certificateManager.removeGrantedPublicCertificate
 
-removeGrantedPublicCertificate(keyUri: string, clientAppUid: int) : Promise\<void>
+removeGrantedPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<void>
 
-表示移除应用使用用户公共凭据的权限。此接口仅提供给证书管理应用使用。
+移除应用使用用户公共凭据的权限，仅证书管理应用调用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
@@ -721,11 +721,11 @@ removeGrantedPublicCertificate(keyUri: string, clientAppUid: int) : Promise\<voi
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -756,9 +756,9 @@ try {
 
 ## certificateManager.getAllAppPrivateCertificatesByUid
 
-getAllAppPrivateCertificatesByUid(appUid: int) : Promise\<CMResult>
+getAllAppPrivateCertificatesByUid(appUid: number) : Promise\<CMResult>
 
-表示获取指定应用的所有私有凭据。此接口仅提供给证书管理应用使用。
+获取指定应用的所有私有凭据，仅证书管理应用调用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
@@ -778,11 +778,11 @@ getAllAppPrivateCertificatesByUid(appUid: int) : Promise\<CMResult>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象。表示获取指定应用的所有私有凭据的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的credentialDetailList属性。 |
+| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象，返回获取指定应用的所有私有凭据的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的credentialDetailList属性。<br>**说明**：私有凭据个数为0时，返回CMResult为undefined。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -800,7 +800,7 @@ let appUid: number = 1001; /* 应用UID */
 try {
     certificateManager.getAllAppPrivateCertificatesByUid(appUid).then((cmResult: certificateManager.CMResult) => {
         if (cmResult === undefined) { // 指定应用的私有凭据个数为0时，返回cmResult为undefined。
-            console.info('the count of private certificates is 0');
+            console.info('The count of private certificates is 0.');
         } else if (cmResult.credentialDetailList == undefined) {
             console.info('The result of getting all private certificates is undefined.');
         } else {
@@ -819,7 +819,7 @@ try {
 
 installSystemAppCertificate(keystore: Uint8Array, keystorePwd: string): Promise\<CMResult>
 
-表示安装系统应用凭据。此接口仅提供给证书管理应用使用。
+安装系统应用凭据，仅证书管理应用调用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_SYSTEM_APP_CERT
 
@@ -840,11 +840,11 @@ installSystemAppCertificate(keystore: Uint8Array, keystorePwd: string): Promise\
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象。表示安装系统应用凭据的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的uri属性。 |
+| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象，返回安装系统应用凭据的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的uri属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -883,7 +883,7 @@ try {
 
 getSystemAppCertificate(keyUri: string) : Promise\<CMResult>
 
-表示获取系统应用凭据详细信息。此接口仅提供给证书管理应用使用。
+获取系统应用的凭据详情，仅证书管理应用调用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_SYSTEM_APP_CERT
 
@@ -903,11 +903,11 @@ getSystemAppCertificate(keyUri: string) : Promise\<CMResult>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象。表示获取系统应用凭据详细信息的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的credential属性。 |
+| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象，返回获取系统应用凭据详细信息的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的credential属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -944,7 +944,7 @@ try {
 
 uninstallSystemAppCertificate(keyUri: string) : Promise\<void>
 
-表示卸载系统应用凭据。此接口仅提供给证书管理应用使用。
+卸载系统应用的凭据，仅证书管理应用调用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_SYSTEM_APP_CERT
 
@@ -964,11 +964,11 @@ uninstallSystemAppCertificate(keyUri: string) : Promise\<void>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1000,7 +1000,7 @@ try {
 
 uninstallAllAppCertificate() : Promise\<void>
 
-表示卸载所有系统应用凭据和用户公共凭据。此接口仅提供给证书管理应用使用。
+卸载所有系统应用凭据和用户公共凭据，仅证书管理应用调用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL 和 ohos.permission.ACCESS_SYSTEM_APP_CERT
 
@@ -1014,11 +1014,11 @@ uninstallAllAppCertificate() : Promise\<void>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|

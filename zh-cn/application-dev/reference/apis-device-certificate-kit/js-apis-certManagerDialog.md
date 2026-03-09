@@ -160,7 +160,7 @@ openCertificateManagerDialog(context: common.Context, pageType: CertificateDialo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理对话框错误码](errorcode-certManagerDialog.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -220,7 +220,7 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理对话框错误码](errorcode-certManagerDialog.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -290,7 +290,7 @@ openUninstallCertificateDialog(context: common.Context, certType: CertificateTyp
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理对话框错误码](errorcode-certManagerDialog.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -356,7 +356,7 @@ openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property:
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理对话框错误码](errorcode-certManagerDialog.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -419,7 +419,7 @@ openAuthorizeDialog(context: common.Context): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理对话框错误码](errorcode-certManagerDialog.md)。
 
 | 错误码ID    | 错误信息                                                                                                                                            |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|

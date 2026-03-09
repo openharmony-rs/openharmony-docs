@@ -148,7 +148,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | uri         | string    | 否  | 是   | 表示证书或凭据的唯一标识符，最大长度为256字节。 |
 | outData         | Uint8Array    | 否  | 是   | 表示签名结果。 |
 | credentialDetailList<sup>22+</sup>         | Array<[Credential](#credential)>    | 否  | 是   | 表示凭据详细信息。 |
-| uriList<br>**起始版本：** 26.0.0         | Array\<string>    | 否  | 是   | 表示证书URI列表。 |
+| uriList         | Array\<string>    | 否  | 是   | 表示证书URI列表。<br>**起始版本：** 26.0.0 |
 
 ## CMHandle
 
@@ -280,6 +280,8 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
+**起始版本：** 26.0.0
+
 | 名称       | 值 | 说明      |
 | ---------- | ------ | --------- |
 | PEM_DER   | 0      | 表示证书文件格式为PEM或DER。 |
@@ -306,7 +308,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -361,11 +363,11 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise对象。表示安装私有凭据的结果，返回值为[CMResult](#cmresult)对象中的uri属性。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回安装私有凭据的结果，返回值为[CMResult](#cmresult)对象中的uri属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -421,11 +423,11 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise对象。表示安装私有凭据的结果，返回值为[CMResult](#cmresult)对象中的uri属性。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回安装私有凭据的结果，返回值为[CMResult](#cmresult)对象中的uri属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID               | 错误信息                                                     |
 | ---------------------- | ------------------------------------------------------------ |
@@ -479,7 +481,7 @@ getPrivateCertificate(keyUri: string, callback: AsyncCallback\<CMResult>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -531,11 +533,11 @@ getPrivateCertificate(keyUri: string): Promise\<CMResult>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise对象。表示获取私有凭据详细信息的结果，返回值为[CMResult](#cmresult)对象中的credential属性。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取私有凭据详细信息的结果，返回值为[CMResult](#cmresult)对象中的credential属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -585,7 +587,7 @@ uninstallPrivateCertificate(keyUri: string, callback: AsyncCallback\<void>): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -632,11 +634,11 @@ uninstallPrivateCertificate(keyUri: string): Promise\<void>
 
 | 类型                                        | 说明                 |
 | ------------------------------------------- | -------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -672,6 +674,8 @@ installUserTrustedCertificate(certificate: CertBlob) : Promise\<CMResult>
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
+**起始版本：** 26.0.0
+
 **参数**：
 
 | 参数名      | 类型                       | 必填 | 说明                                                         |
@@ -682,11 +686,11 @@ installUserTrustedCertificate(certificate: CertBlob) : Promise\<CMResult>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise对象。表示安装用户CA证书的结果，返回值为[CMResult](#cmresult)对象中的uri属性。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回安装用户CA证书的结果，返回值为[CMResult](#cmresult)对象中的uri属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -745,11 +749,11 @@ installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope) : CMRe
 
 | 类型                    | 说明                                |
 |-----------------------|-----------------------------------|
-| [CMResult](#cmresult) | 表示CA证书的安装结果，返回值CMResult对象中的uri属性。 |
+| [CMResult](#cmresult) | 表示CA证书的安装结果，返回值为CMResult对象中的uri属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID                  | 错误信息                                                                                                                                            |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -800,7 +804,7 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID                  | 错误信息                                                                                                                                            |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -842,7 +846,7 @@ init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -896,11 +900,11 @@ init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 
 | 类型                                        | 说明                 |
 | ------------------------------------------- | -------------------- |
-| Promise\<[CMHandle](#cmhandle)> | Promise对象。表示签名、验签的初始化操作结果，返回CMHandle对象。 |
+| Promise\<[CMHandle](#cmhandle)> | Promise对象，返回签名、验签的初始化操作结果，返回值为CMHandle对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -952,7 +956,7 @@ update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1005,11 +1009,11 @@ update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 
 | 类型                                        | 说明                 |
 | ------------------------------------------- | -------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1059,7 +1063,7 @@ finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1113,7 +1117,7 @@ finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMRes
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1166,11 +1170,11 @@ finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise对象。执行签名操作时，表示签名的结果，返回值为[CMResult](#cmresult)对象中的outData属性；执行验签操作时，无返回结果的Promise对象。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象。执行签名操作时，返回签名的结果，返回值为[CMResult](#cmresult)对象中的outData属性；执行验签操作时，无返回值。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1234,7 +1238,7 @@ abort(handle: Uint8Array, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1283,11 +1287,11 @@ abort(handle: Uint8Array): Promise\<void>
 
 | 类型                                        | 说明                 |
 | ------------------------------------------- | -------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1335,11 +1339,11 @@ getPublicCertificate(keyUri: string): Promise\<CMResult>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise对象。表示获取用户公共凭据详细信息的结果，返回值为[CMResult](#cmresult)对象中的credential属性。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取用户公共凭据详细信息的结果，返回值为[CMResult](#cmresult)对象中的credential属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -1391,11 +1395,11 @@ isAuthorizedApp(keyUri: string): Promise\<boolean>
 
 | 类型              | 说明                                                         |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise对象。表示查询应用是否被授权的结果，true为已授权，false为未授权。 |
+| Promise\<boolean> | Promise对象，返回查询应用是否被授权的结果，true为已授权，false为未授权。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -1438,11 +1442,11 @@ getAllUserTrustedCertificates(): Promise\<CMResult>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise对象。表示获取用户根CA证书列表的结果，返回值[CMResult](#cmresult)对象中的certList属性。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取用户根CA证书列表的结果，返回值为[CMResult](#cmresult)对象中的certList属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -1457,7 +1461,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   certificateManager.getAllUserTrustedCertificates().then((cmResult) => {
     if (cmResult === undefined) { // 用户根CA证书个数为0时，返回cmResult为undefined。
-      console.info('the count of the user trusted certificates is 0');
+      console.info('The count of the user trusted certificates is 0.');
     } else if (cmResult.certList == undefined) {
       console.info('The result of getting all user trusted certificates is undefined.');
     } else {
@@ -1492,11 +1496,11 @@ getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise对象。表示获取用户根CA证书列表的结果，返回值[CMResult](#cmresult)对象中的certList属性。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取用户根CA证书列表的结果，返回值为[CMResult](#cmresult)对象中的certList属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1515,7 +1519,7 @@ try {
   let scope: certificateManager.CertScope = certificateManager.CertScope.CURRENT_USER;
   certificateManager.getAllUserTrustedCertificates(scope).then((cmResult) => {
     if (cmResult === undefined) { // 用户根CA证书个数为0时，返回cmResult为undefined。
-      console.info('the count of the user trusted certificates is 0');
+      console.info('The count of the user trusted certificates is 0.');
     } else if (cmResult.certList == undefined) {
       console.info('The result of getting current user trusted certificates is undefined.');
     } else {
@@ -1550,11 +1554,11 @@ getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise对象。表示获取用户根CA证书详细信息的结果，返回值为[CMResult](#cmresult)对象中的certInfo属性。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取用户根CA证书详细信息的结果，返回值为[CMResult](#cmresult)对象中的certInfo属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -1598,11 +1602,11 @@ getPrivateCertificates(): Promise\<CMResult>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise对象。表示获取应用安装的凭据列表的结果，返回值[CMResult](#cmresult)对象中的credentialList属性。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取应用安装的凭据列表的结果，返回值为[CMResult](#cmresult)对象中的credentialList属性。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -1617,7 +1621,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   certificateManager.getPrivateCertificates().then((cmResult) => {
     if (cmResult === undefined) { // 应用安装的凭据个数为0时，返回cmResult为undefined。
-      console.info('the count of the private certificates is 0');
+      console.info('The count of the private certificates is 0.');
     } else if (cmResult.credentialList == undefined) {
       console.info('The result of getting all private certificates installed by the application is undefined.');
     } else {
@@ -1653,7 +1657,7 @@ getCertificateStorePath(property: CertStoreProperty): string;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID    | 错误信息      |
 |----------| ------------- |
@@ -1784,7 +1788,7 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise对象。表示获取USB凭据证书列表的结果，返回值为[CMResult](#cmresult)对象中的credentialDetailList属性。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取USB凭据证书列表的结果，返回值为[CMResult](#cmresult)对象中的credentialDetailList属性。 |
 
 **错误码：**
 
