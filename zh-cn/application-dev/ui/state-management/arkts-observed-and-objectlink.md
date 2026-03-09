@@ -1889,10 +1889,12 @@ struct Index {
 ``` TypeScript
 @Observed
 class DataDownloader {
-  state: number;
+  public state: number;
+
   constructor() {
     this.state = 0;
   }
+
   startIntervalUpdate() {
     setInterval(() => {
       this.state += 1;
@@ -1903,10 +1905,12 @@ class DataDownloader {
 @Entry
 @Component
 struct Index {
-  @State dataDownloader: DataDownloader = new DataDownloader()
+  @State dataDownloader: DataDownloader = new DataDownloader();
+
   aboutToAppear() {
-    this.dataDownloader.startIntervalUpdate(); // @Observed装饰的类构建后再修改属性可以触发更新UI.
+    this.dataDownloader.startIntervalUpdate(); // @Observed装饰的类构建后再修改属性可以触发更新UI
   }
+
   build() {
     Column() {
       Text(`Download state is ${this.dataDownloader.state}`)
