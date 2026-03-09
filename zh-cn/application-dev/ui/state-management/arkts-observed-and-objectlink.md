@@ -383,7 +383,7 @@ struct Parent {
 
 ``` TypeScript
 class Book {
-  name: string;
+  public name: string;
 
   constructor(name: string) {
     this.name = name;
