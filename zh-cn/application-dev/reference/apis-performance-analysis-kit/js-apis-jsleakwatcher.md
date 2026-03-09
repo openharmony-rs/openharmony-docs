@@ -172,8 +172,6 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 
 此接口通过一次调用即可检测ArkTS对象的内存泄漏，比之前需要调用四个函数（enable、watch、check、dump）的方法更加简洁；通过configs可配置项参数，自定义设置监测项各属性，相比较之前极大提升了泄漏检测性能。
 
-
-
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
 **参数：**
@@ -181,7 +179,7 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | isEnabled | boolean | 是| 是否使能ArkTS对象内存泄漏检测功能。true：开启ArkTS内存泄漏检测功能；false：关闭ArkTS内存泄漏检测功能。|
-| configs | LeakWatcherConfig | 是| 配置项，对象中包含多个用于内存泄漏监测的配置属性。<br>可配置项包括：<br>objectWatcher: Array&lt;string&gt;<br>objectUniqueIDs: Array&lt;number&gt;<br>checkInterval: number<br>retainedVisibleThreshold: number<br>retainedInvisibleThreshold: number<br>maxStoredHeapDumps: number<br>dumpHeapWaitTimeMs: number<br>whiteList: Array&lt;string&gt;<br>[配置项参数详细说明](../../dfx/jsleakwatcher-view.md)<br>**说明**：对象中参数类型传入空值或假值代表该属性设置为默认值。|
+| configs | [LeakWatcherConfig](#leakwatcherconfigtype) | 是| 配置项，对象中包含多个用于内存泄漏监测的配置属性。<br>可配置项包括：<br>monitorObjectTypes: [MonitorObjectType](#monitorobjecttype);<br>objectUniqueIDs: Array&lt;number&gt;<br>checkInterval: number<br>fgLeakCountThreshold: number<br>bgLeakCountThreshold: number<br>maxStoredHeapDumps: number<br>dumpHeapWaitTimeMs: number<br>exclusionList: Array&lt;string&gt;<br>**说明**：对象中参数类型传入空值或假值代表该属性设置为默认值。|
 | callback | Callback&lt;Array&lt;string&gt;&gt; | 是| 回调函数，用于接收jsLeakWatcher.enableLeakWatcher接口的返回的内存泄漏的对象。<br>回调函数中传入一个数组对象，索引0为泄漏列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。|
 
 
@@ -199,20 +197,65 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 
 <!--code_no_check-->
 ```ts
-// 监测ArkTS对象CustomComponent的内存泄漏
+enum MonitorObjectType {
+  ALL = -1, 
+  CUSTOM_COMPONENT = 1 << 0,
+  WINDOW = 1 << 1,
+  NODE_CONTAINER = 1 << 2,
+  X_COMPONENT = 1 << 3,
+  ABILITY = 1 << 4
+}
+
+// 监测ArkTS对象CustomComponent和Window的内存泄漏
 // 对象中类型传入空值或假值代表该属性设置为默认值
 let config: LeakWatcherConfig = {
-    objectWatcher: ["CustomComponent"],
+    monitorObjectTypes: MonitorObjectType.CUSTOM_COMPONENT | MonitorObjectType.WINDOW,
     objectUniqueIDs: [],
     checkInterval: 10000,
-    retainedVisibleThreshold: 5,
-    retainedInvisibleThreshold: 3,
+    fgLeakCountThreshold: 5,
+    bgLeakCountThreshold: 3,
     maxStoredHeapDumps: 5,
     dumpHeapWaitTimeMs: 5000,
-    whiteList: []
+    exclusionList: []
 };
 jsLeakWatcher.enableLeakWatcher(true, config, (filepath : Array<string>) => {
     console.info('JsLeakWatcher leaklistFileName:' + filePath[0]);
     console.info('JsLeakWatcher heapDumpFileName:' + filePath[1]);
 });
 ```
+
+
+## LeakWatcherConfigType
+
+LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的可配置属性。
+
+**系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+开发者可通过LeakWatcherConfig对象类型参数自定义配置泄漏监测选项。以下详细介绍参数类型、及作用。
+
+| 参数| 含义| 说明
+| ------- | ------- | ------- |
+| monitorObjectTypes: MonitorObjectType | 被监测对象类型（如五大组件）| 指定监测以下组件类型：<br>CUSTOM_COMPONENT、WINDOW、NODE_CONTAINER、X_COMPONENT、ABILITY。 |
+| objectUniqueIDs : Array<number> | 被监测对象ID列表（如自定义组件ID） | 只作用于自定义组件，不会影响其他组件类型的监测。<br>例如：白名单中设置的对象类名id与自定义ID列表存在相同值时，生效ID列表参数。 |
+| checkInterval : number | 每轮泄漏检测间隔时间 | 默认为30秒。 |
+| fgLeakCountThreshold : number | 应用在前台泄漏个数达到设定值触发dump（如 5个） | GC/Dump阶段，阈值默认为5，大于等于5时触发Dump。 |
+| bgLeakCountThreshold : number | 应用在后台泄漏个数达到设定值触发dump（如 1个） | GC/Dump阶段，阈值默认为1，大于等于1时触发Dump。 |
+| maxStoredHeapDumps : number | 最大dump保存个数（如 10个），避免磁盘空间占满 | 默认保存10个rawheap、10个jsleaklist文件，超过则删除时间戳最小的rawheap、jsleaklist文件。 |
+| dumpHeapWaitTimeMs : number | 延迟执行dump，保证GC能调度且执行完再执行dump（如延迟5秒） | GC结束后默认延迟5秒执行dump，延迟间隔小于等于泄漏检测间隔时间。<br>设置延迟时长超过泄漏间隔时长则默认与泄漏间隔时长保持一致。 |
+| exclusionList : Array<string> | 过滤不想监测的对象类名（ClassName） | 默认为空数组；只作用于自定义组件，不会影响其他组件类型的过滤。<br>配置项冲突优先级：ID列表 > 白名单。 |
+
+
+## MonitorObjectType
+
+MonitorObjectType为enum类型，配置五大组件属性（CustomComponent, Window, NodeContainer, XComponent, Ability）。
+
+**系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+| 参数| 含义| 说明
+| ------- | ------- | ------- |
+| ALL | 所有组件类型（如五大组件） | 监测所有组件类型。 |
+| CUSTOM_COMPONENT | CustomComponent组件 | 监测自定义组件类型。 |
+| WINDOW | Window组件 | 监测Window组件类型。 |
+| NODE_CONTAINER | NodeContainer组件 | 监测NodeContainer组件类型。 |
+| X_COMPONENT | XComponent组件 | 监测XComponent组件类型。 |
+| ABILITY | Ability组件 | 监测Ability组件类型。 |
