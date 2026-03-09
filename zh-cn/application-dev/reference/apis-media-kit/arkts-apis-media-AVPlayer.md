@@ -27,7 +27,7 @@ import { media } from '@kit.MediaKit';
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
- **ArkTS-Dyn起始版本：** 12
+ **ArkTS-Dyn起始版本：** 9
  	 
  **ArkTS-Sta起始版本：** 23
 
@@ -60,7 +60,7 @@ on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -120,7 +120,7 @@ off(type: 'stateChange', callback?: OnAVPlayerStateChangeHandle): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -147,7 +147,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -208,7 +208,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -394,7 +394,7 @@ prepare(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -439,7 +439,7 @@ prepare(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -533,7 +533,7 @@ play(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -575,7 +575,7 @@ play(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -615,7 +615,7 @@ pause(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -657,7 +657,7 @@ pause(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -697,7 +697,7 @@ stop(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -739,7 +739,7 @@ stop(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -779,7 +779,7 @@ reset(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -821,7 +821,7 @@ reset(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -861,7 +861,7 @@ release(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -903,7 +903,7 @@ release(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -943,7 +943,7 @@ getTrackDescription(callback: AsyncCallback\<Array\<MediaDescription>>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -985,7 +985,7 @@ getTrackDescription(): Promise\<Array\<MediaDescription>>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1281,7 +1281,7 @@ setDecryptionConfig(mediaKeySession: drm.MediaKeySession, secureVideoPath: boole
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1328,7 +1328,7 @@ getMediaKeySystemInfos(): Array\<drm.MediaKeySystemInfo>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1364,7 +1364,7 @@ ArkTS-Sta: seek(timeMs: int, mode?:SeekMode): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1429,7 +1429,7 @@ on(type: 'seekDone', callback: Callback\<number>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1458,7 +1458,7 @@ off(type: 'seekDone', callback?: Callback\<number>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1484,7 +1484,7 @@ setSpeed(speed: PlaybackSpeed): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1512,7 +1512,7 @@ on(type: 'speedDone', callback: Callback\<number>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1541,7 +1541,7 @@ off(type: 'speedDone', callback?: Callback\<number>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1663,7 +1663,7 @@ ArkTS-Sta: setBitrate(bitrate: int): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1692,7 +1692,7 @@ on(type: 'bitrateDone', callback: Callback\<number>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1721,7 +1721,7 @@ off(type: 'bitrateDone', callback?: Callback\<number>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 19
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1748,7 +1748,7 @@ on(type: 'availableBitrates', callback: Callback\<Array\<number>>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1777,7 +1777,7 @@ off(type: 'availableBitrates', callback?: Callback\<Array\<number>>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1805,7 +1805,7 @@ on(type: 'mediaKeySystemInfoUpdate', callback: Callback\<Array\<drm.MediaKeySyst
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1839,7 +1839,7 @@ off(type: 'mediaKeySystemInfoUpdate', callback?: Callback\<Array\<drm.MediaKeySy
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1866,7 +1866,7 @@ ArkTS-Sta: setVolume(volume: double): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1895,7 +1895,7 @@ on(type: 'volumeChange', callback: Callback\<number>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1924,7 +1924,7 @@ off(type: 'volumeChange', callback?: Callback\<number>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 19
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1951,7 +1951,7 @@ on(type: 'endOfStream', callback: Callback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1980,7 +1980,7 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 19
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2009,7 +2009,7 @@ on(type: 'timeUpdate', callback: Callback\<number>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2038,7 +2038,7 @@ off(type: 'timeUpdate', callback?: Callback\<number>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2066,7 +2066,7 @@ on(type: 'durationUpdate', callback: Callback\<number>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2095,7 +2095,7 @@ off(type: 'durationUpdate', callback?: Callback\<number>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 19
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2122,7 +2122,7 @@ on(type: 'bufferingUpdate', callback: OnBufferingUpdateHandler): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2151,7 +2151,7 @@ off(type: 'bufferingUpdate', callback?: OnBufferingUpdateHandler): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 19
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2178,7 +2178,7 @@ on(type: 'startRenderFrame', callback: Callback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2207,7 +2207,7 @@ off(type: 'startRenderFrame', callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 19
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2234,7 +2234,7 @@ on(type: 'videoSizeChange', callback: OnVideoSizeChangeHandler): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2263,7 +2263,7 @@ off(type: 'videoSizeChange', callback?: OnVideoSizeChangeHandler): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2290,7 +2290,7 @@ on(type: 'audioInterrupt', callback: Callback\<audio.InterruptEvent>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2321,7 +2321,7 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2350,7 +2350,7 @@ on(type: 'audioOutputDeviceChangeWithInfo', callback: Callback\<audio.AudioStrea
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -2387,7 +2387,7 @@ off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback\<audio.AudioStr
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 

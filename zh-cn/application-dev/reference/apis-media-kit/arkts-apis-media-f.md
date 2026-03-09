@@ -28,7 +28,7 @@ ArkTS-Sta: createAVPlayer(callback: AsyncCallback\<AVPlayer | undefined>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -79,7 +79,7 @@ ArkTS-Sta: createAVPlayer(): Promise\<AVPlayer | undefined>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -562,7 +562,7 @@ ArkTS-Sta: createMediaSourceWithUrl(url: string, headers?: Record\<string, strin
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 

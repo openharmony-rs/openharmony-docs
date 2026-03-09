@@ -13,7 +13,7 @@
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -51,7 +51,7 @@
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
@@ -72,7 +72,7 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
@@ -99,7 +99,7 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
@@ -146,7 +146,7 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
@@ -165,7 +165,7 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -180,7 +180,7 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
@@ -215,7 +215,7 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
@@ -240,7 +240,7 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -282,7 +282,7 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 

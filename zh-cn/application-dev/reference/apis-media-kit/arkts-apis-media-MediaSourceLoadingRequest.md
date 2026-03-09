@@ -117,7 +117,9 @@ request.respondHeader(uuid, header);
 
 ## finishLoading<sup>18+</sup>
 
-finishLoading(uuid: number, state: LoadingRequestError): void
+ArkTS-Dyn: finishLoading(uuid: number, state: LoadingRequestError): void
+
+ArkTS-Sta: finishLoading(uuid: long, state: LoadingRequestError): void
 
 应用程序用于通知播放器当前请求状态的接口。针对服务侧请求的单个资源，推送完全部资源后需要发送LOADING_ERROR_SUCCESS状态告知该资源推送结束。
 
@@ -133,7 +135,7 @@ finishLoading(uuid: number, state: LoadingRequestError): void
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| uuid | number | 是  | 	资源句柄的标识。 |
+| uuid | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 	资源句柄的标识。 |
 | state  | [LoadingRequestError](arkts-apis-media-e.md#loadingrequesterror18) | 是  | 请求的状态。 |
 
 **示例：**

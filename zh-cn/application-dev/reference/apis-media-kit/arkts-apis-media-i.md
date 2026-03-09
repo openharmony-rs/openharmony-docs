@@ -13,7 +13,7 @@
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -31,7 +31,7 @@
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -85,7 +85,7 @@ SEI信息内容，描述SEI信息的负载类型和数据。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 | 名称          | 类型   | 只读 | 可选  | 说明                                                         |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
