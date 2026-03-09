@@ -96,7 +96,7 @@ struct CompV2 {
 \@SyncMonitor将调用其回调3次，分别对应从0到1、1到3和3到6的变化。
 
  <!-- @[compare_syncmonitor_with_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/CompareSyncMonitorWithMonitor.ets) -->
-
+ 
  ``` TypeScript
  import { hilog } from '@kit.PerformanceAnalysisKit';
  
