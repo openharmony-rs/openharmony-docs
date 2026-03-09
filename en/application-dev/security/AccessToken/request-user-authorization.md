@@ -14,6 +14,7 @@ The procedure for requesting user_grant permissions is as follows:
 1. Declare the permissions required by your application in the configuration file. 
 
 2. Associate each object that requires a user_grant permission with the related permission. This lets the user know what operations need user authorization.
+
    For details about the preceding two steps, see [Declaring Permissions](declare-permissions.md).
 
 3. Trigger user authorization via an API when the application in running needs to access the target object. The API first checks whether the user has granted the permission required. If no, a dialog box will be displayed to request authorization from the user.
@@ -31,6 +32,7 @@ This topic elaborates steps 3 and 4.
 - The system permission pop-up window cannot be obscured.
 
   The system permission pop-up window cannot be obscured by other components. The information in the pop-up window must be completely displayed so that the user can identify and complete authorization.
+  
   If the system permission pop-up window is displayed in the same position as another component, the system permission pop-up window takes precedence over the other component by default.
 
 - A check for the required permission is mandatory each time before the operation that requires the permission is performed.
@@ -41,7 +43,7 @@ This topic elaborates steps 3 and 4.
 
   After a permission is granted, the user may revoke the permission in **Settings**. Therefore, the previous authorization status cannot be persistent.
 
-- When requesting permissions using **onWindowStageCreate()**, the application needs to wait until the **loadContent()** or **setUIContent()** API is complete or call [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) in **loadContent()** or **setUIContent()**. Otherwise, **requestPermissionsFromUser()** will fail before **Content** is loaded.
+- When requesting permissions using **onWindowStageCreate()**, the application needs to wait until the **loadContent()** or **setUIContent()** API is complete or call [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) in **loadContent()** or **setUIContent()**.
   <!--RP1--><!--RP1End-->
 
 ## How to Develop
