@@ -72,7 +72,9 @@ let num = request.respondData(uuid, offset, buf);
 
 ## respondHeader<sup>18+</sup>
 
-respondHeader(uuid: number, header?: Record<string, string>, redirectUrl?: string): void
+ArkTS-Dyn: respondHeader(uuid: number, header?: Record<string, string>, redirectUrl?: string): void
+
+ArkTS-Sta: respondHeader(uuid: long, header?: Record<string, string>, redirectUrl?: string): void
 
 用于应用程序向播放器发送响应头信息，应在第一次调用[respondData](#responddata18)方法之前调用。
 
@@ -88,7 +90,7 @@ respondHeader(uuid: number, header?: Record<string, string>, redirectUrl?: strin
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| uuid | number | 是  | 	资源句柄的标识。 |
+| uuid | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 	资源句柄的标识。 |
 | header | Record<string, string> | 否  | HTTP响应中的头部信息。应用可将头部信息字段与底层支持解析字段取交集传递或直接传入对应的所有头部信息。<br> - 底层播放需要解析的字段包括Transfer-Encoding、Location、Content-Type、Content-Range、Content-Encode、Accept-Ranges、content-length。 |
 | redirectUrl | string | 否  | 	如果存在，为HTTP响应中的重定向URL。 |
 

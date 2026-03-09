@@ -43,10 +43,10 @@ import { media } from '@kit.MediaKit';
 | audioRendererInfo<sup>10+</sup>                     | [audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8) | 否   | 是   | 设置音频渲染信息。若媒体源包含视频，则usage默认值为STREAM_USAGE_MOVIE，否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。若默认usage不满足需求，则须主动配置[audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)。<br/>只允许在**initialized**状态下设置。<br/>在第一次调用[prepare()](#prepare9)之前设置，以便音频渲染器信息在之后生效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | audioEffectMode<sup>10+</sup>                       | [audio.AudioEffectMode](../apis-audio-kit/arkts-apis-audio-e.md#audioeffectmode10)  | 否   | 是   | 设置音频音效模式，默认值为EFFECT_DEFAULT，动态属性。audioRendererInfo的usage变动时会恢复为默认值，只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | state<sup>9+</sup>                                  | [AVPlayerState](arkts-apis-media-t.md#avplayerstate9)                             | 是   | 否   | 音视频播放的状态，全状态有效，可查询参数。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                  |
-| currentTime<sup>9+</sup>                            | number                                                       | 是   | 否   | 视频的当前播放位置，单位为毫秒（ms），可查询参数。<br/>返回为(-1)表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。<br/>直播场景默认返回(-1)。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| duration<sup>9+</sup> | number                                                       | 是   | 否   | 视频时长，单位为毫秒（ms），可查询参数。<br/>返回为(-1)表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。<br/>直播场景默认返回(-1)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| width<sup>9+</sup>                                  | number                                                       | 是   | 否   | 视频宽，单位为像素（px），可查询参数。<br/>返回为(0)表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| height<sup>9+</sup>                                 | number                                                       | 是   | 否   | 视频高，单位为像素（px），可查询参数。<br/>返回为(0)表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| currentTime<sup>9+</sup>                            | ArkTS-Dyn: number<br>ArkTS-Sta: int                                                       | 是   | 否   | 视频的当前播放位置，单位为毫秒（ms），可查询参数。<br/>返回为(-1)表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。<br/>直播场景默认返回(-1)。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| duration<sup>9+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int                                                       | 是   | 否   | 视频时长，单位为毫秒（ms），可查询参数。<br/>返回为(-1)表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。<br/>直播场景默认返回(-1)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| width<sup>9+</sup>                                  | ArkTS-Dyn: number<br>ArkTS-Sta: int                                                       | 是   | 否   | 视频宽，单位为像素（px），可查询参数。<br/>返回为(0)表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| height<sup>9+</sup>                                 | ArkTS-Dyn: number<br>ArkTS-Sta: int                                                       | 是   | 否   | 视频高，单位为像素（px），可查询参数。<br/>返回为(0)表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 
 ## on('stateChange')<sup>9+</sup>
 
@@ -340,7 +340,9 @@ player.setPlaybackStrategy(playStrategy);
 
 ## setPlaybackRange<sup>18+</sup>
 
-setPlaybackRange(startTimeMs: number, endTimeMs: number, mode?: SeekMode) : Promise\<void>
+ArkTS-Dyn: setPlaybackRange(startTimeMs: number, endTimeMs: number, mode?: SeekMode) : Promise\<void>
+ 	 
+ArkTS-Sta: setPlaybackRange(startTimeMs: int, endTimeMs: int, mode?: SeekMode) : Promise\<void>
 
 设置播放区间，并通过指定的[SeekMode](arkts-apis-media-e.md#seekmode8)跳转到区间开始位置。设置之后，只播放音视频文件设定区间内的内容。该方法异步方式返回执行结果，通过Promise获取返回值。可在**initialized**/**prepared**/**paused**/**stopped**/**completed**状态下使用。
 
@@ -356,8 +358,8 @@ setPlaybackRange(startTimeMs: number, endTimeMs: number, mode?: SeekMode) : Prom
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| startTimeMs | number | 是   | 区间开始位置，单位ms，取值[0, duration)。可以设置-1值，系统将会从0位置开始播放。|
-| endTimeMs | number | 是   | 区间结束位置，单位ms，取值(startTimeMs, duration]。可以设置-1值，系统将会播放到资源末尾。|
+| startTimeMs | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 区间开始位置，单位ms，取值[0, duration)。可以设置-1值，系统将会从0位置开始播放。|
+| endTimeMs | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 区间结束位置，单位ms，取值(startTimeMs, duration]。可以设置-1值，系统将会播放到资源末尾。|
 | mode | [SeekMode](arkts-apis-media-e.md#seekmode8) | 否   | 支持SeekMode.SEEK_PREV_SYNC和SeekMode.SEEK_CLOSEST, <br/>默认值: SeekMode.SEEK_PREV_SYNC。|
 
 **错误码：**
@@ -1015,7 +1017,9 @@ avPlayer.getTrackDescription().then((arrList: Array<media.MediaDescription>) => 
 
 ## getSelectedTracks<sup>12+</sup>
 
-getSelectedTracks(): Promise\<Array\<number>>
+ArkTS-Dyn: getSelectedTracks(): Promise\<Array\<number>>
+ 	 
+ArkTS-Sta: getSelectedTracks(): Promise\<Array\<int>>
 
 获取已选择的音视频轨道索引，可以在prepared/playing/paused状态调用。通过Promise获取返回值。
 
@@ -1098,7 +1102,9 @@ media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
 
 ## getPlaybackPosition<sup>18+</sup>
 
-getPlaybackPosition(): number
+ArkTS-Dyn: getPlaybackPosition(): number
+
+ArkTS-Sta: getPlaybackPosition(): int
 
 获取当前播放位置，可以在prepared/playing/paused/completed状态调用。
 
@@ -1114,7 +1120,7 @@ getPlaybackPosition(): number
 
 | 类型                                                   | 说明                                              |
 | ------------------------------------------------------ | ------------------------------------------------- |
-| number | 返回当前播放位置的时间，单位：毫秒（ms）。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回当前播放位置的时间，单位：毫秒（ms）。|
 
 **错误码：**
 
@@ -1140,7 +1146,9 @@ avPlayer.prepare().then(() => {
 
 ## selectTrack<sup>12+</sup>
 
-selectTrack(index: number, mode?: SwitchMode): Promise\<void>
+ArkTS-Dyn: selectTrack(index: number, mode?: SwitchMode): Promise\<void>
+
+ArkTS-Sta: selectTrack(index: int, mode?: SwitchMode): Promise\<void>
 
 使用AVPlayer播放多音视频轨资源时，选择指定轨道播放，通过Promise获取返回值。
 
@@ -1156,7 +1164,7 @@ selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| index | number | 是   | 多音视频资源的轨道索引，可通过[getTrackDescription](#gettrackdescription9-1)接口获取当前资源的所有轨道信息[MediaDescription](arkts-apis-media-i.md#mediadescription8)。 |
+| index | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 多音视频资源的轨道索引，可通过[getTrackDescription](#gettrackdescription9-1)接口获取当前资源的所有轨道信息[MediaDescription](arkts-apis-media-i.md#mediadescription8)。 |
 | mode   | [SwitchMode](arkts-apis-media-e.md#switchmode12) | 否   | 切换视频轨道模式，默认为SMOOTH模式，**仅在DASH协议网络流视频轨切换时生效**，其他场景当前暂不支持。 |
 
 **返回值：**
@@ -1201,7 +1209,9 @@ avPlayer.selectTrack(parseInt(audioTrackIndex.toString()));
 
 ## deselectTrack<sup>12+</sup>
 
-deselectTrack(index: number): Promise\<void>
+ArkTS-Dyn: deselectTrack(index: number): Promise\<void>
+
+ArkTS-Sta: deselectTrack(index: int): Promise\<void>
 
 使用AVPlayer播放多音轨视频时取消指定音视频轨道播放，通过Promise获取返回值。
 
@@ -1217,7 +1227,7 @@ deselectTrack(index: number): Promise\<void>
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| index | number | 是   | 多音视频资源的轨道索引，来自[getTrackDescription](#gettrackdescription9-1)接口所获取的轨道信息[MediaDescription](arkts-apis-media-i.md#mediadescription8)。 |
+| index | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 多音视频资源的轨道索引，来自[getTrackDescription](#gettrackdescription9-1)接口所获取的轨道信息[MediaDescription](arkts-apis-media-i.md#mediadescription8)。 |
 
 **返回值：**
 
@@ -1343,7 +1353,9 @@ for (let i = 0; i < infos.length; i++) {
 
 ## seek<sup>9+</sup>
 
-seek(timeMs: number, mode?:SeekMode): void
+ArkTS-Dyn: seek(timeMs: number, mode?:SeekMode): void
+
+ArkTS-Sta: seek(timeMs: int, mode?:SeekMode): void
 
 跳转到指定播放位置，只能在prepared/playing/paused/completed状态调用，可以通过[seekDone事件](#onseekdone9)确认是否生效。
 注：直播场景不支持seek。
@@ -1360,7 +1372,7 @@ seek(timeMs: number, mode?:SeekMode): void
 
 | 参数名 | 类型                   | 必填 | 说明                                                         |
 | ------ | ---------------------- | ---- | ------------------------------------------------------------ |
-| timeMs | number                 | 是   | 指定的跳转时间节点，单位毫秒（ms），取值范围为[0, [duration](#属性)]。SEEK_CONTINUOU模式可以额外取值-1，用于表示SEEK_CONTINUOUS模式结束。 |
+| timeMs | ArkTS-Dyn: number<br>ArkTS-Sta: int                 | 是   | 指定的跳转时间节点，单位毫秒（ms），取值范围为[0, [duration](#属性)]。SEEK_CONTINUOU模式可以额外取值-1，用于表示SEEK_CONTINUOUS模式结束。 |
 | mode   | [SeekMode](arkts-apis-media-e.md#seekmode8) | 否   | 基于视频I帧的跳转模式，默认为SEEK_PREV_SYNC模式，**仅在视频资源播放时设置**。 |
 
 **示例：**
@@ -1407,7 +1419,9 @@ let isSupported = avPlayer.isSeekContinuousSupported();
 
 ## on('seekDone')<sup>9+</sup>
 
-on(type: 'seekDone', callback: Callback\<number>): void
+ArkTS-Dyn: on(type: 'seekDone', callback: Callback\<number>): void
+
+ArkTS-Sta: on(type: 'seekDone', callback: Callback\<int>): void
 
 监听seek生效的事件。
 
@@ -1424,7 +1438,7 @@ on(type: 'seekDone', callback: Callback\<number>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | seek生效的事件回调类型，支持的事件：'seekDone'，除SEEK_CONTINUOUS外的[SeekMode](arkts-apis-media-e.md#seekmode8)每次调用seek后都会回调此事件。 |
-| callback | Callback\<number> | 是   | 回调函数。seek生效的事件回调方法，只会上报用户请求的time位置。<br/>**视频播放：**[SeekMode](arkts-apis-media-e.md#seekmode8)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。 |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<int> | 是   | 回调函数。seek生效的事件回调方法，只会上报用户请求的time位置。<br/>**视频播放：**[SeekMode](arkts-apis-media-e.md#seekmode8)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。 |
 
 **示例：**
 
@@ -1436,7 +1450,9 @@ avPlayer.on('seekDone', (seekDoneTime:number) => {
 
 ## off('seekDone')<sup>9+</sup>
 
-off(type: 'seekDone', callback?: Callback\<number>): void
+ArkTS-Dyn: off(type: 'seekDone', callback?: Callback\<number>): void
+
+ArkTS-Sta: off(type: 'seekDone', callback?: Callback\<int>): void
 
 取消监听seek生效的事件。
 
@@ -1453,7 +1469,7 @@ off(type: 'seekDone', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                                 |
 | ------ | ------ | ---- | ---------------------------------------------------- |
 | type   | string | 是   | seek生效的事件回调类型，取消注册的事件：'seekDone'。 |
-| callback | Callback\<number> | 否   | 回调函数。seek生效的事件回调方法，只会上报用户请求的time位置。<br/>**视频播放：**[SeekMode](arkts-apis-media-e.md#seekmode8)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。<br/>从API version 12开始支持此参数。 |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<int> | 否   | 回调函数。seek生效的事件回调方法，只会上报用户请求的time位置。<br/>**视频播放：**[SeekMode](arkts-apis-media-e.md#seekmode8)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。<br/>从API version 12开始支持此参数。 |
 
 **示例：**
 
@@ -1490,7 +1506,9 @@ avPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
 
 ## on('speedDone')<sup>9+</sup>
 
-on(type: 'speedDone', callback: Callback\<number>): void
+ArkTS-Dyn: on(type: 'speedDone', callback: Callback\<number>): void
+
+ArkTS-Sta: on(type: 'speedDone', callback: Callback\<int>): void
 
 监听setSpeed生效的事件。
 
@@ -1507,7 +1525,7 @@ on(type: 'speedDone', callback: Callback\<number>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | setSpeed生效的事件回调类型，支持的事件：'speedDone'，每次调用setSpeed后都会回调此事件。 |
-| callback | Callback\<number> | 是   | 回调函数。当setSpeed成功，上报生效的倍速模式，具体见[PlaybackSpeed](arkts-apis-media-e.md#playbackspeed8)。 |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<int> | 是   | 回调函数。当setSpeed成功，上报生效的倍速模式，具体见[PlaybackSpeed](arkts-apis-media-e.md#playbackspeed8)。 |
 
 **示例：**
 
@@ -1519,7 +1537,9 @@ avPlayer.on('speedDone', (speed:number) => {
 
 ## off('speedDone')<sup>9+</sup>
 
-off(type: 'speedDone', callback?: Callback\<number>): void
+ArkTS-Dyn: off(type: 'speedDone', callback?: Callback\<number>): void
+
+ArkTS-Sta: off(type: 'speedDone', callback?: Callback\<int>): void
 
 取消监听setSpeed生效的事件。
 
@@ -1536,7 +1556,7 @@ off(type: 'speedDone', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                                      |
 | ------ | ------ | ---- | --------------------------------------------------------- |
 | type   | string | 是   | setSpeed生效的事件回调类型，取消注册的事件：'speedDone'。 |
-| callback | Callback\<number> | 否   | 回调函数。当setSpeed成功，上报生效的倍速模式，具体见[PlaybackSpeed](arkts-apis-media-e.md#playbackspeed8)。<br/>从API version 12开始支持此参数。 |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<int> | 否   | 回调函数。当setSpeed成功，上报生效的倍速模式，具体见[PlaybackSpeed](arkts-apis-media-e.md#playbackspeed8)。<br/>从API version 12开始支持此参数。 |
 
 **示例：**
 
@@ -1546,7 +1566,9 @@ avPlayer.off('speedDone');
 
 ## setPlaybackRate<sup>20+</sup>
 
-setPlaybackRate(rate: number): void
+ArkTS-Dyn: setPlaybackRate(rate: number): void
+
+ArkTS-Sta: setPlaybackRate(rate: double): void
 
 设置倍速模式。只能在prepared/playing/paused/completed状态调用，取值范围是[0.125, 4.0]，可以通过[playbackRateDone](#onplaybackratedone20)事件确认是否生效。
 
@@ -1566,7 +1588,7 @@ setPlaybackRate(rate: number): void
 
 | 参数名 | 类型                             | 必填 | 说明               |
 | ------ | -------------------------------- | ---- | ------------------ |
-| rate  | number | 是   | 指定播放倍速速率。 |
+| rate  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 指定播放倍速速率。 |
 
 **错误码：**
 
@@ -1641,7 +1663,9 @@ avPlayer.off('playbackRateDone');
 
 ## setBitrate<sup>9+</sup>
 
-setBitrate(bitrate: number): void
+ArkTS-Dyn: setBitrate(bitrate: number): void
+
+ArkTS-Sta: setBitrate(bitrate: int): void
 
 设置比特率，以播放所指定比特率的流媒体资源，当前仅对**HLS/DASH协议网络流**有效。默认情况下，AVPlayer会根据网络连接速度选择合适的比特率。只能在prepared/playing/paused/completed状态调用，可以通过[bitrateDone](#onbitratedone9)事件确认是否生效。
 
@@ -1657,7 +1681,7 @@ setBitrate(bitrate: number): void
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| bitrate | number | 是   | 指定比特率，须通过[availableBitrates](#onavailablebitrates9)事件获得当前HLS/DASH协议网络流可用的比特率列表，如果用户指定的比特率不在此列表中，则播放器将从可用比特率列表中选择最接近的比特率。如果通过availableBitrates事件获得的比特率列表长度为0，则不支持指定比特率，也不会产生bitrateDone回调。 |
+| bitrate | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定比特率，须通过[availableBitrates](#onavailablebitrates9)事件获得当前HLS/DASH协议网络流可用的比特率列表，如果用户指定的比特率不在此列表中，则播放器将从可用比特率列表中选择最接近的比特率。如果通过availableBitrates事件获得的比特率列表长度为0，则不支持指定比特率，也不会产生bitrateDone回调。 |
 
 **示例：**
 
@@ -1668,7 +1692,9 @@ avPlayer.setBitrate(bitrate);
 
 ## on('bitrateDone')<sup>9+</sup>
 
-on(type: 'bitrateDone', callback: Callback\<number>): void
+ArkTS-Dyn: on(type: 'bitrateDone', callback: Callback\<number>): void
+
+ArkTS-Sta: on(type: 'bitrateDone', callback: Callback\<int>): void
 
 监听setBitrate生效的事件。
 
@@ -1685,7 +1711,7 @@ on(type: 'bitrateDone', callback: Callback\<number>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | setBitrate生效的事件回调类型，支持的事件：'bitrateDone'，每次调用setBitrate后都会回调此事件。 |
-| callback | Callback\<number> | 是   | setBitrate生效的事件回调方法，上报生效的比特率。             |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<int> | 是   | setBitrate生效的事件回调方法，上报生效的比特率。             |
 
 **示例：**
 
@@ -1697,7 +1723,9 @@ avPlayer.on('bitrateDone', (bitrate:number) => {
 
 ## off('bitrateDone')<sup>9+</sup>
 
-off(type: 'bitrateDone', callback?: Callback\<number>): void
+ArkTS-Dyn: off(type: 'bitrateDone', callback?: Callback\<number>): void
+
+ArkTS-Sta: off(type: 'bitrateDone', callback?: Callback\<int>): void
 
 取消监听setBitrate生效的事件。
 
@@ -1714,7 +1742,7 @@ off(type: 'bitrateDone', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | setBitrate生效的事件回调类型，取消注册的事件：'bitrateDone'。 |
-| callback | Callback\<number> | 否   | setBitrate生效的事件回调方法，上报生效的比特率。<br/>从API version 12开始支持此参数。             |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<int> | 否   | setBitrate生效的事件回调方法，上报生效的比特率。<br/>从API version 12开始支持此参数。             |
 
 **示例：**
 
@@ -1724,7 +1752,9 @@ avPlayer.off('bitrateDone');
 
 ## on('availableBitrates')<sup>9+</sup>
 
-on(type: 'availableBitrates', callback: Callback\<Array\<number>>): void
+ArkTS-Dyn: on(type: 'availableBitrates', callback: Callback\<Array\<number>>): void
+
+ArkTS-Sta: on(type: 'availableBitrates', callback: Callback\<Array\<int>>): void
 
 监听HLS/DASH协议网络流可用的比特率列表，只会在切换prepared状态后上报。
 
@@ -1741,7 +1771,7 @@ on(type: 'availableBitrates', callback: Callback\<Array\<number>>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | HLS/DASH协议网络流可用比特率上报事件回调类型，支持的事件：'availableBitrates'，只会在prepared之后上报一次。 |
-| callback | Callback\<Array\<number>> | 是   | HLS/DASH协议网络流可用比特率上报事件回调方法，使用数组存放支持的比特率。如果数组长度为0，则不支持指定比特率。 |
+| callback | ArkTS-Dyn: Callback\<Array\<number>><br>ArkTS-Sta: Callback\<Array\<int>> | 是   | HLS/DASH协议网络流可用比特率上报事件回调方法，使用数组存放支持的比特率。如果数组长度为0，则不支持指定比特率。 |
 
 **示例：**
 
@@ -1753,7 +1783,9 @@ avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
 
 ## off('availableBitrates')<sup>9+</sup>
 
-off(type: 'availableBitrates', callback?: Callback\<Array\<number>>): void
+ArkTS-Dyn: off(type: 'availableBitrates', callback?: Callback\<Array\<number>>): void
+
+ArkTS-Sta: off(type: 'availableBitrates', callback?: Callback\<Array\<int>>): void
 
 取消监听HLS/DASH协议网络流可用的比特率列表，调用[prepare](#prepare9)后，上报此事件。
 
@@ -1770,7 +1802,7 @@ off(type: 'availableBitrates', callback?: Callback\<Array\<number>>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | HLS/DASH协议网络流可用比特率上报事件回调类型，取消注册的事件：'availableBitrates'。 |
-| callback | Callback\<Array\<number>> | 否   | HLS/DASH协议网络流可用比特率上报事件回调方法，使用数组存放支持的比特率。如果数组长度为0，则不支持指定比特率。<br/>从API version 12开始支持此参数。 |
+| callback | ArkTS-Dyn: Callback\<Array\<number>><br>ArkTS-Sta: Callback\<Array\<int>> | 否   | HLS/DASH协议网络流可用比特率上报事件回调方法，使用数组存放支持的比特率。如果数组长度为0，则不支持指定比特率。<br/>从API version 12开始支持此参数。 |
 
 **示例：**
 
@@ -1842,7 +1874,9 @@ avPlayer.off('mediaKeySystemInfoUpdate');
 
 ## setVolume<sup>9+</sup>
 
-setVolume(volume: number): void
+ArkTS-Dyn: setVolume(volume: number): void
+
+ArkTS-Sta: setVolume(volume: double): void
 
 设置媒体播放音量，只能在prepared/playing/paused/completed状态调用，可以通过[volumeChange事件](#onvolumechange9)确认是否生效。
 
@@ -1858,7 +1892,7 @@ setVolume(volume: number): void
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| volume | number | 是   | 指定的相对音量大小，取值范围为[0.00-1.00]，1表示最大音量，即100%。 |
+| volume | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 指定的相对音量大小，取值范围为[0.00-1.00]，1表示最大音量，即100%。 |
 
 **示例：**
 
@@ -1869,7 +1903,9 @@ avPlayer.setVolume(volume);
 
 ## on('volumeChange')<sup>9+</sup>
 
-on(type: 'volumeChange', callback: Callback\<number>): void
+ArkTS-Dyn: on(type: 'volumeChange', callback: Callback\<number>): void
+
+ArkTS-Sta: on(type: 'volumeChange', callback: Callback\<double>): void
 
 监听setVolume生效的事件。
 
@@ -1886,7 +1922,7 @@ on(type: 'volumeChange', callback: Callback\<number>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | setVolume生效的事件回调类型，支持的事件：'volumeChange'，每次调用setVolume后都会回调此事件。 |
-| callback | Callback\<number> | 是   | setVolume生效的事件回调方法，上报生效的媒体音量。            |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<double> | 是   | setVolume生效的事件回调方法，上报生效的媒体音量。            |
 
 **示例：**
 
@@ -1898,7 +1934,9 @@ avPlayer.on('volumeChange', (vol: number) => {
 
 ## off('volumeChange')<sup>9+</sup>
 
-off(type: 'volumeChange', callback?: Callback\<number>): void
+ArkTS-Dyn: off(type: 'volumeChange', callback?: Callback\<number>): void
+
+ArkTS-Sta: off(type: 'volumeChange', callback?: Callback\<double>): void
 
 取消监听setVolume生效的事件。
 
@@ -1915,7 +1953,7 @@ off(type: 'volumeChange', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | setVolume生效的事件回调类型，取消注册的事件：'volumeChange'。 |
-| callback | Callback\<number> | 否   | setVolume生效的事件回调方法，上报生效的媒体音量。<br/>从API version 12开始支持此参数。            |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<double> | 否   | setVolume生效的事件回调方法，上报生效的媒体音量。<br/>从API version 12开始支持此参数。            |
 
 **示例：**
 
@@ -1981,7 +2019,9 @@ avPlayer.off('endOfStream');
 
 ## on('timeUpdate')<sup>9+</sup>
 
-on(type: 'timeUpdate', callback: Callback\<number>): void
+ArkTS-Dyn: on(type: 'timeUpdate', callback: Callback\<number>): void
+
+ArkTS-Sta: on(type: 'timeUpdate', callback: Callback\<int>): void
 
 监听资源播放当前时间，单位为毫秒（ms），用于刷新进度条当前位置，默认间隔100ms时间上报，因用户操作(seek)产生的时间变化会立刻上报。
 
@@ -2000,7 +2040,7 @@ on(type: 'timeUpdate', callback: Callback\<number>): void
 | 参数名   | 类型     | 必填 | 说明                                           |
 | -------- | -------- | ---- | ---------------------------------------------- |
 | type     | string   | 是   | 时间更新的回调类型，支持的事件：'timeUpdate'。 |
-| callback | Callback\<number> | 是   | 回调函数。返回当前时间。                                     |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<int> | 是   | 回调函数。返回当前时间。                                     |
 
 **示例：**
 
@@ -2012,7 +2052,9 @@ avPlayer.on('timeUpdate', (time:number) => {
 
 ## off('timeUpdate')<sup>9+</sup>
 
-off(type: 'timeUpdate', callback?: Callback\<number>): void
+ArkTS-Dyn: off(type: 'timeUpdate', callback?: Callback\<number>): void
+
+ArkTS-Sta: off(type: 'timeUpdate', callback?: Callback\<int>): void
 
 取消监听资源播放当前时间。
 
@@ -2029,7 +2071,7 @@ off(type: 'timeUpdate', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
 | type   | string | 是   | 时间更新的回调类型，取消注册的事件：'timeUpdate'。 |
-| callback | Callback\<number> | 否   | 回调函数。返回当前时间。<br/>从API version 12开始支持此参数。             |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<int> | 否   | 回调函数。返回当前时间。<br/>从API version 12开始支持此参数。             |
 
 **示例：**
 
@@ -2039,8 +2081,9 @@ avPlayer.off('timeUpdate');
 
 ## on('durationUpdate')<sup>9+</sup>
 
+ArkTS-Dyn: on(type: 'durationUpdate', callback: Callback\<number>): void
 
-on(type: 'durationUpdate', callback: Callback\<number>): void
+ArkTS-Sta: on(type: 'durationUpdate', callback: Callback\<int>): void
 
 监听资源播放资源的时长，单位为毫秒（ms），用于刷新进度条长度，默认只在prepared上报一次，同时允许一些特殊码流刷新多次时长。
 注：直播场景不支持durationUpdate上报。
@@ -2058,7 +2101,7 @@ on(type: 'durationUpdate', callback: Callback\<number>): void
 | 参数名   | 类型     | 必填 | 说明                                               |
 | -------- | -------- | ---- | -------------------------------------------------- |
 | type     | string   | 是   | 时长更新的回调类型，支持的事件：'durationUpdate'。 |
-| callback | Callback\<number> | 是   | 回调函数。返回资源时长。        |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<int> | 是   | 回调函数。返回资源时长。        |
 
 **示例：**
 
@@ -2070,7 +2113,9 @@ avPlayer.on('durationUpdate', (duration: number) => {
 
 ## off('durationUpdate')<sup>9+</sup>
 
-off(type: 'durationUpdate', callback?: Callback\<number>): void
+ArkTS-Dyn: off(type: 'durationUpdate', callback?: Callback\<number>): void
+
+ArkTS-Sta: off(type: 'durationUpdate', callback?: Callback\<int>): void
 
 取消监听资源播放资源的时长。
 
@@ -2087,7 +2132,7 @@ off(type: 'durationUpdate', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
 | type   | string | 是   | 时长更新的回调类型，取消注册的事件：'durationUpdate'。 |
-| callback | Callback\<number> | 否   | 回调函数。返回资源时长。<br/>从API version 12开始支持此参数。        |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<int> | 否   | 回调函数。返回资源时长。<br/>从API version 12开始支持此参数。        |
 
 **示例：**
 
@@ -2395,7 +2440,9 @@ avPlayer.off('audioOutputDeviceChangeWithInfo');
 
 ## addSubtitleFromFd<sup>12+</sup>
 
-addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise\<void>
+ArkTS-Dyn: addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise\<void>
+
+ArkTS-Sta: addSubtitleFromFd(fd: int, offset?: long, length?: long): Promise\<void>
 
 依据fd为视频添加外挂字幕，当前仅支持与视频资源同时设置（在avplayer设置fdSrc视频资源后设置外挂字幕）。使用Promise方式返回结果。
 
@@ -2411,9 +2458,9 @@ addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise\<void>
 
 | 参数名 | 类型                   | 必填 | 说明                                                         |
 | ------ | ---------------------- | ---- | ------------------------------------------------------------ |
-| fd | number   | 是   | 资源句柄，通过[resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9)获取。 |
-| offset | number | 否   | 资源偏移量，需要基于预置资源的信息输入，非法值会造成字幕频资源解析错误，默认值:0。 |
-| length | number | 否   | 资源长度，默认值为文件中从偏移量开始的剩余字节，需要基于预置资源的信息输入，非法值会造成字幕频资源解析错误，默认值:0。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 是   | 资源句柄，通过[resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9)获取。 |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 资源偏移量，需要基于预置资源的信息输入，非法值会造成字幕频资源解析错误，默认值:0。 |
+| length | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 资源长度，默认值为文件中从偏移量开始的剩余字节，需要基于预置资源的信息输入，非法值会造成字幕频资源解析错误，默认值:0。 |
 
 **返回值：**
 
@@ -2671,7 +2718,9 @@ avPlayer.off('trackInfoUpdate');
 
 ## on('amplitudeUpdate')<sup>13+</sup>
 
-on(type: 'amplitudeUpdate', callback: Callback\<Array\<number>>): void
+ArkTS-Dyn: on(type: 'amplitudeUpdate', callback: Callback\<Array\<number>>): void
+
+ArkTS-Sta: on(type: 'amplitudeUpdate', callback: Callback\<Array\<double>>): void
 
 订阅音频最大电平值，音频资源播放时定时上报。
 
@@ -2686,7 +2735,7 @@ on(type: 'amplitudeUpdate', callback: Callback\<Array\<number>>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件回调类型，支持的事件为：'amplitudeUpdate'。 |
-| callback | Callback\<Array\<number>> | 是   | 音频最大电平值更新事件回调方法。 |
+| callback | ArkTS-Dyn: Callback\<Array\<number>><br>ArkTS-Sta: Callback\<Array\<double>>  | 是   | 音频最大电平值更新事件回调方法。 |
 
 **示例：**
 
@@ -2698,7 +2747,9 @@ avPlayer.on('amplitudeUpdate', (value: Array<number>) => {
 
 ## off('amplitudeUpdate')<sup>13+</sup>
 
-off(type: 'amplitudeUpdate', callback?: Callback\<Array\<number>>): void
+ArkTS-Dyn: off(type: 'amplitudeUpdate', callback?: Callback\<Array\<number>>): void
+
+ArkTS-Sta: off(type: 'amplitudeUpdate', callback?: Callback\<Array\<double>>): void
 
 取消订阅获取音频最大电平值事件。
 
@@ -2713,7 +2764,7 @@ off(type: 'amplitudeUpdate', callback?: Callback\<Array\<number>>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 事件回调类型，支持的事件为：'amplitudeUpdate'。 |
-| callback | Callback\<Array\<number>> | 否   | 取消音频最大电平值更新事件回调方法。 |
+| callback | ArkTS-Dyn: Callback\<Array\<number>><br>ArkTS-Sta: Callback\<Array\<double>> | 否   | 取消音频最大电平值更新事件回调方法。 |
 
 **示例：**
 
@@ -2723,7 +2774,9 @@ avPlayer.off('amplitudeUpdate');
 
 ## on('seiMessageReceived')<sup>18+</sup>
 
-on(type: 'seiMessageReceived', payloadTypes: Array\<number>, callback: OnSeiMessageHandle): void
+ArkTS-Dyn: on(type: 'seiMessageReceived', payloadTypes: Array\<number>, callback: OnSeiMessageHandle): void
+
+ArkTS-Sta: on(type: 'seiMessageReceived', payloadTypes: Array\<int>, callback: OnSeiMessageHandle): void
 
 订阅获取SEI信息事件，仅适用于HTTP-FLV直播，视频流中包含SEI信息时上报。需在prepare之前订阅，当用户重复订阅时，以最后一次订阅的回调接口为准。
 
@@ -2740,7 +2793,7 @@ on(type: 'seiMessageReceived', payloadTypes: Array\<number>, callback: OnSeiMess
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string | 是 | 事件回调类型，支持的事件为：'seiMessageReceived'。 |
-| payloadTypes | Array\<number> | 是 | SEI信息的订阅负载类型数组。当前仅支持负载类型为5，即payloadType = 5。|
+| payloadTypes | ArkTS-Dyn: Array\<number><br>ArkTS-Sta: Array\<int> | 是 | SEI信息的订阅负载类型数组。当前仅支持负载类型为5，即payloadType = 5。|
 | callback | [OnSeiMessageHandle](arkts-apis-media-t.md#onseimessagehandle18) | 是 | 用于监听SEI信息事件的回调函数，接收订阅的负载类型。 |
 
 **示例：**
@@ -2766,7 +2819,9 @@ avPlayer.on('seiMessageReceived', [5], (messages: Array<media.SeiMessage>, playb
 
 ## off('seiMessageReceived')<sup>18+</sup>
 
-off(type: 'seiMessageReceived', payloadTypes?: Array\<number>, callback?: OnSeiMessageHandle): void
+ArkTS-Dyn: off(type: 'seiMessageReceived', payloadTypes?: Array\<number>, callback?: OnSeiMessageHandle): void
+
+ArkTS-Sta: off(type: 'seiMessageReceived', payloadTypes?: Array\<int>, callback?: OnSeiMessageHandle): void
 
 取消订阅获取SEI信息事件。
 
@@ -2783,7 +2838,7 @@ off(type: 'seiMessageReceived', payloadTypes?: Array\<number>, callback?: OnSeiM
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件回调类型，支持的事件为：'seiMessageReceived'。 |
-| payloadTypes | Array\<number> | 否   | SEI信息的订阅负载类型。 |
+| payloadTypes | ArkTS-Dyn: Array\<number><br>ArkTS-Sta: Array\<int> | 否   | SEI信息的订阅负载类型。 |
 | callback | [OnSeiMessageHandle](arkts-apis-media-t.md#onseimessagehandle18) | 否   | 用于监听SEI信息事件的回调函数，接收订阅的负载类型。 |
 
 **示例：**
@@ -2838,7 +2893,9 @@ avPlayer.setSuperResolution(true);
 
 ## setVideoWindowSize<sup>18+</sup>
 
-setVideoWindowSize(width: number, height: number) : Promise\<void>
+ArkTS-Dyn: setVideoWindowSize(width: number, height: number) : Promise\<void>
+
+ArkTS-Sta: setVideoWindowSize(width: int, height: int) : Promise\<void>
 
 动态设置超分算法的输出分辨率，可以在 'initialized' | 'prepared' | 'playing' | 'paused' | 'completed' | 'stopped' 状态调用。使用Promise方式返回结果。输入参数须在 320x320 ~ 1920x1080 范围内，单位为像素。
 
@@ -2856,8 +2913,8 @@ setVideoWindowSize(width: number, height: number) : Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| width    | number | 是   | 超分算法的目标输出视频宽度，取值范围为[320-1920]，单位为像素。 |
-| height    | number | 是   | 超分算法的目标输出视频高度，取值范围为[320-1080]，单位为像素。 |
+| width    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 超分算法的目标输出视频宽度，取值范围为[320-1920]，单位为像素。 |
+| height    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 超分算法的目标输出视频高度，取值范围为[320-1080]，单位为像素。 |
 
 **返回值：**
 
