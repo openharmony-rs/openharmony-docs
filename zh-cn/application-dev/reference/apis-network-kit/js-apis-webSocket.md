@@ -719,7 +719,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 订阅WebSocket的Error事件，使用callback异步回调。
 
-关于[error](../reference/apis-network-kit/js-apis-webSocket.md#onerror)事件回调的错误码说明：WebSocket的本质是HTTP协议升级，若服务器同意升级，服务器会返回101。状态码表示协议从HTTP切换为WebSocket协议（触发open回调），而如果服务器拒绝了升级或出现其他异常，则返回200，表示服务器只是将请求当作普通的HTTP请求来处理。
+关于[error](#onerror)事件回调的错误码说明：WebSocket的本质是HTTP协议升级，若服务器同意升级，服务器会返回101。状态码表示协议从HTTP切换为WebSocket协议（触发open回调），而如果服务器拒绝了升级或出现其他异常，则返回200，表示服务器只是将请求当作普通的HTTP请求来处理。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
