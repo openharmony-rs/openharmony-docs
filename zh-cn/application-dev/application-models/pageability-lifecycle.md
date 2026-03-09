@@ -61,6 +61,7 @@ PageAbility生命周期回调与生命周期状态的关系如下图所示。
 
 1. 在app.ets文件中实现Ability生命周期回调。
 
+    <!--code_no_check-->
     ```ts
     // app.ets示例代码如下：
     import commonEvent from '@ohos.commonEvent';
@@ -113,6 +114,7 @@ PageAbility生命周期回调与生命周期状态的关系如下图所示。
 
 2. Index.ets页面提供一个"terminateSelf"按钮，点击后调用[featureAbility.terminateSelf](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityterminateself7-1)接口关闭Ability，从而触发`onDestroy`生命周期回调。
 
+    <!--code_no_check-->
     ```ts
     // Index.ets示例代码如下：
     import ability_featureAbility from '@ohos.ability.featureAbility';
