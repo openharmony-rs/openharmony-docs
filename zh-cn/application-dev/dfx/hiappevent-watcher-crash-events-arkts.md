@@ -46,7 +46,7 @@
     ``` TypeScript
     // 构建崩溃事件的自定义参数
     let crashParams: Record<string, hiAppEvent.ParamType> = {
-      "test_data": 100, //test_data为自定义数据，开发者可根据实际需求自定义params参数。
+      "test_data": 100, // test_data为自定义数据，开发者可根据实际需求自定义params参数。
     };
     // 开发者可以设置崩溃事件的自定义参数
     hiAppEvent.setEventParam(crashParams, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {

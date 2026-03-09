@@ -41,7 +41,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            shortKey.setKeyDownDuration("screenshot", 500, (error: BusinessError) => { //设置截屏应用screenshot延迟时间为5秒（500毫秒）
+            shortKey.setKeyDownDuration("screenshot", 500, (error: BusinessError) => { // 设置截屏应用screenshot延迟时间为5秒（500毫秒）
               if (error) {
                 console.error(`Set key down duration failed, error: ${JSON.stringify(error, ["code", "message"])}`);
                 return;
