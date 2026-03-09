@@ -129,7 +129,7 @@
      import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
      import { BusinessError } from '@kit.BasicServicesKit';
    
-     //模拟超时事件函数定义，示例代码：
+     // 模拟超时事件函数定义，示例代码：
      function wait150ms() {
        let t = Date.now();
        while (Date.now() - t <= 150){
@@ -148,7 +148,7 @@
        build() {
          RelativeContainer() {
            Column() {
-             //自定义设置采样栈参数按钮
+             // 自定义设置采样栈参数按钮
              Button("customSample", { stateEffect:true, type: ButtonType.Capsule})
                .width('75%')
                .height(50)
@@ -175,7 +175,7 @@
                    hilog.error(0x0000, 'testTag', `HiAppEvent err.code: ${err.code}, err.message: ${err.message}`)
                  });
                })
-             //触发150ms超时事件按钮
+             // 触发150ms超时事件按钮
              Button("timeOut150", { stateEffect:true, type: ButtonType.Capsule})
                .width('75%')
                .height(50)
