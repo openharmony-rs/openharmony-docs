@@ -347,9 +347,9 @@
 | ------------------ | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------- |
 | id                 | string                                                       | 否   | 否   | 会员购买信息的唯一ID。                      |
 | diagramUrl         | string                                                       | 否   | 否   | 会员购买演示的URL（必须采用21:9的宽高比）。 |
-| diagramData        | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 会员购买图片。                              |
-| diagramContent     | string                                                       | 否   | 否   | 会员购买图片的内容。                        |
-| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md#memberpurchasetype) | 否   | 否   | 会员购买类型。                              |
+| diagramData        | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 会员购买图片。                   |
+| diagramContent     | string                                                       | 否   | 否   | 会员购买图片的内容。                |
+| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md#memberpurchasetype) | 否   | 否   | 会员购买类型。                   |
 
 ## CustomElement
 
@@ -381,7 +381,7 @@
 | profilePicUrl | string  | 否   | 否   | 用户的头像图片URL。                             |
 | tips          | string  | 否   | 否   | 其他关于用户的描述。                            |
 | isLogin       | boolean | 否   | 否   | 用户是否登录。true表示已登录，false表示未登录。 |
-| isVip         | boolean | 否   | 否   | 用户是否是VIP。true表示是，false表示否。        |
+| isVip         | boolean | 否   | 否   | 用户是否是VIP。true表示是，false表示否。   |
 
 ## SearchPlayInfo
 
