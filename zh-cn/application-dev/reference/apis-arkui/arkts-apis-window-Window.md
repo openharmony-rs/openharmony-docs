@@ -4800,7 +4800,7 @@ offKeyboardHeightChange(callback?: Callback&lt;int&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyboardHeightChange')](#offkeyboardheightchange7)。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+**系统能力：** SystemCapability.Window.SessionManager.Core
 
 **ArkTS-Sta起始版本：** 23
 
@@ -5302,7 +5302,7 @@ onKeyboardDidShow(callback: Callback&lt;KeyboardInfo&gt;): void
 **错误码：**
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801     | Capability not supported. Function onKeyboardDidShow can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. Function keyboardDidShow can not work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal.               |
 
 **示例：**
@@ -5393,7 +5393,7 @@ offKeyboardDidShow(callback?: Callback&lt;KeyboardInfo&gt;): void
 **错误码：**
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801     | Capability not supported. Function offKeyboardDidShow can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. Function keyboardDidShow can not work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal.               |
 
 **示例：**
@@ -5490,7 +5490,7 @@ onKeyboardDidHide(callback: Callback&lt;KeyboardInfo&gt;): void
 **错误码：**
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801     | Capability not supported. Function onKeyboardDidHide can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. Function keyboardDidHide can not work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal.               |
 
 **示例：**
@@ -5581,7 +5581,7 @@ offKeyboardDidHide(callback?: Callback&lt;KeyboardInfo&gt;): void
 **错误码：**
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801     | Capability not supported. Function offKeyboardDidHide can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. Function keyboardDidHide can not work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal.               |
 
 **示例：**
