@@ -6141,7 +6141,7 @@ notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').t
 });
 ```
 
-## isPriorityIntelligentEnabled<sup>23+</sup>
+## notificationManager.isPriorityIntelligentEnabled<sup>23+</sup>
 
 isPriorityIntelligentEnabled(): Promise\<boolean\>
 
@@ -6186,7 +6186,7 @@ notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
 });
 ```
 
-## setPriorityIntelligentEnabled<sup>23+</sup>
+## notificationManager.setPriorityIntelligentEnabled<sup>23+</sup>
 
 setPriorityIntelligentEnabled(enable: boolean): Promise\<void\>
 
@@ -6237,7 +6237,7 @@ notificationManager.setPriorityIntelligentEnabled(false).then(() => {
 });
 ```
 
-## getPriorityEnabledByBundles<sup>23+</sup>
+## notificationManager.getPriorityEnabledByBundles<sup>23+</sup>
 
 getPriorityEnabledByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, boolean\>\>
 
@@ -6294,7 +6294,7 @@ notificationManager.getPriorityEnabledByBundles(bundles).then((switches: Map<not
 ```
 
 
-## setPriorityEnabledByBundles<sup>23+</sup>
+## notificationManager.setPriorityEnabledByBundles<sup>23+</sup>
 
 setPriorityEnabledByBundles(switches: Map\<BundleOption, boolean\>): Promise\<void\>
 
@@ -6348,7 +6348,7 @@ notificationManager.setPriorityEnabledByBundles(switches).then(() => {
 });
 ```
 
-## getPriorityStrategyByBundles<sup>23+</sup>
+## notificationManager.getPriorityStrategyByBundles<sup>23+</sup>
 
 getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, number\>\>;
 
@@ -6404,7 +6404,7 @@ notificationManager.getPriorityStrategyByBundles(bundles).then((strategies: Map<
 });
 ```
 
-## setPriorityStrategyByBundles<sup>23+</sup>
+## notificationManager.setPriorityStrategyByBundles<sup>23+</sup>
 
 setPriorityStrategyByBundles(strategies: Map\<BundleOption, number\>): Promise\<void\>
 
