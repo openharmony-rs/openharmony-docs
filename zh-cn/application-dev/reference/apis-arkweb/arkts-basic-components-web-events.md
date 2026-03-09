@@ -5563,7 +5563,7 @@ ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void \|  undefined | 是 | 当网页获取焦点时触发的回调。 |
+| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \|  undefined | 是 | 当网页获取焦点时触发的回调。 |
 
 **示例：**
 
