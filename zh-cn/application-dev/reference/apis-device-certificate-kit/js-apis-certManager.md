@@ -148,7 +148,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | uri         | string    | 否  | 是   | 表示证书或凭据的唯一标识符，最大长度为256字节。 |
 | outData         | Uint8Array    | 否  | 是   | 表示签名结果。 |
 | credentialDetailList<sup>22+</sup>         | Array<[Credential](#credential)>    | 否  | 是   | 表示凭据详细信息。 |
-| uriList<sup>26+</sup>         | Array\<string>    | 否  | 是   | 表示证书URI列表。 |
+| uriList<br>**起始版本：** 26.0.0         | Array\<string>    | 否  | 是   | 表示证书URI列表。 |
 
 ## CMHandle
 
@@ -160,16 +160,18 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | handle         | Uint8Array        | 否  | 否   | 签名、验签的初始化操作句柄，最大长度为8字节。 |
 
-## CertBlob<sup>26+</sup>
+## CertBlob
 
 表示证书二进制数据。
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
+**起始版本：** 26.0.0
+
 | 名称        | 类型                                | 只读 | 可选 | 说明  |
 | ----------- | ----------------------------------- | ---- | ---- | ---- |
 | certData    | Uint8Array                           | 否   | 否  | 表示证书文件数据。 |
-| certFormat  | [CertFileFormat](#certfileformat26)   | 否   | 是  | 表示证书文件格式。 |
+| certFormat  | [CertFileFormat](#certfileformat)   | 否   | 是  | 表示证书文件格式。 |
 | certScope   | [CertScope](#certscope18)         | 否   | 是  | 表示用户CA证书的存储位置。 |
 
 ## CMErrorCode
@@ -272,7 +274,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | -------------- | ---- | ---- | ---- | ---- |
 | certPurpose  | [CertificatePurpose](#certificatepurpose22)  | 否   | 是  | 表示凭据用途。 |
 
-## CertFileFormat<sup>26+</sup>
+## CertFileFormat
 
 表示证书文件格式。
 
@@ -660,7 +662,7 @@ try {
 }
 ```
 
-## certificateManager.installUserTrustedCertificate<sup>26+</sup>
+## certificateManager.installUserTrustedCertificate
 
 installUserTrustedCertificate(certificate: CertBlob) : Promise\<CMResult>
 
@@ -674,7 +676,7 @@ installUserTrustedCertificate(certificate: CertBlob) : Promise\<CMResult>
 
 | 参数名      | 类型                       | 必填 | 说明                                                         |
 | ----------- | -------------------------- | ---- | ------------------------------------------------------------ |
-| certificate | [CertBlob](#certblob26) | 是   | 表示证书信息。                                           |
+| certificate | [CertBlob](#certblob) | 是   | 表示证书信息。                                           |
 
 **返回值**：
 
@@ -1757,7 +1759,7 @@ try {
 }
 ```
 
-## certificateManager.getUkeyCertificateList<sup>26+</sup>
+## certificateManager.getUkeyCertificateList
 
 getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
@@ -1766,6 +1768,8 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Security.CertificateManager
+
+**起始版本：** 26.0.0
 
 **设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
 

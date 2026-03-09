@@ -185,7 +185,7 @@ try {
 }
 ```
 
-## certificateManager.getSystemTrustedCertificate<sup>26+</sup>
+## certificateManager.getSystemTrustedCertificate
 
 getSystemTrustedCertificate(certUri: string): Promise\<CMResult>
 
@@ -196,6 +196,8 @@ getSystemTrustedCertificate(certUri: string): Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
 
 **参数**：
 
@@ -243,7 +245,7 @@ try {
 }
 ```
 
-## certificateManager.getSystemTrustedCertificateList<sup>26+</sup>
+## certificateManager.getSystemTrustedCertificateList
 
 getSystemTrustedCertificateList(): Promise\<CMResult>
 
@@ -254,6 +256,8 @@ getSystemTrustedCertificateList(): Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
 
 **返回值**：
 
@@ -294,7 +298,7 @@ try {
 }
 ```
 
-## certificateManager.setCertificateStatus<sup>26+</sup>
+## certificateManager.setCertificateStatus
 
 setCertificateStatus(certUri: string, certType: CertType, enabled: boolean) : Promise\<void>
 
@@ -305,6 +309,8 @@ setCertificateStatus(certUri: string, certType: CertType, enabled: boolean) : Pr
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
 
 **参数**：
 
@@ -350,7 +356,7 @@ try {
 }
 ```
 
-## certificateManager.uninstallAllUserTrustedCertificate<sup>26+</sup>
+## certificateManager.uninstallAllUserTrustedCertificate
 
 uninstallAllUserTrustedCertificate() : Promise\<void>
 
@@ -361,6 +367,8 @@ uninstallAllUserTrustedCertificate() : Promise\<void>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
 
 **返回值**：
 
@@ -394,7 +402,7 @@ try {
 }
 ```
 
-## certificateManager.installPublicCertificate<sup>26+</sup>
+## certificateManager.installPublicCertificate
 
 installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : Promise\<CMResult>
 
@@ -405,6 +413,8 @@ installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : Promise\<C
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
 
 **参数**：
 
@@ -456,7 +466,7 @@ try {
 }
 ```
 
-## certificateManager.uninstallPublicCertificate<sup>26+</sup>
+## certificateManager.uninstallPublicCertificate
 
 uninstallPublicCertificate(keyUri: string) : Promise\<void>
 
@@ -467,6 +477,8 @@ uninstallPublicCertificate(keyUri: string) : Promise\<void>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
 
 **参数**：
 
@@ -510,7 +522,7 @@ try {
 }
 ```
 
-## certificateManager.getAllPublicCertificates<sup>26+</sup>
+## certificateManager.getAllPublicCertificates
 
 getAllPublicCertificates() : Promise\<CMResult>
 
@@ -521,6 +533,8 @@ getAllPublicCertificates() : Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
 
 **返回值**：
 
@@ -562,7 +576,7 @@ try {
 }
 ```
 
-## certificateManager.grantPublicCertificate<sup>26+</sup>
+## certificateManager.grantPublicCertificate
 
 grantPublicCertificate(keyUri: string, clientAppUid: int) : Promise\<CMResult>
 
@@ -573,6 +587,8 @@ grantPublicCertificate(keyUri: string, clientAppUid: int) : Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
 
 **参数**：
 
@@ -619,7 +635,7 @@ try {
 }
 ```
 
-## certificateManager.getAuthorizedAppList<sup>26+</sup>
+## certificateManager.getAuthorizedAppList
 
 getAuthorizedAppList(keyUri: string) : Promise\<CMResult>
 
@@ -630,6 +646,8 @@ getAuthorizedAppList(keyUri: string) : Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
 
 **参数**：
 
@@ -678,7 +696,7 @@ try {
 }
 ```
 
-## certificateManager.removeGrantedPublicCertificate<sup>26+</sup>
+## certificateManager.removeGrantedPublicCertificate
 
 removeGrantedPublicCertificate(keyUri: string, clientAppUid: int) : Promise\<void>
 
@@ -689,6 +707,8 @@ removeGrantedPublicCertificate(keyUri: string, clientAppUid: int) : Promise\<voi
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
 
 **参数**：
 
@@ -734,7 +754,7 @@ try {
 }
 ```
 
-## certificateManager.getAllAppPrivateCertificatesByUid<sup>26+</sup>
+## certificateManager.getAllAppPrivateCertificatesByUid
 
 getAllAppPrivateCertificatesByUid(appUid: int) : Promise\<CMResult>
 
@@ -745,6 +765,8 @@ getAllAppPrivateCertificatesByUid(appUid: int) : Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
 
 **参数**：
 
@@ -793,7 +815,7 @@ try {
 }
 ```
 
-## certificateManager.installSystemAppCertificate<sup>26+</sup>
+## certificateManager.installSystemAppCertificate
 
 installSystemAppCertificate(keystore: Uint8Array, keystorePwd: string): Promise\<CMResult>
 
@@ -804,6 +826,8 @@ installSystemAppCertificate(keystore: Uint8Array, keystorePwd: string): Promise\
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
 
 **参数**：
 
@@ -855,7 +879,7 @@ try {
 }
 ```
 
-## certificateManager.getSystemAppCertificate<sup>26+</sup>
+## certificateManager.getSystemAppCertificate
 
 getSystemAppCertificate(keyUri: string) : Promise\<CMResult>
 
@@ -866,6 +890,8 @@ getSystemAppCertificate(keyUri: string) : Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
 
 **参数**：
 
@@ -914,7 +940,7 @@ try {
 }
 ```
 
-## certificateManager.uninstallSystemAppCertificate<sup>26+</sup>
+## certificateManager.uninstallSystemAppCertificate
 
 uninstallSystemAppCertificate(keyUri: string) : Promise\<void>
 
@@ -925,6 +951,8 @@ uninstallSystemAppCertificate(keyUri: string) : Promise\<void>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
 
 **参数**：
 
@@ -968,7 +996,7 @@ try {
 }
 ```
 
-## certificateManager.uninstallAllAppCertificate<sup>26+</sup>
+## certificateManager.uninstallAllAppCertificate
 
 uninstallAllAppCertificate() : Promise\<void>
 
@@ -979,6 +1007,8 @@ uninstallAllAppCertificate() : Promise\<void>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
 
 **返回值**：
 
