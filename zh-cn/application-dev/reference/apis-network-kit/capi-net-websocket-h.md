@@ -198,7 +198,7 @@ int OH_WebSocketClient_Destroy(struct WebSocket *client)
 
 **注意**
 
-确保触发WebSocket_OnCloseCallback回调后再调用该接口，否则系统内存资源被释放后可能出现socket泄露以及连接未关闭的情况。
+确保触发[WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback)回调后再调用该接口，否则系统内存资源被释放后可能出现socket泄露以及连接未关闭的情况。
 
 **最佳实践**
 
