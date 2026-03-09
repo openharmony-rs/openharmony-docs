@@ -2451,9 +2451,9 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                   |
-| -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent) | 否   | 问题与建议的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明          |
+| -------- | ------------------------------------------------------------ | ---- |-------------|
+| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent) | 否   | 处理问题与建议的回调。 |
 
 **错误码：**
 
@@ -2824,7 +2824,7 @@ export class TemplateManager {
 ```
 ## offFavoriteMediaEntity
 
-offFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
+offFavoriteMediaEntity(callback?: FavoriteMediaEntityEvent): void
 
 注销收藏媒体实体事件的监听。
 
