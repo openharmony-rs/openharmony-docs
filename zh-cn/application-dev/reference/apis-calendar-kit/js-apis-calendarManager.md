@@ -636,10 +636,6 @@ editEvent(event: Event): Promise\<number>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
-
 **系统能力**： SystemCapability.Applications.CalendarData
 
 **参数**：
