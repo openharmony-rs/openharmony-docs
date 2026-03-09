@@ -64,7 +64,7 @@
 | id              | string                                                       | 否   | 否   | 合集的标识。                                      |
 | title           | string                                                       | 否   | 否   | 合集的标题。                                      |
 | hasMoreData     | boolean                                                      | 否   | 否   | 是否有更多的合集数据。true表示有，false表示没有。 |
-| totalSize       | number                                                       | 否   | 否   | 总个数。                                          |
+| totalSize       | number                                                       | 否   | 否   | 合集的总个数。                                          |
 | memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 合集的媒体资源类型                                |
 | topElements     | [MediaEntity](#mediaentity)                                  | 否   | 否   | 合集的内容                                        |
 
