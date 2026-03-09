@@ -242,9 +242,13 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | number | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
+| timeout | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
 | bundleName       | string | 否   | 是   | 监听窗口对应包名，缺省时默认监听所有窗口。       |
 
 
@@ -256,9 +260,13 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | number | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
+| timeout | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
 | on       | [On](#on9) | 否   | 是   | 监听目标控件的属性要求，默认监听所有控件。<br> **说明：** 仅支持监听指定属性要求的控件，不支持监听指定On.isBefore、On.isAfter、On.within等相对位置的控件。       |
 
 ## UIElementInfo<sup>10+</sup>
@@ -274,7 +282,7 @@ UI事件的相关信息。
 | text       | string | 是   | 否   | 控件/窗口的文本信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
 | windowChangeType<sup>22+</sup>       | [WindowChangeType](#windowchangetype22) | 是   | 是   | 窗口变化事件类型，若非窗口变化事件返回WindowChangeType.WINDOW_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23 |
 | componentEventType<sup>22+</sup>       | [ComponentEventType](#componenteventtype22) | 是   | 是   | 控件操作事件类型，若非控件操作事件返回ComponentEventType.COMPONENT_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23 |
-| windowId<sup>22+</sup>       | number | 是   | 是   | 控件所属窗口id。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23 |
+| windowId<sup>22+</sup>       | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 是   | 控件所属窗口id。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23 |
 | componentId<sup>22+</sup>       | string | 是   | 是   | 控件id，若非控件操作事件返回空字符串。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23 |
 | componentRect<sup>22+</sup>       | [Rect](#rect9) | 是   | 是   | 控件边框信息，若非控件操作事件则返回属性值均为0的Rect对象。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23 |
 
@@ -5318,7 +5326,9 @@ async function demo() {
 
 ### touchPadTwoFingersScroll<sup>22+</sup>
 
-touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?: number): Promise\<void>
+ArkTS-Dyn: touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?: number): Promise\<void>
+
+ArkTS-Sta: touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: int, speed?: int): Promise\<void>
 
 模拟触摸板双指滚动手势。使用Promise异步回调。
 
@@ -5328,14 +5338,18 @@ touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?
 
 **设备行为差异**：该接口在PC/2in1设备中可正常调用，在其他设备中返回17000005错误码。
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                            | 必填 | 说明                    |
 | ------ |-----------------------------------------------|----|-----------------------|
 | point       | [Point](#point9) | 是   | 触摸板双指滚动时鼠标光标的位置。                                            |
 | direction   | [UiDirection](#uidirection10)                 | 是  | 触摸板双指滚动的方向。           |
-| d           | number           | 是   | 触摸板双指滚动的格数，取值为大于等于0的整数，每格对应目标点位移120px。         |
-| speed       | number           | 否   | 触摸板双指滚动的速度，范围：1-500的整数，不在范围内设为默认值为20，单位：格/秒。 |
+| d           | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 是   | 触摸板双指滚动的格数，取值为大于等于0的整数，每格对应目标点位移120px。         |
+| speed       | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 否   | 触摸板双指滚动的速度，范围：1-500的整数，不在范围内设为默认值为20，单位：格/秒。 |
 
 **返回值：**
 
@@ -5664,7 +5678,9 @@ async function demo() {
 
 ### knuckleKnock<sup>22+</sup>
 
-knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
+ArkTS-Dyn: knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
+
+ArkTS-Sta: knuckleKnock(pointers: Array\<Point>, times: int): Promise\<void>
 
 模拟指关节敲击屏幕操作。使用Promise异步回调。
 
@@ -5678,12 +5694,16 @@ knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
 
 **设备行为差异**：该接口在支持指关节操作的Phone、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | pointers  | Array<[Point](#point9)>   | 是   | 指关节敲击屏幕坐标点的数组，数组长度取值为1或2。         |
-| times     | number   | 是   | 指关节连续敲击屏幕的次数，取值为1或2。 |
+| times     | ArkTS-Dyn: number  <br />ArkTS-Sta: int   | 是   | 指关节连续敲击屏幕的次数，取值为1或2。 |
 
 **返回值：**
 
@@ -5716,7 +5736,9 @@ async function demo() {
 
 ### injectKnucklePointerAction<sup>22+</sup>
 
-injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise\<void>
+ArkTS-Dyn: injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise\<void>
+
+ArkTS-Sta: injectKnucklePointerAction(pointers: PointerMatrix, speed?: int): Promise\<void>
 
 模拟指关节多点注入滑动操作。使用Promise异步回调。
 
@@ -5730,12 +5752,16 @@ injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise\<vo
 
 **设备行为差异**：该接口在支持指关节操作的Phone、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | pointers  | [PointerMatrix](#pointermatrix9) | 是   | 滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明**：当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。|
-| speed    | number                           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed    | ArkTS-Dyn: number  <br />ArkTS-Sta: int                           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -5774,7 +5800,9 @@ async function demo() {
 
 ### isComponentPresentWhenLongClick<sup>22+</sup>
 
-isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promise\<boolean>
+ArkTS-Dyn: isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promise\<boolean>
+
+ArkTS-Sta: isComponentPresentWhenLongClick(on: On, point: Point, duration?: int): Promise\<boolean>
 
 在坐标点长按，并查找目标控件是否存在。使用Promise异步回调。
 
@@ -5782,13 +5810,17 @@ isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promis
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | on     | [On](#on9) | 是   | 目标控件的属性要求。 |
 | point  | [Point](#point9) | 是   | 长按的坐标点。 |
-| duration   | number     | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| duration   | ArkTS-Dyn: number  <br />ArkTS-Sta: int     | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
@@ -5818,13 +5850,19 @@ async function demo() {
 
 ### isComponentPresentWhenDrag<sup>22+</sup>
 
-isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, duration?: number): Promise\<boolean>
+ArkTS-Dyn: isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, duration?: number): Promise\<boolean>
+
+ArkTS-Sta: isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: int, duration?: int): Promise\<boolean>
 
 从起始点拖拽至终止点，并查找目标控件是否存在。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5833,8 +5871,8 @@ isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, durat
 | on     | [On](#on9) | 是   | 目标控件的属性要求。 |
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
 | to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
-| duration  | number | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
+| duration  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
@@ -5864,13 +5902,19 @@ async function demo() {
 
 ### isComponentPresentWhenSwipe<sup>22+</sup>
 
-isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Promise\<boolean>
+ArkTS-Dyn: isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Promise\<boolean>
+
+ArkTS-Sta: isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: int): Promise\<boolean>
 
 从起始点滑向终止点，并查找目标控件是否存在。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5879,7 +5923,7 @@ isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Pro
 | on     | [On](#on9) | 是   | 目标控件的属性要求。 |
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
 | to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
+| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
 
 **返回值：**
 
@@ -5913,7 +5957,839 @@ async function demo() {
 
 **ArkTS-Dyn起始版本：** 9 
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20 
+
+### create<sup>9+</sup>
+
+ArkTS-Dyn: static create(fingers: number, steps: number): PointerMatrix
+
+ArkTS-Sta: static create(fingers: int, steps: int): PointerMatrix
+
+静态方法，构造一个PointerMatrix对象，并返回该对象。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明                                       |
+| ------- | ------ | ---- | ------------------------------------------ |
+| fingers | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 多指操作中注入的手指数，取值范围：[1,10]的整数。 |
+| steps   | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 每根手指操作的步骤数，取值范围：[1,1000]的整数。 |
+
+**返回值：**
+
+| 类型                             | 说明                          |
+| -------------------------------- | ----------------------------- |
+| [PointerMatrix](#pointermatrix9) | 返回构造的PointerMatrix对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+
+**示例：**
+
+```ts
+import { PointerMatrix } from '@kit.TestKit';
+
+async function demo() {
+  let pointerMatrix: PointerMatrix = PointerMatrix.create(2, 3);
+}
+```
+
+### setPoint<sup>9+</sup>
+
+ArkTS-Dyn: setPoint(finger: number, step: number, point: Point): void
+
+ArkTS-Sta: setPoint(finger: int, step: int, point: Point): void
+
+设置PointerMatrix对象中指定手指和步骤对应动作的坐标点。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：**
+
+| 参数名 | 类型             | 必填 | 说明                                                       |
+| ------ | ---------------- | ---- | ---------------------------------------------------------- |
+| finger | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 是   | 手指的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的手指数。                                              |
+| step   | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 是   | 步骤的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的操作的步骤数。                                               |
+| point  | [Point](#point) | 是   | 该行为的坐标点。建议相邻的坐标点距离在10px至80px范围内。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+
+**示例：**
+
+```ts
+import { PointerMatrix } from '@kit.TestKit';
+
+async function demo() {
+  let pointers: PointerMatrix = PointerMatrix.create(2, 5);
+  pointers.setPoint(0, 0, {x:250, y:480});
+  pointers.setPoint(0, 1, {x:250, y:440});
+  pointers.setPoint(0, 2, {x:250, y:400});
+  pointers.setPoint(0, 3, {x:250, y:360});
+  pointers.setPoint(0, 4, {x:250, y:320});
+  pointers.setPoint(1, 0, {x:250, y:480});
+  pointers.setPoint(1, 1, {x:250, y:440});
+  pointers.setPoint(1, 2, {x:250, y:400});
+  pointers.setPoint(1, 3, {x:250, y:360});
+  pointers.setPoint(1, 4, {x:250, y:320});
+}
+```
+
+## UiWindow<sup>9+</sup>
+
+UiWindow代表了UI界面上的一个窗口，提供窗口属性获取，窗口拖动、调整窗口大小等能力。
+该类提供的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
+
+### getBundleName<sup>9+</sup>
+
+getBundleName(): Promise\<string>
+
+获取窗口归属应用的包名信息，使用Promise异步回调。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
+**返回值：**
+
+| 类型             | 说明                                      |
+| ---------------- | ----------------------------------------- |
+| Promise\<string> | Promise对象，返回窗口归属应用的包名信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.           |
+
+**示例：**
+
+```ts
+import { Driver, UiWindow } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    let name: string = await window.getBundleName();
+  }
+}
+```
+
+### getBounds<sup>9+</sup>
+
+getBounds(): Promise\<Rect>
+
+获取窗口的边框信息，使用Promise异步回调。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
+**返回值：**
+
+| 类型                     | 说明                              |
+| ------------------------ | --------------------------------- |
+| Promise\<[Rect](#rect9)> | Promise对象，返回窗口的边框信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.           |
+
+**示例：**
+
+```ts
+import { Driver, UiWindow } from '@kit.TestKit';
+async function demo() {
+  let driver: Driver = Driver.create();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    let rect = await window.getBounds();
+  }
+}
+```
+
+### getTitle<sup>9+</sup>
+
+getTitle(): Promise\<string>
+
+获取窗口的标题信息，使用Promise异步回调。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
+**返回值：**
+
+| 类型             | 说明                              |
+| ---------------- | --------------------------------- |
+| Promise\<string> | Promise对象，返回窗口的标题信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.           |
+
+**示例：**
+
+```ts
+import { Driver, UiWindow } from '@kit.TestKit';
+async function demo() {
+  let driver: Driver = Driver.create();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    let rect = await window.getTitle();
+  }
+}
+```
+
+### getWindowMode<sup>9+</sup>
+
+getWindowMode(): Promise\<WindowMode>
+
+获取窗口的窗口模式信息，使用Promise异步回调。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
+**返回值：**
+
+| 类型                                 | 说明                                  |
+| ------------------------------------ | ------------------------------------- |
+| Promise\<[WindowMode](#windowmode9)> | Promise对象，返回窗口的窗口模式信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.          |
+
+**示例：**
+
+```ts
+import { Driver, UiWindow } from '@kit.TestKit';
+async function demo() {
+  let driver: Driver = Driver.create();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    let mode = await window.getWindowMode();
+  }
+}
+```
+
+### isFocused<sup>9+</sup>
+
+isFocused(): Promise\<boolean>
+
+判断窗口是否处于获焦状态，使用Promise异步回调。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
+**返回值：**
+
+| 类型              | 说明                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| Promise\<boolean> | Promise对象，返回窗口对象是否获取获焦状态。true：获焦。false：未获焦。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.           |
+
+**示例：**
+
+```ts
+import { Driver, UiWindow } from '@kit.TestKit';
+async function demo() {
+  let driver: Driver = Driver.create();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    let focused = await window.isFocused();
+  }
+}
+```
+
+### isActived<sup>(deprecated)</sup>
+
+isActived(): Promise\<boolean>
+
+判断窗口是否为用户正在交互窗口，使用Promise异步回调。
+
+从API version 9开始支持，从API version 11开始废弃，建议使用[isActive<sup>11+</sup>](#isactive11)替代。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**返回值：**
+
+| 类型              | 说明                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| Promise\<boolean> | Promise对象，返回窗口对象是否为用户正在交互窗口。true表示是交互窗口。false表示非交互窗口。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.           |
+
+**示例：**
+
+```ts
+import { Driver, UiWindow } from '@kit.TestKit';
+async function demo() {
+  let driver: Driver = Driver.create();
+  let window: UiWindow = await driver.findWindow({actived: true});
+  let focused = await window.isActived();
+}
+```
+
+### focus<sup>9+</sup>
+
+focus(): Promise\<void>
+
+让窗口获焦，使用Promise异步回调。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.           |
+
+**示例：**
+
+```ts
+import { Driver, UiWindow } from '@kit.TestKit';
+async function demo() {
+  let driver: Driver = Driver.create();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.focus();
+  }
+}
+```
+
+### moveTo<sup>9+</sup>
+
+ArkTS-Dyn: moveTo(x: number, y: number): Promise\<void>
+
+ArkTS-Sta: moveTo(x: int, y: int): Promise\<void>
+
+将窗口移动到目标点，使用Promise异步回调。适用于支持移动的窗口。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                            |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| x      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
+| y      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.           |
+| 17000005 | This operation is not supported.         |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+
+**示例：**
+
+```ts
+import { Driver, UiWindow } from '@kit.TestKit';
+async function demo() {
+  let driver: Driver = Driver.create();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.moveTo(100, 100);
+  }
+}
+```
+
+### resize<sup>9+</sup>
+
+ArkTS-Dyn: resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
+
+ArkTS-Sta: resize(wide: int, height: int, direction: ResizeDirection): Promise\<void>
+
+根据传入的宽、高和调整方向来调整窗口的大小，使用Promise异步回调。适用于支持调整大小的窗口。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：**
+
+| 参数名    | 类型                                 | 必填 | 说明                                                         |
+| --------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
+| wide      | ArkTS-Dyn: number  <br />ArkTS-Sta: int                               | 是   | 以number的形式传入调整后窗口的宽度，取值范围：大于等于0的整数。                         |
+| height    | ArkTS-Dyn: number  <br />ArkTS-Sta: int                               | 是   | 以number的形式传入调整后窗口的高度，取值范围：大于等于0的整数。                         |
+| direction | [ResizeDirection](#resizedirection9) | 是   | 以[ResizeDirection](#resizedirection9)的形式传入窗口调整的方向。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.           |
+| 17000005 | This operation is not supported.         |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+
+**示例：**
+
+```ts
+import { Driver, ResizeDirection, UiWindow } from '@kit.TestKit';
+async function demo() {
+  let driver: Driver = Driver.create();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.resize(100, 100, ResizeDirection.LEFT);
+  }
+}
+```
+
+### split<sup>9+</sup>
+
+split(): Promise\<void>
+
+将窗口模式切换成分屏模式，使用Promise异步回调。适用于支持切换分屏模式的窗口。
+
+> **说明**
+>
+> 该接口仅在平板、PC/2in1设备上生效。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                 |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.         |
+| 17000005 | This operation is not supported.         |
+
+**示例：**
+
+```ts
+import { Driver, UiWindow } from '@kit.TestKit';
+async function demo() {
+  let driver: Driver = Driver.create();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.split();
+  }
+}
+```
+
+### maximize<sup>9+</sup>
+
+maximize(): Promise\<void>
+
+将窗口最大化，使用Promise异步回调。适用于支持窗口最大化操作的窗口。
+
+> **说明**
+>
+> 该接口仅在平板、PC/2in1设备上生效。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.           |
+| 17000005 | This operation is not supported.         |
+
+**示例：**
+
+```ts
+import { Driver, UiWindow } from '@kit.TestKit';
+async function demo() {
+  let driver: Driver = Driver.create();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.maximize();
+  }
+}
+```
+
+### minimize<sup>9+</sup>
+
+minimize(): Promise\<void>
+
+将窗口最小化，使用Promise异步回调。适用于支持窗口最小化操作的窗口。
+
+> **说明**
+>
+> 该接口仅在平板、PC/2in1设备上生效。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.          |
+| 17000005 | This operation is not supported.         |
+
+**示例：**
+
+```ts
+import { Driver, UiWindow } from '@kit.TestKit';
+async function demo() {
+  let driver: Driver = Driver.create();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.minimize();
+  }
+}
+```
+
+### resume<sup>9+</sup>
+
+resume(): Promise\<void>
+
+将窗口恢复到之前的窗口模式，使用Promise异步回调。
+
+> **说明**
+>
+> 该接口仅在平板、PC/2in1设备上生效。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.          |
+| 17000005 | This operation is not supported.         |
+
+**示例：**
+
+```ts
+import { Driver, UiWindow } from '@kit.TestKit';
+async function demo() {
+  let driver: Driver = Driver.create();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.resume();
+  }
+}
+```
+
+### close<sup>9+</sup>
+
+close(): Promise\<void>
+
+将窗口关闭，使用Promise异步回调。
+
+> **说明**
+>
+> 该接口仅在平板、PC/2in1设备上生效。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.           |
+| 17000005 | This operation is not supported.         |
+
+**示例：**
+
+```ts
+import { Driver, UiWindow } from '@kit.TestKit';
+async function demo() {
+  let driver:Driver = Driver.create();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.close();
+  }
+}
+```
+
+### isActive<sup>11+</sup>
+
+isActive(): Promise\<boolean>
+
+判断窗口是否为用户正在交互窗口，使用Promise异步回调。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 11 
+
+**ArkTS-Sta起始版本：** 20
+
+**返回值：**
+
+| 类型              | 说明                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| Promise\<boolean> | Promise对象，返回窗口对象是否为用户正在交互窗口。true：交互窗口。false：非交互窗口。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                         |
+| -------- | ------------------------------------------------ |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.         |
+
+**示例：**
+
+```ts
+import { Driver, UiWindow } from '@kit.TestKit';
+async function demo() {
+  let driver: Driver = Driver.create();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    let focused = await window.isActive();
+  }
+}
+```
+
+### getDisplayId<sup>20+</sup>
+
+ArkTS-Dyn: getDisplayId(): Promise\<number>
+
+ArkTS-Sta: getDisplayId(): Promise\<int>
+
+获取窗口所属的屏幕ID，使用Promise异步回调。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 22
+
+**返回值：**
+
+| 类型             | 说明                   |
+| ---------------- |----------------------|
+| ArkTS-Dyn: Promise\<number>  <br />ArkTS-Sta: Promise\<int>    | Promise对象，返回窗口所属的屏幕ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                 |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.           |
+
+**示例：**
+
+```ts
+import { UiWindow, Driver } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let window: UiWindow = await driver.findWindow({active: true});
+  let id = await window.getDisplayId();
+}
+```
+
+## UIEventObserver<sup>10+</sup>
+
+UI事件监听器。
+
+**ArkTS-Dyn起始版本：** 10 
+
+**ArkTS-Sta起始版本：** 20 
 
 ### once('toastShow')<sup>10+</sup>
 
