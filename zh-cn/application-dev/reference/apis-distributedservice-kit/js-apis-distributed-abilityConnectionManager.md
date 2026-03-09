@@ -422,7 +422,7 @@ getPeerInfoById(sessionId:&nbsp;int):&nbsp;PeerInfo&nbsp;|&nbsp;null
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| [PeerInfo](js-apis-distributed-abilityconnectionmanager#peerinfo) \| null | 若存在对应peerInfo，则返回接收端的协作应用信息。若sessionId未找到，则查询失败，返回null。|
+| [PeerInfo](#peerinfo) \| null | 若存在对应peerInfo，则返回接收端的协作应用信息。若sessionId未找到，则查询失败，返回null。|
 
 **错误码：**
 
