@@ -47,6 +47,10 @@ getCurrentTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：9
+
 **参数：**
 
 | 参数名   | 类型       | 必填 | 说明                             |
@@ -93,6 +97,10 @@ getCurrentTime(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：9
+
 **参数：**
 
 | 参数名   | 类型               | 必填 | 说明                            |
@@ -137,6 +145,10 @@ getCurrentTime(isNano?: boolean): Promise&lt;number&gt;
 > 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -187,6 +199,10 @@ getRealActiveTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：9
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明   |
@@ -233,6 +249,10 @@ getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：9
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明    |
@@ -277,6 +297,10 @@ getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 > 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -327,6 +351,10 @@ getRealTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：9
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明   |
@@ -373,6 +401,10 @@ getRealTime(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：9
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明      |
@@ -417,6 +449,10 @@ getRealTime(isNano?: boolean): Promise&lt;number&gt;
 > 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -578,6 +614,10 @@ getDate(callback: AsyncCallback&lt;Date&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：9
+
 **参数：**
 
 | 参数名   | 类型           | 必填 | 说明                   |
@@ -622,6 +662,10 @@ getDate(): Promise&lt;Date&gt;
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[new Date()](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)替代，new Date()返回Date实例对象。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：9
 
 **返回值：**
 
