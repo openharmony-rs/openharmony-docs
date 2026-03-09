@@ -11075,10 +11075,10 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 
   async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption, callingInfo?: CallingInfo): Promise<boolean> {
+    option: rpc.MessageOption, callingInfo?: rpc.CallingInfo): Promise<boolean> {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
-      let pid = callingInfo.callerPid;
+      let pid = callingInfo?.callerPid;
     } else {
       hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
       return false;
@@ -11104,10 +11104,10 @@ class TestRemoteObject extends rpc.RemoteObject {
   // 同时调用仅会执行该onRemoteMessageRequest
   // 静态语言中不支持重载onRemoteMessageRequest，此处只提供带有CallingInfo的示例
   onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption, callingInfo?: CallingInfo): boolean {
+    option: rpc.MessageOption, callingInfo?: rpc.CallingInfo): boolean {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
-      let pid = callingInfo.callerPid;
+      let pid = callingInfo?.callerPid;
     } else {
       hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
       return false;
