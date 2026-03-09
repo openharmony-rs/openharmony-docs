@@ -4713,7 +4713,7 @@ onKeyboardHeightChange(callback: Callback&lt;int&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyboardHeightChange')](#onkeyboardheightchange7)。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **ArkTS-Sta起始版本：** 23
 
@@ -4800,7 +4800,7 @@ offKeyboardHeightChange(callback?: Callback&lt;int&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyboardHeightChange')](#offkeyboardheightchange7)。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **ArkTS-Sta起始版本：** 23
 
