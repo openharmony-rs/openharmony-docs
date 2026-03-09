@@ -1508,7 +1508,7 @@ ArkTS-Sta: getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo|nu
 
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | AsyncCallback\<[CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)> | 是   | 回调函数。返回订阅者的订阅信息。 |
+| callback | ArkTS-Dyn: AsyncCallback\<[CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)> <br>ArkTS-Sta: AsyncCallback\<[CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)\|null> | 是   | 回调函数。返回订阅者的订阅信息。 |
 
 **错误码：**
 
@@ -1566,7 +1566,7 @@ ArkTS-Sta: getSubscribeInfo(): Promise\<CommonEventSubscribeInfo|null>
 
 | 类型                                                         | 说明                   |
 | ------------------------------------------------------------ | ---------------------- |
-| Promise\<[CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)> | Promise对象。返回订阅者的订阅信息。 |
+| ArkTS-Dyn: Promise\<[CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)> <br>ArkTS-Sta: Promise\<[CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)\|null> | Promise对象。返回订阅者的订阅信息。 |
 
 **示例：**
 
@@ -1612,7 +1612,7 @@ ArkTS-Sta: getSubscribeInfoSync(): CommonEventSubscribeInfo|null
 
 | 类型                                                         | 说明                   |
 | ------------------------------------------------------------ | ---------------------- |
-| [CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md) | 表示订阅者的订阅信息。 |
+| ArkTS-Dyn: [CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md) <br>ArkTS-Sta: [CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)\|null | 表示订阅者的订阅信息。 |
 
 **示例：**
 
