@@ -54,6 +54,9 @@
 
 - 分布式组件管理框架在协同过程中不会对传输内容进行审查。涉及隐私敏感数据时，建议业务通过弹框提醒等方式提醒用户。
 
+<!--RP2-->
+<!--RP2End-->
+
 
 ## 环境准备
 
@@ -384,6 +387,3 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **解决措施**
 
 应用申请[长时任务(ArkTS)](../task-management/continuous-task.md)，消除此限制。
-
-<!--RP1-->
-<!--RP1End-->
