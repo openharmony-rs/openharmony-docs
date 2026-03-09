@@ -1205,9 +1205,9 @@ class DrawingRenderNode extends RenderNode {
 
 ## drawPixelMapMesh<sup>12+</sup>
 
-ArkTS-Dyn: drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: number, meshHeight: number, vertices: Array\<number>, vertOffset: number, colors: Array\<number>, colorOffset: number): void
+ArkTS-Dyn: drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: number, meshHeight: number, vertices: Array\<number>, vertOffset: number, colors: Array\<number> | null, colorOffset: number): void
 
-ArkTS-Sta: drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: int, meshHeight: int, vertices: Array\<double>, vertOffset: int, colors: Array\<int>, colorOffset: int): void
+ArkTS-Sta: drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: int, meshHeight: int, vertices: Array\<double>, vertOffset: int, colors: Array\<int> | null, colorOffset: int): void
 
 在网格上绘制像素图，网格均匀分布在像素图上。（只支持brush，使用pen没有绘制效果。）
 
@@ -1226,7 +1226,7 @@ ArkTS-Sta: drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: int, meshHeight
 | meshHeight  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 网格中的行数，大于0的整数。 |
 | vertices    | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<double> | 是   | 顶点数组，指定网格的绘制位置，浮点数组，大小必须为((meshWidth+1) * (meshHeight+1) + vertOffset) * 2。 |
 | vertOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 绘图前要跳过的vert元素数，大于等于0的整数。 |
-| colors      | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int> | 是   | 颜色数组，在每个顶点指定一种颜色，整数数组，可为null，大小必须为(meshWidth+1) * (meshHeight+1) + colorOffset。 |
+| colors      | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<int>  \| null | 是   | 颜色数组，在每个顶点指定一种颜色，整数数组，可为null，大小必须为(meshWidth+1) * (meshHeight+1) + colorOffset。 |
 | colorOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 绘制前要跳过的颜色元素数，大于等于0的整数。 |
 
 **错误码：**
