@@ -97,7 +97,7 @@ fetch.fetch({
 JS示例：
 
 ```xml
-<!-- xxx.hml -->
+<!-- index.hml -->
 <div class="container">
     <text class="title">测试网络连接</text>
     <input type="button" value="点击测试" style="width: 240px; height: 50px;margin: 5px;" onclick="usingFetch"></input>
@@ -106,7 +106,7 @@ JS示例：
 ```
 
 ```css
-/* xxx.css */
+/* index.css */
 .container {
   display: flex;
   flex-direction: column;
@@ -131,7 +131,7 @@ JS示例：
 ```
 
 ```js
-// xxx.js
+// index.js
 import fetch from '@system.fetch';
 
 export default {
