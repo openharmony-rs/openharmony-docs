@@ -75,7 +75,7 @@ try {
 
 ## deviceStatus.onSteadyStandingDetect()<sup>23+</sup>
 
-onSteadyStandingDetect(callback: Callback<SteadyStandingStatus>): void
+onSteadyStandingDetect(callback: Callback&lt;SteadyStandingStatus&gt;): void
 
 订阅设备静止姿态感知（支架态）事件。
 
@@ -182,7 +182,7 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
 
 ## deviceStatus.offSteadyStandingDetect()<sup>23+</sup>
 
-offSteadyStandingDetect(callback?: Callback<SteadyStandingStatus>): void
+offSteadyStandingDetect(callback?: Callback&lt;SteadyStandingStatus&gt;): void
 
 取消订阅设备静止姿态感知（支架态）事件。
 
