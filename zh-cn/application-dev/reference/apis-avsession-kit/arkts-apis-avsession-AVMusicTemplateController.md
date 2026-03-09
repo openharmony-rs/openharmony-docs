@@ -921,7 +921,7 @@ export class ControllerManager {
   /**
    * 模拟清除搜索历史。
    *
-   * @returns Promise类型的boolean，清除成功或者失败
+   * @returns Promise类型的boolean，清除成功或者失败。
    */
   public async clearSearchHistory(): Promise<boolean> {
     try {
@@ -1869,7 +1869,7 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     // 注销用户信息改变的监听。

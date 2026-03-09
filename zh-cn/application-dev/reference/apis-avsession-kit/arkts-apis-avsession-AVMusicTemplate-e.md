@@ -128,7 +128,7 @@
 
 | 名称   | 值       | 说明      |
 | ------ | -------- |---------|
-| NORMAL | 'normal' | 常规。     |
+| NORMAL | 'normal' | 常规购买。   |
 | BANNER | 'banner' | 会员推广海报。 |
 
 ## SearchPlayInfoType
