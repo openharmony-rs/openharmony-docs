@@ -26,6 +26,20 @@ ArkTS-Sta示例：
 ```ts
 import screenLockFileManager from '@ohos.ability.screenLockFileManager';
 ```
+## DataType
+
+枚举，指定锁屏下访问的敏感数据类型。
+
+ **系统能力：** SystemCapability.Security.ScreenLockFileManager
+
+ **ArkTS-Dyn起始版本：** 12
+
+ **ArkTS-Sta起始版本：** 23
+
+| 名称       | 值         | 说明           |
+| ---------- | ---------- | -------------- |
+| MEDIA_DATA | 0x00000001 | 媒体类型数据。 |
+| ALL_DATA   | 0xffffffff | 所有敏感加密数据。     |
 
 ## AccessStatus
 
