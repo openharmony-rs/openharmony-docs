@@ -24,6 +24,10 @@ ColumnSplit()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 ## 属性
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
@@ -42,7 +46,7 @@ ArkTS-Sta: resizeable(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -64,7 +68,7 @@ ArkTS-Sta: divider(value: ColumnSplitDividerStyle | null | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -79,6 +83,10 @@ ArkTS-Sta: divider(value: ColumnSplitDividerStyle | null | undefined)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型      | 必填 | 说明                       |
 | ----------- | ------------- | ---- |--------------------------|
