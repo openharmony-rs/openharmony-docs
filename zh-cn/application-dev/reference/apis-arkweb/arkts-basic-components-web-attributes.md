@@ -4532,7 +4532,7 @@ struct WebComponent {
 
 ArkTS-Dyn: enableHapticFeedback(enabled: boolean)
 
-ArkTS-Sta: enableHapticFeedback(enabled: boolean | undefined): this
+ArkTS-Sta: enableHapticFeedback(enabled: boolean | undefined)
 
 设置Web组件长按文本选择是否开启振动。需配置"ohos.permission.VIBRATE"。该属性没有显式调用时，默认开启振动。
 
@@ -6334,9 +6334,17 @@ password(password: boolean)
 
 > **说明：**
 >
-> 从API version 10开始废弃，并且不再提供新的接口作为替代。
+> 从API version 8开始支持，从API version 10开始废弃，建议使用[enableAutoFill<sup>23+</sup>](#enableautofill23)替代。
+
+**ArkTS模式：**该接口适用于ArkTS-Dyn
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名          | 类型   | 必填  | 说明                             |
+| ------------ | ------ | ---- | -------------------------------- |
+| password | boolean | 是   | 设置为true时，表示允许Web保存密码。<br>设置为false时，表示不允许Web保存密码。 |
 
 ## textZoomAtio<sup>(deprecated)</sup>
 
