@@ -190,7 +190,7 @@ queryMainTabs(): Promise&lt;MediaTab[]&gt;
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise<[MediaTab](arkts-apis-avsession-AVMusicTemplate-i.md#mediatab)[]> | Promise对象。返回媒体标签页数组。 |
+| Promise<[MediaTab](arkts-apis-avsession-AVMusicTemplate-i.md#mediatab)[]> | Promise对象，返回媒体标签页数组。 |
 
 **错误码：**
 
@@ -253,7 +253,7 @@ queryMediaTabContent(tabId: string): Promise&lt;MediaTabContent&gt;
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise<[MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent)> | Promise对象。返回媒体标签页内容。 |
+| Promise<[MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent)> | Promise对象，返回媒体标签页内容。 |
 
 **错误码：**
 
@@ -318,7 +318,7 @@ queryMediaEntity(params: QueryMediaEntityParam): Promise&lt;PageMediaEntity&gt;
 
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回标签页媒体实体内容。 |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象，返回标签页媒体实体内容。 |
 
 **错误码：**
 
@@ -391,7 +391,7 @@ queryCompilation(compilationId: string, pageIndex: number): Promise&lt;PageMedia
 
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回标签页媒体实体内容。 |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象，返回标签页媒体实体内容。 |
 
 **错误码：**
 
@@ -460,7 +460,7 @@ queryPlaylist(pageIndex: number, sort: Sort): Promise&lt;PageMediaEntity&gt;
 
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回标签页媒体实体内容。 |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象，返回标签页媒体实体内容。 |
 
 **错误码：**
 
@@ -522,7 +522,7 @@ queryCurrentSingle(): Promise&lt;Single&gt;
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single)> | Promise对象。返回当前单曲。 |
+| Promise<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single)> | Promise对象，返回当前单曲。 |
 
 **错误码：**
 
@@ -587,7 +587,7 @@ queryCompilationByKeyword(keyword: string): Promise&lt;Compilation[]&gt;
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation)[]> | Promise对象。返回合集数组。 |
+| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation)[]> | Promise对象，返回合集数组。 |
 
 **错误码：**
 
@@ -655,7 +655,7 @@ queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: nu
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation)[]> | Promise对象。返回合集数组。 |
+| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation)[]> | Promise对象，返回合集数组。 |
 
 **错误码：**
 
@@ -716,9 +716,9 @@ queryRecommendMediaEntityList(): Promise&lt;MediaEntity[]&gt;
 
 **返回值：**
 
-| 类型                                                         | 说明                            |
-| ------------------------------------------------------------ | ------------------------------- |
-| Promise<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | Promise对象。返回媒体实体数组。 |
+| 类型                                                         | 说明                                  |
+| ------------------------------------------------------------ | ------------------------------------- |
+| Promise<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | Promise对象，返回推荐的媒体实体数组。 |
 
 **错误码：**
 
@@ -777,7 +777,7 @@ queryHotWords(): Promise&lt;string[]&gt;
 
 | 类型              | 说明                        |
 | ----------------- | --------------------------- |
-| Promise<string[]> | Promise对象。返回热词数组。 |
+| Promise<string[]> | Promise对象，返回热词数组。 |
 
 **错误码：**
 
@@ -836,7 +836,7 @@ querySearchHistory(): Promise&lt;string[]&gt;
 
 | 类型              | 说明                              |
 | ----------------- | --------------------------------- |
-| Promise<string[]> | Promise对象。返回历史搜索词数组。 |
+| Promise<string[]> | Promise对象，返回历史搜索词数组。 |
 
 **错误码：**
 
@@ -895,7 +895,7 @@ clearSearchHistory(): Promise&lt;OperResult&gt;
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象，返回操作结果。 |
 
 **错误码：**
 
@@ -960,7 +960,7 @@ updateSettings(settingItem: SettingItem): Promise&lt;SettingItem&gt;
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem)> | Promise对象。返回更新后的设置项。 |
+| Promise<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem)> | Promise对象，返回更新后的设置项。 |
 
 **错误码：**
 
@@ -1033,7 +1033,7 @@ reportProblemAndAdvice(advice: string): Promise&lt;OperResult&gt;
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象，返回操作结果。 |
 
 **错误码：**
 
@@ -1100,7 +1100,7 @@ login(controlType: LoginType, id?: string): Promise&lt;QrCodeInfo[]&gt;
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<[QrCodeInfo](arkts-apis-avsession-AVMusicTemplate-i.md#qrcodeinfo)[]> | Promise对象。返回二维码信息的数组。 |
+| Promise<[QrCodeInfo](arkts-apis-avsession-AVMusicTemplate-i.md#qrcodeinfo)[]> | Promise对象，返回二维码信息的数组。 |
 
 **错误码：**
 
@@ -1169,7 +1169,7 @@ requestDialogInfo(actionType: DialogActionType, actionInfo?: DialogActionInfo): 
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象。返回弹框信息。 |
+| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象，返回弹框信息。 |
 
 **错误码：**
 
@@ -1242,7 +1242,7 @@ handleMemberPurchase(info: MemberPurchaseInfo): Promise&lt;DialogInfo&gt;
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象。返回弹框信息。 |
+| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象，返回弹框信息。 |
 
 **错误码：**
 
@@ -1314,7 +1314,7 @@ queryMemberPurchase(memberPurchaseType: MemberPurchaseType): Promise&lt;MemberPu
 
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[MemberPurchaseInfo](arkts-apis-avsession-AVMusicTemplate-i.md#memberpurchaseinfo)[]> | Promise对象。返回购买会员信息的数组。 |
+| Promise<[MemberPurchaseInfo](arkts-apis-avsession-AVMusicTemplate-i.md#memberpurchaseinfo)[]> | Promise对象，返回购买会员信息的数组。 |
 
 **错误码：**
 
@@ -1380,7 +1380,7 @@ queryCustomContent(queryType: CustomType[]): Promise&lt;CustomElement&gt;
 
 | 类型                                                         | 说明                          |
 | ------------------------------------------------------------ | ----------------------------- |
-| Promise<[CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement)> | Promise对象。返回自定义元素。 |
+| Promise<[CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement)> | Promise对象，返回自定义元素。 |
 
 **错误码：**
 
@@ -1448,7 +1448,7 @@ downloadMediaEntity(controlType: DownloadControlType, mediaEntity: MediaEntity):
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象，返回操作结果。 |
 
 **错误码：**
 
@@ -1525,7 +1525,7 @@ playForSearch(command: SearchPlayInfoType, args: SearchPlayInfo): Promise&lt;Ope
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象，返回操作结果。 |
 
 **错误码：**
 
@@ -1605,7 +1605,7 @@ executeAction(actionType: string, params: string): Promise&lt;string&gt;
 
 | 类型                  | 说明                    |
 | --------------------- | ----------------------- |
-| Promise&lt;string&gt; | Promise对象。返回结果。 |
+| Promise&lt;string&gt; | Promise对象，返回结果。 |
 
 **错误码：**
 
@@ -1732,7 +1732,7 @@ favoriteMediaEntity(actionType: MediaFavoriteType, mediaEntity: MediaEntity): Pr
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象，返回操作结果。 |
 
 **错误码：**
 

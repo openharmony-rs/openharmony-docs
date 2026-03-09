@@ -6,7 +6,7 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-调用[avMusicTemplate.createAVMusicTemplate](js-apis-avsession-avMusicTemplate.md#avmusictemplatecreateavmusictemplate)获取实例后，可获取其ID，启动音频模板界面，并配置数据获取方法。随后，同步数据给模板控制方，以完成后续操作。
+调用[avMusicTemplate.createAVMusicTemplate](js-apis-avsession-avMusicTemplate.md#avmusictemplatecreateavmusictemplate)后，返回实例，可以获得ID，启动音频模板界面，设置数据获取方法，同步数据给模板控制方，以及执行其他相关操作。
 
 > **说明：**
 >
@@ -95,9 +95,9 @@ startTemplate(): Promise&lt;OperResult&gt;
 
 **返回值：**
 
-| 类型                                                         | 说明                        |
-| ------------------------------------------------------------ | --------------------------- |
-| Promise\<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
+| 类型                                                         | 说明                                          |
+| ------------------------------------------------------------ | --------------------------------------------- |
+| Promise\<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象，返回启动音频模板界面的操作结果。 |
 
 **错误码：**
 
@@ -128,7 +128,7 @@ export class TemplateManager {
 
 onQueryMainTabs(callback: QueryMainTabsEvent): void
 
-注册查询主标签的事件监听。
+注册查询主标签的事件监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -136,9 +136,9 @@ onQueryMainTabs(callback: QueryMainTabsEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明               |
-| -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent) | 是   | 查询主选项卡回调。 |
+| 参数名   | 类型                                                         | 必填 | 说明                           |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
+| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent) | 是   | 回调函数，返回查询主标签事件。 |
 
 **错误码：**
 
@@ -215,9 +215,9 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明               |
-| -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent) | 否   | 查询主选项卡回调。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                   |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
+| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent) | 否   | 查询主标签事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -237,7 +237,7 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
 onQueryMediaTabContent(callback: QueryMediaTabContentEvent): void
 
-注册查询媒体标签内容事件监听。
+注册查询媒体标签内容事件监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -245,9 +245,9 @@ onQueryMediaTabContent(callback: QueryMediaTabContentEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                       |
-| -------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent) | 是   | 查询媒体标签页内容的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                     |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
+| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent) | 是   | 回调函数，返回查询媒体标签页内容的事件。 |
 
 **错误码：**
 
@@ -358,9 +358,9 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                           |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
-| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent) | 否   | 查询媒体标签页内容的回调函数。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent) | 否   | 查询媒体标签页内容的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -380,7 +380,7 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
 onQueryMediaEntity(callback: QueryMediaEntityEvent): void
 
-注册查询媒体实体监听。
+注册查询媒体实体监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -388,9 +388,9 @@ onQueryMediaEntity(callback: QueryMediaEntityEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentityevent) | 是   | 查询媒体实体的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                               |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
+| callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentityevent) | 是   | 回调函数，返回查询媒体实体的事件。 |
 
 **错误码：**
 
@@ -487,9 +487,9 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentityevent) | 否   | 查询媒体实体的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentityevent) | 否   | 查询媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -509,7 +509,7 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 
 onQueryCompilation(callback: QueryCompilationEvent): void
 
-注册查询合集的监听。
+注册查询合集的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -517,9 +517,9 @@ onQueryCompilation(callback: QueryCompilationEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明             |
-| -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationevent) | 是   | 查询合集的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                           |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
+| callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationevent) | 是   | 回调函数，返回查询合集的事件。 |
 
 **错误码：**
 
@@ -616,9 +616,9 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明             |
-| -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationevent) | 否   | 查询合集的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                   |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
+| callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationevent) | 否   | 查询合集的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -638,7 +638,7 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 
 onQueryPlaylist(callback: QueryPlaylistEvent): void
 
-注册查询播放列表的监听。
+注册查询播放列表的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -646,9 +646,9 @@ onQueryPlaylist(callback: QueryPlaylistEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryplaylistevent) | 是   | 查询播放列表的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                               |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
+| callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryplaylistevent) | 是   | 回调函数，返回查询播放列表的事件。 |
 
 **错误码：**
 
@@ -745,9 +745,9 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryplaylistevent) | 否   | 查询播放列表的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryplaylistevent) | 否   | 查询播放列表的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -767,7 +767,7 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 
 onQueryCurrentSingle(callback: QueryCurrentSingleEvent): void
 
-注册查询当前单曲的监听。
+注册查询当前单曲的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -775,9 +775,9 @@ onQueryCurrentSingle(callback: QueryCurrentSingleEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycurrentsingleevent) | 是   | 查询当前单曲的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                               |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
+| callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycurrentsingleevent) | 是   | 回调函数，返回查询当前单曲的事件。 |
 
 **错误码：**
 
@@ -885,9 +885,9 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycurrentsingleevent) | 否   | 查询当前单曲的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycurrentsingleevent) | 否   | 查询当前单曲的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -907,7 +907,7 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 
 onQueryCompilationByKeyword(callback: QueryCompilationByKeywordEvent): void
 
-注册按关键字查询合集的监听。
+注册按关键字查询合集的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -915,9 +915,9 @@ onQueryCompilationByKeyword(callback: QueryCompilationByKeywordEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                     |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationbykeywordevent) | 是   | 按关键字查询合集的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                   |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationbykeywordevent) | 是   | 回调函数，返回按关键字查询合集的事件。 |
 
 **错误码：**
 
@@ -1014,9 +1014,9 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                     |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationbykeywordevent) | 否   | 按关键字查询合集的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationbykeywordevent) | 否   | 按关键字查询合集的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -1036,7 +1036,7 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 
 onQueryMediaEntityByKeyword(callback: QueryMediaEntityByKeywordEvent): void
 
-注册按关键字查询媒体实体的监听。
+注册按关键字查询媒体实体的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1044,9 +1044,9 @@ onQueryMediaEntityByKeyword(callback: QueryMediaEntityByKeywordEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                         |
-| -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentitybykeywordevent) | 是   | 按关键字查询媒体实体的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                       |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
+| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentitybykeywordevent) | 是   | 回调函数，返回按关键字查询媒体实体的事件。 |
 
 **错误码：**
 
@@ -1143,9 +1143,9 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                         |
-| -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentitybykeywordevent) | 否   | 按关键字查询媒体实体的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentitybykeywordevent) | 否   | 按关键字查询媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -1165,7 +1165,7 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 
 onQueryRecommendMediaEntityList(callback: QueryRecommendMediaEntityListEvent): void
 
-注册查询推荐媒体列表的监听。
+注册查询推荐媒体列表的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1173,9 +1173,9 @@ onQueryRecommendMediaEntityList(callback: QueryRecommendMediaEntityListEvent): v
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                     |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryrecommendmediaentitylistevent) | 是   | 查询推荐媒体列表的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                   |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryrecommendmediaentitylistevent) | 是   | 回调函数，返回查询推荐媒体列表的事件。 |
 
 **错误码：**
 
@@ -1253,9 +1253,9 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                     |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryrecommendmediaentitylistevent) | 否   | 查询推荐媒体列表的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryrecommendmediaentitylistevent) | 否   | 查询推荐媒体列表的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -1275,7 +1275,7 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 
 onQueryHotWords(callback: QueryHotWordsEvent): void
 
-注册查询热词的监听。
+注册查询热词的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1283,9 +1283,9 @@ onQueryHotWords(callback: QueryHotWordsEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明             |
-| -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryhotwordsevent) | 是   | 查询热词的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                           |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
+| callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryhotwordsevent) | 是   | 回调函数，返回查询热词的事件。 |
 
 **错误码：**
 
@@ -1344,9 +1344,9 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明             |
-| -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryhotwordsevent) | 否   | 查询热词的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                   |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
+| callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryhotwordsevent) | 否   | 查询热词的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -1366,7 +1366,7 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 
 onQuerySearchHistory(callback: QuerySearchHistoryEvent): void
 
-注册查询搜索历史的监听。
+注册查询搜索历史的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1374,9 +1374,9 @@ onQuerySearchHistory(callback: QuerySearchHistoryEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querysearchhistoryevent) | 是   | 查询搜索历史的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                               |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
+| callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querysearchhistoryevent) | 是   | 回调函数，返回查询搜索历史的事件。 |
 
 **错误码：**
 
@@ -1435,9 +1435,9 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querysearchhistoryevent) | 否   | 查询搜索历史的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querysearchhistoryevent) | 否   | 查询搜索历史的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -1457,7 +1457,7 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 
 onClearSearchHistory(callback: ClearSearchHistoryEvent): void
 
-注册清除搜索历史的监听。
+注册清除搜索历史的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1465,9 +1465,9 @@ onClearSearchHistory(callback: ClearSearchHistoryEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#clearsearchhistoryevent) | 是   | 清除搜索历史的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                               |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
+| callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#clearsearchhistoryevent) | 是   | 回调函数，返回清除搜索历史的事件。 |
 
 **错误码：**
 
@@ -1538,9 +1538,9 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#clearsearchhistoryevent) | 否   | 清除搜索历史的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#clearsearchhistoryevent) | 否   | 清除搜索历史的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -1560,7 +1560,7 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 
 onLogin(callback: LoginEvent): void
 
-注册登录事件的监听。
+注册登录事件的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1568,9 +1568,9 @@ onLogin(callback: LoginEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明       |
-| -------- | ------------------------------------------------------------ | ---- | ---------- |
-| callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md#loginevent) | 是   | 登录事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md#loginevent) | 是   | 回调函数，返回登录事件。 |
 
 **错误码：**
 
@@ -1648,9 +1648,9 @@ offLogin(callback?: LoginEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明       |
-| -------- | ------------------------------------------------------------ | ---- | ---------- |
-| callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md#loginevent) | 否   | 登录事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                             |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
+| callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md#loginevent) | 否   | 登录事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -1670,7 +1670,7 @@ offLogin(callback?: LoginEvent): void
 
 onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 
-注册请求弹框信息的监听。
+注册请求弹框信息的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1678,9 +1678,9 @@ onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent) | 是   | 请求弹框信息的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                               |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
+| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent) | 是   | 回调函数，返回请求弹框信息的事件。 |
 
 **错误码：**
 
@@ -1764,9 +1764,9 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent) | 否   | 请求弹框信息的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent) | 否   | 请求弹框信息的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -1786,7 +1786,7 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
 onHandleMemberPurchase(callback: HandleMemberPurchaseEvent): void
 
-注册处理购买会员事件的监听。
+注册处理购买会员事件的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1794,9 +1794,9 @@ onHandleMemberPurchase(callback: HandleMemberPurchaseEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#handlememberpurchaseevent) | 是   | 处理购买会员的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                               |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
+| callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#handlememberpurchaseevent) | 是   | 回调函数，返回处理购买会员的事件。 |
 
 **错误码：**
 
@@ -1880,9 +1880,9 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#handlememberpurchaseevent) | 否   | 处理购买会员的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#handlememberpurchaseevent) | 否   | 处理购买会员的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -1902,7 +1902,7 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 
 onQueryMemberPurchase(callback: QueryMemberPurchaseEvent): void
 
-注册查询购买会员事件的监听。
+注册查询购买会员事件的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1910,9 +1910,9 @@ onQueryMemberPurchase(callback: QueryMemberPurchaseEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymemberpurchaseevent) | 是   | 查询购买会员的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                               |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
+| callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymemberpurchaseevent) | 是   | 回调函数，返回查询购买会员的事件。 |
 
 **错误码：**
 
@@ -1988,9 +1988,9 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymemberpurchaseevent) | 否   | 查询购买会员的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymemberpurchaseevent) | 否   | 查询购买会员的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2010,7 +2010,7 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 
 onQueryCustomContent(callback: QueryCustomContentEvent): void
 
-注册查询自定义内容事件的监听。
+注册查询自定义内容事件的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2018,9 +2018,9 @@ onQueryCustomContent(callback: QueryCustomContentEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                   |
-| -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycustomcontentevent) | 是   | 查询自定义内容的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                 |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
+| callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycustomcontentevent) | 是   | 回调函数，返回查询自定义内容的事件。 |
 
 **错误码：**
 
@@ -2112,9 +2112,9 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                   |
-| -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycustomcontentevent) | 否   | 查询自定义内容的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycustomcontentevent) | 否   | 查询自定义内容的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2134,7 +2134,7 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 
 onDownloadMediaEntity(callback: DownloadMediaEntityEvent): void
 
-注册下载媒体实体事件的监听。
+注册下载媒体实体事件的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2142,9 +2142,9 @@ onDownloadMediaEntity(callback: DownloadMediaEntityEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#downloadmediaentityevent) | 是   | 下载媒体实体的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                               |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
+| callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#downloadmediaentityevent) | 是   | 回调函数，返回下载媒体实体的事件。 |
 
 **错误码：**
 
@@ -2239,9 +2239,9 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#downloadmediaentityevent) | 否   | 下载媒体实体的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#downloadmediaentityevent) | 否   | 下载媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2261,7 +2261,7 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 
 onSettingsChange(callback: SettingsChangeEvent): void
 
-注册设置改变事件的监听。
+注册设置改变事件的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2269,9 +2269,9 @@ onSettingsChange(callback: SettingsChangeEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明             |
-| -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#settingschangeevent) | 是   | 设置改变的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                           |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
+| callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#settingschangeevent) | 是   | 回调函数，返回设置改变的事件。 |
 
 **错误码：**
 
@@ -2348,9 +2348,9 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明             |
-| -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#settingschangeevent) | 否   | 设置改变的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                   |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
+| callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#settingschangeevent) | 否   | 设置改变的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2370,7 +2370,7 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 
 onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 
-注册问题与建议事件的监听。
+注册问题与建议事件的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2380,7 +2380,7 @@ onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent) | 是   | 问题与建议的事件。 |
+| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent) | 是   | 回调函数，返回问题与建议的事件。 |
 
 **错误码：**
 
@@ -2451,9 +2451,9 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明          |
-| -------- | ------------------------------------------------------------ | ---- |-------------|
-| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent) | 否   | 处理问题与建议的回调。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent) | 否   | 处理问题与建议的回调。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2473,7 +2473,7 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
 onPlayForSearch(callback: PlayForSearchEvent): void
 
-注册搜播事件的监听。
+注册搜播事件的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2481,9 +2481,9 @@ onPlayForSearch(callback: PlayForSearchEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明         |
-| -------- | ------------------------------------------------------------ | ---- | ------------ |
-| callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playforsearchevent) | 是   | 搜播的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                       |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------- |
+| callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playforsearchevent) | 是   | 回调函数，返回搜播的事件。 |
 
 **错误码：**
 
@@ -2555,9 +2555,9 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明         |
-| -------- | ------------------------------------------------------------ | ---- | ------------ |
-| callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playforsearchevent) | 否   | 搜播的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                               |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
+| callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playforsearchevent) | 否   | 搜播的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2577,7 +2577,7 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 
 onExecuteAction(callback: ExecuteActionEvent): void
 
-注册执行操作事件的监听。
+注册执行操作事件的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2585,9 +2585,9 @@ onExecuteAction(callback: ExecuteActionEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明             |
-| -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#executeactionevent) | 是   | 执行操作的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                           |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
+| callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#executeactionevent) | 是   | 回调函数，返回执行操作的事件。 |
 
 **错误码：**
 
@@ -2645,9 +2645,9 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明             |
-| -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#executeactionevent) | 否   | 执行操作的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                   |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
+| callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#executeactionevent) | 否   | 执行操作的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2667,7 +2667,7 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 
 onPlayMediaEntity(callback: PlayMediaEntityEvent): void
 
-注册播放媒体实体事件的监听。
+注册播放媒体实体事件的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2675,9 +2675,9 @@ onPlayMediaEntity(callback: PlayMediaEntityEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playmediaentityevent) | 是   | 播放媒体实体的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                               |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
+| callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playmediaentityevent) | 是   | 回调函数，返回播放媒体实体的事件。 |
 
 **错误码：**
 
@@ -2730,9 +2730,9 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playmediaentityevent) | 否   | 播放媒体实体的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playmediaentityevent) | 否   | 播放媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2752,7 +2752,7 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 
 onFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
-注册收藏媒体实体事件的监听。
+注册收藏媒体实体事件的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2760,9 +2760,9 @@ onFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#favoritemediaentityevent) | 是   | 收藏媒体实体的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                               |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
+| callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#favoritemediaentityevent) | 是   | 回调函数，返回收藏媒体实体的事件。 |
 
 **错误码：**
 
@@ -2834,9 +2834,9 @@ offFavoriteMediaEntity(callback?: FavoriteMediaEntityEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#favoritemediaentityevent) | 否   | 收藏媒体实体的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#favoritemediaentityevent) | 否   | 收藏媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
