@@ -11050,10 +11050,10 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 
   onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption, callingInfo?: CallingInfo): boolean {
+    option: rpc.MessageOption, callingInfo?: rpc.CallingInfo): boolean {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
-      let pid = callingInfo.callerPid;
+      let pid = callingInfo?.callerPid;
       return true;
     } else {
       hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
@@ -11172,7 +11172,7 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 
   onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption, callingInfo: CallingInfo): boolean {
+    option: rpc.MessageOption, callingInfo: rpc.CallingInfo): boolean {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
       let pid = callingInfo.callerPid;
@@ -11209,7 +11209,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 
   // 同时调用仅会执行该onRemoteMessageRequest
   onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption, callingInfo: CallingInfo): boolean {
+    option: rpc.MessageOption, callingInfo: rpc.CallingInfo): boolean {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
       let pid = callingInfo.callerPid;
