@@ -192,7 +192,9 @@ media.createAVRecorder().then((recorder: media.AVRecorder) => {
 
 ## media.createAVTranscoder<sup>12+</sup>
 
-createAVTranscoder(): Promise\<AVTranscoder>
+ArkTS-Dyn: createAVTranscoder(): Promise\<AVTranscoder>
+
+ArkTS-Sta: createAVTranscoder(): Promise\<AVTranscoder | undefined>
 
 异步方式创建视频转码实例，通过Promise获取返回值。
 
@@ -200,7 +202,13 @@ createAVTranscoder(): Promise\<AVTranscoder>
 
 > 可创建的视频转码实例不能超过2个。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -236,11 +244,17 @@ media.createAVTranscoder().then((transcoder: media.AVTranscoder) => {
 
 ## media.createAVMetadataExtractor<sup>11+</sup>
 
-createAVMetadataExtractor(callback: AsyncCallback\<AVMetadataExtractor>): void
+ArkTS-Dyn: createAVMetadataExtractor(callback: AsyncCallback\<AVMetadataExtractor>): void
+
+ArkTS-Sta: createAVMetadataExtractor(callback: AsyncCallback\<AVMetadataExtractor | undefined>): void
 
 异步方式创建AVMetadataExtractor实例，通过注册回调函数获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -274,11 +288,17 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
 
 ## media.createAVMetadataExtractor<sup>11+</sup>
 
-createAVMetadataExtractor(): Promise\<AVMetadataExtractor>
+ArkTS-Dyn: createAVMetadataExtractor(): Promise\<AVMetadataExtractor>
+
+ArkTS-Sta: createAVMetadataExtractor(): Promise\<AVMetadataExtractor | undefined>
 
 异步方式创建AVMetadataExtractor实例，通过Promise获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -314,7 +334,9 @@ media.createAVMetadataExtractor().then((extractor: media.AVMetadataExtractor) =>
 
 ## media.createSoundPool<sup>10+</sup>
 
-createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo, callback: AsyncCallback\<SoundPool>): void
+ArkTS-Dyn: createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo, callback: AsyncCallback\<SoundPool>): void
+
+ArkTS-Sta: createSoundPool(maxStreams: int, audioRenderInfo: audio.AudioRendererInfo, callback: AsyncCallback\<SoundPool | undefined>): void
 
 创建音频池实例，使用callback方式异步获取返回值。
 
@@ -324,6 +346,10 @@ createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo, ca
 > - API 18及API 18以上版本，创建的SoundPool对象底层为多实例模式，一个应用进程最多能够创建128个SoundPool实例。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -365,7 +391,9 @@ media.createSoundPool(5, audioRendererInfo, (error, soundPool_: media.SoundPool)
 
 ## media.createSoundPool<sup>10+</sup>
 
-createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): Promise\<SoundPool>
+ArkTS-Dyn: createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): Promise\<SoundPool>
+
+ArkTS-Sta: createSoundPool(maxStreams: int, audioRenderInfo: audio.AudioRendererInfo): Promise\<SoundPool | undefined>
 
 创建音频池实例，通过Promise获取返回值。
 
@@ -375,6 +403,10 @@ createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): P
 > - API 18及API 18以上版本，创建的SoundPool对象底层为多实例模式，一个应用进程最多能够创建128个SoundPool实例。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -461,11 +493,17 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
 
 ## media.createAVImageGenerator<sup>12+</sup>
 
-createAVImageGenerator(callback: AsyncCallback\<AVImageGenerator>): void
+ArkTS-Dyn: createAVImageGenerator(callback: AsyncCallback\<AVImageGenerator>): void
+
+ArkTS-Sta: createAVImageGenerator(callback: AsyncCallback\<AVImageGenerator | undefined>): void
 
 创建AVImageGenerator实例，通过回调函数获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -499,11 +537,17 @@ media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGene
 
 ## media.createAVImageGenerator<sup>12+</sup>
 
-createAVImageGenerator(): Promise\<AVImageGenerator>
+ArkTS-Dyn: createAVImageGenerator(): Promise\<AVImageGenerator>
+
+ArkTS-Sta: createAVImageGenerator(): Promise\<AVImageGenerator | undefined>
 
 创建AVImageGenerator对象，通过Promise获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

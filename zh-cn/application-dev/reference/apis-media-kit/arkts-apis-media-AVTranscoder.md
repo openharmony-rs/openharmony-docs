@@ -18,6 +18,8 @@ import { media } from '@kit.MediaKit';
 
 ## 属性
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
 **ArkTS-Dyn起始版本：** 12
@@ -34,6 +36,8 @@ import { media } from '@kit.MediaKit';
 prepare(config: AVTranscoderConfig): Promise\<void>
 
 异步方式进行视频转码的参数设置。通过Promise获取返回值。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -94,6 +98,8 @@ start(): Promise\<void>
 
 需要[prepare()](#prepare12)事件成功触发后，才能调用start方法。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
 **ArkTS-Dyn起始版本：** 12
@@ -135,6 +141,8 @@ pause(): Promise\<void>
 异步方式暂停视频转码。通过Promise获取返回值。
 
 需要[start()](#start12)事件成功触发后，才能调用pause方法，可以通过调用[resume()](#resume12)接口来恢复转码。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -178,6 +186,8 @@ resume(): Promise\<void>
 
 需要在[pause()](#pause12)事件成功触发后，才能调用resume方法。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
 **ArkTS-Dyn起始版本：** 12
@@ -219,6 +229,8 @@ cancel(): Promise\<void>
 异步方式取消视频转码。通过Promise获取返回值。
 
 需要在[prepare()](#prepare12)、[start()](#start12)、[pause()](#pause12)或[resume()](#resume12)事件成功触发后，才能调用cancel方法。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -262,6 +274,8 @@ release(): Promise\<void>
 
 释放视频转码资源之后，该AVTranscoder实例不能再进行任何操作。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
 **ArkTS-Dyn起始版本：** 12
@@ -297,9 +311,13 @@ avTranscoder.release().then(() => {
 
 ## on('progressUpdate')<sup>12+</sup>
 
-on(type: 'progressUpdate', callback: Callback\<number>): void
+ArkTS-Dyn: on(type: 'progressUpdate', callback: Callback\<number>): void
+
+ArkTS-Sta: onProgressUpdate(callback: Callback\<int>): void
 
 注册转码进度更新事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -326,9 +344,13 @@ avTranscoder.on('progressUpdate', (progress: number) => {
 
 ## off('progressUpdate')<sup>12+</sup>
 
-off(type:'progressUpdate', callback?: Callback\<number>): void
+ArkTS-Dyn: off(type:'progressUpdate', callback?: Callback\<number>): void
+
+ArkTS-Sta: offProgressUpdate(callback?: Callback\<int>): void
 
 取消注册转码进度更新事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -353,11 +375,15 @@ avTranscoder.off('progressUpdate');
 
 ## on('error')<sup>12+</sup>
 
-on(type: 'error', callback: ErrorCallback): void
+ArkTS-Dyn: on(type: 'error', callback: ErrorCallback): void
+
+ArkTS-Sta: onError(callback: ErrorCallback): void
 
 注册AVTranscoder的错误事件，该事件仅用于错误提示。如果AVTranscoder上报error事件，开发者需要通过[release()](#release12)退出转码操作。
 
 开发者只能订阅一个错误事件的回调方法，当开发者重复订阅时，以最后一次订阅的回调接口为准。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -401,9 +427,13 @@ avTranscoder.on('error', (err: BusinessError) => {
 
 ## off('error')<sup>12+</sup>
 
-off(type:'error', callback?: ErrorCallback): void
+ArkTS-Dyn: off(type:'error', callback?: ErrorCallback): void
+
+ArkTS-Sta: offError(callback?: ErrorCallback): void
 
 取消注册转码错误事件，取消后不再接收到AVTranscoder的错误事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -428,11 +458,15 @@ avTranscoder.off('error');
 
 ## on('complete')<sup>12+</sup>
 
-on(type: 'complete', callback: Callback\<void>): void
+ArkTS-Dyn: on(type: 'complete', callback: Callback\<void>): void
+
+ArkTS-Sta: onComplete(callback: Callback\<void>): void
 
 注册转码完成事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。
 
 当AVTranscoder上报complete事件时，当前转码操作已完成，开发者需要通过[release()](#release12)退出转码操作。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -463,9 +497,13 @@ avTranscoder.on('complete', async () => {
 
 ## off('complete')<sup>12+</sup>
 
-off(type:'complete', callback?: Callback\<void>): void
+ArkTS-Dyn: off(type:'complete', callback?: Callback\<void>): void
+
+ArkTS-Sta: offComplete(callback?: Callback\<void>): void
 
 取消注册转码完成事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
 
@@ -25,7 +26,9 @@ import { media } from '@kit.MediaKit';
 
 ## fetchFrameByTime<sup>12+</sup>
 
-fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams, callback: AsyncCallback\<image.PixelMap>): void
+ArkTS-Dyn: fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams, callback: AsyncCallback\<image.PixelMap>): void
+
+ArkTS-Sta: fetchFrameByTime(timeUs: long, options: AVImageQueryOptions, param: PixelMapParams, callback: AsyncCallback\<image.PixelMap | undefined>): void
 
 异步方式获取视频缩略图。通过注册回调函数获取返回值。
 
@@ -34,6 +37,8 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -92,7 +97,9 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
 
 ## fetchFrameByTime<sup>12+</sup>
 
-fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams): Promise<image.PixelMap>
+ArkTS-Dyn: fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams): Promise<image.PixelMap>
+
+ArkTS-Sta: fetchFrameByTime(timeUs: long, options: AVImageQueryOptions, param: PixelMapParams): Promise<image.PixelMap | undefined>
 
 异步方式获取视频缩略图。通过Promise获取返回值。
 
@@ -162,7 +169,9 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
 
 ## fetchScaledFrameByTime<sup>20+</sup>
 
-fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSize?: OutputSize):Promise\<image.PixelMap\>
+ArkTS-Dyn: fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSize?: OutputSize):Promise\<image.PixelMap\>
+
+ArkTS-Sta: fetchScaledFrameByTime(timeUs: long, queryMode: AVImageQueryOptions, outputSize?: OutputSize):Promise\<image.PixelMap | undefined\>
 
 支持按比例缩放提取视频缩略图。使用Promise异步回调。
 
