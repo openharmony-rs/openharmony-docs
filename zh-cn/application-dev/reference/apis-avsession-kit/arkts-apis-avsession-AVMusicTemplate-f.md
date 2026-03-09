@@ -29,9 +29,9 @@ createAVMusicTemplate(accessType: AVMusicTemplateType): AVMusicTemplate
 
 **参数：**
 
-| 参数名     | 类型                                                         | 必填 | 说明                               |
-| ---------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| accessType | [AVMusicTemplateType](arkts-apis-avsession-AVMusicTemplate-e.md#avmusictemplatetype) | 是   | 音频模板枚举类型。默认为智慧车机。 |
+| 参数名     | 类型                                                         | 必填 | 说明               |
+| ---------- | ------------------------------------------------------------ | ---- | ------------------ |
+| accessType | [AVMusicTemplateType](arkts-apis-avsession-AVMusicTemplate-e.md#avmusictemplatetype) | 是   | 音频模板枚举类型。 |
 
 **返回值：**
 
