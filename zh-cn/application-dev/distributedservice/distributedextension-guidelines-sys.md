@@ -182,6 +182,3 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 **解决措施**
 
 重新发消息触发进程重新拉起。
-
-<!--RP1-->
-<!--RP1End-->
