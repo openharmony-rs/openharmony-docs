@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
-> 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块仅适用于ArkTS-Dyn。
+>
+> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## ContextMenu.close<sup>(deprecated)</sup>
 
@@ -21,6 +23,10 @@ static close()
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
 
 ## 示例
 
