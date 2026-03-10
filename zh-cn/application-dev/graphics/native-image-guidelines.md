@@ -356,6 +356,36 @@ libnative_buffer.so
 
 6. **更新内容到OpenGL纹理**。
    <!-- @[update_surfaceimage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+   
+   ``` C++
+       int32_t ret = OH_NativeImage_UpdateSurfaceImage(nativeImage_);
+       if (ret != 0) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "RenderEngine",
+                        "OH_NativeImage_UpdateSurfaceImage failed, ret: %{public}d, texId: %{public}u",
+                        ret, nativeImageTexId_);
+           return;
+       }
+   
+       UpdateTextureMatrix();
+       if (imageRender_) {
+           imageRender_->Render();
+       } else {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "RenderEngine", "ImageRender is null");
+       }
+       // ...
+   
+   void RenderEngine::UpdateTextureMatrix()
+   {
+       float matrix[16];
+       int32_t ret = OH_NativeImage_GetTransformMatrixV2(nativeImage_, matrix);
+       if (ret != 0) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "RenderEngine",
+                        "OH_NativeImage_GetTransformMatrix failed, ret: %{public}d", ret);
+           return;
+       }
+       imageRender_->SetTransformMatrix(matrix);
+   }
+   ```
 
 
 7. **解绑OpenGL纹理，绑定到新的外部纹理上**。
