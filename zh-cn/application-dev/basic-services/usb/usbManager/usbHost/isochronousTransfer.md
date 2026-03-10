@@ -131,7 +131,7 @@
        ]
      }
    ]
-   */
+    */
    this.deviceList_ = deviceList;
    ```
 
