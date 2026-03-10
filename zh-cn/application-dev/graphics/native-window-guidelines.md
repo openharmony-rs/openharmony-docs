@@ -147,6 +147,16 @@ libnative_window.so
 
 3. 从图形队列申请OHNativeWindowBuffer。
     <!-- @[request_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+    
+    ``` C++
+    int fenceFd = -1;
+    OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
+    ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
+    if (ret != 0 || nativeWindowBuffer == nullptr) {
+        return;
+    }
+    BufferHandle *bufferHandle = OH_NativeWindow_GetBufferHandleFromNative(nativeWindowBuffer);
+    ```
 
 
 4. 内存映射mmap。
