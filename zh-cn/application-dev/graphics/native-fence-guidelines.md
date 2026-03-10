@@ -42,59 +42,24 @@ libnative_fence.so
 #include <unistd.h>
 ```
 1. **使用signalfd()接口创建fenceFd**。
-    <!-- @[create_fencefd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
-
-    ``` C++
-    sigset_t mask;
-    sigemptyset(&mask);
-    sigaddset(&mask, SIGINT); // Monitor SIGINT signal (Ctrl C)
-    sigaddset(&mask, SIGURG); // Generated when urgent data or out of band data arrives at the socket
-    sigprocmask(SIG_BLOCK, &mask, NULL);
-    int sfd = signalfd(-1, &mask, 0);
-    ```
+    <!-- @[create_fencefd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
 
 2. **判断传入的fenceFd是否合法**。
-    <!-- @[check_fence_invalid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
-
-    ``` C++
-    bool isValid = OH_NativeFence_IsValid(INVALID_FD);
-    if (!isValid) {
-        DRAWING_LOGW("fenceFd is invalid");
-    }
-    ```
+    <!-- @[check_fence_invalid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
 
 3. **调用OH_NativeFence_Wait阻塞接口，等待fence完成后进行下一步操作**。
-    <!-- @[wait_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
-
-    ``` C++
-    constexpr uint32_t TIMEOUT_MS = 5000;
-    // ···
-    bool result = OH_NativeFence_Wait(INVALID_FD, TIMEOUT_MS);
-    ```
+    <!-- @[wait_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
 
 4. **调用OH_NativeFence_WaitForever阻塞接口，等待fence完成后进行下一步操作**。
-    <!-- @[wait_fence_forever](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
-
-    ``` C++
-    bool result2 = false;
-    auto startTime = std::chrono::steady_clock::now();
-    result2 = OH_NativeFence_WaitForever(sfd);
-    auto endTime = std::chrono::steady_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
-    if (result2) {
-        DRAWING_LOGI("SyncFenceWaitForever has an event occurring result2 %{public}d, cost_time: %{public}d",
-            result2, duration);
-    } else {
-        DRAWING_LOGI("SyncFenceWaitForever timeout with no event occurrence"
-            "result2 %{public}d, cost_time: %{public}d", result2, duration);
-    }
-    ```
+    <!-- @[wait_fence_forever](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
 
 5. **GPU或CPU发送同步信号(signal)，通知fenceFd解除阻塞**。
 
 6. **关闭fenceFd**。
-    <!-- @[close_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[close_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
 
-    ``` C++
-    OH_NativeFence_Close(sfd);
-    ```
+## 相关实例
+
+针对NativeFence的开发，有以下相关实例可供参考：
+
+- [Native Fence（API20）](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence)
