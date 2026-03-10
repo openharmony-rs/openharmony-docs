@@ -583,7 +583,7 @@ getDefaultDisplaySync(): Display
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 1400001 | Invalid display or screen. Possible cause: 1.Display is not created or destroyed. |
+| 1400001 | Invalid display or screen. Possible cause: Display is not created or destroyed. |
 
 **示例：**
 
