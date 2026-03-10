@@ -126,7 +126,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 | 类型 | 说明 |
 | -------- | -------- |
 | Readonly&lt;[USBDevicePipe](#usbdevicepipe)&gt; | 指定的传输通道对象。 |
-| undefined | 如果USB服务异常，可能返回`undefined`。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn。 |
+| undefined | 如果USB服务异常，可能返回`undefined`。<br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。 |
 
 **错误码：**
 
