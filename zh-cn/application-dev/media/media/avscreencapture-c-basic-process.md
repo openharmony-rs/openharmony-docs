@@ -365,9 +365,12 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.si
 
 从API version 23开始，支持在设备Phone/Tablet上通过策略控制是否弹出选择共享内容弹窗。
 
-在PC/2in1设备上，是否弹出选择共享内容弹窗还受录制模式控制，在Phone/Tablet设备上可以通过[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)配置选择共享内容弹窗模式，无需指定录制模式。
+在PC/2in1设备上，是否弹出选择共享内容弹窗受录制模式控制，在Phone/Tablet设备上可以通过[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)配置选择共享内容弹窗模式，无需指定录制模式。
 
 ```c++
+// 创建AVScreenCapture对象
+OH_AVScreenCapture* capture = OH_AVScreenCapture_Create();
+
 // 创建CaptureStrategy对象。
 OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
 
