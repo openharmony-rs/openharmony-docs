@@ -221,6 +221,12 @@ libnative_buffer.so
 
 2. **创建OH_NativeImage实例**。
     <!-- @[nativeimage_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+    
+    ``` C++
+    glGenTextures(1, &nativeImageTexId_);
+    // ...
+    nativeImage_ = OH_NativeImage_Create(nativeImageTexId_, GL_TEXTURE_EXTERNAL_OES);
+    ```
 
 3. **获取对应的数据生产者端NativeWindow**。
     <!-- @[nativeimage_acquire_nativewindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
