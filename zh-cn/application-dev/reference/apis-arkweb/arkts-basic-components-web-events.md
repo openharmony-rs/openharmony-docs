@@ -1009,7 +1009,9 @@ ArkTS-Sta示例：
 
 ## onPageBegin
 
-onPageBegin(callback: Callback\<OnPageBeginEvent\>)
+ArkTS-Dyn: onPageBegin(callback: Callback\<OnPageBeginEvent\>)
+ 	 
+ArkTS-Sta: onPageBegin(callback: Callback\<OnPageBeginEvent\> | undefined)
 
 网页开始加载时触发该回调，且只在主frame触发，iframe或者frameset的内容加载时不会触发此回调。
 
@@ -1023,7 +1025,7 @@ onPageBegin(callback: Callback\<OnPageBeginEvent\>)
 
 | 参数名  | 类型   | 必填   | 说明      |
 | ---- | ------ | ---- | --------- |
-| callback  | Callback\<[OnPageBeginEvent](./arkts-basic-components-web-i.md#onpagebeginevent12)\> | 是    | 网页加载开始时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnPageBeginEvent](./arkts-basic-components-web-i.md#onpagebeginevent12)\>  <br/> ArkTS-Sta: Callback\<[OnPageBeginEvent](./arkts-basic-components-web-i.md#onpagebeginevent12)\> \|  undefined | 是    | 网页加载开始时触发。 |
 
 **示例：**
 
@@ -1076,7 +1078,9 @@ ArkTS-Sta示例：
 
 ## onPageEnd
 
-onPageEnd(callback: Callback\<OnPageEndEvent\>)
+ArkTS-Dyn: onPageEnd(callback: Callback\<OnPageEndEvent\>)
+ 	 
+ArkTS-Sta: onPageEnd(callback: Callback\<OnPageEndEvent\> | undefined)
 
 网页加载完成时触发该回调，且只在主frame触发。
 
@@ -1090,7 +1094,7 @@ onPageEnd(callback: Callback\<OnPageEndEvent\>)
 
 | 参数名  | 类型   | 必填   | 说明      |
 | ---- | ------ | ---- | --------- |
-| callback  | Callback\<[OnPageEndEvent](./arkts-basic-components-web-i.md#onpageendevent12)\> | 是    | 网页加载结束时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnPageEndEvent](./arkts-basic-components-web-i.md#onpageendevent12)\> <br/>ArkTS-Sta: Callback\<[OnPageEndEvent](./arkts-basic-components-web-i.md#onpageendevent12)\>  \|  undefined | 是    | 网页加载结束时触发。 |
 
 **示例：**
 
@@ -1143,7 +1147,9 @@ ArkTS-Sta示例：
 
 ## onLoadStarted<sup>20+</sup>
 
-onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
+ArkTS-Dyn: onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
+ 	 
+ArkTS-Sta: onLoadStarted(callback: Callback\<OnLoadStartedEvent\> | undefined)
 
 通知宿主应用页面开始加载。此方法在每次主frame加载时调用一次，因此对于包含iframes或frameset的页面，onLoadStarted仅针对主frame调用一次。这意味着当嵌入式frame的内容发生变化时，如点击iframe中的链接或Fragment跳转（即跳转到#fragment_id的导航）等，不会调用onLoadStarted。
 
@@ -1157,7 +1163,7 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 
 | 参数名  | 类型   | 必填   | 说明      |
 | ---- | ------ | ---- | --------- |
-| callback  | Callback\<[OnLoadStartedEvent](./arkts-basic-components-web-i.md#onloadstartedevent20)\> | 是    | 网页加载开始时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnLoadStartedEvent](./arkts-basic-components-web-i.md#onloadstartedevent20)\> <br/>ArkTS-Sta: Callback\<[OnLoadStartedEvent](./arkts-basic-components-web-i.md#onloadstartedevent20)\> \| undefined | 是    | 网页加载开始时触发。 |
 
 **示例：**
 
@@ -1210,7 +1216,9 @@ ArkTS-Sta示例：
 
 ## onLoadFinished<sup>20+</sup>
 
-onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
+ArkTS-Dyn: onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
+ 	 
+ArkTS-Sta: onLoadFinished(callback: Callback\<OnLoadFinishedEvent\> | undefined)
 
 通知宿主应用页面已加载完成。此方法仅在主frame加载完成时被调用。对于片段跳转（即导航至#fragment_id），onLoadFinished同样会被触发。
 
@@ -1224,7 +1232,7 @@ onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
 
 | 参数名  | 类型   | 必填   | 说明      |
 | ---- | ------ | ---- | --------- |
-| callback  | Callback\<[OnLoadFinishedEvent](./arkts-basic-components-web-i.md#onloadfinishedevent20)\> | 是    | 网页加载结束时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnLoadFinishedEvent](./arkts-basic-components-web-i.md#onloadfinishedevent20)\> <br/>ArkTS-Sta: Callback\<[OnLoadFinishedEvent](./arkts-basic-components-web-i.md#onloadfinishedevent20)\> \|  undefined | 是    | 网页加载结束时触发。 |
 
 **示例：**
 
@@ -5490,7 +5498,9 @@ ArkTS-Sta: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback]
 
 ## onLoadIntercept<sup>10+</sup>
 
-onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
+ArkTS-Dyn: onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
+ 	 
+ArkTS-Sta: onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\> | undefined)
 
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
 
@@ -5504,7 +5514,7 @@ onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> | 是 | 截获资源加载时触发的回调。<br>返回值为boolean类型。返回true表示阻止此次加载，false表示允许此次加载。<br>默认值：true。 |
+| callback | ArkTS-Dyn: Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> \|  undefined | 是 | 截获资源加载时触发的回调。<br>返回值为boolean类型。返回true表示阻止此次加载，false表示允许此次加载。<br>默认值：true。 |
 
 **示例：**
 
@@ -7672,8 +7682,8 @@ struct WebComponent {
 
 ## onNativeEmbedMouseEvent<sup>20+</sup>
 
-ArkTS-Dyn: onNativeEmbedMouseEvent(callback: MouseInfoCallback)
-
+ArkTS-Dyn: ArkTS-Dyn: onNativeEmbedMouseEvent(callback: MouseInfoCallback)
+ 	 
 ArkTS-Sta: onNativeEmbedMouseEvent(callback: MouseInfoCallback | undefined)
 
 在同层标签上执行以下行为时触发该回调：
@@ -8231,6 +8241,12 @@ onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => vo
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback | (event?: { handler: Function, error: object }) => void | 是 | 当网页检测到SSL错误时触发的回调。 |
+
 ## onFileSelectorShow<sup>(deprecated)</sup>
 
 onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object }) => void)
@@ -8258,7 +8274,10 @@ onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object
 onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => boolean)
 
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
-从API version 10开始不再维护，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
+
+> **说明：**
+>
+> API version 8开始支持，从API version 10开始废弃，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
