@@ -85,7 +85,7 @@ ArkTS-Sta: fetchFrameByTime(timeUs: long, options: AVImageQueryOptions, param: P
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeUs | number                   | 是   | 需要获取的缩略图在视频中的时间点，单位为微秒（μs）。 |
+| timeUs | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 需要获取的缩略图在视频中的时间点，单位为微秒（μs）。 |
 | options | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | 是   | 需要获取的缩略图时间点与视频帧的对应关系。 |
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | 是   | 需要获取的缩略图的格式参数。 |
 
@@ -93,7 +93,7 @@ ArkTS-Sta: fetchFrameByTime(timeUs: long, options: AVImageQueryOptions, param: P
 
 | 类型           | 说明                                     |
 | -------------- | ---------------------------------------- |
-| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Promise对象，返回视频缩略图对象。 |
+| ArkTS-Dyn: Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)><br>ArkTS-Sta: Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined>| Promise对象，返回视频缩略图对象。 |
 
 **错误码：**
 
@@ -162,7 +162,7 @@ ArkTS-Sta: fetchFramesByTimes(timesUs: long[], queryOption: AVImageQueryOptions,
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timesUs | number[]                   | 是   | 需要获取的所有缩略图在视频中的时间点集合。<br>时间单位为微秒（μs），数组长度取值范围为(0, 4096]。 |
+| timesUs | ArkTS-Dyn: number[]<br>ArkTS-Sta: long[]| 是   | 需要获取的所有缩略图在视频中的时间点集合。<br>时间单位为微秒（μs），数组长度取值范围为(0, 4096]。 |
 | queryOption| [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | 是   | 需要获取的缩略图时间点与视频帧的对应关系。 |
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | 是   | 需要获取的缩略图的格式参数。 |
 | callback | [OnFrameFetched](arkts-apis-media-t.md#onframefetched23)    | 是   | 需要返回的缩略图信息及可能的异常类型。<br>异常类型请参考具体返回的错误码信息。 |
@@ -261,7 +261,7 @@ ArkTS-Sta: fetchMetadata(callback: AsyncCallback\<AVMetadata  | undefined>): voi
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)>       | 是   | 回调函数。异步返回音视频元数据对象（AVMetadata）。|
+| callback | ArkTS-Dyn: AsyncCallback\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)><br>ArkTS-Sta: AsyncCallback\<[AVMetadata](arkts-apis-media-i.md#avmetadata11) \| undefined>| 是   | 回调函数。异步返回音视频元数据对象（AVMetadata）。|
 
 **错误码：**
 
@@ -305,7 +305,7 @@ ArkTS-Sta: fetchMetadata(): Promise\<AVMetadata | undefined>
 
 | 类型           | 说明                                     |
 | -------------- | ---------------------------------------- |
-| Promise\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)>  | Promise对象。异步返回音视频元数据对象（AVMetadata）。 |
+| ArkTS-Dyn: Promise\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)><br>ArkTS-Sta: Promise\<[AVMetadata](arkts-apis-media-i.md#avmetadata11) \| undefined>| Promise对象。异步返回音视频元数据对象（AVMetadata）。 |
 
 **错误码：**
 
@@ -347,7 +347,7 @@ ArkTS-Sta: fetchAlbumCover(callback: AsyncCallback\<image.PixelMap | undefined>)
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>    | 是   | 回调函数。异步返回专辑封面。 |
+| callback | ArkTS-Dyn: AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)><br>ArkTS-Sta: AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined>| 是   | 回调函数。异步返回专辑封面。 |
 
 **错误码：**
 
@@ -393,7 +393,7 @@ ArkTS-Sta: fetchAlbumCover(): Promise\<image.PixelMap | undefined>
 
 | 类型           | 说明                                     |
 | -------------- | ---------------------------------------- |
-| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> |  Promise对象。异步返回专辑封面。 |
+| ArkTS-Dyn: Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)><br>ArkTS-Sta: Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined> |  Promise对象。异步返回专辑封面。 |
 
 **错误码：**
 

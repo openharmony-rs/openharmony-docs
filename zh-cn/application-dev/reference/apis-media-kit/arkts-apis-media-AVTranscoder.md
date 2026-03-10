@@ -311,9 +311,7 @@ avTranscoder.release().then(() => {
 
 ## on('progressUpdate')<sup>12+</sup>
 
-ArkTS-Dyn: on(type: 'progressUpdate', callback: Callback\<number>): void
-
-ArkTS-Sta: onProgressUpdate(callback: Callback\<int>): void
+on(type: 'progressUpdate', callback: Callback\<number>): void
 
 注册转码进度更新事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。
 
@@ -321,7 +319,7 @@ ArkTS-Sta: onProgressUpdate(callback: Callback\<int>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是onProgressUpdate。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onProgressUpdate](#onprogressupdate23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -342,11 +340,37 @@ avTranscoder.on('progressUpdate', (progress: number) => {
 });
 ```
 
+## onProgressUpdate<sup>23+</sup>
+
+onProgressUpdate(callback: Callback\<int>): void
+
+注册转码进度更新事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('progressUpdate')](#onprogressupdate12)。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | [Callback\<int>](../apis-basic-services-kit/js-apis-base.md#callback) | 是   | 进度更新事件回调方法，progress: int，表示当前转码进度。 |
+
+**示例：**
+
+```ts
+avTranscoder.onProgressUpdate((progress: number) => {
+  console.info('avTranscoder progressUpdate = ' + progress);
+});
+```
+
 ## off('progressUpdate')<sup>12+</sup>
 
-ArkTS-Dyn: off(type:'progressUpdate', callback?: Callback\<number>): void
-
-ArkTS-Sta: offProgressUpdate(callback?: Callback\<int>): void
+off(type:'progressUpdate', callback?: Callback\<number>): void
 
 取消注册转码进度更新事件。
 
@@ -354,7 +378,7 @@ ArkTS-Sta: offProgressUpdate(callback?: Callback\<int>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是offProgressUpdate。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offProgressUpdate](#offprogressupdate23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -373,11 +397,35 @@ ArkTS-Sta: offProgressUpdate(callback?: Callback\<int>): void
 avTranscoder.off('progressUpdate');
 ```
 
+## offProgressUpdate<sup>23+</sup>
+
+offProgressUpdate(callback?: Callback\<int>): void
+
+取消注册转码进度更新事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('progressUpdate')](#offprogressupdate12)。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| callback | [Callback\<int>](../apis-basic-services-kit/js-apis-base.md#callback) | 否   | 已注册的进度更新事件回调。由于当前回调注册时，仅会保留最后一次注册的回调，建议此参数缺省。 |
+
+**示例：**
+
+```ts
+avTranscoder.offProgressUpdate();
+```
+
 ## on('error')<sup>12+</sup>
 
-ArkTS-Dyn: on(type: 'error', callback: ErrorCallback): void
-
-ArkTS-Sta: onError(callback: ErrorCallback): void
+on(type: 'error', callback: ErrorCallback): void
 
 注册AVTranscoder的错误事件，该事件仅用于错误提示。如果AVTranscoder上报error事件，开发者需要通过[release()](#release12)退出转码操作。
 
@@ -387,7 +435,7 @@ ArkTS-Sta: onError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是onError。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -425,11 +473,56 @@ avTranscoder.on('error', (err: BusinessError) => {
 });
 ```
 
+## onError<sup>23+</sup>
+
+onError(callback: ErrorCallback): void
+
+注册AVTranscoder的错误事件，该事件仅用于错误提示。如果AVTranscoder上报error事件，开发者需要通过[release()](#release12)退出转码操作。
+
+开发者只能订阅一个错误事件的回调方法，当开发者重复订阅时，以最后一次订阅的回调接口为准。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror12)。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型          | 必填 | 说明                                                         |
+| -------- | ------------- | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 转码错误事件回调方法。                                       |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                   |
+| -------- | ------------------------------------------ |
+| 401      | The parameter check failed. |
+| 801      | Capability not supported. |
+| 5400101  | No memory.            |
+| 5400102  | Operation not allowed. |
+| 5400103  | I/O error.              |
+| 5400104  | Time out.            |
+| 5400105  | Service died.           |
+| 5400106  | Unsupported format.      |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avTranscoder.onError((err: BusinessError) => {
+  console.info('case avTranscoder.on(error) called, errMessage is ' + err.message);
+});
+```
+
 ## off('error')<sup>12+</sup>
 
-ArkTS-Dyn: off(type:'error', callback?: ErrorCallback): void
-
-ArkTS-Sta: offError(callback?: ErrorCallback): void
+off(type:'error', callback?: ErrorCallback): void
 
 取消注册转码错误事件，取消后不再接收到AVTranscoder的错误事件。
 
@@ -437,7 +530,7 @@ ArkTS-Sta: offError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是offError。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -456,11 +549,35 @@ ArkTS-Sta: offError(callback?: ErrorCallback): void
 avTranscoder.off('error');
 ```
 
+## offError<sup>23+</sup>
+
+offError(callback?: ErrorCallback): void
+
+取消注册转码错误事件，取消后不再接收到AVTranscoder的错误事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#onerror12)。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 错误事件回调方法。 |
+
+**示例：**
+
+```ts
+avTranscoder.offError();
+```
+
 ## on('complete')<sup>12+</sup>
 
-ArkTS-Dyn: on(type: 'complete', callback: Callback\<void>): void
-
-ArkTS-Sta: onComplete(callback: Callback\<void>): void
+on(type: 'complete', callback: Callback\<void>): void
 
 注册转码完成事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。
 
@@ -470,7 +587,7 @@ ArkTS-Sta: onComplete(callback: Callback\<void>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是onComplete。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onComplete](#oncomplete23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -495,11 +612,43 @@ avTranscoder.on('complete', async () => {
 });
 ```
 
+## onComplete<sup>23+</sup>
+
+onComplete(callback: Callback\<void>): void
+
+注册转码完成事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。
+
+当AVTranscoder上报complete事件时，当前转码操作已完成，开发者需要通过[release()](#release12)退出转码操作。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('complete')](#oncomplete12)。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | [Callback\<void>](../apis-basic-services-kit/js-apis-base.md#callback) | 是   | 完成事件回调方法。 |
+
+**示例：**
+
+```ts
+avTranscoder.onComplete(async () => {
+  console.info('avTranscoder complete');
+  // 开发者须在此监听转码完成事件
+  // 须等待avTranscoder.release()之后，再对转码后的文件进行转发、上传、转存等处理
+  await avTranscoder.release();
+  avTranscoder = undefined;
+});
+```
+
 ## off('complete')<sup>12+</sup>
 
-ArkTS-Dyn: off(type:'complete', callback?: Callback\<void>): void
-
-ArkTS-Sta: offComplete(callback?: Callback\<void>): void
+off(type:'complete', callback?: Callback\<void>): void
 
 取消注册转码完成事件。
 
@@ -507,7 +656,7 @@ ArkTS-Sta: offComplete(callback?: Callback\<void>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是offComplete。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offComplete](#offcomplete23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -525,3 +674,30 @@ ArkTS-Sta: offComplete(callback?: Callback\<void>): void
 ```ts
 avTranscoder.off('complete');
 ```
+
+## offComplete<sup>23+</sup>
+
+offComplete(callback?: Callback\<void>): void
+
+取消注册转码完成事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('complete')](#offcomplete12)。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| callback | [Callback\<void>](../apis-basic-services-kit/js-apis-base.md#callback) | 否   | 完成事件回调方法。 |
+
+**示例：**
+
+```ts
+avTranscoder.offComplete();
+```
+
