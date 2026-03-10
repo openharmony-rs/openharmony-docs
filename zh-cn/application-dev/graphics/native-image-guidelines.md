@@ -341,6 +341,17 @@ libnative_buffer.so
         
     3. 将OHNativeWindowBuffer提交到NativeWindow。
         <!-- @[flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
+        
+        ``` C++
+        // 设置刷新区域
+        Region region{nullptr, 0};
+        // 提交给消费者
+        result = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow_, buffer, NO_FENCE, region);
+        if (result != SUCCESS) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                         "OHNativeRender", "Failed to flush buffer, result : %{public}d.", result);
+        }
+        ```
 
 
 6. **更新内容到OpenGL纹理**。
