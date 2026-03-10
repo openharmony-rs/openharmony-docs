@@ -381,7 +381,7 @@
 | profilePicUrl | string  | 否   | 否   | 用户的头像图片URL。                                          |
 | tips          | string  | 否   | 否   | 其他关于用户的描述。                                         |
 | isLogin       | boolean | 否   | 否   | 用户是否登录。无默认值，true表示已登录，false或者无值时表示未登录。 |
-| isVip         | boolean | 否   | 否   | 用户是否是VIP。true表示是，false表示否。                     |
+| isVip         | boolean | 否   | 否   | 用户是否是VIP。无默认值，true表示是VIP用户，false或者无值时表示非VIP用户。 |
 
 ## SearchPlayInfo
 
