@@ -166,6 +166,28 @@ type OnPlaybackRateDone = (rate: number) => void
 | ------ | ------ | ------ | ------------------------------------------------------------ |
 | rate | number | 是 | 播放速率。 |
 
+## OnFrameFetched<sup>23+</sup>
+
+type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError\<void>) => void
+
+批量获取缩略图回调函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ------ | ---------------------------------------------------------- |
+| frameInfo  | [FrameInfo](arkts-apis-media-i.md#frameinfo23) | 是 | 返回的缩略图信息。     |
+| err | BusinessError\<void> | 否 | 获取缩略图时发生错误，默认值为null。 |
+
+
 ## AVRecorderState<sup>9+</sup>
 
 type AVRecorderState = 'idle' | 'prepared' | 'started' | 'paused' | 'stopped' | 'released' | 'error'
