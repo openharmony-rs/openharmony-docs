@@ -203,10 +203,10 @@ onSslErrorEventReceive接口返回的SSL错误的具体原因。
 
 | 名称                   | 值 | 说明         |
 | -------------------- | -- | ---------- |
-| FILE_OPEN_MODE         | 0 | 打开上传单个文件。  |
-| FILE_OPEN_MULTIPLE_MODE | 1 | 打开上传多个文件。  |
-| FILE_OPEN_FOLDER_MODE   | 2 | 打开上传文件夹模式。 |
-| FILE_SAVE_MODE         | 3 | 文件保存模式。    |
+| ArkTS-Dyn: FileOpenMode<br/>ArkTS-Sta: FILE_OPEN_MODE         | 0 | 打开上传单个文件。  |
+| ArkTS-Dyn: FileOpenMultipleMode<br/>ArkTS-Sta: FILE_OPEN_MULTIPLE_MODE | 1 | 打开上传多个文件。  |
+| ArkTS-Dyn: FileOpenFolderMode<br/>ArkTS-Sta: FILE_OPEN_FOLDER_MODE   | 2 | 打开上传文件夹模式。 |
+| ArkTS-Dyn: FileSaveMode<br/>ArkTS-Sta: FILE_SAVE_MODE          | 3 | 文件保存模式。    |
 
 ## WebLayoutMode<sup>11+</sup>
 
