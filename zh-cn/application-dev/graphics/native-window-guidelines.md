@@ -51,6 +51,14 @@ libnative_window.so
 
     1. 在xxx.ets中添加一个XComponent组件。
         <!-- @[create_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/ets/pages/Index.ets) -->
+        
+        ``` TypeScript
+        XComponent({ id: 'xcomponentId', type: 'texture', libraryname: 'nativerender' })
+          .margin({ bottom: 26 })
+          .onLoad((nativeWindowContext) => {
+            this.nativeWindowContext = nativeWindowContext as NativeWindowContext;
+          })
+        ```
 
 
     2. 在 native c++ 层获取 NativeXComponent。
