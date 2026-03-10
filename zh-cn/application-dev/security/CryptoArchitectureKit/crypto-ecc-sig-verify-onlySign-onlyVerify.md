@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从API version 26.0.0开始，签名验签支持OnlySign/OnlyVerify模式。对应的算法规格请查看[签名验签算法规格：ECDSA](crypto-sign-sig-verify-overview.md#ecdsa)。
+从版本26.0.0开始，签名验签支持OnlySign/OnlyVerify模式。对应的算法规格请查看[签名验签算法规格：ECDSA](crypto-sign-sig-verify-overview.md#ecdsa)。
 
 **签名**
 
@@ -85,3 +85,44 @@
 - 同步方法示例：
 
   <!-- @[ecc_onlysign_onlyverify_signature_verification_synchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/ecc_onlysign_onlyverify_signature_verification_synchronous.ets) -->
+  
+  ``` TypeScript
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
+  
+  function signMessagePromise(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
+    let signAlg = 'ECC|SHA1|OnlySign';
+    let signer = cryptoFramework.createSign(signAlg);
+    signer.initSync(priKey);
+    let signData = signer.signSync(digestBlob);
+    return signData;
+  }
+  
+  function verifyMessagePromise(digestBlob: cryptoFramework.DataBlob, signMessageBlob: cryptoFramework.DataBlob,
+    pubKey: cryptoFramework.PubKey) {
+    let verifyAlg = 'ECC|SHA1|OnlyVerify';
+    let verifier = cryptoFramework.createVerify(verifyAlg);
+    verifier.initSync(pubKey);
+    let res = verifier.verifySync(digestBlob, signMessageBlob);
+    console.info('verify result: ' + res);
+    return res;
+  }
+  
+  function main() {
+    let messageData: cryptoFramework.DataBlob =
+      { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
+    let md = cryptoFramework.createMd('SHA1');
+    md.updateSync(messageData);
+    let digestBlob = md.digestSync();
+    let keyGenAlg = 'ECC224';
+    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+    let keyPair = generator.generateKeyPairSync();
+    let signData = signMessagePromise(keyPair.priKey, digestBlob);
+    let verifyResult = verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
+    if (verifyResult === true) {
+      console.info('verify result: success.');
+    } else {
+      console.error('verify result: failed.');
+    }
+  }
+  ```
