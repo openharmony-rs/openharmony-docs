@@ -652,8 +652,8 @@ struct Index {
 
 ```ts
 // xxx.ets
-import window from '@ohos.window';
-import { BusinessError } from '@ohos.base';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
