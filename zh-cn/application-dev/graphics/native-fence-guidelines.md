@@ -65,6 +65,12 @@ libnative_fence.so
 
 3. **调用OH_NativeFence_Wait阻塞接口，等待fence完成后进行下一步操作**。
     <!-- @[wait_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    constexpr uint32_t TIMEOUT_MS = 5000;
+    // ...
+        bool result = OH_NativeFence_Wait(INVALID_FD, TIMEOUT_MS);
+    ```
 
 4. **调用OH_NativeFence_WaitForever阻塞接口，等待fence完成后进行下一步操作**。
     <!-- @[wait_fence_forever](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
