@@ -343,13 +343,13 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称               | 类型                                                         | 只读 | 可选 | 说明                                        |
-| ------------------ | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------- |
-| id                 | string                                                       | 否   | 否   | 会员购买信息的唯一ID。                      |
-| diagramUrl         | string                                                       | 否   | 否   | 会员购买演示的URL（必须采用21:9的宽高比）。 |
-| diagramData        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 会员购买图片。                              |
-| diagramContent     | string                                                       | 否   | 否   | 会员购买图片的内容。                        |
-| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md#memberpurchasetype) | 否   | 否   | 会员购买类型。                              |
+| 名称               | 类型                                                         | 只读 | 可选 | 说明                        |
+| ------------------ | ------------------------------------------------------------ | ---- | ---- |---------------------------|
+| id                 | string                                                       | 否   | 否   | 会员购买信息的唯一ID。              |
+| diagramUrl         | string                                                       | 否   | 否   | 会员购买图片的URL（必须采用21:9的宽高比）。 |
+| diagramData        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 会员购买图片。                   |
+| diagramContent     | string                                                       | 否   | 否   | 会员购买图片的内容。                |
+| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md#memberpurchasetype) | 否   | 否   | 会员购买类型。                   |
 
 ## CustomElement
 
