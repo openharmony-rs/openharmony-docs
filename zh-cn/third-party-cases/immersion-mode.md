@@ -85,7 +85,8 @@ struct Type2 {
 ### 图片背景通铺
 这种方案可以实现图片背景的通铺，同时又能避免状态栏和导航栏的内容跟应用内容相互遮挡，导致显示效果异常。
 
-为了能让应用的有效显示范围避开系统的状态栏和导航栏，以免内容重叠，我们可以通过windowClass.on(type: ‘avoidAreaChange’, callback: Callback<{AvoidAreaType, AvoidArea}>) 获取系统避让区域的大小，并对这一块区域做出相应的规避。
+为了能让应用的有效显示范围避开系统的状态栏和导航栏，以免内容重叠，我们可以通过windowClass.on(type: ‘avoidAreaChange’, callback: Callback<{AvoidAreaType, AvoidArea}>) 获取系统避让区域的大小，并对这一块区域做出相应的避让。
+
 其中回调参数AvoidArea是避让区域，可以通过其获取避让区域的具体范围；AvoidAreaType是避让区域的类型其取值如下，示例中需要规避的状态栏和导航栏属于TYPE_SYSTEM类型。
 
 | 名称                  | 值   | 说明               |
