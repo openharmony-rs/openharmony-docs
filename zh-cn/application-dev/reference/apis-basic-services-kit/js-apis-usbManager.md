@@ -126,7 +126,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 | 类型 | 说明 |
 | -------- | -------- |
 | Readonly&lt;[USBDevicePipe](#usbdevicepipe)&gt; | 指定的传输通道对象。 |
-| undefined | 如果USB服务异常，可能返回`undefined`。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn |
+| undefined | 如果USB服务异常，可能返回`undefined`。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn。 |
 
 **错误码：**
 
@@ -137,7 +137,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
 | 801      | Capability not supported.                                     |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.  |
-| 14400012 | Transmission I/O error.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta |
+| 14400012 | Transmission I/O error.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
@@ -550,7 +550,7 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 | 类型 | 说明 |
 | -------- | -------- |
 | Uint8Array | 返回获取的原始数据 |
-| undefined | 如果USB服务异常，可能返回`undefined` 。<br> **ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
+| undefined | 如果USB服务异常，可能返回`undefined` 。<br> **ArkTs模式**：该返回值仅适用于ArkTs-Dyn。|
 
 **错误码：**
 
@@ -560,8 +560,8 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
 | 801      | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.<br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta|
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta|
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.<br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta。|
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta。|
 
 **示例：**
 
@@ -1451,6 +1451,7 @@ try {
 | interval      | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点间隔。         |
 | maxPacketSize | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点最大数据包大小。    |
 | direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 否 |端点的方向。        |
+| number        | ArkTS-Dyn: number                                         | 否   | 否 |端点号。 <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。         |
 | endpointAddr        | ArkTS-Sta: int                                         | 否   | 否 |端点地址。<br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta。           |
 | type          | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点类型。取值见[UsbEndpointTransferType](#usbendpointtransfertype18)         |
 | interfaceId   | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点所属的接口的唯一标识。 |
