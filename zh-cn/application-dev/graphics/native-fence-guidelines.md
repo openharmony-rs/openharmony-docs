@@ -43,6 +43,15 @@ libnative_fence.so
 ```
 1. **使用signalfd()接口创建fenceFd**。
     <!-- @[create_fencefd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    sigset_t mask;
+    sigemptyset(&mask);
+    sigaddset(&mask, SIGINT); // Monitor SIGINT signal (Ctrl C)
+    sigaddset(&mask, SIGURG); // Generated when urgent data or out of band data arrives at the socket
+    sigprocmask(SIG_BLOCK, &mask, NULL);
+    int sfd = signalfd(-1, &mask, 0);
+    ```
 
 2. **判断传入的fenceFd是否合法**。
     <!-- @[check_fence_invalid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
