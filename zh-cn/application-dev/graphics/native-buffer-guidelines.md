@@ -43,6 +43,20 @@ libnative_buffer.so
 
 1. **创建OH_NativeBuffer实例**。
     <!-- @[nativebuffer_alloc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+    
+    ``` C++
+    OH_NativeBuffer_Config config {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&config);
+    if (nativeBuffer == nullptr) {
+        LOGE("OH_NativeBuffer_Alloc fail, nativeBuffer is null");
+    }
+    ```
 
 
 2. **将OH_NativeBuffer对应的ION内存映射到进程空间**。
