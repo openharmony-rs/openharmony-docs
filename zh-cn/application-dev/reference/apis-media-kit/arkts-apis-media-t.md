@@ -161,7 +161,9 @@ type OnSuperResolutionChanged = (enabled: boolean) => void
 
 ## OnSeiMessageHandle<sup>18+</sup>
 
-type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: number) => void
+ArkTS-Dyn: type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: number) => void
+
+ArkTS-Sta: type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: int) => void
 
 获取SEI信息，使用场景：订阅SEI信息事件，回调返回SEI详细信息。
 
@@ -169,12 +171,16 @@ type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: numb
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   |   类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | messages | Array\<[SeiMessage](arkts-apis-media-i.md#seimessage18)> | 是  | SEI信息。 |
-| playbackPosition | number | 否  | 获取当前播放位置（单位：毫秒）。 |
+| playbackPosition | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  | 获取当前播放位置（单位：毫秒）。 |
 
 ## OnPlaybackRateDone<sup>20+</sup>
 
