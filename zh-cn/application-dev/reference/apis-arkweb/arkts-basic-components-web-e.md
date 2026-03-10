@@ -143,18 +143,14 @@ Web屏幕捕获模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称             | 值 | 说明                   |
 | ---------------- | -- | ----------------------|
-| THREAT_ILLEGAL  | 0 | 非法网站。              |
-| THREAT_FRAUD    | 1 | 欺诈网站。              |
-| THREAT_RISK     | 2 | 存在安全风险的网站。      |
-| THREAT_WARNING  | 3 | 涉嫌包含不健康内容的网站。 |
-| THREAT_NONE<sup>21+</sup>      | 4 | 安全检查通过，未发现任何风险。 |
-| THREAT_UNPROCESSED<sup>21+</sup>  | 5 | 未进行安全检查。 |
+| THREAT_ILLEGAL  | 0 | 非法网站。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| THREAT_FRAUD    | 1 | 欺诈网站。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| THREAT_RISK     | 2 | 存在安全风险的网站。<br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| THREAT_WARNING  | 3 | 涉嫌包含不健康内容的网站。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| THREAT_NONE<sup>21+</sup>      | 4 | 安全检查通过，未发现任何风险。 <br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23|
+| THREAT_UNPROCESSED<sup>21+</sup>  | 5 | 未进行安全检查。 <br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23|
 
 ## RenderExitReason<sup>9+</sup>
 
