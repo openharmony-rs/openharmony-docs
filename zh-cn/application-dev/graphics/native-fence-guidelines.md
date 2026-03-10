@@ -66,31 +66,6 @@ libnative_fence.so
 3. **调用OH_NativeFence_Wait阻塞接口，等待fence完成后进行下一步操作**。
     <!-- @[wait_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
     
-    ``` C++
-    <!-- @[wait_fence_forever](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
-    
-    ``` C++
-    bool result2 = false;
-    auto startTime = std::chrono::steady_clock::now();
-    <!-- @[close_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
-    
-    ``` C++
-    OH_NativeFence_Close(sfd);
-    ```
-    auto endTime = std::chrono::steady_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
-    if (result2) {
-        DRAWING_LOGI("SyncFenceWaitForever has an event occurring result2 %{public}d, cost_time: %{public}d",
-            result2, duration);
-    } else {
-        DRAWING_LOGI("SyncFenceWaitForever timeout with no event occurrence"
-            "result2 %{public}d, cost_time: %{public}d", result2, duration);
-    }
-    ```
-    // ...
-        bool result = OH_NativeFence_Wait(INVALID_FD, TIMEOUT_MS);
-    ```
-
 4. **调用OH_NativeFence_WaitForever阻塞接口，等待fence完成后进行下一步操作**。
     <!-- @[wait_fence_forever](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
 
