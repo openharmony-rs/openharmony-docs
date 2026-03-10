@@ -31,7 +31,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 
@@ -100,7 +100,7 @@ type FocusDirection = 'up' | 'down' | 'left' | 'right' | 'forward' | 'backward'
 
 表示查询下一焦点元素的方向。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：9
 
@@ -123,7 +123,7 @@ type FocusType = 'accessibility' | 'normal'
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：9
 
@@ -136,7 +136,7 @@ type FocusType = 'accessibility' | 'normal'
 
 表示矩形区域。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：9
 
@@ -155,7 +155,7 @@ type WindowType = 'application' | 'system'
 
 表示窗口的类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：9
 
@@ -174,7 +174,7 @@ setTargetBundleName(targetNames: Array\<string>): Promise\<void>;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -192,11 +192,11 @@ setTargetBundleName(targetNames: Array\<string>): Promise\<void>;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -223,7 +223,7 @@ setTargetBundleName(targetNames: Array\<string>, callback: AsyncCallback\<void>)
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -240,7 +240,7 @@ setTargetBundleName(targetNames: Array\<string>, callback: AsyncCallback\<void>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -273,7 +273,7 @@ getFocusElement(isAccessibilityFocus?: boolean): Promise\<AccessibilityElement>;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -290,11 +290,11 @@ getFocusElement(isAccessibilityFocus?: boolean): Promise\<AccessibilityElement>;
 **返回值：**
 | 类型                                  | 说明                     |
 | ----------------------------------- | ---------------------- |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise对象，返回当前对应的焦点元素。 |
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise对象，返回当前对应的焦点元素。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
@@ -311,7 +311,7 @@ let rootElement: AccessibilityElement;
 
 axContext.getFocusElement().then((data: AccessibilityElement) => {
   rootElement = data;
-  console.log(`Succeeded in get focus element,${JSON.stringify(data)}`);
+  console.info(`Succeeded in get focus element,${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get focus element, Code is ${err.code}, message is ${err.message}`);
 })
@@ -325,7 +325,7 @@ getFocusElement(callback: AsyncCallback\<AccessibilityElement>): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -337,11 +337,11 @@ getFocusElement(callback: AsyncCallback\<AccessibilityElement>): void;
 
 | 参数名      | 类型                                       | 必填   | 说明                |
 | -------- | ---------------------------------------- | ---- | ----------------- |
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | 是    | 回调函数，返回当前对应的焦点元素。 |
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回当前对应的焦点元素。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
@@ -374,7 +374,7 @@ getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback\<Accessib
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -387,11 +387,11 @@ getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback\<Accessib
 | 参数名                  | 类型                                       | 必填   | 说明                |
 | -------------------- | ---------------------------------------- | ---- | ----------------- |
 | isAccessibilityFocus | boolean                                  | 是    | 获取的是否是无障碍焦点元素，True表示是，False表示否。    |
-| callback             | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | 是    | 回调函数，返回当前对应的焦点元素。 |
+| callback             | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回当前对应的焦点元素。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
@@ -425,7 +425,7 @@ getWindowRootElement(windowId?: number): Promise\<AccessibilityElement>;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -443,11 +443,11 @@ getWindowRootElement(windowId?: number): Promise\<AccessibilityElement>;
 
 | 类型                                  | 说明                     |
 | ----------------------------------- | ---------------------- |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise对象，返回指定窗口的根节点元素。 |
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise对象，返回指定窗口的根节点元素。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
@@ -464,7 +464,7 @@ let rootElement: AccessibilityElement;
 
 axContext.getWindowRootElement().then((data: AccessibilityElement) => {
   rootElement = data;
-  console.log(`Succeeded in get root element of the window, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in get root element of the window, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get root element of the window, Code is ${err.code}, message is ${err.message}`);
 });
@@ -478,7 +478,7 @@ getWindowRootElement(callback: AsyncCallback\<AccessibilityElement>): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -490,11 +490,11 @@ getWindowRootElement(callback: AsyncCallback\<AccessibilityElement>): void;
 
 | 参数名      | 类型                                       | 必填   | 说明                 |
 | -------- | ---------------------------------------- | ---- | ------------------ |
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | 是    | 回调函数，返回指定窗口的根节点元素。 |
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回指定窗口的根节点元素。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
@@ -527,7 +527,7 @@ getWindowRootElement(windowId: number, callback: AsyncCallback\<AccessibilityEle
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -540,11 +540,11 @@ getWindowRootElement(windowId: number, callback: AsyncCallback\<AccessibilityEle
 | 参数名      | 类型                                       | 必填   | 说明                     |
 | -------- | ---------------------------------------- | ---- | ---------------------- |
 | windowId | number                                   | 是    | 指定窗口的编号，未指定则从当前活跃窗口获取。 |
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | 是    | 回调函数，返回指定窗口的根节点元素。     |
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回指定窗口的根节点元素。     |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
@@ -578,7 +578,7 @@ getWindows(displayId?: number): Promise\<Array\<AccessibilityElement>>;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -596,11 +596,11 @@ getWindows(displayId?: number): Promise\<Array\<AccessibilityElement>>;
 
 | 类型                                       | 说明                     |
 | ---------------------------------------- | ---------------------- |
-| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Promise对象，返回指定屏幕的所有窗口。 |
+| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Promise对象，返回指定屏幕的所有窗口。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
@@ -614,7 +614,7 @@ import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getWindows().then((data: AccessibilityElement[]) => {
-  console.log(`Succeeded in get windows, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in get windows, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get windows, Code is ${err.code}, message is ${err.message}`);
 });
@@ -628,7 +628,7 @@ getWindows(callback: AsyncCallback\<Array\<AccessibilityElement>>): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -640,11 +640,11 @@ getWindows(callback: AsyncCallback\<Array\<AccessibilityElement>>): void;
 
 | 参数名      | 类型                                       | 必填   | 说明                |
 | -------- | ---------------------------------------- | ---- | ----------------- |
-| callback | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | 是    | 回调函数，返回指定屏幕的所有窗口。 |
+| callback | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | 是    | 回调函数，返回指定屏幕的所有窗口。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
@@ -674,7 +674,7 @@ getWindows(displayId: number, callback: AsyncCallback\<Array\<AccessibilityEleme
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -687,11 +687,11 @@ getWindows(displayId: number, callback: AsyncCallback\<Array\<AccessibilityEleme
 | 参数名       | 类型                                       | 必填   | 说明                    |
 | --------- | ---------------------------------------- | ---- | --------------------- |
 | displayId | number                                   | 是    | 指定的屏幕编号，未指定则从默认主屏幕获取。 |
-| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | 是    | 回调函数，返回指定屏幕的所有窗口。     |
+| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | 是    | 回调函数，返回指定屏幕的所有窗口。     |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
@@ -740,11 +740,11 @@ injectGesture(gesturePath: GesturePath): Promise\<void>;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
@@ -794,7 +794,7 @@ injectGesture(gesturePath: GesturePath, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
@@ -844,7 +844,7 @@ injectGestureSync(gesturePath: GesturePath): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID | 错误信息                                            |
 | -------- | --------------------------------------------------- |
@@ -864,17 +864,17 @@ for (let i = 0; i < 10; i++) {
 axContext.injectGestureSync(gesturePath);
 ```
 
-## AccessibilityElement<sup>9+</sup>
+## AccessibilityElement
 
 无障碍节点元素, 在调用AccessibilityElement的方法前，需要先通过[AccessibilityExtensionContext.getFocusElement() ](#accessibilityextensioncontextgetfocuselementdeprecated)或者[AccessibilityExtensionContext.getWindowRootElement() ](#accessibilityextensioncontextgetwindowrootelementdeprecated)获取AccessibilityElement实例。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**: 20
+**ArkTS-Sta起始版本**: 23
 
 ### attributeNames<sup>(deprecated)</sup>
 
@@ -884,7 +884,7 @@ attributeNames\<T extends keyof ElementAttributeValues>() : Promise\<Array\<T>>;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -906,9 +906,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // rootElement是AccessibilityElement的实例
 rootElement.attributeNames().then((data: ElementAttributeKeys[]) => {
-  console.log(`Succeeded in get attribute names, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in get attribute names, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.log(`failed to get attribute names, Code is ${err.code}, message is ${err.message}`);
+  console.error(`failed to get attribute names, Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -920,7 +920,7 @@ attributeNames\<T extends keyof ElementAttributeValues>(callback: AsyncCallback\
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -958,7 +958,7 @@ attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T): Promi
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -980,7 +980,7 @@ attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T): Promi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                          |
 | ------- | ----------------------------- |
@@ -998,7 +998,7 @@ let attributeName: ElementAttributeKeys = 'bundleName';
 
 // rootElement是AccessibilityElement的实例
 rootElement.attributeValue(attributeName).then((data: string) => {
-  console.log(`Succeeded in get attribute value by name, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in get attribute value by name, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get attribute value, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1006,14 +1006,13 @@ rootElement.attributeValue(attributeName).then((data: string) => {
 
 ### attributeValue<sup>(deprecated)</sup>
 
-attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T, 
-    callback: AsyncCallback\<ElementAttributeValues[T]>): void;
+attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T, callback: AsyncCallback\<ElementAttributeValues[T]>): void
 
-根据属性名称获取属性值，使用callback异步回调。
+根据属性名称获取属性值。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1030,7 +1029,7 @@ attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                          |
 | ------- | ----------------------------- |
@@ -1063,7 +1062,7 @@ actionNames(): Promise\<Array\<string>>;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1084,7 +1083,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // rootElement是AccessibilityElement的实例
 rootElement.actionNames().then((data: string[]) => {
-  console.log(`Succeeded in get action names, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in get action names, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get action names, Code is ${err.code}, message is ${err.message}`);
 })
@@ -1098,7 +1097,7 @@ actionNames(callback: AsyncCallback\<Array\<string>>): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1133,7 +1132,7 @@ performAction(actionName: string, parameters?: object): Promise\<void>;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1145,18 +1144,18 @@ performAction(actionName: string, parameters?: object): Promise\<void>;
 
 | 参数名         | 类型                                     | 必填   | 说明                                                       |
 | ----------- | ---------------------------------------- | ---- |----------------------------------------------------------|
-| actionName | string | 是    | 表示属性的名称，取值参考[Action](./js-apis-accessibility.md#action)。 
+| actionName | string | 是    | 表示属性的名称，取值参考[Action](./js-apis-accessibility.md#action)。| 
 | parameters | object | 否    | 表示执行操作时所需要的参数；默认为空。                             |
 
 **返回值：**
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                          |
 | ------- | ----------------------------- |
@@ -1232,7 +1231,7 @@ performAction(actionName: string, callback: AsyncCallback\<void>): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1244,12 +1243,12 @@ performAction(actionName: string, callback: AsyncCallback\<void>): void;
 
 | 参数名         | 类型                                     | 必填   | 说明             |
 | ----------- | ---------------------------------------- | ---- | -------------- |
-| actionName | string | 是    | 表示属性的名称，取值参考[Action](./js-apis-accessibility.md#action)。 
+| actionName | string | 是    | 表示属性的名称，取值参考[Action](./js-apis-accessibility.md#action)。| 
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，表示执行指定操作的回调。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                          |
 | ------- | ----------------------------- |
@@ -1281,7 +1280,7 @@ performAction(actionName: string, parameters: object, callback: AsyncCallback\<v
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1299,7 +1298,7 @@ performAction(actionName: string, parameters: object, callback: AsyncCallback\<v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
 | 错误码ID   | 错误信息                          |
 | ------- | ----------------------------- |
@@ -1332,7 +1331,7 @@ findElement(type: 'content', condition: string): Promise\<Array\<AccessibilityEl
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1351,11 +1350,11 @@ findElement(type: 'content', condition: string): Promise\<Array\<AccessibilityEl
 
 | 类型                                       | 说明                            |
 | ---------------------------------------- | ----------------------------- |
-| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Promise对象，返回满足指定查询关键字的所有节点元素。 |
+| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Promise对象，返回满足指定查询关键字的所有节点元素。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                          |
 | ------- | ----------------------------- |
@@ -1370,7 +1369,7 @@ let condition = 'keyword';
 
 // rootElement是AccessibilityElement的实例
 rootElement.findElement('content', condition).then((data: AccessibilityElement[]) => {
-  console.log(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1380,11 +1379,11 @@ rootElement.findElement('content', condition).then((data: AccessibilityElement[]
 
 findElement(type: 'content', condition: string, callback: AsyncCallback\<Array\<AccessibilityElement>>): void;
 
-根据节点内容查询所有节点元素。
+根据节点内容查询所有节点元素。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1398,11 +1397,11 @@ findElement(type: 'content', condition: string, callback: AsyncCallback\<Array\<
 | --------- | ---------------------------------------- | ---- | ---------------------------- |
 | type      | string                                   | 是    | 固定为'content',表示查找的类型为节点元素内容。 |
 | condition | string                                   | 是    | 表示查找的条件。                     |
-| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | 是    | 回调函数，返回满足指定查询关键字的所有节点元素。     |
+| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | 是    | 回调函数，返回满足指定查询关键字的所有节点元素。     |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                          |
 | ------- | ----------------------------- |
@@ -1433,7 +1432,7 @@ findElement(type: 'focusType', condition: FocusType): Promise\<AccessibilityElem
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1452,11 +1451,11 @@ findElement(type: 'focusType', condition: FocusType): Promise\<AccessibilityElem
 
 | 类型                                  | 说明                             |
 | ----------------------------------- | ------------------------------ |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise对象，返回满足指定查询焦点元素类型的节点元素。 |
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise对象，返回满足指定查询焦点元素类型的节点元素。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                          |
 | ------- | ----------------------------- |
@@ -1472,7 +1471,7 @@ let condition: FocusType = 'normal';
 
 // rootElement是AccessibilityElement的实例
 rootElement.findElement('focusType', condition).then((data: AccessibilityElement) => {
-  console.log(`Succeeded in find element,${JSON.stringify(data)}`);
+  console.info(`Succeeded in find element,${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1486,7 +1485,7 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback\<Ac
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1500,11 +1499,11 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback\<Ac
 | --------- | ---------------------------------------- | ---- | ---------------------------------- |
 | type      | string                                   | 是    | 固定为'focusType'，表示查询的类型为节点的焦点元素类型。 |
 | condition | [FocusType](#focustype)                  | 是    | 表示查询焦点元素的类型。                       |
-| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | 是    | 回调函数，返回满足指定查询焦点元素类型的节点元素。          |
+| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回满足指定查询焦点元素类型的节点元素。          |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                          |
 | ------- | ----------------------------- |
@@ -1536,7 +1535,7 @@ findElement(type: 'focusDirection', condition: FocusDirection): Promise\<Accessi
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1555,11 +1554,11 @@ findElement(type: 'focusDirection', condition: FocusDirection): Promise\<Accessi
 
 | 类型                                  | 说明                               |
 | ----------------------------------- | -------------------------------- |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise对象，返回满足指定查询下一焦点元素方向的节点元素。 |
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise对象，返回满足指定查询下一焦点元素方向的节点元素。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                          |
 | ------- | ----------------------------- |
@@ -1575,7 +1574,7 @@ let condition: FocusDirection = 'up';
 
 // rootElement是AccessibilityElement的实例
 rootElement.findElement('focusDirection', condition).then((data: AccessibilityElement) => {
-  console.log(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1589,7 +1588,7 @@ findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCa
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1603,11 +1602,11 @@ findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCa
 | --------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type      | string                                   | 是    | 固定为'focusDirection', 表示查询的类型为节点的下一焦点元素方向。 |
 | condition | [FocusDirection](#focusdirection)        | 是    | 表示下一查询焦点元素的方向。                           |
-| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | 是    | 回调函数，返回满足指定查询下一焦点元素方向的节点元素。              |
+| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回满足指定查询下一焦点元素方向的节点元素。              |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                          |
 | ------- | ----------------------------- |
