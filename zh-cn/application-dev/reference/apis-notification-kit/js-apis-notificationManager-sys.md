@@ -8571,7 +8571,7 @@ try {
 }
 ```
 
-## isPriorityIntelligentEnabled<sup>23+</sup>
+## notificationManager.isPriorityIntelligentEnabled<sup>23+</sup>
 
 isPriorityIntelligentEnabled(): Promise\<boolean\>
 
@@ -8638,7 +8638,7 @@ try {
 }
 ```
 
-## setPriorityIntelligentEnabled<sup>23+</sup>
+## notificationManager.setPriorityIntelligentEnabled<sup>23+</sup>
 
 setPriorityIntelligentEnabled(enable: boolean): Promise\<void\>
 
@@ -8711,7 +8711,7 @@ try {
 }
 ```
 
-## getPriorityEnabledByBundles<sup>23+</sup>
+## notificationManager.getPriorityEnabledByBundles<sup>23+</sup>
 
 getPriorityEnabledByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, boolean\>\>
 
@@ -8793,7 +8793,7 @@ try {
 }
 ```
 
-## setPriorityEnabledByBundles<sup>23+</sup>
+## notificationManager.setPriorityEnabledByBundles<sup>23+</sup>
 
 setPriorityEnabledByBundles(switches: Map\<BundleOption, boolean\>): Promise\<void\>
 
@@ -8871,7 +8871,7 @@ try {
 }
 ```
 
-## getPriorityStrategyByBundles<sup>23+</sup>
+## notificationManager.getPriorityStrategyByBundles<sup>23+</sup>
 
 ArkTS-Dyn: getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, number\>\>
 
@@ -8955,7 +8955,7 @@ try {
 }
 ```
 
-## setPriorityStrategyByBundles<sup>23+</sup>
+## notificationManager.setPriorityStrategyByBundles<sup>23+</sup>
 
 ArkTS-Dyn: setPriorityStrategyByBundles(strategies: Map\<BundleOption, number\>): Promise\<void\>
 
