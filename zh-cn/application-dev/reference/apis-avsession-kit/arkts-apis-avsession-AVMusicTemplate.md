@@ -6,7 +6,7 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-调用[avMusicTemplate.createAVMusicTemplate](js-apis-avsession-avMusicTemplate.md#avmusictemplatecreateavmusictemplate)获取实例后，可获取其ID，启动音频模板界面，并配置数据获取方法。随后，同步数据给模板控制方，以完成后续操作。
+调用[avMusicTemplate.createAVMusicTemplate](arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplate)获取实例后，可获取其ID，启动音频模板界面，并配置数据获取方法。随后，同步数据给模板控制方，以完成后续操作。
 
 > **说明：**
 >
@@ -2856,7 +2856,7 @@ offFavoriteMediaEntity(callback?: FavoriteMediaEntityEvent): void
 
 setUserInfo(userInfo: UserInfo): Promise&lt;void&gt;
 
-向音频模板控制方同步用户信息。
+向音频模板控制方同步用户信息。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2924,7 +2924,7 @@ export class TemplateManager {
 
 setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;void&gt;
 
-向音频模板控制方同步弹框命令。
+向音频模板控制方同步弹框命令。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2988,7 +2988,7 @@ export class TemplateManager {
 
 setCurrentSingle(single: Single): Promise&lt;void&gt;
 
-向音频模板控制方同步当前单曲。
+向音频模板控制方同步当前单曲。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3084,7 +3084,7 @@ export class TemplateManager {
 
 setMediaEntities(entities: MediaEntity[]): Promise&lt;void&gt;
 
-向音频模板控制方同步媒体资源变更信息。
+向音频模板控制方同步媒体资源变更信息。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3141,7 +3141,7 @@ export class TemplateManager {
 
 setTabContent(tabId: string, tabContent: MediaTabContent): Promise&lt;void&gt;
 
-向音频模板控制方同步标签页内容信息。
+向音频模板控制方同步标签页内容信息。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3214,7 +3214,7 @@ export class TemplateManager {
 
 setPlaylist(playlist: PageMediaEntity): Promise&lt;void&gt;
 
-向音频模板控制方同步播放列表。
+向音频模板控制方同步播放列表。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3282,7 +3282,7 @@ export class TemplateManager {
 
 setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
-向音频模板控制方同步单曲下载状态信息。
+向音频模板控制方同步单曲下载状态信息。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3318,7 +3318,7 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
 setCustomElements(actionType: ActionType, customType: CustomType, customElement: CustomElement): Promise&lt;void&gt;
 
-向音频模板控制方同步自定义元素变更信息。
+向音频模板控制方同步自定义元素变更信息。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3392,7 +3392,7 @@ export class TemplateManager {
 
 setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 
-向音频模板控制方同步设置信息。
+向音频模板控制方同步设置信息。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3449,7 +3449,7 @@ export class TemplateManager {
 
 reportExecuteAction(actionType: string, params: string): Promise&lt;void&gt;
 
-向音频模板控制方同步执行操作信息。
+向音频模板控制方同步执行操作信息。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3501,7 +3501,7 @@ export class TemplateManager {
 
 setExtensionAbility(want: WantAgent): Promise&lt;void&gt;
 
-向音频模板控制方同步用于被拉起的Ability。
+向音频模板控制方同步用于被拉起的Ability。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3571,7 +3571,7 @@ export class TemplateManager {
 
 destroy(): Promise&lt;void&gt;
 
-销毁音频模板实例。
+销毁音频模板实例。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
