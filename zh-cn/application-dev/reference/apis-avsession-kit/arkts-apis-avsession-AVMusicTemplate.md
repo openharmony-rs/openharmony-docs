@@ -1670,7 +1670,7 @@ offLogin(callback?: LoginEvent): void
 
 onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 
-注册请求弹框信息的监听。使用callback异步回调。
+注册请求对话框信息的监听。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1678,9 +1678,9 @@ onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                               |
-| -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent) | 是   | 回调函数，返回请求弹框信息的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                 |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
+| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent) | 是   | 回调函数，返回请求对话框信息的事件。 |
 
 **错误码：**
 
@@ -1727,9 +1727,9 @@ export class TemplateManager {
   }
 
   /**
-   * 模拟弹框信息。
+   * 模拟对话框信息。
    *
-   * @returns 弹框信息。
+   * @returns 对话框信息。
    */
   private async createDialogInfo(): Promise<avMusicTemplate.DialogInfo> {
     let qrCodeInfo: avMusicTemplate.QrCodeInfo[] = [{
@@ -1756,7 +1756,7 @@ export class TemplateManager {
 
 offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
-注销请求弹框信息的监听。
+注销请求对话框信息的监听。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1764,9 +1764,9 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                       |
-| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent) | 否   | 请求弹框信息的事件。不填该参数则注销该类型对应的所有回调。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent) | 否   | 请求对话框信息的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -1843,9 +1843,9 @@ export class TemplateManager {
   }
 
   /**
-   * 模拟弹框信息。
+   * 模拟对话框信息。
    *
-   * @returns 弹框信息。
+   * @returns 对话框信息。
    */
   private async createDialogInfo(): Promise<avMusicTemplate.DialogInfo> {
     let qrCodeInfo: avMusicTemplate.QrCodeInfo[] = [{
@@ -2924,7 +2924,7 @@ export class TemplateManager {
 
 setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;void&gt;
 
-向音频模板控制方同步弹框命令。使用Promise异步回调。
+向音频模板控制方同步对话框命令。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2932,10 +2932,10 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;vo
 
 **参数：**
 
-| 参数名     | 类型                                                         | 必填 | 说明           |
-| ---------- | ------------------------------------------------------------ | ---- | -------------- |
-| type       | [DialogControlType](arkts-apis-avsession-AVMusicTemplate-t.md#dialogcontroltype) | 是   | 弹框控制类型。 |
-| dialogInfo | [DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo) | 是   | 弹框信息。     |
+| 参数名     | 类型                                                         | 必填 | 说明             |
+| ---------- | ------------------------------------------------------------ | ---- | ---------------- |
+| type       | [DialogControlType](arkts-apis-avsession-AVMusicTemplate-t.md#dialogcontroltype) | 是   | 对话框控制类型。 |
+| dialogInfo | [DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo) | 是   | 对话框信息。     |
 
 **返回值：**
 
@@ -2962,7 +2962,7 @@ export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
     /**
-     * 弹框相关的操作，如：打开，关闭。
+     * 对话框相关的操作，如：打开，关闭。
      */
     public setDialogCommand() {
         let type: avMusicTemplate.DialogControlType = 'open';

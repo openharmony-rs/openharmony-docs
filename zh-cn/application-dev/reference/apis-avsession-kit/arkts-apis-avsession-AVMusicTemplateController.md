@@ -180,7 +180,7 @@ export class ControllerManager {
 
 queryMainTabs(): Promise&lt;MediaTab[]&gt;
 
-查询主标签。
+查询主标签。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -188,9 +188,9 @@ queryMainTabs(): Promise&lt;MediaTab[]&gt;
 
 **返回值：**
 
-| 类型                                                         | 说明                              |
-| ------------------------------------------------------------ | --------------------------------- |
-| Promise<[MediaTab](arkts-apis-avsession-AVMusicTemplate-i.md#mediatab)[]> | Promise对象，返回媒体标签页数组。 |
+| 类型                                                         | 说明                                  |
+| ------------------------------------------------------------ | ------------------------------------- |
+| Promise<[MediaTab](arkts-apis-avsession-AVMusicTemplate-i.md#mediatab)[]> | Promise对象，返回查询的主标签页数组。 |
 
 **错误码：**
 
@@ -237,7 +237,7 @@ export class ControllerManager {
 
 queryMediaTabContent(tabId: string): Promise&lt;MediaTabContent&gt;
 
-查询媒体标签内容。
+查询媒体标签内容。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -302,7 +302,7 @@ export class ControllerManager {
 
 queryMediaEntity(params: QueryMediaEntityParam): Promise&lt;PageMediaEntity&gt;
 
-查询媒体实体。
+查询媒体实体。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -316,9 +316,9 @@ queryMediaEntity(params: QueryMediaEntityParam): Promise&lt;PageMediaEntity&gt;
 
 **返回值：**
 
-| 类型                                                         | 说明                                  |
-| ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象，返回标签页媒体实体内容。 |
+| 类型                                                         | 说明                                      |
+| ------------------------------------------------------------ | ----------------------------------------- |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象，返回查询的媒体实体分页对象。 |
 
 **错误码：**
 
@@ -374,7 +374,7 @@ export class ControllerManager {
 
 queryCompilation(compilationId: string, pageIndex: number): Promise&lt;PageMediaEntity&gt;
 
-查询合集。
+查询合集。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -389,9 +389,9 @@ queryCompilation(compilationId: string, pageIndex: number): Promise&lt;PageMedia
 
 **返回值：**
 
-| 类型                                                         | 说明                                  |
-| ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象，返回标签页媒体实体内容。 |
+| 类型                                                         | 说明                                    |
+| ------------------------------------------------------------ | --------------------------------------- |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象，返回查询的合集的分页对象。 |
 
 **错误码：**
 
@@ -443,7 +443,7 @@ export class ControllerManager {
 
 queryPlaylist(pageIndex: number, sort: Sort): Promise&lt;PageMediaEntity&gt;
 
-查询播放列表。
+查询播放列表。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -451,16 +451,16 @@ queryPlaylist(pageIndex: number, sort: Sort): Promise&lt;PageMediaEntity&gt;
 
 **参数：**
 
-| 参数名    | 类型                                                   | 必填 | 说明                                                         |
-| --------- | ------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| pageIndex | number                                                 | 是   | 标签页的索引。                                               |
-| sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort) | 是   | xxxxxxxxxx import { avMusicTemplate } from '@kit.AVSessionKit';​const TAG: string = 'ControllerManager';​export class ControllerManager {  /**   * 反注册模板监听。   */  public unregisterAVMusicTemplateListener() {    try {      avMusicTemplate.offAVMusicTemplateDestroy();    } catch (e) {      console.error(TAG, `unregisterAVMusicTemplateListener: errCode: ${e?.code}`);    }  }}ts |
+| 参数名    | 类型                                                   | 必填 | 说明                             |
+| --------- | ------------------------------------------------------ | ---- | -------------------------------- |
+| pageIndex | number                                                 | 是   | 标签页的索引。                   |
+| sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort) | 是   | 查询到的播放列表数据的排序类型。 |
 
 **返回值：**
 
-| 类型                                                         | 说明                                  |
-| ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象，返回标签页媒体实体内容。 |
+| 类型                                                         | 说明                                        |
+| ------------------------------------------------------------ | ------------------------------------------- |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象，返回查询的播放列表的分页对象。 |
 
 **错误码：**
 
@@ -512,7 +512,7 @@ export class ControllerManager {
 
 queryCurrentSingle(): Promise&lt;Single&gt;
 
-查询当前单曲。
+查询当前单曲。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -571,7 +571,7 @@ export class ControllerManager {
 
 queryCompilationByKeyword(keyword: string): Promise&lt;Compilation[]&gt;
 
-按关键字查询合集。
+按关键字查询合集。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -637,7 +637,7 @@ export class ControllerManager {
 
 queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: number): Promise&lt;PageMediaEntity&gt;
 
-按关键字查询媒体实体。
+按关键字查询媒体实体。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -653,9 +653,9 @@ queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: nu
 
 **返回值：**
 
-| 类型                                                         | 说明                        |
-| ------------------------------------------------------------ | --------------------------- |
-| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation)[]> | Promise对象，返回合集数组。 |
+| 类型                                                         | 说明                                                |
+| ------------------------------------------------------------ | --------------------------------------------------- |
+| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation)[]> | Promise对象，返回与该关键字相关的媒体实体分页对象。 |
 
 **错误码：**
 
@@ -708,7 +708,7 @@ export class ControllerManager {
 
 queryRecommendMediaEntityList(): Promise&lt;MediaEntity[]&gt;
 
-查询推荐的媒体实体列表。
+查询推荐的媒体实体列表。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -767,7 +767,7 @@ export class ControllerManager {
 
 queryHotWords(): Promise&lt;string[]&gt;
 
-查询热词。
+查询热词。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -826,7 +826,7 @@ export class ControllerManager {
 
 querySearchHistory(): Promise&lt;string[]&gt;
 
-查询搜索历史。
+查询搜索历史。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -885,7 +885,7 @@ export class ControllerManager {
 
 clearSearchHistory(): Promise&lt;OperResult&gt;
 
-清除搜索历史。
+清除搜索历史。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -944,7 +944,7 @@ export class ControllerManager {
 
 updateSettings(settingItem: SettingItem): Promise&lt;SettingItem&gt;
 
-更新设置信息。
+更新设置信息。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1017,7 +1017,7 @@ export class ControllerManager {
 
 reportProblemAndAdvice(advice: string): Promise&lt;OperResult&gt;
 
-报告问题和建议。
+报告问题和建议。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1083,7 +1083,7 @@ export class ControllerManager {
 
 login(controlType: LoginType, id?: string): Promise&lt;QrCodeInfo[]&gt;
 
-登录。
+登录。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1152,7 +1152,7 @@ export class ControllerManager {
 
 requestDialogInfo(actionType: DialogActionType, actionInfo?: DialogActionInfo): Promise&lt;DialogInfo&gt;
 
-请求弹框信息。
+请求对话框信息。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1160,16 +1160,16 @@ requestDialogInfo(actionType: DialogActionType, actionInfo?: DialogActionInfo): 
 
 **参数：**
 
-| 参数名     | 类型                                                         | 必填 | 说明             |
-| ---------- | ------------------------------------------------------------ | ---- | ---------------- |
-| actionType | [DialogActionType](arkts-apis-avsession-AVMusicTemplate-t.md#dialogactiontype) | 是   | 弹框操作类型。   |
-| actionInfo | [DialogActionInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogactioninfo) | 否   | 弹框操作的信息。 |
+| 参数名     | 类型                                                         | 必填 | 说明               |
+| ---------- | ------------------------------------------------------------ | ---- | ------------------ |
+| actionType | [DialogActionType](arkts-apis-avsession-AVMusicTemplate-t.md#dialogactiontype) | 是   | 对话框操作类型。   |
+| actionInfo | [DialogActionInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogactioninfo) | 否   | 对话框操作的信息。 |
 
 **返回值：**
 
-| 类型                                                         | 说明                        |
-| ------------------------------------------------------------ | --------------------------- |
-| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象，返回弹框信息。 |
+| 类型                                                         | 说明                          |
+| ------------------------------------------------------------ | ----------------------------- |
+| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象，返回对话框信息。 |
 
 **错误码：**
 
@@ -1193,9 +1193,9 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 模拟请求弹框信息。
+   * 模拟请求对话框信息。
    *
-   * @returns Promise类型的弹框信息。
+   * @returns Promise类型的对话框信息。
    */
   public async requestDialogInfo(): Promise<avMusicTemplate.DialogInfo | undefined> {
     let actionType: avMusicTemplate.DialogActionType = 'open';
@@ -1226,7 +1226,7 @@ export class ControllerManager {
 
 handleMemberPurchase(info: MemberPurchaseInfo): Promise&lt;DialogInfo&gt;
 
-处理购买会员情况。
+处理购买会员情况。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1240,9 +1240,9 @@ handleMemberPurchase(info: MemberPurchaseInfo): Promise&lt;DialogInfo&gt;
 
 **返回值：**
 
-| 类型                                                         | 说明                        |
-| ------------------------------------------------------------ | --------------------------- |
-| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象，返回弹框信息。 |
+| 类型                                                         | 说明                          |
+| ------------------------------------------------------------ | ----------------------------- |
+| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象，返回对话框信息。 |
 
 **错误码：**
 
@@ -1266,9 +1266,9 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 模拟请求弹框信息。
+   * 模拟请求对话框信息。
    *
-   * @returns Promise类型的弹框信息。
+   * @returns Promise类型的对话框信息。
    */
   public async handleMemberPurchase(): Promise<avMusicTemplate.DialogInfo | undefined> {
     let memberPurchaseInfo: avMusicTemplate.MemberPurchaseInfo = {
@@ -1298,7 +1298,7 @@ export class ControllerManager {
 
 queryMemberPurchase(memberPurchaseType: MemberPurchaseType): Promise&lt;MemberPurchaseInfo[]&gt;
 
-查询购买会员的情况。
+查询购买会员的情况。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1364,7 +1364,7 @@ export class ControllerManager {
 
 queryCustomContent(queryType: CustomType[]): Promise&lt;CustomElement&gt;
 
-查询自定义内容。
+查询自定义内容。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1431,7 +1431,7 @@ export class ControllerManager {
 
 downloadMediaEntity(controlType: DownloadControlType, mediaEntity: MediaEntity): Promise&lt;OperResult&gt;
 
-下载媒体实体。
+下载媒体实体。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1508,7 +1508,7 @@ export class ControllerManager {
 
 playForSearch(command: SearchPlayInfoType, args: SearchPlayInfo): Promise&lt;OperResult&gt;
 
-搜播。支持音视频，示例仅以音频为例。
+搜播。支持音视频，示例仅以音频为例。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1588,7 +1588,7 @@ export class ControllerManager {
 
 executeAction(actionType: string, params: string): Promise&lt;string&gt;
 
-执行动作。
+执行动作。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1656,7 +1656,7 @@ export class ControllerManager {
 
 playMediaEntity(mediaEntity: MediaEntity): Promise&lt;void&gt;
 
-播放媒体。
+播放媒体。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1715,7 +1715,7 @@ export class ControllerManager {
 
 favoriteMediaEntity(actionType: MediaFavoriteType, mediaEntity: MediaEntity): Promise&lt;OperResult&gt;
 
-收藏媒体。
+收藏媒体。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1882,7 +1882,7 @@ export class ControllerManager {
 
 onDialogCommandChange(callback: ReportDialogCommandEvent): void
 
-注册弹框命令改变的回调。使用callback异步回调。
+注册对话框命令改变的回调。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1890,9 +1890,9 @@ onDialogCommandChange(callback: ReportDialogCommandEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明             |
-| -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent) | 是   | 回调函数，上报弹框命令事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                           |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
+| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent) | 是   | 回调函数，上报对话框命令事件。 |
 
 **错误码：**
 
@@ -1919,7 +1919,7 @@ export class ControllerManager {
     };
 
   public registerListener() {
-    // 注册弹框命令改变的监听。
+    // 注册对话框命令改变的监听。
     this.controller?.onDialogCommandChange(this.reportDialogCommandEvent);
   }
 }
@@ -1929,7 +1929,7 @@ export class ControllerManager {
 
 offDialogCommandChange(callback?: ReportDialogCommandEvent): void
 
-注销弹框命令改变的回调。
+注销对话框命令改变的回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1937,9 +1937,9 @@ offDialogCommandChange(callback?: ReportDialogCommandEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                           |
-| -------- | ------------------------------------------------------------ | ---- |------------------------------|
-| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent) | 否   | 上报弹框命令事件。不填该参数则注销该类型对应的所有回调。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent) | 否   | 上报对话框命令事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -1963,7 +1963,7 @@ export class ControllerManager {
    * 注销监听。
    */
   public unregisterListener() {
-    // 注销弹框命令改变的监听。
+    // 注销对话框命令改变的监听。
     this.controller?.offDialogCommandChange();
   }
 }
@@ -2792,7 +2792,7 @@ export class ControllerManager {
 
 destroy(): Promise&lt;void&gt;
 
-销毁音频模板控制器。
+销毁音频模板控制器。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
