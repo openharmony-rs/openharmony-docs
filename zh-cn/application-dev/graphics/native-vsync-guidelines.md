@@ -41,6 +41,11 @@ libnative_vsync.so
 
 2. **创建OH_NativeVSync实例**。
     <!-- @[create_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+    
+    ``` C++
+    const char* demoName = "NativeImageSample";
+    nativeVsync_ = OH_NativeVSync_Create(demoName, strlen(demoName));
+    ```
 
 3. **通过OH_NativeVSync实例设置VSync回调函数**。
     <!-- @[request_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
