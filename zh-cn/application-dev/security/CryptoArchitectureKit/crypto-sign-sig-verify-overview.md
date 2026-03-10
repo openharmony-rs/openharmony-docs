@@ -11,9 +11,9 @@
 
 接下来将说明系统目前支持的算法及其对应的规格。
 
-> **说明：**
->
-> 当前使用C/C++的方式开发只支持验签，不支持签名。
+ > **说明：** 
+ > 
+ > 当前使用C/C++的方式从API version 12开始支持验签，从API version 20开始支持签名。
 
 ## RSA
 
@@ -164,6 +164,29 @@
 
 如表中最后一行所示，为了兼容由密钥参数生成的密钥，RSA签名参数输入密钥类型时支持不带长度，签名运算取决于实际输入的密钥长度。
 
+### 签名模式为OnlyVerify
+
+算法库框架目前支持不做摘要的验签能力。
+
+以字符串参数完成RSA签名，具体的“字符串参数”由“非对称密钥类型”、“填充模式”、“摘要”和“签名模式”使用符号“|”拼接而成，用于在创建非对称签名实例时，指定非对称签名算法规格。
+
+如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。举例说明，当需要非对称密钥类型为RSA2048、填充模式为PKCS1、摘要算法为SHA256、验签模式为OnlyVerify的密钥时，其字符串参数为"RSA2048|PKCS1|SHA256|OnlyVerify"。
+
+> **说明：**
+>
+> 从版本26.0.0开始，支持OnlyVerify模式。
+
+| 非对称密钥类型 | 填充模式 | 摘要算法 | 签名/验签模式 | API版本 | 
+| -------- | -------- | -------- | -------- | -------- | 
+| RSA512 | PKCS1 | [MD5\|SHA1\|SHA224\|SHA256] | OnlyVerify<sup>26.0.0</sup> | 12+ | 
+| [RSA768\|RSA1024\|RSA2048\|RSA3072\|RSA4096\|RSA8192\|RSA] | PKCS1 | [MD5\|SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlyVerify<sup>26.0.0</sup> | 12+ | 
+| [RSA512\|RSA768\|RSA1024\|RSA2048\|RSA3072\|RSA4096\|RSA8192\|RSA] | NoPadding | NoHash | OnlyVerify<sup>26.0.0</sup> | 12+ | 
+| RSA512 | PSS | [MD5\|SHA1\|SHA224\|SHA256] | OnlyVerify<sup>26.0.0</sup> | 12+ | 
+| [RSA768\|RSA1024\|RSA2048\|RSA3072\|RSA4096\|RSA8192\|RSA] | PSS | [MD5\|SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlyVerify<sup>26.0.0</sup> | 12+ | 
+| RSA | PKCS1 | 符合长度要求的摘要算法 | OnlyVerify<sup>26.0.0</sup> | 12+ | 
+
+如表中最后一行所示，为了兼容由密钥参数生成的密钥，RSA验签参数输入密钥类型时支持不带长度，验签运算取决于实际输入的密钥长度。不带长度时在初始化时要参考规格，避免使用算法不支持的摘要算法。如RSA512不支持SHA384，所以"RSA|PKCS1|SHA384"就是错误的使用。
+
 ### 验签模式为Recover
 
 算法库框架目前提供了RSA签名恢复原始数据功能。
@@ -190,34 +213,39 @@
 
 ECDSA（Elliptic Curve Digital Signature Algorithm，椭圆曲线数字签名算法）是基于椭圆曲线密码（ECC）的数字签名算法（DSA）。相比DLP（Discrete Logarithm Problem，普通的离散对数问题）和IFP（Integer Factorization Problem，大数分解问题），椭圆曲线密码的单位比特强度要高于其他公钥体制。
 
-算法库框架提供了多种椭圆曲线及摘要算法组合的ECDSA签名验签能力。
+算法库框架提供了多种椭圆曲线及摘要算法组合的ECDSA签名验签能力，同时支持OnlySign和OnlyVerify模式。
 
 以字符串参数完成ECDSA签名验签，具体的“字符串参数”由“非对称密钥类型”和“摘要”使用符号“|”拼接而成，用于在创建非对称签名验签实例时，指定非对称签名验签算法规格。
 
-如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。举例说明，当需要非对称密钥类型为ECC224、摘要算法为SHA256的密钥时，其字符串参数为"ECC224|SHA256"。
+如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。举例说明，当需要非对称密钥类型为ECC224、摘要算法为SHA256的密钥时，其字符串参数为"ECC224|SHA256"，onlySign和OnlyVerify模式下的签名验签，其字符串参数为"ECC224|SHA256|OnlySign"和"ECC224|SHA256|OnlyVerify"。
 
-| 非对称密钥类型 | 摘要 | API版本 | 
-| -------- | -------- | -------- |
-| ECC224 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 9+ | 
-| ECC256 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 9+ | 
-| ECC384 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 9+ | 
-| ECC521 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 9+ | 
-| ECC_BrainPoolP160r1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 11+ | 
-| ECC_BrainPoolP160t1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 11+ | 
-| ECC_BrainPoolP192r1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 11+ | 
-| ECC_BrainPoolP192t1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 11+ | 
-| ECC_BrainPoolP224r1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 11+ | 
-| ECC_BrainPoolP224t1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 11+ | 
-| ECC_BrainPoolP256r1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 11+ | 
-| ECC_BrainPoolP256t1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 11+ | 
-| ECC_BrainPoolP320r1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 11+ | 
-| ECC_BrainPoolP320t1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 11+ | 
-| ECC_BrainPoolP384r1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 11+ | 
-| ECC_BrainPoolP384t1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 11+ | 
-| ECC_BrainPoolP512r1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 11+ | 
-| ECC_BrainPoolP512t1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 11+ | 
-| ECC_Secp256k1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 14+ | 
-| ECC | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | 10+ | 
+> **说明：**
+>
+> 从版本26.0.0开始，支持ECC的OnlySign/OnlyVerify。
+
+| 非对称密钥类型 | 摘要 | 签名/验签模式 | API版本 | 
+| -------- | -------- | -------- | -------- |
+| ECC192 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 26.0.0 | 
+| ECC224 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 9+ | 
+| ECC256 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 9+ | 
+| ECC384 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 9+ | 
+| ECC521 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 9+ | 
+| ECC_BrainPoolP160r1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 11+ | 
+| ECC_BrainPoolP160t1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 11+ | 
+| ECC_BrainPoolP192r1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 11+ | 
+| ECC_BrainPoolP192t1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 11+ | 
+| ECC_BrainPoolP224r1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 11+ | 
+| ECC_BrainPoolP224t1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 11+ | 
+| ECC_BrainPoolP256r1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 11+ | 
+| ECC_BrainPoolP256t1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 11+ | 
+| ECC_BrainPoolP320r1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 11+ | 
+| ECC_BrainPoolP320t1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 11+ | 
+| ECC_BrainPoolP384r1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 11+ | 
+| ECC_BrainPoolP384t1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 11+ | 
+| ECC_BrainPoolP512r1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 11+ | 
+| ECC_BrainPoolP512t1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 11+ | 
+| ECC_Secp256k1 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 14+ | 
+| ECC | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign<sup>26.0.0</sup>/OnlyVerify<sup>26.0.0</sup> | 10+ | 
 
 如表中最后一行所示，为了兼容由密钥参数生成的密钥，ECDSA签名验签参数输入密钥类型时支持不指定长度和曲线，签名验签运算取决于实际输入的密钥。
 
