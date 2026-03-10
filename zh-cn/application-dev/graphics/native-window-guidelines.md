@@ -208,6 +208,14 @@ libnative_window.so
 
 7. 使用munmap取消内存映射。
     <!-- @[munmap_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+    
+    ``` C++
+    if (munmap(mappedAddr, bufferHandle->size) < 0) {
+        OH_NativeWindow_DestroyNativeWindow(nativeWindow);
+        LOGE("munmap failed");
+        return;
+    }
+    ```
 
 
 ## 相关实例
