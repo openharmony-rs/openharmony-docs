@@ -63,6 +63,160 @@ libnative_buffer.so
 
     这里提供初始化EGL环境的代码示例。XComponent模块的详细使用方法，请参阅[XComponent开发指导](../ui/napi-xcomponent-guidelines.md)。
     <!-- @[init_egl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/image_render.cpp) -->
+    
+    ``` C++
+    bool ImageRender::InitEGL(EGLNativeWindowType window, uint64_t width, uint64_t height)
+    {
+        window_ = window;
+        width_ = width;
+        height_ = height;
+    
+        if (!InitializeEGLDisplay() || !ChooseEGLConfig() || !CreateEGLContext() || !CreateEGLSurface()) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to initialize EGL");
+            return false;
+        }
+    
+        if (!MakeCurrentContext()) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to make EGL context current");
+            return false;
+        }
+    
+        if (!CompileAndLinkShaders()) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to compile and link shaders");
+            return false;
+        }
+    
+        UpdateViewport();
+    
+        return true;
+    }
+    
+    // ...
+    bool ImageRender::InitializeEGLDisplay()
+    {
+        display_ = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+        if (display_ == EGL_NO_DISPLAY) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to get EGL display");
+            return false;
+        }
+    
+        if (!eglInitialize(display_, nullptr, nullptr)) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to initialize EGL");
+            return false;
+        }
+    
+        return true;
+    }
+    
+    bool ImageRender::ChooseEGLConfig()
+    {
+        const EGLint attribs[] = {
+            EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
+            EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
+            EGL_RED_SIZE, 8,
+            EGL_GREEN_SIZE, 8,
+            EGL_BLUE_SIZE, 8,
+            EGL_ALPHA_SIZE, 8,
+            EGL_NONE
+        };
+    
+        EGLint numConfigs;
+        if (!eglChooseConfig(display_, attribs, &config_, 1, &numConfigs) || numConfigs == 0) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to choose EGL config");
+            return false;
+        }
+        return true;
+    }
+    
+    bool ImageRender::CreateEGLContext()
+    {
+        const EGLint contextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE };
+        context_ = eglCreateContext(display_, config_, EGL_NO_CONTEXT, contextAttribs);
+        if (context_ == EGL_NO_CONTEXT) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to create EGL context");
+            return false;
+        }
+        return true;
+    }
+    
+    bool ImageRender::CreateEGLSurface()
+    {
+        surface_ = eglCreateWindowSurface(display_, config_, window_, nullptr);
+        if (surface_ == EGL_NO_SURFACE) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to create EGL surface");
+            return false;
+        }
+        return true;
+    }
+    
+    bool ImageRender::MakeCurrentContext()
+    {
+        if (!eglMakeCurrent(display_, surface_, surface_, context_)) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to make EGL context current");
+            return false;
+        }
+        return true;
+    }
+    
+    void ImageRender::UpdateViewport()
+    {
+        glViewport(0, 0, static_cast<GLsizei>(width_), static_cast<GLsizei>(height_));
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ImageRender",
+                     "Viewport updated to %{public}llu x %{public}llu", width_, height_);
+    }
+    
+    bool ImageRender::CompileAndLinkShaders()
+    {
+        GLuint vertexShader = CompileShader(GL_VERTEX_SHADER, g_vertexShaderSource);
+        if (vertexShader == 0) {
+            return false;
+        }
+    
+        GLuint fragmentShader = CompileShader(GL_FRAGMENT_SHADER, g_fragmentShaderSource);
+        if (fragmentShader == 0) {
+            glDeleteShader(vertexShader);
+            return false;
+        }
+    
+        shaderProgram_ = glCreateProgram();
+        glAttachShader(shaderProgram_, vertexShader);
+        glAttachShader(shaderProgram_, fragmentShader);
+        glLinkProgram(shaderProgram_);
+    
+        GLint linked;
+        glGetProgramiv(shaderProgram_, GL_LINK_STATUS, &linked);
+        if (!linked) {
+            PrintProgramLinkError(shaderProgram_);
+            glDeleteProgram(shaderProgram_);
+            glDeleteShader(vertexShader);
+            glDeleteShader(fragmentShader);
+            return false;
+        }
+    
+        glUseProgram(shaderProgram_);
+    
+        positionAttrib_ = glGetAttribLocation(shaderProgram_, "aPosition");
+        texCoordAttrib_ = glGetAttribLocation(shaderProgram_, "aTexCoord");
+        textureUniform_ = glGetUniformLocation(shaderProgram_, "uTexture");
+    
+        glDeleteShader(vertexShader);
+        glDeleteShader(fragmentShader);
+    
+        return true;
+    }
+    
+    void ImageRender::PrintProgramLinkError(GLuint program)
+    {
+        GLint infoLen = 0;
+        glGetProgramiv(program, GL_INFO_LOG_LENGTH, &infoLen);
+        if (infoLen > 1) {
+            std::unique_ptr<char[]> infoLog = std::make_unique<char[]>(infoLen);
+            glGetProgramInfoLog(program, infoLen, nullptr, infoLog.get());
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                         "ImageRender", "Error linking program: %{public}s", infoLog.get());
+        }
+    }
+    ```
 
 
 2. **创建OH_NativeImage实例**。
