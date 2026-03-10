@@ -1469,6 +1469,8 @@ onWindowStageEvent(callback: Callback&lt;WindowStageEventType&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowStageEvent')](#onwindowstageevent9)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **ArkTS-Sta起始版本：** 23
@@ -1478,6 +1480,15 @@ onWindowStageEvent(callback: Callback&lt;WindowStageEventType&gt;): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback&lt;[WindowStageEventType](arkts-apis-window-e.md#windowstageeventtype9)&gt; | 是   | 回调函数。返回当前的WindowStage生命周期状态。                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal. |
+| 1300005 | This window stage is abnormal. |
 
 **示例：**
 
@@ -1583,13 +1594,15 @@ offWindowStageEvent(callback?: Callback&lt;WindowStageEventType&gt;): void
 
 关闭WindowStage生命周期变化的监听。
 
-用于关闭[onWindowStageEvent](#onwindowstageevent22)接口对WindowStage生命周期变化的监听。
+用于关闭[onWindowStageEvent](#onwindowstageevent23)接口对WindowStage生命周期变化的监听。
 
-如果没有调用[onWindowStageEvent](#onwindowstageevent22)接口开启监听就关闭，程序正常执行不会抛出异常。
+如果没有调用[onWindowStageEvent](#onwindowstageevent23)接口开启监听就关闭，程序正常执行不会抛出异常。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowStageEvent')](#offwindowstageevent9)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1600,6 +1613,15 @@ offWindowStageEvent(callback?: Callback&lt;WindowStageEventType&gt;): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback&lt;[WindowStageEventType](arkts-apis-window-e.md#windowstageeventtype9)&gt; | 否   | 回调函数。返回当前的WindowStage生命周期状态。若传入参数，则关闭该监听。若未传入参数，则关闭所有WindowStage生命周期变化的监听。                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal. |
+| 1300005 | This window stage is abnormal. |
 
 **示例：**
 
@@ -1655,6 +1677,8 @@ on(eventType: 'windowStageLifecycleEvent', callback: Callback&lt;WindowStageLife
 > 3.其他系统机制及其生命周期状态切换的详细说明，请参考[主窗口的生命周期](../../windowmanager/window-overview.md#主窗口的生命周期)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowStageLifecycleEvent](#onwindowstagelifecycleevent23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1717,6 +1741,86 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+## onWindowStageLifecycleEvent<sup>23+</sup>
+
+onWindowStageLifecycleEvent(callback: Callback&lt;WindowStageLifecycleEventType&gt;): void
+
+开启WindowStage生命周期变化的监听。
+
+> **说明：**
+>
+>  [on('windowStageEvent')](#onwindowstageevent9)与本接口的区别：
+>
+> 1.前者无法保证状态切换间的顺序，对于状态间的顺序有要求的情况下不推荐使用，推荐使用本接口；
+>
+> 2.当前接口不提供WindowStage的获焦失焦状态监听，对于windowStage获焦失焦状态有监听需求的情况下，推荐使用[on('windowEvent')](arkts-apis-window-Window.md#onwindowevent10)；
+>
+> 3.其他系统机制及其生命周期状态切换的详细说明，请参考[主窗口的生命周期](../../windowmanager/window-overview.md#主窗口的生命周期)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowStageLifecycleEvent')](#onwindowstagelifecycleevent20)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[WindowStageLifecycleEventType](arkts-apis-window-e.md#windowstagelifecycleeventtype20)&gt; | 是   | 回调函数。返回当前的WindowStage生命周期状态。                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300005 | This window stage is abnormal. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    const callback = (data: window.WindowStageLifecycleEventType) => {
+      console.info(`Succeeded in enabling the listener for window stage event changes. Data: ${JSON.stringify(data)}`);
+      // 根据事件状态类型选择进行具体的处理
+      if (data === window.WindowStageLifecycleEventType.SHOWN) {
+        console.info('current window stage event is SHOWN');
+        // ...
+      } else if (data === window.WindowStageLifecycleEventType.RESUMED) {
+        console.info('current window stage event is RESUMED');
+        // ...
+      } else if (data === window.WindowStageLifecycleEventType.PAUSED) {
+        console.info('current window stage event is PAUSED');
+        // ...
+      } else if (data === window.WindowStageLifecycleEventType.HIDDEN) {
+        console.info('current window stage event is HIDDEN');
+        // ...
+      }
+      // ...
+    }
+    try {
+      windowStage.onWindowStageLifecycleEvent(callback);
+    } catch (exception) {
+      console.error(`Failed to enable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+};
+```
+
 ## off('windowStageLifecycleEvent')<sup>20+</sup>
 
 off(eventType: 'windowStageLifecycleEvent', callback?: Callback&lt;WindowStageLifecycleEventType&gt;): void
@@ -1724,6 +1828,8 @@ off(eventType: 'windowStageLifecycleEvent', callback?: Callback&lt;WindowStageLi
 关闭WindowStage生命周期变化的监听。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowStageLifecycleEvent](#offwindowstagelifecycleevent23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1771,6 +1877,68 @@ export default class EntryAbility extends UIAbility {
       windowStage.off('windowStageLifecycleEvent', callback);
       // 如果通过on开启多个callback进行监听，同时关闭所有监听：
       windowStage.off('windowStageLifecycleEvent');
+    } catch (exception) {
+      console.error(`Failed to disable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+};
+```
+
+## offWindowStageLifecycleEvent<sup>23+</sup>
+
+offWindowStageLifecycleEvent(callback?: Callback&lt;WindowStageLifecycleEventType&gt;): void
+
+关闭WindowStage生命周期变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowStageLifecycleEvent')](#offwindowstagelifecycleevent20)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[WindowStageLifecycleEventType](arkts-apis-window-e.md#windowstagelifecycleeventtype20)&gt; | 否   | 回调函数。返回当前的WindowStage生命周期状态。若传入参数，则关闭该监听。若未传入参数，则关闭所有WindowStage生命周期变化的监听。                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300005 | This window stage is abnormal. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    const callback = (windowStageLifecycleEvent: window.WindowStageLifecycleEventType) => {
+      // ...
+    }
+    try {
+      windowStage.onWindowStageLifecycleEvent(callback);
+    } catch (exception) {
+      console.error(`Failed to enable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+    try {
+      windowStage.offWindowStageLifecycleEvent(callback);
+      // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+      windowStage.offWindowStageLifecycleEvent();
     } catch (exception) {
       console.error(`Failed to disable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
     }
