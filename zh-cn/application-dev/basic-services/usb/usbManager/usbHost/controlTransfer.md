@@ -130,7 +130,7 @@
        ]
      }
    ]
-   */
+    */
    this.deviceList_ = deviceList;
    ```
 
@@ -185,7 +185,7 @@
    /*
     打开对应接口，在设备信息（deviceList）中选取对应的interface。
    interface1为设备配置中的一个接口。
-   */
+    */
    usbManager.claimInterface(pipe, interface1, true);
    this.pipe_ = pipe;
    this.interface_ = interface1;
@@ -207,7 +207,7 @@
    let pipe: usbManager.USBDevicePipe = this.pipe_;
    /*
    构造控制传输参数
-   */
+    */
    let param: usbManager.USBDeviceRequestParams = {
      bmRequestType: 0x80, // 0x80指一次由设备到主机的标准请求命令
      bRequest: 0x06, // 0x06指获取描述符
