@@ -63,6 +63,19 @@ libnative_buffer.so
 
     应用如需访问buffer内存空间，可通过OH_NativeBuffer_Map接口将ION内存映射到进程空间。
     <!-- @[nativebuffer_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+    
+    ``` C++
+    void* virAddr = nullptr;
+    int32_t ret = OH_NativeBuffer_Map(nativeBuffer, &virAddr);
+    if (ret != 0) {
+        LOGE("OH_NativeBuffer_Map Failed");
+    }
+    // ...
+    ret = OH_NativeBuffer_Unmap(nativeBuffer);
+    if (ret != 0) {
+        LOGE("OH_NativeBuffer_Unmap Failed");
+    }
+    ```
 
 
 3. **获取内存的属性信息**。
