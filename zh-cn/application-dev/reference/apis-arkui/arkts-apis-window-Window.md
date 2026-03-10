@@ -11910,7 +11910,7 @@ recover(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错。
+**设备行为差异：** 该接口在支持并处于 [自由窗口](../../windowmanager/window-terminology.md#自由窗口) 状态的设备上可正常调用；在支持但不处于 [自由窗口](../../windowmanager/window-terminology.md#自由窗口) 状态的设备及不支持 [自由窗口](../../windowmanager/window-terminology.md#自由窗口) 状态的设备上调用返回 801 错误码。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -14807,7 +14807,9 @@ try {
 
 startMoving(): Promise&lt;void&gt;
 
-[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，对主窗、子窗和系统窗口生效。非自由窗口状态下，仅对子窗、系统窗口生效。用于开始移动窗口，使用Promise异步回调。
+开始移动窗口，使用 Promise 异步回调。
+
+[自由窗口](../../windowmanager/window-terminology.md#自由窗口) 状态下，对主窗、子窗和系统窗口生效。非自由窗口状态下，仅对子窗、系统窗口生效，主窗口调用该接口返回 801 或 1300004 错误码。
 
 仅在[onTouch](./arkui-ts/ts-universal-events-touch.md#touchevent对象说明)事件（其中，事件类型必须为TouchType.Down）的回调方法中调用此接口才会有移动效果，成功调用此接口后，窗口将跟随鼠标或触摸点移动。
 
@@ -14816,8 +14818,6 @@ startMoving(): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
-
-**设备行为差异：** 该接口在Phone设备、2in1设备和Tablet设备上可正常调用，在其他设备中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 14
 
