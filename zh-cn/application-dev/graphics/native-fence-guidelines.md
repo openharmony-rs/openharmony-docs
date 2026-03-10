@@ -55,6 +55,13 @@ libnative_fence.so
 
 2. **判断传入的fenceFd是否合法**。
     <!-- @[check_fence_invalid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    bool isValid = OH_NativeFence_IsValid(INVALID_FD);
+    if (!isValid) {
+        DRAWING_LOGW("fenceFd is invalid");
+    }
+    ```
 
 3. **调用OH_NativeFence_Wait阻塞接口，等待fence完成后进行下一步操作**。
     <!-- @[wait_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
