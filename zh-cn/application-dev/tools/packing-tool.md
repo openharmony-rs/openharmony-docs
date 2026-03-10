@@ -1610,23 +1610,22 @@ HSP/HAP模块module.json文件中minAPIVersion小于21，且deduplicateHar的值
 
 打包HSP/HAP时，如果deduplicateHar的属性值为true时，则要求minAPIVersion大于等于21。
 
-### 10012055 校验内核权限压缩配置失败
+### 10012055 二进制文件解压缩配置校验失败
 **错误信息**
 
-Check kernel permission compression failed.
+Binary file decompression configuration verification failed.
 
 **错误描述**
 
-打包HSP/HAP时，校验内核权限模块的压缩配置失败。
+打包HSP/HAP时，二进制文件的解压缩配置校验失败。
 
 **可能原因**
 
-1. 模块的[module.json5](../quick-start/module-configuration-file.md)中配置了[executableBinaryPaths](../quick-start/module-configuration-file.md#executablebinarypaths标签)字段。
-2. 在module.json5的[配置文件标签](../quick-start/module-configuration-file.md#配置文件标签)中所配置的compressNativeLibs和extractNativeLibs两个配置项的值都为false。
+HSP/HAP在[module.json5](../quick-start/module-configuration-file.md)配置了应用内可执行二进制文件的路径信息[executableBinaryPaths](../quick-start/module-configuration-file.md#executablebinarypaths标签)且存在二进制文件，但配置为以不解压libs库的方式进行安装。
 
 **处理步骤**
 
-对于模块的module.json5中配置了executableBinaryPaths字段，需要在配置文件标签中配置extractNativeLibs或compressNativeLibs中至少一项为true。
+如果module.json5中配置了executableBinaryPaths且存在二进制文件，请确保配置为应用以解压libs库的方式进行安装，即module.json5配置文件中的extractNativeLibs或compressNativeLibs中至少有一项为true。
 
 ### 10013001 解析module.json或config.json文件异常
 **错误信息**
