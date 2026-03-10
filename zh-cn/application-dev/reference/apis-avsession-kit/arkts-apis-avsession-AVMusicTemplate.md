@@ -44,7 +44,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -110,7 +110,7 @@ startTemplate(): Promise&lt;OperResult&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -153,7 +153,7 @@ onQueryMainTabs(callback: QueryMainTabsEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -262,7 +262,7 @@ onQueryMediaTabContent(callback: QueryMediaTabContentEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -405,7 +405,7 @@ onQueryMediaEntity(callback: QueryMediaEntityEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -534,7 +534,7 @@ onQueryCompilation(callback: QueryCompilationEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -663,7 +663,7 @@ onQueryPlaylist(callback: QueryPlaylistEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -792,7 +792,7 @@ onQueryCurrentSingle(callback: QueryCurrentSingleEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -932,7 +932,7 @@ onQueryCompilationByKeyword(callback: QueryCompilationByKeywordEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -1061,7 +1061,7 @@ onQueryMediaEntityByKeyword(callback: QueryMediaEntityByKeywordEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -1190,7 +1190,7 @@ onQueryRecommendMediaEntityList(callback: QueryRecommendMediaEntityListEvent): v
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -1300,7 +1300,7 @@ onQueryHotWords(callback: QueryHotWordsEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -1391,7 +1391,7 @@ onQuerySearchHistory(callback: QuerySearchHistoryEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -1482,7 +1482,7 @@ onClearSearchHistory(callback: ClearSearchHistoryEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -1585,7 +1585,7 @@ onLogin(callback: LoginEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -1695,7 +1695,7 @@ onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -1811,7 +1811,7 @@ onHandleMemberPurchase(callback: HandleMemberPurchaseEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -1927,7 +1927,7 @@ onQueryMemberPurchase(callback: QueryMemberPurchaseEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -2035,7 +2035,7 @@ onQueryCustomContent(callback: QueryCustomContentEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -2159,7 +2159,7 @@ onDownloadMediaEntity(callback: DownloadMediaEntityEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -2286,7 +2286,7 @@ onSettingsChange(callback: SettingsChangeEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -2395,7 +2395,7 @@ onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -2498,7 +2498,7 @@ onPlayForSearch(callback: PlayForSearchEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -2602,7 +2602,7 @@ onExecuteAction(callback: ExecuteActionEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -2692,7 +2692,7 @@ onPlayMediaEntity(callback: PlayMediaEntityEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -2777,7 +2777,7 @@ onFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -2887,7 +2887,7 @@ setUserInfo(userInfo: UserInfo): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -2956,7 +2956,7 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;vo
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -3019,7 +3019,7 @@ setCurrentSingle(single: Single): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -3115,7 +3115,7 @@ setMediaEntities(entities: MediaEntity[]): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -3173,7 +3173,7 @@ setTabContent(tabId: string, tabContent: MediaTabContent): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -3245,7 +3245,7 @@ setPlaylist(playlist: PageMediaEntity): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -3351,7 +3351,7 @@ setCustomElements(actionType: ActionType, customType: CustomType, customElement:
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -3423,7 +3423,7 @@ setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -3481,7 +3481,7 @@ reportExecuteAction(actionType: string, params: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
@@ -3532,7 +3532,7 @@ setExtensionAbility(want: WantAgent): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 import { wantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3594,7 +3594,7 @@ destroy(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;

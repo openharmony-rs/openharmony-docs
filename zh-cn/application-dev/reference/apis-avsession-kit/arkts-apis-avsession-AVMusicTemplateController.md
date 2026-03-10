@@ -57,7 +57,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -206,7 +206,7 @@ queryMainTabs(): Promise&lt;MediaTab[]&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -269,7 +269,7 @@ queryMediaTabContent(tabId: string): Promise&lt;MediaTabContent&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -334,7 +334,7 @@ queryMediaEntity(params: QueryMediaEntityParam): Promise&lt;PageMediaEntity&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -407,7 +407,7 @@ queryCompilation(compilationId: string, pageIndex: number): Promise&lt;PageMedia
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -454,7 +454,7 @@ queryPlaylist(pageIndex: number, sort: Sort): Promise&lt;PageMediaEntity&gt;
 | 参数名    | 类型                                                   | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | pageIndex | number                                                 | 是   | 标签页的索引。                                               |
-| sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort) | 是   | xxxxxxxxxx import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';​const TAG: string = 'ControllerManager';​export class ControllerManager {  /**   * 反注册模板监听。   */  public unregisterAVMusicTemplateListener() {    try {      avMusicTemplate.offAVMusicTemplateDestroy();    } catch (e) {      console.error(TAG, `unregisterAVMusicTemplateListener: errCode: ${e?.code}`);    }  }}ts |
+| sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort) | 是   | xxxxxxxxxx import { avMusicTemplate } from '@kit.AVSessionKit';​const TAG: string = 'ControllerManager';​export class ControllerManager {  /**   * 反注册模板监听。   */  public unregisterAVMusicTemplateListener() {    try {      avMusicTemplate.offAVMusicTemplateDestroy();    } catch (e) {      console.error(TAG, `unregisterAVMusicTemplateListener: errCode: ${e?.code}`);    }  }}ts |
 
 **返回值：**
 
@@ -476,7 +476,7 @@ queryPlaylist(pageIndex: number, sort: Sort): Promise&lt;PageMediaEntity&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -538,7 +538,7 @@ queryCurrentSingle(): Promise&lt;Single&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -603,7 +603,7 @@ queryCompilationByKeyword(keyword: string): Promise&lt;Compilation[]&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -671,7 +671,7 @@ queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: nu
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -734,7 +734,7 @@ queryRecommendMediaEntityList(): Promise&lt;MediaEntity[]&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -793,7 +793,7 @@ queryHotWords(): Promise&lt;string[]&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -852,7 +852,7 @@ querySearchHistory(): Promise&lt;string[]&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -911,7 +911,7 @@ clearSearchHistory(): Promise&lt;OperResult&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -976,7 +976,7 @@ updateSettings(settingItem: SettingItem): Promise&lt;SettingItem&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -1049,7 +1049,7 @@ reportProblemAndAdvice(advice: string): Promise&lt;OperResult&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -1116,7 +1116,7 @@ login(controlType: LoginType, id?: string): Promise&lt;QrCodeInfo[]&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -1185,7 +1185,7 @@ requestDialogInfo(actionType: DialogActionType, actionInfo?: DialogActionInfo): 
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -1258,7 +1258,7 @@ handleMemberPurchase(info: MemberPurchaseInfo): Promise&lt;DialogInfo&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -1330,7 +1330,7 @@ queryMemberPurchase(memberPurchaseType: MemberPurchaseType): Promise&lt;MemberPu
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -1396,7 +1396,7 @@ queryCustomContent(queryType: CustomType[]): Promise&lt;CustomElement&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -1464,7 +1464,7 @@ downloadMediaEntity(controlType: DownloadControlType, mediaEntity: MediaEntity):
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -1541,7 +1541,7 @@ playForSearch(command: SearchPlayInfoType, args: SearchPlayInfo): Promise&lt;Ope
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -1621,7 +1621,7 @@ executeAction(actionType: string, params: string): Promise&lt;string&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -1688,7 +1688,7 @@ playMediaEntity(mediaEntity: MediaEntity): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
@@ -1748,7 +1748,7 @@ favoriteMediaEntity(actionType: MediaFavoriteType, mediaEntity: MediaEntity): Pr
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -1817,7 +1817,7 @@ onUserInfoChange(callback: Callback&lt;UserInfo&gt;): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -1863,7 +1863,7 @@ offUserInfoChange(callback?: Callback&lt;UserInfo&gt;): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
@@ -1907,7 +1907,7 @@ onDialogCommandChange(callback: ReportDialogCommandEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -1954,7 +1954,7 @@ offDialogCommandChange(callback?: ReportDialogCommandEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
@@ -1998,7 +1998,7 @@ onCurrentSingleChange(callback: Callback&lt;Single&gt;): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -2044,7 +2044,7 @@ offCurrentSingleChange(callback?: Callback&lt;Single&gt;): void
 **示例：**
 
 ```
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
@@ -2088,7 +2088,7 @@ onMediaEntitiesChange(callback: Callback&lt;MediaEntity[]&gt;): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -2135,7 +2135,7 @@ offMediaEntitiesChange(callback?: Callback&lt;MediaEntity[]&gt;): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
@@ -2179,7 +2179,7 @@ onTabContentChange(callback: ReportTabContentEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -2226,7 +2226,7 @@ offTabContentChange(callback?: ReportTabContentEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
@@ -2270,7 +2270,7 @@ onPlaylistChange(callback: Callback&lt;PageMediaEntity&gt;): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -2317,7 +2317,7 @@ offPlaylistChange(callback?: Callback&lt;PageMediaEntity&gt;): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
@@ -2361,7 +2361,7 @@ onDownloadMediaEntityStatusChange(callback: Callback&lt;MediaEntity&gt;): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -2408,7 +2408,7 @@ offDownloadMediaEntityStatusChange(callback?: Callback&lt;MediaEntity&gt;): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
@@ -2452,7 +2452,7 @@ onCustomElementsChange(callback: ReportCustomElementsChangeEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -2500,7 +2500,7 @@ offCustomElementsChange(callback?: ReportCustomElementsChangeEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
@@ -2544,7 +2544,7 @@ onSettingsChange(callback: Callback&lt;SettingItem[]&gt;): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -2591,7 +2591,7 @@ offSettingsChange(callback?: Callback&lt;SettingItem[]&gt;): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
@@ -2635,7 +2635,7 @@ onReportExecuteAction(callback: ReportExecuteActionEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -2682,7 +2682,7 @@ offReportExecuteAction(callback?: ReportExecuteActionEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
@@ -2726,7 +2726,7 @@ onExtensionAbilityChange(callback: ReportExecuteAbilityEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 import { WantAgent } from '@kit.AbilityKit';
 
 const TAG: string = 'ControllerManager';
@@ -2773,7 +2773,7 @@ offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
@@ -2815,7 +2815,7 @@ destroy(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 

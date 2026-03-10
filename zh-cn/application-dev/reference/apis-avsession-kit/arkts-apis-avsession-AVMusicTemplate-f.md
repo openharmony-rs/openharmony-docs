@@ -63,7 +63,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;

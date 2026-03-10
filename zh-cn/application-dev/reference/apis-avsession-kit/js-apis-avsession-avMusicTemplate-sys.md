@@ -65,7 +65,7 @@ createAVMusicTemplateController(sessionId: string): AVMusicTemplateController
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -287,7 +287,7 @@ getAllAVMusicTemplateDescriptors(userId?: number): AVMusicTemplateDescriptor[]
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -350,7 +350,7 @@ onAVMusicTemplateCreate(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): vo
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -415,7 +415,7 @@ offAVMusicTemplateCreate(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;): 
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -466,7 +466,7 @@ onAVMusicTemplateDestroy(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): v
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
@@ -522,7 +522,7 @@ offAVMusicTemplateDestroy(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;):
 **示例：**
 
 ```ts
-import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 
 const TAG: string = 'ControllerManager';
 
