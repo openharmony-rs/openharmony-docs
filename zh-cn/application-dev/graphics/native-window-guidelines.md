@@ -90,6 +90,40 @@ libnative_window.so
         
     3. 定义 OH_NativeXComponent_Callback。
         <!-- @[xcomponent_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+        
+        ``` C++
+        void OnSurfaceCreatedCB(OH_NativeXComponent* component, void* window)
+        {
+            // ...
+            OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
+            // ...
+        }
+        
+        void OnSurfaceChangedCB(OH_NativeXComponent* component, void* window)
+        {
+            // ...
+            OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
+            // ...
+        }
+        
+        void OnSurfaceDestroyedCB(OH_NativeXComponent* component, void* window)
+        {
+            // ...
+            OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
+            // ...
+        }
+        
+        void DispatchTouchEventCB(OH_NativeXComponent* component, void* window)
+        {
+            // ...
+            OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
+        }
+        // ...
+            callback_.OnSurfaceCreated = OnSurfaceCreatedCB;
+            callback_.OnSurfaceChanged = OnSurfaceChangedCB;
+            callback_.OnSurfaceDestroyed = OnSurfaceDestroyedCB;
+            callback_.DispatchTouchEvent = DispatchTouchEventCB;
+        ```
 
        
     4. 将OH_NativeXComponent_Callback 注册给 NativeXComponent。
