@@ -67,7 +67,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
     }
     ```
 
-    获取到设备支持的DRM解决方案的名称和唯一标识的列表后，同DRM信息做匹配，创建对应的DRM解决方案。DRM信息可通过[媒体数据解析](../avcodec/audio-video-demuxer.md#开发步骤)开发步骤第4步获取，
+    获取到设备支持的DRM解决方案的名称和唯一标识的列表后，与DRM信息做匹配，创建对应的DRM解决方案。DRM信息可通过[媒体数据解析](../avcodec/audio-video-demuxer.md#开发步骤)开发步骤第4步获取，
 
     或者直接解析媒体协议或媒体数据得到DRM解决方案唯一标识及pssh数据以生成DRM信息。
 
