@@ -291,7 +291,7 @@ struct Index1 {
       
   build() {
     Column() {
-      //已经预启动Render进程
+      // 已经预启动Render进程
       Button('Jump to web page').onClick(()=>{
         this.getUIContext().getRouter().pushUrl({url: 'pages/index2'});
       })
@@ -599,7 +599,7 @@ export const restoreNWebs = (uiContext: UIContext | undefined = undefined) => {
 2. 在应用退后台时，释放离线Web组件的具体实现步骤。
 3. 复用离线Web组件的具体实现步骤。
 
-示例演示了如何让应用退后台释放离线Web组件以及切前台恢复离线Web组件，在UIAbility的onBackground和onForeground回调中分别进行了离线Web组件的释放和恢复。 
+示例演示了如何让应用退后台释放离线Web组件以及切前台恢复离线Web组件，在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的onBackground和onForeground回调中分别进行了离线Web组件的释放和恢复。 
 
 <!-- @[entry_ability_on_background_and_foreground_to_recycle_and_restore_NWebs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
 

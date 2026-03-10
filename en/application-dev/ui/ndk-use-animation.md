@@ -9,13 +9,13 @@
 
 ## Using Property Animations
 
-The ArkUI framework primarily offers property animations through NDK APIs to implement component transition effects for appearance and disappearance. Additionally, frame animation capabilities from the ArkTS side can be bridged through the Node-API to achieve animation effects on the native side.
+The [ArkUI](arkui-overview.md) development framework provides the property animation in the [NDK](../napi/ndk-development-overview.md) API to implement the component appearance/disappearance transition. Additionally, frame animation capabilities from the [ArkTS](../arkts-utils/arkts-overview.md) side can be bridged through the Node-API to achieve animation effects on the native side.
 
 > **NOTE**
 >
 > - Obtain [this.getUIContext()](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext) from ArkTS and pass it to the native side.
 > 
-> - On the native side, obtain the context using the [OH_ArkUI_GetContextFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md) API.
+> - On the native side, obtain the context using the [OH_ArkUI_GetContextFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getcontextfromnapivalue) API.
 > 
 > - Animation property changes must be encapsulated within the callback of [ArkUI_ContextCallback](../reference/apis-arkui/capi-arkui-nativemodule-arkui-contextcallback.md).
 > 
@@ -23,9 +23,9 @@ The ArkUI framework primarily offers property animations through NDK APIs to imp
 >
 > - This section demonstrates core API usage only. For the complete sample project, see <!--RP1-->[AnimationNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AnimationNDK)<!--RP1End-->.
 
-A global **animateTo** explicit animation API is provided to specify transition effects for state changes caused by closure code. Like property animations, layout changes such as width and height adjustments are animated directly to their final states.
+With the global [animateTo](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateto) API, you can build explicit animations for state changes caused by closure code. Like property animations, layout changes such as width and height adjustments are animated directly to their final states.
 
-1. Create a [NodeContent](../reference//apis-arkui/js-apis-arkui-NodeContent.md) object in the .ets file and pass it as a parameter to the native method.
+1. Create a [NodeContent](../reference/apis-arkui/js-apis-arkui-NodeContent.md) object in the .ets file and pass it as a parameter to the native method.
 
     <!-- @[get_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/ets/pages/UseFrameAnimation.ets) -->
     
@@ -45,7 +45,7 @@ A global **animateTo** explicit animation API is provided to specify transition 
       }
     ```
 
-2. Parse the **NodeContent** object and convert it to the corresponding **ArkUI_NodeContentHandle** structure in C.
+2. Parse **NodeContent** and convert it to the [ArkUI_NodeContentHandle](../reference/apis-arkui/capi-native-node-h.md) object in C.
 
     <!-- @[get_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/NativeEntry.cpp) -->
     
@@ -55,7 +55,7 @@ A global **animateTo** explicit animation API is provided to specify transition 
     OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
     ```
 
-3. Obtain the **ArkUI_NativeAnimateAPI_1** object.
+3. Obtain the [ArkUI_NativeAnimateAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md) object.
 
     <!-- @[get_Api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
     
@@ -65,7 +65,7 @@ A global **animateTo** explicit animation API is provided to specify transition 
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
     ```
 
-4. Set the **ArkUI_AnimateOption** parameters using the provided C APIs.
+4. Set the [ArkUI_AnimateOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-animateoption.md) parameters using the provided C methods.
 
     <!-- @[set_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
     
@@ -144,7 +144,7 @@ A global **animateTo** explicit animation API is provided to specify transition 
 
 ## Using Component Appearance/Disappearance Transitions
 
-Use **NODE_*XX*_TRANSITION** properties (where *XX* can be **OPACITY**, **TRANSLATE**, **SCALE**, **ROTATE**, or **MOVE**) to configure transition effects for components, enhancing the user experience when components are added to or removed from containers. The **NODE_TRANSFORM_CENTER** property sets the center point for animations including **NODE_SCALE_TRANSITION** and **NODE_ROTATE_ROTATE**.  
+Use **NODE_*XX*_TRANSITION** properties (where *XX* can be **OPACITY**, **TRANSLATE**, **SCALE**, **ROTATE**, or **MOVE**) to configure transition effects for components, enhancing the user experience when components are added to or removed from containers. The [NODE_TRANSFORM_CENTER](../reference/apis-arkui/capi-native-node-h.md) property sets the center point for animations including **NODE_SCALE_TRANSITION** and **NODE_ROTATE_ROTATE**.  
 
 1. Design an interactive UI with a button to manage the addition and removal of transition nodes. For details about how to obtain and use the ArkUI_NodeContentHandle node, see [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md).
 
@@ -196,7 +196,7 @@ Use **NODE_*XX*_TRANSITION** properties (where *XX* can be **OPACITY**, **TRANSL
     }
     ```
 
-2. Create a node with **Transition** properties that play a transition animation when the target node is mounted or unmounted.
+2. Create a node with the [NODE_ROTATE_TRANSITION](../reference/apis-arkui/capi-native-node-h.md), [NODE_SCALE_TRANSITION](../reference/apis-arkui/capi-native-node-h.md), and [NODE_TRANSLATE_TRANSITION](../reference/apis-arkui/capi-native-node-h.md) properties. When the target node is mounted to or unmounted from the node tree, the transition animation is played.
 
     <!-- @[create_child_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
     
@@ -391,7 +391,7 @@ column->AddChild(button);
 
 ## Using Frame Animations
 
-Frame animation enables adjustment of animation properties on each frame through its per-frame callback mechanism. By leveraging the **onFrame** callback, you can dynamically set property values frame by frame, creating smooth and natural-looking animations. For details about the frame animation APIs, see [createAnimator](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#createanimator).
+Frame animation enables adjustment of animation properties on each frame through its per-frame callback mechanism. The [onFrame](../reference/apis-arkui/capi-native-animate-h.md#oh_arkui_animatoroption_registeronframecallback) callback allows you to set attributes on each frame of the application in the frame animation, enabling a natural transition of component attributes and creating a smooth animation effect. For details about the frame animation APIs, see [createAnimator](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#createanimator).
 
 Compared with the property animation, the frame animation offers the benefits of real-time visibility into the animation process and allows you to modify UI values on the fly. In addition, it provides high responsiveness to events and can be paused as needed. However, it is worth noting that the frame animation may not deliver the same performance efficiency as the property animation. Therefore, where the property animation meets your requirements, you are advised to use the property animation APIs. For details about how to use the [animateTo](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateto) API, see [Using Property Animations](#using-property-animations).
 

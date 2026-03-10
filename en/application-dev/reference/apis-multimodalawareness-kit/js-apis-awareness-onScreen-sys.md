@@ -173,7 +173,7 @@ Provides entity information perceived, including content, links, images, and oth
 | Name| Type  | Read-Only| Optional| Description                                    |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
 | entityName   | string | No  | No  | Name of the perceived entity, which is fixed.|
-| entityInfo   | Record<string, Object> | No  | No  | Entity information perceived , including content, links, images, and other types of entities.|
+| entityInfo   | Record<string, Object> | No  | No  | Entity information perceived, including content, links, images, and other types of entities.|
 
 
 ## OnscreenAwarenessInfo<sup>23+</sup>

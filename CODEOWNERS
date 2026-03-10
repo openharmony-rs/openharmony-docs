@@ -563,7 +563,7 @@ zh-cn/application-dev/basic-services/update/sample-server-overview.md   @fang-ji
 zh-cn/application-dev/basic-services/update/sample-server-guidelines.md   @fang-jinxu
 
 [开发-Basic Services Kit-压缩解压]
-zh-cn/application-dev/basic-services/compress   @changzheng6   @kongjing2  @small_bricklayer @fang-jinxu
+zh-cn/application-dev/basic-services/compress   @kongjing2  @small_bricklayer @fang-jinxu
 
 [开发-Basic Services Kit-剪贴板]
 zh-cn/application-dev/basic-services/pasteboard/get-pastedata-permission-guidelines.md	@guo867	@maxiaorong	@fang-jinxu
@@ -1252,6 +1252,8 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-node-render-monitor.md	@fan
 zh-cn/application-dev/reference/apis-arkui/errorcode-node-render.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-node.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-nodeadapter.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/errorcode-rendering-control.md @sunbees	@liuli0427	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/errorcode-attributeModifier.md @sunbees	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-promptAction.md	@liyi0309	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-router.md	@jiangdayuan	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-scroll.md	@yylong	@rongShao-Z @huchuyun	 @Brilliantry_Rui
@@ -1486,7 +1488,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-checkbox
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md	@zdustc	@zhangyue283	@ge-yafang
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datapanel.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-divider.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-image-sys.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
@@ -1967,8 +1969,8 @@ zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-parameter
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-device-info.md   @liveery @liuhaonan2 @fang-jinxu
 
 [API参考-Basic Services Kit-压缩解压]
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-zlib.md   @changzheng6   @kongjing2  @small_bricklayer @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-zlib.md  @changzheng6   @kongjing2  @small_bricklayer @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-zlib.md   @kongjing2  @small_bricklayer @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-zlib.md  @kongjing2  @small_bricklayer @fang-jinxu
 
 [API参考-CalendarManager Kit]
 zh-cn/application-dev/reference/apis-calendar-kit/ @liuqian677 @jt_123456 @edollar
@@ -2465,7 +2467,7 @@ zh-cn/application-dev/tools/Readme-CN.md @jinqiuheng @lingminghw @RayShih @jinqi
 
 [FAQ]
 zh-cn/application-dev/faqs/faqs-ability.md @huipeizi @ccllee1 @lixueqing513
-zh-cn/application-dev/faqs/faqs-bundle-management.md @Brilliantry_Rui  @changzheng6   @kongjing2  @small_bricklayer
+zh-cn/application-dev/faqs/faqs-bundle-management.md @Brilliantry_Rui  @kongjing2  @small_bricklayer
 zh-cn/application-dev/faqs/faqs-event-notification.md @fang-jinxu @dongqingran @wulong158 @wanghong1997
 zh-cn/application-dev/faqs/faqs-dfx.md @mzyan @liyueric @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/faqs/faqs-file-management.md @wangke25	@bubble_mao @gzhuangzhuang @gsl_1234	@liuhonggang123	@jinqiuheng

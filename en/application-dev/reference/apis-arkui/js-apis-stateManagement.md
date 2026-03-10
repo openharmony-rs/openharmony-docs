@@ -263,7 +263,7 @@ Stores key-value pair data on the application disk. Supports the persistence of 
 
 | Name  | Type  | Mandatory| Description              |
 | -------- | ------ | ---- | ---------------------- |
-| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18) |  Yes  | Passed **globalConnect** parameters. For details, see the description of **ConnectOptions** and **ConnectOptionsCollections**.<br>If **defaultSubCreator** is provided in **ConnectOptionsCollections**, **defaultCreator** must be provided. Otherwise, the persistence fails. The collection item type S must be the same as the return type of **defaultSubCreator**. If the return types are inconsistent, an error will be reported during compilation.|
+| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18) |  Yes  | Passed **globalConnect** parameters. For details, see the description of **ConnectOptions** and **ConnectOptionsCollections**.<br>If **defaultSubCreator** is provided in **ConnectOptionsCollections**, **defaultCreator** must be provided. Otherwise, the persistence fails. The collection item type S must be the same as the return type of **defaultSubCreator**. If the return types are inconsistent, an error will be reported during compilation.|  
 
 When you use **defaultSubCreator** in **globalConnect**, you must provide **defaultCreator**. The return type of the **defaultSubCreator** function must be the same as the collection item type returned by **defaultCreator**.<br>When **globalConnect** persists data of the **Array\<ClassA>** type, you need to use the **defaultSubCreator** option to instruct the state management framework to create an instance of **ClassA**. The following is an example of using **globalConnect** to persist data of the **Array\<ClassA>** type:
 
@@ -310,9 +310,9 @@ struct Page1 {
   output: string[] = [];
 
   // Start the application. When you access the application for the first time, the following information is displayed: restored Map.size=0, map.get(0)=undefined, map.get(1)=undefined, map.get(2)=undefined.
-  // Kill the application. When you access the application for the second time, the following information is displayed: restored Map.size=1, map.get(0)=0, map.get(1)=undefined, map.get(2)=undefined.
-  // Kill the application. When you access the application for the third time, the following information is displayed: restored Map.size=2, map.get(0)=0, map.get(1)=1, map.get(2)=undefined.
-  // Kill the application. When you access the application for the fourth time, the following information is displayed: restored Map.size=3, map.get(0)=0, map.get(1)=1, map.get(2)=2.
+  // Stop the application. When you access the application for the second time, the following information is displayed: restored Map.size=1, map.get(0)=0, map.get(1)=undefined, map.get(2)=undefined.
+  // Stop the application. When you access the application for the third time, the following information is displayed: restored Map.size=2, map.get(0)=0, map.get(1)=1, map.get(2)=undefined.
+  // Stop the application. When you access the application for the fourth time, the following information is displayed: restored Map.size=3, map.get(0)=0, map.get(1)=1, map.get(2)=2.
   aboutToAppear(): void {
     const restoredMapSize = this.map.size;
     this.output.push(`restored Map.size=${restoredMapSize}, map.get(0)=${this.map.get(0)}, map.get(1)=${this.map.get(1)}, map.get(2)=${this.map.get(2)}`);
@@ -346,7 +346,7 @@ Persists the specified key-value pair data once.
 
 | Name  | Type  | Mandatory| Description              |
 | -------- | ------ | ---- | ---------------------- |
-| keyOrType | string \| TypeConstructorWithArgs\<T\> | Yes  | Key to be persisted. If a type is specified, the key for persistence is the name of the type.|
+| keyOrType | string \| [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | Yes  | Key to be persisted. If a type is specified, the key for persistence is the name of the type.|
 
 >**NOTE**
 >
@@ -388,7 +388,7 @@ Called when persistence fails.
 
 | Name  | Type  | Mandatory| Description              |
 | -------- | ------ | ---- | ---------------------- |
-| callback | PersistenceErrorCallback \| undefined  | Yes  | Callback called when persistence fails.|
+| callback | [PersistenceErrorCallback](#persistenceerrorcallback) \| undefined  | Yes  | Callback called when persistence fails.|
 
 **Example**
 
@@ -409,10 +409,10 @@ Defines the parameter type for **globalConnect**.
 
 |Parameter  |Type   |Read-Only  |Optional   |Description     |
 |--------|------------|------------|-----------|--------------|
-|type        | TypeConstructorWithArgs\<T\>   |No  |No  |Specified type.        |
+|type        | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst)   |No  |No  |Specified type.        |
 |key         | string   |No  |Yes  |Input key. If no value is passed in, the type name is used as the key.            |
-|defaultCreator   | StorageDefaultCreator\<T\>   |No  |Yes  |Default constructor. You are advised to pass this parameter. If **globalConnect** is connected to the key for the first time, an error is reported if this parameter is not passed in.|
-|areaMode      | contextConstant.AreaMode   |No  |Yes   |Encryption level, ranging from EL1 to EL5 (corresponding to the value from 0 to 4). For details, see [Encryption Levels](../../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels). If no value is passed in, EL2 is used by default. Storage paths vary based on the encryption levels. If the input value of encryption level is not in the range of **0** to **4**, a crash occurs.|
+|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |No  |Yes  |Default constructor. You are advised to pass this parameter. If **globalConnect** is connected to the key for the first time, an error is reported if this parameter is not passed in.|
+|areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |No  |Yes   |Encryption level, ranging from EL1 to EL5 (corresponding to the value from 0 to 4). For details, see [Encryption Levels](../../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels). If no value is passed in, EL2 is used by default. Storage paths vary based on the encryption levels. If the input value of encryption level is not in the range of **0** to **4**, a crash occurs.|
 
 ## ConnectOptionsCollections<sup>23+</sup>
 
@@ -562,7 +562,7 @@ Defines the decorator and component information associated with the observable o
 
 | Parameter| Type| Read-Only | Optional| Description    |
 | ------ | ---- | ---- |---- | ------------ |
-| decoratorName | string  | No| No  | Decorator name.<br>For a V1 object, the value is the name of the decorator associated with the object.<br>If the V1 object uses [@Track](./../../ui/state-management/arkts-track.md), the value is **'@Track'**.<br>If the V2 object uses [@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md), the value is **'@Trace'**.<br>If the V2 object uses [makeObserved](#makeobserved), the value is **'MakeObserved'**.<br>If the V2 object uses [enableV2Compatibility](#enablev2compatibility19), the value is **'EnableV2Compatible'**.<br>If the V2 object uses built-in data, the value is **'ProxyObservedV2'**. |
+| decoratorName | string  | No| No  | Decorator name.<br>For a V1 object, the value is the name of the decorator associated with the object.<br>If the V1 object uses [@Track](./../../ui/state-management/arkts-track.md), the value is **'@Track'**.<br>If the V2 object uses [@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md), the value is **'@Trace'**.<br>If the V2 object uses [makeObserved](#makeobserved), the value is **'MakeObserved'**.<br>If the V2 object uses [enableV2Compatibility](#enablev2compatibility19), the value is **'EnableV2Compatible'**.<br>If the V2 object uses built-in data, the value is **'ProxyObservedV2'**.|
 | stateVariableName | string  | No| No  | Name of the attribute decorated by the decorator.|
 | owningComponentOrClassName | string  | No| No  | Component or object name.<br>For a V1 object, the component name is returned.<br>For a V1 object whose properties are decorated by the [@Track](./../../ui/state-management/arkts-track.md) decorator, the object name is returned.<br>For a V2 object, the object name is returned.|
 | owningComponentId | number  | No| No  | Component ID.<br>For a V1 object, the component ID is returned.<br>For the V1 object whose properties are decorated by the [@Track](./../../ui/state-management/arkts-track.md) decorator or for the V2 object, **-1** is returned instead of the component ID.|
@@ -1435,7 +1435,7 @@ struct Index {
 
 static flushUIUpdates(): void
 
-Processes all state variable modifications before this API call and synchronizes the [dirty](../../ui/state-management/arkts-state-management-introduce.md#triggering-updates) UI nodes. However, it does not synchronize the execution of @Computed and @Monitor decorators. For details, see [applySync/flushUpdates/flushUIUpdates: Synchronous Update](../../ui/state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md).
+Processes all state variable modifications before this API call and synchronizes the [dirty](../../ui/state-management/arkts-state-management-introduce.md#triggering-updates) UI nodes. However, it does not synchronize the execution of @Computed and @Monitor decorators. For details, see [applySync/flushUpdates/flushUIUpdates APIs: Synchronous Update](../../ui/state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1766,7 +1766,7 @@ struct Index {
 
 type TypeDecorator = \<T\>(type: TypeConstructor\<T\>) => PropertyDecorator
 
-Defines a property decorator.
+Defines the attribute decorator, which is used to decorate attributes of the custom class in a nested class.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1817,6 +1817,27 @@ struct Index {
         })
     }
   }
+}
+```
+
+When @Type is used to decorate attributes of a nested class, only the custom class type is supported. If other class types are transferred, the persistence will fail.
+<!--code_no_check-->
+```ts
+@ObservedV2
+class SampleChild {
+  @Trace id: number = 0;
+  count: number = 10;
+}
+
+@ObservedV2
+class Sample {
+  // Recommended method: Decorate the sampleChild attribute of the custom Sample class, whose type is SampleChild.
+  @Type(SampleChild)
+  @Trace sampleChild: SampleChild = new SampleChild();
+
+  // Not recommended. The type of the nested class of the decorated attributes is Array<number>.
+  @Type(Array<number>)
+  @Trace value: Array<Array<number>> = new Array();
 }
 ```
 
