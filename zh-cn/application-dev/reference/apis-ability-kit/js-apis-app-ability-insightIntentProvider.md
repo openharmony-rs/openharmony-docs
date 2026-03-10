@@ -162,7 +162,7 @@ sendIntentResult(instanceId: number, result: insightIntent.IntentResult&lt;T&gt;
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | [instanceId](./js-apis-app-ability-insightIntentContext.md#属性) | number | 是 | 意图实例唯一ID。 |
-  | result | [insightIntent.IntentResult](js-apis-app-ability-insightIntent.md#intentresultt20) | 是 | 返回意图执行结果，表示本次意图执行返回给系统入口的数据。 |
+  | result | [insightIntent.IntentResult\<T>](js-apis-app-ability-insightIntent.md#intentresultt20) | 是 | 返回意图执行结果，表示本次意图执行返回给系统入口的数据。 |
 
 **返回值：**
 
