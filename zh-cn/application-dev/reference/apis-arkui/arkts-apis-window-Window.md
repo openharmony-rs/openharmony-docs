@@ -8910,7 +8910,7 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onRotationChange](#onrotationchange23)。
 
@@ -8986,9 +8986,7 @@ onRotationChange(callback: RotationChangeCallback&lt;RotationChangeInfo, Rotatio
 
 该函数只允许在主线程注册。同一个窗口多次注册同类型回调函数，只生效最新注册的同类型回调函数返回值。系统提供了超时保护机制，若20ms内窗口未返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)，系统不处理该返回值。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('rotationChange')](#onrotationchange19)。
 
@@ -9002,7 +9000,6 @@ onRotationChange(callback: RotationChangeCallback&lt;RotationChangeInfo, Rotatio
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                         | 是   | 监听事件，固定为'rotationChange'，即窗口旋转变化事件。 |
 | callback | RotationChangeCallback&lt;[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19), [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| undefined&gt; | 是 | 回调函数。返回窗口旋转信息[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，应用返回当前窗口变化结果[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)。   |
 
 **错误码：**
@@ -9067,7 +9064,7 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offRotationChange](#offrotationchange23)。
 
@@ -9116,9 +9113,7 @@ offRotationChange(callback?: RotationChangeCallback&lt;RotationChangeInfo, Rotat
 
 关闭窗口旋转变化的监听。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('rotationChange')](#offrotationchange19)。
 
@@ -9132,7 +9127,6 @@ offRotationChange(callback?: RotationChangeCallback&lt;RotationChangeInfo, Rotat
 
 | 参数名   | 类型                           | 必填 | 说明                                                         |
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                         | 是   | 监听事件，固定为'rotationChange'，即窗口旋转变化事件。     |
 | callback | RotationChangeCallback&lt;[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19), [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| undefined&gt; | 否   | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭该窗口的所有监听。 |
 
 **错误码：**

@@ -44,7 +44,7 @@ ArkTS-Sta: type WindowAnimationCurveParam = Array&lt;double&gt;
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型      | 说明                          |
 | -----------| ---------------------------- |
