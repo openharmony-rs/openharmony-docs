@@ -309,10 +309,10 @@ Web同层渲染的配置。
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称             | 类型      | 必填   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| result       | [FileSelectorResult](./arkts-basic-components-web-FileSelectorResult.md) | 是 | 用于通知Web组件文件选择的结果。 |
-| fileSelector | [FileSelectorParam](./arkts-basic-components-web-FileSelectorParam.md) | 是 | 文件选择器的相关信息。       |
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| result       | [FileSelectorResult](./arkts-basic-components-web-FileSelectorResult.md) | 否 | 否 | 用于通知Web组件文件选择的结果。 |
+| fileSelector | [FileSelectorParam](./arkts-basic-components-web-FileSelectorParam.md) | 否 | 否 | 文件选择器的相关信息。       |
 
 ## OnResourceLoadEvent<sup>12+</sup>
 
