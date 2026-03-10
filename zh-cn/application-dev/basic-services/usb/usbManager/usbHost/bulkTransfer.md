@@ -84,7 +84,7 @@
      this.logInfo_ += '\n[ERROR] deviceList is empty';
      return;
    }
-   /*
+  /*
    deviceList结构示例
    [
      {
@@ -186,7 +186,7 @@
      return;
    }
    let interface1: usbManager.USBInterface = deviceList?.[0]?.configs?.[0]?.interfaces?.[0];
-   /*
+  /*
     打开对应接口，在设备信息（deviceList）中选取对应的interface。
    interface1为设备配置中的一个接口。
    */
@@ -216,7 +216,7 @@
    }
    let pipe: usbManager.USBDevicePipe = this.pipe_;
    let interface1: usbManager.USBInterface = this.interface_;
-   /*
+  /*
    读取数据，在device信息中选取对应数据接收的endpoint来做数据传输
    （endpoint.direction == 0x80）；dataUint8Array是要读取的数据，类型为Uint8Array。
    */
