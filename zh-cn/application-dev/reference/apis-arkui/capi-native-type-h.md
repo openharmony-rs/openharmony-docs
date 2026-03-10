@@ -672,6 +672,133 @@
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4_TransformPoint(const ArkUI_Matrix4* matrix, const ArkUI_PointF* oriPoint, ArkUI_PointF* result)](#oh_arkui_matrix4_transformpoint) | - | 计算一个点经过矩阵变换后的新坐标位置。 |
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4_SetPolyToPoly(ArkUI_Matrix4* matrix, const ArkUI_PointF* src, const ArkUI_PointF* dst, const uint32_t pointCount)](#oh_arkui_matrix4_setpolytopoly) | - | 将一个多边形的顶点坐标映射到另一个多边形的顶点坐标，并计算所需的矩阵。 |
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4_GetElements(const ArkUI_Matrix4* matrix, float* result)](#oh_arkui_matrix4_getelements) | - | 获取四阶矩阵的16个元素。 |
+| [OH_ArkUI_DecorationStyleOptions* OH_ArkUI_DecorationStyleOptions_Create()](#oh_arkui_decorationstyleoptions_create) | - | 创建一个装饰线样式对象。当该对象不再使用时，请调用[OH_ArkUI_DecorationStyleOptions_Destroy](capi-native-type-h.md#oh_arkui_decorationstyleoptions_destroy)销毁。 |
+| [void OH_ArkUI_DecorationStyleOptions_Destroy(OH_ArkUI_DecorationStyleOptions* options)](#oh_arkui_decorationstyleoptions_destroy) | - | 销毁装饰线样式对象。 |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetTextDecorationType(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationType type)](#oh_arkui_decorationstyleoptions_settextdecorationtype) | - | 设置装饰线样式的装饰类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetTextDecorationType(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationType* type)](#oh_arkui_decorationstyleoptions_gettextdecorationtype) | - | 获取装饰线样式的装饰类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetColor(OH_ArkUI_DecorationStyleOptions* options, uint32_t color)](#oh_arkui_decorationstyleoptions_setcolor) | - | 设置装饰线的颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetColor(OH_ArkUI_DecorationStyleOptions* options, uint32_t* color)](#oh_arkui_decorationstyleoptions_getcolor) | - | 获取装饰线的颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetTextDecorationStyle(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationStyle style)](#oh_arkui_decorationstyleoptions_settextdecorationstyle) | - | 设置装饰线的样式。 |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetTextDecorationStyle(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationStyle* style)](#oh_arkui_decorationstyleoptions_gettextdecorationstyle) | - | 获取装饰线的样式。 |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetThicknessScale(OH_ArkUI_DecorationStyleOptions* options, float thicknessScale)](#oh_arkui_decorationstyleoptions_setthicknessscale) | - | 设置装饰线的粗细缩放比例。 |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetThicknessScale(OH_ArkUI_DecorationStyleOptions* options, float* thicknessScale)](#oh_arkui_decorationstyleoptions_getthicknessscale) | - | 获取装饰线的粗细缩放比例。 |
+| [OH_ArkUI_TextDataDetectorConfig* OH_ArkUI_TextDataDetectorConfig_Create()](#oh_arkui_textdatadetectorconfig_create) | - | 创建一个文本实体识别配置对象。当该对象不再使用时，请调用[OH_ArkUI_TextDataDetectorConfig_Destroy](capi-native-type-h.md#oh_arkui_textdatadetectorconfig_destroy)销毁。 |
+| [void OH_ArkUI_TextDataDetectorConfig_Destroy(OH_ArkUI_TextDataDetectorConfig* config)](#oh_arkui_textdatadetectorconfig_destroy) | - | 销毁文本实体识别配置对象。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetTypes(OH_ArkUI_TextDataDetectorConfig* config, const ArkUI_TextDataDetectorType* types, int32_t length)](#oh_arkui_textdatadetectorconfig_settypes) | - | 设置文本实体识别配置的类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetTypes(OH_ArkUI_TextDataDetectorConfig* config, ArkUI_TextDataDetectorType* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_textdatadetectorconfig_gettypes) | - | 获取文本实体识别配置的类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_RegisterOnDetectResultUpdateCallback(OH_ArkUI_TextDataDetectorConfig* config, void* userData, void (\*callback)(const char* result, int32_t length, void* userData))](#oh_arkui_textdatadetectorconfig_registerondetectresultupdatecallback) | - | 设置文本实体识别结果更新回调。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetColor(OH_ArkUI_TextDataDetectorConfig* config, uint32_t color)](#oh_arkui_textdatadetectorconfig_setcolor) | - | 设置识别内容的颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetColor(OH_ArkUI_TextDataDetectorConfig* config, uint32_t* color)](#oh_arkui_textdatadetectorconfig_getcolor) | - | 获取识别内容的颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetDecorationStyleOptions(OH_ArkUI_TextDataDetectorConfig* config, OH_ArkUI_DecorationStyleOptions* decoration)](#oh_arkui_textdatadetectorconfig_setdecorationstyleoptions) | - | 设置识别内容的装饰样式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetDecorationStyleOptions(OH_ArkUI_TextDataDetectorConfig* config, OH_ArkUI_DecorationStyleOptions* decoration)](#oh_arkui_textdatadetectorconfig_getdecorationstyleoptions) | - | 获取识别内容的装饰样式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetEnablePreviewMenu(OH_ArkUI_TextDataDetectorConfig* config, bool enablePreviewMenu)](#oh_arkui_textdatadetectorconfig_setenablepreviewmenu) | - | 设置长按识别内容时是否显示预览菜单。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetEnablePreviewMenu(OH_ArkUI_TextDataDetectorConfig* config, bool* enablePreviewMenu)](#oh_arkui_textdatadetectorconfig_getenablepreviewmenu) | - | 获取长按识别内容时是否显示预览菜单。 |
+| [OH_ArkUI_TextEditorPlaceholderOptions* OH_ArkUI_TextEditorPlaceholderOptions_Create()](#oh_arkui_texteditorplaceholderoptions_create) | - | 创建一个无输入时的提示文本的选项对象。当该对象不再使用时，请调用[OH_ArkUI_TextEditorPlaceholderOptions_Destroy](capi-native-type-h.md#oh_arkui_texteditorplaceholderoptions_destroy)销毁。 |
+| [void OH_ArkUI_TextEditorPlaceholderOptions_Destroy(OH_ArkUI_TextEditorPlaceholderOptions* options)](#oh_arkui_texteditorplaceholderoptions_destroy) | - | 销毁无输入时的提示文本的选项对象。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetValue(OH_ArkUI_TextEditorPlaceholderOptions* options, const char* value)](#oh_arkui_texteditorplaceholderoptions_setvalue) | - | 设置无输入时的提示文本选项的提示文字。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetValue(OH_ArkUI_TextEditorPlaceholderOptions* options, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_texteditorplaceholderoptions_getvalue) | - | 获取无输入时的提示文本选项的提示文字。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontSize(OH_ArkUI_TextEditorPlaceholderOptions* options, float fontSize)](#oh_arkui_texteditorplaceholderoptions_setfontsize) | - | 设置无输入时的提示文本选项的字体大小。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontSize(OH_ArkUI_TextEditorPlaceholderOptions* options, float* fontSize)](#oh_arkui_texteditorplaceholderoptions_getfontsize) | - | 获取无输入时的提示文本选项的字体大小。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontWeight(OH_ArkUI_TextEditorPlaceholderOptions* options, uint32_t fontWeight)](#oh_arkui_texteditorplaceholderoptions_setfontweight) | - | 设置无输入时的提示文本选项的字体粗细。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontWeight(OH_ArkUI_TextEditorPlaceholderOptions* options, uint32_t* fontWeight)](#oh_arkui_texteditorplaceholderoptions_getfontweight) | - | 获取无输入时的提示文本选项的字体粗细。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontFamily(OH_ArkUI_TextEditorPlaceholderOptions* options, const char* fontFamily)](#oh_arkui_texteditorplaceholderoptions_setfontfamily) | - | 设置无输入时的提示文本选项的字体家族。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontFamily(OH_ArkUI_TextEditorPlaceholderOptions* options, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_texteditorplaceholderoptions_getfontfamily) | - | 获取无输入时的提示文本选项的字体家族。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontStyle(OH_ArkUI_TextEditorPlaceholderOptions* options, ArkUI_FontStyle fontStyle)](#oh_arkui_texteditorplaceholderoptions_setfontstyle) | - | 设置无输入时的提示文本选项的字体样式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontStyle(OH_ArkUI_TextEditorPlaceholderOptions* options, ArkUI_FontStyle* fontStyle)](#oh_arkui_texteditorplaceholderoptions_getfontstyle) | - | 获取无输入时的提示文本选项的字体样式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontColor(OH_ArkUI_TextEditorPlaceholderOptions* options, uint32_t fontColor)](#oh_arkui_texteditorplaceholderoptions_setfontcolor) | - | 设置无输入时的提示文本选项的字体颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontColor(OH_ArkUI_TextEditorPlaceholderOptions* options, uint32_t* fontColor)](#oh_arkui_texteditorplaceholderoptions_getfontcolor) | - | 获取无输入时的提示文本选项的字体颜色。 |
+| [OH_ArkUI_TextEditorStyledStringController* OH_ArkUI_TextEditorStyledStringController_Create()](#oh_arkui_texteditorstyledstringcontroller_create) | - | 为文本编辑器创建一个属性字符串控制器对象。当该对象不再使用时，请调用[OH_ArkUI_TextEditorStyledStringController_Destroy](capi-native-type-h.md#oh_arkui_texteditorstyledstringcontroller_destroy)销毁。 |
+| [void OH_ArkUI_TextEditorStyledStringController_Destroy(OH_ArkUI_TextEditorStyledStringController* controller)](#oh_arkui_texteditorstyledstringcontroller_destroy) | - | 销毁属性字符串控制器。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetCaretOffset(OH_ArkUI_TextEditorStyledStringController* controller, int32_t caretOffset)](#oh_arkui_texteditorstyledstringcontroller_setcaretoffset) | - | 通过属性字符串控制器设置光标偏移量。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetCaretOffset(OH_ArkUI_TextEditorStyledStringController* controller, int32_t* caretOffset)](#oh_arkui_texteditorstyledstringcontroller_getcaretoffset) | - | 通过属性字符串控制器获取光标索引位置。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetSelection(OH_ArkUI_TextEditorStyledStringController* controller, uint32_t start, uint32_t end, ArkUI_MenuPolicy menuPolicy)](#oh_arkui_texteditorstyledstringcontroller_setselection) | - | 通过属性字符串控制器设置选中区域。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_IsEditing(OH_ArkUI_TextEditorStyledStringController* controller, bool* isEditing)](#oh_arkui_texteditorstyledstringcontroller_isediting) | - | 通过属性字符串控制器获取文本编辑器的编辑状态。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_StopEditing(OH_ArkUI_TextEditorStyledStringController* controller)](#oh_arkui_texteditorstyledstringcontroller_stopediting) | - | 通过属性字符串控制器退出文本编辑器的编辑状态。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetPreviewText(OH_ArkUI_TextEditorStyledStringController* controller, uint32_t* offset, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_texteditorstyledstringcontroller_getpreviewtext) | - | 通过属性字符串控制器获取预上屏文本内容。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetCaretRect(OH_ArkUI_TextEditorStyledStringController* controller, ArkUI_Rect* rect)](#oh_arkui_texteditorstyledstringcontroller_getcaretrect) | - | 通过属性字符串控制器获取光标矩形区域。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_DeleteBackward(OH_ArkUI_TextEditorStyledStringController* controller)](#oh_arkui_texteditorstyledstringcontroller_deletebackward) | - | 通过属性字符串控制器删除字符。没有内容被选中时，删除当前光标位置前的1个字符。有内容被选中时，删除选中内容。 |
+| [OH_ArkUI_TextEditorParagraphStyle* OH_ArkUI_TextEditorParagraphStyle_Create()](#oh_arkui_texteditorparagraphstyle_create) | - | 为文本编辑器创建一个段落样式对象。当该对象不再使用时，请调用[OH_ArkUI_TextEditorParagraphStyle_Destroy](capi-native-type-h.md#oh_arkui_texteditorparagraphstyle_destroy)销毁。 |
+| [void OH_ArkUI_TextEditorParagraphStyle_Destroy(OH_ArkUI_TextEditorParagraphStyle* style)](#oh_arkui_texteditorparagraphstyle_destroy) | - | 销毁段落样式对象。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetTextAlign(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_TextAlignment align)](#oh_arkui_texteditorparagraphstyle_settextalign) | - | 设置段落样式中的文本对齐方式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetTextAlign(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_TextAlignment* align)](#oh_arkui_texteditorparagraphstyle_gettextalign) | - | 获取段落样式中的文本对齐方式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginPixelMap(OH_ArkUI_TextEditorParagraphStyle* style, struct OH_PixelmapNative* pixelmap)](#oh_arkui_texteditorparagraphstyle_setleadingmarginpixelmap) | - | 设置段落样式中段落缩进的像素图。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginPixelMap(OH_ArkUI_TextEditorParagraphStyle* style, struct OH_PixelmapNative** pixelmap)](#oh_arkui_texteditorparagraphstyle_getleadingmarginpixelmap) | - | 获取段落样式中段落缩进的像素图。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginWidth(OH_ArkUI_TextEditorParagraphStyle* style, uint32_t width)](#oh_arkui_texteditorparagraphstyle_setleadingmarginwidth) | - | 设置段落样式中段落缩进的宽度。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginWidth(OH_ArkUI_TextEditorParagraphStyle* style, uint32_t* width)](#oh_arkui_texteditorparagraphstyle_getleadingmarginwidth) | - | 获取段落样式中段落缩进的宽度。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginHeight(OH_ArkUI_TextEditorParagraphStyle* style, uint32_t height)](#oh_arkui_texteditorparagraphstyle_setleadingmarginheight) | - | 设置段落样式中段落缩进的高度。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginHeight(OH_ArkUI_TextEditorParagraphStyle* style, uint32_t* height)](#oh_arkui_texteditorparagraphstyle_getleadingmarginheight) | - | 获取段落样式中段落缩进的高度。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetWordBreak(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_WordBreak wordBreak)](#oh_arkui_texteditorparagraphstyle_setwordbreak) | - | 设置段落样式的断字方式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetWordBreak(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_WordBreak* wordBreak)](#oh_arkui_texteditorparagraphstyle_getwordbreak) | - | 获取段落样式的断字方式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLineBreakStrategy(OH_ArkUI_TextEditorParagraphStyle* style, OH_ArkUI_LineBreakStrategy lineBreakStrategy)](#oh_arkui_texteditorparagraphstyle_setlinebreakstrategy) | - | 设置段落样式的换行策略。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLineBreakStrategy(OH_ArkUI_TextEditorParagraphStyle* style, OH_ArkUI_LineBreakStrategy* lineBreakStrategy)](#oh_arkui_texteditorparagraphstyle_getlinebreakstrategy) | - | 获取段落样式的换行策略。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetParagraphSpacing(OH_ArkUI_TextEditorParagraphStyle* style, uint32_t paragraphSpacing)](#oh_arkui_texteditorparagraphstyle_setparagraphspacing) | - | 设置段落样式的段落间距。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetParagraphSpacing(OH_ArkUI_TextEditorParagraphStyle* style, uint32_t* paragraphSpacing)](#oh_arkui_texteditorparagraphstyle_getparagraphspacing) | - | 获取段落样式的段落间距。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetTextVerticalAlign(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_TextVerticalAlignment verticalAlignment)](#oh_arkui_texteditorparagraphstyle_settextverticalalign) | - | 设置段落样式的文本垂直对齐方式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetTextVerticalAlign(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_TextVerticalAlignment* verticalAlignment)](#oh_arkui_texteditorparagraphstyle_gettextverticalalign) | - | 获取段落样式的文本垂直对齐方式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetTextDirection(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_TextDirection textDirection)](#oh_arkui_texteditorparagraphstyle_settextdirection) | - | 设置段落样式的文本方向。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetTextDirection(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_TextDirection* textDirection)](#oh_arkui_texteditorparagraphstyle_gettextdirection) | - | 获取段落样式的文本方向。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetTypingParagraphStyle(OH_ArkUI_TextEditorStyledStringController* controller, OH_ArkUI_TextEditorParagraphStyle* style)](#oh_arkui_texteditorstyledstringcontroller_settypingparagraphstyle) | - | 通过属性字符串控制器设置预设段落样式。 |
+| [OH_ArkUI_ShadowOptions* OH_ArkUI_ShadowOptions_Create()](#oh_arkui_shadowoptions_create) | - | 创建一个阴影选项对象。当该对象不再使用时，请调用[OH_ArkUI_ShadowOptions_Destroy](capi-native-type-h.md#oh_arkui_shadowoptions_destroy)销毁。 |
+| [void OH_ArkUI_ShadowOptions_Destroy(OH_ArkUI_ShadowOptions* options)](#oh_arkui_shadowoptions_destroy) | - | 销毁阴影选项对象。 |
+| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetRadius(OH_ArkUI_ShadowOptions* options, float radius)](#oh_arkui_shadowoptions_setradius) | - | 设置阴影选项的模糊半径。 |
+| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetRadius(OH_ArkUI_ShadowOptions* options, float* radius)](#oh_arkui_shadowoptions_getradius) | - | 获取阴影选项的模糊半径。 |
+| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetType(OH_ArkUI_ShadowOptions* options, ArkUI_ShadowType type)](#oh_arkui_shadowoptions_settype) | - | 设置阴影选项的阴影类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetType(OH_ArkUI_ShadowOptions* options, ArkUI_ShadowType* type)](#oh_arkui_shadowoptions_gettype) | - | 获取阴影选项的阴影类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetColor(OH_ArkUI_ShadowOptions* options, uint32_t color)](#oh_arkui_shadowoptions_setcolor) | - | 设置阴影选项的阴影颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetColor(OH_ArkUI_ShadowOptions* options, uint32_t* color)](#oh_arkui_shadowoptions_getcolor) | - | 获取阴影选项的阴影颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetX(OH_ArkUI_ShadowOptions* options, float offsetX)](#oh_arkui_shadowoptions_setoffsetx) | - | 设置阴影在x轴上的偏移量。 |
+| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetX(OH_ArkUI_ShadowOptions* options, float* offsetX)](#oh_arkui_shadowoptions_getoffsetx) | - | 获取阴影在x轴上的偏移量。 |
+| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetY(OH_ArkUI_ShadowOptions* options, float offsetY)](#oh_arkui_shadowoptions_setoffsety) | - | 设置阴影在y轴上的偏移量。 |
+| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetY(OH_ArkUI_ShadowOptions* options, float* offsetY)](#oh_arkui_shadowoptions_getoffsety) | - | 获取阴影在y轴上的偏移量。 |
+| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetFill(OH_ArkUI_ShadowOptions* options, bool isFill)](#oh_arkui_shadowoptions_setfill) | - | 设置是否用阴影填充组件内部。 |
+| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetFill(OH_ArkUI_ShadowOptions* options, bool* isFill)](#oh_arkui_shadowoptions_getfill) | - | 获取是否用阴影填充组件内部。 |
+| [OH_ArkUI_TextEditorTextStyle* OH_ArkUI_TextEditorTextStyle_Create()](#oh_arkui_texteditortextstyle_create) | - | 创建一个文本样式对象。当该对象不再使用时，请调用[OH_ArkUI_TextEditorTextStyle_Destroy](capi-native-type-h.md#oh_arkui_texteditortextstyle_destroy)销毁。 |
+| [void OH_ArkUI_TextEditorTextStyle_Destroy(OH_ArkUI_TextEditorTextStyle* style)](#oh_arkui_texteditortextstyle_destroy) | - | 销毁文本样式对象。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t color)](#oh_arkui_texteditortextstyle_setfontcolor) | - | 设置文本样式的字体颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t* color)](#oh_arkui_texteditortextstyle_getfontcolor) | - | 获取文本样式的字体颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontSize(OH_ArkUI_TextEditorTextStyle* style, float size)](#oh_arkui_texteditortextstyle_setfontsize) | - | 设置文本样式的字体大小。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontSize(OH_ArkUI_TextEditorTextStyle* style, float* size)](#oh_arkui_texteditortextstyle_getfontsize) | - | 获取文本样式的字体大小。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontStyle(OH_ArkUI_TextEditorTextStyle* style, ArkUI_FontStyle fontStyle)](#oh_arkui_texteditortextstyle_setfontstyle) | - | 设置文本样式的字体样式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontStyle(OH_ArkUI_TextEditorTextStyle* style, ArkUI_FontStyle* fontStyle)](#oh_arkui_texteditortextstyle_getfontstyle) | - | 获取文本样式的字体样式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontWeight(OH_ArkUI_TextEditorTextStyle* style, uint32_t fontWeight)](#oh_arkui_texteditortextstyle_setfontweight) | - | 设置文本样式的字体粗细。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontWeight(OH_ArkUI_TextEditorTextStyle* style, uint32_t* fontWeight)](#oh_arkui_texteditortextstyle_getfontweight) | - | 获取文本样式的字体粗细。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontFamily(OH_ArkUI_TextEditorTextStyle* style, const char* fontFamily)](#oh_arkui_texteditortextstyle_setfontfamily) | - | 设置文本样式的字体家族。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontFamily(OH_ArkUI_TextEditorTextStyle* style, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_texteditortextstyle_getfontfamily) | - | 获取文本样式的字体家族。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetDecoration(OH_ArkUI_TextEditorTextStyle* style, OH_ArkUI_DecorationStyleOptions* options)](#oh_arkui_texteditortextstyle_setdecoration) | - | 设置文本样式的文本装饰选项。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetDecoration(OH_ArkUI_TextEditorTextStyle* style, OH_ArkUI_DecorationStyleOptions* options)](#oh_arkui_texteditortextstyle_getdecoration) | - | 获取文本样式的文本装饰选项。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextShadows(OH_ArkUI_TextEditorTextStyle* style, const OH_ArkUI_ShadowOptions** options, int32_t length)](#oh_arkui_texteditortextstyle_settextshadows) | - | 设置文本样式的文本阴影选项。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextShadows(OH_ArkUI_TextEditorTextStyle* style, OH_ArkUI_ShadowOptions** shadowOptions, uint32_t shadowOptionsSize, uint32_t* writeLength)](#oh_arkui_texteditortextstyle_gettextshadows) | - | 获取文本样式的文本阴影选项。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetLineHeight(OH_ArkUI_TextEditorTextStyle* style, int32_t lineHeight)](#oh_arkui_texteditortextstyle_setlineheight) | - | 设置文本样式的文本行高。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetLineHeight(OH_ArkUI_TextEditorTextStyle* style, int32_t* lineHeight)](#oh_arkui_texteditortextstyle_getlineheight) | - | 获取文本样式的文本行高。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetLetterSpacing(OH_ArkUI_TextEditorTextStyle* style, int32_t letterSpacing)](#oh_arkui_texteditortextstyle_setletterspacing) | - | 设置文本样式的字符间距。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetLetterSpacing(OH_ArkUI_TextEditorTextStyle* style, int32_t* letterSpacing)](#oh_arkui_texteditortextstyle_getletterspacing) | - | 获取文本样式的字符间距。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontFeature(OH_ArkUI_TextEditorTextStyle* style, const char* fontFeature)](#oh_arkui_texteditortextstyle_setfontfeature) | - | 设置文本样式的文字特性效果，比如数字等宽的特性。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontFeature(OH_ArkUI_TextEditorTextStyle* style, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_texteditortextstyle_getfontfeature) | - | 获取文本样式的文字特性效果，比如数字等宽的特性。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetHalfLeading(OH_ArkUI_TextEditorTextStyle* style, bool halfLeading)](#oh_arkui_texteditortextstyle_sethalfleading) | - | 设置文本样式中文本是否将行间距平分至行的顶部与底部。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetHalfLeading(OH_ArkUI_TextEditorTextStyle* style, bool* halfLeading)](#oh_arkui_texteditortextstyle_gethalfleading) | - | 获取文本样式中文本是否将行间距平分至行的顶部与底部。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t color)](#oh_arkui_texteditortextstyle_settextbackgroundcolor) | - | 设置文本样式中的文本背景颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t* color)](#oh_arkui_texteditortextstyle_gettextbackgroundcolor) | - | 获取文本样式中的文本背景颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundRadius(OH_ArkUI_TextEditorTextStyle* style, float topLeft, float topRight, float bottomLeft, float bottomRight)](#oh_arkui_texteditortextstyle_settextbackgroundradius) | - | 设置文本样式中文本背景的圆角半径。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundRadius(OH_ArkUI_TextEditorTextStyle* style, float* topLeft, float* topRight, float* bottomLeft, float* bottomRight)](#oh_arkui_texteditortextstyle_gettextbackgroundradius) | - | 获取文本样式中文本背景的圆角半径。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetTypingStyle(OH_ArkUI_TextEditorStyledStringController* controller, OH_ArkUI_TextEditorTextStyle* style)](#oh_arkui_texteditorstyledstringcontroller_settypingstyle) | - | 通过属性字符串控制器设置预设输入样式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetTypingStyle(OH_ArkUI_TextEditorStyledStringController* controller, OH_ArkUI_TextEditorTextStyle* style)](#oh_arkui_texteditorstyledstringcontroller_gettypingstyle) | - | 通过属性字符串控制器获取预设输入样式。 |
+| [OH_ArkUI_TextEditorSelectionMenuOptions* OH_ArkUI_TextEditorSelectionMenuOptions_Create()](#oh_arkui_texteditorselectionmenuoptions_create) | - | 创建一个文本编辑器文本选择菜单选项对象。当该对象不再使用时，请调用[OH_ArkUI_TextEditorSelectionMenuOptions_Destroy](capi-native-type-h.md#oh_arkui_texteditorselectionmenuoptions_destroy)销毁。 |
+| [void OH_ArkUI_TextEditorSelectionMenuOptions_Destroy(OH_ArkUI_TextEditorSelectionMenuOptions* options)](#oh_arkui_texteditorselectionmenuoptions_destroy) | - | 销毁文本编辑器文本选择菜单选项对象。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetSpanType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextEditorSpanType textEditorSpanType)](#oh_arkui_texteditorselectionmenuoptions_setspantype) | - | 设置文本编辑器中文本选择菜单的span的类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetSpanType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextEditorSpanType* textEditorSpanType)](#oh_arkui_texteditorselectionmenuoptions_getspantype) | - | 获取文本编辑器中文本选择菜单的span的类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetContentNode(OH_ArkUI_TextEditorSelectionMenuOptions* options, ArkUI_NodeHandle node)](#oh_arkui_texteditorselectionmenuoptions_setcontentnode) | - | 设置文本编辑器中文本选择菜单的内容节点。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetContentNode(OH_ArkUI_TextEditorSelectionMenuOptions* options, ArkUI_NodeHandle* node)](#oh_arkui_texteditorselectionmenuoptions_getcontentnode) | - | 获取文本编辑器中文本选择菜单的内容节点。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetResponseType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextEditorResponseType responseType)](#oh_arkui_texteditorselectionmenuoptions_setresponsetype) | - | 设置文本编辑器中文本选择菜单的响应类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetResponseType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextEditorResponseType* responseType)](#oh_arkui_texteditorselectionmenuoptions_getresponsetype) | - | 获取文本编辑器中文本选择菜单的响应类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetMenuType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextMenuType menuType)](#oh_arkui_texteditorselectionmenuoptions_setmenutype) | - | 设置文本编辑器中文本选择菜单的类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetMenuType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextMenuType* menuType)](#oh_arkui_texteditorselectionmenuoptions_getmenutype) | - | 获取文本编辑器中文本选择菜单的类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuShowCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (\*callback)(int32_t start, int32_t end, void* callbackUserData))](#oh_arkui_texteditorselectionmenuoptions_registeronmenushowcallback) | - | 设置文本选择菜单显示时触发的事件。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuHideCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (\*callback)(int32_t start, int32_t end, void* callbackUserData))](#oh_arkui_texteditorselectionmenuoptions_registeronmenuhidecallback) | - | 设置文本选择菜单隐藏时触发的事件。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuAppearCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (\*callback)(int32_t start, int32_t end, void* callbackUserData))](#oh_arkui_texteditorselectionmenuoptions_registeronmenuappearcallback) | - | 设置文本选择菜单出现时触发的事件。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuDisappearCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (\*callback)(void* callbackUserData))](#oh_arkui_texteditorselectionmenuoptions_registeronmenudisappearcallback) | - | 设置文本选择菜单消失时触发的事件。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetHapticFeedbackMode(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_HapticFeedbackMode mode)](#oh_arkui_texteditorselectionmenuoptions_sethapticfeedbackmode) | - | 设置文本编辑器中文本选择菜单的触觉反馈模式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetHapticFeedbackMode(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_HapticFeedbackMode* mode)](#oh_arkui_texteditorselectionmenuoptions_gethapticfeedbackmode) | - | 获取文本编辑器中文本选择菜单的触觉反馈模式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_CloseSelectionMenu(OH_ArkUI_TextEditorStyledStringController* controller)](#oh_arkui_texteditorstyledstringcontroller_closeselectionmenu) | - | 关闭文本编辑器属性字符串控制器的文本选择菜单。 |
 | [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()](#oh_arkui_fontweightconfigs_create) | - | 创建文本字体粗细配置对象。 |
 | [void OH_ArkUI_FontWeightConfigs_Destroy(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_destroy) | - | 销毁文本字体粗细配置对象。 |
 | [void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenablevariablefontweight) | - | 设置是否启用可变字体粗细调节。 |
@@ -12169,6 +12296,3096 @@ uint32_t OH_ArkUI_SelectedDragPreviewStyle_GetColor(ArkUI_SelectedDragPreviewSty
 | 类型 | 说明 |
 | -- | -- |
 | uint32_t color | 选中态拖拽文本预览样式的的背景，格式为RGBA。 |
+
+### OH_ArkUI_DecorationStyleOptions_Create()
+
+```c
+OH_ArkUI_DecorationStyleOptions* OH_ArkUI_DecorationStyleOptions_Create()
+```
+
+**描述**
+
+创建一个装饰线样式对象。当该对象不再使用时，请调用[OH_ArkUI_DecorationStyleOptions_Destroy](capi-native-type-h.md#oh_arkui_decorationstyleoptions_destroy)销毁。
+
+**起始版本：** 24
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_DecorationStyleOptions*](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md) | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+
+### OH_ArkUI_DecorationStyleOptions_Destroy()
+
+```c
+void OH_ArkUI_DecorationStyleOptions_Destroy(OH_ArkUI_DecorationStyleOptions* options)
+```
+
+**描述**
+
+销毁装饰线样式对象。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向待销毁的选项对象的指针。 |
+
+### OH_ArkUI_DecorationStyleOptions_SetTextDecorationType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetTextDecorationType(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationType type)
+```
+
+**描述**
+
+设置装饰线样式的装饰类型。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| [ArkUI_TextDecorationType](capi-native-type-h.md#arkui_textdecorationtype) type | 装饰类型[ArkUI_TextDecorationType](capi-native-type-h.md#arkui_textdecorationtype)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_DecorationStyleOptions_GetTextDecorationType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetTextDecorationType(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationType* type)
+```
+
+**描述**
+
+获取装饰线样式的装饰类型。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| [ArkUI_TextDecorationType](capi-native-type-h.md#arkui_textdecorationtype)* type | 装饰类型[ArkUI_TextDecorationType](capi-native-type-h.md#arkui_textdecorationtype)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_DecorationStyleOptions_SetColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetColor(OH_ArkUI_DecorationStyleOptions* options, uint32_t color)
+```
+
+**描述**
+
+设置装饰线的颜色。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| uint32_t color | 装饰线的颜色，0xARGB格式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_DecorationStyleOptions_GetColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetColor(OH_ArkUI_DecorationStyleOptions* options, uint32_t* color)
+```
+
+**描述**
+
+获取装饰线的颜色。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| uint32_t* color | 装饰线的颜色，0xARGB格式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_DecorationStyleOptions_SetTextDecorationStyle()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetTextDecorationStyle(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationStyle style)
+```
+
+**描述**
+
+设置装饰线的样式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| [ArkUI_TextDecorationStyle](capi-native-type-h.md#arkui_textdecorationstyle) style | 装饰线的样式[ArkUI_TextDecorationStyle](capi-native-type-h.md#arkui_textdecorationstyle)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_DecorationStyleOptions_GetTextDecorationStyle()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetTextDecorationStyle(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationStyle* style)
+```
+
+**描述**
+
+获取装饰线的样式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| [ArkUI_TextDecorationStyle](capi-native-type-h.md#arkui_textdecorationstyle)* style | 装饰线的样式[ArkUI_TextDecorationStyle](capi-native-type-h.md#arkui_textdecorationstyle)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_DecorationStyleOptions_SetThicknessScale()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetThicknessScale(OH_ArkUI_DecorationStyleOptions* options, float thicknessScale)
+```
+
+**描述**
+
+设置装饰线的粗细缩放比例。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| float thicknessScale | 装饰线的粗细缩放比例。取值范围为[0, +∞)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_DecorationStyleOptions_GetThicknessScale()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetThicknessScale(OH_ArkUI_DecorationStyleOptions* options, float* thicknessScale)
+```
+
+**描述**
+
+获取装饰线的粗细缩放比例。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| float* thicknessScale | 装饰线的粗细缩放比例。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextDataDetectorConfig_Create()
+
+```c
+OH_ArkUI_TextDataDetectorConfig* OH_ArkUI_TextDataDetectorConfig_Create()
+```
+
+**描述**
+
+创建一个文本实体识别配置对象。当该对象不再使用时，请调用[OH_ArkUI_TextDataDetectorConfig_Destroy](capi-native-type-h.md#oh_arkui_textdatadetectorconfig_destroy)销毁。
+
+**起始版本：** 24
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_TextDataDetectorConfig*](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+
+### OH_ArkUI_TextDataDetectorConfig_Destroy()
+
+```c
+void OH_ArkUI_TextDataDetectorConfig_Destroy(OH_ArkUI_TextDataDetectorConfig* config)
+```
+
+**描述**
+
+销毁文本实体识别配置对象。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+
+### OH_ArkUI_TextDataDetectorConfig_SetTypes()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetTypes(OH_ArkUI_TextDataDetectorConfig* config, const ArkUI_TextDataDetectorType* types, int32_t length)
+```
+
+**描述**
+
+设置文本实体识别配置的类型。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| [const ArkUI_TextDataDetectorType](capi-native-type-h.md#arkui_textdatadetectortype)* types | 文本实体识别配置的类型，取值为[ArkUI_TextDataDetectorType](capi-native-type-h.md#arkui_textdatadetectortype)枚举。 |
+| int32_t length | 类型的数量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextDataDetectorConfig_GetTypes()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetTypes(OH_ArkUI_TextDataDetectorConfig* config, ArkUI_TextDataDetectorType* buffer, int32_t bufferSize, int32_t* writeLength)
+```
+
+**描述**
+
+获取文本实体识别配置的类型。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| [ArkUI_TextDataDetectorType](capi-native-type-h.md#arkui_textdatadetectortype)* buffer | 指向类型数组的缓冲区指针。 |
+| int32_t bufferSize | 开发者为类型预留的缓冲区最多可以写入的类型的数量。 |
+| int32_t* writeLength | 实际写入缓冲区的类型的数量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         若bufferSize小于writeLength，返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextDataDetectorConfig_RegisterOnDetectResultUpdateCallback()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_RegisterOnDetectResultUpdateCallback(OH_ArkUI_TextDataDetectorConfig* config, void* userData, void (*callback)(const char* result, int32_t length, void* userData))
+```
+
+**描述**
+
+设置文本实体识别结果更新回调。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)\* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| void\* userData | 用户数据。 |
+| void (\*callback)(const char\* result | 识别结果更新回调。result 识别到的文本实体内容。length 选中文本的结束位置。userData 用户自定义数据，对应OH_ArkUI_TextDataDetectorConfig_RegisterOnDetectResultUpdateCallback接口的入参userData。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextDataDetectorConfig_SetColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetColor(OH_ArkUI_TextDataDetectorConfig* config, uint32_t color)
+```
+
+**描述**
+
+设置识别内容的颜色。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| uint32_t color | 识别内容的颜色，0xARGB格式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextDataDetectorConfig_GetColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetColor(OH_ArkUI_TextDataDetectorConfig* config, uint32_t* color)
+```
+
+**描述**
+
+获取识别内容的颜色。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| uint32_t* color | 识别内容的颜色，0xARGB格式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextDataDetectorConfig_SetDecorationStyleOptions()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetDecorationStyleOptions(OH_ArkUI_TextDataDetectorConfig* config, OH_ArkUI_DecorationStyleOptions* decoration)
+```
+
+**描述**
+
+设置识别内容的装饰样式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | 识别内容的装饰样式，取值为[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextDataDetectorConfig_GetDecorationStyleOptions()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetDecorationStyleOptions(OH_ArkUI_TextDataDetectorConfig* config, OH_ArkUI_DecorationStyleOptions* decoration)
+```
+
+**描述**
+
+获取识别内容的装饰样式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | 识别内容的装饰样式，取值为[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextDataDetectorConfig_SetEnablePreviewMenu()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetEnablePreviewMenu(OH_ArkUI_TextDataDetectorConfig* config, bool enablePreviewMenu)
+```
+
+**描述**
+
+设置长按识别内容时是否显示预览菜单。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| bool enablePreviewMenu | 长按识别内容时是否显示预览菜单。true表示启用预览菜单，false表示不启用预览菜单。默认值为false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextDataDetectorConfig_GetEnablePreviewMenu()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetEnablePreviewMenu(OH_ArkUI_TextDataDetectorConfig* config, bool* enablePreviewMenu)
+```
+
+**描述**
+
+获取长按识别内容时是否显示预览菜单。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| bool* enablePreviewMenu | 长按识别内容时是否显示预览菜单。true表示显示预览菜单，false表示不显示预览菜单。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorPlaceholderOptions_Create()
+
+```c
+OH_ArkUI_TextEditorPlaceholderOptions* OH_ArkUI_TextEditorPlaceholderOptions_Create()
+```
+
+**描述**
+
+创建一个无输入时的提示文本的选项对象。当该对象不再使用时，请调用[OH_ArkUI_TextEditorPlaceholderOptions_Destroy](capi-native-type-h.md#oh_arkui_texteditorplaceholderoptions_destroy)销毁。
+
+**起始版本：** 24
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_TextEditorPlaceholderOptions*](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md) | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+
+### OH_ArkUI_TextEditorPlaceholderOptions_Destroy()
+
+```c
+void OH_ArkUI_TextEditorPlaceholderOptions_Destroy(OH_ArkUI_TextEditorPlaceholderOptions* options)
+```
+
+**描述**
+
+销毁无输入时的提示文本的选项对象。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+
+### OH_ArkUI_TextEditorPlaceholderOptions_SetValue()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetValue(OH_ArkUI_TextEditorPlaceholderOptions* options, const char* value)
+```
+
+**描述**
+
+设置无输入时的提示文本选项的提示文字。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| const char* value | 提示文字。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorPlaceholderOptions_GetValue()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetValue(OH_ArkUI_TextEditorPlaceholderOptions* options, char* buffer, int32_t bufferSize, int32_t* writeLength)
+```
+
+**描述**
+
+获取无输入时的提示文本选项的提示文字。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| char* buffer | 提示文字写入内存的缓冲区，内存空间需由开发者分配。 |
+| int32_t bufferSize | 缓冲区最多可写入的字符的数量。 |
+| int32_t* writeLength | 实际表示写入缓冲区的字符的数量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若节点、缓冲区或writeLength为空，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         若bufferSize小于writeLength，返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorPlaceholderOptions_SetFontSize()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontSize(OH_ArkUI_TextEditorPlaceholderOptions* options, float fontSize)
+```
+
+**描述**
+
+设置无输入时的提示文本选项的字体大小。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| float fontSize | 字体大小，单位为fp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorPlaceholderOptions_GetFontSize()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontSize(OH_ArkUI_TextEditorPlaceholderOptions* options, float* fontSize)
+```
+
+**描述**
+
+获取无输入时的提示文本选项的字体大小。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| float* fontSize | 字体大小，单位为fp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorPlaceholderOptions_SetFontWeight()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontWeight(OH_ArkUI_TextEditorPlaceholderOptions* options, uint32_t fontWeight)
+```
+
+**描述**
+
+设置无输入时的提示文本选项的字体粗细。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| uint32_t fontWeight | 字体粗细。取值范围为[100, 900]中的整百数值，例如100、900。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorPlaceholderOptions_GetFontWeight()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontWeight(OH_ArkUI_TextEditorPlaceholderOptions* options, uint32_t* fontWeight)
+```
+
+**描述**
+
+获取无输入时的提示文本选项的字体粗细。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| uint32_t* fontWeight | 字体粗细。取值范围为[100, 900]中的整百数值，例如100、900。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorPlaceholderOptions_SetFontFamily()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontFamily(OH_ArkUI_TextEditorPlaceholderOptions* options, const char* fontFamily)
+```
+
+**描述**
+
+设置无输入时的提示文本选项的字体家族。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| const char* fontFamily | 字体家族。存放待设置的字体名称，不同字体名称通过逗号拼接。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorPlaceholderOptions_GetFontFamily()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontFamily(OH_ArkUI_TextEditorPlaceholderOptions* options, char* buffer, int32_t bufferSize, int32_t* writeLength)
+```
+
+**描述**
+
+获取无输入时的提示文本选项的字体家族。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| char* buffer | 字体家族写入内存的缓冲区，内存空间需由开发者分配。 |
+| int32_t bufferSize | 缓冲区最多可写入的字符的数量。 |
+| int32_t* writeLength | 实际写入缓冲区的字符的数量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若节点、缓冲区或writeLength为空，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         若bufferSize小于writeLength，返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorPlaceholderOptions_SetFontStyle()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontStyle(OH_ArkUI_TextEditorPlaceholderOptions* options, ArkUI_FontStyle fontStyle)
+```
+
+**描述**
+
+设置无输入时的提示文本选项的字体样式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle) fontStyle | 字体样式。取值为[ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorPlaceholderOptions_GetFontStyle()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontStyle(OH_ArkUI_TextEditorPlaceholderOptions* options, ArkUI_FontStyle* fontStyle)
+```
+
+**描述**
+
+获取无输入时的提示文本选项的字体样式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle)* fontStyle | 字体样式。取值为[ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorPlaceholderOptions_SetFontColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontColor(OH_ArkUI_TextEditorPlaceholderOptions* options, uint32_t fontColor)
+```
+
+**描述**
+
+设置无输入时的提示文本选项的字体颜色。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| uint32_t fontColor | 字体颜色，0xARGB格式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorPlaceholderOptions_GetFontColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontColor(OH_ArkUI_TextEditorPlaceholderOptions* options, uint32_t* fontColor)
+```
+
+**描述**
+
+获取无输入时的提示文本选项的字体颜色。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| uint32_t* fontColor | 字体颜色，0xARGB格式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorStyledStringController_Create()
+
+```c
+OH_ArkUI_TextEditorStyledStringController* OH_ArkUI_TextEditorStyledStringController_Create()
+```
+
+**描述**
+
+为文本编辑器创建一个属性字符串控制器对象。当该对象不再使用时，请调用[OH_ArkUI_TextEditorStyledStringController_Destroy](capi-native-type-h.md#oh_arkui_texteditorstyledstringcontroller_destroy)销毁。
+
+**起始版本：** 24
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_TextEditorStyledStringController*](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md) | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+
+### OH_ArkUI_TextEditorStyledStringController_Destroy()
+
+```c
+void OH_ArkUI_TextEditorStyledStringController_Destroy(OH_ArkUI_TextEditorStyledStringController* controller)
+```
+
+**描述**
+
+销毁属性字符串控制器。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+
+### OH_ArkUI_TextEditorStyledStringController_SetCaretOffset()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetCaretOffset(OH_ArkUI_TextEditorStyledStringController* controller, int32_t caretOffset)
+```
+
+**描述**
+
+通过属性字符串控制器设置光标偏移量。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| int32_t caretOffset | 索引位置。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorStyledStringController_GetCaretOffset()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetCaretOffset(OH_ArkUI_TextEditorStyledStringController* controller, int32_t* caretOffset)
+```
+
+**描述**
+
+通过属性字符串控制器获取光标索引位置。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| int32_t* caretOffset | 索引位置。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorStyledStringController_SetSelection()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetSelection(OH_ArkUI_TextEditorStyledStringController* controller, uint32_t start, uint32_t end, ArkUI_MenuPolicy menuPolicy)
+```
+
+**描述**
+
+通过属性字符串控制器设置选中区域。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| uint32_t start | 选中区域的起始位置。 |
+| uint32_t end | 选中区域的结束位置。 |
+| [ArkUI_MenuPolicy](capi-native-type-h.md#arkui_menupolicy) menuPolicy | 选区内菜单弹出的策略。取值为[ArkUI_MenuPolicy](capi-native-type-h.md#arkui_menupolicy)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorStyledStringController_IsEditing()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_IsEditing(OH_ArkUI_TextEditorStyledStringController* controller, bool* isEditing)
+```
+
+**描述**
+
+通过属性字符串控制器获取文本编辑器的编辑状态。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| bool* isEditing | 编辑状态。true表示是编辑态，false表示不是编辑态。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorStyledStringController_StopEditing()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_StopEditing(OH_ArkUI_TextEditorStyledStringController* controller)
+```
+
+**描述**
+
+通过属性字符串控制器退出文本编辑器的编辑状态。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorStyledStringController_GetPreviewText()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetPreviewText(OH_ArkUI_TextEditorStyledStringController* controller, uint32_t* offset, char* buffer, int32_t bufferSize, int32_t* writeLength)
+```
+
+**描述**
+
+通过属性字符串控制器获取预上屏文本内容。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| uint32_t* offset | 预上屏文本位置。 |
+| char* buffer | 预上屏文本内容写入内存的缓冲区，内存空间需由开发者分配。 |
+| int32_t bufferSize | 缓冲区最多可写入的字符的数量。 |
+| int32_t* writeLength | 实际写入缓冲区的字符的数量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorStyledStringController_GetCaretRect()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetCaretRect(OH_ArkUI_TextEditorStyledStringController* controller, ArkUI_Rect* rect)
+```
+
+**描述**
+
+通过属性字符串控制器获取光标矩形区域。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)* rect | 光标区域信息。取值为[ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorStyledStringController_DeleteBackward()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_DeleteBackward(OH_ArkUI_TextEditorStyledStringController* controller)
+```
+
+**描述**
+
+通过属性字符串控制器删除字符。没有内容被选中时，删除当前光标位置前的1个字符。有内容被选中时，删除选中内容。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_Create()
+
+```c
+OH_ArkUI_TextEditorParagraphStyle* OH_ArkUI_TextEditorParagraphStyle_Create()
+```
+
+**描述**
+
+为文本编辑器创建一个段落样式对象。当该对象不再使用时，请调用[OH_ArkUI_TextEditorParagraphStyle_Destroy](capi-native-type-h.md#oh_arkui_texteditorparagraphstyle_destroy)销毁。
+
+**起始版本：** 24
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle*](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md) | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_Destroy()
+
+```c
+void OH_ArkUI_TextEditorParagraphStyle_Destroy(OH_ArkUI_TextEditorParagraphStyle* style)
+```
+
+**描述**
+
+销毁段落样式对象。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_SetTextAlign()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetTextAlign(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_TextAlignment align)
+```
+
+**描述**
+
+设置段落样式中的文本对齐方式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment) align | 文本对齐方式。取值为[ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_GetTextAlign()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetTextAlign(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_TextAlignment* align)
+```
+
+**描述**
+
+获取段落样式中的文本对齐方式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment)* align | 文本对齐方式。取值为[ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginPixelMap()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginPixelMap(OH_ArkUI_TextEditorParagraphStyle* style, struct OH_PixelmapNative* pixelmap)
+```
+
+**描述**
+
+设置段落样式中段落缩进的像素图。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [struct OH_PixelmapNative](../../reference/apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)* pixelmap | 段落缩进的像素图。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginPixelMap()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginPixelMap(OH_ArkUI_TextEditorParagraphStyle* style, struct OH_PixelmapNative** pixelmap)
+```
+
+**描述**
+
+获取段落样式中段落缩进的像素图。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [struct OH_PixelmapNative](../../reference/apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)** pixelmap | 段落缩进的像素图。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginWidth()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginWidth(OH_ArkUI_TextEditorParagraphStyle* style, uint32_t width)
+```
+
+**描述**
+
+设置段落样式中段落缩进的宽度。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| uint32_t width | 段落缩进的宽度，单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginWidth()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginWidth(OH_ArkUI_TextEditorParagraphStyle* style, uint32_t* width)
+```
+
+**描述**
+
+获取段落样式中段落缩进的宽度。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| uint32_t* width | 段落缩进的宽度，单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginHeight()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginHeight(OH_ArkUI_TextEditorParagraphStyle* style, uint32_t height)
+```
+
+**描述**
+
+设置段落样式中段落缩进的高度。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| uint32_t height | 段落缩进的高度，单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginHeight()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginHeight(OH_ArkUI_TextEditorParagraphStyle* style, uint32_t* height)
+```
+
+**描述**
+
+获取段落样式中段落缩进的高度。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| uint32_t* height | 段落缩进的高度，单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_SetWordBreak()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetWordBreak(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_WordBreak wordBreak)
+```
+
+**描述**
+
+设置段落样式的断字方式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak) wordBreak | 断字方式。取值为[ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_GetWordBreak()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetWordBreak(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_WordBreak* wordBreak)
+```
+
+**描述**
+
+获取段落样式的断字方式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak)* wordBreak | 断字方式。取值为[ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_SetLineBreakStrategy()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLineBreakStrategy(OH_ArkUI_TextEditorParagraphStyle* style, OH_ArkUI_LineBreakStrategy lineBreakStrategy)
+```
+
+**描述**
+
+设置段落样式的换行策略。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [OH_ArkUI_LineBreakStrategy](capi-native-type-h.md#oh_arkui_linebreakstrategy) lineBreakStrategy | 换行策略。取值为[OH_ArkUI_LineBreakStrategy](capi-native-type-h.md#oh_arkui_linebreakstrategy)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_GetLineBreakStrategy()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLineBreakStrategy(OH_ArkUI_TextEditorParagraphStyle* style, OH_ArkUI_LineBreakStrategy* lineBreakStrategy)
+```
+
+**描述**
+
+获取段落样式的换行策略。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [OH_ArkUI_LineBreakStrategy](capi-native-type-h.md#oh_arkui_linebreakstrategy)* lineBreakStrategy | 换行策略。取值为[OH_ArkUI_LineBreakStrategy](capi-native-type-h.md#oh_arkui_linebreakstrategy)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_SetParagraphSpacing()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetParagraphSpacing(OH_ArkUI_TextEditorParagraphStyle* style, uint32_t paragraphSpacing)
+```
+
+**描述**
+
+设置段落样式的段落间距。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| uint32_t paragraphSpacing | 段落间距，单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_GetParagraphSpacing()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetParagraphSpacing(OH_ArkUI_TextEditorParagraphStyle* style, uint32_t* paragraphSpacing)
+```
+
+**描述**
+
+获取段落样式的段落间距。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| uint32_t* paragraphSpacing | 段落间距，单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_SetTextVerticalAlign()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetTextVerticalAlign(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_TextVerticalAlignment verticalAlignment)
+```
+
+**描述**
+
+设置段落样式的文本垂直对齐方式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment) verticalAlignment | 文本垂直对齐方式。取值为[ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_GetTextVerticalAlign()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetTextVerticalAlign(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_TextVerticalAlignment* verticalAlignment)
+```
+
+**描述**
+
+获取段落样式的文本垂直对齐方式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment)* verticalAlignment | 文本垂直对齐方式。取值为[ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_SetTextDirection()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetTextDirection(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_TextDirection textDirection)
+```
+
+**描述**
+
+设置段落样式的文本方向。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection) textDirection | 文本方向。取值为[ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorParagraphStyle_GetTextDirection()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetTextDirection(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_TextDirection* textDirection)
+```
+
+**描述**
+
+获取段落样式的文本方向。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection)* textDirection | 文本方向。取值为[ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorStyledStringController_SetTypingParagraphStyle()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetTypingParagraphStyle(OH_ArkUI_TextEditorStyledStringController* controller, OH_ArkUI_TextEditorParagraphStyle* style)
+```
+
+**描述**
+
+通过属性字符串控制器设置预设段落样式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 预设段落样式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_ShadowOptions_Create()
+
+```c
+OH_ArkUI_ShadowOptions* OH_ArkUI_ShadowOptions_Create()
+```
+
+**描述**
+
+创建一个阴影选项对象。当该对象不再使用时，请调用[OH_ArkUI_ShadowOptions_Destroy](capi-native-type-h.md#oh_arkui_shadowoptions_destroy)销毁。
+
+**起始版本：** 24
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_ShadowOptions*](capi-arkui-nativemodule-oh-arkui-shadowoptions.md) | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
+
+### OH_ArkUI_ShadowOptions_Destroy()
+
+```c
+void OH_ArkUI_ShadowOptions_Destroy(OH_ArkUI_ShadowOptions* options)
+```
+
+**描述**
+
+销毁阴影选项对象。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
+
+### OH_ArkUI_ShadowOptions_SetRadius()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetRadius(OH_ArkUI_ShadowOptions* options, float radius)
+```
+
+**描述**
+
+设置阴影选项的模糊半径。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
+| float radius | 阴影的模糊半径，单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_ShadowOptions_GetRadius()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetRadius(OH_ArkUI_ShadowOptions* options, float* radius)
+```
+
+**描述**
+
+获取阴影选项的模糊半径。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
+| float* radius | 阴影的模糊半径，单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_ShadowOptions_SetType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetType(OH_ArkUI_ShadowOptions* options, ArkUI_ShadowType type)
+```
+
+**描述**
+
+设置阴影选项的阴影类型。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
+| [ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype) type | 阴影类型[ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_ShadowOptions_GetType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetType(OH_ArkUI_ShadowOptions* options, ArkUI_ShadowType* type)
+```
+
+**描述**
+
+获取阴影选项的阴影类型。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
+| [ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)* type | 阴影类型[ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_ShadowOptions_SetColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetColor(OH_ArkUI_ShadowOptions* options, uint32_t color)
+```
+
+**描述**
+
+设置阴影选项的阴影颜色。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
+| uint32_t color | 阴影颜色，0xARGB格式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_ShadowOptions_GetColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetColor(OH_ArkUI_ShadowOptions* options, uint32_t* color)
+```
+
+**描述**
+
+获取阴影选项的阴影颜色。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
+| uint32_t* color | 阴影颜色，0xARGB格式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_ShadowOptions_SetOffsetX()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetX(OH_ArkUI_ShadowOptions* options, float offsetX)
+```
+
+**描述**
+
+设置阴影在x轴上的偏移量。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
+| float offsetX | 阴影在x轴上的偏移量，单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_ShadowOptions_GetOffsetX()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetX(OH_ArkUI_ShadowOptions* options, float* offsetX)
+```
+
+**描述**
+
+获取阴影在x轴上的偏移量。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
+| float* offsetX | 阴影在x轴上的偏移量，单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_ShadowOptions_SetOffsetY()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetY(OH_ArkUI_ShadowOptions* options, float offsetY)
+```
+
+**描述**
+
+设置阴影在y轴上的偏移量。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
+| float offsetY | 阴影在y轴上的偏移量，单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_ShadowOptions_GetOffsetY()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetY(OH_ArkUI_ShadowOptions* options, float* offsetY)
+```
+
+**描述**
+
+获取阴影在y轴上的偏移量。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
+| float* offsetY | 阴影在y轴上的偏移量，单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_ShadowOptions_SetFill()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetFill(OH_ArkUI_ShadowOptions* options, bool isFill)
+```
+
+**描述**
+
+设置是否用阴影填充组件内部。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
+| bool isFill | 是否用阴影填充组件内部。true表示用阴影填充组件内部，false表示不用阴影填充组件内部。默认值为false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_ShadowOptions_GetFill()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetFill(OH_ArkUI_ShadowOptions* options, bool* isFill)
+```
+
+**描述**
+
+获取是否用阴影填充组件内部。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
+| bool* isFill | 是否用阴影填充组件内部。true表示用阴影填充组件内部，false表示不用阴影填充组件内部。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_Create()
+
+```c
+OH_ArkUI_TextEditorTextStyle* OH_ArkUI_TextEditorTextStyle_Create()
+```
+
+**描述**
+
+创建一个文本样式对象。当该对象不再使用时，请调用[OH_ArkUI_TextEditorTextStyle_Destroy](capi-native-type-h.md#oh_arkui_texteditortextstyle_destroy)销毁。
+
+**起始版本：** 24
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle*](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md) | 指向[OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)对象的指针。 |
+
+### OH_ArkUI_TextEditorTextStyle_Destroy()
+
+```c
+void OH_ArkUI_TextEditorTextStyle_Destroy(OH_ArkUI_TextEditorTextStyle* style)
+```
+
+**描述**
+
+销毁文本样式对象。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | 指向[OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)对象的指针。 |
+
+### OH_ArkUI_TextEditorTextStyle_SetFontColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t color)
+```
+
+**描述**
+
+设置文本样式的字体颜色。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| uint32_t color | 字体颜色，0xARGB格式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_GetFontColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t* color)
+```
+
+**描述**
+
+获取文本样式的字体颜色。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| uint32_t* color | 字体颜色，0xARGB格式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_SetFontSize()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontSize(OH_ArkUI_TextEditorTextStyle* style, float size)
+```
+
+**描述**
+
+设置文本样式的字体大小。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| float size | 字体大小，单位为fp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_GetFontSize()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontSize(OH_ArkUI_TextEditorTextStyle* style, float* size)
+```
+
+**描述**
+
+获取文本样式的字体大小。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| float* size | 字体大小，单位为fp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_SetFontStyle()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontStyle(OH_ArkUI_TextEditorTextStyle* style, ArkUI_FontStyle fontStyle)
+```
+
+**描述**
+
+设置文本样式的字体样式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle) fontStyle | 字体样式。取值为[ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_GetFontStyle()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontStyle(OH_ArkUI_TextEditorTextStyle* style, ArkUI_FontStyle* fontStyle)
+```
+
+**描述**
+
+获取文本样式的字体样式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle)* fontStyle | 字体样式。取值为[ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_SetFontWeight()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontWeight(OH_ArkUI_TextEditorTextStyle* style, uint32_t fontWeight)
+```
+
+**描述**
+
+设置文本样式的字体粗细。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| uint32_t fontWeight | 字体粗细。取值范围为[100, 900]中的整百数值，例如100、900。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_GetFontWeight()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontWeight(OH_ArkUI_TextEditorTextStyle* style, uint32_t* fontWeight)
+```
+
+**描述**
+
+获取文本样式的字体粗细。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| uint32_t* fontWeight | 字体粗细。取值范围为[100, 900]中的整百数值，例如100、900。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_SetFontFamily()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontFamily(OH_ArkUI_TextEditorTextStyle* style, const char* fontFamily)
+```
+
+**描述**
+
+设置文本样式的字体家族。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| const char* fontFamily | 字体家族。存放待设置的字体名称，不同字体名称通过逗号拼接。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_GetFontFamily()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontFamily(OH_ArkUI_TextEditorTextStyle* style, char* buffer, int32_t bufferSize, int32_t* writeLength)
+```
+
+**描述**
+
+获取文本样式的字体家族。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| char* buffer | 字体家族内容写入内存的缓冲区，内存空间需由开发者分配。 |
+| int32_t bufferSize | 缓冲区最多可写入的字符的数量。 |
+| int32_t* writeLength | 实际写入缓冲区的字符的数量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_SetDecoration()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetDecoration(OH_ArkUI_TextEditorTextStyle* style, OH_ArkUI_DecorationStyleOptions* options)
+```
+
+**描述**
+
+设置文本样式的文本装饰选项。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_GetDecoration()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetDecoration(OH_ArkUI_TextEditorTextStyle* style, OH_ArkUI_DecorationStyleOptions* options)
+```
+
+**描述**
+
+获取文本样式的文本装饰选项。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_SetTextShadows()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextShadows(OH_ArkUI_TextEditorTextStyle* style, const OH_ArkUI_ShadowOptions** options, int32_t length)
+```
+
+**描述**
+
+设置文本样式的文本阴影选项。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| [const OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)** options | 文本阴影选项。 |
+| int32_t length | 文本阴影选项的长度。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_GetTextShadows()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextShadows(OH_ArkUI_TextEditorTextStyle* style, OH_ArkUI_ShadowOptions** shadowOptions, uint32_t shadowOptionsSize, uint32_t* writeLength)
+```
+
+**描述**
+
+获取文本样式的文本阴影选项。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)** shadowOptions | 文本阴影选项。 |
+| uint32_t shadowOptionsSize | 阴影选项的缓冲区大小。 |
+| uint32_t* writeLength | 文本样式中实际的文本阴影选项数量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_SetLineHeight()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetLineHeight(OH_ArkUI_TextEditorTextStyle* style, int32_t lineHeight)
+```
+
+**描述**
+
+设置文本样式的文本行高。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| int32_t lineHeight | 文本行高。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_GetLineHeight()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetLineHeight(OH_ArkUI_TextEditorTextStyle* style, int32_t* lineHeight)
+```
+
+**描述**
+
+获取文本样式的文本行高。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| int32_t* lineHeight | 文本行高。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_SetLetterSpacing()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetLetterSpacing(OH_ArkUI_TextEditorTextStyle* style, int32_t letterSpacing)
+```
+
+**描述**
+
+设置文本样式的字符间距。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| int32_t letterSpacing | 字符间距。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_GetLetterSpacing()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetLetterSpacing(OH_ArkUI_TextEditorTextStyle* style, int32_t* letterSpacing)
+```
+
+**描述**
+
+获取文本样式的字符间距。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| int32_t* letterSpacing | 字符间距。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_SetFontFeature()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontFeature(OH_ArkUI_TextEditorTextStyle* style, const char* fontFeature)
+```
+
+**描述**
+
+设置文本样式的文字特性效果，比如数字等宽的特性。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| const char* fontFeature | 字体特性。存放待设置的字体特性，多个特性通过逗号拼接。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_GetFontFeature()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontFeature(OH_ArkUI_TextEditorTextStyle* style, char* buffer, int32_t bufferSize, int32_t* writeLength)
+```
+
+**描述**
+
+获取文本样式的文字特性效果，比如数字等宽的特性。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| char* buffer | 字体特性内容写入内存的缓冲区，内存空间需由开发者分配。 |
+| int32_t bufferSize | 缓冲区最多可写入的字符的数量。 |
+| int32_t* writeLength | 实际表示写入缓冲区的字符的数量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_SetHalfLeading()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetHalfLeading(OH_ArkUI_TextEditorTextStyle* style, bool halfLeading)
+```
+
+**描述**
+
+设置文本样式中文本是否将行间距平分至行的顶部与底部。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| bool halfLeading | 文本是否将行间距平分至行的顶部与底部。<br>                    true表示将行间距平分至行的顶部与底部，false表示不将行间距平分至行的顶部与底部。默认值为false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_GetHalfLeading()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetHalfLeading(OH_ArkUI_TextEditorTextStyle* style, bool* halfLeading)
+```
+
+**描述**
+
+获取文本样式中文本是否将行间距平分至行的顶部与底部。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| bool* halfLeading | 文本是否将行间距平分至行的顶部与底部。<br>                    true表示将行间距平分至行的顶部与底部，false表示不将行间距平分至行的顶部与底部。默认值为false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_SetTextBackgroundColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t color)
+```
+
+**描述**
+
+设置文本样式中的文本背景颜色。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| uint32_t color | 文本背景颜色，0xARGB格式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_GetTextBackgroundColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t* color)
+```
+
+**描述**
+
+获取文本样式中的文本背景颜色。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| uint32_t* color | 文本背景颜色，0xARGB格式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_SetTextBackgroundRadius()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundRadius(OH_ArkUI_TextEditorTextStyle* style, float topLeft, float topRight, float bottomLeft, float bottomRight)
+```
+
+**描述**
+
+设置文本样式中文本背景的圆角半径。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| float topLeft | 文本背景左上角的圆角半径。单位为vp。 |
+| float topRight | 文本背景右上角的圆角半径。单位为vp。 |
+| float bottomLeft | 文本背景左下角的圆角半径。单位为vp。 |
+| float bottomRight | 文本背景右下角的圆角半径。单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_GetTextBackgroundRadius()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundRadius(OH_ArkUI_TextEditorTextStyle* style, float* topLeft, float* topRight, float* bottomLeft, float* bottomRight)
+```
+
+**描述**
+
+获取文本样式中文本背景的圆角半径。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| float* topLeft | 文本背景左上角的圆角半径。单位为vp。 |
+| float* topRight | 文本背景右上角的圆角半径。单位为vp。 |
+| float* bottomLeft | 文本背景左下角的圆角半径。单位为vp。 |
+| float* bottomRight | 文本背景右下角的圆角半径。单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorStyledStringController_SetTypingStyle()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetTypingStyle(OH_ArkUI_TextEditorStyledStringController* controller, OH_ArkUI_TextEditorTextStyle* style)
+```
+
+**描述**
+
+通过属性字符串控制器设置预设输入样式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | 预设输入样式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorStyledStringController_GetTypingStyle()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetTypingStyle(OH_ArkUI_TextEditorStyledStringController* controller, OH_ArkUI_TextEditorTextStyle* style)
+```
+
+**描述**
+
+通过属性字符串控制器获取预设输入样式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | 预设输入样式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_Create()
+
+```c
+OH_ArkUI_TextEditorSelectionMenuOptions* OH_ArkUI_TextEditorSelectionMenuOptions_Create()
+```
+
+**描述**
+
+创建一个文本编辑器文本选择菜单选项对象。当该对象不再使用时，请调用[OH_ArkUI_TextEditorSelectionMenuOptions_Destroy](capi-native-type-h.md#oh_arkui_texteditorselectionmenuoptions_destroy)销毁。
+
+**起始版本：** 24
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions*](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md) | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_Destroy()
+
+```c
+void OH_ArkUI_TextEditorSelectionMenuOptions_Destroy(OH_ArkUI_TextEditorSelectionMenuOptions* options)
+```
+
+**描述**
+
+销毁文本编辑器文本选择菜单选项对象。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_SetSpanType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetSpanType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextEditorSpanType textEditorSpanType)
+```
+
+**描述**
+
+设置文本编辑器中文本选择菜单的span的类型。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorSpanType](capi-native-type-h.md#oh_arkui_texteditorspantype) textEditorSpanType | span的类型。取值为[OH_ArkUI_TextEditorSpanType](capi-native-type-h.md#oh_arkui_texteditorspantype)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_GetSpanType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetSpanType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextEditorSpanType* textEditorSpanType)
+```
+
+**描述**
+
+获取文本编辑器中文本选择菜单的span的类型。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorSpanType](capi-native-type-h.md#oh_arkui_texteditorspantype)* textEditorSpanType | span的类型。取值为[OH_ArkUI_TextEditorSpanType](capi-native-type-h.md#oh_arkui_texteditorspantype)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_SetContentNode()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetContentNode(OH_ArkUI_TextEditorSelectionMenuOptions* options, ArkUI_NodeHandle node)
+```
+
+**描述**
+
+设置文本编辑器中文本选择菜单的内容节点。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 内容节点。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_GetContentNode()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetContentNode(OH_ArkUI_TextEditorSelectionMenuOptions* options, ArkUI_NodeHandle* node)
+```
+
+**描述**
+
+获取文本编辑器中文本选择菜单的内容节点。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* node | 内容节点。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_SetResponseType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetResponseType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextEditorResponseType responseType)
+```
+
+**描述**
+
+设置文本编辑器中文本选择菜单的响应类型。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorResponseType](capi-native-type-h.md#oh_arkui_texteditorresponsetype) responseType | 响应类型。取值为[OH_ArkUI_TextEditorResponseType](capi-native-type-h.md#oh_arkui_texteditorresponsetype)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_GetResponseType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetResponseType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextEditorResponseType* responseType)
+```
+
+**描述**
+
+获取文本编辑器中文本选择菜单的响应类型。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorResponseType](capi-native-type-h.md#oh_arkui_texteditorresponsetype)* responseType | 响应类型。取值为[OH_ArkUI_TextEditorResponseType](capi-native-type-h.md#oh_arkui_texteditorresponsetype)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_SetMenuType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetMenuType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextMenuType menuType)
+```
+
+**描述**
+
+设置文本编辑器中文本选择菜单的类型。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_TextMenuType](capi-native-type-h.md#oh_arkui_textmenutype) menuType | 菜单类型。取值为[OH_ArkUI_TextMenuType](capi-native-type-h.md#oh_arkui_textmenutype)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_GetMenuType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetMenuType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextMenuType* menuType)
+```
+
+**描述**
+
+获取文本编辑器中文本选择菜单的类型。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_TextMenuType](capi-native-type-h.md#oh_arkui_textmenutype)* menuType | 菜单类型。取值为[OH_ArkUI_TextMenuType](capi-native-type-h.md#oh_arkui_textmenutype)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuShowCallback()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuShowCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (*callback)(int32_t start, int32_t end, void* callbackUserData))
+```
+
+**描述**
+
+设置文本选择菜单显示时触发的事件。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)\* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| void\* userData | 用户数据。 |
+| void (\*callback)(int32_t start | 菜单显示的回调函数。start 选中内容的起始偏移量。end 选中内容的结束偏移量。callbackUserData 用户数据。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuHideCallback()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuHideCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (*callback)(int32_t start, int32_t end, void* callbackUserData))
+```
+
+**描述**
+
+设置文本选择菜单隐藏时触发的事件。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)\* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| void\* userData | 用户数据。 |
+| void (\*callback)(int32_t start | 菜单隐藏的回调函数。start 选中内容的起始偏移量。end 选中内容的结束偏移量。callbackUserData 用户数据。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuAppearCallback()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuAppearCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (*callback)(int32_t start, int32_t end, void* callbackUserData))
+```
+
+**描述**
+
+设置文本选择菜单出现时触发的事件。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)\* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| void\* userData | 用户数据。 |
+| void (\*callback)(int32_t start | 菜单出现的回调函数。start 选中内容的起始偏移量。end 选中内容的结束偏移量。callbackUserData 用户数据。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuDisappearCallback()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuDisappearCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (*callback)(void* callbackUserData))
+```
+
+**描述**
+
+设置文本选择菜单消失时触发的事件。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)\* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| void\* userData | 用户数据。 |
+| void (\*callback)(void\* callbackUserData) | 菜单消失的回调函数。callbackUserData 用户数据。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_SetHapticFeedbackMode()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetHapticFeedbackMode(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_HapticFeedbackMode mode)
+```
+
+**描述**
+
+设置文本编辑器中文本选择菜单的触觉反馈模式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_HapticFeedbackMode](capi-native-type-h.md#oh_arkui_hapticfeedbackmode) mode | 触觉反馈模式。取值为[OH_ArkUI_HapticFeedbackMode](capi-native-type-h.md#oh_arkui_hapticfeedbackmode)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorSelectionMenuOptions_GetHapticFeedbackMode()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetHapticFeedbackMode(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_HapticFeedbackMode* mode)
+```
+
+**描述**
+
+获取文本编辑器中文本选择菜单的触觉反馈模式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_HapticFeedbackMode](capi-native-type-h.md#oh_arkui_hapticfeedbackmode)* mode | 触觉反馈模式。取值为[OH_ArkUI_HapticFeedbackMode](capi-native-type-h.md#oh_arkui_hapticfeedbackmode)中的枚举。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorStyledStringController_CloseSelectionMenu()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_CloseSelectionMenu(OH_ArkUI_TextEditorStyledStringController* controller)
+```
+
+**描述**
+
+关闭文本编辑器属性字符串控制器的文本选择菜单。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 ### OH_ArkUI_Matrix4ScaleOptions_Create()
 
