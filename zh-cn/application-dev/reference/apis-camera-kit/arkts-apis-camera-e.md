@@ -66,7 +66,7 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 15
 
 **ArkTS-Sta起始版本：** 22
 

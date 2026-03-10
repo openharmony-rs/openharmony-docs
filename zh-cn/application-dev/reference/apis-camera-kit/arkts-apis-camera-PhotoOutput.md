@@ -2061,6 +2061,8 @@ ArkTS-Sta: getPhotoRotation(deviceDegree?: int): ImageRotation
 - 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度，手机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
 - 屏幕显示方向：需要屏幕显示的图片左上角为第一个像素点为坐标原点。锁屏时与自然方向一致。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -2087,7 +2089,6 @@ ArkTS-Sta: getPhotoRotation(deviceDegree?: int): ImageRotation
 
 | 错误码ID   | 错误信息                         |
 |---------|------------------------------|
-| 7400101 | Parameter missing or parameter type incorrect.  |
 | 7400201 | Camera service fatal error.  |
 
 **示例：**
