@@ -142,7 +142,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
        return GetJsResult(env, g_thisPicture->errorCode);
    }
    
-   // 创造解码参数。
+   // 创建解码参数。
    napi_value CreateDecodingOptions(napi_env env, napi_callback_info info)
    {
        g_thisPicture->errorCode = OH_DecodingOptionsForPicture_Create(&g_thisPicture->options);
