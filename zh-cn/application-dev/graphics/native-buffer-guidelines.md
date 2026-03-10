@@ -80,6 +80,12 @@ libnative_buffer.so
 
 3. **获取内存的属性信息**。
     <!-- @[nativebuffer_getconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+    
+    ``` C++
+    OH_NativeBuffer_Config config2 = {};
+    OH_NativeBuffer_GetConfig(nativeBuffer, &config2);
+    uint32_t hwBufferID = OH_NativeBuffer_GetSeqNum(nativeBuffer);
+    ```
 
 4. **销毁OH_NativeBuffer**。
     <!-- @[nativebuffer_unreference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
