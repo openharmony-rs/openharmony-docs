@@ -38,6 +38,20 @@ libnative_vsync.so
 
 1. **首先需要定义一个VSync回调函数**。
     <!-- @[vsync_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+    
+    ``` C++
+    void RenderEngine::OnVsync(long long timestamp, void *data)
+    {
+        OH_LOG_Print(LOG_APP, LOG_DEBUG, LOG_PRINT_DOMAIN, "RenderEngine", "OnVsync %{public}lld.", timestamp);
+        auto renderEngine = reinterpret_cast<RenderEngine *>(data);
+        if (renderEngine == nullptr) {
+            return;
+        }
+    
+        renderEngine->vSyncCnt_++;
+        renderEngine->wakeUpCond_.notify_one();
+    }
+    ```
 
 2. **创建OH_NativeVSync实例**。
     <!-- @[create_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
