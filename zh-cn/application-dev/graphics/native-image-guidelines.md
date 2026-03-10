@@ -403,6 +403,10 @@ libnative_buffer.so
 
 8. **OH_NativeImage实例使用完需要销毁掉**。
    <!-- @[destroy_nativeimage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+   
+   ``` C++
+   OH_NativeImage_Destroy(&nativeImage_);
+   ```
 
 
 ## 相关实例
