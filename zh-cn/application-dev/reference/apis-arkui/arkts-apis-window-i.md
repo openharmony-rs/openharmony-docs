@@ -170,7 +170,7 @@
 
 ## AvoidAreaOptions<sup>12+</sup>
 
-系统规避区变化后返回当前规避区域以及规避区域类型。
+系统避让区变化后返回当前避让区域以及避让区域类型。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -182,8 +182,8 @@
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 否   | 否   | 系统规避区变化后返回的规避区域类型。 |
-| area   | [AvoidArea](arkts-apis-window-i.md#avoidarea7)         | 否   | 否   | 系统规避区变化后返回的规避区域。 |
+| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 否   | 否   | 系统避让区变化后返回的避让区域类型。 |
+| area   | [AvoidArea](arkts-apis-window-i.md#avoidarea7)         | 否   | 否   | 系统避让区变化后返回的避让区域。 |
 
 ## WindowProperties
 

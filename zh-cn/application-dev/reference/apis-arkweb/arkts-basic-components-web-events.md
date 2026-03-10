@@ -1701,17 +1701,23 @@ ArkTS-Sta: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback
 
 ## onShowFileSelector<sup>9+</sup>
 
-onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
+ArkTS-Dyn: onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
+
+ArkTS-Sta: onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\> | undefined)
 
 调用此函数以处理具有“文件”输入类型的HTML表单。如果不调用此函数或返回false，Web组件会提供默认的“选择文件”处理界面。如果返回true，应用可以自定义“选择文件”的响应行为。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型                                     | 必填   | 说明              |
 | ------------ | ---------------------------------------- | ---- | ----------------- |
-| callback       | Callback\<[OnShowFileSelectorEvent](./arkts-basic-components-web-i.md#onshowfileselectorevent12), boolean\> | 是    | 用于通知Web组件文件选择的结果。<br>返回值boolean。当返回值为true时，用户可以调用系统提供的弹窗能力。当返回值为false时，函数中绘制的自定义弹窗无效。 |
+| callback       | ArkTS-Dyn: Callback\<[OnShowFileSelectorEvent](./arkts-basic-components-web-i.md#onshowfileselectorevent12), boolean\><br/>ArkTS-Sta: Callback\<[OnShowFileSelectorEvent](./arkts-basic-components-web-i.md#onshowfileselectorevent12), boolean\> \| undefined | 是    | 用于通知Web组件文件选择的结果。<br>返回值boolean。当返回值为true时，用户可以调用系统提供的弹窗能力。当返回值为false时，函数中绘制的自定义弹窗无效。 |
 
 **示例：**
 
@@ -3719,7 +3725,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onScroll(callback: Callback\<OnScrollEvent\>)
 
-ArkTS-Sta: onScroll(callback: Callback\<OnScrollEvent\> | undefined): this
+ArkTS-Sta: onScroll(callback: Callback\<OnScrollEvent\> | undefined)
 
 通知网页全局滚动位置。
 
@@ -5254,7 +5260,7 @@ ArkTS-Sta示例：
 
  ArkTS-Dyn: onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\>)
 
- ArkTS-Sta: onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\> | undefined): this
+ ArkTS-Sta: onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\> | undefined)
 
 设置网页首次内容绘制回调函数。
 
@@ -5328,7 +5334,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12))
 
-ArkTS-Sta: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12) | undefined): this
+ArkTS-Sta: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12) | undefined)
 
 设置网页绘制页面主要内容回调函数。
 
@@ -5398,7 +5404,7 @@ ArkTS-Sta: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./a
 
 ArkTS-Dyn: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12))
 
-ArkTS-Sta: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12) | undefined): this
+ArkTS-Sta: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12) | undefined)
 
 设置网页绘制页面最大内容回调函数。
 
@@ -5728,7 +5734,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onOverScroll(callback: Callback\<OnOverScrollEvent\>)
 
-ArkTS-Sta: onOverScroll(callback: Callback\<OnOverScrollEvent\> | undefined): this
+ArkTS-Sta: onOverScroll(callback: Callback\<OnOverScrollEvent\> | undefined)
 
 该接口在网页过度滚动时触发，用于通知网页过度滚动的偏移量。
 
@@ -6192,7 +6198,7 @@ struct WebComponent {
 
 ArkTS-Dyn: onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 
-ArkTS-Sta: onNativeEmbedLifecycleChange(callback: ((event: NativeEmbedDataInfo) => void) | undefined): this
+ArkTS-Sta: onNativeEmbedLifecycleChange(callback: ((event: NativeEmbedDataInfo) => void) | undefined)
 
 当同层标签生命周期变化时触发该回调。
 
@@ -6522,7 +6528,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
 
-ArkTS-Sta: onNativeEmbedGestureEvent(callback: ((event: NativeEmbedTouchInfo) => void) | undefined): this
+ArkTS-Sta: onNativeEmbedGestureEvent(callback: ((event: NativeEmbedTouchInfo) => void) | undefined)
 
 当手指触摸到同层标签时触发该回调。
 
@@ -7003,7 +7009,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onViewportFitChanged(callback: OnViewportFitChangedCallback)
 
-ArkTS-Sta: onViewportFitChanged(callback: OnViewportFitChangedCallback | undefined): this
+ArkTS-Sta: onViewportFitChanged(callback: OnViewportFitChangedCallback | undefined)
 
 网页meta中viewport-fit配置项更改时触发该回调，应用可在此回调中自适应布局视口。
 
@@ -7394,7 +7400,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
 
-ArkTS-Sta: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback | undefined): this
+ArkTS-Sta: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback | undefined)
 
 当网页中同层标签（例如<embed\>标签或<object\>标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。若要获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](./arkts-basic-components-web-attributes.md#nativeembedoptions16)，并将[EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16)中的supportCssDisplayChange参数设为true。
 
@@ -8219,7 +8225,17 @@ onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[onShowFileSelector<sup>9+</sup>](#onshowfileselector9)替代。
 
+**ArkTS模式：** 该接口适用于ArkTS-Dyn
+
+**ArkTS-Dyn起始版本：** 8
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback | (event?: { callback: Function, fileSelector: object }) => void | 是 | 当触发文件选择器时需要执行的回调。 |
 
 ## onUrlLoadIntercept<sup>(deprecated)</sup>
 

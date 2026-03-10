@@ -1733,7 +1733,7 @@ getWindowAvoidArea(type: AvoidAreaType): AvoidArea
 获取当前窗口避让区域。
 
 主窗口/子窗口：
-- [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
+- [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](arkts-apis-window-e.md#windowstatustype11)）下，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
 - 主窗口在非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
 - 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
 - 子窗口在非自由窗口状态或非自由悬浮窗口模式下，仅当窗口的位置和大小与主窗口一致时，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
@@ -1806,7 +1806,7 @@ getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 获取当前应用窗口的避让区域，即使避让区域当前处于不可见状态。
 
 主窗口/子窗口：
-- 主窗口在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
+- 主窗口在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](arkts-apis-window-e.md#windowstatustype11)）下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
 - 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
 - 子窗口在非自由窗口状态或非自由悬浮窗口模式下，仅当窗口的位置和大小与主窗口一致时，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
 
@@ -4482,10 +4482,10 @@ try {
 
 on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 
-开启当前应用窗口系统规避区变化的监听。
+开启当前应用窗口系统避让区域变化的监听。
 
 主窗口/子窗口：
-- [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下触发回调时，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
+- [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](arkts-apis-window-e.md#windowstatustype11)）下触发回调时，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
 - 主窗口在非自由窗口状态的自由悬浮窗口模式下触发回调时，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
 - 主窗口在其余场景下触发回调时，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能返回计算后的避让区域，否则直接返回空的避让区域。
 - 子窗口在非自由窗口状态或非自由悬浮窗口模式下触发回调时，仅当子窗口的位置和大小与主窗口一致时，才能返回计算后的子窗口避让区域，否则直接返回空的避让区域。
@@ -4509,8 +4509,8 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 
 | 参数名   | 类型                              | 必填 | 说明                                  |
 | -------- |----------------------------------| ---- |--------------------------------------|
-| type     | string                           | 是   | 监听事件，固定为'avoidAreaChange'，即系统规避区变化事件。 |
-| callback | Callback&lt;[AvoidAreaOptions](arkts-apis-window-i.md#avoidareaoptions12)&gt; | 是   | 回调函数。返回当前规避区以及规避区类型。|
+| type     | string                           | 是   | 监听事件，固定为'avoidAreaChange'，即系统避让区变化事件。 |
+| callback | Callback&lt;[AvoidAreaOptions](arkts-apis-window-i.md#avoidareaoptions12)&gt; | 是   | 回调函数。返回当前避让区以及避让区类型。|
 
 **错误码：**
 
@@ -4572,7 +4572,7 @@ try {
 
 off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaOptions&gt;): void
 
-关闭当前窗口系统规避区变化的监听。
+关闭当前窗口系统避让区变化的监听。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -4588,8 +4588,8 @@ off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaOptions&gt;): void
 
 | 参数名   | 类型                              | 必填 | 说明                                |
 | -------- |----------------------------------|------|------------------------------------|
-| type     | string                           | 是   | 监听事件，固定为'avoidAreaChange'，即系统规避区变化事件。 |
-| callback | Callback&lt;[AvoidAreaOptions](arkts-apis-window-i.md#avoidareaoptions12)&gt; | 否   | 回调函数。返回当前规避区以及规避区类型。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有系统规避区变化的监听。|
+| type     | string                           | 是   | 监听事件，固定为'avoidAreaChange'，即系统避让区变化事件。 |
+| callback | Callback&lt;[AvoidAreaOptions](arkts-apis-window-i.md#avoidareaoptions12)&gt; | 否   | 回调函数。返回当前避让区以及避让区类型。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有系统避让区变化的监听。|
 
 **错误码：**
 
@@ -4624,7 +4624,7 @@ try {
 
 offAvoidAreaChange(callback?: Callback&lt;AvoidAreaOptions&gt;): void
 
-关闭当前窗口系统规避区变化的监听。
+关闭当前窗口系统避让区变化的监听。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
@@ -7664,7 +7664,7 @@ on(type: 'windowTitleButtonRectChange', callback: Callback&lt;TitleButtonRect&gt
 
 开启窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowTitleButtonRectChange](#onwindowtitlebuttonrectchange23)。
 
@@ -7711,7 +7711,7 @@ onWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void
 
 开启窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowTitleButtonRectChange')](#onwindowtitlebuttonrectchange11)。
 
@@ -7756,7 +7756,7 @@ off(type: 'windowTitleButtonRectChange', callback?: Callback&lt;TitleButtonRect&
 
 关闭窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowTitleButtonRectChange](#offwindowtitlebuttonrectchange23)。
 
@@ -7809,7 +7809,7 @@ offWindowTitleButtonRectChange(callback?: Callback&lt;TitleButtonRect&gt;): void
 
 关闭窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowTitleButtonRectChange')](#offwindowtitlebuttonrectchange11)。
 
@@ -8575,7 +8575,7 @@ off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;
 
 用于关闭主窗口或子窗口关闭事件的监听。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowWillClose](#offwindowwillclose23)。
 
@@ -8647,7 +8647,7 @@ offWindowWillClose(callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): voi
 
 用于关闭主窗口或子窗口关闭事件的监听。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowWillClose')](#offwindowwillclose15)。
 
@@ -8910,7 +8910,7 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onRotationChange](#onrotationchange23)。
 
@@ -8986,9 +8986,7 @@ onRotationChange(callback: RotationChangeCallback&lt;RotationChangeInfo, Rotatio
 
 该函数只允许在主线程注册。同一个窗口多次注册同类型回调函数，只生效最新注册的同类型回调函数返回值。系统提供了超时保护机制，若20ms内窗口未返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)，系统不处理该返回值。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('rotationChange')](#onrotationchange19)。
 
@@ -9002,7 +9000,6 @@ onRotationChange(callback: RotationChangeCallback&lt;RotationChangeInfo, Rotatio
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                         | 是   | 监听事件，固定为'rotationChange'，即窗口旋转变化事件。 |
 | callback | RotationChangeCallback&lt;[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19), [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| undefined&gt; | 是 | 回调函数。返回窗口旋转信息[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，应用返回当前窗口变化结果[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)。   |
 
 **错误码：**
@@ -9067,7 +9064,7 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offRotationChange](#offrotationchange23)。
 
@@ -9116,9 +9113,7 @@ offRotationChange(callback?: RotationChangeCallback&lt;RotationChangeInfo, Rotat
 
 关闭窗口旋转变化的监听。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('rotationChange')](#offrotationchange19)。
 
@@ -9132,7 +9127,6 @@ offRotationChange(callback?: RotationChangeCallback&lt;RotationChangeInfo, Rotat
 
 | 参数名   | 类型                           | 必填 | 说明                                                         |
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                         | 是   | 监听事件，固定为'rotationChange'，即窗口旋转变化事件。     |
 | callback | RotationChangeCallback&lt;[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19), [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| undefined&gt; | 否   | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭该窗口的所有监听。 |
 
 **错误码：**
@@ -17321,8 +17315,8 @@ getAvoidArea(type: [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), callb
 
 | 参数名   | 类型                                            | 必填 | 说明                                                         |
 | -------- |-----------------------------------------------| ---- | ------------------------------------------------------------ |
-| type     | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)              | 是   | 表示规避区类型。|
-| callback | AsyncCallback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | 是   | 回调函数。返回窗口内容规避区域。                             |
+| type     | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)              | 是   | 表示避让区类型。|
+| callback | AsyncCallback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | 是   | 回调函数。返回窗口内容避让区域。                             |
 
 **示例：**
 
@@ -17369,13 +17363,13 @@ getAvoidArea(type: [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)): Prom
 
 | 参数名 | 类型                               | 必填 | 说明                                                         |
 | ------ |----------------------------------| ---- | ------------------------------------------------------------ |
-| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是   | 表示规避区类型。 |
+| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是   | 表示避让区类型。 |
 
 **返回值：**
 
 | 类型                                      | 说明                                |
 |-----------------------------------------| ----------------------------------- |
-| Promise&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | Promise对象。返回窗口内容规避区域。 |
+| Promise&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | Promise对象。返回窗口内容避让区域。 |
 
 **示例：**
 
@@ -18006,7 +18000,7 @@ promise.then((data) => {
 
 on(type: 'systemAvoidAreaChange', callback: Callback&lt;AvoidArea&gt;): void
 
-开启当前窗口系统规避区变化的监听。
+开启当前窗口系统避让区变化的监听。
 
 > **说明：**
 >
@@ -18022,8 +18016,8 @@ on(type: 'systemAvoidAreaChange', callback: Callback&lt;AvoidArea&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'systemAvoidAreaChange'，即系统规避区变化事件。 |
-| callback | Callback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | 是   | 回调函数。返回当前规避区。                             |
+| type     | string                                   | 是   | 监听事件，固定为'systemAvoidAreaChange'，即系统避让区变化事件。 |
+| callback | Callback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | 是   | 回调函数。返回当前避让区。                             |
 
 
 **示例：**
@@ -18038,7 +18032,7 @@ windowClass.on('systemAvoidAreaChange', (data) => {
 
 off(type: 'systemAvoidAreaChange', callback?: Callback&lt;AvoidArea&gt;): void
 
-关闭当前窗口系统规避区变化的监听。
+关闭当前窗口系统避让区变化的监听。
 
 > **说明：**
 >
@@ -18054,8 +18048,8 @@ off(type: 'systemAvoidAreaChange', callback?: Callback&lt;AvoidArea&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'systemAvoidAreaChange'，即系统规避区变化事件。 |
-| callback | Callback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | 否   | 回调函数。返回当前规避区。若传入参数，则关闭该监听。若未传入参数，则关闭所有系统规避区变化的监听。           |
+| type     | string                                   | 是   | 监听事件，固定为'systemAvoidAreaChange'，即系统避让区变化事件。 |
+| callback | Callback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | 否   | 回调函数。返回当前避让区。若传入参数，则关闭该监听。若未传入参数，则关闭所有系统避让区变化的监听。           |
 
 **示例：**
 

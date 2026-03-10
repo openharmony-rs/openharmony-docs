@@ -613,18 +613,20 @@ on(type: 'keyRequired', callback: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyRequired](#onkeyrequired23)。
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 事件类型，固定为'keyRequired'，当播放DRM节目需要获取媒体密钥时触发。 |
-| callback | (eventInfo: \<[EventInfo](arkts-apis-drm-i.md#eventinfo)\>) => void  | 是   | 回调函数，返回事件信息。                 |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 是   | 回调函数，用于监听密钥所需事件并返回事件信息。                 |
 
 **错误码：**
 
@@ -633,7 +635,7 @@ on(type: 'keyRequired', callback: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 24700101                |  All unknown errors                  |
+| 24700101                |  All unknown errors.                  |
 
 **示例：**
 
@@ -643,7 +645,47 @@ import { drm } from '@kit.DrmKit';
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('keyRequired', (eventInfo: drm.EventInfo) => {
-  console.log('keyRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+  console.info('keyRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+});
+```
+
+## onKeyRequired<sup>23+</sup>
+
+onKeyRequired(callback: (eventInfo: EventInfo) => void): void
+
+监听密钥请求事件。使用callback异步回调。
+
+**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyRequired')](#onkeyrequired)。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                                  |
+| -------- | -------------------- | ---- | ------------------------------------- |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 是   | 回调函数，用于监听密钥所需事件并返回事件信息。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 24700101                |  All unknown errors.                  |
+
+**示例：**
+
+```ts
+import { drm } from '@kit.DrmKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+mediaKeySession.onKeyRequired((eventInfo: drm.EventInfo) => {
+  console.info('keyRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
 ```
 
@@ -655,18 +697,20 @@ off(type: 'keyRequired', callback?: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyRequired](#offkeyrequired23)。
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，固定为'keyRequired'。 |
-| callback | (eventInfo: \<[EventInfo](arkts-apis-drm-i.md#eventinfo)\>) => void  | 否   | 回调函数，返回事件信息。可选。                |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，用于监听所需密钥事件并返回事件信息。可选。                |
 
 **错误码：**
 
@@ -675,7 +719,7 @@ off(type: 'keyRequired', callback?: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.             |
-| 24700101                |  All unknown errors                  |
+| 24700101                |  All unknown errors.                  |
 
 **示例：**
 
@@ -687,6 +731,44 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 mediaKeySession.off('keyRequired');
 ```
 
+## offKeyRequired<sup>23+</sup>
+
+offKeyRequired(callback?: (eventInfo: EventInfo) => void): void
+
+注销密钥请求事件监听。使用callback异步回调。
+
+**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyRequired')](#offkeyrequired)。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                                  |
+| -------- | -------------------- | ---- | ------------------------------------- |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，用于监听所需密钥事件并在事件发生时返回事件信息。                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 24700101                |  All unknown errors.                  |
+
+**示例：**
+
+```ts
+import { drm } from '@kit.DrmKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+mediaKeySession.offKeyRequired();
+```
+
 ## on('keyExpired')
 
 on(type: 'keyExpired', callback: (eventInfo: EventInfo) => void): void
@@ -695,18 +777,20 @@ on(type: 'keyExpired', callback: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyExpired](#onkeyexpired23)。
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，固定为'keyExpired'。密钥过期时触发。 |
-| callback | (eventInfo: \<[EventInfo](arkts-apis-drm-i.md#eventinfo)\>) => void  | 是   | 回调函数，返回事件信息。                 |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 是   | 回调函数，用于监听密钥过期事件并在事件发生时返回事件信息。                 |
 
 **错误码：**
 
@@ -725,7 +809,48 @@ import { drm } from '@kit.DrmKit';
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('keyExpired', (eventInfo: drm.EventInfo) => {
-  console.log('keyExpired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+  console.info('keyExpired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+});
+```
+
+## onKeyExpired<sup>23+</sup>
+
+onKeyExpired(callback: (eventInfo: EventInfo) => void): void
+
+监听密钥过期事件。使用callback异步回调。
+
+**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyExpired')](#onkeyexpired)。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Sta起始版本：** 23
+
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                                  |
+| -------- | -------------------- | ---- | ------------------------------------- |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 是   | 回调函数，用于监听密钥过期事件并在事件发生时返回事件信息。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 24700101                |  All unknown errors.                  |
+
+**示例：**
+
+```ts
+import { drm } from '@kit.DrmKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+mediaKeySession.onKeyExpired((eventInfo: drm.EventInfo) => {
+  console.info('keyExpired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
 ```
 
@@ -737,18 +862,20 @@ off(type: 'keyExpired', callback?: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyExpired](#offkeyexpired23)。
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，固定为'keyExpired'。 |
-| callback | (eventInfo: \<[EventInfo](arkts-apis-drm-i.md#eventinfo)\>) => void  | 否   | 回调函数，返回事件信息。可选。                |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，用于监听密钥过期事件并在事件发生时返回事件信息。可选。                |
 
 **错误码：**
 
@@ -768,6 +895,43 @@ let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.off('keyExpired');
 ```
+## offKeyExpired<sup>23+</sup>
+
+offKeyExpired(callback?: (eventInfo: EventInfo) => void): void
+
+注销密钥过期事件监听。使用callback异步回调。
+
+**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyExpired')](#offkeyexpired)。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                                  |
+| -------- | -------------------- | ---- | ------------------------------------- |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，用于监听密钥过期事件并在事件发生时返回事件信息。可选。                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 24700101                |  All unknown errors.                  |
+
+**示例：**
+
+```ts
+import { drm } from '@kit.DrmKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+mediaKeySession.offKeyExpired();
+```
 
 ## on('vendorDefined')
 
@@ -777,18 +941,20 @@ on(type: 'vendorDefined', callback: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onVendorDefined](#onvendordefined23)。
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件，固定为'vendorDefined'。自定义事件发生时触发。 |
-| callback | (eventInfo: \<[EventInfo](arkts-apis-drm-i.md#eventinfo)\>) => void  | 是   | 回调函数，返回事件信息。                 |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 是   | 回调函数，监听自定义事件并在发生时返回事件信息。                 |
 
 **错误码：**
 
@@ -807,7 +973,47 @@ import { drm } from '@kit.DrmKit';
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('vendorDefined', (eventInfo: drm.EventInfo) => {
-  console.log('vendorDefined ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+  console.info('vendorDefined ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+});
+```
+
+## onVendorDefined<sup>23+</sup>
+
+onVendorDefined(callback: (eventInfo: EventInfo) => void): void
+
+监听DRM解决方案自定义事件。使用callback异步回调。
+
+**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('vendorDefined')](#onvendordefined)。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                                  |
+| -------- | -------------------- | ---- | ------------------------------------- |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 是   | 回调函数，监听自定义事件并在发生时返回事件信息。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 24700101                |  All unknown errors.                  |
+
+**示例：**
+
+```ts
+import { drm } from '@kit.DrmKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+mediaKeySession.onVendorDefined((eventInfo: drm.EventInfo) => {
+  console.info('vendorDefined ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
 ```
 
@@ -819,18 +1025,20 @@ off(type: 'vendorDefined', callback?: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offVendorDefined](#offvendordefined23)。
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件，固定为'vendorDefined'。 |
-| callback | (eventInfo: \<[EventInfo](arkts-apis-drm-i.md#eventinfo)\>) => void  | 否   | 回调函数，返回事件信息。可选。                |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，监听自定义事件并在发生时返回事件信息。可选。                |
 
 **错误码：**
 
@@ -851,6 +1059,44 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 mediaKeySession.off('vendorDefined');
 ```
 
+## offVendorDefined<sup>23+</sup>
+
+offVendorDefined(callback?: (eventInfo: EventInfo) => void): void
+
+注销DRM解决方案自定义事件监听。使用callback异步回调。
+
+**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('vendorDefined')](#offvendordefined)。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                                  |
+| -------- | -------------------- | ---- | ------------------------------------- |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，返回事件信息。可选。                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 24700101                |  All unknown errors.                  |
+
+**示例：**
+
+```ts
+import { drm } from '@kit.DrmKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+mediaKeySession.offVendorDefined();
+```
+
 ## on('expirationUpdate')
 
 on(type: 'expirationUpdate', callback: (eventInfo: EventInfo) => void): void
@@ -859,18 +1105,21 @@ on(type: 'expirationUpdate', callback: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onExpirationUpdate](#onexpirationupdate23)。
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，固定为'expirationUpdate'。密钥过期更新时触发。 |
-| callback | (eventInfo: \<[EventInfo](arkts-apis-drm-i.md#eventinfo)\>) => void  | 是   | 回调函数，返回事件信息。                 |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 是   | 回调函数，监听密钥过期更新并返回事件信息。                 |
 
 **错误码：**
 
@@ -883,26 +1132,52 @@ on(type: 'expirationUpdate', callback: (eventInfo: EventInfo) => void): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { drm } from '@kit.DrmKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('expirationUpdate', (eventInfo: drm.EventInfo) => {
-  console.log('expirationUpdate ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+  console.info('expirationUpdate ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
 ```
 
-ArkTS-Sta示例：
+## onExpirationUpdate<sup>23+</sup>
+
+onExpirationUpdate(callback: (eventInfo: EventInfo) => void): void
+
+监听密钥过期更新事件。使用callback异步回调。
+
+**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[onExpirationUpdate](#onexpirationupdate)。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                                  |
+| -------- | -------------------- | ---- | ------------------------------------- |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 是   | 回调函数，监听密钥过期更新并返回事件信息。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 24700101                |  All unknown errors.                  |
+
+**示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
-mediaKeySession.on('expirationUpdate', (eventInfo: drm.EventInfo) => {
+mediaKeySession.onExpirationUpdate((eventInfo: drm.EventInfo) => {
   console.info('expirationUpdate ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
 ```
@@ -915,18 +1190,20 @@ off(type: 'expirationUpdate', callback?: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offExpirationUpdate](#offexpirationupdate23)。
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，固定为'expirationUpdate'。 |
-| callback | (eventInfo: \<[EventInfo](arkts-apis-drm-i.md#eventinfo)\>) => void  | 否   | 回调函数，返回事件信息。可选。                |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，监听密钥过期更新并返回事件信息。可选。                 |
 
 **错误码：**
 
@@ -947,6 +1224,44 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 mediaKeySession.off('expirationUpdate');
 ```
 
+## offExpirationUpdate<sup>23+</sup>
+
+offExpirationUpdate(callback?: (eventInfo: EventInfo) => void): void
+
+注销过期更新事件监听。使用callback异步回调。
+
+**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('expirationUpdate')](#offexpirationupdate)。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                                  |
+| -------- | -------------------- | ---- | ------------------------------------- |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，监听密钥过期更新并返回事件信息。可选。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 24700101                |  All unknown errors.                  |
+
+**示例：**
+
+```ts
+import { drm } from '@kit.DrmKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+mediaKeySession.offExpirationUpdate();
+```
+
 ## on('keysChange')
 
 on(type: 'keysChange', callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean) => void): void
@@ -955,18 +1270,21 @@ on(type: 'keysChange', callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeysChange](#onkeyschange23)。
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，固定为'keysChange'。密钥变化时触发。 |
-| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) | 是   | 回调函数，返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                 |
+| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) | 是   | 回调函数，监听密钥变化并返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                 |
 
 **错误码：**
 
@@ -979,8 +1297,6 @@ on(type: 'keysChange', callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean)
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { drm } from '@kit.DrmKit';
 
@@ -988,19 +1304,47 @@ let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('keysChange', (keyInfo: drm.KeysInfo[], newKeyAvailable: boolean) => {
   for (let i = 0; i < keyInfo.length; i++) {
-    console.log('keysChange' + 'keyId:' + keyInfo[i].keyId + ' data:' + keyInfo[i].value);
+    console.info('keysChange' + 'keyId:' + keyInfo[i].keyId + ' data:' + keyInfo[i].value);
   }
 });
 ```
 
-ArkTS-Sta示例：
+## onKeysChange<sup>23+</sup>
+
+onKeysChange(callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean) => void): void
+
+监听密钥变化事件。使用callback异步回调。
+
+**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keysChange')](#onkeyschange)。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                                  |
+| -------- | -------------------- | ---- | ------------------------------------- |
+| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) | 是   | 回调函数，返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 24700101                |  All unknown errors.                  |
+
+**示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
-mediaKeySession.on('keysChange', (keyInfo: drm.KeysInfo[], newKeyAvailable: boolean) => {
+mediaKeySession.onKeysChange((keyInfo: drm.KeysInfo[], newKeyAvailable: boolean) => {
   for (let i = 0; i < keyInfo.length; i++) {
     console.info('keysChange' + 'keyId:' + keyInfo[i].keyId + ' data:' + keyInfo[i].value);
   }
@@ -1015,18 +1359,21 @@ off(type: 'keysChange', callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolea
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeysChange](#offkeyschange23)。
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，固定为'keysChange'。 |
-| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) | 否   | 回调函数，返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                |
+| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) | 否   | 回调函数，监听密钥变更并返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                |
 
 **错误码：**
 
@@ -1035,7 +1382,7 @@ off(type: 'keysChange', callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolea
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
+| 24700101                |  All unknown errors.                  |
 
 **示例：**
 
@@ -1046,6 +1393,45 @@ let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.off('keysChange');
 ```
+
+## offKeysChange<sup>23+</sup>
+
+offKeysChange(callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolean) => void): void
+
+注销密钥变化事件监听。使用callback异步回调。
+
+**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keysChange')](#offkeyschange)。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                                  |
+| -------- | -------------------- | ---- | ------------------------------------- |
+| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) | 否   | 回调函数，监听密钥变更并返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 24700101                |  All unknown errors.                  |
+
+**示例：**
+
+```ts
+import { drm } from '@kit.DrmKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+mediaKeySession.offKeysChange();
+```
+
 
 ## destroy
 

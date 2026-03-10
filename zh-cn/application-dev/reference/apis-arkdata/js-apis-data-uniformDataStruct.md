@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -84,6 +86,10 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 | 名称        | 类型   | 只读 | 可选 | 说明           |
 | ----------- | ------ | ---- | ---- |--------------|
 | uniformDataType | 'general.hyperlink'| 是   | 否   | 统一数据类型标识为超链接类型数据，固定为“general.hyperlink”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
@@ -115,6 +121,10 @@ HTML类型数据，用于描述超文本标记语言数据。
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 | 名称         | 类型   | 只读 | 可选 | 说明                    |
 | ------------ | ------ | ---- | ---- |-----------------------|
 | uniformDataType | 'general.html'| 是   | 否   | 统一数据类型标识为html类型数据，固定为“general.html”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
@@ -145,6 +155,10 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 系统定义的桌面图标类型数据。
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型   | 只读 | 可选 | 说明              |
 | ----------- | ------ | ---- | ---- |-----------------|
@@ -210,6 +224,10 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 内容卡片类型数据。
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
+
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：23
 
 | 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
@@ -372,6 +390,10 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 系统定义的像素图类型数据。
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
+
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
 
 | 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
