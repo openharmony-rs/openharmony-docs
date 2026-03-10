@@ -94,6 +94,10 @@ libnative_fence.so
 
 6. **关闭fenceFd**。
     <!-- @[close_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    OH_NativeFence_Close(sfd);
+    ```
 
 ## 相关实例
 
