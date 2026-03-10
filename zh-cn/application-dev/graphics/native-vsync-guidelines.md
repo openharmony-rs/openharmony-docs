@@ -77,6 +77,11 @@ libnative_vsync.so
 
 4. **销毁OH_NativeVSync实例**。
     <!-- @[destroy_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+    
+    ``` C++
+    OH_NativeVSync_Destroy(nativeVsync_);
+    nativeVsync_ = nullptr;
+    ```
 
 ## 相关实例
 
