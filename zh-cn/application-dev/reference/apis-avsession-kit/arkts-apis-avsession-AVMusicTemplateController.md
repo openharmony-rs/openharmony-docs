@@ -893,9 +893,9 @@ clearSearchHistory(): Promise&lt;OperResult&gt;
 
 **返回值：**
 
-| 类型                                                         | 说明                        |
-| ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象，返回操作结果。 |
+| 类型                                                         | 说明                                      |
+| ------------------------------------------------------------ | ----------------------------------------- |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象，返回清除搜索历史的操作结果。 |
 
 **错误码：**
 
@@ -1031,9 +1031,9 @@ reportProblemAndAdvice(advice: string): Promise&lt;OperResult&gt;
 
 **返回值：**
 
-| 类型                                                         | 说明                        |
-| ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象，返回操作结果。 |
+| 类型                                                         | 说明                                        |
+| ------------------------------------------------------------ | ------------------------------------------- |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象，返回报告问题和建议的操作结果。 |
 
 **错误码：**
 
@@ -1378,9 +1378,9 @@ queryCustomContent(queryType: CustomType[]): Promise&lt;CustomElement&gt;
 
 **返回值：**
 
-| 类型                                                         | 说明                          |
-| ------------------------------------------------------------ | ----------------------------- |
-| Promise<[CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement)> | Promise对象，返回自定义元素。 |
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise<[CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement)> | Promise对象，返回查询的自定义元素。 |
 
 **错误码：**
 
@@ -1446,9 +1446,9 @@ downloadMediaEntity(controlType: DownloadControlType, mediaEntity: MediaEntity):
 
 **返回值：**
 
-| 类型                                                         | 说明                        |
-| ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象，返回操作结果。 |
+| 类型                                                         | 说明                                      |
+| ------------------------------------------------------------ | ----------------------------------------- |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象，返回下载媒体实体的操作结果。 |
 
 **错误码：**
 
@@ -1603,9 +1603,9 @@ executeAction(actionType: string, params: string): Promise&lt;string&gt;
 
 **返回值：**
 
-| 类型                  | 说明                    |
-| --------------------- | ----------------------- |
-| Promise&lt;string&gt; | Promise对象，返回结果。 |
+| 类型                  | 说明                              |
+| --------------------- | --------------------------------- |
+| Promise&lt;string&gt; | Promise对象，返回执行动作的结果。 |
 
 **错误码：**
 
@@ -1730,9 +1730,9 @@ favoriteMediaEntity(actionType: MediaFavoriteType, mediaEntity: MediaEntity): Pr
 
 **返回值：**
 
-| 类型                                                         | 说明                        |
-| ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象，返回操作结果。 |
+| 类型                                                         | 说明                                  |
+| ------------------------------------------------------------ | ------------------------------------- |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象，返回收藏媒体的操作结果。 |
 
 **错误码：**
 
