@@ -570,11 +570,9 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 
 ## BadgeEnabledChangedCallback<sup>12+</sup>
 
-### (data: EnabledNotificationCallbackData)<sup>12+</sup>
+type BadgeEnabledChangedCallback = (data: EnabledNotificationCallbackData) => void
 
-(data: EnabledNotificationCallbackData): void
-
-Defines a callback function to listen for the enabling status changes of the application badge.
+Defines a callback function to listen for the enabling state changes of the application badge.
 
 **System capability**: SystemCapability.Notification.Notification
 

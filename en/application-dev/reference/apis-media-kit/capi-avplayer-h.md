@@ -20,6 +20,8 @@ The file declares the AVPlayer APIs. You can use the native AVPlayer APIs to pla
 
 **Related module**: [AVPlayer](capi-avplayer.md)
 
+ 
+
 ## Summary
 
 ### Structs
@@ -106,11 +108,7 @@ OH_AVPlayer *OH_AVPlayer_Create(void)
 
 **Description**
 
-Creates an OH_AVPlayer instance.
-
-You are advised to create a maximum of 16 AVPlayer instances for an application in both audio and video playback scenarios.
-
-<!--Del-->The actual number of instances that can be created may be different. It depends on the specifications of the device chip in use. For example, in the case of RK3568, you are advised to create a maximum of 6 AVPlayer instances for an application in audio and video playback scenarios.<!--DelEnd-->
+Creates an OH_AVPlayer instance.<br> You are advised to create a maximum of 16 AVPlayer instances for an application in both audio and video playback scenarios.<br> <!--Del-->The actual number of instances that can be created may be different. It depends on the specifications of the device chip in use. For example, in the case of RK3568, you are advised to create a maximum of 6 AVPlayer instances for an application in audio and video playback scenarios.<!--DelEnd-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -672,7 +670,7 @@ Sets the audio volume mode for an AVPlayer.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
-**Since**: 18
+**Since**: 19
 
 **Parameters**
 
