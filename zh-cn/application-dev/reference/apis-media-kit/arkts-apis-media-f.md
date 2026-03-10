@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -12,7 +13,9 @@ import { media } from '@kit.MediaKit';
 
 ## media.createAVPlayer<sup>9+</sup>
 
-createAVPlayer(callback: AsyncCallback\<AVPlayer>): void
+ArkTS-Dyn: createAVPlayer(callback: AsyncCallback\<AVPlayer>): void
+ 	 
+ArkTS-Sta: createAVPlayer(callback: AsyncCallback\<AVPlayer | undefined>): void
 
 异步方式创建音视频播放实例，通过注册回调函数获取返回值。
 
@@ -25,11 +28,15 @@ createAVPlayer(callback: AsyncCallback\<AVPlayer>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                                                         |
 | -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[AVPlayer](arkts-apis-media-AVPlayer.md)> | 是   | 回调函数。异步返回AVPlayer实例，失败时返回null。可用于音视频播放。 |
+| callback | ArkTS-Dyn: AsyncCallback\<[AVPlayer](arkts-apis-media-AVPlayer.md)><br>ArkTS-Sta: AsyncCallback\<[AVPlayer](arkts-apis-media-AVPlayer.md)>|undefined | 是   | 回调函数。异步返回AVPlayer实例，失败时返回null。可用于音视频播放。 |
 
 **错误码：**
 
@@ -57,7 +64,9 @@ media.createAVPlayer((error: BusinessError, video: media.AVPlayer) => {
 
 ## media.createAVPlayer<sup>9+</sup>
 
-createAVPlayer(): Promise\<AVPlayer>
+ArkTS-Dyn: createAVPlayer(): Promise\<AVPlayer>
+ 	 
+ArkTS-Sta: createAVPlayer(): Promise\<AVPlayer | undefined>
 
 异步方式创建音视频播放实例，通过Promise获取返回值。
 
@@ -70,11 +79,15 @@ createAVPlayer(): Promise\<AVPlayer>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md)> | Promise对象。异步返回AVPlayer实例，失败时返回null。可用于音视频播放。 |
+| ArkTS-Dyn:Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md)><br>ArkTS-Sta:Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md)|undefined> | Promise对象。异步返回AVPlayer实例，失败时返回null。可用于音视频播放。 |
 
 **错误码：**
 
@@ -539,13 +552,19 @@ media.createAVImageGenerator().then((generator: media.AVImageGenerator) => {
 
 ## media.createMediaSourceWithUrl<sup>12+</sup>
 
-createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaSource
+ArkTS-Dyn: createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaSource
+
+ArkTS-Sta: createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaSource | undefined
 
 创建流媒体预下载媒体来源实例方法。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -558,7 +577,7 @@ createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaS
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| [MediaSource](arkts-apis-media-MediaSource.md) | MediaSource返回值。 |
+| ArkTS-Dyn: [MediaSource](arkts-apis-media-MediaSource.md)<br>ArkTS-Sta: [MediaSource](arkts-apis-media-MediaSource.md)|undefined | MediaSource返回值。 |
 
 **错误码：**
 
@@ -605,13 +624,19 @@ mediaSource.setMimeType(mimeType);
 
 ## media.createMediaSourceWithStreamData<sup>19+</sup>
 
-createMediaSourceWithStreamData(streams: Array\<MediaStream>): MediaSource
+ArkTS-Dyn: createMediaSourceWithStreamData(streams: Array\<MediaStream>): MediaSource
+
+ArkTS-Sta: createMediaSourceWithStreamData(streams: Array\<MediaStream>): MediaSource | undefined
 
 创建流媒体多码率媒体来源实例方法，当前仅支持HTTP-FLV协议格式多码率。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -623,7 +648,7 @@ createMediaSourceWithStreamData(streams: Array\<MediaStream>): MediaSource
 
 | 类型                          | 说明                |
 | ----------------------------- | ------------------- |
-| [MediaSource](arkts-apis-media-MediaSource.md) | 返回MediaSource，用于媒体资源设置。 |
+| ArkTS-Dyn: [MediaSource](arkts-apis-media-MediaSource.md)<br>ArkTS-Sta: [MediaSource](arkts-apis-media-MediaSource.md)|undefined | 返回MediaSource，用于媒体资源设置。 |
 
 **示例：**
 
