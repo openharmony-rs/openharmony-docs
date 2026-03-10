@@ -374,14 +374,14 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称          | 类型    | 只读 | 可选 | 说明                                            |
-| ------------- | ------- | ---- | ---- | ----------------------------------------------- |
-| userInfoId    | string  | 否   | 否   | 用户的唯一ID。                                  |
-| nickName      | string  | 否   | 否   | 用户昵称。                                      |
-| profilePicUrl | string  | 否   | 否   | 用户的头像图片URL。                             |
-| tips          | string  | 否   | 否   | 其他关于用户的描述。                            |
-| isLogin       | boolean | 否   | 否   | 用户是否登录。true表示已登录，false表示未登录。 |
-| isVip         | boolean | 否   | 否   | 用户是否是VIP。true表示是，false表示否。   |
+| 名称          | 类型    | 只读 | 可选 | 说明                                                         |
+| ------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
+| userInfoId    | string  | 否   | 否   | 用户的唯一ID。                                               |
+| nickName      | string  | 否   | 否   | 用户昵称。                                                   |
+| profilePicUrl | string  | 否   | 否   | 用户的头像图片URL。                                          |
+| tips          | string  | 否   | 否   | 其他关于用户的描述。                                         |
+| isLogin       | boolean | 否   | 否   | 用户是否登录。无默认值，true表示已登录，false或者无值时表示未登录。 |
+| isVip         | boolean | 否   | 否   | 用户是否是VIP。true表示是，false表示否。                     |
 
 ## SearchPlayInfo
 
