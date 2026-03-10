@@ -19,3 +19,4 @@ Defines the font weight configuration of text. [OH_ArkUI_FontWeightConfigs_Creat
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [native_type.h](capi-native-type-h.md)
+<!--no_check-->
