@@ -58,7 +58,7 @@ Template listener not registered.
 
 **可能原因**
 
-template listener 注册失败。
+模板监听注册失败。
 
 **处理步骤**
 
