@@ -21,11 +21,11 @@ disconnect(deviceId: string): void
 
 断开连接设备的map服务。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -33,7 +33,7 @@ disconnect(deviceId: string): void
 | ------ | ------ | ---- | ------- |
 | deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -66,11 +66,11 @@ setMessageAccessAuthorization(deviceId: string, authorization: AccessAuthorizati
 
 设置信息的访问权限。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -85,7 +85,7 @@ setMessageAccessAuthorization(deviceId: string, authorization: AccessAuthorizati
 | ------------------------------------------------- | ------------------- |
 | Promise&lt;void&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -120,11 +120,11 @@ getMessageAccessAuthorization(deviceId: string): Promise&lt;AccessAuthorization&
 
 获取信息的访问权限。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -138,7 +138,7 @@ getMessageAccessAuthorization(deviceId: string): Promise&lt;AccessAuthorization&
 | ------------------------------------------------- | ------------------- |
 | Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 

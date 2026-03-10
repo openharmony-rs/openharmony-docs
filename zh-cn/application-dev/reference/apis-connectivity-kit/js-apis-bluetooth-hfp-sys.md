@@ -22,11 +22,11 @@ connect(deviceId: string): void
 
 连接设备的hfp服务。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -38,7 +38,7 @@ connect(deviceId: string): void
 | ------ | ------ | ---- | ------- |
 | deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -72,11 +72,11 @@ disconnect(deviceId: string): void
 
 断开连接设备的hfp服务。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -88,7 +88,7 @@ disconnect(deviceId: string): void
 | ------ | ------ | ---- | ------- |
 | deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 

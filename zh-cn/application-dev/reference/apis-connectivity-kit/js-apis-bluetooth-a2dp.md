@@ -20,11 +20,11 @@ type BaseProfile = baseProfile.BaseProfile
 
 基础Profile接口定义。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
@@ -37,11 +37,11 @@ createA2dpSrcProfile(): A2dpSourceProfile
 
 创建a2dp profile实例。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -49,7 +49,7 @@ createA2dpSrcProfile(): A2dpSourceProfile
 | ----------------------------- | ---------- |
 | [A2dpSourceProfile](#a2dpsourceprofile) | 返回该profile的实例。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
@@ -83,13 +83,13 @@ getPlayingState(deviceId: string): PlayingState
 
 获取设备的播放状态。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -103,7 +103,7 @@ getPlayingState(deviceId: string): PlayingState
 | ----------------------------- | ---------- |
 | [PlayingState](#playingstate) | 远端设备的播放状态。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -134,11 +134,11 @@ try {
 
 枚举，蓝牙A2DP 播放状态。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 值    | 说明      |
 | ----------------- | ------ | ------- |
@@ -150,57 +150,57 @@ try {
 
 编码器信息。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 | 名称        | 类型                    | 只读   | 可选   | 说明                                     |
 | ------------------- | ----------------------- | ---- | ---- | -------------------------------------- |
-| codecType           | [CodecType](#codectype11)      | 否    | 否    | 表示编码器类型，默认值为CODEC_TYPE_SBC。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| codecBitsPerSample  | [CodecBitsPerSample](#codecbitspersample11)  | 否    | 否    | 表示每个采样点的位数，默认值为CODEC_BITS_PER_SAMPLE_NONE。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| codecChannelMode    | [CodecChannelMode](#codecchannelmode11) | 否    | 否    | 表示编码器的声道模式，默认值为CODEC_CHANNEL_MODE_NONE。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| codecSampleRate     | [CodecSampleRate](#codecsamplerate11) | 否    | 否    | 表示编码器的采样率，默认值为CODEC_BITS_PER_SAMPLE_NONE。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| codecBitRate<sup>19+<sup/>     | [CodecBitRate](#codecbitrate19) | 否    | 是    | 表示编码器的比特率，默认值为CODEC_BIT_RATE_ABR。<br>**ArkTS-Dyn起始版本：** 19<br>**ArkTS-Sta起始版本：** 22 |
-| codecFrameLength<sup>19+<sup/>     | [CodecFrameLength](#codecframelength19) | 否    | 是    | 表示编码器的帧长，默认值为CODEC_FRAME_LENGTH_10MS。<br>**ArkTS-Dyn起始版本：** 19<br>**ArkTS-Sta起始版本：** 22 |
+| codecType           | [CodecType](#codectype11)      | 否    | 否    | 表示编码器类型，默认值为CODEC_TYPE_SBC。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| codecBitsPerSample  | [CodecBitsPerSample](#codecbitspersample11)  | 否    | 否    | 表示每个采样点的位数，默认值为CODEC_BITS_PER_SAMPLE_NONE。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| codecChannelMode    | [CodecChannelMode](#codecchannelmode11) | 否    | 否    | 表示编码器的声道模式，默认值为CODEC_CHANNEL_MODE_NONE。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| codecSampleRate     | [CodecSampleRate](#codecsamplerate11) | 否    | 否    | 表示编码器的采样率，默认值为CODEC_BITS_PER_SAMPLE_NONE。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| codecBitRate<sup>19+<sup/>     | [CodecBitRate](#codecbitrate19) | 否    | 是    | 表示编码器的比特率，默认值为CODEC_BIT_RATE_ABR。<br>**ArkTS-Dyn起始版本：** 19<br>**ArkTS-Sta起始版本：** 23 |
+| codecFrameLength<sup>19+<sup/>     | [CodecFrameLength](#codecframelength19) | 否    | 是    | 表示编码器的帧长，默认值为CODEC_FRAME_LENGTH_10MS。<br>**ArkTS-Dyn起始版本：** 19<br>**ArkTS-Sta起始版本：** 23 |
 
 ## CodecInfoList<sup>19+</sup>
 
 编码器支持的参数信息。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 | 名称        | 类型                    | 只读   | 可选   | 说明                                     |
 | ------------------- | ----------------------- | ---- | ---- | -------------------------------------- |
-| codecType           | [CodecType](#codectype11)      | 否    | 否    | 表示编码器类型。 |
-| codecBitsPerSampleArray  | [CodecBitsPerSample[]](#codecbitspersample11) | 否    | 否    | 表示当前编码器支持的采样点位数列表。 |
-| codecChannelModeArray    | [CodecChannelMode[]](#codecchannelmode11) | 否    | 否    | 表示当前编码器支持的声道模式列表。 |
-| codecSampleRateArray     | [CodecSampleRate[]](#codecsamplerate11) | 否    | 否    | 表示当前编码器支持的采样率列表。 |
-| codecBitRateArray     | [CodecBitRate[]](#codecbitrate19) | 否    | 否    | 表示当前编码器支持的比特率列表。 |
-| codecFrameLengthArray     | [CodecFrameLength[]](#codecframelength19) | 否    | 否    | 表示当前编码器支持的帧长列表。 |
+| codecType           | [CodecType](#codectype11)      | 否    | 否    | 表示编码器类型。<br>**ArkTS-Dyn起始版本**: 19<br>**ArkTS-Sta起始版本**: 23 |
+| codecBitsPerSampleArray  | [CodecBitsPerSample[]](#codecbitspersample11) | 否    | 否    | 表示当前编码器支持的采样点位数列表。<br>**ArkTS-Dyn起始版本**: 19 |
+| codecChannelModeArray    | [CodecChannelMode[]](#codecchannelmode11) | 否    | 否    | 表示当前编码器支持的声道模式列表。<br>**ArkTS-Dyn起始版本**: 19<br>**ArkTS-Sta起始版本**: 23  |
+| codecSampleRateArray     | [CodecSampleRate[]](#codecsamplerate11) | 否    | 否    | 表示当前编码器支持的采样率列表。<br>**ArkTS-Dyn起始版本**: 19<br>**ArkTS-Sta起始版本**: 23 |
+| codecBitRateArray     | [CodecBitRate[]](#codecbitrate19) | 否    | 否    | 表示当前编码器支持的比特率列表。<br>**ArkTS-Dyn起始版本**: 19<br>**ArkTS-Sta起始版本**: 23 |
+| codecFrameLengthArray     | [CodecFrameLength[]](#codecframelength19) | 否    | 否    | 表示当前编码器支持的帧长列表。<br>**ArkTS-Dyn起始版本**: 19<br>**ArkTS-Sta起始版本**: 23 |
 
 ## CodecType<sup>11+</sup>
 
 枚举，蓝牙编码器类型。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 | 名称                | 值    | 说明      |
 | ----------------- | ------ | ------- |
-| CODEC_TYPE_INVALID | -1 | 未知编码类型。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| CODEC_TYPE_SBC     | 0 | SBC。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| CODEC_TYPE_AAC     | 1 | AAC。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| CODEC_TYPE_L2HC    | 2 | L2HC。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| CODEC_TYPE_L2HCST<sup>13+</sup>  | 3 | L2HCST。<br>**ArkTS-Dyn起始版本：** 13<br>**ArkTS-Sta起始版本：** 22 |
-| CODEC_TYPE_LDAC<sup>13+</sup>    | 4 | LDAC。<br>**ArkTS-Dyn起始版本：** 13<br>**ArkTS-Sta起始版本：** 22 |
+| CODEC_TYPE_INVALID | -1 | 未知编码类型。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| CODEC_TYPE_SBC     | 0 | SBC。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| CODEC_TYPE_AAC     | 1 | AAC。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| CODEC_TYPE_L2HC    | 2 | L2HC。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| CODEC_TYPE_L2HCST<sup>13+</sup>  | 3 | L2HCST。<br>**ArkTS-Dyn起始版本：** 13<br>**ArkTS-Sta起始版本：** 23 |
+| CODEC_TYPE_LDAC<sup>13+</sup>    | 4 | LDAC。<br>**ArkTS-Dyn起始版本：** 13<br>**ArkTS-Sta起始版本：** 23 |
 
 
 ## CodecChannelMode<sup>11+</sup>
 
 枚举，蓝牙编码器的声道模式。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 值    | 说明      |
 | ----------------- | ------ | ------- |
@@ -213,11 +213,11 @@ try {
 
 枚举，蓝牙编码器每个采样点的位数。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 值    | 说明      |
 | ----------------- | ------ | ------- |
@@ -231,11 +231,12 @@ try {
 
 枚举，蓝牙编码器的采样率。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
+
 
 | 名称                | 值    | 说明      |
 | ----------------- | ------ | ------- |
@@ -249,27 +250,33 @@ try {
 
 ## CodecBitRate<sup>19+</sup>
 
-枚举，蓝牙编码器的比特率。
+枚举，蓝牙媒体音频编解码器的码率，表示单位时间内音频数据的传输量，单位kbps。码率影响音频音质和文件大小。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 | 名称                | 值    | 说明      |
 | ----------------- | ------ | ------- |
-| CODEC_BIT_RATE_96000    | 0 | 96k比特率。|
-| CODEC_BIT_RATE_128000   | 1 | 128k比特率。|
-| CODEC_BIT_RATE_192000   | 2 | 192k比特率。|
-| CODEC_BIT_RATE_256000   | 3 | 256k比特率。|
-| CODEC_BIT_RATE_320000   | 4 | 320k比特率。|
-| CODEC_BIT_RATE_480000  | 5 | 480k比特率。|
-| CODEC_BIT_RATE_640000  | 6 | 640k比特率。|
-| CODEC_BIT_RATE_960000  | 7 | 960k比特率。|
-| CODEC_BIT_RATE_ABR  | 8 | 自适应比特率。|
+| CODEC_BIT_RATE_96000    | 0 | 96kbps。<br>**ArkTS-Dyn起始版本**: 19<br>**ArkTS-Sta起始版本**: 23|
+| CODEC_BIT_RATE_128000   | 1 | 128kbps。<br>**ArkTS-Dyn起始版本**: 19<br>**ArkTS-Sta起始版本**: 23|
+| CODEC_BIT_RATE_192000   | 2 | 192kbps。<br>**ArkTS-Dyn起始版本**: 19<br>**ArkTS-Sta起始版本**: 23|
+| CODEC_BIT_RATE_256000   | 3 | 256kbps。<br>**ArkTS-Dyn起始版本**: 19<br>**ArkTS-Sta起始版本**: 23|
+| CODEC_BIT_RATE_320000   | 4 | 320kbps。<br>**ArkTS-Dyn起始版本**: 19<br>**ArkTS-Sta起始版本**: 23|
+| CODEC_BIT_RATE_480000  | 5 | 480kbps。<br>**ArkTS-Dyn起始版本**: 19<br>**ArkTS-Sta起始版本**: 23|
+| CODEC_BIT_RATE_640000  | 6 | 640kbps。<br>**ArkTS-Dyn起始版本**: 19<br>**ArkTS-Sta起始版本**: 23|
+| CODEC_BIT_RATE_960000  | 7 | 960kbps。<br>**ArkTS-Dyn起始版本**: 19<br>**ArkTS-Sta起始版本**: 23|
+| CODEC_BIT_RATE_ABR  | 8 | 自适应比特率。<br>**ArkTS-Dyn起始版本**: 19<br>**ArkTS-Sta起始版本**: 23|
+| CODEC_BIT_RATE_1500000<sup>21+</sup>  | 9 | 1500kbps。<br>**ArkTS-Dyn起始版本**: 21|
+| CODEC_BIT_RATE_2300000<sup>21+</sup>  | 10 | 2300kbps。<br>**ArkTS-Dyn起始版本**: 21|
 
 ## CodecFrameLength<sup>19+</sup>
 
 枚举，蓝牙编码器的帧长。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本**: 19
+
+**ArkTS-Sta起始版本**: 23
 
 | 名称                | 值    | 说明      |
 | ----------------- | ------ | ------- |

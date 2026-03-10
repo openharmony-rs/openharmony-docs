@@ -24,11 +24,11 @@ disconnect(deviceId: string): void
 
 断开连接设备的Pan服务。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力：** SystemCapability.Communication.Bluetooth.Core。
 
 **参数：**
 
@@ -36,7 +36,7 @@ disconnect(deviceId: string): void
 | ------ | ------ | ---- | ------- |
 | deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -70,11 +70,11 @@ setTethering(enable: boolean): void
 
 设置网络共享状态。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力：** SystemCapability.Communication.Bluetooth.Core。
 
 **参数：**
 
@@ -82,7 +82,7 @@ setTethering(enable: boolean): void
 | ------ | ------ | ---- | ------- |
 | enable | boolean | 是    | 是否启用网络共享。true表示启用网络共享，false表示不启用网络共享。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -116,11 +116,11 @@ isTetheringOn(): boolean
 
 获取网络共享状态。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力：** SystemCapability.Communication.Bluetooth.Core。
 
 **返回值：**
 
@@ -128,7 +128,7 @@ isTetheringOn(): boolean
 | --------------------- | --------------------------------- |
 | boolean | 网络共享开启返回true，网络共享关闭返回false。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 

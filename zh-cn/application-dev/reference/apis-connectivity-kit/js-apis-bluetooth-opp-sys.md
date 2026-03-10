@@ -20,9 +20,9 @@ createOppServerProfile(): OppServerProfile
 
 创建oppServer profile实例。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **返回值：**
 
@@ -30,7 +30,7 @@ createOppServerProfile(): OppServerProfile
 | ----------------------------- | ---------- |
 | OppServerProfile | 返回profile实例。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
@@ -61,11 +61,11 @@ sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&lt;): Promise&lt;void&
 
 使用蓝牙发送文件。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -74,7 +74,7 @@ sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&lt;): Promise&lt;void&
 | deviceId | string | 是    | 接收端的蓝牙MAC地址。 |
 | fileHolds | Array&lt;[FileHolder](#fileholder)&gt;| 是    | 发送的文件数据，依据插入Array的次序进行发送。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -130,11 +130,11 @@ setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt
 
 蓝牙接收文件。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -143,7 +143,7 @@ setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt
 | accept | boolean | 是    | 表示是否接受接收文件。true表示接受，false表示不接受。 |
 | fileFd | number| 是    | 接收的文件描述符，接收过程中需要保持开启。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -186,11 +186,11 @@ on(type: 'transferStateChange', callback: Callback&lt;OppTransferInformation&gt;
 
 订阅蓝牙文件传输的进度和状态变化。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -199,7 +199,7 @@ on(type: 'transferStateChange', callback: Callback&lt;OppTransferInformation&gt;
 | type     | string                                   | 是    | 事件回调类型，支持的事件为'transferStateChange'，当on('transferStateChange')调用完成后，可以收到文件传输进度和状态变化事件。 |
 | callback | Callback&lt;[OppTransferInformation](#opptransferinformation)&gt; | 是    | 表示文件传输进度和状态变化事件的回调函数。                  |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -246,11 +246,11 @@ off(type: 'transferStateChange', callback?: Callback&lt;OppTransferInformation&g
 
 取消订阅蓝牙文件传输的进度和状态变化事件。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -258,7 +258,7 @@ off(type: 'transferStateChange', callback?: Callback&lt;OppTransferInformation&g
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | 是    | 事件回调类型，支持的事件为'transferStateChange'，调用off('transferStateChange')后，停止接收文件传输进度和状态变化事件。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -296,11 +296,11 @@ on(type: 'receiveIncomingFile', callback: Callback&lt;OppTransferInformation&gt;
 
 订阅蓝牙文件传输事件以接收文件。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -309,7 +309,7 @@ on(type: 'receiveIncomingFile', callback: Callback&lt;OppTransferInformation&gt;
 | type     | string                                   | 是    | 事件回调类型，支持的事件为'receiveIncomingFile'，当on('receiveIncomingFile')调用完成后，表示可以收到是否有文件传输通知的事件。 |
 | callback | Callback&lt;[OppTransferInformation](#opptransferinformation)&gt; | 是    | 表示文件传输进度和状态变化事件的回调函数。                  |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -355,11 +355,11 @@ off(type: 'receiveIncomingFile', callback?: Callback&lt;OppTransferInformation&g
 
 取消订阅蓝牙文件传输完成的事件。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -367,7 +367,7 @@ off(type: 'receiveIncomingFile', callback?: Callback&lt;OppTransferInformation&g
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | 是    | 事件回调类型，支持的事件为'receiveIncomingFile'，调用off('receiveIncomingFile')后，停止接收文件传输通知的事件。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -405,13 +405,13 @@ cancelTransfer(): Promise&lt;void&gt;
 
 取消文件传输。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -448,13 +448,13 @@ getCurrentTransferInformation(): Promise&lt;[OppTransferInformation](#opptransfe
 
 获取当前传输的文件信息。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -492,11 +492,11 @@ setLastReceivedFileUri(uri: string): Promise&lt;void&gt;
 
 设置最后一个接收文件的URI。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -504,7 +504,7 @@ setLastReceivedFileUri(uri: string): Promise&lt;void&gt;
 | ------- | --------------------------- | ---- | ------------------------ |
 | uri | string | 是    | 最后一个接收文件的URI。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -539,9 +539,9 @@ try {
 
 描述发送的文件信息。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 | 名称              | 类型                                     | 只读   | 可选   | 说明                                       |
 | --------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
@@ -553,9 +553,9 @@ try {
 
 描述文件的传输信息。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 | 名称              | 类型                                     | 只读   | 可选   | 说明                                       |
 | --------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
@@ -574,9 +574,9 @@ try {
 
 枚举，文件传输方向。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 | 名称                    | 值  | 说明           |
 | --------------------- | ---- | ------------ |
@@ -587,9 +587,9 @@ try {
 
 枚举，文件传输状态。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 | 名称                    | 值  | 说明           |
 | --------------------- | ---- | ------------ |
@@ -601,9 +601,9 @@ try {
 
 枚举，文件传输结果。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 | 名称                    | 值  | 说明           |
 | --------------------- | ---- | ------------ |

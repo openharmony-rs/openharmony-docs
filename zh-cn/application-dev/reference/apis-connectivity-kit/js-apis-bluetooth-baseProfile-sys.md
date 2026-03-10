@@ -22,7 +22,7 @@ import { baseProfile } from '@kit.ConnectivityKit';
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -42,11 +42,11 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy, callback: 
 
 设置该设备Profile的连接策略。使用Callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -60,7 +60,7 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy, callback: 
 | strategy | [ConnectionStrategy](#connectionstrategy)   | 是    |Profile的连接策略。 |
 | callback | AsyncCallback&lt;void&gt;  | 是    | 回调函数。当设置成功，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -96,11 +96,11 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy): Promise&l
 
 设置该设备Profile的连接策略。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -119,7 +119,7 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy): Promise&l
 | ------------------- | ------------- |
 | Promise&lt;void&gt; | 返回promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -157,11 +157,11 @@ getConnectionStrategy(deviceId: string, callback: AsyncCallback&lt;ConnectionStr
 
 获取该Profile的连接策略。使用Callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -174,7 +174,7 @@ getConnectionStrategy(deviceId: string, callback: AsyncCallback&lt;ConnectionStr
 | deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | callback | AsyncCallback&lt;[ConnectionStrategy](#connectionstrategy)&gt; | 是    | 回调函数。当获取策略成功，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -210,11 +210,11 @@ getConnectionStrategy(deviceId: string): Promise&lt;ConnectionStrategy&gt;
 
 获取该Profile的连接策略。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -232,7 +232,7 @@ getConnectionStrategy(deviceId: string): Promise&lt;ConnectionStrategy&gt;
 | ------------------- | ------------- |
 |   Promise&lt;[ConnectionStrategy](js-apis-bluetooth-baseProfile-sys.md#connectionstrategy)&gt; | 返回promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
