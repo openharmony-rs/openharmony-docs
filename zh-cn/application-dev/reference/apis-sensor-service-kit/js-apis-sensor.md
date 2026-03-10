@@ -105,6 +105,7 @@ onAccelerometerChange(callback: Callback&lt;AccelerometerResponse&gt;, options?:
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -126,6 +127,107 @@ try {
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`Failed to invoke onAccelerometerChange. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+## sensor.on(FUSION_PRESSURE)<sup>22+</sup>
+
+on(type: SensorId.FUSION_PRESSURE, callback: Callback&lt;FusionPressureResponse&gt;, options?: Options): void
+
+订阅融合压力传感器数据。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的接口ArkTS-Sta是[onFusionPressureChange](#sensoronfusionpressurechange23)
+
+**系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 22
+
+**参数**：
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | [SensorId](#sensorid9).FUSION_PRESSURE            | 是   | 传感器类型，该值固定为SensorId.FUSION_PRESSURE  |
+| callback | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | 是   | 回调函数，异步上报的传感器数据固定为FusionPressureResponse。 |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+
+**示例**：
+
+```ts
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  sensor.on(sensor.SensorId.FUSION_PRESSURE, (data: sensor.FusionPressureResponse) => {
+    console.info('Succeeded in invoking on. fusionPressure: ' + data.fusionPressure);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.FUSION_PRESSURE);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+## sensor.onFusionPressureChange<sup>23+</sup>
+
+onFusionPressureChange(callback: Callback&lt;FusionPressureResponse&gt;, options?: Options): void
+
+订阅融合压力传感器数据。
+
+**ArkTS模式**：该接口适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的接口ArkTS-Dyn是[on(FUSION_PRESSURE)](#sensoronfusion_pressure22)
+
+**系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**：
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | 是   | 回调函数，异步上报的传感器数据固定为FusionPressureResponse。 |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+
+**示例**：
+
+```ts
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  sensor.onFusionPressureChange((data: sensor.FusionPressureResponse) => {
+    console.info('Succeeded in invoking onFusionPressureChange. fusionPressure: ' + data.fusionPressure);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.offFusionPressureChange();
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke onFusionPressureChange. Code: ${e.code}, message: ${e.message}`);
 }
 ```
 
@@ -218,6 +320,7 @@ onAccelerometerUncalibratedChange(callback: Callback&lt;AccelerometerUncalibrate
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -323,6 +426,7 @@ onAmbientLightChange(callback: Callback&lt;LightResponse&gt;, options?: Options)
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -423,6 +527,7 @@ onAmbientTemperatureChange(callback: Callback&lt;AmbientTemperatureResponse&gt;,
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -523,6 +628,7 @@ onBarometerChange(callback: Callback&lt;BarometerResponse&gt;, options?: Options
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -625,6 +731,7 @@ onGravityChange(callback: Callback&lt;GravityResponse&gt;, options?: Options): v
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -739,6 +846,7 @@ onGyroscopeChange(callback: Callback&lt;GyroscopeResponse&gt;, options?: Options
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -855,6 +963,7 @@ onGyroscopeUncalibratedChange(callback: Callback&lt;GyroscopeUncalibratedRespons
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -961,6 +1070,7 @@ onHallChange(callback: Callback&lt;HallResponse&gt;, options?: Options): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -1067,6 +1177,7 @@ onHeartRateChange(callback: Callback&lt;HeartRateResponse&gt;, options?: Options
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -1167,6 +1278,7 @@ onHumidityChange(callback: Callback&lt;HumidityResponse&gt;, options?: Options):
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -1277,6 +1389,7 @@ onLinearAccelerometerChange(callback: Callback&lt;LinearAccelerometerResponse&gt
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -1381,6 +1494,7 @@ onMagneticFieldChange(callback: Callback&lt;MagneticFieldResponse&gt;, options?:
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -1488,6 +1602,7 @@ onMagneticFieldUncalibratedChange(callback: Callback&lt;MagneticFieldUncalibrate
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -1600,6 +1715,7 @@ onOrientationChange(callback: Callback&lt;OrientationResponse&gt;, options?: Opt
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **参数**：
@@ -1708,6 +1824,7 @@ onPedometerChange(callback: Callback&lt;PedometerResponse&gt;, options?: Options
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **参数**：
@@ -1823,6 +1940,7 @@ onPedometerDetectionChange(callback: Callback&lt;PedometerDetectionResponse&gt;,
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -1923,6 +2041,7 @@ onProximityChange(callback: Callback&lt;ProximityResponse&gt;, options?: Options
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -2028,6 +2147,7 @@ onRotationVectorChange(callback: Callback&lt;RotationVectorResponse&gt;,
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -2133,6 +2253,7 @@ onSignificantMotionChange(callback: Callback&lt;SignificantMotionResponse&gt;,
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -2234,6 +2355,7 @@ onWearDetectionChange(callback: Callback&lt;WearDetectionResponse&gt;, options?:
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -2262,7 +2384,13 @@ on(type: 'sensorStatusChange', callback: Callback&lt;SensorStatusEvent&gt;): voi
 
 监听传感器上线下线状态的变化，callback返回传感器状态事件数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的接口ArkTS-Sta是[onSensorStatusChange](#sensoronsensorstatuschange23)
+
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数**：
 
@@ -2296,6 +2424,55 @@ try {
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+## sensor.onSensorStatusChange<sup>23+</sup>
+
+onSensorStatusChange(callback: Callback&lt;SensorStatusEvent&gt;): void
+
+监听传感器上线下线状态的变化，callback返回传感器状态事件数据。
+
+**ArkTS模式**：该接口适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的接口ArkTS-Dyn是[on('sensorStatusChange')](#sensoronsensorstatuschange19)
+
+**系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**：
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
+| sensorStatusChange     |  固定传入'sensorStatusChange'         | 是   | 状态监听固定参数。             |
+| callback | Callback&lt;[SensorStatusEvent](#sensorstatusevent19)&gt; | 是   | 回调函数，异步上报的传感器事件数据SensorStatusEvent。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+
+**示例**：
+
+```ts
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  sensor.onSensorStatusChange((data: sensor.SensorStatusEvent) => {
+    console.info('sensorStatusChange : ' + JSON.stringify(data));
+  });
+  setTimeout(() => {
+    sensor.offSensorStatusChange();
+  }, 5000);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke onSensorStatusChange. Code: ${e.code}, message: ${e.message}`);
 }
 ```
 
@@ -2381,6 +2558,7 @@ onceAccelerometerChange(callback: Callback&lt;AccelerometerResponse&gt;): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -2486,6 +2664,7 @@ onceAccelerometerUncalibratedChange(callback: Callback&lt;AccelerometerUncalibra
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -2583,6 +2762,7 @@ onceAmbientLightChange(callback: Callback&lt;LightResponse&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -2675,6 +2855,7 @@ onceAmbientTemperatureChange(callback: Callback&lt;AmbientTemperatureResponse&gt
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -2767,6 +2948,7 @@ onceBarometerChange(callback: Callback&lt;BarometerResponse&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -2861,6 +3043,7 @@ onceGravityChange(callback: Callback&lt;GravityResponse&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -2963,6 +3146,7 @@ onceGyroscopeChange(callback: Callback&lt;GyroscopeResponse&gt;): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -3068,6 +3252,7 @@ onceGyroscopeUncalibratedChange(callback: Callback&lt;GyroscopeUncalibratedRespo
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -3165,6 +3350,7 @@ onceHallChange(callback: Callback&lt;HallResponse&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -3263,6 +3449,7 @@ onceHeartRateChange(callback: Callback&lt;HeartRateResponse&gt;): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -3355,6 +3542,7 @@ onceHumidityChange(callback: Callback&lt;HumidityResponse&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -3455,6 +3643,7 @@ onceLinearAccelerometerChange(callback: Callback&lt;LinearAccelerometerResponse&
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -3551,6 +3740,7 @@ onceMagneticFieldChange(callback: Callback&lt;MagneticFieldResponse&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -3650,6 +3840,7 @@ onceMagneticFieldUncalibratedChange(callback: Callback&lt;MagneticFieldUncalibra
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -3749,6 +3940,7 @@ onceOrientationChange(callback: Callback&lt;OrientationResponse&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -3849,6 +4041,7 @@ oncePedometerChange(callback: Callback&lt;PedometerResponse&gt;): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -3947,6 +4140,7 @@ oncePedometerDetectionChange(callback: Callback&lt;PedometerDetectionResponse&gt
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -4039,6 +4233,7 @@ onceProximityChange(callback: Callback&lt;ProximityResponse&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -4134,6 +4329,7 @@ onceRotationVectorChange(callback: Callback&lt;RotationVectorResponse&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -4229,6 +4425,7 @@ onceSignificantMotionChange(callback: Callback&lt;SignificantMotionResponse&gt;)
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -4321,6 +4518,7 @@ onceWearDetectionChange(callback: Callback&lt;WearDetectionResponse&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -4342,9 +4540,11 @@ try {
 
 ## sensor.off(ACCELEROMETER)<sup>9+</sup> 
 
-off(type: SensorId.ACCELEROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;AccelerometerResponse&gt;): void
+off(type: SensorId.ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;): void
 
 取消订阅加速度传感器数据。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
@@ -4352,12 +4552,13 @@ off(type: SensorId.ACCELEROMETER, sensorInfoParam?: SensorInfoParam, callback?: 
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
+**ArkTS-Dyn起始版本：** 9
+
 **参数**：
 
 | 参数名                           | 类型                                                         | 必填 | 说明                                                         |
 |-------------------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type                          | [SensorId](#sensorid9).ACCELEROMETER                         | 是   | 传感器类型，该值固定为SensorId.ACCELEROMETER。               |
-| sensorInfoParam<sup>19+</sup> | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
 | callback                      | Callback&lt;[AccelerometerResponse](#accelerometerresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -4524,6 +4725,7 @@ offAccelerometerChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -4568,15 +4770,182 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
+## sensor.off(FUSION_PRESSURE)<sup>22+</sup>
+
+off(type: SensorId.FUSION_PRESSURE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;FusionPressureResponse&gt;): void
+
+取消订阅融合压力传感器数据。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的接口ArkTS-Sta是[offFusionPressureChange](#sensorofffusionpressurechange23)
+
+**系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 22
+
+**参数**：
+
+| 参数名              | 类型                                                         | 必填 | 说明                                                         |
+|------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type             | [SensorId](#sensorid9).FUSION_PRESSURE            | 是   | 传感器类型，该值固定为SensorId.FUSION_PRESSURE。  |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| callback         | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | 否   | 取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+
+**示例**：
+
+```ts
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+enum Ret { OK, Failed = -1 }
+
+// 传感器回调
+const sensorCallback = (response: sensor.FusionPressureResponse) => {
+  console.info(`callback response: ${JSON.stringify(response)}`);
+}
+// 传感器监听类型
+const sensorType = sensor.SensorId.FUSION_PRESSURE;
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
+
+function sensorSubscribe(): Ret {
+  let ret: Ret = Ret.OK;
+  // 使用try catch对可能出现的异常进行捕获
+  try {
+    // 查询所有的传感器
+    const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
+    if (!sensorList.length) {
+      return Ret.Failed;
+    }
+    // 根据实际业务逻辑获取目标传感器。
+    const targetSensor = sensorList
+      // 按需过滤deviceId为1、sensorId为2的所有传感器。此处示例仅做展示，开发者需要自行调整筛选逻辑。
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // 可能存在的多个同类型传感器，选择sensorIndex为0的传感器。
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
+    // 订阅传感器事件
+    sensor.on(sensorType, sensorCallback, { sensorInfoParam });
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`Failed to invoke sensor.on. Code: ${e.code}, message: ${e.message}`);
+    ret = Ret.Failed;
+  }
+  return ret;
+}
+
+function sensorUnsubscribe(): Ret {
+  let ret: Ret = Ret.OK;
+  // 使用try catch对可能出现的异常进行捕获
+  try {
+    sensor.off(sensorType, sensorInfoParam, sensorCallback);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`Failed to invoke sensor.off. Code: ${e.code}, message: ${e.message}`);
+    ret = Ret.Failed;
+  }
+  return ret;
+}
+```
+
+## sensor.offFusionPressureChange<sup>23+</sup>
+
+offFusionPressureChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;FusionPressureResponse&gt;): void
+
+取消订阅融合压力传感器数据。
+
+**ArkTS模式**：该接口适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的接口ArkTS-Dyn是[off(FUSION_PRESSURE)](#sensorofffusion_pressure22)
+
+**系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**：
+
+| 参数名              | 类型                                                         | 必填 | 说明                                                         |
+|------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| callback         | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | 否   | 取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+
+**示例**：
+
+```ts
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+enum Ret { OK, Failed = -1 }
+
+// 传感器回调
+const sensorCallback = (response: sensor.FusionPressureResponse) => {
+  console.info(`callback response: ${JSON.stringify(response)}`);
+}
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
+
+function sensorSubscribe(): Ret {
+  let ret: Ret = Ret.OK;
+  // 使用try catch对可能出现的异常进行捕获
+  try {
+    // 订阅传感器事件
+    sensor.onFusionPressureChange(sensorCallback);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`Failed to invoke sensor.onFusionPressureChange. Code: ${e.code}, message: ${e.message}`);
+    ret = Ret.Failed;
+  }
+  return ret;
+}
+
+function sensorUnsubscribe(): Ret {
+  let ret: Ret = Ret.OK;
+  // 使用try catch对可能出现的异常进行捕获
+  try {
+    sensor.offFusionPressureChange(sensorInfoParam, sensorCallback);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`Failed to invoke sensor.offFusionPressureChange. Code: ${e.code}, message: ${e.message}`);
+    ret = Ret.Failed;
+  }
+  return ret;
+}
+```
+
 ## sensor.off(ACCELEROMETER_UNCALIBRATED)<sup>9+</sup>  
 
 off(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
 取消订阅未校准加速度传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.ACCELEROMETER 
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -4745,6 +5114,7 @@ offAccelerometerUncalibratedChange(sensorInfoParam?: SensorInfoParam, callback?:
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -4795,7 +5165,11 @@ off(type: SensorId.AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;): voi
 
 取消订阅环境光传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -4957,6 +5331,7 @@ offAmbientLightChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -5007,7 +5382,11 @@ off(type: SensorId.AMBIENT_TEMPERATURE, callback?: Callback&lt;AmbientTemperatur
 
 取消订阅温度传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -5169,6 +5548,7 @@ offAmbientTemperatureChange(sensorInfoParam?: SensorInfoParam, callback?: Callba
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -5219,7 +5599,11 @@ off(type: SensorId.BAROMETER, callback?: Callback&lt;BarometerResponse&gt;): voi
 
 取消订阅气压计传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -5381,6 +5765,7 @@ offBarometerChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Bar
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -5431,7 +5816,11 @@ off(type: SensorId.GRAVITY, callback?: Callback&lt;GravityResponse&gt;): void
 
 取消订阅重力传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -5594,6 +5983,7 @@ offGravityChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Gravi
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -5644,11 +6034,15 @@ off(type: SensorId.GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;): voi
 
 取消订阅陀螺仪传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.GYROSCOPE
 
 **原子化服务API**：从API Version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -5821,6 +6215,7 @@ offGyroscopeChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Gyr
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -5871,9 +6266,13 @@ off(type: SensorId.GYROSCOPE_UNCALIBRATED, callback?: Callback&lt;GyroscopeUncal
 
  取消订阅未校准陀螺仪传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.GYROSCOPE
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -6042,6 +6441,7 @@ offGyroscopeUncalibratedChange(sensorInfoParam?: SensorInfoParam, callback?: Cal
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -6092,7 +6492,11 @@ off(type: SensorId.HALL, callback?: Callback&lt;HallResponse&gt;): void
 
 取消订阅霍尔传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -6254,6 +6658,7 @@ offHallChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;HallResp
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -6304,9 +6709,13 @@ off(type: SensorId.HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;): vo
 
 取消订阅心率传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.READ_HEALTH_DATA 
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -6475,6 +6884,7 @@ offHeartRateChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Hea
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -6525,7 +6935,11 @@ off(type: SensorId.HUMIDITY, callback?: Callback&lt;HumidityResponse&gt;): void
 
 取消订阅湿度传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -6687,6 +7101,7 @@ offHumidityChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Humi
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -6737,9 +7152,13 @@ off(type: SensorId.LINEAR_ACCELEROMETER, callback?: Callback&lt;LinearAccelerome
 
 取消订阅线性加速度传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.ACCELEROMETER 
 
 **系统能力**：SystemCapability.Sensors.Sensor 
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -6908,6 +7327,7 @@ offLinearAccelerometerChange(sensorInfoParam?: SensorInfoParam, callback?: Callb
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -6958,7 +7378,11 @@ off(type: SensorId.MAGNETIC_FIELD, callback?: Callback&lt;MagneticFieldResponse&
 
 取消订阅磁场传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor 
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -7120,6 +7544,7 @@ offMagneticFieldChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -7170,7 +7595,11 @@ off(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback&lt;MagneticF
 
 取消订阅未校准的磁场传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor 
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -7332,6 +7761,7 @@ offMagneticFieldUncalibratedChange(sensorInfoParam?: SensorInfoParam, callback?:
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -7382,9 +7812,13 @@ off(type: SensorId.ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;):
 
 取消订阅方向传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API**：从API Version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -7550,6 +7984,7 @@ offOrientationChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;O
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -7600,9 +8035,13 @@ off(type: SensorId.PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;): voi
 
 取消订阅计步器传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.ACTIVITY_MOTION 
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -7771,6 +8210,7 @@ offPedometerChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Ped
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -7821,9 +8261,13 @@ off(type: SensorId.PEDOMETER_DETECTION, callback?: Callback&lt;PedometerDetectio
 
 取消订阅计步检测器传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.ACTIVITY_MOTION 
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -7992,6 +8436,7 @@ offPedometerDetectionChange(sensorInfoParam?: SensorInfoParam, callback?: Callba
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -8042,7 +8487,11 @@ off(type: SensorId.PROXIMITY, callback?: Callback&lt;ProximityResponse&gt;): voi
 
 取消订阅接近光传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -8204,6 +8653,7 @@ offProximityChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Pro
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -8254,7 +8704,11 @@ off(type: SensorId.ROTATION_VECTOR, callback?: Callback&lt;RotationVectorRespons
 
 取消订阅旋转矢量传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -8416,6 +8870,7 @@ offRotationVectorChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&l
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -8466,7 +8921,11 @@ off(type: SensorId.SIGNIFICANT_MOTION, callback?: Callback&lt;SignificantMotionR
 
 取消订阅有效运动传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -8628,6 +9087,7 @@ offSignificantMotionChange(sensorInfoParam?: SensorInfoParam, callback?: Callbac
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -8678,7 +9138,11 @@ off(type: SensorId.WEAR_DETECTION, callback?: Callback&lt;WearDetectionResponse&
 
 取消订阅佩戴检测传感器数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数**：
 
@@ -8840,6 +9304,7 @@ offWearDetectionChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
 
 **示例**：
@@ -10855,7 +11320,7 @@ getSingleSensor(type: SensorId, callback: AsyncCallback&lt;Sensor&gt;): void
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -10905,7 +11370,7 @@ try {
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -11033,6 +11498,7 @@ try {
 | HEART_RATE                  | 278  | 心率传感器。                                                 |
 | WEAR_DETECTION              | 280  | 佩戴检测传感器。                                             |
 | ACCELEROMETER_UNCALIBRATED  | 281  | 未校准加速度计传感器。                                       |
+| FUSION_PRESSURE<sup>22+</sup>             | 283  | 融合压力传感器。<br/>仅智能表有该传感器<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23                        |
 
 
 ## SensorInfoParam<sup>19+</sup>
@@ -11066,12 +11532,12 @@ try {
 
 | 名称             | 类型      | 只读 | 可选 | 说明                          |
 |----------------|---------|----|----|-----------------------------|
-| timestamp      | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 是  | 否  | 事件发生的时间戳。                   |
-| sensorId       | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是  | 否  | 传感器ID。                      |
-| sensorIndex    | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是  | 否  | 传感器索引。                      |
-| isSensorOnline | boolean | 是  | 否  | 传感器上线或者下线，true为上线，false为下线。 |
-| deviceId       | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是  | 否  | 设备ID。                       |
-| deviceName     | string  | 是  | 否  | 设备名称。                       |
+| timestamp      | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 事件发生的时间戳。                   |
+| sensorId       | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否  | 否  | 传感器ID。                      |
+| sensorIndex    | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否  | 否  | 传感器索引。                      |
+| isSensorOnline | boolean | 否  | 否  | 传感器上线或者下线，true为上线，false为下线。 |
+| deviceId       | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否  | 否  | 设备ID。                       |
+| deviceName     | string  | 否  | 否  | 设备名称。                       |
 
 ## SensorType<sup>(deprecated)</sup>
 
@@ -11131,14 +11597,14 @@ try {
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型   | 只读 | 可选 | 说明                     |
 | --------- | ------ | ---- | ---- | ------------------------ |
-| timestamp | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 是   | 传感器数据上报的时间戳。 |
-| accuracy<sup>11+</sup> | [SensorAccuracy](#sensoraccuracy11)<sup>11+</sup> | 是   | 否   | 传感器数据上报的精度挡位值。 |
+| timestamp | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否   | 否   | 传感器数据上报的时间戳。 |
+| accuracy<sup>11+</sup> | [SensorAccuracy](#sensoraccuracy11)<sup>11+</sup> | 否   | 否   | 传感器数据上报的精度挡位值。 |
 
 ## Sensor<sup>9+</sup>
 
@@ -11152,21 +11618,21 @@ try {
 
 | 名称                          | 类型      | 只读 | 可选 | 说明               |
 |-----------------------------|---------|----|----|------------------|
-| sensorName                  | string  | 是  | 否  | 传感器名称。|
-| vendorName                  | string  | 是  | 否  | 传感器供应商。         |
-| firmwareVersion             | string  | 是  | 否  | 传感器固件版本。  |
-| hardwareVersion             | string  | 是  | 否  | 传感器硬件版本。   |
-| sensorId                    | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是  | 否  | 传感器类型id。   |
-| maxRange                    | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是  | 否  | 传感器测量范围的最大值。    |
-| minSamplePeriod             | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 是  | 否  | 允许的最小采样周期。  |
-| maxSamplePeriod             | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 是  | 否  | 允许的最大采样周期。     |
-| precision                   | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是  | 否  | 传感器精度。  |
-| power                       | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是  | 否  | 传感器功率的估计值，单位：mA。 |
-| sensorIndex<sup>19+</sup>   | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是  | 是  | 传感器索引。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23           |
-| deviceId<sup>19+</sup>      | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是  | 是  | 设备ID。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23            |
-| deviceName<sup>19+</sup>    | string  | 是  | 是  | 设备名称。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23            |
-| isLocalSensor<sup>19+</sup> | boolean | 是  | 是  | 是否本地传感器。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23         |
-| isMockSensor<sup>23+</sup> | boolean | 是  | 是  | 是否模拟传感器。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23        |
+| sensorName                  | string  | 否  | 否  | 传感器名称。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
+| vendorName                  | string  | 否  | 否  | 传感器供应商。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23         |
+| firmwareVersion             | string  | 否  | 否  | 传感器固件版本。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
+| hardwareVersion             | string  | 否  | 否  | 传感器硬件版本。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23   |
+| sensorId                    | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 否  | 传感器类型id。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23   |
+| maxRange                    | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否  | 否  | 传感器测量范围的最大值。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23    |
+| minSamplePeriod             | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 否  | 否  | 允许的最小采样周期。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
+| maxSamplePeriod             | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 否  | 否  | 允许的最大采样周期。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23     |
+| precision                   | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否  | 否  | 传感器精度。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
+| power                       | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否  | 否  | 传感器功率的估计值，单位：mA。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| sensorIndex<sup>19+</sup>   | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是  | 传感器索引。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23           |
+| deviceId<sup>19+</sup>      | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是  | 设备ID。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23            |
+| deviceName<sup>19+</sup>    | string  | 否  | 是  | 设备名称。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23            |
+| isLocalSensor<sup>19+</sup> | boolean | 否  | 是  | 是否本地传感器。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23         |
+| isMockSensor<sup>23+</sup> | boolean | 否  | 是  | 是否模拟传感器。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23        |
 
 ## AccelerometerResponse
 
@@ -11176,16 +11642,16 @@ try {
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                                       |
 | ---- | ------ | ---- | ---- | ---------------------------------------------------------- |
-| x    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 施加在设备x轴的加速度，单位 : m/s²；取值为实际上报物理量。 |
-| y    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 施加在设备y轴的加速度，单位 : m/s²；取值为实际上报物理量。 |
-| z    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 施加在设备z轴的加速度，单位 : m/s²；取值为实际上报物理量。 |
+| x    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备x轴的加速度，单位 : m/s²；取值为实际上报物理量。 |
+| y    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备y轴的加速度，单位 : m/s²；取值为实际上报物理量。 |
+| z    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备z轴的加速度，单位 : m/s²；取值为实际上报物理量。 |
 
 
 ## LinearAccelerometerResponse
@@ -11194,15 +11660,15 @@ try {
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| x    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 施加在设备x轴的线性加速度，单位 : m/s²。 |
-| y    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 施加在设备y轴的线性加速度，单位 : m/s²。 |
-| z    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 施加在设备z轴的线性加速度，单位 : m/s²。 |
+| x    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备x轴的线性加速度，单位 : m/s²。 |
+| y    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备y轴的线性加速度，单位 : m/s²。 |
+| z    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备z轴的线性加速度，单位 : m/s²。 |
 
 
 ## AccelerometerUncalibratedResponse
@@ -11218,13 +11684,27 @@ try {
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                           |
 | ----- | ------ | ---- | ---- | ---------------------------------------------- |
-| x     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 施加在设备x轴未校准的加速度，单位 : m/s²。     |
-| y     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 施加在设备y轴未校准的加速度，单位 : m/s²。     |
-| z     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 施加在设备z轴未校准的加速度，单位 : m/s²。     |
-| biasX | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 施加在设备x轴未校准的加速度偏量，单位 : m/s²。 |
-| biasY | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 施加在设备y轴未校准的加速度偏量，单位 : m/s²。 |
-| biasZ | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 施加在设备z轴未校准的加速度偏量，单位 : m/s²。 |
+| x     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备x轴未校准的加速度，单位 : m/s²。     |
+| y     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备y轴未校准的加速度，单位 : m/s²。     |
+| z     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备z轴未校准的加速度，单位 : m/s²。     |
+| biasX | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备x轴未校准的加速度偏量，单位 : m/s²。 |
+| biasY | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备y轴未校准的加速度偏量，单位 : m/s²。 |
+| biasZ | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备z轴未校准的加速度偏量，单位 : m/s²。 |
 
+
+## FusionPressureResponse<sup>22+</sup>
+
+融合压力传感器数据，继承于[Response](#response)。
+
+**系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称            | 类型   | 只读 | 可选 | 说明                                           |
+| -------------- | ------ | ---- | ---- | ---------------------------------------------- |
+| fusionPressure | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否   | 否   | 施加在融合压力传感器上的压力值百分比，单位 : %     |
 
 ## GravityResponse
 
@@ -11239,9 +11719,9 @@ try {
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| x    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 施加在设备x轴的重力加速度，单位 : m/s²。 |
-| y    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 施加在设备y轴的重力加速度，单位 : m/s²。 |
-| z    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 施加在设备z轴的重力加速度，单位 : m/s²。 |
+| x    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备x轴的重力加速度，单位 : m/s²。 |
+| y    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备y轴的重力加速度，单位 : m/s²。 |
+| z    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备z轴的重力加速度，单位 : m/s²。 |
 
 
 ## OrientationResponse
@@ -11252,16 +11732,16 @@ try {
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                                  |
 | ----- | ------ | ---- | ---- | ----------------------------------------------------- |
-| alpha | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 设备围绕Z轴的旋转角度，单位：度；取值范围为0-360度。  |
-| beta  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 设备围绕X轴的旋转角度，单位：度；取值范围为0-±180度。 |
-| gamma | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 设备围绕Y轴的旋转角度，单位：度；取值范围为0-±90度。  |
+| alpha | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 设备围绕Z轴的旋转角度，单位：度；取值范围为0-360度。  |
+| beta  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 设备围绕X轴的旋转角度，单位：度；取值范围为0-±180度。 |
+| gamma | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 设备围绕Y轴的旋转角度，单位：度；取值范围为0-±90度。  |
 
 
 ## RotationVectorResponse
@@ -11277,10 +11757,10 @@ try {
 
 | 名称 | 类型   | 只读 | 可选 | 说明              |
 | ---- | ------ | ---- | ---- | ----------------- |
-| x    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 旋转矢量x轴分量。 |
-| y    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 旋转矢量y轴分量。 |
-| z    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 旋转矢量z轴分量。 |
-| w    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 标量，描述设备相对于某个参考方向的旋转状态，单位：弧度。            |
+| x    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 旋转矢量x轴分量。 |
+| y    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 旋转矢量y轴分量。 |
+| z    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 旋转矢量z轴分量。 |
+| w    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 标量，描述设备相对于某个参考方向的旋转状态，单位：弧度。            |
 
 
 ## GyroscopeResponse
@@ -11291,16 +11771,16 @@ try {
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                                   |
 | ---- | ------ | ---- | ---- | ------------------------------------------------------ |
-| x    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 设备x轴的旋转角速度，单位rad/s；取值为实际上报物理量。 |
-| y    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 设备y轴的旋转角速度，单位rad/s；取值为实际上报物理量。 |
-| z    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 设备z轴的旋转角速度，单位rad/s；取值为实际上报物理量。 |
+| x    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 设备x轴的旋转角速度，单位rad/s；取值为实际上报物理量。 |
+| y    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 设备y轴的旋转角速度，单位rad/s；取值为实际上报物理量。 |
+| z    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 设备z轴的旋转角速度，单位rad/s；取值为实际上报物理量。 |
 
 
 ## GyroscopeUncalibratedResponse
@@ -11316,12 +11796,12 @@ try {
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                       |
 | ----- | ------ | ---- | ---- | ------------------------------------------ |
-| x     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 设备x轴未校准的旋转角速度，单位rad/s。     |
-| y     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 设备y轴未校准的旋转角速度，单位rad/s。     |
-| z     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 设备z轴未校准的旋转角速度，单位rad/s。     |
-| biasX | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 设备x轴未校准的旋转角速度偏量，单位rad/s。 |
-| biasY | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 设备y轴未校准的旋转角速度偏量，单位rad/s。 |
-| biasZ | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 设备z轴未校准的旋转角速度偏量，单位rad/s。 |
+| x     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 设备x轴未校准的旋转角速度，单位rad/s。     |
+| y     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 设备y轴未校准的旋转角速度，单位rad/s。     |
+| z     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 设备z轴未校准的旋转角速度，单位rad/s。     |
+| biasX | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 设备x轴未校准的旋转角速度偏量，单位rad/s。 |
+| biasY | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 设备y轴未校准的旋转角速度偏量，单位rad/s。 |
+| biasZ | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 设备z轴未校准的旋转角速度偏量，单位rad/s。 |
 
 
 ## SignificantMotionResponse
@@ -11337,7 +11817,7 @@ try {
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| scalar | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 表示剧烈运动程度。测量三个物理轴（x、y&nbsp;和&nbsp;z）上，设备是否存在大幅度运动；若存在大幅度运动则数据上报为1。 |
+| scalar | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 表示剧烈运动程度。测量三个物理轴（x、y&nbsp;和&nbsp;z）上，设备是否存在大幅度运动；若存在大幅度运动则数据上报为1。 |
 
 
 ## ProximityResponse
@@ -11353,7 +11833,7 @@ try {
 
 | 名称     | 类型   | 只读 | 可选 | 说明                                                       |
 | -------- | ------ | ---- | ---- | ---------------------------------------------------------- |
-| distance | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 可见物体与设备显示器的接近程度。0表示接近，大于0表示远离。 |
+| distance | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 可见物体与设备显示器的接近程度。0表示接近，大于0表示远离。 |
 
 
 ## LightResponse
@@ -11369,9 +11849,9 @@ try {
 
 | 名称                            | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| intensity                       | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 光强（单位：勒克斯）。                                       |
-| colorTemperature<sup>12+</sup>  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 色温（单位：开尔文），可选参数，如果该参数不支持在js层返回未定义，支持则返回正常数值。 |
-| infraredLuminance<sup>12+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 红外亮度（单位：cd/m²），可选参数，如果该参数不支持在js层返回未定义，支持则返回正常数值。 |
+| intensity                       | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 光强（单位：勒克斯）。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                                       |
+| colorTemperature<sup>12+</sup>  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 是   | 色温（单位：开尔文），可选参数，如果该参数不支持在js层返回未定义，支持则返回正常数值。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| infraredLuminance<sup>12+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 是   | 红外亮度（单位：cd/m²），可选参数，如果该参数不支持在js层返回未定义，支持则返回正常数值。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 
 ## HallResponse
@@ -11387,7 +11867,7 @@ try {
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| status | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 显示霍尔状态。测量设备周围是否存在磁力吸引，0表示没有，大于0表示有。 |
+| status | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 显示霍尔状态。测量设备周围是否存在磁力吸引，0表示没有，大于0表示有。 |
 
 
 ## MagneticFieldResponse
@@ -11403,9 +11883,9 @@ try {
 
 | 名称 | 类型   | 只读 | 可选 | 说明                         |
 | ---- | ------ | ---- | ---- | ---------------------------- |
-| x    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | x轴环境磁场强度，单位 : μT。 |
-| y    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | y轴环境磁场强度，单位 : μT。 |
-| z    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | z轴环境磁场强度，单位 : μT。 |
+| x    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | x轴环境磁场强度，单位 : μT。 |
+| y    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | y轴环境磁场强度，单位 : μT。 |
+| z    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | z轴环境磁场强度，单位 : μT。 |
 
 
 ## MagneticFieldUncalibratedResponse
@@ -11421,12 +11901,12 @@ try {
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                   |
 | ----- | ------ | ---- | ---- | -------------------------------------- |
-| x     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | x轴未校准环境磁场强度，单位 : μT。     |
-| y     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | y轴未校准环境磁场强度，单位 : μT。     |
-| z     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | z轴未校准环境磁场强度，单位 : μT。     |
-| biasX | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | x轴未校准环境磁场强度偏量，单位 : μT。 |
-| biasY | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | y轴未校准环境磁场强度偏量，单位 : μT。 |
-| biasZ | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | z轴未校准环境磁场强度偏量，单位 : μT。 |
+| x     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | x轴未校准环境磁场强度，单位 : μT。     |
+| y     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | y轴未校准环境磁场强度，单位 : μT。     |
+| z     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | z轴未校准环境磁场强度，单位 : μT。     |
+| biasX | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | x轴未校准环境磁场强度偏量，单位 : μT。 |
+| biasY | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | y轴未校准环境磁场强度偏量，单位 : μT。 |
+| biasZ | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | z轴未校准环境磁场强度偏量，单位 : μT。 |
 
 
 ## PedometerResponse
@@ -11442,7 +11922,7 @@ try {
 
 | 名称  | 类型   | 只读 | 可选 | 说明             |
 | ----- | ------ | ---- | ---- | ---------------- |
-| steps | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 用户的行走步数。 |
+| steps | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 用户的行走步数。 |
 
 
 ## HumidityResponse
@@ -11458,7 +11938,7 @@ try {
 
 | 名称     | 类型   | 只读 | 可选 | 说明                                                      |
 | -------- | ------ | ---- | ---- | --------------------------------------------------------- |
-| humidity | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 湿度值。测量环境的相对湿度，以百分比&nbsp;(%)&nbsp;表示。 |
+| humidity | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 湿度值。测量环境的相对湿度，以百分比&nbsp;(%)&nbsp;表示。 |
 
 
 ## PedometerDetectionResponse
@@ -11474,7 +11954,7 @@ try {
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| scalar | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 计步器检测。检测用户的计步动作，如果取值为1则代表用户产生了计步行走的动作，取值为0则代表用户没有发生运动。 |
+| scalar | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 计步器检测。检测用户的计步动作，如果取值为1则代表用户产生了计步行走的动作，取值为0则代表用户没有发生运动。 |
 
 
 ## AmbientTemperatureResponse
@@ -11490,7 +11970,7 @@ try {
 
 | 名称        | 类型   | 只读 | 可选 | 说明                       |
 | ----------- | ------ | ---- | ---- | -------------------------- |
-| temperature | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 环境温度（单位：摄氏度）。 |
+| temperature | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 环境温度（单位：摄氏度）。 |
 
 
 ## BarometerResponse
@@ -11506,7 +11986,7 @@ try {
 
 | 名称     | 类型   | 只读 | 可选 | 说明                   |
 | -------- | ------ | ---- | ---- | ---------------------- |
-| pressure | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 压力值（单位：百帕）。 |
+| pressure | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 压力值（单位：百帕）。 |
 
 
 ## HeartRateResponse
@@ -11522,7 +12002,7 @@ try {
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                    |
 | --------- | ------ | ---- | ---- | --------------------------------------- |
-| heartRate | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 心率值。测量用户的心率数值，单位：bpm。 |
+| heartRate | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 心率值。测量用户的心率数值，单位：bpm。 |
 
 
 ## WearDetectionResponse
@@ -11538,7 +12018,7 @@ try {
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                             |
 | ----- | ------ | ---- | ---- | ------------------------------------------------ |
-| value | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 表示设备是否被穿戴（1表示已穿戴，0表示未穿戴）。 |
+| value | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 表示设备是否被穿戴（1表示已穿戴，0表示未穿戴）。 |
 
 
 ## Options
@@ -11549,14 +12029,14 @@ try {
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型                                                        | 只读 | 可选 | 说明                                                                                         |
 | -------- | ----------------------------------------------------------- | ---- | ---- |--------------------------------------------------------------------------------------------|
-| interval | ArkTS-Dyn: number\|[SensorFrequency](#sensorfrequency11)<sup>11+</sup> <br> ArkTS-Sta: long\|[SensorFrequency](#sensorfrequency11)<sup>11+</sup> | 是   | 是   | 表示传感器的上报频率，默认值为200000000ns。该属性有最小值和最大值的限制，由硬件支持的上报频率决定，当设置频率大于最大值时以最大值上报数据，小于最小值时以最小值上报数据。 |
-| sensorInfoParam<sup>19+</sup> | [SensorInfoParam](#sensorinfoparam19) | 是 | 是 | 传感器传入设置参数，可指定deviceId、sensorIndex。<br/>**原子化服务API**：从API Version 19开始，该接口支持在原子化服务中使用。                                                         |
+| interval | ArkTS-Dyn: number\|[SensorFrequency](#sensorfrequency11)<sup>11+</sup> <br> ArkTS-Sta: long\|[SensorFrequency](#sensorfrequency11)<sup>11+</sup> | 否   | 是   | 表示传感器的上报频率，默认值为200000000ns。该属性有最小值和最大值的限制，由硬件支持的上报频率决定，当设置频率大于最大值时以最大值上报数据，小于最小值时以最小值上报数据。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| sensorInfoParam<sup>19+</sup> | [SensorInfoParam](#sensorinfoparam19) | 否 | 是 | 传感器传入设置参数，可指定deviceId、sensorIndex。<br/>**原子化服务API**：从API Version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23                                                         |
 
 ## SensorFrequency<sup>11+</sup>
 
@@ -11567,6 +12047,10 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 **原子化服务API**：从API Version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型     | 说明                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -11586,8 +12070,8 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 
 | 名称        | 类型                | 只读 | 可选 | 说明       |
 | ----------- | ------------------- | ---- | ---- | ---------- |
-| rotation    | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;double&gt; | 是   | 是   | 旋转矩阵。 |
-| inclination | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;double&gt; | 是   | 是   | 倾斜矩阵。 |
+| rotation    | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;double&gt; | 否   | 否   | 旋转矩阵。 |
+| inclination | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;double&gt; | 否   | 否   | 倾斜矩阵。 |
 
 
 ## CoordinatesOptions
@@ -11602,8 +12086,8 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 
 | 名称 | 类型   | 只读 | 可选 | 说明        |
 | ---- | ------ | ---- | ---- | ----------- |
-| x    | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 是   | x坐标方向。 |
-| y    | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 是   | y坐标方向。 |
+| x    | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | x坐标方向。 |
+| y    | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | y坐标方向。 |
 
 
 ## GeomagneticResponse
@@ -11618,13 +12102,13 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 
 | 名称            | 类型   | 只读 | 可选 | 说明                                               |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| x               | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 地磁场的北分量。                                   |
-| y               | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 地磁场的东分量。                                   |
-| z               | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 地磁场的垂直分量。                                 |
-| geomagneticDip  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 地磁倾角，即地球磁场线与水平面的夹角。             |
-| deflectionAngle | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 地磁偏角，即地磁北方向与正北方向在水平面上的角度。 |
-| levelIntensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 地磁场的水平强度。                                 |
-| totalIntensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 地磁场的总强度。                                   |
+| x               | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的北分量。                                   |
+| y               | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的东分量。                                   |
+| z               | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的垂直分量。                                 |
+| geomagneticDip  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁倾角，即地球磁场线与水平面的夹角。             |
+| deflectionAngle | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁偏角，即地磁北方向与正北方向在水平面上的角度。 |
+| levelIntensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的水平强度。                                 |
+| totalIntensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的总强度。                                   |
 
 ## LocationOptions
 
@@ -11638,9 +12122,9 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | --------- | ------ | ---- | ---- | ---------- |
-| latitude  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 纬度。     |
-| longitude | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 经度。     |
-| altitude  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 是   | 海拔高度。 |
+| latitude  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 纬度。     |
+| longitude | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 经度。     |
+| altitude  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 海拔高度。 |
 
 ## sensor.on<sup>(deprecated)</sup>
 
