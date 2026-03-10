@@ -19,7 +19,7 @@ To change the APL of a normal application to system_basic or system_core, modify
 
 Modify the **"bundle-info"** &gt; **"apl"** field in the file.
 
-```json
+```json5
 "bundle-info" : {
     // ...
     "apl": "system_basic",

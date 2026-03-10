@@ -83,7 +83,7 @@ Enumerates the window modes.
 | UNDEFINED  | 1    | The window mode is not defined by the application.      |
 | FULLSCREEN | 2    | The application is displayed in full screen.            |
 | PRIMARY    | 3    | The application is displayed in the primary window in split-screen mode. In top-bottom splits, the top screen is primary; in left-right splits, the left screen is primary. |
-| SECONDARY  | 4    | The application is displayed in the secondary window in split-screen mode. In top-bottom splits, the top screen is secondary; in left-right splits, the left screen is secondary. |
+| SECONDARY  | 4    | The application is displayed in the secondary window in split-screen mode. In top-bottom splits, the bottom screen is secondary; in left-right splits, the right screen is secondary. |
 | FLOATING   | 5    | The application is displayed in a floating window.|
 
 ## WindowLayoutMode<sup>9+</sup>
@@ -1989,7 +1989,7 @@ If you want the window to always be ignored during screen capture, recording, or
 
 | Name       | Type   | Mandatory| Description                |
 | ------------- | ------- | ---- | -------------------- |
-| isSkip | boolean | Yes  | Whether to ignore the window. The default value is **false**.<br>**true** to ignore, **false** otherwise.|
+| isSkip | boolean | Yes  | Whether to ignore the window. The default value is **false**.<br>**true** to ignore, **false** otherwise.<br>|
 
 **Error codes**
 
@@ -2469,12 +2469,12 @@ Sets the shadow for the window borders.
 
 **Parameters**
 
-| Name | Type  | Mandatory| Description                                                         |
-| ------- | ------ | ---- |-------------------------------------------------------------|
-| radius  | number | Yes  | Radius of the shadow. The value is a floating-point number greater than or equal to 0.0, in px. The value **0.0** means that the shadow is disabled for the window borders.    |
-| color   | string | No  | Color of the shadow. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **#00FF00** or **#FF00FF00**.|
-| offsetX | number | No  | Offset of the shadow along the x-axis, in px. The value is a floating-point number.                             |
-| offsetY | number | No  | Offset of the shadow along the y-axis, in px. The value is a floating-point number.                             |
+| Name | Type  | Mandatory| Description                                                                      |
+| ------- | ------ | ---- |--------------------------------------------------------------------------|
+| radius  | number | Yes  | Radius of the shadow. The value is a floating-point number greater than or equal to 0.0, in px. The value **0.0** means that the shadow is disabled for the window borders.           |
+| color   | string | No  | Color of the shadow. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **#00FF00** or **#FF00FF00**. The default value is **'#000000'**.|
+| offsetX | number | No  | Offset of the shadow along the x-axis, in px. The value is a floating-point number, in px. The default value is **0.0**.                                   |
+| offsetY | number | No  | Offset of the shadow along the y-axis, in px. The value is a floating-point number, in px. The default value is **0.0**.                                   |
 
 **Error codes**
 
@@ -3045,7 +3045,7 @@ export default class RaiseMainWindowAbility extends UIAbility {
 }
 ```
 ```json5
-//module.json5
+// module.json5
 {
   "module": {
     "name": "entry",
@@ -3785,11 +3785,7 @@ This API takes effect only for the title bar buttons (maximize, minimize, and sp
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**
-
-Before <!--RP2-->OpenHarmony 6.1<!--RP2End-->, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
-
-Since <!--RP2-->OpenHarmony 6.1<!--RP2End-->, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, no error is thrown and this API does not take effect until the device is in the freeform window state. If the device does not support freeform windows, no error is thrown and this API does not take effect.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 

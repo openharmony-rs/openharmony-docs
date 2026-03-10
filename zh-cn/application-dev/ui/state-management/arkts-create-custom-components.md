@@ -63,7 +63,6 @@ struct ParentComponent {
 }
 ```
 
-
 要完全理解上面的示例，需要了解自定义组件的以下概念定义，本文将在后面的小节中介绍：
 
 - [自定义组件的基本结构](#自定义组件的基本结构)
@@ -72,7 +71,7 @@ struct ParentComponent {
 
 - [自定义组件的参数规定](#自定义组件的参数规定)
 
-- [build()函数](#build函数)
+- [build()函数实现规则](#build函数实现规则)
 
 - [自定义组件通用样式](#自定义组件通用样式)
 
@@ -87,9 +86,55 @@ struct ParentComponent {
   >
   > 自定义组件名、类名、函数名不得与系统组件名重复。
 
+### \@Entry
+
+\@Entry装饰的自定义组件将作为[UI页面](../arkts-router-to-navigation.md#页面结构)的入口。在单个UI页面中，仅允许存在一个由@Entry装饰的自定义组件作为页面的入口。
+
+  > **说明：**
+  >
+  > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
+  >
+  > 从API version 10开始，\@Entry可以接受一个可选的[LocalStorage](../../reference/apis-arkui/arkui-ts/ts-state-management.md#localstorage9)参数或者一个可选的EntryOptions<sup>10+</sup>参数。
+  >
+  > 从API version 11开始，该装饰器支持在原子化服务中使用。
+
+  <!-- @[Entry_UI_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Entry.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct MyComponent {
+    // ...
+  }
+  ```
+
+**EntryOptions<sup>10+</sup>**
+
+  命名路由跳转选项。
+
+  | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
+  | ------ | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  | routeName | string | 否 | 是 | 表示作为命名路由页面的名字。 |
+  | storage | [LocalStorage](arkts-localstorage.md) | 否 | 是 | 页面级的UI状态存储。当未传入时，框架会创建一个新的LocalStorage实例作为默认值。 |
+  | useSharedStorage<sup>12+</sup> | boolean | 否 | 是 | 是否使用[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)传入的LocalStorage实例对象。默认值false。true：使用共享的[LocalStorage](arkts-localstorage.md)实例对象。false：不使用共享的[LocalStorage](arkts-localstorage.md)实例对象。 |
+
+  > **说明：**
+  >
+  > 当useSharedStorage设置为true且storage已赋值时，useSharedStorage的值优先级更高。
+
+  <!-- @[routeName_myPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/RouteName.ets) -->
+  
+  ``` TypeScript
+  @Entry({ routeName: 'myPage' })
+  @Component
+  struct MyComponent {
+    // ...
+  }
+  ```
+
 ### \@Component
 
-\@Component装饰器仅装饰struct关键字声明的数据结构。被装饰的struct具备组件化的能力，需要实现build方法描述UI，一个struct只能被一个\@Component装饰。
+@Component装饰的struct为V1自定义组件，可以使用[状态管理V1版本](./arkts-state-management-overview.md#状态管理v1)装饰器的能力。
 
   > **说明：**
   >
@@ -99,36 +144,18 @@ struct ParentComponent {
   >
   > 从API version 11开始，该装饰器支持在原子化服务中使用。
 
-  <!-- @[Component_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Component.ets) -->
-
+  <!-- @[Component_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Component.ets) --> 
+  
   ``` TypeScript
   @Component
   struct MyComponent {
-  // ···
-  }
-  ```
-
-
- **freezeWhenInactive<sup>11+</sup>**
-  [组件冻结](arkts-custom-components-freeze.md)选项。
-
-  | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
-  | ------ | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | freezeWhenInactive | boolean | 否 | 否 | 是否开启组件冻结。默认值false。true表示开启组件冻结，false表示不开启组件冻结。 |
-
-  <!-- @[freezeWhenInactive_Component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/FreezeWhenInactive.ets) -->
-
-  ``` TypeScript
-  @Component({ freezeWhenInactive: true })
-  struct MyComponent {
-  // ···
+    // ...
   }
   ```
 
 ### \@ComponentV2
 
-为了在自定义组件中使用[状态管理V2版本](./arkts-state-management-overview.md#状态管理v2)状态变量装饰器的能力，开发者可以使用\@ComponentV2装饰器装饰自定义组件。
-
+@ComponentV2装饰的struct为V2自定义组件，可以使用[状态管理V2版本](./arkts-state-management-overview.md#状态管理v2)装饰器的能力。
 >  **说明：**
 >
 > \@ComponentV2装饰器从API version 12开始支持。
@@ -142,7 +169,7 @@ struct ParentComponent {
 - 在\@ComponentV2装饰的自定义组件中，开发者仅可以使用全新的状态变量装饰器，包括[\@Local](arkts-new-local.md)、[\@Param](arkts-new-param.md)、[\@Once](arkts-new-once.md)、[\@Event](arkts-new-event.md)、[\@Provider](arkts-new-provider-and-consumer.md)、[\@Consumer](arkts-new-provider-and-consumer.md)等。
 - \@ComponentV2装饰的自定义组件暂不支持[LocalStorage](arkts-localstorage.md)等现有自定义组件的能力。
 - 无法同时使用\@ComponentV2与\@Component装饰同一个struct结构。
-- \@ComponentV2支持一个可选的boolean类型参数freezeWhenInactive，来实现[组件冻结功能](arkts-custom-components-freezeV2.md)。
+- \@ComponentV2支持一个可选的[ComponentOptions参数](../../reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions)，来实现[组件冻结功能](arkts-custom-components-freezeV2.md)。
 
 - 一个简单的\@ComponentV2装饰的自定义组件应具有以下部分：
 
@@ -180,79 +207,48 @@ struct ParentComponent {
 
 build()函数用于定义自定义组件的声明式UI描述，自定义组件必须定义build()函数。
 
-  <!-- @[Declarative_UI_description](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/BuildFunction.ets) -->
-
+  <!-- @[Declarative_UI_description](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/BuildFunction.ets) --> 
+  
   ``` TypeScript
   @Component
   struct MyComponent {
     build() {
-      // ···
+      // ...
     }
   }
   ```
 
-### \@Entry
-
-\@Entry装饰的自定义组件将作为[UI页面](../arkts-router-to-navigation.md#页面结构)的入口。在单个UI页面中，仅允许存在一个由@Entry装饰的自定义组件作为页面的入口。
-
-  > **说明：**
-  >
-  > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
-  >
-  > 从API version 10开始，\@Entry可以接受一个可选的[LocalStorage](../../reference/apis-arkui/arkui-ts/ts-state-management.md#localstorage9)参数或者一个可选的EntryOptions<sup>10+</sup>参数。
-  >
-  > 从API version 11开始，该装饰器支持在原子化服务中使用。
-
-  <!-- @[Entry_UI_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Entry.ets) -->
-
-  ``` TypeScript
-  @Entry
-  @Component
-  struct MyComponent {
-  // ···
-  }
-  ```
-
-**EntryOptions<sup>10+</sup>**
-
-  命名路由跳转选项。
-
-  | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
-  | ------ | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | routeName | string | 否 | 是 | 表示作为命名路由页面的名字。 |
-  | storage | [LocalStorage](arkts-localstorage.md) | 否 | 是 | 页面级的UI状态存储。当未传入时，框架会创建一个新的LocalStorage实例作为默认值。 |
-  | useSharedStorage<sup>12+</sup> | boolean | 否 | 是 | 是否使用[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)传入的LocalStorage实例对象。默认值false。true：使用共享的[LocalStorage](arkts-localstorage.md)实例对象。false：不使用共享的[LocalStorage](arkts-localstorage.md)实例对象。 |
-
-  > **说明：**
-  >
-  > 当useSharedStorage设置为true且storage已赋值时，useSharedStorage的值优先级更高。
-
-  <!-- @[routeName_myPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/RouteName.ets) -->
-
-  ``` TypeScript
-  @Entry({ routeName: 'myPage' })
-  @Component
-  struct MyComponent {
-  // ···
-  }
-  ```
-
-
 ### \@Reusable
 
-\@Reusable装饰的自定义组件具备可复用能力。详细请参考：[\@Reusable装饰器：组件复用](./arkts-reusable.md#使用场景)。
+\@Reusable装饰V1自定义组件，使得该自定义组件具有被复用的能力。详细请参考：[\@Reusable装饰器：组件复用](./arkts-reusable.md#使用场景)。
 
   > **说明：**
   >
   > 从API version 10开始，该装饰器支持在ArkTS卡片中使用。
 
-  <!-- @[Reusable_MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Reusable.ets) -->
-
+  <!-- @[Reusable_MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Reusable.ets) --> 
+  
   ``` TypeScript
   @Reusable
   @Component
   struct MyComponent {
-  // ···
+    // ...
+  }
+  ```
+
+### \@ReusableV2
+
+\@ReusableV2装饰V2自定义组件，使得该自定义组件具有被复用的能力。详细请参考：[\@ReusableV2装饰器：V2组件复用](./arkts-new-reusableV2.md#使用场景)。
+
+  > **说明：**
+  >
+  > 从API version 18开始，该装饰器支持在原子化服务中使用。
+
+  ``` TypeScript
+  @ReusableV2
+  @ComponentV2
+  struct MyComponent {
+    // ...
   }
   ```
 
@@ -343,7 +339,7 @@ struct Son {
 }
 ```
 
-## build()函数
+## build()函数实现规则
 
 所有在build()函数中声明的语句统称为UI描述，UI描述需要遵循以下规则：
 
@@ -561,8 +557,8 @@ struct Son {
     })
     ```
   
-    <!-- @[filter_New_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ForEachFilter.ets) -->
-  
+    <!-- @[filter_New_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ForEachFilter.ets) --> 
+    
     ``` TypeScript
     // 正确的执行方式为：filter返回一个新数组，后面的sort方法才不会改变原数组this.arr
     ForEach(this.arr.filter((item, index) => index >= 2).sort(),
@@ -612,7 +608,7 @@ struct MyComponent {
 静态代码块用于初始化静态属性。
 - 在\@Component或\@CustomDialog装饰的自定义组件中编写静态代码块时，该代码不会被执行。从API version 22开始，添加对静态代码块的校验，编译期告警提示静态代码块不生效。
 
-  <!-- @[Static_code_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV1.ets) -->
+  <!-- @[Static_code_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV1.ets) --> 
   
   ``` TypeScript
   @Component
@@ -629,7 +625,7 @@ struct MyComponent {
 
 - 在\@ComponentV2装饰的自定义组件中支持使用。
 
-  <!-- @[Static_code_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV2.ets) -->
+  <!-- @[Static_code_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV2.ets) --> 
   
   ``` TypeScript
   @ComponentV2
@@ -639,7 +635,7 @@ struct MyComponent {
     static {
       this.a = 'hello world';
     }
-  // ···
+    // ...
   }
   ```
 
