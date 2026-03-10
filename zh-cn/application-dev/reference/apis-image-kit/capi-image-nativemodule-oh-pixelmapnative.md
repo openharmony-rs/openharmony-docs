@@ -32,7 +32,7 @@ OH_PixelmapNative结构体内容和操作方式如下：
 | bool, bool | shouldFlipHorizontally, shouldFlipVertically | 是否水平翻转图像、是否垂直翻转图像。 | [OH_PixelmapNative_Flip](capi-pixelmap-native-h.md#oh_pixelmapnative_flip) | 根据输入的条件对图片进行翻转。|
 | Image_Region | region | 裁剪区间 | [OH_PixelmapNative_Crop](capi-pixelmap-native-h.md#oh_pixelmapnative_crop) | 根据输入的尺寸对图片进行裁剪。|
 
-**起始版本：** 13
+**起始版本：** 12
 
 **相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
 
