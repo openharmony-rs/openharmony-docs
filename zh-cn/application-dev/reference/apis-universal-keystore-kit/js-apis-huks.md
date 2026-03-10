@@ -164,7 +164,7 @@ JS示例：
 
 ```xml
 <stack class="container">
-    <input class="generateBtn" @click="generateKey">生成密钥</input>
+    <input type="button" class="generateBtn" @click="generateKey">生成密钥</input>
     <text class="result">{{result}}</text>
 </stack>
 ```
@@ -385,7 +385,7 @@ JS示例：
 
 ```xml
 <stack class="container">
-    <input class="deleteBtn" @click="deleteKey">删除密钥</input>
+    <input type="button" class="deleteBtn" @click="deleteKey">删除密钥</input>
     <text class="result">{{result}}</text>
 </stack>
 ```
@@ -1876,7 +1876,7 @@ JS示例：
 
 ```xml
 <stack class="container">
-    <input class="existBtn" @click="existKey">查询密钥</input>
+    <input type="button" class="existBtn" @click="existKey">查询密钥</input>
     <text class="result">{{result}}</text>
 </stack>
 ```
@@ -2612,8 +2612,8 @@ JS示例：
 
 ```xml
 <stack class="container">
-    <input class="threeStageBtn1" @click="threeStageEncrypt">加密数据</input>
-    <input class="threeStageBtn2" @click="threeStageDecrypt">解密数据</input>
+    <input type="button" class="threeStageBtn1" @click="threeStageEncrypt">加密数据</input>
+    <input type="button" class="threeStageBtn2" @click="threeStageDecrypt">解密数据</input>
     <text class="result">{{result}}</text>
 </stack>
 ```
