@@ -1823,7 +1823,7 @@ try {
 
 | 名称                        | 类型                           |  只读  |  可选  | 说明               |
 | ------------------------------ | ------------------------------ | ------------------| ------------------ | ------------------ |
-| userId                         | number                         | 否                       | 是  | 指示用户id，默认值：调用方所在用户，取值范围：大于等于0，可使用[queryOsAccountLocalIdFromProcess](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取当前进程所在用户。当安装、卸载或恢复一个驱动应用时，该参数会被忽略，会在所有用户下执行。 |
+| userId                         | number                         | 否                       | 是  | 指示用户id，默认值：调用方所在用户，取值范围：大于等于0，可使用[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取当前进程所在用户。当安装、卸载或恢复一个驱动应用时，该参数会被忽略，会在所有用户下执行。 |
 | installFlag                    | number                         | 否                       | 是 | 指示安装标志，枚举值：0x00：应用初次安装，0x01：应用覆盖安装，0x10：应用免安装，默认值为应用初次安装。 |
 | isKeepData                     | boolean                        | 否                       | 是| 卸载时是否保留数据目录，默认值为false。true表示卸载时保留数据目录，false表示卸载时不保留数据目录。 |
 | hashParams        | Array<[HashParam](#hashparam)> | 否 | 是| 哈希值参数，默认值为空。         |
