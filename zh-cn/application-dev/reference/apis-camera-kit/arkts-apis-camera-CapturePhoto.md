@@ -52,7 +52,7 @@ release(): Promise\<void\>
 
 **示例：**
 
-ArkTs-Dyn示例: 
+ArkTs-Dyn示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -62,7 +62,7 @@ async function releaseCapturePhoto(capturePhoto: camera.CapturePhoto): Promise<v
 }
 ```
 
-ArkTs-Sta示例: 
+ArkTs-Sta示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';

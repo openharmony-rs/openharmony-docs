@@ -45,7 +45,7 @@ enableControlCenter(enabled: boolean): void
 
 **示例：**
 
-ArkTs-Dyn示例: 
+ArkTs-Dyn示例：
 
 ```ts
 function enableControlCenter(videoSession: camera.VideoSession, enable: boolean): void {
@@ -56,7 +56,7 @@ function enableControlCenter(videoSession: camera.VideoSession, enable: boolean)
 }
 ```
 
-ArkTs-Sta示例: 
+ArkTs-Sta示例：
 
 ```ts
 function enableControlCenter(videoSession: camera.VideoSession, enable: boolean): void {

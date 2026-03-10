@@ -893,7 +893,7 @@ isBandwidthCompressionSupported(): boolean
 
 **示例：**
 
-ArkTs-Dyn示例: 
+ArkTs-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -911,7 +911,7 @@ function isBandwidthCompressionSupported(previewOutput: camera.PreviewOutput): b
 }
 ```
 
-ArkTs-Sta示例: 
+ArkTs-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -966,7 +966,7 @@ enableBandwidthCompression(enabled: boolean): void
 
 **示例：**
 
-ArkTs-Dyn示例: 
+ArkTs-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -982,7 +982,7 @@ function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled
 }
 ```
 
-ArkTs-Sta示例: 
+ArkTs-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

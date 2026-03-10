@@ -164,7 +164,7 @@ getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraO
 
 **示例：**
 
-ArkTs-Dyn示例: 
+ArkTs-Dyn示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -175,7 +175,7 @@ function getSupportedFullOutputCapability(camera: camera.CameraDevice, cameraMan
 }
 ```
 
-ArkTs-Sta示例: 
+ArkTs-Sta示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -1382,7 +1382,7 @@ getCameraDevices(position: CameraPosition, types: Array\<CameraType>, connectTyp
 
 **示例：**
 
-ArkTs-Dyn示例: 
+ArkTs-Dyn示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -1400,7 +1400,7 @@ function getCameraDevices(cameraManager: camera.CameraManager, position: camera.
 }
 ```
 
-ArkTs-Sta示例: 
+ArkTs-Sta示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';

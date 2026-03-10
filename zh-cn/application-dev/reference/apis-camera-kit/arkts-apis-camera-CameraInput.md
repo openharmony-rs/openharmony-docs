@@ -63,7 +63,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
-ArkTS-Sta示例: 
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -593,7 +593,7 @@ getPhysicalCameraOrientation(): number
 
 **示例：**
 
-ArkTs-Dyn示例: 
+ArkTs-Dyn示例：
 
 ```ts
 function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
@@ -601,7 +601,7 @@ function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
   return physicalCameraOrientation;
 }
 ```
-ArkTs-Sta示例: 
+ArkTs-Sta示例：
 
 ```ts
 function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
@@ -641,7 +641,7 @@ usePhysicalCameraOrientation(isUsed: boolean): void
 
 **示例：**
 
-ArkTS-Dyn示例: 
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -656,7 +656,7 @@ function usePhysicalCameraOrientation(cameraInput: camera.CameraInput, isUsed: b
 }
 ```
 
-ArkTS-Sta示例: 
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
