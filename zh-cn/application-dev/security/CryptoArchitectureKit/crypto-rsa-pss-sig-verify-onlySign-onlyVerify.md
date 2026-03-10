@@ -43,3 +43,45 @@
 - 同步方法示例：
 
   <!-- @[rsa_pss_onlysign_onlyverify_signature_verification_synchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/rsa_pss_onlysign_onlyverify_signature_verification_synchronous.ets) -->
+  
+  ``` TypeScript
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
+  
+  function signMessagePromise(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
+    let signAlg = 'RSA|PSS|SHA256|MGF1_SHA256|OnlySign';
+    let signer = cryptoFramework.createSign(signAlg);
+    signer.initSync(priKey);
+    let signData = signer.signSync(digestBlob);
+    return signData;
+  }
+  
+  function verifyMessagePromise(digestBlob: cryptoFramework.DataBlob, signMessageBlob: cryptoFramework.DataBlob,
+    pubKey: cryptoFramework.PubKey) {
+    let verifyAlg = 'RSA|PSS|SHA256|MGF1_SHA256|OnlyVerify';
+    let verifier = cryptoFramework.createVerify(verifyAlg);
+    verifier.initSync(pubKey);
+    let res = verifier.verifySync(digestBlob, signMessageBlob);
+    console.info('verify result: ' + res);
+    return res;
+  }
+  
+  function main() {
+    let messageData: cryptoFramework.DataBlob =
+      { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
+    // 先使用 Md 计算 SHA256 摘要（32字节）
+    let md = cryptoFramework.createMd('SHA256');
+    md.updateSync(messageData);
+    let digestBlob = md.digestSync();
+    let keyGenAlg = 'RSA1024';
+    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+    let keyPair = generator.generateKeyPairSync();
+    let signData = signMessagePromise(keyPair.priKey, digestBlob);
+    let verifyResult = verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
+    if (verifyResult === true) {
+      console.info('verify result: success.');
+    } else {
+      console.error('verify result: failed.');
+    }
+  }
+  ```
