@@ -363,7 +363,9 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.si
 
 ## Phone/Tablet弹窗模式配置说明
 
-从API version 23开始，支持在设备Phone/Tablet上通过策略控制是否弹出选择共享内容弹窗。配置共享内容弹窗模式时，无需指定录制模式，仅需要通过[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置即可。
+从API version 23开始，支持在设备Phone/Tablet上通过策略控制是否弹出选择共享内容弹窗。
+
+在PC/2in1设备上，是否弹出选择共享内容弹窗还受录制模式控制，在Phone/Tablet设备上可以通过[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)配置选择共享内容弹窗模式，无需指定录制模式。
 
 ```c++
 // 创建CaptureStrategy对象。
