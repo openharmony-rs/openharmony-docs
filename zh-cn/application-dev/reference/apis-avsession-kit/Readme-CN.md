@@ -32,7 +32,9 @@
     - [Interface (其他)](arkts-apis-avsession-AVMusicTemplate-i.md)
     - [Enums](arkts-apis-avsession-AVMusicTemplate-e.md)
     - [Types](arkts-apis-avsession-AVMusicTemplate-t.md)
+  <!--Del-->
   - [@ohos.multimedia.avMusicTemplate (音频模板)(系统接口)](js-apis-avsession-avMusicTemplate-sys.md)
+  <!--DelEnd-->
 - ArkTS组件<!--avsession-comp-->
   - [@ohos.multimedia.avCastPicker (投播组件)](ohos-multimedia-avcastpicker.md)
   - [@ohos.multimedia.avInputCastPicker（录音设备选择组件）](ohos-multimedia-avinputcastpicker.md)
