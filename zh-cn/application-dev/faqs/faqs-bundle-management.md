@@ -14,7 +14,7 @@
 
 **参考链接**
 
-[@ohos.bundle.bundleManager \(应用程序包管理模块\)](../reference/apis-ability-kit/js-apis-bundleManager.md)
+[@ohos.bundle.bundleManager (应用程序包管理模块)](../reference/apis-ability-kit/js-apis-bundleManager.md)
 
 
 ## 如何获取应用配置的versionCode和versionName(API 9)
@@ -134,7 +134,7 @@ console.info(`bundleName: ${context.abilityInfo.bundleName}`)
 
 **参考链接**
 
-[@ohos.bundle.bundleManager \(应用程序包管理模块\)](../reference/apis-ability-kit/js-apis-bundleManager.md)
+[@ohos.bundle.bundleManager (应用程序包管理模块)](../reference/apis-ability-kit/js-apis-bundleManager.md)
 
 
 ## 如何查询进程的pid(API 9)
@@ -197,5 +197,5 @@ private pid = process.pid;
 
 **参考链接**
 
-[supportWindowModes参考文档](../reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md)
+[supportWindowModes参考文档](../reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md#abilityinfo-1)
 
