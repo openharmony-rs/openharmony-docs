@@ -251,6 +251,19 @@ libnative_buffer.so
 
     1. 从NativeWindow中获取OHNativeWindowBuffer。
         <!-- @[nativewindow_request_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
+        
+        ``` C++
+        OHNativeWindowBuffer *buffer = nullptr;
+        int releaseFenceFd = INVALID_FD;
+        int32_t result = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow_, &buffer, &releaseFenceFd);
+        if (result != SUCCESS || buffer == nullptr) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                         "OHNativeRender", "Failed to request buffer, ret : %{public}d.", result);
+            return;
+        }
+        // ...
+        BufferHandle *handle = OH_NativeWindow_GetBufferHandleFromNative(buffer);
+        ```
 
     2. 将生产的内容写入OHNativeWindowBuffer。
         <!-- @[write_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
