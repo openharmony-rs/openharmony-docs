@@ -933,7 +933,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: multiWindowAccess(multiWindow: boolean)
 
-ArkTS-Sta: multiWindowAccess(multiWindow: boolean | undefined): this
+ArkTS-Sta: multiWindowAccess(multiWindow: boolean | undefined)
 
 设置是否开启多窗口权限。若未显式调用该属性或入参值为undefined时，默认不开启多窗口权限。
 
@@ -2392,7 +2392,7 @@ ArkTS-Sta: pinchSmooth(isEnabled: boolean | undefined)
 
 ArkTS-Dyn: allowWindowOpenMethod(flag: boolean)
 
-ArkTS-Sta: allowWindowOpenMethod(flag: boolean | undefined): this
+ArkTS-Sta: allowWindowOpenMethod(flag: boolean | undefined)
 
 设置网页是否可以通过JavaScript自动打开新窗口。
 
@@ -4197,7 +4197,7 @@ struct WebComponent {
 
 ArkTS-Dyn: keyboardAvoidMode(mode: WebKeyboardAvoidMode)
 
-ArkTS-Sta: keyboardAvoidMode(mode: WebKeyboardAvoidMode | undefined): this
+ArkTS-Sta: keyboardAvoidMode(mode: WebKeyboardAvoidMode | undefined)
 
 Web组件自定义软件键盘避让模式。若未显式调用该属性或入参值为undefined时，默认开启软件键盘避让行为。
 
@@ -5038,7 +5038,7 @@ struct SelectionMenuLongPress {
 
 ArkTS-Dyn: blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode)
 
-ArkTS-Sta: blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode | undefined): this
+ArkTS-Sta: blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode | undefined)
 
 设置当软键盘收起时Web元素失焦模式。若未显式调用该属性或入参值为undefined时，软键盘收起时Web组件失焦功能关闭。
 

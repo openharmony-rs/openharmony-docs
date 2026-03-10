@@ -1489,7 +1489,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
 
-ArkTS-Sta: onRenderExited(callback: Callback\<OnRenderExitedEvent\> | undefined): this
+ArkTS-Sta: onRenderExited(callback: Callback\<OnRenderExitedEvent\> | undefined)
 
 应用渲染进程异常退出时触发该回调。
 
@@ -1565,7 +1565,7 @@ ArkTS-Sta: onRenderExited(callback: Callback\<OnRenderExitedEvent\> | undefined)
 
 ArkTS-Dyn: onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
 
-ArkTS-Sta: onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback | undefined): this
+ArkTS-Sta: onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback | undefined)
 
 渲染进程无响应时触发该回调函数。如果Web组件无法处理输入事件，或者无法在合理的时间范围内导航到新的URL，则认为网页进程无响应，并将触发该回调。
 
@@ -1637,7 +1637,7 @@ ArkTS-Sta: onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCa
 
 ArkTS-Dyn: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
 
-ArkTS-Sta: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback | undefined): this
+ArkTS-Sta: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback | undefined)
 
 渲染进程由无响应状态变回正常运行状态时触发该回调函数，该回调表明该网页并非真正卡死。
 
@@ -4142,7 +4142,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
-ArkTS-Sta: onWindowNew(callback: Callback\<OnWindowNewEvent\> | undefined): this
+ArkTS-Sta: onWindowNew(callback: Callback\<OnWindowNewEvent\> | undefined)
 
 使能multiWindowAccess情况下，通知用户新建窗口请求。
 
@@ -4491,7 +4491,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onActivateContent(callback: Callback\<void>)
 
-ArkTS-Sta: onActivateContent(callback: VoidCallback | undefined): this
+ArkTS-Sta: onActivateContent(callback: VoidCallback | undefined)
 
 当Web页面触发window.open(url, name)时，会根据name查找是否存在已绑定的Web实例。若存在，该实例将收到此回调以通知应用需将其展示至前端；若不存在，则通过[onWindowNew](#onwindownew9)通知应用创建新Web实例。
 
@@ -4662,7 +4662,7 @@ ArkTS-Dyn示例：
 
 ArkTS-Dyn: onWindowExit(callback: () => void)
 
-ArkTS-Sta: onWindowExit(callback: (() => void) | undefined): this
+ArkTS-Sta: onWindowExit(callback: (() => void) | undefined)
 
 通知用户窗口关闭请求。和[onWindowNew](#onwindownew9)一样，从安全角度讲，应用应该确保用户可以知道他们交互的页面已关闭。
 
@@ -4905,7 +4905,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onPageVisible(callback: Callback\<OnPageVisibleEvent\>)
 
-ArkTS-Sta: onPageVisible(callback: Callback\<OnPageVisibleEvent\> | undefined): this
+ArkTS-Sta: onPageVisible(callback: Callback\<OnPageVisibleEvent\> | undefined)
 
 设置旧页面不再呈现，新页面即将可见时触发的回调函数。
 
@@ -4970,7 +4970,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
 
-ArkTS-Sta: onInterceptKeyEvent(callback: ((event: KeyEvent) => boolean) | undefined): this
+ArkTS-Sta: onInterceptKeyEvent(callback: ((event: KeyEvent) => boolean) | undefined)
 
 设置键盘事件的回调函数，该回调在被Webview使用前触发。
 
@@ -5796,7 +5796,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onControllerAttached(callback: () => void)
 
-ArkTS-Sta: onControllerAttached(callback: (() => void) | undefined): this
+ArkTS-Sta: onControllerAttached(callback: (() => void) | undefined)
 
 当Controller成功绑定到Web组件时触发该回调，并且该Controller必须为WebviewController，且禁止在该事件回调前调用Web组件相关的接口，否则会抛出js-error异常。
 
@@ -7098,7 +7098,7 @@ ArkTS-Sta: onViewportFitChanged(callback: OnViewportFitChangedCallback | undefin
 
 ArkTS-Dyn: onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 
-ArkTS-Sta: onInterceptKeyboardAttach(callback: WebKeyboardCallback | undefined): this
+ArkTS-Sta: onInterceptKeyboardAttach(callback: WebKeyboardCallback | undefined)
 
 网页中可编辑元素（如input标签）拉起软键盘之前会回调该接口，应用可以使用该接口拦截系统软键盘的弹出，配置应用定制的软键盘（应用根据该接口可以决定使用系统默认软键盘/定制enter键的系统软键盘/全部由应用自定义的软键盘）。
 

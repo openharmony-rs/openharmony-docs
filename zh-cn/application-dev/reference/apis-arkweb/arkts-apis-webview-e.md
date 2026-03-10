@@ -18,14 +18,14 @@
 
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
-| EditText      | 0 |可编辑的区域。                            |
-| Email         | 1 |电子邮件地址。                            |
-| HttpAnchor    | 2 |超链接，其中src为http。                     |
-| HttpAnchorImg | 3 |带有超链接的图片，其中src为http + HTML::img。 |
-| Img           | 4 |HTML::img标签。                           |
-| Map           | 5 |地理地址。                                |
-| Phone         | 6 |电话号码。                                |
-| Unknown       | 7 |未知内容。                                |
+| ArkTS-Dyn:EditText <br>ArkTS-Sta: EDIT_TEXT       | 0 |可编辑的区域。                            |
+| ArkTS-Dyn:Email <br>ArkTS-Sta: EMAIL          | 1 |电子邮件地址。                            |
+| ArkTS-Dyn:HttpAnchor <br>ArkTS-Sta: HTTP_ANCHOR     | 2 |超链接，其中src为http。                     |
+| ArkTS-Dyn:HttpAnchorImg <br>ArkTS-Sta: HTTP_ANCHOR_IMG  | 3 |带有超链接的图片，其中src为http + HTML::img。 |
+| ArkTS-Dyn:Img <br>ArkTS-Sta: IMG            | 4 |HTML::img标签。                           |
+| ArkTS-Dyn:Map <br>ArkTS-Sta: MAP          | 5 |地理地址。                                |
+| ArkTS-Dyn:Phone <br>ArkTS-Sta: PHONE         | 6 |电话号码。                                |
+| ArkTS-Dyn:Unknown <br>ArkTS-Sta: UNKNOWN       | 7 |未知内容。                                |
 
 ## SecureDnsMode<sup>10+</sup>
 
