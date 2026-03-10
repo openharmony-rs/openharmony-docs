@@ -89,6 +89,11 @@ libnative_buffer.so
 
 4. **销毁OH_NativeBuffer**。
     <!-- @[nativebuffer_unreference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+    
+    ``` C++
+    OH_NativeBuffer_Unreference(nativeBuffer);
+    nativeBuffer = nullptr;
+    ```
 
 ## 相关实例
 
