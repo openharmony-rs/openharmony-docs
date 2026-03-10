@@ -3719,7 +3719,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onScroll(callback: Callback\<OnScrollEvent\>)
 
-ArkTS-Sta: onScroll(callback: Callback\<OnScrollEvent\> | undefined): this
+ArkTS-Sta: onScroll(callback: Callback\<OnScrollEvent\> | undefined)
 
 通知网页全局滚动位置。
 
@@ -5728,7 +5728,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onOverScroll(callback: Callback\<OnOverScrollEvent\>)
 
-ArkTS-Sta: onOverScroll(callback: Callback\<OnOverScrollEvent\> | undefined): this
+ArkTS-Sta: onOverScroll(callback: Callback\<OnOverScrollEvent\> | undefined)
 
 该接口在网页过度滚动时触发，用于通知网页过度滚动的偏移量。
 

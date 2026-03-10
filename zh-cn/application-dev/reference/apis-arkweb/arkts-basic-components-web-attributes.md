@@ -405,7 +405,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: overScrollMode(mode: OverScrollMode)
 
-ArkTS-Sta: overScrollMode(mode: OverScrollMode | undefined): this
+ArkTS-Sta: overScrollMode(mode: OverScrollMode | undefined)
 
 设置Web过滚动模式。当过滚动模式开启时，当用户在Web根页面上滑动到边缘时，Web会通过弹性动画弹回界面，根页面上的内部页面不会触发回弹。该属性没有显式调用时，默认关闭过滚动模式。
 
@@ -955,7 +955,7 @@ ArkTS-Sta: multiWindowAccess(multiWindow: boolean | undefined): this
 
 ArkTS-Dyn: horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
-ArkTS-Sta: horizontalScrollBarAccess(horizontalScrollBar: boolean | undefined): this
+ArkTS-Sta: horizontalScrollBarAccess(horizontalScrollBar: boolean | undefined)
 
 设置是否显示横向滚动条，包括系统默认滚动条和用户自定义滚动条。该属性没有显式调用时，默认显示横向滚动条。
 
@@ -1084,7 +1084,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: verticalScrollBarAccess(verticalScrollBar: boolean)
 
-ArkTS-Sta: verticalScrollBarAccess(verticalScrollBar: boolean | undefined): this
+ArkTS-Sta: verticalScrollBarAccess(verticalScrollBar: boolean | undefined)
 
 设置是否显示纵向滚动条，包括系统默认滚动条和用户自定义滚动条。该属性没有显式调用时，默认显示纵向滚动条。
 
@@ -3335,7 +3335,7 @@ ArkTS-Sta: layoutMode(mode: WebLayoutMode | undefined)
 
 ArkTS-Dyn: nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 
-ArkTS-Sta: nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt | undefined): this
+ArkTS-Sta: nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt | undefined)
 
 调用以设置嵌套滚动选项。
 
