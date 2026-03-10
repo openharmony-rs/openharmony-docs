@@ -20,6 +20,10 @@ import { camera } from '@kit.CameraKit';
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型                           |   只读    |   可选   | 说明       |
 | ------ | ----------------------------- | --------  |  ------ | ---------- |
 | main | [ImageType](arkts-apis-camera-t.md#imagetype) |    否   |    否    | 全质量图和未压缩图的对象。 |
@@ -36,6 +40,10 @@ release(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型            | 说明                     |
@@ -43,6 +51,18 @@ release(): Promise\<void\>
 | Promise\<void\> | Promise对象，无返回结果。 |
 
 **示例：**
+
+ArkTs-Dyn示例: 
+
+```ts
+import { camera } from '@kit.CameraKit';
+
+async function releaseCapturePhoto(capturePhoto: camera.CapturePhoto): Promise<void> {
+  await capturePhoto.release();
+}
+```
+
+ArkTs-Sta示例: 
 
 ```ts
 import { camera } from '@kit.CameraKit';

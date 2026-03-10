@@ -23,6 +23,10 @@ isControlCenterSupported(): boolean
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    |说明 |
@@ -30,6 +34,17 @@ isControlCenterSupported(): boolean
 | boolean | 返回是否支持相机控制器。true表示支持，false表示不支持。 |
 
 **示例：**
+
+ArkTs-Dyn示例: 
+
+```ts
+function isControlCenterSupported(videoSession: camera.VideoSession): boolean {
+    let isSupported: boolean = videoSession.isControlCenterSupported();
+    return isSupported;
+}
+```
+
+ArkTs-Sta示例: 
 
 ```ts
 function isControlCenterSupported(videoSession: camera.VideoSession): boolean {
@@ -48,6 +63,10 @@ getSupportedEffectTypes(): Array\<ControlCenterEffectType\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型 | 说明|
@@ -55,6 +74,18 @@ getSupportedEffectTypes(): Array\<ControlCenterEffectType\>
 | Array<[ControlCenterEffectType](arkts-apis-camera-e.md#controlcentereffecttype20)> | 支持的效果类型。 |
 
 **示例：**
+
+ArkTs-Dyn示例: 
+
+```ts
+function getSupportedEffectTypes(videoSession: camera.VideoSession): Array<camera.ControlCenterEffectType> {
+    let effectTypes: Array<camera.ControlCenterEffectType> = [];
+    effectTypes = videoSession.getSupportedEffectTypes();
+    return effectTypes;
+}
+```
+
+ArkTs-Sta示例: 
 
 ```ts
 function getSupportedEffectTypes(videoSession: camera.VideoSession): Array<camera.ControlCenterEffectType> {

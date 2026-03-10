@@ -881,6 +881,10 @@ isBandwidthCompressionSupported(): boolean
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Dyn起始版本：** 23
+
 **返回值：**
 
 | 类型            | 说明                     |
@@ -888,6 +892,26 @@ isBandwidthCompressionSupported(): boolean
 | boolean | 是否支持预览带宽压缩。true表示支持，false表示不支持。 |
 
 **示例：**
+
+ArkTs-Dyn示例: 
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isBandwidthCompressionSupported(previewOutput: camera.PreviewOutput): boolean {
+  let supported: boolean = false;
+  try {
+    supported = previewOutput.isBandwidthCompressionSupported();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The previewOutput.isBandwidthCompressionSupported call failed. error code: ${err.code}`);
+  }
+  return supported;
+}
+```
+
+ArkTs-Sta示例: 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -920,6 +944,10 @@ enableBandwidthCompression(enabled: boolean): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Dyn起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                    | 必填 | 说明                                       |
@@ -937,6 +965,24 @@ enableBandwidthCompression(enabled: boolean): void
 | 7400201  | Camera service fatal error. |
 
 **示例：**
+
+ArkTs-Dyn示例: 
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled: boolean): void {
+  try {
+    previewOutput.enableBandwidthCompression(enabled);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The previewOutput.enableBandwidthCompression call failed. error code: ${err.code}`);
+  }
+}
+```
+
+ArkTs-Sta示例: 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

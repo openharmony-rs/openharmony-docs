@@ -25,6 +25,10 @@ enableControlCenter(enabled: boolean): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                   | 必填 | 说明                  |
@@ -40,6 +44,19 @@ enableControlCenter(enabled: boolean): void
 | 7400103  | Session not config.      |
 
 **示例：**
+
+ArkTs-Dyn示例: 
+
+```ts
+function enableControlCenter(videoSession: camera.VideoSession, enable: boolean): void {
+    let isSupported: boolean = videoSession.isControlCenterSupported();
+    if (isSupported) {
+        videoSession.enableControlCenter(enable);
+    }
+}
+```
+
+ArkTs-Sta示例: 
 
 ```ts
 function enableControlCenter(videoSession: camera.VideoSession, enable: boolean): void {

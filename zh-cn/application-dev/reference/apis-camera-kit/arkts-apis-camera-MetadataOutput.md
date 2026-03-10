@@ -537,6 +537,10 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
@@ -554,6 +558,24 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 | 7400201                |  Camera service fatal error.                           |
 
 **示例：**
+
+ArkTs-Dyn示例: 
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+  try {
+    metadataOutput.addMetadataObjectTypes(types);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`addMetadataObjectTypes error. error code: ${err.code}`);
+  }
+}
+```
+
+ArkTs-Sta示例: 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -579,6 +601,10 @@ removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
@@ -596,6 +622,24 @@ removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 | 7400201                |  Camera service fatal error.                           |
 
 **示例：**
+
+ArkTs-Dyn示例: 
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+  try {
+    metadataOutput.removeMetadataObjectTypes(types);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`removeMetadataObjectTypes error. error code: ${err.code}`);
+  }
+}
+```
+
+ArkTs-Sta示例: 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

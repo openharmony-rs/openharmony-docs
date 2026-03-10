@@ -14,6 +14,10 @@ type ImageType = image.Image | image.Picture
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型      | 说明                                                            |
 |---------|---------------------------------------------------------------|
 | [image.Image](../apis-image-kit/arkts-apis-image-Image.md) | 图片容器类型，用于获取全质量图。 |

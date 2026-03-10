@@ -704,7 +704,11 @@ on(type: 'systemPressureLevelChange', callback: AsyncCallback\<SystemPressureLev
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -739,7 +743,11 @@ off(type: 'systemPressureLevelChange', callback?: AsyncCallback\<SystemPressureL
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -764,7 +772,11 @@ on(type: 'macroStatusChanged', callback: AsyncCallback\<boolean\>): void
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -799,7 +811,11 @@ off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 

@@ -498,6 +498,10 @@ onCapturePhotoAvailable(callback: Callback\<CapturePhoto\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型      | 必填 | 说明                                  |
@@ -505,6 +509,23 @@ onCapturePhotoAvailable(callback: Callback\<CapturePhoto\>): void
 | callback | Callback\<[CapturePhoto](arkts-apis-camera-CapturePhoto.md)\> | 是   | 回调函数，用于监听全质量图和未压缩图上报事件。 |
 
 **示例：**
+
+ArkTs-Dyn示例: 
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { image } from '@kit.ImageKit';
+
+function callback(capturePhoto: camera.CapturePhoto): void {
+  let picture: image.Image | image.Picture = capturePhoto.main;
+}
+
+function registerCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onCapturePhotoAvailable(callback);
+}
+```
+
+ArkTs-Sta示例: 
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -531,6 +552,10 @@ offCapturePhotoAvailable(callback?: Callback\<CapturePhoto\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                    | 必填 | 说明                                       |
@@ -538,6 +563,23 @@ offCapturePhotoAvailable(callback?: Callback\<CapturePhoto\>): void
 | callback | Callback\<[CapturePhoto](arkts-apis-camera-CapturePhoto.md)\> | 否  | 回调函数，如果指定参数则取消对应callback，callback对象不可是匿名函数，否则取消所有callback。 |
 
 **示例：**
+
+ArkTs-Dyn示例：
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { image } from '@kit.ImageKit';
+
+function callback(capturePhoto: camera.CapturePhoto): void {
+  let picture: image.Image | image.Picture = capturePhoto.main;
+}
+
+function unRegisterCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offCapturePhotoAvailable(callback);
+}
+```
+
+ArkTs-Sta示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -2009,76 +2051,9 @@ function testGetActiveProfile(photoOutput: camera.PhotoOutput): camera.Profile |
 
 ## getPhotoRotation<sup>12+</sup>
 
-getPhotoRotation(deviceDegree?: number): ImageRotation
+ArkTS-Dyn: getPhotoRotation(deviceDegree?: number): ImageRotation
 
-获取拍照旋转角度。
-
-- 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
-- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名     | 类型         | 必填 | 说明                       |
-| -------- | --------------| ---- | ------------------------ |
-| deviceDegree | number | 否   | 设备旋转角度，单位度，取值范围：[0, 360]。<br>若入参超过该范围，则取入参除以360的余数。<br>从API version 23开始，入参deviceDegree为可选参数，当不传入参数时，由系统获取deviceDegree进行拍照旋转角度计算。 |
-
-**返回值：**
-
-|      类型      | 说明        |
-| -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 返回拍照旋转角度。若接口调用失败，返回undefined。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID   | 错误信息                         |
-|---------|------------------------------|
-| 7400201 | Camera service fatal error.  |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : number): camera.ImageRotation {
-  let photoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
-  try {
-    photoRotation = photoOutput.getPhotoRotation(deviceDegree);
-    console.info(`Photo rotation is: ${photoRotation}`);
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The photoOutput.getPhotoRotation call failed. error code: ${err.code}`);
-  }
-  return photoRotation;
-}
-
-function testGetPhotoRotationWithOutParam(photoOutput: camera.PhotoOutput): camera.ImageRotation {
-  let photoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
-  try {
-    photoRotation = photoOutput.getPhotoRotation();
-    console.info(`Photo rotation is: ${photoRotation}`);
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The photoOutput.testGetPhotoRotationWithOutParam call failed. error code: ${err.code}`);
-  }
-  return photoRotation;
-}
-```
-
-## getPhotoRotation<sup>12+</sup>
-
-ArkTS-Dyn: getPhotoRotation(deviceDegree: number): ImageRotation
-
-ArkTS-Sta: getPhotoRotation(deviceDegree: int): ImageRotation
+ArkTS-Sta: getPhotoRotation(deviceDegree?: int): ImageRotation
 
 获取拍照旋转角度。
 
@@ -2098,7 +2073,7 @@ ArkTS-Sta: getPhotoRotation(deviceDegree: int): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 设备旋转角度。 |
+| deviceDegree | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 设备旋转角度。 |
 
 **返回值：**
 
@@ -2234,7 +2209,11 @@ isPhotoQualityPrioritizationSupported(qualityPrioritization: PhotoQualityPriorit
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 21
 
 **参数：**
 
@@ -2286,7 +2265,11 @@ setPhotoQualityPrioritization(qualityPrioritization: PhotoQualityPrioritization)
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 21
 
 **参数：**
 

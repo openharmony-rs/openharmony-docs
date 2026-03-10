@@ -63,7 +63,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
-ArkTS-Sta示例：
+ArkTS-Sta示例: 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -552,6 +552,10 @@ isPhysicalCameraOrientationVariable(): boolean
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型        | 说明                                         |
@@ -577,6 +581,10 @@ getPhysicalCameraOrientation(): number
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型        | 说明                                         |
@@ -584,6 +592,16 @@ getPhysicalCameraOrientation(): number
 | number    | 返回设备当前折叠状态下的物理镜头角度。 |
 
 **示例：**
+
+ArkTs-Dyn示例: 
+
+```ts
+function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
+  let physicalCameraOrientation: number = cameraInput.getPhysicalCameraOrientation();
+  return physicalCameraOrientation;
+}
+```
+ArkTs-Sta示例: 
 
 ```ts
 function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
@@ -602,6 +620,10 @@ usePhysicalCameraOrientation(isUsed: boolean): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                         | 必填 | 说明                                               |
@@ -618,6 +640,23 @@ usePhysicalCameraOrientation(isUsed: boolean): void
 | 7400201 | Camera service fatal error.               |
 
 **示例：**
+
+ArkTS-Dyn示例: 
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function usePhysicalCameraOrientation(cameraInput: camera.CameraInput, isUsed: boolean): void {
+  try {
+    cameraInput.usePhysicalCameraOrientation(isUsed);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The usePhysicalCameraOrientation call failed. error code: ${err.code}`);
+  }
+}
+```
+
+ArkTS-Sta示例: 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -644,7 +683,12 @@ on(type: 'cameraOcclusionDetection', callback: AsyncCallback\<CameraOcclusionDet
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 23
+
 
 **参数：**
 
@@ -684,7 +728,11 @@ off(type: 'cameraOcclusionDetection', callback?: AsyncCallback\<CameraOcclusionD
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 23
 
 **参数：**
 

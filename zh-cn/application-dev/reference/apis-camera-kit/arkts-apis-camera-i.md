@@ -379,6 +379,10 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型        |   只读   |   可选   | 说明       |
 | -------- | ---------- | -------- | -------- | ---------- |
 | effectType | [ControlCenterEffectType](arkts-apis-camera-e.md#controlcentereffecttype20) |   是    |    否    | 相机控制器效果类型。 |
@@ -392,6 +396,10 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型    | 只读 | 可选 | 说明           |
 | ---- | ------- | ---- |--| -------------- |
 | iso  | number  | 是   | 是 | ISO值。        |
@@ -403,6 +411,10 @@
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 类型       | 只读 | 可选 | 说明                                |
 |--------------------| ---------- | ---- | ---- |-----------------------------------|

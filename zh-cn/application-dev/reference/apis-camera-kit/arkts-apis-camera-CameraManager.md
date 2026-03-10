@@ -145,6 +145,10 @@ getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraO
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型                                                            | 必填 | 说明                      |
@@ -159,6 +163,19 @@ getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraO
 | [CameraOutputCapability](arkts-apis-camera-i.md#cameraoutputcapability)            | 相机输出能力。                   |
 
 **示例：**
+
+ArkTs-Dyn示例: 
+
+```ts
+import { camera } from '@kit.CameraKit';
+
+function getSupportedFullOutputCapability(camera: camera.CameraDevice, cameraManager: camera.CameraManager, sceneMode: camera.SceneMode): camera.CameraOutputCapability {
+  let cameraOutputCapability: camera.CameraOutputCapability = cameraManager.getSupportedFullOutputCapability(camera, sceneMode);
+  return cameraOutputCapability;
+}
+```
+
+ArkTs-Sta示例: 
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -1337,6 +1354,10 @@ getCameraDevices(position: CameraPosition, types: Array\<CameraType>, connectTyp
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                                    | 必填 | 说明                                                 |
@@ -1361,6 +1382,8 @@ getCameraDevices(position: CameraPosition, types: Array\<CameraType>, connectTyp
 
 **示例：**
 
+ArkTs-Dyn示例: 
+
 ```ts
 import { camera } from '@kit.CameraKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1375,6 +1398,25 @@ function getCameraDevices(cameraManager: camera.CameraManager, position: camera.
     console.error(`The getCameraDevices call failed. error code: ${err.code}`);
   }
 }
+```
+
+ArkTs-Sta示例: 
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getCameraDevices(cameraManager: camera.CameraManager, position: camera.CameraPosition, types: Array<camera.CameraType>, connectType: camera.ConnectionType): void {
+  try {
+    let cameraDevs: Array<camera.CameraDevice> = [];
+    cameraDevs = cameraManager.getCameraDevices(position, types, connectType);
+  } catch (error) {
+    // 失败返回错误码并处理。
+    let err = error as BusinessError;
+    console.error(`The getCameraDevices call failed. error code: ${err.code}`);
+  }
+}
+```
 
 ## getCameraConcurrentInfos<sup>18+</sup>
 
