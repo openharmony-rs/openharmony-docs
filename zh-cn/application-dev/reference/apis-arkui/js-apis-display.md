@@ -975,6 +975,7 @@ onChangeWithAttribute(displayAttributeOption: Array&lt;string&gt;, callback: Cal
 
 **ArkTS-Dyn起始版本：** 23
 
+**ArkTS-Sta起始版本：** 23
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                                                                                                                 |
