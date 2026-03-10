@@ -101,7 +101,7 @@ ArkTS-Dyn: fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param:
 
 ArkTS-Sta: fetchFrameByTime(timeUs: long, options: AVImageQueryOptions, param: PixelMapParams): Promise<image.PixelMap | undefined>
 
-异步方式获取视频缩略图。通过Promise获取返回值。
+异步方式获取视频缩略图。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
