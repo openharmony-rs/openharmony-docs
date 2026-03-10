@@ -237,6 +237,15 @@ libnative_buffer.so
 
 4. **设置NativeWindow的宽高**。
     <!-- @[set_buffer_geometry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
+    
+    ``` C++
+    int32_t result = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow_, SET_BUFFER_GEOMETRY,
+        static_cast<int32_t>(width_), static_cast<int32_t>(height_));
+    if (result != SUCCESS) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "OHNativeRender", "Failed to set buffer geometry.");
+        return false;
+    }
+    ```
 
 5. **将生产的内容写入OHNativeWindowBuffer**。
 
