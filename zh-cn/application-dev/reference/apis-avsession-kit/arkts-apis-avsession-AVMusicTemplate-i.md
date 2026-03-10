@@ -40,7 +40,7 @@
 
 ## MediaTabContent
 
-媒体标签页内容的定义。继承自[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)。
+媒体标签页内容的定义。继承自[OperResult](#operresult)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -53,7 +53,7 @@
 
 ## Compilation
 
-合集的定义。继承自[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)。
+合集的定义。继承自[OperResult](#operresult)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -109,7 +109,7 @@
 
 ## MediaEntity
 
-媒体实例的定义。继承自[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)。
+媒体实例的定义。继承自[OperResult](#operresult)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -141,7 +141,7 @@
 | type          | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源类型。         |
 | subEntityType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 是   | 子节点的媒体资源类型。 |
 | sort          | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort)       | 否   | 是   | 查询到的列表数据排序。 |
-| episodeRange  | [EpisodeRange](arkts-apis-avsession-AVMusicTemplate-i.md#episoderange) | 否   | 是   | 要查询的剧集区间。     |
+| episodeRange  | [EpisodeRange](#episoderange) | 否   | 是   | 要查询的剧集区间。     |
 
 ## EpisodeRange
 
@@ -158,7 +158,7 @@
 
 ## PageMediaEntity
 
-标签页媒体的定义。继承自[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)。
+标签页媒体的定义。继承自[OperResult](#operresult)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -171,13 +171,13 @@
 | hasMoreData     | boolean                                                      | 否   | 否   | 是否有下一页。true表示有，false表示没有。无默认值。|
 | totalSize       | number                                                       | 否   | 否   | 数据总大小。                                 |
 | memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源类型。                               |
-| elements        | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[] | 否   | 否   | 查询数据内容（根据类型传递相应的结构数据）。 |
+| elements        | [MediaEntity](#mediaentity)[] | 否   | 否   | 查询数据内容（根据类型传递相应的结构数据）。 |
 | sort            | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort)       | 否   | 是   | 数据排序。                                   |
-| episodeRange    | [EpisodeRange](arkts-apis-avsession-AVMusicTemplate-i.md#episoderange) | 否   | 是   | 剧集区间。                                   |
+| episodeRange    | [EpisodeRange](#episoderange) | 否   | 是   | 剧集区间。                                   |
 
 ## Single
 
-单曲的定义。继承自[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)。
+单曲的定义。继承自[MediaEntity](#mediaentity)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -187,8 +187,8 @@
 | ---------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------ |
 | isVip            | boolean                                                      | 否   | 否   | 是否是VIP歌曲。true表示是，false表示不是。无默认值。|
 | singer           | string                                                       | 否   | 否   | 歌手的名字。                               |
-| playInfo         | [PlayInfo](arkts-apis-avsession-AVMusicTemplate-i.md#playinfo) | 否   | 否   | 播放歌曲信息。                             |
-| favSubscribeData | [FavoriteData](arkts-apis-avsession-AVMusicTemplate-i.md#favoritedata) | 否   | 否   | 收藏或订阅的歌曲的信息。                   |
+| playInfo         | [PlayInfo](#playinfo) | 否   | 否   | 播放歌曲信息。                             |
+| favSubscribeData | [FavoriteData](#favoritedata) | 否   | 否   | 收藏或订阅的歌曲的信息。                   |
 | tags             | string[]                                                     | 否   | 是   | 歌曲标签信息的数组。                       |
 | settings         | [SettingItem](#settingitem)[]                                | 否   | 是   | 歌曲设置项的数组。                         |
 | downloadStatus   | [DownloadStatus](arkts-apis-avsession-AVMusicTemplate-e.md#downloadstatus) | 否   | 是   | 歌曲下载状态。                             |
@@ -251,7 +251,7 @@
 | title        | string                                                       | 否   | 否   | 设置项的标题。                                               |
 | desc         | string                                                       | 否   | 否   | 设置项的描述。                                               |
 | settingType  | [SettingType](arkts-apis-avsession-AVMusicTemplate-e.md#settingtype) | 否   | 是   | 设置项的类型。                                               |
-| settingValue | string \| boolean \| [SettingContent](arkts-apis-avsession-AVMusicTemplate-i.md#settingcontent)[] \| [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否   | 是   | 设置项的值。<br>- 当settingType类型是SettingType.SWITCH时，本值数据类型是boolean。<br>- 当settingType类型是SettingType.LIST时，本值数据类型是SettingContent数组。<br>- 当settingType类型是SettingType.JUMP时，本值数据类型是string。 |
+| settingValue | string \| boolean \| [SettingContent](#settingcontent)[] \| [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否   | 是   | 设置项的值。<br>- 当settingType类型是SettingType.SWITCH时，本值数据类型是boolean。<br>- 当settingType类型是SettingType.LIST时，本值数据类型是SettingContent数组。<br>- 当settingType类型是SettingType.JUMP时，本值数据类型是string。 |
 | mediaId      | string                                                       | 否   | 否   | 与当前设置关联的媒体ID。<br>如果设置与当前媒体信息相关联，需要设置mediaId；否则，不需要设置mediaId。 |
 
 ## SettingContent
@@ -317,7 +317,7 @@
 | dialogType  | [DialogType](arkts-apis-avsession-AVMusicTemplate-e.md#dialogtype) | 否   | 否   | 对话框的类型。                                               |
 | title       | string                                                       | 否   | 是   | 对话框的标题。                                               |
 | text        | string                                                       | 否   | 是   | 对话框的内容。                                               |
-| buttons     | [DialogButtonInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogbuttoninfo)[] | 否   | 是   | 对话框按钮的数组。                                           |
+| buttons     | [DialogButtonInfo](#dialogbuttoninfo)[] | 否   | 是   | 对话框按钮的数组。                                           |
 | qrCodes     | [QrCodeInfo](#qrcodeinfo)[]                                  | 否   | 是   | 对话框二维码的数组。<br>当设置了二维码信息时，此对话框将被识别为二维码对话框，并将优先显示二维码信息。最多可以设置两个。 |
 | description | string                                                       | 否   | 是   | 对话框的其他信息。                                           |
 
@@ -353,7 +353,7 @@
 
 ## CustomElement
 
-“我的主页”自定义元素的定义。继承自[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)。
+“我的主页”自定义元素的定义。继承自[OperResult](#operresult)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
