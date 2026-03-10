@@ -18097,6 +18097,8 @@ static setUserAgentClientHintsEnabled(enabled: boolean): void
 
 **ArkTS-Sta起始版本：** 24
 
+**模型约束：** ArkTS-Sta支持在Stage模型下使用。
+
 **参数：**
 
 | 参数名              | 类型    | 必填   |  说明 |
