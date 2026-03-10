@@ -481,18 +481,20 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeySystemRequired](#onkeysystemrequired23)。
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 事件类型，MediaKeySystem实例创建成功后可监听，需要设备证书时触发该事件。 |
-| callback | (eventInfo: \<[EventInfo](arkts-apis-drm-i.md#eventinfo)\>) => void  | 是   | 回调函数，返回事件信息。只要有该事件返回就证明需请求设备证书。                 |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 是   | 回调函数，监听设备证书请求并返回事件信息。只要有该事件返回就证明需请求设备证书。                 |
 
 **错误码：**
 
@@ -505,24 +507,51 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
 **示例：**
 
-ArkTS-Dyn示例：
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
-  console.log('keySystemRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+  console.info('keySystemRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
 ```
 
-ArkTS-Sta示例：
+## onKeySystemRequired<sup>23+</sup>
 
+onKeySystemRequired(callback: (eventInfo: EventInfo) => void): void
+
+监听设备证书请求事件，获取事件信息。使用callback异步回调。
+
+**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keySystemRequired')](#onkeysystemrequired)。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                                  |
+| -------- | -------------------- | ---- | ------------------------------------- |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 是   | 回调函数，监听设备证书请求并返回事件信息。只要有该事件返回就证明需请求设备证书。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 24700101                |  All unknown errors                  |
+
+**示例：**
 ```ts
 import { drm } from '@kit.DrmKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
+mediaKeySystem.onKeySystemRequired((eventInfo: drm.EventInfo) => {
   console.info('keySystemRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
 ```
@@ -534,18 +563,20 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeySystemRequired](#offkeysystemrequired23)。
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，MediaKeySystem实例创建成功后可监听。 |
-| callback | (eventInfo: \<[EventInfo](arkts-apis-drm-i.md#eventinfo)\>) => void  | 否   | 回调函数，返回事件信息。可选。                |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，监听设备证书请求并返回事件信息。只要有该事件返回就证明需请求设备证书。可选。                 |
 
 **错误码：**
 
@@ -562,6 +593,42 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 mediaKeySystem.off('keySystemRequired');
 ```
+
+## offKeySystemRequired<sup>23+</sup>
+
+offKeySystemRequired(callback?: (eventInfo: EventInfo) => void): void
+
+注销设备证书请求事件的监听。使用callback异步回调。
+
+**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keySystemRequired')](#offkeysystemrequired)。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                                  |
+| -------- | -------------------- | ---- | ------------------------------------- |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否  | 回调函数，监听设备证书请求并返回事件信息。只要有该事件返回就证明需请求设备证书。可选。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 24700101                |  All unknown errors                  |
+
+**示例：**
+
+```ts
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+mediaKeySystem.offKeySystemRequired();
+```
+
 
 ## createMediaKeySession
 
@@ -651,9 +718,6 @@ createMediaKeySession(level: ContentProtectionLevel): MediaKeySession | undefine
 | 24700201                |  Fatal service error, for example, service died.                  |
 
 **示例：**
-
-ArkTS-Dyn示例：
-
 ```ts
 import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -719,6 +783,7 @@ createMediaKeySession(): MediaKeySession | undefined
 创建DRM解决方案默认内容保护级别的MediaKeySession实例。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
