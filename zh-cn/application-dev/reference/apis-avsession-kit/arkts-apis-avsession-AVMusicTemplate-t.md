@@ -837,7 +837,7 @@ type ReportExecuteAbilityEvent = (want: WantAgent) => void
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| want   | [WantAgent](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#WantAgent) | 是   | 三方页面启动信息。 |
+| want   | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 是   | 三方页面启动信息。 |
 
 **示例：**
 

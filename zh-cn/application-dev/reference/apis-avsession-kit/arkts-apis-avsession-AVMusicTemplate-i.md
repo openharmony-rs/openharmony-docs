@@ -22,7 +22,7 @@
 | ------------- | ------------------------------------------------------------ | ---- | ---- | -------------------------------------------------- |
 | tabId         | string                                                       | 否   | 否   | 标签页的标识。                                     |
 | tabName       | string                                                       | 否   | 否   | 标签页的名称。                                     |
-| tabIcon       | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 标签页的图标（接入模板时在主界面的标签页中必填）。 |
+| tabIcon       | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 标签页的图标（接入模板时在主界面的标签页中必填）。 |
 | extraDataJson | string                                                       | 否   | 是   | 标签页上的附加内容。                               |
 
 ## OperResult
@@ -173,7 +173,7 @@
 | memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源类型。                               |
 | elements        | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[] | 否   | 否   | 查询数据内容（根据类型传递相应的结构数据）。 |
 | sort            | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort)       | 否   | 是   | 数据排序。                                   |
-| episodeRange    | [EpisodeRange](arkts-apis-avsession-AVMusicTemplate-i.md#episoderange) | 否   | 是   | 剧集区间                                     |
+| episodeRange    | [EpisodeRange](arkts-apis-avsession-AVMusicTemplate-i.md#episoderange) | 否   | 是   | 剧集区间。                                   |
 
 ## Single
 
@@ -251,7 +251,7 @@
 | title        | string                                                       | 否   | 否   | 设置项的标题。                                               |
 | desc         | string                                                       | 否   | 否   | 设置项的描述。                                               |
 | settingType  | [SettingType](arkts-apis-avsession-AVMusicTemplate-e.md#settingtype) | 否   | 是   | 设置项的类型。                                               |
-| settingValue | string \| boolean \| [SettingContent](arkts-apis-avsession-AVMusicTemplate-i.md#settingcontent)[] \| [WantAgent](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否   | 是   | 设置项的值。<br>- 当settingType类型是SettingType.SWITCH时，本值数据类型是boolean。<br>- 当settingType类型是SettingType.LIST时，本值数据类型是SettingContent数组。<br>- 当settingType类型是SettingType.JUMP时，本值数据类型是string。 |
+| settingValue | string \| boolean \| [SettingContent](arkts-apis-avsession-AVMusicTemplate-i.md#settingcontent)[] \| [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否   | 是   | 设置项的值。<br>- 当settingType类型是SettingType.SWITCH时，本值数据类型是boolean。<br>- 当settingType类型是SettingType.LIST时，本值数据类型是SettingContent数组。<br>- 当settingType类型是SettingType.JUMP时，本值数据类型是string。 |
 | mediaId      | string                                                       | 否   | 否   | 与当前设置关联的媒体ID。<br>如果设置与当前媒体信息相关联，需要设置mediaId；否则，不需要设置mediaId。 |
 
 ## SettingContent
@@ -267,7 +267,7 @@
 | value      | string                                                       | 否   | 否   | 设置的内容。                                        |
 | isSelected | boolean                                                      | 否   | 否   | 是否选择设置项内容。true表示选择，false表示不选择。 |
 | textTags   | string[]                                                     | 否   | 是   | 设置内容的描述的数组。                              |
-| imageTags  | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md)[] | 否   | 是   | 设置内容的标签描述的数组。                          |
+| imageTags  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)[] | 否   | 是   | 设置内容的标签描述的数组。                          |
 
 ## QrCodeInfo
 
@@ -284,9 +284,9 @@
 | titleName   | string                                                       | 否   | 否   | 标题名称。                                                   |
 | detailName  | string                                                       | 否   | 否   | 详情名称。                                                   |
 | tips        | string                                                       | 否   | 否   | 提示信息。                                                   |
-| icon        | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 与二维码关联的应用图标，用于应用登录的二维码应显示目标应用的图标。 |
+| icon        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 与二维码关联的应用图标，用于应用登录的二维码应显示目标应用的图标。 |
 | content     | string                                                       | 否   | 否   | 二维码的内容。                                               |
-| codeData    | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 二维码图片。                                                 |
+| codeData    | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 二维码图片。                                                 |
 | validPeriod | number                                                       | 否   | 否   | 二维码有效期（单位：秒）。<br/>当二维码到期时，二维码ID将用于再次查询并获得新的二维码。 |
 
 ## DialogActionInfo
@@ -347,9 +347,9 @@
 | ------------------ | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------- |
 | id                 | string                                                       | 否   | 否   | 会员购买信息的唯一ID。                      |
 | diagramUrl         | string                                                       | 否   | 否   | 会员购买演示的URL（必须采用21:9的宽高比）。 |
-| diagramData        | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 会员购买图片。                   |
-| diagramContent     | string                                                       | 否   | 否   | 会员购买图片的内容。                |
-| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md#memberpurchasetype) | 否   | 否   | 会员购买类型。                   |
+| diagramData        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 会员购买图片。                              |
+| diagramContent     | string                                                       | 否   | 否   | 会员购买图片的内容。                        |
+| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md#memberpurchasetype) | 否   | 否   | 会员购买类型。                              |
 
 ## CustomElement
 

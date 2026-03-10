@@ -16,7 +16,7 @@
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[Functions](arkts-apis-avsession-AVMusicTemplate-f.md)。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimedia.avMusicTemplate (音频模板)](arkts-apis-AVMusicTemplate.md)。
 
 ## 导入模块
 
@@ -266,7 +266,7 @@ getAllAVMusicTemplateDescriptors(userId?: number): AVMusicTemplateDescriptor[]
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | -------- |
-| userId | number  | 否   | 用户ID。 |
+| userId | number  | 否   | 用户ID。以用户传递为准，可为空。 |
 
 **返回值：**
 
@@ -386,7 +386,7 @@ export class ControllerManager {
 
 offAVMusicTemplateCreate(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;): void
 
-注销音频模板创建监听。使用callback异步回调。
+注销音频模板创建监听。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -493,7 +493,7 @@ export class ControllerManager {
 
 offAVMusicTemplateDestroy(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;): void
 
-注销音频模板销毁监听。使用callback异步回调。
+注销音频模板销毁监听。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
