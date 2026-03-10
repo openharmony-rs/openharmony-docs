@@ -6336,7 +6336,7 @@ password(password: boolean)
 >
 > 从API version 8开始支持，从API version 10开始废弃，建议使用[enableAutoFill<sup>23+</sup>](#enableautofill23)替代。
 
-**ArkTS模式：** 该接口适用于ArkTS-Dyn
+**ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
