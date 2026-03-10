@@ -6585,7 +6585,7 @@ on(event: 'autoSyncProgress', progress: Callback&lt;ProgressDetails&gt;): void
 
 | **错误码ID** | **错误信息**    |
 |-----------|--------|
-| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed;<br/>4. The event must be a not empty string; 5. The progress must be function. |
 | 801       | Capability not supported.  |
 | 14800014  | The target instance is already closed.     |
 
@@ -6633,7 +6633,6 @@ onAutoSyncProgress(progress: Callback&lt;ProgressDetails&gt;): void
 
 | **错误码ID** | **错误信息**    |
 |-----------|--------|
-| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported.  |
 | 14800014  | The target instance is already closed.     |
 
@@ -7409,7 +7408,6 @@ offAutoSyncProgress(progress?: Callback&lt;ProgressDetails&gt;): void
 
 | **错误码ID** | **错误信息**         |
 | ------------ |--------------------|
-| 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be valid. 3. The event must be a not empty string. 4. The progress must be function. |
 | 801       | Capability not supported.  |
 | 14800014  | The target instance is already closed.       |
 
