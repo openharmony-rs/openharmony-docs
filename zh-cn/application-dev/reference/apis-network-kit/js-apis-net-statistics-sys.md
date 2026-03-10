@@ -492,9 +492,9 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 
 ## statistics.setCalibrationTraffic<sup>26+</sup>
 
-setCalibrationTraffic(simId: int, remainTraffic: long, totalTraffic?: long): Promise\<void>;
+setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: number): Promise\<void>;
 
-设置流量校准数据。在做流量校准时，可通过本接口设置相关流量数据。使用 Promise 异步回调。
+设置流量校准数据。在做流量校准时，可通过本接口设置相关流量数据。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
