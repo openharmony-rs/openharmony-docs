@@ -418,7 +418,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 }
 ```
 
-### FormExtensionAbility.onConfigurationUpdate<sup>11+</sup>
+### FormExtensionAbility.onConfigurationUpdate
 
 onConfigurationUpdate(newConfig: Configuration): void
 

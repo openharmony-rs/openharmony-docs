@@ -1362,17 +1362,9 @@ ArkTS-Sta: reloadForms(context: UIAbilityContext, moduleName: string, abilityNam
 
 **返回值：**
 
-ArkTS-Dyn:
-
 | 类型          | 说明                                |
 | ------------ | ---------------------------------- |
-| Promise&lt;number&gt; | Promise对象。返回请求更新卡片的数量。 |
-
-ArkTS-Sta:
-
-| 类型          | 说明                                |
-| ------------ | ---------------------------------- |
-| Promise&lt;int&gt; | Promise对象。返回请求更新卡片的数量。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt;  | Promise对象。返回请求更新卡片的数量。 |
 
 **错误码：**
 
@@ -1457,17 +1449,9 @@ ArkTS-Sta: reloadAllForms(context: UIAbilityContext): Promise&lt;int&gt;
 
 **返回值：**
 
-ArkTS-Dyn:
-
 | 类型          | 说明                                |
 | ------------ | ---------------------------------- |
-| Promise&lt;number&gt; | Promise对象。返回请求更新卡片的数量。 |
-
-ArkTS-Sta:
-
-| 类型          | 说明                                |
-| ------------ | ---------------------------------- |
-| Promise&lt;int&gt; | Promise对象。返回请求更新卡片的数量。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt;  | Promise对象。返回请求更新卡片的数量。 |
 
 **错误码：**
 
