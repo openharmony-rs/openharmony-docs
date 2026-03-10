@@ -174,5 +174,5 @@
 
 | 名称                 | 类型                 | 只读 | 可选 | 说明                                     |
 | -------------------- | -------------------- | ---- | ---- | ---------------------------------------- |
-| isGroupIcon | boolean | 否 | 是 | 是否使用该通知[NotificationRequest](./js-apis-inner-notification-notificationRequest.md#notificationrequest-1)中的smallIcon字段作为通知成组后展示的组图标。当该通知是通知组中最新的一条通知，且开发者传入smallIcon时，是否使用smallIcon作为组图标。默认值为false。<br>- true：使用smallIcon作为组通知的图标。<br>- false：不使用smallIcon作为组通知的图标。|
+| isGroupIcon | boolean | 否 | 是 | 是否使用该通知[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)中的smallIcon字段作为通知成组后展示的组图标。当该通知是通知组中最新的一条通知，且开发者传入smallIcon时，是否使用smallIcon作为组图标。默认值为false。<br>- true：使用smallIcon作为组通知的图标。<br>- false：不使用smallIcon作为组通知的图标。|
 | groupTitle | string | 否 | 是 | 通知成组后展示的组标题。当该通知是通知组中最新的一条通知时，该字段生效。默认为空。 |
