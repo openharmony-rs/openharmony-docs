@@ -18,7 +18,7 @@ Failed to create the AVMusicTemplate.
 
 **错误描述**
 
- 音频模板创建失败。
+音频模板创建失败。
 
 **可能原因**
 
@@ -175,7 +175,7 @@ AVMusicTemplate Manager services exception.
 **处理步骤**
 
 1. 检查应用内其他核心功能是否出现了异常。
-1. 尝试重启设备。
+2. 尝试重启设备。
 
 ## 350000010 数据超过了允许的最大传输容量
 
