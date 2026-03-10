@@ -16,7 +16,7 @@ OH_ImageSource_Info是native层封装的ImageSource信息结构体，OH_ImageSou
 
 创建OH_ImageSource_Info对象使用[OH_ImageSourceInfo_Create](capi-image-source-native-h.md#oh_imagesourceinfo_create)函数。
 
-释放OH_ImageSource_Info对象使用[OH_ImageSourceInfo_Release](capi-image-source-native-h.md#oh_imagesourceinfo_release)函数。调用该接口之后，与OH_ImageSourceInfo结构体相关的属性均会被释放。因此在调用该接口前，请务必确认相关属性已不再被需要或对相关属性已完成深拷贝操作。
+释放OH_ImageSource_Info对象使用[OH_ImageSourceInfo_Release](capi-image-source-native-h.md#oh_imagesourceinfo_release)函数。调用该接口之后，与OH_ImageSource_Info结构体相关的属性均会被释放。因此在调用该接口前，请务必确认相关属性已不再被需要或对相关属性已完成深拷贝操作。
 
 OH_ImageSource_Info结构体内容和操作方式如下：
 

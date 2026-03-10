@@ -233,7 +233,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | 被操作的OH_ImageSource_Info指针。 |
-| uint32_t *height | 图片的高，单位：像素高 |
+| uint32_t *height | 图片的高，单位：像素 |
 
 **返回：**
 
