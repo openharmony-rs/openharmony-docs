@@ -67,7 +67,7 @@ ArkTS-Sta: Web(value: WebOptions, content_?: CustomBuilder)
 | 参数名        | 类型                                     | 必填   | 说明                                     |
 | ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | value        | [WebOptions](./arkts-basic-components-web-i.md#weboptions)   | 是    | 定义Web选项。 |
-| content_        | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder20)   | 否    | 子组件的Builder函数 <br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。|
+| content_        | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder20)   | 否    | 子组件的Builder函数 <br>**ArkTS模式：** 该参数仅适用于ArkTS-Sta。|
 
 **示例：**
 
