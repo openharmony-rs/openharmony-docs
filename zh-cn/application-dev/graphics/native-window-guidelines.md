@@ -119,10 +119,10 @@ libnative_window.so
             OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
         }
         // ...
-            callback_.OnSurfaceCreated = OnSurfaceCreatedCB;
-            callback_.OnSurfaceChanged = OnSurfaceChangedCB;
-            callback_.OnSurfaceDestroyed = OnSurfaceDestroyedCB;
-            callback_.DispatchTouchEvent = DispatchTouchEventCB;
+        callback_.OnSurfaceCreated = OnSurfaceCreatedCB;
+        callback_.OnSurfaceChanged = OnSurfaceChangedCB;
+        callback_.OnSurfaceDestroyed = OnSurfaceDestroyedCB;
+        callback_.DispatchTouchEvent = DispatchTouchEventCB;
         ```
 
        

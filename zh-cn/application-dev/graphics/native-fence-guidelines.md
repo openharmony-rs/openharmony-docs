@@ -69,7 +69,7 @@ libnative_fence.so
     ``` C++
     constexpr uint32_t TIMEOUT_MS = 5000;
     // ...
-        bool result = OH_NativeFence_Wait(INVALID_FD, TIMEOUT_MS);
+    bool result = OH_NativeFence_Wait(INVALID_FD, TIMEOUT_MS);
     ```
     
 4. **调用OH_NativeFence_WaitForever阻塞接口，等待fence完成后进行下一步操作**。
