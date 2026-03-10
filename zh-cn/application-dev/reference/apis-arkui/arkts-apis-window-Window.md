@@ -8910,7 +8910,7 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onRotationChange](#onrotationchange23)。
 
@@ -8988,7 +8988,7 @@ onRotationChange(callback: RotationChangeCallback&lt;RotationChangeInfo, Rotatio
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('rotationChange')](#onrotationchange19)。
 
@@ -9067,7 +9067,7 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offRotationChange](#offrotationchange23)。
 
@@ -9118,7 +9118,7 @@ offRotationChange(callback?: RotationChangeCallback&lt;RotationChangeInfo, Rotat
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('rotationChange')](#offrotationchange19)。
 
@@ -9172,7 +9172,7 @@ on(eventType: 'uiExtensionSecureLimitChange', callback: Callback&lt;boolean&gt;)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onUiExtensionSecureLimitChange](#onuiextensionsecurelimitchange23)。
 
@@ -9215,7 +9215,7 @@ onUiExtensionSecureLimitChange(callback: Callback&lt;boolean&gt;): void
 
 开启窗口内uiExtension安全限制变化事件的监听, 建议在窗口创建后立即监听。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('uiExtensionSecureLimitChange')](#onuiextensionsecurelimitchange20)。
 
@@ -9260,7 +9260,7 @@ off(eventType: 'uiExtensionSecureLimitChange', callback?: Callback&lt;boolean&gt
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offUiExtensionSecureLimitChange](#offuiextensionsecurelimitchange23)。
 
@@ -9309,7 +9309,7 @@ offUiExtensionSecureLimitChange(callback?: Callback&lt;boolean&gt;): void
 
 关闭窗口内uiextension安全限制变化事件的监听。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('uiExtensionSecureLimitChange')](#offuiextensionsecurelimitchange20)。
 
