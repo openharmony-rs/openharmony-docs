@@ -81,7 +81,7 @@
      this.logInfo_ += '\n[ERROR] deviceList is empty';
      return;
    }
-   /**
+   /*
    deviceList结构示例
    [
      {
@@ -131,7 +131,7 @@
        ]
      }
    ]
-   */
+    */
    this.deviceList_ = deviceList;
    ```
 
