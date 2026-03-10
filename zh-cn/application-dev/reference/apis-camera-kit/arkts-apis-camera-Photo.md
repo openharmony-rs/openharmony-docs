@@ -22,7 +22,7 @@ import { camera } from '@kit.CameraKit';
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称   | 类型                            |     必填     | 说明       |
@@ -41,7 +41,7 @@ release(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

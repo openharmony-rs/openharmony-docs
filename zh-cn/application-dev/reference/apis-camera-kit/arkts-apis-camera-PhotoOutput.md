@@ -25,7 +25,7 @@ capture(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -88,7 +88,7 @@ capture(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -148,7 +148,7 @@ capture(setting: PhotoCaptureSetting, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -235,7 +235,7 @@ capture(setting: PhotoCaptureSetting): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -374,7 +374,7 @@ onPhotoAvailable(callback: AsyncCallback\<Photo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -453,7 +453,7 @@ offPhotoAvailable(callback?: AsyncCallback\<Photo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -541,7 +541,7 @@ onCaptureStartWithInfo(callback: AsyncCallback\<CaptureStartInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -612,7 +612,7 @@ offCaptureStartWithInfo(callback?: AsyncCallback\<CaptureStartInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -642,7 +642,7 @@ isMovingPhotoSupported(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -690,7 +690,7 @@ enableMovingPhoto(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -787,7 +787,7 @@ onPhotoAssetAvailable(callback: AsyncCallback\<photoAccessHelper.PhotoAsset\>): 
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -858,7 +858,7 @@ offPhotoAssetAvailable(callback?: AsyncCallback\<photoAccessHelper.PhotoAsset\>)
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -886,7 +886,7 @@ isMirrorSupported(): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -917,7 +917,7 @@ enableMirror(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -964,7 +964,7 @@ getSupportedMovingPhotoVideoCodecTypes(): Array\<VideoCodecType\>
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1001,7 +1001,7 @@ setMovingPhotoVideoCodecType(codecType: VideoCodecType): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1079,7 +1079,7 @@ onFrameShutter(callback: AsyncCallback\<FrameShutterInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1149,7 +1149,7 @@ offFrameShutter(callback?: AsyncCallback\<FrameShutterInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1227,7 +1227,7 @@ onCaptureEnd(callback: AsyncCallback\<CaptureEndInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1297,7 +1297,7 @@ offCaptureEnd(callback?: AsyncCallback\<CaptureEndInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1374,7 +1374,7 @@ onFrameShutterEnd(callback: AsyncCallback\<FrameShutterEndInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1443,7 +1443,7 @@ offFrameShutterEnd(callback?: AsyncCallback\<FrameShutterEndInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1520,7 +1520,7 @@ onCaptureReady(callback: AsyncCallback\<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1589,7 +1589,7 @@ offCaptureReady(callback?: AsyncCallback\<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1666,7 +1666,7 @@ onEstimatedCaptureDuration(callback: AsyncCallback\<double\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1735,7 +1735,7 @@ offEstimatedCaptureDuration(callback?: AsyncCallback\<double\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1808,7 +1808,7 @@ onError(callback: ErrorCallback): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1873,7 +1873,7 @@ offError(callback?: ErrorCallback): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1901,7 +1901,7 @@ getActiveProfile(): Profile
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1953,7 +1953,7 @@ ArkTS-Sta: getPhotoRotation(deviceDegree: int): ImageRotation
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

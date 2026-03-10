@@ -25,7 +25,7 @@ pick(context: Context, mediaTypes: Array\<PickerMediaType\>, pickerProfile: Pick
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -73,7 +73,7 @@ async function demo(context: Context) {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 值    | 说明     |
 | ----------------| ----  | ---------|
@@ -91,7 +91,7 @@ async function demo(context: Context) {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                               | 必填   | 说明         |
 | -------------- | --------------------------------- | ----- | ------------ |
@@ -110,7 +110,7 @@ async function demo(context: Context) {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                                | 必填  | 说明                            |
 | -------------- | ---------------------------------- | ----- | -------------------------------- |

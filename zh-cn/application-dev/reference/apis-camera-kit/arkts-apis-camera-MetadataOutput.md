@@ -25,7 +25,7 @@ start(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -89,7 +89,7 @@ start(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -149,7 +149,7 @@ stop(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -204,7 +204,7 @@ stop(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -304,7 +304,7 @@ onMetadataObjectsAvailable(callback: AsyncCallback\<Array\<MetadataObject\>\>): 
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -373,7 +373,7 @@ offMetadataObjectsAvailable(callback?: AsyncCallback\<Array\<MetadataObject\>\>)
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -446,7 +446,7 @@ onError(callback: ErrorCallback): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -511,7 +511,7 @@ offError(callback?: ErrorCallback): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
