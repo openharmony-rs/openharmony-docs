@@ -2126,7 +2126,7 @@ class MyDataSource extends BasicDataSource {
 
 @Observed
 class StringData {
-  message: string;
+  public message: string;
 
   constructor(message: string) {
     this.message = message;
