@@ -228,7 +228,7 @@
 
 ## AvoidAreaOptions<sup>12+</sup>
 
-系统规避区变化后返回当前规避区域以及规避区域类型。
+系统避让区变化后返回当前避让区域以及避让区域类型。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -236,8 +236,8 @@
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 否   | 否   | 系统规避区变化后返回的规避区域类型。 |
-| area   | [AvoidArea](arkts-apis-window-i.md#avoidarea7)         | 否   | 否   | 系统规避区变化后返回的规避区域。 |
+| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 否   | 否   | 系统避让区变化后返回的避让区域类型。 |
+| area   | [AvoidArea](arkts-apis-window-i.md#avoidarea7)         | 否   | 否   | 系统避让区变化后返回的避让区域。 |
 
 ## WindowProperties
 
@@ -334,7 +334,7 @@
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- | ------------------------------------------ |
-| displayId | number | 否 | 是 |目标屏幕ID，该参数应为整数，输入非整数时将向下取整。填入该参数时，将移动到相对于目标屏幕左上角的指定位置。此参数不填或传入目标屏幕ID不存在时，将移动到相对于当前屏幕左上角的指定位置。 |
+| displayId | number | 否 | 是 |目标屏幕ID，该参数应为整数，输入非整数时将向下取整。默认值为undefined。填入该参数时，将移动到相对于目标屏幕左上角的指定位置。此参数不传、传undefined或传入目标屏幕ID不存在时，将移动到相对于当前屏幕左上角的指定位置。|
 
 ## WindowDensityInfo<sup>15+</sup>
 

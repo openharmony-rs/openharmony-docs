@@ -750,7 +750,7 @@ export struct TapImage {
 >
 > emit接口不支持在Previewer预览器中使用。
 
-<!-- @[appstorage_page_eight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageEight.ets) -->
+<!-- @[appstorage_page_eight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageEight.ets) --> 
 
 ``` TypeScript
 import { emitter } from '@kit.BasicServicesKit';

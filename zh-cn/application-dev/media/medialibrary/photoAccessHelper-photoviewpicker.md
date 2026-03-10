@@ -16,7 +16,7 @@
    
    ``` TypeScript
    import { fileIo } from '@kit.CoreFileKit';
-   import photoAccessHelper from '@ohos.file.photoAccessHelper';
+   import { photoAccessHelper } from '@kit.MediaLibraryKit';
    ```
 
 2. 创建图片-音频类型文件选择选项实例。
@@ -28,7 +28,8 @@
    ```
 
 3. 配置可选的媒体文件类型和媒体文件的最大数目。
-   以下示例以图片选择为例，媒体文件类型请参见[PhotoViewMIMETypes](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)。
+
+以下示例以图片选择为例，媒体文件类型请参见[PhotoViewMIMETypes](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)。
 
    <!-- @[PickerMediaLibrary_configOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/pages/Index.ets) -->
    
@@ -46,8 +47,8 @@
    const result = await photoViewPicker.select(photoSelectOptions);
                
    // 文件选择成功后，返回PhotoSelectResult结果集
-   console.log('选择成功，返回结果: ' + JSON.stringify(result));
-   console.log('选择的文件数量: ' + result.photoUris.length);
+   console.info('选择成功，返回结果: ' + JSON.stringify(result));
+   console.info('选择的文件数量: ' + result.photoUris.length);
          
    // 更新选中的URI列表
    this.selectedUris = result.photoUris;
@@ -58,7 +59,7 @@
          
    // 调用工具类处理结果
    this.processedItems = MediaLibraryPickerUtils.handleSelectResult(this.selectedUris);
-   console.log('处理后的结果数量: ' + this.processedItems.length);
+   console.info('处理后的结果数量: ' + this.processedItems.length);
    ```
 
    select返回的uri权限是只读权限，可以根据结果集中uri进行读取文件数据操作。注意不能在picker的回调里直接使用此uri进行打开文件操作，需要定义一个全局变量保存uri，类似使用一个按钮去触发打开文件。可参考[指定URI读取文件数据](#指定uri读取文件数据)。

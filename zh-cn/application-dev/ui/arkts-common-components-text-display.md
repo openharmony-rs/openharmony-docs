@@ -987,6 +987,8 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
     }
     ```
 
+![close_selection_menu](figures/close_selection_menu.gif)
+
 ### 屏蔽系统菜单回调和自定义扩展菜单
 
 从API version 12开始，支持通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12)屏蔽系统菜单回调和自定义扩展菜单项。 

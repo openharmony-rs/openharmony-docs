@@ -1244,6 +1244,8 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-node-render-monitor.md	@fan
 zh-cn/application-dev/reference/apis-arkui/errorcode-node-render.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-node.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-nodeadapter.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/errorcode-rendering-control.md @sunbees	@liuli0427	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/errorcode-attributeModifier.md @sunbees	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-promptAction.md	@liyi0309	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-router.md	@jiangdayuan	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-scroll.md	@yylong	@rongShao-Z @huchuyun	 @Brilliantry_Rui
@@ -1477,7 +1479,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-checkbox
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md	@zdustc	@zhangyue283	@ge-yafang
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datapanel.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-divider.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-image-sys.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui

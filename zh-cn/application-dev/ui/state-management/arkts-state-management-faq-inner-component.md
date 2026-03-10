@@ -581,7 +581,7 @@ struct Parent {
 
 【反例】
 
-<!-- @[precise_control_counterexamples](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlCounterexamples.ets) -->  
+<!-- @[precise_control_counterexamples](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlCounterexamples.ets) -->
 
 ``` TypeScript
 @Observed
@@ -627,7 +627,7 @@ struct Page {
       .width(200)
       .height(400)
       .translate({
-        x: this.translateObj.translateX //this.translateObj.translateX 绑定在Stack和Button组件上。
+        x: this.translateObj.translateX // this.translateObj.translateX 绑定在Stack和Button组件上。
       })
       Button('move')
         .translate({
