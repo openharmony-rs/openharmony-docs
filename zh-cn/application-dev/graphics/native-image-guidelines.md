@@ -230,6 +230,10 @@ libnative_buffer.so
 
 3. **获取对应的数据生产者端NativeWindow**。
     <!-- @[nativeimage_acquire_nativewindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
+    
+    ``` C++
+    nativeWindow_ = OH_NativeImage_AcquireNativeWindow(image);
+    ```
 
 4. **设置NativeWindow的宽高**。
     <!-- @[set_buffer_geometry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
