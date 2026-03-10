@@ -810,6 +810,44 @@ The task cannot be executed by two APIs.
 1. 调用上述接口时，确保异步任务不再被执行。无法保证时，需要捕获异常。
 2. 调用上述接口时，确保已经被执行过的任务不再调用异步队列的[execute](../apis-arkts/js-apis-taskpool.md#execute18)执行。无法保证时，需要捕获异常。
 
+## 10200058 任务执行超时
+
+**错误信息**
+
+Task timed out.
+
+**错误描述**
+
+任务执行时间超过了指定的超时时间。
+
+**可能原因**
+
+任务在被[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24)、[taskpool.execute(GenericsTask)](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24-1)调用时，设置的超时时间较短，而任务执行时间超过了设置的超时时间。
+
+**处理步骤**
+
+调用上述接口时，确保设置的超时时间的合理性。无法保证时，需要捕获异常。
+
+## 10200059 任务组不能重复执行
+
+**错误信息**
+
+TaskGroup cannot be re-executed.
+
+**错误描述**
+
+设置过超时的任务组，无法再次被执行。
+
+**可能原因**
+
+1. 任务组在被可以设置超时配置的接口[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24-2)调用后，再次被该接口调用。
+2. 任务组在被可以设置超时配置的接口[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24-2)调用后，被只能设置优先级的接口[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute10)调用。
+
+**处理步骤**
+
+1. 设置过超时的任务组不要再次使用[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24-2)进行执行。无法保证时，需要捕获异常。
+2. 设置过超时的任务组不要使用只能设置优先级的接口[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute10)进行执行。无法保证时，需要捕获异常。
+
 ## 10200060 超出精度限制
 
 **错误信息**
@@ -957,6 +995,24 @@ ArrayBuffer已分离，或者ArrayBuffer为空。
 **处理步骤**
 
 调用时，确保使用的ArrayBuffer是可用的。无法保证时，需要捕获异常。
+
+## 10200070 任务组执行超时
+
+**错误信息**
+
+TaskGroup timed out.
+
+**错误描述**
+
+任务组的整体执行时间超过了指定的超时时间。
+
+**可能原因**
+
+[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24-2)调用任务组时，设置的超时时间较短，而任务组整体执行时间超过了设置的超时时间。
+
+**处理步骤**
+
+调用上述接口时，确保设置的超时时间的合理性。无法保证时，需要捕获异常。
 
 ## 10200301 加载native模块失败
 

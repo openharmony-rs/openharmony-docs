@@ -177,6 +177,23 @@ fontWeight(value: number | FontWeight | ResourceStr)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
 
+### fontWeight<sup>24+</sup>
+
+fontWeight(weight: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs)
+
+设置文本的字体粗细。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| weight  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br/>默认值：FontWeight.Normal |
+| fontWeightConfigs  | [FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明) | 否   | 字体粗细配置。默认值继承[FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明)。 |
+
 ### fontFamily
 
 fontFamily(value: string | Resource)
@@ -225,11 +242,28 @@ font(value: Font)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                     | 必填 | 说明       |
 | ------ | ------------------------ | ---- | ---------- |
 | value  | [Font](ts-types.md#font) | 是   | 文本样式。 |
+
+### font<sup>24+</sup>
+
+font(value: Font, fontConfigs?: FontConfigs)
+
+设置文本样式。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                     | 必填 | 说明       |
+| ------ | ------------------------ | ---- | ---------- |
+| value  | [Font](ts-types.md#font) | 是   | 文本样式，包括字体大小、字体粗细、字体族和字体风格。 |
+| fontConfigs  | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) | 否   | 字体配置。默认值继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)。 |
 
 ### textShadow<sup>11+</sup>
 
@@ -440,6 +474,39 @@ struct SpanExample {
             weight: FontWeight.Bolder,
             style: FontStyle.Italic,
             family: "HarmonyOS Sans"
+          })
+      }
+
+      // 文本字体配置设置。从API version 24开始新增支持fontConfigs属性。
+      Text('Font with FontConfigs').fontSize(9).fontColor(0xCCCCCC).margin({ top: 12 })
+      Text() {
+        Span('span font with configs')
+          .font({
+            size: 14,
+            weight: 550,
+            style: FontStyle.Normal,
+            family: "HarmonyOS Sans"
+          }, {
+            fontWeightConfigs: {
+              enableVariableFontWeight: true
+            }
+          })
+      }
+
+      // 文本字体粗细配置设置。从API version 24开始新增支持fontWeightConfigs属性。
+      Text('FontWeight with FontWeightConfigs').fontSize(9).fontColor(0xCCCCCC).margin({ top: 12 })
+      Text() {
+        Span('span fontWeight 850 with configs')
+          .fontWeight(850, {
+            enableVariableFontWeight: true,
+            enableDeviceFontWeightCategory: false
+          })
+      }
+      Text() {
+        Span('span fontWeight 600 with configs')
+          .fontWeight(600, {
+            enableVariableFontWeight: false,
+            enableDeviceFontWeightCategory: true
           })
       }
 

@@ -26,9 +26,9 @@ typedef struct {...} ArkUI_Rect
 
 | 名称 | 描述 |
 | -- | -- |
-| float x | 区域在x轴的位置。 |
-| float y | 区域在y轴的位置。 |
-| float width | 区域宽度。 |
-| float height | 区域高度。 |
+| float x | 区域在x轴的位置，单位：vp。 |
+| float y | 区域在y轴的位置，单位：vp。 |
+| float width | 区域宽度，单位：vp。 |
+| float height | 区域高度，单位：vp。 |
 
 

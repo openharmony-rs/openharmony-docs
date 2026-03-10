@@ -12,7 +12,7 @@ The **TabContent** component is used only in the **Tabs** component. It correspo
 >
 > - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - By default, the [clip](ts-universal-attributes-sharp-clipping.md#clip12) attribute of this component is set to true. If you want to extend the content area to the outside of the component, disable the clip attribute first.
+> - By default, the [clip](ts-universal-attributes-sharp-clipping.md#clip12) attribute of this component is set to **true**. If you want to extend the content area to the outside of the component, disable the **clip** attribute first.
 
 
 ## Child Components
@@ -21,7 +21,7 @@ This component supports only one child component.
 
 >  **NOTE**
 >
->  System components and custom components can be embedded. Rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) are supported.
+>  Built-in system and custom components, and rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)) are supported.
 
 
 ## APIs
@@ -42,11 +42,11 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 tabBar(options: string | Resource | CustomBuilder | TabBarOptions)
 
-Content displayed on the tab bar.
+Sets the content displayed on the tab bar.
 
 If the icon uses an SVG image source, delete the width and height attribute values built in the SVG image source. Otherwise, the width and height attribute values built in the SVG image source are used.
 
-Crops the content when the content exceeds the tab bar.
+If the content exceeds the space provided by the tab bar, it will be clipped.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -56,7 +56,7 @@ Crops the content when the content exceeds the tab bar.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br>[CustomBuilder](ts-types.md#custombuilder8)<sup>8+</sup>\|&nbsp;<br>[TabBarOptions](#tabbaroptions18)<sup>18+</sup> | Yes| Content displayed on the tab bar.<br>CustomBuilder: &nbsp;constructor, which can be passed into a component (applicable to API version 8 and later).|
+| options | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br>[CustomBuilder](ts-types.md#custombuilder8)<sup>8+</sup>\|&nbsp;<br>[TabBarOptions](#tabbaroptions18)<sup>18+</sup> | Yes| Content displayed on the tab bar.<br>**CustomBuilder**: builder, to which components can be passed (applicable to API version 8 and later versions).|
 
 ### tabBar<sup>9+</sup>
 
@@ -66,9 +66,9 @@ Sets the content displayed on the tab bar. The bottom tab style does not include
 
 >  **NOTE**
 >
->  - Subtab ([SubTabBarStyle](#subtabbarstyle9)): The tab style is usually text + underline or text + background. The text style can be set. It is recommended that the subtab be placed at the top or bottom. By default, the animation transition effect is supported when a tab is switched. This style is applicable to top category navigation (such as Follow, Video, and Digital) and level-2 navigation of functional modules in information apps.
+>  - [SubTabBarStyle](#subtabbarstyle9): text + underline or text + board. The text style can be set. It is recommended that the subtab be placed at the top or bottom. By default, the animation transition effect is displayed when a tab is switched. This style is applicable to the top categories (such as Following, Video, Digital) of information apps and level-2 navigation scenarios of functional modules.
 >  
->  - Bottom tab/side tab ([BottomTabBarStyle](#bottomtabbarstyle9)): The tab style is usually icon + text, without underline or background. By default, no animation transition effect is displayed when a tab is switched. Bottom tabs are usually used for the main navigation of an app (such as Home, Discover, and Recommended). Side tabs are applicable to wide-screen scenarios. You can set vertical(true) to enable the vertical layout so that the tabs are displayed on the side. By default, the tabs are displayed on the left.
+>  - [BottomTabBarStyle](#bottomtabbarstyle9): icon + text, without underline or board. By default, no animation transition effect is displayed when a tab is switched. Bottom tabs are usually used for the main navigation of an app (such as Home, Discover, and Recommended). Side tabs are applicable to wide-screen scenarios. You can set **vertical(true)** to enable the vertical layout so that the tabs are displayed on the side. By default, the tabs are displayed on the left.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -78,15 +78,15 @@ Sets the content displayed on the tab bar. The bottom tab style does not include
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [SubTabBarStyle](#subtabbarstyle9) \| [BottomTabBarStyle](#bottomtabbarstyle9) | Yes  | Content displayed on the tab bar.<br>SubTabBarStyle: style of a sub-tab.<br>BottomTabBarStyle: style of a bottom tab or side tab.|
+| value  | [SubTabBarStyle](#subtabbarstyle9) \| [BottomTabBarStyle](#bottomtabbarstyle9) | Yes  | Content displayed on the tab bar.<br>**SubTabBarStyle**: subtab style.<br>**BottomTabBarStyle**: bottom and side tab style|
 
 ### tabBar<sup>18+</sup>
 
 tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder | TabBarOptions)
 
-Content displayed on the tab bar.
+Sets the content displayed on the tab bar.
 
-If **BottomTabBarStyle** or **TabBarOptions** is used and an icon is set, a gray block will be displayed if the icon is invalid. If the icon is in SVG format, delete the width and height attribute values built in the SVG source. Otherwise, the width and height attribute values built in the SVG source are used.
+If **BottomTabBarStyle** or **TabBarOptions** is used and an icon is set, a gray block will be displayed if the icon is invalid. If the icon uses an SVG image source, delete the width and height attribute values built in the SVG image source. Otherwise, the width and height attribute values built in the SVG image source are used.
 
 If the content exceeds the space provided by the tab bar, it will be clipped.
 
@@ -98,17 +98,17 @@ If the content exceeds the space provided by the tab bar, it will be clipped.
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| content | [ComponentContent](../js-apis-arkui-ComponentContent.md)&nbsp;\|<br>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br>[TabBarOptions](#tabbaroptions18) | Yes  | Content displayed on the tab bar.<br>ComponentContent: entity encapsulation of the component content, which can be customized.<br>SubTabBarStyle: style of a sub-tab.<br>BottomTabBarStyle: style of a bottom tab or side tab. The bottom tab style does not have the underline effect.<br>string: character string.<br>Resource: resource reference type, which introduces the character string in the system resource or application resource.<br>CustomBuilder: constructor, which can be passed into a component.<br>TabBarOptions: sets the image and text content in the tab.|
+| content | [ComponentContent](../js-apis-arkui-ComponentContent.md)&nbsp;\|<br>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br>[TabBarOptions](#tabbaroptions18) | Yes  | Content displayed on the tab bar.<br>**ComponentContent**: encapsulation of the component content, which can be customized.<br>**SubTabBarStyle**: subtab style.<br>**BottomTabBarStyle**: style of the bottom and side tabs. The bottom style does not have the underline effect.<br>**string**: string type.<br>**Resource**: resource reference for importing strings from system or application resources.<br>**CustomBuilder**: builder that can take components as arguments.<br>**TabBarOptions**: options for configuring images and text content on the tabs.|
 
 >  **NOTE**
 >
 >  - The **TabContent** component does not support setting of the common width attribute. By default, its width is the same as that of the parent **Tabs** component.
 >  - The **TabContent** component does not support setting of the universal height attribute. Its height is determined by the height of the parent **Tabs** component and the **TabBar** component.
->  - When the vertical attribute is set to false, the preceding two restrictions are exchanged.
+>  - When **vertical** is **false**, the width and height restrictions described above are exchanged.
 >  - **TabContent** does not support page scrolling. If page scrolling is required, consider nesting a list.
 >  - Whenever possible, use a unified parameter type for the **tabBar** property of all child **TabContent** components within the **Tabs** component.
->  - If the TabContent component contains a focusable component, the focus between the TabContent component and the TabBar component in the Tabs component can be controlled only by the arrow keys on the keyboard.
->  - After the attributes of the TabBar component are dynamically modified, the TabBar component is rendered again, the related attributes are updated, and the positions of all tabs are reset.
+>  - If the **TabContent** component contains a focusable component, the focus navigation between the **TabContent** and **TabBar** components within the **Tabs** component can be controlled only by the arrow keys on the keyboard.
+>  - After the attributes of the **TabBar** component are dynamically modified, the **TabBar** component is rendered again, the related attributes are updated, and the positions of all tabs are reset.
 
 ## TabBarOptions<sup>18+</sup>
 
@@ -233,7 +233,7 @@ Sets the indicator style of the selected subtab. It takes effect only in the hor
 
 indicator(value: IndicatorStyle | DrawableTabBarIndicator): SubTabBarStyle
 
-Sets the indicator style of the selected subtab. Compared with [Indicator](#indicator10), the underline style of the image format is added. For details about the image display effect, see [ImageFit.Cover](ts-appendix-enums.md#imagefit). It takes effect only in the horizontal layout.
+Sets the indicator style of the selected subtab. Compared with [indicator](#indicator10), the image format is added. For details about the display effect of the image, see [ImageFit.Cover](ts-appendix-enums.md#imagefit). It takes effect only in the horizontal layout.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -243,11 +243,11 @@ Sets the indicator style of the selected subtab. Compared with [Indicator](#indi
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [IndicatorStyle](#indicatorstyle10)\| [DrawableTabBarIndicator](#drawabletabbarindicator22)| Yes  | Indicator style object for the selected subtab.<br>IndicatorStyle: general underline style.<br>DrawableTabBarIndicator: image underline style.|
+| value | [IndicatorStyle](#indicatorstyle10)\| [DrawableTabBarIndicator](#drawabletabbarindicator22)| Yes  | Indicator style object for the selected subtab.<br>**IndicatorStyle**: common indicator style.<br>**DrawableTabBarIndicator**: image indicator style.|
 
 > **NOTE**
-> - General underline style (IndicatorStyle): A solid line is used. When a tab is switched, the animation transition effect is supported by default.
-> - Image underline style (DrawableTabBarIndicator): An image is used. When a tab is switched, the animation transition effect is not supported by default. If an invalid image source is passed, the general underline style is displayed.
+> - **IndicatorStyle**: a solid line. By default, the animation transition effect is displayed when a tab is switched.
+> - **DrawableTabBarIndicator**: an image. By default, the animation transition effect is not displayed when a tab is switched. If an invalid image source is passed, the common indicator style is displayed.
 
 **Return value**
 
@@ -357,7 +357,7 @@ Sets the padding of the subtab. This API supports mirroring but does not support
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | Yes  | Padding of the subtab.<br>Default value: {start:LengthMetrics.vp(8),end:LengthMetrics.vp(8)<br>top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)} |
+| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | Yes  | Padding of the subtab.<br>Default value: **{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8)**<br>**top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)}**|
 
 **Return value**
 
@@ -398,14 +398,14 @@ Represents an indicator style object.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | --------- | ----------------------- |
 | color | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the indicator and board.<br>Default value: **#FF007DFF**|
-| height | [Length](ts-types.md#length) | No| Yes| Height of the indicator. It cannot be set in percentage.<br>Default value: 2.0<br>Unit: vp<br>Value range: [0, +∞)|
+| height | [Length](ts-types.md#length) | No| Yes| Height of the indicator. It cannot be set in percentage.<br>Default value: **2.0**<br>Unit: vp<br>Value range: [0, +∞)|
 | width | [Length](ts-types.md#length) | No| Yes| Width of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)<br>**NOTE**<br>If this parameter is set to **0**, the tab text width will be used instead.|
 | borderRadius | [Length](ts-types.md#length) | No| Yes| Rounded corner radius of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)|
 | marginTop | [Length](ts-types.md#length) | No| Yes| Spacing between the indicator and text. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞)|
 
 ## DrawableTabBarIndicator<sup>22+</sup>
 
-Uses an image resource as the underline.
+Uses an image resource as the indicator.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -413,8 +413,8 @@ Uses an image resource as the underline.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | --------- | ----------------------- |
-| drawable | [DrawableDescriptor](#drawabledescriptor22) | No| Yes| Image source of the underline.<br>[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor), [PixelMapDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#pixelmapdrawabledescriptor12), [LayeredDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#layereddrawabledescriptor), and [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12) are supported. If an invalid image source is passed, the default solid underline is displayed.|
-| height | [Length](ts-types.md#length) | No| Yes| Height of the indicator. It cannot be set in percentage.<br>Default value: 2.0<br>Unit: vp<br>Value range: [0, +∞)|
+| drawable | [DrawableDescriptor](#drawabledescriptor22) | No| Yes| Image resource of the indicator.<br>Supported types: [DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor), [PixelMapDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#pixelmapdrawabledescriptor12), [LayeredDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#layereddrawabledescriptor), and [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12). If an invalid image resource is passed, the default solid indicator is displayed.|
+| height | [Length](ts-types.md#length) | No| Yes| Height of the indicator. It cannot be set in percentage.<br>Default value: **2.0**<br>Unit: vp<br>Value range: [0, +∞)|
 | width | [Length](ts-types.md#length) | No| Yes| Width of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)<br>If this parameter is set to **0**, the tab text width will be used instead.|
 | borderRadius | [Length](ts-types.md#length) | No| Yes| Rounded corner radius of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)|
 | marginTop | [Length](ts-types.md#length) | No| Yes| Spacing between the indicator and text. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞)|
@@ -423,7 +423,7 @@ Uses an image resource as the underline.
 
 type DrawableDescriptor = DrawableDescriptor
 
-As an input parameter of the drawable attribute in the DrawableTabBarIndicator object.
+Defines the input parameter object of the **drawable** attribute in the **DrawableTabBarIndicator** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -471,7 +471,7 @@ Represents a style object for the label text and font.
 | minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No| Yes  | Minimum font size of the label text. It cannot be set in percentage. For the setting to take effect, this attribute must be used together with **maxFontSize**, **maxLines**, or layout constraint settings. When the adaptive text size is set, **font.size** does not take effect. The default value is **0.0fp**, indicating that the adaptive text size has no effect.<br>Value range: (0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No| Yes  | Maximum font size of the label text. It cannot be set in percentage. For the setting to take effect, this attribute must be used together with **minFontSize**, **maxLines**, or layout constraint settings. When the adaptive text size is set, **font.size** does not take effect. The default value is **0.0fp**, indicating that the adaptive text size has no effect.<br>Value range: [minFontSize, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | No| Yes  | How the adaptive height is determined for the label text. By default, the **maxLines** settings are prioritized.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| font                 | [Font](ts-types.md#font)                                     | No| Yes | Font of the label text.<br>When the tab is a subtab, the default font is in 16.0 fp size, 'HarmonyOS Sans' family, normal font style, medium weight when selected, and normal weight when not selected.<br>When the tab is a bottom tab, the default font is in 10.0 fp size, 'HarmonyOS Sans' family, normal font style, and medium weight.<br>From API version 12 onwards, the default font size is 12.0 fp when the bottom tabs are arranged horizontally.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| font                 | [Font](ts-types.md#font)                                     | No| Yes | Font of the label text.<br>When the tab is a subtab, the default font is in 16.0 fp size, 'HarmonyOS Sans' family, normal font style, medium weight when selected, and normal weight when not selected.<br>When the tab is a bottom tab, the default font is in 10.0 fp size, 'HarmonyOS Sans' family, normal font style, and medium weight.<br>The default font size of the bottom tab page is 12.0 fp since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | unselectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Font color of the label text when it is not selected.<br>Default value: **#99182431**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | selectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Font color of the label text when it is selected.<br>Default value: **#FF007DFF**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
@@ -483,7 +483,7 @@ Implements the bottom and side tab style.
 
 constructor(icon: ResourceStr | TabBarSymbol, text: ResourceStr)
 
-Constructor used to create a **BottomTabBarStyle** instance.
+A constructor used to create a **BottomTabBarStyle** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -533,7 +533,7 @@ Sets the padding of the bottom tab. It cannot be set in percentage. When the par
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) \| [LocalizedPadding<sup>12+</sup>](ts-types.md#localizedpadding12) | Yes  | Padding of the bottom tab.<br>Default value: **{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}**<br>If of the LocalizedPadding type, this attribute supports the mirroring capability.<br>Default value: {start:LengthMetrics.vp(4),end:LengthMetrics.vp(4),<br>top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)} |
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) \| [LocalizedPadding<sup>12+</sup>](ts-types.md#localizedpadding12) | Yes  | Padding of the bottom tab.<br>Default value: **{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}**<br>If of the LocalizedPadding type, this attribute supports the mirroring capability.<br>Default value: **{start:LengthMetrics.vp(4),end:LengthMetrics.vp(4),**<br>**top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)}**|
 
 **Return value**
 
@@ -589,7 +589,7 @@ Sets the layout mode of the images and texts on the bottom tab.
 
 symmetricExtensible(value: boolean): BottomTabBarStyle
 
-Sets whether the image and text of the bottom tab can symmetrically use the minimum value of the available space on the left and right bottom tabs. This parameter is valid only between bottom tabs in fixed horizontal mode.
+Sets whether the images and text on the bottom tab can be symmetrically extended by the minimum value of the available space on the left and right bottom tabs. This parameter is valid only between bottom tabs in fixed horizontal mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -599,7 +599,7 @@ Sets whether the image and text of the bottom tab can symmetrically use the mini
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | boolean | Yes  | Whether the image and text of the bottom tab can symmetrically use the minimum value of the available space on the left and right bottom tabs.<br>Default value: false, indicating that the image and text of the bottom tab cannot symmetrically use the minimum value of the available space on the left and right bottom tabs.|
+| value | boolean | Yes  | Whether the images and text on the bottom tab can be symmetrically extended by the minimum value of the available space on the left and right bottom tabs.<br>Default value: **false**, indicating that the images and text on the bottom tab cannot be symmetrically extended by the minimum value of the available space on the left and right bottom tabs.|
 
 **Return value**
 
@@ -683,8 +683,8 @@ Represents a tab bar symbol style object.
 
 | Name| Type        | Read-Only| Optional| Description|
 | -------- | -------- | --- | ----- | -------- |
-| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| No| Symbol icon in the normal style.<br>Default value:<br>**fontColor**: **#66182431**<br>**renderingStrategy**: **SymbolRenderingStrategy.MULTIPLE_OPACITY**<br>**fontSize**: **24vp**|
-| selected | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Yes| Symbol icon in the selected style.<br>Default value:<br>**fontColor**: **#ff007dff**<br>**renderingStrategy**: **SymbolRenderingStrategy.MULTIPLE_OPACITY**<br>**fontSize**: **24vp**|
+| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| No| Symbol icon in the normal style.<br>Default value:<br>**fontColor**: **#66182431**<br>**renderingStrategy**: **SymbolRenderingStrategy.MULTIPLE_OPACITY**<br>**fontSize**: **24vp**|
+| selected | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol icon in the selected style.<br>Default value:<br>**fontColor**: **#ff007dff**<br>**renderingStrategy**: **SymbolRenderingStrategy.MULTIPLE_OPACITY**<br>**fontSize**: **24vp**|
 
 ## LayoutMode<sup>10+</sup>
 
@@ -956,7 +956,7 @@ This example demonstrates the implementation of subtabs, bottom tabs, and side t
 struct TabBarStyleExample {
   build() {
     Column({ space: 5 }) {
-      Text ('Subtab style')
+      Text('Subtab style')
       Column() {
         Tabs({ barPosition: BarPosition.Start }) {
           TabContent() {
@@ -1060,7 +1060,7 @@ struct TabBarStyleExample {
         .width('100%')
         .backgroundColor(0xF1F3F5)
       }.width('100%').height(200)
-      Text('Sidebar style')
+      Text('Side tab style')
       Column() {
         Tabs({ barPosition: BarPosition.Start }) {
           TabContent() {
@@ -1142,7 +1142,7 @@ struct TabsAttr {
 
   build() {
     Column() {
-      Button('Underline color change').width('100%').margin({ bottom: '12vp' })
+      Button('Change Indicator Color').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
           // Animation configuration for the width and height attributes of the <Button> component
           if (this.colorFlag) {
@@ -1174,7 +1174,7 @@ struct TabsAttr {
           }
           this.colorFlag = !this.colorFlag;
         })
-      Button('Underline height change').width('100%').margin({ bottom: '12vp' })
+      Button('Change Indicator Height').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
           // Animation configuration for the width and height attributes of the <Button> component
           if (this.heightFlag) {
@@ -1206,7 +1206,7 @@ struct TabsAttr {
           }
           this.heightFlag = !this.heightFlag;
         })
-      Button('Underline width change').width('100%').margin({ bottom: '12vp' })
+      Button('Change Indicator Width').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
           // Animation configuration for the width and height attributes of the <Button> component
           if (this.widthFlag) {
@@ -1238,7 +1238,7 @@ struct TabsAttr {
           }
           this.widthFlag = !this.widthFlag;
         })
-      Button('Underline radius change').width('100%').margin({ bottom: '12vp' })
+      Button('Change Indicator Corner Radius').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
           // Animation configuration for the width and height attributes of the <Button> component
           if (this.borderFlag) {
@@ -1270,7 +1270,7 @@ struct TabsAttr {
           }
           this.borderFlag = !this.borderFlag;
         })
-      Button('Underline spacing change').width('100%').margin({ bottom: '12vp' })
+      Button('Change Indicator Spacing').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
           // Animation configuration for the width and height attributes of the <Button> component
           if (this.spaceFlag) {
@@ -1502,7 +1502,7 @@ struct TabContentExample6 {
       }
 
       Row() {
-        Button (' symmetricExtensible changed' + this.symmetricExtensible)
+        Button('Set SymmetricExtensible to ' + this.symmetricExtensible)
           .width('100%')
           .height(50)
           .margin({ top: 5 })
@@ -1532,7 +1532,7 @@ struct TabContentExample6 {
       }
 
       Row() {
-        Button ('verticalAlign up')
+        Button('VerticalAlign.Top')
           .width('100%')
           .height(50)
           .margin({ top: 5 })
@@ -1543,7 +1543,7 @@ struct TabContentExample6 {
       }
 
       Row() {
-        Button('verticalAlign center')
+        Button('VerticalAlign.Center')
           .width('100%')
           .height(50)
           .margin({ top: 5 })
@@ -1554,7 +1554,7 @@ struct TabContentExample6 {
       }
 
       Row() {
-        Button('verticalAlign down')
+        Button('VerticalAlign.Bottom')
           .width('100%')
           .height(50)
           .margin({ top: 5 })
@@ -1692,7 +1692,7 @@ struct TabBarStyleExample {
 
 ![tabContent](figures/tabContent6.gif)
 
-### Example 8: Setting Custom Subtab
+### Example 8: Setting a Custom Subtab
 
 This example sets **SubTabBarStyle** through **ComponentContent**.
 
@@ -2076,7 +2076,7 @@ struct TabsPreloadItems {
       Button('preload items: [1,2,3]')
         .margin(5)
         .onClick(() => {
-          // Preload the subnodes whose indexes range from 1 to 3.
+          // Preload the child nodes whose indexes are 1 to 3.
           this.tabsController.preloadItems([1, 2, 3])
             .then(() => {
               console.info('preloadItems success.');
@@ -2089,7 +2089,7 @@ struct TabsPreloadItems {
       Button('preload items: [1]')
         .margin(5)
         .onClick(() => {
-          // Preloading the child node whose index is 1
+          // Preload the child node whose index is 1.
           this.tabsController.preloadItems([1])
             .then(() => {
               console.info('preloadItems success.');
@@ -2101,7 +2101,7 @@ struct TabsPreloadItems {
       Button('preload items: [3]')
         .margin(5)
         .onClick(() => {
-          // Preloading the child node whose index is 3
+          // Preload the child node whose index is 3.
           this.tabsController.preloadItems([3])
             .then(() => {
               console.info('preloadItems success.');
@@ -2139,7 +2139,7 @@ struct MyComponent {
 
 ### Example 12: Setting the Indicator of a Subtab to an Image
 
-In API version 22 and later versions, the indicator attribute in SubTabBarStyle is used to implement the underlined style of the image sub-tab.
+Since API version 22, this example uses the **indicator** attribute in **SubTabBarStyle** to implement the subtab indicator in image format.
 
 ```ts
 import { DrawableDescriptor } from '@kit.ArkUI';

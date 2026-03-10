@@ -332,6 +332,8 @@ enum Input_KeyCode
 | KEYCODE_KBDINPUTASSIST_NEXTGROUP = 2729 | 键盘输入Assist_Next，切换输入组中下一个输入法<br/>**起始版本：** 22 |
 | KEYCODE_KBDINPUTASSIST_ACCEPT = 2730 | 键盘输入Assist_Accept<br/>**起始版本：** 22 |
 | KEYCODE_KBDINPUTASSIST_CANCEL = 2731 | 键盘输入Assist_Cancel<br/>**起始版本：** 22 |
+| KEYCODE_MOUSE_ASSISTANT = 2732 | 鼠标AI助手键<br/>**起始版本：** 24 |
+| KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733 | 鼠标智慧框选键<br/>**起始版本：** 24 |
 | KEYCODE_FRONT = 2800 | 挡风玻璃除雾器开关<br/>**起始版本：** 22 |
 | KEYCODE_SETUP = 2801 | 设置键<br/>**起始版本：** 22 |
 | KEYCODE_WAKEUP = 2802 | 唤醒键<br/>**起始版本：** 22 |

@@ -124,7 +124,7 @@ Variables decorated by \@Local are observable. When a decorated variable changes
   }
   ```
 
-- When \@Local is used to decorate a variable of the class object type, only changes to the overall assignment of the class object can be observed. Direct observation of changes to class member property assignments is not supported. Observing class member properties requires the [\@ObservedV2](arkts-new-observedV2-and-trace.md) and [\@Trace](arkts-new-observedV2-and-trace.md) decorators. Note that before API version 19, \@Local cannot be used with class instance objects decorated by [\@Observed](./arkts-observed-and-objectlink.md). Since from API version 19, partial mixed usage of state management V1 and V2 is supported, allowing \@Local and \@Observed to be used together. For details, see [Mixing Use of State Management V1 and V2](../state-management/arkts-v1-v2-mixusage.md).
+- When \@Local is used to decorate a variable of the class object type, only changes to the overall assignment of the class object can be observed. Direct observation of changes to class member property assignments is not supported. Observing class member properties requires the [\@ObservedV2](arkts-new-observedV2-and-trace.md) and [\@Trace](arkts-new-observedV2-and-trace.md) decorators. Note that before API version 19, \@Local cannot be used with class instance objects decorated by [\@Observed](./arkts-observed-and-objectlink.md). Since from API version 19, partial mixed usage of state management V1 and V2 is supported, allowing \@Local and \@Observed to be used together. For details, see [Mixing Use of State Management V1 and V2 (API Version 19 and Later)](../../ui/state-management/arkts-v1-v2-mixusage.md).
 
     <!-- @[Local_Observe_Changes_Decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDecorator.ets) -->
     
@@ -365,7 +365,7 @@ struct Index {
       Column() {
         Text(`info: ${this.info.name}-${this.info.age}`) // Text1
           .margin(10)
-        Text(`localInfo: ${this.localInfo.name}-${this.localInfo.age}`) //Text2
+        Text(`localInfo: ${this.localInfo.name}-${this.localInfo.age}`) // Text2
           .margin(10)
         Button('change info&localInfo')
           .onClick(() => {

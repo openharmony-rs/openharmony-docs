@@ -482,7 +482,7 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 | additions | Record<string, object> | 否 | 否 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty， 默认为空。|
 | mimeTypes | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。 |
 | tag | string | 否 | 否 | 用户自定义标签，默认为空。 |
-| timestamp | number | 是 | 否 | 剪贴板数据的写入时间戳（单位：ms）。 |
+| timestamp | number | 是 | 否 | 剪贴板数据的写入时间戳（单位：已开机时间的ns数）。 |
 | localOnly | boolean | 否 | 否 | 配置剪贴板内容是否为“仅在本地”，默认值为false。其值会被shareOption属性覆盖，推荐使用[ShareOption](#shareoption9)属性。 |
 | shareOption<sup>9+</sup> | [ShareOption](#shareoption9) | 否 | 否 | 指示剪贴板数据可以粘贴到的范围，默认值为CROSSDEVICE。 |
 
@@ -2919,6 +2919,8 @@ try {
 | URL                              | 0   | URL类型。                                                              |
 | NUMBER                        | 1   | 数字类型。                                                    |
 | EMAIL_ADDRESS | 2   | 邮箱地址类型。 |
+| HTTP_URL<sup>24+</sup> | 3   | HTTP web链接类型。 |
+| FLIGHT_NUMBER<sup>24+</sup> | 4   | 航班号类型。 |
 
 ### detectPatterns<sup>13+</sup>
 

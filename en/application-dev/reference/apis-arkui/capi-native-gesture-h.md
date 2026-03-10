@@ -32,7 +32,7 @@ Declares the APIs of **NativeGesture**.
 | [ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)           | ArkUI_GestureInterruptInfo       | Defines the gesture interruption information.  |
 | [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)                           | ArkUI_GestureEvent               | Defines the gesture event.  |
 | [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)       | ArkUI_GestureEventTargetInfo     | Defines a **GestureEventTargetInfo** object that provides information about a gesture event target.|
-| [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md) | ArkUI_ParallelInnerGestureEvent  | Defines a parallel internal gesture event.|
+| [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md) | ArkUI_ParallelInnerGestureEvent  | Defines a parallel built-in gesture event.|
 | [ArkUI_TouchRecognizer](capi-arkui-nativemodule-arkui-touchrecognizer.md)                     | ArkUI_TouchRecognizer            | Defines a touch recognizer.         |
 | [ArkUI_TouchRecognizer*](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md)   | ArkUI_TouchRecognizerHandle | Defines a touch recognizer handle.     |
 | [ArkUI_TouchRecognizerHandle*](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md)   | ArkUI_TouchRecognizerHandleArray | Defines an array of touch recognizer handles.     |
@@ -57,10 +57,10 @@ Declares the APIs of **NativeGesture**.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [typedef void (\*ArkUI_GestureRecognizerDisposeNotifyCallback)(ArkUI_GestureRecognizer* recognizer, void* userData)](#arkui_gesturerecognizerdisposenotifycallback) | ArkUI_GestureRecognizerDisposeNotifyCallback | Defines a callback function for notifying gesture recognizer destruction.|
-| [bool OH_ArkUI_GestureInterruptInfo_GetSystemFlag(const ArkUI_GestureInterruptInfo* event)](#oh_arkui_gestureinterruptinfo_getsystemflag) | - | Checks whether a gesture is a built-in gesture of the component.|
+| [bool OH_ArkUI_GestureInterruptInfo_GetSystemFlag(const ArkUI_GestureInterruptInfo* event)](#oh_arkui_gestureinterruptinfo_getsystemflag) | - | Checks whether a gesture is a system built-in gesture.|
 | [ArkUI_GestureRecognizer* OH_ArkUI_GestureInterruptInfo_GetRecognizer(const ArkUI_GestureInterruptInfo* event)](#oh_arkui_gestureinterruptinfo_getrecognizer) | - | Obtains the pointer to the interrupted gesture recognizer.|
 | [ArkUI_GestureEvent* OH_ArkUI_GestureInterruptInfo_GetGestureEvent(const ArkUI_GestureInterruptInfo* event)](#oh_arkui_gestureinterruptinfo_getgestureevent) | - | Obtains the pointer to the interrupted gesture event.|
-| [int32_t OH_ArkUI_GestureInterruptInfo_GetSystemRecognizerType(const ArkUI_GestureInterruptInfo* event)](#oh_arkui_gestureinterruptinfo_getsystemrecognizertype) | - | Obtains the type of the system gesture to trigger.|
+| [int32_t OH_ArkUI_GestureInterruptInfo_GetSystemRecognizerType(const ArkUI_GestureInterruptInfo* event)](#oh_arkui_gestureinterruptinfo_getsystemrecognizertype) | - | Obtains the type of the system built-in gesture to trigger.|
 | [int32_t OH_ArkUI_GestureInterruptInfo_GetTouchRecognizers(const ArkUI_GestureInterruptInfo* info,ArkUI_TouchRecognizerHandleArray* recognizers, int32_t* size)](#oh_arkui_gestureinterruptinfo_gettouchrecognizers) | - | Obtains touch recognizers from gesture interruption information.|
 | [ArkUI_NodeHandle OH_ArkUI_TouchRecognizer_GetNodeHandle(const ArkUI_TouchRecognizerHandle recognizer)](#oh_arkui_touchrecognizer_getnodehandle) | - | Obtains the component handle corresponding to a touch recognizer.|
 | [int32_t OH_ArkUI_TouchRecognizer_CancelTouch(ArkUI_TouchRecognizerHandle recognizer, ArkUI_GestureInterruptInfo* info)](#oh_arkui_touchrecognizer_canceltouch) | - | Sends a cancel touch event to a touch recognizer in a gesture interruption callback.|
@@ -92,9 +92,9 @@ Declares the APIs of **NativeGesture**.
 | [int32_t OH_ArkUI_GetGestureTag(ArkUI_GestureRecognizer* recognizer, char* buffer, int32_t bufferSize, int32_t* result)](#oh_arkui_getgesturetag) | - | Obtains the tag of a gesture recognizer.|
 | [int32_t OH_ArkUI_GetGestureBindNodeId(ArkUI_GestureRecognizer* recognizer, char* nodeId, int32_t size,int32_t* result)](#oh_arkui_getgesturebindnodeid) | - | Obtains the ID of the component linked to a gesture recognizer.|
 | [bool OH_ArkUI_IsGestureRecognizerValid(ArkUI_GestureRecognizer* recognizer)](#oh_arkui_isgesturerecognizervalid) | - | Obtains whether a gesture recognizer is valid.|
-| [void* OH_ArkUI_ParallelInnerGestureEvent_GetUserData(ArkUI_ParallelInnerGestureEvent* event)](#oh_arkui_parallelinnergestureevent_getuserdata) | - | Obtains custom data in the parallel internal gesture event.|
-| [ArkUI_GestureRecognizer* OH_ArkUI_ParallelInnerGestureEvent_GetCurrentRecognizer(ArkUI_ParallelInnerGestureEvent* event)](#oh_arkui_parallelinnergestureevent_getcurrentrecognizer) | - | Obtains the current gesture recognizer in a parallel internal gesture event.|
-| [int32_t OH_ArkUI_ParallelInnerGestureEvent_GetConflictRecognizers(ArkUI_ParallelInnerGestureEvent* event,ArkUI_GestureRecognizerHandleArray* array, int32_t* size)](#oh_arkui_parallelinnergestureevent_getconflictrecognizers) | - | Obtains the conflicting gesture recognizers in a parallel internal gesture event.|
+| [void* OH_ArkUI_ParallelInnerGestureEvent_GetUserData(ArkUI_ParallelInnerGestureEvent* event)](#oh_arkui_parallelinnergestureevent_getuserdata) | - | Obtains custom data in the parallel built-in gesture event.|
+| [ArkUI_GestureRecognizer* OH_ArkUI_ParallelInnerGestureEvent_GetCurrentRecognizer(ArkUI_ParallelInnerGestureEvent* event)](#oh_arkui_parallelinnergestureevent_getcurrentrecognizer) | - | Obtains the current gesture recognizer in a parallel built-in gesture event.|
+| [int32_t OH_ArkUI_ParallelInnerGestureEvent_GetConflictRecognizers(ArkUI_ParallelInnerGestureEvent* event,ArkUI_GestureRecognizerHandleArray* array, int32_t* size)](#oh_arkui_parallelinnergestureevent_getconflictrecognizers) | - | Obtains the conflicting gesture recognizers in a parallel built-in gesture event.|
 | [int32_t OH_ArkUI_SetArkUIGestureRecognizerDisposeNotify(ArkUI_GestureRecognizer* recognizer,ArkUI_GestureRecognizerDisposeNotifyCallback callback, void* userData)](#oh_arkui_setarkuigesturerecognizerdisposenotify) | - | Sets a callback function for notifying gesture recognizer destruction.|
 | [int32_t OH_ArkUI_GetGestureParam_DirectMask(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureDirectionMask* directMask)](#oh_arkui_getgestureparam_directmask) | - | Obtains the swipe direction of a gesture recognizer.|
 | [int32_t OH_ArkUI_GetGestureParam_FingerCount(ArkUI_GestureRecognizer* recognizer, int* finger)](#oh_arkui_getgestureparam_fingercount) | - | Obtains the number of fingers used by a gesture recognizer.|
@@ -105,7 +105,7 @@ Declares the APIs of **NativeGesture**.
 | [int32_t OH_ArkUI_GetGestureParam_duration(ArkUI_GestureRecognizer* recognizer, int* duration)](#oh_arkui_getgestureparam_duration) | - | Obtains the minimum duration required to trigger a long press by a gesture recognizer.|
 | [int32_t OH_ArkUI_GetGestureParam_angle(ArkUI_GestureRecognizer* recognizer, double* angle)](#oh_arkui_getgestureparam_angle) | - | Obtains the minimum angle change required for a rotation gesture to be recognized by a gesture recognizer.|
 | [int32_t OH_ArkUI_GetGestureParam_distanceThreshold(ArkUI_GestureRecognizer* recognizer, double* distanceThreshold)](#oh_arkui_getgestureparam_distancethreshold) | - | Obtains the movement threshold distance for gesture recognition.|
-| [ArkUI_ErrorCode OH_ArkUI_PanGesture_SetDistanceMap(ArkUI_GestureRecognizer* recognizer, int size, int* toolTypeArray, double* distanceArray)](#oh_arkui_pangesture_setdistancemap) | - | Sets the minimum sliding distance threshold mapping for gesture recognition. Settings are ignored for invalid device types.|
+| [ArkUI_ErrorCode OH_ArkUI_PanGesture_SetDistanceMap(ArkUI_GestureRecognizer* recognizer, int size, int* toolTypeArray, double* distanceArray)](#oh_arkui_pangesture_setdistancemap) | - | Sets the minimum sliding distance threshold mapping for gesture recognition.|
 | [ArkUI_ErrorCode OH_ArkUI_PanGesture_GetDistanceByToolType(ArkUI_GestureRecognizer* recognizer, int toolType, double* distance)](#oh_arkui_pangesture_getdistancebytooltype) | - | Obtains the movement distance threshold for gesture recognition for a specific input device type. This API only returns values for device types previously set using **OH_ArkUI_PanGesture_SetDistanceMap**. The default pan gesture activation threshold can be obtained using **UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN**. This API returns no value for unconfigured device types.|
 | [ArkUI_ErrorCode OH_ArkUI_SetTouchTestDoneCallback(ArkUI_NodeHandle node,void* userData,void (\*touchTestDone)(ArkUI_GestureEvent* event,ArkUI_GestureRecognizerHandleArray recognizers,int32_t count,void* userData))](#oh_arkui_settouchtestdonecallback) | - | Registers a callback that is executed after all gesture recognizers are collected. When the user begins touching the screen, the system performs hit testing and collects gesture recognizers based on the touch location. Subsequently, before processing any move events, the component can use this API to determine the gesture recognizers that will participate in and compete for recognition.|
 | [void* OH_ArkUI_GestureInterrupter_GetUserData(ArkUI_GestureInterruptInfo* event)](#oh_arkui_gestureinterrupter_getuserdata) | - | Obtains the custom data from a gesture interruption event.|
@@ -228,7 +228,7 @@ Enumerates gesture masking modes.
 | Value| Description|
 | -- | -- |
 | NORMAL_GESTURE_MASK = 0 | The gestures of child components are enabled and recognized based on the default gesture recognition sequence.|
-| IGNORE_INTERNAL_GESTURE_MASK | The gestures of child components are disabled, including the built-in gestures.|
+| IGNORE_INTERNAL_GESTURE_MASK = 1 | The gestures of child components are disabled, including the built-in gestures.|
 
 ### ArkUI_GestureRecognizerType
 
@@ -328,7 +328,7 @@ bool OH_ArkUI_GestureInterruptInfo_GetSystemFlag(const ArkUI_GestureInterruptInf
 **Description**
 
 
-Checks whether a gesture is a built-in gesture of the component.
+Checks whether a gesture is a system built-in gesture.
 
 **Since**: 12
 
@@ -337,7 +337,7 @@ Checks whether a gesture is a built-in gesture of the component.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* event | Gesture interruption callback event.|
+| const [ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* event | Gesture interruption callback event.|
 
 **Returns**
 
@@ -363,7 +363,7 @@ Obtains the pointer to the interrupted gesture recognizer.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* event | Gesture interruption callback event.|
+| const [ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* event | Gesture interruption callback event.|
 
 **Returns**
 
@@ -389,7 +389,7 @@ Obtains the pointer to the interrupted gesture event.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* event | Gesture interruption callback event.|
+| const [ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* event | Gesture interruption callback event.|
 
 **Returns**
 
@@ -406,7 +406,7 @@ int32_t OH_ArkUI_GestureInterruptInfo_GetSystemRecognizerType(const ArkUI_Gestur
 **Description**
 
 
-Obtains the type of the system gesture to trigger.
+Obtains the type of the system built-in gesture to trigger.
 
 **Since**: 12
 
@@ -415,13 +415,13 @@ Obtains the type of the system gesture to trigger.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* event | Gesture interruption callback event.|
+| const [ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* event | Gesture interruption callback event.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Type of the system gesture to trigger. If the gesture to trigger is not a system gesture, **-1** is returned.|
+| int32_t | Type of the system built-in gesture to trigger. The value is defined in [ArkUI_GestureRecognizerType](#arkui_gesturerecognizertype). If the triggered gesture is not a built-in gesture, **-1** is returned.|
 
 ### OH_ArkUI_GestureInterruptInfo_GetTouchRecognizers()
 
@@ -441,7 +441,7 @@ Obtains touch recognizers from gesture interruption information.
 
 | Name                                                                                            | Description|
 |-------------------------------------------------------------------------------------------------| -- |
-| [const ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* info | Pointer to the gesture interruption information.|
+| const [ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* info | Pointer to the gesture interruption information.|
 | [ArkUI_TouchRecognizerHandleArray](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md)* recognizers  | Pointer to the array of touch recognizers.|
 | int32_t* size                                                                                   | Pointer to the size of the touch recognizer array.|
 
@@ -449,7 +449,7 @@ Obtains touch recognizers from gesture interruption information.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_TouchRecognizer_GetNodeHandle()
 
@@ -502,7 +502,7 @@ Sends a cancel touch event to a touch recognizer in a gesture interruption callb
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_GestureEvent_GetActionType()
 
@@ -522,7 +522,7 @@ Obtains the gesture event type.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
+| const [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
 
 **Returns**
 
@@ -548,7 +548,7 @@ Obtains gesture input.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
+| const [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
 
 **Returns**
 
@@ -574,7 +574,7 @@ Checks whether the event is a repeated trigger event.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
+| const [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
 
 **Returns**
 
@@ -600,7 +600,7 @@ Obtains the velocity of a pan gesture along the main axis.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
+| const [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
 
 **Returns**
 
@@ -626,7 +626,7 @@ Obtains the velocity of a pan gesture along the x-axis.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
+| const [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
 
 **Returns**
 
@@ -652,7 +652,7 @@ Obtains the velocity of a pan gesture along the y-axis.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
+| const [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
 
 **Returns**
 
@@ -678,7 +678,7 @@ Obtains the relative offset of a pan gesture along the x-axis.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
+| const [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
 
 **Returns**
 
@@ -704,7 +704,7 @@ Obtains the relative offset of a pan gesture along the y-axis.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
+| const [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
 
 **Returns**
 
@@ -730,7 +730,7 @@ Obtains the angle information of the swipe gesture. After a swipe gesture is rec
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
+| const [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
 
 **Returns**
 
@@ -756,7 +756,7 @@ Obtains the average velocity of all fingers used in the swipe gesture.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
+| const [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
 
 **Returns**
 
@@ -782,7 +782,7 @@ Obtains the angle information of a rotation gesture.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
+| const [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
 
 **Returns**
 
@@ -808,7 +808,7 @@ Obtains the scale ratio of a pinch gesture.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
+| const [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
 
 **Returns**
 
@@ -834,7 +834,7 @@ Obtains the x-coordinate of the center of the pinch gesture, in vp, relative to 
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
+| const [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
 
 **Returns**
 
@@ -860,7 +860,7 @@ Obtains the y-coordinate of the center of the pinch gesture, in vp, relative to 
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
+| const [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
 
 **Returns**
 
@@ -886,7 +886,7 @@ Obtains the ArkUI component to which the gesture is bound.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
+| const [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event | Gesture event.|
 
 **Returns**
 
@@ -912,15 +912,15 @@ Obtains information about a gesture response chain.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* event | Gesture interruption callback event.|
-| ArkUI_GestureRecognizerHandleArray* responseChain | Pointer to an array of gesture recognizers on the response chain.|
+| const [ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* event | Gesture interruption callback event.|
+| [ArkUI_GestureRecognizerHandleArray](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md)* responseChain | Pointer to an array of gesture recognizers on the response chain.|
 | int32_t* count | Pointer to the number of gesture recognizers on the response chain.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_SetGestureRecognizerEnabled()
 
@@ -947,7 +947,7 @@ Sets the enabled state of a gesture recognizer.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_SetGestureRecognizerLimitFingerCount()
 
@@ -974,7 +974,7 @@ Sets whether to enable strict finger count checking. If this feature is enabled 
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_GetGestureRecognizerEnabled()
 
@@ -1027,7 +1027,7 @@ Obtains the state of a gesture recognizer.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_GetGestureEventTargetInfo()
 
@@ -1054,7 +1054,7 @@ Obtains the information about a gesture event target.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_GestureEventTargetInfo_IsScrollBegin()
 
@@ -1081,7 +1081,7 @@ Obtains whether this scrollable container component is scrolled to the top.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER](capi-native-type-h.md#arkui_errorcode) if the component is not a scrollable container.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER](capi-native-type-h.md#arkui_errorcode) if the component is not a scrollable container.|
 
 ### OH_ArkUI_GestureEventTargetInfo_IsScrollEnd()
 
@@ -1108,7 +1108,7 @@ Obtains whether this scrollable container component is scrolled to the bottom.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER](capi-native-type-h.md#arkui_errorcode) if the component is not a scrollable container.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER](capi-native-type-h.md#arkui_errorcode) if the component is not a scrollable container.|
 
 ### OH_ArkUI_GetPanGestureDirectionMask()
 
@@ -1135,7 +1135,7 @@ Obtains the direction of a pan gesture.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_IsBuiltInGesture()
 
@@ -1190,7 +1190,7 @@ Obtains the tag of a gesture recognizer.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH](capi-native-type-h.md#arkui_errorcode) if the buffer is not large enough.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH](capi-native-type-h.md#arkui_errorcode) if the buffer is not large enough.|
 
 ### OH_ArkUI_GetGestureBindNodeId()
 
@@ -1219,7 +1219,7 @@ Obtains the ID of the component linked to a gesture recognizer.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH](capi-native-type-h.md#arkui_errorcode) if the buffer is not large enough.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH](capi-native-type-h.md#arkui_errorcode) if the buffer is not large enough.|
 
 ### OH_ArkUI_IsGestureRecognizerValid()
 
@@ -1256,7 +1256,7 @@ void* OH_ArkUI_ParallelInnerGestureEvent_GetUserData(ArkUI_ParallelInnerGestureE
 **Description**
 
 
-Obtains custom data in the parallel internal gesture event.
+Obtains custom data in the parallel built-in gesture event.
 
 **Since**: 12
 
@@ -1265,7 +1265,7 @@ Obtains custom data in the parallel internal gesture event.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md)* event | Parallel inner gesture event.|
+| [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md)* event | Pointer to the parallel built-in gesture event.|
 
 **Returns**
 
@@ -1282,7 +1282,7 @@ ArkUI_GestureRecognizer* OH_ArkUI_ParallelInnerGestureEvent_GetCurrentRecognizer
 **Description**
 
 
-Obtains the current gesture recognizer in a parallel internal gesture event.
+Obtains the current gesture recognizer in a parallel built-in gesture event.
 
 **Since**: 12
 
@@ -1291,7 +1291,7 @@ Obtains the current gesture recognizer in a parallel internal gesture event.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md)* event | Parallel inner gesture event.|
+| [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md)* event | Pointer to the parallel built-in gesture event.|
 
 **Returns**
 
@@ -1308,7 +1308,7 @@ int32_t OH_ArkUI_ParallelInnerGestureEvent_GetConflictRecognizers(ArkUI_Parallel
 **Description**
 
 
-Obtains the conflicting gesture recognizers in a parallel internal gesture event.
+Obtains the conflicting gesture recognizers in a parallel built-in gesture event.
 
 **Since**: 12
 
@@ -1317,7 +1317,7 @@ Obtains the conflicting gesture recognizers in a parallel internal gesture event
 
 | Name                                                                                                 | Description|
 |------------------------------------------------------------------------------------------------------| -- |
-| [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md)* event | Parallel inner gesture event.|
+| [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md)* event | Pointer to the parallel built-in gesture event.|
 | [ArkUI_GestureRecognizerHandleArray](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md)* array  | Pointer to the array of conflicting gesture recognizers.|
 | int32_t* size                                                                                        | Size of the array of conflicting gesture recognizers.|
 
@@ -1325,7 +1325,7 @@ Obtains the conflicting gesture recognizers in a parallel internal gesture event
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_SetArkUIGestureRecognizerDisposeNotify()
 
@@ -1352,7 +1352,7 @@ Sets a callback function for notifying gesture recognizer destruction.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_GetGestureParam_DirectMask()
 
@@ -1427,7 +1427,7 @@ Checks whether a gesture recognizer has a finger count limit.
 | Name| Description|
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | Pointer to the gesture recognizer instance.|
-| bool* isLimited | Whether the gesture recognizer has a finger count limit.|
+| bool* isLimited | Whether the gesture recognizer has a finger count limit. **true** indicates that the gesture recognizer has a finger count limit. **false** indicates that the gesture recognizer does not have a finger count limit.|
 
 **Returns**
 
@@ -1606,7 +1606,7 @@ ArkUI_ErrorCode OH_ArkUI_PanGesture_SetDistanceMap(ArkUI_GestureRecognizer* reco
 **Description**
 
 
-Sets the minimum sliding distance threshold mapping for gesture recognition. Settings are ignored for invalid device types.
+Sets the minimum sliding distance threshold mapping for gesture recognition.
 
 **Since**: 19
 
@@ -1617,7 +1617,7 @@ Sets the minimum sliding distance threshold mapping for gesture recognition. Set
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | Pointer to the gesture recognizer instance.|
 | int size | Size of the array of minimum sliding distance thresholds.|
-| int* toolTypeArray | Pointer to the array of tool types for which thresholds are set.|
+| int* toolTypeArray | Pointer to the array of tool types for which thresholds are set. If a value other than [UI_INPUT_EVENT_TOOL_TYPE_XXX](./capi-ui-input-event-h.md#anonymous2) is set, the setting does not take effect.|
 | double* distanceArray | Pointer to the array of minimum sliding distances. The unit is px.|
 
 **Returns**
@@ -1635,7 +1635,7 @@ ArkUI_ErrorCode OH_ArkUI_PanGesture_GetDistanceByToolType(ArkUI_GestureRecognize
 **Description**
 
 
-Obtains the movement distance threshold for gesture recognition for a specific input device type. This API only returns values for device types previously set using **OH_ArkUI_PanGesture_SetDistanceMap**. The default pan gesture activation threshold can be obtained using **UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN**. This API returns no value for unconfigured device types.
+Obtains the movement distance threshold for gesture recognition for a specific input device type. This API only returns values for device types previously set using **OH_ArkUI_PanGesture_SetDistanceMap**. The default movement distance threshold can be obtained by querying the [UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN](./capi-ui-input-event-h.md#anonymous2) type. Other types that have not been set are not returned.
 
 **Since**: 19
 
@@ -1657,8 +1657,7 @@ Obtains the movement distance threshold for gesture recognition for a specific i
 ### OH_ArkUI_SetTouchTestDoneCallback()
 
 ```c
-ArkUI_ErrorCode OH_ArkUI_SetTouchTestDoneCallback(ArkUI_NodeHandle node,void* userData,void (*touchTestDone)(ArkUI_GestureEvent* event,ArkUI_GestureRecognizerHandleArray recognizers,int32_t count,void* userData)
-)
+ArkUI_ErrorCode OH_ArkUI_SetTouchTestDoneCallback(ArkUI_NodeHandle node, void* userData, void (*touchTestDone)(ArkUI_GestureEvent* event, ArkUI_GestureRecognizerHandleArray recognizers, int32_t count, void* userData))
 ```
 
 **Description**
@@ -1675,7 +1674,7 @@ Registers a callback that is executed after all gesture recognizers are collecte
 |---------------------------| -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Handle to the node on which the callback is to be set.|
 | void* userData            | Pointer to user-defined data.|
-| touchTestDone             | Callback for completion of gesture recognizer collection. - **event**: basic information of the gesture. - **recognizers**: array of gesture recognizers. - **count**: number of gesture recognizers.|
+| void (\*touchTestDone)([ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event, [ArkUI_GestureRecognizerHandleArray](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md) recognizers, int32_t count, void* userData)             | Callback for completion of gesture recognizer collection. **event** indicates the basic information about the gesture, **recognizers** indicates the gesture recognizer array, **count** indicates the number of gesture recognizers, and **userData** indicates the user-defined data.|
 
 **Returns**
 

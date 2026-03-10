@@ -905,7 +905,7 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 
 ## PermissionUsedResponse
 
-表示所有应用的访问记录。
+表示所有应用或设备的访问记录。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -913,21 +913,22 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 | --------- | -------------- | ---- | ---- | ---------------------------------------- |
 | beginTime | number         | 否    | 否    | 查询记录的起始时间，单位：ms。 |
 | endTime   | number         | 否    | 否    | 查询记录的终止时间，单位：ms。 |
-| bundleRecords  | Array&lt;[BundleUsedRecord](#bundleusedrecord)&gt;         | 否    | 否    | 应用的权限使用记录集合。                                 |
+| bundleRecords  | Array&lt;[BundleUsedRecord](#bundleusedrecord)&gt;         | 否    | 否    | 应用或设备的权限使用记录集合。                                 |
 
 ## BundleUsedRecord
 
-某个应用的访问记录。
+某个应用或设备的访问记录。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
 | 名称       | 类型             | 只读 | 可选 | 说明                                       |
 | -------- | -------------- | ---- | ---- | ---------------------------------------- |
-| tokenId  | number         | 否    | 否    | 目标应用的身份标识。                                 |
-| isRemote | boolean         | 否    | 否    | 是否是分布式设备。默认值为false，表示不是分布式设备，true表示是分布式设备。 |
-| deviceId  | string         | 否    | 否    | 目标应用所在设备的ID。                                 |
-| bundleName | string         | 否    | 否    | 目标应用的包名。 |
-| permissionRecords  | Array&lt;[PermissionUsedRecord](#permissionusedrecord)&gt;         | 否    | 否    | 每个应用的权限使用记录集合。                                 |
+| tokenId  | number         | 否    | 否    | 使用权限的应用的身份标识，在分布式场景下该值无效。                                 |
+| isRemote | boolean         | 否    | 否    | 是否是分布式场景的访问记录。默认值为false，表示不是分布式场景，true表示是分布式场景。 |
+| deviceId  | string         | 否    | 否    | 使用权限的应用所在的设备ID，仅用于分布式场景。                                 |
+| deviceName<sup>24+</sup>  | string         | 否    | 是    | 使用权限的应用所在的设备名称，仅用于分布式场景。                                 |
+| bundleName | string         | 否    | 否    | 使用权限的应用的包名，在分布式场景下该值无效。 |
+| permissionRecords  | Array&lt;[PermissionUsedRecord](#permissionusedrecord)&gt;         | 否    | 否    | 每个应用或设备的权限使用记录集合。                                 |
 
 ## PermissionUsedRecord
 

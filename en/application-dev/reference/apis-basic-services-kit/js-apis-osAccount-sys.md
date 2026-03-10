@@ -441,12 +441,12 @@ Removes a system account. This API uses an asynchronous callback to return the r
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 204 | Access denied due to user access control policy. Possible causes: <br>1. The operation is restricted by the OS-account constraint. <br>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
-| 12300010 | Service busy. Possible causes: The target account is being operated. |
+| 12300010 | Service busy. Possible causes: The target account is being operated on. |
 
 **Example**
 
@@ -502,7 +502,7 @@ Removes a system account. This API uses a promise to return the result.
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 204 | Access denied due to user access control policy. Possible causes: <br>1. The operation is restricted by the OS-account constraint. <br>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -530,6 +530,72 @@ Removes a system account. This API uses a promise to return the result.
     console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### removeOsAccount<sup>24+</sup>
+
+removeOsAccount(localId: number, options: RemoveOsAccountOptions): Promise&lt;void&gt;
+
+Removes a specified system account based on the options. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Parameters**
+
+| Name | Type  | Mandatory| Description                              |
+| ------- | ------ | ---- | --------------------------------- |
+| localId | number | Yes  | ID of the target system account.|
+| options | [RemoveOsAccountOptions](#removeosaccountoptions24) | Yes  | Options for removing a system account.|
+
+**Return value**
+
+| Type               | Description                                 |
+| ------------------- | ------------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message            |
+| -------- | ------------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 204 | Access denied due to user access control policy. Possible causes: <br>1. The operation is restricted by the OS-account constraint. <br>2. The required privilege for the operation has not been granted. |
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid localId or options.    |
+| 12300003 | Account not found. |
+| 12300008 | Restricted Account. |
+| 12300010 | Service busy. Possible causes: The target account is being operated on. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let accountName: string = 'testAccountName';
+let token: Uint8Array = new Uint8Array([0]);
+let options: osAccount.RemoveOsAccountOptions = {
+  token: token,
+}
+try {
+  accountManager.createOsAccount(accountName, osAccount.OsAccountType.NORMAL,
+    (err: BusinessError, osAccountInfo: osAccount.OsAccountInfo)=>{
+      accountManager.removeOsAccount(osAccountInfo.localId, options).then(() => {
+        console.info('removeOsAccount successfully');
+      }).catch((err: BusinessError) => {
+        console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
+      });
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### setOsAccountConstraints
 
@@ -753,6 +819,71 @@ Sets the name of a system account. This API uses a promise to return the result.
     console.error(`setOsAccountName exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### setOsAccountType<sup>24+</sup>
+
+setOsAccountType(localId: number, type: OsAccountType, options?: SetOsAccountTypeOptions): Promise&lt;void&gt;
+
+Sets the type of a specified system account. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Parameters**
+
+| Name | Type                                                | Mandatory| Description                    |
+| ------- | ---------------------------------------------------- | ---- | ------------------------ |
+| localId | number                                               | Yes  | ID of the target system account.            |
+| type    | [OsAccountType](js-apis-osAccount.md#osaccounttype)  | Yes  | Type of the system account.          |
+| options | [SetOsAccountTypeOptions](#setosaccounttypeoptions24) | No  | Options for setting the system account type. This parameter is left empty by default.|
+
+**Return value**
+
+| Type               | Description                                  |
+| ------------------- | -------------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Not system application.                                      |
+| 204      | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted. |
+| 12300001 | The system service works abnormally.                         |
+| 12300002 | Invalid type or options.                                     |
+| 12300003 | Account not found.                                           |
+| 12300008 | Restricted OS account.                                       |
+| 12300010 | Service busy. Possible causes: The target account is being operated. |
+| 12300023 | The number of accounts of the specified type has reached the upper limit. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let localId: number = 100;
+let type: osAccount.OsAccountType = osAccount.OsAccountType.ADMIN;
+let options: osAccount.SetOsAccountTypeOptions = {
+  token: new Uint8Array([0, 1, 2, 3])
+};
+try {
+  accountManager.setOsAccountType(localId, type, options).then(() => {
+    console.info('setOsAccountType successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`setOsAccountType failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setOsAccountType exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### queryMaxOsAccountNumber
 
@@ -1050,13 +1181,14 @@ Creates a system account. This API uses an asynchronous callback to return the r
 | -------- | ------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 204 | Access denied due to user access control policy. Possible causes: <br>1. The operation is restricted by the OS-account constraint. <br>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localName or type. |
 | 12300004 | Local name already exists. |
 | 12300005 | Multi-user not supported. |
 | 12300006 | Unsupported account type. |
 | 12300007 | The number of accounts has reached the upper limit. |
+| 12300023 | The number of accounts of the specified type has reached the upper limit. |
 
 **Example**
 
@@ -1111,7 +1243,7 @@ Creates a system account. This API uses a promise to return the result.
 | -------- | ------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 204 | Access denied due to user access control policy. Possible causes: <br>1. The operation is restricted by the OS-account constraint. <br>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localName, type or options. |
 | 12300004 | Local name already exists. |
@@ -1119,6 +1251,7 @@ Creates a system account. This API uses a promise to return the result.
 | 12300006 | Unsupported account type. |
 | 12300007 | The number of accounts has reached the upper limit. |
 | 12300015 | The short name already exists. |
+| 12300023 | The number of accounts of the specified type has reached the upper limit. |
 
 **Example**
 
@@ -1170,7 +1303,7 @@ Creates a system account and associates it with the specified domain account. Th
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 204 | Access denied due to user access control policy. Possible causes: <br>1. The operation is restricted by the OS-account constraint. <br>2. The required privilege for the operation has not been granted. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type or domainInfo. |
@@ -1178,6 +1311,7 @@ Creates a system account and associates it with the specified domain account. Th
 | 12300005 | Multi-user not supported. |
 | 12300006 | Unsupported account type. |
 | 12300007 | The number of accounts has reached the upper limit. |
+| 12300023 | The number of accounts of the specified type has reached the upper limit. |
 
 **Example**
 
@@ -1234,7 +1368,7 @@ Creates a system account and associates it with the specified domain account. Th
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 204 | Access denied due to user access control policy. Possible causes: <br>1. The operation is restricted by the OS-account constraint. <br>2. The required privilege for the operation has not been granted. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type, domainInfo or options. |
@@ -1243,6 +1377,7 @@ Creates a system account and associates it with the specified domain account. Th
 | 12300006 | Unsupported account type. |
 | 12300007 | The number of accounts has reached the upper limit. |
 | 12300015 | The short name already exists. |
+| 12300023 | The number of accounts of the specified type has reached the upper limit. |
 
 **Example**
 
@@ -2583,6 +2718,272 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     console.error(`bindDomainAccount error, errCode=${error.code}, errMsg=${error.message}`);
   }
   ```
+
+## osAccount.getAuthorizationManager<sup>24+</sup>
+
+getAuthorizationManager(): AuthorizationManager
+
+Obtains this system account authorization manager.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type| Description|
+| ----- | ----------- |
+| [AuthorizationManager](#authorizationmanager24) | Instance object of the system account authorization manager.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message      |
+| -------- | ------------- |
+| 202 | Not system application.|
+
+**Example**
+
+```ts
+let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();
+```
+
+## AuthorizationManager<sup>24+</sup>
+
+Defines the system account authorization manager class.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Model constraint**: This API can be used only in the stage model.
+
+### acquireAuthorization<sup>24+</sup>
+
+acquireAuthorization(privilege: string, options?: AcquireAuthorizationOptions): Promise&lt;AcquireAuthorizationResult&gt;
+
+Acquires an authorization for a process.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| --- | --- | --- | --- |
+| privilege | string | Yes| Target permission. For details, see [configuration file](https://gitcode.com/openharmony/account_os_account/blob/master/services/accountmgr/authorization_manager/config/privileges.json).|
+| options | [AcquireAuthorizationOptions](#acquireauthorizationoptions24) | No| Authorization options. This parameter is left empty by default.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+| Promise&lt;[AcquireAuthorizationResult](#acquireauthorizationresult24)&gt; | Promise used to return the authorization result.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | --- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid privilege or options. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();
+let privilege: string = 'testPrivilege';
+let options: osAccount.AcquireAuthorizationOptions = {
+  challenge: new Uint8Array([1, 2, 3]),
+  isReuseNeeded: true,
+  isInteractionAllowed: true,
+};
+try {
+  authorizationManager.acquireAuthorization(privilege, options).then((result: osAccount.AcquireAuthorizationResult) => {
+    console.info(`acquireAuthorization successfully, resultCode: ${result.resultCode}`);
+  }).catch((err: BusinessError) => {
+    console.error(`acquireAuthorization failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`acquireAuthorization exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### hasAuthorization<sup>24+</sup>
+
+hasAuthorization(privilege: string): Promise&lt;boolean&gt;
+
+Checks whether the current process has specified authorization.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| --- | --- | --- | --- |
+| privilege | string | Yes| Target permission. For details, see [configuration file](https://gitcode.com/openharmony/account_os_account/blob/master/services/accountmgr/authorization_manager/config/privileges.json).|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the current process has specified authorization, and **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | --- |
+| 202 | Not system application. |
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid privilege. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();
+let privilege: string = 'testPrivilege';
+
+try {
+  authorizationManager.hasAuthorization(privilege).then((isAuthorized: boolean) => {
+    console.info(`Privilege: ${privilege} has been authorized: ${isAuthorized}`);
+  }).catch((e:Error) => {
+    const err = e as BusinessError;
+    console.error(`hasAuthorization failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`hasAuthorization exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### releaseAuthorization<sup>24+</sup>
+
+releaseAuthorization(privilege: string): Promise&lt;void&gt;
+
+Releases the specified authorization for the current process.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| --- | --- | --- | --- |
+| privilege | string | Yes| Target permission. For details, see [configuration file](https://gitcode.com/openharmony/account_os_account/blob/master/services/accountmgr/authorization_manager/config/privileges.json).|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | --- |
+| 202 | Not system application. |
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid privilege. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();
+let privilege: string = 'testPrivilege';
+
+try {
+  authorizationManager.releaseAuthorization(privilege).then(() => {
+    console.info('releaseAuthorization success');
+  }).catch((e:Error) => {
+    const err = e as BusinessError;
+    console.error(`releaseAuthorization failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`releaseAuthorization exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## AcquireAuthorizationOptions<sup>24+</sup>
+
+Defines the options for acquiring the authorization.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Model constraint**: This API can be used only in the stage model.
+
+| Name| Type| Read-Only| Optional| Description|
+| --- | --- | --- | --- | --- |
+| challenge | Uint8Array | No| Yes| Random challenge value, which prevents replay attacks. The value contains a maximum of 32 bytes. The default value is **undefined**.|
+| isReuseNeeded | boolean | No| Yes| Whether to reuse the previous authorization. The default value is **true**.<br>If the value is **true** and the authorization result is valid, the result will be reused. Otherwise, a new authorization will be executed.|
+| isInteractionAllowed | boolean | No| Yes| Whether user interaction is allowed. The default value is **true**.<br>If the value is **true**, the authorization dialog box can be displayed in the interaction context. If the value is **false**, the authorization dialog box cannot be displayed.<br>Note: This option is valid only when the caller is in the foreground. If the caller is in the background, user interaction is not allowed.|
+| interactionContext | Context | No| Yes| User interaction context configuration. The default value is **undefined**.<br>- If no context is specified, the authorization dialog box is displayed in modal system mode.<br>- If [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) or [UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md) is specified, the authorization dialog box is displayed in modal application mode.<br> - If no valid context is provided, the authorization dialog box cannot be displayed.<br>Note: This parameter is valid only when **isInteractionAllowed** is set to **true**.|
+## AuthorizationResultCode<sup>24+</sup>
+
+Enumerates authorization result codes.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Model constraint**: This API can be used only in the stage model.
+
+| Name| Value| Description|
+| --- | --- | --- |
+| AUTHORIZATION_SUCCESS | 0 | The authorization is successful.|
+| AUTHORIZATION_CANCELED | 12300301 | The authorization is canceled.|
+| AUTHORIZATION_INTERACTION_NOT_ALLOWED | 12300302 | The authorization is rejected because user interaction is not allowed.<br>Possible causes:<br>1. The caller is in the background.<br>2. The value of **isInteractionAllowed** is **false**.<br>3. The specified interaction context is invalid.|
+| AUTHORIZATION_DENIED | 12300303 | The authorization is rejected because the authorization rules are not met, for example, the account type is not an administrator or the device type is not supported.|
+| AUTHORIZATION_SERVICE_BUSY | 12300304 | Authorization service is busy.<br>Possible cause: Another authorization is being processed.|
+
+## AcquireAuthorizationResult<sup>24+</sup>
+
+Defines the result of the authorization.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Model constraint**: This API can be used only in the stage model.
+
+| Name| Type| Read-Only| Optional| Description|
+| --- | --- | --- | --- | --- |
+| resultCode | [AuthorizationResultCode](#authorizationresultcode24) | No| No| Authorization result code.|
+| privilege | string | No| No| Permission associated with the authorization.|
+| isReused | boolean | No| Yes| Whether the authorization result is reused. The default value is **undefined**.<br>**true**: The authorization result is reused. **false**: The authorization result is not reused.|
+| validityPeriod | number | No| Yes| Validity period of the authorization, in seconds. The default value is **300**.|
+| token | Uint8Array | No| Yes| Authorization token. The default value is **undefined**.|
 
 ## UserAuth<sup>8+</sup>
 
@@ -4211,6 +4612,79 @@ Authenticates a domain account.
     console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### auth<sup>24+</sup>
+
+auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, options: DomainAccountAuthOptions, callback: IUserAuthCallback): void
+
+Authenticates a specified domain account. You can specify authentication options, such as server parameters. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Required permissions**: ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**Parameters**
+
+| Name     | Type                                   | Mandatory| Description            |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | Yes  | Domain account information.|
+| credential   | Uint8Array  | Yes  | Credentials of the domain account.|
+| options   | [DomainAccountAuthOptions](#domainaccountauthoptions24)  | Yes  | Options for domain account authentication.|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | Yes  | Callback used to return the authentication result.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                    |
+| -------- | --------------------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 801 | Capability not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid domainAccountInfo or credential. |
+| 12300003 | Domain account does not exist. |
+| 12300013 | Network exception. |
+| 12300101 | Authentication failed. |
+| 12300109 | The authentication, enrollment, or update operation is canceled. |
+| 12300110 | The authentication is locked. |
+| 12300111 | The authentication time out. |
+| 12300112 | The authentication service is busy. |
+| 12300113 | The account authentication service does not exist. |
+| 12300114 | The account authentication service works abnormally. |
+| 12300211 | Server unreachable. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let domainAccountInfo: osAccount.DomainAccountInfo = {
+  domain: 'CHINA',
+  accountName: 'zhangsan'
+}
+let credential = new Uint8Array([0]);
+try {
+  let serverParams: Record<string, Object> = {
+    "uri": "test.example.com",
+    "port": 100
+  }
+  let authOptions: osAccount.DomainAccountAuthOptions = {
+    serverParams: serverParams
+  }
+  osAccount.DomainAccountManager.auth(domainAccountInfo, credential, authOptions, {
+    onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
+      console.info('auth resultCode = ' + resultCode);
+      console.info('auth authResult = ' + JSON.stringify(authResult));
+    }
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### authWithPopup<sup>10+</sup>
 
@@ -6286,6 +6760,19 @@ Defines the options for obtaining a domain access token.
 | businessParams | Record<string, Object> | No| No | Service parameters customized by the service party based on the request protocol.|
 | callerUid | number | No| No | Unique identifier of the caller.|
 
+
+## DomainAccountAuthOptions<sup>24+</sup>
+
+Defines the options for domain account authentication.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+| Name     | Type  | Read-Only | Optional| Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| serverParams | Record<string, Object> | No| Yes | Configuration parameters of the domain account authentication server. which is **undefined** by default.|
+
 ## GetDomainAccountInfoOptions<sup>10+</sup>
 
 Defines the options for obtaining domain account information.
@@ -6352,6 +6839,7 @@ Represents the optional parameter used to create a system account.
 | shortName | string | No| No  | Short name of the account (used as the name of the personal folder).<br>**The short name cannot**:<br>1. Contain any of the following characters: \< \>\| : " * ? / \\<br>2. Contain any of the following: . or ..<br>3. Exceed 255 characters.|
 | disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | No| Yes  | Forbidden list of the preinstalled applications, which cannot be installed on the device. The value is empty by default.|
 | allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | No| Yes  | Trustlist of the preinstalled applications, which can be installed on the device. The default value is **std::nullopt**.|
+| token<sup>24+</sup> | Uint8Array | No  | Yes  | Token obtained from the authentication management API. The value is left empty by default.|
 
 ## CreateOsAccountForDomainOptions<sup>12+</sup>
 
@@ -6360,6 +6848,18 @@ Represents a set of optional parameters for creating a system account bound to t
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Account.OsAccount
+
+## RemoveOsAccountOptions<sup>24+</sup>
+
+Represents the optional parameter used to remove a system account.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+| Name | Type      | Read-Only| Optional| Description                        |
+| ----- | ---------- | ---- | ---- | ---------------------------- |
+| token | Uint8Array | No  | Yes  | Token obtained from the authentication management API. The value is left empty by default.  |
 
 ## GetAuthInfoOptions<sup>12+</sup>
 
@@ -6459,3 +6959,15 @@ Enumerates the credential change types.
 | ADD_CREDENTIAL      | 1   | A credential is added.|
 | UPDATE_CREDENTIAL   | 2   | A credential is updated.|
 | DELETE_CREDENTIAL   | 3   | A credential is deleted.|
+
+## SetOsAccountTypeOptions<sup>24+</sup>
+
+Defines the options for setting the system account type.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+| Name | Type      | Read-Only| Optional| Description                        |
+| ----- | ---------- | ---- | ---- | ---------------------------- |
+| token | Uint8Array | No  | Yes  | Token obtained from the authentication management API. This parameter is left empty by default.|

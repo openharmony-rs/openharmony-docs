@@ -18,11 +18,11 @@ The **Animator** module provides APIs for applying animation effects, including 
 >
 > - The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](arkts-apis-uicontext-uicontext.md).
 >
-> - Custom components typically retain the [AnimatorResult](#animatorresult) returned by [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) to prevent animation object destruction during execution. This object holds references to the custom component via callbacks. Release the animation object in [aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) to avoid circular reference memory leaks. For implementation examples, see [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
+> - A custom component usually holds an [AnimatorResult](#animatorresult) object returned by the [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) API to ensure that the animation object is not destructed during the animation. The object captures the custom component object through a callback. Therefore, the animation object needs to be released in the [aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) lifecycle when the custom component is destroyed to avoid memory leakage caused by cyclic dependency. For the example details, see [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
 >
-> - Both Animator destruction and explicit [cancel](#cancel) or [finish](#finish) calls trigger an additional [onFrame](#properties) callback with the animation's endpoint value. Therefore, if [cancel](#cancel) or [finish](#finish) is called during animation execution, there will be an immediate jump to the endpoint in one frame. For smooth mid-point termination, first clear the **onFrame** callback before calling [finish](#finish).
+> - When the object of **Animator** is destructed or proactively call [cancel](#cancel) or [finish](#finish), an additional [onFrame](#properties) API will be triggered. The return value is the end point value of the animation. Therefore, if [cancel](#cancel) or [finish](#finish) is called during the animation, the property value will jump to the end point value within a frame. To pause the animation, set **onFrame** to an empty function and then call [finish](#finish).
 >
-> - For an **Animator** animation with infinite iterations, even when the global animation speed is set to 0 (animations disabled) in Developer options, the loop animation will still continue to execute.
+> - For an animation in an infinite loop, the animation will continue to be played even if the global animation speed is set to 0 (disabled) in the developer options.
 
 ## Modules to Import
 
@@ -1010,7 +1010,7 @@ struct AnimatorTest {
         Column()
           .width(this.columnWidth)
           .height(this.columnHeight)
-          .backgroundColor(Color.Red)
+          .backgroundColor(Color.Blue)
       }
       .width('100%')
       .height(300)
@@ -1119,6 +1119,8 @@ struct AnimatorTest {
   }
 }
 ```
+
+![animator_01](figures/animator_result.gif)
 
 ### Example: Implementing a Translation Animation with Simple Parameters
 

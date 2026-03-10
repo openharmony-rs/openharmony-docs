@@ -222,9 +222,11 @@ function testGenerateKey() {
 
     huks.generateKeyItem(keyAlias, options, (err) => {
         if (err) {
-            huksInfo = 'generate key return code: ' + err.code + ', message: ' + err.message;
+            huksInfo = 'generateKeyItem failed, code: ' + err.code + ', message: ' + err.message;
+            console.error(huksInfo);
         } else {
-            huksInfo = 'The key has been generated success.';
+            huksInfo = 'generateKeyItem succeeded';
+            console.info(huksInfo);
         }
     });
     return huksInfo;
@@ -429,11 +431,11 @@ function testDeleteKey() {
     };
     huks.deleteKeyItem(keyAlias, emptyOptions, (err, data) => {
         if (err) {
-            console.error('callback: deleteKeyItem failed.');
-            huksInfo = 'delete key return code: ' + err.code + ', message: ' + err.message;
+            huksInfo = 'deleteKeyItem failed, code: ' + err.code + ', message: ' + err.message;
+            console.error(huksInfo);
         } else {
-            console.info('callback: deleteKeyItem key success.');
-            huksInfo = 'The key has been deleted success.';
+            huksInfo = 'deleteKeyItem succeeded';
+            console.info(huksInfo);
         }
     });
     return huksInfo;
@@ -1921,15 +1923,15 @@ function testKeyExist() {
 
     huks.isKeyItemExist(keyAlias, emptyOptions, (err, data) => {
         if (err) {
-            console.error('callback: isKeyItemExist failed.');
-            huksInfo = 'delete key return code: ' + err.code + ', message: ' + err.message;
+            huksInfo = 'isKeyItemExist failed, code: ' + err.code + ', message: ' + err.message;
+            console.error(huksInfo);
         } else {
             if (data) {
-                console.info(`keyAlias: ${keyAlias} is existed!`);
-                huksInfo = 'keyAlias is exist.';
+                huksInfo = `key: ${keyAlias} exists`;
+                console.info(huksInfo);
             } else {
-                console.error('find key failed.');
-                huksInfo = 'keyAlias is not exist.';
+                huksInfo = 'key does not exist';
+                console.error(huksInfo);
             }
         }
     });
@@ -2671,11 +2673,6 @@ const keyAlias = 'keyAlias';
 let handle;
 let plainText = 'DESAAAdffssghCBC5612345612345L64';
 let cipherText;
-/*
- * 在实际工程中不建议写定IV值，在DevEco Studio中使用模拟器编译时实际上只是一个预览器，
- * 因此调用cryptoFramework接口会失败，可以通过写定IV的值规避此问题，但在实际工程中仍
- * 建议使用随机接口生成IV
- */
 let IV = cryptoFramework.createRandom().generateRandomSync(8).data;
 
 function stringToUint8Array(str) {
@@ -2683,7 +2680,6 @@ function stringToUint8Array(str) {
     for (let i = 0, j = str.length; i < j; ++i) {
         arr.push(str.charCodeAt(i));
     }
-
     return new Uint8Array(arr);
 }
 
@@ -2692,7 +2688,6 @@ function uint8ArrayToString(fileData) {
     for (let i = 0; i < fileData.length; i++) {
         dataString += String.fromCharCode(fileData[i]);
     }
-
     return dataString;
 }
 
@@ -2760,14 +2755,17 @@ function testThreeStageEncrypt() {
 
     huks.initSession(keyAlias, initOptions, (err, data) => {
         if (err) {
-            huksInfo = 'encrypt initSession return code: ' + err.code + ', message: ' + err.message;
+            huksInfo = 'encrypt initSession failed, code: ' + err.code + ', message: ' + err.message;
+            console.error(huksInfo);
             ret = false;
             huks.abortSession(data.handle, initOptions, (abortErr) => {
                 if (abortErr) {
-                    huksInfo = 'encrypt init abort return code: ' + abortErr.code + ', message: ' + abortErr.message;
+                    huksInfo = 'encrypt init abort failed, code: ' + abortErr.code + ', message: ' + abortErr.message;
+                    console.error(huksInfo);
                 }
             });
         } else {
+            console.info('encrypt initSession succeeded');
             handle = data.handle;
         }
     });
@@ -2778,14 +2776,17 @@ function testThreeStageEncrypt() {
 
     huks.updateSession(handle, updateOptions, (err, data) => {
         if (err) {
-            huksInfo = 'encrypt updateSession return code: ' + err.code + ', message: ' + err.message;
+            huksInfo = 'encrypt updateSession failed, code: ' + err.code + ', message: ' + err.message;
+            console.error(huksInfo);
             ret = false;
             huks.abortSession(handle, updateOptions, (abortErr) => {
                 if (abortErr) {
-                    huksInfo = 'encrypt update abort return code: ' + abortErr.code + ', message: ' + abortErr.message;
+                    huksInfo = 'encrypt update abort failed, code: ' + abortErr.code + ', message: ' + abortErr.message;
+                    console.error(huksInfo);
                 }
             });
         } else {
+            console.info('encrypt updateSession succeeded');
             cipherText = uint8ArrayToString(data.outData);
             huksInfo = cipherText;
         }
@@ -2797,18 +2798,20 @@ function testThreeStageEncrypt() {
 
     huks.finishSession(handle, finishOptions, (err, data) => {
         if (err) {
-            huksInfo = 'encrypt finishSession return code: ' + err.code + ', message: ' + err.message;
+            huksInfo = 'encrypt finishSession failed, code: ' + err.code + ', message: ' + err.message;
+            console.error(huksInfo);
             huks.abortSession(handle, finishOptions, (abortErr) => {
                 if (abortErr) {
-                    huksInfo = 'encrypt finish abort return code: ' + abortErr.code + ', message: ' + abortErr.message;
+                    huksInfo = 'encrypt finish abort failed, code: ' + abortErr.code + ', message: ' + abortErr.message;
+                    console.error(huksInfo);
                 }
             });
         } else {
+            console.info('encrypt finishSession succeeded');
             cipherText = cipherText + uint8ArrayToString(data.outData);
             huksInfo = cipherText;
         }
     });
-
     return huksInfo;
 }
 
@@ -2831,14 +2834,17 @@ function testThreeStageDecrypt() {
 
     huks.initSession(keyAlias, initOptions, (err, data) => {
         if (err) {
-            huksInfo = 'decrypt initSession return code: ' + err.code + ', message: ' + err.message;
+            huksInfo = 'decrypt initSession failed, code: ' + err.code + ', message: ' + err.message;
+            console.error(huksInfo);
             ret = false;
             huks.abortSession(handle, initOptions, (abortErr) => {
                 if (abortErr) {
-                    huksInfo = 'decrypt init abort return code: ' + abortErr.code + ', message: ' + abortErr.message;
+                    huksInfo = 'decrypt init abort failed, code: ' + abortErr.code + ', message: ' + abortErr.message;
+                    console.error(huksInfo);
                 }
             });
         } else {
+            console.info('decrypt initSession succeeded');
             handle = data.handle;
         }
     });
@@ -2849,14 +2855,17 @@ function testThreeStageDecrypt() {
 
     huks.updateSession(handle, updateOptions, (err, data) => {
         if (err) {
-            huksInfo = 'decrypt updateSession return code: ' + err.code + ', message: ' + err.message;
+            huksInfo = 'decrypt updateSession failed, code: ' + err.code + ', message: ' + err.message;
+            console.error(huksInfo);
             ret = false;
             huks.abortSession(handle, updateOptions, (abortErr) => {
                 if (abortErr) {
-                    huksInfo = 'decrypt update abort return code: ' + abortErr.code + ', message: ' + abortErr.message;
+                    huksInfo = 'decrypt update abort failed, code: ' + abortErr.code + ', message: ' + abortErr.message;
+                    console.error(huksInfo);
                 }
             });
         } else {
+            console.info('decrypt updateSession succeeded');
             outPlainText = uint8ArrayToString(data.outData);
             huksInfo = outPlainText;
         }
@@ -2864,13 +2873,16 @@ function testThreeStageDecrypt() {
 
     huks.finishSession(handle, finishOptions, (err, data) => {
        if (err) {
-           huksInfo = 'decrypt finishSession return code: ' + err.code + ', message: ' + err.message;
+           huksInfo = 'decrypt finishSession failed, code: ' + err.code + ', message: ' + err.message;
+           console.error(huksInfo);
            huks.abortSession(handle, finishOptions, (abortErr) => {
                if (abortErr) {
-                   huksInfo = 'decrypt finish abort return code: ' + abortErr.code + ', message: ' + abortErr.message;
+                   huksInfo = 'decrypt finish abort failed, code: ' + abortErr.code + ', message: ' + abortErr.message;
+                   console.error(huksInfo);
                }
            });
        } else {
+           console.info('decrypt finishSession succeeded');
            outPlainText = outPlainText + uint8ArrayToString(data.outData);
            huksInfo = outPlainText;
        }

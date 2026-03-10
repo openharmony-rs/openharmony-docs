@@ -409,7 +409,7 @@ After an event is published using this API, the event may not be executed immedi
 | Name| Type                     | Mandatory| Description          |
 | ------ | ------------------------- | ---- | ------------- |
 | event  | [InnerEvent](#innerevent) | Yes  | Event to emit, where [EventPriority](#eventpriority) specifies the emit priority of the event.|
-| data   | [EventData](#eventdata)   | No  | Data passed in the event.|
+| data   | [EventData](#eventdata)   | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -448,7 +448,7 @@ After an event is published using this API, the event may not be executed immedi
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
-| data    | [EventData](#eventdata) | No  | Data passed in the event.|
+| data    | [EventData](#eventdata) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -482,7 +482,7 @@ After an event is published using this API, the event may not be executed immedi
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data passed in the event.|
+| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -524,7 +524,7 @@ After an event is published using this API, the event may not be executed immedi
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
 | options | [Options](#options11)   | Yes  | Event emit priority.    |
-| data    | [EventData](#eventdata) | No  | Data passed in the event.|
+| data    | [EventData](#eventdata) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -563,7 +563,7 @@ After an event is published using this API, the event may not be executed immedi
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
 | options | [Options](#options11)   | Yes  | Event emit priority.    |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data passed in the event.|
+| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -985,7 +985,7 @@ After an event is published using this API, the event may not be executed immedi
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
-| data    | [EventData](#eventdata) | No  | Data passed in the event.|
+| data    | [EventData](#eventdata) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -1020,7 +1020,7 @@ After an event is published using this API, the event may not be executed immedi
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.|
-| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data passed in the event.|
+| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -1065,7 +1065,7 @@ After an event is published using this API, the event may not be executed immedi
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
 | options | [Options](#options11)   | Yes  | Event emit priority.    |
-| data    | [EventData](#eventdata) | No  | Data passed in the event.|
+| data    | [EventData](#eventdata) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -1105,7 +1105,7 @@ After an event is published using this API, the event may not be executed immedi
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
 | options | [Options](#options11)   | Yes  | Event emit priority.    |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data passed in the event.|
+| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 

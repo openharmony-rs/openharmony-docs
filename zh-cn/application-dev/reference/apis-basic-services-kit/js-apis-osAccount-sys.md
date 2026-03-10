@@ -4613,6 +4613,79 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
   }
   ```
 
+### auth<sup>24+</sup>
+
+auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, options: DomainAccountAuthOptions, callback: IUserAuthCallback): void
+
+认证指定的域账号，支持指定认证选项，如服务器参数。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
+| credential   | Uint8Array  | 是   | 指示域账号的凭据。|
+| options   | [DomainAccountAuthOptions](#domainaccountauthoptions24)  | 是   | 表示域账号认证的选项。|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | --------------------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 801 | Capability not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid domainAccountInfo or credential. |
+| 12300003 | Domain account does not exist. |
+| 12300013 | Network exception. |
+| 12300101 | Authentication failed. |
+| 12300109 | The authentication, enrollment, or update operation is canceled. |
+| 12300110 | The authentication is locked. |
+| 12300111 | The authentication time out. |
+| 12300112 | The authentication service is busy. |
+| 12300113 | The account authentication service does not exist. |
+| 12300114 | The account authentication service works abnormally. |
+| 12300211 | Server unreachable. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let domainAccountInfo: osAccount.DomainAccountInfo = {
+  domain: 'CHINA',
+  accountName: 'zhangsan'
+}
+let credential = new Uint8Array([0]);
+try {
+  let serverParams: Record<string, Object> = {
+    "uri": "test.example.com",
+    "port": 100
+  }
+  let authOptions: osAccount.DomainAccountAuthOptions = {
+    serverParams: serverParams
+  }
+  osAccount.DomainAccountManager.auth(domainAccountInfo, credential, authOptions, {
+    onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
+      console.info('auth resultCode = ' + resultCode);
+      console.info('auth authResult = ' + JSON.stringify(authResult));
+    }
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ### authWithPopup<sup>10+</sup>
 
 authWithPopup(callback: IUserAuthCallback): void
@@ -6686,6 +6759,19 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | domainAccountToken | Uint8Array | 否 | 否  | 域账号的令牌。 |
 | businessParams | Record<string, Object> | 否 | 否  | 业务参数，由业务方根据请求协议自定义。 |
 | callerUid | number | 否 | 否  | 调用方唯一标识符。 |
+
+
+## DomainAccountAuthOptions<sup>24+</sup>
+
+表示域账号认证的选项。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+| 名称      | 类型   | 只读  | 可选 | 说明       |
+| ----------- | ------ | ---- | ---- | ---------- |
+| serverParams | Record<string, Object> | 否 | 是  | 域账号认证服务器配置参数。默认为undefined。|
 
 ## GetDomainAccountInfoOptions<sup>10+</sup>
 

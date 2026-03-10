@@ -3076,8 +3076,8 @@ class MyNodeController extends NodeController {
 
     let mouseEvent = event as MouseEvent;
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      mouseEvent.x = uiContext.vp2px(offsetX + mouseEvent.x);
-      mouseEvent.y = uiContext.vp2px(offsetY + mouseEvent.y);
+      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
     }
     // Post the mouse event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
     let result = this.rootNode.postInputEvent(event);
@@ -3097,15 +3097,15 @@ class MyNodeController extends NodeController {
     let changedTouchLen = touchEvent.changedTouches.length;
     for (let i = 0; i < changedTouchLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-        touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+        touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+        touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
       }
     }
     let touchesLen = touchEvent.touches.length;
     for (let i = 0; i < touchesLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-        touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+        touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+        touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
       }
     }
     // Post the touch event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
@@ -3211,15 +3211,15 @@ class MyNodeController extends NodeController {
       let changedTouchLen = touchEvent.changedTouches.length;
       for (let i = 0; i < changedTouchLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-          touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+          touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+          touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
         }
       }
       let touchesLen = touchEvent.touches.length;
       for (let i = 0; i < touchesLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-          touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+          touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+          touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
         }
       }
     }
@@ -3317,8 +3317,8 @@ class MyNodeController extends NodeController {
 
     let axisEvent = event as AxisEvent;
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      axisEvent.x = uiContext.vp2px(offsetX + axisEvent.x);
-      axisEvent.y = uiContext.vp2px(offsetY + axisEvent.y);
+      axisEvent.windowX = uiContext.vp2px(offsetX + axisEvent.x);
+      axisEvent.windowY = uiContext.vp2px(offsetY + axisEvent.y);
     }
     // Post the axis event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
     let result = this.rootNode.postInputEvent(event);
@@ -3513,7 +3513,7 @@ struct Index {
 
 > **NOTE**
 >
-> Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
+> Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 Set **enableProvideConsumeCrossing** in [BuildOptions](#buildoptions12) of the **BuilderNode** to **true** to support two-way synchronization between the @Consumer decorated state variable of the custom component inside the **BuilderNode** and the @Provider decorated state variable outside the **BuilderNode**.
 
@@ -3600,7 +3600,7 @@ struct AddChild {
 
 > **NOTE**
 >
-> Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
+> Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 This example demonstrates how the synchronization relationship between @Consumer and @Provider changes when a BuilderNode is mounted to or unmounted from the component tree.
 
@@ -3724,7 +3724,7 @@ struct TestRemove {
 
 > **NOTE**
 >
-> Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
+> Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 This example demonstrates how the synchronization relationship between @Consumer and @Provider changes when a BuilderNode is mounted to a different component tree.
 
@@ -3863,7 +3863,7 @@ struct ConsumerChild {
 
 > **NOTE**
 >
-> Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
+> Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 This example demonstrates how the synchronization relationship between @Consumer and @Provider changes when BuilderNodes are nested.
 
@@ -3988,7 +3988,7 @@ struct BuildNodeToBuildNodeChild {
 
 > **NOTE**
 >
-> Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
+> Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 This example demonstrates the synchronization relationship between @Consumer and @Provider when the custom component containing @Consumer is located under BuilderNode and has child components.
 
@@ -4137,7 +4137,7 @@ struct NestedComponentChildChld {
 
 > **NOTE**
 >
-> Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
+> Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 This example demonstrates the synchronization relationship between @Consumer and @Provider in a component tree structured as @Provider-@Consumer-BuilderNode-@Consumer.
 
@@ -4298,7 +4298,7 @@ struct NestedComponentChild {
 
 > **NOTE**
 >
-> Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
+> Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 This example demonstrates the synchronization relationship between @Consumer and @Provider in a component tree structured as @Provider-BuilderNode-@Provider-@Consumer.
 
@@ -4524,8 +4524,8 @@ class MyNodeController extends NodeController {
     let mouseEvent = event as MouseEvent;
     // Coordinate conversion: Convert the event coordinates to the node coordinates.
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      mouseEvent.x = uiContext.vp2px(offsetX + mouseEvent.x);
-      mouseEvent.y = uiContext.vp2px(offsetY + mouseEvent.y);
+      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
     }
     // Call postInputEvent to post the converted event to the ReactiveBuilderNode.
     let result = this.rootNode.postInputEvent(event);
@@ -4547,16 +4547,16 @@ class MyNodeController extends NodeController {
     let changedTouchLen = touchEvent.changedTouches.length;
     for (let i = 0; i < changedTouchLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-        touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+        touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+        touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
       }
     }
     // Convert the coordinates of all touch points in the touches array.
     let touchesLen = touchEvent.touches.length;
     for (let i = 0; i < touchesLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-        touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+        touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+        touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
       }
     }
     // Call postInputEvent to post the converted event to the ReactiveBuilderNode.
@@ -4661,16 +4661,16 @@ class MyNodeController extends NodeController {
       let changedTouchLen = touchEvent.changedTouches.length;
       for (let i = 0; i < changedTouchLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-          touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+          touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+          touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
         }
       }
       // Convert the coordinates of all touch points in the touches array.
       let touchesLen = touchEvent.touches.length;
       for (let i = 0; i < touchesLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-          touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+          touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+          touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
         }
       }
     }
@@ -4768,8 +4768,8 @@ class MyNodeController extends NodeController {
 
     let axisEvent = event as AxisEvent;
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      axisEvent.x = uiContext.vp2px(offsetX + axisEvent.x);
-      axisEvent.y = uiContext.vp2px(offsetY + axisEvent.y);
+      axisEvent.windowX = uiContext.vp2px(offsetX + axisEvent.x);
+      axisEvent.windowY = uiContext.vp2px(offsetY + axisEvent.y);
     }
     // Call postInputEvent to post the converted event to the ReactiveBuilderNode.
     let result = this.rootNode.postInputEvent(event);

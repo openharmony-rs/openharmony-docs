@@ -68,7 +68,7 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId] 
 | -h | 帮助信息。 |
 | -p | 可选参数，指定待安装的HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。从API version 22开始，支持指定待安装的APP路径，也可指定只存在一个APP的文件夹路径。 |
 | -r | 可选参数，覆盖安装一个HAP/HSP。默认缺省，缺省时表示覆盖安装。 |
-| -s | 安装应用间HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。指定目录的时候，每个路径目录下只能存在一个HSP。<br>**说明：**<br> 应用间HSP不对三方应用开放，三方无法安装应用间HSP。 |
+| -s | 安装应用间HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。从API version 24开始，当指定目录时，路径目录下可以存在多个同包名、不同模块名的HSP。API version 23及之前版本，路径目录下只能存在一个HSP。<br>**说明：**<br> 应用间HSP不对三方应用开放，三方无法安装应用间HSP。 |
 | -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为180s，最大的等待时长为600s,&nbsp;默认缺省为180s。 |
 | -u | 可选参数，指定[用户](#userid)，默认在当前活跃用户下安装应用。仅支持在当前活跃用户或0用户下安装。<br>**说明：**<br> 如果当前活跃用户是100，使用命令`bm install -p /data/local/tmp/ohos.app.hap -u 102`安装时，只会在当前活跃用户100下安装应用。 |
 | -d | 可选参数，允许应用降级安装，即设备已安装较高版本的应用，也可以覆盖安装较低版本的应用。仅支持签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用降级安装。从API version 23开始支持。 |
@@ -3405,6 +3405,27 @@ APP包签名不正确或没有签名。
 方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
 
 方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+
+
+### 9568449 二进制文件校验失败
+**错误信息**
+
+error: check bin file failed.
+
+**错误描述**
+
+用户安装应用时，二进制文件校验失败。
+
+**可能原因**
+
+1. 在应用的module.json5配置文件中配置了[executableBinaryPaths标签](../quick-start/module-configuration-file.md#executablebinarypaths标签)，但是应用未配置解压模式。
+2. 该设备不支持安装配置了[executableBinaryPaths标签](../quick-start/module-configuration-file.md#executablebinarypaths标签)的应用。
+
+**处理步骤**
+
+1. 配置应用为解压模式，即在应用的[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中设置compressNativeLibs标签为true。
+2. 更换为PC/2in1设备。
+
 
 <!--Del-->
 ## 常见问题
