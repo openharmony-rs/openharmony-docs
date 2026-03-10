@@ -789,7 +789,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: geolocationAccess(geolocationAccess: boolean)
 
-ArkTS-Sta: geolocationAccess(geolocationAccess: boolean | undefined): this
+ArkTS-Sta: geolocationAccess(geolocationAccess: boolean | undefined)
 
 设置是否开启获取地理位置权限。具体使用方式参考[管理位置权限](../../web/web-geolocation-permission.md)。
 
