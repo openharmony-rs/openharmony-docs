@@ -225,7 +225,7 @@ jsLeakWatcher.enableLeakWatcher(true, config, (filepath : Array<string>) => {
 
 ## LeakWatcherConfig
 
-内存泄漏监测的可配置对象，内含多项属性。
+LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的可配置属性。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
@@ -249,7 +249,7 @@ jsLeakWatcher.enableLeakWatcher(true, config, (filepath : Array<string>) => {
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-| 名称 | 值 | 说明
+| 名称 | 值 | 说明 |
 | ------- | ------- | ------- |
 | ALL | -1 | 监测所有组件类型。 |
 | CUSTOM_COMPONENT | 1 << 0 | 监测自定义组件类型。 |
