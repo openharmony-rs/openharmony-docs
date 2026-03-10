@@ -390,6 +390,15 @@ libnative_buffer.so
 
 7. **解绑OpenGL纹理，绑定到新的外部纹理上**。
    <!-- @[nativeimage_change_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+   
+   ``` C++
+   // 将OH_NativeImage实例从当前OpenGL ES上下文分离
+   OH_NativeImage_DetachContext(nativeImage_);
+   glGenTextures(1, &nativeImageTexId_);
+   glBindTexture(GL_TEXTURE_EXTERNAL_OES, nativeImageTexId_);
+   // ...
+   int ret = OH_NativeImage_AttachContext(nativeImage_, nativeImageTexId_);
+   ```
 
 
 8. **OH_NativeImage实例使用完需要销毁掉**。
