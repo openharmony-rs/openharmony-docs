@@ -290,7 +290,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Pr
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -381,7 +381,7 @@ getFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): voi
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -455,7 +455,7 @@ getFormsInfo(filter: formInfo.FormInfoFilter, callback: AsyncCallback&lt;Array&l
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -539,7 +539,7 @@ getFormsInfo(filter?: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.For
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1335,7 +1335,9 @@ try {
 
 ## formProvider.reloadForms<sup>22+</sup>
 
-reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, formName: string): Promise&lt;number&gt;
+ArkTS-Dyn: reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, formName: string): Promise&lt;number&gt;
+
+ArkTS-Sta: reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, formName: string): Promise&lt;int&gt;
 
 对于当前应用程序相同moduleName、abilityName、formName的卡片，多次加桌后会每张卡片会有不同的卡片id。卡片提供方可以通过本接口批量更新不同的卡片id但moduleName、abilityName、formName相同的卡片。在应用主进程通过本接口通知FormExtension进程进行批量更新，仅支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)中调用，使用Promise异步回调。
 
@@ -1360,9 +1362,17 @@ reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, 
 
 **返回值：**
 
+ArkTS-Dyn:
+
 | 类型          | 说明                                |
 | ------------ | ---------------------------------- |
 | Promise&lt;number&gt; | Promise对象。返回请求更新卡片的数量。 |
+
+ArkTS-Sta:
+
+| 类型          | 说明                                |
+| ------------ | ---------------------------------- |
+| Promise&lt;int&gt; | Promise对象。返回请求更新卡片的数量。 |
 
 **错误码：**
 
@@ -1423,7 +1433,9 @@ try {
 ```
 ## formProvider.reloadAllForms<sup>22+</sup>
 
-reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
+ArkTS-Dyn: reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
+
+ArkTS-Sta: reloadAllForms(context: UIAbilityContext): Promise&lt;int&gt;
 
 在应用主进程通过本接口可以通知FormExtension进程批量更新当前应用程序下已经加桌的所有卡片，仅支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)中调用，使用Promise异步回调。
 
@@ -1445,9 +1457,17 @@ reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
 
 **返回值：**
 
+ArkTS-Dyn:
+
 | 类型          | 说明                                |
 | ------------ | ---------------------------------- |
 | Promise&lt;number&gt; | Promise对象。返回请求更新卡片的数量。 |
+
+ArkTS-Sta:
+
+| 类型          | 说明                                |
+| ------------ | ---------------------------------- |
+| Promise&lt;int&gt; | Promise对象。返回请求更新卡片的数量。 |
 
 **错误码：**
 
@@ -1496,5 +1516,122 @@ try {
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+## formProvider.closeFormEditAbility<sup>23+</sup>
+
+closeFormEditAbility(isMainPage?: boolean): void
+
+关闭卡片编辑页。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                 |
+| ------ | ------ |----|----------------------------------------------------|
+| isMainPage | boolean | 否  | 是否关闭一级卡片编辑页，true表示关闭一级编辑页，false表示关闭非一级编辑页。<br/>默认值：true。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md#801-该设备不支持此api)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID    | 错误信息 |
+|----------| -------- |
+| 801      | Capability not supported due to limited device capabilities. |
+| 16500050 | IPC connection error. |
+| 16501015 | Cannot close the widget editing page opened by other apps. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { formProvider } from '@kit.FormKit';
+
+const TAG: string = 'FormEditDemo-Page] -->';
+
+@Entry
+@Component
+struct Page {
+  @State message: string = 'Hello World';
+
+  aboutToAppear(): void {
+    console.info(`${TAG} aboutToAppear.....`);
+  }
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('PageHelloWorld')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Top },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          console.info(`${TAG} onClick.....`);
+          try {
+            formProvider.closeFormEditAbility();
+            console.info(`${TAG} close FormEditAbility success.`);
+          } catch (error) {
+            console.error(`${TAG} close FormEditAbility faild, code: ${error.code}, message: ${error.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formProvider } from '@kit.FormKit';
+import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+
+@Entry
+@Component
+struct Index {
+  @State stateVar: string = 'state var';
+  message: string = 'var';
+
+  build() {
+    Column(undefined) {
+      Text('Hello World').fontSize(20)
+      Button(this.message).backgroundColor('#FFFF00FF')
+        .onClick((e: ClickEvent) => {
+          try {
+            formProvider.closeFormEditAbility();
+            console.info('close FormEditAbility success.');
+          } catch (error) {
+            console.error(`close FormEditAbility faild, code: ${error.code}, message: ${error.message}`);
+          }
+        })
+      Text(this.stateVar).fontSize(20)
+      Child({ stateVar: this.stateVar })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @State stateVar: string = 'Child';
+
+  build() {
+    Text(this.stateVar).fontSize(50)
+  }
 }
 ```

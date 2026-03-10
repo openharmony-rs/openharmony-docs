@@ -26,7 +26,7 @@ import { formBindingData } from '@kit.FormKit';
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -44,12 +44,14 @@ FormBindingData相关描述。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| data | Object | 否 | 否 | 卡片要展示的数据。可以是包含若干键值对的Object或者 json 格式的字符串。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| proxies<sup>10+</sup> | Array<[ProxyData](#proxydata10)> | 否 | 是 | 卡片代理刷新的订阅信息，默认为空数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| data | ArkTS-Dyn: Object<br>ArkTS-Sta: RecordData | 否 | 否 | 卡片要展示的数据。可以是包含若干键值对的Object或者 json 格式的字符串。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| proxies<sup>10+</sup> | Array<[ProxyData](#proxydata10)> | 否 | 是 | 卡片代理刷新的订阅信息，默认为空数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## formBindingData.createFormBindingData
 
-createFormBindingData(obj?: Object | string): FormBindingData
+ArkTS-Dyn: createFormBindingData(obj?: Object | string): FormBindingData
+
+ArkTS-Sta: createFormBindingData(obj?: RecordData): FormBindingData
 
 创建一个FormBindingData对象。
 
@@ -59,14 +61,13 @@ createFormBindingData(obj?: Object | string): FormBindingData
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型           | 必填 | 说明                                                         |
 | ------ | -------------- | ---- | ------------------------------------------------------------ |
-| obj    | Object\|string | 否   | 卡片要展示的数据。可以是包含若干键值对的Object或者 json 格式的字符串。其中图片数据以'formImages'作为标识，内容为图片标识与图片文件描述符的键值对{'formImages': {'key1': fd1, 'key2': fd2}}。<br>**说明：** 在[卡片刷新](../../form/arkts-ui-widget-interaction-overview.md)过程中，卡片UI通过@LocalStorageProp接收卡片数据时，FormBindingData对象会序列化，即卡片数据会转换成string类型。从API version 20开始，图片文件数量上限为20张，所有图片总内存大小不超过10MB，超出限制的图片会显示异常，API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB。 |
-
+| obj    | ArkTS-Dyn: Object\|string<br>ArkTS-Sta: RecordData | 否   | 卡片要展示的数据。可以是包含若干键值对的Object或者 json 格式的字符串。其中图片数据以'formImages'作为标识，内容为图片标识与图片文件描述符的键值对{'formImages': {'key1': fd1, 'key2': fd2}}。<br>**说明：** 在[卡片刷新](../../form/arkts-ui-widget-interaction-overview.md)过程中，卡片UI通过@LocalStorageProp接收卡片数据时，FormBindingData对象会序列化，即卡片数据会转换成string类型。从API version 20开始，图片文件数量上限为20张，所有图片总内存大小不超过10MB，超出限制的图片会显示异常，API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB。 |
 
 **返回值：**
 
@@ -75,6 +76,8 @@ createFormBindingData(obj?: Object | string): FormBindingData
 | [FormBindingData](#formbindingdata) | 根据传入数据创建的FormBindingData对象。 |
 
 **错误码：**
+
+ArkTS-Dyn: 
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
