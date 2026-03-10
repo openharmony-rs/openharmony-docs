@@ -858,7 +858,7 @@ System cluster list:
 base                             system
 ```
 
-- 可使用hidumper -c [系统通信息簇名称]命令获取指定信息簇信息。
+- 可使用hidumper -c [系统信息簇名称]命令获取指定信息簇信息。
 
 例如可使用hidumper -c base命令获取设备信息、内核版本、启动参数和启动时间。打印效果为：
 
