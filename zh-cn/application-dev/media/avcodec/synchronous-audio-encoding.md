@@ -145,7 +145,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    // 配置音频声道布局（必须）。
    // 值为CH_LAYOUT_MONO、CH_LAYOUT_STEREO、CH_LAYOUT_SURROUND、CH_LAYOUT_QUAD、CH_LAYOUT_5POINT0、CH_LAYOUT_5POINT1、CH_LAYOUT_6POINT1或CH_LAYOUT_7POINT1其中一项。
    constexpr OH_AudioChannelLayout CHANNEL_LAYOUT = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
-   // 配置音频位深（必须） flac只有SAMPLE_S16LE和SAMPLE_S32LE。
+   // 配置音频位深（必须） FLAC只有SAMPLE_S16LE和SAMPLE_S32LE。
    constexpr OH_BitsPerSample SAMPLE_FORMAT = OH_BitsPerSample::SAMPLE_S32LE;
    // 配置音频compliance level（默认值0，取值范围[-2,2]）。
    constexpr int32_t COMPLIANCE_LEVEL = 0;
