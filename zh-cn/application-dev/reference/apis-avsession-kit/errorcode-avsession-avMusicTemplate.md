@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
 
 ## 35000001 音频模板创建失败
 
@@ -18,7 +18,7 @@ Failed to create the AVMusicTemplate.
 
 **错误描述**
 
- import { aVMusicTemplate } from '@kit.AVSessionKit';ts
+ 音频模板创建失败。
 
 **可能原因**
 

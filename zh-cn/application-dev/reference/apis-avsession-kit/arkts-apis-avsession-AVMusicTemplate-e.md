@@ -30,15 +30,15 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称          | 值   | 说明                                                         |
-| ------------- | ---- | ------------------------------------------------------------ |
-| UNKNOWN       | 0    | 未知的媒体资源类型。                                         |
-| SINGLE        | 1    | 单曲类型。                                                   |
-| SINGER        | 2    | 歌手类型。                                                   |
-| ALBUM         | 3    | 专辑类型。                                                   |
-| RANKING       | 4    | xxxxxxxxxx import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';​export class TemplateManager {  private template: avMusicTemplate.AVMusicTemplate \| undefined = undefined;  private static sInstance: TemplateManager;​  private constructor() {  }​  /**   * 获取模板控制器实例。   *   * @returns 模板控制器实例。   */  public static getInstance(): TemplateManager {    if (!TemplateManager.sInstance) {      TemplateManager.sInstance = new TemplateManager();    }    return TemplateManager.sInstance;  };​  /**   * 创建音频模板。   */  public createTemplate() {    if (this.template) {      console.warn('createTemplate: template not undefined');      return    }    try {      this.template = avMusicTemplate.createAVMusicTemplate(avMusicTemplate.AVMusicTemplateType.DEFAULT);      console.info('createTemplate: success');      this.registerListener();    } catch (e) {      console.error(`createTemplate, errCode: ${e?.code}`);    }  }}ts |
-| BANNER        | 5    | 海报类型。                                                   |
-| RADIO_STATION | 6    | 电台类型。                                                   |
+| 名称          | 值   | 说明                 |
+| ------------- | ---- | -------------------- |
+| UNKNOWN       | 0    | 未知的媒体资源类型。 |
+| SINGLE        | 1    | 单曲类型。           |
+| SINGER        | 2    | 歌手类型。           |
+| ALBUM         | 3    | 专辑类型。           |
+| RANKING       | 4    | 排行榜类型。         |
+| BANNER        | 5    | 海报类型。           |
+| RADIO_STATION | 6    | 电台类型。           |
 
 ## PlaybackState
 
