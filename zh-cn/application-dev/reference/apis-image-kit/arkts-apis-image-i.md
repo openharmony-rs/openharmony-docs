@@ -58,7 +58,7 @@
 | height | number | 否  |  否  |输出图片的高，单位：像素。 |
 | width  | number | 否  |  否 | 输出图片的宽，单位：像素。 |
 
-## HdrComposeOptions<sup>23</sup>
+## HdrComposeOptions<sup>23+</sup>
 
 Picture合成HDR时可配置的参数选项。
 
