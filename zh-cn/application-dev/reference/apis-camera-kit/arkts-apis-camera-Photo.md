@@ -25,9 +25,9 @@ import { camera } from '@kit.CameraKit';
 **ArkTS-Sta起始版本：** 23
 
 
-| 名称   | 类型                            |     必填     | 说明       |
-| ------ | ----------------------------- | -------------- | ---------- |
-| main<sup>11+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md) |        是       | 全质量图Image。 |
+| 名称   | 类型                            |     可选 | 只读     | 说明       |
+| ------ | ----------------------------- | -------------- | ------ | ---------- |
+| main<sup>11+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md) |    否    |    否    | 全质量图Image。 |
 
 ## release<sup>11+</sup>
 

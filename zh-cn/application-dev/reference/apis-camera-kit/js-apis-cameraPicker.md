@@ -31,9 +31,9 @@ pick(context: Context, mediaTypes: Array\<PickerMediaType\>, pickerProfile: Pick
 
 | 参数名          | 类型                                            | 必填 | 说明                          |
 | -------------- |-------------------------------------------------| ---- | ---------------------------- |
-| context        | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 应用上下文。                   |
-| mediaTypes     | Array\<[PickerMediaType](#pickermediatype)\>    | 是   | 媒体类型。                    |
-| pickerProfile  | [PickerProfile](#pickerprofile)                 | 是   | pickerProfile对象。            |
+| context        | [Context](../apis-ability-kit/js-apis-inner-application-context.md) |  是  | 应用上下文。                   |  
+| mediaTypes     | Array\<[PickerMediaType](#pickermediatype)\>    | 是   | 媒体类型。                    |  
+| pickerProfile  | [PickerProfile](#pickerprofile)                 | 是   | pickerProfile对象。            |  
 
 **返回值：**
 
@@ -93,11 +93,11 @@ async function demo(context: Context) {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称           | 类型                               | 必填   | 说明         |
-| -------------- | --------------------------------- | ----- | ------------ |
-| cameraPosition       | [camera.CameraPosition](arkts-apis-camera-e.md#cameraposition) | 是    | 相机的位置。   |
-| saveUri        | string                            | 否    | 保存配置信息的uri，默认值请参考[文件uri](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。|
-| videoDuration  | ArkTS-Dyn: number<br />ArkTS-Sta: int | 否    | 录制的最大时长（单位：秒）。|
+| 名称           | 类型                               | 可选 |只读   | 说明         |
+| -------------- | --------------------------------- | ----- | -----| ------------ |
+| cameraPosition       | [camera.CameraPosition](arkts-apis-camera-e.md#cameraposition) | 否  | 否 | 相机的位置。   |
+| saveUri        | string                            | 是  | 否 | 保存配置信息的uri，默认值请参考[文件uri](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。|
+| videoDuration  | ArkTS-Dyn: number<br />ArkTS-Sta: int | 是  | 否 | 录制的最大时长（单位：秒）。|
 
 
 ## PickerResult
@@ -112,8 +112,8 @@ async function demo(context: Context) {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称           | 类型                                | 必填  | 说明                            |
-| -------------- | ---------------------------------- | ----- | -------------------------------- |
-| resultCode     | ArkTS-Dyn: number<br />ArkTS-Sta: int | 是    | 处理的结果，成功返回0，失败返回-1。 |
-| resultUri      | string                             | 是    | 返回的uri地址。若saveUri为空，resultUri为公共媒体路径。若saveUri不为空且具备写权限，resultUri与saveUri相同。若saveUri不为空且不具备写权限，则无法获取到resultUri。|
-| mediaType      | [PickerMediaType](#pickermediatype)| 是    | 返回的媒体类型。                  |
+| 名称           | 类型                                | 可选  | 只读 | 说明                            |
+| -------------- | ---------------------------------- | ----- | ---- |-------------------------------- |
+| resultCode     | ArkTS-Dyn: number<br />ArkTS-Sta: int | 否 | 否  | 处理的结果，成功返回0，失败返回-1。 |
+| resultUri      | string                             |  否    | 否  | 返回的uri地址。若saveUri为空，resultUri为公共媒体路径。若saveUri不为空且具备写权限，resultUri与saveUri相同。若saveUri不为空且不具备写权限，则无法获取到resultUri。|
+| mediaType      | [PickerMediaType](#pickermediatype)|  否    | 否  | 返回的媒体类型。                  |

@@ -1959,7 +1959,7 @@ ArkTS-Sta: getPhotoRotation(deviceDegree: int): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 设备旋转角度。 |
+| deviceDegree | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 设备旋转角度。 |
 
 **返回值：**
 
