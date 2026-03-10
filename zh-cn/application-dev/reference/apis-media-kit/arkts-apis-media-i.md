@@ -262,6 +262,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | location<sup>12+</sup> | [Location](#location) | 否 | 是 | 视频的地理位置信息。 |
 | customInfo<sup>12+</sup> | Record<string, string> | 否 | 是 | 从moov.meta.list 获取的自定义参数键值映射。|
 | tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 否 | 是 | 媒体资源的轨道信息。不支持AVRecorder设置该属性。|
+| encoder<sup>26+</sup> | string | 否 | 是 | 用于编码的软件或硬件及其设置的标识符。不支持AVRecorder设置该属性。|
 
 ### AVMetadata.tracks支持的MediaDescriptionKey<sup>8+</sup>说明
 
