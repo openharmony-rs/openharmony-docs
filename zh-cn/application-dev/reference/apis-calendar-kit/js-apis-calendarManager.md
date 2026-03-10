@@ -694,6 +694,10 @@ addEvent(event: Event, callback: AsyncCallback\<number>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+
 **系统能力**： SystemCapability.Applications.CalendarData
 
 **参数**：
@@ -747,6 +751,10 @@ addEvent(event: Event): Promise\<number>
 创建日程，入参Event不填日程id、instanceStartTime和instanceEndTime，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -804,6 +812,10 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 addEvents(events: Event[], callback: AsyncCallback\<void>): void
 
 批量创建日程，入参Event不填日程id、instanceStartTime和instanceEndTime，使用callback异步回调。
+
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -865,6 +877,10 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 addEvents(events: Event[]): Promise\<void>
 
 批量创建日程，入参Event不填日程id、instanceStartTime和instanceEndTime，使用Promise异步回调。
+
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1285,6 +1301,10 @@ getEvents(callback: AsyncCallback\<Event[]>): void
 
 API version 20之前，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime。从API version 20开始，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。若查询字段为空，则不返回该字段。
 
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+
 **系统能力**： SystemCapability.Applications.CalendarData
 
 **参数**：
@@ -1331,6 +1351,10 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCallback\<Event[]>):void
 
 获取Calendar下符合查询条件的Event，使用callback异步回调。
+
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1408,6 +1432,10 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event
 只有一个入参时，参数必须为查询条件，对应参数类型为EventFilter。
 
 当没有入参时，可查询指定日历账户下的所有日程。
+
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1645,6 +1673,10 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyof Event)[]): Promise\<Event[]>
 
 获取Calendar下符合查询条件的日程实例，使用Promise异步回调。
+
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
