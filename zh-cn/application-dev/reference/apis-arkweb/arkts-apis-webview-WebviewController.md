@@ -11036,7 +11036,7 @@ getUserAgentMetadata(userAgent: string): UserAgentMetadata
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| metaData | userAgent对应的 [UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md)。 |
+| UserAgentMetadata | userAgent对应的[UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md)。 |
 
 **示例：**
 
