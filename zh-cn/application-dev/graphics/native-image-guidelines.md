@@ -267,6 +267,76 @@ libnative_buffer.so
 
     2. 将生产的内容写入OHNativeWindowBuffer。
         <!-- @[write_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
+        
+        ``` C++
+            // 使用 mmap 获取虚拟地址
+            void *mappedAddr = mmap(nullptr, handle->size, PROT_READ | PROT_WRITE, MAP_SHARED, handle->fd, 0);
+            if (mappedAddr == MAP_FAILED) {
+                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "OHNativeRender", "Failed to mmap buffer.");
+                return;
+            }
+        
+            // 获取像素指针
+            uint32_t *pixel = static_cast<uint32_t *>(mappedAddr);
+        
+            // 调用封装的函数来绘制渐变
+            DrawGradient(pixel, handle->stride / BYTES_PER_PIXEL, height_);
+        
+            // 解除内存映射
+            result = munmap(mappedAddr, handle->size);
+            if (result == FAILURE) {
+                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "OHNativeRender", "Failed to munmap buffer.");
+            }
+            // ...
+        void OHNativeRender::DrawGradient(uint32_t* pixel, uint64_t width, uint64_t height)
+        {
+            static double time = 0.0;
+            time += ANIMATION_SPEED_INCREMENT;
+            double offset = (sin(time) + MAX_INTENSITY) / INTENSITY_MULTIPLIER;
+        
+            // 箭头参数
+            const int arrowSize = std::min(width, height) / ARROW_SIZE_DIVISOR;
+            const int arrowX = width / ARROW_SIZE_DIVISOR;
+            const int arrowY = height / ARROW_SIZE_DIVISOR;
+            const int stemWidth = arrowSize / STEM_WIDTH_DIVISOR;
+            const int headWidth = arrowSize / HEAD_WIDTH_DIVISOR;
+            const int headLength = arrowSize / HEAD_LENGTH_DIVISOR;
+            const int stemStart = arrowX - arrowSize / ARROW_SIZE_DIVISOR;
+            const int stemEnd = arrowX + arrowSize / ARROW_SIZE_DIVISOR - headLength;
+        
+            for (uint64_t y = 0; y < height; y++) {
+                for (uint64_t x = 0; x < width; x++) {
+                    double normalizedX = static_cast<double>(x) / static_cast<double>(width - 1);
+                    bool isArrow = false;
+        
+                    if ((x >= stemStart && x <= stemEnd && y >= arrowY - stemWidth * HEAD_SLOPE_MULTIPLIER &&
+                        y <= arrowY + stemWidth * HEAD_SLOPE_MULTIPLIER) || (x >= stemEnd && x <= stemEnd + headLength &&
+                        fabs(static_cast<int>(y - arrowY)) <= (headWidth * HEAD_SLOPE_MULTIPLIER) *
+                        (1.0 - static_cast<double>(x - stemEnd) / headLength))) {
+                        isArrow = true;
+                    }
+        
+                    uint8_t red = static_cast<uint8_t>((1.0 - normalizedX) * MAX_COLOR_VALUE);
+                    uint8_t blue = static_cast<uint8_t>(normalizedX * MAX_COLOR_VALUE);
+                    uint8_t green = 0;
+                    uint8_t alpha = MAX_COLOR_VALUE;
+                    if (isArrow) {
+                        red = green = blue = MAX_COLOR_VALUE;
+                    }
+                    double intensity = fabs(normalizedX - offset);
+                    intensity = MAX_INTENSITY - std::min(INTENSITY_MULTIPLIER * intensity, INTENSITY_LIMIT);
+                    intensity = std::max(intensity, MIN_INTENSITY);
+        
+                    red = static_cast<uint8_t>(red * intensity);
+                    green = static_cast<uint8_t>(green * intensity);
+                    blue = static_cast<uint8_t>(blue * intensity);
+        
+                    *pixel++ = (static_cast<uint32_t>(alpha) << ALPHA_SHIFT) | (static_cast<uint32_t>(red) << RED_SHIFT) |
+                        (static_cast<uint32_t>(green) << GREEN_SHIFT) | (static_cast<uint32_t>(blue) << BLUE_SHIFT);
+                }
+            }
+        }
+        ```
 
         
     3. 将OHNativeWindowBuffer提交到NativeWindow。
