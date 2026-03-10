@@ -63,7 +63,7 @@
 | --------------- | ------------------------------------------------------------ | ---- | ---- |-------------------------------|
 | id              | string                                                       | 否   | 否   | 合集的唯一标识。                      |
 | title           | string                                                       | 否   | 否   | 合集的标题。                        |
-| hasMoreData     | boolean                                                      | 否   | 否   | 是否有更多的合集数据。true表示有，false表示没有。 |
+| hasMoreData     | boolean                                                      | 否   | 否   | 是否有更多的合集数据。true表示有，false表示没有。无默认值。|
 | totalSize       | number                                                       | 否   | 否   | 合集的总个数。                       |
 | memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 合集的媒体资源类型。                    |
 | topElements     | [MediaEntity](#mediaentity)                                  | 否   | 否   | 合集的内容。                        |
@@ -76,9 +76,9 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称             | 类型    | 只读 | 可选 | 说明                                              |
-| ---------------- | ------- | ---- | ---- | ------------------------------------------------- |
-| isSupportOnePlay | boolean | 否   | 否   | 是否支持一键启播。true表示支持，false表示不支持。 |
+| 名称             | 类型    | 只读 | 可选 | 说明                                 |
+| ---------------- | ------- | ---- | ---- |------------------------------------|
+| isSupportOnePlay | boolean | 否   | 否   | 是否支持一键启播。true表示支持，false表示不支持。无默认值。 |
 
 ## Album
 
@@ -168,7 +168,7 @@
 | --------------- | ------------------------------------------------------------ | ---- | ---- | -------------------------------------------- |
 | pageIndex       | number                                                       | 否   | 否   | 分页查询页码。                               |
 | pageSize        | number                                                       | 否   | 否   | 页面的大小。                                 |
-| hasMoreData     | boolean                                                      | 否   | 否   | 是否有下一页。true表示有，false表示没有。    |
+| hasMoreData     | boolean                                                      | 否   | 否   | 是否有下一页。true表示有，false表示没有。无默认值。|
 | totalSize       | number                                                       | 否   | 否   | 数据总大小。                                 |
 | memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源类型。                               |
 | elements        | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[] | 否   | 否   | 查询数据内容（根据类型传递相应的结构数据）。 |
@@ -185,7 +185,7 @@
 
 | 名称             | 类型                                                         | 只读 | 可选 | 说明                                       |
 | ---------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------ |
-| isVip            | boolean                                                      | 否   | 否   | 是否是VIP歌曲。true表示是，false表示不是。 |
+| isVip            | boolean                                                      | 否   | 否   | 是否是VIP歌曲。true表示是，false表示不是。无默认值。|
 | singer           | string                                                       | 否   | 否   | 歌手的名字。                               |
 | playInfo         | [PlayInfo](arkts-apis-avsession-AVMusicTemplate-i.md#playinfo) | 否   | 否   | 播放歌曲信息。                             |
 | favSubscribeData | [FavoriteData](arkts-apis-avsession-AVMusicTemplate-i.md#favoritedata) | 否   | 否   | 收藏或订阅的歌曲的信息。                   |
@@ -205,20 +205,20 @@
 | 名称                   | 类型     | 只读 | 可选 | 说明                                  |
 | ---------------------- | -------- | ---- | ---- |-------------------------------------|
 | playCounts             | string   | 否   | 否   | 播放次数。                               |
-| isSupportNext          | boolean  | 否   | 否   | 是否支持下一首。true表示支持，false表示不支持。        |
-| isSupportPrev          | boolean  | 否   | 否   | 是否支持上一首。true表示支持，false表示不支持。        |
-| isSupportQuickForward  | boolean  | 否   | 否   | 是否支持快进。true表示支持，false表示不支持。         |
-| isSupportQuickBackward | boolean  | 否   | 否   | 是否支持快退。true表示支持，false表示不支持。         |
+| isSupportNext          | boolean  | 否   | 否   | 是否支持下一首。true表示支持，false表示不支持。无默认值。|
+| isSupportPrev          | boolean  | 否   | 否   | 是否支持上一首。true表示支持，false表示不支持。无默认值。|
+| isSupportQuickForward  | boolean  | 否   | 否   | 是否支持快进。true表示支持，false表示不支持。无默认值。|
+| isSupportQuickBackward | boolean  | 否   | 否   | 是否支持快退。true表示支持，false表示不支持。无默认值。|
 | quickForwardStep       | number     | 否   | 否   | 每一次快进的幅度。                           |
 | quickBackwardStep      | number     | 否   | 否   | 每一次快退的幅度。                           |
-| isSupportSkipHead      | boolean  | 否   | 否   | 是否支持跳过开头。true表示支持，false表示不支持。       |
-| isSupportSkipTail      | boolean  | 否   | 否   | 是否支持跳过结尾。true表示支持，false表示不支持。       |
-| isSupportPlayMode      | boolean  | 否   | 否   | 是否支持切换播放模式。true表示支持，false表示不支持。     |
-| isSupportPlayRate      | boolean  | 否   | 否   | 是否支持改变播放速率。true表示支持，false表示不支持。     |
+| isSupportSkipHead      | boolean  | 否   | 否   | 是否支持跳过开头。true表示支持，false表示不支持。无默认值。|
+| isSupportSkipTail      | boolean  | 否   | 否   | 是否支持跳过结尾。true表示支持，false表示不支持。无默认值。|
+| isSupportPlayMode      | boolean  | 否   | 否   | 是否支持切换播放模式。true表示支持，false表示不支持。无默认值。|
+| isSupportPlayRate      | boolean  | 否   | 否   | 是否支持改变播放速率。true表示支持，false表示不支持。无默认值。|
 | supportedPlayRate      | string[] | 否   | 否   | 支持的播放速率的数组。                        |
 | currentPlayRate        | string   | 否   | 否   | 当前的播放速率。                            |
-| isSupportSoundQuality  | boolean  | 否   | 否   | 是否支持声音质量。true表示支持，false表示不支持。       |
-| isSupportSoundEffect   | boolean  | 否   | 否   | 是否支持音效。true表示支持，false表示不支持。         |
+| isSupportSoundQuality  | boolean  | 否   | 否   | 是否支持声音质量。true表示支持，false表示不支持。无默认值。|
+| isSupportSoundEffect   | boolean  | 否   | 否   | 是否支持音效。true表示支持，false表示不支持。无默认值。|
 | totalDuration          | number     | 否   | 否   | 播放总时长。                              |
 | currentPlayDuration    | number     | 否   | 否   | 当前播放的时长。                            |
 | isSupportProgress      | boolean  | 否   | 否   | 是否支持进度。true表示支持，false表示不支持。默认值为true。 |
@@ -233,8 +233,8 @@
 
 | 名称         | 类型    | 只读 | 可选 | 说明                                                       |
 | ------------ | ------- | ---- | ---- | ---------------------------------------------------------- |
-| isSupportFav | boolean | 否   | 否   | 是否支持收藏/订阅。true表示支持，false表示不支持。         |
-| isFavorite   | boolean | 否   | 否   | 是否已收藏/订阅。true表示已收藏/订阅，false表示未收藏/订阅。 |
+| isSupportFav | boolean | 否   | 否   | 是否支持收藏/订阅。true表示支持，false表示不支持。无默认值。|
+| isFavorite   | boolean | 否   | 否   | 是否已收藏/订阅。true表示已收藏/订阅，false表示未收藏/订阅。无默认值。|
 | favCounts    | string  | 否   | 否   | 收藏/订阅的数量。                                          |
 
 ## SettingItem
@@ -265,7 +265,7 @@
 | 名称       | 类型                                                         | 只读 | 可选 | 说明                                                |
 | ---------- | ------------------------------------------------------------ | ---- | ---- | --------------------------------------------------- |
 | value      | string                                                       | 否   | 否   | 设置的内容。                                        |
-| isSelected | boolean                                                      | 否   | 否   | 是否选择设置项内容。true表示选择，false表示不选择。 |
+| isSelected | boolean                                                      | 否   | 否   | 是否选择设置项内容。true表示选择，false表示不选择。无默认值。|
 | textTags   | string[]                                                     | 否   | 是   | 设置内容的描述的数组。                              |
 | imageTags  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)[] | 否   | 是   | 设置内容的标签描述的数组。                          |
 
@@ -297,11 +297,11 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称         | 类型    | 只读 | 可选 | 说明                                                         |
-| ------------ | ------- | ---- | ---- | ------------------------------------------------------------ |
-| dialogId     | string  | 否   | 否   | 对话框动作的唯一标识符。                                     |
-| isChecked    | boolean | 否   | 否   | 对话框中的复选框是否已选中。true表示已选中，false表示未选中。 |
-| clickedBtnId | string  | 否   | 否   | 用户点击的按钮的ID。                                         |
+| 名称         | 类型    | 只读 | 可选 | 说明                                                        |
+| ------------ | ------- | ---- | ---- | ----------------------------------------------------------- |
+| dialogId     | string  | 否   | 否   | 对话框动作的唯一标识符。                                    |
+| isChecked    | boolean | 否   | 否   | 对话框中的复选框是否已选中。true表示已选中，false表示未选中。无默认值。|
+| clickedBtnId | string  | 否   | 否   | 用户点击的按钮的ID。                                        |
 
 ## DialogInfo
 
@@ -374,14 +374,14 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称          | 类型    | 只读 | 可选 | 说明                                                         |
-| ------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| userInfoId    | string  | 否   | 否   | 用户的唯一ID。                                               |
-| nickName      | string  | 否   | 否   | 用户昵称。                                                   |
-| profilePicUrl | string  | 否   | 否   | 用户的头像图片URL。                                          |
-| tips          | string  | 否   | 否   | 其他关于用户的描述。                                         |
-| isLogin       | boolean | 否   | 否   | 用户是否登录。无默认值，true表示已登录，false或者无值时表示未登录。 |
-| isVip         | boolean | 否   | 否   | 用户是否是VIP。无默认值，true表示是VIP用户，false或者无值时表示非VIP用户。 |
+| 名称          | 类型    | 只读 | 可选 | 说明                                |
+| ------------- | ------- | ---- | ---- |-----------------------------------|
+| userInfoId    | string  | 否   | 否   | 用户的唯一ID。                          |
+| nickName      | string  | 否   | 否   | 用户昵称。                             |
+| profilePicUrl | string  | 否   | 否   | 用户的头像图片URL。                       |
+| tips          | string  | 否   | 否   | 其他关于用户的描述。                        |
+| isLogin       | boolean | 否   | 否   | 用户是否登录。true表示已登录，false表示未登录。无默认值。 |
+| isVip         | boolean | 否   | 否   | 用户是否是VIP。true表示是，false表示不是。无默认值。  |
 
 ## SearchPlayInfo
 
@@ -409,7 +409,7 @@
 | items         | [SearchPlayMusicItem](#searchplaymusicitem)[] | 否   | 否   | 音频列表。                                          |
 | displayName   | string                                        | 否   | 是   | 音频的显示名称。                                    |
 | description   | string                                        | 否   | 是   | 对音频的描述。                                      |
-| playMusicOnly | boolean                                       | 否   | 是   | 是否仅执行播放音乐的操作。true表示是，false表示否。 |
+| playMusicOnly | boolean                                       | 否   | 是   | 是否仅执行播放音乐的操作。true表示是，false表示否。无默认值。|
 | playMode      | string                                        | 否   | 是   | 音频的播放模式。                                    |
 
 ## SearchPlayMusicItem

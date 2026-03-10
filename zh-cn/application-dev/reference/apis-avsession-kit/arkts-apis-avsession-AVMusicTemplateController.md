@@ -27,7 +27,7 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 | 名称      | 类型    | 只读 | 可选 | 说明                                                    |
 | :-------- | :------ | :--- | :--- | :------------------------------------------------------ |
 | sessionId | string  | 是   | 否   | 音频模板控制器唯一的标识。                              |
-| isDestroy | boolean | 是   | 否   | 音频模板是否销毁。true表示已经销毁，false表示没有销毁。 |
+| isDestroy | boolean | 是   | 否   | 音频模板是否销毁。true表示已经销毁，false表示没有销毁。无默认值。 |
 
 **示例：**
 
@@ -1508,7 +1508,7 @@ export class ControllerManager {
 
 playForSearch(command: SearchPlayInfoType, args: SearchPlayInfo): Promise&lt;OperResult&gt;
 
-搜播。支持音视频，示例仅以音频为例。使用Promise异步回调。
+搜播，支持音视频，示例仅以音频为例。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
