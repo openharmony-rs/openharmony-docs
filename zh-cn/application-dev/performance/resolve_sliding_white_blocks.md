@@ -99,10 +99,11 @@ export default class DataSourcePrefetching implements IDataSourcePrefetching {
   private dataArray: Array<SongInfoItem>;
   private listeners: DataChangeListener[] = [];
   private readonly requestsInFlight: HashMap<number, http.HttpRequest> = new HashMap();
-  private readonly cachePath = getContext().getApplicationContext().cacheDir;
+  private cachePath: string = "";
 
-  constructor(dataArray: Array<SongInfoItem>) {
+  constructor(dataArray: Array<SongInfoItem>, cachePath: string) {
     this.dataArray = dataArray;
+    this.cachePath = cachePath;
   }
   
   async prefetch(index: number): Promise<void> {
@@ -156,7 +157,7 @@ export struct LazyForEachListPage {
   @State likedIds: ObservedArray<string> = ['1', '2', '3', '4', '5', '6'];
   @State isListReachEnd: boolean = false;
   // 创建DataSourcePrefetching对象，具备任务预取、取消能力的数据源
-  private readonly dataSource = new DataSourcePrefetching(PageViewModel.getItems());
+    private readonly dataSource = new DataSourcePrefetching(PageViewModel.getItems(), this.getUIContext().getHostContext()?.getApplicationContext().cacheDir);
   // 创建BasicPrefetcher对象，默认的动态预取算法实现
   private readonly prefetcher = new BasicPrefetcher(this.dataSource);
 

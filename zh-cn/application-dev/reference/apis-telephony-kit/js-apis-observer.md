@@ -1168,9 +1168,9 @@ onCCallStateChange\(callback: Callback\<CCallStateInfo\>, options?: ObserverOpti
 **示例：**
 
 ```ts
-import { call } from '@kit.TelephonyKit';
+import { call, observer } from '@kit.TelephonyKit';
 
-let callback: (data: CCallStateInfo) => void = (data: CCallStateInfo) => {
+let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
 }
 let options: observer.ObserverOptions = {
@@ -1212,9 +1212,9 @@ offCCallStateChange\(callback?: Callback\<CCallStateInfo\>\): void
 **示例：**
 
 ```ts
-import { call } from '@kit.TelephonyKit';
+import { call, observer } from '@kit.TelephonyKit';
 
-let callback: (data: CCallStateInfo) => void = (data: CCallStateInfo) => {
+let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
 }
 
@@ -1279,7 +1279,7 @@ SIM卡类型和状态。
 |     名称            |                 类型                    | 只读 | 可选 | 说明     |
 | ------------------- | -------------------------------------- | ---- | ---- | -------- |
 | state               | [CCallState](js-apis-call.md#ccallstate23) | 否   | 否   | 通话类型。 |
-| telenumber              | string                                 | 否   | 否   | 电话号码。 |
+| teleNumber              | string                                 | 否   | 否   | 电话号码。 |
 
 
 ## DataConnectionStateInfo<sup>11+</sup>

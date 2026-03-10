@@ -76,26 +76,31 @@ class MyNodeController extends NodeController {
 @Component
 export struct OperationNodeTree {
   private myNodeController: MyNodeController = new MyNodeController();
+  @State myLog: string = '';
 
   build() {
     // ...
-      Row() {
+      Column() {
         NodeContainer(this.myNodeController)
           .width(200)
           .height(350);
+        Text(this.myLog).width(300).height(40).margin({ top: 20, left: 20, bottom: 20 });
         Button('getNextSibling')
           .onClick(() => {
             const child = renderNode.getChild(1);
             const nextSibling = child!.getNextSibling()
             if (child === null || nextSibling === null) {
               hilog.info(DOMAIN, TEST_TAG, ' the child or nextChild is null');
+              this.myLog = 'the child or nextChild is null';
             } else {
               // 获取子节点的位置信息
               hilog.info(DOMAIN, TEST_TAG, `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
                 `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
+              this.myLog = `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
+                `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`;
             }
           });
-      };
+      }.width(300).margin({ left: 20 });
 
       // ...
   }
@@ -138,7 +143,7 @@ const clip = new ShapeClip();
 clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xff519db4;
 renderNode.size = { width: 100, height: 100 };
 
 class MyNodeController extends NodeController {
@@ -164,10 +169,11 @@ export struct RenderingProperties {
   build() {
     // ...
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Column() {
-          NodeContainer(this.myNodeController);
-        };
+      Column() {
+        NodeContainer(this.myNodeController).height(260);
+      };
 
+      Flex() {
         // 设置RenderNode的位置
         Button('position')
           .width(300)
@@ -175,7 +181,7 @@ export struct RenderingProperties {
             renderNode.position = { x: 10, y: 10 };
             hilog.info(DOMAIN, TEST_TAG, ' position:' + JSON.stringify(renderNode.position));
           });
-
+        Column().width(20);
         // 设置RenderNode的轴心
         Button('pivot')
           .width(300)
@@ -183,7 +189,9 @@ export struct RenderingProperties {
             renderNode.pivot = { x: 0.5, y: 0.6 };
             hilog.info(DOMAIN, TEST_TAG, ' pivot:' + JSON.stringify(renderNode.pivot));
           });
+      }
 
+      Flex() {
         // 修改RenderNode的缩放比例
         Button('scale')
           .width(300)
@@ -191,7 +199,7 @@ export struct RenderingProperties {
             renderNode.scale = { x: 0.5, y: 1 };
             hilog.info(DOMAIN, TEST_TAG, ' scale:' + JSON.stringify(renderNode.scale));
           });
-
+        Column().width(20);
         // 设置RenderNode的平移量
         Button('translation')
           .width(300)
@@ -199,7 +207,9 @@ export struct RenderingProperties {
             renderNode.translation = { x: 100, y: 0 };
             hilog.info(DOMAIN, TEST_TAG, ' translation:' + JSON.stringify(renderNode.translation));
           });
+      }
 
+      Flex() {
         // 设置RenderNode的旋转角度
         Button('rotation')
           .width(300)
@@ -207,7 +217,7 @@ export struct RenderingProperties {
             renderNode.rotation = { x: 45, y: 0, z: 0 };
             hilog.info(DOMAIN, TEST_TAG, ' rotation:' + JSON.stringify(renderNode.rotation));
           });
-
+        Column().width(20);
         // 设置RenderNode的变换矩阵
         Button('transform')
           .width(300)
@@ -220,13 +230,15 @@ export struct RenderingProperties {
             ];
             hilog.info(DOMAIN, TEST_TAG, ' transform:' + JSON.stringify(renderNode.transform));
           });
+      }
 
+      Flex() {
         // 设置RenderNode的阴影属性
         Button('shadow')
           .width(300)
           .onClick(() => {
             renderNode.shadowElevation = 10; // 设置阴影的光照高度
-            renderNode.shadowColor = 0XFF00FF00;
+            renderNode.shadowColor = 0xff2787d9;
             renderNode.shadowOffset = { x: 10, y: 10 };
             renderNode.shadowAlpha = 0.1;
             hilog.info(DOMAIN, TEST_TAG, ' shadowElevation:' + JSON.stringify(renderNode.shadowElevation));
@@ -234,7 +246,7 @@ export struct RenderingProperties {
             hilog.info(DOMAIN, TEST_TAG, ' shadowOffset:' + JSON.stringify(renderNode.shadowOffset));
             hilog.info(DOMAIN, TEST_TAG, ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
           });
-
+        Column().width(20);
         // 设置RenderNode的阴影模糊半径
         Button('shadowRadius')
           .width(300)
@@ -246,7 +258,9 @@ export struct RenderingProperties {
             hilog.info(DOMAIN, TEST_TAG, ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
             hilog.info(DOMAIN, TEST_TAG, ' shadowRadius:' + JSON.stringify(renderNode.shadowRadius));
           });
+      }
 
+      Flex() {
         // 设置RenderNode的边框样式
         Button('border')
           .width(300)
@@ -264,10 +278,10 @@ export struct RenderingProperties {
               bottom: BorderStyle.Solid
             }
             renderNode.borderColor = {
-              left: 0xFF0000FF,
-              top: 0xFF0000FF,
-              right: 0xFF0000FF,
-              bottom: 0xFF0000FF
+              left: 0xffd5d5d5,
+              top: 0xffd5d5d5,
+              right: 0xffd5d5d5,
+              bottom: 0xffd5d5d5
             };
             renderNode.borderRadius = {
               topLeft: 32,
@@ -280,7 +294,7 @@ export struct RenderingProperties {
             hilog.info(DOMAIN, TEST_TAG, ' borderColor:' + JSON.stringify(renderNode.borderColor));
             hilog.info(DOMAIN, TEST_TAG, ' borderRadius:' + JSON.stringify(renderNode.borderRadius));
           })
-
+        Column().width(20);
         // 设置RenderNode的遮罩
         Button('shapeMask')
           .width(300)
@@ -288,6 +302,7 @@ export struct RenderingProperties {
             renderNode.shapeMask = mask;
             hilog.info(DOMAIN, TEST_TAG, ' shapeMask:' + JSON.stringify(renderNode.shapeMask));
           });
+      }
 
         // 设置RenderNode的剪裁形状
         Button('shapeClip')
@@ -343,9 +358,9 @@ class MyRenderNode extends RenderNode {
     // 设置笔刷颜色
     brush.setColor({
       alpha: 255,
-      red: 255,
-      green: 0,
-      blue: 0
+      red: 81,
+      green: 157,
+      blue: 180
     });
     canvas.attachBrush(brush);
     // 绘制矩阵
@@ -367,7 +382,7 @@ renderNode.frame = {
   width: 300,
   height: 300
 };
-renderNode.backgroundColor = 0xff0000ff;
+renderNode.backgroundColor = 0xffd5d5d5;
 renderNode.opacity = 0.5;
 
 class MyNodeController extends NodeController {
@@ -400,14 +415,14 @@ export struct CustomDraw {
     // ...
       Column() {
         NodeContainer(this.myNodeController)
-          .width('100%');
+          .width('100%').height(320);
         Button('Invalidate')
           .onClick(() => {
             // 同步调用多次，仅触发一次重绘，draw回调中的日志仅打印一次
             renderNode.width += 10;
             renderNode.invalidate();
             renderNode.invalidate();
-          });
+          }).margin({left: -80});
       };
 
       // ...
@@ -772,7 +787,7 @@ class MyNodeController extends NodeController {
         width: 100,
         height: 100
       };
-      renderChildNode.backgroundColor = 0xffff0000;
+      renderChildNode.backgroundColor = 0xff519db4;
       renderChildNode.label = 'customRenderChildNode';
       hilog.info(DOMAIN, 'label:', renderChildNode.label);
       renderNode.appendChild(renderChildNode);
@@ -793,7 +808,7 @@ export struct SetLabel {
         NodeContainer(this.myNodeController)
           .width(300)
           .height(700)
-          .backgroundColor(Color.Gray);
+          .backgroundColor(0xffd5d5d5);
       };
 
       // ...

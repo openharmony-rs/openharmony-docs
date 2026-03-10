@@ -107,7 +107,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
     
     static void OnReceive1(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups, uint32_t groupLen)
     {
-        OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onReceive callback form C API \n");
+        OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onReceive callback from C API \n");
         for (int i = 0; i < groupLen; ++i) {
             for (int j = 0; j < appEventGroups[i].infoLen; ++j) {
                 OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo.domain=%{public}s",
@@ -165,7 +165,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
     static void OnTake1(const char *const *events, uint32_t eventLen)
     {
         Json::Reader reader(Json::Features::strictMode());
-        OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onTrigger callback form C API \n");
+        OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onTrigger callback from C API \n");
         for (int i = 0; i < eventLen; ++i) {
             OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo=%{public}s", events[i]);
             Json::Value eventInfo;
@@ -326,7 +326,7 @@ Button('writeEvent C++')
 2. 搜索关键字“AppEvents”，在HiLog窗口查看应用处理崩溃事件数据的日志：
 
    ```text
-   AppEvents HiAppEvent success to read events with onReceive callback form C API
+   AppEvents HiAppEvent success to read events with onReceive callback from C API
    AppEvents HiAppEvent eventInfo.domain=OS
    AppEvents HiAppEvent eventInfo.name=APP_CRASH
    AppEvents HiAppEvent eventInfo.eventType=1
@@ -338,7 +338,7 @@ Button('writeEvent C++')
 3. 点击“writeEvent C++”按钮，触发按钮点击事件。搜索关键字“AppEvents”，在HiLog窗口查看应用处理按钮点击事件数据的日志：
 
    ```text
-   AppEvents HiAppEvent success to read events with onTrigger callback form C API
+   AppEvents HiAppEvent success to read events with onTrigger callback from C API
    AppEvents HiAppEvent eventInfo={"domain_":"button","name_":"click","type_":4,"time_":1750947007108,"tz_":"","pid_":64750,"tid_":64750,"clickTime":1750947007}
    AppEvents HiAppEvent eventInfo.domain=button
    AppEvents HiAppEvent eventInfo.name=click
