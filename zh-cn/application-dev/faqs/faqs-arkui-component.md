@@ -5,6 +5,7 @@
 <!--Designer: @piggyguy; @s10021109; @yangfan229-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @HelloCrease-->
+<!--deprecated_code_no_check-->
 
 
 ## 自定义弹窗能否在ts文件中定义和使用(API 9)
@@ -592,7 +593,7 @@ struct VideoCreateComponent {
 **代码示例**
 
 ``` ts
-//xxx.ts
+// xxx.ts
 @Entry
 @Component
 struct StyleExample {
@@ -674,7 +675,7 @@ struct EntryComponent {
 
   build() {
     Column() {
-      MyComponent({ title: { value: 'Hello World 2' }, count: 7, click: this.test }) //初始化时传递定义的方法
+      MyComponent({ title: { value: 'Hello World 2' }, count: 7, click: this.test }) // 初始化时传递定义的方法
     }
   }
 }
