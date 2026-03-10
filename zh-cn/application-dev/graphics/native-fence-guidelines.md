@@ -72,7 +72,11 @@ libnative_fence.so
     ``` C++
     bool result2 = false;
     auto startTime = std::chrono::steady_clock::now();
-    result2 = OH_NativeFence_WaitForever(sfd);
+    <!-- @[close_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    OH_NativeFence_Close(sfd);
+    ```
     auto endTime = std::chrono::steady_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
     if (result2) {
