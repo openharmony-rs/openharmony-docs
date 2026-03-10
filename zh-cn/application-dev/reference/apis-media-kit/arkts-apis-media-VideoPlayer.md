@@ -44,7 +44,7 @@ setDisplaySurface(surfaceId: string, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> - SetDisplaySurface需要在设置url和Prepare之间，无音频的视频流必须设置Surface否则Prepare失败。
+> - SetDisplaySurface需要在设置url和准备之间，无音频的视频流必须设置Surface否则准备失败。
 >
 > - 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.surfaceId](arkts-apis-media-AVPlayer.md#属性)替代。
 
