@@ -1451,8 +1451,8 @@ try {
 | interval      | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点间隔。         |
 | maxPacketSize | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点最大数据包大小。    |
 | direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 否 |端点的方向。        |
-| number        | ArkTS-Dyn: number                                         | 否   | 否 |端点号。 <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。         |
-| endpointAddr        | ArkTS-Sta: int                                         | 否   | 否 |端点地址。<br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta。           |
+| number        | ArkTS-Dyn: number                                         | 否   | 否 |端点号。 <br>**ArkTS模式**：该字段仅适用于ArkTS-Dyn。         |
+| endpointAddr        | ArkTS-Sta: int                                         | 否   | 否 |端点地址。<br>**ArkTS模式**：该字段仅适用于ArkTS-Sta。           |
 | type          | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点类型。取值见[UsbEndpointTransferType](#usbendpointtransfertype18)         |
 | interfaceId   | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点所属的接口的唯一标识。 |
 
