@@ -2378,8 +2378,8 @@ struct WebComponent {
           .onClick(() => {
               webview.WebCookieManager.fetchAllCookies(false).then((cookies) => {
                 cookies.forEach((item, idx) => {
-                  console.info('cookie[${idx}]:'+ item.name);
-                  console.info('cookie[${idx}]:'+ item.value);
+                  console.info(`cookie[${idx}]:`+ item.name);
+                  console.info(`cookie[${idx}]:`+ item.value);
               });
             })
           })

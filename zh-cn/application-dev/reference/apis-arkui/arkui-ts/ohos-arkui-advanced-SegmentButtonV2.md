@@ -1698,14 +1698,15 @@ struct SegmentButtonV2Example {
     { text: '2in1' },
     { text: '智能穿戴' },
   ]);
-  @Local textSelectedIndex: number = 0;
   @Local imageItems: SegmentButtonV2Items = new SegmentButtonV2Items([
     { icon: $r('sys.media.ohos_ic_public_device_phone') },
     { icon: $r('sys.media.ohos_ic_public_device_pad') },
     { icon: $r('sys.media.ohos_ic_public_device_matebook') },
     { icon: $r('sys.media.ohos_ic_public_device_watch') },
   ]);
+  @Local textSelectedIndex: number = 0;
   @Local imageSelectedIndex: number = 0;
+  @Local currentSelectedIndex: number = 0; // 切换选中项的索引计数器
 
   build() {
     Scroll() {
@@ -1727,9 +1728,10 @@ struct SegmentButtonV2Example {
         }
 
         Button('ChangeSelectedIndex').onClick((event: ClickEvent) => {
-          // 通过变量修改选中项的索引值
-          this.textSelectedIndex = 2
-          this.imageSelectedIndex = 2
+          // 通过状态变量自增修改选中项的索引值，若超出最大索引则重置为0
+          this.currentSelectedIndex = this.currentSelectedIndex < 3 ? this.currentSelectedIndex + 1 : 0;
+          this.textSelectedIndex = this.currentSelectedIndex;
+          this.imageSelectedIndex = this.currentSelectedIndex;
         })
       }
       .constraintSize({ minHeight: '100%' })
@@ -1793,7 +1795,8 @@ import {
   Stack,
   TabSegmentButtonV2,
   Text,
-  TextOverflow
+  TextOverflow,
+  Button
 } from '@kit.ArkUI';
 
 @Entry
@@ -1805,14 +1808,15 @@ struct SegmentButtonV2Example {
     { text: '2in1' },
     { text: '智能穿戴' },
   ]);
-  @Local textSelectedIndex: int = 0;
   @Local imageItems: SegmentButtonV2Items = new SegmentButtonV2Items([
     { icon: $r('sys.media.ohos_ic_public_device_phone') },
     { icon: $r('sys.media.ohos_ic_public_device_pad') },
     { icon: $r('sys.media.ohos_ic_public_device_matebook') },
     { icon: $r('sys.media.ohos_ic_public_device_watch') },
   ]);
-  @Local imageSelectedIndex: number = 0;
+  @Local textSelectedIndex: int = 0;
+  @Local imageSelectedIndex: int = 0;
+  @Local currentSelectedIndex: int = 0; // 切换选中项的索引计数器
 
   build() {
     Column() {
@@ -1842,9 +1846,10 @@ struct SegmentButtonV2Example {
 
           Button('ChangeSelectedIndex')
             .onClick(() => {
-              // 通过变量修改选中项的索引值
-              this.textSelectedIndex = 2;
-              this.imageSelectedIndex = 2;
+              // 通过状态变量自增修改选中项的索引值，若超出最大索引则重置为0
+              this.currentSelectedIndex = this.currentSelectedIndex < 3 ? this.currentSelectedIndex + 1 : 0;
+              this.textSelectedIndex = this.currentSelectedIndex;
+              this.imageSelectedIndex = this.currentSelectedIndex;
             })
         }
         .constraintSize({ minHeight: '100%' })

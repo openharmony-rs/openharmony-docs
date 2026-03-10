@@ -37,7 +37,7 @@ ArkTS-Sta: static makeFromPosText(text: string, len: int, points: common2D.Point
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -124,7 +124,7 @@ ArkTS-Sta: uniqueID(): long
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -173,7 +173,7 @@ ArkTS-Sta: static makeFromString(text: string, font: Font, encoding?: TextEncodi
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -254,7 +254,7 @@ ArkTS-Sta: static makeFromRunBuffer(pos: Array\<TextBlobRunBuffer>, font: Font, 
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -354,7 +354,7 @@ ArkTS-Sta: bounds(): common2D.Rect | undefined
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

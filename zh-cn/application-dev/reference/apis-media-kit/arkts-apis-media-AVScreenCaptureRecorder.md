@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
 
@@ -128,26 +129,35 @@ avScreenCaptureRecorder.stopRecording().then(() => {
 
 ## skipPrivacyMode<sup>12+</sup>
 
-skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
+ArkTS-Dyn: skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 
-录屏时，应用可对本应用的隐私窗口做安全豁免。通过Promise获取返回值。
+ArkTS-Sta: skipPrivacyMode(windowIDs: Array\<int>): Promise\<void>
+
+录屏时，应用可对本应用的隐私窗口做安全豁免。使用Promise异步回调。
+
 如录屏时，用户在本应用进行输入密码等操作，应用不会进行黑屏处理。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                      |
 | ------ | ------- | ---- | --------------------------------------------------------- |
-| windowIDs | Array\<number> | 是   | 需要豁免隐私的窗口列表，包括主窗口id和子窗口id，窗口属性获取方法可以参考[窗口API引用](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
+| windowIDs | ArkTS-Dyn: Array\<number><br>ArkTS-Sta: Array\<int> | 是   | 需要豁免隐私的窗口列表，包括主窗口id和子窗口id，窗口属性获取方法可以参考[getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
 
 **返回值：**
 
 | 类型           | 说明                             |
 | -------------- | -------------------------------- |
-| Promise\<void> | 豁免隐私窗口的Promise返回值. |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -156,17 +166,59 @@ skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit'
+
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
+  if (captureRecorder != null) {
+    avScreenCaptureRecorder = captureRecorder;
+    console.info('Succeeded in creating avScreenCaptureRecorder');
+  } else {
+    console.error('Failed to create avScreenCaptureRecorder');
+  }
+}).catch((error: BusinessError) => {
+  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
+});
 
 let windowIDs = [];
-avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
     console.info('Succeeded in skipping privacy mode');
-}).catch((err: BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.info('Failed to skip privacy mode, error: ' + err.message);
-});
+  });
+}
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit'
+
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
+  if (captureRecorder != null) {
+    avScreenCaptureRecorder = captureRecorder;
+    console.info('Succeeded in creating avScreenCaptureRecorder');
+  } else {
+    console.error('Failed to create avScreenCaptureRecorder');
+  }
+}).catch(async (error: BusinessError) => {
+  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
+});
+
+let windowIDs = [];
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
+    console.info('Succeeded in skipping privacy mode');
+  }).catch(async (err: BusinessError) => {
+    console.info('Failed to skip privacy mode, error: ' + err.message);
+  });
+}
+```
 ## setMicEnabled<sup>12+</sup>
 
 setMicEnabled(enable: boolean): Promise\<void>

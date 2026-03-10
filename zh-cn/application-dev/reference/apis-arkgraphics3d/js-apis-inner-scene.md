@@ -18,22 +18,6 @@ import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastPar
   SceneResourceFactory, SceneComponent, RenderContext, RenderConfiguration, RenderParameters, Scene } from '@kit.ArkGraphics3D';
 ```
 
-## ResourceStr<sup>20+</sup>
-type ResourceStr = string | Resource
-
-字符串类型，用于描述字符串入参可以使用的类型。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
-**ArkTS-Sta起始版本：** 22
-
-| 类型 | 说明 |
-| ---- | ---- |
-| string | 字符串类型。 |
-| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 资源引用类型，引入系统资源或者应用资源中的字符串。 |
-
 ## SceneResourceParameters
 场景资源参数对象，包含name和uri，用于提供场景资源的名称以及3D场景所需的资源文件路径。
 
@@ -41,7 +25,7 @@ type ResourceStr = string | Resource
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -79,7 +63,7 @@ function createShaderPromise(): Promise<Shader> {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -117,7 +101,7 @@ function createNodePromise() : Promise<Node> {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -132,7 +116,7 @@ function createNodePromise() : Promise<Node> {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -151,7 +135,7 @@ createShader(params: SceneResourceParameters): Promise\<Shader>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -190,7 +174,7 @@ createImage(params: SceneResourceParameters): Promise\<Image>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -230,7 +214,7 @@ createMesh(params: SceneResourceParameters, geometry: GeometryDefinition): Promi
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -322,7 +306,7 @@ createSampler(params:SceneResourceParameters): Promise\<Sampler>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -362,7 +346,7 @@ createScene(uri?: ResourceStr): Promise\<Scene>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -404,8 +388,8 @@ function createScenePromise(fromFile: boolean = false): Promise<Scene> {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| msaa<sup>22+</sup> | boolean | 否 | 是 | 相机是否使能MSAA，true表示使能MSAA，false表示不使能MSAA。默认值为false。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22 |
-| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | 否   | 是   | 选择初始渲染管线类型，默认为轻量级前向渲染管线类型。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 22 |
+| msaa<sup>22+</sup> | boolean | 否 | 是 | 相机是否使能MSAA，true表示使能MSAA，false表示不使能MSAA。默认值为false。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23 |
+| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | 否   | 是   | 选择初始渲染管线类型，默认为轻量级前向渲染管线类型。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
 
 ## EffectParameters<sup>21+</sup>
 
@@ -433,7 +417,7 @@ createCamera(params: SceneNodeParameters): Promise\<Camera>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -477,7 +461,7 @@ createCamera(params: SceneNodeParameters, cameraParams: CameraParameters): Promi
 
 **ArkTS-Dyn起始版本：** 21
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -524,7 +508,7 @@ createLight(params: SceneNodeParameters, lightType: LightType): Promise\<Light>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -568,7 +552,7 @@ createNode(params: SceneNodeParameters): Promise\<Node>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -612,7 +596,7 @@ createMaterial(params: SceneResourceParameters, materialType: MaterialType): Pro
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -656,7 +640,7 @@ createEnvironment(params: SceneResourceParameters): Promise\<Environment>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -700,7 +684,7 @@ createGeometry(params: SceneNodeParameters, mesh:MeshResource): Promise\<Geometr
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -792,7 +776,7 @@ function createEffect() : Promise<Effect> {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -811,7 +795,7 @@ getRenderResourceFactory() : RenderResourceFactory
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型 | 说明 |
@@ -842,7 +826,7 @@ loadPlugin(name: string): Promise\<boolean>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -877,7 +861,7 @@ registerResourcePath(protocol: string, uri: string): boolean
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -934,7 +918,7 @@ function registerResourcePath(): void {
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -949,10 +933,10 @@ function registerResourcePath(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| environment | [Environment](js-apis-inner-scene-resources.md#environment) | 否 | 否 | 环境对象。<br/>**ArkTS-Dyn起始版本:** 12<br>**ArkTS-Sta起始版本:** 22 |
-| animations | [Animation](js-apis-inner-scene-resources.md#animation)[] | 是 | 否 | 动画数组，用于保存3D场景中的动画对象。<br/>**ArkTS-Dyn起始版本:** 12<br>**ArkTS-Sta起始版本:** 22|
-| root | [Node](js-apis-inner-scene-nodes.md#node) \| null | 是 | 否 | 3D场景树根结点。<br/>**ArkTS-Dyn起始版本:** 12<br>**ArkTS-Sta起始版本:** 22 |
-| renderConfiguration | [RenderConfiguration](#renderconfiguration23)  | 是 | 否 | 渲染配置接口。<br/>**ArkTS-Dyn起始版本:** 23<br>**ArkTS-Sta起始版本:** 23 |
+| environment | [Environment](js-apis-inner-scene-resources.md#environment) | 否 | 否 | 环境对象。<br/>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| animations | [Animation](js-apis-inner-scene-resources.md#animation)[] | 是 | 否 | 动画数组，用于保存3D场景中的动画对象。<br/>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| root | [Node](js-apis-inner-scene-nodes.md#node) \| null | 是 | 否 | 3D场景树根结点。<br/>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| renderConfiguration<sup>23</sup> | [RenderConfiguration](#renderconfiguration23)  | 是 | 否 | 渲染配置接口。<br/>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 ### load
 static load(uri?: ResourceStr): Promise\<Scene>
@@ -963,7 +947,7 @@ static load(uri?: ResourceStr): Promise\<Scene>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -995,7 +979,7 @@ getNodeByPath(path: string, type?: NodeType): Node | null
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1033,7 +1017,7 @@ getResourceFactory(): SceneResourceFactory
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型 | 说明 |
@@ -1065,7 +1049,7 @@ destroy(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 ```ts
@@ -1092,7 +1076,7 @@ importNode(name: string, node: Node, parent: Node | null): Node
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1138,7 +1122,7 @@ importScene(name: string, scene: Scene, parent: Node | null): Node
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1178,7 +1162,7 @@ renderFrame(params?: RenderParameters): boolean
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1216,7 +1200,7 @@ createComponent(node: Node, name: string): Promise\<SceneComponent>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1261,7 +1245,7 @@ getComponent(node: Node, name: string): SceneComponent | null
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1306,7 +1290,7 @@ static getDefaultRenderContext(): RenderContext | null
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型 | 说明 |

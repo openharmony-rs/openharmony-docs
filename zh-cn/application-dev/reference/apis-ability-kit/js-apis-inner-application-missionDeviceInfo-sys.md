@@ -16,6 +16,8 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 
 ## 属性
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission

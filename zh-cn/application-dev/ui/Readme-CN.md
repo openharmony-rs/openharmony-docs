@@ -15,6 +15,7 @@
     - 静态自定义组件<!--arkts-static-custom-components-->
       - [\@Component装饰器: 自定义组件](../ui/state-management-static/arkts-static-create-component.md)
       - [\@ComponentV2装饰器：自定义组件](../ui/state-management-static/arkts-static-componentv2.md)
+      - [自定义组件生命周期](state-management-static/arkts-custom-components-new-lifecycle.md)
       - [自定义组件冻结](../ui/state-management-static/arkts-static-custom-components-v1-v2-freeze.md)
         - [V1自定义组件冻结场景](../ui/state-management-static/arkts-static-freeze.md)
         - [V2自定义组件冻结场景](../ui/state-management-static/arkts-static-custom-components-freezeV2.md)
@@ -109,6 +110,7 @@
             - [\@Once装饰器：初始化同步一次](state-management-static/arkts-static-new-once.md)
           - [\@Event装饰器：规范组件输出](state-management-static/arkts-static-new-event.md)
           - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management-static/arkts-static-new-provider-and-consumer.md)
+          - [\@Env：环境变量](state-management-static/arkts-static-new-env.md)
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-v2-->
           - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management-static/arkts-static-new-observedV2-and-trace.md)
           - [\@Monitor装饰器：状态变量修改监听](state-management-static/arkts-static-new-monitor.md)

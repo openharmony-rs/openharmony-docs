@@ -23,7 +23,17 @@ SelectionExtensionContext是[SelectionExtensionAbility](js-apis-selectionInput-s
 import SelectionExtensionContext from '@ohos.selectionInput.SelectionExtensionContext';
 ```
 
-## startAbility
+## SelectionExtensionContext
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
+### startAbility
 
 startAbility(want: Want): Promise\<void>
 
@@ -31,7 +41,7 @@ startAbility(want: Want): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 

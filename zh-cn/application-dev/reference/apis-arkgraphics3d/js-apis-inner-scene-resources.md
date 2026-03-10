@@ -19,22 +19,6 @@ import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend
   SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image } from '@kit.ArkGraphics3D';
 ```
 
-## ResourceStr<sup>20+</sup>
-type ResourceStr = string | Resource
-
-字符串类型，用于描述字符串入参可以使用的类型。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
-**ArkTS-Sta起始版本：** 22
-
-| 类型 | 说明 |
-| ---- | ---- |
-| string | 字符串类型。 |
-| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 资源引用类型，引入系统资源或者应用资源中的字符串。 |
-
 ## SceneResourceType
 场景资源类型枚举，对场景中的资源进行分类。
 
@@ -42,15 +26,15 @@ type ResourceStr = string | Resource
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
-| UNKNOWN | 0 | 未定义类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| NODE | 1 | 结点类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| ENVIRONMENT | 2 | 环境类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| MATERIAL | 3 | 材质类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| MESH | 4 | 网格类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| ANIMATION | 5 | 动画类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| SHADER | 6 | 着色器类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| IMAGE | 7 | 图片类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| MESH_RESOURCE<sup>18+</sup> | 8 | 网格资源类型。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22 |
+| UNKNOWN | 0 | 未定义类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| NODE | 1 | 结点类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| ENVIRONMENT | 2 | 环境类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| MATERIAL | 3 | 材质类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| MESH | 4 | 网格类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| ANIMATION | 5 | 动画类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| SHADER | 6 | 着色器类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| IMAGE | 7 | 图片类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| MESH_RESOURCE<sup>18+</sup> | 8 | 网格资源类型。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
 | EFFECT<sup>21+</sup> | 9 | 后处理特效类型。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
 
 ## SceneResource
@@ -62,7 +46,7 @@ type ResourceStr = string | Resource
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -79,7 +63,7 @@ destroy(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 ```ts
@@ -107,15 +91,111 @@ function destroy(): void {
 ## Shader
 着色器，继承自[SceneResource](#sceneresource-1)。
 
+### 属性
+
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | inputs | ArkTS-Dyn: Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image><br>ArkTS-Sta: Record<string, double \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | 是 | 否 | 着色器输入。 |
+
+### setShaderInputs<sup>23+</sup>
+
+ArkTS-Dyn: setShaderInputs(inputs: Record<string, number \| Vec2 \| Vec3 \| Vec4 \| Image>): void
+
+ArkTS-Sta: setShaderInputs(inputs: Record<string, double \| Vec2 \| Vec3 \| Vec4 \| Image>): void
+
+设置[Shader](#shader)的输入，该接口性能优于直接设置inputs属性。
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| inputs | ArkTS-Dyn: Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image><br> ArkTS-Sta: Record<string, double \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | 是 | 一个字符串到值的映射，用于设置shader输入。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { Image, MaterialType, Scene, SceneResourceFactory, Shader, ShaderMaterial } from '@kit.ArkGraphics3D';
+
+function setinputs(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+  scene.then(async (result: Scene) => {
+    if (result) {
+      let rf : SceneResourceFactory | null = await result.getResourceFactory();
+      if (!rf) {
+        return;
+      }
+      // 创建材质和shader
+      let material: ShaderMaterial | null = await rf.createMaterial({name: "CustomMaterial"}, MaterialType.SHADER);
+      let shader : Shader | null = await rf.createShader(
+        {name: "CustomShader", uri: $rawfile("shaders/custom_shader/custom_material_sample.shader")});
+      if (!material || !shader) {
+        return;
+      }
+      // 加载纹理资源
+      let image : Image | null = await rf.createImage({name: "envImg", uri: $rawfile("custom_image.jpg")});
+      if (!image) {
+        return;
+      }
+      // 绑定shader到纹理上
+      material.colorShader = shader;
+      // 设置shader输入
+      material.colorShader.setShaderInputs({
+        "uTime": 1.0,
+        "uVelocity": {x: 1.0, y: 1.0, z:-1.0, w:-1.0},
+        "uTexture": image
+      })
+    }
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { $rawfile } from '@ohos.arkui.component'
+import { Image, MaterialType, Scene, SceneResourceFactory, Shader, ShaderMaterial } from '@ohos.graphics.scene';
+
+function setinputs(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+  scene.then(async (result: Scene) => {
+    if (result) {
+      let rf : SceneResourceFactory = result.getResourceFactory();
+      // 创建材质和shader
+      let material: ShaderMaterial = await rf.createMaterial({name: "CustomMaterial"}, MaterialType.SHADER) as ShaderMaterial;
+      let shader : Shader = await rf.createShader(
+        {name: "CustomShader", uri: $rawfile("shaders/custom_shader/custom_material_sample.shader")});
+      // 加载纹理资源
+      let image : Image | null = await rf.createImage({name: "envImg", uri: $rawfile("custom_image.jpg")});
+      if (!image) {
+        return Promise.reject();
+      }
+      // 绑定shader到纹理上
+      material.colorShader = shader;
+      // 设置shader输入
+      material.colorShader?.setShaderInputs({
+        "uTime": 1.0,
+        "uVelocity": {x: 1.0, y: 1.0, z:-1.0, w:-1.0},
+        "uTexture": image
+      })
+    }
+  });
+}
+```
 
 ## MaterialType
 场景中物体材质类型枚举，定义材质的渲染方式。
@@ -124,8 +204,8 @@ function destroy(): void {
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
-| SHADER | 1 | 材质由着色器定义。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| METALLIC_ROUGHNESS<sup>20+</sup> | 2 | 采用基于物理渲染（PBR）的金属-粗糙度模型，通过金属度与粗糙度参数，模拟更真实的材质光照效果。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
+| SHADER | 1 | 材质由着色器定义。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| METALLIC_ROUGHNESS<sup>20+</sup> | 2 | 采用基于物理渲染（PBR）的金属-粗糙度模型，通过金属度与粗糙度参数，模拟更真实的材质光照效果。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | UNLIT<sup>23+</sup> | 3 | 不受光照影响的材质。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 | OCCLUSION<sup>23+</sup> | 4 | 遮挡材质，能够遮挡场景中的其他物体但不会遮挡环境。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
@@ -136,7 +216,7 @@ function destroy(): void {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
@@ -151,7 +231,7 @@ function destroy(): void {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -164,7 +244,7 @@ function destroy(): void {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -193,12 +273,12 @@ function destroy(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| materialType | [MaterialType](#materialtype) | 是 | 否 | 材质类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| shadowReceiver<sup>20+</sup> | boolean | 否 | 是 | 材质是否接收阴影。true表示该材质接收阴影，false表示不接收，默认值为false。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
-| cullMode<sup>20+</sup> | [CullMode](#cullmode20) | 否 | 是 | 当前材质的剔除模式设置，用于控制是否剔除背面几何面片，默认值为BACK。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
-| blend<sup>20+</sup> | [Blend](#blend20) | 否 | 是 | 材质是否透明，默认值为false。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
-| alphaCutoff<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 透明通道阈值，如果像素的alpha值等于或高于此阈值，则渲染该像素；如果低于此阈值，则不会渲染该像素。设置值小于1时，则开启该模式，取值范围为[0, 1]，默认值为1。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
-| renderSort<sup>20+</sup> | [RenderSort](#rendersort20) | 否 | 是 | 渲染排序设置，用于控制材质在渲染管线中的渲染顺序，渲染图层id默认值为32，同一图层内的渲染顺序默认值为0。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
+| materialType | [MaterialType](#materialtype) | 是 | 否 | 材质类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| shadowReceiver<sup>20+</sup> | boolean | 否 | 是 | 材质是否接收阴影。true表示该材质接收阴影，false表示不接收，默认值为false。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| cullMode<sup>20+</sup> | [CullMode](#cullmode20) | 否 | 是 | 当前材质的剔除模式设置，用于控制是否剔除背面几何面片，默认值为BACK。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| blend<sup>20+</sup> | [Blend](#blend20) | 否 | 是 | 材质是否透明，默认值为false。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| alphaCutoff<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 透明通道阈值，如果像素的alpha值等于或高于此阈值，则渲染该像素；如果低于此阈值，则不会渲染该像素。设置值小于1时，则开启该模式，取值范围为[0, 1]，默认值为1。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| renderSort<sup>20+</sup> | [RenderSort](#rendersort20) | 否 | 是 | 渲染排序设置，用于控制材质在渲染管线中的渲染顺序，渲染图层id默认值为32，同一图层内的渲染顺序默认值为0。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | polygonMode<sup>23+</sup> | [PolygonMode](#polygonmode23) | 否 | 是 | 模型的多边形绘制模式，默认值为FILL。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 
 ## MaterialProperty<sup>20+</sup>
@@ -208,7 +288,7 @@ function destroy(): void {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -223,7 +303,7 @@ function destroy(): void {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -245,7 +325,7 @@ function destroy(): void {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -282,7 +362,7 @@ function destroy(): void {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
@@ -297,7 +377,7 @@ function destroy(): void {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
@@ -312,7 +392,7 @@ function destroy(): void {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -329,7 +409,7 @@ function destroy(): void {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -344,7 +424,7 @@ function destroy(): void {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -357,7 +437,7 @@ function destroy(): void {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -372,7 +452,7 @@ function destroy(): void {
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## Animation
 动画类型，继承自[SceneResource](#sceneresource-1)。
@@ -383,11 +463,11 @@ function destroy(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| enabled | boolean | 否 | 否 | 动画是否使能。true表示可以播放动画，false表示不可以播放动画。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| speed<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 动画的播放速度因子。默认值为1.0，表示正常速度播放。如果设置为负值，动画将以反向速度播放。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
-| duration | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 否 | 动画持续时间，单位为秒（s），取值范围大于等于0。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| running | boolean | 是 | 否 | 动画运行状态。true表示动画正在播放，false表示动画停止播放。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| progress | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 否 | 动画进度状态，取值区间为[0, 1]。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| enabled | boolean | 否 | 否 | 动画是否使能。true表示可以播放动画，false表示不可以播放动画。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| speed<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 动画的播放速度因子。默认值为1.0，表示正常速度播放。如果设置为负值，动画将以反向速度播放。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| duration | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 否 | 动画持续时间，单位为秒（s），取值范围大于等于0。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| running | boolean | 是 | 否 | 动画运行状态。true表示动画正在播放，false表示动画停止播放。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| progress | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 否 | 动画进度状态，取值区间为[0, 1]。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 ### onFinished
 onFinished(callback: Callback\<void>): void
@@ -398,7 +478,7 @@ onFinished(callback: Callback\<void>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -440,7 +520,7 @@ onStarted(callback: Callback\<void>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 ```ts
@@ -470,7 +550,7 @@ pause(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 ```ts
@@ -498,7 +578,7 @@ restart(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 ```ts
@@ -528,7 +608,7 @@ ArkTS-Sta: seek(position: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -561,7 +641,7 @@ start(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 ```ts
@@ -589,7 +669,7 @@ stop(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 ```ts
@@ -617,7 +697,7 @@ finish(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
@@ -642,7 +722,7 @@ function finish(): void {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
@@ -658,13 +738,13 @@ function finish(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| backgroundType | [EnvironmentBackgroundType](#environmentbackgroundtype) | 否 | 否 | 环境背景类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| indirectDiffuseFactor | [Vec4](js-apis-inner-scene-types.md#vec4) | 否 | 否 | 间接散射系数。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| indirectSpecularFactor | [Vec4](js-apis-inner-scene-types.md#vec4) | 否 | 否 | 间接反射系数。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| environmentMapFactor | [Vec4](js-apis-inner-scene-types.md#vec4) | 否 | 否 | 环境地图系数。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| environmentImage | [Image](#image) \| null | 否 | 是 | 环境图片，默认为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| radianceImage | [Image](#image) \| null | 否 | 是 | 辐射图片，默认为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| irradianceCoefficients | [Vec3](js-apis-inner-scene-types.md#vec3)[] | 否 | 是 | 辐射系数，默认为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| backgroundType | [EnvironmentBackgroundType](#environmentbackgroundtype) | 否 | 否 | 环境背景类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| indirectDiffuseFactor | [Vec4](js-apis-inner-scene-types.md#vec4) | 否 | 否 | 间接散射系数。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| indirectSpecularFactor | [Vec4](js-apis-inner-scene-types.md#vec4) | 否 | 否 | 间接反射系数。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| environmentMapFactor | [Vec4](js-apis-inner-scene-types.md#vec4) | 否 | 否 | 环境地图系数。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| environmentImage | [Image](#image) \| null | 否 | 是 | 环境图片，默认为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| radianceImage | [Image](#image) \| null | 否 | 是 | 辐射图片，默认为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| irradianceCoefficients | [Vec3](js-apis-inner-scene-types.md#vec3)[] | 否 | 是 | 辐射系数，默认为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | environmentRotation<sup>23+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 是 | 环境光的旋转，默认为undefined，接收参数需为归一化后的四元数。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 
 ## Image
@@ -674,7 +754,7 @@ function finish(): void {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |

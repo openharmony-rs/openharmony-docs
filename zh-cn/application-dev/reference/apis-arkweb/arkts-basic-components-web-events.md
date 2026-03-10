@@ -3795,7 +3795,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
-ArkTS-Sta: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\> | undefined): this
+ArkTS-Sta: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\> | undefined)
 
 通知用户收到地理位置信息获取请求。
 
@@ -3920,7 +3920,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onGeolocationHide(callback: () => void)
 
-ArkTS-Sta: onGeolocationHide(callback: () => void | undefined): this
+ArkTS-Sta: onGeolocationHide(callback: (() => void) | undefined)
 
 通知用户先前被调用[onGeolocationShow](#ongeolocationshow)时收到地理位置信息获取请求已被取消。
 
@@ -3934,7 +3934,7 @@ ArkTS-Sta: onGeolocationHide(callback: () => void | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: () => void \| undefined | 是 | 地理位置信息获取请求已被取消的回调函数。 |
+| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: (() => void) \| undefined | 是 | 地理位置信息获取请求已被取消的回调函数。 |
 
 **示例：**
 
@@ -5254,7 +5254,7 @@ ArkTS-Sta示例：
 
  ArkTS-Dyn: onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\>)
 
- ArkTS-Sta: onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\> | undefined): this
+ ArkTS-Sta: onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\> | undefined)
 
 设置网页首次内容绘制回调函数。
 
@@ -5328,7 +5328,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12))
 
-ArkTS-Sta: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12) | undefined): this
+ArkTS-Sta: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12) | undefined)
 
 设置网页绘制页面主要内容回调函数。
 
@@ -5398,7 +5398,7 @@ ArkTS-Sta: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./a
 
 ArkTS-Dyn: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12))
 
-ArkTS-Sta: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12) | undefined): this
+ArkTS-Sta: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12) | undefined)
 
 设置网页绘制页面最大内容回调函数。
 
@@ -5549,7 +5549,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onRequestSelected(callback: () => void)
 
-ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined): this
+ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined)
 
 当Web组件获取焦点时触发回调。如果组件在未获焦状态下加载网页并成功获取焦点，将触发两次回调。
 
@@ -5563,7 +5563,7 @@ ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void \|  undefined | 是 | 当网页获取焦点时触发的回调。 |
+| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \|  undefined | 是 | 当网页获取焦点时触发的回调。 |
 
 **示例：**
 
@@ -6192,7 +6192,7 @@ struct WebComponent {
 
 ArkTS-Dyn: onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 
-ArkTS-Sta: onNativeEmbedLifecycleChange(callback: ((event: NativeEmbedDataInfo) => void) | undefined): this
+ArkTS-Sta: onNativeEmbedLifecycleChange(callback: ((event: NativeEmbedDataInfo) => void) | undefined)
 
 当同层标签生命周期变化时触发该回调。
 
@@ -6522,7 +6522,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
 
-ArkTS-Sta: onNativeEmbedGestureEvent(callback: ((event: NativeEmbedTouchInfo) => void) | undefined): this
+ArkTS-Sta: onNativeEmbedGestureEvent(callback: ((event: NativeEmbedTouchInfo) => void) | undefined)
 
 当手指触摸到同层标签时触发该回调。
 
@@ -7003,7 +7003,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onViewportFitChanged(callback: OnViewportFitChangedCallback)
 
-ArkTS-Sta: onViewportFitChanged(callback: OnViewportFitChangedCallback | undefined): this
+ArkTS-Sta: onViewportFitChanged(callback: OnViewportFitChangedCallback | undefined)
 
 网页meta中viewport-fit配置项更改时触发该回调，应用可在此回调中自适应布局视口。
 
@@ -7394,7 +7394,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
 
-ArkTS-Sta: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback | undefined): this
+ArkTS-Sta: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback | undefined)
 
 当网页中同层标签（例如<embed\>标签或<object\>标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。若要获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](./arkts-basic-components-web-attributes.md#nativeembedoptions16)，并将[EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16)中的supportCssDisplayChange参数设为true。
 

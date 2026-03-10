@@ -745,14 +745,14 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称             | 类型      | 必填   | 说明                                       |
+| 名称             | 类型      | 只读 | 可选 | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| origin | string | 是 | 指定源的字符串索引。                       |
-| geolocation | [JsGeolocation](./arkts-basic-components-web-JsGeolocation.md) | 是 | 通知Web组件用户操作行为。                       |
+| origin | string | 否 | 否 | 指定源的字符串索引。                       |
+| geolocation | [JsGeolocation](./arkts-basic-components-web-JsGeolocation.md) | 否 | 否 | 通知Web组件用户操作行为。                       |
 
 ## NativeEmbedVisibilityInfo<sup>12+</sup>
 
@@ -957,11 +957,11 @@ Web组件进入全屏回调事件的详情。
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称             | 类型                                  | 必填   | 说明                    |
-| -----------     | ------------------------------------ | ---- | --------------------- |
-| embedId     | string   | 否    | 同层标签的唯一id。 |
-| mouseEvent  | [MouseEvent](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)  | 否    | 鼠标/触摸板点击/长按信息。 |
-| result     | [EventResult](./arkts-basic-components-web-EventResult.md)   | 否    | 通知Web组件鼠标事件的消费结果。 |
+| 名称             | 类型                                  | 只读 | 可选 | 说明                    |
+| -----------     | ------------------------------------ | -----|------| --------------------- |
+| embedId     | string   | 否 | 是    | 同层标签的唯一id。 |
+| mouseEvent  | [MouseEvent](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)  | 否 | 是    | 鼠标/触摸板点击/长按信息。 |
+| result     | [EventResult](./arkts-basic-components-web-EventResult.md)   | 否 | 是    | 通知Web组件鼠标事件的消费结果。 |
 
 ## OnLoadStartedEvent<sup>20+</sup>
 
