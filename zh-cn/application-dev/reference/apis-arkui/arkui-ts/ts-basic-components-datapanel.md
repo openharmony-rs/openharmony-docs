@@ -24,6 +24,10 @@ DataPanel(options: DataPanelOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -40,9 +44,9 @@ DataPanel(options: DataPanelOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本：** 7
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型   | 必填  | 说明 |
 | ----------------- | -------- | ----- | -------- |
@@ -60,6 +64,10 @@ DataPanel(options: DataPanelOptions)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------| - | ------------ |
@@ -87,7 +95,7 @@ ArkTS-Sta: closeEffect(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -109,7 +117,7 @@ ArkTS-Sta: valueColors(value: Array<ResourceColor | LinearGradient> | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -131,7 +139,7 @@ ArkTS-Sta: trackBackgroundColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -153,7 +161,7 @@ ArkTS-Sta: strokeWidth(value: Length | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -175,7 +183,7 @@ ArkTS-Sta: trackShadow(value: DataPanelShadowOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -197,7 +205,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<DataPanelConfiguration> | 
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -213,6 +221,10 @@ DataPanelShadowOptions继承自[MultiShadowOptions](ts-types.md#multishadowoptio
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型 | 必填 | 说明 |
 | ------------- | ------- | ---- | -------- |
@@ -230,6 +242,10 @@ constructor(colorStops: ColorStop[])
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名         | 类型 | 必填 | 说明 |
@@ -245,6 +261,10 @@ constructor(colorStops: ColorStop[])
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 类型 | 必填 | 说明 |
 | ------------- | ------- | ---- | -------- |
 | color | [ResourceColor](ts-types.md#resourcecolor) | 是 | 颜色值。|
@@ -258,9 +278,9 @@ constructor(colorStops: ColorStop[])
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 类型    |    必填      |  说明              |
 | ------ | ------ | ------ |-------------------------------- |

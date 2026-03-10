@@ -28,6 +28,10 @@ LoadingProgress()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 ## 属性
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
@@ -52,7 +56,7 @@ ArkTS-Sta: color(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -75,7 +79,7 @@ ArkTS-Sta: enableLoading(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -97,7 +101,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<LoadingProgressConfigurati
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -117,6 +121,10 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<LoadingProgressConfigurati
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 类型    |    只读    |    可选    |  说明              |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | enableLoading | boolean | 否 | 否 |LoadingProgress动画是否显示。<br/>默认值：true，true表示显示LoadingProgress动画，false表示不显示LoadingProgress动画。 |
@@ -130,6 +138,10 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<LoadingProgressConfigurati
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                     | 值 | 说明                                     |
 | ---------------------- | - | ---------------------------------------- |
