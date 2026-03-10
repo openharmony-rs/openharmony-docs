@@ -7664,7 +7664,7 @@ on(type: 'windowTitleButtonRectChange', callback: Callback&lt;TitleButtonRect&gt
 
 开启窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowTitleButtonRectChange](#onwindowtitlebuttonrectchange23)。
 
@@ -7711,7 +7711,7 @@ onWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void
 
 开启窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowTitleButtonRectChange')](#onwindowtitlebuttonrectchange11)。
 
@@ -7756,7 +7756,7 @@ off(type: 'windowTitleButtonRectChange', callback?: Callback&lt;TitleButtonRect&
 
 关闭窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowTitleButtonRectChange](#offwindowtitlebuttonrectchange23)。
 
@@ -7809,7 +7809,7 @@ offWindowTitleButtonRectChange(callback?: Callback&lt;TitleButtonRect&gt;): void
 
 关闭窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowTitleButtonRectChange')](#offwindowtitlebuttonrectchange11)。
 
@@ -8575,7 +8575,7 @@ off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;
 
 用于关闭主窗口或子窗口关闭事件的监听。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowWillClose](#offwindowwillclose23)。
 
@@ -8647,7 +8647,7 @@ offWindowWillClose(callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): voi
 
 用于关闭主窗口或子窗口关闭事件的监听。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowWillClose')](#offwindowwillclose15)。
 
