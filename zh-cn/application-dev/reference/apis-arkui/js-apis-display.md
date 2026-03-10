@@ -28,7 +28,7 @@ import { display } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 23
 
@@ -166,7 +166,7 @@ import { display } from '@kit.ArkUI';
 | ------ | -------- | ---- | ---- | ------------------ |
 | type  | [CornerType](#cornertype23)   | 是   | 否   |圆角类型。 |
 | position  | [Position](#position20)   | 是   | 否   | 圆角圆心的坐标点。 |
-| radius    | ArkTs-Dyn: number <br> ArkTs-Sta: int    | 是   | 否   | 圆角半径，单位为px。 |
+| radius    | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是   | 否   | 圆角半径，单位为px。 |
 
 ## FoldCreaseRegion<sup>10+</sup>
 
@@ -182,7 +182,7 @@ import { display } from '@kit.ArkUI';
 
 | 名称   | 类型 | 只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
-| displayId   | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 是   | 否   | 屏幕ID，用于识别折痕所在的屏幕。 |
+| displayId   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 是   | 否   | 屏幕ID，用于识别折痕所在的屏幕。 |
 | creaseRects    | Array\<[Rect](#rect9)>   | 是   | 否   | 折痕区域。 |
 
 ## Rect<sup>9+</sup>
@@ -199,10 +199,10 @@ import { display } from '@kit.ArkUI';
 
 | 名称   | 类型 |  只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
-| left   | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 矩形区域的左边界，单位为px，该参数为整数。 |
-| top    | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 矩形区域的上边界，单位为px，该参数为整数。 |
-| width  | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 矩形区域的宽度，单位为px，该参数为整数。   |
-| height | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 矩形区域的高度，单位为px，该参数为整数。   |
+| left   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的左边界，单位为px，该参数为整数。 |
+| top    | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的上边界，单位为px，该参数为整数。 |
+| width  | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的宽度，单位为px，该参数为整数。   |
+| height | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的高度，单位为px，该参数为整数。   |
 
 ## WaterfallDisplayAreaRects<sup>9+</sup>
 
@@ -254,8 +254,8 @@ import { display } from '@kit.ArkUI';
 | 名称                        | 类型      | 只读 | 可选 | 说明               |
 | --------------------------- | ------------- | ---- | ---- | ------------------ |
 | foldDisplayMode             | [FoldDisplayMode](#folddisplaymode10) | 是   | 否   | 设备的显示模式，非折叠设备时值为0。 |
-| physicalWidth   | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否 | 否 | 设备的宽度，单位为px，该参数为大于0的整数。|
-| physicalHeight  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否 | 否 | 设备的高度，单位为px，该参数为大于0的整数。|
+| physicalWidth   | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 否 | 设备的宽度，单位为px，该参数为大于0的整数。|
+| physicalHeight  | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 否 | 设备的高度，单位为px，该参数为大于0的整数。|
 
 ## BrightnessInfo<sup>22+</sup>
 屏幕亮度信息。此类型中的信息均来自底层屏幕信息数据。
@@ -270,9 +270,9 @@ import { display } from '@kit.ArkUI';
 
 | 名称                        | 类型      | 只读 | 可选 | 说明               |
 | --------------------------- | -------- | ---- | ---- | ------------------ |
-| currentHeadroom             | ArkTs-Dyn: number <br> ArkTs-Sta: double    | 是  | 否   | 当前亮度动态余量，该参数为大于0的浮点数。默认值为1.0。|
-| maxHeadroom                 | ArkTs-Dyn: number <br> ArkTs-Sta: double    | 是  | 否   | 当前最大亮度余量，该参数为大于0的浮点数。默认值为1.0。|
-| sdrNits                     | ArkTs-Dyn: number <br> ArkTs-Sta: double    | 是  | 否   | 屏幕的亮度，该参数为大于0的浮点数。默认值为500.0。|
+| currentHeadroom             | ArkTS-Dyn: number <br> ArkTS-Sta: double    | 是  | 否   | 当前亮度动态余量，该参数为大于0的浮点数。默认值为1.0。|
+| maxHeadroom                 | ArkTS-Dyn: number <br> ArkTS-Sta: double    | 是  | 否   | 当前最大亮度余量，该参数为大于0的浮点数。默认值为1.0。|
+| sdrNits                     | ArkTS-Dyn: number <br> ArkTS-Sta: double    | 是  | 否   | 屏幕的亮度，该参数为大于0的浮点数。默认值为500.0。|
 
 ## BrightnessCallback<sup>22+</sup>
 监听屏幕亮度信息时使用的回调函数类型。
@@ -289,7 +289,7 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 
 | 参数名             | 类型 | 必填 | 说明               |
 | ----------------- | ---- | ---- | ------------------|
-| data1             | T1   | 是   | ArkTs-Dyn: 表示displayId，类型为number <br> ArkTs-Sta: 表示displayId，类型为long。      |
+| data1             | T1   | 是   | ArkTS-Dyn: 表示displayId，类型为number <br> ArkTS-Sta: 表示displayId，类型为long。      |
 | data2             | T2   | 是   | 表示brightnessInfo，类型为[BrightnessInfo](#brightnessinfo22)。           |
 
 ## ScreenShape<sup>18+</sup>
@@ -316,9 +316,9 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 | 名称      | 类型 | 只读 | 可选 | 说明                       |
 | --------- | -------- | ---- | ---- |--------------------------|
 | name      | string   | 否   | 否   | 指定虚拟屏幕的名称，用户可自行定义。<br/>**ArkTS-Dyn起始版本：** 16 <br/> **ArkTS-Sta起始版本：** 23 |
-| width     | ArkTs-Dyn: number <br> ArkTs-Sta: long  | 否   | 否   | 指定虚拟屏幕的宽度，单位为px，该参数应为正整数。<br/>**ArkTS-Dyn起始版本：** 16 <br/> **ArkTS-Sta起始版本：** 22 |
-| height    | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 指定虚拟屏幕的高度，单位为px，该参数应为正整数。<br/>**ArkTS-Dyn起始版本：** 16 <br/> **ArkTS-Sta起始版本：** 22 |
-| density   | ArkTs-Dyn: number <br> ArkTs-Sta: double   | 否   | 否   | 指定虚拟屏幕的密度，单位为px，该参数为浮点数。<br/>**ArkTS-Dyn起始版本：** 16 <br/> **ArkTS-Sta起始版本：** 22 |
+| width     | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 否   | 否   | 指定虚拟屏幕的宽度，单位为px，该参数应为正整数。<br/>**ArkTS-Dyn起始版本：** 16 <br/> **ArkTS-Sta起始版本：** 22 |
+| height    | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 指定虚拟屏幕的高度，单位为px，该参数应为正整数。<br/>**ArkTS-Dyn起始版本：** 16 <br/> **ArkTS-Sta起始版本：** 22 |
+| density   | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 指定虚拟屏幕的密度，单位为px，该参数为浮点数。<br/>**ArkTS-Dyn起始版本：** 16 <br/> **ArkTS-Sta起始版本：** 22 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId，用户可自行定义，该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。  <br/>**ArkTS-Dyn起始版本：** 16 <br/> **ArkTS-Sta起始版本：** 22      |
 | supportsFocus<sup>22+</sup> | boolean   | 否   | 是   | 指定虚拟屏幕是否可获得焦点。true表示可获得焦点，false表示不可获得焦点，默认值为true。   <br/>**ArkTS-Dyn起始版本：** 22 <br/> **ArkTS-Sta起始版本：** 22     |
 
@@ -334,8 +334,8 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 
 | 名称      | 类型 | 只读 | 可选 | 说明                       |
 | --------- | -------- | ---- | ---- |--------------------------|
-| x     | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 相对原点的横坐标，单位为px，该参数应为32位有符号整数，输入浮点数时向下取整。 |
-| y     | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 相对原点的纵坐标，单位为px，该参数应为32位有符号整数，输入浮点数时向下取整。 |
+| x     | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 相对原点的横坐标，单位为px，该参数应为32位有符号整数，输入浮点数时向下取整。 |
+| y     | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 相对原点的纵坐标，单位为px，该参数应为32位有符号整数，输入浮点数时向下取整。 |
 
 ## RelativePosition<sup>20+</sup>
 
@@ -349,7 +349,7 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 
 | 名称      | 类型 | 只读 | 可选 | 说明                       |
 | --------- | -------- | ---- | ---- |--------------------------|
-| displayId | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 相对坐标所对应的屏幕ID，仅支持整数输入，且需大于等于0。 |
+| displayId | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 相对坐标所对应的屏幕ID，仅支持整数输入，且需大于等于0。 |
 | position  | [Position](#position20) | 否   | 否   | 以displayId所指定屏幕左上角为原点的坐标值。 |
 
 ## display.getDisplayByIdSync<sup>12+</sup>
@@ -372,7 +372,7 @@ ArkTS-Sta: getDisplayByIdSync(displayId: long): Display
 
 | 参数名 | 类型                      | 必填 | 说明       |
 | ------ | ------------------------- | ---- |----------|
-| displayId     | ArkTs-Dyn: number <br> ArkTs-Sta: long        | 是   | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。需要确保displayId准确才能成功获取到对应结果。可以通过[WindowProperties](arkts-apis-window-i.md#windowproperties)的displayId属性获取到准确的displayId作为入参。 |
+| displayId     | ArkTS-Dyn: number <br> ArkTS-Sta: long        | 是   | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。需要确保displayId准确才能成功获取到对应结果。可以通过[WindowProperties](arkts-apis-window-i.md#windowproperties)的displayId属性获取到准确的displayId作为入参。 |
 
 **返回值：**
 
@@ -442,7 +442,7 @@ getBrightnessInfo(displayId: number): [BrightnessInfo](#brightnessinfo22)
 
 | 参数名 | 类型                      | 必填 | 说明       |
 | ------ | ------------------------- | ---- |----------|
-| displayId     | ArkTs-Dyn: number <br> ArkTs-Sta: long             | 是   | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。|
+| displayId     | ArkTS-Dyn: number <br> ArkTS-Sta: long             | 是   | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。|
 
 **返回值：**
 
@@ -2224,7 +2224,7 @@ ArkTS-Sta: createVirtualScreen(config:VirtualScreenConfig): Promise&lt;long&gt;
 
 | 类型                             | 说明                                  |
 | -------------------------------- | ------------------------------------- |
-| ArkTs-Dyn: Promise&lt;number&gt; <br> ArkTs-Sta: Promise&lt;long&gt; | Promise对象。返回创建的虚拟屏幕的ScreenId。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br> ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回创建的虚拟屏幕的ScreenId。 |
 
 **错误码：**
 
@@ -2307,7 +2307,7 @@ ArkTS-Sta: destroyVirtualScreen(screenId:long): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明       |
 | -------- | ------ | ---- | ---------- |
-| screenId | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](#displaycreatevirtualscreen16)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。 |
+| screenId | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](#displaycreatevirtualscreen16)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。 |
 
 **返回值：**
 
@@ -2374,7 +2374,7 @@ ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string): Promise&lt
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| screenId  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](#displaycreatevirtualscreen16)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。    |
+| screenId  | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](#displaycreatevirtualscreen16)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。    |
 | surfaceId | string | 是   | 代表虚拟屏幕绑定的surfaceId，由用户指定某一实际存在的surface，该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
 
 **返回值：**
@@ -2470,7 +2470,7 @@ ArkTS-Sta: makeUnique(screenId:long): Promise&lt;void&gt;
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| screenId  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 要设置成异源模式的屏幕ID。其中id应为大于0的整数，否则返回401错误码。 |
+| screenId  | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 要设置成异源模式的屏幕ID。其中id应为大于0的整数，否则返回401错误码。 |
 
 **返回值：**
 
@@ -2617,7 +2617,7 @@ ArkTS-Sta: convertGlobalToRelativeCoordinate(position: Position, displayId?: lon
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
 | position  | [Position](#position20) | 是 | 需要转化为相对坐标的全局坐标。 |
-| displayId | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否 | 相对坐标系原点所在的屏幕ID，传递该参数表示以指定屏幕左上角为原点转换相对坐标。不指定则不传参，默认转换成全局坐标所在屏幕的相对坐标，若全局坐标不在任何屏幕上，则默认转换成主屏的相对坐标。 |
+| displayId | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 相对坐标系原点所在的屏幕ID，传递该参数表示以指定屏幕左上角为原点转换相对坐标。不指定则不传参，默认转换成全局坐标所在屏幕的相对坐标，若全局坐标不在任何屏幕上，则默认转换成主屏的相对坐标。 |
 
 **返回值：**
 
@@ -2680,7 +2680,7 @@ getDefaultDisplay(callback: AsyncCallback&lt;Display&gt;): void
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync)替代。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -2719,7 +2719,7 @@ getDefaultDisplay(): Promise&lt;Display&gt;
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync)替代。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -2756,7 +2756,7 @@ getAllDisplay(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;): void
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAllDisplays()](#displaygetalldisplays9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAllDisplays()](#displaygetalldisplays)替代。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -2793,7 +2793,7 @@ getAllDisplay(): Promise&lt;Array&lt;Display&gt;&gt;
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAllDisplays()](#displaygetalldisplays9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAllDisplays()](#displaygetalldisplays)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -2825,29 +2825,29 @@ promise.then((data: Array<display.Display>) => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                                            |
 | -------- | -------- | -------- | -------- |---------------------------------------------------------------------------------------------------------------|
-| id | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否 | 否 | 显示设备的屏幕ID，该参数为大于等于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22       |
+| id | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 否 | 显示设备的屏幕ID，该参数为大于等于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22       |
 | name | string | 是 | 否 | 显示设备的名称。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                                                     |
 | alive | boolean | 是 | 否 | 显示设备的启用状态，表示设备是否处于正常运行状态。true表示已启用，处于正常运行状态，false表示未启用，未处于正常运行状态。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                                       |
 | state | [DisplayState](#displaystate) | 是 | 否 | 显示设备的状态。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。        <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                                  |
-| refreshRate | ArkTs-Dyn: number <br> ArkTs-Sta: int | 否 | 否 | 显示设备当前采用的刷新率，该参数为整数，单位为Hz。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。        <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                                        |
-| rotation | ArkTs-Dyn: number <br> ArkTs-Sta: int | 否 | 否 | 显示设备的屏幕顺时针旋转角度。<br>值为0时，表示显示设备屏幕顺时针旋转为0°，表示显示设备的标准显示方向；<br>值为1时，表示显示设备屏幕顺时针旋转为90°；<br>值为2时，表示显示设备屏幕顺时针旋转为180°；<br>值为3时，表示显示设备屏幕顺时针旋转为270°。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22 |
-| width | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否 | 否 | 显示设备的屏幕宽度，单位为px，该参数为整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                                                                                   |
-| height | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否 | 否 | 显示设备的屏幕高度，单位为px，该参数为整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                                                                                    |
-| densityDPI | ArkTs-Dyn: number <br> ArkTs-Sta: double | 否 | 否 | 显示设备的物理像素密度，表示每英寸上的像素点数。该参数为浮点数，单位为px。一般取值160.0、480.0等，实际能取到的值取决于不同设备设置里提供的可选值。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22           |
+| refreshRate | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 显示设备当前采用的刷新率，该参数为整数，单位为Hz。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。        <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                                        |
+| rotation | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 显示设备的屏幕顺时针旋转角度。<br>值为0时，表示显示设备屏幕顺时针旋转为0°，表示显示设备的标准显示方向；<br>值为1时，表示显示设备屏幕顺时针旋转为90°；<br>值为2时，表示显示设备屏幕顺时针旋转为180°；<br>值为3时，表示显示设备屏幕顺时针旋转为270°。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22 |
+| width | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 否 | 显示设备的屏幕宽度，单位为px，该参数为整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                                                                                   |
+| height | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 否 | 显示设备的屏幕高度，单位为px，该参数为整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                                                                                    |
+| densityDPI | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 显示设备的物理像素密度，表示每英寸上的像素点数。该参数为浮点数，单位为px。一般取值160.0、480.0等，实际能取到的值取决于不同设备设置里提供的可选值。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22           |
 | orientation<sup>10+</sup> | [Orientation](#orientation10) | 是 | 否 | 表示显示设备当前显示的方向。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    <br/> **ArkTS-Dyn起始版本：** 10   <br/>  **ArkTS-Sta起始版本：** 22                                                    |
-| densityPixels | ArkTs-Dyn: number <br> ArkTs-Sta: double | 否 | 否 | 显示设备逻辑像素的密度，代表物理像素与逻辑像素的缩放系数，计算方式为：![densityPixels](figures/densityPixels.jpg)<br>该参数为浮点数，受densityDPI范围限制，取值范围在[0.5，4.0]。一般取值1.0、3.0等，实际取值取决于不同设备提供的densityDPI。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                             |
-| scaledDensity | ArkTs-Dyn: number <br> ArkTs-Sta: double | 否 | 否 | 显示设备上字体的缩放因子。该参数为浮点数，通常与densityPixels相同。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                           |
-| xDPI | ArkTs-Dyn: number <br> ArkTs-Sta: double | 否 | 否 | x轴方向中每英寸屏幕的确切物理像素值，该参数为浮点数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                                              |
-| yDPI | ArkTs-Dyn: number <br> ArkTs-Sta: double | 否 | 否 | y轴方向中每英寸屏幕的确切物理像素值，该参数为浮点数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                                 |
+| densityPixels | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 显示设备逻辑像素的密度，代表物理像素与逻辑像素的缩放系数，计算方式为：![densityPixels](figures/densityPixels.jpg)<br>该参数为浮点数，受densityDPI范围限制，取值范围在[0.5，4.0]。一般取值1.0、3.0等，实际取值取决于不同设备提供的densityDPI。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                             |
+| scaledDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 显示设备上字体的缩放因子。该参数为浮点数，通常与densityPixels相同。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                           |
+| xDPI | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | x轴方向中每英寸屏幕的确切物理像素值，该参数为浮点数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                                              |
+| yDPI | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | y轴方向中每英寸屏幕的确切物理像素值，该参数为浮点数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22                                 |
 | colorSpaces<sup>11+</sup> | Array<[colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md)> | 是 | 否 | 显示设备支持的所有色域类型。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    <br/> **ArkTS-Dyn起始版本：** 11   <br/>  **ArkTS-Sta起始版本：** 22                  |
 | hdrFormats<sup>11+</sup> | Array<[hdrCapability.HDRFormat](../apis-arkgraphics2d/js-apis-hdrCapability.md)> | 是 | 否 | 显示设备支持的所有HDR格式。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    <br/> **ArkTS-Dyn起始版本：** 11   <br/>  **ArkTS-Sta起始版本：** 22                          |
-| availableWidth<sup>12+</sup> | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否 | 否 | 显示设备的可用区域宽度，单位为px，该参数为大于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过width属性获取当前设备屏幕的可用区域宽度。  <br/> **ArkTS-Dyn起始版本：** 12   <br/>  **ArkTS-Sta起始版本：** 22              |
-| availableHeight<sup>12+</sup> | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否 | 否 | 显示设备的可用区域高度，单位为px，该参数为大于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过height属性获取当前设备屏幕的可用区域高度。  <br/> **ArkTS-Dyn起始版本：** 12   <br/>  **ArkTS-Sta起始版本：** 22          |
+| availableWidth<sup>12+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 否 | 显示设备的可用区域宽度，单位为px，该参数为大于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过width属性获取当前设备屏幕的可用区域宽度。  <br/> **ArkTS-Dyn起始版本：** 12   <br/>  **ArkTS-Sta起始版本：** 22              |
+| availableHeight<sup>12+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 否 | 显示设备的可用区域高度，单位为px，该参数为大于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过height属性获取当前设备屏幕的可用区域高度。  <br/> **ArkTS-Dyn起始版本：** 12   <br/>  **ArkTS-Sta起始版本：** 22          |
 | screenShape<sup>18+</sup> | [ScreenShape](#screenshape18) | 是 | 是 | 显示设备的屏幕形状，默认值为RECTANGLE。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18   <br/>  **ArkTS-Sta起始版本：** 22 |
 | sourceMode<sup>19+</sup> | [DisplaySourceMode](#displaysourcemode19) | 是 | 是 | 显示设备的显示模式枚举，默认值为DisplaySourceMode.NONE。<br/>**系统能力：** SystemCapability.Window.SessionManager <br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。      <br/> **ArkTS-Dyn起始版本：** 19   <br/>  **ArkTS-Sta起始版本：** 22                 |
-| x<sup>19+</sup> | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否 | 是 | 显示设备左上角相对于原点的x轴坐标，原点为主屏左上角，单位为px，该参数为整数，默认值为0。仅DisplaySourceMode为MAIN和EXTEND时返回实际值，其余返回默认值0。<br/>**系统能力：** SystemCapability.Window.SessionManager<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 19   <br/>  **ArkTS-Sta起始版本：** 22           |
-| y<sup>19+</sup> | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否 | 是 | 显示设备左上角相对于原点的y轴坐标，原点为主屏左上角，单位为px，该参数为整数，默认值为0。仅DisplaySourceMode为MAIN和EXTEND时返回实际值，其余返回默认值0。<br/>**系统能力：** SystemCapability.Window.SessionManager<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。   <br/> **ArkTS-Dyn起始版本：** 19   <br/>  **ArkTS-Sta起始版本：** 22           |
-| supportedRefreshRates<sup>20+</sup> | ArkTs-Dyn: Array&lt;number&gt; <br/> ArkTs-Sta: Array&lt;int&gt; | 否 | 是 | 显示设备支持的所有刷新率，从小到大排序。刷新率值为正整数，单位为Hz。默认为空。<br/>**系统能力：** SystemCapability.Window.SessionManager<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。    <br/> **ArkTS-Dyn起始版本：** 20   <br/>  **ArkTS-Sta起始版本：** 22       |
+| x<sup>19+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 是 | 显示设备左上角相对于原点的x轴坐标，原点为主屏左上角，单位为px，该参数为整数，默认值为0。仅DisplaySourceMode为MAIN和EXTEND时返回实际值，其余返回默认值0。<br/>**系统能力：** SystemCapability.Window.SessionManager<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 19   <br/>  **ArkTS-Sta起始版本：** 22           |
+| y<sup>19+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 是 | 显示设备左上角相对于原点的y轴坐标，原点为主屏左上角，单位为px，该参数为整数，默认值为0。仅DisplaySourceMode为MAIN和EXTEND时返回实际值，其余返回默认值0。<br/>**系统能力：** SystemCapability.Window.SessionManager<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。   <br/> **ArkTS-Dyn起始版本：** 19   <br/>  **ArkTS-Sta起始版本：** 22           |
+| supportedRefreshRates<sup>20+</sup> | ArkTS-Dyn: Array&lt;number&gt; <br/> ArkTS-Sta: Array&lt;int&gt; | 否 | 是 | 显示设备支持的所有刷新率，从小到大排序。刷新率值为正整数，单位为Hz。默认为空。<br/>**系统能力：** SystemCapability.Window.SessionManager<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。    <br/> **ArkTS-Dyn起始版本：** 20   <br/>  **ArkTS-Sta起始版本：** 22       |
 
 ### getRoundedCorner<sup>23+</sup>
 getRoundedCorner(): Array\<RoundedCorner\>
