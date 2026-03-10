@@ -21008,6 +21008,46 @@
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/NotTriggerUIRefresh.ets",
 				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/StateToObjectlink.ets",
+				"functions":[
+					{
+						"end_line":56,
+						"name":"State_To_Objectlink",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/ObjectArray.ets",
+				"functions":[
+					{
+						"end_line":107,
+						"name":"Object_Array",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ChangePropertyInConstructor.ets",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"Change_Property_In_Constructor",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/UseWithLazyForEach.ets",
+				"functions":[
+					{
+						"end_line":156,
+						"name":"Use_With_LazyForEach",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
