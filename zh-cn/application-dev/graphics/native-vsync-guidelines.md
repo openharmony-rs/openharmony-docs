@@ -63,6 +63,16 @@ libnative_vsync.so
 
 3. **通过OH_NativeVSync实例设置VSync回调函数**。
     <!-- @[request_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+    
+    ``` C++
+    wakeUpCond_.wait(lock, [this]() { return wakeUp_ || vSyncCnt_ > 0; });
+    wakeUp_ = false;
+    if (vSyncCnt_ > 0) {
+        vSyncCnt_--;
+        (void)OH_NativeVSync_RequestFrame(nativeVsync_, &RenderEngine::OnVsync, this);
+        OH_NativeVSync_GetPeriod(nativeVsync_, &period);
+    }
+    ```
 
 
 4. **销毁OH_NativeVSync实例**。
