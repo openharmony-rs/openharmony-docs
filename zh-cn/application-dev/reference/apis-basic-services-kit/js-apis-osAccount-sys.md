@@ -2683,7 +2683,7 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
 
 **错误码：**
 
-以下错误码的详细介绍请参见通用[错误码说明文档](../errorcode-universal.md)和[账号管理错误码](./errorcode-account.md)。
+以下错误码的详细介绍请参见通用[通用错误码](../errorcode-universal.md)和[账号管理错误码](./errorcode-account.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
