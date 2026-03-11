@@ -24764,7 +24764,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h",
 				"functions":[
 					{
-						"end_line":131,
+						"end_line":289,
 						"name":"main_view_method",
 						"start_line":24
 					},
