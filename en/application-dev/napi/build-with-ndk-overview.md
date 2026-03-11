@@ -1,4 +1,4 @@
-# NDK Project Building Overview
+# Overview
 
 
 By default, the OpenHarmony NDK uses CMake as the build system. To simplify your configuration process, the NDK provides the configuration file [ohos.toolchain.cmake](#introduction-to-ohostoolchaincmake) that complies with the OpenHarmony toolchain to predefine CMake variables.

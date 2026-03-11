@@ -8,7 +8,7 @@
 
 ## When to Use
 
-Starting from API version 20, parent processes can register a callback function to monitor child processes and obtain their abnormal exit information, facilitating further optimizations by the parent process. The child processes to be monitored must be created by calling [OH_Ability_StartNativeChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess) or [startNativeChildProcess](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13).
+Starting from API version 20, parent processes can register a callback function to monitor child processes and obtain their abnormal exit information, facilitating further optimizations by the parent process. The child processes to be monitored must be created by calling [OH_Ability_StartNativeChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess), [OH_Ability_StartNativeChildProcessWithConfigs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocesswithconfigs), or [startNativeChildProcess](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13).
 
 ## Available APIs
 

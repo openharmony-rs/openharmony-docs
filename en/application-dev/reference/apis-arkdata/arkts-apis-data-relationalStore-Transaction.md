@@ -176,6 +176,8 @@ insert(table: string, values: ValuesBucket, conflict?: ConflictResolution): Prom
 
 Inserts a row of data into a table. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
+A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters**
@@ -248,6 +250,8 @@ if (store != undefined) {
 insertSync(table: string, values: ValuesBucket | sendableRelationalStore.ValuesBucket, conflict?: ConflictResolution): number
 
 Inserts a row of data into a table. This API returns the result synchronously. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -328,6 +332,10 @@ if (store != undefined) {
 batchInsert(table: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number&gt;
 
 Inserts data into a table in batches. This API uses a promise to return the result.
+
+Data is written in batches of up to 32,766 parameters each with the [ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10) policy. The total number of parameters is calculated as the number of inserted data records multiplied by the size of the union set of all fields in the inserted data. If the operation fails, an error is returned.
+
+A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -414,6 +422,10 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;): number
 
 Inserts data into a table in batches. This API returns the result synchronously.
 
+Data is written in batches of up to 32,766 parameters each with the [ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10) policy. The total number of parameters is calculated as the number of inserted data records multiplied by the size of the union set of all fields in the inserted data. If the operation fails, an error is returned.
+
+A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters**
@@ -499,9 +511,9 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 
 Inserts data into a table with conflict resolutions in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses a promise to return the result.
 
-A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The product of the number of inserted data records and the size of the union of all fields in the inserted data equals the number of parameters.
+A maximum of 32,766 parameters can be inserted at a time. If the number of parameters exceeds this limit, the error code 14800000 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
 
-For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
+For example, if the size of the union set is 10, a maximum of 3,276 data records can be inserted (3276 × 10 = 32760).
 
 Ensure that your application complies with this constraint when calling this API to avoid errors caused by excessive parameters.
 
@@ -599,9 +611,9 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 
 Inserts data into a table with conflict resolutions in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10).
 
-A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The product of the number of inserted data records and the size of the union of all fields in the inserted data equals the number of parameters.
+A maximum of 32,766 parameters can be inserted at a time. If the number of parameters exceeds this limit, the error code 14800000 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
 
-For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
+For example, if the size of the union set is 10, a maximum of 3,276 data records can be inserted (3276 × 10 = 32760).
 
 Ensure that your application complies with this constraint when calling this API to avoid errors caused by excessive parameters.
 
@@ -1127,7 +1139,7 @@ if (store != undefined) {
 
 querySql(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ResultSet&gt;
 
-Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. This API uses a promise to return the result.
+Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1,000. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1198,7 +1210,7 @@ if (store != undefined) {
 
 querySqlSync(sql: string, args?: Array&lt;ValueType&gt;): ResultSet
 
-Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. If complex logic and a large number of loops are involved in the operations on the **resultSet** obtained by **querySqlSync**, the freeze problem may occur. You are advised to perform this operation in the [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
+Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1,000. If complex logic and a large number of loops are involved in the operations on the **resultSet** obtained by **querySync**, the freeze problem may occur. You are advised to perform this operation in the [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1269,13 +1281,15 @@ if (store != undefined) {
 
 execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 
-Executes an SQL statement that contains specified arguments. The number of relational operators between expressions and operators in the statement cannot exceed 1000. This API uses a promise to return a value of the ValueType type.
+Executes an SQL statement that contains specified arguments. The number of relational operators between expressions and operators in the statement cannot exceed 1,000. This API uses a promise to return a value of the **ValueType** type.
 
 This API can be used to add, delete, and modify data, run SQL statements of the PRAGMA syntax, and create, delete, and modify a table. The type of the return value varies, depending on the execution result.
 
 This API does not support query, database attachment, and transaction operations. You can use [querySql](#querysql14) or [query](#query14) to query data, and use [attach](arkts-apis-data-relationalStore-RdbStore.md#attach12) to attach a database.
 
 Statements separated by semicolons (\;) are not supported.
+
+Statements starting with comments are not supported.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1343,13 +1357,15 @@ if (store != undefined) {
 
 executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 
-Executes an SQL statement that contains specified arguments. The number of relational operators between expressions and operators in the statement cannot exceed 1000. This API returns a value of theValueType type.
+Executes an SQL statement that contains specified arguments. The number of relational operators between expressions and operators in the statement cannot exceed 1,000. This API returns a value of the **ValueType** type.
 
 This API can be used to add, delete, and modify data, run SQL statements of the PRAGMA syntax, and create, delete, and modify a table. The type of the return value varies, depending on the execution result.
 
 This API does not support query, database attachment, and transaction operations. You can use [querySql](#querysql14) or [query](#query14) to query data, and use [attach](arkts-apis-data-relationalStore-RdbStore.md#attach12) to attach a database.
 
 Statements separated by semicolons (\;) are not supported.
+
+Statements starting with comments are not supported.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 

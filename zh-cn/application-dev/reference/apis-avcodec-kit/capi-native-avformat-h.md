@@ -149,6 +149,7 @@ struct OH_AVFormat *OH_AVFormat_CreateVideoFormat(const char *mimeType, int32_t 
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
+**起始版本：** 10
 
 **参数：**
 

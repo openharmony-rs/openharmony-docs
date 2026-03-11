@@ -422,9 +422,9 @@ enum OH_Huks_ErrCode
 | OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 | 输入的参数无效。<br>**起始版本：** 20 |
 | OH_HUKS_ERR_CODE_ITEM_EXISTS = 12000019 | 该项实体已存在。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 | 提供者或Ukey内部执行失败。<br>**起始版本：** 22 |
-| OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 | Pin码被锁定。<br>**起始版本：** 22 |
-| OH_HUKS_ERR_CODE_PIN_INCORRECT = 12000022 | Pin码错误。<br>**起始版本：** 22 |
-| OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 | Pin码未认证通过。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 | PIN码被锁定。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_PIN_INCORRECT = 12000022 | PIN码错误。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 | PIN码未认证通过。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_BUSY = 12000024 | 提供者或Ukey中的资源正在被使用。 <br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_EXCEED_LIMIT = 12000025 | 资源超过限制。<br>**起始版本：** 22 |
 
@@ -509,7 +509,9 @@ enum OH_Huks_AuthStorageLevel
 | OH_HUKS_AUTH_STORAGE_LEVEL_DE = 0 | 表示密钥仅在开机后可访问。 |
 | OH_HUKS_AUTH_STORAGE_LEVEL_CE = 1 | 表示密钥仅在首次解锁后可访问。 |
 | OH_HUKS_AUTH_STORAGE_LEVEL_ECE = 2 | 表示密钥仅在解锁状态时可访问。 |
-
+> **说明：**
+>
+>  业务在使用存储等级为ECE的密钥时，建议通过感知[锁屏事件](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked)来清理使用该密钥创建的会话资源，以保证安全性。
 ### OH_Huks_ChallengeType
 
 ```c

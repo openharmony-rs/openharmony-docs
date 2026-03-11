@@ -10,6 +10,8 @@
 
 定义GameController模块的通用枚举类型。
 
+**引用文件：** <GameControllerKit/game_controller_type.h>
+
 **库：** libohgame_controller.z.so
 
 **系统能力：** SystemCapability.Game.GameController

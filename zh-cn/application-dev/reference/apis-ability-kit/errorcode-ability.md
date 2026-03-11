@@ -27,8 +27,8 @@ The specified ability does not exist.
 
 **处理步骤**
 
-1. 检查want中的bundleName、moduleName和abilityName是否正确。
-2. 检查传入want中bundleName对应的应用是否安装。可使用如下命令查询已安装的应用列表，若bundleName不在查询结果中，说明应用未安装成功。
+1. 检查Want中的bundleName、moduleName和abilityName是否正确。
+2. 检查传入Want中bundleName对应的应用是否安装。可使用如下命令查询已安装的应用列表，若bundleName不在查询结果中，说明应用未安装成功。
     ```bash
     hdc shell bm dump -a
     ```
@@ -54,7 +54,7 @@ Incorrect ability type.
 
 **处理步骤**
 
-1. 检查want中的bundleName、moduleName和abilityName是否正确。
+1. 检查Want中的bundleName、moduleName和abilityName是否正确。
 2. 确认被调用方（服务端）的Ability类型与调用接口是否匹配。对于ServiceExtensionAbility，应使用<!--Del-->[startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability)方法启动或用<!--DelEnd-->[connectServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)方法连接。同时需要确保[module.json5配置文件](../../quick-start/module-configuration-file.md)中`extensionAbilities`的`type`设置为与接口匹配的`service`。
 3. 若被调用方（服务端）为appService类型，需在服务端的module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。
 
@@ -654,7 +654,6 @@ App clone is not supported.
 
 参考[应用多实例的配置方法](../../quick-start/multiInstance.md)，在app.json5配置文件中配置multiAppMode标签，开启应用分身功能后，再调用[getCurrentAppCloneIndex](./js-apis-inner-application-applicationContext.md#applicationcontextgetcurrentappcloneindex12)接口。
 
-<!--Del-->
 ## 16000072 不支持应用多开
 
 **错误信息**
@@ -667,11 +666,18 @@ App clone or multi-instance is not supported.
 
 **可能原因**
 
-调用getRunningMultiAppInfo查询不支持应用多开的应用多开信息，则返回该错误码。
+调用[startAbility](./js-apis-inner-application-uiAbilityContext.md#startability)、[startAbilityForResult](./js-apis-inner-application-uiAbilityContext.md#startabilityforresult)等启动Ability接口时，如果目标应用不支持应用多开，则返回该错误码。
+
+<!--Del-->
+调用[getRunningMultiAppInfo](./js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12)查询不支持应用多开的应用多开信息，则返回该错误码。
+<!--DelEnd-->
 
 **处理步骤**
 
-调用getCurrentAppCloneIndex时确保查询的应用支持应用多开。
+调用[startAbility](./js-apis-inner-application-uiAbilityContext.md#startability)、[startAbilityForResult](./js-apis-inner-application-uiAbilityContext.md#startabilityforresult)等启动Ability接口时，确保目标应用支持应用多开，并在app.json5配置文件中配置[multiAppMode](../../quick-start/app-configuration-file.md#multiappmode标签)标签开启应用分身功能。
+
+<!--Del-->
+调用[getRunningMultiAppInfo](./js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12)时确保查询的应用支持应用多开。
 <!--DelEnd-->
 
 ## 16000073 传入的appCloneIndex是一个无效值
@@ -706,13 +712,13 @@ The caller does not exist.
 
 **可能原因**
 
-1. requestCode不是通过want中的CALLER_REQUEST_CODE字段获取的。
+1. requestCode不是通过Want中的CALLER_REQUEST_CODE字段获取的。
 
 2. requestCode对应的调用方已经被销毁或结果已经返回。
 
 **处理步骤**
 
-1. 确认requestCode是否是通过want中的CALLER_REQUEST_CODE获取的。
+1. 确认requestCode是否是通过Want中的CALLER_REQUEST_CODE获取的。
 
 2. 确认调用方是否被销毁或结果已经返回。
 
@@ -1416,9 +1422,9 @@ The caller has been released.
 
 **处理步骤**
 
-1. 请重新注册有效通用组件客户端调用接口。
+1. 重新创建有效的通用组件客户端(Caller)实例。
 2. 检查调用context.startAbility时，context对应的ability是否还在运行。若该ability已被析构，会抛出该错误码。
-3. 若存在连续调用startAbility和terminateSelf的情况，请确认收到startAbility成功或失败的回调后，再调用terminateSelf。
+3. 若存在连续调用startAbility和terminateSelf的情况，请确保在收到startAbility成功或失败的回调后，再调用terminateSelf。
 
 ## 16200002 通用组件服务端(Callee)无效
 

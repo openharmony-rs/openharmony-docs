@@ -61,7 +61,7 @@ Represents the base class providing overridable methods for [PixelMap](../apis-i
 
 getPixelMap(): image.PixelMap
 
-Obtains this **pixelMap** object.
+Obtains this **PixelMap** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -75,15 +75,16 @@ Obtains this **pixelMap** object.
 
 **Example**
 
-  ```ts
+```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI'
 import { image } from '@kit.ImageKit'
+
 let resManager = this.getUIContext().getHostContext()?.resourceManager;
 // Replace $r('app.media.app_icon') with the image resource file you use.
 let pixmap: DrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.icon')
-    .id)) as DrawableDescriptor; // When the passed resource ID or name is a regular image, a DrawableDescriptor object is generated.
+  .id)) as DrawableDescriptor; // When the passed resource ID or name is a regular image, a DrawableDescriptor object is generated.
 let pixmapNew: image.PixelMap | undefined = pixmap?.getPixelMap();
-  ```
+```
 
 ### loadSync<sup>21+</sup>
 
@@ -166,7 +167,7 @@ drawable.load().then((result: DrawableDescriptorLoadedResult) => {
 
 ## PixelMapDrawableDescriptor<sup>12+</sup>
 
-Implements a **PixelMapDrawableDescriptor** object , which can be created by passing in a **pixelMap** object. Inherits from [DrawableDescriptor](#drawabledescriptor).
+Implements a **PixelMapDrawableDescriptor** object, which can be created by passing in a **PixelMap** object. Inherits from [DrawableDescriptor](#drawabledescriptor).
 
 ### constructor<sup>12+</sup>
 
@@ -610,7 +611,7 @@ A constructor used to create an **AnimatedDrawableDescriptor** instance.
 
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
-| src | ResourceStr \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Yes  | Animated image source address or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) array.<br> The address (**ResourceStr**) supports the following formats: application resources (**Resource**), sandbox path (file://\<bundleName>/\<sandboxPath>), and Base64 string.|
+| src | [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Yes  | Animated image source address or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) array.<br> The address (**ResourceStr**) supports the following formats: application resources (**Resource**), sandbox path (file://\<bundleName>/\<sandboxPath>), and Base64 string.|
 | options   | [AnimationOptions](#animationoptions12) | No  | Animation playback configuration.|
 
 **Example**
@@ -745,7 +746,7 @@ struct Example {
 
 ## AnimationController<sup>21+</sup>
 
-Implements an animation controller object. Provides animation playback control and status query APIs.
+Implements an animation controller object. It provides APIs for playing, stopping, resuming, and pausing animations, as well as querying the status.
 
 ### start<sup>21+</sup>
 

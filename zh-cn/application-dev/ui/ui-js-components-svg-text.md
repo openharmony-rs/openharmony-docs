@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Svg组件还可以绘制文本。
+svg组件还可以绘制文本。
 
 
 ## 文本

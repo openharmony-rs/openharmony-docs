@@ -1037,7 +1037,7 @@ export default class MigrationAbility extends UIAbility {
   d_object?: distributedDataObject.DataObject;
 
   // This API is used to convert an asset array into a record.
-  GetAssetsWapper(assets: commonType.Assets): Record<string, commonType.Asset> {
+  GetAssetsWrapper(assets: commonType.Assets): Record<string, commonType.Asset> {
     let wrapper: Record<string, commonType.Asset> = {}
     let num: number = assets.length;
     for (let i: number = 0; i < num; i++) {
@@ -1074,7 +1074,7 @@ export default class MigrationAbility extends UIAbility {
     assets.push(attachment2);
 
     // Convert the asset array into a record object and use it to create a distributed data object.
-    let assetsWrapper: Object = this.GetAssetsWapper(assets);
+    let assetsWrapper: Object = this.GetAssetsWrapper(assets);
     let source: SourceObject = new SourceObject("jack", assetsWrapper);
     this.d_object = distributedDataObject.create(this.context, source);
 

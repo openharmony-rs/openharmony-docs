@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-使用Web组件大小自适应页面内容布局模式`layoutMode(WebLayoutMode.FIT_CONTENT)`时，能使Web组件的大小根据页面内容自适应变化。
+使用Web组件大小自适应页面内容布局模式[layoutMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#layoutmode11)([WebLayoutMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#weblayoutmode11).FIT_CONTENT)时，能使Web组件的大小根据页面内容自适应变化。
 
 <!--RP1--><!--RP1End-->
 
@@ -86,7 +86,7 @@ struct WebHeightPage {
 fit_content.html页面代码如下：
 
 ```html
-<!--fit_content.html-->
+<!-- fit_content.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -158,7 +158,7 @@ fit_content.html页面代码如下：
 
 核心内容dom节点高度为0。
 
-css样式`height：<number> vh`和Web组件大小自适应页面布局存在计算冲突，请检查`height：<number> vh`是否是由body节点而内的第一个高度css样式。如以下结构，id为2的dom节点高度将为0。
+css样式`height：<number> vh`和Web组件大小自适应页面布局存在计算冲突，请检查`height：<number> vh`是否是由body节点以内的第一个高度css样式。如以下结构，id为2的dom节点高度将为0。
 
 ```html
 <body>

@@ -109,8 +109,8 @@
     - [Generating an MD Using SHA-256 (C/C++)](crypto-generate-message-digest-ndk.md)
     - [Generating an MD Using MD5 (ArkTS)](crypto-generate-message-digest-md5.md)
     - [Generating an MD Using MD5 (C/C++)](crypto-generate-message-digest-md5-ndk.md)
-    - [Generating an MD Using SHA-3 (ArkTS)](crypto-generate-message-digest-md5.md)
-    - [Generating an MD Using SHA3-256 (C/C++)](crypto-generate-message-digest-md5-ndk.md)
+    - [Generating an MD Using SHA-3 (ArkTS)](crypto-generate-message-digest-sha3.md)
+    - [Generating an MD Using SHA3-256 (C/C++)](crypto-generate-message-digest-sha3-ndk.md)
 - MAC<!--crypto-compute-mac-->
   - [MAC Overview and Algorithm Specifications](crypto-compute-mac-overview.md)
   - [Generating an HMAC (ArkTS)](crypto-compute-hmac.md)
@@ -130,5 +130,7 @@
   - [Key Derivation Using HKDF (C/C++)](crypto-key-derivation-using-hkdf-ndk.md)
   - [Key Derivation Using Scrypt (ArkTS)](crypto-key-derivation-using-scrypt.md)
   - [Key Derivation Using Scrypt (C/C++)](crypto-key-derivation-using-scrypt-ndk.md)
-  - [Key Derivation Using X963KDF (ArkTS)](crypto-key-derivation-using-scrypt.md)
-  - [Key Derivation Using X963KDF (C/C++)](crypto-key-derivation-using-scrypt-ndk.md)
+  - [Key Derivation Using X963KDF (ArkTS)](crypto-key-derivation-using-x963kdf.md)
+  - [Key Derivation Using X963KDF (C/C++)](crypto-key-derivation-using-x963kdf-ndk.md)<!--RP1--><!--RP1End-->
+- Crypto Architecture Kit FAQs<!--crypto-faqs-->
+  - [AES Decryption Failure Returning 17630001](crypto-aes-decryption-error-faq.md)

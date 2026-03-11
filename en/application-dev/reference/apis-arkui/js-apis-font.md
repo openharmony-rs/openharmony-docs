@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
-<!--Designer: @xiangyuan6-->
+<!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -134,7 +134,7 @@ struct FontExample {
 
 getSystemFontList(): Array\<string>
 
-Obtains the system font list.
+Obtains this system font list.
 
 This API only takes effect on PCs/2-in-1 devices and returns an empty array on other devices.
 

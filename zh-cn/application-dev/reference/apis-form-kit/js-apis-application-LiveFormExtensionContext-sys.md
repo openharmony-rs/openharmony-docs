@@ -38,7 +38,7 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
     let storage: LocalStorage = new LocalStorage();
     storage.setOrCreate('context', this.context);
     session.loadContent('pages/MyLiveFormPage', storage);
-    session.sendData({['isFormReady']: true});
+    session.sendData({ ['isFormReady']: true });
     console.info("current language is: ", this.context.config.language);
   }
 };

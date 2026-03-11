@@ -23,7 +23,7 @@ import { storageStatistics } from '@kit.CoreFileKit';
 
 getTotalSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
-异步获取外置存储设备中指定卷设备的总空间大小（单位为Byte），以Promise方式返回。
+异步获取外置存储设备中指定卷设备的总空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -82,7 +82,7 @@ getTotalSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
 getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;): void
 
-异步获取外置存储设备中指定卷设备的总空间大小（单位为Byte），以callback方式返回。
+异步获取外置存储设备中指定卷设备的总空间大小（单位为Byte），使用callback异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -139,7 +139,7 @@ getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;):
 
 getFreeSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
-异步获取外置存储设备中指定卷设备的可用空间大小（单位为Byte），以Promise方式返回。
+异步获取外置存储设备中指定卷设备的可用空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -198,7 +198,7 @@ getFreeSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
 getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;): void
 
-异步获取外置存储设备中指定卷设备的可用空间大小（单位为Byte），以callback方式返回。
+异步获取外置存储设备中指定卷设备的可用空间大小（单位为Byte），使用callback异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -255,7 +255,7 @@ getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;): 
 
 getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
 
-异步获取应用存储数据的空间大小（单位为Byte），以Promise方式返回。
+异步获取应用存储数据的空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -321,7 +321,7 @@ getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
 
 getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, index?: number): void
 
-异步获取应用存储数据的空间大小（单位为Byte），以callback方式返回。
+异步获取应用存储数据的空间大小（单位为Byte），使用callback异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -384,7 +384,7 @@ getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, 
 
 getSystemSize(): Promise&lt;number&gt;
 
-异步获取系统数据的空间大小（单位为Byte），以Promise方式返回。
+异步获取系统数据的空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -425,7 +425,7 @@ getSystemSize(): Promise&lt;number&gt;
 
 getSystemSize(callback: AsyncCallback&lt;number&gt;): void
 
-异步获取系统数据的空间大小（单位为Byte），以callback方式返回。
+异步获取系统数据的空间大小（单位为Byte），使用callback异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -469,7 +469,7 @@ getSystemSize(callback: AsyncCallback&lt;number&gt;): void
 
 getUserStorageStats(): Promise&lt;StorageStats&gt;
 
-异步获取当前用户各类别存储空间大小（单位为Byte），以Promise方式返回。
+异步获取当前用户各类别存储空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -510,7 +510,7 @@ getUserStorageStats(): Promise&lt;StorageStats&gt;
 
 getUserStorageStats(callback: AsyncCallback&lt;StorageStats&gt;): void
 
-异步获取当前用户各类别存储空间大小（单位为Byte），以callback方式返回。
+异步获取当前用户各类别存储空间大小（单位为Byte），使用callback异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -554,7 +554,7 @@ getUserStorageStats(callback: AsyncCallback&lt;StorageStats&gt;): void
 
 getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
 
-异步获取指定用户各类别存储空间大小（单位为Byte），以Promise方式返回。
+异步获取指定用户各类别存储空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -603,7 +603,7 @@ getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
 
 getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;): void
 
-异步获取指定用户各类别存储空间大小（单位为Byte），以callback方式返回。
+异步获取指定用户各类别存储空间大小（单位为Byte），使用callback异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 

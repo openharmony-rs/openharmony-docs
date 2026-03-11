@@ -35,11 +35,13 @@ HiLog模块日志接口定义，通过这些接口实现日志打印相关功能
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_LOG_DEBUG(type, ...) ((void)OH_LOG_Print((type), LOG_DEBUG, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | DEBUG级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br>**起始版本：** 8 |
-| OH_LOG_INFO(type, ...) ((void)OH_LOG_Print((type), LOG_INFO, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | INFO级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br>**起始版本：** 8 |
-| OH_LOG_WARN(type, ...) ((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | WARN级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br>**起始版本：** 8 |
-| OH_LOG_ERROR(type, ...) ((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | ERROR级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br>**起始版本：** 8 |
-| OH_LOG_FATAL(type, ...) ((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | FATAL级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br><br>**起始版本：** 8 |
+| OH_LOG_DEBUG(type, ...) ((void)OH_LOG_Print((type), LOG_DEBUG, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | DEBUG级别写日志，宏封装接口。使用时需要先定义LOG_DOMAIN和LOG_TAG，一般在源文件起始处统一定义一次。<br>**起始版本：** 8 |
+| OH_LOG_INFO(type, ...) ((void)OH_LOG_Print((type), LOG_INFO, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | INFO级别写日志，宏封装接口。使用时需要先定义LOG_DOMAIN和LOG_TAG，一般在源文件起始处统一定义一次。<br>**起始版本：** 8 |
+| OH_LOG_WARN(type, ...) ((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | WARN级别写日志，宏封装接口。使用时需要先定义LOG_DOMAIN和LOG_TAG，一般在源文件起始处统一定义一次。<br>**起始版本：** 8 |
+| OH_LOG_ERROR(type, ...) ((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | ERROR级别写日志，宏封装接口。使用时需要先定义LOG_DOMAIN和LOG_TAG，一般在源文件起始处统一定义一次。<br>**起始版本：** 8 |
+| OH_LOG_FATAL(type, ...) ((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | FATAL级别写日志，宏封装接口。使用时需要先定义LOG_DOMAIN和LOG_TAG，一般在源文件起始处统一定义一次。<br><br>**起始版本：** 8 |
+|LOG_DOMAIN| 指定输出日志所对应的业务领域，默认值为0，取值范围为0x0~0xFFFF，超出此范围的domainID将导致日志无法打印。<br>**起始版本：** 8|
+|LOG_TAG | 标识日志调用所在的类或业务行为，类型为字符串常量，默认值为NULL，最大长度为31个字节，超出后会截断，必须设置成非NULL字符串，否则日志将无法打印。不建议使用中文字符，可能出现乱码或对齐问题。<br>**起始版本：** 8|
 
 ### 函数
 
@@ -269,7 +271,7 @@ OH_LOG_DEBUG(type, ...)((void)OH_LOG_Print((type), LOG_DEBUG, LOG_DOMAIN, LOG_TA
 
 **描述**
 
-DEBUG级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br>
+DEBUG级别写日志，宏封装接口。使用时需要先定义LOG_DOMAIN和LOG_TAG，一般在源文件起始处统一定义一次。<br>
 
 **起始版本：** 8
 
@@ -294,7 +296,7 @@ OH_LOG_INFO(type, ...)((void)OH_LOG_Print((type), LOG_INFO, LOG_DOMAIN, LOG_TAG,
 
 **描述**
 
-INFO级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br>
+INFO级别写日志，宏封装接口。使用时需要先定义LOG_DOMAIN和LOG_TAG，一般在源文件起始处统一定义一次。<br>
 
 **起始版本：** 8
 
@@ -319,7 +321,7 @@ OH_LOG_WARN(type, ...)((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG,
 
 **描述**
 
-WARN级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。
+WARN级别写日志，宏封装接口。使用时需要先定义LOG_DOMAIN和LOG_TAG，一般在源文件起始处统一定义一次。
 
 **起始版本：** 8
 
@@ -344,7 +346,7 @@ OH_LOG_ERROR(type, ...)((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TA
 
 **描述**
 
-ERROR级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。
+ERROR级别写日志，宏封装接口。使用时需要先定义LOG_DOMAIN和LOG_TAG，一般在源文件起始处统一定义一次。
 
 **起始版本：** 8
 
@@ -369,7 +371,7 @@ OH_LOG_FATAL(type, ...)((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TA
 
 **描述**
 
-FATAL级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br>
+FATAL级别写日志，宏封装接口。使用时需要先定义LOG_DOMAIN和LOG_TAG，一般在源文件起始处统一定义一次。<br>
 
 **起始版本：** 8
 

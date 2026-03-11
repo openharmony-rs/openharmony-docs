@@ -214,8 +214,7 @@ muteCamera(mute: boolean): void
 Mutes or unmutes the camera device.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 12. You are advised to use [muteCameraPersistent](#mutecamerapersistent12) instead.
+>This API is supported since API version 10 and deprecated since API version 12. You are advised to use [muteCameraPersistent](#mutecamerapersistent12) instead.
 
 **System API**: This is a system API.
 
@@ -592,7 +591,7 @@ Describes the status indicating whether the camera is occluded.
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
 | isCameraOccluded                 | boolean              |  Yes | No|Whether the camera is occluded. **true** if occluded, **false** otherwise.       |
 
-## CameraOutputCapability<sup>10+</sup>
+## CameraOutputCapability
 
 Describes the camera output capability.
 
@@ -1910,9 +1909,7 @@ function isAutoHighQualityPhotoSupported(photoOutput: camera.PhotoOutput): boole
 
 enableAutoHighQualityPhoto(enabled: boolean): void
 
-Enables automatic high quality for photos.
-
-Before using this API, call [isAutoHighQualityPhotoSupported](#isautohighqualityphotosupported13) to check whether automatic high quality is supported.
+Enables automatic high quality for photos. Before using this API, call [isAutoHighQualityPhotoSupported](#isautohighqualityphotosupported13) to check whether automatic high quality is supported.
 
 **System API**: This is a system API.
 
@@ -2270,7 +2267,7 @@ Adds the types of metadata objects to be detected.
 
 | Name                 | Type                                              | Mandatory| Description                         |
 | -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | Yes | Metadata object types, which are obtained through **getSupportedOutputCapability**.|
+| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | Yes | Metadata object types, which are obtained through [getSupportedOutputCapability](arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11).|
 
 **Error codes**
 
@@ -2311,7 +2308,7 @@ Removes the types of metadata objects to be detected.
 
 | Name                 | Type                                              | Mandatory| Description                         |
 | -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | Yes | Metadata object types, which are obtained through **getSupportedOutputCapability**.|
+| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | Yes | Metadata object types, which are obtained through [getSupportedOutputCapability](arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11).|
 
 **Error codes**
 
@@ -2369,7 +2366,7 @@ Enumerates the types of emotions in the detected human face information.
 
 ## MetadataObject
 
-Implements the basic metadata object used for camera detection. It is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the basic metadata object used for camera detection. It serves as the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2380,7 +2377,7 @@ Implements the basic metadata object used for camera detection. It is the data s
 
 ## MetadataFaceObject<sup>13+</sup>
 
-Implements the human face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the human face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2396,13 +2393,13 @@ Implements the human face metadata object used for camera detection. It inherits
 
 ## MetadataHumanBodyObject<sup>13+</sup>
 
-Implements the human body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the human body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataCatFaceObject<sup>13+</sup>
 
-Implements the cat face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the cat face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2413,13 +2410,13 @@ Implements the cat face metadata object used for camera detection. It inherits f
 
 ## MetadataCatBodyObject<sup>13+</sup>
 
-Implements the cat body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the cat body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataDogFaceObject<sup>13+</sup>
 
-Implements the dog face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the dog face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2430,19 +2427,19 @@ Implements the dog face metadata object used for camera detection. It inherits f
 
 ## MetadataDogBodyObject<sup>13+</sup>
 
-Implements the dog body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the dog body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataSalientDetectionObject<sup>13+</sup>
 
-Implements the salient detection metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the salient detection metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataBarcodeObject<sup>14+</sup>
 
-Implements the barcode metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the barcode metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2505,9 +2502,7 @@ function getSupportedBeautyTypes(portraitPhotoSession: camera.PortraitPhotoSessi
 
 getSupportedBeautyRange(type: BeautyType): Array\<number\>
 
-Obtains the levels that can be set a beauty type.
-
-The beauty levels vary according to the device type. The following table is only an example.
+Obtains the levels that can be set a beauty type. The beauty levels vary according to the device type. The following table is only an example.
 
 | Input Parameter          | Example Return Value   | Return Value Description    |
 | ----------------| ----  | ---------|
@@ -3215,11 +3210,11 @@ Enumerates the color effect types.
 | SOFT                  | 2    | Soft color effect. |
 | BLACK_WHITE<sup>12+</sup>    | 3    | Black and white color effect. |
 
-## Portrait<sup>11+</sup>
+## PortraitQuery<sup>12+</sup>
 
-Provides the APIs for portrait photo settings.
+Queries portrait parameters.
 
-### getSupportedPortraitEffects<sup>10+</sup>
+### getSupportedPortraitEffects
 
 getSupportedPortraitEffects(): Array\<PortraitEffect\>
 
@@ -3253,11 +3248,17 @@ function getSupportedPortraitEffects(portraitPhotoSession: camera.PortraitPhotoS
 }
 ```
 
+## Portrait<sup>11+</sup>
+
+**Portrait** inherits from [PortraitQuery](#portraitquery12).
+
+Provides the APIs for portrait photo settings.
+
 ### setPortraitEffect
 
 setPortraitEffect(effect: PortraitEffect): void
 
-Sets a portrait effect. Before the setting, call [getSupportedPortraitEffects](#getsupportedportraiteffects10) to obtain the supported portrait effects and check whether the target portrait effect is supported.
+Sets a portrait effect. Before the setting, use [getSupportedPortraitEffects](#getsupportedportraiteffects) to obtain the supported portrait effects and check whether the target portrait effect is supported.
 
 **System API**: This is a system API.
 
@@ -3267,7 +3268,7 @@ Sets a portrait effect. Before the setting, call [getSupportedPortraitEffects](#
 
 | Name        | Type                       | Mandatory| Description                     |
 | ------------ |----------------------------- | -- | -------------------------- |
-| effect | [PortraitEffect](#portraiteffect)  | Yes| Portrait effect, which can be obtained through [getSupportedPortraitEffects](#getsupportedportraiteffects10).  |
+| effect | [PortraitEffect](#portraiteffect)  | Yes| Portrait effect, which can be obtained through [getSupportedPortraitEffects](#getsupportedportraiteffects).  |
 
 **Error codes**
 
@@ -3296,7 +3297,7 @@ function setPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession, po
 }
 ```
 
-### getPortraitEffect<sup>10+</sup>
+### getPortraitEffect
 
 getPortraitEffect(): PortraitEffect
 
@@ -3554,8 +3555,7 @@ function setPhysicalAperture(session: camera.PortraitPhotoSession, physicalApert
 Implements a capture session, which saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera and requests the camera to complete shooting or video recording.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [PhotoSession](arkts-apis-camera-PhotoSession.md) and [VideoSession](arkts-apis-camera-VideoSession.md) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [PhotoSession](arkts-apis-camera-PhotoSession.md) and [VideoSession](arkts-apis-camera-VideoSession.md) instead.
 
 ### getSupportedBeautyTypes<sup>(deprecated)</sup>
 
@@ -3564,8 +3564,7 @@ getSupportedBeautyTypes(): Array\<BeautyType>
 Obtains the supported beauty types.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getSupportedBeautyTypes](#getsupportedbeautytypes11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getSupportedBeautyTypes](#getsupportedbeautytypes11) instead.
 
 **System API**: This is a system API.
 
@@ -3605,11 +3604,10 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 | AUTO           | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     |Beauty levels supported when **type** is set to **AUTO**. The value **0** means that beauty mode is disabled, and other positive values mean the corresponding automatic beauty levels.   |
 | SKIN_SMOOTH    | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     | Beauty levels supported when **type** is set to **SKIN_SMOOTH**. The value **0** means that the skin smoothing feature is disabled, and other positive values mean the corresponding skin smoothing levels.   |
 | FACE_SLENDER   | [0, 1, 2, 3, 4, 5]      | Beauty levels supported when **type** is set to **FACE_SLENDER**. The value **0** means that the face slimming feature is disabled, and other positive values mean the corresponding face slimming levels.  |
-| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB, for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
+| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB,<br> for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11) instead.
 
 **System API**: This is a system API.
 
@@ -3656,8 +3654,7 @@ setBeauty(type: BeautyType, value: number): void
 Sets a beauty type and its level. Beauty mode is turned off only when all the [beauty types](#beautytype) obtained through [getSupportedBeautyTypes](#getsupportedbeautytypesdeprecated) are disabled.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.setBeauty](#setbeauty11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.setBeauty](#setbeauty11) instead.
 
 **System API**: This is a system API.
 
@@ -3702,8 +3699,7 @@ getBeauty(type: BeautyType): number
 Obtains the level of the beauty type in use.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getBeauty](#getbeauty11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getBeauty](#getbeauty11) instead.
 
 **System API**: This is a system API.
 
@@ -4083,7 +4079,7 @@ function callback(focusTrackingInfo: camera.FocusTrackingInfo): void {
                                        height ${focusTrackingInfo.trackingRegion.height}`);
 }
 
-function registerFocusTrakingInfoChanged(session: camera.VideoSessionForSys): void {
+function registerFocusTrackingInfoChanged(session: camera.VideoSessionForSys): void {
   session.on('focusTrackingInfoAvailable', callback);
 }
 ```
@@ -4116,7 +4112,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-function unregisterFocusTrakingInfoChanged(session: camera.VideoSessionForSys): void {
+function unregisterFocusTrackingInfoChanged(session: camera.VideoSessionForSys): void {
   session.off('focusTrackingInfoAvailable');
 }
 ```
@@ -4916,7 +4912,6 @@ SlowMotionVideoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorE
 Implements a slow-motion video session, which sets the parameters of the slow-motion video mode and saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera. It inherits from [Session](arkts-apis-camera-Session.md).
 
 > **NOTE**
->
 > In slow-motion video mode, only preview streams and video streams can be added.
 ### on('error')<sup>12+</sup>
 
@@ -5224,7 +5219,6 @@ isSlowMotionDetectionSupported(): boolean
 Checks whether the device supports slow-motion detection.
 
 > **NOTE**
->
 > This API must be called after [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1) is called.
 
 **System API**: This is a system API.
@@ -5270,7 +5264,6 @@ setSlowMotionDetectionArea(area: Rect): void
 Sets an area for slow-motion detection.
 
 > **NOTE**
->
 > Before the setting, call [isSlowMotionDetectionSupported](#isslowmotiondetectionsupported12) to check whether the device supports slow-motion detection.
 This API must be called after [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1) is called.
 
@@ -5616,9 +5609,7 @@ function getExposureMeteringMode(professionalPhotoSession: camera.ProfessionalPh
 
 setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void
 
-Sets an exposure metering mode.
-
-Before the setting, call [isExposureMeteringModeSupported](#isexposuremeteringmodesupported12) to check whether the target exposure metering mode is supported.
+Sets an exposure metering mode. Before the setting, call [isExposureMeteringModeSupported](#isexposuremeteringmodesupported12) to check whether the target exposure metering mode is supported.
 
 **System API**: This is a system API.
 
@@ -5835,9 +5826,7 @@ Provides APIs to obtain and set the camera focus mode and focus position.
 
 setFocusAssist(enabled: boolean): void
 
-Sets the focus assist.
-
-Before the setting, call [isFocusAssistSupported](#isfocusassistsupported12) to check whether the device supports the focus assist.
+Sets the focus assist. Before the setting, call [isFocusAssistSupported](#isfocusassistsupported12) to check whether the device supports the focus assist.
 
 **System API**: This is a system API.
 
@@ -6109,7 +6098,7 @@ Sets the manual focus distance.
 
 | Name     | Type                    | Mandatory| Description                |
 | -------- | ----------------------- | ---- | ------------------- |
-| distance | number | Yes  | Manual focus distance. The value is a floating-point number in the range [0, 1]. The value **0** indicates a close-up shot, and **1** indicates a long shot.<br> |
+| distance | number | Yes  | Manual focus distance. The configurable range is a floating-point number between **0** and **1**, where **0** indicates close-up focus and **1** indicates long-distance focus.<br> |
 
 **Error codes**
 

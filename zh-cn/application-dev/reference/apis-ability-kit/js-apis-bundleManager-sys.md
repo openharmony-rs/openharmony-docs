@@ -371,7 +371,7 @@ getApplicationInfo(bundleName: string, appFlags: number, userId: number, callbac
 | 参数名    | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ---------------------------- |
 | bundleName | string | 是   | 表示要查询的应用Bundle名称。 |
-| appFlags   | [number](#applicationflag) | 是   | 指定返回的ApplicationInfo所包含的信息。    |
+| appFlags   | number | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。   |
 | userId     | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
 | callback | AsyncCallback\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的ApplicationInfo；否则为错误对象。 |
 
@@ -432,7 +432,7 @@ getApplicationInfo(bundleName: string, appFlags: number, callback: AsyncCallback
 | 参数名    | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ---------------------------- |
 | bundleName | string | 是   | 表示要查询的应用Bundle名称。 |
-| appFlags   | [number](#applicationflag) | 是   | 指定返回的ApplicationInfo所包含的信息。    |
+| appFlags   | number | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。    |
 | callback | AsyncCallback\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的ApplicationInfo；否则为错误对象。 |
 
 **错误码：**
@@ -490,7 +490,7 @@ getApplicationInfo(bundleName: string, appFlags: number, userId?: number): Promi
 | 参数名    | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ---------------------------- |
 | bundleName | string | 是   | 表示要查询的应用Bundle名称。 |
-| appFlags   | [number](#applicationflag) | 是   | 指定返回的ApplicationInfo所包含的信息。    |
+| appFlags   | number | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。    |
 | userId     | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
@@ -715,7 +715,7 @@ getAllApplicationInfo(appFlags: number, userId: number, callback: AsyncCallback<
 
 | 参数名  | 类型   | 必填 | 说明                                                      |
 | -------- | ------ | ---- | ----------------------------------------------------------- |
-| appFlags | [number](#applicationflag) | 是   | 指定返回的ApplicationInfo所包含的信息。                       |
+| appFlags | number | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。                       |
 | userId   | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。         |
 | callback | AsyncCallback<Array\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的Array\<ApplicationInfo>；否则为错误对象。 |
 
@@ -770,7 +770,7 @@ getAllApplicationInfo(appFlags: number, callback: AsyncCallback<Array\<Applicati
 
 | 参数名  | 类型   | 必填 | 说明                                                      |
 | -------- | ------ | ---- | ----------------------------------------------------------- |
-| appFlags | [number](#applicationflag) | 是   | 指定返回的ApplicationInfo所包含的信息。                       |
+| appFlags | number | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。                       |
 | callback | AsyncCallback<Array\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的Array\<ApplicationInfo>；否则为错误对象。 |
 
 **错误码：**
@@ -822,7 +822,7 @@ getAllApplicationInfo(appFlags: number, userId?: number): Promise<Array\<Applica
 
 | 参数名  | 类型   | 必填 | 说明                                                      |
 | -------- | ------ | ---- | ---------------------------------------------------------- |
-| appFlags | [number](#applicationflag) | 是   | 指定返回的ApplicationInfo所包含的信息。                       |
+| appFlags | number | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。                       |
 | userId   | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                        |
 
 **返回值：**
@@ -882,7 +882,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, userId: number, callback: Asy
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
 | want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
-| abilityFlags | [number](#abilityflag) | 是   | 指定返回的AbilityInfo所包含的信息。                       |
+| abilityFlags | number | 是   | 指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。                       |
 | userId       | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                               |
 | callback | AsyncCallback<Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的Array\<AbilityInfo>；否则为错误对象。 |
 
@@ -894,7 +894,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, userId: number, callback: Asy
 | -------- | -------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found. |
 | 17700003 | The specified ability is not found.    |
 | 17700004 | The specified userId is invalid.       |
@@ -949,7 +949,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, callback: AsyncCallback<Array
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | -------------------------------------------------------|
 | want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
-| abilityFlags | [number](#abilityflag) | 是   | 指定返回的AbilityInfo所包含的信息。       |
+| abilityFlags | number | 是   | 指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。       |
 | callback | AsyncCallback<Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的Array\<AbilityInfo>；否则为错误对象。 |
 
 **错误码：**
@@ -960,7 +960,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, callback: AsyncCallback<Array
 | -------- | -------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found. |
 | 17700003 | The specified ability is not found.    |
 | 17700026 | The specified bundle is disabled.      |
@@ -1013,7 +1013,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Promise<Arr
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
 | want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
-| abilityFlags | [number](#abilityflag) | 是   | 表示指定返回的AbilityInfo所包含的信息。 |
+| abilityFlags | number | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。 |
 | userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
 **返回值：**
@@ -1030,7 +1030,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Promise<Arr
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found. |
 | 17700003 | The specified ability is not found.    |
 | 17700004 | The specified userId is invalid.       |
@@ -1107,7 +1107,7 @@ queryAbilityInfoSync(want: Want, abilityFlags: number, userId?: number): Array\<
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
 | want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
-| abilityFlags | [number](#abilityflag) | 是   | 表示指定返回的AbilityInfo所包含的信息。 |
+| abilityFlags | number | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。 |
 | userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
 **返回值：**
@@ -1124,7 +1124,7 @@ queryAbilityInfoSync(want: Want, abilityFlags: number, userId?: number): Array\<
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found. |
 | 17700003 | The specified ability is not found.    |
 | 17700004 | The specified userId is invalid.       |
@@ -1196,7 +1196,7 @@ queryAbilityInfo(wants: Array\<Want>, abilityFlags: number, userId?: number): Pr
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
 | want         | Array\<[Want](js-apis-app-ability-want.md)>   | 是   | 表示包含要查询的应用Bundle名称的Want集合。                 |
-| abilityFlags | [number](#abilityflag) | 是   | 表示指定返回的AbilityInfo所包含的信息。 |
+| abilityFlags | number | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。 |
 | userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
 **返回值：**
@@ -1213,7 +1213,7 @@ queryAbilityInfo(wants: Array\<Want>, abilityFlags: number, userId?: number): Pr
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found. |
 | 17700003 | The specified ability is not found.    |
 | 17700004 | The specified userId is invalid.       |
@@ -1271,7 +1271,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | want                  | [Want](js-apis-app-ability-want.md)                                                        | 是   | 表示包含要查询的应用Bundle名称的Want。                       |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype)                | 是   | 标识extensionAbility的类型。                                 |
-| extensionAbilityFlags | [number](#extensionabilityflag)                              | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志。    |
+| extensionAbilityFlags | number                             | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。    |
 | userId                | number                                                       | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                                                 |
 | callback              | AsyncCallback<Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到Array\<ExtensionAbilityInfo>；否则为错误对象。 |
 
@@ -1283,7 +1283,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 | -------- | ------------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found.       |
 | 17700003 | The specified extensionAbility is not found. |
 | 17700004 | The specified userId is invalid.             |
@@ -1339,7 +1339,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | want                  | [Want](js-apis-app-ability-want.md)                                                        | 是   | 表示包含要查询的应用Bundle名称的Want。                       |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype)                | 是   | 标识extensionAbility的类型。                                 |
-| extensionAbilityFlags | [number](#extensionabilityflag)                              | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志。    |
+| extensionAbilityFlags | number                             | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。    |
 | callback              | AsyncCallback<Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到Array\<ExtensionAbilityInfo>；否则为错误对象。 |
 
 **错误码：**
@@ -1350,7 +1350,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 | -------- | -------------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found.       |
 | 17700003 | The specified extensionAbility is not found. |
 | 17700026 | The specified bundle is disabled.            |
@@ -1404,7 +1404,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 | --------------------- | --------------------------------------------- | ---- | --------------------------------------------------------- |
 | want                  | [Want](js-apis-app-ability-want.md)                                         | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | 是   | 标识extensionAbility的类型。                              |
-| extensionAbilityFlags | [number](#extensionabilityflag)               | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志。 |
+| extensionAbilityFlags | number              | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
 | userId                | number                                        | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                                              |
 
 **返回值：**
@@ -1421,7 +1421,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found. |
 | 17700003 | The specified extensionAbility is not found.    |
 | 17700004 | The specified userId is invalid.       |
@@ -1500,7 +1500,7 @@ queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: ExtensionAbility
 | --------------------- | --------------------------------------------- | ---- | --------------------------------------------------------- |
 | want                  | [Want](js-apis-app-ability-want.md)                                         | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | 是   | 标识extensionAbility的类型。                              |
-| extensionAbilityFlags | [number](#extensionabilityflag)               | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志。 |
+| extensionAbilityFlags | number              | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
 | userId                | number                                        | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                                              |
 
 **返回值：**
@@ -1517,7 +1517,7 @@ queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: ExtensionAbility
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found. |
 | 17700003 | The specified extensionAbility is not found.    |
 | 17700004 | The specified userId is invalid.       |
@@ -2308,7 +2308,7 @@ setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: boolean):
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -2555,7 +2555,7 @@ setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boolean): Prom
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found.  |
 | 17700003 | The specified abilityInfo is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -2793,7 +2793,7 @@ isApplicationEnabled(bundleName: string, appIndex: number): Promise\<boolean>
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -3030,7 +3030,7 @@ isAbilityEnabled(info: AbilityInfo, appIndex: number): Promise\<boolean>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found.  |
 | 17700003 | The specified abilityName is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -3756,7 +3756,7 @@ getApplicationInfoSync(bundleName: string, applicationFlags: number, userId: num
 | 参数名       | 类型   | 必填 | 说明                                                       |
 | ----------- | ------ | ---- | ----------------------------------------------------------|
 | bundleName  | string | 是   | 表示应用程序的bundleName。                                  |
-| applicationFlags | [number](#applicationflag) | 是   | 表示用于指定将返回的ApplicationInfo对象中包含的信息。       |
+| applicationFlags | number | 是   | 表示用于指定将返回的ApplicationInfo对象中包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。       |
 | userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                                         |
 
 **返回值：**
@@ -3817,7 +3817,7 @@ getApplicationInfoSync(bundleName: string, applicationFlags: number) : Applicati
 | 参数名           | 类型                       | 必填 | 说明                                                  |
 | ---------------- | -------------------------- | ---- | ----------------------------------------------------- |
 | bundleName       | string                     | 是   | 表示应用程序的bundleName。                            |
-| applicationFlags | [number](#applicationflag) | 是   | 表示用于指定将返回的ApplicationInfo对象中包含的信息。 |
+| applicationFlags | number | 是   | 表示用于指定将返回的ApplicationInfo对象中包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。 |
 
 **返回值：**
 
@@ -4560,7 +4560,7 @@ queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string, extensio
 | --------------------- | ------------------------------- | ---- | --------------------------------------------------------- |
 | want                  | [Want](js-apis-app-ability-want.md)      | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
 | extensionAbilityType  | string                          | 是   | 表示自定义extensionAbility的类型。                        |
-| extensionAbilityFlags | [number](#extensionabilityflag) | 是   | 表示返回的ExtensionInfo对象中需要包含的信息标志。 |
+| extensionAbilityFlags | number| 是   | 表示返回的ExtensionInfo对象中需要包含的信息标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
 | userId                | number                          | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
@@ -4577,7 +4577,7 @@ queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string, extensio
 | -------- | -------------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found.       |
 | 17700003 | The specified extensionAbility is not found. |
 | 17700004 | The specified userId is invalid.             |
@@ -4688,7 +4688,7 @@ let moduleName = 'entry';
 let profileType = bundleManager.ProfileType.INTENT_PROFILE;
 
 try {
-  let data = bundleManager.getJsonProfile(profileType, bundleName, moduleName)
+  let data = bundleManager.getJsonProfile(profileType, bundleName, moduleName);
   hilog.info(0x0000, 'testTag', 'getJsonProfile successfully. Data: %{public}s', data);
 } catch (err) {
   let message = (err as BusinessError).message;
@@ -4712,7 +4712,7 @@ getRecoverableApplicationInfo(callback: AsyncCallback\<Array\<RecoverableApplica
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<Array\<[RecoverableApplicationInfo](js-apis-bundleManager-recoverableApplicationInfo-sys.md)\>\> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的所有可恢复的预置应用信息。 |
+| callback | AsyncCallback\<Array\<[RecoverableApplicationInfo](js-apis-recoverableApplicationInfo-sys.md)\>\> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的所有可恢复的预置应用信息。 |
 
 **错误码：**
 
@@ -4760,7 +4760,7 @@ getRecoverableApplicationInfo(): Promise\<Array\<RecoverableApplicationInfo\>\>
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise\<Array\<[RecoverableApplicationInfo](js-apis-bundleManager-recoverableApplicationInfo-sys.md)\>\> | Promise对象，返回所有可恢复的预置应用信息。 |
+| Promise\<Array\<[RecoverableApplicationInfo](js-apis-recoverableApplicationInfo-sys.md)\>\> | Promise对象，返回所有可恢复的预置应用信息。 |
 
 **错误码：**
 
@@ -4856,7 +4856,7 @@ getAllPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationInfo
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md)>> | Promise对象，返回Array\<PreinstalledApplicationInfo>。 |
+| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo12)>> | Promise对象，返回Array\<PreinstalledApplicationInfo>。 |
 
 **错误码：**
 
@@ -4905,7 +4905,7 @@ queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAbilityFlag
 | 参数名                | 类型                            | 必填 | 说明                                                      |
 | --------------------- | ------------------------------- | ---- | --------------------------------------------------------- |
 | extensionAbilityType  | string                          | 是   | 表示自定义extensionAbility的类型。                        |
-| extensionAbilityFlags | [number](#extensionabilityflag) | 是   | 表示返回的ExtensionInfo对象中需要包含的信息标志。 |
+| extensionAbilityFlags | number| 是   | 表示返回的ExtensionInfo对象中需要包含的信息标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
 | userId                | number                          | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户ID。取值范围：大于等于0。 |
 
 **返回值：**
@@ -5644,7 +5644,7 @@ getAppCloneIdentityBySandboxDataDir(sandboxDataDir: string): AppCloneIdentity
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//主应用
+// 主应用
 let dataDir = 'com.example.myapplication';
 try {
   let res = bundleManager.getAppCloneIdentityBySandboxDataDir(dataDir);
@@ -5654,7 +5654,7 @@ try {
   console.error('getAppCloneIdentityBySandboxDataDir failed. Cause = ' + message);
 }
 
-//分身应用
+// 分身应用
 let cloneDataDir = '+clone-1+com.example.myapplication';
 try {
   let res = bundleManager.getAppCloneIdentityBySandboxDataDir(cloneDataDir);
@@ -5664,7 +5664,7 @@ try {
   console.error('getAppCloneIdentityBySandboxDataDir failed. Cause = ' + message);
 }
 
-//元服务
+// 元服务
 let atomicDataDir = '+auid-20000000+com.example.myapplication';
 try {
   let res = bundleManager.getAppCloneIdentityBySandboxDataDir(atomicDataDir);
@@ -5709,7 +5709,7 @@ getSandboxDataDir(bundleName: string, appIndex: number): string
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
-| 17700061 | The appIndex is invalid. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -5768,9 +5768,9 @@ getAppCloneBundleInfo(bundleName: string, appIndex: number, bundleFlags: number,
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700004 | The specified userId is invalid. |
+| 17700004 | The specified user ID is not found. |
 | 17700026 | The specified bundle is disabled. |
-| 17700061 | The appIndex is invalid. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -5834,7 +5834,7 @@ getAllAppCloneBundleInfo(bundleName: string, bundleFlags: number, userId?: numbe
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700004 | The specified userId is invalid. |
+| 17700004 | The specified user ID is not found. |
 | 17700026 | The specified bundle and clone apps are all disabled. |
 
 **示例：**
@@ -6270,7 +6270,7 @@ try {
 
 recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 
-恢复指定用户下指定应用的备份数据。使用Promise异步回调。
+恢复指定用户下指定应用或分身应用的备份数据。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6302,7 +6302,7 @@ recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): P
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
 | 17700004 | The specified user ID is not found.     |
-| 17700061 | AppIndex not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -6332,7 +6332,7 @@ try {
 
 removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 
-删除指定用户下指定应用的备份数据。使用Promise异步回调。
+删除指定用户下指定应用或分身应用的备份数据。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6364,7 +6364,7 @@ removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Pr
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
 | 17700004 | The specified user ID is not found.     |
-| 17700061 | AppIndex not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -6459,7 +6459,7 @@ type RecoverableApplicationInfo = _RecoverableApplicationInfo
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_RecoverableApplicationInfo](js-apis-bundleManager-recoverableApplicationInfo-sys.md#recoverableapplicationinfo) |预置应用被卸载后可以恢复的预置应用信息。 |
+| [_RecoverableApplicationInfo](js-apis-recoverableApplicationInfo-sys.md#recoverableapplicationinfo) |预置应用被卸载后可以恢复的预置应用信息。 |
 
 ## PreinstalledApplicationInfo<sup>12+</sup>
 

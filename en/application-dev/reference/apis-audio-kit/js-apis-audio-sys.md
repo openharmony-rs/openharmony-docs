@@ -49,7 +49,7 @@ Creates a TonePlayer instance. This API uses an asynchronous callback to return 
 | Name  | Type                                            | Mandatory| Description           |
 | -------- | ----------------------------------------------- | ---- | -------------- |
 | options  | [AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8)        | Yes  | Audio renderer information.|
-| callback | AsyncCallback<[TonePlayer](#toneplayer9)>       | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the TonePlayer instance obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback<[TonePlayer](#toneplayer9)>       | Yes  | Callback function. If the operation is successful, **err** is **undefined** and **data** is the TonePlayer instance obtained; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -189,6 +189,8 @@ Enumerates the audio stream types.
 | ---------------------------- | ------ | ---------- |
 | SYSTEM<sup>20+</sup>         | 6      | System sound.|
 | ULTRASONIC<sup>10+</sup>     | 10     | Audio stream for ultrasonic.|
+| NOTIFICATION<sup>20+</sup>     | 11     | Notification tone.|
+| NAVIGATION<sup>20+</sup>     | 12     | Navigation.|
 | ALL<sup>9+</sup>             | 100    | All public audio streams.|
 
 ## InterruptRequestResultType<sup>9+</sup>
@@ -244,7 +246,7 @@ Describes the audio effect properties.
 | ------------------ | ---- | ---- |---| --------- |
 | name         | string | No| No| Audio effect name.|
 | category     | string | No| No| Audio effect category.|
-| flag        | [EffectFlag](#effectflag18) | No| No| Audio effect flag.|
+| flag        | [EffectFlag](#effectflag18) | No| No| Audio effect category.|
 
 ## StreamUsage
 
@@ -415,11 +417,11 @@ Describes the volume group information.
 
 | Name                       | Type                      | Read-Only| Optional| Description      |
 | -------------------------- | -------------------------- | ---- | ---- | ---------- |
-| networkId<sup>9+</sup>     | string                     | Yes  | No  | Network ID of the device. |
-| groupId<sup>9+</sup>       | number                     | Yes  | No  | Group ID of the device.|
-| mappingId<sup>9+</sup>     | number                     | Yes  | No  | Group mapping ID.|
-| groupName<sup>9+</sup>     | string                     | Yes  | No  | Group name.|
-| type<sup>9+</sup>          | [ConnectType](#connecttype9)| Yes  | No  | Type of the connected device.|
+| networkId | string                     | Yes  | No  | Network ID of the device. |
+| groupId | number                     | Yes  | No  | Group ID of the device.|
+| mappingId | number                     | Yes  | No  | Group mapping ID.|
+| groupName | string                     | Yes  | No  | Group name.|
+| type | [ConnectType](#connecttype9)| Yes  | No  | Type of the connected device.|
 
 ## SourceType<sup>8+</sup>
 
@@ -620,7 +622,7 @@ Sets an audio scene. This API uses an asynchronous callback to return the result
 | Name  | Type                                | Mandatory| Description                |
 | :------- | :----------------------------------- | :--- | :------------------- |
 | scene    | [AudioScene](arkts-apis-audio-e.md#audioscene8) | Yes  | Audio scene to set.      |
-| callback | AsyncCallback<void\>                 | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback<void\>                 | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -748,7 +750,6 @@ audioManager.disableSafeMediaVolume().then(() => {
 on(type: 'volumeChange', callback: Callback\<VolumeEvent>): void
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [on('volumeChange')](arkts-apis-audio-AudioVolumeManager.md#onvolumechangedeprecated) in AudioVolumeManager.
 
 Subscribes to the system volume change event, which is triggered when the system volume is changed. This API uses an asynchronous callback to return the result.
@@ -783,7 +784,6 @@ on(type: 'ringerModeChange', callback: Callback\<AudioRingMode>): void
 Subscribes to the ringer mode change event, which is triggered when [audioringmode](arkts-apis-audio-e.md#audioringmode) is changed. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [on('ringerModeChange')](arkts-apis-audio-AudioVolumeGroupManager.md#onringermodechange9) in AudioVolumeGroupManager.
 
 **System API**: This is a system API.
@@ -872,7 +872,7 @@ Obtains the volume groups. This API uses an asynchronous callback to return the 
 | Name    | Type                                                        | Mandatory| Description                |
 | ---------- | ------------------------------------------------------------ | ---- | -------------------- |
 | networkId | string                                    | Yes  | Network ID of the device. The network ID of the local device is **audio.LOCAL_NETWORK_ID**.   |
-| callback  | AsyncCallback&lt;[VolumeGroupInfos](#volumegroupinfos9)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the volume groups obtained; otherwise, **err** is an error object.|
+| callback  | AsyncCallback&lt;[VolumeGroupInfos](#volumegroupinfos9)&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined** and **data** is the volume groups obtained; otherwise, **err** is an error object.|
 
 **Example**
 ```ts
@@ -967,7 +967,7 @@ try {
 
 getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
-Obtains the volume of an application based on the application ID. This API uses a promise to return the result.
+Obtains the volume of an application based on the application ID. (The volume range is 1 to 100.) This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1009,7 +1009,7 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 
 setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
-Sets the volume for an application based on the application ID. This API uses a promise to return the result.
+Sets the application volume (within a range of 0 to 100) based on the application ID. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1302,6 +1302,82 @@ audioVolumeManager.on('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
 audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
 ```
 
+### on('systemVolumeChange')<sup>20+</sup>
+
+on(type: 'systemVolumeChange', callback: Callback\<VolumeEvent>): void
+
+Subscribes to the system volume change event, which is triggered when the system volume is changed. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Parameters**
+
+| Name  | Type                                  | Mandatory| Description                                                        |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                                 | Yes  | Event type. The event **'systemVolumeChange'** is triggered when the system volume is changed.|
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | Yes  | Callback used to return the changed volume.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**Example**
+
+```ts
+audioVolumeManager.on('systemVolumeChange', (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on function, VolumeEvent: ${volumeEvent}.`);
+});
+```
+
+### off('systemVolumeChange')<sup>20+</sup>
+
+off(type: 'systemVolumeChange', callback?: Callback\<VolumeEvent>): void
+
+Unsubscribes from the system volume change event. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Parameters**
+
+| Name  | Type                                  | Mandatory| Description                                                        |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                                 | Yes  | Event type. The event **'systemVolumeChange'** is triggered when the system volume is changed.|
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | No  | Callback used to return the changed volume.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// Cancel all subscriptions to the event.
+audioVolumeManager.off('systemVolumeChange');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let systemVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on or off function, VolumeEvent: ${volumeEvent}.`);
+};
+
+audioVolumeManager.on('systemVolumeChange', systemVolumeChangeCallback);
+
+audioVolumeManager.off('systemVolumeChange', systemVolumeChangeCallback);
+```
+
 ## AudioVolumeGroupManager<sup>9+</sup>
 
 Manages the volume of an audio group. Before calling any API in AudioVolumeGroupManager, you must use [getVolumeGroupManager](arkts-apis-audio-AudioVolumeManager.md#getvolumegroupmanager9) to obtain an AudioVolumeGroupManager instance.
@@ -1326,7 +1402,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                                            |
 | volume     | number                              | Yes  | Volume. The volume range can be obtained by calling [getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated) and [getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated).|
-| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -1482,7 +1558,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 | ---------- | ----------------------------------- | ---- | ------------------------------------- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                         |
 | mute       | boolean                             | Yes  | Mute status to set. **true** to mute, **false** otherwise.|
-| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -1552,7 +1628,7 @@ This permission is required only for muting or unmuting the ringer.
 | Name  | Type                           | Mandatory| Description                    |
 | -------- | ------------------------------- | ---- | ------------------------ |
 | mode     | [AudioRingMode](arkts-apis-audio-e.md#audioringmode) | Yes  | Ringer mode.          |
-| callback | AsyncCallback&lt;void&gt;       | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt;       | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -1741,7 +1817,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | adjustType | [VolumeAdjustType](#volumeadjusttype10) | Yes  | Volume adjustment type.                                            |
-| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1837,7 +1913,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                                            |
 | adjustType | [VolumeAdjustType](#volumeadjusttype10) | Yes  | Volume adjustment type.                                      |
-| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2065,7 +2141,7 @@ Selects an audio input device. Currently, only one input device can be selected.
 | Name                      | Type                                                        | Mandatory| Description                     |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | inputAudioDevices           | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Input device.              |
-| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 ```ts
@@ -2165,7 +2241,7 @@ Selects an audio output device. Currently, only one output device can be selecte
 | Name                      | Type                                                        | Mandatory| Description                     |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | outputAudioDevices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Output device.              |
-| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 ```ts
@@ -2265,7 +2341,7 @@ Selects an audio output device based on the filter criteria. Currently, only one
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | filter                      | [AudioRendererFilter](#audiorendererfilter9)                 | Yes  | Filter criteria.              |
 | outputAudioDevices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Information about the output device.              |
-| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 ```ts
@@ -3261,7 +3337,6 @@ setSpatializationEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): 
 Enables or disables spatial audio rendering. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setspatializationenabled12) instead.
 
 **Required permissions**: ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
@@ -3275,7 +3350,7 @@ Enables or disables spatial audio rendering. This API uses an asynchronous callb
 | Name                      | Type                                                        | Mandatory| Description                     |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | enable                      | boolean                                                      | Yes  | Whether to enable or disable spatial audio rendering. **true** to enable, **false** otherwise. |
-| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -3311,7 +3386,6 @@ setSpatializationEnabled(enable: boolean): Promise&lt;void&gt;
 Enables or disables spatial audio rendering. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setspatializationenabled12) instead.
 
 **Required permissions**: ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
@@ -3429,7 +3503,6 @@ isSpatializationEnabled(): boolean
 Checks whether spatial audio rendering is enabled. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [isSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isspatializationenabled12) instead.
 
 **System API**: This is a system API.
@@ -3534,7 +3607,6 @@ on(type: 'spatializationEnabledChange', callback: Callback<boolean\>): void
 Subscribes to the spatial audio rendering status change event, which is triggered when the spatial audio rendering status is changed. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [on(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#onspatializationenabledchangeforanydevice12) instead.
 
 **System API**: This is a system API.
@@ -3546,7 +3618,7 @@ Subscribes to the spatial audio rendering status change event, which is triggere
 | Name  | Type                                                | Mandatory| Description                                          |
 | :------- | :--------------------------------------------------- | :--- |:---------------------------------------------|
 | type     | string | Yes  | Event type. The event **'spatializationEnabledChange'** is triggered when the spatial audio rendering status is changed.|
-| callback | Callback<boolean\> | Yes  | Callback used to return the result, indicating whether spatial audio rendering is enabled. **true** if enabled, **false** otherwise.|
+| callback | Callback<boolean\> | Yes  | Callback function. indicating whether spatial audio rendering is enabled. **true** if enabled, **false** otherwise.|
 
 **Error codes**
 
@@ -3613,7 +3685,6 @@ off(type: 'spatializationEnabledChange', callback?: Callback<boolean\>): void
 Unsubscribes from the spatial audio rendering status change event. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [off(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#offspatializationenabledchangeforanydevice12) instead.
 
 **System API**: This is a system API.
@@ -3706,7 +3777,6 @@ setHeadTrackingEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 Enables or disables head tracking. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setheadtrackingenabled12) instead.
 
 **Required permissions**: ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
@@ -3720,7 +3790,7 @@ Enables or disables head tracking. This API uses an asynchronous callback to ret
 | Name                      | Type                                                        | Mandatory| Description                     |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | enable                      | boolean                                                      | Yes  | Whether to enable or disable head tracking. **true** to enable, **false** otherwise. |
-| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -3756,7 +3826,6 @@ setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
 Enables or disables head tracking. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setheadtrackingenabled12) instead.
 
 **Required permissions**: ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
@@ -3804,7 +3873,7 @@ audioSpatializationManager.setHeadTrackingEnabled(enable).then(() => {
 
 ### setHeadTrackingEnabled<sup>12+</sup>
 
-setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
+setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise&lt;void&gt;
 
 Enables or disables head tracking for a device. This API uses a promise to return the result.
 
@@ -3818,6 +3887,7 @@ Enables or disables head tracking for a device. This API uses a promise to retur
 
 | Name                | Type                                                        | Mandatory| Description                     |
 | ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)         | Yes  | Device descriptor.|
 | enable                | boolean                                                      | Yes  | Whether to enable or disable head tracking. **true** to enable, **false** otherwise. |
 
 **Return value**
@@ -3873,7 +3943,6 @@ isHeadTrackingEnabled(): boolean
 Checks whether head tracking is enabled. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [isHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isheadtrackingenabled12) instead.
 
 **System API**: This is a system API.
@@ -3978,7 +4047,6 @@ on(type: 'headTrackingEnabledChange', callback: Callback<boolean\>): void
 Subscribes to the head tracking status change event, which is triggered when the head tracking status is changed. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#onheadtrackingenabledchangeforanydevice12) instead.
 
 **System API**: This is a system API.
@@ -4057,7 +4125,6 @@ off(type: 'headTrackingEnabledChange', callback?: Callback<boolean\>): void
 Unsubscribes from the head tracking status change event. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [off(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#offheadtrackingenabledchangeforanydevice12) instead.
 
 **System API**: This is a system API.
@@ -4581,9 +4648,23 @@ Enumerates the tone types of the player.
 | TONE_TYPE_COMMON_PROPRIETARY_PROMPT               | 203    | Proprietary tone - PROMPT.            |
 | TONE_TYPE_COMMON_PROPRIETARY_DOUBLE_BEEP          | 204    | Proprietary tone - double beep tone.         |
 
+## RenderTarget<sup>22+</sup>
+
+Enumerates the rendering targets of the audio renderer.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+| Name                              |  Value    | Description                      |
+| ---------------------------------- | ------ | ------------------------- |
+| PLAYBACK                           | 0      | Playback mode (default mode of the audio renderer).<br>In this mode, audio is played properly through the audio renderer.|
+| INJECT_TO_VOICE_COMMUNICATION_CAPTURE | 1 | Injection mode.<br>In this mode, when the source type of the recording stream is [SOURCE_TYPE_VOICE_COMMUNICATION](arkts-apis-audio-e.md#sourcetype8) and the audio scene is [AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8), the output of the audio renderer is injected into the VoIP recording stream.|
+
 ## TonePlayer<sup>9+</sup>
 
 Provides APIs for playing and managing DTMF tones, such as dial tones, ringback tones, supervisory tones, and proprietary tones.
+
 Before calling any API in TonePlayer, you must use [createTonePlayer](#audiocreatetoneplayer9) to create a TonePlayer instance.
 
 **System API**: This is a system API.
@@ -4603,7 +4684,7 @@ Loads the DTMF tone configuration. This API uses an asynchronous callback to ret
 | Name         | Type                       | Mandatory | Description                           |
 | :--------------| :-------------------------- | :-----| :------------------------------ |
 | type           | [ToneType](#tonetype9)       | Yes   | Tone type.                |
-| callback       | AsyncCallback<void\>        | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback       | AsyncCallback<void\>        | Yes   | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -4666,7 +4747,7 @@ Starts DTMF tone playing. This API uses an asynchronous callback to return the r
 
 | Name  | Type                | Mandatory| Description                          |
 | :------- | :------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback<void\> | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -4723,7 +4804,7 @@ Stops the tone that is being played. This API uses an asynchronous callback to r
 
 | Name  | Type                | Mandatory| Description                          |
 | :------- | :------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback<void\> | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -4780,7 +4861,7 @@ Releases the resources associated with the TonePlayer instance. This API uses an
 
 | Name  | Type                | Mandatory| Description                           |
 | :------- | :------------------- | :--- | :---------------------------- |
-| callback | AsyncCallback<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback<void\> | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -5155,18 +5236,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let flag = asrProcessingController.setAsrVoiceMuteMode(audio.AsrVoiceMuteMode.OUTPUT_MUTE, true);
 ```
 
-## RenderTarget<sup>22+</sup>
+## AudioRenderer<sup>8+</sup>
 
-Enumerates the rendering targets of the audio renderer.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
-| Name                              |  Value    | Description                      |
-| ---------------------------------- | ------ | ------------------------- |
-| PLAYBACK                           | 0      | Playback mode (default mode of the audio renderer).<br>In this mode, audio is played properly through the audio renderer.|
-| INJECT_TO_VOICE_COMMUNICATION_CAPTURE | 1 | Injection mode. In this mode, when the source type of the recording stream is [SOURCE_TYPE_VOICE_COMMUNICATION](arkts-apis-audio-e.md#sourcetype8) and the audio scene is [AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8), the output of the audio renderer is injected into the VoIP recording stream.|
+Audio rendering. Before calling any API in **AudioRenderer**, use [audio.createAudioRenderer](arkts-apis-audio-f.md#audiocreateaudiorenderer8) to create an **AudioRenderer** instance first.
 
 ### setTarget<sup>22+</sup>
 
@@ -5221,43 +5293,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { audio } from '@kit.AudioKit';
+
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function example() {
-  let audioStreamInfo: audio.AudioStreamInfo = {
-    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
-    channels: audio.AudioChannel.CHANNEL_2, // Channel.
-    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
-    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
-  };
-
-  let audioRendererInfo: audio.AudioRendererInfo = {
-    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
-    rendererFlags: 0 // Audio renderer flag.
-  };
-
-  let audioRendererOptions: audio.AudioRendererOptions = {
-    streamInfo: audioStreamInfo,
-    rendererInfo: audioRendererInfo
-  };
-
-  try {
-    const audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-    console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
-
-    // Set the injection mode.
-    audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
-    console.info('setTarget INJECT_TO_VOICE_COMMUNICATION_CAPTURE');
-
-    // Set the playback mode.
-    audioRenderer.setTarget(audio.RenderTarget.PLAYBACK);
-    console.info('setTarget PLAYBACK');
-
-  } catch (err) {
-    console.error(AudioFrameworkRenderLog: Error : ${err.message});
-  }
-}
+audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE).then(() => {
+  console.info('Succeeded in setting target.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set target. code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### getTarget<sup>22+</sup>
@@ -5292,39 +5335,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+async function getTarget(){
+  // (Optional) Set the injection mode.
+  await audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
+  console.info('Succeeded in setting target.');
 
-async function example() {
-  let audioStreamInfo: audio.AudioStreamInfo = {
-    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
-    channels: audio.AudioChannel.CHANNEL_2, // Channel.
-    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
-    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
-  };
-
-  let audioRendererInfo: audio.AudioRendererInfo = {
-    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
-    rendererFlags: 0 // Audio renderer flag.
-  };
-
-  let audioRendererOptions: audio.AudioRendererOptions = {
-    streamInfo: audioStreamInfo,
-    rendererInfo: audioRendererInfo
-  };
-
-  try {
-    const audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-    console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
-
-    // (Optional) Set the injection mode.
-    await audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
-    console.info('setTarget success');
-
-    // Obtain the current rendering target of the audio renderer.
-    let renderTarget = audioRenderer.getTarget();
-  } catch (err) {
-    console.error(AudioFrameworkRenderLog: Error : ${err.message});
-  }
+  // If the SetTarget API has been called before this API is called, ensure that the SetTarget API has been successfully set. Otherwise, the obtained value may be inaccurate.
+  let renderTarget = audioRenderer.getTarget();
+  console.info(`Succeeded in getting target, RenderTarget: ${renderTarget}.`);
 }
 ```

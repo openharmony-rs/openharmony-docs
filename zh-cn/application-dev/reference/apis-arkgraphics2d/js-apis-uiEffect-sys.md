@@ -328,8 +328,7 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 **示例：**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
-import { common2D } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -342,7 +341,7 @@ struct BezierWarpExample {
 
   build() {
     Column() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
         .foregroundFilter(uiEffect.createFilter().bezierWarp(this.valueBezier))
     }
   }
@@ -746,10 +745,10 @@ struct Index {
   @State rippleMaskRadius: number = 0.1
   build() {
     Stack() {
-      //转场前页面
+      // 转场前页面
       Image($r("app.media.before")).width("100%").height("100%")
         if (this.enterNewPage){
-          //转场后页面
+          // 转场后页面
           Column().width("100%").height("100%").backgroundImage($r("app.media.after"))
             .backgroundFilter(uiEffect.createFilter()
               .maskTransition(
@@ -1397,7 +1396,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   }
   let mask = uiEffect.Mask.createPixelMapMask(pixelMap, srcRect, dstRect, fillColor);
 }).catch((error: BusinessError)=>{
-  console.error('Failed to create pixelmap. code is ${error.code}, message is ${error.message}');
+  console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
 })
 ```
 
@@ -1436,6 +1435,7 @@ static createPixelMapMask(pixelMap: image.PixelMap): Mask
 ```ts
 import { uiEffect } from '@kit.ArkGraphics2D';
 import { image } from '@kit.ImageKit';
+import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
@@ -1454,7 +1454,7 @@ struct Index {
 
   private getPixelMap(): image.PixelMap | undefined {
     try {
-      let context: Context = getContext(this) as Context;
+      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       // this path should be created in local
       const path: string = context.resourceDir + "/perlin_worley_noise_3d_64.bmp";
       const imageSource: image.ImageSource = image.createImageSource(path);
@@ -1543,7 +1543,7 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 **示例：**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
+import { uiEffect } from '@kit.ArkGraphics2D'
 // values: [[1.0, 0.5], [1.0, 1.0]] => color0: 1.0; color1: 1.0; position0: 0.5; position1: 1.0
 let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[1.0, 0.5], [1.0, 1.0]]);
 @Entry
@@ -1551,7 +1551,7 @@ let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[
 struct RadialGradientMaskExample {
   build() {
     Stack() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
       Column()
         .width('100%')
         .height('100%')
@@ -1604,7 +1604,7 @@ let mask = uiEffect.Mask.createWaveGradientMask({x: 0.5, y: 0.5}, 0.01, 0.5, 0.1
 struct WaveGradientMaskExample {
   build() {
     Stack() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
       Column()
         .width('100%')
         .height('100%')

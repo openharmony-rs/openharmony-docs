@@ -8,7 +8,7 @@
 
 The **geolocation** module provides a wide array of location services, including GNSS positioning, network positioning, geocoding, reverse geocoding, and geofencing.
 
-> **NOTE**
+> **NOTE**<br>
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > The APIs provided by this module are no longer maintained since API version 9. You are advised to use [geoLocationManager](js-apis-geoLocationManager.md).
 > This module supports only the WGS-84 coordinate system.

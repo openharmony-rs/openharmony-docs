@@ -100,3 +100,16 @@ Freeform windows can enter immersive layout by hiding the decoration bar.
 In immersive layout, an application window's component layout expands from the safe area to the entire window. You can use [isImmersiveLayout](../reference/apis-arkui/arkts-apis-window-Window.md#isimmersivelayout20) to check whether the window is in immersive layout.
 
 For details about immersive development and implementation in different window forms in multi-device scenarios, see [Immersive Window](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-device-window-immersive).
+
+## Global Coordinate System
+
+The global coordinate system refers to a coordinate system that uniformly describes the positions of objects such as windows and pointers in scenarios where a device is connected to an [extended screen](../displaymanager/display-terminology.md#extended-screen) (multiple physical screens). It takes the upper-left corner of the main screen as the origin (0, 0), with the right side of the screen as the positive direction of the x-axis and the bottom side of the screen as the positive direction of the y-axis.
+
+In this coordinate system, all physical screens are mapped to the same continuous virtual coordinate space. Various window operations, coordinate conversions, and window rectangle change events are calculated and callback based on this coordinate space.
+
+![global-coordinate-system](figures/global-coordinate-system.png)
+
+Usage scenarios:
+
+- Cross-screen window movement: Call the API based on the global coordinate system to move a window. There is no need to pass specific screen ID parameters to move the window between multiple screens.
+- Window position change monitoring: Monitor window rectangle change events based on the global coordinate system to uniformly obtain information about changes in the position and size of the window in a multi-screen environment.

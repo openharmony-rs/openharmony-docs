@@ -33,7 +33,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 | Name | Type                                            | Mandatory| Description                                                            |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
 | colors  | ArrayBuffer                                      | Yes  | Color array in BGRA_8888 format.                                       |
-| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Pixel properties, including the alpha type, size, scale mode, pixel format, and editable.|
+| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Pixel properties, including the alpha type, size, scale mode, pixel format, and editability.|
 
 **Return value**
 
@@ -221,7 +221,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 | Name | Type                                            | Mandatory| Description                                                            |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
 | colors  | ArrayBuffer                                      | Yes  | Color array in BGRA_8888 format.                                       |
-| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Pixel properties, including the alpha type, size, scale mode, pixel format, and editable.|
+| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Pixel properties, including the alpha type, size, scale mode, pixel format, and editability.|
 
 **Return value**
 | Type                            | Description                 |
@@ -2004,7 +2004,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 
 | Type                            | Description                 |
 | -------------------------------- | --------------------- |
-| Promise\<[PixelMap]> | Promise used to return the PixelMap object.|
+| Promise\<[PixelMap](#pixelmap)> | Promise used to return the PixelMap object.|
 
 **Example**
 
@@ -2359,4 +2359,3 @@ async function Demo() {
   })
 }
 ```
-<!--no_check-->

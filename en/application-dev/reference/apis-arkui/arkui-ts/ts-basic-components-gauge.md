@@ -20,9 +20,11 @@ This component can contain only one child component.
 
 > **NOTE**
 >
-> You are advised to use the **Text** component to build the current value and auxiliary text.
+> - Supported child component types: built-in and custom components, including https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/ui/rendering-control/arkts-rendering-control-foreach.md but excluding [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md) and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)
 >
-> If the width and height of the child component are in percentage, the reference range is the rectangle that has the outer ring as its inscribed circle.
+> - You are advised to use the **Text** component to build the current value and auxiliary text.
+>
+> - If the width and height of the child component are in percentage, the reference range is the rectangle that has the outer ring as its inscribed circle.
 
 
 ## APIs
@@ -125,9 +127,9 @@ Sets the colors of the gauge.
 
 Since API version 11, this API follows the following rules:
 
-If the data type is ResourceColor, the ring is of the monochrome type.
+If the data type is [ResourceColor](ts-types.md#resourcecolor), the ring is of the monochrome type.
 
-If the data type is LinearGradient, the ring is of the gradient type.
+If the data type is [LinearGradient](ts-basic-components-datapanel.md#lineargradient10), the ring is of the gradient type.
 
 If the data type is Array, the ring is of the gradient type. The first parameter indicates the color value. If it is set to a non-color value, the color of 0xFFE84026 is used. The second parameter indicates the color weight. If it is set to a negative number or a non-numeric value, the color weight is 0.
 
@@ -143,7 +145,7 @@ A ring of the gradient type contains a maximum of nine color segments. If there 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| colors | [ResourceColor<sup>11+</sup>](ts-types.md#resourcecolor) \| [LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10) \| Array&lt;[[ResourceColor<sup>10+</sup>](ts-types.md#resourcecolor) \| [LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10) \, number]&gt; | Yes  | Colors of the gauge. You can set colors for individual segments.<br>Default value in API version 9: **Color.Black**<br>Default value in API version 11:<br>If no color is provided or the array is empty, the ring color will be a gradient consisting of the following colors: 0xFF64BB5C, 0xFFF7CE00, and 0xFFE84026.<br>If a color value is provided but invalid, the ring will be in the color of 0xFFE84026.<br>Colors with a weight of 0 are not displayed in the ring. If all weights are 0, the ring is not displayed.|
+| colors | [ResourceColor<sup>11+</sup>](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\|&nbsp;Array&lt;[[ResourceColor<sup>10+</sup>](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\,&nbsp;number]&gt; | Yes  | Colors of the gauge. You can set colors for individual segments.<br>Default value in API version 9: **Color.Black**<br>Default value in API version 11:<br>If no color is provided or the array is empty, the ring color will be a gradient consisting of the following colors: 0xFF64BB5C, 0xFFF7CE00, and 0xFFE84026.<br>If a color value is provided but invalid, the ring will be in the color of 0xFFE84026.<br>Colors with a weight of 0 are not displayed in the ring. If all weights are 0, the ring is not displayed.|
 
 ### strokeWidth
 
@@ -161,13 +163,14 @@ Sets the stroke width of the gauge.
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| length | [Length](ts-types.md#length) | Yes  | Stroke width of the gauge.<br>Default value: **4**<br>Unit: vp<br>**NOTE**<br>If a value less than 0 is set, the default value is used.<br>If the value exceeds the maximum value, the radius of the gauge, the maximum value is used.<br>The value cannot be in percentage.|
+| length | [Length](ts-types.md#length) | Yes  | Stroke width of the gauge.<br>Default value: **4**<br>Unit: vp<br>**NOTE**<br>A value less than or equal to 0 is handled as the default value.<br>If the value exceeds the maximum value, the radius of the gauge, the maximum value is used.<br>The value cannot be in percentage.|
 
 ### description<sup>11+</sup>
 
 description(value: CustomBuilder)
 
 Sets the description of the gauge.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -185,6 +188,7 @@ trackShadow(value: GaugeShadowOptions)
 
 Sets the shadow style of the gauge.
 
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -193,13 +197,14 @@ Sets the shadow style of the gauge.
 
 | Name| Type                                               | Mandatory| Description                                                        |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [GaugeShadowOptions](#gaugeshadowoptions11) | Yes  | Shadow style.<br>**NOTE**<br>The shadow color is the same as the ring color.<br>If this attribute is set to **null**, the shadow effect is disabled.|
+| value  | [GaugeShadowOptions](#gaugeshadowoptions11) | Yes  | Shadow effect. You can specify the blur radius, and the offset along the X and Y axes.<br>**NOTE**<br>The shadow color is the same as the ring color.<br>If this attribute is set to **null**, the shadow effect is disabled.|
 
 ### indicator<sup>11+</sup>
 
 indicator(value: GaugeIndicatorOptions)
 
 Sets the indicator style of the gauge.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -253,11 +258,13 @@ Creates a content modifier.
 
 Inherits from [MultiShadowOptions](ts-information-display-common.md#multishadowoptions) and has all attributes of **MultiShadowOptions**.
 
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 ## GaugeIndicatorOptions<sup>11+</sup>
 
 Provides gauge indicator options.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -512,7 +519,7 @@ struct Gauge4 {
 
 ### Example 5: Setting the Minimum and Maximum Values
 
-This example shows how to set the minimum and maximum values of the gauge by configuring **min** and **max**.
+This example shows how to set the minimum and maximum values of the gauge by configuring **min** and **max** in [GaugeOptions](#gaugeoptions18).
 
 ```ts
 @Entry
@@ -777,9 +784,9 @@ struct Gauge2 {
 }
 ```
 ```xml
-<svg width="200px" height="200px">
-    <path d="M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 z"
-          stroke="black" stroke-width="3" fill="white">
+<svg width='200px' height='200px'>
+    <path d='M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 z'
+          stroke='black' stroke-width='3' fill='white'>
     </path>
 </svg>
 ```

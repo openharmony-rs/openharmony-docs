@@ -15,7 +15,7 @@ The device status, message sending progress, and data transmitted are variables.
 
 The distributed data object (**distributedDataObject**) module implements global access to variables. It provides basic data object management capabilities, including creating, querying, deleting, and modifying in-memory objects and subscribing to data or status changes. It also provides distributed capabilities. OpenHarmony provides easy-to-use JS APIs for distributed application scenarios. With these APIs, you can easily implement data collaboration for an application across devices and listening for status and data changes between devices. The **distributedDataObject** module implements data object collaboration for the same application across multiple devices that form a Super Device. It greatly reduces the development workloads compared with the traditional implementation.
 
-Currently, <!--RP2-->distributed data objects can be used only in [cross-device migration](../application-models/hop-cross-device-migration.md) and [multi-device collaboration using the cross-device call](../application-models/hop-multi-device-collaboration.md#using-cross-device-call).<!--RP2End-->
+Currently, <!--RP2-->the **distributedDataObject** module can be used only in the [cross-device migration](../application-models/hop-cross-device-migration.md) and [multi-device collaboration through call invocation](../application-models/uiability-cross-device-interaction.md) scenarios.<!--RP2End-->
 
 ## Basic Concepts
 
@@ -49,9 +49,9 @@ The distributed data objects are encapsulated JS objects in distributed in-memor
 
 **Table 1** Correspondence between a distributed data object and a distributed database
 
-| Distributed Data Object Instance| Object Instance| Property Name| Property Value|
+| Distributed Data Object Instance| Object Instance| Property Name| Property Value| 
 | -------- | -------- | -------- | -------- |
-| Distributed in-memory database| Database identified by **sessionID**| Key of a record in the database| Value of a record in the database|
+| Distributed in-memory database| Database identified by **sessionID**| Key of a record in the database| Value of a record in the database| 
 
 
 ### Cross-Device Sync and Data Change Notification
@@ -95,7 +95,7 @@ dataObject['parents']['mom'] = "amy"; // Unsupported modification
 
 ### Persistence of Distributed Data Objects
 
-Distributed data objects run in the process space of applications. After the data of a distributed data object is persisted in the distributed database, the data will not be lost after the application exits.
+Distributed data objects run in the process space of applications. After the data of a distributed data object is persisted in the distributed database, the data will not be lost after the application exits. The distributed database automatically synchronizes data. You can call [on('change')](../reference/apis-arkdata/js-apis-data-distributedobject.md#onchange20) to listen for data changes.
 
 You need to persist distributed data objects in the following scenarios:
 
@@ -113,7 +113,7 @@ Since API version 20, synchronization of [assets](../reference/apis-arkdata/js-a
 
 ## Constraints
 <!--RP5-->
-- Currently, distributed data objects can be used only in [cross-device migration](../application-models/hop-cross-device-migration.md) and [multi-device collaboration using the cross-device call](../application-models/hop-multi-device-collaboration.md#using-cross-device-call). The size of each distributed data object cannot exceed 150 KB in the cross-device migration scenario, whereas it cannot exceed 500 KB in the multi-device collaboration scenario.
+- Currently, the **distributedDataObject** module can be used only in the [cross-device migration](../application-models/hop-cross-device-migration.md) and [multi-device collaboration through call invocation](../application-models/uiability-cross-device-interaction.md) scenarios. The size of each distributed data object cannot exceed 150 KB in the cross-device migration scenario, whereas it cannot exceed 500 KB in the multi-device collaboration scenario.
 
 - Currently, the cross-device continuation capability supports the following scenarios:
   - [Migrating between abilities in the same application across devices](../application-models/hop-cross-device-migration.md#migrating-between-abilities-in-the-same-application-across-devices)
@@ -174,7 +174,7 @@ Most of the APIs for cross-device sync of distributed data objects are executed 
 
     2.1 Call **create()** to create a distributed data object instance for the application on the target device.
 
-    2.2 Register a listener callback for the data recovery state. If "restored" is returned by the listener callback registered, the distributed data object of the target device has obtained the data transferred from the source device.
+    2.2 Register a listener callback for the data restoration state. If **'restored'** is returned by the listener callback registered, the distributed data object of the target device has restored the data transferred from the source device.
 
     2.3 Obtain the **sessionId** of the source device from **want.parameters** and call **setSessionId** to set the same **sessionId** for the target device.
 
@@ -186,7 +186,7 @@ Most of the APIs for cross-device sync of distributed data objects are executed 
 <!--RP1-->
 > - The **continuable** tag must be set for cross-device migration. For details, see [How to Develop](../application-models/hop-cross-device-migration.md#how-to-develop).<!--RP1End-->
 >
-> - The **sessionId** field in **wantParam** is used by other services. You are advised to customize a key for accessing the **sessionId** field.
+> - The **sessionId** field in **wantParam** may be used by other services. You are advised to customize a key for accessing the **sessionId** field.
 >
 > - Use data of the Asset type to record information about assets (such as documents, images, and videos). When asset data is migrated, the corresponding asset is also migrated to the target device.
 >
@@ -196,7 +196,7 @@ Most of the APIs for cross-device sync of distributed data objects are executed 
 >
 > - Currently, only files in distributed file directory can be migrated. Files in other directories can be copied or moved to distributed file directory before migration. For details about how to move or copy files and obtain URIs, see [File Management](../reference/apis-core-file-kit/js-apis-file-fs.md) and [File URI](../reference/apis-core-file-kit/js-apis-file-fileuri.md).
 
-<!-- @[data_sync_on_distributed_data_object_cross_device_collaboration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceCollaboration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
+<!-- @[data_sync_on_distributed_data_object_cross_device_collaboration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceCollaboration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)--> 
 
 ``` TypeScript
 import { AbilityConstant, Caller, UIAbility, Want } from '@kit.AbilityKit';
@@ -204,7 +204,7 @@ import { distributedDataObject } from '@kit.ArkData';
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { JSON } from '@kit.ArkTS';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // Define service data.
 class Data {
@@ -322,9 +322,8 @@ function getRemoteDeviceId() {
   }
   return deviceId;
 }
-
 ```
-
+               
 
 ### Using Distributed Data Objects in Multi-Device Collaboration
 
@@ -354,17 +353,17 @@ function getRemoteDeviceId() {
 
 > **NOTE**
 >
-> - Currently, <!--RP3-->distributed data objects can be used only in [multi-device collaboration using the cross-device call](../application-models/hop-multi-device-collaboration.md#using-cross-device-call) to sync data.<!--RP3End-->
+> - Currently, the distributed data object can be used for data synchronization only in the scenario of [multi-device collaboration through call invocation](../application-models/uiability-cross-device-interaction.md).
 >
-> - To implement multi-device collaboration using the cross-device call, <!--RP4-->you need to apply for the ohos.permission.DISTRIBUTED_DATASYNC permission and set **launchType** to **singleton**. For details, see [How to Develop](../application-models/hop-multi-device-collaboration.md#using-cross-device-call).<!--RP4End-->
+> - For development in this scenario, you need to apply for the **ohos.permission.DISTRIBUTED_DATASYNC** permission and set the launch type to singleton. For details, see [Multi-Device Collaboration Through Call Invocation](../application-models/uiability-cross-device-interaction.md).
 >
-> - The **sessionId** field in **wantParam** is used by other services. You are advised to customize a key for accessing the **sessionId** field.
+> - The **sessionId** field in **wantParam** may be used by other services. You are advised to customize a key for accessing the **sessionId** field.
 >
 > - For details about how to obtain the **networkId** of the peer device, see [Querying Device Information](../distributedservice/devicemanager-guidelines.md#querying-device-information).
 
  The sample code is as follows:
 
-<!-- @[data_sync_on_distributed_data_object_cross_device_migration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceMigration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
+<!-- @[data_sync_on_distributed_data_object_cross_device_migration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceMigration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)--> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -480,7 +479,7 @@ export default class EntryAbility extends UIAbility {
     return AbilityConstant.OnContinueResult.AGREE;
   }
 
-  // 2. Create a distributed data object in onCreate() for the application on the target device (for cold start), and add it to the network for data migration.
+  // 2. Create a distributed data object in onCreate and onNewWant for the application on the target device, and add it to the network for data restoration.
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     if (launchParam.launchReason === AbilityConstant.LaunchReason.CONTINUATION) {
       if (want.parameters && want.parameters.distributedSessionId) {
@@ -489,7 +488,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 
-  // 2. Create a distributed data object in onNewWant() for the application on the target device (for hot start), and add it to the network for data migration.
+  // 2. Create a distributed data object in onCreate and onNewWant for the application on the target device, and add it to the network for data restoration.
   onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     if (launchParam.launchReason === AbilityConstant.LaunchReason.CONTINUATION) {
       if (want.parameters && want.parameters.distributedSessionId) {
@@ -508,7 +507,7 @@ export default class EntryAbility extends UIAbility {
     let mailInfo: ContentInfo = new ContentInfo(undefined, undefined, [], undefined, undefined, undefined, undefined);
     dataObject = distributedDataObject.create(this.context, mailInfo);
 
-    // 2.2 Register a listener callback for the data recovery state. If "restored" is returned by the listener callback registered, the distributed data object of the target device has obtained the data transferred from the source device. If asset data is migrated, the file is also transferred to the target device.
+    // 2.2 Register a listener callback for the data restoration state. If "restored" is returned by the listener callback registered, the distributed data object of the target device has restored the data transferred from the source device. If asset data is migrated, the file is also transferred to the target device.
     dataObject.on('status', (sessionId: string, networkId: string, status: string) => {
       hilog.info(DOMAIN, TAG, `status change, sessionId:  ${sessionId}`);
       hilog.info(DOMAIN, TAG, `status change, networkId:  ${networkId}`);
@@ -530,5 +529,12 @@ export default class EntryAbility extends UIAbility {
     dataObject.setSessionId(sessionId);
   }
 }
-
 ```
+
+##  
+
+ 
+
+-  
+
+-  

@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通过WebCookie可以控制Web组件中的cookie的各种行为，其中每个应用中的所有Web组件共享一个WebCookieManager实例。cookie的格式遵循[RFC2965](https://www.rfc-editor.org/rfc/rfc2965)标准。当前WebCookieManager的获取cookie接口不支持partitioned cookie。
+通过WebCookie可以控制Web组件中的cookie的各种行为，其中每个应用中的所有Web组件共享一个WebCookieManager实例。cookie的格式遵循[RFC6265](https://www.rfc-editor.org/rfc/rfc6265)标准。当前WebCookieManager的获取cookie接口不支持partitioned cookie。
 
 > **说明：**
 >
@@ -45,7 +45,7 @@ static fetchCookieSync(url: string, incognito?: boolean): string
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
 | url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
-| incognito    | boolean | 否   | true表示获取隐私模式下webview的内存cookies，false表示正常非隐私模式下的cookies。<br>默认值：false。 |
+| incognito    | boolean | 否   | true表示获取隐私模式下webview的内存cookies，false表示正常非隐私模式下的cookies。<br>默认值：false。<br>传入undefined或null会抛出异常错误码401。 |
 
 **返回值：**
 
@@ -308,7 +308,7 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 | ------ | ------ | ---- | :------------------------ |
 | url    | string | 是   | 要设置的cookie所属的url，建议使用完整的url。 |
 | value  | string | 是   | 要设置的cookie的值。      |
-| incognito    | boolean | 否   | true表示设置隐私模式下对应url的cookies，false表示设置正常非隐私模式下对应url的cookies。<br>默认值：false。 |
+| incognito    | boolean | 否   | true表示设置隐私模式下对应url的cookies，false表示设置正常非隐私模式下对应url的cookies。<br>默认值：false。 <br>传入undefined或null会抛出异常错误码401。|
 
 **错误码：**
 
@@ -779,7 +779,7 @@ static putAcceptCookieEnabled(accept: boolean): void
 
 | 参数名 | 类型    | 必填 | 说明                                 |
 | ------ | ------- | ---- | :----------------------------------- |
-| accept | boolean | 是   | 设置是否拥有发送和接收cookie的权限，默认为true，表示拥有发送和接收cookie的权限。 |
+| accept | boolean | 是   | 设置是否拥有发送和接收cookie的权限，默认为true，表示拥有发送和接收cookie的权限。false表示没有发送和接收cookie的权限。 |
 
 **错误码：**
 

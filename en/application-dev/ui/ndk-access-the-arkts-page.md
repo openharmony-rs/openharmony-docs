@@ -67,13 +67,13 @@ When building a UI with NDK APIs, you need to create placeholder components in t
   ```
 
 - The placeholder component can be transformed into a mounting object on the native side through related APIs.
-  ```
+  ```c
   ArkUI_NodeContentHandle contentHandle;
   OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
   ```
 
 - The mounting object provides APIs for mounting and unmounting components.
-  ```
+  ```c
   OH_ArkUI_NodeContent_AddNode(handle_, myNativeNode);
   OH_ArkUI_NodeContent_RemoveNode(handle_, myNativeNode);
   ```
@@ -85,9 +85,9 @@ The UI component capabilities provided by the NDK, including component creation,
 
 > **NOTE**
 >
-> The [module query API](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface) handles NDK initialization. It is recommended that you call this API for global initialization before constructing UIs with the NDK.
+> - The [module query API](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface) handles NDK initialization. It is recommended that you call this API for global initialization before constructing UIs with the NDK.
 
-```
+```c
 ArkUI_NativeNodeAPI_1* arkUINativeNodeApi = nullptr;
 OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativeNodeApi);
 ```
@@ -96,7 +96,7 @@ After obtaining a function pointer struct, use the functions within the struct t
 
 
 - Create and destroy components.
-  ```
+  ```c
   auto listNode = arkUINativeNodeApi->createNode(ARKUI_NODE_LIST);
   arkUINativeNodeApi->disposeNode(listNode);
   ```
@@ -104,7 +104,7 @@ After obtaining a function pointer struct, use the functions within the struct t
   To query the component types supported by the NDK API, use the [ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype) API.
 
 - Perform component tree operations.
-  ```
+  ```c
   auto parent = arkUINativeNodeApi->createNode(ARKUI_NODE_STACK);
   auto child = arkUINativeNodeApi->createNode(ARKUI_NODE_STACK);
   arkUINativeNodeApi->addChild(parent, child);
@@ -112,7 +112,7 @@ After obtaining a function pointer struct, use the functions within the struct t
   ```
 
 - Set attributes.
-  ```
+  ```c
   auto stack = arkUINativeNodeApi->createNode(ARKUI_NODE_STACK);
   ArkUI_NumberValue value[] = {{.f32 = 100}};
   ArkUI_AttributeItem item = {value, 1};
@@ -125,7 +125,7 @@ After obtaining a function pointer struct, use the functions within the struct t
   To query the attribute types supported by the NDK API, use the [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) API.
 
 - Register events.
-  ```
+  ```c
   auto stack = arkUINativeNodeApi->createNode(ARKUI_NODE_STACK);
   arkUINativeNodeApi->addNodeEventReceiver(stack, [](ArkUI_NodeEvent* event){
       // process event
@@ -142,16 +142,17 @@ The following example demonstrates how to use **ContentSlot** to mount a native 
 
 Sample code directory structure:
 
-```
+```txt
 .
 |——cpp
 |    |——types
-|    |	  |——libentry
-|    |	  |	   |——index.d.ts Bridge methods between native and ArkTS sides.
+|    |      |——libentry
+|    |      |       |——index.d.ts Bridge methods between native and ArkTS sides.
 |    |——napi_init.cpp Native bridge definitions.
 |    |——NativeEntry.cpp Native bridge implementation.
 |    |——NativeEntry.h Native bridge method definitions.
-|    |——CMakeList.txt C library reference file.
+|    |——NativeModule.h Encapsulation of the native modules.
+|    |——CMakeLists.txt C library reference file.
 |    |——ArkUIBaseNode.h Base node encapsulation class.
 |    |——ArkUINode.h Extended node encapsulation class.
 |    |——ArkUIListNode.h List component encapsulation class.
@@ -213,6 +214,7 @@ Sample code directory structure:
     ```
 
 2. Use the **Native** template to create a project, and provide a bridging method for the Node-API on the native side, implementing the **NativeNode** module APIs on the ArkTS side.
+
    API declaration:
 
     <!-- @[Cpp_indexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/types/libentry/Index.d.ts) -->
@@ -326,7 +328,6 @@ Sample code directory structure:
     // NativeEntry.cpp
     
     #include <arkui/native_node_napi.h>
-    #include <hilog/log.h>
     #include <js_native_api.h>
     #include "NativeEntry.h"
     #include "NormalTextListExample.h"
@@ -365,7 +366,7 @@ Sample code directory structure:
    
    To use the C APIs provided by the NDK, add references to the required libraries (such as **libace_ndk.z.so**) in **CMakeLists.txt**. The example uses **libentry.so** as the default dynamic library name. When adding new .cpp files, ensure that they are included in **CMakeLists.txt**. Files not listed in **CMakeLists.txt** will not be compiled.
    
-   ```
+   ```c
    add_library(entry SHARED napi_init.cpp NativeEntry.cpp)
    target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so)
    ```
@@ -413,7 +414,7 @@ Sample code directory structure:
     #endif // MYAPPLICATION_NATIVEMODULE_H
     ```
 
-   (2) Provide base class objects for list and text components to encapsulate common properties and events.
+   (2) Provide base class objects for list and text components to encapsulate common attributes and events.
    
     <!-- @[Cpp_ArkUIBaseNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUIBaseNode.h) -->
     
@@ -495,7 +496,7 @@ Sample code directory structure:
     
     ``` C
     // ArkUINode.h
-    // Provide encapsulation of common properties and events.
+    // Provide encapsulation of common attributes and events.
     #ifndef MYAPPLICATION_ARKUINODE_H
     #define MYAPPLICATION_ARKUINODE_H
     
@@ -683,7 +684,6 @@ Sample code directory structure:
     #include "ArkUIListItemNode.h"
     #include "ArkUIListNode.h"
     #include "ArkUITextNode.h"
-    #include <hilog/log.h>
     
     namespace NativeModule {
     
@@ -697,7 +697,7 @@ Sample code directory structure:
         list->SetScrollBarState(true);
         const int itemCount = 30;
         const int fontSizes = 16;
-        const int screenWidth = 300;
+        const float screenWidth = 1;
         const int defaultHeight = 100;
         // 2: Create a ListItem child component and mount it to the List component.
         for (int32_t i = 0; i < itemCount; ++i) {
@@ -705,9 +705,9 @@ Sample code directory structure:
             auto textNode = std::make_shared<ArkUITextNode>();
             textNode->SetTextContent(std::to_string(i));
             textNode->SetFontSize(fontSizes);
-            textNode->SetFontColor(0xFFff00ff);
+            textNode->SetFontColor(0xFF000000);
             textNode->SetPercentWidth(1);
-            textNode->SetWidth(screenWidth);
+            textNode->SetPercentWidth(screenWidth);
             textNode->SetHeight(defaultHeight);
             textNode->SetBackgroundColor(0xFFfffacd);
             textNode->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);

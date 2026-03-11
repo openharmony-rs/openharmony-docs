@@ -10,13 +10,13 @@ A click event is triggered when a component is clicked.
 
 >  **NOTE**
 >
->  The event is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> - The event is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  Click events follow the [touch event](../arkui-ts/ts-universal-events-touch.md) dispatch mechanism, supporting custom behaviors like event blocking and bubbling.
+> - Click events follow the [touch event](../arkui-ts/ts-universal-events-touch.md) dispatch mechanism, supporting custom behaviors like event blocking and bubbling.
 >
->  For details about event dispatch, see [Event Interaction Pipeline](../../../ui/arkts-interaction-basic-principles.md#event-interaction-pipeline). For details about gesture event handling, see [Multi-level Gesture Events](../../../ui/arkts-gesture-events-multi-level-gesture.md).
+> - For details about event dispatch, see [Event Interaction Pipeline](../../../ui/arkts-interaction-basic-principles.md#event-interaction-pipeline). For details about gesture event handling, see [Multi-level Gesture Events](../../../ui/arkts-gesture-events-multi-level-gesture.md).
 >
->  When triggered via keyboard or gamepad, click events skip the [onGestureJudgeBegin](./ts-gesture-customize-judge.md#ongesturejudgebegin), [onGestureRecognizerJudgeBegin](./ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin), and [willClick](../arkts-apis-uicontext-uiobserver.md#onwillclick12) callbacks.
+> - When triggered via keyboard or gamepad, click events skip the [onGestureJudgeBegin](./ts-gesture-customize-judge.md#ongesturejudgebegin), [onGestureRecognizerJudgeBegin](./ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin), and [willClick](../arkts-apis-uicontext-uiobserver.md#onwillclick12) callbacks.
 
 ## onClick<sup>12+</sup>
 
@@ -100,14 +100,14 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
 
 | Name           | Type                        | Read-Only| Optional       | Description                                                    |
 | ------------------- | ------------------------- | ------ | -------- | -------------------------------------------------------- |
-| x                   | number                               | No| No| X coordinate of the click relative to the left edge of the clicked component.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
-| y                   | number                               | No| No| Y coordinate of the click relative to the upper left corner of the clicked component's original area.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.         |
-| windowX<sup>10+</sup> | number                             | No| No| X coordinate of the click relative to the upper left corner of the application window.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| windowY<sup>10+</sup> | number                             | No| No| Y coordinate of the click relative to the upper left corner of the application window.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| x                   | number                               | No| No| X coordinate of the click relative to the left edge of the clicked component. After [distanceThreshold](ts-universal-events-click.md#onclick12) is set for **onClick**, the position refers to the touch-up point. If the event is triggered by a keyboard or gamepad device, the click position is the center of the clicked element.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
+| y                   | number                               | No| No| Y coordinate of the click position relative to the uppper left corner of the target element's original bounds. After **distanceThreshold** in **onClick** is set, the position refers to the touch-up point. If the event is triggered by a keyboard or gamepad device, the click position is the center of the clicked element.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.         |
+| windowX<sup>10+</sup> | number                             | No| No| X coordinate of the click relative to the upper left corner of the application window. After **distanceThreshold** in **onClick** is set, the position refers to the touch-up point.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| windowY<sup>10+</sup> | number                             | No| No| Y coordinate of the click relative to the upper left corner of the application window. After **distanceThreshold** in **onClick** is set, the position refers to the touch-up point.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | displayX<sup>10+</sup> | number                            | No| No| X coordinate of the click relative to the upper left corner of the application screen.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | displayY<sup>10+</sup> | number                            | No| No| Y coordinate of the click relative to the upper left corner of the application screen.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| screenX<sup>(deprecated)</sup> | number                    | No| No| X coordinate of the click relative to the upper left corner of the application window.<br>Unit: vp<br>This API is deprecated since API version 10. You are advised to use **windowX** instead.|
-| screenY<sup>(deprecated)</sup> | number                    | No| No| Y coordinate of the click relative to the upper left corner of the application window.<br>Unit: vp<br>This API is deprecated since API version 10. You are advised to use **windowY** instead.|
+| screenX<sup>(deprecated)</sup> | number                    | No| No| X coordinate of the click relative to the upper left corner of the application window.<br>Unit: vp<br>Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **windowX** instead.|
+| screenY<sup>(deprecated)</sup> | number                    | No| No| Y coordinate of the click relative to the upper left corner of the application window.<br>Unit: vp<br>Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **windowY** instead.|
 | preventDefault<sup>12+</sup>      | () => void | No| No| Blocks the default event.<br> **NOTE**<br>This API is only supported by the following components: **RichEditor** and **Hyperlink**. An exception is thrown when this API is used with unsupported components. Currently, asynchronous calls and Modifier APIs are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | hand<sup>15+</sup> | [InteractionHand](./ts-appendix-enums.md#interactionhand15) | No| Yes| Whether the event is triggered by a left-hand or right-hand tap.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | globalDisplayX<sup>20+</sup> | number | No| Yes| X-coordinate of the click position relative to the upper left corner of the global display.<br>Unit: vp<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
@@ -148,26 +148,18 @@ struct ClickExample {
   build() {
     Column() {
       Row({ space: 20 }) {
-        Button('Click').width(100).height(40).id('click1')
+        Button('Click1').width(100).height(40).id('click1')
           .onClick((event?: ClickEvent) => {
-            if(event){
-              this.text = 'Click Point:' + '\n  windowX:' + event.windowX + '\n  windowY:' + event.windowY
-                + '\n  x:' + event.x + '\n  y:' + event.y + '\ntarget:' + '\n  component globalPos:('
-                + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\n  width:'
-                + event.target.area.width + '\n  height:' + event.target.area.height + '\n  id:'+ event.target.id
-                + '\ntargetDisplayId:' + event.targetDisplayId + '\ntimestamp' + event.timestamp;
-              console.info('sourceType:' + event.source);
+            if (event) {
+              this.text =
+                `Click Point:\n  windowX:${event.windowX}\n  windowY:${event.windowY}\n  x:${event.x}\n  y:${event.y}\n target:\n  component globalPos:(${event.target.area.globalPosition.x},${event.target.area.globalPosition.y})\n  width:${event.target.area.width}\n  height:${event.target.area.height}\n  id:${event.target.id}\ntargetDisplayId:${event.targetDisplayId}\ntimestamp${event.timestamp}`
             }
           }, 20)
-        Button('Click').width(200).height(50).id('click2')
+        Button('Click2').width(200).height(50).id('click2')
           .onClick((event?: ClickEvent) => {
-            if(event){
-              this.text = 'Click Point:' + '\n  windowX:' + event.windowX + '\n  windowY:' + event.windowY
-                + '\n  x:' + event.x + '\n  y:' + event.y + '\ntarget:' + '\n  component globalPos:('
-                + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\n  width:'
-                + event.target.area.width + '\n  height:' + event.target.area.height + '\n  id:'+ event.target.id
-                + '\ntargetDisplayId:' + event.targetDisplayId + '\ntimestamp' + event.timestamp;
-              console.info('sourceType:' + event.source);
+            if (event) {
+              this.text =
+                `Click Point:\n  windowX:${event.windowX}\n  windowY:${event.windowY}\n  x:${event.x}\n  y:${event.y}\n target:\n  component globalPos:(${event.target.area.globalPosition.x},${event.target.area.globalPosition.y})\n  width:${event.target.area.width}\n  height:${event.target.area.height}\n  id:${event.target.id}\ntargetDisplayId:${event.targetDisplayId}\ntimestamp${event.timestamp}`
             }
           }, 20)
       }.margin(20)
@@ -177,4 +169,5 @@ struct ClickExample {
   }
 }
 ```
+
 ![click](figures/click.gif)

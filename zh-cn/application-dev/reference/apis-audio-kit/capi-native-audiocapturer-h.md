@@ -28,8 +28,8 @@
 | -- | -- | -- |
 | [OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer)](#oh_audiocapturer_release) | - | 释放输入音频流。 |
 | [OH_AudioStream_Result OH_AudioCapturer_Start(OH_AudioCapturer* capturer)](#oh_audiocapturer_start) | - | 启动音频采集器，开始获取音频数据。 |
-| [OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)](#oh_audiocapturer_pause) | - | 暂停输入音频流。 |
-| [OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)](#oh_audiocapturer_stop) | - | 停止音频采集器，停止输入音频流。 |
+| [OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)](#oh_audiocapturer_pause) | - | 暂停输入音频流。在暂停音频，后续需要恢复录音的场景，建议使用pause。 |
+| [OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)](#oh_audiocapturer_stop) | - | 停止音频采集器，停止输入音频流。如果需要彻底结束录音，建议使用stop。 |
 | [OH_AudioStream_Result OH_AudioCapturer_Flush(OH_AudioCapturer* capturer)](#oh_audiocapturer_flush) | - | 丢弃获取的音频数据。 |
 | [OH_AudioStream_Result OH_AudioCapturer_GetCurrentState(OH_AudioCapturer* capturer, OH_AudioStream_State* state)](#oh_audiocapturer_getcurrentstate) | - | 查询当前音频流状态。 |
 | [OH_AudioStream_Result OH_AudioCapturer_GetLatencyMode(OH_AudioCapturer* capturer, OH_AudioStream_LatencyMode* latencyMode)](#oh_audiocapturer_getlatencymode) | - | 查询当前音频流时延模式。 |
@@ -114,7 +114,7 @@ OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)
 
 **描述**
 
-暂停输入音频流。
+暂停输入音频流。在暂停音频，后续需要恢复录音的场景，建议使用pause。
 
 **需要权限：** ohos.permission.MICROPHONE
 
@@ -141,7 +141,7 @@ OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)
 
 **描述**
 
-停止音频采集器，停止输入音频流。
+停止音频采集器，停止输入音频流。如果需要彻底结束录音，建议使用stop。
 
 **需要权限：** ohos.permission.MICROPHONE
 
@@ -517,7 +517,7 @@ typedef void (*OH_AudioCapturer_OnReadDataCallback)(OH_AudioCapturer* capturer, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | 指向[OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)创建的音频流实例。 |
-|  void* userData | 指向应用自定义的数据存储区域。 |
+|  void* userData | 指向应用自定义的数据存储区域，方便应用给自身传递数据。 |
 |  void* audioData | 指向录制数据存储区域，用于应用读取录制数据。 |
 | int32_t audioDataSize | 录制数据的长度。 |
 

@@ -2298,7 +2298,7 @@ Converts the data at the specified position in this **Buffer** object into a str
 | -------- | -------- | -------- | -------- |
 | encoding | string | No| Encoding format (valid only when **value** is a string). The default value is **'utf8'**.|
 | start  | number | No|  Offset to the start position of the data to convert. The default value is **0**.|
-| end  | number | No|  Offset to the end position of data. The default value is the length of this **Buffer** object.|
+| end  | number | No|  Offset to the end position of the data to convert. The default value is the length of this **Buffer** object.|
 
 **Return value**
 
@@ -3504,8 +3504,8 @@ Creates and returns a **Blob** object that contains specified data from this **B
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| start | number | No| Offset to the start position of data. The default value is **0**.|
-| end | number | No| Offset to the end position of data. The default value is the data length in the original **Blob** object.|
+| start | number | No| Offset to the start position of the data to copy. The default value is **0**.|
+| end | number | No| Offset to the end position of the data to copy. The default value is the data length in the original **Blob** object.|
 | type | string | No| Type of the data in the new **Blob** object. The default value is **''**.|
 
 **Return value**

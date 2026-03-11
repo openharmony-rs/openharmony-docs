@@ -34,7 +34,7 @@ Read [AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocode
 
 Refer to the code snippet below to complete the entire audio encoding process, including creating an encoder, setting encoding parameters (such as the sample rate, bit rate, and audio channel count), and starting, refreshing, resetting, and destroying the encoder.
 
-During application development, you must call the APIs in the defined sequence. Otherwise, an exception or undefined behavior may occur.
+During application development, you must call the APIs in the defined sequence. Otherwise, an exception or undefined behavior may occur.  
 
 The figure below shows the call relationship of audio encoding in synchronous mode.
 
@@ -224,7 +224,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    | 96000 |  8192  |
 
    Data volume (in bytes) of a single encoding input: Number of samples (**SAMPLES_PER_FRAME**) * Number of channels * Number of bytes per sample.
-
+   
    The sample code is as follows:
    ```c++
    int32_t SAMPLES_PER_FRAME = 1024;

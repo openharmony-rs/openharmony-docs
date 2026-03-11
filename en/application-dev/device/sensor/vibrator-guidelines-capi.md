@@ -17,7 +17,7 @@ For details about the APIs, see [Vibrator](../../reference/apis-sensor-service-k
 
 | Name                                                        | Description                          |
 | ------------------------------------------------------------ | ------------------------------ |
-| OHOS::Sensors::OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute) | Configures the vibrator to vibrate continuously for a given duration.|
+| OHOS::Sensors::OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute) | Controls the vibrator to vibrate continuously for a given duration.|
 | OHOS::Sensors::OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription, Vibrator_Attribute vibrateAttribute) | Configures the vibrator to vibrate with the custom sequence.          |
 | OHOS::Sensors::OH_Vibrator_Cancel()                          | Stops the vibration.                |
 

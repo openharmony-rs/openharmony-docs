@@ -101,7 +101,7 @@ Add the **maxFlowDepth** field to the **arkOptions/tscConfig** property in the *
       {
          instancePath: 'app.products[0].buildOption.arkOptions.tscConfig.maxFlowDepth',
          keyword: 'maximum',
-         params: { comparision: '<=', limit: 65535 },
+         params: { comparison: '<=', limit: 65535 },
          message: 'must be <= 65535',
          location: 'D:/projectName/build-profile.json5:rowNo:columnNo'
       }

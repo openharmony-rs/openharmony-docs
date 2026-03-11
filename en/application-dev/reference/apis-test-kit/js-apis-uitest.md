@@ -17,7 +17,7 @@ This module provides the following functions:
 - [Driver<sup>9+</sup>](#driver9): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
 - [UiWindow<sup>9+</sup>](#uiwindow9): works as the entry class and provides APIs for obtaining window attributes, dragging windows, and adjusting window sizes.
 - [By<sup>(deprecated)</sup>](#bydeprecated): provides UI component feature description APIs for component filtering and matching. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
-- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [[Component<sup>9+</sup>](#component9)](#on9) instead.
+- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
 - [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
 
 > **NOTE**
@@ -1101,6 +1101,7 @@ let on: On = ON.originalText('123'); // Use the static constructor ON to create 
 ## Component<sup>9+</sup>
 
 Represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
+
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
 ### click<sup>9+</sup>
@@ -1259,7 +1260,7 @@ Obtains the text information of this component. This API uses a promise to retur
 
 > **NOTE**
 >
-> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API cannot be used to obtain the text information of the component. In this case, you can use [Component.getOriginalText ()](#getoriginaltext20) to obtain the text information of the component.
+> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API cannot be used to obtain the text information of the component. In this case, you can use [Component.getOriginalText ()](#getoriginaltext20) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2320,6 +2321,7 @@ async function demo() {
 ## Driver<sup>9+</sup>
 
 The **Driver** class is the main entry to the UiTest framework. It provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
+
 All APIs provided by this class, except **Driver.create()**, use a promise to return the result and must be invoked using **await**.
 
 ### create<sup>9+</sup>
@@ -5394,6 +5396,7 @@ async function demo() {
 ## UiWindow<sup>9+</sup>
 
 The **UiWindow** class represents a window on the UI and provides APIs for obtaining window attributes, dragging a window, and adjusting the window size.
+
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
 ### getBundleName<sup>9+</sup>
@@ -6599,11 +6602,12 @@ let by: By = BY.type('Text').isAfter(BY.text('123')); // Search for the first Te
 ## UiComponent<sup>(deprecated)</sup>
 
 In **UiTest**, the **UiComponent** class represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
+
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [[Component<sup>9+</sup>](#component9)](#on9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
 
 ### click<sup>(deprecated)</sup>
 
@@ -7062,11 +7066,12 @@ async function demo() {
 ## UiDriver<sup>(deprecated)</sup>
 
 The **UiDriver** class is the main entry to the UiTest framework. It provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
+
 All APIs provided by this class, except **UiDriver.create()**, use a promise to return the result and must be invoked using **await**.
 
 > **NOTE**
 > 
-> This method is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
 
 ### create<sup>(deprecated)</sup>
 

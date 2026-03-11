@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @pengzhiwen3-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -106,7 +106,7 @@ struct ImageExample {
     Column() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
         Row({ space: 5 }) {
-          // Replace the image with a locally available image file.
+          // Replace $r('app.media.startIcon') with the actual resource file.
           Image($r('app.media.startIcon'))
             .width(110)
             .height(110)

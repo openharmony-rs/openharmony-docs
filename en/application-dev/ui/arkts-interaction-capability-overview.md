@@ -1,7 +1,7 @@
 # Interaction Response Overview
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -30,7 +30,7 @@ Non-pointer events include [key events](../reference/apis-arkui/arkui-ts/ts-univ
 
 ### Additional Notes
 
-Basic events typically begin with a start marker and end with an end marker, with multiple move or update events in between. For example: Touch event sequence: Down -> Move -> Move -> ... -> Up; Mouse wheel axis event sequence: Begin -> Update -> Update -> ... -> End.
+Basic events typically begin with a start marker and end with an end marker, with multiple move or update events in between. For example, touch event sequence is Down -> Move -> Move -> ... -> Up, and mouse wheel axis event sequence is Begin -> Update -> Update -> ... -> End.
 
 Some basic events do not follow this pattern. For example, key events only have **Down** and **Up** states, with **Down** events reported continuously during sustained presses.
 
@@ -40,7 +40,7 @@ For pointer events, the system ensures that components participating in the resp
 
 A gesture is an interaction pattern recognized when a series of basic events meet specific characteristics. Example: A click is detected when a press and release occur within a short timeframe.
 
-ArkUI built-in components (for example, buttons and lists) automatically recognize and handle common gestures. Applications can bind multiple gestures to a component, either implicitly (through default bindings) or explicitly. When a press occurs, all gestures registered on the hit component participate in recognition. They continue receiving input until one gesture is successfully recognized, after which only that gesture continues to process subsequent events.
+ArkUI system components (for example, buttons and lists) automatically recognize and handle common gestures. Applications can bind multiple gestures to a component, either implicitly (through default bindings) or explicitly. When a press occurs, all gestures registered on the hit component participate in recognition. They continue receiving input until one gesture is successfully recognized, after which only that gesture continues to process subsequent events.
 
 Use exclusive gestures if two gestures must not both succeed. Use parallel gestures if gestures should coexist without conflict. For details, see [Combined Gestures](arkts-gesture-events-combined-gestures.md).
 

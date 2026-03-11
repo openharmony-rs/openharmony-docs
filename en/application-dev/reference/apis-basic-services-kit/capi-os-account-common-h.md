@@ -26,7 +26,7 @@ Defines common types used in **OsAccount** APIs.
 
 ### OsAccount_ErrCode
 
-```
+```c
 enum OsAccount_ErrCode
 ```
 

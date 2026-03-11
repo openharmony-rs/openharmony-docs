@@ -108,7 +108,7 @@ sharing
 
 isSharing(callback: AsyncCallback\<boolean>): void
 
-Checks whether network sharing is in progress. This API uses an asynchronous callback to return the result.
+Obtains the current network sharing status. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -148,7 +148,7 @@ sharing.isSharing((error: BusinessError, data: boolean) => {
 
 isSharing(): Promise\<boolean>
 
-Checks whether network sharing is in progress. This API uses a promise to return the result.
+Obtains the current network sharing status. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -192,7 +192,7 @@ sharing
 
 startSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
-Starts network sharing of a specified type. This API uses an asynchronous callback to return the result.
+Enables sharing of a specified type. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -239,7 +239,7 @@ sharing.startSharing(SHARING_WIFI, (error: BusinessError) => {
 
 startSharing(type: SharingIfaceType): Promise\<void>
 
-Starts network sharing of a specified type. This API uses a promise to return the result.
+Enables sharing of a specified type. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -296,7 +296,7 @@ sharing
 
 stopSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
-Stops network sharing of a specified type. This API uses an asynchronous callback to return the result.
+Disables sharing of a specified type. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -342,7 +342,7 @@ sharing.stopSharing(SHARING_WIFI, (error: BusinessError) => {
 
 stopSharing(type: SharingIfaceType): Promise\<void>
 
-Stops network sharing of a specified type. This API uses a promise to return the result.
+Disables sharing of a specified type. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -566,7 +566,7 @@ sharing
 
 getStatsTotalBytes(callback: AsyncCallback\<number>): void
 
-Obtains the volume of mobile data traffic sent and received via network sharing. This API uses an asynchronous callback to return the result.
+Obtains the total volume of mobile data traffic sent via network sharing. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -606,7 +606,7 @@ sharing.getStatsTotalBytes((error: BusinessError, data: number) => {
 
 getStatsTotalBytes(): Promise\<number>
 
-Obtains the volume of mobile data traffic sent and received via network sharing. This API uses a promise to return the result.
+Obtains the total volume of mobile data traffic sent via network sharing. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -935,7 +935,7 @@ sharing
 
 on(type: 'sharingStateChange', callback: Callback\<boolean>): void
 
-Subscribes to network sharing state changes. This API uses an asynchronous callback to return the result.
+Registers the network sharing status change event. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -948,7 +948,7 @@ Subscribes to network sharing state changes. This API uses an asynchronous callb
 | Name  | Type                   | Mandatory| Description                        |
 | -------- | ----------------------- | ---- | ---------------------------- |
 | type     | string                  | Yes  | Event type.<br/> The value **sharingStateChange** indicates a network sharing status change event.                  |
-| callback | AsyncCallback\<boolean> | Yes  | Callback invoked when the network sharing state changes.|
+| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the result. The value **true** means that network is in the sharing state, and the value **false** means the opposite.|
 
 **Error codes**
 
@@ -972,7 +972,7 @@ sharing.on('sharingStateChange', (data: boolean) => {
 
 off(type: 'sharingStateChange', callback?: Callback\<boolean>): void
 
-Unsubscribes from network sharing state changes. This API uses an asynchronous callback to return the result.
+Unregisters the network sharing status change event. This method uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -985,7 +985,7 @@ Unsubscribes from network sharing state changes. This API uses an asynchronous c
 | Name  | Type                   | Mandatory| Description                        |
 | -------- | ----------------------- | ---- | ---------------------------- |
 | type     | string                  | Yes  | Event type. The value **sharingStateChange** indicates a network sharing status change event.                  |
-| callback | AsyncCallback\<boolean> | No  | Callback invoked when the network sharing state changes.|
+| callback | AsyncCallback\<boolean> | No  | Callback used to return the result. The value **true** means that network is in the sharing state, and the value **false** means the opposite.|
 
 **Error codes**
 
@@ -1046,7 +1046,7 @@ sharing.on('interfaceSharingStateChange', (data: object) => {
 
 off(type: 'interfaceSharingStateChange', callback?: Callback\<InterfaceSharingStateInfo\>): void
 
-Unsubscribes from network sharing status changes of a specified NIC. This API uses an asynchronous callback to return the result.
+Unsubscribes from network sharing state changes of a specified NIC. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 

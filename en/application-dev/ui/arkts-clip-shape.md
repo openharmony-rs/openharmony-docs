@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can use the [clipShape](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12) API to clip components into desired shapes. After this API is called, only the portion of the component covered by the shape will remain, while the rest will be removed. The clipping shape itself is invisible.
 
@@ -19,8 +19,9 @@ You can use the [clipShape](../reference/apis-arkui/arkui-ts/ts-universal-attrib
 ## Clipping an Image into a Circle
 
 Clip an image into a circle using **CircleShape**.
+<!-- @[ClipShapeExampleA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample1.ets) -->
 
-```ts
+``` TypeScript
 // xxx.ets
 import { CircleShape } from '@kit.ArkUI';
 
@@ -30,11 +31,13 @@ struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
       // Clip the image using a circle with a diameter of 280 px.
+      // Replace $r('app.media.background') with the actual resource file.
       Image($r('app.media.background'))
         .clipShape(new CircleShape({ width: '280px', height: '280px' }))
         .width('500px').height('280px')
 
       // Clip the image using a circle with a diameter of 350 px.
+      // Replace $r('app.media.background') with the actual resource file.
       Image($r('app.media.background'))
         .clipShape(new CircleShape({ width: '350px', height: '350px' }))
         .width('500px').height('370px')
@@ -50,8 +53,9 @@ struct ClipShapeExample {
 ## Clipping an Image into an Ellipse
 
 Clip an image into an ellipse using **EllipseShape**.
+<!-- @[ClipShapeExampleB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample2.ets) -->
 
-```ts
+``` TypeScript
 // xxx.ets
 import { EllipseShape } from '@kit.ArkUI';
 
@@ -60,10 +64,12 @@ import { EllipseShape } from '@kit.ArkUI';
 struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
+      // Replace $r('app.media.background') with the actual resource file.
       Image($r('app.media.background'))
         .clipShape(new EllipseShape({ width: '280px', height: '200px' }))
         .width('500px').height('400px')
 
+      // Replace $r('app.media.background') with the actual resource file.
       Image($r('app.media.background'))
         .clipShape(new EllipseShape({ width: '380px', height: '280px' }))
         .width('500px').height('400px')
@@ -79,8 +85,9 @@ struct ClipShapeExample {
 ## Clipping an Image into a Rectangle
 
 Clip an image into a rectangle using **RectShape**.
+<!-- @[ClipShapeExampleC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample3.ets) -->
 
-```ts
+``` TypeScript
 // xxx.ets
 import { RectShape } from '@kit.ArkUI';
 
@@ -89,10 +96,12 @@ import { RectShape } from '@kit.ArkUI';
 struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
+      // Replace $r('app.media.background') with the actual resource file.
       Image($r('app.media.background'))
         .clipShape(new RectShape({ width: '200px', height: '200px' }))
         .width('500px').height('400px')
 
+      // Replace $r('app.media.background') with the actual resource file.
       Image($r('app.media.background'))
         .clipShape(new RectShape({ width: '380px', height: '280px' }))
         .width('500px').height('400px')
@@ -108,8 +117,9 @@ struct ClipShapeExample {
 ## Clipping an Image into Custom Shapes
 
 Clip an image into custom shapes using **PathShape**.
+<!-- @[ClipShapeExampleD](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample4.ets) -->
 
-```ts
+``` TypeScript
 // xxx.ets
 import { PathShape } from '@kit.ArkUI';
 
@@ -119,6 +129,7 @@ struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
       Row() {
+        // Replace $r('app.media.background') with the actual resource file.
         Image($r('app.media.background'))
           .clipShape(new PathShape({ commands: 'M0 0 H400 V200 H0 Z' }))
           .width('500px').height('300px')

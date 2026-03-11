@@ -72,143 +72,142 @@ The following table lists the key APIs for a scene-based widget.
 
 2. Implement an interactive widget page.
 
-    <!-- @[liveform_MyLiveFormPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets) -->
-    
-    ``` TypeScript
-    // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
-    import { formInfo, formProvider } from '@kit.FormKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { common } from '@kit.AbilityKit';
-    // For details about how to implement constants, see "Implement the tool functions of the interactive widget animation."
-    import { Constants } from '../../common/Constants';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    
-    const ANIMATION_RECT_SIZE: number = 100;
-    const END_SCALE: number = 1.5;
-    const END_TRANSLATE: number = -300;
-    const DOMAIN = 0x0000;
-    
-    @Entry
-    @Component
-    struct MyLiveFormPage {
-      @State columnScale: number = 1.0;
-      @State columnTranslate: number = 0.0;
-    
-      private uiContext: UIContext | undefined = undefined;
-      private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
-      private formId: string | undefined = undefined;
-      private formRect: formInfo.Rect | undefined = undefined;
-      private formBorderRadius: number | undefined = undefined;
-      private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
-    
-      aboutToAppear(): void {
-        this.uiContext = this.getUIContext();
-        if (!this.uiContext) {
-          hilog.error(DOMAIN, 'testTag', 'no uiContext');
-          return;
-        }
-        this.initParams();
-      }
-    
-      private initParams(): void {
-        this.storageForMyLiveFormPage = this.uiContext?.getSharedLocalStorage();
-        this.formId = this.storageForMyLiveFormPage?.get<string>('formId');
-        this.formRect = this.storageForMyLiveFormPage?.get<formInfo.Rect>('formRect');
-        this.formBorderRadius = this.storageForMyLiveFormPage?.get<number>('borderRadius');
-        this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
-      }
-    
-      // Execute the animation.
-      private runAnimation(): void {
-        this.uiContext?.animateTo({
-          duration: Constants.OVERFLOW_DURATION,
-          curve: Curve.Ease
-        }, () => {
-          this.columnScale = END_SCALE;
-          this.columnTranslate = END_TRANSLATE;
-        });
-      }
-    
-      private startAbilityByLiveForm(): void {
-        try {
-          // Replace the Want information with the actual one.
-          this.liveFormContext?.startAbilityByLiveForm({
-            bundleName: 'com.samples.formlivedemo',
-            abilityName: 'EntryAbility',
-          })
-            .then(() => {
-              hilog.info(DOMAIN, 'testTag', 'startAbilityByLiveForm succeed');
-            })
-            .catch((err: BusinessError) => {
-              hilog.error(DOMAIN, 'testTag', `startAbilityByLiveForm failed, code is ${err?.code}, message is ${err?.message}`);
-            });
-        } catch (e) {
-          hilog.error(DOMAIN, 'testTag', `startAbilityByLiveForm failed, code is ${e?.code}, message is ${e?.message}`);
-        }
-      }
-    
-      build() {
-        Stack({alignContent: Alignment.TopStart}) {
-          // The background component has the same size as a common widget.
-          Column()
-            .width(this.formRect? this.formRect.width : 0)
-            .height(this.formRect? this.formRect.height : 0)
-            .offset({
-              x: this.formRect? this.formRect.left : 0,
-              y: this.formRect? this.formRect.top : 0,
-            })
-            .borderRadius(this.formBorderRadius ? this.formBorderRadius : 0)
-            .backgroundColor('#2875F5')
-          Stack() {
-            this.buildContent();
-          }
-          .width('100%')
-          .height('100%')
-        }
-        .width('100%')
-        .height('100%')
-        .onClick(() => {
-          hilog.info(DOMAIN, 'testTag', 'MyLiveFormPage click to start ability');
-          if (!this.liveFormContext) {
-            hilog.info(DOMAIN, 'testTag', 'MyLiveFormPage liveFormContext is empty');
-            return;
-          }
-          this.startAbilityByLiveForm();
-        })
-      }
-    
-      @Builder
-      buildContent() {
-        Stack()
-          .width(ANIMATION_RECT_SIZE)
-          .height(ANIMATION_RECT_SIZE)
-          .backgroundColor(Color.White)
-          .scale({
-            x: this.columnScale,
-            y: this.columnScale,
-          })
-          .translate({
-            y: this.columnTranslate
-          })
-          .onAppear(() => {
-            // Execute the animation when the page is displayed.
-            this.runAnimation();
-          })
-        // Define $r('app.string.button_cancel') in the corresponding resource file string.json.
-        Button($r('app.string.button_cancel'))
-          .backgroundColor(Color.Grey)
-          .onClick(() => {
-            if (!this.formId) {
-              hilog.info(DOMAIN, 'testTag', 'MyLiveFormPage formId is empty, cancel overflow failed');
-              return;
-            }
-            hilog.info(DOMAIN, 'testTag', 'MyLiveFormPage cancel overflow animation');
-            formProvider.cancelOverflow(this.formId);
-          })
-      }
-    }
-    ```
-
+   <!-- @[liveform_MyLiveFormPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
+   import { formInfo, formProvider } from '@kit.FormKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   // For details about how to implement constants, see "Implement the tool functions of the interactive widget animation."
+   import { Constants } from '../../common/Constants';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const ANIMATION_RECT_SIZE: number = 100;
+   const END_SCALE: number = 1.5;
+   const END_TRANSLATE: number = -300;
+   const DOMAIN = 0x0000;
+   
+   @Entry
+   @Component
+   struct MyLiveFormPage {
+     @State columnScale: number = 1.0;
+     @State columnTranslate: number = 0.0;
+     private uiContext: UIContext | undefined = undefined;
+     private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
+     private formId: string | undefined = undefined;
+     private formRect: formInfo.Rect | undefined = undefined;
+     private formBorderRadius: number | undefined = undefined;
+     private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
+   
+     aboutToAppear(): void {
+       this.uiContext = this.getUIContext();
+       if (!this.uiContext) {
+         hilog.error(DOMAIN, 'testTag', 'no uiContext');
+         return;
+       }
+       this.initParams();
+     }
+   
+     private initParams(): void {
+       this.storageForMyLiveFormPage = this.uiContext?.getSharedLocalStorage();
+       this.formId = this.storageForMyLiveFormPage?.get<string>('formId');
+       this.formRect = this.storageForMyLiveFormPage?.get<formInfo.Rect>('formRect');
+       this.formBorderRadius = this.storageForMyLiveFormPage?.get<number>('borderRadius');
+       this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
+     }
+   
+     // Execute the animation.
+     private runAnimation(): void {
+       this.uiContext?.animateTo({
+         duration: Constants.OVERFLOW_DURATION,
+         curve: Curve.Ease
+       }, () => {
+         this.columnScale = END_SCALE;
+         this.columnTranslate = END_TRANSLATE;
+       });
+     }
+   
+     private startAbilityByLiveForm(): void {
+       try {
+         // Replace the Want information with the actual one.
+         this.liveFormContext?.startAbilityByLiveForm({
+           bundleName: 'com.samples.formlivedemo',
+           abilityName: 'EntryAbility',
+         })
+           .then(() => {
+             hilog.info(DOMAIN, 'testTag', 'startAbilityByLiveForm succeed');
+           })
+           .catch((err: BusinessError) => {
+             hilog.error(DOMAIN, 'testTag',
+               `startAbilityByLiveForm failed, code is ${err?.code}, message is ${err?.message}`);
+           });
+       } catch (e) {
+         hilog.error(DOMAIN, 'testTag', `startAbilityByLiveForm failed, code is ${e?.code}, message is ${e?.message}`);
+       }
+     }
+   
+     build() {
+       Stack({ alignContent: Alignment.TopStart }) {
+         // The background component has the same size as a common widget.
+         Column()
+           .width(this.formRect ? this.formRect.width : 0)
+           .height(this.formRect ? this.formRect.height : 0)
+           .offset({
+             x: this.formRect ? this.formRect.left : 0,
+             y: this.formRect ? this.formRect.top : 0,
+           })
+           .borderRadius(this.formBorderRadius ? this.formBorderRadius : 0)
+           .backgroundColor('#2875F5')
+         Stack() {
+           this.buildContent();
+         }
+         .width('100%')
+         .height('100%')
+       }
+       .width('100%')
+       .height('100%')
+       .onClick(() => {
+         hilog.info(DOMAIN, 'testTag', 'MyLiveFormPage click to start ability');
+         if (!this.liveFormContext) {
+           hilog.info(DOMAIN, 'testTag', 'MyLiveFormPage liveFormContext is empty');
+           return;
+         }
+         this.startAbilityByLiveForm();
+       })
+     }
+   
+     @Builder
+     buildContent() {
+       Stack()
+         .width(ANIMATION_RECT_SIZE)
+         .height(ANIMATION_RECT_SIZE)
+         .backgroundColor(Color.White)
+         .scale({
+           x: this.columnScale,
+           y: this.columnScale,
+         })
+         .translate({
+           y: this.columnTranslate
+         })
+         .onAppear(() => {
+           // Execute the animation when the page is displayed.
+           this.runAnimation();
+         })
+       // Define $r('app.string.button_cancel') in the corresponding resource file string.json.
+       Button($r('app.string.button_cancel'))
+         .backgroundColor(Color.Grey)
+         .onClick(() => {
+           if (!this.formId) {
+             hilog.info(DOMAIN, 'testTag', 'MyLiveFormPage formId is empty, cancel overflow failed');
+             return;
+           }
+           hilog.info(DOMAIN, 'testTag', 'MyLiveFormPage cancel overflow animation');
+           formProvider.cancelOverflow(this.formId);
+         })
+     }
+   }
+   ```
 
 3. Configure LiveFormExtensionAbility for interactive widgets.
 
@@ -335,7 +334,7 @@ The following table lists the key APIs for a scene-based widget.
     
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ets
-    import { formInfo, formProvider, FormExtensionAbility } from '@kit.FormKit';
+    import { FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     // For details about how to implement constants, see "Implement the tool functions of the interactive widget animation."
     import { Constants } from '../common/Constants';
@@ -395,28 +394,24 @@ The following table lists the key APIs for a scene-based widget.
 
 2. Implement the tool functions of the interactive widget animation.
 
-    <!-- @[liveform_Constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets) -->
-    
-    ``` TypeScript
-    // entry/src/main/ets/common/Constants.ets
-    // Develop animation-related constants.
-    export class Constants {
-      // The interactive widget animation is out of range. Left offset percentage = Offset value/Widget width
-      public static readonly OVERFLOW_LEFT_RATIO: number = 0.1;
-    
-      // The interactive widget animation is out of range. Top offset percentage = Offset value/Widget height
-      public static readonly OVERFLOW_TOP_RATIO: number = 0.15;
-    
-      // The interactive widget animation is out of range. The width is enlarged by percentage.
-      public static readonly OVERFLOW_WIDTH_RATIO: number = 1.2;
-    
-      // The interactive widget animation is out of range. The height is enlarged by percentage.
-      public static readonly OVERFLOW_HEIGHT_RATIO: number = 1.3;
-    
-      // The interactive widget animation is out of range. Specify the animation duration.
-      public static readonly OVERFLOW_DURATION: number = 3500;
-    }
-    ```
+   <!-- @[liveform_Constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/common/Constants.ets
+   // Develop animation-related constants.
+   export class Constants {
+     // The interactive widget animation is out of range. Left offset percentage = Offset value/Widget width
+     public static readonly OVERFLOW_LEFT_RATIO: number = 0.1;
+     // The interactive widget animation is out of range. Top offset percentage = Offset value/Widget height
+     public static readonly OVERFLOW_TOP_RATIO: number = 0.15;
+     // The interactive widget animation is out of range. The width is enlarged by percentage.
+     public static readonly OVERFLOW_WIDTH_RATIO: number = 1.2;
+     // The interactive widget animation is out of range. The height is enlarged by percentage.
+     public static readonly OVERFLOW_HEIGHT_RATIO: number = 1.3;
+     // The interactive widget animation is out of range. Specify the animation duration.
+     public static readonly OVERFLOW_DURATION: number = 3500;
+   }
+   ```
 
 
 3. Configure the resource file **string.json**.

@@ -739,6 +739,9 @@ addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 Adds domain name filtering rules for the device. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.<br>
 After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Action** set to **DENY** is added by default to discard or intercept all packets for domain name resolution that do not meet the **ALLOW** rule.<br>
 After the device is restarted, the domain name filtering rules are cleared.
+> **NOTE**
+>
+>To prevent interception rules from becoming ineffective due to DNS caching, it is recommended that you configure domain name filtering rules immediately after the system starts up. If interception fails because of DNS caching, restart the system to clear the cache and restore the interception function.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 

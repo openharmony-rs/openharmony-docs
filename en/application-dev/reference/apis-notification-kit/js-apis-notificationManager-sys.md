@@ -164,7 +164,7 @@ let notificationRequest: notificationManager.NotificationRequest = {
 let userId: number = 1;
 
 notificationManager.publish(notificationRequest, userId).then(() => {
-	console.info("publish success");
+    console.info("publish success");
 }).catch((err: BusinessError) => {
     console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -271,7 +271,7 @@ let notificationSlot: notificationManager.NotificationSlot = {
     notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
 };
 notificationManager.addSlot(notificationSlot).then(() => {
-	console.info("addSlot success");
+    console.info("addSlot success");
 }).catch((err: BusinessError) => {
     console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -386,7 +386,7 @@ let notificationSlotArray: notificationManager.NotificationSlot[] = new Array();
 notificationSlotArray[0] = notificationSlot;
 
 notificationManager.addSlots(notificationSlotArray).then(() => {
-	console.info("addSlots success");
+    console.info("addSlots success");
 }).catch((err: BusinessError) => {
     console.error(`addSlots failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -493,7 +493,7 @@ let bundle: notificationManager.BundleOption = {
     bundle: "bundleName1",
 };
 notificationManager.setNotificationEnable(bundle, false).then(() => {
-	console.info("setNotificationEnable success");
+    console.info("setNotificationEnable success");
 }).catch((err: BusinessError) => {
     console.error(`setNotificationEnable failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -645,7 +645,7 @@ let bundle: notificationManager.BundleOption = {
     bundle: "bundleName1",
 };
 notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
-	console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
+    console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -750,7 +750,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let userId: number = 1;
 
 notificationManager.isNotificationEnabled(userId).then((data: boolean) => {
-	console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
+    console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -862,7 +862,7 @@ let bundle: notificationManager.BundleOption = {
     bundle: "bundleName1",
 };
 notificationManager.displayBadge(bundle, false).then(() => {
-	console.info("displayBadge success");
+    console.info("displayBadge success");
 }).catch((err: BusinessError) => {
     console.error(`displayBadge failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -973,7 +973,7 @@ let bundle: notificationManager.BundleOption = {
 };
 
 notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
-	console.info(`isBadgeDisplayed success, data: ${JSON.stringify(data)}`);
+    console.info(`isBadgeDisplayed success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isBadgeDisplayed failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1033,7 +1033,7 @@ let bundle: notificationManager.BundleOption = {
 let slotFlags: number = 1;
 
 notificationManager.setSlotFlagsByBundle(bundle, slotFlags).then(() => {
-	console.info("setSlotFlagsByBundle success");
+    console.info("setSlotFlagsByBundle success");
 }).catch((err: BusinessError) => {
     console.error(`setSlotFlagsByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1157,7 +1157,7 @@ let notificationSlot: notificationManager.NotificationSlot = {
 };
 
 notificationManager.setSlotByBundle(bundle, notificationSlot).then(() => {
-	console.info("setSlotByBundle success");
+    console.info("setSlotByBundle success");
 }).catch((err: BusinessError) => {
     console.error(`setSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1213,7 +1213,7 @@ let bundle: notificationManager.BundleOption = {
     bundle: "bundleName1",
 };
 notificationManager.getSlotFlagsByBundle(bundle).then((data : number) => {
-	console.info(`getSlotFlagsByBundle success, data: ${JSON.stringify(data)}`);
+    console.info(`getSlotFlagsByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSlotFlagsByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1324,7 +1324,7 @@ let bundle: notificationManager.BundleOption = {
 };
 
 notificationManager.getSlotsByBundle(bundle).then((data: Array<notificationManager.NotificationSlot>) => {
-	console.info(`getSlotsByBundle success, data: ${JSON.stringify(data)}`);
+    console.info(`getSlotsByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSlotsByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1437,7 +1437,7 @@ let bundle: notificationManager.BundleOption = {
 };
 
 notificationManager.getSlotNumByBundle(bundle).then((data: number) => {
-	console.info(`getSlotNumByBundle success, data: ${JSON.stringify(data)}`);
+    console.info(`getSlotNumByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSlotNumByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1527,7 +1527,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getAllActiveNotifications().then((data: Array<notificationManager.NotificationRequest>) => {
-	console.info(`getAllActiveNotifications success, data: ${JSON.stringify(data)}`);
+    console.info(`getAllActiveNotifications success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getAllActiveNotifications failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1645,7 +1645,7 @@ let filter: notificationManager.NotificationFilter = {
     extraInfoKeys: ['event']
 }
 notificationManager.getActiveNotificationByFilter(filter).then((data: notificationManager.NotificationRequest) => {
-	console.info(`getActiveNotificationByFilter success, data: ${JSON.stringify(data)}`);
+    console.info(`getActiveNotificationByFilter success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getActiveNotificationByFilter failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1752,7 +1752,7 @@ let bundleOption: notificationManager.BundleOption = { bundle: "Bundle" };
 let groupName: string = "GroupName";
 
 notificationManager.removeGroupByBundle(bundleOption, groupName).then(() => {
-	console.info("removeGroupByBundle success");
+    console.info("removeGroupByBundle success");
 }).catch((err: BusinessError) => {
     console.error(`removeGroupByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1869,7 +1869,7 @@ let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
     end: new Date(2021, 11, 15, 18, 0)
 };
 notificationManager.setDoNotDisturbDate(doNotDisturbDate).then(() => {
-	console.info("setDoNotDisturbDate success");
+    console.info("setDoNotDisturbDate success");
 }).catch((err: BusinessError) => {
     console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1997,7 +1997,7 @@ let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
 let userId: number = 1;
 
 notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId).then(() => {
-	console.info("setDoNotDisturbDate success");
+    console.info("setDoNotDisturbDate success");
 }).catch((err: BusinessError) => {
     console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -2209,7 +2209,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let userId: number = 1;
 
 notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.DoNotDisturbDate) => {
-	console.info(`getDoNotDisturbDate success, data: ${JSON.stringify(data)}`);
+    console.info(`getDoNotDisturbDate success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -2305,7 +2305,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
-	console.info(`isSupportDoNotDisturbMode success, data: ${JSON.stringify(data)}`);
+    console.info(`isSupportDoNotDisturbMode success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isSupportDoNotDisturbMode failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -2891,7 +2891,7 @@ let request: notificationManager.NotificationRequest = {
     }
 };
 notificationManager.publishAsBundle(request, representativeBundle, userId).then(() => {
-	console.info("publishAsBundle success");
+    console.info("publishAsBundle success");
 }).catch((err: BusinessError) => {
     console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -2968,7 +2968,7 @@ let request: notificationManager.NotificationRequest = {
     }
 };
 notificationManager.publishAsBundle(representativeBundle, request).then(() => {
-	console.info("publishAsBundle success");
+    console.info("publishAsBundle success");
 }).catch((err: BusinessError) => {
     console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3083,7 +3083,7 @@ let representativeBundle: string = "com.example.demo";
 // Use the actual user ID when calling the API.
 let userId: number = 100;
 notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
-	console.info("cancelAsBundle success");
+    console.info("cancelAsBundle success");
 }).catch((err: BusinessError) => {
     console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3142,7 +3142,7 @@ let representativeBundle: notificationManager.BundleOption = {
   bundle: "bundleName1",
 };
 notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
-	console.info("cancelAsBundle success");
+    console.info("cancelAsBundle success");
 }).catch((err: BusinessError) => {
     console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3745,7 +3745,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- | 
-| 202      | Not system application.                                      |  
+| 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 
@@ -3802,7 +3802,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
-| 202      | Not system application.                                      |  
+| 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -3854,7 +3854,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | Not system application.                                      |  
+| 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 
@@ -3987,7 +3987,7 @@ let subscriber: notificationManager.SystemLiveViewSubscriber  = {
     onResponse: onResponseCallback,
 };
 notificationManager.subscribeSystemLiveView(subscriber).then(() => {
-	console.info("subscribeSystemLiveView success");
+    console.info("subscribeSystemLiveView success");
 }).catch((err: BusinessError) => {
     console.error(`subscribeSystemLiveView failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4115,12 +4115,12 @@ let bundle2: notificationManager.DistributedBundleEnableInfo = {
     uid: 2,
     enable: true
 };
-let bunles: Array<notificationManager.DistributedBundleEnableInfo> = [
+let bundles: Array<notificationManager.DistributedBundleEnableInfo> = [
     bundle1,bundle2
 ]
 
 let deviceType: string = "liteWearable";
-notificationManager.setDistributedEnableByBundles(bunles, deviceType).then(() => {
+notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() => {
     console.info("setDistributedEnableByBundles success");
 }).catch((err: BusinessError) => {
     console.error(`setDistributedEnableByBundles failed, code is ${err.code}, message is ${err.message}`);
@@ -4417,7 +4417,7 @@ let bundle: notificationManager.BundleOption = {
 let slotType = notificationManager.SlotType.LIVE_VIEW;
 
 notificationManager.getSlotByBundle(bundle, slotType).then((data: notificationManager.NotificationSlot) => {
-	console.info(`getSlotByBundle success, data: ${JSON.stringify(data)}`);
+    console.info(`getSlotByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4427,7 +4427,7 @@ notificationManager.getSlotByBundle(bundle, slotType).then((data: notificationMa
 
 addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 
-Adds the Do Not Disturb profile configuration information. This API uses a promise to return the result.
+Adds the Do Not Disturb profile. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -4441,7 +4441,7 @@ Adds the Do Not Disturb profile configuration information. This API uses a promi
 
 | Name  | Type            | Mandatory| Description          |
 | ------ | ---------------- | ---- | -------------- |
-| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes| Configuration information about the Do Not Disturb profile.|
+| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes| Do Not Disturb profile.|
 
 **Return value**
 
@@ -4498,7 +4498,7 @@ notificationManager.addDoNotDisturbProfile(templates).then(() => {
 
 removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 
-Deletes the Do Not Disturb profile configuration. This API uses a promise to return the result.
+Deletes the Do Not Disturb profile. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -4512,7 +4512,7 @@ Deletes the Do Not Disturb profile configuration. This API uses a promise to ret
 
 | Name  | Type            | Mandatory| Description          |
 | ------ | ---------------- | ---- | -------------- |
-| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes | Configuration information about the Do Not Disturb profile.|
+| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes | Do Not Disturb profile.|
 
 **Return value**
 
@@ -4610,7 +4610,7 @@ notificationManager.setAdditionalConfig('RING_TRUSTLIST_PKG','[bundleName1,bundl
 
 getDoNotDisturbProfile(id: number): Promise\<DoNotDisturbProfile\>
 
-Queries the configuration information about the Do Not Disturb profile. This API uses a promise to return the result.
+Queries the Do Not Disturb profile. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -4793,7 +4793,7 @@ Sets the status of a device after it is successfully connected. Device status de
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| deviceType | string | Yes  | Device type. Currently, only **headset** (wearable audio device), **liteWearable** (lite wearables), **wearable** (smart wearables), and **current** (local device) are supported.|
+| deviceType | string | Yes  | Device type. Currently, only **headset** (wearable audio device), **liteWearable** (lite wearable), **wearable** (wearable), and **current** (local device) are supported.|
 | status | number | Yes  | Device status.<br>- Bit 0: whether the device is in use. The value **0** indicates that the device is available; **1** indicates that the device is in use.<br>- Bit 1: whether the device user is the owner. The value **0** indicates that the user is not the owner; **1** indicates the opposite.<br>- Bit 2: whether the device is in the Do Not Disturb mode. The value **0** indicates that the device is not in the Do Not Disturb mode; **1** indicates the opposite.|
 
 **Return value**
@@ -4841,7 +4841,7 @@ Sets whether notifications of a specified slot can be sent to devices of a speci
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | slot | [SlotType](js-apis-notificationManager.md#slottype) | Yes  | Types of the notification slot.|
-| deviceType | string | Yes  | Device type.<br>Since API version 18, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearables<br>- **wearable**: wearables<br>Since API version 20, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearables<br>- **wearable**: wearables<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet|
+| deviceType | string | Yes  | Device type.<br>Since API version 18, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>Since API version 20, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet|
 | enabled | boolean | Yes  | Whether to enable cross-device collaboration for notifications. The value **true** means to enable cross-device collaboration, and **false** means the opposite.|
 
 **Return value**
@@ -4894,7 +4894,7 @@ Queries whether notifications of a specified slot can be sent to devices of a sp
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | slot | [SlotType](js-apis-notificationManager.md#slottype) | Yes  | Types of the notification slot.|
-| deviceType | string | Yes  | Device type.<br>Since API version 18, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearables<br>- **wearable**: wearables<br>Since API version 20, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearables<br>- **wearable**: wearables<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet|
+| deviceType | string | Yes  | Device type.<br>Since API version 18, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>Since API version 20, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet|
 
 **Return value**
 
@@ -5053,13 +5053,13 @@ Checks whether a device enables cross-device notification. This API uses a promi
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| deviceType | string | Yes  | Device type. The options are as follows:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearables<br>- **wearable**: wearables<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet|
+| deviceType | string | Yes  | Device type. The options are as follows:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet|
 
 **Return value**
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the cross-device notification is enabled, and the value **false** indicates the opposite.|
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the cross-device notification is enabled, and the value **false** indicates the opposite.  |
 
 **Error codes**
 
@@ -5112,13 +5112,13 @@ Sets whether the device of a specified type enables cross-device notification. T
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | enable   | boolean | Yes  | Whether the device of a specified type enables cross-device notification. The value **true** indicates that the cross-device notification is enabled, and the value **false** indicates the opposite.|
-| deviceType | string | Yes  | Device type. The options are as follows:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearables<br>- **wearable**: wearables<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet|
+| deviceType | string | Yes  | Device type. The options are as follows:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet|
 
 **Return value**
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<void\> | Promise that returns no result.|
+| Promise\<void\> | Promise that returns no result.  |
 
 **Error codes**
 
@@ -5171,7 +5171,7 @@ Obtains the device types that enable cross-device notification. This API uses a 
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<Array\<string\>\> | Promise used to return the result.|
+| Promise\<Array\<string\>\> | Promise used to return the result.  |
 
 **Error codes**
 
@@ -5340,22 +5340,35 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
 ## notificationManager.setBadgeDisplayStatusByBundles<sup>21+</sup>
+
 setBadgeDisplayStatusByBundles(badges: Map<BundleOption, boolean>): Promise\<void\>
+
 Batch sets whether to display badges for specified applications. This API uses a promise to return the result.
+
 **System capability**: SystemCapability.Notification.Notification
+
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
 **System API**: This is a system API.
+
 **Parameters**
+
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | badges   | Map<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean> | Yes  | List containing bundle names and badge display statuses.|
+
 **Return value**
+
 | Type           | Description                    |
 |-----------------|-------------------------|
 | Promise\<void\> | Promise that returns no value.|
+
 **Error codes**
+
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
@@ -5364,37 +5377,53 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600002 | Marshalling or unmarshalling error. |
 | 1600003 | Failed to connect to the service. |
 | 1600012 | No memory space. |
+
 **Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+
 let badges = new Map<notificationManager.BundleOption, boolean>();
 let bundle: notificationManager.BundleOption = {
     bundle: 'bundleName',
 };
 badges.set(bundle, true);
+
 notificationManager.setBadgeDisplayStatusByBundles(badges).then(() => {
-    hilog.info(0x0000, 'testTag', 'setBadgeDisplayStatusByBundles success.');
+    console.info('SetBadgeDisplayStatusByBundles success.');
 }).catch((err: BusinessError) => {
-    hilog.info(0x0000, 'testTag', `setBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`SetBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
 ## notificationManager.getBadgeDisplayStatusByBundles<sup>21+</sup>
+
 getBadgeDisplayStatusByBundles(bundles:Array\<BundleOption\>): Promise\<Map\<BundleOption, boolean>>
+
 Batch obtains the display statuses of application badges. This API uses a promise to return the result.
+
 **System capability**: SystemCapability.Notification.Notification
+
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
 **System API**: This is a system API.
+
 **Parameters**
+
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | bundles   | Array<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | Yes  | Bundles whose badge display statuses are to be obtained.|
+
 **Return value**
+
 | Type           | Description                    |
 |-----------------|-------------------------|
 | Promise\<Map\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean>> | Promise used to return the bundles and the badge display statuses obtained.|
+
 **Error codes**
+
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
@@ -5403,10 +5432,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600002 | Marshalling or unmarshalling error. |
 | 1600003 | Failed to connect to the service. |
 | 1600012 | No memory space. |
+
 **Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+
 let bundles: Array<notificationManager.BundleOption> = [
     {
         bundle: 'bundleName',
@@ -5417,28 +5448,41 @@ let bundles: Array<notificationManager.BundleOption> = [
 ];
 notificationManager.getBadgeDisplayStatusByBundles(bundles).then((data: Map<notificationManager.BundleOption, boolean>) => {
     data.forEach((value, key) => {
-        hilog.info(0x0000, 'testTag', `Bundle is ${key.bundle}, uid is ${key.uid}, badge status is ${value}.`);
+        console.info(`Bundle is ${key.bundle}, uid is ${key.uid}, badge status is ${value}.`);
     });
 }).catch((err: BusinessError) => {
-    hilog.info(0x0000, 'testTag', `getBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`GetBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
 ## notificationManager.setReminderInfoByBundles<sup>21+</sup>
+
 setReminderInfoByBundles(reminderInfos: Array\<NotificationReminderInfo\>): Promise\<void\>
+
 Batch sets reminders for specified applications. This API uses a promise to return the result.
+
 **System capability**: SystemCapability.Notification.Notification
+
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
 **System API**: This is a system API.
+
 **Parameters**
+
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | reminderInfos | Array<[NotificationReminderInfo](#notificationreminderinfo21)> | Yes| Reminders to be set.|
+
 **Return value**
+
 | Type           | Description                    |
 |-----------------|-------------------------|
 | Promise\<void\> | Promise that returns no value.|
+
 **Error codes**
+
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
@@ -5447,10 +5491,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600002 | Marshalling or unmarshalling error. |
 | 1600003 | Failed to connect to the service. |
 | 1600012 | No memory space. |
+
 **Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+
 let bundle: notificationManager.BundleOption = {
     bundle: "bundleName",
 };
@@ -5462,27 +5508,40 @@ let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
     }
 ];
 notificationManager.setReminderInfoByBundles(reminderInfos).then(() => {
-    hilog.info(0x0000, 'testTag', 'setReminderInfoByBundles success.');
+    console.info('SetReminderInfoByBundles success.');
 }).catch((err: BusinessError) => {
-    hilog.info(0x0000, 'testTag', `setReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`SetReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
 ## notificationManager.getReminderInfoByBundles<sup>21+</sup>
+
 getReminderInfoByBundles(bundles: Array\<BundleOption\>):  Promise\<Array\<NotificationReminderInfo\>\>
+
 Batch obtains reminders of specified applications. This API uses a promise to return the result.
+
 **System capability**: SystemCapability.Notification.Notification
+
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
 **System API**: This is a system API.
+
 **Parameters**
+
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | bundles   | Array<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | Yes | Bundles whose reminders are to be obtained.|
+
 **Return value**
+
 | Type           | Description                    |
 |-----------------|-------------------------|
 | Promise<Array<[NotificationReminderInfo](#notificationreminderinfo21)>> | Promise used to return the application reminders obtained.|
+
 **Error codes**
+
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
@@ -5491,10 +5550,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600002 | Marshalling or unmarshalling error. |
 | 1600003 | Failed to connect to the service. |
 | 1600012 | No memory space. |
+
 **Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+
 let bundles: Array<notificationManager.BundleOption> = [
     {
         bundle: 'bundleName',
@@ -5504,23 +5565,34 @@ let bundles: Array<notificationManager.BundleOption> = [
     }
 ];
 notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notificationManager.NotificationReminderInfo>) => {
-    hilog.info(0x0000, 'testTag', `Reminder data is ${JSON.stringify(data)}`);
+    console.info(`Reminder data is ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    hilog.info(0x0000, 'testTag', `getReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`GetReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
 ## notificationManager.onBadgeNumberQuery<sup>22+</sup>
-onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<long\>): void
+
+onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<number\>): void
+
 Registers a callback for querying the number of application badges.
+
 **System capability**: SystemCapability.Notification.Notification
+
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
 **System API**: This is a system API.
+
 **Parameters**
+
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback   | (bundle: [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)) => Promise\<long\> | Yes | Number of target application badges.|
+| callback   | (bundle: [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)) => Promise\<number\> | Yes | Number of target application badges.|
+
 **Error codes**
+
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
@@ -5528,10 +5600,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600001 | Internal error. |
 | 1600002 | Marshalling or unmarshalling error. |
 | 1600003 | Failed to connect to the service. |
+
 **Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+
 try{
     notificationManager.onBadgeNumberQuery(
         async (bundleOption: notificationManager.BundleOption) => {
@@ -5539,17 +5613,26 @@ try{
         }
     );
 } catch(err) {
-    hilog.info(0x0000, 'testTag', `onBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`OnBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
+
 ## notificationManager.offBadgeNumberQuery<sup>22+</sup>
+
 offBadgeNumberQuery(): void
+
 Unregisters the callback for querying the number of application badges.
+
 **System capability**: SystemCapability.Notification.Notification
+
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
 **System API**: This is a system API.
+
 **Error codes**
+
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
@@ -5557,14 +5640,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600001 | Internal error. |
 | 1600002 | Marshalling or unmarshalling error. |
 | 1600003 | Failed to connect to the service. |
+
 **Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+
 try{
     notificationManager.offBadgeNumberQuery();
 } catch(err) {
-    hilog.info(0x0000, 'testTag', `offBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`OffBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -5789,12 +5874,17 @@ Describes the custom ringtone information.
 | ringtoneTitle | string  |  No | Yes  | Title of the ringtone. |
 | ringtoneFileName | string  |  No | Yes  | File name of the ringtone. |
 | ringtoneUri | string  |  No | Yes  | URI of the ringtone. |
+
 ## NotificationReminderInfo<sup>21+</sup>
+
 Describes the information about the application reminder.
+
 **System capability**: SystemCapability.Notification.Notification
+
 **System API**: This is a system API.
+
 | Name     | Type   | Read-Only| Optional| Description          |
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No| No| Bundle information of the application.|
-| reminderFlags | long | No| No| Reminder flag.|
+| reminderFlags | number | No| No| Reminder flag.|
 | silentReminderEnabled | boolean | No| No| Whether the silent reminder is enabled. The value **true** indicates that the silent reminder is enabled, and the value **false** indicates the opposite.|

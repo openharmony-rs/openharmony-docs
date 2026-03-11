@@ -166,8 +166,9 @@
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
+   
    const DOMAIN = 0x0000;
-   const TAG = 'DefaultDragError: '
+   const TAG = 'DefaultDragError: ';
    ```
 
    <!-- @[generate_pix_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
@@ -185,7 +186,6 @@
    }
    
    // ...
-   
    // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
    private getComponentSnapshot(): void {
      this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
@@ -292,8 +292,7 @@
        callback(event);
        return true;
      } catch (e) {
-       hilog.error(DOMAIN, TAG, '%{public}s', (e as BusinessError).code + ', message: ' +
-       (e as BusinessError).message);
+       hilog.error(DOMAIN, TAG, `${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
        return false;
      }
    }
@@ -332,6 +331,7 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0000;
 const TAG = 'DefaultDragError: ';
 
@@ -368,8 +368,7 @@ export struct DefaultDrag {
       callback(event);
       return true;
     } catch (e) {
-      hilog.error(DOMAIN, TAG, '%{public}s', (e as BusinessError).code + ', message: ' +
-      (e as BusinessError).message);
+      hilog.error(DOMAIN, TAG, `${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
       return false;
     }
   }
@@ -382,7 +381,6 @@ export struct DefaultDrag {
       this.getDataFromUdmfRetry(event, callback);
     }, 1500);
   }
-
 
   // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
   private getComponentSnapshot(): void {
@@ -397,7 +395,6 @@ export struct DefaultDrag {
         this.pixmap = pixmap;
       });
   }
-
 
   build() {
     // ...
@@ -493,6 +490,7 @@ export struct DefaultDrag {
         }
         .height('100%')
       }
+      
       // ...
 }
 ```
@@ -522,11 +520,11 @@ export struct DefaultDrag {
            .opacity(1.0)
            .id('grid' + idx)
        }
-       // ···
+       // ...
        .onDragStart(() => {
        })
        .selectable(true)
-       // ···
+       // ...
      }, (idx: string) => idx)
    }
    ```
@@ -546,10 +544,10 @@ export struct DefaultDrag {
    
    ``` TypeScript
    .selected(this.isSelectedGrid[idx])
-   // ···
+   // ...
    .onClick(() => {
      this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-     // ···
+     // ...
    })
    ```
 
@@ -573,6 +571,21 @@ export struct DefaultDrag {
    @State previewData: DragItemInfo[] = [];
    @State isSelectedGrid: boolean[] = [];
    // ...
+   build() {
+     NavDestination() {
+       Column({ space: 5 }) {
+         // ...
+         Grid() {
+           // ...
+             GridItem() {
+               Column()
+                 .backgroundColor(Color.Blue)
+                 .width(50)
+                 .height(50)
+                 .opacity(1.0)
+                 .id('grid' + idx)
+             }
+             // ...
              .onClick(() => {
                this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
                if (this.isSelectedGrid[idx]) {
@@ -589,6 +602,13 @@ export struct DefaultDrag {
                  // ...
                }
              })
+             // ...
+         }
+         // ...
+       }.width('100%').margin({ top: 5 }).height('100%')
+     }
+     // ...
+   }
    ```
 
 3. 多选显示效果。
@@ -609,10 +629,32 @@ export struct DefaultDrag {
     }
     
     // ...
+    build() {
+      NavDestination() {
+        Column({ space: 5 }) {
+          // ...
+          Grid() {
+            // ...
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid' + idx)
+              }
+              // ...
               .stateStyles({
                 normal: this.normalStyles,
                 selected: this.selectStyles
               })
+              // ...
+          }
+          // ...
+        }.width('100%').margin({ top: 5 }).height('100%')
+      }
+      // ...
+    }
     ```
 
 4. 适配数量角标。
@@ -624,6 +666,21 @@ export struct DefaultDrag {
     ``` TypeScript
     @State numberBadge: number = 0;
     // ...
+    build() {
+      NavDestination() {
+        Column({ space: 5 }) {
+          // ...
+          Grid() {
+            // ...
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid' + idx)
+              }
+              // ...
               .onClick(() => {
                 this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
                 if (this.isSelectedGrid[idx]) {
@@ -637,6 +694,13 @@ export struct DefaultDrag {
               })
               // 多选场景右上角数量角标需要应用设置numberBadge参数
               .dragPreviewOptions({ numberBadge: this.numberBadge })
+              // ...
+          }
+          // ...
+        }.width('100%').margin({ top: 5 }).height('100%')
+      }
+      // ...
+    }
     ```
 
 **完整示例：**
@@ -1071,7 +1135,7 @@ struct GridEts {
 
   loadData() {
     this.timeout = setTimeout(() => {
-      //数据准备完成后的状态
+      // 数据准备完成后的状态
       if (this.dragEvent) {
         this.dragEvent.setData(this.unifiedData);
       }
@@ -1231,7 +1295,7 @@ Spring Loading，即拖拽悬停检测（又叫弹簧加载）是拖拽操作的
 
 Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -> 结束。在结束之前，如果用户重新开始移动，会自动中断Spring Loading，并通知应用取消。如果在悬停检测期间移动，且尚未进入Spring Loading状态，则不会触发取消通知。
 
-![drag spring loading pharse](figures/drag_springloading-02.png)
+![drag spring loading phase](figures/drag_springloading-02.png)
 
 应用通过回调接收当前的状态，动态改变UI显示，从而达到用户提醒的效果。
 

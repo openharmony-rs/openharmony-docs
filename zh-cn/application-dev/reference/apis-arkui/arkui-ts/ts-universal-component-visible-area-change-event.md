@@ -386,7 +386,7 @@ struct OnVisibleAreaChangeSample {
             expectedUpdateInterval: 500,
             measureFromViewport: true
           }, (isExpanding: boolean, currentRatio: number) => {
-            console.log(`onVisibleAreaApproximateChange1 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+            console.info(`onVisibleAreaApproximateChange1 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
           })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
             this.ratio1 = currentRatio
@@ -414,7 +414,7 @@ struct OnVisibleAreaChangeSample {
           // 不设置measureFromViewport，measureFromViewport默认为false，父组件未设置clip(true)，超出父组件的区域被视为不可见区域。
           .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 500 },
             (isExpanding: boolean, currentRatio: number) => {
-              console.log(`onVisibleAreaApproximateChange2 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+              console.info(`onVisibleAreaApproximateChange2 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
             })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
             this.ratio2 = currentRatio
@@ -445,7 +445,7 @@ struct OnVisibleAreaChangeSample {
             expectedUpdateInterval: 500,
             measureFromViewport: true
           }, (isExpanding: boolean, currentRatio: number) => {
-            console.log(`onVisibleAreaApproximateChange3 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+            console.info(`onVisibleAreaApproximateChange3 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
           })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
             this.ratio3 = currentRatio

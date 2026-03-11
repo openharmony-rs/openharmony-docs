@@ -56,6 +56,7 @@
       <!--Del-->
       - [Developing a Scene-based Widget (for System Applications)](arkts-ui-liveform-sceneanimation-development-sys.md)
       <!--DelEnd-->
+  - [ArkTS Widget Adaptation FAQs](arkts-ui-widget-adapt-faq.md)
 - JS Widget Development<!--form-js-ui-->
   - [JS Widget Overview](js-ui-widget-overview.md)
   - [Developing a JS Widget (Stage Model)](js-ui-widget-development.md)

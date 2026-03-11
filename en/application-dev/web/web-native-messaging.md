@@ -63,11 +63,11 @@ The WebNativeMessagingExtensionAbility component takes effect only on 2-in-1 dev
 When integrating WebNativeMessagingExtensionAbility, the application needs to provide extension configurations for the browser application through **dataShare**. The browser application uses this configuration to determine the accessible extension and specify the name of the WebNativeMessagingExtensionAbility to be started.
 
 The extension configuration is in JSON string format.
-- **extensionAbility**: name of the WebNativeMessagingExtensionAbility, in string format. This attribute is used to fill in the **abilityName** field of **want**. An application has only one WebNativeMessagingExtensionAbility.
+- **abilityName**: name of the WebNativeMessagingExtensionAbility, in string format. This attribute is used to fill in the **abilityName** field of **want**. An application has only one WebNativeMessagingExtensionAbility.
 - **allowed_origins**: array of URLs of browser extensions that can access the WebNativeMessagingExtensionAbility. You can configure multiple URLs. Different browser extensions have different scheme protocols. For example, the HUAWEI Browser uses the chrome-extension header.
 
 Extension configuration format:
-```json
+```json5
 {
   // Set the application bundle name.
   "name": "com.example.myapplication",
@@ -109,7 +109,7 @@ Configure the plugin content, send ping strings, and receive pong responses. The
 
 Configure the **manifest.json** file.
 
-```json
+```json5
 {
   "name": "com.example.myapplication",
   "version": "1.0.1",
@@ -265,7 +265,7 @@ To manually create a WebNativeMessagingExtensionAbility in the DevEco Studio pro
    ```
 4. Register the WebNativeMessagingExtensionAbility component in the [module.json5 file](../quick-start/module-configuration-file.md) of the module in the project. Set **type** to **"webNativeMessaging"** and **srcEntry** to the code path of the component.
 
-   ```json
+   ```json5
    {
      "module": {
        // ...
@@ -292,7 +292,7 @@ To manually create a WebNativeMessagingExtensionAbility in the DevEco Studio pro
 
 6. Add the [extension configuration](#storing-the-extension-configuration-of-applications-in-datashare) to **shared_config.json**.
 
-   ```json
+   ```json5
    {
      "crossAppSharedConfig": [
        // ...

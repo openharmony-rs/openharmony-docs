@@ -38,6 +38,8 @@ Grants the URI permission to an application. If the call is successful, the appl
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API can be properly called only on phones, PCs/2-in-1 devices, and tablets. On other devices, it can be called but does not take effect.
+
 **Required permissions**: ohos.permission.PROXY_AUTHORIZATION_URI
 
 **Parameters**
@@ -106,6 +108,8 @@ Grants the URI permission to an application. If the call is successful, the appl
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on phones, PCs/2-in-1 devices, and tablets. On other devices, it can be called but does not take effect.
 
 **Required permissions**: ohos.permission.PROXY_AUTHORIZATION_URI
 
@@ -179,6 +183,8 @@ Grants the URI permission to an application. If the call is successful, the appl
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on phones, PCs/2-in-1 devices, and tablets. On other devices, it can be called but does not take effect.
 
 **Required permissions**: ohos.permission.PROXY_AUTHORIZATION_URI
 
@@ -275,6 +281,8 @@ Revokes the URI permission from an application. This API uses an asynchronous ca
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API can be properly called only on phones, PCs/2-in-1 devices, and tablets. On other devices, it can be called but does not take effect.
+
 **Parameters**
 
   | Name| Type| Mandatory| Description| 
@@ -327,6 +335,8 @@ Revokes the URI permission from an application. This API uses a promise to retur
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on phones, PCs/2-in-1 devices, and tablets. On other devices, it can be called but does not take effect.
 
 **Parameters**
 
@@ -385,6 +395,8 @@ Revokes the URI permission from an application. This API uses a promise to retur
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on phones, PCs/2-in-1 devices, and tablets. On other devices, it can be called but does not take effect.
 
 **Parameters**
 
@@ -468,7 +480,7 @@ Grants the URI access permission of the current application to the target applic
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on phones, 2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called only on phones, PCs/2-in-1 devices, and tablets. On other devices, it returns the error code 801.
 
 **Parameters**
 
@@ -503,7 +515,7 @@ Grants the URI access permission of the current application to the target applic
 
   ```ts
   // The bundle name of the API caller is com.example.test.
-  // ExntryAbility.ets
+  // EntryAbility.ets
   import { AbilityConstant, UIAbility, Want, wantConstant, uriPermissionManager } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -544,7 +556,7 @@ Grants the URI access permission of the specified application to the target appl
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on phones, 2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called only on phones, PCs/2-in-1 devices, and tablets. On other devices, it returns the error code 801.
 
 **Parameters**
 

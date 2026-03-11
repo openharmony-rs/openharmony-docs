@@ -894,7 +894,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found. |
 | 17700003 | The specified ability is not found.    |
 | 17700004 | The specified userId is invalid.       |
@@ -960,7 +960,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found. |
 | 17700003 | The specified ability is not found.    |
 | 17700026 | The specified bundle is disabled.      |
@@ -1030,7 +1030,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found. |
 | 17700003 | The specified ability is not found.    |
 | 17700004 | The specified userId is invalid.       |
@@ -1124,7 +1124,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found. |
 | 17700003 | The specified ability is not found.    |
 | 17700004 | The specified userId is invalid.       |
@@ -1213,7 +1213,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found. |
 | 17700003 | The specified ability is not found.    |
 | 17700004 | The specified userId is invalid.       |
@@ -1283,7 +1283,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found.       |
 | 17700003 | The specified extensionAbility is not found. |
 | 17700004 | The specified userId is invalid.             |
@@ -1350,7 +1350,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found.       |
 | 17700003 | The specified extensionAbility is not found. |
 | 17700026 | The specified bundle is disabled.            |
@@ -1421,7 +1421,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found. |
 | 17700003 | The specified extensionAbility is not found.    |
 | 17700004 | The specified userId is invalid.       |
@@ -1517,7 +1517,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found. |
 | 17700003 | The specified extensionAbility is not found.    |
 | 17700004 | The specified userId is invalid.       |
@@ -2308,7 +2308,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **Example**
 
@@ -2555,7 +2555,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found.  |
 | 17700003 | The specified abilityInfo is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **Example**
 
@@ -2793,7 +2793,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **Example**
 
@@ -3030,7 +3030,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found.  |
 | 17700003 | The specified abilityName is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **Example**
 
@@ -4577,7 +4577,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri, type or linkFeature) is required for implicit query. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | 17700001 | The specified bundleName is not found.       |
 | 17700003 | The specified extensionAbility is not found. |
 | 17700004 | The specified userId is invalid.             |
@@ -4712,7 +4712,7 @@ Obtains information about all preinstalled applications that can be restored. Th
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<Array\<[RecoverableApplicationInfo](js-apis-bundleManager-recoverableApplicationInfo-sys.md)\>\> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the information about all preinstalled applications.|
+| callback | AsyncCallback\<Array\<[RecoverableApplicationInfo](js-apis-recoverableApplicationInfo-sys.md)\>\> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the information about all preinstalled applications.|
 
 **Error codes**
 
@@ -4760,7 +4760,7 @@ Obtains information about all preinstalled applications that can be restored. Th
 
 | Type                                                        | Description                               |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise\<Array\<[RecoverableApplicationInfo](js-apis-bundleManager-recoverableApplicationInfo-sys.md)\>\> | Promise used to return the information about all recoverable applications.|
+| Promise\<Array\<[RecoverableApplicationInfo](js-apis-recoverableApplicationInfo-sys.md)\>\> | Promise used to return the information about all recoverable applications.|
 
 **Error codes**
 
@@ -5709,7 +5709,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
-| 17700061 | The appIndex is invalid. |
+| 17700061 | AppIndex not in valid range. |
 
 **Example**
 
@@ -5768,9 +5768,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700004 | The specified userId is invalid. |
+| 17700004 | The specified user ID is not found. |
 | 17700026 | The specified bundle is disabled. |
-| 17700061 | The appIndex is invalid. |
+| 17700061 | AppIndex not in valid range. |
 
 **Example**
 
@@ -5834,7 +5834,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700004 | The specified userId is invalid. |
+| 17700004 | The specified user ID is not found. |
 | 17700026 | The specified bundle and clone apps are all disabled. |
 
 **Example**
@@ -6302,7 +6302,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
 | 17700004 | The specified user ID is not found.     |
-| 17700061 | AppIndex not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **Example**
 
@@ -6364,7 +6364,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
 | 17700004 | The specified user ID is not found.     |
-| 17700061 | AppIndex not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **Example**
 
@@ -6459,7 +6459,7 @@ Defines the information about a preinstalled application that can be restored af
 
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
-| [_RecoverableApplicationInfo](js-apis-bundleManager-recoverableApplicationInfo-sys.md#recoverableapplicationinfo) |Information about a preinstalled application that can be restored after being uninstalled.|
+| [_RecoverableApplicationInfo](js-apis-recoverableApplicationInfo-sys.md#recoverableapplicationinfo) |Information about a preinstalled application that can be restored after being uninstalled.|
 
 ## PreinstalledApplicationInfo<sup>12+</sup>
 

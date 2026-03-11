@@ -37,7 +37,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 通过[getCameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevice18)获取对应的前置和后置相机。
+2. 通过[getCameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevice18)获取对应的前置和后置相机。如果接口返回undefined，基于示例中的配置信息，表示当前设备不支持指定位置（前置/后置）的默认类型相机，无法实现多摄同开功能。
    
    ```ts
    function getSupportedCamerasFn(cameraManager: camera.CameraManager)

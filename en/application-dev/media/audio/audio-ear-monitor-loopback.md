@@ -95,7 +95,7 @@ The [on('statusChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioLo
    });
    ```
 
-4. Call [setReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setreverbpreset21) to set the reverb mode for audio loopback. This API is available from API version 21.
+4. Starting from API version 21, [setReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setreverbpreset21) method can be called to set the reverb mode of audio loopback.
 
    > **NOTE**
    >
@@ -104,30 +104,30 @@ The [on('statusChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioLo
    > - If you do not set the reverb mode before enabling loopback, the default mode [THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21) is used upon activation of audio loopback.
 
    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    try {
-      audioLoopback.setReverbPreset(audio.AudioLoopbackReverbPreset.THEATER);
-    } catch (err) {
-      console.error(`Failed to set reverb preset. Code: ${err.code}, message: ${err.message}`);
-    }
+   import { BusinessError } from '@kit.BasicServicesKit';
+   try {
+       audioLoopback.setReverbPreset(audio.AudioLoopbackReverbPreset.THEATER);
+   } catch (err) {
+       console.error(`Failed to set reverb preset. Code: ${err.code}, message: ${err.message}`);
+   }
    ```
 
-5. Call [getReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getreverbpreset21) to obtain the current reverb mode of audio loopback. This API is available from API version 21.
+5. Starting from API version 21, [getReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getreverbpreset21) can be called to query the reverb mode of the current audio loopback.
 
    > **NOTE**
    >
    > If no reverb mode has been set, the default mode [THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21) is returned.
 
    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    try {
-      let reverbPreset = audioLoopback.getReverbPreset();
-    } catch (err) {
-      console.error(`Failed to get reverb preset. Code: ${err.code}, message: ${err.message}`);
-    }
+   import { BusinessError } from '@kit.BasicServicesKit';
+   try {
+     let reverbPreset = audioLoopback.getReverbPreset();
+   } catch (err) {
+     console.error(`Failed to get reverb preset. Code: ${err.code}, message: ${err.message}`);
+   }
    ```
 
-6. Call [setEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setequalizerpreset21) to set the equalizer type for audio loopback. This API is available from API version 21.
+6. Starting from API version 21, [setEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setequalizerpreset21) can be called to set the equalizer type of audio loopback.
 
    > **NOTE**
    >
@@ -136,53 +136,53 @@ The [on('statusChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioLo
    > - If you do not set the equalizer type before enabling loopback, the default mode [FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21) is used upon activation of audio loopback.
 
    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    try {
-      audioLoopback.setEqualizerPreset(audio.AudioLoopbackEqualizerPreset.FULL);
-    } catch (err) {
-      console.error(`Failed to set equalizer preset. Code: ${err.code}, message: ${err.message}`);
-    }
+   import { BusinessError } from '@kit.BasicServicesKit';
+   try {
+     audioLoopback.setEqualizerPreset(audio.AudioLoopbackEqualizerPreset.FULL);
+   } catch (err) {
+     console.error(`Failed to set equalizer preset. Code: ${err.code}, message: ${err.message}`);
+   }
    ```
 
-7. Call [getEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getequalizerpreset21) to obtain the current equalizer type of audio loopback. This API is available from API version 21.
+7. Starting from API version 21, [getEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getequalizerpreset21) can be called to query the equalizer type of the current audio loopback.
 
    > **NOTE**
    >
    > If no equalizer type has been set, the default mode [FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21) is returned.
 
    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    try {
-      let reverbPreset = audioLoopback.getEqualizerPreset();
-    } catch (err) {
-      console.error(`Failed to get equalizer preset. Code: ${err.code}, message: ${err.message}`);
-    }
+   import { BusinessError } from '@kit.BasicServicesKit';
+   try {
+     let reverbPreset = audioLoopback.getEqualizerPreset();
+   } catch (err) {
+     console.error(`Failed to get equalizer preset. Code: ${err.code}, message: ${err.message}`);
+   }
    ```
 
 8. Call [enable](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#enable20) to enable or disable audio loopback.
 
    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-    audioLoopback.enable(true).then((isSuccess) => {
-      if (isSuccess) {
-        console.info('Succeeded in using enable function.');
-      } else {
-        console.info('Failed to use enable function.');
-      }
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to use enable function. code: ${err.code}, message: ${err.message}`);
-    });
+   audioLoopback.enable(true).then((isSuccess) => {
+     if (isSuccess) {
+       console.info('Succeeded in using enable function.');
+     } else {
+       console.error('Failed to use enable function.');
+     }
+   }).catch((err: BusinessError) => {
+     console.error(`Failed to use enable function. code: ${err.code}, message: ${err.message}`);
+   });
 
-    audioLoopback.enable(false).then((isSuccess) => {
-      if (isSuccess) {
-        console.info('Succeeded in using enable function.');
-      } else {
-        console.info('Failed to use enable function.');
-      }
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to use enable function. code: ${err.code}, message: ${err.message}`);
-    });
+   audioLoopback.enable(false).then((isSuccess) => {
+     if (isSuccess) {
+       console.info('Succeeded in using enable function.');
+     } else {
+       console.error('Failed to use enable function.');
+     }
+   }).catch((err: BusinessError) => {
+     console.error(`Failed to use enable function. code: ${err.code}, message: ${err.message}`);
+   });
    ```
 
 ### Complete Sample Code

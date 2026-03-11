@@ -121,7 +121,7 @@ selectable(value: boolean)
 
 selected(value: boolean)
 
-设置当前ListItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。该属性需要在设置[选中态样式](./ts-universal-attributes-polymorphic-style.md)前使用才能生效选中态样式。
+设置当前ListItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。该属性需要在设置[多态样式](./ts-universal-attributes-polymorphic-style.md)前使用才能生效选中态样式。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -426,7 +426,8 @@ struct ListItemExample2 {
   @State exitEndDeleteAreaString: string = 'not exitEndDeleteArea';
   private scroller: ListScroller = new ListScroller();
 
-  @Builder itemEnd() {
+  @Builder
+  itemEnd() {
     Row() {
       Button('Delete').margin('4vp')
       Button('Set').margin('4vp').onClick(() => {
@@ -448,10 +449,12 @@ struct ListItemExample2 {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-          .transition({ type: TransitionType.Delete, opacity: 0 })
+          .transition(TransitionEffect.OPACITY)
           .swipeAction({
             end: {
-              builder: () => { this.itemEnd() },
+              builder: () => {
+                this.itemEnd()
+              },
               onAction: () => {
                 this.getUIContext()?.animateTo({ duration: 1000 }, () => {
                   let index = this.arr.indexOf(item);
@@ -471,6 +474,7 @@ struct ListItemExample2 {
           })
         }, (item: number) => item.toString())
       }
+
       Text(this.enterEndDeleteAreaString).fontSize(20)
       Text(this.exitEndDeleteAreaString).fontSize(20)
     }
@@ -534,6 +538,7 @@ import { ComponentContent } from '@kit.ArkUI';
 class BuilderParams {
   text: string | Resource;
   scroller: ListScroller;
+
   constructor(text: string | Resource, scroller: ListScroller) {
     this.text = text;
     this.scroller = scroller;
@@ -549,6 +554,7 @@ function itemBuilder(params: BuilderParams) {
     })
   }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly)
 }
+
 @Component
 struct MyListItem {
   scroller: ListScroller = new ListScroller();
@@ -556,21 +562,23 @@ struct MyListItem {
   @State project ?: number = 0;
   startBuilder ?: ComponentContent<BuilderParams> = undefined;
   endBuilder ?: ComponentContent<BuilderParams> = undefined;
-
   builderParam = new BuilderParams('delete', this.scroller);
 
   aboutToAppear(): void {
     this.startBuilder = new ComponentContent(this.getUIContext(), wrapBuilder(itemBuilder), this.builderParam);
     this.endBuilder = new ComponentContent(this.getUIContext(), wrapBuilder(itemBuilder), this.builderParam);
   }
+
   GetStartBuilder() {
     this.startBuilder?.update(new BuilderParams('StartDelete', this.scroller));
     return this.startBuilder;
   }
+
   GetEndBuilder() {
     this.endBuilder?.update(new BuilderParams('EndDelete', this.scroller));
     return this.endBuilder;
   }
+
   build() {
     ListItem() {
       Text('item' + this.project)
@@ -581,7 +589,7 @@ struct MyListItem {
         .borderRadius(10)
         .backgroundColor(0xFFFFFF)
     }
-    .transition({ type: TransitionType.Delete, opacity: 0 })
+    .transition(TransitionEffect.OPACITY)
     .swipeAction({
       end: {
         builderComponent: this.GetEndBuilder(),
@@ -619,7 +627,7 @@ struct ListItemExample {
       List({ space: 10, scroller: this.scroller }) {
         ListItemGroup() {
           ForEach(this.arr, (project: number) => {
-            MyListItem({ scroller: this.scroller, project: project, arr:this.arr })
+            MyListItem({ scroller: this.scroller, project: project, arr: this.arr })
           }, (item: string) => item)
         }
       }
@@ -694,7 +702,7 @@ struct ListItemExample5 {
             .backgroundColor(0xFFFFFF)
         }
         .id('listItem')
-        .transition({ type: TransitionType.Delete, opacity: 0 })
+        .transition(TransitionEffect.OPACITY)
         .swipeAction({
           start: {
             builder: () => {

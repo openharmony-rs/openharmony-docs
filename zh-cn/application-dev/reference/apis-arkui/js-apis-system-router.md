@@ -257,7 +257,7 @@ import router from '@system.router';
 class J{
   getLength() {
     let size = router.getLength();
-    console.log('pages stack size = ' + size);
+    console.info('pages stack size = ' + size);
   }
 }
 export default new J()
@@ -284,9 +284,9 @@ import router from '@system.router';
 class K{
   getState() {
     let page = router.getState();
-    console.log('current index = ' + page.index);
-    console.log('current name = ' + page.name);
-    console.log('current path = ' + page.path);
+    console.info('current index = ' + page.index);
+    console.info('current name = ' + page.name);
+    console.info('current path = ' + page.path);
   }
 }
 export default new K()
@@ -315,10 +315,10 @@ class L{
     router.enableAlertBeforeBackPage({
       message: 'Message Info',
       success: ()=> {
-        console.log('success');
+        console.info('success');
       },
       cancel: ()=> {
-        console.log('cancel');
+        console.info('cancel');
       }
     });
   }
@@ -348,10 +348,10 @@ class Z{
   disableAlertBeforeBackPage() {
     router.disableAlertBeforeBackPage({
       success: ()=> {
-        console.log('success');
+        console.info('success');
       },
       cancel: ()=> {
-        console.log('cancel');
+        console.info('cancel');
       }
     });
   }

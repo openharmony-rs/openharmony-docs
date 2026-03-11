@@ -81,40 +81,43 @@ This example demonstrates how to set the calendar picker dialog box's background
 @Entry
 @Component
 struct CalendarPickerDialogExample {
-  private selectedDate: Date = new Date('2024-04-23');
+  private selectedDate: Date = new Date('2024-03-24');
 
   build() {
     Column() {
-      Button("Show CalendarPicker Dialog")
+      Button('Show CalendarPicker Dialog')
         .margin(20)
         .onClick(() => {
-          console.info("CalendarDialog.show");
+          console.info('CalendarDialog.show');
           CalendarPickerDialog.show({
             selected: this.selectedDate,
             backgroundColor: Color.Gray,
             backgroundBlurStyle: BlurStyle.NONE,
             shadow: ShadowStyle.OUTER_FLOATING_SM,
             onAccept: (value) => {
+              // Callback invoked when the OK button in the dialog box is clicked. value indicates the selected date.
               this.selectedDate = value;
-              console.info("calendar onAccept:" + JSON.stringify(value));
+              console.info('calendar onAccept:' + JSON.stringify(value));
             },
             onCancel: () => {
-              console.info("calendar onCancel");
+              // Callback invoked when the cancel button in the dialog box is clicked.
+              console.info('calendar onCancel');
             },
             onChange: (value) => {
-              console.info("calendar onChange:" + JSON.stringify(value));
+              // Callback invoked when the selection in the picker changes the selected date. value indicates the selected date.
+              console.info('calendar onChange:' + JSON.stringify(value));
             },
             onDidAppear: () => {
-              console.info("calendar onDidAppear");
+              console.info('calendar onDidAppear');
             },
             onDidDisappear: () => {
-              console.info("calendar onDidDisappear");
+              console.info('calendar onDidDisappear');
             },
             onWillAppear: () => {
-              console.info("calendar onWillAppear");
+              console.info('calendar onWillAppear');
             },
             onWillDisappear: () => {
-              console.info("calendar onWillDisappear");
+              console.info('calendar onWillDisappear');
             }
           });
         })
@@ -138,10 +141,10 @@ struct CalendarPickerDialogExample {
 
   build() {
     Column() {
-      Button("Show CalendarPicker Dialog")
+      Button('Show CalendarPicker Dialog')
         .margin(20)
         .onClick(() => {
-          console.info("CalendarDialog.show");
+          console.info('CalendarDialog.show');
           CalendarPickerDialog.show({
             selected: this.selectedDate,
             acceptButtonStyle: {
@@ -170,7 +173,7 @@ struct CalendarPickerDialogExample {
             },
             onAccept: (value) => {
               this.selectedDate = value;
-              console.info("calendar onAccept:" + JSON.stringify(value));
+              console.info('calendar onAccept:' + JSON.stringify(value));
             }
           });
         })
@@ -193,32 +196,32 @@ struct CalendarPickerDialogExample {
 
   build() {
     Column() {
-      Button("Show CalendarPicker Dialog")
+      Button('Show CalendarPicker Dialog')
         .margin(20)
         .onClick(() => {
-          console.info("CalendarDialog.show");
+          console.info('CalendarDialog.show');
           CalendarPickerDialog.show({
             selected: this.selectedDate,
             onAccept: (value) => {
-              console.info("calendar onAccept:" + JSON.stringify(value));
+              console.info('calendar onAccept:' + JSON.stringify(value));
             },
             onCancel: () => {
-              console.info("calendar onCancel");
+              console.info('calendar onCancel');
             },
             onChange: (value) => {
-              console.info("calendar onChange:" + JSON.stringify(value));
+              console.info('calendar onChange:' + JSON.stringify(value));
             },
             onDidAppear: () => {
-              console.info("calendar onDidAppear");
+              console.info('calendar onDidAppear');
             },
             onDidDisappear: () => {
-              console.info("calendar onDidDisappear");
+              console.info('calendar onDidDisappear');
             },
             onWillAppear: () => {
-              console.info("calendar onWillAppear");
+              console.info('calendar onWillAppear');
             },
             onWillDisappear: () => {
-              console.info("calendar onWillDisappear");
+              console.info('calendar onWillDisappear');
             },
             enableHoverMode: true,
             hoverModeArea: HoverModeAreaType.TOP_SCREEN,
@@ -244,16 +247,16 @@ struct CalendarPickerDialogExample {
 
   build() {
     Column() {
-      Button("Show CalendarPicker Dialog")
+      Button('Show CalendarPicker Dialog')
         .margin(20)
         .onClick(() => {
-          console.info("CalendarDialog.show");
+          console.info('CalendarDialog.show');
           CalendarPickerDialog.show({
             selected: this.selectedDate,
             hintRadius: 1,
             onAccept: (value) => {
               this.selectedDate = value;
-              console.info("calendar onAccept:" + JSON.stringify(value));
+              console.info('calendar onAccept:' + JSON.stringify(value));
             }
           });
         })
@@ -262,7 +265,7 @@ struct CalendarPickerDialogExample {
 }
 ```
 
-
+![CalendarPickerDialog](figures/CalendarPickerDialogDemo4.png)
 
 ### Example 5: Setting Start and End Dates
 
@@ -275,15 +278,15 @@ This example demonstrates how to set the start and end dates for the calendar pi
 struct CalendarPickerDialogExample {
   private selectedDate: Date = new Date('2025-01-01');
   private startDate: Date = new Date('2024-01-10');
-  private endDate: Date = new Date('2025-1-10');
+  private endDate: Date = new Date('2025-01-10');
 
   build() {
     Column() {
       Text('Calendar date picker').fontSize(30)
-      Button("Show CalendarPicker Dialog")
+      Button('Show CalendarPicker Dialog')
         .margin(20)
         .onClick(() => {
-          console.info("CalendarDialog.show");
+          console.info('CalendarDialog.show');
           CalendarPickerDialog.show({
             start: this.startDate,
             end: this.endDate,
@@ -319,7 +322,7 @@ struct CalendarPickerExample {
       Button("Show CalendarPicker Dialog")
         .margin(20)
         .onClick(() => {
-          console.info("CalendarDialog.show");
+          console.info('CalendarDialog.show');
           CalendarPickerDialog.show({ markToday: true, disabledDateRange: this.disabledDateRange });
         })
     }.width('100%').margin({ top: 350 })
@@ -341,9 +344,10 @@ struct CalendarPickerDialogExample {
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // Replace $r('app.media.bg') with the image resource file you use.
       Image($r('app.media.bg'))
       Column() {
-        Button("Show CalendarPicker Dialog")
+        Button('Show CalendarPicker Dialog')
           .margin(20)
           .onClick(() => {
             CalendarPickerDialog.show({
@@ -379,9 +383,10 @@ struct CalendarPickerDialogExample {
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // Replace $r('app.media.bg') with the image resource file you use.
       Image($r('app.media.bg'))
       Column() {
-        Button("Show CalendarPicker Dialog")
+        Button('Show CalendarPicker Dialog')
           .margin(20)
           .onClick(() => {
             CalendarPickerDialog.show({

@@ -226,7 +226,6 @@ enum qos_default
 | qos_default = ffrt_qos_default | 默认类型 |
 | qos_user_initiated = ffrt_qos_user_initiated | 用户期望 |
 
-
 ## 函数说明
 
 ### ffrt_function_t()

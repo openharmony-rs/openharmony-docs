@@ -60,108 +60,114 @@ To create a widget in the stage model, you need to implement the lifecycle callb
 
 1. Import related modules in **JsCardFormAbility.ets**.
 
-    <!-- @[JSForm_JsCardFormAbility_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
-    
-    ``` TypeScript
-    // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
-    import { common, Want } from '@kit.AbilityKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { formBindingData, FormExtensionAbility, formProvider } from '@kit.FormKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { preferences } from '@kit.ArkData';
-    ```
+   <!-- @[JSForm_JsCardFormAbility_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
+   import { common, Want } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { formBindingData, FormExtensionAbility, formProvider } from '@kit.FormKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { preferences } from '@kit.ArkData';
+   ```
 
 
 2. Implement FormExtension lifecycle callbacks in **JsCardFormAbility.ets**.
 
-    <!-- @[JSForm_JsCardFormAbility_FormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
-    
-    ``` TypeScript
-    // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
-    const TAG: string = 'JsCardFormAbility';
-    const DATA_STORAGE_PATH: string = '/data/storage/el2/base/haps/form_store';
-    const DOMAIN_NUMBER: number = 0xFF00;
-    let storeFormInfo =
-      async (formId: string, formName: string, tempFlag: boolean, context: common.FormExtensionContext): Promise<void> => {
-        // Only the widget ID (formId), widget name (formName), and whether the widget is a temporary one (tempFlag) are persistently stored.
-        let formInfo: Record<string, string | boolean | number> = {
-          'formName': formName,
-          'tempFlag': tempFlag,
-          'updateCount': 0
-        };
-        try {
-          const storage: preferences.Preferences = await preferences.getPreferences(context, DATA_STORAGE_PATH);
-          // put form info
-          await storage.put(formId, JSON.stringify(formInfo));
-          hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] storeFormInfo, put form info successfully, formId: ${formId}`);
-          await storage.flush();
-        } catch (err) {
-          hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to storeFormInfo,
-          err: ${JSON.stringify(err as BusinessError)}`);
-        }
-      }
-    let deleteFormInfo = async (formId: string, context: common.FormExtensionContext): Promise<void> => {
-      try {
-        const storage: preferences.Preferences = await preferences.getPreferences(context, DATA_STORAGE_PATH);
-        // Delete the widget information.
-        await storage.delete(formId);
-        hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] deleteFormInfo, del form info successfully, formId: ${formId}`);
-        await storage.flush();
-      } catch (err) {
-        hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to deleteFormInfo,
-          err: ${JSON.stringify(err as BusinessError)}`);
-      };
-    };
-    
-    export default class JsCardFormAbility extends FormExtensionAbility {
-      onAddForm(want: Want): formBindingData.FormBindingData {
-        hilog.info(DOMAIN_NUMBER, TAG, '[JsCardFormAbility] onAddForm');
-    
-        if (want.parameters) {
-          let formId = JSON.stringify(want.parameters['ohos.extra.param.key.form_identity']);
-          let formName = JSON.stringify(want.parameters['ohos.extra.param.key.form_name']);
-          let tempFlag = want.parameters['ohos.extra.param.key.form_temporary'] as boolean;
-          // Persistently store widget data for subsequent use, such as instance acquisition and update.
-          storeFormInfo(formId, formName, tempFlag, this.context);
-        }
-    
-        let obj: Record<string, string> = {
-          'title': 'titleOnCreate',
-          'detail': 'detailOnCreate'
-        };
-        let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
-        return formData;
-      }
-      onRemoveForm(formId: string): void {
-        // Delete widget data.
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
-        // Delete the persistent widget instance data.
-        deleteFormInfo(formId, this.context);
-      }
-      onUpdateForm(formId: string): void {
-        // Override this method to support interval-based updates, time-specific updates, or updates requested by the widget host.
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
-        let obj: Record<string, string> = {
-          'title': 'titleOnUpdate',
-          'detail': 'detailOnUpdate'
-        };
-        let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
-        formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
-          hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
-        });
-      }
-      onFormEvent(formId: string, message: string): void {
-        // If the widget supports event triggering, override this method and implement the trigger.
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onFormEvent');
-        // Obtain the detail parameter passed in the message event.
-        let msg: Record<string, string> = JSON.parse(message);
-        if (msg.detail === 'message detail') {
-          // Implement the service logic.
-          hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
-        }
-      }
-    }
-    ```
+   <!-- @[JSForm_JsCardFormAbility_FormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+   
+   ``` TypeScript
+   // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
+   const TAG: string = 'JsCardFormAbility';
+   const DATA_STORAGE_PATH: string = '/data/storage/el2/base/haps/form_store';
+   const DOMAIN_NUMBER: number = 0xFF00;
+   let storeFormInfo =
+     async (formId: string, formName: string, tempFlag: boolean, context: common.FormExtensionContext): Promise<void> => {
+       // Only the widget ID (formId), widget name (formName), and whether the widget is a temporary one (tempFlag) are persistently stored.
+       let formInfo: Record<string, string | boolean | number> = {
+         'formName': formName,
+         'tempFlag': tempFlag,
+         'updateCount': 0
+       };
+       try {
+         const storage: preferences.Preferences = await preferences.getPreferences(context, DATA_STORAGE_PATH);
+         // put form info
+         await storage.put(formId, JSON.stringify(formInfo));
+         hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] storeFormInfo, put form info successfully, formId: ${formId}`);
+         await storage.flush();
+       } catch (err) {
+         hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to storeFormInfo,
+         err: ${JSON.stringify(err as BusinessError)}`);
+       }
+     }
+   let deleteFormInfo = async (formId: string, context: common.FormExtensionContext): Promise<void> => {
+     try {
+       const storage: preferences.Preferences = await preferences.getPreferences(context, DATA_STORAGE_PATH);
+       // Delete the widget information.
+       await storage.delete(formId);
+       hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] deleteFormInfo, del form info successfully, formId: ${formId}`);
+       await storage.flush();
+     } catch (err) {
+       hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to deleteFormInfo,
+         err: ${JSON.stringify(err as BusinessError)}`);
+     }
+   };
+   
+   
+   export default class JsCardFormAbility extends FormExtensionAbility {
+     onAddForm(want: Want): formBindingData.FormBindingData {
+       hilog.info(DOMAIN_NUMBER, TAG, '[JsCardFormAbility] onAddForm');
+   
+       if (want.parameters) {
+         let formId = JSON.stringify(want.parameters['ohos.extra.param.key.form_identity']);
+         let formName = JSON.stringify(want.parameters['ohos.extra.param.key.form_name']);
+         let tempFlag = want.parameters['ohos.extra.param.key.form_temporary'] as boolean;
+         // Persistently store widget data for subsequent use, such as instance acquisition and update.
+         storeFormInfo(formId, formName, tempFlag, this.context);
+       }
+   
+       let obj: Record<string, string> = {
+         'title': 'titleOnCreate',
+         'detail': 'detailOnCreate'
+       };
+       let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+       return formData;
+     }
+   
+     onRemoveForm(formId: string): void {
+       // Delete widget data.
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
+       // Delete the persistent widget instance data.
+       deleteFormInfo(formId, this.context);
+     }
+   
+     onUpdateForm(formId: string): void {
+       // Override this method to support interval-based updates, time-specific updates, or updates requested by the widget host.
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
+       let obj: Record<string, string> = {
+         'title': 'titleOnUpdate',
+         'detail': 'detailOnUpdate'
+       };
+       let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+       formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
+         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
+       });
+     }
+   
+     onFormEvent(formId: string, message: string): void {
+       // If the widget supports event triggering, override this method and implement the trigger.
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onFormEvent');
+       // Obtain the detail parameter passed in the message event.
+       let msg: Record<string, string> = JSON.parse(message);
+       if (msg.detail === 'message detail') {
+         // Implement the service logic.
+         hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
+       }
+     }
+   
+   }
+   
+   ```
 
 
 > **NOTE**
@@ -173,32 +179,30 @@ To create a widget in the stage model, you need to implement the lifecycle callb
 1. Configure ExtensionAbility information under **extensionAbilities** in the [module.json5 file](../quick-start/module-configuration-file.md). For a FormExtensionAbility, you must specify **metadata**. Specifically, set **name** to **ohos.extension.form** (fixed), and set **resource** to the index of the widget configuration information.
    Example configuration:
 
-    <!-- @[JSForm_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/module.json5) -->
-    
-    ``` JSON5
-    {
-      "module": {
-        // ···
-        "extensionAbilities": [
-          {
-            "name": "JsCardFormAbility",
-            "srcEntry": "./ets/jscardformability/JsCardFormAbility.ets",
-            "description": "$string:JSCardFormAbility_desc",
-            "label": "$string:JSCardFormAbility_label",
-            "type": "form",
-            "metadata": [
-              {
-                "name": "ohos.extension.form",
-                "resource": "$profile:form_jscard_config"
-              }
-            ]
-          }
-        ]
-      }
-    }
-    ```
-
-
+   <!-- @[JSForm_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/module.json5) --> 
+   
+   ``` JSON5
+   {
+     "module": {
+       // ...
+       "extensionAbilities": [
+         {
+           "name": "JsCardFormAbility",
+           "srcEntry": "./ets/jscardformability/JsCardFormAbility.ets",
+           "description": "$string:JSCardFormAbility_desc",
+           "label": "$string:JSCardFormAbility_label",
+           "type": "form",
+           "metadata": [
+             {
+               "name": "ohos.extension.form",
+               "resource": "$profile:form_jscard_config"
+             }
+           ]
+         }
+       ]
+     }
+   }
+   ```
 
 2. Configure the widget configuration information. In the **metadata** configuration item of FormExtensionAbility, you can specify the resource index of specific configuration information of the widget. For example, if **resource** is set to **$profile:form_jscard_config**, **form_jscard_config.json** in the **resources/base/profile/** directory of the development view is used as the profile configuration file of the widget. The following table describes the internal structure of the profile configuration file.
 
@@ -604,7 +608,7 @@ The following are examples:
 
 > **NOTE**
 > 
-> **JSON Value** in **data** supports multi-level nested data. When updating data, ensure that complete data is carried.
+> The JSON value of **data** supports multi-level nested data. When updating data, ensure that complete data is carried.
 
 Suppose a widget displays Mr. Zhang's course information for July 18, as shown in the following code snippet.
   ```ts

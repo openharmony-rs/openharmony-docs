@@ -98,3 +98,4 @@
   - [VPN Error Codes](errorcode-net-vpn.md)
   - [Network Security Error Codes](errorcode-net-networkSecurity.md)
   - [Kernel Error Codes](errorcode-kernel.md)
+  - [Firewall Error Codes](errorcode-net-netfirewall.md)

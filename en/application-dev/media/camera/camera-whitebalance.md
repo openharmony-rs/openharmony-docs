@@ -30,12 +30,12 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
             let mode: camera.WhiteBalanceMode = camera.WhiteBalanceMode.DAYLIGHT;
             status = session.isWhiteBalanceModeSupported(mode);
             if(status){
-            session.setWhiteBalanceMode(mode);
+               session.setWhiteBalanceMode(mode);
             }
             whiteBalanceMode = session.getWhiteBalanceMode();
          } catch (error) {
-         let err = error as BusinessError;
-         console.error(`The isWhiteBalanceModeSupported call failed. error code: ${err.code}`);
+            let err = error as BusinessError;
+            console.error(`The isWhiteBalanceModeSupported call failed. error code: ${err.code}`);
          }
          return status;
       }
@@ -48,8 +48,8 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
          try {
             range = session.getWhiteBalanceRange();
             let whiteBalance: number = 3000;
-            if(whiteBalance > range[0] && whiteBalance < range[1]){
-            session.setWhiteBalance(whiteBalance);
+            if(whiteBalance >= range[0] && whiteBalance <= range[1]) {
+               session.setWhiteBalance(whiteBalance);
             }
             whiteBalance = session.getWhiteBalance();
          } catch (error) {

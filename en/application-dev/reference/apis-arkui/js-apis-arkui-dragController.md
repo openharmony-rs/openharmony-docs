@@ -290,7 +290,7 @@ Defines the attributes required for initiating a drag action and information car
 | data        | [unifiedDataChannel.UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | No |  Yes | Data carried in the dragging process.<br>The default value is null.<br>**Atomic service API**: This API can be used in atomic services since API version 12.              |
 | extraParams | string                                                 | No |  Yes | Additional information about the drag action. Not supported currently.<br>The default value is null.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | touchPoint<sup>11+</sup>    | [TouchPoint](arkui-ts/ts-types.md#touchpoint11)  | No |  Yes | Coordinates of the touch point. If this parameter is not set, the touch point is centered horizontally and shifted downward by 20% from the top.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| previewOptions<sup>11+</sup>| [DragPreviewOptions](arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11)                                | No  |  Yes | Processing mode of the drag preview and the display of the number badge during dragging.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| previewOptions<sup>11+</sup>| [DragPreviewOptions](arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11-1)                                | No  |  Yes | Processing mode of the drag preview and the display of the number badge during dragging.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | dataLoadParams<sup>20+</sup>| [unifiedDataChannel.DataLoadParams](../apis-arkdata/js-apis-data-unifiedDataChannel.md#dataloadparams20)                                | No  |  Yes | Parameters for deferred data loading from the drag source. This API provides data loading parameters to the system instead of directly providing complete data objects. When the user drops data on the target application, the system will use these parameters to request the actual data from the drag source. If set together with **data**, **dataLoadParams** takes effect.<br>The default value is null.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## dragController.createDragAction<sup>(deprecated)</sup>
@@ -895,7 +895,7 @@ Defines parameters related to drag-and-drop animation effects.
 | Name       | Type                                                  | Read-Only |  Optional| Description                                    |
 | ----------- | ------------------------------------------------------ | ---- | ---- | ---------------------------------------- |
 | duration    | number                                                 | No |  Yes  | Animation duration, in ms.<br>Default value: **1000**<br>**NOTE**<br>- If this parameter is set to a value less than 0, the value **0** is used.<br>- Floating-point values will be rounded down to integers. For example, if the value set is 1.2, **1** will be used.|
-| curve       | [Curve](arkui-ts/ts-appendix-enums.md#curve) \| [ICurve](js-apis-curve.md#icurve9) | No |  Yes | Animation curve.<br>Default value: **Curve.EaseInOut**|
+| curve       |&nbsp;[Curve](arkui-ts/ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](js-apis-curve.md#icurve9) | No |  Yes | Animation curve.<br>Default value: **Curve.EaseInOut**|
 
 ## DragEventParam<sup>12+</sup>
 
@@ -1070,7 +1070,7 @@ Applies a foreground color animation to the drag preview. This API does not work
 
      build() {
        Column() {
-         Button('Drag Here')
+         Button('Drop Here')
            .margin(10)
            .onDragEnter(() => {
            try {
@@ -1104,7 +1104,7 @@ Applies a foreground color animation to the drag preview. This API does not work
                  extraParams: ''
                }
                let eve: DragInfo = new DragInfo();
-               this.getUIContext().getDragController().executeDrag(() => { // You are advised to usethis.getUIContext().getDragController().executeDrag().
+               this.getUIContext().getDragController().executeDrag(() => { // You are advised to use this.getUIContext().getDragController().executeDrag().
                  this.DraggingBuilder()
                }, dragInfo, (err , eve) => {
                  hilog.info(0x0000, `${JSON.stringify(err)}`, '')

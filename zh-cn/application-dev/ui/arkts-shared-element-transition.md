@@ -10,8 +10,9 @@
 
 如下例所示，在点击图片后，该图片消失，同时在另一个位置出现新的图片，二者之间内容相同，可以对它们添加一镜到底动效。左图为不添加一镜到底动效的效果，右图为添加一镜到底动效的效果，一镜到底的效果能够让二者的出现消失产生联动，使得内容切换过程显得灵动自然而不生硬。
 
-![zh-cn_image_0000001599644876](figures/zh-cn_image_0000001599644876.gif)|![zh-cn_image_0000001599644877](figures/zh-cn_image_0000001599644877.gif)
----|---
+| 一帧切换效果 | 一镜到底效果 |
+| ------ | ---- |
+| ![zh-cn_image_0000001599644876](figures/zh-cn_image_0000001599644876.gif)|![zh-cn_image_0000001599644877](figures/zh-cn_image_0000001599644877.gif) |
 
 一镜到底的动效有多种实现方式，在实际开发过程中，应根据具体场景选择合适的方法进行实现。
 
@@ -200,15 +201,15 @@ export default struct Post {
 
 ### 结合Stack使用
 
-可以利用Stack内后定义组件在最上方的特性控制组件在跨节点迁移后位z序最高，以展开收起卡片的场景为例，实现步骤为：
+可以利用Stack内后定义组件位于最上方的特性，控制组件在跨节点迁移后的顺序位置最高。以展开收起卡片的场景为例，实现步骤为：
 
-- 展开卡片时，获取节点A的位置信息，将其中的组件迁移到与节点A位置一致的节点B处，节点B的层级高于节点A。
+- 展开卡片时，获取被点击卡片A的位置信息，将被点击卡片A迁移到与卡片A位置一致的展开页B处，展开页B的层级高于被点击卡片A的层级。
 
-- 对节点B添加属性动画，使之展开并运动到展开后的位置，完成一镜到底的动画效果。
+- 对展开页B添加属性动画，使之展开并运动到展开后的位置，完成一镜到底的动画效果。
 
-- 收起卡片时，对节点B添加属性动画，使之收起并运动到收起时的位置，即节点A的位置，实现一镜到底的动画效果。
+- 收起卡片时，对展开页B添加属性动画，使之收起并运动到收起时的位置，即被点击卡片A的位置，实现一镜到底的动画效果。
 
-- 在动画结束时利用回调将节点B中的组件迁移回节点A处。
+- 在动画结束回调函数中将展开页B中的组件迁移回被点击卡片A处。
 
 <!-- @[stack_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template3/Index.ets) -->
 
@@ -1188,8 +1189,8 @@ export class WindowUtils {
 // 程序入口处的onWindowStageCreate增加对窗口宽高等的抓取
 
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { display, window } from '@kit.ArkUI';
 import { WindowUtils } from '../utils/WindowUtils';
+import { display, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -1209,7 +1210,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
-    // ···
+    // ...
     // 获取窗口宽高
     WindowUtils.window = windowStage.getMainWindowSync();
     WindowUtils.windowWidthPx = WindowUtils.window.getWindowProperties().windowRect.width;
@@ -1280,7 +1281,6 @@ export default class EntryAbility extends UIAbility {
       AppStorage.setOrCreate('currentBreakpoint', this.currentBreakPoint);
     }
   }
-
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageDestroy');
@@ -1817,8 +1817,8 @@ export class WindowUtils {
 // 程序入口处的onWindowStageCreate增加对窗口宽高等的抓取
 
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { display, window } from '@kit.ArkUI';
 import { WindowUtils } from '../utils/WindowUtils';
+import { display, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -1838,7 +1838,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
-    // ···
+    // ...
     // 获取窗口宽高
     WindowUtils.window = windowStage.getMainWindowSync();
     WindowUtils.windowWidthPx = WindowUtils.window.getWindowProperties().windowRect.width;
@@ -1909,7 +1909,6 @@ export default class EntryAbility extends UIAbility {
       AppStorage.setOrCreate('currentBreakpoint', this.currentBreakPoint);
     }
   }
-
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageDestroy');

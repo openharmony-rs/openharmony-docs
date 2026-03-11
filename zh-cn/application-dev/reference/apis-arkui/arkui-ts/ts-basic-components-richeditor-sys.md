@@ -68,7 +68,7 @@ struct RichEditorExample {
         .width('100%')
         .border({ width: 1, color: Color.Blue })
         .onWillChange((value: RichEditorChangeValue) => {
-          console.log('onWillChange, changeReason=' + value.changeReason)
+          console.info('onWillChange, changeReason=' + value.changeReason)
           return true
         })
     }

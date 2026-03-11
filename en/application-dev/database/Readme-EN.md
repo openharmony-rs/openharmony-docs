@@ -37,7 +37,7 @@
   - [Database Encryption (C/C++)](native-data-encryption.md)
   - [Access Control by Device and Data Level (ArkTS)](access-control-by-device-and-data-level.md)
   - [Access Control by Device and Data Level (C/C++)](native-access-control-by-device-and-data-level.md)
-  - [Using an EL5 Database (ArkTS)](encrypted_estore_guidelines.md)
+  - [Using an EL5 Database (ArkTS)](encrypted-estore-guidelines.md)
 - Cross-Application Data Sharing<!--cross-app-data-share-->
   - [Overview of Cross-Application Data Sharing](data-share-overview.md)
   - One-to-Many Data Sharing<!--one-to-many-data-share-->

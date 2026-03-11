@@ -189,10 +189,10 @@ For details, see [JS hybrid stack frame](cppcrash-guidelines.md#common-faults).
 
 | Name| Type| Description|
 | -------- | -------- | -------- |
-| rss | number | Size of the memory allocated for a process, in KB.|
-| sys_free_mem | number | Size of free memory, in KB.|
-| sys_avail_mem | number | Size of available memory, in KB.|
-| sys_total_mem | number | Total memory size, in KB.|
+| rss | number | Size of the memory allocated for a process, in KB. This field corresponds to the **Process Memory** field in [C++ crash logs](cppcrash-guidelines.md#log-specifications) or [JS crash logs](jscrash-guidelines.md#log-specifications)|
+| sys_free_mem | number | Size of free memory, in KB. This field corresponds to **Free** of the **Device Memory** field in [C++ crash logs](cppcrash-guidelines.md#log-specifications) or [JS crash logs](jscrash-guidelines.md#log-specifications).|
+| sys_avail_mem | number | Size of available memory, in KB. This field corresponds to **Available** of the **Device Memory** field in [C++ crash logs](cppcrash-guidelines.md#log-specifications) or [JS crash logs](jscrash-guidelines.md#log-specifications).|
+| sys_total_mem | number | Total memory size, in KB. This field corresponds to **Total** of the **Device Memory** field in [C++ crash logs](cppcrash-guidelines.md#log-specifications) or [JS crash logs](jscrash-guidelines.md#log-specifications).|
 
 ## Customizing Crash Event Parameters
 

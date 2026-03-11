@@ -105,25 +105,43 @@ See the error information.
 3. For errors due to other causes, refer to the error message for detailed correction guidance.
 
 ## 100026 The Instance Object Used to Call the API Has Been Unbound from the Backend Entity Node
+
 **Error Message**
+
 The current item has been disposed.
+
 **Description**
+
 This error code is reported when the instance object used to call the API has been unbound from the backend entity node.
+
 **Possible Causes**
+
 The **dispose** API has been previously called using this instance object, for example, **item.dispose()**.
+
 **Solution**
-1. To continue using this instance object, avoid performing the dispose operation on it.
+
+1. To continue using this instance object, avoid performing the dispose operation on it and remove the related code.
 2. To check whether the instance object is available, call the **isDisposed** API.
+
 ## 100027 The Current Node Has Been Adopted as a Child Node
+
 **Error Message**
+
 The current node has been adopted.
+
 **Description**
+
 This error code is reported when the current node has been adopted as a child node and does not support the current operation.
+
 **Possible Causes**
+
 The current node has been adopted as a child node and does not support the requested operation.
+
 **Solution**
+
 Cancel the adoption of the current node before performing the operation.
-## 106103 Operation Not Allowed on Nodes Created by ArkTS
+
+## 100028 Current Node Is Not on the Main Node Tree
 
 **Error Message**
 

@@ -35,7 +35,7 @@ JsUnit is released as an ohpm package. For details about the version information
 **Configuration Example**
 ```json
 "devDependencies": {
-    "@ohos/hypium": "1.0.24"
+    "@ohos/hypium": "1.0.25"
   }
 ```
 
@@ -59,7 +59,9 @@ A test script must contain the following basic elements:
 
 The following test example shows how to check whether the tested page is displayed as expected.
 
-```ts
+<!-- @[basic_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets) -->
+
+```TypeScript
 import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility, Want } from '@kit.AbilityKit';
@@ -74,7 +76,6 @@ export default function abilityTest() {
     // You can filter test cases based on the type, size, and level.
     it('testExample',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
     // The test case name is testExample.
-      console.info("unitTest: TestExample begin");
       await sleep(500);
       const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
       // Start the ability to be tested.
@@ -86,7 +87,6 @@ export default function abilityTest() {
       await sleep(500);
       // Obtain the page displayed in the foreground on the device and assert the check.
       const ability: UIAbility = await delegator.getCurrentTopAbility();
-      console.info("get top ability");
       expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
       done();
     })
@@ -226,7 +226,7 @@ Example 11: Execute test cases for a specified number of times.
 * Checking the test result
 
 1. During the test execution in the CLI, the framework prints the following log information:
-    ```
+    ```txt
     OHOS_REPORT_STATUS: class=ActsAbilityTest
     OHOS_REPORT_STATUS: current=1
     OHOS_REPORT_STATUS: id=JS
@@ -234,7 +234,7 @@ Example 11: Execute test cases for a specified number of times.
     OHOS_REPORT_STATUS: stream=
     OHOS_REPORT_STATUS: test=testExample
     OHOS_REPORT_STATUS_CODE: 1
-
+    
     OHOS_REPORT_STATUS: class=ActsAbilityTest
     OHOS_REPORT_STATUS: current=1
     OHOS_REPORT_STATUS: id=JS
@@ -252,13 +252,13 @@ Example 11: Execute test cases for a specified number of times.
     | OHOS_REPORT_STATUS: numtests | Total number of test cases in the current test package.|
     | OHOS_REPORT_STATUS: stream | Error information of the current test case.|
     | OHOS_REPORT_STATUS: test| Name of the current test case.|
-    | OHOS_REPORT_STATUS_CODE | Execution result of the current test case. **0**: pass.<br>**1**: error.<br>**2**: fail.|
+    | OHOS_REPORT_STATUS_CODE | Execution status of the current test case. **1**: The test case starts to be executed. **0**: The test case is successfully executed. **-1**: An error is reported during the test case execution. **-2**: The test case fails to be executed.|
     | OHOS_REPORT_STATUS: consuming | Time spent in executing the current test case, in milliseconds.|
 2. After the command execution is complete, the framework prints the following log information:
-    ```
+    ```txt
     OHOS_REPORT_RESULT: stream=Tests run: 447, Failure: 0, Error: 1, Pass: 201, Ignore: 245
     OHOS_REPORT_CODE: 0
-
+    
     OHOS_REPORT_RESULT: breakOnError model, Stopping whole test suite if one specific test case failed or error
     OHOS_REPORT_STATUS: taskconsuming=16029
     ```
@@ -284,7 +284,9 @@ JSUnit provides the basic process APIs required for executing test scripts. You 
 |  it          | Defines a test case.         |
 |  beforeAll         | Presets an action, which is performed only once before all test cases of the test suite start.                       |
 |  beforeEach        | Presets an action, which is performed before each test case of the test suite starts. The number of execution times is the same as the number of test cases defined by **it**.         |
+| beforeEachIt | Presets an action, which is performed before each unit test case starts.<br>The **beforeEachIt** defined in the outer test suite is executed before the test cases in the internal test suite are executed.<br>**Note**: This API is supported since @ohos/hypium 1.0.25.|
 |  afterEach         | Presets a clear action, which is performed after each unit test case ends. The number of execution times is the same as the number of test cases defined by **it**.         |
+| afterEachIt | Presets an action, which is performed after each unit test case ends.<br>The **afterEachIt** defined in the outer test suite is executed after the test cases in the internal test suite are executed.<br>**Note**: This API is supported since @ohos/hypium 1.0.25.|
 |  afterAll          | Presets a clear action, which is performed only once after all test cases of the test suite ends.                       |
 |  beforeItSpecified | Presets an action, which is performed only before the specified unit test case starts.<br>**Note**: This API is supported since @ohos/hypium 1.0.15.|
 |  afterItSpecified  | Presets a clear action, which is performed only after the specified unit test case ends.<br>**Note**: This API is supported since @ohos/hypium 1.0.15.|
@@ -292,15 +294,16 @@ JSUnit provides the basic process APIs required for executing test scripts. You 
 |  xdescribe    | Defines a skipped test suite. Multiple test case functions can be defined in a test suite, but asynchronous functions are not supported.<br>**Note**: This API is supported since @ohos/hypium 1.0.17.                            |
 |  xit                | Defines a skipped test case.<br>**Note**: This API is supported since @ohos/hypium 1.0.17.                    |
 
-
 **Example 1**: Execute **beforeAll**, **beforeEach**, **afterEach**, and **afterAll**.
 
-```ts
+<!-- @[order1_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder1.test.ets) -->
+
+```TypeScript
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function exampleTest() {
   
-  describe('ExampleTest', () =>{
+  describe('order1_sample', () =>{
     let testNumA : number = 1;
     let testNumB : number = 1;
     
@@ -318,32 +321,38 @@ export default function exampleTest() {
     })
   
     afterAll(() => {
-      expect(testNumA).assertEqual(5);
+      let expectValue : number = 5;
+      expect(testNumA).assertEqual(expectValue);
     })
      
     it('testExampleA',Level.LEVEL1, async (done: Function) => {
-      console.info("unitTest: testExampleA begin");
-      expect(testNumA).assertEqual(3);
-      expect(testNumB).assertEqual(2);
+      let expectA : number = 3;
+      let expectB : number = 2;
+      expect(testNumA).assertEqual(expectA);
+      expect(testNumB).assertEqual(expectB);
       done();
     })
 
     it('testExampleB',Level.LEVEL1, async (done: Function) => {
-      console.info("unitTest: testExampleB begin");
-      expect(testNumA).assertEqual(5);
-      expect(testNumB).assertEqual(3);
+      let expectA : number = 5;
+      let expectB : number = 3;
+      expect(testNumA).assertEqual(expectA);
+      expect(testNumB).assertEqual(expectB);
       done();
     })
   })
 }
 ```
 **Example 2**: Execute **beforeItSpecified** and **afterItSpecified**, which are supported since @ohos/hypium 1.0.15.
-```ts
+
+<!-- @[order2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder2.test.ets) -->
+
+```TypeScript
 import { describe, beforeItSpecified, afterItSpecified, it, expect, Level } from '@ohos/hypium';
 
 export default function exampleTest() {
     
-  describe('ExampleTest', () =>{
+  describe('order2_sample', () =>{
    let testNumA : number = 1;
    let testNumB : number = 1;
 
@@ -355,14 +364,12 @@ export default function exampleTest() {
     })
       
     it('testExampleA',Level.LEVEL1, async (done: Function) => {
-      console.info("unitTest: testExampleA begin");
       expect(testNumA).assertEqual(1);
       expect(testNumB).assertEqual(1);
       done();
     })
 
     it('testExampleB',Level.LEVEL1, async (done: Function) => {
-      console.info("unitTest: testExampleB begin");
       expect(testNumA).assertEqual(2);
       expect(testNumB).assertEqual(2);
       done();
@@ -372,26 +379,66 @@ export default function exampleTest() {
 ```
 **Example 3**: Execute **xit**, which is supported since @ohos/hypium 1.0.17.
 
-```ts
+<!-- @[order3_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder3.test.ets) -->
+
+```TypeScript
 import { describe, xit, it, Level } from '@ohos/hypium';
 
 export default function describeExampleTest() {
   
-  describe('ExampleTest', () =>{
+  describe('order3_sample', () =>{
     xit('testExampleA',Level.LEVEL1, async (done: Function) => {
-      console.info("unitTest: testExampleA begin");
       done();
     })
 
     it('testExampleB',Level.LEVEL1, async (done: Function) => {
-      console.info("unitTest: testExampleB begin");
       done();
     })
   })
 }
 ```
 
+**Example 4**: Use **beforeEachIt** and **afterEachIt**. They are supported since version 1.0.25.
+
+<!-- @[order4_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder4.test.ets) -->
+
+``` TypeScript
+import { describe, beforeEach, afterEach, beforeEachIt, afterEachIt, it, expect } from '@ohos/hypium';
+let str = "";
+export default function test() {
+  describe('test0', () => {
+    beforeEach(async () => {
+      str += "A"
+    })
+    beforeEachIt(async () => {
+      str += "B"
+    })
+    afterEach(async () => {
+      str += "C"
+    })
+    afterEachIt(async () => {
+      str += "D"
+    })
+    it('test0000', 0, () => {
+      expect(str).assertEqual("BA");
+    })
+    describe('test1', () => {
+      beforeEach(async () => {
+        str += "E"
+      })
+      beforeEachIt(async () => {
+        str += "F"
+      })
+      it('test1111', 0, async () => {
+        expect(str).assertEqual("BACDBFE");
+      })
+    })
+  })
+}
+```
+
 ### Assertion
+
 JSUnit provides various assertion APIs for different test scenarios. For details, see the following table.
 | Name               | Description                                                       |
 | :------------------|-------------------------------------------------------------|
@@ -422,7 +469,10 @@ JSUnit provides various assertion APIs for different test scenarios. For details
 |  not                | Negates any of the above assertions.<br>**Note**: This API is supported since @ohos/hypium 1.0.4.          |
 
 **Sample Code**
-```ts
+
+<!-- @[assert_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/assertExampleTest/AssertExample.test.ets) -->
+
+```TypeScript
 import { describe, it, expect, Level } from '@ohos/hypium';
 
 export default function exampleTest() {
@@ -430,7 +480,8 @@ export default function exampleTest() {
     it('assertCloseTest', Level.LEVEL1, () => {
       let a: number = 100;
       let b: number = 0.1;
-      expect(a).assertClose(99, b);
+      let c: number = 99;
+      expect(a).assertClose(c, b);
     })
 
     it('assertContain_1', Level.LEVEL1, () => {
@@ -593,14 +644,16 @@ Since@ohos/hypium 1.0.1, JSUnit supports the mock capability. For details about 
 >
 >Only custom objects in application projects can be mocked. System API objects cannot be mocked. For details about how to mock system APIs, see [Mocking System Modules or External Dependency Modules](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-test-mock#section8353132513310).
 >
->Private functions of objects cannot be mocked.
 
 **Mockit**
 
-Mockit is used to specify the instances and functions to be mocked.
+MockKit is used to specify the instances and functions to be mocked.
+
 | Name| Description                |
 | --- |-------------------------------------------------------------------------------------------------------------------------------------------------|
 | mockFunc| Mocks a function in a class instance. Asynchronous functions are supported.                                                |
+| mockPrivateFunc | Mocks a private method on an instance of a class.<br>**Note**: This API is supported since @ohos/hypium 1.0.25.|
+| mockProperty | Mocks a property on an instance of a class.<br>**Note**: This API is supported since @ohos/hypium 1.0.25.|
 | verify | Verifies whether a function and its parameters are executed as expected. This API returns a **VerificationMode** class.|
 | ignoreMock | Restores the mocked function in the instance. This API is valid for mocked functions.                                                                                                  |
 | clear | Restores the mocked object instance after the test case is complete (restores the original features of the object).                                                                      |
@@ -634,7 +687,7 @@ After the **when** function is executed, you need to use the following functions
 
 **ArgumentMatchers**
 
-**ArgumentMatchers** provides enums and functions for customizing function parameters. You can use it to set an expected return value based on a rule.
+**ArgumentMatchers** is used to customize function parameters, allowing you to set expected return values based on rules. It is provided as an enumeration value or a function.
 | Enum| Description                          |
 | --- |-------------------------------------------------------------------------------------------------------------------------------------------------|
 | any | Returns the expected value if a parameter of any type (except **undefined** and **null**) is passed in. **ArgumentMatchers.any** must be used.                                                                          |
@@ -642,11 +695,11 @@ After the **when** function is executed, you need to use the following functions
 | anyBoolean | Returns the expected value if a Boolean value is passed in. This API must be called by **ArgumentMatchers.anyBoolean**.                                                                              |
 | anyFunction | Returns the expected value if a function is passed in. This API must be called by **ArgumentMatchers.anyFunction**.                                                                            |
 | anyNumber | Returns the expected value if a number is passed in. This API must be called by **ArgumentMatchers.anyNumber**.                                                                                    |
-| anyObj | Returns the expected value if an object is passed in. This API must be called by **ArgumentMatchers.anyObj**.
+| anyObj | Returns the expected value if an object is passed in. This API must be called by **ArgumentMatchers.anyObj**.|
 
-| API| Description   |
+| Name| Description   |
 | --- |--------------|                                           
-| matchRegexs | Returns the expected value if a parameter that matches the regular expression is passed in. This API must be called by **ArgumentMatchers.matchRegexs(Regex)**.
+| matchRegexs | Returns the expected value if a parameter that matches the regular expression is passed in. This API must be called by **ArgumentMatchers.matchRegexs(Regex)**.|
 
 
 > **NOTE**
@@ -656,7 +709,9 @@ After the **when** function is executed, you need to use the following functions
 
 **Example 1**: Use **afterReturn** and **afterReturnNothing** to set the expected return value.
 
-```ts
+<!-- @[afterReturn_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterReturn.test.ets) -->
+
+```TypeScript
 import { describe, expect, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
@@ -666,15 +721,10 @@ class ClassName {
   method_1(arg: string) {
     return '888888';
   }
-
-  method_2(arg: string) {
-    return '999999';
-  }
 }
 export default function afterReturnTest() {
-  describe('afterReturnTest', () => {
+  describe('afterReturn_sample', () => {
     it('afterReturnTest', 0, () => {
-      console.info("it1 begin");
       // Create a MockKit object.
       let mocker: MockKit = new MockKit();
       // Initialize the ClassName object claser as the instance of the object to be mocked.
@@ -694,7 +744,9 @@ export default function afterReturnTest() {
 
 **Example 2**: Use **ArgumentMatchers** to set the parameter type to **any** (except **undefined** and **null**).
 
-```ts
+<!-- @[argumentMatchersForAny_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForAny.test.ets) -->
+
+```TypeScript
 import { describe, expect, it, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 
 class ClassName {
@@ -704,15 +756,10 @@ class ClassName {
   method_1(arg: string) {
     return '888888';
   }
-
-  method_2(arg: string) {
-    return '999999';
-  }
 }
 export default function argumentMatchersAnyTest() {
-  describe('argumentMatchersAnyTest', () => {
+  describe('argumentMatchersForAny_sample', () => {
     it('testMockfunc', 0, () => {
-      console.info("it1 begin");
       // Create a MockKit object.
       let mocker: MockKit = new MockKit();
       // Initialize the ClassName object claser.
@@ -732,7 +779,9 @@ export default function argumentMatchersAnyTest() {
 
 **Example 3**: Use **ArgumentMatchers** to set the parameter type to **String**.
 
-```ts
+<!-- @[argumentMatchersForString_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForString.test.ets) -->
+
+```TypeScript
 import { describe, expect, it, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 
 class ClassName {
@@ -742,15 +791,10 @@ class ClassName {
   method_1(arg: string) {
     return '888888';
   }
-
-  method_2(arg: string) {
-    return '999999';
-  }
 }
 export default function argumentMatchersTest() {
-  describe('argumentMatchersTest', () => {
+  describe('argumentMatchersForString_sample', () => {
     it('testMockfunc', 0, () => {
-      console.info("it1 begin");
       // Create a MockKit object.
       let mocker: MockKit = new MockKit();
       // Initialize the ClassName object claser.
@@ -769,7 +813,9 @@ export default function argumentMatchersTest() {
 
 **Example 4**: Use **ArgumentMatchers** to set the parameter type to **matchRegexs (Regex)**.
 
-```ts
+<!-- @[argumentMatchersForRegex_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForRegex.test.ets) -->
+
+```TypeScript
 import { describe, expect, it, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 
 class ClassName {
@@ -779,15 +825,10 @@ class ClassName {
   method_1(arg: string) {
     return '888888';
   }
-
-  method_2(arg: string) {
-    return '999999';
-  }
 }
 export default function matchRegexsTest() {
-  describe('matchRegexsTest', () => {
+  describe('argumentMatchersForRegex_sample', () => {
     it('testMockfunc', 0, () => {
-      console.info("it1 begin");
       // Create a MockKit object.
       let mocker: MockKit = new MockKit();
       // Initialize the ClassName object claser.
@@ -805,7 +846,9 @@ export default function matchRegexsTest() {
 
 **Example 5**: Use the **verify** function to verify whether the execution behavior of the mocked function is as expected.
 
-```ts
+<!-- @[verify_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/Vertify.test.ets) -->
+
+```TypeScript
 import { describe, it, MockKit } from '@ohos/hypium';
 
 class ClassName {
@@ -821,9 +864,8 @@ class ClassName {
   }
 }
 export default function verifyTest() {
-  describe('verifyTest', () => {
+  describe('verify_sample', () => {
     it('testMockfunc', 0, () => {
-      console.info("it1 begin");
       // Create a MockKit object.
       let mocker: MockKit = new MockKit();
       // Initialize the ClassName object claser.
@@ -849,7 +891,9 @@ export default function verifyTest() {
 
 **Example 6**: Use the **ignoreMock** function to restore the implementation of a specified mocked function.
 
-```ts
+<!-- @[ignoreMock_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/IgnoreMock.test.ets) -->
+
+```TypeScript
 import { describe, expect, it, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 
 class ClassName {
@@ -865,9 +909,8 @@ class ClassName {
   }
 }
 export default function ignoreMockTest() {
-  describe('ignoreMockTest', () => {
+  describe('ignoreMock_sample', () => {
     it('testMockfunc', 0, () => {
-      console.info("it1 begin");
       // Create a MockKit object.
       let mocker: MockKit = new MockKit();
       // Initialize the ClassName object claser.
@@ -893,7 +936,9 @@ export default function ignoreMockTest() {
 
 **Example 7**: Use the **clear** function to restore the original implementation of all mocked functions in the class.
 
-```ts
+<!-- @[clearMock_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ClearMock.test.ets) -->
+
+```TypeScript
 import { describe, expect, it, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 
 class ClassName {
@@ -909,9 +954,8 @@ class ClassName {
   }
 }
 export default function clearTest() {
-  describe('clearTest', () => {
+  describe('clearMock_sample', () => {
     it('testMockfunc', 0, () => {
-      console.info("it1 begin");
       // Create a MockKit object.
       let mocker: MockKit = new MockKit();
       // Initialize the ClassName object claser.
@@ -938,7 +982,9 @@ export default function clearTest() {
 
 **Example 8**: Use the afterThrow function to throw a specified exception.
 
-```ts
+<!-- @[afterThrow_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterThrow.test.ets) -->
+
+```TypeScript
 import { describe, expect, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
@@ -950,9 +996,8 @@ class ClassName {
   }
 }
 export default function afterThrowTest() {
-  describe('afterThrowTest', () => {
+  describe('afterThrow_sample', () => {
     it('testMockfunc', 0, () => {
-      console.info("it1 begin");
       // Create a MockKit object.
       let mocker: MockKit = new MockKit();
       // Initialize the ClassName object claser.
@@ -974,7 +1019,9 @@ export default function afterThrowTest() {
 
 **Example 9**: Mock a promise object.
 
-```ts
+<!-- @[returnPromise_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ReturnPromise.test.ets) -->
+
+```TypeScript
 import { describe, expect, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
@@ -984,16 +1031,14 @@ class ClassName {
   async method_1(arg: string) {
     return new Promise<string>((resolve: Function, reject: Function) => {
       setTimeout(() => {
-        console.log('Execute');
-        resolve('Pass data');
+        resolve('Data conversion');
       }, 2000);
     });
   }
 }
 export default function mockPromiseTest() {
-  describe('mockPromiseTest', () => {
+  describe('returnPromise_sample', () => {
     it('testMockfunc', 0, async (done: Function) => {
-      console.info("it1 begin");
       // Create a MockKit object.
       let mocker: MockKit = new MockKit();
       // Initialize the ClassName object claser.
@@ -1002,7 +1047,6 @@ export default function mockPromiseTest() {
       let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
       // It is expected that, after the claser.method_1 function is mocked, a Promise object will be returned when the function is called with test as the parameter.
       when(mockfunc)('test').afterReturn(new Promise<string>((resolve: Function, reject: Function) => {
-        console.log("do something");
         resolve('success something');
       }));
       // Execute the mocked function, that is, execute the defined promise.
@@ -1016,8 +1060,10 @@ export default function mockPromiseTest() {
 
 **Example 10**: Use the **times** and **atLeast** functions to verify the number of times that the mocked function is called.
 
-```ts
-import { describe, it, MockKit, when } from '@ohos/hypium'
+<!-- @[verifyTimes_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/VertifyTimes.test.ets) -->
+
+```TypeScript
+import { describe, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
   constructor() {
@@ -1028,7 +1074,7 @@ class ClassName {
   }
 }
 export default function verifyTimesTest() {
-  describe('verifyTimesTest', () => {
+  describe('verifyTimes_sample', () => {
     it('test_verify_times', 0, () => {
       // Create a MockKit object.
       let mocker: MockKit = new MockKit();
@@ -1057,7 +1103,9 @@ export default function verifyTimesTest() {
 
 **Example 11**: Mock static functions. (This feature is supported since @ohos/hypium 1.0.16.)
 
-```ts
+<!-- @[mockStatic_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockStatic.test.ets) -->
+
+```TypeScript
 import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 
 class ClassName {
@@ -1070,7 +1118,7 @@ class ClassName {
 }
 
 export default function staticTest() {
-  describe('staticTest', () => {
+  describe('mockStatic_sample', () => {
     it('staticTest_001', 0, () => {
       let really_result = ClassName.method_1();
       expect(really_result).assertEqual('ClassName_method_1_call');
@@ -1078,7 +1126,7 @@ export default function staticTest() {
       let mocker: MockKit = new MockKit();
       // Mock method_1 of the ClassName object.
       let func_1: Function = mocker.mockFunc(ClassName, ClassName.method_1);
-      // It is expected that 'ock_data' is returned after the function is mocked.
+      // It is expected that 'mock_data' is returned after the function is mocked.
       when(func_1)(ArgumentMatchers.any).afterReturn('mock_data');
       let mock_result = ClassName.method_1();
       expect(mock_result).assertEqual('mock_data');// The assertion is successful.
@@ -1086,6 +1134,94 @@ export default function staticTest() {
       mocker.clear(ClassName);
       let really_result1 = ClassName.method_1();
       expect(really_result1).assertEqual('ClassName_method_1_call');// The assertion is successful.
+    })
+  })
+}
+```
+
+**Example 12**: Mock private functions. (This feature is supported since @ohos/hypium 1.0.25.)
+
+<!-- @[mockPrivateFunc_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockPrivateFunc.test.ets) -->
+
+``` TypeScript
+import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+
+class ClassName {
+  constructor() {
+  }
+  method(arg: number):number {
+    return this.method_1(arg);
+  }
+  private method_1(arg: number) {
+    return arg;
+  }
+}
+
+export default function staticTest() {
+  describe('privateTest', () => {
+    it('private_001', 0, () => {
+      let claser: ClassName = new ClassName(); 
+      let really_result = claser.method(123);
+      expect(really_result).assertEqual(123);
+      // 1. Create a MockKit object.
+      let mocker: MockKit = new MockKit();
+      // 2. Mock the private method of the ClassName object, for example, method_1.
+      let func_1: Function = mocker.mockPrivateFunc(claser, "method_1");
+      // 3. The expected result returned by the mocked function is 456.
+      when(func_1)(ArgumentMatchers.any).afterReturn(456);
+      let mock_result = claser.method(123);
+      expect(mock_result).assertEqual(456);
+      // Clear the mock capability.
+      mocker.clear(claser);
+      let really_result1 = claser.method(123);
+      expect(really_result1).assertEqual(123);
+    })
+  })
+}
+```
+
+**Example 13**: Mock member variables. (This feature is supported since @ohos/hypium 1.0.25.)
+
+<!-- @[mockProperty_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockProperty.test.ets) -->
+
+``` TypeScript
+import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+
+class ClassName {
+  constructor() {
+  }
+  data = 1;
+  private priData = 2;
+  method() {
+    return this.priData;
+  }
+}
+
+export default function staticTest() {
+  describe('propertyTest', () => {
+    it('property_001', 0, () => {
+      let claser: ClassName = new ClassName(); 
+      let data = claser.data;
+      expect(data).assertEqual(1);
+      let priData = claser.method();
+      expect(priData).assertEqual(2);
+      // 1. Create a MockKit object.
+      let mocker: MockKit = new MockKit();
+      // 2. Mock the member variable data of the ClassName object.
+      mocker.mockProperty(claser, "data", 3);
+      mocker.mockProperty(claser, "priData", 4);
+      // 3. The expected values of the mocked member and private member are 3 and 4 respectively.
+      let mock_result = claser.data;
+      let mock_private_result = claser.method();
+      expect(mock_result).assertEqual(3);
+      expect(mock_private_result).assertEqual(4);
+      // Clear the mock capability.
+      mocker.ignoreMock(claser, "data");
+      mocker.ignoreMock(claser, "priData");
+      let really_result = claser.data;
+      expect(really_result).assertEqual(1);
+      let really_private_result = claser.method();
+      expect(really_private_result).assertEqual(2);
     })
   })
 }
@@ -1106,26 +1242,25 @@ The data-driven capability can drive the number of times that test cases are exe
 ```json
 {
   "suites": [{
-    "describe": ["AbilityTest"],
-    "stress": 2,
+    "describe": ["paramExampleTest"],
+    "stress": 4,
     "params": {
       "suiteParams1": "suiteParams001",
       "suiteParams2": "suiteParams002"
     },
     "items": [{
-      "it": "testDataDriverAsync",
-      "stress": 2,
-      "params": [{
-        "name": "tom",
-        "value": 5
-      }, {
-        "name": "jerry",
-        "value": 4
+      "it": "testDataDriverAsync"
+    },
+      {
+        "it": "testDataDriverParam",
+        "stress": 2,
+        "params":[
+          {
+            "ts1": "ts1",
+            "ts2": "ts2"
+          }
+        ]
       }]
-    }, {
-      "it": "testDataDriver",
-      "stress": 3
-    }]
   }]
 }
 ```
@@ -1145,37 +1280,48 @@ Configuration parameters
 
 In the stage model, import **data.json** to the **TestAbility.ets** file in the **TestAbility** directory of the test project (import **data.json** to the **app.js** or **app.ets** file in the **TestAbility** directory of the test project in the FA model), and set the parameter data before the **Hypium.hypiumTest()** function. The following is an example:
 
-```ts
+<!-- @[dataDriverAbility_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/testability/TestAbility.ets) -->
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { Hypium } from '@ohos/hypium';
-import testsuite from '../test/List.test';// Import the test suite file.
-import data from '../test/data.json';// Import the parameter data file.
+import testsuite from '../test/List.test';
+import data from '../test/data.json';
+import Logger from '../util/Logger';
+import { window } from '@kit.ArkUI';
 
-...
-let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-let abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
-Hypium.setData(data);// Set the parameter data.
-Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
-...
+const TAG = 'testTag';
+export default class TestAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        Logger.info(TAG, "TestAbility onCreate");
+        Logger.info(TAG, "want param:" + JSON.stringify(want));
+        Logger.info(TAG, "launchParam:" + JSON.stringify(launchParam));
+        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+        let abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
+        Logger.info(TAG, "start run testcase!!!");
+        // Set data.
+        Hypium.setData(data);
+        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
+    }
 ```
 
-```ts
+ <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) -->
+
+```TypeScript
  import { describe, it } from '@ohos/hypium';
 
  export default function abilityTest() {
   describe('AbilityTest', () => {
-    it('testDataDriverAsync', 0, async (done: Function, data: ParmObj) => {
-      console.info('name: ' + data.name);
-      console.info('value: ' + data.value);
+    it('testDataDriverAsync', 0, async (done: Function, data: ParamObj) => {
       done();
     });
 
     it('testDataDriver', 0, () => {
-      console.info('stress test');
     })
   })
 }
- interface ParmObj {
+ interface ParamObj {
    name: string,
    value: string
  }

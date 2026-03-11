@@ -557,7 +557,6 @@ struct WebComponent {
 ```
 
 ```html
-// index.html
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">

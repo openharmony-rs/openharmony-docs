@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-When an application performs audio output, the system selects the corresponding output device based on the audio stream type. (If the audio stream type is **STREAM_USAGE_MUSIC**, the speaker is used. If the audio stream type is **STREAM_USAGE_VOICE_COMMUNICATION**, the earpiece is used.) If the default output device does not meet the application requirements, the application can use **AVCastPicker** or **setDefaultOutputDevice** to switch the audio output device.
+When an application outputs audio, the system selects the corresponding output device ([STREAM_USAGE_MUSIC](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage): speaker; [STREAM_USAGE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage): receiver) based on the audio stream type. If the default output device does not meet the application requirements, the application can use **AVCastPicker** or **setDefaultOutputDevice** to switch the audio output device.
 
 ## Switching Output Devices for Media Applications
 
@@ -16,7 +16,7 @@ Applications can use the [AVCastPicker](../../reference/apis-avsession-kit/ohos-
 
 ### Switching External Devices
 
-Call applications can use the [AVCastPicker](../avsession/using-switch-call-devices.md) component to switch the external output device.
+A call-type application can [use the call device switching component](../avsession/using-switch-call-devices.md) to switch the routing of external output devices.
 
 ### Switching Built-in Devices
 
@@ -42,7 +42,7 @@ To cancel the default output device set by calling **setDefaultOutputDevice**, y
      console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
    });
 
-   // Set the default output device to the system's default output device, effectively canceling the application's default device setting.
+   // Set the default output device to the system's default output device (i.e., cancel the default device set by the application and let the system select the device).
    audioRenderer.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
      console.info('Succeeded in setting default output device.');
    }).catch((err: BusinessError) => {
@@ -71,7 +71,7 @@ To cancel the default output device set by calling **setDefaultOutputDevice**, y
      console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
    });
 
-   // Set the default output device to the system's default output device, effectively canceling the application's default device setting.
+   // Set the default output device to the system's default output device (i.e., cancel the default device set by the application and let the system select the device).
    audioSessionManager.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
      console.info('Succeeded in setting default output device.');
    }).catch((err: BusinessError) => {

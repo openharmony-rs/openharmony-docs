@@ -30,7 +30,7 @@ import { WindowExtensionAbility } from '@kit.ArkUI';
 
 | Name     | Type| Read-Only| Optional| Description                     |
 | --------- | -------- | ---- | ---- | ------------------------- |
-| context<sup>(deprecated)</sup>  | [WindowExtensionContext](js-apis-inner-application-windowExtensionContext-sys.md)   | No  | No  | Context of an ExtensionAbility.<br> Note: This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionAbility.context](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#properties) instead.<br>     |
+| context<sup>(deprecated)</sup>  | [WindowExtensionContext](js-apis-inner-application-windowExtensionContext-sys.md)   | No  | No  | Context of an ExtensionAbility.<br> Note: This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionAbility.context](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#properties) instead.     |
 
 ## WindowExtensionAbility.onConnect<sup>(deprecated)</sup>
 
@@ -40,7 +40,7 @@ Called when this WindowExtensionAbility is connected to an ability for the first
 
 > **NOTE**
 >
->  This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionAbility.onCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#oncreate).
+>  - This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionAbility.onCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#oncreate).
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -71,7 +71,7 @@ Called when this WindowExtensionAbility is disconnected from all connected abili
 
 > **NOTE**
 >
->  This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionAbility.onDestroy](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#ondestroy) instead.
+>  - This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionAbility.onDestroy](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#ondestroy) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -103,7 +103,7 @@ Called when a window is ready.
 
 > **NOTE**
 >
->  This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionAbility.onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate) instead.
+>  - This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionAbility.onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 

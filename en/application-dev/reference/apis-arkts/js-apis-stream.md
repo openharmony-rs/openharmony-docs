@@ -973,7 +973,7 @@ readable.on('error', () => {
 
 off(event: string, callback?: Callback<emitter.EventData>): void
 
-Unregisters an event processing callback used to listen for different events on the readable stream.
+Unregisters an event processing callback used to listen for different events on the writable stream.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

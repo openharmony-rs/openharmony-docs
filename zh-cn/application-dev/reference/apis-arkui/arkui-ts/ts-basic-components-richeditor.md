@@ -393,7 +393,7 @@ maxLength(maxLength: Optional\<number\>)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| maxLength  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | 是   | 文本的最大输入字符数。<br/>默认值：Infinity，可以无限输入，支持undefined类型。<br/>**说明：** <br/>当不设置该属性或设置异常值时，取默认值，设置小数时，取整数部分。 |
+| maxLength  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 文本的最大输入字符数。<br/>默认值：Infinity，可以无限输入，支持undefined类型。<br/>**说明：** <br/>当不设置该属性或设置异常值时，取默认值，设置小数时，取整数部分。 |
 
 ### maxLines<sup>18+</sup>
 
@@ -409,7 +409,7 @@ maxLines(maxLines: Optional\<number\>)
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| maxLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | 是   | 设置富文本可显示的最大行数。maxLines为可显示行数，当设置maxLines时，超出内容可滚动显示。同时设置组件高度和最大行数，组件高度优先生效。<br/>默认值：UINT32_MAX，可以无限输入，支持undefined类型。 <br/>取值范围：(0, UINT32_MAX] |
+| maxLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 设置富文本可显示的最大行数。maxLines为可显示行数，当设置maxLines时，超出内容可滚动显示。同时设置组件高度和最大行数，组件高度优先生效。<br/>默认值：UINT32_MAX，可以无限输入，支持undefined类型。 <br/>取值范围：(0, UINT32_MAX] |
 
 ### enableHapticFeedback<sup>13+</sup>
 
@@ -445,7 +445,7 @@ keyboardAppearance(appearance: Optional\<KeyboardAppearance\>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------ |
-| appearance | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15枚举说明)\> | 是   | 键盘外观。<br/>默认值：KeyboardAppearance.NONE_IMMERSIVE |
+| appearance | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15枚举说明)\> | 是   | 键盘外观。<br/>默认值：KeyboardAppearance.NONE_IMMERSIVE |
 
 ### stopBackPress<sup>18+</sup>
 
@@ -461,7 +461,7 @@ stopBackPress(isStopped: Optional&lt;boolean&gt;)
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| isStopped  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | 是否阻止返回键。<br/>true表示阻止，false表示不阻止。<br/>默认值：true。异常值取默认值。|
+| isStopped  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | 是否阻止返回键。<br/>true表示阻止，false表示不阻止。<br/>默认值：true。异常值取默认值。|
 
 ### undoStyle<sup>20+</sup>
 
@@ -479,7 +479,7 @@ undoStyle(style: Optional&lt;UndoStyle&gt;)
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[UndoStyle](#undostyle20-1)&gt; | 是   | 撤销还原是否保留原样式选项。默认值：UndoStyle.CLEAR_STYLE |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[UndoStyle](#undostyle20-1)&gt; | 是   | 撤销还原是否保留原样式选项。默认值：UndoStyle.CLEAR_STYLE |
 
 ### enableAutoSpacing<sup>20+</sup>
 
@@ -495,7 +495,7 @@ enableAutoSpacing(enable: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
+| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
 
 ### scrollBarColor<sup>21+</sup>
 
@@ -511,7 +511,7 @@ scrollBarColor(color: Optional\<ColorMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                     |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)> | 是   | 设置组件滚动条颜色。<br />默认值：'#66182431'，显示为灰色。<br />**说明：** 设置异常值时按默认值处理。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)> | 是   | 设置组件滚动条颜色。<br />默认值：'#66182431'，显示为灰色。<br />**说明：** 设置异常值时按默认值处理。 |
 
 
 ## 事件
@@ -1140,7 +1140,7 @@ getTypingStyle(): RichEditorTextStyle
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [RichEditorTextStyle](#richeditortextstyle) | 用户预设样式。 |
+| [RichEditorTextStyle](#richeditortextstyle) | 用户预设样式。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### setTypingStyle<sup>11+</sup>
 
@@ -1246,7 +1246,7 @@ getLayoutManager(): LayoutManager
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [LayoutManager](ts-text-common.md#layoutmanager12) | 布局管理器对象。 |
+| [LayoutManager](ts-text-common.md#layoutmanager12) | 布局管理器对象。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### getPreviewText<sup>12+</sup>
 
@@ -1262,7 +1262,7 @@ getPreviewText(): PreviewText
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [PreviewText](ts-text-common.md#previewtext12) | 预上屏信息。 |
+| [PreviewText](ts-text-common.md#previewtext12) | 预上屏信息。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### getCaretRect<sup>18+</sup>
 
@@ -1464,7 +1464,7 @@ getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult | RichEditorT
 
 | 类型                                       | 说明           |
 | ---------------------------------------- | ------------ |
-| Array<[RichEditorImageSpanResult](#richeditorimagespanresult) \| [RichEditorTextSpanResult](#richeditortextspanresult)> | 文本和图片Span信息。 |
+| Array<[RichEditorImageSpanResult](#richeditorimagespanresult) \| [RichEditorTextSpanResult](#richeditortextspanresult)> | 文本和图片Span信息。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### deleteSpans
 
@@ -1502,7 +1502,7 @@ getParagraphs(value?: RichEditorRange): Array\<RichEditorParagraphResult>
 
 | 类型                                       | 说明       |
 | ---------------------------------------- | -------- |
-| Array\<[RichEditorParagraphResult](#richeditorparagraphresult11)> | 选中段落的信息。 |
+| Array\<[RichEditorParagraphResult](#richeditorparagraphresult11)> | 选中段落的信息。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### getSelection<sup>11+</sup>
 
@@ -1518,7 +1518,7 @@ getSelection(): RichEditorSelection
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [RichEditorSelection](#richeditorselection) | 选中内容信息。 |
+| [RichEditorSelection](#richeditorselection) | 选中内容信息。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### fromStyledString<sup>12+</sup>
 
@@ -1605,7 +1605,7 @@ getSelection(): RichEditorRange
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [RichEditorRange](#richeditorrange) | 选中区域范围。 |
+| [RichEditorRange](#richeditorrange) | 选中区域范围。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### setStyledString<sup>12+</sup>
 
@@ -1642,7 +1642,7 @@ getStyledString(): MutableStyledString
 
 | 类型    | 说明                          |
 | ------- | ----------------------------- |
-| [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) | 富文本组件显示的属性字符串 |
+| [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) | 富文本组件显示的属性字符串。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### onContentChanged<sup>12+</sup>
 
@@ -4411,8 +4411,8 @@ struct RichEditorDemo {
         .width("100%")
         .border({ width: 1, radius: 5 })
         .key('RichEditor')
-        .caretColor(this.color)//光标颜色
-        .selectedBackgroundColor(this.color)//选中背景色
+        .caretColor(this.color)// 光标颜色
+        .selectedBackgroundColor(this.color)// 选中背景色
         .margin({ top: 50 })
     }
     .width('100%')
@@ -4851,7 +4851,7 @@ struct SoftKeyboardEnterTypeExample {
         .enterKeyType(EnterKeyType.Search)
         .onSubmit((enterKey: EnterKeyType, event: SubmitEvent) => {
           console.info("trigger richeditor onsubmit" + enterKey);
-          this.controller.addTextSpan(" type["+ enterKey +"] triggerred")
+          this.controller.addTextSpan(" type["+ enterKey +"] triggered")
           event.keepEditableState()
         })
     }.height("100%").justifyContent(FlexAlign.Center)
@@ -5122,11 +5122,11 @@ struct Index {
           })
         }
         Row({space:2}){
-          //将属性字符串转换成span信息
+          // 将属性字符串转换成span信息
           Button("调用fromStyledString").onClick(() => {
             this.controller1.addTextSpan("调用fromStyledString：" +JSON.stringify(this.controller1.fromStyledString(this.mutableStyledString)))
           })
-          //将给定范围的组件内容转换成属性字符串
+          // 将给定范围的组件内容转换成属性字符串
           Button("调用toStyledString").onClick(() => {
             this.controller.setStyledString(this.controller1.toStyledString({start:0,end:13}))
           })
@@ -6080,7 +6080,6 @@ struct Demo32 {
   }
 }
 ```
-<!--RP2--><!--RP2End-->
 
 ### 示例33（设置监听输入法绑定事件）
 从API version 22开始，该示例通过[onWillAttachIME](#onwillattachime22)事件监听输入法绑定事件。

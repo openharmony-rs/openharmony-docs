@@ -284,7 +284,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | The input parameter is invalid. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
@@ -319,7 +319,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 ## storageStatistics.getBundleStats<sup>9+</sup>
 
-getBundleStats(packageName: string,  callback: AsyncCallback&lt;BundleStats&gt;, index?: number): void
+getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, index?: number): void
 
 Obtains the storage space of an application, in bytes. This API uses an asynchronous callback to return the result.
 
@@ -345,7 +345,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | The input parameter is invalid. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |

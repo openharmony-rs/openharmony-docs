@@ -529,7 +529,7 @@ closeKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt;
 
 | 参数名   | 类型                  | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| appId    | string                    | 是   | 应用的BundleName，不可为空且长度不大于256。                                      |
+| appId    | string                    | 是   | 应用的BundleName，不可为空且长度不大于256字符。                                      |
 | storeId  | string                    | 是   | 要关闭的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当要关闭的数据库成功关闭，err为undefined，否则为错误对象。     |
 
@@ -595,7 +595,7 @@ closeKVStore(appId: string, storeId: string): Promise&lt;void&gt;
 
 | 参数名  | 类型 | 必填 | 说明                                                         |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| appId   | string   | 是   | 应用的BundleName，不可为空且长度不大于256。                           |
+| appId   | string   | 是   | 应用的BundleName，不可为空且长度不大于256字符。                           |
 | storeId | string   | 是   | 要关闭的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
 
 **返回值：**
@@ -663,7 +663,7 @@ deleteKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt
 
 | 参数名   | 类型                  | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| appId    | string                    | 是   | 应用的BundleName，不可为空且长度不大于256。                                      |
+| appId    | string                    | 是   | 应用的BundleName，不可为空且长度不大于256字符。                                      |
 | storeId  | string                    | 是   | 要删除的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当要删除的数据库成功删除，err为undefined，否则为错误对象。     |
 
@@ -731,7 +731,7 @@ deleteKVStore(appId: string, storeId: string): Promise&lt;void&gt;
 
 | 参数名  | 类型 | 必填 | 说明                                                         |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| appId   | string   | 是   | 应用的BundleName，不可为空且长度不大于256。                           |
+| appId   | string   | 是   | 应用的BundleName，不可为空且长度不大于256字符。                           |
 | storeId | string   | 是   | 要删除的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
 
 **返回值：**
@@ -800,7 +800,7 @@ getAllKVStoreId(appId: string, callback: AsyncCallback&lt;string[]&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                                                |
 | -------- | ----------------------------- | ---- | --------------------------------------------------- |
-| appId    | string                        | 是   | 应用的BundleName，不可为空且长度不大于256。                              |
+| appId    | string                        | 是   | 应用的BundleName，不可为空且长度不大于256字符。                              |
 | callback | AsyncCallback&lt;string[]&gt; | 是   | 回调函数。返回所有创建的分布式键值数据库的storeId。 |
 
 **错误码：**
@@ -844,7 +844,7 @@ getAllKVStoreId(appId: string): Promise&lt;string[]&gt;
 
 | 参数名 | 类型 | 必填 | 说明                   |
 | ------ | -------- | ---- | ---------------------- |
-| appId  | string   | 是   | 应用的BundleName，不可为空且长度不大于256。 |
+| appId  | string   | 是   | 应用的BundleName，不可为空且长度不大于256字符。 |
 
 **返回值：**
 
@@ -1224,7 +1224,7 @@ try {
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting resultSet');
     resultSet = result;
-    moved = resultSet.move(2); //若当前位置为0，将读取位置从绝对位置为0的位置移动2行，即移动到绝对位置为2，行数为3的位置
+    moved = resultSet.move(2); // 若当前位置为0，将读取位置从绝对位置为0的位置移动2行，即移动到绝对位置为2，行数为3的位置
     console.info(`Succeeded in moving.moved = ${moved}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to get resultSet.code is ${err.code},message is ${err.message}`);
@@ -2888,7 +2888,7 @@ try {
         console.info(`entries[0]: ${entries[0]}`);
       });
     } else {
-      console.error('KvStore is null'); //后续示例代码与此处保持一致
+      console.error('KvStore is null'); // 后续示例代码与此处保持一致
     }
   });
 } catch (e) {
@@ -4601,7 +4601,7 @@ function putBatchString(len: number, prefix: string) {
     entries.push(entry);
   }
   return entries;
-} //自定义函数，放置在作用域最外侧，防止语法检查报错
+} // 自定义函数，放置在作用域最外侧，防止语法检查报错
 
 try {
   let count = 0;

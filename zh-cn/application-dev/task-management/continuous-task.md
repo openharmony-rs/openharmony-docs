@@ -34,7 +34,7 @@
 
 关于DATA_TRANSFER（数据传输）说明：
 
-- 在数据传输时，若应用使用[上传下载代理接口](../reference/apis-basic-services-kit/js-apis-request.md)托管给系统，即使申请DATA_TRANSFER的后台任务，应用退后台时还是会被挂起。
+- 在数据传输时，若应用使用[@ohos.request (上传下载)](../reference/apis-basic-services-kit/js-apis-request.md)托管给系统，即使申请DATA_TRANSFER的后台任务，应用退后台时还是会被挂起。
 
 - 在数据传输时，应用需要更新进度，如果进度长时间（首次更新超过10分钟）未更新，数据传输的长时任务会被取消。更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning12)中的示例。
 
@@ -49,6 +49,8 @@
 - 如果应用不满足上述接入规范，退至后台播放时会被系统静音并冻结，无法在后台正常播放，直到应用重新切回前台时，才会解除静音并恢复播放。
 
 - 从API version 20开始，申请AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请长时任务成功后会在通知栏显示通知；接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。
+
+- 应用申请AUDIO_PLAYBACK类型长时任务，退至后台时，如果设备没有有效音频播放，应用可能被系统冻结。
 
 ### 约束与限制
 
@@ -105,7 +107,7 @@
 
    在[module.json5配置文件](../quick-start/module-configuration-file.md)中abilities下的backgroundModes字段里，为需要使用长时任务的UIAbility声明相应的长时任务类型，配置文件中填写长时任务类型的[配置项](continuous-task.md#使用场景)。
    
-   ```json
+   ``` json5
     "module": {
         "abilities": [
             {
@@ -139,7 +141,11 @@
 
 4. 申请和取消长时任务。
 
-   **设备当前应用**申请和取消长时任务示例代码如下：   
+   **设备当前应用**申请和取消长时任务示例代码如下：
+   
+   从API version 15开始，支持通过[on('continuousTaskCancel')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustaskcancel15)实现监听长时任务取消功能。
+   
+   从API version 16开始，支持通过[BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
       
    ```ts
     function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
@@ -300,7 +306,11 @@
 
 5. 申请和取消长时任务async/await写法。
 
-   **设备当前应用**申请和取消长时任务async/await写法示例代码如下：   
+   **设备当前应用**申请和取消长时任务async/await写法示例代码如下：
+   
+   从API version 15开始，支持通过[on('continuousTaskCancel')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustaskcancel15)实现监听长时任务取消功能。
+   
+   从API version 16开始，支持通过[BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
       
    ```ts
     @Entry
@@ -404,7 +414,7 @@
    ```
    <!--Del-->
 
-   **跨设备或跨应用**申请长时任务示例代码如下。跨设备或跨应用在后台执行长时任务时，可以通过Call的方式在后台创建并运行UIAbility，具体使用请参考[Call调用开发指南（同设备）](../application-models/uiability-intra-device-interaction.md#通过call调用实现uiability交互仅对系统应用开放)和[Call调用开发指南（跨设备）](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)。
+   **跨设备或跨应用**申请长时任务示例代码如下。跨设备或跨应用在后台执行长时任务时，可以通过Call的方式在后台创建并运行UIAbility，具体使用请参考[通过跨设备call调用实现多端协同](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)。
    
    ```ts
     const MSG_SEND_METHOD: string = 'CallSendMsg'
@@ -544,7 +554,7 @@
 
    在config.json文件中配置长时任务权限ohos.permission.KEEP_BACKGROUND_RUNNING，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。同时，为需要使用长时任务的ServiceAbility声明相应的长时任务类型。
    
-   ```json
+   ``` json5
    "module": {
        "package": "com.example.myapplication",
        "abilities": [

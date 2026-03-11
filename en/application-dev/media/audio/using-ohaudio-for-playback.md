@@ -18,7 +18,7 @@ To use the playback capability of OHAudio, you must first import the correspondi
 
 ### Linking the Dynamic Library in the CMake Script
 
-``` cmake
+```cmake
 target_link_libraries(sample PUBLIC libohaudio.so)
 ```
 
@@ -166,9 +166,9 @@ The following walks you through how to implement simple playback:
    | OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer) | Flushes obtained audio data.|
    | OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer) | Releases the audio renderer instance.|
 
-    > **NOTE**
-    >
-    > The execution of audio stream control APIs is time-consuming (for example, a single execution of **OH_AudioRenderer_Stop** generally takes more than 50 ms as it needs to play through the cache). Direct calls to these APIs on the main thread should be avoided to prevent interface display freezes.
+   > **NOTE**
+   >
+   > The execution of audio stream control APIs is time-consuming (for example, a single execution of **OH_AudioRenderer_Stop** generally takes more than 50 ms as it needs to play through the cache). Direct calls to these APIs on the main thread should be avoided to prevent interface display freezes.
 
 6. Destroy the audio stream builder.
 
@@ -200,7 +200,7 @@ The development process is similar to that in the common playback scenario (desc
 
 > **NOTE**
 >
-> - In audio recording scenarios, if [OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage) is set to **AUDIOSTREAM_USAGE_VOICE_COMMUNICATION** or **AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION**, the low-latency mode cannot be set. The system determines the output audio channel based on the device capability.
+> - In audio playback scenarios, if [OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage) is set to **AUDIOSTREAM_USAGE_VOICE_COMMUNICATION** or **AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION**, the low-latency mode cannot be set. The system determines the output audio channel based on the device capability.
 > - The low-latency mode requires robust data processing capabilities. If your application generates data slowly, it may lead to lag. Therefore, for typical music and video playback, this mode is not recommended. It is best suited for applications that are sensitive to latency, such as gaming and karaoke.
 
 

@@ -14,7 +14,7 @@ You can use the APIs of this module to start, terminate, connect, and disconnect
 > 
 >  - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >  - The APIs of this module can be used only in the stage model.
->  - The APIs of this module must be used in the main thread, but not in child threads such as Worker and TaskPool.
+>  - The APIs of this module must be used on the main thread, but not in child threads such as Worker and TaskPool.
 >  - The APIs provided by this module are system APIs.
 
 ## Modules to Import
@@ -127,7 +127,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startAbility(want: Want, options?: StartOptions): Promise\<void>
 
-Starts an ability. This API can be called only on the main thread. It uses a promise to return the result.
+Starts an ability. This API can be called only on the main thread. It uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -488,7 +488,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): Promise\<void>
 
-Starts an ability with the account ID specified. This API can be called only on the main thread. It uses a promise to return the result.
+Starts an ability with the account ID specified. This API can be called only on the main thread. It uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
@@ -659,7 +659,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startServiceExtensionAbility(want: Want): Promise\<void>
 
-Starts a new ServiceExtensionAbility. This API uses a promise to return the result.
+Starts a ServiceExtensionAbility. This API uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -815,7 +815,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
 
-Starts a new ServiceExtensionAbility with the account ID specified. This API uses a promise to return the result.
+Starts a ServiceExtensionAbility with the account ID specified. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 > 
@@ -1061,7 +1061,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 
-Starts an ability with the caller information specified. The caller information is carried in **Want** and identified at the system service layer. The ability can obtain the caller information from the **Want** parameter in the **onCreate** lifecycle callback. When this API is used to start an ability, the caller information carried in **Want** is not overwritten by the current application information. The system service layer can obtain the initial caller information. This API can be called only on the main thread. It uses a promise to return the result.
+Starts an ability with the start options specified. The caller information is carried in **Want** and identified at the system service layer. The ability can obtain the caller information from the **Want** parameter in the **onCreate** lifecycle callback. When this API is used to start an ability, the caller information carried in **Want** is not overwritten by the current application information. The system service layer can obtain the initial caller information. This API can be called only on the main thread. It uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
@@ -1218,7 +1218,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbility(want: Want): Promise\<void>
 
-Stops a ServiceExtensionAbility. This API uses a promise to return the result.
+Stops a ServiceExtensionAbility. This API uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1365,7 +1365,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
 
-Stops a ServiceExtensionAbility with the specified account. This API uses a promise to return the result.
+Stops a ServiceExtensionAbility with the specified account. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 > 
@@ -1493,7 +1493,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 terminateSelf(): Promise&lt;void&gt;
 
-Terminates this ability. This API can be called only on the main thread. It uses a promise to return the result.
+Terminates this ability. This API can be called only on the main thread. It uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1777,7 +1777,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
-Disconnects this ability from a ServiceExtensionAbility and after the successful disconnection, sets the remote object returned upon the connection to void. This API can be called only on the main thread. It uses a promise to return the result.
+Disconnects this ability from a ServiceExtensionAbility and after the successful disconnection, sets the remote object returned upon the connection to void. This API can be called only on the main thread. It uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1843,7 +1843,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 
-Starts an ability in the foreground or background and obtains the caller object for communicating with the ability. This API can be called only on the main thread. It uses a promise to return the result.
+Starts an ability in the foreground or background and obtains the caller object for communicating with the ability. This API can be called only on the main thread. It uses a promise to return the result asynchronously.
 
 This API cannot be used to start the UIAbility with the launch type set to [specified](../../application-models/uiability-launch-type.md#specified).
 
@@ -2137,7 +2137,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startRecentAbility(want: Want, options?: StartOptions): Promise\<void>
 
-Starts an ability. If the ability has multiple instances, the latest instance is started. This API uses a promise to return the result. It can be called only on the main thread.
+Starts an ability. If the ability has multiple instances, the latest instance is started. This API uses a promise to return the result asynchronously. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -2225,7 +2225,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&gt;
 
-Starts an ability with the account ID specified and obtains the caller object for communicating with the ability. This API can be called only on the main thread. It uses a promise to return the result.
+Starts an ability with the account ID specified and obtains the caller object for communicating with the ability. This API can be called only on the main thread. It uses a promise to return the result asynchronously.
 
 This API cannot be used to start the UIAbility with the launch type set to [specified](../../application-models/uiability-launch-type.md#specified).
 
@@ -2320,7 +2320,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 requestModalUIExtension(pickerWant: Want): Promise\<void>
 
-Requests the specified focused application to start the UIExtensionAbility of the corresponding type. The focused application is specified by **bundleName** in **want.parameters**. If **bundleName** is left unspecified, or if the specified application does not gain focus, the UIExtensionAbility is directly started on the system UI. The UIExtensionAbility to start is determined by the combination of the **bundleName**, **abilityName**, and **moduleName** fields in **Want**, and its type is determined by the **ability.want.params.uiExtensionType** field in **want.parameters**. This API can be called only on the main thread. It uses a promise to return the result.
+Requests the specified focused application to start the UIExtensionAbility of the corresponding type. The focused application is specified by **bundleName** in **want.parameters**. If **bundleName** is left unspecified, or if the specified application does not gain focus, the UIExtensionAbility is directly started on the system UI. The UIExtensionAbility to start is determined by the combination of the **bundleName**, **abilityName**, and **moduleName** fields in **Want**, and its type is determined by the **ability.want.params.uiExtensionType** field in **want.parameters**. This API can be called only on the main thread. It uses a promise to return the result asynchronously.
 
 Before starting the UIExtensionAbility, ensure that the focused application has finished page initialization. Otherwise, the UIExtensionAbility fails to start. The application can determine the time to start the UIExtensionAbility by listening for the page loading status.
 
@@ -2469,12 +2469,12 @@ class ServiceExtension extends ServiceExtensionAbility {
 
 openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 
-Starts a UIAbility through App Linking. This API can be called only on the main thread. It uses a promise to return the result.
+Starts a UIAbility through App Linking. This API can be called only on the main thread. It uses a promise to return the result asynchronously.
 
 A URL in the standard format is passed in to the **link** field to start the target UIAbility based on the implicit Want matching rules. The target UIAbility must have the following filter characteristics to process links of App Linking:
-- The **actions** field contains **ohos.want.action.viewData**.
-- The **entities** field contains **entity.system.browsable**.
-- The **uris** field contains elements whose **scheme** is **https** and **domainVerify** is **true**.
+- The **actions** field must contain **ohos.want.action.viewData**.
+- The **entities** field must contain **entity.system.browsable**.
+- The **uris** field must contain elements whose **scheme** is **https** and **domainVerify** is **true**.
 
 If an input parameter is invalid, for example, a mandatory parameter is not set or the URL set in **link** is not in the standard format, an exception is thrown. If the parameter verification is successful but an error occurs when starting the target UIAbility, the error information is returned through promise.
 
@@ -2554,7 +2554,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
       });
     }
     catch (e) {
-      log(`exception occured, errCode ${JSON.stringify(e.code)}`);
+      log(`exception occurred, errCode ${JSON.stringify(e.code)}`);
     }
   }
 
@@ -2639,7 +2639,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
     } catch (e) {
       let code = (e as BusinessError).code;
       let msg = (e as BusinessError).message;
-      log(`exception occured, errCode: ${code}, errMsg: ${msg}.`);
+      log(`exception occurred, errCode: ${code}, errMsg: ${msg}.`);
     }
   }
 
@@ -2653,7 +2653,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
-Starts a new [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md). This API uses a promise to return the result.
+Starts a new [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md). This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
@@ -2721,7 +2721,7 @@ export default class MyServiceExtensionAbility extends ServiceExtensionAbility {
 ## ServiceExtensionContext.openAtomicService<sup>18+<sup>
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;void&gt;
 
-Starts an atomic service based on an application ID. This API uses a promise to return the result.
+Starts an atomic service based on an application ID. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
@@ -2792,7 +2792,7 @@ export default class ServiceExtension extends ServiceExtensionAbility {
 
 startUIAbilities(wantList: Array\<Want>): Promise\<void>
 
-Starts multiple UIAbility components simultaneously. This API uses a promise to return the result.
+Starts multiple UIAbility components simultaneously. This API uses a promise to return the result asynchronously.
 
 You can pass the Want information of multiple UIAbility instances, which can point to one or more applications. If all the UIAbility instances can be started successfully, the system displays these UIAbility instances in multiple windows simultaneously. Depending on the window handling, different devices may have varying display effects (including window shape, quantity, and layout).
 

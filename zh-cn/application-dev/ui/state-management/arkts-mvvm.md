@@ -77,7 +77,7 @@ Model层是应用的原始数据提供者，代表应用的核心业务逻辑和
 
 * 组件自己使用了哪些子组件是明确的，因此可以访问。
 * 组件被放置于哪个父节点下是未知的，因此组件想访问父节点，就只能通过通知或者事件能力完成。
-* 组件不可能知道自己的兄弟节点是谁，因此组件不可以操纵兄弟节点。
+* 组件不可能知道自己的兄弟节点是谁，因此组件不可以操作兄弟节点。
 
 ## 备忘录开发实战
 
@@ -749,7 +749,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
   * AllChooseComponent.ets
 
-  <!-- @[all_choose_component_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/views/AllChooseComponent.ets) -->
+  <!-- @[all_choose_component_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/views/AllChooseComponent.ets) -->  
   
   ``` TypeScript
   import TodoListViewModel from '../viewmodel/TodoListViewModel';
@@ -767,7 +767,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
         Button(`${this.titleName}`, { type: ButtonType.Capsule })
           .onClick(() => {
             this.todoListViewModel.chooseAll(); // View层点击事件发生时，调用ViewModel层方法chooseAll处理逻辑
-            this.titleName = this.todoListViewModel.isChoosen ?
+            this.titleName = this.todoListViewModel.isChosen ?
               // 请在resources\base\element\string.json文件中配置name为'check_all'，value为非空字符串的资源
               this.context1.resourceManager.getStringSync($r('app.string.check_all').id)
               // 请在resources\base\element\string.json文件中配置name为'deselect_all'，value为非空字符串的资源
@@ -777,7 +777,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
           .fontWeight(FontWeight.Bold)
           .backgroundColor('#f7f6cc74')
       }
-      .padding({ left: this.todoListViewModel.isChoosen ? 15 : 0 })
+      .padding({ left: this.todoListViewModel.isChosen ? 15 : 0 })
       .width('100%')
       .margin({ top: 10, bottom: 10 })
     }
@@ -922,7 +922,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
   * TodoListViewModel.ets
 
-  <!-- @[to_do_list_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/TodoListViewModel.ets) -->
+  <!-- @[to_do_list_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/TodoListViewModel.ets) --> 
   
   ``` TypeScript
   import ThingViewModel from './ThingViewModel';
@@ -935,7 +935,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   
   @Observed
   export default class TodoListViewModel {
-    @Track public isChoosen: boolean = true;
+    @Track public isChosen: boolean = true;
     @Track public things: ThingViewModelArray = new ThingViewModelArray();
   
     async loadTasks(context: common.UIAbilityContext) {
@@ -950,9 +950,9 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   
     chooseAll(): void {
       for (let thing of this.things) {
-        thing.isFinish = this.isChoosen;
+        thing.isFinish = this.isChosen;
       }
-      this.isChoosen = !this.isChoosen;
+      this.isChosen = !this.isChosen;
     }
   }
   ```

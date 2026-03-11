@@ -38,11 +38,11 @@ HiTraceChain是基于分布式跟踪调用链思想，在端侧业务流程（�
 
 ## 约束与限制
 
-若跟踪启用了[异步调用跟踪标志](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceflag)，可以在支持HiTraceChain自动传递的机制中自动传递HiTraceId。
+通过设置[HiTraceFlag](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceflag)以启用异步调用跟踪，HiTraceId可在HiTraceChain的自动传递机制中自动传递。
 
 下表列举了一些常见的支持与不支持HiTraceChain自动传递的机制，不支持HiTraceChain自动传递的机制无法传递HiTraceId到创建的异步任务、线程或进程中，会导致HiTraceChain调用链中断，需要开发者手动传递并设置HiTraceId，以实现完整的调用链跟踪。
 
 | 场景 | 异步任务 | 跨线程 | 跨进程 | 跨设备 |
 | -------- | -------- | -------- | -------- | -------- |
-| 支持HiTraceChain自动传递的机制 | [async/await](../arkts-utils/async-concurrency-overview.md#asyncawait)<br/>[promise/then](../arkts-utils/async-concurrency-overview.md#promise) | [HiAppEvent](hiappevent-intro.md)<br/>[napi_async_work](../napi/use-napi-asynchronous-task.md)<br/>[FFRT](../ffrt/ffrt-overview.md) | [IPC](../ipc/ipc-rpc-overview.md) | [RPC](../ipc/ipc-rpc-overview.md) |
+| 支持HiTraceChain自动传递的机制 | [async/await](../arkts-utils/async-concurrency-overview.md#asyncawait)<br/>[Promise](../arkts-utils/async-concurrency-overview.md#promise)  | [HiAppEvent](hiappevent-intro.md)<br/>[napi_async_work](../napi/use-napi-asynchronous-task.md)<br/>[FFRT](../ffrt/ffrt-overview.md) | [IPC](../ipc/ipc-rpc-overview.md) | [RPC](../ipc/ipc-rpc-overview.md) |
 | 不支持HiTraceChain自动传递的机制 | 宏任务及其异步任务（例如[setTimeout](../reference/common/js-apis-timer.md#settimeout)、[setInterval](../reference/common/js-apis-timer.md#setinterval)等） | [TaskPool](../arkts-utils/taskpool-introduction.md)<br/>[Worker](../arkts-utils/worker-introduction.md)<br/>C++标准库std::thread、pthread_create、std::async等创建的线程 | [Socket](../network/socket-connection.md)<br/>[Ashmem](../reference/apis-ipc-kit/js-apis-rpc.md#ashmem8) | - |

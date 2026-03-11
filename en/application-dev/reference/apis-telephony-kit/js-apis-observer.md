@@ -168,7 +168,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 observer.on('networkStateChange', (data: observer.NetworkState) => {
-    console.log("on networkStateChange, data:" + JSON.stringify(data));
+    console.info("on networkStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -211,7 +211,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('networkStateChange', options, (data: observer.NetworkState) => {
-    console.log("on networkStateChange, data:" + JSON.stringify(data));
+    console.info("on networkStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -251,7 +251,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let callback: (data: observer.NetworkState) => void = (data: observer.NetworkState) => {
-    console.log("on networkStateChange, data:" + JSON.stringify(data));
+    console.info("on networkStateChange, data:" + JSON.stringify(data));
 }
 observer.on('networkStateChange', callback);
 // You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
@@ -292,7 +292,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { radio } from '@kit.TelephonyKit';
 
 observer.on('signalInfoChange', (data: Array<radio.SignalInformation>) => {
-    console.log("on signalInfoChange, data:" + JSON.stringify(data));
+    console.info("on signalInfoChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -334,7 +334,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('signalInfoChange', options, (data: Array<radio.SignalInformation>) => {
-    console.log("on signalInfoChange, data:" + JSON.stringify(data));
+    console.info("on signalInfoChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -376,7 +376,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { radio } from '@kit.TelephonyKit';
 
 let callback: (data: Array<radio.SignalInformation>) => void = (data: Array<radio.SignalInformation>) => {
-    console.log("on signalInfoChange, data:" + JSON.stringify(data));
+    console.info("on signalInfoChange, data:" + JSON.stringify(data));
 }
 observer.on('signalInfoChange', callback);
 // You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
@@ -624,7 +624,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 observer.on('cellularDataConnectionStateChange', (data: observer.DataConnectionStateInfo) => {
-    console.log("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -664,7 +664,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('cellularDataConnectionStateChange', options, (data: observer.DataConnectionStateInfo) => {
-    console.log("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -704,7 +704,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let callback: (data: observer.DataConnectionStateInfo) => void = (data: observer.DataConnectionStateInfo) => {
-    console.log("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
 }
 observer.on('cellularDataConnectionStateChange', callback);
 // You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
@@ -746,7 +746,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { data } from '@kit.TelephonyKit';
 
 observer.on('cellularDataFlowChange', (data: data.DataFlowType) => {
-    console.log("on cellularDataFlowChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -788,7 +788,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('cellularDataFlowChange', options, (data: data.DataFlowType) => {
-    console.log("on cellularDataFlowChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -830,7 +830,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { data } from '@kit.TelephonyKit';
 
 let callback: (data: data.DataFlowType) => void = (data: data.DataFlowType) => {
-    console.log("on cellularDataFlowChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
 }
 observer.on('cellularDataFlowChange', callback);
 // You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
@@ -874,7 +874,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 observer.on('simStateChange', (data: observer.SimStateData) => {
-    console.log("on simStateChange, data:" + JSON.stringify(data));
+    console.info("on simStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -914,7 +914,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('simStateChange', options, (data: observer.SimStateData) => {
-    console.log("on simStateChange, data:" + JSON.stringify(data));
+    console.info("on simStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -954,7 +954,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let callback: (data: observer.SimStateData) => void = (data: observer.SimStateData) => {
-    console.log("on simStateChange, data:" + JSON.stringify(data));
+    console.info("on simStateChange, data:" + JSON.stringify(data));
 }
 observer.on('simStateChange', callback);
 // You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
@@ -993,7 +993,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 observer.on('iccAccountInfoChange', () => {
-    console.log("on iccAccountInfoChange success");
+    console.info("on iccAccountInfoChange success");
 });
 ```
 
@@ -1033,7 +1033,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let callback: () => void = () => {
-    console.log("on iccAccountInfoChange success");
+    console.info("on iccAccountInfoChange success");
 }
 observer.on('iccAccountInfoChange', callback);
 // You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.

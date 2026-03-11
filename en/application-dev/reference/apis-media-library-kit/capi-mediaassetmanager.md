@@ -1,4 +1,10 @@
 # MediaAssetManager
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -16,5 +22,5 @@ For details about the development guide and sample, see [Requesting Media Assets
 | [media_asset_base_capi.h](capi-media-asset-base-capi-h.md) | Declares the structs and enums for the media asset manager.|
 | [media_asset_capi.h](capi-media-asset-capi-h.md) | Declares the APIs related to media assets. You can use the APIs to obtain image or video information.|
 | [media_asset_change_request_capi.h](capi-media-asset-change-request-capi-h.md) | Declares the APIs related to media asset change requests. You can use the APIs to change media assets.|
-| [media_asset_manager_capi.h](capi-media-asset-manager-capi-h.md) | Declares the APIs of the media asset manager. You can use the APIs to request media assets in the media library.|
+| [media_asset_manager_capi.h](capi-media-asset-manager-capi-h.md) | Declares the APIs of the media asset manager. You can use the C APIs to request media assets in the media library.|
 | [moving_photo_capi.h](capi-moving-photo-capi-h.md) | Declares the APIs related to moving photos. You can use the APIs to obtain moving photo information.|

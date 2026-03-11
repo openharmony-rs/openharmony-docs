@@ -102,7 +102,7 @@ export default function abilityTest() {
 3. 测试套级别执行，即执行describe接口中定义的全部测试用例。
 4. 测试用例级别执行，即执行指定it接口也就是单条测试用例。
 
-下面给出测试类级别即测试文件执行示例，其他请查考[运行模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-instrument-test#section1574003717165)。
+下面给出测试类级别即测试文件执行示例，其他请参考[运行模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-instrument-test#section1574003717165)。
 
 ![](figures/Execute.PNG)
 
@@ -1366,3 +1366,7 @@ export default class TestAbility extends UIAbility {
 1. 检查用例代码逻辑，确保断言失败时能走到done函数，完成用例执行。
 2. 可在DevEco Studio的Run/Debug Configurations中修改用例执行超时参数，避免执行超时。
 3. 检查用例代码逻辑，确保断言通过。
+## 完整示例
+<!--RP3-->
+[测试框架](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit)
+<!--RP3End-->

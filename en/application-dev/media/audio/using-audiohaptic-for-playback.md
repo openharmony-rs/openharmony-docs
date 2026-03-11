@@ -6,11 +6,11 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-AudioHaptic provides APIs for audio-haptic playback and management. It applies to scenarios where haptic feedback needs to be initiated synchronously during audio playback, for example, when there are incoming calls or messages or users are typing.
+**AudioHaptic** provides APIs for audio-haptic playback and management. It applies to scenarios where haptic feedback needs to be initiated synchronously during audio playback, for example, when there are incoming calls or messages or users are typing.
 
 ## Development Guidelines
 
-The entire process of audio-haptic development involves management of audio and haptic sources, configuration of an audio latency mode and audio stream usage, and creation and management of an audio-haptic player. This topic uses the process of one-time audio-haptic playback as an example to describe how to use **AudioHaptic**. Before the development, read [AudioHaptic](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager) for better understanding.
+The entire process of audio-haptic development involves management of audio and haptic sources, configuration of an audio latency mode and audio stream usage, and creation and management of an audio-haptic player. This topic uses the process of one-time audio-haptic playback as an example to describe how to use **AudioHaptic**. Before the development, read [AudioHaptic](../../reference/apis-audio-kit/js-apis-audioHaptic.md) for better understanding.
 
 ### Requesting Permissions
 
@@ -21,7 +21,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 
 ### How to Develop
 
-1. Obtain an AudioHapticManager instance, and register the audio and haptic sources. For details about the sources supported, see [AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager).
+1. Obtain an **AudioHapticManager** instance, and register the audio and haptic sources. For details about the sources supported, see [AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager).
 
    > **NOTE**
    >
@@ -31,7 +31,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    >
    >   Method 2 (recommended): Use [registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20) to register resources through file descriptors. This API is available from API version 20,
    >
-   > - A maximum of 128 resources can be registered at the same time for an application. Any attempt to register beyond this limit will fail (returning a negative resource ID). It is advised to reasonably manage the number of registered resources. For resources that are no longer used, you are advised to unregister them in a timely manner.
+   > - A maximum of 128 resources can be registered at the same time for an application. Any attempt to register beyond this limit will fail (returning a negative resource ID). You are advised to reasonably manage the number of registered resources. For resources that are no longer used, you are advised to unregister them in a timely manner.
 
    ```ts
    import { audio, audioHaptic } from '@kit.AudioKit';
@@ -41,11 +41,11 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.getAudioHapticManager();
 
    // A maximum of 128 resources can be registered at the same time for an application. Any attempt to register beyond this limit will fail (returning a negative resource ID).
-   // It is advised to reasonably manage the number of registered resources. For resources that are no longer used, you are advised to unregister them in a timely manner.
+   // You are advised to reasonably manage the number of registered resources. For resources that are no longer used, unregister them in a timely manner.
 
    // Method 1: Use registerSource to register sources.
-   let audioUri = 'data/audioTest.wav'; // This is just an example. Replace the file with the URI of the target audio source.
-   let hapticUri = 'data/hapticTest.json'; // This is just an example. Replace the file with the URI of the target haptic source.
+   let audioUri = 'data/audioTest.wav'; // This is only an example. In actual use, replace the file with the URI of your target audio resource.
+   let hapticUri = 'data/hapticTest.json'; // This is only an example. In actual use, replace the file with the URI of your target haptic resource.
    let idForUri = 0;
 
    audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
@@ -60,14 +60,14 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-   let audioFile = context.resourceManager.getRawFdSync('audioTest.ogg'); // This is just an example. Replace the file with the corresponding file in the rawfile directory of the application.
+   let audioFile = context.resourceManager.getRawFdSync('audioTest.ogg'); // This is only an example. In actual use, replace the file with the corresponding file in the rawfile directory of the application.
    let audioFd: audioHaptic.AudioHapticFileDescriptor = {
      fd: audioFile.fd,
      offset: audioFile.offset,
      length: audioFile.length,
    };
 
-   let hapticFile = context.resourceManager.getRawFdSync('hapticTest.json'); // This is just an example. Replace the file with the corresponding file in the rawfile directory of the application.
+   let hapticFile = context.resourceManager.getRawFdSync('hapticTest.json'); // This is only an example. In actual use, replace the file with the corresponding file in the rawfile directory of the application.
    let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
      fd: hapticFile.fd,
      offset: hapticFile.offset,
@@ -92,7 +92,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    audioHapticManagerInstance.setStreamUsage(idForFd, usage);
    ```
 
-3. Create an AudioHapticPlayer instance.
+3. Call [createPlayer](../../reference/apis-audio-kit/js-apis-audioHaptic.md#createplayer) to create an **AudioHapticPlayer** instance.
 
    ```ts
    let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
@@ -106,7 +106,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    });
    ```
 
-4. Call **start()** to start the audio-haptic player.
+4. Call the [start](../../reference/apis-audio-kit/js-apis-audioHaptic.md#start) method to start audio playback and vibration at the same time.
 
    ```ts
    audioHapticPlayer.start().then(() => {
@@ -116,7 +116,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    });
    ```
 
-5. Call **stop()** to stop the audio-haptic player.
+5. Call the [stop](../../reference/apis-audio-kit/js-apis-audioHaptic.md#stop) method to stop audio playback and vibration at the same time.
 
    ```ts
    audioHapticPlayer.stop().then(() => {
@@ -126,7 +126,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    });
    ```
 
-6. Release the AudioHapticPlayer instance.
+6. Call the [release](../../reference/apis-audio-kit/js-apis-audioHaptic.md#release) method to release the **AudioHapticPlayer** instance.
 
    ```ts
    audioHapticPlayer.release().then(() => {
@@ -136,7 +136,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    });
    ```
 
-7. Unregister the audio and haptic sources.
+7. Call the [unregisterSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#unregistersource) method to unregister the audio and vibration resources.
 
    ```ts
    // For resources that are no longer used, you are advised to unregister them in a timely manner to avoid issues such as resource leaks, exceeding the maximum allowed number of registered resources, or other such issues.

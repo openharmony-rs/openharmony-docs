@@ -15,7 +15,7 @@
 
 ## Modules to Import
 
-```
+```ts
 import file from '@system.file';
 ```
 
@@ -52,14 +52,14 @@ Moves a specified file to a given location.
 
 **Example**
 
-```
+```ts
 export default {    
   move() {        
     file.move({            
       srcUri: 'internal://app/myfiles1',            
       dstUri: 'internal://app/myfiles2',            
       success: function(uri) {                
-        console.log('call success callback success');            
+        console.info('call success callback success');            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -101,14 +101,14 @@ Copies a file to the given URI.
 
 **Example**
 
-```
+```ts
 export default {    
   copy() {        
     file.copy({            
       srcUri: 'internal://app/file.txt',            
       dstUri: 'internal://app/file_copy.txt',            
       success: function(uri) {                
-        console.log('call success callback success');            
+        console.info('call success callback success');            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -165,13 +165,13 @@ Obtains all files in the specified directory.
 
 **Example**
 
-```
+```ts
 export default {    
   list() {        
     file.list({            
       uri: 'internal://app/pic',            
       success: function(data) {                
-        console.log(JSON.stringify(data.fileList));            
+        console.info(JSON.stringify(data.fileList));            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -224,13 +224,13 @@ Obtains information about a local file.
 
 **Example**
 
-```
+```ts
 export default {    
   get() {        
     file.get({            
       uri: 'internal://app/file',            
       success: function(data) {                
-        console.log(data.uri);            
+        console.info(data.uri);            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -272,13 +272,13 @@ Deletes a local file.
 
 **Example**
 
-```
+```ts
 export default {    
   delete() {        
     file.delete({            
       uri: 'internal://app/my_file',            
       success: function() {                
-        console.log('call delete success.');            
+        console.info('call delete success.');            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -322,14 +322,14 @@ Writes text into a file. Only text files can be read and written.
 
 **Example**
 
-```
+```ts
 export default {    
   writeText() {        
     file.writeText({            
       uri: 'internal://app/test.txt',            
       text: 'Text that just for test.',            
       success: function() {                
-        console.log('call writeText success.');            
+        console.info('call writeText success.');            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -373,14 +373,14 @@ Writes buffer data into a file. Only text files can be read and written.
 
 **Example**
 
-```
+```ts
 export default {    
   writeArrayBuffer() {       
     file.writeArrayBuffer({           
       uri: 'internal://app/test',           
       buffer: new Uint8Array(8), // The buffer is of the Uint8Array type.          
       success: function() {                
-        console.log('call writeArrayBuffer success.');            
+        console.info('call writeArrayBuffer success.');            
       },           
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -432,13 +432,13 @@ Reads text from a file. Only text files can be read and written.
 
 **Example**
 
-```
+```ts
 export default {    
   readText() {        
     file.readText({            
       uri: 'internal://app/text.txt',            
       success: function(data) {                
-        console.log('call readText success: ' + data.text);            
+        console.info('call readText success: ' + data.text);            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -488,7 +488,7 @@ Reads buffer data from a file. Only text files can be read and written.
 
 **Example**
 
-```
+```ts
 export default {    
   readArrayBuffer() {        
     file.readArrayBuffer({            
@@ -496,7 +496,7 @@ export default {
       position: 10,            
       length: 200,            
       success: function(data) {                
-        console.log('call readArrayBuffer success: ' + data.buffer);            
+        console.info('call readArrayBuffer success: ' + data.buffer);            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -538,13 +538,13 @@ Checks whether a file or directory exists.
 
 **Example**
 
-```
+```ts
 export default {    
   access() {        
     file.access({            
       uri: 'internal://app/test',            
       success: function() {                
-        console.log('call access success.');            
+        console.info('call access success.');            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -586,13 +586,13 @@ Creates a directory.
 
 **Example**
 
-```
+```ts
 export default {    
   mkdir() {        
     file.mkdir({            
       uri: 'internal://app/test_directory',            
       success: function() {                
-        console.log('call mkdir success.');            
+        console.info('call mkdir success.');            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -635,13 +635,13 @@ Deletes a directory.
 
 **Example**
 
-```
+```ts
 export default {    
   rmdir() {        
     file.rmdir({            
       uri: 'internal://app/test_directory',            
       success: function() {                
-        console.log('call rmdir success.');            
+        console.info('call rmdir success.');            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            

@@ -119,7 +119,7 @@ Perform the following operations on the developer website to associate the appli
    }
    ```
 
-   **app-identifer** is the unique identifier allocated to an application during application signing. It is also the value of the **app-identifer** field declared in the [HarmonyAppProvision configuration file](../security/app-provision-structure.md).
+   **app-identifier** is the unique identifier allocated to an application during application signing. It is also the value of the **app-identifier** field declared in the [HarmonyAppProvision configuration file](../security/app-provision-structure.md).
 
 1. Place the domain name configuration file in a fixed directory on the DNS.
 
@@ -237,4 +237,4 @@ If the target application is started, the App Linking configuration of the targe
    You can configure the **applinking.json** file to associate a domain name with multiple applications. If the **uris** field in the **module.json5** file of each application is set to the same value, the system displays a dialog box for users to select the application to start.
    
    You can also use the **path** field to distinguish the applications to start. For example, use **https://www.example.com/path1** to start target application 1 and use **https://www.example.com/path2** to start target application 2.
-
+  

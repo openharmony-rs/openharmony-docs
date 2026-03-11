@@ -167,7 +167,6 @@ metadata对象示例：
   "parameters" : [{
     "name" : "a test for metadata parameter",
     "type" : "Float",
-    // "$string:parameters_description"为文件资源索引值
     "description" : "$string:parameters_description"
   }],
   "results" : [{
@@ -244,9 +243,6 @@ metadata对象示例：
 ```json
 {
   "module":{
-
-    // ...
-
     "abilities": [{
       "icon": "$media:icon",
       "label": "Login",
@@ -256,9 +252,6 @@ metadata对象示例：
         "uris": []
       }]
     }],
-
-    // ...
-
   }
 }
 ```
@@ -306,9 +299,7 @@ abilities示例：
   {
     "name": ".EntryAbility",
     "description": "test main ability",
-    // $media:ic_launcher 为媒体类资源
     "icon": "$media:ic_launcher",
-    // $string:example 为字符串类资源
     "label": "$string:example",
     "launchType": "multiton",
     "orientation": "unspecified",
@@ -516,7 +507,6 @@ shortcuts示例：
 "shortcuts": [
   {
     "shortcutId": "id",
-    // $string:shortcut 为配置的字符串资源值
     "label": "$string:shortcut",
     "intents": [
       {
@@ -641,7 +631,7 @@ forms示例：
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | policy | 标识该子属性取值规则。配置为“exclude”或“include”。<br/>-&nbsp;exclude：表示需要排除的value属性。<br/>-&nbsp;include：表示需要包含的value属性。 | 字符串 | 不可缺省。 |
-| value | 支持的取值为API&nbsp;Version存在的整数值，例如4、5、6。场景示例：某应用，针对相同设备型号，同时在网的为使用API&nbsp;5和API&nbsp;6开发的两个软件版本，则允许上架2个entry类型的安装包，分别支持到对应设备侧软件版本的分发。 | 数组 | 不可缺省。 |
+| value | 形状说明。<br/>取值为:<br/>&nbsp;-&nbsp;circle：表示圆形。<br/>&nbsp;-&nbsp;rect：表示矩形。 | 字符串数组 | 不可缺省。 |
 
 ## screenWindow对象的内部结构
 
@@ -650,7 +640,7 @@ forms示例：
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | policy | 标识该子属性取值规则。配置为“exclude”或“include”。<br/>-&nbsp;exclude：表示需要排除的value属性。<br/>-&nbsp;include：表示需要包含的value属性。 | 字符串 | 不可缺省。 |
-| value | 支持的取值为API&nbsp;Version存在的整数值，例如4、5、6。场景示例：某应用，针对相同设备型号，同时在网的为使用API&nbsp;5和API&nbsp;6开发的两个软件版本，则允许上架2个entry类型的安装包，分别支持到对应设备侧软件版本的分发。 | 数组 | 不可缺省。 |
+| value | 标识应用运行时窗口的分辨率大小，格式要求`数字*数字`，例如`466*466`。 | 字符串数组 | 不可缺省。 |
 
 ## screenDensity对象的内部结构
 

@@ -72,4 +72,4 @@ All audio and video applications that need to be played in the background must b
 
 ## Relationship with Related Kits
 
-To implement background playback, an application must use [Background Tasks Kit](../../task-management/background-task-overview.md) to request a continuous task to avoid being suspended.
+To implement background playback, an application needs to use the capabilities of [Background Task Kit](../../task-management/background-task-overview.md) to request a continuous task to avoid being suspended.

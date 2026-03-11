@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-This module provides APIs for matrix transformation. You can use these APIs to translate, rotate, and scale images.
+The **matrix4** module provides APIs for matrix transformation. You can use these APIs to translate, rotate, and scale images.
 
 > **NOTE**
 >

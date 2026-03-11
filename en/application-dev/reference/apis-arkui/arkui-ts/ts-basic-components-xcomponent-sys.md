@@ -14,9 +14,7 @@
 >
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [XComponent](ts-basic-components-xcomponent.md).
 
-## APIs
-
-### XComponentOptions<sup>12+</sup>
+## XComponentOptions<sup>12+</sup>
 
 Defines the options of the **XComponent**.
 
@@ -32,7 +30,7 @@ Defines the options of the **XComponent**.
   >
   > It is not supported for **XComponent** components created using the [ArkUI NDK API](../../../ui/ndk-build-ui-overview.md).
 
-## Attributes
+## APIs
 
 ### enableTransparentLayer<sup>18+</sup>
 

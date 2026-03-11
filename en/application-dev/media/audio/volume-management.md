@@ -37,7 +37,7 @@ OpenHarmony achieves precise volume control for applications through the coordin
 
 ## System Volume
 
-The API for managing the system volume is provided by AudioVolumeManager. Before using this API, you must call [getVolumeManager()](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getvolumemanager9) to obtain an AudioVolumeManager instance.
+The API for managing the system volume is provided by **AudioVolumeManager**. Before using this API, you must call [getVolumeManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getvolumemanager9) to obtain an **AudioVolumeManager** instance.
 
 Currently, AudioVolumeManager can be used to obtain volume information and listen for volume changes. It cannot be used to adjust the system volume. If you want to adjust the system volume, follow the instructions provided in [Adjusting the System Volume Using the Volume Panel](#adjusting-the-system-volume-using-the-volume-panel).
 
@@ -49,15 +49,6 @@ let audioVolumeManager = audioManager.getVolumeManager();
 ```
 
 ### Obtaining Volume Information
-
-The API for managing the system volume is provided by AudioVolumeManager. Before using this API, you must call [getVolumeManager()](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getvolumemanager9) to obtain an AudioVolumeManager instance.
-
-```ts
-import { audio } from '@kit.AudioKit';
-
-let audioManager = audio.getAudioManager();
-let audioVolumeManager = audioManager.getVolumeManager();
-```
 
 Call [AudioVolumeManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeManager.md) to obtain the volume of a specified audio stream.
 
@@ -103,7 +94,7 @@ To achieve this, you can use the ArkTS component **AVVolumePanel** in your appli
 
 ## Application Volume
 
-The API for managing the application volume is provided by AudioVolumeManager. Before using this API, you must call [getVolumeManager()](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getvolumemanager9) to obtain an AudioVolumeManager instance.
+The API for managing the application volume is provided by **AudioVolumeManager**. Before using this API, you must call [getVolumeManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getvolumemanager9) to obtain an **AudioVolumeManager** instance.
 
 When [volume mode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiovolumemode19) is set to **APP_INDIVIDUAL**, you can set and query the application volume by calling the APIs in the following sample.
 

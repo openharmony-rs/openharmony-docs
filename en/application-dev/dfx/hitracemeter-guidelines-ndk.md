@@ -14,7 +14,7 @@ HiTraceMeter provides APIs for system performance tracing. You can call the APIs
 
 ## Available APIs
 
-For details about the APIs, see [trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md).
+The **HiTraceMeter** module provides APIs for performance tracing. For details, see [trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md).
 
 | API| Description|
 | -------- | -------- |
@@ -131,7 +131,7 @@ The following is an example of a native C++ application that uses the HiTraceMet
 
 3. In the **entry/src/main/cpp/napi_init.cpp** file, call the HiTraceMeter NDK_C API in the **Add** function to trace performance. The sample code is as follows:
 
-   <!-- @[hitracemeter_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_NDK/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[hitracemeter_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_NDK/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include <cstdio>

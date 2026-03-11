@@ -108,7 +108,7 @@ struct Index {
 }
 ```
 
-## MovingPhotoViewController<sup>12+</sup>
+## MovingPhotoViewController
 
 一个MovingPhotoViewController对象可以控制一个MovingPhotoView，可用视频播放实例请参考[媒体业务模块](../apis-media-kit/arkts-apis-media.md)。
 

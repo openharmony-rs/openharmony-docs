@@ -98,9 +98,9 @@ The MDM APIs can be called only after the **EnterpriseAdminExtensionAbility** is
 
 ```bash
 # Enable a super administrator application.
-hdc shell edm enable-admin -n Bundle_name -a EnterpriseAdminExtensionAbility class name
+hdc shell edm enable-admin -n Bundle_name -a EnterpriseAdminExtensionAbility_class_name
 # Enable a BYOD device administrator application.
-hdc shell edm enable-admin -n Bundle_name -a EnterpriseAdminExtensionAbility class name -t byod
+hdc shell edm enable-admin -n Bundle_name -a EnterpriseAdminExtensionAbility_class_name -t byod
 # Disable an EnterpriseAdminExtensionAbility.
 hdc shell edm disable-admin -n Bundle_name
 ```

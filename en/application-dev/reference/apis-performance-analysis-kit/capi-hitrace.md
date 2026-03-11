@@ -24,4 +24,4 @@ HiTraceChain generates a unique ID for a service execution process and passes it
 
 | Name| Description|
 | -- | -- |
-| [trace.h](capi-trace-h.md) | Defines APIs of the HiTraceMeter and HiTraceChain modules for performance tracing and distributed tracing.<br>The vertical bar (\|) is used as the separator in user-mode trace format. Therefore, the string parameters passed by the HiTraceMeter APIs must exclude this character to avoid trace parsing exceptions.<br>The maximum length of a user-mode trace is 512 characters. Excess characters will be truncated.|
+| [trace.h](capi-trace-h.md) | Defines APIs of the **HiTraceMeter** and **HiTraceChain** modules for performance tracing and distributed tracing.<br> The vertical bar (\|) is used as the separator in user-mode trace format. Therefore, the string parameters passed by the HiTraceMeter APIs must exclude this character to avoid trace parsing exceptions.<br> The maximum length of a user-mode trace is 512 characters. Excess characters will be truncated.|

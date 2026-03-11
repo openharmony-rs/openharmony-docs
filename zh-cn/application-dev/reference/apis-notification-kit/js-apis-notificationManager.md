@@ -652,7 +652,7 @@ let removeSlotCallback = (err: BusinessError): void => {
     console.info(`Succeeded in removing slot.`);
   }
 }
-let slotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
+let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
 notificationManager.removeSlot(slotType, removeSlotCallback);
 ```
 
@@ -884,7 +884,7 @@ isNotificationEnabledSync(): boolean
 **示例：**
 
 ```ts
-let enabled = notificationManager.isNotificationEnabledSync();
+let enabled: boolean = notificationManager.isNotificationEnabledSync();
 console.info(`isNotificationEnabledSync success, data is : ${JSON.stringify(enabled)}`);
 ```
 

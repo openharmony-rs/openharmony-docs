@@ -33,6 +33,8 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 Provides attribute names and value types of a node element.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 ### Attributes
@@ -798,6 +800,8 @@ axContext.injectGestureSync(gesturePath);
 
 Defines the **AccessibilityElement**. Before calling APIs of **AccessibilityElement**, you must call [AccessibilityExtensionContext.getFocusElement()](#accessibilityextensioncontextgetfocuselementdeprecated) or [AccessibilityExtensionContext.getWindowRootElement()](#accessibilityextensioncontextgetwindowrootelementdeprecated) to obtain an **AccessibilityElement** instance.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 ### attributeNames<sup>(deprecated)</sup>
@@ -1096,8 +1100,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // rootElement is an instance of AccessibilityElement.
 // Sample code of setSelection
 rootElement.performAction('setSelection', {
-  selectTextBegin: '0', // Indicates the start position of the selection.
-  selectTextEnd: '8',   // Indicates the end position of the selection.
+  selectTextBegin: '0', // Start position of the selection.
+  selectTextEnd: '8',   // End position of the selection.
   selectTextInForWard: true   // true indicates the insertion point, and false indicates the selection range.
 }).then(() => {
   console.info(`Succeeded in perform action`);

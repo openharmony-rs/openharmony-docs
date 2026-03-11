@@ -12,6 +12,8 @@ OpenHarmony JSVM-API provides a set of stable APIs based on the standard JavaScr
 
 OpenHarmony JSVM-API provides a set of APIs written in C programming language that complies with C99.
 
+OpenHarmony JSVM-API is not thread-safe. You need to ensure the thread safety of JSVM-API.
+
 JSVM-API allows dynamically loaded JS code to be directly run during application runtime. With JSVM-API, you can also use C/C++ to implement core functionalities that demand high performance or closely rely on underlying system invocation, register C++ methods in JS code, and directly call the JS code to improve the execution speed.
 
 Unless otherwise specified, JSVM-API in this document refers to OpenHarmony JSVM-API.

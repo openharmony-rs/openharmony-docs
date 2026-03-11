@@ -7,7 +7,7 @@
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
 
-If the biometric authentication fails and the user taps the navigation button for a custom authentication, the unified identity authentication framework will terminate the system authentication process and instruct the caller to launch the custom authentication page.
+If the biometric authentication fails and the user taps the navigation button for a custom authentication, the unified user authentication framework will terminate the system authentication process and instruct the caller to launch the custom authentication page.
 
 For example, if the facial or fingerprint authentication provided by the system fails in a payment process, the user can switch to the password authentication defined by the device vendor.
 

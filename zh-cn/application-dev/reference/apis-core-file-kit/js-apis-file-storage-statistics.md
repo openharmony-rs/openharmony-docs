@@ -22,7 +22,7 @@ import { storageStatistics } from '@kit.CoreFileKit';
 
 getCurrentBundleStats(): Promise&lt;BundleStats&gt;
 
-应用异步获取当前应用存储空间大小（单位为Byte），以Promise方式返回。
+应用异步获取当前应用存储空间大小（单位为Byte），使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -57,7 +57,7 @@ storageStatistics.getCurrentBundleStats().then((BundleStats: storageStatistics.B
 
 getCurrentBundleStats(callback: AsyncCallback&lt;BundleStats&gt;): void
 
-应用异步获取当前应用存储空间大小（单位为Byte），以callback方式返回。
+应用异步获取当前应用存储空间大小（单位为Byte），使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -95,7 +95,7 @@ storageStatistics.getCurrentBundleStats((error: BusinessError, bundleStats: stor
 
 getTotalSize(): Promise&lt;number&gt;
 
-获取内置存储的总空间大小（单位为Byte），以Promise方式返回。
+获取内置存储的总空间大小（单位为Byte），使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -129,7 +129,7 @@ storageStatistics.getTotalSize().then((number: number) => {
 
 getTotalSize(callback: AsyncCallback&lt;number&gt;): void
 
-获取内置存储的总空间大小（单位为Byte），以callback方式返回。
+获取内置存储的总空间大小（单位为Byte），使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -203,7 +203,7 @@ try {
 
 getFreeSize(): Promise&lt;number&gt;
 
-获取内置存储的可用空间大小（单位为Byte），以Promise方式返回。
+获取内置存储的可用空间大小（单位为Byte），使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -237,7 +237,7 @@ storageStatistics.getFreeSize().then((number: number) => {
 
 getFreeSize(callback: AsyncCallback&lt;number&gt;): void
 
-获取内置存储的可用空间大小（单位为Byte），以callback方式返回。
+获取内置存储的可用空间大小（单位为Byte），使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 

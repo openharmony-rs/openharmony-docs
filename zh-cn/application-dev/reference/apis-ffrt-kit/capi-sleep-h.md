@@ -44,7 +44,6 @@ FFRT_C_API int ffrt_usleep(uint64_t usec)
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |

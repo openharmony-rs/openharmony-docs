@@ -57,7 +57,7 @@ storageStatistics.getCurrentBundleStats().then((BundleStats: storageStatistics.B
 
 getCurrentBundleStats(callback: AsyncCallback&lt;BundleStats&gt;): void
 
-Obtains the storage space (in bytes) of this application. This API uses a promise to return the result.
+Obtains the storage space (in bytes) of this application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -95,7 +95,7 @@ storageStatistics.getCurrentBundleStats((error: BusinessError, bundleStats: stor
 
 getTotalSize(): Promise&lt;number&gt;
 
-Obtains the total space of the built-in storage, in bytes. This API uses a promise to return the result.
+Obtains the total size (in bytes) of the built-in storage. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -129,7 +129,7 @@ storageStatistics.getTotalSize().then((number: number) => {
 
 getTotalSize(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the total space of the built-in storage, in bytes. This API uses an asynchronous callback to return the result.
+Obtains the total size (in bytes) of the built-in storage. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -203,7 +203,7 @@ try {
 
 getFreeSize(): Promise&lt;number&gt;
 
-Obtains the available space of the built-in storage, in bytes. This API uses a promise to return the result.
+Obtains the available space (in bytes) of the built-in storage. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -237,7 +237,7 @@ storageStatistics.getFreeSize().then((number: number) => {
 
 getFreeSize(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the available space of the built-in storage, in bytes. This API uses an asynchronous callback to return the result.
+Obtains the available space (in bytes) of the built-in storage. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
 

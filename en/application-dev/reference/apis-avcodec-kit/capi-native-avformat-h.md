@@ -149,6 +149,7 @@ Creates a video OH_AVFormat instance with specified parameters for reading and w
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
+**Since**: 10
 
 **Parameters**
 
@@ -571,11 +572,7 @@ bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32
 
 **Description**
 
-Reads an array of int32_t data from an OH_AVFormat instance.
-
-Note that the buffer lifecycle is bound to the OH_AVFormat instance. The buffer becomes invalid automatically when the OH_AVFormat instance is destroyed.
-
-To keep the data for an extended period, explicitly copy the data to newly allocated memory.
+Reads an array of int32_t data from an OH_AVFormat instance.<br> Note that the buffer lifecycle is bound to the OH_AVFormat instance. The buffer becomes invalid automatically when the OH_AVFormat instance is destroyed.<br> To keep the data for an extended period, explicitly copy the data to newly allocated memory.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 

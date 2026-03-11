@@ -6,12 +6,12 @@
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
+AVCastPickerHelper implements a semi-modal object used for casting. It displays a semi-modal window for users to select a target cast device. Before using the APIs of this class, you need to create an AVCastPickerHelper instance.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this class are supported since API version 14.
-
-AVCastPickerHelper implements a semi-modal object used for casting. It displays a semi-modal window for users to select a target cast device. Before using the APIs of this class, you need to create an AVCastPickerHelper instance.
 
 ## Modules to Import
 
@@ -109,16 +109,24 @@ import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
-async function avCastPicker(context: common.Context) {
-  let avCastPickerOptions : avSession.AVCastPickerOptions = {
-    sessionType : 'video',
+class MyPage {
+  private avCastPicker: avSession.AVCastPickerHelper;
+
+  constructor(context: common.Context) {
+    this.avCastPicker = new avSession.AVCastPickerHelper(context);
   }
-  let avCastPicker = new avSession.AVCastPickerHelper(context);
-  avCastPicker.select(avCastPickerOptions).then(() => {
-    console.info('select successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`AVCastPicker.select failed with err: ${err.code}, ${err.message}`);
-  });
+
+  async selectCastDevice() {
+    const avCastPickerOptions: avSession.AVCastPickerOptions = {
+      sessionType: 'video',
+    };
+
+    this.avCastPicker.select(avCastPickerOptions).then(() => {
+      console.info('select successfully');
+    }).catch((err: BusinerssError) => {
+      console.error('AVCastPicker.select failed with err: ${err.code}, ${err.message}');
+    });
+  }
 }
 ```
 

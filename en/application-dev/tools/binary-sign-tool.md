@@ -1,17 +1,18 @@
 # Binary Sign Tool
-<!--Kit: Ability Kit-->
+<!--Kit: Common-->
 <!--Subsystem: Security-->
-<!--Owner: @xia-bubai-->
-<!--Designer: @linshuqing; @hehehe-li-->
-<!--Tester: @leiyuqian-->
+<!--Owner: @zhangfeixiang-->
+<!--Designer: @renzehua; @huangjieliang; @zhangfeixiang-->
+<!--Tester: @rongwei-->
 <!--Adviser: @zengyawen-->
 
-Binary Sign Tool is used to sign code of binary files on OpenHarmony PCs/2-in-1 devices. It supports code signing of standard ELF files or printing of signed ELF certificate information using commands.
+Binary Sign Tool is used to sign code of binary files. It supports code signing of standard ELF files or printing of signed ELF permission and certificate information using commands.
 
-You can find the tool in **toolchains/lib** of the OpenHarmony SDK library downloaded locally. The file name is **binary-sign-tool**.
+## Obtaining the Command Line Tool
 
-## Environment
-Before using this tool, you need to obtain [hdc](../dfx/hdc.md) and run the **hdc shell** command.
+- Tool for Linux platform: Download the latest [Command Line Tools](command-line-tools-overview.md). You can obtain the **binary-sign-tool** file from **openHarmony/toolchains/lib** of the SDK library.
+
+- Tool for OpenHarmony PC/2-in-1 device: Download and install DevBox from AppGallery. You can run the **binary-sign-tool** command in the terminal window without additional configuration.
 
 ## Commands
 
@@ -50,8 +51,10 @@ binary-sign-tool -help
 **Example**
 
 ```bash
-# Sign a binary file.
+# Sign a binary file using a certificate.
 binary-sign-tool sign -keyAlias "oh-app1-key-v1" -signAlg "SHA256withECDSA" -appCertFile "app1.pem" -profileFile "app1-profile.p7b" -profileSigned "1" -inFile "unsigned-elf" -keystoreFile "ohtest.p12" -outFile "signed-elf" -keyPwd "123456" -keystorePwd "123456" -moduleFile "module.json"
+# Sign a binary file without a certificate.
+binary-sign-tool sign -inFile "unsigned-elf" -outFile "signed-elf" -selfSign "1"
 # Command output:
 write code sign data success.
 ```
@@ -70,6 +73,11 @@ write code sign data success.
 # Print the certificate information of the binary file signature.
 binary-sign-tool display-sign -inFile "signed-elf"
 # Command output:
+# Permission information output
+# 1. No permission information
+permission is not found
+# 2. Output permission information
+# Signature information output
 # 1. No code signature.
 code signature is not found
 # 2. Self-signed mode.

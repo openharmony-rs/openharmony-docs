@@ -135,6 +135,71 @@ Activates a system account. This API uses a promise to return the result.
   }
   ```
 
+### activateOsAccount<sup>23+</sup>
+
+activateOsAccount(localId: number, displayId: number): Promise&lt;void&gt;
+
+Activates (Starts on the foreground or switches to) the target system account on the specified logical display. This API uses a promise to return the result.
+
+Currently, cross-logical-display activation is not supported. That is, you cannot activate a system account that is already running on the foreground of another logical display on the specified logical display.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS_EXTENSION
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Parameters**
+
+| Name   | Type  | Mandatory| Description          |
+| --------- | ------ | ---- | -------------- |
+| localId   | number | Yes  | ID of the target system account.  |
+| displayId | number | Yes  | Logical display ID.  |
+
+**Return value**
+
+| Type               | Description                                 |
+| ------------------- | -------------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Account Management Error Codes](./errorcode-account.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 801 | Capability not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300003 | Account not found. |
+| 12300008 | Restricted Account. |
+| 12300010 | Service busy. Possible causes: The target account is being operated. |
+| 12300016 | The number of logged in accounts reaches the upper limit. |
+| 12300018 | Display not found. |
+| 12300019 | Cross-display activation not supported. |
+
+**Example**
+Activate the system account 100 on the logical screen 0.
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: number = 100;
+  let displayId: number = 0;
+  try {
+    accountManager.activateOsAccount(localId, displayId).then(() => {
+      console.info('activateOsAccount with displayId successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`activateOsAccount with displayId failed, err: ${err.code} ${err.message}`);
+    });
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`activateOsAccount with displayId exception: ${err.code} ${err.message}`);
+  }
+  ```
+
 ### deactivateOsAccount<sup>12+</sup>
 
 deactivateOsAccount(localId: number): Promise&lt;void&gt;
@@ -1680,11 +1745,9 @@ Subscribes to the switchover between a foreground system account and a backgroun
 
 **System API**: This is a system API.
 
-> **NOTE**
->
-> - The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 21.
-
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 23.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1693,7 +1756,7 @@ Subscribes to the switchover between a foreground system account and a backgroun
 | Name  | Type                      | Mandatory| Description                                                        |
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
 | type     | 'switching'                 | Yes  | Event type. The value **switching** indicates that the switchover between a foreground system account and a background account is being performed.|
-| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | Yes  | Callback to be invoked when a system account is switching between the foreground and background. The source and target system account IDs are subscribed to.<br>Note: Since API version 21, the optional field **displayId** is available, indicating the ID of the logical display where the switch event occurs.   |
+| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | Yes  | Callback to be invoked when a system account is switching between the foreground and background. The source and target system account IDs are subscribed to.<br>Note: Since API version 23, the optional field **displayId** is available, indicating the ID of the logical display where the switch event occurs.   |
 
 **Error codes**
 
@@ -1701,7 +1764,6 @@ Subscribes to the switchover between a foreground system account and a backgroun
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1732,11 +1794,9 @@ Unsubscribes from the switchover between a foreground system account and a backg
 
 **System API**: This is a system API.
 
-> **NOTE**
->
-> - The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 21.
-
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 23.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1753,7 +1813,6 @@ Unsubscribes from the switchover between a foreground system account and a backg
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1779,11 +1838,9 @@ Subscribes to the end of a switchover between a foreground system account and a 
 
 **System API**: This is a system API.
 
-> **NOTE**
-> 
-> - The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 21.
-
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 23.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1792,7 +1849,7 @@ Subscribes to the end of a switchover between a foreground system account and a 
 | Name  | Type                      | Mandatory| Description                                                        |
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
 | type     | 'switched'                 | Yes  | Event type. The value **switched** indicates that the switchover between a foreground system account and a background system account is complete.|
-| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | Yes  | Callback to be invoked when a system account is switched between the foreground and background. The source and target system account IDs are subscribed to.<br>Note: Since API version 21, the optional field **displayId** is available, indicating the ID of the logical display where the switch event occurs.   |
+| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | Yes  | Callback to be invoked when a system account is switched between the foreground and background. The source and target system account IDs are subscribed to.<br>Note: Since API version 23, the optional field **displayId** is available, indicating the ID of the logical display where the switch event occurs.   |
 
 **Error codes**
 
@@ -1800,7 +1857,6 @@ Subscribes to the end of a switchover between a foreground system account and a 
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1831,11 +1887,9 @@ Unsubscribes from the end of a switchover between a foreground system account an
 
 **System API**: This is a system API.
 
-> **NOTE**
->
-> - The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 21.
-
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 23.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1852,7 +1906,6 @@ Unsubscribes from the end of a switchover between a foreground system account an
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1869,6 +1922,102 @@ Unsubscribes from the end of a switchover between a foreground system account an
     console.error(`off exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### onConstraintChanged<sup>23+</sup>
+onConstraintChanged(constraints: string[], callback: Callback&lt;ConstraintChangeInfo&gt;): void
+
+Subscribes to one or more constraint change events of the system account to which the caller belongs. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Parameters**
+
+| Name    | Type                  | Mandatory| Description     |
+| --------  | ---------------------- | ---- | -------- |
+| constraints  | string[] | Yes  | List of [constraints](js-apis-osAccount.md#constraints) to be subscribed to.|
+| callback | Callback&lt;[ConstraintChangeInfo](#constraintchangeinfo23)&gt;  | Yes  | Callback used to listen for the constraint change events.|
+
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message              |
+| -------- | ------------------- |
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | One or more constraints are invalid. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let constraint: string = 'constraint.wifi';
+const callback:Callback<osAccount.ConstraintChangeInfo> = (data: osAccount.ConstraintChangeInfo): void => {
+  console.info(`ConstraintChangeInfo received, constraint: ${data.constraint} isEnabled: ${data.isEnabled}`);
+};
+
+try {
+  accountManager.onConstraintChanged([constraint], callback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`onConstraintChanged exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### offConstraintChanged<sup>23+</sup>
+offConstraintChanged(callback?: Callback&lt;ConstraintChangeInfo&gt;): void
+
+Unsubscribes from constraint change events associated with the specified callback. If no callback is specified, this API unsubscribes from all subscription records.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Parameters**
+
+| Name    | Type                  | Mandatory| Description     |
+| --------  | ---------------------- | ---- | -------- |
+| callback | Callback&lt;[ConstraintChangeInfo](#constraintchangeinfo23)&gt;  | No  | Callback used to listen for the constraint change events.<br>The default value is **undefined**, indicating that all subscription records are unsubscribed.<br>If this parameter is not **undefined**, the subscription records associated with the callback are unsubscribed.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message              |
+| -------- | ------------------- |
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let constraint: string = 'constraint.wifi';
+const callback:Callback<osAccount.ConstraintChangeInfo> = (data: osAccount.ConstraintChangeInfo): void => {
+  console.info(`ConstraintChangeInfo received, constraint: ${data.constraint} isEnabled: ${data.isEnabled}`);
+};
+
+try {
+  accountManager.onConstraintChanged([constraint], callback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`onConstraintChanged exception: code is ${err.code}, message is ${err.message}`);
+}
+
+try {
+  accountManager.offConstraintChanged(callback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`offConstraintChanged exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### getBundleIdForUid<sup>9+</sup>
 
@@ -2101,6 +2250,114 @@ Checks whether the current process belongs to the main system account. This API 
   } catch (e) {
     const err = e as BusinessError;
     console.error(`isMainOsAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+### getForegroundOsAccountLocalId<sup>23+</sup>
+
+getForegroundOsAccountLocalId(displayId: number): Promise&lt;number&gt;
+
+Obtains the ID of the foreground system account running on a specified logical display. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Parameters**
+
+| Name   | Type  | Mandatory| Description        |
+| --------- | ------ | ---- | ------------ |
+| displayId | number | Yes  | Logical display ID.|
+
+**Return value**
+
+| Type                 | Description                        |
+| --------------------- | ---------------------------- |
+| Promise&lt;number&gt; | Promise used to return the system account ID.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Account Management Error Codes](./errorcode-account.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+| 12300017 | The foreground OS account is not found. |
+
+**Example**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let displayId: number = 0;
+  try {
+    accountManager.getForegroundOsAccountLocalId(displayId).then((localId: number) => {
+      console.info('foreground account on display ' + displayId + ' is ' + localId);
+    }).catch((err: BusinessError) => {
+      console.error(`getForegroundOsAccountLocalId failed: ${err.code} ${err.message}`);
+    });
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getForegroundOsAccountLocalId exception: ${err.code} ${err.message}`);
+  }
+  ```
+
+### getForegroundOsAccountDisplayId<sup>23+</sup>
+
+getForegroundOsAccountDisplayId(localId: number): Promise&lt;number&gt;
+
+Obtains the logical display ID of the specified foreground system account. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Parameters**
+
+| Name | Type  | Mandatory| Description      |
+| ------- | ------ | ---- | ---------- |
+| localId | number | Yes  | ID of the target system account.|
+
+**Return value**
+
+| Type                 | Description                          |
+| --------------------- | ------------------------------ |
+| Promise&lt;number&gt; | Promise used to return the logical display ID.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Account Management Error Codes](./errorcode-account.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+| 12300017 | The foreground OS account is not found. |
+
+**Example**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: number = 100;
+  try {
+    accountManager.getForegroundOsAccountDisplayId(localId).then((displayId: number) => {
+      console.info('account ' + localId + ' foreground displayId: ' + displayId);
+    }).catch((err: BusinessError) => {
+      console.error(`getForegroundOsAccountDisplayId failed: ${err.code} ${err.message}`);
+    });
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getForegroundOsAccountDisplayId exception: ${err.code} ${err.message}`);
   }
   ```
 
@@ -2359,7 +2616,7 @@ A constructor used to create an instance for user authentication.
 
 getVersion(): number
 
-Obtains a version number.
+Obtains this version number.
 
 **System API**: This is a system API.
 
@@ -2463,10 +2720,10 @@ Obtains the executor property based on the request. This API uses an asynchronou
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 
 **Example**
 
@@ -2527,10 +2784,10 @@ Obtains the executor property based on the request. This API uses a promise to r
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 
 **Example**
 
@@ -4748,11 +5005,13 @@ Adds credential information, including the credential type, subtype, and token (
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialInfo, i.e. authType or authSubType. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted account. |
+| 12300020 | Device hardware abnormal. |
+| 12300090 | Cross-device capability not supported. |
+| 12300091 | Cross-device communication failed. |
 | 12300101 | The token is invalid. |
 | 12300106 | The authentication type is not supported. |
 | 12300109 | The authentication, enrollment, or update operation is canceled. |
@@ -4776,6 +5035,7 @@ Adds credential information, including the credential type, subtype, and token (
     credType: osAccount.AuthType.PIN,
     credSubType: osAccount.AuthSubType.PIN_SIX,
     token: new Uint8Array([]),
+    additionalInfo: 'xxx'
   };
   let userIDM = new osAccount.UserIdentityManager();
   userIDM.openSession((err: BusinessError, challenge: Uint8Array) => {
@@ -5319,6 +5579,124 @@ Obtains the ID of the enrolled credential based on the credential type and accou
   }
   ```
 
+### onCredentialChanged<sup>23+</sup>
+onCredentialChanged(credentialTypes: AuthType[], callback: Callback&lt;CredentialChangeInfo&gt;): void
+
+Subscribes to one or more credential change events. This API uses a callback to return the credential change information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Required permissions**: ohos.permission.USE_USER_IDM
+
+**Parameters**
+
+| Name    | Type                  | Mandatory| Description     |
+| --------  | ---------------------- | ---- | -------- |
+| credentialTypes  | [AuthType](#authtype8)\[\] | Yes  | Credential types subscribed.|
+| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | Yes  | Callback used to listen for the credential change events.|
+
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message              |
+| -------- | ------------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | One or more credential types are invalid. |
+| 12300106 | One or more credential types are not supported. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let identityMgr: osAccount.UserIdentityManager = new osAccount.UserIdentityManager();
+
+const callback: Callback<osAccount.CredentialChangeInfo> = (changeInfo: osAccount.CredentialChangeInfo): void => {
+  console.info('credentialType: ' + changeInfo.credentialType
+    + ', changeType: ' + changeInfo.changeType
+    + ', accountId: ' + changeInfo.accountId
+    + ', addedCredentialId: ' + changeInfo.addedCredentialId
+    + ', deletedCredentialId: ' + changeInfo.deletedCredentialId
+    + ', isSilent: ' + changeInfo.isSilent
+  )
+}
+
+try {
+  identityMgr.onCredentialChanged([osAccount.AuthType.PIN, osAccount.AuthType.FACE], callback);
+  console.info('Subscribe to the credential changes successfully');
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`Failed to subscribe to the credential changes, code is ${err.code}, message is ${err.message}`)
+}
+```
+
+### offCredentialChanged<sup>23+</sup>
+offCredentialChanged(callback?: Callback&lt;CredentialChangeInfo&gt;): void
+
+Unsubscribes from credential change events. If no callback is not specified, this API unsubscribes from all subscription records.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Required permissions**: ohos.permission.USE_USER_IDM
+
+**Parameters**
+
+| Name    | Type                  | Mandatory| Description     |
+| --------  | ---------------------- | ---- | -------- |
+| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | No  | Callback used to listen for the credential change events. The default value is **undefined**, indicating that all subscription records are unregistered. If the value is not undefined, only the subscription records related to the specified callback are unregistered.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message              |
+| -------- | ------------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let identityMgr: osAccount.UserIdentityManager = new osAccount.UserIdentityManager();
+
+const callback: Callback<osAccount.CredentialChangeInfo> = (changeInfo: osAccount.CredentialChangeInfo): void => {
+  console.info('credentialType: ' + changeInfo.credentialType
+    + ', changeType: ' + changeInfo.changeType
+    + ', accountId: ' + changeInfo.accountId
+    + ', addedCredentialId: ' + changeInfo.addedCredentialId
+    + ', deletedCredentialId: ' + changeInfo.deletedCredentialId
+    + ', isSilent: ' + changeInfo.isSilent
+  )
+}
+
+try {
+  identityMgr.onCredentialChanged([osAccount.AuthType.PIN, osAccount.AuthType.FACE], callback);
+  console.info('Subscribe to the credential changes successfully');
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`Failed to subscribe to the credential changes, code is ${err.code}, message is ${err.message}`)
+}
+
+try {
+  identityMgr.offCredentialChanged(callback);
+  console.info('Unsubscribe from the credential changes successfully');
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`Failed to unsubscribe from the credential changes, code is ${err.code}, message is ${err.message}`)
+}
+```
+
 ## IInputData<sup>8+</sup>
 
 Provides callbacks for PIN operations.
@@ -5625,6 +6003,7 @@ Defines the credential information.
 | credSubType  | [AuthSubType](#authsubtype8) | No   | No  | Authentication credential subtype.  |
 | token        | Uint8Array                           | No   | No  | Authentication token.    |
 | accountId<sup>12+</sup>    | number | No   | Yes  | System account ID, which is **undefined** by default.|
+| additionalInfo<sup>23+</sup>    | string | No   | Yes  | Additional information about the credential, which is an empty string by default.|
 
 ## RequestResult<sup>8+</sup>
 
@@ -5941,6 +6320,20 @@ Defines the event that indicates the start or end of a foreground-background sys
 | ----------- | ------ | ---- | ---- | ---------- |
 | fromAccountId | number | No| No| ID of the source system account.|
 | toAccountId | number | No| No| ID of the target system account.|
+| displayId<sup>23+</sup> | number | No| Yes| ID of the logical display where the switchover occurs. The default value is **0**.|
+
+## ConstraintChangeInfo<sup>23+</sup>
+
+Defines the constraint change information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+| Name     | Type  | Read-Only| Optional| Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| constraint | string | No| No| [Constraint](js-apis-osAccount.md#constraints) that has been changed.|
+| isEnabled | boolean | No| No| Enabling state of the changed constraint. The default value is **false**.<br>The value **true** indicates that the target constraint is enabled, and **false** indicates the opposite.|
 
 ## CreateOsAccountOptions<sup>12+</sup>
 
@@ -6031,3 +6424,34 @@ Represents a set of optional parameters for [onGetData](#ongetdata8).
 | Name              | Type   | Read-Only | Optional| Description      |
 | ------------------ | ------ | ---- | ---- | ---------- |
 | challenge          | Uint8Array | No| Yes | Challenge value, which is **undefined** by default.|
+
+## CredentialChangeInfo<sup>23+</sup>
+
+Defines the credential change information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+| Name     | Type  | Read-Only | Optional | Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| changeType      | [CredentialChangeType](#credentialchangetype23) | No| No | Credential change type.    |
+| isSilent | boolean | No| No | Whether the change is silent. A silent change is automatically initiated by the system in the background.|
+| credentialType      | [AuthType](#authtype8) | No| No | Credential type.    |
+| accountId | number | No| No | System account ID.|
+| addedCredentialId   | Uint8Array | No| Yes | Credential ID. An ID is returned when a credential is added or updated. which is **undefined** by default.  |
+| deletedCredentialId | Uint8Array | No| Yes | Credential ID. An ID is returned when a credential is deleted or updated. which is **undefined** by default.  |
+
+## CredentialChangeType<sup>23+</sup>
+
+Enumerates the credential change types.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+| Name    | Value  | Description      |
+| -------- | --- | ---------- |
+| ADD_CREDENTIAL      | 1   | A credential is added.|
+| UPDATE_CREDENTIAL   | 2   | A credential is updated.|
+| DELETE_CREDENTIAL   | 3   | A credential is deleted.|

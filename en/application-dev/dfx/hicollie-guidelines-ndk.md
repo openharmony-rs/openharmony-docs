@@ -10,6 +10,10 @@
 
 [Application freeze (AppFreeze)](appfreeze-guidelines.md) means that an application does not respond to user operations (for example, clicking) for a specified period of time. This topic describes the capabilities provided by the HiCollie module for detecting service thread stuck and jank events and reporting stuck events.
 
+> **NOTE**
+>
+> Use related APIs in non-main threads.
+  
 ## Availability APIs
 
 | API| Description|
@@ -33,7 +37,7 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 
 ## Log Specifications
 
-1. The fault log file of the service thread stuck event starts with **appfreeze-** and is generated in **Device/data/log/faultlog/faultlogger/**. The log files are named in the format of **appfreeze-application bundle name-application UID-time (seconds)**. For details, see [AppFreeze Log Specifications](appfreeze-guidelines.md#log-specifications).
+1. The fault log file of the service thread stuck event starts with **appfreeze-** and is generated in **Device/data/log/faultlog/faultlogger/**. The log files are named in the format of **appfreeze-application bundle name-application UID-time (milliseconds)**. For details, see [AppFreeze Log Specifications](appfreeze-guidelines.md#log-specifications).
 
 2. For details about the log specifications of **OH_HiCollie_Init_StuckDetection**, see [main thread jank event log specifications](apptask-timeout-guidelines.md#log-specifications).
 
@@ -182,7 +186,7 @@ The following describes how to add a button in the application and click the but
    #undef LOG_TAG
    #define LOG_TAG "StruckTest"
    
-   // Simulate a thread stuck event by putting the thread to sleep for a custom time.
+   // Customize the blocking time (unit: s) to simulate a stuck scenario.
    const int64_t BLOCK_TIME = 3; 
    // Set the task execution status flag of the application thread. The value true indicates the thread is normal and the value false indicates the thread is stuck.
    std::shared_ptr<std::atomic<bool>> appThreadIsAlive_ = std::make_shared<std::atomic<bool>>(true);

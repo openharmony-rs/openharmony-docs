@@ -82,7 +82,7 @@ getTopProportionColorsAndPercentage(colorCount: number): Map<Color | null, numbe
 
 | 类型                                     | 说明                                            |
 | :--------------------------------------- | :---------------------------------------------- |
-| Map<Color \| null, number \| null> | 图像占比前`colorCount`的颜色值与对应比例的字典，比例的取值范围为(0,1]。<br>- 当实际读取的特征色个数小于`colorCount`时，字典大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`Map()`。<br>- 取色个数大于10视为取前10个。 |
+| Map<Color \| null, number \| null> | 图像占比前`colorCount`的颜色值与对应比例的字典，比例的取值范围为[0,1]。<br>- 当实际读取的特征色个数小于`colorCount`时，字典大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`Map()`。<br>- 取色个数大于10视为取前10个。 |
 
 **错误码：**
 

@@ -25,7 +25,7 @@ Use **bundleManager.getBundleInfoForSelf()** to obtain the bundle information, w
 
 **Example**
 
-```
+```ts
 import bundleManager from '@ohos.bundle.bundleManager';
 import hilog from '@ohos.hilog';
 let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
@@ -55,10 +55,10 @@ Obtain the bundle name from **UIAbilityContext.abilityInfo.bundleName**.
 
 **Example**
 
-```
+```ts
 import common from '@ohos.app.ability.common';
 const context = getContext(this) as common.UIAbilityContext
-console.log(`bundleName: ${context.abilityInfo.bundleName}`)
+console.info(`bundleName: ${context.abilityInfo.bundleName}`)
 ```
 
 **References**
@@ -74,9 +74,9 @@ console.log(`bundleName: ${context.abilityInfo.bundleName}`)
 
    The bundle information contains the application version number and version name.
 
-   ```
+   ```ts
    import bundleManager from '@ohos.bundle.bundleManager';
-   ...
+   // ...
    bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION).then((bundleInfo)=>{
      let versionName = bundleInfo.versionName; // Application version name.
      let versionNo = bundleInfo.versionCode; // Application version number.
@@ -87,9 +87,9 @@ console.log(`bundleName: ${context.abilityInfo.bundleName}`)
 
 2. Obtain **screenDensity** from the **\@ohos.app.ability.Configuration** module. **screenDensity** contains the screen resolution information.
 
-   ```
+   ```ts
    import common from '@ohos.app.ability.common';
-   ...
+   // ...
    let context = getContext(this) as common.UIAbilityContext;
    let screenDensity = context.config.screenDensity;
    ```
@@ -101,7 +101,7 @@ console.log(`bundleName: ${context.abilityInfo.bundleName}`)
 
 - Method 1: Use the application context to obtain the source file path.
 
-  ```
+  ```ts
   this.uiAbilityContext.abilityInfo.applicationInfo.codePath
   ```
 
@@ -110,7 +110,7 @@ console.log(`bundleName: ${context.abilityInfo.bundleName}`)
   1. Import the **\@ohos.bundle.bundleManager** module and use **bundleManager.getBundleInfoForSelf()** to obtain the bundle information.
   2. Obtain the source file path from **bundleInfo.appInfo.codePath**.
 
-  ```
+  ```ts
   import bundleManager from '@ohos.bundle.bundleManager';
   bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION).then((bundleInfo)=>{
     this.sourcePath = bundleInfo.appInfo.codePath;
@@ -145,7 +145,7 @@ You can obtain the PID through the **\@ohos.process** interface.
 
 **Example**
 
-```
+```ts
 import process from '@ohos.process';
 private pid = process.pid;
 ```
@@ -169,7 +169,7 @@ You can use the **supportWindowModes** field to specify whether to display the m
 
 **Example**
 
-```
+```ts
 "abilities": [
   {
     "name": "EntryAbility",

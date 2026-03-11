@@ -4558,7 +4558,7 @@ Represents the attributes of the edit box.
 | enterKeyType | number   | Yes  | No  | Function attributes of the edit box. For details, see [function key definitions in constants](#constants).|
 | inputPattern | number   | Yes  | No  | Text attribute of the edit box. For details, see [edit box definitions in constants](#constants).|
 | isTextPreviewSupported<sup>12+</sup> | boolean | No| No| Whether text preview is supported.<br>- **true**: Supported.<br>- **false**: Unsupported.|
-| bundleName<sup>14+</sup> | string | Yes| Yes| Name of the application package to which the edit box belongs. The value may be **""** When this attribute is used, the scenario where the value is **""** must be considered.|
+| bundleName<sup>14+</sup> | string | Yes| Yes| Name of the application bundle to which the edit box belongs. The value may be **""** When this attribute is used, the scenario where the value is **""** must be considered.|
 | immersiveMode<sup>15+</sup> | [ImmersiveMode](#immersivemode15) | Yes  | Yes  | Immersive mode of the input method.|
 | windowId<sup>18+</sup> | number | Yes| Yes| ID of the window where the edit box is located.|
 | displayId<sup>18+</sup> | number | Yes  | Yes  | Screen ID of the window corresponding to the edit box. If window ID is not set, the screen ID of the focused window is used.|

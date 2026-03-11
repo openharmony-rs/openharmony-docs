@@ -106,7 +106,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
          Image_ErrorCode imageErr = OH_ImageNative_GetImageSize(imageNative, &size);
          if (imageErr != IMAGE_SUCCESS) {
               OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetImageSize call failed, errorCode: %{public}d", imageErr);
-              OH_ImageNative_Release(imageNative);
+              OH_PhotoNative_Release(photo);
               return;
           }
          OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d width:%{public}d height:%{public}d", imageErr,
@@ -116,7 +116,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
          imageErr = OH_ImageNative_GetComponentTypes(imageNative, nullptr, &componentTypeSize);
          if (imageErr != IMAGE_SUCCESS || componentTypeSize == 0) {
              OH_LOG_ERROR(LOG_APP, "cOH_ImageNative_GetComponentTypes call failed, errorCode: %{public}d", imageErr);
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              return;
          }
          OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d componentTypeSize:%{public}zu", imageErr,
@@ -125,13 +125,13 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
          uint32_t* components = new (std::nothrow) uint32_t[componentTypeSize];
          if (!components) {
              OH_LOG_ERROR(LOG_APP, "Failed to allocate memory");
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              return;
          }
          imageErr = OH_ImageNative_GetComponentTypes(imageNative, &components, &componentTypeSize);
          if (imageErr != IMAGE_SUCCESS) {
              OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetComponentTypes call failed, errorCode: %{public}d", imageErr);
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              delete[] components;
              return;
          }
@@ -141,7 +141,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
          imageErr = OH_ImageNative_GetByteBuffer(imageNative, components[0], &nativeBuffer);
          if (imageErr != IMAGE_SUCCESS) {
              OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetByteBuffer call failed, errorCode: %{public}d", imageErr);
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              delete[] components;
              return;
          }
@@ -151,7 +151,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
          imageErr = OH_ImageNative_GetBufferSize(imageNative, components[0], &nativeBufferSize);
          if (imageErr != IMAGE_SUCCESS) {
              OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetBufferSize call failed, errorCode: %{public}d", imageErr);
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              delete[] components;
              return;
          }
@@ -162,7 +162,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
          imageErr = OH_ImageNative_GetRowStride(imageNative, components[0], &rowStride);
          if (imageErr != IMAGE_SUCCESS) {
              OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetRowStride call failed, errorCode: %{public}d", imageErr);
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              delete[] components;
              return;
          }
@@ -172,7 +172,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
          imageErr = OH_ImageNative_GetPixelStride(imageNative, components[0], &pixelStride);
          if (imageErr != IMAGE_SUCCESS) {
              OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetPixelStride call failed, errorCode: %{public}d", imageErr);
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              delete[] components;
              return;
          }
@@ -182,7 +182,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
          int32_t ret = OH_NativeBuffer_Map(nativeBuffer, &virAddr); // After mapping, the start address of the memory is returned through the parameter virAddr.
          if (ret != 0) {
              OH_LOG_ERROR(LOG_APP, "OH_NativeBuffer_Map call failed, errorCode: %{public}d", ret);
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              delete[] components;
              return;
          }
@@ -196,9 +196,9 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
          cb(virAddr, nativeBufferSize);
          // Release resources.
          delete[] components;
-         ret = OH_ImageNative_Release(imageNative);
+         ret = OH_PhotoNative_Release(photo);
          if (ret != 0) {
-             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_Release call failed., errorCode: %{public}d", ret);
+             OH_LOG_ERROR(LOG_APP, "OH_PhotoNative_Release call failed., errorCode: %{public}d", ret);
          }
          ret = OH_NativeBuffer_Unmap(nativeBuffer); // After the processing is complete, unmap and release the buffer.
          if (ret != 0) {

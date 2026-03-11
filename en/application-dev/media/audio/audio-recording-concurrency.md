@@ -18,7 +18,7 @@ Audio input sources usually consist of audio data captured by built-in microphon
 
 Usually, when an application requests audio recording, it exclusively occupies the audio input. However, there are scenarios where two or more applications may request audio recording simultaneously or consecutively, all wishing to obtain data from the audio input within the same time frame. This situation is known as concurrent recording, which is further divided into concurrent existence and concurrent operation.
 
-- Concurrent existence refers to the state where one or more different audio recording clients (AudioCapturer) created by applications exist simultaneously within the same time frame.
+- Concurrent existence refers to the state where different [AudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md) instances created by one or more applications exist simultaneously within the same time frame.
 - Concurrent operation refers to the state where, on the basis of concurrent existence, the audio streams initiated by different audio recording clients (AudioCapturer) are all in the running state within the same time frame, meaning these clients are recording audio simultaneously.
 
 When concurrent recording occurs, each application requesting audio recording wants to obtain the audio input data. This presents the challenge of transmitting the same audio source to multiple applications simultaneously.
@@ -63,6 +63,6 @@ The system has implemented preliminary management for concurrent recording scena
 - Avoid concurrent recording scenarios whenever possible. Design applications to minimize overlap with other recording tasks. If necessary, display a message to users such as "Another recording task is currently in progress."
 
   If concurrent recording is unavoidable, clearly inform users that audio quality may be affected.
-- [Select the appropriate recording stream type](using-right-streamusage-and-sourcetype.md), as different types correspond to different system optimization strategies. You are advised to select the appropriate [recording stream type](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) based on your service requirements.
+- Different audio recording stream types correspond to different system optimization and processing strategies. You are advised to select an appropriate [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) based on their requirements. For details, see [Selecting the Appropriate Audio Stream Types](using-right-streamusage-and-sourcetype.md).
 - If recording is no longer required, stop and release recording resources promptly to avoid impacting other audio streams and to reduce unnecessary system overhead.
 - Application implementation should not overly rely on fixed concurrent recording rules but should adapt based on the status returned by system interfaces.

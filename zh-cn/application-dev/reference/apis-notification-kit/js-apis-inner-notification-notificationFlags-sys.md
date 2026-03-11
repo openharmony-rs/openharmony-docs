@@ -14,9 +14,11 @@
 >
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[NotificationFlags](./js-apis-inner-notification-notificationFlags.md)。
 
-**系统能力**：SystemCapability.Notification.Notification
+## NotificationFlags
 
-## 属性
+描述通知标志位。
+
+**系统能力**：SystemCapability.Notification.Notification
 
 | 名称             | 类型                    | 只读 | 可选 | 说明                               |
 | ---------------- | ---------------------- | ---- | ---- | --------------------------- |

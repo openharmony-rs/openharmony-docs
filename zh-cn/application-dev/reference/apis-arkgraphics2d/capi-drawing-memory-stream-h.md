@@ -28,7 +28,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | [OH_Drawing_MemoryStream* OH_Drawing_MemoryStreamCreate(const void* data, size_t length, bool copyData)](#oh_drawing_memorystreamcreate) | 创建一个内存流对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>data为NULL或者length等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [void OH_Drawing_MemoryStreamDestroy(OH_Drawing_MemoryStream* memoryStream)](#oh_drawing_memorystreamdestroy) | 销毁内存流对象并回收该对象占有内存。 |
+| [void OH_Drawing_MemoryStreamDestroy(OH_Drawing_MemoryStream* memoryStream)](#oh_drawing_memorystreamdestroy) | 销毁内存流对象并回收该对象占用内存。 |
 
 ## 函数说明
 
@@ -69,7 +69,7 @@ void OH_Drawing_MemoryStreamDestroy(OH_Drawing_MemoryStream* memoryStream)
 
 **描述**
 
-销毁内存流对象并回收该对象占有内存。
+销毁内存流对象并回收该对象占用的内存。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

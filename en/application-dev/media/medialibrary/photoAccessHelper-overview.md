@@ -20,28 +20,28 @@ The following capabilities are opened to all applications:
 - Managing moving photos
   - [Accessing and Managing Moving Photos](photoAccessHelper-movingphoto.md)
   - [Playing Moving Photos with MovingPhotoView](movingphotoview-guidelines.md)
-  <!--RP2--><!--RP2End-->
+<!--RP2--><!--RP2End-->
 
-The following capabilities are restrictedly opened to third-party applications:
+The following capabilities are restrictively open to third-party applications:
 
 > **NOTE**
 >
-> To use the restricted open capabilities, the application must have the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions). <!--RP1-->The following permissions are opened to third-party applications with certain restrictions.<!--RP1End-->
+> The restrictively open capabilities require [applying for permissions related to the album management module](photoAccessHelper-preparation.md#requesting-permissions). These permissions are restrictively open. <!--RP1-->The following permissions are opened to third-party applications with certain restrictions.<!--RP1End-->
 
-- [Media asset management](photoAccessHelper-resource-guidelines.md), including:
+- [Managing media assets](photoAccessHelper-resource-guidelines.md)
   - Obtaining media assets
   - Obtaining image and video thumbnails
   - Renaming a media asset
-- [User album management](photoAccessHelper-userAlbum-guidelines.md), including:
+- [Managing user albums](photoAccessHelper-userAlbum-guidelines.md)
   - Obtaining a user album
   - Renaming a user album
   - Adding images and videos to a user album.
   - Obtaining images and videos from a user album
   - Removing images and videos from a user album
-- [Management of system albums](photoAccessHelper-systemAlbum-guidelines.md), including:
+- [Managing system albums](photoAccessHelper-systemAlbum-guidelines.md)
   - Favorites
   - Video album
-- [Change notifications of images, videos, and albums](photoAccessHelper-notify-guidelines.md), including:
+- [Monitoring media asset changes](photoAccessHelper-notify-guidelines.md)
   - Registering a listener for the specified URI
   - Unregistering a listener for the specified URI
 
@@ -59,7 +59,7 @@ The following capabilities are opened to system applications:
   - Hiding an album
   - Favoriting and unfavoriting an album
   - Using the Screenshots album
-  <!--DelEnd-->
+<!--DelEnd-->
 
 ## Features
 

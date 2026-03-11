@@ -20,7 +20,7 @@ Currently, only CMS signature data and encapsulated data are supported.
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. Call [CMS encapsulation](../../security/DeviceCertificateKit/create-cms-sign-object.md) to encapsulate CMS data.
+2. Call [CMS encapsulation](../../security/DeviceCertificateKit/create-cms-enveloped-object.md) to encapsulate CMS data.
 
 3. Call [cert.createCmsParser](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecmsparser22) to create a **CmsParser** object.
 

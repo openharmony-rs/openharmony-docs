@@ -20,7 +20,7 @@ PKCS#7是用于存储签名或加密数据的标准语法。CMS作为PKCS#7的�
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. 调用[cms封装](../../security/DeviceCertificateKit/create-cms-sign-object.md)进行CMS数据封装。
+2. 调用[cms封装](../../security/DeviceCertificateKit/create-cms-enveloped-object.md)进行CMS数据封装。
 
 3. 调用[cert.createCmsParser](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecmsparser22)创建CmsParser对象。
 

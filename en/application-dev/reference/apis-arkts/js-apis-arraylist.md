@@ -508,7 +508,7 @@ arrayList.forEach((value: number, index?: number) => {
 
 ### sort
 
-sort(comparator?: ArrayListComparatorFn\<T\>): void
+sort(comparator?: (firstValue: T, secondValue: T) => number): void
 
 Sorts elements in an ArrayList according to the order defined by the specified comparator.
 
@@ -520,7 +520,14 @@ Sorts elements in an ArrayList according to the order defined by the specified c
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| comparator | [ArrayListComparatorFn\<T\>](#arraylistcomparatorfnt22) | No| Callback invoked for sorting. The default value is the callback function for sorting elements in ascending order.<br> There has been a compatibility change since API version 22. In API version 21 and earlier versions, the type is `(firstValue: T, secondValue: T) => number`.|
+| comparator | function | No| Callback invoked for sorting. The default value is the callback function for sorting elements in ascending order.|
+
+comparator
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| firstValue | T | Yes| Previous element.|
+| secondValue | T | Yes| Next element.|
 
 **Error codes**
 
@@ -928,26 +935,3 @@ while(!temp.done) {
 // value: 5
 // value: 4
 ```
-
-### ArrayListComparatorFn\<T\><sup>22+</sup>
-
-type ArrayListComparatorFn\<T\> = (firstValue: T, secondValue: T) => number
-
-Callback function of the **sort** method in ArrayList.
-
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
-**System capability**: SystemCapability.Utils.Lang
-
-**Parameters**
-
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| firstValue | T | Yes| The first element to be sorted.|
-| secondValue | T | Yes| The second element to be sorted.|
-
-**Return value**
-
-| Type| Description|
-| -------- | -------- |
-| number | Value returned by the callback function. The ArrayList can maintain the order of elements based on the custom comparison rules.|

@@ -119,7 +119,7 @@
    }
    ```
 
-   `app-identifer`是在应用签名阶段为应用分配的唯一标识，即[HarmonyAppProvision配置文件](../security/app-provision-structure.md)中声明的`app-identifer`字段的值。
+   `app-identifier`是在应用签名阶段为应用分配的唯一标识，即[HarmonyAppProvision配置文件](../security/app-provision-structure.md)中声明的`app-identifier`字段的值。
 
 1. 将配置文件放在域名服务器的固定目录下。
 

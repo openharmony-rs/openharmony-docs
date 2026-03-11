@@ -14,7 +14,7 @@ The following demonstrates how to add a widget to the home screen by tapping the
 
 2. Add a button for opening the Widget Manager page in the application using the [openFormManager](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovideropenformmanager18) method.
 
-   <!-- @[FormManagerDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormManagerDemo/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[FormManagerDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormManagerDemo/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // entry/src/main/ets/pages/Index.ets
@@ -69,11 +69,11 @@ The following demonstrates how to add a widget to the home screen by tapping the
      "string": [
        {
          "name": "open_form_manager_button",
-         "value": "Add the widget to home screen"
+         "value": "Add the widget to the home screen"
        }
      ]
    }
    ```
 
-3. Users can navigate to the Widget Manager page, tap **Add to home screen**, and the widget will be added to the home screen. The following figure shows the effect.<br>
+3. Users can navigate to the Widget Manager page, tap the **Add to home screen** button, and the widget will be added to the home screen automatically. The following figure shows the effect.<br>
 ![WidgetPrinciple](figures/adding-widgets-in-applications.gif)

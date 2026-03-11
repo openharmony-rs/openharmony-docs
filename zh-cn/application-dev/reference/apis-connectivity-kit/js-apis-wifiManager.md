@@ -586,9 +586,8 @@ WLAN配置信息。
 
 ## WifiWapiConfig<sup>12+</sup>
 
-WAPI身份验证协议配置。
-
 WAPI(Wireless LAN Authentication and Privacy Infrastructure) 身份验证协议配置。
+
 当用户通过WAPI身份验证协议连接无线网时，可通过以下方式配置参数或者证书进行连接。
 - 方式一:通过配置证书进行连接。WifiDeviceConfig中关键字段的配置如下:
   - preSharedKey无需传参;
@@ -1027,9 +1026,9 @@ connectToCandidateConfig(networkId: number): void
 
 connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
-该接口用于应用连接到用户添加的候选网络，并在连接时提示用户进行信任确认。使用Promise异步回调用户响应结果。
+该接口用于应用连接到用户添加的候选网络，并在连接时提示用户进行信任确认。使用Promise异步回调。
 
-- 调用此接口时，系统将提示用户确认是否信任并连接到指定的候选网络，通过Promise异步返回用户响应结果。
+- 调用此接口时，系统将提示用户确认是否信任并连接到指定的候选网络。
 - 用户确认是连接过程中的必要步骤，未获得用户信任确认前，连接操作不会执行。
 - 建议在发起连接前先通过startScan接口触发一次WLAN扫描，通过[wifiManager.on('wifiScanStateChange')](#wifimanageronwifiscanstatechange)方法监听到扫描结果刷新后再连接，以提高连接成功率。
 
@@ -1614,7 +1613,7 @@ isFeatureSupported(featureId: number): boolean
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | 错误码ID | 错误信息 |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | 801 | Capability not supported.          |

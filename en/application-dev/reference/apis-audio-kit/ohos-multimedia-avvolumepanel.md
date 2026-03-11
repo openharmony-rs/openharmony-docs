@@ -35,7 +35,7 @@ AVVolumePanel({volumeLevel?: number, volumeParameter?: AVVolumePanelParameter})
 
 Volume panel, which can be used to display the volume adjustment panel in your application.
 
-**Decorator**: [@Component](../../ui/state-management/arkts-create-custom-components.md)
+**Decorator**: [@Component](../../ui/state-management/arkts-create-custom-components.md#component)
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -64,7 +64,7 @@ The [universal events](../apis-arkui/arkui-ts/ts-component-general-events.md) ar
 
 ## How to Use
 
-1. When customizing the volume bar, you are advised to use the volume change listener of the audio framework to obtain the volume type (**volumeEvent.volumeType**), volume level (**volumeEvent.volume**), and whether to display the volume bar (**volumeEvent.updateUi**). The applications can determine whether to handle the current data and display their custom volume bar. For details, see [Volume Change Callback](arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20).
+1. When implementing the custom volume bar, you are advised to use the volume change listening API of the audio framework. The application can determine whether to process the current data and display the custom volume bar based on the volume type (**volumeEvent.volumeType**), volume level (**volumeEvent.volume**), and whether to display the volume bar (**volumeEvent.updateUi**) in the API callback. For details, see [on('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20).
 2. To ensure users are aware of volume changes, applications are not allowed to adjust the volume in the background. The system will take corresponding control measures.
 
 ## Example

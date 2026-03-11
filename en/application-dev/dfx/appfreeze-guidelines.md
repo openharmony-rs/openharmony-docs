@@ -123,7 +123,7 @@ Since API version 20, the **NOTE** line is displayed when a device resource alar
 
 Since API version 20, the [HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid) information is added to the log when the **THREAD_BLOCK_6S** fault occurs. Provided by HiTraceChain, the **HitraceId** uniquely identifies each service process call chain. You can use it to view the HiLog logs of the faulty process during the fault period, and analyze the logs to check the application execution status.
 
-All the three types of AppFreeze events include the following information.
+The AppFreeze event (**THREAD_BLOCK_6S** and **APP_INPUT_BLOCK**) contains the following information:
 
 | Field| Description|
 | -------- | -------- |
@@ -176,7 +176,7 @@ mainHandler dump is:
  Total event size : 2
 ```
 
-All the three types of AppFreeze events include the following information.
+The AppFreeze event (**THREAD_BLOCK_6S** and **APP_INPUT_BLOCK**) contains the following information:
 
 | Field| Description|
 | -------- | -------- |
@@ -505,7 +505,7 @@ Equation:  T1 = T2 + T3. T2 = T4 + T5.
 |-------------------------CpuTime----------------------|--------SyncWaitTime----------|.
 |----OptimalCpuTime----|------SupplyAvailableTime------|--------SyncWaitTime----------|.
 
-#Basic Statistical Information  <- Basic CPU statistics.
+#Basic Statistical Infomation  <- Basic CPU statistics.
 ProcessCpuTime: 0 ms  <- Running time of the process in a statistical period.
 DeviceRuntime: 0 ms  <- Running time of all CPUs in a statistical period.
 Tid: 2320  <- ID of the faulty main thread.
@@ -526,7 +526,7 @@ cpu3 Usage 23.5%, 1430MHZ 21.04%
 .......
 end time: 2021-01-01 20:06:00:888  <- End time for calculating the CPU usage.
 #ThreadInfos Tid: 2204, Name: com.example.freeze  <- Faulty thread ID, and thread name.
-SnapshotTime: 2021-01-01-20-05-58.292875  <- Time when the main thread is captured.
+SnapshotTime:2021-01-01-20-05-58.292875  <- Time when the main thread is captured.
 #00 pc 00000000000015b8 [shmm](__kernel_gettimeofday+72) <- Main thread call stack
 #01 pc 00000000001d7e44 /system/lib64/ld-musl-aarck64.so.1(clock_gettime+48)(f8a0616c89b184992d0e8883cc78f638)
 #02 pc 00000000001d9f20 /system/lib64/ld-musl-aarck64.so.1(time+32)(f8a0616c89b184992d0e8883cc78f638)
@@ -547,7 +547,7 @@ SnapshotTime: 2021-01-01-20-05-58.292875  <- Time when the main thread is captur
 #06 pc 00000000001e5c8c /system/lib64/platformsdk/libark_jsruntime.so(ce0b05d90b9fae02e7abf8e9f1e5a0f3)
 .......
 
-SnapshotTime: 2021-01-01-20-05-58.549685
+SnapshotTime:2021-01-01-20-05-58.549685
 #00 pc 00000000000015b8 [shmm](__kernel_gettimeofday+72)
 #01 pc 00000000001d7e44 /system/lib64/ld-musl-aarck64.so.1(clock_gettime+48)(f8a0616c89b184992d0e8883cc78f638)
 #02 pc 00000000001d9f20 /system/lib64/ld-musl-aarck64.so.1(time+32)(f8a0616c89b184992d0e8883cc78f638)
@@ -636,7 +636,7 @@ In a log file that contains multiple application main thread stacks (for example
 
 ### Clustering Script
 
-This script is used only for [appfreeze enhanced logs](#enhanced-log-specifications). When the log content is too long and the main thread stack is repeated for multiple times, this script is used to extract service stack clustering information (service stack content, total number of occurrences, and typical complete stack) to quickly locate faults.
+This script is used only for [AppFreeze enhanced logs](#enhanced-log-specifications). When the log content is too long and the main thread stack is repeated for multiple times, this script is used to extract service stack clustering information (service stack content, total number of occurrences, and typical complete stack) to quickly locate faults.
 
 1. Script functionalities
 
@@ -692,7 +692,7 @@ This script is used only for [appfreeze enhanced logs](#enhanced-log-specificati
 
    (3) If **output_dir** does not exist, the script will be automatically created. (If the script does not support automatic creation, create the directory in advance.)
     
-   (4) This script cannot be executed in DevEco Studio. Run it in the Python environment.
+   (4) This script cannot be executed in DevEco Studio. Run it in the installed Python environment.
 
 6. Clustering script source code
 

@@ -11,7 +11,6 @@
 - Fault Detection<!--fault-analysis-->
   - [Overview](fault-detection-overview.md)
   - Crash Detection<!--crash-detection-->
-    - [Crash Detection Overview](crash-detection-overview.md)
     - [JS Crash (Process Crash) Detection](jscrash-guidelines.md)
     - [C++ Crash (Process Crash) Detection](cppcrash-guidelines.md)
   - [Address Sanitizer detection](address-sanitizer-guidelines.md)
@@ -21,7 +20,7 @@
 - Log Printing<!--hilog-dev-->
   - [Using HiLog (ArkTS)](hilog-guidelines-arkts.md)
   - [Using HiLog (C/C++)](hilog-guidelines-ndk.md)
-- Event Subscription<!--event-subscription-->
+- Event Subscription<!--hiappevent-->
   - [Introduction to HiAppEvent](hiappevent-intro.md)
   - Using HiAppEvent to Subscribe to Events<!--event-subscription-->
     - [Event Subscription Overview](event-subscription-overview.md)

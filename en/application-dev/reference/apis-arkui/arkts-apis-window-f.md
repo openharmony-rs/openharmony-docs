@@ -675,7 +675,7 @@ try {
 
 getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&gt;&gt;
 
-Obtains the layout information array of all windows visible on a display. The layout information is arranged based on the current window stacking order, and the topmost window in the hierarchy is at index 0 of the array. This API uses a promise to return the result.
+Obtains an array of visible window layout information on the specified screen. The width and height of each returned Rect are the scaled values after calculation, arranged according to the current window hierarchy. The highest level corresponds to index 0 in the array. This operation uses **Promise** for asynchronous callbacks.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 

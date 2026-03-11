@@ -136,6 +136,19 @@ Obtains the RAT used in the CS and PS domains for the SIM card in the specified 
 | ------------------------------------------------------------ | ----------------------------------------------- |
 | [NetworkRadioTech](#networkradiotech11) | RAT used in the CS and PS domains.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                  Error Message                   |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service.                  |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                               |
+
 **Example**
 
 ```ts

@@ -12,7 +12,7 @@ During application development, you can use the **state** property of the AVReco
 
 **Figure 1** Recording state transition
 
-![Recording state change](figures/recording-status-change.png)
+![Recording status change](figures/audio-recording-status-change.png)
 
 For details about the states, see [AVRecorderState](../../reference/apis-media-kit/arkts-apis-media-t.md#avrecorderstate9).
 
@@ -99,7 +99,7 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
    let avProfile: media.AVRecorderProfile = {
      audioBitrate: 112000, // Audio bit rate.
      audioChannels: 2, // Number of audio channels.
-     audioCodec: media.CodecMimeType.AUDIO_AAC, // Audio encoding format. Currently, AAC, MP3, and G711MU are supported.
+     audioCodec: media.CodecMimeType.AUDIO_AAC, // Audio encoding format. Currently, AAC, MP3, and G711MU are supported. AMR_NB and AMR_WB are supported since API version 18.
      aacProfile: media.AacProfile.AAC_HE, // Extended audio encoding format. AAC_HE and AAC_HE_V2 are supported since API version 22.
      audioSampleRate: 48000, // Audio sampling rate.
      fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // Container format. Currently, MP4, M4A, MP3, WAV, AMR, and AAC are supported.
@@ -208,7 +208,7 @@ async function audioRecording(context: common.Context): Promise<void> {
   let avProfile: media.AVRecorderProfile = {
     audioBitrate: 112000, // Audio bit rate.
     audioChannels: 2, // Number of audio channels.
-    audioCodec: media.CodecMimeType.AUDIO_AAC, // Audio encoding format. Currently, AAC, MP3, and G711MU are supported.
+    audioCodec: media.CodecMimeType.AUDIO_AAC, // Audio encoding format. Currently, AAC, MP3, and G711MU are supported. AMR_NB and AMR_WB are supported since API version 18.
     aacProfile: media.AacProfile.AAC_HE, // Extended audio encoding format. AAC_HE and AAC_HE_V2 are supported since API version 22.
     audioSampleRate: 48000, // Audio sampling rate.
     fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // Container format. Currently, MP4, M4A, MP3, WAV, AMR, and AAC are supported.

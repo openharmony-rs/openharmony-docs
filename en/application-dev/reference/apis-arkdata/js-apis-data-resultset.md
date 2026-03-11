@@ -113,7 +113,7 @@ const age = resultSet.getColumnName(2);
 
 goTo(offset:number): boolean
 
-Moves the cursor to the row based on the specified offset.
+Moves the result set forward or backward to the specified row with an offset relative to the current position.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -287,7 +287,7 @@ promisequerygoPrev.then((resultSet) => {
 
 getBlob(columnIndex: number): Uint8Array
 
-Obtains the value in the specified column in the current row as a byte array.
+Obtains the value from the specified column in the current row as a byte array.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -313,7 +313,7 @@ const codes = resultSet.getBlob(resultSet.getColumnIndex("CODES"));
 
 getString(columnIndex: number): string
 
-Obtains the value in the specified column in the current row as a string.
+Obtains the value from the specified column in the current row as a string.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -339,7 +339,7 @@ const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
 
 getLong(columnIndex: number): number
 
-Obtains the value in the specified column in the current row as a Long.
+Obtains the value from the specified column in the current row as a Long.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -365,7 +365,7 @@ const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
 
 getDouble(columnIndex: number): number
 
-Obtains the value in the specified column in the current row as a double.
+Obtains the value from the specified column in the current row as a Double.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -379,7 +379,7 @@ Obtains the value in the specified column in the current row as a double.
 
   | Type| Description|
   | -------- | -------- |
-  | number | Value in the specified column as a double.|
+  | number | Value in the specified column as a Double.|
 
 **Example**
 

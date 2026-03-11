@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Image encoding refers to the process of encoding a picture into an image in different formats (only in JPEG and HEIF currently) for subsequent processing, such as storage and transmission.
+Image encoding refers to the process of encoding a [Picture](../../reference/apis-image-kit/arkts-apis-image-Picture.md) object into an image in different formats (only JPEG and HEIF are supported currently) for subsequent processing, such as storage and transmission.
 
 ## How to Develop
 

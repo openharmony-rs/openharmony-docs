@@ -11,12 +11,12 @@
 ### Differences in Obfuscation Scope
 
 **JSON Files**
-When the **-enable-filename-obfuscation** option is enabled in bytecode obfuscation, JSON file names are obfuscated.
+When the `-enable-filename-obfuscation` option is enabled in bytecode obfuscation, JSON file names are obfuscated.
 
 ### Differences in Obfuscation Options
 
-1. Bytecode obfuscation is disabled by default. After [enabling obfuscation](bytecode-obfuscation-guide.md#how-to-use), you need to additionally configure **-enable-bytecode-obfuscation** and **-enable-bytecode-obfuscation-debugging** in the **obfuscation-rules.txt** file in the module directory.
-2. Bytecode obfuscation does not support the **-remove-comments** option.
+1. Bytecode obfuscation is disabled by default. After [enabling obfuscation](bytecode-obfuscation-guide.md#how-to-use), you need to additionally configure `-enable-bytecode-obfuscation` and `-enable-bytecode-obfuscation-debugging` in the `obfuscation-rules.txt` file in the module directory.
+2. Bytecode obfuscation does not support the `-remove-comments` option.
 
 ### Differences in File Structure After Obfuscation
 
@@ -93,7 +93,7 @@ After bytecode obfuscation:
 1. Difference in bytecode obfuscation in **IdentifierCache**:
     1. Function parameter names are not obfuscated.
     2. There are no obfuscation name mappings for anonymous functions.
-2. When the -enable-filename-obfuscation option is enabled, the **OriSourceFile** (source file path before obfuscation) and **ObfSourceFile** (source file path after obfuscation) fields are generated for bytecode obfuscation, but not for source code obfuscation.
+2. When the `-enable-filename-obfuscation` option is enabled, the `OriSourceFile` (source file path before obfuscation) and `ObfSourceFile` (source file path after obfuscation) fields are generated for bytecode obfuscation, but not for source code obfuscation.
 
 ### Precautions for Switching
 
@@ -477,11 +477,11 @@ city1
 ### Errors That May Occur When -enable-export-obfuscation and -enable-toplevel-obfuscation Are Configured
 
 When the two options are configured, method name confusion in the following scenarios is involved when the main module calls the methods of other modules:
-|Main Module|Dependent Module|Imported/Exported Name Obfuscation|
+|Main Module|Dependent Module |Imported/Exported Name Obfuscation|
 |-------|--------|---------|
-|HAP/HSP|HSP|The HSP and main module are built independently, and different names are generated after obfuscation. Therefore, a trustlist must be configured for both the HSP and main module.|
-|HAP/HSP|Local HAR|The local HAR is built together with the main module. After obfuscation, the names are the same.|
-|HAP/HSP|Third-party library|The names and properties exported from a third-party library are collected to the trustlist. They are not confused during import and export.|
+|HAP/HSP|   HSP |The HSP and main module are built independently, and different names are generated after obfuscation. Therefore, a trustlist must be configured for both the HSP and main module.|
+|HAP/HSP|   Local HAR|The local HAR is built together with the main module. After obfuscation, the names are the same.|
+|HAP/HSP|   Third-party library| The names and properties exported from a third-party library are collected to the trustlist. They are not confused during import and export.|
 
 For the HSP, you must add the methods used by other modules to the trustlist. You must add the same trustlist for the main module. Therefore, you are advised to add the obfuscation file configured with the trustlist (for example, **hsp-white-list.txt**) to the obfuscation configuration item of the module that depends on the obfuscation file, that is, the **files** field shown in the following figure.
 

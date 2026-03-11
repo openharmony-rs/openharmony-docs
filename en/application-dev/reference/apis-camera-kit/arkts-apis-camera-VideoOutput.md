@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-VideoOutput implements output information used in a video session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
+**VideoOutput** implements output information used in a video session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 > **NOTE**
 >
@@ -553,9 +553,9 @@ function enableMirror(videoOutput: camera.VideoOutput, mirrorMode: boolean, aVRe
 
 getVideoRotation(deviceDegree: number): ImageRotation
 
-Obtains the video rotation degree.
+Obtains the video rotation angle.
 
-- Device' natural orientation: The default orientation of the device (phone) is in portrait mode, with the charging port facing downward.
+- Device's natural orientation: The default orientation of the device (phone) is in portrait mode, with the charging port facing downward.
 - Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural direction. The rear camera sensor of a phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural direction.
 - Screen orientation: The top-left corner of the image displayed on the screen is the first pixel, which is the coordinate origin. In the case of lock screen, the direction is the same as the device's natural orientation.
 
@@ -567,13 +567,13 @@ Obtains the video rotation degree.
 
 | Name    | Type        | Mandatory| Description                      |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | number | Yes  | Device rotation degree, measured in degrees, within the range of [0, 360].|
+| deviceDegree | number | Yes  | Device rotation angle, measured in degrees, within the range of [0, 360].|
 
 **Return value**
 
 |      Type     | Description       |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Video rotation degree.|
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Obtains the video rotation angle.|
 
 **Error codes**
 

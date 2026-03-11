@@ -24,7 +24,7 @@ In addition to the methods described in the preceding topics (for example, using
     > The system-level **Picker** components have been pre-authorized. When using such a component, you can temporarily access the corresponding resources without requesting the permissions. For example, before accessing a user's image, an application normally needs to request user authorization. However, by using **PhotoViewPicker**, the application can directly access the image selected by the user.
     >
     > A system-level **Picker** component is implemented by an independent system process.
-   
+
 
 - **Using Specific APIs**
 
@@ -45,7 +45,7 @@ Currently, the following screens in Settings can be directly opened:
     - Displaying the music and audio permission setting dialog box
     - Displaying the contacts permission setting dialog box
     - Displaying the calendar permission setting dialog box
- 
+
 
 - **Notification management**: When an application uses [requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10) to display a dialog box for notification authorization and the user rejects the authorization, the application cannot use this API to open the dialog box again. However, it can call [openNotificationSettings()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettings13) to display a notification management dialog box.
 - **Network management**: When an application needs to connect to a network through WLAN, it can call [openNetworkManagerSettings()](../reference/apis-basic-services-kit/js-apis-settings.md#settingsopennetworkmanagersettings18) to display a WLAN settings dialog box.
@@ -64,7 +64,7 @@ Currently, the following screens in Settings can be directly opened:
 
 
 ### Contacts
-[Contacts Kit](../contacts/contacts-intro.md) provides the Contacts Picker, which is used to start the Contacts application and read contact data. For details, see [Contact Selection](../contacts/contacts-intro.md#contact-selection).
+[Contacts Kit](../contacts/contacts-intro.md) provides the Contacts Picker, which is used to start the Contacts application and read contact data. For details, see [Contact Selection](../contacts/contacts-intro.md#contact-selection-with-picker).
 
 <!--RP2-->
 ### Camera

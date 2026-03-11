@@ -8,17 +8,15 @@
 
 > **NOTE**
 >
-> This guide uses the APIs provided by the [Image](../../reference/apis-image-kit/capi-image.md) module, which supports basic functionalities such as image encoding/decoding, image receiver operations, and image data processing. These APIs are introduced prior to API version 11, and no additional features will be included in later versions. Therefore, these APIs are not recommended.
->
-> You can also use the C APIs provided by the [Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md) module, which includes all the foundational features of the Image module while adding new capabilities like multi-image encoding/decoding. For details about the development guide, see [Using Image_NativeModule to Decode Images (C/C++)](image-source-c.md). These APIs are available since API version 12 and are expected to keep evolving. You are encouraged to use them.
->
+> This guide uses the APIs provided by the [Image](../../reference/apis-image-kit/capi-image.md) module, which supports basic functionalities such as image encoding/decoding, image receiver operations, and image data processing. These APIs are introduced prior to API version 11, and no additional features will be included in later versions. Therefore, these APIs are not recommended.<br>
+> You can also use the C APIs provided by the [Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md) module, which includes all the foundational features of the Image module while adding new capabilities like multi-image encoding/decoding. For details about the development guide, see [Using Image_NativeModule to Decode Images (C/C++)](image-source-c.md). These APIs are available since API version 12 and are expected to keep evolving. You are encouraged to use them.<br>
 > You are not advised to use both sets of C APIs in your code. It may cause compatibility issues in some scenarios.
 
 Image decoding refers to the process of decoding an image in a supported format into a PixelMap for image display or [processing](image-transformation.md). Currently, the following image formats are supported: JPEG, PNG, GIF, WebP, BMP, SVG, ICO, DNG, and HEIC (support may vary across different hardware devices).
 
 ## How to Develop
 
-Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) for APIs related to image decoding.
+For details about the APIs related to image decoding, see the [API reference](../../reference/apis-image-kit/capi-image-source-mdk-h.md).
 
 ### Adding Dependencies
 
@@ -60,7 +58,7 @@ EXTERN_C_END
 
 2. Prepare an image resource file, named **example.jpg** in this example, and import it to **src\main\resources\rawfile\**.
 
-3. Open **src\main\ets\pages\index.ets**, import ***libentry*.so** (where **libentry** varies according to the project name), call the native APIs, and pass in the JS resource object. The following is an example:
+3. Open **src\main\ets\pages\index.ets**, import ***libentry*.so** (where **libentry** varies according to the project name), call the native APIs, and pass the JS resource object. The following is an example:
 
     ```js
     import testNapi from 'libentry.so';

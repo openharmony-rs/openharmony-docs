@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @lucuicui-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 Starting from API version 22, Form Kit supports the glass material effect for system applications, which enhances visual presentation and delivers a premium and refined user experience.
@@ -15,7 +15,7 @@ Starting from API version 22, Form Kit supports the glass material effect for sy
 ## How to Develop
 1. [Create an ArkTS widget](arkts-ui-widget-creation.md).
 
-2. Configure **form_config.json**.
+2. Configure the `entry/src/main/resources/base/profile/form_config.json` file.
 
    - Add the `visualEffectType` configuration to `metadata` in the **form_config.json** file. `lightAnimationEffect` indicates the glass material.
    - To achieve the optimal display effect, you are advised to enable widget transparency by adding `"transparencyEnabled": true` to the **form_config.json** file.
@@ -57,7 +57,7 @@ Starting from API version 22, Form Kit supports the glass material effect for sy
 
 3. Set the current widget display mode based on the immersive mode switch status.
 
-   - The widget provider imports the basic dependency package. Add the following code to `EntryFormAbility.ets`:
+   - The widget provider imports the basic dependency package. Add the following code to `entry/src/main/ets/entryformability/EntryFormAbility.ets`:
 
    ``` TypeScript
    import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
@@ -91,7 +91,7 @@ Starting from API version 22, Form Kit supports the glass material effect for sy
        style.visualEffectType = wantParams?.visualEffectType;
        let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(style);
        formProvider.updateForm(formId, formData).then(() => {
-         hilog.info(DOMAIN_NUMBER, TAG, `onUpdateForm style execute successed:${formId}`);
+         hilog.info(DOMAIN_NUMBER, TAG, `onUpdateForm style execute success:${formId}`);
        }).catch((err: BusinessError) => {
          hilog.error(DOMAIN_NUMBER, TAG, `onUpdateForm style execute failed:${formId} code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message})`);
        });
@@ -105,6 +105,8 @@ Starting from API version 22, Form Kit supports the glass material effect for sy
    >
    > - The package must be signed with a system application certificate.
 
+   Complete code of `entry/src/main/ets/widget/pages/WidgetCard.ets`:
+
    ``` TypeScript
    import { HdsSceneController, HdsSceneType, HdsVisualComponent, HdsVisualComponentAttribute } from '@kit.UIDesignKit';
 
@@ -113,7 +115,7 @@ Starting from API version 22, Form Kit supports the glass material effect for sy
    @Entry (storage)
    @Component
    struct WidgetCard {
-     readonly TAG: string = 'WidgetCard'
+     readonly TAG: string = 'WidgetCard';
      @LocalStorageProp('formId') formId: string = '';
      @LocalStorageProp('visualEffectType') @Watch('dataChange') visualEffectType: string = '';
      @State isHarmoniumStyle: boolean = this.visualEffectType === 'lightAnimationEffect';
@@ -210,7 +212,7 @@ Starting from API version 22, Form Kit supports the glass material effect for sy
            }
            .height('100%')
            .width('100%')
-        }
+         }
        }
      }
 

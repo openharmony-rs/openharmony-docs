@@ -1578,7 +1578,7 @@ isFileConflict(uri: string): Promise&lt;boolean&gt;
 
 Obtains the version conflict flag of a local file. This API uses a promise to return the result. This API takes effect only when the application is configured for manual conflict resolution. Otherwise, conflicts are automatically resolved during synchronization, and the return value will be **false**.
 
-Once the application is configured for manual conflict resolution, calling this API returns whether the current local file conflicts with the cloud file. The application then prompts the user to handle the conflict. After the conflict is resolved, you need to call the [clearfileconflict](#clearfileconflict20) method to clear the conflict flag and synchronize the file to the cloud.
+Once the application is configured for manual conflict resolution, calling this API returns whether the current local file conflicts with the cloud file. The application then prompts the user to handle the conflict. After the conflict is resolved, you need to call the [clearFileConflict](#clearfileconflict20) method to clear the conflict flag and synchronize the file to the cloud.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

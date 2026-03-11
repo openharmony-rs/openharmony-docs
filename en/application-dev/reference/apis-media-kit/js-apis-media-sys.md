@@ -35,8 +35,7 @@ Enumerates the [media error codes](errorcode-media.md).
 
 createVideoRecorder(callback: AsyncCallback\<VideoRecorder>): void
 
-Creates a VideoRecorder instance. This API uses an asynchronous callback to return the result.
-Only one VideoRecorder instance can be created per device.
+Creates a VideoRecorder instance. Each device supports only one VideoRecorder instance. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -77,8 +76,7 @@ media.createVideoRecorder((error: BusinessError, video: media.VideoRecorder) => 
 
 createVideoRecorder(): Promise\<VideoRecorder>
 
-Creates a VideoRecorder instance. This API uses a promise to return the result.
-Only one VideoRecorder instance can be created per device.
+Creates a VideoRecorder instance. Each device supports only one VideoRecorder instance. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -503,12 +501,12 @@ This API can be called only after the [prepare()](arkts-apis-media-AVRecorder.md
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                |
 | -------- | --------------------------------------   |
-|   401    | The parameter check failed. Return by promise.            |
-|   801    | Capability not supported. Return by promise. |
+|   401    | The parameter check failed.            |
+|   801    | Capability not supported.              |
 
 **Example**
 
@@ -743,6 +741,7 @@ videoRecorder.prepare(videoConfig).then(() => {
 getInputSurface(callback: AsyncCallback\<string>): void
 
 Obtains the surface required for recording. This API uses an asynchronous callback to return the result.
+
 You can obtain the surface buffer from this surface and fill in the corresponding data.
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.
@@ -792,6 +791,7 @@ videoRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 getInputSurface(): Promise\<string>;
 
 Obtains the surface required for recording. This API uses a promise to return the result.
+
 You can obtain the surface buffer from this surface and fill in the corresponding data.
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.

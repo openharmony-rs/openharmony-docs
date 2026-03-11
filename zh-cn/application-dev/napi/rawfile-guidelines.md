@@ -105,7 +105,7 @@
     napi_value GetRawFileDescriptor(napi_env env, napi_callback_info info);
     napi_value IsRawDir(napi_env env, napi_callback_info info);
     
-    #endif //RAWFILE_HELLO_H
+    #endif // RAWFILE_HELLO_H
     ```
 
 3. 在hello.cpp文件中实现上述四个方法。通过env和info获取Js的资源管理对象，并转换为Native的资源管理对象，即可调用Native资源管理对象的接口，示例代码如下：

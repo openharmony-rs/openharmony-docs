@@ -381,7 +381,7 @@ stop()
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | timeZoneOffset | number | 否 | 否 | 当前文本时钟时区偏移量。<br>取值范围为[-14, 12]，表示东十二区到西十二区，其中负值表示东时区，正值表示西时区，比如东八区为-8。设置值为该取值范围内的浮点数时会进行取整，舍弃小数部分。 |
-| started | boolean | 否 | 否 | 指示文本时钟是否启动。<br>默认值：true，true表示启动文本时钟，false表示关闭文本时钟。 |
+| started | boolean | 否 | 否 | 指示文本时钟是否启动。<br>true：表示启动文本时钟。<br>false：表示关闭文本时钟。<br>默认值：true |
 | timeValue | number | 否 | 否 | 当前文本时钟时区的UTC秒数。 |
 
 ## 示例
@@ -589,3 +589,55 @@ struct TextClockExample {
 }
 ```
 ![TextClockExample](figures/text_clock_datetimeoptions.png)
+
+### 示例5（设置文字显示样式）
+该示例演示了使用[fontFeature](#fontfeature11)、[fontColor](#fontcolor)、[fontStyle](#fontstyle)、[fontWeight](#fontweight)、[fontFamily](#fontfamily)属性设置时钟文字显示样式的功能。
+``` ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Text('fontFeature').fontColor(0xCCCCCC)
+      // 设置文本特性
+      TextClock()
+        .fontFeature('\"sinf\" off')
+      TextClock()
+        .fontFeature('\"sinf\" on')
+        .margin('10%')
+
+      // 设置字体颜色
+      Text('fontColor').fontColor(0xCCCCCC)
+      TextClock()
+        .fontColor(Color.Black)
+      TextClock()
+        .fontColor(Color.Blue)
+        .margin('10%')
+
+      Text('fontStyle').fontColor(0xCCCCCC)
+      // 设置字体样式
+      TextClock()
+        .fontStyle(FontStyle.Normal)
+      TextClock()
+        .fontStyle(FontStyle.Italic)
+        .margin('10%')
+
+      Text('fontWeight').fontColor(0xCCCCCC)
+      // 设置字体粗细
+      TextClock()
+        .fontWeight(FontWeight.Normal)
+      TextClock()
+        .fontWeight(FontWeight.Bold)
+        .margin('10%')
+
+      Text('fontFamily').fontColor(0xCCCCCC)
+      // 设置字体
+      TextClock()
+        .fontFamily('HarmonyOS Sans')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+![TextClockFontExample](figures/text_clock_font_example.png)

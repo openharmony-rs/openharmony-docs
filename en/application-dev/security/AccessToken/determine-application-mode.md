@@ -22,8 +22,8 @@ You can request a permission based on its level and authorization mode by referr
 | -------- | -------- | -------- |
 | [Open system_grant permission](permissions-for-all.md)| system_grant | [Declare permission](declare-permissions.md) &gt; Access API| 
 | [Open user_grant permission](permissions-for-all-user.md)| user_grant  | [Declare permission](declare-permissions.md) &gt; [Request user authorization](request-user-authorization.md) &gt; Access API| 
-| <!--Del-->[system_grant permission available for system applications via ACL](permissions-for-system-apps.md)<br><!--DelEnd-->[Restricted permission](restricted-permissions.md)| system_grant | <!--RP1-->[Request restricted permission](declare-permissions-in-acl.md)<!--RP1End--> &gt; [Declare permission](declare-permissions.md) > Access API| 
-| <!--Del-->[user_grant permission available for system applications via ACL](permissions-for-system-apps-user.md)<br><!--DelEnd-->[Restricted permission](restricted-permissions.md)| user_grant | <!--RP1-->[Request restricted permission](declare-permissions-in-acl.md)<!--RP1End--> &gt; [Declare permission](declare-permissions.md) > [Request user authorization](request-user-authorization.md) > Access API|
+| <!--Del-->[system_grant permission available for system applications via ACL](permissions-for-system-apps.md)<br><!--DelEnd--> [restricted permission (system authorization)](restricted-permissions.md)| system_grant | <!--RP1-->[Request restricted permission](declare-permissions-in-acl.md)<!--RP1End--> &gt; [Declare permission](declare-permissions.md) > Access API| 
+| <!--Del-->[user_grant permission available for system applications via ACL](permissions-for-system-apps-user.md)<br><!--DelEnd--> [restricted permission (user authorization)](restricted-permissions.md)| user_grant | <!--RP1-->[Request restricted permission](declare-permissions-in-acl.md)<!--RP1End--> &gt; [Declare permission](declare-permissions.md) > [Request user authorization](request-user-authorization.md) > Access API|
 
 <!--Del-->
 > **NOTE**
@@ -46,7 +46,7 @@ To change the application APL to system_basic or system_core, modify the Harmony
 
 Modify the **"bundle-info"** &gt; **"apl"** field in the **HarmonyAppProvision** configuration file.
 
-```json
+```json5
 "bundle-info" : {
     // ...
     "apl": "system_basic",

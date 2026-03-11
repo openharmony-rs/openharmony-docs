@@ -11,11 +11,13 @@
 This file declares the functions related to the path in the drawing module.
 
 <!--RP1-->
-**Sample**: [NDKAPIDrawing (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKAPIDrawing)<!--RP1End-->
+**Sample**: [NDKAPIDrawing (API Version 14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
 
 **File to include**: <native_drawing/drawing_path.h>
 
 **Library**: libnative_drawing.so
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -57,7 +59,7 @@ This file declares the functions related to the path in the drawing module.
 | [void OH_Drawing_PathAddRect(OH_Drawing_Path* path, float left, float top, float right, float bottom,OH_Drawing_PathDirection pathDirection)](#oh_drawing_pathaddrect) | Adds a rectangle to a path in the specified direction. The start point is the upper left corner of the rectangle.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.<br>If **pathDirection** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.|
 | [void OH_Drawing_PathAddRectWithInitialCorner(OH_Drawing_Path* path, const OH_Drawing_Rect* rect,OH_Drawing_PathDirection pathDirection, uint32_t start)](#oh_drawing_pathaddrectwithinitialcorner) | Adds a rectangle contour to a path in the specified direction.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **path** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.<br>If **pathDirection** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.|
 | [void OH_Drawing_PathAddRoundRect(OH_Drawing_Path* path,const OH_Drawing_RoundRect* roundRect, OH_Drawing_PathDirection pathDirection)](#oh_drawing_pathaddroundrect) | Adds a rounded rectangle to a path in the specified direction. When the path direction is clockwise, the start point is at the intersection of the rounded rectangle's left boundary and its lower left corner. When the path direction is counterclockwise, the start point is at the intersection point between the left boundary and the upper left corner.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **path** or **roundRect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.<br>If **pathDirection** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.|
-| [void OH_Drawing_PathAddOvalWithInitialPoint(OH_Drawing_Path* path, const OH_Drawing_Rect* rect,uint32_t start, OH_Drawing_PathDirection pathDirection)](#oh_drawing_pathaddovalwithinitialpoint) | Adds an oval to a path. **OH_Drawing_Rect** specifies the outer tangent rectangle of the oval, and **OH_Drawing_PathDirection** specifies whether the drawing is clockwise or anticlockwise.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **path** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.<br>If **pathDirection** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.|
+| [void OH_Drawing_PathAddOvalWithInitialPoint(OH_Drawing_Path* path, const OH_Drawing_Rect* rect,uint32_t start, OH_Drawing_PathDirection pathDirection)](#oh_drawing_pathaddovalwithinitialpoint) | Adds an oval to a path. **OH_Drawing_Rect** specifies the outer tangent rectangle of the oval, and **OH_Drawing_PathDirection** specifies whether the drawing is clockwise or counterclockwise.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **path** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.<br>If **pathDirection** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.|
 | [void OH_Drawing_PathAddOval(OH_Drawing_Path* path,const OH_Drawing_Rect* rect, OH_Drawing_PathDirection pathDirection)](#oh_drawing_pathaddoval) | Adds an oval to a path in the specified direction.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **path** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.<br>If **pathDirection** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.|
 | [void OH_Drawing_PathAddArc(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, float startAngle, float sweepAngle)](#oh_drawing_pathaddarc) | Adds an arc to a path as the start of a new contour. The arc added is part of the inscribed ellipse of the rectangle, from the start angle through the sweep angle. If the sweep angle is less than or equal to -360°, or if the sweep angle is greater than or equal to 360°, and start angle modulo 90 is nearly zero, an oval instead of an ellipse is added.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **path** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [void OH_Drawing_PathAddPath(OH_Drawing_Path* path, const OH_Drawing_Path* src, const OH_Drawing_Matrix* matrix)](#oh_drawing_pathaddpath) | Transforms the points in a **src** path by a matrix and adds the new one to the current path.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **path** or **src** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
@@ -69,7 +71,7 @@ This file declares the functions related to the path in the drawing module.
 | [bool OH_Drawing_PathBuildFromSvgString(OH_Drawing_Path* path, const char* str)](#oh_drawing_pathbuildfromsvgstring) | Parses the path represented by an SVG string.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **path** or **str** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [bool OH_Drawing_PathContains(OH_Drawing_Path* path, float x, float y)](#oh_drawing_pathcontains) | Checks whether a coordinate point is included in this path. For details, see [OH_Drawing_PathFillType](capi-drawing-path-h.md#oh_drawing_pathfilltype).<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [void OH_Drawing_PathTransform(OH_Drawing_Path* path, const OH_Drawing_Matrix* matrix)](#oh_drawing_pathtransform) | Transforms the points in a path by matrix.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **path** or **matrix** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
-| [void OH_Drawing_PathTransformWithPerspectiveClip(OH_Drawing_Path* src, const OH_Drawing_Matrix* matrix,OH_Drawing_Path* dst, bool applyPerspectiveClip)](#oh_drawing_pathtransformwithperspectiveclip) | Transforms the points in a path by matrix. and uses the new one to replace the **dst** path. If **dst** is NULL, the **src** path is replaced.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **src** or **matrix** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
+| [void OH_Drawing_PathTransformWithPerspectiveClip(OH_Drawing_Path* src, const OH_Drawing_Matrix* matrix,OH_Drawing_Path* dst, bool applyPerspectiveClip)](#oh_drawing_pathtransformwithperspectiveclip) | Transforms the points in a path by matrix, and uses the new one to replace the **dst** path. If **dst** is NULL, the **src** path is replaced.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **src** or **matrix** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [void OH_Drawing_PathSetFillType(OH_Drawing_Path* path, OH_Drawing_PathFillType pathFillType)](#oh_drawing_pathsetfilltype) | Sets the fill type of a path. The fill type determines how "inside" of the path is drawn.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.<br>If **pathFillType** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.|
 | [OH_Drawing_ErrorCode OH_Drawing_PathGetFillType(OH_Drawing_Path* path, OH_Drawing_PathFillType* pathFillType)](#oh_drawing_pathgetfilltype) | Obtains the fill type of a path.|
 | [float OH_Drawing_PathGetLength(OH_Drawing_Path* path, bool forceClosed)](#oh_drawing_pathgetlength) | Obtains the length of a path.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
@@ -90,7 +92,7 @@ This file declares the functions related to the path in the drawing module.
 
 ### OH_Drawing_PathDirection
 
-```
+```c
 enum OH_Drawing_PathDirection
 ```
 
@@ -107,7 +109,7 @@ Enumerates the directions of a closed contour.
 
 ### OH_Drawing_PathFillType
 
-```
+```c
 enum OH_Drawing_PathFillType
 ```
 
@@ -126,7 +128,7 @@ Enumerates the fill types of a path.
 
 ### OH_Drawing_PathAddMode
 
-```
+```c
 enum OH_Drawing_PathAddMode
 ```
 
@@ -143,7 +145,7 @@ Enumerates the path adding modes.
 
 ### OH_Drawing_PathOpMode
 
-```
+```c
 enum OH_Drawing_PathOpMode
 ```
 
@@ -163,7 +165,7 @@ Enumerates the operation modes available for a path.
 
 ### OH_Drawing_PathMeasureMatrixFlags
 
-```
+```c
 enum OH_Drawing_PathMeasureMatrixFlags
 ```
 
@@ -184,7 +186,7 @@ Enumerates the types of matrix information obtained during path measurement.
 
 ### OH_Drawing_PathCreate()
 
-```
+```c
 OH_Drawing_Path* OH_Drawing_PathCreate(void)
 ```
 
@@ -204,7 +206,7 @@ Creates an **OH_Drawing_Path** object.
 
 ### OH_Drawing_PathCopy()
 
-```
+```c
 OH_Drawing_Path* OH_Drawing_PathCopy(OH_Drawing_Path* path)
 ```
 
@@ -231,7 +233,7 @@ Creates a copy of the [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) object.
 
 ### OH_Drawing_PathDestroy()
 
-```
+```c
 void OH_Drawing_PathDestroy(OH_Drawing_Path* path)
 ```
 
@@ -252,7 +254,7 @@ Destroys an **OH_Drawing_Path** object and reclaims the memory occupied by the o
 
 ### OH_Drawing_PathSetPath()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathSetPath(OH_Drawing_Path* path, OH_Drawing_Path* other)
 ```
 
@@ -280,7 +282,7 @@ Sets a path object as the current path object.
 
 ### OH_Drawing_PathIsEmpty()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathIsEmpty(OH_Drawing_Path* path, bool* isEmpty)
 ```
 
@@ -308,7 +310,7 @@ Checks whether a path object is empty.
 
 ### OH_Drawing_PathIsRect()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathIsRect(OH_Drawing_Path* path, OH_Drawing_Rect* rect, bool* isRect)
 ```
 
@@ -337,7 +339,7 @@ Checks whether a path object forms a rectangle.
 
 ### OH_Drawing_PathMoveTo()
 
-```
+```c
 void OH_Drawing_PathMoveTo(OH_Drawing_Path* path, float x, float y)
 ```
 
@@ -360,7 +362,7 @@ Sets the start point of this path.<br>This API may return an error code. For det
 
 ### OH_Drawing_PathLineTo()
 
-```
+```c
 void OH_Drawing_PathLineTo(OH_Drawing_Path* path, float x, float y)
 ```
 
@@ -383,7 +385,7 @@ Draws a line segment from the last point of this path to the target point. If th
 
 ### OH_Drawing_PathArcTo()
 
-```
+```c
 void OH_Drawing_PathArcTo(OH_Drawing_Path* path,float x1, float y1, float x2, float y2, float startDeg, float sweepDeg)
 ```
 
@@ -410,7 +412,7 @@ Draws an arc to a path. This is done by using angle arc mode. In this mode, a re
 
 ### OH_Drawing_PathQuadTo()
 
-```
+```c
 void OH_Drawing_PathQuadTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY)
 ```
 
@@ -435,7 +437,7 @@ Draws a quadratic Bezier curve from the last point of a path to the target point
 
 ### OH_Drawing_PathConicTo()
 
-```
+```c
 void OH_Drawing_PathConicTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY, float weight)
 ```
 
@@ -461,7 +463,7 @@ Draws a conic curve from the last point of a path to the target point. If the pa
 
 ### OH_Drawing_PathCubicTo()
 
-```
+```c
 void OH_Drawing_PathCubicTo(OH_Drawing_Path* path, float ctrlX1, float ctrlY1, float ctrlX2, float ctrlY2, float endX, float endY)
 ```
 
@@ -488,7 +490,7 @@ Draws a cubic Bezier curve from the last point of this path to the target point.
 
 ### OH_Drawing_PathRMoveTo()
 
-```
+```c
 void OH_Drawing_PathRMoveTo(OH_Drawing_Path* path, float x, float y)
 ```
 
@@ -511,7 +513,7 @@ Sets the start position relative to the last point of a path. If the path is emp
 
 ### OH_Drawing_PathRLineTo()
 
-```
+```c
 void OH_Drawing_PathRLineTo(OH_Drawing_Path* path, float x, float y)
 ```
 
@@ -534,7 +536,7 @@ Draws a line segment from the last point of this path to a point relative to the
 
 ### OH_Drawing_PathRQuadTo()
 
-```
+```c
 void OH_Drawing_PathRQuadTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY)
 ```
 
@@ -559,7 +561,7 @@ Draws a quadratic Bezier curve from the last point of this path to a point relat
 
 ### OH_Drawing_PathRConicTo()
 
-```
+```c
 void OH_Drawing_PathRConicTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY, float weight)
 ```
 
@@ -585,7 +587,7 @@ Draws a conic curve from the last point of a path to a point relative to the las
 
 ### OH_Drawing_PathRCubicTo()
 
-```
+```c
 void OH_Drawing_PathRCubicTo(OH_Drawing_Path* path, float ctrlX1, float ctrlY1, float ctrlX2, float ctrlY2,float endX, float endY)
 ```
 
@@ -612,7 +614,7 @@ Draws a cubic Bezier curve from the last point of a path to a point relative to 
 
 ### OH_Drawing_PathAddRect()
 
-```
+```c
 void OH_Drawing_PathAddRect(OH_Drawing_Path* path, float left, float top, float right, float bottom,OH_Drawing_PathDirection pathDirection)
 ```
 
@@ -638,7 +640,7 @@ Adds a rectangle to a path in the specified direction. The start point is the up
 
 ### OH_Drawing_PathAddRectWithInitialCorner()
 
-```
+```c
 void OH_Drawing_PathAddRectWithInitialCorner(OH_Drawing_Path* path, const OH_Drawing_Rect* rect,OH_Drawing_PathDirection pathDirection, uint32_t start)
 ```
 
@@ -662,7 +664,7 @@ Adds a rectangle contour to a path in the specified direction.<br>This API may r
 
 ### OH_Drawing_PathAddRoundRect()
 
-```
+```c
 void OH_Drawing_PathAddRoundRect(OH_Drawing_Path* path,const OH_Drawing_RoundRect* roundRect, OH_Drawing_PathDirection pathDirection)
 ```
 
@@ -685,13 +687,13 @@ Adds a rounded rectangle to a path in the specified direction. When the path dir
 
 ### OH_Drawing_PathAddOvalWithInitialPoint()
 
-```
+```c
 void OH_Drawing_PathAddOvalWithInitialPoint(OH_Drawing_Path* path, const OH_Drawing_Rect* rect,uint32_t start, OH_Drawing_PathDirection pathDirection)
 ```
 
 **Description**
 
-Adds an oval to a path. **OH_Drawing_Rect** specifies the outer tangent rectangle of the oval, and **OH_Drawing_PathDirection** specifies whether the drawing is clockwise or anticlockwise.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **path** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.<br>If **pathDirection** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+Adds an oval to a path. **OH_Drawing_Rect** specifies the outer tangent rectangle of the oval, and **OH_Drawing_PathDirection** specifies whether the drawing is clockwise or counterclockwise.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **path** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.<br>If **pathDirection** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -709,7 +711,7 @@ Adds an oval to a path. **OH_Drawing_Rect** specifies the outer tangent rectangl
 
 ### OH_Drawing_PathAddOval()
 
-```
+```c
 void OH_Drawing_PathAddOval(OH_Drawing_Path* path,const OH_Drawing_Rect* rect, OH_Drawing_PathDirection pathDirection)
 ```
 
@@ -732,7 +734,7 @@ Adds an oval to a path in the specified direction.<br>This API may return an err
 
 ### OH_Drawing_PathAddArc()
 
-```
+```c
 void OH_Drawing_PathAddArc(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, float startAngle, float sweepAngle)
 ```
 
@@ -756,7 +758,7 @@ Adds an arc to a path as the start of a new contour. The arc added is part of th
 
 ### OH_Drawing_PathAddPath()
 
-```
+```c
 void OH_Drawing_PathAddPath(OH_Drawing_Path* path, const OH_Drawing_Path* src, const OH_Drawing_Matrix* matrix)
 ```
 
@@ -779,7 +781,7 @@ Transforms the points in a **src** path by a matrix and adds the new one to the 
 
 ### OH_Drawing_PathAddPathWithMatrixAndMode()
 
-```
+```c
 void OH_Drawing_PathAddPathWithMatrixAndMode(OH_Drawing_Path* path, const OH_Drawing_Path* src,const OH_Drawing_Matrix* matrix, OH_Drawing_PathAddMode pathAddMode)
 ```
 
@@ -803,7 +805,7 @@ Transforms the points in a **src** path by a matrix and adds the new one to the 
 
 ### OH_Drawing_PathAddPathWithMode()
 
-```
+```c
 void OH_Drawing_PathAddPathWithMode(OH_Drawing_Path* path,const OH_Drawing_Path* src, OH_Drawing_PathAddMode pathAddMode)
 ```
 
@@ -826,7 +828,7 @@ Adds a **src** path to the current path with the specified adding mode.<br>This 
 
 ### OH_Drawing_PathAddPathWithOffsetAndMode()
 
-```
+```c
 void OH_Drawing_PathAddPathWithOffsetAndMode(OH_Drawing_Path* path, const OH_Drawing_Path* src, float dx, float dy,OH_Drawing_PathAddMode pathAddMode)
 ```
 
@@ -851,7 +853,7 @@ Translates a **src** path by an offset and adds the new one to the current path 
 
 ### OH_Drawing_PathAddPolygon()
 
-```
+```c
 void OH_Drawing_PathAddPolygon(OH_Drawing_Path* path, const OH_Drawing_Point2D* points, uint32_t count, bool isClosed)
 ```
 
@@ -875,7 +877,7 @@ Adds a polygon to a path.<br>This API may return an error code. For details, cal
 
 ### OH_Drawing_PathAddCircle()
 
-```
+```c
 void OH_Drawing_PathAddCircle(OH_Drawing_Path* path,float x, float y, float radius, OH_Drawing_PathDirection pathDirection)
 ```
 
@@ -900,7 +902,7 @@ Adds a circle to a path in the specified direction.<br>This API may return an er
 
 ### OH_Drawing_PathBuildFromSvgString()
 
-```
+```c
 bool OH_Drawing_PathBuildFromSvgString(OH_Drawing_Path* path, const char* str)
 ```
 
@@ -928,7 +930,7 @@ Parses the path represented by an SVG string.<br>This API may return an error co
 
 ### OH_Drawing_PathContains()
 
-```
+```c
 bool OH_Drawing_PathContains(OH_Drawing_Path* path, float x, float y)
 ```
 
@@ -957,7 +959,7 @@ Checks whether a coordinate point is included in this path. For details, see [OH
 
 ### OH_Drawing_PathTransform()
 
-```
+```c
 void OH_Drawing_PathTransform(OH_Drawing_Path* path, const OH_Drawing_Matrix* matrix)
 ```
 
@@ -979,13 +981,13 @@ Transforms the points in a path by matrix.<br>This API may return an error code.
 
 ### OH_Drawing_PathTransformWithPerspectiveClip()
 
-```
+```c
 void OH_Drawing_PathTransformWithPerspectiveClip(OH_Drawing_Path* src, const OH_Drawing_Matrix* matrix,OH_Drawing_Path* dst, bool applyPerspectiveClip)
 ```
 
 **Description**
 
-Transforms the points in a path by matrix. and uses the new one to replace the **dst** path. If **dst** is NULL, the **src** path is replaced.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **src** or **matrix** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Transforms the points in a path by matrix, and uses the new one to replace the **dst** path. If **dst** is NULL, the **src** path is replaced.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **src** or **matrix** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -1003,7 +1005,7 @@ Transforms the points in a path by matrix. and uses the new one to replace the *
 
 ### OH_Drawing_PathSetFillType()
 
-```
+```c
 void OH_Drawing_PathSetFillType(OH_Drawing_Path* path, OH_Drawing_PathFillType pathFillType)
 ```
 
@@ -1025,7 +1027,7 @@ Sets the fill type of a path. The fill type determines how "inside" of the path 
 
 ### OH_Drawing_PathGetFillType()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathGetFillType(OH_Drawing_Path* path, OH_Drawing_PathFillType* pathFillType)
 ```
 
@@ -1053,7 +1055,7 @@ Obtains the fill type of a path.
 
 ### OH_Drawing_PathGetLength()
 
-```
+```c
 float OH_Drawing_PathGetLength(OH_Drawing_Path* path, bool forceClosed)
 ```
 
@@ -1081,7 +1083,7 @@ Obtains the length of a path.<br>This API may return an error code. For details,
 
 ### OH_Drawing_PathGetBounds()
 
-```
+```c
 void OH_Drawing_PathGetBounds(OH_Drawing_Path* path, OH_Drawing_Rect* rect)
 ```
 
@@ -1103,7 +1105,7 @@ Obtains the minimum bounds that enclose a path.<br>This API may return an error 
 
 ### OH_Drawing_PathClose()
 
-```
+```c
 void OH_Drawing_PathClose(OH_Drawing_Path* path)
 ```
 
@@ -1124,7 +1126,7 @@ Draws a line segment from the current point to the start point of this path.<br>
 
 ### OH_Drawing_PathOffset()
 
-```
+```c
 void OH_Drawing_PathOffset(OH_Drawing_Path* path, OH_Drawing_Path* dst, float dx, float dy)
 ```
 
@@ -1148,7 +1150,7 @@ Translates a path by an offset along the X axis and Y axis and adds the new one 
 
 ### OH_Drawing_PathReset()
 
-```
+```c
 void OH_Drawing_PathReset(OH_Drawing_Path* path)
 ```
 
@@ -1169,7 +1171,7 @@ Resets the path data.<br>This API may return an error code. For details, call [O
 
 ### OH_Drawing_PathIsClosed()
 
-```
+```c
 bool OH_Drawing_PathIsClosed(OH_Drawing_Path* path, bool forceClosed)
 ```
 
@@ -1197,7 +1199,7 @@ Checks whether a path is closed.<br>This API may return an error code. For detai
 
 ### OH_Drawing_PathGetPositionTangent()
 
-```
+```c
 bool OH_Drawing_PathGetPositionTangent(OH_Drawing_Path* path, bool forceClosed,float distance, OH_Drawing_Point2D* position, OH_Drawing_Point2D* tangent)
 ```
 
@@ -1228,7 +1230,7 @@ Obtains the coordinates and tangent at a distance from the start point of this p
 
 ### OH_Drawing_PathGetSegment()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathGetSegment(OH_Drawing_Path* path, bool forceClosed,float start, float stop, bool startWithMoveTo, OH_Drawing_Path* dst, bool* result)
 ```
 
@@ -1261,7 +1263,7 @@ Extracts a segment of a path and appends it to a destination path.
 
 ### OH_Drawing_PathOp()
 
-```
+```c
 bool OH_Drawing_PathOp(OH_Drawing_Path* path, const OH_Drawing_Path* other, OH_Drawing_PathOpMode op)
 ```
 
@@ -1290,7 +1292,7 @@ Combines two paths based on the specified operation mode.<br>This API may return
 
 ### OH_Drawing_PathGetMatrix()
 
-```
+```c
 bool OH_Drawing_PathGetMatrix(OH_Drawing_Path* path, bool forceClosed,float distance, OH_Drawing_Matrix* matrix, OH_Drawing_PathMeasureMatrixFlags flag)
 ```
 
@@ -1320,7 +1322,7 @@ Obtains a transformation matrix at a distance from the start point of this path.
 
 ### OH_Drawing_PathApproximate()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathApproximate(OH_Drawing_Path* path, float acceptableError, float* vals,uint32_t* count)
 ```
 
@@ -1350,7 +1352,7 @@ Converts the existing path into an approximate path consisting of consecutive li
 
 ### OH_Drawing_PathInterpolate()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathInterpolate(OH_Drawing_Path* path, OH_Drawing_Path* other,float weight, bool* success, OH_Drawing_Path* interpolatedPath)
 ```
 
@@ -1381,7 +1383,7 @@ Interpolates between the existing path and another path based on the given weigh
 
 ### OH_Drawing_PathIsInterpolate()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathIsInterpolate(OH_Drawing_Path* path, OH_Drawing_Path* other, bool* result)
 ```
 

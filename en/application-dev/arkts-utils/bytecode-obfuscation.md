@@ -153,7 +153,7 @@ TestA.i;
 
 If this option is configured, all property names except the following are obfuscated:
 
-* Property names of classes and objects that are directly imported or exported by using **import** or **export** in case that the **-enable-export-obfuscation** option is not enabled. For example, the property name **data** in the following example is not obfuscated.
+* Property names of classes and objects that are directly imported or exported by using `import` or `export` in case that the `-enable-export-obfuscation` option is not enabled. For example, the property name `data` in the following example is not obfuscated.
 
     ```ts
     export class MyClass {
@@ -161,7 +161,7 @@ If this option is configured, all property names except the following are obfusc
     }
     ```
 
-* Property names in ArkUI components. For example, **message** and **data** in the following example are not obfuscated.
+* Property names in ArkUI components. For example, `message` and `data` in the following example are not obfuscated.
 
     ```ts
     // example.ets
@@ -176,14 +176,14 @@ If this option is configured, all property names except the following are obfusc
 
 * Property names specified in [retention options](#-keep-property-name).
 * Property names in the SDK API list. The SDK API list is a set of names automatically extracted from the SDK during build. Its cache file is **systemApiCache.json**, which is stored in **build/default/cache/{...}/release/obfuscation** in the project directory.
-* String literal property names. For example, **firstName** and **personAge** in the following example are not obfuscated.
+* String literal property names. For example, `firstName` and `personAge` in the following example are not obfuscated.
 
     ```ts
     let person = {"firstName": "abc"};
     person["personAge"] = 22;
     ```
 
-* Annotation member names. For example, **authorName** and **revision** in the following example are not obfuscated.
+* Annotation member names. For example, `authorName` and `revision` in the following example are not obfuscated.
 
     ```ts
     // example.ets
@@ -219,7 +219,7 @@ person["b"] = 22;
 ```
 
 **NOTE**
-**1.** If a string literal property name contains special characters, for example, **let obj = {"\n": 123, "": 4, " ": 5}**, you are advised not to use the **-enable-string-property-obfuscation** option because these names may fail to be retained using [retention options](#-keep-property-name). Special characters refer to characters other than lowercase letters a-z, uppercase letters A-Z, digits 0-9, and underscores (_).
+**1.** If a string literal property name contains special characters, for example, `let obj = {"\n": 123, "": 4, " ": 5}`, you are advised not to use the `-enable-string-property-obfuscation` option because these names may fail to be retained using [retention options](#-keep-property-name). Special characters refer to characters other than lowercase letters a-z, uppercase letters A-Z, digits 0-9, and underscores (_).
 
 **2.** The property trustlist of the SDK API list does not contain string constants used in the declaration file. For example, the string **'ohos.want.action.home'** in the example is not included in the property trustlist.
 
@@ -232,7 +232,7 @@ export enum Params {
 let params = obj['ohos.want.action.home'];
 ```
 
-When the **-enable-string-property-obfuscation** option is used, use the [-keep-property-name](#-keep-property-name) option if you want to retain the property names in the SDK API string constants in the code, for example, **obj['ohos.want.action.home']**.
+When the `-enable-string-property-obfuscation` option is used, use the [-keep-property-name](#-keep-property-name) option if you want to retain the property names in the SDK API string constants in the code, for example, **obj['ohos.want.action.home']**.
 
 ### -enable-toplevel-obfuscation
 
@@ -250,7 +250,7 @@ let s = 0;
 
 If this option is configured, the names of all top-level scopes except the following are obfuscated:
 
-* Names that are directly imported or exported by using **import** or **export** in case that the **-enable-export-obfuscation** option is not enabled.
+* Names that are directly imported or exported by using **import** or **export** in case that the `-enable-export-obfuscation` option is not enabled.
 * Top-level scope names that are not declared in the current file.
 * Top-level scope names specified by [retention options](#-keep-global-name).
 * Top-level scope names in the SDK API list.
@@ -679,7 +679,7 @@ const moduleName = './file2'         // The path name file2 corresponding to mod
 const module2 = import(moduleName)
 ```
 
-3. When cross-package dynamic routing is used for navigation, the path passed to the dynamic routing should be retained. Dynamic routing provides two modes: system routing table and custom routing table. If a custom routing table is used for redirection, the way to configure a trustlist is consistent with the second dynamic reference scenario. However, if the system routing table is used for redirection, the path corresponding to the **pageSourceFile** field in the **resources/base/profile/route_map.json** file of the module should be added to the trustlist.
+3. When [cross-package routing](../ui/arkts-navigation-navigation.md#cross-package-routing) is used for navigation, the path passed to the dynamic routing should be retained. Dynamic routing provides two modes: system routing table and custom routing table. If a custom routing table is used for redirection, the way to configure a trustlist is consistent with the second dynamic reference scenario. However, if the system routing table is used for redirection, the path corresponding to the **pageSourceFile** field in the **resources/base/profile/route_map.json** file of the module should be added to the trustlist.
 
 ```json
 {

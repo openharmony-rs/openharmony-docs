@@ -12,11 +12,13 @@ Declares the SCSI Peripheral DDK APIs used by the host to access the SCSI device
 
 **File to include**: <scsi_peripheral/scsi_peripheral_api.h>
 
+**Library**: libscsi.z.so
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
 
-**Related module**: [SCSIPeripheralDDK](capi-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
 
 ## Summary
 
@@ -44,7 +46,7 @@ Declares the SCSI Peripheral DDK APIs used by the host to access the SCSI device
 
 ### OH_ScsiPeripheral_Init()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Init(void)
 ```
 
@@ -64,7 +66,7 @@ Initializes the SCSI Peripheral DDK.
 
 ### OH_ScsiPeripheral_Release()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Release(void)
 ```
 
@@ -84,7 +86,7 @@ Releases the SCSI Peripheral DDK.
 
 ### OH_ScsiPeripheral_Open()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPeripheral_Device **dev)
 ```
 
@@ -109,11 +111,11 @@ Opens the SCSI device specified by **deviceId** and **interfaceIndex**.
 
 | Type| Description|
 | -- | -- |
-| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.<br>         [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The permission verification fails.<br>         [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The DDK is not initialized.<br>         [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input **dev** is empty.<br>         [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The communication with the DDK service fails.<br>         [SCSIPERIPHERAL_DDK_MEMORY_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The memory operation fails.<br>         [SCSIPERIPHERAL_DDK_IO_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): An I/O error occurs.<br>         [SCSIPERIPHERAL_DDK_DEVICE_NOT_FOUND](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): No device is found based on the specified **deviceId** and **interfaceIndex**.<br>         [SCSIPERIPHERAL_DDK_INVALID_OPERATION](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The operation is not supported.|
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.<br>         [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The permission verification fails.<br>         [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The DDK is not initialized.<br>         [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input **dev** is empty.<br>         [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The communication with the DDK service fails.<br>         [SCSIPERIPHERAL_DDK_MEMORY_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The memory operation fails.<br>         [SCSIPERIPHERAL_DDK_IO_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): An I/O error occurs.<br>         [SCSIPERIPHERAL_DDK_DEVICE_NOT_FOUND](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): No device is found based on the specified **deviceId** and **interfaceIndex**.<br>         [SCSIPERIPHERAL_DDK_INVALID_OPERATION](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The operation is not supported.<br>         [SCSIPERIPHERAL_DDK_TIMEOUT](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The transmission times out.|
 
 ### OH_ScsiPeripheral_Close()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev)
 ```
 
@@ -140,7 +142,7 @@ Disables the SCSI device.
 
 ### OH_ScsiPeripheral_TestUnitReady()
 
-```
+```c
 int32_t OH_ScsiPeripheral_TestUnitReady(ScsiPeripheral_Device *dev, ScsiPeripheral_TestUnitReadyRequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -169,7 +171,7 @@ Checks whether the logical units are ready.
 
 ### OH_ScsiPeripheral_Inquiry()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Inquiry(ScsiPeripheral_Device *dev, ScsiPeripheral_InquiryRequest *request,ScsiPeripheral_InquiryInfo *inquiryInfo, ScsiPeripheral_Response *response)
 ```
 
@@ -199,7 +201,7 @@ Queries basic information about the SCSI device.
 
 ### OH_ScsiPeripheral_ReadCapacity10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_ReadCapacity10(ScsiPeripheral_Device *dev, ScsiPeripheral_ReadCapacityRequest *request,ScsiPeripheral_CapacityInfo *capacityInfo, ScsiPeripheral_Response *response)
 ```
 
@@ -229,7 +231,7 @@ Obtains the capacity information about the SCSI device.
 
 ### OH_ScsiPeripheral_RequestSense()
 
-```
+```c
 int32_t OH_ScsiPeripheral_RequestSense(ScsiPeripheral_Device *dev, ScsiPeripheral_RequestSenseRequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -258,7 +260,7 @@ Obtains sense data, that is, information returned by the SCSI device to the host
 
 ### OH_ScsiPeripheral_Read10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Read10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -287,7 +289,7 @@ Reads data from a specified logical block.
 
 ### OH_ScsiPeripheral_Write10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Write10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -316,7 +318,7 @@ Writes data to a specified logical block of a device.
 
 ### OH_ScsiPeripheral_Verify10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Verify10(ScsiPeripheral_Device *dev, ScsiPeripheral_VerifyRequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -345,7 +347,7 @@ Verifies a specified logical block.
 
 ### OH_ScsiPeripheral_SendRequestByCdb()
 
-```
+```c
 int32_t OH_ScsiPeripheral_SendRequestByCdb(ScsiPeripheral_Device *dev, ScsiPeripheral_Request *request,ScsiPeripheral_Response *response)
 ```
 
@@ -374,15 +376,13 @@ Sends SCSI commands in CDB mode.
 
 ### OH_ScsiPeripheral_CreateDeviceMemMap()
 
-```
+```c
 int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t size,ScsiPeripheral_DeviceMemMap **devMmap)
 ```
 
 **Description**
 
 Creates a buffer. To avoid resource leakage, use [OH_ScsiPeripheral_DestroyDeviceMemMap](capi-scsi-peripheral-api-h.md#oh_scsiperipheral_destroydevicememmap) to destroy a buffer after use.
-
-**Required permissions**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
 
@@ -403,15 +403,13 @@ Creates a buffer. To avoid resource leakage, use [OH_ScsiPeripheral_DestroyDevic
 
 ### OH_ScsiPeripheral_DestroyDeviceMemMap()
 
-```
+```c
 int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMmap)
 ```
 
 **Description**
 
 Destroys a buffer. To avoid resource leakage, destroy a buffer in time after use.
-
-**Required permissions**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
 
@@ -430,15 +428,13 @@ Destroys a buffer. To avoid resource leakage, destroy a buffer in time after use
 
 ### OH_ScsiPeripheral_ParseBasicSenseInfo()
 
-```
+```c
 int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseDataLen,ScsiPeripheral_BasicSenseInfo *senseInfo)
 ```
 
 **Description**
 
 Parses basic sense data, including the **Information**, **Command specific information**, and **Sense key specific** fields.
-
-**Required permissions**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
 

@@ -42,7 +42,7 @@ Obtains the size of the **DrawingRenderingContext** object.
 
 | Type         | Description                                      |
 | ----------- | ---------------------------------------- |
-| [Size](#size) | Size of the **DrawingRenderingContext** object.|
+| [Size](#size-1) | Size of the **DrawingRenderingContext** object.|
 
 ## canvas
 
@@ -92,7 +92,7 @@ Provides size information of the **DrawingRenderingContext** object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read-Only| Optional| Description|
+| Name| Type| Read Only| Optional| Description|
 | ---------- | -------------- | ------ | ---------------- | ------------------------ |
 | width | number | No| No| Width of the **DrawingRenderingContext** object, which corresponds to the width of the associated **Canvas** component.|
 | height | number | No| No| Height of the **DrawingRenderingContext** object, which corresponds to the height of the associated **Canvas** component.|
@@ -142,7 +142,7 @@ struct CanvasExample {
             green: 0,
             blue: 0
           };
-          // Clear the canvas using RGBA(0, 0, 0, 0).
+          // Fill the canvas using RGBA(0, 0, 0, 0).
           this.context.canvas.clear(color);
           this.context.invalidate();
         })

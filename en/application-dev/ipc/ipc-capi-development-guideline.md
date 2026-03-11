@@ -14,7 +14,7 @@ The IPC C APIs do not provide the capability of obtaining the communication prox
 
 ![](./figures/_i_p_c_architecture_diagram.png)
 
-For details about how to establish IPC channels between processes, see [Native Child Process Development (C/C++)](../application-models/capi_nativechildprocess_development_guideline.md). This document describes how to use the IPC C APIs.
+This document describes how to use the IPC C APIs.
 
 ## Available APIs
 

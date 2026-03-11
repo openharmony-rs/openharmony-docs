@@ -10,7 +10,9 @@ NodeController用于实现自定义节点的创建、显示、更新等操作的
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - NodeController对象不支持使用JSON序列化。
 
 ## 导入模块
 
@@ -33,6 +35,10 @@ abstract makeNode(uiContext : UIContext): FrameNode | null
 当实例绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)创建的时候进行回调。回调方法将返回一个节点，将该节点挂载至[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)。
 
 或者可以通过NodeController的rebuild()方法进行回调的触发。
+
+> **说明：**
+>
+> [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)不支持跨实例复用。如果出现跨实例复用[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)，传入[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)的[NodeController](#nodecontroller-1)触发[makeNode](#makenode)回调方法时，入参中的[UIContext](./arkts-apis-uicontext-uicontext.md)对象可能为undefined，此时需要开发者判断入参中的[UIContext](./arkts-apis-uicontext-uicontext.md)对象是否为undefined，防止后续使用此入参时出现[UIContext无效的JS异常](../../ui/arkts-wrong-uicontext-debug.md#定位uicontext错误问题)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -228,7 +234,7 @@ rebuild(): void
 通过NodeController挂载BuilderNode节点。
 
 ```ts
-import {  NodeController, BuilderNode, Size, FrameNode ,UIContext } from '@kit.ArkUI';
+import { NodeController, BuilderNode, Size, FrameNode, UIContext } from '@kit.ArkUI';
 
 class Params {
   text: string = "this is a text"
@@ -258,7 +264,7 @@ class MyNodeController extends NodeController {
   }
 
   aboutToResize(size: Size) {
-    console.info("aboutToResize width : " + size.width + " height : " + size.height)
+    console.info(`aboutToResize width : ${size.width} height : ${size.height}`)
   }
 
   aboutToAppear() {
@@ -269,7 +275,7 @@ class MyNodeController extends NodeController {
     console.info("aboutToDisappear");
   }
 
-  onTouchEvent(event:TouchEvent) {
+  onTouchEvent(event: TouchEvent) {
     console.info("onTouchEvent");
   }
 }
@@ -299,6 +305,7 @@ struct Index {
 
 ```ts
 import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
+
 class Params {
   text: string = "this is a text"
 }
@@ -334,20 +341,20 @@ class MyNodeController extends NodeController {
     console.info("myButton on detach");
   }
 
-  onWillBind(containerId: number): void{
-    console.info("myButton on WillBind" + containerId);
+  onWillBind(containerId: number): void {
+    console.info(`myButton on WillBind${containerId}`);
   }
 
-  onWillUnbind(containerId: number): void{
-    console.info("myButton on WillUnbind" + containerId);
+  onWillUnbind(containerId: number): void {
+    console.info(`myButton on WillUnbind${containerId}`);
   }
 
   onBind(containerId: number): void {
-    console.info("myButton on bind: " + containerId);
+    console.info(`myButton on bind: ${containerId}`);
   }
 
   onUnbind(containerId: number): void {
-    console.info("myButton on unbind: " + containerId);
+    console.info(`myButton on unbind: ${containerId}`);
   }
 }
 
@@ -358,11 +365,11 @@ struct Index {
   @State buttonIndex: number = 0
   private buttonController: MyNodeController = new MyNodeController();
   private buttonNull: null = null;
-  private buttonControllerArray: Array < MyNodeController | null > = [this.buttonController,this.buttonNull]
+  private buttonControllerArray: Array<MyNodeController | null> = [this.buttonController, this.buttonNull]
 
   build() {
     Column() {
-      Row(){
+      Row() {
         Button("Bind/Unbind")
           .onClick(() => {
             this.buttonIndex++;
@@ -372,11 +379,12 @@ struct Index {
             this.buttonShow = !this.buttonShow
           }).margin(5)
       }
-      if(this.buttonShow){
+
+      if (this.buttonShow) {
         NodeContainer(this.buttonControllerArray[this.buttonIndex % this.buttonControllerArray.length])
       }
     }
-    .padding({ left: 35, right: 35})
+    .padding({ left: 35, right: 35 })
     .width("100%")
     .height("100%")
   }

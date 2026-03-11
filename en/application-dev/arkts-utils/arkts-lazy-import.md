@@ -135,8 +135,8 @@ Advantages of lazy import over dynamic loading:
 |:----------------------------------------------|:---------------|:-----------|:------------|:-----------|
 | import lazy { x } from "mod";                 | "mod"          | "x"        | "x"         | API 12      |
 | import lazy { x as v } from "mod";            | "mod"          | "x"        | "v"         | API 12      |
-| import lazy x from "mod";                     | "mod"          | "default"  | "x"         | API 18      |
-| import lazy { KitClass } from "@kit.SomeKit"; | "@kit.SomeKit" | "KitClass" | "KitClass"  | API 18      |
+| import lazy x from "mod";                     | "mod"          | "default"  | "x"         | API 12      |
+| import lazy { KitClass } from "@kit.SomeKit"; | "@kit.SomeKit" | "KitClass" | "KitClass"  | API 12      |
 
 - Lazy importing of shared modules or modules within a dependency path that includes shared modules
 
@@ -201,7 +201,7 @@ import { b } from "./mod1";         // Obtain the attributes in "mod1". This syn
 > - **strict**: An error is reported.
 > - This field is supported since DevEco Studio 5.0.13.200.
 
-The variable **c** is not used in **B.ets**, so **B.ets** does not trigger execution. When **c** is used in **A.ets**, it is not initialized, resulting in a JavaScript exception.
+The variable **c** is not used in **B.ets**, so **C.ets** does not trigger execution. When **c** is used in **A.ets**, it is not initialized, resulting in a JavaScript exception.
 
 ```typescript
 // A.ets
@@ -363,15 +363,15 @@ During cold start, files whose exports are used by other files are called used f
 
     ```text
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
-        parentModule 1: &entry/src/main/ets/pages/outter& a
+        parentModule 1: &entry/src/main/ets/pages/outer& a
     ```  
 
     Example:
 
     ```ts
-    // entry/src/main/ets/pages/outter.ets
-    import { a } from './1' // The outter file loads the variable a from file 1.
-    console.info("example ", a); // The variable a is used when the outter file is executed.
+    // entry/src/main/ets/pages/outer.ets
+    import { a } from './1' // The outer file loads the variable a from file 1.
+    console.info("example ", a); // The variable a is used when the outer file is executed.
     ```  
 
 - Scenario 2: Files loaded via static import have multiple parent files. 
@@ -379,16 +379,16 @@ During cold start, files whose exports are used by other files are called used f
     ```text
     // Note: The display sequence does not indicate the loading sequence of the parent file.
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
-       parentModule 1: &entry/src/main/ets/pages/outter& a
+       parentModule 1: &entry/src/main/ets/pages/outer& a
        parentModule 2: &entry/src/main/ets/pages/innerinner& a
     ```
 
     Example:
 
     ```ts
-    // entry/src/main/ets/pages/outter.ets
-    import { a } from './1' // The outter file loads the variable a from file 1.
-    console.info("example ", a); // The variable a is used when the outter file is executed.
+    // entry/src/main/ets/pages/outer.ets
+    import { a } from './1' // The outer file loads the variable a from file 1.
+    console.info("example ", a); // The variable a is used when the outer file is executed.
 
     // entry/src/main/ets/pages/innerinner.ets
     import { a } from './1' // The innerinner file loads the variable a from file 1.
@@ -399,13 +399,13 @@ During cold start, files whose exports are used by other files are called used f
 
     ```text
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
-       parentModule 1: &entry/src/main/ets/pages/outter& a
+       parentModule 1: &entry/src/main/ets/pages/outer& a
     ```
 
     Example:
 
     ```ts
-    // entry/src/main/ets/pages/outter.ets
+    // entry/src/main/ets/pages/outer.ets
     import { a , b } from './1' // Load multiple variables from file 1.
     console.info("example ", a); // a is used.
     export function myFunc() {

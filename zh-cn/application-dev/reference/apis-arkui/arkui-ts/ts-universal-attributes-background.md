@@ -20,7 +20,7 @@ background(content: CustomBuilder | ResourceColor, options?: BackgroundOptions):
 
 >**说明：**
 >
-> - 不支持[onAppear](./ts-universal-events-show-hide.md#onappear)和[onDisappear](./ts-universal-events-show-hide.md#ondisappear)等和节点挂载/卸载相关的事件。
+> - 不支持[onAppear](./ts-universal-events-show-hide.md#onappear)和[onDisAppear](./ts-universal-events-show-hide.md#ondisappear)等和节点挂载/卸载相关的事件。
 >
 > - 从API version 20开始，该接口仅当content的入参类型为ResourceColor时支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
@@ -415,7 +415,7 @@ backdropBlur(radius: Optional\<number>, options?: BlurOptions): T
 
 >  **说明：**
 >
->  blur和backdropBlur是实时模糊接口，会每帧进行实时渲染，性能负载较高。当模糊内容和模糊半径都不需要变化时，建议使用[静态模糊接口](../../apis-arkgraphics2d/js-apis-effectKit.md#blur)。
+>  blur和backdropBlur是实时模糊接口，会每帧进行实时渲染，性能负载较高。当模糊内容和模糊半径都不需要变化时，建议使用静态模糊接口[blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur)。
 
 ## backdropBlur<sup>19+</sup>
 
@@ -662,7 +662,6 @@ backgroundBrightness(options: Optional\<BackgroundBrightnessOptions>): T
 @Entry
 @Component
 struct BackgroundExample {
-
   build() {
     Column({ space: 5 }) {
       Text('background color').fontSize(9).width('90%').fontColor(0xCCCCCC)
@@ -670,7 +669,7 @@ struct BackgroundExample {
 
       Text('background image repeat along X').fontSize(9).width('90%').fontColor(0xCCCCCC)
       Row()
-        //$r('app.media.image')需要替换为开发者所需的图像资源文件。
+      // $r('app.media.image')需要替换为开发者所需的图像资源文件。
         .backgroundImage($r('app.media.image'), ImageRepeat.X)
         .backgroundImageSize({ width: '250px', height: '140px' })
         .width('90%')
@@ -679,7 +678,7 @@ struct BackgroundExample {
 
       Text('background image repeat along Y').fontSize(9).width('90%').fontColor(0xCCCCCC)
       Row()
-        //$r('app.media.image')需要替换为开发者所需的图像资源文件。
+      // $r('app.media.image')需要替换为开发者所需的图像资源文件。
         .backgroundImage($r('app.media.image'), ImageRepeat.Y)
         .backgroundImageSize({ width: '500px', height: '120px' })
         .width('90%')
@@ -688,8 +687,9 @@ struct BackgroundExample {
 
       Text('background image size').fontSize(9).width('90%').fontColor(0xCCCCCC)
       Row()
-        .width('90%').height(150)
-        //$r('app.media.image')需要替换为开发者所需的图像资源文件。
+        .width('90%')
+        .height(150)
+        // $r('app.media.image')需要替换为开发者所需的图像资源文件。
         .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
         .backgroundImageSize({ width: 1000, height: 500 })
         .border({ width: 1 })
@@ -699,7 +699,7 @@ struct BackgroundExample {
       Row()
         .width(200)
         .height(50)
-        //$r('app.media.image')需要替换为开发者所需的图像资源文件。
+        // $r('app.media.image')需要替换为开发者所需的图像资源文件。
         .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
         .backgroundImageSize(ImageSize.Cover)
         .border({ width: 1 })
@@ -709,7 +709,7 @@ struct BackgroundExample {
       Row()
         .width(200)
         .height(50)
-        //$r('app.media.image')需要替换为开发者所需的图像资源文件。
+        // $r('app.media.image')需要替换为开发者所需的图像资源文件。
         .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
         .backgroundImageSize(ImageSize.Contain)
         .border({ width: 1 })
@@ -718,7 +718,7 @@ struct BackgroundExample {
       Row()
         .width(100)
         .height(50)
-        //$r('app.media.image')需要替换为开发者所需的图像资源文件。
+        // $r('app.media.image')需要替换为开发者所需的图像资源文件。
         .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
         .backgroundImageSize({ width: 1000, height: 560 })
         .backgroundImagePosition({ x: -500, y: -300 })
@@ -771,9 +771,10 @@ struct BackgroundBlurStyleDemo {
 @Entry
 @Component
 struct BackgroundExample {
-  @Builder renderBackground() {
+  @Builder
+  renderBackground() {
     Column() {
-      Progress({value : 50})
+      Progress({ value: 50 })
     }
   }
 
@@ -783,7 +784,7 @@ struct BackgroundExample {
         .width(100)
         .height(40)
         .fontColor("#FFF")
-        .position({x:50, y:80})
+        .position({ x: 50, y: 80 })
         .textAlign(TextAlign.Center)
         .backgroundColor(Color.Green)
     }

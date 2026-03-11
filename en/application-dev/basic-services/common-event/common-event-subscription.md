@@ -17,7 +17,7 @@ Certain system common events [require specific permissions](../../security/Acces
 
 > **NOTE**
 >
-> The lifecycle of the subscriber object needs to be managed by the application. If the subscriber object is no longer used, it needs to be destroyed and released to avoid memory leakage.
+> The lifecycle of the subscriber object needs to be managed by the application. If the subscriber object is no longer used, [unsubscribe from it in dynamic mode](common-event-unsubscription.md) to destroy and release it. This way avoids subscription failures of other services and memory leakage when the number of intra-process subscribers exceeds 200.
 > 
 > The callback of common events in dynamic subscription mode is affected by the application status. When the application is in the background, the callback cannot receive common events subscribed dynamically. When the application is switched from the background to the foreground, the callback can receive common events listened for within 30 seconds before the switch.
 >
@@ -81,7 +81,7 @@ For details about the APIs, see [@ohos.commonEventManager (Common Event)](../../
    
    ``` TypeScript
    // Callback for subscriber creation.
-   commonEventManager.createSubscriber(subscribeInfo,
+   commonEventManager.createSubscriber(subscribeInfoCustom,
      (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
        if (err) {
          hilog.error(DOMAIN_NUMBER, TAG,
@@ -89,7 +89,7 @@ For details about the APIs, see [@ohos.commonEventManager (Common Event)](../../
          return;
        }
        hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in creating subscriber.');
-       subscriber = data;
+       subscriberCustom = data;
      })
    ```
 
@@ -99,15 +99,16 @@ For details about the APIs, see [@ohos.commonEventManager (Common Event)](../../
    
    ``` TypeScript
    // Callback for common event subscription.
-   if (subscriber !== null) {
-     commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
-       if (err) {
-         hilog.error(DOMAIN_NUMBER, TAG,
-           `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
-         return;
-       }
-       hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in subscribing, data is ${JSON.stringify(data)}`);
-     })
+   if (subscriberCustom !== null) {
+     commonEventManager.subscribe(subscriberCustom,
+       (err: BusinessError, data: commonEventManager.CommonEventData) => {
+         if (err) {
+           hilog.error(DOMAIN_NUMBER, TAG,
+             `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
+           return;
+         }
+         hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in subscribing, data is ${JSON.stringify(data)}`);
+       })
    } else {
      hilog.error(DOMAIN_NUMBER, TAG, `Need create subscriber`);
    }

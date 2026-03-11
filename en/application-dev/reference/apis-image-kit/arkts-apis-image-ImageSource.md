@@ -30,7 +30,7 @@ import { image } from '@kit.ImageKit';
 
 | Name            | Type          | Read Only| Optional| Description                                                        |
 | ---------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
-| supportedFormats | Array\<string> | Yes  | No  | Supported formats, including .png, .jpeg, .bmp, .gif, .webp, .dng., and .heic<sup>12+</sup> (depending on the hardware).|
+| supportedFormats | Array\<string> | Yes  | No  | Supported formats, including .png, .jpeg, .bmp, .gif, .webp, .dng, and .heic<sup>12+</sup> (depending on the hardware).|
 
 ## getImageInfo
 
@@ -705,7 +705,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 
 Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
-Starting from API version 15, you are advised to use [createPixelMapUsingAllocator](#createpixelmapusingallocator15). This API can be used to specify the memory type [AllocatorType](arkts-apis-image-e.md#allocatortype15) of the output PixelMap. For details, see [Allocating Memory for Image Decoding (ArkTS)](../../media/image/image-allocator-type.md).
+Starting from API version 15, you are advised to use [createPixelMapUsingAllocator](#createpixelmapusingallocator15). This API can be used to specify the memory type [AllocatorType](arkts-apis-image-e.md#allocatortype15) of the output PixelMap. For details, see [Optimizing Memory for Image Decoding (ArkTS)](../../media/image/image-allocator-type.md).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -749,7 +749,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 
 Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
-Starting from API version 15, you are advised to use [createPixelMapUsingAllocator](#createpixelmapusingallocator15). This API can be used to specify the memory type [AllocatorType](arkts-apis-image-e.md#allocatortype15) of the output PixelMap. For details, see [Allocating Memory for Image Decoding (ArkTS)](../../media/image/image-allocator-type.md).
+Starting from API version 15, you are advised to use [createPixelMapUsingAllocator](#createpixelmapusingallocator15). This API can be used to specify the memory type [AllocatorType](arkts-apis-image-e.md#allocatortype15) of the output PixelMap. For details, see [Optimizing Memory for Image Decoding (ArkTS)](../../media/image/image-allocator-type.md).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -789,7 +789,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 
 Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
-Starting from API version 15, you are advised to use [createPixelMapUsingAllocator](#createpixelmapusingallocator15). This API can be used to specify the memory type [AllocatorType](arkts-apis-image-e.md#allocatortype15) of the output PixelMap. For details, see [Allocating Memory for Image Decoding (ArkTS)](../../media/image/image-allocator-type.md).
+Starting from API version 15, you are advised to use [createPixelMapUsingAllocator](#createpixelmapusingallocator15). This API can be used to specify the memory type [AllocatorType](arkts-apis-image-e.md#allocatortype15) of the output PixelMap. For details, see [Optimizing Memory for Image Decoding (ArkTS)](../../media/image/image-allocator-type.md).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -841,7 +841,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 
 Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
-Starting from API version 15, you are advised to use [createPixelMapUsingAllocatorSync](#createpixelmapusingallocatorsync15). This API can be used to specify the memory type [AllocatorType](arkts-apis-image-e.md#allocatortype15) of the output PixelMap. For details, see [Allocating Memory for Image Decoding (ArkTS)](../../media/image/image-allocator-type.md).
+Starting from API version 15, you are advised to use [createPixelMapUsingAllocatorSync](#createpixelmapusingallocatorsync15). This API can be used to specify the memory type [AllocatorType](arkts-apis-image-e.md#allocatortype15) of the output PixelMap. For details, see [Optimizing Memory for Image Decoding (ArkTS)](../../media/image/image-allocator-type.md).
 
 > **NOTE**
 >
@@ -1093,7 +1093,7 @@ async function CreatePixelMapList(imageSourceObj : image.ImageSource) {
 
 createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise\<PixelMap>
 
-Creates a PixelMap object based on decoding options and memory type. This API uses a promise to return the result. For details about how to use the API, see [Allocating Memory for Image Decoding (ArkTS)](../../media/image/image-allocator-type.md).
+Creates a PixelMap object based on decoding options and memory type. This API uses a promise to return the result. For details, see [Optimizing Memory for Image Decoding (ArkTS)](../../media/image/image-allocator-type.md).
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly.
 
@@ -1159,7 +1159,7 @@ async function CreatePixelMapUsingAllocator(context : Context) {
 
 createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap
 
-Creates a PixelMap object based on decoding options and memory type. This API returns the result synchronously. For details about how to use the API, see [Allocating Memory for Image Decoding (ArkTS)](../../media/image/image-allocator-type.md).
+Creates a PixelMap object based on decoding options and memory type. This API returns the result synchronously. For details, see [Optimizing Memory for Image Decoding (ArkTS)](../../media/image/image-allocator-type.md).
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly.
 

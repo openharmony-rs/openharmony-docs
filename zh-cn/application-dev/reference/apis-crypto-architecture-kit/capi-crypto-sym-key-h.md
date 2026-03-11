@@ -35,8 +35,8 @@
 | 名称 | 描述 |
 | -- | -- |
 | [OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_CryptoSymKeyGenerator **ctx)](#oh_cryptosymkeygenerator_create) | 根据给定的算法名称创建对称密钥生成器。<br> 注意：创建的资源必须通过[OH_CryptoSymKeyGenerator_Destroy](capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_destroy)销毁。 |
-| [OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ctx, OH_CryptoSymKey **keyCtx)](#oh_cryptosymkeygenerator_generate) | 随机生成对称密钥。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)销毁keyCtx内存。 |
-| [OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx, const Crypto_DataBlob *keyData, OH_CryptoSymKey **keyCtx)](#oh_cryptosymkeygenerator_convert) | 将对称密钥数据转换为对称密钥。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)销毁keyCtx内存。 |
+| [OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ctx, OH_CryptoSymKey **keyCtx)](#oh_cryptosymkeygenerator_generate) | 随机生成对称密钥。<br> 注意：使用完成后必须通过[OH_CryptoSymKey_Destroy](capi-crypto-sym-key-h.md#oh_cryptosymkey_destroy)销毁keyCtx内存。 |
+| [OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx, const Crypto_DataBlob *keyData, OH_CryptoSymKey **keyCtx)](#oh_cryptosymkeygenerator_convert) | 将对称密钥数据转换为对称密钥。<br> 注意：使用完成后必须通过[OH_CryptoSymKey_Destroy](capi-crypto-sym-key-h.md#oh_cryptosymkey_destroy)销毁keyCtx内存。 |
 | [const char *OH_CryptoSymKeyGenerator_GetAlgoName(OH_CryptoSymKeyGenerator *ctx)](#oh_cryptosymkeygenerator_getalgoname) | 获取对称密钥生成器的算法名称。 |
 | [void OH_CryptoSymKeyGenerator_Destroy(OH_CryptoSymKeyGenerator *ctx)](#oh_cryptosymkeygenerator_destroy) | 销毁对称密钥生成器。 |
 | [const char *OH_CryptoSymKey_GetAlgoName(OH_CryptoSymKey *keyCtx)](#oh_cryptosymkey_getalgoname) | 从对称密钥获取对称密钥算法名称。 |
@@ -78,7 +78,7 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ct
 
 **描述**
 
-随机生成对称密钥。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)销毁keyCtx内存。
+随机生成对称密钥。<br> 注意：使用完成后必须通过[OH_CryptoSymKey_Destroy](capi-crypto-sym-key-h.md#oh_cryptosymkey_destroy)销毁keyCtx内存。
 
 **起始版本：** 12
 
@@ -103,7 +103,7 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx
 
 **描述**
 
-将对称密钥数据转换为对称密钥。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)销毁keyCtx内存。
+将对称密钥数据转换为对称密钥。<br> 注意：使用完成后必须通过[OH_CryptoSymKey_Destroy](capi-crypto-sym-key-h.md#oh_cryptosymkey_destroy)销毁keyCtx内存。
 
 **起始版本：** 12
 

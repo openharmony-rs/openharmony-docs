@@ -46,7 +46,7 @@ TextTimer(options?: TextTimerOptions)
 
 | 名称   | 类型     | 只读 | 可选 | 说明                   |
 | ----------- | -------- | -------- | -------- | -------- |
-| isCountDown | boolean  | 否  | 是  | 倒计时开关。值为true时，计时器开启倒计时，例如从30秒 ~ 0秒。值为false时，计时器开始计时，例如从0秒 ~ 30秒。<br/>默认值：false |
+| isCountDown | boolean  | 否  | 是  | 倒计时开关。<br/>true：计时器开启倒计时，例如从30秒~0秒。<br/>false：计时器开始计时，例如从0秒~30秒。<br/>默认值：false |
 | count       | number   | 否  | 是  | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。&nbsp;0&lt;count&lt;86400000时，count值为计时器初始值。否则，使用默认值为计时器初始值。<br/>默认值：60000 |
 | controller  | [TextTimerController](#texttimercontroller) | 否 | 是 | TextTimer控制器。 |
 
@@ -109,7 +109,7 @@ fontSize(value: Length)
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。不支持设置百分比字符串。 |
+| value  | [Length](ts-types.md#length) | 是   | 字体大小。value为Length中的number类型时，单位为fp。字体大小默认为16fp。value为Length中的string类型时，设置值为非数字开头的字符串时，按0fp处理；设置值为数字开头的字符串时，如果数字后内容包含除[像素单位](ts-pixel-units.md)外的字符（如字母、特殊符号等），则取值字符串开头的数字部分，单位为fp。例如设置值为"abc"时取值为0fp，设置值为"10vp"时取值为10vp，设置值为"10vp11abc"时取值为10fp。不支持设置百分比字符串。 |
 
 ### fontStyle
 
@@ -207,8 +207,7 @@ contentModifier(modifier: ContentModifier\<TextTimerConfiguration>)
 
 onTimer(event:&nbsp;(utc:&nbsp;number,&nbsp;elapsedTime:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
-时间文本发生变化时触发该事件。锁屏状态和应用后台状态下不会触发该事件。
-设置高精度的[format](#format)（SSS、SS）时，回调间隔可能会出现波动。
+时间文本发生变化时触发该事件。锁屏状态和应用后台状态下不会触发该事件。设置高精度的[format](#format)（SS）时，回调间隔可能会出现波动。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -225,7 +224,7 @@ onTimer(event:&nbsp;(utc:&nbsp;number,&nbsp;elapsedTime:&nbsp;number)&nbsp;=&gt;
 
 ## TextTimerController
 
-TextTimer组件的控制器，用于控制文本计时器。一个TextTimer组件仅支持绑定一个控制器，组件创建完成后相关指令才能被调用。
+TextTimer组件的控制器，用于控制文本计时器。一个TextTimer组件仅支持绑定一个控制器，组件创建完成后相关指令才能被调用。一个TextTimerController只能控制最后一个绑定此TextTimerController的TextTimer组件。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 

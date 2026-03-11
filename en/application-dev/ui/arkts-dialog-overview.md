@@ -11,6 +11,40 @@ In the ArkUI component tree, regular overlays, popup windows, modals, and ordere
 
 ![image](figures/dialogLevelorder.png)
 
+For a multi-page application, the basic tree structure is as shown below. Multiple Page-level pages are navigated using the [Router](../reference/apis-arkui/js-apis-router.md) APIs. Pages composed of [NavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12) and [Navdestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) are navigated via the [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) component.
+
+![pageLevelMode1](figures/pageLevelMode1.png)
+
+When used together with routing and navigation, components created using [Dialog](arkts-base-dialog-overview.md), [Popup](arkts-popup-overview.md), [Menu](arkts-menu-overview.md), [OverlayManager](arkts-create-overlaymanager.md), [Toast](arkts-create-toast.md), [bindSheet](arkts-sheet-page.md), or [bindContentCover](arkts-contentcover-page.md) can appear in the following display modes:
+
+ - The dialog box is displayed at the topmost layer of the application window, above all pages in the main window (default behavior).
+
+   As shown below, when a dialog box is displayed, it sits above both **Page** pages and **Navigation** pages. If the dialog box is not closed, it will remain visible during page switching, and the new routing or navigation page will not overlay it.
+
+   ![pageLevelMode2](figures/pageLevelMode2.png)
+
+   > **NOTE**
+   >
+   > If a dialog box component (such as **Popup** or **Menu**) is bound to a component that is no longer displayed after a page jump, the system will automatically close that dialog box. However, because the dialog box's visibility is also controlled by developer-set parameters (such as the **show** parameter of [Popup](arkts-popup-overview.md)), the dialog box may still appear overlaying the next page.
+
+ - The dialog box is displayed within the current page, below the next page.
+
+   To restrict a dialog box to a single page (ensuring the dialog box is covered by the new page during routing/navigation-based page switching, and reappears normally when the user returns to the original page), the component hierarchy should be structured as follows:
+
+   ![pageLevelMode4](figures/pageLevelMode4.png)
+
+   Page-level dialog box capabilities must be used in conjunction with the page-level support feature of the dialog box component. Currently, [Dialog](arkts-base-dialog-overview.md) and [bindSheet](arkts-sheet-page.md) support page-level behavior.
+
+ - The dialog box is displayed in an independent window, which is above the application window.
+
+   On devices such as PCs/2-in-1 devices, you may need to display dialog boxes outside the application window. This requires the subwindow capability, which can be enabled for custom dialog boxes via the **showInSubWindow** property in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions). An example of a dialog box displayed in a subwindow is shown below.
+
+   ![pageLevelMode3](figures/pageLevelMode3.png)
+
+   In this case, the dialog box's display order is managed by the window stack manager, placing it above the current application window but below system windows (for example, system input methods and system dialog boxes).
+
+
+
 ## Types of Popup Windows
 
 Popup windows can be categorized based on the level of user interaction required. There are two main types: modal and non-modal popup windows. The key difference between them lies in whether the user must interact with the popup window.
@@ -20,19 +54,19 @@ Popup windows can be categorized based on the level of user interaction required
 
 > **NOTE**
 >
-> A modal popup window can be converted to a non-modal one through specific attributes. For example, setting [isModal](../reference//apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam) to **false** for **AlertDialog** will change it from modal to non-modal. For more details on other popup windows, see the respective API references.
+> A modal popup window can be converted to a non-modal one through specific attributes. For example, setting the **isModal** attribute of [AlertDialogParam](../reference//apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam) to **false** for **AlertDialog** will change it from modal to non-modal. For more details on other popup windows, see the respective API references.
 >
 > Avoid calling popup window display APIs when the application runs in the background.
 >
 > System popup windows are managed by the system and do not support style customization for security reasons.
 >
-> When a system popup window is active, do not call non-system popup window display APIs (such as **openCustomDialog** of **promptAction** or **open** of **CustomDialogController**).
+> When a system popup window displays, call non-system popup window display APIs (such as [openCustomDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated) of [promptAction](../reference/apis-arkui/js-apis-promptAction.md) and [open](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open) of [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)) to disable the popup window display.
 
 ## Use Cases
 
 Choose the appropriate component based on your specific requirements.
 
-Popup Window Name| Use Case|
+|Popup Window Name| Use Case|
 | --- | --- |
 | [Dialog](arkts-base-dialog-overview.md)| Use this popup window when you need to display information or actions that require the user's attention, such as when exiting the application for the second time.|
 | [Menu (Menu/openMenu)](arkts-menu-overview.md)  | Use this popup window to bind actions to specified components, such as displaying operation options when an icon is long-pressed.|

@@ -10,9 +10,9 @@ You can apply a point light style to components.
 
 >  **NOTE**
 >
->  The initial APIs of this module are supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  The point light style is only available for the following components: **Image**, **Column**, **Flex**, **Row**, **Stack**
+> - The point light style is only available for the following components: **Image**, **Column**, **Flex**, **Row**, **Stack**
 
 ## PointLightStyle
 

@@ -40,7 +40,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| static const char * COMMON_EVENT_KEY_CAPACITY = "soc" | 标识电池容量变化后发送的常见事件。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.PowerManager.BatteryManager.Core |
+| static const char * COMMON_EVENT_KEY_CAPACITY = "soc" | 标识电池容量变化后发送的常见事件。<br>**起始版本：** 13 |
 | static const char * COMMON_EVENT_KEY_CHARGE_STATE = "chargeState" | 标识充电状态更改后发送的常见事件。<br>**起始版本：** 13 |
 | static const char * COMMON_EVENT_KEY_PLUGGED_TYPE = "pluggedType" | 标识插入类型更改后发送的常见事件。<br>**起始版本：** 13 |
 
@@ -107,6 +107,6 @@ BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()
 
 | 类型 | 说明 |
 | -- | -- |
-| [BatteryInfo_BatteryPluggedType](#batteryinfo_batterypluggedtype) | [BatteryInfo_BatteryPluggedType](#batteryinfo_batterypluggedtype) 如果电源被拔下。<br>         [PLUGGED_TYPE_AC](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果电源是AC充电。<br>         [PLUGGED_TYPE_USB](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果电源是USB DC充电。<br>         [PLUGGED_TYPE_WIRELESS](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果电源是无线充电。<br>         [PLUGGED_TYPE_BUTT](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果类型未知。 |
+| [BatteryInfo_BatteryPluggedType](#batteryinfo_batterypluggedtype) | [PLUGGED_TYPE_NONE](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果电源被拔下。<br>         [PLUGGED_TYPE_AC](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果电源是AC充电。<br>         [PLUGGED_TYPE_USB](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果电源是USB DC充电。<br>         [PLUGGED_TYPE_WIRELESS](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果电源是无线充电。<br>         [PLUGGED_TYPE_BUTT](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果类型未知。 |
 
 

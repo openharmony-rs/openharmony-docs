@@ -59,7 +59,9 @@ Defines the enums, structs, and error codes used in the asset store service.
 
 ### Asset_TagType
 
-```
+
+
+```c
 enum Asset_TagType
 ```
 
@@ -77,7 +79,7 @@ Enumerates the types of the keys of asset attributes.
 
 ### Asset_Tag
 
-```
+```c
 enum Asset_Tag
 ```
 
@@ -124,7 +126,7 @@ Enumerates the keys of asset attributes.
 
 ### Asset_ResultCode
 
-```
+```c
 enum Asset_ResultCode
 ```
 
@@ -142,7 +144,7 @@ Enumerates the result codes used in the ASSET APIs.
 | ASSET_SERVICE_UNAVAILABLE = 24000001 | The asset store service is unavailable.|
 | ASSET_NOT_FOUND = 24000002 | The asset is not found.|
 | ASSET_DUPLICATED = 24000003 | The asset already exists.|
-| ASSET_ACCESS_DENIED = 24000004 | The access to the asset is denied.|
+| ASSET_ACCESS_DENIED = 24000004 | The access is denied.|
 | ASSET_STATUS_MISMATCH = 24000005 | The lock screen status does not match.|
 | ASSET_OUT_OF_MEMORY = 24000006 | The system memory is insufficient.|
 | ASSET_DATA_CORRUPTED = 24000007 | The asset is corrupted.|
@@ -150,7 +152,7 @@ Enumerates the result codes used in the ASSET APIs.
 | ASSET_CRYPTO_ERROR = 24000009 | The cryptographic operation failed.|
 | ASSET_IPC_ERROR = 24000010 | The IPC failed.|
 | ASSET_BMS_ERROR = 24000011 | The Bundle Manager service is abnormal.|
-| ASSET_ACCOUNT_ERROR = 24000012 | The Account service is abnormal.|
+| ASSET_ACCOUNT_ERROR = 24000012 | The account system service is abnormal.|
 | ASSET_ACCESS_TOKEN_ERROR = 24000013 | The Access Token service is abnormal.|
 | ASSET_FILE_OPERATION_ERROR = 24000014 | The file operation failed.|
 | ASSET_GET_SYSTEM_TIME_ERROR = 24000015 | Failed to obtain the system time.|
@@ -160,7 +162,7 @@ Enumerates the result codes used in the ASSET APIs.
 
 ### Asset_Accessibility
 
-```
+```c
 enum Asset_Accessibility
 ```
 
@@ -178,7 +180,7 @@ Enumerates the types of the access control based on the lock screen status.
 
 ### Asset_AuthType
 
-```
+```c
 enum Asset_AuthType
 ```
 
@@ -195,7 +197,7 @@ Enumerates the user authentication types supported by assets.
 
 ### Asset_SyncType
 
-```
+```c
 enum Asset_SyncType
 ```
 
@@ -214,7 +216,7 @@ Asset sync type.
 
 ### Asset_WrapType
 
-```
+```c
 enum Asset_WrapType
 ```
 
@@ -231,7 +233,7 @@ Encrypted import/export type supported by the asset.
 
 ### Asset_ConflictResolution
 
-```
+```c
 enum Asset_ConflictResolution
 ```
 
@@ -248,7 +250,7 @@ Policy for resolving the conflict (for example, a duplicate alias).
 
 ### Asset_ReturnType
 
-```
+```c
 enum Asset_ReturnType
 ```
 
@@ -265,7 +267,7 @@ Type of the asset query result to return.
 
 ### Asset_OperationType
 
-```
+```c
 enum Asset_OperationType
 ```
 

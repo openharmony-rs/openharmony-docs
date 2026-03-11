@@ -66,17 +66,9 @@ Represents the transparently transmitted data, which contains information requir
 // databaseScopes: type of the cloud database.
 // recordTypes: names of the tables in the cloud database.
 
-interface ExtraData {
+let extraData: cloudData.ExtraData = {
   eventId: "cloud_data_change",
-  extraData: '{
-    "data": "{
-     "accountId": "aaa",
-     "bundleName": "com.bbb.xxx",
-     "containerName": "alias",
-     "databaseScopes": ["private", "shared"],
-     "recordTypes": ["xxx", "yyy", "zzz"]
-    }"
-  }'
+  extraData: '{"data": "{"accountId": "aaa", "bundleName": "com.bbb.xxx", "containerName": "alias", "databaseScopes": ["private", "shared"], "recordTypes": ["xxx", "yyy", "zzz"]}"}',
 }
 
 ```

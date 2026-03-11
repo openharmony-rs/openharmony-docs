@@ -249,15 +249,15 @@ TextArea()
 
 ## 添加事件
 
-文本框主要用于获取用户输入的信息，并将信息处理成数据进行上传，绑定onChange事件可以获取输入框内改变的文本内容，绑定onSubmit事件可以获取回车提交的文本信息，绑定onTextSelectionChange事件可以获取文本选中时手柄的位置信息或者编辑时光标的位置信息等等。用户也可以使用通用事件进行相应的交互操作。
+文本框主要用于获取用户输入的信息，并将信息处理成数据进行上传，绑定[onChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onchange)事件可以获取输入框内改变的文本内容，绑定[onSubmit](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onsubmit)事件可以获取回车提交的文本信息，绑定[onTextSelectionChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ontextselectionchange10)事件可以获取文本选中时手柄的位置信息或者编辑时光标的位置信息等等。用户也可以使用通用事件进行相应的交互操作。
 
 >  **说明：**
 >
->  在密码模式下，设置showPassword属性时，在onSecurityStateChange回调中，建议增加状态同步，具体详见如下示例。
+>  在密码模式下，设置[showPassword](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#showpassword12)属性时，在[onSecurityStateChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onsecuritystatechange12)回调中，建议增加状态同步，具体详见如下示例。
 >
-> onWillInsert、onDidInsert、onWillDelete、onDidDelete回调仅支持系统输入法的场景。
+> [onWillInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillinsert12)、[onDidInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondidinsert12)、[onWillDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwilldelete12)、[onDidDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondiddelete12)回调仅支持系统输入法的场景。
 >
-> [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillchange15)的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert、onDidDelete。
+> [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillchange15)的回调时序晚于[onWillInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillinsert12)、[onWillDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwilldelete12)，早于[onDidInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondidinsert12)、[onDidDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondiddelete12)。
 
 <!-- @[TextInputAddEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextInputAddEvent.ets) -->
 
@@ -291,6 +291,7 @@ struct TextInputEventAdd {
           \n${this.textStr4}\n${this.textStr5}\n${this.textStr6}
           \n${this.textStr7}\n${this.textStr8}\n${this.textStr9}`)
           .fontSize(20)
+          .width('70%')
         TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
           .type(InputType.Password)
           .showPassword(this.passwordState)
@@ -438,8 +439,8 @@ import { TextMenuController } from '@kit.ArkUI';
 @Component
 struct DisableMenuItem {
   aboutToAppear(): void {
-    // 禁用搜索和翻译
-    TextMenuController.disableMenuItems([TextMenuItemId.SEARCH, TextMenuItemId.TRANSLATE])
+    // 禁用搜索，翻译和AI帮写
+    TextMenuController.disableMenuItems([TextMenuItemId.SEARCH, TextMenuItemId.TRANSLATE, TextMenuItemId.AI_WRITER])
   }
 
   aboutToDisappear(): void {
@@ -473,7 +474,7 @@ struct DisableMenuItem {
 }
 ```
 
-![Text_input_disable_menu_items](figures/Text_input_disable_menu_items.gif)
+![Text_input_disable_menu_items](figures/Text_input_disable_menu_items.png)
 
 ## 自动填充
 
@@ -497,7 +498,7 @@ TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
 
   输入框可以通过[ellipsisMode](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ellipsismode18)属性设置省略位置。
 
-  ellipsisMode属性需要配合overflow设置为TextOverflow.Ellipsis使用，单独设置ellipsisMode属性不生效。
+  ellipsisMode属性需要配合[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textoverflow12)属性设置为TextOverflow.Ellipsis使用，单独设置ellipsisMode属性不生效。
 
   <!-- @[set_omission_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetProperty.ets) -->
   

@@ -19,3 +19,4 @@
   - [Configuring the Application Starting Window](launch-page-config.md)
   - [Configuring Starting Window Resources](launch-page-resource-config.md)
 - [Window Development Terminology](window-terminology.md)
+- [Window Development FAQs](window-faqs.md)

@@ -8,7 +8,7 @@
 
 The **componentSnapshot** module provides APIs for obtaining component snapshots, including snapshots of components that have been loaded and snapshots of components that have not been loaded yet. Snapshots are strictly limited to the component's layout bounds. Content drawn outside the area of the owning component or the parent component is not visible in the snapshots. In addition, sibling components stacked in the component's area are not displayed in the snapshot.
 
-Transformation properties such as scaling, translation, and rotation only apply to the child components of the target component. Applying these transformation properties directly to the target component itself has no effect; the snapshot will still display the component as it appears before any transformations are applied.
+Transformation attributes such as scaling, translation, and rotation only apply to the child components of the target component. Applying these transformation attributes directly to the target component itself has no effect; the snapshot will still display the component as it appears before any transformations are applied.
 
 For typical use cases (for example, long screenshots) and best practices of component snapshots, see [Using Component Snapshot (ComponentSnapshot)](../../ui/arkts-uicontext-component-snapshot.md).
 
@@ -17,7 +17,7 @@ For typical use cases (for example, long screenshots) and best practices of comp
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - In scenarios where [XComponent](arkui-ts/ts-basic-components-xcomponent.md) is used to, for example, display video or camera streams, obtain images through [surface](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11), instead of through an API in this module.
+> - In scenarios where [XComponent](arkui-ts/ts-basic-components-xcomponent.md) is used to, for example, display video or camera streams, obtain images through [createPixelMapFromSurface](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11), instead of through an API in this module.
 >
 > - If the content of a component does not fill the entire area allocated for it, any remaining space in the snapshot will be rendered as transparent pixels. In addition, if the component uses [image effects](arkui-ts/ts-universal-attributes-image-effect.md) or other effect-related attributes, the resulting snapshot may not be as expected. To address these potential issues, check whether to fill the component's transparent content area or to use an alternative method such as taking a [window screenshot](arkts-apis-window-Window.md#snapshot9).
 >
@@ -38,11 +38,11 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 > **NOTE**
 >
-> This API is deprecated since API version 18. You are advised to use [get](arkts-apis-uicontext-componentsnapshot.md#get12) instead on the obtained [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object.
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [get](arkts-apis-uicontext-componentsnapshot.md#get12) instead. Before calling this API, you need to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object using the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
-> Since API version 12, you can use the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object associated with the current UI context.
-> 
-> The snapshot captures content rendered in the last frame. If this API is called when the component triggers an update, the re-rendered content will not be included in the obtained snapshot.
+> - Since API version 12, you can use the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object associated with the current UI context.
+>
+> - The snapshot captures content rendered in the last frame. If this API is called when the component triggers an update, the re-rendered content will not be included in the obtained snapshot.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -58,7 +58,7 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message           |
 | -------- | ------------------- |
@@ -121,7 +121,7 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. You are advised to use [get](arkts-apis-uicontext-componentsnapshot.md#get12-1) instead on the obtained [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object.
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [get](arkts-apis-uicontext-componentsnapshot.md#get12-1) instead. Before calling this API, you need to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object using the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 12, you can use the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object associated with the current UI context.
 > 
@@ -146,7 +146,7 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message               |
 | ------ | ------------------- |
@@ -208,7 +208,7 @@ Renders a custom component in the application background and outputs its snapsho
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. You are advised to use [createFromBuilder](arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12) instead on the obtained [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object.
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [createFromBuilder](arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12) instead. Before calling this API, you need to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object using the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 12, you can use the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object associated with the current UI context.
 >
@@ -229,7 +229,7 @@ Renders a custom component in the application background and outputs its snapsho
 | builder  | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | Yes   | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001.|
 | callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt;      | Yes   | Callback used to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the callback.|
 | delay<sup>12+</sup>   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When pixel map resources are used or when **syncLoad** to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used.|
-| checkImageStatus<sup>12+</sup>  | boolean | No   | Whether to verify the image decoding status before taking a snapshot. <br>**true**: Check whether all Image components have been decoded. <br>**false**: Skip verification. If the verification is not completed, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**.|
+| checkImageStatus<sup>12+</sup>  | boolean | No   | Whether to verify the image decoding status before taking a snapshot. <br>**true**: Check whether all Image components have been decoded. <br>**false**: Skip verification. If the verification is not completed, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**|
 | options<sup>12+</sup>       | [SnapshotOptions](#snapshotoptions12)           | No   | Custom settings of the snapshot.|
 
 **Error codes**
@@ -318,15 +318,15 @@ Renders a custom component in the application background and outputs its snapsho
 
 > **NOTE**
 >
-> This API is deprecated since API version 18. You are advised to use [createFromBuilder](arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1) instead on the obtained [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object.
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [createFromBuilder](arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1) instead. Before calling this API, you need to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object using the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
-> Since API version 12, you can use the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object associated with the current UI context.
+> - Since API version 12, you can use the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object associated with the current UI context.
 > 
-> To account for the time spent in awaiting component building and rendering, the callback of offscreen snapshots has a delay of less than 500 ms.
+> - To account for the time spent in awaiting component building and rendering, the callback of offscreen snapshots has a delay of less than 500 ms.
 >
-> Components in the builder do not support the setting of animation-related attributes, such as [transition](arkui-ts/ts-transition-animation-component.md).
+> - Components in the builder do not support the setting of animation-related attributes, such as [transition](arkui-ts/ts-transition-animation-component.md).
 >
-> If a component is on a time-consuming task, for example, an [Image](arkui-ts/ts-basic-components-image.md) or [Web](../apis-arkweb/arkts-basic-components-web.md) component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
+> - If a component is on a time-consuming task, for example, an [Image](arkui-ts/ts-basic-components-image.md) or [Web](../apis-arkweb/arkts-basic-components-web.md) component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -338,7 +338,7 @@ Renders a custom component in the application background and outputs its snapsho
 | ------- | ---------------------------------------- | ---- | ---------- |
 | builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | Yes   | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001.|
 | delay<sup>12+</sup>   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When pixel map resources are used or when **syncLoad** to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms|
-| checkImageStatus<sup>12+</sup>  | boolean | No   | Whether to verify the image decoding status before taking a snapshot. <br>**true**: Check whether all Image components have been decoded. <br>**false**: Skip verification. If the verification is not completed, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**.|
+| checkImageStatus<sup>12+</sup>  | boolean | No   | Whether to verify the image decoding status before taking a snapshot. <br>**true**: Check whether all Image components have been decoded. <br>**false**: Skip verification. If the verification is not completed, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**|
 | options<sup>12+</sup>       | [SnapshotOptions](#snapshotoptions12)           | No   | Custom settings of the snapshot.|
 
 **Return value**

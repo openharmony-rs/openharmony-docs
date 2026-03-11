@@ -184,7 +184,7 @@ target_link_libraries(entry PUBLIC
    (2) imageEffect.getSurfaceId的native c++层具体实现。
 
    ```c++
-   // 根据SurfaceId创建NativeWindow，注意创建出来的NativeWindow在使用结束后需要主动调用OH_NativeWindow_DestoryNativeWindow进行释放。
+   // 根据SurfaceId创建NativeWindow，注意创建出来的NativeWindow在使用结束后需要主动调用OH_NativeWindow_DestroyNativeWindow进行释放。
    uint64_t outputSurfaceId;
    std::istrstream iss(outputSurfaceIdStr);
    issue >> outputSurfaceId;
@@ -201,7 +201,7 @@ target_link_libraries(entry PUBLIC
        OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetOutputSurface fail!");
        return;
    }
-   // 获取输入的Surface。注意获取的inputNativeWindow在使用结束后需要主动调用OH_NativeWindow_DestoryNativeWindow进行释放。
+   // 获取输入的Surface。注意获取的inputNativeWindow在使用结束后需要主动调用OH_NativeWindow_DestroyNativeWindow进行释放。
    OHNativeWindow *inputNativeWindow = nullptr;
    errorCode = OH_ImageEffect_GetInputSurface(imageEffect, &inputNativeWindow);
    if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {

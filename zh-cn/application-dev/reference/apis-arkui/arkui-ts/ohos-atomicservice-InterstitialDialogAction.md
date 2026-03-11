@@ -96,7 +96,7 @@ closeDialog(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-设置关闭按钮的色调样式，默认设置关闭按钮为亮色。
+设置关闭按钮的色调样式，默认设置关闭按钮为亮色调。
 
 | 名称 | 值 | 说明 |
 | - | - | - |

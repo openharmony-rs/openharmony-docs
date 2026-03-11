@@ -24,7 +24,7 @@ OH_ImageSource_Info结构体内容和操作方式如下：
 | -------- | -------- | -------- | -------- | -------- |
 | uint32_t | width | 图片宽度 | [OH_ImageSourceInfo_GetWidth](capi-image-source-native-h.md#oh_imagesourceinfo_getwidth) |获取图片的宽。|
 | uint32_t | height | 图片高度 | [OH_ImageSourceInfo_GetHeight](capi-image-source-native-h.md#oh_imagesourceinfo_getheight) |获取图片的高。|
-| bool | isHdr | 是否为高动态范围的信息 | [OH_ImageSourceInfo_GetDynamicRange](capi-image-source-native-h.md#oh_imagesourceinfo_getdynamicrange) |获取图片是否为高动态范围的信息。|
+| bool | isHdr | 是否为高动态范围（HDR）的信息 | [OH_ImageSourceInfo_GetDynamicRange](capi-image-source-native-h.md#oh_imagesourceinfo_getdynamicrange) |获取图片是否为高动态范围的信息。|
 | [Image_MimeType](capi-image-nativemodule-image-string.md) | mimeType | 图片源的MIME类型 | [OH_ImageSourceInfo_GetMimetype](./capi-image-source-native-h.md#oh_imagesourceinfo_getmimetype) | 获取图片的MimeType。|
 
 **起始版本：** 13

@@ -28,7 +28,7 @@ napi_create_reference这个接口内部实现会new一个C++对象，因此，�
 [使用Node-API接口进行生命周期相关开发](use-napi-life-cycle.md)  
 
 使用Node-API时导致内存泄漏的常见原因：  
-1. napi_value不在napi_handle_scope管理中，导致napi_value持有的ArkTS对象无法释放，该问题常见于直接使用uv_queue_work的场景中。解决方法是添加napi_open_handle_scope和napi_close_handle_scope接口。
+1. napi_value不在napi_handle_scope管理中，导致napi_value持有的ArkTS对象无法释放，该问题常见于[直接使用uv_queue_work的场景](napi-guidelines.md#异步任务)中。解决方法是添加napi_open_handle_scope和napi_close_handle_scope接口。
 
    此类泄漏可通过snapshot分析定位原因，泄漏的ArkTS对象distance为1，即不知道被谁持有，这种情况下一般就是被native（napi_value是个指针，指向native持有者）持有了，且napi_value不在napi_handle_scope范围内，可参考[易错API的使用规范](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。   
 

@@ -109,7 +109,7 @@ To enable a system application to access the AVSession service as a controller, 
    ```
 
 2. Listen for the session state and service state events.
-
+   
    The following session state events are available:
 
    - **sessionCreate**: triggered when a session is created.

@@ -10,6 +10,8 @@ The **linkEnhance** module delivers highly efficient Bluetooth connectivity and 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -26,6 +28,8 @@ Creates a **Server** object. After **start()** is called, the device can be conn
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -78,6 +82,8 @@ Creates a **Connection** object on the device that functions as the client. The 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -137,6 +143,8 @@ Starts a server so that it can be connected by the client. A maximum of 10 serve
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Error codes**
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
@@ -175,6 +183,8 @@ Stops the server. After the server is stopped, you can call `start` to start it 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Error codes**
 
@@ -215,6 +225,8 @@ Destroys the **Server** object to release related resources. To interact with th
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Error codes**
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
@@ -252,6 +264,8 @@ Registers a callback listener for **connectionAccepted** events. This API uses a
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 | Name      | Type                                   | Mandatory  | Description   |
@@ -304,6 +318,8 @@ Unregisters the callback listener for **connectionAccepted** events. This API us
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
@@ -335,11 +351,11 @@ try {
   // Construct a Server object using the specified name.
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
-    hilog.info(0x0000, TAG, 'accpet new connection');
+    hilog.info(0x0000, TAG, 'accept new connection');
   });
   // Unsubscribe from connectionAccepted events.
   server.off('connectionAccepted', (connection: linkEnhance.Connection): void => {
-    hilog.info(0x0000, TAG, 'accpet new connection');
+    hilog.info(0x0000, TAG, 'accept new connection');
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -356,6 +372,8 @@ Registers a callback listener for **serverStopped** events. This API uses an asy
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -410,6 +428,8 @@ Unregisters the callback listener for **serverStopped** events. This API uses an
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
@@ -458,6 +478,8 @@ Represents the connection result, which is returned after the client calls **con
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 | **Name**                   | Type      |Read-Only  | Optional  | Description                |
 | ----------------- | ------ | ----  | ---- | ------------------ |
 | deviceId          | string | No   |No   | ID of the peer device. If the connection is successful, the device ID of the peer device is returned. If the connection fails, an empty string is returned.    |
@@ -478,6 +500,7 @@ Connects to the server on the client. A maximum number of 10 connections are sup
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Error codes**
 
@@ -526,6 +549,7 @@ Disconnects from the peer device. The created **Connection** object remains vali
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Error codes**
 
@@ -571,6 +595,8 @@ Destroys the **Connection** object to release resources. If the device needs to 
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Error codes**
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
@@ -615,6 +641,7 @@ Obtains the device ID of the peer device. This API is called when the connection
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Returns**
 
@@ -661,6 +688,8 @@ Sends data to the server after a connection is established successfully. When th
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -719,6 +748,8 @@ Registers a listener for **connectResult** events. This API uses an asynchronous
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
@@ -770,6 +801,8 @@ Unregisters the listener for **connectResult** events.
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -823,6 +856,8 @@ Registers a listener for **disconnected** events. This API uses an asynchronous 
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
@@ -871,6 +906,8 @@ Unregisters the listener for **disconnected** events. This API uses an asynchron
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -924,6 +961,8 @@ Registers a listener for the **dataReceived** events. This API uses an asynchron
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
@@ -971,6 +1010,8 @@ Unregisters the listener for **dataReceived** events.
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 

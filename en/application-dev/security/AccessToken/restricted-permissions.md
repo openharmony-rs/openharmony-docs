@@ -590,6 +590,7 @@ This permission can be requested successfully only when:
 Allows a peripheral extension driver to access the SCSI DDK APIs to implement development of SCSI extended peripheral drivers.
 
 The APIs can be used to develop the following types of peripheral extension drivers:
+
 Peripherals connected to the host via a USB bus and:
 
 1. InterfaceClass of the peripheral is Mass Storage (0x08) and InterfaceSubClass is SCSI Transparent Command Set (0x06).

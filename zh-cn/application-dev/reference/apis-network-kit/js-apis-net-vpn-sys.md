@@ -295,9 +295,9 @@ struct Index {
       timeout: 6000
     }
     tcp.connect(addressConnect);
-    tcp.getSocketFd().then((tunnelfd: number) => {
-      console.info("tunenlfd: " + tunnelfd);
-      this.VpnConnection.protect(tunnelfd, (error: BusinessError) => {
+    tcp.getSocketFd().then((tunnelFd: number) => {
+      console.info("tunenlfd: " + tunnelFd);
+      this.VpnConnection.protect(tunnelFd, (error: BusinessError) => {
         console.error(JSON.stringify(error));
       });
     });
@@ -376,9 +376,9 @@ struct Index {
       timeout: 6000
     }
     tcp.connect(addressConnect);
-    tcp.getSocketFd().then((tunnelfd: number) => {
-      console.info("tunenlfd: " + tunnelfd);
-      this.VpnConnection.protect(tunnelfd).then(() => {
+    tcp.getSocketFd().then((tunnelFd: number) => {
+      console.info("tunenlfd: " + tunnelFd);
+      this.VpnConnection.protect(tunnelFd).then(() => {
         console.info("protect success.");
       }).catch((err: BusinessError) => {
         console.error("protect fail" + JSON.stringify(err));

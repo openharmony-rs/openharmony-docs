@@ -1,4 +1,10 @@
 # @system.request (Upload and Download)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Request-->
+<!--Owner: @huaxin05-->
+<!--Designer: @hu-kai45-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 The **system.request** module provides applications with basic upload and download capabilities.
 
@@ -11,8 +17,8 @@ The **system.request** module provides applications with basic upload and downlo
 ## Modules to Import
 
 
-```
-import request from '@system.request';
+```js
+import { Request } from '@kit.BasicServicesKit';
 ```
 
 ## request.upload<sup>(deprecated)</sup>
@@ -23,6 +29,10 @@ Uploads a file. This API returns no value.
 
 **System capability**: SystemCapability.MiscServices.Upload
 
+> **NOTE**
+>
+> This API has been supported since API version 3 and deprecated since API version 9. You are advised to use [request.uploadFile](js-apis-request.md#requestuploadfile9) instead.
+
 **Parameters**
 
   | Name| Type| Mandatory| Description|
@@ -32,7 +42,7 @@ Uploads a file. This API returns no value.
 **Example**
 
   ```js
-  import request, { UploadRequestOptions } from '@system.request';
+  import  { Request, UploadRequestOptions, UploadResponse } from '@kit.BasicServicesKit';
 
   let uploadRequestOptions: UploadRequestOptions = {
     url: 'http://www.path.com',
@@ -47,22 +57,22 @@ Uploads a file. This API returns no value.
       name: "name123",
       value: "123"
     }],
-    success: (data: object) => {
-      console.info(' upload success, code:' + JSON.stringify(data));
+    success: (data: UploadResponse) => {
+      console.info('Succeeded in uploading, code:' + JSON.stringify(data.code));
     },
-    fail: (data:string, code:number) => {
-      console.info(' upload fail data: ' + data + 'code: ' + code);
+    fail: (data: string, code: number) => {
+      console.info('Failed to upload, data: ' + data + 'code: ' + code);
     },
     complete: () => {
-      console.info(' upload complete');
+      console.info('Upload complete');
     }
   }
 
   try {
-    request.upload(uploadRequestOptions);
-    console.info('upload start ');
+    Request.upload(uploadRequestOptions);
+    console.info('Start Upload');
   } catch (err) {
-    console.info(' upload err:' + err);
+    console.error('Failed to upload, err:' + err);
   }
   ```
 
@@ -71,7 +81,11 @@ Uploads a file. This API returns no value.
 
 **System capability**: SystemCapability.MiscServices.Upload
 
+> **NOTE**
+>
+> This API has been supported since API version 3 and deprecated since API version 9. You are advised to use [UploadConfig](js-apis-request.md#uploadconfig) instead.
 
+**Parameters**
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | url | string | Yes| URL of the upload server.|
@@ -147,29 +161,29 @@ Downloads a file. This API returns no value.
 **Example**
 
   ```js
-  import request, { DownloadRequestOptions } from '@system.request';
+  import  { Request, DownloadResponse, DownloadRequestOptions } from '@kit.BasicServicesKit';
 
   let downloadRequestOptions: DownloadRequestOptions = {
     url: 'http://www.path.com',
-    filename: 'requestSystenTest',
+    filename: 'requestSystemTest',
     header: "",
-    description: 'this is requeSystem download response',
-    success: (data:object) => {
-      console.info(' download success, code:' + JSON.stringify(data));
+    description: 'this is requestSystem download response',
+    success: (data: DownloadResponse) => {
+      console.info('Succeeded in downloading, token:' + JSON.stringify(data.token));
     },
-    fail: (data:string, code:number) => {
-      console.info(' download fail data: ' + data + 'code: ' + code);
+    fail: (data: string, code: number) => {
+      console.info('Failed to download, data: ' + data + 'code: ' + code);
     },
     complete: () => {
-      console.info(' download complete');
+      console.info('Download complete');
     }
   }
 
   try {
-    request.download(downloadRequestOptions);
-    console.info('download start ');
+    Request.download(downloadRequestOptions);
+    console.info('Start download');
   } catch(err) {
-    console.info(' download err:' + err);
+    console.error('Failed to download, err:' + err);
   }
   ```
 
@@ -178,6 +192,11 @@ Downloads a file. This API returns no value.
 
 **System capability**: SystemCapability.MiscServices.Download
 
+> **NOTE**
+>
+> This API has been supported since API version 3 and deprecated since API version 9. You are advised to use [UploadConfig](js-apis-request.md#uploadconfig) instead.
+
+**Parameters**
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | url | string | Yes| Resource URL.|
@@ -225,22 +244,22 @@ Listens for download task status. This API returns no value.
 **Example**
 
   ```js
-  import request, { OnDownloadCompleteOptions } from '@system.request';
+  import  { Request, OnDownloadCompleteOptions, OnDownloadCompleteResponse } from '@kit.BasicServicesKit';
 
   let onDownloadCompleteOptions: OnDownloadCompleteOptions = {
     token: 'token-index',
-    success: (data:object) => {
-      console.info(' download success, code:' + JSON.stringify(data));
+    success: (data: OnDownloadCompleteResponse) => {
+      console.info('Succeeded in downloading, uri:' + JSON.stringify(data.uri));
     },
-    fail: (data:string, code:number) => {
-      console.info(' download fail data: ' + data + 'code: ' + code);
+    fail: (data: string, code: number) => {
+      console.info('Failed to download, data: ' + data + 'code: ' + code);
     },
     complete: () => {
-      console.info(' download complete');
+      console.info('Download complete');
     }
   }
 
-  request.onDownloadComplete(onDownloadCompleteOptions);
+  Request.onDownloadComplete(onDownloadCompleteOptions);
   ```
 
 

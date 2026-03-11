@@ -226,7 +226,6 @@ Enumerates the task QoS types.
 | qos_default = ffrt_qos_default | Default type.|
 | qos_user_initiated = ffrt_qos_user_initiated | User initiated.|
 
-
 ## Function Description
 
 ### ffrt_function_t()

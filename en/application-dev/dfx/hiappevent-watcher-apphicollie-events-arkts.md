@@ -22,7 +22,7 @@ Since API version 21, the ArkTS APIs are supported to subscribe to task executio
 
 ### Adding an Event Watcher
 
-To ensure that event callbacks can be successfully received in the development phase, you are advised to create a native C++ project, implement subscription in the ArkTs code, and use C++ code to construct fault injection to trigger task execution timeout events.
+To ensure that event callbacks can be successfully received in the development phase, you are advised to create a native C++ project, implement subscription in the ArkTS code, and use C++ code to construct fault injection to trigger task execution timeout events.
 
 1. Create a native C++ project. The directory structure is as follows:
 

@@ -20,14 +20,14 @@
 
 ## 开发音频录制应用须知
 
-- 应用可以调用麦克风录制音频，但该行为属于隐私敏感行为，在调用麦克风前，需要先[向用户申请权限](../../security/AccessToken/request-user-authorization.md)：ohos.permission.MICROPHONE。
+- 应用可以调用麦克风录制音频，但该行为属于隐私敏感行为，在调用麦克风前，需要先[向用户申请授权](../../security/AccessToken/request-user-authorization.md)：ohos.permission.MICROPHONE。
   
   如何使用和管理麦克风请参考[管理麦克风静音状态](mic-management.md)。
 
-- 如果需要持续录制或后台录制，请申请长时任务避免进入挂起（Suspend）状态。具体参考[长时任务开发指导](../../task-management/continuous-task.md)。
+- 如果需要持续录制或后台录制，请申请长时任务避免进入挂起（Suspend）状态。具体参考[长时任务(ArkTS)](../../task-management/continuous-task.md)。
 - 录制需要在前台启动，启动后可以退后台。在后台启动录制将会失败。
 - 应用录制音频时需要使用合适的录制流类型，请参考[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)。
-- 如果开发者需要实现屏幕录制功能，可参考[使用AVScreenCaptureRecorder录屏写文件(ArkTs)](../media/using-avscreencapture-ArkTs.md)和[使用AVScreenCapture录屏写文件(C/C++)](../media/using-avscreencapture-for-file.md)。
+- 如果开发者需要实现屏幕录制功能，可参考[使用AVScreenCaptureRecorder录屏写文件(ArkTS)](../media/using-avscreencapture-ArkTs.md)和[使用AVScreenCapture录屏写文件(C/C++)](../media/using-avscreencapture-for-file.md)。
 
 
 

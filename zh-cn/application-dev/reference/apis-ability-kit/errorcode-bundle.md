@@ -242,7 +242,7 @@ Failed to install the HAP since the version of the HAP to install is too early.
 
 2. 新安装的应用查看版本，HAP或者HSP用DevEco Studio打开，查看里面module.json文件中的versionCode字段配置。
 
-    ![示例图](figures/hap_verisonCode.PNG)
+    ![示例图](figures/hap_versionCode.PNG)
 
 ## 17700018 安装失败，依赖的模块不存在
 
@@ -706,8 +706,7 @@ Failed to install the HAP because an enterprise normal/MDM bundle cannot be inst
 当前设备禁止安装企业MDM应用或普通企业应用。
 
 **可能原因**<br/>
-当前设备不允许安装[Profile签名文件](../../security/app-provision-structure.md)>中如下两种类型的应用：enterprise_mdm（企业MDM应用）、enterprise_normal（普通企业应用）。
-Profile签名文件类型的取值及含义请参考[ApplicationInfo.appDistributionType](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)。
+当前设备不允许安装[Profile签名文件](../../security/app-provision-structure.md)>中如下两种类型的应用：enterprise_mdm（企业MDM应用）、enterprise_normal（普通企业应用）。Profile签名文件类型的取值及含义请参考[ApplicationInfo.appDistributionType](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)。
 
 **处理步骤**<br/>
 更换Profile签名文件中的类型。

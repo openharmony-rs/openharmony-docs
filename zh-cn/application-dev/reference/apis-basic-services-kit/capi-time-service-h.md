@@ -12,6 +12,8 @@
 
 **库：** libtime_service_ndk.so
 
+**引用文件：** <BasicServicesKit/time_service.h>
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **起始版本：** 12
@@ -81,6 +83,4 @@ TimeService_ErrCode OH_TimeService_GetTimeZone(char *timeZone, uint32_t len)
 
 | 类型 | 说明 |
 | -- | -- |
-| [TimeService_ErrCode](#timeservice_errcode) | 返回[TIMESERVICE_ERR_OK](capi-time-service-h.md#timeservice_errcode)表示成功。<br>         返回[TIMESERVICE_ERR_INTERNAL_ERROR](capi-time-service-h.md#timeservice_errcode)表示获取系统参数失败。<br>         返回[TIMESERVICE_ERR_INVALID_PARAMETER](capi-time-service-h.md#timeservice_errcode)表示timeZone为NULL指针或时区名称（不包括结束字符（'\0'））的大小大于或等于len。 |
-
-
+| [TimeService_ErrCode](#timeservice_errcode) | 返回`TIMESERVICE_ERR_OK`表示成功。<br>返回`TIMESERVICE_ERR_INTERNAL_ERROR`表示获取系统参数失败。<br>返回`TIMESERVICE_ERR_INVALID_PARAMETER`表示timeZone为NULL指针或时区名称（不包括结束字符（'\0'））的大小大于或等于len。 |

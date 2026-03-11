@@ -17,7 +17,7 @@ HiTraceId定义。
 
 **起始版本：** 12
 
-**相关模块：** [Hitrace](capi-hitrace.md)
+**相关模块：** [HiTrace](capi-hitrace.md)
 
 **所在头文件：** [trace.h](capi-trace-h.md)
 

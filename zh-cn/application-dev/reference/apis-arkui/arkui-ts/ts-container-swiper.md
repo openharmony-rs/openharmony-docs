@@ -26,7 +26,7 @@
 >
 >  - Swiper子组件的[visibility](ts-universal-attributes-visibility.md#visibility)属性设置为Visibility.None，且Swiper的displayCount属性设置为'auto'时，对应子组件在视窗内不占位，但不影响导航点个数；visibility属性设置为Visibility.None或者Visibility.Hidden时，对应子组件不显示，但依然会在视窗内占位。
 >
->  - 当Swiper子组件设置了[offset](ts-universal-attributes-location.md#offset)属性时，会按照子组件的层级进行绘制，层级高的子组件会覆盖层级低的子组件。例如，Swiper包含3个子组件，其中第3个子组件设置了offset({ x : 100 })，那么在横向循环滑动中，第3个子组件会覆盖第1个子组件，此时可设置第1个子组件的[zIndex](ts-universal-attributes-z-order.md)属性值大于第3个子组件，使第1个子组件层级高于第3个子组件。
+>  - 当Swiper子组件设置了[offset](ts-universal-attributes-location.md#offset)属性时，会按照子组件的层级进行绘制，层级高的子组件会覆盖层级低的子组件。例如，Swiper包含3个子组件，其中第3个子组件设置了offset({ x : 100 })，那么在横向循环滑动中，第3个子组件会覆盖第1个子组件，此时可设置第1个子组件的[zIndex](ts-universal-attributes-z-order.md#zindex)属性值大于第3个子组件，使第1个子组件层级高于第3个子组件。
 >
 >  - 在走焦到用户定义的子节点时，导航点、箭头会由于[焦点样式](../../../ui/arkts-common-events-focus-event.md#焦点样式)修改zIndex的行为被遮挡。
 >
@@ -57,7 +57,7 @@ Swiper(controller?: SwiperController)
 
 > **说明：**
 >
-> Swiper组件[通用属性clip](ts-universal-attributes-sharp-clipping.md)的默认值为true。
+> Swiper组件通用属性[clip](ts-universal-attributes-sharp-clipping.md#clip12)的默认值为true。
 
 ### index
 
@@ -584,13 +584,13 @@ pageFlipMode(mode: Optional\<PageFlipMode>)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>取undefined时，按取值为PageFlipMode.CONTINUOUS处理。 |
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>取undefined时，按取值为PageFlipMode.CONTINUOUS处理。 |
 
 ### maintainVisibleContentPosition<sup>20+</sup>
 
 maintainVisibleContentPosition(enabled: boolean)
 
-设置显示区域上方或前方插入或删除数据时是否保持可见内容位置不变。适用于使用单一[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)作为Swiper子节点的情况，通过LazyForEach的[onDateAdd](ts-rendering-control-lazyforeach.md#ondataadd8)、[onDataDelete](ts-rendering-control-lazyforeach.md#ondatadelete8)等接口修改数据源。其他场景下，显示区域上方或前方插入或删除数据，可见内容位置会变化。
+设置显示区域上方或前方插入或删除数据时是否保持可见内容位置不变。适用于使用单一[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)作为Swiper子节点的情况，通过LazyForEach的[onDataAdd](ts-rendering-control-lazyforeach.md#ondataadd8)、[onDataDelete](ts-rendering-control-lazyforeach.md#ondatadelete8)等接口修改数据源。其他场景下，显示区域上方或前方插入或删除数据，可见内容位置会变化。
 
 在[displayCount](#displaycount8)属性的swipeByGroup参数设置为true，即按组翻页生效时，一次在显示区域上方或前方插入或删除数据，且插入或删除的是一组节点数量倍数的数据量时，才能保持可见内容位置不变，否则可见内容位置可能会随每组数据重新分组改变。
 
@@ -614,7 +614,7 @@ indicatorStyle(value?: IndicatorStyle)
 
 > **说明：** 
 >
-> 从API version 8开始支持，从API version 10开始废弃，无替代接口。可以使用[Indicator](#indicator10)、[DigitIndicator](#digitindicator10)和[DotIndicator](#dotindicator10)设置导航点样式。
+> 从API version 8开始支持，从API version 10开始废弃，建议使用[indicator](#indicator)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -780,7 +780,7 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
 | 参数名   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
-| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<Array\<number>> | 是 | 需预加载的子节点的下标数组。|
+| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<Array\<number>> | 是 | 需预加载的子节点的下标数组。|
 
 **返回值：**
 
@@ -1061,7 +1061,7 @@ DotIndicator的构造函数。
 
 itemWidth(value: Length): DotIndicator
 
-Swiper组件圆点导航指示器的宽，不支持设置百分比。
+Swiper组件圆点导航指示器的宽。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -1073,7 +1073,7 @@ Swiper组件圆点导航指示器的宽，不支持设置百分比。
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 设置Swiper组件圆点导航指示器的宽，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：[0, +∞) |
+| value  | [Length](ts-types.md#length) | 是   | 设置Swiper组件圆点导航指示器的宽，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞) |
 
 **返回值：** 
 
@@ -1085,7 +1085,7 @@ Swiper组件圆点导航指示器的宽，不支持设置百分比。
 
 itemHeight(value: Length): DotIndicator
 
-Swiper组件圆点导航指示器的高，不支持设置百分比。
+Swiper组件圆点导航指示器的高。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -1097,7 +1097,7 @@ Swiper组件圆点导航指示器的高，不支持设置百分比。
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 设置Swiper组件圆点导航指示器的高，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：[0, +∞) |
+| value  | [Length](ts-types.md#length) | 是   | 设置Swiper组件圆点导航指示器的高，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞) |
 
 **返回值：** 
 
@@ -1109,7 +1109,7 @@ Swiper组件圆点导航指示器的高，不支持设置百分比。
 
 selectedItemWidth(value: Length): DotIndicator
 
-选中Swiper组件圆点导航指示器的宽，不支持设置百分比。
+选中Swiper组件圆点导航指示器的宽。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -1121,7 +1121,7 @@ selectedItemWidth(value: Length): DotIndicator
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 设置选中Swiper组件圆点导航指示器的宽，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：[0, +∞) |
+| value  | [Length](ts-types.md#length) | 是   | 设置选中Swiper组件圆点导航指示器的宽，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞) |
 
 **返回值：** 
 
@@ -1133,7 +1133,7 @@ selectedItemWidth(value: Length): DotIndicator
 
 selectedItemHeight(value: Length): DotIndicator
 
-选中Swiper组件圆点导航指示器的高，不支持设置百分比。
+选中Swiper组件圆点导航指示器的高。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -1145,7 +1145,7 @@ selectedItemHeight(value: Length): DotIndicator
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 设置选中Swiper组件圆点导航指示器的高，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：[0, +∞) |
+| value  | [Length](ts-types.md#length) | 是   | 设置选中Swiper组件圆点导航指示器的高，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞) |
 
 **返回值：** 
 
@@ -1251,7 +1251,7 @@ maxDisplayCount(maxDisplayCount: number): DotIndicator
 
 space(space: LengthMetrics): DotIndicator
 
-设置Swiper圆点导航点间距，不支持设置百分比。
+设置Swiper圆点导航点间距。
 
 **卡片能力：** 从API version 19开始，该接口支持在ArkTS卡片中使用。
 
@@ -1263,7 +1263,7 @@ space(space: LengthMetrics): DotIndicator
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| space  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 是   | 设置圆点导航点间距，不支持设置百分比。<br/>默认值：8<br/>单位：vp<br/>取值范围：[0, +∞) |
+| space  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 是   | 设置圆点导航点间距，不支持设置百分比。<br/>默认值：PC/2in1设备上为10，其他设备为8。<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 **返回值：** 
 

@@ -10,7 +10,7 @@ The OHAVSession module provides C APIs to implement an AVSession provider. An au
 
 ## Prerequisites
 
-To use [OHAVSession](../../reference/apis-avsession-kit/capi-native-avsession-h.md) to implement media sessions, add the corresponding header files.
+To use [native_avsession.h](../../reference/apis-avsession-kit/capi-native-avsession-h.md) to implement media sessions, add the corresponding header files.
 
 ### Linking the Dynamic Libraries in the CMake Script
 
@@ -48,9 +48,9 @@ To access a local session with the NDK, perform the following steps:
 2. Set the metadata of the media asset to be played.
 
    To set metadata, use **OH_AVMetadataBuilder** to construct specific data, generate an OH_AVMetadata instance, and then call the APIs of **OH_AVMetadata** to set the asset.
-
+ 
    The code snippet below shows how to call **OH_AVMetadataBuilder** to construct metadata:
-
+ 
    ```c++
    // Create an OH_AVMetadataBuilder.
    OH_AVMetadataBuilder* builder;
@@ -115,7 +115,6 @@ To access a local session with the NDK, perform the following steps:
    > **NOTE**
    >
    > After the provider registers a listener for fixed playback control commands, the commands will be reflected in **getValidCommands()** of the controller. In other words, the controller determines that the command is valid and triggers the corresponding event as required. To ensure that the playback control commands delivered by the controller can be executed normally, the provider should not use a null implementation for listening.
-   >
    > To avoid any exception, call the API to unregister the listener when the service ends.
  
    Currently, the following playback control commands are supported:
@@ -167,3 +166,8 @@ To access a local session with the NDK, perform the following steps:
    OH_AVSession_Destroy(avsession);
    ```
 
+## Samples
+
+The following sample is provided to help you better understand how to develop an AVSession provider with the NDK:
+
+- [AVSession - Provider (C/C++, API version 13)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVSession/MediaProvider)

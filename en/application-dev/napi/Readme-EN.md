@@ -8,12 +8,12 @@
 - [About This Kit](ndk-development-overview.md)
 - [Creating an NDK Project](create-with-ndk.md)
 - Building an NDK Project<!--build-with-ndk-->
-  - [NDK Project Building Overview](build-with-ndk-overview.md)
+  - [Overview](build-with-ndk-overview.md)
   - [Building an NDK Project with the DevEco Studio Template](build-with-ndk-ide.md)
   - [Building an NDK Project with the Command Line CMake](build-with-ndk-cmake.md)
   - [Building an NDK Project with Prebuilt Libraries](build-with-ndk-prebuilts.md)
 - Code Development<!--coding-->
-  - [Development Overview](develop-code-overview.md)
+  - [Overview](develop-code-overview.md)
   - C/C++ Standard Library<!--c-cpp-->
     - [C/C++ Library Mechanisms](c-cpp-overview.md)
     - [Using fdsan](fdsan.md)
@@ -130,10 +130,10 @@
   - Bundle Management<!--bundle-management-->
     - [Native Bundle Development](native-bundle-guidelines.md)
 - Debugging and Profiling<!--debugging-profiling-->
-  - [Debugging and Profiling Overview](debug-performance-profiling-overview.md)
+  - [Overview](debug-performance-profiling-overview.md)
   - [C/C++ Memory Error Detection](debug-asan.md)
 - Hardware Compatibility<!--hardware-compatibility-->
-  - [Introduction to Hardware Compatibility](hw-guide.md)
+  - [Overview](hw-guide.md)
   - [OpenHarmony ABIs](ohos-abi.md)
   - [CPU Features](cpu-features.md)
   - [Using Neon Instructions](neon-guide.md)

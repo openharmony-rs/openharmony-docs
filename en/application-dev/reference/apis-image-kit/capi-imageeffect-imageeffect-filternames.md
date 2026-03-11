@@ -23,12 +23,17 @@ The struct describes the filter name information.
 ## Summary
 
 ### Member Variables
-
+**The following table lists the declarations supporting C++ syntax.**
 | Name| Description|
 | -- | -- |
 | uint32_t size = 0 | Number of filter names.|
-| const char** nameList = nullptr | List of filter names.|
+| const char \*\*nameList = nullptr | List of filter names.|
 
+**The following table lists the declarations supporting C syntax.**
+| Name| Description|
+| -- | -- |
+| uint32_t size| Number of filter names.|
+| const char \*\*nameList | List of filter names.|
 
 ### Member functions
 

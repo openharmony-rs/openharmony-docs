@@ -26,7 +26,7 @@ import { shortKey } from '@kit.InputKit';
 
 setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置快捷键拉起Ability的延迟时间，使用Callback异步回调。
+设置快捷键拉起Ability的延迟时间，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.ShortKey
 

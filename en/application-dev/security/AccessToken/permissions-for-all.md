@@ -272,36 +272,6 @@ With this permission, the application can publish sticky common events, so that 
 
 **Valid since**: 7
 
-## ohos.permission.MODIFY_AUDIO_SETTINGS
-
-Allows an application to modify audio settings.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Valid since**: 8
-
-## ohos.permission.RUNNING_LOCK
-
-Allows an application to obtain a running lock.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Valid since**: 7
-
-## ohos.permission.SET_WALLPAPER
-
-Allows an application to set wallpapers.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Valid since**: 7
-
 ## ohos.permission.ACCESS_CERT_MANAGER
 
 Allows an application to query certificates and private credentials.
@@ -311,16 +281,6 @@ Allows an application to query certificates and private credentials.
 **Authorization mode**: system_grant
 
 **Valid since**: 9
-
-## ohos.permission.hsdr.HSDR_ACCESS
-
-Allows an application to access OpenHarmony Security Detection and Response Framework.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Valid since**: 10
 
 ## ohos.permission.RUN_DYN_CODE
 

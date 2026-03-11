@@ -14,6 +14,8 @@ This file declares the functions related to the coordinate point in the drawing 
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -34,7 +36,7 @@ This file declares the functions related to the coordinate point in the drawing 
 
 ### OH_Drawing_PointCreate()
 
-```
+```c
 OH_Drawing_Point* OH_Drawing_PointCreate(float x, float y)
 ```
 
@@ -62,7 +64,7 @@ Creates an **OH_Drawing_Point** object.
 
 ### OH_Drawing_PointGetX()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PointGetX(const OH_Drawing_Point* point, float* x)
 ```
 
@@ -90,7 +92,7 @@ Obtains the X coordinate of a point.
 
 ### OH_Drawing_PointGetY()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PointGetY(const OH_Drawing_Point* point, float* y)
 ```
 
@@ -118,7 +120,7 @@ Obtains the Y coordinate of a point.
 
 ### OH_Drawing_PointSet()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PointSet(OH_Drawing_Point* point, float x, float y)
 ```
 
@@ -147,7 +149,7 @@ Sets the X and Y coordinates of a point.
 
 ### OH_Drawing_PointDestroy()
 
-```
+```c
 void OH_Drawing_PointDestroy(OH_Drawing_Point* point)
 ```
 

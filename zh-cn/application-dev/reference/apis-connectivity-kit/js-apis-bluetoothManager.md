@@ -1134,12 +1134,12 @@ sppListen(name: string, option: SppOption, callback: AsyncCallback&lt;number&gt;
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 function serverSocket(code: BusinessError, number: number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth serverSocket Number: ' + number);
+    console.info(`bluetooth serverSocket Number: ${number}`);
     serverNumber = number;
   }
 }
@@ -1148,7 +1148,7 @@ let sppOption: bluetoothManager.SppOption = {uuid: '00001810-0000-1000-8000-0080
 try {
     bluetoothManager.sppListen('server1', sppOption, serverSocket);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1187,20 +1187,20 @@ sppAccept(serverSocket: number, callback: AsyncCallback&lt;number&gt;): void
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 function serverSocket(code: BusinessError, number: number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth serverSocket Number: ' + number);
+    console.info(`bluetooth serverSocket Number: ${number}`);
     serverNumber = number;
   }
 }
 let clientNumber = -1;
 function acceptClientSocket(code: BusinessError, number: number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth clientSocket Number: ' + number);
+    console.info(`bluetooth clientSocket Number: ${number}`);
     // 获取的clientNumber用作服务端后续读/写操作socket的id。
     clientNumber = number;
   }
@@ -1208,7 +1208,7 @@ function acceptClientSocket(code: BusinessError, number: number) {
 try {
     bluetoothManager.sppAccept(serverNumber, acceptClientSocket);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1258,7 +1258,7 @@ function clientSocket(code: BusinessError, number: number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
@@ -1266,7 +1266,7 @@ let sppOption: bluetoothManager.SppOption = {uuid: '00001810-0000-1000-8000-0080
 try {
     bluetoothManager.sppConnect('XX:XX:XX:XX:XX:XX', sppOption, clientSocket);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1302,19 +1302,19 @@ sppCloseServerSocket(socket: number): void
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 function serverSocket(code: BusinessError, number: number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth serverSocket Number: ' + number);
+    console.info(`bluetooth serverSocket Number: ${number}`);
     serverNumber = number;
   }
 }
 try {
     bluetoothManager.sppCloseServerSocket(serverNumber);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1356,14 +1356,14 @@ function clientSocket(code: BusinessError, number: number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
 try {
     bluetoothManager.sppCloseClientSocket(clientNumber);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1406,7 +1406,7 @@ function clientSocket(code: BusinessError, number: number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
@@ -1416,7 +1416,7 @@ data[0] = 123;
 try {
     bluetoothManager.sppWrite(clientNumber, arrayBuffer);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1460,18 +1460,18 @@ function clientSocket(code: BusinessError, number: number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
 function dataRead(dataBuffer: ArrayBuffer) {
   let data = new Uint8Array(dataBuffer);
-  console.log('bluetooth data is: ' + data[0]);
+  console.info(`bluetooth data is: ${data[0]}`);
 }
 try {
     bluetoothManager.on('sppRead', clientNumber, dataRead);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1513,14 +1513,14 @@ function clientSocket(code: BusinessError, number: number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
 try {
     bluetoothManager.off('sppRead', clientNumber);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -3656,16 +3656,16 @@ client端获取蓝牙低功耗设备的所有服务，即服务发现。
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 // callback 模式
 function getServices(code: BusinessError, gattServices: Array<bluetoothManager.GattService>) {
   if (code.code == 0) {
       let services: Array<bluetoothManager.GattService> = gattServices;
-      console.log('bluetooth code is ' + code.code);
-      console.log("bluetooth services size is ", services.length);
+      console.info(`bluetooth code is ${code.code}`);
+      console.info(`bluetooth services size is ${services.length}`);
 
       for (let i = 0; i < services.length; i++) {
-        console.log('bluetooth serviceUuid is ' + services[i].serviceUuid);
+        console.info(`bluetooth serviceUuid is ${services[i].serviceUuid}`);
       }
   }
 }
@@ -3675,7 +3675,7 @@ try {
     device.connect();
     device.getServices(getServices);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -3769,9 +3769,9 @@ function readCcc(code: BusinessError, BLECharacteristic: bluetoothManager.BLECha
     if (code.code != 0) {
         return;
     }
-    console.log('bluetooth characteristic uuid: ' + BLECharacteristic.characteristicUuid);
+    console.info(`bluetooth characteristic uuid: ${BLECharacteristic.characteristicUuid}`);
     let value = new Uint8Array(BLECharacteristic.characteristicValue);
-    console.log('value length: ' + value.length);
+    console.info(`value length: ${value.length}`);
 }
 
 let descriptors: Array<bluetoothManager.BLEDescriptor> = [];
@@ -3902,14 +3902,13 @@ client端读取蓝牙低功耗设备特定的特征包含的描述符。
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 function readDesc(code: BusinessError, BLEDescriptor: bluetoothManager.BLEDescriptor) {
     if (code.code != 0) {
         return;
     }
-    console.log('bluetooth descriptor uuid: ' + BLEDescriptor.descriptorUuid);
+    console.info(`bluetooth descriptor uuid: ${BLEDescriptor.descriptorUuid}`);
     let value = new Uint8Array(BLEDescriptor.descriptorValue);
-    console.log('bluetooth descriptor value: ' + value[0] +','+ value[1]+','+ value[2]+','+ value[3]);
 }
 
 let bufferDesc = new ArrayBuffer(8);
@@ -4331,9 +4330,9 @@ client端订阅蓝牙低功耗设备的连接状态变化事件。
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 function ConnectStateChanged(state: bluetoothManager.BLEConnectChangedState) {
-    console.log('bluetooth connect state changed');
+    console.info('bluetooth connect state changed');
     let connectState: bluetoothManager.ProfileConnectionState = state.state;
 }
 try {

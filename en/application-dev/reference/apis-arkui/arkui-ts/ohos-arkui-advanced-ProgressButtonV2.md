@@ -16,19 +16,17 @@ This component is implemented based on [state management V2](../../../ui/state-m
 >
 > - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - If the **ProgressButtonV2** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **ProgressButtonV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ProgressButtonV2** component.
 
 
 ## Modules to Import
 
-```
+``` ts
 import { ColorMetrics, LengthMetrics, ProgressButtonV2,  ProgressButtonV2Color } from '@kit.ArkUI';
 ```
 
 ## ProgressButtonV2
 
-ProgressButtonV2({progress: number, content: ResourceStr, progressButtonWidth?: LengthMetrics, onClicked: ClickCallback,
-isEnabled: boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
+ProgressButtonV2({progress: number, content: ResourceStr, progressButtonWidth?: LengthMetrics, onClicked: ClickCallback, isEnabled: boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
 
 Creates a text-based download button with a progress indicator that shows the download progress.
 

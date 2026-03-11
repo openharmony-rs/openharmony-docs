@@ -9,8 +9,7 @@
 The SceneResource module provides basic resource types in 3D graphics.
 
 > **NOTE**
->
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 ```ts
@@ -28,7 +27,7 @@ Enumerates the scene resource types, which are used to classify resources in a s
 | UNKNOWN | 0 | Unknown.|
 | NODE | 1 | Node resource.|
 | ENVIRONMENT | 2 | Environment resource.|
-| MATERIAL | 3 | Material resource.|
+| MATERIAL | 3 | Material type.|
 | MESH | 4 | Mesh resource.|
 | ANIMATION | 5 | Animation resource.|
 | SHADER | 6 | Shader resource.|
@@ -135,7 +134,7 @@ Material resource, which inherits from [SceneResource](#sceneresource-1).
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| materialType | [MaterialType](#materialtype) | Yes| No| Type of the material.|
+| materialType | [MaterialType](#materialtype) | Yes| No| Material type.|
 | shadowReceiver<sup>20+</sup> | boolean | No| Yes| Whether the material receives shadows. **true** if the material receives shadows, **false** otherwise. The default is **false**.|
 | cullMode<sup>20+</sup> | [CullMode](#cullmode20) | No| Yes| Culling mode of the material, which can be used to determine whether to cull front or back faces. The default value is **BACK**.|
 | blend<sup>20+</sup> | [Blend](#blend20) | No| Yes| Whether the material is transparent. The default value is **false**.|
@@ -487,7 +486,7 @@ Enumerates the environment background types, which are used to define how the ba
 | BACKGROUND_NONE | 0 | No background.|
 | BACKGROUND_IMAGE | 1 | Image background.|
 | BACKGROUND_CUBEMAP | 2 | Cubemap background.|
-| BACKGROUND_EQUIRECTANGULAR | 3 | Equirectangular background.|
+| BACKGROUND_EQUIRECTANGULAR | 3 | Equirectangular projection background.|
 
 ## Environment
 Environment resource, which inherits from [SceneResource](#sceneresource-1).

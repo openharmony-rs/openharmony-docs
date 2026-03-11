@@ -236,6 +236,7 @@ OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
 以录制为例，开发者可以使用以下接口控制音频流的开始、暂停、停止和释放。
 
 > **注意:**
+>
 > 在实现耳返功能时，开发者需同时控制录制流和播放流，确保两者同步。
 
 | 接口                                                     | 说明         |

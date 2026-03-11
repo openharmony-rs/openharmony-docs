@@ -26,7 +26,7 @@ This file defines the APIs for the cloud disk management module.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) | CloudDisk_PathInfo | A struct that encapsulates the file path information.|
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) | CloudDisk_PathInfo/CloudDisk_FileIdInfo/CloudDisk_SyncFolderPath | **CloudDisk_PathInfo**: a struct that encapsulates the file path information.<br> **CloudDisk_FileIdInfo**: a struct that encapsulates the file ID.<br> **CloudDisk_SyncFolderPath**: a struct that encapsulates the sync root path.|
 | [CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md) | CloudDisk_FileSyncState | A struct that encapsulates the file sync state.|
 | [CloudDisk_ChangeData](capi-clouddisk-clouddisk-changedata.md) | CloudDisk_ChangeData | A struct that encapsulates the event data generated when a single file under the sync root path is changed. It includes the file's unique ID, the parent directory's unique ID, relative path, change type, file size, and timestamp.|
 | [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md) | CloudDisk_ChangesResult | A struct that encapsulates the file change result under the sync root path. It includes the next change sequence number, end flag, and an array of change data items.|
@@ -422,5 +422,3 @@ Updates the sync root alias.
 | Type| Description|
 | -- | -- |
 | [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise.|
-
-

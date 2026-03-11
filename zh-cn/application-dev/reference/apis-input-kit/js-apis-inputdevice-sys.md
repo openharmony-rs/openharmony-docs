@@ -26,7 +26,7 @@ import { inputDevice } from '@kit.InputKit';
 
 setKeyboardRepeatDelay(delay: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置键盘按键的重复时延，使用Callback异步回调。
+设置键盘按键的重复时延，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -141,7 +141,7 @@ struct Index {
 
 getKeyboardRepeatDelay(callback: AsyncCallback&lt;number&gt;): void
 
-获取键盘按键的重复时延，使用Callback异步回调。
+获取键盘按键的重复时延，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -249,7 +249,7 @@ struct Index {
 
 setKeyboardRepeatRate(rate: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置键盘按键的重复速率，使用Callback异步回调。
+设置键盘按键的重复速率，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -364,7 +364,7 @@ struct Index {
 
 getKeyboardRepeatRate(callback: AsyncCallback&lt;number&gt;): void
 
-获取键盘按键的重复速率，使用Callback异步回调。
+获取键盘按键的重复速率，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -495,7 +495,7 @@ setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[模块错误码](errorcode-inputdevice.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[输入设备错误码](errorcode-inputdevice.md)。
 
 
 | 错误码ID | 错误信息                                                     |

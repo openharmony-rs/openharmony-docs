@@ -18,7 +18,7 @@ OHAudio音频播放状态变化示意图：
 
 ### 在 CMake 脚本中链接动态库
 
-``` cmake
+```cmake
 target_link_libraries(sample PUBLIC libohaudio.so)
 ```
 
@@ -166,9 +166,9 @@ OH_AudioStreamBuilder_Destroy(builder);
    | OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer) | 释放缓存数据。 |
    | OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer) | 释放播放实例。 |
 
-    > **注意：**
-    >
-    > 音频流控制接口执行会有耗时（例如OH_AudioRenderer_Stop接口需要播完缓存，单次执行普遍超过50ms），应避免在主线程中直接调用，以免造成界面显示卡顿。
+   > **注意：**
+   >
+   > 音频流控制接口执行会有耗时（例如OH_AudioRenderer_Stop接口需要播完缓存，单次执行普遍超过50ms），应避免在主线程中直接调用，以免造成界面显示卡顿。
 
 6. 释放构造器。
 
@@ -200,7 +200,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolume(audioRenderer, volume);
 
 > **注意：**
 >
-> - 当音频录制场景[OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage)为`AUDIOSTREAM_USAGE_VOICE_COMMUNICATION`和`AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION`时，不支持主动设置低时延模式，系统会根据设备的能力，决策输出的音频通路。
+> - 当音频播放场景[OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage)为`AUDIOSTREAM_USAGE_VOICE_COMMUNICATION`和`AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION`时，不支持主动设置低时延模式，系统会根据设备的能力，决策输出的音频通路。
 > - 低时延通路对于数据处理性能要求较高，应用数据生成缓慢时容易导致卡顿。普通音乐、视频播放场景下不建议设置该模式，仅推荐游戏、K歌等对时延敏感的应用设置低时延模式。
 
 

@@ -10,6 +10,8 @@
 
 Declares APIs for discovering and connecting to scanners, scanning pictures, querying the scan progress, and setting parameters for scanning.
 
+**File to include**: <BasicServicesKit/ohscan.h>
+
 **Library**: libohscan.so
 
 **System capability**: SystemCapability.Print.PrintFramework
@@ -281,7 +283,7 @@ Starts scanning.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-**Required permissions**: code ohos.permission.PRINT
+**Required permissions**: ohos.permission.PRINT
 
 **Since**: 12
 

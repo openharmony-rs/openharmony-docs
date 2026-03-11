@@ -43,5 +43,5 @@
 - Distributed File System<!--distributed-fs-->
   - [Distributed File System Overview](distributed-fs-overview.md)
   - [Setting the Security Level of a Distributed File](set-security-label.md)
-  - [Accessing Files Across Devices](file-access-across-devices.md)
+  - [Sharing and Accessing Files Across Devices](file-access-across-devices.md)
   - [Copying Files Across Devices](file-copy-across-devices.md)

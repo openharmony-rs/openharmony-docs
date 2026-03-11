@@ -20,9 +20,9 @@
   - [@ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)](js-apis-resourceschedule-deviceUsageStatistics-sys.md)
   <!--DelEnd-->
   - application<!--background-tasks-arkts-application-->
-    - [WorkSchedulerExtensionContext](js-apis-inner-application-WorkSchedulerExtensionContext.md)
+    - [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)
     <!--Del-->
-    - [WorkSchedulerExtensionContext (System API)](js-apis-inner-application-WorkSchedulerExtensionContext-sys.md)
+    - [WorkSchedulerExtensionContext (System API)](js-apis-WorkSchedulerExtensionContext-sys.md)
     <!--DelEnd-->
   - APIs No Longer Maintained<!--background-tasks-arkts-dep-->
     - [@ohos.backgroundTaskManager (Background Task Management)](js-apis-backgroundTaskManager.md)

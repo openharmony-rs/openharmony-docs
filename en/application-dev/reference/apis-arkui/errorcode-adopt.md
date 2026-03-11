@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 > **NOTE**
 >
@@ -19,6 +19,7 @@ The node has already been adopted.
 **Description**
 
 This error code is reported when the node has been accepted as an auxiliary node and cannot be mounted as a child node.<br>
+Adoption: establishes a parent-child-like relationship where the parent node provides lifecycle callbacks to the child without actually adding it as a regular child node. The adopted node does not receive events from the parent or respond to events like normal child nodes.
 
 **Possible Causes**
 
@@ -37,6 +38,7 @@ This node already has a parent node.
 **Description**
 
 This error code is reported when the node already has a parent node and cannot be accepted by other nodes.<br>
+Adoption: establishes a parent-child-like relationship where the parent node provides lifecycle callbacks to the child without actually adding it as a regular child node. The adopted node does not receive events from the parent or respond to events like normal child nodes.
 
 **Possible Causes**
 
@@ -55,18 +57,19 @@ The node cannot be adopted.
 **Description**
 
 This error code is reported when the node cannot be accepted as an auxiliary node.<br>
+Adoption: establishes a parent-child-like relationship where the parent node provides lifecycle callbacks to the child without actually adding it as a regular child node. The adopted node does not receive events from the parent or respond to events like normal child nodes.
 
 **Possible Causes**
 
 1. The node is a null pointer.
-2. The node does not meet the acceptance criteria. Only the following node types are supported for acceptance:
-    - Command node created using the ArkTS language.
-    - Command node created using the C language.
+2. The node does not meet the criteria for adopting other nodes. Only the following types of nodes can adopt other nodes:
+    - Imperative node on the TS side.
+    - Imperative node on the CAPI side.
     - Root node of BuilderNode.
 
 **Solution**
 
-Ensure that the node is not a null pointer and meets the acceptance criteria before attempting to accept it.
+Pass a node that meets the criteria for adoption.
 
 ## 106209 The Node Cannot Accept Other Nodes
 
@@ -77,17 +80,18 @@ The node cannot adopt children.
 **Description**
 
 This error code is reported when the node cannot accept other auxiliary nodes.<br>
+Adoption: establishes a parent-child-like relationship where the parent node provides lifecycle callbacks to the child without actually adding it as a regular child node. The adopted node does not receive events from the parent or respond to events like normal child nodes.
 
 **Possible Causes**
 
 1. The node is a null pointer.
-2. The node cannot be accepted. Only the following nodes can be accepted:
-    - Command node created using the ArkTS language.
-    - Command node created using the C language.
+2. The node does not meet the criteria for adopting other nodes. Only the following types of nodes can adopt other nodes:
+    - Imperative node on the TS side.
+    - Imperative node on the CAPI side.
 
 **Solution**
 
-Ensure that the node is not a null pointer and meets the acceptance criteria before attempting to accept it.
+Use a node that meets the criteria for adoption.
 
 ## 106210 The Node Is Not an Affiliated Node Accepted by the Target Node
 
@@ -98,6 +102,7 @@ This child is not adopted by the parent node.
 **Description**
 
 This error code is reported when the child node is not accepted by the target parent node.<br>
+Adoption: establishes a parent-child-like relationship where the parent node provides lifecycle callbacks to the child without actually adding it as a regular child node. The adopted node does not receive events from the parent or respond to events like normal child nodes.
 
 **Possible Causes**
 

@@ -68,7 +68,7 @@ This approach is highly efficient as it does not move objects. However, since th
 ![image](./figures/mark-copy.png)
 
 During the traversal of the object graph, reachable objects are copied to a new memory space. After the traversal is complete, the old memory space is reclaimed. 
-This approach eliminates memory fragmentation and completes the GC process in a single traversal, making it efficient. However, it requires reserving half of the memory space to ensure all live objects can be copied, resulting in lower space utilization.
+This approach eliminates memory fragmentation and completes the GC process in a single traversal, making it efficient. However, it requires reserving half of the memory space to ensure all reachable objects can be copied, resulting in low space utilization.
 
 **Mark-Compact Collection**
 
@@ -283,9 +283,9 @@ Subsequent Smart GC or IDLE GC selections are made from the above three types of
 - Function: `OldSpace::SelectCSet()`
 - Strategy Description: selects regions with fewer live objects and lower collection costs for partial GC.
 - Typical Logs
-    - `Select CSet failure: number is too few`
+    - Select CSet failure: number is too few
     - `Max evacuation size is 6_MB. The CSet Region number`
-    - `Select CSet success: number is`
+    - Select CSet success: number is
 
 ## SharedHeap
 

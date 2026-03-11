@@ -9,6 +9,7 @@
 ## When to Use
 
 Device usage statistics include the usage of applications, notifications, and the system. For example, you can use the APIs for application usage statistics to obtain information about the application usage, event logs, and application groups.
+
 The application records (usage history statistics and event records) cached by components are flushed to the database for persistent storage within 30 minutes after an event is reported.
 
 ## Available APIs

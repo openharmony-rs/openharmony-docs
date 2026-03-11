@@ -42,21 +42,21 @@ For details about how to use the public APIs of Mechanic Manager, see [@ohos.dis
 Device connection status management helps to ensure that the application responds promptly when the mechanic device is connected or disconnected.
 
 1. Import the **mechanicManager** module.
-   <!-- @[import_mechanicManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+   <!-- @[import_mechanicManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
     ```ts
     import { mechanicManager } from '@kit.MechanicKit';
     ```
 
 2. Obtain the list of connected mechanic devices.
-   <!-- @[get_mechDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+   <!-- @[get_mechDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
     let savedMechanicIds: number[] = [];
-
+   
     try {
     const devices = mechanicManager.getAttachedMechDevices();
     console.info('Connected devices:', devices);
-
+   
     devices.forEach(device => {
         console.info(`Device ID: ${device.mechId}`);
         console.info(`Device Name: ${device.mechName}`);
@@ -70,7 +70,7 @@ Device connection status management helps to ensure that the application respond
         console.info(`Skip non-gimbal devices: ${device.mechId}`);
         }
     });
-
+   
     console.info('List of saved gimbal device IDs:', savedMechanicIds);
     } catch (err) {
     console.error('Error getting attached devices:', err);
@@ -78,7 +78,7 @@ Device connection status management helps to ensure that the application respond
     ```
 
 3. Listen for the connection state changes of the device.
-   <!-- @[on_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
+   <!-- @[on_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
     ```ts
     const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
     if (info.state === mechanicManager.AttachState.ATTACHED) {
@@ -91,29 +91,31 @@ Device connection status management helps to ensure that the application respond
         handleDeviceDetached(info.mechInfo);
     }
     };
-
+   
     // Register a callback listener.
     mechanicManager.on('attachStateChange', attachStateChangeCallback);
     ```
 
 4. Process device connection and disconnection events.
-   <!-- @[handle_device_attached_detached](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
+   <!-- @[handle_device_attached_detached](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
+   
     ```ts
     function handleDeviceAttached(mechInfo: mechanicManager.MechInfo) {
     console.info(`New device is connected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
     savedMechanicIds.push(mechInfo.mechId);
     // To do sth.
     }
-
+   
     function handleDeviceDetached(mechInfo: mechanicManager.MechInfo) {
     console.info(`Device disconnected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
     savedMechanicIds.filter(id => id !== mechInfo.mechId);
     // To do sth.
     }
     ```
-
+   
 5. Cancel listening for device connection state changes.
-   <!-- @[off_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
+   <!-- @[off_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
+   
     ```ts
     // Cancel listening for device connection state changes.
     mechanicManager.off('attachStateChange', attachStateChangeCallback);
@@ -124,27 +126,29 @@ Device connection status management helps to ensure that the application respond
 After the object tracking photography function is enabled, the device will automatically detect faces and perform tracking photography.
 
 1. Enable the object tracking photography function.
-   <!-- @[set_cameraTracking_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+   <!-- @[set_cameraTracking_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+   
     ```ts
     try {
     // Check whether savedMechIds is empty.
     // Check the tracking status.
     const isEnabled = mechanicManager.getCameraTrackingEnabled();
-
+   
     if (isEnabled == false) {
         // Enable the tracking photography function.
         mechanicManager.setCameraTrackingEnabled(true);
         console.info('Camera tracking enabled');
     }
-
+   
     console.info('Is tracking currently enabled:', isEnabled);
     } catch (err) {
     console.error('Failed to enable camera tracking:', err);
     }
     ```
-
+   
 2. Enable listening for tracking state changes.
-   <!-- @[on_trackingStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+   <!-- @[on_trackingStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+   
     ```ts
     const trackingStateCallback = (eventInfo : mechanicManager.TrackingEventInfo) => {
     switch (eventInfo.event) {
@@ -162,26 +166,27 @@ After the object tracking photography function is enabled, the device will autom
         break;
     }
     };
-
+   
     // Register the listener for tracking state changes.
     mechanicManager.on('trackingStateChange', trackingStateCallback);
     ```
-
+   
 3. Process the tracking state change event.
-   <!-- @[handle_tracking_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+   <!-- @[handle_tracking_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+   
     ```ts
     function handleTrackingEnabled() {
     console.info('Handling camera tracking enable events');
     // Update the UI status.
     updateTrackingUI(true);
     }
-
+   
     function handleTrackingDisabled() {
     console.info('Handling camera tracking disabled events');
     // Update the UI status.
     updateTrackingUI(false);
     }
-
+   
     function handleLayoutChanged() {
     try {
         const newLayout = mechanicManager.getCameraTrackingLayout();
@@ -192,22 +197,22 @@ After the object tracking photography function is enabled, the device will autom
         console.error('Failed to get new layout:', err);
     }
     }
-
+   
     function updateTrackingUI(enabled: boolean) {
     // Update the tracking status on the UI.
     // To do sth.
     console.info('Update tracking UI status:', enabled);
     }
-
+   
     function updateLayoutUI(layout : mechanicManager.CameraTrackingLayout) {
     // Update the layout status on the UI.
     // To do sth.
     console.info('Update layout UI:', layout);
     }
     ```
-
+   
 4. Cancel listening for tracking state changes.
-   <!-- @[off_trackingStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+   <!-- @[off_trackingStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
     ```ts
     // Cancel listening for the specified callback of tracking state changes.
     mechanicManager.off('trackingStateChange', trackingStateCallback);

@@ -113,7 +113,7 @@ struct BuilderSample {
 
 - 在\@Builder装饰的函数内部，不允许改变参数值。
 
-- \@Builder内UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数-1)。
+- \@Builder内UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数实现规则)。
 
 - 按回调传递和按引用传递时，支持\@Builder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持@Builder函数内UI组件刷新。
 
@@ -123,7 +123,7 @@ struct BuilderSample {
 
 从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详细用例见[\@Builder支持状态变量刷新](#builder支持状态变量刷新)。
 
-使用`UIUtils.makeBinding()`包装读取状态变量的回调函数作为参数传入@Builder函数，可以支持@Builder函数中UI组件刷新；`UIUTils.makeBinding()`中额外传入写状态变量的回调函数可以进一步将@Builder内对参数改变，传递到调用Builder函数的组件中。
+使用`UIUtils.makeBinding()`包装读取状态变量的回调函数作为参数传入@Builder函数，可以支持@Builder函数中UI组件刷新；`UIUtils.makeBinding()`中额外传入写状态变量的回调函数可以进一步将@Builder内对参数改变，传递到调用Builder函数的组件中。
 
 <!-- @[by_makebinding_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterMakeBinding.ets) -->
 
@@ -767,7 +767,7 @@ struct ParentPage {
 
 ![arkts-builder-usage-scenario6](figures/arkts-builder-usage-scenario6.gif)
 
-当通过引用传递方式向`@Builder`传递参数时，若参数为`@Local`装饰的对象，对该对象进行整体赋值会触发`@Builder`中UI刷新。
+当通过引用传递方式向`@Builder`传递参数时，若参数为[`@Local`](arkts-new-local.md)装饰的对象，对该对象进行整体赋值会触发`@Builder`中UI刷新。
 
 <!-- @[builder_function_combined_with_the_v2_decorator_and_local](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderCombinedLocal.ets) -->
 
@@ -1230,7 +1230,7 @@ struct Parent3 {
 
 【反例】
 
-在@ComponentV2装饰的自定义组件中，使用简单数据类型不可以触发UI的刷新。
+在[@ComponentV2](arkts-create-custom-components.md#componentv2)装饰的自定义组件中，使用简单数据类型不可以触发UI的刷新。
 
 <!-- @[dynamic_rerendering_with_component_v2_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/DynamicIncorrectUsage.ets) -->
 

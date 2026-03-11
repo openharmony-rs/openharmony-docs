@@ -15,7 +15,7 @@ Password-Based Key Derivation Function (PBKDF) is a key derivation function with
 
 PBKDF2 applies a PRF, such as an [HMAC](crypto-compute-hmac.md), to an input password together with a salt value, and repeats the process multiple times to generate a derived key.
 
-Key derivation can be performed using a string parameter, which is composed of the KDF and HMAC algorithm separated by a vertical bar (|). The string parameter is used to specify the algorithm specifications when the KDF generator is created.
+Key derivation can be performed using a string parameter, which is composed of the KDF algorithm and HMAC algorithm separated by a vertical bar (|). The string parameter is used to specify the algorithm specifications when the KDF generator is created.
 | KDF Algorithm| HMAC Algorithm| String Parameter| API Version| 
 | -------- | -------- | -------- | -------- |
 | PBKDF2 | SHA1 | PBKDF2\|SHA1 | 11+ | 
@@ -65,6 +65,11 @@ You can use the following formula to calculate the memory:<br>Memory (in bytes) 
 
 X963KDF is a key derivation function (KDF) based on HMAC. It is usually used with elliptic curves to generate keys.
 
-| KDF Algorithm| String Parameter| API Version| 
-| -------- | -------- | -------- |
-| X963KDF | X963KDF | 22+ | 
+| KDF Algorithm| HMAC Algorithm| String Parameter| API Version| 
+| -------- | -------- | -------- | -------- |
+| X963KDF | SHA1 | X963KDF\|SHA1 | 22+ | 
+| X963KDF | SHA224 | X963KDF\|SHA224 | 22+ | 
+| X963KDF | SHA256 | X963KDF\|SHA256 | 22+ | 
+| X963KDF | SHA384 | X963KDF\|SHA384 | 22+ | 
+| X963KDF | SHA512 | X963KDF\|SHA512 | 22+ | 
+| X963KDF | SM3 | X963KDF\|SM3 | 22+ | 

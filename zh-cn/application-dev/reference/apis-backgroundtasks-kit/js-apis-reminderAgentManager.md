@@ -30,7 +30,7 @@ publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback\<number>):
 
 > **说明：**
 >
-> 该接口需要申请通知弹窗权限[NotificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
+> 该接口需要申请通知弹窗权限[notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
 >
 > <!--RP1--><!--RP1End-->
 
@@ -84,7 +84,7 @@ publishReminder(reminderReq: ReminderRequest): Promise\<number>
 
 > **说明：**
 >
-> 该接口需要申请通知弹窗权限[NotificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
+> 该接口需要申请通知弹窗权限[notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
 >
 > <!--RP1--><!--RP1End-->
 
@@ -939,8 +939,8 @@ ReminderRequestCalendar extends ReminderRequest
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | dateTime | [LocalDateTime](#localdatetime) | 否 | 否 | 指明提醒的目标时间。 |
-| repeatMonths | Array\<number> | 否 | 是 | 指明重复提醒的月份，范围：[1, 12]。 |
-| repeatDays | Array\<number> | 否 | 是 | 指明重复提醒的日期，范围：[1, 31]。 |
+| repeatMonths | Array\<number> | 否 | 是 | 指明重复提醒的月份，范围：[1, 12]。需和repeatDays一起使用。 |
+| repeatDays | Array\<number> | 否 | 是 | 指明重复提醒的日期，范围：[1, 31]。需和repeatMonths一起使用。 |
 | daysOfWeek<sup>11+</sup> | Array\<number> | 否 | 是 | 指明每周哪几天需要重复提醒。范围为周一到周日，对应数字为1到7。 |
 | endDateTime<sup>12+</sup> | [LocalDateTime](#localdatetime) | 否 | 是 | 指明提醒的结束时间。 |
 

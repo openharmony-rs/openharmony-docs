@@ -113,7 +113,7 @@ onKeyEventDispatch(event: Callback\<KeyEvent, boolean>): T
 | 名称                                    | 类型                    | 只读    |  可选   |  说明                         |
 | ------------------------------------- | ---------------------------------------- |--------- | ------------- | -------------------------- |
 | type                                  | [KeyType](ts-appendix-enums.md#keytype) |  否  |  否     |按键的类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
-| [keyCode](../../apis-input-kit/js-apis-keycode.md#keycode) | number           |  否        |  否     |按键的键值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
+| keyCode | number           |  否        |  否     |按键的键值。按键设备提供的键值请参考[KeyCode](../../apis-input-kit/js-apis-keycode.md#keycode)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
 | keyText                               | string                   |  否   |  否     |按键的名称。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
 | keySource                             | [KeySource](ts-appendix-enums.md#keysource) |  否 |  否     |触发当前按键的输入设备类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
 | deviceId                              | number                |  否    |  否     |触发当前按键的输入设备ID。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
@@ -168,7 +168,7 @@ type IntentionCode = IntentionCode
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [IntentionCode](../../apis-input-kit/js-apis-intentioncode.md) | 按键对应的意图。|
+| [IntentionCode](../../apis-input-kit/js-apis-intentioncode.md#intentioncode) | 按键对应的意图。|
 
 ## 示例
 

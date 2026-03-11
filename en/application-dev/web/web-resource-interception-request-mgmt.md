@@ -9,9 +9,7 @@
 
 The **Web** component supports customization of the response to intercepted page requests. You can call [onInterceptRequest()](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) to customize web page responses, file resource responses, and more.  
 
-
 When a resource loading request is initiated on a web page, the application layer will receive the request. The application layer then constructs a local resource response and sends it to the web kernel. On receiving the response, the web kernel parses the response and loads page resources accordingly.
-
 
 In the following example, the **Web** component intercepts the web page request **https://www.example.com/test.html** and constructs a custom response in the application code.
 
@@ -79,7 +77,7 @@ In the following example, the **Web** component intercepts the web page request 
 
 - Page after being intercepted
 
-  ![Image](figures/web-rescource-interception-request-1.PNG)
+  ![Image](figures/web-resource-interception-request-1.PNG)
 
 Create a **CodeCache** object for a custom JS request response: If the resource of a custom request response is a JavaScript script, you can add the **ResponseDataID** field to the response header. After obtaining this field, the **Web** kernel generates a **CodeCache** object, which accelerates JavaScript execution. If **ResponseData** is updated, the **ResponseDataID** field must be updated. If the **ResponseDataID** field is not added, no **CodeCache** object is created by default.
 
@@ -176,4 +174,4 @@ In the following example, the **Web** component intercepts the web page request 
 
 - Page after being intercepted
 
-  ![Image](figures/web-rescource-intercption-request-2.PNG)
+  ![Image](figures/web-resource-intercption-request-2.PNG)

@@ -127,7 +127,7 @@ Locate **FdEntry** based on the file descriptor and obtain **close_tag**.
 
 | Value                      | Type              | Description                                                        |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `tag` | uint64_t | Owner tag.    |
+| `fd` | int | File descriptor.    |
 
 **Return value**<br>Tag of the file descriptor.
 
@@ -276,6 +276,19 @@ Tid:15312, Name:e.myapplication
 #10 pc 000700b0 /system/lib/ld-musl-arm.so.1(3de40c79448a2bbced06997e583ef614)
 ```
 The stack information provides information about **bad_close** and all opened files, helping quickly locate faults.
+
+**OpenFiles** lists all opened files.
+
+**Field description**:
+
+**fd->object description**: ID of the kernel object associated with the file descriptor **fd**.
+
+**[Content in square brackets]**: Internal ID of the object, including the following:
+- For socket/pipe: Pseudo file system ID allocated by the kernel.
+- For a common file: Inode ID of the file system (data structure used by the OS to manage the file metadata and data blocks).
+- For **anon_inode**: Object type name.
+
+**native object of unknown type 0**: The tag value of the **fd** is 0.
 
 ```txt
 OpenFiles:

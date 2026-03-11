@@ -27,7 +27,7 @@ The table below describes the content and operation mode of the OH_Pixelmap_Imag
 | uint32_t | rowStride | Row stride.| [OH_PixelmapImageInfo_GetRowStride](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getrowstride) | Obtains the row stride.|
 | int32_t | pixelFormat| Pixel format.| [OH_PixelmapImageInfo_GetPixelFormat](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getpixelformat) |Obtains the pixel format.|
 | int32_t | alphaType | Alpha type.| [OH_PixelmapImageInfo_GetAlphaType](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getalphatype) |Obtains the alpha type.|
-| bool | isHdr | Dynamic range.| [OH_PixelmapImageInfo_GetDynamicRange](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getdynamicrange) |Obtains the dynamic range of a PixelMap.|
+| bool | isHdr | Whether the image is an HDR image.| [OH_PixelmapImageInfo_GetDynamicRange](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getdynamicrange) |Obtains information about whether the PixelMap is an HDR image.|
 
 **Since**: 12
 

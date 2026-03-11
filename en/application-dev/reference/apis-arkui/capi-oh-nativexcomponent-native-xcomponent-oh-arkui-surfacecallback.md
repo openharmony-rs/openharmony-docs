@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct OH_ArkUI_SurfaceCallback OH_ArkUI_SurfaceCallback
+```
+
 ## Overview
 
 Defines surface lifecycle callbacks.

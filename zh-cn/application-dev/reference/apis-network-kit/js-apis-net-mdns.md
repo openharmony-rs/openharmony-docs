@@ -47,7 +47,6 @@ addLocalService(context: Context, serviceInfo: LocalServiceInfo, callback: Async
 | 2100003 | System internal error. |
 | 2204003 | Callback duplicated. |
 | 2204008 | Failed to delete the service instance. |
-| 2204009 | Failed to send packet. |
 | 2204010 | Failed to send the message. |
 
 **示例：**
@@ -117,7 +116,6 @@ addLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise\<Local
 | 2100003 | System internal error. |
 | 2204003 | Callback duplicated. |
 | 2204008 | Failed to delete the service instance. |
-| 2204009 | Failed to send packet. |
 | 2204010 | Failed to send the message. |
 
 
@@ -417,7 +415,7 @@ resolveLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise\<L
 | 参数名        | 类型                             | 必填 | 说明                                     |
 |-------------|--------------|-----------|-----------------------------------------------------|
 | context     | Context                          | 是       | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | 是        |   mDNS服务的信息。      |
+| serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | 是        |   MDNS服务的信息。      |
 
 **返回值：**
 
@@ -539,7 +537,7 @@ discoveryService.stopSearchingMDNS();
 
 on(type: 'discoveryStart', callback: Callback\<DiscoveryEventInfo\>): void
 
-订阅开启监听mDNS服务的通知。
+订阅开启监听MDNS服务的通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

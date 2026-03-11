@@ -115,6 +115,8 @@ Defines a file object, which inherits from [FileMeta](#filemeta) and [FileData](
 
 Defines a file object, which inherits from [FileMeta](#filemeta), [FileData](#filedata), and [FileManifestData](#filemanifestdata12).
 
+ 
+
 > **NOTE**
 >
 > **file.backup.File** is different from [File](js-apis-file-fs.md#file) provided in @ohos.file.fs. The former is an object that inherits from [FileMeta](#filemeta) and [FileData](#filedata), while the latter has only one FD object. Pay attention to the difference between them.
@@ -1044,7 +1046,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
         fs.closeSync(fileData.fd);
@@ -1097,7 +1099,7 @@ The capability file can be obtained by using [fs.stat](js-apis-file-fs.md#fsstat
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-Obtains the amount of data to be backed up. This method is called before **appendBundles**. The scanning result is returned at a fixed interval of 5 seconds by calling the general callback **onBackupSizeReport** asynchronously until all application data in the datalist is returned.
+Obtains the amount of data to be backed up. This method is called before **appendBundles**. **getBackupDataSize** is used together with **onBackupSizeReport**. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1188,7 +1190,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     },
-    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application that is obtaining the data size.
+    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application whose data size is being retrieved. onBackupSizeReport in generalCallbacks returns the scan result every 5 seconds, or immediately if the data retrieval process is completed within 5 seconds, until all application data in dataList is returned.
       console.info('dataSizeCallback success');
       const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
       if (jsonObj) {
@@ -2029,7 +2031,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
         fs.closeSync(fileData.fd);
@@ -3351,7 +3353,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
         fs.closeSync(fileData.fd);
@@ -3404,7 +3406,7 @@ The capability file can be obtained by using [fs.stat](js-apis-file-fs.md#fsstat
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-Obtains the amount of data to be backed up. This method is called before **appendBundles**. The scanning result is returned at a fixed interval of 5 seconds by calling the general callback **onBackupSizeReport** asynchronously until all application data in the datalist is returned.
+Obtains the amount of data to be backed up. This method is called before **appendBundles**. **getBackupDataSize** is used together with **onBackupSizeReport**. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -3495,7 +3497,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     },
-    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application that is obtaining the data size.
+    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application whose data size is being retrieved. onBackupSizeReport in generalCallbacks returns the scan result every 5 seconds, or immediately if the data retrieval process is completed within 5 seconds, until all application data in dataList is returned.
       console.info('dataSizeCallback success');
       const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
       if (jsonObj) {
@@ -3647,7 +3649,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ### appendBundles<sup>12+</sup>
 
-appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;, infos: string[]): Promise&lt;void&gt;
+appendBundles(bundlesToAppend: Array&lt;IncrementalBackupData&gt;, infos: string[]): Promise&lt;void&gt;
 
 Appends applications that require incremental backup. In the current process, **appendBundles** can be called before **Release()** is called. This API uses a promise to return the result.
 
@@ -3661,7 +3663,7 @@ Appends applications that require incremental backup. In the current process, **
 
 | Name         | Type                                                          | Mandatory| Description                      |
 | --------------- | -------------------------------------------------------------- | ---- | -------------------------- |
-| bundlesToBackup | Array&lt;[IncrementalBackupData](#incrementalbackupdata12)&gt; | Yes  | Array of applications that require incremental backup.|
+| bundlesToAppend | Array&lt;[IncrementalBackupData](#incrementalbackupdata12)&gt; | Yes  | Array of applications that require incremental backup.|
 | infos  | string[] | Yes  | Array of the information about each application to be backed up. The mappings between **infos** and **bundlesToBackup** are identified by index. This parameter is supported since API version 12.|
 
 **Return value**
