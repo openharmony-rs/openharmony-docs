@@ -138,7 +138,7 @@ static setSystemLocale(locale: string): void
 
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 

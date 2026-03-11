@@ -41,7 +41,7 @@ import { intl } from '@kit.LocalizationKit';
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -72,7 +72,7 @@ constructor()
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -100,7 +100,7 @@ constructor(locale: string, options?: LocaleOptions)
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -135,7 +135,7 @@ toString(): string
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -168,7 +168,7 @@ maximize(): Locale
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -210,7 +210,7 @@ minimize(): Locale
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -249,7 +249,7 @@ localeID = minimizedLocale.toString(); // localeID = 'en'
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -687,7 +687,7 @@ let notation: string | undefined = options.notation; // notation = 'scientific'
 | unitUsage<sup>8+</sup>   | string  | 否    | 是    | 单位的使用场景，取值包括："default",&nbsp;"area-land-agricult",&nbsp;"area-land-commercl",&nbsp;"area-land-residntl",&nbsp;"length-person",&nbsp;"length-person-small",&nbsp;"length-rainfall",&nbsp;"length-road",&nbsp;"length-road-small",&nbsp;"length-snowfall",&nbsp;"length-vehicle",&nbsp;"length-visiblty",&nbsp;"length-visiblty-small",&nbsp;"length-person-informal",&nbsp;"length-person-small-informal",&nbsp;"length-road-informal",&nbsp;"speed-road-travel",&nbsp;"speed-wind",&nbsp;"temperature-person",&nbsp;"temperature-weather",&nbsp;"volume-vehicle-fuel",&nbsp;"elapsed-time-second",&nbsp;"size-file-byte",&nbsp;"size-shortfile-byte"。<br>默认值：default。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表22](#附录)。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23  |
 | signDisplay              | string  | 否    | 是    | 数字符号的显示格式，取值包括：<br>"auto"：自动判断是否显示正负符号。<br>"never"：不显示正负号。<br>"always"：总是显示正负号。<br>"exceptZero"：除了0都显示正负号。<br>默认值："auto"。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
 | compactDisplay           | string  | 否    | 是    | 紧凑显示格式，取值包括："long",&nbsp;"short"。<br>默认值：short。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表18](#附录)。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
-| notation                 | string  | 否    | 是    | 数字的表示方法，取值包括："standard",&nbsp;"scientific",&nbsp;"engineering",&nbsp;"compact"。<br>默认值：standard。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表17](#附录)。 |
+| notation                 | string  | 否    | 是    | 数字的表示方法，取值包括："standard",&nbsp;"scientific",&nbsp;"engineering",&nbsp;"compact"。<br>默认值：standard。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表17](#附录)。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23 |
 | localeMatcher            | string  | 否    | 是    | 要使用的区域匹配算法，取值包括："lookup",&nbsp;"best&nbsp;fit"。<br>默认值：best fit。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
 | style                    | string  | 否    | 是    | 数字的显示格式，取值包括："decimal",&nbsp;"currency",&nbsp;"percent",&nbsp;"unit"。<br>默认值：decimal。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
 | numberingSystem          | string  | 否    | 是    | 数字系统，取值包括：<br>"adlm",&nbsp;"ahom",&nbsp;"arab",&nbsp;"arabext",&nbsp;"bali",&nbsp;"beng",&nbsp;"bhks",&nbsp;"brah",&nbsp;"cakm",&nbsp;"cham",&nbsp;"deva",&nbsp;"diak",&nbsp;"fullwide",&nbsp;"gong",&nbsp;"gonm",&nbsp;"gujr",&nbsp;"guru",&nbsp;"hanidec",&nbsp;"hmng",&nbsp;"hmnp",&nbsp;"java",&nbsp;"kali",&nbsp;"khmr",&nbsp;"knda",&nbsp;"lana",&nbsp;"lanatham",&nbsp;"laoo",&nbsp;"latn",&nbsp;"lepc",&nbsp;"limb",&nbsp;"mathbold",&nbsp;"mathdbl",&nbsp;"mathmono",&nbsp;"mathsanb",&nbsp;"mathsans",&nbsp;"mlym",&nbsp;"modi",&nbsp;"mong",&nbsp;"mroo",&nbsp;"mtei",&nbsp;"mymr",&nbsp;"mymrshan",&nbsp;"mymrtlng",&nbsp;"newa",&nbsp;"nkoo",&nbsp;"olck",&nbsp;"orya",&nbsp;"osma",&nbsp;"rohg",&nbsp;"saur",&nbsp;"segment",&nbsp;"shrd",&nbsp;"sind",&nbsp;"sinh",&nbsp;"sora",&nbsp;"sund",&nbsp;"takr",&nbsp;"talu",&nbsp;"tamldec",&nbsp;"telu",&nbsp;"thai",&nbsp;"tibt",&nbsp;"tirh",&nbsp;"vaii",&nbsp;"wara",&nbsp;"wcho"。<br>默认值：区域的默认数字系统。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
@@ -871,7 +871,7 @@ constructor()
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -896,7 +896,7 @@ constructor(locale: string | Array&lt;string&gt;, options?: PluralRulesOptions)
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -927,7 +927,7 @@ select(n: number): string
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -969,7 +969,7 @@ select(n: number): string
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -1002,7 +1002,7 @@ constructor()
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -1027,7 +1027,7 @@ constructor(locale: string | Array&lt;string&gt;, options?: RelativeTimeFormatIn
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -1063,7 +1063,7 @@ format(value: number, unit: string): string
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -1103,7 +1103,7 @@ formatToParts(value: number, unit: string): Array&lt;object&gt;
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -1142,7 +1142,7 @@ resolvedOptions(): RelativeTimeFormatResolvedOptions
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -1176,7 +1176,7 @@ let style: string = options.style; // style = 'short'
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -1196,7 +1196,7 @@ let style: string = options.style; // style = 'short'
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
 

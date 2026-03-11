@@ -340,7 +340,7 @@ static getSystemLocale(): string
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -1190,7 +1190,6 @@ ArkTS-Sta: getMinimalDaysInFirstWeek(): int
 
 | 类型     | 说明           |
 | ------ | ------------ |
-
 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 一年中第一周的最小天数。 |
 
 **示例：**
@@ -2585,7 +2584,9 @@ let dateFormat: string =
 
 ### nextTransition<sup>20+</sup>
 
-nextTransition(date?: number): ZoneOffsetTransition
+ArkTS-Dyn: nextTransition(date?: number): ZoneOffsetTransition
+
+ArkTS-Sta: nextTransition(date?: double): ZoneOffsetTransition
 
 获取指定时间的下一个时区跳变对象。
 
@@ -2601,7 +2602,7 @@ nextTransition(date?: number): ZoneOffsetTransition
 
 | 参数名    | 类型     | 必填   | 说明     |
 | ------ | ------ | ---- | ------ |
-| date | number | 否    | 从1970年1月1日0时0分0秒到指定时间之间的毫秒数，默认到当前系统时间之间的毫秒数，单位：毫秒。 |
+| date | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否    | 从1970年1月1日0时0分0秒到指定时间之间的毫秒数，默认到当前系统时间之间的毫秒数，单位：毫秒。 |
 
 **返回值：**
 
@@ -2628,7 +2629,9 @@ let zoneOffsetTransition: i18n.ZoneOffsetTransition = zoneRules.nextTransition(d
 
 ### getMilliseconds<sup>20+</sup>
 
-getMilliseconds(): number
+ArkTS-Dyn: getMilliseconds(): number
+
+ArkTS-Sta: getMilliseconds(): double
 
 获取时区跳变点的时间戳。
 
@@ -2644,7 +2647,7 @@ getMilliseconds(): number
 
 | 类型       | 说明         |
 | -------- | ---------- |
-| number | 从1970年1月1日0时0分0秒到时区跳变点之间的毫秒数，例如：1762074000000，单位：毫秒。如果当前时区[原始偏移量](#getrawoffset)保持不变并且不使用夏令时，则返回0。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 从1970年1月1日0时0分0秒到时区跳变点之间的毫秒数，例如：1762074000000，单位：毫秒。如果当前时区[原始偏移量](#getrawoffset)保持不变并且不使用夏令时，则返回0。|
 
 **示例：**
 ```ts
@@ -2660,7 +2663,9 @@ zoneOffsetTransition.getMilliseconds(); // 跳变点的时间戳: 1762074000000
 
 ### getOffsetAfter<sup>20+</sup>
 
-getOffsetAfter(): number
+ArkTS-Dyn: getOffsetAfter(): number
+
+ArkTS-Sta: getOffsetAfter(): int
 
 获取时区跳变后的偏移量。
 
@@ -2676,7 +2681,7 @@ getOffsetAfter(): number
 
 | 类型       | 说明         |
 | -------- | ---------- |
-| number | 时区跳变后的偏移量，表示跳变后的时间相对于标准时间（协调世界时UTC）的时间差，单位：毫秒。例如：-28800000表示跳变后的时间比标准时间慢28800000毫秒（8小时）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 时区跳变后的偏移量，表示跳变后的时间相对于标准时间（协调世界时UTC）的时间差，单位：毫秒。<br>例如：-28800000表示跳变后的时间比标准时间慢28800000毫秒（8小时）。 |
 
 **示例：**
 ```ts
@@ -2692,7 +2697,9 @@ zoneOffsetTransition.getOffsetAfter(); // 跳变后的偏移量: -28800000
 
 ### getOffsetBefore<sup>20+</sup>
 
-getOffsetBefore(): number
+ArkTS-Dyn: getOffsetBefore(): number
+
+ArkTS-Sta: getOffsetBefore(): int
 
 获取时区跳变前的偏移量。
 
@@ -2708,7 +2715,7 @@ getOffsetBefore(): number
 
 | 类型       | 说明         |
 | -------- | ---------- |
-| number | 时区跳变前的偏移量，表示跳变前的时间相对于标准时间（协调世界时UTC）的时间差，单位：毫秒。例如：-25200000表示跳变前的时间比标准时间慢25200000毫秒（7小时）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 时区跳变前的偏移量，表示跳变前的时间相对于标准时间（协调世界时UTC）的时间差，单位：毫秒。<br>例如：-25200000表示跳变前的时间比标准时间慢25200000毫秒（7小时）。 |
 
 **示例：**
 ```ts
@@ -3190,7 +3197,9 @@ static getType(ch: string): string
 
 ### unitConvert<sup>9+</sup>
 
-static unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: string, style?: string): string
+ArkTS-Dyn: static unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: string, style?: string): string
+
+ArkTS-Sta: static unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: double, locale: string, style?: string): string
 
 将fromUnit的单位转换为toUnit的单位，并根据区域与风格进行格式化。
 
@@ -3208,7 +3217,7 @@ static unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: 
 | -------- | ---------------------- | ---- | ---------------------------------------- |
 | fromUnit | [UnitInfo](#unitinfo8) | 是    | 需要转换的单位。                                 |
 | toUnit   | [UnitInfo](#unitinfo8) | 是    | 转换成的目标单位。                                 |
-| value    | number                 | 是    | 需要转换的单位的数量值。                             |
+| value    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 需要转换的单位的数量值。                             |
 | locale   | string                 | 是    | [表示区域ID的字符串](../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成，如：zh-Hans-CN。                |
 | style    | string                 | 否    | 格式化使用的风格，取值包括：'long',&nbsp;'short',&nbsp;'narrow'。默认值：short。<br>不同取值显示效果请参考[数字与度量衡国际化](../../internationalization/i18n-numbers-weights-measures.md)。 |
 
@@ -3526,7 +3535,7 @@ static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: intl
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -3939,7 +3948,7 @@ getSimpleDateTimeFormatByPattern(pattern: string, locale?: intl.Locale): SimpleD
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -4039,7 +4048,7 @@ getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: intl.Locale): Simpl
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -4331,7 +4340,7 @@ getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.Locale): SimpleN
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -4433,7 +4442,7 @@ constructor(numberFormat: intl.NumberFormat | SimpleNumberFormat, options?: Styl
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -4768,7 +4777,7 @@ getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): stri
 获取指定国家的本地化名称。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -4805,7 +4814,7 @@ getDisplayLanguage(language: string, locale: string, sentenceCase?: boolean): st
 获取指定语言的本地化显示文本。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -4843,7 +4852,7 @@ getSystemLanguage(): string
 获取系统语言。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -4872,7 +4881,7 @@ getSystemRegion(): string
 获取系统地区。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -4901,7 +4910,7 @@ getSystemLocale(): string
 获取系统区域ID。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -4930,7 +4939,7 @@ is24HourClock(): boolean
 判断系统时间是否为24小时制。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -4961,7 +4970,7 @@ set24HourClock(option: boolean): boolean
 
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -4999,7 +5008,7 @@ addPreferredLanguage(language: string, index?: number): boolean
 
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -5040,7 +5049,7 @@ removePreferredLanguage(index: number): boolean
 
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -5077,7 +5086,7 @@ getPreferredLanguageList(): Array&lt;string&gt;
 获取系统偏好语言列表。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -5105,7 +5114,7 @@ getFirstPreferredLanguage(): string
 
 获取偏好语言列表中的第一个语言。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -5137,7 +5146,7 @@ unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: string,
 将fromUnit的单位转换为toUnit的单位，并根据区域与风格进行格式化。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -5172,7 +5181,7 @@ isDigit(ch: string): boolean
 判断输入的字符是否是数字。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -5200,7 +5209,7 @@ isSpaceChar(ch: string): boolean
 判断输入的字符是否是空格符。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -5228,7 +5237,7 @@ isWhitespace(ch: string): boolean
 判断输入的字符是否是空白符。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -5256,7 +5265,7 @@ isRTL(ch: string): boolean
 判断输入的字符是否是从右到左语言的字符。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -5284,7 +5293,7 @@ isIdeograph(ch: string): boolean
 判断输入的字符是否是表意文字。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -5312,7 +5321,7 @@ isLetter(ch: string): boolean
 判断输入的字符是否是字母。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -5340,7 +5349,7 @@ isLowerCase(ch: string): boolean
 判断输入的字符是否是小写字母。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -5368,7 +5377,7 @@ isUpperCase(ch: string): boolean
 判断输入的字符是否是大写字母。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -5396,7 +5405,7 @@ getType(ch: string): string
 获取输入的字符的一般类别值。
 
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.I18n
 
