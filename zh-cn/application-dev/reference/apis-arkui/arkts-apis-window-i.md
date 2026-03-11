@@ -93,6 +93,21 @@
 | width  | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 矩形区域的宽度，单位为px，该参数应为整数。 |
 | height | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 矩形区域的高度，单位为px，该参数应为整数。 |
 
+## RectInVP<sup>23+</sup>
+
+窗口矩形区域，单位为vp。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型 | 只读 | 可选 | 说明               |
+| ------ | -------- | ---- | ---- | ------------------ |
+| left   | number   | 否   | 否   | 矩形区域的左边界值，单位为vp。 |
+| top    | number   | 否   | 否   | 矩形区域的上边界值，单位为vp。 |
+| width  | number   | 否   | 否   | 矩形区域的宽度，单位为vp。 |
+| height | number   | 否   | 否   | 矩形区域的高度，单位为vp。 |
+
 ## AvoidArea<sup>7+</sup>
 
 窗口内容的避让区域。
