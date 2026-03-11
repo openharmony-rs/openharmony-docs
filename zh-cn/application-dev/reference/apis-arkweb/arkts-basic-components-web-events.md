@@ -3144,7 +3144,7 @@ ArkTS-Sta: onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticat
 
 ArkTS-Dyn: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
 
-ArkTS-Sta: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\> | undefined): this
+ArkTS-Sta: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\> | undefined)
 
 通知收到获取权限请求，需配置"ohos.permission.CAMERA"、"ohos.permission.MICROPHONE"权限。
 
@@ -4066,7 +4066,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onFullScreenExit(callback: () => void)
 
-ArkTS-Sta: onFullScreenExit(callback: (() => void) | undefined): this
+ArkTS-Sta: onFullScreenExit(callback: (() => void) | undefined)
 
 通知开发者Web组件退出全屏模式。
 
@@ -4080,7 +4080,7 @@ ArkTS-Sta: onFullScreenExit(callback: (() => void) | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback |ArkTS-Dyn: () => void <br/>ArkTS-Sta: () => void \|  undefined| 是 | 退出全屏模式时的回调函数。 |
+| callback |ArkTS-Dyn: () => void <br/>ArkTS-Sta: (() => void) \|  undefined| 是 | 退出全屏模式时的回调函数。 |
 
 **示例：**
 
@@ -5188,7 +5188,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
 
-ArkTS-Sta: onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\> | undefined): this
+ArkTS-Sta: onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\> | undefined)
 
 设置网页上的音频播放状态发生改变时的回调函数。
 
@@ -5621,7 +5621,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\>)
 
-ArkTS-Sta: onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\> | undefined): this
+ArkTS-Sta: onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\> | undefined)
 
 通知收到屏幕捕获请求。
 

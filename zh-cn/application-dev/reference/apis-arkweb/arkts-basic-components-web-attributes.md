@@ -142,7 +142,7 @@ ArkTS-Dyn示例：
 
 ArkTS-Dyn: imageAccess(imageAccess: boolean)
 
-ArkTS-Sta: imageAccess(imageAccess: boolean | undefined): this
+ArkTS-Sta: imageAccess(imageAccess: boolean | undefined)
 
 设置是否允许自动加载图片资源。当属性没有显式调用时，允许自动加载图片资源。
 
@@ -532,7 +532,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onlineImageAccess(onlineImageAccess: boolean)
 
-ArkTS-Sta: onlineImageAccess(onlineImageAccess: boolean | undefined): this
+ArkTS-Sta: onlineImageAccess(onlineImageAccess: boolean | undefined)
 
 设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。当属性没有显式调用时，默认允许从网络加载图片资源。
 
@@ -849,7 +849,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: mediaPlayGestureAccess(access: boolean)
 
-ArkTS-Sta: mediaPlayGestureAccess(access: boolean | undefined): this
+ArkTS-Sta: mediaPlayGestureAccess(access: boolean | undefined)
 
 设置有声视频的自动播放是否需要用户手动点击，静音视频播放不受该接口管控。当该属性未显式设置时，默认有声视频的自动播放需要用户手动点击。
 
@@ -2573,7 +2573,7 @@ struct WebComponent {
 
 ArkTS-Dyn: mediaOptions(options: WebMediaOptions)
 
-ArkTS-Sta: mediaOptions(options: WebMediaOptions | undefined): this
+ArkTS-Sta: mediaOptions(options: WebMediaOptions | undefined)
 
 设置Web媒体播放的策略，其中包括：Web中的音频在重新获焦后能够自动续播的有效期、应用内多个Web实例的音频是否独占。当该属性未显式设置时，默认Web中的音频重新获焦后无法自动续播、应用内多个Web实例的音频是独占的。
 
@@ -4058,7 +4058,7 @@ ArkTS-Sta: textAutosizing(textAutosizing: boolean | undefined)
 
 ArkTS-Dyn: enableNativeMediaPlayer(config: NativeMediaPlayerConfig)
 
-ArkTS-Sta: enableNativeMediaPlayer(config: NativeMediaPlayerConfig | undefined): this;
+ArkTS-Sta: enableNativeMediaPlayer(config: NativeMediaPlayerConfig | undefined)
 
 开启[应用接管网页媒体播放功能](../../web/app-takeovers-web-media.md)。当属性没有显式调用时，默认不开启接管网页媒体播放功能。
 
@@ -5254,7 +5254,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: enableWebAVSession(enabled: boolean)
 
-ArkTS-Sta: enableWebAVSession(enabled: boolean | undefined): this
+ArkTS-Sta: enableWebAVSession(enabled: boolean | undefined)
 
 设置是否支持应用对接到播控中心。当属性没有显式设置时，默认支持应用对接到播控中心。
 
