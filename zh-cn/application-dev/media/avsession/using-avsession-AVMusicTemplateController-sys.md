@@ -226,7 +226,7 @@
    例如，音频模板控制方主界面显示需要先调用接口[queryMainTabs](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md#querymaintabs)获取媒体应用主标签数据，再调用接口[queryMediaTabContent](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md#querymediatabcontent)，根据tabId获取媒体应用标签页内容。
 
    <!-- @[query_home_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-
+   
    ``` TypeScript
    import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
    // ...
