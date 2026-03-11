@@ -2653,7 +2653,7 @@ let options: connection.TraceRouteOptions = {
 };
 
 connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[]) => {
-    console.log(JSON.stringify(data));
+    console.info(JSON.stringify(data));
 }).catch((err: BusinessError) => {
     console.error(JSON.stringify(err));
 });
@@ -2708,7 +2708,7 @@ let dest: string = "www.example.com";
 let duration: number = 10;
 
 connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultInfo) => {
-    console.log(`LossRate: ${data.lossRate}, RTT: ${data.rtt}`);
+    console.info(`LossRate: ${data.lossRate}, RTT: ${data.rtt}`);
 }).catch((err: BusinessError) => {
     console.error(JSON.stringify(err));
 });
