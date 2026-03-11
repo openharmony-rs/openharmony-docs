@@ -1411,6 +1411,76 @@ try {
 }
 ```
 
+## getLatency<sup>23+</sup>
+
+getLatency(type: AudioLatencyType): number
+
+获取当前音频路由的预估时延。
+
+> **说明：**
+>
+> - 无线连接的音频设备，时延估算会存在误差，结果仅供参考。
+> - 由于时延未计入实时缓冲区，建议仅在音频播放开始时获取，避免频繁调用，否则可能因路由切换而阻塞该接口调用。
+> - 音频输出到硬件后的音画同步建议使用[getAudioTimestampInfo](#getaudiotimestampinfo19)或[getAudioTimestampInfoSync](#getaudiotimestampinfosync19)完成。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本: ** 23
+
+**ArkTS-Sta起始版本: ** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| type | [AudioLatencyType](arkts-apis-audio-e.md#audiolatencytype23) | 是 | 获取的时延类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回音频时延，单位为毫秒。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permit at current state. |
+| 6800301 | System internal error, like audio service error. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const latency: number = audioRenderer.getLatency(audio.AudioLatencyType.LATENCY_TYPE_ALL);
+  console.info(`Current audio latency: ${latency}ms`);
+} catch (err) {
+  const error = err as BusinessError;
+  console.error(`Failed to get latency. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const latency: long = audioRenderer.getLatency(audio.AudioLatencyType.LATENCY_TYPE_ALL);
+  console.info(`Current audio latency: ${latency}ms`);
+} catch (err) {
+  const error = err as BusinessError;
+  console.error(`Failed to get latency. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## getBufferSize<sup>8+</sup>
 
 ArkTS-Dyn: getBufferSize(callback: AsyncCallback\<number>): void
@@ -2677,6 +2747,72 @@ getSilentModeAndMixWithOthers(): boolean
 
 ```ts
 let on = audioRenderer.getSilentModeAndMixWithOthers();
+```
+
+## setLoudnessGain<sup>20+</sup>
+
+setLoudnessGain(loudnessGain: number): Promise\<void>
+
+设置播放响度。使用Promise异步回调。
+
+> **说明：**
+>
+> - 该接口仅支持类型为[STREAM_USAGE_MUSIC](arkts-apis-audio-e.md#streamusage)、[STREAM_USAGE_MOVIE](arkts-apis-audio-e.md#streamusage)或[STREAM_USAGE_AUDIOBOOK](arkts-apis-audio-e.md#streamusage)的音频流。
+> - 该接口不支持高清通路的响度设置。
+> - 由于音频框架与硬件之间存在缓冲区，响度调节实际生效存在延迟，时长取决于缓冲区长度。
+> - 建议在不同音频开始播放前预先设置响度，以实现最佳均衡效果。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本: ** 20
+
+**ArkTS-Sta起始版本: ** 23
+
+**参数：**
+
+| 参数名       | 类型    | 必填 | 说明                                      |
+| ------------ | ------- | ---- | ----------------------------------------- |
+| loudnessGain | number  | 是   | 设置播放的响度值，单位为dB，响度范围为[-90.0, 24.0]。默认值为0.0dB。 |
+
+**返回值：**
+
+| 类型           | 说明                 |
+| -------------- | -------------------- |
+| ArkTS-Dyn: Promise\<void><br>ArkTS-Sta: Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800104 | Operation is not supported on this renderer, e.g. the stream usage of this renderer is not one of [STREAM_USAGE_MUSIC](arkts-apis-audio-e.md#streamusage), [STREAM_USAGE_MOVIE](arkts-apis-audio-e.md#streamusage), or [STREAM_USAGE_AUDIOBOOK](arkts-apis-audio-e.md#streamusage), or this renderer is routed through the high-resolution playback path. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.setLoudnessGain(1.0).then(() => {
+  console.info('setLoudnessGain success');
+}).catch((err: BusinessError) => {
+  console.error(`setLoudnessGain failed: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.setLoudnessGain(1.0).then(() => {
+  console.info('setLoudnessGain success');
+}).catch(async (err: BusinessError) => {
+  console.error(`setLoudnessGain failed: ${err}`);
+});
 ```
 
 ## setDefaultOutputDevice<sup>12+</sup>
