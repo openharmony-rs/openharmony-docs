@@ -3884,7 +3884,7 @@ UDP端口状态信息。
 | packetsType | [PacketsType](#packetstype26) | 否 | 是| 探测使用的数据包类型，默认为NETCONN_PACKETS_ICMP。 |
   
 
-## TraceRouteInfos<sup>26+</sup>
+## TraceRouteInfo<sup>26+</sup>
 
 路由跟踪信息。
 
@@ -3899,7 +3899,7 @@ UDP端口状态信息。
 | rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。每一跳发送多个探测报文，数组元素依次为这些探测报文RTT中的最小值、平均值、最大值、标准差。 |
   
 
-## ProbeResultInfos<sup>26+</sup>
+## ProbeResultInfo<sup>26+</sup>
 
 网络探测结果信息。
 
