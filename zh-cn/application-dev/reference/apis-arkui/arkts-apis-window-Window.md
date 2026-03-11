@@ -7468,7 +7468,6 @@ onWindowStatusDidChange(callback: Callback&lt;WindowStatusType&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                         | 是   | 监听事件，固定为'windowStatusDidChange'，即窗口模式变化完成事件。 |
 | callback | Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt; | 是   | 回调函数。返回当前的窗口模式。                           |
 
 **错误码：**
@@ -7557,7 +7556,6 @@ offWindowStatusDidChange(callback?: Callback&lt;WindowStatusType&gt;): void
 
 | 参数名   | 类型                          | 必填 | 说明                                                     |
 | -------- | ----------------------------- | ---- | -------------------------------------------------------- |
-| type     | string                        | 是   | 监听事件，固定为'windowStatusDidChange'，即窗口模式变化完成事件。 |
 | callback | Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt; | 否   | 回调函数。返回当前的窗口模式。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有窗口模式变化的监听。                           |
 
 **错误码：**
@@ -8125,7 +8123,6 @@ onRectChangeInGlobalDisplay(callback: Callback&lt;RectChangeOptions&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                         | 是   | 监听事件，固定为'rectChangeInGlobalDisplay'，即全局坐标系下窗口矩形变化事件。 |
 | callback | Callback&lt;[RectChangeOptions](arkts-apis-window-i.md#rectchangeoptions12)&gt; | 是   | 回调函数。返回当前窗口矩形变化值及变化原因。 |
 
 **错误码：**
@@ -8220,7 +8217,6 @@ offRectChangeInGlobalDisplay(callback?: Callback&lt;RectChangeOptions&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明                                                         |
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                         | 是   | 监听事件，固定为'rectChangeInGlobalDisplay'，即全局坐标系下窗口矩形变化事件。     |
 | callback | Callback&lt;[RectChangeOptions](arkts-apis-window-i.md#rectchangeoptions12)&gt; | 否   | 回调函数。返回当前的窗口矩形及变化原因。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有全局坐标系下窗口矩形变化的监听。 |
 
 **错误码：**
@@ -15930,7 +15926,9 @@ export default class EntryAbility extends UIAbility {
 
 ## setRelativePositionToParentWindowEnabled<sup>20+<sup>
 
-setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor, offsetX?: number, offsetY?: number): Promise&lt;void&gt;
+ArkTS-Dyn: setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor, offsetX?: number, offsetY?: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor, offsetX?: int, offsetY?: int): Promise&lt;void&gt;
 
 用于设置一级子窗是否支持与主窗保持相对位置不变。使用Promise异步回调。
 
@@ -15962,8 +15960,8 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 | ----------- | ------- | -- | -------------------------------------------------------- |
 | enabled | boolean | 是 | 一级子窗是否支持与主窗保持相对位置不变。true表示支持；false表示不支持。  |
 | anchor | [WindowAnchor](arkts-apis-window-e.md#windowanchor20) | 否 | 一级子窗与主窗保持相对位置不变时的窗口锚点枚举。该参数仅在enabled为true时生效，默认值为window.WindowAnchor.TopStart，即默认锚点为窗口左上角。  |
-| offsetX | number | 否 | 一级子窗锚点与主窗锚点位置的x轴偏移量，单位为px。该参数仅在enabled为true时生效，仅支持整数输入，浮点数向下取整，默认值为0。  |
-| offsetY | number | 否 | 一级子窗锚点与主窗锚点位置的y轴偏移量，单位为px。该参数仅在enabled为true时生效，仅支持整数输入，浮点数向下取整，默认值为0。  |
+| offsetX | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 一级子窗锚点与主窗锚点位置的x轴偏移量，单位为px。该参数仅在enabled为true时生效，仅支持整数输入，浮点数向下取整，默认值为0。  |
+| offsetY | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 一级子窗锚点与主窗锚点位置的y轴偏移量，单位为px。该参数仅在enabled为true时生效，仅支持整数输入，浮点数向下取整，默认值为0。  |
 
 **返回值：**
 
@@ -17082,7 +17080,11 @@ moveTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[moveWindowTo()](#movewindowto9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17119,7 +17121,11 @@ moveTo(x: number, y: number): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[moveWindowTo()](#movewindowto9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17170,7 +17176,11 @@ resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): v
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[resize()](#resize9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17218,7 +17228,11 @@ resetSize(width: number, height: number): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[resize()](#resize9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
