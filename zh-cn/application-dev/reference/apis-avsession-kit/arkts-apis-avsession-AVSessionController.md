@@ -20,9 +20,9 @@ import { avSession } from '@kit.AVSessionKit';
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                    |
 | :-------- | :----- | :--- | :--- | :-------------------------------------- |
@@ -77,7 +77,7 @@ getAVPlaybackState(callback: AsyncCallback\<AVPlaybackState>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -137,7 +137,7 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -191,7 +191,7 @@ getAVMetadata(): Promise\<AVMetadata>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -243,7 +243,7 @@ getAVMetadata(callback: AsyncCallback\<AVMetadata>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -303,7 +303,7 @@ getAVQueueTitle(): Promise\<string>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -355,7 +355,7 @@ getAVQueueTitle(callback: AsyncCallback\<string>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -415,7 +415,7 @@ getAVQueueItems(): Promise\<Array\<AVQueueItem>>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -467,7 +467,7 @@ getAVQueueItems(callback: AsyncCallback\<Array\<AVQueueItem>>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -529,7 +529,7 @@ ArkTS-Sta: skipToQueueItem(itemId: int): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -592,7 +592,7 @@ ArkTS-Sta: skipToQueueItem(itemId: int, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -656,7 +656,7 @@ getOutputDevice(): Promise\<OutputDeviceInfo>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -707,7 +707,7 @@ getOutputDevice(callback: AsyncCallback\<OutputDeviceInfo>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -766,7 +766,7 @@ sendAVKeyEvent(event: KeyEvent): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -839,7 +839,7 @@ sendAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -910,7 +910,7 @@ getLaunchAbility(): Promise\<WantAgent>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -962,7 +962,7 @@ getLaunchAbility(callback: AsyncCallback\<WantAgent>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1024,7 +1024,7 @@ ArkTS-Sta: getRealPlaybackPositionSync(): long
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1067,7 +1067,7 @@ isActive(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1119,7 +1119,7 @@ isActive(callback: AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1179,7 +1179,7 @@ destroy(): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1230,7 +1230,7 @@ destroy(callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1289,7 +1289,7 @@ getValidCommands(): Promise\<Array\<AVControlCommandType>>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1341,7 +1341,7 @@ getValidCommands(callback: AsyncCallback\<Array\<AVControlCommandType>>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1405,7 +1405,7 @@ sendControlCommand(command: AVControlCommand): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1473,7 +1473,7 @@ sendControlCommand(command: AVControlCommand, callback: AsyncCallback\<void>): v
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1542,7 +1542,7 @@ ArkTS-Sta: sendCommonCommand(command: string, args: Record<string, Object>): Pro
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1566,7 +1566,7 @@ ArkTS-Sta: sendCommonCommand(command: string, args: Record<string, Object>): Pro
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 |
 | 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1637,11 +1637,13 @@ ArkTS-Sta: sendCommonCommand(command: string, args: Record<string, Object>, call
 
 通过会话控制器发送自定义命令到其对应的会话。结果通过callback异步回调方式返回。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1660,7 +1662,7 @@ ArkTS-Sta: sendCommonCommand(command: string, args: Record<string, Object>, call
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist.     |
 | 6600103  | The session controller does not exist.   |
@@ -1738,7 +1740,7 @@ ArkTS-Sta: getExtras(): Promise<Record<string, Object>>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1752,7 +1754,7 @@ ArkTS-Sta: getExtras(): Promise<Record<string, Object>>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 |
 | 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1824,7 +1826,7 @@ ArkTS-Sta: getExtras(callback: AsyncCallback<Record<string, Object>>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1838,7 +1840,7 @@ ArkTS-Sta: getExtras(callback: AsyncCallback<Record<string, Object>>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1912,7 +1914,7 @@ getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2710,6 +2712,8 @@ on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMetadataChange](#onMetadataChange23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -2736,8 +2740,6 @@ on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.on('metadataChange', 'all', (metadata: avSession.AVMetadata) => {
   console.info(`on metadataChange assetId : ${metadata.assetId}`);
@@ -2748,7 +2750,7 @@ avsessionController.on('metadataChange', ['assetId', 'title', 'description'], (m
 });
 ```
 
-## onMetadataChange<sup>22+</sup>
+## onMetadataChange<sup>23+</sup>
 
 onMetadataChange(filter: Array\<string>, callback: Callback\<AVMetadata>): void
 
@@ -2756,9 +2758,11 @@ onMetadataChange(filter: Array\<string>, callback: Callback\<AVMetadata>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('metadataChange')](#onMetadataChange10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2773,12 +2777,10 @@ onMetadataChange(filter: Array\<string>, callback: Callback\<AVMetadata>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.onMetadataChange(['assetId', 'title', 'description'], (metadata: avSession.AVMetadata) => {
@@ -2786,7 +2788,7 @@ avsessionController.onMetadataChange(['assetId', 'title', 'description'], (metad
 });
 ```
 
-## onMetadataChangeAll<sup>22+</sup>
+## onMetadataChangeAll<sup>23+</sup>
 
 onMetadataChangeAll(callback: Callback\<AVMetadata>): void
 
@@ -2794,9 +2796,11 @@ onMetadataChangeAll(callback: Callback\<AVMetadata>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('metadataChange')](#onMetadataChange10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2810,12 +2814,10 @@ onMetadataChangeAll(callback: Callback\<AVMetadata>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.onMetadataChangeAll((metadata: avSession.AVMetadata) => {
@@ -2830,6 +2832,8 @@ off(type: 'metadataChange', callback?: (data: AVMetadata) => void)
 媒体控制器取消监听元数据变化的事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMetadataChange](#offMetadataChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2856,13 +2860,11 @@ off(type: 'metadataChange', callback?: (data: AVMetadata) => void)
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.off('metadataChange');
 ```
 
-## offMetadataChange<sup>22+</sup>
+## offMetadataChange<sup>23+</sup>
 
 offMetadataChange(callback?: Callback\<AVMetadata>): void
 
@@ -2870,11 +2872,13 @@ offMetadataChange(callback?: Callback\<AVMetadata>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('metadataChange')](#offMetadataChange10)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2888,12 +2892,10 @@ offMetadataChange(callback?: Callback\<AVMetadata>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.offMetadataChange();
@@ -2906,6 +2908,8 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 设置播放状态变化的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlaybackStateChange](#onPlaybackStateChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2933,8 +2937,6 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
@@ -2945,7 +2947,7 @@ avsessionController.on('playbackStateChange', ['state', 'speed', 'loopMode'], (p
 });
 ```
 
-## onPlaybackStateChange<sup>22+</sup>
+## onPlaybackStateChange<sup>23+</sup>
 
 onPlaybackStateChange(filter: Array\<string>, callback: Callback\<AVPlaybackState>): void
 
@@ -2953,9 +2955,11 @@ onPlaybackStateChange(filter: Array\<string>, callback: Callback\<AVPlaybackStat
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('playbackStateChange')](#onPlaybackStateChange10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2970,12 +2974,10 @@ onPlaybackStateChange(filter: Array\<string>, callback: Callback\<AVPlaybackStat
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.onPlaybackStateChange(['state', 'speed', 'loopMode'], (playbackState: avSession.AVPlaybackState) => {
@@ -2983,7 +2985,7 @@ avsessionController.onPlaybackStateChange(['state', 'speed', 'loopMode'], (playb
 });
 ```
 
-## onPlaybackStateChangeAll<sup>22+</sup>
+## onPlaybackStateChangeAll<sup>23+</sup>
 
 onPlaybackStateChangeAll(callback: Callback\<AVPlaybackState>): void
 
@@ -2991,9 +2993,11 @@ onPlaybackStateChangeAll(callback: Callback\<AVPlaybackState>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('playbackStateChange')](#onPlaybackStateChange10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3007,12 +3011,10 @@ onPlaybackStateChangeAll(callback: Callback\<AVPlaybackState>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.onPlaybackStateChangeAll((playbackState: avSession.AVPlaybackState) => {
@@ -3027,6 +3029,8 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void)
 媒体控制器取消监听播放状态变化的事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPlaybackStateChange](#offPlaybackStateChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3053,13 +3057,11 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void)
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.off('playbackStateChange');
 ```
 
-## offPlaybackStateChange<sup>22+</sup>
+## offPlaybackStateChange<sup>23+</sup>
 
 offPlaybackStateChange(callback?: Callback\<AVPlaybackState>): void
 
@@ -3067,11 +3069,13 @@ offPlaybackStateChange(callback?: Callback\<AVPlaybackState>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('playbackStateChange')](#offPlaybackStateChange10)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3085,12 +3089,10 @@ offPlaybackStateChange(callback?: Callback\<AVPlaybackState>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.offPlaybackStateChange();
@@ -3103,6 +3105,8 @@ on(type: 'callMetadataChange', filter: Array\<keyof CallMetadata> | 'all', callb
 设置通话元数据变化的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCallMetadataChange](#onCallMetadataChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3130,8 +3134,6 @@ on(type: 'callMetadataChange', filter: Array\<keyof CallMetadata> | 'all', callb
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.on('callMetadataChange', 'all', (callmetadata: avSession.CallMetadata) => {
   console.info(`on callMetadataChange state : ${callmetadata.name}`);
@@ -3142,7 +3144,7 @@ avsessionController.on('callMetadataChange', ['name'], (callmetadata: avSession.
 });
 ```
 
-## onCallMetadataChange<sup>22+</sup>
+## onCallMetadataChange<sup>23+</sup>
 
 onCallMetadataChange(filter: Array\<string>, callback: Callback\<CallMetadata>): void
 
@@ -3150,9 +3152,11 @@ onCallMetadataChange(filter: Array\<string>, callback: Callback\<CallMetadata>):
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('callMetadataChange')](#onCallMetadataChange11)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3167,12 +3171,10 @@ onCallMetadataChange(filter: Array\<string>, callback: Callback\<CallMetadata>):
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.onCallMetadataChange(['name'], (callmetadata: avSession.CallMetadata) => {
@@ -3180,17 +3182,19 @@ avsessionController.onCallMetadataChange(['name'], (callmetadata: avSession.Call
 });
 ```
 
-## onCallMetadataChangeAll<sup>22+</sup>
+## onCallMetadataChangeAll<sup>23+</sup>
 
-onCallMetadataChangeAll(callback: Callback<CallMetadata>): void
+onCallMetadataChangeAll(callback: Callback\<CallMetadata>): void
 
 设置通话元数据变化的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('callMetadataChange')](#onCallMetadataChange11)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3204,12 +3208,10 @@ onCallMetadataChangeAll(callback: Callback<CallMetadata>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.onCallMetadataChangeAll((callmetadata: avSession.CallMetadata) => {
@@ -3224,6 +3226,8 @@ off(type: 'callMetadataChange', callback?: Callback\<CallMetadata>): void
 取消设置通话元数据变化的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCallMetadataChange](#offCallMetadataChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3250,13 +3254,11 @@ off(type: 'callMetadataChange', callback?: Callback\<CallMetadata>): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.off('callMetadataChange');
 ```
 
-## offCallMetadataChange<sup>22+</sup>
+## offCallMetadataChange<sup>23+</sup>
 
 offCallMetadataChange(callback?: Callback\<CallMetadata>): void
 
@@ -3264,11 +3266,13 @@ offCallMetadataChange(callback?: Callback\<CallMetadata>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('callMetadataChange')](#offCallMetadataChange11)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3282,12 +3286,10 @@ offCallMetadataChange(callback?: Callback\<CallMetadata>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.offCallMetadataChange();
@@ -3300,6 +3302,8 @@ on(type: 'callStateChange', filter: Array\<keyof AVCallState> | 'all', callback:
 设置通话状态变化的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCallStateChange](#onCallStateChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3327,8 +3331,6 @@ on(type: 'callStateChange', filter: Array\<keyof AVCallState> | 'all', callback:
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.on('callStateChange', 'all', (callstate: avSession.AVCallState) => {
   console.info(`on callStateChange state : ${callstate.state}`);
@@ -3339,17 +3341,19 @@ avsessionController.on('callStateChange', ['state'], (callstate: avSession.AVCal
 });
 ```
 
-## onCallStateChange<sup>22+</sup>
+## onCallStateChange<sup>23+</sup>
 
-onCallStateChange(filter: Array<string>, callback: Callback<AVCallState>): void
+onCallStateChange(filter: Array\<string>, callback: Callback\<AVCallState>): void
 
 设置通话状态变化的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('callStateChange')](#onCallStateChange11)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3364,12 +3368,10 @@ onCallStateChange(filter: Array<string>, callback: Callback<AVCallState>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.onCallStateChange(['state'], (callstate: avSession.AVCallState) => {
@@ -3377,17 +3379,19 @@ avsessionController.onCallStateChange(['state'], (callstate: avSession.AVCallSta
 });
 ```
 
-## onCallStateChangeAll<sup>22+</sup>
+## onCallStateChangeAll<sup>23+</sup>
 
-onCallStateChangeAll(callback: Callback<AVCallState>): void
+onCallStateChangeAll(callback: Callback\<AVCallState>): void
 
 设置通话状态变化的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('callStateChange')](#onCallStateChange11)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3401,12 +3405,10 @@ onCallStateChangeAll(callback: Callback<AVCallState>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.onCallStateChangeAll((callstate: avSession.AVCallState) => {
@@ -3421,6 +3423,8 @@ off(type: 'callStateChange', callback?: Callback\<AVCallState>): void
 取消设置通话状态变化的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCallStateChange](#offCallStateChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3447,13 +3451,11 @@ off(type: 'callStateChange', callback?: Callback\<AVCallState>): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.off('callMetadataChange');
 ```
 
-## offCallStateChange<sup>22+</sup>
+## offCallStateChange<sup>23+</sup>
 
 offCallStateChange(callback?: Callback\<AVCallState>): void
 
@@ -3461,11 +3463,13 @@ offCallStateChange(callback?: Callback\<AVCallState>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('callStateChange')](#offCallStateChange11)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3479,12 +3483,10 @@ offCallStateChange(callback?: Callback\<AVCallState>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.offCallStateChange();
@@ -3497,6 +3499,8 @@ on(type: 'sessionDestroy', callback: () => void)
 会话销毁的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSessionDestroy](#onSessionDestroy23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3523,15 +3527,13 @@ on(type: 'sessionDestroy', callback: () => void)
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.on('sessionDestroy', () => {
   console.info('on sessionDestroy : SUCCESS ');
 });
 ```
 
-## onSessionDestroy<sup>22+</sup>
+## onSessionDestroy<sup>23+</sup>
 
 onSessionDestroy(callback: NoParamCallback): void
 
@@ -3539,9 +3541,11 @@ onSessionDestroy(callback: NoParamCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('sessionDestroy')](#onSessionDestroy10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3555,12 +3559,10 @@ onSessionDestroy(callback: NoParamCallback): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.onSessionDestroy(() => {
@@ -3575,6 +3577,8 @@ off(type: 'sessionDestroy', callback?: () => void)
 媒体控制器取消监听会话的销毁事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSessionDestroy](#offSessionDestroy23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3601,13 +3605,11 @@ off(type: 'sessionDestroy', callback?: () => void)
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.off('sessionDestroy');
 ```
 
-## offSessionDestroy<sup>22+</sup>
+## offSessionDestroy<sup>23+</sup>
 
 offSessionDestroy(callback?: NoParamCallback): void
 
@@ -3615,11 +3617,13 @@ offSessionDestroy(callback?: NoParamCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('sessionDestroy')](#offSessionDestroy10)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3633,12 +3637,10 @@ offSessionDestroy(callback?: NoParamCallback): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.offSessionDestroy();
@@ -3651,6 +3653,8 @@ on(type: 'activeStateChange', callback: (isActive: boolean) => void)
 会话的激活状态的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onActiveStateChange](#onActiveStateChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3677,25 +3681,25 @@ on(type: 'activeStateChange', callback: (isActive: boolean) => void)
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.on('activeStateChange', (isActive: boolean) => {
   console.info(`on activeStateChange : SUCCESS : isActive ${isActive}`);
 });
 ```
 
-## onActiveStateChange<sup>22+</sup>
+## onActiveStateChange<sup>23+</sup>
 
-onActiveStateChange(callback: Callback<boolean>): void
+onActiveStateChange(callback: Callback\<boolean>): void
 
 会话的激活状态的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('activeStateChange')](#onActiveStateChange10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3709,12 +3713,10 @@ onActiveStateChange(callback: Callback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ----------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  |The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.onActiveStateChange((isActive: boolean) => {
@@ -3729,6 +3731,8 @@ off(type: 'activeStateChange', callback?: (isActive: boolean) => void)
 媒体控制器取消监听会话激活状态变化的事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offActiveStateChange](#offActiveStateChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3755,13 +3759,11 @@ off(type: 'activeStateChange', callback?: (isActive: boolean) => void)
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.off('activeStateChange');
 ```
 
-## offActiveStateChange<sup>22+</sup>
+## offActiveStateChange<sup>23+</sup>
 
 offActiveStateChange(callback?: Callback\<boolean>): void
 
@@ -3769,11 +3771,13 @@ offActiveStateChange(callback?: Callback\<boolean>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('activeStateChange')](#offActiveStateChange10)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3787,12 +3791,10 @@ offActiveStateChange(callback?: Callback\<boolean>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.offActiveStateChange();
@@ -3805,6 +3807,8 @@ on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>
 会话支持的有效命令变化监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onValidCommandChange](#onValidCommandChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3831,8 +3835,6 @@ on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.on('validCommandChange', (validCommands: avSession.AVControlCommandType[]) => {
   console.info(`validCommandChange : SUCCESS : size : ${validCommands.length}`);
@@ -3840,7 +3842,7 @@ avsessionController.on('validCommandChange', (validCommands: avSession.AVControl
 });
 ```
 
-## onValidCommandChange<sup>22+</sup>
+## onValidCommandChange<sup>23+</sup>
 
 onValidCommandChange(callback: Callback<Array\<AVControlCommandType>>): void
 
@@ -3848,15 +3850,17 @@ onValidCommandChange(callback: Callback<Array\<AVControlCommandType>>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('validCommandChange')](#onValidCommandChange10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | (commands: Array<[AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)\>) => void | 是   | 回调函数。参数commands是有效命令的集合。                     |
+| 参数名   | 类型                                                         | 必填 | 说明                                     |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
+| callback | Callback<Array<[AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)\>> | 是   | 回调函数。参数commands是有效命令的集合。 |
 
 **错误码：**
 
@@ -3864,12 +3868,10 @@ onValidCommandChange(callback: Callback<Array\<AVControlCommandType>>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.onValidCommandChange((validCommands: avSession.AVControlCommandType[]) => {
@@ -3886,6 +3888,8 @@ off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandTyp
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offValidCommandChange](#offValidCommandChange23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -3894,10 +3898,10 @@ off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandTyp
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                        |
-| -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'validCommandChange'`。         |
-| callback | Callback<Array<[AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)\>> | 否   | 回调函数。参数commands是有效命令的集合。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。          |
+| 参数名   | 类型                                             | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                           | 是   | 取消对应的监听事件，支持事件`'validCommandChange'`。         |
+| callback | (commands: Array\<AVControlCommandType>) => void | 否   | 回调函数。参数commands是有效命令的集合。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -3911,13 +3915,11 @@ off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandTyp
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.off('validCommandChange');
 ```
 
-## offValidCommandChange<sup>22+</sup>
+## offValidCommandChange<sup>23+</sup>
 
 offValidCommandChange(callback?: Callback<Array\<AVControlCommandType>>): void
 
@@ -3925,11 +3927,13 @@ offValidCommandChange(callback?: Callback<Array\<AVControlCommandType>>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('validCommandChange')](#offValidCommandChange10)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3943,12 +3947,10 @@ offValidCommandChange(callback?: Callback<Array\<AVControlCommandType>>): void
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.offValidCommandChange();
@@ -3962,6 +3964,8 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 设置播放设备变化的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onOutputDeviceChange](#onOutputDeviceChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3988,15 +3992,13 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.on('outputDeviceChange', (state: avSession.ConnectionState, device: avSession.OutputDeviceInfo) => {
   console.info(`on outputDeviceChange state: ${state}, device : ${device}`);
 });
 ```
 
-## onOutputDeviceChange<sup>22+</sup>
+## onOutputDeviceChange<sup>23+</sup>
 
 onOutputDeviceChange(callback: ConnectionEvent): void
 
@@ -4004,15 +4006,17 @@ onOutputDeviceChange(callback: ConnectionEvent): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('outputDeviceChange')](#onOutputDeviceChange10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
-| 参数名   | 类型                                                    | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | ConnectionEvent = (state: [ConnectionState](arkts-apis-avsession-e.md#connectionstate10), device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | 是   | 回调函数，参数device是设备相关信息。                         |
+| 参数名   | 类型            | 必填 | 说明                                 |
+| -------- | --------------- | ---- | ------------------------------------ |
+| callback | ConnectionEvent | 是   | 回调函数，参数device是设备相关信息。 |
 
 **错误码：**
 
@@ -4020,12 +4024,10 @@ onOutputDeviceChange(callback: ConnectionEvent): void
 
 | 错误码ID | 错误信息 |
 | -------- | ----------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.onOutputDeviceChange((state: avSession.ConnectionState, device: avSession.OutputDeviceInfo) => {
@@ -4040,6 +4042,8 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 媒体控制器取消监听分布式设备变化的事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offOutputDeviceChange](#offOutputDeviceChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4066,13 +4070,11 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.off('outputDeviceChange');
 ```
 
-## offOutputDeviceChange<sup>22+</sup>
+## offOutputDeviceChange<sup>23+</sup>
 
 offOutputDeviceChange(callback?: ConnectionEvent): void
 
@@ -4080,17 +4082,19 @@ offOutputDeviceChange(callback?: ConnectionEvent): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('outputDeviceChange')](#offOutputDeviceChange10)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
-| 参数名   | 类型                                                    | 必填 | 说明                                                      |
-| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------ |
-| callback | ConnectionEvent = (state: [ConnectionState](arkts-apis-avsession-e.md#connectionstate10), device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | 否   | 回调函数，参数device是设备相关信息。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                         |
+| 参数名   | 类型            | 必填 | 说明                                                         |
+| -------- | --------------- | ---- | ------------------------------------------------------------ |
+| callback | ConnectionEvent | 否   | 回调函数，参数device是设备相关信息。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4098,12 +4102,10 @@ offOutputDeviceChange(callback?: ConnectionEvent): void
 
 | 错误码ID  | 错误信息          |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.offOutputDeviceChange();
@@ -4116,6 +4118,8 @@ on(type: 'sessionEvent', callback: (sessionEvent: string, args: {[key: string]: 
 媒体控制器设置会话自定义事件变化的监听器。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSessionEvent](#onSessionEvent23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4142,8 +4146,6 @@ on(type: 'sessionEvent', callback: (sessionEvent: string, args: {[key: string]: 
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
@@ -4166,7 +4168,7 @@ if (controller !== undefined) {
 }
 ```
 
-## onSessionEvent<sup>22+</sup>
+## onSessionEvent<sup>23+</sup>
 
 onSessionEvent(callback: EventProcess): void
 
@@ -4174,15 +4176,17 @@ onSessionEvent(callback: EventProcess): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('sessionEvent')](#onSessionEvent10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | EventProcess = (sessionEvent: string, args: Record<String, Object>) => void | 是   | 回调函数，sessionEvent为变化的会话事件名，args为事件的参数。 |
+| 参数名   | 类型         | 必填 | 说明                                                         |
+| -------- | ------------ | ---- | ------------------------------------------------------------ |
+| callback | EventProcess | 是   | 回调函数，sessionEvent为变化的会话事件名，args为事件的参数。 |
 
 **错误码：**
 
@@ -4190,12 +4194,10 @@ onSessionEvent(callback: EventProcess): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4227,6 +4229,8 @@ off(type: 'sessionEvent', callback?: (sessionEvent: string, args: {[key: string]
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSessionEvent](#offSessionEvent23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4252,13 +4256,11 @@ off(type: 'sessionEvent', callback?: (sessionEvent: string, args: {[key: string]
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.off('sessionEvent');
 ```
 
-## offSessionEvent<sup>22+</sup>
+## offSessionEvent<sup>23+</sup>
 
 offSessionEvent(callback?: EventProcess): void
 
@@ -4266,17 +4268,19 @@ offSessionEvent(callback?: EventProcess): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('sessionEvent')](#offSessionEvent10)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | EventProcess = (event: string, args: Record<string, Object>) => void | 否   | 回调函数，参数event是变化的事件名，args为事件的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对sessionEvent事件的监听。 |
+| 参数名   | 类型         | 必填 | 说明                                                         |
+| -------- | ------------ | ---- | ------------------------------------------------------------ |
+| callback | EventProcess | 否   | 回调函数，参数event是变化的事件名，args为事件的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对sessionEvent事件的监听。 |
 
 **错误码：**
 
@@ -4284,12 +4288,10 @@ offSessionEvent(callback?: EventProcess): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.offSessionEvent();
@@ -4302,6 +4304,8 @@ on(type: 'queueItemsChange', callback: (items: Array<[AVQueueItem](arkts-apis-av
 媒体控制器设置会话自定义播放列表变化的监听器。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onQueueItemsChange](#onQueueItemsChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4328,15 +4332,13 @@ on(type: 'queueItemsChange', callback: (items: Array<[AVQueueItem](arkts-apis-av
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.on('queueItemsChange', (items: avSession.AVQueueItem[]) => {
   console.info(`OnQueueItemsChange, items length is ${items.length}`);
 });
 ```
 
-## onQueueItemsChange<sup>22+</sup>
+## onQueueItemsChange<sup>23+</sup>
 
 onQueueItemsChange(callback: Callback<Array<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)\>>): void
 
@@ -4344,9 +4346,11 @@ onQueueItemsChange(callback: Callback<Array<[AVQueueItem](arkts-apis-avsession-i
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('queueItemsChange')](#onQueueItemsChange10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4360,12 +4364,10 @@ onQueueItemsChange(callback: Callback<Array<[AVQueueItem](arkts-apis-avsession-i
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.onQueueItemsChange((items: avSession.AVQueueItem[]) => {
@@ -4380,6 +4382,8 @@ off(type: 'queueItemsChange', callback?: (items: Array<[AVQueueItem](arkts-apis-
 媒体控制器取消监听播放列表变化的事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offQueueItemsChange](#offQueueItemsChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4406,13 +4410,11 @@ off(type: 'queueItemsChange', callback?: (items: Array<[AVQueueItem](arkts-apis-
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.off('queueItemsChange');
 ```
 
-## offQueueItemsChange<sup>22+</sup>
+## offQueueItemsChange<sup>23+</sup>
 
 offQueueItemsChange(callback?: Callback<Array<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)\>>): void
 
@@ -4420,11 +4422,13 @@ offQueueItemsChange(callback?: Callback<Array<[AVQueueItem](arkts-apis-avsession
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('queueItemsChange')](#offQueueItemsChange10)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4438,12 +4442,10 @@ offQueueItemsChange(callback?: Callback<Array<[AVQueueItem](arkts-apis-avsession
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.offQueueItemsChange();
@@ -4456,6 +4458,8 @@ on(type: 'queueTitleChange', callback: (title: string) => void): void
 媒体控制器设置会话自定义播放列表的名称变化的监听器。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onQueueTitleChange](#onQueueTitleChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4482,15 +4486,13 @@ on(type: 'queueTitleChange', callback: (title: string) => void): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.on('queueTitleChange', (title: string) => {
   console.info(`queueTitleChange, title is ${title}`);
 });
 ```
 
-## onQueueTitleChange<sup>22+</sup>
+## onQueueTitleChange<sup>23+</sup>
 
 onQueueTitleChange(callback: Callback\<string>): void
 
@@ -4498,9 +4500,11 @@ onQueueTitleChange(callback: Callback\<string>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('queueTitleChange')](#onQueueTitleChange10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4514,12 +4518,10 @@ onQueueTitleChange(callback: Callback\<string>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.onQueueTitleChange((title: string) => {
@@ -4534,6 +4536,8 @@ off(type: 'queueTitleChange', callback?: (title: string) => void): void
 媒体控制器取消监听播放列表名称变化的事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offQueueTitleChange](#offQueueTitleChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4560,13 +4564,11 @@ off(type: 'queueTitleChange', callback?: (title: string) => void): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.off('queueTitleChange');
 ```
 
-## offQueueTitleChange<sup>22+</sup>
+## offQueueTitleChange<sup>23+</sup>
 
 offQueueTitleChange(callback?: Callback\<string>): void
 
@@ -4574,11 +4576,13 @@ offQueueTitleChange(callback?: Callback\<string>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('queueTitleChange')](#offQueueTitleChange10)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4592,12 +4596,10 @@ offQueueTitleChange(callback?: Callback\<string>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.offQueueTitleChange();
@@ -4610,6 +4612,8 @@ on(type: 'extrasChange', callback: (extras: {[key: string]: Object}) => void): v
 媒体控制器设置自定义媒体数据包事件变化的监听器。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onExtrasChange](#onExtrasChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4636,8 +4640,6 @@ on(type: 'extrasChange', callback: (extras: {[key: string]: Object}) => void): v
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
@@ -4660,7 +4662,7 @@ if (controller !== undefined) {
 }
 ```
 
-## onExtrasChange<sup>22+</sup>
+## onExtrasChange<sup>23+</sup>
 
 onExtrasChange(callback: Callback<Record<string, Object>>): void
 
@@ -4668,9 +4670,11 @@ onExtrasChange(callback: Callback<Record<string, Object>>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('extrasChange')](#onExtrasChange10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4684,12 +4688,10 @@ onExtrasChange(callback: Callback<Record<string, Object>>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4721,6 +4723,8 @@ off(type: 'extrasChange', callback?: (extras: {[key: string]: Object}) => void):
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offExtrasChange](#offExtrasChange23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4746,13 +4750,11 @@ off(type: 'extrasChange', callback?: (extras: {[key: string]: Object}) => void):
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 avsessionController.off('extrasChange');
 ```
 
-## offExtrasChange<sup>22+</sup>
+## offExtrasChange<sup>23+</sup>
 
 offExtrasChange(callback?: Callback<Record<string, Object>>): void
 
@@ -4760,17 +4762,19 @@ offExtrasChange(callback?: Callback<Record<string, Object>>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('extrasChange')](#offExtrasChange10)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名    | 类型                    | 必填 | 说明                                                                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
-| callback | Callback<Record<string, Object> | 否   | 注册监听事件时的回调函数。<br>该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。 |
+| callback | Callback<Record<string, Object>> | 否   | 注册监听事件时的回调函数。<br>该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。 |
 
 **错误码：**
 
@@ -4778,12 +4782,10 @@ offExtrasChange(callback?: Callback<Record<string, Object>>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ----------------                       |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 avsessionController.offExtrasChange();
@@ -4801,7 +4803,7 @@ getAVPlaybackStateSync(): AVPlaybackState;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -4859,7 +4861,7 @@ getAVMetadataSync(): AVMetadata
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -4915,7 +4917,7 @@ getAVCallState(): Promise\<AVCallState>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -4969,7 +4971,7 @@ getAVCallState(callback: AsyncCallback\<AVCallState>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4983,7 +4985,7 @@ getAVCallState(callback: AsyncCallback\<AVCallState>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -5027,7 +5029,7 @@ getCallMetadata(): Promise\<CallMetadata>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -5081,7 +5083,7 @@ getCallMetadata(callback: AsyncCallback\<CallMetadata>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5141,7 +5143,7 @@ getAVQueueTitleSync(): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -5199,7 +5201,7 @@ getAVQueueItemsSync(): Array\<AVQueueItem\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -5257,7 +5259,7 @@ getOutputDeviceSync(): OutputDeviceInfo
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -5314,7 +5316,7 @@ isActiveSync(): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -5372,7 +5374,7 @@ getValidCommandsSync(): Array\<AVControlCommandType\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -5386,7 +5388,7 @@ getValidCommandsSync(): Array\<AVControlCommandType\>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
