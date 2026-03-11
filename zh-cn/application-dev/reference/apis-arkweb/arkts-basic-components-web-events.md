@@ -4090,7 +4090,7 @@ ArkTS-Sta: onFullScreenExit(callback: (() => void) | undefined)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback |ArkTS-Dyn: () => void <br/>ArkTS-Sta: () => void \|  undefined| 是 | 退出全屏模式时的回调函数。 |
+| callback |ArkTS-Dyn: () => void <br/>ArkTS-Sta: (() => void) \|  undefined| 是 | 退出全屏模式时的回调函数。 |
 
 **示例：**
 
