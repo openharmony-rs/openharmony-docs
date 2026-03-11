@@ -492,7 +492,7 @@ offError(callback?: ErrorCallback): void
 
 用户可以指定填入错误回调方法来取消订阅。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror12)。
 
