@@ -6329,7 +6329,9 @@ try {
 
 setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置窗口是否为可触状态，使用callback异步回调。
+设置窗口是否为可点击状态，使用callback异步回调。
+
+当窗口处于可点击状态时，若用户点击命中该窗口，事件将发送给该窗口处理。当窗口处于不可点击状态时，透传点击事件，传递给下层窗口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6339,7 +6341,7 @@ setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----------- | ------------------------- | -- | ----------------------------------------------- |
-| isTouchable | boolean                   | 是 | 窗口是否为可触状态。true表示可触；false表示不可触。 |
+| isTouchable | boolean                   | 是 | 窗口是否为可点击状态。true表示可点击；false表示不可点击。 |
 | callback    | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                        |
 
 **错误码：**
@@ -6376,7 +6378,9 @@ try {
 
 setWindowTouchable(isTouchable: boolean): Promise&lt;void&gt;
 
-设置窗口是否为可触状态，使用Promise异步回调。
+设置窗口是否为可点击状态，使用Promise异步回调。
+
+当窗口处于可点击状态时，若用户点击命中该窗口，事件将发送给该窗口处理。当窗口处于不可点击状态时，透传点击事件，传递给下层窗口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6386,7 +6390,7 @@ setWindowTouchable(isTouchable: boolean): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----------- | ------- | -- | ----------------------------------------------- |
-| isTouchable | boolean | 是 | 窗口是否为可触状态。true表示可触；false表示不可触。 |
+| isTouchable | boolean | 是 | 窗口是否为可点击状态。true表示可点击；false表示不可点击。 |
 
 **返回值：**
 
