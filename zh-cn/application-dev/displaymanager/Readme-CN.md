@@ -15,3 +15,4 @@
 <!--RP1-->
 <!--RP1End-->
 - [屏幕管理开发术语](display-terminology.md)
+- [屏幕开发常见问题](displaymanager-faqs.md)
