@@ -1814,11 +1814,11 @@ onWindowStageLifecycleEvent(callback: Callback&lt;WindowStageLifecycleEventType&
 
 > **说明：**
 >
->  [on('windowStageEvent')](#onwindowstageevent9)与本接口的区别：
+>  [onWindowStageEvent](#onwindowstageevent23)与本接口的区别：
 >
 > 1.前者无法保证状态切换间的顺序，对于状态间的顺序有要求的情况下不推荐使用，推荐使用本接口；
 >
-> 2.当前接口不提供WindowStage的获焦失焦状态监听，对于windowStage获焦失焦状态有监听需求的情况下，推荐使用[on('windowEvent')](arkts-apis-window-Window.md#onwindowevent10)；
+> 2.当前接口不提供WindowStage的获焦失焦状态监听，对于windowStage获焦失焦状态有监听需求的情况下，推荐使用[onWindowEvent](arkts-apis-window-Window.md#onwindowevent23)；
 >
 > 3.其他系统机制及其生命周期状态切换的详细说明，请参考[主窗口的生命周期](../../windowmanager/window-overview.md#主窗口的生命周期)。
 
