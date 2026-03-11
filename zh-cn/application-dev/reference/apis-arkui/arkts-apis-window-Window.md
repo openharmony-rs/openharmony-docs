@@ -6898,7 +6898,7 @@ try {
   let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
     console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
   };
-  windowClass.onAvoidAreaChange(callback);
+  windowClass.onFrameMetricsMeasured(callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
 }
