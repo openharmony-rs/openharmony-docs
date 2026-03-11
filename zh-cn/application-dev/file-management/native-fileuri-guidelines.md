@@ -100,11 +100,11 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
        napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
    
        unsigned int length = strlen(uri);
-       // 输出传入uri符串
+       // 输出传入uri字符串
        OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
        char *pathResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetPathFromUri(uri, length, &pathResult);
-       // 输出获取路径结果符串
+       // 输出获取路径结果字符串
        // ...
        if (ret == 0 && pathResult != nullptr) {
            // 将C字符串转换为napi_value
