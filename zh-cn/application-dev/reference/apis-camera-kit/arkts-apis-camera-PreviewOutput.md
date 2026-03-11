@@ -605,15 +605,17 @@ function testGetActiveProfile(previewOutput: camera.PreviewOutput): camera.Profi
 
 ## getPreviewRotation<sup>12+</sup>
 
-ArkTS-Dyn: getPreviewRotation(displayRotation: number): ImageRotation
+ArkTS-Dyn: getPreviewRotation(displayRotation?: number): ImageRotation
 
-ArkTS-Sta: getPreviewRotation(displayRotation: int): ImageRotation
+ArkTS-Sta: getPreviewRotation(displayRotation?: int): ImageRotation
 
 获取预览旋转角度。
 
 - 设备自然方向：设备默认使用方向，手机为竖屏（充电口向下）。
 - 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度，手机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
 - 屏幕显示方向：需要屏幕显示的图片左上角为第一个像素点为坐标原点。锁屏时与自然方向一致。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -641,7 +643,6 @@ ArkTS-Sta: getPreviewRotation(displayRotation: int): ImageRotation
 
 | 错误码ID   | 错误信息                         |
 |---------|------------------------------|
-| 7400101 | Parameter missing or parameter type incorrect.  |
 | 7400201 | Camera service fatal error.  |
 
 **示例：**
@@ -871,3 +872,129 @@ function stopPreviewOutput(previewOutput: camera.PreviewOutput): void {
 }
 ```
 
+## isBandwidthCompressionSupported<sup>23+</sup>
+
+isBandwidthCompressionSupported(): boolean
+
+检查是否支持预览带宽压缩（指通过编码减少数据量，降低其在传输链路中的带宽占用）。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型            | 说明                     |
+| -------------- | ----------------------- |
+| boolean | 是否支持预览带宽压缩。true表示支持，false表示不支持。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isBandwidthCompressionSupported(previewOutput: camera.PreviewOutput): boolean {
+  let supported: boolean = false;
+  try {
+    supported = previewOutput.isBandwidthCompressionSupported();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The previewOutput.isBandwidthCompressionSupported call failed. error code: ${err.code}`);
+  }
+  return supported;
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isBandwidthCompressionSupported(previewOutput: camera.PreviewOutput): boolean {
+  let supported: boolean = false;
+  try {
+    supported = previewOutput.isBandwidthCompressionSupported();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The previewOutput.isBandwidthCompressionSupported call failed. error code: ${err.code}`);
+  }
+  return supported;
+}
+```
+
+## enableBandwidthCompression<sup>23+</sup>
+
+enableBandwidthCompression(enabled: boolean): void
+
+使能预览带宽压缩。
+
+使能之前，可先使用方法[isBandwidthCompressionSupported](#isbandwidthcompressionsupported23)对设备是否支持预览带宽压缩进行检查。
+
+> **说明：**
+> 该接口只能在使用[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11)接口之前调用，否则会影响预览流出流格式。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                    | 必填 | 说明                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| enabled  | boolean | 是  | 是否使能预览带宽压缩。true表示使能，false表示不使能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID    | 错误信息                                           |
+| -------- |----------------------------------------------- |
+| 7400102  | Operation not allowed. |
+| 7400103  | Session not config. |
+| 7400201  | Camera service fatal error. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled: boolean): void {
+  try {
+    previewOutput.enableBandwidthCompression(enabled);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The previewOutput.enableBandwidthCompression call failed. error code: ${err.code}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled: boolean): void {
+  try {
+    previewOutput.enableBandwidthCompression(enabled);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The previewOutput.enableBandwidthCompression call failed. error code: ${err.code}`);
+  }
+}
+```

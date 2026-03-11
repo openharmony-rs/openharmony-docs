@@ -66,7 +66,7 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 15
 
 **ArkTS-Sta起始版本：** 22
 
@@ -261,8 +261,6 @@
 
 枚举，metadata流。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 10
@@ -271,7 +269,8 @@
 
 | 名称                       | 值   | 说明              |
 | ------------------------- | ---- | ----------------- |
-| FACE_DETECTION            | 0    | metadata对象类型，用于人脸检测。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br>例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，<br>布局宽高为(w，h)， 返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
+| FACE_DETECTION            | 0    | metadata对象类型，用于人脸检测。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br>例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，<br>布局宽高为(w，h)， 返回点为(x，y)，则转换后的坐标点为(1-y，x)。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| HUMAN_BODY<sup>23+</sup>     | 1    | 元数据的对象类型，用于人体检测。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/> **ArkTS-Sta起始版本：** 23 |
 
 ## FlashMode
 
@@ -387,20 +386,15 @@
 
 枚举，提供预配置的类型。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 22
 
 | 名称                      | 值 | 说明         |
 |-------------------------|---|------------|
-| PRECONFIG_720P          | 0 | 720P预配置。   |
-| PRECONFIG_1080P         | 1 | 1080P预配置。  |
-| PRECONFIG_4K            | 2 | 4K预配置。     |
-| PRECONFIG_HIGH_QUALITY  | 3 | 高质量预配置。    |
+| PRECONFIG_720P          | 0 | 720P预配置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23   |
+| PRECONFIG_1080P         | 1 | 1080P预配置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23  |
+| PRECONFIG_4K            | 2 | 4K预配置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23     |
+| PRECONFIG_HIGH_QUALITY  | 3 | 高质量预配置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23   |
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020<sup>23+</sup>  | 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br> **ArkTS-Sta起始版本：** 23 |
 
 ## PreconfigRatio<sup>12+</sup>
 
@@ -458,3 +452,57 @@
 | DAYLIGHT       | 4 | 日光 |
 | MANUAL         | 5 | 手动 |
 | LOCKED         | 6 | 锁定  |
+
+## SystemPressureLevel<sup>20+</sup>
+
+枚举，系统压力等级。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                     | 值 | 说明       | 
+|--------------------------|---|------------|
+| SYSTEM_PRESSURE_NORMAL   | 0 | 系统压力正常。 |
+| SYSTEM_PRESSURE_MILD     | 1 | 系统压力升高，但是系统不会主动管控。 |
+| SYSTEM_PRESSURE_SEVERE   | 2 | 系统压力可能对图像总质量、性能产生影响。 |
+| SYSTEM_PRESSURE_CRITICAL | 3 | 系统压力对图像质量、性能产生显著影响。 |
+| SYSTEM_PRESSURE_SHUTDOWN | 4 | 系统压力过高，停止工作。 |
+
+## ControlCenterEffectType<sup>20+</sup>
+
+枚举，相机控制器支持的效果类型。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称      | 值 | 说明    |
+|-----------|---|---------|
+| BEAUTY    | 0 | 美颜。   |
+| PORTRAIT  | 1 | 人像虚化。|
+
+## PhotoQualityPrioritization<sup>21+</sup>
+
+枚举，拍照画质优先策略。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+| 名称         | 值     | 说明    |
+|--------------|-------|---------|
+| HIGH_QUALITY | 0     | 画质优先，拍照需要较长的时间，以输出高画质的图片。 |
+| SPEED        | 1     | 性能优先，会降低画质来提升拍照的速度。 |
