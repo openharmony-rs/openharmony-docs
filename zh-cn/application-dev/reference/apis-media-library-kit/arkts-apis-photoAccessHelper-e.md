@@ -285,6 +285,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称                                    |  值 | 说明       |
 |---------------------------------------|  ---- |----------|
 | BROWSER_MODE                          |  0 | 大图预览模式。    |
@@ -298,6 +302,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -355,3 +363,175 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | TEXT_DONE<sup>14+</sup> |  0 |  显示“完成”。 <br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | TEXT_SEND<sup>14+</sup>    |  1 |  显示“发送”。 <br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | TEXT_ADD<sup>14+</sup> |  2 |  显示“添加”。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。  |
+
+## NotifyChangeType<sup>20+</sup>
+
+枚举，媒体资产（图片/视频）或相册变更事件的通知类型。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                      | 值   | 说明                             |
+| ------------------------- | ---- | -------------------------------- |
+| NOTIFY_CHANGE_ADD         | 0    | 媒体资产（图片/视频）或相册已经创建。     |
+| NOTIFY_CHANGE_UPDATE      | 1    | 媒体资产（图片/视频）或相册已经修改。     |
+| NOTIFY_CHANGE_REMOVE      | 2    | 媒体资产（图片/视频）或相册已经删除。     |
+
+## PhotoSource<sup>20+</sup>
+
+枚举，图片或者视频数据的来源类型。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称                | 值   | 说明                                                                                                                 |
+|-------------------|-----|--------------------------------------------------------------------------------------------------------------------|
+| ALL | 0   | 所有来源的图片、视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| CAMERA | 1   | 仅相机拍摄的图片、视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| SCREENSHOT | 2   | 截屏图片或者录屏视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+
+## MovingPhotoBadgeStateType<sup>22+</sup>
+
+枚举，动态照片状态。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称                | 值   | 说明             |
+|------------------- |--------|----------------------|
+| NOT_MOVING_PHOTO   | 0      | 非动态照片。 |
+| MOVING_PHOTO_ENABLED | 1    | 打开动态照片效果。 |
+| MOVING_PHOTO_DISABLED | 2   | 关闭动态照片效果。 |
+
+## SceneType<sup>23+</sup>
+
+枚举，动态照片播放的场景。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称                | 值   | 说明             |
+|------------------- |--------|----------------------|
+| GRID_TO_PHOTO_BROWSER   | 0      | 从宫格点击进入大图。 |
+| PHOTO_BROWSER_SWIPE | 1    | 在大图场景左右滑动。 |
+
+## PlayMode<sup>23+</sup>
+
+枚举，是否支持动态照片自动播放。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称                | 值   | 说明             |
+|------------------- |--------|----------------------|
+| DEFAULT   | 0      | 不支持动态照片自动播放。 |
+| AUTO_PLAY | 1    | 支持动态照片自动播放。 |
+
+## VideoMode<sup>22+</sup>
+
+枚举，视频文件的log模式。
+
+**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  默认类型。<br>取值为0表示当前视频非log模式或未判断类型，后续部分视频判断后字段会更新为1，因此不建议使用此字段进行查询。|
+| LOG_VIDEO |  1 |  log模式视频的文件类型。  |
+
+## OperationType<sup>22+</sup>
+
+表示各类谓词的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称                    | 值 | 说明                          |
+| -----------------------|---- | -------------------------------- |
+| EQUAL_TO    | 1  | 等于，取value数组的第一个元素与谓词匹配。超出长度取第1个。 |
+| NOT_EQUAL_TO    | 2   | 不等于，取value数组的第一个元素与谓词匹配。超出长度取第1个。 |
+| GREATER_THAN    | 3   | 大于，取value数组的第一个元素与谓词匹配。 超出长度取第1个。|
+| LESS_THAN    | 4   | 小于，取value数组的第一个元素与谓词匹配。超出长度取第1个。 |
+| GREATER_THAN_OR_EQUAL_TO    | 5   | 大于等于，取value数组的第一个元素与谓词匹配。超出长度取第1个。 |
+| LESS_THAN_OR_EQUAL_TO    | 6   | 小于等于，取value数组的第一个元素与谓词匹配。超出长度取第1个。 |
+| AND    | 7   | 逻辑'与'，相当于数据库查询语句的'and'。无需传入field和value。 |
+| OR    | 8  | 逻辑'或'，相当于数据库查询语句的'or'。无需传入field和value。 |
+| IN    | 9   | 匹配在指定范围内的字段，value长度限制10个。 |
+| NOT_IN    | 10   | 匹配不在指定范围内的字段，value长度限制10个。 |
+| BEGIN_WRAP    | 11   | 用于向谓词添加英文左括号，相当于数据库查询语句的"("，必须和英文右括号一起使用。无需传入field和value。 |
+| END_WRAP    | 12   | 用于向谓词添加英文右括号，相当于数据库查询语句的")"，必须和英文左括号一起使用。无需传入field和value。 |
+| BETWEEN    | 13   | 匹配指定范围内的字段。<br>包含两端边界值，为左闭右闭区间。取value数组的前两个元素与谓词匹配，超出长度取前2个，分别表示左右边界。例如：[1, 2, 3, 4]中取前两个，1表示左边界，2表示右边界。 |
+| NOT_BETWEEN    | 14   | 匹配超出指定范围内的字段。<br>不包含两端边界值，为左开右开区间。取value数组的前两个元素与谓词匹配，超出长度取前2个，分别表示左右边界。例如：[1, 2, 3, 4]中取前两个，1表示左边界，2表示右边界。 |
+
+## GridLevel<sup>23+</sup>
+ 	  	 
+枚举类型，用于设置拉起picker后的宫格列数档位。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+ 	
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+    
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| SPACIOUS |  0 |  宽松宫格档位。该挡位为标准宫格的列数减1。|
+| STANDARD |  1 |  标准宫格档位。不同设备尺寸对应的标准宫格列数各不相同，当未配置标准宫格列数时，系统将使用默认列数。|
+| COMPACT |  2 |  紧密宫格档位。该挡位为标准宫格的列数加1。 |
+
+## GridPinchModeType<sup>23+</sup>
+    
+枚举，宫格捏合模式类型。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+    
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+    
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| FULL_FUNCTION_GRID | 0 | 宫格支持捏合，捏合后支持选中、点击进大图操纵。|

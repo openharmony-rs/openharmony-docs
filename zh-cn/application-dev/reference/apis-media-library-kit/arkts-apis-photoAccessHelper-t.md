@@ -26,3 +26,25 @@ PhotoAsset的成员类型。
 | ArkTS-Dyn: number<br>ArkTS-Sta: int \| long \| double | 表示值类型为数字，可取任意值。 |
 | string | 表示值类型为字符，可取任意值。|
 | boolean | 表示值类型为布尔类型。 |
+
+## OperationValueType<sup>22+</sup>
+
+type OperationValueType = number | string | boolean  
+
+表示不同谓词所需要匹配的值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
+| 类型                    | 说明                          |
+| ---------------------- | -------------------------------- |
+| number    | 表示字段类型为数字，可取任意值。 |
+| string    | 表示字段类型为字符串，可取任意值。 |
+| boolean   | 表示字段类型为布尔值。 |
