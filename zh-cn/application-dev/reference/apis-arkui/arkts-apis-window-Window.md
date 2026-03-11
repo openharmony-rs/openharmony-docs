@@ -11414,7 +11414,7 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 建议在UIAbility启动过程中使用该接口，多次调用该接口会先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
 
-当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 > **说明：**
 >
@@ -11452,7 +11452,7 @@ loadContent(path: string): Promise&lt;void&gt;
 
 建议在UIAbility启动过程中使用该接口，多次调用该接口会先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
 
-当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 > **说明：**
 >
