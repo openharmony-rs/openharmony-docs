@@ -283,7 +283,7 @@
    例如，搜播需要调用接口[playForSearch](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md#playforsearch)。该接口支持音视频，示例仅以音频为例。视频需将参数实体类SearchPlayInfo的成员变量更换为SearchPlayVideoInfo类型的videoInfo。
 
    <!-- @[play_for_search](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-
+   
    ``` TypeScript
    import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
    // ...
