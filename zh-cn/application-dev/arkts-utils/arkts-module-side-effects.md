@@ -519,34 +519,11 @@ console.info('har NumberString.ets execute.');
 
 <!-- @[import_modulePartTwelve](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageTwelve.ets) -->
 
-```typescript
-// main.ets
-import { serviceManager } from "har"
+``` TypeScript
+// PageTwelve.ets
+import { serviceManager } from 'staticlibrary';
 
 serviceManager.print();
-
-// har/Index.ets
-import { serviceManager } from "./src/main/ets/ServiceManager"
-
-serviceManager.init();
-export { serviceManager }
-
-// har/src/main/ets/ServiceManager.ets
-class ServiceManager {
-    public inited: boolean = false;
-    
-    public init() {
-        this.inited = true;
-    }
-    public print() {
-        if (this.inited) {
-            console.info("ServiceManager is inited.");
-        } else {
-            console.error("ServiceManager is not inited.");
-        }
-    }
-}
-export let serviceManager: ServiceManager = new ServiceManager();
 ```
 
 <!-- @[import_serviceManagerOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/Index.ets) -->
