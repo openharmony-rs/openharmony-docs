@@ -98,8 +98,8 @@ import { cloudExtension } from '@kit.ArkData';
 | 名称       | 类型            | 只读 | 可选 | 说明                 |
 | ---------- | --------------- | ---- | ---- | ------------------ |
 | id         | string          | 是   | 否   | 执行插入操作时生成。 |
-| createTime | number          | 是   | 否   | 创建行数据的时间。   |
-| modifyTime | number          | 是   | 否   | 修改行数据的时间。   |
+| createTime | number          | 是   | 否   | 创建行数据的时间（ms）。   |
+| modifyTime | number          | 是   | 否   | 修改行数据的时间（ms）。   |
 | operation  | [Flag](#flag)   | 是   | 否   | 对行数据所作的操作。 |
 
 ## CloudType
@@ -897,7 +897,7 @@ subscribe(subInfo: Record&lt;string, Array&lt;Database&gt;&gt;, expirationTime: 
 | 参数名         | 类型                                                       | 必填 | 说明                                                   |
 | -------------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------ |
 | subInfo        | Record&lt;string, Array&lt;[Database](#database)&gt;&gt; | 是   | 需要订阅的数据，由应用包名称和数据库信息组成的键值对。 |
-| expirationTime | number                                                     | 是   | 表示订阅到期时间。                                     |
+| expirationTime | number                                                     | 是   | 表示订阅到期时间（ms）。                                     |
 
 **返回值：**
 

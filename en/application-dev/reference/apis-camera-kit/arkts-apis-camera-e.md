@@ -109,7 +109,7 @@ Enumerates the camera scene modes.
 | Name                        | Value      | Description                                         |
 |----------------------------|---------|---------------------------------------------|
 | NORMAL_PHOTO               | 1       | Normal photo mode. For details, see [PhotoSession](arkts-apis-camera-PhotoSession.md).  |
-| NORMAL_VIDEO               | 2       | Normal record mode. For details, see [VideoSession](arkts-apis-camera-VideoSession.md).  |
+| NORMAL_VIDEO               | 2       | Normal record mode. For details, see [VideoSession](arkts-apis-camera-VideoSession.md). |
 | SECURE_PHOTO<sup>12+</sup> | 12      | Secure mode. For details, see [SecureSession](arkts-apis-camera-SecureSession.md).|
 
 ## CameraErrorCode

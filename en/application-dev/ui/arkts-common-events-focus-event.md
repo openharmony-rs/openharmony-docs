@@ -345,7 +345,7 @@ The projection-based focus traversal algorithm determines the next focus based o
 
 > **NOTE**
 >
-> - The focus traveral order calculated by the projection-based focus traversal algorithm is closely related to the component layout and size. It is recommended for use in scenarios where components are arranged in a regular and uniform manner. If components have varying sizes and overlap horizontally or vertically, the resulting focus traversal order may deviate from the expected sequence.
+> - The focus traversal order calculated by the projection-based focus traversal algorithm is closely related to the component layout and size. It is recommended for use in scenarios where components are arranged in a regular and uniform manner. If components have varying sizes and overlap horizontally or vertically, the resulting focus traversal order may deviate from the expected sequence.
 >
 > - If a clear focus order is required, it is recommended that you use containers that support sequential focusing, such as **Column** or **Row**.
 

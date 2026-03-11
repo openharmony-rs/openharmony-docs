@@ -698,9 +698,9 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许应用使用全局闪控球的自动恢复到应用主窗口的能力。
 
-**申请条件**：需要与闪控球权限[ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball)一起，才可申请此权限
+**申请条件**：需要与闪控球权限[ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball)一起，才可申请此权限。
 
-<!--RP66--><!--RP66End-->
+<!--RP69--><!--RP69End-->
 
 **权限级别**：system_basic
 
@@ -1037,3 +1037,19 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：General
 
 **起始版本**：23
+
+## ohos.permission.INPUT_DEVICE_CONFIGURATOR
+
+允许应用绑定输入设备与显示屏幕。
+
+获取该权限后，驱动应用可将通过USB或蓝牙连接的外部输入设备与指定屏幕绑定。
+
+<!--RP66--><!--RP66End-->
+
+**权限级别**: system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: PC/2in1
+
+**起始版本**: 24

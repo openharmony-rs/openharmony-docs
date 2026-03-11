@@ -159,7 +159,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    }
    ```
 
-3. 配置视频录制参数，调用OH_AVRecorder_Prepare()接口，此时进入prepared状态。
+3. 配置音频录制参数，调用OH_AVRecorder_Prepare()接口，此时进入prepared状态。
 
    > **说明：**
    >
@@ -167,7 +167,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    >
    > - 配置参数之前需要确保完成对应权限的申请，请参考[申请权限](#申请权限)。
    >
-   > - prepare接口的入参OH_AVRecorder_Config中设置音视频相关的配置参数，如示例代码所示。
+   > - prepare接口的入参OH_AVRecorder_Config中设置音频相关的配置参数，如示例代码所示。
    >
    > - 录制输出的url地址（即示例里avConfig中的url），形式为fd://xx (fd number)。需要调用基础文件操作接口实现应用文件访问能力，获取方式参考[应用文件访问与管理](../../file-management/native-fileio-guidelines.md)。
 

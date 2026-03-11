@@ -11,13 +11,13 @@
 
 | 名称 | 描述 |
 | ---- | ---- |
-| on(type: 'selectionCompleted', callback: Callback\<SelectionInfo\>): void | 订阅划词完成事件，使用`callback`回调函数。 |
-| getSelectionContent(): Promise\<string\> | 获取选中文本的内容。 |
-| createPanel(ctx: Context, info: PanelInfo): Promise\<Panel\> | 创建划词面板。 |
-| show(): Promise\<void\> | 显示面板。 |
-| hide(): Promise\<void\> | 隐藏面板。 |
-| startMoving(): Promise\<void\> | 使当前划词面板可以随鼠标拖动。 |
-| moveToGlobalDisplay(x: number, y: number): Promise\<void\> | 移动划词面板至屏幕指定位置。 |
+| [on(type: 'selectionCompleted', callback: Callback\<SelectionInfo\>): void](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted) | 订阅划词完成事件，使用`callback`回调函数。 |
+| [getSelectionContent(): Promise\<string\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent) | 获取选中文本的内容。 |
+| [createPanel(ctx: Context, info: PanelInfo): Promise\<Panel\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#createpanel) | 创建划词面板。 |
+| [show(): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show) | 显示面板。 |
+| [hide(): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#hide) | 隐藏面板。 |
+| [startMoving(): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#startmoving) | 使当前划词面板可以随鼠标拖动。 |
+| [moveToGlobalDisplay(x: number, y: number): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#movetoglobaldisplay) | 移动划词面板至屏幕指定位置。 |
 
 上述接口为本文档用到的核心接口，如需了解划词服务的全量接口，请参考[selectionInput.SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)接口文档获取接口详细描述。
 
@@ -50,18 +50,19 @@
     ![划词应用工程](figures/selection-application-project.png)
 
 2. 在[SelectionModel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets)文件中，开发者可自定义划词模块管理类，用于统一管理划词内容、窗口等信息。并且实现一些get、set接口，便于信息的类间传递。
-
-    ```ts
+    <!-- @[SelectionModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets) -->
+    
+    ``` TypeScript
     import { selectionManager, SelectionExtensionContext } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     export class SelectionModel {
       private selectionInfo: selectionManager.SelectionInfo | undefined;
       private selectionContent: string | undefined;
       private selectionPanel: selectionManager.Panel | undefined;
       private context: SelectionExtensionContext | undefined;
       private listener: (selectionInfo: selectionManager.SelectionInfo) => void;
-
+    
       private constructor() {
         this.selectionInfo = undefined;
         this.selectionContent = undefined;
@@ -71,46 +72,46 @@
           hilog.info(0x0000, 'SelectionModel', `Received selection selectionInfo: ${selectionInfo}`);
         }
       }
-
+    
       public static getInstance(): SelectionModel {
         if (globalThis.instance == null) {
           globalThis.instance = new SelectionModel();
         }
         return globalThis.instance;
       }
-
+    
       public getSelectionInfo(): selectionManager.SelectionInfo | undefined {
         return this.selectionInfo;
       }
-
+    
       public setSelectionInfo(selectionInfo: selectionManager.SelectionInfo) {
         this.selectionInfo = selectionInfo;
       }
-
+    
       public getSelectionContent(): string | undefined {
         return this.selectionContent;
       }
-
+    
       public setSelectionContent(selectionContent: string) {
         this.selectionContent = selectionContent;
       }
-
+    
       public getSelectionPanel(): selectionManager.Panel | undefined {
         return this.selectionPanel;
       }
-
+    
       public setSelectionPanel(selectionPanel: selectionManager.Panel) {
         this.selectionPanel = selectionPanel;
       }
-
+    
       public getContext(): SelectionExtensionContext | undefined {
         return this.context;
       }
-
+    
       public setContext(context: SelectionExtensionContext) {
         this.context = context;
       }
-
+    
       public registerListener(listener: (selectionInfo: selectionManager.SelectionInfo) => void) {
         this.listener = listener;
       }
@@ -118,8 +119,9 @@
     ```
 
 3. 在[SelectionExtAbility.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets)文件中，开发者可实现扩展能力类。该类需要继承[SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)，用于划词扩展生命周期的管理。
+    <!-- @[SelectionExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets) -->
 
-    ```ts
+    ``` TypeScript
     import { selectionManager, SelectionExtensionAbility} from '@kit.BasicServicesKit';
     import { Want } from '@kit.AbilityKit';
     import { rpc } from '@kit.IPCKit';
@@ -159,8 +161,9 @@
 
 
 4. 在划词扩展被拉起时，可以提前创建划词窗口（但不调用[show](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show)接口），以缩短用户在第一次划词时的响应延迟。同时，可以在[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)中监听划词事件，执行后续的弹窗操作。通过监听[selectionCompleted](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted)获取[SelectionInfo](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectioninfo)其中包含了划词操作的起始和结束坐标等信息。通过调用[getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent)接口获取划词内容。
+    <!-- @[SelectionExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets) -->
 
-    ```ts
+    ``` TypeScript
     import { selectionManager, PanelInfo, PanelType, SelectionExtensionAbility, BusinessError } from '@kit.BasicServicesKit';
     import { SelectionModel } from '../models/SelectionModel';
     import { Want } from '@kit.AbilityKit';
@@ -230,7 +233,7 @@
           let content = await selectionManager.getSelectionContent();   // 获取划词内容
           SelectionModel.getInstance().setSelectionContent(content);
         } catch (error) {
-          console.error(`Failed to get selection content: ${JSON.stringify(error)}`);
+          hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to get selection content: ${JSON.stringify(error)}`);
         }
         if (!this.panel_) {
           hilog.info(0x0000, 'SelectionExtensionAbility', 'Panel is not created yet.');
@@ -264,8 +267,9 @@
     ```
 
 5. 在[MenuPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets)文件中，开发者可根据业务内容自主实现菜单面板的显示效果，例如提供翻译、查询、扩写等按钮。并且可以通过绑定点击事件，弹出不同的主面板，以展示不同的内容。本示例仅提供了一个简单的点击按钮，用于展示如何弹出主面板。
+    <!-- @[MenuPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets) -->
 
-    ```ts
+    ``` TypeScript
     import { SelectionModel } from '../models/SelectionModel';
     import { selectionManager, PanelInfo, BusinessError, PanelType, SelectionExtensionContext } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -360,8 +364,9 @@
     ```
 
 6. 在[MainPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets)文件中，开发者可根据业务场景，自行实现主面板的显示效果。本示例仅提供了一个简单的展示划词内容的主面板，具体的业务侧功能需要开发者自行实现。
+    <!-- @[MainPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets) -->
 
-    ```ts
+    ``` TypeScript
     import { SelectionModel } from '../models/SelectionModel';
     import { selectionManager } from '@kit.BasicServicesKit';
     @Entry
@@ -415,20 +420,17 @@
 8.  配置[module.json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/module.json5)文件。
 
     在`extensionAbilities`字段中配置划词扩展类文件路径。
-
-    ```json
-    {
-      "module": {
-        "extensionAbilities": [
-          {
-            "name": "SelectionExtAbility",
-            "srcEntry": "./ets/selectionextability/SelectionExtAbility.ets",
-            "type": "selection",
-            "exported": false,
-          }
-        ]
+    <!-- @[extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/module.json5) -->
+    
+    ``` JSON5
+    "extensionAbilities": [
+      {
+        "name": "SelectionExtAbility",
+        "srcEntry": "./ets/selectionextability/SelectionExtAbility.ets",
+        "type": "selection",
+        "exported": false,
       }
-    }
+    ]
     ```
 
 9.  配置签名。

@@ -19,7 +19,7 @@ To change the APL of a normal application to system_basic or system_core, modify
 
 Modify the **"bundle-info"** &gt; **"apl"** field in the file.
 
-```json
+```json5
 "bundle-info" : {
     // ...
     "apl": "system_basic",
@@ -699,7 +699,7 @@ Allow the application to automatically restore its main window through the globa
 
 **Prerequisites**: This permission can only be requested together with the [ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball) permission.
 
-<!--RP66--><!--RP66End-->
+<!--RP69--><!--RP69End-->
 
 **Permission level**: system_basic
 
@@ -1036,3 +1036,19 @@ Allows an application to customize the BLE advertiser name.
 **Supported devices**: General
 
 **Since**: 23
+
+## ohos.permission.INPUT_DEVICE_CONFIGURATOR
+
+Allows an application to bind input devices to displays.
+
+With this permission, the driver application can bind external input devices connected via USB or Bluetooth with specific display screens.
+
+<!--RP66--><!--RP66End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 24

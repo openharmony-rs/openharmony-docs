@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **&lt;svg&gt;** component can also be used to draw text.
+The **svg** component can also be used to draw text.
 
 
 ## Text
@@ -33,7 +33,7 @@ Set the following attributes to define text styles: **x** (X coordinate), **y** 
 </div>
 ```
 
-![en-us_image_0000001275803145](figures/en-us_image_0000001275803145.png)
+![en-us_image_0000001227151887](figures/en-us_image_0000001227151887.png)
 
 
 ## Drawing Text Along the Path
@@ -55,4 +55,4 @@ Set **textpath** to draw text along the path.
 </div>
 ```
 
-![en-us_image_0000001231843084](figures/en-us_image_0000001231843084.png)
+![en-us_image_0000001181354262](figures/en-us_image_0000001181354262.png)

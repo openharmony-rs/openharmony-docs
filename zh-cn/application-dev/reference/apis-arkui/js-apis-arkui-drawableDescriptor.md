@@ -568,6 +568,21 @@ struct Index {
 }
 ```
 
+## AnimationStopMode<sup>24+</sup>
+
+动图停止模式。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称      | 值  | 说明              |
+| ---------- | ---- |------------------------ |
+| FIRST_FRAME   | 0 | 动图停止时回到首帧。 |
+| LAST_FRAME | 1 | 动图停止时停留在最后一帧。 |
+
 ## AnimationOptions<sup>12+</sup>
 
 动画播放参数。包括播放时延，迭代次数，单帧播放时间，是否自动播放。
@@ -580,6 +595,7 @@ struct Index {
 | iterations | number | 否   | 是 |设置图片数组播放次数。<br/>值为-1时表示无限播放，值为0时表示不播放，值大于0时表示有限的播放次数。<br/>默认值为1。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | frameDurations<sup>21+</sup> | Array\<number> | 否 | 是 |设置动图中的单帧播放时间。不设置则按照总时间播放。<br/>设置的优先级高于duration，即同时设置了duration和frameDurations时，duration不生效。<br/>当设置的frameDurations长度与图片的数量不一致时，按照总时间播放。<br/>单位：毫秒<br/> **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | autoPlay<sup>21+</sup> | boolean | 否  | 是 |设置动图是否自动播放。<br/> true表示自动播放，false表示不自动播放。<br/>默认值为true。<br/> **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| stopMode<sup>24+</sup> | [AnimationStopMode](#animationstopmode24) | 否  | 是 |设置动图的停止模式。<br/> 默认值：AnimationStopMode.FIRST_FRAME，表示动图停止时回到首帧。<br/> **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **示例：**
 

@@ -29,7 +29,7 @@ typedef struct {...} ArkUI_RotationOptions
 | float x | 横向的旋转向量分量。 |
 | float y | 纵向的旋转向量分量。 |
 | float z | 竖向的旋转向量分量。 |
-| float angle | 旋转角度。 |
+| float angle | 旋转角度。取值范围：(-∞, +∞)。取值为正时相对于旋转轴方向顺时针转动，取值为负时相对于旋转轴方向逆时针转动。 |
 | float centerX | 变换中心点x轴坐标，单位为vp。 |
 | float centerY | 变换中心点y轴坐标，单位为vp。 |
 | float centerZ | z轴锚点，即3D旋转中心点的z轴分量，单位为px。 |

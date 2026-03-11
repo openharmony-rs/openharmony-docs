@@ -216,7 +216,7 @@ For example, you might want the modal sheet to be dismissed only when the user s
 ```ts
 onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
   if (DismissSheetAction.reason === DismissReason.SLIDE_DOWN) {
-    DismissSheetAction.dismiss(); // Register the dismiss behavior.
+    DismissSheetAction.dismiss();// Register the dismiss behavior.
   }
 }),
 ```
@@ -230,12 +230,12 @@ Here is the specific code to prevent the rebound effect when the modal sheet is 
 ```ts
 onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
   if (DismissSheetAction.reason === DismissReason.SLIDE_DOWN) {
-    DismissSheetAction.dismiss(); // Register the dismiss behavior.
+    DismissSheetAction.dismiss();// Register the dismiss behavior.
   }
 }),
 
 onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
- // No springBack is registered, so the modal sheet will not bounce back when swiped down.
+// No springBack is registered, so the modal sheet will not bounce back when swiped down.
 }),
 ```
 
@@ -291,7 +291,7 @@ struct SheetTransitionExample {
 
   build() {
     Column() {
-      //Replace $r('app.string.bindSheetCmd_label9') with the actual resource file. In this example, the value in the resource file is "Open Sheet."
+      // Replace $r('app.string.bindSheetCmd_label9') with the actual resource file. In this example, the value in the resource file is "Open Sheet."
       Button($r('app.string.bindSheetCmd_label9'))
         .onClick(() => {
           this.isShow = true;

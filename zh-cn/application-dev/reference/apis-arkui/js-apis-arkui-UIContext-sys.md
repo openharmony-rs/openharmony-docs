@@ -413,7 +413,7 @@ struct MyStateSample {
 
 getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
 
-获取[LuminanceSampler](arkts-apis-uicontext-luminancesampler.md)取色对象，通过该对象设置背景亮度取色参数、注册亮度变化监听回调、取消注册监听回调。
+获取[LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md)取色对象，通过该对象设置背景亮度取色参数、注册亮度变化监听回调、取消注册监听回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -431,11 +431,11 @@ getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
 
 | 类型                                              | 说明                                                         |
 | ------------------------------------------------- | ------------------------------------------------------------ |
-| [LuminanceSampler](arkts-apis-uicontext-luminancesampler.md) | 返回背景亮度取色器。 |
+| [LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md) | 返回背景亮度取色器。 |
 
 **示例：**
 
-参考[offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler.md#offbackgroundluminancechange23)接口的示例。
+参考[offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange23)接口的示例。
 
 ## ComponentSnapshot<sup>12+</sup>
 

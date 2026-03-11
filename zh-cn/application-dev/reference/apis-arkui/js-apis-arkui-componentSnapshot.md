@@ -550,8 +550,8 @@ struct SnapshotColorModeExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
-        Image($r('app.media.startIcon'))
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
           .height(200)
@@ -582,6 +582,8 @@ struct SnapshotColorModeExample {
 }
 ```
 
+![componentget](figures/componentget.gif)
+
 ## DynamicRangeModeOptions<sup>23+</sup>
 
 定义截图所使用的动态范围模式。
@@ -609,8 +611,8 @@ struct SnapshotDynamicRangeExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
-        Image($r('app.media.startIcon'))
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
           .height(200)
@@ -640,6 +642,8 @@ struct SnapshotDynamicRangeExample {
   }
 }
 ```
+
+![componentget](figures/componentget.gif)
 
 ## SnapshotRegionType<sup>15+</sup>
 
@@ -750,3 +754,5 @@ struct SnapshotExample {
   }
 }
 ```
+
+![localized_snapshot](figures/localized_snapshot.gif)
