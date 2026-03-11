@@ -693,9 +693,9 @@ export default class EntryAbility extends UIAbility {
 
 ## window.shiftAppWindowPointerEvent<sup>15+</sup>
 
-ArkTs-Dyn: shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
+ArkTS-Dyn: shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
 
-ArkTs-Sta: shiftAppWindowPointerEvent(sourceWindowId: int, targetWindowId: int): Promise&lt;void&gt;
+ArkTS-Sta: shiftAppWindowPointerEvent(sourceWindowId: int, targetWindowId: int): Promise&lt;void&gt;
 
 主窗口和子窗口可正常调用，用于将鼠标输入事件从源窗口转移到目标窗口。使用Promise异步回调。
 
@@ -812,9 +812,9 @@ struct Index {
 ```
 
 ## window.shiftAppWindowTouchEvent<sup>20+</sup>
-ArkTs-Dyn: shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerId: number): Promise&lt;void&gt;
+ArkTS-Dyn: shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerId: number): Promise&lt;void&gt;
 
-ArkTs-Sta: shiftAppWindowTouchEvent(sourceWindowId: int, targetWindowId: int, fingerId: int): Promise&lt;void&gt;
+ArkTS-Sta: shiftAppWindowTouchEvent(sourceWindowId: int, targetWindowId: int, fingerId: int): Promise&lt;void&gt;
 
 主窗口和子窗口可正常调用，用于将触屏输入事件从源窗口转移到目标窗口。使用Promise异步回调。
 
