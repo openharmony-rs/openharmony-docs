@@ -33,8 +33,8 @@ static getLocale(): LocaleResponse
 **返回值：**
 | 类型            | 说明            |
 | -------------- | ------------- |
-
 | LocaleResponse | 应用当前Locale相关信息。 |
+
 **示例：**
 
 ArkTS示例：
