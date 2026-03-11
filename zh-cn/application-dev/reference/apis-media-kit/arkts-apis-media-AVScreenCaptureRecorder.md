@@ -395,7 +395,7 @@ onStateChange(callback: Callback\<AVScreenCaptureStateCode>): void
 
 当状态发生的时候，会通过订阅的回调通知用户。用户只能订阅一个状态切换的回调方法，重复订阅时，以最后一次订阅的回调接口为准。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('stateChange')](#onstatechange12)。
 
