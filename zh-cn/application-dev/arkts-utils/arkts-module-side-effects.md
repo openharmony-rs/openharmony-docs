@@ -51,13 +51,9 @@ data is  1
 
 <!-- @[export_modulePartTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartTwo.ets) -->
 
-```typescript
-// module.ets
+``` TypeScript
+// ModulePartTwo.ets
 export const data = 1;
-
-// main.ets
-import { data } from './module'
-console.info("data is ", data);
 ```
 
 <!-- @[import_modulePartTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageTwo.ets) -->
