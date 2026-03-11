@@ -1,5 +1,10 @@
 # @system.configuration (应用配置)
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 > **说明：**
 > - 从API Version 7 开始，该接口不再维护，推荐使用新接口[`@ohos.i18n`](../apis-localization-kit/js-apis-i18n.md)和[`@ohos.intl`](../apis-localization-kit/js-apis-intl.md)。
 >
