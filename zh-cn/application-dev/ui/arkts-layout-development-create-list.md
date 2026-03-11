@@ -792,9 +792,9 @@ ListItem的[swipeAction属性](../reference/apis-arkui/arkui-ts/ts-container-lis
          .width(40)
          .height(40)
      }
-     // ···
+     // ...
      .onClick(() => {
-       // this.messages为列表数据源，可根据实际场景构造。点击后从数据源删除指定数据项。
+       // this.arr为列表数据源，可根据实际场景构造。点击后从数据源删除指定数据项。
        this.arr.splice(index, 1);
      })
    }
