@@ -219,7 +219,11 @@ type AccessibilityExtensionContext = _AccessibilityExtensionContext.default
 
 表示辅助功能扩展的上下文环境，请参考[AccessibilityExtensionContext](js-apis-inner-application-accessibilityExtensionContext.md)。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：10
 
 | 类型                      | 说明                     |
 | ----------------------- |------------------------|
@@ -247,49 +251,47 @@ type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown' | 'r
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
-
 | 类型            | 说明                  |
 |------------- | ------------------- |
-| 'left'            | 表示向左的手势。     |
-| 'leftThenRight'   | 表示先向左再向右的手势。 |
-| 'leftThenUp'      | 表示先向左再向上的手势。 |
-| 'leftThenDown'    | 表示先向左再向下的手势。 |
-| 'right'           | 表示向右的手势。     |
-| 'rightThenLeft'   | 表示先向右再向左的手势。 |
-| 'rightThenUp'     | 表示先向右再向上的手势。 |
-| 'rightThenDown'   | 表示先向右再向下的手势。 |
-| 'up'              | 表示向上的手势。     |
-| 'upThenLeft'      | 表示先向上再向左的手势。 |
-| 'upThenRight'     | 表示先向上再向右的手势。 |
-| 'upThenDown'      | 表示先向上再向下的手势。 |
-| 'down'            | 表示向下的手势。     |
-| 'downThenLeft'    | 表示先向下再向左的手势。 |
-| 'downThenRight'   | 表示先向下再向右的手势。 |
-| 'downThenUp'      | 表示先向下再向上的手势。 |
-| 'twoFingerSingleTap'<sup>11+</sup>           | 表示双指单击的手势。 |
-| 'twoFingerDoubleTap'<sup>11+</sup>           | 表示双指双击的手势。 |
-| 'twoFingerDoubleTapAndHold'<sup>11+</sup>    | 表示双指双击长按的手势。 |
-| 'twoFingerTripleTap'<sup>11+</sup>           | 表示双指三击的手势。 |
-| 'twoFingerTripleTapAndHold'<sup>11+</sup>    | 表示双指三击长按的手势。 |
-| 'threeFingerSingleTap'<sup>11+</sup>         | 表示三指单击的手势。 |
-| 'threeFingerDoubleTap'<sup>11+</sup>         | 表示三指双击的手势。 |
-| 'threeFingerDoubleTapAndHold'<sup>11+</sup>  | 表示三指双击长按的手势。 |
-| 'threeFingerTripleTap'<sup>11+</sup>         | 表示三指三击的手势。 |
-| 'threeFingerTripleTapAndHold'<sup>11+</sup>  | 表示三指三击长按的手势。 |
-| 'fourFingerSingleTap'<sup>11+</sup>          | 表示四指单击的手势。 |
-| 'fourFingerDoubleTap'<sup>11+</sup>          | 表示四指双击的手势。 |
-| 'fourFingerDoubleTapAndHold'<sup>11+</sup>   | 表示四指双击长按的手势。 |
-| 'fourFingerTripleTap'<sup>11+</sup>          | 表示四指三击的手势。 |
-| 'fourFingerTripleTapAndHold'<sup>11+</sup>   | 表示四指三击长按的手势。 |
-| 'threeFingerSwipeUp'<sup>11+</sup>           | 表示三指向上滑动的手势。 |
-| 'threeFingerSwipeDown'<sup>11+</sup>         | 表示三指向下滑动的手势。 |
-| 'threeFingerSwipeLeft'<sup>11+</sup>         | 表示三指向左滑动的手势。 |
-| 'threeFingerSwipeRight'<sup>11+</sup>        | 表示三指向右滑动的手势。 |
-| 'fourFingerSwipeUp'<sup>11+</sup>            | 表示四指向上滑动的手势。 |
-| 'fourFingerSwipeDown'<sup>11+</sup>          | 表示四指向下滑动的手势。 |
-| 'fourFingerSwipeLeft'<sup>11+</sup>          | 表示四指向左滑动的手势。 |
-| 'fourFingerSwipeRight'<sup>11+</sup>         | 表示四指向右滑动的手势。 |
+| 'left'            | 表示向左的手势。 <br>**ArkTS-Dyn起始版本**：9    |
+| 'leftThenRight'   | 表示先向左再向右的手势。<br>**ArkTS-Dyn起始版本**：9 |
+| 'leftThenUp'      | 表示先向左再向上的手势。<br>**ArkTS-Dyn起始版本**：9 |
+| 'leftThenDown'    | 表示先向左再向下的手势。<br>**ArkTS-Dyn起始版本**：9 |
+| 'right'           | 表示向右的手势。<br>**ArkTS-Dyn起始版本**：9     |
+| 'rightThenLeft'   | 表示先向右再向左的手势。<br>**ArkTS-Dyn起始版本**：9 |
+| 'rightThenUp'     | 表示先向右再向上的手势。<br>**ArkTS-Dyn起始版本**：9 |
+| 'rightThenDown'   | 表示先向右再向下的手势。<br>**ArkTS-Dyn起始版本**：9 |
+| 'up'              | 表示向上的手势。 <br>**ArkTS-Dyn起始版本**：9    |
+| 'upThenLeft'      | 表示先向上再向左的手势。<br>**ArkTS-Dyn起始版本**：9 |
+| 'upThenRight'     | 表示先向上再向右的手势。<br>**ArkTS-Dyn起始版本**：9 |
+| 'upThenDown'      | 表示先向上再向下的手势。<br>**ArkTS-Dyn起始版本**：9 |
+| 'down'            | 表示向下的手势。 <br>**ArkTS-Dyn起始版本**：9    |
+| 'downThenLeft'    | 表示先向下再向左的手势。<br>**ArkTS-Dyn起始版本**：9 |
+| 'downThenRight'   | 表示先向下再向右的手势。<br>**ArkTS-Dyn起始版本**：9 |
+| 'downThenUp'      | 表示先向下再向上的手势。<br>**ArkTS-Dyn起始版本**：9 |
+| 'twoFingerSingleTap'<sup>11+</sup>           | 表示双指单击的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'twoFingerDoubleTap'<sup>11+</sup>           | 表示双指双击的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'twoFingerDoubleTapAndHold'<sup>11+</sup>    | 表示双指双击长按的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'twoFingerTripleTap'<sup>11+</sup>           | 表示双指三击的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'twoFingerTripleTapAndHold'<sup>11+</sup>    | 表示双指三击长按的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'threeFingerSingleTap'<sup>11+</sup>         | 表示三指单击的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'threeFingerDoubleTap'<sup>11+</sup>         | 表示三指双击的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'threeFingerDoubleTapAndHold'<sup>11+</sup>  | 表示三指双击长按的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'threeFingerTripleTap'<sup>11+</sup>         | 表示三指三击的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'threeFingerTripleTapAndHold'<sup>11+</sup>  | 表示三指三击长按的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'fourFingerSingleTap'<sup>11+</sup>          | 表示四指单击的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'fourFingerDoubleTap'<sup>11+</sup>          | 表示四指双击的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'fourFingerDoubleTapAndHold'<sup>11+</sup>   | 表示四指双击长按的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'fourFingerTripleTap'<sup>11+</sup>          | 表示四指三击的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'fourFingerTripleTapAndHold'<sup>11+</sup>   | 表示四指三击长按的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'threeFingerSwipeUp'<sup>11+</sup>           | 表示三指向上滑动的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'threeFingerSwipeDown'<sup>11+</sup>         | 表示三指向下滑动的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'threeFingerSwipeLeft'<sup>11+</sup>         | 表示三指向左滑动的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'threeFingerSwipeRight'<sup>11+</sup>        | 表示三指向右滑动的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'fourFingerSwipeUp'<sup>11+</sup>            | 表示四指向上滑动的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'fourFingerSwipeDown'<sup>11+</sup>          | 表示四指向下滑动的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'fourFingerSwipeLeft'<sup>11+</sup>          | 表示四指向左滑动的手势。<br>**ArkTS-Dyn起始版本**：11 |
+| 'fourFingerSwipeRight'<sup>11+</sup>         | 表示四指向右滑动的手势。<br>**ArkTS-Dyn起始版本**：11 |
 
 ## PageUpdateType
 
