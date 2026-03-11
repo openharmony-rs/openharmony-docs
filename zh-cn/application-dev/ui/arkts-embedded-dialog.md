@@ -43,7 +43,8 @@ this.getUIContext().getPromptAction().openCustomDialog({
 
 > **说明：**
 > 
-> 当levelMode参数设置为LevelMode.EMBEDDED，但是levelUniqueId传入的ID无法正确找到节点时，页面级能力不生效。如果levelUniqueId所映射的节点存在但向上遍历不存在NavDestination节点则会将弹出框节点挂载在Page节点下。
+> - 当levelMode参数设置为LevelMode.EMBEDDED，但是levelUniqueId传入的ID无法正确找到节点时，页面级能力不生效。如果levelUniqueId所映射的节点存在但向上遍历不存在NavDestination节点则会将弹出框节点挂载在Page节点下。
+> - levelUniqueId必须传入[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1)的uniqueId，建议使用FrameNode的[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)方法获取uniqueId。
 
 如下代码示例所示，Text节点为指定页面的节点，设置自定义id后，通过[getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12)方法获取该节点，再通过[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)获取节点的内部id，并将其作为levelUniqueId的值传入。
 
