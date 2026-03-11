@@ -791,14 +791,14 @@
 						"start_line":24
 					},
 					{
-						"end_line":385,
+						"end_line":396,
 						"name":"AppEvent_Crash_C++_Add_Watcher",
-						"start_line":334
+						"start_line":345
 					},
 					{
-						"end_line":436,
+						"end_line":447,
 						"name":"AppEvent_Click_C++_Add_Watcher",
-						"start_line":386
+						"start_line":397
 					},
 					{
 						"end_line":999,
