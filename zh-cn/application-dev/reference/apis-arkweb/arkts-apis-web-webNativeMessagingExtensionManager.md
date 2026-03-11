@@ -412,9 +412,9 @@ export default class EntryAbility extends UIAbility {
 
 ## webNativeMessagingExtensionManager.connectNative
 
-ArkTS-Dyn：connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConnectionCallback): number
+ArkTS-Dyn: connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConnectionCallback): number
 
-ArkTS-Sta：connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConnectionCallback): int
+ArkTS-Sta: connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConnectionCallback): int
 
 将当前Ability连接到指定的Web原生消息扩展Ability。
 
@@ -548,9 +548,9 @@ export default class EntryAbility extends UIAbility {
 
 ## webNativeMessagingExtensionManager.disconnectNative
 
-ArkTS-Dyn：disconnectNative(connectionId: number): Promise&lt;void&gt;
+ArkTS-Dyn: disconnectNative(connectionId: number): Promise&lt;void&gt;
 
-ArkTS-Sta：disconnectNative(connectionId: int): Promise&lt;void&gt;
+ArkTS-Sta: disconnectNative(connectionId: int): Promise&lt;void&gt;
 
 断开指定Web原生消息扩展连接。
 

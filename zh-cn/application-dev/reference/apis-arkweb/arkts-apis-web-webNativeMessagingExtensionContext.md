@@ -211,9 +211,9 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
 
 ### stopNativeConnection
 
-ArkTS-Dyn：stopNativeConnection(connectionId: number): Promise&lt;void&gt;
+ArkTS-Dyn: stopNativeConnection(connectionId: number): Promise\<void\>;
 
-ArkTS-Sta：stopNativeConnection(connectionId: int): Promise&lt;void&gt;
+ArkTS-Sta: stopNativeConnection(connectionId: int): Promise\<void\>;
 
 停止指定的本地连接。使用Promise进行异步回调。
 
