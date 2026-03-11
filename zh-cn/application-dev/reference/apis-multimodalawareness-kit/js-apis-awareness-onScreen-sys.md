@@ -450,7 +450,7 @@ try {
 
 ## onScreen.trigger<sup>23+</sup>
 
-unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwarenessInfo&gt;): void
+trigger(capability: OnscreenAwarenessCap,  options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo&gt;
 
 主动触发屏幕内容感知，获取当前屏幕感知结果。
 
