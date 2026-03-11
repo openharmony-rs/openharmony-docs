@@ -622,6 +622,74 @@ util.ArkTSVM.setMultithreadingDetectionEnabled(true);
 util.ArkTSVM.setMultithreadingDetectionEnabled(false);
 ```
 
+### enableLocalHandleDetection<sup>24+</sup>
+
+static enableLocalHandleDetection(): void
+
+EventHandler和libuv的异步事件循环机制在执行异步任务时，任务会跳出当前handle scope范围。若开发者在任务回调中未添加scope，将导致内存泄漏。调用该接口后，可确保这两个机制的任务在scope范围内执行，从而避免内存泄漏。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
+
+**示例：**
+
+``` C++
+// napi_init.cpp C++侧示例代码
+static napi_value CreateObject(napi_env env, napi_callback_info info)
+{
+    uv_loop_s* loop = nullptr;
+    napi_status status = napi_get_uv_event_loop(env, &loop);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_get_uv_event_loop fail");
+        return nullptr;
+    }
+    uv_work_t* work = new uv_work_t;
+    work->data = env;
+    int ret = uv_queue_work(loop, work,
+        [](uv_work_t* work){},
+        [](uv_work_t* work, int status){
+            napi_env env = static_cast<napi_env>(work->data);
+            for (int i = 0; i < 1000; i++) {
+                napi_value obj = nullptr;
+                // 在libuv提供的异步机制中没有加scope会导致内存泄漏
+                napi_create_object(env, &obj);
+            }
+            delete work;
+        }
+    );
+    if (ret != 0) {
+        delete work;
+    }
+    return nullptr;
+}
+```
+
+``` TypeScript
+// index.d.ts 接口声明
+export const createObject: () => void;
+```
+
+``` TypeScript
+// Index.ets ArkTS侧示例代码
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+import { util } from '@kit.ArkTS';
+
+try {
+  // 若不开启LocalHandle内存泄漏兜底机制，可能导致内存溢出。启用该机制后，系统将自动回收EventHandler和libuv异步任务中创建的napi_value
+  util.ArkTSVM.enableLocalHandleDetection();
+  testNapi.createObject();
+  hilog.info(0x0000, 'testTag', 'Test Node-API createObject success');
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'Test Node-API createObject failed error: %{public}s', error.message);
+}
+```
+
 ## util.printf<sup>(deprecated)</sup>
 
 printf(format: string,  ...args: Object[]): string
