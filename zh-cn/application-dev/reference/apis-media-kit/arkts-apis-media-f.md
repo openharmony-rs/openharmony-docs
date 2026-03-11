@@ -439,7 +439,7 @@ ArkTS-Sta: createAVScreenCaptureRecorder(): Promise\<AVScreenCaptureRecorder | u
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ArkTS-Dyn: Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md)><br>ArkTS-Sta: Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md) | undefined> | Promise对象。异步返回AVScreenCaptureRecorder实例，失败时返回null。可用于进行屏幕录制。 |
+| ArkTS-Dyn: Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md)><br>ArkTS-Sta: Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md) \| undefined> | Promise对象。异步返回AVScreenCaptureRecorder实例，失败时返回null。可用于进行屏幕录制。 |
 
 **错误码：**
 
