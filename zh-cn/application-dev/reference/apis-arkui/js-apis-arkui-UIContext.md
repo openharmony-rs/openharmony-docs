@@ -77,7 +77,7 @@ static getCallingScopeUIContext(): UIContext | undefined
 
 **ArkTS-Dyn起始版本：** 22
  	 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -159,7 +159,7 @@ static getLastFocusedUIContext(): UIContext | undefined
 
 **ArkTS-Dyn起始版本：** 22
  	 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -241,7 +241,7 @@ static getLastForegroundUIContext(): UIContext | undefined
 
 **ArkTS-Dyn起始版本：** 22
  	 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -323,7 +323,7 @@ static getAllUIContexts(): UIContext[]
 
 **ArkTS-Dyn起始版本：** 22
  	 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -418,7 +418,7 @@ static resolveUIContext(): ResolvedUIContext
 
 **ArkTS-Dyn起始版本：** 22
  	 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -628,9 +628,13 @@ getFont(): Font
 
 获取Font对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
@@ -653,6 +657,10 @@ getComponentUtils(): ComponentUtils
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -677,6 +685,10 @@ getUIInspector(): UIInspector
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                          | 说明                 |
@@ -699,6 +711,10 @@ getUIObserver(): UIObserver
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -723,6 +739,10 @@ getMediaQuery(): MediaQuery
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                        | 说明                |
@@ -745,6 +765,10 @@ getRouter(): Router
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -769,6 +793,10 @@ getPromptAction(): PromptAction
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                            | 说明                  |
@@ -790,7 +818,11 @@ getOverlayManager(): OverlayManager
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：**: SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -813,7 +845,11 @@ setOverlayManagerOptions(options: OverlayManagerOptions): boolean
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**系统能力：**: SystemCapability.ArkUI.ArkUI.Full
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -842,7 +878,11 @@ getOverlayManagerOptions(): OverlayManagerOptions
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**系统能力：**: SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -866,6 +906,10 @@ animateTo(value: AnimateParam, event: () => void): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -966,7 +1010,7 @@ getSharedLocalStorage(): LocalStorage | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1083,6 +1127,10 @@ getHostContext(): Context | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
@@ -1122,6 +1170,10 @@ getFrameNodeById(id: string): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                       | 必填   | 说明                                    |
@@ -1154,6 +1206,10 @@ getAttachedFrameNodeById(id: string): FrameNode | null
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1191,11 +1247,11 @@ ArkTS-Sta: getFrameNodeByUniqueId(id: int): FrameNode | null
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -1249,7 +1305,7 @@ ArkTS-Sta: getPageInfoByUniqueId(id: int): PageInfo
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1322,11 +1378,11 @@ ArkTS-Sta: getNavigationInfoByUniqueId(id: long): observer.NavigationInfo | unde
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -1353,6 +1409,10 @@ showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButto
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1395,6 +1455,10 @@ showActionSheet(value: ActionSheetOptions): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1454,6 +1518,10 @@ showDatePickerDialog(options: DatePickerDialogOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名  | 类型                                                         | 必填 | 说明                           |
@@ -1504,6 +1572,10 @@ showTimePickerDialog(options: TimePickerDialogOptions): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1565,6 +1637,10 @@ showTextPickerDialog(options: TextPickerDialogOptions): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1661,6 +1737,10 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
@@ -1724,6 +1804,10 @@ createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2320,6 +2404,10 @@ getCursorController(): CursorController
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 |类型|说明|
@@ -2342,6 +2430,10 @@ getContextMenuController(): ContextMenuController
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2444,6 +2536,10 @@ getMeasureUtils(): MeasureUtils
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：** 
 
 | 类型   | 说明                                         |
@@ -2468,6 +2564,10 @@ getComponentSnapshot(): ComponentSnapshot
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3232,7 +3332,9 @@ struct UIContextBindSheet {
 
 ### updateBindSheet<sup>12+</sup>
 
-updateBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOptions: SheetOptions, partialUpdate?: boolean ): Promise&lt;void&gt;
+ArkTS-Dyn: updateBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOptions: SheetOptions, partialUpdate?: boolean): Promise\<void>
+
+ArkTS-Sta: updateBindSheet(bindSheetContent: ComponentContentBase, sheetOptions: SheetOptions, partialUpdate?: boolean): Promise\<void>
 
 更新bindSheetContent对应的半模态页面的样式，使用Promise异步回调。
 
@@ -3244,6 +3346,10 @@ updateBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheet
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3360,7 +3466,9 @@ struct UIContextBindSheet {
 
 ### closeBindSheet<sup>12+</sup>
 
-closeBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>): Promise&lt;void&gt;
+ArkTS-Dyn: closeBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>): Promise\<void>
+
+ArkTS-Sta: closeBindSheet(bindSheetContent: ComponentContentBase): Promise\<void>
 
 关闭bindSheetContent对应的半模态页面，使用Promise异步回调。
 
@@ -3372,6 +3480,10 @@ closeBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>): Promi
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3494,6 +3606,10 @@ isFollowingSystemFontScale(): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型      | 说明            |
@@ -3549,6 +3665,10 @@ bindTabsToScrollable(tabsController: TabsController, scroller: Scroller): void
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3666,6 +3786,10 @@ unbindTabsFromScrollable(tabsController: TabsController, scroller: Scroller): vo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
@@ -3686,6 +3810,10 @@ bindTabsToNestedScrollable(tabsController: TabsController, parentScroller: Scrol
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3709,6 +3837,10 @@ unbindTabsFromNestedScrollable(tabsController: TabsController, parentScroller: S
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
@@ -3730,6 +3862,10 @@ enableSwipeBack(enabled: Optional\<boolean\>): void
 **原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3768,6 +3904,10 @@ getTextMenuController(): TextMenuController
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 |类型|说明|
@@ -3791,6 +3931,10 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 **原子化服务API:** 从API version 17 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3837,6 +3981,10 @@ static destroyUIContextWithoutWindow(): void
 **原子化服务API:** 从API version 17 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 ```ts
@@ -3921,6 +4069,10 @@ setPixelRoundMode(mode: PixelRoundMode): void
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型         | 必填   | 说明   |
@@ -3959,6 +4111,10 @@ getPixelRoundMode(): PixelRoundMode
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3999,7 +4155,7 @@ static getFocusedUIContext(): UIContext | undefined
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS版本：**  该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **返回值：**
 
@@ -4041,7 +4197,7 @@ setUIStates(callback: VoidCallback): void
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS版本：**  该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -4086,9 +4242,9 @@ struct MyStateSample {
 
 ### setImageCacheCount<sup>23+</sup>
 
-ArkTS-Dyn: setImageRawDataCacheSize(value: number): void
+ArkTS-Dyn: setImageCacheCount(value: number): void
 
-ArkTS-Sta: setImageRawDataCacheSize(value: int): void
+ArkTS-Sta: setImageCacheCount(value: int): void
 
 设置内存中缓存解码后图片的数量上限，提升再次加载同源图片的加载速度。如果不设置则默认为0，不进行缓存。缓存采用内置的LRU策略，新图片加载后，如果超过缓存上限，会删除最久未再次加载的缓存。建议根据应用内存需求，设置合理缓存数量，数字过大可能导致内存使用过高。
 
@@ -4260,6 +4416,10 @@ registerFont(options: font.FontOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明          |
@@ -4292,6 +4452,10 @@ getSystemFontList(): Array\<string>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明        |
@@ -4319,6 +4483,10 @@ getFontByName(fontName: string): font.FontInfo
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -4353,6 +4521,10 @@ type Context = common.Context
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4417,6 +4589,10 @@ getRectangleById(id: string): componentUtils.ComponentInfo
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4636,11 +4812,16 @@ struct ImageExample {
 ```
 
 ## PageInfo<sup>12+</sup>
+
 Router和NavDestination等页面信息，若无对应的Router或NavDestination页面信息，则对应属性为undefined。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
@@ -4665,6 +4846,10 @@ on(type: 'navDestinationUpdate', callback: Callback\<observer.NavDestinationInfo
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -4736,6 +4921,10 @@ off(type: 'navDestinationUpdate', callback?: Callback\<observer.NavDestinationIn
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
@@ -4756,6 +4945,10 @@ on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callbac
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -4822,11 +5015,13 @@ struct Index {
 
 off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback?: Callback\<observer.NavDestinationInfo\>): void
 
-取消监听NavDestination组件的状态变化。
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -4931,7 +5126,6 @@ struct Index {
 ### off('navDestinationUpdateByUniqueId')<sup>20+</sup>
 
 ArkTS-Dyn: off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback?: Callback\<observer.NavDestinationInfo\>): void
-
 ArkTS-Sta: off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: int, callback?: Callback\<observer.NavDestinationInfo\>): void
 
 取消通过navigationUniqueId监听NavDestination组件的变化。
@@ -4942,14 +5136,13 @@ ArkTS-Sta: off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: int, 
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                               | 是   | 监听事件，固定为'navDestinationUpdateByUniqueId'，即NavDestination组件的状态变化。 |
-| navigationUniqueId  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 指定监听的Navigation的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 否   | 需要取消的监听回调，不传参数时，取消该Navigation上所有的监听回调。                             |
 
 **示例：**
@@ -4966,7 +5159,11 @@ on(type: 'scrollEvent', callback: Callback\<observer.ScrollEventInfo\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -4977,6 +5174,7 @@ on(type: 'scrollEvent', callback: Callback\<observer.ScrollEventInfo\>): void
 
 请参考[offscrollevent示例](#offscrollevent12-1)
 
+
 ### off('scrollEvent')<sup>12+</sup>
 
 off(type: 'scrollEvent', callback?: Callback\<observer.ScrollEventInfo\>): void
@@ -4986,6 +5184,10 @@ off(type: 'scrollEvent', callback?: Callback\<observer.ScrollEventInfo\>): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -5008,6 +5210,10 @@ on(type: 'scrollEvent', options: observer.ObserverOptions, callback: Callback\<o
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -5029,6 +5235,10 @@ off(type: 'scrollEvent', options: observer.ObserverOptions, callback?: Callback\
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -5080,12 +5290,9 @@ struct Index {
             });
           })
         Button('UIObserver off')
-          .onClick(() => {
             this.observer.off('scrollEvent');
           })
       }
-
-      Row() {
         Button('UIObserverWithId on')
           .onClick(() => {
             this.observer.on('scrollEvent', { id: 'testId' }, (info) => {
@@ -5096,6 +5303,7 @@ struct Index {
           .onClick(() => {
             this.observer.off('scrollEvent', { id: 'testId' });
           })
+
       }
     }
     .height('100%')
@@ -5106,12 +5314,15 @@ struct Index {
 ### on('routerPageUpdate')<sup>11+</sup>
 
 on(type: 'routerPageUpdate', callback: Callback\<observer.RouterPageInfo\>): void
-
 监听router中page页面的状态变化。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -5121,6 +5332,7 @@ on(type: 'routerPageUpdate', callback: Callback\<observer.RouterPageInfo\>): voi
 | callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\>        | 是   | 回调函数。携带pageInfo，返回当前的page页面状态。                 |
 
 **示例：**
+
 
 ```ts
 import { UIContext, UIObserver } from '@kit.ArkUI';
@@ -7554,7 +7766,7 @@ ArkTS-Sta: type NodeIdentity = string | int
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 24
 
 | 类型              | 说明                                |
 | ----------------- | --------------------------------- |
@@ -7569,6 +7781,10 @@ type NodeRenderStateChangeCallback = (state: NodeRenderState, node?: FrameNode) 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -7585,6 +7801,10 @@ type NodeRenderStateChangeCallback = (state: NodeRenderState, node?: FrameNode) 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称 | 值 |说明 |
 | -------- | ------- | -------- |
 | ABOUT_TO_RENDER_IN | 0 | 该节点已挂载到渲染树上，一般将会在下一帧被渲染。一般情况下可被看见，但会被渲染并不等同于一定可见。 |
@@ -7599,6 +7819,10 @@ Pan手势事件监听函数类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名  | 类型              | 必填 | 说明                                |
@@ -7608,6 +7832,7 @@ Pan手势事件监听函数类型。
 | node    | [FrameNode](js-apis-arkui-frameNode.md)         | 否   | 触发事件监听的手势事件所绑定的组件。 |
 
 ## GestureEventListenerCallback<sup>12+</sup>
+
 type GestureEventListenerCallback = (event: GestureEvent, node?: FrameNode) => void
 
 ArkTS GestureEvent事件监听函数类型。
@@ -7615,6 +7840,10 @@ ArkTS GestureEvent事件监听函数类型。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -7631,6 +7860,10 @@ ArkTS GestureEvent事件监听函数类型。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -7696,6 +7929,10 @@ pushUrl(options: router.RouterOptions): Promise&lt;void&gt;
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7774,6 +8011,10 @@ pushUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): voi
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9530,6 +9771,10 @@ showToast(options: promptAction.ShowToastOptions): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -11668,6 +11913,10 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragI
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -12389,6 +12638,10 @@ addComponentContentWithOrder(content: ComponentContent, levelOrder?: LevelOrder)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明          |
@@ -12487,6 +12740,10 @@ removeComponentContent(content: ComponentContent): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明          |
@@ -12506,6 +12763,10 @@ showComponentContent(content: ComponentContent): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12527,6 +12788,10 @@ hideComponentContent(content: ComponentContent): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明          |
@@ -12547,6 +12812,10 @@ showAllComponentContents(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
 请参考[addComponentContent示例](#addcomponentcontent12)
@@ -12559,7 +12828,11 @@ hideAllComponentContents(): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -12570,6 +12843,10 @@ hideAllComponentContents(): void
 初始化[OverlayManager](#overlaymanager12)时所用参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型                | 必填     | 说明                     |
 | --------------- | ---------------------- | ------------ | --------------------- |
@@ -12595,6 +12872,10 @@ setVisible(visible: boolean): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12871,6 +13152,10 @@ clearFocus(): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **示例：**
 
@@ -13261,6 +13546,10 @@ type PointerStyle = pointer.PointerStyle
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
+
 |类型|说明|
 | -- | -- |
 |[pointer.PointerStyle](../apis-input-kit/js-apis-pointer.md#pointerstyle) |光标样式。|
@@ -13277,6 +13566,10 @@ restoreDefault(): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
 
 **示例：**
 当光标移出绿框时，通过CursorController的restoreDefault方法恢复默认光标样式
@@ -13365,6 +13658,10 @@ close(): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
 
 **示例：**
 通过定时器触发，调用ContextMenuController的close方法关闭菜单
@@ -13556,6 +13853,10 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnap
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -14290,7 +14591,6 @@ ArkTS-Dyn: onFrame(frameTimeInNano: number): void
 
 ArkTS-Sta: onFrame(frameTimeInNano: long): void
 
-
 在下一帧进行渲染时，该方法将被执行。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -14591,6 +14891,10 @@ SwiperDynamicSyncScene继承自[DynamicSyncScene](#dynamicsyncscene12)，对应S
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                                                      | 只读 | 可选 | 说明                                |
 | --------- | --------------------------------------------------------- | ---- | ---- | ---------------------------------- |
 | type      | [SwiperDynamicSyncSceneType](#swiperdynamicsyncscenetype12) | 是   | 否   | Swiper的动态帧率场景。             |
@@ -14602,6 +14906,10 @@ SwiperDynamicSyncScene继承自[DynamicSyncScene](#dynamicsyncscene12)，对应S
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值   | 说明                   |
 | -------- | ---- | ---------------------- |
@@ -14616,9 +14924,14 @@ MarqueeDynamicSyncScene继承自[DynamicSyncScene](#dynamicsyncscene12)，对应
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                                                      | 只读 | 可选 | 说明                                |
 | --------- | --------------------------------------------------------- | ---- | ---- | ---------------------------------- |
 | type      | [MarqueeDynamicSyncSceneType](#marqueedynamicsyncscenetype14) | 是   | 否   | Marquee的动态帧率场景。             |
+
 
 ## MarqueeDynamicSyncSceneType<sup>14+</sup>
 
@@ -14627,6 +14940,10 @@ MarqueeDynamicSyncScene继承自[DynamicSyncScene](#dynamicsyncscene12)，对应
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值   | 说明                   |
 | -------- | ---- | ---------------------- |

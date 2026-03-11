@@ -36,6 +36,10 @@ matchMediaSync(condition: string): MediaQueryListener
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：** 
 
 | 参数名    | 类型   | 必填 | 说明                                                         |
@@ -94,6 +98,10 @@ on(type: 'change', callback: Callback&lt;MediaQueryResult&gt;): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名   | 类型                                                  | 必填 | 说明                     |
@@ -117,6 +125,10 @@ off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -171,8 +183,21 @@ listener.off('change', onPortrait) // 去取消注册回调
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
+
+**卡片能力：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型    | 可读 | 可写 | 说明                 |
 | ------- | ------- | ---- | ---- | -------------------- |

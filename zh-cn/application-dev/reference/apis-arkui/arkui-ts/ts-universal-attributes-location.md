@@ -100,7 +100,7 @@ ArkTS-Sta: direction(value: Direction | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -130,7 +130,7 @@ ArkTS-Sta: position(value: Position | Edges | LocalizedEdges | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -160,7 +160,7 @@ ArkTS-Sta: markAnchor(value: Position | LocalizedPosition | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
