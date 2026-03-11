@@ -537,6 +537,25 @@ export { serviceManager }
 
 <!-- @[export_serviceManagerPartOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartOne.ets) -->
 
+``` TypeScript
+// har/src/main/ets/ServiceManagerPartOne.ets
+class ServiceManager {
+  public inited: boolean = false;
+
+  public init() {
+    this.inited = true;
+  }
+  public print() {
+    if (this.inited) {
+      console.info('ServiceManager is inited.');
+    } else {
+      console.error('ServiceManager is not inited.');
+    }
+  }
+}
+export let serviceManager: ServiceManager = new ServiceManager();
+```
+
 运行的输出为：
 
 ```text
