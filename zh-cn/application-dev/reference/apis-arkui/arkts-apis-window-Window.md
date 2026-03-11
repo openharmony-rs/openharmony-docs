@@ -9237,18 +9237,23 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 **示例：**
 
 ```ts
-let calculateRect(info: window.RotationChangeInfo): window.Rect {
-    // calculate result with info
-    let rect : window.Rect = {
-      left: 0,
-      top: 0,
-      width: 500,
-      height: 600,
-    }
-    return rect;
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function calculateRect(info: window.RotationChangeInfo): window.Rect {
+  // calculate result with info
+  let rect: window.Rect = {
+    left: 0,
+    top: 0,
+    width: 500,
+    height: 600,
+  };
+  return rect;
 }
 
-const callback = (info: window.RotationChangeInfo): window.RotationChangeResult | void => {
+function callback(info: window.RotationChangeInfo): window.RotationChangeResult | void {
   let result: window.RotationChangeResult = {
     rectType: window.RectType.RELATIVE_TO_SCREEN,
     windowRect: {
@@ -9258,20 +9263,46 @@ const callback = (info: window.RotationChangeInfo): window.RotationChangeResult 
       height: 0,
     }
   };
+
   if (info.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
-      result.rectType = window.RectType.RELATIVE_TO_SCREEN;
-      result.windowRect = calculateRect(info);
-      return result;
+    result.rectType = window.RectType.RELATIVE_TO_SCREEN;
+    result.windowRect = calculateRect(info);
+    return result;
   } else {
-      // do something after rotate
-      return;
+    // do something after rotate
+    return;
   }
 }
 
-try {
-  windowClass.on('rotationChange', callback);
-} catch (exception) {
-  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
+    let config: window.Configuration = {
+      name: 'test',
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
+    };
+
+    try {
+      window.createWindow(config, (err: BusinessError, data: window.Window) => {
+        const errCode: number = err.code;
+        if (errCode) {
+          console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        windowClass = data;
+        try {
+          windowClass.on('rotationChange', callback);
+        } catch (exception) {
+          console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+        }
+        windowClass.resize(500, 1000);
+      });
+    } catch (exception) {
+      console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
 }
 ```
 
