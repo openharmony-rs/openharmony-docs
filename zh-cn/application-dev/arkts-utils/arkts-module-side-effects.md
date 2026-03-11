@@ -528,6 +528,13 @@ serviceManager.print();
 
 <!-- @[import_serviceManagerOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/Index.ets) -->
 
+``` TypeScript
+import { serviceManager } from './src/main/ets/ServiceManagerPartOne';
+
+serviceManager.init();
+export { serviceManager }
+```
+
 <!-- @[export_serviceManagerPartOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartOne.ets) -->
 
 运行的输出为：
