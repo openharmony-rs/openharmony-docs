@@ -193,7 +193,7 @@ try {
 
 openInstallCertificateDialog(context: common.Context, certType: CertificateType, certScope: CertificateScope, cert: Uint8Array): Promise\<string>
 
-表示拉起证书管理安装证书向导，显示相应的页面，使用Promise方式异步返回结果。
+表示拉起证书管理安装证书向导，显示相应的页面，使用Promise方式异步返回结果。从API 26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -264,7 +264,7 @@ try {
 
 openUninstallCertificateDialog(context: common.Context, certType: CertificateType, certUri: string): Promise\<void>
 
-表示拉起证书管理删除证书向导，显示相应的页面，使用Promise方式异步返回结果。
+表示拉起证书管理删除证书向导，显示相应的页面，使用Promise方式异步返回结果。从API 26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -330,7 +330,7 @@ try {
 
 openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property: CertificateDialogProperty): Promise\<void>
 
-表示拉起证书管理对话框显示证书的详情，使用Promise方式异步返回结果。
+表示拉起证书管理对话框显示证书的详情，使用Promise方式异步返回结果。从API 26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -584,13 +584,13 @@ try {
 
 supportsCACertDialog(): boolean
 
-设备是否支持打开CA证书管理对话框，包括[openInstallCertificateDialog](#certificatemanagerdialogopeninstallcertificatedialog14)、[openUninstallCertificateDialog](#certificatemanagerdialogopenuninstallcertificatedialog18)和[openCertificateDetailDialog](#certificatemanagerdialogopencertificatedetaildialog18)方法。
+判断设备是否支持打开CA证书管理对话框。
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
 
 **返回值**：
 
@@ -600,7 +600,7 @@ supportsCACertDialog(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+以下错误码的详细介绍请参见[证书管理对话框错误码](errorcode-certManagerDialog.md)。
 
 | 错误码ID    | 错误信息                                                                                                                                            |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|

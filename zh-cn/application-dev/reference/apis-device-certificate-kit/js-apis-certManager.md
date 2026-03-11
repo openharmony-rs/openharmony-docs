@@ -668,7 +668,7 @@ try {
 
 installUserTrustedCertificate(certificate: CertBlob) : Promise\<CMResult>
 
-表示安装用户CA证书。
+安装用户CA证书。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT或ohos.permission.ACCESS_USER_TRUSTED_CERT
 
@@ -699,7 +699,7 @@ installUserTrustedCertificate(certificate: CertBlob) : Promise\<CMResult>
 | 17500001    | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500003    | Indicates that the certificate is in an invalid format. |
 | 17500004    | Indicates that the number of certificates reaches the maximum allowed. |
-| 17500007    | Indicates that the device enters advanced security mode. In this mode, user CA certificate cannot be installed. |
+| 17500007    | Indicates that the device enters advanced security mode. In this mode, the user CA certificate cannot be installed. |
 
 **示例**：
 
@@ -1767,7 +1767,7 @@ try {
 
 getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
-表示获取USB凭据证书列表。
+获取USB凭据证书列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1799,9 +1799,9 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 | 201         | Permission verification failed. The application does not have the permission required to call the API. |
 | 202         | Permission verification failed. A non-system application calls a system API. |
 | 801         | Capability not supported. |
-| 17500001    | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
+| 17500001    | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
 | 17500010    | Indicates that access USB key service failed. |
-| 17500011    | Parameter verification failed. Possible causes: ukeyInfo parameter is invalid. For example, parameter format is incorrect or value range is invalid. |
+| 17500011    | Parameter verification failed. Possible causes: the ukeyInfo parameter is invalid. For example, the parameter format is incorrect or the value range is invalid. |
 
 **示例**：
 
