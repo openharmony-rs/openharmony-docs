@@ -425,7 +425,7 @@ onError(callback: ErrorCallback): void
 
 用户可以根据应用自身逻辑对错误事件进行处理。用户只能订阅一个错误事件的回调方法，重复订阅时，以最后一次订阅的回调接口为准。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror12)。
 
