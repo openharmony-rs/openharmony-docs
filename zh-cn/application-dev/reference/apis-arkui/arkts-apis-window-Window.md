@@ -17066,6 +17066,8 @@ moveTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                              |
@@ -17104,6 +17106,8 @@ moveTo(x: number, y: number): Promise&lt;void&gt;
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17158,6 +17162,8 @@ resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): v
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                       |
@@ -17207,6 +17213,8 @@ resetSize(width: number, height: number): Promise&lt;void&gt;
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
