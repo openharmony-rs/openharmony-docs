@@ -497,14 +497,10 @@ console.info('har NumberString.ets execute.');
 
 <!-- @[import_modulePartEleven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageEleven.ets) -->
 
-```typescript
-// main.ets
-import { One } from "har/src/main/ets/NumberString"
-console.info("One is ", One);
-
-// har/src/main/ets/NumberString.ets
-export const One: string = "1";
-console.info("har NumberString.ets execute.");
+``` TypeScript
+// PageEleven.ets
+import { One } from 'staticlibrary/src/main/ets/components/NumberString';
+console.info('One is ', One);
 ```
 
 <!-- @[export_numberString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/components/NumberString.ets) -->
