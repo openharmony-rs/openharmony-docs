@@ -7971,6 +7971,8 @@ setWindowDecorHeight(height: number): void
 
 当主窗口进入全屏沉浸状态时，此时鼠标Hover到窗口标题栏热区时，会显示悬浮标题栏，悬浮标题栏高度固定为37vp。
 
+由于系统像素转换可能存在精度误差，设置后调用[getWindowDecorHeight()](#getwindowdecorheight11)获取的值可能与设置的值存在1vp的差异。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -8120,6 +8122,8 @@ try {
 getWindowDecorHeight(): number
 
 对存在标题栏和三键区的窗口形态生效，用于获取窗口的标题栏高度。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+
+由于系统像素转换可能存在精度误差，调用[setWindowDecorHeight()](#setwindowdecorheight11)设置的值与获取的值可能存在1vp的差异。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
