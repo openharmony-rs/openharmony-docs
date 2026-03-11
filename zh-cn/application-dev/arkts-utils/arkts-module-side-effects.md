@@ -438,6 +438,14 @@ export function initialize() {
 
 <!-- @[import_moduleUseGlobalVarTen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModuleUseGlobalVarTen.ets) -->
 
+``` TypeScript
+// ModuleUseGlobalVarTen.ets
+import lazy { data, initialize } from './ModulePartTen';
+initialize(); // 执行初始化函数，初始化someGlobalVar
+console.info('globalThis.someGlobalVar is ', globalThis.someGlobalVar); // 此时someGlobalVar一定为预期的值
+console.info('data is ', data);
+```
+
 输出内容：
 
 ```text
