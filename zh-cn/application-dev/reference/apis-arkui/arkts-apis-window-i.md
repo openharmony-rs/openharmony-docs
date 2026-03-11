@@ -74,6 +74,23 @@
 | ------ | -------- | ---- | ---- | ------------------ |
 | statusBarContentColor   | string   | 否   | 是   | 状态栏文字颜色。默认值：`'#E5FFFFFF'`。|
 
+## FrameMetrics<sup>22+</sup>
+
+帧率指标。
+
+**系统能力：**  SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 类型 | 只读 | 可选 | 说明               |
+| ------ | -------- | ---- | ---- | ------------------ |
+| firstDrawFrame   | boolean   | 否   | 否   | 是否是首帧。true表示首帧，false表示非首帧。 |
+| inputHandlingDuration    | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 一帧中的手势处理耗时（单位：纳秒）。 |
+| layoutMeasureDuration  | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 一帧中的布局测量耗时（单位：纳秒）。 |
+| vsyncTimestamp | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 当前帧的开始时间戳（单位：纳秒）。 |
+
 ## Rect<sup>7+</sup>
 
 窗口矩形区域。
@@ -92,6 +109,25 @@
 | top    | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 矩形区域的上边界，单位为px，该参数应为整数。 |
 | width  | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 矩形区域的宽度，单位为px，该参数应为整数。 |
 | height | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 矩形区域的高度，单位为px，该参数应为整数。 |
+
+## RectInVP<sup>23+</sup>
+
+窗口矩形区域，单位为vp。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 类型 | 只读 | 可选 | 说明               |
+| ------ | -------- | ---- | ---- | ------------------ |
+| left   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形区域的左边界值，单位为vp。 |
+| top    | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形区域的上边界值，单位为vp。 |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形区域的宽度，单位为vp。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形区域的高度，单位为vp。 |
 
 ## AvoidArea<sup>7+</sup>
 
