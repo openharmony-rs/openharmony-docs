@@ -365,6 +365,13 @@ export const a = 'A';
 
 <!-- @[export_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ExportB.ets) -->
 
+``` TypeScript
+// ExportB.ets
+import { a } from './ExportA';
+console.info('Module B: ', a);
+export const b = 'B';
+```
+
 输出内容：
 
 ```text
