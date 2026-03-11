@@ -5803,7 +5803,9 @@ ArkTS-Sta: gestureFocusMode(mode: GestureFocusMode | undefined)
 
 ## rotateRenderEffect<sup>22+</sup>
 
-rotateRenderEffect(effect: WebRotateEffect)
+ArkTS-Dyn: rotateRenderEffect(effect: WebRotateEffect)
+
+ArkTS-Sta: rotateRenderEffect(effect: WebRotateEffect | undefined)
 
 设置Web组件旋转时，宽高动画过程中组件内容的填充方式。若未显式调用属性，默认保持动画终态的内容大小，内容始终与组件左上角对齐。
 
@@ -5817,7 +5819,7 @@ rotateRenderEffect(effect: WebRotateEffect)
 
 | 参数名              | 类型                              | 必填   | 说明          |
 | ------------------- | ------------------------------   | ------ | ------------- |
-| effect | [WebRotateEffect](./arkts-basic-components-web-e.md#webrotateeffect22) | 是     | 设置Web组件旋转时，宽高动画过程中组件内容的填充方式。|
+| effect | ArkTS-Dyn: [WebRotateEffect](./arkts-basic-components-web-e.md#webrotateeffect22) <br/>ArkTS-Sta: [WebRotateEffect](./arkts-basic-components-web-e.md#webrotateeffect22) \| undefined| 是     | 设置Web组件旋转时，宽高动画过程中组件内容的填充方式。|
 
 **示例：**
 
