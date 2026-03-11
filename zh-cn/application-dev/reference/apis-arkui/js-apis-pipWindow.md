@@ -279,6 +279,10 @@ struct Index {
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称                  | 类型                                                                         | 只读  | 可选| 说明                                                                                                                                                                                                                                                                                                                                        |
 |---------------------|----------------------------------------------------------------------------|-----|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | context             | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否  | 否 | 表示上下文环境。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                             |
@@ -286,12 +290,12 @@ struct Index {
 | navigationId        | string                                                           | 否  | 是 | navigation控件ID，不传值则默认不需要缓存页面。<br/>1、UIAbility使用[Navigation](arkui-ts/ts-basic-components-navigation.md)管理页面时，需要设置Navigation控件的id属性，并将该id设置给画中画控制器，确保还原场景下能够从画中画窗口恢复到原页面。<br/>2、UIAbility使用[Router](js-apis-router.md)管理页面时，无需设置navigationId。<br/>3、UIAbility只有单页面时，无需设置navigationId，还原场景下也能够从画中画窗口恢复到原页面。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | handleId<sup>22+</sup>        | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是 | navigation控件下的子页面ID，点击["恢复全屏窗口"](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/pipwindow-overview#section13787164103315)按钮后，恢复到指定的页面。只适用于UIAbility使用[Navigation](arkui-ts/ts-basic-components-navigation.md)管理页面的场景，可以设置为Navigation下的子页面ID。默认为-1，恢复Navigation栈顶页面。推荐使用方法[getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12)获取页面ID。使用[Navigation](arkui-ts/ts-basic-components-navigation.md)模块内页面路由时，推荐使用[系统路由表](../../ui/arkts-navigation-cross-package.md#系统路由表)，否则可能会出现[getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12)获取页面ID不准确的情况。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 | templateType        | [PiPTemplateType](#piptemplatetype)                                        | 否  | 是 | 模板类型，用以区分视频播放、视频通话、视频会议或视频直播，不传值则默认为视频播放模板。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                             |
-| contentWidth        | number                                                                     | 否  | 是 | 原始内容宽度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](#pipwindowcreate12)创建PiPController时，不传值则默认为1920。当[不使用typeNode的方式](#pipwindowcreate)创建PiPController时，不传值则默认为[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件的宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                             |
-| contentHeight       | number                                                           | 否  | 是 | 原始内容高度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](#pipwindowcreate12)创建PiPController时，不传值则默认为1080。当[不使用typeNode的方式](#pipwindowcreate)创建PiPController时，不传值则默认为[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件的高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                             |
+| contentWidth        | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是 | 原始内容宽度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](#pipwindowcreate12)创建PiPController时，不传值则默认为1920。当[不使用typeNode的方式](#pipwindowcreate)创建PiPController时，不传值则默认为[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件的宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                             |
+| contentHeight       | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是 | 原始内容高度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](#pipwindowcreate12)创建PiPController时，不传值则默认为1080。当[不使用typeNode的方式](#pipwindowcreate)创建PiPController时，不传值则默认为[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件的高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                             |
 | controlGroups<sup>12+</sup>       | Array<[PiPControlGroup](#pipcontrolgroup12)>                               | 否 | 是  | 画中画控制面板的可选控件组列表，应用可以对此进行配置以决定是否显示。应用未配置时，面板显示基础控件（如视频播放控件组的播放/暂停控件）；应用选择配置时，则最多可以选择三个控件，超出三个create接口抛出401错误码。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                          |
 | customUIController<sup>12+</sup>      | [NodeController](js-apis-arkui-nodeController.md)           | 否  | 是 | 自定义UI控制器，用于实现在画中画界面的自定义UI功能。此参数不填时，默认不使用自定义UI功能<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                          |
 | localStorage<sup>17+</sup>      | [LocalStorage](../../ui/state-management/arkts-localstorage.md)           | 否  | 是 | 页面级别的UI状态存储单元。多实例下可用来跟踪主窗实例的UI状态存储对象，不传值则无法通过画中画窗口获取主窗的UI状态存储对象。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。                                                                          |
-| defaultWindowSizeType<sup>19+</sup>| number                                                                     | 否   | 是  |  当前应用第一次拉起画中画的窗口大小。<br/>0：代表不设置大小。按照上个应用的画中画关闭前的大小启动；<br/>1：代表小窗；<br/>2：代表大窗；<br/>不传值则为默认值0。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。                                                                 |
+| defaultWindowSizeType<sup>19+</sup>| ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否   | 是  |  当前应用第一次拉起画中画的窗口大小。<br/>0：代表不设置大小。按照上个应用的画中画关闭前的大小启动；<br/>1：代表小窗；<br/>2：代表大窗；<br/>不传值则为默认值0。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。                                                                 |
 | cornerAdsorptionEnabled<sup>22+</sup>| boolean                                                                     | 否   | 是  |  是否开启画中画四角吸附功能。当开启画中画四角吸附功能后，屏幕将被划分为四个热区：以屏幕的上下中线和左右中线为界，形成左上、右上、左下、右下四个区域。用户拖动画中画窗口并松手后，系统将根据窗口中心点所处的热区，自动将窗口吸附到对应角落。<br/>true：表示开启画中画四角吸附功能。<br/>false：表示关闭画中画四角吸附功能。<br/>不传值则为默认值true。<br/>**设备行为差异：** 该接口在Phone、Tablet设备上可正常调用，在其他设备上不生效。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。                                                                 |
 
 ## PiPWindowSize<sup>15+</sup>
@@ -302,11 +306,15 @@ struct Index {
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称   | 类型 | 只读 | 可选 | 说明       |
 | ------ | -------- | ---- | ---- | ---------- |
-| width  | number   | 是   | 否   | 窗口宽度，单位为px，该参数应为正整数，不大于屏幕宽。 |
-| height | number   | 是   | 否   | 窗口高度，单位为px，该参数应为正整数，不大于屏幕高。 |
-| scale  | number   | 是   | 否   | 窗口缩放比，显示大小相对于width和height的缩放比，该参数为浮点数，取值范围大于0.0，小于等于1.0。等于1表示与width和height一样大。 |
+| width  | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是   | 否   | 窗口宽度，单位为px，该参数应为正整数，不大于屏幕宽。 |
+| height | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是   | 否   | 窗口高度，单位为px，该参数应为正整数，不大于屏幕高。 |
+| scale  | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是   | 否   | 窗口缩放比，显示大小相对于width和height的缩放比，该参数为浮点数，取值范围大于0.0，小于等于1.0。等于1表示与width和height一样大。 |
 
 ## PiPWindowInfo<sup>15+</sup>
 
@@ -316,9 +324,13 @@ struct Index {
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称   | 类型 | 只读 | 可选 | 说明       |
 | ------ | -------- | ---- | ---- | ---------- |
-| windowId  | number   | 是   | 否   | 画中画窗口ID。 |
+| windowId  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 否   | 画中画窗口ID。 |
 | size  | [PiPWindowSize](#pipwindowsize15)  | 是   | 否   | 画中画窗口大小。 |
 
 ## PiPTemplateType
@@ -328,6 +340,10 @@ struct Index {
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称            | 值   | 说明                                   |
 |---------------|-----|--------------------------------------|
@@ -343,6 +359,10 @@ struct Index {
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称                   | 值   | 说明                    |
 |----------------------|-----|-----------------------|
@@ -363,6 +383,10 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
+
 | 类型                                              | 说明          |
 |-------------------------------------------------|-------------|
 | [VideoPlayControlGroup](#videoplaycontrolgroup12)     | 视频播放控件组。 |
@@ -379,6 +403,10 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称                   | 值   | 说明                    |
 |----------------------|-----|-----------------------|
 | VIDEO_PREVIOUS_NEXT       | 101   | 视频上一个/下一个控件组。<br/>与视频快进/后退控件组为互斥控件组。如添加视频快进/后退控件组，则不可添加该控件组。           |
@@ -391,6 +419,10 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称                   | 值   | 说明                    |
 |----------------------|-----|-----------------------|
@@ -407,6 +439,10 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称                   | 值   | 说明                    |
 |----------------------|-----|-----------------------|
 | HANG_UP_BUTTON       | 301   | 挂断控件组。          |
@@ -422,6 +458,10 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称                   | 值   | 说明                    |
 |----------------------|-----|-----------------------|
 | VIDEO_PLAY_PAUSE     | 401   |   播放/暂停直播控件组。 |
@@ -436,6 +476,10 @@ type PiPActionEventType = PiPVideoActionEvent | PiPCallActionEvent | PiPMeetingA
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 24
 
 | 类型                                              | 说明          |
 |-------------------------------------------------|-------------|
@@ -453,6 +497,10 @@ type PiPVideoActionEvent = 'playbackStateChanged' | 'nextVideo' | 'previousVideo
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 24
 
 | 类型                         | 说明                                      |
 | ---------------------------- | ----------------------------------------- |
@@ -472,6 +520,10 @@ type PiPCallActionEvent = 'hangUp' | 'micStateChanged' | 'videoStateChanged' | '
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 24
+
 | 类型                | 说明               |
 | ------------------- | ------------------ |
 | 'hangUp'             | 挂断视频通话。     |
@@ -489,6 +541,10 @@ type PiPMeetingActionEvent = 'hangUp' | 'voiceStateChanged' | 'videoStateChanged
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 24
 
 | 类型                | 说明               |
 | ------------------- | ------------------ |
@@ -508,6 +564,10 @@ type PiPLiveActionEvent = 'playbackStateChanged' | 'voiceStateChanged'
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 24
+
 | 类型                   | 说明             |
 | ---------------------- | ---------------- |
 | 'playbackStateChanged' | 播放或暂停直播。 |
@@ -521,6 +581,10 @@ type PiPLiveActionEvent = 'playbackStateChanged' | 'voiceStateChanged'
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称                   | 值   | 说明                    |
 |----------------------|-----|-----------------------|
@@ -536,6 +600,10 @@ type PiPLiveActionEvent = 'playbackStateChanged' | 'voiceStateChanged'
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称                | 值   | 说明                                   |
 |-------------------|-----|--------------------------------------|
@@ -560,12 +628,37 @@ type ControlPanelActionEventCallback = (event: PiPActionEventType, status?: numb
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名                       | 类型           | 必填    | 说明                                |
 |--------------------------|--------------|--------------|-----------------------------------|
 | event       |  [PiPActionEventType](#pipactioneventtype)       | 是 | 回调画中画控制面板控件动作事件类型。<br/>应用依据控件动作事件做相应处理，如触发'playbackStateChanged'事件时，需要开始或停止视频。 |
 | status | number | 否 | 表示可切换状态的控件当前的状态，如具备打开和关闭两种状态的麦克风控件组、摄像头控件组和静音控件组，打开为1，关闭为0。其余控件该参数返回默认值-1。 |
+
+
+## StateChangeCallback<sup>24+</sup>
+
+type ControlPanelActionEventCallback = (state: PiPState, reason: string) => void
+
+描述画中画生命周期状态变化回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名                       | 类型           | 必填    | 说明                                |
+|--------------------------|--------------|--------------|-----------------------------------|
+| state       |  [PiPState](#piptate)       | 是 | 回调画中画控制面板控件动作事件类型。<br/>应用依据控件动作事件做相应处理，如触发'playbackStateChanged'事件时，需要开始或停止视频。 |
+| status | int | 是 | 表示可切换状态的控件当前的状态，如具备打开和关闭两种状态的麦克风控件组、摄像头控件组和静音控件组，打开为1，关闭为0。其余控件该参数返回默认值-1。 |
+
 
 ## ControlEventParam<sup>12+</sup>
 
@@ -574,6 +667,10 @@ type ControlPanelActionEventCallback = (event: PiPActionEventType, status?: numb
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称                       | 类型           | 只读  | 可选   | 说明                                                                                                                                |
 |--------------------------|--------------|--------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------|
