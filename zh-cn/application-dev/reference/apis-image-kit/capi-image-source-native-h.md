@@ -499,7 +499,7 @@ Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options,Im
 
 **描述**
 
-获取期望输出大小。
+获取期望输出大小。信息
 
 **起始版本：** 12
 
