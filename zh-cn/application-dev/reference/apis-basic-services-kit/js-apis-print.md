@@ -1305,6 +1305,9 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | defaultPageSizeId | string | 否 | 是 | 表示默认纸张尺寸的ID，其范围包含国际标准化组织定义的标准纸张尺寸，如ISO_A4，和系统中定义的非标准的纸张尺寸，如Custom.178x254mm，表示这种纸张尺寸为178毫米 x 254毫米。 |
 | defaultOrientation | [PrintOrientationMode](#printorientationmode14) | 否 | 是 | 表示默认打印方向。 |
 | borderless | boolean | 否 | 是 | 表示是否无边距打印，true表示无边距，false表示有边距。默认值为false。 |
+| defaultColorMode<sup>24+</sup> | [PrintColorMode](#printcolormode11) | 否 | 是 | 表示默认色彩模式。默认值为黑白。 |
+| defaultCollate<sup>24+</sup> | boolean | 否 | 是 | 表示默认出纸顺序。默认值为逐份。 |
+| defaultReverse<sup>24+</sup> | boolean | 否 | 是 | 表示默认打印顺序。默认值为正序打印。 |
 | options | string | 否 | 是 | 表示打印机首选项中不在以上字段中的其他字段，查询打印机或者从打印机驱动获取，以json格式存储在string中。 |
 
 ## PrinterEvent<sup>18+</sup>
@@ -1826,3 +1829,276 @@ print.startPrint(printJobData).then(() => {
 | isCollate | boolean | 否 | 是 | 表示打印顺序方式。true表示逐页打印，false表示逐份打印。默认值为true。 |
 | isSequential | boolean | 否 | 是 | 表示是否按照页面顺序打印。 |
 | options | string | 否 | 是 | 表示以JSON格式字符串化的对象。 |
+
+## PrintMargin<sup>24+</sup>
+
+定义打印页边距的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**属性：**
+| **名称** | **类型** | **只读** | **可选** | **说明** |
+| -------- | -------- | -------- | -------- | -------- |
+| top | number | 否 | 是 | 表示页面上边距。默认值为0。 |
+| bottom | number | 否 | 是 | 表示页面下边距。默认值为0。 |
+| left | number | 否 | 是 | 表示页面左边距。默认值为0。 |
+| right | number | 否 | 是 | 表示页面右边距。默认值为0。 |
+
+## PrinterRange<sup>24+</sup>
+
+定义打印范围的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**属性：**
+| **名称** | **类型** | **只读** | **可选** | **说明** |
+| -------- | -------- | -------- | -------- | -------- |
+| startPage | number | 否 | 是 | 表示起始页。默认值为1。 |
+| endPage | number | 否 | 是 | 表示结束页。默认值为待打印文件的最大页数。 |
+| pages | Array&lt;number&gt; | 否 | 是 | 表示待打印的页面范围的集合。默认值为空。 |
+
+## PreviewAttribute<sup>24+</sup>
+
+定义打印预览属性的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**属性：**
+| **名称** | **类型** | **只读** | **可选** | **说明** |
+| -------- | -------- | -------- | -------- | -------- |
+| previewRange | [PrinterRange](#printerrange) | 否 | 否 | 表示预览页面范围。 |
+| result | number | 否 | 是 | 表示预览文件结果。默认值为-1。 |
+
+## PrintResolution<sup>24+</sup>
+
+定义打印分辨率的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**属性：**
+| **名称** | **类型** | **只读** | **可选** | **说明** |
+| -------- | -------- | -------- | -------- | -------- |
+| id | string | 否 | 否 | 表示分辨率ID。 |
+| horizontalDpi | number | 否 | 否 | 表示水平DPI。 |
+| verticalDpi | number | 否 | 否 | 表示垂直DPI。 |
+
+## PrinterCapability<sup>24+</sup>
+
+定义打印能力的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**属性：**
+| **名称** | **类型** | **只读** | **可选** | **说明** |
+| -------- | -------- | -------- | -------- | -------- |
+| colorMode | number | 否 | 否 | 表示色彩模式。 |
+| duplexMode | number | 否 | 否 | 表示单双面打印模式。 |
+| pageSize | Array&lt;[PrintPageSize](#printpagesize11)&gt; | 否 | 否 | 表示打印机支持的页面尺寸列表。 |
+| resolution | Array&lt;[PrintResolution](#printresolution)&gt; | 否 | 是 | 表示打印机支持的分辨率列表。 |
+| minMargin | [PrintMargin](#printmargin) | 否 | 是 | 表示打印机最小边距。 |
+| options | Object | 否 | 是 | 表示JSON对象字符串。 |
+
+## PrinterInfo<sup>24+</sup>
+
+定义打印信息的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**属性：**
+| **名称** | **类型** | **只读** | **可选** | **说明** |
+| -------- | -------- | -------- | -------- | -------- |
+| printerId | string | 否 | 否 | 表示打印机ID。 |
+| printerName | string | 否 | 否 | 表示打印机名称。 |
+| printerState | [PrinterState](#printerstate14) | 否 | 否 | 表示当前打印机状态。 |
+| printerIcon | number | 否 | 是 | 表示打印机图标的资源ID。默认值为-1。 |
+| description | string | 否 | 是 | 表示打印机说明。 |
+| capability | [PrinterCapability](#printercapability) | 否 | 是 | 表示打印机功能。 |
+| options | Object | 否 | 是 | 表示JSON对象字符串。 |
+
+## PrintJob<sup>24+</sup>
+
+定义打印任务的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**属性：**
+| **名称** | **类型** | **只读** | **可选** | **说明** |
+| -------- | -------- | -------- | -------- | -------- |
+| fdList | Array&lt;number&gt; | 否 | 否 | 表示待打印文件fd列表。 |
+| jobId | string | 否 | 否 | 表示打印任务ID。 |
+| printerId | string | 否 | 否 | 表示负责打印的打印机ID。 |
+| jobState | [PrintJobState](#printjobstate14) | 否 | 否 | 表示当前打印任务状态。 |
+| jobSubstate | [PrintJobSubState](#printjobsubstate14) | 否 | 否 | 表示当前打印任务子状态。 |
+| copyNumber | number | 否 | 否 | 表示文件列表副本。 |
+| pageRange | [PrinterRange](#printerrange) | 否 | 否 | 表示打印范围大小。 |
+| isSequential | boolean | 否 | 否 | 表示是否连续打印。true表示连续打印，false表示不连续打印。默认值为false。 |
+| pageSize | [PrintPageSize](#printpagesize11) | 否 | 否 | 表示选定的页面尺寸。 |
+| isLandscape | boolean | 否 | 否 | 表示是否横向打印。true表示横向打印，false表示纵向打印。默认值为false。 |
+| colorMode | number | 否 | 否 | 表示色彩模式。 |
+| duplexMode | number | 否 | 否 | 表示单双面打印模式。 |
+| margin | [PrintMargin](#printmargin) | 否 | 是 | 表示当前页边距设置。 |
+| preview | [PreviewAttribute](#previewattribute) | 否 | 是 | 表示预览设置。 |
+| options | Object | 否 | 是 | 表示JSON对象字符串。 |
+
+## print.updatePrintJobState<sup>24+</sup>
+
+updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState, callback: AsyncCallback&lt;void&gt;): void
+
+更新打印任务状态，使用callback异步回调。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| jobId | string | 是 | 表示打印任务ID。 |
+| state | [PrintJobState](#printjobstate14) | 是 | 表示打印任务状态。 |
+| subState | [PrintJobSubState](#printjobsubstate14) | 是 | 表示打印任务子状态。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 异步更新打印任务状态之后的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let jobId : string = 'jobId';
+let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
+let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
+print.updatePrintJobState(jobId, state, subState, (err: BusinessError) => {
+    if (err) {
+        console.error('updataPrintJobState failed, because : ' + JSON.stringify(err));
+    } else {
+        console.info('updatePrintJobState success');
+    }
+})
+```
+
+## print.updatePrintJobState<sup>24+</sup>
+
+updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState): Promise&lt;void&gt;
+
+更新打印任务状态，使用Promise异步回调。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| jobId | string | 是 | 表示打印任务ID。 |
+| state | [PrintJobState](#printjobstate14) | 是 | 表示打印任务状态。 |
+| subState | [PrintJobSubState](#printjobsubstate14) | 是 | 表示打印任务子状态。 |
+
+**返回值：**
+| **类型** | **说明** |
+| -------- | -------- |
+| Promise&lt;void&gt; | 更新打印任务状态完成结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let jobId : string = 'jobId';
+let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
+let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
+print.updatePrintJobState(jobId, state, subState).then(() => {
+    console.info('update print job state success');
+}).catch((error: BusinessError) => {
+    console.error('update print job state error : ' + JSON.stringify(error));
+})
+```
+
+## print.updatePrinterInformation<sup>24+</sup>
+
+updatePrinterInformation(printerInformation: PrinterInformation): Promise&lt;void&gt;
+
+更新系统中打印机的部分信息，使用Promise异步回调。当前仅允许更新[PrinterInformation](#printerinformation14)的alias和options字段。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| printerInformation | [PrinterInformation](#printerinformation14) | 是 | 表示待更新信息的打印机。 |
+
+**返回值：**
+| **类型** | **说明** |
+| -------- | -------- |
+| Promise&lt;void&gt; | 更新打印机信息到系统打印机发现列表完成结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testPageSize : print.PrintPageSize = {
+    id : 'ISO_A4',
+    name : 'iso_a4_210x297mm',
+    width : 8268,
+    height : 11692
+};
+
+let testCapability : print.PrinterCapabilities = {
+    supportedPageSizes : [testPageSize],
+    supportedColorModes : [print.PrintColorMode.COLOR_MODE_MONOCHROME],
+    supportedDuplexModes : [print.PrintDuplexMode.DUPLEX_MODE_NONE],
+    supportedMediaTypes : ['stationery'],
+    supportedQualities : [print.PrintQuality.QUALITY_NORMAL],
+    supportedOrientations : [print.PrintOrientationMode.ORIENTATION_MODE_PORTRAIT],
+    options : 'testOptions'
+};
+
+let printerInformation : print.PrinterInformation = {
+    printerId : 'testPrinterId',
+    printerName : 'testPrinterName',
+    printerStatus : 0,
+    description : 'testDesc',
+    capability : testCapability,
+    uri : 'testUri',
+    printerMake : 'testPrinterMake',
+    options : 'testOptions'
+};
+print.updatePrinterInformation(printerInformation).then(() => {
+    console.info('updatePrinterInformation success');
+}).catch((error: BusinessError) => {
+    console.error('updatePrinterInformation error : ' + JSON.stringify(error));
+})
+```
