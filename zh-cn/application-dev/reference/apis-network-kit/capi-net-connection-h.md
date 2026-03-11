@@ -254,7 +254,7 @@ int32_t OH_NetConn_GetAddrInfo(char *host, char *serv, struct addrinfo *hint, st
 | char *serv | 服务名。 |
 | struct addrinfo *hint | 指向addrinfo结构体的指针。 |
 | struct addrinfo **res | 存放DNS查询结果，以链表形式返回。 |
-| int32_t netId | DNS查询netId为0时，使用默认netid查询。 |
+| int32_t netId | DNS查询netId为0时，使用默认netId查询。 |
 
 **返回：**
 
@@ -609,7 +609,7 @@ int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint32_t callBackId | 需要被注销的回调对应id。 |
+| uint32_t callBackId | 需要被注销的回调对应ID。 |
 
 **返回：**
 

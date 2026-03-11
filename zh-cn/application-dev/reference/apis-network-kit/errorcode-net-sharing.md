@@ -146,7 +146,7 @@ Failed to enable forwarding for network sharing.
 
 **处理步骤**
 
-开启debug日志，检查Ip tables的命令是否拼接出现问题。
+开启debug日志，检查Iptables的命令是否拼接出现问题。
 
 ## 2202011 无法获取网络共享配置
 
