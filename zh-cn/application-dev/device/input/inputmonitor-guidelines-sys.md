@@ -19,7 +19,7 @@ import { inputMonitor } from '@kit.InputKit';
 
 ## 接口说明
 
-输入监听常用接口如下表所示，接口详细介绍请参考[ohos.multimodalInput.inputMonitor文档](../../reference/apis-input-kit/js-apis-inputmonitor-sys.md)。
+输入监听常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputMonitor](../../reference/apis-input-kit/js-apis-inputmonitor-sys.md)。
 
 | 接口名称  | 描述 |
 | ------------------------------------------------------------ | -------------------------- |
@@ -57,22 +57,22 @@ struct Index {
           let callback = (mouseEvent: MouseEvent) => {
             console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
             if (mouseEvent.action = BUTTON_DOWN) {
-              return true; //鼠标按下回调
+              return true; // 鼠标按下回调
             }
             return false;
           };
 
           try {
-            inputMonitor.on('mouse', (mouseEvent: MouseEvent) => { //开始监听鼠标事件
+            inputMonitor.on('mouse', (mouseEvent: MouseEvent) => { // 开始监听鼠标事件
               console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
               return false;
             });
           } catch (error) {
             console.error(`Monitor on failed, error: ${JSON.stringify(error, ["code", "message"])}`);
           }
-          //监听鼠标按下，按下callbackreturn true
+          // 监听鼠标按下，按下callbackreturn true
           try {
-            inputMonitor.off('mouse', callback); //关闭监听鼠标事件
+            inputMonitor.off('mouse', callback); // 关闭监听鼠标事件
             console.info(`Monitor off success`);
           } catch (error) {
             console.error(`Monitor off failed, error: ${JSON.stringify(error, ["code", "message"])}`);
