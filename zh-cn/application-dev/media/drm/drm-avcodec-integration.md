@@ -132,9 +132,9 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
         printf("OH_MediaKeySession_GenerateMediaKeyRequest failed.");
     }
     /*
-      应用通过网络请求DRM服务，获取媒体密钥响应mediaKeyResponse，将响应传到OH_MediaKeySession_ProcessMediaKeyResponse，
-      若是离线媒体密钥响应处理，则返回离线媒体密钥标识mediaKeyId，请根据实际的数据和长度传入。
-    */
+     应用通过网络请求DRM服务，获取媒体密钥响应mediaKeyResponse，将响应传到OH_MediaKeySession_ProcessMediaKeyResponse，
+     若是离线媒体密钥响应处理，则返回离线媒体密钥标识mediaKeyId，请根据实际的数据和长度传入。
+     */
     unsigned char mediaKeyId[128] = {0x00};
     int32_t mediaKeyIdLen = 128;
     // 媒体密钥响应长度最大为MAX_DRM_MEDIA_KEY_RESPONSE_BUF_SIZE，请按实际数据输入。
