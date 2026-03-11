@@ -31,7 +31,7 @@
    - [onAVMusicTemplateDestroy](../../reference/apis-avsession-kit/js-apis-avsession-avMusicTemplate-sys.md#avmusictemplateonavmusictemplatedestroy)：音频模板销毁事件。
 
    <!-- @[create_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-
+   
    ``` TypeScript
    import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
    // ...
