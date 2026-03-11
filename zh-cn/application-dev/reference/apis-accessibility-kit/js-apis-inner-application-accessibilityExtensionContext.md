@@ -27,13 +27,13 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 节点元素具备的属性名称及属性值类型信息。
 
+### 属性
+
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
-
-### 属性
 
 | 名称                   | 类型                                                              | 只读 | 可选 | 说明              |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
