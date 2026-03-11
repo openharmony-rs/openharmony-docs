@@ -739,7 +739,7 @@ getAppNativeMemInfo(): NativeMemInfo
 
 > **注意**：
 >
-> 由于读取/proc/{pid}/smaps_rollup耗时较长，推荐使用异步接口[hidebug.getAppNativeMemInfoAsync](#hidebuggetappnativememinfoasync20)，以避免应用丢帧或卡顿。如果需要该接口获取应用的rss使用信息，推荐使用[hidebug.getRssInfo](#hidebuggetrssinfo)接口。
+> 由于读取/proc/{pid}/smaps_rollup耗时较长，推荐使用异步接口[hidebug.getAppNativeMemInfoAsync](#hidebuggetappnativememinfoasync20)，以避免应用丢帧或卡顿。如果需要该接口获取应用的rss使用信息，推荐使用[hidebug.getRssInfo](#hidebuggetrssinfo24)接口。
 
 **返回值**：
 
