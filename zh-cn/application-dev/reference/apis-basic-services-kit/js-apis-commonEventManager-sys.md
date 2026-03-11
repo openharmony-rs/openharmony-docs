@@ -63,10 +63,10 @@ publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): vo
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//指定发送的用户
+// 指定发送的用户
 let userId = 100;
 
-//发布公共事件
+// 发布公共事件
 try {
     commonEventManager.publishAsUser('event', userId, (err: BusinessError) => {
       if (err) {

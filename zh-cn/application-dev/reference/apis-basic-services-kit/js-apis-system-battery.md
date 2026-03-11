@@ -48,7 +48,7 @@ getStatus(options?: GetStatusOptions): void;
 ```js
 Battery.getStatus({
     success: (data: BatteryResponse) => {
-        console.log('success get battery level:' + data.level);
+        console.info('success get battery level:' + data.level);
     },
     fail: (data: string, code: number) => {
         console.error('fail to get battery level code:' + code + ', data: ' + data);
