@@ -46157,6 +46157,18 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets",
 				"functions":[
 					{
 						"end_line":20,
@@ -46171,7 +46183,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets",
 				"functions":[
 					{
 						"end_line":77,
@@ -46191,7 +46203,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets",
 				"functions":[
 					{
 						"end_line":84,
