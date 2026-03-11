@@ -91,6 +91,8 @@ Web媒体策略的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 | 名称           | 类型                                             | 只读    | 可选    | 说明             |
 | ---------- | -----------------------------------------------------| ------ | ------ | ---------------- |
 | content   | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr)  | 否     | 否     | 显示内容。     |
@@ -120,21 +122,23 @@ Web媒体策略的配置。
 
 | 名称           | 类型                                             | 只读 | 可选    | 说明             |
 | ---------- | -----------------------------------------------------| ------ | ------ |---------------- |
-| onAppear   | ArkTS-Dyn: Callback\<void> <br/>ArkTS-Sta: VoidCallback \| undefined   | 否     |是     | 自定义选择菜单弹出时回调。   <br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23  |
-| onDisappear | ArkTS-Dyn: Callback\<void> <br/>ArkTS-Sta: VoidCallback \| undefined  | 否     |是     | 自定义选择菜单关闭时回调。  <br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23|
+| onAppear   | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback \| undefined   | 否     |是     | 自定义选择菜单弹出时回调。   <br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23  |
+| onDisappear | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback \| undefined  | 否     |是     | 自定义选择菜单关闭时回调。  <br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23|
 | preview    | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8)          | 否     |是     | 自定义选择菜单的预览内容样式，未配置时无预览内容。<br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23|
 | menuType   | [MenuType](../apis-arkui/arkui-ts/ts-text-common.md#menutype13枚举说明)      | 否     | 是     | 自定义选择菜单类型。<br>默认值：`MenuType.SELECTION_MENU`。<br> 从API version 20起，`MenuType.PREVIEW_MENU`支持超链接预览。    <br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23 |
 | previewMenuOptions<sup>20+</sup> | [PreviewMenuOptions](#previewmenuoptions20) | 否     |是     | 自定义选择预览菜单选项。<br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
-| onMenuShow<sup>21+</sup> | ArkTS-Dyn: Callback\<void> <br/>ArkTS-Sta: VoidCallback \| undefined | 否     | 是     | 自定义选择菜单显示时回调。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
-| onMenuHide<sup>21+</sup> | ArkTS-Dyn: Callback\<void> <br/>ArkTS-Sta: VoidCallback \| undefined | 否     | 是     | 自定义选择菜单隐藏时回调。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
+| onMenuShow<sup>21+</sup> | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback \| undefined | 否     | 是     | 自定义选择菜单显示时回调。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
+| onMenuHide<sup>21+</sup> | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback \| undefined | 否     | 是     | 自定义选择菜单隐藏时回调。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## PreviewMenuOptions<sup>20+</sup>
 
 预览菜单选项。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS-Dyn起始版本：** 20
 
 | 名称           | 类型                                             | 只读    | 可选    | 说明             |
 | ---------- | -----------------------------------------------------| ------ | ------ | ---------------- |
