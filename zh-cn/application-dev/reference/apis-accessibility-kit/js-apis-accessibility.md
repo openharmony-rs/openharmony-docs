@@ -1258,7 +1258,7 @@ struct Index {
 }
 ```
 
-## accessibility.onSeniorModeStateChange<sup>26+</sup>
+## accessibility.onSeniorModeStateChange
 
 onSeniorModeStateChange(callback: Callback&lt;boolean&gt;): void
 
