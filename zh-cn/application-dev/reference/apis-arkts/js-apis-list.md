@@ -296,7 +296,9 @@ ArkTS-Dyn错误码：
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 10200001 | The value of index is out of range. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta. |
 | 10200011 | The get method cannot be bound. |
+
 
 ArkTS-Sta错误码：
 
@@ -520,13 +522,13 @@ obj.add(5);
 let result = list.equal(obj);
 ```
 
-### equal<sup>20+</sup>
+### equal<sup>23+</sup>
 
 equal(obj: RecordData): boolean
 
 比较指定对象与此List是否相等。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -545,6 +547,14 @@ equal(obj: RecordData): boolean
 | 类型 | 说明 |
 | -------- | -------- |
 | boolean | 如果对象与此列表相同返回true，否则返回false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200011 | The equal method cannot be bound. |
 
 **示例：**
 
@@ -608,13 +618,13 @@ list.add(4);
 let result = list.removeByIndex(2);
 ```
 
-### removeByIndex<sup>20+</sup>
+### removeByIndex<sup>23+</sup>
 
 removeByIndex(index: int): T \| undefined
 
 根据元素的下标值查找元素，并将其删除。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -640,7 +650,7 @@ removeByIndex(index: int): T \| undefined
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 10200001 | The value of "index" is out of range. It must be >= 0 && <= \$\{length - 1\}. |
+| 10200001 | The value of "index" is out of range. It must be >= 0 && <= ${length - 1}. Received value is: ${index} |
 
 **示例：**
 
@@ -767,13 +777,13 @@ list.replaceAllElements((value: number) => {
 });
 ```
 
-### replaceAllElements<sup>20+</sup>
+### replaceAllElements<sup>23+</sup>
 
 replaceAllElements(callbackfn: ListReplaceCb\<T\>): void
 
 通过回调函数操作List中的元素，用操作后的元素替换原元素并返回操作后的元素。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -856,13 +866,13 @@ list.forEach((value: number, index?: number) => {
 });
 ```
 
-### forEach<sup>20+</sup>
+### forEach<sup>23+</sup>
 
-forEach(callbackfn: ListforEachCb\<T\>): void
+forEach(callbackfn: ListForEachCb\<T\>): void
 
 通过回调函数遍历List实例对象上的元素以及元素对应的下标值。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -874,7 +884,7 @@ forEach(callbackfn: ListforEachCb\<T\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callbackFn | [ListforEachCb\<T\>](#listforeachcbt20) | 是 | 回调函数。 |
+| callbackFn | [ListForEachCb\<T\>](#listforeachcbt23) | 是 | 回调函数。 |
 
 **示例：**
 
@@ -1290,7 +1300,7 @@ getFirst(): T
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 10200011 | The getFirst method cannot be bound. |
-| 10200010 | Container is empty. |
+| 10200010 | Container is empty. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta.|
 
 **示例：**
 
@@ -1343,7 +1353,7 @@ getLast(): T
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 10200011 | The getLast method cannot be bound. |
-| 10200010 | Container is empty. |
+| 10200010 | Container is empty. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta.|
 
 **示例：**
 
@@ -1369,13 +1379,13 @@ list.add(4);
 let result = list.getLast();
 ```
 
-### \[index: int\]<sup>20+</sup>
+### \[index: int\]<sup>23+</sup>
 
 \[index: int\]: T
 
 获取指定索引值对应位置的元素。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1466,13 +1476,13 @@ while(!temp.done) {
 }
 ```
 
-### $_iterator<sup>20+</sup>
+### $_iterator<sup>23+</sup>
 
 \$_iterator\(): IterableIterator&lt;T&gt;
 
 返回一个迭代器，迭代器的每一项都是一个JavaScript对象，并返回该对象。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1509,13 +1519,13 @@ while(!temp.done) {
 }
 ```
 
-### ListforEachCb\<T\><sup>20+</sup>
+### ListForEachCb\<T\><sup>23+</sup>
 
-type ListforEachCb\<T\> = (value: T, index: int, list: List\<T\>) => void
+type ListForEachCb\<T\> = (value: T, index: int, list: List\<T\>) => void
 
 List中forEach方法的回调函数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1531,13 +1541,13 @@ List中forEach方法的回调函数。
 | index | int | 是 | 当前遍历到的下标值，默认值为0。 |
 | List | [List&lt;T&gt;](#list) | 是 | 当前调用[forEach](#foreach20)方法的实例对象。 |
 
-### ListReplaceCb\<T\><sup>20+</sup>
+### ListReplaceCb\<T\><sup>23+</sup>
 
 type ListReplaceCb\<T\> = (value: T, index: int, list: List\<T\>) => T
 
 List中replaceAllElements方法的回调函数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1551,7 +1561,13 @@ List中replaceAllElements方法的回调函数。
 | -------- | -------- | -------- | -------- |
 | value | T | 是 | 当前遍历到的元素。 |
 | index | int | 是 | 当前遍历到的下标值。 |
-| list | [List&lt;T&gt;](#list) | 是 | 当前调用[replaceAllElements](#replaceallelements20)方法的实例对象。 |
+| list | [List&lt;T&gt;](#list) | 是 | 当前调用[replaceAllElements](#replaceallelements23)方法的实例对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 操作list中的元素后返回的新值。 |
 
 ### ListComparatorFn\<T\><sup>23+</sup>
 

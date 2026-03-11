@@ -1053,7 +1053,7 @@ equal(obj: Object): boolean
 
 > **说明：**
 >
-> 此接口从API version 10开始支持，从API version 12开始废弃。无替代接口。
+> 此接口从API version 8开始支持，从API version 12开始废弃。无替代接口。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

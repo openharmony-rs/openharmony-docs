@@ -278,6 +278,7 @@ popFirst(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta.|
 | 10200011 | The popFirst method cannot be bound. |
 
 **示例：**
@@ -334,6 +335,7 @@ popLast(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta.|
 | 10200011 | The popLast method cannot be bound. |
 
 **示例：**
@@ -418,7 +420,7 @@ deque.forEach((value: number, index?: number | undefined, deque?: Deque<number> 
 
 ### forEach<sup>23+</sup>
 
-forEach(callbackfn: DequeForEachCb\<T\>): void
+forEach(callbackFn: DequeForEachCb\<T\>): void
 
 通过回调函数来遍历Deque实例对象上的元素以及元素对应的下标。
 
@@ -481,6 +483,7 @@ getFirst(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta. |
 | 10200011 | The getFirst method cannot be bound. |
 
 **示例：**
@@ -533,6 +536,7 @@ getLast(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta. |
 | 10200011 | The getLast method cannot be bound. |
 
 **示例：**

@@ -1299,7 +1299,7 @@ for(let i = 0; i < 10; i++) {
 
 ### forEach<sup>23+</sup>
 
-forEach(callbackFn: LightWeightMapCbFn\<K, V\>)
+forEach(callbackFn: LightWeightMapCbFn\<K, V\>): void
 
 通过回调函数来遍历实例对象上的元素以及元素对应的下标。
 

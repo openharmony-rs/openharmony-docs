@@ -171,6 +171,7 @@ pop(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta. |
 | 10200011 | The pop method cannot be bound. |
 
 **示例：**
@@ -225,6 +226,7 @@ getFirst(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta. |
 | 10200011 | The getFirst method cannot be bound. |
 
 **示例：**
@@ -303,13 +305,13 @@ queue.forEach((value : number, index ?: number) : void => {
 });
 ```
 
-### forEach<sup>20+</sup>
+### forEach<sup>23+</sup>
 
 forEach(callbackfn: QueueForEachCb\<T\>): void
 
 通过回调函数来遍历Queue实例对象上的元素以及元素对应的下标。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -402,13 +404,13 @@ while(temp != undefined) {
  */
 ```
 
-### $_iterator<sup>20+</sup>
+### $_iterator<sup>23+</sup>
 
 \$_iterator\(): IterableIterator&lt;T&gt;
 
 返回一个迭代器，迭代器的每一项都是一个JavaScript对象，并返回该对象。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -439,13 +441,13 @@ while(temp.value != undefined) {
 }
 ```
 
-### QueueForEachCb\<T\><sup>20+</sup>
+### QueueForEachCb\<T\><sup>23+</sup>
 
 type QueueForEachCb\<T\> = (value: T, index: int, queue: Queue\<T\>) => void
 
 Queue中forEach方法的回调函数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
