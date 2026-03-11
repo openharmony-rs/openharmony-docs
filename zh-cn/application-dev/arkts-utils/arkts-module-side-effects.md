@@ -282,6 +282,30 @@ export function initialize() {
 
 <!-- @[import_modulePartSeven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageSeven.ets) -->
 
+``` TypeScript
+// ModulePartSeven.ets
+import { data } from './ModulePartSeven';
+
+@Entry
+@Component
+struct Index {
+  @StorageLink('SomeAppStorageVar') message: number = 100;
+  build() {
+    Row() {
+      Column() {
+        Text('test' + this.message)
+          .fontSize(50)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+function maybeNotCalledAtAll() {
+  console.info('data is ', data);
+}
+```
+
 显示内容：
 
 ```text
