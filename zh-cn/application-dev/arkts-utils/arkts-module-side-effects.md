@@ -112,6 +112,12 @@ globalThis.someGlobalVar = 100; // 改变了全局状态
 
 <!-- @[export_sideEffectModuleFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/SideEffectModuleFour.ets) -->
 
+``` TypeScript
+// SideEffectModuleFour.ets
+export let data2 = 'data from side effect module';
+globalThis.someGlobalVar = 200; // 也改变了全局状态
+```
+
 <!-- @[export_moduleUseGlobalVarFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModuleUseGlobalVarFour.ets) -->
 
 <!-- @[import_modulePartFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageFour.ets) -->
