@@ -6,14 +6,14 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-apis-media-f.md#mediacreateavmetadataextractor11) to create an AVMetadataExtractor instance.
+
+For details about the demo of obtaining audio or video metadata and video thumbnails, see [Using AVMetadataExtractor to Extract Audio and Video Metadata (ArkTS)](../../media/media/avmetadataextractor.md).
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 11.
-
-AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-apis-media-f.md#mediacreateavmetadataextractor11) to create an AVMetadataExtractor instance.
-
-For details about the demo of obtaining audio or video metadata and video thumbnails, see [Using AVMetadataExtractor to Extract Audio and Video Metadata (ArkTS)](../../media/media/avmetadataextractor.md).
 
 ## Modules to Import
 
@@ -152,7 +152,7 @@ Obtains video thumbnails in batches. This API uses an asynchronous callback to r
 
 | Name  | Type                                        | Mandatory| Description                               |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timesUs | number[]                   | Yes  | Set of time points of all thumbnails to be obtained in the video.<br>The unit is microsecond (μs), and the value range of the array length is [0, 4096].|
+| timesUs | number[]                   | Yes  | Set of time points of all thumbnails to be obtained in the video.<br>The unit is microsecond (μs), and the value range of the array length is (0, 4096].|
 | queryOption| [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | Yes  | Relationship between the time passed in and the video frame.|
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | Yes  | Format parameters of the thumbnail to be obtained.|
 | callback | [OnFrameFetched](arkts-apis-media-t.md#onframefetched23)    | Yes  | Thumbnail information to be returned and possible exception types.<br>For details about the exception types, see the returned error code information.|
@@ -177,25 +177,27 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
 
-// Initialize input parameters.
-let timesUs: number[] = [0];
-let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
-let param: media.PixelMapParams = {
-  width: 300,
-  height: 300
-};
-// Obtain the thumbnail.
-let avMetadataExtractor = await media.createAVMetadataExtractor();
-if (avMetadataExtractor !== null) {
-  console.info('Succeeded in creating AVMetadataExtractor');
-  avMetadataExtractor.fetchFramesByTimes (timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
-    if (err) {
-      console.info(`fetchFramesByTimes callback failed, error = ${JSON.stringify(err)}`);
-      return;
-    }
-    if (frameInfo != undefined && frameInfo.image != undefined) {
-      let pixelMap = frameInfo.image;
-    }});
+async function fetchFramesByTimesDemo() {
+  // Initialize input parameters.
+  let timesUs: number[] = [0];
+  let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
+  let param: media.PixelMapParams = {
+    width: 300,
+    height: 300
+  };
+  // Obtain the thumbnail.
+  let avMetadataExtractor = await media.createAVMetadataExtractor();
+  if (avMetadataExtractor !== null) {
+    console.info('Succeeded in creating AVMetadataExtractor');
+    avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+      if (err) {
+        console.info(`fetchFramesByTimes callback failed, error = ${JSON.stringify(err)}`);
+        return;
+      }
+      if (frameInfo != undefined && frameInfo.image != undefined) {
+        let pixelMap = frameInfo.image;
+      }});
+  }
 }
 ```
 

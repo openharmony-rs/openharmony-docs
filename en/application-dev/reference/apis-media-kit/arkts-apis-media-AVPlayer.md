@@ -150,7 +150,7 @@ Subscribes to [AVPlayer](arkts-apis-media-AVPlayer.md) errors. This event is use
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 In API versions 9 to 13, error code 5400103 is reported when the network or server data flow is abnormal. In API version 14 and later, error codes 5411001 to 5411012 are reported for refined management.
 
@@ -244,7 +244,7 @@ Sets a source of streaming media that can be pre-downloaded, downloads the media
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -295,7 +295,7 @@ Sets a playback strategy. This API can be called only when the AVPlayer is in th
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -350,7 +350,7 @@ Sets the playback range and seeks to the start position of the range based on th
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -487,7 +487,7 @@ This API can be called only when the AVPlayer is in the prepared, playing, pause
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message|
 | -------- | ----------------------------------------- |
@@ -1062,8 +1062,8 @@ Obtains the playback information. This API can be called only when the AVPlayer 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let avPlayer: media.AVPlayer | undefined = undefined;
-let playbackInfo: media.PlaybackInfo | undefined = undefined;
+let avPlayer: media.AVPlayer | undefined;
+let playbackInfo: media.PlaybackInfo | undefined;
 media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
   if (player != null) {
     avPlayer = player;
@@ -1193,7 +1193,7 @@ Selects a track when the AVPlayer plays multimedia resources with multiple audio
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1251,7 +1251,7 @@ Deselects the specified track when the AVPlayer plays multimedia resources with 
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1304,7 +1304,7 @@ Sets the decryption configuration. When receiving a [mediaKeySystemInfoUpdate ev
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1424,7 +1424,7 @@ Checks whether the media source supports [seek](#seek9) in SEEK_CONTINUOUS mode 
 
 | Type          | Description                                      |
 | -------------- | ------------------------------------------ |
-| boolean | Check result for the support of the seek operation in **SEEK_CONTINUOUS** mode. **true** if supported, **false** otherwise.|
+| boolean | Check result for the support of the seek operation in **SEEK_CONTINUOUS** mode. **true** to support, **false** otherwise.|
 
 **Example**
 
@@ -2468,6 +2468,8 @@ When subscribing to this event, you are advised to implement the player behavior
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.       |
@@ -2503,6 +2505,8 @@ Unsubscribes from audio stream output device changes and reasons. This API uses 
 | callback | Callback\<[audio.AudioStreamDeviceChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiostreamdevicechangeinfo11)> | No  | Callback used to return the output device descriptor of the current audio stream and the change reason.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -2542,6 +2546,8 @@ Adds an external subtitle to a video based on the FD. Currently, the external su
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -2584,6 +2590,8 @@ Adds an external subtitle to a video based on the URL. Currently, the external s
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -2651,7 +2659,7 @@ Unsubscribes from subtitle update events.
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type | string | Yes  | Event type, which is **'subtitleUpdate'** in this case. The event is triggered when the external subtitle is updated.|
-| callback | function | No  | Callback that has been registered to listen for subtitle update events.|
+| callback | Callback\<[SubtitleInfo](arkts-apis-media-i.md#subtitleinfo12)> | No  | Callback that has been registered to listen for subtitle update events.|
 
 **Example**
 
@@ -3063,8 +3071,8 @@ Obtains the statistic metrics of the current player. This API can be called when
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let avPlayer: media.AVPlayer | undefined = undefined;
-let playbackMetrics: media.PlaybackMetrics | undefined = undefined;
+let avPlayer: media.AVPlayer | undefined;
+let playbackMetrics: media.PlaybackMetrics | undefined;
 media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
   if (player != null) {
     avPlayer = player;
@@ -3095,7 +3103,7 @@ Subscribes to metric events during playback.
 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | Yes  | Asynchronous callback used to report metric event information.|
+| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | Yes  | Callback invoked for metric events. This API uses an asynchronous callback to return the result.|
 
 **Example**
 
@@ -3126,7 +3134,7 @@ Unsubscribes from metric events during playback.
 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | No  | Asynchronous callback used to report metric event information.|
+| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | No  | Callback invoked for metric events. This API uses an asynchronous callback to return the result.|
 
 **Example**
 
