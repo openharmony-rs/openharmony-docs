@@ -58,6 +58,12 @@ export const data = 1;
 
 <!-- @[import_modulePartTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageTwo.ets) -->
 
+``` TypeScript
+// PageTwo.ets
+import { data } from './ModulePartTwo';
+console.info('data is ', data);
+```
+
 输出内容：
 
 ```typescript
