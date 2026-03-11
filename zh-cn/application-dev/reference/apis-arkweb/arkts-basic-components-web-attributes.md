@@ -14,7 +14,7 @@
 
 ArkTS-Dyn: domStorageAccess(domStorageAccess: boolean)
 
-ArkTS-Sta: domStorageAccess(domStorageAccess: boolean | undefined): this
+ArkTS-Sta: domStorageAccess(domStorageAccess: boolean | undefined)
 
 设置是否开启文档对象模型存储接口（DOM Storage API）权限，当属性没有显式调用时，默认不开启文档对象模型存储接口（DOM Storage API）权限。
 
@@ -80,7 +80,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: fileAccess(fileAccess: boolean)
 
-ArkTS-Sta: fileAccess(fileAccess: boolean | undefined): this
+ArkTS-Sta: fileAccess(fileAccess: boolean | undefined)
 
 设置是否开启应用中文件系统的访问。[$rawfile(filepath/filename)](../../quick-start/resource-categories-and-access.md#资源访问)中的文件不受该属性影响而被限制访问。API version 11及以前，当属性没有显式调用时，默认开启应用中文件系统的访问。API version 12及以后，当属性没有显式调用时，默认不开启应用中文件系统的访问。
 
@@ -142,7 +142,7 @@ ArkTS-Dyn示例：
 
 ArkTS-Dyn: imageAccess(imageAccess: boolean)
 
-ArkTS-Sta: imageAccess(imageAccess: boolean | undefined): this
+ArkTS-Sta: imageAccess(imageAccess: boolean | undefined)
 
 设置是否允许自动加载图片资源。当属性没有显式调用时，允许自动加载图片资源。
 
@@ -206,7 +206,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
-ArkTS-Sta: javaScriptProxy(javaScriptProxy: JavaScriptProxy | undefined): this
+ArkTS-Sta: javaScriptProxy(javaScriptProxy: JavaScriptProxy | undefined)
 
 将javaScriptProxy中的ArkTS对象注册到Web组件中，该对象将使用JavaScriptProxy中指定的名称注册到网页的所有框架中，包括所有iframe，这使得JavaScript可以调用javaScriptProxy中ArkTS对象的方法。当属性没有显式调用时，默认不将javaScriptProxy中的ArkTS对象注册到Web组件中。
 
@@ -227,7 +227,7 @@ ArkTS-Sta: javaScriptProxy(javaScriptProxy: JavaScriptProxy | undefined): this
 
 | 参数名        | 类型                                     | 必填   | 说明                                     |
 | ---------- | ---------------------------------------- | ---- |---------------------------------------- |
-| javaScriptProxy     | ArkTS-Dyn: [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12)  <br/>ArkTS-Sta: [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12) \| boolean \|  undefined| 是    |  参与注册的对象。只能声明方法，不能声明属性。 <br>ArkTS-Dyn：传入undefined或null时不将javaScriptProxy中的ArkTS对象注册到Web组件中。 <br>ArkTS-Sta：传入undefined时不将javaScriptProxy中的ArkTS对象注册到Web组件中。|
+| javaScriptProxy     | ArkTS-Dyn: [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12)  <br/>ArkTS-Sta: [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12) \| undefined| 是    |  参与注册的对象。只能声明方法，不能声明属性。 <br>ArkTS-Dyn：传入undefined或null时不将javaScriptProxy中的ArkTS对象注册到Web组件中。 <br>ArkTS-Sta：传入undefined时不将javaScriptProxy中的ArkTS对象注册到Web组件中。|
 
 **示例：**
 
@@ -345,7 +345,7 @@ struct WebComponent {
 
 ArkTS-Dyn: javaScriptAccess(javaScriptAccess: boolean)
 
-ArkTS-Sta: javaScriptAccess(javaScriptAccess: boolean | undefined): this
+ArkTS-Sta: javaScriptAccess(javaScriptAccess: boolean | undefined)
 
 设置是否允许执行JavaScript脚本。当属性没有显式调用时，默认允许执行JavaScript脚本。
 
@@ -470,7 +470,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: mixedMode(mixedMode: MixedMode)
 
-ArkTS-Sta: mixedMode(mixedMode: MixedMode | undefined): this
+ArkTS-Sta: mixedMode(mixedMode: MixedMode | undefined)
 
 设定当安全源尝试从非安全源加载资源时的行为。当属性没有显式调用时，默认值为MixedMode.None，即禁止安全源从非安全源加载内容。
 
@@ -532,7 +532,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onlineImageAccess(onlineImageAccess: boolean)
 
-ArkTS-Sta: onlineImageAccess(onlineImageAccess: boolean | undefined): this
+ArkTS-Sta: onlineImageAccess(onlineImageAccess: boolean | undefined)
 
 设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。当属性没有显式调用时，默认允许从网络加载图片资源。
 
@@ -596,7 +596,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: zoomAccess(zoomAccess: boolean)
 
-ArkTS-Sta: zoomAccess(zoomAccess: boolean | undefined): this
+ArkTS-Sta: zoomAccess(zoomAccess: boolean | undefined)
 
 设置是否支持手势进行缩放。该属性没有显式调用时，默认支持手势进行缩放。
 
@@ -723,7 +723,7 @@ ArkTS-Sta: overviewModeAccess(overviewModeAccess: boolean | undefined)
 
 ArkTS-Dyn: databaseAccess(databaseAccess: boolean)
 
-ArkTS-Sta: databaseAccess(databaseAccess: boolean | undefined): this
+ArkTS-Sta: databaseAccess(databaseAccess: boolean | undefined)
 
 设置Web SQL数据库存储API权限，若未显式调用，此权限默认关闭。
 
@@ -849,7 +849,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: mediaPlayGestureAccess(access: boolean)
 
-ArkTS-Sta: mediaPlayGestureAccess(access: boolean | undefined): this
+ArkTS-Sta: mediaPlayGestureAccess(access: boolean | undefined)
 
 设置有声视频的自动播放是否需要用户手动点击，静音视频播放不受该接口管控。当该属性未显式设置时，默认有声视频的自动播放需要用户手动点击。
 
@@ -933,7 +933,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: multiWindowAccess(multiWindow: boolean)
 
-ArkTS-Sta: multiWindowAccess(multiWindow: boolean | undefined): this
+ArkTS-Sta: multiWindowAccess(multiWindow: boolean | undefined)
 
 设置是否开启多窗口权限。若未显式调用该属性或入参值为undefined时，默认不开启多窗口权限。
 
@@ -1213,7 +1213,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: cacheMode(cacheMode: CacheMode)
 
-ArkTS-Sta: cacheMode(cacheMode: CacheMode | undefined): this
+ArkTS-Sta: cacheMode(cacheMode: CacheMode | undefined)
 
 设置缓存模式。当属性没有显式调用时，默认为`CacheMode.Default`。
 
@@ -1277,7 +1277,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: copyOptions(value: CopyOptions)
 
-ArkTS-Sta: copyOptions(value: CopyOptions | undefined): this
+ArkTS-Sta: copyOptions(value: CopyOptions | undefined)
 
 设置剪贴板复制范围选项。该属性没有显式调用时，默认支持复制后在当前设备内所有应用内粘贴。
 
@@ -1403,7 +1403,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: initialScale(percent: number)
 
-ArkTS-Sta: initialScale(percent: double | undefined): this
+ArkTS-Sta: initialScale(percent: double | undefined)
 
 设置整体页面的缩放百分比。该属性没有显式调用时，默认缩放百分比为100。
 
@@ -1467,7 +1467,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: blockNetwork(block: boolean)
 
-ArkTS-Sta: blockNetwork(block: boolean | undefined): this
+ArkTS-Sta: blockNetwork(block: boolean | undefined)
 
 设置Web组件是否阻止从网络加载资源。当属性没有显式调用时，默认允许从网络加载资源。
 
@@ -2392,7 +2392,7 @@ ArkTS-Sta: pinchSmooth(isEnabled: boolean | undefined)
 
 ArkTS-Dyn: allowWindowOpenMethod(flag: boolean)
 
-ArkTS-Sta: allowWindowOpenMethod(flag: boolean | undefined): this
+ArkTS-Sta: allowWindowOpenMethod(flag: boolean | undefined)
 
 设置网页是否可以通过JavaScript自动打开新窗口。
 
@@ -2573,7 +2573,7 @@ struct WebComponent {
 
 ArkTS-Dyn: mediaOptions(options: WebMediaOptions)
 
-ArkTS-Sta: mediaOptions(options: WebMediaOptions | undefined): this
+ArkTS-Sta: mediaOptions(options: WebMediaOptions | undefined)
 
 设置Web媒体播放的策略，其中包括：Web中的音频在重新获焦后能够自动续播的有效期、应用内多个Web实例的音频是否独占。当该属性未显式设置时，默认Web中的音频重新获焦后无法自动续播、应用内多个Web实例的音频是独占的。
 
@@ -2647,7 +2647,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: javaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 
-ArkTS-Sta: javaScriptOnDocumentStart(scripts: Array\<ScriptItem> | undefined): this
+ArkTS-Sta: javaScriptOnDocumentStart(scripts: Array\<ScriptItem> | undefined)
 
 将JavaScript脚本注入到Web组件中，当指定页面或者文档开始加载时，该脚本将在其来源与scriptRules匹配的任何页面中执行。当属性没有显式调用时，默认不将JavaScript脚本注入到Web组件中。
 
@@ -2768,7 +2768,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
-ArkTS-Sta: javaScriptOnDocumentEnd(scripts: Array\<ScriptItem> | undefined): this
+ArkTS-Sta: javaScriptOnDocumentEnd(scripts: Array\<ScriptItem> | undefined)
 
 将JavaScript脚本注入到Web组件中，当指定页面或者文档加载完成时，该脚本将在其来源与scriptRules匹配的任何页面中执行。当属性没有显式调用时，默认不将JavaScript脚本注入到Web组件中。
 
@@ -2874,7 +2874,7 @@ Hello world!
 
 ArkTS-Dyn: runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 
-ArkTS-Sta: runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem> | undefined): this
+ArkTS-Sta: runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem> | undefined)
 
 将JavaScript脚本注入到Web组件中，当指定页面或者文档开始加载时，该脚本将在其来源与scriptRules匹配的任何页面中执行。当属性没有显式调用时，默认不将JavaScript脚本注入到Web组件中。
 
@@ -2998,7 +2998,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
-ArkTS-Sta: runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem> | undefined): this
+ArkTS-Sta: runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem> | undefined)
 
 将JavaScript脚本注入到Web组件中，当指定页面或者文档加载完成时，该脚本将在其来源与scriptRules匹配的任何页面中执行。当属性没有显式调用时，默认不将JavaScript脚本注入到Web组件中。
 
@@ -3104,7 +3104,7 @@ Hello world!
 
 ArkTS-Dyn: runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem>)
 
-ArkTS-Sta: runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem> | undefined): this
+ArkTS-Sta: runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem> | undefined)
 
 将JavaScript脚本注入到Web组件中，当页面DOM树head标签解析完成时，该脚本将在其来源与scriptRules匹配的任何页面中执行。当属性没有显式调用时，默认不将JavaScript脚本注入到Web组件中。
 
@@ -4058,7 +4058,7 @@ ArkTS-Sta: textAutosizing(textAutosizing: boolean | undefined)
 
 ArkTS-Dyn: enableNativeMediaPlayer(config: NativeMediaPlayerConfig)
 
-ArkTS-Sta: enableNativeMediaPlayer(config: NativeMediaPlayerConfig | undefined): this;
+ArkTS-Sta: enableNativeMediaPlayer(config: NativeMediaPlayerConfig | undefined)
 
 开启[应用接管网页媒体播放功能](../../web/app-takeovers-web-media.md)。当属性没有显式调用时，默认不开启接管网页媒体播放功能。
 
@@ -4122,7 +4122,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onAdsBlocked(callback: OnAdsBlockedCallback)
 
-ArkTS-Sta: onAdsBlocked(callback: OnAdsBlockedCallback | undefined): this
+ArkTS-Sta: onAdsBlocked(callback: OnAdsBlockedCallback | undefined)
 
 一个页面发生广告过滤后，通过此回调接口通知过滤的详细信息。由于页面可能随时发生变化并不断产生网络请求，为了减少通知频次、降低对页面加载过程的影响，仅在页面加载完成时进行首次通知，此后发生的过滤将间隔1秒钟上报，无广告过滤则无通知。
 
@@ -4199,7 +4199,7 @@ struct WebComponent {
 
 ArkTS-Dyn: keyboardAvoidMode(mode: WebKeyboardAvoidMode)
 
-ArkTS-Sta: keyboardAvoidMode(mode: WebKeyboardAvoidMode | undefined): this
+ArkTS-Sta: keyboardAvoidMode(mode: WebKeyboardAvoidMode | undefined)
 
 Web组件自定义软件键盘避让模式。若未显式调用该属性或入参值为undefined时，默认开启软件键盘避让行为。
 
@@ -5040,7 +5040,7 @@ struct SelectionMenuLongPress {
 
 ArkTS-Dyn: blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode)
 
-ArkTS-Sta: blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode | undefined): this
+ArkTS-Sta: blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode | undefined)
 
 设置当软键盘收起时Web元素失焦模式。若未显式调用该属性或入参值为undefined时，软键盘收起时Web组件失焦功能关闭。
 
@@ -5188,7 +5188,7 @@ struct WebComponent {
 
 ArkTS-Dyn: optimizeParserBudget(optimizeParserBudget: boolean)
 
-ArkTS-Sta: optimizeParserBudget(optimizeParserBudget: boolean | undefined): this
+ArkTS-Sta: optimizeParserBudget(optimizeParserBudget: boolean | undefined)
 
 设置是否开启分段解析HTML优化。当属性没有显式调用时，默认使用解析时间作为HTML分段解析的分段点。
 
@@ -5254,7 +5254,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: enableWebAVSession(enabled: boolean)
 
-ArkTS-Sta: enableWebAVSession(enabled: boolean | undefined): this
+ArkTS-Sta: enableWebAVSession(enabled: boolean | undefined)
 
 设置是否支持应用对接到播控中心。当属性没有显式设置时，默认支持应用对接到播控中心。
 

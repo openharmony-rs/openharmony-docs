@@ -24,7 +24,11 @@ ConsoleMessage的构造函数。
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[constructor](#constructor9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 ## constructor<sup>9+</sup>
 
