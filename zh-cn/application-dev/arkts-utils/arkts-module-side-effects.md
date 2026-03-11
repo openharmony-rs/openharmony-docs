@@ -120,6 +120,15 @@ globalThis.someGlobalVar = 200; // 也改变了全局状态
 
 <!-- @[export_moduleUseGlobalVarFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModuleUseGlobalVarFour.ets) -->
 
+``` TypeScript
+// ModuleUseGlobalVarFour.ets
+import { data1 } from './ModulePartFour'; // 此时可能预期全局变量someGlobalVar的值为100
+export function useGlobalVar() {
+  console.info('data1 is ', data1);
+  console.info('globalThis.someGlobalVar is ', globalThis.someGlobalVar); // 此时由于main.ets中加载了sideEffectModule模块，someGlobalVar的值已经被改为200
+}
+```
+
 <!-- @[import_modulePartFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageFour.ets) -->
 
 输出内容：
