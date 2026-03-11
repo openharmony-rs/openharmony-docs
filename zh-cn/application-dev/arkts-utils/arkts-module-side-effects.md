@@ -356,16 +356,11 @@ ArkTS模块化支持循环依赖，即模块A依赖模块B，同时模块B又依
 
 <!-- @[export_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ExportA.ets) -->
 
-```typescript
-// a.ets
-import { b } from "./b"
+``` TypeScript
+// ExportA.ets
+import { b } from './ExportB';
 console.info('Module A: ', b);
 export const a = 'A';
-
-// b.ets
-import { a } from "./a"
-console.info('Module B: ', a);
-export const b = 'B';
 ```
 
 <!-- @[export_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ExportB.ets) -->
