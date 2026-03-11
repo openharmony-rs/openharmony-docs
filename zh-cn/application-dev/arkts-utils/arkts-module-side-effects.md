@@ -481,6 +481,12 @@ console.info("har Utils.ets execute.");
 
 <!-- @[export_numberString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/components/NumberString.ets) -->
 
+``` TypeScript
+// har/src/main/ets/NumberString.ets
+export const One: string = '1';
+console.info('har NumberString.ets execute.');
+```
+
 1. 如果main.ets只需要依赖har中的NumberString模块，import xxx from "har"的写法会导致har整条链路上的模块被解析、执行，**导致模块解析及执行耗时增加**。上述例子中的har/Index、OtherModule1、OtherModule2、Utils、OtherModule3、OtherModule4、NumberString模块均会被解析、执行。
 
 2. 在模块解析阶段会通过深度优先遍历的方式建立变量的绑定关系，main.ets中使用的har.One变量是由har/src/main/ets/NumberString.ets导出的，由于使用了export *的写法，建立变量的绑定关系时需要递归去进行变量名的匹配，从而**导致模块解析耗时增加**。
