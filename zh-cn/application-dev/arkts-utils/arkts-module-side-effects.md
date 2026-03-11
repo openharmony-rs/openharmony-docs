@@ -104,32 +104,10 @@ data is  1
 
 <!-- @[export_modulePartFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartFour.ets) -->
 
-```typescript
-// module.ets
-export let data1 = "data from module"
+``` TypeScript
+// ModulePartFour.ets
+export let data1 = 'data from module';
 globalThis.someGlobalVar = 100; // 改变了全局状态
-
-// sideEffectModule.ets
-export let data2 = "data from side effect module"
-globalThis.someGlobalVar = 200; // 也改变了全局状态
-
-// moduleUseGlobalVar.ets
-import { data1 } from './module' // 此时可能预期全局变量someGlobalVar的值为100
-export function useGlobalVar() {
-    console.info("data1 is ", data1);
-    console.info("globalThis.someGlobalVar is ", globalThis.someGlobalVar); // 此时由于main.ets中加载了sideEffectModule模块，someGlobalVar的值已经被改为200
-}
-
-// main.ets（执行入口）
-import { data1 } from "./module" // 将全局变量someGlobalVar的值改为100
-import { data2 } from "./sideEffectModule" // 又将全局变量someGlobalVar的值改为200
-import { useGlobalVar } from './moduleUseGlobalVar'
-
-useGlobalVar();
-function maybeNotCalledAtAll() {
-    console.info("data1 is ", data1);
-    console.info("data2 is ", data2);
-}
 ```
 
 <!-- @[export_sideEffectModuleFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/SideEffectModuleFour.ets) -->
