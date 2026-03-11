@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 在<!--RP2-->OpenHarmony 6.0<!--RP2End-->之前，支持在Phone、Tablet设备使用画中画功能，其他设备不可用；从<!--RP2-->OpenHarmony 6.0<!--RP2End-->开始，支持在Phone、PC/2in1、Tablet设备使用画中画功能，其他设备不可用。
@@ -1057,6 +1059,10 @@ isPiPActive(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
 | 类型                   | 说明                  |
@@ -1096,7 +1102,11 @@ on(type: 'stateChange', callback: (state: PiPState, reason: string) => void): vo
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1144,7 +1154,11 @@ off(type: 'stateChange'): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1166,7 +1180,11 @@ on(type: 'controlPanelActionEvent', callback: ControlPanelActionEventCallback): 
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1214,7 +1232,11 @@ on(type: 'controlEvent', callback: Callback&lt;ControlEventParam&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1262,7 +1284,11 @@ off(type: 'controlPanelActionEvent'): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1284,7 +1310,11 @@ off(type: 'controlEvent', callback?: Callback&lt;ControlEventParam&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1310,7 +1340,11 @@ on(type: 'pipWindowSizeChange', callback: Callback&lt;PiPWindowSize&gt;): void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -1349,7 +1383,11 @@ off(type: 'pipWindowSizeChange', callback?: Callback&lt;PiPWindowSize&gt;): void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -1398,7 +1436,11 @@ on(type: 'activeStatusChange', callback: Callback&lt;boolean&gt;): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -1424,7 +1466,11 @@ off(type: 'activeStatusChange', callback?: Callback&lt;boolean&gt;): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
