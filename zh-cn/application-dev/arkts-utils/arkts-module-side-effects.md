@@ -28,6 +28,12 @@ export const data = 1;
 
 <!-- @[import_modulePartOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageOne.ets) -->
 
+``` TypeScript
+// PageOne.ets
+import { data } from './ModulePartOne'; // 导入时，module.ets中的console.info会执行，产生输出。
+console.info('data is ', data);
+```
+
 输出内容：
 
 ```typescript
