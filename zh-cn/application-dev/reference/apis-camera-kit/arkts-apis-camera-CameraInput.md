@@ -591,7 +591,7 @@ ArkTS-Sta: getPhysicalCameraOrientation(): int
 
 | 类型        | 说明                                         |
 | ---------- | -------------------------------------------- |
-| ArkTS-Dyn: number<br/> ArkTS-Sta: int<br/>    | 返回设备当前折叠状态下的物理镜头角度。 |
+| ArkTS-Dyn: number<br/> ArkTS-Sta: int   | 返回设备当前折叠状态下的物理镜头角度。 |
 
 **示例：**
 
@@ -636,7 +636,7 @@ usePhysicalCameraOrientation(isUsed: boolean): void
 
 以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
-| 错误码ID   | 错误信息                                      |
+| 错误码ID   | 错误信息                                |
 |---------|-------------------------------------------|
 | 7400102 | Operation not allowed.                    |
 | 7400201 | Camera service fatal error.               |
@@ -685,9 +685,9 @@ on(type: 'cameraOcclusionDetection', callback: AsyncCallback\<CameraOcclusionDet
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onCameraOcclusionDetection](#oncameraocclusiondetection23-1)。
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCameraOcclusionDetection](#oncameraocclusiondetection23-1)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -817,7 +817,7 @@ function unregisterAllCameraOcclusionDetection(cameraInput: camera.CameraInput):
 
 ## offCameraOcclusionDetection<sup>23+</sup>
 
-offCameraOcclusionDetection(callback?: AsyncCallback\<CameraOcclusionDetectionResult\>): void;
+offCameraOcclusionDetection(callback?: AsyncCallback\<CameraOcclusionDetectionResult\>): void
 
 注销监听CameraInput的镜头遮挡或脏污事件。使用callback异步回调。
 

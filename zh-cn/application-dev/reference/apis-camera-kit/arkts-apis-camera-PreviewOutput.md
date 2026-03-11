@@ -884,7 +884,7 @@ isBandwidthCompressionSupported(): boolean
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -894,7 +894,7 @@ isBandwidthCompressionSupported(): boolean
 
 **示例：**
 
-ArkTs-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -912,7 +912,7 @@ function isBandwidthCompressionSupported(previewOutput: camera.PreviewOutput): b
 }
 ```
 
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -947,7 +947,7 @@ enableBandwidthCompression(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -967,7 +967,7 @@ enableBandwidthCompression(enabled: boolean): void
 
 **示例：**
 
-ArkTs-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -983,7 +983,7 @@ function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled
 }
 ```
 
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

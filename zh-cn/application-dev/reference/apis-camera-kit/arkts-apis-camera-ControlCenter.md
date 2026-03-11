@@ -1,6 +1,6 @@
 # Interface (ControlCenter)
 
-ControlCenter 继承自 [ControlCenterQuery](arkts-apis-camera-ControlCenterQuery.md)。
+ControlCenter继承自 [ControlCenterQuery](arkts-apis-camera-ControlCenterQuery.md)。
 
 控制中心类，用于使能相机控制器。
 
@@ -45,7 +45,7 @@ enableControlCenter(enabled: boolean): void
 
 **示例：**
 
-ArkTs-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 function enableControlCenter(videoSession: camera.VideoSession, enable: boolean): void {
@@ -56,7 +56,7 @@ function enableControlCenter(videoSession: camera.VideoSession, enable: boolean)
 }
 ```
 
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 function enableControlCenter(videoSession: camera.VideoSession, enable: boolean): void {

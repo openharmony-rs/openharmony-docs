@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本Interface首批接口从API version 23开始支持。
 
 ## 导入模块
 
@@ -26,9 +28,9 @@ import { camera } from '@kit.CameraKit';
 
 | 名称   | 类型                           |   只读    |   可选   | 说明       |
 | ------ | ----------------------------- | --------  |  ------ | ---------- |
-| main | [ImageType](arkts-apis-camera-t.md#imagetype) |    否   |    否    | 全质量图和未压缩图的对象。 |
+| main<sup>23+</sup> | [ImageType](arkts-apis-camera-t.md#imagetype) |    否   |    否    | 全质量图和未压缩图的对象。 |
 
-## release
+## release<sup>23+</sup>
 
 release(): Promise\<void\>
 
@@ -52,7 +54,7 @@ release(): Promise\<void\>
 
 **示例：**
 
-ArkTs-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -62,7 +64,7 @@ async function releaseCapturePhoto(capturePhoto: camera.CapturePhoto): Promise<v
 }
 ```
 
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';

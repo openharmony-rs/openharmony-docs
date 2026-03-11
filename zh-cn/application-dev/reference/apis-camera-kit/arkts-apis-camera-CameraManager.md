@@ -137,7 +137,7 @@ getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraO
 
 > **说明：**
 >
-> 使用YUV，HEIF或HDR等能力前，需要先显式调用此方法确保获取完整输出能力。
+> 使用YUV、HEIF或HDR等能力前，需要先显式调用此方法确保获取完整输出能力。
  
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -164,7 +164,7 @@ getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraO
 
 **示例：**
 
-ArkTs-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -175,7 +175,7 @@ function getSupportedFullOutputCapability(camera: camera.CameraDevice, cameraMan
 }
 ```
 
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -1382,7 +1382,7 @@ getCameraDevices(position: CameraPosition, types: Array\<CameraType>, connectTyp
 
 **示例：**
 
-ArkTs-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -1400,7 +1400,7 @@ function getCameraDevices(cameraManager: camera.CameraManager, position: camera.
 }
 ```
 
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';

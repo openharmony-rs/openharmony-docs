@@ -35,7 +35,7 @@ isControlCenterSupported(): boolean
 
 **示例：**
 
-ArkTs-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 function isControlCenterSupported(videoSession: camera.VideoSession): boolean {
@@ -44,7 +44,7 @@ function isControlCenterSupported(videoSession: camera.VideoSession): boolean {
 }
 ```
 
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 function isControlCenterSupported(videoSession: camera.VideoSession): boolean {
@@ -75,7 +75,7 @@ getSupportedEffectTypes(): Array\<ControlCenterEffectType\>
 
 **示例：**
 
-ArkTs-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 function getSupportedEffectTypes(videoSession: camera.VideoSession): Array<camera.ControlCenterEffectType> {
@@ -85,7 +85,7 @@ function getSupportedEffectTypes(videoSession: camera.VideoSession): Array<camer
 }
 ```
 
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 function getSupportedEffectTypes(videoSession: camera.VideoSession): Array<camera.ControlCenterEffectType> {

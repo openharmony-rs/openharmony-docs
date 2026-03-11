@@ -559,7 +559,7 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 **示例：**
 
-ArkTs-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -575,7 +575,7 @@ function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Ar
 }
 ```
 
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -623,7 +623,7 @@ removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 **示例：**
 
-ArkTs-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -639,7 +639,7 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
 }
 ```
 
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

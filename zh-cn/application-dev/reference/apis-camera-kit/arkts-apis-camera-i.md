@@ -402,7 +402,7 @@
 
 | 名称 | 类型    | 只读 | 可选 | 说明           |
 | ---- | ------- | ---- |--| -------------- |
-| iso  | ArkTs-Dyn: number<br/> ArkTs-Sta: int<br/>  | 是   | 是 | ISO值。        |
+| iso  | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是   | 是 | ISO值。        |
 
 ## CameraOcclusionDetectionResult<sup>23+</sup>
 

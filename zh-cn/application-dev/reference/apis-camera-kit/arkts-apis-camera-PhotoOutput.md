@@ -512,7 +512,7 @@ onCapturePhotoAvailable(callback: Callback\<CapturePhoto\>): void
 
 **示例：**
 
-ArkTs-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -527,7 +527,7 @@ function registerCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutpu
 }
 ```
 
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -566,7 +566,7 @@ offCapturePhotoAvailable(callback?: Callback\<CapturePhoto\>): void
 
 **示例：**
 
-ArkTs-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -581,7 +581,7 @@ function unRegisterCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOut
 }
 ```
 
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
