@@ -32,8 +32,6 @@ ArkTS-Sta: fetchFrameByTime(timeUs: long, options: AVImageQueryOptions, param: P
 
 异步方式获取视频缩略图。通过注册回调函数获取返回值。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **ArkTS-Dyn起始版本：** 12
