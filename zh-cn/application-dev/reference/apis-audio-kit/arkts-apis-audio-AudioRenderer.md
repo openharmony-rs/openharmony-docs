@@ -1423,6 +1423,8 @@ getLatency(type: AudioLatencyType): number
 > - 由于时延未计入实时缓冲区，建议仅在音频播放开始时获取，避免频繁调用，否则可能因路由切换而阻塞该接口调用。
 > - 音频输出到硬件后的音画同步建议使用[getAudioTimestampInfo](#getaudiotimestampinfo19)或[getAudioTimestampInfoSync](#getaudiotimestampinfosync19)完成。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 **ArkTS-Dyn起始版本: ** 23
@@ -2772,7 +2774,7 @@ setLoudnessGain(loudnessGain: number): Promise\<void>
 
 | 参数名       | 类型    | 必填 | 说明                                      |
 | ------------ | ------- | ---- | ----------------------------------------- |
-| loudnessGain | number  | 是   | 设置播放的响度值，单位为dB，响度范围为[-90.0, 24.0]。默认值为0.0dB。 |
+| loudnessGain | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 设置播放的响度值，单位为dB，响度范围为[-90.0, 24.0]。默认值为0.0dB。 |
 
 **返回值：**
 
