@@ -15,7 +15,7 @@
 >
 
 
-FA模型与Stage模型的主要区别在于HAP内部文件的存放位置不同。FA模型中，所有资源文件、库文件和代码文件都存放在assets文件夹中，并在文件夹内部进一步区分。
+FA模型与Stage模型的内部文件的存放位置不同。FA模型中，所有资源文件、库文件和代码文件都存放在assets文件夹中，并在文件夹内部进一步区分，Stage模型的内部文件的存放位置请参考[Stage模型应用程序包结构](./application-package-structure-stage.md)。
 
 
 - config.json是应用配置文件，DevEco Studio会自动生成部分模块代码，开发者按需修改其中的配置。详细字段请参见[应用配置文件](application-configuration-file-overview-fa.md#配置文件的内部结构)。
