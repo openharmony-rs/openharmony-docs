@@ -372,7 +372,8 @@ try {
 
 ## OverlayModuleInfo
 
-ArkTS-Dyn: type OverlayModuleInfo = _OverlayModuleInfo.OverlayModuleInfo<br>
+ArkTS-Dyn: type OverlayModuleInfo = _OverlayModuleInfo.OverlayModuleInfo
+
 ArkTS-Sta: type OverlayModuleInfo = _OverlayModuleInfo
 
 OverlayModuleInfo信息。

@@ -1790,7 +1790,7 @@ on(eventType: 'windowStageClose', callback: Callback&lt;void&gt;): void
 
 如果存在[on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15)监听事件，只响应[on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15)接口。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowStageClose](#onwindowstageclose23)。
 
@@ -1861,7 +1861,7 @@ onWindowStageClose(callback: Callback&lt;void, boolean&gt;): void
 
 如果存在[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose23)监听事件，只响应[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose23)接口。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowStageClose')](#onwindowstageclose14)。
 
@@ -1922,7 +1922,7 @@ off(eventType: 'windowStageClose', callback?: Callback&lt;void&gt;): void
 
 关闭主窗口关闭事件的监听。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowStageClose](#offwindowstageclose23)。
 
@@ -1990,7 +1990,7 @@ offWindowStageClose(callback?: Callback&lt;void, boolean&gt;): void
 
 关闭主窗口关闭事件的监听。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowStageClose')](#offwindowstageclose14)。
 
@@ -2261,7 +2261,7 @@ ArkTS-Sta: setCustomDensity(density: double, applyToSubWindow?: boolean): void
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed|
+| 1300002 | This window state is abnormal. Possible cause: The main window is not created or destroyed.|
 | 1300005 | This window stage is abnormal. Possible cause: The window stage is not created or destroyed.|
 
 **示例：**
