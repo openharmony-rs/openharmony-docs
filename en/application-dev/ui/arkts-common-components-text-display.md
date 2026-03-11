@@ -1334,7 +1334,7 @@ The **Text** component enables AI menu display through the [enableDataDetector](
   
   ``` TypeScript
   // The value in the 'app.string.AIMenu_Text_One' resource file is 'Phone number: (86) (755)  ********  \n \n URL: www.********.com
-  // \n \n Email: ***@example.com\n \n Address: XX District, XX City, XX Province \n \n Time: XX:XX, MM, DD, YYYY.'
+  // \n \n Email: ***@example.com\n \n Address: XXXX, XX District, XX City, XX Province \n \n Time: XX:XX, MM, DD, YYYY.'
   Text($r('app.string.AIMenu_Text_One'))
     .fontSize(16)
     .copyOption(CopyOptions.LocalDevice)

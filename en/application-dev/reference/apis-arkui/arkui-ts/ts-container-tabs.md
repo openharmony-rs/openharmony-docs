@@ -262,7 +262,7 @@ Sets the animation mode for tab switching initiated by clicking a specific tab o
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[AnimationMode](#animationmode12)\>| Yes  | Animation mode for tab switching initiated by clicking a specific tab or by calling the **changeIndex** API of **TabsController**.<br>Default value: **AnimationMode.CONTENT_FIRST**, which means the target page content is loaded first, followed by the animation.|
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[AnimationMode](#animationmode12)\>| Yes  | Animation mode for tab switching initiated by clicking a specific tab or by calling the **changeIndex** API of **TabsController**.<br>Default value: **AnimationMode.CONTENT_FIRST**, which means the target page content is loaded first, followed by the animation.|
 
 ### barPosition<sup>9+</sup>
 
@@ -415,7 +415,7 @@ Sets the edge effect used when the boundary of the scrolling area is reached.
 
 | Name| Type                                         | Mandatory| Description                                        |
 | ------ | --------------------------------------------- | ---- | -------------------------------------------- |
-| edgeEffect  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[EdgeEffect](ts-appendix-enums.md#edgeeffect)&gt; | Yes  | Effect used when the boundary of the scrolling area is reached.<br>Default value: **EdgeEffect.Spring**|
+| edgeEffect  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[EdgeEffect](ts-appendix-enums.md#edgeeffect)&gt; | Yes  | Effect used when the boundary of the scrolling area is reached.<br>Default value: **EdgeEffect.Spring**|
 
 ### barBackgroundEffect<sup>18+</sup>
 
@@ -447,7 +447,7 @@ Sets the mode for flipping pages using the mouse wheel.
 
 | Name| Type                                                       | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | Yes  | Mode for flipping pages using the mouse wheel.<br>Default value: **PageFlipMode.CONTINUOUS**|
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | Yes  | Mode for flipping pages using the mouse wheel.<br>Default value: **PageFlipMode.CONTINUOUS**|
 
 ### cachedMaxCount<sup>19+</sup>
 
@@ -465,6 +465,24 @@ Sets the maximum number of child components to cache and the caching mode. If th
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | count  | number                                                      | Yes  | Maximum number of child components to cache. If the value is out of the range, the unnecessary child components are automatically released.<br>Value range: [0, +∞)|
 | mode   | [TabsCacheMode](#tabscachemode19)                   | Yes  | Caching mode for child components.<br>Default value: **TabsCacheMode.CACHE_BOTH_SIDE**  |
+
+### nestedScroll<sup>24+</sup>
+
+nestedScroll(value: TabsNestedScrollMode | undefined)
+
+Sets the nested scrolling mode of the **Tabs** component and its parent component. If this API is not called, the default nested scrolling mode is [SELF_ONLY](#tabsnestedscrollmode24).
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                       | Mandatory| Description                                                        |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| value   | [TabsNestedScrollMode](#tabsnestedscrollmode24) \| undefined                | Yes  | Nested scrolling mode of the **Tabs** component and its parent container.<br>When this parameter is set to **undefined**, the scrolling is contained within the **Tabs** component, and no scroll chaining occurs, that is, the parent component does not scroll when the component scrolling reaches the boundary.  |
 
 ## DividerStyle<sup>10+</sup>
 
@@ -567,7 +585,7 @@ Defines a parameter object for the **Tabs** component.
 
 ## TabsCacheMode<sup>19+</sup>
 
-Sets the caching mode for child components.
+Enumerates the caching modes for child components.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -577,6 +595,21 @@ Sets the caching mode for child components.
 | --------------------- | -- | ---------------------------------------- |
 | CACHE_BOTH_SIDE       | 0  | Cache the currently displayed child component and the child components on both sides. For example, if **cachedMaxCount** is set to **n**, up to 2n+1 child components will be cached.|
 | CACHE_LATEST_SWITCHED | 1  | Cache the currently displayed child component and the most recently switched child component. For example, if **cachedMaxCount** is set to **n**, up to n+1 child components will be cached.|
+
+## TabsNestedScrollMode<sup>24+</sup>
+
+Enumerates the nested scrolling modes of the **Tabs** component and its parent container.
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name                 | Value| Description                                    |
+| --------------------- | -- | ---------------------------------------- |
+| SELF_ONLY       | 0  | The scrolling is contained within the **Tabs** component, and no scroll chaining occurs, that is, the parent component does not scroll when the component scrolling reaches the boundary.|
+| SELF_FIRST | 1  | The **Tabs** component scrolls first, and when it hits the boundary, the parent component scrolls. When the parent container hits the boundary, its edge effect is displayed. If no edge effect is specified for the parent container, the edge effect of the **Tabs** component is displayed instead.|
 
 ## Events
 
@@ -1053,7 +1086,7 @@ Preloads child nodes. After this API is called, all specified child nodes will b
 
 | Name  | Type  | Mandatory  | Description                                    |
 | ----- | ------ | ---- | ---------------------------------------- |
-| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<Array\<number>> | Yes| Array of indexes of the child nodes to preload.<br>The default value is an empty array.|
+| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<Array\<number>> | Yes| Array of indexes of the child nodes to preload.<br>The default value is an empty array.|
 
 **Return value**
 
@@ -1186,7 +1219,7 @@ struct TabsExample {
   }
 }
 ```
-
+![tabs1](figures/tabs_barMode.gif)
 
 ### Example 2: Setting the Layout Style for a Scrollable TabBar
 
@@ -1304,7 +1337,7 @@ struct TabsExample6 {
 }
 ```
 
-
+![tabs2](figures/tabs_scrollable.gif)
 
 ### Example 3: Implementing Custom Tab Switching Synchronization
 
@@ -1491,7 +1524,7 @@ struct TabsDivider1 {
 }
 ```
 
-
+![tabs4](figures/tabs_divider.gif)
 
 ### Example 5: Setting Tab Bar Fading
 
@@ -1605,7 +1638,7 @@ struct TabsOpaque {
 }
 ```
 
-
+![tabs5](figures/tabs_fadingEdge.gif)
 
 ### Example 6: Implementing TabBar Overlay on TabContent
 
@@ -1657,7 +1690,7 @@ struct barHeightTest {
 }
 ```
 
-
+![tabs6](figures/tabs_barOverlap.gif)
 
 ### Example 7: Setting the Visible Area for the Tab Bar in Responsive Grid Mode
 
@@ -1859,7 +1892,7 @@ struct TabsCustomAnimationExample {
 This example uses **onContentWillChange** to implement custom swipe-based tab switching interception.
 
 ```ts
-//xxx.ets
+// xxx.ets
 @Entry
 @Component
 struct TabsExample {
@@ -2250,7 +2283,7 @@ struct TabsExample {
 }
 ```
 
-
+![tabs12](figures/tabBar_translate_opacity.gif)
 
 ### Example 13: Implementing Lazy Loading and Resource Release of Pages
 
@@ -2358,7 +2391,7 @@ struct TabsSwiperExample {
 }
 ```
 
-
+![tabs13](figures/tabs_swiper_lazyForEach.gif)
 
 ### Example 14: Implementing the Tab Switching Animation
 
@@ -2524,7 +2557,7 @@ struct TabsBarModifierExample {
 }
 ```
 
-
+![tabs15](figures/tabs_barModifier_clip.gif)
 
 ### Example 16: Aligning Tabs
 
@@ -2629,7 +2662,7 @@ struct TabsBarModifierExample {
 }
 ```
 
-
+![tabs16](figures/tabs_barModifier_align.gif)
 
 ### Example 17: Synchronizing Tabs and TabBar Synchronously
 
@@ -2712,7 +2745,7 @@ struct TabsExample {
 
 This example demonstrates how to release the **Tabs** child components by setting [cachedMaxCount](#cachedmaxcount19).
 
-The **cachedMaxCount** API is added since API version 18.
+The **cachedMaxCount** API is added since API version 19.
 
 ```ts
 @Entry
@@ -2984,7 +3017,7 @@ struct TabsExample {
 
 ### Example 22: Listening for Swipe Events on the Tabs Page
 
-This example demonstrates how to set the callback for a **Tabs** component is swipied using the [onContentDidScroll](#oncontentdidscroll23) API.
+This example demonstrates how to set the callback for a **Tabs** component is swiped using the [onContentDidScroll](#oncontentdidscroll23) API.
 
 The **onContentDidScroll** API is supported since API version 23.
 
@@ -3081,4 +3114,71 @@ struct TabsDidScrollExample {
 }
 ```
 
+
+
+### Example 23: Implementing Nested Scrolling of Tabs
+
+This example shows how to use the [nestedScroll](#nestedscroll24) API to set the nested scrolling effect of **Tabs**.
+
+The **nestedScroll** API is added since API version 24.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabsExample {
+  @State text: string = 'Text';
+  @State barMode: BarMode = BarMode.Fixed;
+  build() {
+    Column() {
+      Row() {
+
+        Tabs() {
+          TabContent() {
+            Tabs() {
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Blue)
+              }.tabBar(SubTabBarStyle.of('Subpage a'))
+
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Green)
+              }.tabBar(SubTabBarStyle.of('Subpage b'))
+
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Pink)
+              }.tabBar(SubTabBarStyle.of('Subpage c'))
+            }
+            .nestedScroll(TabsNestedScrollMode.SELF_FIRST)
+          }.tabBar(SubTabBarStyle.of('Homepage 1'))
+
+
+          TabContent() {
+            Tabs() {
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Blue)
+              }.tabBar(SubTabBarStyle.of('Subpage d'))
+
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Green)
+              }.tabBar(SubTabBarStyle.of('Subpage e'))
+
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Pink)
+              }.tabBar(SubTabBarStyle.of('Subpage f'))
+            }
+            .nestedScroll(TabsNestedScrollMode.SELF_FIRST)
+          }.tabBar(SubTabBarStyle.of('Homepage 2'))
+
+        }
+        .height('100%')
+        .backgroundColor(0xf1f3f5)
+        .barMode(this.barMode)
+      }
+      .width('100%')
+      .height('100%')
+      .padding('24vp')
+    }
+  }
+}
+```
 

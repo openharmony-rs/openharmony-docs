@@ -29,7 +29,7 @@ Third-party applications can use the metadata binding function to map the App Li
   
 ## Constraints
 
-  - The maximum length of an App Linking link is 99 bytes.
+  - The maximum length of an App Linking link is 128 bytes.
 
 ## How to Develop
 
@@ -44,7 +44,7 @@ Third-party applications can use the metadata binding function to map the App Li
 
 2. Define the callback used to return the encoded metadata and the bundle name.  
 
-   ```
+   ```ts
    let callback : Callback<number> = (event: number) => {};
    let bundleName: string = '';
    ```
@@ -52,7 +52,7 @@ Third-party applications can use the metadata binding function to map the App Li
 
 3. Subscribe to system events that are used to obtain the encoded metadata.
 
-   ```
+   ```ts
    try {
       metadataBinding.on('operationSubmitMetadata', bundleName, callback);  
       console.info("on succeeded");
@@ -65,10 +65,11 @@ Third-party applications can use the metadata binding function to map the App Li
 
 4. Configure the App Linking link.
 
-   ```
-   let metadata: string = "";
+   ```ts
+   // The application first enables the App Linking service, obtains the App Linking service, and then provides the service API for the link memory service
+   let applink: string = "";
    try {
-      metadataBinding.submitMetadata(metadata);
+      metadataBinding.submitMetadata(applink);
    } catch (err) {
       let error = err as BusinessError;
       console.error("Submit metadata error and err code is " + error.code);
@@ -78,7 +79,7 @@ Third-party applications can use the metadata binding function to map the App Li
 
 5. Unsubscribe from system events that are used to obtain the encoded metadata.
 
-   ```
+   ```ts
    try {
      metadataBinding.off('operationSubmitMetadata', bundleName, callback);
      console.info("off succeeded");
