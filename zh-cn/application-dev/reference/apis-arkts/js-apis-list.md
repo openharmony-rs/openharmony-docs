@@ -910,7 +910,7 @@ sort(comparator: ListComparatorFn\<T\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| comparator | [ListComparatorFn\<T\>](#listcomparatorfnt20) | 是 | 回调函数。<br> API version22开始发生兼容性变更，在API version21及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
+| comparator | [ListComparatorFn\<T\>](#listcomparatorfnt23) | 是 | 回调函数。<br> API version23开始发生兼容性变更，在API version22及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
 
 **错误码**
 
@@ -1553,7 +1553,7 @@ List中replaceAllElements方法的回调函数。
 | index | int | 是 | 当前遍历到的下标值。 |
 | list | [List&lt;T&gt;](#list) | 是 | 当前调用[replaceAllElements](#replaceallelements20)方法的实例对象。 |
 
-### ListComparatorFn\<T\><sup>20+</sup>
+### ListComparatorFn\<T\><sup>23+</sup>
 
 ArkTS-Dyn: type ListComparatorFn\<T\> = (firstValue: T, secondValue: T) => number
 
@@ -1561,11 +1561,11 @@ ArkTS-Sta: type ListComparatorFn\<T\> = (firstValue: T, secondValue: T) => doubl
 
 List中sort方法的回调函数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
