@@ -21,6 +21,8 @@ import { GesturePoint } from '@kit.AccessibilityKit';
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
+**ArkTS-Dyn起始版本**：9
+
 ### 属性
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
