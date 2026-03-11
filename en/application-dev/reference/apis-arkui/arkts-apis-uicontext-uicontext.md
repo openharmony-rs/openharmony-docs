@@ -4210,3 +4210,4 @@ struct Index {
 ```
 
 ![customKeyboardContinueFeature](arkui-ts/figures/customKeyboardContinueFeature.gif)
+<!--no_check-->
