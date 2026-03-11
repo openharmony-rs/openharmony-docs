@@ -39,7 +39,8 @@ static getInfo(): AppResponse
 | [AppResponse](#appresponse) | 定义AppResponse信息。 |
 
 **示例：**
-ArkTS示例
+
+ArkTS示例：
 ```ts
 import app, { AppResponse } from '@system.app';
 export default class Info {
@@ -50,7 +51,7 @@ export default class Info {
 }
 ```
 
-JS示例
+JS示例：
 ```xml
 <!-- xxx.xml -->
 <div class="container">
@@ -162,7 +163,8 @@ static terminate(): void
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 **示例：**
-ArkTS示例
+
+ArkTS示例：
 ```ts
 import app, { AppResponse } from '@system.app';
 export default class TerM {
@@ -172,7 +174,7 @@ export default class TerM {
 }
 ```
 
-JS示例
+JS示例：
 ```xml
 <!-- xxx.hml -->
 <div class="container">
