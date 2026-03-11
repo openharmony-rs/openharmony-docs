@@ -27,7 +27,7 @@ isExposureModeSupported(aeMode: ExposureMode): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -81,7 +81,7 @@ ArkTS-Sta: getExposureBiasRange(): Array\<double\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
