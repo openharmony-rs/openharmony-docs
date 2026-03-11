@@ -77,7 +77,7 @@ For scenarios where development is performed using encapsulated interfaces on th
 
   ![OnSurfaceDestroyed](./figures/onSurfaceDestroyed1.png)
 
-For complex interactive logic that requires cross-language development, pursuit of extreme rendering performance, or business needs demanding autonomous control over **Surface** creation and destruction, it is recommended to use **OHArkUISurfaceHolder** on the Native side to manage the lifecycle of **Surface**. The lifecycle trigger conditions are as follows:
+For complex interactive logic that requires cross-language development, pursuit of extreme rendering performance, or business needs demanding autonomous control over **Surface** creation and destruction, you are advised to use **OH_ArkUI_SurfaceHolder** on the Native side to manage the lifecycle of **Surface**. The lifecycle trigger conditions are as follows:
 
 - OnSurfaceCreated   
 
