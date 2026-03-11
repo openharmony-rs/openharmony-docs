@@ -7672,7 +7672,9 @@ struct WebComponent {
 
 ## onNativeEmbedMouseEvent<sup>20+</sup>
 
-onNativeEmbedMouseEvent(callback: MouseInfoCallback)
+ArkTS-Dyn: onNativeEmbedMouseEvent(callback: MouseInfoCallback)
+
+ArkTS-Sta: onNativeEmbedMouseEvent(callback: MouseInfoCallback | undefined)
 
 在同层标签上执行以下行为时触发该回调：
 
