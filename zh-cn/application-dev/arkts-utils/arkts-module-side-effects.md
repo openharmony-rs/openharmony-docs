@@ -161,36 +161,11 @@ globalThis.someGlobalVar is  200
 
 <!-- @[export_modulePartFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartFive.ets) -->
 
-```typescript
-// module.ets
-export let data1 = "data from module"
+``` TypeScript
+// ModulePartFive.ets
+export let data1 = 'data from module';
 export function changeGlobalVar() {
-    globalThis.someGlobalVar = 100;
-}
-
-// sideEffectModule.ets
-export let data2 = "data from side effect module"
-export function changeGlobalVar() {
-    globalThis.someGlobalVar = 200;
-}
-
-// moduleUseGlobalVar.ets
-import { data1, changeGlobalVar } from './module'
-export function useGlobalVar() {
-    console.info("data1 is ", data1);
-    changeGlobalVar(); // 在需要的时候执行代码，而不是模块加载时执行。
-    console.info("globalThis.someGlobalVar is ", globalThis.someGlobalVar);
-}
-
-// main.ets（执行入口）
-import { data1 } from "./module"
-import { data2 } from "./sideEffectModule"
-import { useGlobalVar } from './moduleUseGlobalVar'
-
-useGlobalVar();
-function maybeNotCalledAtAll() {
-    console.info("data1 is ", data1);
-    console.info("data2 is ", data2);
+  globalThis.someGlobalVar = 100;
 }
 ```
 
