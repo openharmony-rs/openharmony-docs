@@ -131,6 +131,19 @@ export function useGlobalVar() {
 
 <!-- @[import_modulePartFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageFour.ets) -->
 
+``` TypeScript
+// PageFour.ets（执行入口）
+import { data1 } from './ModulePartFour'; // 将全局变量someGlobalVar的值改为100
+import { data2 } from './SideEffectModuleFour'; // 又将全局变量someGlobalVar的值改为200
+import { useGlobalVar } from './ModuleUseGlobalVarFour';
+
+useGlobalVar();
+function maybeNotCalledAtAll() {
+  console.info('data1 is ', data1);
+  console.info('data2 is ', data2);
+}
+```
+
 输出内容：
 
 ```text
