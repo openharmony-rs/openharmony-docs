@@ -5976,13 +5976,13 @@ onScreenshotAppEvent(callback: Callback&lt;ScreenshotEventType&gt;): void
 
 开启屏幕截屏事件类型的监听。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('screenshotAppEvent')](#onscreenshotappevent20)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6021,11 +6021,11 @@ off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;):
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offScreenshotAppEvent](#offscreenshotappevent23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **ArkTS-Dyn起始版本：** 20
-
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offScreenshotAppEvent](#offscreenshotappevent23)。
 
 **参数：**
 
