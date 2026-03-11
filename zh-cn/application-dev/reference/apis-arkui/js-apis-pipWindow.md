@@ -656,8 +656,8 @@ type ControlPanelActionEventCallback = (state: PiPState, reason: string) => void
 
 | 参数名                       | 类型           | 必填    | 说明                                |
 |--------------------------|--------------|--------------|-----------------------------------|
-| state       |  [PiPState](#piptate)       | 是 | 回调画中画控制面板控件动作事件类型。<br/>应用依据控件动作事件做相应处理，如触发'playbackStateChanged'事件时，需要开始或停止视频。 |
-| status | int | 是 | 表示可切换状态的控件当前的状态，如具备打开和关闭两种状态的麦克风控件组、摄像头控件组和静音控件组，打开为1，关闭为0。其余控件该参数返回默认值-1。 |
+| state       |  [PiPState](#pipstate)       | 是 | 当前画中画生命周期状态。 |
+| status | int | 是 | 当前生命周期的切换原因。 |
 
 
 ## ControlEventParam<sup>12+</sup>
@@ -694,6 +694,10 @@ startPiP(): Promise&lt;void&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -734,6 +738,10 @@ stopPiP(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
 | 类型                   | 说明                  |
@@ -773,6 +781,10 @@ setAutoStartEnabled(enable: boolean): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名      | 类型        | 必填    | 说明                              |
@@ -795,6 +807,10 @@ updateContentSize(width: number, height: number): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -828,6 +844,10 @@ updatePiPControlStatus(controlType: PiPControlType, status: PiPControlStatus): v
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名    | 类型     | 必填  | 说明                                                                                                 |
@@ -859,6 +879,10 @@ updateContentNode(contentNode: typeNode.XComponent): Promise&lt;void&gt;
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -906,6 +930,10 @@ setPiPControlEnabled(controlType: PiPControlType, enabled: boolean): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名         | 类型     | 必填  | 说明                                     |
@@ -936,6 +964,10 @@ getPiPWindowInfo(): Promise&lt;[PiPWindowInfo](#pipwindowinfo15)&gt;
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -979,6 +1011,10 @@ getPiPSettingSwitch(): Promise&lt;boolean&gt;
 **系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：** 该接口在Phone设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
