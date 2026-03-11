@@ -163,6 +163,8 @@ on(type: 'audioSceneChange', callback: Callback\<AudioScene\>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioSceneChange](#onaudioscenechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
 **ArkTS-Dyn起始版本：** 20
@@ -182,6 +184,34 @@ audioManager.on('audioSceneChange', (audioScene: audio.AudioScene) => {
 });
 ```
 
+## onAudioSceneChange<sup>23+</sup>
+
+onAudioSceneChange(callback: Callback\<AudioScene>): void
+
+监听音频场景变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('audioSceneChange')](#onaudioscenechange20)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                        |
+| :------- | :------------------------- | :--- | :------------------------------------------ |
+| callback | Callback\<[AudioScene](arkts-apis-audio-e.md#audioscene8)> | 是   | 回调函数，返回当前音频场景模式。 |
+
+**示例：**
+
+```ts
+audioManager.onAudioSceneChange((audioScene: audio.AudioScene) => {
+  console.info(`audio scene : ${audioScene}.`);
+});
+```
+
 ## off('audioSceneChange')<sup>20+</sup>
 
 off(type: 'audioSceneChange', callback?: Callback\<AudioScene\>): void
@@ -189,6 +219,8 @@ off(type: 'audioSceneChange', callback?: Callback\<AudioScene\>): void
 取消监听音频场景变化事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioSceneChange](#offaudioscenechange23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
@@ -217,11 +249,49 @@ audioManager.on('audioSceneChange', audioSceneChangeCallback);
 audioManager.off('audioSceneChange', audioSceneChangeCallback);
 ```
 
+## offAudioSceneChange<sup>23+</sup>
+
+offAudioSceneChange(callback?: Callback\<AudioScene>): void
+
+监听音频场景变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('audioSceneChange')](#offaudioscenechange20)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                        |
+| :------- | :------------------------- | :--- | :------------------------------------------ |
+| callback | callback?: Callback\<[AudioScene](arkts-apis-audio-e.md#audioscene8)> | 否   | 回调函数，返回当前音频场景模式。 |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioManager.offAudioSceneChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let audioSceneChangeCallback = (audioScene: audio.AudioScene) => {
+  console.info(`audio scene : ${audioScene}.`);
+};
+
+audioManager.onAudioSceneChange(audioSceneChangeCallback);
+
+audioManager.offAudioSceneChange(audioSceneChangeCallback);
+```
+
 ## getVolumeManager<sup>9+</sup>
 
 getVolumeManager(): AudioVolumeManager
 
 获取音频音量管理器。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 

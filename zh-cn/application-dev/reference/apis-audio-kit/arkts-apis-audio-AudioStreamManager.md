@@ -912,14 +912,13 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): v
 获取指定音频流活跃状态。使用callback异步回调。
 
 > **说明：**
->
-> 从API version 9开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[isStreamActive](#isstreamactive20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -965,14 +964,13 @@ isActive(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 获取指定音频流是否为活跃状态。使用Promise异步回调。
 
 > **说明：**
->
-> 从API version 9开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[isStreamActive](#isstreamactive20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1001,14 +999,13 @@ isActiveSync(volumeType: AudioVolumeType): boolean
 获取指定音频流是否为活跃状态。同步返回结果。
 
 > **说明：**
->
-> 从API version 10开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[isStreamActive](#isstreamactive20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1042,6 +1039,52 @@ try {
 } catch (err) {
   let error = err as BusinessError;
   console.error(`Failed to obtain the active status of the stream ${error}.`);
+}
+```
+
+## isStreamActive<sup>20+</sup>
+
+isStreamActive(streamUsage: StreamUsage): boolean
+
+获取指定音频流是否为活跃状态。同步返回结果。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                                | 必填 | 说明         |
+| ---------- | ----------------------------------- | ---- | ------------ |
+| streamUsage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是   | 音频流使用类型。 |
+
+**返回值：**
+
+| 类型                   | 说明                                                     |
+| ---------------------- | -------------------------------------------------------- |
+| boolean | 流是否处于活跃状态。返回true表示活跃，返回false表示不活跃。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isStreamActive = audioStreamManager.isStreamActive(audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`Succeeded in using isStreamActive function, IsStreamActive: ${isStreamActive}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to use isStreamActive function. code: ${error.code}, message: ${error.message}`);
 }
 ```
 
