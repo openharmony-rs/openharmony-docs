@@ -17,7 +17,7 @@
 | 名称        | 类型                          | 只读     | 可选   | 说明                                     |
 | ---------- | ---------------------------------------- | ----| ---- | ---------------------------------------- |
 | src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | 否 | 否    | 网页资源地址。如果访问本地资源文件，请使用$rawfile或者resource协议。如果加载应用包外沙箱路径的本地资源文件(文件支持html和txt类型)，请使用file://沙箱文件路径。<br>src不能通过状态变量（例如：@State）动态更改地址，如需更改，请通过[loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl)重新加载。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
-| controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9)  | 否 | 否    | 控制器，通过controller可以控制Web组件各种行为（包括页面导航、声明周期状态、JavaScript交互等行为）。从API version 9开始，WebController不再维护，建议使用WebviewController替代。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
+| controller | ArkTS-Dyn: [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9) <br>ArkTS-Sta: [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9) | 否 | 否    | 控制器，通过controller可以控制Web组件各种行为（包括页面导航、声明周期状态、JavaScript交互等行为）。从API version 9开始，WebController不再维护，建议使用WebviewController替代。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
 | incognitoMode<sup>11+</sup> | boolean | 否 | 是 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
 | renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| 否 | 是   | 表示当前Web组件的渲染方式，`RenderMode.ASYNC_RENDER`表示Web组件异步渲染，`RenderMode.SYNC_RENDER`表示支持Web组件同步渲染能力，默认值`RenderMode.ASYNC_RENDER`，该模式不支持动态调整。 <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | sharedRenderProcessToken<sup>12+</sup> | string | 否 | 是 | 表示当前Web组件指定共享渲染进程的token，多渲染进程模式下，相同token的Web组件会优先尝试复用与token相绑定的渲染进程。token与渲染进程的绑定发生在渲染进程的初始化阶段。当渲染进程没有关联的Web组件时，其与token绑定关系将被移除。<br> 默认值： ""。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
@@ -82,17 +82,22 @@ Web媒体策略的配置。
 |  enable  | boolean | 否 | 否 | 是否开启应用接管网页媒体播放功能。<br/> true表示开启应用接管网页媒体播放功能，false表示关闭应用接管网页媒体播放功能。<br/> 默认值：false。 |
 |  shouldOverlay | boolean | 否 | 否 | 开启应用接管网页媒体播放功能后，应用接管网页视频的播放器画面是否覆盖网页内容。<br/> true表示改变视频图层的高度，使其覆盖网页内容。false表示不覆盖网页内容，跟原视频图层高度一样，嵌入在网页中。<br>默认值：false。 |
 
-## ExpandedMenuItemOptions<sup>12+</sup>
+## ExpandedMenuItemOptions<sup>(deprecated)</sup>
 
-自定义菜单扩展项。
+> **说明：**
+> 从API version 12开始支持，从API version 20开始废弃，建议使用[editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-| 名称           | 类型                                             | 必填    | 说明             |
-| ---------- | -----------------------------------------------------| ------ | ---------------- |
-| content   | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr)  | 是     | 显示内容。     |
-| startIcon | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr)  | 否     | 显示图标。     |
-| action    | (selectedText: {plainText: string}) => void                    | 是     | 选中的文本信息。|
+**ArkTS-Dyn起始版本：** 12
+
+| 名称           | 类型                                             | 只读    | 可选    | 说明             |
+| ---------- | -----------------------------------------------------| ------ | ------ | ---------------- |
+| content   | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr)  | 否     | 否     | 显示内容。     |
+| startIcon | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr)  | 否     | 是     | 显示图标。     |
+| action    | (selectedText: {plainText: string}) => void                    | 否     | 否     | 选中的文本信息。|
 
 ## AdsBlockedDetails<sup>12+</sup>
 
@@ -117,23 +122,27 @@ Web媒体策略的配置。
 
 | 名称           | 类型                                             | 只读 | 可选    | 说明             |
 | ---------- | -----------------------------------------------------| ------ | ------ |---------------- |
-| onAppear   | Callback\<void\>   | 否     |是     | 自定义选择菜单弹出时回调。   <br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23  |
-| onDisappear | Callback\<void\>  | 否     |是     | 自定义选择菜单关闭时回调。  <br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23|
-| preview    | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8)          | 否     |是     | 自定义选择菜单的预览内容样式，未配置时无预览内容。<br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23|
-| menuType   | [MenuType](../apis-arkui/arkui-ts/ts-text-common.md#menutype13枚举说明)      | 否     | 是     | 自定义选择菜单类型。<br>默认值：`MenuType.SELECTION_MENU`。<br> 从API version 20起，`MenuType.PREVIEW_MENU`支持超链接预览。    <br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23 |
+| onAppear   | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback \| undefined   | 否     |是     | 自定义选择菜单弹出时回调。   <br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23  |
+| onDisappear | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback \| undefined  | 否     |是     | 自定义选择菜单关闭时回调。  <br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23|
+| preview    | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8)          | 否     |是     | 自定义选择菜单的预览内容样式，未配置时无预览内容。<br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23|
+| menuType   | [MenuType](../apis-arkui/arkui-ts/ts-text-common.md#menutype13枚举说明)      | 否     | 是     | 自定义选择菜单类型。<br>默认值：`MenuType.SELECTION_MENU`。<br> 从API version 20起，`MenuType.PREVIEW_MENU`支持超链接预览。    <br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23 |
 | previewMenuOptions<sup>20+</sup> | [PreviewMenuOptions](#previewmenuoptions20) | 否     |是     | 自定义选择预览菜单选项。<br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
-| onMenuShow<sup>21+</sup> | Callback\<void\> | 否     | 是     | 自定义选择菜单显示时回调。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
-| onMenuHide<sup>21+</sup> | Callback\<void\> | 否     | 是     | 自定义选择菜单隐藏时回调。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
+| onMenuShow<sup>21+</sup> | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback \| undefined | 否     | 是     | 自定义选择菜单显示时回调。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
+| onMenuHide<sup>21+</sup> | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback \| undefined | 否     | 是     | 自定义选择菜单隐藏时回调。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## PreviewMenuOptions<sup>20+</sup>
 
 预览菜单选项。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
-| 名称           | 类型                                             | 必填    | 说明             |
-| ---------- | -----------------------------------------------------| ------ | ---------------- |
-| hapticFeedbackMode   | [HapticFeedbackMode](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#hapticfeedbackmode18)   | 否     | 菜单弹出时振动效果。需配置"ohos.permission.VIBRATE"权限<br/>默认值：HapticFeedbackMode.DISABLED，菜单弹出时不振动。     |
+**ArkTS-Dyn起始版本：** 20
+
+| 名称           | 类型                                             | 只读    | 可选    | 说明             |
+| ---------- | -----------------------------------------------------| ------ | ------ | ---------------- |
+| hapticFeedbackMode   | [HapticFeedbackMode](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#hapticfeedbackmode18)   | 否     | 是     | 菜单弹出时振动效果。需配置"ohos.permission.VIBRATE"权限<br/>默认值：HapticFeedbackMode.DISABLED，菜单弹出时不振动。     |
 
 ## EmbedOptions<sup>16+</sup>
 
@@ -309,10 +318,10 @@ Web同层渲染的配置。
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称             | 类型      | 必填   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| result       | [FileSelectorResult](./arkts-basic-components-web-FileSelectorResult.md) | 是 | 用于通知Web组件文件选择的结果。 |
-| fileSelector | [FileSelectorParam](./arkts-basic-components-web-FileSelectorParam.md) | 是 | 文件选择器的相关信息。       |
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| result       | [FileSelectorResult](./arkts-basic-components-web-FileSelectorResult.md) | 否 | 否 | 用于通知Web组件文件选择的结果。 |
+| fileSelector | [FileSelectorParam](./arkts-basic-components-web-FileSelectorParam.md) | 否 | 否 | 文件选择器的相关信息。       |
 
 ## OnResourceLoadEvent<sup>12+</sup>
 
@@ -411,10 +420,10 @@ Web同层渲染的配置。
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称             | 类型      | 必填   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| param  | [WebContextMenuParam](./arkts-basic-components-web-WebContextMenuParam.md) | 是 | 菜单相关参数。     |
-| result | [WebContextMenuResult](./arkts-basic-components-web-WebContextMenuResult.md) | 是 | 菜单相应事件传入内核。 |
+| 名称             | 类型      | 只读   | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| param  | [WebContextMenuParam](./arkts-basic-components-web-WebContextMenuParam.md) | 否 | 否 | 菜单相关参数。     |
+| result | [WebContextMenuResult](./arkts-basic-components-web-WebContextMenuResult.md) | 否 | 否 | 菜单相应事件传入内核。 |
 
 ## OnSearchResultReceiveEvent<sup>12+</sup>
 
@@ -453,15 +462,11 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
-| handler | [SslErrorHandler](./arkts-basic-components-web-SslErrorHandler.md) | 否 | 否 | 通知Web组件用户操作行为。 |
-| error   | [SslError](./arkts-basic-components-web-e.md#sslerror9)           | 否 | 否 | 错误码。           |
-| certChainData<sup>15+</sup>   | Array<Uint8Array\>           | 否 | 是 | 证书链数据。           |
+| handler | [SslErrorHandler](./arkts-basic-components-web-SslErrorHandler.md) | 否 | 否 | 通知Web组件用户操作行为。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| error   | [SslError](./arkts-basic-components-web-e.md#sslerror9)           | 否 | 否 | 错误码。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| certChainData<sup>15+</sup>   | Array<Uint8Array\>           | 否 | 是 | 证书链数据。  <br>**ArkTS-Dyn起始版本：** 15 <br> **ArkTS-Sta起始版本：** 23|
 
 ## SslErrorEvent<sup>12+</sup>
 
@@ -578,7 +583,7 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| favicon | [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 否 | 接收到的favicon图标的PixelMap对象。 |
+| favicon | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 否 | 接收到的favicon图标的PixelMap对象。 |
 
 ## OnPageVisibleEvent<sup>12+</sup>
 
@@ -957,11 +962,11 @@ Web组件进入全屏回调事件的详情。
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称             | 类型                                  | 必填   | 说明                    |
-| -----------     | ------------------------------------ | ---- | --------------------- |
-| embedId     | string   | 否    | 同层标签的唯一id。 |
-| mouseEvent  | [MouseEvent](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)  | 否    | 鼠标/触摸板点击/长按信息。 |
-| result     | [EventResult](./arkts-basic-components-web-EventResult.md)   | 否    | 通知Web组件鼠标事件的消费结果。 |
+| 名称             | 类型                                  | 只读 | 可选 | 说明                    |
+| -----------     | ------------------------------------ | -----|------| --------------------- |
+| embedId     | string   | 否 | 是    | 同层标签的唯一id。 |
+| mouseEvent  | [MouseEvent](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)  | 否 | 是    | 鼠标/触摸板点击/长按信息。 |
+| result     | [EventResult](./arkts-basic-components-web-EventResult.md)   | 否 | 是    | 通知Web组件鼠标事件的消费结果。 |
 
 ## OnLoadStartedEvent<sup>20+</sup>
 

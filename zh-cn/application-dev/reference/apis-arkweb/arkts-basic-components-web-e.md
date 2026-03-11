@@ -143,18 +143,14 @@ Web屏幕捕获模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称             | 值 | 说明                   |
 | ---------------- | -- | ----------------------|
-| THREAT_ILLEGAL  | 0 | 非法网站。              |
-| THREAT_FRAUD    | 1 | 欺诈网站。              |
-| THREAT_RISK     | 2 | 存在安全风险的网站。      |
-| THREAT_WARNING  | 3 | 涉嫌包含不健康内容的网站。 |
-| THREAT_NONE<sup>21+</sup>      | 4 | 安全检查通过，未发现任何风险。 |
-| THREAT_UNPROCESSED<sup>21+</sup>  | 5 | 未进行安全检查。 |
+| THREAT_ILLEGAL  | 0 | 非法网站。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| THREAT_FRAUD    | 1 | 欺诈网站。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| THREAT_RISK     | 2 | 存在安全风险的网站。<br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| THREAT_WARNING  | 3 | 涉嫌包含不健康内容的网站。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| THREAT_NONE<sup>21+</sup>      | 4 | 安全检查通过，未发现任何风险。 <br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23|
+| THREAT_UNPROCESSED<sup>21+</sup>  | 5 | 未进行安全检查。 <br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23|
 
 ## RenderExitReason<sup>9+</sup>
 
@@ -203,10 +199,10 @@ onSslErrorEventReceive接口返回的SSL错误的具体原因。
 
 | 名称                   | 值 | 说明         |
 | -------------------- | -- | ---------- |
-| FileOpenMode         | 0 | 打开上传单个文件。  |
-| FileOpenMultipleMode | 1 | 打开上传多个文件。  |
-| FileOpenFolderMode   | 2 | 打开上传文件夹模式。 |
-| FileSaveMode         | 3 | 文件保存模式。    |
+| ArkTS-Dyn: FileOpenMode<br/>ArkTS-Sta: FILE_OPEN_MODE         | 0 | 打开上传单个文件。  |
+| ArkTS-Dyn: FileOpenMultipleMode<br/>ArkTS-Sta: FILE_OPEN_MULTIPLE_MODE | 1 | 打开上传多个文件。  |
+| ArkTS-Dyn: FileOpenFolderMode<br/>ArkTS-Sta: FILE_OPEN_FOLDER_MODE   | 2 | 打开上传文件夹模式。 |
+| ArkTS-Dyn: FileSaveMode<br/>ArkTS-Sta: FILE_SAVE_MODE          | 3 | 文件保存模式。    |
 
 ## WebLayoutMode<sup>11+</sup>
 
@@ -260,9 +256,9 @@ Web布局模式的配置。
 
 | 名称       | 值 | 说明         |
 | --------- | -- |------------ |
-| None      | 0 | 其他事件来源。 |
-| Mouse     | 1 | 鼠标事件。   |
-| LongPress | 2 | 长按事件。   |
+| ArkTS-Dyn: None<br/>ArkTS-Sta: NONE      | 0 | 其他事件来源。 |
+| ArkTS-Dyn: Mouse<br/>ArkTS-Sta: MOUSE     | 1 | 鼠标事件。   |
+| ArkTS-Dyn: LongPress<br/>ArkTS-Sta: LONG_PRESS| 2 | 长按事件。   |
 
 ## ContextMenuDataMediaType<sup>22+</sup>
 触发上下文菜单的网页元素类型（增强获取类型能力）。
@@ -293,8 +289,8 @@ Web布局模式的配置。
 
 | 名称    | 值 | 说明            |
 | ----- | -- | ------------- |
-| None  | 0 | 非特殊媒体或其他媒体类型。 |
-| Image | 1 | 图片。           |
+| ArkTS-Dyn: None<br/>ArkTS-Sta: NONE  | 0 | 非特殊媒体或其他媒体类型。 |
+| ArkTS-Dyn: Image<br/>ArkTS-Sta: IMAGE | 1 | 图片。           |
 
 ## ContextMenuDataMediaType<sup>22+</sup>
 触发上下文菜单的网页元素类型（增强获取类型能力）。
@@ -325,12 +321,12 @@ Web布局模式的配置。
 
 | 名称        | 值 | 说明                          |
 | --------- | -- | --------------------------- |
-| None      | 0 | 非输入框。                       |
-| PlainText | 1 | 纯文本类型，包括text、search、email等。 |
-| Password  | 2 | 密码类型。                       |
-| Number    | 3 | 数字类型。                       |
-| Telephone | 4 | 电话号码类型。                     |
-| Other     | 5 | 其他类型。                       |
+| ArkTS-Dyn: None<br/>ArkTS-Sta: NONE      | 0 | 非输入框。                       |
+| ArkTS-Dyn: PlainText<br/>ArkTS-Sta: PLAIN_TEXT | 1 | 纯文本类型，包括text、search、email等。 |
+| ArkTS-Dyn: Password<br/>ArkTS-Sta: PASSWORD  | 2 | 密码类型。                       |
+| ArkTS-Dyn: Number<br/>ArkTS-Sta: NUMBER_DATA    | 3 | 数字类型。                       |
+| ArkTS-Dyn: Telephone<br/>ArkTS-Sta: TELEPHONE | 4 | 电话号码类型。                     |
+| ArkTS-Dyn: Other<br/>ArkTS-Sta: OTHER     | 5 | 其他类型。                       |
 
 ## NativeEmbedStatus<sup>11+</sup>
 
@@ -338,17 +334,13 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
-| CREATE                        | 0 | 同层标签创建。   |
-| UPDATE                        | 1 | 同层标签更新。   |
-| DESTROY                       | 2 | 同层标签销毁。 |
-| ENTER_BFCACHE<sup>12+</sup>   | 3 | 同层标签进入BFCache。   |
-| LEAVE_BFCACHE<sup>12+</sup>   | 4 | 同层标签离开BFCache。 |
+| CREATE                        | 0 | 同层标签创建。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23   |
+| UPDATE                        | 1 | 同层标签更新。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23   |
+| DESTROY                       | 2 | 同层标签销毁。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
+| ENTER_BFCACHE   | 3 | 同层标签进入BFCache。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23   |
+| LEAVE_BFCACHE   | 4 | 同层标签离开BFCache。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
 
 ## ContextMenuEditStateFlags<sup>9+</sup>
 

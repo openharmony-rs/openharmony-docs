@@ -159,7 +159,8 @@ try {
 
 ### bundleResourceManager.getAllBundleResourceInfo
 
-ArkTS-Dyn: getAllBundleResourceInfo(resourceFlags: number, callback: AsyncCallback<Array<BundleResourceInfo>>): void<br>
+ArkTS-Dyn: getAllBundleResourceInfo(resourceFlags: number, callback: AsyncCallback<Array<BundleResourceInfo>>): void
+
 ArkTS-Sta: getAllBundleResourceInfo(resourceFlags: int, callback: AsyncCallback<Array<BundleResourceInfo>>): void
 
 根据给定的resourceFlags获取所有应用的BundleResourceInfo。使用callback异步回调。
@@ -234,7 +235,8 @@ try {
 
 ### bundleResourceManager.getAllBundleResourceInfo
 
-ArkTS-Dyn: getAllBundleResourceInfo(resourceFlags: number): Promise<Array<BundleResourceInfo>><br>
+ArkTS-Dyn: getAllBundleResourceInfo(resourceFlags: number): Promise<Array<BundleResourceInfo>>
+
 ArkTS-Sta: getAllBundleResourceInfo(resourceFlags: int): Promise<Array<BundleResourceInfo>>
 
 根据给定的resourceFlags获取所有应用的BundleResourceInfo。使用Promise异步回调。
@@ -310,7 +312,8 @@ try {
 
 ### bundleResourceManager.getAllLauncherAbilityResourceInfo
 
-ArkTS-Dyn: getAllLauncherAbilityResourceInfo(resourceFlags: number, callback: AsyncCallback<Array<LauncherAbilityResourceInfo>>): void<br>
+ArkTS-Dyn: getAllLauncherAbilityResourceInfo(resourceFlags: number, callback: AsyncCallback<Array<LauncherAbilityResourceInfo>>): void
+
 ArkTS-Sta: getAllLauncherAbilityResourceInfo(resourceFlags: int, callback: AsyncCallback<Array<LauncherAbilityResourceInfo>>): void
 
 根据给定的resourceFlags获取当前所有应用的LauncherAbilityResourceInfo。使用callback异步回调。
@@ -385,7 +388,8 @@ try {
 
 ### bundleResourceManager.getAllLauncherAbilityResourceInfo
 
-ArkTS-Dyn: getAllLauncherAbilityResourceInfo(resourceFlags: number): Promise<Array<LauncherAbilityResourceInfo>><br>
+ArkTS-Dyn: getAllLauncherAbilityResourceInfo(resourceFlags: number): Promise<Array<LauncherAbilityResourceInfo>>
+
 ArkTS-Sta: getAllLauncherAbilityResourceInfo(resourceFlags: int): Promise<Array<LauncherAbilityResourceInfo>>
 
 根据给定的resourceFlags获取当前所有应用的LauncherAbilityResourceInfo。使用Promise异步回调。
@@ -460,7 +464,8 @@ try {
 
 ### bundleResourceManager.getBundleResourceInfo<sup>12+</sup>
 
-ArkTS-Dyn: getBundleResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): BundleResourceInfo<br>
+ArkTS-Dyn: getBundleResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): BundleResourceInfo
+
 ArkTS-Sta: getBundleResourceInfo(bundleName: string, resourceFlags?: int, appIndex?: number): BundleResourceInfo
 
 以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用的BundleResourceInfo。
@@ -523,7 +528,8 @@ try {
 
 ### bundleResourceManager.getLauncherAbilityResourceInfo<sup>12+</sup>
 
-ArkTS-Dyn: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): Array<LauncherAbilityResourceInfo><br>
+ArkTS-Dyn: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): Array<LauncherAbilityResourceInfo>
+
 ArkTS-Sta: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int, appIndex?: number): Array<LauncherAbilityResourceInfo>
 
 以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用的LauncherAbilityResourceInfo。
@@ -584,7 +590,8 @@ try {
 
 ### bundleResourceManager.getExtensionAbilityResourceInfo<sup>20+</sup>
 
-ArkTS-Dyn: getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityType: bundleManager.ExtensionAbilityType, resourceFlags: number, appIndex?: number): Array\<LauncherAbilityResourceInfo><br>
+ArkTS-Dyn: getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityType: bundleManager.ExtensionAbilityType, resourceFlags: number, appIndex?: number): Array\<LauncherAbilityResourceInfo>
+
 ArkTS-Sta: getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityType: bundleManager.ExtensionAbilityType, resourceFlags: int, appIndex?: int): Array\<LauncherAbilityResourceInfo>
 
 根据应用包名、扩展组件类型、资源信息标志、应用分身ID获取应用的扩展组件资源。使用同步方式返回。

@@ -24,7 +24,11 @@ ConsoleMessage的构造函数。
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[constructor](#constructor9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 ## constructor<sup>9+</sup>
 
@@ -111,6 +115,24 @@ getSourceId(): string
 | 类型     | 说明            |
 | ------ | ------------- |
 | string | 返回网页源文件路径和名字。 |
+
+## getSource<sup>23+</sup>
+
+getSource(): ConsoleMessageSource
+
+获取ConsoleMessage的日志来源。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型     | 说明            |
+| ------ | ------------- |
+| [ConsoleMessageSource](./arkts-basic-components-web-e.md#consolemessagesource23) | 返回ConsoleMessage的日志来源。 |
 
 ## 使用@ohos.transfer进行ConsoleMessage类型转换
 
