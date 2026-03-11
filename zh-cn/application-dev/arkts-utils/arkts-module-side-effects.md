@@ -221,33 +221,10 @@ globalThis.someGlobalVar is  100
 
 <!-- @[export_modulePartSix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartSix.ets) -->
 
-```typescript
-// module.ets
-export let data = "data from module"
-AppStorage.setOrCreate("SomeAppStorageVar", 200); // 修改应用全局的UI状态
-
-// Index.ets
-import { data } from "./module" // 将AppStorage中的SomeAppStorageVar改为200
-
-@Entry
-@Component
-struct Index {
-    // 开发者可能预期该值为100，但是由于module模块导入，该值已经被修改为200，但开发者可能并不知道值已经被修改
-    @StorageLink("SomeAppStorageVar") message: number = 100;
-    build() {
-        Row() {
-            Column() {
-                Text("test" + this.message)
-                    .fontSize(50)
-            }
-            .width("100%")
-        }
-        .height("100%")
-    }
-}
-function maybeNotCalledAtAll() {
-    console.info("data is ", data);
-}
+``` TypeScript
+// ModulePartSix.ets
+export let data = 'data from module';
+AppStorage.setOrCreate('SomeAppStorageVar', 200); // 修改应用全局的UI状态
 ```
 
 <!-- @[import_modulePartSix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageSix.ets) -->
