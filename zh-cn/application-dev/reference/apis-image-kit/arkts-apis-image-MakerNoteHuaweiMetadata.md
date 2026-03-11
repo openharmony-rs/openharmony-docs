@@ -1,4 +1,4 @@
-# class (MakerNoteHuaweiMetadata)
+# Class (MakerNoteHuaweiMetadata)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
