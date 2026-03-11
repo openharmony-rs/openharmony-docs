@@ -152,20 +152,35 @@
     
     ``` C
     constexpr int32_t BUTTON_CLICK_ID = 1;
+    constexpr int32_t STACK_CLICK_ID = 2;
     bool g_flag = false;
+    bool t_flag = false;
     ArkUI_NodeHandle parentNode;
     ArkUI_NodeHandle childNode;
+    ArkUI_NodeHandle ContainerNode;
+    ArkUI_NodeHandle firstImageNode;
+    ArkUI_NodeHandle secondImageNode;
     ArkUI_NodeHandle buttonNode;
-    // ···
+    // ...
     void mainViewMethod(ArkUI_NodeContentHandle handle)
     {
         ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
             OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+        ArkUI_NodeHandle columnMain = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+        ArkUI_NumberValue columnMainWidthValue[] = {{.f32 = 500}};
+        ArkUI_AttributeItem columnMainWidthItem = {.value = columnMainWidthValue,
+                                                   .size = sizeof(columnMainWidthValue) / sizeof(ArkUI_NumberValue)};
+        nodeAPI->setAttribute(columnMain, NODE_WIDTH, &columnMainWidthItem);
+        ArkUI_NumberValue columnMainHeightValue[] = {{.f32 = 800}};
+        ArkUI_AttributeItem columnMainHeightItem = {.value = columnMainHeightValue,
+                                                    .size = sizeof(columnMainHeightValue) / sizeof(ArkUI_NumberValue)};
+        nodeAPI->setAttribute(columnMain, NODE_HEIGHT, &columnMainHeightItem);
+    
         ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
         ArkUI_NumberValue widthValue[] = {{.f32 = 500}};
         ArkUI_AttributeItem widthItem = {.value = widthValue, .size = sizeof(widthValue) / sizeof(ArkUI_NumberValue)};
         nodeAPI->setAttribute(column, NODE_WIDTH, &widthItem);
-        ArkUI_NumberValue heightValue[] = {{.f32 = 500}};
+        ArkUI_NumberValue heightValue[] = {{.f32 = 400}};
         ArkUI_AttributeItem heightItem = {.value = heightValue, .size = sizeof(heightValue) / sizeof(ArkUI_NumberValue)};
         nodeAPI->setAttribute(column, NODE_HEIGHT, &heightItem);
         ArkUI_NodeHandle buttonShow = nodeAPI->createNode(ARKUI_NODE_BUTTON);
@@ -189,11 +204,12 @@
         nodeAPI->setAttribute(buttonShow, NODE_MARGIN, &buttonShowMarginItem);
         nodeAPI->registerNodeEvent(buttonShow, NODE_ON_CLICK, BUTTON_CLICK_ID, nullptr);
         nodeAPI->addNodeEventReceiver(buttonShow, OnButtonShowClicked);
+        // ...
         parentNode = column;
         buttonNode = buttonShow;
+        nodeAPI->addChild(columnMain, column);
         nodeAPI->addChild(column, buttonShow);
-        OH_ArkUI_NodeContent_AddNode(handle, column);
-    }
+        // ...
     ```
 
 2. 创建一个设置了[NODE_ROTATE_TRANSITION](../reference/apis-arkui/capi-native-node-h.md), [NODE_SCALE_TRANSITION](../reference/apis-arkui/capi-native-node-h.md), [NODE_TRANSLATE_TRANSITION](../reference/apis-arkui/capi-native-node-h.md)属性的节点，当目标节点上下树时会播放转场动画。
