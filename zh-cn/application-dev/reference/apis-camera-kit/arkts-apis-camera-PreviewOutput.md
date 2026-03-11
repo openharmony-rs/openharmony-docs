@@ -627,7 +627,7 @@ ArkTS-Sta: getPreviewRotation(displayRotation: int): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| displayRotation | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。 |
+| displayRotation | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。 <br>**说明：** 在API version 12-22，该参数必填；从API version 23开始，该参数可选。|
 
 **返回值：**
 
