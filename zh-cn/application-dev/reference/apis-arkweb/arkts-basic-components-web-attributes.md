@@ -6404,6 +6404,10 @@ userAgent(userAgent: string)
 >
 > 从API version 8开始支持，从API version 10开始废弃。建议使用[setCustomUserAgent](./arkts-apis-webview-WebviewController.md#setcustomuseragent10)<sup>10+</sup>替代。
 
+**ArkTS模式：** 该接口适用于ArkTS-Dyn
+
+**ArkTS-Dyn起始版本：** 8
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**

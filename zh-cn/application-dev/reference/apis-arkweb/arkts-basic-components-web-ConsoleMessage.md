@@ -14,7 +14,7 @@ Web组件获取控制台信息对象。示例代码参考[onConsole事件](./ark
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
-## constructor
+## constructor<sup>(deprecated)</sup>
 
 constructor(message: string, sourceId: string, lineNumber: number, messageLevel: MessageLevel)
 
@@ -26,9 +26,22 @@ ConsoleMessage的构造函数。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**ArkTS模式：** 该接口适用于ArkTS-Dyn
+
+**ArkTS-Dyn起始版本：** 8
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 8
+
+**参数：**
+
+| 参数名        | 类型                                         | 必填 | 说明                               |
+| ------------ | ------------------------------------------- | ---- | ---------------------------------- |
+| message      | string | 是   | ConsoleMessage的日志输出信息。 |
+| sourceId     | string | 是   | 网页源文件的路径和文件名。       |
+| lineNumber   | number | 是   | ConsoleMessage的行号。        |
+| messageLevel | [MessageLevel](./arkts-basic-components-web-e.md#messagelevel) | 是   | ConsoleMessage的日志级别。 |
 
 ## constructor<sup>9+</sup>
 

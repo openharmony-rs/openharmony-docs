@@ -1561,17 +1561,15 @@ refresh(ignoreCache: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 24
-
-**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明               |
 | ------- | -------- | ---- | ---------------------- |
-| ignoreCache | boolean  | 是   | Web组件刷新网页，选择是否忽略缓存刷新。<br>true表示忽略缓存刷新，false表示不忽略缓存刷新。<br/>**说明：**<br/>ArkTS-Dyn: 传入undefined或null时为false。<br/>ArkTS-Sta: 不支持传入undefined或null。|
+| ignoreCache | boolean  | 是   | Web组件刷新网页，选择是否忽略缓存刷新。<br>true表示忽略缓存刷新，false表示不忽略缓存刷新。<br/>**说明：**<br/>ArkTS-Dyn: 传入undefined或null时为false。|
 
 **错误码：**
 
@@ -1583,7 +1581,6 @@ refresh(ignoreCache: boolean): void
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -1610,7 +1607,36 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
+## refresh<sup>24+</sup>
+
+refresh(ignoreCache: boolean): void
+
+通知Web组件刷新网页，可以选择是否忽略缓存刷新。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明               |
+| ------- | -------- | ---- | ---------------------- |
+| ignoreCache | boolean  | 是   | Web组件刷新网页，选择是否忽略缓存刷新。<br>true表示忽略缓存刷新，false表示不忽略缓存刷新。<br/>**说明：**ArkTS-Sta: 不支持传入undefined或null。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
 ```ts
 'use static'
 
@@ -8904,14 +8930,6 @@ static setUserAgentForHosts(userAgent: string, hosts: Array\<string>): void
 | userAgent      | string  | 是   | 用户自定义代理信息。建议先使用[getDefaultUserAgent](#getdefaultuseragent14)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
 | hosts      | Array\<string>  | 是   | 用户自定义代理的相关域名列表，每次调用时仅保留最新传入的列表，并限制最大条目数为两万，超出部分自动截断。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -10318,7 +10336,7 @@ postUrl(url: string, postData: ArrayBuffer): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
 
@@ -16139,6 +16157,14 @@ ArkTS-Sta: getProgress(): int
 | :------------------------------ | ---------------------- |
 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 当前页面加载进度，取值范围[0, 100] |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  |       错误信息             |
+| -------- | ------------------------- |
+|  801     | Capability not supported. |
+
 **示例：**
 
 ArkTS-Dyn示例：
@@ -16586,6 +16612,7 @@ ArkTS-Sta: avoidVisibleViewportBottom(avoidHeight: int): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
+|  801     | Capability not supported. |
 
 **示例：**
 
@@ -18412,6 +18439,8 @@ static getUserAgentClientHintsEnabled(): boolean
 
 查询UserAgent Client Hints功能当前是否开启。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：**  SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 24
@@ -18446,9 +18475,42 @@ setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 24
+
+**参数：**
+
+| 参数名              | 类型    | 必填   |  说明 |
+| ------------------ | ------- | ---- | ------------- |
+| userAgent | string | 是   | 用户自定义代理信息。可以使用[getUserAgent](#getuseragent)获取当前默认用户代理。 |
+| metaData | [UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md) | 是   | userAgent对应的UserAgentMetadata。可以先使用[getUserAgentMetadata](#getuseragentmetadata24)获取当前默认值，然后用相应方法进行修改。 |
+
+**示例：**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
+
+## setUserAgentMetadata<sup>24+</sup>
+
+setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void
+
+设置与User-Agent相对应的UserAgent Metadata数据。
+
+> **说明：**
+>
+> User-Agent Metadata将用于填充用户代理客户端提示，它们可以提供客户端的品牌和版本信息、底层操作系统的品牌和主要版本，以及底层设备的详细信息。
+>
+> 用户代理可以通过setCustomUserAgent、setAppCustomUserAgent或setUserAgentForHosts来设置。
+>
+> 如果根据覆盖后的User-Agent未找到UserAgentMetadata，且覆盖后的User-Agent包含系统默认的User-Agent，则将使用系统默认值。
+>
+> 如果根据覆盖后的User-Agent未找到UserAgentMetadata，但覆盖后的 User-Agent 不包含系统默认用户代理，则只会生成低级用户代理客户端提示。
+
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 24
 
@@ -18471,9 +18533,37 @@ getUserAgentMetadata(userAgent: string): UserAgentMetadata
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 24
+
+**参数：**
+
+| 参数名              | 类型    | 必填   |  说明 |
+| ------------------ | ------- | ---- | ------------- |
+| userAgent | string | 是   | 用户自定义代理信息。可以使用[getUserAgent](#getuseragent)获取当前默认用户代理。 |
+
+**返回值：**
+
+| 类型    | 说明                                     |
+| ------- | --------------------------------------- |
+| UserAgentMetadata | userAgent对应的[UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md)。 |
+
+**示例：**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
+
+## getUserAgentMetadata<sup>24+</sup>
+
+getUserAgentMetadata(userAgent: string): UserAgentMetadata
+
+查询userAgent对应的UserAgent Metadata信息。
+
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 24
 
