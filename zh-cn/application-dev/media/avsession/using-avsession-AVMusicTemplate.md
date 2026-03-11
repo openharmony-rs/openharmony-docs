@@ -5,16 +5,12 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
-媒体应用在实现音频功能时，需要作为音频模板提供方接入媒体会话系统。具体而言，媒体应用需要：
+从API version 23开始，当媒体应用在实现音频功能时，需要作为音频模板提供方接入媒体会话系统。具体而言，媒体应用需要：
 
 1. 在媒体中心（作为音频模板控制方）展示音频相关信息。
 2. 响应媒体中心下发的播放控制命令。
 
 音频模板控制方同时支持音频和视频内容，且两者的接入方式相同。本文档以音频场景为例进行说明。
-
-> **说明：**
->
-> - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 基本概念
 
@@ -23,19 +19,19 @@
 
 ## 接口说明
 
-详细的API说明请参考[AVMusicTemplate API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
+详细的API说明请参考[AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
 
 ## 开发步骤
 
 音频应用作为音频模板提供方接入音频模板控制方的基本步骤如下所示：
 
-1. 在进程启动时，创建音频模板（模板唯一，不需要重复创建），拉起音频模板控制方。需要如下接口，详情请查看[模板API接口](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate-f.md)。
+1. 在进程启动时，创建音频模板（模板唯一，不需要重复创建），拉起音频模板控制方。
 
    > **说明：**
    >
    > 以下示例代码仅展示创建AVMusicTemplate对象的接口调用，应用在真正使用时，需要确保AVMusicTemplate对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
 
-   - createAVMusicTemplate：创建音频模板。
+   - [createAVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplate)：创建音频模板。
    
    <!-- @[ability_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
@@ -118,10 +114,10 @@
    }
    ```
    
-2. 注册事件监听，在监听到事件后可提供应用数据给音频模板控制方使用。例如音频模板主界面显示，需要如下接口，详情请查看[AVMusicTemplate API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
+2. 注册事件监听，在监听到事件后可提供应用数据给音频模板控制方使用。监听接口详情请查看[API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。例如，音频模板主界面显示需要同时注册如下两个接口：
    
-   - onQueryMainTabs：注册查询主标签事件监听。提供主界面展示的TAB数据集合，并规定“我的主页”的tabId（媒体中心的为"minePage"）。
-   - onQueryMediaTabContent：注册查询媒体标签内容事件监听。根据tabId提供页面展示内容数据。
+   - [onQueryMainTabs](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md#onquerymaintabs)：注册查询主标签事件监听。提供主界面展示的TAB数据集合，并规定“我的主页”的tabId（媒体中心的为"minePage"）。
+   - [onQueryMediaTabContent](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md#onquerymediatabcontent)：注册查询媒体标签内容事件监听。根据tabId提供页面展示内容数据。
    
    <!-- @[template_register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
@@ -240,9 +236,7 @@
    ```
 
 
-3. 在音频模板控制方无法直接感知的场景，需要媒体应用主动向已注册了对应接口的音频模板控制方同步数据。例如扫码登录成功的场景，需要如下接口，详情请查看[AVMusicTemplate API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
-   
-   - setUserInfo：向音频模板控制方同步用户信息。当用户在音频模板控制方界面扫码登录，由于登录状态只有音频模板提供方能感知，所以需要调用此方法给音频模板控制方同步数据。
+3. 在音频模板控制方无法直接感知的场景，需要媒体应用主动向音频模板控制方同步数据。详情请查看[AVMusicTemplate API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。例如，扫码登录成功的场景，当用户在音频模板控制方界面扫码登录，因为登录状态只有媒体应用能感知，所以需要调用接口[setUserInfo](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md#setuserinfo)给音频模板控制方同步数据。
    
    <!-- @[set_user_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
