@@ -363,7 +363,7 @@
 5. 在音频模板控制方应用退出时及时取消事件监听，并释放资源。注销音频模板接口详情请查看[API](../../reference/apis-avsession-kit/js-apis-avsession-avMusicTemplate-sys.md)，注销事件监听接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
    <!-- @[release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-
+   
    ``` TypeScript
    import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
    // ...
