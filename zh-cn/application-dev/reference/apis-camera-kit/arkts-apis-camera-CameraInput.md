@@ -607,7 +607,7 @@ ArkTS-Sta示例：
 
 ```ts
 function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): int {
-  let physicalCameraOrientation: number = cameraInput.getPhysicalCameraOrientation();
+  let physicalCameraOrientation: int = cameraInput.getPhysicalCameraOrientation();
   return physicalCameraOrientation;
 }
 ```
