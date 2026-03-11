@@ -2601,6 +2601,117 @@ connection.getSystemNetPortStates().then((data: connection.NetPortStatesInfo) =>
 });
 ```
 
+## connection.queryTraceRoute<sup>26+</sup>
+
+queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise<TraceRouteInfo[]>
+
+查询网络路由跟踪信息，使用Promise方式作为异步方法。
+
+> **说明：**
+>
+> 应用调用该接口需申请精确位置权限。<!--RP1-->根据[申请位置权限开发指导](../../device/location/location-permission-guidelines.md)<!--RP1End-->，调用方需同时申请ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION。
+
+**需要权限**：ohos.permission.INTERNET、ohos.permission.ACCESS_NET_TRACE_INFO、ohos.permission.LOCATION和ohos.permission.APPROXIMATELY_LOCATION
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| destination | string | 是 | 目标域名或IP地址。 |
+| option | [TraceRouteOptions](#tracerouteoptions) | 否 | 路由跟踪的选项参数，缺省则使用默认配置。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise<[TraceRouteInfo](#tracerouteinfo)[]> | Promise对象，返回路由跟踪信息数组。 |
+
+**错误码：**
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 2100001 | Invalid parameter value. |
+| 2100003 | Internal error. |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dest: string = "www.example.com";
+let options: connection.TraceRouteOptions = {
+    maxJumpNumber: 30,
+    packetsType: connection.PacketsType.NETCONN_PACKETS_ICMP
+};
+
+connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[]) => {
+    console.log(JSON.stringify(data));
+}).catch((err: BusinessError) => {
+    console.error(JSON.stringify(err));
+});
+```
+
+
+## connection.queryProbeResult<sup>26+</sup>
+
+queryProbeResult(destination: string, duration: number): Promise<ProbeResultInfo>
+
+查询网络探测结果。若出现异常（例如断网），导致发送请求失败，则接口会立即返回，不再进行后续探测。本接口使用Promise方式作为异步方法。
+
+> **说明：**
+>
+> 此接口用于对目标主机进行一段持续时间的网络探测，以获取丢包率和RTT信息。需要权限 `ohos.permission.INTERNET`。
+
+**需要权限**：ohos.permission.INTERNET。
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| destination | string | 是 | 目标域名或IP地址。 |
+| duration | number | 是 | 探测持续时间，单位为秒，传入值需为正整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise<[ProbeResultInfo](#proberesultinfo)> | Promise对象，返回探测结果信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 2100001 | Invalid parameter value. |
+| 2100003 | Internal error. |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dest: string = "www.example.com";
+let duration: number = 10;
+
+connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultInfo) => {
+    console.log(`LossRate: ${data.lossRate}, RTT: ${data.rtt}`);
+}).catch((err: BusinessError) => {
+    console.error(JSON.stringify(err));
+});
+```
+
 ## NetConnection
 
 网络连接对象类型。
