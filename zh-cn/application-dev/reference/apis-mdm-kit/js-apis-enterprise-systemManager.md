@@ -1094,7 +1094,7 @@ let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-let result = Array<systemManager.KeyEventPolicy>;
+let result: Array<systemManager.KeyEventPolicy> = [];
 try {
   result = systemManager.getKeyEventPolicies(wantTemp);
   console.info('Succeeded in getting key event policies.');
