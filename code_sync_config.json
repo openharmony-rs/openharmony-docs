@@ -20384,6 +20384,26 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUIStructureOpposite.ets",
+				"functions":[
+					{
+						"end_line":45,
+						"name":"problem_ui_structure_opposite",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUIStructurePositive.ets",
+				"functions":[
+					{
+						"end_line":45,
+						"name":"problem_ui_structure_positive",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
