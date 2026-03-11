@@ -3320,7 +3320,9 @@ struct WebComponent {
 
 ## onContextMenuShow<sup>9+</sup>
 
-onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
+ArkTS-Dyn: onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
+
+ArkTS-Sta: onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\> | undefined)
 
 长按特定元素（例如图片，链接）或鼠标右键，跳出菜单。
 
@@ -3334,7 +3336,7 @@ onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | Callback\<[OnContextMenuShowEvent](./arkts-basic-components-web-i.md#oncontextmenushowevent12), boolean\> | 是 | 调用时触发的回调，以允许自定义显示上下文菜单。<br>返回值boolean。返回true表示触发自定义菜单，返回false表示触发的自定义菜单无效。     |
+| callback  | ArkTS-Dyn: Callback\<[OnContextMenuShowEvent](./arkts-basic-components-web-i.md#oncontextmenushowevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnContextMenuShowEvent](./arkts-basic-components-web-i.md#oncontextmenushowevent12), boolean\> \| undefined | 是 | 调用时触发的回调，以允许自定义显示上下文菜单。<br>返回值boolean。返回true表示触发自定义菜单，返回false表示触发的自定义菜单无效。     |
 
 **示例：**
 

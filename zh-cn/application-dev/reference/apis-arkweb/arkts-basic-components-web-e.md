@@ -260,9 +260,9 @@ Web布局模式的配置。
 
 | 名称       | 值 | 说明         |
 | --------- | -- |------------ |
-| None      | 0 | 其他事件来源。 |
-| Mouse     | 1 | 鼠标事件。   |
-| LongPress | 2 | 长按事件。   |
+| ArkTS-Dyn: None<br/>ArkTS-Sta: NONE      | 0 | 其他事件来源。 |
+| ArkTS-Dyn: Mouse<br/>ArkTS-Sta: MOUSE     | 1 | 鼠标事件。   |
+| ArkTS-Dyn: LongPress<br/>ArkTS-Sta: LONG_PRESS| 2 | 长按事件。   |
 
 ## ContextMenuDataMediaType<sup>22+</sup>
 触发上下文菜单的网页元素类型（增强获取类型能力）。
@@ -293,8 +293,8 @@ Web布局模式的配置。
 
 | 名称    | 值 | 说明            |
 | ----- | -- | ------------- |
-| None  | 0 | 非特殊媒体或其他媒体类型。 |
-| Image | 1 | 图片。           |
+| ArkTS-Dyn: None<br/>ArkTS-Sta: NONE  | 0 | 非特殊媒体或其他媒体类型。 |
+| ArkTS-Dyn: Image<br/>ArkTS-Sta: IMAGE | 1 | 图片。           |
 
 ## ContextMenuDataMediaType<sup>22+</sup>
 触发上下文菜单的网页元素类型（增强获取类型能力）。
@@ -325,12 +325,12 @@ Web布局模式的配置。
 
 | 名称        | 值 | 说明                          |
 | --------- | -- | --------------------------- |
-| None      | 0 | 非输入框。                       |
-| PlainText | 1 | 纯文本类型，包括text、search、email等。 |
-| Password  | 2 | 密码类型。                       |
-| Number    | 3 | 数字类型。                       |
-| Telephone | 4 | 电话号码类型。                     |
-| Other     | 5 | 其他类型。                       |
+| ArkTS-Dyn: None<br/>ArkTS-Sta: NONE      | 0 | 非输入框。                       |
+| ArkTS-Dyn: PlainText<br/>ArkTS-Sta: PLAIN_TEXT | 1 | 纯文本类型，包括text、search、email等。 |
+| ArkTS-Dyn: Password<br/>ArkTS-Sta: PASSWORD  | 2 | 密码类型。                       |
+| ArkTS-Dyn: Number<br/>ArkTS-Sta: NUMBER_DATA    | 3 | 数字类型。                       |
+| ArkTS-Dyn: Telephone<br/>ArkTS-Sta: TELEPHONE | 4 | 电话号码类型。                     |
+| ArkTS-Dyn: Other<br/>ArkTS-Sta: OTHER     | 5 | 其他类型。                       |
 
 ## NativeEmbedStatus<sup>11+</sup>
 
