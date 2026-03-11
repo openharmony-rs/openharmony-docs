@@ -64,3 +64,4 @@
     - [AVSession_DeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md)
 - 错误码<!--avsession-arkts-errcode-->
   - [媒体会话管理错误码](errorcode-avsession.md)
+  - [音频模板错误码](errorcode-avsession-avmusictemplate.md)
