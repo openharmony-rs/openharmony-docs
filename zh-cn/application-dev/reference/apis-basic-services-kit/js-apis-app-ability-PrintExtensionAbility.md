@@ -153,15 +153,7 @@ onStartPrintJob(jobInfo: print.PrintJob): void
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| jobInfo | [print.PrintJob](./js-apis-print-sys.md#printjob) | 是 | 表示打印任务的信息。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
-
-| 错误码ID | 错误信息                                    |
-| -------- | ------------------------------------------- |
-| 202 | not system application. |
+| jobInfo | [print.PrintJob](./js-apis-print.md#printjob24) | 是 | 表示打印任务的信息。 |
 
 **示例：**
 
@@ -187,15 +179,7 @@ onCancelPrintJob(jobInfo: print.PrintJob): void
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| jobInfo | [print.PrintJob](./js-apis-print-sys.md#printjob) | 是 | 表示打印任务的信息。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
-
-| 错误码ID | 错误信息                                    |
-| -------- | ------------------------------------------- |
-| 202 | not system application. |
+| jobInfo | [print.PrintJob](./js-apis-print.md#printjob24) | 是 | 表示打印任务的信息。 |
 
 **示例：**
 
@@ -226,15 +210,7 @@ onRequestPrinterCapability(printerId: number): print.PrinterCapability
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| [print.PrinterCapability](./js-apis-print-sys.md#printercapability) | 表示打印能力。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
-
-| 错误码ID | 错误信息                                    |
-| -------- | ------------------------------------------- |
-| 202 | not system application. |
+| [print.PrinterCapability](./js-apis-print.md#printercapability24) | 表示打印能力。 |
 
 **示例：**
 
