@@ -128,7 +128,7 @@ getVss(): bigint
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
-let vss: bigint = hidebug.getVss();<ins></ins>
+let vss: bigint = hidebug.getVss();
 ```
 
 ## hidebug.getSharedDirty
