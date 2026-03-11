@@ -3592,8 +3592,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | routes        | Array\<[RouteInfo](#routeinfo)>     | 否 | 否 | 路由信息。                                                                      |
 | dnses         | Array\<[NetAddress](#netaddress)>   | 否 | 否 | 网络地址，参考[NetAddress](#netaddress)。                                          |
 | mtu           | number                              | 否 | 否 | 最大传输单元。                                                                    |
-| isIPv4LinkValid | boolean                             | 否 | 是 | 接口的IPv4地址是否有效。<br/>当前网络的IPv4是否可用。<br/>说明：当IPv4地址有效，且存在IPv4的默认路由时，认为IPv4可用。 |
-| isIPv6LinkValid | boolean                             | 否 | 是 | 接口的IPv6地址是否有效。<br/>当前网络的IPv6是否可用。<br/>说明：当IPv6地址有效，且存在IPv6的默认路由时，认为IPv6可用。 |
+| isIPv4LinkValid | boolean                             | 否 | 是 | 当前网络的IPv4是否可用。说明：当IPv4地址有效，且存在IPv4的默认路由时，认为IPv4可用。 |
+| isIPv6LinkValid | boolean                             | 否 | 是 | 当前网络的IPv6是否可用。说明：当IPv6地址有效，且存在IPv6的默认路由时，认为IPv6可用。 |
 
 ## RouteInfo
 
