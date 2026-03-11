@@ -219,7 +219,7 @@ NfcVTag获取方式请参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag
 
 以下是NfcVTag的独有接口。
 
-### NfcvTag.getResponseFlags
+### NfcVTag.getResponseFlags
 
 getResponseFlags(): number
 
@@ -245,7 +245,7 @@ let responseFlags : number = nfcV.getResponseFlags();
 console.info("nfcV responseFlags: " + responseFlags);
 ```
 
-### NfcvTag.getDsfId
+### NfcVTag.getDsfId
 
 getDsfId(): number
 

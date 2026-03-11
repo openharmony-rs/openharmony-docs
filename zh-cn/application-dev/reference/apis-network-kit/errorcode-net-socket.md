@@ -486,7 +486,7 @@ An error occurred when verifying the x509 certificate.
 
 **处理步骤**
 
-检查本地CA跟证书和服务器证书是否匹配。
+检查本地CA根证书和服务器证书是否匹配。
 
 ## 2303505 TLS系统调用错误
 
