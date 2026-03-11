@@ -7,6 +7,8 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+从版本26.0.0开始，算法库支持RC4对称密钥加解密。
+
 对应的算法规格请参见[对称密钥加解密算法规格：RC4](crypto-sym-encrypt-decrypt-spec.md#rc4)。
 
 RC4为流密码算法，无需分组模式与填充，加解密使用相同的Cipher字符串参数（RC4_8～RC4_4096）。
@@ -33,51 +35,48 @@ RC4为流密码算法，无需分组模式与填充，加解密使用相同的Ci
 
 - 异步方法示例：
   <!-- @[encrypt_decrypt_rc4_asynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc4_encryption_decryption/rc4_encryption_decryption_asynchronous.ets) -->
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
+  
+  // 加密消息
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('RC4');
     await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, null);
     let cipherData = await cipher.doFinal(plainText);
     return cipherData;
   }
-
+  
+  // 解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('RC4');
     await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, null);
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
-
+  
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
-    let generator = cryptoFramework.createSymKeyGenerator('RC4');
-    let symKey = await generator.convertKey(symKeyBlob);
+    let rc4Generator = cryptoFramework.createSymKeyGenerator('RC4');
+    let symKey = await rc4Generator.convertKey(symKeyBlob);
     console.info('convertKey result: success.');
     return symKey;
   }
-
-  async function rc4EncryptDecrypt() {
-    try {
-      let keyData = new Uint8Array(16);
-      for (let i = 0; i < 16; i++) {
-        keyData[i] = i + 1;
-      }
-      let symKey = await genSymKeyByData(keyData);
-      let message = 'This is a test';
-      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-      let encryptText = await encryptMessagePromise(symKey, plainText);
-      let decryptText = await decryptMessagePromise(symKey, encryptText);
-      if (plainText.data.toString() === decryptText.data.toString()) {
-        console.info('decrypt ok');
-        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
-      } else {
-        console.error('decrypt failed');
-      }
-    } catch (error) {
-      console.error(`RC4 failed: errCode: ${error.code}, message: ${error.message}`);
+  
+  async function rc4EncryptionDecryption() {
+    let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
+    let symKey = await genSymKeyByData(keyData);
+    let message = 'This is a test';
+    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+    let encryptText = await encryptMessagePromise(symKey, plainText);
+    let decryptText = await decryptMessagePromise(symKey, encryptText);
+    if (plainText.data.toString() === decryptText.data.toString()) {
+      console.info('decrypt ok.');
+      console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+    } else {
+      console.error('decrypt failed.');
     }
   }
   ```
