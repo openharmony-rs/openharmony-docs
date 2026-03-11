@@ -477,7 +477,7 @@ avScreenCaptureRecorder.onError((err: BusinessError) => {
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | [AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)  | 否   | 状态切换事件回调方法，表示切换到的状态，不填此参数则会取消最后一次订阅事件。 |
+| callback |Callback<[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)>  | 否   | 状态切换事件回调方法，表示切换到的状态，不填此参数则会取消最后一次订阅事件。 |
 
 **示例：**
 
