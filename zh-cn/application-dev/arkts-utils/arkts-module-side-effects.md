@@ -20,14 +20,10 @@
 
 <!-- @[export_modulePartOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartOne.ets) -->
 
-```typescript
-// module.ets
-console.info("Module loaded!"); // 这段代码在导入时会立即执行，可能会导致副作用。
+``` TypeScript
+// ModulePartOne.ets
+console.info('Module loaded!'); // 这段代码在导入时会立即执行，可能会导致副作用。
 export const data = 1;
-
-// main.ets
-import { data } from './module' // 导入时，module.ets中的console.info会执行，产生输出。
-console.info("data is ", data);
 ```
 
 <!-- @[import_modulePartOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageOne.ets) -->
