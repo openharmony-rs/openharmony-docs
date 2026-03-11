@@ -396,15 +396,10 @@ Stacktrace:
 
 <!-- @[export_modulePartNine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartNine.ets) -->
 
-```typescript
-// module.ets
-export let data = "data from module"
+``` TypeScript
+// ModulePartNine.ets
+export let data = 'data from module';
 globalThis.someGlobalVar = 100;
-
-// moduleUseGlobalVar.ets
-import lazy { data } from "./module"
-console.info("globalThis.someGlobalVar", globalThis.someGlobalVar); // 此时由于lazy特性，module模块还未执行，someGlobalVar的值为undefined
-console.info("data is ", data); // 使用到module模块的变量，此时module模块执行，someGlobalVar的值变为100
 ```
 
 <!-- @[import_moduleUseGlobalVarNine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModuleUseGlobalVarNine.ets) -->
