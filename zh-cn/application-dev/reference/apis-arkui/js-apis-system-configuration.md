@@ -33,9 +33,11 @@ static getLocale(): LocaleResponse
 **返回值：**
 | 类型            | 说明            |
 | -------------- | ------------- |
+
 | LocaleResponse | 应用当前Locale相关信息。 |
-ArkTS示例
 **示例：**
+
+ArkTS示例：
   ```
   export default {    
     getLocale() {        
@@ -45,7 +47,7 @@ ArkTS示例
   }
   ```
 
-JS示例
+JS示例：
 ```xml
 <!-- xxx.xml -->
 <div class="container">
