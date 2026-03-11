@@ -87,6 +87,8 @@ Web媒体策略的配置。
 > **说明：**
 > 从API version 12开始支持，从API version 20开始废弃，建议使用[editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称           | 类型                                             | 只读    | 可选    | 说明             |
@@ -131,6 +133,8 @@ Web媒体策略的配置。
 预览菜单选项。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 | 名称           | 类型                                             | 只读    | 可选    | 说明             |
 | ---------- | -----------------------------------------------------| ------ | ------ | ---------------- |
