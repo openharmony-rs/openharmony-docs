@@ -25,14 +25,8 @@
 
 音频应用作为音频模板提供方接入音频模板控制方的基本步骤如下所示：
 
-1. 在进程启动时，创建音频模板（模板唯一，不需要重复创建），拉起音频模板控制方。
+1. 在进程启动时，调用接口[createAVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplate)创建音频模板（模板唯一，不需要重复创建），拉起音频模板控制方。以下示例代码仅展示创建AVMusicTemplate对象的接口调用，应用在真正使用时，需要确保AVMusicTemplate对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
 
-   > **说明：**
-   >
-   > 以下示例代码仅展示创建AVMusicTemplate对象的接口调用，应用在真正使用时，需要确保AVMusicTemplate对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
-
-   - [createAVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplate)：创建音频模板。
-   
    <!-- @[ability_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
    ``` TypeScript
