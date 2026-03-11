@@ -2261,8 +2261,8 @@ ArkTS-Sta: setCustomDensity(density: double, applyToSubWindow?: boolean): void
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300005 | This window stage is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The main window is not created or destroyed.|
+| 1300005 | This window stage is abnormal. Possible cause: The window stage is not created or destroyed.|
 
 **示例：**
 
