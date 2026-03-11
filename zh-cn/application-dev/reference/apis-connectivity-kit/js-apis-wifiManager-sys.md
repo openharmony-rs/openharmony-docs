@@ -146,7 +146,7 @@ getScanAlwaysAllowed(): boolean
 	}
 ```
 
-## WifiDeviceConfig<sup>9+</sup>
+## WifiDeviceConfig
 
 WLAN配置信息。
 

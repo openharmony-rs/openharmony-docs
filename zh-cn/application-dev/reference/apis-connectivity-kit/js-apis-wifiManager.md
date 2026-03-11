@@ -74,7 +74,7 @@ enableWifi(): void
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -177,7 +177,7 @@ startScan(): void
 
 启动WLAN扫描。
 
-**需要权限：** ohos.permission.SET_WIFI_INFO 和ohos.permission.MANAGE_WIFI_CONNECTION
+**需要权限：** ohos.permission.SET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -381,7 +381,7 @@ getScanInfoList(): Array&lt;WifiScanInfo&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -569,7 +569,7 @@ WLAN热点信息。
 | WIDTH_40MHZ | 1 | 40MHZ。 |
 | WIDTH_80MHZ | 2 | 80MHZ。 |
 | WIDTH_160MHZ | 3 | 160MHZ。 |
-| WIDTH_80MHZ_PLUS | 4 | 80MHZ<sup>+</sup>。 |
+| WIDTH_80MHZ_PLUS | 4 | 80MHZ。 |
 | WIDTH_INVALID | 5 | 无效值 |
 
 
@@ -616,7 +616,7 @@ WLAN配置信息。
 | domainSuffixMatch | string | 否 | 否 | 域后缀匹配。 |
 | realm | string | 否 | 否 | 通行证凭证的领域。  |
 | plmn | string | 否 | 否 | 公共陆地移动网的直通凭证提供商。 |
-| eapSubId | number | 否 | 否 | SIM卡的子ID。 |
+| eapSubId | ArkTS-Dyn: number<br />ArkTS-Sta: int | 否 | 否 | SIM卡的子ID。 |
 
 
 ## WifiWapiConfig<sup>12+</sup>
@@ -773,7 +773,7 @@ ArkTS-Sta: addCandidateConfig(config: WifiDeviceConfig): Promise&lt;int&gt;
 
 ArkTS-Dyn: addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
 
-ArkTS-Sta: addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Sta: addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;int&gt;): void
 
 添加候选网络配置，使用callback异步回调。
 
@@ -1210,6 +1210,8 @@ ArkTS-Sta: addDeviceConfig(config: WifiDeviceConfig): Promise&lt;int&gt;
 ## wifiManager.addDeviceConfig<sup>15+</sup>
 
 addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
+
+addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;int&gt;): void
 
 添加网络配置，使用callback异步回调。
 
@@ -1760,7 +1762,7 @@ ArkTS-Sta: isFeatureSupported(featureId: long): boolean
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | featureId | number | 是 | 特性ID值。 |
+  | featureId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 特性ID值。 |
 
 **特性ID值枚举：**
 
@@ -1863,13 +1865,13 @@ IPV4信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | 否 | 否 | IP地址。(ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4))。|
-| gateway | number | 否 | 否 | 网关。 |
-| netmask | number | 否 | 否 | 掩码。 |
-| primaryDns | number | 否 | 否 | 主DNS服务器IP地址。 |
-| secondDns | number | 否 | 否 | 备DNS服务器IP地址。 |
-| serverIp | number | 否 | 否 | DHCP服务端IP地址。 |
-| leaseDuration | number | 否 | 否 | IP地址租用时长，单位：秒。 |
+| ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | IP地址。(ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4))。|
+| gateway | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 网关。 |
+| netmask | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 掩码。 |
+| primaryDns | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 主DNS服务器IP地址。 |
+| secondDns | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 备DNS服务器IP地址。 |
+| serverIp | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | DHCP服务端IP地址。 |
+| leaseDuration | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | IP地址租用时长，单位：秒。 |
 
 
 ## wifiManager.getIpv6Info<sup>10+</sup>
@@ -2407,7 +2409,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 | deviceAddressType<sup>10+</sup> | [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 设备MAC地址类型。 <br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
 | primaryDeviceType | string | 否 | 否 | 主设备类型。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | deviceStatus | [P2pDeviceStatus](#p2pdevicestatus) | 否 | 否 | 设备状态。 **ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
-| groupCapabilities | number | 否 | 否 | 群组能力。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
+| groupCapabilities | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 群组能力。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 
 
 ## P2pDeviceStatus
@@ -2570,11 +2572,11 @@ createGroup(config: WifiP2PConfig): void
 | -------- | -------- | -------- | -------- | -------- |
 | deviceAddress | string | 否 | 否 | 设备地址。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | deviceAddressType<sup>10+</sup>| [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 设备地址类型。 <br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
-| netId | number | 否 | 否 | 网络ID。创建群组时-1表示创建临时组，-2表示创建永久组。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
+| netId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 网络ID。创建群组时-1表示创建临时组，-2表示创建永久组。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | passphrase | string | 否 | 否 | 群组密钥。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | groupName | string | 否 | 否 | 群组名称。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | goBand | [GroupOwnerBand](#groupownerband) | 否 | 否 | 群组带宽。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
-| goFred | int | 否 | 是 | 群组频率，若群组带宽和群组频率同时添加的情况下，当频率合法时（频率在2400MHz-2500MHz或者4900MHz-5900MHz范围内认为合法），以频率为准，否则以带宽为准。 <br />**ArkTS-Dyn起始版本：** 23<br />**ArkTS-Sta起始版本：** 23|
+| goFred | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 群组频率，若群组带宽和群组频率同时添加的情况下，当频率合法时（频率在2400MHz-2500MHz或者4900MHz-5900MHz范围内认为合法），以频率为准，否则以带宽为准。 <br />**ArkTS-Dyn起始版本：** 23<br />**ArkTS-Sta起始版本：** 23|
 
 ## GroupOwnerBand
 
@@ -2901,8 +2903,8 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | interface | string | 否 | 否 | 接口名称。 <br />**ArkTS-Dyn起始版本：** 9|
 | interfaceName | string | 否 | 否 | 接口名称。 <br />**ArkTS-Sta起始版本：** 23|
 | groupName | string | 否 | 否 | 群组名称。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
-| networkId | number | 否 | 否 | 网络ID。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
-| frequency | number | 否 | 否 | 群组的频率。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
+| networkId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 网络ID。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
+| frequency | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 群组的频率。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | clientDevices | [WifiP2pDevice[]](#wifip2pdevice) | 否 | 否 | 接入的设备列表信息。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | goIpAddress | string | 否 | 否 | 群组IP地址。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 
@@ -2999,7 +3001,7 @@ off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
   wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
 ```
 
-## wifiManager.onWifiStateChange<sup>22+</sup>
+## wifiManager.onWifiStateChange<sup>23+</sup>
 
 onWifiStateChange(callback: Callback&lt;int&gt;): void
 
@@ -3007,13 +3009,13 @@ onWifiStateChange(callback: Callback&lt;int&gt;): void
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3031,7 +3033,7 @@ onWifiStateChange(callback: Callback&lt;int&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.offWifiStateChange<sup>22+</sup>
+## wifiManager.offWifiStateChange<sup>23+</sup>
 
 offWifiStateChange(callback?: Callback&lt;int&gt;): void
 
@@ -3043,7 +3045,7 @@ offWifiStateChange(callback?: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3151,19 +3153,19 @@ off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
   wifiManager.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
 ```
 
-## wifiManager.onWifiConnectionChange<sup>22+</sup>
+## wifiManager.onWifiConnectionChange<sup>23+</sup>
 
 onWifiConnectionChange(callback: Callback&lt;int&gt;): void
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3181,7 +3183,7 @@ onWifiConnectionChange(callback: Callback&lt;int&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.offWifiConnectionChange<sup>22+</sup>
+## wifiManager.offWifiConnectionChange<sup>23+</sup>
 
 offWifiConnectionChange(callback?: Callback&lt;int&gt;): void
 
@@ -3189,13 +3191,13 @@ offWifiConnectionChange(callback?: Callback&lt;int&gt;): void
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3303,7 +3305,7 @@ off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
   wifiManager.off("wifiScanStateChange", recvWifiScanStateChangeFunc);
 ```
 
-## wifiManager.onWifiScanStateChange<sup>22+</sup>
+## wifiManager.onWifiScanStateChange<sup>23+</sup>
 
 onWifiScanStateChange(callback: Callback&lt;int&gt;): void
 
@@ -3311,19 +3313,19 @@ onWifiScanStateChange(callback: Callback&lt;int&gt;): void
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;int&gt; | 是 | 状态改变回调函数。返回：0：扫描失败；1：扫描成功。 |
+  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。返回：0：扫描失败；1：扫描成功。 |
 
 **错误码：**
 
@@ -3342,7 +3344,7 @@ onWifiScanStateChange(callback: Callback&lt;int&gt;): void
 | 0 | 扫描失败。 |
 | 1 | 扫描成功。 |
 
-## wifiManager.offWifiScanStateChange<sup>22+</sup>
+## wifiManager.offWifiScanStateChange<sup>23+</sup>
 
 offWifiScanStateChange(callback?: Callback&lt;int&gt;): void
 
@@ -3350,13 +3352,13 @@ offWifiScanStateChange(callback?: Callback&lt;int&gt;): void
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Sta起始版本：** 12
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3406,7 +3408,7 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.onWifiRssiChange<sup>22+</sup>
+## wifiManager.onWifiRssiChange<sup>23+</sup>
 
 onWifiRssiChange(callback: Callback&lt;int&gt;): void
 
@@ -3418,7 +3420,7 @@ onWifiRssiChange(callback: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3483,7 +3485,7 @@ off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
   wifiManager.off("wifiRssiChange", recvWifiRssiChangeFunc);
 ```
 
-## wifiManager.offWifiRssiChange<sup>22+</sup>
+## wifiManager.offWifiRssiChange<sup>23+</sup>
 
 offWifiRssiChange(callback?: Callback&lt;int&gt;): void
 
@@ -3495,7 +3497,7 @@ offWifiRssiChange(callback?: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3554,9 +3556,9 @@ on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2601000  | Operation failed. |
 
-## wifiManager.onHotspotStateChange<sup>22+</sup>
+## wifiManager.onHotspotStateChange<sup>23+</sup>
 
-onHotspotStateChange(Callback: Callback&lt;int&gt;): void
+onHotspotStateChange(callback: Callback&lt;int&gt;): void
 
 注册热点状态改变事件。
 
@@ -3566,7 +3568,7 @@ onHotspotStateChange(Callback: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3640,9 +3642,9 @@ off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;): void
   wifiManager.off("hotspotStateChange", recvHotspotStateChangeFunc);
 ```
 
-## wifiManager.offHotspotStateChange<sup>22+</sup>
+## wifiManager.offHotspotStateChange<sup>23+</sup>
 
-offHotspotStateChange(Callback?: Callback&lt;int&gt;): void
+offHotspotStateChange(callback?: Callback&lt;int&gt;): void
 
 注册热点状态改变事件。
 
@@ -3652,7 +3654,7 @@ offHotspotStateChange(Callback?: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3712,7 +3714,7 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.onP2pStateChange<sup>22+</sup>
+## wifiManager.onP2pStateChange<sup>23+</sup>
 
 onP2pStateChange(callback: Callback&lt;int&gt;): void
 
@@ -3724,7 +3726,7 @@ onP2pStateChange(callback: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3821,7 +3823,7 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.onP2pConnectionChange<sup>22+</sup>
+## wifiManager.onP2pConnectionChange<sup>23+</sup>
 
 onP2pConnectionChange(callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
@@ -3833,7 +3835,7 @@ onP2pConnectionChange(callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3898,7 +3900,7 @@ off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): 
   wifiManager.off("p2pConnectionChange", recvP2pConnectionChangeFunc);
 ```
 
-## wifiManager.offP2pConnectionChange<sup>22+</sup>
+## wifiManager.offP2pConnectionChange<sup>23+</sup>
 
 offP2pConnectionChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
@@ -3910,7 +3912,7 @@ offP2pConnectionChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3928,9 +3930,9 @@ offP2pConnectionChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.offP2pStateChange<sup>22+</sup>
+## wifiManager.offP2pStateChange<sup>23+</sup>
 
-offP2pStateChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
+offP2pStateChange(callback?: Callback&lt;int&gt;): void
 
 取消注册P2P状态改变事件。
 
@@ -3940,13 +3942,13 @@ offP2pStateChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;[StationInfo](#stationinfo)&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
+  | callback | Callback&lt;int&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -3990,7 +3992,7 @@ on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.onP2pDeviceChange<sup>22+</sup>
+## wifiManager.onP2pDeviceChange<sup>23+</sup>
 
 onP2pDeviceChange(callback: Callback&lt;WifiP2pDevice&gt;): void
 
@@ -4002,7 +4004,7 @@ onP2pDeviceChange(callback: Callback&lt;WifiP2pDevice&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4065,19 +4067,17 @@ off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
   wifiManager.off("p2pDeviceChange", recvP2pDeviceChangeFunc);
 ```
 
-## wifiManager.offP2pDeviceChange<sup>22+</sup>
+## wifiManager.offP2pDeviceChange<sup>23+</sup>
 
 offP2pDeviceChange(callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 取消注册P2P设备本地变更事件。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4128,7 +4128,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.onP2pPeerDeviceChange<sup>22+</sup>
+## wifiManager.onP2pPeerDeviceChange<sup>23+</sup>
 
 onP2pPeerDeviceChange(callback: Callback&lt;WifiP2pDevice[]&gt;): void
 
@@ -4140,7 +4140,7 @@ onP2pPeerDeviceChange(callback: Callback&lt;WifiP2pDevice[]&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4203,19 +4203,17 @@ off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): vo
   wifiManager.off("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
 ```
 
-## wifiManager.offP2pPeerDeviceChange<sup>22+</sup>
+## wifiManager.offP2pPeerDeviceChange<sup>23+</sup>
 
 offP2pPeerDeviceChange(callback?: Callback&lt;WifiP2pDevice[]&gt;): void
 
 取消注册P2P对端设备状态改变事件。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4264,7 +4262,7 @@ on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.onP2pPersistentGroupChange<sup>22+</sup>
+## wifiManager.onP2pPersistentGroupChange<sup>23+</sup>
 
 onP2pPersistentGroupChange(callback: Callback&lt;void&gt;): void
 
@@ -4276,7 +4274,7 @@ onP2pPersistentGroupChange(callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4341,7 +4339,7 @@ off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
   wifiManager.off("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
 ```
 
-## wifiManager.offP2pPersistentGroupChange<sup>22+</sup>
+## wifiManager.offP2pPersistentGroupChange<sup>23+</sup>
 
 offP2pPersistentGroupChange(callback?: Callback&lt;void&gt;): void
 
@@ -4353,7 +4351,7 @@ offP2pPersistentGroupChange(callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4410,7 +4408,7 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.onP2pDiscoveryChange<sup>22+</sup>
+## wifiManager.onP2pDiscoveryChange<sup>23+</sup>
 
 onP2pDiscoveryChange(callback: Callback&lt;int&gt;): void
 
@@ -4422,7 +4420,7 @@ onP2pDiscoveryChange(callback: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4488,7 +4486,7 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
   wifiManager.off("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
 ```
 
-## wifiManager.offP2pDiscoveryChange<sup>22+</sup>
+## wifiManager.offP2pDiscoveryChange<sup>23+</sup>
 
 offP2pDiscoveryChange(callback?: Callback&lt;int&gt;): void
 
@@ -4500,7 +4498,7 @@ offP2pDiscoveryChange(callback?: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
