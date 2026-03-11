@@ -326,7 +326,7 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 其余流程。
+// 其余流程
 
 // 调用setPickerMode方法。
 if (avScreenCaptureRecorder != undefined) {
@@ -394,7 +394,7 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 其余流程。
+// 其余流程
 
 // 调用excludePickerWindows方法。
 if (avScreenCaptureRecorder != undefined) {
@@ -432,6 +432,7 @@ presentPicker(): Promise\<void>
 **错误码：**
 
 以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 5400102  | Operation not allowed. Return by promise. |
@@ -456,7 +457,7 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 其余流程。
+// 其余流程
 
 // 调用presentPicker方法。
 if (avScreenCaptureRecorder != undefined) {
@@ -511,7 +512,7 @@ on(type: 'stateChange', callback: Callback\<AVScreenCaptureStateCode>): void
 
 订阅录屏状态切换的事件，当状态发生的时候，会通过订阅的回调通知用户。用户只能订阅一个状态切换的回调方法，重复订阅时，以最后一次订阅的回调接口为准。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange23)。
 
@@ -540,7 +541,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 订阅AVScreenCaptureRecorder的错误事件，用户可以根据应用自身逻辑对错误事件进行处理。用户只能订阅一个错误事件的回调方法，重复订阅时，以最后一次订阅的回调接口为准。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror23)。
 
@@ -577,7 +578,7 @@ avScreenCaptureRecorder.on('error', (err: BusinessError) => {
 
 取消订阅状态切换回调事件。用户可以指定填入状态切换的回调方法来取消订阅。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange23)。
 
@@ -604,7 +605,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 取消订阅错误回调事件。用户可以指定填入错误回调方法来取消订阅。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror23)。
 

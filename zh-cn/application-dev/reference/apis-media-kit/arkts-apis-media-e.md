@@ -319,10 +319,14 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
+**ArkTS-Dyn起始版本：** 12
+ 	 
+**ArkTS-Sta起始版本：** 23
+
 | 名称                              | 值   | 说明                                         |
 | --------------------------------- | ---- | -------------------------------------------- |
-| SCREEN_RECORD_PRESET_H264_AAC_MP4 | 0    | 使用视频H264编码，音频AAC编码，MP4封装格式。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-| SCREEN_RECORD_PRESET_H265_AAC_MP4 | 1    | 使用视频H265编码，音频AAC编码，MP4封装格式。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| SCREEN_RECORD_PRESET_H264_AAC_MP4 | 0    | 使用视频H264编码，音频AAC编码，MP4封装格式。 |
+| SCREEN_RECORD_PRESET_H265_AAC_MP4 | 1    | 使用视频H265编码，音频AAC编码，MP4封装格式。 |
 
 ## AVScreenCaptureStateCode<sup>12+</sup>
 
@@ -330,18 +334,22 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
+**ArkTS-Dyn起始版本：** 12
+ 	 
+**ArkTS-Sta起始版本：** 23
+
 | 名称                                     | 值   | 说明                     |
 | ---------------------------------------- | ---- | ------------------------ |
-| SCREENCAPTURE_STATE_STARTED              | 0    | 录屏已开始。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23             |
-| SCREENCAPTURE_STATE_CANCELED             | 1    | 录屏被取消。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23             |
-| SCREENCAPTURE_STATE_STOPPED_BY_USER      | 2    | 录屏被用户手动停止。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23     |
-| SCREENCAPTURE_STATE_INTERRUPTED_BY_OTHER | 3    | 录屏被其他录屏打断。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23     |
-| SCREENCAPTURE_STATE_STOPPED_BY_CALL      | 4    | 录屏被来电打断。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23         |
-| SCREENCAPTURE_STATE_MIC_UNAVAILABLE      | 5    | 录屏无法使用麦克风收音。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-| SCREENCAPTURE_STATE_MIC_MUTED_BY_USER    | 6    | 麦克风被用户关闭。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23       |
-| SCREENCAPTURE_STATE_MIC_UNMUTED_BY_USER  | 7    | 麦克风被用户打开。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23       |
-| SCREENCAPTURE_STATE_ENTER_PRIVATE_SCENE  | 8    | 录屏进入隐私页面。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23       |
-| SCREENCAPTURE_STATE_EXIT_PRIVATE_SCENE   | 9    | 录屏退出隐私页面。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23       |
+| SCREENCAPTURE_STATE_STARTED              | 0    | 录屏已开始。             |
+| SCREENCAPTURE_STATE_CANCELED             | 1    | 录屏被取消。             |
+| SCREENCAPTURE_STATE_STOPPED_BY_USER      | 2    | 录屏被用户手动停止。     |
+| SCREENCAPTURE_STATE_INTERRUPTED_BY_OTHER | 3    | 录屏被其他录屏打断。     |
+| SCREENCAPTURE_STATE_STOPPED_BY_CALL      | 4    | 录屏被来电打断。         |
+| SCREENCAPTURE_STATE_MIC_UNAVAILABLE      | 5    | 录屏无法使用麦克风收音。 |
+| SCREENCAPTURE_STATE_MIC_MUTED_BY_USER    | 6    | 麦克风被用户关闭。       |
+| SCREENCAPTURE_STATE_MIC_UNMUTED_BY_USER  | 7    | 麦克风被用户打开。       |
+| SCREENCAPTURE_STATE_ENTER_PRIVATE_SCENE  | 8    | 录屏进入隐私页面。       |
+| SCREENCAPTURE_STATE_EXIT_PRIVATE_SCENE   | 9    | 录屏退出隐私页面。       |
 | SCREENCAPTURE_STATE_STOPPED_BY_USER_SWITCHES   | 10    | 系统用户切换，录屏中断。       |
 
 ## AVScreenCaptureFillMode<sup>18+</sup>
@@ -350,10 +358,14 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
+
 | 名称                              | 值   | 说明                                         |
 | --------------------------------- | ---- | -------------------------------------------- |
-| PRESERVE_ASPECT_RATIO | 0    | 保持与原始图像相同的宽高比例，即与物理屏幕宽高比例一致。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
-| SCALE_TO_FILL | 1    | 进行图像拉伸填充，适配设置的宽度和高度。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| PRESERVE_ASPECT_RATIO | 0    | 保持与原始图像相同的宽高比例，即与物理屏幕宽高比例一致。 |
+| SCALE_TO_FILL | 1    | 进行图像拉伸填充，适配设置的宽度和高度。 |
 
 ## AudioEncoder<sup>(deprecated)</sup>
 
