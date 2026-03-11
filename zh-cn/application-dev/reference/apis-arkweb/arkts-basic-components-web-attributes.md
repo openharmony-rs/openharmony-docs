@@ -3642,7 +3642,7 @@ ArkTS-Sta: enableNativeEmbedMode(mode: boolean | undefined)
 
 ArkTS-Dyn: forceDisplayScrollBar(enabled: boolean)
 
-ArkTS-Sta: forceDisplayScrollBar(enabled: boolean | undefined): this
+ArkTS-Sta: forceDisplayScrollBar(enabled: boolean | undefined)
 
 
 设置滚动条是否常驻。在常驻状态下，当页面大小超过一页时，滚动条出现且不消失。该属性没有显式调用时，默认设置滚动条不常驻。
@@ -4279,7 +4279,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: editMenuOptions(editMenu: EditMenuOptions)
 
-ArkTS-Sta: editMenuOptions(editMenu: EditMenuOptions | undefined): this
+ArkTS-Sta: editMenuOptions(editMenu: EditMenuOptions | undefined)
 
 Web组件自定义文本选择菜单。
 
@@ -4611,7 +4611,7 @@ struct WebComponent {
 
 ArkTS-Dyn: bindSelectionMenu(elementType: WebElementType, content: CustomBuilder, responseType: WebResponseType, options?: SelectionMenuOptionsExt)
 
-ArkTS-Sta: bindSelectionMenu(elementType: WebElementType | undefined, content: CustomBuilder | undefined, responseType: WebResponseType | undefined, options?: SelectionMenuOptionsExt | undefined): this
+ArkTS-Sta: bindSelectionMenu(elementType: WebElementType | undefined, content: CustomBuilder | undefined, responseType: WebResponseType | undefined, options?: SelectionMenuOptionsExt | undefined)
 
 设置自定义选择菜单。
 
@@ -6459,7 +6459,7 @@ wideViewModeAccess(wideViewModeAccess: boolean)
 
 ## selectionMenuOptions<sup>(deprecated)</sup>
 
-selectionMenuOptions(expandedMenuOptions: Array\<ExpandedMenuItemOptions>)
+ArkTS-Dyn: selectionMenuOptions(expandedMenuOptions: Array\<ExpandedMenuItemOptions>)
 
 Web组件自定义菜单扩展项接口，允许用户设置扩展项的文本内容、图标、回调方法。
 

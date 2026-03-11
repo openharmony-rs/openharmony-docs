@@ -3320,7 +3320,9 @@ struct WebComponent {
 
 ## onContextMenuShow<sup>9+</sup>
 
-onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
+ArkTS-Dyn: onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
+
+ArkTS-Sta: onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\> | undefined)
 
 长按特定元素（例如图片，链接）或鼠标右键，跳出菜单。
 
