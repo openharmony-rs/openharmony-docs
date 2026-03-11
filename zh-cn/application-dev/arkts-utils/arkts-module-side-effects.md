@@ -330,6 +330,16 @@ Array.prototype.includes = function (value) {
 
 <!-- @[import_modulePartEight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageEight.ets) -->
 
+``` TypeScript
+// PageEight.ets
+import { data } from './ModifyPrototype'; // 此时修改了Array的原型链
+let arr = [1, 2, 3, 4];
+console.info('arr.includes(1) = ' + arr.includes(1)); // 此时调用的是ModifyPrototype.ts中的Array.prototype.includes方法
+function maybeNotCalledAtAll() {
+  console.info('data is ', data);
+}
+```
+
 **产生的副作用**
 
 修改内置的全局对象或原型链，可能会影响其他代码运行。
