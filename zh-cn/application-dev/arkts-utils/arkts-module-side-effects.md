@@ -620,3 +620,24 @@ serviceManager.print();
 ```
 
 <!-- @[export_serviceManagerPartThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartThree.ets) -->
+
+``` TypeScript
+// har/src/main/ets/ServiceManagerPartThree.ets
+class ServiceManager {
+  public inited: boolean = false;
+
+  public init() {
+    this.inited = true;
+  }
+  public print() {
+    if (this.inited) {
+      console.info('ServiceManager is inited.');
+    } else {
+      console.error('ServiceManager is not inited.');
+    }
+  }
+}
+export let serviceManager: ServiceManager = new ServiceManager();
+// 在导出的模块执行对应的逻辑。
+serviceManager.init();
+```
