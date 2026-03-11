@@ -404,6 +404,13 @@ globalThis.someGlobalVar = 100;
 
 <!-- @[import_moduleUseGlobalVarNine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModuleUseGlobalVarNine.ets) -->
 
+``` TypeScript
+// ModuleUseGlobalVarNine.ets
+import lazy { data } from './ModulePartNine';
+console.info('globalThis.someGlobalVar', globalThis.someGlobalVar); // 此时由于lazy特性，module模块还未执行，someGlobalVar的值为undefined
+console.info('data is ', data); // 使用到module模块的变量，此时module模块执行，someGlobalVar的值变为100
+```
+
 输出内容：
 
 ```text
