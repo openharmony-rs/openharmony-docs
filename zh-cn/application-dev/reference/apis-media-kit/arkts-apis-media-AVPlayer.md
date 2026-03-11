@@ -1043,7 +1043,7 @@ ArkTS-Sta: getSelectedTracks(): Promise\<Array\<int>>
 
 | 类型                                                   | 说明                                              |
 | ------------------------------------------------------ | ------------------------------------------------- |
-| Promise\<Array\<number>> | Promise对象，返回已选择音视频轨道索引数组。 |
+| ArkTS-Dyn: Promise\<Array\<number>><br>ArkTS-Sta: Promise\<Array\<int>> | Promise对象，返回已选择音视频轨道索引数组。 |
 
 **错误码：**
 
@@ -1566,7 +1566,9 @@ avPlayer.off('speedDone');
 
 ## setPlaybackRate<sup>20+</sup>
 
-setPlaybackRate(rate: number): void
+ArkTS-Dyn: setPlaybackRate(rate: number): void
+ 	 
+ArkTS-Sta: setPlaybackRate(rate: double): void
 
 设置倍速模式。只能在prepared/playing/paused/completed状态调用，取值范围是[0.125, 4.0]，可以通过[playbackRateDone](#onplaybackratedone20)事件确认是否生效。
 
@@ -1586,7 +1588,7 @@ setPlaybackRate(rate: number): void
 
 | 参数名 | 类型                             | 必填 | 说明               |
 | ------ | -------------------------------- | ---- | ------------------ |
-| rate  | number | 是   | 指定播放倍速速率。 |
+| rate  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 指定播放倍速速率。 |
 
 **错误码：**
 

@@ -538,7 +538,11 @@ Codec MIME类型枚举。
 > **说明：**
 > 从API version 8开始支持，从API version 11开始废弃，建议使用[媒体错误码](#averrorcode9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 | 名称                       | 值   | 说明                                   |
 | -------------------------- | ---- | -------------------------------------- |
