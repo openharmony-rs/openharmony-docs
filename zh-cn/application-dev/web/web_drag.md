@@ -208,6 +208,7 @@ html示例:
 ![web-drag-drop](figures/web-dragdrop.gif)
 
 日志打印：
+
 ![web-drag-log](figures/web-drag-log.png)
 
 ## 常见问题
