@@ -566,28 +566,11 @@ ServiceManager is inited.
 
 <!-- @[import_modulePartThirteen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageThirteen.ets) -->
 
-```typescript
-// main.ets
-import { serviceManager } from "har/src/main/ets/ServiceManager"
+``` TypeScript
+// PageThirteen.ets
+import { serviceManager } from 'staticlibrary/src/main/ets/ServiceManagerPartTwo';
 
 serviceManager.print();
-
-// har/src/main/ets/ServiceManager.ets
-class ServiceManager {
-    public inited: boolean = false;
-
-    public init() {
-        this.inited = true;
-    }
-    public print() {
-        if (this.inited) {
-            console.info("ServiceManager is inited.");
-        } else {
-            console.error("ServiceManager is not inited.");
-        }
-    }
-}
-export let serviceManager: ServiceManager = new ServiceManager();
 ```
 
 <!-- @[export_serviceManagerPartTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartTwo.ets) -->
