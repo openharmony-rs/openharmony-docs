@@ -272,33 +272,11 @@ ArkUI组件的状态变量信息可以通过一些应用级接口修改，详见
 
 <!-- @[export_modulePartSeven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartSeven.ets) -->
 
-```typescript
-// module.ets
-export let data = "data from module"
+``` TypeScript
+// ModulePartSeven.ets
+export let data = 'data from module';
 export function initialize() {
-    AppStorage.setOrCreate("SomeAppStorageVar", 200);
-}
-
-// Index.ets
-import { data } from "./module"
-
-@Entry
-@Component
-struct Index {
-    @StorageLink("SomeAppStorageVar") message: number = 100;
-    build() {
-        Row() {
-            Column() {
-                Text("test" + this.message)
-                    .fontSize(50)
-            }
-            .width("100%")
-        }
-        .height("100%")
-    }
-}
-function maybeNotCalledAtAll() {
-    console.info("data is ", data);
+  AppStorage.setOrCreate('SomeAppStorageVar', 200);
 }
 ```
 
