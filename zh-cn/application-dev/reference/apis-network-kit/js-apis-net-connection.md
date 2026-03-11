@@ -2622,15 +2622,16 @@ queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise<TraceR
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | destination | string | 是 | 目标域名或IP地址。 |
-| option | [TraceRouteOptions](#tracerouteoptions) | 否 | 路由跟踪的选项参数，缺省则使用默认配置。 |
+| option | [TraceRouteOptions](#tracerouteoptions26) | 否 | 路由跟踪的选项参数，缺省则使用默认配置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise<[TraceRouteInfo](#tracerouteinfo)[]> | Promise对象，返回路由跟踪信息数组。 |
+| Promise<[TraceRouteInfo](#tracerouteinfo26)[]> | Promise对象，返回路由跟踪信息数组。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
@@ -2686,10 +2687,11 @@ queryProbeResult(destination: string, duration: number): Promise<ProbeResultInfo
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise<[ProbeResultInfo](#proberesultinfo)> | Promise对象，返回探测结果信息。 |
+| Promise<[ProbeResultInfo](#proberesultinfo26)> | Promise对象，返回探测结果信息。 |
 
 **错误码：**
-
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+  
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
@@ -3580,6 +3582,19 @@ TCP状态。
 | LAST_ACK    | 9  | 被动端发送FIN后，等待对方ACK。 |
 | LISTEN      | 10 | 服务端监听，等待客户端连接。 |
 | CLOSING     | 11 | 双方同时发送FIN，互相等待ACK。   |
+  
+  ## PacketsType<sup>26+</sup>
+
+网络探测数据包类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+  
+  **系统能力：** SystemCapability.Communication.NetManager.Core
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| NETCONN_PACKETS_ICMP | 0 | ICMP数据包类型。 |
+| NETCONN_PACKETS_UDP | 1 | UDP数据包类型。 |
 
 ## HttpProxy<sup>10+</sup>
 
@@ -3853,3 +3868,46 @@ UDP端口状态信息。
 | ------ | ------ | --- |---|------------------------- |
 | tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo>](#tcpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的TCP信息。   |
 | udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的UDP信息。   |
+  
+ 
+  ## TraceRouteOptions<sup>26+</sup>
+
+路由跟踪的选项。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+  
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+| 名称 | 类型 |  只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| maxJumpNumber | number | 否|  是| 最大跳数，最大值为30，默认值为30。。 |
+| packetsType | [PacketsType](#packetstype26) | 否 | 是| 探测使用的数据包类型，默认为NETCONN_PACKETS_ICMP。 |
+  
+
+## TraceRouteInfos<sup>26+</sup>
+
+路由跟踪信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+  
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+| 名称 | 类型 |  只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| jumpNo | number | 否 | 否 | 跳数序号。 |
+| address | string | 否 | 否 | 该跳的ip地址。 |
+| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。每一跳发送多个探测报文，数组元素依次为这些探测报文RTT中的最小值、平均值、最大值、标准差。 |
+  
+
+## ProbeResultInfos<sup>26+</sup>
+
+网络探测结果信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+  
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| lossRate | number | 否 | 否 | 丢包率。例如，100表示100%丢包，50表示50%丢包。 |
+| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。对目的主机发送多个探测报文，数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。 |
