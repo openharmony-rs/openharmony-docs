@@ -281,7 +281,7 @@ setValueForAccount(admin: Want, item: SettingsItem, accountId: number, value: st
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | item   | [SettingsItem](#settingsitem24)                                                  | 是   | 设备设置策略类型。|
 | accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。                       |
-| value  | string                                                  | 是   | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，value为设备名称的字符串。 字符串长度范围：大于等于1，小于等于100。|
+| value  | string                                                  | 是   | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，value为设备名称的字符串。 字符串长度范围：大于等于1，小于等于100。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，value为三键导航的开关状态，'0'表示三键导航已开启，'1'表示三键导航已关闭。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，该接口在该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。|
 
 **错误码**：
 
@@ -342,7 +342,7 @@ getValueForAccount(admin: Want, item: SettingsItem, accountId: number): string
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| string | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，返回设备名称。 |
+| string | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，返回设备名称。 <br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，返回指定用户的三键导航的开关状态。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，该接口在该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。|
 
 **错误码**：
 
@@ -379,7 +379,7 @@ try {
 ```
 
 ## SettingsItem<sup>24+</sup>
- 	 
+
 设置的策略类型。
  	 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -388,3 +388,4 @@ try {
 | 名称 | 值   | 说明           |
 | ---- | ---- | -------------- |
 | DEVICE_NAME   | 0    | 设备名称。 |
+| FLOATING_NAVIGATION<sup>24+</sup>   | 1   | 三键导航。 |
