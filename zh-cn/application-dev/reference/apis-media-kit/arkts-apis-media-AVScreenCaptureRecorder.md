@@ -326,7 +326,7 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 其余流程
+// 其余流程。
 
 // 调用setPickerMode方法。
 if (avScreenCaptureRecorder != undefined) {
@@ -394,7 +394,7 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 其余流程
+// 其余流程。
 
 // 调用excludePickerWindows方法。
 if (avScreenCaptureRecorder != undefined) {
@@ -457,7 +457,7 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 其余流程
+// 其余流程。
 
 // 调用presentPicker方法。
 if (avScreenCaptureRecorder != undefined) {
