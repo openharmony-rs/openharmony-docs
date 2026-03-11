@@ -408,9 +408,9 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 >
 > - 不建议在除自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）外的其他窗口模式下使用。
 >
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于父窗口移动。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕左上顶点移动；在非自由窗口状态下，窗口相对于父窗口左上顶点移动。
 >
-> - 若需在非自由窗口状态下实现相对于屏幕的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal15)。
+> - 若需在非自由窗口状态下实现相对于屏幕左上顶点的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal15)。
 >
 > - 该方法对非自由窗口状态下的主窗口无效。
 
