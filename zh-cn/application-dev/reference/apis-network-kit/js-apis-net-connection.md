@@ -3584,14 +3584,16 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称    | 类型   | 只读|可选 |说明                      |
-| ------ | ------ | --- |---|------------------------- |
-| interfaceName | string                              | 否 | 否 |网卡名称。                                |
-| domains       | string                              | 否 | 否 |域名。                                    |
-| linkAddresses | Array\<[LinkAddress](#linkaddress)> | 否 | 否 |链路信息。                                |
-| routes        | Array\<[RouteInfo](#routeinfo)>     | 否 | 否 |路由信息。                                |
-| dnses         | Array\<[NetAddress](#netaddress)>   | 否 | 否 |网络地址，参考[NetAddress](#netaddress)。 |
-| mtu           | number                              | 否 | 否 |最大传输单元。                            |
+| 名称    | 类型   | 只读|可选 | 说明                                                                         |
+| ------ | ------ | --- |---|----------------------------------------------------------------------------|
+| interfaceName | string                              | 否 | 否 | 网卡名称。                                                                      |
+| domains       | string                              | 否 | 否 | 域名。                                                                        |
+| linkAddresses | Array\<[LinkAddress](#linkaddress)> | 否 | 否 | 链路信息。                                                                      |
+| routes        | Array\<[RouteInfo](#routeinfo)>     | 否 | 否 | 路由信息。                                                                      |
+| dnses         | Array\<[NetAddress](#netaddress)>   | 否 | 否 | 网络地址，参考[NetAddress](#netaddress)。                                          |
+| mtu           | number                              | 否 | 否 | 最大传输单元。                                                                    |
+| isIPv4LinkValid | boolean                             | 否 | 是 | 接口的IPv4地址是否有效。<br/>当前网络的IPv4是否可用。<br/>说明：当IPv4地址有效，且存在IPv4的默认路由时，认为IPv4可用。 |
+| isIPv6LinkValid | boolean                             | 否 | 是 | 接口的IPv6地址是否有效。                                                             |
 
 ## RouteInfo
 
