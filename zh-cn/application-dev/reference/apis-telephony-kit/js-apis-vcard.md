@@ -350,7 +350,7 @@ VCard版本和编码信息。
 **系统能力**：SystemCapability.Telephony.CoreService
 
 | 名称         | 类型   | 只读| 可选|    说明    |
-| ------------ | ------ | ---- | ---------- |
+| ------------ | ------ | ----|----| ---------- |
 | cardType     | [VCardType](../apis-telephony-kit/js-apis-vcard.md) |  是| 是 | VCard版本类型 (默认值为VERSION_21)。     |
 | charset       | string |  是|是  | VCard编码类型（默认值为'UTF-8'）。     |
 
