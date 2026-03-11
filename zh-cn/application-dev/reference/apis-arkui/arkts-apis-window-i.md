@@ -86,7 +86,7 @@
 
 | 名称   | 类型 | 只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
-| firstDrawFrame   | ArkTS-Dyn: boolean<br>ArkTS-Sta: boolean   | 否   | 否   | 是否是首帧。true表示首帧，false表示非首帧。 |
+| firstDrawFrame   | boolean   | 否   | 否   | 是否是首帧。true表示首帧，false表示非首帧。 |
 | inputHandlingDuration    | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 一帧中的手势处理耗时（单位：纳秒）。 |
 | layoutMeasureDuration  | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 一帧中的布局测量耗时（单位：纳秒）。 |
 | vsyncTimestamp | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 当前帧的开始时间戳（单位：纳秒）。 |
