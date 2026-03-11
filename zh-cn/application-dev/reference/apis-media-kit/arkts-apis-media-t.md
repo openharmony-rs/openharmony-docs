@@ -13,6 +13,10 @@ type SoundPool = _SoundPool
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型     | 说明                       |
 | -------- | ------------------------------ |
 | [_SoundPool](js-apis-inner-multimedia-soundPool.md#soundpool)  | 音频池，提供了系统声音的加载、播放、音量设置、循环设置、停止播放、资源卸载等功能。 |
@@ -24,6 +28,10 @@ type PlayParameters = _PlayParameters
 表示音频池播放参数设置。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型     | 说明                       |
 | -------- | ------------------------------ |
@@ -161,7 +169,9 @@ type OnSuperResolutionChanged = (enabled: boolean) => void
 
 ## OnSeiMessageHandle<sup>18+</sup>
 
-type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: number) => void
+ArkTS-Dyn: type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: number) => void
+
+ArkTS-Sta: type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: int) => void
 
 获取SEI信息，使用场景：订阅SEI信息事件，回调返回SEI详细信息。
 
@@ -169,12 +179,16 @@ type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: numb
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   |   类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | messages | Array\<[SeiMessage](arkts-apis-media-i.md#seimessage18)> | 是  | SEI信息。 |
-| playbackPosition | number | 否  | 获取当前播放位置（单位：毫秒）。 |
+| playbackPosition | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  | 获取当前播放位置（单位：毫秒）。 |
 
 ## OnPlaybackRateDone<sup>20+</sup>
 
@@ -195,6 +209,28 @@ ArkTS-Sta: type OnPlaybackRateDone = (rate: double) => void
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
 | rate | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 播放速率。 |
+
+## OnFrameFetched<sup>23+</sup>
+
+type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError\<void>) => void
+
+批量获取缩略图回调函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ------ | ---------------------------------------------------------- |
+| frameInfo  | [FrameInfo](arkts-apis-media-i.md#frameinfo23) | 是 | 返回的缩略图信息。     |
+| err | BusinessError\<void> | 否 | 获取缩略图时发生错误，默认值为null。 |
+
 
 ## AVRecorderState<sup>9+</sup>
 

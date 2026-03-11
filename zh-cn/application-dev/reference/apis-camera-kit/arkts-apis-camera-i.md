@@ -370,3 +370,53 @@
 | 名称     | 类型        |   只读   |   可选   | 说明       |
 | -------- | ---------- | -------- | -------- | ---------- |
 | duration |   ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/>   |   否     |    否    | 平滑变焦总时长，单位ms。 |
+
+## ControlCenterStatusInfo<sup>20+</sup>
+
+相机控制器效果激活状态信息。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称     | 类型        |   只读   |   可选   | 说明       |
+| -------- | ---------- | -------- | -------- | ---------- |
+| effectType | [ControlCenterEffectType](arkts-apis-camera-e.md#controlcentereffecttype20) |   是    |    否    | 相机控制器效果类型。 |
+| isActive | boolean | 是| 否| 相机控制器效果激活状态。true表示已激活，false表示未激活。 |
+
+## IsoInfo<sup>22+</sup>
+
+感光度（ISO）参数信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型    | 只读 | 可选 | 说明           |
+| ---- | ------- | ---- |--| -------------- |
+| iso  | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是   | 是 | ISO值。        |
+
+## CameraOcclusionDetectionResult<sup>23+</sup>
+
+镜头遮挡或脏污检测回调返回的接口实例，表示镜头遮挡或脏污状态信息。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                 | 类型       | 只读 | 可选 | 说明                                |
+|--------------------| ---------- | ---- | ---- |-----------------------------------|
+| isCameraOccluded   | boolean    | 是   | 否   | 镜头是否被遮挡。true表示镜头被遮挡，false表示镜头无遮挡。 |
+| isCameraLensDirty  | boolean    | 是   | 否   | 镜头是否有脏污。true表示镜头有脏污，false表示镜头无脏污。 |

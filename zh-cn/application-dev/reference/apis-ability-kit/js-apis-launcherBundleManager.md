@@ -16,7 +16,8 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 
 ## launcherBundleManager.getLauncherAbilityInfoSync<sup>18+</sup>
 
-ArkTS-Dyn: getLauncherAbilityInfoSync(bundleName: string, userId: number): Array\<LauncherAbilityInfo\><br>
+ArkTS-Dyn: getLauncherAbilityInfoSync(bundleName: string, userId: number): Array\<LauncherAbilityInfo\>
+
 ArkTS-Sta: getLauncherAbilityInfoSync(bundleName: string, userId: int): Array\<LauncherAbilityInfo\>
 
 查询指定bundleName及用户的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。
