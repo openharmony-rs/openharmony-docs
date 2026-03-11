@@ -193,6 +193,19 @@ export function useGlobalVar() {
 
 <!-- @[import_modulePartFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageFive.ets) -->
 
+``` TypeScript
+// PageFive.ets（执行入口）
+import { data1 } from './ModulePartFive';
+import { data2 } from './SideEffectModuleFive';
+import { useGlobalVar } from './ModuleUseGlobalVarFive';
+
+useGlobalVar();
+function maybeNotCalledAtAll() {
+  console.info('data1 is ', data1);
+  console.info('data2 is ', data2);
+}
+```
+
 输出内容：
 
 ```text
