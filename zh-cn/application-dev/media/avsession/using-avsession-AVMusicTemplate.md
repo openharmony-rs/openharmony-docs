@@ -236,7 +236,7 @@
    ```
 
 
-3. 在音频模板控制方无法直接感知的场景，需要媒体应用主动向音频模板控制方同步数据。详情请查看[AVMusicTemplate API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。例如，扫码登录成功的场景，当用户在音频模板控制方界面扫码登录，因为登录状态只有媒体应用能感知，所以需要调用接口[setUserInfo](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md#setuserinfo)给音频模板控制方同步数据。
+3. 在音频模板控制方无法直接感知的场景，需要媒体应用主动向音频模板控制方同步数据。同步接口详情请查看[API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。例如，扫码登录成功的场景，当用户在音频模板控制方界面扫码登录，因为登录状态只有媒体应用能感知，所以需要调用接口[setUserInfo](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md#setuserinfo)给音频模板控制方同步数据。
    
    <!-- @[set_user_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
@@ -278,7 +278,7 @@
    }
    ```
    
-4. 媒体应用启动时注册的事件监听需要在退出时注销，以释放资源。详情请查看[AVMusicTemplate API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
+4. 媒体应用启动时注册的事件监听需要在退出时注销，以释放资源。注销接口详情请查看[API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
 
    <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    

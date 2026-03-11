@@ -272,7 +272,7 @@
    }
    ```
    
-3. 下发媒体控制指令。音频模板控制方根据操作下发指令给媒体应用。接口详情请查看[API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。例如，搜播需要调用接口[playForSearch](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md#playforsearch)。该接口支持音视频，示例仅以音频为例。视频需将参数实体类SearchPlayInfo的成员变量更换为SearchPlayVideoInfo类型的videoInfo。
+3. 下发媒体控制指令。音频模板控制方根据操作下发指令给媒体应用。下发指令接口详情请查看[API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。例如，搜播需要调用接口[playForSearch](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md#playforsearch)。该接口支持音视频，示例仅以音频为例。视频需将参数实体类SearchPlayInfo的成员变量更换为SearchPlayVideoInfo类型的videoInfo。
 
    <!-- @[play_for_search](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
    
@@ -350,7 +350,7 @@
    }
    ```
    
-5. 在音频模板控制方应用退出时及时取消事件监听，并释放资源。注销音频模板接口详情请查看[音频模板API](../../reference/apis-avsession-kit/js-apis-avsession-avMusicTemplate-sys.md)，注销事件监听接口详情请查看[AVMusicTemplateController API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
+5. 在音频模板控制方应用退出时及时取消事件监听，并释放资源。注销音频模板接口详情请查看[API](../../reference/apis-avsession-kit/js-apis-avsession-avMusicTemplate-sys.md)，注销事件监听接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
    <!-- @[release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
    
