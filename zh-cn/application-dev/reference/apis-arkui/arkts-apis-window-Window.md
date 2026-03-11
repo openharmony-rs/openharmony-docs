@@ -5935,6 +5935,8 @@ on(type: 'screenshotAppEvent', callback: Callback&lt;ScreenshotEventType&gt;): v
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onScreenshotAppEvent](#onscreenshotappevent23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **ArkTS-Dyn起始版本：** 20
@@ -5968,6 +5970,49 @@ try {
 }
 ```
 
+## onScreenshotAppEvent<sup>23+</sup>
+
+onScreenshotAppEvent(callback: Callback&lt;ScreenshotEventType&gt;): void
+
+开启屏幕截屏事件类型的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('screenshotAppEvent')](#onscreenshotappevent20)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                                         |
+| -------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[ScreenshotEventType](arkts-apis-window-e.md#screenshoteventtype20)&gt; | 是   | 回调函数。返回触发的截屏事件类型。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (eventType: window.ScreenshotEventType) => {
+  console.info(`screenshotAppEvent happened. Event: ${eventType}`);
+}
+try {
+  windowClass.onScreenshotAppEvent(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('screenshotAppEvent')<sup>20+</sup>
 
 off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;): void
@@ -5979,6 +6024,8 @@ off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;):
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **ArkTS-Dyn起始版本：** 20
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offScreenshotAppEvent](#offscreenshotappevent23)。
 
 **参数：**
 
@@ -6011,6 +6058,54 @@ try {
   windowClass.off('screenshotAppEvent');
 } catch (exception) {
   console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offScreenshotAppEvent<sup>23+</sup>
+
+offScreenshotAppEvent(callback?: Callback&lt;ScreenshotEventType&gt;): void
+
+关闭屏幕截屏事件类型的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('screenshotAppEvent')](#offscreenshotappevent20)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                                         |
+| -------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[ScreenshotEventType](arkts-apis-window-e.md#screenshoteventtype20)&gt; | 否   | 回调函数。返回触发的截屏事件类型。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口截图事件的监听。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (eventType: window.ScreenshotEventType) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onScreenshotAppEvent(callback);
+  // 关闭指定callback的监听
+  windowClass.offScreenshotAppEvent(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offScreenshotAppEvent();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -9638,7 +9733,7 @@ getWindowColorSpace(): ColorSpace
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.|
 
 **示例：**
 
