@@ -320,20 +320,12 @@ test100
 
 <!-- @[export_modifyPrototype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModifyPrototype.ts) -->
 
-```typescript
-// modifyPrototype.ts
-export let data = "data from modifyPrototype"
+``` TypeScript
+// ModifyPrototype.ts
+export let data = 'data from modifyPrototype';
 Array.prototype.includes = function (value) {
-    return this.indexOf(value) !== -1;
+  return this.indexOf(value) !== -1;
 };
-
-// main.ets
-import { data } from "./modifyPrototype" // 此时修改了Array的原型链
-let arr = [1, 2, 3, 4];
-console.info("arr.includes(1) = " + arr.includes(1)); // 此时调用的是modifyPrototype.ts中的Array.prototype.includes方法
-function maybeNotCalledAtAll() {
-    console.info("data is ", data);
-}
 ```
 
 <!-- @[import_modulePartEight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageEight.ets) -->
