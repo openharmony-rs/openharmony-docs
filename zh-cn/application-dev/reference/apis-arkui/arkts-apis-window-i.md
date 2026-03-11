@@ -80,6 +80,10 @@
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型 | 只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
 | firstDrawFrame   | boolean   | 否   | 否   | 是否是首帧。true表示首帧，false表示非首帧。 |
