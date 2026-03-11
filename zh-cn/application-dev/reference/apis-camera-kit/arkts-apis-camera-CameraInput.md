@@ -573,9 +573,9 @@ function isPhysicalCameraOrientationVariable(cameraInput: camera.CameraInput): b
 
 ## getPhysicalCameraOrientation<sup>22+</sup>
 
-ArkTs-Dyn: getPhysicalCameraOrientation(): number
+ArkTS-Dyn: getPhysicalCameraOrientation(): number
 
-ArkTs-Sta: getPhysicalCameraOrientation(): int
+ArkTS-Sta: getPhysicalCameraOrientation(): int
 
 获取设备当前折叠状态下的物理镜头角度。
 
@@ -591,11 +591,11 @@ ArkTs-Sta: getPhysicalCameraOrientation(): int
 
 | 类型        | 说明                                         |
 | ---------- | -------------------------------------------- |
-| ArkTs-Dyn: number<br/> ArkTs-Sta: int<br/>    | 返回设备当前折叠状态下的物理镜头角度。 |
+| ArkTS-Dyn: number<br/> ArkTS-Sta: int<br/>    | 返回设备当前折叠状态下的物理镜头角度。 |
 
 **示例：**
 
-ArkTs-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
@@ -603,7 +603,7 @@ function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
   return physicalCameraOrientation;
 }
 ```
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): int {
