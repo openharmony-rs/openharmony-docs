@@ -1,4 +1,4 @@
-# # @ohos.net.webSocket (WebSocket Connection)
+# @ohos.net.webSocket (WebSocket Connection)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -127,7 +127,7 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 >**NOTE**
 >
->The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters.
 
 **Parameters**
 
@@ -195,7 +195,7 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 
 >**NOTE**
 >
->The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters.
 
 **Parameters**
 
@@ -1246,7 +1246,7 @@ Subscribes to the WebSocketServer connection event (the connection between the c
 | Name | Type                   | Mandatory| Description                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------------------- |
 | type     | string                  | Yes | Event type, which has a fixed value of **connect**. Successful calling of **onconnect()** indicates that a connection is established between the client and server.|
-| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | Yes| Callback used to return the result, which is the information about connected clients.|
+| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | Yes| Callback used to return the information about connected clients.|
 
 **Example**
 
@@ -1277,7 +1277,7 @@ Unsubscribes from WebSocketServer connection events (the connection between the 
 | Name | Type                   | Mandatory| Description                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------- |
 | type     | string                  | Yes | Event type, which has a fixed value of **connect**. Successful calling of **offconnect()** indicates that listening for connection events is canceled successful.|
-| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | No | Callback used to return the result, which is the information about connected clients.|
+| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | No | Callback used to return the information about connected clients.|
 
 **Example**
 
@@ -1445,7 +1445,7 @@ Unsubscribes from WebSocketServer error events. This API uses an asynchronous ca
 | Name | Type                   | Mandatory| Description                          |
 | -------- | ------------- | ---- | --------------------------------- |
 | type     | string        | Yes|  Event type, which has a fixed value of **error**. Successful calling of **offerror()** indicates that listening for the **error** events is canceled successfully.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| Callback used to return the result, which is the error code (default value: **200**).                        |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| Callback used to return the error code (default value: **200**).                        |
 
 **Example**
 

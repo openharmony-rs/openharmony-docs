@@ -54,7 +54,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 import { AnimatorResult } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const LOG_PRINT_DOMAIN:  number = 0xFF00;
+const LOG_PRINT_DOMAIN: number = 0xFF00;
 const PREFIX: string = '[Sample]'
 
 class MyFullDrawModifier extends DrawModifier {
@@ -424,20 +424,20 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Stack().width(300).height(300).drawModifier(this.myDrawModifier).position({x:10,y:10})
+        Stack().width(300).height(300).drawModifier(this.myDrawModifier).position({ x: 10, y: 10 })
       }
       .borderWidth(1)
       .height(200)
       .width('45%')
 
       Column() {
-        Stack().width(300).height(300).drawModifier(this.myDrawModifier1).position({x:10,y:10})
+        Stack().width(300).height(300).drawModifier(this.myDrawModifier1).position({ x: 10, y: 10 })
       }
       .borderWidth(1)
       .height(200)
       .width('45%')
     }.height('100%')
-    .width('100%').position({x:10,y:10})
+    .width('100%').position({ x: 10, y: 10 })
 
   }
 }

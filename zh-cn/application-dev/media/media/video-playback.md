@@ -128,9 +128,9 @@
     avPlayer.url = url;
     ```
 
-4. 设置窗口：获取并设置属性SurfaceID，用于设置显示画面。
+4. 设置窗口：获取并设置属性surfaceId，用于设置显示画面。
 
-   应用需要从XComponent组件获取surfaceID，获取方式请参考[getXComponentSurfaceId](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)。
+   应用需要从XComponent组件获取surfaceId，获取方式请参考[getXComponentSurfaceId](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)。
 
     ```ts
     // 通过接口getXComponentSurfaceId获取surfaceId。

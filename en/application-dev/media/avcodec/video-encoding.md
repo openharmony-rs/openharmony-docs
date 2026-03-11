@@ -46,8 +46,6 @@ The following table lists the video encoding capabilities supported:
     - In buffer mode, call **OH_VideoEncoder_PushInputBuffer** to input data. In surface mode, before the encoder is ready, call **OH_VideoEncoder_GetSurface** to obtain the OHNativeWindow for video data transmission.
     - In buffer mode, you can use **attr** in **OH_AVBuffer** to pass in the End of Stream (EOS) flag, and the encoder stops when it reads the last frame. In surface mode, call **OH_VideoEncoder_NotifyEndOfStream** to notify the encoder of EOS.
 
-4. Data transfer performance in surface mode is better than that in buffer mode.
-
 For details about the development procedure, see [Surface Mode](#surface-mode) and [Buffer Mode](#buffer-mode).
 
 ## State Machine Interaction
@@ -237,7 +235,7 @@ The following walks you through how to implement the entire video encoding proce
 
     ```c++
     // Create an encoder by MIME type. Only specific codecs recommended by the system can be created in this way.
-    // Only hardware encoders can be created.
+    // The system preferentially creates a hardware encoder instance. If hardware encoding is not supported or all hardware encoder instances are occupied, a software encoder instance will be created.
     OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     ```
 
@@ -904,9 +902,9 @@ The following walks you through how to implement the entire video encoding proce
     }
     ```
 
-    Offset the stride. The following uses an NV12 image as an example,
+    Offset the stride.
 
-    presenting the image layout of **width**, **height**, **wStride**, and **hStride**.
+    The following uses an NV12 image as an example, presenting the image layout of **width**, **height**, **wStride**, and **hStride**.
 
     - **OH_MD_KEY_WIDTH** corresponds to **width**.
     - **OH_MD_KEY_HEIGHT** corresponds to **height**.

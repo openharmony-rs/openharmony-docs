@@ -28,8 +28,8 @@ The file declares the functions related to an audio capturer.
 | -- | -- | -- |
 | [OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer)](#oh_audiocapturer_release) | - | Releases an audio capturer.|
 | [OH_AudioStream_Result OH_AudioCapturer_Start(OH_AudioCapturer* capturer)](#oh_audiocapturer_start) | - | Starts an audio capturer to start capturing audio data.|
-| [OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)](#oh_audiocapturer_pause) | - | Pauses an audio capturer.|
-| [OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)](#oh_audiocapturer_stop) | - | Stops an audio capturer, ceasing the input audio stream.|
+| [OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)](#oh_audiocapturer_pause) | - | Pauses an audio capturer. You are advised to use the pause function if you need to resume audio recording later.|
+| [OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)](#oh_audiocapturer_stop) | - | Stops an audio capturer, ceasing the input audio stream. You are advised to use the stop function if you need to terminate recording completely.|
 | [OH_AudioStream_Result OH_AudioCapturer_Flush(OH_AudioCapturer* capturer)](#oh_audiocapturer_flush) | - | Flushes audio data captured by an audio capturer.|
 | [OH_AudioStream_Result OH_AudioCapturer_GetCurrentState(OH_AudioCapturer* capturer, OH_AudioStream_State* state)](#oh_audiocapturer_getcurrentstate) | - | Obtains the state of an audio capturer.|
 | [OH_AudioStream_Result OH_AudioCapturer_GetLatencyMode(OH_AudioCapturer* capturer, OH_AudioStream_LatencyMode* latencyMode)](#oh_audiocapturer_getlatencymode) | - | Obtains the latency mode of an audio capturer.|
@@ -114,7 +114,7 @@ OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)
 
 **Description**
 
-Pauses an audio capturer.
+Pauses an audio capturer. You are advised to use the pause function if you need to resume audio recording later.
 
 **Required permissions**: ohos.permission.MICROPHONE
 
@@ -141,7 +141,7 @@ OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)
 
 **Description**
 
-Stops an audio capturer, ceasing the input audio stream.
+Stops an audio capturer, ceasing the input audio stream. You are advised to use the stop function if you need to terminate recording completely.
 
 **Required permissions**: ohos.permission.MICROPHONE
 

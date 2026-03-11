@@ -1,4 +1,4 @@
-# Managing Microphone Mute Status
+# Managing Microphone Mute State
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -33,7 +33,7 @@ The **AudioVolumeGroupManager** class provides APIs for managing the microphone 
 
 2. Call [on('micStateChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#onmicstatechange9) to listen for microphone state changes. When the microphone mute state changes, the application will be notified of the change.
 
-   Currently, when multiple AudioManager instances are used in a single process, only the subscription of the last instance takes effect, and the subscription of other instances is overwritten (even if the last instance does not initiate a subscription). Therefore, you are advised to use a single AudioManager instance.
+   Currently, in scenarios where multiple [AudioManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md) instances are used in a single process, this subscription API only takes effect for the last instance. Subscriptions for other instances will be overwritten (even if the last instance has no active subscription). For this reason, you are advised to use a single **AudioManager** instance for development.
 
    ```ts
    // Listen for microphone state changes.

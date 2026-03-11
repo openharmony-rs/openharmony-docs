@@ -29,7 +29,7 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
 | \#define OH_LOG_FATAL(type, ...) ((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, **VA_ARGS**)) | Outputs FATAL logs. This is a function-like macro.|
 | void OH_LOG_SetCallback(LogCallback callback) | Registers a callback to return the HiLog logs for the process. When the **OH_LOG_IsLoggable** API returns true, the callback can obtain the log.|
 | void OH_LOG_SetMinLogLevel(LogLevel level) | Sets the minimum log level.<br>Note: This API is supported since API version 15.|
-| void OH_LOG_SetLogLevel(LogLevel level, PreferStrategy prefer) | Sets the minimum log level of the current application process. You can configure different preference strategies.<br>Note: This API is supported since API version 21.| 
+| void OH_LOG_SetLogLevel(LogLevel level, PreferStrategy prefer) | Sets the minimum log level of the current application process. You can configure different preference strategies.<br>Note: This API is supported since API version 21.|
 
 > **NOTE**
 >
@@ -59,10 +59,10 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
 
   | Specifier| Description| Example|
   | -------- | -------- | -------- |
-  | d/i | The **number** and **bool** types can be printed.| 123 |
-  | s | The char\* type can be printed.| "123" |
+  | d/i | The decimal integer type can be printed.| 123 |
+  | s | The char\* type can be printed.| "this is a hilog" |
 
-  You can set multiple parameters in the **format** string, for example, **%s World**, where **%s** is a variable of the string type and its value is defined by **args**. 
+  Multiple parameters can be set in the format string. For example, if the format string is **"%s World"**, **"%s"** is a variable parameter identifier indicating that the parameter type is string. The specific value is defined in **args**. For the usage of format specifiers, see [printf](https://man7.org/linux/man-pages/man3/printf.3.html).
 
   The debug application does not have a privacy control mechanism. Parameters can be displayed in plaintext when any of the preceding private flags is used to print logs.
 
@@ -101,7 +101,7 @@ The maximum size of a log file is 4096 bytes. Excess content will be discarded.
    #undef LOG_DOMAIN
    #undef LOG_TAG
    #define LOG_DOMAIN 0x3200 // Global domain, which identifies the service domain.
-   #define LOG_TAG "MY_TAG"   // Global tag, which identifies the module log tag.
+   #define LOG_TAG "MY_TAG"   // Global tag macro, which identifies the module log tag.
    ```
 
 3. Print logs.

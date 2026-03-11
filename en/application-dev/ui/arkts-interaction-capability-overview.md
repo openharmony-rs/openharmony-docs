@@ -1,7 +1,7 @@
 # Interaction Response Overview
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -30,7 +30,7 @@ Non-pointer events include [key events](../reference/apis-arkui/arkui-ts/ts-univ
 
 ### Additional Notes
 
-Basic events typically begin with a start marker and end with an end marker, with multiple move or update events in between. For example: Touch event sequence: Down -> Move -> Move -> ... -> Up; Mouse wheel axis event sequence: Begin -> Update -> Update -> ... -> End.
+Basic events typically begin with a start marker and end with an end marker, with multiple move or update events in between. For example, touch event sequence is Down -> Move -> Move -> ... -> Up, and mouse wheel axis event sequence is Begin -> Update -> Update -> ... -> End.
 
 Some basic events do not follow this pattern. For example, key events only have **Down** and **Up** states, with **Down** events reported continuously during sustained presses.
 

@@ -1550,3 +1550,72 @@ In the preceding example:
 When **change** is clicked, the value of **message** is changed. The onMessageUpdated method registered by @Watch in the TabContent component that is being displayed is triggered. Unexpected: For **TabContent** components that are not being displayed, the @Watch decorated **onMessageUpdated** callbacks of child components under the BuilderNode are also triggered, indicating that these components are not frozen.
 
 ![builderNode.gif](figures/builderNode.gif)
+
+### **Watch Not Triggered by Unfreezing When Component Freezing and Reuse Are Mixed**
+
+In the following example, component freezing is enabled for the **ChildComponent**, and the component is marked for reuse. When the state variable **condition** bound to the **if** component is modified to **false**, the **ChildComponent** is removed from the tree and enters the reuse pool. Because component freezing is enabled for the child component, the component is also frozen when it enters the reuse pool. In the reuse pool, if the state variable **count** is modified, the component is not refreshed or the **Watch** callback is not triggered because the component is in the **inactive** state.
+When the state variable **condition** bound to the **if** component is modified to **true**, the **ChildComponent** is removed from the reuse pool and marked as **active**, but the **Watch** callback bound to the state variable **count** is not triggered. This is because the execution logic of component reuse precedes that of component unfreezing. When a child component is reused, it [refreshes dirty nodes](./arkts-state-management-introduce.md#triggering-updates) (including [system components bound to variables](./arkts-state-management-introduce.md#collecting-dependencies) that require delayed refresh during freezing) and clears the dirty node list. After the child component is reused, it is marked as **active** again. In this case, the child component executes the unfreezing logic. Because the dirty node list is cleared during reuse, the system determines that no variable is changed during freezing and does not trigger the **Watch** callback.
+
+<!-- @[Freeze_and_Reuse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/FreezeReuse.ets) --> 
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+@Reusable
+@Component({ freezeWhenInactive: true })
+struct ChildComponent {
+  @Link @Watch('onChange') count: number;
+
+  onChange() {
+    hilog.info(DOMAIN, TAG, `ChildComponent messageChange ${this.count}`);
+  }
+
+  aboutToReuse(params: Record<string, ESObject>): void {
+    // Change the value in aboutToReuse. The Watch callback will not be triggered when the component is unfrozen.
+    this.count++;
+    hilog.info(DOMAIN, TAG, `ChildComponent has been reused`);
+  }
+
+  aboutToRecycle(): void {
+    hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
+  }
+
+  build() {
+    Column() {
+      Text(`ChildComponent count: ${this.count}`)
+        .fontSize(20)
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State flag: boolean = true;
+  @State count: number = 0;
+
+  build() {
+    Column() {
+      Button(`change flag`)
+        .onClick(() => {
+          this.flag = !this.flag;
+        })
+        .margin(10)
+        .width('50%')
+      Button(`change count`)
+        .onClick(() => {
+          this.count++;
+        })
+        .margin(10)
+        .width('50%')
+      if (this.flag) {
+        ChildComponent({ count: this.count })
+      }
+    }
+    .height('100%')
+  }
+}
+```

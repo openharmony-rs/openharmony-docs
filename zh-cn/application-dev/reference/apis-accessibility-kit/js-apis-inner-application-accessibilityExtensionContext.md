@@ -46,7 +46,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | bundleName           | string                                                             | 否   | 否   | 应用包名。 |
 | checkable            | boolean                                                            | 否   | 否   | 表示元素是否支持点击操作。true表示元素支持点击操作，false表示元素不支持点击操作，默认值为false。 |
 | checked              | boolean                                                            | 否   | 否   | 表示元素当前的可点击状态。true表示元素当前是可点击的，false表示元素当前是不可点击的，默认值为false。 |
-| children             | Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;        | 否   | 否   | 所有子元素。 |
+| children             | Array&lt;[AccessibilityElement](#accessibilityelement)&gt;        | 否   | 否   | 所有子元素。 |
 | clickable            | boolean                                                            | 否   | 否   | 表示元素是否可点击。true表示元素可点击，false表示元素不可点击，默认值为false。|
 | componentId          | number                                                             | 否   | 否   | 元素所属的组件ID。默认值为-1。|
 | componentType        | string                                                             | 否   | 否   | 应与元素所属的组件类型所对应，如：按钮Button类型->'Button'、图像Image类型->'Image'。 |
@@ -71,11 +71,11 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | layer                | number                                                             | 否   | 否   | 该元素的显示层。 |
 | longClickable        | boolean                                                            | 否   | 否   | 表示元素是否可长单击。true表示元素可长单击，false表示元素不可长单击，默认值为false。 |
 | pageId               | number                                                             | 否   | 否   | 页码id。默认值为-1。 |
-| parent               | [AccessibilityElement](#accessibilityelement9)                     | 否   | 否   | 元素的父元素。 |
+| parent               | [AccessibilityElement](#accessibilityelement)                     | 否   | 否   | 元素的父元素。 |
 | pluralLineSupported  | boolean                                                            | 否   | 否   | 表示元素是否支持多行文本。true表示元素支持多行文本，false表示元素不支持多行文本，默认值为false。|
 | rect                 | [Rect](#rect)                                                      | 否   | 否   | 元素的面积。 |
 | resourceName         | string                                                             | 否   | 否   | 元素的资源名称。 |
-| rootElement          | [AccessibilityElement](#accessibilityelement9)                     | 否   | 否   | 窗口元素的根元素。 |
+| rootElement          | [AccessibilityElement](#accessibilityelement)                     | 否   | 否   | 窗口元素的根元素。 |
 | screenRect           | [Rect](#rect)                                                      | 否   | 否   | 元素的显示区域。 |
 | scrollable           | boolean                                                            | 否   | 否   | 表示元素是否可滚动。true表示元素可滚动，false表示元素不可滚动，默认值为false。 |
 | selected             | boolean                                                            | 否   | 否   | 表示元素是否被选中。true表示元素被选中，false表示元素未被选中，默认值为false。 |
@@ -266,7 +266,7 @@ getFocusElement(isAccessibilityFocus?: boolean): Promise\<AccessibilityElement>;
 **返回值：**
 | 类型                                  | 说明                     |
 | ----------------------------------- | ---------------------- |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise对象，返回当前对应的焦点元素。 |
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise对象，返回当前对应的焦点元素。 |
 
 **错误码：**
 
@@ -309,7 +309,7 @@ getFocusElement(callback: AsyncCallback\<AccessibilityElement>): void;
 
 | 参数名      | 类型                                       | 必填   | 说明                |
 | -------- | ---------------------------------------- | ---- | ----------------- |
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | 是    | 回调函数，返回当前对应的焦点元素。 |
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回当前对应的焦点元素。 |
 
 **错误码：**
 
@@ -355,7 +355,7 @@ getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback\<Accessib
 | 参数名                  | 类型                                       | 必填   | 说明                |
 | -------------------- | ---------------------------------------- | ---- | ----------------- |
 | isAccessibilityFocus | boolean                                  | 是    | 获取的是否是无障碍焦点元素，True表示是，False表示否。    |
-| callback             | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | 是    | 回调函数，返回当前对应的焦点元素。 |
+| callback             | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回当前对应的焦点元素。 |
 
 **错误码：**
 
@@ -407,7 +407,7 @@ getWindowRootElement(windowId?: number): Promise\<AccessibilityElement>;
 
 | 类型                                  | 说明                     |
 | ----------------------------------- | ---------------------- |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise对象，返回指定窗口的根节点元素。 |
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise对象，返回指定窗口的根节点元素。 |
 
 **错误码：**
 
@@ -450,7 +450,7 @@ getWindowRootElement(callback: AsyncCallback\<AccessibilityElement>): void;
 
 | 参数名      | 类型                                       | 必填   | 说明                 |
 | -------- | ---------------------------------------- | ---- | ------------------ |
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | 是    | 回调函数，返回指定窗口的根节点元素。 |
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回指定窗口的根节点元素。 |
 
 **错误码：**
 
@@ -496,7 +496,7 @@ getWindowRootElement(windowId: number, callback: AsyncCallback\<AccessibilityEle
 | 参数名      | 类型                                       | 必填   | 说明                     |
 | -------- | ---------------------------------------- | ---- | ---------------------- |
 | windowId | number                                   | 是    | 指定窗口的编号，未指定则从当前活跃窗口获取。 |
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | 是    | 回调函数，返回指定窗口的根节点元素。     |
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回指定窗口的根节点元素。     |
 
 **错误码：**
 
@@ -548,7 +548,7 @@ getWindows(displayId?: number): Promise\<Array\<AccessibilityElement>>;
 
 | 类型                                       | 说明                     |
 | ---------------------------------------- | ---------------------- |
-| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Promise对象，返回指定屏幕的所有窗口。 |
+| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Promise对象，返回指定屏幕的所有窗口。 |
 
 **错误码：**
 
@@ -588,7 +588,7 @@ getWindows(callback: AsyncCallback\<Array\<AccessibilityElement>>): void;
 
 | 参数名      | 类型                                       | 必填   | 说明                |
 | -------- | ---------------------------------------- | ---- | ----------------- |
-| callback | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | 是    | 回调函数，返回指定屏幕的所有窗口。 |
+| callback | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | 是    | 回调函数，返回指定屏幕的所有窗口。 |
 
 **错误码：**
 
@@ -631,7 +631,7 @@ getWindows(displayId: number, callback: AsyncCallback\<Array\<AccessibilityEleme
 | 参数名       | 类型                                       | 必填   | 说明                    |
 | --------- | ---------------------------------------- | ---- | --------------------- |
 | displayId | number                                   | 是    | 指定的屏幕编号，未指定则从默认主屏幕获取。 |
-| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | 是    | 回调函数，返回指定屏幕的所有窗口。     |
+| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | 是    | 回调函数，返回指定屏幕的所有窗口。     |
 
 **错误码：**
 
@@ -796,7 +796,7 @@ for (let i = 0; i < 10; i++) {
 axContext.injectGestureSync(gesturePath);
 ```
 
-## AccessibilityElement<sup>9+</sup>
+## AccessibilityElement
 
 无障碍节点元素, 在调用AccessibilityElement的方法前，需要先通过[AccessibilityExtensionContext.getFocusElement() ](#accessibilityextensioncontextgetfocuselementdeprecated)或者[AccessibilityExtensionContext.getWindowRootElement() ](#accessibilityextensioncontextgetwindowrootelementdeprecated)获取AccessibilityElement实例。
 
@@ -1239,7 +1239,7 @@ findElement(type: 'content', condition: string): Promise\<Array\<AccessibilityEl
 
 | 类型                                       | 说明                            |
 | ---------------------------------------- | ----------------------------- |
-| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Promise对象，返回满足指定查询关键字的所有节点元素。 |
+| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Promise对象，返回满足指定查询关键字的所有节点元素。 |
 
 **错误码：**
 
@@ -1282,7 +1282,7 @@ findElement(type: 'content', condition: string, callback: AsyncCallback\<Array\<
 | --------- | ---------------------------------------- | ---- | ---------------------------- |
 | type      | string                                   | 是    | 固定为'content',表示查找的类型为节点元素内容。 |
 | condition | string                                   | 是    | 表示查找的条件。                     |
-| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | 是    | 回调函数，返回满足指定查询关键字的所有节点元素。     |
+| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | 是    | 回调函数，返回满足指定查询关键字的所有节点元素。     |
 
 **错误码：**
 
@@ -1332,7 +1332,7 @@ findElement(type: 'focusType', condition: FocusType): Promise\<AccessibilityElem
 
 | 类型                                  | 说明                             |
 | ----------------------------------- | ------------------------------ |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise对象，返回满足指定查询焦点元素类型的节点元素。 |
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise对象，返回满足指定查询焦点元素类型的节点元素。 |
 
 **错误码：**
 
@@ -1376,7 +1376,7 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback\<Ac
 | --------- | ---------------------------------------- | ---- | ---------------------------------- |
 | type      | string                                   | 是    | 固定为'focusType'，表示查询的类型为节点的焦点元素类型。 |
 | condition | [FocusType](#focustype)                  | 是    | 表示查询焦点元素的类型。                       |
-| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | 是    | 回调函数，返回满足指定查询焦点元素类型的节点元素。          |
+| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回满足指定查询焦点元素类型的节点元素。          |
 
 **错误码：**
 
@@ -1427,7 +1427,7 @@ findElement(type: 'focusDirection', condition: FocusDirection): Promise\<Accessi
 
 | 类型                                  | 说明                               |
 | ----------------------------------- | -------------------------------- |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise对象，返回满足指定查询下一焦点元素方向的节点元素。 |
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise对象，返回满足指定查询下一焦点元素方向的节点元素。 |
 
 **错误码：**
 
@@ -1471,7 +1471,7 @@ findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCa
 | --------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type      | string                                   | 是    | 固定为'focusDirection', 表示查询的类型为节点的下一焦点元素方向。 |
 | condition | [FocusDirection](#focusdirection)        | 是    | 表示下一查询焦点元素的方向。                           |
-| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | 是    | 回调函数，返回满足指定查询下一焦点元素方向的节点元素。              |
+| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回满足指定查询下一焦点元素方向的节点元素。              |
 
 **错误码：**
 

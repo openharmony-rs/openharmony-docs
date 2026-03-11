@@ -10,7 +10,7 @@ TonePlayer<sup>9+</sup> provides APIs for playing and managing Dual Tone Multi F
 
 ## Supported Tone Types
 
-The table below lists the supported [tone types](../../reference/apis-audio-kit/js-apis-audio-sys.md#tonetype9). You can call **load()** with **audio.ToneType.*type*** as a parameter to load the tone resource of the specified type.
+[Tone type](../../reference/apis-audio-kit/js-apis-audio-sys.md#tonetype9) information (as shown in the table below) can be used by calling the [load](../../reference/apis-audio-kit/js-apis-audio-sys.md#load9) method with "audio.ToneType.*specified type*" as the parameter to load the tone resource of the specified type.
 
 | Tone Type| Value| Description| 
 | -------- | -------- | -------- |

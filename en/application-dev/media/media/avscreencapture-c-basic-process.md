@@ -45,7 +45,7 @@ The captured screen content can be output in the following forms:
 
 Link the dynamic libraries in the CMake script.
 
-```
+```CMake
 target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffer.so libnative_media_core.so) 
 ```
 
@@ -95,7 +95,7 @@ OH_AudioCaptureInfo innerCapInfo = {
     .audioChannels = 2,
     .audioSource = OH_ALL_PLAYBACK
 };
-// Audio output specifications for screen capture.
+//Configure audio output specifications for screen capture. audioBitrate ensures that the bit rate of the output file matches the expected bit rate and has no strong correlation with audioSampleRate.
 OH_AudioEncInfo audioEncInfo = {
     .audioBitrate = 48000,
     .audioCodecformat = OH_AAC_LC
@@ -135,16 +135,15 @@ OH_VideoInfo videoInfo = {
 
 ### Initializing the AVScreenCapture Instance Configuration
 
-The AVScreenCapture instance configuration [OH_AVScreenRecorderConfig](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencaptureconfig.md) includes the capture data format [OH_VideoInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videoinfo.md), audio and video capture parameters [OH_AudioInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-audioinfo.md), and screen capture mode [OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode), which can be **OH_CAPTURE_HOME_SCREEN**, **OH_CAPTURE_SPECIFIED_SCREEN**, or **OH_CAPTURE_SPECIFIED_WINDOW**.
+The AVScreenCapture instance configuration [OH_AVScreenCaptureConfig](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencaptureconfig.md) includes the capture data format [OH_VideoInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videoinfo.md), audio and video capture parameters [OH_AudioInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-audioinfo.md), and screen capture mode [OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode), which can be **OH_CAPTURE_HOME_SCREEN**, **OH_CAPTURE_SPECIFIED_SCREEN**, or **OH_CAPTURE_SPECIFIED_WINDOW**.
 
 After configuration, call [OH_AVScreenCapture_Init](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_init) to apply the settings to the [OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md) instance.
 
 > **NOTE**
->
 > On PCs/2-in-1 devices, different screen capture modes trigger different pop-up behaviors. For details, see [PC/2-in-1 Pop-up Mode Configuration](#pc2-in-1-pop-up-mode-configuration).
 
 ```c++
-// Initialize the screen capture parameters by passing in an OH_AVScreenRecorderConfig struct.
+// Initialize the screen capture parameters and pass an OH_AVScreenCaptureConfig struct.
 OH_AVScreenCaptureConfig config = {
     .dataType = OH_ORIGINAL_STREAM,
     .audioInfo = audioInfo,

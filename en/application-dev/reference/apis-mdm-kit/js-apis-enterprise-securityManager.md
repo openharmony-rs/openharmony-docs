@@ -10,11 +10,11 @@ The **securityManager** module provides device security management capabilities,
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 
 ## Modules to Import
 
@@ -330,7 +330,7 @@ try {
 
 setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 
-Sets the device password policy.
+Sets the device screen lock password policy. During screen lock password setting, if the current screen lock password does not meet the requirements, a security message will be displayed, prompting the user to reset the screen lock password.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -343,7 +343,7 @@ Sets the device password policy.
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                 |
-| policy | [PasswordPolicy](#passwordpolicy) | Yes| Device password policy.|
+| policy | [PasswordPolicy](#passwordpolicy) | Yes| Device screen lock password policy.|
 
 **Error codes**
 
@@ -385,7 +385,7 @@ try {
 
 getPasswordPolicy(admin: Want): PasswordPolicy
 
-Obtains the device password policy.
+Obtains the device screen lock password policy.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -403,7 +403,7 @@ Obtains the device password policy.
 
 | Type                  | Description                     |
 | --------------------- | ------------------------- |
-| [PasswordPolicy](#passwordpolicy) | Device password policy obtained.|
+| [PasswordPolicy](#passwordpolicy) | Device screen lock password policy.|
 
 **Error codes**
 
@@ -895,11 +895,15 @@ setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): vo
 
 Sets the management policy for extensions from external sources.
 - DEFAULT:
-Default policy with no restrictions applied. Users can enable or disable **Run extensions from external sources** in **Settings** > **Privacy & security** > **Advanced option**.
+
+  Default policy with no restrictions applied. Users can enable or disable **Run extensions from external sources** in **Settings** > **Privacy & security** > **Advanced option**.
 - DISALLOW:
-Policy that disallows extensions from external sources to run. With this policy, currently running extensions can continue, but cannot be started after being closed. Users cannot enable **Run extensions from external sources**.
+
+  Policy that disallows extensions from external sources to run. With this policy, currently running extensions can continue, but cannot be started after being closed. Users cannot enable **Run extensions from external sources**.
+
 - FORCE_OPEN:
-Policy that forcibly enables extensions from external sources to run. Users cannot disable **Run extensions from external sources**.
+
+  Policy that forcibly enables extensions from external sources to run. Users cannot disable **Run extensions from external sources**.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -1012,11 +1016,11 @@ Represents the certificate information.
 | Name  | Type      | Read-Only| Optional| Description              |
 | ------ | ---------- | ---- | ---- | ------------------ |
 | inData | Uint8Array | No  | No|Binary content of the certificate.|
-| alias  | string     | No  | No|Certificate alias.        |
+| alias  | string     | No  | No|Certificate alias. The value length must be less than 40 characters.        |
 
 ## PasswordPolicy
 
-Represents a device password policy.
+Represents a device screen lock password policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1024,7 +1028,7 @@ Represents a device password policy.
 | ----------- | --------| ---- | ---- | --------------------------- |
 | complexityRegex | string | No| Yes| Regular expression for password complexity.|
 | validityPeriod | number | No| Yes| Password validity period, in ms.|
-| additionalDescription | string | No| Yes| Description of the device password.|
+| additionalDescription | string | No| Yes| Password complexity description, for example, "The password must contain 8 to 30 characters consisting of letters, digits, and special characters".|
 
 ## ClipboardPolicy
 

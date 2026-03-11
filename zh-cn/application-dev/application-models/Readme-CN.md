@@ -56,6 +56,7 @@
     - 拉起指定应用<!--directional-redirection-->
       - [拉起指定应用概述](app-startup-overview.md)
       - [（可选）使用canOpenLink判断应用是否可访问](canopenlink.md)
+      - [获取目标应用的URL信息](obtaining-target-app-url-info.md)
       - [使用Deep Linking实现应用间跳转](deep-linking-startup.md)
       <!--Del-->
       - [使用App Linking实现应用间跳转](app-linking-startup.md)

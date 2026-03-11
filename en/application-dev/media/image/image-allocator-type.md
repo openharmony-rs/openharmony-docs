@@ -8,7 +8,7 @@
 
 When an application performs image decoding, it needs to allocate the corresponding memory. This guide describes different types of memory and how to allocate them.
 
-The application obtains a PixelMap through the decoding API and passes it to the **Image** component for display.
+The application obtains the PixelMap through the decoding API and passes it to the [Image component](../../../application-dev/reference/apis-arkui/arkui-js/js-components-basic-image.md) for display.
 
 When the PixelMap is large and uses shared memory, the RS main thread will experience a longer texture upload time, leading to lag. The zero-copy feature of DMA memory provided by the graphics side can avoid the time cost of texture upload when the system renders images.
 

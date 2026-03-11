@@ -628,3 +628,5 @@ struct SnapshotExample {
   }
 }
 ```
+
+![localized_snapshot](figures/localized_snapshot.gif)

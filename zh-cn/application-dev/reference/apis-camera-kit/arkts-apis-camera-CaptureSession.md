@@ -1682,9 +1682,8 @@ on(type: 'error', callback: ErrorCallback): void
 > **说明：**
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
-
-> **说明：**
->从 API version 10开始支持，从API version 11开始废弃。建议使用[VideoSession.on('error')](arkts-apis-camera-VideoSession.md#onerror11)替代。
+> 
+> 从 API version 10开始支持，从API version 11开始废弃。建议使用[VideoSession.on('error')](arkts-apis-camera-VideoSession.md#onerror11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

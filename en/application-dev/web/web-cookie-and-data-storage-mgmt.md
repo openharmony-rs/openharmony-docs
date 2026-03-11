@@ -175,3 +175,9 @@ struct WebComponent {
   }
 }
 ```
+
+## FAQs
+
+### What is the size limit for the static resource file cache of the ArkWeb component?
+
+The size limit for the static resource cache of a single application in ArkWeb is 100 MB.

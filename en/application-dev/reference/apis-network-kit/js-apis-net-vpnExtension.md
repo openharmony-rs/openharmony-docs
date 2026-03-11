@@ -328,6 +328,13 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
     let vpnConnection : vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
     console.info("vpn createVpnConnection: " + JSON.stringify(vpnConnection));
     this.SetupVpn();
+    
+    // If no VPN is required, call destroy() to destroy the VPN and clear resources.
+    vpnConnection.destroy().then(() => {
+      console.info("destroy success.");
+    }).catch((error : BusinessError) => {
+      console.error(`destroy fail. Code:${error.code}, message:${error.message}`);
+    });
   }
   SetupVpn() {
         class Address {

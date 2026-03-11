@@ -10,13 +10,13 @@ The **deviceSettings** module provides APIs for setting enterprise devices, incl
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.deviceSettings](js-apis-enterprise-deviceSettings.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.deviceSettings](js-apis-enterprise-deviceSettings.md).
 
 ## Modules to Import
 
@@ -331,14 +331,14 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
 
 ## CertBlob
 
-Represents the certificate information.
+Defines certificate information.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 | Name        | Type    | Read-Only| Optional| Description                           |
 | ----------- | --------| ----- | ---- | ------------------------------- |
 | inData | Uint8Array | No| No|Binary content of the certificate.|
-| alias | string | No| No|Certificate alias.|
+| alias | string | No| No|Certificate alias. The value length must be less than 40 characters.|
 
 ## deviceSettings.uninstallUserCertificate
 

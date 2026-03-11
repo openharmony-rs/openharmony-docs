@@ -89,13 +89,13 @@ The definition of a custom component must start with the \@Component struct foll
 
 ### \@Component
 
-The \@Component decorator decorates only the structs declared by the **struct** keyword. The decorated **struct** has the componentization capability and needs to implement the build method to describe the UI. One struct can be decorated by only one \@Component. \@Component can accept an optional parameter of the Boolean type.
+The \@Component decorator decorates only the structs declared by the **struct** keyword. The decorated **struct** has the componentization capability and needs to implement the build method to describe the UI. One struct can be decorated by only one \@Component.
 
   > **NOTE**
   >
   > This decorator can be used in ArkTS widgets since API version 9.
   > 
-  > For the \@Component decorator, an optional parameter of the Boolean type is supported since API version 11.
+  > Since API version 11, \@Component can accept a [ComponentOptions parameter](../../reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions).
   >
   > This decorator can be used in atomic services since API version 11.
 
@@ -191,13 +191,13 @@ The **build()** function is used to define the declarative UI description of a c
 
 ### \@Entry
 
-The @Entry decorator marks a custom component as the entry point of a page. A single page can only have one @Entry decorated custom component serving as its entry. The \@Entry decorator accepts an optional parameter of type [LocalStorage](arkts-localstorage.md).
+A custom component decorated with \@Entry serves as the entry to a [UI page](../arkts-router-to-navigation.md#page-structure). A single page can only have one @Entry decorated custom component serving as its entry.
 
   > **NOTE**
   >
   > This decorator can be used in ArkTS widgets since API version 9.
   >
-  > Since API version 10, the \@Entry decorator accepts an optional parameter of type [LocalStorage](arkts-localstorage.md) or type **EntryOptions**<sup>10+</sup>.
+  > Since API version 10, the \@Entry decorator accepts an optional [LocalStorage](../../reference/apis-arkui/arkui-ts/ts-state-management.md#localstorage9) parameter or an optional EntryOptions<sup>10+</sup> parameter.
   >
   > This decorator can be used in atomic services since API version 11.
 
@@ -544,7 +544,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   
   The behavior of changing the application state in the **build** function may be more covert than that in the preceding example. The following are some examples:
 
-  - Changing the state variable within the \@Builder, \@Extend, or \@Styles decorated method
+  - Changing the state variable within the \@Builder, [\@Extend](arkts-extend.md), or [\@Styles](arkts-style.md) method.
 
   - Changing the application state variable in the function called during parameter calculation, for example, **Text('${this.calcLabel()}')**
 
@@ -643,6 +643,6 @@ Static code blocks are used to initialize static attributes.
 
 ### Mixing @Component and @ComponentV2
 
-For details about how to mix \@Component decorated custom components with \@ComponentV2 decorated custom components, see [Mixing Use of Custom Components](./arkts-custom-component-mixed-scenarios.md).
+For details about how to mix \@Component decorated custom components with \@ComponentV2 decorated custom components, <!--RP1-->see [Mixed Use of State Management V1 and V2](./arkts-v1-v2-mixusage-before-api-version.md)<!--RP1End-->.
 
 <!--no_check-->

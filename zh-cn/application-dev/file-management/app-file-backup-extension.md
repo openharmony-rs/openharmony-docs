@@ -8,7 +8,7 @@
 
 应用接入数据备份恢复需要通过BackupExtensionAbility实现。
 
-BackupExtensionAbility，是[Stage模型](../application-models/stage-model-development-overview.md)中扩展组件[ExtensionAbility](../application-models/extensionability-overview.md)的派生类。开发者可以通过修改配置文件定制备份恢复框架的行为，包括是否允许备份恢复，备份哪些文件等。
+BackupExtensionAbility是[Stage模型](../application-models/stage-model-development-overview.md)中扩展组件[ExtensionAbility](../application-models/extensionability-overview.md)的派生类。开发者可以通过修改配置文件定制备份恢复框架的行为，包括是否允许备份恢复，备份哪些文件等。
 
 ## 接口说明
 
@@ -52,9 +52,6 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
                        "resource": "$profile:backup_config"
                    }
                ],
-               // 在BackupExtension.ets文件里自定义继承BackupExtensionAbility，重写其中的onBackup/onBackupEx和
-               // onRestore/onRestoreEx方法，推荐使用onBackupEx/onRestoreEx。
-               // 如果没有特殊要求可以空实现，则备份恢复服务会按照统一的备份恢复数据规则进行备份恢复。
                "srcEntry": "./ets/BackupExtension/BackupExtension.ets"
            }      
        ]
@@ -88,17 +85,17 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
    下面的示例展示了一个空实现的`BackupExtension.ets`文件：
 
     ```ts
-    //onBackup && onRestore
+    // onBackup && onRestore
     import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
     import {hilog} from '@kit.PerformanceAnalysisKit';
     
     const TAG = `FileBackupExtensionAbility`;
     export default class BackupExtension extends  BackupExtensionAbility {
-      //onBackup
+      // onBackup
       async onBackup ()   {
         hilog.info(0x0000, TAG, `onBackup ok`);
       }
-      //onRestore
+      // onRestore
       async onRestore (bundleVersion : BundleVersion) {
         hilog.info(0x0000, TAG, `onRestore end`);
       }
@@ -121,7 +118,7 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
    // ...
    
    class BackupExt extends BackupExtensionAbility {
-     //onBackupEx
+     // onBackupEx
      async onBackupEx(backupInfo: string): Promise<string> {
        console.info('onBackupEx ok');
        let errorInfo: ErrorInfo = {

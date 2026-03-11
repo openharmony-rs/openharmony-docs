@@ -658,7 +658,7 @@ console.info("newBuf = " + newBuf.toString('ascii'));
 | -------- | -------- | -------- | -------- | -------- |
 | length | number | 是 | 否 | Buffer对象的字节长度。 |
 | buffer | ArrayBuffer | 是 | 否 | ArrayBuffer对象。 |
-| byteOffset | number | 是 | 否 | 当前Buffer所在内存池的偏移量。 |
+| byteOffset | number | 是 | 否 | 当前Buffer所在内存池的偏移量。<br>- 当Buffer通过内存池创建时（如使用[allocUninitializedFromPool](#bufferallocuninitializedfrompool)创建Buffer，或使用buffer.from()传入字符串，且字符串长度加当前内存池偏移量小于4kb），返回相对于内存池的偏移量。<br>- 当Buffer直接分配内存时（如使用[alloc](#bufferalloc)），返回值为0。 |
 
 **错误码：**
 
@@ -673,14 +673,17 @@ console.info("newBuf = " + newBuf.toString('ascii'));
 ```ts
 import { buffer } from '@kit.ArkTS';
 
-let buf = buffer.from("1236");
+let buf = buffer.from("12345678");
 console.info(JSON.stringify(buf.length));
-// 输出结果：4
+// 输出结果：8
 let arrayBuffer = buf.buffer;
 console.info(JSON.stringify(new Uint8Array(arrayBuffer)));
-// 输出结果：{"0":49,"1":50,"2":51,"3":54}
+// 输出结果：{"0":49,"1":50,"2":51,"3":52,"4":53,"5":54,"6":55,"7":56}
 console.info(JSON.stringify(buf.byteOffset));
 // 输出结果：0
+let buf1 = buffer.from("abcd");
+console.info(JSON.stringify(buf1.byteOffset));
+// 输出结果：8
 ```
 
 ### compare

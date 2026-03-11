@@ -14,7 +14,7 @@ The Unified Data Management Framework (UDMF) provides standards for data interac
 
 ## Basic Concepts
 
-- UTD<br>A uniform type descriptor (UTD) defines data of the same type to eliminate data type ambiguity. It contains the data type ID and types to which the current data type belongs. UTDs are generally used to filter or identify the data type in file preview and file sharing.
+- UTD<br> A uniform type descriptor (UTD) defines data of the same type to eliminate data type ambiguity. It contains the data type ID and types to which the current data type belongs. UTDs are generally used to filter or identify the data type in file preview and file sharing.
 
 
 ## Available APIs
@@ -98,7 +98,7 @@ bool isBelongsTo = OH_Utd_BelongsTo(typeIds1[0], typeIds2[0]);
 if (isBelongsTo) {
     OH_LOG_INFO(LOG_APP, "typeIds1[0] belongs to typeIds2[0]");
 } else {
-    OH_LOG_INFO(LOG_APP, "typeIds1[0] don't belongs to typeIds2[0]");
+    OH_LOG_INFO(LOG_APP, "typeIds1[0] doesn't belong to typeIds2[0]");
 }
 // 6. Check whether typeIds1[0] is a lower-level type of typeIds2[0].
 bool isLower = OH_Utd_IsLower(typeIds1[0], typeIds2[0]);

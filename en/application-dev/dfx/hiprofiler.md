@@ -14,7 +14,7 @@
 hiprofiler provides the performance profiling capabilities for you to analyze memory and performance issues.
 
 
-Its overall architecture comprises the profiling data display page on the PC and performance profiling service on the device. The PC and device services use the C/S model. The profiling data on the PC is displayed on the [DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install) and [SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host/releases) pages. The device program consists of multiple parts that run in the system environment. The **hiprofilerd** process communicates with DevEco Studio to provide profiling services. The device also contains the CLI tool (**hiprofiler_cmd**) and data collection process (**hiprofiler_plugins**). Based on the Producer-Consumer model, the profiling service controls the data collection process to obtain profiling data and sends the data to DevEco Studio. Currently, plugins such as nativehook, CPU, ftrace, GPU, hiperf, xpower, and memory have been implemented, providing comprehensive profiling capabilities for CPU, GPU, memory, and power consumption.
+The overall architecture includes the PC side and the device side. The main components are the data display interface on the PC side and the performance tuning service on the device side. The PC and device services use the C/S model. The profiling data on the PC is displayed on the [DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install) and [SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host/releases) pages. The device program consists of multiple parts that run in the system environment. The **hiprofilerd** process communicates with DevEco Studio to provide profiling services. The device also contains the CLI tool (**hiprofiler_cmd**) and data collection process (**hiprofiler_plugins**). Based on the Producer-Consumer model, the profiling service controls the data collection process to obtain profiling data and sends the data to DevEco Studio. Currently, plugins such as nativehook, CPU, ftrace, GPU, hiperf, xpower, and memory have been implemented, providing comprehensive profiling capabilities for CPU, GPU, memory, and power consumption.
 
 
 
@@ -134,7 +134,7 @@ Download the generated trace file to the local PC by running the **hdc file recv
 
 > **NOTE**
 >
-> Run the **hdc shell "bm dump -n bundlename | grep appProvisionType"** command to check whether the application specified in the command is a debug-type application. The expected output is **"appProvisionType": "debug"**.
+> Run the **hdc shell "bm dump -n bundlename | grep appProvisionType"** command to check whether the application specified in the command is a debuggable application. The expected output is **"appProvisionType": "debug"**.
 
 For example, run the following command to check the bundle name **com.example.myapplication**:
 
@@ -158,6 +158,10 @@ To build a debug application, you need to use a debug certificate for signature.
 
 Obtains the call stack information of heap memory allocations (by the **malloc**, **mmap**, **calloc** or **realloc** function), cross-language allocations (for example, native heap memory allocated by the Node-API in ArkTS), and unreleased heap memory due to memory leaks.
 
+> **NOTE**
+>
+> After [an application is encrypted](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/code-protect), stack unwinding is limited to the native stack and not supported for the JS stack.
+
 **Parameters**
 
 | Name| Type| Description| Details| 
@@ -167,7 +171,7 @@ Obtains the call stack information of heap memory allocations (by the **malloc**
 | process_name | string | Name of the process for which memory profiling is to be performed.| The value must be the same as the process name in the **/proc/** node.| 
 | startup_mode | bool | Whether to capture the memory during process startup. By default, the memory during process startup is not captured.| This parameter records the heap memory allocation information during the period from the start of process incubation to the end of optimization.| 
 | js_stack_report | int | Whether to enable cross-language stack unwinding.<br>The value **0** means not to capture the JS stack.<br>The value **1** means to capture the JS stack.| This parameter provides the cross-language stack unwinding feature for the Ark environment.| 
-| malloc_free_matching_interval | int | Matching interval, in seconds. **malloc** and **free** are matched within the interval. If matched, the stack is not flushed to the disk.| Within the matching interval, the allocated and released call stacks are not recorded, reducing the overhead of the stack capture service process. If this parameter is set to a value greater than 0, **statistics_interval** cannot be set to **true**.| 
+| malloc_free_matching_interval | int | Matching interval, in seconds. **malloc** and **free** are matched within the interval. If matched, the stack is not flushed to the disk.| Within the matching interval, the allocated and released call stacks are not recorded, reducing the overhead of the stack capture service process. If this parameter is set to a value greater than 0, you need to set **statistics_interval** to **0**.|
 | offline_symbolization | bool | Whether to enable offline symbolization.<br>The value **true** means to enable offline symbolization;<br>the value **false** means the opposite.| When offline symbolization is used, the operation of matching symbols based on IP is performed on SmartPerf, reducing process freezes during profiling. However, since the offline symbol table is written into the trace file, the trace file generated under offline symbolization is larger in size than that under online symbolization.|
 | sample_interval | int | Sampling size.| When this parameter is set, the sampling mode is enabled. In sampling mode, malloc allocations smaller than the sampling size are accounted for probabilistically. The larger the call-stack allocation size, the more frequently it occurs and the greater its chance of being sampled.| 
 | restrace_tag | string | Type of the GPU memory to be captured.| This parameter can be added repeatedly. Currently, this parameter can only be set to **RES_GPU_VK**, **RES_GPU_GLES_BUFFER**, **RES_GPU_GLES_IMAGE**, **RES_GPU_CL_BUFFER**, or **RES_GPU_CL_IMAGE**, which are used to specify the GPU memory allocation stack of Vulkan, OpenGL ES, OpenCL, image, and buffer types.<br>Note: This parameter is supported since API version 21.|
@@ -384,7 +388,7 @@ Obtain the GPU usage information.
 | Name| Type| Description| Details|
 | -------- | -------- | -------- | -------- |
 | pid | int | Process ID to profile, which is the same as the process ID in the **/proc/** node.| - |
-| report_gpu_info | bool | Whether to display the GPU usage of a specified process.| The value **true** means to display the GPU data of a specified process (PID needs to be set), and **false** means the opposite.|
+| report_gpu_info | bool | Whether to display the GPU usage of a specified process.| **true**: display the GPU data of a specified process (PID needs to be set). **false**: do not display the GPU data of a specified process.|
 
 
 ### cpu-plugin
@@ -396,8 +400,8 @@ Obtain the CPU usage information.
 | Name| Type| Description| Details| 
 | -------- | -------- | -------- | -------- |
 | pid | int | Process ID to profile.| The value must be the same as the process ID in the **/proc/** node.|
-| report_process_info | bool | Whether to display the CPU usage of a specified process.| The value **true** means to display the CPU usage of a specified process (PID needs to be set);<br>the value **false** means to display only the system CPU usage.| 
-| skip_thread_cpu_info | bool | Whether to skip the thread CPU usage data.| The value **true** means to not display the CPU usage of each thread, which reduces the profiling overhead;<br>the value **false** means the opposite.| 
+| report_process_info | bool | Whether to display the CPU usage of a specified process.| **true**: display the CPU usage of a specified process (PID needs to be set).<br>**false**: display only the system CPU usage.| 
+| skip_thread_cpu_info | bool | Whether to skip the thread CPU usage data.| **true**: do not display the CPU usage of each thread, which reduces the profiling overhead.<br>**false**: display the CPU usage of each thread.| 
 
 The following lists the basic CPU information:
 - **Start Time**: start time of the collection.
@@ -500,7 +504,7 @@ Obtain the frame rate of an application process.
 
 | Name| Type| Description| Details| 
 | -------- | -------- | -------- | -------- |
-| report_fps | bool | Whether to report the frame rate data.| The value **true** means to report the frame rate data of the application process;<br>the **value** false means the opposite.|
+| report_fps | bool | Whether to report the frame rate data.| **true**: report the frame rate data of the application process.<br>**false**: do not report the frame rate data.|
 | sections | uint32 | Number of times that the frame rate data is reported per second.| The default value is **10**, that is, the frame rate data is reported every 100 ms.|
 
 **Result analysis**
@@ -804,9 +808,8 @@ When the **hiprofiler_cmd** command is executed, and the fp or dwarf stack unwin
 
 **Possible Causes and Solution**
 
-You can change the **config** parameter in the **hiprofiler_cmd** command as follows:
- 
- 
+You can change the **config** parameter in the **hiprofiler_cmd** command as follows:  
+
  - Decrease the values of **max_stack_depth** and **max_js_stack_depth** to reduce the stack unwinding depth and the collection of call stack information.
  - Increase the value of **smb_pages** to increase the shared memory size for profiling data transmission. The default value is 16384 pages, that is, 16384 × 4096 = 67108864 bytes (64 MB). You can change the value to 128 MB.
  - Increase the value of **sample_interval** to increase the size of the sampling thread stack. The default value is 256. You can change the value to 512.

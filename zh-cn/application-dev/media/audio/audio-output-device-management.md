@@ -37,6 +37,7 @@ let audioRoutingManager = audioManager.getRoutingManager();  // 再调用AudioMa
 | BLUETOOTH_SCO | 7 | 蓝牙设备SCO（Synchronous&nbsp;Connection&nbsp;Oriented）连接。 | 
 | BLUETOOTH_A2DP | 8 | 蓝牙设备A2DP（Advanced&nbsp;Audio&nbsp;Distribution&nbsp;Profile）连接。 | 
 | USB_HEADSET | 22 | USB耳机，带麦克风。 | 
+| NEARLINK | 31 | 星闪设备。 | 
 
 ### 获取输出设备信息
 

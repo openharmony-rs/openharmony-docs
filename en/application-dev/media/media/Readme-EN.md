@@ -31,7 +31,7 @@
   - Playback<!--media-playback-c-->
     - [Using AVPlayer to Play Audio (C/C++)](using-ndk-avplayer-for-playback.md)
     - [Using AVPlayer to Play Videos (C/C++)](using-ndk-avplayer-for-video-playback.md)
-    - [Using LPP to Play Audio and Video (C/C++)](using-ndk-lpp-for-playback.md)
+    - [Using LPP to Play Video (C/C++)](using-ndk-lpp-for-playback.md)
   - Recording<!--media-recording-c-->
     - [Using AVRecorder to Record Audio (C/C++)](using-ndk-avrecorder-for-audio-recording.md)
     - [Using AVRecorder to Record Videos (C/C++)](using-ndk-avrecorder-for-video-recording.md)

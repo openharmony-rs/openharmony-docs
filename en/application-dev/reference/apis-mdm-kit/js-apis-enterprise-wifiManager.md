@@ -10,13 +10,13 @@ The **wifiManager** module provides Wi-Fi management capabilities for enterprise
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 >
-> - The global restriction policies are provided by **restrictions**. To disable Wi-Fi globally, see [@ohos.enterprise.restrictions](js-apis-enterprise-restrictions.md).
+> The global restriction policies are provided by **restrictions**. To disable Wi-Fi globally, see [@ohos.enterprise.restrictions](js-apis-enterprise-restrictions.md).
 
 ## Modules to Import
 
@@ -808,7 +808,7 @@ Represents Wi-Fi access information containing Service Set Identifier (SSID) and
 | Name         | Type                            | Read-Only| Optional| Description                                                       |
 | ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
 | ssid          | string                           | No  | No| Name of the Wi-Fi hotspot. The encoding format is UTF-8 and the maximum length is 32 bytes (three bytes for each Chinese character and one byte for each English character).          |
-| bssid         | string                           | No  | Yes| MAC address of the Wi-Fi hotspot, for example, **00:11:22:33:44:55**.<br>This property is optional when the [addDisallowedWifiList](#wifimanageradddisallowedwifilist19) and [removeDisallowedWifiList](#wifimanagerremovedisallowedwifilist19) APIs are called. The default value is an empty string.<br>This property is optional (available since API version 21) when the [addAllowedWifiList](#wifimanageraddallowedwifilist19) and [removeAllowedWifiList](#wifimanagerremoveallowedwifilist19) APIs are called. The default value is an empty string. However, this property is mandatory in API version 20 and earlier versions.           |
+| bssid         | string                           | No  | Yes| MAC address of the Wi-Fi hotspot, for example, **00:11:22:33:44:55**. To obtain the MAC address, enable **Enable Wi-Fi verbose logging** under **Settings** > **System & updates** > **Developer options** first, and then go to the WLAN list to check the MAC address. If a Wi-Fi network has multiple MAC addresses, all of them must be added here.<br>This property is optional when the [addDisallowedWifiList](#wifimanageradddisallowedwifilist19) and [removeDisallowedWifiList](#wifimanagerremovedisallowedwifilist19) APIs are called. The default value is an empty string.<br>This property is optional (available since API version 21) when the [addAllowedWifiList](#wifimanageraddallowedwifilist19) and [removeAllowedWifiList](#wifimanagerremoveallowedwifilist19) APIs are called. The default value is an empty string. However, this property is mandatory in API version 20 and earlier versions.           |
 
 ## WifiProfile
 
@@ -821,7 +821,7 @@ Represents the Wi-Fi configuration information.
 | Name         | Type                             | Read-Only| Optional| Description                                                       |
 | ------------- | ----------------------------------| ---- | ----| ------------------------------------------------------- |
 | ssid          | string                                | No  | No| Name of the Wi-Fi hotspot, in UTF-8 format.                              |
-| bssid         | string                                | No  | Yes| MAC address of the Wi-Fi hotspot.                                         |
+| bssid         | string                                | No  | Yes| MAC address of the Wi-Fi hotspot. To obtain the MAC address, enable **Enable Wi-Fi verbose logging** under **Settings** > **System & updates** > **Developer options** first, and then go to the WLAN list to check the MAC address. If a Wi-Fi network has multiple MAC addresses, all of them must be added here.                                         |
 | preSharedKey  | string                                | No  | No| Pre-shared key.                                               |
 | isHiddenSsid  | boolean                               | No  | Yes| Whether the network is hidden. The value **true** indicates that the network is hidden; the value **false** indicates the opposite.|
 | securityType  | [WifiSecurityType](#wifisecuritytype) | No  | No| Security type.                                                |
@@ -829,10 +829,10 @@ Represents the Wi-Fi configuration information.
 | disableReason | number                                | No  | Yes| Reason for disabling Wi-Fi.                                                 |
 | netId         | number                                | No  | Yes| Network ID allocated.                                             |
 | randomMacType | number                                | No  | Yes| Random MAC. The value **0** indicates a random MAC address, and the value **1** indicates device MAC address.                 |
-| randomMacAddr | string                                | No  | Yes| MAC address. This field is mandatory when **randomMacType** is set to device MAC address.              |
+| randomMacAddr | string                                | No  | Yes| MAC address. This field is mandatory when **randomMacType** is set to device MAC address.          |
 | ipType        | [IpType](#iptype)                     | No  | Yes| IP address type.                                               |
 | staticIp      | [IpProfile](#ipprofile)               | No  | Yes| Static IP address information. This field is mandatory when **ipType** is set to **STATIC**.               |
-| eapProfile    | [WifiEapProfile](#wifieapprofile)     | No  | Yes| Extensible Authentication Protocol (EAP) configuration. This field is mandatory only when **securityType** is set to **WIFI_SEC_TYPE_EAP**.    |
+| eapProfile    | [WifiEapProfile](#wifieapprofile)     | No  | Yes| Extensible Authentication Protocol (EAP) configuration. This field is mandatory only when **securityType** is set to **WIFI_SEC_TYPE_EAP**.            |
 
 ## WifiSecurityType
 
@@ -844,15 +844,15 @@ Enumerates the Wi-Fi security types.
 
 | Name                     | Value  | Description                                                        |
 | ------------------------- | ---- | ------------------------------------------------------------ |
-| WIFI_SEC_TYPE_INVALID     | 0    | Invalid security type. For example, airport public Wi-Fi.                             |
+| WIFI_SEC_TYPE_INVALID     | 0    | Invalid security type. For example, airport public Wi-Fi.                                              |
 | WIFI_SEC_TYPE_OPEN        | 1    | Open security type.                                              |
 | WIFI_SEC_TYPE_WEP         | 2    | Wired Equivalent Privacy (WEP).     |
-| WIFI_SEC_TYPE_PSK         | 3    | PSK. For example, home and small office Wi-Fi.        |
+| WIFI_SEC_TYPE_PSK         | 3    | PSK. For example, home and small office Wi-Fi.                   |
 | WIFI_SEC_TYPE_SAE         | 4    | Simultaneous Authentication of Equals (SAE). For example, smart home and small- and medium-sized enterprise networks.|
-| WIFI_SEC_TYPE_EAP         | 5    | EAP. For example, large enterprise authentication and university campus networks.                 |
-| WIFI_SEC_TYPE_EAP_SUITE_B | 6    | Suite B 192-bit encryption. For example, government and high-security organization networks.                  |
-| WIFI_SEC_TYPE_OWE         | 7    | Opportunistic Wireless Encryption (OWE). For example, public Wi-Fi in a coffee shop, which does not require a password to provide encryption for connections.|
-| WIFI_SEC_TYPE_WAPI_CERT   | 8    | WLAN Authentication and Privacy Infrastructure (WAPI) in certificate-based mode (WAPI-CERT). It is China's own wireless security standard.                    |
+| WIFI_SEC_TYPE_EAP         | 5    | EAP. For example, large enterprise authentication and university campus networks.                                               |
+| WIFI_SEC_TYPE_EAP_SUITE_B | 6    | Suite B 192-bit encryption. For example, government and high-security organization networks.                                     |
+| WIFI_SEC_TYPE_OWE         | 7    | Opportunistic Wireless Encryption (OWE). For example, public Wi-Fi in a coffee shop, which does not require a password to provide encryption for connections.                                       |
+| WIFI_SEC_TYPE_WAPI_CERT   | 8    | WLAN Authentication and Privacy Infrastructure (WAPI) in certificate-based mode (WAPI-CERT). It is China's own wireless security standard.                                        |
 | WIFI_SEC_TYPE_WAPI_PSK    | 9    | WAPI-PSK.                                          |
 
 ## IpType
@@ -899,16 +899,16 @@ Represents EAP profile (configuration) information.
 | phase2Method      | [Phase2Method](#phase2method) | No  | No| Phase 2 authentication method. This parameter is mandatory only when **eapMethod** is **EAP_PEAP** or **EAP_TTLS**.              |
 | identity          | string                        | No  | No| Identity Information. This parameter cannot be empty when **eapMethod** is **TLS**.                      |
 | anonymousIdentity | string                        | No  | No| Anonymous identity.                      |
-| password          | string                        | No  | No| Password. When **eapMethod** is **EAP_PEAP** or **EAP_PWD**, this parameter cannot be empty. The value contains a maximum of 128 bytes. |
+| password          | string                        | No  | No| Password. When **eapMethod** is **EAP_PEAP** or **EAP_PWD**, this parameter cannot be empty. The value contains a maximum of 128 bytes.  |
 | caCertAliases     | string                        | No  | No| CA certificate alias.                   |
 | caPath            | string                        | No  | No| CA certificate path.                   |
-| clientCertAliases | string                        | No  | No| Client certificate alias. When the client certificate content is empty, the client certificate must be installed first via the certificate management API before passing in the alias.            |
-| certEntry         | Uint8Array                    | No  | No| Client certificate content. When **eapMethod** is set to **EAP_TLS**, if this field is empty, the client certificate alias cannot be empty.              |
+| clientCertAliases | string                        | No  | No| Client certificate alias. When the client certificate content is empty, the client certificate must be installed first via the certificate management API before passing in the alias.          |
+| certEntry         | Uint8Array                    | No  | No| Client certificate content. When **eapMethod** is set to **EAP_TLS**, if this field is empty, the client certificate alias cannot be empty.            |
 | certPassword      | string                        | No  | No| CA certificate password.                    |
-| altSubjectMatch   | string                        | No  | No| A string to match the alternate subject. In addition to checking the primary domain name of the certificate, the system checks whether the alternate subject name of the certificate matches the certificate.      |
+| altSubjectMatch   | string                        | No  | No| A string to match the alternate subject. In addition to checking the primary domain name of the certificate, the system checks whether the alternate subject name of the certificate matches the certificate.                  |
 | domainSuffixMatch | string                        | No  | No| A string to match the domain suffix.                    |
 | realm             | string                        | No  | No| Realm for the passpoint credential.              |
-| plmn              | string                        | No  | No| Credential provider.|
+| plmn              | string                        | No  | No| Credential provider.                    |
 | eapSubId          | number                        | No  | No| Sub-ID of the SIM card.                   |
 
 ## EapMethod
@@ -926,8 +926,8 @@ Enumerates the EAP authentication methods.
 | EAP_TLS        | 2    | Transport Layer Security (TLS). It implements mutual certificate authentication.       |
 | EAP_TTLS       | 3    | Tunnel Transport Layer Security (TTLS). It is similar to PEAP, but supports a more diverse set of authentication methods inside the tunnel.      |
 | EAP_PWD        | 4    | Password Authentication (PWD). It enables password-based authentication and does not require a server certificate.       |
-| EAP_SIM        | 5    | Subscriber Identity Module (SIM). It performs authentication using the keys and algorithms stored in the SIM card of a smartphone.       |
-| EAP_AKA        | 6    | Authentication and Key Agreement (AKA). It performs authentication using enhanced keys and algorithms stored in a USIM card (applicable to 3G/4G/5G SIM cards).      |
+| EAP_SIM        | 5    | Subscriber Identity Module (SIM). It performs authentication using the keys and algorithms stored in the SIM card of a smartphone.      |
+| EAP_AKA        | 6    | Authentication and Key Agreement (AKA). It performs authentication using enhanced keys and algorithms stored in a USIM card (applicable to 3G/4G/5G SIM cards).       |
 | EAP_AKA_PRIME  | 7    | AKA Prime. It is an enhanced version of EAP-AKA and binds the network name during key derivation. |
 | EAP_UNAUTH_TLS | 8    | Unauthenticated TLS (UNAUTH TLS). It implements one-way authentication (client authentication only) while establishing an encrypted communication channel.|
 
@@ -956,9 +956,9 @@ turnOnWifi(admin: Want, isForce: boolean): void
 
 Enables Wi-Fi.
 
-Wi-Fi cannot be enabled using this API in the following scenario:
+In the following scenario, attempting to enable Wi-Fi using this API will fail, and a message indicating that the system function is disabled will be returned:
 
-​Wi-Fi has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API. You must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable it.
+​Wi-Fi has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API. In this case, you must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable Wi-Fi.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
 
@@ -971,7 +971,7 @@ Wi-Fi cannot be enabled using this API in the following scenario:
 | Name | Type                                                   | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
-| isForce | boolean                                                 | Yes  | Whether to forcibly enable Wi-Fi.<br>The value **true** means to forcibly Wi-Fi. Once enabled, it cannot be disabled manually. You must call [turnOffWifi](#wifimanagerturnoffwifi20) instead. The value **false** means the opposite and the Wi-Fi can be disabled manually.|
+| isForce | boolean                                                 | Yes  | Whether to forcibly enable Wi-Fi.<br>The value **true** means to forcibly enable Wi-Fi. Once enabled, it cannot be disabled manually. You must call [turnOffWifi](#wifimanagerturnoffwifi20) to disable it. The value **false** means the opposite and the Wi-Fi can be disabled manually.|
 
 **Error codes**
 
@@ -1010,9 +1010,9 @@ turnOffWifi(admin: Want): void
 
 Disables Wi-Fi.
 
-Wi-Fi cannot be disabled using this API in the following scenario:
+In the following scenario, attempting to disable Wi-Fi using this API will fail, and a message indicating that the system function is disabled will be returned:
 
-​Wi-Fi has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API. You must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable it.
+​Wi-Fi has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API. In this case, you must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable Wi-Fi.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
 

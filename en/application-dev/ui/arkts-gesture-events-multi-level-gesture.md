@@ -1,7 +1,7 @@
 # Multi-level Gesture Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -32,6 +32,7 @@ Column() {
   Column().id('ComponentC').onTouch(() => {})
 }.id('ComponentA').onTouch(() => {})
 ```
+
 If components B and C are children of component A, then touching component B or component C also touches component A. The **onTouch** event can be triggered by multiple components at the same time. Therefore, when component B is touched, the **onTouch** callback of components A and B is triggered, but the that of component C is not.
 
 When component C is touched, the **onTouch** callback is invoked by both component A and component C, but not by component B.

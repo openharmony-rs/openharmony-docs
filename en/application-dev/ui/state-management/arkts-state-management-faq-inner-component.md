@@ -75,7 +75,7 @@ struct Index {
 
 The rendering process in the preceding example is as follows:
 
-1. Create the first Text component, trigger the change of this.message, and [mark the first Text component as dirty](./arkts-state-management-introduce.md#triggering-updates).
+1. Create the first **Text** component, trigger the change of **this.message**, and mark the first Text component as [dirty](./arkts-state-management-glossary.md#mark-dirty).
 2. Create the second Text component, trigger the change of this.message, and mark the two Text components as dirty.
 3. When the next frame arrives, the dirty system components are refreshed.
 4. When the first Text component is refreshed, this.message is changed. Only the second Text component is marked dirty.
@@ -577,7 +577,7 @@ struct Parent {
 
 ## Performance Deteriorates Due to Too Many Components Associated with State Variables
 
-It is recommended that the number of components associated with each state variable be less than 20. Precisely controlling the number of components associated with state variables can reduce unnecessary component updates and improve update efficiency. Sometimes, developers bind the same state variable to multiple component attributes at the same level. When the state changes, these components are updated synchronously, causing unnecessary updates. When the component complexity is high, the overall performance is greatly affected. On the contrary, binding the state variable to the parent components of these components can reduce the number of components that need to be refreshed and improve performance. During application development, you can use HiDumper to view the number of components associated with status variables.
+It is recommended that the number of components associated with each state variable be less than 20. Precisely controlling the number of components associated with state variables can reduce unnecessary component updates and improve update efficiency. Sometimes, developers bind the same state variable to multiple component attributes at the same level. When the state changes, these components are updated synchronously, causing unnecessary updates. When the component complexity is high, the overall performance is greatly affected. On the contrary, binding the state variable to the parent components of these components can reduce the number of components that need to be refreshed and improve performance. During application development, you can use HiDumper to view the number of components associated with status variables. For details, see [State Variable Component Location Tool Practice](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/performance/state_variable_dfx_pratice.md).
 
 **Incorrect Usage**
 
