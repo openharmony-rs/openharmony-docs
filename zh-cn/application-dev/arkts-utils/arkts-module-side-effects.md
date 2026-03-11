@@ -171,6 +171,14 @@ export function changeGlobalVar() {
 
 <!-- @[export_sideEffectModuleFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/SideEffectModuleFive.ets) -->
 
+``` TypeScript
+// SideEffectModuleFive.ets
+export let data2 = 'data from side effect module';
+export function changeGlobalVar() {
+  globalThis.someGlobalVar = 200;
+}
+```
+
 <!-- @[export_moduleUseGlobalVarFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModuleUseGlobalVarFive.ets) -->
 
 <!-- @[import_modulePartFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageFive.ets) -->
