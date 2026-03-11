@@ -16,6 +16,10 @@ For details about the APIs, see the [MetadataBinding API Reference](../../refere
 
 Third-party applications can use the metadata binding function to map the App Linking link to the desired content for easy access at a later time. For example, when a user is browsing a product in an e-commerce app and takes a screenshot of that product to save it, the system will record the mapping between the screenshot and the App Linking link provided by the e-commerce app. When the user views the screenshot again, the system will remind the user of whether to return to the e-commerce app to view the product details.
 
+## Demonstration Example
+ 	 
+![Metadatabinding](figures/metadatabinding.gif)
+
 ## Available APIs
 
   - The initial APIs of this module are supported since API version 18. Newly added APIs will be marked with a superscript to indicate their earliest API version.
