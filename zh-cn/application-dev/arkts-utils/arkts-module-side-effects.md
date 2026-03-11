@@ -181,6 +181,16 @@ export function changeGlobalVar() {
 
 <!-- @[export_moduleUseGlobalVarFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModuleUseGlobalVarFive.ets) -->
 
+``` TypeScript
+// ModuleUseGlobalVarFive.ets
+import { data1, changeGlobalVar } from './ModulePartFive';
+export function useGlobalVar() {
+  console.info('data1 is ', data1);
+  changeGlobalVar(); // 在需要的时候执行代码，而不是模块加载时执行。
+  console.info('globalThis.someGlobalVar is ', globalThis.someGlobalVar);
+}
+```
+
 <!-- @[import_modulePartFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageFive.ets) -->
 
 输出内容：
