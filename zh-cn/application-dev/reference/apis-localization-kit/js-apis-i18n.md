@@ -31,14 +31,6 @@ import { i18n } from '@kit.LocalizationKit';
 
 提供系统属性相关的能力，包括语言地区名称翻译、支持的语言地区列表获取和系统语言地区获取等。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 ### getDisplayCountry<sup>9+</sup>
 
 static getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): string
@@ -845,14 +837,6 @@ getCalendar(locale: string, type? : string): Calendar
 
 提供实体识别相关的能力，可以获取文本中实体的类型和起止位置。当前支持识别的实体包括电话号码和时间日期。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
-
 ### constructor<sup>11+</sup>
 
 constructor(locale?: string)
@@ -969,14 +953,6 @@ findEntityInfo(text: string): Array&lt;EntityInfoItem&gt;
 ## Calendar<sup>8+</sup>
 
 提供历法相关的能力，包括历法名称获取和日期计算等。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-ArkTS-Dyn起始版本： 8
-
-ArkTS-Sta起始版本： 23
 
 ### setTime<sup>8+</sup>
 
@@ -1532,14 +1508,6 @@ ArkTS-Sta: compareDays(date: Date): int
 
 提供电话号码相关的能力，包括电话号码有效性判断、格式化和归属地获取。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
-
 ### constructor<sup>8+</sup>
 
 constructor(country: string, options?: PhoneNumberFormatOptions)
@@ -1776,14 +1744,6 @@ getInstance(locale?: string): IndexUtil
 
 提供索引相关的能力，包括区域索引列表和文本索引值获取。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
-
 ### getIndexList<sup>8+</sup>
 
 getIndexList(): Array&lt;string&gt;
@@ -1915,14 +1875,6 @@ getLineInstance(locale: string): BreakIterator
 ## BreakIterator<sup>8+</sup>
 
 提供文本换行相关的能力，包括可换行点的获取、移动和识别等。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
 
 ### setLineBreakText<sup>8+</sup>
 
@@ -2268,14 +2220,6 @@ getTimeZone(zoneID?: string): TimeZone
 ## TimeZone
 
 提供时区相关的能力，包括时区名称翻译、偏移量获取和跳变规则获取等。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 7
-
-**ArkTS-Sta起始版本：** 23
 
 ### getID
 
@@ -2639,14 +2583,6 @@ let dateFormat: string =
 
 提供查询时区跳变规则的能力。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
 ### nextTransition<sup>20+</sup>
 
 nextTransition(date?: number): ZoneOffsetTransition
@@ -2689,14 +2625,6 @@ let zoneOffsetTransition: i18n.ZoneOffsetTransition = zoneRules.nextTransition(d
 ## ZoneOffsetTransition<sup>20+</sup>
 
 提供解析时区跳变规则的能力。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
 
 ### getMilliseconds<sup>20+</sup>
 
@@ -2798,14 +2726,6 @@ zoneOffsetTransition.getOffsetBefore(); // 跳变前的偏移量: -25200000
 ## Transliterator<sup>9+</sup>
 
 提供文本音译相关的能力，包括音译支持范围获取和文本音译等。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 ### getAvailableIDs<sup>9+</sup>
 
@@ -2922,14 +2842,6 @@ transform(text: string): string
 ## Unicode<sup>9+</sup>
 
 提供字符属性相关的能力，包括判断字符是否为空格、数字和字母等。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 ### isDigit<sup>9+</sup>
 
@@ -3275,14 +3187,6 @@ static getType(ch: string): string
 ## I18NUtil<sup>9+</sup>
 
 国际化工具类，提供单位转换、获取日期顺序、获取时段名称、区域匹配和路径本地化等能力。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 ### unitConvert<sup>9+</sup>
 
@@ -3672,14 +3576,6 @@ try {
 
 提供文本标准化的能力。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 ### getInstance<sup>10+</sup>
 
 static getInstance(mode: NormalizerMode): Normalizer
@@ -3799,14 +3695,6 @@ normalize(text: string): string
 ## HolidayManager<sup>11+</sup>
 
 提供解析节假日数据的能力，包括节假日判断和指定年份节假日列表获取等。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 ### constructor<sup>11+</sup>
 
@@ -4196,14 +4084,6 @@ try {
 
 提供时间日期格式化的能力。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
 ### format<sup>18+</sup>
 
 format(date: Date): string
@@ -4257,14 +4137,6 @@ format(date: Date): string
 ## StyledDateTimeFormat<sup>23+</sup>
 
 提供富文本时间日期格式化的能力。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
 
 ### constructor<sup>23+</sup>
 
@@ -4504,14 +4376,6 @@ try {
 
 基于框架字符串提供数字格式化的能力。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
 ### format<sup>18+</sup>
 
 ArkTS-Dyn: format(value: number): string
@@ -4558,14 +4422,6 @@ try {
 ## StyledNumberFormat<sup>18+</sup>
 
 提供富文本数字格式化的能力。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
 
 ### constructor<sup>(deprecated)</sup>
 
@@ -4770,16 +4626,6 @@ ArkTS-Sta: format(value: double): StyledString
 ## AdvancedMeasureFormat<sup>23+</sup>
 
 提供数字格式化能力。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
 
 ### constructor<sup>23+</sup>
 

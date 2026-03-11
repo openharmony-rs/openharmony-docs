@@ -274,14 +274,6 @@ localeID = minimizedLocale.toString(); // localeID = 'en'
 
 提供日期格式化的能力。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 6
-
-**ArkTS-Sta起始版本：** 23
-
 ### constructor<sup>(deprecated)</sup>
 
 constructor()
@@ -508,14 +500,6 @@ let timeStyle: string | undefined = options.timeStyle; // timeStyle = 'medium'
 
 提供标准的数字格式化的能力。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 6
-
-**ArkTS-Sta起始版本：** 23
-
 ### constructor<sup>8+</sup>
 
 constructor()
@@ -721,14 +705,6 @@ let notation: string | undefined = options.notation; // notation = 'scientific'
 
 提供字符串排序的能力。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
-
 ### constructor<sup>8+</sup>
 
 constructor()
@@ -885,14 +861,6 @@ import { intl } from '@kit.LocalizationKit';
 
 提供获取单复数类型的能力。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
-
-**系统能力**：SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 8
-
 ### constructor<sup>(deprecated)</sup>
 
 constructor()
@@ -1023,14 +991,6 @@ select(n: number): string
 > 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat)替代。
 
 提供相对时间格式化的能力。
-
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
-
-**系统能力**：SystemCapability.Global.I18n
-
-**ArkTS-Dyn起始版本：** 8
 
 ### constructor<sup>(deprecated)</sup>
 
