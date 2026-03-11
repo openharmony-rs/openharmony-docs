@@ -1,4 +1,4 @@
-# class (HeifsMetadata)
+# Class (HeifsMetadata)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
