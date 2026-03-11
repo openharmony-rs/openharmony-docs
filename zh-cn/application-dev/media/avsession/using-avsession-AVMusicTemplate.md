@@ -6,6 +6,7 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 媒体应用在实现音频功能时，需要作为音频模板提供方接入媒体会话系统。具体而言，媒体应用需要：
+
 1. 在媒体中心（作为音频模板控制方）展示音频相关信息。
 2. 响应媒体中心下发的播放控制命令。
 
@@ -117,7 +118,7 @@
    }
    ```
    
-2. 根据需要注册事件监听，并提供相应信息的获取方法。音频应用设置的音频模板信息，会被音频模板控制方通过AVMusicTemplateController相关方法获取后进行显示或处理。例如主界面显示，需要如下接口，详情请查看[AVMusicTemplate API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
+2. 注册事件监听，在监听到事件后可提供应用数据给音频模板控制方使用。例如音频模板主界面显示，需要如下接口，详情请查看[AVMusicTemplate API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
    
    - onQueryMainTabs：注册查询主标签事件监听。提供主界面展示的TAB数据集合，并规定“我的主页”的tabId（媒体中心的为"minePage"）。
    - onQueryMediaTabContent：注册查询媒体标签内容事件监听。根据tabId提供页面展示内容数据。

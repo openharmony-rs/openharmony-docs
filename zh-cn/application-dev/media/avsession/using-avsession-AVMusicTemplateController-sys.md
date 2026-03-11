@@ -24,7 +24,7 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
 
 系统应用作为音频模板控制方接入音频模板的基本步骤如下所示：
 
-1. 创建音频模板控制器（每一个音频应用对应一个模板控制器，且不需要重复创建），监听音频模板状态。当音频模板创建时，根据创建sessionId创建控制器。当音频模板销毁时，销毁控制器。详情请查看[模板API接口](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate-f.md)。
+1. 创建音频模板控制器。每一个媒体应用对应唯一模板控制器，不需要重复创建。监听音频模板状态，音频模板创建时，按sessionId创建控制器，音频模板销毁时，同步销毁控制器。详情请查看[模板API接口](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate-f.md)。
 
    - getAllAVMusicTemplateDescriptors：获取所有的音频模板描述。
    - onAVMusicTemplateCreate：音频模板创建事件。
@@ -221,7 +221,7 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
    }
    ```
    
-2. 音频模板控制方根据需要查询音频模板提供方相关的信息，用于界面展示（需要音频模板提供方注册相关接口）。例如主界面展示需要先获取主标签TAB，然后根据tabId查询标签页内容，需要接口如下，详情请查看[AVMusicTemplateController API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
+2. 音频模板控制方可查询媒体应用提供的数据，用于界面展示。例如音频模板控制方主界面可获取媒体应用主标签数据，再根据tabId查询标签页内容，进行展示。需要接口如下，详情请查看[AVMusicTemplateController API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
    - queryMainTabs：查询主标签。
    - queryMediaTabContent：查询媒体标签内容。
@@ -279,7 +279,7 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
    }
    ```
    
-3. 音频模板控制方根据操作下发指令给媒体提供方（需要媒体提供方已经注册相关监听）。例如搜播需要接口如下，详情请查看[AVMusicTemplateController API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
+3. 下发媒体控制指令。音频模板控制方根据操作下发指令给媒体应用（需要媒体应用已经注册相关监听）。例如搜播需要接口如下，详情请查看[AVMusicTemplateController API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
    - playForSearch：搜播。
    
