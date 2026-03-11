@@ -371,7 +371,7 @@
        // 注销用户信息改变的监听。
        this.controller?.offUserInfoChange();
    
-       // 注销弹框命令改变的监听。
+       // 注销对话框命令改变的监听。
        this.controller?.offDialogCommandChange();
    
        // 注销当前单曲改变的监听。
