@@ -79,6 +79,8 @@ track变更事件回调方法。
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ---------------------------------------------------------- |
 | index  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 当前变更的track索引。     |
@@ -97,6 +99,8 @@ type OnAVPlayerStateChangeHandle = (state: AVPlayerState, reason: StateChangeRea
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ---------------------------------------------------------- |
@@ -119,6 +123,8 @@ ArkTS-Sta: type OnBufferingUpdateHandler = (infoType: BufferingInfoType, value: 
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
 | infoType  | [BufferingInfoType](arkts-apis-media-e.md#bufferinginfotype8) | 是 | 缓存时间类型。     |
@@ -139,6 +145,8 @@ ArkTS-Sta: type OnVideoSizeChangeHandler = (width: int, height: int) => void
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
@@ -162,6 +170,8 @@ type OnSuperResolutionChanged = (enabled: boolean) => void
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
@@ -205,6 +215,8 @@ ArkTS-Sta: type OnPlaybackRateDone = (rate: double) => void
 **ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
@@ -377,6 +389,18 @@ let sourceCloseCallback: media.SourceCloseCallback = (uuid: number) => {
   requests.remove(uuid);
 };
 ```
+
+## PlaybackMetrics<sup>23+</sup>
+
+type PlaybackMetrics = Record\<PlaybackMetricsKey, Object>
+
+提供播放器指标信息键值对的容器定义。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+| 类型   | 说明                                                         |
+|------ | ------------------------------------------------------------ |
+| Record\<[PlaybackMetricsKey](arkts-apis-media-e.md#playbackmetricskey23), Object> |  表示值类型为键值对，其中key和value的类型与范围请参考[PlaybackMetricsKey](arkts-apis-media-e.md#playbackmetricskey23)。 |
 
 ## AudioState<sup>(deprecated)</sup>
 

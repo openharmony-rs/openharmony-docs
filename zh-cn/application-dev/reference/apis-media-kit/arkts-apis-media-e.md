@@ -44,6 +44,8 @@
 | AVERR_SEEK_CONTINUOUS_UNSUPPORTED<sup>18+</sup> | 5410002 | 表示不支持SEEK_CONTINUOUS模式的seek。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23        |
 | AVERR_SUPER_RESOLUTION_UNSUPPORTED<sup>18+</sup> | 5410003 | 表示不支持超分。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23        |
 | AVERR_SUPER_RESOLUTION_NOT_ENABLED<sup>18+</sup> | 5410004 | 表示未使能超分。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23        |
+| AVERR_PARAMETER_OUT_OF_RANGE<sup>20+</sup> | 5400108 | 表示参数超过取值范围。 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23        |
+| AVERR_IO_CLEARTEXT_NOT_PERMITTED<sup>23+</sup> | 5411012 | 表示不允许HTTP明文访问。 <br> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br> **ArkTS-Sta起始版本：** 23        |
 
 ## MediaType<sup>8+</sup>
 
@@ -79,11 +81,11 @@ Codec MIME类型枚举。
 | 名称         | 值                    | 说明                     |
 | ------------ | --------------------- | ------------------------ |
 | VIDEO_H263   | 'video/h263'          | 表示视频/h263类型。      |
-| VIDEO_AVC    | 'video/avc'           | 表示视频/avc类型。       |
+| VIDEO_AVC    | 'video/avc'           | 表示视频/avc类型。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。       |
 | VIDEO_MPEG2  | 'video/mpeg2'         | 表示视频/mpeg2类型。     |
 | VIDEO_MPEG4  | 'video/mp4v-es'         | 表示视频/mpeg4类型。     |
 | VIDEO_VP8    | 'video/x-vnd.on2.vp8' | 表示视频/vp8类型。       |
-| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | 表示视频/H265类型。<br>**ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23|
+| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | 表示视频/H265类型。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23|
 | AUDIO_AAC    | 'audio/mp4a-latm'     | 表示音频/mp4a-latm类型。 <br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
 | AUDIO_VORBIS | 'audio/vorbis'        | 表示音频/vorbis类型。    |
 | AUDIO_FLAC   | 'audio/flac'          | 表示音频/flac类型。      |
@@ -159,6 +161,28 @@ Codec MIME类型枚举。
 | DOWNLOAD_RATE            | 'download_rate'        | 表示1s的下载速率，其对应键值类型为number，单位为比特率（bps）。|
 | IS_DOWNLOADING           | 'is_downloading'       | 表示下载状态，1表示在下载状态，0表示非下载状态（下载完成），其对应键值类型为number。|
 | BUFFER_DURATION          | 'buffer_duration'      | 表示缓存数据的可播放时长，其对应键值类型为number，单位为秒（s）。|
+
+## PlaybackMetricsKey<sup>23+</sup>
+
+表示播放器指标信息的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                               | 值                                   | 说明                                       |
+| ---------------------------------- | ------------------------------------ | ------------------------------------------ |
+| PREPARE_DURATION                   | 'prepare_duration'                   | 表示准备时长，单位为毫秒（ms）。           |
+| RESOURCE_CONNECTION_DURATION       | 'resource_connection_duration'       | 表示资源建链时长，单位为毫秒（ms）。       |
+| FIRST_FRAME_DECAPSULATION_DURATION | 'first_frame_decapsulation_duration' | 表示第一帧的解封装时长，单位为毫秒（ms）。 |
+| TOTAL_PLAYING_TIME                 | 'total_playback_time'                | 表示总的播放时长，单位为毫秒（ms）。       |
+| DOWNLOAD_REQUESTS_COUNT            | 'loading_requests_count'             | 表示总的请求次数。<br> **模型约束：** 此接口仅可在Stage模型下使用。                         |
+| TOTAL_DOWNLOAD_TIME                | 'total_loading_time'                 | 表示总的加载时长，单位为毫秒（ms）。       |
+| TOTAL_DOWNLOAD_SIZE                | 'total_loading_bytes'                | 表示总的加载大小，单位为字节（Byte）。<br> **模型约束：** 此接口仅可在Stage模型下使用。             |
+| STALLING_COUNT                     | 'stalling_count'                     | 表示总的卡顿次数。                         |
+| TOTAL_STALLING_TIME                | 'total_stalling_time'                | 表示总的卡顿时长，单位为毫秒（ms）。       |
 
 ## BufferingInfoType<sup>8+</sup>
 
@@ -327,7 +351,7 @@ Codec MIME类型枚举。
 
 | 名称        | 值    | 说明                  |
 | ----------- | ----- | --------------------- |
-| CFT_MPEG_4  | 'mp4' | 视频的容器格式，MP4。 |
+| CFT_MPEG_4  | 'mp4' | 视频的容器格式，MP4。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | CFT_MPEG_4A | 'm4a' | 音频的容器格式，M4A。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
 | CFT_MP3<sup>12+</sup>  | 'mp3' | 音频的容器格式，MP3。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | CFT_WAV<sup>12+</sup>  | 'wav' | 音频的容器格式，WAV。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
@@ -447,6 +471,20 @@ Codec MIME类型枚举。
 | SCREENCAPTURE_STATE_ENTER_PRIVATE_SCENE  | 8    | 录屏进入隐私页面。       |
 | SCREENCAPTURE_STATE_EXIT_PRIVATE_SCENE   | 9    | 录屏退出隐私页面。       |
 | SCREENCAPTURE_STATE_STOPPED_BY_USER_SWITCHES   | 10    | 系统用户切换，录屏中断。       |
+
+## AVMetricsEventType<sup>23+</sup>
+
+表示媒体服务支持的指标事件的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                       | 值   | 说明                                   |
+| -------------------------- | ---- | -------------------------------------- |
+| AV_METRICS_EVENT_STALLING | 1    | 表示播放卡顿的指标事件。 |
 
 ## AVScreenCaptureFillMode<sup>18+</sup>
 
