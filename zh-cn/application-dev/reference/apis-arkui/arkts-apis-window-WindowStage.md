@@ -1412,6 +1412,10 @@ releaseUIContent(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
 | 类型                | 说明                      |
