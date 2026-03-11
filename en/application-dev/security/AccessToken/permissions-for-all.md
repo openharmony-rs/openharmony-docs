@@ -656,3 +656,17 @@ With this permission, the application allows the system to dump application memo
 **Supported devices**: 2-in-1 devices
 
 **Since**: 23
+
+## ohos.permission.HDR_BRIGHTNESS
+
+Allows an application to use the HDR brightening capability.
+
+With this permission, the application can apply HDR brightening effects to component content.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: general devices
+
+**Since**: 24

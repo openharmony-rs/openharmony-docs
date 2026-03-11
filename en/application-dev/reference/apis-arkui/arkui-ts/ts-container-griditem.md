@@ -156,7 +156,7 @@ selectable(value: boolean)
 
 Sets whether the grid item is selectable in the mouse selection box area. This attribute takes effect only when mouse box selection is enabled for the parent **Grid** container.
 
-This attribute must be used before the [style for the selected state](./ts-universal-attributes-polymorphic-style.md#statestyles) is set. Otherwise, the style settings will not take effect.
+This attribute must be used before the [polymorphic style](./ts-universal-attributes-polymorphic-style.md) is set. Otherwise, the style settings will not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -174,7 +174,7 @@ selected(value: boolean)
 
 Sets whether the grid item is selected. This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
 
-This attribute must be used before the [style for the selected state](./ts-universal-attributes-polymorphic-style.md#statestyles) is set. Otherwise, the style settings will not take effect.
+This attribute must be used before the [polymorphic style](./ts-universal-attributes-polymorphic-style.md) is set. Otherwise, the style settings will not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

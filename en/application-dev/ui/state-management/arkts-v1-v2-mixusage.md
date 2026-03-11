@@ -12,7 +12,7 @@ To facilitate smooth migration to state management V2, constraints on the mixed 
 
 > **NOTE**
 > 
-> In this topic, the symbol "->" is used to indicate the transfer of variables. For example, "V1 -> V2" indicates that the state variable of V1 is transferred to the V2.
+> In this topic, the symbol "->" is used to indicate the passing of variables. For example, "V1 -> V2" indicates that a state variable of V1 is passed to the V2.
 
 
 ## Constraints

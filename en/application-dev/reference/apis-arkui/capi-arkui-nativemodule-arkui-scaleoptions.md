@@ -26,8 +26,8 @@ Defines the scaling effect object for component transitions.
 
 | Name| Description|
 | -- | -- |
-| float x | Scale factor along the x-axis.|
-| float y | Scale factor along the y-axis.|
+| float x | Scaling factor along the x-axis. x > 1: The object is scaled up along the x-axis. 0<x<1: The object is scaled down along the x-axis. x = 0: The object is scaled down to 0 along the x-axis. x = 1: The object is scaled along the x-axis at a scale factor of 1. x < 0: The object is scaled in the reverse direction along the x-axis.|
+| float y | Scaling factor along the y-axis. y > 1: The object is scaled up along the y-axis. 0<y<1: The object is scaled down along the y-axis. y = 0: The object is scaled down to 0 along the y-axis. y = 1: The object is scaled along the y-axis at a scale factor of 1. y < 0: The object is scaled in the reverse direction along the y-axis.|
 | float z | Scale factor along the z-axis (not effective for the current 2D graphics).|
-| float centerX | X-coordinate of the center point, in vp.|
-| float centerY | Y-coordinate of the center point, in vp.|
+| float centerX | X-coordinate of the transformation center point. X-coordinate of the transformation center point (anchor point) of the component, in vp.|
+| float centerY | Y-coordinate of the transformation center point. Y-coordinate of the transformation center point (anchor point) of the component, in vp.|

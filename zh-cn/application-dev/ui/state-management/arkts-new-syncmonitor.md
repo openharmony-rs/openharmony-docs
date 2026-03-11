@@ -57,7 +57,7 @@
 
 [addMonitor和clearMonitor](./arkts-new-addMonitor-clearMonitor.md)API允许在应用程序执行期间动态添加和清除监听器。当isSynchronous设置为true，addMonitor类似于\@SyncMonitor, 当设置为false，addMonitor类似于\@Monitor功能。
 
-\@Monitor和\@SyncMonitor分别是\@ComponentV2和\@ObservedV2类的成员函数装饰器，属于V2状态管理的一部分。\@Watch是\[@Component](./arkts-create-custom-components.md#component)中使用的变量装饰器，属于V1状态管理的一部分。
+\@Monitor和\@SyncMonitor分别是\@ComponentV2和\@ObservedV2类的成员函数装饰器，属于V2状态管理的一部分。\@Watch是[@Component](./arkts-create-custom-components.md#component)中使用的变量装饰器，属于V1状态管理的一部分。
 
 \@Monitor装饰的函数会异步执行，在事件处理程序执行结束后执行。\@SyncMonitor和\@Watch函数在观察到的状态变量改变后，回调函数会立即同步执行。
 

@@ -381,7 +381,7 @@ Sets the screen to independent display mode. This API uses a promise to return t
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to returns the independent screen IDs, where each ID is an integer greater than 0.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the independent screen IDs, where each ID is an integer greater than 0.|
 
 **Error codes**
 
