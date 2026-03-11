@@ -80,7 +80,7 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 
 getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | undefined
 
-获取距给定坐标最近的字形的位置信息。
+获取距给定坐标最近的字符的位置信息。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -99,7 +99,7 @@ getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | u
 
 | 类型                                          | 说明        |
 | --------------------------------------------- | ----------- |
-| [PositionWithAffinity](#positionwithaffinity12) \| undefined | 字形的位置信息。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
+| [PositionWithAffinity](#positionwithaffinity12) \| undefined | 字符的位置信息。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
 
 ### getGlyphRangeForCharacterRange<sup>24+</sup>
 
@@ -205,7 +205,7 @@ getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: Rect
 
 | 名称      | 类型                   | 只读 | 可选 | 说明                      |
 | --------- | --------------------- | ---- | ---- | ------------------------ |
-| position  | number                | 否   | 否   | 字形相对于组件内容的索引，整数。  |
+| position  | number                | 否   | 否   | 字形或字符相对于组件内容的索引，整数。  |
 | affinity  | [Affinity](#affinity12) | 否   | 否   | 位置亲和度。             |
 
 ## TextMenuItemId<sup>12+</sup>

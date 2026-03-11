@@ -4818,7 +4818,7 @@ Allows an application to call the accessibility service extension APIs to query 
 
 Allows an application to read recording files from the file manager directory.
 
-**Permission level**: system_core
+**Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
@@ -4832,7 +4832,7 @@ Allows an application to read recording files from the file manager directory.
 
 Allows an application to write recording files to the file manager directory.
 
-**Permission level**: system_core
+**Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
@@ -5535,6 +5535,34 @@ Allows a system application to query the education space properties.
 **Enable via ACL**: true
 
 **Supported devices**: tablets
+
+**Since**: 23
+
+## ohos.permission.MANAGE_STANDBY
+
+Allows an application to manage the standby state of the page, such as controlling when the page enters or exits the standby state.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
+
+**Since**: 23
+
+## ohos.permission.ACCESS_STANDBY
+
+Allows an application to query whether the page is in the standby state and access the page in this state.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
 
 **Since**: 23
 
