@@ -573,7 +573,9 @@ function isPhysicalCameraOrientationVariable(cameraInput: camera.CameraInput): b
 
 ## getPhysicalCameraOrientation<sup>22+</sup>
 
-getPhysicalCameraOrientation(): number
+ArkTs-Dyn: getPhysicalCameraOrientation(): number
+
+ArkTs-Sta: getPhysicalCameraOrientation(): int
 
 获取设备当前折叠状态下的物理镜头角度。
 
@@ -589,7 +591,7 @@ getPhysicalCameraOrientation(): number
 
 | 类型        | 说明                                         |
 | ---------- | -------------------------------------------- |
-| number    | 返回设备当前折叠状态下的物理镜头角度。 |
+| ArkTs-Dyn: number<br/> ArkTs-Sta: int<br/>    | 返回设备当前折叠状态下的物理镜头角度。 |
 
 **示例：**
 
@@ -604,7 +606,7 @@ function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
 ArkTs-Sta示例：
 
 ```ts
-function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
+function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): int {
   let physicalCameraOrientation: number = cameraInput.getPhysicalCameraOrientation();
   return physicalCameraOrientation;
 }
@@ -683,6 +685,8 @@ on(type: 'cameraOcclusionDetection', callback: AsyncCallback\<CameraOcclusionDet
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCameraOcclusionDetection](#oncameraocclusiondetection23-1)。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -720,6 +724,49 @@ function registerCameraOcclusionDetection(cameraInput: camera.CameraInput): void
 }
 ```
 
+## onCameraOcclusionDetection<sup>23+</sup>
+
+onCameraOcclusionDetection(callback: AsyncCallback\<CameraOcclusionDetectionResult\>): void
+
+监听CameraInput的镜头遮挡或脏污事件，通过注册回调函数获取结果。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('cameraOcclusionDetection')](#oncameraocclusiondetection23)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[CameraOcclusionDetectionResult](arkts-apis-camera-i.md#cameraocclusiondetectionresult23)\> | 是   | 回调函数，用于获取结果。返回遮挡状态。|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, result: camera.CameraOcclusionDetectionResult): void {
+  if (err !== undefined && err.code !== 0) {
+      console.error('cameraOcclusionDetection with errorCode = ' + err.code);
+      return;
+  }
+  if (!result) {
+      console.error(`cameraOcclusionDetection result: undefined`);
+      return;
+  }
+  console.info(`onCameraOcclusionDetection isCameraOccluded: ${result.isCameraOccluded}`);
+  console.info(`onCameraOcclusionDetection isCameraLensDirty: ${result.isCameraLensDirty}`);
+}
+
+function registerCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
+  cameraInput.onCameraOcclusionDetection(callback);
+}
+```
+
 ## off('cameraOcclusionDetection')<sup>23+</sup>
 
 off(type: 'cameraOcclusionDetection', callback?: AsyncCallback\<CameraOcclusionDetectionResult\>): void
@@ -729,6 +776,8 @@ off(type: 'cameraOcclusionDetection', callback?: AsyncCallback\<CameraOcclusionD
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCameraOcclusionDetection](#offcameraocclusiondetection23-1)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -753,8 +802,8 @@ function callback(err: BusinessError, result: camera.CameraOcclusionDetectionRes
       console.error(`cameraOcclusionDetection result: undefined`);
       return;
   }
-  console.info(`onCameraOcclusionDetection isCameraOccluded: ${result.isCameraOccluded}`);
-  console.info(`onCameraOcclusionDetection isCameraLensDirty: ${result.isCameraLensDirty}`);
+  console.info(`offCameraOcclusionDetection isCameraOccluded: ${result.isCameraOccluded}`);
+  console.info(`offCameraOcclusionDetection isCameraLensDirty: ${result.isCameraLensDirty}`);
 }
 
 function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
@@ -763,5 +812,50 @@ function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): vo
 
 function unregisterAllCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
     cameraInput.off('cameraOcclusionDetection');
+}
+```
+
+## offCameraOcclusionDetection<sup>23+</sup>
+
+offCameraOcclusionDetection(callback?: AsyncCallback\<CameraOcclusionDetectionResult\>): void;
+
+注销监听CameraInput的镜头遮挡或脏污事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('cameraOcclusionDetection')](#offcameraocclusiondetection23)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[CameraOcclusionDetectionResult](arkts-apis-camera-i.md#cameraocclusiondetectionresult23)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。   |
+
+**示例：**
+
+```ts
+function callback(err: BusinessError, result: camera.CameraOcclusionDetectionResult): void {
+  if (err !== undefined && err.code !== 0) {
+      console.error('cameraOcclusionDetection with errorCode = ' + err.code);
+      return;
+  }
+  if (!result) {
+      console.error(`cameraOcclusionDetection result: undefined`);
+      return;
+  }
+  console.info(`offCameraOcclusionDetection isCameraOccluded: ${result.isCameraOccluded}`);
+  console.info(`offCameraOcclusionDetection isCameraLensDirty: ${result.isCameraLensDirty}`);
+}
+
+function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
+    cameraInput.offCameraOcclusionDetection(callback);
+}
+
+function unregisterAllCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
+    cameraInput.offCameraOcclusionDetection();
 }
 ```

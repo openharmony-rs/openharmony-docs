@@ -790,6 +790,8 @@ on(type: 'systemPressureLevelChange', callback: AsyncCallback\<SystemPressureLev
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSystemPressureLevelChange](#onsystempressurelevelchange23)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 20
@@ -819,6 +821,44 @@ function registerSystemPressureLevelChangeCallback(videoSession: camera.VideoSes
 }
 ```
 
+## onSystemPressureLevelChange<sup>23+</sup>
+
+onSystemPressureLevelChange(callback: AsyncCallback\<SystemPressureLevel\>): void
+
+监听系统压力状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('systemPressureLevelChange')](#onsystempressurelevelchange20)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+|callback | AsyncCallback\<[SystemPressureLevel](arkts-apis-camera-e.md#systempressurelevel20)\> | 是 | 回调函数，用于获取当前系统压力状态。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, systemPressureLevel: camera.SystemPressureLevel): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`systemPressureLevel: ${systemPressureLevel}`);
+}
+
+function registerSystemPressureLevelChangeCallback(videoSession: camera.videoSession): void {
+    videoSession.onSystemPressureLevelChange(callback);
+}
+```
+
 ## off('systemPressureLevelChange')<sup>20+</sup>
 
 off(type: 'systemPressureLevelChange', callback?: AsyncCallback\<SystemPressureLevel\>): void
@@ -828,6 +868,8 @@ off(type: 'systemPressureLevelChange', callback?: AsyncCallback\<SystemPressureL
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSystemPressureLevelChange](#offsystempressurelevelchange23)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -848,6 +890,34 @@ function unregisterSystemPressureLevelChangeCallback(videoSession: camera.VideoS
 }
 ```
 
+## offSystemPressureLevelChange<sup>23+</sup>
+
+offSystemPressureLevelChange(callback?: AsyncCallback\<SystemPressureLevel\>): void
+
+注销监听系统压力状态变化。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('systemPressureLevelChange')](#offsystempressurelevelchange20)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[SystemPressureLevel](arkts-apis-camera-e.md#systempressurelevel20)\> | 否 | 回调函数，如果指定参数则取消对应callback (callback对象不可是匿名函数)，否则参数默认为空，取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterSystemPressureLevelChangeCallback(videoSession: camera.videoSession): void {
+  videoSession.offSystemPressureLevelChange();
+}
+```
+
 ## on('controlCenterEffectStatusChange')<sup>20+</sup>
 
 on(type: 'controlCenterEffectStatusChange', callback: AsyncCallback\<ControlCenterStatusInfo\>): void
@@ -861,6 +931,8 @@ on(type: 'controlCenterEffectStatusChange', callback: AsyncCallback\<ControlCent
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onControlCenterEffectStatusChange](#oncontrolcentereffectstatuschange23)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -890,6 +962,44 @@ function registerControlCenterEffectStatusChangeCallback(videoSession: camera.Vi
 }
 ```
 
+## onControlCenterEffectStatusChange<sup>23+</sup>
+
+onControlCenterEffectStatusChange(callback: AsyncCallback\<ControlCenterStatusInfo\>): void
+
+监听相机控制器效果激活状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('controlCenterEffectStatusChange')](#oncontrolcentereffectstatuschange20)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[ControlCenterStatusInfo](arkts-apis-camera-i.md#controlcenterstatusinfo20)\> | 是 | 回调函数，用于获取当前控制器激活状态。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, status: camera.ControlCenterStatusInfo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`controlCenterEffectStatusChange: ${status}`);
+}
+
+function registerControlCenterEffectStatusChangeCallback(videoSession: camera.VideoSession): void {
+  videoSession.onControlCenterEffectStatusChange(callback);
+}
+```
+
 ## off('controlCenterEffectStatusChange')<sup>20+</sup>
 
 off(type: 'controlCenterEffectStatusChange', callback?: AsyncCallback\<ControlCenterStatusInfo\>): void
@@ -899,6 +1009,8 @@ off(type: 'controlCenterEffectStatusChange', callback?: AsyncCallback\<ControlCe
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offControlCenterEffectStatusChange](#offcontrolcentereffectstatuschange23)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -919,6 +1031,34 @@ function unregisterControlCenterEffectStatusChange(videoSession: camera.VideoSes
 }
 ```
 
+## offControlCenterEffectStatusChange<sup>23+</sup>
+
+offControlCenterEffectStatusChange(callback?: AsyncCallback\<ControlCenterStatusInfo\>): void
+
+监听相机控制器效果激活状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('controlCenterEffectStatusChange')](#offcontrolcentereffectstatuschange20)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[ControlCenterStatusInfo](arkts-apis-camera-i.md#controlcenterstatusinfo20)\> | 否 | 回调函数，如果指定参数则取消对应callback (callback对象不可是匿名函数)，否则参数默认为空，取消所有callback。|
+
+**示例：**
+
+```ts
+function unregisterControlCenterEffectStatusChange(videoSession: camera.VideoSession): void {
+  videoSession.offControlCenterEffectStatusChange();
+}
+```
+
 ## on('macroStatusChanged')<sup>20+</sup>
 
 on(type: 'macroStatusChanged', callback: AsyncCallback\<boolean\>): void
@@ -928,6 +1068,8 @@ on(type: 'macroStatusChanged', callback: AsyncCallback\<boolean\>): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMacroStatusChanged](#onmacrostatuschanged23)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -959,6 +1101,44 @@ function registerMacroStatusChanged(videoSession: camera.VideoSession): void {
 }
 ```
 
+## onMacroStatusChanged<sup>23+</sup>
+
+onMacroStatusChanged(callback: AsyncCallback\<boolean\>): void
+
+监听相机微距状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('macroStatusChanged')](#onmacrostatuschanged20)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<boolean\>     | 是   | 回调函数，用于获取当前微距状态，返回true是开启状态，返回false是禁用状态。  |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, macroStatus: boolean): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`Macro state: ${macroStatus}`);
+}
+
+function registerMacroStatusChanged(videoSession: camera.videoSession): void {
+  videoSession.onMacroStatusChanged(callback);
+}
+```
+
 ## off('macroStatusChanged')<sup>20+</sup>
 
 off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
@@ -968,6 +1148,8 @@ off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[offMacroStatusChanged](#offmacrostatuschanged23)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -986,6 +1168,35 @@ off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 ```ts
 function unregisterMacroStatusChanged(videoSession: camera.VideoSession): void {
   videoSession.off('macroStatusChanged');
+}
+```
+
+
+## offMacroStatusChanged<sup>23+</sup>
+
+offMacroStatusChanged(callback?: AsyncCallback\<boolean\>): void
+
+注销相机微距状态变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('macroStatusChanged')](#offmacrostatuschanged20)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<boolean\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则参数默认为空，取消所有callback, 返回true表示成功，false表示失败。 |
+
+**示例：**
+
+```ts
+function unregisterMacroStatusChanged(videoSession: camera.videoSession): void {
+  videoSession.offMacroStatusChanged();
 }
 ```
 

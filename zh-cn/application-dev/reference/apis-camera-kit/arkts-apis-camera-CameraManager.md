@@ -659,7 +659,7 @@ function createMetadataOutput(cameraManager: camera.CameraManager, cameraOutputC
 
 ## createSession<sup>11+</sup>
 
-createSession\<T\>(mode: SceneMode): T
+createSession\<T extends Session\>(mode: SceneMode): T
 
 创建指定SceneMode的Session实例，同步返回结果。
 
