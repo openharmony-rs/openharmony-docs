@@ -140,7 +140,7 @@ Obtains the application-level temporary file directory of the application.
 
 | Name| Description|
 | -- | -- |
-| char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
+| char* buffer | Pointer to the buffer, which is used to receive the temporary file directory.|
 | const int32_t bufferSize | Buffer size, in bytes.|
 | int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
@@ -166,7 +166,7 @@ Obtains the application-level common file directory of the application.
 
 | Name| Description|
 | -- | -- |
-| char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
+| char* buffer | Pointer to the buffer, which is used to receive the common file directory.|
 | const int32_t bufferSize | Buffer size, in bytes.|
 | int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
@@ -192,7 +192,7 @@ Obtains the application-level database file directory of the application.
 
 | Name| Description|
 | -- | -- |
-| char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
+| char* buffer | Pointer to the buffer, which is used to receive the database file directory.|
 | const int32_t bufferSize | Buffer size, in bytes.|
 | int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
@@ -218,7 +218,7 @@ Obtains the application-level preferences file directory of the application.
 
 | Name| Description|
 | -- | -- |
-| char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
+| char* buffer | Pointer to the buffer, which is used to receive the preferences file directory.|
 | const int32_t bufferSize | Buffer size, in bytes.|
 | int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
@@ -244,7 +244,7 @@ Obtains the application-level installation file directory of the application.
 
 | Name| Description|
 | -- | -- |
-| char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
+| char* buffer | Pointer to the buffer, which is used to receive the installation file directory.|
 | const int32_t bufferSize | Buffer size, in bytes.|
 | int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
@@ -270,7 +270,7 @@ Obtains the application-level distributed file directory of the application.
 
 | Name| Description|
 | -- | -- |
-| char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
+| char* buffer | Pointer to the buffer, which is used to receive the distributed file directory.|
 | const int32_t bufferSize | Buffer size, in bytes.|
 | int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
@@ -296,7 +296,7 @@ Obtains the application-level cloud file directory of the application.
 
 | Name| Description|
 | -- | -- |
-| char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
+| char* buffer | Pointer to the buffer, which is used to receive the cloud file directory.|
 | const int32_t bufferSize | Buffer size, in bytes.|
 | int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
@@ -349,7 +349,7 @@ Obtains the application-level resource directory of the application.
 | Name| Description|
 | -- | -- |
 | char* moduleName | Pointer to the module name.|
-| char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
+| char* buffer | Pointer to the buffer, which is used to receive the resource directory.|
 | int32_t bufferSize | Buffer size, in bytes.|
 | int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
