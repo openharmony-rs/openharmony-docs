@@ -74,16 +74,12 @@ data is  1
 
 <!-- @[export_modulePartThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartThree.ets) -->
 
-```typescript
-// module.ets
+``` TypeScript
+// ModulePartThree.ets
 export function initialize() {
-    console.info("Module loaded!");
+  console.info('Module loaded!');
 }
 export const data = 1;
-
-// main.ets
-import { data } from './module'
-console.info("data is ", data);
 ```
 
 <!-- @[import_modulePartThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageThree.ets) -->
