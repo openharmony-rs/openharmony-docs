@@ -5637,9 +5637,9 @@ ArkTS-Sta: dataDetectorConfig(config: TextDataDetectorConfig | undefined)
 
 ## enableSelectedDataDetector<sup>22+</sup>
 
-ArkTS-Dyn: enableSelectedDataDetector(enabled: boolean)
+ArkTS-Dyn: enableSelectedDataDetector(enable: boolean)
 
-ArkTS-Sta: enableSelectedDataDetector(enabled: boolean | undefined)
+ArkTS-Sta: enableSelectedDataDetector(enable: boolean | undefined)
 
 设置是否启用文本选择的AI菜单功能，启用后可识别选区中的邮件、电话、网址、日期、地址等，并在文本选择菜单中展示对应的AI菜单项。当属性没有显式调用时，默认启用AI菜单功能。
 
@@ -6358,9 +6358,15 @@ textZoomAtio(textZoomAtio: number)
 
 设置页面的文本缩放百分比。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[textZoomRatio<sup>9+</sup>](#textzoomratio9)替代。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
-从API version 9开始不再维护，建议使用[textZoomRatio<sup>9+</sup>](#textzoomratio9)代替。
+**ArkTS模式：** 该接口适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
