@@ -31,16 +31,17 @@
 
 - 异步方法示例：
   <!-- @[cbc_encrypt_decrypt_rc2_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc2_cbc_encryption_decryption/rc2_cbc_encryption_decryption_asynchronous.ets) -->
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genIvParamsSpec() {
     let ivBlob = generateRandom(8);
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
@@ -49,37 +50,36 @@
     };
     return ivParamsSpec;
   }
-
+  
   let iv = genIvParamsSpec();
-
+  
+  // 加密消息
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
-    let cipher = cryptoFramework.createCipher('RC2_128|CBC|PKCS7');
+    let cipher = cryptoFramework.createCipher('RC2|CBC|PKCS7');
     await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, iv);
     let cipherData = await cipher.doFinal(plainText);
     return cipherData;
   }
-
+  
+  // 解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
-    let decoder = cryptoFramework.createCipher('RC2_128|CBC|PKCS7');
+    let decoder = cryptoFramework.createCipher('RC2|CBC|PKCS7');
     await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, iv);
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
-
+  
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
-    let generator = cryptoFramework.createSymKeyGenerator('RC2_128');
-    let symKey = await generator.convertKey(symKeyBlob);
+    let rc2Generator = cryptoFramework.createSymKeyGenerator('RC2');
+    let symKey = await rc2Generator.convertKey(symKeyBlob);
     console.info('convertKey result: success.');
     return symKey;
   }
-
+  
   async function rc2CBC() {
     try {
-      let keyData = new Uint8Array(16);
-      for (let i = 0; i < 16; i++) {
-        keyData[i] = i + 1;
-      }
+      let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
       let symKey = await genSymKeyByData(keyData);
       let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
