@@ -15,7 +15,7 @@
 
 ## 基本概念
 
-音频模板（AVMusicTemplate）： 用于描述音频模板相关属性，包含标识当前媒体会话的ID（sessionId）、会话标签（sessionTag）和操作方法等属性。
+音频模板（AVMusicTemplate）：用于描述音频模板相关属性，包含标识当前媒体会话的ID（sessionId）、会话标签（sessionTag）和操作方法等属性。
 
 
 ## 接口说明
