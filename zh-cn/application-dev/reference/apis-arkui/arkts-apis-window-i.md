@@ -86,10 +86,10 @@
 
 | 名称   | 类型 | 只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
-| firstDrawFrame   | boolean   | 否   | 否   | 是否是首帧。true表示首帧，false表示非首帧。 |
-| inputHandlingDuration    | long   | 否   | 否   | 一帧中的手势处理耗时（单位：纳秒）。 |
-| layoutMeasureDuration  | long   | 否   | 否   | 一帧中的布局测量耗时（单位：纳秒）。 |
-| vsyncTimestamp | long   | 否   | 否   | 当前帧的开始时间戳（单位：纳秒）。 |
+| firstDrawFrame   | ArkTS-Dyn: boolean<br>ArkTS-Sta: boolean   | 否   | 否   | 是否是首帧。true表示首帧，false表示非首帧。 |
+| inputHandlingDuration    | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 一帧中的手势处理耗时（单位：纳秒）。 |
+| layoutMeasureDuration  | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 一帧中的布局测量耗时（单位：纳秒）。 |
+| vsyncTimestamp | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 当前帧的开始时间戳（单位：纳秒）。 |
 
 ## Rect<sup>7+</sup>
 
@@ -124,10 +124,10 @@
 
 | 名称   | 类型 | 只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
-| left   | double   | 否   | 否   | 矩形区域的左边界值，单位为vp。 |
-| top    | double   | 否   | 否   | 矩形区域的上边界值，单位为vp。 |
-| width  | double   | 否   | 否   | 矩形区域的宽度，单位为vp。 |
-| height | double   | 否   | 否   | 矩形区域的高度，单位为vp。 |
+| left   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形区域的左边界值，单位为vp。 |
+| top    | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形区域的上边界值，单位为vp。 |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形区域的宽度，单位为vp。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形区域的高度，单位为vp。 |
 
 ## AvoidArea<sup>7+</sup>
 
