@@ -505,6 +505,12 @@ console.info('One is ', One);
 
 <!-- @[export_numberString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/components/NumberString.ets) -->
 
+``` TypeScript
+// har/src/main/ets/NumberString.ets
+export const One: string = '1';
+console.info('har NumberString.ets execute.');
+```
+
 ### 副作用
 
 **副作用产生场景**
