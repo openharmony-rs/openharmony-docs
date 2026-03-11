@@ -360,7 +360,7 @@ struct Index {
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTs-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -379,7 +379,7 @@ struct Index {
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTs-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
