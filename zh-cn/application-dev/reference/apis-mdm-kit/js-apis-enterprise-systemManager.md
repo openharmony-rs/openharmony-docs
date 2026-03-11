@@ -1229,7 +1229,7 @@ try {
 
 setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string): Promise&lt;void&gt;
 
-设置当前设备激活锁SA禁用或去禁用。
+设置当前设备激活锁SA禁用或去禁用，禁用后查找设备功能不能使用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1245,7 +1245,7 @@ setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string)
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | isDisabled | boolean | 是 | 是否禁用激活锁SA。true表示禁用，false表示去禁用。 |
-| credential | string | 否 | 禁用凭据。当禁用是该参数必须填写有效凭据，去禁用时为空。|
+| credential | string | 否 | 禁用凭据。当设置禁用时该参数必须填写有效凭据，设置去禁用时为空。|
 
 **返回值：**
 
@@ -1261,9 +1261,10 @@ setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string)
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200016  | Execution time out. |
-| 9201011  | Invalid activation lock credentials. |
-| 9201012  | Failed to set the activation lock status. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+| 9201011  | The credential of the activation lock is invalid. |
+| 9201012  | Failed to enable or disable the activation lock. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
@@ -1322,8 +1323,7 @@ isActivationLockDisabled(admin: Want): Promise&lt;boolean&gt;
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200016  | Execution time out. |
-| 9201012  | Failed to set the activation lock status. |
+| 9200016  | Service timeout. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
