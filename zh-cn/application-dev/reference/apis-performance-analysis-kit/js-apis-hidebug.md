@@ -946,9 +946,9 @@ console.info(`fullgc-longtime-count: ${vMRuntimeStats['ark.gc.fullgc-longtime-co
 
 ## hidebug.getVMRuntimeStat<sup>12+</sup>
 
-ArkTS-Dyn：getVMRuntimeStat(item: string): number
+ArkTS-Dyn: getVMRuntimeStat(item: string): number
 
-ArkTS-Sta：getVMRuntimeStat(item: string): long
+ArkTS-Sta: getVMRuntimeStat(item: string): long
 
 根据参数获取指定的系统[GC](../../arkts-utils/gc-introduction.md)统计信息。
 
