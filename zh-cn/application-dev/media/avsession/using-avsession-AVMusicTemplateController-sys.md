@@ -326,29 +326,29 @@
 4. 在不能实时获取数据的场景下，音频模板控制方需要注册监听，接受音频模板提供方主动同步过来的数据。监听接口详情请查看[API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。例如，登录导致用户信息变化的场景，需要注册监听[onUserInfoChange](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md#onuserinfochange)。因为用户在音频模板控制方界面扫码登录，而登录状态只有媒体应用才能感知。
 
       <!-- @[register_user_info_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-
-   ``` TypeScript
-   import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
-   // ...
-   
-   const TAG: string = 'ControllerManager';
-   
-   export class ControllerManager {
-     private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
-     // ...
-     private userInfoChangeCallback: Callback<avMusicTemplate.UserInfo> = (userInfo: avMusicTemplate.UserInfo) => {
-       console.info(TAG, 'userInfoChangeCallback');
-     };
-     // ...
-   
-     private registerListener() {
-       // 注册用户信息改变的监听。
-       this.controller?.onUserInfoChange(this.userInfoChangeCallback);
-       // ...
-     }
-     // ...
-   }
-   ```
+      
+      ``` TypeScript
+      import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+      // ...
+      
+      const TAG: string = 'ControllerManager';
+      
+      export class ControllerManager {
+        private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
+        // ...
+        private userInfoChangeCallback: Callback<avMusicTemplate.UserInfo> = (userInfo: avMusicTemplate.UserInfo) => {
+          console.info(TAG, 'userInfoChangeCallback');
+        };
+        // ...
+      
+        private registerListener() {
+          // 注册用户信息改变的监听。
+          this.controller?.onUserInfoChange(this.userInfoChangeCallback);
+          // ...
+        }
+        // ...
+      }
+      ```
    
 5. 在音频模板控制方应用退出时及时取消事件监听，并释放资源。注销音频模板接口详情请查看[API](../../reference/apis-avsession-kit/js-apis-avsession-avMusicTemplate-sys.md)，注销事件监听接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
