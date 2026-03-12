@@ -135,7 +135,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
         const char *names[] = {EVENT_APP_CRASH};
         // 开发者订阅感兴趣的事件，此处订阅了系统事件。
         OH_HiAppEvent_SetAppEventFilter(eventWatcherR1, DOMAIN_OS, 0, names, 1);
-        // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceive1回调。
+        // 开发者设置已实现的回调函数，观察者接收到事件后会立即触发OnReceive1回调。
         OH_HiAppEvent_SetWatcherOnReceive(eventWatcherR1, OnReceive1);
         // 使观察者开始监听订阅的事件。
         OH_HiAppEvent_AddWatcher(eventWatcherR1);
