@@ -172,6 +172,23 @@
 | width  | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 窗口宽度，单位为px，该参数应为整数。 |
 | height | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 窗口高度，单位为px，该参数应为整数。 |
 
+## SizeInVP<sup>23+</sup>
+
+窗口大小，单位为vp。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 类型 | 只读 | 可选 | 说明       |
+| ------ | -------- | ---- | ---- | ---------- |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 窗口宽度，单位为vp，该参数为浮点数。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 窗口高度，单位为vp，该参数为浮点数。 |
+
 ## Position<sup>20+</sup>
 
 窗口或组件的位置。
