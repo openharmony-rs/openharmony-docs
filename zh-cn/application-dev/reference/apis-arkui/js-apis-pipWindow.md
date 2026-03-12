@@ -1305,7 +1305,7 @@ this.pipController.on('controlPanelActionEvent', (event: PiPWindow.PiPActionEven
 
 onControlPanelActionEvent(callback: ControlPanelActionEventCallback): void
 
-开启画中画控制面板控件动作事件的监听，建议在不需要使用时关闭监听，否则可能存在内存泄漏。推荐使用[on('controlEvent')](#oncontrolevent12)来开启画中画控制面板控件动作事件的监听。
+开启画中画控制面板控件动作事件的监听，建议在不需要使用时关闭监听，否则可能存在内存泄漏。推荐使用[onControlEvent](#oncontrolevent24)来开启画中画控制面板控件动作事件的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1490,7 +1490,7 @@ this.pipController.off('controlPanelActionEvent');
 
 offControlPanelActionEvent(): void
 
-关闭画中画控制面板控件动作事件的监听。推荐使用[off('controlEvent')](#offcontrolevent12)来关闭画中画控制面板控件动作事件的监听。
+关闭画中画控制面板控件动作事件的监听。推荐使用[offControlEvent](#offcontrolevent24)来关闭画中画控制面板控件动作事件的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
