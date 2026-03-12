@@ -180,7 +180,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | audioCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | 否  | 是   | 音频编码格式，选择音频录制时必填。当前支持AUDIO_AAC，AUDIO_MP3，AUDIO_G711MU, AUDIO_AMR_NB, AUDIO_AMR_WB。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23     |
 | aacProfile<sup>22+</sup>       | [AacProfile](arkts-apis-media-e.md#aacprofile22)             | 否   | 是   | 音频编码扩展格式，默认为AAC_LC格式。<br>当前支持类型：AAC_LC、AAC_HE和AAC_HE_V2。<br> **原子化服务API：** 从API version 22 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23     |
 | audioSampleRate  | ArkTS-Dyn: number<br>ArkTS-Sta: int                                      | 否   | 是   | 音频采样率，选择音频录制时必填。<br>支持范围：<br>- AAC编码支持采样率范围[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]。<br>- G711-mulaw编码支持采样率范围[8000]。<br>- MP3编码支持采样率范围[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000]。<br>- AMR_NB编码支持采样率范围[8000]。<br>- AMR_WB编码支持采样率范围[16000]。<br>可变比特率模式，码率仅作参考。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| fileFormat       | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否  | 是   | 文件的容器格式，必要参数。当前支持MP4、M4A、MP3、WAV、AMR、AAC封装格式，当前AAC音频封装默认为ADTS帧头格式。不支持在MP4封装格式下使用AUDIO_MP3编码格式。<br>**原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
+| fileFormat       | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否  | 否   | 文件的容器格式，必要参数。当前支持MP4、M4A、MP3、WAV、AMR、AAC封装格式，当前AAC音频封装默认为ADTS帧头格式。不支持在MP4封装格式下使用AUDIO_MP3编码格式。<br>**原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
 | videoBitrate     | ArkTS-Dyn: number<br>ArkTS-Sta: int                                     | 否   | 是   | 视频编码比特率，选择视频录制时必填，支持范围[10000 - 100000000]。 <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | videoCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)            | 否   | 是   | 视频编码格式，选择视频录制时必填。当前支持VIDEO_AVC。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
 | videoFrameWidth  | ArkTS-Dyn: number<br>ArkTS-Sta: int                                      | 否   | 是   | 视频帧的宽，选择视频录制时必填，支持范围[176 - 4096]。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23         |
@@ -202,8 +202,8 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 | 名称      | 类型    | 只读 |  可选 | 说明             |
 | --------- | ------ | ---- |  ---- | ---------------- |
-| latitude  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   |   否  | 地理位置的纬度，取值范围为[-90, 90]。 |
-| longitude | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   |   否  |地理位置的经度，取值范围为[-180, 180]。 |
+| latitude  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   |   否  | 地理位置的纬度，取值范围为[-90, 90]。 |
+| longitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   |   否  |地理位置的经度，取值范围为[-180, 180]。 |
 
 ## EncoderInfo<sup>11+</sup>
 

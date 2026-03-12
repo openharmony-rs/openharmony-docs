@@ -282,6 +282,8 @@ type OnAVRecorderStateChangeHandler = (state: AVRecorderState, reason: StateChan
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
 | state  | [AVRecorderState](#avrecorderstate9) | 是 | 当前录制状态。     |
