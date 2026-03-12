@@ -1295,7 +1295,7 @@ requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;R
 
 | 参数名   | 类型                                                                   | 必填 | 说明                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| srcFileUris | Array&lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的[媒体文件uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>仅支持处理图片、视频uri，且最大数量限制为100个。|
+| srcFileUris | Array&lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件URI)。<br>**注意：**<br>仅支持处理图片、视频URI，且最大数量限制为100个。|
 
 **返回值：**
 
