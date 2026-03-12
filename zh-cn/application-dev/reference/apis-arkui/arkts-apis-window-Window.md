@@ -18909,7 +18909,11 @@ setFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowFocusable()](#setwindowfocusable9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -18945,7 +18949,11 @@ setFocusable(isFocusable: boolean): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowFocusable()](#setwindowfocusable9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
