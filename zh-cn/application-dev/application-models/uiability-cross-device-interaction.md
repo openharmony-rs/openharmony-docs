@@ -53,7 +53,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| startAbilityByCall(want:&nbsp;Want):&nbsp;Promise&lt;Caller&gt; | 启动指定UIAbility并获取其Caller通信接口，默认为后台启动，通过配置want可实现前台启动，详见[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)。AbilityContext与ServiceExtensionContext均支持该接口。 |
+| startAbilityByCall(want:&nbsp;Want):&nbsp;Promise&lt;Caller&gt; | 启动指定UIAbility并获取其Caller通信接口，默认为后台启动，通过配置want可实现前台启动，详见[接口文档](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)。AbilityContext与ServiceExtensionContext均支持该接口。 |
 | on(method:&nbsp;string,&nbsp;callback:&nbsp;CalleeCallBack):&nbsp;void | 通用组件Callee注册method对应的callback方法。 |
 | off(method:&nbsp;string):&nbsp;void | 通用组件Callee解注册method的callback方法。 |
 | call(method:&nbsp;string,&nbsp;data:&nbsp;rpc.Parcelable):&nbsp;Promise&lt;void&gt; | 向通用组件Callee发送约定序列化数据。 |
