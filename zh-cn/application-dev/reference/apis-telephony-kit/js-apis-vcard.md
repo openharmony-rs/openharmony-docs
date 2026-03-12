@@ -176,7 +176,7 @@ class EntryAbility extends UIAbility {
 
 ## vcard.exportVCard
 
-exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, options: VCardBuliderOptions, callback: AsyncCallback\<string\>\): void
+exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, options: VCardBuilderOptions, callback: AsyncCallback\<string\>\): void
 
 将联系人导出为 VCF(vcard file)文件。使用callback异步回调。
 
@@ -349,10 +349,10 @@ VCard版本和编码信息。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-| 名称         | 类型   | 必填 |    说明    |
-| ------------ | ------ | ---- | ---------- |
-| cardType     | [VCardType](../apis-telephony-kit/js-apis-vcard.md) |  否  | VCard版本类型 (默认值为VERSION_21)。     |
-| charset       | string |  否  | VCard编码类型（默认值为'UTF-8'）。     |
+| 名称         | 类型   | 只读| 可选|    说明    |
+| ------------ | ------ | ----|----| ---------- |
+| cardType     | [VCardType](../apis-telephony-kit/js-apis-vcard.md) |  是| 是 | VCard版本类型 (默认值为VERSION_21)。     |
+| charset       | string |  是|是  | VCard编码类型（默认值为'UTF-8'）。     |
 
 ## VCardType
 
