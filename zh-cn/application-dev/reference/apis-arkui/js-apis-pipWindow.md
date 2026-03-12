@@ -644,7 +644,7 @@ type ControlPanelActionEventCallback = (event: PiPActionEventType, status?: numb
 
 ## StateChangeCallback<sup>24+</sup>
 
-type ControlPanelActionEventCallback = (state: PiPState, reason: string) => void
+type StateChangeCallback = (state: PiPState, reason: string) => void
 
 描述画中画生命周期状态变化回调。
 
@@ -659,7 +659,7 @@ type ControlPanelActionEventCallback = (state: PiPState, reason: string) => void
 | 参数名                       | 类型           | 必填    | 说明                                |
 |--------------------------|--------------|--------------|-----------------------------------|
 | state       |  [PiPState](#pipstate)       | 是 | 当前画中画生命周期状态。 |
-| status | int | 是 | 当前生命周期的切换原因。 |
+| status | int | 是 | 当前生命周期的切换原因。 <br/>在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，reason始终为“0”，无需关注。<br/>从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，reason为当前生命周期的切换原因：<br/>"requestStart"：应用调用startPip接口；<br/>"autoStart"：应用退后台触发画中画自动启动；<br/>"requestDelete"：应用调用stopPip接口；<br/>"panelActionDelete"：用户点击画中画窗口的关闭按钮；<br/>"dragDelete"：用户将画中画窗口拖入垃圾桶；<br/>"panelActionRestore"：用户点击画中画窗口的还原按钮（无还原按钮时可点击画中画窗口）触发还原；<br/>"other"：其他原因，如新的画中画窗口拉起导致当前窗口被关闭、应用主窗口被关闭等场景。 |
 
 
 ## ControlEventParam<sup>12+</sup>
@@ -1104,6 +1104,8 @@ on(type: 'stateChange', callback: (state: PiPState, reason: string) => void): vo
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange24)。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **ArkTS-Dyn起始版本：** 11
@@ -1146,6 +1148,57 @@ this.pipController.on('stateChange', (state: PiPWindow.PiPState, reason: string)
 });
 ```
 
+### onStateChange<sup>24+</sup>
+
+onStateChange(callback: StateChangeCallback): void
+
+开启画中画生命周期状态变化的监听，建议在不需要使用时关闭监听，否则可能存在内存泄漏。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('stateChange')](#onstatechange)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名        | 类型        | 必填   | 说明                                                                                                |
+|------------|-----------|------|---------------------------------------------------------------------------------------------------|
+| callback   |  [StateChangeCallback](#statechangecallback24)   | 是    | 描述画中画生命周期状态变化回调。 |
+
+**示例：**
+
+```ts
+this.pipController.onStateChange((state: PiPWindow.PiPState, reason: string) => {
+  let curState: string = '';
+  switch (state) {
+    case PiPWindow.PiPState.ABOUT_TO_START:
+      curState = 'ABOUT_TO_START';
+      break;
+    case PiPWindow.PiPState.STARTED:
+      curState = 'STARTED';
+      break;
+    case PiPWindow.PiPState.ABOUT_TO_STOP:
+      curState = 'ABOUT_TO_STOP';
+      break;
+    case PiPWindow.PiPState.STOPPED:
+      curState = 'STOPPED';
+      break;
+    case PiPWindow.PiPState.ABOUT_TO_RESTORE:
+      curState = 'ABOUT_TO_RESTORE';
+      break;
+    case PiPWindow.PiPState.ERROR:
+      curState = 'ERROR';
+      break;
+    default:
+      break;
+  }
+  console.info('stateChange:' + curState + ' reason:' + reason);
+});
+```
+
 ### off('stateChange')
 
 off(type: 'stateChange'): void
@@ -1155,6 +1208,8 @@ off(type: 'stateChange'): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1172,6 +1227,26 @@ off(type: 'stateChange'): void
 this.pipController.off('stateChange');
 ```
 
+### offStateChange<sup>24+</sup>
+
+offStateChange(): void
+
+关闭画中画生命周期状态变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('stateChange')](#offstatechange)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 24
+
+**示例：**
+
+```ts
+this.pipController.offStateChange();
+```
+
 ### on('controlPanelActionEvent')
 
 on(type: 'controlPanelActionEvent', callback: ControlPanelActionEventCallback): void
@@ -1181,6 +1256,8 @@ on(type: 'controlPanelActionEvent', callback: ControlPanelActionEventCallback): 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onControlPanelActionEvent](#oncontrolpanelactionevent24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1224,6 +1301,57 @@ this.pipController.on('controlPanelActionEvent', (event: PiPWindow.PiPActionEven
 });
 ```
 
+### onControlPanelActionEvent<sup>24+</sup>
+
+onControlPanelActionEvent(callback: ControlPanelActionEventCallback): void
+
+开启画中画控制面板控件动作事件的监听，建议在不需要使用时关闭监听，否则可能存在内存泄漏。推荐使用[on('controlEvent')](#oncontrolevent12)来开启画中画控制面板控件动作事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('controlPanelActionEvent')](#oncontrolpanelactionevent)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 24
+
+**参数：**
+
+| 参数名      | 类型         | 必填    | 说明                                                |
+|----------|------------|-------|---------------------------------------------------|
+| callback | [ControlPanelActionEventCallback](#controlpanelactioneventcallback12)  | 是     | 描述画中画控制面板控件动作事件回调。                                |
+
+**示例：**
+
+```ts
+this.pipController.onControlPanelActionEvent((event: PiPWindow.PiPActionEventType, status?: number) => {
+  switch (event) {
+    case 'playbackStateChanged':
+      if (status === 0) {
+        // 停止视频
+      } else if (status === 1) {
+        // 播放视频
+      }
+      break;
+    case 'nextVideo':
+      // 切换到下一个视频
+      break;
+    case 'previousVideo':
+      // 切换到上一个视频
+      break;
+    case 'fastForward':
+      // 视频进度快进
+      break;
+    case 'fastBackward':
+      // 视频进度后退
+      break;
+    default:
+      break;
+  }
+  console.info('registerActionEventCallback, event:' + event);
+});
+```
+
 ### on('controlEvent')<sup>12+</sup>
 
 on(type: 'controlEvent', callback: Callback&lt;ControlEventParam&gt;): void
@@ -1233,6 +1361,8 @@ on(type: 'controlEvent', callback: Callback&lt;ControlEventParam&gt;): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[onControlEvent12](#oncontrolevent24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1276,6 +1406,58 @@ this.pipController.on('controlEvent', (control) => {
 });
 ```
 
+### onControlEvent<sup>24+</sup>
+
+onControlEvent(callback: Callback&lt;ControlEventParam&gt;): void
+
+开启画中画控制面板控件动作事件的监听，建议在不需要使用时关闭监听，否则可能存在内存泄漏。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('controlEvent')](#oncontrolevent12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名      | 类型                                                  | 必填    | 说明                                     |
+|----------|-----------------------------------------------------|-------|----------------------------------------|
+| type     | string                                              | 是     | 事件类型，固定为'controlEvent'，即画中画控制面板控件动作事件。 |
+| callback | Callback<[ControlEventParam](#controleventparam12)> | 是     | 描述画中画控制面板控件动作事件回调。                     |
+
+**示例：**
+
+```ts
+this.pipController.onControlEvent((control) => {
+  switch (control.controlType) {
+    case PiPWindow.PiPControlType.VIDEO_PLAY_PAUSE:
+      if (control.status === PiPWindow.PiPControlStatus.PAUSE) {
+        // 停止视频
+      } else if (control.status === PiPWindow.PiPControlStatus.PLAY) {
+        // 播放视频
+      }
+      break;
+    case PiPWindow.PiPControlType.VIDEO_NEXT:
+      // 切换到下一个视频
+      break;
+    case PiPWindow.PiPControlType.VIDEO_PREVIOUS:
+      // 切换到上一个视频
+      break;
+    case PiPWindow.PiPControlType.FAST_FORWARD:
+      // 视频进度快进
+      break;
+    case PiPWindow.PiPControlType.FAST_BACKWARD:
+      // 视频进度后退
+      break;
+    default:
+      break;
+  }
+  console.info('registerControlEventCallback, controlType:' + control.controlType + ', status' + control.status);
+});
+```
+
 ### off('controlPanelActionEvent')
 
 off(type: 'controlPanelActionEvent'): void
@@ -1285,6 +1467,8 @@ off(type: 'controlPanelActionEvent'): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offControlPanelActionEvent](#offcontrolpanelactionevent24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1302,6 +1486,26 @@ off(type: 'controlPanelActionEvent'): void
 this.pipController.off('controlPanelActionEvent');
 ```
 
+### offControlPanelActionEvent<sup>24+</sup>
+
+offControlPanelActionEvent(): void
+
+关闭画中画控制面板控件动作事件的监听。推荐使用[off('controlEvent')](#offcontrolevent12)来关闭画中画控制面板控件动作事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('controlPanelActionEvent')](#offcontrolpanelactionevent)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 24
+
+**示例：**
+
+```ts
+this.pipController.offControlPanelActionEvent();
+```
+
 ### off('controlEvent')<sup>12+</sup>
 
 off(type: 'controlEvent', callback?: Callback&lt;ControlEventParam&gt;): void
@@ -1311,6 +1515,8 @@ off(type: 'controlEvent', callback?: Callback&lt;ControlEventParam&gt;): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offControlEvent](#offcontrolevent24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1332,6 +1538,35 @@ let callbackFunc = (event: PiPWindow.ControlEventParam) => {
 this.pipController.off('controlEvent', callbackFunc);
 ```
 
+### offControlEvent<sup>24+</sup>
+
+offControlEvent(callback?: Callback&lt;ControlEventParam&gt;): void
+
+关闭画中画控制面板控件动作事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('controlEvent')](#offcontrolevent12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 24
+
+**参数：**
+
+| 参数名        | 类型                                                  | 必填 | 说明                                                     |
+|------------|-----------------------------------------------------|----|--------------------------------------------------------|
+| callback | Callback<[ControlEventParam](#controleventparam12)> | 否  | 描述画中画控制面板控件动作事件回调。如果未传入参数，解除画中画控制面板控件动作事件的所有回调。 |
+
+**示例：**
+
+```ts
+let callbackFunc = (event: PiPWindow.ControlEventParam) => {
+  console.info(`receive control event: ${event.controlType}, ${event.status}`);
+}
+this.pipController.offControlEvent(callbackFunc);
+```
+
 ### on('pipWindowSizeChange')<sup>15+</sup>
 
 on(type: 'pipWindowSizeChange', callback: Callback&lt;PiPWindowSize&gt;): void
@@ -1341,6 +1576,8 @@ on(type: 'pipWindowSizeChange', callback: Callback&lt;PiPWindowSize&gt;): void
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPipWindowSizeChange](#onpipwindowsizechange24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1375,6 +1612,48 @@ try {
 }
 ```
 
+### onPipWindowSizeChange<sup>24+</sup>
+
+onPipWindowSizeChange(callback: Callback&lt;PiPWindowSize&gt;): void
+
+开启画中画窗口尺寸变化事件的监听，建议在不需要使用时关闭监听，否则可能存在内存泄漏。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('pipWindowSizeChange')](#onpipwindowsizechange15)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 24
+
+**参数：**
+
+| 参数名      | 类型                                          | 必填    | 说明                                                |
+|----------|---------------------------------------------|-------|---------------------------------------------------|
+| callback | Callback<[PiPWindowSize](#pipwindowsize15)> | 是     | 回调函数。返回当前画中画窗口的尺寸。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 401     | Params error. Possible causes: Callback is already registered. |
+| 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
+| 1300014    | PiP internal error.                                    |
+
+**示例：**
+
+```ts
+try {
+  this.pipController.onPipWindowSizeChange((size: PiPWindow.PiPWindowSize) => {
+    console.info('Succeeded in enabling the listener for pip window size changes. size: ' + JSON.stringify(size));
+  });
+} catch (exception) {
+  console.error(`Failed to enable the listener for pip window size changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ### off('pipWindowSizeChange')<sup>15+</sup>
 
 off(type: 'pipWindowSizeChange', callback?: Callback&lt;PiPWindowSize&gt;): void
@@ -1384,6 +1663,8 @@ off(type: 'pipWindowSizeChange', callback?: Callback&lt;PiPWindowSize&gt;): void
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPipWindowSizeChange](#offpipwindowsizechange24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1428,6 +1709,58 @@ try {
 }
 ```
 
+### offPipWindowSizeChange<sup>24+</sup>
+
+offPipWindowSizeChange(callback?: Callback&lt;PiPWindowSize&gt;): void
+
+关闭画中画窗口尺寸变化事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('pipWindowSizeChange')](#offpipwindowsizechange15)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 24
+
+**参数：**
+
+| 参数名      | 类型         | 必填 | 说明                                                                  |
+|----------|------------|----|---------------------------------------------------------------------|
+| callback | Callback<[PiPWindowSize](#pipwindowsize15)> | 否  | 回调函数。返回当前画中画窗口的尺寸。如果传入参数，则关闭该监听。如果未传入参数，解除窗口尺寸变化事件的所有回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 401     | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
+
+**示例：**
+
+```ts
+const callback = (size: PiPWindow.PiPWindowSize) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  this.pipController.onPipWindowSizeChange(callback);
+} catch (exception) {
+  console.error(`Failed to enable the listener for pip window size changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+
+try {
+  // 关闭指定callback的监听
+  this.pipController.offPipWindowSizeChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  this.pipController.offPipWindowSizeChange();
+} catch (exception) {
+  console.error(`Failed to disable the listener for pip window size changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ### on('activeStatusChange')<sup>22+</sup>
 
 on(type: 'activeStatusChange', callback: Callback&lt;boolean&gt;): void
@@ -1437,6 +1770,8 @@ on(type: 'activeStatusChange', callback: Callback&lt;boolean&gt;): void
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onActiveStatusChange](#onactivestatuschange24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1456,6 +1791,35 @@ let callback = (activeStatus: boolean) => {
   console.info(`pip window is visible: ${activeStatus}`);
 }
 this.pipController.on('activeStatusChange', callback);
+```
+
+### onActiveStatusChange<sup>24+</sup>
+
+onActiveStatusChange(callback: Callback&lt;boolean&gt;): void
+
+开启画中画窗口隐藏状态变化事件的监听，建议在不需要使用时关闭监听，否则可能存在内存泄漏。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('activeStatusChange')](#onactivestatuschange22)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|----------|---------------------------------------------|-------|---------------------------------------------------|
+| callback | Callback\<boolean\> | 是 | 返回当前画中画的隐藏状态。true表示前台可见，false表示前台不可见（收入侧边栏）。 |
+
+**示例：**
+
+```ts
+let callback = (activeStatus: boolean) => {
+  console.info(`pip window is visible: ${activeStatus}`);
+}
+this.pipController.onActiveStatusChange(callback);
 ```
 
 ### off('activeStatusChange')<sup>22+</sup>
@@ -1486,4 +1850,31 @@ let callback = (activeStatus: boolean) => {
   console.info(`pip window is visible: ${activeStatus}`);
 }
 this.pipController.off('activeStatusChange', callback);
+```
+
+### offActiveStatusChange<sup>24+</sup>
+
+off(callback?: Callback&lt;boolean&gt;): void
+
+关闭画中画窗口隐藏状态变化事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|----------|------------|----|---------------------------------------------------------------------|
+| callback | Callback\<boolean\> | 否 | 返回当前画中画的隐藏状态。true表示前台可见，false表示前台不可见（收入侧边栏）。如果未传入参数，解除画中画窗口隐藏状态变化事件的所有回调。 |
+
+**示例：**
+
+```ts
+let callback = (activeStatus: boolean) => {
+  console.info(`pip window is visible: ${activeStatus}`);
+}
+this.pipController.offActiveStatusChange(callback);
 ```
