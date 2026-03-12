@@ -368,8 +368,8 @@ struct Index {
 | STARTED              |  2   | 表示画中画已经启动。            |
 | ABOUT_TO_STOP        |  3   | 表示画中画将要停止。            |
 | STOPPED              |  4   | 表示画中画已经停止。            |
-| ABOUT_TO_RESTORE     | ArkTS-Dyn: number <br> ArkTS-Sta: int | 5   | 表示画中画将从小窗播放恢复到原始播放界面。 |
-| ERROR                | ArkTS-Dyn: number <br> ArkTS-Sta: int | 6   | 表示画中画生命周期执行过程出现了异常。   |
+| ABOUT_TO_RESTORE     |  5   | 表示画中画将从小窗播放恢复到原始播放界面。 |
+| ERROR                |  6   | 表示画中画生命周期执行过程出现了异常。   |
 
 ## PiPControlGroup<sup>12+</sup>
 
@@ -1239,7 +1239,7 @@ offStateChange(): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **示例：**
 
@@ -1313,7 +1313,7 @@ onControlPanelActionEvent(callback: ControlPanelActionEventCallback): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1498,7 +1498,7 @@ offControlPanelActionEvent(): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **示例：**
 
@@ -1550,7 +1550,7 @@ offControlEvent(callback?: Callback&lt;ControlEventParam&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1624,7 +1624,7 @@ onPipWindowSizeChange(callback: Callback&lt;PiPWindowSize&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1721,7 +1721,7 @@ offPipWindowSizeChange(callback?: Callback&lt;PiPWindowSize&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1805,7 +1805,7 @@ onActiveStatusChange(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1866,7 +1866,7 @@ off(callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
