@@ -200,8 +200,8 @@ Describes the configuration of the water flow item section.
 |------|-----|-----|----|-----|
 | itemsCount | number | No| No| Number of **FlowItem** components in a section. The value must be a non-negative number. If the **splice**, **push**, or **update** APIs receive a section whose **itemsCount** is set to a negative number, these APIs will not be executed. Do not use a section whose **itemsCount** is **0**. Otherwise, the layout calculation may be abnormal.|
 | crossCount | number | No| Yes| Number of columns (in vertical layout) or rows (in horizontal layout).<br>Default value: **1**<br> If the value is less than 1, the default value is used.|
-| columnsGap | [Dimension](ts-types.md#dimension10) | No| Yes| Gap between columns. If this parameter is not set, the value of **columnsGap** for the water flow is used. If this parameter is set to an invalid value, 0 vp is used.|
-| rowsGap | [Dimension](ts-types.md#dimension10) | No| Yes| Gap between rows. If this parameter is not set, the value of **rowsGap** for the water flow is used. If this parameter is set to an invalid value, 0 vp is used.|
+| columnsGap | [Dimension](ts-types.md#dimension10) | No| Yes| Column gap of the section. If this parameter is not set, the [columnsGap](#columnsgap) of the **WaterFlow** component is used by default. If an invalid value is set, 0 vp is used.|
+| rowsGap | [Dimension](ts-types.md#dimension10) | No| Yes| Row gap of the section. If this parameter is not set, the [rowsGap](#rowsgap) of the **WaterFlow** component is used by default. If an invalid value is set, 0 vp is used.|
 | margin | [Margin](ts-types.md#margin) \| [Dimension](ts-types.md#dimension10) | No| Yes| Margins of the section. A value of the **Length** type specifies the margins on all the four sides.<br>Default value: **0**<br>Unit: vp<br>When **margin** is set to a percentage, the width of the **WaterFlow** component is used as the base value for the top, bottom, left, and right margins.|
 | onGetItemMainSizeByIndex | [GetItemMainSizeByIndex](#getitemmainsizebyindex12) | No| Yes| Callback used to obtain the main axis size, in vp, of the water flow item at a specified index during the layout process of the **WaterFlow** component. For a vertical **WaterFlow** component, this size refers to the height, and for a horizontal **WaterFlow** component, it refers to the width.<br>**NOTE**<br>1. When both **onGetItemMainSizeByIndex** and the width or height attribute of **FlowItem** are used, the main-axis size is determined by the return value of **onGetItemMainSizeByIndex**, which will override the main-axis length of **FlowItem**.<br>2. Using **onGetItemMainSizeByIndex** can improve the efficiency of jumping to a specific position or index in the **WaterFlow** component. Avoid mixing the use of **onGetItemMainSizeByIndex** with sections that do not have it set, as this can cause layout exceptions.<br>3. If **onGetItemMainSizeByIndex** returns a negative number, the height of the water flow item is 0.|
 
@@ -1057,7 +1057,7 @@ struct WaterFlowDemo {
 ### Example 3: Using WaterFlowSections
 This example illustrates the initialization of **WaterFlowSections** and the different effects of various APIs such as **splice**, **push**, **update**, **values**, and **length**.
 
-For usage with with state management V2, see [WaterFlow and makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#scroll-components).
+For usage with state management V2, see [WaterFlow and makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#scrollable-component).
 
 For details about **WaterFlowDataSource** and the complete code, see [Example 1: Using a Basic WaterFlow Component](#example-1-using-a-basic-waterflow-component).
 
@@ -1610,7 +1610,7 @@ struct WaterFlowDemo {
     return (ret > this.minSize ? ret : this.minSize);
   }
 
-  // Set the width and height array of a flow item.
+  // Set the width and height array of the flow item.
   setItemSizeArray() {
     for (let i = 0; i < 100; i++) {
       this.itemWidthArray.push(this.getSize());
@@ -1719,7 +1719,7 @@ struct Index {
     return (ret > this.minSize ? ret : this.minSize);
   }
 
-  // Set the width and height array of a flow item.
+  // Set the width and height array of the flow item.
   setItemSizeArray() {
     for (let i = 0; i < 100; i++) {
       this.itemWidthArray.push(this.getSize());
@@ -2003,16 +2003,16 @@ struct WaterFlowContentSizeDemo {
       // Button to obtain the content size by calling contentSize.
       Button('GetContentSize')
         .onClick(() => {
-            // Scroller throws an exception when not bound to a component; wrap with try-catch for safety.
-          	try {
-              // Obtain the content width using contentSize.
-              this.contentWidth = this.scroller.contentSize().width;
-              // Obtain the content height using contentSize.
-              this.contentHeight = this.scroller.contentSize().height;
-            } catch (error) {
-              let err: BusinessError = error as BusinessError;
-      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
-            }
+          // Scroller throws an exception when not bound to a component; wrap with try-catch for safety.
+          try {
+            // Obtain the content width using contentSize.
+            this.contentWidth = this.scroller.contentSize().width;
+            // Obtain the content height using contentSize.
+            this.contentHeight = this.scroller.contentSize().height;
+          } catch (error) {
+            let err: BusinessError = error as BusinessError;
+            console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+          }
         }).margin(5)
       // Display the obtained content size.
       Text('Width:' + this.contentWidth)

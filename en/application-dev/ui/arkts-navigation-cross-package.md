@@ -41,7 +41,7 @@ Each service module ([HAP](../quick-start/hap-package.md), [HSP](../quick-start/
     }
     ```
 
-2. Create the **route_map.json** file in **resources/base/profile** of the project directory. Add the following configuration information. For details about the fields, see [routerMap](../quick-start/module-configuration-file.md#routermap).
+2. Create the **router_map.json** file in **resources/base/profile** of the project directory. Add the following configuration information. For details about the fields, see [routerMap](../quick-start/module-configuration-file.md#routermap).
 
      ```json
      {

@@ -112,7 +112,7 @@
     this.title.value = 'Hi';
     ```
 
-  嵌套属性的赋值观察不到。
+  对嵌套对象的属性直接赋值无法被框架观察到，因此不会触发UI刷新。
     <!-- @[state_decorate_object_change_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
   
     ``` TypeScript
@@ -452,7 +452,7 @@ struct MapSample {
 > 从API version 11开始，\@State支持Set类型。
 
 在下面的示例中，\@State装饰的变量fruits的类型为Set\<string\>，点击Button改变fruits的值，视图会随之刷新。
-<!-- @[state_scene_type_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeSet.ets) -->
+<!-- @[state_scene_type_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeSet.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -463,7 +463,7 @@ struct SetSample {
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.fruits.entries()), (item: [number, number]) => {
+        ForEach(Array.from(this.fruits.entries()), (item: [string, string]) => {
           Text(`${item[0]}`)
             .fontSize(20)
             .margin(10)

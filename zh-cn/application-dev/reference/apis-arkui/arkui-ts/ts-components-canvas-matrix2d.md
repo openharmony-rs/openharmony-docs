@@ -6,7 +6,15 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-矩阵对象，可以对矩阵进行缩放、旋转和平移等变换。
+用于画布绘制[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)、[OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md)、[CanvasPattern](ts-components-canvas-canvaspattern.md)和[Path2D](ts-components-canvas-path2d.md)的矩阵对象，可以对矩阵进行缩放、旋转和平移等变换。
+
+Matrix2D的使用场景包括：
+
+1. [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)和[OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md)中调用[getTransform](ts-canvasrenderingcontext2d.md#gettransform)接口获取画布的图形变换矩阵Matrix2D对象，调用[setTransform](ts-canvasrenderingcontext2d.md#settransform-1)接口对后续绘制内容进行Matrix2D对象对应的图形变换。
+
+2. [CanvasPattern](ts-components-canvas-canvaspattern.md)中调用[setTransform](ts-components-canvas-canvaspattern.md#settransform)接口对[CanvasPattern](ts-components-canvas-canvaspattern.md)对象进行Matrix2D对象对应的图形变换。
+
+3. [Path2D](ts-components-canvas-path2d.md)中调用[addPath](ts-components-canvas-path2d.md#addpath)接口对[Path2D](ts-components-canvas-path2d.md)对象进行Matrix2D对象对应的图形变换。
 
 >  **说明：**
 > 

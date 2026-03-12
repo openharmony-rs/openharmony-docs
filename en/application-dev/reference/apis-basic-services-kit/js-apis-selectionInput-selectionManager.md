@@ -491,11 +491,15 @@ RelativeContainer() {
 ```
 
 <!--Del-->
-### moveTo
+### moveTo<sup>(deprecated)</sup>
 
 moveTo(x: number, y: number): Promise\<void>
 
 Moves the word selection panel to the specified coordinates on the screen. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 20 and deprecated since API version 24. You are advised to use [moveToGlobalDisplay](#movetoglobaldisplay) instead.
 
 **System API**: This is a system API.
 

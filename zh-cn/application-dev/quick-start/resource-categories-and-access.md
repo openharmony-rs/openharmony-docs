@@ -43,6 +43,8 @@ resources
 > - stage模型多工程情况下，共有的资源文件放到AppScope下的resources目录。
 >
 > - 在编译构建时，AppScope目录下的资源文件会合入到模块下面的资源文件中，如果两个目录下的相同资源目录和资源组目录下存在重名资源，编译打包后只会保留AppScope目录下的资源。
+>
+> - 非resources目录下资源打包策略请参考[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)描述。
 
 ### 资源目录
 
