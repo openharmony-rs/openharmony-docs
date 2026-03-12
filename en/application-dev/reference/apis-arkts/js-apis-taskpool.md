@@ -525,7 +525,7 @@ executePeriodically<A extends Array\<Object>, R>(period: number, task: GenericsT
 
 Executes a generic task periodically, without verifying the parameter type and return value type of the task.
 
-The verification of the **executeDelayed** task works in conjunction with **new GenericsTask**, requiring that the parameter and return value types match those specified in **new GenericsTask**.
+The verification of the **executePeriodically** task works in conjunction with **new GenericsTask**, requiring that the parameter and return value types match those specified in **new GenericsTask**.
 
 **System capability**: SystemCapability.Utils.Lang
 
