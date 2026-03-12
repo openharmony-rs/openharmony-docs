@@ -37,7 +37,7 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 
 ### 设置屏幕捕获Picker
 
-从API version 20开始支持设置屏幕捕获Picker。
+在PC/2in1设备上从API version 20开始支持设置屏幕捕获Picker，在Phone/Tablet设备上从API version 23开始支持。
 
 使用[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置是否弹出屏幕捕获Picker。
 
