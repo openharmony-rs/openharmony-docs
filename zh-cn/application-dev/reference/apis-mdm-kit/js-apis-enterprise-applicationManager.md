@@ -608,7 +608,9 @@ try {
 } catch(err) {
   console.error(`Failed to auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
-// 返回示例
+```
+**返回示例：**
+```
 [
 	{
     	"bundleName": "com.example.edmtest",
@@ -618,7 +620,7 @@ try {
         	"isHiddenStart": false
         }
     },
-    ...
+   // ...
 ]
 ```
 
@@ -643,7 +645,7 @@ addAutoStartApps(admin: Want, autoStartApps: Array\<Want>, accountId: number, di
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                         |
-| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | 是   | 开机自启动应用名单数组，数组总长度不超过10。Want中必须包含bundleName和abilityName。Ability支持UIAbility和ServiceExtensionAbility。当[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中exported属性值为false时，不支持拉起Ability。从API version 24支持，在Want下的parameters属性中可以设置isHiddenStart参数来配置应用开机自启时，是否隐藏UI界面。true代表隐藏，默认是false。该参数设置为true时，应用必须有托盘，否则自启设置失败。 |
+| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | 是   | 开机自启动应用名单数组，数组总长度不超过10。Want中必须包含bundleName和abilityName。Ability支持UIAbility和ServiceExtensionAbility。当[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中exported属性值为false时，不支持拉起Ability。从API version 24开始，在Want的parameters属性中可以设置isHiddenStart参数，来配置应用开机自启时是否隐藏UI界面。true表示隐藏，false表示不隐藏。默认值是false。该参数设置为true时，应用必须有托盘，否则自启设置失败。 |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
 | disallowModify | boolean | 是   | 是否禁止用户手动取消应用自启动，true表示禁止，false表示允许。<!--RP1--><!--RP1End-->|
 
@@ -745,7 +747,9 @@ try {
 } catch(err) {
   console.error(`Failed to get auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
-// 返回示例
+```
+**返回示例：**
+```
 [
 	{
     	"bundleName": "com.example.edmtest",
@@ -755,7 +759,7 @@ try {
         	"isHiddenStart": false
         }
     },
-    ...
+   // ...
 ]
 ```
 
