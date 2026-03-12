@@ -114,7 +114,7 @@ module.json5配置文件包含以下标签。
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| name | 标识当前Module的名称，确保该名称在整个应用中唯一。命名规则如下&nbsp;：<br/>-&nbsp;由字母、数字和下划线组成，且必须以字母开头。<br/>-&nbsp;最大长度128字节。<br/>应用升级时允许修改该名称，但需要应用适配Module相关数据目录的迁移，详见[文件管理接口](../reference/apis-core-file-kit/js-apis-file-fs.md)。<br/>**说明：**<br/>DevEco Studio新建模块时，限制模块名称的长度不能超过31。如果长度无法满足开发者需求，可以在配置文件修改该标签。 | 字符串 | 该标签不可缺省。 |
+| name | 标识当前Module的名称，确保该名称在整个应用中唯一。命名规则如下&nbsp;：<br/>-&nbsp;由字母、数字和下划线组成，且必须以字母开头。<br/>-&nbsp;最大长度128字节。<br/>应用升级时允许修改该名称，但需要应用适配Module相关数据目录的迁移，详见[@ohos.file.fs (文件管理)](../reference/apis-core-file-kit/js-apis-file-fs.md)。<br/>**说明：**<br/>DevEco Studio新建模块时，限制模块名称的长度不能超过31。如果长度无法满足开发者需求，可以在配置文件修改该标签。 | 字符串 | 该标签不可缺省。 |
 | type | 标识当前Module的类型。支持的取值如下：<br/>-&nbsp;entry：应用的主模块。<br/>-&nbsp;feature：应用的动态特性模块。<br/>-&nbsp;har：静态共享包模块。<br/>-&nbsp;shared：动态共享包模块。 | 字符串 | 该标签不可缺省。 |
 | srcEntry | 标识AbilityStage组件的代码路径，详情参考[AbilityStage组件容器](../application-models/abilitystage.md)，取值为长度不超过127字节的字符串。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | description | 标识当前Module的描述信息，开发者可以通过该标签描述当前模块的功能与作用，取值为长度不超过255字节的字符串，可以采用字符串资源索引格式。 | 字符串 | 该标签可缺省，缺省值为空。 |
@@ -406,7 +406,7 @@ abilities示例：
 | host | 标识URI的主机地址部分，该标签只有当scheme配置时才生效。常见的方式：<br/>-&nbsp;域名方式，如example.com。<br/>-&nbsp;IP地址方式，如10.10.10.1。<br/>**说明：**<br/>从API 18开始，该标签在参与隐式Want匹配时不区分大小写。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | port | 标识URI的端口部分。如http默认端口为80，https默认端口是443，ftp默认端口是21。该标签只有当scheme和host都配置时才生效。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | path&nbsp;\|&nbsp;pathStartWith&nbsp;\|&nbsp;pathRegex | 标识URI的路径部分，path、pathStartWith和pathRegex配置时三选一。path标识URI与want中的路径部分全匹配，pathStartWith标识URI与want中的路径部分允许前缀匹配，pathRegex标识URI与want中的路径部分允许正则匹配。该标签只有当scheme和host都配置时才生效。 | 字符串 | 该标签可缺省，缺省值为空。 |
-| type | 标识与Want相匹配的数据类型，使用MIME（Multipurpose&nbsp;Internet&nbsp;Mail&nbsp;Extensions）类型规范和[UniformDataType](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型规范。可以与scheme同时配置，也可以单独配置。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| type | 标识与Want相匹配的数据类型，使用MIME（Multipurpose&nbsp;Internet&nbsp;Mail&nbsp;Extensions）类型规范和[UniformDataType](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型规范。可以与scheme同时配置，也可以单独配置。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | utd | 标识与Want相匹配的[标准化数据类型](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md)，适用于分享等场景。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | maxFileSupported | 对于指定类型的文件，标识一次能接收或打开的最大数量，适用于分享等场景，需要与utd配合使用。| 整数 | 该标签可缺省，缺省值为0。|
 | linkFeature | 标识URI提供的功能类型（如文件打开、分享、导航等），用于实现应用间跳转。取值为长度不超过127字节的字符串，不支持中文。同一Bundle中声明的linkFeature数量不能超过150个。详情见[linkFeature标签说明](../application-models/app-uri-config.md#linkfeature标签说明)。 | 字符串 | 该标签可缺省，缺省值为空。|

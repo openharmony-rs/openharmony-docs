@@ -10,7 +10,7 @@
 
 ## 接口说明
 
-以下是示例中使用的主要接口，更多接口及使用方式请见[接口文档](../../reference/apis-basic-services-kit/js-apis-zlib.md)。
+以下是示例中使用的主要接口，更多接口及使用方式请见@ohos.zlib (Zip模块)(../../reference/apis-basic-services-kit/js-apis-zlib.md)。
 
 | 接口名                                                       | 接口描述                     |
 | ------------------------------------------------------------ | ---------------------------- |
@@ -513,8 +513,8 @@
 
 1. 17800005 传入的数据错误
 
-   可能原因和处理步骤，请参见[错误码17800005](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800005-传入的数据错误)。
+   可能原因和处理步骤，请参见[17800005](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800005-传入的数据错误)。
 
 2. 17800007 传入的缓冲区错误
 
-   可能原因和处理步骤，请参见[错误码17800007](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800007-传入的缓冲区错误)。
+   可能原因和处理步骤，请参见[17800007](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800007-传入的缓冲区错误)。
