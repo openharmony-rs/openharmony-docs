@@ -2594,7 +2594,7 @@ ArkTS-Sta: mediaOptions(options: WebMediaOptions | undefined)
 
 | 参数名     | 类型                                  | 必填   | 说明                                     |
 | ------- | ------------------------------------- | ---- | ---------------------------------------- |
-| options | [WebMediaOptions](./arkts-basic-components-web-i.md#webmediaoptions10) | 是    | 设置Web的媒体策略。<br>属性参数更新后需重新播放音频方可生效。<br>ArkTS-Dyn：传入undefined或null时为`{resumeInterval: 0, audioExclusive: true}` <br>ArkTS-Sta：传入undefined时为`{resumeInterval: 0, audioExclusive: true}`|
+| options | ArkTS-Dyn: [WebMediaOptions](./arkts-basic-components-web-i.md#webmediaoptions10) <br/>ArkTS-Sta: [WebMediaOptions](./arkts-basic-components-web-i.md#webmediaoptions10) \|  undefined | 是    | 设置Web的媒体策略。<br>属性参数更新后需重新播放音频方可生效。<br>ArkTS-Dyn：传入undefined或null时为`{resumeInterval: 0, audioExclusive: true}` <br>ArkTS-Sta：传入undefined时为`{resumeInterval: 0, audioExclusive: true}`|
 
 **示例：**
 
