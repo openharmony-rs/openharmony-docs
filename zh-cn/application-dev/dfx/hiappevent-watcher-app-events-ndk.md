@@ -165,7 +165,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
     static void OnTake1(const char *const *events, uint32_t eventLen)
     {
         Json::Reader reader(Json::Features::strictMode());
-        OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onTrigger callback form C API \n");
+        OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onTrigger callback from C API \n");
         for (int i = 0; i < eventLen; ++i) {
             OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo=%{public}s", events[i]);
             Json::Value eventInfo;
