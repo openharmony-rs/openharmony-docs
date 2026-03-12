@@ -147,7 +147,7 @@
    > **说明：**
    >
    > - Callback回调函数运行于UI主线程，故涉及UI线程的耗时操作不应运行于回调函数中，以免影响性能。
-   > - 实例在调用OH_NativeXComponent_RegisterOnFrameCallback后，在不需要进行帧率控制时，应进行OH_NativeXComponent_UnregisterOnFrameCallback操作，避免内存泄漏及性能功耗影响。
+   > - 实例在调用OH_NativeXComponent_RegisterOnFrameCallback后，在不需要进行帧率控制时，应进行OH_NativeXComponent_UnRegisterOnFrameCallback操作，避免内存泄漏及性能功耗影响。
    > - API version 18之前，应用调用OH_NativeXComponent_RegisterOnFrameCallback接口设置回调函数，如果没有取消注册，在XComponent实例存在期间，能一直收到期望回调。
    > - 从API version 18开始，应用调用OH_NativeXComponent_RegisterOnFrameCallback接口设置回调函数，如果没有取消注册，只在XComponent上树期间，能收到期望回调。
    <!-- @[display_sync_register_on_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
@@ -175,7 +175,7 @@
    napi_value SampleXComponent::NapiUnregister(napi_env env, napi_callback_info info)
    {
        // ...
-           OH_NativeXComponent_UnregisterOnFrameCallback(nativeXComponent);
+           OH_NativeXComponent_UnRegisterOnFrameCallback(nativeXComponent);
            // ...
    }
    ```

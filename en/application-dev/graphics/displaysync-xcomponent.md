@@ -147,7 +147,7 @@ For details about the APIs, see [OH_NativeXComponent Native XComponent](../refer
    > **NOTE**
    >
    > - The callback function runs in the UI main thread. To avoid adverse impact on the performance, time-consuming operations related to the UI thread should not run in the callback function.
-   > - After the instance calls **OH_NativeXComponent_RegisterOnFrameCallback**, it must call **OH_NativeXComponent_UnregisterOnFrameCallback** when it no longer needs to control the frame rate, so as to avoid memory leakage and impact on performance and power consumption.
+   > - After the instance calls **OH_NativeXComponent_RegisterOnFrameCallback**, it must call **OH_NativeXComponent_UnRegisterOnFrameCallback** when it no longer needs to control the frame rate, so as to avoid memory leakage and impact on performance and power consumption.
    > - Before API version 18, if the application calls **OH_NativeXComponent_RegisterOnFrameCallback** to set the callback function and does not unregister the callback function, the application can receive the expected callback when the XComponent instance exists.
    > - From API version 18 onwards, if the application calls **OH_NativeXComponent_RegisterOnFrameCallback** to set the callback function and does not unregister the callback function, the application can receive the expected callback only when the XComponent is on the tree.
    <!-- @[display_sync_register_on_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
@@ -175,7 +175,7 @@ For details about the APIs, see [OH_NativeXComponent Native XComponent](../refer
    napi_value SampleXComponent::NapiUnregister(napi_env env, napi_callback_info info)
    {
        // ...
-           OH_NativeXComponent_UnregisterOnFrameCallback(nativeXComponent);
+           OH_NativeXComponent_UnRegisterOnFrameCallback(nativeXComponent);
            // ...
    }
    ```
