@@ -769,7 +769,7 @@ Returns the index of the first occurrence of a value in this ArkTS Uint8ClampedA
 | Name       | Type  | Mandatory| Description                       |
 | ------------- | ------ | ---- | ---------------------------|
 | searchElement | number | Yes  | Value to search for.               |
-| fromIndex     | number | No  | Index from which the search starts. The default value is **0**. If the index is greater than or equal to the length of the ArkTS Uint8ClampedArray, **-1** is returned. If a negative number is passed in, the search starts from the end of the ArkTS Uint8ClampedArray.|
+| fromIndex     | number | No  | Index from which the search starts. The default value is **0**. If the index is greater than or equal to the length of the ArkTS Uint8ClampedArray, **-1** is returned. If a negative number is passed in, the search starts from the start of the ArkTS Uint8ClampedArray.|
 
 **Return value**
 
