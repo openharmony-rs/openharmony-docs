@@ -936,7 +936,7 @@ Wi-Fi配置信息。
 | disableReason | number                                | 否   | 是 | 禁用原因。                                                  |
 | netId         | number                                | 否   | 是 | 分配的网络ID。                                              |
 | randomMacType | number                                | 否   | 是 | 随机MAC类型。0-随机MAC地址， 1-设备MAC地址。                  |
-| randomMacAddr | string                                | 否   | 是 | MAC地址。randomMacType为设备mac类型时，该字段必填。           |
+| randomMacAddr | string                                | 否   | 是 | MAC地址。randomMacType为设备MAC类型时，该字段必填。           |
 | ipType        | [IpType](#iptype)                     | 否   | 是 | IP地址类型。                                                |
 | staticIp      | [IpProfile](#ipprofile)               | 否   | 是 | 静态IP配置信息。ipType为STATIC时，该字段必填。                |
 | eapProfile    | [WifiEapProfile](#wifieapprofile)     | 否   | 是 | 可扩展身份验证协议配置。只有securityType为WIFI_SEC_TYPE_EAP时必填。             |

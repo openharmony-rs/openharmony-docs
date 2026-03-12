@@ -66,7 +66,7 @@ struct FancyUse {
 
 ## 限制条件
 
-- \@Styles方法不能有参数，编译期会报错，表明@Styles方法不支持参数。
+- \@Styles方法不支持传入参数，编译期会报错。
 
 ``` TypeScript
   // 错误写法： @Styles不支持参数，编译期报错
