@@ -18258,9 +18258,7 @@ static setUserAgentClientHintsEnabled(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 24
-
-**模型约束：** ArkTS-Sta支持在Stage模型下使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -18270,7 +18268,6 @@ static setUserAgentClientHintsEnabled(enabled: boolean): void
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -18354,7 +18351,34 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
+## setUserAgentClientHintsEnabled<sup>24+</sup>
+
+static setUserAgentClientHintsEnabled(enabled: boolean): void
+
+设置是否开启UserAgent Client Hints功能。
+
+> **说明：**
+>
+> User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
+>
+> 不使用该方法时，默认不开启UserAgent Client Hints功能。
+
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名              | 类型    | 必填   |  说明 |
+| ------------------ | ------- | ---- | ------------- |
+| enabled | boolean | 是   | 是否开启UserAgent Client Hints功能。<br/>true表示开启，false表示不开启。 |
+
+**示例：**
+
 ```ts
 // xxx.ets
 'use static'
@@ -18447,11 +18471,33 @@ static getUserAgentClientHintsEnabled(): boolean
 
 查询UserAgent Client Hints功能当前是否开启。
 
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 24
+
+**返回值：**
+
+| 类型    | 说明                                     |
+| ------- | --------------------------------------- |
+| boolean | 返回UserAgent Client Hints功能开启状态。true表示已开启；false表示已关闭。 |
+
+**示例：**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
+
+## getUserAgentClientHintsEnabled<sup>24+</sup>
+
+static getUserAgentClientHintsEnabled(): boolean
+
+查询UserAgent Client Hints功能当前是否开启。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 24
 
