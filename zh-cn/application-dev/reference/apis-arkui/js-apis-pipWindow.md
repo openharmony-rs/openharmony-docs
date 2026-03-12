@@ -723,7 +723,7 @@ startPiP(): Promise&lt;void&gt;
 let promise : Promise<void> = this.pipController.startPiP();
 promise.then(() => {
   console.info(`Succeeded in starting pip.`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError):void => {
   console.error(`Failed to start pip. Cause:${err.code}, message:${err.message}`);
 });
 ```
@@ -764,7 +764,7 @@ stopPiP(): Promise&lt;void&gt;
 let promise : Promise<void> = this.pipController.stopPiP();
 promise.then(() => {
   console.info(`Succeeded in stopping pip.`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError):void => {
   console.error(`Failed to stop pip. Cause:${err.code}, message:${err.message}`);
 });
 ```
@@ -831,9 +831,19 @@ ArkTS-Sta：updateContentSize(width: int, height: int): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let width: number = 540; // 假设当前内容宽度变为540px。
 let height: number = 960; // 假设当前内容高度变为960px。
+this.pipController.updateContentSize(width, height);
+```
+
+ArkTS-Sta示例：
+
+```ts
+let width: int = 540; // 假设当前内容宽度变为540px。
+let height: int = 960; // 假设当前内容高度变为960px。
 this.pipController.updateContentSize(width, height);
 ```
 
@@ -958,6 +968,7 @@ let controlType: PiPWindow.PiPControlType = PiPWindow.PiPControlType.VIDEO_PLAY_
 let enabled: boolean = false; // 视频播放控制面板中播放/暂停控件为禁用状态。
 this.pipController.setPiPControlEnabled(controlType, enabled);
 ```
+
 ### getPiPWindowInfo<sup>15+</sup>
 getPiPWindowInfo(): Promise&lt;PiPWindowInfo&gt;
 
@@ -995,7 +1006,7 @@ try {
   promise.then((data) => {
     pipWindowInfo = data;
     console.info('Success in get pip window info. Info: ' + JSON.stringify(data));
-  }).catch((err: BusinessError) => {
+  }).catch((err: BusinessError):void => {
     console.error(`Failed to get pip window info. Cause code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
@@ -1042,7 +1053,7 @@ try {
   promise.then((data) => {
     pipSwitchStatus = data;
     console.info('Succeeded in getting pip switch status. switchStatus: ' + JSON.stringify(data));
-  }).catch((err: BusinessError) => {
+  }).catch((err: BusinessError):void => {
     console.error(`Failed to get pip switch status. Cause code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
@@ -1086,7 +1097,7 @@ try {
   promise?.then((data) => {
     pipActiveStatus = data;
     console.info('Succeeded in getting pip active status. activeStatus: ' + JSON.stringify(data));
-  }).catch((err: BusinessError) => {
+  }).catch((err: BusinessError):void => {
     console.error(`Failed to get pip active status. Cause code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
