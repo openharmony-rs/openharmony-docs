@@ -154,7 +154,7 @@ isEmbeddedUIExtensionSupported(): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 当前设备是否支持。返回true表示当前设备支持；返回false表示当前设备不支持。 |
+| boolean | 当前设备是否支持[EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md)。返回true表示当前设备支持；返回false表示当前设备不支持。 |
 
 **示例：**
 
