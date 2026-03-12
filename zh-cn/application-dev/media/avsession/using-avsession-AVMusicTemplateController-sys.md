@@ -80,7 +80,7 @@
        }
        this.currentBundleName = bundleName;
        try {
-         // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES
+         // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES。
          let descriptors: avMusicTemplate.AVMusicTemplateDescriptor[] = avMusicTemplate.getAllAVMusicTemplateDescriptors();
          if (this.isEmptyArray(descriptors)) {
            console.info(TAG, 'createAvMusicTemplateController: descriptors is empty');
