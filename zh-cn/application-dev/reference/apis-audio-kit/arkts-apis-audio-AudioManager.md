@@ -267,7 +267,7 @@ offAudioSceneChange(callback?: Callback\<AudioScene>): void
 
 | 参数名   | 类型                       | 必填 | 说明                                        |
 | :------- | :------------------------- | :--- | :------------------------------------------ |
-| callback | callback?: Callback\<[AudioScene](arkts-apis-audio-e.md#audioscene8)> | 否   | 回调函数，返回当前音频场景模式。 |
+| callback | Callback\<[AudioScene](arkts-apis-audio-e.md#audioscene8)> | 否   | 回调函数，返回当前音频场景模式。 |
 
 **示例：**
 
