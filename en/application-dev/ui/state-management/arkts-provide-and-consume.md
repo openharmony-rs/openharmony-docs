@@ -65,7 +65,7 @@ When \@Provide specifies a variable alias, both the original variable name and a
 
   **Figure 1** \@Provide initialization rule 
 
-![provide-initialization](figures/provide-initialization.PNG)
+![provide-initialization](figures/provide-initialization.png)
 
 | \@Consume Decorator | Description                                                        |
 | -------------------- | ------------------------------------------------------------ |
@@ -78,7 +78,7 @@ When \@Provide specifies a variable alias, both the original variable name and a
   **Figure 2** \@Consume initialization rule 
 
 
-![consume-initialization](figures/consume-initialization.PNG)
+![consume-initialization](figures/consume-initialization.png)
 
 ## Observed Changes and Behavior
 

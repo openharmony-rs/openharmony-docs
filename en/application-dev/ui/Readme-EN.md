@@ -82,15 +82,19 @@
     - Syntax Sugar<!--arkts-state-management-syntactic-sugar-->
       - [$$ Syntax: Implementing Two-Way Synchronization for Built-in Components](state-management/arkts-two-way-sync.md)
       - [!! Syntax: Enabling Two-Way Binding](state-management/arkts-new-binding.md)
-    - State Management V1 to V2 Migration<!--arkts-state-management-v1-v2-migration-guide-->
+    - State Management V1 to V2 Migration Guide <!--arkts-v1-v2-guide-->
       - [V1 to V2 Migration Overview](state-management/arkts-v1-v2-migration.md)
-      - [Migration for Component State Variables](state-management/arkts-v1-v2-migration-inner-component.md)
-      - [Migration for Data Object State Variables](state-management/arkts-v1-v2-migration-inner-class.md)
-      - [Migration for In-Application State Variables and Related Scenarios](state-management/arkts-v1-v2-migration-application-and-others.md)
-      - [Migration for Component Reuse](state-management/arkts-v1-v2-migration-reusable.md)
-    - Mixed Use of State Management V1 and V2<!--v1v2-mixing-->
-      - [Mixing Use of Custom Components](state-management/arkts-custom-component-mixed-scenarios.md)
-      - [Mixing Use of State Management V1 and V2](state-management/arkts-v1-v2-mixusage.md)
+      - State Management V1 to V2 Migration<!--arkts-state-management-v1-v2-migration-guide-->
+        - [Migration for Component State Variables](state-management/arkts-v1-v2-migration-inner-component.md)
+        - [Migration for Data Object State Variables](state-management/arkts-v1-v2-migration-inner-class.md)
+        - [Migration for In-Application State Variables](state-management/arkts-v1-v2-migration-application.md)
+        - [Migration for Component Reuse](state-management/arkts-v1-v2-migration-reusable.md)
+        - [Migration for Repeated Content Rendering](state-management/arkts-v1-v2-migration-rendering-control-repeat.md)
+        - [Migration for Built-in Objects](state-management/arkts-v1-v2-migration-inner-object.md)
+        - [Migration for AnimateTo Usage](state-management/arkts-v1-v2-migration-animateTo.md)
+      - Mixed Use of State Management V1 and V2<!--v1v2-mixing-->
+        - [Mixed Use of State Management V1 and V2 (Before API Version 19)](state-management/arkts-v1-v2-mixusage-before-api-version.md)
+        - [Mixed Use of State Management V1 and V2 (API Version 19 and Later)](state-management/arkts-v1-v2-mixusage.md)
     - [State Management Development](state-management/arkts-state-management-faq.md)
       - [In-Component State Management FAQs](state-management/arkts-state-management-faq-inner-component.md)
       - [Data Object State Management FAQs](state-management/arkts-state-management-faq-inner-class.md)
@@ -102,13 +106,12 @@
     - [ForEach: Rendering Repeated Content](rendering-control/arkts-rendering-control-foreach.md)
     - [LazyForEach: Lazy Data Loading](rendering-control/arkts-rendering-control-lazyforeach.md)
     - [Repeat: Reusing Components for Repeated Content Rendering](rendering-control/arkts-new-rendering-control-repeat.md)
-    - [Migrating from LazyForEach to Repeat](rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
     - [ContentSlot: Enabling Hybrid Development](rendering-control/arkts-rendering-control-contentslot.md)
   - Learning Responsive Environment Variables<!--arkts-env-property-->
     - [\@Env: Environment Variable](arkts-env-system-property.md)
   - Setting Component Navigation and Page Routing<!--arkts-set-navigation-routing-->
     - [Component Navigation and Page Routing Overview](arkts-navigation-introduction.md)
-    - [Component Navigation (Recommended)](arkts-navigation-navigation.md)
+    - [Component Navigation (Navigation) (Recommended)](arkts-navigation-navigation.md)
     - [Page Routing (@ohos.router) (Not Recommended)](arkts-routing.md)
     - [Transition from Router to Navigation](arkts-router-to-navigation.md)
   - Component Layouts<!--arkts-layout-development-->
@@ -240,8 +243,8 @@
       - [Attribute Modifier (AttributeModifier)](arkts-user-defined-extension-attributeModifier.md)
       - [Attribute Updater (AttributeUpdater)](arkts-user-defined-extension-attributeUpdater.md)
   - [Implementing UI Internationalization](arkts-internationalization.md)
-  - Implementing Accessibility and Aging-Friendly Design<!--arkts-support-accessibility-friendliness-->
-    - [Supporting Accessibility](arkts-universal-attributes-accessibility.md)
+  - Implementing Accessibility and Aging-Friendly Design<!--arkts-support-accessibility-friendliness--><!--RP2-->
+    - [Supporting Accessibility](arkts-universal-attributes-accessibility.md)<!--RP2End-->
     - [Supporting Aging-Friendly Design](arkui-support-for-aging-adaptation.md)
   - Setting the Theme<!--arkts-theme-->
     - [Implementing Dark and Light Mode Adaptation](ui-dark-light-color-adaptation.md)
@@ -283,7 +286,7 @@
   - [Querying and Operating Custom Nodes](ndk-node-query-operate.md)
   - [Launching EmbeddedUIExtensionAbility with EmbeddedComponent](ndk-embedded-component.md)
   - [Ensuring Multi-Instance Functionality in the NDK](ndk-scope-task.md)
-  - [Creating Multi-threaded Components with the NDK](ndk-build-on-multi-thread.md)
+  - [Parallelizing UI Page Building Using Multi-threaded NDK APIs](ndk-build-on-multi-thread.md)
 - UI Development (JavaScript-compatible Web-like Development Paradigm)<!--ui-js-dev-->
   - [UI Development (JavaScript-compatible Web-like Development Paradigm) Overview](ui-js-overview.md)
   - Framework Overview<!--js-framework-overview-->
@@ -371,7 +374,9 @@
     - [FAQs About Custom Nodes](arkts-user-defined-node-faq.md)
     - [FAQs About Buttons and Selection Components](arkts-select-component-faq.md)
     - [FAQs About Text Components](arkts-text-faq.md)
+    - [FAQs About Dynamic Attribute Setting](arkts-attribute-modifier-faq.md)
+    - [FAQs About Imperative Nodes](arkts-arkui-frameNode-faq.md)
+    - [FAQs About UI Parallelization](multi-thread-ui-build-faq.md)
 - [Window Manager](../windowmanager/Readme-EN.md)<!--window-manager-->
 - [Display Management](../displaymanager/Readme-EN.md)<!--display-manager-->
 - [ArkUI Glossary](arkui-glossary.md)
-<!--no_check-->
