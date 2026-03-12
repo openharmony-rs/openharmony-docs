@@ -25891,7 +25891,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/AboutToRecyclePage.ets",
 				"functions":[
 					{
-						"end_line":89,
+						"end_line":94,
 						"name":"AboutToRecyclePage",
 						"start_line":15
 					}
@@ -25901,7 +25901,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ConditionPage.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":85,
 						"name":"ConditionPage",
 						"start_line":15
 					}
@@ -25911,7 +25911,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ComputedPage.ets",
 				"functions":[
 					{
-						"end_line":159,
+						"end_line":171,
 						"name":"ComputedPage",
 						"start_line":15
 					}
@@ -25921,7 +25921,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/IMonitorValuePage.ets",
 				"functions":[
 					{
-						"end_line":78,
+						"end_line":80,
 						"name":"IMonitorValuePage",
 						"start_line":15
 					}
@@ -25931,7 +25931,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ComponentIfPage.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":61,
 						"name":"ComponentIfPage",
 						"start_line":15
 					}
@@ -25941,7 +25941,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/RepeatPage.ets",
 				"functions":[
 					{
-						"end_line":85,
+						"end_line":86,
 						"name":"RepeatPage",
 						"start_line":15
 					}
@@ -25951,7 +25951,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ComponentEachPage.ets",
 				"functions":[
 					{
-						"end_line":85,
+						"end_line":91,
 						"name":"ComponentEachPage",
 						"start_line":15
 					}
@@ -25961,7 +25961,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ComponentForEachPage.ets",
 				"functions":[
 					{
-						"end_line":65,
+						"end_line":67,
 						"name":"ComponentForEachPage",
 						"start_line":15
 					}
