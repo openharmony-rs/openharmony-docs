@@ -447,6 +447,10 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
+**ArkTS-Dyn起始版本：** 12
+ 	 
+**ArkTS-Sta起始版本：** 23
+
 | 名称                              | 值   | 说明                                         |
 | --------------------------------- | ---- | -------------------------------------------- |
 | SCREEN_RECORD_PRESET_H264_AAC_MP4 | 0    | 使用视频H264编码，音频AAC编码，MP4封装格式。 |
@@ -457,6 +461,10 @@ Codec MIME类型枚举。
 屏幕录制的状态回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 12
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                     | 值   | 说明                     |
 | ---------------------------------------- | ---- | ------------------------ |
@@ -491,6 +499,10 @@ Codec MIME类型枚举。
 进行屏幕录制时视频填充模式的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 | 名称                              | 值   | 说明                                         |
 | --------------------------------- | ---- | -------------------------------------------- |
