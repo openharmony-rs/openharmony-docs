@@ -148,7 +148,7 @@ struct WebComponent {
 }
 ```
 
-darkModePage页面代码如下：
+resources/rawfile/darkModePage.html页面代码如下：
 
 ```html
 <!-- darkModePage.html -->
