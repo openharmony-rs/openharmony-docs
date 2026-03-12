@@ -31,7 +31,7 @@ ArkTS-Sta: $r(value: string, ...params: RecordData[]): Resource
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -79,7 +79,7 @@ $rawfile(value: string): Resource
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

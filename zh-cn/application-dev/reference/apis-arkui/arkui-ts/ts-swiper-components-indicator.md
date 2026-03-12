@@ -31,6 +31,10 @@ IndicatorComponent(controller?: IndicatorComponentController)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |参数名|类型|必填|说明|
@@ -57,7 +61,7 @@ ArkTS-Sta: style(indicatorStyle: DotIndicator | DigitIndicator | undefined)
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -87,7 +91,7 @@ ArkTS-Sta: count(totalCount: int | undefined)
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -113,7 +117,7 @@ ArkTS-Sta: initialIndex(index: int | undefined)
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -139,7 +143,7 @@ ArkTS-Sta: loop(isLoop: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -165,7 +169,7 @@ ArkTS-Sta: vertical(isVertical: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -193,7 +197,7 @@ ArkTS-Sta: onChange(event: Callback\<int> | undefined)
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -217,6 +221,10 @@ IndicatorComponentController的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 ### showNext
 
 showNext(): void
@@ -228,6 +236,10 @@ showNext(): void
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 ### showPrevious
 
@@ -241,9 +253,15 @@ showPrevious(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 ### changeIndex
 
-changeIndex(index: number, useAnimation?: boolean): void
+ArkTS-Dyn: changeIndex(index: number, useAnimation?: boolean): void
+
+ArkTS-Sta: changeIndex(index: int | undefined, useAnimation?: boolean): void
 
 翻至指定页面。
 
@@ -253,18 +271,24 @@ changeIndex(index: number, useAnimation?: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型       | 必填  | 说明     |
 | -------- | ---------- | ---- | -------- |
-| index| number | 是    | 指定页面在Swiper中的索引值。 |
+| index| ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是    | 指定页面在Swiper中的索引值。 |
 | useAnimation| boolean | 否    | 设置翻至指定页面时是否有动效，true表示有动效，false表示没有动效。<br/>默认值：false。 |
 
 ## 示例
 
 ### 示例1（圆点单独导航点与Swiper绑定使用）
+
 该示例通过Swiper组件的indicator接口与IndicatorComponent的构造函数绑定同一IndicatorComponentController对象，实现了圆点单独导航点与Swiper的交互。
-```
+
+```ts
 @Entry
 @Component
 struct DotIndicatorDemo {
@@ -328,7 +352,7 @@ struct DotIndicatorDemo {
 
 该示例通过Swiper组件的indicator接口与IndicatorComponent的构造函数绑定同一IndicatorComponentController对象，实现了数字单独导航点与Swiper的交互。
 
-```
+```ts
 @Entry
 @Component
 struct DigitIndicatorDemo {
