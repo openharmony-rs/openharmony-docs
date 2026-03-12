@@ -17116,9 +17116,13 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncC
 >
 > 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowSystemBarEnable()](#setwindowsystembarenable9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -17186,7 +17190,6 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 > **说明：**
 >
 > 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
-
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -17266,7 +17269,11 @@ show(callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[showWindow()](#showwindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17299,7 +17306,11 @@ show(): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[showWindow()](#showwindow9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -17330,7 +17341,11 @@ destroy(callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[destroyWindow()](#destroywindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17363,7 +17378,11 @@ destroy(): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[destroyWindow()](#destroywindow9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -17586,7 +17605,11 @@ getProperties(callback: AsyncCallback&lt;WindowProperties&gt;): void
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getWindowProperties()](#getwindowproperties9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -17619,7 +17642,11 @@ getProperties(): Promise&lt;WindowProperties&gt;
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getWindowProperties()](#getwindowproperties9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **返回值：**
 
@@ -17751,7 +17778,11 @@ setFullScreen(isFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议联合使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代实现全屏。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -17805,7 +17836,11 @@ setFullScreen(isFullScreen: boolean): Promise&lt;void&gt;
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议联合使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代实现全屏。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -17862,7 +17897,11 @@ setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17916,7 +17955,11 @@ setLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -18229,7 +18272,11 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setUIContent()](#setuicontent9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -18267,7 +18314,11 @@ loadContent(path: string): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setUIContent()](#setuicontent9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -18304,7 +18355,11 @@ isShowing(callback: AsyncCallback&lt;boolean&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isWindowShowing()](#iswindowshowing9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -18337,7 +18392,11 @@ isShowing(): Promise&lt;boolean&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isWindowShowing()](#iswindowshowing9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -18909,7 +18968,11 @@ setFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowFocusable()](#setwindowfocusable9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -18945,7 +19008,11 @@ setFocusable(isFocusable: boolean): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowFocusable()](#setwindowfocusable9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -19230,7 +19297,11 @@ setTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowTouchable()](#setwindowtouchable9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -19266,7 +19337,11 @@ setTouchable(isTouchable: boolean): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowTouchable()](#setwindowtouchable9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 

@@ -1659,9 +1659,13 @@ create(id: string, type: WindowType, callback: AsyncCallback&lt;Window&gt;): voi
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在FA模型下使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1701,9 +1705,13 @@ create(id: string, type: WindowType): Promise&lt;Window&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在FA模型下使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1744,7 +1752,11 @@ create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncCallback&l
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1784,7 +1796,11 @@ create(ctx: BaseContext, id: string, type: WindowType): Promise&lt;Window&gt;
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1826,7 +1842,11 @@ find(id: string, callback: AsyncCallback&lt;Window&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[findWindow()](#windowfindwindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1862,7 +1882,11 @@ find(id: string): Promise&lt;Window&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[findWindow()](#windowfindwindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1901,9 +1925,13 @@ getTopWindow(callback: AsyncCallback&lt;Window&gt;): void
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getLastWindow()](#windowgetlastwindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在FA模型下使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -1938,9 +1966,13 @@ getTopWindow(): Promise&lt;Window&gt;
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getLastWindow()](#windowgetlastwindow9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在FA模型下使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **返回值：**
 
@@ -1973,7 +2005,11 @@ getTopWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getLastWindow()](#windowgetlastwindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -2020,7 +2056,11 @@ getTopWindow(ctx: BaseContext): Promise&lt;Window&gt;
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getLastWindow()](#windowgetlastwindow9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
