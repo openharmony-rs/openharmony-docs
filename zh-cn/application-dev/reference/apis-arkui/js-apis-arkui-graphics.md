@@ -277,7 +277,7 @@ class MyRenderNode extends RenderNode {
 
 const renderNode = new MyRenderNode();
 renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xff519db4;
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -306,6 +306,7 @@ struct Index {
   }
 }
 ```
+![](figures/canvas_demo.png)
 
 ## Edges\<T><sup>12+</sup>
 
@@ -1049,6 +1050,7 @@ struct Index {
   }
 }
 ```
+![](figures/setRectShape_demo.png)
 
 ### setRoundRectShape<sup>12+</sup>
 
@@ -1116,6 +1118,7 @@ struct Index {
   }
 }
 ```
+![](figures/setRoundRectShape_demo.png)
 
 ### setCircleShape<sup>12+</sup>
 
@@ -1179,6 +1182,7 @@ struct Index {
   }
 }
 ```
+![](figures/setCircleShape_demo.png)
 
 ### setOvalShape<sup>12+</sup>
 
@@ -1237,6 +1241,7 @@ struct Index {
   }
 }
 ```
+![](figures/setOvalShape_demo.png)
 
 ### setCommandPath<sup>12+</sup>
 
@@ -1301,6 +1306,7 @@ struct Index {
   }
 }
 ```
+![](figures/setCommandPath_demo.png)
 
 ## ShapeClip<sup>12+</sup>
 
@@ -1347,7 +1353,7 @@ renderNode.frame = {
   width: 150,
   height: 150
 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xff519db4;
 renderNode.shapeClip = clip;
 const shapeClip = renderNode.shapeClip;
 
@@ -1375,6 +1381,7 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
+        .margin({ bottom: 20 })
       Button("setRectShape")
         .onClick(() => {
           shapeClip.setRectShape({
@@ -1385,10 +1392,11 @@ struct Index {
           });
           renderNode.shapeClip = shapeClip;
         })
-    }
+    }.margin(20)
   }
 }
 ```
+![](figures/setRectShape_demo2.gif)
 
 ### setRoundRectShape<sup>12+</sup>
 
@@ -1705,9 +1713,9 @@ import { RenderNode, FrameNode, NodeController, edgeColors } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xffd5d5d5;
 renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
-renderNode.borderColor = edgeColors(0xFF0000FF);
+renderNode.borderColor = edgeColors(0xff519db4);
 
 
 class MyNodeController extends NodeController {
@@ -1733,10 +1741,11 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(30)
   }
 }
 ```
+![](figures/edgeColors_demo.png)
 
 ## edgeWidths<sup>12+</sup>
 
@@ -1772,13 +1781,13 @@ renderNode.frame = {
   width: 150,
   height: 150
 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xffd5d5d5;
 renderNode.borderWidth = edgeWidths(8);
 renderNode.borderColor = {
-  left: 0xFF0000FF,
-  top: 0xFF0000FF,
-  right: 0xFF0000FF,
-  bottom: 0xFF0000FF
+  left: 0xff519db4,
+  top: 0xff519db4,
+  right: 0xff519db4,
+  bottom: 0xff519db4
 };
 
 
@@ -1805,10 +1814,11 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(30)
   }
 }
 ```
+![](figures/edgeWidths_demo.png)
 
 ## borderStyles<sup>12+</sup>
 
@@ -1844,7 +1854,7 @@ renderNode.frame = {
   width: 150,
   height: 150
 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xffd5d5d5;
 renderNode.borderWidth = {
   left: 8,
   top: 8,
@@ -1852,10 +1862,10 @@ renderNode.borderWidth = {
   bottom: 8
 };
 renderNode.borderColor = {
-  left: 0xFF0000FF,
-  top: 0xFF0000FF,
-  right: 0xFF0000FF,
-  bottom: 0xFF0000FF
+  left: 0xff519db4,
+  top: 0xff519db4,
+  right: 0xff519db4,
+  bottom: 0xff519db4
 };
 renderNode.borderStyle = borderStyles(BorderStyle.Dotted);
 
@@ -1883,10 +1893,11 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(30)
   }
 }
 ```
+![](figures/borderStyles_demo.png)
 
 ## borderRadiuses<sup>12+</sup>
 
@@ -1922,7 +1933,7 @@ renderNode.frame = {
   width: 150,
   height: 150
 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xff519db4;
 renderNode.borderRadius = borderRadiuses(32);
 
 
@@ -1949,7 +1960,8 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(20)
   }
 }
 ```
+![](figures/borderRadiuses_demo.png)

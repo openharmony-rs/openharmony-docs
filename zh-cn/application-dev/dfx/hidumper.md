@@ -431,7 +431,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 
 - 可使用hidumper --mem-jsheap pid --leakobj获取指定进程的虚拟机堆内存和泄漏对象信息，文件命名为：<!--RP6-->leaklist-进程号-时间戳<!--RP6End-->。
 
-    获取指定进程的虚拟机堆内存和泄露对象信息的前提是应用已通过[@ohos.hiviewdfx.jsLeakWatcher (js泄露检测)](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md)接口开启了泄漏检测功能。
+    获取指定进程的虚拟机堆内存和泄露对象信息的前提是应用已通过[@ohos.hiviewdfx.jsLeakWatcher](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md)接口开启了泄漏检测功能。
 
     具体使用步骤为：
 
@@ -850,7 +850,7 @@ System cluster list:
 base                             system
 ```
 
-- 可使用hidumper -c [系统通信息簇名称]命令获取指定信息簇信息。
+- 可使用hidumper -c [系统信息簇名称]命令获取指定信息簇信息。
 
 例如可使用hidumper -c base命令获取设备信息、内核版本、启动参数和启动时间。打印效果为：
 

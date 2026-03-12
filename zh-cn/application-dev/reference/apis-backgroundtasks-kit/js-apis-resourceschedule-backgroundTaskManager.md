@@ -1423,7 +1423,7 @@ export default class EntryAbility extends UIAbility {
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | requestId       | number | 否    | 否    | 短时任务的请求ID。                               |
-| actualDelayTime | number | 否    | 否    | 应用实际申请的短时任务时间，单位：ms。<br/> **说明：** 申请时间最长为3分钟，[低电量](../apis-basic-services-kit/js-apis-battery-info.md)时最长为1分钟。 |
+| actualDelayTime | number | 否    | 否    | 应用实际申请的短时任务时间，单位：ms。<br/> **说明：** 申请时间最长为3分钟，低电量（[BatteryCapacityLevel](../apis-basic-services-kit/js-apis-battery-info.md#batterycapacitylevel9)为LEVEL_LOW）时最长为1分钟。 |
 
 ## TransientTaskInfo<sup>20+</sup>
 

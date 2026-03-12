@@ -13,7 +13,7 @@ The NativeVSync module is used to obtain the system VSync signal, create and des
 
 | API| Description| 
 | -------- | -------- |
-| OH_NativeVSync_Create (const char \*name, unsigned int length) | Creates an **OH_NativeVSync** instance. Each call creates a instance and a VSync thread to receive and process the callback. This function must be used in pair with **OH_NativeVSync_Destroy**. Otherwise, memory leak occurs.|
+| OH_NativeVSync_Create (const char \*name, unsigned int length) | Creates an **OH_NativeVSync** instance. Each call creates an instance and a VSync thread to receive and process the callback. This function must be used in pair with **OH_NativeVSync_Destroy**. Otherwise, memory leak occurs.|
 | OH_NativeVSync_Destroy (OH_NativeVSync \*nativeVsync) | Destroys an **OH_NativeVSync** instance.| 
 | OH_NativeVSync_FrameCallback (long long timestamp, void \*data) | Sets a callback function. **timestamp** indicates the timestamp, and **data** indicates a pointer to the input parameters of the callback function. The callback is processed in the thread created during VSync initialization.| 
 | OH_NativeVSync_RequestFrame (OH_NativeVSync \*nativeVsync, OH_NativeVSync_FrameCallback callback, void \*data) | Requests the next VSync signal. When the signal arrives, a callback function is invoked.| 
