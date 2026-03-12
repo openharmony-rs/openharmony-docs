@@ -111,7 +111,7 @@
    }
    ```
    
-2. 注册事件监听，在监听到事件后可提供应用数据给音频模板控制方使用。监听接口详情请查看[API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
+2. 注册事件监听，在监听到事件后可提供应用数据给音频模板控制方使用。监听接口详情请查看[AVMusicTemplate](../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
 
    例如，音频模板主界面显示需要同时注册如下两个接口：
    
