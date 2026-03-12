@@ -194,7 +194,7 @@ export default class MyAbility extends UIAbility {
 | ---                         | --- | ---           |
 | MEMORY_LEVEL_MODERATE       | 0   | 表示整机可用内存适中。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。| 
 | MEMORY_LEVEL_LOW            | 1   | 表示整机可用内存低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。| 
-| MEMORY_LEVEL_CRITICAL       | 2   | 表示整机可用内极低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
+| MEMORY_LEVEL_CRITICAL       | 2   | 表示整机可用内存极低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
 
 > **说明：**
 > 
