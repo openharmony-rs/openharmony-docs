@@ -49,6 +49,8 @@ UserAuthIcon({
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **ArkTS-Dyn起始版本：** 12
@@ -63,12 +65,40 @@ UserAuthIcon({
 | widgetParam    | [userAuth.WidgetParam](js-apis-useriam-userauth.md#widgetparam10)    | 是   | 用户认证界面配置相关参数。                                      |
 | iconHeight     | [Dimension](../apis-arkui/arkui-ts/ts-types.md#dimension10) | 否   | 设置icon的高度，宽高比1:1，默认64。                             |
 | iconColor      | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | 否   | 设置icon的颜色，默认值：$r('sys.color.ohos_id_color_activated')。|
-| onIconClick    | ()=>void                                                      | 否   | 用户点击icon回调接口。                                         |
-| onAuthResult   | (result: [userAuth.UserAuthResult](js-apis-useriam-userauth.md#userauthresult10))=>void| 是   | 用户认证结果信息回调接口。<br>应用需要申请`ohos.permission.ACCESS_BIOMETRIC`权限，否则应用将仅展示图标，无法正常拉起身份认证控件。  |
+| onIconClick    | ArkTS-Dyn: ()=>void <br> ArkTS-Sta: [ClickCallbackFunc](#clickcallbackfunc23)       | 否   | 用户点击icon回调接口。                                         |
+| onAuthResult   | ArkTS-Dyn: (result: [userAuth.UserAuthResult](js-apis-useriam-userauth.md#userauthresult10))=>void <br> ArkTS-Sta: [userAuth.AuthCallbackOnResultFunc](js-apis-useriam-userauth.md#AuthCallbackOnResultFunc23)      | 是   | 用户认证结果信息回调接口。<br>应用需要申请`ohos.permission.ACCESS_BIOMETRIC`权限，否则应用将仅展示图标，无法正常拉起身份认证控件。  |
+
+### build<sup>23+</sup>
+
+build(): void
+
+用于创建UserAuthIcon对象的构造函数。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Sta起始版本：** 23
 
 ## 事件
 
 不支持通用事件。
+
+## ClickCallbackFunc<sup>23+</sup>
+
+type ClickCallbackFunc = () => void
+
+回调函数，用户点击后通过该方法通知应用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Sta起始版本：** 23
 
 ## 示例
 

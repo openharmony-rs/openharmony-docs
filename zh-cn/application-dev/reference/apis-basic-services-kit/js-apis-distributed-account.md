@@ -36,7 +36,7 @@ getDistributedAccountAbility(): DistributedAccountAbility
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -65,7 +65,7 @@ getOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): voi
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -140,7 +140,7 @@ getOsAccountDistributedInfo(): Promise&lt;DistributedInfo&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -282,7 +282,7 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCallbac
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -361,7 +361,7 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -522,13 +522,13 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt
 
 | 名称 | 类型 | 只读  | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| name | string | 否 | 否  | 分布式账号名称，非空字符串。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 22 |
-| id | string | 否 | 否  | 分布式账号UID，非空字符串。 <br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 22|
-| event | string | 否 | 否  | 分布式账号登录状态，包括登录、登出、Token失效和注销，分别对应以下字符串：<br/>-&nbsp;Ohos.account.event.LOGIN<br/>-&nbsp;Ohos.account.event.LOGOUT<br/>-&nbsp;Ohos.account.event.TOKEN_INVALID<br/>-&nbsp;Ohos.account.event.LOGOFF <br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 22|
-| nickname<sup>9+</sup> | string | 否 | 是  | 分布式账号的昵称，默认为空。 <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22|
-| avatar<sup>9+</sup> | string | 否 | 是  | 分布式账号的头像，默认为空。 <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22|
-| status<sup>10+</sup> | [DistributedAccountStatus](#distributedaccountstatus10) | 是 | 是  | 分布式账号的状态，枚举类型，默认为未登录状态。 <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22|
-| scalableData<sup>8+</sup> | ArkTS-Dyn: object<br>ArkTS-Sta:  Record<string, RecordData> | 否 | 是  | 分布式账号扩展信息，根据业务所需，以k-v形式传递定制化信息，默认为空。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 22|
+| name | string | 否 | 否  | 分布式账号名称，非空字符串。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| id | string | 否 | 否  | 分布式账号UID，非空字符串。 <br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23|
+| event | string | 否 | 否  | 分布式账号登录状态，包括登录、登出、Token失效和注销，分别对应以下字符串：<br/>-&nbsp;Ohos.account.event.LOGIN<br/>-&nbsp;Ohos.account.event.LOGOUT<br/>-&nbsp;Ohos.account.event.TOKEN_INVALID<br/>-&nbsp;Ohos.account.event.LOGOFF <br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23|
+| nickname<sup>9+</sup> | string | 否 | 是  | 分布式账号的昵称，默认为空。 <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
+| avatar<sup>9+</sup> | string | 否 | 是  | 分布式账号的头像，默认为空。 <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
+| status<sup>10+</sup> | [DistributedAccountStatus](#distributedaccountstatus10) | 是 | 是  | 分布式账号的状态，枚举类型，默认为未登录状态。 <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23|
+| scalableData<sup>8+</sup> | ArkTS-Dyn: object<br>ArkTS-Sta:  Record<string, RecordData> | 否 | 是  | 分布式账号扩展信息，根据业务所需，以k-v形式传递定制化信息，默认为空。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23|
 
 ## DistributedAccountStatus<sup>10+</sup>
 
@@ -538,7 +538,7 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值 | 说明        |
 | ---- | ------ | ----------- |

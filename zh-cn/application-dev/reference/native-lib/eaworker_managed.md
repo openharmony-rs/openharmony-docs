@@ -290,7 +290,7 @@ static current(): EAWorker | undefined
 **返回值：**
 | 类型       | 说明                 |
 | -------- | ------------------ |
-| EAWorker   | 返回当前线程的EAWorker实例。 |
+| EAWorker   | 返回当前线程的EAWorker实例。如果当前worker未被注册为EAWorker实例则会返回undefined。|
 
 **示例：**
 ```ts
@@ -298,7 +298,7 @@ let currentWorker = EAWorker.current();
 ```
 
 ## postTask
-postTask(callback: ()=>void): boolean
+postTask(callback: ()=>void): void
 
 向EAWorker提交任务。
 
@@ -308,11 +308,6 @@ postTask(callback: ()=>void): boolean
 |参数名|类型|必填|说明|
 |-----|----|--|----|
 |callback|()=>void|是|要执行的任务函数。|
-
-**返回值：**
-| 类型       | 说明                 |
-| -------- | ------------------ |
-| boolean   | 如果成功提交任务则返回true，否则返回false。 |
 
 **示例：**
 ```ts
@@ -421,3 +416,7 @@ job.Await();
 |PRIORITY_LOW|1|线程优先级低。|
 |PRIORITY_DEFAULT|2|线程优先级中。|
 |PRIORITY_HIGH|3|线程优先级高。|
+
+## FAQ
+### 如何进行异常处理
+EAWorker中运行的任务如果出现未捕获的异常，可以通过[Await](../native-lib/job.md#await)来选择合适的线程进行异常处理，具体请参考[迁移文档](../../quick-start/arkts-dyn-to-sta-worker-migration-guide.md)。

@@ -112,8 +112,27 @@
 | HDMI<sup>19+</sup>        | 27 | HDMI设备（例如HDMI、ARC、eARC等）。<br> **ArkTS-Dyn起始版本：** 19<br> **ArkTS-Sta起始版本：** 23          |
 | LINE_DIGITAL<sup>19+</sup>        | 28 | 有线数字设备（例如S/PDIF等）。<br> **ArkTS-Dyn起始版本：** 19<br> **ArkTS-Sta起始版本：** 23           |
 | REMOTE_DAUDIO<sup>18+</sup>        | 29 | 分布式设备。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
+| HEARING_AID<sup>20+</sup>        | 30 | 助听器设备。 <br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23           |
 | NEARLINK<sup>20+</sup>        | 31 | 星闪设备。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br> **ArkTS-Dyn起始版本：** 20 |
+| SYSTEM_PRIVATE<sup>22+</sup> | 200 | 系统私有设备（由于该设备在系统中属于私有设备，因此应用程序可以忽略该设备）。<br> **ArkTS-Dyn起始版本：** 22<br> **ArkTS-Sta起始版本：** 23 |
 | DEFAULT<sup>9+</sup> | 1000   | 默认设备类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20 |
+
+## BluetoothAndNearlinkPreferredRecordCategory<sup>21+</sup>
+
+表示在使用蓝牙或星闪进行录音时，应用程序的设备偏好分类枚举。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称                 | 值     | 说明                                                      |
+| ---------------------| ------ | --------------------------------------------------------- |
+| PREFERRED_NONE  | 0      | 无指定设备偏好。 |
+| PREFERRED_DEFAULT | 1      | 更偏好使用蓝牙或星闪录音，是否使用低延迟或高质量录音取决于系统。 |
+| PREFERRED_LOW_LATENCY  | 2      | 更偏好使用蓝牙或星闪低延迟模式进行录音。 |
+| PREFERRED_HIGH_QUALITY | 3      | 更偏好使用蓝牙或星闪高质量模式进行录音。 |
 
 ## CommunicationDeviceType<sup>9+</sup>
 
@@ -241,6 +260,24 @@
 | --------------------- | ------ | --------- |
 | ENCODING_TYPE_INVALID | -1     | 无效。    |
 | ENCODING_TYPE_RAW     | 0      | PCM编码。 |
+
+## AudioLatencyType<sup>23+</sup>
+
+表示音频时延类型的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| LATENCY_TYPE_ALL | 0 | 计算包含软件和硬件在内的整体音频处理链路时延。 |
+| LATENCY_TYPE_SOFTWARE | 1 | 计算软件侧时延，包含软件音效。 |
+| LATENCY_TYPE_HARDWARE | 2 | 计算硬件侧时延，包含HAL、驱动和硬件。 |
 
 ## AudioChannelLayout<sup>11+</sup>
 
@@ -464,14 +501,11 @@
 
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                 | 值   | 说明                             |
 | -------------------- | ---- | -------------------------------- |
-| PRIVACY_TYPE_PUBLIC  | 0    | 表示音频流可以被其他应用录制。   |
-| PRIVACY_TYPE_PRIVATE | 1    | 表示音频流不可以被其他应用录制。 |
+| PRIVACY_TYPE_PUBLIC  | 0    | 表示音频流可以被其他应用录制。<br> **ArkTS-Dyn起始版本：** 10<br> **ArkTS-Sta起始版本：** 23   |
+| PRIVACY_TYPE_PRIVATE | 1    | 表示音频流不可以被其他应用录制。<br> **ArkTS-Dyn起始版本：** 10<br> **ArkTS-Sta起始版本：** 23 |
+| PRIVACY_TYPE_SHARED<sup>21+</sup>  | 2    | 表示音频流可以被其他应用录制或屏幕投射，包含隐私类型的流。<br> **ArkTS-Dyn起始版本：** 21<br> **ArkTS-Sta起始版本：** 24 <br/> 例如，在PRIVACY_TYPE_PUBLIC策略下，[STREAM_USAGE_VOICE_COMMUNICATION](#streamusage)类型音频流不会被其他应用录制或屏幕投射。 <br/> 然而，在PRIVACY_TYPE_SHARED策略下，这些音频流将会允许被其他应用录制或屏幕投射。|
 
 ## ChannelBlendMode<sup>11+</sup>
 
@@ -494,20 +528,31 @@
 
 表示流设备变更原因的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
-**ArkTS-Dyn起始版本：** 11
+| 名称                                        |  值     | 说明              |
+|:------------------------------------------| :----- |:----------------|
+| REASON_UNKNOWN | 0 | 未知原因。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23           |
+| REASON_NEW_DEVICE_AVAILABLE | 1 | 新设备可用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23         |
+| REASON_OLD_DEVICE_UNAVAILABLE | 2 | 旧设备不可用。报告此原因时，应考虑暂停音频播放。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| REASON_OVERRODE | 3 | 强选。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| REASON_SESSION_ACTIVATED<sup>20+</sup> | 4 | 音频会话已激活。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| REASON_STREAM_PRIORITY_CHANGED<sup>20+</sup> | 5 | 更高优先级的音频流出现导致的系统设备切换。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+
+## OutputDeviceChangeRecommendedAction<sup>20+</sup>
+
+表示输出设备变更后的推荐操作枚举。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23
 
 | 名称                                        |  值     | 说明              |
 |:------------------------------------------| :----- |:----------------|
-| REASON_UNKNOWN | 0 | 未知原因。           |
-| REASON_NEW_DEVICE_AVAILABLE | 1 | 新设备可用。         |
-| REASON_OLD_DEVICE_UNAVAILABLE | 2 | 旧设备不可用。报告此原因时，应考虑暂停音频播放。 |
-| REASON_OVERRODE | 3 | 强选。 |
+| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE | 0 | 推荐继续播放。           |
+| DEVICE_CHANGE_RECOMMEND_TO_STOP | 1 | 推荐停止播放。         |
 
 ## DeviceChangeType
 
@@ -545,9 +590,9 @@
 
 | 名称                                         |  值     | 说明                   |
 | :------------------------------------------- | :----- | :--------------------- |
-| SOURCE_TYPE_INVALID                          | -1     | 无效的音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20  |
-| SOURCE_TYPE_MIC                              | 0      | Mic音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| SOURCE_TYPE_VOICE_RECOGNITION<sup>9+</sup>   | 1      | 语音识别源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20  |
+| SOURCE_TYPE_INVALID                          | -1     | 无效的音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23  |
+| SOURCE_TYPE_MIC                              | 0      | Mic音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| SOURCE_TYPE_VOICE_RECOGNITION<sup>9+</sup>   | 1      | 语音识别源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23  |
 | SOURCE_TYPE_PLAYBACK_CAPTURE<sup>(deprecated)</sup>   | 2 | 播放音频流（内录）录制音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture <br/> 从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br> **ArkTS-Dyn起始版本：** 10  |
 | SOURCE_TYPE_VOICE_COMMUNICATION              | 7      | 语音通话场景的音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
 | SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup>      | 10     | 短语音消息的音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20 |
@@ -599,6 +644,45 @@
 | :--------------------- |:--|:-------|
 | DEACTIVATED_LOWER_PRIORITY | 0 | 应用焦点被抢占。 |
 | DEACTIVATED_TIMEOUT | 1 | 音频会话等待超时。    |
+
+## AudioSessionScene<sup>20+</sup>
+
+音频会话场景的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                   | 值 | 说明      |
+| :--------------------- |:--|:--------|
+| AUDIO_SESSION_SCENE_MEDIA | 0 | 媒体音频会话场景。     |
+| AUDIO_SESSION_SCENE_GAME | 1 | 游戏音频会话场景。     |
+| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | VoIP语音通话音频会话场景。 |
+
+## AudioSessionStateChangeHint<sup>20+</sup>
+
+会话状态变更提示的枚举。
+
+当用户监听到音频会话状态变化事件（即收到[AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20)事件）时，获取相关信息。
+
+此类型表示根据焦点策略对音频会话执行的操作，包括暂停、调整音量等。
+
+详情请参阅文档[音频焦点和音频会话介绍](../../media/audio/audio-playback-concurrency.md)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称                               |  值     | 说明                                         |
+| ---------------------------------- | ------ | -------------------------------------------- |
+| AUDIO_SESSION_STATE_CHANGE_HINT_RESUME              | 0      | 提示音频会话恢复，应用可主动触发开始渲染等操作。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE               | 1      | 提示音频会话暂停，暂时失去音频焦点。当焦点再次可用时，会收到 AUDIO_SESSION_STATE_CHANGE_HINT_RESUME 事件。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_STOP                | 2      | 提示音频会话因焦点被抢占而停止，彻底失去音频焦点。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP                | 3      | 提示音频会话因长时间无业务而被系统停止，导致失去音频焦点。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_DUCK                | 4      | 提示音频会话躲避开始，降低音量播放。<br/>如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)，此时可以选择执行静音操作。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK | 5      | 提示音频会话躲避结束，恢复音量播放。<br/>如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)，此时可取消静音。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION<sup>23+</sup>    | 6      |  静音播放建议。<br/>当其他应用程序开始播放不可混音的音频时，应用程序可以自行决定是否静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br> **ArkTS-Sta起始版本：** 23|
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION<sup>23+</sup>  | 7      | 取消静音播放建议。<br/>当其他应用程序不可混音的音频已结束，该应用程序可自行决定是否取消静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br> **ArkTS-Sta起始版本：** 23 |
 
 ## AudioDataCallbackResult<sup>12+</sup>
 
@@ -703,3 +787,36 @@
 | UNAVAILABLE_SCENE  | -1     | 表示返听由于音频场景而不可用（如音频焦点、低时延管控）。 |
 | AVAILABLE_IDLE     |  0     | 表示返听可用。     |
 | AVAILABLE_RUNNING  |  1     | 表示返听运行中。   |
+
+## AudioLoopbackReverbPreset<sup>21+</sup>
+
+表示返听混响模式的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称      | 值     | 说明             |
+| --------- | ------ | ---------------- |
+| ORIGINAL  | 1     | 保持原始混响，不进行任何增强。   |
+| KTV       | 2     | 提供类似KTV的混响效果。 |
+| THEATER   | 3     | 提供类似剧场的混响效果（默认的混响模式）。 |
+| CONCERT   | 4     | 提供类似演唱会的混响效果。   |
+
+## AudioLoopbackEqualizerPreset<sup>21+</sup>
+
+表示返听均衡器类型的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称      | 值     | 说明             |
+| --------- | ------ | ---------------- |
+| FLAT   | 1     | 保持原始声音，不进行均衡调节。|
+| FULL   | 2     | 使人声更饱满（默认的均衡器类型）。|
+| BRIGHT | 3     | 使人声更明亮。|

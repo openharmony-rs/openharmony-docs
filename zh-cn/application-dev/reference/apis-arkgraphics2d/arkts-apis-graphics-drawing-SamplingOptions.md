@@ -37,7 +37,7 @@ constructor()
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -79,7 +79,7 @@ constructor(filterMode: FilterMode)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

@@ -36,7 +36,7 @@ getAccountManager(): AccountManager
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -58,7 +58,7 @@ getAccountManager(): AccountManager
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值 | 说明         |
 | ------ | ------ | ----------- |
@@ -80,7 +80,7 @@ checkMultiOsAccountEnabled(callback: AsyncCallback&lt;boolean&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -149,7 +149,7 @@ checkMultiOsAccountEnabled(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -337,7 +337,7 @@ isOsAccountConstraintEnabled(constraint: string): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -540,7 +540,7 @@ checkOsAccountTestable(callback: AsyncCallback&lt;boolean&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -609,7 +609,7 @@ checkOsAccountTestable(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -674,7 +674,7 @@ isOsAccountUnlocked(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -961,7 +961,7 @@ ArkTS-Sta: getOsAccountCount(callback: AsyncCallback&lt;int&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1035,7 +1035,7 @@ ArkTS-Sta: getOsAccountCount(): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1104,7 +1104,7 @@ ArkTS-Sta: getOsAccountLocalId(callback: AsyncCallback&lt;int&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1175,7 +1175,7 @@ ArkTS-Sta: getOsAccountLocalId(): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1243,7 +1243,7 @@ ArkTS-Sta: getOsAccountLocalIdForUid(uid: int, callback: AsyncCallback&lt;int&gt
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1319,7 +1319,7 @@ ArkTS-Sta: getOsAccountLocalIdForUid(uid: int): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1397,9 +1397,9 @@ ArkTS-Sta: getOsAccountLocalIdForUidSync(uid: int): int
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1466,7 +1466,7 @@ ArkTS-Sta: getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback:
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1544,7 +1544,7 @@ ArkTS-Sta: getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1745,7 +1745,7 @@ ArkTS-Sta: getActivatedOsAccountLocalIds(callback: AsyncCallback&lt;Array&lt;int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1822,7 +1822,7 @@ ArkTS-Sta: getActivatedOsAccountLocalIds(): Promise&lt;Array&lt;int&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1992,7 +1992,7 @@ getOsAccountType(callback: AsyncCallback&lt;OsAccountType&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2063,7 +2063,7 @@ getOsAccountType(): Promise&lt;OsAccountType&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2130,7 +2130,7 @@ queryDistributedVirtualDeviceId(callback: AsyncCallback&lt;string&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2202,7 +2202,7 @@ queryDistributedVirtualDeviceId(): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2270,7 +2270,7 @@ ArkTS-Sta: getOsAccountLocalIdForSerialNumber(serialNumber: long, callback: Asyn
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2348,7 +2348,7 @@ ArkTS-Sta: getOsAccountLocalIdForSerialNumber(serialNumber: long): Promise&lt;in
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2428,7 +2428,7 @@ ArkTS-Sta: getSerialNumberForOsAccountLocalId(localId: int, callback: AsyncCallb
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2506,7 +2506,7 @@ ArkTS-Sta: getSerialNumberForOsAccountLocalId(localId: int): Promise&lt;long&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3910,7 +3910,7 @@ getOsAccountName(): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3974,6 +3974,10 @@ ArkTS-Sta: getForegroundOsAccountLocalId(): Promise&lt;int&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                   | 说明                                                               |
@@ -4029,25 +4033,25 @@ ArkTS-Sta示例：
 
 ### getOsAccountDomainInfo<sup>15+</sup>
 
-ArkTS-Dyn: getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
-
-ArkTS-Sta: getOsAccountDomainInfo(localId: int): Promise&lt;DomainAccountInfo&gt;
+getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
 
 获取指定系统账号关联的域账号信息。
 
 **需要权限：** ohos.permission.GET_DOMAIN_ACCOUNTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限允许系统应用和企业应用进行申请。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getOsAccountDomainInfo](#getOsAccountDomainInfo23)。
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ----------- |
-| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。 |
+| localId | number | 是   | 系统账号ID。 |
 
 **返回值：**
 
@@ -4067,45 +4071,81 @@ ArkTS-Sta: getOsAccountDomainInfo(localId: int): Promise&lt;DomainAccountInfo&gt
 | 12300003 | OS account not found. |
 
 **示例：**
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-ArkTS-Dyn示例：
-  ```ts
-  import { osAccount } from '@kit.BasicServicesKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let localId: number = 100;
+accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccount.DomainAccountInfo) => {
+  if (domainAccountInfo === null) {
+    console.info('The target OS account is not a domain account.')
+  } else {
+    console.info('getOsAccountDomainInfo domain: ' + domainAccountInfo.domain);
+    console.info('getOsAccountDomainInfo accountName: ' + domainAccountInfo.accountName);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`getOsAccountDomainInfo err: code is ${err.code}, message is ${err.message}`);
+})
+```
 
-  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-  let localId: number = 100;
-  accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccount.DomainAccountInfo) => {
-    if (domainAccountInfo === null) {
-      console.info('The target OS account is not a domain account.')
-    } else {
-      console.info('getOsAccountDomainInfo domain: ' + domainAccountInfo.domain);
-      console.info('getOsAccountDomainInfo accountName: ' + domainAccountInfo.accountName);
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`getOsAccountDomainInfo err: code is ${err.code}, message is ${err.message}`);
-  })
-  ```
+### getOsAccountDomainInfo<sup>23+</sup>
 
-ArkTS-Sta示例：
-  ```ts
-  import osAccount from '@ohos.account.osAccount';
-  import { BusinessError } from '@kit.BasicServicesKit';
+getOsAccountDomainInfo(localId: int): Promise&lt;DomainAccountInfo|null&gt;
 
-  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-  let localId: int = 100;
-  accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccount.DomainAccountInfo) => {
-    if (domainAccountInfo === null) {
-      console.info('The target OS account is not a domain account.')
-    } else {
-      console.info('getOsAccountDomainInfo domain: ' + domainAccountInfo.domain);
-      console.info('getOsAccountDomainInfo accountName: ' + domainAccountInfo.accountName);
-    }
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`getOsAccountDomainInfo err: code is ${err.code}, message is ${err.message}`);
-  })
-  ```
+获取指定系统账号关联的域账号信息。
+
+**需要权限：** ohos.permission.GET_DOMAIN_ACCOUNTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限允许系统应用和企业应用进行申请。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getOsAccountDomainInfo](#getOsAccountDomainInfo15)。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明          |
+| ------- | ------ | ---- | ----------- |
+| localId | int | 是   | 系统账号ID。 |
+
+**返回值：**
+
+| 类型                   | 说明                                                               |
+| ---------------------- | ----------------------------------------------------------------- |
+| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)\|null&gt; | Promise对象。返回与指定系统账号关联的域账号信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息       |
+| -------- | ------------- |
+| 201 | Permission denied. |
+| 12300001 | The system service works abnormally. |
+| 12300003 | OS account not found. |
+
+**示例：**
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let localId: int = 100;
+accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccount.DomainAccountInfo) => {
+  if (domainAccountInfo === null) {
+    console.info('The target OS account is not a domain account.')
+  } else {
+    console.info('getOsAccountDomainInfo domain: ' + domainAccountInfo.domain);
+    console.info('getOsAccountDomainInfo accountName: ' + domainAccountInfo.accountName);
+  }
+}).catch((e: Error) => {
+  const err = e as BusinessError;
+  console.error(`getOsAccountDomainInfo err: code is ${err.code}, message is ${err.message}`);
+})
+```
 
 ## DomainAccountManager<sup>18+</sup>
 
@@ -4123,7 +4163,7 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4204,21 +4244,21 @@ ArkTS-Sta示例：
 
 | 名称                         | 类型                                                         | 只读  | 可选  | 说明                              |
 | ------------------------------ | ------------------------------------------------------------ | ---- | ---- | --------------------------------- |
-| localId                        | ArkTS-Dyn: number<br>ArkTS-Sta: int                         | 否 | 否  | 系统账号ID。  <br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 22  |
-| localName                      | string                                                       | 否 | 否  | 系统账号名称。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 22  |
-| type                           | [OsAccountType](#osaccounttype)                              | 否 | 否  | 系统账号类型。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 22  |
-| constraints                    | Array&lt;string&gt;                                          | 否 | 否  | 系统账号[约束](#系统账号约束列表)，默认为空。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 22|
+| localId                        | ArkTS-Dyn: number<br>ArkTS-Sta: int                         | 否 | 否  | 系统账号ID。  <br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23  |
+| localName                      | string                                                       | 否 | 否  | 系统账号名称。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23  |
+| type                           | [OsAccountType](#osaccounttype)                              | 否 | 否  | 系统账号类型。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23  |
+| constraints                    | Array&lt;string&gt;                                          | 否 | 否  | 系统账号[约束](#系统账号约束列表)，默认为空。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23|
 | isVerified<sup>(deprecated)</sup> | boolean                                                   | 否 | 否  | 账号是否验证。true表示指定账号已验证；false表示指定账号未验证。<br>**说明**：从API version 7开始支持，从API version 11开始废弃，建议使用isUnlocked。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。 <br/>**ArkTS-Dyn起始版本：** 7           |
-| isUnlocked<sup>11+</sup>      | boolean                                                       | 否 | 否  | 账号是否已解锁（EL2级别目录是否解密）。true表示指定账号已解锁；false表示指定账号未解锁。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22                      |
-| photo<sup>8+</sup>             | string                                                       | 否 | 否  | 系统账号头像，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22 |
-| createTime<sup>8+</sup>        | ArkTS-Dyn: number<br>ArkTS-Sta: long                           | 否 | 否  | 系统账号创建时间。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22  |
-| lastLoginTime<sup>8+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: long                          | 否 | 否  | 系统账号最后一次登录时间，默认为空。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22  |
-| serialNumber<sup>8+</sup>      | ArkTS-Dyn: number<br>ArkTS-Sta: long                           | 否 | 否  | 系统账号SN码。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22  |
+| isUnlocked<sup>11+</sup>      | boolean                                                       | 否 | 否  | 账号是否已解锁（EL2级别目录是否解密）。true表示指定账号已解锁；false表示指定账号未解锁。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                      |
+| photo<sup>8+</sup>             | string                                                       | 否 | 否  | 系统账号头像，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| createTime<sup>8+</sup>        | ArkTS-Dyn: number<br>ArkTS-Sta: long                           | 否 | 否  | 系统账号创建时间。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
+| lastLoginTime<sup>8+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: long                          | 否 | 否  | 系统账号最后一次登录时间，默认为空。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
+| serialNumber<sup>8+</sup>      | ArkTS-Dyn: number<br>ArkTS-Sta: long                           | 否 | 否  | 系统账号SN码。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
 | isActived<sup>(deprecated)</sup>         | boolean                                            | 否 | 否  | 系统账号激活状态。true表示指定账号处于激活状态；false表示指定账号处于未激活状态。<br>**说明**：从API version 7开始支持，从API version 11开始废弃，建议使用isActivated。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。  <br/>**ArkTS-Dyn起始版本：** 7 |
-| isActivated<sup>11+</sup>         | boolean                                                   | 否 | 否  | 系统账号是否激活。true表示指定账号已激活；false表示指定账号未激活。  <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22   |
-| isCreateCompleted<sup>8+</sup> | boolean                                                      | 否 | 否  | 系统账号创建是否完整。true表示指定账号已创建完整；false表示指定账号未创建完整。  <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22 |
-| distributedInfo                | [distributedAccount.DistributedInfo](js-apis-distributed-account.md#distributedinfo) | 否 | 否  | 分布式账号信息，默认为空。 <br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 22  |
-| domainInfo<sup>8+</sup>        | [DomainAccountInfo](#domainaccountinfo8)                      | 否 | 否  | 域账号信息，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22 |
+| isActivated<sup>11+</sup>         | boolean                                                   | 否 | 否  | 系统账号是否激活。true表示指定账号已激活；false表示指定账号未激活。  <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23   |
+| isCreateCompleted<sup>8+</sup> | boolean                                                      | 否 | 否  | 系统账号创建是否完整。true表示指定账号已创建完整；false表示指定账号未创建完整。  <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| distributedInfo                | [distributedAccount.DistributedInfo](js-apis-distributed-account.md#distributedinfo) | 否 | 否  | 分布式账号信息，默认为空。 <br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23  |
+| domainInfo<sup>8+</sup>        | [DomainAccountInfo](#domainaccountinfo8)                      | 否 | 否  | 域账号信息，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## DomainAccountInfo<sup>8+</sup>
 
@@ -4228,9 +4268,9 @@ ArkTS-Sta示例：
 
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| domain      | string | 否 | 否  | 域名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22     |
-| accountName | string | 否 | 否  | 域账号名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22 |
-| serverConfigId<sup>18+</sup> | string | 否 | 是  | 域账号配置ID，默认为空字符串。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 22 |
+| domain      | string | 否 | 否  | 域名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| accountName | string | 否 | 否  | 域账号名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| serverConfigId<sup>18+</sup> | string | 否 | 是  | 域账号配置ID，默认为空字符串。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## DomainServerConfig<sup>18+</sup>
 
@@ -4241,7 +4281,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
@@ -4265,7 +4305,7 @@ ArkTS-Sta: static addServerConfig(parameters: Record&lt;string, RecordData&gt;):
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
@@ -4343,7 +4383,7 @@ static removeServerConfig(configId: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
@@ -4425,7 +4465,7 @@ ArkTS-Sta: static updateServerConfig(configId: string, parameters: Record&lt;str
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
@@ -4518,7 +4558,7 @@ static getServerConfig(configId: string): Promise&lt;DomainServerConfig&gt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4604,7 +4644,7 @@ static getAllServerConfigs(): Promise&lt;Array&lt;DomainServerConfig&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -4683,7 +4723,7 @@ static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise&lt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

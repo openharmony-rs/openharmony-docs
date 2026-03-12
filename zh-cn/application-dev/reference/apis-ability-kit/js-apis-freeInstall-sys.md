@@ -593,7 +593,8 @@ type DispatchInfo = _DispatchInfo
 
 ## BundlePackInfo
 
-ArkTS-Dyn: type BundlePackInfo = _PackInfo.BundlePackInfo<br>
+ArkTS-Dyn: type BundlePackInfo = _PackInfo.BundlePackInfo
+
 ArkTS-Sta: type BundlePackInfo = _BundlePackInfo
 
 应用包信息。
@@ -612,7 +613,8 @@ ArkTS-Sta: type BundlePackInfo = _BundlePackInfo
 
 ## PackageConfig
 
-ArkTS-Dyn: type PackageConfig = _PackInfo.PackageConfig<br>
+ArkTS-Dyn: type PackageConfig = _PackInfo.PackageConfig
+
 ArkTS-Sta: type PackageConfig = _PackageConfig
 
 pack.info的包信息。
@@ -631,7 +633,8 @@ pack.info的包信息。
 
 ## PackageSummary
 
-ArkTS-Dyn: type PackageSummary = _PackInfo.PackageSummary<br>
+ArkTS-Dyn: type PackageSummary = _PackInfo.PackageSummary
+
 ArkTS-Sta: type PackageSummary = _PackageSummary
 
 pack.info中的包摘要信息。
@@ -650,7 +653,8 @@ pack.info中的包摘要信息。
 
 ## BundleConfigInfo
 
-ArkTS-Dyn: type BundleConfigInfo = _PackInfo.BundleConfigInfo<br>
+ArkTS-Dyn: type BundleConfigInfo = _PackInfo.BundleConfigInfo
+
 ArkTS-Sta: type BundleConfigInfo = _BundleConfigInfo
 
 包的配置信息。
@@ -669,7 +673,8 @@ ArkTS-Sta: type BundleConfigInfo = _BundleConfigInfo
 
 ## ExtensionAbility
 
-ArkTS-Dyn: type ExtensionAbility = _PackInfo.ExtensionAbility<br>
+ArkTS-Dyn: type ExtensionAbility = _PackInfo.ExtensionAbility
+
 ArkTS-Sta: type ExtensionAbility = _ExtensionAbility
 
 extensionAbilities的配置信息。
@@ -688,7 +693,8 @@ extensionAbilities的配置信息。
 
 ## ModuleConfigInfo
 
-ArkTS-Dyn: type ModuleConfigInfo = _PackInfo.ModuleConfigInfo<br>
+ArkTS-Dyn: type ModuleConfigInfo = _PackInfo.ModuleConfigInfo
+
 ArkTS-Sta: type ModuleConfigInfo = _ModuleConfigInfo
 
 包的module配置信息。
@@ -707,7 +713,8 @@ ArkTS-Sta: type ModuleConfigInfo = _ModuleConfigInfo
 
 ## ModuleDistroInfo
 
-ArkTS-Dyn: type ModuleDistroInfo = _PackInfo.ModuleDistroInfo<br>
+ArkTS-Dyn: type ModuleDistroInfo = _PackInfo.ModuleDistroInfo
+
 ArkTS-Sta: type ModuleDistroInfo = _ModuleDistroInfo
 
 module发行版信息。
@@ -726,7 +733,8 @@ module发行版信息。
 
 ## ModuleAbilityInfo
 
-ArkTS-Dyn: type ModuleAbilityInfo = _PackInfo.ModuleAbilityInfo<br>
+ArkTS-Dyn: type ModuleAbilityInfo = _PackInfo.ModuleAbilityInfo
+
 ArkTS-Sta: type ModuleAbilityInfo = _ModuleAbilityInfo
 
 module包含的ability组件信息。
@@ -745,7 +753,8 @@ module包含的ability组件信息。
 
 ## AbilityFormInfo
 
-ArkTS-Dyn: type AbilityFormInfo = _PackInfo.AbilityFormInfo<br>
+ArkTS-Dyn: type AbilityFormInfo = _PackInfo.AbilityFormInfo
+
 ArkTS-Sta: type AbilityFormInfo = _AbilityFormInfo
 
 卡片信息。
@@ -764,7 +773,8 @@ ArkTS-Sta: type AbilityFormInfo = _AbilityFormInfo
 
 ## Version
 
-ArkTS-Dyn: type Version = _PackInfo.Version<br>
+ArkTS-Dyn: type Version = _PackInfo.Version
+
 ArkTS-Sta: type Version = _Version
 
 包的版本。
@@ -783,7 +793,8 @@ ArkTS-Sta: type Version = _Version
 
 ## ApiVersion
 
-ArkTS-Dyn: type ApiVersion = _PackInfo.ApiVersion<br>
+ArkTS-Dyn: type ApiVersion = _PackInfo.ApiVersion
+
 ArkTS-Sta: type ApiVersion = _ApiVersion
 
 module的api版本。

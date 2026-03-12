@@ -24,6 +24,10 @@ AlphabetIndexer(options: AlphabetIndexerOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -42,10 +46,14 @@ AlphabetIndexer(options: AlphabetIndexerOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | arrayValue<sup>7+</sup> | Array&lt;string&gt; | 是 | 字符串数组，每个字符串代表一个索引项。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| selected<sup>7+</sup>   | number              | 是    | 初始选中项索引值，若超出索引值范围，则取默认值0。<br />该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| selected<sup>7+</sup>   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 初始选中项索引值，若超出索引值范围，则取默认值0。<br />该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -71,7 +79,7 @@ ArkTS-Sta: color(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -93,7 +101,7 @@ ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -115,7 +123,7 @@ ArkTS-Sta: popupColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -137,7 +145,7 @@ ArkTS-Sta: selectedBackgroundColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -159,7 +167,7 @@ ArkTS-Sta: popupBackground(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -181,7 +189,7 @@ ArkTS-Sta: usingPopup(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -203,7 +211,7 @@ ArkTS-Sta: selectedFont(value: Font | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -225,7 +233,7 @@ ArkTS-Sta: popupFont(value: Font | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -247,7 +255,7 @@ ArkTS-Sta: font(value: Font | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -269,7 +277,7 @@ ArkTS-Sta: itemSize(value: string | double | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -291,7 +299,7 @@ ArkTS-Sta: alignStyle(value: IndexerAlign | undefined, offset?: Length | undefin
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -316,7 +324,7 @@ ArkTS-Sta: selected(index: int | Bindable\<int> | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -338,7 +346,7 @@ ArkTS-Sta: popupPosition(value: Position | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -360,7 +368,7 @@ ArkTS-Sta: popupSelectedColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -382,7 +390,7 @@ ArkTS-Sta: popupUnselectedColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -404,7 +412,7 @@ ArkTS-Sta: popupItemFont(value: Font | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -426,7 +434,7 @@ ArkTS-Sta: popupItemBackgroundColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -452,7 +460,7 @@ ArkTS-Sta: autoCollapse(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -474,7 +482,7 @@ ArkTS-Sta: popupItemBorderRadius(value: double | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -496,7 +504,7 @@ ArkTS-Sta: itemBorderRadius(value: double | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -518,7 +526,7 @@ ArkTS-Sta: popupBackgroundBlurStyle(value: BlurStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -540,7 +548,7 @@ ArkTS-Sta: popupTitleBackground(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -554,13 +562,17 @@ ArkTS-Dyn: enableHapticFeedback(value: boolean)
 
 ArkTS-Sta: enableHapticFeedback(value: boolean | undefined)
 
+设置是否支持触控反馈。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名         | 类型                                                  | 必填 | 说明                         |
 |-------------|-----------------------------------------------------|----|----------------------------|
@@ -574,10 +586,10 @@ ArkTS-Sta: enableHapticFeedback(value: boolean | undefined)
 
 | 名称 | 说明 |
 | -------- | -------- |
-| Left | 提示弹窗显示在索引条右侧。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| Right | 提示弹窗显示在索引条左侧。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| START<sup>12+</sup> | 在LTR场景下，提示弹窗显示在索引条右侧的位置。在RTL场景下，提示弹窗显示在索引条左侧的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| END<sup>12+</sup> | 在LTR场景下，提示弹窗显示在索引条左侧的位置。在RTL场景下，提示弹窗显示在索引条右侧的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| Left | 提示弹窗显示在索引条右侧。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23|
+| Right | 提示弹窗显示在索引条左侧。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23|
+| START<sup>12+</sup> | 在LTR场景下，提示弹窗显示在索引条右侧的位置。在RTL场景下，提示弹窗显示在索引条左侧的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| END<sup>12+</sup> | 在LTR场景下，提示弹窗显示在索引条左侧的位置。在RTL场景下，提示弹窗显示在索引条右侧的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 
 ## 事件
 
@@ -593,7 +605,11 @@ onSelected(callback:&nbsp;(index:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
@@ -613,7 +629,7 @@ ArkTS-Sta: onSelect(callback: OnAlphabetIndexerSelectCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -635,7 +651,7 @@ ArkTS-Sta: onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallbac
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -657,7 +673,7 @@ ArkTS-Sta: onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback | undefi
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -666,7 +682,10 @@ ArkTS-Sta: onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback | undefi
 | callback  | ArkTS-Dyn: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18)<br/>  ArkTS-Sta: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18) \| undefined| 是   | 提示弹窗二级索引选中事件。 |
 
 ## OnAlphabetIndexerSelectCallback<sup>18+</sup>
-type OnAlphabetIndexerSelectCallback = (index: number) => void
+
+ArkTS-Dyn: type OnAlphabetIndexerSelectCallback = (index: number) => void
+
+ArkTS-Sta: type OnAlphabetIndexerSelectCallback = (index: int) => void
 
 索引项被选中时触发的事件。
 
@@ -674,13 +693,20 @@ type OnAlphabetIndexerSelectCallback = (index: number) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 | 参数名  | 类型   | 必填 | 说明    |
 | ------- | ----- | ---- | ------ |
-| index    | number  | 是   | 当前选中索引项的索引。 |
+| index    | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是   | 当前选中索引项的索引。 |
 
 ## OnAlphabetIndexerPopupSelectCallback<sup>18+</sup>
-type OnAlphabetIndexerPopupSelectCallback = (index: number) => void
+
+ArkTS-Dyn: type OnAlphabetIndexerPopupSelectCallback = (index: number) => void
+
+ArkTS-Sta: type OnAlphabetIndexerPopupSelectCallback = (index: int) => void
 
 提示弹窗二级索引项被选中时触发的事件。
 
@@ -688,24 +714,35 @@ type OnAlphabetIndexerPopupSelectCallback = (index: number) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 | 参数名  | 类型   | 必填 | 说明    |
 | ------- | ----- | ---- | ------ |
-| index   | number  | 是   | 当前选中的提示弹窗二级索引项的索引。 |
+| index   | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是   | 当前选中的提示弹窗二级索引项的索引。 |
 
 ## OnAlphabetIndexerRequestPopupDataCallback<sup>18+</sup>
-type OnAlphabetIndexerRequestPopupDataCallback = (index: number) => Array\<string\>
 
-[usingPopup](#usingpopup)设置值为true，索引项被选中时触发的事件。
+ArkTS-Dyn: type OnAlphabetIndexerRequestPopupDataCallback = (index: number) => Array\<string\>
+
+ArkTS-Sta: type OnAlphabetIndexerRequestPopupDataCallback = (index: int) => Array\<string\>
+
+[usingPopup](usingpopup)设置值为true，索引项被选中时触发的事件。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 | 参数名  | 类型   | 必填 | 说明    |
 | ------- | ----- | ---- | ------ |
-| index   | number  | 是   | 当前选中索引项的索引。 |
+| index   | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是   | 当前选中索引项的索引。 |
 
 **返回值：**
 | 类型          | 说明                 |

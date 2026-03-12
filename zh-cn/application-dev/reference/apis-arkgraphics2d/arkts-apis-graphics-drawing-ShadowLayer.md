@@ -39,7 +39,7 @@ ArkTS-Sta: static create(blurRadius: double, x: double, y: double, color: common
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -106,7 +106,7 @@ ArkTS-Sta: static create(blurRadius: double, x: double, y: double, color: common
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

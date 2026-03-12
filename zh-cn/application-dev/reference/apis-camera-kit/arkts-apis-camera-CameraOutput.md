@@ -25,7 +25,7 @@ release(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -107,7 +107,7 @@ release(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

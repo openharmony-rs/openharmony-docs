@@ -10,8 +10,6 @@
 
 > **说明：**
 >
-> - 本模块接口仅可在Stage模型下使用。
->
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -139,7 +137,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 | REALAUDIO<sup>12+</sup>                         | 'com.real.realaudio'                    | RealMedia音频类型，归属类型为AUDIO。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23      |
 | MATROSKA_AUDIO<sup>12+</sup>                         | 'org.matroska.mka'                    | MKA音频类型，归属类型为AUDIO。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23      |
 | FILE                       | 'general.file'                 | 所有文件的基类型，归属类型为ENTITY。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                         |
-| DIRECTORY<sup>11+</sup>             | 'general.directory'               | 所有目录的基类型，归属类型为ENTITY。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                          |
+| DIRECTORY<sup>11+</sup>             | 'general.directory'               | 所有目录的基类型，归属类型为ENTITY。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                          |
 | FOLDER        | 'general.folder'           | 所有文件夹的基类型，归属类型为DIRECTORY。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                        |
 | SYMLINK<sup>11+</sup>        | 'general.symlink'          | 所有符号链接的基类型，归属类型为ENTITY。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                        |
 | ARCHIVE<sup>11+</sup>                         | 'general.archive'                   | 所有文件和目录存档文件的基类型，归属类型为OBJECT。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                   |
@@ -193,17 +191,17 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 | POSTSCRIPT_FONT<sup>12+</sup>                         | 'com.adobe.postscript-font'                    | PostScript 字体类型，归属类型为FONT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
 | POSTSCRIPT_PFB_FONT<sup>12+</sup>                         | 'com.adobe.postscript-pfb-font'                    | PostScript Font Binary字体类型，归属类型为FONT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
 | POSTSCRIPT_PFA_FONT<sup>12+</sup>                         | 'com.adobe.postscript-pfa-font'                    | Adobe Type 1 字体类型，归属类型为FONT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
-| OPENHARMONY_FORM                         | 'openharmony.form'                   | 系统定义的卡片类型，归属类型为OBJECT。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23              |
-| OPENHARMONY_APP_ITEM                        | 'openharmony.app-item'                  | 系统定义的桌面图标类型，归属类型为OBJECT。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23            |
+| OPENHARMONY_FORM                         | 'openharmony.form'                   | 系统定义的卡片类型，归属类型为OBJECT。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23              |
+| OPENHARMONY_APP_ITEM                        | 'openharmony.app-item'                  | 系统定义的桌面图标类型，归属类型为OBJECT。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23            |
 | OPENHARMONY_PIXEL_MAP                        | 'openharmony.pixel-map'                  | 系统定义的像素图类型，归属类型为IMAGE。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23             |
-| OPENHARMONY_ATOMIC_SERVICE<sup>11+</sup>                        | 'openharmony.atomic-service'                  | 系统定义的原子化服务类型，归属类型为OBJECT。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23             |
-| OPENHARMONY_PACKAGE<sup>11+</sup>                        | 'openharmony.package'                  | 系统定义的包（即目录的打包文件），归属类型为DIRECTORY。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23             |
-| OPENHARMONY_HAP<sup>11+</sup>                        | 'openharmony.hap'                  | 系统定义的能力包，归属类型为OPENHARMONY_PACKAGE。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23             |
-| OPENHARMONY_HDOC<sup>12+</sup>                         | 'openharmony.hdoc'                    | 系统定义的备忘录数据类型，归属类型为COMPOSITE_OBJECT。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23             |
-| OPENHARMONY_HINOTE<sup>12+</sup>                         | 'openharmony.hinote'                    | 系统定义的笔记数据类型，归属类型为COMPOSITE_OBJECT。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23             |
-| OPENHARMONY_STYLED_STRING<sup>12+</sup>                         | 'openharmony.styled-string'                    | 系统定义的样式字符串类型，归属类型为COMPOSITE_OBJECT。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23             |
-| OPENHARMONY_WANT<sup>12+</sup>                         | 'openharmony.want'                    | 系统定义的Want类型，归属类型为OBJECT。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23             |
-| OFD<sup>12+</sup>                         | 'general.ofd'                    | 开放版式文档类型，归属类型为COMPOSITE_OBJECT。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23             |
+| OPENHARMONY_ATOMIC_SERVICE<sup>11+</sup>                        | 'openharmony.atomic-service'                  | 系统定义的原子化服务类型，归属类型为OBJECT。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23             |
+| OPENHARMONY_PACKAGE<sup>11+</sup>                        | 'openharmony.package'                  | 系统定义的包（即目录的打包文件），归属类型为DIRECTORY。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23             |
+| OPENHARMONY_HAP<sup>11+</sup>                        | 'openharmony.hap'                  | 系统定义的能力包，归属类型为OPENHARMONY_PACKAGE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23             |
+| OPENHARMONY_HDOC<sup>12+</sup>                         | 'openharmony.hdoc'                    | 系统定义的备忘录数据类型，归属类型为COMPOSITE_OBJECT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23             |
+| OPENHARMONY_HINOTE<sup>12+</sup>                         | 'openharmony.hinote'                    | 系统定义的笔记数据类型，归属类型为COMPOSITE_OBJECT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23             |
+| OPENHARMONY_STYLED_STRING<sup>12+</sup>                         | 'openharmony.styled-string'                    | 系统定义的样式字符串类型，归属类型为COMPOSITE_OBJECT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23             |
+| OPENHARMONY_WANT<sup>12+</sup>                         | 'openharmony.want'                    | 系统定义的Want类型，归属类型为OBJECT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23             |
+| OFD<sup>12+</sup>                         | 'general.ofd'                    | 开放版式文档类型，归属类型为COMPOSITE_OBJECT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23             |
 | CAD<sup>12+</sup>                         | 'general.cad'                    | 所有计算机辅助设计类型的基类型，归属类型为OBJECT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23      |
 | OCTET_STREAM<sup>12+</sup>                         | 'general.octet-stream'                    | 任意二进制数据类型，归属类型为OBJECT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23      |
 | FILE_URI<sup>15+</sup>                         | 'general.file-uri'                    | 文件地址类型，归属类型为TEXT。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23      |
@@ -552,7 +550,7 @@ ArkTS-Sta: getTypeDescriptor(typeId: string): TypeDescriptor | null
 
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
-| [TypeDescriptor](#typedescriptor11) | 返回标准化数据类型描述类对象，如果要查询的标准化数据类型不存在则返回null。|
+| ArkTS-Dyn:  [TypeDescriptor](#typedescriptor11) <br>ArkTS-Sta: [TypeDescriptor](#typedescriptor11) \| null | 返回标准化数据类型描述类对象，如果要查询的标准化数据类型不存在则返回null。|
 
 **错误码：**
 
