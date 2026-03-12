@@ -176,3 +176,60 @@ type TwoParamCallback\<T, G> = (data1: T, data2: G) => void
 |-------|----| ---- |------|
 | data1 | T  | 是   | 参数1。 |
 | data2 | G  | 是   | 参数2。 |
+
+## EventProcess<sup>23+</sup>
+
+type EventProcess = (event: string, args: Record\<string, Object>) => void
+
+定义处理事件和参数的通用函数类型。
+
+**ArkTS模式：** 该类型仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明   |
+|-------|----| ---- |------|
+| event | string  | 是   | 请求事件。 |
+| args | Record\<string, Object>  | 是   | 与事件关联的参数。 |
+
+## ConnectionEvent<sup>23+</sup>
+
+type ConnectionEvent = (state: ConnectionState, device: OutputDeviceInfo) => void
+
+系统提供的连接事件，用于指示设备连接状态和信息。
+
+**ArkTS模式：** 该类型仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明   |
+|-------|----| ---- |------|
+| state | [ConnectionState](arkts-apis-avsession-e.md#connectionstate10)  | 是   | 设备连接状态。 |
+| device | [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)  | 是   | 设备信息。 |
+
+## VideoSizeEvent<sup>23+</sup>
+
+type VideoSizeEvent = (width: int, height: int) => void
+
+视频尺寸变化事件的回调函数类型。
+
+**ArkTS模式：** 该类型仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明   |
+|-------|----| ---- |------|
+| width | int | 是   | 视频宽度。 |
+| height | int | 是   | 视频高度。 |

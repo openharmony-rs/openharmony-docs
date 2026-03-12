@@ -4861,6 +4861,8 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 
 注册从远程设备发送的自定义数据的监听器。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onCustomDataChange](#onCustomDataChange23)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
@@ -4880,10 +4882,10 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 
 以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception. |
-| 6600102  | The session does not exist. |
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 6600101  | Session service exception.             |
+| 6600103  | The session controller does not exist. |
 
 **示例：**
 
@@ -4898,6 +4900,8 @@ currentAVSession.on('customDataChange', (callback) => {
 onCustomDataChange(callback: Callback\<Record\<string, Object>>): void
 
 注册从远程设备发送的自定义数据的监听器。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('customDataChange')](#oncustomDataChange20)。
 
@@ -4919,7 +4923,7 @@ onCustomDataChange(callback: Callback\<Record\<string, Object>>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ----------------                       |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -4943,6 +4947,8 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 
 取消自定义数据监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offCustomDataChange](#offCustomDataChange23)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
@@ -4962,10 +4968,10 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 
 以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception. |
-| 6600102  | The session does not exist. |
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 6600101  | Session service exception.             |
+| 6600103  | The session controller does not exist. |
 
 **示例：**
 
@@ -4979,6 +4985,8 @@ offCustomDataChange(callback?: Callback\<Record\<string, Object>>): void
 
 注销自定义数据监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('customDataChange')](#offcustomDataChange20)。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -4991,7 +4999,7 @@ offCustomDataChange(callback?: Callback\<Record\<string, Object>>): void
 
 | 参数名    | 类型                    | 必填 | 说明                                                                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
-| callback | Callback\<Record\<string, Object>> | 是   | 注销自定义数据的监听器。 |
+| callback | Callback\<Record\<string, Object>> | 否   | 注销自定义数据的监听器。 |
 
 **错误码：**
 
@@ -4999,7 +5007,7 @@ offCustomDataChange(callback?: Callback\<Record\<string, Object>>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ----------------                       |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**

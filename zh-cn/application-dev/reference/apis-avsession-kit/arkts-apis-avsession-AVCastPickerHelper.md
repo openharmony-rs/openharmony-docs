@@ -175,6 +175,56 @@ async function avCastPicker(context: common.Context) {
 }
 ```
 
+## resetCommunicationDevice<sup>21+</sup>
+
+resetCommunicationDevice(): Promise\<void>
+
+将应用通话设备恢复至默认设备。比如在语音通话场景下，手机设备的通话装置将恢复成听筒。使用Promise异步回调。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { avSession } from '@kit.AVSessionKit';
+
+async function avCastPicker(context: common.Context) {
+  let avCastPicker = new avSession.AVCastPickerHelper(context);
+  avCastPicker.resetCommunicationDevice().then(() => {
+    console.info('resetCommunicationDevice successfully');
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { avSession } from '@kit.AVSessionKit';
+
+async function avCastPicker(context: common.Context) {
+  let avCastPicker = new avSession.AVCastPickerHelper(context);
+  avCastPicker.resetCommunicationDevice().then(() => {
+    console.info('resetCommunicationDevice successfully');
+  });
+}
+```
+
 ## on('pickerStateChange')<sup>14+</sup>
 
 on(type: 'pickerStateChange', callback: Callback<AVCastPickerState\>) : void

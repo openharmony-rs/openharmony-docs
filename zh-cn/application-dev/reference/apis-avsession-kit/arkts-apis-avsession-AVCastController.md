@@ -500,6 +500,268 @@ aVCastController.sendControlCommand(avCommand, (err: BusinessError | null) => {
 });
 ```
 
+## sendCustomData<sup>20+</sup>
+
+sendCustomData(data: Record\<string, Object>): Promise\<void>
+
+发送私有数据到远端设备。使用Promise异步回调。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                                                         |
+| ------ | ---------------------- | ---- | ------------------------------------------------------------ |
+| data   | Record\<string, Object> | 是   | 应用程序填充的自定义数据。<br>服务端仅解析key：string为'customData'，且Object为string类型的对象。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() { 
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession | undefined = undefined;
+            let tag = "createNewSession";
+            let context: Context = this.getUIContext().getHostContext() as Context;
+
+            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
+            if (err) {
+                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            } else {
+                currentAVSession = data;
+            }
+            });
+            if (currentAVSession !== undefined) {
+            (currentAVSession as avSession.AVSession).sendCustomData({customData : "This is custom data"}).then(() => {
+                console.info('sendCustomData successfully');
+            }).catch((err: BusinessError) => {
+                console.error(`sendCustomData BusinessError: code: ${err.code}, message: ${err.message}`);
+            })
+            }
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() { 
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession | undefined = undefined;
+            let tag = "createNewSession";
+            let context: Context = this.getUIContext().getHostContext() as Context;
+
+            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
+            if (err) {
+                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            } else {
+                currentAVSession = data;
+            }
+            });
+            if (currentAVSession !== undefined) {
+            (currentAVSession as avSession.AVSession).sendCustomData({customData : "This is custom data"}).then(() => {
+                console.info('sendCustomData successfully');
+            }).catch((err: BusinessError) => {
+                console.error(`sendCustomData BusinessError: code: ${err.code}, message: ${err.message}`);
+            })
+            }
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## on('customDataChange')<sup>20+</sup>
+
+on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
+
+注册从远程设备发送的自定义数据的监听器。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCustomDataChange](#onCustomDataChange23)。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 20
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                           | 是   | 事件回调类型，支持事件'customDataChange'，当媒体提供方发送自定义数据时，触发该事件。 |
+| callback | Callback\<Record\<string, Object>> | 是   | 回调函数，用于接收自定义数据。                               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 6600101  | Session service exception. |
+
+**示例：**
+
+```ts
+currentAVSession.on('customDataChange', (callback) => {
+    console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
+});
+```
+
+## onCustomDataChange<sup>23+</sup>
+
+onCustomDataChange(callback: Callback<Record<string, Object>>): void
+
+注册从远程设备发送的自定义数据的监听器。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('customDataChange')](#oncustomDataChange20)。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<Record\<string, Object>> | 是   | 回调函数，用于接收自定义数据。                               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 6600101  | Session service exception. |
+
+**示例：**
+
+```ts
+currentAVSession.on('customDataChange', (callback) => {
+    console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
+});
+```
+
+## off('customDataChange')<sup>20+</sup>
+
+off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): void
+
+取消自定义数据监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[off('customDataChange')](#offcustomDataChange23)。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 20
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                           | 是   | 取消对应的监听事件，支持的事件是'customDataChange'。         |
+| callback | Callback\<Record\<string, Object>> | 否   | 注册监听事件时的回调函数。该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 6600101  | Session service exception. |
+
+**示例：**
+
+```ts
+currentAVSession.off('customDataChange');
+```
+
+## offCustomDataChange<sup>23+</sup>
+
+offCustomDataChange(callback?: Callback<Record<string, Object>>): void
+
+取消自定义数据监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('customDataChange')](#offcustomDataChange20)。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<Record\<string, Object>> | 否   | 注册监听事件时的回调函数。该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 6600101  | Session service exception. |
+
+**示例：**
+
+```ts
+currentAVSession.offCustomDataChange();
+```
+
 ## prepare<sup>10+</sup>
 
 prepare(item: AVQueueItem, callback: AsyncCallback\<void>): void
