@@ -26,7 +26,7 @@ constructor(context: Context)
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -113,7 +113,7 @@ select(options?: AVCastPickerOptions): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -183,6 +183,8 @@ on(type: 'pickerStateChange', callback: Callback<AVCastPickerState\>) : void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPickerStateChange](#onPickerStateChange23)。
+
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
@@ -206,8 +208,6 @@ on(type: 'pickerStateChange', callback: Callback<AVCastPickerState\>) : void
 | 6600101  | Session service exception. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -253,7 +253,7 @@ async function avCastPicker(context: common.Context) {
   });
 }
 ```
-## onPickerStateChange<sup>22+</sup>
+## onPickerStateChange<sup>23+</sup>
 
 onPickerStateChange(callback: Callback<AVCastPickerState\>) : void
 
@@ -261,11 +261,13 @@ onPickerStateChange(callback: Callback<AVCastPickerState\>) : void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('pickerStateChange')](#onpickerStateChange14)。
+
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -282,8 +284,6 @@ onPickerStateChange(callback: Callback<AVCastPickerState\>) : void
 | 6600101  | Session service exception.|
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -305,6 +305,8 @@ off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState\>) : void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPickerStateChange](#offPickerStateChange23)。
+
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
@@ -325,11 +327,9 @@ off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState\>) : void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -340,7 +340,7 @@ async function onPickerStateChange(context: common.Context) {
 }
 ```
 
-## offPickerStateChange<sup>22+</sup>
+## offPickerStateChange<sup>23+</sup>
 
 offPickerStateChange(callback?: Callback<AVCastPickerState\>) : void
 
@@ -348,9 +348,11 @@ offPickerStateChange(callback?: Callback<AVCastPickerState\>) : void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('pickerStateChange')](#offpickerStateChange14)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -364,11 +366,9 @@ offPickerStateChange(callback?: Callback<AVCastPickerState\>) : void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 import { common } from '@kit.AbilityKit';
