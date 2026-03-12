@@ -791,7 +791,7 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 | SET_SELECTED_URIS | 1   | 发送已选择的数据列表，通知picker组件勾选状态刷新，需要传入string数组类型。<br>例如：应用在自己的页面中删除某张图片后，需要把剩下的已选择的数据列表通过setData接口通知到picker组件，从而触发picker组件勾选框状态刷新正确。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 |
 | SET_ALBUM_URI | 2   | 发送已选择相册，通知picker组件刷新相册，需要传入string类型。<br>例如：应用在自己的页面中选择相册后，需要把已选择的相册uri通过setData接口通知到picker组件，从而触发picker组件刷新相册数据。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 |
 | SET_SELECTED_INFO<sup>21+</sup> | 3   | 发送已选择的文件uri以及选中的picker序号。当picker序号与参数中的picker序号匹配时，已选择文件支持在当前picker里自动选中。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 21 |
-| SET_BADGE_CONFIGS<sup>21+</sup> | 4   | 发送需要显示角标的配置，类型为[badgeConfig](#badgeconfig21)，包含角标的类型和对应文件uri的数据列表。配置后，对应文件会显示配置类型的角标。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 21 |
+| SET_BADGE_CONFIGS<sup>21+</sup> | 4   | 发送需要显示角标的配置，类型为[BadgeConfig](#badgeconfig21)，包含角标的类型和对应文件uri的数据列表。配置后，对应文件会显示配置类型的角标。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 21 |
 | SET_ITEM_CLICK_RESULT<sup>23+</sup> | 5   | 发送点击后的结果，类型为[ClickResult](#clickresult23)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23 |
 
 ## ItemType
