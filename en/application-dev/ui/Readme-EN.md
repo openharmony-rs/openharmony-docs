@@ -94,7 +94,7 @@
         - [Migration for AnimateTo Usage](state-management/arkts-v1-v2-migration-animateTo.md)
       - Mixed Use of State Management V1 and V2<!--v1v2-mixing-->
         - [Mixed Use of State Management V1 and V2 (Before API Version 19)](state-management/arkts-v1-v2-mixusage-before-api-version.md)
-        - [Mixed Use of State Management V1 and V2 (API Version 19 and Later)](../../ui/state-management/arkts-v1-v2-mixusage.md)
+        - [Mixed Use of State Management V1 and V2 (API Version 19 and Later)](state-management/arkts-v1-v2-mixusage.md)
     - [State Management Development](state-management/arkts-state-management-faq.md)
       - [In-Component State Management FAQs](state-management/arkts-state-management-faq-inner-component.md)
       - [Data Object State Management FAQs](state-management/arkts-state-management-faq-inner-class.md)
