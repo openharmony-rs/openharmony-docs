@@ -1572,7 +1572,7 @@ struct Index {
 }
 ```
 
-![](figures/ReactiveComponentContent_flushState.gif)
+![](figures/reactiveComponentContent_flushState.gif)
 
 ### inheritFreezeOptions<sup>22+</sup>
 
