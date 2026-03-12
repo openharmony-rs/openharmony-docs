@@ -176,6 +176,8 @@ The container is empty.
 
 The {methodName} method cannot be bound.
 
+**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。
+
 **错误描述**
 
 调用语言容器类的方法时，传入的this.object不是容器类的实例语言，容器类的方法不支持bind。
@@ -554,6 +556,8 @@ Timeout exceeded.
 **错误信息**
 
 Concurrent modification error.
+
+**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。
 
 **错误描述**
 

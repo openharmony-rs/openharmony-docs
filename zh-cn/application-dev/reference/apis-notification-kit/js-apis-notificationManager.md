@@ -1691,6 +1691,74 @@ notificationManager.getActiveNotifications().then((data: Array<notificationManag
 });
 ```
 
+## notificationManager.getNotificationParameters<sup>24+</sup>
+
+ArkTS-Dyn: getNotificationParameters(id: number, label?: string): Promise\<NotificationParameters\>
+
+ArkTS-Sta: getNotificationParameters(id: int, label?: string): Promise\<NotificationParameters | null\>
+
+获取通知[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)中wantAgent字段的部分信息。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明     |
+| ----- | ------ | ---- | -------- |
+| id    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 通知ID。   |
+| label | string | 否   | 通知标签，默认为空。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                                    |
+| ------------------------------------------------------------ | --------------------------------------- |
+| Promise\<[NotificationParameters](js-apis-inner-notification-notificationRequest.md#notificationparameters24)\> | Promise对象，返回wantAgent的部分信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.   |
+| 1600007  | The notification does not exist.    |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let id: number = 0;
+let label: string = "";
+notificationManager.getNotificationParameters(id, label).then((data: notificationManager.NotificationParameters) => {
+  console.info(`Succeeded in getting notification parameters, data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get notification parameters. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let id: int = 0;
+let label: string = "";
+notificationManager.getNotificationParameters(id, label).then((data: notificationManager.NotificationParameters | null) => {
+  console.info(`Succeeded in getting notification parameters, data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to get notification parameters. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## notificationManager.cancelGroup
 
 cancelGroup(groupName: string, callback: AsyncCallback\<void\>): void

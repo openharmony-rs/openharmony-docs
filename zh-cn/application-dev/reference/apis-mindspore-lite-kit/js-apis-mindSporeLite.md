@@ -33,7 +33,7 @@ loadModelFromFile(model: string, callback: Callback&lt;Model&gt;): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -76,7 +76,7 @@ loadModelFromFile(model: string, context: Context, callback: Callback&lt;Model&g
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -122,7 +122,7 @@ loadModelFromFile(model: string, context?: Context): Promise&lt;Model&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -171,7 +171,7 @@ loadModelFromBuffer(model: ArrayBuffer, callback: Callback&lt;Model&gt;): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -224,7 +224,7 @@ loadModelFromBuffer(model: ArrayBuffer, context: Context, callback: Callback&lt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -280,7 +280,7 @@ loadModelFromBuffer(model: ArrayBuffer, context?: Context): Promise&lt;Model&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -341,7 +341,7 @@ ArkTS-Sta: loadModelFromFd(model: int, callback: Callback&lt;Model&gt;): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -387,7 +387,7 @@ ArkTS-Sta: loadModelFromFd(model: int, context: Context, callback: Callback&lt;M
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -436,7 +436,7 @@ ArkTS-Sta: loadModelFromFd(model: int, context?: Context): Promise&lt;Model&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -487,7 +487,7 @@ loadTrainModelFromFile(model: string, trainCfg?: TrainCfg, context?: Context): P
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -537,7 +537,7 @@ loadTrainModelFromBuffer(model: ArrayBuffer, trainCfg?: TrainCfg, context?: Cont
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -598,7 +598,7 @@ ArkTS-Sta: loadTrainModelFromFd(model: int, trainCfg?: TrainCfg, context?: Conte
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -645,7 +645,7 @@ getAllNNRTDeviceDescriptions() : NNRTDeviceDescription[]
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -670,7 +670,7 @@ if (allDevices == null) {
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称   | 类型                      | 只读 | 可选 | 说明                                                         |
@@ -694,7 +694,7 @@ CPU后端设备选项。
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                   | 类型                                      | 只读 | 可选 | 说明                                                         |
 | ---------------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -740,7 +740,7 @@ context.cpu = {
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 值   | 说明         |
 | ------------------ | ---- | ------------ |
@@ -754,9 +754,9 @@ Neural Network Runtime表示神经网络运行时，简称NNRt。作为中间桥
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 类型                                | 只读 | 可选 | 说明                     |
 | ----------------------------- | ----------------------------------- | ---- | ------------------------ | ------------------------ |
@@ -773,7 +773,7 @@ NNRt设备的工作性能模式枚举。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 值   | 说明                |
 | ------------------- | ---- | ------------------- |
@@ -791,7 +791,7 @@ NNRt推理任务优先级枚举。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 值   | 说明           |
 | --------------- | ---- | -------------- |
@@ -808,7 +808,7 @@ NNRt推理任务优先级枚举。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型        | 只读 | 可选 | 说明             |
 | ------------------- | ----------- | ---- | ---- | ---------------- |
@@ -831,7 +831,7 @@ deviceID() : bigint
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -885,7 +885,7 @@ deviceType() : NNRTDeviceType
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -919,7 +919,7 @@ deviceName() : string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -951,7 +951,7 @@ NNRt设备类型枚举。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                   | 值   | 说明                                |
 | ---------------------- | ---- | ----------------------------------- |
@@ -968,7 +968,7 @@ NNRt设备类型枚举。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                            | 类型                                      | 只读 | 可选 | 说明                                                         |
 | ------------------------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -991,7 +991,7 @@ cfg.optimizationLevel = mindSporeLite.OptimizationLevel.O0;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值   | 说明                                                       |
 | ---- | ---- | ---------------------------------------------------------- |
@@ -1009,7 +1009,7 @@ cfg.optimizationLevel = mindSporeLite.OptimizationLevel.O0;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 值   | 说明       |
 | ------------ | ---- | ---------- |
@@ -1029,11 +1029,11 @@ cfg.optimizationLevel = mindSporeLite.OptimizationLevel.O0;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                       | 类型                                 | 只读 | 可选 | 说明                                                         |
 | -------------------------- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| learningRate<sup>12+</sup> | ArkTS-Dyn: double<br/>ArkTS-Sta: int | 否   | 是   | 训练模型的学习率。默认值从加载的模型中读取。                 |
+| learningRate<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 是   | 训练模型的学习率。默认值从加载的模型中读取。                 |
 | trainMode<sup>12+</sup>    | boolean                              | 否   | 是   | 模型是否为训练模式。true表示训练模式，false表示非训练模式。如果是训练模型，trainMode默认是true；如果是推理模型，trainMode默认是false。 |
 
 ### getInputs
@@ -1046,7 +1046,7 @@ getInputs(): MSTensor[]
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1077,7 +1077,7 @@ predict(inputs: MSTensor[], callback: Callback&lt;MSTensor[]&gt;): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1126,7 +1126,7 @@ predict(inputs: MSTensor[]): Promise&lt;MSTensor[]&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1182,7 +1182,7 @@ ArkTS-Sta: resize(inputs: MSTensor[], dims: Array&lt;Array&lt;int&gt;&gt;): bool
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1218,7 +1218,7 @@ runStep(inputs: MSTensor[]): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1256,7 +1256,7 @@ getWeights(): MSTensor[]
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1306,7 +1306,7 @@ updateWeights(weights: MSTensor[]): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1360,7 +1360,7 @@ ArkTS-Sta: setupVirtualBatch(virtualBatchMultiplier: int, lr: double, momentum: 
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1413,7 +1413,7 @@ exportModel(modelFile: string, quantizationType?: QuantizationType, exportInfere
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1457,7 +1457,7 @@ exportWeightsCollaborateWithMicro(weightFile: string, isInference?: boolean, ena
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1499,7 +1499,7 @@ mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel: mindSp
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型                                     | 只读 | 可选 | 说明                   |
 | ---------- | ---------------------------------------- | ---- | ---- | ---------------------- |
@@ -1535,7 +1535,7 @@ getData(): ArrayBuffer
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1583,7 +1583,7 @@ setData(inputArray: ArrayBuffer): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1631,7 +1631,7 @@ globalContext.getApplicationContext()
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 值   | 说明                |
 | ------------------- | ---- | ------------------- |
@@ -1656,7 +1656,7 @@ globalContext.getApplicationContext()
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值   | 说明                  |
 | -------------- | ---- | --------------------- |

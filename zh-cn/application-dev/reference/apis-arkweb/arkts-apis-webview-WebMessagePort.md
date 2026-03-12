@@ -24,6 +24,10 @@ import { webview } from '@kit.ArkWeb';
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称         | 类型   | 只读 | 可选 | 说明                                              |
 | ------------ | ------ | ---- | ---- | ------------------------------------------------|
 | isExtentionType<sup>10+</sup> | boolean | 否   | 是 | 创建WebMessagePort时是否指定使用扩展增强接口，[postMessageEventExt](#postmessageeventext10)、[onMessageEventExt](#onmessageeventext10)。<br>true表示使用扩展增强接口，false表示不使用扩展增强接口。<br>默认值：false。   |
