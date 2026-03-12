@@ -1301,7 +1301,7 @@ requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;R
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;RequestReadPermissionResult&gt; | Promise对象，返回已授权的uri列表和无效的uri列表。 |
+| Promise&lt;[RequestReadPermissionResult](./arkts-apis-photoAccessHelper-class.md#requestreadpermissionresult23)&gt; | Promise对象，返回已授权的uri列表和无效的uri列表。 |
 
 **错误码：**
 
