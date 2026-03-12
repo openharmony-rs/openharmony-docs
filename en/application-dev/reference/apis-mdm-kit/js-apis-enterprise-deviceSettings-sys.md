@@ -329,17 +329,6 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
 });
 ```
 
-## CertBlob
-
-Defines certificate information.
-
-**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-| Name        | Type    | Read-Only| Optional| Description                           |
-| ----------- | --------| ----- | ---- | ------------------------------- |
-| inData | Uint8Array | No| No|Binary content of the certificate.|
-| alias | string | No| No|Certificate alias. The value length must be less than 40 characters.|
-
 ## deviceSettings.uninstallUserCertificate
 
 uninstallUserCertificate(admin: Want, certUri: string, callback: AsyncCallback&lt;void&gt;): void
@@ -573,6 +562,17 @@ try {
   console.error(`Failed to get power policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## CertBlob
+
+Represents the certificate information.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+| Name        | Type    | Read-Only| Optional| Description                           |
+| ----------- | --------| ----- | ---- | ------------------------------- |
+| inData | Uint8Array | No| No|Binary content of the certificate.|
+| alias | string | No| No|Certificate alias. The value length must be less than 40 characters.|
 
 ## PowerPolicy<sup>11+</sup>
 

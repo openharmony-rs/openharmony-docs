@@ -383,7 +383,6 @@ Creates a PixelMap object based on the surface ID and region information. The si
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 > **NOTE**
->
 > For foldable devices, during switching between folded and unfolded states, the API call may fail because of the built-in rotation angle of the surface. You need to adjust the width and height to match the rotation angle. You are advised to use [image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15).
 
 **System capability**: SystemCapability.Multimedia.Image.Core
@@ -435,7 +434,6 @@ Creates a PixelMap object based on the surface ID and region information. This A
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 > **NOTE**
->
 > For foldable devices, during switching between folded and unfolded states, the API call may fail because of the built-in rotation angle of the surface. You need to adjust the width and height to match the rotation angle. In such cases, [image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15) is recommended.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
@@ -1117,7 +1115,7 @@ async function CreateImageSource(context : Context) {
 
 createImageSource(buf: ArrayBuffer): ImageSource
 
-Creates an ImageSource instance based on buffers. The data passed by **buf** must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12).
+Creates an ImageSource instance based on buffers. The data passed by **buf** must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12).
 
 Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](./arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -1152,7 +1150,7 @@ async function CreateImageSource() {
 
 createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
 
-Creates an ImageSource instance based on buffers. The data passed by **buf** must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12).
+Creates an ImageSource instance based on buffers. The data passed by **buf** must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12).
 
 Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](./arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -1446,7 +1444,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 async function CreateAuxiliaryPicture(context: Context) {
   let funcName = "CreateAuxiliaryPicture";
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // Support for HDR images is required.
+  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // An HDR-compatible image is required.
   let auxBuffer: ArrayBuffer = rawFile.buffer as ArrayBuffer;
   let auxSize: Size = {
     height: 180,

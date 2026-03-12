@@ -766,7 +766,7 @@ Mouse pointer style.
 
 setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): Promise&lt;void&gt;
 
-Sets the custom mouse pointer style of the specified window. This API uses a promise to return the result.
+Sets the custom cursor style of the specified window. This API uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -775,7 +775,7 @@ Sets the custom mouse pointer style of the specified window. This API uses a pro
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
 | windowId  | number  | Yes   | Window ID.                         |
-| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Pixel map resource.|
+| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Custom cursor resource.|
 | focusX  | number | No   | Focus x of the custom cursor. The value is greater than or equal to **0**. The default value is **0**.|
 | focusY  | number | No   | Focus y of the custom cursor. The value is greater than or equal to **0**. The default value is **0**.|
 
@@ -839,7 +839,7 @@ Defines custom cursor resources.
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 | Name    | Type    | Read-Only    | Optional    | Description    |
 | -------- | ------- | -------- | -------- | ------- |
-| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No  | No  | Pixel map resource. The minimum size is subject to the minimum limit of the image. The maximum size is 256 x 256 px.|
+| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No  | No  | Pixel map. The minimum size is subject to the minimum limit of the image. The maximum size is 256 x 256 px.|
 | focusX  | number | No  | Yes  | Horizontal coordinate of the cursor focus. The coordinates are restricted by the size of the custom cursor. The minimum value is **0**, and the maximum value is the maximum width of the image. The default value is **0** if the parameter is left empty.|
 | focusY  | number | No  | Yes  | Vertical coordinate of the cursor focus. The coordinates are restricted by the size of the custom cursor. The minimum value is **0**, and the maximum value is the maximum height of the image. The default value is **0** if the parameter is left empty.|
 
@@ -857,7 +857,8 @@ Defines custom cursor configuration.
 
 setCustomCursor(windowId: number, cursor: CustomCursor, config: CursorConfig): Promise&lt;void&gt;
 
-Sets the custom mouse pointer style of the specified window. This API uses a promise to return the result.
+Sets the custom cursor style of the specified window. This API uses a promise to return the result asynchronously.
+
 The cursor may be switched back to the system style in the following cases: application window layout change, hot zone switching, page redirection, moving of the cursor out of the window and then back to the window, or moving of the cursor in different areas of the window. In this case, you need to reset the cursor style.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
@@ -878,7 +879,7 @@ The cursor may be switched back to the system style in the following cases: appl
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Input Device Error Codes](./errorcode-inputdevice.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Mouse Pointer Error Codes](./errorcode-pointer.md).
 
 | ID | Error Message            |
 | ---- | --------------------- |
@@ -930,7 +931,7 @@ struct Index {
 
 setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): void
 
-Sets the custom mouse pointer style of the specified window. This API returns the result synchronously.
+Sets the custom cursor style of the specified window. This API returns the result synchronously.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -939,7 +940,7 @@ Sets the custom mouse pointer style of the specified window. This API returns th
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
 | windowId  | number  | Yes   | Window ID. The value must be an integer greater than 0.                         |
-| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Pixel map resource.|
+| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Custom cursor resource.|
 | focusX  | number | No   | Focus x of the custom cursor. The value is greater than or equal to **0**. The default value is **0**.|
 | focusY  | number | No   | Focus y of the custom cursor. The value is greater than or equal to **0**. The default value is **0**.|
 

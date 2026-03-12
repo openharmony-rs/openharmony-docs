@@ -10,11 +10,11 @@ The **systemManager** module provides system management capabilities.
 
 > **NOTE**
 > 
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 
 ## Modules to Import
 
@@ -39,7 +39,7 @@ Sets the NTP server.
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| server | string | Yes| NTP server addresses separated by a comma (,). For example, **ntpserver1.com,ntpserver2.com**. The value can contain a maximum of 96 bytes (including the end character).|
+| server | string | Yes| NTP server addresses separated by commas (,). For example, **ntpserver1.com,ntpserver2.com**. The value can contain a maximum of 96 bytes (including the end character).|
 
 **Error codes**
 
@@ -219,7 +219,7 @@ try {
 let otaUpdatePolicy5: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.POSTPONE,
   "version": "version_1.0.0.4",
-  "delayUpdateTime": 5, // Time for which the update is delayed, in hours.
+  "delayUpdateTime": 5, // Unit: hour
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy5);
@@ -697,13 +697,13 @@ try {
 
 setInstallLocalEnterpriseAppEnabled(admin: Want, isEnable: boolean): void
 
-Sets whether local installation of enterprise applications is supported. When it is enabled, users can install enterprise applications (signing certificate distribution type: **enterprise_normal**) by double-tapping the application installation package on PCs/2-in-1 devices with local installation capability.
+Sets whether local installation of enterprise applications is supported. When local installation is enabled, users can install enterprise applications (signing certificate distribution type: **enterprise_normal**) by double-tapping their installation packages on PCs/2-in-1 enterprise devices with the local installation capability.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -757,7 +757,7 @@ Checks whether local installation of enterprise applications is supported.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
 

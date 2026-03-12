@@ -44,7 +44,7 @@ Generates a media key request. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -93,7 +93,7 @@ Processes a media key response. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -225,7 +225,7 @@ Generates a request to release offline media keys. This API uses a promise to re
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -275,7 +275,7 @@ Processes a response to a request for releasing offline media keys. This API use
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -331,7 +331,7 @@ Restores offline media keys. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -421,7 +421,7 @@ Checks whether secure decoding is required.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -464,7 +464,7 @@ Subscribes to events indicating that the application requests a media key. This 
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -502,7 +502,7 @@ Unsubscribes from events indicating that the application requests a media key. T
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -538,7 +538,7 @@ Subscribes to events indicating that a media key expires. This API uses an async
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -576,7 +576,7 @@ Unsubscribes from events indicating that a media key expires. This API uses an a
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -612,7 +612,7 @@ Subscribes to vendor-defined events. This API uses an asynchronous callback to r
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -650,7 +650,7 @@ Unsubscribes from vendor-defined events. This API uses an asynchronous callback 
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -686,7 +686,7 @@ Subscribes to events indicating that a media key is updated upon expiry. This AP
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -724,7 +724,7 @@ Unsubscribes from events indicating that a media key is updated upon expiry. Thi
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -760,7 +760,7 @@ Subscribes to events indicating that a media key changes. This API uses an async
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -800,7 +800,7 @@ Unsubscribes from events indicating that a media key changes. This API uses an a
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |

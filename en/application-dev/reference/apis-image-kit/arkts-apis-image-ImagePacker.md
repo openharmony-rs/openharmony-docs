@@ -59,7 +59,7 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -100,7 +100,6 @@ packToData(source: PixelMap, options: PackingOption): Promise\<ArrayBuffer>
 Compresses or re-encodes an image. This API uses a promise to return the result.
 
 > **NOTE**
->
 > If error code 401 is returned, the parameters are abnormal. The possible cause is that the PixelMap object is released in advance. You need to check the code and ensure that the PixelMap object is released after this API is called.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
@@ -122,7 +121,7 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -182,7 +181,7 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -613,7 +612,7 @@ Encodes the Picture into a file based on the specified encoding parameters. This
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -865,7 +864,8 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 13. Use [packToData](#packtodata13) instead.
->
+
+> **NOTE**
 > If the message "PixelMap mismatch" is returned, the parameters are abnormal. The possible cause is that the PixelMap object is released in advance. You need to check the code and ensure that the PixelMap object is released after this API is called.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.

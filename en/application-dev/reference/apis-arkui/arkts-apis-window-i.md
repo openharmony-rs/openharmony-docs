@@ -160,7 +160,7 @@ Describes the value and reason returned upon a window rectangle (position and si
 
 ## AvoidAreaOptions<sup>12+</sup>
 
-Describes the new area where the window cannot be displayed. The new area is returned when the corresponding event is triggered.
+Returns the new avoid area and its type after the system avoid area changes.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -168,8 +168,8 @@ Describes the new area where the window cannot be displayed. The new area is ret
 
 | Name      | Type     | Read-Only| Optional| Description              |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | No  | No  | Type of the new area returned.|
-| area   | [AvoidArea](arkts-apis-window-i.md#avoidarea7)         | No  | No  | New area returned.|
+| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | No  | No  | Type of the new avoid area returned after the system avoid area changes.|
+| area   | [AvoidArea](arkts-apis-window-i.md#avoidarea7)         | No  | No  | New avoid area returned after the system avoid area changes.|
 
 ## WindowProperties
 
