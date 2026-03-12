@@ -16,7 +16,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。qxu:tbd 下面可能需要增添一个开发步骤
 
 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
