@@ -2038,7 +2038,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### onPlayFinished<sup>23+</sup>
 
-onPlayFinished(Callback\<void>): void
+onPlayFinished(callback: Callback\<void>): void
 
 音频池资源播放完成监听。
 
