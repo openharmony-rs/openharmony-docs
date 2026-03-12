@@ -3,7 +3,9 @@
 Want是对象间信息传递的载体, 可以用于应用组件间的信息传递。 Want的使用场景之一是作为[startAbility](js-apis-inner-application-uiAbilityContext.md#startability)的参数, 其包含了指定的启动目标, 以及启动时需携带的相关数据, 如bundleName和abilityName字段分别指明目标Ability所在应用的Bundle名称以及对应包内的Ability名称。当Ability A需要启动Ability B并传入一些数据时, 可使用Want作为载体将这些数据传递给Ability B。
 
 > **说明：**
-> 
+>
+> 本模块仅支持ArkTS-Dyn。
+>
 > 本模块首批接口从API version 6开始支持，从API version 9废弃，使用[@ohos.app.ability.Want](js-apis-app-ability-want.md)模块替代。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -15,6 +17,10 @@ import Want from '@ohos.app.ability.Want';
 ## 属性
 
 **系统能力**：SystemCapability.Ability.AbilityBase
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 6
 
 | 名称        | 类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | -------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -67,28 +73,27 @@ import Want from '@ohos.app.ability.Want';
   let fd: number = 0;
   try {
     fd = fs.openSync('/data/storage/el2/base/haps/pic.png').fd;
-  } catch(e) {
+  } catch (e) {
     console.error(`openSync fail: ${JSON.stringify(e)}`);
   }
-
-
   let want: Want = {
     deviceId: '', // deviceId为空表示本设备
     bundleName: 'com.example.myapplication',
     abilityName: 'EntryAbility',
     moduleName: 'entry', // moduleName非必选
     parameters: {
-      'keyFd':{'type':'FD', 'value':fd}
+      'keyFd': { 'type': 'FD', 'value': fd }
     }
   };
-  class MyAbility extends UIAbility{
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam){
+  
+  class MyAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
       this.context.startAbility(want, (error: BusinessError) => {
         // 显式拉起Ability，通过bundleName、abilityName和moduleName可以唯一确定一个Ability
         console.error(`error.code = ${error.code}`);
       });
     }
   }
+  
   // ...
   ```
-  
