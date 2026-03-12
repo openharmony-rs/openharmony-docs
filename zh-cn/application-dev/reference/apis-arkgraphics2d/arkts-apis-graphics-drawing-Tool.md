@@ -39,7 +39,7 @@ ArkTS-Sta: static makeColorFromResourceColor(resourceColor: ResourceColor): comm
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

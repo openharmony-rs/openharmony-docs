@@ -5,7 +5,7 @@
 
 >  **说明：**
 >
->  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>  - 本模块仅适用于ArkTS-Dyn。
 >
 >  - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -29,9 +29,7 @@ StepperItem()
 
 ### prevLabel
 
-ArkTS-Dyn: prevLabel(value: string)
-
-ArkTS-Sta: prevLabel(value: string | undefined)
+prevLabel(value: string)
 
 设置左侧文本按钮内容，第一页没有左侧文本按钮，当步骤导航器大于一页时，除第一页外默认值都为“返回”。
 
@@ -39,21 +37,15 @@ ArkTS-Sta: prevLabel(value: string | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 22
-
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | ArkTS-Dyn: string<br/>ArkTS-Sta: string \| undefined | 是 | 左侧文本按钮内容。字符串超长时，先缩小再换行（2行）最后截断。 |
+| value | string | 是 | 左侧文本按钮内容。字符串超长时，先缩小再换行（2行）最后截断。 |
 
 ### nextLabel
 
-ArkTS-Dyn: nextLabel(value: string)
-
-ArkTS-Sta: nextLabel(value: string | undefined)
+nextLabel(value: string)
 
 设置右侧文本按钮内容，最后一页默认值为“开始”，其余页默认值为“下一步”。
 
@@ -61,15 +53,11 @@ ArkTS-Sta: nextLabel(value: string | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 22
-
 **参数：** 
 
 | 参数名 | 类型                            | 必填 | 说明                                                         |
 | ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string \| undefined                          | 是   | 右侧文本按钮内容。字符串超长时，先缩小再换行（2行）最后截断。                        |
+| value  | string | 是   | 右侧文本按钮内容。字符串超长时，先缩小再换行（2行）最后截断。                        |
 
 ### status
 

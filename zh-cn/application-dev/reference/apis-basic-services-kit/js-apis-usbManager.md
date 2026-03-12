@@ -4,7 +4,9 @@
 
 >  **说明：**
 > 
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
 
 ## 导入模块
 
@@ -20,16 +22,15 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                                                   | 说明      |
 | ---------------------------------------------------- | ------- |
 | Array&lt;Readonly&lt;[USBDevice](#usbdevice)&gt;&gt; | 设备信息列表。 |
-| undefined | 开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn |
 
 **错误码：**
 
@@ -38,7 +39,6 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
 | 801      | Capability not supported.  |
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.<br>**ArkTs模式**：该错误码仅适用于ArkTs-Sta |
 
 **示例：**
 
@@ -111,9 +111,9 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -126,7 +126,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 | 类型 | 说明 |
 | -------- | -------- |
 | Readonly&lt;[USBDevicePipe](#usbdevicepipe)&gt; | 指定的传输通道对象。 |
-| undefined | 如果USB服务异常，可能返回`undefined`。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn |
+| undefined | 如果USB服务异常，可能返回`undefined`。<br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。 |
 
 **错误码：**
 
@@ -137,7 +137,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
 | 801      | Capability not supported.                                     |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.  |
-| 14400012 | Transmission I/O error.<br>**ArkTs模式**：该错误码仅适用于ArkTs-Sta |
+| 14400012 | Transmission I/O error.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
@@ -165,9 +165,9 @@ hasRight(deviceName: string): boolean
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -212,9 +212,9 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -259,9 +259,9 @@ removeRight(deviceName: string): boolean
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -312,9 +312,9 @@ ArkTS-Sta: claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boo
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -366,9 +366,9 @@ ArkTS-Sta: releaseInterface(pipe: USBDevicePipe, iface: USBInterface): int
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -423,9 +423,9 @@ ArkTS-Sta: setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): int
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -480,9 +480,9 @@ ArkTS-Sta: setInterface(pipe: USBDevicePipe, iface: USBInterface): int
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -535,9 +535,9 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -550,7 +550,7 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 | 类型 | 说明 |
 | -------- | -------- |
 | Uint8Array | 返回获取的原始数据 |
-| undefined | 如果USB服务异常，可能返回`undefined` 。<br> **ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
+| undefined | 如果USB服务异常，可能返回`undefined` 。<br> **ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
 
 **错误码：**
 
@@ -560,8 +560,8 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
 | 801      | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.<br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta。|
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta。|
 
 **示例：**
 
@@ -590,9 +590,9 @@ ArkTS-Sta: getFileDescriptor(pipe: USBDevicePipe): int
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -713,9 +713,9 @@ ArkTS-Sta: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceReques
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -785,9 +785,9 @@ ArkTS-Sta: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -861,9 +861,9 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -950,9 +950,9 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1044,9 +1044,9 @@ ArkTS-Sta: closePipe(pipe: USBDevicePipe): int
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1093,9 +1093,9 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：14
+**ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1144,9 +1144,9 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：14
+**ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1195,9 +1195,9 @@ cancelAccessoryRight(accessory: USBAccessory): void
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：14
+**ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1239,9 +1239,9 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：14
+**ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1280,9 +1280,9 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：14
+**ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1338,9 +1338,9 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：14
+**ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1387,9 +1387,9 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 
 **系统能力：**  SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1440,9 +1440,9 @@ try {
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型                                        | 只读  | 可选  |说明            |
 | ------------- | ------------------------------------------- | ---- | ---- |------------- |
@@ -1450,10 +1450,11 @@ try {
 | attributes    | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点属性。         |
 | interval      | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点间隔。         |
 | maxPacketSize | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点最大数据包大小。    |
-| direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 是 |端点的方向。        |
-| number        | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 是 |端点号。          |
-| type          | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 是 |端点类型。取值见[UsbEndpointTransferType](#usbendpointtransfertype18)         |
-| interfaceId   | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 是 |端点所属的接口的唯一标识。 |
+| direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 否 |端点的方向。        |
+| number        | ArkTS-Dyn: number                                         | 否   | 否 |端点号。 <br>**ArkTS模式**：该字段仅适用于ArkTS-Dyn。         |
+| endpointAddr        | ArkTS-Sta: int                                         | 否   | 否 |端点地址。<br>**ArkTS模式**：该字段仅适用于ArkTS-Sta。           |
+| type          | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点类型。取值见[UsbEndpointTransferType](#usbendpointtransfertype18)         |
+| interfaceId   | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点所属的接口的唯一标识。 |
 
 ## USBInterface
 
@@ -1461,9 +1462,9 @@ try {
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型                                     | 只读  | 可选            |说明                    |
 | ---------------- | ---------------------------------------- | ---- | ------------- |--------------------- |
@@ -1481,9 +1482,9 @@ USB配置，一个[USBDevice](#usbdevice)中可以含有多个配置。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型                                             | 只读  | 可选  |说明              |
 | -------------- | ------------------------------------------------ | ---- | --------------- |--------------- |
@@ -1501,25 +1502,25 @@ USB设备信息。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型                                 | 只读  | 可选         |说明         |
 | ---------------- | ------------------------------------ | ---- | ---------- |---------- |
-| busNum           | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 是 |总线地址。      |
-| devAddress       | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 是 |设备地址。      |
-| serial           | string                               | 否 | 是 |序列号。       |
-| name             | string                               | 否 | 是 |设备名字。      |
-| manufacturerName | string                               | 否 | 是 | 产商信息。      |
-| productName      | string                               | 否 | 是 |产品信息。      |
-| version          | string                               | 否 | 是 |版本。        |
-| vendorId         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 是 |厂商ID。      |
-| productId        | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 是 |产品ID。      |
-| clazz            | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 是 |设备类。       |
-| subClass         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 是 |设备子类。      |
-| protocol         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 是 |设备协议码。     |
-| configs          | Array&lt;[USBConfiguration](#usbconfiguration)&gt; | 否 | 是 |设备配置描述符信息。 |
+| busNum           | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |总线地址。      |
+| devAddress       | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |设备地址。      |
+| serial           | string                               | 否 | 否 |序列号。       |
+| name             | string                               | 否 | 否 |设备名字。      |
+| manufacturerName | string                               | 否 | 否 | 产商信息。      |
+| productName      | string                               | 否 | 否 |产品信息。      |
+| version          | string                               | 否 | 否 |版本。        |
+| vendorId         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |厂商ID。      |
+| productId        | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |产品ID。      |
+| clazz            | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |设备类。       |
+| subClass         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |设备子类。      |
+| protocol         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |设备协议码。     |
+| configs          | Array&lt;[USBConfiguration](#usbconfiguration)&gt; | 否 | 否 |设备配置描述符信息。 |
 
 ## USBDevicePipe
 
@@ -1527,9 +1528,9 @@ USB设备消息传输通道，用于确定设备。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 类型   | 只读  | 可选    |说明    |
 | ---------- | ------ | ---- | ----- |----- |
@@ -1561,9 +1562,9 @@ USB设备消息传输通道，用于确定设备。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称      | 类型                                            | 只读 | 可选               |说明               |
@@ -1581,9 +1582,9 @@ USB设备消息传输通道，用于确定设备。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称                         | 值   | 说明   |
 | ---------------------------- | ---- | ------ |
@@ -1598,9 +1599,9 @@ USB设备消息传输通道，用于确定设备。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称                      | 值   | 说明   |
 | ------------------------- | ---- | ------ |
@@ -1614,9 +1615,9 @@ USB设备消息传输通道，用于确定设备。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称                        | 值   | 说明                     |
 | --------------------------- | ---- | ------------------------ |
@@ -1629,9 +1630,9 @@ USB配件信息。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：14
+**ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 类型   | 只读 | 可选 | 说明             |
 | ------------ | ------ | ---- | ---- | ---------------- |
@@ -1647,9 +1648,9 @@ USB配件句柄。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：14
+**ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型   | 只读 | 可选 | 说明                                      |
 | ----------- | ------ | ---- | ---- | ----------------------------------------- |
@@ -1661,9 +1662,9 @@ USB配件句柄。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 类型   | 只读  | 可选    |说明    |
 | ---------- | ------ | ---- | ----- |----- |
@@ -1684,9 +1685,9 @@ USB传输标志。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称                         | 值   | 说明   |
 | ---------------------------- | ---- | ------ |
@@ -1701,9 +1702,9 @@ Usb传输类型。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称                         | 值   | 说明   |
 | ---------------------------- | ---- | ------ |
@@ -1717,9 +1718,9 @@ Usb异步传输回调。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型 | 只读 | 可选   | 说明    |
 | ---------- | ------ | ---- | ----- | ------ |
@@ -1733,9 +1734,9 @@ Usb异步传输回调。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称                         | 值   | 说明   |
 | ---------------------------- | ---- | ------ |
@@ -1753,9 +1754,9 @@ Usb异步传输回调。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 类型 | 只读  | 可选 | 说明    |
 | ---------- | ------ | ----| ----- | ------ |

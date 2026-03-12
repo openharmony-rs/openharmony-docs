@@ -7166,7 +7166,7 @@ ArkTS-Sta: setTargetDeviceStatus(deviceType: string, status: long): Promise\<voi
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| deviceType | string | 是   | 设备类型。当前仅支持`headset`（可穿戴式音频设备）、`liteWearable`（轻量级智能穿戴设备）、`wearable`（智能穿戴设备）、`current`（本设备）。 |
+| deviceType | string | 是   | 设备类型。当前仅支持`headset`（可穿戴式音频设备）、`liteWearable`（轻量级智能穿戴设备）、`wearable`（智能穿戴设备）、`glasses`（智能眼镜设备）、`current`（本设备）。 |
 | status | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是   | 设备状态。<br>- bit0：设备是否正在被使用。0表示未使用，1表示使用中。<br>- bit1：当前设备使用者是否为机主。0表示为非机主，1表示为机主。<br>- bit2：设备是否处于勿扰模式。0表示处于非勿扰模式，1表示处于勿扰模式。 |
 
 **返回值：**
@@ -8571,7 +8571,7 @@ try {
 }
 ```
 
-## isPriorityIntelligentEnabled<sup>23+</sup>
+## notificationManager.isPriorityIntelligentEnabled<sup>23+</sup>
 
 isPriorityIntelligentEnabled(): Promise\<boolean\>
 
@@ -8638,7 +8638,7 @@ try {
 }
 ```
 
-## setPriorityIntelligentEnabled<sup>23+</sup>
+## notificationManager.setPriorityIntelligentEnabled<sup>23+</sup>
 
 setPriorityIntelligentEnabled(enable: boolean): Promise\<void\>
 
@@ -8711,7 +8711,7 @@ try {
 }
 ```
 
-## getPriorityEnabledByBundles<sup>23+</sup>
+## notificationManager.getPriorityEnabledByBundles<sup>23+</sup>
 
 getPriorityEnabledByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, boolean\>\>
 
@@ -8793,7 +8793,7 @@ try {
 }
 ```
 
-## setPriorityEnabledByBundles<sup>23+</sup>
+## notificationManager.setPriorityEnabledByBundles<sup>23+</sup>
 
 setPriorityEnabledByBundles(switches: Map\<BundleOption, boolean\>): Promise\<void\>
 
@@ -8871,9 +8871,11 @@ try {
 }
 ```
 
-## getPriorityStrategyByBundles<sup>23+</sup>
+## notificationManager.getPriorityStrategyByBundles<sup>23+</sup>
 
-getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, long\>\>;
+ArkTS-Dyn: getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, number\>\>
+
+ArkTS-Sta: getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, long\>\>
 
 批量获取应用通知优先策略。使用Promise异步回调。
 
@@ -8899,7 +8901,7 @@ getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<Bund
 
 | 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), long\>\> | Promise对象，返回应用通知优先策略的键值对集合的Promise对象。 |
+| ArkTS-Dyn: Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), number\>\> <br/>ArkTS-Sta: Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), long\>\> | Promise对象，返回应用通知优先策略的键值对集合的Promise对象。 |
 
 **错误码**：
 
@@ -8953,9 +8955,11 @@ try {
 }
 ```
 
-## setPriorityStrategyByBundles<sup>23+</sup>
+## notificationManager.setPriorityStrategyByBundles<sup>23+</sup>
 
-setPriorityStrategyByBundles(strategies: Map\<BundleOption, long\>): Promise\<void\>
+ArkTS-Dyn: setPriorityStrategyByBundles(strategies: Map\<BundleOption, number\>): Promise\<void\>
+
+ArkTS-Sta: setPriorityStrategyByBundles(strategies: Map\<BundleOption, long\>): Promise\<void\>
 
 批量设置应用通知优先策略。使用Promise异步回调。
 
@@ -8975,7 +8979,7 @@ setPriorityStrategyByBundles(strategies: Map\<BundleOption, long\>): Promise\<vo
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| strategies | Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), long\> | 是 | 应用通知优先策略的键值对集合。与[PriorityStrategyStatus](#prioritystrategystatus23)的枚举进行按位或运算得到值。|
+| strategies | ArkTS-Dyn: Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), number\> <br/>ArkTS-Sta: Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), long\> | 是 | 应用通知优先策略的键值对集合。与[PriorityStrategyStatus](#prioritystrategystatus23)的枚举进行按位或运算得到值。|
 
 **返回值：**
 
@@ -9345,6 +9349,10 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 | 类型 | 说明 |
 | --- | --- |

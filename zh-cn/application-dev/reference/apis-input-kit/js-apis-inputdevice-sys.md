@@ -1,16 +1,21 @@
 # @ohos.multimodalInput.inputDevice (输入设备)(系统接口)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
 
-本模块提供输入设备管理能力，包括查询输入设备信息等。
-
+本模块提供输入设备管理能力，包括查询输入设备信息，设置/获取键盘按键重复时延，设置输入设备的开关状态等。
 
 > **说明**：
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前页面仅包含模块的系统接口，其他公开接口请参考[@ohos.multimodalInput.inputDevice (输入设备)](js-apis-inputdevice.md)。
+> - 当前页面仅包含模块的系统接口，其他公开接口请参考[@ohos.multimodalInput.inputDevice (输入设备)](js-apis-inputdevice.md)。
 
 
 ## 导入模块
@@ -25,7 +30,7 @@ ArkTS-Dyn: setKeyboardRepeatDelay(delay: number, callback: AsyncCallback&lt;void
 
 ArkTS-Sta:  setKeyboardRepeatDelay(delay: int, callback: AsyncCallback&lt;void&gt;): void
 
-设置键盘按键的重复时延，使用Callback异步回调。
+设置键盘按键的重复时延，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -51,12 +56,13 @@ ArkTS-Sta:  setKeyboardRepeatDelay(delay: int, callback: AsyncCallback&lt;void&g
 | 202 | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -66,12 +72,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.setKeyboardRepeatDelay(350, (error: Error) => {
+            inputDevice.setKeyboardRepeatDelay(350, (error: BusinessError) => {
               if (error) {
                 console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set keyboard repeat delay success`);
+              console.info(`Set keyboard repeat delay success`);
             });
           } catch (error) {
             console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -103,7 +109,7 @@ struct Index {
                 console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set keyboard repeat delay success`);
+              console.info(`Set keyboard repeat delay success`);
             })
           } catch (error) {
             console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -140,7 +146,7 @@ ArkTS-Sta: setKeyboardRepeatDelay(delay: int): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -151,12 +157,13 @@ ArkTS-Sta: setKeyboardRepeatDelay(delay: int): Promise&lt;void&gt;
 | 202 | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -167,8 +174,10 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.setKeyboardRepeatDelay(350).then(() => {
-              console.log(`Set keyboard repeat delay success`);
-            });
+              console.info(`Set keyboard repeat delay success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -194,7 +203,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.setKeyboardRepeatDelay(350).then(() => {
-              console.log(`Set keyboard repeat delay success`);
+              console.info(`Set keyboard repeat delay success`);
             });
           } catch (error) {
             console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -257,7 +266,7 @@ struct Index {
                 console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get keyboard repeat delay success`);
+              console.info(`Get keyboard repeat delay success`);
             });
           } catch (error) {
             console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -289,7 +298,7 @@ struct Index {
                 console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get keyboard repeat delay success`);
+              console.info(`Get keyboard repeat delay success`);
             });
           } catch (error) {
             console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -331,7 +340,7 @@ ArkTS-Sta: getKeyboardRepeatDelay(): Promise&lt;int&gt;
 | 202  | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -347,7 +356,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.getKeyboardRepeatDelay().then((delay: Number) => {
-              console.log(`Get keyboard repeat delay success`);
+              console.info(`Get keyboard repeat delay success`);
             });
           } catch (error) {
             console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -374,7 +383,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.getKeyboardRepeatDelay().then((delay: int) => {
-              console.log(`Get keyboard repeat delay success`);
+              console.info(`Get keyboard repeat delay success`);
             });
           } catch (error) {
             console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -417,7 +426,7 @@ ArkTS-Sta: setKeyboardRepeatRate(rate: int, callback: AsyncCallback&lt;void&gt;)
 | 202  | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -437,7 +446,7 @@ struct Index {
                 console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set keyboard repeat rate success`);
+              console.info(`Set keyboard repeat rate success`);
             });
           } catch (error) {
             console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -468,7 +477,7 @@ struct Index {
                 console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set keyboard repeat rate success`);
+              console.info(`Set keyboard repeat rate success`);
             });
           } catch (error) {
             console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -505,7 +514,7 @@ ArkTS-Sta: setKeyboardRepeatRate(rate: int): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -516,7 +525,7 @@ ArkTS-Sta: setKeyboardRepeatRate(rate: int): Promise&lt;void&gt;
 | 202  | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -532,7 +541,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.setKeyboardRepeatRate(60).then(() => {
-              console.log(`Set keyboard repeat rate success`);
+              console.info(`Set keyboard repeat rate success`);
             });
           } catch (error) {
             console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -559,7 +568,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.setKeyboardRepeatRate(60).then(() => {
-              console.log(`Set keyboard repeat rate success`);
+              console.info(`Set keyboard repeat rate success`);
             });
           } catch (error) {
             console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -601,7 +610,7 @@ ArkTS-Sta: getKeyboardRepeatRate(callback: AsyncCallback&lt;int&gt;): void
 | 202  | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -621,7 +630,7 @@ struct Index {
                 console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get keyboard repeat rate success`);
+              console.info(`Get keyboard repeat rate success`);
             });
           } catch (error) {
             console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -651,7 +660,7 @@ struct Index {
                 console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get keyboard repeat rate success`);
+              console.info(`Get keyboard repeat rate success`);
             });
           } catch (error) {
             console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -693,7 +702,7 @@ ArkTS-Sta: getKeyboardRepeatRate(): Promise&lt;int&gt;
 | 202  | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -709,7 +718,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.getKeyboardRepeatRate().then((rate: Number) => {
-              console.log(`Get keyboard repeat rate success`);
+              console.info(`Get keyboard repeat rate success`);
             });
           } catch (error) {
             console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -734,7 +743,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.getKeyboardRepeatRate().then((rate: int) => {
-              console.log(`Get keyboard repeat rate success`);
+              console.info(`Get keyboard repeat rate success`);
             });
           } catch (error) {
             console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -767,8 +776,14 @@ ArkTS-Sta: setInputDeviceEnabled(deviceId: int, enabled: boolean): Promise&lt;vo
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | ------------------------- |
-| deviceId | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 目标设备Id。              |
+| deviceId | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。              |
 | enabled  | boolean | 是   | 输入设备的开关状态，取值为true表示开启输入设备，取值为false表示关闭输入设备。 |
+
+**返回值**：
+
+| 类型                  | 说明               |
+| ------------------- | ---------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -777,12 +792,12 @@ ArkTS-Sta: setInputDeviceEnabled(deviceId: int, enabled: boolean): Promise&lt;vo
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Not system application.                                      |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201      | Permission denied. The application does not have the permission required to call the API |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 401      | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900001  | The specified device does not exist.                         |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 

@@ -24,7 +24,8 @@ import batteryInfo from '@ohos.batteryInfo';
 
 ## batteryInfo.setBatteryConfig<sup>11+</sup>
 
-ArkTS-Dyn: setBatteryConfig(sceneName: string, sceneValue: string): number  
+ArkTS-Dyn: setBatteryConfig(sceneName: string, sceneValue: string): number
+
 ArkTS-Sta: setBatteryConfig(sceneName: string, sceneValue: string): int
 
 按场景名称设置电池配置。

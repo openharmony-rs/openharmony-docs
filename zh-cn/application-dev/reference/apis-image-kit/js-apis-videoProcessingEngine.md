@@ -6,7 +6,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -23,6 +24,10 @@ initializeEnvironment(): Promise\<void>
 **卡片能力**：从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -61,6 +66,10 @@ deinitializeEnvironment(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 |  类型 | 说明  |
@@ -94,6 +103,10 @@ create(): ImageProcessor
 **卡片能力**：从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -139,6 +152,10 @@ enhanceDetail(sourceImage: image.PixelMap, width: number, height: number, level?
 **卡片能力**：从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -186,6 +203,10 @@ enhanceDetail(sourceImage: image.PixelMap, scale: number, level?: QualityLevel):
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |  参数名 | 类型  | 必填  | 说明  |
@@ -230,6 +251,10 @@ enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: number, le
 **卡片能力**：从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -279,6 +304,10 @@ enhanceDetailSync(sourceImage: image.PixelMap, scale: number, level?: QualityLev
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |  参数名 | 类型  | 必填  | 说明  |
@@ -316,13 +345,17 @@ sourceImage, scale, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
 
-## QualityLevel
+### QualityLevel
 
-枚举，算法档位。
+枚举，算法档位。     
 
 **卡片能力**：从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值  | 说明  |
 | ------------ | ------------ | ------------ |

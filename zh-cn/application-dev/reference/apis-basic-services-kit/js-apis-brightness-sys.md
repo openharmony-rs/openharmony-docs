@@ -23,7 +23,8 @@ import brightness from '@ohos.brightness';
 
 ## brightness.setValue
 
-ArkTS-Dyn: setValue(value: number): void  
+ArkTS-Dyn: setValue(value: number): void
+
 ArkTS-Sta: setValue(value: int): void
 
 设置系统的屏幕亮度。
@@ -64,7 +65,8 @@ try {
 
 ## brightness.setValue<sup>11+</sup>
 
-ArkTS-Dyn: setValue(value: number, continuous: boolean): void  
+ArkTS-Dyn: setValue(value: number, continuous: boolean): void
+
 ArkTS-Sta: setValue(value: int, continuous: boolean): void
 
 设置系统的屏幕亮度。用于连续调节亮度的场景，在连续调节亮度过程中，设置continuous为true，结束时设置continuous为false，会有更好的性能。

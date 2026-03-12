@@ -1,8 +1,15 @@
 # 输入设备错误码
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> - 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 <!--Del-->
 ## 3900001 指定的设备不存在
@@ -17,12 +24,12 @@ The specified device does not exist.
 
 **可能原因**
 
-1. 输入设备的设备id变更。
+1. 输入设备的设备ID变更。
 2. 输入设备的物理连接断开。
 
 **处理步骤**
 
-1. 通过[inputDevice.getDeviceList](js-apis-inputdevice.md#inputdevicegetdevicelist9)查询设备id，并传入正确的设备id。
+1. 通过[inputDevice.getDeviceList](js-apis-inputdevice.md#inputdevicegetdevicelist9)查询设备ID，并传入正确的设备ID。
 2. 检查设备的物理连接是否断开。<!--DelEnd-->
 
 ## 3900002 键盘设备没有连接
@@ -55,7 +62,7 @@ It is prohibited for non-input applications.
 
 **可能原因**
 
-该接口不支持三方应用或者非输入法系统应用调用。
+非输入法应用调用此接口。
 
 **处理步骤**
 

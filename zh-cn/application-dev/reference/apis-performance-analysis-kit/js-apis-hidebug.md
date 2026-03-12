@@ -24,7 +24,7 @@ getNativeHeapSize(): bigint
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -50,7 +50,7 @@ getNativeHeapAllocatedSize(): bigint
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -76,7 +76,7 @@ getNativeHeapFreeSize(): bigint
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -105,7 +105,7 @@ getPss(): bigint
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -130,7 +130,7 @@ getVss(): bigint
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -160,7 +160,7 @@ getSharedDirty(): bigint
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -190,7 +190,7 @@ getPrivateDirty(): bigint
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -219,7 +219,7 @@ ArkTS-Sta: getCpuUsage(): double
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -248,7 +248,7 @@ ArkTS-Sta: getServiceDump(serviceid: int, fd: int, args: Array\<string>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -320,7 +320,7 @@ if (fileFd >= 0) {
 
 ## hidebug.startJsCpuProfiling<sup>9+</sup>
 
-startJsCpuProfiling(filename: string) : void
+startJsCpuProfiling(filename: string): void
 
 启动虚拟机Profiling方法跟踪，`startJsCpuProfiling(filename: string)`方法的调用需要与`stopJsCpuProfiling()`方法的调用一一对应，先开启后关闭，请避免重复开启或重复关闭的调用方式，否则会接口调用异常。
 
@@ -328,7 +328,7 @@ startJsCpuProfiling(filename: string) : void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -361,7 +361,7 @@ try {
 
 ## hidebug.stopJsCpuProfiling<sup>9+</sup>
 
-stopJsCpuProfiling() : void
+stopJsCpuProfiling(): void
 
 停止虚拟机Profiling方法跟踪，`stopJsCpuProfiling()`方法的调用需要与`startJsCpuProfiling(filename: string)`方法的调用一一对应，先开启后关闭，请避免重复开启或重复关闭的调用方式，否则会接口调用异常。
 
@@ -369,7 +369,7 @@ stopJsCpuProfiling() : void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **示例**：
 
@@ -527,7 +527,7 @@ getAppVMMemoryInfo(): VMMemoryInfo
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -555,7 +555,7 @@ getAppThreadCpuUsage(): ThreadCpuUsage[]
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -598,7 +598,7 @@ trace单位流量实测方法：limitSize设置为最大值500M，调用startApp
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -668,7 +668,7 @@ try {
 
 ## hidebug.stopAppTraceCapture<sup>12+</sup>
 
-stopAppTraceCapture() : void
+stopAppTraceCapture(): void
 
 停止应用trace采集。调用前，需先调用'[startAppTraceCapture()](#hidebugstartapptracecapture12)'方法开始采集。关闭前未开启或重复关闭会导致接口异常。
 
@@ -678,7 +678,7 @@ stopAppTraceCapture() : void
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **错误码**：
 
@@ -732,7 +732,7 @@ try {
 
 ## hidebug.getAppMemoryLimit<sup>12+</sup>
 
-getAppMemoryLimit() : MemoryLimit
+getAppMemoryLimit(): MemoryLimit
 
 获取应用程序进程的内存限制。
 
@@ -740,7 +740,7 @@ getAppMemoryLimit() : MemoryLimit
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -770,7 +770,7 @@ ArkTS-Sta: getSystemCpuUsage(): double
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -861,7 +861,7 @@ getAppNativeMemInfo(): NativeMemInfo
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 > **注意**：
 >
@@ -894,7 +894,7 @@ getSystemMemInfo(): SystemMemInfo
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -923,7 +923,7 @@ getVMRuntimeStats(): GcStats
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -946,9 +946,9 @@ console.info(`fullgc-longtime-count: ${vMRuntimeStats['ark.gc.fullgc-longtime-co
 
 ## hidebug.getVMRuntimeStat<sup>12+</sup>
 
-ArkTS-Dyn：getVMRuntimeStat(item: string): number
+ArkTS-Dyn: getVMRuntimeStat(item: string): number
 
-ArkTS-Sta：getVMRuntimeStat(item: string): long
+ArkTS-Sta: getVMRuntimeStat(item: string): long
 
 根据参数获取指定的系统[GC](../../arkts-utils/gc-introduction.md)统计信息。
 
@@ -1009,7 +1009,7 @@ try {
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称      | 类型   | 只读 | 可选 | 说明         |
 | --------- | ------ | --|----| ------------ |
@@ -1026,7 +1026,7 @@ VM内存信息。
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称               | 类型    | 只读 | 可选 | 说明                                |
 | -------------------| ------- | ---|----| ---------------------------------- |
@@ -1042,7 +1042,7 @@ VM内存信息。
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称               | 类型                                       | 只读 | 可选 | 说明                                |
 | -------------------|------------------------------------------|----|----| ----------------------------------- |
@@ -1061,7 +1061,7 @@ VM内存信息。
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称                     | 类型    | 只读  | 说明                                         |
 | -------------------------| ------- |-----|--------------------------------------------|
@@ -1106,7 +1106,7 @@ VM内存信息。
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称      | 类型   | 只读  | 可选 | 说明                                                                             |
 | --------- | ------ | --|----|--------------------------------------------------------------------------------|
@@ -1126,7 +1126,7 @@ VM内存信息。
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称      | 类型   | 只读  | 可选 | 说明                                              |
 | --------- | ------ | ---- |---- |-------------------------------------------------|
@@ -1142,7 +1142,7 @@ VM内存信息。
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称                         | 值 | 说明                    |
 | --------------------------- |---| ----------------------- |
@@ -1161,7 +1161,7 @@ ArkTS-Sta: type GcStats = Record&lt;string, long&gt;
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 类型                                                                                 | 说明                          |
 |------------------------------------------------------------------------------------| ---------------------------- |
@@ -1196,7 +1196,7 @@ isDebugState(): boolean
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -1226,7 +1226,7 @@ ArkTS-Sta: getGraphicsMemory(): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -1282,7 +1282,7 @@ ArkTS-Sta: getGraphicsMemorySync(): int
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 

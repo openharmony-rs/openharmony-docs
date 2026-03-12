@@ -41,7 +41,7 @@ constructor(context: Context)
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
 
@@ -203,7 +203,7 @@ on(type: 'pickerStateChange', callback: Callback<AVCastPickerState\>) : void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
 
@@ -220,7 +220,39 @@ async function onPickerStateChange(context: common.Context) {
   });
 }
 ```
+## resetCommunicationDevice<sup>21+</sup>
 
+resetCommunicationDevice(): Promise\<void>
+
+将应用通话设备恢复至默认设备。比如在语音通话场景下，手机设备的通话装置将恢复成听筒。使用Promise异步回调。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { avSession } from '@kit.AVSessionKit';
+
+async function avCastPicker(context: common.Context) {
+  let avCastPicker = new avSession.AVCastPickerHelper(context);
+  avCastPicker.resetCommunicationDevice().then(() => {
+    console.info('resetCommunicationDevice successfully');
+  });
+}
+```
 ## onPickerStateChange<sup>22+</sup>
 
 onPickerStateChange(callback: Callback<AVCastPickerState\>) : void
@@ -247,7 +279,7 @@ onPickerStateChange(callback: Callback<AVCastPickerState\>) : void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
 

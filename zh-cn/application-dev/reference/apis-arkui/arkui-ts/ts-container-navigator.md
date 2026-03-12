@@ -2,11 +2,13 @@
 
 路由容器组件，提供路由跳转能力。
 
-> **说明：**
+> **说明：** 
 >
-> 从API version 13开始，该组件不再维护，推荐使用组件[Navigation](ts-basic-components-navigation.md)进行页面路由。
+> - 本模块仅适用于ArkTS-Dyn。
 >
-> 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 13开始，该组件不再维护，推荐使用组件[Navigation](ts-basic-components-navigation.md)进行页面路由。
+>
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件

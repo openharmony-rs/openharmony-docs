@@ -40,7 +40,7 @@ constructor(pixelmap: image.PixelMap)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -86,7 +86,7 @@ drawRect(rect: common2D.Rect): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -152,7 +152,7 @@ ArkTS-Sta: drawRect(left: double, top: double, right: double, bottom: double): v
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -221,7 +221,7 @@ drawRoundRect(roundRect: RoundRect): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -279,7 +279,7 @@ drawNestedRoundRect(outer: RoundRect, inner: RoundRect): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -344,7 +344,7 @@ drawBackground(brush: Brush): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -406,7 +406,7 @@ ArkTS-Sta: drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: co
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -502,7 +502,7 @@ ArkTS-Sta: drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: co
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -574,7 +574,7 @@ ArkTS-Sta: getLocalClipBounds(): common2D.Rect | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -638,7 +638,7 @@ ArkTS-Sta: getTotalMatrix(): Matrix | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -684,7 +684,7 @@ class DrawingRenderNode extends RenderNode {
 
 ArkTS-Dyn: drawCircle(x: number, y: number, radius: number): void
 
-ArkTS-Dyn: drawCircle(x: double, y: double, radius: double): void
+ArkTS-Sta: drawCircle(x: double, y: double, radius: double): void
 
 绘制一个圆形。如果半径小于等于零，则不绘制。默认使用黑色填充。
 
@@ -692,7 +692,7 @@ ArkTS-Dyn: drawCircle(x: double, y: double, radius: double): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -760,7 +760,7 @@ ArkTS-Sta: drawImage(pixelmap: image.PixelMap, left: double, top: double, sampli
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -847,7 +847,7 @@ drawImageRect(pixelmap: image.PixelMap, dstRect: common2D.Rect, samplingOptions?
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -936,7 +936,7 @@ drawImageRectWithSrc(pixelmap: image.PixelMap, srcRect: common2D.Rect, dstRect: 
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1029,7 +1029,7 @@ drawColor(color: common2D.Color, blendMode?: BlendMode): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1098,7 +1098,7 @@ ArkTS-Sta: drawColor(alpha: int, red: int, green: int, blue: int, blendMode?: Bl
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1158,7 +1158,7 @@ ArkTS-Sta: drawColor(color: int, blendMode?: BlendMode): void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1203,6 +1203,71 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+## drawVertices<sup>23+</sup>
+
+ArkTS-Dyn: drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array\<common2D.Point\>, texs: Array\<common2D.Point\> \| null, colors: Array\<number\> \| null, indexCount: number, indices: Array\<number\> \| null, mode: BlendMode): void
+
+ArkTS-Sta: drawVertices(vertexMode: VertexMode, vertexCount: int, positions: Array\<common2D.Point\>, texs: Array\<common2D.Point\> \| null, colors: Array\<int\> \| null, indexCount: int, indices: Array\<int\> \| null, mode: BlendMode): void
+
+绘制顶点数组描述的三角网格。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型            | 必填 | 说明                            |
+| ----------- | -------------  | ---- | ------------------------------- |
+| vertexMode   | [VertexMode](arkts-apis-graphics-drawing-e.md#vertexmode23) | 是   | 绘制顶点的连接方式。 |
+| vertexCount   | ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 是   | 顶点数组元素的数量，值为大于等于3的整数。 |
+| positions  | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12)        | 是   | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
+| texs    | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12) \| null  | 是   | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
+| colors      | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<int> \| null | 是   | 描述顶点对应颜色的数组，用于在三角形中进行插值。其可以为空，表明颜色效果为用户所设置的默认色；若不为空其长度必须等于vertexCount。 |
+| indexCount  | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 索引的数量。其值可以为0，且indices数组长度为0时可以画图；若不为0，则值必须为大于等于3的整数。|
+| indices  | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<int> \| null         | 是   | 描述顶点对应索引的数组。其可以为空，此时将忽略indexCount的合理传值（大于等于3的整数或等于0）；若不为空其长度必须等于indexCount。 |
+| mode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | 是   | 颜色混合模式。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext): void {
+    const canvas = context.canvas;
+    let pointsArray = new Array<common2D.Point>();
+    const point1: common2D.Point = { x: 100.0, y: 100.0 };
+    const point2: common2D.Point = { x: 200.0, y: 100.0 };
+    const point3: common2D.Point = { x: 150.0, y: 200.0 };
+    pointsArray.push(point1);
+    pointsArray.push(point2);
+    pointsArray.push(point3);
+    let texsArray = new Array<common2D.Point>();
+    const texs1: common2D.Point = { x: 0.0, y: 0.0 };
+    const texs2: common2D.Point = { x: 1.0, y: 0.0 };
+    const texs3: common2D.Point = { x: 0.5, y: 1.0 };
+    texsArray.push(texs1);
+    texsArray.push(texs2);
+    texsArray.push(texs3);
+    const colors = [0xFFFF0000, 0xFF00FF00, 0xFF0000FF];
+    const indices = [0, 1, 2];
+    canvas.drawVertices(drawing.VertexMode.TRIANGLESSTRIP_VERTEXMODE, 3, pointsArray, texsArray, colors, 3, indices,drawing.BlendMode.SRC);
+  }
+}
+```
+
 ## drawPixelMapMesh<sup>12+</sup>
 
 ArkTS-Dyn: drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: number, meshHeight: number, vertices: Array\<number>, vertOffset: number, colors: Array\<number>, colorOffset: number): void
@@ -1215,7 +1280,7 @@ ArkTS-Sta: drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: int, meshHeight
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1311,7 +1376,7 @@ clear(color: common2D.Color): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1369,7 +1434,7 @@ ArkTS-Sta: clear(color: common2D.Color | int): void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1419,13 +1484,13 @@ ArkTS-Sta: getWidth(): int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
-| 类型   | 必填 | 说明           |
-| ------ | ---- | -------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 返回画布的宽度，该参数为浮点数。 |
+| 类型   | 说明           |
+| ------ | -------------- |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回画布的宽度。 |
 
 **示例：**
 
@@ -1469,13 +1534,13 @@ ArkTS-Sta: getHeight(): int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
-| 类型   | 必填 | 说明           |
-| ------ | ---- | -------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 返回画布的高度，该参数为浮点数。 |
+| 类型   | 说明           |
+| ------ | -------------- |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回画布的高度。 |
 
 **示例：**
 
@@ -1517,7 +1582,7 @@ drawOval(oval: common2D.Rect): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -1587,7 +1652,7 @@ ArkTS-Sta: drawArc(arc: common2D.Rect, startAngle: double, sweepAngle: double): 
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -1659,7 +1724,7 @@ ArkTS-Sta: drawPoint(x: double, y: double): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1724,7 +1789,7 @@ drawPoints(points: Array\<common2D.Point>, mode?: PointMode): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1791,7 +1856,7 @@ drawPath(path: Path): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1865,7 +1930,7 @@ ArkTS-Sta: drawLine(x0: double, y0: double, x1: double, y1: double): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1934,7 +1999,7 @@ ArkTS-Sta: drawTextBlob(blob: TextBlob, x: double, y: double): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2011,7 +2076,7 @@ ArkTS-Sta: drawSingleCharacter(text: string, font: Font, x: double, y: double): 
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -2139,7 +2204,7 @@ drawRegion(region: Region): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -2211,7 +2276,7 @@ attachPen(pen: Pen): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2279,7 +2344,7 @@ attachBrush(brush: Brush): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2341,7 +2406,7 @@ detachPen(): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -2391,7 +2456,7 @@ detachBrush(): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -2439,7 +2504,7 @@ clipPath(path: Path, clipOp?: ClipOp, doAntiAlias?: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2505,7 +2570,7 @@ clipRect(rect: common2D.Rect, clipOp?: ClipOp, doAntiAlias?: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2565,7 +2630,7 @@ ArkTS-Sta: save(): int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2617,7 +2682,7 @@ ArkTS-Sta: saveLayer(rect?: common2D.Rect | null, brush?: Brush | null): long
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2718,7 +2783,7 @@ ArkTS-Sta: scale(sx: double, sy: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2787,7 +2852,7 @@ ArkTS-Sta: skew(sx: double, sy: double) : void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2856,7 +2921,7 @@ ArkTS-Sta: rotate(degrees: double, sx: double, sy: double) : void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2926,7 +2991,7 @@ ArkTS-Sta: translate(dx: double, dy: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2995,7 +3060,7 @@ ArkTS-Sta: getSaveCount(): int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3059,7 +3124,7 @@ ArkTS-Sta: restoreToCount(count: int): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3137,7 +3202,7 @@ restore(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -3187,7 +3252,7 @@ concatMatrix(matrix: Matrix): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3247,7 +3312,7 @@ setMatrix(matrix: Matrix): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3307,7 +3372,7 @@ isClipEmpty(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3361,7 +3426,7 @@ clipRegion(region: Region, clipOp?: ClipOp): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3424,7 +3489,7 @@ clipRoundRect(roundRect: RoundRect, clipOp?: ClipOp, doAntiAlias?: boolean): voi
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3488,7 +3553,7 @@ resetMatrix(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -3530,7 +3595,7 @@ quickRejectPath(path: Path): boolean
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3598,7 +3663,7 @@ quickRejectRect(rect: common2D.Rect): boolean
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3662,7 +3727,7 @@ ArkTS-Sta: drawArcWithCenter(arc: common2D.Rect, startAngle: double, sweepAngle:
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -3726,7 +3791,7 @@ drawImageNine(pixelmap: image.PixelMap, center: common2D.Rect, dstRect: common2D
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3866,7 +3931,7 @@ drawImageLattice(pixelmap: image.PixelMap, lattice: Lattice, dstRect: common2D.R
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

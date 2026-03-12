@@ -10,7 +10,7 @@
 
 ## WebviewController<sup>9+</sup>
 
-type WebviewController = WebviewController
+type WebviewController = webview.WebviewController
 
 提供Web控制器的方法。
 
@@ -294,6 +294,26 @@ type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => We
 | ------------------ | ------------------------------------------------------------ |
 | [WebKeyboardOptions](./arkts-basic-components-web-i.md#webkeyboardoptions12) | 回调函数通过返回[WebKeyboardOptions](./arkts-basic-components-web-i.md#webkeyboardoptions12)来决定ArkWeb内核拉起不同类型的软键盘。 |
 
+## OnOverrideErrorPageCallback<sup>20+</sup>
+
+type OnOverrideErrorPageCallback = (errorPageEvent: OnErrorReceiveEvent) => string
+
+onOverrideErrorPage的回调函数，网页加载失败时触发。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名             | 类型      | 必填   | 说明                                       |
+| -------------- | ---- | ---- | ---------------------------------------- |
+| errorPageEvent | [OnErrorReceiveEvent](./arkts-basic-components-web-i.md#onerrorreceiveevent12) | 是 | 网页加载遇到错误时返回的相关信息。      |
+
+**返回值：**
+
+| 类型      | 说明                       |
+| ------- | ------------------------ |
+| string | 返回以Base64编码的HTML文本内容。 |
+
 ## MouseInfoCallback<sup>20+<sup>
 
 type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
@@ -418,9 +438,9 @@ type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChan
 | -------------------- | ----------------------------------------------- | ---- | -------------------------------- |
 | event | [MicrophoneCaptureStateChangeInfo](./arkts-basic-components-web-i.md#microphonecapturestatechangeinfo23) | 是    | 网页麦克风状态发生改变时，返回原来的状态和改变后的状态。 |
 
-## OnFirstScreenPaintCallback<sup>23+<sup>
+## OnFirstScreenPaintCallback<sup>23+</sup>
 
-type OnFirstScreenPaintCallback = (event: FirstScreenPaint) => void
+type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 
 检测到首屏渲染结束时会触发此回调。
 
@@ -434,7 +454,7 @@ type OnFirstScreenPaintCallback = (event: FirstScreenPaint) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| event | [FirstScreenPaint](./arkts-basic-components-web-i.md#firstscreenpaint23) | 是 | 检测到首屏渲染时的详细信息。 |
+| firstScreenPaint | [FirstScreenPaint](./arkts-basic-components-web-i.md#firstscreenpaint23) | 是 | 检测到首屏渲染时的详细信息。 |
 
 **示例：**
 

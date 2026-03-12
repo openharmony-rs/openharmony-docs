@@ -283,6 +283,8 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 
 **ArkTS-Dyn起始版本**：20
 
+**参数：**
+
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'connectionAccepted'，收到对端连接，触发该事件。   |
@@ -339,6 +341,8 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 **相关接口**：该接口对应的ArkTS-Sta接口是[offConnectionAccepted](#offconnectionaccepted-1)。
 
 **ArkTS-Dyn起始版本**：20
+
+**参数：**
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
@@ -398,6 +402,8 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 
 **ArkTS-Dyn起始版本**：20
 
+**参数：**
+
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'serverStopped'，底层服务异常时，触发该事件。   |
@@ -455,6 +461,8 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 **相关接口**：该接口对应的ArkTS-Sta接口是[offServerStopped](#offserverstopped-1)。
 
 **ArkTS-Dyn起始版本**：20
+
+**参数：**
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
