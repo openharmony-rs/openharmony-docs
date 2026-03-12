@@ -218,8 +218,8 @@ JS示例：
 }
 ```
 
-```xml
-<!-- xxx.js -->
+```js
+// xxx.js
 import app from '@system.app';
 
 export default {
