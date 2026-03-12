@@ -93,7 +93,9 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 
 try {
-  notificationExtensionSubscription.openSubscriptionSettings(this.context as common.UIAbilityContext).then(() => {
+  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
     console.info(`openSubscriberSettings success`);
   }).catch((e:Error) => {
     let error = e as BusinessError
@@ -262,7 +264,7 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 ArkTS-Dyn示例：
 ```ts
 notificationExtensionSubscription.getSubscribeInfo().then((data) => {
-  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[])}`);
+  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
 });
@@ -271,7 +273,7 @@ notificationExtensionSubscription.getSubscribeInfo().then((data) => {
 ArkTS-Sta示例：
 ```ts
 notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
-  console.info(`getSubscribeInfo successfully. Data: ${(data)}`);
+  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((error: Error) => {
   let err = error as BusinessError
   console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
@@ -381,7 +383,7 @@ notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: not
 ArkTS-Sta示例：
 ```ts
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
-  console.info(`getUserGrantedEnabledBundles successfully. Data: ${(data)}`);
+  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((error: Error) => {
   let err = error as BusinessError
   console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
