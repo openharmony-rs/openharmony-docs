@@ -970,6 +970,56 @@ function unregisterTorchStatusChange(cameraManager: camera.CameraManager): void 
 }
 ```
 
+## isTorchLevelControlSupported<sup>11+</sup>
+
+isTorchLevelControlSupported(): boolean
+
+检测设备是否支持手电筒亮度调节功能。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型        | 说明                          |
+| ---------- | ----------------------------- |
+| boolean    | 返回true表示设备支持手电筒亮度调节，返回false表示设备不支持手电筒亮度调节。若接口调用失败，返回undefined。 |
+
+**示例：**
+
+```ts
+function isTorchLevelControlSupported(cameraManager: camera.CameraManager): boolean {
+  let isSupported = cameraManager.isTorchLevelControlSupported();
+  return isSupported;
+}
+```
+
+## SetTorchModeOnWithLevel<sup>11+</sup>
+
+SetTorchModeOnWithLevel(torchLevel: double): void
+
+手电筒设置指定亮度级别。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型             | 必填 | 说明       |
+| -------- | --------------- | ---- | --------- |
+| torchLevel | double| 是 | 手电筒亮度级别。通常范围是0.0~1.0（0为最暗，1为最亮）。 |
+
+**示例：**
+
+```ts
+function SetTorchModeOnWithLevel(cameraManager: camera.CameraManager, torchLevel: double): void {
+  cameraManager.SetTorchModeOnWithLevel(torchLevel);
+  return ;
+}
+```
+
 ## getCameraDevice<sup>18+</sup>
 
 getCameraDevice(position: CameraPosition, type: CameraType): CameraDevice
