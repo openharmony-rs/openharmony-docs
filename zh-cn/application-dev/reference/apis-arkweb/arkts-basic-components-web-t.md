@@ -10,7 +10,7 @@
 
 ## WebviewController<sup>9+</sup>
 
-type WebviewController = webview.WebviewController
+type WebviewController = import('../api/@ohos.web.webview').default.WebviewController
 
 提供Web控制器的方法。
 
