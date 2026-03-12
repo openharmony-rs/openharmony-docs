@@ -234,20 +234,16 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称            | 类型                                    | 只读 | 可选 | 说明                                                         |
 | --------------- | ---------------------------------------- |---- | ---- | ------------------------------------------------------------ |
-| audioBitrate | ArkTS-Dyn: number<br>ArkTS-Sta: int     | 否 | 是 | 输出音频的码率，单位为比特率（bps），支持范围[1-500000]。默认设置为48Kbps。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | 否 | 是  | 输出音频的编码格式，当前仅支持AAC。默认设置为AAC。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否 | 否   | 输出视频文件的封装格式，当前视频文件仅支持MP4。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| videoBitrate         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  是  | 输出视频的码率，单位为比特率（bps）。默认码率按输出视频的分辨率设置，[240p，480P]默认码率值为1Mbps，(480P,720P]默认码率值为2Mbps，(720P,1080P]默认码率值为4Mbps，1080P及以上默认值为8Mbps。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | 否 | 是   | 输出视频的编码格式，当前仅支持AVC和HEVC。若源视频编码格式为HEVC，则默认设置为HEVC，否则默认设置为AVC。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| videoFrameWidth        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  是   | 输出视频帧的宽，单位为像素（px），支持范围[240-3840]。默认设置为源视频帧的宽。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| videoFrameHeight        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  是   | 输出视频帧的高，单位为像素（px），支持范围[240-2160]。默认设置为源视频帧的高。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| enableBFrame<sup>20+</sup> | boolean | 否 |  是   | 转码使能B帧编码。true表示开启B帧编码，默认为不开启B帧编码。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。如果当前不符合B帧视频编码的约束和限制，将忽略B帧，按不使能B帧进行编码。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| audioBitrate | ArkTS-Dyn: number<br>ArkTS-Sta: int     | 否 | 是 | 输出音频的码率，单位为比特率（bps），支持范围[1-500000]。默认设置为48Kbps。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | 否 | 是  | 输出音频的编码格式，当前仅支持AAC。默认设置为AAC。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否 | 否   | 输出视频文件的封装格式，当前视频文件仅支持MP4。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| videoBitrate         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  是  | 输出视频的码率，单位为比特率（bps）。默认码率按输出视频的分辨率设置，[240p，480P]默认码率值为1Mbps，(480P,720P]默认码率值为2Mbps，(720P,1080P]默认码率值为4Mbps，1080P及以上默认值为8Mbps。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | 否 | 是   | 输出视频的编码格式，当前仅支持AVC和HEVC。若源视频编码格式为HEVC，则默认设置为HEVC，否则默认设置为AVC。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| videoFrameWidth        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  是   | 输出视频帧的宽，单位为像素（px），支持范围[240-3840]。默认设置为源视频帧的宽。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| videoFrameHeight        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  是   | 输出视频帧的高，单位为像素（px），支持范围[240-2160]。默认设置为源视频帧的高。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| enableBFrame<sup>20+</sup> | boolean | 否 |  是   | 转码使能B帧编码。true表示开启B帧编码，默认为不开启B帧编码。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。如果当前不符合B帧视频编码的约束和限制，将忽略B帧，按不使能B帧进行编码。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
 
 ## AVMetadata<sup>11+</sup>
 
