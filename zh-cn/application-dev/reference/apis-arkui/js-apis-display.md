@@ -91,14 +91,14 @@ import { display } from '@kit.ArkUI';
 | -------- | -------- | -------- |
 | FOLD_STATUS_UNKNOWN | 0 | 表示设备当前折叠状态无法确定或设备本身不可折叠。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
 | FOLD_STATUS_EXPANDED | 1 | 表示设备当前折叠状态为完全展开。如果是双折轴设备，则表示折轴一折叠状态为完全展开，折轴二折叠状态为折叠。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
-| FOLD_STATUS_FOLDED | 2 | 表示设备当前折叠状态为折叠。如果是双折轴设备，则表示折轴一和折轴二的折叠状态均为折叠。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22|
-| FOLD_STATUS_HALF_FOLDED | 3 | 表示设备当前折叠状态为半折叠。半折叠指完全展开和折叠之间的状态。如果是双折轴设备，则表示折轴一折叠状态为半折叠，折轴二折叠状态为折叠。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22|
-| FOLD_STATUS_EXPANDED_WITH_SECOND_EXPANDED<sup>15+</sup> | 11 | 表示双折轴设备折轴一和折轴二的折叠状态均为完全展开。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 22|
-| FOLD_STATUS_EXPANDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 21 | 表示双折轴设备折轴一折叠状态为完全展开，折轴二折叠状态为半折叠。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 22|
-| FOLD_STATUS_FOLDED_WITH_SECOND_EXPANDED<sup>15+</sup> | 12 | 表示双折轴设备折轴一折叠状态为折叠，折轴二折叠状态为完全展开。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 22|
-| FOLD_STATUS_FOLDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 22 | 表示双折轴设备折轴一折叠状态为折叠，折轴二折叠状态为半折叠。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 22|
-| FOLD_STATUS_HALF_FOLDED_WITH_SECOND_EXPANDED<sup>15+</sup> | 13 | 表示双折轴设备折轴一折叠状态为半折叠，折轴二折叠状态为完全展开。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 22|
-| FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 23 | 表示双折轴设备折轴一和折轴二折叠状态均为半折叠。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 22|
+| FOLD_STATUS_FOLDED | 2 | 表示设备当前折叠状态为折叠。如果是双折轴设备，则表示折轴一和折轴二的折叠状态均为折叠。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
+| FOLD_STATUS_HALF_FOLDED | 3 | 表示设备当前折叠状态为半折叠。半折叠指完全展开和折叠之间的状态。如果是双折轴设备，则表示折轴一折叠状态为半折叠，折轴二折叠状态为折叠。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
+| FOLD_STATUS_EXPANDED_WITH_SECOND_EXPANDED<sup>15+</sup> | 11 | 表示双折轴设备折轴一和折轴二的折叠状态均为完全展开。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23|
+| FOLD_STATUS_EXPANDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 21 | 表示双折轴设备折轴一折叠状态为完全展开，折轴二折叠状态为半折叠。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23|
+| FOLD_STATUS_FOLDED_WITH_SECOND_EXPANDED<sup>15+</sup> | 12 | 表示双折轴设备折轴一折叠状态为折叠，折轴二折叠状态为完全展开。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23|
+| FOLD_STATUS_FOLDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 22 | 表示双折轴设备折轴一折叠状态为折叠，折轴二折叠状态为半折叠。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23|
+| FOLD_STATUS_HALF_FOLDED_WITH_SECOND_EXPANDED<sup>15+</sup> | 13 | 表示双折轴设备折轴一折叠状态为半折叠，折轴二折叠状态为完全展开。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23|
+| FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 23 | 表示双折轴设备折轴一和折轴二折叠状态均为半折叠。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23|
 
 >**说明：**<br>
 > 只有一个折轴的产品包含FOLD_STATUS_EXPANDED、FOLD_STATUS_FOLDED、FOLD_STATUS_HALF_FOLDED三种折叠状态。<br>
@@ -115,7 +115,7 @@ import { display } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -178,7 +178,7 @@ import { display } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型 | 只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
@@ -195,7 +195,7 @@ import { display } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型 |  只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
@@ -214,7 +214,7 @@ import { display } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型      | 只读 | 可选 | 说明               |
 | ------ | ------------- | ---- | ---- | ------------------ |
@@ -233,7 +233,7 @@ import { display } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                        | 类型      | 只读 | 可选 | 说明               |
 | --------------------------- | ------------- | ---- | ---- | ------------------ |
@@ -249,7 +249,7 @@ import { display } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                        | 类型      | 只读 | 可选 | 说明               |
 | --------------------------- | ------------- | ---- | ---- | ------------------ |
@@ -266,7 +266,7 @@ import { display } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                        | 类型      | 只读 | 可选 | 说明               |
 | --------------------------- | -------- | ---- | ---- | ------------------ |
@@ -283,7 +283,7 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -300,7 +300,7 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -330,7 +330,7 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型 | 只读 | 可选 | 说明                       |
 | --------- | -------- | ---- | ---- |--------------------------|
@@ -345,7 +345,7 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型 | 只读 | 可选 | 说明                       |
 | --------- | -------- | ---- | ---- |--------------------------|
@@ -366,7 +366,7 @@ ArkTS-Sta: getDisplayByIdSync(displayId: long): Display
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -436,7 +436,7 @@ getBrightnessInfo(displayId: number): [BrightnessInfo](#brightnessinfo22)
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -501,7 +501,7 @@ getAllDisplayPhysicalResolution(): Promise&lt;Array&lt;DisplayPhysicalResolution
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -569,7 +569,7 @@ getDefaultDisplaySync(): Display
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -627,7 +627,7 @@ getPrimaryDisplaySync(): Display
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -666,7 +666,7 @@ getAllDisplays(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -729,7 +729,7 @@ getAllDisplays(): Promise&lt;Array&lt;Display&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -834,7 +834,7 @@ onAdd(callback: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -866,7 +866,7 @@ onRemove(callback: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -898,7 +898,7 @@ onChange(callback: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1017,7 +1017,7 @@ offAdd(callback?: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1051,7 +1051,7 @@ offRemove(callback?: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1085,7 +1085,7 @@ offChange(callback?: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1118,7 +1118,7 @@ isFoldable(): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1154,7 +1154,7 @@ getFoldStatus(): FoldStatus
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1190,7 +1190,7 @@ getFoldDisplayMode(): FoldDisplayMode
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在2in1设备、非折叠设备中返回0，在其他设备中可正常调用。
 
@@ -1228,7 +1228,7 @@ getCurrentFoldCreaseRegion(): FoldCreaseRegion
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在折叠设备中可正常调用，在其他设备中返回undefined。
 
@@ -1326,7 +1326,7 @@ onFoldStatusChange(callback: Callback&lt;FoldStatus&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1415,7 +1415,7 @@ offFoldStatusChange(callback?: Callback&lt;FoldStatus&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1505,7 +1505,7 @@ onBrightnessInfoChange(callback: BrightnessCallback&lt;long, BrightnessInfo>): v
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1598,7 +1598,7 @@ offBrightnessInfoChange(callback?: BrightnessCallback&lt;long, BrightnessInfo>):
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1685,7 +1685,7 @@ onFoldAngleChange(callback: Callback&lt;Array&lt;double&gt;&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1770,7 +1770,7 @@ offFoldAngleChange(callback?: Callback&lt;Array&lt;double&gt;&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1855,7 +1855,7 @@ onCaptureStatusChange(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1940,7 +1940,7 @@ offCaptureStatusChange(callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1981,7 +1981,7 @@ isCaptured(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2075,7 +2075,7 @@ onFoldDisplayModeChange(callback: Callback&lt;FoldDisplayMode&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在2in1设备、非折叠设备中不生效也不报错，在其他设备中可正常调用。
 
@@ -2168,7 +2168,7 @@ offFoldDisplayModeChange(callback?: Callback&lt;FoldDisplayMode&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在2in1设备、非折叠设备中不生效也不报错，在其他设备中可正常调用。
 
@@ -2214,7 +2214,7 @@ ArkTS-Sta: createVirtualScreen(config:VirtualScreenConfig): Promise&lt;long&gt;
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2303,7 +2303,7 @@ ArkTS-Sta: destroyVirtualScreen(screenId:long): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2370,7 +2370,7 @@ ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string): Promise&lt
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2466,7 +2466,7 @@ ArkTS-Sta: makeUnique(screenId:long): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2530,7 +2530,7 @@ convertRelativeToGlobalCoordinate(relativePosition: RelativePosition): Position
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2612,7 +2612,7 @@ ArkTS-Sta: convertGlobalToRelativeCoordinate(position: Position, displayId?: lon
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2906,7 +2906,7 @@ getCutoutInfo(callback: AsyncCallback&lt;CutoutInfo&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2966,7 +2966,7 @@ getCutoutInfo(): Promise&lt;CutoutInfo&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3025,7 +3025,7 @@ getAvailableArea(): Promise&lt;Rect&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过[Display属性](#属性)中的width、height属性获取当前设备屏幕的可用区域。
 
@@ -3150,7 +3150,7 @@ onAvailableAreaChange(callback: Callback&lt;Rect&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
@@ -3253,7 +3253,7 @@ offAvailableAreaChange(callback?: Callback&lt;Rect&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
@@ -3300,7 +3300,7 @@ getLiveCreaseRegion(): FoldCreaseRegion
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
