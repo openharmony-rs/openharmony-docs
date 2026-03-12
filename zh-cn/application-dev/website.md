@@ -1385,7 +1385,7 @@
           - [跨设备连接UIAbility开发指南（仅对系统应用开放）](distributedservice/abilityconnectmanager-guidelines-sys.md)
           - [DistributedExtensionAbility开发指南（仅对系统应用开放）](distributedservice/distributedextension-guidelines-sys.md)
           <!--DelEnd-->
-          - [增强连接开发指南](distributedservice/linkEnhance_development-guide.md)
+          - [增强连接开发指导](distributedservice/linkEnhance_development-guide.md)
       - Network Kit（网络服务）<!--network-kit-->
         - [Network Kit简介](network/net-mgmt-overview.md)
         - [术语](network/network-terminology.md)
