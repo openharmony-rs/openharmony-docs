@@ -21,7 +21,7 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -88,7 +88,7 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -159,7 +159,7 @@ getBurstAssets(burstKey: string, options: FetchOptions): Promise&lt;FetchResult&
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -231,7 +231,7 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -294,7 +294,7 @@ createAsset(photoType: PhotoType, extension: string, callback: AsyncCallback&lt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -353,7 +353,7 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -418,7 +418,7 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options: FetchOptions, callbac
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -488,7 +488,7 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, callback: AsyncCallback&lt;Fet
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -549,7 +549,7 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options?: FetchOptions): Promi
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -621,7 +621,7 @@ registerChange(uri: string, forChildUris: boolean, callback: Callback&lt;ChangeD
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -689,7 +689,7 @@ unRegisterChange(uri: string, callback?: Callback&lt;ChangeData&gt;): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -761,7 +761,7 @@ applyChanges(mediaChangeRequest: MediaChangeRequest): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -800,7 +800,7 @@ release(callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -846,7 +846,7 @@ release(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1345,7 +1345,7 @@ getSupportedPhotoFormats(photoType: PhotoType): Promise&lt;Array&lt;string&gt;&g
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

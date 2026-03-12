@@ -14,7 +14,7 @@ MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHe
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ## 导入模块
 
@@ -32,7 +32,7 @@ constructor(album: Album)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -71,7 +71,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## getAlbum<sup>11+</sup>
 
-getAlbum(): Album
+ArkTS-Dyn: getAlbum(): Album
+
+ArkTS-Sta: getAlbum(): Album \| null
 
 获取当前相册变更请求中的相册。
 
@@ -79,11 +81,17 @@ getAlbum(): Album
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
+
+
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| [Album](arkts-apis-photoAccessHelper-Album.md) | 返回当前相册变更请求中的相册。 |
+| ArkTS-Dyn: [Album](arkts-apis-photoAccessHelper-Album.md) <br> ArkTS-Sta: [Album](arkts-apis-photoAccessHelper-Album.md) \| null | ArkTS-Dyn: 返回当前相册变更请求中的相册。<br> ArkTS-Sta: 返回当前相册变更请求中的相册。在未找到时返回null|
 
 **错误码：**
 
@@ -130,7 +138,7 @@ setAlbumName(name: string): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -178,7 +186,7 @@ addAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -236,7 +244,7 @@ removeAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

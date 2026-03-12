@@ -21,9 +21,9 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
-| 名称           | 类型    | 可读   | 可写  | 说明   |
+| 名称           | 类型    |只读   | 可选  | 说明   |
 | ------------ | ------ | ---- | ---- | ------- |
 | imageCount<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 否   | 相册中图片数量。|
 | videoCount<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 否   | 相册中视频数量。|
@@ -40,7 +40,7 @@ commitModify(callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -99,7 +99,7 @@ commitModify(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

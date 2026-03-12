@@ -14,7 +14,7 @@ MediaAssetChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHe
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ## 导入模块
 
@@ -34,7 +34,7 @@ constructor(asset: PhotoAsset)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -82,6 +82,10 @@ static createImageAssetRequest(context: Context, fileUri: string): MediaAssetCha
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -135,6 +139,10 @@ static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
@@ -186,6 +194,10 @@ static createAssetRequest(context: Context, photoType: PhotoType, extension: str
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -248,7 +260,7 @@ static deleteAssets(context: Context, assets: Array&lt;PhotoAsset&gt;): Promise&
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -307,6 +319,8 @@ static deleteAssets(context: Context, uriList: Array&lt;string&gt;): Promise&lt;
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -369,6 +383,10 @@ getAsset(): PhotoAsset
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                    | 说明              |
@@ -416,7 +434,7 @@ setTitle(title: string): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -482,7 +500,7 @@ ArkTS-Sta: getWriteCacheHandler(): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -539,7 +557,7 @@ addResource(type: ResourceType, fileUri: string): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -595,7 +613,7 @@ addResource(type: ResourceType, data: ArrayBuffer): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -645,7 +663,7 @@ saveCameraPhoto(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -684,7 +702,7 @@ saveCameraPhoto(imageFileType: ImageFileType): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -733,7 +751,7 @@ discardCameraPhoto(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -774,7 +792,7 @@ ArkTS-Sta: setOrientation(orientation: int): void
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

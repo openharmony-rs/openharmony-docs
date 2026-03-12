@@ -12,7 +12,7 @@
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ## 导入模块
 
@@ -97,7 +97,7 @@ requestContent(imageFileUri: string, videoFileUri: string): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -187,7 +187,7 @@ requestContent(resourceType: ResourceType, fileUri: string): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -276,7 +276,7 @@ requestContent(resourceType: ResourceType): Promise\<ArrayBuffer>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
