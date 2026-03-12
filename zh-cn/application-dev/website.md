@@ -5692,6 +5692,7 @@
           - [OH_AVSeiMessageArray](reference/apis-media-kit/capi-avplayer-oh-avseimessagearray.md)
           - [OH_AVMetadataExtractor_OutputParam](reference/apis-media-kit/capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md)
           - [OH_AVMetadataExtractor_FrameInfo](reference/apis-media-kit/capi-avmetadataextractor-oh-avmetadataextractor-frameinfo.md)
+          - [OH_MultiDisplayCapability](reference/apis-media-kit/capi-avscreencapture-oh-multidisplaycapability.md)
       - 错误码<!--media-arkts-errcode-->
         - [Media错误码](reference/apis-media-kit/errorcode-media.md)
     - Media Library Kit（媒体文件管理服务）<!--media-library-api-->
