@@ -347,10 +347,10 @@ onError(callback: ErrorCallback): void;
 | 801      | Capability not supported. |
 | 5400101  | No memory. |
 | 5400102  | Operation not allowed.|
-| 5400103  | I/O error.             |
 | 5400104  | Time out.              |
 | 5400105  | Service died.         |
 | 5400106  | Unsupported format.     |
+| 5410002  | Seek continuous unsupported.     |
 | 5411001  | IO can not find host.    |
 | 5411002  | IO connection timeout.  |
 | 5411003  | IO network abnormal.     |
@@ -362,6 +362,7 @@ onError(callback: ErrorCallback): void;
 | 5411009  | IO SSL connect fail.     |
 | 5411010  | IO SSL server cert untrusted.    |
 | 5411011  | IO unsupported request.      |
+| 5411012  | Http cleartext traffic is not permitted.     |
 
 **示例：**
 
@@ -3009,7 +3010,6 @@ onBufferingUpdate(callback: OnBufferingUpdateHandler): void;
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 播放缓存事件回调类型，支持的事件：'bufferingUpdate'。        |
 | callback | [OnBufferingUpdateHandler](arkts-apis-media-t.md#onbufferingupdatehandler12) | 是   | 播放缓存事件回调方法。 |
 
 **示例：**
@@ -4133,7 +4133,7 @@ onSubtitleUpdate(callback: Callback\<SubtitleInfo>): void;
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | [SubtitleInfo](arkts-apis-media-i.md#SubtitleInfo12) | 是   | 外挂字幕事件回调方法。 |
+| callback | Callback\<[SubtitleInfo](arkts-apis-media-i.md#SubtitleInfo12)> | 是   | 外挂字幕事件回调方法。 |
 
 **示例：**
 
@@ -4168,7 +4168,7 @@ offSubtitleUpdate(callback?: Callback\<SubtitleInfo>): void;
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback |  [SubtitleInfo](arkts-apis-media-i.md#SubtitleInfo12)  | 否   | 取消外挂字幕事件的回调方法。 |
+| callback | Callback\<[SubtitleInfo](arkts-apis-media-i.md#SubtitleInfo12)> | 否   | 取消外挂字幕事件的回调方法。 |
 
 **示例：**
 
@@ -4396,7 +4396,7 @@ avPlayer.onSeiMessageReceived([5], (messages: Array<media.SeiMessage>, playbackP
 
 ## offSeiMessageReceived()<sup>23+</sup>
 
-offSeiMessageReceived(payloadTypes?: Array<int>, callback?: OnSeiMessageHandle): void;
+offSeiMessageReceived(payloadTypes?: Array\<int>, callback?: OnSeiMessageHandle): void;
 
 取消订阅获取SEI信息事件。使用callback异步回调。
 
@@ -4572,11 +4572,11 @@ async function  test(){
 }
 ```
 
-## getPlaybackRate<sup>23+</sup>
+## getPlaybackRate()<sup>23+</sup>
 
 ArkTS-Dyn: getPlaybackRate(): Promise\<number>
 
-ArkTS-Sta: ArkTsgetPlaybackRate(): Promise\<double>
+ArkTS-Sta: getPlaybackRate(): Promise\<double>
 
 获取当前播放器的播放速率。使用Promise异步回调。
 
