@@ -369,28 +369,26 @@ audioHapticManagerInstance.setStreamUsage(id, usage);
 
 ### createPlayer<sup>11+</sup>
 
-ArkTS-Dyn: createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise&lt;AudioHapticPlayer&gt;
-
-ArkTS-Sta: createPlayer(id: int, options?: AudioHapticPlayerOptions): Promise&lt;AudioHapticPlayer&gt;
+createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise&lt;AudioHapticPlayer&gt;
 
 创建音振播放器。使用Promise异步回调。
 
-**需要权限：** ohos.permission.VIBRATE
-
 如果应用创建的AudioHapticPlayer需要触发振动，则需要校验应用是否拥有该权限。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**需要权限：** ohos.permission.VIBRATE
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名   | 类型                                      | 必填 | 说明                     |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| id       | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 已注册资源的source id。    |
-| options  | [AudioHapticPlayerOptions](#audiohapticplayeroptions) | 否   | 音振播放器选项。 |
+| id       | number                                   | 是   | 已注册资源的source id。    |
+| options  | [AudioHapticPlayerOptions](#audiohapticplayeroptions) | 否   | 音振播放器选项， {muteAudio: false, muteHaptics: false}。 |
 
 **返回值：**
 
@@ -438,6 +436,48 @@ audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.Au
   console.error(`Failed to create the audio haptic player. ${err}`);
 });
 ```
+
+### createPlayer<sup>23+</sup>
+
+createPlayer(id: int, options?: AudioHapticPlayerOptions): Promise&lt;AudioHapticPlayer | null&gt;
+
+创建音振播放器。使用Promise异步回调。
+
+如果应用创建的AudioHapticPlayer需要触发振动，则需要校验应用是否拥有该权限。
+
+**需要权限：** ohos.permission.VIBRATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                      | 必填 | 说明                     |
+| -------- | ---------------------------------------- | ---- | ------------------------ |
+| id       | int                                   | 是   | 已注册资源的source id。    |
+| options  | [AudioHapticPlayerOptions](#audiohapticplayeroptions) | 否   | 音振播放器选项， {muteAudio: false, muteHaptics: false}。 |
+
+**返回值：**
+
+| 类型                | 说明                            |
+| ------------------- | ------------------------------- |
+| Promise&lt;[AudioHapticPlayer | null](#audiohapticplayer)&gt; |Promise对象，返回创建的音振播放器。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+
+| 错误码ID | 错误信息                              |
+| ------- |-----------------------------------|
+| 201 | Permission denied. |
+| 5400102 | Operation not allowed. |
+| 5400103 | I/O error. |
+| 5400106 | Unsupport format. |
+
+**示例：**
 
 ArkTS-Sta示例：
 
@@ -814,7 +854,7 @@ on(type: 'audioInterrupt', callback: Callback&lt;audio.InterruptEvent&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioInterrupt](#onAudioInterrupt22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioInterrupt](#onAudioInterrupt23)。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -965,7 +1005,7 @@ off(type: 'audioInterrupt', callback?: Callback&lt;audio.InterruptEvent&gt;): vo
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioInterrupt](#offAudioInterrupt22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioInterrupt](#offAudioInterrupt23)。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -1120,4 +1160,190 @@ let audioInterruptCallback = (interruptEvent: audio.InterruptEvent) => {
 audioHapticPlayerInstance.onAudioInterrupt(audioInterruptCallback);
 
 audioHapticPlayerInstance.offAudioInterrupt(audioInterruptCallback);
+```
+
+## AudioHapticFileDescriptor<sup>20+</sup>
+
+ArkTS-Dyn: AudioHapticFileDescriptor(fd: number, offset: number, length: number): Promise&lt;void&gt;
+
+ArkTS-Sta: AudioHapticFileDescriptor(fd: int, offset: long, length: long): Promise&lt;void&gt;
+
+描述音振文件描述符。
+
+>**注意：**
+>
+> 开发者需要确保fd（文件描述符）是可用的，且offset和length的值都是正确的。
+
+**系统能力：**: SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称     | 类型           |只读  | 可选  | 说明                             |
+| --------- | -------------- | ---- | ---- | --------------------------------- |
+| fd        | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 否   | 音振资源文件的文件描述符，通常大于等于0。|
+| offset    | ArkTS-Dyn: number<br>ArkTS-Sta: long         | 否   | 是   | 文件中数据读取的偏移量。默认情况下，偏移量为0。|
+| length    | ArkTS-Dyn: number<br>ArkTS-Sta: long         | 否   | 是   | 读取数据的字节长度。默认情况下，长度为文件中从偏移量位置开始的剩余字节数。|
+
+### registerSourceFromFd<sup>20+</sup>
+
+registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFileDescriptor): Promise&lt;number&gt;
+
+通过文件描述符注册音频和振动资源。使用Promise异步回调。
+
+> **注意：**
+>
+> 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
+
+
+**系统能力：**: SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                     | 必填| 说明                    |
+| -------- | ---------------------------------------- | ---- | ------------------------ |
+| audioFd | [AudioHapticFileDescriptor](#audiohapticfiledescriptor20) | 是 | 已打开的有效文件描述符对象，用于描述音频文件。配套的offset和length需符合实际文件长度。 |
+| hapticFd | [AudioHapticFileDescriptor](#audiohapticfiledescriptor20) | 是 | 已打开的有效文件描述符对象，用于描述振动文件。配套的offset和length必须符合实际文件长度。 |
+
+**返回值：**
+
+| 类型               | 说明                           |
+| ------------------- | ------------------------------- |
+| Promise&lt;number&gt; | Promise对象，返回注册的资源ID。<br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+let audioFile = context.resourceManager.getRawFdSync('audioTest.ogg'); // 需要改成rawfile目录下的对应文件。
+let audioFd: audioHaptic.AudioHapticFileDescriptor = {
+  fd: audioFile.fd,
+  offset: audioFile.offset,
+  length: audioFile.length,
+};
+
+let hapticFile = context.resourceManager.getRawFdSync('hapticTest.json'); // 需要改成rawfile目录下的对应文件。
+let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
+  fd: hapticFile.fd,
+  offset: hapticFile.offset,
+  length: hapticFile.length,
+};
+let id = 0;
+// 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
+audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
+  console.info('Succeeded in doing registerSourceFromFd.');
+  id = value;
+}).catch((err: BusinessError) => {
+  console.error(`Failed to registerSourceFromFd. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### setVolume<sup>20+</sup>
+
+ArkTS-Dyn: setVolume(volume: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setVolume(volume: int): Promise&lt;void&gt;
+
+设置音振播放器的音量。使用Promise异步回调。
+
+>**注意：**
+>
+> 该方法需在音振播放器释放前调用。
+
+**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**
+
+| 参数名  | 类型                                     | 必填| 说明                    |
+| -------- | ---------------------------------------- | ---- | ------------------------ |
+| volume     | ArkTS-Dyn: number<br>ArkTS-Sta: int    | 是  | 取值范围为[0.00, 1.00]，其中1.00表示最大音量（100%）。|
+
+**返回值：**
+
+| 类型                | 说明                            |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](../apis-media-kit/errorcode-media.md)。
+
+| 错误码ID   | 错误信息                              |
+|---------|-----------------------------------|
+| 5400105  | Service died. |
+| 5400102  | Operate not permit in current state. |
+| 5400108  | Parameter out of range. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioHapticPlayerInstance.setVolume(0.5).then(() => {
+  console.info('Promise returned to indicate that set volume successfully.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set volume. ${err}`);
+});
+```
+
+### setLoop<sup>20+</sup>
+
+setLoop(loop: boolean): Promise&lt;void&gt;
+
+设置音振播放器循环播放。使用Promise异步回调。
+
+>**注意：**
+>
+> 该方法需在音振播放器销毁前调用。
+
+**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**
+
+| 参数名  | 类型                                     | 必填| 说明                    |
+| -------- | ---------------------------------------- | ---- | ------------------------ |
+| loop | boolean                           | 是  | 是否循环播放。true表示循环播放，false表示不循环播放。 |
+
+**返回值：**
+
+| 类型                | 说明                            |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](../apis-media-kit/errorcode-media.md)。
+
+| 错误码ID   | 错误信息                              |
+|---------|-----------------------------------|
+| 5400102  | Operate not permit in current state. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioHapticPlayerInstance.setLoop(true).then(() => {
+  console.info('Promise returned to indicate that set player loop successfully.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set player loop. ${err}`);
+});
 ```
