@@ -142,7 +142,11 @@ export default class EntryAbility extends EmbeddableUIAbility {
 
 isEmbeddedUIExtensionSupported(): boolean
 
-判断当前设备是否支持[EmbeddedUIExtensionAbility](js-apis-app-ability-embeddedUIExtensionAbility.md)。<br>起始版本：26.0.0
+判断当前设备是否支持[EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md)。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
