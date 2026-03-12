@@ -9900,7 +9900,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 onRemoteMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption): boolean | Promise\<boolean>
 
-sendMessageRequest请求的响应处理函数，服务端在该函数里同步或异步地处理请求，回复结果。使用Promise异步回调。
+sendMessageRequest请求的响应处理函数，服务端在该函数里同步或异步地处理请求，回复结果。
 
 > **说明：**
 >
