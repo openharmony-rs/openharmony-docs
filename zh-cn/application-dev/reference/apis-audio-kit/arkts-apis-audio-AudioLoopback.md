@@ -52,21 +52,23 @@ audioLoopback.getStatus().then((status: audio.AudioLoopbackStatus) => {
 
 ## setVolume<sup>20+</sup>
 
-setVolume(volume: number): Promise&lt;void&gt;
+ArkTS-Dyn: setVolume(volume: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setVolume(volume: double): Promise&lt;void&gt;
 
 设置音频返听的音量。使用Promise异步回调。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型    | 必填   | 说明                 |
 | ---------- | ------- | ------ | ------------------- |
-| volume     | number  | 是     | 音量值范围为[0.0, 1.0]。 |
+| volume     | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是     | 音量值范围为[0.0, 1.0]。 |
 
 **返回值：**
 

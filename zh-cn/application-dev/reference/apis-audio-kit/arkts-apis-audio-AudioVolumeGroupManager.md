@@ -24,6 +24,7 @@ ArkTS-Sta: getVolume(volumeType: AudioVolumeType, callback: AsyncCallback\<int>\
 获取指定流的音量。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -78,6 +79,7 @@ ArkTS-Sta: getVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 获取指定流的音量。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -125,6 +127,7 @@ ArkTS-Sta: getVolumeSync(volumeType: AudioVolumeType): int
 获取指定流的音量。同步返回结果。
 
 > **说明：**
+>
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -193,6 +196,7 @@ ArkTS-Sta: getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;
 获取指定流的最小音量。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -247,6 +251,7 @@ ArkTS-Sta: getMinVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 获取指定流的最小音量。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -294,6 +299,7 @@ ArkTS-Sta: getMinVolumeSync(volumeType: AudioVolumeType): int
 获取指定流的最小音量。同步返回结果。
 
 > **说明：**
+>
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -362,6 +368,7 @@ ArkTS-Sta: getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;
 获取指定流的最大音量。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -416,6 +423,7 @@ ArkTS-Sta: getMaxVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 获取指定流的最大音量。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -463,6 +471,7 @@ ArkTS-Sta: getMaxVolumeSync(volumeType: AudioVolumeType): int
 获取指定流的最大音量。同步返回结果。
 
 > **说明：**
+>
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -529,6 +538,7 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): voi
 获取指定音量流静音状态。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -581,6 +591,7 @@ isMute(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 获取指定音量流是否被静音。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -616,6 +627,7 @@ isMuteSync(volumeType: AudioVolumeType): boolean
 获取指定音量流是否被静音。同步返回结果。
 
 > **说明：**
+>
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -1236,6 +1248,7 @@ ArkTS-Sta: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, de
 获取音量增益dB值。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getVolumeInUnitOfDbByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumeinunitofdbbystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -1302,6 +1315,7 @@ ArkTS-Sta: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, de
 获取音量增益dB值。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getVolumeInUnitOfDbByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumeinunitofdbbystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -1369,6 +1383,7 @@ ArkTS-Sta: getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: int
 获取音量增益dB值。同步返回结果。
 
 > **说明：**
+>
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getVolumeInUnitOfDbByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumeinunitofdbbystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume

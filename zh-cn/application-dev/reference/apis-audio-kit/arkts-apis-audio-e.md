@@ -501,14 +501,10 @@
 
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                 | 值   | 说明                             |
 | -------------------- | ---- | -------------------------------- |
-| PRIVACY_TYPE_PUBLIC  | 0    | 表示音频流可以被其他应用录制。   |
-| PRIVACY_TYPE_PRIVATE | 1    | 表示音频流不可以被其他应用录制。 |
+| PRIVACY_TYPE_PUBLIC  | 0    | 表示音频流可以被其他应用录制。<br> **ArkTS-Dyn起始版本：** 10<br> **ArkTS-Sta起始版本：** 23   |
+| PRIVACY_TYPE_PRIVATE | 1    | 表示音频流不可以被其他应用录制。<br> **ArkTS-Dyn起始版本：** 10<br> **ArkTS-Sta起始版本：** 23 |
 | PRIVACY_TYPE_SHARED<sup>21+</sup>  | 2    | 表示音频流可以被其他应用录制或屏幕投射，包含隐私类型的流。<br> **ArkTS-Dyn起始版本：** 21<br> **ArkTS-Sta起始版本：** 24 <br/> 例如，在PRIVACY_TYPE_PUBLIC策略下，[STREAM_USAGE_VOICE_COMMUNICATION](#streamusage)类型音频流不会被其他应用录制或屏幕投射。 <br/> 然而，在PRIVACY_TYPE_SHARED策略下，这些音频流将会允许被其他应用录制或屏幕投射。|
 
 ## ChannelBlendMode<sup>11+</sup>
@@ -532,20 +528,14 @@
 
 表示流设备变更原因的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Audio.Device
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称                                        |  值     | 说明              |
 |:------------------------------------------| :----- |:----------------|
-| REASON_UNKNOWN | 0 | 未知原因。           |
-| REASON_NEW_DEVICE_AVAILABLE | 1 | 新设备可用。         |
-| REASON_OLD_DEVICE_UNAVAILABLE | 2 | 旧设备不可用。报告此原因时，应考虑暂停音频播放。 |
-| REASON_OVERRODE | 3 | 强选。 |
+| REASON_UNKNOWN | 0 | 未知原因。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23           |
+| REASON_NEW_DEVICE_AVAILABLE | 1 | 新设备可用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23         |
+| REASON_OLD_DEVICE_UNAVAILABLE | 2 | 旧设备不可用。报告此原因时，应考虑暂停音频播放。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| REASON_OVERRODE | 3 | 强选。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
 | REASON_SESSION_ACTIVATED<sup>20+</sup> | 4 | 音频会话已激活。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
 | REASON_STREAM_PRIORITY_CHANGED<sup>20+</sup> | 5 | 更高优先级的音频流出现导致的系统设备切换。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
 
@@ -683,20 +673,16 @@
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                               |  值     | 说明                                         |
 | ---------------------------------- | ------ | -------------------------------------------- |
-| AUDIO_SESSION_STATE_CHANGE_HINT_RESUME              | 0      | 提示音频会话恢复，应用可主动触发开始渲染等操作。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE               | 1      | 提示音频会话暂停，暂时失去音频焦点。当焦点再次可用时，会收到 AUDIO_SESSION_STATE_CHANGE_HINT_RESUME 事件。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_STOP                | 2      | 提示音频会话因焦点被抢占而停止，彻底失去音频焦点。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP                | 3      | 提示音频会话因长时间无业务而被系统停止，导致失去音频焦点。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_DUCK                | 4      | 提示音频会话躲避开始，降低音量播放。<br/>如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)，此时可以选择执行静音操作。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK | 5      | 提示音频会话躲避结束，恢复音量播放。<br/>如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)，此时可取消静音。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION<sup>23+</sup>    | 6      |  静音播放建议。<br/>当其他应用程序开始播放不可混音的音频时，应用程序可以自行决定是否静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。|
-| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION<sup>23+</sup>  | 7      | 取消静音播放建议。<br/>当其他应用程序不可混音的音频已结束，该应用程序可自行决定是否取消静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_RESUME              | 0      | 提示音频会话恢复，应用可主动触发开始渲染等操作。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE               | 1      | 提示音频会话暂停，暂时失去音频焦点。当焦点再次可用时，会收到 AUDIO_SESSION_STATE_CHANGE_HINT_RESUME 事件。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_STOP                | 2      | 提示音频会话因焦点被抢占而停止，彻底失去音频焦点。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP                | 3      | 提示音频会话因长时间无业务而被系统停止，导致失去音频焦点。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_DUCK                | 4      | 提示音频会话躲避开始，降低音量播放。<br/>如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)，此时可以选择执行静音操作。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK | 5      | 提示音频会话躲避结束，恢复音量播放。<br/>如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)，此时可取消静音。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION<sup>23+</sup>    | 6      |  静音播放建议。<br/>当其他应用程序开始播放不可混音的音频时，应用程序可以自行决定是否静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br> **ArkTS-Sta起始版本：** 23|
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION<sup>23+</sup>  | 7      | 取消静音播放建议。<br/>当其他应用程序不可混音的音频已结束，该应用程序可自行决定是否取消静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br> **ArkTS-Sta起始版本：** 23 |
 
 ## AudioDataCallbackResult<sup>12+</sup>
 
