@@ -488,39 +488,39 @@
 2. 获取无障碍接入Provider实例，将回调函数与Provider实例绑定并完成注册。
 
     <!-- @[abilitycap_nine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCustomCapi/entry/src/main/cpp/AccessibilityMaker.cpp) -->
-
-   ``` C++
-   int32_t AccessibilityMaker::GetAccessibilityProvider(ArkUI_NodeHandle* customNode, const char* id)
-   {
-       AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosById =
-           FindAccessibilityNodeInfosById;
-       AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosByText =
-           FindAccessibilityNodeInfosByText;
-       AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findFocusedAccessibilityNode =
-           FindFocusedAccessibilityNode;
-       AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findNextFocusAccessibilityNode =
-           FindNextFocusAccessibilityNode;
-       AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.executeAccessibilityAction =
-           ExecuteAccessibilityAction;
-       AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.clearFocusedFocusAccessibilityNode =
-           ClearFocusedFocusAccessibilityNode;
-       AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.getAccessibilityNodeCursorPosition =
-           GetAccessibilityNodeCursorPosition;
-
-       // 获取 native 层提供的 accessibility provider，并为其注册回调
-       OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(customNode, &accessibilityProvider_);
-       if (accessibilityProvider_ == nullptr) {
-           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "AccessibilityMaker", "accessibilityProvider_ is null");
-           return 0;
-       }
-
-       int32_t ret = OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(id, accessibilityProvider_,
-           &AccessibilityMaker::accessibilityProviderCallbacksWithInstance_);
-       if (ret != 0) {
-           return 0;
-       }
-       return 0;
-   }
-   ```
+    
+    ``` C++
+    int32_t AccessibilityMaker::GetAccessibilityProvider(ArkUI_NodeHandle* customNode, const char* id)
+    {
+        AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosById =
+            FindAccessibilityNodeInfosById;
+        AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosByText =
+            FindAccessibilityNodeInfosByText;
+        AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findFocusedAccessibilityNode =
+            FindFocusedAccessibilityNode;
+        AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findNextFocusAccessibilityNode =
+            FindNextFocusAccessibilityNode;
+        AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.executeAccessibilityAction =
+            ExecuteAccessibilityAction;
+        AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.clearFocusedFocusAccessibilityNode =
+            ClearFocusedFocusAccessibilityNode;
+        AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.getAccessibilityNodeCursorPosition =
+            GetAccessibilityNodeCursorPosition;
+    
+        // 获取 native 层提供的 accessibility provider，并为其注册回调
+        OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(customNode, &accessibilityProvider_);
+        if (accessibilityProvider_ == nullptr) {
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "AccessibilityMaker", "accessibilityProvider_ is null");
+            return 0;
+        }
+    
+        int32_t ret = OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(id, accessibilityProvider_,
+            &AccessibilityMaker::accessibilityProviderCallbacksWithInstance_);
+        if (ret != 0) {
+            return 0;
+        }
+        return 0;
+    }
+    ```
 
 3. 三方框架需要实现回调函数。请参考前文的[基于Xcomponent的自绘制接入方式](#基于xcomponent的自绘制接入方式)。
