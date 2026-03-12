@@ -478,7 +478,7 @@ export default class EntryAbility extends UIAbility {
       moduleName: want.moduleName
     }
     const apduCallback: AsyncCallback<number[]> = (err, data) => {
-      //处理数据和异常
+      // 处理数据和异常
       console.info("got apdu data");
     };
     hceService.on('hceCmd', apduCallback);
