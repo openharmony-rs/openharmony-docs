@@ -386,7 +386,7 @@ addAutoStartApps(admin: Want, autoStartApps: Array\<Want>): void
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                         |
-| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | 是   | 开机自启动应用数组。数组长度上限为10。例如：如果名单中已有5个应用，则最多再通过本接口设置5个。Want中必须包含bundleName和abilityName。Ability支持UIAbility和ServiceExtensionAbility。当[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中exported属性值为false时，不支持拉起Ability。从API version 24支持，在Want下的parameters属性中可以设置isHiddenStart参数来配置应用开机自启时，是否隐藏UI界面。true代表隐藏，默认是false。该参数设置为true时，应用必须有托盘，否则自启设置失败。 |
+| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | 是   | 开机自启动应用数组。数组长度上限为10。例如：如果名单中已有5个应用，则最多再通过本接口设置5个。Want中必须包含bundleName和abilityName。Ability支持UIAbility和ServiceExtensionAbility。当[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中exported属性值为false时，不支持拉起Ability。从API version 24开始，在Want的parameters属性中可以设置isHiddenStart参数，来配置应用开机自启时是否隐藏UI界面。true表示隐藏，false表示不隐藏。默认值是false。该参数设置为true时，应用必须有托盘，否则自启设置失败。 |
 
 **错误码**：
 
