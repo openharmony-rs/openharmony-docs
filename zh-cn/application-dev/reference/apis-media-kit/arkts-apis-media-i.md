@@ -477,6 +477,23 @@ async function setupPlayer() {
 | fillMode<sup>18+</sup>            | [AVScreenCaptureFillMode](arkts-apis-media-e.md#avscreencapturefillmode18)| 否   | 是   | 录屏时视频流的填充模式。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
 | strategy<sup>20+</sup>            | [AVScreenCaptureStrategy](#avscreencapturestrategy20)| 否   | 是   | 录屏策略。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
+## AVMetricsEvent<sup>23+</sup>
+
+描述指标事件的信息。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| event  | [AVMetricsEventType](arkts-apis-media-e.md#avmetricseventtype23) | 否   | 否   | 指标事件的类型。 |
+| timeStamp | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 事件发生时的系统时间。 |
+| playbackPosition | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 事件发生时的播放进度位置。 |
+| details | Record\<string, Object> | 否   | 否   | 事件的详细信息，不同指标事件类型包含的信息不同。<br/>包含卡顿时间（duration: number）和卡顿的媒体类型（media: [MediaType](arkts-apis-media-e.md#mediatype8)）。 |
+
 ## AudioRecorderConfig<sup>(deprecated)</sup>
 
 > **说明：**

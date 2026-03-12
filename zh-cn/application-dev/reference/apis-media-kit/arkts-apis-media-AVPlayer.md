@@ -173,6 +173,7 @@ on(type: 'error', callback: ErrorCallback): void
 | 5400104  | Time out.              |
 | 5400105  | Service died.         |
 | 5400106  | Unsupported format.     |
+| 5410002  | Seek continuous unsupported.     |
 | 5411001  | IO can not find host.    |
 | 5411002  | IO connection timeout.  |
 | 5411003  | IO network abnormal.     |
@@ -184,6 +185,7 @@ on(type: 'error', callback: ErrorCallback): void
 | 5411009  | IO SSL connect fail.     |
 | 5411010  | IO SSL server cert untrusted.    |
 | 5411011  | IO unsupported request.      |
+| 5411012  | Http cleartext traffic is not permitted.      |
 
 **示例：**
 
@@ -361,6 +363,12 @@ ArkTS-Sta: setPlaybackRange(startTimeMs: int, endTimeMs: int, mode?: SeekMode) :
 | startTimeMs | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 区间开始位置，单位ms，取值[0, duration)。可以设置-1值，系统将会从0位置开始播放。|
 | endTimeMs | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 区间结束位置，单位ms，取值(startTimeMs, duration]。可以设置-1值，系统将会播放到资源末尾。|
 | mode | [SeekMode](arkts-apis-media-e.md#seekmode8) | 否   | 支持SeekMode.SEEK_PREV_SYNC和SeekMode.SEEK_CLOSEST, <br/>默认值: SeekMode.SEEK_PREV_SYNC。|
+
+**返回值：**
+
+| 类型           | 说明                                  |
+| -------------- | ------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1035,7 +1043,7 @@ ArkTS-Sta: getSelectedTracks(): Promise\<Array\<int>>
 
 | 类型                                                   | 说明                                              |
 | ------------------------------------------------------ | ------------------------------------------------- |
-| Promise\<Array\<number>> | Promise对象，返回已选择音视频轨道索引数组。 |
+| ArkTS-Dyn: Promise\<Array\<number>><br>ArkTS-Sta: Promise\<Array\<int>> | Promise对象，返回已选择音视频轨道索引数组。 |
 
 **错误码：**
 
@@ -1508,7 +1516,7 @@ on(type: 'speedDone', callback: Callback\<number>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1537,7 +1545,7 @@ off(type: 'speedDone', callback?: Callback\<number>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1558,7 +1566,9 @@ avPlayer.off('speedDone');
 
 ## setPlaybackRate<sup>20+</sup>
 
-setPlaybackRate(rate: number): void
+ArkTS-Dyn: setPlaybackRate(rate: number): void
+ 	 
+ArkTS-Sta: setPlaybackRate(rate: double): void
 
 设置倍速模式。只能在prepared/playing/paused/completed状态调用，取值范围是[0.125, 4.0]，可以通过[playbackRateDone](#onplaybackratedone20)事件确认是否生效。
 
@@ -1578,7 +1588,7 @@ setPlaybackRate(rate: number): void
 
 | 参数名 | 类型                             | 必填 | 说明               |
 | ------ | -------------------------------- | ---- | ------------------ |
-| rate  | number | 是   | 指定播放倍速速率。 |
+| rate  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 指定播放倍速速率。 |
 
 **错误码：**
 
