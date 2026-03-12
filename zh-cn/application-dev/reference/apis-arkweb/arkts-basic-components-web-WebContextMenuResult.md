@@ -154,20 +154,6 @@ requestPasswordAutoFill(): void
 
 **ArkTS-Sta起始版本：** 23
 
-## saveImage<sup>24+</sup>
-
-saveImage(): void
-
-保存一个上下文菜单相关的图片操作，调用后将触发下载流程。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**ArkTS-Dyn起始版本：** 24
-
-**ArkTS-Sta起始版本：** 24
-
 ## 使用@ohos.transfer进行WebContextMenuResult类型转换
 
 ArkTS-Dyn中使用ArkTS-Sta的WebContextMenuResult对象。
