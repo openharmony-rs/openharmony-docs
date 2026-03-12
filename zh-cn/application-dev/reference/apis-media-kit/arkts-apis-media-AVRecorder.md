@@ -42,7 +42,7 @@ prepare(config: AVRecorderConfig, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
  	 
 **ArkTS-Sta起始版本：** 23
 
@@ -119,7 +119,7 @@ prepare(config: AVRecorderConfig): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
  	 
 **ArkTS-Sta起始版本：** 23
 
