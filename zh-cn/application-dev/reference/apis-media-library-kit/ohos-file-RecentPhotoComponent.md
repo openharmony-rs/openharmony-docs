@@ -152,7 +152,7 @@ type RecentPhotoCheckInfoCallback = (recentPhotoExists: boolean, info: RecentPho
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 12
 
 | 名称                | 值   | 说明                                                                                                                 |
 |-------------------|-----|--------------------------------------------------------------------------------------------------------------------|
