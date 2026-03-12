@@ -37960,6 +37960,16 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Spec.ets",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"hmac_spec_async",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -47185,6 +47195,56 @@
 					{
 						"end_line":158,
 						"name":"ChangeLayoutWithMediaQuery",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rc2-sym-encrypt-decrypt-cbc.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc2_cbc_encryption_decryption/rc2_cbc_encryption_decryption_asynchronous.ets",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"cbc_encrypt_decrypt_rc2_symkey_async",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc2_cbc_encryption_decryption/rc2_cbc_encryption_decryption_synchronous.ets",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"cbc_encrypt_decrypt_rc2_symkey_sync",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rc4-sym-encrypt-decrypt.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc4_encryption_decryption/rc4_encryption_decryption_asynchronous.ets",
+				"functions":[
+					{
+						"end_line":59,
+						"name":"encrypt_decrypt_rc4_asynchronous",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc4_encryption_decryption/rc4_encryption_decryption_synchronous.ets",
+				"functions":[
+					{
+						"end_line":59,
+						"name":"encrypt_decrypt_rc4_synchronous",
 						"start_line":16
 					}
 				]
