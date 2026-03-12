@@ -965,9 +965,9 @@ display.off('remove', callback);
 
 ## display.onChangeWithAttribute<sup>23+</sup>
 
-ArkTS-Dyn: onChangeWithAttribute(displayAttributeOption: Array<string>, callback: Callback<number>): void
+ArkTS-Dyn: onChangeWithAttribute(displayAttributeOption: Array\<string>, callback: Callback\<number>): void
 
-ArkTS-Sta: onChangeWithAttribute(displayAttributeOption: Array<string>, callback: Callback<long>): void
+ArkTS-Sta: onChangeWithAttribute(displayAttributeOption: Array\<string>, callback: Callback\<long>): void
 
 开启显示设备指定属性变化的监听。
 
