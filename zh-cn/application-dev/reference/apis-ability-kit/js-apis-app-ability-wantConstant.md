@@ -72,12 +72,10 @@ import { wantConstant } from '@kit.AbilityKit';
 
 表示[EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md)被拉起时的显示模式。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Ability.AbilityBase
 
 | 名称                                | 值 | 说明           |
 | ----------------------------------- |---|--------------|
-| WINDOW        | 0 | 表示独立窗口拉起模式。  |
-| EMBEDDED_FULL       | 1 | 表示嵌入式全屏拉起模式。 |
-| EMBEDDED_HALF<sup>23+</sup>       | 2 | 表示嵌入式半屏拉起模式。**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WINDOW        | 0 | 表示独立窗口拉起模式。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。  |
+| EMBEDDED_FULL       | 1 | 表示嵌入式全屏拉起模式。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| EMBEDDED_HALF<sup>23+</sup>       | 2 | 表示嵌入式半屏拉起模式。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |

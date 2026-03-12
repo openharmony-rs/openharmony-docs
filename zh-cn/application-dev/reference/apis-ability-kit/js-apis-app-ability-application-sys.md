@@ -19,7 +19,7 @@
 ```ts
 import { application } from '@kit.AbilityKit';
 ```
-## application.createModuleContext<sup>12+</sup>
+## application.createModuleContext
 
 createModuleContext(context: Context, bundleName: string, moduleName: string): Promise\<Context>
 
@@ -34,6 +34,8 @@ createModuleContext(context: Context, bundleName: string, moduleName: string): P
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **参数**：
 
@@ -82,7 +84,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## application.createBundleContext<sup>12+</sup>
+## application.createBundleContext
 
 createBundleContext(context: Context, bundleName: string): Promise\<Context>
 
@@ -95,6 +97,8 @@ createBundleContext(context: Context, bundleName: string): Promise\<Context>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **参数**：
 
