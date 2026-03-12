@@ -302,6 +302,10 @@ ArkTS-Sta: type SourceOpenCallback = (request: MediaSourceLoadingRequest) => lon
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                 |
@@ -346,6 +350,10 @@ ArkTS-Sta: type SourceReadCallback = (uuid: long, requestedOffset: long, request
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                 |
@@ -377,6 +385,10 @@ ArkTS-Sta: type SourceCloseCallback = (uuid: long) => void
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -429,6 +441,22 @@ type PlaybackInfo = Record<string, Object>
 | 类型   | 说明                                                         |
 |------ | ------------------------------------------------------------ |
 | Record\<string, Object> |  表示值类型为键值对，其中key和value的类型与范围请参考该键值对支持的key取值范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。 |
+
+## MediaDescription<sup>23+</sup>
+
+type MediaDescription = Record<string, Object>
+
+通过key-value方式获取播放信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型   | 说明                                                         |
+|------ | ------------------------------------------------------------ |
+| Record\<string, Object> |  表示值类型为键值对，其中key和value的类型与范围请参考该键值对支持的key取值范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)。 |
 
 ## AudioState<sup>(deprecated)</sup>
 

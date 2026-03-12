@@ -735,6 +735,8 @@ createAudioPlayer(): AudioPlayer
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioPlayer
 
+**ArkTS-Dyn起始版本：** 6
+
 **返回值：**
 
 | 类型                        | 说明                                                         |
@@ -756,7 +758,11 @@ createVideoPlayer(callback: AsyncCallback\<VideoPlayer>): void
 > **说明：**
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[createAVPlayer](#mediacreateavplayer9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -789,7 +795,11 @@ createVideoPlayer(): Promise\<VideoPlayer>
 > **说明：**
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[createAVPlayer](#mediacreateavplayer9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
