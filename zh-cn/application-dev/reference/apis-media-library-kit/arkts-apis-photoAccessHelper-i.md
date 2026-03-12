@@ -235,9 +235,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | albumSubtype  | [AlbumSubtype](arkts-apis-photoAccessHelper-e.md#albumsubtype) | 否 | 否  | 相册子类型。 |
 | albumName  | string  |否 |否 | 相册名。  |
 | albumUri  | string  |否 |否 | 相册uri。  |
-| imageCount  | number  |否 |否 | 相册中的图片数量。  |
-| videoCount  | number  |否 |否 | 相册中的视频数量。  |
-| count       | number  |否 |否 | 相册中的资产总数，包括图片和视频。  |
+| imageCount  | number <br> ArkTS-Dyn: number <br>ArkTS-Sta: int |否 |否 | 相册中的图片数量。  |
+| videoCount  | number <br> ArkTS-Dyn: number <br>ArkTS-Sta: int |否 |否 | 相册中的视频数量。  |
+| count       | number <br> ArkTS-Dyn: number <br>ArkTS-Sta: int |否 |否 | 相册中的资产总数，包括图片和视频。  |
 | coverUri  | string  |否 |否 | 相册封面资产的uri。  |
 
 ## AlbumChangeData<sup>20+</sup>
