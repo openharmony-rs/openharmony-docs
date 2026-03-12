@@ -542,7 +542,7 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**ArkTS-Dyn起始版本：** 6
+**ArkTS-Dyn起始版本：** 8
 
 | 名称                       | 值   | 说明                                   |
 | -------------------------- | ---- | -------------------------------------- |

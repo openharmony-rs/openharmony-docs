@@ -458,7 +458,7 @@ type VideoPlayState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | '
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
-**ArkTS-Dyn起始版本：** 6
+**ArkTS-Dyn起始版本：** 8
 
 | 类型     | 说明           |
 | -------- | -------------- |
