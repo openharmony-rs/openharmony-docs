@@ -463,7 +463,7 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
 if (avScreenCaptureRecorder != undefined) {
   avScreenCaptureRecorder.presentPicker().then(() => {
     console.info('Succeeded in presenting picker avScreenCaptureRecorder.');
-  }).catch((err: BusinessError) => {
+  }).catch( (err: BusinessError) => {
     console.error(`Failed to present picker avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
   });
 }
