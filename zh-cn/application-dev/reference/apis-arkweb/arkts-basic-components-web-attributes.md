@@ -5877,7 +5877,9 @@ ArkTS-Sta示例：
 
 ## forceEnableZoom<sup>21+</sup>
 
-forceEnableZoom(enable: boolean)
+ArkTS-Dyn: forceEnableZoom(enable: boolean)
+
+ArkTS-Sta: forceEnableZoom(enable: boolean | undefined)
 
 设置Web组件是否启用强制缩放功能。
 
@@ -5891,7 +5893,7 @@ forceEnableZoom(enable: boolean)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| enable | boolean | 是    | 设置是否遵从网页中`<meta name="viewport">`标签设置的缩放限制。<br>设置为`true`时，不遵从网页缩放限制；设置为`false`时，遵从网页缩放限制。<br>传入`undefined`与`null`时属性设置不生效。 |
+| enable | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置是否遵从网页中`<meta name="viewport">`标签设置的缩放限制。<br>设置为`true`时，不遵从网页缩放限制；设置为`false`时，遵从网页缩放限制。<br>传入`undefined`与`null`时属性设置不生效。 |
 
 **示例：**
 
@@ -6340,7 +6342,7 @@ password(password: boolean)
 >
 > 从API version 8开始支持，从API version 10开始废弃，建议使用[enableAutoFill<sup>23+</sup>](#enableautofill23)替代。
 
-**ArkTS模式：** 该接口适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 8
 
@@ -6358,9 +6360,15 @@ textZoomAtio(textZoomAtio: number)
 
 设置页面的文本缩放百分比。
 
-**系统能力：** SystemCapability.Web.Webview.Core
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[textZoomRatio<sup>9+</sup>](#textzoomratio9)替代。
 
-从API version 9开始不再维护，建议使用[textZoomRatio<sup>9+</sup>](#textzoomratio9)代替。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
+**系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 

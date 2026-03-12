@@ -3402,15 +3402,6 @@ ArkTS-Dyn示例：
             this.showMenu = false;
           })
         MenuItem({
-          content: '保存图片',
-        })
-          .width(100)
-          .height(50)
-          .onClick(() => {
-            this.result?.saveImage();
-            this.showMenu = false;
-          })
-        MenuItem({
           content: '剪切',
         })
           .width(100)
@@ -3540,15 +3531,6 @@ ArkTS-Sta示例：
           .height(50)
           .onClick(() => {
             this.result?.copyImage();
-            this.showMenu = false;
-          })
-        MenuItem({
-          content: '保存图片',
-        } as MenuItemOptions)
-          .width(100)
-          .height(50)
-          .onClick(() => {
-            this.result?.saveImage();
             this.showMenu = false;
           })
         MenuItem({
@@ -8227,7 +8209,7 @@ onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[onShowFileSelector<sup>9+</sup>](#onshowfileselector9)替代。
 
-**ArkTS模式：** 该接口适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 8
 
