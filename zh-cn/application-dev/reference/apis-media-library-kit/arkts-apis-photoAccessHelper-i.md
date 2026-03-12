@@ -178,7 +178,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 | 名称 |   类型   | 只读 |  可选 | 说明      |
 | ---- | ------- | ---- |  ---- | ----- |
