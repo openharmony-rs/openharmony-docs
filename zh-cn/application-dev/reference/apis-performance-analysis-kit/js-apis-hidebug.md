@@ -1402,9 +1402,9 @@ try {
 
 ## hidebug.getGraphicsMemorySummary<sup>21+</sup>
 
-getGraphicsMemorySummary(interval?: number): Promise&lt;GraphicsMemorySummary&gt;
+ArkTS-Dyn: getGraphicsMemorySummary(interval?: number): Promise&lt;GraphicsMemorySummary&gt;
 
-getGraphicsMemorySummary(interval?: int): Promise&lt;GraphicsMemorySummary&gt;
+ArkTS-Sta: getGraphicsMemorySummary(interval?: int): Promise&lt;GraphicsMemorySummary&gt;
 
 获取应用显存数据，使用Promise进行异步回调。
 
@@ -1420,7 +1420,7 @@ getGraphicsMemorySummary(interval?: int): Promise&lt;GraphicsMemorySummary&gt;
 
 | 参数名 | 类型        | 必填 | 说明                                                                                                          |
 | ------ | --------- |---|-------------------------------------------------------------------------------------------------------------|
-| interval  | number | 否 | 显存数据缓存值有效时间，单位为秒。默认值：300。取值范围为[2-3600]。若传入值超出取值范围时，将使用默认值。<br/>当显存数据缓存值存在时间超过该值时，获取最新显存数据并更新缓存值；否则，直接获取缓存值。 |
+| interval  | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 显存数据缓存值有效时间，单位为秒。默认值：300。取值范围为[2-3600]。若传入值超出取值范围时，将使用默认值。<br/>当显存数据缓存值存在时间超过该值时，获取最新显存数据并更新缓存值；否则，直接获取缓存值。 |
 
 **返回值**：
 
@@ -1509,9 +1509,9 @@ hidebug.dumpJsRawHeapData().then((filePath: string) => {
 
 ## hidebug.enableGwpAsanGrayscale<sup>20+</sup>
 
-enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: number): void
+ArkTS-Dyn: enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: number): void
 
-enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: int): void
+ArkTS-Sta: enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: int): void
 
 使能GWP-Asan，用于检测堆内存使用中的非法行为。
 
@@ -1602,9 +1602,9 @@ hidebug.disableGwpAsanGrayscale();
 ```
 
 ## hidebug.getGwpAsanGrayscaleState<sup>20+</sup>
-getGwpAsanGrayscaleState(): number
+ArkTS-Dyn: getGwpAsanGrayscaleState(): number
 
-getGwpAsanGrayscaleState(): int
+ArkTS-Sta: getGwpAsanGrayscaleState(): int
 
 获取当前GWP-Asan剩余使能天数。
 
@@ -1668,6 +1668,8 @@ hidebug.setJsRawHeapTrimLevel(hidebug.JsRawHeapTrimLevel.TRIM_LEVEL_2);
 **原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**参数**：
 
 | 名称      | 类型     | 只读  | 可选 | 说明                                                                              |
 | --------- |--------| ---- |---- |---------------------------------------------------------------------------------|
