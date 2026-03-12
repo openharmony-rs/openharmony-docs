@@ -36,7 +36,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | PATTERN_DATETIME | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 4 | 日期编辑框。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | PATTERN_EMAIL | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 5 | 邮件编辑框。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | PATTERN_URI | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 6 | 超链接编辑框。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| PATTERN_PASSWORD | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 7 | 密码编辑框。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |+
+| PATTERN_PASSWORD | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 7 | 密码编辑框。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | PATTERN_PASSWORD_NUMBER<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 8 | 数字密码编辑框。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | PATTERN_PASSWORD_SCREEN_LOCK<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 9 | 锁屏密码编辑框。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | PATTERN_USER_NAME<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 10 | 用户名编辑框。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
@@ -292,9 +292,9 @@ type CursorContextChangeCallback = (x: double, y: double, height: double) => voi
 
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| x | double | 是 | x为光标上端的的x坐标值，单位为px。 |
+| x | double | 是 | x为光标上端的x坐标值，单位为px。 |
 | y | double | 是 | y为光标上端的y坐标值，单位为px。 |
-| height | double | 是 | eight为光标的高度值，单位为px。 |
+| height | double | 是 | height为光标的高度值，单位为px。 |
 
 ## SelectionChangeCallback<sup>23+</sup>
 
@@ -1006,7 +1006,7 @@ on(type: 'discardTypingText', callback: Callback\<void>): void
 | 参数名   | 类型                                          | 必填 | 说明                                       |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------ |
 | type     | string                                        | 是   | 设置监听类型，固定取值为'discardTypingText'。<br/> - 'discardTypingText'：表示订阅编辑框应用发送“清空候选词”事件到输入法。 |
-| callback |  Callback\<void> | 是   | 回调函数。当命令发送成功，err为undefined，否则为错误对象。 |
+| callback |  Callback\<void> | 是   | 回调函数。 |
 
 **示例：**
 
@@ -1196,7 +1196,7 @@ destroyPanel(panel: Panel, callback: AsyncCallback\<void>): void
 | 参数名   | 类型        | 必填 | 说明                     |
 | ------- | ----------- | ---- | ------------------------ |
 | panel     | [Panel](#panel10) | 是   | 要销毁的面板对象。 |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当输入法面板销毁成功，err为undefined，否则为错误对象。  |
+| callback | AsyncCallback\<void> | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -1918,7 +1918,7 @@ onDiscardTypingText(callback: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| callback | 	Callback&lt;void&gt; | 是  | 回调函数。当命令发送成功，err为undefined，否则为错误对象。 |
+| callback | 	Callback&lt;void&gt; | 是  | 回调函数。 |
 
 **示例：**
 
@@ -2129,7 +2129,7 @@ on(type: 'cursorContextChange', callback: (x: number, y:number, height:number) =
 | 参数名    | 类型  | 必填  | 说明  |
 | -------- | ---- | ---- | ----- |
 | type     | string | 是   | 光标变化事件，固定取值为'cursorContextChange'。 |
-| callback | (x: number, y: number, height: number) => void | 是   | 回调函数，返回光标信息。<br/>-x为光标上端的的x坐标值，单位为px。y为光标上端的y坐标值，单位为px。height为光标的高度值，单位为px。 |
+| callback | (x: number, y: number, height: number) => void | 是   | 回调函数，返回光标信息。<br/>-x为光标上端的x坐标值，单位为px。y为光标上端的y坐标值，单位为px。height为光标的高度值，单位为px。 |
 
 **示例：**
 
@@ -2160,7 +2160,7 @@ off(type: 'cursorContextChange', callback?: (x: number, y: number, height: numbe
 | 参数名    | 类型  | 必填  | 说明   |
 | -------- | ---- | ---- | ------ |
 | type     | string  | 是   | 光标变化事件，固定取值为'cursorContextChange'。 |
-| callback | (x: number, y:number, height:number) => void | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (x: number, y: number, height: number) => void | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 
   **示例：**
@@ -2848,7 +2848,7 @@ setUiContent(path: string, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
 | path | string | 是   | 具体页面的路径。 |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当面板页面内容加载成功，err为undefined，否则err为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -2936,7 +2936,7 @@ setUiContent(path: string, storage: LocalStorage, callback: AsyncCallback\<void>
 | -------- | ---------------------- | ---- | -------- |
 | path | string | 是   | LocalStorage相关联的具体页面的路径。 |
 | storage | [LocalStorage](../apis-arkui/arkui-ts/ts-state-management.md#localstorage9) | 是   | 存储单元，为应用程序范围内的可变和不可变状态属性提供存储。|
-| callback | AsyncCallback\<void> | 是   | 回调函数。当面板页面内容加载成功，err为undefined，否则err为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -3034,7 +3034,7 @@ ArkTS-Sta: resize(width: long, height: long, callback: AsyncCallback\<void>): vo
 | -------- | ---------------------- | ---- | -------- |
 | width | ArkTS-Dyn: number <br>ArkTS-Sta: long | 是   | 目标面板的宽度，单位为px。|
 | height | ArkTS-Dyn: number <br>ArkTS-Sta: long | 是   | 目标面板的高度，单位为px。|
-| callback | AsyncCallback\<void> | 是   | 回调函数。当面板大小改变成功，err为undefined，否则err为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -3164,7 +3164,7 @@ ArkTS-Sta: moveTo(x: int, y: int, callback: AsyncCallback\<void>): void
 | -------- | ---------------------- | ---- | -------- |
 | x | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | x轴方向移动的值，值大于0表示右移，单位为px。|
 | y | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | y轴方向移动的值，值大于0表示下移，单位为px。|
-| callback | AsyncCallback\<void> | 是   | 回调函数。当面板位置移动成功，err为undefined，否则err为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -3322,7 +3322,7 @@ show(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当面板显示成功，err为undefined，否则err为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。 |
 
 **示例：**
 
@@ -3384,7 +3384,7 @@ hide(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当面板隐藏成功，err为undefined，否则err为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。 |
 
 **示例：**
 
@@ -4289,7 +4289,7 @@ hide(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| callback | AsyncCallback&lt;void> | 是   | 回调函数。当输入法隐藏成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void> | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -4371,7 +4371,7 @@ hideKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| callback | AsyncCallback&lt;void> | 是   | 回调函数。当输入法隐藏成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void> | 是   | 回调函数。 |
 
 **示例：**
 
@@ -4437,7 +4437,7 @@ exitCurrentInputType(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;void> | 是   | 回调函数。当退出当前输入类型成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void> | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -4712,7 +4712,7 @@ ArkTS-Sta: sendKeyFunction(action: int, callback: AsyncCallback&lt;boolean&gt;):
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | action | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是 | 功能键键值。<br/>- 当值为0时，表示无效按键。<br/>- 当值为1时，表示确认键（即回车键）。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当功能键发送成功，err为undefined，data为true；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当功能键发送成功，返回true，否则返回错误对象。 |
 
 **错误码：**
 
@@ -4851,7 +4851,7 @@ ArkTS-Sta: getForward(length: int, callback: AsyncCallback&lt;string&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | length | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是 | 文本长度。不能小于0。 |
-| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。当光标前固定长度的文本获取成功，err为undefined，data为获取到的文本；否则为错误对象。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。返回获取到的文本内容。 |
 
 **错误码：**
 
@@ -5030,7 +5030,7 @@ ArkTS-Sta: getBackward(length: int, callback: AsyncCallback&lt;string&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | length | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是 | 文本长度。不能小于0。 |
-| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。当光标后固定长度的文本获取成功，err为undefined，data为获取到的文本；否则为错误对象。|
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。返回获取到的文本内容。|
 
 **错误码：**
 
@@ -5210,7 +5210,7 @@ ArkTS-Sta: deleteForward(length: int, callback: AsyncCallback&lt;boolean&gt;): v
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | length | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是 | 文本长度。不能小于0。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当光标前固定长度的文本删除成功，err为undefined，data为true；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。删除文本成功返回true，否则返回错误对象。 |
 
 **错误码：**
 
@@ -5400,7 +5400,7 @@ ArkTS-Sta: deleteBackward(length: int, callback: AsyncCallback&lt;boolean&gt;): 
 | 参数名   | 类型                         | 必填 | 说明           |
 | -------- | ---------------------------- | ---- | -------------- |
 | length   | ArkTS-Dyn: number <br>ArkTS-Sta: int                       | 是   | 文本长度。不能小于0。     |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。当光标后固定长度的文本删除成功，err为undefined，data为true；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。删除文本成功返回true，否则返回错误对象。 |
 
 **错误码：**
 
@@ -5559,7 +5559,7 @@ insertText(text:string, callback: AsyncCallback&lt;boolean&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | text | string | 是 | 文本内容。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当文本插入成功，err为undefined，data为true；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。插入文本成功返回true，否则返回错误对象。 |
 
 **错误码：**
 
@@ -5692,7 +5692,7 @@ ArkTS-Sta: getEditorAttribute(callback: AsyncCallback&lt;EditorAttribute | null&
 
 | 参数名                         | 类型                          | 必填                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| callback | ArkTS-Dyn: AsyncCallback&lt;[EditorAttribute](#editorattribute)&gt; <br>ArkTS-Sta: AsyncCallback&lt;[EditorAttribute](#editorattribute) \| null&gt; | 是 |  回调函数。当编辑框属性值获取成功，err为undefined，data为编辑框属性值；否则为错误对象。|
+| callback | ArkTS-Dyn: AsyncCallback&lt;[EditorAttribute](#editorattribute)&gt; <br>ArkTS-Sta: AsyncCallback&lt;[EditorAttribute](#editorattribute) \| null&gt; | 是 |  回调函数。返回编辑框属性对象。|
 
 **错误码：**
 
@@ -5813,7 +5813,7 @@ ArkTS-Sta: moveCursor(direction: int, callback: AsyncCallback&lt;void&gt;): void
 | 参数名    | 类型                      | 必填 | 说明           |
 | --------- | ------------------------- | ---- | -------------- |
 | direction | ArkTS-Dyn: number <br>ArkTS-Sta: int                    | 是   | 光标移动方向。<br/>- 当值为1时，表示向上。<br/>- 当值为2时，表示向下。<br/>- 当值为3时，表示向左。<br/>- 当值为4时，表示向右。不能小于0。 |
-| callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。当光标移动成功，err为undefined，否则为错误对象。    |
+| callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -5938,7 +5938,7 @@ selectByRange(range: Range, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                                                      | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | range    | [Range](#range10) | 是   | 选中文本的范围。                                             |
-| callback | AsyncCallback&lt;void&gt;                                 | 是   | 回调函数。当成功发送选中事件后，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt;                                 | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -6062,7 +6062,7 @@ selectByMovement(movement: Movement, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型  | 必填 | 说明   |
 | -------- | ------ | ---- | ------ |
 | movement | [Movement](#movement10)   | 是   | 选中时光标移动的方向。  |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当成功发送选中事件后，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。发送选中文本事件成功返回true，否则返回错误对象。 |
 
 **错误码：**
 
@@ -6187,7 +6187,7 @@ ArkTS-Sta: getTextIndexAtCursor(callback: AsyncCallback&lt;int&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
-| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt; <br>ArkTS-Sta: AsyncCallback&lt; int&gt; | 是   | 回调函数。当文本索引获取成功，err为undefined，否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt; <br>ArkTS-Sta: AsyncCallback&lt; int&gt; | 是   | 回调函数。返回获取到的光标所在处的文本索引。 |
 
 **错误码：**
 
@@ -6349,7 +6349,7 @@ sendExtendAction(action: ExtendAction, callback: AsyncCallback&lt;void&gt;): voi
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | action | [ExtendAction](#extendaction10) | 是   | 要发送的扩展操作。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。发送成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -7325,7 +7325,7 @@ getForward(length:number, callback: AsyncCallback&lt;string&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | length | number | 是 | 文本长度。不能小于0。 |
-| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。当光标前固定长度的文本获取成功，err为undefined，data为获取到的文本；否则为错误对象。|
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。返回获取到的文本内容。 |
 
 **示例：**
 
@@ -7404,7 +7404,7 @@ getBackward(length:number, callback: AsyncCallback&lt;string&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | length | number | 是 | 文本长度。不能小于0。 |
-| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。当光标后固定长度的文本获取成功，err为undefined，data为获取到的文本；否则为错误对象。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。返回获取到的文本内容。 |
 
 **示例：**
 
@@ -7483,7 +7483,7 @@ deleteForward(length:number, callback: AsyncCallback&lt;boolean&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | length | number | 是 | 文本长度。不能小于0。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当光标前固定长度的文本删除成功，err为undefined，data为true；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。删除文本成功返回true，否则返回错误对象。 |
 
 **示例：**
 
@@ -7570,7 +7570,7 @@ deleteBackward(length:number, callback: AsyncCallback&lt;boolean&gt;): void
 | 参数名   | 类型                         | 必填 | 说明           |
 | -------- | ---------------------------- | ---- | -------------- |
 | length   | number                       | 是   | 文本长度。不能小于0。      |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。当光标后固定长度的文本删除成功，err为undefined，data为true；否则为错误对象。|
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。删除文本成功返回true，否则返回错误对象。|
 
 **示例：**
 
@@ -7656,7 +7656,7 @@ sendKeyFunction(action: number, callback: AsyncCallback&lt;boolean&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | action | number | 是 | 功能键键值。<br/>- 当值为0时，表示无效按键；<br/>- 当值为1时，表示确认键（即回车键）。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当功能键发送成功，err为undefined，data为true；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当功能键发送成功返回true，否则返回错误对象。 |
 
 **示例：**
 
@@ -7743,7 +7743,7 @@ insertText(text:string, callback: AsyncCallback&lt;boolean&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | text | string | 是 | 文本。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当文本插入成功，err为undefined，data为true；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当文本插入成功返回true，否则返回错误对象。 |
 
 **示例：**
 
@@ -7827,7 +7827,7 @@ getEditorAttribute(callback: AsyncCallback&lt;EditorAttribute&gt;): void
 
 | 参数名    | 类型   | 必填  | 说明   |
 | -------- | ----- | ----- | ----- |
-| callback | AsyncCallback&lt;[EditorAttribute](#editorattribute)&gt; | 是 |  回调函数。当编辑框的属性值获取成功，err为undefined，data为编辑框属性值；否则为错误对象。|
+| callback | AsyncCallback&lt;[EditorAttribute](#editorattribute)&gt; | 是 |  回调函数。返回编辑框的属性值。 |
 
 **示例：**
 

@@ -218,7 +218,7 @@ switchInputMethod(target: InputMethodProperty, callback: AsyncCallback&lt;boolea
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | target | [InputMethodProperty](#inputmethodproperty8) | 是 | 目标输入法。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当输入法切换成功，err为undefined，data为true；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。切换输入法成功返回true，否则返回错误对象。 |
 
 **错误码：**
 
@@ -409,7 +409,7 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype, callback: AsyncCallb
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | target |  [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)| 是 | 目标输入法子类型。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当输入法子类型切换成功，err为undefined，data为true；否则为错误对象。|
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。切换输入法子类型成功返回true，否则返回错误对象。 |
 
 **错误码：**
 
@@ -517,7 +517,7 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise&lt;boolean&
 
 | 类型                                      | 说明                         |
 | ----------------------------------------- | ---------------------------- |
-| Promise\<boolean> | Promise对象。返回true表示当前输入法切换子类型成功，返回false表示当前输入法切换子类型成功失败。 |
+| Promise\<boolean> | Promise对象。返回true表示当前输入法切换子类型成功，返回false表示当前输入法切换子类型失败。 |
 
 **错误码：**
 
@@ -638,7 +638,7 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 | -------- | -------- | -------- | -------- |
 |inputMethodProperty |  [InputMethodProperty](#inputmethodproperty8)| 是 | 目标输入法。 |
 |inputMethodSubtype |  [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)| 是 | 目标输入法子类型。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当输入法和子类型切换成功，err为undefined，data为获取到的切换子类型结果true；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当输入法和子类型切换成功返回true，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1362,7 +1362,7 @@ attach(showKeyboard: boolean, textConfig: TextConfig, callback: AsyncCallback&lt
 | -------- | -------- | -------- | -------- |
 | showKeyboard | boolean | 是 | 绑定输入法成功后，是否拉起输入法键盘。<br>- true表示拉起。<br>- false表示不拉起。 |
 | textConfig | [TextConfig](#textconfig10) | 是 | 编辑框的配置信息。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当绑定输入法成功后，err为undefined；否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -1750,7 +1750,7 @@ showTextInput(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。若成功进入编辑状态，err为undefined；否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -1939,7 +1939,7 @@ hideTextInput(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当成功退出编辑状态时，err为undefined；否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -2057,7 +2057,7 @@ detach(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当解绑定输入法成功时，err为undefined；否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -2174,7 +2174,7 @@ ArkTS-Sta: setCallingWindow(windowId: int, callback: AsyncCallback&lt;void&gt;):
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | windowId |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 绑定输入法应用的应用程序所在的窗口Id。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置成功时，err为undefined；否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -2313,7 +2313,7 @@ updateCursor(cursorInfo: CursorInfo, callback: AsyncCallback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | cursorInfo | [CursorInfo](#cursorinfo10) | 是 | 光标信息。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当光标信息更新成功时，err为undefined；否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -2450,7 +2450,7 @@ ArkTS-Sta: changeSelection(text: string, start: int, end: int, callback: AsyncCa
 | text | string | 是 | 整个输入文本。 |
 | start |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 所选文本的起始位置。 |
 | end |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 所选文本的结束位置。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当文本信息更新成功时，err为undefined；否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -2583,7 +2583,7 @@ updateAttribute(attribute: InputAttribute, callback: AsyncCallback&lt;void&gt;):
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | attribute | [InputAttribute](#inputattribute10) | 是 | 编辑框属性对象。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当编辑框属性信息更新成功时，err为undefined；否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -2719,7 +2719,7 @@ stopInputSession(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当结束输入会话成功时，err为undefined，data为true；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当结束输入会话成功时返回true，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2862,7 +2862,7 @@ showSoftKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                  | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当软键盘显示成功。err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -2986,7 +2986,7 @@ hideSoftKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                  | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当软键盘隐藏成功。err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -3250,7 +3250,7 @@ stopInput(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当会话结束成功，err为undefined，data为true；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当会话结束成功返回true，否则返回错误对象。 |
 
 **示例：**
 
@@ -4419,7 +4419,7 @@ offSelectByRange(callback?: Callback&lt;Range&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('selectByRange')](#offselectByRange10)
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('selectByRange')](#offselectByRange10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6282,7 +6282,7 @@ showOptionalInputMethods(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当输入法选择对话框显示成功，err为undefined，data为true；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当输入法选择对话框显示成功返回true,否则返回错误对象。 |
 
 **错误码：**
 
@@ -6330,7 +6330,7 @@ showOptionalInputMethods(): Promise&lt;boolean&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise对象。当输入法选择对话框显示成功，err为undefined，data为true；否则为错误对象。 |
+| Promise&lt;boolean&gt; | Promise对象。当输入法选择对话框显示成功返回true，否则返回错误对象。 |
 
 **错误码：**
 
@@ -6442,7 +6442,7 @@ displayOptionalInputMethod(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当输入法选择对话框显示成功。err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 
