@@ -509,7 +509,9 @@ Enumerates the security levels for storing the key generated or imported.
 | OH_HUKS_AUTH_STORAGE_LEVEL_DE = 0 | The key can be accessed only after the device is started.|
 | OH_HUKS_AUTH_STORAGE_LEVEL_CE = 1 | The key can be accessed only after the first unlock of the device.|
 | OH_HUKS_AUTH_STORAGE_LEVEL_ECE = 2 | The key can be accessed only when the device is unlocked.|
-
+> **NOTE**
+>
+>  When using a key whose storage level is ECE, you are advised to clear the session resources created using the key by detecting the [lock screen event](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked) to ensure security.
 ### OH_Huks_ChallengeType
 
 ```c
