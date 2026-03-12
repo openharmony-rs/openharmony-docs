@@ -294,6 +294,26 @@ type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => We
 | ------------------ | ------------------------------------------------------------ |
 | [WebKeyboardOptions](./arkts-basic-components-web-i.md#webkeyboardoptions12) | 回调函数通过返回[WebKeyboardOptions](./arkts-basic-components-web-i.md#webkeyboardoptions12)来决定ArkWeb内核拉起不同类型的软键盘。 |
 
+## OnOverrideErrorPageCallback<sup>20+</sup>
+
+type OnOverrideErrorPageCallback = (errorPageEvent: OnErrorReceiveEvent) => string
+
+onOverrideErrorPage的回调函数，网页加载失败时触发。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名             | 类型      | 必填   | 说明                                       |
+| -------------- | ---- | ---- | ---------------------------------------- |
+| errorPageEvent | [OnErrorReceiveEvent](./arkts-basic-components-web-i.md#onerrorreceiveevent12) | 是 | 网页加载遇到错误时返回的相关信息。      |
+
+**返回值：**
+
+| 类型      | 说明                       |
+| ------- | ------------------------ |
+| string | 返回以Base64编码的HTML文本内容。 |
+
 ## MouseInfoCallback<sup>20+<sup>
 
 type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void

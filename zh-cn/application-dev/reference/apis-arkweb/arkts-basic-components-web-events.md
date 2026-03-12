@@ -8241,6 +8241,10 @@ onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => vo
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -8278,6 +8282,10 @@ onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => b
 > **说明：**
 >
 > API version 8开始支持，从API version 10开始废弃，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

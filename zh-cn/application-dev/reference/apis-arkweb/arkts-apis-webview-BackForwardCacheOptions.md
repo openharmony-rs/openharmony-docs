@@ -12,13 +12,13 @@
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
-**系统能力：** SystemCapability.Web.Webview.Core
-
 ## 属性
 
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
+
+**系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |

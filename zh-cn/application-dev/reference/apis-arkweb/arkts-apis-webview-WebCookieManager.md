@@ -2104,6 +2104,10 @@ static getCookie(url: string): string
 >
 > 从API version 9开始支持，从API version 11开始废弃。建议使用[fetchCookieSync](#fetchcookiesync11)替代
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2166,6 +2170,10 @@ static setCookie(url: string, value: string): void
 >
 > 从API version 9开始支持，从API version 11开始废弃。建议使用[configCookieSync<sup>11+</sup>](#configcookiesync11)替代
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2223,6 +2231,10 @@ static deleteEntireCookie(): void
 >
 > 从API version 9开始支持，从API version 11开始废弃。建议使用[clearAllCookiesSync](#clearallcookiessync11)替代
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例：**
@@ -2257,6 +2269,10 @@ static deleteSessionCookie(): void
 > **说明：**
 >
 > 从API version 9开始支持，从API version 11开始废弃。建议使用[clearSessionCookieSync](#clearsessioncookiesync11)替代
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
