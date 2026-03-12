@@ -787,7 +787,7 @@ on(type: 'add'|'remove'|'change', callback: Callback&lt;number&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onAdd](#displayonadd22)，[display.onRemove](#displayonremove22)，[display.onChange](#displayonchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onAdd](#displayonadd23)，[display.onRemove](#displayonremove23)，[display.onChange](#displayonchange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -822,7 +822,7 @@ let callback: Callback<number> = (data: number) => {
 display.on("add", callback);
 ```
 
-## display.onAdd<sup>22+</sup>
+## display.onAdd<sup>23+</sup>
 
 onAdd(callback: Callback&lt;long&gt;): void
 
@@ -854,7 +854,7 @@ let callback: Callback<long> = (data: long) => {
 display.onAdd(callback);
 ```
 
-## display.onRemove<sup>22+</sup>
+## display.onRemove<sup>23+</sup>
 
 onRemove(callback: Callback&lt;long&gt;): void
 
@@ -886,7 +886,7 @@ let callback: Callback<long> = (data: long) => {
 display.onRemove(callback);
 ```
 
-## display.onChange<sup>22+</sup>
+## display.onChange<sup>23+</sup>
 
 onChange(callback: Callback&lt;long&gt;): void
 
@@ -926,7 +926,7 @@ off(type: 'add'|'remove'|'change', callback?: Callback&lt;number&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offAdd](#displayoffadd22)，[display.offRemove](#displayoffremove22)，[display.offChange](#displayoffchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offAdd](#displayoffadd23)，[display.offRemove](#displayoffremove23)，[display.offChange](#displayoffchange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -965,7 +965,9 @@ display.off('remove', callback);
 
 ## display.onChangeWithAttribute<sup>23+</sup>
 
-onChangeWithAttribute(displayAttributeOption: Array&lt;string&gt;, callback: Callback&lt;number&gt;): void
+ArkTS-Dyn: onChangeWithAttribute(displayAttributeOption: Array<string>, callback: Callback<number>): void
+
+ArkTS-Sta: onChangeWithAttribute(displayAttributeOption: Array<string>, callback: Callback<long>): void
 
 开启显示设备指定属性变化的监听。
 
@@ -1005,7 +1007,7 @@ let attributes: Array<string> = ["rotation", "width"];
 display.onChangeWithAttribute(attributes, attributesChangeCallback);
 ```
 
-## display.offAdd<sup>22+</sup>
+## display.offAdd<sup>23+</sup>
 
 offAdd(callback?: Callback&lt;long&gt;): void
 
@@ -1039,7 +1041,7 @@ let callback: Callback<long> = (data: long) => {
 display.offAdd(callback);
 ```
 
-## display.offRemove<sup>22+</sup>
+## display.offRemove<sup>23+</sup>
 
 offRemove(callback?: Callback&lt;long&gt;): void
 
@@ -1073,7 +1075,7 @@ let callback: Callback<long> = (data: long) => {
 display.offRemove(callback);
 ```
 
-## display.offChange<sup>22+</sup>
+## display.offChange<sup>23+</sup>
 
 offChange(callback?: Callback&lt;long&gt;): void
 
@@ -1269,7 +1271,7 @@ on(type: 'foldStatusChange', callback: Callback&lt;FoldStatus&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onFoldStatusChange](#displayonfoldstatuschange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onFoldStatusChange](#displayonfoldstatuschange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1308,17 +1310,17 @@ let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
 display.on('foldStatusChange', callback);
 ```
 
-## display.onFoldStatusChange<sup>22+</sup>
+## display.onFoldStatusChange<sup>23+</sup>
 
 onFoldStatusChange(callback: Callback&lt;FoldStatus&gt;): void
 
 开启折叠设备折叠状态变化的监听。
 
-本接口监听设备物理折叠状态的变化，如果要监听屏幕显示模式的变化，需要使用[display.onFoldDisplayModeChange()](#displayonfolddisplaymodechange22)接口。
+本接口监听设备物理折叠状态的变化，如果要监听屏幕显示模式的变化，需要使用[display.onFoldDisplayModeChange()](#displayonfolddisplaymodechange23)接口。
 
 两者存在差异，时序上物理折叠状态变化在前，底层会根据物理折叠状态匹配屏幕显示模式状态。
 
-若需监听当前显示内容是显示在折叠设备的内屏还是外屏，请使用[display.onFoldDisplayModeChange()](#displayonfolddisplaymodechange22)。
+若需监听当前显示内容是显示在折叠设备的内屏还是外屏，请使用[display.onFoldDisplayModeChange()](#displayonfolddisplaymodechange23)。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
@@ -1365,7 +1367,7 @@ off(type: 'foldStatusChange', callback?: Callback&lt;FoldStatus&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offFoldStatusChange](#displayofffoldstatuschange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offFoldStatusChange](#displayofffoldstatuschange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1403,7 +1405,7 @@ let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
 display.off('foldStatusChange', callback);
 ```
 
-## display.offFoldStatusChange<sup>22+</sup>
+## display.offFoldStatusChange<sup>23+</sup>
 
 offFoldStatusChange(callback?: Callback&lt;FoldStatus&gt;): void
 
@@ -1453,7 +1455,7 @@ on(type: 'brightnessInfoChange', callback: BrightnessCallback&lt;number, Brightn
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onBrightnessInfoChange](#displayonbrightnessinfochange22-1)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onBrightnessInfoChange](#displayonbrightnessinfochange23)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1491,7 +1493,7 @@ try {
 }
 ```
 
-## display.onBrightnessInfoChange<sup>22+</sup>
+## display.onBrightnessInfoChange<sup>23+</sup>
 
 onBrightnessInfoChange(callback: BrightnessCallback&lt;long, BrightnessInfo>): void
 
@@ -1546,7 +1548,7 @@ off(type: 'brightnessInfoChange', callback?: BrightnessCallback&lt;number, Brigh
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offBrightnessInfoChange](#displayoffbrightnessinfochange22-1)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offBrightnessInfoChange](#displayoffbrightnessinfochange23)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1584,7 +1586,7 @@ try {
 }
 ```
 
-## display.offBrightnessInfoChange<sup>22+</sup>
+## display.offBrightnessInfoChange<sup>23+</sup>
 
 offBrightnessInfoChange(callback?: BrightnessCallback&lt;long, BrightnessInfo>): void
 
@@ -1638,7 +1640,7 @@ on(type: 'foldAngleChange', callback: Callback&lt;Array&lt;number&gt;&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onFoldAngleChange](#displayonfoldanglechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onFoldAngleChange](#displayonfoldanglechange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1673,7 +1675,7 @@ let callback: Callback<Array<number>> = (angles: Array<number>) => {
 display.on('foldAngleChange', callback);
 ```
 
-## display.onFoldAngleChange<sup>22+</sup>
+## display.onFoldAngleChange<sup>23+</sup>
 
 onFoldAngleChange(callback: Callback&lt;Array&lt;double&gt;&gt;): void
 
@@ -1720,7 +1722,7 @@ off(type: 'foldAngleChange', callback?: Callback&lt;Array&lt;number&gt;&gt;): vo
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offFoldAngleChange](#displayofffoldanglechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offFoldAngleChange](#displayofffoldanglechange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1758,7 +1760,7 @@ let callback: Callback<Array<number>> = (angles: Array<number>) => {
 display.off('foldAngleChange', callback);
 ```
 
-## display.offFoldAngleChange<sup>22+</sup>
+## display.offFoldAngleChange<sup>23+</sup>
 
 offFoldAngleChange(callback?: Callback&lt;Array&lt;double&gt;&gt;): void
 
@@ -1808,7 +1810,7 @@ on(type: 'captureStatusChange', callback: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onCaptureStatusChange](#displayoncapturestatuschange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onCaptureStatusChange](#displayoncapturestatuschange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1843,7 +1845,7 @@ let callback: Callback<boolean> = (captureStatus: boolean) => {
 display.on('captureStatusChange', callback);
 ```
 
-## display.onCaptureStatusChange<sup>22+</sup>
+## display.onCaptureStatusChange<sup>23+</sup>
 
 onCaptureStatusChange(callback: Callback&lt;boolean&gt;): void
 
@@ -1890,7 +1892,7 @@ off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offCaptureStatusChange](#displayoffcapturestatuschange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offCaptureStatusChange](#displayoffcapturestatuschange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1928,7 +1930,7 @@ let callback: Callback<boolean> = (captureStatus: boolean) => {
 display.off('captureStatusChange', callback);
 ```
 
-## display.offCaptureStatusChange<sup>22+</sup>
+## display.offCaptureStatusChange<sup>23+</sup>
 
 offCaptureStatusChange(callback?: Callback&lt;boolean&gt;): void
 
@@ -2018,7 +2020,7 @@ on(type: 'foldDisplayModeChange', callback: Callback&lt;FoldDisplayMode&gt;): vo
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onFoldDisplayModeChange](#displayonfolddisplaymodechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onFoldDisplayModeChange](#displayonfolddisplaymodechange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2059,13 +2061,13 @@ let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode
 display.on('foldDisplayModeChange', callback);
 ```
 
-## display.onFoldDisplayModeChange<sup>22+</sup>
+## display.onFoldDisplayModeChange<sup>23+</sup>
 
 onFoldDisplayModeChange(callback: Callback&lt;FoldDisplayMode&gt;): void
 
 开启折叠设备屏幕显示模式变化的监听。
 
-本接口监听设备屏幕显示模式的变化，如果要监听设备物理折叠状态的变化，需要使用[display.onFoldStatusChange](#displayonfoldstatuschange22)接口。
+本接口监听设备屏幕显示模式的变化，如果要监听设备物理折叠状态的变化，需要使用[display.onFoldStatusChange](#displayonfoldstatuschange23)接口。
 
 两者存在差异，时序上物理折叠状态变化在前，底层会根据物理折叠状态匹配屏幕显示模式状态。
 
@@ -2116,7 +2118,7 @@ off(type: 'foldDisplayModeChange', callback?: Callback&lt;FoldDisplayMode&gt;): 
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offFoldDisplayModeChange](#displayofffolddisplaymodechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offFoldDisplayModeChange](#displayofffolddisplaymodechange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2156,7 +2158,7 @@ let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode
 display.off('foldDisplayModeChange', callback);
 ```
 
-## display.offFoldDisplayModeChange<sup>22+</sup>
+## display.offFoldDisplayModeChange<sup>23+</sup>
 
 offFoldDisplayModeChange(callback?: Callback&lt;FoldDisplayMode&gt;): void
 
@@ -3094,7 +3096,7 @@ on(type: 'availableAreaChange', callback: Callback&lt;Rect&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvailableAreaChange](#onavailableareachange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvailableAreaChange](#onavailableareachange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3139,7 +3141,7 @@ try {
 }
 ```
 
-### onAvailableAreaChange<sup>22+</sup>
+### onAvailableAreaChange<sup>23+</sup>
 onAvailableAreaChange(callback: Callback&lt;Rect&gt;): void
 
 开启当前设备屏幕的可用区域监听。当前设备屏幕有可用区域变化时，触发回调函数，返回可用区域。
@@ -3196,7 +3198,7 @@ off(type: 'availableAreaChange', callback?: Callback&lt;Rect&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvailableAreaChange](#offavailableareachange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvailableAreaChange](#offavailableareachange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3241,7 +3243,7 @@ try {
 }
 ```
 
-### offAvailableAreaChange<sup>22+</sup>
+### offAvailableAreaChange<sup>23+</sup>
 
 offAvailableAreaChange(callback?: Callback&lt;Rect&gt;): void
 
