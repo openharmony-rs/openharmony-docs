@@ -29,8 +29,9 @@ PhotoAsset的成员类型。
 
 ## OperationValueType<sup>22+</sup>
 
-**ArkTS-Dyn**： type OperationValueType = number | string | boolean  
-**ArkTS-Sta**： type OperationValueType = long | double | string | boolean  
+ArkTS-Dyn： type OperationValueType = number | string | boolean  
+
+ArkTS-Sta： type OperationValueType = long | double | string | boolean  
 
 表示不同谓词所需要匹配的值。
 
