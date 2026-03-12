@@ -297,7 +297,7 @@ Sets the style of the system status bar when this **NavDestination** page is dis
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)&gt; | Yes  | Style of the system status bar.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)&gt; | Yes  | Style of the system status bar.|
 
 ### systemTransition<sup>14+</sup>
 systemTransition(type: NavigationSystemTransitionType)
@@ -330,7 +330,7 @@ Sets whether the **NavDestination** component is recoverable. If set to recovera
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
-| recoverable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | Yes  | Whether the **NavDestination** component is recoverable. By default, it is not recoverable.<br>Default value: **false**.<br>**true**: The **NavDestination** component is recoverable.<br>**false**: The **NavDestination** component is not recoverable.|
+| recoverable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | Yes  | Whether the **NavDestination** component is recoverable. By default, it is not recoverable.<br>Default value: **false**.<br>**true**: The **NavDestination** component is recoverable.<br>**false**: The **NavDestination** component is not recoverable.|
 
 ### bindToScrollable<sup>14+</sup>
 bindToScrollable(scrollers: Array&lt;Scroller&gt;)
@@ -392,7 +392,7 @@ Sets whether to hide the back button in the title bar.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| hide  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | Yes  | Whether to hide the back button in the title bar.<br>Default value: **false**.<br>**true**: Hide the back button in the title bar.<br>**false**: Show the back button in the title bar.|
+| hide  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | Yes  | Whether to hide the back button in the title bar.<br>Default value: **false**.<br>**true**: Hide the back button in the title bar.<br>**false**: Show the back button in the title bar.|
 
 ### customTransition<sup>15+</sup>
 
@@ -439,7 +439,7 @@ Sets the display orientation for the **NavDestination** component. After the tra
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| orientation  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[Orientation](#orientation19)&gt; | Yes  | Display orientation to set.|
+| orientation  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Orientation](#orientation19)&gt; | Yes  | Display orientation to set.|
 
 ### enableStatusBar<sup>19+</sup>
 
@@ -465,7 +465,7 @@ Sets whether to show or hide the system status bar when entering this **NavDesti
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | Yes  | Whether to show or hide the system status bar when entering the current **NavDestination** component.<br>**true**: Show the system status bar.<br>**false**: Hide the system status bar.|
+| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | Yes  | Whether to show or hide the system status bar when entering the current **NavDestination** component.<br>**true**: Show the system status bar.<br>**false**: Hide the system status bar.|
 | animated  | boolean | No  | Whether to animate the visibility change of the system status bar. Default value: **false**.<br>**true**: Animate the visibility change of the system status bar.<br>**false**: Do not animate the visibility change of the system status bar.|
 
 ### enableNavigationIndicator<sup>19+</sup>
@@ -492,7 +492,7 @@ Sets whether to show or hide the system navigation bar when entering this **NavD
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | Yes  | Whether to show or hide the system navigation bar when entering the current **NavDestination** component.<br>**true**: Show the system navigation bar.<br>**false**: Hide the system navigation bar.|
+| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | Yes  | Whether to show or hide the system navigation bar when entering the current **NavDestination** component.<br>**true**: Show the system navigation bar.<br>**false**: Hide the system navigation bar.|
 
 ## NavDestinationMode<sup>11+</sup>
 
@@ -705,7 +705,7 @@ Triggered when the **NavDestination** component returns.
 **Parameters**
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ---- | ---------------- |
-|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt12)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<ESObject\>\>| Yes| Callback for page returning, with the parameter being the **result** parameter passed by the [pop](ts-basic-components-navigation.md#pop11), [popToName](ts-basic-components-navigation.md#poptoname11), or [popToIndex](ts-basic-components-navigation.md#poptoindex11) API. If this parameter is not passed, the input is **undefined**.|
+|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<ESObject\>\>| Yes| Callback for page returning, with the parameter being the **result** parameter passed by the [pop](ts-basic-components-navigation.md#pop11), [popToName](ts-basic-components-navigation.md#poptoname11), or [popToIndex](ts-basic-components-navigation.md#poptoindex11) API. If this parameter is not passed, the input is **undefined**.|
 
 ### onActive<sup>17+</sup>
 
@@ -724,7 +724,7 @@ Triggered when the **NavDestination** component becomes active (on top of the st
 **Parameters**
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ---- | ---------------- |
-|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt12)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationActiveReason](#navdestinationactivereason17)\>\>| Yes| Reason why the **NavDestination** component switches from inactive to active.|
+|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationActiveReason](#navdestinationactivereason17)\>\>| Yes| Reason why the **NavDestination** component switches from inactive to active.|
 
 ### onInactive<sup>17+</sup>
 
@@ -743,7 +743,7 @@ Triggered when the **NavDestination** component becomes inactive (not on top of 
 **Parameters**
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ---- | ---------------- |
-|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt12)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationActiveReason](#navdestinationactivereason17)\>\>| Yes| Reason why the **NavDestination** component switches from active to inactive.|
+|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationActiveReason](#navdestinationactivereason17)\>\>| Yes| Reason why the **NavDestination** component switches from active to inactive.|
 
 ### onNewParam<sup>19+</sup>
 
@@ -764,7 +764,7 @@ Triggered when a **NavDestination** page that already exists in the stack is mov
 **Parameters**
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ---- | ---------------- |
-|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt12)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<ESObject\>\>| Yes| Callback triggered by **onNewParam**, with the parameter being the data passed to the target page during navigation.|
+|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<ESObject\>\>| Yes| Callback triggered by **onNewParam**, with the parameter being the data passed to the target page during navigation.|
 
 ## NavDestinationCommonTitle
 
