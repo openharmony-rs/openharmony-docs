@@ -24,6 +24,10 @@ import { media } from '@kit.MediaKit';
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 类型                                 | 只读 | 可选 | 说明               |
 | ------- | ------------------------------------ | ---- | ---- | ------------------ |
 | state9+ | [AVRecorderState](arkts-apis-media-t.md#avrecorderstate9) | 是   | 否   | 音视频录制的状态。<br>**原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
@@ -1562,7 +1566,7 @@ onAudioCapturerChange(callback: Callback<audio.AudioCapturerChangeInfo>): void
 
 当用户重复订阅时，以最后一次订阅的回调接口为准。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1600,7 +1604,7 @@ offAudioCapturerChange(callback?: Callback<audio.AudioCapturerChangeInfo>): void
 
 取消订阅录音变化的回调事件。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1626,7 +1630,7 @@ onPhotoAssetAvailable(callback: Callback<photoAccessHelper.PhotoAsset>): void
 
 当用户重复订阅时，以最后一次订阅的回调接口为准。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1689,7 +1693,7 @@ offPhotoAssetAvailable(callback?: Callback<photoAccessHelper.PhotoAsset>): void
 
 取消订阅媒体资源的回调类型。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1713,7 +1717,7 @@ onStateChange(callback: OnAVRecorderStateChangeHandler): void
 
 订阅录制状态机AVRecorderState切换的事件，当AVRecorderState状态机发生变化时，会通过订阅的回调方法通知用户。用户只能订阅一个录制状态机切换事件的回调方法，当用户重复订阅时，以最后一次订阅的回调接口为准。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1747,7 +1751,7 @@ offStateChange(callback?: OnAVRecorderStateChangeHandler): void
 
 取消订阅录制状态机[AVRecorderState](arkts-apis-media-t.md#avrecorderstate9)切换的事件。这个事件可被用户和系统操作触发。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1771,7 +1775,7 @@ onError(callback: ErrorCallback): void
 
 订阅AVRecorder的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。如果此时[AVRecorderState](arkts-apis-media-t.md#avrecorderstate9)也切至error状态，用户需要通过[reset()](#reset9)或者[release()](#release9)退出录制操作。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1788,6 +1792,7 @@ onError(callback: ErrorCallback): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
+| 201      | Permission denied.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801      | Capability not supported. |
 | 5400101  | No memory.             |
@@ -1813,7 +1818,7 @@ offError(callback?: ErrorCallback): void
 
 取消订阅录制错误事件，取消后不再接收到AVRecorder的错误事件。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
