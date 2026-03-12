@@ -375,7 +375,7 @@
     - [FAQs About Buttons and Selection Components](arkts-select-component-faq.md)
     - [FAQs About Text Components](arkts-text-faq.md)
     - [FAQs About Dynamic Attribute Setting](arkts-attribute-modifier-faq.md)
-    - [FAQs About Command Nodes](arkts-arkui-frameNode-faq.md)
+    - [FAQs About Imperative Nodes](arkts-arkui-frameNode-faq.md)
     - [FAQs About UI Parallelization](multi-thread-ui-build-faq.md)
 - [Window Manager](../windowmanager/Readme-EN.md)<!--window-manager-->
 - [Display Management](../displaymanager/Readme-EN.md)<!--display-manager-->
