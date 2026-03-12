@@ -17604,7 +17604,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp",
 				"functions":[
 					{
-						"end_line":666,
+						"end_line":746,
 						"name":"arkUICustomNodeCpp_start",
 						"start_line":28
 					}
