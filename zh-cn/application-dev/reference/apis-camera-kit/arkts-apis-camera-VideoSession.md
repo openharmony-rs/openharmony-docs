@@ -32,7 +32,7 @@ canPreconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): boo
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -101,7 +101,7 @@ preconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -209,7 +209,7 @@ onError(callback: ErrorCallback): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -274,7 +274,7 @@ offError(callback?: ErrorCallback): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -351,7 +351,7 @@ onFocusStateChange(callback: AsyncCallback\<FocusState\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -420,7 +420,7 @@ offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -497,7 +497,7 @@ onSmoothZoomInfoAvailable(callback: AsyncCallback\<SmoothZoomInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -566,7 +566,7 @@ offSmoothZoomInfoAvailable(callback?: AsyncCallback\<SmoothZoomInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -643,7 +643,7 @@ onAutoDeviceSwitchStatusChange(callback: AsyncCallback\<AutoDeviceSwitchStatus\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -712,7 +712,7 @@ offAutoDeviceSwitchStatusChange(callback?: AsyncCallback\<AutoDeviceSwitchStatus
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -743,7 +743,7 @@ setQualityPrioritization(quality : QualityPrioritization) : void;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

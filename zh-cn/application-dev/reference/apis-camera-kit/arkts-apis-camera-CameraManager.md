@@ -25,7 +25,7 @@ getSupportedCameras(): Array\<CameraDevice\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -62,7 +62,7 @@ getSupportedSceneModes(camera: CameraDevice): Array\<SceneMode\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -105,7 +105,7 @@ getSupportedOutputCapability(camera: CameraDevice, mode: SceneMode): CameraOutpu
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -198,7 +198,7 @@ isCameraMuted(): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -231,7 +231,7 @@ createCameraInput(camera: CameraDevice): CameraInput
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -289,7 +289,7 @@ createCameraInput(position: CameraPosition, type: CameraType): CameraInput
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -346,7 +346,7 @@ createPreviewOutput(profile: Profile, surfaceId: string): PreviewOutput
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -401,7 +401,7 @@ createPreviewOutput(surfaceId: string): PreviewOutput
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -454,7 +454,7 @@ createPhotoOutput(profile?: Profile): PhotoOutput
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -508,7 +508,7 @@ createVideoOutput(profile: VideoProfile, surfaceId: string): VideoOutput
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -563,7 +563,7 @@ createVideoOutput(surfaceId: string): VideoOutput
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -616,7 +616,7 @@ createMetadataOutput(metadataObjectTypes: Array\<MetadataObjectType\>): Metadata
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -669,7 +669,7 @@ createSession\<T extends Session\>(mode: SceneMode): T
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -772,7 +772,7 @@ onCameraStatus(callback: AsyncCallback\<CameraStatusInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -842,7 +842,7 @@ offCameraStatus(callback?: AsyncCallback\<CameraStatusInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -920,7 +920,7 @@ onFoldStatusChange(callback: AsyncCallback\<FoldStatusInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -990,7 +990,7 @@ offFoldStatusChange(callback?: AsyncCallback\<FoldStatusInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1018,7 +1018,7 @@ isTorchSupported(): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1047,7 +1047,7 @@ isTorchModeSupported(mode: TorchMode): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1082,7 +1082,7 @@ getTorchMode(): TorchMode
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1112,7 +1112,7 @@ setTorchMode(mode: TorchMode): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1206,7 +1206,7 @@ onTorchStatusChange(callback: AsyncCallback\<TorchStatusInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1275,7 +1275,7 @@ offTorchStatusChange(callback?: AsyncCallback\<TorchStatusInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1303,7 +1303,7 @@ getCameraDevice(position:CameraPosition, type: CameraType): CameraDevice
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1430,7 +1430,7 @@ getCameraConcurrentInfos(cameras: Array\<CameraDevice\>): Array\<CameraConcurren
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
