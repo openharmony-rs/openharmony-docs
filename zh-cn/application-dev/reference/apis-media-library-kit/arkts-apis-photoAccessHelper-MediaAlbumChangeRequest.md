@@ -113,9 +113,9 @@ ArkTS-Sta: getAlbum(): Album \| null
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| ArkTS-Dyn: 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| ArkTS-Dyn: 14000011 |  System inner fail.         |
-| ArkTS-Sta: 23800301 |  Internal system error. It is recommended to retry and check the logs.<br/>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
+|  401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.<br>**ArkTS模式:** 该错误码仅适用于ArkTS-Dyn。 |
+| 14000011 |  System inner fail.<br>**ArkTS模式:** 该错误码仅适用于ArkTS-Dyn。         |
+| 23800301 |  Internal system error. It is recommended to retry and check the logs.<br/>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.<br>**ArkTS模式:** 该错误码仅适用于ArkTS-Sta。         |
 
 **示例：**
 
