@@ -588,7 +588,7 @@ removeFirst(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
+| 10200010 | Container is empty. |
 | 10200011 | The removeFirst method cannot be bound. |
 
 **示例：**
@@ -677,7 +677,7 @@ removeByIndex(index: int): T \| undefined
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 10200001 | The value of "index" is out of range. It must be >= 0 && <= ${length}. Received value is: ${index} |
-| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
+| 10200010 | Container is empty. |
 
 **示例：**
 

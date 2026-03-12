@@ -345,7 +345,7 @@ byteLength(string: string | Buffer | TypedArray | DataView | ArrayBuffer | Share
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -427,7 +427,7 @@ compare(buf1: Buffer | Uint8Array, buf2: Buffer | Uint8Array): -1 | 0 | 1
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1036,7 +1036,7 @@ compare(target: Buffer | Uint8Array, targetStart?: number, targetEnd?: number, s
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 **示例：**
@@ -2918,7 +2918,7 @@ toString(encoding?: string, start?: number, end?: number): string
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **示例：**
 
@@ -4295,7 +4295,7 @@ Blob的构造函数。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 ```ts
