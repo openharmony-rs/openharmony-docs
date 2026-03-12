@@ -456,7 +456,7 @@ type MediaDescription = Record<string, Object>
 
 | 类型   | 说明                                                         |
 |------ | ------------------------------------------------------------ |
-| Record\<string, Object> |  表示值类型为键值对，其中key和value的类型与范围请参考该键值对支持的key取值范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)。 |
+| Record\<string, Object> |  表示值类型为键值对，其中key和value的类型与范围请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)。 |
 
 ## AudioState<sup>(deprecated)</sup>
 
