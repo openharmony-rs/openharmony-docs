@@ -1036,8 +1036,8 @@ struct PickerDemo {
 
         PhotoPickerComponent({
           pickerOptions: this.pickerOptions,
-          // onSelect: (uri: string): void => this.onSelect(uri),
-          // onDeselect: (uri: string): void => this.onDeselect(uri),
+          onSelect: (uri: string): void => this.onSelect(uri),
+          onDeselect: (uri: string): void => this.onDeselect(uri),
           onItemClicked: (itemInfo: ItemInfo, clickType: ClickType): boolean => this.onItemClicked(itemInfo,
             clickType), // 该接口可替代上面两个接口。
           onEnterPhotoBrowser: (photoBrowserInfo: PhotoBrowserInfo): boolean => this.onEnterPhotoBrowser(photoBrowserInfo),
