@@ -94,6 +94,24 @@ Codec MIME类型枚举。
 | AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | 表示音频/amr-nb类型。<br>**ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
 | AUDIO_AMR_WB<sup>18+</sup>   | 'audio/amr-wb'     | 表示音频/amr-wb类型。<br>**ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
 
+## AacProfile<sup>22+</sup>
+
+高级音频编码（AAC）类型枚举。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称         | 值                    | 说明                        |
+| ------------ | --------------------- | --------------------------- |
+| AAC_LC       |     0                 | 表示AAC Low-Complexity类型。        |
+| AAC_HE       |     1                 | 表示AAC High-Efficiency类型。        |
+| AAC_HE_V2    |     2                 | 表示AAC High-Efficiency version 2类型。     |
+
 ## MediaDescriptionKey<sup>8+</sup>
 
 媒体信息描述枚举。
@@ -303,14 +321,10 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                        | 值   | 说明                                              |
 | ----------------------------| ---- | ------------------------------------------------ |
-| VIDEO_SCALE_TYPE_FIT        | 0    | 默认比例类型，视频拉伸至与窗口等大。                |
-| VIDEO_SCALE_TYPE_FIT_CROP   | 1    | 保持视频宽高比缩放至最短边填满窗口，长边超出窗口部分被裁剪。     |
+| VIDEO_SCALE_TYPE_FIT        | 0    | 默认比例类型，视频拉伸至与窗口等大。<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23                |
+| VIDEO_SCALE_TYPE_FIT_CROP   | 1    | 保持视频宽高比缩放至最短边填满窗口，长边超出窗口部分被裁剪。<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23     |
 | VIDEO_SCALE_TYPE_SCALED_ASPECT<sup>20+</sup> | 2    | 保持视频宽高比缩放至长边填满窗口，短边居中对齐，未填满部分留黑。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23  |
 
 ## AudioSourceType<sup>9+</sup>
@@ -321,18 +335,22 @@ Codec MIME类型枚举。
 
 | 名称                      | 值   | 说明                   |
 | ------------------------- | ---- | ---------------------- |
-| AUDIO_SOURCE_TYPE_DEFAULT | 0    | 默认的音频输入源类型。 |
-| AUDIO_SOURCE_TYPE_MIC     | 1    | 表示MIC的音频输入源。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
-| AUDIO_SOURCE_TYPE_VOICE_RECOGNITION<sup>12+</sup> | 2    | 表示语音识别场景的音频源。 |
-| AUDIO_SOURCE_TYPE_VOICE_COMMUNICATION<sup>12+</sup>     | 7    | 表示语音通话场景的音频源。 |
-| AUDIO_SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup> | 10    | 表示短语音消息的音频源。 |
-| AUDIO_SOURCE_TYPE_CAMCORDER<sup>12+</sup>     | 13    | 表示相机录像的音频源。 |
+| AUDIO_SOURCE_TYPE_DEFAULT | 0    | 默认的音频输入源类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| AUDIO_SOURCE_TYPE_MIC     | 1    | 表示MIC的音频输入源。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| AUDIO_SOURCE_TYPE_VOICE_RECOGNITION<sup>12+</sup> | 2    | 表示语音识别场景的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SOURCE_TYPE_VOICE_COMMUNICATION<sup>12+</sup>     | 7    | 表示语音通话场景的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup> | 10    | 表示短语音消息的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SOURCE_TYPE_CAMCORDER<sup>12+</sup>     | 13    | 表示相机录像的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## VideoSourceType<sup>9+</sup>
 
 表示视频录制中视频源类型的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值   | 说明                            |
 | ----------------------------- | ---- | ------------------------------- |
@@ -516,6 +534,8 @@ Codec MIME类型枚举。
 
 表示音频编码格式的枚举。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
 | 名称    | 值   | 说明                                                         |
@@ -533,6 +553,8 @@ Codec MIME类型枚举。
 
 表示音频封装格式的枚举。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
 | 名称     | 值   | 说明                                                         |
@@ -546,6 +568,8 @@ Codec MIME类型枚举。
 ## MediaErrorCode<sup>(deprecated)</sup>
 
 媒体服务错误类型枚举。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 > **说明：**
 > 从API version 8开始支持，从API version 11开始废弃，建议使用[媒体错误码](#averrorcode9)替代。
