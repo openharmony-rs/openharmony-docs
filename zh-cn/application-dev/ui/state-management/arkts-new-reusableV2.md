@@ -212,20 +212,24 @@ struct Index {
   @Local condition2: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('step1. appear')
+        .width('60%')
         .onClick(() => {
           this.condition1 = true;
         })
       Button('step2. recycle')
+        .width('60%')
         .onClick(() => {
           this.condition2 = false;
         })
       Button('step3. reuse')
+        .width('60%')
         .onClick(() => {
           this.condition2 = true;
         })
       Button('step4. disappear')
+        .width('60%')
         .onClick(() => {
           this.condition1 = false;
         })
@@ -233,6 +237,7 @@ struct Index {
         NormalV2Component({ condition: this.condition2 })
       }
     }
+    .width('100%')
   }
 }
 
@@ -312,12 +317,14 @@ struct Index {
   @Local condition: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('Reuse/Recycle')
+        .width('60%')
         .onClick(() => {
           this.condition = !this.condition;
         })
       Button('Change value')
+        .width('60%')
         .onClick(() => {
           info.age++;
         })
@@ -325,6 +332,7 @@ struct Index {
         ReusableV2Component()
       }
     }
+    .width('100%')
   }
 }
 
@@ -421,12 +429,12 @@ struct Index {
   @Local condition: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('Recycle/Reuse')
         .onClick(() => {
           this.condition = !this.condition;
         })
-      Column() {
+      Column({ space: 10 }) {
         Text('Variables of parent component')
         Text(`local: ${this.local}`)
           .onClick(() => {
@@ -436,7 +444,9 @@ struct Index {
           .onClick(() => {
             this.inheritProvider++;
           })
-      }.borderWidth(2)
+      }
+      .width('80%')
+      .borderWidth(2)
 
       if (this.condition) {
         ReusableV2Component({
@@ -448,6 +458,7 @@ struct Index {
         })
       }
     }
+    .width('100%')
   }
 }
 
@@ -483,8 +494,8 @@ struct ReusableV2Component {
   }
 
   build() {
-    Column() {
-      Column() {
+    Column({ space: 10 }) {
+      Column({ space: 10 }) {
         Text('Variables reset to local initial values')
         Text(`val: ${this.val}`)
           .onClick(() => {
@@ -506,9 +517,11 @@ struct ReusableV2Component {
           .onClick(() => {
             this.selfConsumer++;
           })
-      }.borderWidth(2)
+      }
+      .width('80%')
+      .borderWidth(2)
 
-      Column() {
+      Column({ space: 10 }) {
         Text('Reset to an external variable')
         Text(`paramOut: ${this.paramOut}`)
           .onClick(() => {
@@ -518,18 +531,22 @@ struct ReusableV2Component {
           .onClick(() => {
             this.paramOnce++;
           })
-      }.borderWidth(2)
+      }
+      .width('80%')
+      .borderWidth(2)
 
-      Column() {
+      Column({ space: 10 }) {
         Text('Depending on the parent component')
         Text(`inheritConsumer: ${this.inheritConsumer}`)
           .onClick(() => {
             this.inheritConsumer++;
           })
         Text(`plusParam: ${this.plusParam}`)
-      }.borderWidth(2)
+      }
+      .width('80%')
+      .borderWidth(2)
 
-      Column() {
+      Column({ space: 10 }) {
         Text('Not reset')
         Text(`noDecoVariable: ${this.noDecoVariable}`)
         Text(`noDecoInfo.age: ${this.noDecoInfo.age}`)
@@ -537,8 +554,11 @@ struct ReusableV2Component {
             this.noDecoInfo.age++;
           }) // 能够触发刷新但是复用时不会被重置
         Text(`readOnlyVariable: ${this.readOnlyVariable}`)
-      }.borderWidth(2)
+      }
+      .width('80%')
+      .borderWidth(2)
     }
+    .width('100%')
   }
 }
 ```
@@ -574,8 +594,9 @@ struct Index {
   @Local condition: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('Recycle/Reuse')
+        .width('60%')
         .onClick(() => {
           this.condition = !this.condition;
         })
@@ -583,6 +604,7 @@ struct Index {
         ReusableV2Component()
       }
     }
+    .width('100%')
   }
 }
 
@@ -649,8 +671,9 @@ struct Index {
   @Local condition: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('Recycle/Reuse')
+        .width('60%')
         .onClick(() => {
           this.condition = !this.condition;
         }) // 点击切换回收/复用状态
@@ -658,6 +681,7 @@ struct Index {
         ReusableV2Component()
       }
     }
+    .width('100%')
   }
 }
 
@@ -731,6 +755,7 @@ struct Index {
                 ReusableV2Component({ num: obj.item })
               }
             }
+            .width('100%')
           })
       }.height('50%')
       .cachedCount(2)
@@ -784,20 +809,24 @@ struct Index {
   @Local condition: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('Delete/Create Repeat')
+        .width('60%')
         .onClick(() => {
           this.condition = !this.condition;
         })
       Button('Add element')
+        .width('60%')
         .onClick(() => {
           this.simpleList.push(this.simpleList.length + 1);
         })
       Button('Delete element')
+        .width('60%')
         .onClick(() => {
           this.simpleList.pop();
         })
       Button('Change element')
+        .width('60%')
         .onClick(() => {
           this.simpleList[0]++;
         })
@@ -809,11 +838,13 @@ struct Index {
                 Column() {
                   ReusableV2Component({ num: obj.item })
                 }
+                .width('100%')
               }
             })
         }
       }
     }
+    .width('100%')
   }
 }
 
@@ -870,11 +901,13 @@ struct Index {
       ForEach(this.simpleList, (num: number, index) => {
         Row() {
           Button('Click to change')
+            .margin({ right: 10 })
             .onClick(() => {
               this.simpleList[index]++;
             })
           ReusableV2Component({ num: num })
         }
+        .margin({ bottom: 10 })
       }) // 每次修改完key发生变化
     }
   }
