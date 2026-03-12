@@ -8598,7 +8598,7 @@ onSubWindowClose(callback: Callback&lt;void&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('subWindowClose')](#onsubwindowclose12)。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+**系统能力：** SystemCapability.Window.SessionManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -8693,7 +8693,7 @@ offSubWindowClose(callback?: Callback&lt;void&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('subWindowClose')](#offsubwindowclose12)。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+**系统能力：** SystemCapability.Window.SessionManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -14225,7 +14225,7 @@ ArkTS-Sta: setParentWindow(windowId: int): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| windowId  | ArkTS-Dyn: number<br/>ArKTS-Sta: int | 是   | 父窗口id，该参数应为整数。推荐使用[getWindowProperties()](#getwindowproperties9)方法获取父窗口id属性。|
+| windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 父窗口id，该参数应为整数。推荐使用[getWindowProperties()](#getwindowproperties9)方法获取父窗口id属性。|
 
 **返回值：**
 
