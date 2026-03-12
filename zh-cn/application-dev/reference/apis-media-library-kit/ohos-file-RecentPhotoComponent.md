@@ -33,8 +33,6 @@ RecentPhotoComponent，是最近图片组件，可用于访问公共目录下的
 
 **装饰器类型**：@Component
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **ArkTS-Dyn起始版本：** 12
@@ -53,8 +51,6 @@ RecentPhotoComponent，是最近图片组件，可用于访问公共目录下的
 最近图片配置选项。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -93,8 +89,6 @@ type RecentPhotoCheckResultCallback = (recentPhotoExists: boolean) => void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **ArkTS-Dyn起始版本：** 12
@@ -112,8 +106,6 @@ type RecentPhotoClickCallback = (recentPhotoInfo: BaseItemInfo) => boolean
 选择最近图片触发的回调事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -157,8 +149,6 @@ type RecentPhotoCheckInfoCallback = (recentPhotoExists: boolean, info: RecentPho
 枚举，图片或者视频数据的来源类型。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
