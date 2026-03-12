@@ -39,7 +39,7 @@ devicedebug help
 ```bash
 devicedebug kill
 ```
-用于向debug类型的应用进程发送signal（1-64）信号，应用进程接受到信号后终止对应pid进程。
+用于向debug类型的应用进程发送signal（1-64）信号，应用进程接收到信号后终止对应pid进程。
 
 **表3** kill命令列表
   | 命令 | 描述 |
