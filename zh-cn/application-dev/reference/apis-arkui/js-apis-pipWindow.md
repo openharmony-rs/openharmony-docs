@@ -343,12 +343,12 @@ struct Index {
 
 **ArkTS-Sta起始版本：** 24
 
-| 名称            | 值   | 说明                                   |
-|---------------|-----|--------------------------------------|
-| VIDEO_PLAY    | 0   | 表示将要切换为画中画播放的媒体类型是视频，系统依此加载视频播放模板，该模板默认存在播放/暂停控件。   |
-| VIDEO_CALL    | 1   | 表示将要切换为画中画播放的媒体类型是视频通话，系统依此加载视频通话模板。 |
-| VIDEO_MEETING | 2   | 表示将要切换为画中画播放的媒体类型是视频会议，系统依此加载视频会议模板。 |
-| VIDEO_LIVE    | 3   | 表示将要切换为画中画播放的媒体类型是直播，系统依此加载直播模板。     |
+| 名称            | 类型 | 值   | 说明                                   |
+|---------------|-------------------|----|--------------------------------------|
+| VIDEO_PLAY    | ArkTS-Dyn: number <br> ArkTS-Sta: int | 0   | 表示将要切换为画中画播放的媒体类型是视频，系统依此加载视频播放模板，该模板默认存在播放/暂停控件。   |
+| VIDEO_CALL    | ArkTS-Dyn: number <br> ArkTS-Sta: int | 1   | 表示将要切换为画中画播放的媒体类型是视频通话，系统依此加载视频通话模板。 |
+| VIDEO_MEETING | ArkTS-Dyn: number <br> ArkTS-Sta: int | 2   | 表示将要切换为画中画播放的媒体类型是视频会议，系统依此加载视频会议模板。 |
+| VIDEO_LIVE    | ArkTS-Dyn: number <br> ArkTS-Sta: int | 3   | 表示将要切换为画中画播放的媒体类型是直播，系统依此加载直播模板。     |
 
 ## PiPState
 
@@ -362,14 +362,14 @@ struct Index {
 
 **ArkTS-Sta起始版本：** 24
 
-| 名称                   | 值   | 说明                    |
-|----------------------|-----|-----------------------|
-| ABOUT_TO_START       | 1   | 表示画中画将要启动。            |
-| STARTED              | 2   | 表示画中画已经启动。            |
-| ABOUT_TO_STOP        | 3   | 表示画中画将要停止。            |
-| STOPPED              | 4   | 表示画中画已经停止。            |
-| ABOUT_TO_RESTORE     | 5   | 表示画中画将从小窗播放恢复到原始播放界面。 |
-| ERROR                | 6   | 表示画中画生命周期执行过程出现了异常。   |
+| 名称                   | 类型 | 值   | 说明                    |
+|----------------------|------------------|-----|-----------------------|
+| ABOUT_TO_START       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 1   | 表示画中画将要启动。            |
+| STARTED              | ArkTS-Dyn: number <br> ArkTS-Sta: int | 2   | 表示画中画已经启动。            |
+| ABOUT_TO_STOP        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 3   | 表示画中画将要停止。            |
+| STOPPED              | ArkTS-Dyn: number <br> ArkTS-Sta: int | 4   | 表示画中画已经停止。            |
+| ABOUT_TO_RESTORE     | ArkTS-Dyn: number <br> ArkTS-Sta: int | 5   | 表示画中画将从小窗播放恢复到原始播放界面。 |
+| ERROR                | ArkTS-Dyn: number <br> ArkTS-Sta: int | 6   | 表示画中画生命周期执行过程出现了异常。   |
 
 ## PiPControlGroup<sup>12+</sup>
 
@@ -405,10 +405,10 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 **ArkTS-Sta起始版本：** 24
 
-| 名称                   | 值   | 说明                    |
-|----------------------|-----|-----------------------|
-| VIDEO_PREVIOUS_NEXT       | 101   | 视频上一个/下一个控件组。<br/>与视频快进/后退控件组为互斥控件组。如添加视频快进/后退控件组，则不可添加该控件组。           |
-| FAST_FORWARD_BACKWARD    | 102   | 视频快进/后退控件组。<br/>与视频上一个/下一个控件组为互斥控件组。如添加视频上一个/下一个控件组，则不可添加该控件组。           |
+| 名称                   | 类型 |  值   | 说明                    |
+|----------------------|------|----|-----------------------|
+| VIDEO_PREVIOUS_NEXT      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 101   | 视频上一个/下一个控件组。<br/>与视频快进/后退控件组为互斥控件组。如添加视频快进/后退控件组，则不可添加该控件组。           |
+| FAST_FORWARD_BACKWARD    | ArkTS-Dyn: number <br> ArkTS-Sta: int | 102   | 视频快进/后退控件组。<br/>与视频上一个/下一个控件组为互斥控件组。如添加视频上一个/下一个控件组，则不可添加该控件组。           |
 
 ## VideoCallControlGroup<sup>12+</sup>
 
@@ -422,12 +422,12 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 **ArkTS-Sta起始版本：** 24
 
-| 名称                   | 值   | 说明                    |
-|----------------------|-----|-----------------------|
-| MICROPHONE_SWITCH       | 201   | 打开/关闭麦克风控件组。            |
-| HANG_UP_BUTTON    | 202   | 挂断控件组。           |
-| CAMERA_SWITCH    | 203   | 打开/关闭摄像头控件组。            |
-| MUTE_SWITCH    | 204   | 静音控件组。            |
+| 名称                   | 类型 | 值   | 说明                    |
+|----------------------|-----|-----|------------------|
+| MICROPHONE_SWITCH  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 201   | 打开/关闭麦克风控件组。            |
+| HANG_UP_BUTTON     | ArkTS-Dyn: number <br> ArkTS-Sta: int | 202   | 挂断控件组。           |
+| CAMERA_SWITCH      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 203   | 打开/关闭摄像头控件组。            |
+| MUTE_SWITCH        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 204   | 静音控件组。            |
 
 ## VideoMeetingControlGroup<sup>12+</sup>
 
@@ -441,12 +441,12 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 **ArkTS-Sta起始版本：** 24
 
-| 名称                   | 值   | 说明                    |
-|----------------------|-----|-----------------------|
-| HANG_UP_BUTTON       | 301   | 挂断控件组。          |
-| CAMERA_SWITCH    | 302   | 打开/关闭摄像头控件组。           |
-| MUTE_SWITCH    | 303   | 静音控件组。            |
-| MICROPHONE_SWITCH       | 304   | 打开/关闭麦克风控件组。            |
+| 名称                   | 类型 | 值   | 说明                    |
+|----------------------|-----|----|-------------------|
+| HANG_UP_BUTTON       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 301   | 挂断控件组。          |
+| CAMERA_SWITCH        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 302   | 打开/关闭摄像头控件组。           |
+| MUTE_SWITCH          | ArkTS-Dyn: number <br> ArkTS-Sta: int | 303   | 静音控件组。            |
+| MICROPHONE_SWITCH    | ArkTS-Dyn: number <br> ArkTS-Sta: int | 304   | 打开/关闭麦克风控件组。            |
 
 ## VideoLiveControlGroup<sup>12+</sup>
 
@@ -460,10 +460,10 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 **ArkTS-Sta起始版本：** 24
 
-| 名称                   | 值   | 说明                    |
-|----------------------|-----|-----------------------|
-| VIDEO_PLAY_PAUSE     | 401   |   播放/暂停直播控件组。 |
-| MUTE_SWITCH         | 402   | 静音控件组。            |
+| 名称                   | 类型 | 值   | 说明                    |
+|----------------------|-----|----|-------------------|
+| VIDEO_PLAY_PAUSE    | ArkTS-Dyn: number <br> ArkTS-Sta: int | 401   |   播放/暂停直播控件组。 |
+| MUTE_SWITCH         | ArkTS-Dyn: number <br> ArkTS-Sta: int | 402   | 静音控件组。            |
 
 ## PiPActionEventType
 
@@ -584,12 +584,12 @@ type PiPLiveActionEvent = 'playbackStateChanged' | 'voiceStateChanged'
 
 **ArkTS-Sta起始版本：** 24
 
-| 名称                   | 值   | 说明                    |
-|----------------------|-----|-----------------------|
-| PLAY       | 1   | 播放。          |
-| PAUSE    | 0   | 暂停。           |
-| OPEN    | 1   | 打开。            |
-| CLOSE       | 0   | 关闭。          |
+| 名称                   | 类型 | 值   | 说明                    |
+|----------------------|-----|----|-------------------|
+| PLAY     | ArkTS-Dyn: number <br> ArkTS-Sta: int | 1   | 播放。          |
+| PAUSE    | ArkTS-Dyn: number <br> ArkTS-Sta: int | 0   | 暂停。           |
+| OPEN     | ArkTS-Dyn: number <br> ArkTS-Sta: int | 1   | 打开。            |
+| CLOSE    | ArkTS-Dyn: number <br> ArkTS-Sta: int | 0   | 关闭。          |
 
 ## PiPControlType<sup>12+</sup>
 
@@ -603,22 +603,24 @@ type PiPLiveActionEvent = 'playbackStateChanged' | 'voiceStateChanged'
 
 **ArkTS-Sta起始版本：** 24
 
-| 名称                | 值   | 说明                                   |
-|-------------------|-----|--------------------------------------|
-| VIDEO_PLAY_PAUSE  | 0   | 播放/暂停控件。   |
-| VIDEO_PREVIOUS    | 1   | 视频上一个控件。 |
-| VIDEO_NEXT        | 2   | 视频下一个控件。 |
-| FAST_FORWARD      | 3   | 视频快进控件     |
-| FAST_BACKWARD     | 4   | 视频快退控件。   |
-| HANG_UP_BUTTON           | 5   | 挂断控件。 |
-| MICROPHONE_SWITCH | 6  | 打开/关闭麦克风控件。 |
-| CAMERA_SWITCH     | 7   | 打开/关闭摄像头控件。     |
-| MUTE_SWITCH       | 8   | 打开/关闭静音控件。     |
+| 名称                | 类型 | 值   | 说明                                   |
+|-------------------|-----|------|--------------------------------|
+| VIDEO_PLAY_PAUSE  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 0   | 播放/暂停控件。   |
+| VIDEO_PREVIOUS    | ArkTS-Dyn: number <br> ArkTS-Sta: int | 1   | 视频上一个控件。 |
+| VIDEO_NEXT        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 2   | 视频下一个控件。 |
+| FAST_FORWARD      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 3   | 视频快进控件     |
+| FAST_BACKWARD     | ArkTS-Dyn: number <br> ArkTS-Sta: int | 4   | 视频快退控件。   |
+| HANG_UP_BUTTON    | ArkTS-Dyn: number <br> ArkTS-Sta: int | 5   | 挂断控件。 |
+| MICROPHONE_SWITCH | ArkTS-Dyn: number <br> ArkTS-Sta: int | 6   | 打开/关闭麦克风控件。 |
+| CAMERA_SWITCH     | ArkTS-Dyn: number <br> ArkTS-Sta: int | 7   | 打开/关闭摄像头控件。     |
+| MUTE_SWITCH       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 8   | 打开/关闭静音控件。     |
 
 
 ## ControlPanelActionEventCallback<sup>12+</sup>
 
-type ControlPanelActionEventCallback = (event: PiPActionEventType, status?: number) => void
+ArkTS-Dyn: type ControlPanelActionEventCallback = (event: PiPActionEventType, status?: number) => void
+
+ArkTS-Sta: type ControlPanelActionEventCallback = (event: PiPActionEventType, status?: int) => void
 
 描述画中画控制面板控件动作事件回调。
 
@@ -635,7 +637,7 @@ type ControlPanelActionEventCallback = (event: PiPActionEventType, status?: numb
 | 参数名                       | 类型           | 必填    | 说明                                |
 |--------------------------|--------------|--------------|-----------------------------------|
 | event       |  [PiPActionEventType](#pipactioneventtype)       | 是 | 回调画中画控制面板控件动作事件类型。<br/>应用依据控件动作事件做相应处理，如触发'playbackStateChanged'事件时，需要开始或停止视频。 |
-| status | number | 否 | 表示可切换状态的控件当前的状态，如具备打开和关闭两种状态的麦克风控件组、摄像头控件组和静音控件组，打开为1，关闭为0。其余控件该参数返回默认值-1。 |
+| status | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 表示可切换状态的控件当前的状态，如具备打开和关闭两种状态的麦克风控件组、摄像头控件组和静音控件组，打开为1，关闭为0。其余控件该参数返回默认值-1。 |
 
 
 ## StateChangeCallback<sup>24+</sup>
@@ -814,8 +816,8 @@ updateContentSize(width: number, height: number): void
 
 | 参数名    | 类型     | 必填  | 说明                                     |
 |--------|--------|-----|----------------------------------------|
-| width  | number | 是   | 表示媒体内容宽度，必须为大于0的整数，单位为px。用于更新画中画窗口比例。  |
-| height | number | 是   | 表示媒体内容高度，必须为大于0的整数，单位为px。用于更新画中画窗口比例。  |
+| width  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 表示媒体内容宽度，必须为大于0的整数，单位为px。用于更新画中画窗口比例。  |
+| height | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 表示媒体内容高度，必须为大于0的整数，单位为px。用于更新画中画窗口比例。  |
 
 **错误码：**
 
@@ -1320,7 +1322,7 @@ onControlPanelActionEvent(callback: ControlPanelActionEventCallback): void
 **示例：**
 
 ```ts
-this.pipController.onControlPanelActionEvent((event: PiPWindow.PiPActionEventType, status?: number) => {
+this.pipController.onControlPanelActionEvent((event: PiPWindow.PiPActionEventType, status?: int) => {
   switch (event) {
     case 'playbackStateChanged':
       if (status === 0) {
