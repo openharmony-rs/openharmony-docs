@@ -420,8 +420,8 @@ installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : Promise\<C
 
 | 参数名      | 类型       | 必填 |说明                                            |
 | ----------- | ---------- | ---- |---------------------------------------------------|
-| keystore    | Uint8Array | `是`  |表示带有密钥对和证书的密钥库文件，仅支持P12格式。 |
-| keystorePwd | string     | `是`  |表示密钥库文件的密码。 |
+| keystore    | Uint8Array | 是  |表示带有密钥对和证书的密钥库文件，仅支持P12格式。 |
+| keystorePwd | string     | 是  |表示密钥库文件的密码。 |
 
 **返回值**：
 
@@ -594,8 +594,8 @@ grantPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<CMResult
 
 | 参数名       | 类型       | 必填 |说明                                            |
 | ------------ | ---------- | ---- |---------------------------------------------------|
-| keyUri       | string     | `是`  |表示用户公共凭据的唯一标识符。 |
-| clientAppUid | int        | `是`  |表示应用UID。 |
+| keyUri       | string     | 是  |表示用户公共凭据的唯一标识符。 |
+| clientAppUid | number        | 是  |表示应用UID。 |
 
 **返回值**：
 
@@ -714,8 +714,8 @@ removeGrantedPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<
 
 | 参数名       | 类型       | 必填 |说明                                            |
 | ------------ | ---------- | ---- |---------------------------------------------------|
-| keyUri       | string     | `是`  |表示用户公共凭据的唯一标识符。 |
-| clientAppUid | int        | `是`  |表示应用UID。 |
+| keyUri       | string     | 是  |表示用户公共凭据的唯一标识符。 |
+| clientAppUid | number        | 是  |表示应用UID。 |
 
 **返回值**：
 
@@ -772,7 +772,7 @@ getAllAppPrivateCertificatesByUid(appUid: number) : Promise\<CMResult>
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| appUid | int                   | 是   | 表示应用UID。 |
+| appUid | number                   | 是   | 表示应用UID。 |
 
 **返回值**：
 
@@ -833,8 +833,8 @@ installSystemAppCertificate(keystore: Uint8Array, keystorePwd: string): Promise\
 
 | 参数名      | 类型       | 必填 |说明                                            |
 | ----------- | ---------- | ---- |---------------------------------------------------|
-| keystore    | Uint8Array | `是`  |表示带有密钥对和证书的密钥库文件，仅支持P12格式。 |
-| keystorePwd | string     | `是`  |表示密钥库文件的密码。 |
+| keystore    | Uint8Array | 是  |表示带有密钥对和证书的密钥库文件，仅支持P12格式。 |
+| keystorePwd | string     | 是  |表示密钥库文件的密码。 |
 
 **返回值**：
 
