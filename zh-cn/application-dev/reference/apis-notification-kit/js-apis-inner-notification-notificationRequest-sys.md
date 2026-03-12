@@ -195,7 +195,7 @@
 | displayTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 条件触发实况的展示时间，单位：秒，取值范围：[15, 1800]，默认值为900。 |
 
 ## GroupInfo<sup>26+</sup>
- 	 
+
 组通知信息。
 
 **系统能力**：SystemCapability.Notification.Notification
