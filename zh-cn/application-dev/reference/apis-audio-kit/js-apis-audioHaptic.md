@@ -83,9 +83,9 @@ let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.get
 
 | 名称     | 类型           |只读  | 可选  | 说明                             |
 | --------- | -------------- | ---- | ---- | --------------------------------- |
-| fd        | number         | 否   | 否   | 音振资源文件的文件描述符，通常大于等于0。|
-| offset    | number         | 否   | 是   | 文件中数据读取的偏移量。默认情况下，偏移量为0。|
-| length    | number         | 否   | 是   | 读取数据的字节长度。默认情况下，长度为文件中从偏移量位置开始的剩余字节数。|
+| fd        | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 否   | 音振资源文件的文件描述符，通常大于等于0。|
+| offset    | ArkTS-Dyn: number<br>ArkTS-Sta: long         | 否   | 是   | 文件中数据读取的偏移量。默认情况下，偏移量为0。|
+| length    | ArkTS-Dyn: number<br>ArkTS-Sta: long         | 否   | 是   | 读取数据的字节长度。默认情况下，长度为文件中从偏移量位置开始的剩余字节数。|
 
 ## AudioHapticManager<sup>11+</sup>
 
