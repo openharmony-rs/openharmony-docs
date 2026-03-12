@@ -180,7 +180,7 @@ PhotoSelectOptions extends BaseSelectOptions
 
 | 名称                    | 类型                                                                                     | 只读 | 可选  | 说明   |
 |-------------------------|-----------------------------------------------------------------------------------------|-------|-------|--------|
-| period                  | number                                                                                  | 否    | 是 | 配置最近图片显示的时间范围，单位为秒（s）。配置后，系统将显示距离当前时间点指定时长内的图片。最长可配置时长为1天（86400s）。<br/>当值小于等于0、大于86400或者未配置时，默认按最长时间段（1天）显示最近图片。当配置时间段内无符合的图片或视频时，组件不显示。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
+| period                  | number <br>**ArkTS-Dyn：** number<br>**ArkTS-Sta：** int                                                                                 | 否    | 是 | 配置最近图片显示的时间范围，单位为秒（s）。配置后，系统将显示距离当前时间点指定时长内的图片。最长可配置时长为1天（86400s）。<br/>当值小于等于0、大于86400或者未配置时，默认按最长时间段（1天）显示最近图片。当配置时间段内无符合的图片或视频时，组件不显示。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
 | MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | 否    | 是 | 最近图片控件显示的文件类型，默认为PhotoViewMIMETypes.IMAGE_VIDEO_TYPE。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                         |
 | photoSource             | [PhotoSource](arkts-apis-photoAccessHelper-e.md#photosource20)                                                             | 否    | 是 | 配置最近图片视频显示内容的来源，比如拍照、截屏等。默认不限制来源。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                               |
 
