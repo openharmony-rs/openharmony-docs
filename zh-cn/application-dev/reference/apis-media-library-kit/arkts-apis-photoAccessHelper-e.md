@@ -384,6 +384,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 枚举，图片或者视频数据的来源类型。
 
+**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **ArkTS-Dyn起始版本：** 20
