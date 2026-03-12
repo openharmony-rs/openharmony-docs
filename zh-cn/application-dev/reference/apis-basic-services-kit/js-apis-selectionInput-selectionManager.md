@@ -136,7 +136,7 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 创建划词面板。使用Promise异步回调。
 
-单个划词应用仅允许创建一个[@ohos.selectionInput.SelectionPanel](./js-apis-selectionInput-selectionPanel.md)和一个[@ohos.selectionInput.SelectionPanel](./js-apis-selectionInput-selectionPanel.md)的窗口。
+单个划词应用仅允许创建一个[主面板类型](./js-apis-selectionInput-selectionPanel.md)和一个[菜单面板类型](./js-apis-selectionInput-selectionPanel.md)的窗口。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
