@@ -30,7 +30,8 @@ onCreate(want: Want): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](../apis-ability-kit/js-apis-application-want.md#want) | 是 | 表示调用打印页面需要参数。 |
 
@@ -99,7 +100,8 @@ onConnectPrinter(printerId: number): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | number | 是 | 表示打印机ID。 |
 
@@ -125,7 +127,8 @@ onDisconnectPrinter(printerId: number): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | number | 是 | 表示打印机ID。 |
 
@@ -151,9 +154,10 @@ onStartPrintJob(jobInfo: print.PrintJob): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| jobInfo | [print.PrintJob](./js-apis-print.md#printjob24) | 是 | 表示打印任务的信息。 |
+| jobInfo | [print.PrintJob](js-apis-print.md#printjob24) | 是 | 表示打印任务的信息。 |
 
 **示例：**
 
@@ -177,9 +181,10 @@ onCancelPrintJob(jobInfo: print.PrintJob): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| jobInfo | [print.PrintJob](./js-apis-print.md#printjob24) | 是 | 表示打印任务的信息。 |
+| jobInfo | [print.PrintJob](js-apis-print.md#printjob24) | 是 | 表示打印任务的信息。 |
 
 **示例：**
 
@@ -203,14 +208,15 @@ onRequestPrinterCapability(printerId: number): print.PrinterCapability
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | number | 是 | 表示打印机ID。 |
 
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| [print.PrinterCapability](./js-apis-print.md#printercapability24) | 表示打印能力。 |
+| [print.PrinterCapability](js-apis-print.md#printercapability24) | 表示打印能力。 |
 
 **示例：**
 
