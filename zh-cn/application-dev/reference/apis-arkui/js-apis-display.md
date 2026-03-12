@@ -982,7 +982,7 @@ onChangeWithAttribute(displayAttributeOption: Array&lt;string&gt;, callback: Cal
 | 参数名 | 类型 | 必填 | 说明                                                                                                                 |
 | -------- | -------- | -------- |-----------------------------------------------------------------------------------------------------------|
 | displayAttributeOption | Array&lt;string&gt; | 是 | 指定需要监听的屏幕属性名称，且仅限于[display属性](#属性)中包含的属性。                      |
-| callback | Callback&lt;number&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。                                                            |
+| callback | ArkTS-Dyn: Callback&lt;number&gt; <br/> ArkTS-Sta: Callback&lt;long&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。                                                            |
 
 **错误码：**
 
