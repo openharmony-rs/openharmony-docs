@@ -89,9 +89,13 @@ type EmptyAreaClickCallback = () => void
 
 ## AlbumPickerController<sup>20+</sup>
 
+setFontSize(fontSize: number | string): void
+
 应用可通过AlbumPickerController向组件发送数据。
 
 **装饰器类型**：@Observed
+
+**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
