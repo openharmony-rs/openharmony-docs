@@ -478,7 +478,7 @@ function create(context: Context) {
 
 ArkTS-Dyn: play(soundID: number, params: PlayParameters, callback: AsyncCallback\<number>): void
 
-ArkTS-Sta: play(soundID: int, params: PlayParameters, callback: AsyncCallback\<int>)): void
+ArkTS-Sta: play(soundID: int, params: PlayParameters, callback: AsyncCallback\<int>): void
 
 播放音频资源。使用callback方式异步获取音频流streamID。
 
@@ -565,7 +565,7 @@ ArkTS-Sta: play(soundID: int, callback: AsyncCallback\<int>): void
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
 | soundID |ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 资源ID，通过load方法获取。 |
-| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Dyn: AsyncCallback\<int> | 是   | 获取回调的音频流ID，有效值大于0。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<int> | 是   | 获取回调的音频流ID，有效值大于0。 |
 
 **错误码：**
 
@@ -1085,7 +1085,8 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ArkTS-Dyn: setRate(streamID: number, rate: audio.AudioRendererRate, callback: AsyncCallback\<void>): void
 
-ArkTS-Sta:  setRate(streamID: int, rate: audio.AudioRendererRate, callback: AsyncCallback\<void>): void
+ArkTS-Sta: setRate(streamID: int, rate: audio.AudioRendererRate, callback: AsyncCallback\<void>): void
+
 设置音频流播放速率。使用callback方式异步获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
@@ -1347,6 +1348,51 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 });
 
 ```
+### setInterruptMode<sup>23+</sup>
+
+setInterruptMode(interruptMode: media.SoundInterruptMode): void
+
+设置同一ID音频在播放时的打断模式。创建soundPool之后，该接口仅在首次调用soundPool的Play函数之前设置有效，期间可多次设置，否则将默认使用[SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#soundinterruptmode23)，即对同一ID的音频，如果前者尚未播放完成，后者在播放前会先打断前者的播放。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                        |
+| -------- | ---------------------- | ---- | --------------------------- |
+| interruptMode | [media.SoundInterruptMode](arkts-apis-media-e.md#soundinterruptmode23) | 是   | 同一ID音频在播放时的打断模式，通过media.SoundInterruptMode枚举获取。 |
+
+**示例：**
+
+```js
+import { media } from '@kit.MediaKit';
+
+// 创建soundPool实例。
+let soundPool: media.SoundPool;
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 1
+}
+media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
+  if (error) {
+    console.error(`Failed to createSoundPool`);
+    return;
+  } else {
+    soundPool = soundPool_;
+    console.info(`Succeeded in createSoundPool`);
+    // 选择模式1：同ID音频并行播放模式。
+    soundPool.setInterruptMode(media.SoundInterruptMode.NO_INTERRUPT);
+    // 选择模式2：同ID音频截断模式。
+    soundPool.setInterruptMode(media.SoundInterruptMode.SAME_SOUND_INTERRUPT);
+  }
+});
+```
 
 ### unload
 
@@ -1591,11 +1637,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### on('loadComplete')
 
-ArkTS-Dyn: on(type: 'loadComplete', callback: Callback\<number>): void
+on(type: 'loadComplete', callback: Callback\<number>): void
 
 音频池资源加载完成监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onLoadComplete](#onloadcomplete23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1606,7 +1654,7 @@ ArkTS-Dyn: on(type: 'loadComplete', callback: Callback\<number>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 支持的事件：'loadComplete'，对应的ID加载完成会触发此回调。 |
-| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<int> | 是   | 对应资源加载完成的资源ID。                               |
+| callback | Callback\<number> | 是   | 对应资源加载完成的资源ID。                               |
 
 **示例：**
 
@@ -1634,6 +1682,52 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ```
 
+### onLoadComplete<sup>23+</sup>
+
+onLoadComplete(callback: Callback\<int>): void
+
+音频池资源加载完成监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('loadComplete')](#onloadcomplete)。
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<int> | 是   | 对应资源加载完成的资源ID。                               |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建soundPool实例。
+let soundPool: media.SoundPool;
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 1
+}
+media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
+  if (error) {
+    console.error(`Failed to createSoundPool`);
+    return;
+  } else {
+    soundPool = soundPool_;
+    console.info(`Succeeded in createSoundPool`);
+    soundPool.onLoadComplete((soundId: number) => {
+      console.info('Succeeded in loadComplete, soundId：' + soundId);
+    })
+  }
+});
+
+```
+
 ### off('loadComplete')
 
 off(type: 'loadComplete'): void
@@ -1641,6 +1735,8 @@ off(type: 'loadComplete'): void
 取消监听资源的加载完成。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offLoadComplete](#offloadcomplete23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1676,9 +1772,47 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ```
 
+### offLoadComplete<sup>23+</sup>
+
+offLoadComplete(): void
+
+取消监听资源的加载完成。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('loadComplete')](#offloadcomplete)。
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Sta起始版本：** 23
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+//创建soundPool实例。
+let soundPool: media.SoundPool;
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 1
+}
+media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
+  if (error) {
+    console.error(`Failed to createSoundPool`);
+    return;
+  } else {
+    soundPool = soundPool_;
+    console.info(`Succeeded in createSoundPool`);
+    soundPool.offLoadComplete();
+  }
+});
+
+```
+
 ### on('playFinishedWithStreamId')<sup>18+</sup>
 
-ArkTS-Dyn: on(type: 'playFinishedWithStreamId', callback: Callback\<number>): void
+on(type: 'playFinishedWithStreamId', callback: Callback\<number>): void
 
 音频池资源播放完成监听，同时返回播放结束的音频的streamId。
 
@@ -1687,6 +1821,8 @@ ArkTS-Dyn: on(type: 'playFinishedWithStreamId', callback: Callback\<number>): vo
 当同时注册[on('playFinished')](#onplayfinished)事件回调和[on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18)事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlayFinishedWithStreamId](#onplayfinishedwithstreamid23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1697,7 +1833,7 @@ ArkTS-Dyn: on(type: 'playFinishedWithStreamId', callback: Callback\<number>): vo
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 支持的事件：'playFinishedWithStreamId'，音频流播放完成会触发此回调，并返回播放完成的音频的streamId。 |
-| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<int> | 是   |  异步'playFinishedWithStreamId'的回调方法。返回播放完成的音频的streamId。   |
+| callback | Callback\<number> | 是   |  异步'playFinishedWithStreamId'的回调方法。返回播放完成的音频的streamId。   |
 
 **示例：**
 
@@ -1724,6 +1860,55 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool: me
 
 ```
 
+### onPlayFinishedWithStreamId<sup>23+</sup>
+
+onPlayFinishedWithStreamId(callback: Callback\<int>): void
+
+音频池资源播放完成监听，同时返回播放结束的音频的streamId。
+
+当仅单独注册[onPlayFinished](#onplayfinished23)事件回调或者[onPlayFinishedWithStreamId](#onplayfinishedwithstreamid23)事件回调时，当音频播放完成的时候，都会触发注册的回调。
+
+当同时注册[onPlayFinished](#onplayfinished23)事件回调和[onPlayFinishedWithStreamId)](#onplayfinishedwithstreamid23)事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18)。
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<int> | 是   |  异步playFinishedWithStreamId的回调方法。返回播放完成的音频的streamId。   |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建soundPool实例。
+let soundPool_: media.SoundPool;
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 1
+}
+media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool: media.SoundPool) => {
+  if (error) {
+    console.error(`Failed to createSoundPool`);
+  } else {
+    soundPool_ = soundPool;
+    console.info(`Succeeded in createSoundPool`);
+    soundPool_.onPlayFinishedWithStreamId((streamId) => {
+      console.info('The stream with streamId: ' + streamId + ' has finished playing.');
+    });
+  }
+});
+
+```
+
 ### off('playFinishedWithStreamId')<sup>18+</sup>
 
 off(type: 'playFinishedWithStreamId'): void
@@ -1731,6 +1916,8 @@ off(type: 'playFinishedWithStreamId'): void
 取消监听音频池资源播放完成。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPlayFinishedWithStreamId](#offplayfinishedwithstreamid23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1765,6 +1952,43 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool: me
 
 ```
 
+### offPlayFinishedWithStreamId<sup>23+</sup>
+
+offPlayFinishedWithStreamId(): void
+
+取消监听音频池资源播放完成。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('playFinishedWithStreamId')](#offplayfinishedwithstreamid18)。
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Sta起始版本：** 23
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建soundPool实例。
+let soundPool_: media.SoundPool;
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 1
+}
+media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool: media.SoundPool) => {
+  if (error) {
+    console.error(`Failed to createSoundPool`);
+  } else {
+    soundPool_ = soundPool;
+    console.info(`Succeeded in createSoundPool`);
+    soundPool_.offPlayFinishedWithStreamId();
+  }
+});
+
+```
+
 ### on('playFinished')
 
 on(type: 'playFinished', callback: Callback\<void>): void
@@ -1772,6 +1996,8 @@ on(type: 'playFinished', callback: Callback\<void>): void
 音频池资源播放完成监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlayFinished](#onplayfinished23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1810,6 +2036,52 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ```
 
+### onPlayFinished<sup>23+</sup>
+
+onPlayFinished(callback: Callback\<void>): void
+
+音频池资源播放完成监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('playFinished')](#onplayfinished)。
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void> | 是   |  异步playFinished的回调方法。        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建soundPool实例。
+let soundPool: media.SoundPool;
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 1
+}
+media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
+  if (error) {
+    console.error(`Failed to createSoundPool`);
+    return;
+  } else {
+    soundPool = soundPool_;
+    console.info(`Succeeded in createSoundPool`);
+    soundPool.onPlayFinished(() => {
+      console.info('Succeeded in playFinished');
+    });
+  }
+});
+
+```
+
 ### off('playFinished')
 
 off(type: 'playFinished'): void
@@ -1817,6 +2089,8 @@ off(type: 'playFinished'): void
 取消监听音频池资源播放完成。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPlayFinished](#offplayfinished23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1852,6 +2126,44 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ```
 
+### offPlayFinished<sup>23+</sup>
+
+offPlayFinished(): void
+
+取消监听音频池资源播放完成。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('playFinished')](#offplayfinished)。
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Sta起始版本：** 23
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建soundPool实例。
+let soundPool: media.SoundPool;
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 1
+}
+media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
+  if (error) {
+    console.error(`Failed to createSoundPool`);
+    return;
+  } else {
+    soundPool = soundPool_;
+    console.info(`Succeeded in createSoundPool`);
+    soundPool.offPlayFinished();
+  }
+});
+
+```
+
 ### on('error')
 
 on(type: 'error', callback: ErrorCallback): void
@@ -1859,6 +2171,8 @@ on(type: 'error', callback: ErrorCallback): void
 监听[SoundPool](#soundpool)的错误事件，该事件仅用于错误提示。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1898,6 +2212,53 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ```
 
+### onError<sup>23+</sup>
+
+onError(callback: ErrorCallback): void
+
+监听[SoundPool](#soundpool)的错误事件，该事件仅用于错误提示。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror)。
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | ErrorCallback | 是   | 错误事件回调方法：使用播放器的过程中发生错误，会提供错误码ID和错误信息。 |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建soundPool实例。
+let soundPool: media.SoundPool;
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 1
+}
+media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
+  if (error) {
+    console.error(`Failed to createSoundPool`);
+    return;
+  } else {
+    soundPool = soundPool_;
+    console.info(`Succeeded in createSoundPool`);
+    soundPool.onError((error: BusinessError) => {
+      console.error('error happened,and error message is :' + error.message);
+      console.error('error happened,and error code is :' + error.code);
+    })
+  }
+});
+
+```
+
 ### off('error')
 
 off(type: 'error'): void
@@ -1905,6 +2266,8 @@ off(type: 'error'): void
 取消监听音频池的错误事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1939,6 +2302,43 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 });
 ```
 
+### offError<sup>23+</sup>
+
+offError(): void
+
+取消监听音频池的错误事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror)。
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Sta起始版本：** 23
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建soundPool实例。
+let soundPool: media.SoundPool;
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 1
+}
+media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
+  if (error) {
+    console.error(`Failed to createSoundPool`);
+    return;
+  } else {
+    soundPool = soundPool_;
+    console.info(`Succeeded in createSoundPool`);
+    soundPool.offError();
+  }
+});
+```
+
 ### on('errorOccurred')<sup>20+</sup>
 
 on(type: 'errorOccurred', callback: Callback\<ErrorInfo>): void
@@ -1946,6 +2346,8 @@ on(type: 'errorOccurred', callback: Callback\<ErrorInfo>): void
 监听[SoundPool](#soundpool)的错误事件，并返回包含错误码、错误发生阶段、资源ID和音频流ID的[ErrorInfo](#errorinfo20)。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onErrorOccurred](#onerroroccurred23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1988,6 +2390,56 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ```
 
+### onErrorOccurred<sup>23+</sup>
+
+onErrorOccurred(callback: Callback\<ErrorInfo>): void
+
+监听[SoundPool](#soundpool)的错误事件，并返回包含错误码、错误发生阶段、资源ID和音频流ID的[ErrorInfo](#errorinfo20)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('errorOccurred')](#onerroroccurred20)。
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[ErrorInfo](#errorinfo20)> | 是   | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](#errorinfo20)。 |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建soundPool实例。
+let soundPool: media.SoundPool;
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 1
+}
+media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
+  if (error) {
+    console.error(`Failed to createSoundPool`);
+    return;
+  } else {
+    soundPool = soundPool_;
+    console.info(`Succeeded in createSoundPool`);
+    soundPool.onErrorOccurred((errorInfo) => {
+      console.error('error happened,and error message is :' + errorInfo.errorCode.message);
+      console.error('error happened,and error code is :' + errorInfo.errorCode.code);
+      console.error('error happened,and errorType is :' + errorInfo.errorType);
+      console.error('error happened,and soundId is :' + errorInfo.soundId);
+      console.error('error happened,and streamId is :' + errorInfo.streamId);
+    })
+  }
+});
+
+```
+
 ### off('errorOccurred')<sup>20+</sup>
 
  off(type: 'errorOccurred', callback?: Callback\<ErrorInfo>): void
@@ -1995,6 +2447,8 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 取消监听音频池的错误事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offErrorOccurred](#offerroroccurred23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2026,6 +2480,49 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool = soundPool_;
     console.info(`Succeeded in createSoundPool`);
     soundPool.off('errorOccurred');
+  }
+});
+```
+
+### offErrorOccurred<sup>23+</sup>
+
+offErrorOccurred(callback?: Callback\<ErrorInfo>): void
+
+取消监听音频池的错误事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('errorOccurred')](#offerroroccurred20)。
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                      |
+| ------ | ------ | ---- | ----------------------------------------- |
+| callback | Callback\<[ErrorInfo](#errorinfo20)> | 否   | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](#errorinfo20)。 |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建soundPool实例。
+let soundPool: media.SoundPool;
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 1
+}
+media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
+  if (error) {
+    console.error(`Failed to createSoundPool`);
+    return;
+  } else {
+    soundPool = soundPool_;
+    console.info(`Succeeded in createSoundPool`);
+    soundPool.offErrorOccurred();
   }
 });
 ```
