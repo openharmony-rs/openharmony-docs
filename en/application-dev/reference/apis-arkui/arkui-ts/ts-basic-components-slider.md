@@ -506,7 +506,7 @@ Sets the sensitivity to the digital crown rotation.
 
 | Name     | Type                                                        | Mandatory| Description                                                   |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt12)[\<CrownSensitivity>](ts-appendix-enums.md#crownsensitivity18) | Yes  | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**|
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt)[\<CrownSensitivity>](ts-appendix-enums.md#crownsensitivity18) | Yes  | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**|
 
 ### prefix<sup>20+</sup>
 

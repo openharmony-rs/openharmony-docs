@@ -78,7 +78,7 @@ Sets the color of the scrollbar slider. This parameter is valid only when the sc
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  |  [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\> | Yes  | Scrollbar color.<br>Default value: **ColorMetrics.numeric(0x66182431)**  |
+| color  |  [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\> | Yes  | Scrollbar color.<br>Default value: **ColorMetrics.numeric(0x66182431)**  |
 
 ## ScrollBarOptions
 
