@@ -13,7 +13,7 @@ You can use the HUKS APIs to generate a key randomly and store the key in HUKS.
 > - The key alias can contain a maximum of 128 bytes.
 > - Key aliases must not contain sensitive information, such as personal data. You are not advised to include information such as the encryption algorithm, key length, and encryption mode.
 > - If the key alias of the current service is used as the generated key alias, the existing key will be overwritten by default. You can use [HUKS_TAG_KEY_OVERRIDE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) to specify that an error is returned when the key alias conflicts.
-> - For the keys generated for different services, HUKS isolates the storage paths based on the service identity information to prevent conflicts caused by the same key alias.
+> - The storage paths are isolated for the keys generated for different services based on the service identity information to prevent conflicts caused by the same key alias.
 
 - Random generation: HUKS uses a cryptographically secure pseudorandom number generator (PRNG) to generate keys. The PRNG helps improve the randomness, unpredictability, and non-reproducibility of the keys, making the generated keys difficult to infer.
 
@@ -29,6 +29,9 @@ In versions earlier than API version 11, the default storage level is DE when a 
 | HUKS_AUTH_STORAGE_LEVEL_DE | 0    | The key can be accessed only after the device is started.|
 | HUKS_AUTH_STORAGE_LEVEL_CE | 1    | The key can be accessed only after the first unlock of the device.|
 | HUKS_AUTH_STORAGE_LEVEL_ECE | 2    | The key can be accessed only when the device is unlocked.|
+> **NOTE**
+>
+>  When using a key whose storage level is ECE, you are advised to clear the session resources created using the key by detecting the [lock screen event](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked) to ensure security.
 
 ## Supported Algorithms
 
