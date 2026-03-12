@@ -10,7 +10,7 @@
 
 ## WebviewController<sup>9+</sup>
 
-type WebviewController = WebviewController
+type WebviewController = webview.WebviewController
 
 提供Web控制器的方法。
 

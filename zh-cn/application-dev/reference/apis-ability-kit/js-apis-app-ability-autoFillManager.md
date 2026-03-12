@@ -22,14 +22,85 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| onSuccess | [OnSuccessFn](#onsuccessfn23) | 否    | 否    | 当保存请求成功时，该回调被调用。<br/>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>从API version 23开始，原来的onSuccess()方法变更为当前属性，调用方式不变。 |
+| onFailure | [OnFailureFn](#onfailurefn23) | 否    | 否    | 当保存请求失败时，该回调被调用。<br/>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>从API version 23开始，原来的onFailure()方法变更为当前属性，调用方式不变。 |
+
+### onSuccess
+
+onSuccess(): void
+
+当保存请求成功时，该回调被调用。
+
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 11
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| onSuccess | [OnSuccessFn](#onsuccessfn23) | 否    | 否    | 当保存请求成功时，该回调被调用。<br/>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>从API version 23开始，原来的onSuccess()方法变更为当前属性，调用方式不变。 |
-| onFailure | [OnFailureFn](#onfailurefn23) | 否    | 否    | 当保存请求失败时，该回调被调用。<br/>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>从API version 23开始，原来的onFailure()方法变更为当前属性，调用方式不变。 |
+**示例：**
+
+参见[onFailure](#onfailure)。
+
+### onFailure
+
+onFailure(): void
+
+当保存请求失败时，该回调被调用。
+
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
+
+**示例：**
+
+  ```ts
+  // Index.ets, 含有账号、密码框等组件的页面
+  import { autoFillManager } from '@kit.AbilityKit';
+  import { UIContext } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let uiContext = AppStorage.get<UIContext>("uiContext");
+  let callback: autoFillManager.AutoSaveCallback = {
+    onSuccess: () => {
+      console.info(`save request on success.`);
+    },
+    onFailure: () => {
+      console.error(`save request on failure.`);
+    }
+  };
+  
+  @Entry
+  @Component
+  struct Index {
+    build() {
+      Button('requestAutoSave')
+        .onClick(() => {
+          try {
+            // 发起保存请求
+            autoFillManager.requestAutoSave(uiContext, callback);
+          } catch (error) {
+            console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
+  }
+  ```
+
+> **说明：**
+>
+> 示例中从AppStorage中取得的UiContext为预先在EntryAbility（拉起此页面的Ability）中OnWindowStageCreate生命周期获得，并存储到AppStorage中，具体可参考[requestAutoSave](#autofillmanagerrequestautosave)。
 
 ## OnSuccessFn<sup>23+</sup>
 
@@ -41,13 +112,13 @@ type OnSuccessFn = () => void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
 **示例：**
 
-参见[AutoSaveCallback.onFailure](#onfailurefn23)。
+参见[OnFailureFn](#onfailurefn23)。
 
 ## OnFailureFn<sup>23+</sup>
 
@@ -59,49 +130,14 @@ type OnFailureFn = () => void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
-// Index.ets, 含有账号、密码框等组件的页面
-import { autoFillManager } from '@kit.AbilityKit';
-import { UIContext } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let uiContext = AppStorage.get<UIContext>("uiContext");
-let callback: autoFillManager.AutoSaveCallback = {
-  onSuccess: () => {
-    console.info(`save request on success.`);
-  },
-  onFailure: () => {
-    console.error(`save request on failure.`);
-  }
-};
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Button('requestAutoSave')
-      .onClick(() => {
-        try {
-          // 发起保存请求
-          autoFillManager.requestAutoSave(uiContext, callback);
-        } catch (error) {
-          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-        }
-      })
-  }
-}
-```
-ArkTS-Sta示例：
-
-```ts
+// ArkTS-Sta示例
 // Index.ets
 import { autoFillManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';

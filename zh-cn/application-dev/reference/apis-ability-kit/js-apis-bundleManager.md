@@ -1879,6 +1879,86 @@ try {
 }
 ```
 
+## bundleManager.cleanBundleCacheFilesForSelf<sup>21+</sup>
+
+cleanBundleCacheFilesForSelf(): Promise\<void>
+
+清理应用自身的缓存，使用Promise异步回调。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型                                                         | 说明                                 |
+| ------------------------------------------------------------ | ------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+
+bundleManager.cleanBundleCacheFilesForSelf().then(() => {
+    console.info('cleanBundleCacheFilesForSelf complete.');
+});
+```
+
+## bundleManager.getPluginBundlePathForSelf<sup>22+</sup>
+
+getPluginBundlePathForSelf(pluginBundleName: string): string
+
+获取指定插件在当前[应用沙箱](../../file-management/app-sandbox-directory.md)内的安装路径。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名            | 类型    | 必填 | 说明                |
+| ---------------- | ------ | ---- | ------------------ |
+| pluginBundleName | string | 是   | 目标插件的包名。 |
+
+**返回值：**
+
+| 类型     | 说明                  |
+| ------- | --------------------- |
+| string  | 目标插件在当前应用沙箱内的安装路径。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID  | 错误信息                                  |
+| -------- | --------------------------------------- |
+| 17700001 | The specified bundleName is not found. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 请开发者替换为实际插件对应的包名
+let pluginBundleName = 'com.ohos.pluginDemo';
+try {
+  let path = bundleManager.getPluginBundlePathForSelf(pluginBundleName);
+  hilog.info(0x0000, 'testTag', 'getPluginBundlePathForSelf successfully. path: %{public}s', path);
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getPluginBundlePathForSelf failed. Cause: %{public}s', message);
+}
+```
+
 ## bundleManager.getLaunchWantForBundleSync<sup>24+</sup>
 
 ArkTS-Dyn: getLaunchWantForBundleSync(bundleName: string, userId?: number): Want

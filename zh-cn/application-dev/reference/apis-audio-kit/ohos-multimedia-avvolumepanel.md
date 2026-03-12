@@ -10,7 +10,7 @@
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 示例效果请以真机为准，当前DevEco Studio预览器无真实音量展示和调节功能。
 > - **设备限制：** 
->   - 在穿戴设备上，可用于调节系统音量，但不显示UX界面，需开发者自行设计界面。
+>   - 在wearable设备上，可用于调节系统音量，但不显示UX界面，需开发者自行设计界面。
 
 ## 导入模块
 
@@ -32,12 +32,18 @@ AVVolumePanel({volumeLevel?: number, volumeParameter?: AVVolumePanelParameter})
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[AVVolumePanel](./ohos-multimedia-avvolumepanel-static.md#AVVolumePanel)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTs-Dyn起始版本：** 12
 
 | 名称 | 类型 | 必填 | 装饰器类型  | 说明                                                                                                                                                                                                    |
 | -------- | -------- | -------- |--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|volumeLevel | number | 否 | \@Prop | 通过音量面板设置的音量值。该值应介于当前设备音量的最小值和最大值之间。如果该值大于当前设备音量的最大值，则视为设置最大音量值；如果该值小于当前设备音量的最小值，则视为设置最小音量值。获取设备的最大值、最小值和当前值，可参考[AudioVolumeGroupManager](../apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md)。 |
-|volumeParameter | [AVVolumePanelParameter](#avvolumepanelparameter)  | 否 | \@Prop | 设置音量面板的自定义参数。 如果不传入该参数，则调用系统音量条。                                                                                                                                                                      |
+|volumeLevel | number | 否 | \@Prop | 通过音量面板设置的音量值。该值应介于当前设备音量的最小值和最大值之间。如果该值大于当前设备音量的最大值，则视为设置最大音量值；如果该值小于当前设备音量的最小值，则视为设置最小音量值。获取设备的最大值、最小值和当前值，可参考[AudioVolumeGroupManager](../apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md)。|
+|volumeParameter | [AVVolumePanelParameter](#avvolumepanelparameter)  | 否 | \@Prop | 设置音量面板的自定义参数。 如果不传入该参数，则调用系统音量条。  |
 
 ## AVVolumePanelParameter
 
@@ -45,11 +51,17 @@ AVVolumePanel({volumeLevel?: number, volumeParameter?: AVVolumePanelParameter})
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[AVVolumePanel](./ohos-multimedia-avvolumepanel-static.md#AVVolumePanel)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-|position | [Position](../apis-arkui/arkui-ts/ts-types.md#position) | 否 | 设置音量面板的位置。如果不传入该参数，则为系统音量条位置。 |
+**ArkTs-Dyn起始版本：** 12
+
+| 名称 | 类型 | 只读 |可选 | 说明 |
+| -------- | -------- |-----| -------- | -------- |
+| position | [Position](../apis-arkui/arkui-ts/ts-types.md#position) | 否 | 是 | 设置音量面板的位置。如果不传入该参数，则为系统音量条位置。|
 
 ## 事件
 
@@ -70,7 +82,6 @@ import { AVVolumePanel } from '@kit.AudioKit';
 @Entry
 @Component
 struct Index {
-
   @State volume: number = 0;
 
   build() {

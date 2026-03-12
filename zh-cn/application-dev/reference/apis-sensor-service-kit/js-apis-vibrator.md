@@ -1871,8 +1871,8 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 | 名称             | 类型      | 只读 | 可选 | 说明                          |
 |----------------|---------|----|----|-----------------------------|
-| intensity       | 'pattern' | 否  | 否  | 值为“pattern”，根据组合模式触发电机振动。                     |
-| frequency       | VibratorPattern | 否  | 否  | 振动事件数组，build()方法返回的VibratorPattern对象。                     |
+| type       | 'pattern' | 否  | 否  | 值为“pattern”，根据组合模式触发电机振动。                     |
+| pattern       | VibratorPattern | 否  | 否  | 振动事件数组，build()方法返回的VibratorPattern对象。                     |
 
 ## VibrateAttribute<sup>9+</sup>
 
@@ -1891,7 +1891,6 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 | id       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 马达ID， 默认值为0。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                     |
 | deviceId<sup>19+</sup>       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 设备ID。 <br/>**原子化服务API**：从API Version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23                    |
 | usage       | [Usage](#usage9) | 否  | 否  | 马达振动的使用场景。默认值为'unknown'，取值范围只允许在[Usage](#usage9)提供的类型中选取。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                     |
-| systemUsage       | boolean | 否  | 是  | 表示是否绕过系统管理。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                     |
 
 ## Usage<sup>9+</sup>
 

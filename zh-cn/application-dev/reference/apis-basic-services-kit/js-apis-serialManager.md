@@ -4,6 +4,7 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 19开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -20,9 +21,9 @@ getPortList(): Readonly&lt;SerialPort&gt;[]
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -61,9 +62,9 @@ ArkTS-Sta: hasSerialRight(portId: int): boolean
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -126,9 +127,9 @@ ArkTS-Sta: requestSerialRight(portId: int): Promise&lt;boolean&gt;
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -197,9 +198,9 @@ ArkTS-Sta: open(portId: int): void
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -271,9 +272,9 @@ ArkTS-Sta: getAttribute(portId: int): Readonly&lt;[SerialAttribute](#serialattri
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -362,9 +363,9 @@ ArkTS-Sta: setAttribute(portId: int, attribute: [SerialAttribute](#serialattribu
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -450,9 +451,9 @@ ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -541,9 +542,9 @@ ArkTS-Sta: readSync(portId: int, buffer: Uint8Array, timeout?: int): int
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -633,9 +634,9 @@ ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -649,7 +650,7 @@ ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int
 
 | 类型                    | 说明          |
 |-----------------------|-------------|
-| ArkTS-Dyn: romise&lt;number&gt; <br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回写入数据长度。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回写入数据长度。 |
 
 **错误码：**
 
@@ -724,9 +725,9 @@ ArkTS-Sta: writeSync(portId: int, buffer: Uint8Array, timeout?: int): int
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -816,9 +817,9 @@ ArkTS-Sta: close(portId: int): void
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -897,9 +898,9 @@ ArkTS-Sta: cancelSerialRight(portId: int): void
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -967,9 +968,9 @@ try {
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       |          类型        |  只读   |  可选 | 说明        |
 |----------|--------|----------|-----------|----------------------|
@@ -984,9 +985,9 @@ try {
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型  |  只读 | 可选 | 说明    |
 |--------|--------|------|-------|--------|
@@ -999,9 +1000,9 @@ try {
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
@@ -1042,9 +1043,9 @@ try {
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
@@ -1059,9 +1060,9 @@ try {
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
@@ -1077,9 +1078,9 @@ try {
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
