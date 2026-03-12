@@ -62,7 +62,7 @@ type TypedArray = Int8Array | Uint8Array | Uint8ClampedArray | Int16Array | Uint
 | BigInt64Array | 64位有符号大整数数组。 |
 | BigUint64Array | 64位无符号大整数数组。 | 
 
-## ArrayUnionType<sup>20+</sup>
+## ArrayUnionType<sup>23+</sup>
 
 type ArrayUnionType = Array\<Int8Array\> | Array\<Uint8Array\> | Array\<Uint8ClampedArray\> | Array\<Int16Array\> | Array\<Uint16Array\> | Array\<Int32Array\> | Array\<Uint32Array\> | Array\<Float32Array\> | Array\<Float64Array\> | Array\<BigInt64Array\> | Array\<BigUint64Array\> | Array\<string\> | Array\<ArrayBuffer\> | Array\<DataView\> | Array\<Blob\>
 
@@ -70,7 +70,7 @@ type ArrayUnionType = Array\<Int8Array\> | Array\<Uint8Array\> | Array\<Uint8Cla
 
 取值类型为下表类型中的并集。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -357,13 +357,13 @@ console.info(`${str}: ${str.length} characters, ${buffer.byteLength(str, 'utf-8'
 // 输出结果：½ + ¼ = ¾: 9 characters, 12 bytes
 ```
 
-## buffer.byteLength<sup>20+</sup>
+## buffer.byteLength<sup>23+</sup>
 
 byteLength(doc: string | Buffer | TypedArray | DataView | ArrayBuffer, encoding?: BufferEncoding): int
 
 根据不同的编码方法，返回指定字符串的字节数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -442,13 +442,13 @@ console.info(Number(res).toString());
 // 输出结果：1
 ```
 
-## buffer.compare<sup>20+</sup>
+## buffer.compare<sup>23+</sup>
 
 compare(buf1: Buffer | Uint8Array, buf2: Buffer | Uint8Array): int
 
 返回两个数组的比较结果，通常用于对Buffer对象数组进行排序。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -612,7 +612,7 @@ from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?:
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[byteOffset/length]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [byteOffset/length] |
 
 **示例：**
@@ -625,13 +625,13 @@ let buf = buffer.from(ab, 0, 2);
 console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0]}
 ```
 
-## buffer.from<sup>20+</sup>
+## buffer.from<sup>23+</sup>
 
 from(arrayBuffer: ArrayBuffer, byteOffset?: int, length?: int): Buffer
 
 创建指定长度的与`arrayBuffer`共享内存的Buffer对象。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -980,7 +980,7 @@ console.info("newBuf = " + newBuf.toString('ascii'));
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 10200013 | ${propertyName} cannot be set for the buffer that has only a getter. |
+| 10200013 | ${propertyName} cannot be set for the buffer that has only a getter. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -1037,7 +1037,7 @@ compare(target: Buffer | Uint8Array, targetStart?: number, targetEnd?: number, s
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
-| 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. |
+| 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 **示例：**
 
@@ -1055,13 +1055,13 @@ console.info(buf1.compare(buf2, 5, 6, 5).toString());
 // 输出结果：1
 ```
 
-### compare<sup>20+</sup>
+### compare<sup>23+</sup>
 
 compare(target: Buffer | Uint8Array, targetStart?: int, targetEnd?: int, sourceStart?: int, sourceEnd?: int): int
 
 比较当前Buffer对象与目标Buffer对象，并返回Buffer在排序中的结果。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1087,11 +1087,12 @@ compare(target: Buffer | Uint8Array, targetStart?: int, targetEnd?: int, sourceS
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 **示例：**
 
@@ -1147,7 +1148,7 @@ ArkTS-Sta: copy(target: Buffer| Uint8Array, targetStart?: int, sourceStart?: int
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
-| 10200001 | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. |
+| 10200001 | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must be >= 0. Received value is: [targetStart/sourceStart/sourceEnd] |
 
 **示例：**
 
@@ -1295,7 +1296,7 @@ ArkTS-Sta: fill(value: string | Buffer | Uint8Array | int | double | long, offse
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
-| 10200001 | The value of "[offset/end]" is out of range. |
+| 10200001 | The value of "[offset/end]" is out of range. It must be >= 0 and <= [right range]. Received value is: [offset/end] |
 
 **示例：**
 
@@ -2852,13 +2853,13 @@ console.info(JSON.stringify(obj));
 // 输出结果: {"type":"Buffer","data":[1,2,3,4,5]}
 ```
 
-### toJSON<sup>20+</sup>
+### toJSON<sup>23+</sup>
 
 toJSON(): jsonx.JsonElement
 
 将Buffer转为JSON并返回。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2932,13 +2933,13 @@ console.info(buf1.toString('utf-8'));
 // 输出结果: abcdefghijklmnopqrstuvwxyz
 ```
 
-### toString<sup>20+</sup>
+### toString<sup>23+</sup>
 
 toString(encoding?: BufferEncoding, start?: int, end?: int): string
 
 将当前对象中指定位置数据转成指定编码格式字符串并返回。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -4199,13 +4200,13 @@ console.info("result = " + result);
 // 输出结果：result = 6
 ```
 
-### \[index\]<sup>20+</sup>
+### \[index\]<sup>23+</sup>
 
 \[index: int\]: long
 
 将数据设置在指定索引处或返回指定索引处的数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -4310,13 +4311,13 @@ let o1: option = {endings:'native', type: 'MIME'}
 let blob1: buffer.Blob = new buffer.Blob(['a', 'b', 'c'], o1);
 ```
 
-### constructor<sup>20+</sup>
+### constructor<sup>23+</sup>
 
 constructor(sources: ArrayUnionType, options?: BlobOptions)
 
 Blob的构造函数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
