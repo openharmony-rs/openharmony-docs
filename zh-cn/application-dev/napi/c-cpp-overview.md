@@ -50,7 +50,7 @@ OpenHarmony中动态库加载namespace配置的情况
 ### rpath机制
 rpath（run-time path）是在运行时指定共享库搜索路径的机制。该机制允许在可执行文件或共享库中嵌入一个用于在运行时指定库的搜索路径的信息。
 
-由于命名空间隔离机制，应用仅允许加载对应安装目录拼接native库路径下（例如arm64平台上为`libs/arm64`）的应用native库，当应用程序涉及加载多个native库时，创建多个加载路径会导致无法加载新目录下的native库。这种情况可以通过rpath机制编译时指定搜索路径。
+由于命名空间隔离机制，应用仅允许加载对应安装目录的native库路径下（例如arm64平台上为`libs/arm64`）的应用native库，当应用程序涉及加载多个native库时，创建多个加载路径会导致无法加载新目录下的native库。这种情况可以通过rpath机制编译时指定搜索路径。
 
 例如，应用安装目录`lib/arm64`下的`libhello.so`依赖新创建路径`lib/arm64/module`下的`libworld.so`，那么在应用的`CMakeLists.txt`里设置上`rpath`编译选项后编译，使用`readelf`查看`libhello.so`的`rpath`配置如图所示，`$ORIGIN`为`libhello.so`所在路径，运行时即可正常加载module目录下的`libworld.so`。
 ```txt
@@ -60,7 +60,7 @@ SET(CMAKE_INSTALL_RPATH "\${ORIGIN}/module")
 ![zh-cn_image_musl_ld_rpath](figures/dl_rpath.png)
 
 ### 支持dlclose
-支持使用dlclose真实卸载动态库的能力。
+支持使用dlclose真正卸载动态库的能力。
 
 ### 支持symbol-version机制
 symbol-version是libc在**动态链接-符号重定位**阶段的符号检索机制，支持不同版本的符号重定位，也可以帮助解决重复符号的问题。可参考<a href="https://www.gnu.org/software/gnulib/manual/html_node/LD-Version-Scripts.html">LD Version Scripts (GNU Gnulib)</a>。
