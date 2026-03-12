@@ -545,6 +545,32 @@ console.info(`totalHeap = ${vmMemory.totalHeap}, heapUsed = ${vmMemory.heapUsed}
   `allArraySize = ${vmMemory.allArraySize}` );
 ```
 
+## hidebug.getAppVMObjectUsedSize<sup>21+</sup>
+
+getAppVMObjectUsedSize(): bigint
+
+获取当前虚拟机中ArkTS对象所占用的内存大小。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
+
+**返回值**：
+
+| 类型     | 说明                           |
+|--------|------------------------------|
+| bigint | 当前虚拟机中ArkTS对象所占用的内存大小，单位为KB。 |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+console.info(`getAppVMObjectUsedSize = ${hidebug.getAppVMObjectUsedSize()}`);
+```
+
 ## hidebug.getAppThreadCpuUsage<sup>12+</sup>
 
 getAppThreadCpuUsage(): ThreadCpuUsage[]
@@ -879,6 +905,71 @@ getAppNativeMemInfo(): NativeMemInfo
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let nativeMemInfo: hidebug.NativeMemInfo = hidebug.getAppNativeMemInfo();
+console.info(`pss: ${nativeMemInfo.pss}, vss: ${nativeMemInfo.vss}, rss: ${nativeMemInfo.rss}, ` +
+  `sharedDirty: ${nativeMemInfo.sharedDirty}, privateDirty: ${nativeMemInfo.privateDirty}, ` +
+  `sharedClean: ${nativeMemInfo.sharedClean}, privateClean: ${nativeMemInfo.privateClean}`);
+```
+
+## hidebug.getAppNativeMemInfoAsync<sup>20+</sup>
+
+getAppNativeMemInfoAsync(): Promise&lt;NativeMemInfo&gt;
+
+读取/proc/{pid}/smaps_rollup和/proc/{pid}/statm节点的数据以获取应用进程内存信息，使用Promise异步回调。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
+**返回值**：
+
+| 类型                                               | 说明                    |
+|--------------------------------------------------| --------------------- |
+| Promise&lt;[NativeMemInfo](#nativememinfo12)&gt; | promise对象，返回应用进程内存信息。 |
+
+**示例**：
+
+```ts
+hidebug.getAppNativeMemInfoAsync().then((nativeMemInfo: hidebug.NativeMemInfo)=>{
+  console.info(`pss: ${nativeMemInfo.pss}, vss: ${nativeMemInfo.vss}, rss: ${nativeMemInfo.rss}, ` +
+    `sharedDirty: ${nativeMemInfo.sharedDirty}, privateDirty: ${nativeMemInfo.privateDirty}, ` +
+    `sharedClean: ${nativeMemInfo.sharedClean}, privateClean: ${nativeMemInfo.privateClean}`);
+});
+```
+
+## hidebug.getAppNativeMemInfoWithCache<sup>20+</sup>
+
+getAppNativeMemInfoWithCache(forceRefresh?: boolean): NativeMemInfo
+
+获取应用进程内存信息。与`getAppNativeMemInfo`接口相比，该接口使用了缓存机制，以提高性能。缓存的有效期为5分钟。
+
+> **注意**：
+>
+> 由于读取 `/proc/{pid}/smaps_rollup` 比较耗时，建议不在主线程中使用该接口。可以通过 `@ohos.taskpool` 或 `@ohos.worker` 开启异步线程，以避免应用卡顿。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
+**参数**：
+
+| 参数名                     | 类型      | 必填 | 说明                                                                                                     |
+|-------------------------|---------|----|--------------------------------------------------------------------------------------------------------|
+| forceRefresh         | boolean | 否  | 是否需要无视缓存有效性，强制更新缓存值。默认值：false。</br>true：直接获取当前内存数据并更新缓存值。</br>false：缓存有效时，直接返回缓存值，缓存失效时获取当前内存数据并更新缓存值。 |
+
+**返回值**：
+
+| 类型  | 说明                      |
+| ------ | -------------------------- |
+| [NativeMemInfo](#nativememinfo12) | 应用进程内存信息。 |
+
+**示例**：
+
+```ts
+let nativeMemInfo: hidebug.NativeMemInfo = hidebug.getAppNativeMemInfoWithCache();
 console.info(`pss: ${nativeMemInfo.pss}, vss: ${nativeMemInfo.vss}, rss: ${nativeMemInfo.rss}, ` +
   `sharedDirty: ${nativeMemInfo.sharedDirty}, privateDirty: ${nativeMemInfo.privateDirty}, ` +
   `sharedClean: ${nativeMemInfo.sharedClean}, privateClean: ${nativeMemInfo.privateClean}`);
@@ -1309,6 +1400,55 @@ try {
 }
 ```
 
+## hidebug.getGraphicsMemorySummary<sup>21+</sup>
+
+getGraphicsMemorySummary(interval?: number): Promise&lt;GraphicsMemorySummary&gt;
+
+getGraphicsMemorySummary(interval?: int): Promise&lt;GraphicsMemorySummary&gt;
+
+获取应用显存数据，使用Promise进行异步回调。
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
+
+**参数**：
+
+| 参数名 | 类型        | 必填 | 说明                                                                                                          |
+| ------ | --------- |---|-------------------------------------------------------------------------------------------------------------|
+| interval  | number | 否 | 显存数据缓存值有效时间，单位为秒。默认值：300。取值范围为[2-3600]。若传入值超出取值范围时，将使用默认值。<br/>当显存数据缓存值存在时间超过该值时，获取最新显存数据并更新缓存值；否则，直接获取缓存值。 |
+
+**返回值**：
+
+| 类型                                                               | 说明                  |
+|------------------------------------------------------------------|---------------------|
+| Promise&lt;[GraphicsMemorySummary](#graphicsmemorysummary21)&gt; | promise对象，返回应用显存数据。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[HiDebug错误码](errorcode-hiviewdfx-hidebug.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------------------------------------------------- |
+| 11400104 | Failed to get the application memory due to a remote exception. |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.getGraphicsMemorySummary().then((ret: hidebug.GraphicsMemorySummary) => {
+  console.info(`get graphicsMemory gl: ${ret.gl} graph: ${ret.graph}.`)
+}).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}.`);
+})
+```
+
 ## hidebug.dumpJsRawHeapData<sup>18+</sup>
 
 dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
@@ -1370,6 +1510,8 @@ hidebug.dumpJsRawHeapData().then((filePath: string) => {
 ## hidebug.enableGwpAsanGrayscale<sup>20+</sup>
 
 enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: number): void
+
+enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: int): void
 
 使能GWP-Asan，用于检测堆内存使用中的非法行为。
 
@@ -1462,6 +1604,8 @@ hidebug.disableGwpAsanGrayscale();
 ## hidebug.getGwpAsanGrayscaleState<sup>20+</sup>
 getGwpAsanGrayscaleState(): number
 
+getGwpAsanGrayscaleState(): int
+
 获取当前GWP-Asan剩余使能天数。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
@@ -1515,4 +1659,53 @@ setJsRawHeapTrimLevel(level: JsRawHeapTrimLevel): void
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 hidebug.setJsRawHeapTrimLevel(hidebug.JsRawHeapTrimLevel.TRIM_LEVEL_2);
+```
+
+## GraphicsMemorySummary<sup>21+</sup>
+
+描述应用显存数据，包括gl和graph部分。
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+| 名称      | 类型     | 只读  | 可选 | 说明                                                                              |
+| --------- |--------| ---- |---- |---------------------------------------------------------------------------------|
+| gl  | number |  否  |   否  | gl显存大小，RenderService渲染进程加载所需资源占用的内存，例如图片、纹理等，以KB为单位。 |
+| graph  | number |  否  |   否  | graph显存大小，进程统计的DMA内存占用，包括直接通过接口申请的DMA buffer和通过allocator_host申请的DMA buffer，以KB为单位。 |
+
+## hidebug.setProcDumpInSharedOOM<sup>24+</sup>
+
+setProcDumpInSharedOOM(enable: boolean): void
+
+将转储的堆快照由线程级改为进程级。
+
+> **注意**：
+>
+> 要想转储进程级的堆快照，调用该接口并传参true、进程OOM时发生的是SharedHeap OOM，两个条件缺一不可。
+>
+> 该接口不影响其他场景下转储的堆快照内容。如：不会影响[dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)的结果。
+>
+> 该接口在应用的生命周期内可被多次调用，但仅最后一次调用的执行结果会生效。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**ArkTS-Dyn起始版本**：24
+
+**参数**：
+
+| 名称         | 类型  | 必填 | 说明 |
+|--------------|------|------|------|
+| enable | boolean | 是 | 当进程发生SharedHeap OOM时，系统将依据该进程在其生命周期中最后一次调用该接口所记录的信息，转储相应级别的堆快照。<br/>true：进程级。<br/>false：线程级。<br/> 默认值：false。 |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+hidebug.setProcDumpInSharedOOM(true);
 ```
