@@ -2603,7 +2603,7 @@ connection.getSystemNetPortStates().then((data: connection.NetPortStatesInfo) =>
 
 ## connection.queryTraceRoute<sup>26+</sup>
 
-queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise<TraceRouteInfo[]>
+queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise\<TraceRouteInfo[]\>
 
 查询网络路由跟踪信息，使用Promise方式作为异步方法。
 
@@ -2628,7 +2628,7 @@ queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise<TraceR
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise<[TraceRouteInfo](#tracerouteinfo26)[]> | Promise对象，返回路由跟踪信息数组。 |
+| Promise\<[TraceRouteInfo](#tracerouteinfo26)[]\> | Promise对象，返回路由跟踪信息数组。 |
 
 **错误码：**
 
@@ -2662,7 +2662,7 @@ connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[
 
 ## connection.queryProbeResult<sup>26+</sup>
 
-queryProbeResult(destination: string, duration: number): Promise<ProbeResultInfo>
+queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInfo\>
 
 查询网络探测结果。若出现异常（例如断网），导致发送请求失败，则接口会立即返回，不再进行后续探测。本接口使用Promise方式作为异步方法。
 
@@ -2687,7 +2687,7 @@ queryProbeResult(destination: string, duration: number): Promise<ProbeResultInfo
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise<[ProbeResultInfo](#proberesultinfo26)> | Promise对象，返回探测结果信息。 |
+| Promise\<[ProbeResultInfo](#proberesultinfo26)\> | Promise对象，返回探测结果信息。 |
 
 **错误码：**
 以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
@@ -3870,7 +3870,7 @@ UDP端口状态信息。
 | udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的UDP信息。   |
   
  
-  ## TraceRouteOptions<sup>26+</sup>
+## TraceRouteOptions<sup>26+</sup>
 
 路由跟踪的选项。
 
@@ -3878,10 +3878,10 @@ UDP端口状态信息。
   
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-| 名称 | 类型 |  只读 | 可选 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| maxJumpNumber | number | 否|  是| 最大跳数，最大值为30，默认值为30。。 |
-| packetsType | [PacketsType](#packetstype26) | 否 | 是| 探测使用的数据包类型，默认为NETCONN_PACKETS_ICMP。 |
+| maxJumpNumber | number | 否 | 是 | 最大跳数，最大值为30，默认值为30。 |
+| packetsType | [PacketsType](#packetstype26) | 否 | 是 | 探测使用的数据包类型，默认为NETCONN_PACKETS_ICMP。 |
   
 
 ## TraceRouteInfo<sup>26+</sup>
@@ -3892,7 +3892,7 @@ UDP端口状态信息。
   
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-| 名称 | 类型 |  只读 | 可选 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | jumpNo | number | 否 | 否 | 跳数序号。 |
 | address | string | 否 | 否 | 该跳的ip地址。 |
