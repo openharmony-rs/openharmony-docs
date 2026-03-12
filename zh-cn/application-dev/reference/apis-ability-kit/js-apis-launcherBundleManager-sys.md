@@ -19,7 +19,8 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 
 ## launcherBundleManager.getLauncherAbilityInfo<sup>9+</sup>
 
-ArkTS-Dyn: getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>): void<br>
+ArkTS-Dyn: getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>): void
+
 ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>): void
 
 查询指定bundleName及用户的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。
@@ -100,7 +101,8 @@ try {
 
 ## launcherBundleManager.getLauncherAbilityInfo<sup>9+</sup>
 
-ArkTS-Dyn: getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<LauncherAbilityInfo\>\><br>
+ArkTS-Dyn: getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
+
 ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int) : Promise\<Array\<LauncherAbilityInfo\>\>
 
 查询指定bundleName及用户的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。
@@ -183,7 +185,8 @@ try {
 
 ## launcherBundleManager.getAllLauncherAbilityInfo<sup>9+</sup>
 
-ArkTS-Dyn: getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>): void<br>
+ArkTS-Dyn: getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>): void
+
 ArkTS-Sta: getAllLauncherAbilityInfo(userId: int, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>): void
 
 查询指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。
@@ -262,7 +265,8 @@ try {
 
 ## launcherBundleManager.getAllLauncherAbilityInfo<sup>9+</sup>
 
-ArkTS-Dyn: getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\>\><br>
+ArkTS-Dyn: getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
+
 ArkTS-Sta: getAllLauncherAbilityInfo(userId: int) : Promise\<Array\<LauncherAbilityInfo\>\>
 
 查询指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。
@@ -564,7 +568,8 @@ try {
 
 ## launcherBundleManager.getShortcutInfoSync<sup>13+</sup>
 
-ArkTS-Dyn: getShortcutInfoSync(bundleName: string, userId: number): Array\<ShortcutInfo\><br>
+ArkTS-Dyn: getShortcutInfoSync(bundleName: string, userId: number): Array\<ShortcutInfo\>
+
 ArkTS-Sta: getShortcutInfoSync(bundleName: string, userId: int): Array\<ShortcutInfo\>
 
 查询指定用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。
@@ -771,7 +776,8 @@ try {
 
 ## launcherBundleManager.getShortcutInfoByAppIndex<sup>20+</sup>
 
-ArkTS-Dyn: getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array\<ShortcutInfo\><br>
+ArkTS-Dyn: getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array\<ShortcutInfo\>
+
 ArkTS-Sta: getShortcutInfoByAppIndex(bundleName: string, appIndex: int): Array\<ShortcutInfo\>
 
 查询当前用户下指定分身应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)。

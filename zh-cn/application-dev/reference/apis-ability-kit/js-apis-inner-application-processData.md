@@ -22,14 +22,14 @@ import { appManager } from '@kit.AbilityKit';
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称                     | 类型     | 必填 | 说明                       |
-| ----------------------- | ---------| ---- | ------------------------- |
-| pid         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 进程ID。                    |
-| bundleName  | string   | 是   | 应用包名。                  |
-| uid         | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 应用的uid。                  |
-| isContinuousTask | boolean   | 是   | 是否为长时任务，true表示是，false表示不是。                 |
-| isKeepAlive      | boolean   | 是   | 是否为常驻进程，true表示是，false表示不是。                  |
-| state       | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 应用的状态，取值及对应的状态为：<br>0 - 刚创建，<br>1 - 准备就绪，<br>2 - 前台，<br>4 - 后台，<br>5 - 已终止。     |
+| 名称                     | 类型     | 只读 | 可选 | 说明                       |
+| ----------------------- | ---------| ---- | ------------------------- | ------------------------- |
+| pid         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  | 否  | 进程ID。                    |
+| bundleName  | string   | 否  | 否  | 应用包名。                  |
+| uid         | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否  | 应用的uid。                  |
+| isContinuousTask | boolean   | 否  | 否  | 是否为长时任务，true表示是，false表示不是。                 |
+| isKeepAlive      | boolean   | 否  | 否  | 是否为常驻进程，true表示是，false表示不是。                  |
+| state       | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否  | 应用的状态，取值及对应的状态为：<br>0 - 刚创建，<br>1 - 准备就绪，<br>2 - 前台，<br>4 - 后台，<br>5 - 已终止。     |
 
 **示例：**
 

@@ -10,8 +10,6 @@
 
 > **说明：**
 >
-> - 本模块接口仅可在Stage模型下使用。
->
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -254,6 +252,8 @@ properties.getDelayData = ((type: string) => {
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 ### 属性
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -668,15 +668,13 @@ let types = unifiedData.getTypes();
 
 描述统一数据对象的数据摘要，包括数据类型和大小。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| summary   | ArkTS-Dyn: Record<string, number> <br/>ArkTS-Sta: Record<string, long> | 否 | 否 | 是一个字典类型对象，key表示数据类型（见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)），value为统一数据对象中该类型记录大小总和（单位：Byte）。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|	
-| totalSize | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 统一数据对象内记录总大小（单位：Byte）。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |	
-| overview<sup>22+</sup>   | ArkTS-Dyn: Record<string, number> <br/>ArkTS-Sta: Record<string, long> | 是 | 否 | 统一数据对象中所有类型与该类型数据记录大小的映射关系，其中数据大小单位为Byte。当获取到的统一数据对象为空时，此overview属性值为空。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
+| summary   | ArkTS-Dyn: Record<string, number> <br/>ArkTS-Sta: Record<string, long> | 否 | 否 | 是一个字典类型对象，key表示数据类型（见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)），value为统一数据对象中该类型记录大小总和（单位：Byte）。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|	
+| totalSize | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 统一数据对象内记录总大小（单位：Byte）。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| overview<sup>22+</sup>   | ArkTS-Dyn: Record<string, number> <br/>ArkTS-Sta: Record<string, long> | 是 | 否 | 统一数据对象中所有类型与该类型数据记录大小的映射关系，其中数据大小单位为Byte。当获取到的统一数据对象为空时，此overview属性值为空。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 
 **示例：**
 
@@ -1944,8 +1942,6 @@ UDMF已经支持的数据通路枚举类型。其主要用途是标识各种UDMF
 ## Visibility<sup>20+</sup> 
 
 表示数据的可见性等级枚举。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 

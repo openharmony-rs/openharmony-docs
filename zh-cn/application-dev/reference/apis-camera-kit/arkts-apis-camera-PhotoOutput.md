@@ -25,7 +25,7 @@ capture(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -88,7 +88,7 @@ capture(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -148,7 +148,7 @@ capture(setting: PhotoCaptureSetting, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -235,7 +235,7 @@ capture(setting: PhotoCaptureSetting): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -374,7 +374,7 @@ onPhotoAvailable(callback: AsyncCallback\<Photo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -406,6 +406,8 @@ function registerPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): voi
 off(type: 'photoAvailable', callback?: AsyncCallback\<Photo\>): void
 
 注销监听全质量图上报。
+
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -453,7 +455,7 @@ offPhotoAvailable(callback?: AsyncCallback\<Photo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -477,6 +479,120 @@ function callback(err: BusinessError, photo: camera.Photo): void {
 
 function unRegisterPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
   photoOutput.offPhotoAvailable(callback);
+}
+```
+
+## onCapturePhotoAvailable<sup>23+</sup>
+
+onCapturePhotoAvailable(callback: Callback\<CapturePhoto\>): void
+
+注册监听全质量图和未压缩图。使用callback异步回调。
+
+> **说明：**
+>
+> - 注册监听接口时，不支持在该接口监听的回调方法里调用[offCapturePhotoAvailable](#offcapturephotoavailable23)注销回调。
+>
+> - 拍摄未压缩图（YUV）格式图片时，仅支持使用此接口注册监听。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型      | 必填 | 说明                                  |
+| -------- | ---------- | --- | ------------------------------------ |
+| callback | Callback\<[CapturePhoto](arkts-apis-camera-CapturePhoto.md)\> | 是   | 回调函数，用于监听全质量图和未压缩图上报事件。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { image } from '@kit.ImageKit';
+
+function callback(capturePhoto: camera.CapturePhoto): void {
+  let picture: image.Image | image.Picture = capturePhoto.main;
+}
+
+function registerCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onCapturePhotoAvailable(callback);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { image } from '@kit.ImageKit';
+
+function callback(capturePhoto: camera.CapturePhoto): void {
+  let picture: image.Image | image.Picture = capturePhoto.main;
+}
+
+function registerCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onCapturePhotoAvailable(callback);
+}
+```
+
+## offCapturePhotoAvailable<sup>23+</sup>
+
+offCapturePhotoAvailable(callback?: Callback\<CapturePhoto\>): void
+
+注销监听全质量图和未压缩图。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                    | 必填 | 说明                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| callback | Callback\<[CapturePhoto](arkts-apis-camera-CapturePhoto.md)\> | 否  | 回调函数，如果指定参数则取消对应callback，callback对象不可是匿名函数，否则取消所有callback。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { image } from '@kit.ImageKit';
+
+function callback(capturePhoto: camera.CapturePhoto): void {
+  let picture: image.Image | image.Picture = capturePhoto.main;
+}
+
+function unRegisterCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offCapturePhotoAvailable(callback);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { image } from '@kit.ImageKit';
+
+function callback(capturePhoto: camera.CapturePhoto): void {
+  let picture: image.Image | image.Picture = capturePhoto.main;
+}
+
+function unRegisterCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offCapturePhotoAvailable(callback);
 }
 ```
 
@@ -541,7 +657,7 @@ onCaptureStartWithInfo(callback: AsyncCallback\<CaptureStartInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -612,7 +728,7 @@ offCaptureStartWithInfo(callback?: AsyncCallback\<CaptureStartInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -642,7 +758,7 @@ isMovingPhotoSupported(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -690,7 +806,7 @@ enableMovingPhoto(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -787,7 +903,7 @@ onPhotoAssetAvailable(callback: AsyncCallback\<photoAccessHelper.PhotoAsset\>): 
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -858,7 +974,7 @@ offPhotoAssetAvailable(callback?: AsyncCallback\<photoAccessHelper.PhotoAsset\>)
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -886,7 +1002,7 @@ isMirrorSupported(): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -917,7 +1033,7 @@ enableMirror(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -964,7 +1080,7 @@ getSupportedMovingPhotoVideoCodecTypes(): Array\<VideoCodecType\>
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1001,7 +1117,7 @@ setMovingPhotoVideoCodecType(codecType: VideoCodecType): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1079,7 +1195,7 @@ onFrameShutter(callback: AsyncCallback\<FrameShutterInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1149,7 +1265,7 @@ offFrameShutter(callback?: AsyncCallback\<FrameShutterInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1227,7 +1343,7 @@ onCaptureEnd(callback: AsyncCallback\<CaptureEndInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1297,7 +1413,7 @@ offCaptureEnd(callback?: AsyncCallback\<CaptureEndInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1374,7 +1490,7 @@ onFrameShutterEnd(callback: AsyncCallback\<FrameShutterEndInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1443,7 +1559,7 @@ offFrameShutterEnd(callback?: AsyncCallback\<FrameShutterEndInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1520,7 +1636,7 @@ onCaptureReady(callback: AsyncCallback\<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1589,7 +1705,7 @@ offCaptureReady(callback?: AsyncCallback\<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1666,7 +1782,7 @@ onEstimatedCaptureDuration(callback: AsyncCallback\<double\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1735,7 +1851,7 @@ offEstimatedCaptureDuration(callback?: AsyncCallback\<double\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1808,7 +1924,7 @@ onError(callback: ErrorCallback): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1873,7 +1989,7 @@ offError(callback?: ErrorCallback): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1901,7 +2017,7 @@ getActiveProfile(): Profile
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1937,9 +2053,9 @@ function testGetActiveProfile(photoOutput: camera.PhotoOutput): camera.Profile |
 
 ## getPhotoRotation<sup>12+</sup>
 
-ArkTS-Dyn: getPhotoRotation(deviceDegree: number): ImageRotation
+ArkTS-Dyn: getPhotoRotation(deviceDegree?: number): ImageRotation
 
-ArkTS-Sta: getPhotoRotation(deviceDegree: int): ImageRotation
+ArkTS-Sta: getPhotoRotation(deviceDegree?: int): ImageRotation
 
 获取拍照旋转角度。
 
@@ -1947,19 +2063,21 @@ ArkTS-Sta: getPhotoRotation(deviceDegree: int): ImageRotation
 - 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度，手机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
 - 屏幕显示方向：需要屏幕显示的图片左上角为第一个像素点为坐标原点。锁屏时与自然方向一致。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 设备旋转角度。 |
+| deviceDegree | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 设备旋转角度。 |
 
 **返回值：**
 
@@ -1973,7 +2091,6 @@ ArkTS-Sta: getPhotoRotation(deviceDegree: int): ImageRotation
 
 | 错误码ID   | 错误信息                         |
 |---------|------------------------------|
-| 7400101 | Parameter missing or parameter type incorrect.  |
 | 7400201 | Camera service fatal error.  |
 
 **示例：**
@@ -2084,5 +2201,108 @@ off(type: 'captureStart', callback?: AsyncCallback\<number\>): void
 ```ts
 function unregisterPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): void {
   photoOutput.off('captureStart');
+}
+```
+
+## isPhotoQualityPrioritizationSupported<sup>21+</sup>
+
+isPhotoQualityPrioritizationSupported(qualityPrioritization: PhotoQualityPrioritization): boolean
+
+检查是否支持指定的拍照画质优先策略。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**参数：**
+
+| 参数名      | 类型                    | 必填 | 说明                                       |
+| ----------- | ---------------------- | ---- | ------------------------------------------ |
+| qualityPrioritization | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | 是  | 要检查的拍照画质优先策略。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+| -------------- | ----------------------- |
+| boolean | 是否支持指定的拍照画质优先策略。true表示支持，false表示不支持。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID      | 错误信息     |
+| ------------- | --------------- |
+| 7400201 |  Camera service fatal error, reconfiguring streams is needed to recover from failure. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+let photoOutput: camera.PhotoOutput;
+
+function isPhotoQualityPrioritizationSupported(qualityPrioritization: camera.PhotoQualityPrioritization): boolean {
+  let isSupported: boolean = false;
+  try {
+    isSupported = photoOutput.isPhotoQualityPrioritizationSupported(qualityPrioritization);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The isPhotoQualityPrioritizationSupported call failed. error code: ${err.code}`);
+  }
+  return isSupported;
+}
+```
+
+## setPhotoQualityPrioritization<sup>21+</sup>
+
+setPhotoQualityPrioritization(qualityPrioritization: PhotoQualityPrioritization): void
+
+设置拍照画质优先策略。
+
+设置之前，可先使用方法[isPhotoQualityPrioritizationSupported](#isphotoqualityprioritizationsupported21)对设备是否支持指定的拍照画质优先策略进行检查。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**参数：**
+
+| 参数名      | 类型                    | 必填 | 说明                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| qualityPrioritization  | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | 是  | 要设置的拍照画质优先策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID    | 错误信息                                           |
+| -------- |----------------------------------------------- |
+| 7400102  | Operation not allowed. |
+| 7400201  | Camera service fatal error, reconfiguring streams is needed to recover from failure. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+let photoOutput: camera.PhotoOutput;
+
+function setPhotoQualityPrioritization(qualityPrioritization: camera.PhotoQualityPrioritization): void {
+  try {
+    photoOutput.setPhotoQualityPrioritization(qualityPrioritization);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The setPhotoQualityPrioritization call failed. error code: ${err.code}`);
+  }
 }
 ```

@@ -914,7 +914,7 @@ getAudioTimestampInfo(): Promise\<AudioTimestampInfo>
 
 **返回值：**
 
-| 类型                                                    | 描述                    |
+| 类型                                              | 说明                   |
 |-------------------------------------------------------| ----------------------- |
 | Promise\<[AudioTimestampInfo](arkts-apis-audio-i.md#audiotimestampinfo19)> | Promise对象，返回音频流时间戳和当前数据帧位置信息。 |
 
@@ -966,7 +966,7 @@ getAudioTimestampInfoSync(): AudioTimestampInfo
 
 **返回值：**
 
-| 类型             | 描述                    |
+| 类型             | 说明                    |
 | ---------------- | ----------------------- |
 | [AudioTimestampInfo](arkts-apis-audio-i.md#audiotimestampinfo19) | 返回音频流时间戳和当前数据帧位置信息。 |
 
@@ -1799,7 +1799,7 @@ on(type: 'markReach', frame: number, callback: Callback&lt;number&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onMarkReach](#onMarkReach22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMarkReach](#onMarkReach23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -1864,7 +1864,7 @@ off(type: 'markReach', callback?: Callback&lt;number&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offMarkReach](#offMarkReach22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMarkReach](#offMarkReach23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -1943,7 +1943,7 @@ on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onPeriodReach](#onPeriodReach22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPeriodReach](#onPeriodReach23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -2008,7 +2008,7 @@ off(type: 'periodReach', callback?: Callback&lt;number&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offPeriodReach](#offPeriodReach22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPeriodReach](#offPeriodReach23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -2085,7 +2085,7 @@ on(type: 'stateChange', callback: Callback<AudioState\>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onStateChange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onStateChange23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -2152,7 +2152,7 @@ off(type: 'stateChange', callback?: Callback&lt;AudioState&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offStateChange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offStateChange23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -2253,7 +2253,7 @@ on(type: 'readData', callback: Callback\<ArrayBuffer>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onReadData](#onReadData20)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onReadData](#onReadData23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -2387,7 +2387,7 @@ off(type: 'readData', callback?: Callback\<ArrayBuffer>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offReadData](#offReadData22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offReadData](#offReadData23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 

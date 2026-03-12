@@ -6,22 +6,21 @@
 
 ## AVSessionType<sup>10+<sup>
 
-type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call'
+type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call' | 'photo'
 
 当前会话支持的会话类型。
 
 该类型可取的值为下表字符串。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 | 类型  | 说明 |
 | -----  | ---- |
-| 'audio' | 音频 <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：22 |
-| 'video' | 视频 <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：22 |
-| 'voice_call'<sup>11+<sup> | 音频通话。 <br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：22 |
-| 'video_call'<sup>12+<sup> | 视频通话。 <br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：22 |
+| 'audio' | 音频 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：22 |
+| 'video' | 视频 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：22 |
+| 'voice_call'<sup>11+<sup> | 音频通话。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：22 |
+| 'video_call'<sup>12+<sup> | 视频通话。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：22 |
+| 'photo'<sup>22+</sup> |  图片。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：22 <br>**ArkTS-Sta起始版本**：23  |
 
 ## AVCastControlCommandType<sup>10+</sup>
 
@@ -124,9 +123,6 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 22
 
 | 类型             | 说明         |
 | ---------------- | ------------ |
@@ -147,3 +143,34 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 |'answer'          | 接听。无需传入参数。<br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：22        |
 | 'hangUp'         | 挂断。无需传入参数。<br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：22        |
 |'toggleCallMute'  | 设置通话静音状态。无需传入参数。<br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：22 |
+
+## NoParamCallback<sup>22+</sup>
+
+type NoParamCallback = () => void
+
+定义无参数的回调函数类型。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+## TwoParamCallback<sup>22+</sup>
+
+type TwoParamCallback\<T, G> = (data1: T, data2: G) => void
+
+定义包含两个参数的回调类型。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明   |
+|-------|----| ---- |------|
+| data1 | T  | 是   | 参数1。 |
+| data2 | G  | 是   | 参数2。 |
