@@ -53,7 +53,7 @@ export default class Info {
 
 JS示例：
 ```xml
-<!-- xxx.xml -->
+<!-- xxx.hml -->
 <div class="container">
     <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
         app.getInfo example
