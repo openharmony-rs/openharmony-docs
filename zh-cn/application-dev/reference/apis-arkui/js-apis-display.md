@@ -426,7 +426,9 @@ try {
 
 ## display.getBrightnessInfo<sup>22+</sup>
 
-getBrightnessInfo(displayId: number): [BrightnessInfo](#brightnessinfo22)
+ArkTS-Dyn: getBrightnessInfo(displayId: number): BrightnessInfo
+
+ArkTS-Sta: getBrightnessInfo(displayId: long): BrightnessInfo
 
 获取指定displayId对应屏幕的亮度信息。如果屏幕不支持HDR，返回的[BrightnessInfo](#brightnessinfo22)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。
 
@@ -965,9 +967,9 @@ display.off('remove', callback);
 
 ## display.onChangeWithAttribute<sup>23+</sup>
 
-ArkTS-Dyn: onChangeWithAttribute(displayAttributeOption: Array\&lt;string&gt;, callback: Callback\&lt;number&gt;): void
+ArkTS-Dyn: onChangeWithAttribute(displayAttributeOption: Array&lt;string&gt;, callback: Callback&lt;number&gt;): void
 
-ArkTS-Sta: onChangeWithAttribute(displayAttributeOption: Array\&lt;string&gt;, callback: Callback\&lt;long&gt;): void
+ArkTS-Sta: onChangeWithAttribute(displayAttributeOption: Array&lt;string&gt;, callback: Callback&lt;long&gt;): void
 
 开启显示设备指定属性变化的监听。
 
