@@ -428,7 +428,7 @@ exitPhotoBrowser(): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 13
 
 ### setPhotoBrowserUIElementVisibility<sup>13+</sup>
 
