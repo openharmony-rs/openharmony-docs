@@ -49,7 +49,7 @@ ArkTS示例：
 
 JS示例：
 ```xml
-<!-- xxx.xml -->
+<!-- xxx.hml -->
 <div class="container">
     <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
         configuration.getLocale example
