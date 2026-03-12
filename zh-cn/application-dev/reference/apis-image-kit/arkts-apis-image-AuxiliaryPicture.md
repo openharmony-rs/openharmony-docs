@@ -424,17 +424,15 @@ function SetMetadataFunc(auxPicture: image.AuxiliaryPicture, context: common.UIA
 
 ## getMetadata<sup>13+</sup>
 
-ArkTS-Dyn: getMetadata(metadataType: MetadataType): Promise\<Metadata>
-
-ArkTS-Sta: getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
+getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
 从辅助图中获取元数据。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 13
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -446,7 +444,7 @@ ArkTS-Sta: getMetadata(metadataType: MetadataType): Promise\<Metadata | undefine
 
 | 类型                             | 说明             |
 | -------------------------------- | ---------------- |
-| ArkTS-Dyn: Promise<[Metadata](arkts-apis-image-Metadata.md)> <br>ArkTS-Sta: Promise<[Metadata](arkts-apis-image-Metadata.md) \| undefined> | 返回元数据对象。 |
+| Promise<[Metadata](arkts-apis-image-Metadata.md)>  | 返回元数据对象。 |
 
 **错误码：**
 
@@ -454,12 +452,11 @@ ArkTS-Sta: getMetadata(metadataType: MetadataType): Promise\<Metadata | undefine
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
-| 7600202  | Unsupported metadata. Possible causes: Unsupported metadata type. |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 7600202  | Unsupported metadata. Possible causes: 1. Unsupported metadata type. 2. The metadata type does not match the auxiliary picture type. |
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -478,7 +475,40 @@ async function GetAuxPictureObjMetadata() {
 }
 ```
 
-ArkTS-Sta示例：
+## getMetadata<sup>23+</sup>
+
+getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
+
+从辅助图中获取元数据。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                            | 必填 | 说明                                   |
+| ------------ | ------------------------------- | ---- | -------------------------------------- |
+| metadataType | [MetadataType](arkts-apis-image-e.md#metadatatype13) | 是   | 元数据类型，用于获取对应类型的元数据。 |
+
+**返回值：**
+
+| 类型                             | 说明             |
+| -------------------------------- | ---------------- |
+| Promise<[Metadata](arkts-apis-image-Metadata.md) \| undefined> | 返回元数据对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7600202  | Unsupported metadata. Possible causes: 1. Unsupported metadata type. 2. The metadata type does not match the auxiliary picture type. |
+
+**示例：**
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { image } from '@kit.ImageKit';

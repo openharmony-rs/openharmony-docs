@@ -1784,9 +1784,7 @@ function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSou
 
 ## image.CreateIncrementalSource<sup>9+</sup>
 
-ArkTS-Dyn: CreateIncrementalSource(buf: ArrayBuffer): ImageSource
-
-ArkTS-Sta: CreateIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
+CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 
 通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
 
@@ -1799,11 +1797,11 @@ ArkTS-Sta: CreateIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
 - 创建PixelMap对象：通过图片解码参数创建-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7)、通过默认参数创建-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-1) 、通过图片解码参数-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-2)
 - 释放ImageSource实例：[release](arkts-apis-image-ImageSource.md#release)
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1815,11 +1813,10 @@ ArkTS-Sta: CreateIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) <br>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
+| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource，失败时返回undefined。 |
 
 **示例：**
 
-ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1844,7 +1841,41 @@ imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLengt
 })
 ```
 
-ArkTS-Sta示例：
+## image.createIncrementalSource<sup>23+</sup>
+
+createIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
+
+通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
+
+以增量方式创建的ImageSource实例，仅支持使用以下功能，同步、异步callback、异步Promise均支持。
+
+- 获取图片信息：指定序号-[getImageInfo](arkts-apis-image-ImageSource.md#getimageinfo)、直接获取-[getImageInfo](arkts-apis-image-ImageSource.md#getimageinfo-1)
+- 获取图片中给定索引处图像的指定属性键的值：[getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11)
+- 批量获取图片中的指定属性键的值：[getImageProperties](arkts-apis-image-ImageSource.md#getimageproperties12)
+- 更新增量数据：[updateData](arkts-apis-image-ImageSource.md#updatedata9)
+- 创建PixelMap对象：通过图片解码参数创建-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7)、通过默认参数创建-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-1) 、通过图片解码参数-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-2)
+- 释放ImageSource实例：[release](arkts-apis-image-ImageSource.md#release)
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型        | 必填 | 说明      |
+| ------- | ------------| ---- | ----------|
+| buf     | ArrayBuffer | 是   | 增量数据。|
+
+**返回值：**
+
+| 类型                        | 说明                              |
+| --------------------------- | --------------------------------- |
+| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
+
+**示例：**
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { image } from '@kit.ImageKit';
@@ -1870,19 +1901,17 @@ function CreateIncrementalSourceFunc(context: common.UIAbilityContext): image.Im
 
 ## image.CreateIncrementalSource<sup>9+</sup>
 
-ArkTS-Dyn: CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
-
-ArkTS-Sta: CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource | undefined
+CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
 
 通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
 
 此接口支持的功能与[CreateIncrementalSource(buf: ArrayBuffer): ImageSource](#imagecreateincrementalsource9)所生成的实例支持的功能相同。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1895,11 +1924,10 @@ ArkTS-Sta: CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): I
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) <br>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
+| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource，失败时返回undefined。 |
 
 **示例：**
 
-ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1926,7 +1954,35 @@ imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLengt
 })
 ```
 
-ArkTS-Sta示例：
+## image.createIncrementalSource<sup>23+</sup>
+
+createIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource | undefined
+
+通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
+
+此接口支持的功能与[CreateIncrementalSource(buf: ArrayBuffer): ImageSource](#imagecreateincrementalsource9)所生成的实例支持的功能相同。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                            | 必填 | 说明                                 |
+| ------- | ------------------------------- | ---- | ------------------------------------ |
+| buf     | ArrayBuffer                     | 是   | 增量数据。                           |
+| options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 否   | 图片属性，包括图片像素密度、像素格式和图片尺寸。 |
+
+**返回值：**
+
+| 类型                        | 说明                              |
+| --------------------------- | --------------------------------- |
+| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
+
+**示例：**
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { image } from '@kit.ImageKit';
