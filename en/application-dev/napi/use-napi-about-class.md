@@ -44,9 +44,10 @@ Call **napi_new_instance** to create an ArkTS instance with the given constructo
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_new_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// napi_new_instance
 static napi_value NewInstance(napi_env env, napi_callback_info info)
 {
     // Pass in and parse parameters. The first parameter is the constructor, and the second parameter is the parameters of the constructor.
@@ -59,34 +60,38 @@ static napi_value NewInstance(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_new_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const newInstance: (obj: Object, param: string) => Object;
-```
 <!-- @[napi_new_instance_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const newInstance: (obj: Object, param: string) => Object; // napi_new_instance
+```
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_new_instance_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
 class Fruit {
   name: string;
+
   constructor(name: string) {
     this.name = name;
   }
 }
+```
+
+<!-- @[ark_napi_new_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// napi_new_instance
 // Call the function and use the variable obj to hold the instance created.
 let obj = testNapi.newInstance(Fruit, 'test');
 // Print the information about the object obj.
 hilog.info(0x0000, 'Node-API', 'napi_new_instance %{public}s', JSON.stringify(obj));
 ```
-<!-- @[ark_napi_new_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_get_new_target
 
@@ -130,19 +135,16 @@ Call **napi_remove_wrap** to remove the wrapping after a native instance is unwr
 
 CPP code:
 
-```cpp
-#include <hilog/log.h>
-#include <string>
-#include "napi/native_api.h"
+<!-- @[napi_wrap_unwrap_remove_wrap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/napi_init.cpp) -->
 
-static constexpr int INT_ARG_18 = 18; // Age: 18 years old
-
+``` C++
 struct Object {
     std::string name;
     int32_t age;
 };
 
-static void DerefItem(napi_env env, void *data, void *hint) {
+static void DerefItem(napi_env env, void *data, void *hint)
+{
     // Optional native callback, which is used to release the native instance when the ArkTS object is garbage-collected.
     OH_LOG_INFO(LOG_APP, "Node-API DerefItem");
     Object *obj = reinterpret_cast<Object *>(data);
@@ -151,6 +153,7 @@ static void DerefItem(napi_env env, void *data, void *hint) {
     }
 }
 
+// napi_wrap
 static napi_value Wrap(napi_env env, napi_callback_info info)
 {
     OH_LOG_INFO(LOG_APP, "Node-API wrap");
@@ -176,6 +179,7 @@ static napi_value Wrap(napi_env env, napi_callback_info info)
     return toWrap;
 }
 
+// napi_remove_wrap
 static napi_value RemoveWrap(napi_env env, napi_callback_info info)
 {
     OH_LOG_INFO(LOG_APP, "Node-API removeWrap");
@@ -184,10 +188,16 @@ static napi_value RemoveWrap(napi_env env, napi_callback_info info)
     void *data = nullptr;
     // Call napi_remove_wrap to remove the wrapping.
     napi_get_cb_info(env, info, &argc, &wrapped, nullptr, nullptr);
-    napi_remove_wrap(env, wrapped, &data);
+    napi_status status = napi_remove_wrap(env, wrapped, &data);
+    if (status != napi_ok || data == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "Node-API napi_remove_wrap failed or data is nullptr");
+        return nullptr;
+    }
+
     return nullptr;
 }
 
+// napi_unwrap
 static napi_value UnWrap(napi_env env, napi_callback_info info)
 {
     OH_LOG_INFO(LOG_APP, "Node-API unWrap");
@@ -206,35 +216,38 @@ static napi_value UnWrap(napi_env env, napi_callback_info info)
     return nullptr;
 }
 ```
-<!-- @[napi_wrap_unwrap_remove_wrap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const wrap: (obj: Object) => Object;
-export const unWrap: (obj: Object) => void;
-export const removeWrap: (obj: Object) => void;
-```
 <!-- @[napi_wrap_unwrap_remove_wrap_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const wrap: (obj: Object) => Object; // napi_wrap
+
+export const unWrap: (obj: Object) => void; // napi_unwrap
+
+export const removeWrap: (obj: Object) => void; // napi_remove_wrap
+```
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_wrap_unwrap_remove_wrap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
 try {
-    class Obj {}
-    let obj: Obj = {};
-    testNapi.wrap(obj)
-    testNapi.unWrap(obj)
-    testNapi.removeWrap(obj)
+  class Obj {
+  }
+
+  let obj: Obj = {};
+  testNapi.wrap(obj); // napi_wrap
+  testNapi.unWrap(obj); // napi_unwrap
+  testNapi.removeWrap(obj); // napi_remove_wrap
+  // ...
 } catch (error) {
-    hilog.error(0x0000, 'testTag', 'Test Node-API error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API error: %{public}s', error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_wrap_unwrap_remove_wrap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/ets/pages/Index.ets) -->
 
 To print logs in the native CPP, add the following information to the **CMakeLists.txt** file and add the header file by using **#include "hilog/log.h"**.
 
