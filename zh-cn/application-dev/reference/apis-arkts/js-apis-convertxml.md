@@ -1,6 +1,12 @@
 # @ohos.convertxml (xml转换JavaScript)
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @yuanyao14-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
-本模块提供转换xml文本为JavaScript对象的功能。
+本模块提供将XML文本转换为JavaScript对象的解析能力。
 
 > **说明：**
 >
@@ -21,9 +27,11 @@ import { convertxml } from '@kit.ArkTS';
 
 fastConvertToJSObject(xml: string, options?: ConvertOptions) : Object
 
-转换xml文本为JavaScript对象。
+转换XML文本为Object类型对象。
 
 > **说明：**
+>
+> 该接口无法满足解析大数据量的XML文件，当单元素文本内容超过10M时，会打印异常信息并返回一个仅包含XML标签头的基础Object对象。
 >
 > 在Windows环境中，通常以回车符（CR）和换行符（LF）一对字符来表示换行。fastConvertToJSObject接口转换后的对象以换行符（LF）表示换行。
 
@@ -35,7 +43,7 @@ fastConvertToJSObject(xml: string, options?: ConvertOptions) : Object
 
 | 参数名  | 类型                              | 必填 | 说明            |
 | ------- | --------------------------------- | ---- | --------------- |
-| xml     | string                            | 是   | xml文本，若包含“&”字符，请使用实体引用“\&amp;”替换。|
+| xml     | string                            | 是   | XML文本，若包含“&”字符，请使用实体引用“\&amp;”替换。|
 | options | [ConvertOptions](#convertoptions) | 否   | 转换选项，默认值是ConvertOptions对象，由其中各个属性的默认值组成。|
 
 **返回值：**
@@ -65,12 +73,19 @@ try {
     '</note>';
   let conv = new convertxml.ConvertXML();
   let options: convertxml.ConvertOptions = {
-    trim: false, declarationKey: "_declaration",
-    instructionKey: "_instruction", attributesKey: "_attributes",
-    textKey: "_text", cdataKey: "_cdata", doctypeKey: "_doctype",
-    commentKey: "_comment", parentKey: "_parent", typeKey: "_type",
-    nameKey: "_name", elementsKey: "_elements"
-  }
+    trim: false,
+    declarationKey: "_declaration",
+    instructionKey: "_instruction",
+    attributesKey: "_attributes",
+    textKey: "_text",
+    cdataKey: "_cdata",
+    doctypeKey: "_doctype",
+    commentKey: "_comment",
+    parentKey: "_parent",
+    typeKey: "_type",
+    nameKey: "_name",
+    elementsKey: "_elements"
+  };
   let result = JSON.stringify(conv.fastConvertToJSObject(xml, options));
   console.info(result);
 } catch (e) {
@@ -165,7 +180,7 @@ try {
 
 convertToJSObject(xml: string, options?: ConvertOptions) : Object
 
-转换xml文本为JavaScript对象。
+转换XML文本为Object类型对象。
 
 > **说明：**
 >
@@ -179,7 +194,7 @@ convertToJSObject(xml: string, options?: ConvertOptions) : Object
 
 | 参数名  | 类型                              | 必填 | 说明            |
 | ------- | --------------------------------- | ---- | --------------- |
-| xml     | string                            | 是   | 传入的xml文本，若包含“&”字符，请使用实体引用“\&amp;”替换。|
+| xml     | string                            | 是   | 传入的XML文本，若包含“&”字符，请使用实体引用“\&amp;”替换。|
 | options | [ConvertOptions](#convertoptions) | 否   | 转换选项，默认值是ConvertOptions对象，由其中各个属性的默认值组成。 |
 
 **返回值：**
@@ -210,12 +225,19 @@ try {
       '</note>';
   let conv = new convertxml.ConvertXML();
   let options: convertxml.ConvertOptions = {
-    trim: false, declarationKey: "_declaration",
-    instructionKey: "_instruction", attributesKey: "_attributes",
-    textKey: "_text", cdataKey: "_cdata", doctypeKey: "_doctype",
-    commentKey: "_comment", parentKey: "_parent", typeKey: "_type",
-    nameKey: "_name", elementsKey: "_elements"
-  }
+    trim: false,
+    declarationKey: "_declaration",
+    instructionKey: "_instruction",
+    attributesKey: "_attributes",
+    textKey: "_text",
+    cdataKey: "_cdata",
+    doctypeKey: "_doctype",
+    commentKey: "_comment",
+    parentKey: "_parent",
+    typeKey: "_type",
+    nameKey: "_name",
+    elementsKey: "_elements"
+  };
   let result = JSON.stringify(conv.convertToJSObject(xml, options));
   console.info(result);
 } catch (e) {
@@ -229,7 +251,7 @@ try {
 
 convert(xml: string, options?: ConvertOptions) : Object
 
-转换xml文本为JavaScript对象。
+转换XML文本为JavaScript对象。
 
 > **说明：**
 >
@@ -241,7 +263,7 @@ convert(xml: string, options?: ConvertOptions) : Object
 
 | 参数名  | 类型                              | 必填 | 说明            |
 | ------- | --------------------------------- | ---- | --------------- |
-| xml     | string                            | 是   | 传入的xml文本。 |
+| xml     | string                            | 是   | 传入的XML文本。 |
 | options | [ConvertOptions](#convertoptions) | 否   | 转换选项，默认值是ConvertOptions对象，由其中各个属性的默认值组成。  |
 
 **返回值：**
@@ -261,11 +283,20 @@ let xml =
     '    <todo>Play</todo>' +
     '</note>';
 let conv = new convertxml.ConvertXML();
-let options: convertxml.ConvertOptions = {trim : false, declarationKey:"_declaration",
-  instructionKey : "_instruction", attributesKey : "_attributes",
-  textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
-  commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
-  nameKey : "_name", elementsKey : "_elements"}
+let options: convertxml.ConvertOptions = {
+  trim: false,
+  declarationKey: "_declaration",
+  instructionKey: "_instruction",
+  attributesKey: "_attributes",
+  textKey: "_text",
+  cdataKey: "_cdata",
+  doctypeKey: "_doctype",
+  commentKey: "_comment",
+  parentKey: "_parent",
+  typeKey: "_type",
+  nameKey: "_name",
+  elementsKey: "_elements"
+};
 let result = JSON.stringify(conv.convert(xml, options));
 console.info(result);
 // 输出(宽泛型)

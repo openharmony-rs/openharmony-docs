@@ -765,7 +765,7 @@ promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[util.promisify<sup>9+</sup>](#utilpromisify9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，此接口不可用，建议使用[util.promisify<sup>9+</sup>](#utilpromisify9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -777,7 +777,7 @@ promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| original | Function | 是 | 异步函数。 |
+| original | (err: Object, value: Object) =&gt; void | 是 | 异步函数。 |
 
 **返回值：**
 
@@ -1659,7 +1659,7 @@ encodeInto(input: string, dest: Uint8Array): { read: number; written: number }
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Object | 返回{ read: number; written: number }类型对象，其中read表示已编码的字符数，written表示编码字符占用的字节数。 |
+| { read: number; written: number } | 返回一个对象，read表示已编码的字符数，written表示编码字符所占用的字节数。 |
 
 **示例：**
 
