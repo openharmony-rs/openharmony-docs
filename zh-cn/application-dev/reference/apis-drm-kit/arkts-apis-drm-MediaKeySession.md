@@ -1284,7 +1284,7 @@ on(type: 'keysChange', callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean)
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，固定为'keysChange'。密钥变化时触发。 |
-| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) | 是   | 回调函数，监听密钥变化并返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                 |
+| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) => void  | 是   | 回调函数，监听密钥变化并返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                 |
 
 **错误码：**
 
@@ -1327,7 +1327,7 @@ onKeysChange(callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean) => void):
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
-| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) | 是   | 回调函数，返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                 |
+| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) => void | 是   | 回调函数，返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                 |
 
 **错误码：**
 
@@ -1373,7 +1373,7 @@ off(type: 'keysChange', callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolea
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，固定为'keysChange'。 |
-| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) | 否   | 回调函数，监听密钥变更并返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                |
+| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) => void | 否   | 回调函数，监听密钥变更并返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                |
 
 **错误码：**
 
@@ -1412,7 +1412,7 @@ offKeysChange(callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolean) => void
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
-| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) | 否   | 回调函数，监听密钥变更并返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                |
+| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) => void | 否   | 回调函数，监听密钥变更并返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                |
 
 **错误码：**
 
