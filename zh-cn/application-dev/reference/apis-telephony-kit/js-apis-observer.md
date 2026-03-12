@@ -1194,7 +1194,7 @@ offCCallStateChange\(callback?: Callback\<CCallStateInfo\>\): void
 
 **参数：**
 
-|     参数名            |         类型      | 必填 | 说明                                    |
+|     名称            |         类型      | 必填 | 说明                                    |
 | ------------------- | ------------------| ---- | --------------------------------------- |
 | callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | 否   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
 
