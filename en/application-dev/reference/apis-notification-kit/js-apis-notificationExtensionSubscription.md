@@ -15,7 +15,6 @@ The **notificationExtensionSubscription** module provides capabilities for manag
 
 ```ts
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
@@ -57,18 +56,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { common } from '@kit.AbilityKit';
 
-const DOMAIN = 0x0000;
-
 try {
+  // Obtain the context from the component and ensure that the return value of this.getuIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
-    hilog.info(DOMAIN, 'testTag', `openSubscriberSettings success`);
+    console.info(`openSubscriberSettings success`);
   }).catch((e:Error) => {
     let error = e as BusinessError
-    hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+    console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
   });
 } catch (error) {
-  hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+  console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
 }
 ```
 
@@ -108,7 +106,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-const DOMAIN = 0x0000;
 
 let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[] = [
   {
@@ -117,9 +114,9 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
   }
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
-  hilog.info(DOMAIN, 'testTag',"subscribe success");
+  console.info("subscribe success");
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribe fail: ${JSON.stringify(err)}`);
 });
 
 ```
@@ -153,12 +150,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-const DOMAIN = 0x0000;
 
 notificationExtensionSubscription.unsubscribe().then(() => {
-  hilog.info(DOMAIN, 'testTag',"unsubscribe success");
+  console.info("unsubscribe success");
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`unsubscribe fail: ${JSON.stringify(err)}`);
+  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -191,12 +187,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-const DOMAIN = 0x0000;
 
-notificationExtensionSubscription.getSubscribeInfo().then((data) => {
-  hilog.info(DOMAIN, 'testTag',`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
+notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
+  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`getSubscribeInfo fail: ${JSON.stringify(err)}`);
+  console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -229,16 +224,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-const DOMAIN = 0x0000;
 
 notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
   if (isOpen) {
-    hilog.info(DOMAIN, 'testTag','isUserGranted true');
+    console.info('isUserGranted true');
   } else {
-    hilog.info(DOMAIN, 'testTag','isUserGranted false');
+    console.info('isUserGranted false');
   }
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`isUserGranted fail: ${JSON.stringify(err)}`);
+  console.error(`isUserGranted fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -271,12 +265,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-const DOMAIN = 0x0000;
 
-notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => {
-  hilog.info(DOMAIN, 'testTag',`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
+notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
+  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
 });
 ```
 
