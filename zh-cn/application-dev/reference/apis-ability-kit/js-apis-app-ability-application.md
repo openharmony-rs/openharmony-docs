@@ -33,7 +33,7 @@ import { application } from '@kit.AbilityKit';
 | TYPE_CREATE_ABILITY_STAGE  | 2   |     进程最终预加载到[AbilityStage](./js-apis-app-ability-abilityStage.md)创建完成阶段。   |
 | TYPE_CREATE_WINDOW_STAGE        | 3   |    进程最终预加载到[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。           |
 
-## application.createModuleContext<sup>12+</sup>
+## application.createModuleContext
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
 
