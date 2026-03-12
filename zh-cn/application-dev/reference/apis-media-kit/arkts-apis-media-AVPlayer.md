@@ -1668,7 +1668,7 @@ onSeekDone(callback: Callback\<int>): void;
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<int> | 是   | 回调函数。seek生效的事件回调方法，只会上报用户请求的时间位置。<br/>**视频播放：**[SeekMode](arkts-apis-media-e.md#seekmode8)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。 |
+| callback | Callback\<int> | 是   | 回调函数。seek生效的事件回调方法，只会上报用户请求的时间位置。<br/>[SeekMode](arkts-apis-media-e.md#seekmode8)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。 |
 
 **示例：**
 
@@ -1696,7 +1696,7 @@ offSeekDone(callback?: Callback\<int>): void;
 
 | 参数名 | 类型   | 必填 | 说明                                                 |
 | ------ | ------ | ---- | ---------------------------------------------------- |
-| callback | Callback\<int> | 否   | 回调函数。seek生效的事件回调方法，只会上报用户请求的时间位置。<br/>**视频播放：**[SeekMode](arkts-apis-media-e.md#seekmode8)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。 |
+| callback | Callback\<int> | 否   | 回调函数。seek生效的事件回调方法，只会上报用户请求的时间位置。<br/>[SeekMode](arkts-apis-media-e.md#seekmode8)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。 |
 
 **示例：**
 
