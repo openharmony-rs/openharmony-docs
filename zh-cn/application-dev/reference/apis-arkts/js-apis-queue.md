@@ -171,7 +171,7 @@ pop(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 10200010 | Container is empty. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta. |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The pop method cannot be bound. |
 
 **示例：**
@@ -226,7 +226,7 @@ getFirst(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 10200010 | Container is empty. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta. |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The getFirst method cannot be bound. |
 
 **示例：**

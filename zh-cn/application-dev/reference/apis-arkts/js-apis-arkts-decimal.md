@@ -1730,7 +1730,7 @@ ArkTS-Sta: toBinary(significantDigits: double): string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 10200001 | The value of `significantDigits | rounding` is out of range. |
+| 10200001 | The value of `significantDigits` is out of range. |
 
 **示例：**
 

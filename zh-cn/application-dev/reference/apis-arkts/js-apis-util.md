@@ -410,7 +410,7 @@ generateRandomUUID(entropyCache?: boolean): string
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta. |
+| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **示例：**
 
@@ -528,7 +528,7 @@ ArkTS-Sta: getHash(obj: RecordData): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| object | ArkTS-Dyn: object <br> ArkTS-Sta: RecordData | 是 | 需要获取Hash值的对象。 |
+| ArkTS-Dyn: object <br> ArkTS-Sta: obj | ArkTS-Dyn: object <br> ArkTS-Sta: RecordData | 是 | 需要获取Hash值的对象。 |
 
 **返回值：**
 
@@ -599,7 +599,11 @@ static setMultithreadingDetectionEnabled(enabled: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 23
 
 **参数：**
 
@@ -630,7 +634,11 @@ static getAllVMHeapMemoryInfo(): Promise<HeapMemoryInfo[]>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
 
 **返回值：**
 
@@ -661,7 +669,11 @@ util.ArkTSVM.getAllVMHeapMemoryInfo().then(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -753,7 +765,7 @@ promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
 > **说明：**
 >
-> 此接口从API version 9开始废弃，建议使用[util.promisify<sup>9+</sup>](#utilpromisify9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[util.promisify<sup>9+</sup>](#utilpromisify9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

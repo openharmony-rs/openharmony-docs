@@ -447,7 +447,7 @@ getFirstKey(): K
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 10200011 | The getFirstKey method cannot be bound. |
-| 10200010 | Container is empty. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta. |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 
 **示例：**
 
@@ -497,7 +497,7 @@ getLastKey(): K
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 10200011 | The getLastKey method cannot be bound. |
-| 10200010 | Container is empty. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta. |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 
 **示例：**
 
@@ -818,7 +818,7 @@ getLowerKey(key: K): K \| undefined
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 10200011 | The getLowerKey method cannot be bound. |
-| 10200010 | Container is empty. |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 
 **示例：**
 
@@ -907,7 +907,7 @@ getHigherKey(key: K): K \| undefined
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 10200011 | The getHigherKey method cannot be bound. |
-| 10200010 | Container is empty. |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 
 **示例：**
 

@@ -296,7 +296,7 @@ ArkTS-Dyn错误码：
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of index is out of range. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta. |
+| 10200001 | The value of index is out of range. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The get method cannot be bound. |
 
 
@@ -1300,7 +1300,7 @@ getFirst(): T
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 10200011 | The getFirst method cannot be bound. |
-| 10200010 | Container is empty. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta.|
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 
 **示例：**
 
@@ -1353,7 +1353,7 @@ getLast(): T
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 10200011 | The getLast method cannot be bound. |
-| 10200010 | Container is empty. <br> ArkTS模式：该错误码仅适用于ArkTS-Sta.|
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 
 **示例：**
 
