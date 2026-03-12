@@ -386,7 +386,7 @@ getHitTest(): HitTestType
 
 | 类型                              | 说明          |
 | ------------------------------- | ----------- |
-| [HitTestType](./arkts-basic-components-web-e.md#hittesttype) | 被点击区域的元素类型。 |
+| [HitTestType](./arkts-basic-components-web-e.md#hittesttypedeprecated) | 被点击区域的元素类型。 |
 
 **示例：**
 
@@ -581,9 +581,15 @@ zoom(factor: number): void
 
 调整当前网页的缩放比例。
 
-从API version 9开始不再维护，建议使用[zoom<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#zoom)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[zoom<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#zoom)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
