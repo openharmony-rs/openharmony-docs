@@ -29,6 +29,6 @@ typedef struct {...} JSVM_ExtendedErrorInfo
 | const char* errorMessage | UTF-8编码的字符串，包含异常信息。 |
 | void* engineReserved | 特定于VM的详细异常信息。目前尚未为任何VM实现此功能。 |
 | uint32_t engineErrorCode | 特定于VM的异常代码。目前尚未为任何VM实现此功能。 |
-| JSVM_Status errorCode | 源自最后一个异常的JSVM-API状态代码。 |
+| JSVM_Status errorCode | 源自最后一个异常的JSVM-API状态码。 |
 
 
