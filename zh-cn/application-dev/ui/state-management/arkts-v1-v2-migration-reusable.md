@@ -326,7 +326,7 @@ export struct OneMoment {
   }
 }
 ```
-![](figures/v1_v2_reusable_if_two.png)
+![](figures/v1_v2_reusable_if_two.gif)
 
 ### 列表滚动-Repeat全量加载使用场景
 
@@ -682,7 +682,7 @@ struct QuestionSwiperItem {
   }
 }
 ```
-![](figures/v1_v2_reusable_waterflow.gif)
+![](figures/v1_v2_reusable_swiper.gif)
 
 
 ### 列表滚动-ListItemGroup使用场景
@@ -701,7 +701,7 @@ struct ListItemGroupAndReusable {
   itemHead(text: string) {
     Text(text)
       .fontSize(20)
-      .backgroundColor(0xAABBCC)
+      .backgroundColor(0xff519db4)
       .width('100%')
       .padding(10)
   }
@@ -754,7 +754,7 @@ class DataSrc {
   @Trace dataScr1: string[] = [];
 }
 ```
-![](figures/v1_v2_reusable_listitemgroup.png)
+![](figures/v1_v2_reusable_listitemgroup.gif)
 
 ### 多种条目类型使用场景
 
