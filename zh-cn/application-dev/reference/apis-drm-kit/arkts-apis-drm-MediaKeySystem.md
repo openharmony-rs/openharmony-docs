@@ -481,7 +481,7 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onKeySystemRequired](#onkeysystemrequired23)。
 
@@ -523,7 +523,7 @@ onKeySystemRequired(callback: (eventInfo: EventInfo) => void): void
 
 监听设备证书请求事件，获取事件信息。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keySystemRequired')](#onkeysystemrequired)。
 
@@ -563,7 +563,7 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offKeySystemRequired](#offkeysystemrequired23)。
 
@@ -600,7 +600,7 @@ offKeySystemRequired(callback?: (eventInfo: EventInfo) => void): void
 
 注销设备证书请求事件的监听。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keySystemRequired')](#offkeysystemrequired)。
 
