@@ -1053,3 +1053,17 @@ With this permission, the driver application can bind external input devices con
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 24
+
+## ohos.permission.ACCESS_DLP_SERVICE
+
+Allows an application or a service to use the DLP to register or unregister the plugin for connecting the server.
+
+<!--RP67--><!--RP67End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 26

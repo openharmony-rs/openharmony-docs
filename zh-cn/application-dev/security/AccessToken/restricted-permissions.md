@@ -1053,3 +1053,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**: PC/2in1
 
 **起始版本**: 24
+
+## ohos.permission.ACCESS_DLP_SERVICE
+
+允许应用或服务调用DLP提供的注册、解注册连云插件功能。
+
+<!--RP67--><!--RP67End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car
+
+**起始版本**：26
