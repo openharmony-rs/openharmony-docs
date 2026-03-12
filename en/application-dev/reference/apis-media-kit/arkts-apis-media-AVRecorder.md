@@ -849,7 +849,7 @@ getCurrentAudioCapturerInfo(callback: AsyncCallback\<audio.AudioCapturerChangeIn
 
 Obtains the information about the current audio capturer. This API uses an asynchronous callback to return the result.
 
-This API can be called only after the **prepare()** API is called. If this API is called after **stop()** is successfully called, an error is reported.
+This API can be called only after the [prepare()](#prepare9) API is called. If this API is called after [stop()](#stop9) is successfully called, an error is reported.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -893,7 +893,7 @@ getCurrentAudioCapturerInfo(): Promise\<audio.AudioCapturerChangeInfo>
 
 Obtains the information about the current audio capturer. This API uses a promise to return the result.
 
-This API can be called only after the **prepare()** API is called. If this API is called after **stop()** is successfully called, an error is reported.
+This API can be called only after the [prepare()](#prepare9) API is called. If this API is called after [stop()](#stop9) is successfully called, an error is reported.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -936,7 +936,7 @@ getAudioCapturerMaxAmplitude(callback: AsyncCallback\<number>): void
 
 Obtains the maximum amplitude of the current audio capturer. This API uses an asynchronous callback to return the result.
 
-This API can be called only after the **prepare()** API is called. If this API is called after **stop()** is successfully called, an error is reported.
+This API can be called only after the [prepare()](#prepare9) API is called. If this API is called after [stop()](#stop9) is successfully called, an error is reported.
 
 The return value is the maximum amplitude within the duration from the time the maximum amplitude is obtained last time to the current time. For example, if you have obtained the maximum amplitude at 1s and you call this API again at 2s, then the return value is the maximum amplitude within the duration from 1s to 2s.
 
@@ -980,7 +980,7 @@ getAudioCapturerMaxAmplitude(): Promise\<number>
 
 Obtains the maximum amplitude of the current audio capturer. This API uses a promise to return the result.
 
-This API can be called only after the **prepare()** API is called. If this API is called after **stop()** is successfully called, an error is reported.
+This API can be called only after the [prepare()](#prepare9) API is called. If this API is called after [stop()](#stop9) is successfully called, an error is reported.
 
 The return value is the maximum amplitude within the duration from the time the maximum amplitude is obtained last time to the current time. For example, if you have obtained the maximum amplitude at 1s and you call this API again at 2s, then the return value is the maximum amplitude within the duration from 1s to 2s.
 
@@ -1238,7 +1238,7 @@ Unsubscribes from AVRecorder state changes. This API uses an asynchronous callba
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Event type, which is **'stateChange'** in this case. This event can be triggered by both user operations and the system.|
-| callback | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | No  | Callback used to return the state change event.<br>This parameter is supported since API version 12.|
+| callback<sup>12+</sup> | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | No  | Callback used to return the state change event. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.<br>This parameter is supported since API version 12.|
 
 **Example**
 
@@ -1307,7 +1307,7 @@ Unsubscribes from AVRecorder errors. After the unsubscription, your application 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Event type, which is **'error'** in this case.<br>This event is triggered when an error occurs during recording.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback used to return the recording error event.<br>This parameter is supported since API version 12.                  |
+| callback<sup>12+</sup> | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback used to return the recording error event. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.<br>This parameter is supported since API version 12.                  |
 
 **Example**
 
@@ -1366,7 +1366,7 @@ Subscribes to audio capturer configuration changes. This API uses an asynchronou
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Event type, which is **'audioCapturerChange'** in this case.|
-| callback | Callback<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | No| Callback used to return the changed audio capturer configuration.<br>This parameter is supported since API version 12.|
+| callback<sup>12+</sup> | Callback<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | No| Callback used to return the changed audio capturer configuration. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.<br>This parameter is supported since API version 12.|
 
 **Example**
 
@@ -1446,7 +1446,7 @@ Unsubscribes from media asset callback events. This API uses an asynchronous cal
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Event type, which is **'photoAssetAvailable'** in this case.|
-| callback | Callback<[photoAccessHelper.PhotoAsset](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md)> | No| Callback used to return the PhotoAsset object corresponding to the resource file created by the system.|
+| callback | Callback<[photoAccessHelper.PhotoAsset](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md)> | No| Callback used to return the PhotoAsset object corresponding to the resource file created by the system. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
 
 **Example**
 
