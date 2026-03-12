@@ -140,7 +140,7 @@ try {
 }
 ```
 
-***适用于多个同名Wi-Fi但不同bssid的场景***
+***适用于多个同名Wi-Fi但不同BSSID的场景***
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
