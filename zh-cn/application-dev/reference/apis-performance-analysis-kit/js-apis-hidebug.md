@@ -1669,6 +1669,10 @@ hidebug.setJsRawHeapTrimLevel(hidebug.JsRawHeapTrimLevel.TRIM_LEVEL_2);
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 名称      | 类型     | 只读  | 可选 | 说明                                                                              |
@@ -1691,6 +1695,8 @@ setProcDumpInSharedOOM(enable: boolean): void
 > 该接口在应用的生命周期内可被多次调用，但仅最后一次调用的执行结果会生效。
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
