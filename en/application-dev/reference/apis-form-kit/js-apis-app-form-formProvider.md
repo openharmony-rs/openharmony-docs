@@ -132,6 +132,9 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
 Updates a widget. This API uses an asynchronous callback to return the result.
+> **NOTE**
+>
+> Starting from API version 20, when widget refresh data is updated via shared memory, the total size of the refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier versions, the maximum number of image files is 5, with a 2 MB memory limit per image. Any images that exceed these limits will display abnormally.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -189,6 +192,9 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
 Updates a widget. This API uses a promise to return the result.
+> **NOTE**
+>
+> Starting from API version 20, when widget refresh data is updated via shared memory, the total size of the refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier versions, the maximum number of image files is 5, with a 2 MB memory limit per image. Any images that exceed these limits will display abnormally.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -618,6 +624,10 @@ try {
 requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;
 
 Requests an animation. This API takes effect only for [scene-based widgets](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field). This API uses a promise to return the result.
+> **NOTE**
+>
+> 1. This API is unavailable in power saving mode. Otherwise, error code 16501000 will be reported.
+> 2. When the device's thermal level reaches HOT and no tap event occurs, this API reports error code 16501000. When the thermal level reaches OVERHEATED, this API reports error code 16501000 in all cases. For details, see [ThermalLevel](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

@@ -141,6 +141,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
+  	let windowClass: window.Window | undefined = undefined;
     let config: window.Configuration = {
       name: "test",
       windowType: window.WindowType.TYPE_DIALOG,
@@ -149,7 +150,8 @@ export default class EntryAbility extends UIAbility {
     try {
       window.createWindow(config).then((value:window.Window) => {
         console.info('Succeeded in creating the window. Data: ' + JSON.stringify(value));
-        value.resize(500, 1000);
+        windowClass = value;
+        windowClass.resize(500, 1000);
       }).catch((err:BusinessError)=> {
         console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
       });
@@ -272,7 +274,7 @@ export default class EntryAbility extends UIAbility {
       });
     });
   }
-  //...
+  // ...
 }
 ```
 
@@ -349,7 +351,7 @@ export default class EntryAbility extends UIAbility {
       });
     });
   }
-  //...
+  // ...
 }
 ```
 
@@ -647,27 +649,26 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
 
-try {
-  let displayId = 0;
-  window.getWindowsByCoordinate(displayId).then((data) => {
-    console.info(`Succeeded in getting windows. Data: ${data}`);
-    for (let window of data) {
-      // do something with window
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
+    try {
+      let displayId = 0;
+      window.getWindowsByCoordinate(displayId, 2, 500, 500).then((data) => {
+        console.info(`Succeeded in getting windows. Data: ${data}`);
+        for (let windowObject of data) {
+          // do something with window
+          windowClass = windowObject;
+        }
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to get window from point. Cause code: ${exception.code}, message: ${exception.message}`);
     }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
-  });
-  window.getWindowsByCoordinate(displayId, 2, 500, 500).then((data) => {
-    console.info(`Succeeded in getting windows. Data: ${data}`);
-    for (let window of data) {
-      // do something with window
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed to get window from point. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
 }
 ```
 

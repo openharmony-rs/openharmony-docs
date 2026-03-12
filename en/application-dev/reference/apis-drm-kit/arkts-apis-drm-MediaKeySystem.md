@@ -36,7 +36,7 @@ Sets a configuration item in the form of a string.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -83,7 +83,7 @@ Obtains the value of a configuration item in the form of a string.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -125,7 +125,7 @@ Sets a configuration item in the form of a byte array.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -175,7 +175,7 @@ Obtains the value of a configuration item in the form of a byte array.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -342,7 +342,7 @@ Processes the response to a previously generated device certificate request. Thi
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -425,7 +425,7 @@ Subscribes to events indicating that the application requests a device certifica
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -462,7 +462,7 @@ Unsubscribes from events indicating that the application requests a device certi
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -501,7 +501,7 @@ Creates a MediaKeySession instance with the specified content protection level.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -630,7 +630,7 @@ Obtains the status of offline media keys with the specified IDs.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -673,7 +673,7 @@ Clears offline media keys with the specified IDs.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |

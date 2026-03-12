@@ -34,7 +34,7 @@ Listens for [NavDestination](arkui-ts/ts-basic-components-navdestination.md) com
 | Name  | Type                                                 | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state changes.|
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | Yes  | Callback used to return the result. Returns the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | Yes  | Callback used to return the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                |
 
 **Example**
 
@@ -129,7 +129,7 @@ Listens for [NavDestination](arkui-ts/ts-basic-components-navdestination.md) com
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state changes.|
 | options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | Yes  | ID of the target [Navigation](arkui-ts/ts-basic-components-navigation.md) component.                                  |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | Yes  | Callback used to return the result. Returns the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | Yes  | Callback used to return the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                |
 
 **Example**
 
@@ -226,7 +226,7 @@ Listens for [NavDestination](arkui-ts/ts-basic-components-navdestination.md) com
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                               | Yes  | Event type. The value is fixed at **'navDestinationUpdateByUniqueId'**, which indicates [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state changes.|
 | navigationUniqueId  | number | Yes  | Unique ID of the target [Navigation](arkui-ts/ts-basic-components-navigation.md) component, which can be obtained using [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).                                              |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | Yes  | Callback used to return the result. Returns the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                            |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | Yes  | Callback used to return the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                            |
 
 **Example**
 
@@ -334,7 +334,7 @@ Listens for the start and end of scroll events of all scrollable components. Sup
 | Name  | Type                                                 | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.     |
-| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | Yes  | Callback used to return the result. Callback used to return the information about the scroll event.  |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | Yes  | Callback used to return the information about the scroll event.  |
 
 **Example**
 
@@ -426,7 +426,7 @@ Unregisters the listener for the start and end of scroll events of all scrollabl
 | Name  | Type                                                 | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.     |
-| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | No  | Callback used to return the result. It returns the information about the scroll event. If no parameter is provided, all scroll event listeners are unregistered.  |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | No  | Callback used to return the information about the scroll event. If no parameter is provided, all scroll event listeners are unregistered.  |
 
 **Example**
 
@@ -448,7 +448,7 @@ Listens for the start and end of scroll events of a specific scrollable componen
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.|
 | options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
-| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | Yes  | Callback used to return the result. Callback used to return the information about the scroll event.                |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | Yes  | Callback used to return the information about the scroll event.                |
 
 **Example**
 
@@ -470,7 +470,7 @@ Unregisters the listener for the start and end of scroll events of a specific sc
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.|
 | options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
-| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | No  | Callback used to return the result. It returns the information about the scroll event. If no parameter is provided, all scroll event listeners are unregistered.                |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | No  | Callback used to return the information about the scroll event. If no parameter is provided, all scroll event listeners are unregistered.                |
 
 **Example**
 
@@ -1816,7 +1816,7 @@ Listens on the text input component with the specified ID.
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text input field changes events.|
 | identity | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | ID of the text input component to be listened on.                            |
-| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | Yes  | Callback used to return the result. Returns the text change information.|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | Yes  | Callback used to return the text change information.|
 
 **Example**
 

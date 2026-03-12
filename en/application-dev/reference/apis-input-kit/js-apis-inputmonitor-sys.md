@@ -1580,7 +1580,7 @@ Listens for the press and release events of the specified key, which can be the 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Input Monitor Error Codes](errorcode-inputmonitor.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Input Monitor Error Codes](./errorcode-inputmonitor.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1746,6 +1746,144 @@ try {
   const code = (error as BusinessError).code;
   const message = (error as BusinessError).message;
   console.error(`queryTouchEvents failed, error code: ${code}, message: ${message}.`);
+}
+```
+
+## inputMonitor.on('swipeInward')<sup>12+</sup>
+
+on(type: 'swipeInward', receiver: Callback&lt;SwipeInward&gt;): void
+
+Listens for inward swipe events. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.INPUT_MONITORING
+
+**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+
+**Parameters**
+
+| Name  | Type                                                       | Mandatory| Description                                |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
+| type     | string                                                      | Yes  | Input event type. The value is fixed at **SwipeInward**.|
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt;    | Yes  | Callback function, which returns [SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward).        |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied, non-system app called system api.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputMonitor.on('swipelnward', (SwipeInward) => {
+              console.info(`Monitor on success ${JSON.stringify(SwipeInward)}`);
+              return false;
+            });
+          } catch (error) {
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.off('swipeInward')<sup>12+</sup>
+
+off(type: 'swipeInward', receiver?: Callback&lt;SwipeInward&gt;): void
+
+Cancels listening for inward swipe events. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.INPUT_MONITORING
+
+**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes  | Input event type. The value is fixed at **SwipeInward**.                   |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt; | No  | Callback for which listening is disabled. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message            |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```js
+import { inputMonitor, SwipeInward } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        // Disable listening for a single callback.
+        let callback = (swipeInward: SwipeInward) => {
+          console.info(`Monitor on success ${JSON.stringify(swipeInward)}`);
+          return false;
+        };
+        try {
+          inputMonitor.on('swipeInward', callback);
+          inputMonitor.off("swipeInward", callback);
+          console.info(`Monitor off success`);
+        } catch (error) {
+          console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        }
+      })
+  }
+}
+}
+```
+
+```js
+import { inputMonitor, SwipeInward } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        // Cancel listening for all callbacks.
+        let callback = (swipeInward: SwipeInward) => {
+          console.info(`Monitor on success ${JSON.stringify(swipeInward)}`);
+          return false;
+        };
+        try {
+          inputMonitor.on('swipeInward', callback);
+          inputMonitor.off("swipeInward");
+          console.info(`Monitor off success`);
+        } catch (error) {
+          console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        }
+      })
+  }
+}
 }
 ```
 

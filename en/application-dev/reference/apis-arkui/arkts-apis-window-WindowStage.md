@@ -523,7 +523,7 @@ You are advised to call this API during UIAbility startup. If called repeatedly,
 
 | Name  | Type                                           | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path     | string                                          | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project. |
+| path     | string                                          | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project. The path cannot be a relative path and must be the same as the value of **src** in the **main_pages.json** file.|
 | storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | Yes  | Page-level UI state storage unit, which is used to transfer the state attribute for the page content loaded to the window.|
 | callback | AsyncCallback&lt;void&gt;                       | Yes  | Callback used to return the result.                                                  |
 
@@ -585,7 +585,7 @@ You are advised to call this API during UIAbility startup. If called repeatedly,
 
 | Name | Type                                           | Mandatory| Description                                                        |
 | ------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path    | string                                          | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project.|
+| path    | string                                          | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project. The path cannot be a relative path and must be the same as the value of **src** in the **main_pages.json** file.|
 | storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No  | Page-level UI state storage unit, which is used to transfer the state attribute for the page content loaded to the window. This parameter is left blank by default.|
 
 **Return value**
@@ -651,7 +651,7 @@ You are advised to call this API during UIAbility startup. If called repeatedly,
 
 | Name  | Type                     | Mandatory| Description                |
 | -------- | ------------------------- | ---- | -------------------- |
-| path     | string                    | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project.|
+| path     | string                    | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project. The path cannot be a relative path and must be the same as the value of **src** in the **main_pages.json** file.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.          |
 
 **Error codes**
@@ -1004,7 +1004,7 @@ off(eventType: 'windowStageEvent', callback?: Callback&lt;WindowStageEventType&g
 
 Unsubscribes from the WindowStage lifecycle change event.
 
-This API stops the listener for WindowStage lifecycle changes that was started with the [on('windowStageEvent')](#onwindowstageevent9) API.
+This API stops the listener for WindowStage lifecycle changes initiated by the [on('windowStageEvent')](#onwindowstageevent9) API.
 
 If you call this API without having previously called [on('windowStageEvent')](#onwindowstageevent9), the call does not cause an error and the program keeps running as usual.
 
@@ -1208,7 +1208,7 @@ Subscribes to the click event on the close button in the three-button navigation
 
 If the event is subscribed to multiple times, only the most recently subscribed-to event takes effect.
 
-The callback function in this API is executed synchronously. For asynchronous close events of the main window, refer to [on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15).
+The callback function in this API is executed synchronously. For details about listening for asynchronous close events of the main window, please refer to [on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15).
 
 If there is an existing event subscribed to by calling [on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15), only the [on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15) API will be responded to.
 
@@ -1500,7 +1500,7 @@ This API must be called by the main window and the setting takes effect for the 
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, error code 801 is returned.
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, error code 801 is returned.
 
 **Parameters**
 
