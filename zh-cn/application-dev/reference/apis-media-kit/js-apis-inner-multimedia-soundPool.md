@@ -1635,7 +1635,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ```
 
-### on('loadComplete')<sup>10+</sup>
+### on('loadComplete')
 
 on(type: 'loadComplete', callback: Callback\<number>): void
 
@@ -1690,7 +1690,7 @@ onLoadComplete(callback: Callback\<int>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('loadComplete')](#onloadcomplete10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('loadComplete')](#onloadcomplete)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1728,7 +1728,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ```
 
-### off('loadComplete')<sup>10+</sup>
+### off('loadComplete')
 
 off(type: 'loadComplete'): void
 
@@ -1780,7 +1780,7 @@ offLoadComplete(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('loadComplete')](#offloadcomplete10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('loadComplete')](#offloadcomplete)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1816,9 +1816,9 @@ on(type: 'playFinishedWithStreamId', callback: Callback\<number>): void
 
 音频池资源播放完成监听，同时返回播放结束的音频的streamId。
 
-当仅单独注册[on('playFinished')](#onplayfinished10)事件回调或者[on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18)事件回调时，当音频播放完成的时候，都会触发注册的回调。
+当仅单独注册[on('playFinished')](#onplayfinished)事件回调或者[on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18)事件回调时，当音频播放完成的时候，都会触发注册的回调。
 
-当同时注册[on('playFinished')](#onplayfinished10)事件回调和[on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18)事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
+当同时注册[on('playFinished')](#onplayfinished)事件回调和[on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18)事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1989,7 +1989,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool: me
 
 ```
 
-### on('playFinished')<sup>10+</sup>
+### on('playFinished')
 
 on(type: 'playFinished', callback: Callback\<void>): void
 
@@ -2044,7 +2044,7 @@ onPlayFinished(Callback\<void>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('playFinished')](#onplayfinished10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('playFinished')](#onplayfinished)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2082,7 +2082,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ```
 
-### off('playFinished')<sup>10+</sup>
+### off('playFinished')
 
 off(type: 'playFinished'): void
 
@@ -2134,7 +2134,7 @@ offPlayFinished(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('playFinished')](#offplayfinished10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('playFinished')](#offplayfinished)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2164,7 +2164,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ```
 
-### on('error')<sup>10+</sup>
+### on('error')
 
 on(type: 'error', callback: ErrorCallback): void
 
@@ -2220,7 +2220,7 @@ onError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2259,7 +2259,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ```
 
-### off('error')<sup>10+</sup>
+### off('error')
 
 off(type: 'error'): void
 
@@ -2310,7 +2310,7 @@ offError(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
