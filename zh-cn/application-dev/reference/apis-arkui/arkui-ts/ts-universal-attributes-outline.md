@@ -194,7 +194,7 @@ outlineStyle(value: OutlineStyle | EdgeOutlineStyles | undefined): this
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[[outlineStyle](#outlinestyle)](#outline)和[outlineStyle<sup>18+</sup>](#outlinestyle18)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[outlineStyle](#outline)和[outlineStyle<sup>18+</sup>](#outlinestyle18)。
 
 **ArkTS-Sta起始版本：** 23
 
