@@ -178,7 +178,7 @@ Creates an instance of the intelligent voice enrollment engine. This API uses a 
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| Promise\<[EnrollIntelligentVoiceEngine](#enrollintelligentvoiceengine)\>           | Callback used to return the result.                  |
+| Promise\<[EnrollIntelligentVoiceEngine](#enrollintelligentvoiceengine)\>           | Promise used to return the result.                  |
 
 **Error codes**
 
@@ -279,7 +279,7 @@ Creates an instance of the intelligent voice wakeup engine. This API uses a prom
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| Promise\<[WakeupIntelligentVoiceEngine](#wakeupintelligentvoiceengine)>           | Callback used to return the result.                  |
+| Promise\<[WakeupIntelligentVoiceEngine](#wakeupintelligentvoiceengine)>           | Promise used to return the result.                  |
 
 **Error codes**
 
@@ -1154,6 +1154,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 22700107 | System error.                             |
 
 **Example**
 
@@ -1204,6 +1205,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 22700107 | System error.                             |
 
 **Example**
 

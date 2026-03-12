@@ -57,7 +57,7 @@ bm help
 ## 安装命令（install）
 
 ```bash
-bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId] [-d]
+bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId] [-d] [-g]
 ```
 
   **安装命令参数列表**
@@ -72,6 +72,7 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId] 
 | -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为180s，最大的等待时长为600s,&nbsp;默认缺省为180s。 |
 | -u | 可选参数，指定[用户](#userid)，默认在当前活跃用户下安装应用。仅支持在当前活跃用户或0用户下安装。<br>**说明：**<br> 如果当前活跃用户是100，使用命令`bm install -p /data/local/tmp/ohos.app.hap -u 102`安装时，只会在当前活跃用户100下安装应用。 |
 | -d | 可选参数，允许应用降级安装，即设备已安装较高版本的应用，也可以覆盖安装较低版本的应用。仅支持签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用降级安装。从API version 23开始支持。 |
+| -g | 可选参数，安装签名证书类型为debug的应用时自动授予[user_grant](../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)和[manual_settings](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)权限。<br>仅对[开发者模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)下的签名证书类型为debug的应用生效。可以通过<!--RP5-->[Profile签名文件](../security/app-provision-structure.md)<!--RP5End-->中的type字段查看签名证书类型。<br>签名证书类型为debug的应用更新为签名证书类型为release的应用时取消已授予的[user_grant](../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)和[manual_settings](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)权限。从API version 24开始支持。 |
 
 
 示例：
@@ -92,6 +93,8 @@ bm install -p /data/local/tmp/hapPath/
 bm install -p /data/local/tmp/ohos.app.hap -w 180
 # 设备已安装了一个高版本的应用，覆盖安装一个同包名低版本的hap
 bm install -p /data/local/tmp/ohos.app.hap -d
+# 安装签名证书类型为debug的应用时自动授予user_grant权限和manual_settings权限
+bm install -p /data/local/tmp/ohos.app.hap -g
 ```
 
 ## 卸载命令（uninstall）
@@ -3426,6 +3429,22 @@ error: check bin file failed.
 1. 配置应用为解压模式，即在应用的[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中设置compressNativeLibs标签为true。
 2. 更换为PC/2in1设备。
 
+### 9568450 安装失败，应用包需为签名证书类型为debug的应用
+**错误信息**
+
+error: Failed to install because the bundle must be debug type.
+
+**错误描述**
+
+应用包需为签名证书类型为debug的应用。
+
+**可能原因**
+
+[开发者模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)下使用[-g参数](#安装命令install)授权签名证书类型为非debug的应用。可以通过<!--RP5-->[Profile签名文件](../security/app-provision-structure.md)<!--RP5End-->中的type字段来查看签名证书类型。
+
+**处理步骤**
+
+使用debug类型证书对应用重新签名。
 
 <!--Del-->
 ## 常见问题

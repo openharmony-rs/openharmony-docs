@@ -348,7 +348,7 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchMetadata(OH_AVMetadataExtractor* extrac
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL： 输入的extractor为空指针或参数无效。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作被禁止。<br>         AV_ERR_UNSUPPORTED_FORMAT：格式不支持。<br>         AV_ERR_NO_MEMORY：内部内存分配失败。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL： 输入的extractor为空指针或参数无效。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作被禁止。<br>         AV_ERR_UNSUPPORTED_FORMAT：格式不支持。<br>         AV_ERR_NO_MEMORY：内部内存分配失败。<br>         AV_ERR_IO_CLEARTEXT_NOT_PERMITTED：（API version 23新增）不允许HTTP明文流量。 |
 
 ### OH_AVMetadataExtractor_FetchAlbumCover()
 
