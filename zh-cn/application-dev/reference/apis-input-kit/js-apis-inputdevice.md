@@ -725,7 +725,9 @@ getDeviceIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 获取所有输入设备的id列表，使用Callback异步回调。
 
-> 从API version 9 开始不再维护，建议使用[inputDevice.getDeviceList](#inputdevicegetdevicelist9)代替。
+> **说明**：
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputDevice.getDeviceList](#inputdevicegetdevicelist9)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -768,7 +770,7 @@ getDeviceIds(): Promise&lt;Array&lt;number&gt;&gt;
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[inputDevice.getDeviceList](#inputdevicegetdevicelist9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputDevice.getDeviceList](#inputdevicegetdevicelist9)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -810,7 +812,7 @@ getDevice(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;): voi
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[inputDevice.getDeviceInfo](#inputdevicegetdeviceinfo9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputDevice.getDeviceInfo](#inputdevicegetdeviceinfo9)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -856,7 +858,7 @@ getDevice(deviceId: number): Promise&lt;InputDeviceData&gt;
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[inputDevice.getDeviceInfo](#inputdevicegetdeviceinfo9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputDevice.getDeviceInfo](#inputdevicegetdeviceinfo9)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -1650,7 +1652,7 @@ ArkTS-Sta: getIntervalSinceLastInput(): Promise&lt;long&gt;
 
 **返回值**：
 
-| 参数                                          | 说明                            |
+| 类型                                          | 说明                            |
 | --------------------------------------------- | ------------------------------- |
 | ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回距离上次系统输入事件的时间间隔，单位：μs。|
 

@@ -14,7 +14,7 @@
 
 ArkTS-Dyn: onAlert(callback: Callback\<OnAlertEvent, boolean\>)
 
-ArkTS-Sta: onAlert(callback: Callback\<OnAlertEvent, boolean\> | undefined): this
+ArkTS-Sta: onAlert(callback: Callback\<OnAlertEvent, boolean\> | undefined)
 
 网页触发alert()告警弹窗时触发回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm)接口，会造成render进程阻塞。
 
@@ -138,7 +138,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
 
-ArkTS-Sta: onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\> | undefined): this
+ArkTS-Sta: onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\> | undefined)
 
 即将完成页面刷新或关闭当前页面时触发此回调。
 
@@ -280,7 +280,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
-ArkTS-Sta: onConfirm(callback: Callback\<OnConfirmEvent, boolean\> | undefined): this
+ArkTS-Sta: onConfirm(callback: Callback\<OnConfirmEvent, boolean\> | undefined)
 
 网页调用confirm()告警时触发此回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm)接口，会造成render进程阻塞。
 
@@ -425,7 +425,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
 
-ArkTS-Sta: onPrompt(callback: Callback\<OnPromptEvent, boolean\> | undefined): this
+ArkTS-Sta: onPrompt(callback: Callback\<OnPromptEvent, boolean\> | undefined)
 
 网页调用prompt()告警时触发此回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handlePromptConfirm](./arkts-basic-components-web-JsResult.md#handlepromptconfirm9)接口，会造成render进程阻塞。
 
@@ -634,7 +634,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onConsole(callback: Callback\<OnConsoleEvent, boolean\>)
 
-ArkTS-Sta: onConsole(callback: Callback\<OnConsoleEvent, boolean\> | undefined): this
+ArkTS-Sta: onConsole(callback: Callback\<OnConsoleEvent, boolean\> | undefined)
 
 通知宿主应用JavaScript console消息。
 
@@ -735,7 +735,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onDownloadStart(callback: Callback\<OnDownloadStartEvent\>)
 
-ArkTS-Sta: onDownloadStart(callback: Callback\<OnDownloadStartEvent\> | undefined): this
+ArkTS-Sta: onDownloadStart(callback: Callback\<OnDownloadStartEvent\> | undefined)
 
 通知主应用开始下载一个文件。
 
@@ -814,7 +814,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
 
-ArkTS-Sta: onErrorReceive(callback: Callback\<OnErrorReceiveEvent\> | undefined): this
+ArkTS-Sta: onErrorReceive(callback: Callback\<OnErrorReceiveEvent\> | undefined)
 
 网页加载遇到错误时触发该回调。主资源与子资源出错都会回调该接口，可以通过[isMainFrame](./arkts-basic-components-web-WebResourceRequest.md#ismainframe)来判断是否是主资源报错。出于性能考虑，建议此回调中尽量执行简单逻辑。在无网络的情况下，触发此回调。
 
@@ -905,7 +905,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onHttpErrorReceive(callback: Callback\<OnHttpErrorReceiveEvent\>)
 
-ArkTS-Sta: onHttpErrorReceive(callback: Callback\<OnHttpErrorReceiveEvent\> | undefined): this
+ArkTS-Sta: onHttpErrorReceive(callback: Callback\<OnHttpErrorReceiveEvent\> | undefined)
 
 网页加载资源遇到的HTTP错误（响应码>=400）时触发该回调。
 
@@ -1009,7 +1009,9 @@ ArkTS-Sta示例：
 
 ## onPageBegin
 
-onPageBegin(callback: Callback\<OnPageBeginEvent\>)
+ArkTS-Dyn: onPageBegin(callback: Callback\<OnPageBeginEvent\>)
+ 	 
+ArkTS-Sta: onPageBegin(callback: Callback\<OnPageBeginEvent\> | undefined)
 
 网页开始加载时触发该回调，且只在主frame触发，iframe或者frameset的内容加载时不会触发此回调。
 
@@ -1023,7 +1025,7 @@ onPageBegin(callback: Callback\<OnPageBeginEvent\>)
 
 | 参数名  | 类型   | 必填   | 说明      |
 | ---- | ------ | ---- | --------- |
-| callback  | Callback\<[OnPageBeginEvent](./arkts-basic-components-web-i.md#onpagebeginevent12)\> | 是    | 网页加载开始时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnPageBeginEvent](./arkts-basic-components-web-i.md#onpagebeginevent12)\>  <br/> ArkTS-Sta: Callback\<[OnPageBeginEvent](./arkts-basic-components-web-i.md#onpagebeginevent12)\> \|  undefined | 是    | 网页加载开始时触发。 |
 
 **示例：**
 
@@ -1076,7 +1078,9 @@ ArkTS-Sta示例：
 
 ## onPageEnd
 
-onPageEnd(callback: Callback\<OnPageEndEvent\>)
+ArkTS-Dyn: onPageEnd(callback: Callback\<OnPageEndEvent\>)
+ 	 
+ArkTS-Sta: onPageEnd(callback: Callback\<OnPageEndEvent\> | undefined)
 
 网页加载完成时触发该回调，且只在主frame触发。
 
@@ -1090,7 +1094,7 @@ onPageEnd(callback: Callback\<OnPageEndEvent\>)
 
 | 参数名  | 类型   | 必填   | 说明      |
 | ---- | ------ | ---- | --------- |
-| callback  | Callback\<[OnPageEndEvent](./arkts-basic-components-web-i.md#onpageendevent12)\> | 是    | 网页加载结束时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnPageEndEvent](./arkts-basic-components-web-i.md#onpageendevent12)\> <br/>ArkTS-Sta: Callback\<[OnPageEndEvent](./arkts-basic-components-web-i.md#onpageendevent12)\>  \|  undefined | 是    | 网页加载结束时触发。 |
 
 **示例：**
 
@@ -1143,7 +1147,9 @@ ArkTS-Sta示例：
 
 ## onLoadStarted<sup>20+</sup>
 
-onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
+ArkTS-Dyn: onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
+ 	 
+ArkTS-Sta: onLoadStarted(callback: Callback\<OnLoadStartedEvent\> | undefined)
 
 通知宿主应用页面开始加载。此方法在每次主frame加载时调用一次，因此对于包含iframes或frameset的页面，onLoadStarted仅针对主frame调用一次。这意味着当嵌入式frame的内容发生变化时，如点击iframe中的链接或Fragment跳转（即跳转到#fragment_id的导航）等，不会调用onLoadStarted。
 
@@ -1157,7 +1163,7 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 
 | 参数名  | 类型   | 必填   | 说明      |
 | ---- | ------ | ---- | --------- |
-| callback  | Callback\<[OnLoadStartedEvent](./arkts-basic-components-web-i.md#onloadstartedevent20)\> | 是    | 网页加载开始时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnLoadStartedEvent](./arkts-basic-components-web-i.md#onloadstartedevent20)\> <br/>ArkTS-Sta: Callback\<[OnLoadStartedEvent](./arkts-basic-components-web-i.md#onloadstartedevent20)\> \| undefined | 是    | 网页加载开始时触发。 |
 
 **示例：**
 
@@ -1210,7 +1216,9 @@ ArkTS-Sta示例：
 
 ## onLoadFinished<sup>20+</sup>
 
-onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
+ArkTS-Dyn: onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
+ 	 
+ArkTS-Sta: onLoadFinished(callback: Callback\<OnLoadFinishedEvent\> | undefined)
 
 通知宿主应用页面已加载完成。此方法仅在主frame加载完成时被调用。对于片段跳转（即导航至#fragment_id），onLoadFinished同样会被触发。
 
@@ -1224,7 +1232,7 @@ onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
 
 | 参数名  | 类型   | 必填   | 说明      |
 | ---- | ------ | ---- | --------- |
-| callback  | Callback\<[OnLoadFinishedEvent](./arkts-basic-components-web-i.md#onloadfinishedevent20)\> | 是    | 网页加载结束时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnLoadFinishedEvent](./arkts-basic-components-web-i.md#onloadfinishedevent20)\> <br/>ArkTS-Sta: Callback\<[OnLoadFinishedEvent](./arkts-basic-components-web-i.md#onloadfinishedevent20)\> \|  undefined | 是    | 网页加载结束时触发。 |
 
 **示例：**
 
@@ -1279,7 +1287,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onProgressChange(callback: Callback\<OnProgressChangeEvent\>)
 
-ArkTS-Sta: onProgressChange(callback: Callback\<OnProgressChangeEvent\> | undefined): this
+ArkTS-Sta: onProgressChange(callback: Callback\<OnProgressChangeEvent\> | undefined)
 
 网页加载进度变化时触发该回调。
 
@@ -1347,7 +1355,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onTitleReceive(callback: Callback\<OnTitleReceiveEvent\>)
 
-ArkTS-Sta: onTitleReceive(callback: Callback\<OnTitleReceiveEvent\> | undefined): this
+ArkTS-Sta: onTitleReceive(callback: Callback\<OnTitleReceiveEvent\> | undefined)
 
 当页面文档标题`<title>`元素发生变更时，触发回调。若当前页面未显示设置标题，ArkWeb将在加载完成前基于页面的URL生成标题并返回给应用。
 
@@ -1419,7 +1427,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onRefreshAccessedHistory(callback: Callback\<OnRefreshAccessedHistoryEvent\>)
 
-ArkTS-Sta: onRefreshAccessedHistory(callback: Callback\<OnRefreshAccessedHistoryEvent\> | undefined): this
+ArkTS-Sta: onRefreshAccessedHistory(callback: Callback\<OnRefreshAccessedHistoryEvent\> | undefined)
 
 导航完成时触发该回调，用于应用更新其访问的历史链接。
 
@@ -1489,7 +1497,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
 
-ArkTS-Sta: onRenderExited(callback: Callback\<OnRenderExitedEvent\> | undefined): this
+ArkTS-Sta: onRenderExited(callback: Callback\<OnRenderExitedEvent\> | undefined)
 
 应用渲染进程异常退出时触发该回调。
 
@@ -1565,7 +1573,7 @@ ArkTS-Sta: onRenderExited(callback: Callback\<OnRenderExitedEvent\> | undefined)
 
 ArkTS-Dyn: onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
 
-ArkTS-Sta: onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback | undefined): this
+ArkTS-Sta: onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback | undefined)
 
 渲染进程无响应时触发该回调函数。如果Web组件无法处理输入事件，或者无法在合理的时间范围内导航到新的URL，则认为网页进程无响应，并将触发该回调。
 
@@ -1637,7 +1645,7 @@ ArkTS-Sta: onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCa
 
 ArkTS-Dyn: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
 
-ArkTS-Sta: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback | undefined): this
+ArkTS-Sta: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback | undefined)
 
 渲染进程由无响应状态变回正常运行状态时触发该回调函数，该回调表明该网页并非真正卡死。
 
@@ -1701,17 +1709,23 @@ ArkTS-Sta: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback
 
 ## onShowFileSelector<sup>9+</sup>
 
-onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
+ArkTS-Dyn: onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
+
+ArkTS-Sta: onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\> | undefined)
 
 调用此函数以处理具有“文件”输入类型的HTML表单。如果不调用此函数或返回false，Web组件会提供默认的“选择文件”处理界面。如果返回true，应用可以自定义“选择文件”的响应行为。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型                                     | 必填   | 说明              |
 | ------------ | ---------------------------------------- | ---- | ----------------- |
-| callback       | Callback\<[OnShowFileSelectorEvent](./arkts-basic-components-web-i.md#onshowfileselectorevent12), boolean\> | 是    | 用于通知Web组件文件选择的结果。<br>返回值boolean。当返回值为true时，用户可以调用系统提供的弹窗能力。当返回值为false时，函数中绘制的自定义弹窗无效。 |
+| callback       | ArkTS-Dyn: Callback\<[OnShowFileSelectorEvent](./arkts-basic-components-web-i.md#onshowfileselectorevent12), boolean\><br/>ArkTS-Sta: Callback\<[OnShowFileSelectorEvent](./arkts-basic-components-web-i.md#onshowfileselectorevent12), boolean\> \| undefined | 是    | 用于通知Web组件文件选择的结果。<br>返回值boolean。当返回值为true时，用户可以调用系统提供的弹窗能力。当返回值为false时，函数中绘制的自定义弹窗无效。 |
 
 **示例：**
 
@@ -1915,7 +1929,7 @@ onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
 
 ArkTS-Dyn: onResourceLoad(callback: Callback\<OnResourceLoadEvent\>)
 
-ArkTS-Sta: onResourceLoad(callback: Callback\<OnResourceLoadEvent\> | undefined): this
+ArkTS-Sta: onResourceLoad(callback: Callback\<OnResourceLoadEvent\> | undefined)
 
 通知Web组件所加载的资源文件url信息。
 
@@ -1981,7 +1995,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
 
-ArkTS-Sta: onScaleChange(callback: Callback\<OnScaleChangeEvent\> | undefined): this
+ArkTS-Sta: onScaleChange(callback: Callback\<OnScaleChangeEvent\> | undefined)
 
 当页面显示比例发生变化时，触发该回调。
 
@@ -2047,11 +2061,15 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse>)
 
-ArkTS-Sta: onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse | null> | undefined): this
+ArkTS-Sta: onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse | null> | undefined)
 
 当Web组件加载URL之前触发该回调，用于拦截URL并返回响应数据。`onInterceptRequest`可拦截所有跳转请求并返回响应数据，但无法访问POST请求体（Body）内容，且不支持分片缓冲（buffer）类型数据获取。此类场景需改用[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)实现，依据具体业务需求进行判断。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2197,7 +2215,7 @@ struct WebComponent {
 
 ArkTS-Dyn: onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\>)
 
-ArkTS-Sta: onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\> | undefined): this
+ArkTS-Sta: onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\> | undefined)
 
 通知收到http auth认证请求。
 
@@ -2326,7 +2344,7 @@ struct WebComponent {
 
 ArkTS-Dyn: onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
 
-ArkTS-Sta: onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\> | undefined): this
+ArkTS-Sta: onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\> | undefined)
 
 通知用户加载资源时发生SSL错误，只支持主资源。
 如果需要支持子资源，请使用[OnSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12)接口。
@@ -2523,7 +2541,7 @@ struct WebComponent {
 
 ArkTS-Dyn: onSslErrorEvent(callback: OnSslErrorEventCallback)
 
-ArkTS-Sta: onSslErrorEvent(callback: OnSslErrorEventCallback | undefined): this
+ArkTS-Sta: onSslErrorEvent(callback: OnSslErrorEventCallback | undefined)
 
 通知用户加载资源（主资源+子资源）时发生SSL错误，如果只想处理主资源的SSL错误，请用[isMainFrame](./arkts-basic-components-web-WebResourceRequest.md#ismainframe)字段进行区分。
 
@@ -2742,6 +2760,10 @@ ArkTS-Sta: onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticat
 > - 如果调用ClientAuthenticationHandler.confirm或ClientAuthenticationHandler.cancel，ArkWeb会将认证结果存储在内存中（在应用程序的生命周期内），并且不会对相同的主机和端口再次调用onClientAuthenticationRequest()。如果调用onClientAuthenticationRequest.ignore，ArkWeb则不会存储该认证结果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3138,7 +3160,7 @@ ArkTS-Sta: onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticat
 
 ArkTS-Dyn: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
 
-ArkTS-Sta: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\> | undefined): this
+ArkTS-Sta: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\> | undefined)
 
 通知收到获取权限请求，需配置"ohos.permission.CAMERA"、"ohos.permission.MICROPHONE"权限。
 
@@ -3314,7 +3336,9 @@ struct WebComponent {
 
 ## onContextMenuShow<sup>9+</sup>
 
-onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
+ArkTS-Dyn: onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
+
+ArkTS-Sta: onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\> | undefined)
 
 长按特定元素（例如图片，链接）或鼠标右键，跳出菜单。
 
@@ -3328,7 +3352,7 @@ onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | Callback\<[OnContextMenuShowEvent](./arkts-basic-components-web-i.md#oncontextmenushowevent12), boolean\> | 是 | 调用时触发的回调，以允许自定义显示上下文菜单。<br>返回值boolean。返回true表示触发自定义菜单，返回false表示触发的自定义菜单无效。     |
+| callback  | ArkTS-Dyn: Callback\<[OnContextMenuShowEvent](./arkts-basic-components-web-i.md#oncontextmenushowevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnContextMenuShowEvent](./arkts-basic-components-web-i.md#oncontextmenushowevent12), boolean\> \| undefined | 是 | 调用时触发的回调，以允许自定义显示上下文菜单。<br>返回值boolean。返回true表示触发自定义菜单，返回false表示触发的自定义菜单无效。     |
 
 **示例：**
 
@@ -3653,7 +3677,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onContextMenuHide(callback: OnContextMenuHideCallback)
 
-ArkTS-Sta: onContextMenuHide(callback: OnContextMenuHideCallback | undefined): this
+ArkTS-Sta: onContextMenuHide(callback: OnContextMenuHideCallback | undefined)
 
 长按特定元素（例如图片，链接）或鼠标右键，隐藏菜单。
 
@@ -3719,7 +3743,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onScroll(callback: Callback\<OnScrollEvent\>)
 
-ArkTS-Sta: onScroll(callback: Callback\<OnScrollEvent\> | undefined): this
+ArkTS-Sta: onScroll(callback: Callback\<OnScrollEvent\> | undefined)
 
 通知网页全局滚动位置。
 
@@ -3795,7 +3819,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
-ArkTS-Sta: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\> | undefined): this
+ArkTS-Sta: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\> | undefined)
 
 通知用户收到地理位置信息获取请求。
 
@@ -3920,7 +3944,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onGeolocationHide(callback: () => void)
 
-ArkTS-Sta: onGeolocationHide(callback: () => void | undefined): this
+ArkTS-Sta: onGeolocationHide(callback: (() => void) | undefined)
 
 通知用户先前被调用[onGeolocationShow](#ongeolocationshow)时收到地理位置信息获取请求已被取消。
 
@@ -3934,7 +3958,7 @@ ArkTS-Sta: onGeolocationHide(callback: () => void | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: () => void \| undefined | 是 | 地理位置信息获取请求已被取消的回调函数。 |
+| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: (() => void) \| undefined | 是 | 地理位置信息获取请求已被取消的回调函数。 |
 
 **示例：**
 
@@ -3986,7 +4010,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onFullScreenEnter(callback: OnFullScreenEnterCallback)
 
-ArkTS-Sta: onFullScreenEnter(callback: OnFullScreenEnterCallback | undefined): this
+ArkTS-Sta: onFullScreenEnter(callback: OnFullScreenEnterCallback | undefined)
 
 通知开发者Web组件进入全屏模式。
 
@@ -4060,7 +4084,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onFullScreenExit(callback: () => void)
 
-ArkTS-Sta: onFullScreenExit(callback: (() => void) | undefined): this
+ArkTS-Sta: onFullScreenExit(callback: (() => void) | undefined)
 
 通知开发者Web组件退出全屏模式。
 
@@ -4074,7 +4098,7 @@ ArkTS-Sta: onFullScreenExit(callback: (() => void) | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback |ArkTS-Dyn: () => void <br/>ArkTS-Sta: () => void \|  undefined| 是 | 退出全屏模式时的回调函数。 |
+| callback |ArkTS-Dyn: () => void <br/>ArkTS-Sta: (() => void) \|  undefined| 是 | 退出全屏模式时的回调函数。 |
 
 **示例：**
 
@@ -4142,7 +4166,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
-ArkTS-Sta: onWindowNew(callback: Callback\<OnWindowNewEvent\> | undefined): this
+ArkTS-Sta: onWindowNew(callback: Callback\<OnWindowNewEvent\> | undefined)
 
 使能multiWindowAccess情况下，通知用户新建窗口请求。
 
@@ -4491,7 +4515,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onActivateContent(callback: Callback\<void>)
 
-ArkTS-Sta: onActivateContent(callback: VoidCallback | undefined): this
+ArkTS-Sta: onActivateContent(callback: VoidCallback | undefined)
 
 当Web页面触发window.open(url, name)时，会根据name查找是否存在已绑定的Web实例。若存在，该实例将收到此回调以通知应用需将其展示至前端；若不存在，则通过[onWindowNew](#onwindownew9)通知应用创建新Web实例。
 
@@ -4662,7 +4686,7 @@ ArkTS-Dyn示例：
 
 ArkTS-Dyn: onWindowExit(callback: () => void)
 
-ArkTS-Sta: onWindowExit(callback: (() => void) | undefined): this
+ArkTS-Sta: onWindowExit(callback: (() => void) | undefined)
 
 通知用户窗口关闭请求。和[onWindowNew](#onwindownew9)一样，从安全角度讲，应用应该确保用户可以知道他们交互的页面已关闭。
 
@@ -4728,7 +4752,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onSearchResultReceive(callback: Callback\<OnSearchResultReceiveEvent\>)
 
-ArkTS-Sta: onSearchResultReceive(callback: Callback\<OnSearchResultReceiveEvent\> | undefined): this
+ArkTS-Sta: onSearchResultReceive(callback: Callback\<OnSearchResultReceiveEvent\> | undefined)
 
 回调通知调用方网页页内查找的结果。
 
@@ -4800,7 +4824,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\>)
 
-ArkTS-Sta: onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\> | undefined): this
+ArkTS-Sta: onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\> | undefined)
 
 设置网页表单可以重新提交时触发的回调函数。
 
@@ -4905,7 +4929,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onPageVisible(callback: Callback\<OnPageVisibleEvent\>)
 
-ArkTS-Sta: onPageVisible(callback: Callback\<OnPageVisibleEvent\> | undefined): this
+ArkTS-Sta: onPageVisible(callback: Callback\<OnPageVisibleEvent\> | undefined)
 
 设置旧页面不再呈现，新页面即将可见时触发的回调函数。
 
@@ -4970,7 +4994,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
 
-ArkTS-Sta: onInterceptKeyEvent(callback: ((event: KeyEvent) => boolean) | undefined): this
+ArkTS-Sta: onInterceptKeyEvent(callback: ((event: KeyEvent) => boolean) | undefined)
 
 设置键盘事件的回调函数，该回调在被Webview使用前触发。
 
@@ -5044,7 +5068,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onTouchIconUrlReceived(callback: Callback\<OnTouchIconUrlReceivedEvent\>)
 
-ArkTS-Sta: onTouchIconUrlReceived(callback: Callback\<OnTouchIconUrlReceivedEvent\> | undefined): this
+ArkTS-Sta: onTouchIconUrlReceived(callback: Callback\<OnTouchIconUrlReceivedEvent\> | undefined)
 
 设置接收到apple-touch-icon url地址时的回调函数。
 
@@ -5110,7 +5134,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onFaviconReceived(callback: Callback\<OnFaviconReceivedEvent\>)
 
-ArkTS-Sta: onFaviconReceived(callback: Callback\<OnFaviconReceivedEvent\> | undefined): this
+ArkTS-Sta: onFaviconReceived(callback: Callback\<OnFaviconReceivedEvent\> | undefined)
 
 设置应用为当前页面接收到新的favicon时的回调函数。
 
@@ -5182,7 +5206,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
 
-ArkTS-Sta: onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\> | undefined): this
+ArkTS-Sta: onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\> | undefined)
 
 设置网页上的音频播放状态发生改变时的回调函数。
 
@@ -5254,7 +5278,7 @@ ArkTS-Sta示例：
 
  ArkTS-Dyn: onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\>)
 
- ArkTS-Sta: onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\> | undefined): this
+ ArkTS-Sta: onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\> | undefined)
 
 设置网页首次内容绘制回调函数。
 
@@ -5328,7 +5352,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12))
 
-ArkTS-Sta: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12) | undefined): this
+ArkTS-Sta: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12) | undefined)
 
 设置网页绘制页面主要内容回调函数。
 
@@ -5398,7 +5422,7 @@ ArkTS-Sta: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./a
 
 ArkTS-Dyn: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12))
 
-ArkTS-Sta: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12) | undefined): this
+ArkTS-Sta: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12) | undefined)
 
 设置网页绘制页面最大内容回调函数。
 
@@ -5474,7 +5498,9 @@ ArkTS-Sta: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback]
 
 ## onLoadIntercept<sup>10+</sup>
 
-onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
+ArkTS-Dyn: onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
+ 	 
+ArkTS-Sta: onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\> | undefined)
 
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
 
@@ -5488,7 +5514,7 @@ onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> | 是 | 截获资源加载时触发的回调。<br>返回值为boolean类型。返回true表示阻止此次加载，false表示允许此次加载。<br>默认值：true。 |
+| callback | ArkTS-Dyn: Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> \|  undefined | 是 | 截获资源加载时触发的回调。<br>返回值为boolean类型。返回true表示阻止此次加载，false表示允许此次加载。<br>默认值：true。 |
 
 **示例：**
 
@@ -5549,7 +5575,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onRequestSelected(callback: () => void)
 
-ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined): this
+ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined)
 
 当Web组件获取焦点时触发回调。如果组件在未获焦状态下加载网页并成功获取焦点，将触发两次回调。
 
@@ -5563,7 +5589,7 @@ ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void \|  undefined | 是 | 当网页获取焦点时触发的回调。 |
+| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \|  undefined | 是 | 当网页获取焦点时触发的回调。 |
 
 **示例：**
 
@@ -5615,7 +5641,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\>)
 
-ArkTS-Sta: onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\> | undefined): this
+ArkTS-Sta: onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\> | undefined)
 
 通知收到屏幕捕获请求。
 
@@ -5728,7 +5754,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onOverScroll(callback: Callback\<OnOverScrollEvent\>)
 
-ArkTS-Sta: onOverScroll(callback: Callback\<OnOverScrollEvent\> | undefined): this
+ArkTS-Sta: onOverScroll(callback: Callback\<OnOverScrollEvent\> | undefined)
 
 该接口在网页过度滚动时触发，用于通知网页过度滚动的偏移量。
 
@@ -5796,7 +5822,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onControllerAttached(callback: () => void)
 
-ArkTS-Sta: onControllerAttached(callback: (() => void) | undefined): this
+ArkTS-Sta: onControllerAttached(callback: (() => void) | undefined)
 
 当Controller成功绑定到Web组件时触发该回调，并且该Controller必须为WebviewController，且禁止在该事件回调前调用Web组件相关的接口，否则会抛出js-error异常。
 
@@ -5941,7 +5967,7 @@ ArkTS-Sta: onControllerAttached(callback: (() => void) | undefined): this
 
 ArkTS-Dyn: onNavigationEntryCommitted(callback: [OnNavigationEntryCommittedCallback](./arkts-basic-components-web-t.md#onnavigationentrycommittedcallback11))
 
-ArkTS-Sta: onNavigationEntryCommitted(callback: [OnNavigationEntryCommittedCallback](./arkts-basic-components-web-t.md#onnavigationentrycommittedcallback11) | undefined): this
+ArkTS-Sta: onNavigationEntryCommitted(callback: [OnNavigationEntryCommittedCallback](./arkts-basic-components-web-t.md#onnavigationentrycommittedcallback11) | undefined)
 
 当网页跳转提交时触发该回调。
 
@@ -6015,7 +6041,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
 
-ArkTS-Sta: onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback | undefined): this
+ArkTS-Sta: onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback | undefined)
 
 收到网站安全风险检查结果时触发的回调。
 
@@ -6092,7 +6118,9 @@ struct WebComponent {
 
 ## onSafeBrowsingCheckFinish<sup>21+</sup>
 
-onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
+ArkTS-Dyn: onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
+
+ArkTS-Sta: onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback | undefined)
 
 网站安全风险检查结束时触发的回调。
 
@@ -6106,7 +6134,7 @@ onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) | 是 | 收到网站安全风险检查结果时触发的回调。|
+| callback  | ArkTS-Dyn: [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) <br/>ArkTS-Sta: [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11)  \|  undefined| 是 | 收到网站安全风险检查结果时触发的回调。|
 
 **示例：**
 
@@ -6192,7 +6220,7 @@ struct WebComponent {
 
 ArkTS-Dyn: onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 
-ArkTS-Sta: onNativeEmbedLifecycleChange(callback: ((event: NativeEmbedDataInfo) => void) | undefined): this
+ArkTS-Sta: onNativeEmbedLifecycleChange(callback: ((event: NativeEmbedDataInfo) => void) | undefined)
 
 当同层标签生命周期变化时触发该回调。
 
@@ -6522,7 +6550,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
 
-ArkTS-Sta: onNativeEmbedGestureEvent(callback: ((event: NativeEmbedTouchInfo) => void) | undefined): this
+ArkTS-Sta: onNativeEmbedGestureEvent(callback: ((event: NativeEmbedTouchInfo) => void) | undefined)
 
 当手指触摸到同层标签时触发该回调。
 
@@ -6822,7 +6850,7 @@ struct WebComponent {
 
 ArkTS-Dyn: onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback)
 
-ArkTS-Sta: onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback | undefined): this
+ArkTS-Sta: onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback | undefined)
 
 智能防跟踪功能使能时，当追踪者cookie被拦截时触发该回调。
 
@@ -6911,7 +6939,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback)
 
-ArkTS-Sta: onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback | undefined): this
+ArkTS-Sta: onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback | undefined)
 
 当URL将要加载到当前Web中时触发该回调，让宿主应用程序有机会获得控制权，判断是否阻止Web加载URL。
 
@@ -7003,7 +7031,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onViewportFitChanged(callback: OnViewportFitChangedCallback)
 
-ArkTS-Sta: onViewportFitChanged(callback: OnViewportFitChangedCallback | undefined): this
+ArkTS-Sta: onViewportFitChanged(callback: OnViewportFitChangedCallback | undefined)
 
 网页meta中viewport-fit配置项更改时触发该回调，应用可在此回调中自适应布局视口。
 
@@ -7098,7 +7126,7 @@ ArkTS-Sta: onViewportFitChanged(callback: OnViewportFitChangedCallback | undefin
 
 ArkTS-Dyn: onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 
-ArkTS-Sta: onInterceptKeyboardAttach(callback: WebKeyboardCallback | undefined): this
+ArkTS-Sta: onInterceptKeyboardAttach(callback: WebKeyboardCallback | undefined)
 
 网页中可编辑元素（如input标签）拉起软键盘之前会回调该接口，应用可以使用该接口拦截系统软键盘的弹出，配置应用定制的软键盘（应用根据该接口可以决定使用系统默认软键盘/定制enter键的系统软键盘/全部由应用自定义的软键盘）。
 
@@ -7394,7 +7422,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
 
-ArkTS-Sta: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback | undefined): this
+ArkTS-Sta: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback | undefined)
 
 当网页中同层标签（例如<embed\>标签或<object\>标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。若要获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](./arkts-basic-components-web-attributes.md#nativeembedoptions16)，并将[EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16)中的supportCssDisplayChange参数设为true。
 
@@ -7654,7 +7682,9 @@ struct WebComponent {
 
 ## onNativeEmbedMouseEvent<sup>20+</sup>
 
-onNativeEmbedMouseEvent(callback: MouseInfoCallback)
+ArkTS-Dyn: ArkTS-Dyn: onNativeEmbedMouseEvent(callback: MouseInfoCallback)
+ 	 
+ArkTS-Sta: onNativeEmbedMouseEvent(callback: MouseInfoCallback | undefined)
 
 在同层标签上执行以下行为时触发该回调：
 
@@ -7935,7 +7965,9 @@ ArkTS-Sta示例：
 
 ## onNativeEmbedObjectParamChange<sup>21+</sup>
 
-onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
+ArkTS-Dyn: onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
+
+ArkTS-Sta: onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback | undefined)
 
 当同层渲染object标签内嵌param元素变化时触发此回调。
 
@@ -8209,6 +8241,12 @@ onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => vo
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback | (event?: { handler: Function, error: object }) => void | 是 | 当网页检测到SSL错误时触发的回调。 |
+
 ## onFileSelectorShow<sup>(deprecated)</sup>
 
 onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object }) => void)
@@ -8219,14 +8257,27 @@ onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[onShowFileSelector<sup>9+</sup>](#onshowfileselector9)替代。
 
+**ArkTS模式：** 该接口适用于ArkTS-Dyn
+
+**ArkTS-Dyn起始版本：** 8
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback | (event?: { callback: Function, fileSelector: object }) => void | 是 | 当触发文件选择器时需要执行的回调。 |
 
 ## onUrlLoadIntercept<sup>(deprecated)</sup>
 
 onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => boolean)
 
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
-从API version 10开始不再维护，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
+
+> **说明：**
+>
+> API version 8开始支持，从API version 10开始废弃，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -8265,7 +8316,7 @@ onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => b
 
 ArkTS-Dyn: onPdfLoadEvent(callback: Callback\<OnPdfLoadEvent\>)
 
-ArkTS-Sta: onPdfLoadEvent(callback: Callback\<OnPdfLoadEvent\> | undefined): this
+ArkTS-Sta: onPdfLoadEvent(callback: Callback\<OnPdfLoadEvent\> | undefined)
 
 通知用户PDF页面加载状态，包括成功或失败。
 
@@ -8337,7 +8388,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\>)
 
-ArkTS-Sta: onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\> | undefined): this
+ArkTS-Sta: onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\> | undefined)
 
 通知用户PDF页面已滚动到底。
 
@@ -9056,7 +9107,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
 
-ArkTS-Sta: onFirstScreenPaint(callback: OnFirstScreenPaintCallback | undefined): this;
+ArkTS-Sta: onFirstScreenPaint(callback: OnFirstScreenPaintCallback | undefined)
 
 网页首屏渲染结束时触发此回调，使用callback异步回调。
 
@@ -9140,7 +9191,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
-ArkTS-Sta: onOverrideErrorPage(callback: OnOverrideErrorPageCallback | undefined): this
+ArkTS-Sta: onOverrideErrorPage(callback: OnOverrideErrorPageCallback | undefined)
 
 网页加载遇到错误时触发，只有主资源出错才会回调该接口，可以使用该接口自定义错误展示页。
 

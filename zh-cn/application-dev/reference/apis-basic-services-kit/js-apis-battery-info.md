@@ -20,7 +20,7 @@ ArkTS-Sta示例：
 import batteryInfo from '@ohos.batteryInfo';
 ```
 
-## 属性
+## 常量
 
 描述电池信息。
 
@@ -28,18 +28,18 @@ import batteryInfo from '@ohos.batteryInfo';
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-| 名称      | 类型        | 只读 | 可选 |  说明     |
-| --------------- | ------------------- | ---- | ---- | ---------------------|
-| batterySOC                                | number                                         | 是   | 否   | 表示当前设备剩余电池电量百分比。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                           |
-| chargingStatus                            | [BatteryChargeState](#batterychargestate)      | 是   | 否   | 表示当前设备电池的充电状态。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                               |
-| healthStatus                              | [BatteryHealthState](#batteryhealthstate)      | 是   | 否   | 表示当前设备电池的健康状态。                               |
-| pluggedType                               | [BatteryPluggedType](#batterypluggedtype)      | 是   | 否   | 表示当前设备连接的充电器类型。                             |
-| voltage                                   | number                                         | 是   | 否   | 表示当前设备电池的电压，单位微伏。                         |
-| technology                                | string                                         | 是   | 否   | 表示当前设备电池的技术型号。                               |
-| batteryTemperature                        | number                                         | 是   | 否   | 表示当前设备电池的温度，单位0.1摄氏度。                    |
-| isBatteryPresent<sup>7+</sup>             | boolean                                        | 是   | 否   | 表示当前设备是否支持电池或者电池是否在位。true表示支持电池或电池在位，false表示不支持电池或电池不在位，默认为false。                 |
-| batteryCapacityLevel<sup>9+</sup>         | [BatteryCapacityLevel](#batterycapacitylevel9) | 是   | 否   | 表示当前设备电池电量的等级。                              |
-| nowCurrent<sup>12+</sup>                  | number                                         | 是   | 否   | 表示当前设备电池的电流，单位毫安。                        |
+| 名称      | 类型        | 只读 |  说明     |
+| --------------- | ------------------- | ---- | ---------------------|
+| batterySOC                                | number                                         | 是   | 表示当前设备剩余电池电量百分比。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                           |
+| chargingStatus                            | [BatteryChargeState](#batterychargestate)      | 是   | 表示当前设备电池的充电状态。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                               |
+| healthStatus                              | [BatteryHealthState](#batteryhealthstate)      | 是   | 表示当前设备电池的健康状态。                               |
+| pluggedType                               | [BatteryPluggedType](#batterypluggedtype)      | 是   |  表示当前设备连接的充电器类型。                             |
+| voltage                                   | number                                         | 是   | 表示当前设备电池的电压，单位微伏。                         |
+| technology                                | string                                         | 是   | 表示当前设备电池的技术型号。                               |
+| batteryTemperature                        | number                                         | 是   | 表示当前设备电池的温度，单位0.1摄氏度。                    |
+| isBatteryPresent<sup>7+</sup>             | boolean                                        | 是   | 表示当前设备是否支持电池或者电池是否在位。true表示支持电池或电池在位，false表示不支持电池或电池不在位，默认为false。                 |
+| batteryCapacityLevel<sup>9+</sup>         | [BatteryCapacityLevel](#batterycapacitylevel9) | 是   | 表示当前设备电池电量的等级。                              |
+| nowCurrent<sup>12+</sup>                  | number                                         | 是   | 表示当前设备电池的电流，单位毫安。                        |
 
 **示例**：
 
@@ -398,14 +398,14 @@ nowCurrent(): int
 
 | 名称           | 值 | 说明                       |
 | -------------- | ------ | ---------------------------- |
-| LEVEL_NONE<sup>23+</sup> | 0      | 表示电池电量等级为未知电量。<br/>**ArkTs-Dyn起始版本**：23<br/>**ArkTs-Sta起始版本**：23|
-| LEVEL_FULL     | 1      | 表示电池电量等级为满电量。<br/>**ArkTs-Dyn起始版本**：9<br/>**ArkTs-Sta起始版本**：23   |
-| LEVEL_HIGH     | 2      | 表示电池电量等级为高电量。<br/>**ArkTs-Dyn起始版本**：9<br/>**ArkTs-Sta起始版本**：23   |
-| LEVEL_NORMAL   | 3      | 表示电池电量等级为正常电量。<br/>**ArkTs-Dyn起始版本**：9<br/>**ArkTs-Sta起始版本**：23 |
-| LEVEL_LOW      | 4      | 表示电池电量等级为低电量。<br/>**ArkTs-Dyn起始版本**：9<br/>**ArkTs-Sta起始版本**：23   |
-| LEVEL_WARNING  | 5      | 表示电池电量等级为告警电量。<br/>**ArkTs-Dyn起始版本**：9<br/>**ArkTs-Sta起始版本**：23 |
-| LEVEL_CRITICAL | 6      | 表示电池电量等级为极低电量。<br/>**ArkTs-Dyn起始版本**：9<br/>**ArkTs-Sta起始版本**：23 |
-| LEVEL_SHUTDOWN | 7      | 表示电池电量等级为关机电量。<br/>**ArkTs-Dyn起始版本**：9<br/>**ArkTs-Sta起始版本**：23 |
+| LEVEL_NONE<sup>23+</sup> | 0      | 表示电池电量等级为未知电量。<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23|
+| LEVEL_FULL     | 1      | 表示电池电量等级为满电量。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23   |
+| LEVEL_HIGH     | 2      | 表示电池电量等级为高电量。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23   |
+| LEVEL_NORMAL   | 3      | 表示电池电量等级为正常电量。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
+| LEVEL_LOW      | 4      | 表示电池电量等级为低电量。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23   |
+| LEVEL_WARNING  | 5      | 表示电池电量等级为告警电量。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
+| LEVEL_CRITICAL | 6      | 表示电池电量等级为极低电量。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
+| LEVEL_SHUTDOWN | 7      | 表示电池电量等级为关机电量。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
 
 ## CommonEventBatteryChangedKey<sup>9+</sup>
 

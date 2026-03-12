@@ -17,6 +17,12 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 系统公共事件是指由系统服务或系统应用发布的事件，订阅这些公共事件需要特定的权限、使用相应的值，详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。
 
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 ## commonEventManager.publish
 
 publish(event: string, callback: AsyncCallback\<void>): void

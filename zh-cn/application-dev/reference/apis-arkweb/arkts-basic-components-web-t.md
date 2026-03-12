@@ -10,7 +10,7 @@
 
 ## WebviewController<sup>9+</sup>
 
-type WebviewController = WebviewController
+type WebviewController = webview.WebviewController
 
 提供Web控制器的方法。
 
@@ -418,9 +418,9 @@ type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChan
 | -------------------- | ----------------------------------------------- | ---- | -------------------------------- |
 | event | [MicrophoneCaptureStateChangeInfo](./arkts-basic-components-web-i.md#microphonecapturestatechangeinfo23) | 是    | 网页麦克风状态发生改变时，返回原来的状态和改变后的状态。 |
 
-## OnFirstScreenPaintCallback<sup>23+<sup>
+## OnFirstScreenPaintCallback<sup>23+</sup>
 
-type OnFirstScreenPaintCallback = (event: FirstScreenPaint) => void
+type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 
 检测到首屏渲染结束时会触发此回调。
 
@@ -434,7 +434,7 @@ type OnFirstScreenPaintCallback = (event: FirstScreenPaint) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| event | [FirstScreenPaint](./arkts-basic-components-web-i.md#firstscreenpaint23) | 是 | 检测到首屏渲染时的详细信息。 |
+| firstScreenPaint | [FirstScreenPaint](./arkts-basic-components-web-i.md#firstscreenpaint23) | 是 | 检测到首屏渲染时的详细信息。 |
 
 **示例：**
 

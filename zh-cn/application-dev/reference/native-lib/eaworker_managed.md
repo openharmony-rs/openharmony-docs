@@ -290,7 +290,7 @@ static current(): EAWorker | undefined
 **返回值：**
 | 类型       | 说明                 |
 | -------- | ------------------ |
-| EAWorker   | 返回当前线程的EAWorker实例。 |
+| EAWorker   | 返回当前线程的EAWorker实例。如果当前worker未被注册为EAWorker实例则会返回undefined。|
 
 **示例：**
 ```ts
@@ -298,7 +298,7 @@ let currentWorker = EAWorker.current();
 ```
 
 ## postTask
-postTask(callback: ()=>void): boolean
+postTask(callback: ()=>void): void
 
 向EAWorker提交任务。
 
@@ -308,11 +308,6 @@ postTask(callback: ()=>void): boolean
 |参数名|类型|必填|说明|
 |-----|----|--|----|
 |callback|()=>void|是|要执行的任务函数。|
-
-**返回值：**
-| 类型       | 说明                 |
-| -------- | ------------------ |
-| boolean   | 如果成功提交任务则返回true，否则返回false。 |
 
 **示例：**
 ```ts

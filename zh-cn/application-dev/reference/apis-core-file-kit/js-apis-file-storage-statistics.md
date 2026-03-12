@@ -462,8 +462,8 @@ try {
 
 **ArkTS-Sta起始版本**：23
 
-| 名称      | 类型   | 必填 | 说明           |
-| --------- | ------ | --- | -------------- |
-| appSize   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 应用安装文件大小（单位为Byte）。    |
-| cacheSize | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是 | 应用缓存文件大小（单位为Byte）。   |
-| dataSize  | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是 | 应用文件存储大小（除应用安装文件和缓存文件）（单位为Byte）。 |
+| 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
+| --------- | ------ | --- | --- | -------------- |
+| appSize   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 应用安装文件大小（单位为Byte）。    |
+| cacheSize | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 否 | 否 | 应用缓存文件大小（单位为Byte）。   |
+| dataSize  | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 否 | 否 | 应用文件存储大小（除应用安装文件和缓存文件）（单位为Byte）。 |

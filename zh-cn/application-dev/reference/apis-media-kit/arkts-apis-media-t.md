@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## SoundPool<sup>10+</sup>
 
@@ -11,6 +12,10 @@ type SoundPool = _SoundPool
 音频池，提供了系统声音的加载、播放、音量设置、循环设置、停止播放、资源卸载等功能。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型     | 说明                       |
 | -------- | ------------------------------ |
@@ -23,6 +28,10 @@ type PlayParameters = _PlayParameters
 表示音频池播放参数设置。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型     | 说明                       |
 | -------- | ------------------------------ |
@@ -38,6 +47,10 @@ type AVPlayerState = 'idle' | 'initialized' | 'prepared' | 'playing' | 'paused' 
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 |              类型               | 说明                                                         |
 | :-----------------------------: | :----------------------------------------------------------- |
 |              'idle'               | 闲置状态，AVPlayer刚被创建[createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9)或者调用了[reset()](arkts-apis-media-AVPlayer.md#reset9)方法之后，进入idle状态。<br/>首次创建[createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9)，所有属性都为默认值。<br/>调用[reset()](arkts-apis-media-AVPlayer.md#reset9)方法，url<sup>9+</sup> 或 fdSrc<sup>9+</sup>或dataSrc<sup>10+</sup>属性及loop属性会被重置，其他用户设置的属性将被保留。 |
@@ -52,7 +65,9 @@ type AVPlayerState = 'idle' | 'initialized' | 'prepared' | 'playing' | 'paused' 
 
 ## OnTrackChangeHandler<sup>12+</sup>
 
-type OnTrackChangeHandler = (index: number, isSelected: boolean) => void
+ArkTS-Dyn: type OnTrackChangeHandler = (index: number, isSelected: boolean) => void
+
+ArkTS-Sta: type OnTrackChangeHandler = (index: int, isSelected: boolean) => void
 
 track变更事件回调方法。
 
@@ -60,9 +75,13 @@ track变更事件回调方法。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ---------------------------------------------------------- |
-| index  | number | 是 | 当前变更的track索引。     |
+| index  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 当前变更的track索引。     |
 | isSelected | boolean | 是 | 当前变更的track索引是否被选中。true表示处于选中状态，false表示处于非选中状态。 |
 
 ## OnAVPlayerStateChangeHandle<sup>12+</sup>
@@ -75,6 +94,10 @@ type OnAVPlayerStateChangeHandle = (state: AVPlayerState, reason: StateChangeRea
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ---------------------------------------------------------- |
 | state  | [AVPlayerState](#avplayerstate9) | 是 | 当前播放状态。     |
@@ -82,7 +105,9 @@ type OnAVPlayerStateChangeHandle = (state: AVPlayerState, reason: StateChangeRea
 
 ## OnBufferingUpdateHandler<sup>12+</sup>
 
-type OnBufferingUpdateHandler = (infoType: BufferingInfoType, value: number) => void
+ArkTS-Dyn: type OnBufferingUpdateHandler = (infoType: BufferingInfoType, value: number) => void
+
+ArkTS-Sta: type OnBufferingUpdateHandler = (infoType: BufferingInfoType, value: int) => void
 
 播放缓存事件回调方法。
 
@@ -90,13 +115,20 @@ type OnBufferingUpdateHandler = (infoType: BufferingInfoType, value: number) => 
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
 | infoType  | [BufferingInfoType](arkts-apis-media-e.md#bufferinginfotype8) | 是 | 缓存时间类型。     |
+| value  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 缓存时间类型的值。     |
 
 ## OnVideoSizeChangeHandler<sup>12+</sup>
 
-type OnVideoSizeChangeHandler = (width: number, height: number) => void
+ArkTS-Dyn: type OnVideoSizeChangeHandler = (width: number, height: number) => void
+
+ArkTS-Sta: type OnVideoSizeChangeHandler = (width: int, height: int) => void
 
 视频播放宽高变化事件回调方法。
 
@@ -104,10 +136,14 @@ type OnVideoSizeChangeHandler = (width: number, height: number) => void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
-| width  | number | 是 | 视频宽度，单位为像素（px）。|
-| height | number | 是 | 视频高度，单位为像素（px）。|
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 视频宽度，单位为像素（px）。|
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 视频高度，单位为像素（px）。|
 
 ## OnSuperResolutionChanged <sup>18+</sup>
 
@@ -123,13 +159,19 @@ type OnSuperResolutionChanged = (enabled: boolean) => void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
 | enabled  | boolean | 是 | 表示当前超分是否开启。true表示超分开启，false表示超分关闭。     |
 
 ## OnSeiMessageHandle<sup>18+</sup>
 
-type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: number) => void
+ArkTS-Dyn: type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: number) => void
+
+ArkTS-Sta: type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: int) => void
 
 获取SEI信息，使用场景：订阅SEI信息事件，回调返回SEI详细信息。
 
@@ -137,16 +179,22 @@ type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: numb
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   |   类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | messages | Array\<[SeiMessage](arkts-apis-media-i.md#seimessage18)> | 是  | SEI信息。 |
-| playbackPosition | number | 否  | 获取当前播放位置（单位：毫秒）。 |
+| playbackPosition | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  | 获取当前播放位置（单位：毫秒）。 |
 
 ## OnPlaybackRateDone<sup>20+</sup>
 
-type OnPlaybackRateDone = (rate: number) => void
+ArkTS-Dyn: type OnPlaybackRateDone = (rate: number) => void
+
+ArkTS-Sta: type OnPlaybackRateDone = (rate: double) => void
 
 播放速率设置完成事件回调方法。
 
@@ -154,9 +202,35 @@ type OnPlaybackRateDone = (rate: number) => void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
-| rate | number | 是 | 播放速率。 |
+| rate | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 播放速率。 |
+
+## OnFrameFetched<sup>23+</sup>
+
+type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError\<void>) => void
+
+批量获取缩略图回调函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ------ | ---------------------------------------------------------- |
+| frameInfo  | [FrameInfo](arkts-apis-media-i.md#frameinfo23) | 是 | 返回的缩略图信息。     |
+| err | BusinessError\<void> | 否 | 获取缩略图时发生错误，默认值为null。 |
+
 
 ## AVRecorderState<sup>9+</sup>
 
@@ -195,7 +269,9 @@ type OnAVRecorderStateChangeHandler = (state: AVRecorderState, reason: StateChan
 
 ## SourceOpenCallback<sup>18+</sup>
 
-type SourceOpenCallback = (request: MediaSourceLoadingRequest) => number
+ArkTS-Dyn: type SourceOpenCallback = (request: MediaSourceLoadingRequest) => number
+
+ArkTS-Sta: type SourceOpenCallback = (request: MediaSourceLoadingRequest) => long
 
 由应用实现此回调函数，应用需处理传入的资源打开请求，并返回所打开资源对应的唯一句柄。
 >
@@ -216,7 +292,7 @@ type SourceOpenCallback = (request: MediaSourceLoadingRequest) => number
 
 | 类型   | 说明                 |
 | -------- | -------------------- |
-| number  | 当前资源打开请求的句柄。大于0表示请求成功，小于或等于0表示请求失败。<br/> - request对象对应句柄唯一。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: long  | 当前资源打开请求的句柄。大于0表示请求成功，小于或等于0表示请求失败。<br/> - request对象对应句柄唯一。|
 
 **示例：**
 
@@ -237,7 +313,9 @@ let sourceOpenCallback: media.SourceOpenCallback = (request: media.MediaSourceLo
 
 ## SourceReadCallback<sup>18+</sup>
 
-type SourceReadCallback = (uuid: number, requestedOffset: number, requestedLength: number) => void
+ArkTS-Dyn: type SourceReadCallback = (uuid: number, requestedOffset: number, requestedLength: number) => void
+
+ArkTS-Sta: type SourceReadCallback = (uuid: long, requestedOffset: long, requestedLength: long) => void
 
 由应用实现此回调函数，应用需记录读取请求，并在数据充足时通过对应的MediaSourceLoadingRequest对象的[respondData](arkts-apis-media-MediaSourceLoadingRequest.md#responddata18)方法推送数据。
 >
@@ -252,9 +330,9 @@ type SourceReadCallback = (uuid: number, requestedOffset: number, requestedLengt
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| uuid | number | 是  | 	资源句柄的标识。 |
-| requestedOffset | number | 是  | 	当前媒体数据相对于资源起始位置的偏移量。 |
-| requestedLength | number | 是  | 	当前请求的长度。值为-1时，表示到达资源末尾，此时推送完成后需通过[finishLoading](arkts-apis-media-MediaSourceLoadingRequest.md#finishloading18)方法通知播放器推送结束。 |
+| uuid | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 	资源句柄的标识。 |
+| requestedOffset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 	当前媒体数据相对于资源起始位置的偏移量。 |
+| requestedLength | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 	当前请求的长度。值为-1时，表示到达资源末尾，此时推送完成后需通过[finishLoading](arkts-apis-media-MediaSourceLoadingRequest.md#finishloading18)方法通知播放器推送结束。 |
 
 **示例：**
 
@@ -267,7 +345,9 @@ let sourceReadCallback: media.SourceReadCallback = (uuid: number, requestedOffse
 
 ## SourceCloseCallback<sup>18+</sup>
 
-type SourceCloseCallback = (uuid: number) => void
+ArkTS-Dyn: type SourceCloseCallback = (uuid: number) => void
+
+ArkTS-Sta: type SourceCloseCallback = (uuid: long) => void
 
 由应用实现此回调函数，应用应释放相关资源。
 
@@ -282,7 +362,7 @@ type SourceCloseCallback = (uuid: number) => void
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| uuid      | number | 是  | 资源句柄的标识。 |
+| uuid      | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 资源句柄的标识。 |
 
 **示例：**
 

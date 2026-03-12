@@ -222,8 +222,7 @@ offOperatingHandChanged(callback?: Callback&lt;OperatingHandStatus&gt;): void;
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | 是   | 事件类型。type为“operatingHandChanged”，表示操作手状态变化。 |
-| callback | Callback&lt;[OperatingHandStatus](#operatinghandstatus)&gt; | 否   | 回调函数，返回操作手结果。                                   |
+| callback | Callback&lt;[OperatingHandStatus](#operatinghandstatus)&gt; | 否   | 回调函数，返回操作手结果。       |
 
 **错误码**：
 
@@ -377,8 +376,8 @@ onHoldingHandChanged(callback: Callback&lt;HoldingHandStatus&gt;): void
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. An attempt was made to subscribe holdingHandChanged event forbidden by permission: ohos.permission.DETECT_GESTURE. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
-| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status. |
-| 31500002 | Subscription failed. Possible causes: 1. Callback registration failure; 2. Failed to bind native object to js wrapper; 3. N-API invocation exception, invalid N-API status; 4. IPC request exception. |
+| 31500001 | Service exception.|
+| 31500002 | Subscription failed.|
 
 **示例**
 
@@ -476,8 +475,8 @@ offHoldingHandChanged(callback?: Callback&lt;HoldingHandStatus&gt;): void
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. An attempt was made to unsubscribe holdingHandChanged event forbidden by permission: ohos.permission.DETECT_GESTURE. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
-| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status. |
-| 31500003 | Unsubscription failed. Possible causes: 1. Callback failure; 2. N-API invocation exception, invalid N-API status; 3. IPC request exception. |
+| 31500001 | Service exception.|
+| 31500003 | Unsubscription failed.|
 
 **示例**
 

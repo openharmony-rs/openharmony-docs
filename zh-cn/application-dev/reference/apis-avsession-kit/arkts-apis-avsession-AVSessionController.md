@@ -91,7 +91,7 @@ getAVPlaybackState(callback: AsyncCallback\<AVPlaybackState>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -151,7 +151,7 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -205,7 +205,7 @@ getAVMetadata(): Promise\<AVMetadata>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -257,7 +257,7 @@ getAVMetadata(callback: AsyncCallback\<AVMetadata>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -317,7 +317,7 @@ getAVQueueTitle(): Promise\<string>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -369,7 +369,7 @@ getAVQueueTitle(callback: AsyncCallback\<string>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -429,7 +429,7 @@ getAVQueueItems(): Promise\<Array\<AVQueueItem>>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -481,7 +481,7 @@ getAVQueueItems(callback: AsyncCallback\<Array\<AVQueueItem>>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -550,7 +550,7 @@ ArkTS-Sta: skipToQueueItem(itemId: int): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -608,7 +608,7 @@ ArkTS-Sta: skipToQueueItem(itemId: int, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -670,7 +670,7 @@ getOutputDevice(): Promise\<OutputDeviceInfo>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 600101  | Session service exception.|
 | 600103  | The session controller does not exist. |
 
 **示例：**
@@ -721,7 +721,7 @@ getOutputDevice(callback: AsyncCallback\<OutputDeviceInfo>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 600101  | Session service exception.|
 | 600103  | The session controller does not exist. |
 
 **示例：**
@@ -781,7 +781,7 @@ sendAVKeyEvent(event: KeyEvent): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 600101  | Session service exception.|
 | 600102  | The session does not exist. |
 | 600103  | The session controller does not exist. |
 | 600105  | Invalid session command. |
@@ -855,7 +855,7 @@ sendAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 600101  | Session service exception.|
 | 600102  | The session does not exist. |
 | 600103  | The session controller does not exist. |
 | 600105  | Invalid session command. |
@@ -924,7 +924,7 @@ getLaunchAbility(): Promise\<WantAgent>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -976,7 +976,7 @@ getLaunchAbility(callback: AsyncCallback\<WantAgent>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -1038,7 +1038,7 @@ ArkTS-Sta: getRealPlaybackPositionSync(): long
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -1081,7 +1081,7 @@ isActive(): Promise\<boolean>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -1133,7 +1133,7 @@ isActive(callback: AsyncCallback\<boolean>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -1193,7 +1193,7 @@ destroy(): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -1244,7 +1244,7 @@ destroy(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -1303,7 +1303,7 @@ getValidCommands(): Promise\<Array\<AVControlCommandType>>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -1355,7 +1355,7 @@ getValidCommands(callback: AsyncCallback\<Array\<AVControlCommandType>>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -1426,12 +1426,12 @@ sendControlCommand(command: AVControlCommand): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
-| 6600105  | Invalid session command.Stop sending the command or event,sending commands supported by the controlled end. |
+| 6600105  | Invalid session command.|
 | 6600106  | The session is not activated. |
-| 6600107  | Too many commands or events.Controls the frequency of sending self-query and control commands. |
+| 6600107  | Too many commands or events. |
 
 **示例：**
 
@@ -1489,12 +1489,12 @@ sendControlCommand(command: AVControlCommand, callback: AsyncCallback\<void>): v
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist.     |
 | 6600103  | The session controller does not exist.   |
-| 6600105  | Invalid session command.Stop sending the command or event,sending commands supported by the controlled end. |
+| 6600105  | Invalid session command. |
 | 6600106  | The session is not activated.                |
-| 6600107  | Too many commands or events.Controls the frequency of sending self-query and control commands. |
+| 6600107  | Too many commands or events. |
 
 **示例：**
 
@@ -1567,12 +1567,12 @@ ArkTS-Sta: sendCommonCommand(command: string, args: Record<string, Object>): Pro
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
-| 6600105  | Invalid session command.Stop sending the command or event,sending commands supported by the controlled end. |
+| 6600105  | Invalid session command. |
 | 6600106  | The session is not activated. |
-| 6600107  | Too many commands or events.Controls the frequency of sending self-query and control commands. |
+| 6600107  | Too many commands or events. |
 
 **示例：**
 
@@ -1661,12 +1661,12 @@ ArkTS-Sta: sendCommonCommand(command: string, args: Record<string, Object>, call
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.|
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist.     |
 | 6600103  | The session controller does not exist.   |
-| 6600105  | Invalid session command.Stop sending the command or event,sending commands supported by the controlled end. |
+| 6600105  | Invalid session command. |
 | 6600106  | The session is not activated.                |
-| 6600107  | Too many commands or events.Controls the frequency of sending self-query and control commands. |
+| 6600107  | Too many commands or events.|
 
 **示例：**
 
@@ -1753,11 +1753,11 @@ ArkTS-Sta: getExtras(): Promise<Record<string, Object>>
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
-| 6600105  | Invalid session command.Stop sending the command or event,sending commands supported by the controlled end. |
-| 6600107  | Too many commands or events.Controls the frequency of sending self-query and control commands. |
+| 6600105  | Invalid session command.|
+| 6600107  | Too many commands or events.|
 
 **示例：**
 
@@ -1839,11 +1839,11 @@ ArkTS-Sta: getExtras(callback: AsyncCallback<Record<string, Object>>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
-| 6600105  | Invalid session command.Stop sending the command or event,sending commands supported by the controlled end. |
-| 6600107  |Too many commands or events.Controls the frequency of sending self-query and control commands. |
+| 6600105  | Invalid session command.|
+| 6600107  |Too many commands or events.|
 
 **示例：**
 
@@ -1932,10 +1932,10 @@ getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
-| 6600105  | Invalid session command.Stop sending the command or event,sending commands supported by the controlled end. |
+| 6600105  | Invalid session command.|
 
 **示例：**
 
@@ -1998,6 +1998,710 @@ if (controller !== undefined) {
 }
 ```
 
+## isDesktopLyricEnabled<sup>23+</sup>
+
+isDesktopLyricEnabled(): Promise\<boolean>
+
+查询是否启用桌面歌词功能。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<boolean> | Promise对象。返回true表示启用桌面歌词功能；返回false表示不启用桌面歌词功能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            let enabled: boolean = await controller.isDesktopLyricEnabled()
+            console.info(`desktop lyric enabled:${enabled}`)
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## onDesktopLyricEnabled<sup>23+</sup>
+
+onDesktopLyricEnabled(callback: Callback\<boolean>): void
+
+桌面歌词功能启用状态变更的监听事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 是   | 回调函数。返回true表示桌面歌词功能启用；返回false表示桌面歌词功能未启用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.onDesktopLyricEnabled((enabled: boolean) => {
+              console.info(`desktop lyric enabled state : ${enabled}`);
+            })
+            console.info('onDesktopLyricEnabled successfully');
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## offDesktopLyricEnabled<sup>23+</sup>
+
+offDesktopLyricEnabled(callback?: Callback\<boolean>): void
+
+取消桌面歌词启用状态变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有桌面歌词功能启用状态变更事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.offDesktopLyricEnabled();
+            console.info('offDesktopLyricEnabled successfully');
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## setDesktopLyricVisible<sup>23+</sup>
+
+setDesktopLyricVisible(visible: boolean): Promise\<void>
+
+设置当前会话桌面歌词的显示状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明       |
+| ------ | ------ | ---- | ---------- |
+| visible | boolean | 是   | 是否显示桌面歌词。true表示显示；false表示不显示。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> |  Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            await controller.setDesktopLyricVisible(true);
+            console.info('setDesktopLyricVisible successfully');
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## isDesktopLyricVisible<sup>23+</sup>
+
+isDesktopLyricVisible(): Promise\<boolean>
+
+查询当前会话桌面歌词的显示状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<boolean> | Promise对象。返回true表示显示桌面歌词；返回false表示不显示桌面歌词。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            let visible: boolean = await controller.isDesktopLyricVisible();
+            console.info(`isDesktopLyricVisible: ${visible}`);
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## onDesktopLyricVisibilityChanged<sup>23+</sup>
+
+onDesktopLyricVisibilityChanged(callback: Callback\<boolean>): void
+
+显示桌面歌词状态变更的监听事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 是   | 回调函数。返回true表示开启显示桌面歌词状态；返回false表示关闭显示桌面歌词状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.onDesktopLyricVisibilityChanged((visible: boolean) => {
+              console.info(`desktop lyric visible state: ${visible}`);
+            });
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## offDesktopLyricVisibilityChanged<sup>23+</sup>
+
+offDesktopLyricVisibilityChanged(callback?: Callback\<boolean>): void
+
+取消显示桌面歌词状态变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有显示桌面歌词状态变更事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.offDesktopLyricVisibilityChanged();
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## setDesktopLyricState<sup>23+</sup>
+
+setDesktopLyricState(state: DesktopLyricState): Promise\<void>
+
+设置当前会话桌面歌词状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明       |
+| ------ | ------ | ---- | ---------- |
+| state | [DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23) | 是   | 桌面歌词状态。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> |  Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            let state: avSession.DesktopLyricState = {
+              isLocked: true,
+            };
+            await controller.setDesktopLyricState(state);
+            console.info('setDesktopLyricState successfully');
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## getDesktopLyricState<sup>23+</sup>
+
+getDesktopLyricState(): Promise\<DesktopLyricState>
+
+获取当前会话桌面歌词状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> |  Promise对象。返回桌面歌词状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            let state: avSession.DesktopLyricState = await controller.getDesktopLyricState();
+            console.info(`getDesktopLyricState: ${state.isLocked}`);
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## onDesktopLyricStateChanged<sup>23+</sup>
+
+onDesktopLyricStateChanged(callback: Callback\<DesktopLyricState>): void
+
+桌面歌词状态变更的监听事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | 是   | 回调函数。返回桌面歌词状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
+              console.info(`desktop lyric isLocked : ${state.isLocked}`);
+            })
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## offDesktopLyricStateChanged<sup>23+</sup>
+
+offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
+
+取消桌面歌词状态变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有桌面歌词状态变更事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.offDesktopLyricStateChanged();
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## on('metadataChange')<sup>10+</sup>
 
 on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (data: AVMetadata) => void)
@@ -2027,7 +2731,7 @@ on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -2147,7 +2851,7 @@ off(type: 'metadataChange', callback?: (data: AVMetadata) => void)
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -2224,7 +2928,7 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -2344,7 +3048,7 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void)
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -2421,7 +3125,7 @@ on(type: 'callMetadataChange', filter: Array\<keyof CallMetadata> | 'all', callb
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -2541,7 +3245,7 @@ off(type: 'callMetadataChange', callback?: Callback\<CallMetadata>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -2618,7 +3322,7 @@ on(type: 'callStateChange', filter: Array\<keyof AVCallState> | 'all', callback:
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -2738,7 +3442,7 @@ off(type: 'callStateChange', callback?: Callback\<AVCallState>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -2814,7 +3518,7 @@ on(type: 'sessionDestroy', callback: () => void)
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -2892,7 +3596,7 @@ off(type: 'sessionDestroy', callback?: () => void)
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -2968,7 +3672,7 @@ on(type: 'activeStateChange', callback: (isActive: boolean) => void)
 | 错误码ID | 错误信息 |
 | -------- | ----------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  |The session controller does not exist. |
 
 **示例：**
@@ -3046,7 +3750,7 @@ off(type: 'activeStateChange', callback?: (isActive: boolean) => void)
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -3122,7 +3826,7 @@ on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -3202,7 +3906,7 @@ off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandTyp
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -3279,7 +3983,7 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 | 错误码ID | 错误信息 |
 | -------- | ----------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -3357,7 +4061,7 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 | 错误码ID  | 错误信息          |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -3433,7 +4137,7 @@ on(type: 'sessionEvent', callback: (sessionEvent: string, args: {[key: string]: 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -3543,7 +4247,7 @@ off(type: 'sessionEvent', callback?: (sessionEvent: string, args: {[key: string]
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -3619,7 +4323,7 @@ on(type: 'queueItemsChange', callback: (items: Array<[AVQueueItem](arkts-apis-av
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -3697,7 +4401,7 @@ off(type: 'queueItemsChange', callback?: (items: Array<[AVQueueItem](arkts-apis-
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -3773,7 +4477,7 @@ on(type: 'queueTitleChange', callback: (title: string) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -3851,7 +4555,7 @@ off(type: 'queueTitleChange', callback?: (title: string) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -3927,7 +4631,7 @@ on(type: 'extrasChange', callback: (extras: {[key: string]: Object}) => void): v
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -4037,7 +4741,7 @@ off(type: 'extrasChange', callback?: (extras: {[key: string]: Object}) => void):
 | 错误码ID | 错误信息 |
 | -------- | ----------------                       |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -4111,7 +4815,7 @@ getAVPlaybackStateSync(): AVPlaybackState;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -4169,7 +4873,7 @@ getAVMetadataSync(): AVMetadata
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -4225,7 +4929,7 @@ getAVCallState(): Promise\<AVCallState>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -4337,7 +5041,7 @@ getCallMetadata(): Promise\<CallMetadata>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -4391,7 +5095,7 @@ getCallMetadata(callback: AsyncCallback\<CallMetadata>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -4451,7 +5155,7 @@ getAVQueueTitleSync(): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -4509,7 +5213,7 @@ getAVQueueItemsSync(): Array\<AVQueueItem\>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 
@@ -4567,7 +5271,7 @@ getOutputDeviceSync(): OutputDeviceInfo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -4624,7 +5328,7 @@ isActiveSync(): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
 

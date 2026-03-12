@@ -21,7 +21,7 @@
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 ```
 
-## ReplyResult<sup>22+</sup>
+## ReplyResult<sup>23+</sup>
 
 设备认证用户界面状态改变通知信息。
 
@@ -31,7 +31,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统API：** 此接口为系统接口。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
@@ -47,7 +47,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 值  | 说明              |
 | ----------- | ---- | --------------- |
@@ -64,7 +64,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 类型  | 只读 | 可选             |  说明    |
 | ----------- | ---- | -- | --- |--------------- | 
@@ -82,7 +82,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型  | 只读| 可选              |  说明    |
 | -------------- | ---- | --------| ------- | --------|
@@ -101,7 +101,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型  | 只读   |可选              |  说明    |
 | -------------- | ---- | ---| --------------- | --------|
@@ -121,8 +121,8 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 |  firmwareVersion | string |  否   | 否  |  固件版本。          |
 |  hardwareVersion | string |  否   | 否  |  硬件版本。          |
 |  softwareVersion | string |  否  | 否  |  软件版本。          |
-|  protocolType    | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  协议类型。<br /> **ArkTS-Dyn起始版本：** 15 <br /> **ArkTS-Sta起始版本：** 22 |
-|  setupType       | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  设备类型。<br /> **ArkTS-Dyn起始版本：** 15 <br /> **ArkTS-Sta起始版本：** 22 |
+|  protocolType    | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  协议类型。<br /> **ArkTS-Dyn起始版本：** 15 <br /> **ArkTS-Sta起始版本：** 23 |
+|  setupType       | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  设备类型。<br /> **ArkTS-Dyn起始版本：** 15 <br /> **ArkTS-Sta起始版本：** 23 |
 |  wiseDeviceId    | string |  否   | 否  |  已注册设备标识。        |
 |  wiseUserId      | string |  否   | 否  |  已注册用户标识。        |
 |  registerTime    | string |  否   | 否  |  注册时间。          |
@@ -144,7 +144,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型  | 只读 | 可选              |  说明    |
 | -------------- | ---- | -------| -------- | --------|
@@ -164,7 +164,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型  | 只读  |可选              |  说明    |
 | -------------- | ---- | ------| --------- | --------|
@@ -186,12 +186,12 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型  | 只读 | 可选              |  说明    |
 | -------------- | ---- | ------ | --------- | --------|
 |  wiseDeviceId       | string  | 否 | 否   |  已注册设备标识。          |
-|  onlineStatus    | ArkTS-Dyn: number <br /> ArkTS-Sta: int  | 否 | 否   |  设备在线状态，包括<br /> - 0：表示设备处于离线状态。<br /> - 1：表示设备处于在线状态。<br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 22 |
+|  onlineStatus    | ArkTS-Dyn: number <br /> ArkTS-Sta: int  | 否 | 否   |  设备在线状态，包括<br /> - 0：表示设备处于离线状态。<br /> - 1：表示设备处于在线状态。<br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
 
 ## DeviceManager
 
@@ -213,13 +213,13 @@ ArkTS-Sta: replyUiAction(action: int, actionResult: string): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名       | 类型            | 必填  | 说明                |
   | ------------- | --------------- | ---- | ------------------- |
-  | action        | ArkTS-Dyn: number <br /> ArkTS-Sta: int        | 是    | 用户操作动作。<br /> - 0：允许授权。<br /> - 1：取消授权。<br /> - 2：授权框用户操作超时。<br /> - 3：取消pin码框展示。<br /> - 4：取消pin码输入框展示。<br /> - 5：pin码输入框确定操作。<br /> **ArkTS-Dyn起始版本：** 10 <br /> **ArkTS-Sta起始版本：** 22 |
+  | action        | ArkTS-Dyn: number <br /> ArkTS-Sta: int        | 是    | 用户操作动作。<br /> - 0：允许授权。<br /> - 1：取消授权。<br /> - 2：授权框用户操作超时。<br /> - 3：取消pin码框展示。<br /> - 4：取消pin码输入框展示。<br /> - 5：pin码输入框确定操作。<br /> **ArkTS-Dyn起始版本：** 10 <br /> **ArkTS-Sta起始版本：** 23 |
   | actionResult        | string          | 是    | 表示用户操作结果，长度范围1~255字符。 |
 
 **错误码：**
@@ -289,7 +289,7 @@ on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [onReplyResult](#onreplyresult22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [onReplyResult](#onreplyresult23)。
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -345,7 +345,7 @@ on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
   }
   ```
 
-### onReplyResult<sup>22+</sup>
+### onReplyResult<sup>23+</sup>
 
 onReplyResult(callback: Callback&lt;ReplyResult&gt;): void
 
@@ -361,13 +361,13 @@ onReplyResult(callback: Callback&lt;ReplyResult&gt;): void
 
 **系统API：** 此接口为系统接口。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名      | 类型                             | 必填 | 说明                            |
   | -------- | ------------------------------------ | ---- | ------------------------------ |
-  | callback | Callback&lt;[ReplyResult](#ReplyResult22)&gt; | 是  | 指示要注册的设备管理器 UI 状态回调，返回UI状态。        |
+  | callback | Callback&lt;[ReplyResult](#ReplyResult23)&gt; | 是  | 指示要注册的设备管理器 UI 状态回调，返回UI状态。        |
 
 **错误码：**
 
@@ -403,7 +403,7 @@ off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [offReplyResult](#offreplyresult22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [offReplyResult](#offreplyresult23)。
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -446,7 +446,7 @@ off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
   }
   ```
 
-### offReplyResult<sup>22+</sup>
+### offReplyResult<sup>23+</sup>
 
 offReplyResult(callback?: Callback&lt;ReplyResult&gt;): void
 
@@ -462,13 +462,13 @@ offReplyResult(callback?: Callback&lt;ReplyResult&gt;): void
 
 **系统API：** 此接口为系统接口。
 
-**ArkTS-Sta起始版本**: 22
+**ArkTS-Sta起始版本**: 23
 
 **参数：**
 
 | 参数名      | 类型                              | 必填 | 说明                            |
 | -------- | ------------------------------------- | ---- | ---- | 
-| callback | Callback&lt;[ReplyResult](#ReplyResult22)&gt; | 否   | 指示要取消注册的设备管理器 UI 状态，返回UI状态。 |
+| callback | Callback&lt;[ReplyResult](#ReplyResult23)&gt; | 否   | 指示要取消注册的设备管理器 UI 状态，返回UI状态。 |
 
 **错误码：**
 
@@ -509,14 +509,14 @@ ArkTS-Sta: setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: int): voi
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名       | 类型            | 必填  | 说明                |
   | ------------- | --------------- | ---- | ------------------- |
   | policy        |  &nbsp;[StrategyForHeartbeat](#strategyforheartbeat15)&nbsp;         | 是    | 心跳广播策略。       |
-  | delayTime     | ArkTS-Dyn: number <br /> ArkTS-Sta: int          | 是    | 临时关闭心跳广播的时长，单位为：ms，取值范围1000ms到15000ms。<br /> **ArkTS-Dyn起始版本：** 15 <br /> **ArkTS-Sta起始版本：** 22 |
+  | delayTime     | ArkTS-Dyn: number <br /> ArkTS-Sta: int          | 是    | 临时关闭心跳广播的时长，单位为：ms，取值范围1000ms到15000ms。<br /> **ArkTS-Dyn起始版本：** 15 <br /> **ArkTS-Sta起始版本：** 23 |
 
 **错误码：**
 
@@ -579,7 +579,7 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -642,7 +642,7 @@ ArkTS-Sta: putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfil
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -654,7 +654,7 @@ ArkTS-Sta: putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfil
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | ArkTS-Dyn：number <br /> ArkTS-Sta：int | 操作结果，0表示本次调用成功。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 22 |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
 
 **错误码：**
 
@@ -722,7 +722,7 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise&lt;Device
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -795,13 +795,13 @@ ArkTS-Sta: getLocalDisplayDeviceName(maxNameLength: int): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名       | 类型            | 必填  | 说明                |
   | ------------- | --------------- | ---- | ------------------- |
-  |  maxNameLength       |  ArkTS-Dyn: number <br /> ArkTS-Sta: int        |  是  | 可显示的设备名称长度（字节数），取值范围为[18，100]，为0时表示不限制。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 22 |
+  |  maxNameLength       |  ArkTS-Dyn: number <br /> ArkTS-Sta: int        |  是  | 可显示的设备名称长度（字节数），取值范围为[18，100]，为0时表示不限制。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
 
 **返回值：**
 
@@ -877,7 +877,7 @@ ArkTS-Sta: setLocalDeviceName(deviceName: string): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -889,7 +889,7 @@ ArkTS-Sta: setLocalDeviceName(deviceName: string): Promise&lt;int&gt;
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | ArkTS-Dyn：number <br /> ArkTS-Sta：int | 操作结果，0表示本次调用成功。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 22 |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
 
 **错误码：**
 
@@ -962,7 +962,7 @@ ArkTS-Sta: setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -975,7 +975,7 @@ ArkTS-Sta: setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | ArkTS-Dyn：number <br /> ArkTS-Sta：int | 操作结果，0表示本次调用成功。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 22 |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
 
 **错误码：**
 
@@ -1048,7 +1048,7 @@ restoreLocalDeivceName(): void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -1089,7 +1089,7 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

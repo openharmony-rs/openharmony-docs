@@ -27,7 +27,9 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 ## createBlendModeColorFilter
 
-static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode) : ColorFilter
+ArkTS-Dyn: static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode) : ColorFilter
+
+ArkTS-Sta: static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode) : ColorFilter | undefined
 
 创建指定的颜色和混合模式的颜色滤波器。
 
@@ -48,7 +50,7 @@ static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode) : Colo
 
 | 类型                        | 说明               |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回颜色滤波器。 |
+| ArkTS-Dyn: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| undefined | 返回颜色滤波器。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -71,7 +73,7 @@ let colorFilter = drawing.ColorFilter.createBlendModeColorFilter(color, drawing.
 
 ArkTS-Dyn: static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMode): ColorFilter
 
-ArkTS-Sta: static createBlendModeColorFilter(color: common2D.Color | int, mode: BlendMode): ColorFilter
+ArkTS-Sta: static createBlendModeColorFilter(color: common2D.Color | int, mode: BlendMode): ColorFilter | undefined
 
 使用指定的颜色和混合模式创建颜色滤波器。
 
@@ -92,7 +94,7 @@ ArkTS-Sta: static createBlendModeColorFilter(color: common2D.Color | int, mode: 
 
 | 类型                        | 说明               |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回颜色滤波器。 |
+| ArkTS-Dyn: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| undefined | 返回颜色滤波器。创建失败时返回undefined。 |
 
 **错误码：**
 

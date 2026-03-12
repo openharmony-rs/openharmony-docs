@@ -24,7 +24,7 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
@@ -39,7 +39,7 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -53,7 +53,7 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -69,7 +69,7 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -83,7 +83,7 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -96,7 +96,7 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| toneMapping | [ToneMappingSettings](#tonemappingsettings) | 否 | 是 | 色调映射，默认值为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| bloom<sup>18+</sup> | [BloomSettings](#bloomsettings18) | 否 | 是 | 泛光，默认值为undefined。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22 |
-| vignette<sup>22+</sup> | [VignetteSettings](#vignettesettings22) | 否 | 是 | 边缘暗角，默认值为undefined。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22 |
-| colorFringe<sup>22+</sup> | [ColorFringeSettings](#colorfringesettings22) | 否 | 是 | 色晕，默认值为undefined。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22 |
+| toneMapping | [ToneMappingSettings](#tonemappingsettings) | 否 | 是 | 色调映射，默认值为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| bloom<sup>18+</sup> | [BloomSettings](#bloomsettings18) | 否 | 是 | 泛光，默认值为undefined。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| vignette<sup>22+</sup> | [VignetteSettings](#vignettesettings22) | 否 | 是 | 边缘暗角，默认值为undefined。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23 |
+| colorFringe<sup>22+</sup> | [ColorFringeSettings](#colorfringesettings22) | 否 | 是 | 色晕，默认值为undefined。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23 |

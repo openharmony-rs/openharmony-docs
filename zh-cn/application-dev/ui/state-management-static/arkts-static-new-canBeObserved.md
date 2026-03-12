@@ -240,7 +240,7 @@ canBeObserved接口返回信息：
 				}
 			],
 			"owningComponentId": -1,
-			"stateVariableName": "Unknown @Observed Object Property",
+			"stateVariableName": "Any @Observed Object Property",
 			"owningComponentOrClassName": "Info"
 		}
 	]
@@ -394,7 +394,7 @@ canBeObserved接口返回信息：
 				}
 			],
 			"owningComponentId": -1,
-			"stateVariableName": "Unknown Object Literal Property",
+			"stateVariableName": "Any Object Literal Property",
 			"owningComponentOrClassName": "entry$src$main$ets$pages$Index$Info$ObjectLiteral"
 		}
 	]
@@ -472,6 +472,7 @@ canBeObserved接口返回信息：
 				"elementName": "Text"
 			}],
 			"owningComponentId": -1,
+            // "__OB_ANY_INDEX"表示数组任意元素变化时，通知关联的组件刷新
 			"stateVariableName": "__OB_ANY_INDEX",
 			"owningComponentOrClassName": "Array"
 		},
@@ -482,6 +483,7 @@ canBeObserved接口返回信息：
 				"elementName": "Text"
 			}],
 			"owningComponentId": -1,
+            // "__OB_LENGTH"表示数组长度变化时，通知关联的组件刷新
 			"stateVariableName": "__OB_LENGTH",
 			"owningComponentOrClassName": "Array"
 		}

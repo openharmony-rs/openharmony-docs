@@ -30,6 +30,10 @@ ArkTS-Sta: type ValueType = null | long | double | string | boolean | Uint8Array
 
 用于表示允许的数据字段类型，接口参数具体类型根据其功能而定。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 | 类型    | 说明                 |

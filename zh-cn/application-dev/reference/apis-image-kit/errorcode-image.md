@@ -961,6 +961,21 @@ Unsupported allocator type, e.g., use share memory to decode a HDR image as only
 
 使用正确的内存分配类型。
 
+## 7700202 不支持的元数据
+
+**错误信息**
+
+Unsupported metadata. For example, the property key is not supported, or the property value is invalid.
+
+**可能原因**
+
+1. 输入了不支持的元数据字段。
+2. 元数据字段对应的值非法。
+
+**处理步骤**
+
+检查元数据字段是否支持或检查元数据值是否合法。
+
 ## 7700203 不支持的选项
 
 **错误信息**
@@ -974,6 +989,20 @@ Unsupported options, e.g, cannot convert image into desired pixel format.
 **处理步骤**
 
 检查选项参数配置。
+
+## 7700204 无效参数
+
+**错误信息**
+
+Invalid parameter.
+
+**可能原因**
+
+输入的参数无效。
+
+**处理步骤**
+
+检查并重新输入正确的参数。
 
 ## 7700301 解码失败
 
@@ -1006,6 +1035,21 @@ Memory allocation failed.
 
 检查设备内存或检查传入数据。
 
+## 7700304 图片信息写入文件失败
+
+**错误信息**
+
+Failed to write image properties to the file.
+
+**可能原因**
+
+1. 图片数据错误。
+2. 没有修改图片文件的权限。
+
+**处理步骤**
+
+检查图片数据或检查图片文件权限。
+
 ## 7800201 不支持的选项
 
 **错误信息**
@@ -1034,3 +1078,18 @@ Encode failed.
 **处理步骤**
 
 更换图片或检查传入数据。
+
+## 7900201 无效参数
+
+**错误信息**
+
+Invalid parameter.
+
+**可能原因**
+
+1. 传入的参数数量、类型不正确。
+2. 设置的图像格式不支持。
+
+**处理步骤**
+
+检查参数配置。
