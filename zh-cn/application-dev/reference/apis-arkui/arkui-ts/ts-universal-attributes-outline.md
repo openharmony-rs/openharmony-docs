@@ -12,9 +12,7 @@
 
 ## outline
 
-ArkTS-Dyn: outline(value: OutlineOptions): T
-
-ArkTS-Sta: outline(value: OutlineOptions | undefined): this
+outline(value: OutlineOptions): T
 
 统一外描边样式设置接口。
 
@@ -24,21 +22,23 @@ ArkTS-Sta: outline(value: OutlineOptions | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 22
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[outline<sup>23+</sup>](#outline23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
 | 参数名 | 类型                                      | 必填 | 说明         |
 | ------ | ----------------------------------------- | ---- | ------------ |
-| value  | ArkTS-Dyn: [OutlineOptions](#outlineoptions对象说明)<br/>  ArkTS-Sta: [OutlineOptions](#outlineoptions对象说明) \| undefined | 是   | 外描边样式。 |
+| value  | [OutlineOptions](#outlineoptions对象说明) | 是   | 外描边样式。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>  ArkTS-Sta: this | 返回当前组件。 |
+|  T | 返回当前组件。 |
 
 ## outline<sup>18+</sup>
 
@@ -52,6 +52,12 @@ outline(options: Optional\<OutlineOptions>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[outline<sup>23+</sup>](#outline23)。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：**
 
 | 参数名 | 类型                                      | 必填 | 说明 |
@@ -64,6 +70,36 @@ outline(options: Optional\<OutlineOptions>): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
+## outline<sup>23+</sup>
+
+outline(value: OutlineOptions | undefined): this
+
+统一外描边样式设置接口。
+
+**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[outline](#outline)和[outline<sup>18+</sup>](#outlineradius18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                      | 必填 | 说明 |
+| ------ | ----------------------------------------- | ---- | ---- |
+| options | Optional\<[OutlineOptions](#outlineoptions对象说明)> | 是   |   外描边样式。<br/>当options的值为undefined时，恢复为无外边框效果。   |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前组件。 |
+
 ## OutlineStyle<sup>11+</sup>枚举说明
 
 外描边样式。
@@ -74,6 +110,10 @@ outline(options: Optional\<OutlineOptions>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 说明                            |
 | ------ | ----------------------------- |
 | SOLID  | 显示为一条实线。                      |
@@ -82,9 +122,7 @@ outline(options: Optional\<OutlineOptions>): T
 
 ## outlineStyle
 
-ArkTS-Dyn: outlineStyle(value: OutlineStyle | EdgeOutlineStyles): T
-
-ArkTS-Sta: outlineStyle(value: OutlineStyle | EdgeOutlineStyles | undefined): this
+outlineStyle(value: OutlineStyle | EdgeOutlineStyles): T
 
 设置元素的外描边样式。
 
@@ -94,21 +132,23 @@ ArkTS-Sta: outlineStyle(value: OutlineStyle | EdgeOutlineStyles | undefined): th
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 22
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[outlineStyle<sup>23+</sup>](#outlinestyle23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                  |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| value  | ArkTS-Dyn: [OutlineStyle](#outlinestyle11枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles对象说明)<br/>  ArkTS-Sta: [OutlineStyle](#outlinestyle11枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles对象说明) \| undefined | 是   | 设置元素的外描边样式。<br/>默认值：OutlineStyle.SOLID |
+| value  | [OutlineStyle](#outlinestyle11枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles对象说明) | 是   | 设置元素的外描边样式。<br/>默认值：OutlineStyle.SOLID |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>  ArkTS-Sta: this | 返回当前组件。 |
+| T  | 返回当前组件。 |
 
 ## outlineStyle<sup>18+</sup>
 
@@ -122,6 +162,12 @@ outlineStyle(style: Optional\<OutlineStyle | EdgeOutlineStyles>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[outlineStyle<sup>23+</sup>](#outlinestyle23)。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
@@ -133,6 +179,36 @@ outlineStyle(style: Optional\<OutlineStyle | EdgeOutlineStyles>): T
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
+
+### outlineStyle<sup>23+</sup>
+
+outlineStyle(value: OutlineStyle | EdgeOutlineStyles | undefined): this
+
+设置元素的外描边样式。
+
+**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[[outlineStyle](#outlinestyle)](#outline)和[outlineStyle<sup>18+</sup>](#outlinestyle18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                  |
+| ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
+| value  | ArkTS-Dyn: [OutlineStyle](#outlinestyle11枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles对象说明)<br/>  ArkTS-Sta: [OutlineStyle](#outlinestyle11枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles对象说明) \| undefined | 是   | 设置元素的外描边样式。<br/>默认值：OutlineStyle.SOLID |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+|  this | 返回当前组件。 |
 
 ## outlineWidth
 
@@ -150,7 +226,7 @@ ArkTS-Sta: outlineWidth(value: Dimension | EdgeOutlineWidths | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -204,7 +280,7 @@ ArkTS-Sta: outlineColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors 
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -258,7 +334,7 @@ ArkTS-Sta: outlineRadius(value: Dimension | OutlineRadiuses | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -302,6 +378,10 @@ outlineRadius(radius: Optional\<Dimension | OutlineRadiuses>): T
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型                   |必填                                      | 说明                                                         |
 | ------ | ----------------------|-------------------------------------- | ------------------------------------------------------------ |
 | width  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](#edgeoutlinewidths对象说明)| 否| 设置外描边宽度，不支持百分比。<br/>默认值：0，外描边效果中width为必设项，否则不显示外描边。 |
@@ -316,6 +396,10 @@ outlineRadius(radius: Optional\<Dimension | OutlineRadiuses>): T
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 参数类型                         | 必填   | 描述      |
 | ------ | ---------------------------- | ---- | ------- |
@@ -334,6 +418,10 @@ outlineRadius(radius: Optional\<Dimension | OutlineRadiuses>): T
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 参数类型                                     | 必填   | 描述      |
 | ------ | ---------------------------------------- | ---- | ------- |
 | left   | [ResourceColor](ts-types.md#resourcecolor) | 否    | 左侧外描边颜色。 |
@@ -348,6 +436,10 @@ outlineRadius(radius: Optional\<Dimension | OutlineRadiuses>): T
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 参数类型                                     | 必填   | 描述      |
 | ------ | ---------------------------------------- | ---- | ------- |
@@ -364,6 +456,10 @@ outlineRadius(radius: Optional\<Dimension | OutlineRadiuses>): T
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 参数类型                         | 必填   | 描述       |
 | ----------- | ---------------------------- | ---- | -------- |
 | topLeft     | [Dimension](ts-types.md#dimension10) | 否    | 左上角圆角半径。 |
@@ -378,6 +474,10 @@ outlineRadius(radius: Optional\<Dimension | OutlineRadiuses>): T
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 参数类型                                     | 必填   | 描述      |
 | ------ | ---------------------------------------- | ---- | ------- |
