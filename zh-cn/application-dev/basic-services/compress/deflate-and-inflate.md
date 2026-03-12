@@ -513,8 +513,8 @@
 
 1. 17800005 传入的数据错误
 
-   可能原因和处理步骤，请参见错误码[17800005 传入的数据错误](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800005-传入的数据错误)。
+   可能原因和处理步骤，请参见错误码[17800005](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800005-传入的数据错误)。
 
 2. 17800007 传入的缓冲区错误
 
-   可能原因和处理步骤，请参见错误码[17800007 传入的缓冲区错误](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800007-传入的缓冲区错误)。
+   可能原因和处理步骤，请参见错误码[17800007](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800007-传入的缓冲区错误)。
