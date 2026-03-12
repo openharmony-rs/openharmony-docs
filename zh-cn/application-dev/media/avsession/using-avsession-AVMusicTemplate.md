@@ -1,4 +1,4 @@
-# 媒体应用接入指南
+# 使用音频模板
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
