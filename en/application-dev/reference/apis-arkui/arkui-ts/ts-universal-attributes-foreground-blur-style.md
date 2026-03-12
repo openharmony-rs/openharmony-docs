@@ -53,7 +53,7 @@ Applies a foreground blur style to the component. Compared to [foregroundBlurSty
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Settings of the foreground blur style.<br>If **style** is set to **undefined**, no blur is applied.|
+| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Settings of the foreground blur style.<br>If **style** is set to **undefined**, no blur is applied.|
 | options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions) | No  | Defines the foreground blur options. For details about the default value, see [ForegroundBlurStyleOptions](#foregroundblurstyleoptions).                                  |
 
 **Return value**
