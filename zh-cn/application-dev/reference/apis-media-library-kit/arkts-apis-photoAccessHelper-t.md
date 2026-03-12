@@ -45,6 +45,6 @@ type OperationValueType = number | string | boolean
 
 | 类型                    | 说明                          |
 | ---------------------- | -------------------------------- |
-| number    | 表示字段类型为数字，可取任意值。 |
+| number<br>**ArkTS-Dyn：** number<br>**ArkTS-Sta：** long / double    | 表示字段类型为数字，可取任意值。 |
 | string    | 表示字段类型为字符串，可取任意值。 |
 | boolean   | 表示字段类型为布尔值。 |
