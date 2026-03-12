@@ -31,8 +31,6 @@ AlbumPickerComponent({
 
 **装饰器类型**：@Component
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **ArkTS-Dyn起始版本：** 12
@@ -50,8 +48,6 @@ AlbumPickerComponent({
 
 Album Picker配置选项。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **ArkTS-Dyn起始版本：** 12
@@ -60,7 +56,7 @@ Album Picker配置选项。
 |----------------|-------|-----|-----|-------------------------------------------------------------|
 | themeColorMode | [PickerColorMode](ohos-file-PhotoPickerComponent.md#pickercolormode) | 否 | 是   | 相册页主题颜色，包括跟随系统、浅色模式以及深色模式，默认为跟随系统。 <br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12                         |
 | filterType<sup>13+</sup>     | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | 否 | 是   | 相册组件过滤参数，可筛选只显示图片、视频或者图片和视频。若未配置此参数，则某个具体相册中显示图片和视频类型的所有资源。<br> **原子化服务API**：从API version 13开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 13   |
-| fontSize<sup>20+</sup> | number<br>**ArkTS-Dyn：** number <br>**ArkTS-Sta：** int | string | 否 | 是 | 字体大小，取值范围参考[fontSize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize)。<br> **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20   |
+| fontSize<sup>20+</sup> | number | string | 否 | 是 | 字体大小，取值范围参考[fontSize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize)。<br> **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20   |
 
 ## EmptyAreaClickCallback<sup>13+</sup>
 
@@ -70,19 +66,15 @@ type EmptyAreaClickCallback = () => void
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 13
 
 ## AlbumInfo
 
 相册相关信息。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
