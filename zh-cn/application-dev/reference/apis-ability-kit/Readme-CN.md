@@ -31,6 +31,7 @@
     - [@ohos.app.ability.InsightIntentEntryExecutor (@InsightIntentEntry的意图调用执行基类)](js-apis-app-ability-InsightIntentEntryExecutor.md)
     - [@ohos.app.ability.InteropAbilityLifecycleCallback (UIAbility生命周期回调互操作监听器)](js-apis-app-ability-interopAbilityLifecycleCallback.md)
     - [@ohos.app.ability.InsightIntentExecutor (意图调用执行基类)](js-apis-app-ability-insightIntentExecutor.md)
+    - [@ohos.app.ability.insightIntentProvider (意图提供方管理能力)](js-apis-app-ability-insightIntentProvider.md)
     - [@ohos.app.ability.PhotoEditorExtensionAbility (图片编辑能力)](js-apis-app-ability-photoEditorExtensionAbility.md)
     - [@ohos.app.ability.OpenLinkOptions (openLink的可选参数)](js-apis-app-ability-openLinkOptions.md)
     - [@ohos.app.ability.ShareExtensionAbility (分享详情页扩展能力)](js-apis-app-ability-shareExtensionAbility.md)
