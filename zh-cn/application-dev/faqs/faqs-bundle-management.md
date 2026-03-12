@@ -78,8 +78,8 @@ console.info(`bundleName: ${context.abilityInfo.bundleName}`)
    import bundleManager from '@ohos.bundle.bundleManager';
    // ...
    bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION).then((bundleInfo)=>{
-     let versionName = bundleInfo.versionName;//应用版本名
-     let versionNo = bundleInfo.versionCode;//应用版本号
+     let versionName = bundleInfo.versionName;// 应用版本名
+     let versionNo = bundleInfo.versionCode;// 应用版本号
    }).catch((error)=>{
      console.error("get bundleInfo failed,error is "+error)
    })
