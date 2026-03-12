@@ -17,6 +17,22 @@
 
 **ArkTS-Sta起始版本：** 23
 
+### 属性
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称           | 类型    | 只读   | 可选  | 说明   |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | 是    | 否   | 用于MediaChangeRequest类型校验。<br>如果类（如[MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md)或[MediaAlbumChangeRequest](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md)）对象可以访问，就说明该类是MediaChangeRequest的实现类。 |
+
 ## CreateOptions
 
 图片或视频的创建选项。
@@ -170,9 +186,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | fileNameExtension  | string  | 否 | 否 | 文件扩展名，例如'jpg'。  |
 | photoType          | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)  | 否 | 否 | 创建的媒体文件类型[PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)，包含IMAGE或VIDEO。  |
 
-## PhotoAssetChangeInfo<sup>20+</sup>
 
-媒体资产（图片/视频）信息。
+## PhotoAssetChangeInfos<sup>20+</sup>
+
+媒体资产（图片/视频）的变更通知信息。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -180,11 +197,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 |   类型   | 只读 |  可选 | 说明      |
+| 名称                   | 类型                | 只读 | 可选 | 说明    |
 | ---- | ------- | ---- |  ---- | ----- |
-| uri       | string  | 否 | 否 | 媒体文件资源uri。 |
-| mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否  | 媒体资产的类型（图片/视频）。 |
-| albumUri  | string  | 否 | 否 | 媒体资产（图片/视频）所属相册的uri。  |
+| type       | [NotifyChangeType](arkts-apis-photoAccessHelper-e.md#notifychangetype20)  | 否 | 否 | 媒体资产（图片/视频）变更的通知类型。 |
+| assetChangeDatas | [PhotoAssetChangeData](#photoassetchangedata20)[] \| null | 否 |  否 | 变更的媒体资产（图片/视频）数组。如果需要重新查询所有媒体资产，assetChangeDatas为null。  |
+| isForRecheck    | boolean  | 否 | 否 | 应用是否应该重新查询所有媒体资产（图片/视频）信息。true表示需要重新查询所有资产，false表示无需查询所有资产。<br>**注意：**<br>在大量资产操作或者异常通知的场景下，应用收到的isForRecheck为true，表示重新查询所有资产信息。  |
 
 ## PhotoAssetChangeData<sup>20+</sup>
 
@@ -203,25 +220,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | isContentChanged  |boolean  | 否 | 否 | 媒体资产（图片/视频）内容是否变化。true表示文件内容发生变化，false表示文件内容未发生变化。  |
 | isDeleted         |boolean  | 否 | 否 | 媒体资产（图片/视频）是否被删除。true表示资产被彻底删除，false表示资产未被彻底删除。  |
 
-## PhotoAssetChangeInfos<sup>20+</sup>
+## PhotoAssetChangeInfo<sup>20+</sup>
 
-媒体资产（图片/视频）的变更通知信息。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称                   | 类型                | 只读 | 可选 | 说明    |
-| ---- | ------- | ---- |  ---- | ----- |
-| type       | [NotifyChangeType](arkts-apis-photoAccessHelper-e.md#notifychangetype20)  | 否 | 否 | 媒体资产（图片/视频）变更的通知类型。 |
-| assetChangeDatas | [PhotoAssetChangeData](#photoassetchangedata20)[] \| null | 否 |  否 | 变更的媒体资产（图片/视频）数组。如果需要重新查询所有媒体资产，assetChangeDatas为null。  |
-| isForRecheck    | boolean  | 否 | 否 | 应用是否应该重新查询所有媒体资产（图片/视频）信息。true表示需要重新查询所有资产，false表示无需查询所有资产。<br>**注意：**<br>在大量资产操作或者异常通知的场景下，应用收到的isForRecheck为true，表示重新查询所有资产信息。  |
-
-## AlbumChangeInfo<sup>20+</sup>
-
-相册信息。
+媒体资产（图片/视频）信息。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -229,31 +230,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| 名称 |   类型   | 只读 |  可选 | 说明      |
 | ---- | ------- | ---- |  ---- | ----- |
-| albumType | [AlbumType](arkts-apis-photoAccessHelper-e.md#albumtype)  | 否 | 否 | 相册类型。 |
-| albumSubtype  | [AlbumSubtype](arkts-apis-photoAccessHelper-e.md#albumsubtype) | 否 | 否  | 相册子类型。 |
-| albumName  | string  |否 |否 | 相册名。  |
-| albumUri  | string  |否 |否 | 相册uri。  |
-| imageCount  |  ArkTS-Dyn: number <br>ArkTS-Sta: int |否 |否 | 相册中的图片数量。  |
-| videoCount  | ArkTS-Dyn: number <br>ArkTS-Sta: int |否 |否 | 相册中的视频数量。  |
-| count       | ArkTS-Dyn: number <br>ArkTS-Sta: int |否 |否 | 相册中的资产总数，包括图片和视频。  |
-| coverUri  | string  |否 |否 | 相册封面资产的uri。  |
-
-## AlbumChangeData<sup>20+</sup>
-
-相册的具体变更数据。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称                   | 类型                | 只读 | 可选 | 说明                |
-| ---- | ------- | ---- |  ---- | ----- |
-| albumBeforeChange | [AlbumChangeInfo](#albumchangeinfo20) \| null | 否 | 否 | 变更前的相册数据。如果是新增相册，albumBeforeChange为null。 |
-| albumAfterChange  | [AlbumChangeInfo](#albumchangeinfo20) \| null | 否 | 否  | 变更后的相册数据。如果是删除相册，albumAfterChange为null。 |
+| uri       | string  | 否 | 否 | 媒体文件资源uri。 |
+| mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否  | 媒体资产的类型（图片/视频）。 |
+| albumUri  | string  | 否 | 否 | 媒体资产（图片/视频）所属相册的uri。  |
 
 ## AlbumChangeInfos<sup>20+</sup>
 
@@ -289,3 +270,39 @@ picker内宫格的捏合模式。
 | ---- | ---- | ---- | ---- | ---- |
 | gridPinchModeType       | [GridPinchModeType](arkts-apis-photoAccessHelper-e.md#gridpinchmodetype23)  | 否 | 是 | 宫格捏合模式类型，配置即支持捏合功能，反之不支持捏合功能。|
 | defaultGridLevel | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23) | 否 | 是 | 拉起picker后宫格档位，默认为STANDARD。|
+
+## AlbumChangeData<sup>20+</sup>
+
+相册的具体变更数据。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                   | 类型                | 只读 | 可选 | 说明                |
+| ---- | ------- | ---- |  ---- | ----- |
+| albumBeforeChange | [AlbumChangeInfo](#albumchangeinfo20) \| null | 否 | 否 | 变更前的相册数据。如果是新增相册，albumBeforeChange为null。 |
+| albumAfterChange  | [AlbumChangeInfo](#albumchangeinfo20) \| null | 否 | 否  | 变更后的相册数据。如果是删除相册，albumAfterChange为null。 |
+
+## AlbumChangeInfo<sup>20+</sup>
+
+相册信息。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| albumType | [AlbumType](arkts-apis-photoAccessHelper-e.md#albumtype)  | 否 | 否 | 相册类型。 |
+| albumSubtype  | [AlbumSubtype](arkts-apis-photoAccessHelper-e.md#albumsubtype) | 否 | 否  | 相册子类型。 |
+| albumName  | string  |否 |否 | 相册名。  |
+| albumUri  | string  |否 |否 | 相册uri。  |
+| imageCount  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  |否 |否 | 相册中的图片数量。  |
+| videoCount  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  |否 |否 | 相册中的视频数量。  |
+| count       | ArkTS-Dyn: number<br/>ArkTS-Sta: int  |否 |否 | 相册中的资产总数，包括图片和视频。  |
+| coverUri  | string  |否 |否 | 相册封面资产的uri。  |

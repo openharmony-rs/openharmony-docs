@@ -27,8 +27,8 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | albumUri | string | 是    | 否    | 相册uri。   |
 | count | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 否    |  相册中文件数量。 |
 | coverUri | string | 是    | 否    | 封面文件uri。 |
-| lpath<sup>23+</sup> | string | 是    | 是    | 相册虚拟路径。 |
-| changeTime<sup>23+</sup> | number | 是    | 是    | 相册的更改时间。 |
+| lpath | string | 是    | 是    | 相册虚拟路径。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| changeTime | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 是    | 相册的更改时间。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## getAssets
 

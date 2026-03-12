@@ -4,7 +4,6 @@
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -15,7 +14,9 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 ## photoAccessHelper.getPhotoAccessHelper
 
-getPhotoAccessHelper(context: Context): PhotoAccessHelper
+ArkTS-Dyn: getPhotoAccessHelper(context: Context): PhotoAccessHelper
+
+ArkTS-Sta: getPhotoAccessHelper(context: Context): PhotoAccessHelper | null
 
 获取相册管理模块的实例，用于访问和修改相册中的媒体文件。
 
@@ -24,6 +25,10 @@ getPhotoAccessHelper(context: Context): PhotoAccessHelper
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -35,7 +40,7 @@ getPhotoAccessHelper(context: Context): PhotoAccessHelper
 
 | 类型                            | 说明    |
 | ----------------------------- | :---- |
-| [PhotoAccessHelper](#photoaccesshelper) | 相册管理模块的实例。 |
+| ArkTS-Dyn: [PhotoAccessHelper](#photoaccesshelper)<br>ArkTS-Sta: [PhotoAccessHelper](#photoaccesshelper) \| null | 相册管理模块的实例。 |
 
 **错误码：**
 
@@ -1338,6 +1343,8 @@ on(type: 'photoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
 注册'photoChange'监听媒体资产，并通过callback方式返回资产变化结果，可以注册多个callback。
 
+**ArkTS-Dyn起始版本：** 20
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1394,6 +1401,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 off(type: 'photoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
 取消对'photoChange'媒体资产的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。
+
+**ArkTS-Dyn起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -1455,6 +1464,8 @@ on(type: 'photoAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
 注册'photoAlbumChange'监听相册，并通过callback方式返回相册变化结果，可以注册多个callback。
 
+**ArkTS-Dyn起始版本：** 20
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1511,6 +1522,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 off(type: 'photoAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
 取消对'photoAlbumChange'相册的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。
+
+**ArkTS-Dyn起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -1620,7 +1633,7 @@ async function example(context: Context) {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称                      | 类型                     | 可读 | 可写 | 说明                                                   |
+| 名称                      | 类型                     | 只读 | 可选 | 说明                                                   |
 | ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
 | uri                       | string                   | 是   | 否   | 媒体文件资源uri（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件uri介绍中的[媒体文件uri](../../file-management/user-file-uri-intro.md#媒体文件uri)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
 | photoType   | [PhotoType](#phototype) | 是   | 否   | 媒体文件类型。                                               |
@@ -3237,7 +3250,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称           | 类型    | 可读   | 可写  | 说明   |
+| 名称           | 类型    | 只读   | 可选  | 说明   |
 | ------------ | ------ | ---- | ---- | ------- |
 | albumType | [AlbumType](#albumtype) | 是    | 否    | 相册类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23    |
 | albumSubtype | [AlbumSubtype](#albumsubtype) | 是    | 否   | 相册子类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23    |
@@ -3826,7 +3839,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### createImageAssetRequest<sup>11+</sup>
 
-static createImageAssetRequest(context: Context, fileUri: string): MediaAssetChangeRequest
+ArkTS-Dyn: static createImageAssetRequest(context: Context, fileUri: string): MediaAssetChangeRequest
+
+ArkTS-Sta: static createImageAssetRequest(context: Context, fileUri: string): MediaAssetChangeRequest | null
 
 创建图片资产变更请求。
 
@@ -3835,6 +3850,10 @@ static createImageAssetRequest(context: Context, fileUri: string): MediaAssetCha
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3847,7 +3866,7 @@ static createImageAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| [MediaAssetChangeRequest](#mediaassetchangerequest11) | 返回创建资产的变更请求。 |
+| ArkTS-Dyn: [MediaAssetChangeRequest](#mediaassetchangerequest11)<br>ArkTS-Sta: [MediaAssetChangeRequest](#mediaassetchangerequest11) \| null | 返回创建资产的变更请求。 |
 
 **错误码：**
 
@@ -3856,8 +3875,10 @@ static createImageAssetRequest(context: Context, fileUri: string): MediaAssetCha
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 13900002   | The file corresponding to the URI is not in the app sandbox.         |
-| 14000011   | System inner fail.        |
+| ArkTS-Dyn: 13900002   | The file corresponding to the URI is not in the app sandbox.         |
+| ArkTS-Dyn: 14000011   | System inner fail.        |
+| ArkTS-Sta: 23800101   | The file corresponding to the URI is not in the app sandbox.        |
+| ArkTS-Sta: 23800301   | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.        |
 
 **示例：**
 
@@ -3880,13 +3901,19 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ### createVideoAssetRequest<sup>11+</sup>
 
-static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetChangeRequest
+ArkTS-Dyn: static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetChangeRequest
+
+ArkTS-Sta: static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetChangeRequest | null
 
 创建视频资产变更请求。
 
 指定待创建资产的数据来源，可参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md)。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3899,7 +3926,7 @@ static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| [MediaAssetChangeRequest](#mediaassetchangerequest11) | 返回创建资产的变更请求。 |
+| ArkTS-Dyn: [MediaAssetChangeRequest](#mediaassetchangerequest11)<br>ArkTS-Sta: [MediaAssetChangeRequest](#mediaassetchangerequest11) \| null | 返回创建资产的变更请求。 |
 
 **错误码：**
 
@@ -3908,8 +3935,10 @@ static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetCha
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 13900002   | The file corresponding to the URI is not in the app sandbox.         |
-| 14000011   | System inner fail.        |
+| ArkTS-Dyn: 13900002   | The file corresponding to the URI is not in the app sandbox.         |
+| ArkTS-Dyn: 14000011   | System inner fail.        |
+| ArkTS-Sta: 23800101   | The file corresponding to the URI is not in the app sandbox.        |
+| ArkTS-Sta: 23800301   | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.        |
 
 **示例：**
 
@@ -3932,13 +3961,19 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ### createAssetRequest<sup>11+</sup>
 
-static createAssetRequest(context: Context, photoType: PhotoType, extension: string, options?: CreateOptions): MediaAssetChangeRequest
+ArkTS-Dyn: static createAssetRequest(context: Context, photoType: PhotoType, extension: string, options?: CreateOptions): MediaAssetChangeRequest
+
+ArkTS-Sta: static createAssetRequest(context: Context, photoType: PhotoType, extension: string, options?: CreateOptions): MediaAssetChangeRequest | null
 
 指定文件类型和扩展名，创建资产变更请求。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3953,7 +3988,7 @@ static createAssetRequest(context: Context, photoType: PhotoType, extension: str
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| [MediaAssetChangeRequest](#mediaassetchangerequest11) | 返回创建资产的变更请求。 |
+| ArkTS-Dyn: [MediaAssetChangeRequest](#mediaassetchangerequest11)<br>ArkTS-Sta: [MediaAssetChangeRequest](#mediaassetchangerequest11) \| null  | 返回创建资产的变更请求。 |
 
 **错误码：**
 
@@ -3962,7 +3997,8 @@ static createAssetRequest(context: Context, photoType: PhotoType, extension: str
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.         |
+| ArkTS-Dyn: 14000011       | System inner fail.         |
+| ArkTS-Sta: 23800301       | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
 
 **示例：**
 
@@ -4112,7 +4148,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ### getAsset<sup>11+</sup>
 
-getAsset(): PhotoAsset
+ArkTS-Dyn: getAsset(): PhotoAsset
+
+ArkTS-Sta: getAsset(): PhotoAsset | null
 
 获取当前资产变更请求中的资产。
 
@@ -4122,11 +4160,15 @@ getAsset(): PhotoAsset
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| [PhotoAsset](#photoasset) | 返回当前资产变更请求中的资产。 |
+| ArkTS-Dyn: [PhotoAsset](#photoasset)<br>ArkTS-Sta: [PhotoAsset](#photoasset) \| null | 返回当前资产变更请求中的资产。 |
 
 **错误码：**
 
@@ -4134,8 +4176,9 @@ getAsset(): PhotoAsset
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000011 |  System inner fail.         |
+| ArkTS-Dyn: 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| ArkTS-Dyn: 14000011 |  System inner fail.         |
+| ArkTS-Sta: 23800301   | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
 
 **示例：**
 
@@ -5487,7 +5530,9 @@ class MediaHandler implements photoAccessHelper.QuickImageDataHandler<image.Pict
 
 ### getUri<sup>12+</sup>
 
-getUri(): string
+ArkTS-Dyn: getUri(): string
+
+ArkTS-Sta: getUri(): string | null
 
 获取动态照片的uri。
 
@@ -5495,11 +5540,15 @@ getUri(): string
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| string | 动态照片的uri。 |
+| ArkTS-Dyn: string<br>ArkTS-Sta: string \| null | 动态照片的uri。 |
 
 **错误码：**
 
@@ -5507,8 +5556,9 @@ getUri(): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000011 |  System inner fail.         |
+| ArkTS-Dyn: 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| ArkTS-Dyn: 14000011 |  System inner fail.         |
+| ArkTS-Sta: 23800301   | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
 
 **示例：**
 
@@ -5819,7 +5869,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ArkTS-Dyn: type MemberType = number | string | boolean
 
-ArkTS-Dyn: type MemberType = int | long | double | string | boolean
+ArkTS-Sta: type MemberType = int | long | double | string | boolean
 
 PhotoAsset的成员类型。
 
@@ -6014,7 +6064,7 @@ title参数的规格如下：
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称                   | 类型                | 可读 | 可写 | 说明                                              |
+| 名称                   | 类型                | 只读 | 可选 | 说明                                              |
 | ---------------------- | ------------------- | ---- |---- | ------------------------------------------------ |
 | fetchColumns           | Array&lt;string&gt; | 是   | 是   | 检索条件，指定列名查询。<br>对于照片，如果该参数为空，默认查询'uri'、'media_type'、'subtype'和'display_name'，使用[get](#get)接口获取当前对象的其他属性时将会报错。示例：fetchColumns: ['uri', 'title']。<br>对于相册，如果该参数为空，默认查询'uri'和'album_name'。 |
 | predicates           | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 是   | 谓词查询，显示过滤条件。 |
@@ -6089,7 +6139,7 @@ title参数的规格如下：
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称    | 类型                        | 可读 | 可写 | 说明                                                         |
+| 名称    | 类型                        | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | type    | [NotifyType](#notifytype) | 是   | 否   | ChangeData的通知类型。                                       |
 | uris    | Array&lt;string&gt;         | 是   | 否   | 相同[NotifyType](#notifytype)的所有uri，可以是PhotoAsset或Album。 |
@@ -6323,7 +6373,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称                    | 类型                | 可读 | 可写 | 说明                           |
+| 名称                    | 类型                | 只读 | 可选 | 说明                           |
 | ----------------------- | ------------------- | ---- | ---- | ------------------------------ |
 | photoUris        | Array&lt;string&gt;    | 是   | 是   | 返回图库选择后的媒体文件的uri数组，此uri数组只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。 |
 | isOriginalPhoto        | boolean    | 是   | 是   | 返回图库选择后的媒体文件是否为原图。true为是原图，false为不是原图，默认值是false。 |

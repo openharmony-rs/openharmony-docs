@@ -2,7 +2,6 @@
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Class首批接口从API version 11开始支持。
 
@@ -21,6 +20,22 @@ MediaAssetChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHe
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
+
+## 属性
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称           | 类型    | 只读   | 可选  | 说明   |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | 是    | 否   | 用于[MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)类型校验。<br>如果类（如MediaAssetChangeRequest）对象可以访问，就说明该类是MediaChangeRequest的实现类。 |
 
 ## constructor<sup>11+</sup>
 
@@ -73,7 +88,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## createImageAssetRequest<sup>11+</sup>
 
-static createImageAssetRequest(context: Context, fileUri: string): MediaAssetChangeRequest
+ArkTS-Dyn: static createImageAssetRequest(context: Context, fileUri: string): MediaAssetChangeRequest
+
+ArkTS-Sta: static createImageAssetRequest(context: Context, fileUri: string): MediaAssetChangeRequest \| null
 
 创建图片资产变更请求。
 
@@ -98,7 +115,7 @@ static createImageAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| [MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md) | 返回创建资产的变更请求。 |
+| ArkTS-Dyn: [MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md)<br/>ArkTS-Sta: [MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md) \| null | 返回创建资产的变更请求。 |
 
 **错误码：**
 
@@ -107,8 +124,10 @@ static createImageAssetRequest(context: Context, fileUri: string): MediaAssetCha
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 13900002   | The file corresponding to the URI is not in the app sandbox.         |
-| 14000011   | System inner fail.        |
+| ArkTS-Dyn: 13900002   | The file corresponding to the URI is not in the app sandbox.         |
+| ArkTS-Dyn: 14000011   | System inner fail.        |
+| ArkTS-Sta: 23800101   | The file corresponding to the URI is not in the app sandbox.        |
+| ArkTS-Sta: 23800301   | Internal system error. It is recommended to retry and check the logs.<br/>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.        |
 
 **示例：**
 
@@ -131,7 +150,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ## createVideoAssetRequest<sup>11+</sup>
 
-static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetChangeRequest
+ArkTS-Dyn: static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetChangeRequest
+
+ArkTS-Sta: static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetChangeRequest | null
 
 创建视频资产变更请求。
 
@@ -154,7 +175,7 @@ static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| [MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md) | 返回创建资产的变更请求。 |
+| ArkTS-Dyn: [MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md)<br>ArkTS-Sta: [MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md) \| null | 返回创建资产的变更请求。 |
 
 **错误码：**
 
@@ -163,8 +184,10 @@ static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetCha
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 13900002   | The file corresponding to the URI is not in the app sandbox.         |
-| 14000011   | System inner fail.        |
+| ArkTS-Dyn: 13900002   | The file corresponding to the URI is not in the app sandbox.         |
+| ArkTS-Dyn: 14000011   | System inner fail.        |
+| ArkTS-Sta: 23800101   | The file corresponding to the URI is not in the app sandbox.        |
+| ArkTS-Sta: 23800301   | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.        |
 
 **示例：**
 
@@ -187,7 +210,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ## createAssetRequest<sup>11+</sup>
 
-static createAssetRequest(context: Context, photoType: PhotoType, extension: string, options?: CreateOptions): MediaAssetChangeRequest
+ArkTS-Dyn: static createAssetRequest(context: Context, photoType: PhotoType, extension: string, options?: CreateOptions): MediaAssetChangeRequest
+
+ArkTS-Sta: static createAssetRequest(context: Context, photoType: PhotoType, extension: string, options?: CreateOptions): MediaAssetChangeRequest | null
 
 指定文件类型和扩展名，创建资产变更请求。
 
@@ -212,7 +237,7 @@ static createAssetRequest(context: Context, photoType: PhotoType, extension: str
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| [MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md) | 返回创建资产的变更请求。 |
+| ArkTS-Dyn: [MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md)<br>ArkTS-Sta: [MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md) \| null  | 返回创建资产的变更请求。 |
 
 **错误码：**
 
@@ -221,7 +246,8 @@ static createAssetRequest(context: Context, photoType: PhotoType, extension: str
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.         |
+| ArkTS-Dyn: 14000011       | System inner fail.         |
+| ArkTS-Sta: 23800301       | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
 
 **示例：**
 
@@ -373,7 +399,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ## getAsset<sup>11+</sup>
 
-getAsset(): PhotoAsset
+ArkTS-Dyn: getAsset(): PhotoAsset
+
+ArkTS-Sta: getAsset(): PhotoAsset | null
 
 获取当前资产变更请求中的资产。
 
@@ -391,7 +419,7 @@ getAsset(): PhotoAsset
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) | 返回当前资产变更请求中的资产。 |
+| ArkTS-Dyn: [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)<br>ArkTS-Sta: [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) \| null | 返回当前资产变更请求中的资产。 |
 
 **错误码：**
 
@@ -399,8 +427,9 @@ getAsset(): PhotoAsset
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000011 |  System inner fail.         |
+| ArkTS-Dyn: 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| ArkTS-Dyn: 14000011 |  System inner fail.         |
+| ArkTS-Sta: 23800301   | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
 
 **示例：**
 

@@ -22,6 +22,20 @@ MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHe
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
+## 属性
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称           | 类型    | 只读   | 可选  | 说明   |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | 是    | 否   | 用于[MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)类型校验。<br>如果类（如MediaAlbumChangeRequest）对象可以访问，就说明该类是MediaChangeRequest的实现类。 |
+
 ## constructor<sup>11+</sup>
 
 constructor(album: Album)
@@ -99,8 +113,9 @@ ArkTS-Sta: getAlbum(): Album \| null
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000011 |  System inner fail.         |
+| ArkTS-Dyn: 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| ArkTS-Dyn: 14000011 |  System inner fail.         |
+| ArkTS-Sta: 23800301 |  Internal system error. It is recommended to retry and check the logs.<br/>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
 
 **示例：**
 

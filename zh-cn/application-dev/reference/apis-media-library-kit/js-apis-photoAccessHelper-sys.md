@@ -9848,7 +9848,7 @@ async example() {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称                   | 类型                              | 可读 | 可写 | 说明                                              |
+| 名称                   | 类型                              | 只读 | 可选 | 说明                                              |
 | ---------------------- |---------------------------------| ---- |---- | ------------------------------------------------ |
 | sourceMode           | [SourceMode](#sourcemode11)     | 是   | 是   | 资源文件的读取类型，可以指定当前请求获取的是源文件，或是编辑后的文件。**系统接口**：此接口为系统接口。 |
 
@@ -9871,6 +9871,22 @@ async example() {
 **注意**：媒体变更请求需要在调用[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)后才会提交生效。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+### 属性
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称           | 类型    | 只读   | 可选  | 说明   |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | 是    | 否   | 用于MediaChangeRequest类型校验。<br>如果类（如[MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md)或[MediaAlbumChangeRequest](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md)）对象可以访问，就说明该类是MediaChangeRequest的实现类。 |
 
 ## FormInfo<sup>11+</sup>
 
@@ -10364,51 +10380,70 @@ async example() {
 
 | 名称  | 类型                | 只读 | 可选 | 说明                                              |
 | ---- | ------- | ---- |  ---- | ----- |
-| fileId | number  | 否 | 否 | 媒体资产（图片/视频）的id。<br>**系统接口**：此接口为系统接口。  |
-| dateDay | string  | 否 | 否 | 创建媒体文件的日期。<br>**系统接口**：此接口为系统接口。  |
-| isFavorite | boolean  | 否 | 否 | 表示媒体资产（图片/视频）的收藏状态。true表示资产已收藏，false表示资产未收藏。<br>**系统接口**：此接口为系统接口。  |
-| isHidden | boolean  | 否 | 否 | 表示媒体资产（图片/视频）的隐藏状态。true表示资产已隐藏，false表示资产未隐藏。<br>**系统接口**：此接口为系统接口。  |
-| strongAssociation | [StrongAssociationType](#strongassociationtype20)  | 否 | 否 | 图片的强关联类型。<br>**系统接口**：此接口为系统接口。  |
-| thumbnailVisible | [ThumbnailVisibility](#thumbnailvisibility14)  | 否 | 否 | 缩略图的可访问性。<br>**系统接口**：此接口为系统接口。  |
-| dateTrashedMs |number  |否 | 否 | 文件删除时的Unix时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。  |
-| dateAddedMs | number  | 否 | 否 | 文件创建时的Unix时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。  |
-| dateTakenMs | number  | 否 | 否 | 文件拍摄时的Unix时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。  |
+| fileId | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 否 | 媒体资产（图片/视频）的id。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
+| dateDay | string  | 否 | 否 | 创建媒体文件的日期。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
+| isFavorite | boolean  | 否 | 否 | 表示媒体资产（图片/视频）的收藏状态。true表示资产已收藏，false表示资产未收藏。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
+| isHidden | boolean  | 否 | 否 | 表示媒体资产（图片/视频）的隐藏状态。true表示资产已隐藏，false表示资产未隐藏。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
+| strongAssociation | [StrongAssociationType](#strongassociationtype20)  | 否 | 否 | 图片的强关联类型。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
+| thumbnailVisible | [ThumbnailVisibility](#thumbnailvisibility14)  | 否 | 否 | 缩略图的可访问性。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
+| dateTrashedMs |ArkTS-Dyn: number<br/>ArkTS-Sta: long  |否 | 否 | 文件删除时的Unix时间戳（单位：毫秒）。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
+| dateAddedMs | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否 | 否 | 文件创建时的Unix时间戳（单位：毫秒）。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
+| dateTakenMs | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否 | 否 | 文件拍摄时的Unix时间戳（单位：毫秒）。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
+| position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16)  | 否 | 是 | 媒体资产（图片/视频）的所在位置。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
+| displayName | string  | 否 | 是 | 媒体资产（图片/视频）的显示名称。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
+| size | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否 | 是 | 媒体资产（图片/视频）的文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
+| albumChangeInfos | ArkTS-Dyn: [AlbumChangeInfo](#albumchangeinfo20)[]<br/>ArkTS-Sta: [AlbumChangeInfo](#albumchangeinfo20)[] \| null  | 否 | 是 | 智慧相册的相册变更信息。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
 
 ## PhotoAssetChangeData<sup>20+</sup>
 
 媒体资产（图片/视频）的具体变更数据。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                   | 类型                | 只读 | 可选 | 说明          |
 | ---- | ------- | ---- |  ---- | ----- |
 | thumbnailChangeStatus | [ThumbnailChangeStatus](#thumbnailchangestatus20)  | 否 | 否 | 缩略图（图片/视频）更新的状态。<br>**系统接口**：此接口为系统接口。 |
-| version       |  number  | 否 | 否 | 媒体资产（图片/视频）信息通知的版本号，用于确定通知的顺序。<br>**系统接口**：此接口为系统接口。  |
+| version       |  ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否 | 否 | 媒体资产（图片/视频）信息通知的版本号，用于确定通知的顺序。<br>**系统接口**：此接口为系统接口。  |
 
 ## AlbumChangeInfo<sup>20+</sup>
 
 相册信息。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  | 类型                | 只读 | 可选 | 说明                                              |
 | ---- | ------- | ---- |  ---- | ----- |
-| hiddenCount | number  | 否 | 否 | 相册中的隐藏资产数量。<br>**系统接口**：此接口为系统接口。 |
+| hiddenCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 否 | 相册中的隐藏资产数量。<br>**系统接口**：此接口为系统接口。 |
 | hiddenCoverUri | string  | 否 | 否 | 相册中隐藏封面资产的uri。<br>**系统接口**：此接口为系统接口。 |
 | isCoverChanged | boolean  | 否 | 否 | 相册封面文件内容是否变化。true表示封面文件内容发生变化，false表示封面文件内容未发生变化。<br>**系统接口**：此接口为系统接口。 |
 | isHiddenCoverChanged | boolean  | 否 | 否 | 相册隐藏封面文件内容是否变化。true表示隐藏封面文件内容发生变化，false表示隐藏封面文件内容未发生变化。<br>**系统接口**：此接口为系统接口。 |
 | coverInfo | [PhotoAssetChangeInfo](#photoassetchangeinfo20)  | 否 | 是 | 相册封面资产的信息。<br>**系统接口**：此接口为系统接口。 |
 | hiddenCoverInfo | [PhotoAssetChangeInfo](#photoassetchangeinfo20)  | 否 | 是 | 相册隐藏封面资产的信息。<br>**系统接口**：此接口为系统接口。 |
+| orderSection | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是 | 相册的排序区域，用于确认相册在图库中的展示区域。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。 |
+| albumOrder | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是 | 相册的排序值。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。 |
+| hidden<sup>23+</sup>    | boolean  | 否 | 是 | 相册是否为隐藏状态。true表示相册为隐藏状态，false表示相册不为隐藏状态。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
 ## AlbumChangeData<sup>20+</sup>
 
 相册的具体变更数据。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                   | 类型                | 只读 | 可选 | 说明       |
 | ---- | ------- | ---- |  ---- | ----- |
-| version | number  | 否 | 否 | 相册信息通知的版本号，用于确定通知的顺序。<br>**系统接口**：此接口为系统接口。 |
+| version | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否 | 否 | 相册信息通知的版本号，用于确定通知的顺序。<br>**系统接口**：此接口为系统接口。 |
 
 ## PhotoAssetCustomRecord<sup>20+</sup>
 

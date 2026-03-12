@@ -23,7 +23,9 @@ PhotoAsset的成员类型。
 
 | 类型 | 说明 |
 | ---- | ---- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int \| long \| double | 表示值类型为数字，可取任意值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 表示值类型为数字，可取任意值。 |
+| ArkTS-Sta: long | 表示值类型为数字，可取任意值。 |
+| ArkTS-Sta: double | 表示值类型为数字，可取任意值。 |
 | string | 表示值类型为字符，可取任意值。|
 | boolean | 表示值类型为布尔类型。 |
 

@@ -22,7 +22,9 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 ## onDataPrepared<sup>13+</sup>
 
-onDataPrepared(data: T, imageSource: image.ImageSource, map: Map<string, string>): void
+ArkTS-Dyn: onDataPrepared(data: T, imageSource: image.ImageSource, map: Map<string, string>): void
+
+ArkTS-Sta: onDataPrepared(data: T | undefined, imageSource: image.ImageSource | null, map: Map<string, string>): void
 
 当请求的图片资源准备就绪时，系统会回调媒体资源就绪通知方法。如果资源准备出错，回调的data将为undefined。
 
@@ -42,8 +44,8 @@ map支持返回的信息：
 
 | 参数名  | 类型 | 必填 | 说明                                                                            |
 |------|---| ---- |-------------------------------------------------------------------------------|
-| data | T | 是   | 已就绪的图片资源数据。泛型，支持[Picture](../apis-image-kit/arkts-apis-image-Picture.md)数据类型。 |
-| imageSource | image.ImageSource | 是   | 已就绪的图片资源数据。 |
+| data | ArkTS-Dyn: T<br>ArkTS-Sta: T \| undefined | 是   | 已就绪的图片资源数据。泛型，支持[Picture](../apis-image-kit/arkts-apis-image-Picture.md)数据类型。 |
+| imageSource | ArkTS-Dyn: image.ImageSource<br>ArkTS-Sta: image.ImageSource \| null | 是   | 已就绪的图片资源数据。 |
 | map<sup>13+</sup> | Map<string, string> | 是   | 用于获取图片资源的额外信息，如图片质量。仅支持'quality'。 |
 
 **示例：**

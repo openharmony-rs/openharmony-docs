@@ -2,7 +2,6 @@
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 提供封装文件属性的方法。
@@ -783,4 +782,21 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+## NotifyChangeType<sup>20+</sup>
+
+枚举，媒体资产（图片/视频）或相册变更事件的通知类型。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                      | 值   | 说明                             |
+| ------------------------- | ---- | -------------------------------- |
+| NOTIFY_CHANGE_ADD         | 0    | 媒体资产（图片/视频）或相册已经创建。     |
+| NOTIFY_CHANGE_UPDATE      | 1    | 媒体资产（图片/视频）或相册已经修改。     |
+| NOTIFY_CHANGE_REMOVE      | 2    | 媒体资产（图片/视频）或相册已经删除。     |
+
 

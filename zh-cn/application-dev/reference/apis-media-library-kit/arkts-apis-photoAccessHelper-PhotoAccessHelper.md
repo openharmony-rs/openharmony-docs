@@ -406,6 +406,59 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+## createPhotoAsset<sup>23+</sup>
+
+createPhotoAsset(photoType: PhotoType, extension: string, title?: string): Promise\<string\>
+
+指定文件类型、后缀和标题，创建图片或视频资源。使用Promise异步回调。
+
+在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-savebutton.md)。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                      |
+| -------- | ------------------------ | ---- | ------------------------- |
+| photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | 是   | 创建的文件类型。例如：IMAGE或者VIDEO类型。              |
+| extension  | string        | 是   | 文件名后缀参数。例如：'jpg'。              |
+| title | string | 否   | 图片或视频资产的标题。     |
+
+**返回值：**
+
+| 类型                        | 说明           |
+| --------------------------- | -------------- |
+| Promise&lt;string&gt; | Promise对象，返回创建的图片或视频的URL。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails.Possible causes: 1. The extension format is unsupported. 2. Title contains unsupported character, such as . .. \ / : * ? " ' ` < > \| { } [ ]. 3. The title is an empty string 4. The total length of title and extension is more than 255. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+// to be done
+```
+
+
 ## getAlbums
 
 getAlbums(type: AlbumType, subtype: AlbumSubtype, options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Album&gt;&gt;): void
@@ -473,6 +526,70 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('getAlbumsCallback successfully, albumName: ' + album.albumName);
     fetchResult.close();
   });
+}
+```
+
+## createPhotoAsset<sup>23+</sup>
+
+createPhotoAsset(photoType: PhotoType, extension: string, title?: string): Promise\<string\>
+
+指定文件类型、后缀和标题，创建图片或视频资源。使用Promise异步回调。
+
+在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-savebutton.md)。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                      |
+| -------- | ------------------------ | ---- | ------------------------- |
+| photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | 是   | 创建的文件类型。例如：IMAGE或者VIDEO类型。              |
+| extension  | string        | 是   | 文件名后缀参数。例如：'jpg'。              |
+| title | string | 否   | 图片或视频资产的标题。     |
+
+**返回值：**
+
+| 类型                        | 说明           |
+| --------------------------- | -------------- |
+| Promise&lt;string&gt; | Promise对象，返回创建的图片或视频的URL。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails.Possible causes: 1. The extension format is unsupported. 2. Title contains unsupported character, such as . .. \ / : * ? " ' ` < > \| { } [ ]. 3. The title is an empty string 4. The total length of title and extension is more than 255. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('createPhotoAssetDemo');
+  try {
+    let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
+    let extension: string = 'jpg';
+    let title: string = 'testPhoto';
+    let uri: string = await phAccessHelper.createPhotoAsset(photoType, extension, title);
+    console.info('createPhotoAsset uri' + uri);
+    console.info('createPhotoAsset successfully');
+  } catch (err) {
+    console.error(`createPhotoAsset failed, error: ${err.code}, ${err.message}`);
+  }
 }
 ```
 
@@ -610,6 +727,86 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   });
 }
 ```
+
+## getRecentPhotoInfo<sup>20+</sup>
+
+getRecentPhotoInfo(options?: RecentPhotoOptions): Promise\<RecentPhotoInfo>
+
+应用使用RecentPhotoComponent组件查看最近图片时，支持调用API获取最近图片信息。使用Promise异步回调。
+
+**原子化服务API**： 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| options | [RecentPhotoOptions](arkts-apis-photoAccessHelper-class.md#recentphotooptions20) | 否   | 最近图片配置选项参数。若无此参数，则取按照创建时间排序的最新一张图片。<br>该参数在配置的情况下，需与RecentPhotoComponent组件中的options配置相同才可以查到一样的图片，否则可能存在接口能查到最近图片，组件没查到最近图片的情况。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<[RecentPhotoInfo](arkts-apis-photoAccessHelper-class.md#recentphotoinfo20)>| Promise对象，返回最近图片信息。 |
+
+**示例：**
+
+```ts
+// to be done
+```
+
+## getAlbumIdByLpath<sup>22+</sup>
+
+ArkTS-Dyn: getAlbumIdByLpath(lpath: string): Promise&lt;number&gt;<br>
+ArkTS-Sta: getAlbumIdByLpath(lpath: string): Promise&lt;int&gt;
+
+根据相册的虚拟路径获取媒体库相册的ID。使用Promise异步回调。
+
+该接口仅支持以下相册：相机相册（'/DCIM/Camera'）、截图相册（'/Pictures/Screenshots'）和屏幕录制相册（'/Pictures/Screenrecords'）。
+
+​**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| lpath | string | 是 | 相册的虚拟路径，lpath长度不能超过255个字符。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;number&gt; | Promise对象，返回相册lpath对应的媒体库相册的ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 23800151     | The lpath is invalid, such as null, undefined and empty. |
+| 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+// to be done
+```
+
+
 
 ## registerChange
 
@@ -1577,6 +1774,442 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('createDeleteRequest successfully');
   } catch (err) {
     console.error(`createDeleteRequest failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+## getRecentPhotoInfo<sup>20+</sup>
+
+getRecentPhotoInfo(options?: RecentPhotoOptions): Promise\<RecentPhotoInfo>
+
+应用使用RecentPhotoComponent组件查看最近图片时，支持调用API获取最近图片信息。使用Promise异步回调。
+
+**原子化服务API**： 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| options | [RecentPhotoOptions](arkts-apis-photoAccessHelper-class.md#recentphotooptions20) | 否   | 最近图片配置选项参数。若无此参数，则取按照创建时间排序的最新一张图片。<br>该参数在配置的情况下，需与RecentPhotoComponent组件中的options配置相同才可以查到一样的图片，否则可能存在接口能查到最近图片，组件没查到最近图片的情况。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<[RecentPhotoInfo](arkts-apis-photoAccessHelper-class.md#recentphotoinfo20)>| Promise对象，返回最近图片信息。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { photoAccessHelper, PhotoSource, RecentPhotoOptions} from '@kit.MediaLibraryKit';
+
+async function example(context: Context) {
+  console.info('getRecentPhotoInfoDemo');
+  let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+  let recentPhotoOptions: RecentPhotoOptions = {
+    period: 60 * 60,
+    MIMEType: photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE,
+    photoSource: PhotoSource.ALL
+  }
+
+  phAccessHelper.getRecentPhotoInfo(recentPhotoOptions).then((recentPhotoInfo) => {
+    console.info('getRecentPhotoInfo success, recentPhotoInfo is ' + JSON.stringify(recentPhotoInfo));
+  }).catch((err: BusinessError) => {
+    console.error(`getRecentPhotoInfo failed with error: ${err.code}, ${err.message}`);
+  });
+}
+```
+
+## getAlbumIdByLpath<sup>22+</sup>
+
+getAlbumIdByLpath(lpath: string): Promise&lt;number&gt;
+
+根据相册的虚拟路径获取媒体库相册的ID。使用Promise异步回调。
+
+该接口仅支持以下相册：相机相册（'/DCIM/Camera'）、截图相册（'/Pictures/Screenshots'）和屏幕录制相册（'/Pictures/Screenrecords'）。
+
+​**模型约束**： 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| lpath | string | 是 | 相册的虚拟路径，lpath长度不能超过255个字符。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;number&gt; | Promise对象，返回相册lpath对应的媒体库相册的ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 23800151     | The lpath is invalid, such as null, undefined and empty. |
+| 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getAlbumIdByLpath');
+
+  try {
+      let albumId: number = await phAccessHelper.getAlbumIdByLpath('testLpath');
+      console.info('requestFile:: albumId: ', albumId);
+
+      console.info('getAlbumIdByLpath completed.');
+      console.info(`albumId : ${albumId}`);
+    } catch (err) {
+      console.error(`getAlbumIdByLpath failed: ${err.code}, ${err.message}`);
+    }
+}
+```
+
+## onSinglePhotoChange<sup>23+</sup> 
+
+onSinglePhotoChange(asset: PhotoAsset, callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
+
+注册对普通单个资产变化的监听。使用callback异步回调。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| asset | PhotoAsset | 是 | 注册单个监听的媒体资产。注册完成后，有资产发生变化时，通过callback返回变更信息。 |
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 是 | 返回变更的媒体资产信息[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)。<br>**注意：**<br>该接口可以注册多个不同的callback监听。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is registered repeatedly. 2. Asset has been removed. 3. The uri of the asset invalid.|
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onSinglePhotoChangeDemo.');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOptions);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+
+    if (albumFetchResult.isAfterLast()) {
+      console.error('lack of album to be moved into');
+      return;
+    }
+    // 注册onCallback1监听。
+    phAccessHelper.onSinglePhotoChange(asset, onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.onSinglePhotoChange(asset, onCallback2);
+  } catch (error) {
+    console.error('onSinglePhotoChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+## offSinglePhotoChange<sup>23+</sup> 
+
+offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void;
+
+取消单个资产的监听。具体规则如下：
+
+1. 不携带参数时，取消所有单个资产监听。
+
+2. 携带asset，不携带callback时，取消该asset下所有callback监听。
+
+3. 携带asset和callback时，仅取消指定callback监听。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| asset | PhotoAsset | 否 | 取消监听资产。取消asset资产监听后,当asset发生变化时,不再通过callback返回变更信息。不携带时，取消注册过的所有单个资产监听。|
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 否 | 用于取消订阅的回调。不携带时，取消asset参数下所有callback。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is unregistered repeatedly. 2. The uri of the asset invalid. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+let onCallback3 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback3 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onSinglePhotoChangeDemo.');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOptions);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+
+    if (albumFetchResult.isAfterLast()) {
+      console.error('lack of album to be moved into');
+      return;
+    }
+    // 注册onCallback1监听。
+    phAccessHelper.onSinglePhotoChange(asset, onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.onSinglePhotoChange(asset, onCallback2);
+    // 注册onCallback3监听。
+    phAccessHelper.onSinglePhotoChange(asset, onCallback3);
+
+    // 解注册onCallback1监听。
+    phAccessHelper.offSinglePhotoChange(asset, onCallback1);
+    // 解注册asset下所有callback。
+    phAccessHelper.offSinglePhotoChange(asset);
+    // 解注册所有singlePhotoAssetChange类型监听。
+    phAccessHelper.offSinglePhotoChange();
+  } catch (error) {
+    console.error('offSinglePhotoChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+## onSinglePhotoAlbumChange<sup>23+</sup> 
+
+onSinglePhotoAlbumChange(album: Album, callback: Callback&lt;AlbumChangeInfos&gt;): void;
+
+注册对普通单个相册变化的监听。使用callback异步回调。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| album | Album | 是 | 注册单个监听的媒体相册。注册完成后，当该相册发生变化时，通过callback返回变更信息。|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 是 | 返回变更的媒体相册信息[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)。<br>**注意：**<br>该接口可以注册多个不同的callback监听。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is registered repeatedly. 2. Album has been removed. 3. The uri of the a invalid.|
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onSinglePhotoAlbumChangeDemo.');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+
+    if (albumFetchResult.isAfterLast()) {
+      console.error('lack of album to be moved into');
+      return;
+    }
+    // 注册onCallback1监听。
+    phAccessHelper.onSinglePhotoAlbumChange(album, onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.onSinglePhotoAlbumChange(album, onCallback2);
+  } catch (error) {
+    console.error('onSinglePhotoAlbumChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+## offSinglePhotoAlbumChange<sup>23+</sup> 
+
+offSinglePhotoAlbumChange(album?: Album, callback?: Callback&lt;AlbumChangeInfos&gt;): void
+
+取消对单个相册的监听。具体规则如下：
+
+1. 不携带任何参数时，取消所有单个相册监听。
+
+2. 携带album，不携带callback时，取消该album下所有callback监听。
+
+3. 携带album和callback时，仅取消指定callback监听。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| album | Album | 否 | 取消监听相册。取消监听后,有相册发生变化时,不再通过callback返回变更信息。 |
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 否 | 用于取消订阅的回调。不携带时，取消album参数下所有callback。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails. Possible causes： 1. The same callback is unregistered repeatedly. 2. The uri of the album invalid.|
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+let onCallback3 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback3 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onSinglePhotoChangeDemo.');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+
+    if (albumFetchResult.isAfterLast()) {
+      console.error('lack of album to be moved into');
+      return;
+    }
+    // 注册onCallback1监听。
+    phAccessHelper.onSinglePhotoAlbumChange(album, onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.onSinglePhotoAlbumChange(album, onCallback2);
+    // 注册onCallback3监听。
+    phAccessHelper.onSinglePhotoAlbumChange(album, onCallback3);
+
+    // 解注册onCallback1监听。
+    phAccessHelper.offSinglePhotoAlbumChange(album, onCallback1);
+    // 解注册album下所有callback。
+    phAccessHelper.offSinglePhotoAlbumChange(album);
+    // 解注册所有singlePhotoAlbumChange类型监听。
+    phAccessHelper.offSinglePhotoAlbumChange();
+  } catch (error) {
+    console.error('offSinglePhotoAlbumChangeDemo failed, errCode is', error);
   }
 }
 ```

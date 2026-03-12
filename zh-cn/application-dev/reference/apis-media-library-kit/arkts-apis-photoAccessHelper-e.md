@@ -69,7 +69,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | --------| ---- | ------------|
 | USER                | 0    | 用户相册。   |
 | SYSTEM              | 1024 | 系统预置相册。 |
-| SOURCE<sup>23+</sup>| 2048 | 由应用创建的相册。 |
+| SOURCE  | 2048 | 由应用创建的相册。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23|
 
 ## AlbumSubtype
 
@@ -339,6 +339,22 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | FAST_MODE |  0 |  快速模式。 |
 | HIGH_QUALITY_MODE |  1 |  高质量模式。 |
 | BALANCE_MODE |  2 |  均衡模式。 |
+
+## PhotoSource<sup>20+</sup>
+
+枚举，图片或者视频数据的来源类型。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                | 值   | 说明                                                                                                                 |
+|-------------------|-----|--------------------------------------------------------------------------------------------------------------------|
+| ALL | 0   | 所有来源的图片、视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| CAMERA | 1   | 仅相机拍摄的图片、视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| SCREENSHOT | 2   | 截屏图片或者录屏视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## CompatibleMode<sup>15+</sup>
 

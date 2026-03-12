@@ -12,7 +12,9 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 ## photoAccessHelper.getPhotoAccessHelper
 
-getPhotoAccessHelper(context: Context): PhotoAccessHelper
+ArkTS-Dyn: getPhotoAccessHelper(context: Context): PhotoAccessHelper
+
+ArkTS-Sta: getPhotoAccessHelper(context: Context): PhotoAccessHelper | null
 
 获取相册管理模块的实例，用于访问和修改相册中的媒体文件。
 
@@ -21,6 +23,10 @@ getPhotoAccessHelper(context: Context): PhotoAccessHelper
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

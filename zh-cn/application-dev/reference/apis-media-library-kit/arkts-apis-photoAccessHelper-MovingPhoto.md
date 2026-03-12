@@ -22,7 +22,9 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 ## getUri<sup>12+</sup>
 
-getUri(): string
+ArkTS-Dyn: getUri(): string
+
+ArkTS-Sta: getUri(): string | null
 
 获取动态照片的uri。
 
@@ -30,11 +32,15 @@ getUri(): string
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| string | 动态照片的uri。 |
+| ArkTS-Dyn: string<br>ArkTS-Sta: string \| null | 动态照片的uri。 |
 
 **错误码：**
 
@@ -42,8 +48,9 @@ getUri(): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000011 |  System inner fail.         |
+| ArkTS-Dyn: 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| ArkTS-Dyn: 14000011 |  System inner fail.         |
+| ArkTS-Sta: 23800301   | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
 
 **示例：**
 
