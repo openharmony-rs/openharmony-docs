@@ -13,6 +13,8 @@ The **RenderNode** module provides APIs for creating a RenderNode in custom draw
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
 > - Avoid modifying RenderNodes in [BuilderNode](./js-apis-arkui-builderNode.md). The [FrameNode](./js-apis-arkui-frameNode.md) associated with BuilderNode is designed solely for mounting the BuilderNode as a child component. Modifying attributes or operations on the FrameNode's child nodes or their corresponding RenderNodes may lead to undefined behavior, including display, event handling, and stability issues.
+>
+> - RenderNode objects do not support JSON serialization.
 
 ## Modules to Import
 

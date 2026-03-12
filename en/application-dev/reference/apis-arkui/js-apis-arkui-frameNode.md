@@ -10,11 +10,13 @@
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> **FrameNode** is not available in DevEco Studio Previewer.
+> - **FrameNode** is not available in DevEco Studio Previewer.
 >
-> FrameNodes cannot be dragged.
+> - FrameNodes cannot be dragged.
+>
+> - FrameNode objects do not support JSON serialization.
 
 ## Modules to Import
 
