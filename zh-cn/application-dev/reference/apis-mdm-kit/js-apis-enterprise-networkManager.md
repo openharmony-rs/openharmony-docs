@@ -452,7 +452,7 @@ getGlobalProxySync(admin: Want): connection.HttpProxy
 
 | 类型                                                         | 说明                           |
 | ------------------------------------------------------------ | ------------------------------ |
-| [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | 返回网络全局Http代理配置信息。 |
+| [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | 返回网络全局HTTP代理配置信息。 |
 
 **错误码**：
 
