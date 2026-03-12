@@ -668,7 +668,7 @@
         - [构建自定义组件](ui/ndk-build-custom-components.md)
         - [嵌入ArkTS组件](ui/ndk-embed-arkts-components.md)
         - [构建渲染节点](ui/ndk-embed-render-components.md)
-        - [通过XComponent接入无障碍](ui/ndk-accessibility-xcomponent.md)
+        - [通过自绘制接入无障碍](ui/ndk-accessibility-xcomponent.md)
         - [自定义绘制](ui/arkts-user-defined-draw.md)
         - [查询和操作自定义节点](ui/ndk-node-query-operate.md)
         - [通过EmbeddedComponent拉起EmbeddedUIExtensionAbility](ui/ndk-embedded-component.md)
