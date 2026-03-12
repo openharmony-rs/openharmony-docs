@@ -7112,6 +7112,16 @@
 						"start_line":399
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AccessibilityCustomCapi/entry/src/main/cpp/AccessibilityMaker.cpp",
+				"functions":[
+					{
+						"end_line":444,
+						"name":"abilitycap_nine_start",
+						"start_line":412
+					}
+				]
 			}
 		]
 	},
