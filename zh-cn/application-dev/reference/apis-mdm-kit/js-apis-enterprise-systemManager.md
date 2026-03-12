@@ -1229,7 +1229,7 @@ try {
 
 setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string): Promise&lt;void&gt;
 
-设置当前设备激活锁SA禁用或去禁用，禁用后查找设备功能不能使用。
+设置当前设备激活锁SA禁用或启用。禁用后查找设备功能不能使用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1244,8 +1244,8 @@ setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string)
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| isDisabled | boolean | 是 | 是否禁用激活锁SA。true表示禁用，false表示去禁用。 |
-| credential | string | 否 | 禁用凭据。当设置禁用时该参数必须填写有效凭据，设置去禁用时为空。|
+| isDisabled | boolean | 是 | 是否禁用激活锁SA。true表示禁用，false表示启用。 |
+| credential | string | 否 | 禁用凭据。当设置禁用时该参数必须填写有效凭据，设置启用时为空。|
 
 **返回值：**
 
@@ -1313,7 +1313,7 @@ isActivationLockDisabled(admin: Want): Promise&lt;boolean&gt;
 
 | 类型                   | 说明                      |
 | --------------------- | ------------------------- |
-| Promise&lt;boolean&gt; | Promise对象，返回当前设备激活锁SA的禁用状态。 |
+| Promise&lt;boolean&gt; | Promise对象，返回当前设备激活锁SA的禁用状态。返回True表示设备激活锁SA处于禁用状态，查找设备功能无法使用；返回false表示设备激活锁SA处于启用状态，可以正常使用设备查找功能。 |
 
 **错误码**：
 
