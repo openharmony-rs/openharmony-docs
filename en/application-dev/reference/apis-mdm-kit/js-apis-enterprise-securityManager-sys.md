@@ -10,13 +10,13 @@ The **securityManager** module provides device security management capabilities,
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 >
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.securityManager](js-apis-enterprise-securityManager.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.securityManager](js-apis-enterprise-securityManager.md).
 
 ## Modules to Import
 
@@ -143,7 +143,7 @@ try {
 
 getPasswordPolicy(): PasswordPolicy
 
-Obtains the password policy of this device.
+Obtains the device screen lock password policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -155,7 +155,7 @@ Obtains the password policy of this device.
 
 | Type                  | Description                     |
 | --------------------- | ------------------------- |
-| [PasswordPolicy](./js-apis-enterprise-securityManager.md#passwordpolicy) | Device password policy obtained.|
+| [PasswordPolicy](./js-apis-enterprise-securityManager.md#passwordpolicy) | Device screen lock password policy.|
 
 **Error codes**
 
