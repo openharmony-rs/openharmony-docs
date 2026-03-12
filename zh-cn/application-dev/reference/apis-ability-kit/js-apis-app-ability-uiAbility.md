@@ -26,7 +26,7 @@ UIAbility是包含UI界面的应用组件，继承自[Ability](js-apis-app-abili
 - Create：表示UIAbility实例已创建。系统会在该状态下触发其[onCreate](#oncreate)回调函数，开发者可以在[onCreate](#oncreate)中执行初始化操作。
 - Foreground：表示UIAbility被拉到前台。系统会在该状态下触发其[onForeground](#onforeground)回调函数，开发者可以在[onForeground](#onforeground)中申请应用所需的资源。
 - Background：表示UIAbility被拉到后台。系统会在该状态下触发其[onBackground](#onbackground)回调函数，开发者可以在[onBackground](#onbackground)中释放一些应用资源。
-- Destroy：表示UIAbility实例要销毁。系统会在该状态下触发其[onDestroy](#ondestroy)回调函数，开发者可以在[onDestroy](#ondestroy)中执行数据保存等操作。
+- Destroy：表示UIAbility实例即将销毁。系统会在该状态下触发其[onDestroy](#ondestroy)回调函数，开发者可以在[onDestroy](#ondestroy)中执行数据保存等操作。
 
 ## 后台通信能力
 
