@@ -105,13 +105,13 @@ function factorial(n: number): number {
   if (n <= 1) {
     return 1;
   }
-  return n * factorial(n - 1);
+  return n * (n - 1);
 }
   // ...
-  factorial(n1) // 7.660344000000002
-  factorial(n2) // 7.680640444893748
+  factorial(n1) // 6.719600000000001
+  factorial(n2) // 6.728008294464001
   factorial(n3) // 1
-  factorial(n4) // 9.33262154439441e+157
+  factorial(n4) // 9900
 ```
 
 `number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`bigint`类型来确保精度：
@@ -2038,7 +2038,7 @@ export default new Demo();
 <!-- @[module_import_as](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
 
 ``` TypeScript
-import * as Utils from './utils';
+import * as Utils from './Utils';
 // ...
 Utils.X // 表示来自Utils的X
 Utils.Y // 表示来自Utils的Y
@@ -2049,10 +2049,10 @@ Utils.Y // 表示来自Utils的Y
 <!-- @[module_import_ident](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
 
 ``` TypeScript
-import { X, Y } from './utils';
+import { X, Y } from './Utils';
 // ...
-X // 表示来自utils的X
-Y // 表示来自utils的Y
+X // 表示来自Utils的X
+Y // 表示来自Utils的Y
 ```
 
 如果标识符列表定义了`ident as alias`，则实体`ident`将绑定在名称`alias`下：
@@ -2087,6 +2087,7 @@ export function add(a: number, b: number): number {
 
 ``` TypeScript
 // Index.ets
+// ESObject是ArkTS跨语言调用场景中用于标注JS/TS对象的类型
 import('./Calc').then((obj: ESObject) => {
   console.info(obj.add(3, 5));
 }).catch((err: Error) => {

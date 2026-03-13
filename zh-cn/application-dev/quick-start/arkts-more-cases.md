@@ -1753,7 +1753,7 @@ let entries = new Map([
 ]);
 
 let obj: Record<string, Object> = {};
-entries.forEach((key, value) => {
+entries.forEach((value, key) => {
   if (key != undefined && key != null) {
     obj[key] = value;
   }
