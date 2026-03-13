@@ -32707,7 +32707,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp",
 				"functions":[
 					{
-						"end_line":32,
+						"end_line":33,
 						"name":"receiver_import",
 						"start_line":15
 					},
@@ -32717,9 +32717,9 @@
 						"start_line":34
 					},
 					{
-						"end_line":54,
+						"end_line":55,
 						"name":"define_receiverInstance",
-						"start_line":46
+						"start_line":47
 					},
 					{
 						"end_line":74,
@@ -32742,9 +32742,9 @@
 						"start_line":130
 					},
 					{
-						"end_line":173,
+						"end_line":165,
 						"name":"define_callback",
-						"start_line":143
+						"start_line":144
 					},
 					{
 						"end_line":195,
@@ -32752,9 +32752,9 @@
 						"start_line":163
 					},
 					{
-						"end_line":252,
+						"end_line":240,
 						"name":"init_receiver",
-						"start_line":209
+						"start_line":201
 					},
 					{
 						"end_line":273,
@@ -32782,9 +32782,9 @@
 						"start_line":352
 					},
 					{
-						"end_line":427,
+						"end_line":414,
 						"name":"load_cameraSession",
-						"start_line":408
+						"start_line":396
 					},
 					{
 						"end_line":433,
@@ -32817,9 +32817,9 @@
 						"start_line":566
 					},
 					{
-						"end_line":629,
+						"end_line":608,
 						"name":"release_receiver",
-						"start_line":598
+						"start_line":585
 					}
 				]
 			}
