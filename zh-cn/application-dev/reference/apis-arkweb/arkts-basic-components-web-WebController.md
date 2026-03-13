@@ -521,6 +521,10 @@ onActive(): void
 
 从API version 9开始废弃，建议使用[onActive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#onactive)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例：**
@@ -551,6 +555,10 @@ onInactive(): void
 调用此接口通知Web组件进入未激活状态。
 
 从API version 9开始废弃，建议使用[onInactive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#oninactive)代替。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
