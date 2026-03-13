@@ -26,6 +26,10 @@ QRCode(value: ResourceStr)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -52,7 +56,7 @@ ArkTS-Sta: color(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -76,7 +80,7 @@ ArkTS-Sta: backgroundColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -98,14 +102,9 @@ ArkTS-Sta: contentOpacity(value: number | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
-
-**ArkTs-Dyn起始版本：** 11
-
-**ArkTs-Sta起始版本：** 22
-
 | 参数名 | 类型                                                 | 必填 | 说明                                     |
 | ------ | ---------------------------------------------------- | ---- | ---------------------------------------- |
 | value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: number&nbsp;\|&nbsp;[ResourceColor](ts-types.md#resourcecolor)  \| undefined | 是   | 二维码内容颜色的不透明度。<br/>默认值：1<br/>取值范围：[0, 1]，超出取值范围按默认值处理。 |

@@ -24,6 +24,10 @@ Counter()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 ## 属性
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性。 
@@ -42,7 +46,7 @@ ArkTS-Sta: enableInc(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -64,7 +68,7 @@ ArkTS-Sta: enableDec(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -92,7 +96,7 @@ ArkTS-Sta: onInc(event:&nbsp;VoidCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -116,7 +120,7 @@ ArkTS-Sta: onDec(event:&nbsp;VoidCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

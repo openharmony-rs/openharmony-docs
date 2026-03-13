@@ -24,7 +24,11 @@ CalendarPicker(options?: CalendarOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名  | 类型                                        | 必填 | 说明                       |
 | ------- | ------------------------------------------- | ---- | -------------------------- |
@@ -36,9 +40,7 @@ CalendarPicker(options?: CalendarOptions)
 
 ### edgeAlign
 
-ArkTS-Dyn: edgeAlign(alignType: CalendarAlign, offset?: Offset)
-
-ArkTS-Sta: edgeAlign(alignType: CalendarAlign | undefined, offset?: Offset)
+edgeAlign(alignType: CalendarAlign, offset?: Offset)
 
 设置选择器与入口组件的对齐方式。
 
@@ -46,22 +48,22 @@ ArkTS-Sta: edgeAlign(alignType: CalendarAlign | undefined, offset?: Offset)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[edgeAlign](#edgealign23)。
+
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
-
-**参数：** 
+**参数：**
 
 | 参数名    | 类型                                    | 必填 | 说明                                                         |
 | --------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| alignType | ArkTS-Dyn: [CalendarAlign](#calendaralign枚举说明) <br/>ArkTS-Sta: [CalendarAlign](#calendaralign枚举说明)  \| undefined | 是   | 对齐方式的类型。<br/>默认值：CalendarAlign.END |
+| alignType | [CalendarAlign](#calendaralign枚举说明) | 是   | 对齐方式的类型。<br/>默认值：CalendarAlign.END |
 | offset    | [Offset](ts-types.md#offset)            | 否   | 按照对齐类型对齐后，选择器相对入口组件的偏移量。<br/>默认值：{dx: 0, dy: 0} |
 
 ### edgeAlign<sup>18+</sup>
 
-ArkTS-Dyn: edgeAlign(alignType: Optional\<CalendarAlign>, offset?: Offset)
-
-ArkTS-Sta: edgeAlign(alignType: Optional\<CalendarAlign> \| undefined, offset?: Offset)
+edgeAlign(alignType: Optional\<CalendarAlign>, offset?: Offset)
 
 设置选择器与入口组件的对齐方式。与[edgeAlign](#edgealign)相比，alignType参数新增了对undefined类型的支持。
 
@@ -69,22 +71,43 @@ ArkTS-Sta: edgeAlign(alignType: Optional\<CalendarAlign> \| undefined, offset?: 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[edgeAlign](#edgealign23)。
+
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
-
-**参数：** 
+**参数：**
 
 | 参数名    | 类型                                                         | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| alignType | ArkTS-Dyn: [CalendarAlign](#calendaralign枚举说明) <br/>ArkTS-Sta: [CalendarAlign](#calendaralign枚举说明)  \| undefined | 是   | 对齐方式的类型。<br/>默认值：CalendarAlign.END |
+| alignType | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[CalendarAlign](#calendaralign枚举说明)> | 是   | 对齐方式的类型。<br/>默认值：CalendarAlign.END |
+| offset    | [Offset](ts-types.md#offset)                                 | 否   | 按照对齐类型对齐后，选择器相对入口组件的偏移量。<br/>默认值：{dx: 0, dy: 0} |
+
+### edgeAlign<sup>23+</sup>
+
+edgeAlign(alignType: CalendarAlign | undefined, offset?: Offset)
+
+设置选择器与入口组件的对齐方式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[edgeAlign](#edgealign)和[edgeAlign](#edgealign18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                                                         | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| alignType | [CalendarAlign](#calendaralign枚举说明) \| undefined | 是   | 对齐方式的类型。<br/>默认值：CalendarAlign.END |
 | offset    | [Offset](ts-types.md#offset)                                 | 否   | 按照对齐类型对齐后，选择器相对入口组件的偏移量。<br/>默认值：{dx: 0, dy: 0} |
 
 ### textStyle
 
-ArkTS-Dyn: textStyle(value: PickerTextStyle)
-
-ArkTS-Sta: textStyle(value: PickerTextStyle | undefined)
+textStyle(value: PickerTextStyle)
 
 入口区的文本颜色、字号、字体粗细。
 
@@ -92,15 +115,17 @@ ArkTS-Sta: textStyle(value: PickerTextStyle | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle](#textstyle23)。
+
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
-
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) <br/>ArkTS-Sta: [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)  \| undefined | 是   | 设置入口区的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) | 是   | 设置入口区的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
 
 ### textStyle<sup>18+</sup>
 
@@ -108,25 +133,45 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 入口区的文本颜色、字号、字体粗细。与[textStyle](#textstyle)相比，style参数新增了对undefined类型的支持。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle](#textstyle23)。
+
 **ArkTS-Dyn起始版本：** 18
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)> | 是   | 设置入口区的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} <br/>当style的值为undefined时，使用默认值。|
 
+### textStyle<sup>23+</sup>
+
+textStyle(value: PickerTextStyle | undefined)
+
+入口区的文本颜色、字号、字体粗细。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[textStyle](#textstyle)和[textStyle](#textstyle18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) \| undefined | 是   | 设置入口区的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+
 ### markToday<sup>19+</sup>
 
-ArkTS-Dyn: markToday(enabled: boolean)
-
-ArkTS-Sta: markToday(enabled: boolean | undefined)
+markToday(enabled: boolean)
 
 日历选择器在系统当前日期时，通过该属性设置其是否保持高亮显示。
 
@@ -136,13 +181,13 @@ ArkTS-Sta: markToday(enabled: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
-| 参数名 | 类型                                                         | 必填 | 说明                                                         |
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| enabled  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean  \| undefined | 是   | 设置日历选择器中系统当前日期是否保持高亮显示。<br/>- true：系统当前日期在日历选择器内保持高亮显示。<br/>- false：系统当前日期在日历选择器内不保持高亮显示。<br/>默认值：false |
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| enabled | boolean | 是   | 设置日历选择器中系统当前日期是否保持高亮显示。<br/>- true：系统当前日期在日历选择器内保持高亮显示。<br/>- false：系统当前日期在日历选择器内不保持高亮显示。<br/>默认值：false |
 
 ## 事件
 
@@ -150,9 +195,7 @@ ArkTS-Sta: markToday(enabled: boolean | undefined)
 
 ### onChange
 
-ArkTS-Dyn: onChange(callback: Callback\<Date>)
-
-ArkTS-Sta: onChange(callback: Callback\<Date> \| undefined)
+onChange(callback: Callback\<Date>)
 
 选择日期时触发该事件。不能通过双向绑定的状态变量触发。
 
@@ -160,35 +203,59 @@ ArkTS-Sta: onChange(callback: Callback\<Date> \| undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange](#onchange23)。
+
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**参数：**
 
-**参数：** 
-
-| 参数名 | 类型 | 必填 | 说明           |
-| ------ | ---- | ---- | -------------- |
-| callback | ArkTS-Dyn: [Callback](ts-types.md#callback12)\<Date> <br/>ArkTS-Sta: [Callback](ts-types.md#callback12)\<Date>  \| undefined | 是   | 选中的日期值。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [Callback](ts-types.md#callback12)\<Date> | 是   | 选中的日期值。 |
 
 ### onChange<sup>18+</sup>
 
-onChange(callback: Optional\<Callback\<Date>>)
+onChange(callback: Optional\<\<Callback\<Date>>)
 
 选择日期时触发该事件。不能通过双向绑定的状态变量触发。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange](#onchange23)。
+
 **ArkTS-Dyn起始版本：** 18
 
-**参数：** 
+**参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Callback](ts-types.md#callback12)\<Date> | 是   | 选中的日期值。 |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Callback](ts-types.md#callback12)\<Date>> | 是   | 选中的日期值。 |
+
+### onChange<sup>23+</sup>
+
+onChange(callback: Callback\<Date> | undefined)
+
+选择日期时触发该事件。不能通过双向绑定的状态变量触发。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onChange](#onchange)和[onChange](#onchange18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [Callback](ts-types.md#callback12)\<Date> \| undefined | 是   | 选中的日期值。 |
 
 ##  CalendarOptions对象说明
 
@@ -198,17 +265,13 @@ onChange(callback: Optional\<Callback\<Date>>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 10
-
-**ArkTs-Sta起始版本：** 22
-
 | 名称      | 类型       | 必填        | 说明                            |
 | ----------- | ---------- | ------| --------------------------------- |
-| hintRadius | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: double \| [Resource](ts-types.md#resource) | 否    | 描述日期选中态底板样式。<br />取值范围：[0, 16]<br />单位：vp<br/>默认值：底板样式为圆形。<br />**说明：**<br />当hintRadius为0时，底板样式为直角矩形。当hintRadius的值在0到16之间时，底板样式为圆角矩形。当hintRadius大于或等于16时，底板样式为圆形。 |
-| selected | Date | 否    | 设置选中项的日期。选中的日期未设置或日期格式不符合规范则为默认值。<br/>默认值：当前系统日期。 |
-| start<sup>18+</sup> | Date | 否    | 设置开始日期。 |
-| end<sup>18+</sup> | Date | 否    | 设置结束日期。 |
-| disabledDateRange<sup>19+</sup> | [DateRange](#daterange19对象说明)[] | 否    | 设置禁用日期区间。<br />**说明：**<br />1. 若日期区间内的开始日期或结束日期为异常值，则该日期区间无效。<br />2. 若在日期区间内，结束日期早于开始日期，则该日期区间无效。<br />3. 当在入口区选定某日期，通过上下箭头调整日期进行增加或减少操作时，若遇到禁用日期，系统将自动跳过整个禁用区间。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| hintRadius | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: double \| [Resource](ts-types.md#resource) | 否    | 描述日期选中态底板样式。<br />取值范围：[0, 16]<br />单位：vp<br/>默认值：底板样式为圆形。<br />**说明：**<br />当hintRadius为0时，底板样式为直角矩形。当hintRadius的值在0到16之间时，底板样式为圆角矩形。当hintRadius大于或等于16时，底板样式为圆形。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| selected | Date | 否    | 设置选中项的日期。选中的日期未设置或日期格式不符合规范则为默认值。<br/>默认值：当前系统日期。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| start<sup>18+</sup> | Date | 否    | 设置开始日期。 <br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| end<sup>18+</sup> | Date | 否    | 设置结束日期。 <br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| disabledDateRange<sup>19+</sup> | [DateRange](#daterange19对象说明)[] | 否    | 设置禁用日期区间。<br />**说明：**<br />1. 若日期区间内的开始日期或结束日期为异常值，则该日期区间无效。<br />2. 若在日期区间内，结束日期早于开始日期，则该日期区间无效。<br />3. 当在入口区选定某日期，通过上下箭头调整日期进行增加或减少操作时，若遇到禁用日期，系统将自动跳过整个禁用区间。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23 |
 
 **start和end设置规则：**
 
@@ -229,6 +292,10 @@ onChange(callback: Optional\<Callback\<Date>>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 值 | 说明                     |
 | ------ | - | ------------------------ |
 | START  | 0 | 设置选择器与入口组件左对齐的对齐方式。   |
@@ -242,6 +309,10 @@ onChange(callback: Optional\<Callback\<Date>>)
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型       | 必填        | 说明                            |
 | ----------- | ---------- | ------| --------------------------------- |

@@ -40,12 +40,16 @@ Search初始化参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型         | 必填 | 说明        |
 | ----------- | ------------- | ---- | ------------- |
-| value<sup>8+</sup>       | [ResourceStr](ts-types.md#resourcestr)   | 否   | 设置当前显示的搜索文本内容。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>从API version 20开始，支持Resource类型。|
-| placeholder<sup>8+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 设置无输入时的提示文本。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| icon<sup>8+</sup>        | string                                               | 否   | 设置搜索图标路径，默认使用系统搜索图标。<br/>**说明：** <br/>icon的数据源支持本地图片和网络图片。<br/>-&nbsp;支持的图片格式包括png、jpg、bmp、svg、gif、pixelmap和heif。<br/>-&nbsp;支持Base64字符串。格式data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], 其中[base64 data]为Base64字符串数据。<br/>如果与属性searchIcon同时设置，则searchIcon优先。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| controller<sup>8+</sup>  | [SearchController](#searchcontroller) | 否   | 设置Search组件控制器。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| value<sup>8+</sup>       | [ResourceStr](ts-types.md#resourcestr)   | 否   | 设置当前显示的搜索文本内容。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>从API version 20开始，支持Resource类型。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| placeholder<sup>8+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 设置无输入时的提示文本。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23  |
+| icon<sup>8+</sup>        | string                                               | 否   | 设置搜索图标路径，默认使用系统搜索图标。<br/>**说明：** <br/>icon的数据源支持本地图片和网络图片。<br/>-&nbsp;支持的图片格式包括png、jpg、bmp、svg、gif、pixelmap和heif。<br/>-&nbsp;支持Base64字符串。格式data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], 其中[base64 data]为Base64字符串数据。<br/>如果与属性searchIcon同时设置，则searchIcon优先。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8<br/> **ArkTS-Sta起始版本：** 23  |
+| controller<sup>8+</sup>  | [SearchController](#searchcontroller) | 否   | 设置Search组件控制器。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 8<br/> **ArkTS-Sta起始版本：** 23   |
 
 ## 属性
 
@@ -69,7 +73,7 @@ Wearable设备上默认字体大小为18fp。
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -92,7 +96,7 @@ ArkTS-Sta: placeholderColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -116,7 +120,7 @@ Wearable设备上默认字体大小为18fp。
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -140,7 +144,7 @@ Wearable设备上默认字体大小为18fp。
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -162,7 +166,7 @@ ArkTS-Sta: textAlign(value: TextAlign | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -176,7 +180,9 @@ ArkTS-Sta: textAlign(value: TextAlign | undefined)
 
 ### textDirection<sup>23+</sup>
 
-textDirection(direction: TextDirection | undefined)
+ArkTS-Dyn: textDirection(direction: TextDirection)
+
+ArkTS-Sta: textDirection(direction: TextDirection | undefined)
 
 指定文本排版方向，未通过该接口设置时，默认文本排版方向遵循组件布局方向。
 
@@ -184,11 +190,15 @@ textDirection(direction: TextDirection | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| direction  | [TextDirection](ts-text-common.md#textdirection22) \| undefined | 是   | 文本排版方向。<br/>设置为undefined时，按照TextDirection.DEFAULT处理，表现为文本排版方向遵循组件布局方向。 |
+| direction  | ArkTS-Dyn: [TextDirection](ts-text-common.md#textdirection22)<br/>ArkTS-Sta: [TextDirection](ts-text-common.md#textdirection22) \| undefined | 是   | 文本排版方向。<br/>设置为undefined时，按照TextDirection.DEFAULT处理，表现为文本排版方向遵循组件布局方向。 |
 
 ### copyOption<sup>9+</sup>
 
@@ -206,7 +216,7 @@ ArkTS-Sta: copyOption(value: CopyOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -230,7 +240,7 @@ Wearable设备上默认图标大小为16vp。
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -254,7 +264,7 @@ Wearable设备上默认图标大小为18fp。
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -276,7 +286,7 @@ ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -298,7 +308,7 @@ ArkTS-Sta: caretStyle(value: CaretStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -325,7 +335,7 @@ ArkTS-Sta: enableKeyboardOnFocus(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -347,7 +357,7 @@ ArkTS-Sta: selectionMenuHidden(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -397,7 +407,7 @@ ArkTS-Sta: customKeyboard(value: CustomBuilder | ComponentContentBase | undefine
 
 | 参数名                | 类型                                        | 必填 | 说明                             |
 | --------------------- | ------------------------------------------- | ---- | -------------------------------- |
-| value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)  \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<sup>22+</sup><br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContentBase](../js-apis-arkui-ComponentContent-static.md#componentcontentbase) \| undefined | 是   | 自定义键盘，值为undefined时使用默认键盘。                     |
+| value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)  \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>23+</sup> \| undefined<sup>23+</sup><br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContentBase](../js-apis-arkui-ComponentContent-static.md#componentcontentbase) \| undefined | 是   | 自定义键盘，值为undefined时使用默认键盘。                     |
 | options<sup>12+</sup> | [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12) | 否   | 设置自定义键盘是否支持避让功能。 |
 
 ### type<sup>11+</sup>
@@ -414,7 +424,7 @@ ArkTS-Sta: type(value: SearchType | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -436,7 +446,7 @@ ArkTS-Sta: maxLength(value: int | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -458,7 +468,7 @@ ArkTS-Sta: enterKeyType(value: EnterKeyType | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -468,7 +478,9 @@ ArkTS-Sta: enterKeyType(value: EnterKeyType | undefined)
 
 ### enableSelectedDataDetector<sup>22+</sup>
 
-enableSelectedDataDetector(enable: boolean | undefined)
+ArkTS-Dyn: enableSelectedDataDetector(enable: boolean)
+
+ArkTS-Sta: enableSelectedDataDetector(enable: boolean | undefined)
 
 设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
 
@@ -488,7 +500,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启选中词文本识别；false：关闭选中词文本识别。<br>值为undefined时，开启选中词文本识别。 |
+| enable  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启选中词文本识别；false：关闭选中词文本识别。<br>值为undefined时，开启选中词文本识别。 |
 
 ### lineHeight<sup>12+</sup>
 
@@ -504,7 +516,7 @@ ArkTS-Sta: lineHeight(value: double | string | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -530,7 +542,7 @@ ArkTS-Sta: decoration(value: TextDecorationOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -556,7 +568,7 @@ ArkTS-Sta: letterSpacing(value: double | string | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -586,7 +598,7 @@ ArkTS-Sta: fontFeature(value: string | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -612,7 +624,7 @@ ArkTS-Sta: selectedBackgroundColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -636,7 +648,7 @@ ArkTS-Sta: inputFilter(value: ResourceStr | undefined, error?: &nbsp;Callback<&n
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -659,7 +671,7 @@ ArkTS-Sta: textIndent(value: Dimension | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -685,7 +697,7 @@ ArkTS-Sta: minFontSize(value: double | string | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -711,7 +723,7 @@ ArkTS-Sta: maxFontSize(value: double | string | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -733,7 +745,7 @@ ArkTS-Sta: halfLeading(halfLeading: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -755,7 +767,7 @@ ArkTS-Sta: minFontScale(scale: double | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -777,7 +789,7 @@ ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -799,7 +811,7 @@ ArkTS-Sta: editMenuOptions(editMenu: EditMenuOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -823,7 +835,7 @@ ArkTS-Sta: enablePreviewText(enable: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -849,7 +861,7 @@ ArkTS-Sta: enableHapticFeedback(isEnabled: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -882,7 +894,7 @@ ArkTS-Sta: autoCapitalizationMode(mode: AutoCapitalizationMode | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -904,7 +916,7 @@ ArkTS-Sta: keyboardAppearance(appearance: KeyboardAppearance | undefined)
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -970,7 +982,7 @@ ArkTS-Sta: stopBackPress(isStopped: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1070,7 +1082,9 @@ ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
 
 ### selectedDragPreviewStyle<sup>23+</sup>
 
-selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
+ArkTS-Dyn: selectedDragPreviewStyle(value: SelectedDragPreviewStyle)
+
+ArkTS-Sta: selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 设置搜索框内文本拖拽时的背板样式。
 
@@ -1086,7 +1100,7 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 | 参数名 | 类型                                             | 必填 | 说明                                                       |
 | ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| value  | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明) \| undefined | 是   | 文本拖拽时的背板样式。<br/>设置为undefined时：背板颜色跟随主题，浅色模式显示白色，深色模式显示黑色。|
+| value  | ArkTS-Dyn: [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明)<br/>ArkTS-Sta: [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明) \| undefined | 是   | 文本拖拽时的背板样式。<br/>设置为undefined时：背板颜色跟随主题，浅色模式显示白色，深色模式显示黑色。|
 
 ## IconOptions<sup>10+</sup>对象说明
 
@@ -1176,7 +1190,7 @@ ArkTS-Sta: onSubmit(callback: OnSubmitCallback \| undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1198,7 +1212,7 @@ ArkTS-Sta: onSubmit(callback: SearchSubmitCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1222,7 +1236,7 @@ ArkTS-Sta: onChange(callback: EditableTextOnChangeCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1244,7 +1258,7 @@ ArkTS-Sta: onCopy(callback:Callback\<string> \| undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1266,7 +1280,7 @@ ArkTS-Sta: onCut(callback:Callback\<string> \| undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1288,7 +1302,7 @@ ArkTS-Sta: onPaste(callback:OnPasteCallback \| undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 | 参数名              | 类型                                                         | 必填 | 说明                   |
@@ -1309,7 +1323,7 @@ ArkTS-Sta: onTextSelectionChange(callback: OnTextSelectionChangeCallback | undef
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1331,7 +1345,7 @@ ArkTS-Sta: onContentScroll(callback: OnContentScrollCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1353,7 +1367,7 @@ ArkTS-Sta: onEditChange(callback:&nbsp;Callback<&nbsp;boolean&nbsp;> \| undefine
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1375,7 +1389,7 @@ ArkTS-Sta: onWillInsert(callback: Callback\<InsertValue, boolean> | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1397,7 +1411,7 @@ ArkTS-Sta: onDidInsert(callback: Callback\<InsertValue> \| undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1419,7 +1433,7 @@ ArkTS-Sta: onWillDelete(callback: Callback\<DeleteValue, boolean> | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1441,7 +1455,7 @@ ArkTS-Sta: onDidDelete(callback: Callback\<DeleteValue> \| undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1469,7 +1483,7 @@ onWillChange的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1520,7 +1534,9 @@ SearchController的构造函数。
 
 ### caretPosition<sup>8+</sup>
 
-caretPosition(value: number): void
+ArkTS-Dyn: caretPosition(value: number): void
+
+ArkTS-Sta: caretPosition(value: int): void
 
 设置输入光标的位置。
 
@@ -1528,11 +1544,15 @@ caretPosition(value: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数:**
+**ArkTS-Dyn起始版本：** 8
 
-| 参数名 | 类型 | 必填 | 说明                           |
-| ------ | -------- | ---- | ---------------------------------- |
-| value  | number   | 是   | 从字符串开始到光标所在位置的长度。 |
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                          | 必填 | 说明                           |
+| ------ | --------------------------------------------- | ---- | ---------------------------------- |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 从字符串开始到光标所在位置的长度。 |
 
 ### stopEditing<sup>10+</sup>
 
@@ -1544,9 +1564,15 @@ stopEditing(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 ### setTextSelection<sup>12+</sup>
 
-setTextSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void;
+ArkTS-Dyn: setTextSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void
+
+ArkTS-Sta: setTextSelection(selectionStart: int, selectionEnd: int, options?: SelectionOptions | undefined): void
 
 组件在获焦状态下，调用该接口设置文本选择区域并高亮显示，且只有在selectionStart小于selectionEnd时，文字才会被选取并高亮显示。
 
@@ -1554,13 +1580,17 @@ setTextSelection(selectionStart: number, selectionEnd: number, options?: Selecti
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名         | 类型 | 必填 | 说明   |
-| -------------- | -------- | ---- | -------- |
-| selectionStart | number   | 是   | 文本选择区域起始位置，文本框中文字的起始位置为0。<br/>当selectionStart小于0时、按照0处理；当selectionStart大于文字最大长度时、按照文字最大长度处理。<br/> |
-| selectionEnd   | number   | 是   | 文本选择区域结束位置。<br/>当selectionEnd小于0时、按照0处理；当selectionEnd大于文字最大长度时、按照文字最大长度处理。<br/> |
-| options | [SelectionOptions](ts-types.md#selectionoptions12对象说明) | 否    | 选中文字时的配置。<br />默认值：MenuPolicy.DEFAULT。 |
+| 参数名         | 类型                                          | 必填 | 说明                           |
+| -------------- | ---------------------------------------------| ---- | ---------------------------------- |
+| selectionStart | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 文本选择区域起始位置，文本框中文字的起始位置为0。<br/>当selectionStart小于0时、按照0处理；当selectionStart大于文字最大长度时、按照文字最大长度处理。<br/> |
+| selectionEnd   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 文本选择区域结束位置。<br/>当selectionEnd小于0时、按照0处理；当selectionEnd大于文字最大长度时、按照文字最大长度处理。<br/> |
+| options      | ArkTS-Dyn: [SelectionOptions](ts-types.md#selectionoptions12对象说明)<br/>ArkTS-Sta: [SelectionOptions](ts-types.md#selectionoptions12对象说明) \| undefined | 否    | 选中文字时的配置。<br />默认值：MenuPolicy.DEFAULT。 |
 
 >  **说明：**
 >
