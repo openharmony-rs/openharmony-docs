@@ -41264,17 +41264,17 @@
 						"start_line":56
 					},
 					{
-						"end_line":37,
+						"end_line":38,
 						"name":"module_import_as",
 						"start_line":19
 					},
 					{
-						"end_line":41,
+						"end_line":42,
 						"name":"module_import_ident",
 						"start_line":22
 					},
 					{
-						"end_line":33,
+						"end_line":34,
 						"name":"module_dynamic_import_ets",
 						"start_line":26
 					},
@@ -42086,9 +42086,9 @@
 						"start_line":482
 					},
 					{
-						"end_line":524,
+						"end_line":526,
 						"name":"use_limited_stdlib",
-						"start_line":512
+						"start_line":514
 					},
 					{
 						"end_line":530,
