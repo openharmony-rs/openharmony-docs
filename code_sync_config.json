@@ -17495,6 +17495,16 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage1.ets",
+				"functions":[
+					{
+						"end_line":100,
+						"name":"Main_RouterPage1",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
