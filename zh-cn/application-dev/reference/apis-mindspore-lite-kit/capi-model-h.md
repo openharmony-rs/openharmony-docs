@@ -68,12 +68,13 @@
 | [OH_AI_API OH_AI_Status OH_AI_ExportModelBuffer(OH_AI_ModelHandle model, OH_AI_ModelType model_type, void *model_data,size_t *data_size, OH_AI_QuantizationType quantization_type,bool export_inference_only, char **output_tensor_name, size_t num)](#oh_ai_exportmodelbuffer) | - | 导出训练模型内存缓存，仅用于端侧训练。                                                                                                                                                                                                                                 |
 | [OH_AI_API OH_AI_Status OH_AI_ExportWeightsCollaborateWithMicro(OH_AI_ModelHandle model, OH_AI_ModelType model_type,const char *weight_file, bool is_inference,bool enable_fp16, char **changeable_weights_name,size_t num)](#oh_ai_exportweightscollaboratewithmicro) | - | 导出模型权重，只能用于micro推理，仅用于端侧训练。                                                                                                                                                                                                                         |
 | [OH_AI_API OH_AI_Status OH_AI_ModelLoadConfig(OH_AI_ModelHandle model, const char *config_path)](#oh_ai_modelloadconfig) | - | 加载模型配置文件。 |
+| [OH_AI_API OH_AI_Status OH_AI_ModelPredictWithConfig(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_TensorHandleArray *outputs, const char *config, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)](#oh_ai_modelpredictwithconfig) | - | 执行模型推理，支持每次推理设置不同推理参数。 |
 
 ## 函数说明
 
 ### OH_AI_KernelCallBack()
 
-```
+```c
 typedef bool (*OH_AI_KernelCallBack)(const OH_AI_TensorHandleArray inputs, const OH_AI_TensorHandleArray outputs,const OH_AI_CallBackParam kernel_Info)
 ```
 
@@ -100,7 +101,7 @@ typedef bool (*OH_AI_KernelCallBack)(const OH_AI_TensorHandleArray inputs, const
 
 ### OH_AI_ModelCreate()
 
-```
+```c
 OH_AI_API OH_AI_ModelHandle OH_AI_ModelCreate(void)
 ```
 
@@ -118,7 +119,7 @@ OH_AI_API OH_AI_ModelHandle OH_AI_ModelCreate(void)
 
 ### OH_AI_ModelDestroy()
 
-```
+```c
 OH_AI_API void OH_AI_ModelDestroy(OH_AI_ModelHandle *model)
 ```
 
@@ -137,7 +138,7 @@ OH_AI_API void OH_AI_ModelDestroy(OH_AI_ModelHandle *model)
 
 ### OH_AI_ModelBuild()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelBuild(OH_AI_ModelHandle model, const void *model_data, size_t data_size,OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context)
 ```
 
@@ -166,7 +167,7 @@ OH_AI_API OH_AI_Status OH_AI_ModelBuild(OH_AI_ModelHandle model, const void *mod
 
 ### OH_AI_ModelBuildFromFile()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path,OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context)
 ```
 
@@ -194,7 +195,7 @@ OH_AI_API OH_AI_Status OH_AI_ModelBuildFromFile(OH_AI_ModelHandle model, const c
 
 ### OH_AI_ModelResize()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelResize(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs,OH_AI_ShapeInfo *shape_infos, size_t shape_info_num)
 ```
 
@@ -222,7 +223,7 @@ OH_AI_API OH_AI_Status OH_AI_ModelResize(OH_AI_ModelHandle model, const OH_AI_Te
 
 ### OH_AI_ModelPredict()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelPredict(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs,OH_AI_TensorHandleArray *outputs, const OH_AI_KernelCallBack before,const OH_AI_KernelCallBack after)
 ```
 
@@ -251,7 +252,7 @@ OH_AI_API OH_AI_Status OH_AI_ModelPredict(OH_AI_ModelHandle model, const OH_AI_T
 
 ### OH_AI_ModelGetInputs()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetInputs(const OH_AI_ModelHandle model)
 ```
 
@@ -276,7 +277,7 @@ OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetInputs(const OH_AI_ModelHandle m
 
 ### OH_AI_ModelGetOutputs()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetOutputs(const OH_AI_ModelHandle model)
 ```
 
@@ -301,7 +302,7 @@ OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetOutputs(const OH_AI_ModelHandle 
 
 ### OH_AI_ModelGetInputByTensorName()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetInputByTensorName(const OH_AI_ModelHandle model, const char *tensor_name)
 ```
 
@@ -327,7 +328,7 @@ OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetInputByTensorName(const OH_AI_ModelHa
 
 ### OH_AI_ModelGetOutputByTensorName()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetOutputByTensorName(const OH_AI_ModelHandle model, const char *tensor_name)
 ```
 
@@ -353,7 +354,7 @@ OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetOutputByTensorName(const OH_AI_ModelH
 
 ### OH_AI_TrainCfgCreate()
 
-```
+```c
 OH_AI_API OH_AI_TrainCfgHandle OH_AI_TrainCfgCreate()
 ```
 
@@ -371,7 +372,7 @@ OH_AI_API OH_AI_TrainCfgHandle OH_AI_TrainCfgCreate()
 
 ### OH_AI_TrainCfgDestroy()
 
-```
+```c
 OH_AI_API void OH_AI_TrainCfgDestroy(OH_AI_TrainCfgHandle *train_cfg)
 ```
 
@@ -390,7 +391,7 @@ OH_AI_API void OH_AI_TrainCfgDestroy(OH_AI_TrainCfgHandle *train_cfg)
 
 ### OH_AI_TrainCfgGetLossName()
 
-```
+```c
 OH_AI_API char **OH_AI_TrainCfgGetLossName(OH_AI_TrainCfgHandle train_cfg, size_t *num)
 ```
 
@@ -416,7 +417,7 @@ OH_AI_API char **OH_AI_TrainCfgGetLossName(OH_AI_TrainCfgHandle train_cfg, size_
 
 ### OH_AI_TrainCfgSetLossName()
 
-```
+```c
 OH_AI_API void OH_AI_TrainCfgSetLossName(OH_AI_TrainCfgHandle train_cfg, const char **loss_name, size_t num)
 ```
 
@@ -437,7 +438,7 @@ OH_AI_API void OH_AI_TrainCfgSetLossName(OH_AI_TrainCfgHandle train_cfg, const c
 
 ### OH_AI_TrainCfgGetOptimizationLevel()
 
-```
+```c
 OH_AI_API OH_AI_OptimizationLevel OH_AI_TrainCfgGetOptimizationLevel(OH_AI_TrainCfgHandle train_cfg)
 ```
 
@@ -462,7 +463,7 @@ OH_AI_API OH_AI_OptimizationLevel OH_AI_TrainCfgGetOptimizationLevel(OH_AI_Train
 
 ### OH_AI_TrainCfgSetOptimizationLevel()
 
-```
+```c
 OH_AI_API void OH_AI_TrainCfgSetOptimizationLevel(OH_AI_TrainCfgHandle train_cfg, OH_AI_OptimizationLevel level)
 ```
 
@@ -482,7 +483,7 @@ OH_AI_API void OH_AI_TrainCfgSetOptimizationLevel(OH_AI_TrainCfgHandle train_cfg
 
 ### OH_AI_TrainModelBuild()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_TrainModelBuild(OH_AI_ModelHandle model, const void *model_data, size_t data_size,OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context,const OH_AI_TrainCfgHandle train_cfg)
 ```
 
@@ -512,7 +513,7 @@ OH_AI_API OH_AI_Status OH_AI_TrainModelBuild(OH_AI_ModelHandle model, const void
 
 ### OH_AI_TrainModelBuildFromFile()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_TrainModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path,OH_AI_ModelType model_type,const OH_AI_ContextHandle model_context,const OH_AI_TrainCfgHandle train_cfg)
 ```
 
@@ -541,7 +542,7 @@ OH_AI_API OH_AI_Status OH_AI_TrainModelBuildFromFile(OH_AI_ModelHandle model, co
 
 ### OH_AI_RunStep()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_RunStep(OH_AI_ModelHandle model, const OH_AI_KernelCallBack before,const OH_AI_KernelCallBack after)
 ```
 
@@ -568,7 +569,7 @@ OH_AI_API OH_AI_Status OH_AI_RunStep(OH_AI_ModelHandle model, const OH_AI_Kernel
 
 ### OH_AI_ModelSetLearningRate()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelSetLearningRate(OH_AI_ModelHandle model, float learning_rate)
 ```
 
@@ -594,7 +595,7 @@ OH_AI_API OH_AI_Status OH_AI_ModelSetLearningRate(OH_AI_ModelHandle model, float
 
 ### OH_AI_ModelGetLearningRate()
 
-```
+```c
 OH_AI_API float OH_AI_ModelGetLearningRate(OH_AI_ModelHandle model)
 ```
 
@@ -619,7 +620,7 @@ OH_AI_API float OH_AI_ModelGetLearningRate(OH_AI_ModelHandle model)
 
 ### OH_AI_ModelGetWeights()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetWeights(OH_AI_ModelHandle model)
 ```
 
@@ -644,7 +645,7 @@ OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetWeights(OH_AI_ModelHandle model)
 
 ### OH_AI_ModelUpdateWeights()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelUpdateWeights(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray new_weights)
 ```
 
@@ -670,7 +671,7 @@ OH_AI_API OH_AI_Status OH_AI_ModelUpdateWeights(OH_AI_ModelHandle model, const O
 
 ### OH_AI_ModelGetTrainMode()
 
-```
+```c
 OH_AI_API bool OH_AI_ModelGetTrainMode(OH_AI_ModelHandle model)
 ```
 
@@ -695,7 +696,7 @@ OH_AI_API bool OH_AI_ModelGetTrainMode(OH_AI_ModelHandle model)
 
 ### OH_AI_ModelSetTrainMode()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelSetTrainMode(OH_AI_ModelHandle model, bool train)
 ```
 
@@ -721,7 +722,7 @@ OH_AI_API OH_AI_Status OH_AI_ModelSetTrainMode(OH_AI_ModelHandle model, bool tra
 
 ### OH_AI_ModelSetupVirtualBatch()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelSetupVirtualBatch(OH_AI_ModelHandle model, int virtual_batch_multiplier, float lr,float momentum)
 ```
 
@@ -749,7 +750,7 @@ OH_AI_API OH_AI_Status OH_AI_ModelSetupVirtualBatch(OH_AI_ModelHandle model, int
 
 ### OH_AI_ExportModel()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ExportModel(OH_AI_ModelHandle model, OH_AI_ModelType model_type, const char *model_file,OH_AI_QuantizationType quantization_type, bool export_inference_only,char **output_tensor_name, size_t num)
 ```
 
@@ -780,7 +781,7 @@ OH_AI_API OH_AI_Status OH_AI_ExportModel(OH_AI_ModelHandle model, OH_AI_ModelTyp
 
 ### OH_AI_ExportModelBuffer()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ExportModelBuffer(OH_AI_ModelHandle model, OH_AI_ModelType model_type, void *model_data,size_t *data_size, OH_AI_QuantizationType quantization_type,bool export_inference_only, char **output_tensor_name, size_t num)
 ```
 
@@ -812,7 +813,7 @@ OH_AI_API OH_AI_Status OH_AI_ExportModelBuffer(OH_AI_ModelHandle model, OH_AI_Mo
 
 ### OH_AI_ExportWeightsCollaborateWithMicro()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ExportWeightsCollaborateWithMicro(OH_AI_ModelHandle model, OH_AI_ModelType model_type,const char *weight_file, bool is_inference,bool enable_fp16, char **changeable_weights_name,size_t num)
 ```
 
@@ -843,7 +844,7 @@ OH_AI_API OH_AI_Status OH_AI_ExportWeightsCollaborateWithMicro(OH_AI_ModelHandle
 
 ### OH_AI_ModelLoadConfig()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelLoadConfig(OH_AI_ModelHandle model, const char *config_path);
 ```
 
@@ -866,3 +867,32 @@ OH_AI_API OH_AI_Status OH_AI_ModelLoadConfig(OH_AI_ModelHandle model, const char
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | 枚举类型的状态码[OH_AI_Status](capi-status-h.md#oh_ai_status)，若成功返回OH_AI_STATUS_SUCCESS，失败则返回具体错误码。 |
 
+### OH_AI_ModelPredictWithConfig()
+
+```c
+OH_AI_API OH_AI_Status OH_AI_ModelPredictWithConfig(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_TensorHandleArray *outputs, const char *config, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)
+															
+```
+
+**描述**
+
+执行模型推理，支持每次推理设置不同推理参数。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md) model | 模型对象指针。 |
+| [const OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) inputs | 模型输入对应的张量数组结构体。 |
+| [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) *outputs | 模型输出对应的张量数组结构体的指针。 |
+| const char *config | 模型配置文件。字符串长度限制跟随文件系统。 |
+| [const OH_AI_KernelCallBack](capi-model-h.md#oh_ai_kernelcallback) before | 模型推理前执行的回调函数。 |
+| after | 模型推理后执行的回调函数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | 枚举类型的状态码[OH_AI_Status](capi-status-h.md#oh_ai_status)，若成功返回OH_AI_STATUS_SUCCESS，失败则返回具体错误码。 |

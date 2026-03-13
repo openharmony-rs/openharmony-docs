@@ -652,7 +652,7 @@ let removeSlotCallback = (err: BusinessError): void => {
     console.info(`Succeeded in removing slot.`);
   }
 }
-let slotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
+let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
 notificationManager.removeSlot(slotType, removeSlotCallback);
 ```
 
@@ -884,7 +884,7 @@ isNotificationEnabledSync(): boolean
 **示例：**
 
 ```ts
-let enabled = notificationManager.isNotificationEnabledSync();
+let enabled: boolean = notificationManager.isNotificationEnabledSync();
 console.info(`isNotificationEnabledSync success, data is : ${JSON.stringify(enabled)}`);
 ```
 
@@ -984,7 +984,7 @@ notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 
 ## notificationManager.getBadgeNumber<sup>22+</sup>
 
-getBadgeNumber(): Promise\<long\>
+getBadgeNumber(): Promise\<number\>
 
 获取当前应用角标数量。使用Promise异步回调。
 
@@ -994,7 +994,7 @@ getBadgeNumber(): Promise\<long\>
 
 | 类型              | 说明                                        |
 | ----------------- | ------------------------------------------- |
-| Promise\<long\> | Promise对象，返回当前应用角标数量。（查询的角标数量与当前应用通知开关，桌面角标开关是否开启无关） |
+| Promise\<number\> | Promise对象，返回当前应用角标数量。（查询的角标数量与当前应用通知开关，桌面角标开关是否开启无关） |
 
 **错误码：**
 
@@ -1011,10 +1011,10 @@ getBadgeNumber(): Promise\<long\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.getBadgeNumber().then((badgeNumber) => {
-  hilog.info(0x0000, 'testTag', `Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
+notificationManager.getBadgeNumber().then((badgeNumber: number) => {
+  console.info(`Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
 }).catch((err: BusinessError) => {
-  hilog.info(0x0000, 'testTag', `Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1168,6 +1168,54 @@ notificationManager.getActiveNotifications().then((data: Array<notificationManag
   console.info(`Succeeded in getting active notifications, data is ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to get active notifications. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getNotificationParameters<sup>24+</sup>
+
+getNotificationParameters(id: number, label?: string): Promise\<NotificationParameters\>
+
+获取通知[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)中wantAgent字段的部分信息。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明     |
+| ----- | ------ | ---- | -------- |
+| id    | number | 是   | 通知ID。   |
+| label | string | 否   | 通知标签，默认为空。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                                    |
+| ------------------------------------------------------------ | --------------------------------------- |
+| Promise\<[NotificationParameters](js-apis-inner-notification-notificationRequest.md#notificationparameters24)\> | Promise对象，返回wantAgent的部分信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.   |
+| 1600007  | The notification does not exist.    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let id: number = 0;
+let label: string = "";
+notificationManager.getNotificationParameters(id, label).then((data: notificationManager.NotificationParameters) => {
+  console.info(`Succeeded in getting notification parameters, data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get notification parameters. Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1676,7 +1724,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
-| 1600018  | the notification settings window is already displayed.           |
+| 1600018  | The notification settings window is already displayed.           |
 
 **示例：**
 
@@ -1741,6 +1789,44 @@ notificationManager.getNotificationSetting().then((data: notificationManager.Not
 });
 ```
 
+## notificationManager.isGeofenceEnabled<sup>23+</sup>
+
+isGeofenceEnabled(): Promise\<boolean\>
+
+检查地理围栏功能是否已启用。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**返回值：**
+
+| 类型               | 说明                                                                                                              |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| Promise\<boolean\> | Promise对象，返回地理围栏开关状态的Promise对象。返回true表示地理围栏功能已启用，返回false表示地理围栏功能未启用。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.   |
+| 1600012  | No memory space.                    |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.isGeofenceEnabled().then((data: boolean) => {
+  hilog.info(0x0000, 'testTag', '%{public}s', `isGeofenceEnabled success, enabled:  ${JSON.stringify(data)}.`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## ContentType
 
 通知内容类型。
@@ -1802,6 +1888,10 @@ notificationManager.getNotificationSetting().then((data: notificationManager.Not
 | ---------------- | ------- | ---- | ---- | ------------------------------------------- |
 | vibrationEnabled | boolean | 否   |  否  | 表示是否开启振动。<br/> - true：开启。<br/> - false：关闭。 |
 | soundEnabled     | boolean | 否   |  否  | 表示是否开启响铃。<br/> - true：开启。<br/> - false：关闭。 |
+| lockScreenEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示是否开启锁屏通知。<br/> - true：开启。<br/> - false：关闭。 |
+| bannerEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示是否开启横幅通知。<br/> - true：开启。<br/> - false：关闭。 |
+| badgeNumberEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示是否开启通知角标数字展示。<br/> - true：开启。<br/> - false：关闭。 |
+| notificationEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示应用通知使能状态。<br/> - true：开启。<br/> - false：关闭。 |
 
 ## BundleOption
 

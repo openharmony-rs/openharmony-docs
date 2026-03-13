@@ -23,11 +23,13 @@ declare class DrawModifier {
 
   drawForeground?(drawContext: DrawContext): void;
 
+  drawOverlay(drawContext: DrawContext): void;
+
   invalidate(): void;
 }
 ```
 
-The **DrawModifier** API allows you to define drawing methods for four layers: foreground layer (**drawForeground**), content foreground layer (**drawFront**), content layer (**drawContent**), and content background layer (**drawBehind**). You need to override these methods and use the [Canvas](arkts-drawing-customization-on-canvas.md) API to implement custom drawing. The following figure illustrates the layers of custom drawing.
+The **DrawModifier** API allows you to define drawing methods at different layers of a component: mask overlay (**drawOverlay**), foreground (**drawForeground**), content foreground (**drawFront**), content (**drawContent**), and content background (**drawBehind**). You need to override these methods and use the [Canvas](arkts-drawing-customization-on-canvas.md) API to implement custom drawing. The following figure illustrates the layers of custom drawing.
 
 ![](figures/drawModifier.png)
 
@@ -35,27 +37,34 @@ The **DrawModifier** API allows you to define drawing methods for four layers: f
 
 > **NOTE**
 >
-> Each **DrawModifier** instance can be assigned to only one component. Reusing the same instance across multiple components is not allowed.
+> * Each **DrawModifier** instance can be assigned to only one component. Reusing the same instance across multiple components is not allowed.
 >
-> The **drawContent** method replaces the component's original content drawing logic.
+> * The **drawContent** method replaces the component's original content drawing logic.
 >
-> The **drawForeground** method is supported since API version 20.
+> * The **drawForeground** method is supported since API version 20.
 >
-> For details about NDK-based custom drawing capabilities and examples, see [Implementing Custom Drawing](./arkts-user-defined-draw.md).
+> * The **drawOverlay** method is supported since API version 23.
+>
+> * For details about NDK-based custom drawing capabilities and examples, see [Implementing Custom Drawing](./arkts-user-defined-draw.md).
 
 ## Custom Drawing Using drawFront, drawContent, and drawBehind
 
 The **drawFront**, **drawContent**, and **drawBehind** APIs are used to customize the drawing of the **Text** component at the foreground, content, and background layers, respectively, allowing you to adjust the component's drawing effect as needed.
 
-```ts
-// xxx.ets
+<!-- @[drawFront_drawContent_drawBehind_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DrawModifier/entry/src/main/ets/pages/DrawFrontDrawContentDrawBehind.ets) -->
+
+``` TypeScript
 import { drawing } from '@kit.ArkGraphics2D';
 import { AnimatorResult } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const LOG_PRINT_DOMAIN:  number = 0xFF00;
+const PREFIX: string = '[Sample]'
 
 class MyFullDrawModifier extends DrawModifier {
   public scaleX: number = 1;
   public scaleY: number = 1;
-  uiContext: UIContext;
+  public uiContext: UIContext;
 
   constructor(uiContext: UIContext) {
     super();
@@ -115,21 +124,22 @@ class MyFullDrawModifier extends DrawModifier {
     const halfWidth = context.size.width / 2;
     const halfHeight = context.size.height / 2;
     const radiusScale = (this.scaleX + this.scaleY) / 2;
-    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight), this.uiContext.vp2px(20 * radiusScale));
+    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
+      this.uiContext.vp2px(20 * radiusScale));
   }
 }
 
 class MyFrontDrawModifier extends DrawModifier {
   public scaleX: number = 1;
   public scaleY: number = 1;
-  uiContext: UIContext;
+  public uiContext: UIContext;
 
   constructor(uiContext: UIContext) {
     super();
     this.uiContext = uiContext;
   }
 
-  // Override the drawFront method to customize the foreground drawing.
+  // Override the drawFront method to customize the content foreground drawing.
   drawFront(context: DrawContext): void {
     const brush = new drawing.Brush();
     brush.setColor({
@@ -142,7 +152,8 @@ class MyFrontDrawModifier extends DrawModifier {
     const halfWidth = context.size.width / 2;
     const halfHeight = context.size.height / 2;
     const radiusScale = (this.scaleX + this.scaleY) / 2;
-    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight), this.uiContext.vp2px(20 * radiusScale));
+    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
+      this.uiContext.vp2px(20 * radiusScale));
   }
 }
 
@@ -170,7 +181,7 @@ struct DrawModifierExample {
       end: 2
     });
     this.drawAnimator.onFrame = (value: number) => {
-      console.info('frame value =', value);
+      hilog.info(LOG_PRINT_DOMAIN, PREFIX, 'frame value = %{public}', value);
       const tempModifier = self.modifier as MyFullDrawModifier | MyFrontDrawModifier;
       tempModifier.scaleX = Math.abs(value - 1);
       tempModifier.scaleY = Math.abs(value - 1);
@@ -181,7 +192,8 @@ struct DrawModifierExample {
   build() {
     Column() {
       Row() {
-        Text('Text component bound to drawModifier')
+        // Replace $r('app.string.Modifier') with the resource file you use.
+        Text($r('app.string.Modifier'))
           .width(100)
           .height(100)
           .margin(10)
@@ -207,6 +219,7 @@ struct DrawModifierExample {
             this.create();
           })
         Button('play')
+          .id('play')
           .width(100)
           .height(100)
           .margin(10)
@@ -226,10 +239,10 @@ struct DrawModifierExample {
             // Switch between DrawModifier instances.
             this.count += 1;
             if (this.count % 2 === 1) {
-              console.info('change to full modifier');
+              hilog.info(LOG_PRINT_DOMAIN, PREFIX, 'change to full modifier');
               this.modifier = this.fullModifier;
             } else {
-              console.info('change to front modifier');
+              hilog.info(LOG_PRINT_DOMAIN, PREFIX, 'change to front modifier');
               this.modifier = this.frontModifier;
             }
           })
@@ -247,14 +260,15 @@ struct DrawModifierExample {
 
 The **drawForeground** API is used to implement custom drawing on the foreground layer of the **Column** component.
 
-```ts
-// xxx.ets
+<!-- @[drawForeground_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DrawModifier/entry/src/main/ets/pages/DrawForeground.ets) -->
+
+``` TypeScript
 import { drawing } from '@kit.ArkGraphics2D';
 
 class MyForegroundDrawModifier extends DrawModifier {
   public scaleX: number = 3;
   public scaleY: number = 3;
-  uiContext: UIContext;
+  public uiContext: UIContext;
 
   constructor(uiContext: UIContext) {
     super();
@@ -290,7 +304,8 @@ struct DrawModifierExample {
 
   build() {
     Column() {
-      Text('Here is a child node')
+      // Replace $r('app.string.TestNode') with the image resource file you use.
+      Text($r('app.string.TestNode'))
         .fontSize(36)
         .width('100%')
         .height('100%')
@@ -305,6 +320,7 @@ struct DrawModifierExample {
   }
 }
 ```
+
 ![drawForeground.png](figures/drawForeground.png)
 
 ## Adjusting the Transformation Matrix of the Custom Drawing Canvas
@@ -321,7 +337,9 @@ Use [concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis
 
 **ArkTS API sample code**
 
-```ts
+<!-- @[Canvas_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DrawModifier/entry/src/main/ets/pages/Canvas.ets) -->
+
+``` TypeScript
 import { DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
@@ -428,4 +446,5 @@ struct Index {
   }
 }
 ```
+
 ![drawModifier-canvas](./figures/drawModifier-canvas.png)

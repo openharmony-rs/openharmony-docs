@@ -136,7 +136,7 @@ setPowerSaveMode(pid: number, powerSaveMode: PowerSaveMode): Promise&lt;void&gt;
 | 201      | Permission denied. |
 | 801      | Capability not supported. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. PowerSaveMode status is out of range. |
-| 31800003      | Setup error, This setting is overridden by setting in Task Manager. |
+| 31800003      | Setup erro, This setting is overridden by settings in Task Manager. |
 | 31800004      | The setting failed due to system scheduling reasons. |
 
 **示例**：
@@ -203,7 +203,7 @@ try {
 }
 ```
 
-## backgroundProcessManager.getPowerSaveMode<sup>22+</sup>
+## backgroundProcessManager.getPowerSaveMode<sup>23+</sup>
 
 getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 
@@ -245,7 +245,7 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 // 请开发者替换为实际的进程号
 let pid = 33333;
 try {
-    backgroundProcessManager.getPowerSaveMode(pid).then((result: PowerSaveMode) => {
+    backgroundProcessManager.getPowerSaveMode(pid).then((result: backgroundProcessManager.PowerSaveMode) => {
         console.info("getPowerSaveMode: " + result.toString());
     });
 } catch (error) {

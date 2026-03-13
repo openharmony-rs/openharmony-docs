@@ -154,6 +154,7 @@ An excessive number of scan channels have been activated by this application or 
 **Solution**
 
 If this application has never started a scan, you can turn Bluetooth off and then back on to release the scanning resources occupied by other applications.
+
 If this application has already started a scan on another channel, you can call the **stopScan** API to halt the scan. After the hardware resources are released, restart the current scan.
 
 ## 2900010
@@ -187,6 +188,7 @@ This error code is reported if the previous operation is not complete.
 **Possible Causes**
 
 The current operation is executed before the previous operation is complete. For example, the [readCharacteristicValue](js-apis-bluetooth-ble.md#readcharacteristicvalue) API is called when the current API call is still in progress.
+
 Other involved APIs are [writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue), [readDescriptorValue](js-apis-bluetooth-ble.md#readdescriptorvalue), [writeDescriptorValue](js-apis-bluetooth-ble.md#writedescriptorvalue), [getRssiValue](js-apis-bluetooth-ble.md#getrssivalue), [setCharacteristicChangeNotification](js-apis-bluetooth-ble.md#setcharacteristicchangenotification) and [setCharacteristicChangeIndication](js-apis-bluetooth-ble.md#setcharacteristicchangeindication). A new API call will be blocked if the current API call is not yet complete.
 
 **Solution**
@@ -391,6 +393,24 @@ The GATT connection is not authorized.
 
 Check whether the GATT connection is authorized.
 
+## 2901008
+
+**Error Message**
+
+GATT service is not found.
+
+**Description**
+
+The GATT service does not exist. Before obtaining the specified GATT service, ensure that the service has been added.
+
+**Possible Causes**
+
+The GATT service has not been added.
+
+**Solution**
+
+Call [addService](js-apis-bluetooth-ble.md#addservice) to add the service.
+
 ## 2901054
 
 **Error Message**
@@ -462,3 +482,75 @@ The input advertising ID must be the value returned by [startAdvertising](js-api
 **Solution**
 
 Check whether the input advertising ID is a valid advertising ID returned by [startAdvertising](js-apis-bluetooth-ble.md#blestartadvertising11).
+
+## 2903050 HID Is Not in the Foreground
+
+**Error Message**
+
+HID application is not int the foreground.
+
+**Description**
+
+The application that registers the HID device is not in the foreground.
+
+**Possible Causes**
+
+The application that registers the HID device is in the background.
+
+**Solution**
+
+Check whether the application that registers the HID device is in the foreground.
+
+## 2903051 HID Has Been Registered
+
+**Error Message**
+
+Any HID application has been registered.
+
+**Description**
+
+The HID device has been registered by another application.
+
+**Possible Causes**
+
+Only one application can register the HID device.
+
+**Solution**
+
+Check whether the HID device has been registered by another application.
+
+## 2903052 HID Not Registered
+
+**Error Message**
+
+HID application does not register.
+
+**Description**
+
+The application has not registered the HID device.
+
+**Possible Causes**
+
+An application can connect to and exchange data with the HID host only after registering the HID device.
+
+**Solution**
+
+Check whether the application successfully registers the HID device.
+
+## 2903053 HID Not Connected
+
+**Error Message**
+
+HID device is not connected.
+
+**Description**
+
+The HID device has not connected to the HID host.
+
+**Possible Causes**
+
+The HID device can exchange data with the HID host only after the connection is successful.
+
+**Solution**
+
+Check whether the application successfully registers the HID device and connects to the HID host.

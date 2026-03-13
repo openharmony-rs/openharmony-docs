@@ -2,17 +2,17 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @yu_haoqiaida-->
+<!--Owner: @hello_harmony; @leiguangyu-->
 <!--Designer: @kutcherzhou1-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具体调用示例请参考下文。
 
 ## 通用开发示例
 
 
-下文展示如何在应用内使用HiDebug Ndk接口以进行线程栈回溯，且获取进程内线程的CPU使用率：
+下文展示如何在应用内使用HiDebug NDK接口以进行线程栈回溯，且获取进程内线程的CPU使用率：
 
 步骤一：创建项目
 

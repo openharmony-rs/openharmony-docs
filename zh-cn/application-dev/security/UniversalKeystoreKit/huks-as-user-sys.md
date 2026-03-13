@@ -24,8 +24,9 @@
 
 指定用户的接口额外支持以下功能和使用条件：
 
-1. 使用方可以同时在options参数中传入[HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel)选项，以指定存储在指定用户的DE区、CE区或ECE区。
-2. 使用方在options参数中不额外传入[HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel)选项时，该接口默认行为是：使用指定userId对应CE存储区的密钥。即不传入[HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel)参数，等同于传入值为[HUKS_AUTH_STORAGE_LEVEL_CE](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel)的[HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel)参数。
+1. 使用方可以同时在options参数中传入[HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)标签，以指定存储在指定用户的DE区、CE区或ECE区。
+
+2. 使用方在options参数中不额外传入[HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)标签时，该接口默认行为是：使用指定userId对应CE存储区的密钥。即不传入HUKS_TAG_AUTH_STORAGE_LEVEL参数，等同于传入值为[HUKS_AUTH_STORAGE_LEVEL_CE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksauthstoragelevel11)的HUKS_TAG_AUTH_STORAGE_LEVEL参数。
 
 除此之外指定用户的接口的用法和支持的算法规格，与不指定用户的对应接口一致。
 
@@ -34,7 +35,7 @@
 | [generateKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksgeneratekeyitemasuser)              |   生成密钥。           |  [generateKeyItem](huks-key-generation-arkts.md)             |
 | [deleteKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksdeletekeyitemasuser)                  |   删除密钥。           |  [deleteKeyItem](huks-delete-key-arkts.md)               |
 | [importKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksimportkeyitemasuser)                  |   明文导入密钥。      |  [importKeyItem](huks-import-key-in-plaintext-arkts.md)                |
-| [importWrappedKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksimportwrappedkeyitemasuser)    |  加密导入密钥。        |  [importWrappedKeyItem](huks-import-wrapped-key-arkts.md)             |
+| [importWrappedKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksimportwrappedkeyitemasuser)    |  安全导入密钥。        |  [importWrappedKeyItem](huks-import-wrapped-key-arkts.md)             |
 | [exportKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksexportkeyitemasuser)                  |   导出密钥。        |  [exportKeyItem](huks-export-key-arkts.md)                |
 | [getKeyItemPropertiesAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksgetkeyitempropertiesasuser)    |  获取密钥属性。     |  [getKeyItemProperties](huks-obtain-key-properties-arkts.md)             |
 | [hasKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#hukshaskeyitemasuser)                        |  查询密钥是否存在。    |  [hasKeyItem](huks-check-key-arkts.md)               |

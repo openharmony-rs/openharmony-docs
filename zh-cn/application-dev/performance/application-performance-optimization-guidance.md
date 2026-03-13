@@ -33,7 +33,7 @@
 
 在日常开发过程中经常会碰到这样的问题：主页的开发场景中有多个Tab页展示不同内容，在首次加载完主页后，切换到第二个Tab页时需要加载和处理网络数据，导致第二个Tab页的页面显示较慢，有较大的完成时延。
 
-碰到此类问题，可以在生命周期aboutToAppear中，使用多线程并发、[高效并发编程](efficient-concurrent-programming.md)、[多线程能力场景化示例实践](multi_thread_capability.md)的方法执行第二个Tab页的网络数据访问解析、数据加载等耗时操作，既可以提前完成数据加载，也不会影响主线程UI绘制和渲染。
+碰到此类问题，可以在生命周期aboutToAppear中，使用[多线程并发](../arkts-utils/multi-thread-concurrency-overview.md)、[高效并发编程](efficient-concurrent-programming.md)、[多线程能力场景化示例实践](multi_thread_capability.md)的方法执行第二个Tab页的网络数据访问解析、数据加载等耗时操作，既可以提前完成数据加载，也不会影响主线程UI绘制和渲染。
 
 使用TaskPool进行耗时操作的示例代码如下：
 
@@ -187,7 +187,7 @@ preload() {
 
 **使用cachedCount属性实现预加载**
 
-推荐在使用List、Swiper、Grid、WaterFlow等组件时，配合使用cachedCount属性实现预加载，详情指导在[WaterFlow高性能开发指导](waterflow_optimization.md)、[Swiper高性能开发指导](swiper_optimization.md)、[Grid高性能开发指导](grid_optimization.md)、[列表场景性能提升实践](list-perf-improvment.md)，示例代码如下所示：
+推荐在使用List、Swiper、Grid、WaterFlow等组件时，配合使用cachedCount属性实现预加载，详情指导在[WaterFlow高性能开发指导](waterflow_optimization.md)、[Swiper高性能开发指导](swiper_optimization.md)、[Grid高性能开发指导](grid_optimization.md)、[列表场景性能提升实践](list-perf-improvement.md)，示例代码如下所示：
 
 ```typescript
   private source: MyDataSource = new MyDataSource();
@@ -241,7 +241,7 @@ build() {
 
 应用框架提供了组件复用能力，可复用组件从组件树上移除时，会进入到一个回收缓存区。后续创建新组件节点时，会复用缓存区中的节点，节约组件重新创建的时间。
 
-若业务实现中存在以下场景，并成为UI线程的帧率瓶颈，推荐使用组件复用，具体指导在[组件复用实践](component-recycle.md)、[列表场景性能提升实践](list-perf-improvment.md)、[组件复用总览](component-reuse-overview.md)：
+若业务实现中存在以下场景，并成为UI线程的帧率瓶颈，推荐使用组件复用，具体指导在[组件复用实践](component-recycle.md)、[列表场景性能提升实践](list-perf-improvement.md)、[组件复用总览](component-reuse-overview.md)：
 
 * 列表滚动（本例中的场景）：当应用需要展示大量数据的列表，并且用户进行滚动操作时，频繁创建和销毁列表项的视图可能导致卡顿和性能问题。在这种情况下，使用列表组件的组件复用机制可以重用已经创建的列表项视图，提高滚动的流畅度。
 * 动态布局更新：如果应用中的界面需要频繁地进行布局更新，例如根据用户的操作或数据变化动态改变视图结构和样式，重复创建和销毁视图可能导致频繁的布局计算，影响帧率。在这种情况下，使用组件复用可以避免不必要的视图创建和布局计算，提高性能。
@@ -385,6 +385,7 @@ export struct IconItem {
 **使用显隐控制进行页面缓存**
 
 控制元素显示与隐藏是一种常见的场景，使用Visibility.None、if条件判断等都能够实现该效果。其中if条件判断控制的是组件的创建、布局阶段，Visibility属性控制的是元素在布局阶段是否参与布局渲染。使用时如果使用的方式不当，将引起性能上的问题。
+
 如果会频繁响应显示与隐藏的交互效果，建议使用切换Visibility.None和Visibility.Visible来[合理控制元素显示与隐藏](proper-choice-between-if-and-visibility.md)，在组件无需展示的时候进行缓存，提高性能。
 
 示例代码如下：
@@ -1262,7 +1263,9 @@ struct Page {
   }
 }
 ```
+
 抓取Trace图如下：    
+
 ![](./figures/unnecessarystate.png)  
 
 正例代码：
@@ -1290,7 +1293,9 @@ struct Page {
   }
 }
 ```
+
 抓取Trace图如下：  
+
 ![](./figures/necessarystate.png)
 
 由此可见，使用普通变量代替状态变量在For/while循环中读取，可以减少耗时，因此在For/while循环中频繁读取变量时，可使用普通变量代替状态变量。
@@ -1551,9 +1556,9 @@ struct PositiveOfOnClick {
 
 学会合理使用工具进行问题分析和定位，提升问题解决效率。
 
-### 学会使用IDE的Profier工具定位问题
+### 学会使用IDE的Profiler工具定位问题
 
-通过使用Profier工具，定位应用开发过程中的各种性能问题，详细的使用方法可以参考文章：[性能分析工具CPU Profiler](application-performance-analysis.md)。
+通过使用Profiler工具，定位应用开发过程中的各种性能问题，详细的使用方法可以参考文章：[性能分析工具CPU Profiler](application-performance-analysis.md)。
 
 ### 使用SmartPerf-Host分析应用性能
 

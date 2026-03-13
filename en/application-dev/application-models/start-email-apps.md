@@ -97,9 +97,9 @@ If the **type** field in **startAbilityByType** is set to **mail**, **wantParam*
 
 1. Add the [linkFeature](../quick-start/module-configuration-file.md#skills) attribute to **module.json5** and declare the features supported. In this way, the system can find the applications that support a specific feature from all the applications installed on the device.
 
-    | Value          | Description                     |
+    | Value          | Description                       |
     | --------------| ------------------------- |
-    | ComposeMail   | The application supports email writing.	|
+    | ComposeMail   | The application supports email writing.    |
 
     ```json
     {

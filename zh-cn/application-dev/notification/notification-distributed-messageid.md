@@ -34,7 +34,7 @@
 
 1. 导入模块。
 
-   <!-- @[clear_duplicate_notifications_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ClearDuplicateNotifications.ets) -->
+   <!-- @[clear_duplicate_notifications_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -43,7 +43,7 @@
 
 2. 发布通知消息，通知消息中包含`appMessageId`字段。
 
-   <!-- @[pub_appmsgid_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ClearDuplicateNotifications.ets) -->
+   <!-- @[pub_appmsgid_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
    
    ``` TypeScript
    // publish回调

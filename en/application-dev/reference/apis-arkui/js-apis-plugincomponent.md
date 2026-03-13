@@ -47,7 +47,7 @@ Defines a key-value pair data structure that conforms to JSON format.
 
 | Name   | Type  | Mandatory| Description                       |
 | ------- | ------ | ---- | --------------------------- |
-|  [key: string]  | number \| string \| boolean \| [] \| [KVObject](#kvobject)  | No  | Key-value pair.<br>**number**: numeric value type.<br> **string**: string value type. The value can be an empty string.<br> **boolean**: boolean value type.<br> **[]**: empty array value.<br>**[KVObject](#kvobject)**: nested KVObject value type.           |
+|  [key: string]  | number \| string \| boolean \| [] \| [KVObject](#kvobject)  | No  | Key-value pair.<br>**number**: numeric value type.<br> **string**: string value type. The value can be an empty string.<br> **boolean**: boolean value type.<br> **[]**: empty array value.<br>[KVObject](#kvobject): nested KVObject value type.           |
 
 
 ### PushParameters
@@ -107,12 +107,11 @@ Provides the result returned after the request listener is registered and the re
 | --------- | --------------------- | ---- | ---- | ----- |
 | template  | string                | No| Yes   | Component template.|
 | data      | [KVObject](#kvobject) | No| Yes   | Component data.|
-| extraData | [KVObject](#kvobject) | No| Yes   | Additional data.|
+| extraData | [KVObject](#kvobject) | No| Yes   | Extra data.|
 
 ### OnPushEventCallback
 
-type OnPushEventCallback = (source: Want, template: PluginComponentTemplate, data: KVObject,
-    extraData: KVObject) => void
+type OnPushEventCallback = (source: Want, template: PluginComponentTemplate, data: KVObject, extraData: KVObject) => void
 
 Registers the listener for the push event.
 
@@ -125,9 +124,9 @@ Registers the listener for the push event.
 | Name       | Type                                      | Mandatory  | Description                    |
 | --------- | ---------------------------------------- | ---- | ---------------------- |
 | source    | [Want](../apis-ability-kit/js-apis-application-want.md)      | Yes   | Information about the push request sender.        |
-| template  | [PluginComponentTemplate](#plugincomponenttemplate) | Yes   | Name of the request component template for the push request sender.|
+| template  | [PluginComponentTemplate](#plugincomponenttemplate) | Yes   | Name of the requested component template.|
 | data      | [KVObject](#kvobject)                    | Yes   | Data.                   |
-| extraData | [KVObject](#kvobject)                    | Yes   | Additional data.                 |
+| extraData | [KVObject](#kvobject)                    | Yes   | Extra data.                 |
 
 **Example**
 
@@ -291,7 +290,7 @@ Listens for events of the request type and returns the requested data, or listen
 | Name      | Type                                      | Mandatory  | Description                                      |
 | --------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | eventType | string                                   | Yes   | Type of the event to listen for. The options are as follows:<br>**"push"**: The component provider pushes data to the component user.<br>**"request"**: The component user proactively requests data from the component provider.|
-| callback  | [OnPushEventCallback](#onpusheventcallback) \| [OnRequestEventCallback](#onrequesteventcallback) | Yes   | Callback used to return the result. The type is [OnPushEventCallback](#onpusheventcallback) for the push event and [OnRequestEventCallback](#onrequesteventcallback) for the request event.|
+| callback  | [OnPushEventCallback](#onpusheventcallback)&nbsp;\|&nbsp;[OnRequestEventCallback](#onrequesteventcallback) | Yes   | Callback used to return the result. The type is [OnPushEventCallback](#onpusheventcallback) for the push event and [OnRequestEventCallback](#onrequesteventcallback) for the request event.|
 
 **Example**
 

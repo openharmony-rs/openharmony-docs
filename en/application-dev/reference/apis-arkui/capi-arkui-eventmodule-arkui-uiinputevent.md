@@ -1,14 +1,18 @@
 # ArkUI_UIInputEvent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_UIInputEvent ArkUI_UIInputEvent
+```
+
 ## Overview
 
-Defines the UI input event.
+Defines a UI input event.
 
 **Since**: 12
 

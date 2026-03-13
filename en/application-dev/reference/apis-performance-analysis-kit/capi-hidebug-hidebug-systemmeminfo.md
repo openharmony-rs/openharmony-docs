@@ -2,13 +2,13 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @yu_haoqiaida-->
+<!--Owner: @hello_harmony; @leiguangyu-->
 <!--Designer: @kutcherzhou1-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ```c
-typedef struct {...} HiDebug_SystemMemInfo
+typedef struct HiDebug_SystemMemInfo {...} HiDebug_SystemMemInfo
 ```
 
 ## Overview

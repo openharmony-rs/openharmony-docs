@@ -6,7 +6,7 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct {...} OH_Predicates
 ```
 
@@ -60,7 +60,7 @@ Defines a **predicates** object.
 
 ### equalTo()
 
-```
+```c
 OH_Predicates *(*equalTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -86,7 +86,7 @@ Pointer to the function used to create a predicates object to search for the fie
 
 ### notEqualTo()
 
-```
+```c
 OH_Predicates *(*notEqualTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -112,7 +112,7 @@ Pointer to the function used to create a predicates object to search for the fie
 
 ### beginWrap()
 
-```
+```c
 OH_Predicates *(*beginWrap)(OH_Predicates *predicates)
 ```
 
@@ -136,7 +136,7 @@ Pointer to the function used to add a left parenthesis to the predicates.<br>Thi
 
 ### endWrap()
 
-```
+```c
 OH_Predicates *(*endWrap)(OH_Predicates *predicates)
 ```
 
@@ -160,7 +160,7 @@ Pointer to the function used to add a right parenthesis to the predicates.<br>Th
 
 ### orOperate()
 
-```
+```c
 OH_Predicates *(*orOperate)(OH_Predicates *predicates)
 ```
 
@@ -184,7 +184,7 @@ Pointer to the function used to add the OR operator to the predicates.<br>This m
 
 ### andOperate()
 
-```
+```c
 OH_Predicates *(*andOperate)(OH_Predicates *predicates)
 ```
 
@@ -208,7 +208,7 @@ Pointer to the function used to add the AND operator to the predicates.<br>This 
 
 ### isNull()
 
-```
+```c
 OH_Predicates *(*isNull)(OH_Predicates *predicates, const char *field)
 ```
 
@@ -233,7 +233,7 @@ Pointer to the function used to create a predicates object to search for the fie
 
 ### isNotNull()
 
-```
+```c
 OH_Predicates *(*isNotNull)(OH_Predicates *predicates, const char *field)
 ```
 
@@ -258,7 +258,7 @@ Pointer to the function used to create a predicates object to search for the fie
 
 ### like()
 
-```
+```c
 OH_Predicates *(*like)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -285,7 +285,7 @@ Pointer to the function used to create a predicates object to search for the fie
 
 ### between()
 
-```
+```c
 OH_Predicates *(*between)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -311,7 +311,7 @@ Pointer to the function used to create a predicates object to search for the fie
 
 ### notBetween()
 
-```
+```c
 OH_Predicates *(*notBetween)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -337,7 +337,7 @@ Pointer to the function used to create a predicates object to search for the fie
 
 ### greaterThan()
 
-```
+```c
 OH_Predicates *(*greaterThan)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -363,7 +363,7 @@ Pointer to the function used to create a predicates object to search for the fie
 
 ### lessThan()
 
-```
+```c
 OH_Predicates *(*lessThan)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -389,7 +389,7 @@ Pointer to the function used to create a predicates object to search for the rec
 
 ### greaterThanOrEqualTo()
 
-```
+```c
 OH_Predicates *(*greaterThanOrEqualTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -415,7 +415,7 @@ Pointer to the function used to create a predicates object to search for the fie
 
 ### lessThanOrEqualTo()
 
-```
+```c
 OH_Predicates *(*lessThanOrEqualTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -441,7 +441,7 @@ Pointer to the function used to create a predicates object to search for the rec
 
 ### orderBy()
 
-```
+```c
 OH_Predicates *(*orderBy)(OH_Predicates *predicates, const char *field, OH_OrderType type)
 ```
 
@@ -467,7 +467,7 @@ Pointer to the function used to create a predicates object to sort the values in
 
 ### distinct()
 
-```
+```c
 OH_Predicates *(*distinct)(OH_Predicates *predicates)
 ```
 
@@ -491,7 +491,7 @@ Pointer to the function used to create a predicates object to filter out duplica
 
 ### limit()
 
-```
+```c
 OH_Predicates *(*limit)(OH_Predicates *predicates, unsigned int value)
 ```
 
@@ -516,7 +516,7 @@ Pointer to the function used to create a predicates object to specify the maximu
 
 ### offset()
 
-```
+```c
 OH_Predicates *(*offset)(OH_Predicates *predicates, unsigned int rowOffset)
 ```
 
@@ -541,7 +541,7 @@ Pointer to the function used to create a predicates object to specify the start 
 
 ### groupBy()
 
-```
+```c
 OH_Predicates *(*groupBy)(OH_Predicates *predicates, char const *const *fields, int length)
 ```
 
@@ -567,7 +567,7 @@ Pointer to the function used to create a predicates object to group the results 
 
 ### in()
 
-```
+```c
 OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -593,7 +593,7 @@ Pointer to the function used to create a predicates object to search for the fie
 
 ### notIn()
 
-```
+```c
 OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -619,7 +619,7 @@ Pointer to the function used to create a predicates object to search for the fie
 
 ### clear()
 
-```
+```c
 OH_Predicates *(*clear)(OH_Predicates *predicates)
 ```
 
@@ -643,7 +643,7 @@ Pointer to the function used to clear a predicates instance.
 
 ### destroy()
 
-```
+```c
 int (*destroy)(OH_Predicates *predicates)
 ```
 

@@ -78,6 +78,7 @@ Defines the default or custom style parameters for the **ArcButton** component.
 | fontStyle | [FontStyle](ts-appendix-enums.md#fontstyle)                  | No | No | Font style of the arc button.<br>Default value: **FontStyle.Normal**           |
 | fontFamily | string \| [Resource](ts-types.md#resource)                   | No | No | Font family of the arc button.                                            |
 | fontMargin | [LocalizedMargin](ts-types.md#localizedmargin12)             | No | No | Margin of the arc button text.<br>Default value: **{ start: 24vp, top: 10vp,end: 24vp, bottom: 16vp }**|
+| progressConfig<sup>23+<sup> | [ArcButtonProgressConfig](#arcbuttonprogressconfig23)      | No | Yes | Parameters for the progress indicator of the **ArcButton** component. When this property is not set, the **ArcButton** component appears as a button (see [Example 1: Setting an Arc Button](#example-1-setting-an-arc-button)). When this property is set, the **ArcButton** component appears as a progress indicator (see [Example 2: Setting a Device Progress Indicator Button](#example-2-setting-a-device-progress-indicator-button)).<br>Default value: default values of all properties of [ArcButtonProgressConfig](#arcbuttonprogressconfig23)|
 |onTouch | [Callback](ts-types.md#voidcallback12)&lt; [TouchEvent](ts-universal-events-touch.md#touchevent)&gt; | No  | Yes | Callback triggered by touch actions on the arc button.|
 |onClick | [Callback](ts-types.md#voidcallback12)&lt;[ClickEvent](ts-universal-events-click.md#clickevent) &gt; | No  | Yes | Callback triggered by click actions on the arc button.|
 
@@ -121,8 +122,23 @@ Defines the default or custom style parameters for the **ArcButton** component.
 | fontStyle           | [FontStyle](ts-appendix-enums.md#fontstyle)                  | No | Yes| Font style of the arc button.<br>Default value: **FontStyle.Normal**             |
 | fontFamily          | string \| [Resource](ts-types.md#resource)                   |No |Yes | Font family of the arc button.                                            |
 | fontMargin          | [LocalizedMargin](ts-types.md#localizedmargin12)             | No | Yes| Margin of the arc button text.<br>Default value: **{ start: 24vp, top: 10vp,end: 24vp, bottom: 16vp }**|
+| progressConfig<sup>23+</sup>       | [ArcButtonProgressConfig](#arcbuttonprogressconfig23)          | No | Yes| Parameters for the progress indicator of the **ArcButton** component. When this property is not set, the **ArcButton** component appears as a button (see [Example 1: Setting an Arc Button](#example-1-setting-an-arc-button)). When this property is set, the **ArcButton** component appears as a progress indicator (see [Example 2: Setting a Device Progress Indicator Button](#example-2-setting-a-device-progress-indicator-button)).<br>Default value: default values of all properties of [ArcButtonProgressConfig](#arcbuttonprogressconfig23)|
 | onTouch             | [Callback](ts-types.md#voidcallback12)&lt; [TouchEvent](ts-universal-events-touch.md#touchevent)&gt; | No  | Yes | Callback triggered by touch actions on the arc button.                            |
 | onClick             | [Callback](ts-types.md#voidcallback12)&lt;[ClickEvent](ts-universal-events-click.md#clickevent) &gt; | No  | Yes | Callback triggered by click actions on the arc button.                                |
+
+## ArcButtonProgressConfig<sup>23+</sup>   
+
+Defines the progress indicator configuration options of the **ArcButton** component.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Circle
+
+| Name               | Type                                                        | Read-Only| Optional| Description                                                        |
+| ------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| value               | number                                                       |No |No | Current progress value. Values less than 0 are adjusted to **0**, and values greater than the **total** value are capped at the **total** value.<br>Default value: **0**.<br>Value range: [0, total]|
+| total               | number                                                       |No |Yes | Maximum progress value. Maximum progress value.<br>Default value: **100**<br>Value range: [0, 2147483647]. If the value is 0 or out of the range, the default value 100 is used.|
+| color               | [ResourceColor](ts-types.md#resourcecolor)                   |No |Yes | Foreground color of the progress indicator. If the component's background color ([backgroundColor](#arcbuttonoptions)) is set, it is used as the default foreground color of the progress indicator. The foreground color of the progress indicator is not affected by the button style ([ArcButtonStyleMode](#arcbuttonstylemode)). The progress indicator's background color is derived solely from its foreground color, with an opacity value of 25%.<br> Default value: **"#1F71FF"**, which is blue.|
 
 ## ArcButtonPosition
 
@@ -148,10 +164,10 @@ Enumerates the style modes that can be set for **ArcButton**.
 
 | Name            | Value  | Description            |
 | ---------------- | ---- | ---------------- |
-| EMPHASIZED_LIGHT | 0    | Emphasized, light color.|
-| EMPHASIZED_DARK  | 1    | Emphasized, dark color.|
-| NORMAL_LIGHT     | 2    | Normal, light color.|
-| NORMAL_DARK      | 3    | Normal, dark color.|
+| EMPHASIZED_LIGHT | 0    | Emphasized style in light color mode. Displayed as a blue background with white text.|
+| EMPHASIZED_DARK  | 1    | Warning style in dark color mode. Displayed as a red background with white text.|
+| NORMAL_LIGHT     | 2    | Normal style in light color mode. Displayed as a dark blue background with blue text.|
+| NORMAL_DARK      | 3    | Normal style in dark color mode. Displayed as a dark gray background with blue text.|
 | CUSTOM           | 4    | Custom button color and font color.|
 
 
@@ -171,12 +187,13 @@ Enumerates the states that can be set for **ArcButton**.
 
 
 ## Example
+### Example 1: Setting an Arc Button
 
-This example shows the basic usage of the **ArcButton** component, supported since API version 18.
+This example shows the basic usage of the **ArcButton** component, supported since API version 18. The following is an example configuration:
 
-**topOptions** defines an upper arc button with the button text "ButtonTop," a font size of 15 fp, and shadow enabled, in the normal state with a light-color emphasized style.
+1. **topOptions** defines an upper arc button with the button text "ButtonTop," a font size of 15 fp, and shadow enabled, in the normal state with a light-color emphasized style.
 
-**bottomOptions** defines a bottom arc button with the button text "ButtonBottom," a font size of 15 fp, shadow enabled, in a light-color emphasized style, with a click event set for the button.
+2. **bottomOptions** defines a bottom arc button with the button text "ButtonBottom," a font size of 15 fp, shadow enabled, in a light-color emphasized style, with a click event set for the button.
 
 To run this sample code, wearable device support is required. In the project configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, configure **wearable** under [devicetypes](../../../quick-start/module-configuration-file.md#devicetypes).
 
@@ -259,3 +276,94 @@ struct Index {
 ```
 
 ![](figures/advanced_arcButton.jpg)
+
+### Example 2: Setting a Device Progress Indicator Button
+
+This example demonstrates the basic usage of the **ArcButton** component in progress indicator style. The [progressConfig](#arcbuttonoptions) API is supported since API version 23. The following is an example configuration:
+
+1. **topOptions** defines an upper arc button with the button text "Add," a font size of 15 fp, and shadow enabled, in the normal state with a light-color emphasized style. A click event is set for the button. When the button is clicked, the progress indicator's progress increases.
+
+2. **bottomOptions** defines a bottom arc button with the button text showing the progress percentage, a font size of 15 fp, state set in progress indicator mode, default style, and shadow enabled.
+
+To run this sample code, wearable device support is required. In the project configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, configure **wearable** under [devicetypes](../../../quick-start/module-configuration-file.md#devicetypes).
+
+```json
+// module.json5
+{
+  "module": {
+    // ...
+    "deviceTypes": [
+      "wearable",
+      "phone"
+    ]
+    // ...
+  }
+}
+```
+```ts
+// xxx.ets
+import {
+  LengthMetrics,
+  LengthUnit,
+  ArcButton,
+  ArcButtonOptions,
+  ArcButtonStatus,
+  ArcButtonStyleMode,
+  ArcButtonPosition,
+}  from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local topOptions: ArcButtonOptions = new ArcButtonOptions({});
+  @Local bottomOptions: ArcButtonOptions = new ArcButtonOptions({});
+
+  aboutToAppear() {
+    this.topOptions = new ArcButtonOptions({
+      label: 'Add',
+      styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+      position: ArcButtonPosition.TOP_EDGE,
+      fontSize: new LengthMetrics(15, LengthUnit.FP),
+      shadowEnabled: true,
+      onClick: () => {
+        if(this.bottomOptions.progressConfig && this.bottomOptions.progressConfig.value < 100) {
+          this.bottomOptions.progressConfig.value = this.bottomOptions.progressConfig.value + 5
+          this.bottomOptions.label = this.bottomOptions.progressConfig.value + "%"
+        }
+      }
+    })
+
+    this.bottomOptions = new ArcButtonOptions({
+      label: '0%',
+      status: ArcButtonStatus.NORMAL,
+      fontSize: new LengthMetrics(15, LengthUnit.FP),
+      shadowEnabled: true,
+      progressConfig: {value:0, total:100},
+    })
+  }
+
+  build() {
+    Stack() {
+      Stack() {
+        Circle({ width: 233, height: 233 })
+          .strokeWidth(0.1)
+          .fill(Color.White)
+
+        Column() {
+          ArcButton({ options: this.topOptions })
+          Blank()
+          ArcButton({ options: this.bottomOptions })
+
+        }.width('100%')
+        .height('100%')
+      }.width(233)
+      .height(233)
+    }.width('100%')
+    .height('100%')
+    .alignContent(Alignment.Center)
+    .backgroundColor(Color.Gray)
+  }
+}
+```
+
+![](figures/arcButton_progress.jpg)

@@ -88,7 +88,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
   | -N | 可选参数，使能启动阶段调试。        |
   | -C | 可选参数，使能ASan调试。        |
   | -p | 可选参数，调优命令。命令由调用方自定义。        |
-  | -W | 可选参数，调优命令。用于测量UIAbility从启动到切换至前台状态耗时。<br>**说明：** <br>&emsp; - 从API version 20开始支持，支持该参数。<br>&emsp; - 仅当显式启动UIAbility（必须携带-b和-a参数）时，该参数生效。<br>**正常情况的返回信息如下：** <br>&emsp; - StartMode：UIAbility启动模式，值：Cold（冷启动）/Hot（热启动）。<br>&emsp; - BundleName：目标应用bundleName。<br>&emsp; - AbilityName：目标应用abilityName。<br>&emsp; - ModuleName：目标应用moduleName，命令中带有"-m"参数时会打印moduleName，否则不打印。<br>&emsp; - TotalTime：<br>&emsp;&emsp;&emsp; 冷启动场景下，系统侧接收到aa启动UIAbility请求到该UIAbility完成首帧绘制的耗时，单位毫秒（ms）。<br>&emsp;&emsp;&emsp; 热启动场景下，系统侧接收到aa启动UIAbility请求到该UIAbility状态切换至前台的耗时，单位毫秒（ms）。<br>&emsp; - WaitTime：命令启动到命令执行结束的耗时，单位毫秒（ms）。<br>**异常情况的返回信息如下：**<br>&emsp; - "The wait option does not support starting implict" ：不支持隐式启动。 <br>&emsp; - "The wait option does not support starting non-uiability" ：不支持启动非UIAbility组件。   |
+  | -W | 可选参数，调优命令。用于测量UIAbility从启动到切换至前台状态耗时。<br>**说明：** <br>&emsp; - 从API version 20开始支持，支持该参数。<br>&emsp; - 仅当显式启动UIAbility（必须携带-b和-a参数）时，该参数生效。<br>**正常情况的返回信息如下：** <br>&emsp; - StartMode：UIAbility启动模式，值：Cold（冷启动）/Hot（热启动）。<br>&emsp; - BundleName：目标应用bundleName。<br>&emsp; - AbilityName：目标应用abilityName。<br>&emsp; - ModuleName：目标应用moduleName，命令中带有"-m"参数时会打印moduleName，否则不打印。<br>&emsp; - TotalTime：<br>&emsp;&emsp;&emsp; 冷启动场景下，系统侧接收到aa启动UIAbility请求到该UIAbility完成首帧绘制的耗时，单位毫秒（ms）。<br>&emsp;&emsp;&emsp; 热启动场景下，系统侧接收到aa启动UIAbility请求到该UIAbility状态切换至前台的耗时，单位毫秒（ms）。<br>&emsp; - WaitTime：命令启动到命令执行结束的耗时，单位毫秒（ms）。<br>**异常情况的返回信息如下：**<br>&emsp; - "The wait option does not support starting implicit" ：不支持隐式启动。 <br>&emsp; - "The wait option does not support starting non-uiability" ：不支持启动非UIAbility组件。   |
 
   **返回值**：
 
@@ -127,7 +127,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
 
   - **目标应用**：修改module.json5配置，为目标Ability配置uris。
 
-      ```json
+      ```json5
       {
         "name": "TargetAbility",
         // ......
@@ -535,7 +535,7 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
 
 ## onMemoryLevel回调命令（send-memory-level）
 
-从API version 13开始，开发者可以通过该命令来调试应用的[onMemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)生命周期。通过在参数中指定进程的pid和内存使用级别来触发该进程的onMemoryLevel生命周期回调。
+从API version 13开始，开发者可以通过该命令来调试应用的[onMemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)生命周期。通过在参数中指定进程的pid和内存使用级别来触发该进程的onMemoryLevel生命周期回调。该命令只提供基本的应用调试能力，不能完全模拟真实的内存加压测试场景。
 
 ```bash
 # 触发onMemoryLevel回调
@@ -603,11 +603,11 @@ The specified ability does not exist.
 
 1. 检查aa命令的-a的参数abilityName和-b的参数bundleName是否正确。
 2. 检查指定的bundleName对应的应用是否安装。可使用如下命令查询已安装的应用列表，若该bundleName不在查询结果中，说明应用未安装成功。
-    ```
+    ```bash
     hdc shell bm dump -a
     ```
 3. 多HAP应用需确认Ability所属的HAP是否已被安装。可使用如下命令查询应用的包信息，若安装的应用中没有对应的HAP和Ability，说明Ability所属的HAP未被安装。
-    ```
+    ```bash
     hdc shell bm dump -n 包名
     ```
 
@@ -683,7 +683,7 @@ Failed to obtain ability information.
 
 检查指定的bundleName对应的应用是否安装。可使用如下命令查询已安装的应用列表，若该bundleName不在查询结果中，说明应用未安装成功。
 
-  ```
+  ```bash
   hdc shell bm dump -a
   ```
 
@@ -761,11 +761,11 @@ Failed to obtain application information.
 
 1. 检查aa命令的-a的参数abilityName和-b的参数bundleName是否正确。
 2. 检查指定的bundleName对应的应用是否安装。可使用如下命令查询已安装的应用列表，若该bundleName不在查询结果中，说明应用未安装成功。
-    ```
+    ```bash
     hdc shell bm dump -a
     ```
 3. 多HAP应用需确认Ability所属的HAP是否已被安装。可使用如下命令查询应用的包信息，若安装的应用中没有对应的HAP和Ability，说明Ability所属的HAP未被安装。
-    ```
+    ```bash
     hdc shell bm dump -n 包名
     ```
 
@@ -891,11 +891,13 @@ The target application is under control.
 
 **可能原因**
 
-目标应用疑似存在恶意行为，受到应用市场管控不允许启动。
+- 目标应用疑似存在恶意行为，受到应用市场管控不允许启动。
+- 目标应用是系统预装应用，并且使用本地编译的版本进行覆盖安装。
 
 **处理步骤**
 
-建议卸载该应用。
+- 针对可能原因1，建议卸载该应用。
+- 针对可能原因2，需要先卸载该应用，再使用本地编译的版本进行安装。
 
 ### 10106106 目标应用被EDM管控
 
@@ -1005,7 +1007,7 @@ Failed to retrieve specified package information.
 
 1. 检查指定的包名是否正确。
 2. 检查指定的bundleName对应的应用是否安装。可使用如下命令查询已安装的应用列表，若该bundleName不在查询结果中，说明应用未安装成功。
-    ```
+    ```bash
     hdc shell bm dump -a
     ```
 
@@ -1028,7 +1030,7 @@ Failed to terminate the process.
 
 1. 检查指定的bundleName对应的应用是否安装。可使用如下命令查询已安装的应用列表，若该bundleName不在查询结果中，说明应用未安装成功。
 
-    ```
+    ```bash
     hdc shell bm dump -a
     ```
 2. 尝试重启设备。
@@ -1109,7 +1111,7 @@ aa attach/detach命令指定的包名不存在。
 
 检查指定的bundleName对应的应用是否安装。可使用如下命令查询已安装的应用列表，若该bundleName不在查询结果中，说明应用未安装成功。
 
-  ```
+  ```bash
   hdc shell bm dump -a
   ```
 
@@ -1130,4 +1132,5 @@ Cannot debug applications using a release certificate.
 **处理步骤**
 
 使用Debug签名证书重新签名，安装新签名出的HAP后，再尝试执行该命令。
+
 签名工具及签名证书的生成方式可以参考：[签名工具指导](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。

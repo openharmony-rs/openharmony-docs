@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **FileIO** module provides APIs for file storage and management, including basic file management, directory management, file information statistics, and stream read and write.
 
@@ -269,7 +269,7 @@ Checks whether this process can access a file. This API uses a promise to return
   import { BusinessError } from '@ohos.base';
   let filePath = pathDir + "/test.txt";
   fileio.access(filePath).then(() => {
-    console.info("Access successful");
+    console.info("access succeed");
   }).catch((err: BusinessError) => {
     console.error("access failed with error:" + err);
   });
@@ -371,7 +371,7 @@ Closes a file. This API uses a promise to return the result.
   let filePath = pathDir + "/test.txt";
   let fd = fileio.openSync(filePath);
   fileio.close(fd).then(() => {
-    console.info("File closed");
+    console.info("close file succeed");
   }).catch((err: BusinessError) => {
     console.error("close file failed with error:" + err);
   });
@@ -469,7 +469,7 @@ Copies a file. This API uses a promise to return the result.
   let srcPath = pathDir + "srcDir/test.txt";
   let dstPath = pathDir + "dstDir/test.txt";
   fileio.copyFile(srcPath, dstPath).then(() => {
-    console.info("File copied");
+    console.info("copyFile succeed");
   }).catch((err: BusinessError) => {
     console.error("copyFile failed with error:" + err);
   });
@@ -569,7 +569,7 @@ Creates a directory. This API uses a promise to return the result.
   import { BusinessError } from '@ohos.base';
   let dirPath = pathDir + '/testDir';
   fileio.mkdir(dirPath).then(() => {
-    console.info("Directory created");
+    console.info("mkdir succeed");
   }).catch((error: BusinessError) => {
     console.error("mkdir failed with error:" + error);
   });
@@ -602,7 +602,7 @@ Creates a directory. This API uses an asynchronous callback to return the result
   import { BusinessError } from '@ohos.base';
   let dirPath = pathDir + '/testDir';
   fileio.mkdir(dirPath, (err: BusinessError) => {
-    console.info("Directory created");
+    console.info("mkdir succeed");
   });
   ```
 
@@ -666,7 +666,7 @@ Opens a file. This API uses a promise to return the result.
   import { BusinessError } from '@ohos.base';
   let filePath = pathDir + "/test.txt";
   fileio.open(filePath, 0o1, 0o0200).then((number: number) => {
-    console.info("File opened");
+    console.info("open file succeed");
   }).catch((err: BusinessError) => {
     console.error("open file failed with error:" + err);
   });
@@ -847,7 +847,7 @@ Removes a directory. This API uses a promise to return the result.
   import { BusinessError } from '@ohos.base';
   let dirPath = pathDir + '/testDir';
   fileio.rmdir(dirPath).then(() => {
-    console.info("Directory removed");
+    console.info("rmdir succeed");
   }).catch((err: BusinessError) => {
     console.error("rmdir failed with error:" + err);
   });
@@ -880,7 +880,7 @@ Removes a directory. This API uses an asynchronous callback to return the result
   let dirPath = pathDir + '/testDir';
   fileio.rmdir(dirPath, (err: BusinessError) => {
     // Do something.
-    console.info("Directory removed");
+    console.info("rmdir succeed");
   });
   ```
 
@@ -941,7 +941,7 @@ Removes a file. This API uses a promise to return the result.
   import { BusinessError } from '@ohos.base';
   let filePath = pathDir + "/test.txt";
   fileio.unlink(filePath).then(() => {
-    console.info("File removed");
+    console.info("remove file succeed");
   }).catch((error: BusinessError) => {
     console.error("remove file failed with error:" + error);
   });
@@ -973,7 +973,7 @@ Removes a file. This API uses an asynchronous callback to return the result.
   import { BusinessError } from '@ohos.base';
   let filePath = pathDir + "/test.txt";
   fileio.unlink(filePath, (err: BusinessError) => {
-    console.info("File removed");
+    console.info("remove file succeed");
   });
   ```
 
@@ -1216,7 +1216,7 @@ Changes file permissions. This API uses a promise to return the result.
   import { BusinessError } from '@ohos.base';
   let filePath = pathDir + "/test.txt";
   fileio.chmod(filePath, 0o700).then(() => {
-    console.info("File permissions changed");
+    console.info("chmod succeed");
   }).catch((err: BusinessError) => {
     console.error("chmod failed with error:" + err);
   });
@@ -1415,7 +1415,7 @@ Truncates a file based on the file descriptor. This API uses a promise to return
   let filePath = pathDir + "/test.txt";
   let fd = fileio.openSync(filePath);
   fileio.ftruncate(fd, 5).then(() => {
-    console.info("File truncated");
+    console.info("truncate file succeed");
   }).catch((err: BusinessError) => {
     console.error("truncate file failed with error:" + err);
   });
@@ -1516,7 +1516,7 @@ Truncates a file based on the file path. This API uses a promise to return the r
   let filePath = pathDir + "/test.txt";
   let len = 5;
   fileio.truncate(filePath, len).then(() => {
-    console.info("File truncated");
+    console.info("truncate file succeed");
   }).catch((err: BusinessError) => {
     console.error("truncate file failed with error:" + err);
   });
@@ -1832,7 +1832,7 @@ Renames a file. This API uses a promise to return the result.
   let srcFile = pathDir + "/test.txt";
   let dstFile = pathDir + '/new.txt';
   fileio.rename(srcFile, dstFile).then(() => {
-    console.info("File renamed");
+    console.info("rename succeed");
   }).catch((err: BusinessError) => {
     console.error("rename failed with error:" + err);
   });
@@ -2121,7 +2121,7 @@ Creates a symbolic link based on the file path. This API uses a promise to retur
   let srcFile = pathDir + "/test.txt";
   let dstFile = pathDir + '/test';
   fileio.symlink(srcFile, dstFile).then(() => {
-    console.info("Symbolic link created");
+    console.info("symlink succeed");
   }).catch((err: BusinessError) => {
     console.error("symlink failed with error:" + err);
   });
@@ -2221,7 +2221,7 @@ Changes the file owner based on the file path. This API uses a promise to return
   let filePath = pathDir + "/test.txt";
   let stat = fileio.statSync(filePath);
   fileio.chown(filePath, stat.uid, stat.gid).then(() => {
-    console.info("File owner changed");
+    console.info("chown succeed");
   }).catch((err: BusinessError) => {
     console.error("chown failed with error:" + err);
   });
@@ -2418,7 +2418,7 @@ Changes file permissions based on the file descriptor. This API uses a promise t
   let fd = fileio.openSync(filePath);
   let mode: number = 0o700;
   fileio.fchmod(fd, mode).then(() => {
-    console.info("File permissions changed");
+    console.info("chmod succeed");
   }).catch((err: BusinessError) => {
     console.error("chmod failed with error:" + err);
   });
@@ -2518,7 +2518,7 @@ Creates a stream based on the file path. This API uses a promise to return the r
   import { BusinessError } from '@ohos.base';
   let filePath = pathDir + "/test.txt";
   fileio.createStream(filePath, "r+").then((stream: fileio.Stream) => {
-    console.info("Stream created");
+    console.info("createStream succeed");
   }).catch((err: BusinessError) => {
     console.error("createStream failed with error:" + err);
   });
@@ -2621,7 +2621,7 @@ Opens a stream based on the file descriptor. This API uses a promise to return t
   let filePath = pathDir + "/test.txt";
   let fd = fileio.openSync(filePath);
   fileio.fdopenStream(fd, "r+").then((stream: fileio.Stream) => {
-    console.info("Stream opened");
+    console.info("openStream succeed");
   }).catch((err: BusinessError) => {
     console.error("openStream failed with error:" + err);
   });
@@ -2728,7 +2728,7 @@ Changes the file owner based on the file descriptor. This API uses a promise to 
   let fd = fileio.openSync(filePath);
   let stat = fileio.statSync(filePath);
   fileio.fchown(fd, stat.uid, stat.gid).then(() => {
-    console.info("File owner changed");
+    console.info("chown succeed");
   }).catch((err: BusinessError) => {
     console.error("chown failed with error:" + err);
   });
@@ -2832,7 +2832,7 @@ Changes the file owner (owner of the symbolic link, not the file referred to by 
   let filePath = pathDir + "/test.txt";
   let stat = fileio.statSync(filePath);
   fileio.lchown(filePath, stat.uid, stat.gid).then(() => {
-    console.info("File owner changed");
+    console.info("chown succeed");
   }).catch((err: BusinessError) => {
     console.error("chown failed with error:" + err);
   });
@@ -3192,7 +3192,7 @@ Stops the **watcher** instance. This API uses a promise to return the result.
     console.info("event: " + event + "errmsg: " + JSON.stringify(err));
   });
   watcher.stop().then(() => {
-    console.info("Watcher stopped");
+    console.info("close watcher succeed");
   });
   ```
 
@@ -3223,7 +3223,7 @@ Stops the **watcher** instance. This API uses an asynchronous callback to return
     console.info("event: " + event + "errmsg: " + JSON.stringify(err));
   });
   watcher.stop(() => {
-    console.info("Watcher stopped");
+    console.info("close watcher succeed");
   })
   ```
 
@@ -3261,7 +3261,7 @@ Closes the file stream. This API uses a promise to return the result.
   let filePath = pathDir + "/test.txt";
   let ss = fileio.createStreamSync(filePath, "r+");
   ss.close().then(() => {
-    console.info("File stream closed");
+    console.info("close fileStream succeed");
   }).catch((err: BusinessError) => {
     console.error("close fileStream  failed with error:" + err);
   });
@@ -3344,7 +3344,7 @@ Flushes the file stream. This API uses a promise to return the result.
   let filePath = pathDir + "/test.txt";
   let ss = fileio.createStreamSync(filePath, "r+");
   ss.flush().then(() => {
-    console.info("Stream flushed");
+    console.info("flush succeed");
   }).catch((err: BusinessError) => {
     console.error("flush failed with error:" + err);
   });
@@ -3583,7 +3583,7 @@ Reads data from a stream file. This API uses a promise to return the result.
   option.length = 5;
   option.position = 5;
   ss.read(arrayBuffer, option).then((readResult: fileio.ReadOut) => {
-    console.info("Read data successfully");
+    console.info("read data succeed");
     let buf = buffer.from(arrayBuffer, 0, readResult.bytesRead);
     console.info(`The content of file: ${buf.toString()}`);
   }).catch((err: BusinessError) => {
@@ -3631,7 +3631,7 @@ Reads data from a stream file. This API uses an asynchronous callback to return 
   option.position = 5;
   ss.read(arrayBuffer, option, (err: BusinessError, readResult: fileio.ReadOut) => {
     if (readResult.bytesRead) {
-      console.info("Read data successfully");
+      console.info("read data succeed");
       let buf = buffer.from(arrayBuffer, 0, readResult.bytesRead);
       console.info(`The content of file: ${buf.toString()}`);
     }
@@ -3714,7 +3714,7 @@ Reads the next directory entry. This API uses a promise to return the result.
   ```ts
   import { BusinessError } from '@ohos.base';
   dir.read().then((dirent: fileio.Dirent) => {
-    console.log("read succeed, the name of dirent is " + dirent.name);
+    console.info("read succeed, the name of dirent is " + dirent.name);
   }).catch((err: BusinessError) => {
     console.error("read failed with error:" + err);
   });
@@ -3746,7 +3746,7 @@ Reads the next directory entry. This API uses an asynchronous callback to return
   dir.read((err: BusinessError, dirent: fileio.Dirent) => {
     if (dirent) {
       // Do something.
-      console.log("read succeed, the name of file is " + dirent.name);
+      console.info("read succeed, the name of file is " + dirent.name);
     }
   });
   ```

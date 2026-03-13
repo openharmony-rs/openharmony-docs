@@ -39,7 +39,7 @@ getAllNetworkInterfacesSync(admin: Want): Array&lt;string&gt;
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -94,7 +94,7 @@ getIpAddressSync(admin: Want, networkInterface: string): string
 
 | 参数名           | 类型                                                    | 必填 | 说明           |
 | ---------------- | ------------------------------------------------------- | ---- | -------------- |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface | string                                                  | 是   | 指定网络接口。 |
 
 **返回值：**
@@ -151,7 +151,7 @@ getMacSync(admin: Want, networkInterface: string): string
 
 | 参数名           | 类型                                                    | 必填 | 说明           |
 | ---------------- | ------------------------------------------------------- | ---- | -------------- |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface | string                                                  | 是   | 指定网络接口。 |
 
 **返回值：**
@@ -208,7 +208,7 @@ isNetworkInterfaceDisabledSync(admin: Want, networkInterface: string): boolean
 
 | 参数名           | 类型                                                    | 必填 | 说明           |
 | ---------------- | ------------------------------------------------------- | ---- | -------------- |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface | string                                                  | 是   | 指定网络接口。 |
 
 **返回值：**
@@ -261,11 +261,13 @@ setNetworkInterfaceDisabledSync(admin: Want, networkInterface: string, isDisable
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
+
 **参数：**
 
 | 参数名           | 类型                                                    | 必填 | 说明                                              |
 | ---------------- | ------------------------------------------------------- | ---- | ------------------------------------------------- |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                            |
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                            |
 | networkInterface | string                                                  | 是   | 指定网络接口。                                    |
 | isDisabled       | boolean                                                 | 是   | true表示禁用该网络接口，false表示开启该网络接口。 |
 
@@ -285,7 +287,6 @@ setNetworkInterfaceDisabledSync(admin: Want, networkInterface: string, isDisable
 ```ts
 import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -314,11 +315,13 @@ setGlobalProxySync(admin: Want, httpProxy: connection.HttpProxy): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名    | 类型                                                         | 必填 | 说明                       |
 | --------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。             |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。             |
 | httpProxy | [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | 是   | 网络全局Http代理配置信息。 |
 
 **错误码**：
@@ -376,11 +379,13 @@ setGlobalProxyForAccount(admin: Want, httpProxy: connection.HttpProxy, accountId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名    | 类型                                                         | 必填 | 说明                       |
 | --------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。             |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。             |
 | httpProxy | [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | 是   | 网络代理配置信息。 |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
 
@@ -441,13 +446,13 @@ getGlobalProxySync(admin: Want): connection.HttpProxy
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                           |
 | ------------------------------------------------------------ | ------------------------------ |
-| [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | 返回网络全局Http代理配置信息。 |
+| [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | 返回网络全局HTTP代理配置信息。 |
 
 **错误码**：
 
@@ -499,7 +504,7 @@ getGlobalProxyForAccount(admin: Want | null, accountId: number): connection.Http
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
 
 **返回值：**
@@ -545,8 +550,15 @@ try {
 
 addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 
-为设备添加防火墙过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
+为设备添加防火墙过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
+
 添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的网络数据包将会被丢弃或拦截。
+
+设备重启，将会清空防火墙过滤规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -554,11 +566,13 @@ addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名       | 类型                                                    | 必填 | 说明                 |
 | ------------ | ------------------------------------------------------- | ---- | -------------------- |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。       |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。       |
 | firewallRule | [FirewallRule](#firewallrule)                           | 是   | 添加防火墙过滤规则。 |
 
 **错误码**：
@@ -593,7 +607,8 @@ let firewallRule: networkManager.FirewallRule = {
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
   "protocol": networkManager.Protocol.UDP,
-  "family": 1
+  "family": 1,
+  "logType": networkManager.LogType.NFLOG
 };
 
 try {
@@ -608,7 +623,12 @@ try {
 
 removeFirewallRule(admin: Want, firewallRule?: FirewallRule): void
 
-移除设备防火墙过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
+移除设备防火墙过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
+
 移除规则后如果不存在[Action](#action)为ALLOW规则后，会将[addFirewallRule](#networkmanageraddfirewallrule)添加的默认DENY规则清空。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -617,11 +637,13 @@ removeFirewallRule(admin: Want, firewallRule?: FirewallRule): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                 |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------------------------------------- |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | firewallRule | [FirewallRule](#firewallrule)                           | 否   | 移除防火墙过滤规则。值为空时，清空所有的防火墙规则。 |
 
 **错误码**：
@@ -657,7 +679,8 @@ let firewallRule: networkManager.FirewallRule = {
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
   "protocol": networkManager.Protocol.UDP,
-  "family": 1
+  "family": 1,
+  "logType": networkManager.LogType.NFLOG
 };
 
 // 移除指定的规则
@@ -681,7 +704,11 @@ try {
 
 getFirewallRules(admin: Want): Array\<FirewallRule>
 
-查询设备防火墙过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。
+查询设备防火墙过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -693,7 +720,7 @@ getFirewallRules(admin: Want): Array\<FirewallRule>
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -736,8 +763,18 @@ try {
 
 addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 
-为设备添加域名过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
+为设备添加域名过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
+
 添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的域名解析数据包将会被丢弃或拦截。
+
+设备重启，将会清空域名过滤规则。
+> **说明：**
+>
+>为避免DNS缓存导致拦截规则失效，建议系统启动后立即配置域名过滤规则。若已因DNS缓存导致拦截失效，重启系统可清除缓存，恢复拦截功能。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -745,11 +782,13 @@ addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名           | 类型                                                    | 必填 | 说明               |
 | ---------------- | ------------------------------------------------------- | ---- | ------------------ |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。     |
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。     |
 | domainFilterRule | [DomainFilterRule](#domainfilterrule)                   | 是   | 添加域名过滤规则。 |
 
 **错误码**：
@@ -779,7 +818,8 @@ let domainFilterRule: networkManager.DomainFilterRule = {
   "domainName": "www.example.com",
   "appUid": "9696",
   "action": networkManager.Action.DENY,
-  "family": 1
+  "family": 1,
+  "logType": networkManager.LogType.NFLOG
 };
 
 try {
@@ -794,7 +834,12 @@ try {
 
 removeDomainFilterRule(admin: Want, domainFilterRule?: DomainFilterRule): void
 
-移除设备域名过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
+移除设备域名过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
+
 移除规则后如果不存在[Action](#action)为ALLOW规则后，会将[addDomainFilterRule](#networkmanageradddomainfilterrule)添加的默认DENY规则清空。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -803,11 +848,13 @@ removeDomainFilterRule(admin: Want, domainFilterRule?: DomainFilterRule): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名           | 类型                                                    | 必填 | 说明                                             |
 | ---------------- | ------------------------------------------------------- | ---- | ------------------------------------------------ |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                   |
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                   |
 | domainFilterRule | [DomainFilterRule](#domainfilterrule)                   | 否   | 移除域名过滤规则。值为空时，清空所有的域名规则。 |
 
 **错误码**：
@@ -838,7 +885,8 @@ let domainFilterRule: networkManager.DomainFilterRule = {
   "domainName": "www.example.com",
   "appUid": "9696",
   "action": networkManager.Action.DENY,
-  "family": 1
+  "family": 1,
+  "logType": networkManager.LogType.NFLOG
 };
 
 // 移除指定的规则
@@ -862,7 +910,11 @@ try {
 
 getDomainFilterRules(admin: Want): Array\<DomainFilterRule>
 
-查询设备域名过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。
+查询设备域名过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -874,7 +926,7 @@ getDomainFilterRules(admin: Want): Array\<DomainFilterRule>
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -925,11 +977,13 @@ turnOnMobileData(admin: Want, isForce: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** 任意MDM应用通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了移动数据网络，则无法通过本接口直接开启移动数据网络。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | isForce  | boolean | 是   | 是否强制打开移动数据网络。true表示强制开启，强制开启后不支持用户在设备上手动关闭，必须采用[turnOffMobileData](#networkmanagerturnoffmobiledata20)接口关闭。false表示非强制开启，此时用户可以在设备上手动操作关闭移动数据网络。 |
 
 **错误码**：
@@ -947,7 +1001,6 @@ turnOnMobileData(admin: Want, isForce: boolean): void
 ```ts
 import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -974,11 +1027,13 @@ turnOffMobileData(admin: Want): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** 任意MDM应用通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了移动数据网络，则无法通过本接口直接关闭移动数据网络。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **错误码**：
 
@@ -995,7 +1050,6 @@ turnOffMobileData(admin: Want): void
 ```ts
 import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -1022,11 +1076,13 @@ addApn(admin: Want, apnInfo: Record\<string, string>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnInfo  | Record\<string, string> | 是   | 需要添加的APN参数信息。<br/>- apnName：APN配置的名称标识符，必选。<br/>- mcc：3位数字的移动国家代码，必选。<br/>- mnc：2-3位数字的移动网络代码，必选。<br/>- apn：接入点名称，必选。<br/>- type：APN的服务类型，可选。<br/>- user：APN身份验证的用户名，可选。<br/>- password：APN身份验证的密码，可选。<br/>- proxy：普通数据连接的代理服务器地址，可选。<br/>- mmsproxy：彩信服务的专用代理地址，可选。<br/>- authType：APN的认证协议类型，可选。 |
 
 **错误码**：
@@ -1046,12 +1102,12 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
@@ -1077,11 +1133,13 @@ deleteApn(admin: Want, apnId: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnId  | string | 是   | 需要删除的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备信息。 |
 
 **错误码**：
@@ -1101,11 +1159,11 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
-let apnId: string = "1"; //需根据实际情况进行替换
+let apnId: string = "1"; // 需根据实际情况进行替换
 try {
   networkManager.deleteApn(wantTemp, apnId);
   console.info(`Succeeded in deleting apn.`);
@@ -1126,11 +1184,13 @@ updateApn(admin: Want, apnInfo: Record\<string, string>, apnId: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnInfo  | Record\<string, string> | 是   | 需要更新的APN参数信息。<br/>- apnName：APN配置的名称标识符，可选。<br/>- mcc：3位数字的移动国家代码，可选。<br/>- mnc：2-3位数字的移动网络代码，可选。<br/>- APN：接入点名称，可选。<br/>- type：APN的服务类型，可选。<br/>- user：APN身份验证的用户名，可选。<br/>- password：APN身份验证的密码，可选。<br/>- proxy：普通数据连接的代理服务器地址，可选。<br/>- mmsproxy：彩信服务的专用代理地址，可选。<br/>- authType：APN的认证协议类型，可选。 |
 | apnId  | string | 是   | 需要更新的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备信息。 |
 
@@ -1151,18 +1211,18 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
   "mcc": "460",
 };
-let apnId: string = "1"; //需根据实际情况进行替换
+let apnId: string = "1"; // 需根据实际情况进行替换
 try {
   networkManager.updateApn(wantTemp, apnInfo, apnId);
   console.info(`Succeeded in updating apn.`);
@@ -1183,11 +1243,13 @@ setPreferredApn(admin: Want, apnId: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnId  | string | 是   | 需要设置成优选的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备信息。 |
 
 **错误码**：
@@ -1207,11 +1269,11 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
-let apnId: string = "1"; //需根据实际情况进行替换
+let apnId: string = "1"; // 需根据实际情况进行替换
 try {
   networkManager.setPreferredApn(wantTemp, apnId);
   console.info(`Succeeded in setting preferred apn.`);
@@ -1236,7 +1298,7 @@ queryApn(admin: Want, apnInfo: Record\<string, string>): Array\<string>
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnInfo  | Record\<string, string> | 是   | APN的查询条件。<br/>- apnName：APN配置的名称标识符，可选。<br/>- mcc：3位数字的移动国家代码，可选。<br/>- mnc：2-3位数字的移动网络代码，可选。<br/>- apn：接入点名称，可选。<br/>- type：APN的服务类型，可选。<br/>- user：APN身份验证的用户名，可选。<br/>- proxy：普通数据连接的代理服务器地址，可选。<br/>- mmsproxy：彩信服务的专用代理地址，可选。<br/>- authType：APN的认证协议类型，可选。 |
 
 **返回值：**
@@ -1262,12 +1324,12 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
@@ -1297,7 +1359,7 @@ queryApn(admin: Want, apnId: string): Record\<string, string>
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnId  | string | 是   | 指定的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备信息。 |
 
 **返回值：**
@@ -1323,11 +1385,11 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
-let apnId: string = "1"; //需根据实际情况进行替换
+let apnId: string = "1"; // 需根据实际情况进行替换
 try {
   let queryResult: Record<string, string> = networkManager.queryApn(wantTemp, apnId);
   console.info(`Succeeded in querying apn, result : ${JSON.stringify(queryResult)}`);
@@ -1348,6 +1410,8 @@ setEthernetConfig(admin: Want, networkInterface: string, config: InterfaceConfig
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
@@ -1365,6 +1429,7 @@ setEthernetConfig(admin: Want, networkInterface: string, config: InterfaceConfig
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200012  | Parameter verification failed. |
+| 9201010  | Ethernet configuration failed. Ethernet device not connected. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
@@ -1397,7 +1462,11 @@ try {
 
 ## FirewallRule
 
-防火墙过滤规则。从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
+防火墙过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1413,10 +1482,15 @@ try {
 | action    | [Action](#action)       | 否   | 是 |接收或者丢弃数据包。<br/>添加防火墙过滤规则时必填；<br/>移除防火墙时非必填，当值为空时，表示清空所有的匹配[Action](#action)规则的链，且srcAddr，destAddr，srcPort，destPort，appUid也必须传入空值。 |
 | protocol  | [Protocol](#protocol)   | 否   | 是 |网络协议。当值为ALL或者ICMP时，设置srcPort与destPort无效。 |
 | family<sup>22+</sup>    | number    | 否   | 是 |IP协议版本。支持取值为1或2，取值为1表示IPv4，取值为2表示IPv6。|
+| logType<sup>23+</sup> | [LogType](#logtype23) | 否 | 是 |日志类型，当前仅支持配置NFLOG类型，该参数仅支持PC/2in1设备。<br/>添加防火墙过滤规则时，此参数非必填。若填写，仅在丢弃或拒绝数据包时生效。<!--RP1--><!--RP1End--><br/>移除防火墙过滤规则时，当清空某条链时非必填，不影响整条链的清空；当移除单条规则时，是否填写必须与该规则一致，否则可能导致过滤规则已经移除，但是日志还在记录的问题；相同过滤规则移除时必须按添加时的顺序移除。<br/>获取防火墙过滤规则时，仅日志生效的场景可以获取到logType字段。|
 
 ## DomainFilterRule
 
-域名过滤规则。从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
+域名过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1428,6 +1502,7 @@ try {
 | action     | [Action](#action) | 否   | 是 |接收或者丢弃数据包。<br/>添加域名过滤规则时必填；<br/>移除域名过滤规则时非必填，当值为空时，表示清空所有的匹配[Action](#action)规则的链，且domainName，appUid也必须传入空值。 |
 | direction<sup>15+</sup> | [Direction](#direction) | 否 | 是 |规则链。<br/>添加域名过滤规则时非必填；当值设为输出链或输入链时，实际效果为输出链。设为转发链时，appUid需设置为空，否则会报401错误码。<br/>移除域名过滤规则时非必填，当值为空时，表示清空所有的[Direction](#direction)链，且domainName，appUid也必须传入空值。|
 | family<sup>22+</sup>    | number| 否   | 是 |IP协议版本。支持取值为1或2，取值为1表示IPv4，取值为2表示IPv6。|
+| logType<sup>23+</sup> | [LogType](#logtype23) | 否 | 是 |日志类型，当前仅支持配置NFLOG类型，该参数仅支持PC/2in1设备。<br/>添加域名过滤规则时，此参数非必填。若填写，仅在丢弃或拒绝数据包时生效。<!--RP2--><!--RP2End--><br/>移除域名过滤规则时，当清空某条链时非必填，不影响整条链的清空；当移除单条规则时，是否填写必须与该规则一致，否则可能导致过滤规则已经移除，但是日志还在记录的问题；相同过滤规则移除时必须按添加时的顺序移除。<br/>获取域名过滤规则时，仅日志生效的场景可以获取到logType字段。|
 
 ## Direction
 
@@ -1468,6 +1543,17 @@ try {
 | TCP  | 1    | 网络协议TCP。  |
 | UDP  | 2    | 网络协议UDP。  |
 | ICMP | 3    | 网络协议ICMP。 |
+
+## LogType<sup>23+</sup>
+
+日志类型。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+
+| 名称  | 值   | 说明                                  |
+| ----- | ---- | ------------------------------------- |
+| NFLOG | 0    | 内核Netfilter框架中的数据包日志功能。 |
 
 ## InterfaceConfig<sup>23+</sup>
 

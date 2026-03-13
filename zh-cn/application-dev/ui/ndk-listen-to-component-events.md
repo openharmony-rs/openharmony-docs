@@ -27,18 +27,18 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
 
   通过addNodeEventReceiver对节点绑定事件处理函数，接着通过调用registerNodeEvent注册对应的事件。
 
-  > 说明：
+  > **说明：**
   > 
-  > 事件监听函数的入参ArkUI_NodeEvent* event的生命周期只在函数回调周期内生效，不推荐对该指针进行缓存或者进行异步处理。
+  > 事件监听函数的入参[ArkUI_NodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodeevent.md)* event只在函数回调周期内生效，不推荐对该指针进行缓存或者进行异步处理。
 
-    定义ArkUI_NativeNodeAPI_1类型的指针：
+    定义[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)类型的指针：
     <!-- @[define_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Common.h) -->
     
     ``` C
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     ```
 
-    调用OH_ArkUI_GetModuleInterface接口给定义的指针赋值：
+    调用[OH_ArkUI_GetModuleInterface](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)接口给定义的指针赋值：
     <!-- @[get_module_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NativeEntry.cpp) -->
     
     ``` C++
@@ -225,7 +225,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
         const char* darkMsg;
     };
     
-    //注册回调函数
+    // 注册回调函数
     void onColorModeChange(ArkUI_SystemColorMode colorMode, void *userData)
     {
         ColorModeInfo* info = static_cast<ColorModeInfo*>(userData);
@@ -299,7 +299,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
             }
             nativeModule_->removeNodeEventReceiver(handle_, ArkUINode::NodeEventReceiver);
         }
-    
+        // 设置节点宽度
         void SetWidth(float width)
         {
             if (!handle_) {
@@ -309,6 +309,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_WIDTH, &item);
         }
+        // 设置节点宽度（百分比形式）
         void SetPercentWidth(float percent)
         {
             if (!handle_) {
@@ -318,6 +319,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_WIDTH_PERCENT, &item);
         }
+        // 设置节点高度
         void SetHeight(float height)
         {
             if (!handle_) {
@@ -327,6 +329,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_HEIGHT, &item);
         }
+        // 设置节点高度（百分比形式）
         void SetPercentHeight(float percent)
         {
             if (!handle_) {
@@ -336,6 +339,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_HEIGHT_PERCENT, &item);
         }
+        // 设置节点背景颜色
         void SetBackgroundColor(uint32_t color)
         {
             if (!handle_) {
@@ -475,7 +479,6 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
     #define MYAPPLICATION_ARKUILISTNODE_H
     
     #include "ArkUINode.h"
-    #include <hilog/log.h>
     
     namespace NativeModule {
     class ArkUIListNode : public ArkUINode {
@@ -537,7 +540,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
     <!-- @[normal_text_list_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NormalTextListExample.h) -->
     
     ``` C
-    // TextListExample.h
+    // NormalTextListExample.h
     // 文本列表示例。
     
     #ifndef MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
@@ -548,7 +551,13 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
     #include "ArkUIListNode.h"
     #include "ArkUITextNode.h"
     #include <hilog/log.h>
-    #include "Function.h"
+    
+    const unsigned int LOG_PRINT_DOMAIN = 0xF811;
+    const unsigned int LOOP_SIZE = 30;
+    const unsigned int FONT_SIZE = 16;
+    const unsigned int HEIGHT_SIZE = 200;
+    const float PERCENT_WIDTH_1 = 1;
+    const float PERCENT_HEIGHT_1 = 1;
     
     namespace NativeModule {
     
@@ -658,7 +667,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
 
    由于使用了日志相关接口，需要在CMakeLists.txt中添加对libhilog_ndk.z.so的引用，如下：
    
-   ```
+   ```text
    add_library(entry SHARED napi_init.cpp NativeEntry.cpp)
    target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so libhilog_ndk.z.so)
    ```

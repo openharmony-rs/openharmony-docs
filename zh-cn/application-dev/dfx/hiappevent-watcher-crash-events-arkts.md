@@ -4,11 +4,11 @@
 <!--Owner: @chenshi51-->
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的ArkTS接口订阅应用崩溃事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent (应用事件打点)ArkTS API文档](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+本文介绍如何使用HiAppEvent提供的ArkTS接口订阅应用崩溃事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 > **说明：**
 >
@@ -31,7 +31,7 @@
 
 1. DevEco Studio新建Native C++模板工程，编辑“entry > src > main > ets > entryability > EntryAbility.ets”文件，导入依赖模块。示例代码如下：
 
-    <!-- @[AppEvent_Crash_Click_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @[Crash_Click_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
     import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
@@ -46,7 +46,7 @@
     ``` TypeScript
     // 构建崩溃事件的自定义参数
     let crashParams: Record<string, hiAppEvent.ParamType> = {
-      "test_data": 100, //test_data为自定义数据，开发者可根据实际需求自定义params参数。
+      "test_data": 100, // test_data为自定义数据，开发者可根据实际需求自定义params参数。
     };
     // 开发者可以设置崩溃事件的自定义参数
     hiAppEvent.setEventParam(crashParams, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {
@@ -234,7 +234,7 @@
 
 1. 异常处理中未主动退出，应用崩溃后将不会退出。
 
-   采用[errorManger.on](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)方法捕获异常会导致JsError类型的崩溃事件在应用退出前回调。若应用主动注册[崩溃信号](cppcrash-guidelines.md#系统处理的崩溃信号)处理函数但未主动退出，会导致NativeCrash类型的崩溃事件在应用退出前回调。
+   采用[errorManager.on](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)方法捕获异常会导致JsError类型的崩溃事件在应用退出前回调。若应用主动注册[崩溃信号](cppcrash-guidelines.md#系统处理的崩溃信号)处理函数但未主动退出，会导致NativeCrash类型的崩溃事件在应用退出前回调。
 
 2. 异常处理耗时过长，导致应用退出延迟。
 

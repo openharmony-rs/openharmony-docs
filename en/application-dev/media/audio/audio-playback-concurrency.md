@@ -28,7 +28,7 @@ To ensure a superior audio focus experience for users, applications should:
 
 When an application starts to play or record audio, the system automatically requests audio focus for that audio stream.
 
-For example, when an application [uses AudioRenderer for audio playback](using-audiorenderer-for-playback.md) and calls [start](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8) of AudioRenderer, the system automatically requests audio focus for the application.
+For example, when an application [uses AudioRenderer for audio playback (ArkTs)](using-audiorenderer-for-playback.md) and calls [start](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8) of AudioRenderer, the system automatically requests audio focus for the application.
 
 If the audio focus request is successful, the audio stream starts normally; otherwise, the audio stream fails to start.
 
@@ -38,25 +38,26 @@ If an application wants to request focus just once and play several audio stream
 
 **Special scenarios:**
 
-1. **Sound playback**: If an application [uses SoundPool for audio playback](../media/using-soundpool-for-playback.md) and sets [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage) to **Music**, **Movie**, or **AudioBook**, the concurrent mode is used by default for the focus request, without affecting other audio.
+1. **Short sound playback**: If the application [uses SoundPool to play short sounds (ArkTS)](../media/using-soundpool-for-playback.md) and [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage) is set to **Music**, **Movie**, or **AudioBook**, the concurrent mode is used by default when the focus is requested, and other audios are not affected.
 
 2. **Silent playback**: If an application starts to play audio (or video) in mute mode and intends to avoid affecting other audio during the mute phase, and then seeks audio focus with a standard strategy when unmuting, it can call APIs related to the silent concurrent playback mode. For details, see:
 
-   - [Using AVPlayer for Audio Playback](../media/using-avplayer-for-playback.md), where you can call [setMediaMuted](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setmediamuted12).
+   - [setMediaMuted](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setmediamuted12) function: [Using AVPlayer to Play Audio (ArkTS)](../media/using-avplayer-for-playback.md)
 
-   - [Using AudioRenderer for Audio Playback](using-audiorenderer-for-playback.md), where you can call [setSilentModeAndMixWithOthers](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setsilentmodeandmixwithothers12).
+   - [setSilentModeAndMixWithOthers](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setsilentmodeandmixwithothers12) function: [Using AudioRenderer for Audio Playback (ArkTs)](using-audiorenderer-for-playback.md)
 
-   - [Using OHAudio for Audio Playback](using-ohaudio-for-playback.md), where you can call [OH_AudioRenderer_SetSilentModeAndMixWithOthers](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setsilentmodeandmixwithothers).
+   - [OH_AudioRenderer_SetSilentModeAndMixWithOthers](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setsilentmodeandmixwithothers) function: [(Recommended) Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md)
 
 ### Releasing Audio Focus
 
 When an application stops playing or recording audio, the system automatically releases audio focus for that audio stream.
 
-For example, when an application [uses AudioRenderer for audio playback](using-audiorenderer-for-playback.md) and calls [pause](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#pause8), [stop](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#stop8), or [release](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#release8) of AudioRenderer, the system releases audio focus for the application.
+For example, when an application [uses AudioRenderer for audio playback (ArkTs)](using-audiorenderer-for-playback.md) and calls [pause](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#pause8), [stop](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#stop8), or [release](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#release8) of AudioRenderer, the system releases audio focus for the application.
 
 After the audio focus is released, other audio streams (for example, streams with reduced volume or paused streams) affected by the audio stream will be resumed.
 
 If an application prefers not to release audio focus immediately when the audio stream stops, it can call the APIs related to [AudioSession](#audio-session) to delay the release.
+
 If an application has already requested focus by activating an [AudioSession](#audio-session), it should deactivate the audio session to release focus.
 
 ### Audio Focus Strategy
@@ -91,11 +92,11 @@ Applications can select the appropriate focus mode based on their needs. By defa
 
 You can set the audio focus mode in one of the following ways:
 
-- If you [use AVPlayer for audio playback (ArkTS)](../media/using-avplayer-for-playback.md), set [audioInterruptMode](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) of AVPlayer to set the audio focus mode.
+- If you [use AVPlayer for audio playback (ArkTS)](../media/using-avplayer-for-playback.md), modify [audioInterruptMode](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) of AVPlayer to set the audio focus mode.
 
 - If you [use AVPlayer for audio playback (C/C++)](../media/using-ndk-avplayer-for-playback.md), call [OH_AVPlayer_SetAudioInterruptMode](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiointerruptmode) to set the audio focus mode.
 
-- If you [use AudioRenderer for audio playback](using-audiorenderer-for-playback.md), call [setInterruptMode](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setinterruptmode9) of AudioRenderer to set the audio focus mode.
+- If you [use AudioRenderer for audio playback (ArkTs)](using-audiorenderer-for-playback.md), call [setInterruptMode](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setinterruptmode9) of AudioRenderer to set the audio focus mode.
 
 - If you [use OHAudio for audio playback (C/C++)](using-ohaudio-for-playback.md), call [OH_AudioStreamBuilder_SetRendererInterruptMode](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererinterruptmode) to set the audio focus mode.
 
@@ -107,17 +108,17 @@ To maintain state consistency between the application and system and ensure a po
 
 The manners for listening for audio focus events vary according to the development modes:
 
-- If you [use AVPlayer for audio playback (ArkTS)](../media/using-avplayer-for-playback.md), call [on('audioInterrupt')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onaudiointerrupt9) to listen for audio focus events (specified by [InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)).
+- If you [use AVPlayer for audio playback (ArkTS)](../media/using-avplayer-for-playback.md), call [on('audioInterrupt')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onaudiointerrupt9) to listen for [InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9).
 
-- If you [use AVPlayer for audio playback (C/C++)](../media/using-ndk-avplayer-for-playback.md), call [OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback) to listen for audio focus events (specified by [OH_AVPlayerOnInfoCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfocallback)).
+- If you [use AVPlayer for audio playback (C/C++)](../media/using-ndk-avplayer-for-playback.md), call [OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback) to listen for [OH_AVPlayerOnInfoCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfocallback).
 
-- If you [use AudioRenderer for audio playback](using-audiorenderer-for-playback.md), call [on('audioInterrupt')](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9) to listen for audio focus events (specified by [InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)).
+- If you [use AudioRenderer for audio playback (ArkTs)](using-audiorenderer-for-playback.md), call [on('audioInterrupt')](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9) to listen for [InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9).
 
-- If you [use OHAudio for audio playback (C/C++)](using-ohaudio-for-playback.md), call [OH_AudioStreamBuilder_SetRendererCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrenderercallback) to listen for audio focus events (specified by [OH_AudioRenderer_OnInterruptEvent](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md#oh_audiorenderer_oninterruptevent)).
+- If you [use OHAudio for audio playback (C/C++)](using-ohaudio-for-playback.md), call [OH_AudioStreamBuilder_SetRendererCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrenderercallback) to listen for [OH_AudioRenderer_OnInterruptEvent](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md#oh_audiorenderer_oninterruptevent).
 
-- If you [use AudioCapturer for audio recording](using-audiocapturer-for-recording.md), call [on('audioInterrupt')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onaudiointerrupt10) to listen for audio focus events (specified by [InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)).
+- If you [use AudioCapturer for audio recording (ArkTs)](using-audiocapturer-for-recording.md), call [on('audioInterrupt')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onaudiointerrupt10) to listen for [InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9).
 
-- If you [use OHAudio for audio recording (C/C++)](using-ohaudio-for-recording.md), call [OH_AudioStreamBuilder_SetCapturerCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturercallback) to listen for audio focus events (specified by [OH_AudioCapturer_OnInterruptEvent](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md#oh_audiocapturer_oninterruptevent)).
+- If you [use OHAudio for audio recording (C/C++)](using-ohaudio-for-recording.md), call [OH_AudioStreamBuilder_SetCapturerCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturercallback) to listen for [OH_AudioCapturer_OnInterruptEvent](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md#oh_audiocapturer_oninterruptevent).
 
 When receiving an audio focus event (specified by [InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)), applications must perform corresponding processing based on the information in the event to maintain consistency with the system state and deliver a quality audio experience to users.
 
@@ -164,7 +165,7 @@ The following table lists typical focus adaptation scenarios.
 
 The following provides an example of audio focus processing.
 
-To deliver an optimal audio experience for users, applications should perform processing based on the event content. The following [uses AudioRenderer for audio playback](using-audiorenderer-for-playback.md) as an example to describe the recommended processing methods for applications.
+To deliver an optimal audio experience for users, applications should perform processing based on the event content. The following [uses AudioRenderer for audio playback (ArkTs)](using-audiorenderer-for-playback.md) as an example to describe the recommended processing methods for applications.
 
 Before listening for audio playback focus change events, you must obtain an [AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8) instance. If you use other APIs to develop audio playback or recording, the processing method is similar. You can compile the code based on service requirements or adjust the processing methods as needed.
 
@@ -316,13 +317,13 @@ The system presets the following four audio concurrency modes:
 
 > **NOTE**
 >
-> - When an application uses these modes through AudioSession, the system tries its best to meet the focus strategy. However, it cannot guarantee full compliance in all scenarios.
+> 1. When an application uses these modes through AudioSession, the system tries its best to meet the focus strategy. However, it cannot guarantee full compliance in all scenarios.
 >
->      For example, in **CONCURRENCY_PAUSE_OTHERS** mode, if the current application initiates a Movie stream while requesting audio focus, any ongoing Music stream from other applications will be paused. However, if a VoiceCommunication stream from another application is playing, that VoiceCommunication stream will not be paused.
+>    For example, in **CONCURRENCY_PAUSE_OTHERS** mode, if the current application initiates a Movie stream while requesting audio focus, any ongoing Music stream from other applications will be paused. However, if a VoiceCommunication stream from another application is playing, that VoiceCommunication stream will not be paused.
 >
-> - The **CONCURRENCY_MIX_WITH_OTHERS** mode takes effect both when the current application requests focus and when other applications subsequently request focus. The **CONCURRENCY_DUCK_OTHERS** and **CONCURRENCY_PAUSE_OTHERS** modes take effect only when the current application requests focus. When other applications subsequently request focus, their concurrency mode takes precedence.
+> 2. The **CONCURRENCY_MIX_WITH_OTHERS** mode takes effect both when the current application requests focus and when other applications subsequently request focus. The **CONCURRENCY_DUCK_OTHERS** and **CONCURRENCY_PAUSE_OTHERS** modes take effect only when the current application requests focus. When other applications subsequently request focus, their concurrency mode takes precedence.
 >
->      For example, in **CONCURRENCY_MIX_WITH_OTHERS** mode, the current application plays concurrently with other audio streams of the same type, regardless of the order in which focus was requested. In **CONCURRENCY_PAUSE_OTHERS** mode, the current application pauses other ongoing audio streams when it requests focus. However, when other applications subsequently request focus, they will follow their own concurrency mode, unaffected by the **CONCURRENCY_MIX_WITH_OTHERS** mode used by the current application.
+>    For example, in **CONCURRENCY_MIX_WITH_OTHERS** mode, the current application plays concurrently with other audio streams of the same type, regardless of the order in which focus was requested. In **CONCURRENCY_PAUSE_OTHERS** mode, the current application pauses other ongoing audio streams when it requests focus. However, when other applications subsequently request focus, they will follow their own concurrency mode, unaffected by the **CONCURRENCY_MIX_WITH_OTHERS** mode used by the current application.
 
 ### Listening for Audio Session Deactivation Events
 
@@ -346,13 +347,14 @@ For details, see [Using AudioSession to Manage Audio Focus (ArkTS)](audio-sessio
 **This feature is supported since API version 20.**
 
 Applications can request focus through AudioSession to enhance the continuity of multi-audio stream playback, while retaining existing features.
-
 Typical use cases include:
+
 - When multiple short videos are playing in succession, frequent requests and releases of focus by multiple audio streams can cause audio leakage. Using AudioSession to request focus once can avoid the need for multiple audio streams to frequently request and release focus, thereby preventing audio leakage.
 - In VoIP call scenarios, it may be necessary to start ringtone, recording, and playback streams, which have different focus priorities and may be interrupted by audio streams from other applications. To maintain a continuous user experience, you can use AudioSession to request focus and avoid interruptions to the audio streams.
 - Applications using a player SDK to play audio streams does not hold an AudioRenderer object but wish to listen for focus changes.
 
 To request focus using AudioSession, first call [setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) to set the scene parameters, and then call [activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12) to activate the audio session.
+
 The currently supported audio session scenes are as follows, and applications can choose them based on specific service scenarios.
 | Name                  | Value| Description     |
 | :--------------------- |:--|:--------|
@@ -385,4 +387,6 @@ To maintain consistency between the application and system states and ensure a g
 
 **This feature is supported since API version 20.**
 
-Applications using the player SDK to play audio streams do not hold an AudioRenderer object. As a result, they cannot flexibly control the selection of playback devices and listen for the device status. AudioSession not only introduces focus management but also provides capabilities for managing audio output devices, including setting the default output device and listening for device changes. For details about the APIs, see [AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md). For details about how to use the APIs, see [Querying and Listening for Audio Output Devices Using AudioSession](./audio-output-device-management.md#querying-and-listening-for-audio-output-devices-using-audiosession).
+Applications using the player SDK to play audio streams do not hold an AudioRenderer object. As a result, they cannot flexibly control the selection of playback devices and listen for the device status. AudioSession not only introduces focus management but also provides capabilities for managing audio output devices, including setting the default output device and listening for device changes. For details about the APIs, see [AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md).
+
+For details about how to use the APIs, see [Querying and Listening for Audio Output Devices Using AudioSession](./audio-output-device-management.md#querying-and-listening-for-audio-output-devices-using-audiosession).

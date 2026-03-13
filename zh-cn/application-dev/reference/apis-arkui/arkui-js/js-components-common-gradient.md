@@ -27,7 +27,8 @@
 
 - angle：进行角度渐变。
 
-```
+```js
+// xxx.js
 background: linear-gradient(direction/angle, color, color, ...);
 background: repeating-linear-gradient(direction/angle, color, color, ...);
 ```

@@ -10,6 +10,8 @@
 
 提供IPC错误码定义。
 
+**引用文件：** <IPCKit/ipc_error_code.h>
+
 **库：** libipc_capi.so
 
 **系统能力：** SystemCapability.Communication.IPC.Core

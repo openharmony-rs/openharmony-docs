@@ -44,12 +44,17 @@ Hands-Free Profile, which is used to enable hands-free calling between Bluetooth
 Hands-Free Audio Gateway, i.e., the audio gateway in the [HFP](#hfp) protocol. It serves as the audio processing center in Bluetooth call audio, responsible for call control (such as executing answer/hang-up instructions) and managing audio input/output. Typical devices include mobile phones and tablets.
 ### HID
 Human Interface Device Profile, which enables low-latency bidirectional communication between Bluetooth-enabled human-computer interaction devices, such as transmitting data between keyboards, mouse devices, and gamepads, and hosts (e.g., mobile phone, tablet). This protocol is specifically designed for Bluetooth Classic. It defines two roles: [HID host](#hid-host) and [HID device](#hid-device).
+In the HID protocol, data transmission channels are classified into two types: interrupt transfer channel and control transfer channel. The interrupt transfer channel is used to unidirectionally transmit real-time data in low latency. The control transfer channel is used to bidirectionally transmit reliable real-time data, which includes the following three requests:
+- **GET_REPORT**: data read request initiated by the HID host, which is used to obtain the status information of the HID device.
+- **SET_REPORT**: data write request initiated by the HID host, which is used to send control instructions to the HID device.
+- **SET_PROTOCOL**: protocol mode switching request initiated by the HID host.
+
 ### HID Device
 [HID](#hid) devices that provide human-machine data input/output to the [HID host](#hid-host). Typical devices include mouse devices and keyboards.
 ### HID Host
 [HID](#hid) host that processes and receives input data from [HID devices](#hid-device) and performs corresponding operations. Typical devices include mobile phones and tablets.
 ### HOGP
-HID over GATT Profile, which is an HID specification implemented based on the GATT protocol of BLE. It ports traditional HID functions to BLE devices for reuse and is compatible with the HID interaction logic of BLE devices such as keyboards, mouse devices, and selfie sticks.
+HID over GATT Profile, which is an [HID](#hid) specification implemented based on the GATT protocol of [BLE](#ble). It ports traditional [HID](#hid) functions to [BLE](#ble) devices for reuse and is compatible with the [HID](#hid) interaction logic of [BLE](#ble) devices such as keyboards, mouse devices, and selfie sticks.
 ## L
 ### L2CAP
 Logical Link Control and Adaptation Protocol, which supports diverse transmission requirements of upper-layer protocols and applications by providing both connection-oriented and connectionless data services. This protocol also facilitates multiplexing, segmentation, and reassembly, ensuring efficient and reliable data transfer over Bluetooth connections.
@@ -89,6 +94,8 @@ Radio Frequency Communication (RFC) protocol, which is designed to simulate trad
 ### RSSI
 Received signal strength indicator. It is used in wireless communications to quantify the signal strength at the receiver in dBm.
 ## S
+### SDP
+Service Discovery Protocol, which is used to discover and identify services provided by other Bluetooth devices.
 ### Service
 Bluetooth [GATT](#gatt) service, which is a data structure containing multiple characteristics and dependent services. It represents a capability of the [BLE](#ble) device and is identified by a UUID.
 ### SPP

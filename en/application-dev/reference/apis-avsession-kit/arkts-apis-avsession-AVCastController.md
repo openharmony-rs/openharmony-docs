@@ -354,7 +354,7 @@ Sends custom data to the remote device. This API uses a promise to return the re
 
 | Name| Type                  | Mandatory| Description                                                        |
 | ------ | ---------------------- | ---- | ------------------------------------------------------------ |
-| data   | Record\<string, Object> | Yes  | Custom data filled by the application. Only objects with the key **'customData'** and of the type string are parsed on the server.|
+| data   | Record\<string, Object> | Yes  | Custom data filled by the application.<br>The server processes only the key **'customData'** when the associated value is a string object.|
 
 **Return value**
 
@@ -880,7 +880,7 @@ aVCastController.release().then(() => {
 
 ## on('playbackStateChange')<sup>10+</sup>
 
-on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', callback: (state: AVPlaybackState) => void): void
+on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state: AVPlaybackState) => void): void
 
 Subscribes to playback state change events.
 
@@ -895,7 +895,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The event **'playbackStateChange'** is triggered when the playback state changes.|
-| filter   | Array\<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>&nbsp;&#124;&nbsp;'all' | Yes  | The value **'all'** indicates that any playback state field change will trigger the event, and **Array<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>** indicates that only changes to the listed playback state field will trigger the event.|
+| filter   |  Array\<string>\|'all'| Yes  | The value **'all'** indicates that any playback state field change will trigger the event, and **Array\<string>** indicates that only changes to the listed playback state field will trigger the event.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is Array\<keyof AVPlaybackState> \| 'all'.|
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | Yes  | Callback function, where the **state** parameter indicates the new playback state.                     |
 
 **Error codes**
@@ -1350,7 +1350,7 @@ aVCastController.off('seekDone');
 
 ## on('validCommandChange')<sup>11+</sup>
 
-on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandType>>)
+on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandType>>): void
 
 Subscribes to valid command change events.
 
@@ -1367,11 +1367,10 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1386,7 +1385,7 @@ aVCastController.on('validCommandChange', (validCommands: avSession.AVCastContro
 
 ## off('validCommandChange')<sup>11+</sup>
 
-off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommandType>>)
+off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommandType>>): void
 
 Unsubscribes from valid command change events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
@@ -1401,11 +1400,10 @@ Unsubscribes from valid command change events. If a callback is specified, the c
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message          |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2102,7 +2100,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **Example**
 
@@ -2135,7 +2133,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **Example**
 

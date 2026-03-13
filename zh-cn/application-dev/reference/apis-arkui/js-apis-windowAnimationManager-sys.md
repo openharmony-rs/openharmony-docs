@@ -45,7 +45,7 @@ let controller: windowAnimationManager.WindowAnimationController = {
     onStartAppFromLauncher(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
-	  },
+      },
     onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
@@ -108,7 +108,7 @@ let controller: windowAnimationManager.WindowAnimationController = {
         console.info('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
         target = startingWindowTarget;
         finishCallback.onAnimationFinish();
-	  },
+      },
     onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
         target = startingWindowTarget;
@@ -194,7 +194,7 @@ let controller: windowAnimationManager.WindowAnimationController = {
     onStartAppFromLauncher(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
-	  },
+      },
     onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();

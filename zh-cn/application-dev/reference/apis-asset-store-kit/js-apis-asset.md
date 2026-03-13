@@ -972,7 +972,7 @@ type AssetMap = Map\<Tag, Value>
 | SERVICE_UNAVAILABLE | 24000001    |关键资产服务不可用。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | NOT_FOUND | 24000002    |未找到关键资产。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | DUPLICATED | 24000003    |关键资产已存在。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| ACCESS_DENIED | 24000004    |拒绝访问关键资产。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| ACCESS_DENIED | 24000004    |访问被拒绝。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | STATUS_MISMATCH | 24000005    |锁屏状态不匹配。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | OUT_OF_MEMORY | 24000006    |系统内存不足。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | DATA_CORRUPTED | 24000007    |关键资产损坏。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
@@ -980,7 +980,7 @@ type AssetMap = Map\<Tag, Value>
 | CRYPTO_ERROR | 24000009   |算法库操作失败。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | IPC_ERROR | 24000010   |进程通信错误。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | BMS_ERROR | 24000011   |包管理服务异常。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| ACCOUNT_ERROR | 24000012   |账号系统异常。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| ACCOUNT_ERROR | 24000012   |账号系统服务异常。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | ACCESS_TOKEN_ERROR | 24000013   |访问控制服务异常。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | FILE_OPERATION_ERROR | 24000014   |文件操作失败。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | GET_SYSTEM_TIME_ERROR | 24000015   |获取系统时间失败。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|

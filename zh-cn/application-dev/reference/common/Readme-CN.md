@@ -33,6 +33,8 @@
     - [JSVM_TypeTag](capi-jsvm-jsvm-typetag.md)
     - [JSVM_PropertyHandlerConfigurationStruct](capi-jsvm-jsvm-propertyhandlerconfigurationstruct.md)
     - [JSVM_ScriptOrigin](capi-jsvm-jsvm-scriptorigin.md)
+    - [JSVM_CompileOptions](capi-jsvm-jsvm-compileoptions.md) 
+    - [JSVM_CodeCache](capi-jsvm-jsvm-codecache.md)
     - [JSVM_PropertyHandler](capi-jsvm-jsvm-propertyhandler.md)
     - [JSVM_DefineClassOptions](capi-jsvm-jsvm-defineclassoptions.md)
     - [JSVM_VM__*](capi-jsvm-jsvm-vm--8h.md)

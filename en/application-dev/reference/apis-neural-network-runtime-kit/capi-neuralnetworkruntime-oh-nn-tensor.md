@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_NN_Tensor {...} OH_NN_Tensor
+```
+
 ## Overview
 
 Defines the tensor structure.

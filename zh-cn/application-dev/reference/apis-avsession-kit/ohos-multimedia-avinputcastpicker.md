@@ -17,7 +17,7 @@
 
 ## 导入模块
 
-```js
+```ts
 import { AVInputCastPicker } from '@kit.AVSessionKit';
 ```
 
@@ -27,7 +27,7 @@ import { AVInputCastPicker } from '@kit.AVSessionKit';
 
 ## AVInputCastPicker
 
-```
+```ts
 AVInputCastPicker({
   customPicker?: CustomBuilder;
   onStateChange?: OnPickerStateCallback;
@@ -62,7 +62,7 @@ type OnPickerStateCallback = (state: AVCastPickerState) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| state | [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11) | 是 | 设备列表状态。 |
+| state | [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate) | 是 | 设备列表状态。 |
 
 ## 事件
 

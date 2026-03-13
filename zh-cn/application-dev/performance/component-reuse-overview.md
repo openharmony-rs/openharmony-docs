@@ -54,7 +54,33 @@
 
 ```typescript
 class MyDataSource implements IDataSource {
-  // ...
+  private listeners: DataChangeListener[] = [];
+  private data: number[] = [];
+
+  totalCount(): number {
+    return this.data.length;
+  }
+
+  getData(index: number): number {
+    return this.data[index];
+  }
+
+  pushData(data: number): void {
+    this.data.push(data);
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos: number = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
 }
 
 @Entry
@@ -133,7 +159,33 @@ struct ReusableComponentTwo {
 
 ```typescript
 class MyDataSource implements IDataSource {
-  // ...
+  private listeners: DataChangeListener[] = [];
+  private data: number[] = [];
+
+  totalCount(): number {
+    return this.data.length;
+  }
+
+  getData(index: number): number {
+    return this.data[index];
+  }
+
+  pushData(data: number): void {
+    this.data.push(data);
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos: number = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
 }
 
 @Entry
@@ -207,7 +259,33 @@ struct ReusableComponent {
 
 ```typescript
 class MyDataSource implements IDataSource {
-  // ...
+  private listeners: DataChangeListener[] = [];
+  private data: number[] = [];
+
+  totalCount(): number {
+    return this.data.length;
+  }
+
+  getData(index: number): number {
+    return this.data[index];
+  }
+
+  pushData(data: number): void {
+    this.data.push(data);
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos: number = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
 }
 
 @Entry
@@ -430,7 +508,33 @@ struct ChildComponentD {
 
 ```typescript
 class MyDataSource implements IDataSource {
-  // ...
+  private listeners: DataChangeListener[] = [];
+  private data: number[] = [];
+
+  totalCount(): number {
+    return this.data.length;
+  }
+
+  getData(index: number): number {
+    return this.data[index];
+  }
+
+  pushData(data: number): void {
+    this.data.push(data);
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos: number = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
 }
 
 @Entry

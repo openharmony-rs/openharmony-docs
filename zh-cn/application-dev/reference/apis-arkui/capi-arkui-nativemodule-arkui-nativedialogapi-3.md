@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct {...} ArkUI_NativeDialogAPI_3
 ```
 
@@ -58,7 +58,7 @@ ArkUI提供的Native侧自定义弹窗接口集合。
 
 ### setLevelOrder()
 
-```
+```c
 int32_t (*setLevelOrder)(ArkUI_NativeDialogHandle handle, double levelOrder)
 ```
 
@@ -78,7 +78,7 @@ int32_t (*setLevelOrder)(ArkUI_NativeDialogHandle handle, double levelOrder)
 | 参数项                                 | 描述 |
 |-------------------------------------| -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-| double levelOrder                   | 自定义弹窗显示的顺序。默认值：0，取值范围：[-100000.0, 100000.0]。 |
+| double levelOrder                   | 自定义弹窗显示的顺序。<br>默认值：0，取值范围：[-100000.0, 100000.0]。超出取值范围属性不生效。 |
 
 **返回：**
 
@@ -88,7 +88,7 @@ int32_t (*setLevelOrder)(ArkUI_NativeDialogHandle handle, double levelOrder)
 
 ### registerOnWillAppear()
 
-```
+```c
 int32_t (*registerOnWillAppear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))
 ```
 
@@ -119,7 +119,7 @@ int32_t (*registerOnWillAppear)(ArkUI_NativeDialogHandle handle, void* userData,
 
 ### registerOnDidAppear()
 
-```
+```c
 int32_t (*registerOnDidAppear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))
 ```
 
@@ -150,7 +150,7 @@ int32_t (*registerOnDidAppear)(ArkUI_NativeDialogHandle handle, void* userData, 
 
 ### registerOnWillDisappear()
 
-```
+```c
 int32_t (*registerOnWillDisappear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))
 ```
 
@@ -181,7 +181,7 @@ int32_t (*registerOnWillDisappear)(ArkUI_NativeDialogHandle handle, void* userDa
 
 ### registerOnDidDisappear()
 
-```
+```c
 int32_t (*registerOnDidDisappear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))
 ```
 
@@ -212,7 +212,7 @@ int32_t (*registerOnDidDisappear)(ArkUI_NativeDialogHandle handle, void* userDat
 
 ### setBorderWidth()
 
-```
+```c
 int32_t (*setBorderWidth)(ArkUI_NativeDialogHandle handle, float top, float right, float bottom, float left, ArkUI_LengthMetricUnit unit)
 ```
 
@@ -246,7 +246,7 @@ int32_t (*setBorderWidth)(ArkUI_NativeDialogHandle handle, float top, float righ
 
 ### setBorderColor()
 
-```
+```c
 int32_t (*setBorderColor)(ArkUI_NativeDialogHandle handle, uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)
 ```
 
@@ -279,7 +279,7 @@ int32_t (*setBorderColor)(ArkUI_NativeDialogHandle handle, uint32_t top, uint32_
 
 ### setBorderStyle()
 
-```
+```c
 int32_t (*setBorderStyle)(ArkUI_NativeDialogHandle handle, int32_t top, int32_t right, int32_t bottom, int32_t left)
 ```
 
@@ -299,10 +299,10 @@ int32_t (*setBorderStyle)(ArkUI_NativeDialogHandle handle, int32_t top, int32_t 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  int32_t top | 上边框的样式。 |
-|  int32_t right | 右边框的样式。 |
-|  int32_t bottom | 下边框的样式。 |
-|  int32_t left | 左边框的样式。 |
+|  int32_t top | 上边框的样式。参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。 |
+|  int32_t right | 右边框的样式。参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。 |
+|  int32_t bottom | 下边框的样式。参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。 |
+|  int32_t left | 左边框的样式。参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。 |
 
 **返回：**
 
@@ -312,7 +312,7 @@ int32_t (*setBorderStyle)(ArkUI_NativeDialogHandle handle, int32_t top, int32_t 
 
 ### setWidth()
 
-```
+```c
 int32_t (*setWidth)(ArkUI_NativeDialogHandle handle, float width, ArkUI_LengthMetricUnit unit)
 ```
 
@@ -343,7 +343,7 @@ int32_t (*setWidth)(ArkUI_NativeDialogHandle handle, float width, ArkUI_LengthMe
 
 ### setHeight()
 
-```
+```c
 int32_t (*setHeight)(ArkUI_NativeDialogHandle handle, float height, ArkUI_LengthMetricUnit unit)
 ```
 
@@ -374,7 +374,7 @@ int32_t (*setHeight)(ArkUI_NativeDialogHandle handle, float height, ArkUI_Length
 
 ### setShadow()
 
-```
+```c
 int32_t (*setShadow)(ArkUI_NativeDialogHandle handle, ArkUI_ShadowStyle shadow)
 ```
 
@@ -404,7 +404,7 @@ int32_t (*setShadow)(ArkUI_NativeDialogHandle handle, ArkUI_ShadowStyle shadow)
 
 ### setCustomShadow()
 
-```
+```c
 int32_t (*setCustomShadow)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* customShadow)
 ```
 
@@ -434,7 +434,7 @@ int32_t (*setCustomShadow)(ArkUI_NativeDialogHandle handle, const ArkUI_Attribut
 
 ### setBackgroundBlurStyle()
 
-```
+```c
 int32_t (*setBackgroundBlurStyle)(ArkUI_NativeDialogHandle handle, ArkUI_BlurStyle blurStyle)
 ```
 
@@ -464,7 +464,7 @@ int32_t (*setBackgroundBlurStyle)(ArkUI_NativeDialogHandle handle, ArkUI_BlurSty
 
 ### setKeyboardAvoidMode()
 
-```
+```c
 int32_t (*setKeyboardAvoidMode)(ArkUI_NativeDialogHandle handle, ArkUI_KeyboardAvoidMode keyboardAvoidMode)
 ```
 
@@ -494,7 +494,7 @@ int32_t (*setKeyboardAvoidMode)(ArkUI_NativeDialogHandle handle, ArkUI_KeyboardA
 
 ### enableHoverMode()
 
-```
+```c
 int32_t (*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode)
 ```
 
@@ -524,7 +524,7 @@ int32_t (*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode
 
 ### setHoverModeArea()
 
-```
+```c
 int32_t (*setHoverModeArea)(ArkUI_NativeDialogHandle handle, ArkUI_HoverModeAreaType hoverModeAreaType)
 ```
 
@@ -554,7 +554,7 @@ int32_t (*setHoverModeArea)(ArkUI_NativeDialogHandle handle, ArkUI_HoverModeArea
 
 ### setFocusable()
 
-```
+```c
 int32_t (*setFocusable)(ArkUI_NativeDialogHandle handle, bool focusable)
 ```
 
@@ -584,7 +584,7 @@ int32_t (*setFocusable)(ArkUI_NativeDialogHandle handle, bool focusable)
 
 ### setBackgroundBlurStyleOptions()
 
-```
+```c
 int32_t (*setBackgroundBlurStyleOptions)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundBlurStyleOptions)
 ```
 
@@ -604,7 +604,7 @@ int32_t (*setBackgroundBlurStyleOptions)(ArkUI_NativeDialogHandle handle, const 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundBlurStyleOptions | 背景模糊效果。参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>        .value[0].i32 表示深浅色模式，取[ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode)枚举值。<br>        .value[1]?.i32 表示取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。<br>        .value[2]?.f32 表示模糊效果程度，取[0.0,1.0]范围内的值。<br>        .value[3]?.u32 表示灰阶模糊参数，对黑色的提亮程度，有效值范围为[0,127]。<br>        .value[4]?.u32 表示灰阶模糊参数，对白色的压暗程度，有效值范围为[0,127]。<br>        .value[5]?.i32 表示模糊激活策略，取[ArkUI_BlurStyleActivePolicy](capi-native-type-h.md#arkui_blurstyleactivepolicy)枚举值。<br>        .value[6]?.u32 表示窗口失焦后，窗口内控件模糊效果会被移除，此时控件背板的颜色，0xargb类型。 |
+|  const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundBlurStyleOptions | 背景模糊效果。参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>        .value[0].i32：表示深浅色模式，取[ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode)枚举值。<br>        .value[1]?.i32：表示取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。<br>        .value[2]?.f32：表示模糊效果程度，取[0.0,1.0]范围内的值，超出有效值区间时取边界值。<br>        .value[3]?.u32：表示灰阶模糊参数，对黑色的提亮程度，有效值范围为[0,127]，超出有效值范围，取0。<br>        .value[4]?.u32：表示灰阶模糊参数，对白色的压暗程度，有效值范围为[0,127]，超出有效值范围，取0。<br>        .value[5]?.i32：表示模糊激活策略，取[ArkUI_BlurStyleActivePolicy](capi-native-type-h.md#arkui_blurstyleactivepolicy)枚举值。<br>        .value[6]?.u32：表示窗口失焦后，窗口内控件模糊效果会被移除，此时控件背板的颜色，0xargb类型。 |
 
 **返回：**
 
@@ -614,7 +614,7 @@ int32_t (*setBackgroundBlurStyleOptions)(ArkUI_NativeDialogHandle handle, const 
 
 ### setBackgroundEffect()
 
-```
+```c
 int32_t (*setBackgroundEffect)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundEffect)
 ```
 
@@ -634,7 +634,7 @@ int32_t (*setBackgroundEffect)(ArkUI_NativeDialogHandle handle, const ArkUI_Attr
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundEffect | 背景效果参数。参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>        .value[0].f32 表示模糊半径，单位为vp。<br>        .value[1]?.f32 表示饱和度。<br>        .value[2]?.f32 表示亮度。<br>        .value[3]?.u32 表示颜色，0xargb类型。<br>        .value[4]?.i32 表示取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。<br>        .value[5]?.u32 表示灰阶模糊参数，对黑色的提亮程度，有效值范围为[0,127]。<br>        .value[6]?.u32 表示灰阶模糊参数，对白色的压暗程度，有效值范围为[0,127]。<br>        .value[7]?.i32 表示模糊激活策略，取[ArkUI_BlurStyleActivePolicy](capi-native-type-h.md#arkui_blurstyleactivepolicy)枚举值。<br>        .value[8]?.u32 表示窗口失焦后，窗口内控件模糊效果会被移除，此时控件背板的颜色，0xargb类型。 |
+|  const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundEffect | 背景效果参数。参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>        .value[0].f32：表示模糊半径，单位为vp。<br>        .value[1]?.f32：表示饱和度。<br>        .value[2]?.f32：表示亮度。<br>        .value[3]?.u32：表示颜色，0xargb类型。<br>        .value[4]?.i32：表示取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。<br>        .value[5]?.u32：表示灰阶模糊参数，对黑色的提亮程度，有效值范围为[0,127]，超出有效值范围，取0。<br>        .value[6]?.u32：表示灰阶模糊参数，对白色的压暗程度，有效值范围为[0,127]，超出有效值范围，取0。<br>        .value[7]?.i32：表示模糊激活策略，取[ArkUI_BlurStyleActivePolicy](capi-native-type-h.md#arkui_blurstyleactivepolicy)枚举值。<br>        .value[8]?.u32：表示窗口失焦后，窗口内控件模糊效果会被移除，此时控件背板的颜色，0xargb类型。 |
 
 **返回：**
 

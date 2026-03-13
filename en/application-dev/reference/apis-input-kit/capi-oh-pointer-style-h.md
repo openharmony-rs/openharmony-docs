@@ -33,7 +33,7 @@ Defines the mouse pointer styles.
 
 ### Input_PointerStyle
 
-```
+```c
 enum Input_PointerStyle
 ```
 
@@ -97,4 +97,4 @@ Enumerates the pointer styles.
 | LASER_CURSOR        | 49   | Floating This pointer can be used only when the stylus enters the air mouse mode.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
 | LASER_CURSOR_DOT        | 50   | Click This pointer can be used only when the stylus enters the air mouse mode.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
 | LASER_CURSOR_DOT_RED        | 51   | Laser pointer This pointer can be used only when the stylus enters the air mouse mode.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
-| DEVELOPER_DEFINED_ICON        | -100   | Custom pointer |You can customize pointers as needed via API.|
+| DEVELOPER_DEFINED_ICON        | -100 | Custom pointer. You can use the [OH_Input_SetCustomCursor](./capi-oh-input-manager-h.md#oh_input_setcustomcursor) to set a custom pointer, but not the [OH_Input_SetPointerStyle](./capi-oh-input-manager-h.md#oh_input_setpointerstyle).|You can customize pointers as needed via API.|

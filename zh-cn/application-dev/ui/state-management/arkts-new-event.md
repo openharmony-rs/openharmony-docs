@@ -16,6 +16,8 @@
 > 从API version 12开始，在\@ComponentV2装饰的自定义组件中支持使用\@Event装饰器。
 >
 > 从API version 12开始，该装饰器支持在原子化服务中使用。
+>
+> 从API version 23开始，该装饰器支持在ArkTS卡片中使用。
 
 ## 概述
 
@@ -45,7 +47,7 @@
   ```ts
   @ComponentV2
   struct Index {
-    @Event changeFactory: () => void = () => {}; //正确用法
+    @Event changeFactory: () => void = () => {}; // 正确用法
     @Event message: string = 'abcd'; // 错误用法，装饰非函数类型变量，@Event无作用
   }
   @Component
@@ -157,7 +159,7 @@ struct Index2 {
 
 在上面的示例中，点击文字触发\@Event函数事件改变子组件的值，打印出的日志为：
 
-```
+```text
 in changeIndex 20
 after changeIndex 0
 ```

@@ -82,17 +82,17 @@ struct Index {
 > 当UI刷新时，会执行组件的属性设置方法，利用这一机制可以通过观察`getFontSize`方法是否被调用来判断当前组件是否刷新。
 
 - UI首次渲染完成，观察到输出如下日志：
-  ```
+  ```text
   Component 1 render
   Component 2 render
   ```
 - 当点击`Button('change name')`时，即使只修改了`info.name`，观察日志发现两个Text组件仍会重新渲染。组件```Text(`age: ${this.info.age}`)```并未使用`name`属性，但仍因为`info.name`的改变而刷新，因此这次刷新是冗余的。日志输出如下：
-  ```
+  ```text
   Component 1 render
   Component 2 render
   ```
 - 同理，点击`Button('change age')`，也会触发```Text(`name: ${this.info.name}`)```的刷新。日志输出如下：
-  ```
+  ```text
   Component 1 render
   Component 2 render
   ```
@@ -105,7 +105,7 @@ struct Index {
 | \@Track变量装饰器  | 说明                  |
 | ------------------ | -------------------- |
 | 装饰器参数   | 无 |
-| 可装饰的变量 | class对象的非静态成员属性。 |
+| 可装饰的变量 | class对象的非静态成员属性。\@Track不支持观察Function类型的数据变化，修改\@Track装饰的Function类型的数据，UI不会刷新。 |
 
 
 
@@ -208,11 +208,11 @@ struct AddLog {
 
 ## 限制条件
 
-- 如果class类中使用了\@Track装饰器，那么该class类中非\@Track装饰的属性不能在\@Component UI中使用，包括不能绑定在组件上、不能用于初始化子组件，错误的使用将导致运行时报错，详见[在UI中使用非\@Track装饰的属性发生运行时报错](#在ui中使用非track装饰的属性发生运行时报错)；可以在非UI中使用非\@Track装饰的属性，如事件回调函数中、生命周期函数中等。
+- 如果class类中使用了\@Track装饰器，那么该class类中非\@Track装饰的属性不能在\@Component UI中使用，包括不能绑定在组件上、不能用于初始化子组件，错误的使用将导致运行时报错，从API version 23开始，将返回错误码[140110](../../reference/apis-arkui/errorcode-stateManagement.md#140110-在ui中使用非track装饰的属性发生运行时报错)，详见[在UI中使用非\@Track装饰的属性发生运行时报错](#在ui中使用非track装饰的属性发生运行时报错)；可以在非UI中使用非\@Track装饰的属性，如事件回调函数中、生命周期函数中等。
 
-- API version 19及以后，\@Track使用在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)的UI中，不会引起运行时报错，但依旧不会刷新，详见[常见场景](./arkts-v1-v2-mixusage.md#observed装饰的class)。
+- API version 19及以后，\@Track使用在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)的UI中，不会引起运行时报错，但依旧不会刷新，详见[\@Observed+\@Track装饰的class（V1->V2）](./arkts-v1-v2-mixusage.md#传递class类型v1-v2)、[@Observed+\@Track装饰的class（V2->V1）](./arkts-v1-v2-mixusage.md#传递class类型v2-v1)。
 
-- 建议开发者不要混用包含\@Track的class对象和不包含\@Track的class对象，如联合类型中、类继承中等。
+- 建议开发者不要混用包含\@Track的class对象和不包含\@Track的class对象，如联合类型中、类继承中等，容易在UI中误用非\@Track装饰的属性，导致运行时报错。
 
 
 ## 使用场景
@@ -288,7 +288,7 @@ struct AddLog {
 
 ### 在UI中使用非\@Track装饰的属性发生运行时报错
 
-在UI中使用非\@Track装饰的属性，运行时会报错。
+在UI中使用非\@Track装饰的属性，运行时会报错，从API version 23开始，将返回错误码140110。需要给`age`也添加\@Track装饰器。
 
 ```ts
 class Person {

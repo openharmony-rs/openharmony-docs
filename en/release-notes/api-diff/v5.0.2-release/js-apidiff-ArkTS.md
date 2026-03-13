@@ -1,0 +1,11 @@
+| Change Type | Old Version | New Version | d.ts File |
+| ---- | ------ | ------ | -------- |
+|API deprecated version change|Class name: ConvertXML;<br>API declaration: convertToJSObject(xml: string, options?: ConvertOptions): Object;<br>Differences: NA|Class name: ConvertXML;<br>API declaration: convertToJSObject(xml: string, options?: ConvertOptions): Object;<br>Differences: 14|api/@ohos.convertxml.d.ts|
+|API deprecated version change|Class name: types;<br>API declaration: isBooleanObject(value: Object): boolean;<br>Differences: NA|Class name: types;<br>API declaration: isBooleanObject(value: Object): boolean;<br>Differences: 14|api/@ohos.util.d.ts|
+|API deprecated version change|Class name: types;<br>API declaration: isBoxedPrimitive(value: Object): boolean;<br>Differences: NA|Class name: types;<br>API declaration: isBoxedPrimitive(value: Object): boolean;<br>Differences: 14|api/@ohos.util.d.ts|
+|API deprecated version change|Class name: types;<br>API declaration: isNumberObject(value: Object): boolean;<br>Differences: NA|Class name: types;<br>API declaration: isNumberObject(value: Object): boolean;<br>Differences: 14|api/@ohos.util.d.ts|
+|API deprecated version change|Class name: types;<br>API declaration: isStringObject(value: Object): boolean;<br>Differences: NA|Class name: types;<br>API declaration: isStringObject(value: Object): boolean;<br>Differences: 14|api/@ohos.util.d.ts|
+|API deprecated version change|Class name: types;<br>API declaration: isSymbolObject(value: Object): boolean;<br>Differences: NA|Class name: types;<br>API declaration: isSymbolObject(value: Object): boolean;<br>Differences: 14|api/@ohos.util.d.ts|
+|API deprecated version change|Class name: XmlPullParser;<br>API declaration: parse(option: ParseOptions): void;<br>Differences: NA|Class name: XmlPullParser;<br>API declaration: parse(option: ParseOptions): void;<br>Differences: 14|api/@ohos.xml.d.ts|
+|New API |NA|Class name: ConvertXML;<br>API declaration: fastConvertToJSObject(xml: string, options?: ConvertOptions): Object;<br>Differences: fastConvertToJSObject(xml: string, options?: ConvertOptions): Object;|api/@ohos.convertxml.d.ts|
+|New API |NA|Class name: XmlPullParser;<br>API declaration: parseXml(option: ParseOptions): void;<br>Differences: parseXml(option: ParseOptions): void;|api/@ohos.xml.d.ts|

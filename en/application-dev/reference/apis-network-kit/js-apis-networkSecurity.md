@@ -23,7 +23,6 @@ import { networkSecurity } from '@kit.NetworkKit';
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define certificate blobs
 const cert: networkSecurity.CertBlob = {
@@ -128,7 +127,6 @@ For details about the error codes, see [Network Security Error Codes](errorcode-
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define certificate blobs
 const cert:networkSecurity.CertBlob = {
@@ -210,7 +208,6 @@ For details about the error codes, see [Network Security Error Codes](errorcode-
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // Create certificate blobs
 const cert: networkSecurity.CertBlob = {
@@ -269,7 +266,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let result: boolean = networkSecurity.isCleartextPermitted();
@@ -313,7 +309,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let result: boolean = networkSecurity.isCleartextPermittedByHostName("xxx");

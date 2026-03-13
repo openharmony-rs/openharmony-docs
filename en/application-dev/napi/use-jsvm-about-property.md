@@ -236,7 +236,7 @@ const char *srcCallNative = R"JS(
 
 Expected result:
 ```ts
-// Output of hasProperty (obj, "data").
+// hasProperty (obj, "data") output
 JSVM OH_JSVM_HasProperty success:1
 // Output of hasProperty (obj, 0).
 JSVM OH_JSVM_HasProperty success:0
@@ -245,6 +245,7 @@ JSVM OH_JSVM_HasProperty success:0
 ### OH_JSVM_DeleteProperty
 
 Call **OH_JSVM_DeleteProperty** to delete the property specified by **key** from an object.
+
 If the object is a non-extensible object or the property is not configurable, the property cannot be deleted.
 
 CPP code:

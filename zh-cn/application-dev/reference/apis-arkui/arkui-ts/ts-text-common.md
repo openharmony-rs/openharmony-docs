@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -76,6 +76,79 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 | --------------------------------------------- | ----------- |
 | [PositionWithAffinity](#positionwithaffinity12) | 字形位置信息。|
 
+### getCharacterPositionAtCoordinate<sup>24+</sup>
+
+getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | undefined
+
+获取距给定坐标最近的字符的位置信息。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                 |
+| ------ | ------ | ---- | -------------------- |
+| x | number | 是    | 相对于组件的横坐标。<br/>单位：[px](ts-pixel-units.md) |
+| y | number | 是    | 相对于组件的纵坐标。<br/>单位：[px](ts-pixel-units.md) |
+
+**返回值：**
+
+| 类型                                          | 说明        |
+| --------------------------------------------- | ----------- |
+| [PositionWithAffinity](#positionwithaffinity12) \| undefined | 字符的位置信息。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
+
+### getGlyphRangeForCharacterRange<sup>24+</sup>
+
+getGlyphRangeForCharacterRange(charRange: [TextRange](#textrange12)): Array&lt;[TextRange](#textrange12)&gt; | undefined
+
+根据给定的文本字符范围来获取范围内的字形范围，以及实际的字符范围。例如文本为"世界Hello"，其中文本"世"的字形索引范围为[0, 1]，一个汉字占三个字符，所以其对应的字符索引范围为[0, 3]。如果指定的字符索引范围是[0, 1]，但无法解析出三分之一个汉字，所以实际的字符索引范围是[0, 3]。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                 |
+| ------ | ------ | ---- | -------------------- |
+| charRange | [TextRange](#textrange12) | 是    | 文本的字符范围。|
+
+**返回值：**
+
+| 类型                                          | 说明        |
+| --------------------------------------------- | ----------- |
+|  Array&lt;[TextRange](#textrange12)&gt; \| undefined | 数组中含有两个元素，第一个元素是字形范围，第二个元素是实际的字符范围，当返回的范围是异常值时，范围内元素为-1。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
+
+### getCharacterRangeForGlyphRange<sup>24+</sup>
+
+getCharacterRangeForGlyphRange(glyphRange: [TextRange](#textrange12)): Array&lt;[TextRange](#textrange12)&gt; | undefined
+
+根据给定的文本字形范围来获取范围内的字符范围，以及实际的字形范围。例如文本为"世界Hello"，其字形索引范围为[0, 7]，一个汉字占三个字符，所以其对应的字符索引范围为[0, 11]。如果指定的索引范围是[0, 11]，但字形一共只有7个，所以实际的字形索引范围是[0, 7]。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                 |
+| ------ | ------ | ---- | -------------------- |
+| glyphRange | [TextRange](#textrange12) | 是    | 文本的字形范围。|
+
+**返回值：**
+
+| 类型                                          | 说明        |
+| --------------------------------------------- | ----------- |
+| Array&lt;[TextRange](#textrange12)&gt; \| undefined | 数组中含有两个元素，第一个元素是字符范围，第二个元素是实际的字形范围，当返回的范围是异常值时，范围内元素为-1。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
+
 ### getLineMetrics<sup>12+</sup>
 
 getLineMetrics(lineNumber: number): LineMetrics
@@ -132,7 +205,7 @@ getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: Rect
 
 | 名称      | 类型                   | 只读 | 可选 | 说明                      |
 | --------- | --------------------- | ---- | ---- | ------------------------ |
-| position  | number                | 否   | 否   | 字形相对于组件内容的索引，整数。  |
+| position  | number                | 否   | 否   | 字形或字符相对于组件内容的索引，整数。  |
 | affinity  | [Affinity](#affinity12) | 否   | 否   | 位置亲和度。             |
 
 ## TextMenuItemId<sup>12+</sup>
@@ -149,23 +222,24 @@ getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: Rect
 
 | 名称           | 类型              | 只读   | 可选  | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
-| CUT  | [TextMenuItemId](#textmenuitemid12) |  是  |  否 | 默认裁剪。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| COPY  | [TextMenuItemId](#textmenuitemid12) |  是  |  否  | 默认复制。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PASTE | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 默认粘贴。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SELECT_ALL   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 默认全选。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| COLLABORATION_SERVICE   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 互通服务。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| CAMERA_INPUT   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否   | 拍摄输入。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| AI_WRITER<sup>13+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 可对选中的文本进行润色、摘要提取、排版等。该菜单项依赖大模型能力，否则不生效。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 翻译。对选中的文本提供翻译服务。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 分享。对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 搜索。对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 打开链接。对选中的URL提供跳转服务，拉起浏览器搜索或者应用页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建邮件。对选中的邮箱地址提供跳转服务，拉起邮箱应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 呼叫。对选中的电话号码跳转服务，拉起电话拨号页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 导航前往。对选中的地址提供跳转服务，拉起地图应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建日程。对选中的日期和时间提供跳转服务，拉起新建日程页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的文本提供AI问询能力。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| autoFill<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 自动填充。提供自动填充内容能力，仅支持[Search](ts-basic-components-search.md)/[TextInput](ts-basic-components-textinput.md)/[TextArea](ts-basic-components-textarea.md)/[RichEditor](ts-basic-components-richeditor.md)。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| CUT  | [TextMenuItemId](#textmenuitemid12) |  是  |  否 | 默认裁剪，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| COPY  | [TextMenuItemId](#textmenuitemid12) |  是  |  否  | 默认复制，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PASTE | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 默认粘贴，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| SELECT_ALL   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 默认全选，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| COLLABORATION_SERVICE   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 互通服务，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CAMERA_INPUT   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否   | 拍摄输入，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| AI_WRITER<sup>13+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 可对选中的文本进行润色、摘要提取、排版等，为一级菜单项。该菜单项依赖大模型能力，否则不生效。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 翻译，为一级菜单项。对选中的文本提供翻译服务。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 分享，为一级菜单项。对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 搜索，为一级菜单项。对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 打开链接，为一级菜单项。对选中的URL提供跳转服务，拉起浏览器搜索或者应用页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建邮件，为一级菜单项。对选中的邮箱地址提供跳转服务，拉起邮箱应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 呼叫，为一级菜单项。对选中的电话号码跳转服务，拉起电话拨号页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 导航前往，为一级菜单项。对选中的地址提供跳转服务，拉起地图应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建日程，为一级菜单项。对选中的日期和时间提供跳转服务，拉起新建日程页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的文本提供AI问询能力，为一级菜单项。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| autoFill<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 自动填充，为一级菜单项。点击后会展开二级菜单项“密码保险箱”，仅支持[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)或[RichEditor](ts-basic-components-richeditor.md)。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| passwordVault<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 密码保险箱，为二级菜单项。点击该菜单项后会拉起密码保险箱应用，该应用提供自动填充账号密码能力，仅支持[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)或[RichEditor](ts-basic-components-richeditor.md)。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 ### of
 
 static of(id: ResourceStr): TextMenuItemId
@@ -239,7 +313,7 @@ equals(id: TextMenuItemId): boolean
 
 onCreateMenu(menuItems: Array\<TextMenuItem>): Array\<TextMenuItem>
 
-在菜单创建时触发该回调，可在该回调中进行菜单数据设置。
+在菜单创建时触发该回调，可在该回调中进行菜单数据设置。入参和返回值只包含一级菜单项，不包含二级菜单项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -271,7 +345,7 @@ onMenuItemClick(menuItem: TextMenuItem, range: TextRange): boolean
 
 | 参数名  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| menuItem | [TextMenuItem](#textmenuitem12对象说明) | 是   | 菜单项。 |
+| menuItem | [TextMenuItem](#textmenuitem12对象说明) | 是   | 菜单项。<br/>**说明：** <br/>从API version 23开始，对于具备可展开二级菜单能力的一级菜单项，例如自动填充，仅执行系统默认逻辑，不会执行用户自定义逻辑。 |
 | range | [TextRange](#textrange12) | 是   | 选中的文本信息。 |
 
 **返回值：**
@@ -284,7 +358,7 @@ onMenuItemClick(menuItem: TextMenuItem, range: TextRange): boolean
 
 type OnPrepareMenuCallback = (menuItems: Array\<TextMenuItem\>) => Array\<TextMenuItem\>
 
-当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。
+当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。入参和返回值只包含一级菜单项，不包含二级菜单项。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -331,7 +405,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 | -- | -- | -- | -- |
 | value | string | 是 | 文本框内正式上屏的文本内容。 |
 | previewText | [PreviewText](#previewtext12) | 否 | 预上屏文本信息，包含预上屏起始位置和文本内容。 |
-| options<sup>15+</sup> | [TextChangeOptions](#textchangeoptions15对象说明) | 否 | 文本内容变化信息，包含变化前后的选区范围、变化前的文本内容和预上屏文本信息。 |
+| options<sup>15+</sup> | [TextChangeOptions](#textchangeoptions15对象说明) | 否 | 文本内容变化信息，包含文本的选中区范围、文本框内正式上屏的文本内容、预上屏文本内容。 |
 
 ## TextDataDetectorType<sup>11+</sup>枚举说明
 
@@ -437,7 +511,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 | onDetectResultUpdate   | Callback\<string> | 否 | 是  | 文本识别成功后，触发onDetectResultUpdate回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | color<sup>12+</sup>   | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 设置文本识别成功后的实体颜色。<br/>默认值：'#ff0a59f7'<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | decoration<sup>12+</sup>  | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface)| 否 | 是   | 设置文本识别成功后的实体装饰线样式。<br/>默认值：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.Underline,<br/>&nbsp;color:&nbsp;与实体颜色一致,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| enablePreviewMenu<sup>20+</sup>   | boolean | 否 | 是   | 设置是否开启文本识别长按显示预览菜单。true表示开启，false表示未开启。<br/>默认值：false<br/>当[copyOptions](ts-basic-components-richeditor.md#copyoptions)设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| enablePreviewMenu<sup>20+</sup>   | boolean | 否 | 是   | 设置是否开启文本识别长按显示预览菜单。true表示开启，false表示未开启。<br/>默认值：false<br/>当[copyOptions](ts-basic-components-richeditor.md#copyoptions)设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。<br/>**设备行为差异：** 该参数在Phone、Tablet中可正常调用，在PC/2in1、TV和Wearable等其他设备类型中无效果。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## PreviewText<sup>12+</sup>
 
@@ -465,6 +539,31 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 | 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
 | enableVariableFontWeight | boolean | 否 | 是  | 是否启用可变字重调节。字体配置项作为[fontWeight](./ts-basic-components-text.md#fontweight12)接口的入参，fontWeight接口中weight取值为[100, 900]内非整百数值时，enableVariableFontWeight用于设置weight的值是否生效。<br/>默认值：false <br/>true：启用可变字重调节。此时如果weight取值为[100, 900]范围内任意整数，字重取值为weight。<br/>false：禁用可变字重调节。此时如果weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。|
+
+## FontConfigs<sup>24+</sup>对象说明
+
+字体配置项。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
+| -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
+| fontWeightConfigs | [FontWeightConfigs](#fontweightconfigs24对象说明) | 否 | 是 | 字体粗细配置。默认值继承[FontWeightConfigs](#fontweightconfigs24对象说明)。 |
+
+## FontWeightConfigs<sup>24+</sup>对象说明
+
+字体粗细配置项。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
+| -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
+| enableVariableFontWeight | boolean | 否 | 是 | 是否启用可变字重调节。当设置字体粗细的值weight为[100, 900]内非整百数值时，enableVariableFontWeight用于设置weight的值是否生效。<br/>默认值：false <br/>true：启用可变字重调节。此时如果weight取值为[100, 900]范围内任意整数，字重取值为weight，否则取默认值400。<br/>false：禁用可变字重调节。此时如果weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。当启用了可变字重调节，则文本字体粗细不再跟随设备的字体粗细级别更新。|
+| enableDeviceFontWeightCategory | boolean | 否 | 是 | 是否随设备的字体粗细级别自动更新字重。<br/>默认值：true <br/>true：当设备的字体粗细级别发生变化时，字重会自动更新。<br/>false：当设备的字体粗细级别发生变化时，字重不会自动更新。 |
 
 ## OnDidChangeCallback<sup>12+</sup>
 
@@ -679,7 +778,7 @@ getPreviewText?(): PreviewText
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [PreviewText](#previewtext12) | 预上屏信息。 |.
+| [PreviewText](#previewtext12) | 预上屏信息。 |
 
 ## StyledStringController<sup>12+</sup>
 
@@ -856,7 +955,7 @@ type RectWidthStyle = RectWidthStyle
 | 名称 | 值 | 说明 |
 | ------- | ---- | ------------------- |
 | DEFAULT | 0 | 显示在当前窗口中。<br/>|
-| PREFER_WINDOW | 1 | 优先显示在独立窗口中，若不支持独立窗口，则显示在当前窗口中。<br/>**说明：** <br/>除应用主窗口、应用子窗口、系统模态窗口及系统桌面类型的窗口外，其他类型的窗口不支持将文本选择菜单显示在独立窗口中。<br/>在预览器中不支持将文本选择菜单显示在独立窗口中。<br/>在UIExtension中不支持将文本选择菜单显示在独立窗口中。<br/>当文本类组件已经显示在子窗类型的Popup、Dialog、Toast、Menu中时，不支持将其对应的文本选择菜单显示在独立窗口中。<br/>当TextInput、TextArea可支持拉起AutoFill时，不支持将其对应的文本选择菜单显示在独立窗口中。<br/>|
+| PREFER_WINDOW | 1 | 优先显示在独立窗口中，若不支持独立窗口，则显示在当前窗口中。<br/>**说明：** <br/>除应用主窗口、应用子窗口、系统模态窗口及系统桌面类型的窗口外，其他类型的窗口不支持将文本选择菜单显示在独立窗口中。<br/>在预览器中不支持将文本选择菜单显示在独立窗口中。<br/>在[UIExtension](../js-apis-arkui-uiExtension.md)中不支持将文本选择菜单显示在独立窗口中。<br/>当文本类组件已经显示在子窗类型的[Popup](./ohos-arkui-advanced-Popup.md)、[Dialog](./ohos-arkui-advanced-Dialog.md)、[Toast](../../../ui/arkts-create-toast.md)、[Menu](./ts-basic-components-menu.md)中时，不支持将其对应的文本选择菜单显示在独立窗口中。<br/>当TextInput、TextArea可支持拉起AutoFill时，不支持将其对应的文本选择菜单显示在独立窗口中。<br/>|
 
 ## TextMenuOptions<sup>16+</sup>对象说明
 
@@ -1020,7 +1119,7 @@ setExtraConfig(config: InputMethodExtraConfig): void
 
 | 名称              | 类型    | 只读 | 可选  | 说明                                                         |
 | ------------------- | ------- | ------- | ------- | ------------------------------------------------------------ |
-| overflowMode | [MaxLinesMode](#maxlinesmode20)  | 否  | 是 | `overflowMode`可配置TextArea组件的非内联模式。当超出设置的`maxLines`最大行数时，会启用滚动效果。需同时配置[`textOverflow`](ts-basic-components-textarea.md#textoverflow12)，且仅当`textOverflow`为None或Clip时，`MaxLinesMode`才能生效。默认情况下，`MaxLinesMode`的值为Clip，超出`maxLines`后文本会被截断。 |
+| overflowMode | [MaxLinesMode](#maxlinesmode20)  | 否  | 是 | `overflowMode`可配置[TextArea](./ts-basic-components-textarea.md)组件的非内联模式。当超出设置的`maxLines`最大行数时，会启用滚动效果。需同时配置[`textOverflow`](ts-basic-components-textarea.md#textoverflow12)，且仅当`textOverflow`为None或Clip时，`MaxLinesMode`才能生效。默认情况下，`MaxLinesMode`的值为Clip，超出`maxLines`后文本会被截断。 |
 
 ## MaxLinesMode<sup>20+</sup>
 
@@ -1145,6 +1244,18 @@ constructor(options?: NumericTextTransitionOptions)
 | -------- | -------- | -------- | -------- | -------- |
 | constraintWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否 | 是 | 设置被计算文本布局宽度。若不设置则宽度为单行布局所占最大宽度值。 |
 
+## SelectedDragPreviewStyle<sup>23+</sup>对象说明
+
+文本拖拽时的背板样式。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| color | [ResourceColor](ts-types.md#resourcecolor)  | 否 | 是 | 用于设置文本拖拽时的背板颜色。<br/>默认值：跟随主题。默认主题时，浅色模式显示白色，深色模式显示黑色。 |
+
 ## TextContentAlign<sup>21+</sup>
 
 文本内容区垂直对齐方向。
@@ -1161,16 +1272,16 @@ constructor(options?: NumericTextTransitionOptions)
 
 ## TextDirection<sup>22+</sup>
 
-文本方向。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+文本排版方向。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                   | 值  | 说明                  |
 | --------------------- | -------  | ------------------- |
-| LTR                   | 0  | 从左到右。 |
-| RTL                | 1  | 从右到左。 |
+| LTR                   | 0  | 文本排版方向从左到右。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| RTL                   | 1  | 文本排版方向从右到左。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| DEFAULT<sup>23+</sup> | 2  | 文本排版方向遵循组件布局方向。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| AUTO<sup>23+</sup>    | 3  | 遵循自身实际文本内容的排版方向，如果文本为 RTL（Right-to-Left）类语言（如藏文、维吾尔文），文本排版方向为从右到左。如果为 LTR（Left-to-Right）类语言（如中文、英文），文本排版方向为从左到右。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## InputMethodExtraConfig<sup>22+</sup>
 
@@ -1191,6 +1302,8 @@ type InputMethodExtraConfig = InputMethodExtraConfig
 Span的无障碍朗读功能属性。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

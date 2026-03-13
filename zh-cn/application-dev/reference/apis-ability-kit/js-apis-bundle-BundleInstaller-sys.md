@@ -12,13 +12,15 @@
 >
 > 本模块首批接口从API version 7 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 从API Version 9开始，该模块不再维护，建议使用[@ohos.bundle.installer.install](js-apis-installer-sys.md)替代。
+> 从API version 9开始，该模块不再维护，建议使用[@ohos.bundle.installer.install](js-apis-installer-sys.md)替代。
 >
 > 本模块为系统接口。
 
-## BundleInstaller.install<sup>(deprecated)<sup>
+## BundleInstaller.install<sup>(deprecated)</sup>
 
-> 从API version 9开始不再维护，建议使用[@ohos.bundle.installer.install](js-apis-installer-sys.md#bundleinstallerinstall)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[@ohos.bundle.installer.install](js-apis-installer-sys.md#bundleinstallerinstall)替代。
 
 install(bundleFilePaths: Array&lt;string&gt;, param: InstallParam, callback: AsyncCallback&lt;InstallStatus&gt;): void;
 
@@ -69,9 +71,11 @@ bundleInstall.getBundleInstaller().then(installer => {
 });
 ```
 
-## BundleInstaller.uninstall<sup>(deprecated)<sup>
+## BundleInstaller.uninstall<sup>(deprecated)</sup>
 
-> 从API version 9开始不再维护，建议使用[uninstall](js-apis-installer-sys.md#bundleinstalleruninstall)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[uninstall](js-apis-installer-sys.md#bundleinstalleruninstall)替代。
 
 uninstall(bundleName: string, param: InstallParam, callback: AsyncCallback&lt;InstallStatus&gt;): void;
 
@@ -121,9 +125,11 @@ bundleInstall.getBundleInstaller().then(installer => {
   console.error('getBundleInstaller failed. Cause: ' + message);
 });
 ```
-## BundleInstaller.recover<sup>(deprecated)<sup>
+## BundleInstaller.recover<sup>(deprecated)</sup>
 
-> 从API version 9开始不再维护，建议使用[recover](js-apis-installer-sys.md#bundleinstallerrecover)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[recover](js-apis-installer-sys.md#bundleinstallerrecover)替代。
 
 recover(bundleName: string, param: InstallParam, callback: AsyncCallback&lt;InstallStatus&gt;): void;
 
@@ -174,9 +180,11 @@ bundleInstall.getBundleInstaller().then(installer => {
 });
 ```
 
-## InstallParam<sup>(deprecated)<sup>
+## InstallParam<sup>(deprecated)</sup>
 
-> 从API version 9开始不再维护，建议使用[InstallParam](js-apis-installer-sys.md#installparam)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[InstallParam](js-apis-installer-sys.md#installparam)替代。
 
 安装、恢复或卸载时需要指定的参数。
 
@@ -190,7 +198,7 @@ bundleInstall.getBundleInstaller().then(installer => {
 | installFlag | number  | 否  | 否  | 指示安装标志, 默认值：1。 </br>取值范围：</br>1: 覆盖安装。</br>16: 免安装。|
 | isKeepData  | boolean | 否  | 否  | 指示应用卸载时是否保留包数据，默认值：false，true表示保留，false表示不保留。 |
 
-## InstallStatus<sup>(deprecated)<sup>
+## InstallStatus<sup>(deprecated)</sup>
 
 应用程序安装卸载的结果。
 

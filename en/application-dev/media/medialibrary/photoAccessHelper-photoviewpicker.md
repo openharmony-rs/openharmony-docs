@@ -120,7 +120,8 @@ The media library allows **Picker** to select a [media file URI](../../file-mana
      };
    
      try {
-       let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+       let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
+        await phAccessHelper.getAssets(fetchOptions);
        let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
        console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
        // Obtain the file attribute information, such as the title. If the attribute to obtain is not a default one, add the column name to fetchColumns.
@@ -129,7 +130,8 @@ The media library allows **Picker** to select a [media file URI](../../file-mana
        let requestOptions: photoAccessHelper.RequestOptions = {
          deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
        }
-       await photoAccessHelper.MediaAssetManager.requestImageData(context, photoAsset, requestOptions, new MediaDataHandler());
+       await photoAccessHelper.MediaAssetManager.requestImageData(
+        context, photoAsset, requestOptions, new MediaDataHandler());
        console.info('requestImageData successfully');
        fetchResult.close();
      } catch (err) {

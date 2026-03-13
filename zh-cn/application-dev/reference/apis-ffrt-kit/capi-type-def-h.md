@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -74,7 +74,7 @@
 
 ### ffrt_queue_priority_t
 
-```
+```c
 enum ffrt_queue_priority_t
 ```
 
@@ -93,7 +93,7 @@ enum ffrt_queue_priority_t
 
 ### ffrt_qos_default_t
 
-```
+```c
 enum ffrt_qos_default_t
 ```
 
@@ -110,10 +110,13 @@ enum ffrt_qos_default_t
 | ffrt_qos_utility | 实时工具 |
 | ffrt_qos_default | 默认类型 |
 | ffrt_qos_user_initiated | 用户期望 |
+| ffrt_qos_deadline_request | 时限请求<br>**起始版本：** 23 |
+| ffrt_qos_user_interactive | 用户交互<br>**起始版本：** 23 |
+| ffrt_qos_max = ffrt_qos_user_interactive | 最高QoS等级<br>**起始版本：** 23 |
 
 ### ffrt_storage_size_t
 
-```
+```c
 enum ffrt_storage_size_t
 ```
 
@@ -135,7 +138,7 @@ enum ffrt_storage_size_t
 
 ### ffrt_function_kind_t
 
-```
+```c
 enum ffrt_function_kind_t
 ```
 
@@ -152,7 +155,7 @@ enum ffrt_function_kind_t
 
 ### ffrt_dependence_type_t
 
-```
+```c
 enum ffrt_dependence_type_t
 ```
 
@@ -169,7 +172,7 @@ enum ffrt_dependence_type_t
 
 ### ffrt_error_t
 
-```
+```c
 enum ffrt_error_t
 ```
 
@@ -190,7 +193,7 @@ FFRT错误码。
 
 ### ffrt_mutex_type
 
-```
+```c
 enum ffrt_mutex_type
 ```
 
@@ -208,7 +211,7 @@ enum ffrt_mutex_type
 
 ### qos_default
 
-```
+```c
 enum qos_default
 ```
 
@@ -225,13 +228,16 @@ enum qos_default
 | qos_utility = ffrt_qos_utility | 实时工具 |
 | qos_default = ffrt_qos_default | 默认类型 |
 | qos_user_initiated = ffrt_qos_user_initiated | 用户期望 |
+| qos_deadline_request = ffrt_qos_deadline_request | 时限请求<br>**起始版本：** 23 |
+| qos_user_interactive = ffrt_qos_user_interactive | 用户交互<br>**起始版本：** 23 |
+| qos_max = ffrt_qos_user_interactive | 最高QoS等级<br>**起始版本：** 23 |
 
 
 ## 函数说明
 
 ### ffrt_function_t()
 
-```
+```c
 typedef void(*ffrt_function_t)(void*)
 ```
 
@@ -243,7 +249,7 @@ typedef void(*ffrt_function_t)(void*)
 
 ### ffrt_poller_cb()
 
-```
+```c
 typedef void (*ffrt_poller_cb)(void* data, uint32_t event)
 ```
 
@@ -255,7 +261,7 @@ poller回调函数定义。
 
 ### ffrt_timer_cb()
 
-```
+```c
 typedef void (*ffrt_timer_cb)(void* data)
 ```
 

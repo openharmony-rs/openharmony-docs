@@ -6,22 +6,30 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
+
+MediaAlbumChangeRequest provides APIs for managing the media album change request.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this class are supported since API version 11.
-
-MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)
-
-MediaAlbumChangeRequest provides APIs for managing the media album change request.
-
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
 
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
+
+## Attributes
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name          | Type   | Read-Only  | Optional | Description  |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | Yes   | No  | Used to verify the [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11) type.<br>If a class (such as **MediaAlbumChangeRequest**) object can be accessed, it is an implementation class of **MediaChangeRequest**.|
 
 ## constructor<sup>11+</sup>
 
@@ -72,7 +80,9 @@ getAlbum(): Album
 
 Obtains the album in the current album change request.
 
-**NOTE**: For the change request for creating an album, this API returns **null** before [applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) is called to apply the changes.
+> **NOTE**
+>
+> For the change request for creating an album, this API returns **null** before [applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) is called to apply the changes.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -51,51 +51,56 @@
    ```
 
 2. 创建段落样式，并使用构造段落生成器ParagraphBuilder生成段落实例。
-
-   ```ts
-   // 设置文本样式
-   let myTextStyle: text.TextStyle = {
-       fontSize: 100
-   };
-   // 创建一个段落样式对象，以设置排版风格
-   let myParagraphStyle: text.ParagraphStyle = {
-       textStyle: myTextStyle,
-   }
-   // 创建一个段落生成器
-   let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, new text.FontCollection());
-   ```
-
-3. 设置文本样式，添加文本内容。
-
-   ```ts
-   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-   // 添加文本
-   paragraphBuilder.addText("Hello World");
-   ```
+   <!-- @[arkts_independent_shaping_text_paragraph_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
    
+   ``` TypeScript
+   let myTextStyle: text.TextStyle = {
+     // 文本大小
+     fontSize: 60
+   };
+   let myParagraphStyle: text.ParagraphStyle = {
+     textStyle: myTextStyle,
+   };
+   let fontCollection = text.FontCollection.getGlobalInstance();
+   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   ```
+
+3. 添加文本内容。
+   <!-- @[arkts_independent_shaping_text_add_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
+   
+   ``` TypeScript
+   paragraphBuilder.addText('Hello World');
+   ```
+
 4. 创建行对象。获取行中所有文字的塑形结果。  
 使用createLine()方法创建一个单行对象，通过行对象getGlyphRuns()方法获取相同样式的文字单元。
-
-   ```ts
-   // 从第0个字符开始，获取11个字符，正好是“Hello World”这几个字符的结果。
+   <!-- @[arkts_independent_shaping_text_get_glyph_runs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
+   
+   ``` TypeScript
+   // 生成行
+   let lineTypeSet: text.LineTypeset = paragraphBuilder.buildLineTypeset()
    let textLine: text.TextLine = lineTypeSet.createLine(0, 11);
+   
    // 获取塑形结果
-   let runs: Array<text.Run> = textLine.getGlyphRuns();
+   let runs: text.Run[] = textLine.getGlyphRuns();
    ```
 
 5. 该步骤是文本塑形流程中的自定义绘制环节。通过调用getGlyphs()方法获取文本中每个字符对应的字形序号，再结合getFont()方法获取的字体对象，即可唯一确定每个字形的具体图形信息。  
 从 API version 20 开始，新增的getAdvances()方法能够返回一个数组，其中包含了每个字形在绘制时建议占用的宽度和高度。依赖这些精确的测量数据，开发者可以自由地计算并定义每个字形的绘制位置，从而实现复杂的文本布局效果，如自定义字符间距、垂直偏移或特殊排版。
-
-   ```ts
+   <!-- @[arkts_independent_shaping_text_drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
+   
+   ``` TypeScript
+   let x: number = 0;
+   let y: number = 0;
    for (let index = 0; index < runs.length; index++) {
      const run = runs[index];
      // 绘制字形
-     let glyphs: Array<number> = run.getGlyphs();
+     let glyphs: number[] = run.getGlyphs();
      let font: drawing.Font = run.getFont();
-     let advances: Array<common2D.Point> = run.getAdvances({ start: 0, end: 0 });
-
+     let advances: common2D.Point[] = run.getAdvances({ start: 0, end: 0 });
+   
      // 创建字形buffer，通过drawing接口进行字形独立绘制
-     let runBuffer: Array<drawing.TextBlobRunBuffer> = [];
+     let runBuffer: drawing.TextBlobRunBuffer[] = [];
      for (let i = 0; i < glyphs.length; i++) {
        runBuffer.push({ glyph: glyphs[i], positionX: x, positionY: y });
        x += advances[i].x + 10;
@@ -106,125 +111,6 @@
      canvas.drawTextBlob(textBlob, 20, 100);
    }
    ```
-
-### 完整示例
-
-完整的文本塑形示例如下。
-<!-- @[arkts_independent_shaping_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
-
-``` TypeScript
-import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-import { UIContext } from '@kit.ArkUI'
-import { text } from '@kit.ArkGraphics2D'
-import { drawing } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
-
-@Builder
-export function PageBuilder(_: string) {
-  Index();
-}
-
-
-@Entry
-@Component
-export default struct Index {
-  @State message: string = 'Hello World';
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    NavDestination() {
-      Column() {
-        Row() {
-          NodeContainer(this.myNodeController)
-            .height('100%')
-            .width('100%')
-        }
-        .width('100%')
-      }
-    }
-  }
-}
-
-// 文本绘制代码逻辑
-function drawText(canvas: drawing.Canvas) {
-  let myTextStyle: text.TextStyle = {
-    // 文本大小
-    fontSize: 60
-  };
-  let myParagraphStyle: text.ParagraphStyle = {
-    textStyle: myTextStyle,
-  };
-  let fontCollection = text.FontCollection.getGlobalInstance();
-  let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-  // 添加文本
-  paragraphBuilder.addText('Hello World');
-  // 生成行
-  let lineTypeSet: text.LineTypeset = paragraphBuilder.buildLineTypeset()
-  let textLine: text.TextLine = lineTypeSet.createLine(0, 11);
-
-  // 获取塑形结果
-  let runs: text.Run[] = textLine.getGlyphRuns();
-  let x: number = 0;
-  let y: number = 0;
-  for (let index = 0; index < runs.length; index++) {
-    const run = runs[index];
-    // 绘制字形
-    let glyphs: number[] = run.getGlyphs();
-    let font: drawing.Font = run.getFont();
-    let advances: common2D.Point[] = run.getAdvances({ start: 0, end: 0 });
-
-    // 创建字形buffer，通过drawing接口进行字形独立绘制
-    let runBuffer: drawing.TextBlobRunBuffer[] = [];
-    for (let i = 0; i < glyphs.length; i++) {
-      runBuffer.push({ glyph: glyphs[i], positionX: x, positionY: y });
-      x += advances[i].x + 10;
-      y += advances[i].y + 30;
-    }
-    let textBlob: drawing.TextBlob = drawing.TextBlob.makeFromRunBuffer(runBuffer, font, null);
-    // 自定义绘制一串具有相同属性的一系列连续字形
-    canvas.drawTextBlob(textBlob, 20, 100);
-  }
-}
-
-// 创建一个MyRenderNode类，并绘制文本。
-class MyRenderNode extends RenderNode {
-  async draw(context: DrawContext) {
-    drawText(context.canvas);
-  }
-}
-
-// 创建一个MyRenderNode对象
-const textNode = new MyRenderNode();
-// 定义newNode的像素格式
-textNode.frame = {
-  x: 0,
-  y: 0,
-  width: 300,
-  height: 300
-}
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext);
-    if (this.rootNode == null) {
-      return this.rootNode;
-    }
-    const renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
-      renderNode.frame = {
-        x: 0,
-        y: 0,
-        width: 500,
-        height: 500
-      }
-      renderNode.appendChild(textNode);
-    }
-    return this.rootNode;
-  }
-}
-```
 
 效果展示：  
 ![ts_independent_shaping.png](figures/ts_independent_shaping.png)

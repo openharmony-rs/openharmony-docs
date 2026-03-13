@@ -7,7 +7,7 @@
 <!--Adviser: @huipeizi-->
 
 
-  | API in the [FA Model](ability-terminology.md#fa-model)| Corresponding .d.ts File in the [Stage Model](ability-terminology.md#stage-model)| Corresponding API in the Stage Model| 
+| API in the [FA Model](ability-terminology.md#fa-model)| Corresponding .d.ts File in the [Stage Model](ability-terminology.md#stage-model)| Corresponding API in the Stage Model| 
 | -------- | -------- | -------- |
 | [openFile(uri:&nbsp;string,&nbsp;mode:&nbsp;string,&nbsp;callback:&nbsp;AsyncCallback&lt;number&gt;):&nbsp;void;](../reference/apis-ability-kit/js-apis-inner-ability-dataAbilityHelper.md#dataabilityhelperopenfile)<br>[openFile(uri:&nbsp;string,&nbsp;mode:&nbsp;string):&nbsp;Promise&lt;number&gt;;](../reference/apis-ability-kit/js-apis-inner-ability-dataAbilityHelper.md#dataabilityhelperopenfile-1) | \@ohos.data.fileAccess.d.ts | [openFile(uri:&nbsp;string,&nbsp;flags:&nbsp;OPENFLAGS)&nbsp;:&nbsp;Promise&lt;number&gt;;](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md#openfile)<br>[openFile(uri:&nbsp;string,&nbsp;flags:&nbsp;OPENFLAGS,&nbsp;callback:&nbsp;AsyncCallback&lt;number&gt;)&nbsp;:&nbsp;void;](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md#openfile-1) |
 | [on(type:&nbsp;'dataChange',&nbsp;uri:&nbsp;string,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void;](../reference/apis-ability-kit/js-apis-inner-ability-dataAbilityHelper.md#dataabilityhelperondatachange) | \@ohos.data.dataShare.d.ts | [on(type:&nbsp;'dataChange',&nbsp;uri:&nbsp;string,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void;](../reference/apis-arkdata/js-apis-data-dataShare-sys.md#ondatachange) |

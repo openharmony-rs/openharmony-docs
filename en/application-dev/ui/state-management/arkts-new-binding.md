@@ -27,41 +27,97 @@ The **!!** syntactic sugar enables two-way binding for components by initializin
 ### Two-Way Binding Between Custom Components
 1. In the **Index** component, construct a child **Star** component and use **!!** to enable two-way binding for the **value** attribute. This automatically initializes the child component's **@Param value** and **@Event $value**.
 
-   **!!** syntactic sugar for two-way binding:
+   Two-way binding syntax sugar used with the @Param and @Event decorators.
 
+   <!-- @[ArkUI_Star_binding1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star_Param_Event.ets) -->
+   
+   ``` TypeScript
+   Child({ value: this.value, $value: (val: number) => { this.value = val; } })
    ```
-   Star({ value: this.value, $value: (val: number) => { this.value = val; }})
-   ```
-2. Clicking the button in **Index** (parent) increments the value of **value**, and the **Text** components in both **Index** and **Star** (child) are updated.
-3. Clicking the button in **Star** (child) calls **this.$value(10)**, and the **Text** components in both **Index** and **Star** are updated.
+   The preceding syntax can be simplified as the **!!** syntactic sugar:
+   
+    <!-- @[ArkUI_Star_binding3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star.ets) -->
+    
+    ``` TypeScript
+    Star({ value: this.value!! })
+    ```
 
-   ```ts
+2. Use the **@Param value** and **@Event $value** syntax to implement two-way binding of customized components.
+
+    <!-- @[ArkUI_Star_binding4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star_Param_Event.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @ComponentV2
+    struct Parent {
+      @Local value: number = 0;
+    
+      build() {
+        Column() {
+          Text(`${this.value}`)
+          // Click the button in Index to change the value. The text in the Parent component and Child component is updated synchronously.
+          Button(`change value in parent component`).onClick(() => {
+            this.value++;
+          })
+          // Use the @Param and @Event syntax to implement two-way binding of customized components.
+          Child({ value: this.value, $value: (val: number) => { this.value = val; } })
+          // ...
+        // ···
+        }
+      }
+    }
+    
+    @ComponentV2
+    struct Child {
+      @Param value: number = 0;
+      @Event $value: (val: number) => void = (val: number) => {};
+    
+      build() {
+        Column() {
+          Text(`${this.value}`)
+          // Click the button in Child to call the this.$value(10) method. The text in the Parent component and Child component is updated synchronously.
+          Button(`change value in child component`).onClick(() => {
+            this.$value(10);
+          })
+        }
+      }
+    }
+    ```
+
+3. Use the **!!** syntax sugar to implement two-way binding of custom components.
+
+   <!-- @[ArkUI_Star_binding2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star.ets) -->
+   
+   ``` TypeScript
    @Entry
    @ComponentV2
    struct Index {
      @Local value: number = 0;
-
+   
      build() {
        Column() {
          Text(`${this.value}`)
-         Button(`change value`).onClick(() => {
+         // Clicking the button in Index (parent) increments the value of value, and the Text components in both Index and Star (child) are updated.
+         Button(`change value in parent component`).onClick(() => {
            this.value++;
          })
+         // Use the !! syntax sugar to implement two-way binding of custom components.
          Star({ value: this.value!! })
+         // ...
        }
      }
    }
-
-
+   
    @ComponentV2
    struct Star {
      @Param value: number = 0;
      @Event $value: (val: number) => void = (val: number) => {};
-
+   
      build() {
        Column() {
          Text(`${this.value}`)
-         Button(`change value`).onClick(() => {
+         // Clicking the button in Star (child) calls this.$value(10), and the Text components in both Index and Star are updated.
+         Button(`change value in child component`).onClick(() => {
            this.$value(10);
          })
        }
@@ -81,7 +137,14 @@ The **!!** operator passes a TypeScript variable by reference to a built-in comp
 
 The specific meaning of the "internal state" is determined by the component implementation. For example, the **isShow** parameter in [bindMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11) controls menu visibility.
 
-```ts
+<!-- @[ArkUI_Sys_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Sys_Binding.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = 'click show Menu';
+const DOMAIN = 0xFF00;
+
 @Entry
 @ComponentV2
 struct BindMenuInterface {
@@ -96,17 +159,18 @@ struct BindMenuInterface {
               {
                 value: 'Menu1',
                 action: () => {
-                  console.info('handle Menu1 click');
+                  hilog.info(DOMAIN, TAG, 'handle Menu1 click');
                 }
               },
               {
                 value: 'Menu2',
                 action: () => {
-                  console.info('handle Menu2 click');
+                  hilog.info(DOMAIN, TAG, 'handle Menu2 click');
                 }
               },
             ])
       }.height('50%')
+      
       Text('isShow: ' + this.isShow).fontSize(18).fontColor(Color.Red)
       Row() {
         Button('Click')
@@ -122,14 +186,15 @@ struct BindMenuInterface {
 }
 ```
 
+
 ![bindMenu](figures/bindmenu_doublebind.gif)
 
-**Usage Rules**
+**Rules of Use**
 
 - Currently, two-way binding with **!!** supports variables of basic types. When such variables are decorated with state management V1 decorators such as [\@State](arkts-state.md), or state management V2 decorators such as [\@Local](arkts-new-local.md), changes in variable values will trigger UI updates.
 
   | Attribute                                                        | Supported Parameter| Initial API Version|
-  | ------------------------------------------------------------ | --------------- | ----------- |
+    | ------------------------------------------------------------ | --------------- | ----------- |
   | [bindMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11) | isShow | 18        |
   | [bindContextMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu12) | isShown | 18          |
   | [bindPopup](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup) | show | 18   |

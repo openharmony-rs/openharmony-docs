@@ -1,16 +1,16 @@
 # progress
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 进度条，用于显示内容加载或操作的处理进度。
 
 > **说明：**
 >
-> 从API Version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件

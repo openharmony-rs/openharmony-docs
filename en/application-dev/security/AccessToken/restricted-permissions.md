@@ -19,7 +19,7 @@ To change the APL of a normal application to system_basic or system_core, modify
 
 Modify the **"bundle-info"** &gt; **"apl"** field in the file.
 
-```json
+```json5
 "bundle-info" : {
     // ...
     "apl": "system_basic",
@@ -490,7 +490,7 @@ With this permission, the application can call APIs to perform virtual screen ma
 
 **Authorization mode**: system_grant
 
-**Since**: 18
+**Since**: 16
 
 ## ohos.permission.MANAGE_APN_SETTING
 
@@ -590,6 +590,7 @@ This permission can be requested successfully only when:
 Allows a peripheral extension driver to access the SCSI DDK APIs to implement development of SCSI extended peripheral drivers.
 
 The APIs can be used to develop the following types of peripheral extension drivers:
+
 Peripherals connected to the host via a USB bus and:
 
 1. InterfaceClass of the peripheral is Mass Storage (0x08) and InterfaceSubClass is SCSI Transparent Command Set (0x06).
@@ -647,7 +648,7 @@ Allows an application to customize the icon and text of **SaveButton**.
 
 **Authorization mode**: system_grant
 
-**Device**: general devices
+**Supported devices**: general devices
 
 **Since**: 20
 
@@ -661,7 +662,7 @@ Allows an application to query **Ability** information based on the URI or **Fil
 
 **Authorization mode**: system_grant
 
-**Device**: PCs/2-in-1 devices
+**Supported devices**: PCs/2-in-1 devices
 
 **Since**: 20
 
@@ -675,13 +676,13 @@ Allows an application to use the Native Development Kit (NDK) of the passkey ser
 
 **Authorization mode**: system_grant
 
-**Device**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
 
 ## ohos.permission.USE_FLOAT_BALL
 
-Allows an application to use the global float ball.
+Allows an application to use the global floating ball.
 
 <!--RP46--><!--RP46End-->
 
@@ -689,9 +690,25 @@ Allows an application to use the global float ball.
 
 **Authorization mode**: system_grant
 
-**Device**: phones | tablets
+**Supported devices**: phones | tablets
 
 **Since**: 20
+
+## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
+
+Allow the application to automatically restore its main window through the global floating ball.
+
+**Prerequisites**: This permission can only be requested together with the [ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball) permission.
+
+<!--RP69--><!--RP69End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Device**: phones | tablets
+
+**Since**: 24
 
 ## ohos.permission.DLP_GET_HIDE_STATUS
 
@@ -705,7 +722,7 @@ With this permission, the application can obtain the current screen peeping stat
 
 **Authorization mode**: system_grant
 
-**Device**: phones
+**Supported devices**: phones
 
 **Since**: 18
 
@@ -723,7 +740,7 @@ With this permission, the application can obtain the device name on the **About*
 
 **Authorization mode**: system_grant
 
-**Device**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
 
@@ -736,7 +753,7 @@ Allows an atomic service to request differentiated storage space.
 
 **Authorization mode**: system_grant
 
-**Device**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
 <!--DelEnd-->
@@ -751,7 +768,7 @@ Allows an application to request continuous tasks of special types, such as comp
 
 **Authorization mode**: system_grant
 
-**Device**: general devices
+**Supported devices**: general devices
 
 **Since**: 20
 
@@ -767,7 +784,7 @@ With this permission, the application can initiate operations such as multi-netw
 
 **Authorization mode**: system_grant
 
-**Device**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
 
@@ -781,7 +798,7 @@ Allows an application to detect the network and obtain the TraceRoute informatio
 
 **Authorization mode**: system_grant
 
-**Device**: general devices
+**Supported devices**: general devices
 
 **Since**: 20
 
@@ -821,7 +838,7 @@ With this permission, the application can choose the target applications for sys
 
 **Authorization mode**: system_grant
 
-**Device**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 21
 
@@ -867,7 +884,7 @@ Allows an application to read notifications published by the system or installed
 
 **Authorization mode**: system_grant
 
-**Device**: phones | tablets
+**Supported devices**: phones | tablets
 
 **Since**: 22
 
@@ -901,21 +918,21 @@ With this permission, the application can load external dynamic link libraries (
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 22
+**Since**: 23
 
 ## ohos.permission.GET_IP_MAC_INFO
 
 Allows an application to obtain the IP address and MAC address of a network device.
 
-<!--RP58--><!--RP58End-->
-
+<!--RP58-->
 This permission is applicable only to network connection or identification, not to device location.
+<!--RP58End-->
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Device**: general devices
+**Supported devices**: general devices
 
 **Since**: 22
 
@@ -925,10 +942,114 @@ Allows an atomic service to request differentiated aging policies.
 
 <!--RP59--><!--RP59End-->
 
-**Permission level**：system_basic
+**Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Supported devices**: Phone | PC/2in1 | Tablet
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 23
+
+## ohos.permission.ACCESS_USER_FULL_DISK
+
+Allows an application to access the public user directory without a pop-up.
+
+With this permission, the application can access the public directory without having to notify the user via a pop-up every time.
+
+<!--RP60--><!--RP60End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 22
+
+## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
+
+Allows an application to load shared libraries signed with binary certificates.
+
+<!--RP61--><!--RP61End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 20
+
+**Changelog**: This permission is available only to system applications in API versions 20 to 21. From API version 22, it's also available to normal applications.
+
+## ohos.permission.CRYPTO_EXTENSION_REGISTER
+
+Allows an application to register and deregister the crypto extension.
+
+<!--RP62--><!--RP62End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 22
+
+## ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
+
+Allows an application to obtain and manage the media resources playing on a device.
+
+<!--RP63--><!--RP63End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | cars
+
+**Since**: 23
+
+## ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+Allows an application to manage call status, such as retrieving incoming call numbers, answering, rejecting, and ending calls.
+
+<!--RP64--><!--RP64End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 23
+
+## ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME
+
+Allows an application to customize the BLE broadcast name.
+
+<!--RP65--><!--RP65End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: general devices
+
+**Since**: 23
+
+## ohos.permission.INPUT_DEVICE_CONFIGURATOR
+
+Allows an application to bind input devices to displays.
+
+With this permission, the driver application can bind external input devices connected via USB or Bluetooth with specific display screens.
+
+<!--RP66--><!--RP66End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 24

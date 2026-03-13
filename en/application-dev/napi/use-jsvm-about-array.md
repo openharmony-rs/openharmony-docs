@@ -96,7 +96,7 @@ const char *srcCallNative = R"JS(
 <!-- @[oh_jsvm_create_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createarray/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM CreateArray success
 ```
 ### OH_JSVM_CreateArrayWithLength
@@ -157,7 +157,7 @@ testCreateArrayWithLength(num);
 <!-- @[oh_jsvm_create_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createarraywithlength/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM CreateArrayWithLength success
 ```
 ### OH_JSVM_CreateTypedarray
@@ -261,7 +261,7 @@ createTypedArray(type.INT32_ARRAY);
 <!-- @[oh_jsvm_create_typedarray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createtypedarray/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM CreateTypedArray success
 JSVM CreateTypedArray success
 ```
@@ -366,7 +366,7 @@ const char *srcCallNative = R"JS(
 <!-- @[oh_jsvm_create_dataview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createdataview/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 CreateDataView success, returnLength: 12
 JSVM CreateDataView success, isArraybuffer: 1
 JSVM CreateDataView success, returnOffset: 4
@@ -429,7 +429,7 @@ getArrayLength(data);
 <!-- @[oh_jsvm_get_array_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getarraylength/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM length: 6
 ```
 ### OH_JSVM_GetTypedarrayInfo
@@ -544,7 +544,7 @@ getTypedArrayInfo(new Int8Array(1), 3);
 <!-- @[oh_jsvm_get_typedarray_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/gettypedarrayinfo/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM GetTypedArrayInfo success, JSVM_INT8_ARRAY: 1
 JSVM GetTypedArrayInfo success, length: 5
 JSVM GetTypedArrayInfo success, isArrayBuffer: 1
@@ -653,7 +653,7 @@ getDataViewInfo(data, isarraybuffer);
 <!-- @[oh_jsvm_get_dataview_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getdataviewinfo/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM GetDataViewInfo success, byteLength: 2
 JSVM GetDataViewInfo fail
 JSVM GetDataViewInfo success, isArrayBuffer: 1
@@ -705,7 +705,7 @@ isArray(data);
 <!-- @[oh_jsvm_is_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/isarray/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM IsArray success, IsArray: 1
 ```
 ### OH_JSVM_SetElement
@@ -754,7 +754,7 @@ setElement(data, 3, undefined);
 <!-- @[oh_jsvm_set_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/setelement/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM SetElement success
 ```
 ### OH_JSVM_GetElement
@@ -805,7 +805,7 @@ getElement(arr, 3);
 <!-- @[oh_jsvm_get_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getelement/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM GetElement success
 ```
 ### OH_JSVM_HasElement
@@ -860,7 +860,7 @@ hasElement(arr, 4);
 <!-- @[oh_jsvm_has_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/haselement/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM hasElement: 1
 JSVM hasElement: 0
 ```
@@ -915,7 +915,7 @@ deleteElement(arr, 0);
 <!-- @[oh_jsvm_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/deleteelement/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM DeleteElement: 1
 ```
 ### OH_JSVM_IsDataview
@@ -965,7 +965,7 @@ isDataView(dataView);
 <!-- @[oh_jsvm_is_dataview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/isdataview/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM IsDataView: 1
 ```
 ### OH_JSVM_IsTypedarray
@@ -1012,6 +1012,6 @@ isTypedarray(new Uint16Array([1, 2, 3, 4]));
 <!-- @[oh_jsvm_is_typedarray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/istypedarray/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM IsTypedarray: 1
 ```

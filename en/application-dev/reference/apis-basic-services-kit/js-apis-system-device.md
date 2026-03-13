@@ -1,10 +1,20 @@
 # @system.device (Device Information)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Startup-->
+<!--Owner: @chenjinxiang3-->
+<!--Designer: @liveery-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 The **device** module provides APIs for checking information about the current device.
 
 > **NOTE**
 >
-> - The APIs of this module are no longer maintained since API version 6. It is recommended that you use [`@ohos.deviceInfo`](js-apis-device-info.md).
+> - Module maintenance strategy:
+>
+>    \- For lite wearables, this module is constantly maintained and available.
+>
+>     \- For other device types, this module is no longer maintained since API version 6, and you are advised to use [@ohos.deviceInfo](js-apis-device-info.md) to query device information.
 >
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
@@ -40,8 +50,8 @@ Defines the parameters for obtaining the device information.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | success | (data: DeviceResponse) => void | No| Called when an API call is successful. **data** indicates the returned device information. For details, see [DeviceResponse](#deviceresponsedeprecated).|
-| fail | (data: any,code:number)=> void| No| Called when an API call has failed. **code** indicates the error code returned upon a failure.<br>**code:200**: Certain information could not be obtained.|
-| complete | () => void| No| Called when an API call is complete.|
+| fail | (data: any,code:number)=> void | No| Called when an API call has failed. **code** indicates the error code returned upon a failure.<br>**code:200**: Certain information could not be obtained.|
+| complete | () => void | No| Called when an API call is complete.|
 
 ## DeviceResponse<sup>(deprecated)</sup>
 
@@ -68,16 +78,24 @@ Defines the device information.
 **Example**
 
 ```typescript
-export default {    
-  getInfo() {        
-    device.getInfo({            
-      success: function(data) {                
-        console.log('Device information obtained successfully. Device brand:' + data.brand);            
-      },            
-      fail: function(data, code) {                
-        console.log('Failed to obtain device information. Error code:'+ code + '; Error information: ' + data);            
-      },        
-    });    
-  },
+export default class Page {
+  getInfo() {
+    interface DeviceData {
+      brand: string;
+    }
+
+    try {
+      device.getInfo({
+        success: (data: DeviceData) => {
+          console.info('Device information obtained successfully. Device brand:' + data.brand);
+        },
+        fail: (data: string, code: number) => {
+          console.info('Failed to obtain device information. Error code:' + code + '; Error information: ' + data);
+        },
+      });
+    } catch (error) {
+      console.error('Device information API is not supported');
+    }
+  }
 }
 ```

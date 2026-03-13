@@ -32,7 +32,7 @@ The file declares the playback control error codes.
 
 ### AVSession_ErrCode
 
-```
+```c
 enum AVSession_ErrCode
 ```
 

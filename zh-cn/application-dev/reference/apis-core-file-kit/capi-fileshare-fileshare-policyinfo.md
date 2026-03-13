@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie; @hongjin-li_admin-->
 <!--Designer: @chenxi0605; @JerryH1011-->
 <!--Tester: @leiyuqian-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ```c
 typedef struct FileShare_PolicyInfo {...} FileShare_PolicyInfo

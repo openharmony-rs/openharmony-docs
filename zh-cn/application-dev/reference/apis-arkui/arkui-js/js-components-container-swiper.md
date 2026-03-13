@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**

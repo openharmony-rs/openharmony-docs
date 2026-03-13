@@ -46,9 +46,9 @@ Starts an ability. This API uses a promise to return the result. It can be calle
 
 **Parameters**
 
-| Name|                Type              | Mandatory|              Description              |
+| Name| Type| Mandatory| Description|
 | ------| --------------------------------- | ---- | -------------------------------------- |
-| want| [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes | 	Want information about the target ability.|
+| want| [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes | Want information about the target ability.|
 
 **Returns**
 

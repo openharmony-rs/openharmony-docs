@@ -5,7 +5,7 @@
 <!--Owner: @lyj_love_code-->
 <!--Designer: @tangyyan-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 hisysevent是系统的预置工具，主要用来帮助开发者订阅实时系统事件，查询历史系统事件。
 

@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct NetConn_NetCapabilities {...} NetConn_NetCapabilities
+```
+
 ## Overview
 
 Defines network capability sets.

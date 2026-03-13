@@ -17,28 +17,32 @@
 接口具体说明请参考[getDisplayCountry](../reference/apis-localization-kit/js-apis-i18n.md#getdisplaycountry9)和[getDisplayLanguage](../reference/apis-localization-kit/js-apis-i18n.md#getdisplaylanguage9)的API文档。
 
 1. 导入模块。
-   ```ts
+
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
+   
+   ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
    ```
-   <!-- [import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
 
 2. 使用场景。
 - 本地化语言名称。支持获取语言名称在不同语言下的翻译，以获取德文语言名称的中文翻译为例：
 
-   ```ts
+   <!-- @[localized_language_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
+   
+   ``` TypeScript
    let displayLanguage = i18n.System.getDisplayLanguage('de', 'zh-Hans-CN'); // displayLanguage = '德文'
    // language: 语言两字母代码，如'zh'，'de'，'fr'等
    // locale: 表示区域ID的字符串，如'en-GB'、'en-US'、'zh-Hans-CN'等
    // sentenceCase: 返回的语言名称是否需要首字母大写，默认值：true
    ```
-   <!-- [localized_language_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
 
 - 本地化国家/地区名称。支持获取国家/地区名称在不同语言下的翻译，以获取沙特阿拉伯国家名称的英文翻译为例：
 
-   ```ts
+   <!-- @[localized_country_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
+   
+   ``` TypeScript
    let displayCountry = i18n.System.getDisplayCountry('SA', 'en-GB'); // displayCountry = 'Saudi Arabia'
    // country: 国家/地区两字母代码，如'CN'、'DE'、'SA'等
    // locale: 表示区域ID的字符串，如'en-GB'、'en-US'、'zh-Hans-CN'等
    // sentenceCase: 返回的国家/地区名称是否需要首字母大写，默认值：true
    ```
-   <!-- [localized_country_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->

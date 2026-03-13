@@ -68,3 +68,14 @@ Defines the return result of intent execution. The [generic type](../../quick-st
 | -------- | -------- | -------- | -------- | -------- |
 | code | number | No| No| Error code returned by the intent execution, defined by the developer.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | result | T | No| Yes| Result data returned by the intent execution, typically containing information to be passed back to the system entry point.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+
+## ReturnMode<sup>23+<sup>
+
+Enumerates the modes that define how the execution result of an intent is returned to the intent initiator.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| CALLBACK | 0 | The intent execution result is returned through the [onExecuteInUIAbilityForegroundMode](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode) or [onExecuteInUIExtensionAbility](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiextensionability) API in the [intent execution base class](./js-apis-app-ability-insightIntentExecutor.md).<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| FUNCTION | 1 | The intent execution result is returned after the [sendExecuteResult](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendexecuteresult) or [sendIntentResult](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendintentresult) API in [intent provider management](./js-apis-app-ability-insightIntentProvider.md) is called.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|

@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 - C APIs<!--function-flow-runtime-c-->
   - Modules<!--function-flow-runtime-module-->

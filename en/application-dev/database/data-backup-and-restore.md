@@ -273,22 +273,25 @@ Two backup modes are available: manual backup and automatic backup. Automatic ba
 
 Call the [backup](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#backup) API to manually back up an RDB store. <br>Example:
 
-<!-- @[backuprestore_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+<!-- @[backuprestore_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { hilog } from '@kit.PerformanceAnalysisKit'
+import { UIContext } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 ```
 
 
 
-<!-- @[backupManually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+<!-- @[backupManually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
 ``` TypeScript
+/* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
+const context = new UIContext().getHostContext() as common.UIAbilityContext;
 let store: relationalStore.RdbStore | undefined = undefined;
-let context = getContext();
 const STORE_CONFIG: relationalStore.StoreConfig = {
   name: 'RdbTest.db',
   securityLevel: relationalStore.SecurityLevel.S3
@@ -366,11 +369,12 @@ If **allowRebuild** in **StoreConfig** is set to **true** before the database is
 
 If **allowRebuild** in **StoreConfig** is not set or is set to **false**, set **allowRebuild** to **true** and open the rebuilt RDB store. <br>Example:
 
-<!-- @[rebuildingRelationalDatabaseAbnormally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+<!-- @[rebuildingRelationalDatabaseAbnormally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
-let context = getContext();
+/* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
+const context = new UIContext().getHostContext() as common.UIAbilityContext;
 try {
   const STORE_CONFIG: relationalStore.StoreConfig = {
     name: 'RdbTest.db',
@@ -403,7 +407,7 @@ The following example contains only the code snippet for the restore process. Th
 
 1. An error code is thrown to indicate a database exception.
 
-    <!-- @[databaseExceptionErrorCodeThrown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    <!-- @[databaseExceptionErrorCodeThrown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
     
     ``` TypeScript
     let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -415,7 +419,7 @@ The following example contains only the code snippet for the restore process. Th
             /* ...
                Logic for adding, deleting, and modifying data.
                ...
-            */
+             */
             // Throw an exception.
             if (resultSet?.rowCount == -1) {
               resultSet?.isColumnNull(0);
@@ -439,7 +443,7 @@ The following example contains only the code snippet for the restore process. Th
 
 2. Close all opened result sets.
 
-    <!-- @[closeAllOpenResultSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    <!-- @[closeAllOpenResultSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
     
     ``` TypeScript
     let resultSets: relationalStore.ResultSet[] = []
@@ -460,11 +464,12 @@ The following example contains only the code snippet for the restore process. Th
 
 3. Call **restore()** to restore data.
 
-    <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
     
     ``` TypeScript
     let store: relationalStore.RdbStore | undefined = undefined;
-    let context = getContext();
+    /* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
+    const context = new UIContext().getHostContext() as common.UIAbilityContext;
     let STORE_CONFIG: relationalStore.StoreConfig = {
       name: 'RdbTest.db',
       securityLevel: relationalStore.SecurityLevel.S3,

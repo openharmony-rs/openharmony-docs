@@ -46,7 +46,7 @@ setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -68,8 +68,8 @@ try {
     .then(() => {
       console.info('setOverlayEnabled success');
     }).catch((err: BusinessError) => {
-      console.error('setOverlayEnabled failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
-    });
+    console.error('setOverlayEnabled failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
+  });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
@@ -95,7 +95,7 @@ setOverlayEnabled(moduleName: string, isEnabled: boolean, callback: AsyncCallbac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -149,7 +149,7 @@ getOverlayModuleInfo(moduleName: string): Promise\<OverlayModuleInfo>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -195,7 +195,7 @@ getOverlayModuleInfo(moduleName: string, callback: AsyncCallback\<OverlayModuleI
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -249,7 +249,7 @@ getTargetOverlayModuleInfos(targetModuleName: string): Promise\<Array\<OverlayMo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -294,7 +294,7 @@ getTargetOverlayModuleInfos(targetModuleName: string, callback: AsyncCallback\<A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -313,7 +313,8 @@ let targetModuleName = "feature";
 try {
   overlay.getTargetOverlayModuleInfos(targetModuleName, (err, data) => {
     if (err) {
-      console.error('getTargetOverlayModuleInfos failed due to err code : ' + err.code + ' ' + 'message :' + err.message);
+      console.error('getTargetOverlayModuleInfos failed due to err code : ' + err.code + ' ' + 'message :' +
+      err.message);
       return;
     }
     console.info('overlayModuleInfo is ' + JSON.stringify(data));

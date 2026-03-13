@@ -7,23 +7,23 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-A bitmap is a data structure used to store and represent images in memory. It is a collection of uncompressed pixels. Images in formats such as JPEG and PNG are compressed, and are different from bitmaps. If you want to draw a JPEG or PNG image on the screen, you need to decode the image into a bitmap first. For details, see the image decoding section in [Image Kit](../media/image/image-overview.md).
+A pixel map is a data structure used to store and represent images in memory. It is an uncompressed collection of pixels. Images in formats such as JPEG or PNG are compressed, which are different from pixel maps. If you need to draw JPEG or PNG images on the screen, decode them into the pixel map format first. For details about image decoding, see [Introduction to Image Kit](../media/image/image-overview.md).
 
 
-Currently, bitmap drawing in Drawing (ArkTS) depends on PixelMap, which can be used to read or write image data and obtain image information. For details about the APIs, see [PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md).
+Drawing pixel maps using the **Drawing** APIs (ArkTS) depends on the **PixelMap** module, which can read or write image data and obtain image information. For details about **PixelMap** APIs, see [PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md).
 
 
 1. Create a **PixelMap** instance.
 
-   You can use multiple APIs to create a PixelMap. The following uses createPixelMapSync() as an example. For details about more creation modes and APIs, see @ohos.multimedia.image (Image Processing).
+   You can create a **PixelMap** instance using multiple APIs. The following uses **createPixelMapSync()** as an example. For details about other ways and APIs, see the [@ohos.multimedia.image](../reference/apis-image-kit/arkts-apis-image.md) module.
 
    <!-- @[arkts_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
    
    ``` TypeScript
-   // Image width and height
+   // Image width and height.
    let width = 600;
    let height = 400;
-   // Byte length. Each pixel of RGBA_8888 occupies four bytes.
+   // Byte length. Each RGBA_8888 pixel occupies 4 bytes.
    let byteLength = width * height * 4;
    const color: ArrayBuffer = new ArrayBuffer(byteLength);
    let bufferArr = new Uint8Array(color);
@@ -49,9 +49,9 @@ Currently, bitmap drawing in Drawing (ArkTS) depends on PixelMap, which can be u
    pixelMap = image.createPixelMapSync(color, opts);
    ```
 
-2. (Optional) Edit pixels in the PixelMap. If no pixel needs to be edited, skip this step.
+2. (Optional) Edit the pixels in the **PixelMap** instance. If no pixel needs to be edited, skip this step.
 
-   Several APIs are available to edit pixels in a PixelMap. The following uses writePixelsSync() as an example. For details about other methods and APIs, please refer to [PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md).
+   You can edit the pixels in the **PixelMap** instance using multiple APIs. The following uses **writePixelsSync()** as an example. For details about other ways and APIs, see [PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md).
 
    <!-- @[arkts_graphics_draw_edit_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
    
@@ -59,7 +59,7 @@ Currently, bitmap drawing in Drawing (ArkTS) depends on PixelMap, which can be u
    // Set the width and height of the editing area.
    let innerWidth = 400;
    let innerHeight = 200;
-   // Set the byte length of the editing area. Each pixel in RGBA_8888 occupies four bytes.
+   // Byte length of the editing area. Each RGBA_8888 pixel occupies 4 bytes.
    let innerByteLength = innerWidth * innerHeight * 4;
    const innerColor: ArrayBuffer = new ArrayBuffer(innerByteLength);
    let innerBufferArr = new Uint8Array(innerColor);
@@ -84,22 +84,22 @@ Currently, bitmap drawing in Drawing (ArkTS) depends on PixelMap, which can be u
      stride: innerWidth * 4,
      region: { size: { height: innerHeight, width: innerWidth }, x: 100, y: 100 }
    };
-   // Edit the bitmap to form black and white stripes in the middle.
+   // Edit the pixel map to form the middle black and white stripes.
    pixelMap.writePixelsSync(area);
-   //To display the entire image, change the start point of the drawing to (0, 0).
+   // To display the image completely, change the start point to (0, 0).
    canvas.drawImage(pixelMap, 0, 0);
    ```
 
-3. Draw the PixelMap.
+3. Draw the pixel map.
 
-   You need to use the Canva APIs to draw the bitmap. The following uses drawImage() as an example. For details about more methods and APIs, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
+   Use the **Canva** APIs to draw the pixel map. The following uses **drawImage()** as an example. For details about other ways and APIs, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
 
-   The drawImage() function accepts four parameters. The first parameter is the PixelMap created above, the second parameter is the x-coordinate of the upper left corner of the image to be drawn, the third parameter is the y-coordinate of the upper left corner, and the fourth parameter is the sampling option object. By default, the original sampling option object constructed without any parameter is used.
+   The **drawImage()** function takes four parameters: (1) **PixelMap** created; (2) X coordinate of the upper left corner of the drawn image; (3) Y coordinate of the upper left corner; (4) sampling option object. By default, the original sampling option object is constructed without any parameter.
 
    <!-- @[arkts_graphics_draw_image_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
    
    ``` TypeScript
-   //To display the entire image, change the start point of the drawing to (0, 0).
+   // To display the image completely, change the start point to (0, 0).
    canvas.drawImage(pixelMap, 0, 0);
    ```
 
@@ -110,7 +110,7 @@ Currently, bitmap drawing in Drawing (ArkTS) depends on PixelMap, which can be u
 <!--RP1-->
 ## Samples
 
-The following samples can be used for reference when developing Drawing (ArkTS):
+The following samples are provided to help you better understand how to use the **Drawing** APIs (ArkTS) for development:
 
 - [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->

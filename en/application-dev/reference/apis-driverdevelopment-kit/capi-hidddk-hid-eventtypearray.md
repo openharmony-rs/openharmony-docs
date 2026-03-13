@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Hid_EventTypeArray {...} Hid_EventTypeArray
+```
+
 ## Overview
 
 Defines a struct for an array of event types.

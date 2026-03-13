@@ -10,7 +10,7 @@
 
 ## 获取相册管理模块实例
 
-应用需要通过上下文Context和接口[getPhotoAccessHelper](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)，获取相册管理模块实例，用于访问和修改相册中的媒体数据信息，如图片和视频。
+应用需要通过上下文[Context](../../application-models/application-context-stage.md)和接口[getPhotoAccessHelper](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)，获取相册管理模块实例，用于访问和修改相册中的媒体数据信息，如图片和视频。
 
 **开发步骤**
 
@@ -18,7 +18,9 @@
 2. 通过getUIContext().getHostContext()获取应用上下文。
 3. 获取相册管理模块实例。
 
-```ts
+<!-- @[photo_access_helper_preparation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
 
@@ -31,7 +33,7 @@ struct Index {
 
   build() {
     Row() {
-      Button("example").onClick(async () => {
+      Button('example').onClick(async () => {
         let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
         let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
       }).width('100%')
@@ -51,14 +53,14 @@ struct Index {
 | ohos.permission.WRITE_IMAGEVIDEO    | 允许应用读写媒体库的图片和视频媒体文件信息。 | user_grant |
 | ohos.permission.MEDIA_LOCATION    | 允许应用访问用户媒体文件中的地理位置信息。 | user_grant |
 
-以上权限的授权方式均为user_grant（用户授权），即开发者在module.json5文件中配置对应的权限后，需要使用接口[abilityAccessCtrl.requestPermissionsFromUser](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)去校验当前用户是否已授权。如果已授权，应用可以直接访问和修改目标对象；否则需要弹框向用户申请授权。
+以上权限的授权方式均为user_grant（用户授权），即开发者在[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中配置对应的权限后，需要使用接口[abilityAccessCtrl.requestPermissionsFromUser](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)去校验当前用户是否已授权。如果已授权，应用可以直接访问和修改目标对象；否则需要弹框向用户申请授权。
 
 **开发步骤**
 <!--RP1-->
 1. 上述权限均为受控权限，申请前需要额外申请ACL白名单，请参考[声明ACL权限](../../security/AccessToken/declare-permissions-in-acl.md)。 
-<!--RP1End-->
 2. [在配置文件module.json5中声明权限](../../security/AccessToken/declare-permissions.md)。
 3. [向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+<!--RP1End-->
 
 > **说明：**
 >

@@ -209,7 +209,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
   if (photoOutput === undefined) {
     return;
   }
-  //创建会话。
+  // 创建会话。
   let photoSession: camera.PhotoSession | undefined = undefined;
   try {
     photoSession = cameraManager.createSession(camera.SceneMode.NORMAL_PHOTO) as camera.PhotoSession;
@@ -292,7 +292,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
   console.info('isDeferredImageDeliverySupported res:' + isSupportDeferred);
   if (isSupportDeferred) {
     // 使能分段式拍照。
-	photoOutput.deferImageDelivery(camera.DeferredDeliveryImageType.PHOTO);
+    photoOutput.deferImageDelivery(camera.DeferredDeliveryImageType.PHOTO);
     // 查询使能分段式结果。
     let isSupportEnabled: boolean = photoOutput.isDeferredImageDeliveryEnabled(camera.DeferredDeliveryImageType.PHOTO);
     console.info('isDeferredImageDeliveryEnabled res:' + isSupportEnabled);

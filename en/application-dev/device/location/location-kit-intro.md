@@ -1,4 +1,4 @@
-# Introduction to Location Kit
+# About This Kit
 
 ## Overview
 

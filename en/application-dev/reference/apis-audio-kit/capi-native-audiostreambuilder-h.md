@@ -64,7 +64,7 @@ You can use the functions to create and destroy an audio stream builder, set aud
 
 ### OH_AudioStreamBuilder_Create()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_Create(OH_AudioStreamBuilder** builder, OH_AudioStream_Type type)
 ```
 
@@ -92,7 +92,7 @@ You need to call [OH_AudioStreamBuilder_Destroy](#oh_audiostreambuilder_destroy)
 
 ### OH_AudioStreamBuilder_Destroy()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_Destroy(OH_AudioStreamBuilder* builder)
 ```
 
@@ -119,7 +119,7 @@ You need to call this function to destroy the builder when it is no longer requi
 
 ### OH_AudioStreamBuilder_SetSamplingRate()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetSamplingRate(OH_AudioStreamBuilder* builder, int32_t rate)
 ```
 
@@ -145,7 +145,7 @@ Sets the sampling rate of an audio stream.
 
 ### OH_AudioStreamBuilder_SetChannelCount()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetChannelCount(OH_AudioStreamBuilder* builder, int32_t channelCount)
 ```
 
@@ -171,7 +171,7 @@ Sets the number of channels for an audio stream.
 
 ### OH_AudioStreamBuilder_SetSampleFormat()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetSampleFormat(OH_AudioStreamBuilder* builder,OH_AudioStream_SampleFormat format)
 ```
 
@@ -197,7 +197,7 @@ Sets the sampling format of an audio stream.
 
 ### OH_AudioStreamBuilder_SetEncodingType()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetEncodingType(OH_AudioStreamBuilder* builder,OH_AudioStream_EncodingType encodingType)
 ```
 
@@ -223,7 +223,7 @@ Sets the encoding type of an audio stream.
 
 ### OH_AudioStreamBuilder_SetLatencyMode()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetLatencyMode(OH_AudioStreamBuilder* builder,OH_AudioStream_LatencyMode latencyMode)
 ```
 
@@ -249,7 +249,7 @@ Sets the latency mode of an audio stream.
 
 ### OH_AudioStreamBuilder_SetChannelLayout()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetChannelLayout(OH_AudioStreamBuilder* builder,OH_AudioChannelLayout channelLayout)
 ```
 
@@ -275,7 +275,7 @@ Sets the channel layout for an audio stream.
 
 ### OH_AudioStreamBuilder_SetRendererInfo()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInfo(OH_AudioStreamBuilder* builder,OH_AudioStream_Usage usage)
 ```
 
@@ -301,7 +301,7 @@ Sets the usage scenario of an audio renderer.
 
 ### OH_AudioStreamBuilder_SetVolumeMode()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetVolumeMode(OH_AudioStreamBuilder* builder,OH_AudioStream_VolumeMode volumeMode)
 ```
 
@@ -309,8 +309,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetVolumeMode(OH_AudioStreamBuilder*
 
 Sets the volume mode for an audio stream.
 
-**Since**: 18
-
+**Since**: 19
 
 **Parameters**
 
@@ -327,7 +326,7 @@ Sets the volume mode for an audio stream.
 
 ### OH_AudioStreamBuilder_SetCapturerInfo()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerInfo(OH_AudioStreamBuilder* builder,OH_AudioStream_SourceType sourceType)
 ```
 
@@ -353,7 +352,7 @@ Sets the usage scenario of an audio capturer.
 
 ### OH_AudioStreamBuilder_SetRendererCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererCallback(OH_AudioStreamBuilder* builder,OH_AudioRenderer_Callbacks callbacks, void* userData)
 ```
 
@@ -388,7 +387,7 @@ Use the following APIs for substitute:
 
 ### OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallback(OH_AudioStreamBuilder* builder,OH_AudioRenderer_OutputDeviceChangeCallback callback, void* userData)
 ```
 
@@ -415,7 +414,7 @@ Sets the callback for audio renderer device change events.
 
 ### OH_AudioStreamBuilder_SetRendererPrivacy()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererPrivacy(OH_AudioStreamBuilder* builder,OH_AudioStream_PrivacyType privacy)
 ```
 
@@ -441,7 +440,7 @@ Sets the privacy type for the audio stream being played. The privacy type specif
 
 ### OH_AudioStreamBuilder_SetCapturerCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerCallback(OH_AudioStreamBuilder* builder,OH_AudioCapturer_Callbacks callbacks, void* userData)
 ```
 
@@ -476,7 +475,7 @@ Use the following APIs for substitute:
 
 ### OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(OH_AudioStreamBuilder* builder,OH_AudioRenderer_WriteDataWithMetadataCallback callback, void* userData)
 ```
 
@@ -503,7 +502,7 @@ Sets the callback used to write both audio data and metadata.
 
 ### OH_AudioStreamBuilder_GenerateRenderer()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_GenerateRenderer(OH_AudioStreamBuilder* builder,OH_AudioRenderer** audioRenderer)
 ```
 
@@ -529,7 +528,7 @@ Creates an audio renderer instance.
 
 ### OH_AudioStreamBuilder_GenerateCapturer()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_GenerateCapturer(OH_AudioStreamBuilder* builder,OH_AudioCapturer** audioCapturer)
 ```
 
@@ -555,7 +554,7 @@ Creates an audio capturer instance.
 
 ### OH_AudioStreamBuilder_SetFrameSizeInCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetFrameSizeInCallback(OH_AudioStreamBuilder* builder,int32_t frameSize)
 ```
 
@@ -565,7 +564,7 @@ Sets the frame size for each callback during playback. The frame size must be at
 
 In the case of low-latency playback, **frameSize** can be set to the frame length corresponding to the audio that lasts for 5 ms, 10 ms, 15 ms, or 20 ms.
 
-In the case of common playback, **frameSize** can be set to the frame length corresponding to the audio that lasts for 20 ms to 100 ms.
+In the case of common playback, **frameSize** can be set to the frame length corresponding to the audio that lasts for 20 ms to 100 ms. For example, if the sampling rate is 48000 Hz, the frame length of 20 ms audio data is calculated as follows: frameSize = 48000 x 0.02, that is, 960 sampling points.
 
 **Since**: 11
 
@@ -585,7 +584,7 @@ In the case of common playback, **frameSize** can be set to the frame length cor
 
 ### OH_AudioStreamBuilder_SetRendererInterruptMode()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInterruptMode(OH_AudioStreamBuilder* builder,OH_AudioInterrupt_Mode mode)
 ```
 
@@ -611,7 +610,7 @@ Sets the interrupt mode of the stream client.
 
 ### OH_AudioStreamBuilder_SetRendererWriteDataCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererWriteDataCallback(OH_AudioStreamBuilder* builder,OH_AudioRenderer_OnWriteDataCallback callback, void* userData)
 ```
 
@@ -640,7 +639,7 @@ This function is similar to [OH_AudioStreamBuilder_SetRendererCallback](#oh_audi
 
 ### OH_AudioStreamBuilder_SetRendererWriteDataCallbackAdvanced()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererWriteDataCallbackAdvanced(OH_AudioStreamBuilder* builder,OH_AudioRenderer_OnWriteDataCallbackAdvanced callback, void* userData)
 ```
 
@@ -662,7 +661,7 @@ Unlike **OH_AudioStreamBuilder_SetRendererWriteDataCallback**, **OH_AudioStreamB
 | Name| Description|
 | -- | -- |
 | [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | Pointer to an audio stream builder instance, which is created by calling [OH_AudioStreamBuilder_Create](#oh_audiostreambuilder_create).|
-| [OH_AudioRenderer_OnWriteDataCallbackAdvanced](capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallbackadvanced) callback | Callback to be used to write audio data.|
+| [OH_AudioRenderer_OnWriteDataCallbackAdvanced](capi-native-audiorenderer-h.md#oh_audiorenderer_onwritedatacallbackadvanced) callback | Callback to be used to write audio data.|
 | void* userData | Pointer to the application data passed through the callback.|
 
 **Returns**
@@ -673,7 +672,7 @@ Unlike **OH_AudioStreamBuilder_SetRendererWriteDataCallback**, **OH_AudioStreamB
 
 ### OH_AudioStreamBuilder_SetRendererInterruptCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInterruptCallback(OH_AudioStreamBuilder* builder,OH_AudioRenderer_OnInterruptCallback callback, void* userData)
 ```
 
@@ -702,7 +701,7 @@ This function is similar to [OH_AudioStreamBuilder_SetRendererCallback](#oh_audi
 
 ### OH_AudioStreamBuilder_SetRendererErrorCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererErrorCallback(OH_AudioStreamBuilder* builder,OH_AudioRenderer_OnErrorCallback callback, void* userData)
 ```
 
@@ -731,7 +730,7 @@ This function is similar to [OH_AudioStreamBuilder_SetRendererCallback](#oh_audi
 
 ### OH_AudioStreamBuilder_SetCapturerReadDataCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerReadDataCallback(OH_AudioStreamBuilder* builder,OH_AudioCapturer_OnReadDataCallback callback, void* userData)
 ```
 
@@ -760,7 +759,7 @@ This function is similar to [OH_AudioStreamBuilder_SetCapturerCallback](#oh_audi
 
 ### OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback(OH_AudioStreamBuilder* builder,OH_AudioCapturer_OnDeviceChangeCallback callback, void* userData)
 ```
 
@@ -789,7 +788,7 @@ This function is similar to [OH_AudioStreamBuilder_SetCapturerCallback](#oh_audi
 
 ### OH_AudioStreamBuilder_SetCapturerInterruptCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerInterruptCallback(OH_AudioStreamBuilder* builder,OH_AudioCapturer_OnInterruptCallback callback, void* userData)
 ```
 
@@ -818,7 +817,7 @@ This function is similar to [OH_AudioStreamBuilder_SetCapturerCallback](#oh_audi
 
 ### OH_AudioStreamBuilder_SetCapturerErrorCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerErrorCallback(OH_AudioStreamBuilder* builder,OH_AudioCapturer_OnErrorCallback callback, void* userData)
 ```
 
@@ -847,7 +846,7 @@ This function is similar to [OH_AudioStreamBuilder_SetCapturerCallback](#oh_audi
 
 ### OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted(OH_AudioStreamBuilder* builder,bool muteWhenInterrupted)
 ```
 
@@ -873,7 +872,7 @@ Sets whether to mute the audio input stream when an audio interruption occurs.
 
 ### OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback(OH_AudioStreamBuilder* builder,OH_AudioRenderer_OnFastStatusChange callback, void* userData)
 ```
 
@@ -900,7 +899,7 @@ Sets a callback for low-latency status changes during audio playback.
 
 ### OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(OH_AudioStreamBuilder* builder,OH_AudioCapturer_OnFastStatusChange callback, void* userData)
 ```
 

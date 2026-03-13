@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -108,3 +108,19 @@ getText(range?: TextRange): string
 | ACCESSIBILITY | 10 | 无障碍接口。 |
 | COLLABORATION | 11 | 跨端拍照。 |
 | STYLUS | 12 | 手写笔。 |
+
+## VoiceButtonOptions<sup>23+</sup>
+
+语音按钮选项。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称                | 类型                                              | 只读 | 可选 | 说明                                                                                  |
+|--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|
+| enabled              | boolean                                         | 否  | 是 | 输入框启用或禁用语音按钮。<br/>true表示启用语音按钮，false表示禁用语音按钮。<br/> 默认值：false|

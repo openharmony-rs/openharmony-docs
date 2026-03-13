@@ -76,7 +76,7 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID |    错误信息                            |
 |----------|---------------------------------------- |
@@ -91,6 +91,7 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 let upgradeFlag = freeInstall.UpgradeFlag.SINGLE_UPGRADE;
@@ -135,7 +136,7 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID |    错误信息                            |
 |----------|----------------------------------------|
@@ -151,6 +152,7 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 ```js
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 let upgradeFlag = freeInstall.UpgradeFlag.SINGLE_UPGRADE;
@@ -187,7 +189,7 @@ isHapModuleRemovable(bundleName: string, moduleName: string, callback: AsyncCall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID |    错误信息                            |
 |----------|----------------------------------------|
@@ -202,6 +204,7 @@ isHapModuleRemovable(bundleName: string, moduleName: string, callback: AsyncCall
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 try {
@@ -244,7 +247,7 @@ isHapModuleRemovable(bundleName: string, moduleName: string): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID |    错误信息                            |
 |----------|----------------------------------------|
@@ -260,6 +263,7 @@ isHapModuleRemovable(bundleName: string, moduleName: string): Promise\<boolean>
 ```js
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 try {
@@ -295,7 +299,7 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag, callback:
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID |    错误信息                            |
 |----------|----------------------------------------|
@@ -309,6 +313,7 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag, callback:
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let bundlePackFlag = freeInstall.BundlePackFlag.GET_PACK_INFO_ALL;
 try {
@@ -350,7 +355,7 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID |    错误信息                            |
 |----------|----------------------------------------|
@@ -365,6 +370,7 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise\
 ```js
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let bundlePackFlag = freeInstall.BundlePackFlag.GET_PACK_INFO_ALL;
 try {
@@ -410,6 +416,7 @@ getDispatchInfo(callback: AsyncCallback\<DispatchInfo>): void
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 try {
   freeInstall.getDispatchInfo((err, data) => {
     if (err) {
@@ -456,6 +463,7 @@ getDispatchInfo(): Promise\<DispatchInfo>
 ```js
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   freeInstall.getDispatchInfo().then(data => {
     console.info('Operation succeed:' + JSON.stringify(data));

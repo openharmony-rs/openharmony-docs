@@ -60,7 +60,7 @@ Sets the parameters for the pinch gesture. Compared with [PinchGesture](#pinchge
 
 onActionStart(event: (event: GestureEvent) => void)
 
-Triggered when the pinch gesture is recognized.
+Triggered after the pinch gesture is recognized.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -124,7 +124,7 @@ Triggered when a touch cancellation event occurs after successful pinch gesture 
 
 onActionCancel(event: Callback\<GestureEvent\>)
 
-Callback invoked when a touch cancellation event occurs after successful pinch gesture recognition. Compared with [onActionCancel](#onactioncancel), this callback returns gesture event information.
+Triggered when a touch cancellation event occurs after successful pinch gesture recognition. Compared with [onActionCancel](#onactioncancel), this callback returns gesture event information.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 

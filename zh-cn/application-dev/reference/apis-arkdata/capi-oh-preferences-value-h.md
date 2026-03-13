@@ -45,6 +45,28 @@
 | [int OH_PreferencesValue_GetInt(const OH_PreferencesValue *object, int *value)](#oh_preferencesvalue_getint) | 从PreferencesValue对象[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)中获取一个整型值。 |
 | [int OH_PreferencesValue_GetBool(const OH_PreferencesValue *object, bool *value)](#oh_preferencesvalue_getbool) | 从PreferencesValue对象[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)中获取一个布尔值。 |
 | [int OH_PreferencesValue_GetString(const OH_PreferencesValue *object, char **value, uint32_t *valueLen)](#oh_preferencesvalue_getstring) | 从PreferencesValue对象[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)中获取字符串。 |
+| [void OH_PreferencesPair_Destroy(OH_PreferencesPair *pairs, uint32_t count)](#oh_preferencespair_destroy) | 销毁一个[OH_PreferencesPair](capi-preferences-oh-preferencespair.md)实例。 |
+| [OH_PreferencesValue* OH_PreferencesValue_Create(void)](#oh_preferencesvalue_create) | 创建一个[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例。 |
+| [void OH_PreferencesValue_Destroy(OH_PreferencesValue *value)](#oh_preferencesvalue_destroy) | 销毁一个[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例。 |
+| [int OH_PreferencesValue_SetInt(const OH_PreferencesValue *object, int value)](#oh_preferencesvalue_setint) | 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置整型值。 |
+| [int OH_PreferencesValue_SetBool(const OH_PreferencesValue *object, bool value)](#oh_preferencesvalue_setbool) | 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置布尔值。 |
+| [int OH_PreferencesValue_SetString(const OH_PreferencesValue *object, const char *value)](#oh_preferencesvalue_setstring) | 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置字符串值。 |
+| [int OH_PreferencesValue_SetInt64(const OH_PreferencesValue *object, int64_t value)](#oh_preferencesvalue_setint64) | 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置int64值。 |
+| [int OH_PreferencesValue_GetInt64(const OH_PreferencesValue *object, int64_t *value)](#oh_preferencesvalue_getint64) | 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的int64值。 |
+| [int OH_PreferencesValue_SetDouble(const OH_PreferencesValue *object, double value)](#oh_preferencesvalue_setdouble) | 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置double值。 |
+| [int OH_PreferencesValue_GetDouble(const OH_PreferencesValue *object, double *value)](#oh_preferencesvalue_getdouble) | 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的double值。 |
+| [int OH_PreferencesValue_SetIntArray(const OH_PreferencesValue *object, const int *value, uint32_t count)](#oh_preferencesvalue_setintarray) | 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置整型数组值。 |
+| [int OH_PreferencesValue_GetIntArray(const OH_PreferencesValue *object, int **value, uint32_t *count)](#oh_preferencesvalue_getintarray) | 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的整型数组值。 |
+| [int OH_PreferencesValue_SetBoolArray(const OH_PreferencesValue *object, const bool *value, uint32_t count)](#oh_preferencesvalue_setboolarray) | 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置布尔数组值。 |
+| [int OH_PreferencesValue_GetBoolArray(const OH_PreferencesValue *object, bool **value, uint32_t *count)](#oh_preferencesvalue_getboolarray) | 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的布尔数组值。 |
+| [int OH_PreferencesValue_SetStringArray(const OH_PreferencesValue *object, const char **value, uint32_t count)](#oh_preferencesvalue_setstringarray) | 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置字符串数组值。 |
+| [int OH_PreferencesValue_GetStringArray(const OH_PreferencesValue *object, char ***value, uint32_t *count)](#oh_preferencesvalue_getstringarray) | 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的字符串数组值。 |
+| [int OH_PreferencesValue_SetInt64Array(const OH_PreferencesValue *object, const int64_t *value, uint32_t count)](#oh_preferencesvalue_setint64array) | 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置int64数组值。 |
+| [int OH_PreferencesValue_GetInt64Array(const OH_PreferencesValue *object, int64_t **value, uint32_t *count)](#oh_preferencesvalue_getint64array) | 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的int64数组值。 |
+| [int OH_PreferencesValue_SetDoubleArray(const OH_PreferencesValue *object, const double *value, uint32_t count)](#oh_preferencesvalue_setdoublearray) | 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置double数组值。 |
+| [int OH_PreferencesValue_GetDoubleArray(const OH_PreferencesValue *object, double **value, uint32_t *count)](#oh_preferencesvalue_getdoublearray) | 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的double数组值。 |
+| [int OH_PreferencesValue_SetBlob(const OH_PreferencesValue *object, const uint8_t *value, uint32_t count)](#oh_preferencesvalue_setblob) | 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置二进制值。 |
+| [int OH_PreferencesValue_GetBlob(const OH_PreferencesValue *object, uint8_t **value, uint32_t *count)](#oh_preferencesvalue_getblob) | 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的二进制值。 |
 
 ## 枚举类型说明
 
@@ -66,6 +88,14 @@ enum Preference_ValueType
 | PREFERENCE_TYPE_INT      | 整型类型。   |
 | PREFERENCE_TYPE_BOOL     | 布尔类型。   |
 | PREFERENCE_TYPE_STRING   | 字符串类型。 |
+| PREFERENCE_TYPE_INT64 | 64位整型类型。<br>**起始版本：** 23 |
+| PREFERENCE_TYPE_DOUBLE | 浮点型类型。<br>**起始版本：** 23 |
+| PREFERENCE_TYPE_INT_ARRAY | 整型数组。<br>**起始版本：** 23 |
+| PREFERENCE_TYPE_BOOL_ARRAY | 布尔数组。<br>**起始版本：** 23 |
+| PREFERENCE_TYPE_STRING_ARRAY | 字符串数组。<br>**起始版本：** 23 |
+| PREFERENCE_TYPE_INT64_ARRAY | 64位整型数组。<br>**起始版本：** 23 |
+| PREFERENCE_TYPE_DOUBLE_ARRAY | 浮点型数组。<br>**起始版本：** 23 |
+| PREFERENCE_TYPE_BLOB | 二进制数据。<br>**起始版本：** 23 |
 | PREFERENCE_TYPE_BUTT     | 结束类型。   |
 
 
@@ -228,5 +258,544 @@ int OH_PreferencesValue_GetString(const OH_PreferencesValue *object, char **valu
 | ---- | ------------------------------------------------------------ |
 | int  | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
+### OH_PreferencesPair_Destroy()
 
+```c
+void OH_PreferencesPair_Destroy(OH_PreferencesPair *pairs, uint32_t count)
+```
 
+**描述**
+
+销毁一个[OH_PreferencesPair](capi-preferences-oh-preferencespair.md)实例。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PreferencesPair](capi-preferences-oh-preferencespair.md) *pairs | 指向目标[OH_PreferencesPair](capi-preferences-oh-preferencespair.md)实例的指针。 |
+| uint32_t count | 需要销毁的KV数组大小。 |
+
+### OH_PreferencesValue_Create()
+
+```c
+OH_PreferencesValue* OH_PreferencesValue_Create(void)
+```
+
+**描述**
+
+创建一个[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例。
+
+**起始版本：** 23
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_PreferencesValue*](capi-preferences-oh-preferencesvalue.md) | 如果操作成功，返回指向[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)值对象的指针，否则返回nullptr。 |
+
+### OH_PreferencesValue_Destroy()
+
+```c
+void OH_PreferencesValue_Destroy(OH_PreferencesValue *value)
+```
+
+**描述**
+
+销毁一个[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *value | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+
+### OH_PreferencesValue_SetInt()
+
+```c
+int OH_PreferencesValue_SetInt(const OH_PreferencesValue *object, int value)
+```
+
+**描述**
+
+为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置整型值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| int value | 需要设置的整型值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_SetBool()
+
+```c
+int OH_PreferencesValue_SetBool(const OH_PreferencesValue *object, bool value)
+```
+
+**描述**
+
+为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置布尔值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| bool value | 需要设置的布尔值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_SetString()
+
+```c
+int OH_PreferencesValue_SetString(const OH_PreferencesValue *object, const char *value)
+```
+
+**描述**
+
+为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置字符串值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| const char *value | 需要设置的字符串值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_SetInt64()
+
+```c
+int OH_PreferencesValue_SetInt64(const OH_PreferencesValue *object, int64_t value)
+```
+
+**描述**
+
+为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置int64值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| int64_t value | 需要设置的int64值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_GetInt64()
+
+```c
+int OH_PreferencesValue_GetInt64(const OH_PreferencesValue *object, int64_t *value)
+```
+
+**描述**
+
+获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的int64值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| int64_t *value | 指向获取到的int64值的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_SetDouble()
+
+```c
+int OH_PreferencesValue_SetDouble(const OH_PreferencesValue *object, double value)
+```
+
+**描述**
+
+为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置double值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| double value | 需要设置的double值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_GetDouble()
+
+```c
+int OH_PreferencesValue_GetDouble(const OH_PreferencesValue *object, double *value)
+```
+
+**描述**
+
+获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的double值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| double *value | 指向获取到的double值的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_SetIntArray()
+
+```c
+int OH_PreferencesValue_SetIntArray(const OH_PreferencesValue *object, const int *value, uint32_t count)
+```
+
+**描述**
+
+为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置整型数组值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| const int *value | 需要设置的整型数组值。 |
+| uint32_t count | 指向需要设置的数组大小的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_GetIntArray()
+
+```c
+int OH_PreferencesValue_GetIntArray(const OH_PreferencesValue *object, int **value, uint32_t *count)
+```
+
+**描述**
+
+获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的整型数组值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| int **value | 指向获取到的整型数组值的二级指针。 |
+| uint32_t *count | 指向获取到的数组大小的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_SetBoolArray()
+
+```c
+int OH_PreferencesValue_SetBoolArray(const OH_PreferencesValue *object, const bool *value, uint32_t count)
+```
+
+**描述**
+
+为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置布尔数组值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| const bool *value | 需要设置的布尔数组值。 |
+| uint32_t count | 指向需要设置的数组大小的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_GetBoolArray()
+
+```c
+int OH_PreferencesValue_GetBoolArray(const OH_PreferencesValue *object, bool **value, uint32_t *count)
+```
+
+**描述**
+
+获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的布尔数组值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| bool **value | 指向获取到的布尔数组值的二级指针。 |
+| uint32_t *count | 指向获取到的数组大小的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_SetStringArray()
+
+```c
+int OH_PreferencesValue_SetStringArray(const OH_PreferencesValue *object, const char **value, uint32_t count)
+```
+
+**描述**
+
+为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置字符串数组值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| const char **value | 需要设置的字符串数组值。 |
+| uint32_t count | 指向需要设置的数组大小的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_GetStringArray()
+
+```c
+int OH_PreferencesValue_GetStringArray(const OH_PreferencesValue *object, char ***value, uint32_t *count)
+```
+
+**描述**
+
+获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的字符串数组值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| char ***value | 指向获取到的字符串数组值的二级指针。 |
+| uint32_t *count | 指向获取到的数组大小的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_SetInt64Array()
+
+```c
+int OH_PreferencesValue_SetInt64Array(const OH_PreferencesValue *object, const int64_t *value, uint32_t count)
+```
+
+**描述**
+
+为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置int64数组值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| const int64_t *value | 需要设置的int64数组值。 |
+| uint32_t count | 指向需要设置的数组大小的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_GetInt64Array()
+
+```c
+int OH_PreferencesValue_GetInt64Array(const OH_PreferencesValue *object, int64_t **value, uint32_t *count)
+```
+
+**描述**
+
+获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的int64数组值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| int64_t **value | 指向获取到的int64数组值的二级指针。 |
+| uint32_t *count | 指向获取到的数组大小的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_SetDoubleArray()
+
+```c
+int OH_PreferencesValue_SetDoubleArray(const OH_PreferencesValue *object, const double *value, uint32_t count)
+```
+
+**描述**
+
+为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置double数组值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| const double *value | 需要设置的double数组值。 |
+| uint32_t count | 指向需要设置的数组大小的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_GetDoubleArray()
+
+```c
+int OH_PreferencesValue_GetDoubleArray(const OH_PreferencesValue *object, double **value, uint32_t *count)
+```
+
+**描述**
+
+获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的double数组值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| double **value | 指向获取到的double数组值的二级指针。 |
+| uint32_t *count | 指向获取到的数组大小的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_SetBlob()
+
+```c
+int OH_PreferencesValue_SetBlob(const OH_PreferencesValue *object, const uint8_t *value, uint32_t count)
+```
+
+**描述**
+
+为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置二进制值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| const uint8_t *value | 需要设置的二进制值。 |
+| uint32_t count | 指向需要设置的二进制大小的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+
+### OH_PreferencesValue_GetBlob()
+
+```c
+int OH_PreferencesValue_GetBlob(const OH_PreferencesValue *object, uint8_t **value, uint32_t *count)
+```
+
+**描述**
+
+获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的二进制值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
+| uint8_t **value | 指向获取到的二进制值的二级指针。 |
+| uint32_t *count | 指向获取到的二进制大小的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |

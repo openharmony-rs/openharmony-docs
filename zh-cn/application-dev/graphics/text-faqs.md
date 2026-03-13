@@ -34,7 +34,7 @@
 
 上述两个接口控制同一个开关，使用其一即可。
 
-以`"\uffffHello World\uffff"`文本为例，其中`\uffff `表示一个找不到字形的字符。
+以`"\uffffHello World\uffff"`文本为例，其中`\uffff`表示一个找不到字形的字符。
 
 对比效果如下：
 

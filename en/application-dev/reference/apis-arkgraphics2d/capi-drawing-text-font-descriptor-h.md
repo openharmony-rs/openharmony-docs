@@ -13,6 +13,8 @@ This file declares the capabilities of font information, such as obtaining font 
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 14
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -37,18 +39,23 @@ This file declares the capabilities of font information, such as obtaining font 
 | [const OH_Drawing_String* OH_Drawing_GetSystemFontFullNameByIndex(OH_Drawing_Array* fullNameArray, size_t index)](#oh_drawing_getsystemfontfullnamebyindex) | Obtains the font name with the specified index in the font name array.|
 | [void OH_Drawing_DestroySystemFontFullNames(OH_Drawing_Array* fullNameArray)](#oh_drawing_destroysystemfontfullnames) | Releases the memory occupied by the font name array obtained by font type.|
 | [OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromStream(const void* data, size_t size)](#oh_drawing_getfontfulldescriptorsfromstream) | Obtains the font descriptor array based on the original binary data.|
-| [OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromPath(const char* path)](#oh_drawing_getfontfulldescriptorsfrompath) | Obtains the font descriptor array based on the font file path.|
-| [const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByIndex(OH_Drawing_Array* descriptorArray, size_t index)](#oh_drawing_getfontfulldescriptorbyindex) | Obtains the font descriptor in the font descriptor array based on the index.|
+| [OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromPath(const char* path)](#oh_drawing_getfontfulldescriptorsfrompath) | Obtains an array of font descriptors based on the font file path.|
+| [const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByIndex(OH_Drawing_Array* descriptorArray, size_t index)](#oh_drawing_getfontfulldescriptorbyindex) | Obtains the font descriptor from the font descriptor array based on the index.|
 | [void OH_Drawing_DestroyFontFullDescriptors(OH_Drawing_Array* descriptorArray)](#oh_drawing_destroyfontfulldescriptors) | Releases the memory occupied by the font descriptor array.|
-| [OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeInt(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, int* value)](#oh_drawing_getfontfulldescriptorattributeint) | Obtains the attributes of the font descriptor of the int type.|
+| [OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeInt(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, int* value)](#oh_drawing_getfontfulldescriptorattributeint) | Obtains the attributes of a font descriptor of the int type.|
 | [OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeBool(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, bool* value)](#oh_drawing_getfontfulldescriptorattributebool) | Obtains the attributes of the font descriptor of the bool type.|
 | [OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeString(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, OH_Drawing_String* str)](#oh_drawing_getfontfulldescriptorattributestring) | Obtains the attributes of the font descriptor of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.|
+| [OH_Drawing_ErrorCode OH_Drawing_GetFontUnicodeArrayFromFile(const char* fontSrc, uint32_t index, int32_t** unicodeArray, int32_t* arrayLength)](#oh_drawing_getfontunicodearrayfromfile) | Obtains a Unicode array from a font file.|
+| [OH_Drawing_ErrorCode OH_Drawing_GetFontUnicodeArrayFromBuffer(uint8_t* fontBuffer, size_t length, uint32_t index, int32_t** unicodeArray, int32_t* arrayLength)](#oh_drawing_getfontunicodearrayfrombuffer) | Obtains a Unicode array from a font buffer.|
+| [uint32_t OH_Drawing_GetFontCountFromFile(const char* fontSrc)](#oh_drawing_getfontcountfromfile) | Obtains the number of fonts contained in a font file.|
+| [uint32_t OH_Drawing_GetFontCountFromBuffer(uint8_t* fontBuffer, size_t length)](#oh_drawing_getfontcountfrombuffer) | Obtains the number of fonts contained in a font buffer.|
+| [OH_Drawing_String* OH_Drawing_GetFontPathsByType(OH_Drawing_SystemFontType fontType, size_t* pathCount)](#oh_drawing_getfontpathsbytype) | Obtains all font file paths of the specified font type.|
 
 ## Enum Description
 
 ### OH_Drawing_SystemFontType
 
-```
+```c
 enum OH_Drawing_SystemFontType
 ```
 
@@ -68,34 +75,44 @@ Defines an enum for the system font types.
 
 ### OH_Drawing_FontFullDescriptorAttributeId
 
-```
+```c
 enum OH_Drawing_FontFullDescriptorAttributeId
 ```
 
 **Description**
 
-Enumerates font descriptor attributes. You can use the corresponding APIs to obtain the attributes of different font descriptor types. For example, if **FULL_DESCRIPTOR_ATTR_I_WEIGHT** is of the int type, you can use the [OH_Drawing_GetFontFullDescriptorAttributeInt](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorattributeint) API to obtain its attribute value.
+Enumerates font descriptor attributes. You can use the corresponding APIs to obtain the attributes of different font descriptor types. For example, if **FULL_DESCRIPTOR_ATTR_I_WEIGHT** is of the int type, use the [OH_Drawing_GetFontFullDescriptorAttributeInt](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorattributeint) API to obtain its attribute value.
 
 **Since**: 22
 
 | Value| Description|
 | -- | -- |
 | FULL_DESCRIPTOR_ATTR_S_PATH = 0 | Font file path, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.|
-| FULL_DESCRIPTOR_ATTR_S_POSTSCRIPT_NAME = 1 | Unique font name, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.|
+| FULL_DESCRIPTOR_ATTR_S_POSTSCRIPT_NAME = 1 | Postscript font name, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.|
 | FULL_DESCRIPTOR_ATTR_S_FULL_NAME = 2 | Font name, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.|
 | FULL_DESCRIPTOR_ATTR_S_FAMILY_NAME = 3 | Font family name, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.|
-| FULL_DESCRIPTOR_ATTR_S_SUB_FAMILY_NAME = 4 | Name of the subfont family, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.|
+| FULL_DESCRIPTOR_ATTR_S_SUB_FAMILY_NAME = 4 | Font subfamily name, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.|
 | FULL_DESCRIPTOR_ATTR_I_WEIGHT = 5 | Font weight, of the int type.|
 | FULL_DESCRIPTOR_ATTR_I_WIDTH = 6 | Font width style, of the int type.|
 | FULL_DESCRIPTOR_ATTR_I_ITALIC = 7 | Whether the font is italic, of the int type. **1** means that the font is italic; **0** otherwise.|
 | FULL_DESCRIPTOR_ATTR_B_MONO = 8 | Whether the font is compact, of the bool type. **true** means yes; **false** otherwise.|
 | FULL_DESCRIPTOR_ATTR_B_SYMBOLIC = 9 | Whether the font supports the symbol font, of the bool type. **true** means yes; **false** otherwise.|
+| FULL_DESCRIPTOR_ATTR_S_LOCAL_POSTSCRIPT_NAME = 10 | Extracts the postscript name of the font based on the system language configuration.<br>**Since**: 23|
+| FULL_DESCRIPTOR_ATTR_S_LOCAL_FULL_NAME = 11 | Extracts the full name of the font based on the system language configuration.<br>**Since**: 23|
+| FULL_DESCRIPTOR_ATTR_S_LOCAL_FAMILY_NAME = 12 | Extracts the font family name based on the system language configuration.<br>**Since**: 23|
+| FULL_DESCRIPTOR_ATTR_S_LOCAL_SUB_FAMILY_NAME = 13 | Extracts the font subfamily name based on the system language configuration.<br>**Since**: 23|
+| FULL_DESCRIPTOR_ATTR_S_VERSION = 14 | Font version.<br>**Since**: 23|
+| FULL_DESCRIPTOR_ATTR_S_MANUFACTURE = 15 | Font manufacturer information.<br>**Since**: 23|
+| FULL_DESCRIPTOR_ATTR_S_COPYRIGHT = 16 | Font copyright information.<br>**Since**: 23|
+| FULL_DESCRIPTOR_ATTR_S_TRADEMARK = 17 | Font trademark information.<br>**Since**: 23|
+| FULL_DESCRIPTOR_ATTR_S_LICENSE = 18 | Font license information.<br>**Since**: 23|
+| FULL_DESCRIPTOR_ATTR_I_INDEX = 21 | Font index.<br>**Since**: 23|
 
 ## Function Description
 
 ### OH_Drawing_MatchFontDescriptors()
 
-```
+```c
 OH_Drawing_FontDescriptor* OH_Drawing_MatchFontDescriptors(OH_Drawing_FontDescriptor* desc, size_t* num)
 ```
 
@@ -123,7 +140,7 @@ Obtains all system font descriptors that match a font descriptor. In the [OH_Dra
 
 ### OH_Drawing_DestroyFontDescriptors()
 
-```
+```c
 void OH_Drawing_DestroyFontDescriptors(OH_Drawing_FontDescriptor* descriptors, size_t num)
 ```
 
@@ -145,7 +162,7 @@ Releases an array of [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdes
 
 ### OH_Drawing_GetFontDescriptorByFullName()
 
-```
+```c
 OH_Drawing_FontDescriptor* OH_Drawing_GetFontDescriptorByFullName(const OH_Drawing_String* fullName,OH_Drawing_SystemFontType fontType)
 ```
 
@@ -173,7 +190,7 @@ Obtains a font descriptor based on the font name and type. System fonts, style f
 
 ### OH_Drawing_GetSystemFontFullNamesByType()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_GetSystemFontFullNamesByType(OH_Drawing_SystemFontType fontType)
 ```
 
@@ -200,7 +217,7 @@ Obtains an array of font names by font type.
 
 ### OH_Drawing_GetSystemFontFullNameByIndex()
 
-```
+```c
 const OH_Drawing_String* OH_Drawing_GetSystemFontFullNameByIndex(OH_Drawing_Array* fullNameArray, size_t index)
 ```
 
@@ -228,7 +245,7 @@ Obtains the font name with the specified index in the font name array.
 
 ### OH_Drawing_DestroySystemFontFullNames()
 
-```
+```c
 void OH_Drawing_DestroySystemFontFullNames(OH_Drawing_Array* fullNameArray)
 ```
 
@@ -250,7 +267,7 @@ Releases the memory occupied by the font name array obtained by font type.
 
 ### OH_Drawing_GetFontFullDescriptorsFromStream()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromStream(const void* data, size_t size)
 ```
 
@@ -277,13 +294,13 @@ Obtains the font descriptor array based on the original binary data.
 
 ### OH_Drawing_GetFontFullDescriptorsFromPath()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromPath(const char* path)
 ```
 
 **Description**
 
-Obtains an array of font descriptors by font file path.
+Obtains an array of font descriptors based on the font file path.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -303,7 +320,7 @@ Obtains an array of font descriptors by font file path.
 
 ### OH_Drawing_GetFontFullDescriptorByIndex()
 
-```
+```c
 const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByIndex(OH_Drawing_Array* descriptorArray, size_t index)
 ```
 
@@ -326,11 +343,11 @@ Obtains the font descriptor from the font descriptor array based on the index.
 
 | Type| Description|
 | -- | -- |
-| const [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)* | Returns a pointer to the font descriptor object {@link OH_Drawing_FontFullDescriptor} at the specified index.<br>Returns NULL if the index is out of range or the array is invalid.|
+| const [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)* | Returns the pointer to the font descriptor object [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md) at the specified index.<br>Returns NULL if the index is out of range or the array is invalid.|
 
 ### OH_Drawing_DestroyFontFullDescriptors()
 
-```
+```c
 void OH_Drawing_DestroyFontFullDescriptors(OH_Drawing_Array* descriptorArray)
 ```
 
@@ -350,7 +367,7 @@ Releases the memory occupied by the font descriptor array.
 
 ### OH_Drawing_GetFontFullDescriptorAttributeInt()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeInt(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, int* value)
 ```
 
@@ -378,7 +395,7 @@ Obtains the attributes of a font descriptor of the int type.
 
 ### OH_Drawing_GetFontFullDescriptorAttributeBool()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeBool(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, bool* value)
 ```
 
@@ -406,7 +423,7 @@ Obtains the font descriptor attribute of the bool type.
 
 ### OH_Drawing_GetFontFullDescriptorAttributeString()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeString(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, OH_Drawing_String* str)
 ```
 
@@ -434,3 +451,132 @@ Obtains the attributes of the [OH_Drawing_String](capi-drawing-oh-drawing-string
 | Type| Description|
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **descriptor** or **str** is a null pointer.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+
+### OH_Drawing_GetFontUnicodeArrayFromFile()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetFontUnicodeArrayFromFile(const char* fontSrc, uint32_t index, int32_t** unicodeArray, int32_t* arrayLength)
+```
+
+**Description**
+
+Obtains a Unicode array from a font file.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const char* fontSrc | Font file path.|
+| uint32_t index | Index of the font in a TTC/OTC file. This parameter shall be set to **0** for non-TTC/OTC files.|
+| int32_t** unicodeArray | Output parameter, which is used to receive the Unicode array. Use **free()** to release the Unicode array when the array is no longer needed.|
+| int32_t* arrayLength | Output parameter, which is used to receive the length of the Unicode array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if the font path is invalid or the file is not a font file.|
+
+### OH_Drawing_GetFontUnicodeArrayFromBuffer()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetFontUnicodeArrayFromBuffer(uint8_t* fontBuffer, size_t length, uint32_t index, int32_t** unicodeArray, int32_t* arrayLength)
+```
+
+**Description**
+
+Obtains a Unicode array from a font buffer.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| uint8_t* fontBuffer | Font file data.|
+| size_t length | Length of the font file data.|
+| uint32_t index | Index of the font in a TTC/OTC file. This parameter shall be set to **0** for non-TTC/OTC files.|
+| int32_t** unicodeArray | Output parameter, which is used to receive the Unicode array. Use **free()** to release the Unicode array when the array is no longer needed.|
+| int32_t* arrayLength | Output parameter, which is used to receive the length of the Unicode array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if the buffer data is invalid or not font file data.|
+
+### OH_Drawing_GetFontCountFromFile()
+
+```c
+uint32_t OH_Drawing_GetFontCountFromFile(const char* fontSrc)
+```
+
+**Description**
+
+Obtains the number of fonts contained in a font file.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const char* fontSrc | Font file path.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| uint32_t | Number of fonts.|
+
+### OH_Drawing_GetFontCountFromBuffer()
+
+```c
+uint32_t OH_Drawing_GetFontCountFromBuffer(uint8_t* fontBuffer, size_t length)
+```
+
+**Description**
+
+Obtains the number of fonts contained in a font buffer.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| uint8_t* fontBuffer | Font buffer data.|
+| size_t length | Length of the font data.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| uint32_t | Number of fonts.|
+
+### OH_Drawing_GetFontPathsByType()
+
+```c
+OH_Drawing_String* OH_Drawing_GetFontPathsByType(OH_Drawing_SystemFontType fontType, size_t* pathCount)
+```
+
+**Description**
+
+Obtains all font file paths of the specified font type.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_SystemFontType](capi-drawing-text-font-descriptor-h.md#oh_drawing_systemfonttype) fontType | Enum for the system font types, which is [OH_Drawing_SystemFontType](capi-drawing-text-font-descriptor-h.md#oh_drawing_systemfonttype).|
+| size_t* pathCount | Number of font file paths in the list returned.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_String*](capi-drawing-oh-drawing-string.md) | Returns a list of **OH_Drawing_String** objects representing font file paths. Use **free()** to free the object pointer and the internal pointer held by each **OH_Drawing_String** object when they are no longer needed.|

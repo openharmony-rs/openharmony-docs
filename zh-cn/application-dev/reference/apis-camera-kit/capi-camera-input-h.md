@@ -45,12 +45,15 @@
 | [Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input* cameraInput, bool* isVariable)](#oh_camerainput_isphysicalcameraorientationvariable) | - | 查询设备不同折叠状态下，相机物理镜头角度是否可变。 |
 | [Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* cameraInput, uint32_t* orientation)](#oh_camerainput_getphysicalcameraorientation) | - | 获取设备当前折叠状态下的物理镜头角度。 |
 | [Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* cameraInput, bool isUsed)](#oh_camerainput_usephysicalcameraorientation) | - | 选择是否使用物理镜头角度。 |
+| [typedef void (\*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* cameraInput, Camera_OcclusionDetectionResult occlusionDetectionResult)](#oh_camerainput_onocclusiondetectioncallback) | OH_CameraInput_OnOcclusionDetectionCallback | 相机镜头遮挡、脏污检测结果回调。 |
+| [Camera_ErrorCode OH_CameraInput_RegisterOcclusionDetectionCallback(Camera_Input* cameraInput, OH_CameraInput_OnOcclusionDetectionCallback occlusionDetectionCallback)](#oh_camerainput_registerocclusiondetectioncallback) | - | 注册相机镜头遮挡、脏污检测事件回调。 |
+| [Camera_ErrorCode OH_CameraInput_UnregisterOcclusionDetectionCallback(Camera_Input* cameraInput, OH_CameraInput_OnOcclusionDetectionCallback occlusionDetectionCallback)](#oh_camerainput_unregisterocclusiondetectioncallback) | - | 注销相机镜头遮挡、脏污检测事件回调。 |
 
 ## 函数说明
 
 ### OH_CameraInput_OnError()
 
-```
+```c
 typedef void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_ErrorCode errorCode)
 ```
 
@@ -59,7 +62,6 @@ typedef void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_E
 在[CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md)中被调用的相机输入错误回调。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -81,7 +83,7 @@ typedef void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_E
 
 ### OH_CameraInput_RegisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_RegisterCallback(Camera_Input* cameraInput, CameraInput_Callbacks* callback)
 ```
 
@@ -90,7 +92,6 @@ Camera_ErrorCode OH_CameraInput_RegisterCallback(Camera_Input* cameraInput, Came
 注册相机输入更改事件回调。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -107,7 +108,7 @@ Camera_ErrorCode OH_CameraInput_RegisterCallback(Camera_Input* cameraInput, Came
 
 ### OH_CameraInput_UnregisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_UnregisterCallback(Camera_Input* cameraInput, CameraInput_Callbacks* callback)
 ```
 
@@ -116,7 +117,6 @@ Camera_ErrorCode OH_CameraInput_UnregisterCallback(Camera_Input* cameraInput, Ca
 注销相机输入更改事件回调。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -133,7 +133,7 @@ Camera_ErrorCode OH_CameraInput_UnregisterCallback(Camera_Input* cameraInput, Ca
 
 ### OH_CameraInput_Open()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_Open(Camera_Input* cameraInput)
 ```
 
@@ -142,7 +142,6 @@ Camera_ErrorCode OH_CameraInput_Open(Camera_Input* cameraInput)
 打开相机。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -158,7 +157,7 @@ Camera_ErrorCode OH_CameraInput_Open(Camera_Input* cameraInput)
 
 ### OH_CameraInput_OpenSecureCamera()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_OpenSecureCamera(Camera_Input* cameraInput, uint64_t* secureSeqId)
 ```
 
@@ -167,7 +166,6 @@ Camera_ErrorCode OH_CameraInput_OpenSecureCamera(Camera_Input* cameraInput, uint
 打开安全相机。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -184,7 +182,7 @@ Camera_ErrorCode OH_CameraInput_OpenSecureCamera(Camera_Input* cameraInput, uint
 
 ### OH_CameraInput_OpenConcurrentCameras()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput, Camera_ConcurrentType type)
 ```
 
@@ -193,7 +191,6 @@ Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput,
 根据指定并发类型打开相机。
 
 **起始版本：** 18
-
 
 **参数：**
 
@@ -210,7 +207,7 @@ Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput,
 
 ### OH_CameraInput_Close()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_Close(Camera_Input* cameraInput)
 ```
 
@@ -219,7 +216,6 @@ Camera_ErrorCode OH_CameraInput_Close(Camera_Input* cameraInput)
 关闭相机。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -235,7 +231,7 @@ Camera_ErrorCode OH_CameraInput_Close(Camera_Input* cameraInput)
 
 ### OH_CameraInput_Release()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)
 ```
 
@@ -244,7 +240,6 @@ Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)
 释放相机输入实例。<br> 和[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)只需要调用其中一个，调用之后无须再调用[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -260,7 +255,7 @@ Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)
 
 ### OH_CameraInput_IsPhysicalCameraOrientationVariable()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input* cameraInput, bool* isVariable)
 ```
 
@@ -269,7 +264,6 @@ Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input
 查询设备不同折叠状态下，相机物理镜头角度是否可变。
 
 **起始版本：** 22
-
 
 **参数：**
 
@@ -286,7 +280,7 @@ Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input
 
 ### OH_CameraInput_GetPhysicalCameraOrientation()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* cameraInput, uint32_t* orientation)
 ```
 
@@ -295,7 +289,6 @@ Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* camer
 获取设备当前折叠状态下的物理镜头角度。
 
 **起始版本：** 22
-
 
 **参数：**
 
@@ -312,7 +305,7 @@ Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* camer
 
 ### OH_CameraInput_UsePhysicalCameraOrientation()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* cameraInput, bool isUsed)
 ```
 
@@ -321,7 +314,6 @@ Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* camer
 选择是否使用物理镜头角度。
 
 **起始版本：** 22
-
 
 **参数：**
 
@@ -335,5 +327,74 @@ Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* camer
 | 类型 | 说明 |
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+
+### OH_CameraInput_OnOcclusionDetectionCallback()
+
+```c
+typedef void (*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* cameraInput, Camera_OcclusionDetectionResult occlusionDetectionResult)
+```
+
+**描述**
+
+相机镜头遮挡、脏污检测结果回调。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const Camera_Input* cameraInput | 传递回调的Camera_Input。 |
+| [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) occlusionDetectionResult | 相机镜头遮挡、脏污检测结果。 |
+
+### OH_CameraInput_RegisterOcclusionDetectionCallback()
+
+```c
+Camera_ErrorCode OH_CameraInput_RegisterOcclusionDetectionCallback(Camera_Input* cameraInput, OH_CameraInput_OnOcclusionDetectionCallback occlusionDetectionCallback)
+```
+
+**描述**
+
+注册相机镜头遮挡、脏污检测事件回调。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Camera_Input实例。 |
+| [OH_CameraInput_OnOcclusionDetectionCallback](capi-camera-input-h.md#oh_camerainput_onocclusiondetectioncallback) occlusionDetectionCallback | 要注册的相机镜头遮挡、脏污检测事件回调。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+
+### OH_CameraInput_UnregisterOcclusionDetectionCallback()
+
+```c
+Camera_ErrorCode OH_CameraInput_UnregisterOcclusionDetectionCallback(Camera_Input* cameraInput, OH_CameraInput_OnOcclusionDetectionCallback occlusionDetectionCallback)
+```
+
+**描述**
+
+注销相机镜头遮挡、脏污检测事件回调。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Camera_Input实例。 |
+| [OH_CameraInput_OnOcclusionDetectionCallback](capi-camera-input-h.md#oh_camerainput_onocclusiondetectioncallback) occlusionDetectionCallback | 要注销的相机镜头遮挡、脏污检测事件回调。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 

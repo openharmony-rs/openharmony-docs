@@ -23,12 +23,17 @@ typedef struct ImageEffect_FilterDelegate {...} ImageEffect_FilterNames
 ## 汇总
 
 ### 成员变量
-
+**支持C++语言语法的声明如下：**
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t size = 0 | 滤镜名个数。 |
-| const char** nameList = nullptr | 滤镜名列表。 |
+| const char \*\*nameList = nullptr | 滤镜名列表。 |
 
+**支持C语言语法的声明如下：**
+| 名称 | 描述 |
+| -- | -- |
+| uint32_t size| 滤镜名个数。 |
+| const char \*\*nameList | 滤镜名列表。 |
 
 ### 成员函数
 
@@ -47,7 +52,7 @@ typedef struct ImageEffect_FilterDelegate {...} ImageEffect_FilterNames
 
 ### OH_EffectFilterInfo_Create()
 
-```
+```c
 OH_EffectFilterInfo *OH_EffectFilterInfo_Create()
 ```
 
@@ -67,7 +72,7 @@ OH_EffectFilterInfo *OH_EffectFilterInfo_Create()
 
 ### OH_EffectFilterInfo_SetFilterName()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_SetFilterName(OH_EffectFilterInfo *info, const char *name)
 ```
 
@@ -94,7 +99,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetFilterName(OH_EffectFilterInfo *inf
 
 ### OH_EffectFilterInfo_GetFilterName()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_GetFilterName(OH_EffectFilterInfo *info, char **name)
 ```
 
@@ -121,7 +126,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetFilterName(OH_EffectFilterInfo *inf
 
 ### OH_EffectFilterInfo_SetSupportedBufferTypes()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedBufferTypes(OH_EffectFilterInfo *info, uint32_t size,ImageEffect_BufferType *bufferTypeArray)
 ```
 
@@ -149,7 +154,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedBufferTypes(OH_EffectFilte
 
 ### OH_EffectFilterInfo_GetSupportedBufferTypes()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedBufferTypes(OH_EffectFilterInfo *info, uint32_t *size,ImageEffect_BufferType **bufferTypeArray)
 ```
 
@@ -177,7 +182,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedBufferTypes(OH_EffectFilte
 
 ### OH_EffectFilterInfo_SetSupportedFormats()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedFormats(OH_EffectFilterInfo *info, uint32_t size,ImageEffect_Format *formatArray)
 ```
 
@@ -205,7 +210,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedFormats(OH_EffectFilterInf
 
 ### OH_EffectFilterInfo_GetSupportedFormats()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedFormats(OH_EffectFilterInfo *info, uint32_t *size,ImageEffect_Format **formatArray)
 ```
 
@@ -233,7 +238,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedFormats(OH_EffectFilterInf
 
 ### OH_EffectFilterInfo_Release()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_Release(OH_EffectFilterInfo *info)
 ```
 

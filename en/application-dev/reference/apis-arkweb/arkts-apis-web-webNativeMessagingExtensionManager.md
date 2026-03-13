@@ -17,7 +17,7 @@ The webNativeMessagingExtensionManager module provides the capability of managin
 ## Modules to Import
 
 ```ts
-import webNativeMessagingExtensionManager from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
 ```
 
 ## ConnectionNativeInfo
@@ -339,7 +339,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 ```ts
-import { UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
 

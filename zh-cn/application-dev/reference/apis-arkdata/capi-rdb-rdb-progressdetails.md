@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct {...} Rdb_ProgressDetails
+typedef struct Rdb_ProgressDetails {...} Rdb_ProgressDetails
 ```
 
 ## 概述

@@ -4,7 +4,7 @@
 
 A geofence is a group of virtual bounds defining an area on the map. When a user device enters or leaves a geofence, or stays in a geofence, your app on the user device can automatically receive notifications and alarms.
 
-Currently, only circular fences are supported. In addition, the geo-fencing function of the GNSS chip is required. Events of entering or leaving the fence can be accurately identified only in open outdoor areas.
+Currently, only circular fences are supported. In addition, the geofencing function of the GNSS chip is required. Events of entering or leaving the fence can be accurately identified only in open outdoor areas.
 
 A typical application of geofencing is to create a geofence around an enterprise for targeted advertising. In different areas, you can provide differentiated promotions for mobile devices.
 

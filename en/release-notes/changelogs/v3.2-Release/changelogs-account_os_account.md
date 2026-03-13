@@ -1,17 +1,17 @@
 # Account Subsystem Changelog
 
-## cl.account_os_account.1 Allowing Spaces in App Account Names
+## cl.account_os_account.1 Allowing Spaces in Application Account Names
 
-Before the change, when an account name containing a space is passed in, an error will be returned. Now, the account names can contain spaces.
+Before the change, when an account name containing a space is passed in, an error indicating invalid parameters will be returned. Now, the account names can contain spaces.
 
 **Change Impact**
 
 Applications developed based on earlier versions are not affected.
-From this version, the account names in app account APIs are no longer checked for spaces.
+From this version, the application account names are no longer checked for spaces when account APIs of API version 9 or later are called.
 
 **Key API/Component Changes**
 
-The following APIs are involved:
+Involved APIs:
 - AppAccountManager
   - createAccount(name: string, callback: AsyncCallback&lt;void&gt;): void;
   - auth(name: string, owner: string, authType: string, callback: AuthCallback): void;

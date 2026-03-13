@@ -18,7 +18,7 @@ typedef struct AVSession_PlaybackPosition {...} AVSession_PlaybackPosition
 
 **相关模块：** [OHAVSession](capi-ohavsession.md)
 
-**所在头文件：** [native_avsession.h](capi-native-avsession-h.md)
+**所在头文件：** [native_avplaybackstate.h](capi-native-avplaybackstate-h.md)
 
 ## 汇总
 

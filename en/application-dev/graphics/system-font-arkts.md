@@ -7,9 +7,9 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-System fonts are preset fonts of the operating system. They are used to display text when no custom font is specified, ensuring the readability and consistency of the text.
+System fonts are built-in fonts of the operating system. They show text when no other font is chosen, maintaining clear and uniform text presentation.
 
-System fonts are used when an application does not register custom fonts or does not explicitly specify the text style. There are multiple system fonts. You can obtain the configuration information about system fonts and switch and use system fonts based on the font family name in the information.
+System fonts can be enabled when an application does not register custom fonts or does not explicitly specify the text style. There are multiple system fonts. You can obtain the configuration information about system fonts and switch and use system fonts based on the font family name in the information.
 
 Currently, system fonts cannot be disabled in ArkTS, but can be disabled in native code.
 
@@ -30,30 +30,16 @@ The following describes the common APIs and structs related to system fonts. The
    ```
 
 2. Obtain the system font information.
-
-   ```ts
-   @Entry
-   @Component
-   struct FontExample {
-     build() {
-       Column() {
-         Button("getUIFontConfig")
-           .width('60%')
-           .height('6%')
-           .margin(50)
-           .onClick(()=>{
-             let fontConfig = font.getUIFontConfig();
-           })
-       }.width('100%')
-     }
-   }
-   ```
-
-3. Print the font information in logs after obtaining the system font information.
-   <!-- @[arkts_system_font_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_system_font_info_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    let fontConfig = font.getUIFontConfig();
+   ```
+
+3. Print the font information in logs after obtaining the system font information.
+   <!-- @[arkts_system_font_info_print](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    console.info('sysFontMfg::font-dir -----------' + String(fontConfig.fontDir.length));
    for (let i = 0; i < fontConfig.fontDir.length; i++) {
      console.info(fontConfig.fontDir[i]);
@@ -74,7 +60,7 @@ The following describes the common APIs and structs related to system fonts. The
      }
    }
    ```
-   
+
   The following figure shows some system font configuration information of the application device system. The configuration information varies according to devices.
 
   ![image_0000002211603664](figures/image_0000002211603664.png)
@@ -91,7 +77,7 @@ If no font is specified, the default system font "HarmonyOS Sans" is used to dis
    ```
 
 2. Create **TextStyle1** and set **fontFamilies** to **HarmonyOS Sans SC**, which is the default Chinese font.
-   <!-- @[arkts_use_and_change_system_font_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_use_and_change_system_font_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    let textStyle1: text.TextStyle = {
@@ -102,7 +88,7 @@ If no font is specified, the default system font "HarmonyOS Sans" is used to dis
    ```
 
 3. Create **TextStyle2** and set **fontFamilies** to **HarmonyOS Sans TC** (to compare the difference in the same text typeface).
-   <!-- @[arkts_use_and_change_system_font_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_use_and_change_system_font_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    let textStyle2: text.TextStyle = {
@@ -113,7 +99,7 @@ If no font is specified, the default system font "HarmonyOS Sans" is used to dis
    ```
 
 4. Create a paragraph generator.
-   <!-- @[arkts_use_and_change_system_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_use_and_change_system_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // Create a paragraph style object to set the typography style.
@@ -129,7 +115,7 @@ If no font is specified, the default system font "HarmonyOS Sans" is used to dis
    ```
 
 5. Add **textStyle1** and **textStyle2** to the paragraph style and add the text.
-   <!-- @[arkts_use_and_change_system_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_use_and_change_system_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    let str:string = 'Module description\n';
@@ -143,8 +129,10 @@ If no font is specified, the default system font "HarmonyOS Sans" is used to dis
 
 6. Generate a paragraph for future drawing.
 
-   ```ts
-   let paragraph = paragraphBuilder.build()
+   <!-- @[arkts_use_and_change_system_font_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let paragraph = ParagraphGraphBuilder.build();
    ```
 
 The following figure shows the effect.

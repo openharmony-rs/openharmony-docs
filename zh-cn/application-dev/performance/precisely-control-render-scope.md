@@ -145,7 +145,7 @@ struct CompA {
     Column() {
       // 当使用API9编译代码时，IDE会提示
       // "Assigning the '@ObjectLink' decorated attribute 'uiStyle' to the '@ObjectLink' decorated attribute 'uiStyle' is not allowed. <etsLint>"
-      // 但仍然可以通过预览器（Priviewer）运行代码
+      // 但仍然可以通过预览器（Previewer）运行代码
       SpecialImage({
         uiStyle: this.uiStyle
       })

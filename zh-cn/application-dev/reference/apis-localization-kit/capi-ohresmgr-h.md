@@ -27,44 +27,44 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResourceManager *mgr, uint32_t resId,char **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmediabase64) | 通过指定资源ID，获取屏幕密度对应的media资源的Base64码。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeResourceManager *mgr, uint32_t resId,char **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediabase64data) | 通过指定资源ID，获取屏幕密度对应的media资源的Base64码。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeResourceManager *mgr,const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmediabase64byname) | 通过指定资源名称，获取屏幕密度对应的media资源的Base64码。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const NativeResourceManager *mgr,const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediabase64databyname) | 通过指定资源名称，获取屏幕密度对应的media资源的Base64码。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManager *mgr, uint32_t resId,uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmedia) | 通过指定资源ID，获取屏幕密度对应的media资源的内容。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceManager *mgr, uint32_t resId,uint8_t **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediadata) | 通过指定资源ID，获取屏幕密度对应的media资源的内容。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResourceManager *mgr, const char *resName,uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmediabyname) | 通过指定资源名称，获取屏幕密度对应的media资源的内容。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeResourceManager *mgr, const char *resName,uint8_t **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediadatabyname) | 通过指定资源名称，获取屏幕密度对应的media资源的内容。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeResourceManager *mgr,uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)](#oh_resourcemanager_getdrawabledescriptor) | 通过指定资源Id，获取屏幕密度对应的图标资源的DrawableDescriptor。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const NativeResourceManager *mgr,uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)](#oh_resourcemanager_getdrawabledescriptordata) | 通过指定资源Id，获取屏幕密度对应的图标资源的DrawableDescriptor。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const NativeResourceManager *mgr,const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)](#oh_resourcemanager_getdrawabledescriptorbyname) | 通过指定资源名称，获取屏幕密度对应的图标资源的DrawableDescriptor。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(const NativeResourceManager *mgr,const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)](#oh_resourcemanager_getdrawabledescriptordatabyname) | 通过指定资源名称，获取屏幕密度对应的图标资源的DrawableDescriptor。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManager *mgr, uint32_t resId,uint32_t *resultValue)](#oh_resourcemanager_getsymbol) | 通过指定资源ID，获取对应的symbol资源。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourceManager *mgr, const char *resName,uint32_t *resultValue)](#oh_resourcemanager_getsymbolbyname) | 通过指定资源名称，获取对应的symbol资源。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceManager *mgr, char ***resultValue,uint32_t *resultLen, bool includeSystem = false)](#oh_resourcemanager_getlocales) | 获取语言列表。使用此接口后，需要调用[OH_ResourceManager_ReleaseStringArray()](#oh_resourcemanager_releasestringarray)方法来释放localinfo的内存。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResourceManager *mgr, char ***resultValue,uint32_t *resultLen, bool includeSystem)](#oh_resourcemanager_getlocalesdata) | 获取语言列表。使用此接口后，需要调用[OH_ResourceManager_ReleaseStringArray()](#oh_resourcemanager_releasestringarray)方法来释放localinfo的内存。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResourceManager *mgr,ResourceManager_Configuration *configuration)](#oh_resourcemanager_getconfiguration) | 获取设备配置。使用此接口后，需要调用[OH_ResourceManager_ReleaseConfiguration()](#oh_resourcemanager_releaseconfiguration)方法来释放内存。如果使用malloc创建ResourceManager_Configuration对象，还需要调用free()方法来释放它。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const NativeResourceManager *mgr,ResourceManager_Configuration *configuration)](#oh_resourcemanager_getresourceconfiguration) | 获取设备配置。使用此接口后，需要调用[OH_ResourceManager_ReleaseConfiguration()](#oh_resourcemanager_releaseconfiguration)方法来释放内存。如果使用malloc创建ResourceManager_Configuration对象，还需要调用free()方法来释放它。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManager_Configuration *configuration)](#oh_resourcemanager_releaseconfiguration) | 释放[OH_ResourceManager_GetConfiguration()](#oh_resourcemanager_getconfiguration)和[OH_ResourceManager_GetResourceConfiguration()](#oh_resourcemanager_getresourceconfiguration)方法申请的内存。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManager *mgr, uint32_t resId,char **resultValue, ...)](#oh_resourcemanager_getstring) | 通过指定资源ID，获取对应的string资源。获取普通string资源使用OH_ResourceManager_GetString(mgr, resId, resultValue)接口。获取带有%d、%s、%f占位符的格式化资源使用OH_ResourceManager_GetString(mgr, resId, resultValue, 10, "format", 10.10)接口。使用此接口后，需要调用free()方法来释放字符串的内存。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourceManager *mgr, const char *resName,char **resultValue, ...)](#oh_resourcemanager_getstringbyname) | 通过指定资源名称，获取对应的string资源。获取普通string资源使用OH_ResourceManager_GetString(mgr, resName, resultValue)接口。获取带有%d、%s、%f占位符的格式化资源使用OH_ResourceManager_GetString(mgr, resName, resultValue, 10, "format", 10.10)接口。使用此接口后，需要调用free()方法来释放字符串的内存。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResourceManager *mgr, uint32_t resId,char ***resultValue, uint32_t *resultLen)](#oh_resourcemanager_getstringarray) | 通过指定资源ID，获取字符串数组。使用此接口后，需要调用[OH_ResourceManager_ReleaseStringArray()](#oh_resourcemanager_releasestringarray)接口来释放字符串数组内存。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeResourceManager *mgr,const char *resName, char ***resultValue, uint32_t *resultLen)](#oh_resourcemanager_getstringarraybyname) | 通过指定资源名称，获取字符串数组。使用此接口后，需要调用[OH_ResourceManager_ReleaseStringArray()](#oh_resourcemanager_releasestringarray)接口来释放字符串数组内存。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmediabase64) | 通过指定资源ID，获取屏幕密度对应的media资源的Base64码。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediabase64data) | 通过指定资源ID，获取屏幕密度对应的media资源的Base64码。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmediabase64byname) | 通过指定资源名称，获取屏幕密度对应的media资源的Base64码。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediabase64databyname) | 通过指定资源名称，获取屏幕密度对应的media资源的Base64码。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmedia) | 通过指定资源ID，获取屏幕密度对应的media资源的内容。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediadata) | 通过指定资源ID，获取屏幕密度对应的media资源的内容。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmediabyname) | 通过指定资源名称，获取屏幕密度对应的media资源的内容。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediadatabyname) | 通过指定资源名称，获取屏幕密度对应的media资源的内容。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)](#oh_resourcemanager_getdrawabledescriptor) | 通过指定资源Id，获取屏幕密度对应的图标资源的DrawableDescriptor。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)](#oh_resourcemanager_getdrawabledescriptordata) | 通过指定资源Id，获取屏幕密度对应的图标资源的DrawableDescriptor。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)](#oh_resourcemanager_getdrawabledescriptorbyname) | 通过指定资源名称，获取屏幕密度对应的图标资源的DrawableDescriptor。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)](#oh_resourcemanager_getdrawabledescriptordatabyname) | 通过指定资源名称，获取屏幕密度对应的图标资源的DrawableDescriptor。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManager *mgr, uint32_t resId, uint32_t *resultValue)](#oh_resourcemanager_getsymbol) | 通过指定资源ID，获取对应的symbol资源。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourceManager *mgr, const char *resName, uint32_t *resultValue)](#oh_resourcemanager_getsymbolbyname) | 通过指定资源名称，获取对应的symbol资源。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem = false)](#oh_resourcemanager_getlocales) | 获取语言列表。使用此接口后，需要调用OH_ResourceManager_ReleaseStringArray()方法来释放localinfo的内存。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem)](#oh_resourcemanager_getlocalesdata) | 获取语言列表。使用此接口后，需要调用OH_ResourceManager_ReleaseStringArray()方法来释放localinfo的内存。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResourceManager *mgr, ResourceManager_Configuration *configuration)](#oh_resourcemanager_getconfiguration) | 获取设备配置。使用此接口后，需要调用[OH_ResourceManager_ReleaseConfiguration](#oh_resourcemanager_releaseconfiguration)方法来释放内存。如果使用malloc创建ResourceManager_Configuration对象，还需要调用free()方法来释放它。(API20废弃) |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const NativeResourceManager *mgr, ResourceManager_Configuration *configuration)](#oh_resourcemanager_getresourceconfiguration) | 获取设备配置。使用此接口后，需要调用[OH_ResourceManager_ReleaseConfiguration](#oh_resourcemanager_releaseconfiguration)方法来释放内存。如果使用malloc创建ResourceManager_Configuration对象，还需要调用free()方法来释放它。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManager_Configuration *configuration)](#oh_resourcemanager_releaseconfiguration) | 释放[OH_ResourceManager_GetConfiguration](#oh_resourcemanager_getconfiguration)和[OH_ResourceManager_GetResourceConfiguration](#oh_resourcemanager_getresourceconfiguration)方法申请的内存。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, ...)](#oh_resourcemanager_getstring) | 通过指定资源ID，获取对应的string资源。获取普通string资源使用OH_ResourceManager_GetString(mgr, resId, resultValue)接口。获取带有%d、%s、%f占位符的格式化资源使用OH_ResourceManager_GetString(mgr, resId, resultValue, 10, "format", 10.10)接口。使用此接口后，需要调用free()方法来释放字符串的内存。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, ...)](#oh_resourcemanager_getstringbyname) | 通过指定资源名称，获取对应的string资源。获取普通string资源使用OH_ResourceManager_GetString(mgr, resName, resultValue)接口。获取带有%d、%s、%f占位符的格式化资源使用OH_ResourceManager_GetString(mgr, resName, resultValue, 10, "format", 10.10)接口。使用此接口后，需要调用free()方法来释放字符串的内存。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResourceManager *mgr, uint32_t resId, char ***resultValue, uint32_t *resultLen)](#oh_resourcemanager_getstringarray) | 通过指定资源ID，获取字符串数组。使用此接口后，需要调用OH_ResourceManager_ReleaseStringArray()接口来释放字符串数组内存。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeResourceManager *mgr, const char *resName, char ***resultValue, uint32_t *resultLen)](#oh_resourcemanager_getstringarraybyname) | 通过指定资源名称，获取字符串数组。使用此接口后，需要调用OH_ResourceManager_ReleaseStringArray()接口来释放字符串数组内存。 |
 | [ResourceManager_ErrorCode OH_ResourceManager_ReleaseStringArray(char ***resValue, uint32_t len)](#oh_resourcemanager_releasestringarray) | 释放字符串数组内存。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourceManager *mgr, uint32_t resId,uint32_t num, char **resultValue)](#oh_resourcemanager_getpluralstring) | 通过指定资源ID，获取对应的单复数字符串。使用此接口后，需要调用free()方法来释放字符串的内存。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeResourceManager *mgr,const char *resName, uint32_t num, char **resultValue)](#oh_resourcemanager_getpluralstringbyname) | 通过指定资源名称，获取对应的单复数字符串。使用此接口后，需要调用free()方法来释放字符串的内存。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeResourceManager *mgr, uint32_t resId,uint32_t num, char **resultValue, ...)](#oh_resourcemanager_getintpluralstring) | 通过指定资源ID，获取对应的单复数字符串。使用此接口后，需要调用free()方法来释放字符串的内存。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeResourceManager *mgr, uint32_t resId,double num, char **resultValue, ...)](#oh_resourcemanager_getdoublepluralstring) | 通过指定资源ID，获取对应的单复数字符串。使用此接口后，需要调用free()方法来释放字符串的内存。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const NativeResourceManager *mgr,const char *resName, uint32_t num, char **resultValue, ...)](#oh_resourcemanager_getintpluralstringbyname) | 通过指定资源名称，获取对应的单复数字符串。使用此接口后，需要调用free()方法来释放字符串的内存。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const NativeResourceManager *mgr,const char *resName, double num, char **resultValue, ...)](#oh_resourcemanager_getdoublepluralstringbyname) | 通过指定资源名称，获取对应的单复数字符串。使用此接口后，需要调用free()方法来释放字符串的内存。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManager *mgr, uint32_t resId,uint32_t *resultValue)](#oh_resourcemanager_getcolor) | 通过指定资源ID，获取对应的颜色值。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResourceManager *mgr, const char *resName,uint32_t *resultValue)](#oh_resourcemanager_getcolorbyname) | 通过指定资源ID，获取对应的颜色值。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager *mgr, uint32_t resId,int *resultValue)](#oh_resourcemanager_getint) | 通过指定资源ID，获取对应的int值。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceManager *mgr, const char *resName,int *resultValue)](#oh_resourcemanager_getintbyname) | 通过指定资源名称，获取对应的int值。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManager *mgr, uint32_t resId,float *resultValue)](#oh_resourcemanager_getfloat) | 通过指定资源ID，获取对应的float值。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResourceManager *mgr, const char *resName,float *resultValue)](#oh_resourcemanager_getfloatbyname) | 通过指定资源名称，获取对应的float值。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager *mgr, uint32_t resId,bool *resultValue)](#oh_resourcemanager_getbool) | 通过指定资源ID，获取对应的bool值。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceManager *mgr, const char *resName,bool *resultValue)](#oh_resourcemanager_getboolbyname) | 通过指定资源名称，获取对应的bool值。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue)](#oh_resourcemanager_getpluralstring) | 通过指定资源ID，获取对应的单复数字符串。使用此接口后，需要调用free()方法来释放字符串的内存。(API18废弃) |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue)](#oh_resourcemanager_getpluralstringbyname) | 通过指定资源名称，获取对应的单复数字符串。使用此接口后，需要调用free()方法来释放字符串的内存。(API18废弃) |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue, ...)](#oh_resourcemanager_getintpluralstring) | 通过指定资源ID，获取对应的单复数字符串。使用此接口后，需要调用free()方法来释放字符串的内存。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeResourceManager *mgr, uint32_t resId, double num, char **resultValue, ...)](#oh_resourcemanager_getdoublepluralstring) | 通过指定资源ID，获取对应的单复数字符串。使用此接口后，需要调用free()方法来释放字符串的内存。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue, ...)](#oh_resourcemanager_getintpluralstringbyname) | 通过指定资源名称，获取对应的单复数字符串。使用此接口后，需要调用free()方法来释放字符串的内存。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const NativeResourceManager *mgr, const char *resName, double num, char **resultValue, ...)](#oh_resourcemanager_getdoublepluralstringbyname) | 通过指定资源名称，获取对应的单复数字符串。使用此接口后，需要调用free()方法来释放字符串的内存。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManager *mgr, uint32_t resId, uint32_t *resultValue)](#oh_resourcemanager_getcolor) | 通过指定资源ID，获取对应的颜色值。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResourceManager *mgr, const char *resName, uint32_t *resultValue)](#oh_resourcemanager_getcolorbyname) | 通过指定资源ID，获取对应的颜色值。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager *mgr, uint32_t resId, int *resultValue)](#oh_resourcemanager_getint) | 通过指定资源ID，获取对应的int值。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceManager *mgr, const char *resName, int *resultValue)](#oh_resourcemanager_getintbyname) | 通过指定资源名称，获取对应的int值。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManager *mgr, uint32_t resId, float *resultValue)](#oh_resourcemanager_getfloat) | 通过指定资源ID，获取对应的float值。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResourceManager *mgr, const char *resName, float *resultValue)](#oh_resourcemanager_getfloatbyname) | 通过指定资源名称，获取对应的float值。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager *mgr, uint32_t resId, bool *resultValue)](#oh_resourcemanager_getbool) | 通过指定资源ID，获取对应的bool值。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceManager *mgr, const char *resName, bool *resultValue)](#oh_resourcemanager_getboolbyname) | 通过指定资源名称，获取对应的bool值。 |
 | [ResourceManager_ErrorCode OH_ResourceManager_AddResource(const NativeResourceManager *mgr, const char *path)](#oh_resourcemanager_addresource) | 在应用程序运行时添加overlay资源。 |
 | [ResourceManager_ErrorCode OH_ResourceManager_RemoveResource(const NativeResourceManager *mgr, const char *path)](#oh_resourcemanager_removeresource) | 在应用程序运行时删除overlay资源。 |
 
@@ -73,7 +73,7 @@
 ### OH_ResourceManager_GetMediaBase64()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResourceManager *mgr, uint32_t resId,char **resultValue, uint64_t *resultLen, uint32_t density = 0)
+ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density = 0)
 ```
 
 **描述**
@@ -82,16 +82,15 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResource
 
 **起始版本：** 12
 
-
 **参数：**
 
-| 参数项 | 描述                                                                                                                                                                      |
-| -- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
-| uint32_t resId | 资源ID。                                                                                                                                                                   |
-| uint32_t density = 0 | 可选参数，取值范围参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)，默认值为0，表示使用当前系统dpi的密度。                                                                                 |
-| char **resultValue | 写入resultValue的结果。                                                                                                                                                       |
-| uint64_t *resultLen | 写入resultLen的media长度。                                                                                                                                                    |
+| 参数项 | 描述 |
+| -- |--|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| uint32_t resId | 资源ID。 |
+| uint32_t density | 可选参数，取值范围参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)，默认值为0，表示使用当前系统dpi的密度。 |
+| char **resultValue | 写入resultValue的结果。|
+| uint64_t *resultLen | 写入resultLen的media长度。|
 
 **返回：**
 
@@ -102,7 +101,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResource
 ### OH_ResourceManager_GetMediaBase64Data()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeResourceManager *mgr, uint32_t resId,char **resultValue, uint64_t *resultLen, uint32_t density)
+ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density)
 ```
 
 **描述**
@@ -111,12 +110,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeReso
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | uint32_t resId | 资源ID。 |
 | char **resultValue | 写入resultValue的结果。 |
 | uint64_t *resultLen | 写入resultLen的media长度。 |
@@ -131,7 +129,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeReso
 ### OH_ResourceManager_GetMediaBase64ByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeResourceManager *mgr,const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density = 0)
+ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density = 0)
 ```
 
 **描述**
@@ -140,16 +138,15 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeRe
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *resName | 资源名称。 |
 | char **resultValue | 写入resultValue的结果。 |
 | uint64_t *resultLen | 写入resultLen的media长度。 |
-| uint32_t density = 0 | 可选参数，取值范围参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)，默认值为0，表示使用当前系统dpi的密度。 |
+| uint32_t density  | 可选参数，取值范围参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)，默认值为0，表示使用当前系统dpi的密度。 |
 
 **返回：**
 
@@ -160,7 +157,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeRe
 ### OH_ResourceManager_GetMediaBase64DataByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const NativeResourceManager *mgr,const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density)
+ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density)
 ```
 
 **描述**
@@ -169,12 +166,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const Nati
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *resName | 资源名称。 |
 | char **resultValue | 写入resultValue的结果。 |
 | uint64_t *resultLen | 写入resultLen的media长度。 |
@@ -189,7 +185,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const Nati
 ### OH_ResourceManager_GetMedia()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManager *mgr, uint32_t resId,uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)
+ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)
 ```
 
 **描述**
@@ -198,14 +194,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManage
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | uint32_t resId | 资源ID。 |
-| uint32_t density = 0 | 可选参数，取值范围参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)，默认值为0，表示使用当前系统dpi的密度。 |
+| uint32_t density | 可选参数，取值范围参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)，默认值为0，表示使用当前系统dpi的密度。 |
 | uint8_t **resultValue | 写入resultValue的结果。 |
 | uint64_t *resultLen | 写入resultLen的media长度。 |
 
@@ -218,7 +213,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManage
 ### OH_ResourceManager_GetMediaData()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceManager *mgr, uint32_t resId,uint8_t **resultValue, uint64_t *resultLen, uint32_t density)
+ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density)
 ```
 
 **描述**
@@ -227,12 +222,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceMa
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | uint32_t resId | 资源ID。 |
 | uint8_t **resultValue | 写入resultValue的结果。 |
 | uint64_t *resultLen | 写入resultLen的media长度。 |
@@ -247,7 +241,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceMa
 ### OH_ResourceManager_GetMediaByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResourceManager *mgr, const char *resName,uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)
+ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)
 ```
 
 **描述**
@@ -256,14 +250,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResource
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *resName | 资源名称。 |
-| uint32_t density = 0 | 可选参数，取值范围参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)，默认值为0，表示使用当前系统dpi的密度。 |
+| uint32_t density | 可选参数，取值范围参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)，默认值为0，表示使用当前系统dpi的密度。 |
 | uint8_t **resultValue | 写入resultValue的结果。 |
 | uint64_t *resultLen | 写入resultLen的media长度。 |
 
@@ -276,7 +269,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResource
 ### OH_ResourceManager_GetMediaDataByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeResourceManager *mgr, const char *resName,uint8_t **resultValue, uint64_t *resultLen, uint32_t density)
+ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density)
 ```
 
 **描述**
@@ -285,12 +278,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeReso
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *resName | 资源名称。 |
 | uint8_t **resultValue | 写入resultValue的结果。 |
 | uint64_t *resultLen | 写入resultLen的media长度。 |
@@ -305,7 +297,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeReso
 ### OH_ResourceManager_GetDrawableDescriptor()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeResourceManager *mgr,uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)
+ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)
 ```
 
 **描述**
@@ -314,15 +306,14 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeR
 
 **起始版本：** 12
 
-
 **参数：**
 
-| 参数项                                                                                                                 | 描述 |
-|---------------------------------------------------------------------------------------------------------------------| -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr                                           | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
-| uint32_t resId                                                                                                      | 资源ID。 |
-| uint32_t density = 0                                                                                                | 可选参数，取值范围参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)，默认值为0，表示使用当前系统dpi的密度。 |
-| uint32_t type = 0                                                                                                   | 可选参数，表示图标类型，0表示自身图标，1表示主题图标。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| uint32_t | 资源ID。 |
+| uint32_t density | 可选参数，取值范围参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)，默认值为0，表示使用当前系统dpi的密度。 |
+| uint32_t type | 可选参数，表示图标类型，0表示自身图标，1表示主题图标。 |
 | [ArkUI_DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | 写入drawableDescriptor的结果。 |
 
 **返回：**
@@ -334,7 +325,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeR
 ### OH_ResourceManager_GetDrawableDescriptorData()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const NativeResourceManager *mgr,uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)
+ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)
 ```
 
 **描述**
@@ -343,12 +334,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const Nat
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | uint32_t resId | 资源ID。 |
 | [ArkUI_DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | 写入drawableDescriptor的结果。 |
 | uint32_t density | 可选参数，取值范围参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)，值为0表示使用当前系统dpi的密度。如果不需要此属性，请将此参数设置为0。 |
@@ -363,7 +353,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const Nat
 ### OH_ResourceManager_GetDrawableDescriptorByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const NativeResourceManager *mgr,const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)
+ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)
 ```
 
 **描述**
@@ -372,15 +362,14 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const N
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *resName | 资源名称。 |
-| uint32_t density = 0 | 可选参数，取值范围参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)，默认值为0，表示使用当前系统dpi的密度。 |
-| uint32_t type = 0 | 可选参数，表示图标类型，0表示自身图标，1表示主题图标，2表示动态图标。 |
+| uint32_t density | 可选参数，取值范围参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)，默认值为0，表示使用当前系统dpi的密度。 |
+| uint32_t type | 可选参数，表示图标类型，0表示自身图标，1表示主题图标，2表示动态图标。 |
 | [ArkUI_DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | 写入drawableDescriptor的结果。 |
 
 **返回：**
@@ -392,7 +381,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const N
 ### OH_ResourceManager_GetDrawableDescriptorDataByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(const NativeResourceManager *mgr,const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)
+ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)
 ```
 
 **描述**
@@ -401,12 +390,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(con
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *resName | 资源名称。 |
 | [ArkUI_DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | 写入drawableDescriptor的结果。 |
 | uint32_t density | 可选参数，取值范围参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)，值为0表示使用当前系统dpi的密度。如果不需要此属性，请将此参数设置为0。 |
@@ -421,7 +409,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(con
 ### OH_ResourceManager_GetSymbol()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManager *mgr, uint32_t resId,uint32_t *resultValue)
+ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManager *mgr, uint32_t resId, uint32_t *resultValue)
 ```
 
 **描述**
@@ -430,12 +418,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManag
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | uint32_t resId | 资源ID。 |
 | uint32_t *resultValue | 写入resultValue的结果。 |
 
@@ -448,7 +435,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManag
 ### OH_ResourceManager_GetSymbolByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourceManager *mgr, const char *resName,uint32_t *resultValue)
+ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourceManager *mgr, const char *resName, uint32_t *resultValue)
 ```
 
 **描述**
@@ -457,12 +444,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourc
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *resName | 资源名称。 |
 | uint32_t *resultValue | 写入resultValue的结果。 |
 
@@ -475,7 +461,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourc
 ### OH_ResourceManager_GetLocales()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceManager *mgr, char ***resultValue,uint32_t *resultLen, bool includeSystem = false)
+ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem = false)
 ```
 
 **描述**
@@ -484,15 +470,14 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceMana
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | char ***resultValue | 写入resultValue的结果。 |
 | uint32_t *resultLen | 写入resultLen的locales长度。 |
-| bool includeSystem = false | 是否包含系统资源，默认值为false，当只有系统资源查询locales列表时它不起作用。 |
+| bool includeSystem | 是否包含系统资源，默认值为false，当只有系统资源查询locales列表时它不起作用。 |
 
 **返回：**
 
@@ -503,7 +488,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceMana
 ### OH_ResourceManager_GetLocalesData()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResourceManager *mgr, char ***resultValue,uint32_t *resultLen, bool includeSystem)
+ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem)
 ```
 
 **描述**
@@ -512,12 +497,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResource
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | char ***resultValue | 写入resultValue的结果。 |
 | uint32_t *resultLen | 写入resultLen的locales长度。 |
 | bool includeSystem | 是否包含系统资源，如果不需要此属性，请将此参数设置为 false。 |
@@ -531,12 +515,12 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResource
 ### OH_ResourceManager_GetConfiguration()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResourceManager *mgr,ResourceManager_Configuration *configuration)
+ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResourceManager *mgr, ResourceManager_Configuration *configuration)
 ```
 
 **描述**
 
-获取设备配置。使用此接口后，需要调用OH_ResourceManager_ReleaseConfiguration()方法来释放内存。如果使用malloc创建ResourceManager_Configuration对象，还需要调用free()方法来释放它。
+获取设备配置。使用此接口后，需要调用[OH_ResourceManager_ReleaseConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_releaseconfiguration)方法来释放内存。如果使用malloc创建ResourceManager_Configuration对象，还需要调用free()方法来释放它。
 
 **起始版本：** 12
 
@@ -544,12 +528,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResour
 
 **替代接口：** [OH_ResourceManager_GetResourceConfiguration](#oh_resourcemanager_getresourceconfiguration)
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) *configuration | 写入获取的设备配置。其中configuration.screenDensity的返回值为设备DPI除以160取整后的值。 |
 
 **返回：**
@@ -561,28 +544,27 @@ ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResour
 ### OH_ResourceManager_GetResourceConfiguration()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const NativeResourceManager *mgr,ResourceManager_Configuration *configuration)
+ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const NativeResourceManager *mgr, ResourceManager_Configuration *configuration)
 ```
 
 **描述**
 
-获取设备配置。使用此接口后，需要调用OH_ResourceManager_ReleaseConfiguration()方法来释放内存。如果使用malloc创建ResourceManager_Configuration对象，还需要调用free()方法来释放它。
+获取设备配置。使用此接口后，需要调用[OH_ResourceManager_ReleaseConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_releaseconfiguration)方法来释放内存。如果使用malloc创建ResourceManager_Configuration对象，还需要调用free()方法来释放它。
 
 **起始版本：** 20
-
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) *configuration | 写入获取的设备配置。其中configuration.screenDensity的返回值为设备DPI。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - 成功。<br>         [ERROR_CODE_SYSTEM_RES_MANAGER_GET_FAILED](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001009 - 无法访问系统资源。<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - 内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - 成功。<br>          [ERROR_CODE_SYSTEM_RES_MANAGER_GET_FAILED](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001009 - 无法访问系统资源。<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - 内存溢出。 |
 
 ### OH_ResourceManager_ReleaseConfiguration()
 
@@ -592,10 +574,9 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManage
 
 **描述**
 
-释放OH_ResourceManager_GetConfiguration()方法申请的内存。
+释放[OH_ResourceManager_GetConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getconfiguration)和[OH_ResourceManager_GetResourceConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getresourceconfiguration)方法申请的内存。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -612,7 +593,7 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManage
 ### OH_ResourceManager_GetString()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManager *mgr, uint32_t resId,char **resultValue, ...)
+ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, ...)
 ```
 
 **描述**
@@ -621,14 +602,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManag
 
 **起始版本：** 12
 
-
 **参数：**
 
-| 参数项                                                                                             | 描述 |
-|-------------------------------------------------------------------------------------------------| -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr                                                            | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
-| uint32_t resId                                                                                  | 资源ID。 |
-| char **resultValue                                                                              | 写入resultValue的结果。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| uint32_t resId | 资源ID。 |
+| char **resultValue | 写入resultValue的结果。 |
 | ... | 格式化字符串资源参数，可变参数，支持const char*、int、float类型。 |
 
 **返回：**
@@ -640,7 +620,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManag
 ### OH_ResourceManager_GetStringByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourceManager *mgr, const char *resName,char **resultValue, ...)
+ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, ...)
 ```
 
 **描述**
@@ -649,12 +629,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourc
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向 [NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *resName | 资源名称。 |
 | char **resultValue | 写入resultValue的结果。 |
 | ... | 格式化字符串资源参数，可变参数，支持const char*、int、float类型。 |
@@ -668,7 +647,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourc
 ### OH_ResourceManager_GetStringArray()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResourceManager *mgr, uint32_t resId,char ***resultValue, uint32_t *resultLen)
+ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResourceManager *mgr, uint32_t resId, char ***resultValue, uint32_t *resultLen)
 ```
 
 **描述**
@@ -677,15 +656,14 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResource
 
 **起始版本：** 12
 
-
 **参数：**
 
-| 参数项                                  | 描述 |
-|--------------------------------------| -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
-| uint32_t resId                       | 资源ID。 |
-| char ***resultValue                  | 写入resultValue的结果。 |
-| uint32_t *resultLen                  | 写入resultLen的StringArray长度。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| uint32_t resId | 资源ID。 |
+| char ***resultValue | 写入resultValue的结果。 |
+| uint32_t *resultLen | 写入resultLen的StringArray长度。 |
 
 **返回：**
 
@@ -696,7 +674,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResource
 ### OH_ResourceManager_GetStringArrayByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeResourceManager *mgr,const char *resName, char ***resultValue, uint32_t *resultLen)
+ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeResourceManager *mgr, const char *resName, char ***resultValue, uint32_t *resultLen)
 ```
 
 **描述**
@@ -705,12 +683,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeRe
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *resName | 资源名称。 |
 | char ***resultValue | 写入resultValue的结果。 |
 | uint32_t *resultLen | 写入resultLen的StringArray长度。 |
@@ -733,7 +710,6 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseStringArray(char ***resValue
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -750,7 +726,7 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseStringArray(char ***resValue
 ### OH_ResourceManager_GetPluralString()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourceManager *mgr, uint32_t resId,uint32_t num, char **resultValue)
+ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue)
 ```
 
 **描述**
@@ -763,15 +739,14 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourc
 
 **替代接口：** [OH_ResourceManager_GetIntPluralString](capi-ohresmgr-h.md#oh_resourcemanager_getintpluralstring)
 
-
 **参数：**
 
-| 参数项                                  | 描述 |
-|--------------------------------------| -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
-| uint32_t resId                       | 资源ID。 |
-| uint32_t num                         |  数量值。 |
-| char **resultValue                   | 写入resultValue的结果。 |
+| 参数项 | 描述 |
+|--| -- |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| uint32_t resId | 资源ID。 |
+| uint32_t num |  数量值。 |
+| char **resultValue | 写入resultValue的结果。 |
 
 **返回：**
 
@@ -782,7 +757,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourc
 ### OH_ResourceManager_GetPluralStringByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeResourceManager *mgr,const char *resName, uint32_t num, char **resultValue)
+ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue)
 ```
 
 **描述**
@@ -795,15 +770,14 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeR
 
 **替代接口：** [OH_ResourceManager_GetIntPluralStringByName](capi-ohresmgr-h.md#oh_resourcemanager_getintpluralstringbyname)
 
-
 **参数：**
 
-| 参数项 | 描述                                                                                                                                                                                      |
-| -- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
-| const char *resName | 资源名称。                                                                                                                                                                                   |
-| uint32_t num | 数量值。                                                                                                                                                                                    |
-| char **resultValue | 写入resultValue的结果。                                                                                                                                                                       |
+| 参数项 | 描述 |
+| -- | -- |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| const char *resName | 资源名称。 |
+| uint32_t num |  数量值。 |
+| char **resultValue | 写入resultValue的结果。 |
 
 **返回：**
 
@@ -814,7 +788,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeR
 ### OH_ResourceManager_GetIntPluralString()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeResourceManager *mgr, uint32_t resId,uint32_t num, char **resultValue, ...)
+ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue, ...)
 ```
 
 **描述**
@@ -823,12 +797,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeReso
 
 **起始版本：** 18
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | uint32_t resId | 资源ID。 |
 | uint32_t num |  数量值（整数）。根据当前语言的复数规则获取该数量值对应的字符串数字。 |
 | char **resultValue | 写入resultValue的结果。 |
@@ -843,7 +816,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeReso
 ### OH_ResourceManager_GetDoublePluralString()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeResourceManager *mgr, uint32_t resId,double num, char **resultValue, ...)
+ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeResourceManager *mgr, uint32_t resId, double num, char **resultValue, ...)
 ```
 
 **描述**
@@ -852,12 +825,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeR
 
 **起始版本：** 18
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | uint32_t resId | 资源ID。 |
 | double num |  数量值（浮点数）。根据当前语言的复数规则获取该数量值对应的字符串数字。 |
 | char **resultValue | 写入resultValue的结果。 |
@@ -872,7 +844,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeR
 ### OH_ResourceManager_GetIntPluralStringByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const NativeResourceManager *mgr,const char *resName, uint32_t num, char **resultValue, ...)
+ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue, ...)
 ```
 
 **描述**
@@ -881,16 +853,15 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const Nati
 
 **起始版本：** 18
 
-
 **参数：**
 
-| 参数项                                                                                             | 描述                                                                                                                                                                      |
-|-------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr                                                            | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
-| const char *resName                                                                             | 资源名称。                                                                                                                                                                   |
-| uint32_t num                                                                                    | 数量值（整数）。根据当前语言的复数规则获取该数量值对应的字符串数字。                                                                                                                                      |
-| char **resultValue                                                                              | 写入resultValue的结果。                                                                                                                                                       |
-| ... | 格式化字符串资源参数，可变参数，支持const char*、int、float类型。                                                                                                                              |
+| 参数项 | 描述 |
+| -- | -- |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| const char *resName | 资源名称。 |
+| uint32_t num |  数量值（整数）。根据当前语言的复数规则获取该数量值对应的字符串数字。 |
+| char **resultValue | 写入resultValue的结果。 |
+| ...| 格式化字符串资源参数，可变参数，支持const char*、int、float类型。 |
 
 **返回：**
 
@@ -901,7 +872,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const Nati
 ### OH_ResourceManager_GetDoublePluralStringByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const NativeResourceManager *mgr,const char *resName, double num, char **resultValue, ...)
+ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const NativeResourceManager *mgr, const char *resName, double num, char **resultValue, ...)
 ```
 
 **描述**
@@ -910,12 +881,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const N
 
 **起始版本：** 18
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *resName | 资源名称。 |
 | double num |  数量值（浮点数）。根据当前语言的复数规则获取该数量值对应的字符串数字。 |
 | char **resultValue | 写入resultValue的结果。 |
@@ -930,7 +900,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const N
 ### OH_ResourceManager_GetColor()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManager *mgr, uint32_t resId,uint32_t *resultValue)
+ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManager *mgr, uint32_t resId, uint32_t *resultValue)
 ```
 
 **描述**
@@ -939,12 +909,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManage
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | uint32_t resId | 资源ID。 |
 | uint32_t *resultValue | 写入resultValue的结果。 |
 
@@ -957,7 +926,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManage
 ### OH_ResourceManager_GetColorByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResourceManager *mgr, const char *resName,uint32_t *resultValue)
+ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResourceManager *mgr, const char *resName, uint32_t *resultValue)
 ```
 
 **描述**
@@ -966,12 +935,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResource
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *resName | 资源名称。 |
 | uint32_t *resultValue | 写入resultValue的结果。 |
 
@@ -984,7 +952,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResource
 ### OH_ResourceManager_GetInt()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager *mgr, uint32_t resId,int *resultValue)
+ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager *mgr, uint32_t resId, int *resultValue)
 ```
 
 **描述**
@@ -993,12 +961,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager 
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | uint32_t resId | 资源ID。 |
 | int *resultValue | 写入resultValue的结果。 |
 
@@ -1011,7 +978,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager 
 ### OH_ResourceManager_GetIntByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceManager *mgr, const char *resName,int *resultValue)
+ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceManager *mgr, const char *resName, int *resultValue)
 ```
 
 **描述**
@@ -1020,12 +987,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceMa
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *resName | 资源名称。 |
 | int *resultValue | 写入resultValue的结果。 |
 
@@ -1038,7 +1004,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceMa
 ### OH_ResourceManager_GetFloat()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManager *mgr, uint32_t resId,float *resultValue)
+ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManager *mgr, uint32_t resId, float *resultValue)
 ```
 
 **描述**
@@ -1047,12 +1013,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManage
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | uint32_t resId | 资源ID。 |
 | float *resultValue | 写入resultValue的结果。 |
 
@@ -1065,7 +1030,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManage
 ### OH_ResourceManager_GetFloatByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResourceManager *mgr, const char *resName,float *resultValue)
+ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResourceManager *mgr, const char *resName, float *resultValue)
 ```
 
 **描述**
@@ -1074,12 +1039,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResource
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *resName | 资源名称。 |
 | float *resultValue | 写入resultValue的结果。 |
 
@@ -1092,7 +1056,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResource
 ### OH_ResourceManager_GetBool()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager *mgr, uint32_t resId,bool *resultValue)
+ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager *mgr, uint32_t resId, bool *resultValue)
 ```
 
 **描述**
@@ -1101,12 +1065,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | uint32_t resId | 资源ID。 |
 | bool *resultValue | 写入resultValue的结果。 |
 
@@ -1119,7 +1082,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager
 ### OH_ResourceManager_GetBoolByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceManager *mgr, const char *resName,bool *resultValue)
+ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceManager *mgr, const char *resName, bool *resultValue)
 ```
 
 **描述**
@@ -1128,12 +1091,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceM
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *resName | 资源名称。 |
 | bool *resultValue | 写入resultValue的结果。 |
 
@@ -1155,12 +1117,11 @@ ResourceManager_ErrorCode OH_ResourceManager_AddResource(const NativeResourceMan
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *path | 资源路径。 |
 
 **返回：**
@@ -1181,12 +1142,11 @@ ResourceManager_ErrorCode OH_ResourceManager_RemoveResource(const NativeResource
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *path | 资源路径。 |
 
 **返回：**

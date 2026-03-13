@@ -5,9 +5,9 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
-- [Introduction to Function Flow Runtime Kit](ffrt-overview.md)
+- [About This Kit](ffrt-overview.md)
 - [Function Flow Runtime Paradigms](ffrt-concurrency-paradigm.md)
 - Function Flow Runtime Development Samples (C)<!--ffrt-example-c-->
   - [Function Flow Runtime Serial Queue (C)](ffrt-concurrency-serial-queue-c.md)

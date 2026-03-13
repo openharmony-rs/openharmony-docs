@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-使用[AVPlayer](media-kit-intro.md#avplayer)可以实现端到端播放原始媒体资源，本开发指导将以完整地播放一首音乐作为示例，向开发者讲解AVPlayer音频播放相关功能。如需播放PCM音频数据，请使用[AudioRenderer](../audio/using-audiorenderer-for-playback.md)。
+使用[AVPlayer](media-kit-intro.md#avplayer)可以实现端到端播放原始媒体资源，本开发指导将以完整播放一首音乐作为示例，向开发者讲解AVPlayer音频播放相关功能。如需播放PCM音频数据，请使用[AudioRenderer](../audio/using-audiorenderer-for-playback.md)。
 
 播放的全流程包含：创建AVPlayer，设置播放资源，设置播放参数（音量/倍速/焦点模式），播放控制（播放/暂停/跳转/停止），重置，销毁资源。
 
@@ -111,6 +111,7 @@
     avPlayer.url = url;
     ```
 4. （可选）设置音频渲染：只允许在initialized状态下，第一次调用prepare()之前设置，以便音频渲染器信息在之后生效。若媒体源包含视频，则usage默认值为STREAM_USAGE_MOVIE，否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。
+
     为了确保音频行为符合使用预期，建议根据具体业务场景和实际需求，主动配置[audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)，为音频选择恰当的流类型[usage](../../media/audio/using-right-streamusage-and-sourcetype.md)。
     
     ```ts
@@ -208,7 +209,7 @@
 参考以下示例，完整地播放一首音乐，实现起播后3s暂停，暂停3s重新播放的效果。
 
 1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio)，并将示例工程的以下资源复制到对应目录。
-    ```
+    ```text
     AVPlayerArkTSAudio
     entry/src/main/ets/
     └── pages

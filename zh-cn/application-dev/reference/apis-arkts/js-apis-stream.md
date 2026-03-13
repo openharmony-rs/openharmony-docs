@@ -70,7 +70,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | 否 | 需要写入的数据。当前版本不支持null、undefined和空字符串。 |
+| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持null、undefined和空字符串。 |
 | encoding  | string | 否   | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 否   | 回调函数。默认不调用。 |
 
@@ -721,6 +721,7 @@ console.info("Readable test pause", readableStream.isPaused()); // Readable test
 setEncoding(encoding?: string): boolean
 
 设置可读流的字符编码。
+
 当缓冲区有数据时，不允许设置字符编码，返回值为false。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1146,6 +1147,7 @@ console.info("Readable push test", readable.readableLength); // Readable push te
 ## Duplex
 
 双工流是一个同时支持可读和可写能力的流。双工流允许数据在两个方向上进行传输，既可以读取数据，又可以写入数据。
+
 Duplex类继承[Readable](#readable)，支持Readable中所有的方法。
 
 ### 属性
@@ -1194,7 +1196,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | 否 | 需要写入的数据。当前版本不支持null、undefined和空字符串。 |
+| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持null、undefined和空字符串。 |
 | encoding  | string | 否   | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 否   | 回调函数。默认不调用。 |
 

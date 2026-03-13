@@ -9,13 +9,15 @@
 
 子标题，用于列表项或内容项顶部，将该列表或内容划分为一个区块，子标题名称用来概括该区块内容。
 
-该组件基于[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理V1](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理V2增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理V2，开发者可以通过该组件更灵活地控制子标题的数据和状态，实现更高效的用户界面刷新。
+该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以通过该组件更灵活地控制子标题的数据和状态，实现更高效的用户界面刷新。
 
 
 
 > **说明：**
 >
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件仅可在Stage模型下使用。
 >
 > - 如果SubHeaderV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SubHeaderV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SubHeaderV2设置通用属性和通用事件。
 
@@ -33,14 +35,7 @@ import { SubHeaderV2 } from '@kit.ArkUI';
 
 ## SubHeaderV2
 
-SubHeaderV2({
-icon?: SubHeaderV2IconType,
-title?: SubHeaderV2Title,
-select?: SubHeaderV2Select,
-operationType?: SubHeaderV2OperationType,
-operationItems?: SubHeaderV2OperationItem[],
-titleBuild?: SubHeaderV2TitleBuilder;
-})
+SubHeaderV2({ icon?: SubHeaderV2IconType, title?: SubHeaderV2Title, select?: SubHeaderV2Select, operationType?: SubHeaderV2OperationType, operationItems?: SubHeaderV2OperationItem[], titleBuild?: SubHeaderV2TitleBuilder; })
 
 子标题，用于列表项顶部，将该组列表划分为一个区块，子标题名称用来概括该区块内容。也可以用于内容项顶部，子标题名称用来概括该区块内容。
 
@@ -85,18 +80,17 @@ type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier
 
 ### 属性
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明                           |
 | -------- | -------- |---|----|------------------------------|
-| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 标题内容。<br />当[SubHeaderV2](#subheaderv2-1)中同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br />默认值：undefined<br/>装饰器类型：@Trace                       |
-| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 副标题内容。<br />默认值：undefined<br/>装饰器类型：@Trace                       |
-| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace |
-| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置副标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace |
+| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 标题内容。<br />当[SubHeaderV2](#subheaderv2-1)中同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br />默认值：undefined<br/>装饰器类型：@Trace  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                     |
+| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 副标题内容。<br />默认值：undefined<br/>装饰器类型：@Trace  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                     |
+| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置副标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 设置标题自定义朗读内容。<br />默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>装饰器类型：@Trace <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ### constructor
 
@@ -120,18 +114,17 @@ constructor(options: SubHeaderV2TitleOptions)
 
 用于构建SubHeaderV2Title对象。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明                          |
 | -------- | -------- |----|----|-----------------------------|
-| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  否  | 是  | 标题内容。<br />默认值：undefined                       |
-| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  否  | 是  | 副标题内容。<br />默认值：undefined                      |
-| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  |  否  | 是  | 设置标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined |
-| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  |  否  | 是  | 设置副标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined |
+| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  否  | 是  | 标题内容。<br />默认值：undefined   <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                    |
+| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  否  | 是  | 副标题内容。<br />默认值：undefined  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                    |
+| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  |  否  | 是  | 设置标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  |  否  | 是  | 设置副标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 设置标题自定义朗读内容。<br />默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## SubHeaderV2Select
 
@@ -854,8 +847,10 @@ struct SubHeaderExample {
 ```
 ![子标题8](figures/zh-cn_image_subheader_example08.png)
 
-### 示例9（右侧按钮自定义播报）
-该示例通过设置SubHeaderV2的右侧按钮属性accessibilityText、accessibilityDescription、accessibilityLevel自定义屏幕朗读播报文本。
+### 示例9（右侧按钮设置默认获焦）
+在获焦状态下，该示例通过设置SubHeaderV2的右侧按钮属性defaultFocus使其默认获焦。
+
+从API version 18开始，在[SubHeaderV2OperationItem](#subheaderv2operationitemoptions)中新增defaultFocus接口。
 ```ts
 import {
   SubHeaderV2OperationType,

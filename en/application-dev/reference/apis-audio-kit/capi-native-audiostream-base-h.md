@@ -41,21 +41,22 @@ The file declares the basic data structure of OHAudio.
 | [OH_AudioStream_Type](#oh_audiostream_type) | OH_AudioStream_Type | Enumerates the audio stream types.|
 | [OH_AudioStream_SampleFormat](#oh_audiostream_sampleformat) | OH_AudioStream_SampleFormat | Enumerates the sampling formats of audio streams.|
 | [OH_AudioStream_EncodingType](#oh_audiostream_encodingtype) | OH_AudioStream_EncodingType | Enumerates the encoding types of audio streams.|
-| [OH_AudioStream_Usage](#oh_audiostream_usage) | OH_AudioStream_Usage | Enumerates the usage scenarios of an audio renderer,<br> that is, usage scenarios of audio output streams.|
+| [OH_AudioStream_Usage](#oh_audiostream_usage) | OH_AudioStream_Usage | Enumerates the usage scenarios of audio streams.<br> Generally, it is used to describe usage scenarios of audio output streams.|
 | [OH_AudioStream_LatencyMode](#oh_audiostream_latencymode) | OH_AudioStream_LatencyMode | Enumerates the latency modes of audio streams.|
 | [OH_AudioStream_DirectPlaybackMode](#oh_audiostream_directplaybackmode) | OH_AudioStream_DirectPlaybackMode | Enumerates the direct playback modes of audio streams.|
 | [OH_AudioStream_VolumeMode](#oh_audiostream_volumemode) | OH_AudioStream_VolumeMode | Enumerates the volume modes of audio streams.|
 | [OH_AudioStream_State](#oh_audiostream_state) | OH_AudioStream_State | Enumerates the audio stream states.|
-| [OH_AudioStream_SourceType](#oh_audiostream_sourcetype) | OH_AudioStream_SourceType | Enumerates the usage scenarios of an audio capturer,<br> that is, usage scenarios of audio input streams.|
+| [OH_AudioStream_SourceType](#oh_audiostream_sourcetype) | OH_AudioStream_SourceType | Enumerates the usage scenarios of audio streams.<br> Generally, it is used to describe usage scenarios of audio input streams.|
 | [OH_AudioStream_Event](#oh_audiostream_event) | OH_AudioStream_Event | Enumerates the audio stream events. (It is deprecated in API version 20.)|
-| [OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype) | OH_AudioInterrupt_ForceType | Enumerates the types of force that causes audio interruption.<br> The force type is obtained when an audio interruption event is received.<br> This type specifies whether the audio interruption operation is forcibly performed by the system. The operation information (such as audio pause or stop) can be obtained through [OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint).|
-| [OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint) | OH_AudioInterrupt_Hint | Enumerates the hints provided along with audio interruption.<br> The hint is obtained when an audio interruption event is received.<br> The hint specifies the operation (such as audio pause or volume adjustment) to be performed on audio streams based on the focus strategy.<br> You can determine whether the operation is forcibly performed by the system based on [OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype).|
+| [OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype) | OH_AudioInterrupt_ForceType | Enumerates the types of force that causes audio interruption.<br> The force type is obtained when an audio interruption event is received.<br> This type indicates whether the audio interruption operation is forcibly performed by the system. For details about the oepration (such as audio pause and stop), see [OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint).|
+| [OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint) | OH_AudioInterrupt_Hint | Enumerates the hints provided along with audio interruption.<br> The force type is obtained when an audio interruption event is received.<br> The hint specifies the operation (such as audio pause or volume adjustment) to be performed on audio streams based on the focus strategy.<br> You can combine the [OH_AudioInterrupt_ForceType](capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype) information to determine whether the operation has been forcibly performed by the system.|
 | [OH_AudioInterrupt_Mode](#oh_audiointerrupt_mode) | OH_AudioInterrupt_Mode | Enumerates the audio interruption modes.|
 | [OH_AudioStream_AudioEffectMode](#oh_audiostream_audioeffectmode) | OH_AudioStream_AudioEffectMode | Enumerates the audio effect modes.|
 | [OH_AudioStream_FastStatus](#oh_audiostream_faststatus) | OH_AudioStream_FastStatus | Enumerates the low-latency statuses.|
 | [OH_AudioStream_DeviceChangeReason](#oh_audiostream_devicechangereason) | OH_AudioStream_DeviceChangeReason | Enumerates the reasons for audio stream device changes.|
 | [OH_AudioStream_PrivacyType](#oh_audiostream_privacytype) | OH_AudioStream_PrivacyType | Enumerates the privacy types of an audio stream. The privacy type specifies whether the audio stream can be recorded by other applications.|
 | [OH_AudioData_Callback_Result](#oh_audiodata_callback_result) | OH_AudioData_Callback_Result | Enumerates the audio data callback results.|
+| [OH_AudioStream_LatencyType](#oh_audiostream_latencytype) | OH_AudioStream_LatencyType | Enumerates the audio latency types.|
 
 ### Functions
 
@@ -64,14 +65,13 @@ The file declares the basic data structure of OHAudio.
 | [typedef void (\*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_DeviceChangeReason reason)](#oh_audiorenderer_outputdevicechangecallback) | OH_AudioRenderer_OutputDeviceChangeCallback | Defines a pointer to the callback invoked when the audio capturer device changes.|
 | [typedef void (\*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* renderer, uint32_t samplePos, void* userData)](#oh_audiorenderer_onmarkreachedcallback) | OH_AudioRenderer_OnMarkReachedCallback | Defines a pointer to the callback invoked when the mark position is reached.|
 | [typedef int32_t (\*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize, void* metadata, int32_t metadataSize)](#oh_audiorenderer_writedatawithmetadatacallback) | OH_AudioRenderer_WriteDataWithMetadataCallback | Defines a function pointer to the callback used to write audio data and metadata.|
-| [typedef OH_AudioData_Callback_Result (\*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallback) | OH_AudioRenderer_OnWriteDataCallback | Defines a function pointer to the callback used to write audio data.<br> The callback is used only to write audio data. Do not call AudioRenderer APIs in it.<br> The return result indicates whether the data filled in the buffer is valid. If the data is invalid, the data entered by the user will not be played.<br> Once the callback finishes its execution, the audio service queues the data pointed to by **audioData** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **audioData** with the exact length (specified by **audioDataSize**) of data designated for playback; otherwise, noises may occur during playback.<br> **audioDataSize** can be set by {@link #OH_AudioStreamBuilder_SetFrameSizeInCallback}.|
-| [typedef int32_t (\*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallbackadvanced) | OH_AudioRenderer_OnWriteDataCallbackAdvanced | Defines a function pointer to the callback used to write audio data. Unlike **OH_AudioRenderer_OnWriteDataCallback**, this function allows the application to fill data of the length ranging [0, audioDataSize].<br> Here, **audioDataSize** refers to the length of the callback buffer. The caller notifies the system of the length of the data written through the return value.<br> If the return value is 0, the callback thread sleeps for a period of time.<br> Otherwise, the system may immediately initiate the next callback.|
+| [typedef OH_AudioData_Callback_Result (\*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallback) | OH_AudioRenderer_OnWriteDataCallback | Defines a function pointer to the callback used to write audio data.<br> The callback is used only to write audio data. Do not call AudioRenderer APIs in it.<br> The return result indicates whether the data filled in the buffer is valid. If the data is invalid, the data entered by the user will not be played.<br> Once the callback finishes its execution, the audio service queues the data pointed to by **audioData** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **audioData** with the exact length (specified by **audioDataSize**) of data designated for playback; otherwise, noises may occur during playback.<br> The **audioDataSize** parameter can be set by calling [OH_AudioStreamBuilder_SetFrameSizeInCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback).|
 
 ## Enum Description
 
 ### OH_AudioStream_Result
 
-```
+```c
 enum OH_AudioStream_Result
 ```
 
@@ -91,7 +91,7 @@ Enumerates the audio operation results.
 
 ### OH_AudioStream_Type
 
-```
+```c
 enum OH_AudioStream_Type
 ```
 
@@ -108,7 +108,7 @@ Enumerates the audio stream types.
 
 ### OH_AudioStream_SampleFormat
 
-```
+```c
 enum OH_AudioStream_SampleFormat
 ```
 
@@ -128,7 +128,7 @@ Enumerates the sampling formats of audio streams.
 
 ### OH_AudioStream_EncodingType
 
-```
+```c
 enum OH_AudioStream_EncodingType
 ```
 
@@ -146,13 +146,13 @@ Enumerates the encoding types of audio streams.
 
 ### OH_AudioStream_Usage
 
-```
+```c
 enum OH_AudioStream_Usage
 ```
 
 **Description**
 
-Enumerates the usage scenarios of an audio renderer, that is, usage scenarios of audio output streams.
+Enumerates the usage scenarios of audio streams.<br> that is, usage scenarios of audio output streams.
 
 **Since**: 10
 
@@ -175,7 +175,7 @@ Enumerates the usage scenarios of an audio renderer, that is, usage scenarios of
 
 ### OH_AudioStream_LatencyMode
 
-```
+```c
 enum OH_AudioStream_LatencyMode
 ```
 
@@ -192,7 +192,7 @@ Enumerates the latency modes of audio streams.
 
 ### OH_AudioStream_DirectPlaybackMode
 
-```
+```c
 enum OH_AudioStream_DirectPlaybackMode
 ```
 
@@ -210,7 +210,7 @@ Enumerates the direct playback modes of audio streams.
 
 ### OH_AudioStream_VolumeMode
 
-```
+```c
 enum OH_AudioStream_VolumeMode
 ```
 
@@ -227,7 +227,7 @@ Enumerates the volume modes of audio streams.
 
 ### OH_AudioStream_State
 
-```
+```c
 enum OH_AudioStream_State
 ```
 
@@ -249,13 +249,13 @@ Enumerates the audio stream states.
 
 ### OH_AudioStream_SourceType
 
-```
+```c
 enum OH_AudioStream_SourceType
 ```
 
 **Description**
 
-Enumerates the usage scenarios of an audio capturer, that is, usage scenarios of audio input streams.
+Enumerates the usage scenarios of audio streams,<br> that is, usage scenarios of audio input streams.
 
 **Since**: 10
 
@@ -264,7 +264,7 @@ Enumerates the usage scenarios of an audio capturer, that is, usage scenarios of
 | AUDIOSTREAM_SOURCE_TYPE_INVALID = -1 | Invalid state.|
 | AUDIOSTREAM_SOURCE_TYPE_MIC = 0 | Audio recording.|
 | AUDIOSTREAM_SOURCE_TYPE_VOICE_RECOGNITION = 1 | Voice recognition.|
-| AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE = 2 | Audio playback.|
+| AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE = 2 | Audio playback. **Deprecated from**: 12<br>**Substitute**: [OH_AVScreenCapture](../apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)|
 | AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION = 7 | Voice communication.|
 | AUDIOSTREAM_SOURCE_TYPE_VOICE_MESSAGE = 10 | Voice message.<br>**Since**: 12|
 | AUDIOSTREAM_SOURCE_TYPE_CAMCORDER = 13 | Video recording.<br>**Since**: 13|
@@ -273,7 +273,7 @@ Enumerates the usage scenarios of an audio capturer, that is, usage scenarios of
 
 ### OH_AudioStream_Event
 
-```
+```c
 enum OH_AudioStream_Event
 ```
 
@@ -287,51 +287,41 @@ Enumerates the audio stream events.
 
 | Enum Item| Description|
 | -- | -- |
-| AUDIOSTREAM_EVENT_ROUTING_CHANGED = 0 | The audio route has been changed.<br>**Since**: 10<br>**Deprecated from**: 20<br>**Substitute**: [OH_AudioRenderer_OutputDeviceChangeCallback](#oh_audiorenderer_outputdevicechangecallback)|
+| AUDIOSTREAM_EVENT_ROUTING_CHANGED = 0 | The audio route has been changed.<br>**Since**: 10<br>**Deprecated from**: 20<br>**Substitute**: [OH_AudioRenderer_OutputDeviceChangeCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_outputdevicechangecallback)|
 
 ### OH_AudioInterrupt_ForceType
 
-```
+```c
 enum OH_AudioInterrupt_ForceType
 ```
 
 **Description**
 
-Enumerates the types of force that causes audio interruption.
-
-The force type is obtained when an audio interruption event is received.
-
-This type specifies whether the audio interruption operation is forcibly performed by the system. The operation information (such as audio pause or stop) can be obtained through [OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint).
+Enumerates the types of force that causes audio interruption.<br> The force type is obtained when an audio interruption event is received.<br> This type indicates whether the audio interruption operation is forcibly performed by the system. For details about the oepration (such as audio pause and stop), see [OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint).
 
 **Since**: 10
 
 | Enum Item| Description|
 | -- | -- |
 | AUDIOSTREAM_INTERRUPT_FORCE = 0 | The operation is forcibly performed by the system.|
-| AUDIOSTREAM_INTERRUPT_SHARE = 1 | The operation will not be performed by the system. [OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint) is used to provide recommended operations for the application, and the application can determine the next processing mode.|
+| AUDIOSTREAM_INTERRUPT_SHARE = 1 | The system does not perform the specific operation. Instead, it notifies the application of the interruption through [OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint) and provides suggestions for the application to decide the next step.|
 
 ### OH_AudioInterrupt_Hint
 
-```
+```c
 enum OH_AudioInterrupt_Hint
 ```
 
 **Description**
 
-Enumerates the hints provided along with audio interruption.
-
-The hint is obtained when an audio interruption event is received.
-
-The hint specifies the operation (such as audio pause or volume adjustment) to be performed on audio streams based on the focus strategy.
-
-You can determine whether the operation is forcibly performed by the system based on [OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype).
+Enumerates the hints provided along with audio interruption.<br> The hint is obtained when an audio interruption event is received.<br> The hint specifies the operation (such as audio pause or volume adjustment) to be performed on audio streams based on the focus strategy.<br> You can combine the [OH_AudioInterrupt_ForceType](capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype) information to determine whether the operation has been forcibly performed by the system.
 
 **Since**: 10
 
 | Enum Item| Description|
 | -- | -- |
 | AUDIOSTREAM_INTERRUPT_HINT_NONE = 0 | None.|
-| AUDIOSTREAM_INTERRUPT_HINT_RESUME = 1 | A hint is displayed, indicating that the audio stream is restored. The application can proactively trigger operations related to rendering or recording.<br> This operation cannot be forcibly performed by the system, and the corresponding [OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype) must be **AUDIOSTREAM_INTERRUPT_SHARE**.|
+| AUDIOSTREAM_INTERRUPT_HINT_RESUME = 1 | A hint is displayed, indicating that the audio stream is restored. The application can proactively trigger operations related to rendering or recording.<br> This operation cannot be forcibly performed by the system. The corresponding [OH_AudioInterrupt_ForceType](capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype) must be **AUDIOSTREAM_INTERRUPT_SHARE**.|
 | AUDIOSTREAM_INTERRUPT_HINT_PAUSE = 2 | A hint is displayed, indicating that the audio stream is paused and the audio focus is lost temporarily.<br> The **AUDIOSTREAM_INTERRUPT_HINT_RESUME** event will be triggered when the focus is gained.|
 | AUDIOSTREAM_INTERRUPT_HINT_STOP = 3 | A hint is displayed, indicating that the audio stream stops and the audio focus is lost.|
 | AUDIOSTREAM_INTERRUPT_HINT_DUCK = 4 | A hint is displayed, indicating that audio ducking starts and the audio is played at a lower volume.|
@@ -341,7 +331,7 @@ You can determine whether the operation is forcibly performed by the system base
 
 ### OH_AudioInterrupt_Mode
 
-```
+```c
 enum OH_AudioInterrupt_Mode
 ```
 
@@ -358,7 +348,7 @@ Enumerates the audio interruption modes.
 
 ### OH_AudioStream_AudioEffectMode
 
-```
+```c
 enum OH_AudioStream_AudioEffectMode
 ```
 
@@ -375,7 +365,7 @@ Enumerates the audio effect modes.
 
 ### OH_AudioStream_FastStatus
 
-```
+```c
 enum OH_AudioStream_FastStatus
 ```
 
@@ -392,7 +382,7 @@ Enumerates the low-latency statuses.
 
 ### OH_AudioStream_DeviceChangeReason
 
-```
+```c
 enum OH_AudioStream_DeviceChangeReason
 ```
 
@@ -413,7 +403,7 @@ Enumerates the reasons for audio stream device changes.
 
 ### OH_AudioStream_PrivacyType
 
-```
+```c
 enum OH_AudioStream_PrivacyType
 ```
 
@@ -427,11 +417,11 @@ Enumerates the privacy types of an audio stream. The privacy type specifies whet
 | -- | -- |
 | AUDIO_STREAM_PRIVACY_TYPE_PUBLIC = 0 | The audio stream can be recorded or screen-projected by other applications and is not privacy-related.|
 | AUDIO_STREAM_PRIVACY_TYPE_PRIVATE = 1 | The audio stream cannot be recorded or screen-projected by other applications.|
-| AUDIO_STREAM_PRIVACY_TYPE_SHARED = 2 | The audio stream can be recorded or screen-projected by other applications and is privacy-related.<br>     For example, if the privacy policy is **PRIVACY_TYPE_PUBLIC**, audio streams of the [AUDIOSTREAM_USAGE_VOICE_COMMUNICATION](#oh_audiostream_usage) type cannot be recorded or screen-projected by other applications. However, if the privacy policy is **PRIVACY_TYPE_SHARED**, these audio streams can be recorded or screen-projected by other applications.<br>**Since**: 21|
+| AUDIO_STREAM_PRIVACY_TYPE_SHARED = 2 | The audio stream can be recorded or screen-projected by other applications and is privacy-related.<br>     For example, if the privacy policy is **PRIVACY_TYPE_PUBLIC**, the [AUDIOSTREAM_USAGE_VOICE_COMMUNICATION](capi-native-audiostream-base-h.md#oh_audiostream_usage) audio stream cannot be recorded or screen-projected by other applications. However, if the privacy policy is **PRIVACY_TYPE_SHARED**, these audio streams can be recorded or screen-projected by other applications.<br>**Since**: 21|
 
 ### OH_AudioData_Callback_Result
 
-```
+```c
 enum OH_AudioData_Callback_Result
 ```
 
@@ -446,12 +436,30 @@ Enumerates the audio data callback results.
 | AUDIO_DATA_CALLBACK_RESULT_INVALID = -1 | The audio data callback result is invalid, and the audio data will not be played.|
 | AUDIO_DATA_CALLBACK_RESULT_VALID = 0 | The audio data callback result is valid, and the audio data will be played.|
 
+### OH_AudioStream_LatencyType
+
+```c
+enum OH_AudioStream_LatencyType
+```
+
+**Description**
+
+Enumerates the audio latency types.
+
+**Since**: 23
+
+| Enum Item| Description|
+| -- | -- |
+| AUDIOSTREAM_LATENCY_TYPE_ALL = 0 | Obtains the overall audio processing latency for both software and hardware components.|
+| AUDIOSTREAM_LATENCY_TYPE_SOFTWARE = 1 | Obtains the software latency, including latency for sound effect processing on the software side.|
+| AUDIOSTREAM_LATENCY_TYPE_HARDWARE = 2 | Obtains the hardware latency, including latency for sound effect processing on the hardware abstraction layer (HAL), driver, and hardware side.|
+
 
 ## Function Description
 
 ### OH_AudioRenderer_OutputDeviceChangeCallback()
 
-```
+```c
 typedef void (*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_DeviceChangeReason reason)
 ```
 
@@ -467,11 +475,11 @@ Defines a pointer to the callback invoked when the audio capturer device changes
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance, which is created by calling [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
 |  void* userData | Pointer to the application data passed through the callback.|
-| [OH_AudioStream_DeviceChangeReason](#oh_audiostream_devicechangereason) reason | Reason for the audio stream device change.|
+| [OH_AudioStream_DeviceChangeReason](#oh_audiostream_devicechangereason) reason | Enumerates the reasons for audio stream device changes.|
 
 ### OH_AudioRenderer_OnMarkReachedCallback()
 
-```
+```c
 typedef void (*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* renderer, uint32_t samplePos, void* userData)
 ```
 
@@ -491,7 +499,7 @@ Defines a pointer to the callback invoked when the mark position is reached.
 
 ### OH_AudioRenderer_WriteDataWithMetadataCallback()
 
-```
+```c
 typedef int32_t (*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize, void* metadata, int32_t metadataSize)
 ```
 
@@ -520,21 +528,13 @@ Defines a function pointer to the callback used to write audio data and metadata
 
 ### OH_AudioRenderer_OnWriteDataCallback()
 
-```
+```c
 typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)
 ```
 
 **Description**
 
-Defines a function pointer to the callback used to write audio data.
-
-The callback is used only to write audio data. Do not call AudioRenderer APIs in it.
-
-The return result indicates whether the data filled in the buffer is valid. If the data is invalid, the data entered by the user will not be played.
-
-Once the callback finishes its execution, the audio service queues the data pointed to by **audioData** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **audioData** with the exact length (specified by **audioDataSize**) of data designated for playback; otherwise, noises may occur during playback.
-
-The **audioDataSize** parameter can be set by calling [OH_AudioStreamBuilder_SetFrameSizeInCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback).
+Defines a function pointer to the callback used to write audio data.<br> The callback is used only to write audio data. Do not call AudioRenderer APIs in it.<br> The return result indicates whether the data filled in the buffer is valid. If the data is invalid, the data entered by the user will not be played.<br> Once the callback finishes its execution, the audio service queues the data pointed to by **audioData** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **audioData** with the exact length (specified by **audioDataSize**) of data designated for playback; otherwise, noises may occur during playback.<br> The **audioDataSize** parameter can be set by calling [OH_AudioStreamBuilder_SetFrameSizeInCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback).
 
 **Since**: 12
 
@@ -551,37 +551,4 @@ The **audioDataSize** parameter can be set by calling [OH_AudioStreamBuilder_Set
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioData_Callback_Result](#oh_audiodata_callback_result) | **AUDIO_DATA_CALLBACK_RESULT_INVALID**: The audio data callback result is invalid, and the audio data will not be played.<br>         **AUDIO_DATA_CALLBACK_RESULT_VALID**: The audio data callback result is valid, and the audio data will be played.|
-
-### OH_AudioRenderer_OnWriteDataCallbackAdvanced()
-
-```
-typedef int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)
-```
-
-**Description**
-
-Defines a function pointer to the callback used to write audio data. Unlike **OH_AudioRenderer_OnWriteDataCallback**, this function allows the application to fill data of the length ranging [0, audioDataSize].
-
-Here, **audioDataSize** refers to the length of the callback buffer. The caller notifies the system of the length of the data written through the return value.
-
-If the return value is 0, the callback thread sleeps for a period of time.
-
-Otherwise, the system may immediately initiate the next callback.
-
-**Since**: 20
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to the instance for which the callback occurs.|
-|  void* userData | Pointer to the application data passed through the callback.|
-|  void* audioData | Pointer to the audio data to be filled by the application.|
-|  int32_t audioDataSize | Length of the audio data, in bytes.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Actual length of valid audio data filled by the application. The return value must be in the range of [0, audioDataSize].<br> If the return value is less than 0, the system adjusts it to 0. If the return value is greater than **audioDataSize**, the system adjusts it to **audioDataSize**.<br> Note that the return value must be an integer multiple of the size of a single sampling point.<br> For example, for audio data in stereo s16 format, it must be an integer multiple of 4 (216/8).<br> Failure to do so may result in playback noise.|
+| [OH_AudioData_Callback_Result](capi-native-audiostream-base-h.md#oh_audiodata_callback_result) | **AUDIO_DATA_CALLBACK_RESULT_INVALID**: The audio data callback result is invalid, and the audio data will not be played.<br>         **AUDIO_DATA_CALLBACK_RESULT_VALID**: The audio data callback result is valid, and the audio data will be played.|

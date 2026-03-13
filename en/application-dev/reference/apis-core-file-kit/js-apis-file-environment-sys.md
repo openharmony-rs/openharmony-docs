@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **Environment** module provides JS APIs for obtaining the root directories of the storage and user files.
 

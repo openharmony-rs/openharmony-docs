@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 ## 导入模块
 
@@ -78,7 +80,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
 let floatingBallController: floatingBall.FloatingBallController | undefined = undefined;
-//请在组件内获取context，确保this.getUIContext().getHostContext()返回的结果为UIAbilityContext
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回的结果为UIAbilityContext
 let ctx = this.getUIContext().getHostContext() as common.UIAbilityContext; 
 let config: floatingBall.FloatingBallConfiguration = {
   context: ctx,

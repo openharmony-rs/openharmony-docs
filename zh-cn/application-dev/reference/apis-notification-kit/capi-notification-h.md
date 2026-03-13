@@ -1,4 +1,10 @@
 # notification.h
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 ## 概述
 
@@ -26,7 +32,7 @@
 
 ### OH_Notification_IsNotificationEnabled()
 
-```
+```c
 bool OH_Notification_IsNotificationEnabled(void)
 ```
 

@@ -44,6 +44,12 @@ Registers a listener to observe the mission status.
   | type     | string   | Yes      | Name of the target mission. The value is fixed at **'mission'**, indicating the system mission status listener.|
   | listener | [MissionListener](js-apis-inner-application-missionListener-sys.md) | Yes| Mission status listener to register.|
 
+**Return value**
+
+  | Type| Description|
+  | -------- | -------- |
+  | number | Index of the mission status listener, which is created by the system and allocated when the listener is registered.|
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -51,14 +57,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**Return value**
-
-  | Type| Description|
-  | -------- | -------- |
-  | number | Index of the mission status listener, which is created by the system and allocated when the listener is registered.|
 
 **Example**
 
@@ -154,7 +154,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300002 | The specified mission listener does not exist. |
 
@@ -275,7 +275,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300002 | The specified mission listener does not exist. |
 
@@ -386,7 +386,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -459,7 +459,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -511,7 +511,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -569,7 +569,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -617,7 +617,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -673,7 +673,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -722,7 +722,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -779,7 +779,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -829,7 +829,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300001 | Mission not found. |
 
@@ -886,7 +886,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300001 | Mission not found. |
 
@@ -935,7 +935,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300001 | Mission not found. |
 
@@ -991,7 +991,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300001 | Mission not found. |
 
@@ -1041,7 +1041,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -1098,7 +1098,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -1146,7 +1146,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -1194,7 +1194,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 
 **Example**
 
@@ -1240,7 +1240,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 
@@ -1293,7 +1293,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 
@@ -1351,7 +1351,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 
@@ -1401,7 +1401,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1469,7 +1469,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1542,7 +1542,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1605,7 +1605,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1674,7 +1674,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 

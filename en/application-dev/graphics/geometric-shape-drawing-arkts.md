@@ -9,7 +9,7 @@
 
 ## Overview
 
-Currently, the following geometric shapes can be drawn:
+The following geometric shapes can be drawn:
 
 - Point
 
@@ -21,16 +21,16 @@ Currently, the following geometric shapes can be drawn:
 
 - Region
 
-- Box
+- Rectangle
 
 - Rounded rectangle
 
-Most geometric shapes can be drawn using a brush or a paintbrush. Points can be drawn only using a brush.
+Most geometric shapes can be drawn using a pen or brush. Points can only be drawn using a pen.
 
 
 ## Available APIs
 
-The following table describes the APIs commonly used for drawing geometric shapes. For details about the APIs and parameters, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
+The following table lists the APIs for drawing geometric shapes. For details, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
 
 | API| Description|
 | -------- | -------- |
@@ -45,20 +45,20 @@ The following table describes the APIs commonly used for drawing geometric shape
 
 ## Drawing Points
 
-Points can be drawn on the canvas only using a brush. You can use the drawPoint() API to draw a point. A point has two parameters, which are the x coordinate and y coordinate of the point to be drawn.
+Points can only be drawn on the canvas using a pen. You can use the **drawPoint()** API to draw points. The API takes two parameters, which are the X coordinate and Y coordinate of the point to be drawn.
 
 A simple example is as follows:
 
 <!-- @[arkts_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
-// Set the brush.
+// Set the pen.
 let pen = new drawing.Pen();
-// Set the color
+// Set the color.
 pen.setColor(0xFF, 0xFF, 0x00, 0x00);
-// Set the line width.
+// Set the stroke width.
 pen.setStrokeWidth(40);
-// Set the stroke effect of the paint.
+// Set the stroke effect of the pen.
 canvas.attachPen(pen);
 // Draw five points.
 canvas.drawPoint(VALUE_200, VALUE_200);
@@ -77,29 +77,29 @@ The effect is as follows:
 
 ## Drawing an Arc
 
-You can use a paint or brush to draw an arc on the canvas. The drawArc() API is used to draw an arc.
+You can use a pen or brush to draw an arc on the canvas by calling **drawArc()**.
 
-Drawing an arc requires a rectangle ([common2D.Rect](../reference/apis-arkgraphics2d/js-apis-graphics-common2D.md#rect)) and two parameters, which indicate the start angle (startAngle) and sweep angle (sweepAngle) of the arc.
+To draw an arc, you need a rectangle ([common2D.Rect](../reference/apis-arkgraphics2d/js-apis-graphics-common2D.md#rect)) and two parameters, **startAngle** and **sweepAngle**. The rectangle is used as the outline of the arc.
 
-The following is a simple example of drawing an arc using a paint:
+The following is an example of drawing an arc using a pen:
 
 <!-- @[arkts_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
-// Create a pen.
+// Create a pen object.
 let pen = new drawing.Pen();
-// Set the color
+// Set the color.
 pen.setColor({
   alpha: 0xFF,
   red: 0xFF,
   green: 0x00,
   blue: 0x00
 });
-// Set the line width.
+// Set the stroke width.
 pen.setStrokeWidth(20);
-// Set the stroke effect of the paint.
+// Set the stroke effect of the pen.
 canvas.attachPen(pen);
-// Create a rectangle.
+// Create a rectangle object.
 const rect: common2D.Rect = {
   left: VALUE_100,
   top: VALUE_200,
@@ -119,26 +119,26 @@ The effect is as follows:
 
 ## Drawing a Circle
 
-You can use a paint or brush to draw a circle on the canvas. The drawCircle() API is used to draw a circle.
+You can use the pen or brush to draw a circle on the canvas by calling **drawCircle()**.
 
-Drawing a circle requires the x and y coordinates of the circle center and the radius of the circle.
+To draw a circle, you need the X and Y coordinates of the center point and the radius of the circle.
 
-The following example uses a brush to draw a circle.
+The following is an example of drawing a circle using a pen:
 <!-- @[arkts_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
-// Create a pen.
+// Create a pen object.
 let pen = new drawing.Pen();
-// Set the color
+// Set the color.
 pen.setColor({
   alpha: 0xFF,
   red: 0xFF,
   green: 0x00,
   blue: 0x00
 });
-// Set the line width.
+// Set the stroke width.
 pen.setStrokeWidth(20);
-// Set the stroke effect of the paint.
+// Set the stroke effect of the pen.
 canvas.attachPen(pen);
 // Draw a circle.
 canvas.drawCircle(VALUE_630, VALUE_630, VALUE_500);
@@ -151,19 +151,19 @@ The effect is as follows:
 ![Screenshot_20241129172555673](figures/Screenshot_20241129172555673.jpg)
 
 
-## Draw a route.
+## Drawing a Path
 
-You can use a brush or a brush to draw a path on the canvas. A path can be used to draw a straight line, arc, or Bezier curve. You can also combine paths to form other complex shapes.
+You can use a pen or brush to draw a path on the canvas. The path can be used to draw a straight line, arc, or Bezier curve, or form other complex shapes through path combination.
 
-The following describes the APIs and implementation of drawing a path. For details about the usage and parameters, see [Path](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Path.md). Common APIs are as follows:
+The following describes the APIs and implementation of drawing a path. For details about the usage and parameters, see [Path](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Path.md). The common APIs are as follows:
 
-1. new drawing.Path() is used to create a path object.
+1. **new drawing.Path()**: creates a path object.
 
-2. moveTo() is used to set the start point of a custom path.
+2. **moveTo()**: sets the start point of the path.
 
-3. lineTo() is used to add a line segment from the start point or the last point of the path (if the path is empty, the default value is (0,0)) to the target point.
+3. **lineTo()**: draws a line segment from the start point or the last point of the path (if the path is empty, the start point (0, 0) is used) to the target point.
 
-The following example uses a brush and a brush to draw a five-pointed star.
+The following is an example of drawing a five-pointed star using a pen and a brush:
 
 <!-- @[arkts_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
@@ -194,23 +194,23 @@ path.lineTo(eX, eY);
 // Close the path. Now the path is drawn.
 path.close();
 
-// Create a paint object.
+// Create a pen object.
 let pen = new drawing.Pen();
-// Enable anti-aliasing.
+// Set anti-aliasing.
 pen.setAntiAlias(true);
 // Set the stroke color.
 pen.setColor(0xFF, 0xFF, 0x00, 0x00);
-// Set the line width.
+// Set the stroke width.
 pen.setStrokeWidth(10.0);
-// Set the stroke effect of the paint.
+// Set the stroke effect of the pen.
 canvas.attachPen(pen);
-// Create a brush.
+// Create a brush object.
 let brush = new drawing.Brush();
 // Set the fill color.
 brush.setColor(0xFF, 0x00, 0xFF, 0x00);
-// Set the fill effect of the brush.
+// Set the brush fill effect.
 canvas.attachBrush(brush);
-// Draw the path.
+// Draw a path.
 canvas.drawPath(path);
 // Remove the fill effect.
 canvas.detachBrush();
@@ -223,32 +223,32 @@ The effect is as follows:
 ![Screenshot_20241129164326302](figures/Screenshot_20241129164326302.jpg)
 
 
-## Viewport rectangle
+## Drawing a Region
 
-A region is not a specific shape. You can set it to a specified rectangle or path, or perform combination operations on two regions. You can use a paint or brush to draw a region. For details about the APIs, see [Region](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Region.md).
+A region is not a specific shape. You can set it to a specified rectangle or path, or combine two regions. You can use a pen or brush to draw a region. For details about the API, see [Region](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Region.md).
 
-Currently, a rectangle region and a path region can be set by using the setRect() and setPath() APIs, respectively.
+You can call **setRect()** and **setPath()** to set the rectangle region and path region, respectively.
 
-The following uses a brush to draw a combined region of rectangles as an example:
+The following is an example of drawing a rectangle region using a brush:
 
 <!-- @[arkts_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
-// Create a brush.
+// Create a brush object.
 let brush = new drawing.Brush();
-// Set the color
+// Set the color.
 brush.setColor(0xFF, 0xFF, 0x00, 0x00);
-// Set the brush filling effect.
+// Set the brush fill effect.
 canvas.attachBrush(brush);
-// Create region1 in the upper left corner.
+// Create region 1 in the upper left corner.
 let region1 = new drawing.Region();
 region1.setRect(VALUE_100, VALUE_100, VALUE_600, VALUE_600);
-// Create region2 in the lower right corner.
+// Create region 2 in the lower right corner.
 let region2 = new drawing.Region();
 region2.setRect(VALUE_300, VALUE_300, VALUE_900, VALUE_900);
 // Combine the two regions in XOR mode.
 region1.op(region2, drawing.RegionOp.XOR);
-// Draw the regions.
+// Draw a region.
 canvas.drawRegion(region1);
 // Remove the fill effect.
 canvas.detachBrush();
@@ -259,20 +259,20 @@ The effect is as follows:
 ![Screenshot_20241206112505234](figures/Screenshot_20241206112505234.jpg)
 
 
-## Draws a rectangle.
+## Drawing a Rectangle
 
-You can use a brush or pen to draw a rectangle on the canvas. Use the drawRect() API to draw a rectangle. The API needs to pass four floating points, which indicate the coordinates of the left, top, right, and bottom of the rectangle. The four coordinates form a rectangle.
+You can use a pen or brush to draw a rectangle on the canvas. Use **drawRect()** to draw a rectangle. The API needs to pass four floating points, which indicate the coordinates of the left, top, right, and bottom positions of the rectangle. The four coordinates form a rectangle.
 
-The following is a simple example of drawing a rectangle using a brush:
+The following is an example of drawing a five-pointed star using a pen and a brush:
 
 <!-- @[arkts_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
-// Create a brush.
+// Create a brush object.
 let brush = new drawing.Brush();
-// Set the color
+// Set the color.
 brush.setColor(0xFF, 0xFF, 0x00, 0x00);
-// Set the brush filling effect.
+// Set the brush fill effect.
 canvas.attachBrush(brush);
 // Draw a rectangle.
 canvas.drawRect(VALUE_200, VALUE_200, VALUE_1000, VALUE_700);
@@ -287,26 +287,26 @@ The effect is as follows:
 
 ## Drawing a Rounded Rectangle
 
-You can use a brush or pen to draw a rounded rectangle on the canvas. Use the drawRoundRect() API to draw a rounded rectangle. The API accepts one input parameter roundRect, which is the rounded rectangle object.
+You can use a pen or brush to draw a rounded rectangle on the canvas. Use **drawRoundRect()** to draw a rounded rectangle. The API takes the **roundRect** parameter, indicating the rounded rectangle object.
 
-The rounded rectangle object is constructed using new drawing.RoundRect() API. The constructor accepts three parameters:
+The **new drawing.RoundRect()** API is used to construct a rounded rectangle object. The constructor takes three parameters, which are as follows:
 
-- common2D.Rect (rectangle object). A rounded rectangle is formed by cutting corners on the rectangle.
+- **common2D.Rect** (rectangle object). A rounded rectangle is formed by cutting the rounded corners of the rectangle.
 
-- Radius of the rounded corner on the x axis.
+- Radius of the rounded corner on the X axis.
 
-- Radius of the rounded corner on the y axis.
+- Radius of the rounded corner on the Y axis.
 
-The following is a simple example of drawing a rounded rectangle using a brush:
+The following is an example of drawing a rounded rectangle using a brush:
 
 <!-- @[arkts_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
-// Create a brush.
+// Create a brush object.
 let brush = new drawing.Brush();
-// Set the color
+// Set the color.
 brush.setColor(0xFF, 0xFF, 0x00, 0x00);
-// Set the brush filling effect.
+// Set the brush fill effect.
 canvas.attachBrush(brush);
 // Create a rectangle object.
 let rect: common2D.Rect = {
@@ -320,7 +320,7 @@ console.info('rect:', rect.right);
 let rrect = new drawing.RoundRect(rect, 30, 30);
 // Draw a rounded rectangle.
 canvas.drawRoundRect(rrect);
-// Remove the filling effect.
+// Remove the fill effect.
 canvas.detachBrush();
 ```
 
@@ -331,7 +331,7 @@ The effect is as follows:
 <!--RP1-->
 ## Samples
 
-The following samples are available for Drawing (ArkTS) development:
+The following samples are provided to help you better understand how to use the **Drawing** APIs (ArkTS) for development:
 
 - [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->

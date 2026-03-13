@@ -5,7 +5,7 @@
 <!--Owner: @liujiaxing2024-->
 <!--Designer: @junjie_shi-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 本模块提供应用打点和事件订阅能力，包括事件存储、事件订阅、事件清理、打点配置等功能。HiAppEvent将应用运行过程中触发的事件信息统一归纳到[AppEventInfo](#appeventinfo)中，并将事件分为系统事件和应用事件两类。
 
@@ -66,7 +66,7 @@ addWatcher(watcher: Watcher): AppEventPackageHolder
 >
 > 如果选择在子线程中调用addWatcher，需要确保该子线程在整个接口使用周期内不会被销毁，以免影响接口的正常工作。
 >
-> 可参考[多线程并发概述](../../arkts-utils/multi-thread-concurrency-overview.md)，以实现在子线程中调用接口。
+> 可参考[Worker简介](../../arkts-utils/worker-introduction.md)，以实现在子线程中调用接口。
 >
 > 订阅接口addWatcher传入的名称name是唯一的，相同的name，后一次调用会覆盖前一次的订阅。
 
@@ -114,8 +114,10 @@ hiAppEvent.addWatcher({
 ```
 
 方法二：未设置回调条件参数，使用事件订阅返回的holder对象主动获取监听的事件。
-<br>针对异常退出时产生的崩溃事件（hiAppEvent.event.APP_CRASH）和应用冻屏事件（hiAppEvent.event.APP_FREEZE），系统捕获维测日志有一定耗时，典型情况下30s内完成，极端情况下2min左右完成。
-<br>在手动处理订阅事件的方法中，由于事件可能未生成或日志信息未抓取完成，建议在进程启动后延时重试调用takeNext()获取此类事件。
+
+针对异常退出时产生的崩溃事件（hiAppEvent.event.APP_CRASH）和应用冻屏事件（hiAppEvent.event.APP_FREEZE），系统捕获维测日志有一定耗时，典型情况下30s内完成，极端情况下2min左右完成。
+
+在手动处理订阅事件的方法中，由于事件可能未生成或日志信息未抓取完成，建议在进程启动后延时重试调用takeNext()获取此类事件。
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1133,7 +1135,7 @@ hiAppEvent.configure(config2);
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
 | mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。 |
-<!--RP5--><!--RP5End-->
+| cpuUsageHighPolicy | [CpuUsageHighPolicy](#cpuusagehighpolicy22) | 否 | 是   | CPU高负载事件配置策略。 |
 
 
 ## MainThreadJankPolicy<sup>22+</sup>
@@ -1144,16 +1146,35 @@ hiAppEvent.configure(config2);
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+<!--Table: auto; auto; 10%; 10%; auto-->
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| logType | number | 否 | 是   | 采集日志的类型。<br/>logType=0：默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>logType=1：仅采集调用栈，触发检测的阈值用户自定义。<br/>logType=2：仅采集trace。 |
-| ignoreStartupTime | number | 否 | 是   | 应用启动期间忽略主线程超时检测的时间。单位：秒，默认值：10，最小值：3。 |
-| sampleInterval | number | 否 | 是   | 主线程超时检测间隔和采样间隔。单位：毫秒，默认值：150，取值范围：[50, 500]。 |
-| sampleCount | number | 否 | 是   | 主线程超时采样次数。单位：次，默认值：10，最小值：1。<br/>最大值需要结合自定义的sampleInterval进行动态计算，计算公式：sampleCount &lt;= (2500 / sampleInterval - 4)。 |
-| reportTimesPerApp | number | 否 | 是   | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1，单位：次。<br/>开发者选项打开，每小时上报次数范围：[1, 3]。<br/>开发者选项关闭，每分钟上报次数范围：[1, 3]。 |
-| autoStopSampling | boolean | 否 | 是   | 主线程超时结束时，是否自动停止采样主线程堆栈。<br/>true: 超时结束或达到设置的采样次数，停止采样。<br/>false：达到设置的采样次数时停止采样。<br/>默认值：false。 |
+| logType | number | 否 | 是 | 采集日志的类型。默认值：0。<br/>logType=0：其他选项均取默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>logType=1：仅采集调用栈，触发检测的阈值由用户自定义。<br/>logType=2：仅采集trace。<br>**说明**：<br> - logType=0时，仅需配置autoStopSampling参数，其他参数均取默认值，无需设置。<br> - logType=2时，其他参数均不生效，无需设置。 |
+| ignoreStartupTime | number | 否 | 是 | 应用启动期间忽略主线程超时检测的时间。单位：秒，默认值：10，最小值：3。 |
+| sampleInterval | number | 否 | 是 | 主线程超时检测间隔和采样间隔。单位：毫秒，默认值：150，取值范围：[50, 500]。 |
+| sampleCount | number | 否 | 是  | 主线程超时采样次数。单位：次，默认值：10，最小值：1。<br/>最大值需要结合自定义的sampleInterval进行动态计算，计算公式：sampleCount &lt;= (2500 / sampleInterval - 4)。<br>**说明**：<br/> - 2500的含义：根据系统规定，主线程超时事件从检测到上报的时间不可以超过2.5s（即：2500ms）。因此sampleCount的设置值不能超过系统按计算公式得出的最大值。<br/> - 4的含义：第一次超时间隔检测时间 + 第二次超时间隔（系统提供两次再次发生超时事件的检测机会）时间 + 收集并上报堆栈信息的时间。<br/> - 开发者要结合需求场景，进行合理的设置。 |
+| reportTimesPerApp | number | 否 | 是 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1，单位：次。<br/>每分钟上报次数范围：[1, 3]。 |
+| autoStopSampling | boolean | 否 | 是 | 主线程超时结束时，是否自动停止采样主线程堆栈。<br/>true: 超时结束或达到设置的采样次数，停止采样。<br/>false：达到设置的采样次数时停止采样。<br/>默认值：false。 |
 
-<!--RP6--><!--RP6End-->
+## CpuUsageHighPolicy<sup>22+</sup>
+ 
+提供CPU高负载事件配置策略的定义。
+ 
+> **注意：**
+> 
+> 该接口被调用后，会将设置值持久化。后续重复调用该接口时，若不设置对应参数，则取上一次系统取用的值。
+ 
+**原子化服务API：** 从API version 22开始，该接口支持在应用中使用。
+ 
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+ 
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| foregroundLoadThreshold    | number | 否 | 是   | 应用前台CPU高负载异常阈值，阈值范围：[1, 100]，单位：%，默认值：30。若设置值在阈值范围外，系统将取用默认值30。<br>**说明**：建议取值小于30。 |
+| backgroundLoadThreshold | number  | 否 | 是   | 应用后台CPU高负载异常阈值，阈值范围：[1, 100]，单位：%，默认值：10。若设置值在阈值范围外，系统将取用默认值10。<br>**说明**：建议取值小于10。 |
+| threadLoadThreshold | number  | 否 | 是   | 应用线程CPU高负载异常阈值，阈值范围：[15, 100]，单位：%，默认值：70。若设置值在阈值范围外，系统将取用默认值70。 |
+| perfLogCaptureCount | number  | 否 | 是   | 采样栈每日采集次数。一旦系统检测到当前异常日志的采集次数超过设置值，系统仍会正常上报事件，但异常事件中的external_log字段，将不再附加日志文件路径信息。<br> Debug版本应用，阈值范围：[-1, 100]；<br> Release版本应用，阈值范围：[0, 20]。<br> 单位：次，默认值：1。<br> 若设置值在阈值范围外，系统将取用默认值1。<br>**说明**：<br> 1. 值为-1，表示不限制采集日志次数。<br> 2. 值为0，表示不采集日志。<br> 3. 值大于0，表示每日采集次数上限。 |
+| threadLoadInterval | number  | 否 | 是   | 应用线程CPU高负载异常检测周期，阈值范围：[5, 3600]，单位：秒，默认值：60。<br>若设置值在阈值范围外，系统将取用默认值60。 |
 
 
 ## Processor<sup>11+</sup>
@@ -1265,6 +1286,7 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 | APP_KILLED<sup>20+</sup> | string | 是 | 应用终止事件。系统事件名称常量。<br>**原子化服务API：** 从API version 20开始，该参数支持在原子化服务中使用。 |
 | APP_HICOLLIE<sup>21+</sup> | string | 是 | 应用任务执行超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。 |
 | AUDIO_JANK_FRAME<sup>21+</sup> | string | 是 | 应用音频卡顿事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。 |
+| SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | 是 | ArkWeb抛滑丢帧事件。系统事件名称常量。<br>**原子化服务API：** 从API version 23开始，该参数支持在原子化服务中使用。 |
 
 ## hiAppEvent.param
 

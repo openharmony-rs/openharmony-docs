@@ -30,7 +30,9 @@ You can refer to the following example to construct a certificate chain from mul
 
 4. Use [CertChainValidator.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate) to validate the certificate chain data.
 
-```ts
+<!-- @[certificate_chain_validator_object_creation_and_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateVerifyCerchainvalidatorObject.ets) -->
+
+``` TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
 import { util } from '@kit.ArkTS';
 
@@ -96,7 +98,7 @@ function certChainValidatorSample(): void {
   let uint8ArrayOfCaCertDataLen = new Uint8Array(new Uint16Array([uint8ArrayOfCaCertData.byteLength]).buffer);
 
   // Level-2 CA certificate data.
-  let uint8ArrayOf2ndCaCertData =  textEncoder.encodeInto(secondCaCertData);
+  let uint8ArrayOf2ndCaCertData = textEncoder.encodeInto(secondCaCertData);
 
   // Length of the level-2 CA certificate data.
   let uint8ArrayOf2ndCaCertDataLen = new Uint8Array(new Uint16Array([uint8ArrayOf2ndCaCertData.byteLength]).buffer);
@@ -111,7 +113,8 @@ function certChainValidatorSample(): void {
     encodingData[uint8ArrayOf2ndCaCertDataLen.length + i] = uint8ArrayOf2ndCaCertData[i];
   }
   for (let i = 0; i < uint8ArrayOfCaCertDataLen.length; i++) {
-    encodingData[uint8ArrayOf2ndCaCertDataLen.length + uint8ArrayOf2ndCaCertData.length + i] = uint8ArrayOfCaCertDataLen[i];
+    encodingData[uint8ArrayOf2ndCaCertDataLen.length + uint8ArrayOf2ndCaCertData.length + i] =
+      uint8ArrayOfCaCertDataLen[i];
   }
   for (let i = 0; i < uint8ArrayOfCaCertData.length; i++) {
     encodingData[uint8ArrayOf2ndCaCertDataLen.length + uint8ArrayOf2ndCaCertData.length +
@@ -134,7 +137,7 @@ function certChainValidatorSample(): void {
       console.error(`validate failed, errCode: ${err.code}, errMsg: ${err.message}`);
     } else {
       // Validation successful.
-      console.info('validate success');
+      console.info('validate result: success.');
     }
   });
 }

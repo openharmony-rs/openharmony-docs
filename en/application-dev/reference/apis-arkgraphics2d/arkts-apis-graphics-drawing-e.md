@@ -373,3 +373,15 @@ Enumerates the corner positions of a rounded rectangle.
 | TOP_RIGHT_POS         | 1    | Top right corner of the rounded rectangle.|
 | BOTTOM_RIGHT_POS      | 2    | Bottom right corner of the rounded rectangle.  |
 | BOTTOM_LEFT_POS       | 3    | Bottom left corner of the rounded rectangle.  |
+
+## VertexMode<sup>23+</sup>
+
+Enumerates the connection modes for vertex drawing.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+| Name                  | Value  | Description                          | Diagram  |
+| --------------------- | ---- | ------------------------------ | -------- |
+| TRIANGLES_VERTEXMODE           | 0    | Every three vertices come from different triangles. |![TRIANGLES_VERTEXMODE](figures/image_Triangles_VertexMode.png)|
+| TRIANGLESSTRIP_VERTEXMODE          | 1    | Consecutive triangles share one edge. It is efficient for continuous surfaces.|![TRIANGLESSTRIP_VERTEXMODE](figures/image_TrianglesStrip_VertexMode.png)|
+| TRIANGLESFAN_VERTEXMODE       | 2    | All triangles share one vertex. It is suitable for circles and sectors.  |![TRIANGLESFAN_VERTEXMODE](figures/image_TrianglesFan_VertexMode.png)|

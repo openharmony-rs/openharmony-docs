@@ -36,7 +36,7 @@
 
 ## 样式
 
-仅支持[通用样式](js-components-common-styles.md)中的width、height、margin、margin-[left|top|right|bottom]、margin-[start|end]样式。
+仅支持[通用样式](js-components-common-styles.md)中的width、height、margin、margin-[left | top | right | bottom]、margin-[start | end]样式。
 
 
 ## 事件

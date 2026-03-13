@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```c
+typedef struct Http_HeaderEntry {...} Http_HeaderEntry
+```
+
 ## Overview
 
 Defines all key-value pairs in the request or response header.

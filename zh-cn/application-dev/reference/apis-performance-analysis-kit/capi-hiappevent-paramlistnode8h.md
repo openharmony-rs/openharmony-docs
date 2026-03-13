@@ -5,9 +5,9 @@
 <!--Owner: @liujiaxing2024-->
 <!--Designer: @junjie_shi-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
-```d
+```c
 typedef struct ParamListNode* ParamList
 ```
 

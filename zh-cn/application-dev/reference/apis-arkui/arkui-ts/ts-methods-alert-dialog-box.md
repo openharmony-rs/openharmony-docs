@@ -12,7 +12,7 @@
 >
 > 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md)的地方使用，参见[UIContext](../arkts-apis-uicontext-uicontext.md)说明。
+> 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](../arkts-apis-uicontext-uicontext.md)说明。
 
 ## AlertDialogParam对象说明
 
@@ -47,7 +47,7 @@
 | borderStyle<sup>12+</sup>         | [BorderStyle](ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](ts-types.md#edgestyles9) | 否   | 是  | 设置弹窗背板的边框样式。<br/>默认值：BorderStyle.Solid<br/>如果使用borderStyle属性，需要和borderWidth属性一起使用。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | shadow<sup>12+</sup>              | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | 否   | 是  | 设置弹窗背板的阴影。 <br /> 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | textStyle<sup>12+</sup>              | [TextStyle](#textstyle12对象说明) | 否   | 是  | 设置弹窗message内容的文本样式。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| enableHoverMode<sup>14+</sup>     | boolean | 否   | 是  | 是否响应悬停态，值为true时，响应悬停态。<br />默认值：false，默认不响应。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| enableHoverMode<sup>14+</sup>     | boolean | 否   | 是  | 是否响应悬停态，值为true时，响应悬停态。<br />默认值：false，默认不响应。<br />**说明：**<br />PC/2in1设备弹窗默认显示在上半屏，在enableHoverMode设置为true时，可以通过设置hoverModeArea参数显示在下半屏。其他设备弹窗在enableHoverMode设置为true时默认显示在下半屏，可以通过设置hoverModeArea参数显示在上半屏。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | 否   | 是  | 悬停态下弹窗默认展示区域。<br />默认值：HoverModeAreaType.BOTTOM_SCREEN。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | onWillAppear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 弹窗显示动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear >> onDidAppear >> onWillDisappear >> onDidDisappear。<br />2.在onWillAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。 <br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 | onDidAppear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 弹窗弹出后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear >> onDidAppear >> onWillDisappear >> onDidDisappear。<br />2.在onDidAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。<br />3.快速点击弹出，关闭弹窗时，onWillDisappear在onDidAppear前生效。<br/>4.弹窗入场动效未完成时彻底关闭弹窗，动效打断，onDidAppear不会触发。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
@@ -182,18 +182,18 @@ confirm参数优先级：fontColor、backgroundColor  > style > defaultFocus
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                     | 说明           |
-| ------------------------ | -------------- |
-| Top                      | 垂直顶部对齐。 |
-| Center                   | 垂直居中对齐。 |
-| Bottom                   | 垂直底部对齐。 |
-| Default                  | 默认对齐。     |
-| TopStart<sup>8+</sup>    | 左上对齐。     |
-| TopEnd<sup>8+</sup>      | 右上对齐。     |
-| CenterStart<sup>8+</sup> | 左中对齐。     |
-| CenterEnd<sup>8+</sup>   | 右中对齐。     |
-| BottomStart<sup>8+</sup> | 左下对齐。     |
-| BottomEnd<sup>8+</sup>   | 右下对齐。     |
+| 名称                     | 值   | 说明           |
+| ------------------------ | ---- | -------------- |
+| Top                      | 0    | 垂直顶部对齐。 |
+| Center                   | 1    | 垂直居中对齐。 |
+| Bottom                   | 2    | 垂直底部对齐。 |
+| Default                  | 3    | 默认对齐。     |
+| TopStart<sup>8+</sup>    | 4    | 左上对齐。     |
+| TopEnd<sup>8+</sup>      | 5    | 右上对齐。     |
+| CenterStart<sup>8+</sup> | 6    | 左中对齐。     |
+| CenterEnd<sup>8+</sup>   | 7    | 右中对齐。     |
+| BottomStart<sup>8+</sup> | 8    | 左下对齐。     |
+| BottomEnd<sup>8+</sup>   | 9    | 右下对齐。     |
 
 ## Rectangle<sup>8+</sup>类型说明
 
@@ -257,7 +257,7 @@ static show(value: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | A
 
 > **说明：**
 > 
-> 从API version 18开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showAlertDialog](../arkts-apis-uicontext-uicontext.md#showalertdialog)替代。
+> 从API version 7开始支持，从API version 18开始废弃，建议使用[showAlertDialog](../arkts-apis-uicontext-uicontext.md#showalertdialog)替代。showAlertDialog需先获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例后再进行调用。
 >
 > 从API version 10开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showAlertDialog](../arkts-apis-uicontext-uicontext.md#showalertdialog)来明确UI的执行上下文。
 
@@ -275,11 +275,11 @@ static show(value: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | A
 
 > **说明：**
 > 
-> 直接使用AlertDialog可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[showAlertDialog](../arkts-apis-uicontext-uicontext.md#showalertdialog)调用绑定实例的AlertDialog.show()。
+> 直接使用AlertDialog可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[showAlertDialog](../arkts-apis-uicontext-uicontext.md#showalertdialog)调用绑定实例的AlertDialog.show()。
 
 ### 示例1（弹出多个按钮的弹窗）
 
-该示例实现了分别弹出一、二、三个按钮的弹窗。
+该示例通过[AlertDialogParamWithConfirm](#alertdialogparamwithconfirm对象说明)、[AlertDialogParamWithButtons](#alertdialogparamwithbuttons对象说明)和[AlertDialogParamWithOptions](#alertdialogparamwithoptions10对象说明)实现了分别弹出一、二、三个按钮的弹窗。
 
 ```ts
 // xxx.ets
@@ -423,7 +423,7 @@ struct AlertDialogExample {
 
 ### 示例2（可在主窗外弹出的弹窗）
 
-在2in1设备上设置showInSubWindow为true时，可以弹出在主窗外显示的弹窗。
+在2in1设备上设置[AlertDialogParam](#alertdialogparam对象说明)中showInSubWindow属性的值为true时，可以弹出在主窗外显示的弹窗。
 
 ```ts
 // xxx.ets
@@ -493,7 +493,7 @@ struct AlertDialogExample {
 
 ### 示例3（设置弹窗的动画）
 
-该示例通过配置transition实现弹窗的显示和消失动画。
+该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的transition属性来实现弹窗的显示和消失动画。
 
 ```ts
 // xxx.ets
@@ -563,8 +563,8 @@ struct AlertDialogExample {
               height: 200,
               cornerRadius: 20,
               borderWidth: 1,
-              borderStyle: BorderStyle.Dashed, //使用borderStyle属性，需要和borderWidth属性一起使用
-              borderColor: Color.Blue, //使用borderColor属性，需要和borderWidth属性一起使用
+              borderStyle: BorderStyle.Dashed, // 使用borderStyle属性，需要和borderWidth属性一起使用
+              borderColor: Color.Blue, // 使用borderColor属性，需要和borderWidth属性一起使用
               backgroundColor: Color.White,
               shadow: ({
                 radius: 20,
@@ -713,7 +713,9 @@ struct Example2 {
 
 ### 示例7（自定义背景模糊效果参数）
 
-从API version 19开始，该示例通过配置[backgroundBlurStyleOptions](#alertdialogparam对象说明)，实现自定义背景模糊效果。
+该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的backgroundBlurStyleOptions属性，实现了自定义背景模糊效果。
+
+从API version 19开始，在AlertDialogParam中新增了backgroundBlurStyleOptions属性。
 
 ```ts
 @Entry
@@ -762,7 +764,9 @@ struct AlertDialogExample {
 
 ### 示例8（自定义背景效果参数）
 
-从API version 19开始，该示例通过配置[backgroundEffect](#alertdialogparam对象说明)，实现自定义背景效果。
+该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的backgroundEffect属性，实现自定义背景效果。
+
+从API version 19开始，在AlertDialogParam中新增了backgroundEffect属性。
 
 ```ts
 @Entry

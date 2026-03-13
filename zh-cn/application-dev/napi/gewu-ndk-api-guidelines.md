@@ -77,6 +77,7 @@ OH_QoS_GewuCreateSessionResult OH_QoS_GewuCreateSession(const char* attributes);
 **返回值**
 
 如果创建会话成功，返回值`OH_QoS_GewuCreateSessionResult`里的`error`为`OH_QOS_GEWU_OK`，而`session`为创建出来的会话句柄。
+
 如果创建会话失败，返回值`OH_QoS_GewuCreateSessionResult`里的`error`为错误原因，其中`OH_QOS_GEWU_NOMEM`表示没有足够的内存创建会话。
 
 **`OH_QoS_GewuDestroySession`**
@@ -100,6 +101,7 @@ OH_QoS_GewuErrorCode OH_QoS_GewuDestroySession(OH_QoS_GewuSession session);
 **返回值**
 
 如果会话销毁成功，返回值为`OH_QOS_GEWU_OK`。
+
 如果会话销毁失败，返回值为错误原因，其中`OH_QOS_GEWU_NOENT`表示找不到会话。
 
 **`OH_QoS_GewuSubmitRequest`**
@@ -151,6 +153,7 @@ OH_QoS_GewuSubmitRequestResult OH_QoS_GewuSubmitRequest(OH_QoS_GewuSession sessi
 **返回值**
 
 如果提交请求成功，返回值`OH_QoS_GewuSubmitRequestResult`里的`error`为`OH_QOS_GEWU_OK`，`request`为请求句柄。
+
 如果提交请求失败，返回值`OH_QoS_GewuSubmitRequestResult`里的`error`为错误原因，其中`OH_QOS_GEWU_NOMEM`表示没有足够的内存处理该请求。
 
 **`OH_QoS_GewuAbortRequest`**
@@ -160,6 +163,7 @@ OH_QoS_GewuSubmitRequestResult OH_QoS_GewuSubmitRequest(OH_QoS_GewuSession sessi
 `OH_QoS_GewuAbortRequest`接口用于提前中止请求。
 
 正常情况下，用户调用`OH_QoS_GewuSubmitRequest`接口提交请求后，等待至推理完成（即收到`"finish_reason"`不为空的回复），不需要调用`OH_QoS_GewuAbortRequest`接口。
+
 只有当用户希望提前中止推理请求的时候，才需要调用`OH_QoS_GewuAbortRequest`接口。
 
 成功调用该函数后，用户不会再收到该请求的回复，且该请求句柄无法再被使用。
@@ -178,6 +182,7 @@ OH_QoS_GewuErrorCode OH_QoS_GewuAbortRequest(OH_QoS_GewuSession session, OH_QoS_
 **返回值**
 
 如果请求中止成功，返回值为`OH_QOS_GEWU_OK`。
+
 如果请求中止失败，返回值为错误原因，其中`OH_QOS_GEWU_NOENT`表示找不到请求。
 
 

@@ -18,6 +18,10 @@ HiAppEvent APIs for subscribing to application killed events:
 - [Subscribing to Application Killed Events (ArkTS)](hiappevent-watcher-app-killed-events-arkts.md)
 - [Subscribing to Application Killed Events (C/C++)](hiappevent-watcher-app-killed-events-ndk.md)
 
+> **NOTE**
+>
+> Application killed events can be subscribed to using HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone) and atomic services. Since API version 22, application killed events can be subscribed to using HiAppEvent in [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide).
+
 The **params** attribute in the application killed event is described as follows.
 
 ## Field Description

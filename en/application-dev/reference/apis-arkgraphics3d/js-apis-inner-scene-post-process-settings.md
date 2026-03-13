@@ -57,7 +57,7 @@ Describes the settings for vignette effects.
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| roundness | number | No| Yes| Extent of the effect. The value ranges from 0 to 1. The value **1** means a global effect. The default is **0.707**.|
+| roundness | number | No| Yes| Extent of the effect. The value ranges from 0 to 1. The value **1** means a global effect. The default is **sqrt(0.5)**.|
 | intensity | number | No| Yes| Strength of the effect. The default value is **0.4**.|
 
 ## ColorFringeSettings<sup>22+</sup>

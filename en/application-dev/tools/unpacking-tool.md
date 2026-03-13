@@ -37,7 +37,7 @@ java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> 
 | --hap-path | Yes        | NA            | Path of the HAP file.                                                 |
 | --rpcid    | No        | true or false| Whether to extract the rpcid file from the HAP file to a specified directory. If the value is **true**, only the rpcid file is extracted and the HAP file is not unpacked.|
 | --out-path | Yes        | NA            | Path of the target files.                                          |
-| --force    | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking. |
+| --force    | No        | true or false| The default value is **false**. If the value is **true**, the target file is forcibly deleted when it exists. |
 
 ### Unpacking Commands for APP Files
 
@@ -56,7 +56,7 @@ java -jar app_unpacking_tool.jar --mode app --app-path <path> --out-path <path> 
 | --mode     | Yes        | app         | Unpacking mode.                                                 |
 | --app-path | Yes        | NA          | Path of the APP file.                                                |
 | --out-path | Yes        | NA          | Path of the target files.                                         |
-| --force    | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking.|
+| --force    | No        | true or false| The default value is **false**. If the value is **true**, the target file is forcibly deleted when it exists.|
 
 ### Obtaining the rpcid File from the HAP File
 
@@ -76,7 +76,7 @@ java -jar app_unpacking_tool.jar --mode hap --rpcid true --hap-path <path> --out
 | --rpcid    | No        | true or false| Whether to extract the rpcid file from the HAP file to a specified directory. If the value is **true**, only the rpcid file is extracted and the HAP file is not unpacked.|
 | --hap-path | Yes        | NA            | Path of the HAP file.                                                   |
 | --out-path | Yes        | NA            | Path of the target rpcid file.                                       |
-| --force    | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking. |
+| --force    | No        | true or false| The default value is **false**. If the value is **true**, the target file is forcibly deleted when it exists. |
 
 ### Unpacking HAP Files Based on the Architecture Type
 
@@ -95,7 +95,7 @@ java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> 
 | --mode     | Yes        | hap    | Unpacking mode.                                                  |
 | --hap-path | Yes        | NA            | Path of the HAP file.                                            |
 | --out-path | Yes        | NA            | Path of the target files.                                          |
-| --force    | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking. |
+| --force    | No        | true or false| The default value is **false**. If the value is **true**, the target file is forcibly deleted when it exists. |
 | --libs     | No        | true or false| Whether to unpack HAP files based on the architecture type of the **libs** directory. The value **true** indicates that HAP files are unpacked based on the architecture type.|
 | --cpu-abis | No        | NA            | Architecture type of the **libs** to be unpacked. You can specify multiple architecture types and use commas (,) to separate them. This parameter does not take effect when **--libs** is set to **false**.|
 
@@ -116,7 +116,7 @@ java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> 
 | --mode     | Yes        | hsp           | Unpacking mode.                             |
 | --hsp-path | Yes        | NA            | Path of the HSP file.                           |
 | --out-path | Yes        | NA            | Path of the target files.                         |
-| --force    | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking.|
+| --force    | No        | true or false| The default value is **false**. If the value is **true**, the target file is forcibly deleted when it exists.|
 
 ### Unpacking HSP Files Based on the Architecture Type
 
@@ -135,8 +135,8 @@ java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> 
 | --mode     | Yes        | hsp    | Unpacking mode.                                                  |
 | --hsp-path | Yes        | NA            | Path of the HSP file.                                            |
 | --out-path | Yes        | NA            | Path of the target files.                                          |
-| --force    | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking. |
-| --libs     | No        | true or false| Whether to unpack HAP files based on the architecture type of the **libs** directory. The value **true** indicates that HAP files are unpacked based on the architecture type.|
+| --force    | No        | true or false| The default value is **false**. If the value is **true**, the target file is forcibly deleted when it exists. |
+| --libs     | No        | true or false| Whether to unpack HSP files based on the architecture type of the **libs** directory. The value **true** indicates that HSP files are unpacked based on the architecture type.|
 | --cpu-abis | No        | NA            | Architecture type of the **libs** to be unpacked. You can specify multiple architecture types and use commas (,) to separate them. This parameter does not take effect when **--libs** is set to **false**.|
 
 ### Unpacking Commands for APPQF Files
@@ -156,7 +156,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | --mode       | Yes        | appqf       | Unpacking mode.                             |
 | --appqf-path | Yes        | NA          | Path of the APPQF package.                         |
 | --out-path   | Yes        | NA          | Path of the target files.                         |
-| --force      | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking.|
+| --force      | No        | true or false| The default value is **false**. If the value is **true**, the target file is forcibly deleted when it exists.|
 
 ## Package Parsing APIs
 
@@ -251,7 +251,7 @@ The package parsing APIs are used by the application market to parse an HAP, HSP
 | defPermissionsGroups | List\<DefPermissionsGroups> | Default permission groups of the HAP. | NA                             |
 | distro               | Distro struct                | Distro description of the HAP file.              | NA                      |
 | reqCapabilities      | List\<String>               | Required capabilities of the HAP.       | NA                           |
-| deviceType           | List\<String>               | Type of devices on which the HAP can run.   This field corresponds to **deviceTypes** in the stage model.      |
+| deviceType           | List\<String>               | Type of devices on which the HAP can run.   This field corresponds to **deviceTypes** in the stage model.      |  NA |
 | metaData             | metaData struct (see **metaData Struct** below)| Custom metadata of the HAP.               | NA           |
 | dependencies         | List\<DependencyItem>       | Dependencies of the HAP.        | NA                   |
 | isJs                 | boolean                     | Whether the application is a JS application. The value **true** indicates that the application is a JS application, and **false** indicates the opposite.             | This field is unique to the FA model.           |

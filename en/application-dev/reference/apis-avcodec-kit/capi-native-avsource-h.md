@@ -35,8 +35,8 @@ The file declares the APIs for parsing audio and video media data.
 
 | Name| Description|
 | -- | -- |
-| [OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)](#oh_avsource_createwithdatasource) | Creates an OH_AVSource instance with a user-defined data source. You can release the instance by calling [OH_AVSource_Destroy](#oh_avsource_destroy).|
-| [OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource, void *userData)](#oh_avsource_createwithdatasourceext) | Creates an OH_AVSource instance with a user-defined data source. You can release the instance by calling [OH_AVSource_Destroy](#oh_avsource_destroy).<br> User-defined data can be passed to its callback functions through the **userData** parameter.|
+| [OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)](#oh_avsource_createwithdatasource) | Creates an OH_AVSource instance with a user-defined data source. You can release the instance by calling [OH_AVSource_Destroy](#oh_avsource_destroy).<br>The lifecycle of **dataSource** must be the same as that of the returned OH_AVSource * pointer.|
+| [OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource, void *userData)](#oh_avsource_createwithdatasourceext) | Creates an OH_AVSource instance with a user-defined data source. You can release the instance by calling [OH_AVSource_Destroy](#oh_avsource_destroy).<br> User-defined data can be passed to its callback functions through the **userData** parameter.<br>The lifecycle of **dataSource** must be the same as that of the returned OH_AVSource * pointer.|
 | [OH_AVSource *OH_AVSource_CreateWithURI(char *uri)](#oh_avsource_createwithuri) | Creates an OH_AVSource instance based on a URI. You can release the instance by calling [OH_AVSource_Destroy](#oh_avsource_destroy). This function supports only HTTP progressive streaming media, but not HLS/DASH streaming media. For HLS/DASH streaming media playback, use the AVPlayer for development.|
 | [OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)](#oh_avsource_createwithfd) | Creates an OH_AVSource instance based on an FD. You can release the instance by calling [OH_AVSource_Destroy](#oh_avsource_destroy).<br> If **offset** is not the start position of the file or **size** is not the file size, undefined errors such as creation failure and demultiplexing failure may occur due to incomplete data obtained.|
 | [OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)](#oh_avsource_destroy) | Destroys an OH_AVSource instance and clears internal resources.<br> An instance can be destroyed only once. The destroyed instance cannot be used until it is re-created. You are advised to set the pointer to NULL after the instance is destroyed.|
@@ -48,13 +48,13 @@ The file declares the APIs for parsing audio and video media data.
 
 ### OH_AVSource_CreateWithDataSource()
 
-```
+```c
 OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)
 ```
 
 **Description**
 
-Creates an OH_AVSource instance with a user-defined data source. You can release the instance by calling [OH_AVSource_Destroy](#oh_avsource_destroy).
+Creates an OH_AVSource instance with a user-defined data source. You can release the instance by calling [OH_AVSource_Destroy](#oh_avsource_destroy).<br>The lifecycle of **dataSource** must be the same as that of the returned OH_AVSource * pointer.
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -75,13 +75,13 @@ Creates an OH_AVSource instance with a user-defined data source. You can release
 
 ### OH_AVSource_CreateWithDataSourceExt()
 
-```
+```c
 OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource, void *userData)
 ```
 
 **Description**
 
-Creates an OH_AVSource instance with a user-defined data source. You can release the instance by calling [OH_AVSource_Destroy](#oh_avsource_destroy).<br> User-defined data can be passed to its callback functions through the **userData** parameter.
+Creates an OH_AVSource instance with a user-defined data source. You can release the instance by calling [OH_AVSource_Destroy](#oh_avsource_destroy).<br> User-defined data can be passed to its callback functions through the **userData** parameter.<br>The lifecycle of **dataSource** must be the same as that of the returned OH_AVSource * pointer.
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -103,7 +103,7 @@ Creates an OH_AVSource instance with a user-defined data source. You can release
 
 ### OH_AVSource_CreateWithURI()
 
-```
+```c
 OH_AVSource *OH_AVSource_CreateWithURI(char *uri)
 ```
 
@@ -126,11 +126,11 @@ Creates an OH_AVSource instance based on a URI. You can release the instance by 
 
 | Type| Description|
 | -- | -- |
-| [OH_AVSource](capi-avsource-oh-avsource.md) * | Pointer to the OH_AVSource instance created. If the operation fails, NULL is returned.<br> The possible causes of an operation failure are as follows:<br> 1. The network is abnormal.<br> 2. The resource is invalid.<br> 3. The file format is not supported.|
+| [OH_AVSource](capi-avsource-oh-avsource.md) * | Pointer to the OH_AVSource instance created. If the operation fails, NULL is returned.<br> The possible causes of an operation failure are as follows:<br> 1. The network is abnormal.<br> 2. The resource is invalid.<br> 3. The file format is not supported.<br> 4. The application configuration is intercepted because it contains plaintext data.|
 
 ### OH_AVSource_CreateWithFD()
 
-```
+```c
 OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)
 ```
 
@@ -159,7 +159,7 @@ Creates an OH_AVSource instance based on an FD. You can release the instance by 
 
 ### OH_AVSource_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)
 ```
 
@@ -188,7 +188,7 @@ An instance can be destroyed only once. The destroyed instance cannot be used un
 
 ### OH_AVSource_GetSourceFormat()
 
-```
+```c
 OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)
 ```
 
@@ -215,7 +215,7 @@ Obtains the basic information about a media resource file.<br> You must call [OH
 
 ### OH_AVSource_GetTrackFormat()
 
-```
+```c
 OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex)
 ```
 
@@ -243,7 +243,7 @@ Obtains the basic information about a track.<br> You must call [OH_AVFormat_Dest
 
 ### OH_AVSource_GetCustomMetadataFormat()
 
-```
+```c
 OH_AVFormat *OH_AVSource_GetCustomMetadataFormat(OH_AVSource *source)
 ```
 

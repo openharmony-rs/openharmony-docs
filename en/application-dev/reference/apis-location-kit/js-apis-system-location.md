@@ -10,12 +10,13 @@ The **geolocation** module provides only basic functions such as GNSS positionin
 
 > **NOTE**
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The APIs provided by this module are no longer maintained since API version 9. You are advised to use [geoLocationManager](js-apis-geoLocationManager.md) instead.
+> - For lite wearables, this module is constantly maintained and available.
+> - For other device types, this module is no longer maintained since API version 9, and you are advised to use [geoLocationManager](js-apis-geoLocationManager.md) instead.
 
 
 ## Modules to Import
 
-```
+```js
 import geolocation from '@system.geolocation';
 ```
 
@@ -32,7 +33,7 @@ getLocation(options?: GetLocationOption): void
 Obtains the geographic location.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation).
+> This API is deprecated since API version 9 for all device types except lite wearables. You are advised to use [geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -46,7 +47,7 @@ Obtains the geographic location.
 
 **Example**
 
-```
+```js
 export default {    
   getLocation() {        
     geolocation.getLocation({            
@@ -69,7 +70,7 @@ getLocationType(options?: GetLocationTypeOption): void
 Obtains the supported location types.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. The location subsystem supports only two location types: GNSS positioning and network positioning. No APIs will be provided to query the supported location types.
+> This API is deprecated since API version 9 for all device types except lite wearables. The location subsystem supports only two location types: GNSS positioning and network positioning. No APIs will be provided to query the supported location types.
 
 **System capability**: SystemCapability.Location.Location.Lite
 
@@ -81,7 +82,7 @@ Obtains the supported location types.
 
 **Example**
 
-```
+```js
 export default {    
   getLocationType() {        
     geolocation.getLocationType({            
@@ -101,10 +102,10 @@ export default {
 
 subscribe(options: SubscribeLocationOption): void
 
-Listens to the geographic location. If this method is called multiple times, the last call takes effect.
+Listens to the geographic location. If this API is called multiple times, the last call takes effect.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.on('locationChange')](js-apis-geoLocationManager.md#geolocationmanageronlocationchange).
+> This API is deprecated since API version 9 for all device types except lite wearables. You are advised to use [geoLocationManager.on('locationChange')](js-apis-geoLocationManager.md#geolocationmanageronlocationchange) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -118,7 +119,7 @@ Listens to the geographic location. If this method is called multiple times, the
 
 **Example**
 
-```
+```js
 export default {    
   subscribe() {        
     geolocation.subscribe({            
@@ -141,7 +142,7 @@ unsubscribe(): void
 Cancels listening to the geographic location.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.off('locationChange')](js-apis-geoLocationManager.md#geolocationmanagerofflocationchange).
+> This API is deprecated since API version 9 for all device types except lite wearables. You are advised to use [geoLocationManager.off('locationChange')](js-apis-geoLocationManager.md#geolocationmanagerofflocationchange) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -149,7 +150,7 @@ Cancels listening to the geographic location.
 
 **Example**
 
-```
+```js
 export default {    
   unsubscribe() {        
     geolocation.unsubscribe();    
@@ -165,7 +166,7 @@ getSupportedCoordTypes(): Array&lt;string&gt;
 Obtains coordinate system types supported by the device.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. The location subsystem supports only the WGS-84 coordinate system. No APIs will be provided to query the supported coordinate system types.
+> This API is deprecated since API version 9 for all device types except lite wearables. The location subsystem supports only the WGS-84 coordinate system. No APIs will be provided to query the supported coordinate system types.
 
 **System capability**: SystemCapability.Location.Location.Lite
 
@@ -177,7 +178,7 @@ Obtains coordinate system types supported by the device.
 
 **Example**
 
-```
+```js
 export default {    
   getSupportedCoordTypes() {       
     var types = geolocation.getSupportedCoordTypes();   
@@ -190,7 +191,7 @@ export default {
 Options of a single location request.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.CurrentLocationRequest](js-apis-geoLocationManager.md#currentlocationrequest).
+> This API is deprecated since API version 9 for all device types except lite wearables. You are advised to use [geoLocationManager.CurrentLocationRequest](js-apis-geoLocationManager.md#currentlocationrequest) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -219,7 +220,7 @@ Options of a single location request.
 Defines the location information, including the longitude, latitude, and location precision.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.Location](js-apis-geoLocationManager.md#location).
+> This API is deprecated since API version 9 for all device types except lite wearables. You are advised to use [geoLocationManager.Location](js-apis-geoLocationManager.md#location) instead.
 
 **System capability**: SystemCapability.Location.Location.Lite
 
@@ -236,7 +237,7 @@ Defines the location information, including the longitude, latitude, and locatio
 Defines the location type option, which holds the callback function used to return the query result.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9.
+> This API is deprecated since API version 9 for all device types except lite wearables.
 
 **System capability**: SystemCapability.Location.Location.Lite
 
@@ -251,7 +252,7 @@ Defines the location type option, which holds the callback function used to retu
 Defines the list of location types supported by the current device
 
 > **NOTE**<br>
-> This API is deprecated since API version 9.
+> This API is deprecated since API version 9 for all device types except lite wearables.
 
 **System capability**: SystemCapability.Location.Location.Lite
 
@@ -264,7 +265,7 @@ Defines the list of location types supported by the current device
 Defines the options for continuous location.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.CurrentLocationRequest](js-apis-geoLocationManager.md#currentlocationrequest).
+> This API is deprecated since API version 9 for all device types except lite wearables. You are advised to use [geoLocationManager.CurrentLocationRequest](js-apis-geoLocationManager.md#currentlocationrequest) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 

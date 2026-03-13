@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct {...} OH_NativeXComponent_ExpectedRateRange
 ```
 
@@ -26,8 +26,8 @@ typedef struct {...} OH_NativeXComponent_ExpectedRateRange
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t min | 期望帧率范围最小值。 |
-| int32_t max | 期望帧率范围最大值。 |
-| int32_t expected | 期望帧率。 |
+| int32_t min | 期望帧率范围最小值。单位为帧/秒。 |
+| int32_t max | 期望帧率范围最大值。单位为帧/秒。|
+| int32_t expected | 期望帧率。单位为帧/秒。 |
 
 

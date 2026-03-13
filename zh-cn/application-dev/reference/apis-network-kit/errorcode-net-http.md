@@ -191,7 +191,7 @@ Failed to write the received data to the disk or application.
 
 1.应用没有写文件权限或待下载的文件超过5M。
 
-2.上一次请求数据未接受完毕便调用destroy销毁导致接收数据不完整。
+2.上一次请求数据未接收完毕便调用destroy销毁导致接收数据不完整。
 
 **处理步骤**
 
@@ -389,11 +389,11 @@ Invalid SSL peer certificate or SSH remote key.
 
 **可能原因**
 
-无法校验服务器身份，有可能是证书过期了。
+无法校验服务器身份，例如证书过期。
 
 **处理步骤**
 
-检查证书有效性。
+建议参考[tls客户端证书验证流程](../../network/http-request.md#tls客户端证书验证流程)自排查问题原因。
 
 ## 2300061 无法识别或错误的HTTP编码格式
 

@@ -4,19 +4,19 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Differences Between Bytecode Obfuscation and Source Code Obfuscation
 
 ### Differences in Obfuscation Scope
 
 **JSON Files**
-When the **-enable-filename-obfuscation** option is enabled in bytecode obfuscation, JSON file names are obfuscated.
+When the `-enable-filename-obfuscation` option is enabled in bytecode obfuscation, JSON file names are obfuscated.
 
 ### Differences in Obfuscation Options
 
-1. Bytecode obfuscation is disabled by default. After [enabling obfuscation](bytecode-obfuscation-guide.md#how-to-use), you need to additionally configure **-enable-bytecode-obfuscation** and **-enable-bytecode-obfuscation-debugging** in the **obfuscation-rules.txt** file in the module directory.
-2. Bytecode obfuscation does not support the **-remove-comments** option.
+1. Bytecode obfuscation is disabled by default. After [enabling obfuscation](bytecode-obfuscation-guide.md#how-to-use), you need to additionally configure `-enable-bytecode-obfuscation` and `-enable-bytecode-obfuscation-debugging` in the `obfuscation-rules.txt` file in the module directory.
+2. Bytecode obfuscation does not support the `-remove-comments` option.
 
 ### Differences in File Structure After Obfuscation
 
@@ -93,7 +93,7 @@ After bytecode obfuscation:
 1. Difference in bytecode obfuscation in **IdentifierCache**:
     1. Function parameter names are not obfuscated.
     2. There are no obfuscation name mappings for anonymous functions.
-2. When the -enable-filename-obfuscation option is enabled, the **OriSourceFile** (source file path before obfuscation) and **ObfSourceFile** (source file path after obfuscation) fields are generated for bytecode obfuscation, but not for source code obfuscation.
+2. When the `-enable-filename-obfuscation` option is enabled, the `OriSourceFile` (source file path before obfuscation) and `ObfSourceFile` (source file path after obfuscation) fields are generated for bytecode obfuscation, but not for source code obfuscation.
 
 ### Precautions for Switching
 
@@ -106,13 +106,15 @@ Since UI components in bytecode have many string bindings for properties, method
 
 Source code:
 
-```ts
+<!-- @[export_mainPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 @Component
 export struct MainPage {
-	@State messageStr: string = 'Hello World';
-    
-    build() {
-    }
+  @State messageStr: string = 'Hello World';
+
+  build() {
+  }
 }
 ```
 
@@ -130,27 +132,29 @@ During the intermediate file conversion process, **message** is bound as a liter
 
 Source code:
 
-```ts
+<!-- @[import_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample.ets) -->
+
+``` TypeScript
 // Sample.ets
 import { Type } from '@kit.ArkUI';
 
-// Data center
+// Data center.
 @ObservedV2
 class SampleChild {
-	@Trace p123: number = 0;
-    p2: number = 10;
+  @Trace public p123: number = 0;
+  public p2: number = 10;
 }
 
 @ObservedV2
 export class Sample {
-    // For complex objects, use the @Type decorator to ensure successful serialization.
-    @Type(SampleChild)
-    @Trace f123: SampleChild = new SampleChild();
+  // For complex objects, use the @Type decorator to ensure successful serialization.
+  @Type(SampleChild)
+  @Trace public f123: SampleChild = new SampleChild();
 }
 
 @ObservedV2
 class Info {
-	@Trace sample: Sample = new Sample();
+  @Trace public sample: Sample = new Sample();
 }
 ```
 
@@ -223,25 +227,27 @@ After obfuscation is complete, intermediate products are generated. You can find
 Error message: ArkTSCompilerError: ArkTS:ERROR Failed to execute ByteCode Obfuscate.
 Error message: [Class]get different name for method:&entry/src/main/ets/pages/XXXX&.#~@0>#setController^1.
 
-```ts
+<!-- @[export_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample1.ets) -->
+
+``` TypeScript
 // Code 1
 @CustomDialog
 export default struct TmsDialog {
-	controller?: CustomDialogController
-    dialogController:CustomDialogController
-    
-    build() {
-    }
+  controller?: CustomDialogController
+  dialogController:CustomDialogController
+
+  build() {
+  }
 }
 
 // Code 2
 @CustomDialog
 struct Index{
-	controller?: CustomDialogController
-    dialogController?:CustomDialogController
-    
-    build() {
-    }
+  controller?: CustomDialogController
+  dialogController?:CustomDialogController
+
+  build() {
+  }
 }
 ```
 
@@ -251,14 +257,16 @@ In this example, when a custom dialog box pops up another dialog box, or when tw
 
 **Solution**
 
-```ts
+<!-- @[fix_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample1.ets) -->
+
+``` TypeScript
 @CustomDialog
 export default struct TmsDialog {
-    controller?: CustomDialogController
-    dialogController:CustomDialogController|null = null;  // Modify the definition declaration mode.
+  controller?: CustomDialogController
+  dialogController:CustomDialogController|null = null;  // Modify the definition declaration mode.
 
-    build() {
-    }
+  build() {
+  }
 }
 ```
 
@@ -309,24 +317,27 @@ The SQL statement uses database field names that are obfuscated, whereas the dat
 **Symptom**
 When **Record<string, Object>** is used as an object type, properties like **linkSource** are obfuscated, causing the error. Example:
 
-```ts
+<!-- @[import_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
+
+``` TypeScript
 // Before obfuscation:
 import { Want } from '@kit.AbilityKit';
-
-let petalMapWant: Want = {
-	bundleName: 'com.example.myapplication',
+// ...
+  let petalMapWant: Want = {
+    bundleName: 'com.example.myapplication',
     uri: 'maps://',
     parameters: {
-    	linkSource: 'com.other.app'
+      linkSource: 'com.other.app'
     }
-}
+  }
 ```
-```ts
+
+``` TypeScript
 // After obfuscation:
 import type Want from "@ohos:app.ability.Want";
 
 let petalMapWant: Want = {
-	bundleName: 'com.example.myapplication',
+    bundleName: 'com.example.myapplication',
     uri: 'maps://',
     parameters: {
         i: 'com.other.app'
@@ -353,38 +364,44 @@ linkSource
 
 The properties of decorators marked with @Type and @Trace can be obfuscated properly, but the functionality becomes abnormal.
 
-```ts
+<!-- @[export_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample2.ets) -->    
+
+``` TypeScript
 // Sample.ets
 import { Type } from '@kit.ArkUI';
 
 @ObservedV2
 class SampleChild {
-	@Trace p123: number = 0;
-    p2: number = 10;
+  @Trace public p123: number = 0;
+  public p2: number = 10;
 }
 
 @ObservedV2
 export class Sample {
-	// For complex objects, use the @Type decorator to ensure successful serialization.
-    @Type(SampleChild)
-    @Trace f123: SampleChild = new SampleChild();
+  // For complex objects, use the @Type decorator to ensure successful serialization.
+  @Type(SampleChild)
+  @Trace public f123: SampleChild = new SampleChild();
 }
+```
 
+<!-- @[call_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/a.ets) -->
+
+``` TypeScript
 // Call the API.
 // a.ets
 import { PersistenceV2 } from '@kit.ArkUI';
-import { Sample } from './Sample';
+import { Sample } from './Sample2';
 
 @Entry
 @ComponentV2
-struct Page {
-	prop: Sample = PersistenceV2.connect(Sample, () => new Sample())!;
-    
-    build() {
-    	Column() {
-        	Text(`Page1 add 1 to prop.p1: ${this.prop.f123.p123}`)
-        }
+export struct Page {
+  prop: Sample = PersistenceV2.connect(Sample, () => new Sample())!;
+
+  build() {
+    Column() {
+      Text(`Page1 add 1 to prop.p1: ${this.prop.f123.p123}`)
     }
+  }
 }
 ```
 
@@ -417,33 +434,42 @@ The following obfuscation configuration is used:
 
 **file2.ts** imports an interface from **file1.ts**, and the interface contains object-type properties. As a result, these properties are retained in **file1.ts** but obfuscated in **file2.ts**, leading to function exceptions. Example:
 
-```ts
+<!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->
+
+``` TypeScript
 // Before obfuscation:
 // file1.ts
 export interface MyInfo {
-	age: number;
-    address: {
-    	city1: string;
-    }
+  age: number;
+  address: {
+    city1: string;
+  }
 }
+```
+
+<!-- @[import_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
+
+``` TypeScript
 // file2.ts
 import { MyInfo } from './file1';
-
-const person: MyInfo = {
-	age: 20,
+// ...
+  const person: MyInfo = {
+    age: 20,
     address: {
-    	city1: "shanghai"
+      city1: 'shanghai'
     }
-}
+  }
+```
 
+``` TypeScript
 // After obfuscation, the code of file1.ts is retained.
 // file2.ts
 import { MyInfo } from './file1';
 
 const person: MyInfo = {
-	age: 20,
+    age: 20,
     address: {
-    	i: "shanghai"
+        i: "shanghai"
     }
 }
 ```
@@ -456,14 +482,16 @@ const person: MyInfo = {
 
 Solution 1: Define the property type using **interface** and export it. This will automatically add the property to the trustlist. Example:
 
-```ts
+<!-- @[export_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/file2.ts) -->
+
+``` TypeScript
 // file1.ts
 export interface AddressType {
-	city1: string
+  city1: string
 }
 export interface MyInfo {
-	age: number;
-    address: AddressType;
+  age: number;
+  address: AddressType;
 }
 ```
 
@@ -479,9 +507,9 @@ city1
 When the two options are configured, method name confusion in the following scenarios is involved when the main module calls the methods of other modules:
 |Main Module|Dependent Module|Imported/Exported Name Obfuscation|
 |-------|--------|---------|
-|HAP/HSP|	HSP	|The HSP and main module are built independently, and different names are generated after obfuscation. Therefore, a trustlist must be configured for both the HSP and main module.|
-|HAP/HSP|	Local HAR|The local HAR is built together with the main module. After obfuscation, the names are the same.|
-|HAP/HSP|	Third-party library|	The names and properties exported from a third-party library are collected to the trustlist. They are not confused during import and export.|
+|HAP/HSP|HSP|The HSP and main module are built independently, and different names are generated after obfuscation. Therefore, a trustlist must be configured for both the HSP and main module.|
+|HAP/HSP|Local HAR|The local HAR is built together with the main module. After obfuscation, the names are the same.|
+|HAP/HSP|Third-party library|The names and properties exported from a third-party library are collected to the trustlist. They are not confused during import and export.|
 
 For the HSP, you must add the methods used by other modules to the trustlist. You must add the same trustlist for the main module. Therefore, you are advised to add the obfuscation file configured with the trustlist (for example, **hsp-white-list.txt**) to the obfuscation configuration item of the module that depends on the obfuscation file, that is, the **files** field shown in the following figure.
 
@@ -489,27 +517,27 @@ For the HSP, you must add the methods used by other modules to the trustlist. Yo
 
 **Case 1: When a class is dynamically imported, the class definition is confused, but the class name is not, causing an error.**
 
-```ts
+``` TypeScript
 // Before obfuscation:
 // utils.ts
 export function add(a: number, b: number): number {
-	return a + b;
+    return a + b;
 }
 
 // main.ts
 async function loadAndUseAdd() {
-	try {
-    	const mathUtils = await import('./utils');
-    	const result = mathUtils.add(2, 3);
+    try {
+        const mathUtils = await import('./utils');
+        const result = mathUtils.add(2, 3);
     } catch (error) {
-    	console.error('Failure reason:', error);
+        console.error('Failure reason:', error);
     }
 }
 
 loadAndUseAdd();
 ```
-```ts
 
+``` TypeScript
 // After obfuscation:
 // utils.ts
 export function c1(d1: number, e1: number): number {
@@ -540,23 +568,32 @@ Solution 2: Use **-keep-global-name** to configure **add** to the trustlist.
 
 **Case 2: For a method in a namespace, the method definition is confused, but the statement that uses the method is not, causing an error.**
 
-```ts
+<!-- @[export_ns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/export.ts) -->
+
+``` TypeScript
 // Before obfuscation:
 // export.ts
 export namespace NS {
-	export function foo() {}
+  export function foo() {
+    console.info(`export NS function foo is called`);
+  }
 }
+```
 
+<!-- @[import_ns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
+
+``` TypeScript
 // import.ts
 import { NS } from './export';
-
-NS.foo();
+// ...
+  NS.foo();
 ```
-```ts
+
+``` TypeScript
 // After obfuscation:
 // export.ts
 export namespace i {
-	export function j() {}
+    export function j() {}
 }
 
 // import.ts
@@ -574,16 +611,20 @@ i.foo();
 
 **Case 3: When declare global is used, a syntax error is reported after obfuscation.**
 
-```ts
+<!-- @[declare_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->
+
+``` TypeScript
 // file.ts
 // Before obfuscation:
 declare global {
-	var myAge : string
+  var myAge : string
 }
+```
 
+```ts
 // After obfuscation:
 declare a2 {
-	var b2 : string
+    var b2 : string
 }
 ```
 
@@ -602,7 +643,7 @@ Since API version 18, **global** has been added to the system trustlist. You do 
 When **-enable-toplevel-obfuscation** is configured, bytecode obfuscation works normally, but a runtime error is reported. The error log is as follows:
 
 ```txt
-Error message:is not callable
+Error message: is not callable
 Stacktrace: Cannot get SourceMap info, dump raw stack: at anonymous (ads_service|@hw-ads/ohos-ads-model|1.0.1|src/main/ets/annotations/FieldType.ts:6:1.
 ```
 
@@ -619,7 +660,7 @@ import 'reflect-metadata';
 export const FIELD_TYPE_KEY = Symbol('fieldType');
 export function FieldType(...types: Function[]): PropertyDecorator {
     return (target, key) => {
-    	Reflect.defineMetadata(FIELD_TYPE_KEY, types, target, key);
+        Reflect.defineMetadata(FIELD_TYPE_KEY, types, target, key);
     };
 }
 ```
@@ -639,15 +680,18 @@ Use **-keep-global-name** to add **defineMetadata** to the trustlist. Since the 
 
 ### The **-enable-string-property-obfuscation** option is not configured, but the string literal property name is obfuscated. As a result, the value of the string literal property name is undefined.
 
-```ts
+<!-- @[fix_age](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->
+
+``` TypeScript
 // file.ts
 // Before obfuscation:
 const person = {
-    myAge: 18
+  myAge: 18
 }
 person["myAge"] = 20;
 ```
-```ts
+
+``` TypeScript
 // file.ts
 // After obfuscation:
 const person = {

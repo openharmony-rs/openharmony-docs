@@ -33,13 +33,14 @@ The file declares the camera photo concepts.
 | Name| Description|
 | -- | -- |
 | [Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNative** mainImage)](#oh_photonative_getmainimage) | Obtains a full-quality image.|
+| [Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_PictureNative** picture)](#oh_photonative_getuncompressedimage) | Obtains an uncompressed image.|
 | [Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)](#oh_photonative_release) | Releases a full-quality image.|
 
 ## Function Description
 
 ### OH_PhotoNative_GetMainImage()
 
-```
+```c
 Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNative** mainImage)
 ```
 
@@ -49,13 +50,37 @@ Obtains a full-quality image.
 
 **Since**: 12
 
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_PhotoNative](capi-oh-camera-oh-photonative.md)* photo | Pointer to an **OH_PhotoNative** instance.|
+| [OH_ImageNative](../apis-image-kit/capi-image-nativemodule-oh-imagenative.md)** mainImage | Double pointer to the full-quality image, which is an **OH_ImageNative** instance.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.|
+
+### OH_PhotoNative_GetUncompressedImage()
+
+```c
+Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_PictureNative** picture)
+```
+
+**Description**
+
+Obtains an uncompressed image.
+
+**Since**: 23
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [OH_PhotoNative](capi-oh-camera-oh-photonative.md)* photo | Pointer to an OH_PhotoNative instance.|
-| [OH_ImageNative](../apis-image-kit/capi-image-imagenative-.md)** mainImage | Double pointer to the full-quality image, which is an OH_ImageNative instance.|
+| [OH_PhotoNative](capi-oh-camera-oh-photonative.md)* photo | Pointer to an **OH_PhotoNative** instance.|
+| [OH_PictureNative](../apis-image-kit/capi-image-nativemodule-oh-picturenative.md)** picture | Double pointer to the uncompressed image, which is an **OH_PictureNative** instance.|
 
 **Returns**
 
@@ -65,7 +90,7 @@ Obtains a full-quality image.
 
 ### OH_PhotoNative_Release()
 
-```
+```c
 Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)
 ```
 
@@ -75,12 +100,11 @@ Releases a full-quality image.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [OH_PhotoNative](capi-oh-camera-oh-photonative.md)* photo | Pointer to the OH_PhotoNative instance to release.|
+| [OH_PhotoNative](capi-oh-camera-oh-photonative.md)* photo | Pointer to the **OH_PhotoNative** instance to release.|
 
 **Returns**
 

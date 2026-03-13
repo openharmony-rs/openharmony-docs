@@ -90,7 +90,7 @@ struct ComponentPage {
 
 ## 布局回调
 
-通过[@ohos.arkui.arkui.inspector(布局回调)](../reference/apis-arkui/js-apis-arkui-inspector.md)提供注册组件布局和组件绘制完成的回调通知能力。
+通过[@ohos.arkui.inspector(布局回调)](../reference/apis-arkui/js-apis-arkui-inspector.md)提供注册组件布局和组件绘制完成的回调通知能力。
 
 下述示例，展示了布局回调的基本用法。
 
@@ -106,18 +106,20 @@ struct ImageExample {
     Column() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
         Row({ space: 5 }) {
-          // 可以替换成本地存在的图片
+          // 请将$r('app.media.startIcon')替换为实际资源文件
           Image($r('app.media.startIcon'))
             .width(110)
             .height(110)
             .border({ width: 1 })
             .id('IMAGE_ID')
         }
+        .id('ROW_ID')
       }
     }.height(320).width(360).padding({ right: 10, top: 10 })
   }
 
-  listener: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
+  listenerForImage: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID');
 
   aboutToAppear() {
     let onLayoutComplete: () => void = (): void => {
@@ -136,14 +138,14 @@ struct ImageExample {
     let offFuncDraw = onDrawComplete; // 绑定当前js对象
     let offFuncDrawChildren = onDrawChildrenComplete; // 绑定当前js对象
 
-    this.listener.on('layout', funcLayout);
-    this.listener.on('draw', funcDraw);
-    this.listener.on('drawChildren', funcDrawChildren);
+    this.listenerForImage.on('layout', funcLayout);
+    this.listenerForImage.on('draw', funcDraw);
+    this.listenerForRow.on('drawChildren', funcDrawChildren);
 
     // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
-    // this.listener.off('layout', OffFuncLayout)
-    // this.listener.off('draw', OffFuncDraw)
-    // this.listener.off('drawChildren', OffFuncDrawChildren)
+    // this.listenerForImage.off('layout', offFuncLayout)
+    // this.listenerForImage.off('draw', offFuncDraw)
+    // this.listenerForRow.off('drawChildren', offFuncDrawChildren)
   }
 }
 ```

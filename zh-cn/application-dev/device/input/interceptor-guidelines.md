@@ -48,7 +48,7 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 - **按键事件**
 
-<!-- @[key_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[key_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 struct KeyEvent {
@@ -65,26 +65,26 @@ void OnKeyEventCallback(const Input_KeyEvent* keyEvent)
     event.action = OH_Input_GetKeyEventAction(keyEvent);
     event.keyCode = OH_Input_GetKeyEventKeyCode(keyEvent);
     event.actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
-	// ···
+    // ...
 }
 
 static napi_value AddKeyEventInterceptor(napi_env env, napi_callback_info info)
 {
     Input_Result ret = OH_Input_AddKeyEventInterceptor(OnKeyEventCallback, nullptr);
-	// ···
+    // ...
 }
 
 static napi_value RemoveKeyEventInterceptor(napi_env env, napi_callback_info info)
 {
     Input_Result ret = OH_Input_RemoveKeyEventInterceptor();
-	// ···
+    // ...
 }
 ```
 
 
 - **输入拦截（鼠标、触摸和轴事件）**
 
-<!-- @[input_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[input_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 struct MouseEvent {
@@ -201,4 +201,4 @@ static napi_value RemoveEventInterceptor(napi_env env, napi_callback_info info)
 
 ## 完整示例
 
-- [输入事件拦截（C/C++）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/input/NDKInputEventInterceptor)
+- [输入事件拦截（C/C++）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/InputKit/NDKInputEventInterceptor)

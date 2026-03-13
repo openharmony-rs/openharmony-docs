@@ -1,11 +1,11 @@
 # @ohos.wifiManagerExt (WLAN扩展接口)
 
-<!--Kit: Connectivity Kit-->	
-<!--Subsystem: Communication-->	
-<!--Owner: @qq_43802146-->	
-<!--Designer: @qq_43802146-->	
-<!--Tester: @furryfurry123-->	
-<!--Adviser: @zhang_yixin13-->	
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 该模块主要提供WLAN扩展接口，供非通用类型产品使用。
 
 > **说明：**
@@ -37,7 +37,7 @@ enableHotspot(): void
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -72,7 +72,7 @@ disableHotspot(): void
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -110,7 +110,7 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -148,7 +148,7 @@ getSupportedPowerMode(callback: AsyncCallback&lt;Array&lt;PowerMode&gt;&gt;): vo
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -173,9 +173,6 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 
 获取功率模式，使用Promise异步回调。
 
-> **说明：**
-> 从API version 9开始支持，从API version 10开始废弃。
-
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension
@@ -191,7 +188,7 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -230,7 +227,7 @@ getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -279,7 +276,7 @@ setPowerMode(mode: PowerMode) : void
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |

@@ -2,7 +2,7 @@
 
 OpenHarmony 4.0.3.2 has the following changes in account module APIs:
 
-## cl.account_os_account.1 App Account API isAccountRemovable Renamed
+## cl.account_os_account.1 Application Account API isAccountRemovable Renamed
 
 Changed **isAccountRemovable** in the **Authenticator** class to **checkAccountRemovable**.
 
@@ -87,13 +87,13 @@ interface AccountManager {
   checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise<boolean>;
   ```
 
-## cl.account_os_account.3 OS Account API **checkOsAccountConstraintEnabled** Permission Scenario Change
+## cl.account_os_account.3 OS Account API checkOsAccountConstraintEnabled Permission Is Changed
 
 Added an optional permission **ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS** to the **checkOsAccountConstraintEnabled** API.
 
 **Change Impact**
 
-In 4.0.3.2 and later versions, an app with the **ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS** permission can also call **checkOsAccountConstraintEnabled**.
+In 4.0.3.2 and later versions, an application with the **ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS** permission can also call **checkOsAccountConstraintEnabled**.
 The use of **ohos.permission.MANAGE_LOCAL_ACCOUNTS** is not affected.
 
 **Key API/Component Changes**
@@ -334,7 +334,7 @@ The **getBundleIdFromUid** API cannot be used from 4.0.3.2. Use **getBundleIdFor
 
 **Key API/Component Changes**
 
-- Involved APIs:
+- Involved API:
 ```
 interface AccountManager {
   ...

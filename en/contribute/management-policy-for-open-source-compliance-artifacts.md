@@ -18,7 +18,7 @@ The **NOTICE** file must describe all third-party open-source software used in t
 
 ### Generation Rules for NOTICE 
 
-See [Automatic Generation and Collection Policy of OpenHarmony Open-Source Software NOTICE](https://gitee.com/openharmony/build/blob/master/docs/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6Notice%E6%94%B6%E9%9B%86%E7%AD%96%E7%95%A5%E8%AF%B4%E6%98%8E.md).
+See [Automatic Generation and Collection Policy of OpenHarmony Open-Source Software NOTICE](https://gitcode.com/openharmony/build/blob/master/docs/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6Notice%E6%94%B6%E9%9B%86%E7%AD%96%E7%95%A5%E8%AF%B4%E6%98%8E.md).
 
 ### Storage Location of NOTICE
 
@@ -33,7 +33,7 @@ The **NOTICE** file is usually stored in the top directory of the release folder
 
 ### Lifecycle of NOTICE
 
-The lifecycle of the **NOTICE** file is the same as that of the binary file. According to the [OpenHarmony Version Lifecycle Rules](https://gitee.com/openharmony/release-management/blob/master/openHarmony-version-lifecycle-management.md), the lifecycle of the **NOTICE** file matches that of the LTS and Release versions.
+The lifecycle of the **NOTICE** file is the same as that of the binary file. According to the [OpenHarmony Version Lifecycle Rules](https://gitcode.com/openharmony/release-management/blob/master/openHarmony-version-lifecycle-management.md), the lifecycle of the **NOTICE** file matches that of the LTS and Release versions.
 
 ### NOTICE Template
 
@@ -238,7 +238,7 @@ License: Apache License 2.0
 
 ## Managing Artifacts for Declaring Code Open-Source
 
-The code released in the OpenHarmony community is automatically open-sourced, and therefore no additional open-source software package is required. The tool described in [Generating an Open-Source Software Package](https://gitee.com/openharmony/build/blob/master/docs/%E7%94%9F%E6%88%90%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%8C%85.md) enables automatic generation of the open-source software packages involved in OpenHarmony during the integration of downstream products. It also provides the reference implementation. The OpenHarmony community is not responsible for the fulfillment of open-source obligations of downstream products.
+The code released in the OpenHarmony community is automatically open-sourced, and therefore no additional open-source software package is required. The tool described in [Generating an Open-Source Software Package](https://gitcode.com/openharmony/build/blob/master/docs/%E7%94%9F%E6%88%90%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%8C%85.md) enables automatic generation of the open-source software packages involved in OpenHarmony during the integration of downstream products. It also provides the reference implementation. The OpenHarmony community is not responsible for the fulfillment of open-source obligations of downstream products.
 
 The obligations specified in the license clauses must be fulfilled. For example, the open-source code can be compiled, and the compilation result is consistent with the open-source part in the distributed software artifact; a build guide is included in the open-source software package to describe the build environment, tools, and operation procedures.
 

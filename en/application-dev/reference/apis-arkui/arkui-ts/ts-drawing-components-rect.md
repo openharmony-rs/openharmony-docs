@@ -38,7 +38,7 @@ Rect(options?: RectOptions | RoundedRectOptions)
 
 ## RectOptions<sup>18+</sup>
 
-Describes the options for drawing a rectangle.
+Describes the drawing attributes of the Rect component.
 
 > **NOTE**
 >
@@ -52,9 +52,9 @@ Describes the options for drawing a rectangle.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| width<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Width. The value must be greater than or equal to 0.<br>Default value: **0**<br>Default unit: vp<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| height<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Height. The value must be greater than or equal to 0.<br>Default value: **0**<br>Default unit: vp<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| radius<sup>7+</sup> | [Length](ts-types.md#length) \| Array&lt;any&gt; | No| Yes| Radius of the rounded corner. You can set separate radii for the four rounded corners. The value must be greater than or equal to 0. <br>This property takes precedence over **radiusWidth** and **radiusHeight** when used together.<br>Default value: **0**<br>Default unit: vp<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| width<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Width. The value must be greater than or equal to 0.<br>Default value: **0**<br>Default unit: vp<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| height<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Height. The value must be greater than or equal to 0.<br>Default value: **0**<br>Default unit: vp<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| radius<sup>7+</sup> | [Length](ts-types.md#length) \| Array&lt;any&gt; | No| Yes| Radius of the rounded corner. You can set separate radii for the four rounded corners. The value must be greater than or equal to 0. <br>This property takes precedence over **radiusWidth** and **radiusHeight** when used together.<br>Default value: **0**<br>Default unit: vp<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## RoundedRectOptions<sup>18+</sup>
 Describes the options for drawing a rectangle.
@@ -132,7 +132,7 @@ Sets the radius of a rounded corner. The value is greater than or equal to 0. Th
 
 | Name| Type                                                        | Mandatory| Description                        |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------- |
-| value  | [Length](ts-types.md#length) \| Array&lt;any&gt; | Yes  | Radius of the rounded corner. You can set separate radii for the four rounded corners.<br>Default value: **0**<br>Default unit: vp<br>Abnormal values undefined and null are processed as invalid values.|
+| value  | [Length](ts-types.md#length) \|&nbsp;Array&lt;any&gt; | Yes  | Radius of the rounded corner. You can set separate radii for the four rounded corners.<br>Default value: **0**<br>Default unit: vp<br>Abnormal values undefined and null are processed as invalid values.|
 
 ### fill
 
@@ -150,7 +150,7 @@ Color of the filling area. The [attributeModifier](ts-universal-attributes-attri
 
 | Name| Type                                      | Mandatory| Description                                  |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the fill area.<br>Default value: **Color.Black**<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the fill area.<br>Default value: **Color.Black**<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
 
 ### fillOpacity
 
@@ -168,7 +168,7 @@ Sets the transparency of the filling area. The [attributeModifier](ts-universal-
 
 | Name| Type                                                        | Mandatory| Description                          |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>The value range is [0.0, 1.0]. A value less than 0.0 is treated as **0.0**. A value greater than 1.0 is treated as **1.0**. Any other value is treated as **1.0**.<br>The string format supports the string format of the number format. The value range is the same as that of the number format.<br>The Resource format supports character strings in system resources or application resources. The value range is the same as that of the number format.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.<br>Default value: **1.0**|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>For the number type, the value range is [0.0, 1.0]. A value less than 0.0 is treated as **0.0**. A value greater than 1.0 is treated as **1.0**. Any other value is treated as **1.0**.<br>The string format supports the string format of the number format. The value range is the same as that of the number format.<br>The Resource format supports character strings in system resources or application resources. The value range is the same as that of the number format.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.<br>Default value: **1.0**.|
 
 ### stroke
 
@@ -222,7 +222,7 @@ Sets the offset of the start point for drawing the stroke. This attribute can be
 
 | Name| Type                      | Mandatory| Description                                |
 | ------ | -------------------------- | ---- | ------------------------------------ |
-| value  | number \| string | Yes  | Offset of the start point for drawing the stroke.<br>Default value: **0**<br>Default unit: vp<br>Abnormal values undefined and null are processed based on the default values. NaN and Infinity will cause strokeDashArray to become invalid.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Offset of the start point for drawing the stroke.<br>Default value: **0**<br>Default unit: vp<br>Abnormal values undefined and null are processed based on the default values. NaN and Infinity will cause strokeDashArray to become invalid.|
 
 ### strokeLineCap
 
@@ -240,7 +240,7 @@ Sets the offset of the end point for drawing the stroke. This attribute can be d
 
 | Name| Type                                             | Mandatory| Description                                            |
 | ------ | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the stroke.<br>Default value: **LineCapStyle.Butt**<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
+| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the stroke.<br>Default value: **LineCapStyle.Butt**<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
 
 ### strokeLineJoin
 
@@ -258,7 +258,7 @@ Sets the join style of the stroke. This attribute can be dynamically set using [
 
 | Name| Type                                               | Mandatory| Description                                              |
 | ------ | --------------------------------------------------- | ---- | -------------------------------------------------- |
-| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of the stroke.<br>Default value: **LineJoinStyle.Miter**<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
+| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of the stroke.<br>Default value: **LineJoinStyle.Miter**<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
 
 ### strokeMiterLimit
 
@@ -278,7 +278,7 @@ The value must be greater than or equal to 1.0. If the value is in the [0, 1) ra
 
 | Name| Type                      | Mandatory| Description                                          |
 | ------ | -------------------------- | ---- | ---------------------------------------------- |
-| value  | number \| string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**<br>The abnormal values undefined, null, and NaN are processed based on the default values. Infinity causes the stroke failure.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**<br>The abnormal values undefined, null, and NaN are processed based on the default values. Infinity causes the stroke failure.|
 
 ### strokeOpacity
 
@@ -296,7 +296,7 @@ Sets the stroke opacity. This attribute can be dynamically set using [attributeM
 
 | Name| Type                                                        | Mandatory| Description                      |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: transparency set by the [stroke](#stroke) API.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: transparency set by the [stroke](#stroke) API.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
 
 ### strokeWidth
 
@@ -388,7 +388,9 @@ struct RectExample {
 
 ### Example 2: Drawing a Gradient Rectangle
 
-This example demonstrates how to use the universal attributes **linearGradient** and **clipShape** to draw a gradient rectangle.
+This example demonstrates how to use the universal attributes [linearGradient](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient18) and [clipShape](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape18) to draw a gradient rectangle.
+
+The universal attributes **linearGradient** and **clipShape** are supported since API version 18.
 
 ```ts
 // xxx.ets

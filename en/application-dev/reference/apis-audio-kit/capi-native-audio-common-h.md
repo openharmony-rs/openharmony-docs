@@ -8,7 +8,7 @@
 
 ## Overview
 
-The file declares the common basic audio data structs. It defines the types of the common return values of audio interfaces.
+The file declares the common basic audio data structs.<br> It defines the types of the common return values of audio interfaces.
 
 **File to include**: <ohaudio/native_audio_common.h>
 
@@ -34,7 +34,7 @@ The file declares the common basic audio data structs. It defines the types of t
 
 ### OH_AudioCommon_Result
 
-```
+```c
 enum OH_AudioCommon_Result
 ```
 
@@ -57,7 +57,7 @@ Enumerates the audio operation results.
 
 ### OH_AudioScene
 
-```
+```c
 enum OH_AudioScene
 ```
 
@@ -76,13 +76,15 @@ Enumerates the audio scenes.
 
 ### OH_AudioRingerMode
 
-```
+```c
 enum OH_AudioRingerMode
 ```
 
 **Description**
 
 Enumerates the ringer mode.
+
+**Device behavior difference**: If this API is set to the vibration mode on a device without a vibration component, no vibration effect is generated.
 
 **Since**: 20
 

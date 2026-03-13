@@ -6,7 +6,7 @@
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 
- 当在一个自定义组件内使用多个全局[\@Builder](./arkts-builder.md)函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用[wrapBuilder](./arkts-wrapBuilder.md)封装全局@Builder。但是wrappBuilder不支持动态切换@Builder，引入[mutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md)实现全局@Builder的动态切换。
+ 当在一个自定义组件内使用多个全局[\@Builder](./arkts-builder.md)函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用[wrapBuilder](./arkts-wrapBuilder.md)封装全局@Builder。但是wrapBuilder不支持动态切换@Builder，引入[mutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md)实现全局@Builder的动态切换。
 
 > **说明：**
 >
@@ -47,13 +47,13 @@ struct Index {
   }
 }
 ```
-在上述代码中，使用`textBuilder`初始化wrapBuilder，点击Button的onClick事件，使用`buttonBuilder`再次初始化wrappBuilder，不会触发对应的@Builder的更新。
+在上述代码中，使用`textBuilder`初始化wrapBuilder，点击Button的onClick事件，使用`buttonBuilder`再次初始化wrapBuilder，不会触发对应的@Builder的更新。
 
 为了解决这一问题，引入mutableBuilder作为动态全局\@Builder封装函数。mutableBuilder返回MutableBuilder对象，用于[全局\@Builder](arkts-builder.md#全局自定义构建函数)的动态刷新。 
 
 ## 接口说明
 
-mutableBuilder是一个模板函数，返回一个[MutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md#mutablebuilder-2)对象。相比[WrappedBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)，MuableBuilder可以实现动态切换全局@Builder。
+mutableBuilder是一个模板函数，返回一个[MutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md#mutablebuilder-2)对象。相比[WrappedBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)，MutableBuilder可以实现动态切换全局@Builder。
 ```ts
 declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback): MutableBuilder<Args>;
 ```
@@ -289,7 +289,7 @@ struct MyApp {
   @Local switchingBuilder: MutableBuilder<[MutableBinding<string>]> = mutableBuilder(textBuilder);
 
   @Monitor('switchingBuilder') variableChange(m: IMonitor): void {
-    console.log(`Builder changed. is buttonBuilder: ${m.value<MutableBuilder<[MutableBinding<string>]>>()?.now.builder === buttonBuilder}`);
+    console.info(`Builder changed. is buttonBuilder: ${m.value<MutableBuilder<[MutableBinding<string>]>>()?.now.builder === buttonBuilder}`);
   }
 
   build() {
@@ -310,9 +310,9 @@ struct MyApp {
   }
 }
 ```
-点击Button，可将`textBuilder`动态切换为`buttonBuilder`。点击`buttonBuilder`，`this.message`会自动加`B`，如下图所示：
+点击`Click to change`按钮，可将`textBuilder`动态切换为`buttonBuilder`，`this.message`将自动加`B`，界面会显示`initB`按钮。点击`initB`按钮，`buttonBuilder`中的`p.value`将自动加`b`，如下图所示：
 
 ![arkts-mutableBuilder-dynamic-demo2](figures/mutableBuilder-dynamic-demo2.gif)
 
-点击Button将`textBuilder`动态切换为`buttonBuilder`时，@Monitor会监听到全局@Builder的变化，并打印日志`@Builder change. is buttonBuilder: true`。
+点击`Click to change`按钮将`textBuilder`动态切换为`buttonBuilder`时，@Monitor将监听到全局@Builder的变化，并打印日志`@Builder changed. is buttonBuilder: true`。
 

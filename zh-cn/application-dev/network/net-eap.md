@@ -19,6 +19,7 @@
 
 1. 在EAP协议报文内封装私有数据，该私有数据遵循客户端与认证服务器约定的数据结构。
 2. 在认证过程中，客户端在本地进行安检扫描等定制动作，定制动作结束后，客户端向接入设备回复认证消息。
+
    在这种机制下，需要操作系统提供三方客户端介入802.1X认证流程的机制，支撑客户端的定制认证。
 
 
@@ -54,8 +55,8 @@
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
 2. 调用[regCustomEapHandler](../reference/apis-network-kit/js-apis-net-eap.md#eapregcustomeaphandler)方法，注册所需监听的EAP报文类型。
-在802.1X认证过程中，系统会将符合条件的EAP报文传递至callback函数（如示例代码中的eapData函数）中，供企业应用获取。报文传递至callback函数后，
-802.1X认证流程会阻塞等待，用户能够获取到完整的报文内容。
+
+   在802.1X认证过程中，系统会将符合条件的EAP报文传递至callback函数（如示例代码中的eapData函数）中，供企业应用获取。报文传递至callback函数后，802.1X认证流程会阻塞等待，用户能够获取到完整的报文内容。
 
     （1）若注册的是由服务器发送给客户端的报文类型（即eapCode=1），则此时可以从报文中看到由服务器加入的自定义内容。应用根据自定义内容，判断认证是否应该继续往后续步骤进行，并调用[replyCustomEapData](../reference/apis-network-kit/js-apis-net-eap.md#eapreplycustomeapdata)方法通知系统。
 

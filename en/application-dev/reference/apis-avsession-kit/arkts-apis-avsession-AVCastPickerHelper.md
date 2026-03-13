@@ -169,7 +169,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type      | Mandatory| Description     |
 | --------| -----------|-----|------------|
 | type     | string    | Yes  | Event type. The event **'pickerStateChange'** is triggered when the semi-modal window changes.|
-| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11)>       | Yes  | Callback function, where the **state** parameter indicates the new state of the semi-modal window.|
+| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)>       | Yes  | Callback function, where the **state** parameter indicates the new state of the semi-modal window.|
 
 **Error codes**
 
@@ -210,7 +210,7 @@ Unsubscribes from semi-modal window change events. If a callback is specified, t
 | Name  | Type                                              | Mandatory| Description                                                   |
 | -------- | ------------------------------------------------ | ---- | ------------------------------------------------------ |
 | type     | string                                           | Yes  | Event type, which is **'pickerStateChange'** in this case.        |
-| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11)> | No  | Callback function, where the **state** parameter indicates the new state of the semi-modal window.<br>If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                          |
+| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)> | No  | Callback function, where the **state** parameter indicates the new state of the semi-modal window.<br>If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                          |
 
 **Error codes**
 

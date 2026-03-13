@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoRand OH_CryptoRand
+```
+
 ## Overview
 
 Defines a struct for a random number generator.

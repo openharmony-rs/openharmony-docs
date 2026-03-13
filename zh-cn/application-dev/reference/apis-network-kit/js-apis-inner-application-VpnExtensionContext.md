@@ -59,6 +59,10 @@ onCreate(want: Want): void
 
 拓展VPN启动初始化的时候进行回调。
 
+> **说明：**
+> 
+> 建议配对调用[onDestroy](#ondestroy)监听拓展VPN的销毁，及时执行资源清理等操作。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **模型约束**：此接口仅可在Stage模型下使用。

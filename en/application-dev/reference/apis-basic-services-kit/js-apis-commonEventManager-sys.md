@@ -7,7 +7,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-This module provides common event capabilities, including publishing, subscribing to, and unsubscribing from common events.
+This module provides common event capabilities to publish, subscribe to, and unsubscribe from common events.
 
 > **NOTE**
 >
@@ -31,7 +31,7 @@ For details about the enumerations of all system common events, see [System Comm
 
 publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): void
 
-Publishes a common event to a specific user. This API uses an asynchronous callback to return the result.
+Publishes a common event to a specified user. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -43,7 +43,7 @@ Publishes a common event to a specific user. This API uses an asynchronous callb
 | -------- | -------------------- | ---- | ---------------------------------- |
 | event    | string               | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).            |
 | userId   | number               | Yes  | User ID.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.            |
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.            |
 
 **Error codes**
 
@@ -51,7 +51,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |
+| 202      | not system app.                     |  
 | 1500003  | The common event sending frequency too high. |
 | 1500006  | Invalid userId. |
 | 1500007  | Failed to send the message to the common event service. |
@@ -85,7 +85,7 @@ try {
 
 publishAsUser(event: string, userId: number, options: CommonEventPublishData, callback: AsyncCallback\<void>): void
 
-Publishes a common event with given attributes to a specific user. This API uses an asynchronous callback to return the result.
+Publishes a common event to a specified user and specifies the information to be published. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -97,8 +97,8 @@ Publishes a common event with given attributes to a specific user. This API uses
 | -------- | ---------------------- | ---- | ---------------------- |
 | event    | string                 | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). |
 | userId   | number | Yes| User ID.|
-| options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Attributes of the common event to publish.|
-| callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. |
+| options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
+| callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -106,7 +106,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |
+| 202      | not system app.                     |  
 | 1500003  | The common event sending frequency too high. |
 | 1500006  | Invalid userId. |
 | 1500007  | Failed to send the message to the common event service. |
@@ -118,10 +118,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Attributes of a common event.
+// Information of the common event.
 let options:commonEventManager.CommonEventPublishData = {
-  code: 0,			 // Result code of the common event.
-  data: 'initial data', // Initial data of the common event.
+  code: 0,       // Initial code of the common event.
+  data: 'initial data',// Initial data of the common event.
 }
 
 // Specify the user to whom the common event will be published.
@@ -158,7 +158,7 @@ Removes a sticky common event. This API uses an asynchronous callback to return 
 | Name  | Type                | Mandatory| Description                            |
 | -------- | -------------------- | ---- | -------------------------------- |
 | event    | string               | Yes  | Sticky common event to remove. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).      |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -166,9 +166,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | The application does not have permission to call the interface.    |
-| 202      | not system app.                     |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
+| 201      | The application does not have permission to call the interface.    |  
+| 202      | not system app.                     |  
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |   
 | 1500004  | A third-party application cannot send system common events.                |
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
@@ -209,7 +209,7 @@ Removes a sticky common event. This API uses a promise to return the result.
 
 | Type          | Description                        |
 | -------------- | ---------------------------- |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -217,9 +217,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | The application does not have permission to call the interface.    |
-| 202      | not system app.                     |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
+| 201      | The application does not have permission to call the interface.    |  
+| 202      | not system app.                     |  
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 | 1500004  | A third-party application cannot send system common events.                |
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
@@ -240,7 +240,7 @@ commonEventManager.removeStickyCommonEvent('sticky_event').then(() => {
 
 setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 
-Enables or disables static subscription for the current application. This API uses an asynchronous callback to return the result.
+Enables or disables static subscription for an application. This API uses an asynchronous callback to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -253,7 +253,7 @@ Enables or disables static subscription for the current application. This API us
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
 | enable  | boolean | Yes  | Whether static subscription is enabled.<br> **true**: enabled.<br>**false**: disabled.|
-| callback  | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback  | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -261,8 +261,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
+| 202      | not system app.                     |  
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
 
@@ -284,7 +284,7 @@ commonEventManager.setStaticSubscriberState(true, (err: BusinessError) => {
 
 setStaticSubscriberState(enable: boolean): Promise\<void>
 
-Enables or disables static subscription for the current application. This API uses a promise to return the result.
+Enables or disables static subscription for an application. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -310,8 +310,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
+| 202      | not system app.                     |  
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
 
@@ -344,7 +344,7 @@ Enables or disables the static subscription event for the current application an
 
 | Name| Type         | Mandatory| Description                                                |
 | ------ | ------------- | ---- | ---------------------------------------------------- |
-| enable | boolean       | Yes  | Whether static subscription is enabled.<br>**true**: enabled.<br>**false**: disabled. |
+| enable | boolean       | Yes  | Whether static subscription is enabled.<br> **true**: enabled.<br>**false**: disabled.|
 | events | Array\<string> | No  | Name of a recorded event.                                  |
 
 **Return value**
@@ -359,8 +359,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
-| 202      | not system app.                     |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
+| 202      | not system app.                     |  
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 | 1500007  | Failed to send the message to the common event service.        |
 | 1500008  | Failed to initialize the common event service. |
 

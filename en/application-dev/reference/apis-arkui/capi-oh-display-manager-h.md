@@ -71,7 +71,7 @@ The file declares the functions for basic display management. You can call the f
 
 ### OH_NativeDisplayManager_GetDefaultDisplayId()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayId(uint64_t *displayId)
 ```
 
@@ -96,7 +96,7 @@ Obtains the ID of the default display.
 
 ### OH_NativeDisplayManager_GetDefaultDisplayWidth()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayWidth(int32_t *displayWidth)
 ```
 
@@ -121,7 +121,7 @@ Obtains the width of the default display.
 
 ### OH_NativeDisplayManager_GetDefaultDisplayHeight()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayHeight(int32_t *displayHeight)
 ```
 
@@ -146,7 +146,7 @@ Obtains the height of the default display.
 
 ### OH_NativeDisplayManager_GetDefaultDisplayRotation()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayRotation(NativeDisplayManager_Rotation *displayRotation)
 ```
 
@@ -171,7 +171,7 @@ Obtains the clockwise rotation angle of the default display.
 
 ### OH_NativeDisplayManager_GetDefaultDisplayOrientation()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayOrientation(NativeDisplayManager_Orientation *displayOrientation)
 ```
 
@@ -196,7 +196,7 @@ Obtains the orientation of the default display.
 
 ### OH_NativeDisplayManager_GetDefaultDisplayVirtualPixelRatio()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayVirtualPixelRatio(float *virtualPixels)
 ```
 
@@ -221,7 +221,7 @@ Obtains the virtual pixel ratio of the default display.
 
 ### OH_NativeDisplayManager_GetDefaultDisplayRefreshRate()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayRefreshRate(uint32_t *refreshRate)
 ```
 
@@ -246,7 +246,7 @@ Obtains the refresh rate of the default display.
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityDpi()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityDpi(int32_t *densityDpi)
 ```
 
@@ -271,7 +271,7 @@ Obtains the physical pixel density of the default display.
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityPixels()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityPixels(float *densityPixels)
 ```
 
@@ -296,7 +296,7 @@ Obtains the logical pixel density of the default display.
 
 ### OH_NativeDisplayManager_GetDefaultDisplayScaledDensity()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayScaledDensity(float *scaledDensity)
 ```
 
@@ -321,7 +321,7 @@ Obtains the scale factor of fonts displayed on the default display.
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityXdpi()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityXdpi(float *xDpi)
 ```
 
@@ -346,7 +346,7 @@ Obtains the number of physical pixels per inch on the default display in the X d
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityYdpi()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityYdpi(float *yDpi)
 ```
 
@@ -371,7 +371,7 @@ Obtains the number of physical pixels per inch on the default display in the Y d
 
 ### OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo(NativeDisplayManager_CutoutInfo **cutoutInfo)
 ```
 
@@ -396,7 +396,7 @@ Obtains the unusable area of the default display, including punch hole, notch, a
 
 ### OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo(NativeDisplayManager_CutoutInfo *cutoutInfo)
 ```
 
@@ -421,7 +421,7 @@ Destroys the unusable area of the default display, including punch hole, notch, 
 
 ### OH_NativeDisplayManager_IsFoldable()
 
-```
+```c
 bool OH_NativeDisplayManager_IsFoldable()
 ```
 
@@ -439,7 +439,7 @@ Checks whether the current device is foldable.
 
 ### OH_NativeDisplayManager_GetFoldDisplayMode()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetFoldDisplayMode(NativeDisplayManager_FoldDisplayMode *displayMode)
 ```
 
@@ -466,7 +466,7 @@ Obtains the display mode of the foldable device.
 
 ### OH_NativeDisplayManager_DisplayChangeCallback()
 
-```
+```c
 typedef void (*OH_NativeDisplayManager_DisplayChangeCallback)(uint64_t displayId)
 ```
 
@@ -485,7 +485,7 @@ Defines a callback function to listen for display status changes.
 
 ### OH_NativeDisplayManager_RegisterDisplayChangeListener()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayChangeListener(OH_NativeDisplayManager_DisplayChangeCallback displayChangeCallback, uint32_t *listenerIndex)
 ```
 
@@ -511,7 +511,7 @@ Registers a listener for display status changes (such as rotation, refresh rate,
 
 ### OH_NativeDisplayManager_UnregisterDisplayChangeListener()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayChangeListener(uint32_t listenerIndex)
 ```
 
@@ -536,7 +536,7 @@ Unregisters a listener for display status changes.
 
 ### OH_NativeDisplayManager_FoldDisplayModeChangeCallback()
 
-```
+```c
 typedef void (*OH_NativeDisplayManager_FoldDisplayModeChangeCallback)(NativeDisplayManager_FoldDisplayMode displayMode)
 ```
 
@@ -555,7 +555,7 @@ Defines a callback function to listen for folded/unfolded state changes of the d
 
 ### OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener(OH_NativeDisplayManager_FoldDisplayModeChangeCallback displayModeChangeCallback, uint32_t *listenerIndex)
 ```
 
@@ -581,7 +581,7 @@ Registers a listener for folded/unfolded state changes of the display.
 
 ### OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener(uint32_t listenerIndex)
 ```
 
@@ -606,7 +606,7 @@ Unregisters a listener for folded/unfolded state changes of the display.
 
 ### OH_NativeDisplayManager_CreateAllDisplays()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateAllDisplays(NativeDisplayManager_DisplaysInfo **allDisplays)
 ```
 
@@ -631,7 +631,7 @@ Obtains the object that contains the information about all displays.
 
 ### OH_NativeDisplayManager_DestroyAllDisplays()
 
-```
+```c
 void OH_NativeDisplayManager_DestroyAllDisplays(NativeDisplayManager_DisplaysInfo *allDisplays)
 ```
 
@@ -650,7 +650,7 @@ Destroys the object that contains the information about all displays.
 
 ### OH_NativeDisplayManager_CreateDisplayById()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDisplayById(uint32_t displayId,NativeDisplayManager_DisplayInfo **displayInfo)
 ```
 
@@ -676,7 +676,7 @@ Obtains the object that contains the information about a display.
 
 ### OH_NativeDisplayManager_DestroyDisplay()
 
-```
+```c
 void OH_NativeDisplayManager_DestroyDisplay(NativeDisplayManager_DisplayInfo *displayInfo)
 ```
 
@@ -695,7 +695,7 @@ Destroys the object that contains the information about a display.
 
 ### OH_NativeDisplayManager_CreatePrimaryDisplay()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreatePrimaryDisplay(NativeDisplayManager_DisplayInfo **displayInfo)
 ```
 
@@ -720,7 +720,7 @@ Obtains the object that contains the information about the primary display. For 
 
 ### OH_NativeDisplayManager_AvailableAreaChangeCallback()
 
-```
+```c
 typedef void (*OH_NativeDisplayManager_AvailableAreaChangeCallback)(uint64_t displayId)
 ```
 
@@ -739,7 +739,7 @@ Defines a callback function to listen for available area changes of a display.
 
 ### OH_NativeDisplayManager_RegisterAvailableAreaChangeListener()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterAvailableAreaChangeListener(OH_NativeDisplayManager_AvailableAreaChangeCallback availableAreaChangeCallback, uint32_t *listenerIndex)
 ```
 
@@ -765,7 +765,7 @@ Registers a listener for available area changes of the display.
 
 ### OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener(uint32_t listenerIndex)
 ```
 
@@ -790,7 +790,7 @@ Unregisters a listener for available area changes of the display.
 
 ### OH_NativeDisplayManager_CreateAvailableArea()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateAvailableArea(uint64_t displayId, NativeDisplayManager_Rect **availableArea)
 ```
 
@@ -818,7 +818,7 @@ Obtains the available area of a display.
 
 ### OH_NativeDisplayManager_DestroyAvailableArea()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_DestroyAvailableArea(NativeDisplayManager_Rect *availableArea)
 ```
 
@@ -843,7 +843,7 @@ Destroys the available area of a display.
 
 ### OH_NativeDisplayManager_DisplayAddCallback()
 
-```
+```c
 typedef void (*OH_NativeDisplayManager_DisplayAddCallback)(uint64_t displayId)
 ```
 
@@ -862,7 +862,7 @@ Defines a callback function to listen for display addition events.
 
 ### OH_NativeDisplayManager_RegisterDisplayAddListener()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayAddListener(OH_NativeDisplayManager_DisplayAddCallback displayAddCallback, uint32_t *listenerIndex)
 ```
 
@@ -888,7 +888,7 @@ Registers a listener for display addition events (for example, monitor inserted)
 
 ### OH_NativeDisplayManager_UnregisterDisplayAddListener()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayAddListener(uint32_t listenerIndex)
 ```
 
@@ -913,7 +913,7 @@ Unregisters a listener for display addition events.
 
 ### OH_NativeDisplayManager_DisplayRemoveCallback()
 
-```
+```c
 typedef void (*OH_NativeDisplayManager_DisplayRemoveCallback)(uint64_t displayId)
 ```
 
@@ -932,7 +932,7 @@ Defines a callback function to listen for display removal events.
 
 ### OH_NativeDisplayManager_RegisterDisplayRemoveListener()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayRemoveListener(OH_NativeDisplayManager_DisplayRemoveCallback displayRemoveCallback, uint32_t *listenerIndex)
 ```
 
@@ -958,7 +958,7 @@ Registers a listener for display removal events (for example, monitor removed).
 
 ### OH_NativeDisplayManager_UnregisterDisplayRemoveListener()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayRemoveListener(uint32_t listenerIndex)
 ```
 
@@ -983,7 +983,7 @@ Unregisters the listener for display removal events.
 
 ### OH_NativeDisplayManager_GetDisplaySourceMode()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplaySourceMode(uint64_t displayId, NativeDisplayManager_SourceMode *sourceMode)
 ```
 
@@ -1009,7 +1009,7 @@ Obtains the source mode of a display.
 
 ### OH_NativeDisplayManager_GetDisplayPosition()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64_t displayId, int32_t *x, int32_t *y)
 ```
 

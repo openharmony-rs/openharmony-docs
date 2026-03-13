@@ -8,6 +8,10 @@
 
 **DataShare**用于应用管理其自身数据，同时支持同个设备上不同应用间的数据共享。
 
+静默访问场景支持的数据库类型请参考[通过数据管理服务实现数据共享静默访问](../../database/share-data-by-silent-access-sys.md#约束与限制)。
+
+非静默访问场景支持的数据库类型请参考[通过DataShareExtensionAbility实现数据共享](../../database/share-data-by-datashareextensionability-sys.md#约束与限制)。
+
 > **说明：** 
 >
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -63,7 +67,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashare:///com.samples.datasharetest.DataShare");
+    let uri = "datashare:///com.samples.datasharetest.DataShare";
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
     let context = this.context;
     try {
@@ -121,7 +125,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
     let context = this.context;
     try {
@@ -185,7 +189,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
     let context = this.context;
     try {
@@ -248,7 +252,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true");
+    let uri = "datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true";
     let context = this.context;
     dataShare.enableSilentProxy(context, uri).then(() => {
       console.info("enableSilentProxy succeed");
@@ -303,7 +307,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true");
+    let uri = "datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true";
     let context = this.context;
     dataShare.disableSilentProxy(context, uri).then(() => {
       console.info("disableSilentProxy succeed");
@@ -465,7 +469,7 @@ on(type: 'dataChange', uri: string, callback: AsyncCallback&lt;void&gt;): void
 let onCallback: () => void = (): void => {
   console.info("**** Observer on callback ****");
 }
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper !== undefined) {
   (dataShareHelper as dataShare.DataShareHelper).on("dataChange", uri, onCallback);
 }
@@ -506,7 +510,7 @@ on(event: 'dataChange', type:SubscriptionType, uri: string, callback: AsyncCallb
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.acts.datasharetest");
+let uri = "datashare:///com.acts.datasharetest";
 export function callback(error:BusinessError, ChangeInfo:dataShare.ChangeInfo) {
     console.info(' **** Observer callback **** ChangeInfo:' + JSON.stringify(ChangeInfo));
 }
@@ -547,7 +551,7 @@ off(type: 'dataChange', uri: string, callback?: AsyncCallback&lt;void&gt;): void
 let callback: () => void = (): void => {
   console.info("**** Observer on callback ****");
 }
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).on("dataChange", uri, callback);
   (dataShareHelper as dataShare.DataShareHelper).off("dataChange", uri, callback);
@@ -588,7 +592,7 @@ off(event: 'dataChange', type:SubscriptionType, uri: string, callback?: AsyncCal
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.acts.datasharetest");
+let uri = "datashare:///com.acts.datasharetest";
 export function callback(error:BusinessError, ChangeInfo:dataShare.ChangeInfo) {
     console.info(' **** Observer callback **** ChangeInfo:' + JSON.stringify(ChangeInfo));
 }
@@ -630,12 +634,12 @@ addTemplate(uri: string, subscriberId: string, template: Template): void
 **示例：**
 
 ```ts
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let subscriberId = '11';
 let key1: string = "p1";
-let value1: string = "select cityColumn as city_1, visitedCilumn as visited_1 from citys where like = true";
+let value1: string = "select cityColumn as city_1, visitedColumn as visited_1 from citys where like = true";
 let key2: string = "p2";
-let value2: string = "select cityColumn as city_2, visitedCilumn as visited_2 from citys where like = false";
+let value2: string = "select cityColumn as city_2, visitedColumn as visited_2 from citys where like = false";
 let template: dataShare.Template = {
   predicates : {
     key1 : value1,
@@ -680,12 +684,12 @@ delTemplate(uri: string, subscriberId: string): void
 **示例：**
 
 ```ts
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let subscriberId = '11';
 let key1: string = "p1";
-let value1: string = "select cityColumn as city_1, visitedCilumn as visited_1 from citys where like = true";
+let value1: string = "select cityColumn as city_1, visitedColumn as visited_1 from citys where like = true";
 let key2: string = "p2";
-let value2: string = "select cityColumn as city_2, visitedCilumn as visited_2 from citys where like = false";
+let value2: string = "select cityColumn as city_2, visitedColumn as visited_2 from citys where like = false";
 let template: dataShare.Template = {
   predicates : {
     key1 : value1,
@@ -750,7 +754,7 @@ let onCallback: (err: BusinessError, node: dataShare.RdbDataChangeNode) => void 
   }
 }
 
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let templateId:dataShare.TemplateId = {subscriberId:"11", bundleNameOfOwner:"com.acts.ohos.data.datasharetest"};
 if (dataShareHelper != undefined) {
   let result: Array<dataShare.OperationResult> = (dataShareHelper as dataShare.DataShareHelper).on("rdbDataChange", [uri], templateId, onCallback);
@@ -793,7 +797,7 @@ off(type: 'rdbDataChange', uris: Array&lt;string&gt;, templateId: TemplateId, ca
 **示例：**
 
 ```ts
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let templateId:dataShare.TemplateId = {subscriberId:"11", bundleNameOfOwner:"com.acts.ohos.data.datasharetest"};
 if (dataShareHelper != undefined) {
   let result: Array<dataShare.OperationResult> = (dataShareHelper as dataShare.DataShareHelper).off("rdbDataChange", [uri], templateId);
@@ -1149,7 +1153,7 @@ insert(uri: string, value: ValuesBucket, callback: AsyncCallback&lt;number&gt;):
 | 参数名     | 类型                                                      | 必填 | 说明                                                        |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | uri      | string                                                    | 是   | 要插入的数据的路径。                                     |
-| value    | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | 是   | 要插入的数据。如果此参数为空，将插入一个空行。           |
+| value    | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | 是   | 要插入的数据的值。           |
 | callback | AsyncCallback&lt;number&gt;                               | 是   | 回调函数。当将单条数据插入数据库成功，err为undefined，data为获取到的插入数据记录的索引；否则为错误对象。<br />因部分数据库（如KVDB）的相应接口并不支持返回索引，故若服务端使用了不支持索引的数据库，则此callback也无法返回索引值。 |
 
 **错误码：**
@@ -1168,7 +1172,7 @@ insert(uri: string, value: ValuesBucket, callback: AsyncCallback&lt;number&gt;):
 import { ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let key1: string = "name";
 let value1: string = "rose";
 let key2: string = "age";
@@ -1214,7 +1218,7 @@ insert(uri: string, value: ValuesBucket): Promise&lt;number&gt;
 | 参数名  | 类型                                                      | 必填 | 说明                                               |
 | ----- | --------------------------------------------------------- | ---- | -------------------------------------------------- |
 | uri   | string                                                    | 是   | 要插入的数据的路径。                           |
-| value | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | 是   | 要插入的数据。如果此参数为空，将插入一个空行。 |
+| value | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | 是   | 要插入的数据的值。 |
 
 **返回值：**
 
@@ -1238,7 +1242,7 @@ insert(uri: string, value: ValuesBucket): Promise&lt;number&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ValuesBucket } from '@kit.ArkData';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let key1: string = "name";
 let value1: string = "rose1";
 let key2: string = "age";
@@ -1282,7 +1286,7 @@ delete(uri: string, predicates: dataSharePredicates.DataSharePredicates, callbac
 | 参数名       | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | 是   | 要删除的数据的路径。                                     |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />delete接口所支持的谓词方法取决于服务端所选用的数据库，如KVDB的删除目前仅支持inKeys谓词。谓词内方法为空时，默认全表删除。 |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />delete接口所支持的谓词方法取决于服务端所选用的数据库，如KVDB的删除目前仅支持inKeys谓词。静默场景下谓词内方法为空时，默认全表删除。非静默场景下规格由数据提供方制定。 |
 | callback   | AsyncCallback&lt;number&gt;                                  | 是   | 回调函数。当从数据库中删除一条或多条数据记录成功，err为undefined，data为获取到的已删除的数据记录数；否则为错误对象。<br />因部分数据库（如KVDB）的相应接口并不提供相应支持，故若服务端使用此数据库，则此callback也无法返回删除的数据记录数。 |
 
 **错误码：**
@@ -1301,7 +1305,7 @@ delete(uri: string, predicates: dataSharePredicates.DataSharePredicates, callbac
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 try {
@@ -1338,7 +1342,7 @@ delete(uri: string, predicates: dataSharePredicates.DataSharePredicates): Promis
 | 参数名       | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | 是   | 要删除的数据的路径。                                     |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />delete接口所支持的谓词方法取决于服务端所选用的数据库，如KVDB的删除目前仅支持inKeys谓词。谓词内方法为空时，默认全表删除。 |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />delete接口所支持的谓词方法取决于服务端所选用的数据库，如KVDB的删除目前仅支持inKeys谓词。静默场景下谓词内方法为空时，默认全表删除。非静默场景下规格由数据提供方制定。 |
 
 **返回值：**
 
@@ -1362,7 +1366,7 @@ delete(uri: string, predicates: dataSharePredicates.DataSharePredicates): Promis
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 try {
@@ -1390,6 +1394,8 @@ query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns:
 
 静默场景下，调用此接口时，传入的uri、predicates和columns参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
+使用此接口查询数据库数据时，如查询内容达到资源上限，操作将失败并返回错误，用户可根据场景考虑重试。有关于资源上限的详细说明，请参见[通过数据管理服务实现数据共享静默访问](../../database/share-data-by-silent-access-sys.md#约束与限制)和[通过DataShareExtensionAbility实现数据共享](../../database/share-data-by-datashareextensionability-sys.md#约束与限制)。
+
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
@@ -1397,7 +1403,7 @@ query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns:
 | 参数名       | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | 是   | 要查询的数据的路径。                                     |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />query接口所支持的谓词方法取决于服务端所选用的数据库，如KVDB目前仅支持inKeys和prefixKey。谓词内方法为空时，默认全表查询。 |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />query接口所支持的谓词方法取决于服务端所选用的数据库，如KVDB目前仅支持inKeys和prefixKey。静默场景下谓词内方法为空时，默认全表查询。非静默场景下规格由数据提供方制定。 |
 | columns    | Array&lt;string&gt;                                          | 是   | 要查询的列。如果此参数为空，则查询所有列。               |
 | callback   | AsyncCallback&lt;[DataShareResultSet](js-apis-data-DataShareResultSet-sys.md#datashareresultset)&gt; | 是   | 回调函数。当查询数据库中的数据成功，err为undefined，data为获取到的查询到的结果集；否则为错误对象。 |
 
@@ -1417,7 +1423,7 @@ query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns:
 import { dataSharePredicates, DataShareResultSet } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let columns = ["*"];
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
@@ -1448,6 +1454,8 @@ query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns:
 
 静默场景下，调用此接口时，传入的uri、predicates和columns参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
+使用此接口查询数据库数据时，如查询内容达到资源上限，操作将失败并返回错误，用户可根据场景考虑重试。有关于资源上限的详细说明，请参见[通过数据管理服务实现数据共享静默访问](../../database/share-data-by-silent-access-sys.md#约束与限制)和[通过DataShareExtensionAbility实现数据共享](../../database/share-data-by-datashareextensionability-sys.md#约束与限制)。
+
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
@@ -1455,7 +1463,7 @@ query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns:
 | 参数名       | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | 是   | 要查询的数据的路径。                                     |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />query接口所支持的谓词方法取决于服务端所选用的数据库，如KVDB目前仅支持inKeys和prefixKey。谓词内方法为空时，默认全表查询。 |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />query接口所支持的谓词方法取决于服务端所选用的数据库，如KVDB目前仅支持inKeys和prefixKey。静默场景下谓词内方法为空时，默认全表查询。非静默场景下规格由数据提供方制定。 |
 | columns    | Array&lt;string&gt;                                          | 是   | 要查询的列。如果此参数为空，则查询所有列。               |
 
 **返回值：**
@@ -1480,7 +1488,7 @@ query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns:
 import { dataSharePredicates, DataShareResultSet } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let columns = ["*"];
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
@@ -1516,8 +1524,8 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 | 参数名       | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | 是   | 要更新的数据的路径。                                     |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />update接口是否支持谓词筛选条件取决于服务端所选用的数据库，如KVDB目前并不支持谓词筛选条件，仅RDB支持。谓词内方法为空时，默认全表更新。 |
-| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 是   | 要更新的数据。可以为null。                                  |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />update接口是否支持谓词筛选条件取决于服务端所选用的数据库，如KVDB目前并不支持谓词筛选条件，仅RDB支持。静默场景下谓词内方法为空时，默认全表更新。非静默场景下规格由数据提供方制定。 |
+| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 是   | 要更新的数据的值。                                  |
 | callback   | AsyncCallback&lt;number&gt;                                  | 是   | 回调函数。当更新数据库中的数据记录成功，err为undefined，data为获取到的更新的数据记录数；否则为错误对象。<br />因部分数据库（如KVDB）的相应接口并不提供相应支持，故若服务端使用此数据库，则此callback也无法返回更新的数据记录数。 |
 
 **错误码：**
@@ -1536,7 +1544,7 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 import { dataSharePredicates, ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 let key1: string = "name";
@@ -1584,8 +1592,8 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 | 参数名       | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | 是   | 要更新的数据的路径。                                     |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />update接口是否支持谓词筛选条件取决于服务端所选用的数据库，如KVDB目前并不支持谓词筛选条件，仅RDB支持。谓词内方法为空时，默认全表更新。 |
-| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 是   | 要更新的数据。可以为null。                                   |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />update接口是否支持谓词筛选条件取决于服务端所选用的数据库，如KVDB目前并不支持谓词筛选条件，仅RDB支持。静默场景下谓词内方法为空时，默认全表更新。非静默场景下规格由数据提供方制定。 |
+| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 是   | 要更新的数据的值。                                   |
 
 **返回值：**
 
@@ -1609,7 +1617,7 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 import { dataSharePredicates, ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 let key1: string = "name";
@@ -1763,7 +1771,7 @@ batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallb
 import { ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let vbs: ValuesBucket[] = [
   { "name": "roe11", "age": 21, "salary": 20.5 }
 ]
@@ -1824,7 +1832,7 @@ batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number&g
 import { ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let vbs: ValuesBucket[] = [
   { "name": "roe11", "age": 21, "salary": 20.5 }
 ]
@@ -1905,7 +1913,7 @@ normalizeUri(uri: string, callback: AsyncCallback&lt;string&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).normalizeUri(uri, (err: BusinessError, data: string) => {
     if (err !== undefined) {
@@ -1952,7 +1960,7 @@ normalizeUri(uri: string): Promise&lt;string&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).normalizeUri(uri).then((data: string) => {
     console.info("normalizeUri = " + data);
@@ -1992,7 +2000,7 @@ denormalizeUri(uri: string, callback: AsyncCallback&lt;string&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).denormalizeUri(uri, (err: BusinessError, data: string) => {
     if (err !== undefined) {
@@ -2039,7 +2047,7 @@ denormalizeUri(uri: string): Promise&lt;string&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).denormalizeUri(uri).then((data: string) => {
     console.info("denormalizeUri = " + data);
@@ -2079,7 +2087,7 @@ notifyChange(uri: string, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).notifyChange(uri, () => {
     console.info("***** notifyChange *****");
@@ -2122,7 +2130,7 @@ notifyChange(uri: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).notifyChange(uri);
 }
@@ -2165,7 +2173,7 @@ notifyChange(data: ChangeInfo): Promise&lt;void&gt;
 ```ts
 import { ValuesBucket } from '@kit.ArkData';
 
-let dsUri = ("datashare:///com.acts.datasharetest");
+let dsUri = "datashare:///com.acts.datasharetest";
 let people: ValuesBucket[] = [
   { "name": "LiSi" },
   { "name": "WangWu" },

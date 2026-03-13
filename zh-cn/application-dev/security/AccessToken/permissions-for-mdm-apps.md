@@ -1,8 +1,8 @@
 # 仅MDM应用可用权限
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -653,6 +653,51 @@
 允许应用管理其他设备管理应用。
 
 获取该权限后，超级设备管理应用可管理其他设备管理应用。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：23
+
+## ohos.permission.ENTERPRISE_START_ABILITIES
+
+允许设备管理应用访问其他组件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：23
+
+## ohos.permission.ENTERPRISE_READ_LOG
+
+允许MDM应用收集系统日志。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：23
+
+## ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN
+
+允许已激活的MDM应用解除自身的激活状态。
 
 **权限级别**：system_basic
 

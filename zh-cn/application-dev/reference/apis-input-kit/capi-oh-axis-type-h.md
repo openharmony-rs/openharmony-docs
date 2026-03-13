@@ -35,7 +35,7 @@
 
 ### InputEvent_AxisType
 
-```
+```c
 enum InputEvent_AxisType
 ```
 
@@ -55,7 +55,7 @@ enum InputEvent_AxisType
 
 ### InputEvent_AxisEventType
 
-```
+```c
 enum InputEvent_AxisEventType
 ```
 
@@ -72,7 +72,7 @@ enum InputEvent_AxisEventType
 
 ### InputEvent_AxisAction
 
-```
+```c
 enum InputEvent_AxisAction
 ```
 

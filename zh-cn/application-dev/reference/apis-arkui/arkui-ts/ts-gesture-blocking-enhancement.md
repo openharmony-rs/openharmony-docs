@@ -10,7 +10,7 @@
 
 >  **说明：**
 >
->  从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## shouldBuiltInRecognizerParallelWith
 
@@ -73,7 +73,7 @@ onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback, exp
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
 | callback      | [GestureRecognizerJudgeBeginCallback](#gesturerecognizerjudgebegincallback) | 是     |  给组件绑定自定义手势识别器判定回调，当绑定到该组件的手势即将成功时，会触发用户定义的回调来获取结果。 |
-| exposeInnerGesture   | boolean         | 是    | 暴露内部手势标识。<br/>默认值：false<br/>**说明:**<br/>如果是组合组件，此参数设置true，回调中的current参数则会包含组合组件内部的手势识别器。<br>当前仅支持[Tabs](ts-container-tabs.md)，其他组件请不要设置此参数。<br/>设置为false时，功能与原接口[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin)相同。 |
+| exposeInnerGesture   | boolean         | 是    | 暴露内部手势标识。<br/>默认值：false<br/>**说明：** <br/>如果是组合组件，此参数设置true，回调中的current参数则会包含组合组件内部的手势识别器。<br>当前仅支持[Tabs](ts-container-tabs.md)，其他组件请不要设置此参数。<br/>设置为false时，功能与原接口[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin)相同。 |
 
 **返回值：**
 
@@ -337,6 +337,7 @@ struct FatherControlChild {
 ### 示例2（嵌套场景下拦截内部容器手势）
 
 本示例通过将参数exposeInnerGesture设置为true，实现了一级Tabs容器在嵌套二级Tabs的场景下，能够屏蔽二级Tabs内置Swiper的滑动手势，从而触发一级Tabs内置Swiper滑动手势的功能。
+
 开发者自行定义变量来记录内层Tabs的索引值，通过该索引值判断当滑动达到内层Tabs的边界处时，触发回调返回屏蔽使外层Tabs产生滑动手势。
 
 ```ts
@@ -439,67 +440,71 @@ struct Index {
 
   build() {
     Column() {
-      Row({ space: 20 }) {
-        Text(this.message)
-          .width(400)
-          .height(80)
-          .fontSize(23)
-      }.margin(25)
-    }
-    .margin(50)
-    .width(400)
-    .height(200)
-    .borderWidth(2)
-    .gesture(TapGesture())
-    .gesture(LongPressGesture())
-    .gesture(PanGesture({ direction: PanDirection.Vertical }))
-    .gesture(PinchGesture())
-    .gesture(RotationGesture())
-    .gesture(SwipeGesture({ direction: SwipeDirection.Horizontal }))
-    // 给组件绑定自定义手势识别器判定回调
-    .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
-      others: Array<GestureRecognizer>) => {
-      if (current) {
-        // 判断是否为滑动手势
-        if (current.getType() === GestureControl.GestureType.PAN_GESTURE) {
-          let target = current as PanRecognizer;
-          this.message = 'PanGesture\ndistance:' + target.getPanGestureOptions().getDistance() + '\nfingers:' +
-          target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
-        }
-        // 判断是否为长按手势
-        if (current.getType() === GestureControl.GestureType.LONG_PRESS_GESTURE) {
-          let target = current as LongPressRecognizer;
-          this.message = 'LongPressGesture\nfingers:' + target.getFingerCount() + '\nisFingerCountLimited:' +
-          target.isFingerCountLimit() + '\nrepeat:' + target.isRepeat() + '\nduration:' + target.getDuration();
-        }
-        // 判断是否为捏合手势
-        if (current.getType() === GestureControl.GestureType.PINCH_GESTURE) {
-          let target = current as PinchRecognizer;
-          this.message = 'PinchGesture\ndistance:' + target.getDistance() + '\nfingers:' +
-          target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
-        }
-        // 判断是否为点击手势
-        if (current.getType() === GestureControl.GestureType.TAP_GESTURE) {
-          let target = current as TapRecognizer;
-          this.message = 'TapGesture\ncount:' + target.getTapCount() + '\nfingers:' +
-          target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
-        }
-        // 判断是否为旋转手势
-        if (current.getType() === GestureControl.GestureType.ROTATION_GESTURE) {
-          let target = current as RotationRecognizer;
-          this.message = 'RotationGesture\nangle:' + target.getAngle() + '\nfingers:' +
-          target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
-        }
-        // 判断是否为快滑手势
-        if (current.getType() === GestureControl.GestureType.SWIPE_GESTURE) {
-          let target = current as SwipeRecognizer;
-          this.message = 'SwipeGesture\ndirection:' + target.getDirection() + '\nfingers:' +
-          target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit() + '\nspeed:' +
-          target.getVelocityThreshold();
-        }
+      Column() {
+        Row({ space: 20 }) {
+          Text(this.message)
+            .width('100%')
+            .height(80)
+            .fontSize(23)
+        }.margin(25)
       }
-      return GestureJudgeResult.CONTINUE;
-    })
+      .margin(25)
+      .padding(20)
+      .width('90%')
+      .height(250)
+      .borderWidth(2)
+      .gesture(TapGesture())
+      .gesture(LongPressGesture())
+      .gesture(PanGesture({ direction: PanDirection.Vertical }))
+      .gesture(PinchGesture())
+      .gesture(RotationGesture())
+      .gesture(SwipeGesture({ direction: SwipeDirection.Horizontal }))
+      // 给组件绑定自定义手势识别器判定回调
+      .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+        others: Array<GestureRecognizer>) => {
+        if (current) {
+          // 判断是否为滑动手势
+          if (current.getType() === GestureControl.GestureType.PAN_GESTURE) {
+            let target = current as PanRecognizer;
+            this.message = 'PanGesture\ndistance:' + target.getPanGestureOptions().getDistance() + '\nfingers:' +
+            target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
+          }
+          // 判断是否为长按手势
+          if (current.getType() === GestureControl.GestureType.LONG_PRESS_GESTURE) {
+            let target = current as LongPressRecognizer;
+            this.message = 'LongPressGesture\nfingers:' + target.getFingerCount() + '\nisFingerCountLimited:' +
+            target.isFingerCountLimit() + '\nrepeat:' + target.isRepeat() + '\nduration:' + target.getDuration();
+          }
+          // 判断是否为捏合手势
+          if (current.getType() === GestureControl.GestureType.PINCH_GESTURE) {
+            let target = current as PinchRecognizer;
+            this.message = 'PinchGesture\ndistance:' + target.getDistance() + '\nfingers:' +
+            target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
+          }
+          // 判断是否为点击手势
+          if (current.getType() === GestureControl.GestureType.TAP_GESTURE) {
+            let target = current as TapRecognizer;
+            this.message = 'TapGesture\ncount:' + target.getTapCount() + '\nfingers:' +
+            target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
+          }
+          // 判断是否为旋转手势
+          if (current.getType() === GestureControl.GestureType.ROTATION_GESTURE) {
+            let target = current as RotationRecognizer;
+            this.message = 'RotationGesture\nangle:' + target.getAngle() + '\nfingers:' +
+            target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
+          }
+          // 判断是否为快滑手势
+          if (current.getType() === GestureControl.GestureType.SWIPE_GESTURE) {
+            let target = current as SwipeRecognizer;
+            this.message = 'SwipeGesture\ndirection:' + target.getDirection() + '\nfingers:' +
+            target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit() + '\nspeed:' +
+            target.getVelocityThreshold();
+          }
+        }
+        return GestureJudgeResult.CONTINUE;
+      })
+    }
+    .padding(15)
   }
 }
 ```

@@ -89,7 +89,7 @@ List组件交叉轴方向在没有设置尺寸时，其尺寸默认自适应父�
 
 List组件主轴默认是垂直方向，即默认情况下不需要手动设置List方向，就可以构建一个垂直滚动列表。
 
-若是水平滚动列表场景，将List的listDirection属性设置为Axis.Horizontal即可实现。listDirection默认为Axis.Vertical，即主轴默认是垂直方向。
+若是水平滚动列表场景，将List的[listDirection](../reference/apis-arkui/arkui-ts/ts-container-list.md#listdirection)属性设置为Axis.Horizontal即可实现。listDirection默认为Axis.Vertical，即主轴默认是垂直方向。
 
 
 <!-- @[build_a_horizontal_scrolling_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
@@ -314,7 +314,7 @@ class Contact {
 @Entry
 @Component
 export struct ListIteration {
-  private contacts: Array<object> = [
+  private contacts: Array<Contact> = [
 
     // app.string.peopleOne 资源文件中的value值为'小明'，app.media.iconA为自定义资源
     new Contact($r('app.string.peopleOne'), $r('app.media.iconA')),
@@ -323,7 +323,7 @@ export struct ListIteration {
   ];
 
   build() {
-    // ···
+    // ...
           List() {
             ForEach(this.contacts, (item: Contact) => {
               ListItem() {
@@ -340,7 +340,7 @@ export struct ListIteration {
             }, (item: Contact) => JSON.stringify(item))
           }
           .width('100%')
-        // ···
+          // ...
   }
 }
 ```
@@ -639,7 +639,7 @@ export struct StickyHeaderList {
   }
 
   build() {
-    // ···
+    // ...
           List() {
             // 懒加载ListItemGroup，contactsGroups为多个分组联系人contacts和标题title的数据集合
             LazyForEach(contactsGroupsDataSource, (itemGroup: ContactsGroup) => {
@@ -648,7 +648,10 @@ export struct StickyHeaderList {
                 if (itemGroup.contacts) {
                   LazyForEach(new ContactsGroupDataSource(itemGroup.contacts), (item: Contact) => {
                     ListItem() {
-                    // ···
+                      Row() {
+                        Image(item.icon).width(40).height(40).margin(10)
+                        Text(item.name).fontSize(20)
+                      }.width('100%').justifyContent(FlexAlign.Start)
                     }
                   }, (item: Contact) => JSON.stringify(item))
                 }
@@ -656,7 +659,7 @@ export struct StickyHeaderList {
             }, (itemGroup: ContactsGroup) => JSON.stringify(itemGroup))
           }
           .sticky(StickyStyle.Header) // 设置吸顶，实现粘性标题效果
-        // ···
+          // ...
   }
 }
 ```
@@ -689,13 +692,13 @@ List组件初始化时，可以通过scroller参数绑定一个[Scroller](../ref
 Stack({ alignContent: Alignment.Bottom }) {
   // 将listScroller用于初始化List组件的scroller参数，完成listScroller与列表的绑定。
   List({ space: 20, scroller: this.listScroller }) {
-  // ···
+    // ...
   }
 
   Button() {
-  // ···
+    // ...
   }
-  // ···
+  // ...
   .onClick(() => {
     // 点击按钮时，指定跳转位置，返回列表顶部
     this.listScroller.scrollToIndex(0);
@@ -725,26 +728,26 @@ Stack({ alignContent: Alignment.Bottom }) {
 const alphabets = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
   'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-// ···
+// ...
 
 @Entry
 @Component
 export struct ResponsiveScrollPositionList {
   @State selectedIndex: number = 0;
   private listScroller: Scroller = new Scroller();
-// ···
+  // ...
 
   build() {
-    // ···
+    // ...
           Stack({ alignContent: Alignment.End }) {
             // 此为响应滚动位置示例List容器
             // listScroller初始化List组件的scroller参数，绑定listScroller与列表。
             List({ scroller: this.listScroller }) {
-            // ···
+              // ...
             }
             .onScrollIndex((firstIndex: number) => {
               // 根据列表滚动到的索引值，重新计算对应联系人索引栏的位置this.selectedIndex
-            // ···
+              // ...
             })
 
             // 字母表索引组件
@@ -754,7 +757,7 @@ export struct ResponsiveScrollPositionList {
                 this.listScroller.scrollToIndex(index);
               })
           }
-        // ···
+          // ...
   }
 }
 ```
@@ -841,7 +844,7 @@ ListItem() {
     position: BadgePosition.RightTop,
     style: { badgeSize: 16, badgeColor: '#FA2A2D' }
   }) {
-  // ···
+    // ...
   }
 }
 ```
@@ -977,11 +980,11 @@ ListItem() {
      }
    
      build() {
-       // ···
+       // ...
          Column(
-           // ···
+           // ...
          ) {
-           // ···
+           // ...
                Row() {
                  if (this.isEditMode) {
                    Text('X')
@@ -997,7 +1000,7 @@ ListItem() {
                      .margin({ left: 40 })
                    Blank()
                    Text('+')// 提供新增列表项入口，即给新增按钮添加点击事件
-                   // ···
+                   // ...
                      .onClick(() => {
                        this.getUIContext().showTextPickerDialog({
                          range: this.availableThings,
@@ -1010,7 +1013,7 @@ ListItem() {
                        })
                      })
                  }
-               // ···
+                 // ...
    
                List({ space: 10 }) {
                  ForEach(this.toDoData, (toDoItem: ToDo) => {
@@ -1026,7 +1029,7 @@ ListItem() {
                }
              }
            }
-           // ···
+           // ...
      }
    }
    ```
@@ -1043,6 +1046,7 @@ ListItem() {
 删除列表项功能实现主要流程如下：
 
 1. 列表的删除功能一般进入编辑模式后才可使用，所以需要提供编辑模式的入口。
+
    以待办列表为例，通过监听列表项的长按事件，当用户长按列表项时，进入编辑模式。
 
    <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
@@ -1083,6 +1087,7 @@ ListItem() {
    ```
 
 2. 需要响应用户的选择交互，记录要删除的列表项数据。
+
    在待办列表中，通过勾选框的勾选或取消勾选，响应用户勾选列表项变化，记录所有选择的列表项。
 
    <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
@@ -1305,10 +1310,10 @@ List(
      @State expandedItems: boolean[] = Array(this.routes.length).fill(false);
      @State selection: string | null = null;
    
-   // ···
+     // ...
    
      build() {
-       // ···
+       // ...
              Column() {
                List({ space: 10 }) {
                  ForEach(this.routes, (itemGroup: ItemGroupInfo) => {
@@ -1334,22 +1339,22 @@ List(
                                .height(30)
                                .width(30)
                            }
-                           .width("100%")
+                           .width('100%')
                          }
-                         .width("100%")
+                         .width('100%')
                          .animation({ curve: curves.interpolatingSpring(0, 1, 528, 39) })
                        })
                      }
                    }.clip(true)
                  })
                }
-               .width("100%")
+               .width('100%')
              }
              .width('100%')
              .height('100%')
              .justifyContent(FlexAlign.Start)
              .backgroundColor($r('sys.color.ohos_id_color_sub_background'))
-           // ···
+             // ...
      }
    }
    ```
@@ -1371,7 +1376,7 @@ List(
          .rotate({ angle: !!itemGroup.children.length ? (this.expandedItems[itemGroup.index] ? 180 : 0) : 180 })
          .animation({ curve: curves.interpolatingSpring(0, 1, 228, 22) })
      }
-     .width("100%")
+     .width('100%')
      .padding(10)
      .animation({ curve: curves.interpolatingSpring(0, 1, 528, 39) })
      .onClick(() => {
@@ -1409,6 +1414,21 @@ List(
    <!-- @[construct_list_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListChatRoom.ets) -->
    
    ``` TypeScript
+   @Builder
+   MessageItem(message: Message) {
+     Column() {
+       Text(`${message.sender}: ${message.content}`)
+         .fontSize(16)
+         .textAlign(TextAlign.Start)
+         .padding(10)
+         .backgroundColor(message.sender === 'system' ? '#F0F0F0' : '#E6F3FF')
+         .borderRadius(8)
+     }
+     .width('100%')
+     .alignItems(HorizontalAlign.Start)
+     .margin({ bottom: 8 })
+   }
+
    @State messages: Message[] = [];
    
    aboutToAppear(): void {
@@ -1428,7 +1448,7 @@ List(
    }
    
    build() {
-     // ···
+     // ...
            Column() {
              // 聊天消息区域
              List({ space: 10 }) {
@@ -1442,11 +1462,11 @@ List(
              .layoutWeight(1)  // 占据剩余空间
              .alignListItem(ListItemAlign.Center)
    
-             // ···
+             // ...
            }
            .width('100%')
            .height('100%')
-         // ···
+           // ...
    }
    ```
 

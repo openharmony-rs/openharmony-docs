@@ -49,7 +49,7 @@ The file declares the native APIs used for audio and video multiplexing.
 
 ### OH_AVMuxer_Create()
 
-```
+```c
 OH_AVMuxer *OH_AVMuxer_Create(int32_t fd, OH_AVOutputFormat format)
 ```
 
@@ -77,7 +77,7 @@ Creates an OH_AVMuxer instance by using the file descriptor and container format
 
 ### OH_AVMuxer_SetRotation()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_SetRotation(OH_AVMuxer *muxer, int32_t rotation)
 ```
 
@@ -105,7 +105,7 @@ Sets the rotation angle (clockwise), which must be 0, 90, 180, or 270, of an out
 
 ### OH_AVMuxer_SetFormat()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_SetFormat(OH_AVMuxer *muxer, OH_AVFormat *format)
 ```
 
@@ -139,7 +139,7 @@ Starting from API version 20, the following operations are supported:
 
 ### OH_AVMuxer_AddTrack()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_AddTrack(OH_AVMuxer *muxer, int32_t *trackIndex, OH_AVFormat *trackFormat)
 ```
 
@@ -168,7 +168,7 @@ Adds an audio or video track to a muxer. Each time this function is called, an a
 
 ### OH_AVMuxer_Start()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_Start(OH_AVMuxer *muxer)
 ```
 
@@ -195,7 +195,7 @@ Starts a muxer. This function must be called after [OH_AVMuxer_AddTrack](#oh_avm
 
 ### OH_AVMuxer_WriteSample()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_WriteSample(OH_AVMuxer *muxer, uint32_t trackIndex, OH_AVMemory *sample, OH_AVCodecBufferAttr info)
 ```
 
@@ -229,7 +229,7 @@ Writes a sample to a muxer. This function must be called after [OH_AVMuxer_Start
 
 ### OH_AVMuxer_WriteSampleBuffer()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_WriteSampleBuffer(OH_AVMuxer *muxer, uint32_t trackIndex, const OH_AVBuffer *sample)
 ```
 
@@ -258,7 +258,7 @@ Writes a sample to a muxer. This function must be called after [OH_AVMuxer_Start
 
 ### OH_AVMuxer_Stop()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_Stop(OH_AVMuxer *muxer)
 ```
 
@@ -285,7 +285,7 @@ Stops a muxer. Once the muxer is stopped, it cannot be restarted.
 
 ### OH_AVMuxer_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_Destroy(OH_AVMuxer *muxer)
 ```
 

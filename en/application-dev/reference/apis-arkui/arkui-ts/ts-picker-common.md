@@ -40,12 +40,12 @@ Defines the button style of the picker dialog box.
 | role | [ButtonRole](ts-basic-components-button.md#buttonrole12) | No  | Yes  | Role of the button.                    |
 | fontSize  | [Length](ts-types.md#length)                 | No  | Yes  | Font size of the button.|
 | fontColor | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Color of button text.                    |
-| fontWeight  | [FontWeight](ts-appendix-enums.md#fontweight) \| number \| string| No  | Yes  | Font weight of button text For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **"200"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.|
+| fontWeight  | [FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string| No  | Yes  | Font weight of button text For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **"200"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.|
 | fontStyle | [FontStyle](ts-appendix-enums.md#fontstyle) | No  | Yes  | Font style of button text.                    |
-| fontFamily  |  [Resource](ts-types.md#resource) \| string  | No  | Yes  | Font family. The 'HarmonyOS Sans' font and [registered custom fonts](../js-apis-font.md) are supported.|
+| fontFamily  |  [Resource](ts-types.md#resource)&nbsp;\|&nbsp;string  | No  | Yes  | Font family. The 'HarmonyOS Sans' font and [registered custom fonts](../js-apis-font.md) are supported.|
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Background color of the button.                    |
 | borderRadius  | [Length](ts-types.md#length) \| [BorderRadiuses](ts-types.md#borderradiuses9)| No  | Yes  | Corner radius of the button.|
-| primary  | boolean | No  | Yes  | Whether the button responds to the **Enter** key by default when the dialog box is displayed and the **Tab** key is not used for sequential focus navigation.<br> Default value: **false**.|
+| primary  | boolean | No  | Yes  | Whether the button responds to the **Enter** key by default when the dialog box is displayed and the **Tab** key is not used for sequential focus navigation.<br>**true**: After the dialog box is displayed and the **Tab** key is not used for sequential focus navigation, pressing the **Enter** key triggers the event bound to the button.<br>**false**: After the dialog box is displayed and the **Tab** key is not used for sequential focus navigation, pressing the **Enter** key does not trigger the event bound to the button.<br>Default value: **false**.|
 
 ## DateRange<sup>19+</sup>
 

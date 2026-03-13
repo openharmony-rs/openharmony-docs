@@ -136,7 +136,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_CERT_AUTHORITY_INVALID | -202 | 未信任的证书签发机构。这可能意味着：1.攻击者用真实证书代替了包含其公钥并由其表亲签名的证书。2.服务器操作员拥有来自本端不知道但应该信任的CA的合法证书。3.服务器提供了一个自签名证书，无法抵御主动攻击者。 |
 |ERR_CERT_CONTAINS_ERRORS | -203 | 证书中包含错误。 |
 |ERR_CERT_NO_REVOCATION_MECHANISM | -204 |证书无撤销机制，实际上，此证书不能被吊销。|
-|ERR_CERT_UNABLE_TO_CHECK_REVOCATION | -205 | 此网站的安全证书的吊销信息不可用。这可能意味着：1。一个攻击者破坏了证书中的私钥，并阻止了本端发现证书已被吊销的尝试。2.证书未被吊销，但吊销服务器正忙或不可用。|
+|ERR_CERT_UNABLE_TO_CHECK_REVOCATION | -205 | 此网站的安全证书的吊销信息不可用。这可能意味着：1.一个攻击者破坏了证书中的私钥，并阻止了本端发现证书已被吊销的尝试。2.证书未被吊销，但吊销服务器正忙或不可用。|
 |ERR_CERT_REVOKED | -206 | 证书已撤销。本端有能力忽略这个错误，但这可能不是本端应该做的事情。|
 |ERR_CERT_INVALID | -207 |  证书非法。  |
 |ERR_CERT_WEAK_SIGNATURE_ALGORITHM | -208 | 服务器以使用弱签名算法签名的证书作为响应。|
@@ -149,7 +149,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_CERT_KNOWN_INTERCEPTION_BLOCKED | -217 | 已知该证书被设备所有者以外的实体用于拦截。|
 |ERR_SSL_OBSOLETE_VERSION_OR_CIPHER | -218 | 连接使用过时版本的 SSL/TLS 或密码。|
 |ERR_CERT_END | -219 | 紧跟在上一个证书错误代码之后的值。|
-|ERR_INVALID_URL | -300 | 非法 url。 |
+|ERR_INVALID_URL | -300 | 非法URL。 |
 |ERR_DISALLOWED_URL_SCHEME | -301 |  不允许使用的URL scheme。 |
 |ERR_UNKNOWN_URL_SCHEME | -302 | 未知 scheme。 |
 |ERR_INVALID_REDIRECT | -303 | 试图加载URL导致重定向到无效的URL。|
@@ -158,7 +158,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_UNSAFE_PORT | -312 | 不安全的端口。 |
 |ERR_INVALID_RESPONSE | -320 | 非法返回。 |
 |ERR_INVALID_CHUNKED_ENCODING | -321 | 分块传输编码错误。|
-|ERR_METHOD_UNSUPPORTED | -322 |	方法不支持。 |
+|ERR_METHOD_UNSUPPORTED | -322 | 方法不支持。 |
 |ERR_UNEXPECTED_PROXY_AUTH | -323 | 意外的代理身份验证。 |
 |ERR_EMPTY_RESPONSE | -324 | 空返回错误。 |
 |ERR_RESPONSE_HEADERS_TOO_BIG | -325 | 返回体中 headers 太大。 |
@@ -167,7 +167,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_MALFORMED_IDENTITY | -329 | 用于身份验证的标识无效。|
 |ERR_CONTENT_DECODING_FAILED | -330 | 响应正文的内容解码失败。|
 |ERR_NETWORK_IO_SUSPENDED | -331 | 操作无法完成，因为所有网络IO都已挂起。|
-|ERR_SYN_REPLY_NOT_RECEIVED | -332 |	在流上未接收到SYN_REPLY的情况下接收到的FLIP数据。|
+|ERR_SYN_REPLY_NOT_RECEIVED | -332 | 在流上未接收到SYN_REPLY的情况下接收到的FLIP数据。|
 |ERR_ENCODING_CONVERSION_FAILED | -333 | 将响应转换为目标编码失败。|
 |ERR_UNRECOGNIZED_FTP_DIRECTORY_LISTING_FORMAT | -334 | 无法识别的 ftp 目录列表格式。 |
 |ERR_NO_SUPPORTED_PROXIES | -336 | 没有支持的代理。 |
@@ -176,7 +176,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_UNSUPPORTED_AUTH_SCHEME | -339 | 不支持的身份验证方案。 |
 |ERR_ENCODING_DETECTION_FAILED | -340 | 编码检测失败。 |
 |ERR_MISSING_AUTH_CREDENTIALS | -341 | 缺少身份验证凭据。 |
-|ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS | -342 |	意外的安全库状态。 |
+|ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS | -342 | 意外的安全库状态。 |
 |ERR_MISCONFIGURED_AUTH_ENVIRONMENT | -343 | 配置错误的身份验证环境。 |
 |ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS | -344 | 取消文档安全库状态。 |
 |ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN | -345 | 响应体太大。|
@@ -215,7 +215,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_TOO_MANY_ACCEPT_CH_RESTARTS | -382 | ACCEPT_CH 重启已被触发太多次。|
 |ERR_INCONSISTENT_IP_ADDRESS_SPACE | -383 | 在相同的请求期间，远程端点的 IP 地址空间与先前观察到的值不同。任何受影响的请求的缓存条目都应被标记为无效。|
 |ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY | -384 | 缓存的远程端点的 IP 地址空间被本地网络访问检查所阻止。|
-|ERR_CACHE_MISS | -400 |	缓存中没有请求的条目。|
+|ERR_CACHE_MISS | -400 | 缓存中没有请求的条目。|
 |ERR_CACHE_READ_FAILURE | -401 | 无法从磁盘缓存中读取。|
 |ERR_CACHE_WRITE_FAILURE | -402 | 无法写入磁盘缓存。|
 |ERR_CACHE_OPERATION_UNSUPPORTED | -403 | 此条目不支持此操作。|
@@ -263,7 +263,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_DNS_TIMED_OUT | -803 | DNS事务超时。|
 |ERR_DNS_CACHE_MISS | -804 | 对于只查询本地源的查找，在缓存或其他本地源中未找到该条目。|
 |ERR_DNS_SEARCH_EMPTY | -805 | 后缀搜索列表规则阻止了给定主机名的解析。|
-|ERR_DNS_SORT_ERROR | -806 |	未能根据RFC3484对地址进行排序。|
+|ERR_DNS_SORT_ERROR | -806 | 未能根据RFC3484对地址进行排序。|
 |ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED | -808 | 未能解析DNS-over-HTTPS服务器的主机名。|
 |ERR_DNS_NAME_HTTPS_ONLY | -809 | DNS已识别请求因不安全的连接（http/ws）而被禁止。应用程序应该像处理HTTP重定向一样处理这个错误，将连接重定向到安全的https或wss。|
 |ERR_DNS_REQUEST_CANCELED | -810 | 与此任务相关的所有 DNS 请求已被取消。|

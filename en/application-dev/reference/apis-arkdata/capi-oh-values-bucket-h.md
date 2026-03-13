@@ -41,7 +41,7 @@ Defines the types of the key and value in a KV pair.
 
 ### OH_VBucket_PutAsset()
 
-```
+```c
 int OH_VBucket_PutAsset(OH_VBucket *bucket, const char *field, Data_Asset *value)
 ```
 
@@ -68,7 +68,7 @@ Puts a [Data_Asset](capi-rdb-data-asset.md) object into the [OH_VBucket](capi-rd
 
 ### OH_VBucket_PutAssets()
 
-```
+```c
 int OH_VBucket_PutAssets(OH_VBucket *bucket, const char *field, Data_Asset **value, uint32_t count)
 ```
 
@@ -100,7 +100,7 @@ OH_VBucket
 
 ### OH_VBucket_PutFloatVector()
 
-```
+```c
 int OH_VBucket_PutFloatVector(OH_VBucket *bucket, const char *field, const float *vec, size_t len)
 ```
 
@@ -132,7 +132,7 @@ OH_VBucket
 
 ### OH_VBucket_PutUnlimitedInt()
 
-```
+```c
 int OH_VBucket_PutUnlimitedInt(OH_VBucket *bucket, const char *field, int sign, const uint64_t *trueForm, size_t len)
 ```
 

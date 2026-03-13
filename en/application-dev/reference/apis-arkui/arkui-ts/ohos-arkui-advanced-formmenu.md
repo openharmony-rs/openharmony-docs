@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 The **FormMenu** component encapsulates an **Add to home screen** menu, which allows users to long-press a component in the application to add it to their home screen for direct access. During application usage, this component acts as a portal for retention and re-engagement, encouraging users to conveniently add features to their home screen.
 
 This component facilitates the quick addition of service widgets to the home screen through a long-press menu within the application:
@@ -27,7 +27,7 @@ This component facilitates the quick addition of service widgets to the home scr
 
 ## Modules to Import
 
-```
+```ts
 import { AddFormMenuItem } from '@kit.ArkUI';
 ```
 
@@ -84,7 +84,7 @@ AddFormMenuItem(
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-| Name           | Type          | Read-Only|Optional| Description  
+| Name| Type| Read-Only|Optional| Description|
 | --------------- | ----------------- | ---- | ---- | ---- |
 | options | [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions) | No  | Yes | Information about the menu item.|
 

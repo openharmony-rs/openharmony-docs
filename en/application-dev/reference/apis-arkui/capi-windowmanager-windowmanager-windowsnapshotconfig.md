@@ -7,7 +7,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct {...} WindowManager_WindowSnapshotConfig
 ```
 

@@ -17,22 +17,45 @@
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-   ```c++
-   // 导入NDK接口头文件。
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKDeferredCaptureSample/entry/src/main/cpp/camera_manager.h) -->
+   
+   ``` C
    #include <cstdint>
-   #include <cstdlib>
-   #include <cstring>
-   #include <memory>
-   #include <mutex>
+   #include <unistd.h>
+   #include <string>
+   #include <thread>
+   #include <cstdio>
+   #include <fcntl.h>
+   #include <map>
+   #include <string>
+   #include <vector>
+   #include <native_buffer/native_buffer.h>
+   #include "iostream"
+   #include "mutex"
+   
    #include "hilog/log.h"
+   #include "ohcamera/camera.h"
+   #include "ohcamera/camera_input.h"
+   #include "ohcamera/capture_session.h"
+   #include "ohcamera/photo_output.h"
+   #include "ohcamera/preview_output.h"
+   #include "ohcamera/video_output.h"
    #include "napi/native_api.h"
-   #include <ohcamera/camera.h>
-   #include <ohcamera/photo_output.h>
-   #include <ohcamera/camera_manager.h>
-   #include <multimedia/media_library/media_asset_manager_capi.h>
-   #include <multimedia/media_library/media_asset_change_request_capi.h>
-   #include <multimedia/media_library/media_access_helper_capi.h>
-   #include <multimedia/image_framework/image/image_packer_native.h>
+   #include "ohcamera/camera_manager.h"
+   #include "common/log_common.h"
+   
+   #include "multimedia/image_framework/image/image_native.h"
+   #include "multimedia/image_framework/image/image_source_native.h"
+   #include "multimedia/image_framework/image/image_packer_native.h"
+   #include "multimedia/media_library/media_access_helper_capi.h"
+   #include "multimedia/media_library/media_asset_base_capi.h"
+   #include "multimedia/media_library/media_asset_capi.h"
+   #include "multimedia/media_library/media_asset_change_request_capi.h"
+   #include "multimedia/media_library/media_asset_manager_capi.h"
+   #include "multimedia/media_library/moving_photo_capi.h"
+   #include "ohcamera/photo_native.h"
+   #include <window_manager/oh_display_info.h>
+   #include <window_manager/oh_display_manager.h>
    ```
 
 2. 在CMake脚本中链接相关动态库。
@@ -67,131 +90,199 @@
    - 通过mediaAsset直接落盘图片或者通过mediaAsset配置策略模式请求图像资源，业务处理后通过buffer保存图片，或显示图片(参考[拍照(C/C++)](./native-camera-shooting.md)步骤5)。
    - 使用完后解注册分段式拍照回调函数。
 
-   ```c++
-   // 方式一：调用媒体库落盘图片。
-   void mediaLibSavePhoto(OH_MediaAsset* mediaAsset) {
-       if (mediaAsset == nullptr) {
-           OH_LOG_ERROR(LOG_APP, "mediaAsset is nullptr!");
-           return;
-       }
-       // 创建媒体资产更改请求对象。
-       OH_MediaAssetChangeRequest* changeRequest = OH_MediaAssetChangeRequest_Create(mediaAsset);
-       if (changeRequest == nullptr) {
-           OH_LOG_ERROR(LOG_APP, "changeRequest is nullptr!");
-           return;
-       }
-       // 请求保存图片。
-       MediaLibrary_ErrorCode errCode =
-           OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, MEDIA_LIBRARY_IMAGE_JPEG);
-       OH_LOG_INFO(LOG_APP, "SaveCameraPhoto get errCode:%{public}d", errCode);
-       // 发起请求。
-       errCode = OH_MediaAccessHelper_ApplyChanges(changeRequest);
-       OH_LOG_INFO(LOG_APP, "ApplyChanges get errCode:%{public}d", errCode);
-   }
+   <!-- @[deferred_photo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKDeferredCaptureSample/entry/src/main/cpp/camera_manager.cpp) -->
    
-   // 方式二：调用媒体库接口请求图像资源。
-   // 图像源准备就绪时调用。
-   std::mutex g_mediaAssetMutex;
-   OH_MediaAsset* g_mediaAsset_;
-   void OnImageDataPrepared(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId,
-                            MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type,
-                            OH_ImageSourceNative* imageSourceNative) {
-       if (imageSourceNative == nullptr) {
-           OH_LOG_ERROR(LOG_APP, "OnImageDataPrepared: imageSourceNative is nullptr!");
-           return;
-       }
-       if (mediaQuality == MediaLibrary_MediaQuality::MEDIA_LIBRARY_QUALITY_FAST) {
-           OH_LOG_INFO(LOG_APP, "OnImageDataPrepared: Using fast media quality.");
-       } else if (mediaQuality == MediaLibrary_MediaQuality::MEDIA_LIBRARY_QUALITY_FULL) {
-           OH_LOG_INFO(LOG_APP, "OnImageDataPrepared: Using full media quality.");
-       }
-       // 通过OH_ImageSourceNative创建OH_PixelmapNative。
-       OH_PixelmapNative* pixelmapNative = nullptr;
-       OH_DecodingOptions* decodingOptions = nullptr;
-       Image_ErrorCode imageErr = IMAGE_SUCCESS;
-       imageErr = OH_ImageSourceNative_CreatePixelmap(imageSourceNative, decodingOptions, &pixelmapNative);
-       if (imageErr != IMAGE_SUCCESS) {
-           OH_LOG_ERROR(LOG_APP, "OnImageDataPrepared: CreatePixelmap failed.");
-           return;
-       }
-       // 创建Image Packer并设置打包选项。
-       OH_ImagePackerNative* imagePacker;
-       OH_ImagePackerNative_Create(&imagePacker);
-       OH_PackingOptions* options;
-       OH_PackingOptions_Create(&options);
-       char format[] = "image/jpeg";
-       Image_MimeType image_MimeType = {format, strlen(format)};
-       OH_PackingOptions_SetMimeType(options, &image_MimeType);
-       OH_PackingOptions_SetQuality(options, 100); // 最高质量100。
-       size_t bufferSize = 3072 * 4096; // 传大于编码后的size大小，编码后会重新赋值。
-       // 解析出图片buffer。
-       auto buffer = std::make_unique<uint8_t[]>(bufferSize);
-       imageErr = OH_ImagePackerNative_PackToDataFromPixelmap(imagePacker, options, pixelmapNative, buffer.get(), &bufferSize);
-       OH_LOG_INFO(LOG_APP, "OnImageDataPrepared: packToData ret code:%{public}u outsize:%{public}zu", imageErr, bufferSize);
-       std::lock_guard<std::mutex> lock(g_mediaAssetMutex);
-       if (g_mediaAsset_ == nullptr) {
-         OH_LOG_ERROR(LOG_APP,  "OnImageDataPrepared: get current mediaAsset failed!");
-         return;
-       }
-       // 调用媒体库接口通过buffer存图。
-       OH_MediaAssetChangeRequest* changeRequest = OH_MediaAssetChangeRequest_Create(g_mediaAsset_);
-       MediaLibrary_ErrorCode mediaErr = OH_MediaAssetChangeRequest_AddResourceWithBuffer(changeRequest,
-           MEDIA_LIBRARY_IMAGE_RESOURCE, buffer.get(), bufferSize);
-       OH_LOG_INFO(LOG_APP,  "OnImageDataPrepared: AddResourceWithBuffer get errCode:%{public}d", mediaErr);
-       mediaErr = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, MEDIA_LIBRARY_IMAGE_JPEG);
-       OH_LOG_INFO(LOG_APP,  "OnImageDataPrepared: SaveCameraPhoto get errCode:%{public}d", mediaErr);
-       mediaErr = OH_MediaAccessHelper_ApplyChanges(changeRequest);
-       OH_LOG_INFO(LOG_APP,  "OnImageDataPrepared: ApplyChanges get errCode:%{public}d", mediaErr);
-   }
-   
-   void mediaLibRequestBuffer(OH_MediaAsset* mediaAsset) {
-       if (mediaAsset == nullptr) {
-           OH_LOG_ERROR(LOG_APP, "mediaAsset is nullptr!");
-           return;
-       }
-       // 创建媒体资产管理器。
-       OH_MediaAssetManager* mediaAssetManager = OH_MediaAssetManager_Create();
-       if (mediaAssetManager == nullptr) {
-           OH_LOG_ERROR(LOG_APP, "mediaAssetManager is nullptr!");
-           return;
-       }
-       // 配置请求媒体图片参数。
-       MediaLibrary_RequestOptions requestOptions;
-       // 按照业务需求配置策略模式请求图像资源。
-       // MEDIA_LIBRARY_FAST_MODE：仅接收一阶段低质量图回调。
-       // MEDIA_LIBRARY_HIGH_QUALITY_MODE：仅接收二阶段全质量图回调。
-       // MEDIA_LIBRARY_BALANCED_MODE：接收一阶段及二阶段图片回调。
-       requestOptions.deliveryMode = MEDIA_LIBRARY_FAST_MODE;
-       MediaLibrary_RequestId requestId;
-       // 请求图像资源，图像源准备就绪时调用onImageDataPrepared。
-       MediaLibrary_ErrorCode result = OH_MediaAssetManager_RequestImage(mediaAssetManager, mediaAsset, requestOptions, &requestId, OnImageDataPrepared);
-       if (result != MEDIA_LIBRARY_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_MediaAssetManager_RequestImage failed.");
-       }
-   }
-   
+   ``` C++
    // 分段式拍照回调函数。
-   void OnPhotoAssetAvailable(Camera_PhotoOutput* photoOutput, OH_MediaAsset* mediaAsset) {
-       OH_LOG_INFO(LOG_APP, "OnPhotoAssetAvailable start!");
+   void onPhotoAssetAvailable(Camera_PhotoOutput *photoOutput, OH_MediaAsset *mediaAsset)
+   {
        if (mediaAsset == nullptr) {
-           OH_LOG_ERROR(LOG_APP, "OnPhotoAssetAvailable mediaAsset nullptr!");
+           DRAWING_LOGI("onPhotoAssetAvailable mediaAsset is nullptr !");
            return;
        }
-       // 处理方式一：调用媒体库接口落盘图片，先保存一阶段图，二阶段图就绪后媒体库会主动帮应用替换落盘图片。
-       // mediaLibSavePhoto(mediaAsset);
-       // 处理方式二：调用媒体库接口请求图像资源，获取一阶段图或二阶段图buffer，业务处理后通过buffer存图。
-       std::lock_guard<std::mutex> lock(g_mediaAssetMutex);
-       g_mediaAsset_ = mediaAsset;
-       mediaLibRequestBuffer(mediaAsset);
+       DRAWING_LOGD("onPhotoAssetAvailable start!");
+       NDKCamera::MediaAssetRelease();
+       g_mediaAsset = mediaAsset;
+       NDKCamera::MediaAssetGetUri(mediaAsset);
+       NDKCamera::MediaAssetGetDisplayName(mediaAsset);
+       NDKCamera::MediaAssetGetSize(mediaAsset);
+       NDKCamera::MediaAssetGetDateModifiedMs(mediaAsset);
+       NDKCamera::MediaAssetGetWidth(mediaAsset);
+       NDKCamera::MediaAssetGetHeight(mediaAsset);
+       NDKCamera::MediaAssetGetOrientation(mediaAsset);
+       NDKCamera::MediaAssetManagerCreate();
+       NDKCamera::MediaAssetChangeRequest(mediaAsset);
+       DRAWING_LOGD("onPhotoAssetAvailable finish!");
+       return;
    }
    
    // 注册分段式拍照回调。
-   Camera_ErrorCode PhotoOutputRegisterPhotoAssetAvailableCallback(Camera_PhotoOutput* photoOutput) {
-       Camera_ErrorCode ret = OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(photoOutput, OnPhotoAssetAvailable);
-       if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_RegisterPhotoAssetAvailableCallback failed.");
+   Camera_ErrorCode NDKCamera::PhotoOutputRegisterPhotoAssetAvailableCallback(void)
+   {
+       DRAWING_LOGD("NDKCamera::PhotoOutputRegisterPhotoAssetAvailableCallback start!");
+       MediaAssetManagerCreate();
+       ret_ = OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(photoOutput_, onPhotoAssetAvailable);
+       if (ret_ != CAMERA_OK) {
+           DRAWING_LOGD("NDKCamera::PhotoOutputRegisterPhotoAssetAvailableCallback failed.");
        }
-       return ret;
+       DRAWING_LOGD(
+           "NDKCamera::PhotoOutputRegisterPhotoAssetAvailableCallback return with ret code: %{public}d!",
+           ret_);
+       return ret_;
+   }
+   
+   MediaLibrary_ErrorCode NDKCamera::MediaAssetChangeRequest(OH_MediaAsset *mediaAsset)
+   {
+       DRAWING_LOGD("NDKCamera::MediaAssetChangeRequest start!");
+       MediaAssetChangeRequestCreate(mediaAsset);
+       MediaAssetManagerRequestImage(mediaAsset);
+       DRAWING_LOGD("NDKCamera::MediaAssetChangeRequest finish!");
+       return MEDIA_LIBRARY_OK;
+   }
+   
+   MediaLibrary_ErrorCode NDKCamera::MediaAssetChangeRequestCreate(OH_MediaAsset *mediaAsset)
+   {
+       DRAWING_LOGD("NDKCamera::MediaAssetChangeRequestCreate start!");
+       g_changeRequest = OH_MediaAssetChangeRequest_Create(mediaAsset);
+       if (g_changeRequest == nullptr) {
+           DRAWING_LOGD("NDKCamera::MediaAssetChangeRequestCreate failed.");
+       }
+       return MEDIA_LIBRARY_OK;
+   }
+   
+   MediaLibrary_ErrorCode NDKCamera::MediaAssetManagerCreate(void)
+   {
+       DRAWING_LOGD("NDKCamera::MediaAssetManagerCreate start!");
+       mediaAssetManager = OH_MediaAssetManager_Create();
+       if (mediaAssetManager == nullptr) {
+           DRAWING_LOGD("NDKCamera::MediaAssetManagerCreate failed.");
+       }
+       return MEDIA_LIBRARY_OK;
+   }
+   
+   void OnRequsetImageDataPreparedWithDetails(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId,
+       MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_ImageSourceNative *imageSourceNative)
+   {
+       auto cb = (void (*)(char *))(g_requestImageCallback);
+       auto qCb = (void (*)(char *))(g_requestImageQualityCallback);
+       DRAWING_LOGD("OnRequsetImageDataPreparedWithDetails start!");
+       if (mediaQuality == MediaLibrary_MediaQuality::MEDIA_LIBRARY_QUALITY_FAST) {
+           DRAWING_LOGD("OnRequsetImageDataPreparedWithDetails into fast quality mode!");
+           g_mediaQualityCb = "fast";
+           qCb(g_mediaQualityCb);
+       } else {
+           DRAWING_LOGD("OnRequsetImageDataPreparedWithDetails into high quality mode!");
+           g_mediaQualityCb = "high";
+           qCb(g_mediaQualityCb);
+       }
+       DRAWING_LOGD("OnRequsetImageDataPreparedWithDetails GetUri uri_ = %{public}s", URI);
+       cb(const_cast<char *>(URI));
+       NDKCamera::ChangeRequestAddResourceWithBuffer(imageSourceNative);
+       return;
+   }
+   
+   // 请求图片数据：deliveryMode/quality等通过requestOptions控制，完成后进回调OnRequsetImageDataPreparedWithDetails。
+   MediaLibrary_ErrorCode NDKCamera::MediaAssetManagerRequestImage(OH_MediaAsset *mediaAsset)
+   {
+       DRAWING_LOGD("NDKCamera::MediaAssetManagerRequestImage start! g_deliveryMode = %{public}d",
+           g_deliveryMode);
+       requestOptions.deliveryMode = g_deliveryMode;
+       result = OH_MediaAssetManager_RequestImage(mediaAssetManager, mediaAsset, requestOptions, &g_requestId,
+           OnRequsetImageDataPreparedWithDetails);
+       if (result != MEDIA_LIBRARY_OK) {
+           DRAWING_LOGD("NDKCamera::MediaAssetManagerRequestImage failed.");
+       }
+       DRAWING_LOGD("NDKCamera::MediaAssetManagerRequestImage return with ret code: %{public}d!", result);
+       return result;
+   }
+   
+   MediaLibrary_ErrorCode NDKCamera::ChangeRequestAddResourceWithBuffer(OH_ImageSourceNative *imageSourceNative)
+   {
+       DRAWING_LOGD("NDKCamera::ChangeRequestAddResourceWithBuffer start!");
+       size_t bufferSize = BUFFER_SIZE;
+       char buffer[BUFFER_SIZE];
+       int fd = open("/data/storage/el2/base/haps/test.jpg", O_RDONLY);
+       int fr = read(fd, buffer, bufferSize);
+       if (fr == -1) {
+           DRAWING_LOGD("NDKCamera::ChangeRequestAddResourceWithBuffer read failed.");
+           return MEDIA_LIBRARY_OK;
+       }
+       if (fr == BUFFER_SIZE) {
+           DRAWING_LOGD("NDKCamera::ChangeRequestAddResourceWithBuffer read not complete.");
+           return MEDIA_LIBRARY_OK;
+       }
+       result = OH_MediaAssetChangeRequest_AddResourceWithBuffer(g_changeRequest,
+           MediaLibrary_ResourceType::MEDIA_LIBRARY_IMAGE_RESOURCE, (uint8_t *)buffer, (uint32_t)bufferSize);
+       if (result != MEDIA_LIBRARY_OK) {
+           DRAWING_LOGD("NDKCamera::ChangeRequestAddResourceWithBuffer failed.");
+           DRAWING_LOGD("NDKCamera::ChangeRequestAddResourceWithBuffer failed %{public}d.", result);
+           return MEDIA_LIBRARY_OK;
+       }
+       result = OH_MediaAccessHelper_ApplyChanges(g_changeRequest);
+       if (result != MEDIA_LIBRARY_OK) {
+           DRAWING_LOGD(
+               "NDKCamera::ChangeRequestAddResourceWithBuffer OH_MediaAccessHelper_ApplyChanges failed.");
+           return MEDIA_LIBRARY_OK;
+       }
+       DRAWING_LOGD("NDKCamera::ChangeRequestAddResourceWithBuffer OH_MediaAccessHelper_ApplyChanges return "
+                    "with ret code: %{public}d!",
+           result);
+       return result;
+   }
+   
+   MediaLibrary_ErrorCode NDKCamera::ChangeRequestSaveCameraPhoto(void)
+   {
+       DRAWING_LOGD("NDKCamera::ChangeRequestSaveCameraPhoto start!");
+       result = OH_MediaAssetChangeRequest_SaveCameraPhoto(g_changeRequest,
+           MediaLibrary_ImageFileType::MEDIA_LIBRARY_IMAGE_JPEG);
+       if (result != MEDIA_LIBRARY_OK) {
+           DRAWING_LOGD(
+               "NDKCamera::ChangeRequestSaveCameraPhoto OH_MediaAssetChangeRequest_SaveCameraPhoto failed.");
+       }
+       DRAWING_LOGD("NDKCamera::ChangeRequestSaveCameraPhoto OH_MediaAssetChangeRequest_SaveCameraPhoto "
+                    "return with ret code: %{public}d!",
+           result);
+       result = OH_MediaAccessHelper_ApplyChanges(g_changeRequest);
+       if (result != MEDIA_LIBRARY_OK) {
+           DRAWING_LOGD("NDKCamera::ChangeRequestSaveCameraPhoto OH_MediaAccessHelper_ApplyChanges failed.");
+       }
+       DRAWING_LOGD("NDKCamera::ChangeRequestSaveCameraPhoto OH_MediaAccessHelper_ApplyChanges return with "
+                    "ret code: %{public}d!",
+           result);
+       return result;
+   }
+   
+   MediaLibrary_ErrorCode NDKCamera::ChangeRequestDiscardCameraPhoto(void)
+   {
+       DRAWING_LOGD("NDKCamera::ChangeRequestDiscardCameraPhoto start!");
+       result = OH_MediaAssetChangeRequest_DiscardCameraPhoto(g_changeRequest);
+       if (result != MEDIA_LIBRARY_OK) {
+           DRAWING_LOGD("NDKCamera::ChangeRequestDiscardCameraPhoto "
+                        "OH_MediaAssetChangeRequest_DiscardCameraPhoto failed.");
+       }
+       DRAWING_LOGD("NDKCamera::ChangeRequestDiscardCameraPhoto OH_MediaAssetChangeRequest_DiscardCameraPhoto "
+                    "return with ret code: %{public}d!",
+           result);
+       result = OH_MediaAccessHelper_ApplyChanges(g_changeRequest);
+       if (result != MEDIA_LIBRARY_OK) {
+           DRAWING_LOGD(
+               "NDKCamera::ChangeRequestDiscardCameraPhoto OH_MediaAccessHelper_ApplyChanges failed.");
+       }
+       DRAWING_LOGD("NDKCamera::ChangeRequestDiscardCameraPhoto OH_MediaAccessHelper_ApplyChanges return with "
+                    "ret code: %{public}d!",
+           result);
+       return result;
+   }
+   
+   MediaLibrary_ErrorCode NDKCamera::ChangeRequestRelease(void)
+   {
+       DRAWING_LOGD("NDKCamera::ChangeRequestRelease start!");
+       result = OH_MediaAssetChangeRequest_Release(g_changeRequest);
+       if (result != MEDIA_LIBRARY_OK) {
+           DRAWING_LOGD("NDKCamera::ChangeRequestRelease failed.");
+       }
+       g_changeRequest = nullptr;
+       DRAWING_LOGD("NDKCamera::ChangeRequestRelease return with ret code: %{public}d!", result);
+       return result;
    }
    ```
-

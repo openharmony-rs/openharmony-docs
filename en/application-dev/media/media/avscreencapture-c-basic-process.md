@@ -10,7 +10,7 @@
 Screen capture enables you to collect screen data for scenarios like screen recording, meeting sharing, and live streaming. By calling the C APIs of the [AVScreenCapture](media-kit-intro.md#avscreencapture) module, you can collect audio and video data from both internal and external sources. The AVScreenCapture module works with the Window and Graphics modules to complete video capture.
 
 Starting from API version 22, the following capabilities are introduced to screen capture on PCs/2-in-1 devices:
-- Capture while the screen is off but not locked: This requires the ohos.permission.TIMEOUTSCREENOFFDISABLE_LOCK permission. For details about the permission configuration, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
+- Capture while the screen is off but not locked: This requires the ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK permission. For details about the permission configuration, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 - Capture without privacy protection pop-ups: This requires the ohos.permission.CUSTOM_SCREEN_RECORDING permission. For details about the permission configuration, see [Requesting Restricted Permissions](../../security/AccessToken/restricted-permissions.md).
 
 ## Workflow Overview

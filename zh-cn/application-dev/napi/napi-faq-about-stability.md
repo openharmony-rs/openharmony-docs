@@ -8,8 +8,10 @@
 
 ## 应用运行过程中出现高概率闪退怎么进行定位解决
 
-- 具体问题：在使用Node-API开发过程中，应用运行过程中出现高概率闪退，出现cppcrash栈，栈顶为系统库libark_jsruntime.so，崩溃栈前几帧也有libace_napi.z.so，怎么进行定位解决？  
-复现概率高，每次崩溃栈略有区别，但是共性都是：崩溃栈顶是系统库的libark_jsruntime.so或者libace_napi.z.so    
+- 具体问题：在使用Node-API开发过程中，应用运行过程中出现高概率闪退，出现cpp crash栈，栈顶为系统库libark_jsruntime.so，崩溃栈前几帧也有libace_napi.z.so，怎么进行定位解决？  
+
+复现概率高，每次崩溃栈略有区别，但是共性都是：崩溃栈顶是系统库的libark_jsruntime.so或者libace_napi.z.so。    
+
 - 崩溃信息如下：  
 ```sh
 Reason:Signal:SIGSEGV(SEGV_MAPERR)@0x00000136 probably caus
@@ -23,15 +25,21 @@ Tid:15894, Name:e.myapplication
 ```
 
 - 定位问题：  
+
 使用Node-API时如果出现高概率闪退，崩溃栈顶在系统库libark_jsruntime.so，一般是开发者Node-API接口使用不当导致。   
 - 以下定位问题的思路，可作为参考：   
 1. 排查是否存在多线程安全问题（概率较大）。   
-DevEco Studio中提供了相关开关，开启开关后，重新编译打包并运行，看看崩溃栈是不是符合下面这个文档的描述，如果是，那就是在使用Node-API时，存在多线程安全问题。   
-[常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)  
-DevEco Studio开关：   
-![DevEco Studio多线程开关](figures/zh_cn_image_20-25-06-40-15-09.png)   
+
+   DevEco Studio中提供了相关开关，开启开关后，重新编译打包并运行，看看崩溃栈是不是符合下面这个文档的描述，如果是，那就是在使用Node-API时，存在多线程安全问题。 
+
+   [常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)  
+
+   DevEco Studio开关：   
+
+   ![DevEco Studio多线程开关](figures/zh_cn_image_20-25-06-40-15-09.png)   
 2. 使用Node-API接口时入参非法导致。   
 - 这种情况一般是崩溃栈上的so会很浅，so调用了某个具体的Node-API接口，比如调用了napi_call_function之类的接口，然后Node-API又调到了libark_jsruntime的so，然后直接崩溃在libark_jsruntime里面。  
+
 示例栈结构如下。  
 ```sh
 #01 /system/lib/platformsdk/libark_jsruntime.so
@@ -41,24 +49,32 @@ DevEco Studio开关：
 ```
 - 如果是入参问题，一般so在崩溃栈上的位置比较浅（不会跑到#10这种离栈顶很远的位置），不过也可以按照这个思路进行排查。  
 - 排查思路参考：  
+
 a. 排查有没有napi_value未初始化，还没赋值成功，直接作为非法入参传递给接口了。
+
 b. 排查有没有在这个易错API列表里面找到相应的篇章。
 
-  可参考文档：  
-  [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)
+  可参考文档：
+  
+  [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。
+
 
 ## 线程池中并发调用ArkTS方法如何处理线程安全问题
 
-- 现有个场景，ArkTS中有个类方法，对这个方法创建了napi_ref引用，现想在C++线程池中并发的调用ArkTS方法，有以下几个问题：  
+- 现有个场景，ArkTS中有个类方法，对这个方法创建了napi_ref引用，现想在C++线程池中并发地调用ArkTS方法，有以下几个问题：  
 1. 可以在C++创建的线程池中调用napi_ref缓存的ArkTS类方法吗？  
 2. 回调到ArkTS要怎么确保线程安全？  
 
 对于问题一：
+
 只能在C++线程中将ArkTS任务抛回ArkTS线程，这时候并不是同步调用，而是一个抛任务的动作。  
+
 需要注意的是，这个ArkTS方法真正的执行动作只能在ArkTS线程中完成，即，只能方法运行在对应的ArkTS线程上。  
 
 对于问题二：
+
 上面提到，C++线程都是抛任务到ArkTS线程，进而执行ArkTS方法。关于线程安全，可参考[使用Node-API接口进行线程安全开发](use-napi-thread-safety.md)。  
+
 另外，开发过程中也可以打开[方舟多线程检测](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section75786272088)开关，这个开关可以拦截多线程安全问题。  
 
 ## napi_value内容产生变化
@@ -67,8 +83,11 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 
 - 排查建议：  
 1. 确认是否napi_value出了scope还在使用，导致use-after-scope问题。  
-可参考文档：  
-[方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)
+
+   可参考文档：
+
+   [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。
+
 2. 保存时建议使用napi_ref，而不是直接保存napi_value。
 
 ## 是否存在获取最新napi_env的方法
@@ -82,26 +101,39 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 ```
 - 参考方案：  
 1. 关于保存napi_env：  
-Node-API没有提供直接获取napi_env的能力，只能通过逐层函数调用传递。一般不推荐保存napi_env，有两个原因：  
-其一，napi_env退出时候如果没有被使用方感知到，很容易出现use-after-free问题；  
-其二，napi_env和ArkTS线程是强绑定的，如果napi_env放在其它ArkTS线程使用，就会有多线程安全问题。  
-可参考文档：  
-[napi_env禁止缓存的原因是什么](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-73)  
+
+   Node-API没有提供直接获取napi_env的能力，只能通过逐层函数调用传递。一般不推荐保存napi_env，有两个原因：  
+   
+   其一，napi_env退出时候如果没有被使用方感知到，很容易出现use-after-free问题；  
+   
+   其二，napi_env和ArkTS线程是强绑定的，如果napi_env放在其它ArkTS线程使用，就会有多线程安全问题。  
+   
+   可参考文档：
+   
+   [napi_env禁止缓存的原因是什么](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-73) 。 
 
 2. 该问题的关键在于：  
-如果要强行保存env，必须感知env是否退出，可以使用napi_add_env_cleanup_hook的回调进行感知。同时，在开发过程中打开多线程检测开关，避免出现多线程安全问题。
-可参考[常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)   
 
-3. 对于崩溃问题本身，该崩溃可能发生在调用napi_call_function时，入参 func 有问题，即非法入参，开发者可排查napi_value是否被缓存。这种情况可能是napi_value被缓存后，napi_value超出napi_handle_scope作用域导致失效。  
-如果有类似逻辑，需使用napi_ref进行存储，napi_ref可以延长生命周期。  
+   如果要强行保存env，必须感知env是否退出，可以使用napi_add_env_cleanup_hook的回调进行感知。同时，在开发过程中打开多线程检测开关，避免出现多线程安全问题。
+
+   可参考文档：
+   
+   [常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)。   
+
+3. 对于崩溃问题本身，该崩溃可能发生在调用napi_call_function时，入参 func 有问题，即非法入参，开发者可排查napi_value是否被缓存。这种情况可能是napi_value被缓存后，napi_value超出napi_handle_scope作用域导致失效。 
+
+    如果有类似逻辑，需使用napi_ref进行存储，napi_ref可以延长生命周期。  
 
 - 可参考文档：  
+
   [napi_create_reference、napi_delete_reference](use-napi-life-cycle.md)  
+
   [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615) 
 
 ## napi_add_env_cleanup_hook调用报错该如何处理
 
 - 具体问题：napi_add_env_cleanup_hook/napi_remove_env_cleanup_hook调用报错，该如何处理？  
+
 `napi_add_env_cleanup_hook` 和 `napi_remove_env_cleanup_hook` 调用报错，常见原因和特征日志如下，均为接口使用不当导致。  
 1. 在`env`所在的ArkTS线程外使用上述两个接口，导致多线程安全问题。特征报错日志`current napi interface cannot run in multi-thread`。  
 2. 调用`napi_add_env_cleanup_hook`时，重复使用同一个`args`注册不同的回调函数，导致后续注册失败问题。该接口第三个入参`args`是作为接口内部`map`的`key`值，当重复注册同一个`args`的回调时，后续注册动作将会失败，仅第一次注册才会成功。注册失败可能导致后续业务功能异常或崩溃。特征报错日志`AddCleanupHook Failed`。  
@@ -133,12 +165,15 @@ static napi_value Test(napi_env env, napi_callback_info info)
 3. 对于删除失败的问题，需要使用者确保`args`已注册过且未被删除。
 
 相关参考资料链接：
+
 [使用Node-API接口注册和使用环境清理钩子](use-napi-about-cleanuphook.md)
+
 [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)
 
 ## napi_open_handle_scope与napi_close_handle_scope进行生命周期相关开发典型错误场景
 
 - 具体问题：使用napi_open_handle_scope与napi_close_handle_scope接口管理ArkTS对象时出现稳定性问题，该如何处理？  
+
 `napi_open_handle_scope` 和 `napi_close_handle_scope` 调用出现稳定性问题，常见原因如下，均为接口使用不当导致。  
 1. 未配对使用`napi_open_handle_scope` 和 `napi_close_handle_scope`，只打开了一个scope而没有关闭，会导致内存泄漏，且可能触发程序崩溃。 
 2. 未按照与打开scope顺序相反的顺序关闭scope，可能引发踩内存问题。在例如open_scope1，open_scope2，close_scope1，close_scope2这种场景下，close_scope1之后指针返回，极有可能覆写scope2中的内存造成踩内存问题。  
@@ -239,4 +274,4 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 3. 在native方法中创建的所有scope必须在该方法返回之前被关闭。  
 
 相关参考资料链接：
-[使用Node-API接口进行生命周期相关开发](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-life-cycle#napi_open_handle_scopenapi_close_handle_scope)
+[使用Node-API接口进行生命周期相关开发](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-life-cycle#napi_open_handle_scopenapi_close_handle_scope)。

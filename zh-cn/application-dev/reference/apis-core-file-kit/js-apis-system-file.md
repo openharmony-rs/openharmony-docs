@@ -1,13 +1,21 @@
 # @system.file (文件存储)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
+<!--Designer: @gsl_1234; @wangke25-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @jinqiuheng-->
 
 > **说明：**
 >
-> - 从API Version 10开始，该接口不再维护，推荐使用新接口[`@ohos.file.fs`](js-apis-file-fs.md)。
+> - 模块维护策略：
+>   - 对于Lite Wearable设备类型，该模块长期维护，正常使用。
+>   - 对于支持该模块的其他设备类型，该模块从API Version 10开始不再维护，推荐使用新接口[`@ohos.file.fs`](js-apis-file-fs.md)。
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
-```
+```ts
 import file from '@system.file';
 ```
 
@@ -20,7 +28,7 @@ move(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.moveFile](js-apis-file-fs.md#fsmovefile)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.moveFile](js-apis-file-fs.md#fsmovefile)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -44,14 +52,14 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   move() {        
     file.move({            
       srcUri: 'internal://app/myfiles1',            
       dstUri: 'internal://app/myfiles2',            
       success: function(uri) {                
-        console.log('call success callback success');            
+        console.info('call success callback success');            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -69,7 +77,7 @@ copy(Object): void
 
 > **说明**：
 >
-> 从API version 10开始废弃，请使用[fs.copyFile](js-apis-file-fs.md#fscopyfile)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.copyFile](js-apis-file-fs.md#fscopyfile)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -93,14 +101,14 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   copy() {        
     file.copy({            
       srcUri: 'internal://app/file.txt',            
       dstUri: 'internal://app/file_copy.txt',            
       success: function(uri) {                
-        console.log('call success callback success');            
+        console.info('call success callback success');            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -119,7 +127,7 @@ list(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.listFile](js-apis-file-fs.md#fslistfile)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.listFile](js-apis-file-fs.md#fslistfile)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -157,13 +165,13 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   list() {        
     file.list({            
       uri: 'internal://app/pic',            
       success: function(data) {                
-        console.log(JSON.stringify(data.fileList));            
+        console.info(JSON.stringify(data.fileList));            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -182,7 +190,7 @@ get(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.stat](js-apis-file-fs.md#fsstat)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.stat](js-apis-file-fs.md#fsstat)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -216,13 +224,13 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   get() {        
     file.get({            
       uri: 'internal://app/file',            
       success: function(data) {                
-        console.log(data.uri);            
+        console.info(data.uri);            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -241,7 +249,7 @@ delete(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.unlink](js-apis-file-fs.md#fsunlink)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.unlink](js-apis-file-fs.md#fsunlink)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -264,13 +272,13 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   delete() {        
     file.delete({            
       uri: 'internal://app/my_file',            
       success: function() {                
-        console.log('call delete success.');            
+        console.info('call delete success.');            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -289,7 +297,7 @@ writeText(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.write](js-apis-file-fs.md#fswrite)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.write](js-apis-file-fs.md#fswrite)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -314,14 +322,14 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   writeText() {        
     file.writeText({            
       uri: 'internal://app/test.txt',            
       text: 'Text that just for test.',            
       success: function() {                
-        console.log('call writeText success.');            
+        console.info('call writeText success.');            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -340,7 +348,7 @@ writeArrayBuffer(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.write](js-apis-file-fs.md#fswrite)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.write](js-apis-file-fs.md#fswrite)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -365,14 +373,14 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   writeArrayBuffer() {       
     file.writeArrayBuffer({           
       uri: 'internal://app/test',           
       buffer: new Uint8Array(8), //buffer为Uint8Array类型           
       success: function() {                
-        console.log('call writeArrayBuffer success.');            
+        console.info('call writeArrayBuffer success.');            
       },           
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -391,7 +399,7 @@ readText(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.readText](js-apis-file-fs.md#fsreadtext)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.readText](js-apis-file-fs.md#fsreadtext)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -424,13 +432,13 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   readText() {        
     file.readText({            
       uri: 'internal://app/text.txt',            
       success: function(data) {                
-        console.log('call readText success: ' + data.text);            
+        console.info('call readText success: ' + data.text);            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -449,7 +457,7 @@ readArrayBuffer(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.read](js-apis-file-fs.md#fsread)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.read](js-apis-file-fs.md#fsread)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -480,7 +488,7 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   readArrayBuffer() {        
     file.readArrayBuffer({            
@@ -488,7 +496,7 @@ export default {
       position: 10,            
       length: 200,            
       success: function(data) {                
-        console.log('call readArrayBuffer success: ' + data.buffer);            
+        console.info('call readArrayBuffer success: ' + data.buffer);            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -507,7 +515,7 @@ access(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.access](js-apis-file-fs.md#fsaccess)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.access](js-apis-file-fs.md#fsaccess)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -530,13 +538,13 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   access() {        
     file.access({            
       uri: 'internal://app/test',            
       success: function() {                
-        console.log('call access success.');            
+        console.info('call access success.');            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -555,7 +563,7 @@ mkdir(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.mkdir](js-apis-file-fs.md#fsmkdir)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.mkdir](js-apis-file-fs.md#fsmkdir)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -578,13 +586,13 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   mkdir() {        
     file.mkdir({            
       uri: 'internal://app/test_directory',            
       success: function() {                
-        console.log('call mkdir success.');            
+        console.info('call mkdir success.');            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
@@ -603,7 +611,7 @@ rmdir(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.rmdir](js-apis-file-fs.md#fsrmdir)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.rmdir](js-apis-file-fs.md#fsrmdir)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -627,13 +635,13 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   rmdir() {        
     file.rmdir({            
       uri: 'internal://app/test_directory',            
       success: function() {                
-        console.log('call rmdir success.');            
+        console.info('call rmdir success.');            
       },            
       fail: function(data, code) {                
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);            

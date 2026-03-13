@@ -41,7 +41,7 @@ getBluetoothInfo(admin: Want): BluetoothInfo
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -97,12 +97,13 @@ addAllowedBluetoothDevices(admin: Want, deviceIds: Array\<string>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                |
 | --------- | ------------------------------------------------------- | ---- | --------------------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                      |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                      |
 | deviceIds | Array\<string>                                          | 是   | 蓝牙设备MAC地址的数组。蓝牙设备允许名单数组长度上限为1000，若当前允许名单中已有300个蓝牙设备MAC地址，则只允许再添加700个。 |
 
 **错误码**：
@@ -150,12 +151,13 @@ removeAllowedBluetoothDevices(admin: Want, deviceIds: Array\<string>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
 | 参数名    | 类型                                                    | 必填 | 说明                    |
 | --------- | ------------------------------------------------------- | ---- | ----------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。          |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。          |
 | deviceIds | Array\<string>                                          | 是   | 蓝牙设备MAC地址的数组。 |
 
 **错误码**：
@@ -207,7 +209,7 @@ getAllowedBluetoothDevices(admin: Want): Array\<string>
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -262,11 +264,13 @@ addDisallowedBluetoothDevices(admin: Want, deviceIds: Array&lt;string&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **参数：**
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                |
 | --------- | ------------------------------------------------------- | ---- | --------------------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                      |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                      |
 | deviceIds | Array&lt;string&gt;                                          | 是   | 蓝牙设备MAC地址的数组。蓝牙设备禁用名单数组长度上限为1000，若当前禁用名单中已有300个蓝牙设备MAC地址，则只允许再添加700个。 |
 
 **错误码**：
@@ -287,11 +291,11 @@ import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-//需根据实际情况进行替换
+// 需根据实际情况进行替换
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
     bluetoothManager.addDisallowedBluetoothDevices(wantTemp,deviceIds);
@@ -313,11 +317,13 @@ removeDisallowedBluetoothDevices(admin: Want, deviceIds: Array&lt;string&gt;): v
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **参数：**
 
 | 参数名    | 类型                                                    | 必填 | 说明                    |
 | --------- | ------------------------------------------------------- | ---- | ----------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。          |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。          |
 | deviceIds | Array&lt;string&gt;                                          | 是   | 蓝牙设备MAC地址的数组。 |
 
 **错误码**：
@@ -337,11 +343,11 @@ import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-//需根据实际情况进行替换
+// 需根据实际情况进行替换
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
     bluetoothManager.removeDisallowedBluetoothDevices(wantTemp,deviceIds);
@@ -367,7 +373,7 @@ getDisallowedBluetoothDevices(admin: Want): Array&lt;string&gt;
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -392,7 +398,7 @@ import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -403,20 +409,6 @@ try {
     console.error(`Failed to get disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
-## BluetoothInfo
-
-设备的蓝牙信息。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 名称            | 类型                                                         | 只读 | 可选 | 说明                     |
-| --------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------ |
-| name            | string                                                       | 否   | 否 | 表示设备的蓝牙名称。     |
-| state           | [access.BluetoothState](../apis-connectivity-kit/js-apis-bluetooth-access.md#bluetoothstate) | 否   | 否 | 表示设备的蓝牙状态。     |
-| connectionState | [constant.ProfileConnectionState](../apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate) | 否   | 否 | 表示设备的蓝牙连接状态。 |
 
 ## bluetoothManager.turnOnBluetooth<sup>20+</sup>
 
@@ -430,12 +422,13 @@ turnOnBluetooth(admin: Want): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **错误码**：
 
@@ -479,12 +472,13 @@ turnOffBluetooth(admin: Want): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **错误码**：
 
@@ -528,11 +522,13 @@ addDisallowedBluetoothProtocols(admin: Want, accountId: number, protocols: Array
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | accountId | number | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 | protocols  | Array&lt;[Protocol](#protocol20)&gt; | 是   | 蓝牙协议的数组。数组长度上限为10000。 |
 
@@ -580,11 +576,13 @@ removeDisallowedBluetoothProtocols(admin: Want, accountId: number, protocols: Ar
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | accountId | number | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 | protocols  | Array&lt;[Protocol](#protocol20)&gt; | 是   | 蓝牙协议的数组。 |
 
@@ -636,7 +634,7 @@ getDisallowedBluetoothProtocols(admin: Want, accountId: number): Array&lt;Protoc
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | accountId | number | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **返回值：**
@@ -675,6 +673,20 @@ try{
     console.error(`Failed to get disallowed bluetooth protocols. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## BluetoothInfo
+
+设备的蓝牙信息。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型                                                         | 只读 | 可选 | 说明                     |
+| --------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------ |
+| name            | string                                                       | 否   | 否 | 表示设备的蓝牙名称。     |
+| state           | [access.BluetoothState](../apis-connectivity-kit/js-apis-bluetooth-access.md#bluetoothstate) | 否   | 否 | 表示设备的蓝牙状态。     |
+| connectionState | [constant.ProfileConnectionState](../apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate) | 否   | 否 | 表示设备的蓝牙连接状态。 |
 
 ## Protocol<sup>20+</sup>
 

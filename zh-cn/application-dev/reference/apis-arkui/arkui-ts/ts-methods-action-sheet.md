@@ -12,7 +12,7 @@
 >
 >  从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md)的地方使用，参见[UIContext](../arkts-apis-uicontext-uicontext.md)说明。
+> 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](../arkts-apis-uicontext-uicontext.md)说明。
 
 ## ActionSheetOptions对象说明
 
@@ -47,7 +47,7 @@
 | height<sup>12+</sup> | [Dimension](ts-types.md#dimension10)   | 否 | 是 | 设置弹窗背板的高度。<br />**说明：**<br />- 弹窗高度默认最大值：0.9 *（窗口高度 - 安全区域）。<br />- 百分比参数方式：弹窗参考高度为（窗口高度 - 安全区域），在此基础上调小或调大。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | shadow<sup>12+</sup> | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明)   | 否 | 是 | 设置弹窗背板的阴影。 <br /> 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明) | 否 | 是 | 设置弹窗显示和退出的过渡效果。<br/>**说明：**<br/>1.如果不设置，则使用默认的显示/退出动效。<br/>2.显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。<br/>3.退出动效中按back键，不会打断退出动效，退出动效继续执行，继续按back键退出应用。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| enableHoverMode<sup>14+</sup>     | boolean | 否   | 是  | 是否响应悬停态，值为true表示响应悬停态。<br />默认值：false，默认不响应。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| enableHoverMode<sup>14+</sup>     | boolean | 否   | 是  | 是否响应悬停态，值为true表示响应悬停态。<br />默认值：false，默认不响应。<br />**说明：**<br />PC/2in1设备弹窗默认显示在上半屏，在enableHoverMode设置为true时，可以通过设置hoverModeArea参数显示在下半屏。其他设备弹窗在enableHoverMode设置为true时默认显示在下半屏，可以通过设置hoverModeArea参数显示在上半屏。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | 否   | 是  | 悬停态下弹窗默认展示区域。<br />默认值：HoverModeAreaType.BOTTOM_SCREEN。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | onWillAppear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 弹窗显示动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear >> onDidAppear >> onWillDisappear >> onDidDisappear。<br />2.在onWillAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。 <br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 | onDidAppear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 弹窗弹出后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear >> onDidAppear >> onWillDisappear >> onDidDisappear。<br />2.在onDidAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。<br />3.快速点击弹出，关闭弹窗时，onWillDisappear在onDidAppear前生效。<br/>4.弹窗入场动效未完成时彻底关闭弹窗，动效打断，onDidAppear不会触发。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
@@ -158,7 +158,7 @@ static show(value: ActionSheetOptions)
 
 > **说明：**
 > 
-> 从API version 18开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showActionSheet](../arkts-apis-uicontext-uicontext.md#showactionsheet)替代。
+> 从API version 8开始支持，从API version 18开始废弃，建议使用[showActionSheet](../arkts-apis-uicontext-uicontext.md#showactionsheet)替代。showActionSheet需先获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例后再进行调用。
 >
 > 从API version 10开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showActionSheet](../arkts-apis-uicontext-uicontext.md#showactionsheet)来明确UI的执行上下文。
 
@@ -250,7 +250,7 @@ struct ActionSheetExample {
 
 ### 示例2（可在主窗外弹出的弹窗）
 
-在2in1设备上设置showInSubWindow为true时，可以弹出在主窗外显示的弹窗。
+在2in1设备上设置[showInSubWindow](#actionsheetoptions对象说明)为true时，可以弹出在主窗外显示的弹窗。
 
 ```ts
 // xxx.ets
@@ -322,7 +322,7 @@ struct ActionSheetExample {
 
 ### 示例3（设置弹窗的动画）
 
-该示例通过配置transition实现弹窗的显示和消失动画。
+该示例通过配置[transition](#actionsheetoptions对象说明)实现弹窗的显示和消失动画。
 
 ```ts
 // xxx.ets
@@ -404,8 +404,8 @@ struct ActionSheetExample {
             height: 350,
             cornerRadius: 20,
             borderWidth: 1,
-            borderStyle: BorderStyle.Solid, //使用borderStyle属性，需要和borderWidth属性一起使用
-            borderColor: Color.Blue, //使用borderColor属性，需要和borderWidth属性一起使用
+            borderStyle: BorderStyle.Solid, // 使用borderStyle属性，需要和borderWidth属性一起使用
+            borderColor: Color.Blue, // 使用borderColor属性，需要和borderWidth属性一起使用
             backgroundColor: Color.White,
             shadow: ({
               radius: 20,
@@ -538,7 +538,9 @@ struct ActionSheetExample {
 
 ### 示例6（弹窗生命周期）
 
-该示例展示了弹窗生命周期的相关接口的使用方法。
+该示例为弹窗配置生命周期回调。
+
+从API version 19开始，在[ActionSheetOptions](#actionsheetoptions对象说明)中新增了onDidAppear、onDidDisappear、onWillAppear和onWillDisappear属性。
 
 ```ts
 // xxx.ets
@@ -615,7 +617,9 @@ struct Example1 {
 
 ### 示例7（自定义背景模糊效果参数）
 
-从API version 19开始，该示例通过配置[backgroundBlurStyleOptions](#actionsheetoptions对象说明)，实现自定义背景模糊效果。
+该示例通过配置[backgroundBlurStyleOptions](#actionsheetoptions对象说明)，实现自定义背景模糊效果。
+
+从API version 19开始，在[ActionSheetOptions](#actionsheetoptions对象说明)中新增了backgroundBlurStyleOptions属性。
 
 ```ts
 @Entry
@@ -673,7 +677,9 @@ struct ActionSheetExample {
 
 ### 示例8（自定义背景效果参数）
 
-从API version 19开始，该示例通过配置[backgroundEffect](#actionsheetoptions对象说明)，实现自定义背景效果。
+该示例通过配置[backgroundEffect](#actionsheetoptions对象说明)，实现自定义背景效果。
+
+从API version 19开始，在[ActionSheetOptions](#actionsheetoptions对象说明)中新增了backgroundEffect属性。
 
 ```ts
 @Entry

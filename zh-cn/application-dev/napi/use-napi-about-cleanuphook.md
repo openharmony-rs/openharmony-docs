@@ -46,29 +46,37 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 
 cpp部分代码
 
-```cpp
+<!-- @[napi_remove_add_env_cleanup_hook](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include <hilog/log.h>
 #include <string>
 #include "napi/native_api.h"
+#include "uv.h"
+
 // 定义内存结构，包含指向数据的指针和数据的大小
 typedef struct {
     char *data;
     size_t size;
 } Memory;
+
 // 外部缓冲区清理回调函数，用于释放分配的内存
-void ExternalFinalize(napi_env env, void *finalize_data, void *finalize_hint)
+void ExternalFinalize(napi_env env, void *finalizeData, void *finalizeHint)
 {
-    Memory *wrapper = (Memory *)finalize_hint;
+    Memory *wrapper = (Memory *)finalizeHint;
+    // ...
     free(wrapper->data);
     free(wrapper);
     OH_LOG_INFO(LOG_APP, "Node-API napi_add_env_cleanup_hook ExternalFinalize");
 }
+
 // 在环境关闭时执行一些清理操作，如清理全局变量或其他需要在环境关闭时处理的资源
 static void Cleanup(void *arg)
 {
     // 执行清理操作
     OH_LOG_INFO(LOG_APP, "Node-API napi_add_env_cleanup_hook cleanuped: %{public}d", *(int *)(arg));
 }
+
 // 创建外部缓冲区并注册环境清理钩子函数
 static napi_value NapiEnvCleanUpHook(napi_env env, napi_callback_info info)
 {
@@ -85,18 +93,18 @@ static napi_value NapiEnvCleanUpHook(napi_env env, napi_callback_info info)
         OH_LOG_ERROR(LOG_APP, "malloc for wrapper->data failed");
         return nullptr;
     }
-    memset(wrapper->data, 0, str.size() + 1);
-    strcpy(wrapper->data, str.c_str());
+    std::copy_n(str.c_str(), str.size() + 1, wrapper->data);
     wrapper->size = str.size();
     // 创建外部缓冲区对象，并指定清理回调函数
     // 注意：wrapper->data 的内存释放依赖于 ExternalFinalize 回调，只有 buffer 被正确持有并最终被 GC 回收时，ExternalFinalize 才会被调用，否则会导致内存泄漏。
     napi_value buffer = nullptr;
-    napi_status status = napi_create_external_buffer(env, wrapper->size, (void *)wrapper->data, ExternalFinalize, wrapper, &buffer);
+    napi_status status = napi_create_external_buffer(env, wrapper->size, (void *)wrapper->data,
+                                                     ExternalFinalize, wrapper, &buffer);
     if (status != napi_ok) {
         // 创建失败时需主动释放内存，避免泄漏
         free(wrapper->data);
         free(wrapper);
-        OH_LOG_ERROR(LOG_APP, "napi_create_external_buffer failed");
+        OH_LOG_ERROR(LOG_APP, "napi_create_external_buffer failed.");
         return nullptr;
     }
     // 静态变量作为钩子函数参数
@@ -115,43 +123,40 @@ static napi_value NapiEnvCleanUpHook(napi_env env, napi_callback_info info)
         return nullptr;
     }
     // 立即移除环境清理钩子函数，确保不会在后续环境清理时被调用
-    // 通常，当为其添加此钩子的资源无论如何都被拆除时调用这个接口
+    // 不需要此钩子函数时可以将其移除。如果希望钩子在环境退出时执行，不需要移除。
     napi_remove_env_cleanup_hook(env, Cleanup, &hookArg);
     napi_remove_env_cleanup_hook(env, Cleanup, &hookParameter);
     // 返回创建的外部缓冲区对象
     return buffer;
 }
 ```
-<!-- @[napi_remove_add_env_cleanup_hook](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
-```ts
-// index.d.ts
+<!-- @[napi_remove_add_env_cleanup_hook_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export const napiEnvCleanUpHook: () => Object | undefined;
 ```
-<!-- @[napi_remove_add_env_cleanup_hook_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
-```ts
-// index.ets
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { worker } from '@kit.ArkTS';
+<!-- @[connect_with_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/pages/Index.ets) -->
 
-let wk = new worker.ThreadWorker("entry/ets/workers/worker.ts");
+``` TypeScript
+let wk = new worker.ThreadWorker('entry/ets/workers/worker.ts');
 // 发送消息到worker线程
-wk.postMessage("test NapiEnvCleanUpHook");
+wk.postMessage('test NapiEnvCleanUpHook');
 // 处理来自worker线程的消息
 wk.onmessage = (message) => {
-  hilog.info(0x0000, 'testTag', 'Test Node-API message from worker: %{public}s', JSON.stringify(message));
+  hilog.info(0x0000, 'testTag', 'Test Node-API message from worker: %{public}s',
+    JSON.stringify(message));
   wk.terminate();
 };
 ```
-<!-- @[connect_with_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[connect_with_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/workers/worker.ts) -->
 
-```ts
-// worker.ts
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { worker } from '@kit.ArkTS';
 import testNapi from 'libentry.so';
@@ -164,9 +169,9 @@ parent.onmessage = (message) => {
   parent.postMessage('Test Node-API worker:' + testNapi.napiEnvCleanUpHook());
 };
 ```
-<!-- @[connect_with_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/workers/worker.ts) -->
 
 worker相关开发配置和流程参考以下链接：
+
 [使用Worker进行线程间通信](../arkts-utils/worker-introduction.md)
 
 ### napi_add_async_cleanup_hook
@@ -179,19 +184,16 @@ worker相关开发配置和流程参考以下链接：
 
 cpp部分代码
 
-```cpp
-#include <cstdlib>
-#include <string.h>
-#include "napi/native_api.h"
-#include "uv.h"
+<!-- @[napi_add_remove_async_cleanup_hook](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/napi_init.cpp) -->
 
-// 包含异步操作内容
+``` C++
 typedef struct {
     napi_env env;
     void *testData;
     uv_async_s asyncUv;
     napi_async_cleanup_hook_handle cleanupHandle;
 } AsyncContent;
+
 // 删除异步工作对象并注销钩子函数
 static void FinalizeWork(uv_handle_s *handle)
 {
@@ -204,12 +206,12 @@ static void FinalizeWork(uv_handle_s *handle)
     // 释放AsyncContent
     free(asyncData);
 }
+
 // 异步执行环境清理工作
 static void AsyncWork(uv_async_s *async)
 {
     // 执行一些清理工作,比如释放动态分配的内存
     AsyncContent *asyncData = reinterpret_cast<AsyncContent *>(async->data);
-    
     if (asyncData != nullptr && asyncData->testData != nullptr) {
         free(asyncData->testData);
         asyncData->testData = nullptr;
@@ -217,6 +219,7 @@ static void AsyncWork(uv_async_s *async)
     // 关闭libuv句柄，并触发FinalizeWork回调清理
     uv_close((uv_handle_s *)async, FinalizeWork);
 }
+
 // 异步清理钩子函数，创建异步工作对象并执行
 static void AsyncCleanup(napi_async_cleanup_hook_handle handle, void *info)
 {
@@ -236,10 +239,7 @@ static napi_value NapiAsyncCleanUpHook(napi_env env, napi_callback_info info)
 {
     // 分配AsyncContent内存
     AsyncContent *data = reinterpret_cast<AsyncContent *>(malloc(sizeof(AsyncContent)));
-    if (data == nullptr) {
-        napi_throw_error(env, nullptr, "Test Node-API malloc AsyncContent failed");
-        return nullptr;
-    }
+    // ...
     data->env = env;
     data->cleanupHandle = nullptr;
     // 分配内存并复制字符串数据
@@ -263,7 +263,6 @@ static napi_value NapiAsyncCleanUpHook(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_add_remove_async_cleanup_hook](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/napi_init.cpp) -->
 
 由于需要包含“uv.h”库，所以需要在CMakeLists文件中添加配置：
 ```text
@@ -273,25 +272,28 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libuv.so)
 
 接口声明
 
-```ts
-// index.d.ts
+<!-- @[napi_add_remove_async_cleanup_hook_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export const napiAsyncCleanUpHook: () => boolean | undefined;
 ```
-<!-- @[napi_remove_add_env_cleanup_hook_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_remove_add_env_cleanup_hook](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_add_async_cleanup_hook: %{public}s', testNapi.napiAsyncCleanUpHook());
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_add_async_cleanup_hook: %{public}s',
+    testNapi.napiAsyncCleanUpHook());
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API napi_add_async_cleanup_hook error.message: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag',
+    'Test Node-API napi_add_async_cleanup_hook error.message: %{public}s',
+    error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_remove_add_env_cleanup_hook](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/pages/Index.ets) -->
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
 

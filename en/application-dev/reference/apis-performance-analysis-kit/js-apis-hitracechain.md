@@ -5,7 +5,7 @@
 <!--Owner: @qq_437963121-->
 <!--Designer: @kutcherzhou1; @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **hiTraceChain** module implements call chain trace throughout a service process. It provides functions such as starting and stopping call chain trace and configuring trace points.
 
@@ -249,11 +249,11 @@ hiTraceChain.end(traceId);
 
 tracepoint(mode: HiTraceCommunicationMode, type: HiTraceTracepointType, id: HiTraceId, msg?: string): void
 
-Adds a trace point for the [HiTraceMeter](./js-apis-hitracemeter.md) logging, which is synchronous.
+Adds a trace point for the [@ohos.hiTraceMeter (Performance Tracing)](./js-apis-hitracemeter.md) logging, which is synchronous.
 
-When type is set to **CS** and **SC**, the HiTraceMeter tracing starts. When type is set to **CC** and **SS**, the HiTraceMeter tracing ends. When type is set to **GENERAL**, the HiTraceMeter tracing does not start.
+When type is set to **CS** and **SR**, the HiTraceMeter tracing starts. When type is set to **CR** and **SS**, the HiTraceMeter tracing ends. When type is set to **GENERAL**, the HiTraceMeter tracing does not start.
 
-The trace points for **CS** and **CC** types must be used as a pair; likewise, trace points for **SC** and **SS** types must also be used together. Otherwise, the start and end trace points of HiTraceMeter cannot match each other.
+The trace points for **CS** and **CR** types must be used as a pair; likewise, trace points for **SR** and **SS** types must also be used together. Otherwise, the start and end trace points of HiTraceMeter cannot match each other.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -264,7 +264,7 @@ The trace points for **CS** and **CC** types must be used as a pair; likewise, t
 | mode | [HiTraceCommunicationMode](#hitracecommunicationmode) | Yes| Communication mode for the trace point.|
 | type | [HiTraceTracepointType](#hitracetracepointtype)| Yes| Trace point type.|
 | id   | [HiTraceId](#hitraceid) | Yes| **HiTraceId** instance for trace point triggering.|
-| msg  | string | No| Trace description information passed by the HiTraceMeter logging.|
+| msg  | string | No| Trace description information passed by the HiTraceMeter logging. The default value is "".|
 
 **Example**
 
@@ -272,7 +272,7 @@ The trace points for **CS** and **CC** types must be used as a pair; likewise, t
 // Start tracing. The trace flag is the union of INCLUDE_ASYNC and DONOT_CREATE_SPAN.
 let traceId = hiTraceChain.begin("business", hiTraceChain.HiTraceFlag.INCLUDE_ASYNC | hiTraceChain.HiTraceFlag.DONOT_CREATE_SPAN);
 // Trigger the trace point after the service logic is executed for several times.
-hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.THREAD, hiTraceChain.HiTraceTracepointType.SS, traceId, "Just a example");
+hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.THREAD, hiTraceChain.HiTraceTracepointType.SS, traceId, "Just an example");
 // Stop tracing after the service is complete.
 hiTraceChain.end(traceId);
 ```

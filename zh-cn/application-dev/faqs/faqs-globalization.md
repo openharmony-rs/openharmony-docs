@@ -6,6 +6,7 @@
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
+<!--deprecated_code_no_check-->
 
 ## 如何读取rawfile中的xml文件并转化为String类型(API 9)
 
@@ -14,11 +15,11 @@
 通过resourceManager的getRawFileContent接口获取xml数据，再通过String.fromCharCode将获取的数据转化为String类型。
 
 **代码示例**
-
+<!--code_no_check-->
 ```js
 resourceManager.getRawFileContent('test.xml', (error, value) => {
   if (error != null) {
-    console.log("error is " + error);
+    console.error("error is " + error);
   } else {
     let rawFile = value;
     let xml = String.fromCharCode.apply(null, rawFile)
@@ -38,7 +39,7 @@ resourceManager.getRawFileContent('test.xml', (error, value) => {
 Stage模型支持了通过context获取resourceManager对象的方式，再调用其内部获取资源的接口，无需再导入包。此方式不适用于FA模型。
 
 **代码示例**
-
+<!--code_no_check-->
 ```js
 const context = getContext(this) as any
 context 
@@ -131,7 +132,7 @@ form_config.json文件中不支持使用`$`引用常量。
    ```
 
 2. 使用resourceManager.getRawFileContent获取xml文件字节数组。
-
+   <!--code_no_check-->
    ```js
    import resourceManager from '@ohos.resourceManager';
    import xml from '@ohos.xml';
@@ -139,19 +140,19 @@ form_config.json文件中不支持使用`$`引用常量。
        onCreate() {
            resourceManager.getResourceManager((error, res) => {
                if (error != null) {
-                   console.log("error is " + error);
+                   console.error("error is " + error);
                    return
                }
                res.getRawFileContent("test.xml", (error, value) => {
                    if (error != null) {
-                       console.log("error is " + error);
+                       console.error("error is " + error);
                        return
                    }
                    let arrayBuffer = value.buffer; // unit8Array
                    var xmpParser = new xml.XmlPullParser(arrayBuffer);
                    var tagName = ""
-                   //do something
-                   console.log("parse xml finished");
+                   // do something
+                   console.info("parse xml finished");
                })
            })
        }

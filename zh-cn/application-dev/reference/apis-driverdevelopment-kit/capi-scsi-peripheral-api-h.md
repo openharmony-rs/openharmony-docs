@@ -12,11 +12,13 @@
 
 **引用文件：** <scsi_peripheral/scsi_peripheral_api.h>
 
+**库：** libscsi.z.so
+
 **系统能力：** SystemCapability.Driver.SCSI.Extension
 
 **起始版本：** 18
 
-**相关模块：** [SCSIPeripheralDDK](capi-scsiperipheralddk.md)
+**相关模块：** [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
 
 ## 汇总
 
@@ -44,7 +46,7 @@
 
 ### OH_ScsiPeripheral_Init()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Init(void)
 ```
 
@@ -64,7 +66,7 @@ int32_t OH_ScsiPeripheral_Init(void)
 
 ### OH_ScsiPeripheral_Release()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Release(void)
 ```
 
@@ -84,7 +86,7 @@ int32_t OH_ScsiPeripheral_Release(void)
 
 ### OH_ScsiPeripheral_Open()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPeripheral_Device **dev)
 ```
 
@@ -109,11 +111,11 @@ int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPe
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 调用接口成功。<br>         [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 权限校验失败。<br>         [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 未初始化DDK。<br>         [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) dev为空。<br>         [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 与DDK服务通信失败。<br>         [SCSIPERIPHERAL_DDK_MEMORY_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 内存操作失败。<br>         [SCSIPERIPHERAL_DDK_IO_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) DDK发生IO错误。<br>         [SCSIPERIPHERAL_DDK_DEVICE_NOT_FOUND](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 通过deviceId和interfaceIndex找不到设备。<br>         [SCSIPERIPHERAL_DDK_INVALID_OPERATION](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 不支持该操作。 |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 调用接口成功。<br>         [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 权限校验失败。<br>         [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 未初始化DDK。<br>         [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) dev为空。<br>         [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 与DDK服务通信失败。<br>         [SCSIPERIPHERAL_DDK_MEMORY_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 内存操作失败。<br>         [SCSIPERIPHERAL_DDK_IO_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) DDK发生IO错误。<br>         [SCSIPERIPHERAL_DDK_DEVICE_NOT_FOUND](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 通过deviceId和interfaceIndex找不到设备。<br>         [SCSIPERIPHERAL_DDK_INVALID_OPERATION](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 不支持该操作。<br>         [SCSIPERIPHERAL_DDK_TIMEOUT](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 传输超时。 |
 
 ### OH_ScsiPeripheral_Close()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev)
 ```
 
@@ -140,7 +142,7 @@ int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev)
 
 ### OH_ScsiPeripheral_TestUnitReady()
 
-```
+```c
 int32_t OH_ScsiPeripheral_TestUnitReady(ScsiPeripheral_Device *dev, ScsiPeripheral_TestUnitReadyRequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -169,7 +171,7 @@ int32_t OH_ScsiPeripheral_TestUnitReady(ScsiPeripheral_Device *dev, ScsiPeripher
 
 ### OH_ScsiPeripheral_Inquiry()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Inquiry(ScsiPeripheral_Device *dev, ScsiPeripheral_InquiryRequest *request,ScsiPeripheral_InquiryInfo *inquiryInfo, ScsiPeripheral_Response *response)
 ```
 
@@ -199,7 +201,7 @@ int32_t OH_ScsiPeripheral_Inquiry(ScsiPeripheral_Device *dev, ScsiPeripheral_Inq
 
 ### OH_ScsiPeripheral_ReadCapacity10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_ReadCapacity10(ScsiPeripheral_Device *dev, ScsiPeripheral_ReadCapacityRequest *request,ScsiPeripheral_CapacityInfo *capacityInfo, ScsiPeripheral_Response *response)
 ```
 
@@ -229,7 +231,7 @@ int32_t OH_ScsiPeripheral_ReadCapacity10(ScsiPeripheral_Device *dev, ScsiPeriphe
 
 ### OH_ScsiPeripheral_RequestSense()
 
-```
+```c
 int32_t OH_ScsiPeripheral_RequestSense(ScsiPeripheral_Device *dev, ScsiPeripheral_RequestSenseRequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -258,7 +260,7 @@ int32_t OH_ScsiPeripheral_RequestSense(ScsiPeripheral_Device *dev, ScsiPeriphera
 
 ### OH_ScsiPeripheral_Read10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Read10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -287,7 +289,7 @@ int32_t OH_ScsiPeripheral_Read10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORe
 
 ### OH_ScsiPeripheral_Write10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Write10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -316,7 +318,7 @@ int32_t OH_ScsiPeripheral_Write10(ScsiPeripheral_Device *dev, ScsiPeripheral_IOR
 
 ### OH_ScsiPeripheral_Verify10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Verify10(ScsiPeripheral_Device *dev, ScsiPeripheral_VerifyRequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -345,7 +347,7 @@ int32_t OH_ScsiPeripheral_Verify10(ScsiPeripheral_Device *dev, ScsiPeripheral_Ve
 
 ### OH_ScsiPeripheral_SendRequestByCdb()
 
-```
+```c
 int32_t OH_ScsiPeripheral_SendRequestByCdb(ScsiPeripheral_Device *dev, ScsiPeripheral_Request *request,ScsiPeripheral_Response *response)
 ```
 
@@ -374,15 +376,13 @@ int32_t OH_ScsiPeripheral_SendRequestByCdb(ScsiPeripheral_Device *dev, ScsiPerip
 
 ### OH_ScsiPeripheral_CreateDeviceMemMap()
 
-```
+```c
 int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t size,ScsiPeripheral_DeviceMemMap **devMmap)
 ```
 
 **描述**
 
 创建缓冲区。请在缓冲区使用完后，调用[OH_ScsiPeripheral_DestroyDeviceMemMap](capi-scsi-peripheral-api-h.md#oh_scsiperipheral_destroydevicememmap)销毁缓冲区，否则会造成资源泄露。
-
-**需要权限：** ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **起始版本：** 18
 
@@ -403,15 +403,13 @@ int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t 
 
 ### OH_ScsiPeripheral_DestroyDeviceMemMap()
 
-```
+```c
 int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMmap)
 ```
 
 **描述**
 
 销毁缓冲区。请在缓冲区使用完后及时销毁缓冲区，否则会造成资源泄露。
-
-**需要权限：** ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **起始版本：** 18
 
@@ -430,15 +428,13 @@ int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMm
 
 ### OH_ScsiPeripheral_ParseBasicSenseInfo()
 
-```
+```c
 int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseDataLen,ScsiPeripheral_BasicSenseInfo *senseInfo)
 ```
 
 **描述**
 
 解析基本的sense data，包括Information、Command specific information、Sense key specific字段。
-
-**需要权限：** ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **起始版本：** 18
 

@@ -58,20 +58,20 @@
 
     ```javascript
     this.screenCapture.on('stateChange', async (infoType: media.AVScreenCaptureStateCode) => {
-    	switch (infoType) {
+      switch (infoType) {
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STARTED:
-              	console.info("录屏成功开始后会收到的回调");
-              	break;
+                console.info("录屏成功开始后会收到的回调");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_CANCELED:
                 this.screenCapture?.release();
                 this.screenCapture = undefined;
-              	console.info("不允许使用录屏功能");
-              	break;
+                console.info("不允许使用录屏功能");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STOPPED_BY_USER:
                 this.screenCapture?.release();
                 this.screenCapture = undefined;
-              	console.info("通过录屏胶囊结束录屏，底层录制会停止");
-              	break;
+                console.info("通过录屏胶囊结束录屏，底层录制会停止");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_INTERRUPTED_BY_OTHER:
                 console.info("录屏因其他中断而停止，底层录制会停止");
                 break;
@@ -98,7 +98,7 @@
                 console.info("用户账号切换，底层录制会停止");
                 break;
             default:
-              	break;
+                break;
         }
     })
     this.screenCapture.on('error', (err) => {
@@ -141,7 +141,7 @@
     };
     ```
 
-5. 基于预先配置的屏幕录制参数，调用init()方法初始化screenCapture。
+5. 基于预先配置的屏幕录制参数，调用[init](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#init12)方法初始化screenCapture。
 
     ```javascript
     await this.screenCapture.init(this.captureConfig);
@@ -154,7 +154,7 @@
     await this.screenCapture.skipPrivacyMode(windowIDs);
     ```
 
-7. 调用startRecording()方法开始进行屏幕录制，并通过监听函数监听状态。
+7. 调用[startRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)方法开始进行屏幕录制，并通过监听函数监听状态。
 
     ```javascript
     await this.screenCapture.startRecording();
@@ -162,15 +162,15 @@
 
 8. 停止录屏。
 
-    - 点击录屏胶囊中的结束按钮停止录制：基于回调函数实现，录屏对象实例screenCapture会触发SCREENCAPTURE_STATE_STOPPED_BY_USER的回调，通知应用此次录屏已停止，不需要开发者主动调用stopRecording()方法。
+    - 点击录屏胶囊中的结束按钮停止录制：基于回调函数实现，录屏对象实例screenCapture会触发SCREENCAPTURE_STATE_STOPPED_BY_USER的回调，通知应用此次录屏已停止，不需要开发者主动调用[stopRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#stoprecording12)方法。
 
-    - 应用主动调用stopRecording()方法，停止录屏。
+    - 应用主动调用[stopRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#stoprecording12)方法，停止录屏。
 
       ```javascript
       await this.screenCapture.stopRecording();
       ```
 
-9. 调用release()方法销毁实例，释放资源。
+9. 调用[release](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#release12)方法销毁实例，释放资源。
 
     ```javascript
     await this.screenCapture.release();

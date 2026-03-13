@@ -1,0 +1,4 @@
+| Change Type | Old Version | New Version | d.ts File |
+| ---- | ------ | ------ | -------- |
+|New support for atomic services|Class name: contact;<br>API declaration: function addContact(context: Context, contact: Contact, callback: AsyncCallback\<number>): void;<br>Differences: NA|Class name: contact;<br>API declaration: function addContact(context: Context, contact: Contact, callback: AsyncCallback\<number>): void;<br>Differences: atomicservice|api/@ohos.contact.d.ts|
+|New support for atomic services|Class name: contact;<br>API declaration: function addContact(context: Context, contact: Contact): Promise\<number>;<br>Differences: NA|Class name: contact;<br>API declaration: function addContact(context: Context, contact: Contact): Promise\<number>;<br>Differences: atomicservice|api/@ohos.contact.d.ts|

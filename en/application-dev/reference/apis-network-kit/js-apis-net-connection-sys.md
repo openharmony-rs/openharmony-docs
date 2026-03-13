@@ -7,9 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-The network connection management module provides basic network management capabilities. You can obtain the default active data network or the list of all active data networks, enable or disable the airplane mode, and obtain network capability information.
+The network connection management module provides basic network capabilities. You can obtain the default active data network or the list of all active data networks, enable or disable the airplane mode, and obtain network capability information.
 
 > **NOTE**
+>
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.net.connection (Network Connection Management)](js-apis-net-connection.md).
 
@@ -24,7 +25,7 @@ import { connection } from '@kit.NetworkKit';
 
 getGlobalHttpProxy(callback: AsyncCallback\<HttpProxy>): void
 
-Obtains the global HTTP proxy configuration of the network. This API uses an asynchronous callback to return the result.
+Obtains the global network proxy configuration information. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -61,7 +62,7 @@ connection.getGlobalHttpProxy((error: BusinessError, data: connection.HttpProxy)
 
 getGlobalHttpProxy(): Promise\<HttpProxy>;
 
-Obtains the global HTTP proxy configuration of the network. This API uses a promise to return the result.
+Obtains the global network proxy configuration information. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -98,7 +99,7 @@ connection.getGlobalHttpProxy().then((data: connection.HttpProxy) => {
 
 setGlobalHttpProxy(httpProxy: HttpProxy, callback: AsyncCallback\<void>): void
 
-Sets the global HTTP proxy configuration of the network. This API uses an asynchronous callback to return the result.
+Sets the global network HTTP proxy configuration information. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -150,7 +151,7 @@ connection.setGlobalHttpProxy(httpProxy, (err: BusinessError) => {
 
 setGlobalHttpProxy(httpProxy: HttpProxy): Promise\<void>;
 
-Sets the global HTTP proxy configuration of the network. This API uses a promise to return the result.
+Sets the global network HTTP proxy configuration information. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -244,7 +245,7 @@ connection.enableAirplaneMode((error: BusinessError) => {
 
 enableAirplaneMode(): Promise\<void>
 
-Enables the airplane mode. This API uses a promise to return the result.
+Enables airplane mode. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -281,7 +282,7 @@ connection.enableAirplaneMode().then((error: void) => {
 
 disableAirplaneMode(callback: AsyncCallback\<void>): void
 
-Disables the airplane mode. This API uses an asynchronous callback to return the result.
+Disables airplane mode. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -320,7 +321,7 @@ connection.disableAirplaneMode((error: BusinessError) => {
 
 disableAirplaneMode(): Promise\<void>
 
-Disables the airplane mode. This API uses a promise to return the result.
+Disables airplane mode. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -358,7 +359,7 @@ connection.disableAirplaneMode().then((error: void) => {
 
 factoryReset(): Promise\<void\>
 
-Resets the network settings to factory defaults. This API uses a promise to return the result.
+Resets the network settings to the factory defaults. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -396,7 +397,7 @@ connection.factoryReset().then(() => {
 
 ## ProxyMode<sup>20+</sup>
 
-Enumerates the proxy modes.
+Enumerates the proxy modes. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -411,7 +412,7 @@ Enumerates the proxy modes.
 
 setProxyMode(mode: ProxyMode): Promise\<void\>
 
-Sets the proxy mode.
+Sets the proxy mode. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -445,11 +446,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { connection, ProxyMode } from '@kit.NetworkKit';
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.setProxyMode(ProxyMode.AUTO).then(() => {
+connection.setProxyMode(connection.ProxyMode.PROXY_MODE_AUTO).then(() => {
     console.info("Proxy mode set successfully.");
-}).catch(error => {
+}).catch((error: BusinessError) => {
     console.error("Error setting proxy mode:", error);
 });
 ```
@@ -458,7 +460,7 @@ connection.setProxyMode(ProxyMode.AUTO).then(() => {
 
 getProxyMode(): Promise\<ProxyMode\>
 
-Obtains the current proxy mode.
+Obtains the current proxy mode. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -470,17 +472,24 @@ Obtains the current proxy mode.
 
 | Type                       | Description                         |
 |---------------------------| ------------------------ |
-| Promise\<[ProxyMode](#proxymode20)\> | Promise used to return the result.|
+| Promise\<[ProxyMode](#proxymode20)\> | Promise used to return the current proxy mode.|
 
+**Error codes**
+
+| ID| Error Message                       |
+| ------- | -----------------------------  |
+| 201     | Permission denied.             |
+| 202     | Non-system applications use system APIs.              |
 
 **Example**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getProxyMode().then(mode => {
     console.info("Current proxy mode:", mode);
-}).catch(error => {
+}).catch((error: BusinessError) => {
     console.error("Error getting proxy mode:", error);
 });
 ```

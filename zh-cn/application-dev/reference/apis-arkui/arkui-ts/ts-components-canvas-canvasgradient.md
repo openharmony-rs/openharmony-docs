@@ -30,7 +30,7 @@ addColorStop(offset: number, color: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---------------------------------------- |
-| offset | number | 是  | 设置渐变点距离起点的位置占总体长度的比例，范围为[0, 1]。</br>设置offset<0或offset>1无渐变效果。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致CanvasGradient异常。|
+| offset | number | 是  | 设置渐变点距离起点的位置占总体长度的比例，范围为[0, 1]。</br>设置offset<0或offset>1无渐变效果。<br>异常值undefined和null按无效值处理，忽略本次断点值。NaN会导致CanvasGradient异常，Infinity会导致整个CanvasGradient不生效。|
 | color  | string | 是  | 设置渐变的颜色。颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。</br>未按格式设置颜色无渐变效果。 |
 
 
@@ -51,12 +51,12 @@ addColorStop(offset: number, color: string): void
         Canvas(this.context)
           .width('100%')
           .height('100%')
-          .backgroundColor('#ffff00')
+          .backgroundColor('rgb(213,213,213)')
           .onReady(() => {
             let grad = this.context.createLinearGradient(50, 0, 300, 100)
-            grad.addColorStop(0.0, '#ff0000')
-            grad.addColorStop(0.5, '#ffffff')
-            grad.addColorStop(1.0, '#00ff00')
+            grad.addColorStop(0.0, 'rgb(39,135,217)')
+            grad.addColorStop(0.5, 'rgb(255,238,240)')
+            grad.addColorStop(1.0, 'rgb(23,169,141)')
             this.context.fillStyle = grad
             this.context.fillRect(0, 0, 400, 400)
           })
@@ -66,7 +66,7 @@ addColorStop(offset: number, color: string): void
     }
   }
   ```
-  ![zh-cn_image_0000001194032516](figures/zh-cn_image_0000001194032516.jpeg)
+  ![zh-cn_image_0000001194032516](figures/zh-cn_image_0000001194032516.png)
 
  
  ## addColorStop<sup>20+</sup>
@@ -85,8 +85,8 @@ addColorStop(offset: number, color: string | ColorMetrics): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---------------------------------------- |
-| offset | number | 是  | 设置渐变点距离起点的位置占总体长度的比例，范围为[0, 1]。</br>设置offset<0或offset>1无渐变效果。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致CanvasGradient异常。 |
-| color  | string \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是  | 设置渐变填充的颜色。</br>可以使用[colorWithSpace](../js-apis-arkui-graphics.md#colorwithspace20)方法构造指定色域属性[ColorSpace](ts-appendix-enums.md#colorspace20)为SRGB或DISPLAY_P3的颜色。每个渐变ColorMetrics的色域属性应当统一，设置不同色域的属性时将抛出异常，错误码：103701。</br>设置null和undefined无效。   |
+| offset | number | 是  | 设置渐变点距离起点的位置占总体长度的比例，范围为[0, 1]。</br>设置offset<0或offset>1无渐变效果。<br>异常值undefined和null按无效值处理，不设置本次断点值，NaN会导致CanvasGradient异常，Infinity会导致整个CanvasGradient不生效。 |
+| color  | string \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是  | 设置渐变填充的颜色。</br>可以使用[colorWithSpace](../js-apis-arkui-graphics.md#colorwithspace20)方法构造指定色域属性[ColorSpace](ts-appendix-enums.md#colorspace20)为SRGB或DISPLAY_P3的颜色。每个渐变ColorMetrics的色域属性应当统一，设置不同色域的属性时将抛出异常，错误码：103701。</br>设置null和undefined无效，忽略本次断点值。   |
 
 **错误码：**
 

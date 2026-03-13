@@ -10,7 +10,9 @@
 ## Connectivity Kit开发概述
 
 移动终端设备已经深入人民日常生活的方方面面，如连接蓝牙耳机听音乐、连接WIFI上网、使用NFC进行一碰开门等已成为终端用户日常生活中常见的行为。
+
 当用户处于这些丰富的使用场景中时，蓝牙提供基于蓝牙连接的基础能力，如音乐/通话/分享等，WIFI提供基础的无线连接能力，NFC提供基础的靠近刷卡和读卡能力。
+
 对于开发者，设计基础通信的体验服务，可以使应用的使用体验更贴近每个终端用户的日常生活。
 
 ### 蓝牙简介
@@ -66,7 +68,7 @@ WLAN系统为用户提供接入WLAN网络功能（STA模式）、点对点的数
 ### NFC简介
 NFC英文全称Near Field Communication，近距离无线通信。NFC服务提供NFC开关控制、NFC标签读写、NFC卡模拟等业务功能。
 
-- **NFC开关**<br/>
+- **NFC开关控制**<br/>
   NFC开关模块，提供了打开NFC和关闭NFC功能。打开或关闭NFC的应用程序，需要声明权限"ohos.permission.MANAGE_SECURE_SETTINGS"，该权限只有系统应用才能声明。因此，只有系统应用才能打开或关闭NFC。详情请参考[@ohos.nfc.controller API参考](../reference/apis-connectivity-kit/js-apis-nfcController.md)。
 
 - **NFC标签读写**<br/>

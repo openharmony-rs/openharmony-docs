@@ -17,6 +17,7 @@
 > - 示例效果请以真机为准，当前DevEco Studio预览器无真实音量展示和调节功能。
 > - **设备限制：** 
 >   - 在穿戴设备上，可用于调节系统音量，但不显示UX界面，需开发者自行设计界面。
+>   - 本模块接口暂不支持TV设备使用。
 
 ## 导入模块
 
@@ -34,7 +35,7 @@ AVVolumePanel({volumeLevel?: number, volumeParameter?: AVVolumePanelParameter})
 
 音量面板，可用于在当前应用内展示音量调节面板。
 
-**装饰器类型：** [@Component](../../ui/state-management/arkts-create-custom-components.md)
+**装饰器类型：** [@Component](../../ui/state-management/arkts-create-custom-components.md#component)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -63,7 +64,7 @@ AVVolumePanel({volumeLevel?: number, volumeParameter?: AVVolumePanelParameter})
 
 ## 使用建议
 
-1. 应用在实现自定义音量条的过程中，建议使用音频框架的音量变化监听接口，通过接口回调的音量类型volumeEvent.volumeType，音量等级volumeEvent.volume以及是否显示音量条volumeEvent.updateUi等信息，应用可以判断是否需要处理当前数据和显示自定义的音量条，具体可参考[音量变化回调接口](arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20)介绍。
+1. 应用在实现自定义音量条的过程中，建议使用音频框架的音量变化监听接口，通过接口回调的音量类型volumeEvent.volumeType，音量等级volumeEvent.volume以及是否显示音量条volumeEvent.updateUi等信息，应用可以判断是否需要处理当前数据和显示自定义的音量条，具体可参考[on('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20)介绍。
 2. 为确保用户能感知音量变化，不允许应用后台调节音量，系统会做出对应的控制措施。
 
 ## 示例
