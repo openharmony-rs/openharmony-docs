@@ -686,8 +686,8 @@ onCustomDataChange(callback: Callback<Record<string, Object>>): void
 **示例：**
 
 ```ts
-currentAVSession.on('customDataChange', (callback) => {
-    console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
+aVCastController.onCustomDataChange((data: Record<string, Object>) => {
+  console.info(`onCustomDataChange, data: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -759,7 +759,7 @@ offCustomDataChange(callback?: Callback<Record<string, Object>>): void
 **示例：**
 
 ```ts
-currentAVSession.offCustomDataChange();
+aVCastController.offCustomDataChange(callback);
 ```
 
 ## prepare<sup>10+</sup>
