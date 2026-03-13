@@ -186,7 +186,7 @@ isRemoteUri(): boolean
 
 getUriFromPath(path: string): string
 
-通过传入的路径path生成应用自己的URI；将path转URI时，路径中的中文及非数字字母的特殊字符将会被编译成对应的ASCII码，拼接在URI中。
+通过传入的路径path生成应用自己的URI；将path转URI时，路径中的中文及非数字字母的特殊字符将会被编码成对应的ASCII码，拼接在URI中。
 
 **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -202,7 +202,7 @@ getUriFromPath(path: string): string
 
   | 类型 | 说明|
   | ------- |------|
-  | string | 通过传入的路径path生成应用自己的URI；将path转URI时，路径中的中文及非数字字母的特殊字符将会被编译成对应的ASCII码，拼接在URI中。 |
+  | string | 通过传入的路径path生成应用自己的URI；将path转URI时，路径中的中文及非数字字母的特殊字符将会被编码成对应的ASCII码，拼接在URI中。 |
 
 **错误码：**  
 

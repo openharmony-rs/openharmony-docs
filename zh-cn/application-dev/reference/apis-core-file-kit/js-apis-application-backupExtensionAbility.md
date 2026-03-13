@@ -297,6 +297,7 @@ onProcess(): string
 > **说明：**
 >
 > - onProcess可以不实现，系统有默认处理机制；若要实现，返回值结构严格按照示例代码返回。
+> - onProcess具有超时机制，执行不可超过1秒，系统每5秒调用一次onProcess，累计3次超时后，直接结束应用当前备份或恢复任务。
 > - 实现onProcess时，业务需要将onBackup(onBackupEx)/onRestore(onRestoreEx)做异步实现，且需要单独开辟子线程，否则onProcess相关功能无法正常运行。具体使用方式见示例代码。
 > - onProcess()推荐使用示例如下。
 
