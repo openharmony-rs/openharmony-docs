@@ -82,7 +82,7 @@
 
 **示例1：**
 
- 发起用户认证，采用认证可信等级≥ATL3的人脸+锁屏口令认证，获取认证结果。
+ 发起用户认证，采用认证可信等级≥ATL3的人脸+指纹+锁屏口令认证，获取认证结果。
 
 <!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 

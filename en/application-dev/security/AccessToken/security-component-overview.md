@@ -62,6 +62,7 @@ The following figure illustrates the working mechanism.
 6. After the authorization is successful, the security component calls **OnClick()** to notify the application layer of the authorization success.
 
 7. The application calls the corresponding privileged operation, for example, reading pasteboard information and creating a file in the media library.
+
    The permission usage and authorization validity vary with the security component type. For details, see [Security Components](#security-components).
 
 8. The corresponding service calls the permission manager service or security component manager service to obtain the authorization result and return the authentication result.

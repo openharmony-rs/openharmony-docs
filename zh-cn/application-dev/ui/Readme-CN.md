@@ -131,6 +131,7 @@
       - [弹性布局 (Flex)](arkts-layout-development-flex-layout.md)
       - [相对布局 (RelativeContainer)](arkts-layout-development-relative-layout.md)
       - [栅格布局 (GridRow/GridCol)](arkts-layout-development-grid-layout.md)
+      - [动态布局 (DynamicLayout)](arkts-layout-development-dynamiclayout.md)
       - [选项卡 (Tabs)](arkts-navigation-tabs.md)<!--RP1--><!--RP1End-->
   - 列表与网格<!--arkts-list-and-grid-->
     - [列表与网格概述](arkts-list-grid-development-overview.md)
@@ -292,7 +293,7 @@
   - [构建自定义组件](ndk-build-custom-components.md)
   - [嵌入ArkTS组件](ndk-embed-arkts-components.md)
   - [构建渲染节点](ndk-embed-render-components.md)
-  - [通过XComponent接入无障碍](ndk-accessibility-xcomponent.md)
+  - [通过自绘制接入无障碍](ndk-accessibility-xcomponent.md)
   - [自定义绘制](arkts-user-defined-draw.md)
   - [查询和操作自定义节点](ndk-node-query-operate.md)
   - [通过EmbeddedComponent拉起EmbeddedUIExtensionAbility](ndk-embedded-component.md)

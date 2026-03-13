@@ -146,6 +146,8 @@
             - [使用装饰器开发意图](application-models/insight-intent-decorator-development.md)
             - [附录：标准意图接入规范](application-models/insight-intent-access-specifications.md)
           - [调试意图](application-models/insight-intent-debug.md)
+        - 智能体开发指导<!--agent-->
+          - [Agent配置文件说明](application-models/agent-extension-configuration.md)
       - FA模型开发指导<!--fa-model-development-->
         - [FA模型开发概述](application-models/fa-model-development-overview.md)
         - FA模型应用组件<!--fa-model-application-components-->
@@ -666,7 +668,7 @@
         - [构建自定义组件](ui/ndk-build-custom-components.md)
         - [嵌入ArkTS组件](ui/ndk-embed-arkts-components.md)
         - [构建渲染节点](ui/ndk-embed-render-components.md)
-        - [通过XComponent接入无障碍](ui/ndk-accessibility-xcomponent.md)
+        - [通过自绘制接入无障碍](ui/ndk-accessibility-xcomponent.md)
         - [自定义绘制](ui/arkts-user-defined-draw.md)
         - [查询和操作自定义节点](ui/ndk-node-query-operate.md)
         - [通过EmbeddedComponent拉起EmbeddedUIExtensionAbility](ui/ndk-embedded-component.md)
@@ -800,7 +802,7 @@
         - [使用运动和方向传感器监测设备状态](web/web-sensor.md)
       - Web渲染和布局<!--web-render-layout-->
         - [Web渲染模式](web/web-render-mode.md)
-        - [使用Web组件大小自适应页面内容布局](web/web-fit-content.md)
+        - [Web组件大小自适应页面内容布局](web/web-fit-content.md)
         - [优化跳转至新Web组件过程中的页面闪烁现象](web/web-router-flash-optimization.md)
         - [获取网页内容高度](web/web-getpage-height.md)
       - 在应用中使用前端页面JavaScript<!--web-use-frontend-page-js-->
@@ -835,7 +837,7 @@
         - [使用Web组件上传文件](web/web-file-upload.md)
         - [使用Web组件的下载能力](web/web-download.md)
       - 使用网页多媒体<!--web-use-multimedia-->
-        - [使用WebRTC进行Web视频会议](web/web-rtc.md)
+        - [在Web中打开摄像头和麦克风](web/web-rtc.md)
         - [托管网页中的媒体播放](web/app-takeovers-web-media.md)
         - [使用Web组件支持画中画](web/web-picture-in-picture.md)
         - [Web组件支持视频沉浸式全屏播放](web/web_full_screen.md)
@@ -849,7 +851,7 @@
         - [使用Web组件的智能分词能力](web/web-data-detector.md)
       - [同层渲染](web/web-same-layer.md)
       - [使用离线Web组件](web/web-offline-mode.md)
-      - [使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和原生应用通信场景](web/web-native-messaging.md)
+      - [使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景](web/web-native-messaging.md)
       - Web调试维测<!--web-debugging-->
         - [使用DevTools工具调试前端页面](web/web-debugging-with-devtools.md)
         - [使用crashpad收集Web组件崩溃信息](web/web-crashpad.md)
@@ -920,10 +922,6 @@
             - [ArkTS卡片使用画布组件绘制自定义图形](form/arkts-ui-widget-page-custom-drawing.md)
             - [ArkTS卡片界面适配深浅色模式](form/arkts-ui-widget-dark-light-color-adapt.md)
             - [ArkTS卡片使用自定义字体](form/arkts-ui-widget-load-custom-font.md)
-            <!--Del-->
-            - [ArkTS卡片玻璃材质适配（仅对系统应用开放）](form/arkts-ui-widget-visual-effect-sys.md)
-            - [ArkTS卡片新材质适配（仅对系统应用开放）](form/arkts-ui-widget-effect-sys.md)
-            <!--DelEnd-->
           - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
             - [ArkTS卡片页面刷新概述](form/arkts-ui-widget-interaction-overview.md)
             - [ArkTS卡片主动刷新](form/arkts-ui-widget-active-refresh.md)
@@ -1001,7 +999,7 @@
               - [概述](internationalization/i18n-display-overview.md)
               - [本地化语言与地区名称](internationalization/i18n-language-region-display.md)
       - 应用本地化<!--l10n-->
-          - [提供多语言资源](internationalization/l10n-multilingual-resources.md)
+          - [多语言适配](internationalization/l10n-multilingual-resources.md)
           - 提升可翻译性<!--l10n-translation-->
               - [避免硬编码与拼接](internationalization/l10n-hard-coding-concatenate.md)
               - [提供翻译场景](internationalization/l10n-translation-scene.md)
@@ -2295,6 +2293,7 @@
           - [@ohos.app.appstartup.startupManager (启动框架管理能力)](reference/apis-ability-kit/js-apis-app-appstartup-startupManager.md)
           - [@ohos.app.appstartup.StartupTask (启动框架任务)](reference/apis-ability-kit/js-apis-app-appstartup-startupTask.md)
           - [@ohos.app.ability.autoStartupManager (开机自启管理能力)](reference/apis-ability-kit/js-apis-app-ability-autoStartupManager.md)
+          - [@ohos.app.agent.AgentExtensionAbility (智能体扩展组件)](reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)
           <!--Del-->
           - [@ohos.app.ability.AbilityConstant (Ability相关常量)(系统接口)](reference/apis-ability-kit/js-apis-app-ability-abilityConstant-sys.md)
           - [@ohos.app.ability.application (Application)(系统接口)](reference/apis-ability-kit/js-apis-app-ability-application-sys.md)
@@ -2345,7 +2344,7 @@
           - [@ohos.ability.screenLockFileManager (锁屏敏感数据管理)(系统接口)](reference/apis-ability-kit/js-apis-screenLockFileManager-sys.md)
           - [@ohos.app.ability.abilityManager (AbilityManager)(系统接口)](reference/apis-ability-kit/js-apis-app-ability-abilityManager-sys.md)
           - [@ohos.app.ability.appManager (appManager)(系统接口)](reference/apis-ability-kit/js-apis-app-ability-appManager-sys.md)
-          - [@ohos.app.agent.agentManager (Agent信息管理)(系统接口)](reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md)
+          - [@ohos.app.agent.agentManager (Agent智能组件管理)(系统接口)](reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md)
           - [@ohos.app.ability.kioskManager (Kiosk管理模块)(系统接口)](reference/apis-ability-kit/js-apis-app-ability-kioskManager-sys.md)
           - [@ohos.app.ability.missionManager (missionManager)(系统接口)](reference/apis-ability-kit/js-apis-app-ability-missionManager-sys.md)
           - [@ohos.app.ability.quickFixManager (quickFixManager)(系统接口)](reference/apis-ability-kit/js-apis-app-ability-quickFixManager-sys.md)
@@ -2388,6 +2387,10 @@
             - [AbilityStartCallback](reference/apis-ability-kit/js-apis-inner-application-abilityStartCallback.md)
             - [AbilityStateData](reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md)
             - [AgentCard](reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)
+            - [AgentExtensionConnectCallback](reference/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback.md)
+            - [AgentExtensionContext (智能体扩展组件上下文)](reference/apis-ability-kit/js-apis-inner-application-agentExtensionContext.md)
+            - [AgentHostProxy](reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)
+            - [AgentProxy](reference/apis-ability-kit/js-apis-inner-application-agentProxy.md)
             - [ApplicationContext (应用上下文)](reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)
             - [ApplicationStateObserver](reference/apis-ability-kit/js-apis-inner-application-applicationStateObserver.md)
             - [AppServiceExtensionContext (应用后台服务扩展组件上下文)](reference/apis-ability-kit/js-apis-inner-application-appServiceExtensionContext.md)
@@ -4446,6 +4449,7 @@
           - [@ohos.telephony.radio (网络搜索)](reference/apis-telephony-kit/js-apis-radio.md)
           - [@ohos.telephony.sim (SIM卡管理)](reference/apis-telephony-kit/js-apis-sim.md)
           - [@ohos.telephony.sms (短信服务)](reference/apis-telephony-kit/js-apis-sms.md)
+          - [@ohos.telephony.vcard (VCard模块)](reference/apis-telephony-kit/js-apis-vcard.md)
           <!--Del-->
           - [@ohos.telephony.call (拨打电话)（系统接口）](reference/apis-telephony-kit/js-apis-call-sys.md)
           - [@ohos.telephony.data (蜂窝数据)（系统接口）](reference/apis-telephony-kit/js-apis-telephony-data-sys.md)
@@ -4454,7 +4458,6 @@
           - [@ohos.telephony.radio (网络搜索)（系统接口）](reference/apis-telephony-kit/js-apis-radio-sys.md)
           - [@ohos.telephony.sim (SIM卡管理)（系统接口）](reference/apis-telephony-kit/js-apis-sim-sys.md)
           - [@ohos.telephony.sms (短信服务)（系统接口）](reference/apis-telephony-kit/js-apis-sms-sys.md)
-          - [@ohos.telephony.vcard (VCard模块)（系统接口）](reference/apis-telephony-kit/js-apis-vcard-sys.md)
           <!--DelEnd-->
         - C API<!--telephony-c-->
           - 模块<!--telephony-module-->

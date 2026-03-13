@@ -563,7 +563,7 @@ type CustomBuilderT\<T> = (t: T) => void
 | width  | [Dimension](#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](#edgeoutlinewidths11对象说明)| 否 | 是 | 设置外描边宽度，不支持百分比。<br/>默认值：0，外描边效果中width为必设项，否则不显示外描边。 |
 | color  | [ResourceColor](#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | 否 | 是 | 设置外描边颜色。<br/>默认值：Color.Black                   |
 | radius | [Dimension](#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](#outlineradiuses11对象说明)| 否 | 是 | 设置外描边圆角半径，不支持百分比。<br/>默认值：0<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。 |
-| style  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles11对象说明)| 否 | 是 | 设置外描边样式。<br/>默认值：OutlineStyle.SOLID            |
+| style  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles11对象说明)| 否 | 是 | 设置外描边样式。<br/>默认值：OutlineStyle.SOLID            |
 
 ## EdgeOutlineWidths<sup>11+</sup>对象说明
 
@@ -609,10 +609,10 @@ type CustomBuilderT\<T> = (t: T) => void
 
 | 名称     | 类型                                     | 只读 | 可选  | 说明      |
 | ------ | ---------------------------------------- | -- | -- | ------- |
-| left   | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11枚举说明) | 否 | 是   | 左侧外描边样式。 |
-| right  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11枚举说明) | 否 | 是   | 右侧外描边样式。 |
-| top    | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11枚举说明) | 否 | 是   | 上侧外描边样式。 |
-| bottom | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11枚举说明) | 否  | 是  | 下侧外描边样式。 |
+| left   | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明) | 否 | 是   | 左侧外描边样式。 |
+| right  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明) | 否 | 是   | 右侧外描边样式。 |
+| top    | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明) | 否 | 是   | 上侧外描边样式。 |
+| bottom | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明) | 否  | 是  | 下侧外描边样式。 |
 
 ## Dimension<sup>10+</sup>
 

@@ -125,7 +125,15 @@ try {
 
 ```shell
 hdc shell
-# 需将com.example.myapplication替换为实际应用的包名
+# 需将ohos.app.hap.myapplication替换为实际应用的包名
 bm dump -n ohos.app.hap.myapplication |grep '"appId":'
 ```
 ![alt text](figures/get_appId.png)
+
+1. 单个~text~, 不预览
+2. 两个~~删除~~
+3. 前3后2~~~text~~
+4. 前2后3~~text~~~
+5. 前4后4~~~~text~~~~
+6. 前5后5~~~~~text~~~~~
+7. 前6后10~~~~~~text~~~~~~~~~~

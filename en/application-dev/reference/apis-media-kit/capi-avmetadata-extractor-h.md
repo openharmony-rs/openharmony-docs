@@ -223,7 +223,7 @@ Obtains the track description of a specified index from the media source. This f
 
 | Type| Description|
 | -- | -- |
-| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | Pointer to the **OH_AVFormat** instance that contains the track description if the operation is successful; null pointer otherwise.<br>         The possible causes of an operation failure are as follows:<br>         1. The **extractor** is a null pointer.<br>         2. The media source is not set.<br>         3. The format is not supported.<br>         Note: You need to use [OH_AVFormat_Destroy](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_destroy) to release the **OH_AVFormat** instance after using it.|
+| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | Pointer to the **OH_AVFormat** instance that contains the track description if the operation is successful; null pointer otherwise.<br>         The possible causes of an operation failure are as follows:<br>         1. **extractor** is a null pointer.<br>         2. The media source is not set.<br>         3. The format is not supported.<br>         Note: You need to use [OH_AVFormat_Destroy](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_destroy) to release the **OH_AVFormat** instance after using it.|
 
 ### OH_AVMetadataExtractor_GetCustomInfo()
 
@@ -247,7 +247,7 @@ Obtains custom metadata from the media source. This function must be used after 
 
 | Type| Description|
 | -- | -- |
-| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | Pointer to the **OH_AVFormat** instance that contains custom metadata if the operation is successful; null pointer otherwise.<br>         The possible causes of an operation failure are as follows:<br>         1. The **extractor** is a null pointer.<br>         2. The media source is not set.<br>         3. The custom information is not found.<br>         Note: You need to use [OH_AVFormat_Destroy](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_destroy) to release the **OH_AVFormat** instance after using it.|
+| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | Pointer to the **OH_AVFormat** instance that contains custom metadata if the operation is successful; null pointer otherwise.<br>         The possible causes of an operation failure are as follows:<br>         1. **extractor** is a null pointer.<br>         2. The media source is not set.<br>         3. The custom information is not found.<br>         Note: You need to use [OH_AVFormat_Destroy](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_destroy) to release the **OH_AVFormat** instance after using it.|
 
 ### OH_AVMetadataExtractor_SetMediaSource()
 
@@ -348,7 +348,7 @@ Obtains metadata from a media asset.<br>        This function must be called aft
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **extractor** is nullptr or a parameter is invalid.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>         **AV_ERR_UNSUPPORTED_FORMAT**: The format is not supported.<br>         **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **extractor** is nullptr or a parameter is invalid.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>         **AV_ERR_UNSUPPORTED_FORMAT**: The format is not supported.<br>         **AV_ERR_NO_MEMORY**: Internal memory allocation failed.<br>         **AV_ERR_IO_CLEARTEXT_NOT_PERMITTED**: (Added in API version 23) HTTP plaintext traffic is not allowed.|
 
 ### OH_AVMetadataExtractor_FetchAlbumCover()
 

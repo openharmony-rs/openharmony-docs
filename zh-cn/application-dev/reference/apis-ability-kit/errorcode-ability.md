@@ -692,9 +692,11 @@ The app clone index is invalid.
 
 **可能原因**
 
-1.调用startAbility时，使用ohos.extra.param.key.appCloneIndex携带的appCloneIndex是一个无效值，则返回该错误码。
+1. 调用startAbility时，使用ohos.extra.param.key.appCloneIndex携带的appCloneIndex是一个无效值，则返回该错误码。
 
-2.调用isAppRunning时，入参appCloneIndex是一个无效值，则返回该错误码。
+2. 调用isAppRunning时，入参appCloneIndex是一个无效值，则返回该错误码。
+
+3. 尝试连接不支持应用分身的ExtensionAbility时，返回该错误码。
 
 **处理步骤**
 
@@ -2561,3 +2563,59 @@ useNormalizedOHMUrl未设置或者设置为false。
 **处理步骤**
 
 在应用级build-profile.json5中将useNormalizedOHMUrl设置为true。
+
+## 35600001 指定的agentId不存在
+
+**错误信息**
+
+The specified agentId does not exist.
+
+**错误描述**
+
+指定的agentId不存在。
+
+**可能原因**
+
+目标应用中不存在指定agentId对应的AgentCard。
+
+**处理步骤**
+
+检查一下目标应用的静态配置信息，重新传入正确的agentId。
+
+## 35600002 IPC消息发送失败
+
+**错误信息**
+
+Failed to send the IPC message.
+
+**错误描述**
+
+IPC消息发送失败。
+
+**可能原因**
+
+1. 传入的数据量超过了IPC的限制(200KB)。
+2. 服务端进程已经退出。
+
+**处理步骤**
+
+1. 检查发送的数据是否超过了规格限制，如果超过了，调整到规格限制内。
+2. 查看服务端进程是否已经退出，如果已经退出，需要重新获取代理对象。
+
+## 35600003 调用方已达到最大连接数
+
+**错误信息**
+
+Maximum connections from the same caller have been reached.
+
+**错误描述**
+
+调用方已达到最大连接数。
+
+**可能原因**
+
+调用方同时连接的AgentExtension数量已经达到5次，不允许再发起新的连接请求。
+
+**处理步骤**
+
+调用方断开一些连接后重新发起连接。

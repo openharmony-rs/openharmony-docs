@@ -860,7 +860,7 @@ onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
 
 也可以参考当前故障日志中的Fingerprint字段，对聚类特征内容进行哈希运算生成故障特征标识值，再根据故障特征标识值对Cpp Crash故障问题进行分类统计。
 
-## Cpp Crash常见问题
+## 常见问题
 
 ### 故障日志中调用栈出现中断
 
@@ -877,6 +877,90 @@ onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
 **编译选项开启方法**
 
 以Cmake为例，在CMakeList.txt中添加`set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -funwind-tables")`。
+
+### 应用发生SIGPIPE异常退出
+
+从**API version 24**开始，当应用发生SIGPIPE异常退出时，可开启SIGPIPE信号打印调用栈功能，重启应用后，开发者复现问题场景，可以抓取调用栈信息并输出到HILOG。
+
+> **注意：**
+>
+> 此功能只能在[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)开启。
+
+SIGPIPE异常退出时关键日志如下所示：
+```text
+应用包名 with pid xxxx exit with signal:13
+```
+
+- **SIGPIPE信号说明**
+
+  | 信号值(signo) | 信号 | 解释 | 触发原因 |
+  | -------- | -------- | -------- | -------- |
+  | 13 | SIGPIPE | 非法操作管道或套接字 | - 管道（pipe）或命名管道（FIFO）：写端向管道写入，但读端已经关闭。<br>- 套接字（socket）：客户端断开连接后，服务端仍尝试往已关闭的连接写数据。 |
+
+- **打开SIGPIPE调试开关**
+
+  在“DevEco Studio”终端中运行命令：hdc shell param set hilog.signal.stack.on SIGPIPE，完成之后需要重新打开应用。设备重启后会失效。
+
+- **验证是否成功开启**
+
+  在HILOG中使用关键字`C02D11`过滤日志，根据筛选日志能够获取异常发生所在行相应信息，则表示调用栈功能成功开启。
+
+  以通过testSIGPIPE()函数来实现SIGPIPE的异常场景为例：
+
+  ```c++
+  #include <unistd.h>
+  #include <signal.h>
+
+  int testSIGPIPE()
+  {
+      sigset_t set, oldset;
+      // 初始化信号集，加入要临时解除阻塞的信号
+      sigemptyset(&set);
+      sigaddset(&set, SIGPIPE);
+      // 先保存当前的信号屏蔽集
+      if (sigprocmask(SIG_SETMASK, NULL, &oldset) != 0) {
+          return -1;
+      }
+      // 临时解除阻塞
+      if (sigprocmask(SIG_UNBLOCK, &set, NULL) != 0) {
+          return -1;
+      }
+      // 创建pipe后，先关闭读端pipe，然后写端继续写，构建SIGPIPE的异常场景
+      int pipe[2]{-1};
+      if (pipe2(pipe, 0) != 0) {
+          return -1;
+      }
+      close(pipe[0]);
+      int src = 1;
+      write(pipe[1], reinterpret_cast<const void*>(&src), sizeof(int));
+      close(pipe[1]);
+    
+      // 最后恢复原来的屏蔽集
+      if (sigprocmask(SIG_SETMASK, &oldset, NULL) != 0) {
+          return -1;
+      }
+      return 0;
+  }
+  ```
+
+  过滤日志信息，根据调用栈信息，成功定位到异常发生在testSIGPIPE()函数中，表示功能开启成功。
+
+  ```text
+  ...
+  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     Timestamp:2026-03-06 13:55:25.382
+  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     Pid:19787
+  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     Uid:20020208
+  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     Process name:com.example.myapplication
+  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     Process life time:12s
+  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     Process Memory(kB): 172773(Rss)
+  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     Reason:Signal:SIGPIPE(SI_USER)from:19787:20020208
+  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     Fault thread info:
+  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     Tid:19787, Name:e.myapplication
+  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     #00 pc 00000000001e8150 /system/lib/ld-musl-aarch64.so.1(write+68)(90776dcdb3f38042fc78b97d93138bde)
+  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     #01 pc 0000000000001cf8 /data/storage/el1/bundle/libs/arm64/libentry.so(testSIGPIPE()+228)(d6af99a8111f4c2761800cb1432bea140f5176e4)
+  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     #02 pc 0000000000001e34 /data/storage/el1/bundle/libs/arm64/libentry.so(d6af99a8111f4c2761800cb1432bea140f5176e4)
+  ...
+  ```
 
 <!--RP10-->
 <!--RP10End-->

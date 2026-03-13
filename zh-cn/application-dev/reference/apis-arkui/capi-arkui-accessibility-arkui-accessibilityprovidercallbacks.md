@@ -54,7 +54,7 @@ int32_t (*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_Accessibility
 | 参数项                                                                            | 描述 |
 |--------------------------------------------------------------------------------| -- |
 | int64_t elementId                                                              | 无障碍元素的唯一编号。 |
-| [ArkUI_AccessibilitySearchMode](capi-native-interface-accessibility-h.md) mode | 表示无障碍搜索模式。 |
+| [ArkUI_AccessibilitySearchMode](capi-native-interface-accessibility-h.md#arkui_accessibilitysearchmode) mode | 表示无障碍搜索模式。 |
 | int32_t requestId                                                              | 表示请求ID。 |
 | [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md)* elementList                            | 表示无障碍元素信息列表。 |
 

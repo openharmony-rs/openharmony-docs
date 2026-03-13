@@ -482,9 +482,11 @@ enum OH_Drawing_EllipsisModal
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ELLIPSIS_MODAL_HEAD = 0 | 头部模式，即省略号放在文本头部。 |
-| ELLIPSIS_MODAL_MIDDLE = 1 | 中部模式，即省略号放在文本中部。 |
-| ELLIPSIS_MODAL_TAIL = 2 | 尾部模式，即省略号放在文本尾部。 |
+| ELLIPSIS_MODAL_HEAD = 0 | 头部省略号模式，即省略号位置出现在行首。该枚举值仅在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为1时有效。 |
+| ELLIPSIS_MODAL_MIDDLE = 1 | 中部省略号模式，即省略号位置出现在行的中间。该枚举值仅在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为1时有效。 |
+| ELLIPSIS_MODAL_TAIL = 2 | 尾部省略号模式，即省略号位置出现在行的尾部。该枚举值在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为任何值时均有效。 |
+| ELLIPSIS_MODAL_MULTILINE_HEAD = 3 | 头部省略号模式，即省略号位置出现在行首。该枚举值在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为任何值时均有效。<br>**起始版本：** 24 |
+| ELLIPSIS_MODAL_MULTILINE_MIDDLE = 4 | 中间省略号模式，即省略号位置出现在行的中间。该枚举值在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为任何值时均有效。<br>**起始版本：** 24 |
 
 ### OH_Drawing_BreakStrategy
 
@@ -724,6 +726,7 @@ enum OH_Drawing_TypographyStyleAttributeId
 | TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5 | 设置文本排版时是否使能行首标点压缩。<br>**说明：**<br>1. 需要字体文件支持[OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md)中的"ss08"特性，否则无法压缩。<br>2. 在行首标点压缩范围内的标点才在本特性作用范围内。<br>**起始版本：** 23 |
 | TYPOGRAPHY_STYLE_ATTR_B_INCLUDE_FONT_PADDING = 6 | 设置文本排版时是否使能字体内部的padding。<br>**起始版本：** 23 |
 | TYPOGRAPHY_STYLE_ATTR_B_FALLBACK_LINE_SPACING = 7 | 设置文本排版时是否使能行间距回退机制。<br>**起始版本：** 23 |
+| TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL = 8 | 省略号样式。具体省略号样式可见[OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal)。<br>**起始版本：** 24 |
 
 ## 函数说明
 
@@ -2532,6 +2535,12 @@ void OH_Drawing_SetTypographyTextEllipsisModal(OH_Drawing_TypographyStyle* style
 **描述**
 
 设置文本的省略模式。
+
+该接口仅支持省略号样式为ELLIPSIS_MODAL_HEAD、ELLIPSIS_MODAL_MIDDLE、ELLIPSIS_MODAL_TAIL，具体可见[OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal)枚举。
+
+>**说明：** 
+> 
+> 从API version 24开始，推荐使用[OH_Drawing_SetTypographyStyleAttributeInt](capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributeint)接口设置省略号样式，以支持更多省略号样式的枚举值。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

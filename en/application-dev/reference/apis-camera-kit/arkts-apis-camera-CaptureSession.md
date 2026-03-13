@@ -1618,7 +1618,6 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 Subscribes to focus state change events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [VideoSession.on('focusStateChange')](arkts-apis-camera-VideoSession.md#onfocusstatechange11) instead.
 >
 > Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
@@ -1683,9 +1682,8 @@ Subscribes to CaptureSession error events. This API uses an asynchronous callbac
 > **NOTE**
 >
 > Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
-
-> **NOTE**
->This API is supported since API version 10 and deprecated since API version 11. You are advised to use [VideoSession.on('error')](arkts-apis-camera-VideoSession.md#onerror11) instead.
+>
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [VideoSession.on('error')](arkts-apis-camera-VideoSession.md#onerror11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 

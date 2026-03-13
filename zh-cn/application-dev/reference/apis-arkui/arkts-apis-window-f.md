@@ -649,27 +649,26 @@ getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: number, y?:
 ```ts
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
 
-try {
-  let displayId = 0;
-  window.getWindowsByCoordinate(displayId).then((data) => {
-    console.info(`Succeeded in getting windows. Data: ${data}`);
-    for (let window of data) {
-      // do something with window
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
+    try {
+      let displayId = 0;
+      window.getWindowsByCoordinate(displayId, 2, 500, 500).then((data) => {
+        console.info(`Succeeded in getting windows. Data: ${data}`);
+        for (let windowObject of data) {
+          // do something with window
+          windowClass = windowObject;
+        }
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to get window from point. Cause code: ${exception.code}, message: ${exception.message}`);
     }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
-  });
-  window.getWindowsByCoordinate(displayId, 2, 500, 500).then((data) => {
-    console.info(`Succeeded in getting windows. Data: ${data}`);
-    for (let window of data) {
-      // do something with window
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed to get window from point. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
 }
 ```
 
@@ -1117,6 +1116,75 @@ function reqPermissionsFromUser(permissions: Array<Permissions>, context: common
   }).catch((err: BusinessError) => {
     console.error(`Failed to request permission from user. Code is ${err.code}, message is ${err.message}`);
   })
+}
+```
+
+## window.onApplicationFocusStateChange
+
+onApplicationFocusStateChange(callback: Callback\<boolean\>): void
+
+开启应用进程获焦状态变化的监听。此监听针对应用间的获焦状态变化，若同应用内窗口间的获焦状态发生变化，则不会触发回调函数。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明                                                          | 
+| -------- |-------------------------|---|-------------------------------------------------------------|
+| callback | Callback&lt;boolean&gt; | 是 | 回调函数。返回当前应用进程获焦状态的变化。true表示当前应用进程变为获焦状态；false表示当前应用进程变为失焦状态。|
+
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+
+try {
+  window.onApplicationFocusStateChange((data) =>{
+      console.info(`Succeeded in enabling the listener for application focus state changes. Data: ${data}`);
+  })
+} catch(exception){
+  console.error(`Failed to enable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.offApplicationFocusStateChange
+
+offApplicationFocusStateChange(callback?: Callback\<boolean\>): void
+
+关闭应用进程获焦状态变化的监听。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                |
+| -------- | ----------------------- | -- |---------------------------------------------------|
+| callback | Callback&lt;boolean&gt; | 否 | 已注册的回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有应用进程焦点状态变化的监听。|
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+
+const callback = (bool: boolean) => {
+  // ...
+}
+try {
+  window.onApplicationFocusStateChange(callback);
+  window.offApplicationFocusStateChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  window.offApplicationFocusStateChange(); 
+} catch (exception) {
+  console.error(`Failed to enable or disable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 

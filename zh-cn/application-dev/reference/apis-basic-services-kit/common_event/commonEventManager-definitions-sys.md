@@ -15,7 +15,7 @@
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前界面仅包含本模块的系统接口，其他公开接口参见[系统公共事件定义](../common_event/commonEventManager-definitions.md)。
+> 当前界面仅包含本模块的系统接口，其他公开接口参见[系统定义的公共事件](../common_event/commonEventManager-definitions.md)。
 
 
 ## Ability Kit
@@ -197,7 +197,7 @@
 
 创建系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
-与这个公共事件相关的接口：createOsAccount、createOsAccountForDomain, 这些为系统API，具体参看[系统账号接口文档](../js-apis-osAccount.md)。
+与这个公共事件相关的接口：createOsAccount、createOsAccountForDomain, 这些为系统API，具体参看[@ohos.account.osAccount](../js-apis-osAccount.md)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -214,7 +214,7 @@
 
 删除系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
-与这个公共事件相关的接口：removeOsAccount, 为系统API，具体参看[系统账号接口文档](../js-apis-osAccount.md)。
+与这个公共事件相关的接口：removeOsAccount, 为系统API，具体参看[@ohos.account.osAccount](../js-apis-osAccount.md)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -231,7 +231,7 @@
 
 域账号认证、删除、令牌更新、令牌失效将会触发事件通知服务发布该系统公共事件，事件携带域账号名、域名、域账号状态等信息。
 
-与这个公共事件相关的接口：removeOsAccount、DomainAccountManager.auth、updateAccountToken, 这些为系统API，具体参看[系统账号接口文档](../js-apis-osAccount.md)。
+与这个公共事件相关的接口：removeOsAccount、DomainAccountManager.auth、updateAccountToken, 这些为系统API，具体参看[@ohos.account.osAccount](../js-apis-osAccount.md)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -248,7 +248,7 @@
 
 切换系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
-与这个公共事件相关的接口：activateOsAccount, 为系统API，具体参看[系统账号接口文档](../js-apis-osAccount.md)。
+与这个公共事件相关的接口：activateOsAccount, 为系统API，具体参看[@ohos.account.osAccount](../js-apis-osAccount.md)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -287,7 +287,7 @@
 
 ## Core File Kit
 
-文件管理子系统面向应用发布如下系统公共事件，应用如需订阅系统公共事件，请参考公共事件[接口文档](../js-apis-commonEventManager.md)。
+文件管理子系统面向应用发布如下系统公共事件，应用如需订阅系统公共事件，请参考公共事件[@ohos.commonEventManager](../js-apis-commonEventManager.md)。
 
 
 ### COMMON_EVENT_VOLUME_REMOVED

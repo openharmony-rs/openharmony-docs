@@ -23,7 +23,7 @@ The HUKS module consists of the following:
 
   > **NOTE**
   >
-  > The HUKS core layer must run in a secure environment, such as the [TEE](huks-concepts.md) of a system or device. <!--Del-->The secure environment depends on the hardware. The implementation in the open source repository is simulated, and subject to adaptation by OEM vendors.<!--DelEnd-->
+  > For systems and devices that have a secure environment (for example, [TEE] (huks-concepts.md#tee)), the HUKS core layer must run within the secure environment. <!--Del-->The secure environment depends on the hardware. The implementation in the open source repository is simulated, and subject to adaptation by OEM vendors.<!--DelEnd-->
 
 ![en_image_0000001736030930](figures/huks_architecture.png)
 

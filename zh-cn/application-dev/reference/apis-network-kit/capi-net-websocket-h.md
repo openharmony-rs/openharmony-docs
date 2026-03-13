@@ -9,7 +9,7 @@
 
 ## 概述
 
-定义websocket客户端模块的接口。
+定义WebSocket客户端模块的接口。
 
 **引用文件：** <network/netstack/net_websocket.h>
 
@@ -27,11 +27,11 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [struct WebSocket *OH_WebSocketClient_Constructor(WebSocket_OnOpenCallback onOpen, WebSocket_OnMessageCallback onMessage,WebSocket_OnErrorCallback onError, WebSocket_OnCloseCallback onclose)](#oh_websocketclient_constructor) | websocket客户端的构造函数。 |
+| [struct WebSocket *OH_WebSocketClient_Constructor(WebSocket_OnOpenCallback onOpen, WebSocket_OnMessageCallback onMessage,WebSocket_OnErrorCallback onError, WebSocket_OnCloseCallback onclose)](#oh_websocketclient_constructor) | WebSocket客户端的构造函数。 |
 | [int OH_WebSocketClient_AddHeader(struct WebSocket *client, struct WebSocket_Header header)](#oh_websocketclient_addheader) | 将header头信息添加到client客户端request中。 |
 | [int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct WebSocket_RequestOptions options)](#oh_websocketclient_connect) | 客户端连接服务端。 |
 | [int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)](#oh_websocketclient_send) | 客户端向服务端发送数据。 |
-| [int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOption options)](#oh_websocketclient_close) | 客户端主动关闭webSocket连接。 |
+| [int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOption options)](#oh_websocketclient_close) | 客户端主动关闭WebSocket连接。 |
 | [int OH_WebSocketClient_Destroy(struct WebSocket *client)](#oh_websocketclient_destroy) | 释放websocket连接上下文和资源。 |
 
 ## 函数说明
@@ -44,7 +44,7 @@ struct WebSocket *OH_WebSocketClient_Constructor(WebSocket_OnOpenCallback onOpen
 
 **描述**
 
-websocket客户端的构造函数。
+WebSocket客户端的构造函数。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -164,7 +164,7 @@ int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOpt
 
 **描述**
 
-客户端主动关闭webSocket连接。
+客户端主动关闭WebSocket连接。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -194,7 +194,14 @@ int OH_WebSocketClient_Destroy(struct WebSocket *client)
 
 **描述**
 
-释放websocket连接上下文和资源。
+释放websocket连接上下文和资源。使用方式如下：
+1. 调用[WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback)订阅WebSocket连接关闭事件，并在该回调函数中调用[OH_WebSocketClient_Destroy](capi-net-websocket-h.md#oh_websocketclient_destroy)方法。
+
+2. 调用[OH_WebSocketClient_Close](capi-net-websocket-h.md#oh_websocketclient_close)关闭WebSocket连接。
+
+>**注意**
+>
+>确保触发[WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback)回调后再调用该接口，否则系统内存资源被释放后可能出现socket泄露以及连接未关闭的情况。
 
 **系统能力：** SystemCapability.Communication.NetStack
 

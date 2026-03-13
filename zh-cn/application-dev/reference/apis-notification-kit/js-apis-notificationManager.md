@@ -1171,6 +1171,54 @@ notificationManager.getActiveNotifications().then((data: Array<notificationManag
 });
 ```
 
+## notificationManager.getNotificationParameters<sup>24+</sup>
+
+getNotificationParameters(id: number, label?: string): Promise\<NotificationParameters\>
+
+获取通知[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)中wantAgent字段的部分信息。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明     |
+| ----- | ------ | ---- | -------- |
+| id    | number | 是   | 通知ID。   |
+| label | string | 否   | 通知标签，默认为空。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                                    |
+| ------------------------------------------------------------ | --------------------------------------- |
+| Promise\<[NotificationParameters](js-apis-inner-notification-notificationRequest.md#notificationparameters24)\> | Promise对象，返回wantAgent的部分信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.   |
+| 1600007  | The notification does not exist.    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let id: number = 0;
+let label: string = "";
+notificationManager.getNotificationParameters(id, label).then((data: notificationManager.NotificationParameters) => {
+  console.info(`Succeeded in getting notification parameters, data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get notification parameters. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## notificationManager.cancelGroup
 
 cancelGroup(groupName: string, callback: AsyncCallback\<void\>): void
@@ -1840,6 +1888,10 @@ notificationManager.isGeofenceEnabled().then((data: boolean) => {
 | ---------------- | ------- | ---- | ---- | ------------------------------------------- |
 | vibrationEnabled | boolean | 否   |  否  | 表示是否开启振动。<br/> - true：开启。<br/> - false：关闭。 |
 | soundEnabled     | boolean | 否   |  否  | 表示是否开启响铃。<br/> - true：开启。<br/> - false：关闭。 |
+| lockScreenEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示是否开启锁屏通知。<br/> - true：开启。<br/> - false：关闭。 |
+| bannerEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示是否开启横幅通知。<br/> - true：开启。<br/> - false：关闭。 |
+| badgeNumberEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示是否开启通知角标数字展示。<br/> - true：开启。<br/> - false：关闭。 |
+| notificationEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示应用通知使能状态。<br/> - true：开启。<br/> - false：关闭。 |
 
 ## BundleOption
 

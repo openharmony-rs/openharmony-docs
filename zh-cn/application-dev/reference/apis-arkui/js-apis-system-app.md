@@ -40,6 +40,7 @@ static getInfo(): AppResponse
 
 **示例：**
 
+ArkTS示例：
 ```ts
 import app, { AppResponse } from '@system.app';
 export default class Info {
@@ -50,6 +51,105 @@ export default class Info {
 }
 ```
 
+JS示例：
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        app.getInfo example
+    </text>
+    <div class="info-item">
+        <text class="label">appName:</text>
+        <text class="value">{{appName}}</text>
+    </div>
+    <div class="info-item">
+        <text class="label">versionName:</text>
+        <text class="value">{{versionName}}</text>
+    </div>
+    <div class="info-item">
+        <text class="label">versionCode:</text>
+        <text class="value">{{versionCode}}</text>
+    </div>
+    <input type="button" value="getAppInfo" style="width: 240px; height: 50px; margin: 5px;" onclick="getAppInfo"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 0px;
+    top: 0px;
+    width: 454px;
+    height: 454px;
+    background-color: #000000;
+}
+.title {
+    font-size: 32px;
+    text-align: center;
+    width: 400px;
+    height: 80px;
+    margin-top: 20px;
+    color: #ffffff;
+}
+.info-item {
+    width: 400px;
+    height: 60px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+}
+.label {
+    font-size: 24px;
+    color: #aaaaaa;
+}
+.value {
+    font-size: 24px;
+    color: #ffffff;
+}
+```
+
+```js
+// xxx.js
+import app from '@system.app';
+
+export default {
+    data: {
+        fontSize: '32px',
+        fontColor: '#ffffff',
+        appName: '',
+        versionName: '',
+        versionCode: ''
+    },
+    onInit() {
+        this.getAppInfo();
+    },
+    getAppInfo() {
+        try {
+            const info = app.getInfo();
+            console.info('app.getInfo success');
+            console.info('appName: ' + info.appName);
+            console.info('versionName: ' + info.versionName);
+            console.info('versionCode: ' + info.versionCode);
+            this.appName = info.appName || 'Unknown';
+            this.versionName = info.versionName || 'Unknown';
+            this.versionCode = String(info.versionCode) || 'Unknown';
+        } catch (error) {
+            console.error('app.getInfo failed: ' + error.message);
+            this.appName = 'Failed';
+            this.versionName = 'Failed';
+            this.versionCode = 'Failed';
+        }
+    }
+}
+```
 ### terminate
 
 static terminate(): void
@@ -64,12 +164,78 @@ static terminate(): void
 
 **示例：**
 
+ArkTS示例：
 ```ts
 import app, { AppResponse } from '@system.app';
 export default class TerM {
   terminate() {
     app.terminate();
   }
+}
+```
+
+JS示例：
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        app.terminate example
+    </text>
+    <text class="desc">
+        Click the button below to exit the app
+    </text>
+    <input type="button" value="exit app" style="width: 240px; height: 50px; margin: 5px;" onclick="terminateApp"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 0px;
+    top: 0px;
+    width: 454px;
+    height: 454px;
+    background-color: #000000;
+}
+.title {
+    font-size: 32px;
+    text-align: center;
+    width: 400px;
+    height: 80px;
+    margin-top: 60px;
+    color: #ffffff;
+}
+.desc {
+    font-size: 24px;
+    text-align: center;
+    width: 290px;
+    height: 120px;
+    margin-top: 20px;
+    color: #aaaaaa;
+}
+```
+
+```js
+// xxx.js
+import app from '@system.app';
+
+export default {
+    data: {
+        fontSize: '32px',
+        fontColor: '#ffffff'
+    },
+    terminateApp() {
+        console.info('Calling app.terminate...');
+        try {
+            app.terminate();
+            console.info('app.terminate called');
+        } catch (error) {
+            console.error('app.terminate failed: ' + error.message);
+        }
+    }
 }
 ```
 ### setImageCacheCount<sup>7+</sup>

@@ -12,7 +12,7 @@
 
 Router路由的页面是一个`@Entry`修饰的Component，每一个页面都需要在`main_page.json`中声明。
 
-```json
+```json5
 // main_page.json
 {
   "src": [
@@ -166,7 +166,7 @@ export struct PageOne {
 
 每个子页也需要配置到系统配置文件`router_map.json`中（参考[系统路由表](./arkts-navigation-cross-package.md#系统路由表)）。
 
-```json
+```json5
 // 工程配置文件module.json5中配置 {"routerMap": "$profile:router_map"}
 // router_map.json
 {
@@ -785,9 +785,9 @@ Navigation也可以通过[queryNavDestinationInfo](../reference/apis-arkui/arkui
 | navigationId                  | ResourceStr         | 是   | 包含NavDestination组件的Navigation组件的id。 |
 | name                          | ResourceStr         | 是   | NavDestination组件的名称。                   |
 | state                         | NavDestinationState | 是   | NavDestination组件的状态。                   |
-| index<sup>12+<sup>            | number              | 是   | NavDestination在路由栈中的索引。             |
-| param<sup>12+<sup>            | Object              | 否   | NavDestination组件的参数。                   |
-| navDestinationId<sup>12+<sup> | string              | 是   | NavDestination组件的唯一标识ID。             |
+| index<sup>12+</sup>            | number              | 是   | NavDestination在路由栈中的索引。             |
+| param<sup>12+</sup>            | Object              | 否   | NavDestination组件的参数。                   |
+| navDestinationId<sup>12+</sup> | string              | 是   | NavDestination组件的唯一标识ID。             |
 
 <!-- @[observer_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/QueryNav.ets) -->
 

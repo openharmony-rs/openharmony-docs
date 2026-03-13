@@ -1,8 +1,8 @@
 # 开放权限（系统授权）
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -656,3 +656,17 @@
 **支持设备**：2in1
 
 **起始版本**：23
+
+## ohos.permission.HDR_BRIGHTNESS
+
+允许应用使用HDR提亮能力。
+
+获取该权限后，应用可为组件内容添加HDR提亮效果。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**起始版本**：24

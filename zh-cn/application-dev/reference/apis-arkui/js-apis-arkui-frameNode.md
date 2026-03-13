@@ -1,20 +1,22 @@
 # FrameNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。最佳实践请参考[组件动态创建-组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012)。
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前不支持在预览器中使用FrameNode节点。
+> - 当前不支持在预览器中使用FrameNode节点。
 >
-> FrameNode节点暂不支持拖拽。
+> - FrameNode节点暂不支持拖拽。
+>
+> - FrameNode对象不支持使用JSON序列化。
 
 ## 导入模块
 
@@ -1186,7 +1188,7 @@ getUserConfigSize(): SizeT\<LengthMetrics\>
 
 getId(): string
 
-获取用户设置的节点ID（通用属性设置的[ID](./arkui-ts/ts-universal-attributes-component-id.md)）。
+获取用户设置的节点ID（通用属性设置的[组件标识](./arkui-ts/ts-universal-attributes-component-id.md)）。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1196,7 +1198,7 @@ getId(): string
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| string | 用户设置的节点ID（通用属性设置的[ID](./arkui-ts/ts-universal-attributes-component-id.md)）。 |
+| string | 用户设置的节点ID（通用属性设置的[组件标识](./arkui-ts/ts-universal-attributes-component-id.md)）。 |
 
 **示例：**
 

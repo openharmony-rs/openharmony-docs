@@ -263,6 +263,8 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | STREAM_USAGE_ENFORCED_TONE<sup>10+</sup>  | 15     | 强制音(如相机快门音)。 |
 | STREAM_USAGE_ULTRASONIC<sup>10+</sup>     | 16     | 超声波（目前仅提供给MSDP使用）。 |
 | STREAM_USAGE_VOICE_CALL_ASSISTANT<sup>12+</sup>     | 21     | 通话辅助语音。 |
+| STREAM_USAGE_ANNOUNCEMENT<sup>24+</sup>   | 22     | 通知音。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| STREAM_USAGE_EMERGENCY<sup>24+</sup>      | 23     | 告警音。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## InterruptRequestType<sup>9+</sup>
 
