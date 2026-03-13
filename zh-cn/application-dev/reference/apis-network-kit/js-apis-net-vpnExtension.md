@@ -559,6 +559,10 @@ generateVpnId(): Promise\<string\>
 
 如需使用系统多VPN能力，需调用该接口生成vpnId，配置到VpnConfig中。
 
+>**注意**
+>
+>当前系统多VPN能力仅支持IPv4。
+
 **系统能力**：SystemCapability.Communication.NetManager.Vpn
 
 **返回值：**
