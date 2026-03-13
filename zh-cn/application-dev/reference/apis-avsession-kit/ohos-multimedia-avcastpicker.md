@@ -4,6 +4,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - **设备限制：** 当前功能不支持在PC/2in1设备上使用。
 > - 示例效果请以真机为准，当前DevEco Studio预览器无实际投播功能。<!--Del-->
@@ -111,7 +112,7 @@ type OnPickerStateCallback = (state: AVCastPickerState) => void
 
 投播组件状态变化的回调函数类型。
 
-**ArkTS模式：** 该类型仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 

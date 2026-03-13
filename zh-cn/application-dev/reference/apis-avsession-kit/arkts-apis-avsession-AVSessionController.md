@@ -4909,6 +4909,8 @@ onCustomDataChange(callback: Callback\<Record\<string, Object>>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                    | 必填 | 说明                                                                                                    |
@@ -4990,6 +4992,8 @@ offCustomDataChange(callback?: Callback\<Record\<string, Object>>): void
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

@@ -12,15 +12,17 @@ type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call' | 'photo'
 
 该类型可取的值为下表字符串。
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 | 类型  | 说明 |
 | -----  | ---- |
-| 'audio' | 音频 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：23 |
-| 'video' | 视频 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：23 |
-| 'voice_call'<sup>11+<sup> | 音频通话。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：23 |
-| 'video_call'<sup>12+<sup> | 视频通话。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23 |
-| 'photo'<sup>22+</sup> |  图片。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：22 <br>**ArkTS-Sta起始版本**：23  |
+| 'audio' | 音频 <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：23 |
+| 'video' | 视频 <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：23 |
+| 'voice_call'<sup>11+<sup> | 音频通话。<br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：23 |
+| 'video_call'<sup>12+<sup> | 视频通话。 <br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23 |
+| 'photo'<sup>22+</sup> |  图片。<br>**ArkTS-Dyn起始版本**：22 <br>**ArkTS-Sta起始版本**：23  |
 
 ## AVCastControlCommandType<sup>10+</sup>
 
@@ -183,7 +185,7 @@ type EventProcess = (event: string, args: Record\<string, Object>) => void
 
 定义处理事件和参数的通用函数类型。
 
-**ArkTS模式：** 该类型仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -202,7 +204,7 @@ type ConnectionEvent = (state: ConnectionState, device: OutputDeviceInfo) => voi
 
 系统提供的连接事件，用于指示设备连接状态和信息。
 
-**ArkTS模式：** 该类型仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -221,7 +223,7 @@ type VideoSizeEvent = (width: int, height: int) => void
 
 视频尺寸变化事件的回调函数类型。
 
-**ArkTS模式：** 该类型仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
