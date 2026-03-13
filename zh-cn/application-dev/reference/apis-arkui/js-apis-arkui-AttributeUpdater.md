@@ -277,7 +277,7 @@ class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
   }
 
   onComponentChanged(instance: ButtonAttribute): void {
-    instance.backgroundColor('#ff2787d9')
+    instance.backgroundColor('#ff519db4')
       .width('50%')
       .height(30);
   }
@@ -295,7 +295,7 @@ struct updaterDemo4 {
         Button("Test")
           .onClick(() => {
             this.btnState = !this.btnState;
-          })
+          }).margin({ bottom: 20 })
 
         if (this.btnState) {
           Button("Button")
@@ -311,3 +311,4 @@ struct updaterDemo4 {
   }
 }
 ```
+![](figures/attribute-updater4.gif)
