@@ -343,8 +343,8 @@ Web布局模式的配置。
 | CREATE                        | 0 | 同层标签创建。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23   |
 | UPDATE                        | 1 | 同层标签更新。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23   |
 | DESTROY                       | 2 | 同层标签销毁。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
-| ENTER_BFCACHE   | 3 | 同层标签进入BFCache。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23   |
-| LEAVE_BFCACHE   | 4 | 同层标签离开BFCache。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
+| ENTER_BFCACHE<sup>12+</sup>   | 3 | 同层标签进入BFCache。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23   |
+| LEAVE_BFCACHE<sup>12+</sup>   | 4 | 同层标签离开BFCache。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
 
 ## ContextMenuEditStateFlags<sup>9+</sup>
 
