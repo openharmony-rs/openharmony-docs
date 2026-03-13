@@ -86,7 +86,7 @@
    ``` C
    // 获取自定义事件绘制的上下文。
    auto *drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
-   // 获取Canvas指针。
+   // 获取绘制canvas指针。
    auto *canvas1 = OH_ArkUI_DrawContext_GetCanvas(drawContext);
    // 转换为OH_Drawing_Canvas指针进行绘制。
    OH_Drawing_Canvas *canvas = reinterpret_cast<OH_Drawing_Canvas *>(canvas1);
@@ -98,7 +98,7 @@
    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4); // SIZE_3 = 3,SIZE_4 = 4
    OH_Drawing_PathClose(path);
    auto pen = OH_Drawing_PenCreate();
-   OH_Drawing_PenSetWidth(pen, SIZE_10); // SIZE_10 = 10
+   OH_Drawing_PenSetWidth(pen, SIZE_10); // SIZE_10=10
    OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x4A, 0x4F));
    OH_Drawing_CanvasAttachPen(canvas, pen);
    OH_Drawing_CanvasDrawPath(canvas, path);
@@ -429,7 +429,7 @@
            }
        }
    
-       // 自定义内容背景层：绘制聊天界面背景
+       // 自定义内容层背景：绘制聊天界面背景
        void OnDrawBehind(ArkUI_NodeCustomEvent* event)
        {
            auto drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
@@ -601,7 +601,7 @@
            OH_Drawing_BrushDestroy(textBrush);
        }
    
-       std::string message_ = "";
+       std::string message_ = "这是一条消息提示";
        bool maskVisible_ = false;
    };
    } // namespace NativeModule
@@ -638,7 +638,7 @@
     
         napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     
-        // 避免重复创建导致的重复挂载
+        // 避免重复创建导致的重复挂载。
         NativeEntry::GetInstance()->DisposeRootNode();
     
         // 获取NodeContent
