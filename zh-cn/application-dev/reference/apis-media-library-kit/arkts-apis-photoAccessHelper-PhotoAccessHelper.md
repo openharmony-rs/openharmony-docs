@@ -791,7 +791,6 @@ async function example(context: Context) {
 
 ## getAlbumIdByLpath<sup>22+</sup>
 
-ArkTS-Dyn: getAlbumIdByLpath(lpath: string): Promise&lt;number&gt;<br>
 ArkTS-Sta: getAlbumIdByLpath(lpath: string): Promise&lt;int&gt;
 
 根据相册的虚拟路径获取媒体库相册的ID。使用Promise异步回调。
@@ -816,7 +815,7 @@ ArkTS-Sta: getAlbumIdByLpath(lpath: string): Promise&lt;int&gt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise对象，返回相册lpath对应的媒体库相册的ID。 |
+| Promise&lt;int&gt; | Promise对象，返回相册lpath对应的媒体库相册的ID。 |
 
 **错误码：**
 

@@ -18,7 +18,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -154,9 +154,13 @@ addAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt;):
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAlbumChangeRequest.addAssets](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#addassets11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -215,6 +219,8 @@ addAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
 向用户相册添加图片或视频前，需预置相册和文件资源。此方法通过Promise返回结果。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 > **说明：** 
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAlbumChangeRequest.addAssets](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#addassets11)替代。
@@ -222,6 +228,8 @@ addAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -288,9 +296,13 @@ removeAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAlbumChangeRequest.removeAssets](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#removeassets11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -353,9 +365,13 @@ removeAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAlbumChangeRequest.removeAssets](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#removeassets11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 

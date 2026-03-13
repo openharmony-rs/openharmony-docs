@@ -701,7 +701,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## getRangeObjects<sup>23+</sup>
 
-getRangeObjects(index: number, offset: number): Promise\<T[]\>
+getRangeObjects(index: int, offset: int): Promise\<T[]\>
 
 在文件检索结果中，从指定索引（第一个参数）开始，获取指定长度（第二个参数）的文件资产数组。使用Promise异步回调。
 
@@ -715,8 +715,8 @@ getRangeObjects(index: number, offset: number): Promise\<T[]\>
 
 | 参数名       | 类型                                       | 必填   | 说明                 |
 | -------- | ---------------------------------------- | ---- | ------------------ |
-| index    | number                                   | 是    | 开始获取的文件资产索引，大于等于0，小于文件检索结果中对象数量。    |
-| offset    | number                                  | 是    | 要获取的文件资产数量，大于0。<br>index和offset之和需要小于检索结果中的对象数量，否则抛出23800151错误码。    |
+| index    | int                                   | 是    | 开始获取的文件资产索引，大于等于0，小于文件检索结果中对象数量。    |
+| offset    | int                                  | 是    | 要获取的文件资产数量，大于0。<br>index和offset之和需要小于检索结果中的对象数量，否则抛出23800151错误码。    |
 
 **返回值：**
 
@@ -820,7 +820,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## getObjectsByIndexSet<sup>23+</sup>
 
-getObjectsByIndexSet(indexSet: number[]): Promise\<T[]\>
+getObjectsByIndexSet(indexSet: int[]): Promise\<T[]\>
 
 获取文件检索结果中指定索引集合对应的文件资产数组。使用Promise异步回调。
 
@@ -838,7 +838,7 @@ getObjectsByIndexSet(indexSet: number[]): Promise\<T[]\>
 
 | 参数名   | 类型                                          | 必填 | 说明                                        |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------- |
-| indexSet | number[]         | 是   | 指定的索引集合。                |
+| indexSet | int[]         | 是   | 指定的索引集合。                |
 
 **返回值：**
 
@@ -881,7 +881,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## getIndex<sup>23+</sup>
 
-getIndex(object: T): Promise&lt;number&gt;
+getIndex(object: T): Promise&lt;int&gt;
 
 获取指定文件资产在文件检索结果中的索引。使用Promise异步回调。
 
@@ -905,7 +905,7 @@ getIndex(object: T): Promise&lt;number&gt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise对象，返回查询结果。如果对象在文件检索结果中则返回对应的索引，不存在则返回-1。 |
+| Promise&lt;int&gt; | Promise对象，返回查询结果。如果对象在文件检索结果中则返回对应的索引，不存在则返回-1。 |
 
 **示例：**
 

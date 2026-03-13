@@ -284,11 +284,15 @@ close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
 关闭当前文件，使用callback方式返回异步结果。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 > **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.close](../apis-core-file-kit/js-apis-file-fs.md#fsclose)替代。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -349,7 +353,11 @@ close(fd: number): Promise&lt;void&gt;
 >
 > 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.close](../apis-core-file-kit/js-apis-file-fs.md#fsclose-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -668,11 +676,15 @@ getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 >
 > 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **注意**：使用完毕后调用close释放文件描述符。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -729,11 +741,15 @@ getReadOnlyFd(): Promise&lt;number&gt;
 >
 > 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **注意**：返回的文件描述符在使用完毕后需要调用close进行释放。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **返回值：**
 

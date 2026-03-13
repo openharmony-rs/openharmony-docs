@@ -455,7 +455,11 @@ static quickRequestImage(context: Context, asset: PhotoAsset, requestOptions: Re
 
 根据不同的策略模式，快速请求图片资源。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 13
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 

@@ -807,13 +807,13 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 ### isAfterLast
 
-**ArkTS-Dyn起始版本：** 12
-
 isAfterLast(): boolean
 
 检查结果集是否指向最后一行。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
