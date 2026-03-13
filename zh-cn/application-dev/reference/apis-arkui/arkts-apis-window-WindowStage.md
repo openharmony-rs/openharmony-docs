@@ -2435,6 +2435,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 };
+```
 
 ## setCustomDensity<sup>20+</sup>
 

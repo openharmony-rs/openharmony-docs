@@ -169,7 +169,6 @@
 | ---------- | ------------- | ---- | ---- | ------------------ |
 | visible    | boolean       | 否   | 否   | 避让区域是否可见。true表示可见；false表示不可见。 |
 | leftRect   | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区，单位为vp。 |
-
 | topRect    | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区，单位为vp。 |
 | rightRect  | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区，单位为vp。 |
 | bottomRect | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区，单位为vp。 |
