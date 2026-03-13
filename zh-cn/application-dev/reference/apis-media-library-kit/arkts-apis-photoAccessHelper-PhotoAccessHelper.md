@@ -1877,6 +1877,8 @@ on(type: 'photoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [onPhotoChange](#onPhotoChange23)。
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1909,11 +1911,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
@@ -1937,6 +1939,8 @@ onPhotoChange(callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 注册'photoChange'监听媒体资产，并通过callback方式返回资产变化结果，可以注册多个callback。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是 [on('photoChange')](#onphotoChange20)。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -1969,11 +1973,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
@@ -1997,6 +2001,8 @@ off(type: 'photoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 取消对'photoChange'媒体资产的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [offPhotoChange](#offPhotoChange23)。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -2030,11 +2036,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
@@ -2061,6 +2067,8 @@ offPhotoChange(callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 取消对'photoChange'媒体资产的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是 [off('photoChange')](#offphotoChange20)。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -2093,11 +2101,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
@@ -2124,6 +2132,8 @@ on(type: 'photoAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 注册'photoAlbumChange'监听相册，并通过callback方式返回相册变化结果，可以注册多个callback。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [onPhotoAlbumChange](#onPhotoAlbumChange23)。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -2157,11 +2167,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
@@ -2185,6 +2195,8 @@ onPhotoAlbumChange(callback: Callback&lt;AlbumChangeInfos&gt;): void
 注册'photoAlbumChange'监听相册，并通过callback方式返回相册变化结果，可以注册多个callback。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是 [on('photoAlbumChange')](#onphotoAlbumChange20)。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -2217,11 +2229,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
@@ -2245,6 +2257,8 @@ off(type: 'photoAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
 取消对'photoAlbumChange'相册的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [offPhotoAlbumChange](#offPhotoAlbumChange23)。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -2278,11 +2292,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
@@ -2309,6 +2323,8 @@ offPhotoAlbumChange(callback?: Callback&lt;AlbumChangeInfos&gt;): void
 取消对'photoAlbumChange'相册的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是 [off('photoAlbumChange')](#offphotoAlbumChange20)。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -2341,11 +2357,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){

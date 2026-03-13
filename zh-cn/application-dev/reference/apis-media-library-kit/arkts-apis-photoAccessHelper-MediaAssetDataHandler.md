@@ -37,16 +37,12 @@ map支持返回的信息：
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明                                                                            |
 |------|---| ---- |-------------------------------------------------------------------------------|
-| data | ArkTS-Dyn: T<br>ArkTS-Sta: T \| undefined | 是   | 已就绪的图片资源数据。泛型，支持ArrayBuffer, [ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md), [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md)和boolean四种数据类型。 |
-| map<sup>12+</sup> | Map<string, string> | 否   | 用于获取图片资源的额外信息，如图片质量。当前仅支持'quality'。 |
+| data | ArkTS-Dyn: T<br>ArkTS-Sta: T \| undefined | 是   | 已就绪的图片资源数据。泛型，支持ArrayBuffer, [ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md), [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md)和boolean四种数据类型。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| map<sup>12+</sup> | Map<string, string> | 否   | 用于获取图片资源的额外信息，如图片质量。当前仅支持'quality'。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 **示例：**
 

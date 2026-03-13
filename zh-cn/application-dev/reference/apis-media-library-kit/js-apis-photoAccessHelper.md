@@ -4,6 +4,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -1375,11 +1376,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
@@ -1434,11 +1435,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
@@ -1496,11 +1497,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
@@ -1555,11 +1556,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){

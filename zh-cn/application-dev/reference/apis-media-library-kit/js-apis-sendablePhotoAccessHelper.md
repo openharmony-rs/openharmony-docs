@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅适用于ArkTS-Dyn。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -145,6 +146,8 @@ getBurstAssets(burstKey: string, options: photoAccessHelper.FetchOptions): Promi
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **参数：**
@@ -221,6 +224,8 @@ createAsset(photoType: PhotoType, extension: string, options?: photoAccessHelper
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -485,6 +490,8 @@ convertToPhotoAsset():  photoAccessHelper.PhotoAsset
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型                         | 说明                                                         |
@@ -534,6 +541,8 @@ get(member: string): photoAccessHelper.MemberType
 获取PhotoAsset成员参数。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -591,6 +600,8 @@ set(member: string, value: string): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
@@ -644,6 +655,8 @@ commitModify(): Promise&lt;void&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
@@ -700,6 +713,8 @@ getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 获取文件的缩略图，传入缩略图尺寸，使用Promise方式返回异步结果。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**ArkTS-Dyn起始版本：** 12
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1146,7 +1161,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 ### 属性
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-**\*ArkTS-Dyn起始版本：\*\* 12
+
+**ArkTS-Dyn起始版本：** 12
 
 | 名称         | 类型                          | 只读                         | 可选 | 说明             |
 | ------------ | ----------------------------- | ---------------------------- | ---- | ---------------- |
@@ -1226,6 +1242,8 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名  | 类型                                                      | 必填 | 说明       |
@@ -1289,6 +1307,8 @@ commitModify(): Promise&lt;void&gt;
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
@@ -1369,6 +1389,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 枚举，媒体文件的动态范围类型。
 
 **系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 14
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |

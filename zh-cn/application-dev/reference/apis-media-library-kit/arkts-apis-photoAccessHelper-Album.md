@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 Album extends [AbsAlbum](arkts-apis-photoAccessHelper-AbsAlbum.md)
@@ -18,7 +19,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
 
@@ -150,11 +151,11 @@ addAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt;):
 
 向用户相册中添加图片或视频前，需预置相册和文件资源。此方法通过callback方式返回结果。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 > **说明：** 
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAlbumChangeRequest.addAssets](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#addassets11)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 

@@ -61,14 +61,10 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 值    | 说明      |
 | --------| ---- | ------------|
-| USER                | 0    | 用户相册。   |
-| SYSTEM              | 1024 | 系统预置相册。 |
+| USER                | 0    | 用户相册。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23   |
+| SYSTEM              | 1024 | 系统预置相册。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 | SOURCE  | 2048 | 由应用创建的相册。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23|
 
 ## AlbumSubtype
@@ -136,8 +132,8 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | POSITION<sup>16+</sup>  | 'position'            | 文件位置类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 16<br/>**ArkTS-Sta起始版本：** 23        |
 | MEDIA_SUFFIX<sup>18+</sup>  | 'media_suffix'            | 文件的后缀名。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23                               |
 | OWNER_ALBUM_ID<sup>22+</sup>  | 'owner_album_id' | 照片所属的相册id。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
-| ASPECT_RATIO<sup>22+</sup>  | 'aspect_ratio'            | 图片和视频的宽高比。<br/> ​**模型约束**：此接口仅可在Stage模型下使用。**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23|
-| CHANGE_TIME<sup>23+</sup>  | 'change_time' | 照片的更改时间。 **ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23|
+| ASPECT_RATIO<sup>22+</sup>  | 'aspect_ratio'            | 图片和视频的宽高比。<br/> ​**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23|
+| CHANGE_TIME<sup>23+</sup>  | 'change_time' | 照片的更改时间。 <br>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23|
 
 ## AlbumKeys
 
@@ -147,10 +143,10 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 | 名称          | 值              | 说明                                                       |
 | ------------- | ------------------- | ---------------------------------------------------------- |
-| URI           | 'uri'                 | 相册uri。 **ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                                                  |
-| ALBUM_NAME    | 'album_name'          | 相册名字。 **ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                                                  |
-| ALBUM_LPATH<sup>23+</sup>          | 'lpath'                 | 相册的虚拟路径。<br>支持的相册及对应的lpath值：<br>- 相机应用相册：'/DCIM/Camera' <br>- 截图应用相册：'/Pictures/Screenshots' <br>- 屏幕录制应用相册：'/Pictures/Screenrecords' <br>- 用户创建的相册：'/Pictures/Users/{用户自定义相册名称}'  **ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23                   |
-| CHANGE_TIME<sup>23+</sup>          | 'change_time'                 | 相册的更改时间。   **ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23                                                |
+| URI           | 'uri'                 | 相册uri。 <br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                                                  |
+| ALBUM_NAME    | 'album_name'          | 相册名字。 <br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                                                  |
+| ALBUM_LPATH<sup>23+</sup>          | 'lpath'                 | 相册的虚拟路径。<br>支持的相册及对应的lpath值：<br>- 相机应用相册：'/DCIM/Camera' <br>- 截图应用相册：'/Pictures/Screenshots' <br>- 屏幕录制应用相册：'/Pictures/Screenrecords' <br>- 用户创建的相册：'/Pictures/Users/{用户自定义相册名称}'  <br>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23                   |
+| CHANGE_TIME<sup>23+</sup>          | 'change_time'                 | 相册的更改时间。   <br>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23                                                |
 
 ## ResourceType<sup>11+</sup>
 

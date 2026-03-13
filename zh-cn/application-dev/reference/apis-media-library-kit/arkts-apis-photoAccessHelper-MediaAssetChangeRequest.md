@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Class首批接口从API version 11开始支持。
 
@@ -344,6 +345,8 @@ static deleteAssets(context: Context, uriList: Array&lt;string&gt;): Promise&lt;
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [deleteAssetsToTrashWithUris](#deleteAssetsToTrashWithUris23)。
+
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -406,6 +409,8 @@ static deleteAssetsToTrashWithUris(context: Context, uriList: Array&lt;string&gt
 删除媒体文件，删除的文件进入到回收站，使用Promise方式返回结果。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是 [deleteAssets](#deleteAssets11)。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
