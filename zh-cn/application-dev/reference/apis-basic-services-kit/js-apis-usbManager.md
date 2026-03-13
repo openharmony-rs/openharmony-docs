@@ -137,7 +137,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
 | 801      | Capability not supported.                                     |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.  |
-| 14400004 | Transmission I/O error.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |##xxh
+| 14400004 | Transmission I/O error.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 | 14400012 | Transmission I/O error.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
@@ -329,7 +329,7 @@ ArkTS-Sta: claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boo
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: number<br> ArkTS-Sta: int | 注册通信接口成功返回0；注册通信接口失败返回其他错误码如下：<br>- 88080389：数据量超过预期的最大值。<br>- 88080486：接口未初始化。<br>- 88080488：服务过程中遇到无效值或参数。<br>- -1：调用底层接口失败。|##xxh
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 注册通信接口成功返回0；注册通信接口失败返回其他错误码如下：<br>- 88080389：接口未初始化。<br>- 88080486：服务过程中遇到无效值或参数。<br>- 88080488：没有权限。<br>- -1：调用底层接口失败。|
 
 **错误码：**
 
@@ -382,7 +382,7 @@ ArkTS-Sta: releaseInterface(pipe: USBDevicePipe, iface: USBInterface): int
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: number<br> ArkTS-Sta: int | 释放接口成功返回0；释放接口失败返回其他错误码如下：<br>- 88080385：无效的接口操作。<br>- 88080389：无效的接口操作。<br>- 88080486：接口未初始化。<br>- 88080488：服务过程中遇到无效值或参数。<br>- -1：调用底层接口失败。 |
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 释放接口成功返回0；释放接口失败返回其他错误码如下：<br>- 88080385：无效的接口操作。<br>- 88080389：接口未初始化。<br>- 88080486：服务过程中遇到无效值或参数。<br>- 88080488：没有权限。<br>- -1：调用底层接口失败。 |
 
 **错误码：**
 
