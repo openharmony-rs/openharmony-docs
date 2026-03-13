@@ -34,7 +34,7 @@ TipsDialogV2({imageRes: ResourceStr | PixelMap, imageSize?: SizeOptions, imageBo
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型                                                                                                    | 必填 | 装饰器类型                | 说明                                                         |
 |------------------|-------------------------------------------------------------------------------------------------------|----|----------------------|------------------------------------------------------------|
@@ -62,7 +62,7 @@ type AdvancedDialogV2OnCheckedChange = (checked: boolean) => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 参数名     | 类型      | 必填 | 说明                                                  |
 | :------ |:--------| :- | :-------------------------------------------------- |
@@ -70,7 +70,9 @@ type AdvancedDialogV2OnCheckedChange = (checked: boolean) => void
 
 ## SelectDialogV2
 
-SelectDialogV2({title: ResourceStr, content?: ResourceStr, selectedIndex?: number, confirm?: AdvancedDialogV2Button, radioContent: SheetInfo\[]})
+ArkTS-Dyn: SelectDialogV2({title: ResourceStr, content?: ResourceStr, selectedIndex?: number, confirm?: AdvancedDialogV2Button, radioContent: SheetInfo\[]})
+
+ArkTS-Sta: SelectDialogV2({title: ResourceStr, content?: ResourceStr, selectedIndex?: int, confirm?: AdvancedDialogV2Button, radioContent: SheetInfo\[]})
 
 选择类弹出框，弹框中以列表或网格的形式提供可选的内容。
 
@@ -82,13 +84,13 @@ SelectDialogV2({title: ResourceStr, content?: ResourceStr, selectedIndex?: numbe
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型                                                       | 必填 | 装饰器类型               | 说明                                                                              |
 | ------------- | -------------------------------------------------------- | -- |---------------------|---------------------------------------------------------------------------------|
 | title         | [ResourceStr](ts-types.md#resourcestr)                   | 是  | @Param<br/>@Require | 选择弹出框标题。<br/> **说明：** 标题超过两行会显示“...”。                                                 |
 | content       | [ResourceStr](ts-types.md#resourcestr)                   | 否  | @Param              | 选择弹出框内容。默认不显示。                                                                  |
-| selectedIndex | number                                                   | 否  | @Param              | 选择弹出框的选中项。<br />默认值：-1，没有选中项。若设置数值不在取值范围，按没有选中项处理。  <br/>取值范围：小于选择弹出框的子项内容列表长度。 |
+| selectedIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int                               | 否  | @Param              | 选择弹出框的选中项。<br />默认值：-1，没有选中项。若设置数值不在取值范围，按没有选中项处理。  <br/>取值范围：小于选择弹出框的子项内容列表长度。 |
 | confirm       | [AdvancedDialogV2Button](#advanceddialogv2button)        | 否  | @Param              | 选择弹出框底部按钮。<br />默认不显示。                                                          |
 | radioContent  | [SheetInfo](ts-methods-action-sheet.md#sheetinfo对象说明)\[] | 是  | @Param<br/>@Require | 选择弹出框的子项内容列表，每个选择项支持设置文本和选中的回调事件。                                               |
 
@@ -106,7 +108,7 @@ ConfirmDialogV2({title: ResourceStr, content?: ResourceStr, checkTips?: Resource
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型                                                                  | 必填 | 装饰器类型  | 说明                                                         |
 |-----------------| ------------------------------------------------------------------- | -- | ------ |------------------------------------------------------------|
@@ -132,7 +134,7 @@ AlertDialogV2({primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, content
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型                                                | 必填 | 装饰器类型                | 说明                   |
 | --------------- | ------------------------------------------------- | -- | :------------------- | -------------------- |
@@ -156,7 +158,7 @@ LoadingDialogV2({content?: ResourceStr})
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                                     | 必填 | 装饰器类型  | 说明                                               |
 | ------- | -------------------------------------- | -- | :----- |--------------------------------------------------|
@@ -176,7 +178,7 @@ CustomContentDialogV2({contentBuilder: () => void, primaryTitle?: ResourceStr, s
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 类型                                                   | 必填 | 装饰器类型         | 说明                       |
 | ------------------ | ---------------------------------------------------- | -- | ------------- | ------------------------ |
@@ -198,7 +200,7 @@ type PopoverDialogV2OnVisibleChange = (visible: boolean) => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 参数名     | 类型      | 必填 | 说明                                                                    |
 | :------ | :------ | :- |:----------------------------------------------------------------------|
@@ -218,7 +220,7 @@ PopoverDialogV2({visible: boolean, \$visible: PopoverDialogV2OnVisibleChange, po
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型                                                                | 必填 | 装饰器类型               | 说明                                                 |
 | ------------- |-------------------------------------------------------------------| -- |---------------------| -------------------------------------------------- |
@@ -243,7 +245,7 @@ PopoverDialogV2({visible: boolean, \$visible: PopoverDialogV2OnVisibleChange, po
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## AdvancedDialogV2ButtonAction
 
@@ -257,7 +259,7 @@ type AdvancedDialogV2ButtonAction = () => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## AdvancedDialogV2Button
 
@@ -271,7 +273,7 @@ type AdvancedDialogV2ButtonAction = () => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                                                                     | 必填 | 装饰器类型  | 说明                                                                          |
 |:-------------|:-----------------------------------------------------------------------|:---|:-------|:----------------------------------------------------------------------------|
@@ -302,7 +304,7 @@ AdvancedDialogV2Button的构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                                                              | 必填 | 说明      |
 | :------ | :-------------------------------------------------------------- | :- | :------ |
@@ -318,7 +320,7 @@ AdvancedDialogV2Button的构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                                                                     | 必填 | 说明                                                                          |
 |:-------------|:-----------------------------------------------------------------------|:---|:----------------------------------------------------------------------------|
