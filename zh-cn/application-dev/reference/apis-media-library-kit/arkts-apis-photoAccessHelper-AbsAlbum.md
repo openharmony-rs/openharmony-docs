@@ -23,7 +23,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | ------------ | ------ | ---- | ---- | ------- |
 | albumType | [AlbumType](arkts-apis-photoAccessHelper-e.md#albumtype) | 是    | 否    | 相册类型。    |
 | albumSubtype | [AlbumSubtype](arkts-apis-photoAccessHelper-e.md#albumsubtype) | 是    | 否   | 相册子类型。    |
-| albumName | string | 用户相册可写，预置相册不可写    | 否   | 相册名称。    |
+| albumName | string | 否    | 否   | 相册名称。    |
 | albumUri | string | 是    | 否    | 相册uri。   |
 | count | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 否    |  相册中文件数量。 |
 | coverUri | string | 是    | 否    | 封面文件uri。 |
