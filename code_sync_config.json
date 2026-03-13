@@ -36060,9 +36060,9 @@
 						"start_line":190
 					},
 					{
-						"end_line":204,
+						"end_line":215,
 						"name":"Render_SetWriteDataWithMetadataCallback",
-						"start_line":90
+						"start_line":101
 					},
 					{
 						"end_line":358,
