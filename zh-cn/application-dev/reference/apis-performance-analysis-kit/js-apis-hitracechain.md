@@ -22,7 +22,7 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -43,7 +43,7 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -61,7 +61,7 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -78,14 +78,14 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| chainId      | bigint | 是 | 跟踪链标识。   |
-| spanId      | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 分支标识，默认值为0。     |
-| parentSpanId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 父分支标识，默认值为0。   |
-| flags        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 跟踪标志组合，默认值为0。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| chainId      | bigint | 否 | 否 | 跟踪链标识。 |
+| spanId      | ArkTS-Dyn: number <br/> ArkTS-Sta: int | 否 | 是 | 分支标识，默认值为0。 |
+| parentSpanId | ArkTS-Dyn: number <br/> ArkTS-Sta: int | 否 | 是 | 父分支标识，默认值为0。 |
+| flags        | ArkTS-Dyn: number <br/> ArkTS-Sta: int | 否 | 是 | 跟踪标志位，默认值为0。 |
 
 ## hiTraceChain.begin
 
@@ -99,7 +99,7 @@ ArkTS-Sta: begin(name: string, flags?: int): HiTraceId
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -133,7 +133,7 @@ end(id: HiTraceId): void
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -160,7 +160,7 @@ getId(): HiTraceId
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -193,7 +193,7 @@ setId(id: HiTraceId): void
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -220,7 +220,7 @@ clearId(): void
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **示例：**
 
@@ -243,7 +243,7 @@ createSpan(): HiTraceId
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -276,7 +276,7 @@ tracepoint(mode: HiTraceCommunicationMode, type: HiTraceTracepointType, id: HiTr
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -293,7 +293,7 @@ tracepoint(mode: HiTraceCommunicationMode, type: HiTraceTracepointType, id: HiTr
 // 开启跟踪，跟踪标志是INCLUDE_ASYNC与DONOT_CREATE_SPAN的并集。
 let traceId = hiTraceChain.begin("business", hiTraceChain.HiTraceFlag.INCLUDE_ASYNC | hiTraceChain.HiTraceFlag.DONOT_CREATE_SPAN);
 // 若干业务逻辑完成后，触发信息埋点操作。
-hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.THREAD, hiTraceChain.HiTraceTracepointType.SS, traceId, "Just a example");
+hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.THREAD, hiTraceChain.HiTraceTracepointType.SS, traceId, "Just an example");
 //业务结束，关闭跟踪。
 hiTraceChain.end(traceId);
 ```
@@ -308,7 +308,7 @@ isValid(id: HiTraceId): boolean
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -346,7 +346,7 @@ isFlagEnabled(id: HiTraceId, flag: HiTraceFlag): boolean
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -385,7 +385,7 @@ enableFlag(id: HiTraceId, flag: HiTraceFlag): void
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 

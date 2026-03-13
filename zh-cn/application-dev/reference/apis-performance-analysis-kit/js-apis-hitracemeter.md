@@ -43,7 +43,7 @@ ArkTS-Sta: startTrace(name: string, taskId: int): void
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -76,7 +76,7 @@ finishTrace的name和taskId必须与流程开始的[startTrace](#hitracemetersta
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -115,7 +115,7 @@ hiTraceMeter.finishTrace("myTestFunc", 1);
 
 ## hiTraceMeter.traceByValue
 
-ArkTS-Dyn: straceByValue(name: string, count: number): void
+ArkTS-Dyn: traceByValue(name: string, count: number): void
 
 ArkTS-Sta: traceByValue(name: string, count: long): void
 
@@ -129,7 +129,7 @@ ArkTS-Sta: traceByValue(name: string, count: long): void
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -172,7 +172,7 @@ hiTraceMeter.traceByValue("myTestCount", traceCount);
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称       | 值   | 说明                                    |
 | ---------- | ---- | --------------------------------------- |
@@ -180,7 +180,7 @@ hiTraceMeter.traceByValue("myTestCount", traceCount);
 | INFO       | 1    | 用于log版本的输出级别。                 |
 | CRITICAL   | 2    | 用于log版本的输出级别，优先级高于INFO。 |
 | COMMERCIAL | 3    | 用于nolog版本的输出级别，优先级最高。   |
-| MAX        | 3    | 输出级别范围限制，MAX = COMMERCIAL。    |
+| MAX        | COMMERCIAL    | 输出级别范围限制，MAX = COMMERCIAL。    |
 
 ## hiTraceMeter.startAsyncTrace<sup>19+</sup>
 
@@ -200,7 +200,7 @@ ArkTS-Sta: startAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: int,
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -241,7 +241,7 @@ finishAsyncTrace的level、name和taskId必须与流程开始的[startAsyncTrace
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -302,7 +302,7 @@ startSyncTrace(level: HiTraceOutputLevel, name: string, customArgs?: string): vo
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -338,7 +338,7 @@ finishSyncTrace的level必须与流程开始的[startSyncTrace](#hitracemetersta
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -383,7 +383,7 @@ ArkTS-Sta: traceByValue(level: HiTraceOutputLevel, name: string, count: long): v
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -431,7 +431,7 @@ isTraceEnabled(): boolean
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -446,5 +446,122 @@ if (hiTraceMeter.isTraceEnabled()) {
     // 业务流程......
 } else {
     // 业务流程......
+}
+```
+
+## TraceEventListener<sup>22+</sup>
+
+type TraceEventListener = (traceStatus: boolean) => void
+
+定义应用trace捕获开关状态切换时的回调函数类型。
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：22
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名      | 类型    | 必填 | 说明                                                     |
+| ----------- | ------- | ---- | -------------------------------------------------------- |
+| traceStatus | boolean | 是   | 当前应用trace捕获开关状态。<br>true：开启；false：关闭。 |
+
+## hiTraceMeter.registerTraceListener<sup>22+</sup>
+
+ArkTS-Dyn: registerTraceListener(callback: TraceEventListener): number
+
+ArkTS-Sta: registerTraceListener(callback: TraceEventListener): int
+
+注册应用trace捕获开关通知回调，使用callback异步回调。
+
+注册成功后，立即执行一次回调函数，后续回调函数由应用trace捕获开关状态变化触发执行。
+
+回调函数保存在应用进程内，一个进程最多可以注册10个回调函数。
+
+> **说明：**
+>
+> 若注册的回调包含耗时操作，当回调被执行时，注册或注销行为会被阻塞（等待回调执行完成）。
+>
+> 因此，建议不要在应用主线程中注册或注销包含耗时操作的回调，避免发生应用冻屏。
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：22
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名   | 类型                                        | 必填 | 说明             |
+| -------- | ------------------------------------------- | ---- | ---------------- |
+| callback | [TraceEventListener](#traceeventlistener22) | 是   | 注册的回调函数。 |
+
+**返回值：**
+
+| 类型   | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| ArkTS-Dyn: number <br/> ArkTS-Sta: int | 回调注册状态。<br>>= 0：注册成功，返回用于注销的回调索引，索引范围0到9；<br> -1：已达到最大回调函数注册数量；<br> -2：无效参数，参数非TraceEventListener类型。 |
+
+**示例：**
+
+```js
+// 注册的回调函数定义
+let callback: hiTraceMeter.TraceEventListener = (traceStatus: boolean) => {
+    if (traceStatus) {
+        // 当前应用trace捕获开启，业务流程......
+    } else {
+        // 当前应用trace捕获关闭，业务流程......
+    }
+};
+
+// 注册应用trace捕获开关通知回调
+let index = hiTraceMeter.registerTraceListener(callback);
+if (index < 0) {
+    // 异常处理......
+}
+```
+
+## hiTraceMeter.unregisterTraceListener<sup>22+</sup>
+
+ArkTS-Dyn: unregisterTraceListener(index: number): number
+
+ArkTS-Sta: unregisterTraceListener(index: int): int
+
+注销应用trace捕获开关通知回调。
+
+使用[registerTraceListener()](#hitracemeterregistertracelistener22)返回的回调索引，注销该索引关联的回调函数。
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：22
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                 |
+| ------ | ------ | ---- | -------------------- |
+| index  | ArkTS-Dyn: number <br/> ArkTS-Sta: int | 是   | 已注册回调函数索引。 |
+
+**返回值：**
+
+| 类型   | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| ArkTS-Dyn: number <br/> ArkTS-Sta: int | 回调注销状态。<br>0：注销成功；<br>-1：目标索引的回调函数未注册；<br>-2：无效索引，参数index值不在0到9的范围内。 |
+
+**示例：**
+
+```js
+// 注销应用trace捕获开关通知回调，index为hiTraceMeter.registerTraceListener返回的回调索引
+let ret = hiTraceMeter.unregisterTraceListener(index);
+if (ret < 0) {
+    // 异常处理......
 }
 ```
