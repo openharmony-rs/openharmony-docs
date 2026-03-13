@@ -31,7 +31,7 @@ The following table lists the APIs for mutual conversion between longitude-latit
 > **NOTE**
 > The geocoding and reverse geocoding services need to access backend services to obtain information. Therefore, before performing the following steps, ensure that your device is connected to the network.
 
-1. Import the **geoLocationManager** modules. All geocoding and reverse geocoding APIs are provided by this module.
+1. Import the **geoLocationManager** module. All geocoding and reverse geocoding APIs are provided by this module.
    
    ```ts
    import { geoLocationManager } from '@kit.LocationKit';
