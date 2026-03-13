@@ -218,7 +218,7 @@ struct ReuseV2Demo {
 @ReusableV2
 @ComponentV2
 export struct CardViewV2 {
-  // 被@State修饰的变量item才能更新，未被@State修饰的变量不会更新
+  // 使用@Param @Once接收外部传入变量并观察变化
   @Param @Once item: string = '';
 
   aboutToReuse(): void {
