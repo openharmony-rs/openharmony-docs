@@ -18,7 +18,7 @@
 
 ArkTS-Dyn: Blank(min?: number&nbsp;|&nbsp;string)
 
-ArkTS:-Sta: Blank(min?: double | string)
+ArkTS-Sta: Blank(min?: double&nbsp;|&nbsp;string)
 
 从API version 10开始：  
  - Blank在父容器[Row](ts-container-row.md)、[Column](ts-container-column.md)、[Flex](ts-container-flex.md)主轴方向上未设置大小时会自动拉伸、压缩，设置了大小或容器自适应子节点大小时不会自动拉伸、压缩。
@@ -39,7 +39,7 @@ ArkTS:-Sta: Blank(min?: double | string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| min | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS:-Sta: double \| string | 否 | 空白填充组件在容器主轴上的最小大小。<br/>默认值：0，number类型单位为vp, string类型可以显式指定[像素单位](ts-pixel-units.md)，如'10px'。不指定像素单位时，默认单位vp，如'10'，等同于10vp。<br/>**说明：** <br/>不支持设置百分比。负值使用默认值。当最小值大于容器可用空间时，使用最小值作为自身大小并超出容器。 |
+| min | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 否 | 空白填充组件在容器主轴上的最小大小。<br/>默认值：0，number类型单位为vp, string类型可以显式指定[像素单位](ts-pixel-units.md)，如'10px'。不指定像素单位时，默认单位vp，如'10'，等同于10vp。<br/>**说明：** <br/>不支持设置百分比。负值使用默认值。当最小值大于容器可用空间时，使用最小值作为自身大小并超出容器。 |
 
 ## 属性
 

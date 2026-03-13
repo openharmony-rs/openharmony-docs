@@ -28,7 +28,12 @@ GridRow(option?: GridRowOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
 | 参数名 |类型|必填|说明|
 |-----|-----|----|----|
 | option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件参数。 |
@@ -43,12 +48,16 @@ GridRow(option?: GridRowOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 |类型|必填|说明|
 |-----|-----|----|----|
-|columns| number \| [GridRowColumnOption](#gridrowcolumnoption) |  否  |设置布局列数。<br />取值为大于0的整数。<br/>- API version 20之前：默认值为12。<br/>- API version 20及之后：默认值为{ xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 }。|
-|gutter|[Length](ts-types.md#length) \| [GutterOption](#gutteroption)|   否  |栅格布局间距。<br />默认值：0<br />单位：vp |
-|breakpoints|[BreakPoints](#breakpoints)|  否  |设置断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br />默认值：<br />{<br />value: ["320vp", "600vp", "840vp"],<br />reference: BreakpointsReference.WindowSize<br />}<br />单位：vp |
-|direction|[GridRowDirection](#gridrowdirection枚举说明)|   否  |栅格布局排列方向。<br />默认值：GridRowDirection.Row |
+|columns| number \| [GridRowColumnOption](#gridrowcolumnoption) |  否  |设置布局列数。<br />取值为大于0的整数。<br/>- API version 20之前：默认值为12。<br/>- API version 20及之后：默认值为{ xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 }。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
+|gutter|[Length](ts-types.md#length) \| [GutterOption](#gutteroption)|   否  |栅格布局间距。<br />默认值：0<br />单位：vp<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
+|breakpoints|[BreakPoints](#breakpoints)|  否  |设置断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br />默认值：<br />{<br />value: ["320vp", "600vp", "840vp"],<br />reference: BreakpointsReference.WindowSize<br />}<br />单位：vp<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
+|direction|[GridRowDirection](#gridrowdirection枚举说明)|   否  |栅格布局排列方向。<br />默认值：GridRowDirection.Row<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
 
 ## GutterOption
 
@@ -59,6 +68,10 @@ GridRow(option?: GridRowOptions)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
@@ -74,6 +87,10 @@ GridRow(option?: GridRowOptions)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
@@ -108,10 +125,12 @@ GridRow(option?: GridRowOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型   | 必填   | 说明                                     |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 类型   | 必填   | 说明          |
 | ----- | ------ | ---- | ---------------------------------------- |
-| xs  | [Length](ts-types.md#length) | 否    | 在最小宽度类型设备上，栅格子组件的间距。    |
-| sm  | [Length](ts-types.md#length) | 否    | 在小宽度类型设备上，栅格子组件的间距。      |
 | md  | [Length](ts-types.md#length) | 否    | 在中等宽度类型设备上，栅格子组件的间距。    |
 | lg  | [Length](ts-types.md#length) | 否    | 在大宽度类型设备上，栅格子组件的间距。      |
 | xl  | [Length](ts-types.md#length) | 否    | 在特大宽度类型设备上，栅格子组件的间距。    |
@@ -127,17 +146,20 @@ GridRow(option?: GridRowOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
 | value  | Array&lt;string&gt; | 否  | 设置断点位置的单调递增数组。<br>默认值：["320vp", "600vp", "840vp"]<br />单位：vp    |
 | reference  | [BreakpointsReference](#breakpointsreference枚举说明) | 否    | 断点切换参照物。<br>默认值：BreakpointsReference.WindowSize |
+
 ```ts
-  // 启用xs、sm、md共3个断点
-  breakpoints: {value: ["100vp", "200vp"]}
-  // 启用xs、sm、md、lg共4个断点，断点范围值必须单调递增
-  breakpoints: {value: ["320vp", "600vp", "840vp"]}
-  // 启用xs、sm、md、lg、xl共5个断点，断点范围数量不可超过断点可取值数量-1
-  breakpoints: {value: ["320vp", "600vp", "840vp", "1080vp"]}
+// 启用xs、sm、md共3个断点
+breakpoints: {value: ["100vp", "200vp"]}
+// 启用xs、sm、md、lg共4个断点，断点范围值必须单调递增
+breakpoints: {value: ["320vp", "600vp", "840vp"]}
 ```
 
 ## BreakpointsReference枚举说明
@@ -156,8 +178,6 @@ GridRow(option?: GridRowOptions)
 | ComponentSize | 以容器为参照。 |
 
 ## GridRowDirection枚举说明
-
-栅格元素排列方向。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -216,7 +236,7 @@ ArkTS-Sta: alignItems(value: ItemAlign | undefined)
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
 
-### onBreakpointChange
+### onBreakpointChange<sup>9+</sup>
 
 onBreakpointChange(callback: (breakpoints: string) => void)
 
@@ -227,6 +247,11 @@ onBreakpointChange(callback: (breakpoints: string) => void)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 9
+
 
 **参数：**
 
