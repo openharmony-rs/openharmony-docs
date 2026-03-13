@@ -49,7 +49,7 @@ Web媒体策略的配置。
 | ----------- | -------------- | ---- | ---- | --------------------- |
 | script      | string         | 否 |否    | 需要注入、执行的JavaScript脚本。 |
 | scriptRules | Array\<string> | 否 |否   | 一组允许来源的匹配规则。<br>1.如果需要允许所有来源的网址，使用通配符“ * ”。<br>2.如果需要精确匹配，则描述网站地址，如"https:\//www\.example.com"。<br>3.如果模糊匹配网址，可以使用“ * ”通配符替代，如"https://*.example.com"。不允许使用"x. * .y.com"、" * foobar.com"等。<br>4.如果来源是ip地址，则使用规则2。<br>5.对于http/https以外的协议(自定义协议)，不支持使用精确匹配和模糊匹配，且必须以"://"结尾，例如"resource://"。<br>6.一组scriptRule中，如果其中一条不满足以上规则，则整组scriptRule都不生效。 |
-| urlRegexRules<sup>23+</sup>  | Array\<[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)\> | 否  |  是    | 一组允许来源的正则匹配规则。 当scriptRules设置为[]时，才使用urlRegexRules进行匹配。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| urlRegexRules<sup>23+</sup>  | Array\<[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)\> | 否  |  是    | 一组允许来源的正则匹配规则。 当scriptRules设置为[]时，才使用urlRegexRules进行匹配。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## UrlRegexRule<sup>23+</sup>
 
@@ -140,13 +140,13 @@ Web媒体策略的配置。
 
 | 名称           | 类型                                             | 只读 | 可选    | 说明             |
 | ---------- | -----------------------------------------------------| ------ | ------ |---------------- |
-| onAppear   | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback \| undefined   | 否     |是     | 自定义选择菜单弹出时回调。   <br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23  |
-| onDisappear | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback \| undefined  | 否     |是     | 自定义选择菜单关闭时回调。  <br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23|
+| onAppear   | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback | 否     |是     | 自定义选择菜单弹出时回调。   <br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23  |
+| onDisappear | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback | 否     |是     | 自定义选择菜单关闭时回调。  <br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23|
 | preview    | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8)          | 否     |是     | 自定义选择菜单的预览内容样式，未配置时无预览内容。<br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23|
 | menuType   | [MenuType](../apis-arkui/arkui-ts/ts-text-common.md#menutype13枚举说明)      | 否     | 是     | 自定义选择菜单类型。<br>默认值：`MenuType.SELECTION_MENU`。<br> 从API version 20起，`MenuType.PREVIEW_MENU`支持超链接预览。    <br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23 |
 | previewMenuOptions<sup>20+</sup> | [PreviewMenuOptions](#previewmenuoptions20) | 否     |是     | 自定义选择预览菜单选项。<br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
-| onMenuShow<sup>21+</sup> | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback \| undefined | 否     | 是     | 自定义选择菜单显示时回调。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
-| onMenuHide<sup>21+</sup> | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback \| undefined | 否     | 是     | 自定义选择菜单隐藏时回调。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
+| onMenuShow<sup>21+</sup> | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback | 否     | 是     | 自定义选择菜单显示时回调。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
+| onMenuHide<sup>21+</sup> | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback | 否     | 是     | 自定义选择菜单隐藏时回调。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## PreviewMenuOptions<sup>20+</sup>
 
@@ -311,7 +311,7 @@ Web同层渲染的配置。
 | -------------- | ---- | ---- | ---- |---------------------------------------- |
 | url         | string  | 否 | 否 | 访问的url。                                  |
 | isRefreshed | boolean | 否 | 否 | true表示该页面是被重新加载的（调用[refresh<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#refresh)接口），false表示该页面是新加载的。 |
-| isMainFrame<sup>22+</sup> | boolean | 否 | 是 | 是否是主文档触发。<br>true表示是主文档触发，false表示不是主文档触发。|
+| isMainFrame<sup>22+</sup> | boolean | 否 | 是 | 是否是主文档触发。<br>true表示是主文档触发，false表示不是主文档触发。<br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23|
 
 ## OnRenderExitedEvent<sup>12+</sup>
 
@@ -412,8 +412,8 @@ Web同层渲染的配置。
 **ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| request | [PermissionRequest](./arkts-basic-components-web-PermissionRequest.md) | 否 | 否 | 通知Web组件用户操作行为。   |
+| -------------- | ---- | ---- | ------------|---------------------------- |
+| request | [PermissionRequest](./arkts-basic-components-web-PermissionRequest.md) | 否 | 否 | 通知Web组件用户操作行为。 |
 
 ## OnScreenCaptureRequestEvent<sup>12+</sup>
 
@@ -602,7 +602,7 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| favicon | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 否 | 接收到的favicon图标的PixelMap对象。 |
+| favicon | ArkTS-Dyn: [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) <br/> ArkTS-Sta: [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 否 | 接收到的favicon图标的PixelMap对象。 |
 
 ## OnPageVisibleEvent<sup>12+</sup>
 
@@ -774,7 +774,7 @@ Web同层渲染的配置。
 **ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型      | 只读 | 可选 | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | origin | string | 否 | 否 | 指定源的字符串索引。                       |
 | geolocation | [JsGeolocation](./arkts-basic-components-web-JsGeolocation.md) | 否 | 否 | 通知Web组件用户操作行为。                       |
 

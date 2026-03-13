@@ -545,7 +545,7 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
 | -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | 是  | metadata流类型信息，通过[getSupportedOutputCapability](./arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)接口获取。 |
 
 **错误码：**
 

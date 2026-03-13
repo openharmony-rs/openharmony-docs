@@ -2594,7 +2594,7 @@ ArkTS-Sta: mediaOptions(options: WebMediaOptions | undefined)
 
 | 参数名     | 类型                                  | 必填   | 说明                                     |
 | ------- | ------------------------------------- | ---- | ---------------------------------------- |
-| options | [WebMediaOptions](./arkts-basic-components-web-i.md#webmediaoptions10) | 是    | 设置Web的媒体策略。<br>属性参数更新后需重新播放音频方可生效。<br>ArkTS-Dyn：传入undefined或null时为`{resumeInterval: 0, audioExclusive: true}` <br>ArkTS-Sta：传入undefined时为`{resumeInterval: 0, audioExclusive: true}`|
+| options | ArkTS-Dyn: [WebMediaOptions](./arkts-basic-components-web-i.md#webmediaoptions10) <br/>ArkTS-Sta: [WebMediaOptions](./arkts-basic-components-web-i.md#webmediaoptions10) \|  undefined | 是    | 设置Web的媒体策略。<br>属性参数更新后需重新播放音频方可生效。<br>ArkTS-Dyn：传入undefined或null时为`{resumeInterval: 0, audioExclusive: true}` <br>ArkTS-Sta：传入undefined时为`{resumeInterval: 0, audioExclusive: true}`|
 
 **示例：**
 
@@ -3581,9 +3581,9 @@ ArkTS-Dyn示例：
 
 ## enableNativeEmbedMode<sup>11+</sup>
 
-ArkTS-Dyn: enableNativeEmbedMode(mode: boolean)
+ArkTS-Dyn: enableNativeEmbedMode(enabled: boolean)
 
-ArkTS-Sta: enableNativeEmbedMode(mode: boolean | undefined)
+ArkTS-Sta: enableNativeEmbedMode(enabled: boolean | undefined)
 
 设置是否开启同层渲染功能。当属性没有显式调用时，默认不开启同层渲染功能。
 
@@ -3597,7 +3597,7 @@ ArkTS-Sta: enableNativeEmbedMode(mode: boolean | undefined)
 
 | 参数名   | 类型                      | 必填   | 说明             |
 | ----- | ---------------------------------------- | ---- | ---------------- |
-| mode |  ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 是否开启同层渲染功能。<br>true表示开启同层渲染功能，false表示不开启同层渲染功能。<br>ArkTS-Dyn：传入undefined或null时为false。 <br>ArkTS-Sta：传入undefined时为false。|
+| enabled |  ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 是否开启同层渲染功能。<br>true表示开启同层渲染功能，false表示不开启同层渲染功能。<br>ArkTS-Dyn：传入undefined或null时为false。 <br>ArkTS-Sta：传入undefined时为false。|
 
 **示例：**
 
@@ -5879,7 +5879,9 @@ ArkTS-Sta示例：
 
 ## forceEnableZoom<sup>21+</sup>
 
-forceEnableZoom(enable: boolean)
+ArkTS-Dyn: forceEnableZoom(enable: boolean)
+
+ArkTS-Sta: forceEnableZoom(enable: boolean | undefined)
 
 设置Web组件是否启用强制缩放功能。
 
@@ -5893,7 +5895,7 @@ forceEnableZoom(enable: boolean)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| enable | boolean | 是    | 设置是否遵从网页中`<meta name="viewport">`标签设置的缩放限制。<br>设置为`true`时，不遵从网页缩放限制；设置为`false`时，遵从网页缩放限制。<br>传入`undefined`与`null`时属性设置不生效。 |
+| enable | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置是否遵从网页中`<meta name="viewport">`标签设置的缩放限制。<br>设置为`true`时，不遵从网页缩放限制；设置为`false`时，遵从网页缩放限制。<br>传入`undefined`与`null`时属性设置不生效。 |
 
 **示例：**
 
@@ -6342,7 +6344,7 @@ password(password: boolean)
 >
 > 从API version 8开始支持，从API version 10开始废弃，建议使用[enableAutoFill<sup>23+</sup>](#enableautofill23)替代。
 
-**ArkTS模式：** 该接口适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 8
 
@@ -6362,13 +6364,13 @@ textZoomAtio(textZoomAtio: number)
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[textZoomRatio<sup>9+</sup>](#textzoomratio9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[textZoomRatio<sup>9+</sup>](#textzoomratio9)替代。
 
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**ArkTS模式：** 该接口适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 8
+
+**系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
@@ -6404,7 +6406,7 @@ userAgent(userAgent: string)
 >
 > 从API version 8开始支持，从API version 10开始废弃。建议使用[setCustomUserAgent](./arkts-apis-webview-WebviewController.md#setcustomuseragent10)<sup>10+</sup>替代。
 
-**ArkTS模式：** 该接口适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 8
 
@@ -6445,9 +6447,19 @@ tableData(tableData: boolean)
 
 > **说明：**
 >
-> 从API version 10开始废弃，并且不再提供新的接口作为替代。
+> 从API version 8开始支持，从API version 10开始废弃，建议使用[enableAutoFill<sup>23+</sup>](#enableautofill23)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
+**参数：**
+
+| 参数名          | 类型   | 必填  | 说明                             |
+| ------------ | ------ | ---- | -------------------------------- |
+| tableData | boolean | 是   | 设置为true时，表示允许Web保存表单数据。<br>设置为false时，表示不允许Web保存表单数据。 |
 
 ## wideViewModeAccess<sup>(deprecated)</sup>
 

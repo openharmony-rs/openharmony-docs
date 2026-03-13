@@ -2104,6 +2104,10 @@ static getCookie(url: string): string
 >
 > 从API version 9开始支持，从API version 11开始废弃。建议使用[fetchCookieSync](#fetchcookiesync11)替代
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2166,6 +2170,10 @@ static setCookie(url: string, value: string): void
 >
 > 从API version 9开始支持，从API version 11开始废弃。建议使用[configCookieSync<sup>11+</sup>](#configcookiesync11)替代
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2223,6 +2231,10 @@ static deleteEntireCookie(): void
 >
 > 从API version 9开始支持，从API version 11开始废弃。建议使用[clearAllCookiesSync](#clearallcookiessync11)替代
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例：**
@@ -2258,6 +2270,10 @@ static deleteSessionCookie(): void
 >
 > 从API version 9开始支持，从API version 11开始废弃。建议使用[clearSessionCookieSync](#clearsessioncookiesync11)替代
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例：**
@@ -2277,6 +2293,85 @@ struct WebComponent {
         .onClick(() => {
           webview.WebCookieManager.deleteSessionCookie();
         })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## setLazyInitializeWebEngine<sup>22+</sup>
+
+static setLazyInitializeWebEngine(lazy: boolean): void
+
+设置是否延后初始化ArkWeb内核，不调用该方法时，默认不延后初始化ArkWeb内核。
+
+> **说明：**
+>
+> 该接口为全局静态方法，须在使用ArkWeb组件和初始化ArkWeb内核前调用，否则该设置无效。
+> 
+> 该接口仅适用于调用后会初始化CookieManager的接口，比如本类WebCookieManager的其他接口。调用本接口设置为true后，再调用适用的接口，会在初始化CookieManager时跳过初始化ArkWeb内核，后续需自行初始化ArkWeb内核。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ---- | ------- | -- | ------------------------- |
+| lazy | boolean | 是 | 是否延后初始化ArkWeb内核，true：延后，false：不延后。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+webview.WebCookieManager.setLazyInitializeWebEngine(true);
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  aboutToAppear(): void {
+    webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
+    webview.WebCookieManager.fetchCookieSync('https://www.example.com');
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { Web, Column, Component, Entry} from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@ohos.base';
+
+webview.WebCookieManager.setLazyInitializeWebEngine(true);
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined)
+
+  aboutToAppear(): void {
+    webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
+    webview.WebCookieManager.fetchCookieSync('https://www.example.com');
+  }
+
+  build() {
+    Column() {
       Web({ src: 'www.example.com', controller: this.controller })
     }
   }

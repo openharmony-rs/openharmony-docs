@@ -179,7 +179,7 @@ on(type: 'micBlockStatusChanged', callback: Callback<DeviceBlockStatusInfo\>): v
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onMicBlockStatusChanged](#onMicBlockStatusChanged22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMicBlockStatusChanged](#onMicBlockStatusChanged23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -267,7 +267,7 @@ off(type: 'micBlockStatusChanged', callback?: Callback<DeviceBlockStatusInfo\>):
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offMicBlockStatusChanged](#offMicBlockStatusChanged22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMicBlockStatusChanged](#offMicBlockStatusChanged23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -357,7 +357,7 @@ on(type: 'deviceChange', deviceFlag: DeviceFlag, callback: Callback<DeviceChange
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onDeviceChange](#onDeviceChange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDeviceChange](#onDeviceChange23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -439,7 +439,7 @@ off(type: 'deviceChange', callback?: Callback<DeviceChangeAction\>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offDeviceChange](#offDeviceChange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDeviceChange](#offDeviceChange23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -718,7 +718,7 @@ off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction\>): vo
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvailableDeviceChange](#offAvailableDeviceChange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvailableDeviceChange](#offAvailableDeviceChange23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -934,7 +934,7 @@ isCommunicationDeviceActiveSync(deviceType: CommunicationDeviceType): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1181,7 +1181,7 @@ on(type: 'preferOutputDeviceChangeForRendererInfo', rendererInfo: AudioRendererI
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onPreferOutputDeviceChangeForRendererInfo](#onPreferOutputDeviceChangeForRendererInfo22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPreferOutputDeviceChangeForRendererInfo](#onPreferOutputDeviceChangeForRendererInfo23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -1271,7 +1271,7 @@ off(type: 'preferOutputDeviceChangeForRendererInfo', callback?: Callback<AudioDe
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offPreferOutputDeviceChangeForRendererInfo](#offPreferOutputDeviceChangeForRendererInfo22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPreferOutputDeviceChangeForRendererInfo](#offPreferOutputDeviceChangeForRendererInfo23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -1565,7 +1565,7 @@ on(type: 'preferredInputDeviceChangeForCapturerInfo', capturerInfo: AudioCapture
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onPreferredInputDeviceChangeForCapturerInfo](#onPreferredInputDeviceChangeForCapturerInfo22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPreferredInputDeviceChangeForCapturerInfo](#onPreferredInputDeviceChangeForCapturerInfo23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -1655,7 +1655,7 @@ off(type: 'preferredInputDeviceChangeForCapturerInfo', callback?: Callback<Audio
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offPreferredInputDeviceChangeForCapturerInfo](#offPreferredInputDeviceChangeForCapturerInfo22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPreferredInputDeviceChangeForCapturerInfo](#offPreferredInputDeviceChangeForCapturerInfo23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 

@@ -36,7 +36,7 @@ ArkTS-Sta: createAVPlayer(callback: AsyncCallback\<AVPlayer | undefined>): void
 
 | 参数名   | 类型                                  | 必填 | 说明                                                         |
 | -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | ArkTS-Dyn: AsyncCallback\<[AVPlayer](arkts-apis-media-AVPlayer.md)><br>ArkTS-Sta: AsyncCallback\<[AVPlayer](arkts-apis-media-AVPlayer.md)>|undefined | 是   | 回调函数。异步返回AVPlayer实例，失败时返回null。可用于音视频播放。 |
+| callback | ArkTS-Dyn: AsyncCallback\<[AVPlayer](arkts-apis-media-AVPlayer.md)><br>ArkTS-Sta: AsyncCallback\<[AVPlayer](arkts-apis-media-AVPlayer.md) \| undefined> | 是   | 回调函数。异步返回AVPlayer实例，失败时返回null。可用于音视频播放。 |
 
 **错误码：**
 
@@ -87,7 +87,7 @@ ArkTS-Sta: createAVPlayer(): Promise\<AVPlayer | undefined>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| ArkTS-Dyn:Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md)><br>ArkTS-Sta:Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md)|undefined> | Promise对象。异步返回AVPlayer实例，失败时返回null。可用于音视频播放。 |
+| ArkTS-Dyn:Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md)><br>ArkTS-Sta:Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md) \| undefined> | Promise对象。异步返回AVPlayer实例，失败时返回null。可用于音视频播放。 |
 
 **错误码：**
 
@@ -117,7 +117,9 @@ media.createAVPlayer().then((video: media.AVPlayer) => {
 
 ## media.createAVRecorder<sup>9+</sup>
 
-createAVRecorder(callback: AsyncCallback\<AVRecorder>): void
+ArkTS-Dyn: createAVRecorder(callback: AsyncCallback\<AVRecorder>): void
+
+ArkTS-Sta: createAVRecorder(callback: AsyncCallback\<AVRecorder | undefined>): void
 
 异步方式创建音视频录制实例。通过注册回调函数获取返回值。
 
@@ -127,11 +129,15 @@ createAVRecorder(callback: AsyncCallback\<AVRecorder>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                       | 必填 | 说明                                                         |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | 是   | 回调函数。异步返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
+| callback | ArkTS-Dyn: AsyncCallback\<[AVRecorder](arkts-apis-media-AVRecorder.md)><br> ArkTS-Sta: AsyncCallback\<[AVRecorder](arkts-apis-media-AVRecorder.md) \| undefined> | 是   | 回调函数。异步返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
 
 **错误码：**
 
@@ -159,7 +165,9 @@ media.createAVRecorder((error: BusinessError, recorder: media.AVRecorder) => {
 
 ## media.createAVRecorder<sup>9+</sup>
 
-createAVRecorder(): Promise\<AVRecorder>
+ArkTS-Dyn: createAVRecorder(): Promise\<AVRecorder>
+
+ArkTS-Sta: createAVRecorder(): Promise\<AVRecorder | undefined>
 
 异步方式创建音视频录制实例。通过Promise获取返回值。
 
@@ -171,11 +179,15 @@ createAVRecorder(): Promise\<AVRecorder>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                 | 说明                                                         |
 | ------------------------------------ | ------------------------------------------------------------ |
-| Promise\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Promise对象。异步返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
+| ArkTS-Dyn: Promise\<[AVRecorder](arkts-apis-media-AVRecorder.md)><br> ArkTS-Sta: Promise\<[AVRecorder](arkts-apis-media-AVRecorder.md) \| undefined> | Promise对象。异步返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
 
 **错误码：**
 
@@ -468,17 +480,23 @@ media.createSoundPool(5, audioRendererInfo).then((soundpool_: media.SoundPool) =
 
 ## media.createAVScreenCaptureRecorder<sup>12+</sup>
 
-createAVScreenCaptureRecorder(): Promise\<AVScreenCaptureRecorder>
+ArkTS-Dyn: createAVScreenCaptureRecorder(): Promise\<AVScreenCaptureRecorder>
+ 	 
+ArkTS-Sta: createAVScreenCaptureRecorder(): Promise\<AVScreenCaptureRecorder | undefined>
 
-创建屏幕录制实例，通过Promise获取返回值。
+创建屏幕录制实例。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md)> | Promise对象。异步返回AVScreenCaptureRecorder实例，失败时返回null。可用于进行屏幕录制。 |
+| ArkTS-Dyn: Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md)><br>ArkTS-Sta: Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md) \| undefined> | Promise对象。异步返回AVScreenCaptureRecorder实例，失败时返回null。可用于进行屏幕录制。 |
 
 **错误码：**
 
@@ -621,7 +639,7 @@ ArkTS-Sta: createMediaSourceWithUrl(url: string, headers?: Record\<string, strin
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| ArkTS-Dyn: [MediaSource](arkts-apis-media-MediaSource.md)<br>ArkTS-Sta: [MediaSource](arkts-apis-media-MediaSource.md)|undefined | MediaSource返回值。 |
+| ArkTS-Dyn: [MediaSource](arkts-apis-media-MediaSource.md)<br>ArkTS-Sta: [MediaSource](arkts-apis-media-MediaSource.md) \| undefined | MediaSource返回值。 |
 
 **错误码：**
 
@@ -692,7 +710,7 @@ ArkTS-Sta: createMediaSourceWithStreamData(streams: Array\<MediaStream>): MediaS
 
 | 类型                          | 说明                |
 | ----------------------------- | ------------------- |
-| ArkTS-Dyn: [MediaSource](arkts-apis-media-MediaSource.md)<br>ArkTS-Sta: [MediaSource](arkts-apis-media-MediaSource.md)|undefined | 返回MediaSource，用于媒体资源设置。 |
+| ArkTS-Dyn: [MediaSource](arkts-apis-media-MediaSource.md)<br>ArkTS-Sta: [MediaSource](arkts-apis-media-MediaSource.md) \| undefined | 返回MediaSource，用于媒体资源设置。 |
 
 **示例：**
 
@@ -710,10 +728,14 @@ createAudioPlayer(): AudioPlayer
 
 同步方式创建音频播放实例。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[createAVPlayer](#mediacreateavplayer9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioPlayer
+
+**ArkTS-Dyn起始版本：** 6
 
 **返回值：**
 
@@ -736,7 +758,11 @@ createVideoPlayer(callback: AsyncCallback\<VideoPlayer>): void
 > **说明：**
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[createAVPlayer](#mediacreateavplayer9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -769,7 +795,11 @@ createVideoPlayer(): Promise\<VideoPlayer>
 > **说明：**
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[createAVPlayer](#mediacreateavplayer9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -801,6 +831,8 @@ createAudioRecorder(): AudioRecorder
 
 创建音频录制的实例来控制音频的录制。
 一台设备只允许创建一个录制实例。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[createAVRecorder](#mediacreateavrecorder9)替代。

@@ -14,11 +14,19 @@
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
-## constructor
+## constructor<sup>(deprecated)</sup>
 
 constructor()
 
 WebCookie的构造函数。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 23开始废弃。且不再提供新的接口作为替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。	 
+
+**ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

@@ -742,7 +742,7 @@ audioSessionManager.off('currentOutputDeviceChanged', currentOutputDeviceChanged
 
 ## offCurrentOutputDeviceChanged<sup>23+</sup>
 
-offCurrentOutputDeviceChanged(Callback\<CurrentOutputDeviceChangedEvent>): void
+offCurrentOutputDeviceChanged(callback?: Callback\<CurrentOutputDeviceChangedEvent>): void
 
 取消监听当前输出设备的变化事件，并使用callback进行异步回调。
 
@@ -752,13 +752,13 @@ offCurrentOutputDeviceChanged(Callback\<CurrentOutputDeviceChangedEvent>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                                                      |
 | :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
-| callback | Callback<[CurrentOutputDeviceChangedEvent](arkts-apis-audio-i.md#currentoutputdevicechangedevent20)> | 否 | 回调函数，用于返回当前输出设备变化的信息。 |
+| callback | Callback\<[CurrentOutputDeviceChangedEvent](arkts-apis-audio-i.md#currentoutputdevicechangedevent20)> | 否 | 回调函数，用于返回当前输出设备变化的信息。 |
 
 **错误码：**
 
@@ -973,7 +973,7 @@ offAvailableDeviceChange(callback?: Callback\<DeviceChangeAction>): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('availableDeviceChange')](#offavailabledevicechange21)。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
+**系统能力：** SystemCapability.Multimedia.Audio.Device
 
 **ArkTS-Sta起始版本：** 24
 
@@ -1246,9 +1246,11 @@ try {
 
 on(type: 'currentInputDeviceChanged', callback: Callback<CurrentInputDeviceChangedEvent\>): void
 
-监听当前输入设备变化事件（当前输入设备发生变化时触发）。
+监听当前输入设备变化事件（当前输入设备发生变化时触发）。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCurrentInputDeviceChanged](#oncurrentinputdevicechanged24)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -1282,13 +1284,56 @@ let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.C
 audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
 ```
 
+## onCurrentInputDeviceChanged<sup>24+</sup>
+
+onCurrentInputDeviceChanged(callback: Callback\<CurrentInputDeviceChangedEvent>): void
+
+监听当前输入设备变化事件（当前输入设备发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('currentInputDeviceChanged')](#oncurrentinputdevicechanged21)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                       |
+| :------- | :--------------------------------------------------- | :--- | :----------------------------------------- |
+| callback | Callback\<[CurrentInputDeviceChangedEvent](arkts-apis-audio-i.md#currentinputdevicechangedevent21)\> | 是   | 回调函数，返回当前输入设备信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.CurrentInputDeviceChangedEvent) => {
+  console.info(`reason of currentInputDeviceChanged: ${currentInputDeviceChangedEvent.changeReason} `);
+};
+
+audioSessionManager.onCurrentInputDeviceChanged(currentInputDeviceChangedCallback);
+```
+
 ## off('currentInputDeviceChanged')<sup>21+</sup>
 
 off(type: 'currentInputDeviceChanged', callback?: Callback<CurrentInputDeviceChangedEvent\>): void
 
-取消监听当前输入设备的变化事件。
+取消监听当前输入设备的变化事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCurrentInputDeviceChanged](#offcurrentinputdevicechanged24)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -1323,6 +1368,50 @@ let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.C
 audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
 
 audioSessionManager.off('currentInputDeviceChanged', currentInputDeviceChangedCallback);
+```
+
+## offCurrentInputDeviceChanged<sup>24+</sup>
+
+offCurrentInputDeviceChanged(callback?: Callback\<CurrentInputDeviceChangedEvent>): void
+
+取消监听当前输入设备的变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('currentInputDeviceChanged')](#offcurrentinputdevicechanged21)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                                      |
+| :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
+| callback | Callback<[CurrentInputDeviceChangedEvent](arkts-apis-audio-i.md#currentinputdevicechangedevent21)> | 否 | 回调函数，用于返回当前输入设备变化的信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioSessionManager.offCurrentInputDeviceChanged();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.CurrentInputDeviceChangedEvent) => {
+  console.info(`reason of currentInputDeviceChanged: ${currentInputDeviceChangedEvent.changeReason} `);
+};
+
+audioSessionManager.onCurrentInputDeviceChanged(currentInputDeviceChangedCallback);
+
+audioSessionManager.offCurrentInputDeviceChanged(currentInputDeviceChangedCallback);
 ```
 
 ## isOtherMediaPlaying<sup>23+</sup>

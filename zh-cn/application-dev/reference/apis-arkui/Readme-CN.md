@@ -186,6 +186,7 @@
       - [复用标识](arkui-ts/ts-universal-attributes-reuse-id.md)
       - [复用选项](arkui-ts/ts-universal-attributes-reuse.md)
       - [自定义窗口工具栏](arkui-ts/ts-universal-attributes-toolbar.md)
+      - [设置源码跳转信息](arkui-ts/ts-universal-attributes-debugline.md)
   - 手势处理<!--gesture-handling-->
     - 绑定手势<!--gesture-binding-->
       - [绑定手势方法](arkui-ts/ts-gesture-settings.md)

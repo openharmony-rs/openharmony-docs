@@ -73,9 +73,19 @@ ConsoleMessage的日志来源。
 | ArkTS-Dyn: Compatible <br>ArkTS-Sta: COMPATIBLE| 1 | 兼容模式：混合内容兼容性模式，部分不安全的内容可能被加载。           |
 | ArkTS-Dyn: None  <br>ArkTS-Sta: NONE| 2 | 严格模式：不允许加载HTTP和HTTPS混合内容。               |
 
-## HitTestType
+## HitTestType<sup>(deprecated)</sup>
+
+点击事件检测结果类型。
 
  **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 21开始废弃。建议使用[WebHitTestType](./arkts-apis-webview-e.md#webhittesttype)替代。
 
 | 名称            | 值 | 说明                       |
 | ------------- | -- | ------------------------ |

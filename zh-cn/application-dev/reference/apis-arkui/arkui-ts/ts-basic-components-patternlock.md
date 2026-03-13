@@ -20,6 +20,10 @@ PatternLock(controller?: PatternLockController)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名     | 类型                                        | 必填 | 说明 |
@@ -44,7 +48,7 @@ ArkTS-Sta: sideLength(value: Length | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -66,7 +70,7 @@ ArkTS-Sta: circleRadius(value: Length | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -88,7 +92,7 @@ ArkTS-Sta: backgroundColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -102,7 +106,7 @@ ArkTS-Dyn: regularColor(value: ResourceColor)
 
 ArkTS-Sta: regularColor(value: ResourceColor | undefined)
 
-设置宫格圆点在“未选中”状态的填充颜色。
+设置宫格圆点在"未选中"状态的填充颜色。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -110,13 +114,13 @@ ArkTS-Sta: regularColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                       |
 | ------ | ------------------------------------------ | ---- | ---------------------------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 宫格圆点在“未选中”状态的填充颜色。<br/>默认值：'#ff182431'|
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 宫格圆点在"未选中"状态的填充颜色。<br/>默认值：'#ff182431'|
 
 ### selectedColor
 
@@ -124,7 +128,7 @@ ArkTS-Dyn: selectedColor(value: ResourceColor)
 
 ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 
-设置宫格圆点在“选中”状态的填充颜色。
+设置宫格圆点在"选中"状态的填充颜色。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -132,13 +136,13 @@ ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                     |
 | ------ | ------------------------------------------ | ---- | -------------------------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 宫格圆点在“选中”状态的填充颜色。<br/>默认值：'#ff182431' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 宫格圆点在"选中"状态的填充颜色。<br/>默认值：'#ff182431' |
 
 ### activeColor
 
@@ -146,7 +150,7 @@ ArkTS-Dyn: activeColor(value: ResourceColor)
 
 ArkTS-Sta: activeColor(value: ResourceColor | undefined)
 
-设置宫格圆点在“激活”状态的填充颜色，“激活”状态为手指经过圆点但还未选中的状态。
+设置宫格圆点在"激活"状态的填充颜色，"激活"状态为手指经过圆点但还未选中的状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -154,13 +158,13 @@ ArkTS-Sta: activeColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                     |
 | ------ | ------------------------------------------ | ---- | -------------------------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 宫格圆点在“激活”状态的填充颜色。<br/>默认值：'#ff182431'|
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 宫格圆点在"激活"状态的填充颜色。<br/>默认值：'#ff182431'|
 
 ### pathColor
 
@@ -176,7 +180,7 @@ ArkTS-Sta: pathColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -198,13 +202,9 @@ ArkTS-Sta: pathStrokeWidth(value: double | string | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
-
-**ArkTs-Dyn起始版本：** 9
-
-**ArkTs-Sta起始版本：** 22
 
 | 参数名 | 类型                       | 必填 | 说明                          |
 | ------ | -------------------------- | ---- | ----------------------------- |
@@ -224,7 +224,7 @@ ArkTS-Sta: autoReset(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -238,7 +238,7 @@ ArkTS-Dyn: activateCircleStyle(options: Optional\<CircleStyleOptions\>)
 
 ArkTS-Sta: activateCircleStyle(options: CircleStyleOptions | undefined)
 
-设置宫格圆点在“激活”状态下的背景圆环样式。
+设置宫格圆点在"激活"状态下的背景圆环样式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -246,13 +246,13 @@ ArkTS-Sta: activateCircleStyle(options: CircleStyleOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| options  | ArkTS-Dyn: Optional\<[CircleStyleOptions](#circlestyleoptions12对象说明)\> <br/>ArkTS-Sta: [CircleStyleOptions](#circlestyleoptions12对象说明) \| undefined | 是   | 宫格圆点在“激活”状态的背景圆环样式。 |
+| options  | ArkTS-Dyn: Optional\<[CircleStyleOptions](#circlestyleoptions12对象说明)\> <br/>ArkTS-Sta: [CircleStyleOptions](#circlestyleoptions12对象说明) \| undefined | 是   | 宫格圆点在"激活"状态的背景圆环样式。 |
 
 ### skipUnselectedPoint<sup>15+</sup>
 
@@ -268,7 +268,7 @@ ArkTS-Sta: skipUnselectedPoint(skipped: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -294,7 +294,7 @@ ArkTS-Sta: onPatternComplete(callback: Callback<Array\<int>> | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -314,19 +314,22 @@ onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 ## CircleStyleOptions<sup>12+</sup>对象说明
 
 圆环样式的参数说明。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-
 | 名称          | 类型 | 必填 | 说明 |
 | ------------- | ------- | ---- | -------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 背景圆环颜色。 <br/>默认值：与pathColor值相同。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| radius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 背景圆环的半径。<br/>默认值：circleRadius的11/6。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| enableWaveEffect | boolean | 否 | 波浪效果开关。<br/>默认值：true，表示波浪效果开关打开，显示波浪效果。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| enableForeground<sup>15+</sup> | boolean | 否 | 背景圆环是否在前景显示。<br/>默认值：false，背景圆环不在前景显示。 <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 背景圆环颜色。 <br/>默认值：与pathColor值相同。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| radius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 背景圆环的半径。<br/>默认值：circleRadius的11/6。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23  |
+| enableWaveEffect | boolean | 否 | 波浪效果开关。<br/>默认值：true，表示波浪效果开关打开，显示波浪效果。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23  |
+| enableForeground<sup>15+</sup> | boolean | 否 | 背景圆环是否在前景显示。<br/>默认值：false，背景圆环不在前景显示。 <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## PatternLockController
 
@@ -348,6 +351,10 @@ PatternLockController的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ### reset
 
 reset()
@@ -358,6 +365,10 @@ reset()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ### setChallengeResult<sup>11+</sup>
 
 setChallengeResult(result: PatternLockChallengeResult): void
@@ -367,6 +378,10 @@ setChallengeResult(result: PatternLockChallengeResult): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
@@ -379,6 +394,10 @@ setChallengeResult(result: PatternLockChallengeResult): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值    | 说明           |
 | ------- | ----- | -------------- |

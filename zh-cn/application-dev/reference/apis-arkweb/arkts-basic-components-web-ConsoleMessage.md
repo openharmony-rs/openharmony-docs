@@ -26,13 +26,9 @@ ConsoleMessage的构造函数。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS模式：** 该接口适用于ArkTS-Dyn
-
 **ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
-
-**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 

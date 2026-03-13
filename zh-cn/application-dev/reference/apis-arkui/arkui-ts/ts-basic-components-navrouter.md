@@ -2,11 +2,13 @@
 
 导航组件，默认提供点击响应处理，不需要开发者自定义点击事件逻辑。
 
-> **说明：**
+> **说明：** 
 >
-> 从API version 13 开始，该组件不再维护，推荐使用[NavPathStack](ts-basic-components-navigation.md#navpathstack10)配合navDestination属性进行页面路由。
+> - 本模块仅适用于ArkTS-Dyn。
 >
-> 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 13 开始，该组件不再维护，推荐使用[NavPathStack](ts-basic-components-navigation.md#navpathstack10)配合navDestination属性进行页面路由。
+>
+> - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 

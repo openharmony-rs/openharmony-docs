@@ -8598,7 +8598,7 @@ onSubWindowClose(callback: Callback&lt;void&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('subWindowClose')](#onsubwindowclose12)。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+**系统能力：** SystemCapability.Window.SessionManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -8693,7 +8693,7 @@ offSubWindowClose(callback?: Callback&lt;void&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('subWindowClose')](#offsubwindowclose12)。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+**系统能力：** SystemCapability.Window.SessionManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -9494,7 +9494,7 @@ on(eventType: 'uiExtensionSecureLimitChange', callback: Callback&lt;boolean&gt;)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onUiExtensionSecureLimitChange](#onuiextensionsecurelimitchange23)。
 
@@ -9537,7 +9537,7 @@ onUiExtensionSecureLimitChange(callback: Callback&lt;boolean&gt;): void
 
 开启窗口内uiExtension安全限制变化事件的监听, 建议在窗口创建后立即监听。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('uiExtensionSecureLimitChange')](#onuiextensionsecurelimitchange20)。
 
@@ -9582,7 +9582,7 @@ off(eventType: 'uiExtensionSecureLimitChange', callback?: Callback&lt;boolean&gt
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offUiExtensionSecureLimitChange](#offuiextensionsecurelimitchange23)。
 
@@ -9631,7 +9631,7 @@ offUiExtensionSecureLimitChange(callback?: Callback&lt;boolean&gt;): void
 
 关闭窗口内uiextension安全限制变化事件的监听。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('uiExtensionSecureLimitChange')](#offuiextensionsecurelimitchange20)。
 
@@ -12845,9 +12845,9 @@ try {
 
 ## setWindowMask<sup>12+</sup>
 
-ArkTs-Dyn: setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
+ArkTS-Dyn: setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 
-ArkTs-Sta: setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&lt;void&gt;
+ArkTS-Sta: setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&lt;void&gt;
 
 设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
 
@@ -12861,7 +12861,7 @@ ArkTs-Sta: setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&lt
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12883,9 +12883,9 @@ ArkTs-Sta: setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&lt
 | :------- | :-------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
 | 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation.                       |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported.    |
 
 **示例：**
 
@@ -14225,7 +14225,7 @@ ArkTS-Sta: setParentWindow(windowId: int): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| windowId  | ArkTS-Dyn: number<br/>ArKTS-Sta: int | 是   | 父窗口id，该参数应为整数。推荐使用[getWindowProperties()](#getwindowproperties9)方法获取父窗口id属性。|
+| windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 父窗口id，该参数应为整数。推荐使用[getWindowProperties()](#getwindowproperties9)方法获取父窗口id属性。|
 
 **返回值：**
 
@@ -15722,6 +15722,259 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## setSeparationTouchEnabled<sup>23+</sup>
+
+setSeparationTouchEnabled(enabled: boolean): Promise&lt;void&gt;
+
+设置当前窗口是否支持事件分离状态，使用Promise异步回调。默认场景下为true，支持事件分离状态。
+
+当enable为true，支持事件分离状态下：
+
+- 所有手指点击产生的事件均会发送给其手指命中的窗口。
+
+当enable为false，不支持事件分离状态下：
+
+- 当第一根手指点击持续命中该窗口未抬起时，后续其他手指无论是否点击命中该窗口，其产生的事件均会分发给该窗口。
+
+- 当第一根手指点击未保持持续命中该窗口时，后续其他手指即使点击命中该窗口，其产生的事件也不会分发给该窗口，该事件会被系统丢弃。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型    | 必填 | 说明                 |
+| ----------- | ------- | ---- | -------------------- |
+| enabled | boolean | 是   | 窗口是否支持事件分离状态。true表示支持；false表示不支持。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003  | This window manager service works abnormally. Possible cause: Internal IPC error. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enabled = false;
+try {
+  let promise = windowClass.setSeparationTouchEnabled(enabled);
+  promise.then(() => {
+    console.info('Succeeded in setting the window to be separationTouchEnabled.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the window to be separationTouchEnabled. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set the separationTouchEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enabled = false;
+try {
+  let promise = windowClass.setSeparationTouchEnabled(enabled);
+  promise?.then(() => {
+    console.info('Succeeded in setting the window to be separationTouchEnabled.');
+  }).catch((e) => {
+    let err = e as BusinessError;
+    console.error(`Failed to set the window to be separationTouchEnabled. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set the separationTouchEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+
+```
+
+## isSeparationTouchEnabled<sup>23+</sup>
+
+isSeparationTouchEnabled():boolean
+
+获取当前窗口是否支持事件分离的状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| boolean          |  当前窗口是否支持事件分离。</br>true表示支持窗口事件分离，false表示不支持窗口事件分离。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003  | This window manager service works abnormally.        |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isSeparationTouchEnabled = windowClass.isSeparationTouchEnabled();
+  console.info(`Succeeded in getting the window separationTouchEnabled status: ${isSeparationTouchEnabled}`);
+} catch (exception) {
+  console.error(`Failed to get the window separationTouchEnabled status.. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## setReceiveDragEventEnabled<sup>23+</sup>
+
+setReceiveDragEventEnabled(enabled: boolean): Promise&lt;void&gt;
+
+设置当前窗口是否能接收[拖拽事件](./arkui-ts/ts-universal-events-drag-drop.md#dragevent7)，使用Promise异步回调。
+
+默认场景下为true，能够接收拖拽事件。
+
+当enable为false，当前窗口不能接收拖拽事件。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型    | 必填 | 说明                 |
+| ----------- | ------- | ---- | -------------------- |
+| enabled | boolean | 是   | 窗口是否能接收拖拽事件。true表示能够接收拖拽事件；false表示不能接收拖拽事件。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003  | This window manager service works abnormally. Possible cause: Internal IPC error. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enabled = false;
+try {
+  let promise = windowClass.setReceiveDragEventEnabled(enabled);
+  promise.then(() => {
+    console.info('Succeeded in setting the window to be WindowReceiveDragEventEnabled.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the window to be the window ReceiveDragEventEnabled. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set the window ReceiveDragEventEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enabled = false;
+try {
+  let promise = windowClass.setReceiveDragEventEnabled(enabled);
+  promise?.then(() => {
+    console.info('Succeeded in setting the window to be WindowReceiveDragEventEnabled.');
+  }).catch((e) => {
+    let err = e as BusinessError;
+    console.error(`Failed to set the window to be WindowReceiveDragEventEnabled. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set the WindowReceiveDragEventEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## isReceiveDragEventEnabled<sup>23+</sup>
+
+isReceiveDragEventEnabled():boolean
+
+获取当前窗口是否能接收[拖拽事件](./arkui-ts/ts-universal-events-drag-drop.md#dragevent7)的状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| boolean          |  当前窗口是否能接收拖拽事件的状态。</br>true表示能接收拖拽事件的状态，false表示不能接收拖拽事件的状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003  | This window manager service works abnormally.        |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isReceiveDragEventEnabled = windowClass.isReceiveDragEventEnabled();
+  console.info(`Succeeded in getting the window receiveDragEvent status: ${isReceiveDragEventEnabled}`);
+} catch (exception) {
+  console.error(`Failed to get the window receiveDragEvent status. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## setWindowShadowRadius<sup>17+</sup>
 
 ArkTS-Dyn: setWindowShadowRadius(radius: number): void
@@ -17116,9 +17369,13 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncC
 >
 > 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowSystemBarEnable()](#setwindowsystembarenable9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -17186,7 +17443,6 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 > **说明：**
 >
 > 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
-
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -17266,7 +17522,11 @@ show(callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[showWindow()](#showwindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17299,7 +17559,11 @@ show(): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[showWindow()](#showwindow9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -17330,7 +17594,11 @@ destroy(callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[destroyWindow()](#destroywindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17363,7 +17631,11 @@ destroy(): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[destroyWindow()](#destroywindow9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -17586,7 +17858,11 @@ getProperties(callback: AsyncCallback&lt;WindowProperties&gt;): void
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getWindowProperties()](#getwindowproperties9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -17619,7 +17895,11 @@ getProperties(): Promise&lt;WindowProperties&gt;
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getWindowProperties()](#getwindowproperties9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **返回值：**
 
@@ -17751,7 +18031,11 @@ setFullScreen(isFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议联合使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代实现全屏。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -17805,7 +18089,11 @@ setFullScreen(isFullScreen: boolean): Promise&lt;void&gt;
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议联合使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代实现全屏。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -17862,7 +18150,11 @@ setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17916,7 +18208,11 @@ setLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -18229,7 +18525,11 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setUIContent()](#setuicontent9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -18267,7 +18567,11 @@ loadContent(path: string): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setUIContent()](#setuicontent9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -18304,7 +18608,11 @@ isShowing(callback: AsyncCallback&lt;boolean&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isWindowShowing()](#iswindowshowing9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -18337,7 +18645,11 @@ isShowing(): Promise&lt;boolean&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isWindowShowing()](#iswindowshowing9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -18909,7 +19221,11 @@ setFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowFocusable()](#setwindowfocusable9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -18945,7 +19261,11 @@ setFocusable(isFocusable: boolean): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowFocusable()](#setwindowfocusable9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -19230,7 +19550,11 @@ setTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowTouchable()](#setwindowtouchable9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -19266,7 +19590,11 @@ setTouchable(isTouchable: boolean): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowTouchable()](#setwindowtouchable9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 

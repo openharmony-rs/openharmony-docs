@@ -117,7 +117,7 @@ CounterType指定Counter的类型，如列表型Counter。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -146,8 +146,8 @@ CommonOptions定义Counter的共通属性和事件。
 | --------------- | ------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | focusable       | boolean                   | 否  | 是 | 设置Counter是否可以获焦。<br>**说明：** <br>该属性对列表型、紧凑型Counter生效。<br>默认值：true。 <br>true：Counter可以获焦；false：Counter不可以获焦。 <br>值为undefined时，按默认值处理。 |
 | step            | ArkTS-Dyn: number <br>ArkTS-Sta: int  | 否  | 是 | 设置Counter的步长。<br>取值范围：大于等于1的整数。<br>默认值：1。<br>值为undefined时，按默认值处理。 |
-| onHoverIncrease | ArkTS-Dyn: (isHover: boolean) => void <br>ArkTS-Sta: [OnCounterHoverCallback](#oncounterhovercallback22) | 否  | 是 | 鼠标进入或退出Counter组件的增加按钮触发该回调。<br>isHover：表示鼠标是否悬浮在增加按钮组件上，鼠标进入时为true，退出时为false。<br>默认值：不触发鼠标进入或退出Counter组件的增加按钮时的回调。 <br>值为undefined时，按默认值处理。 |
-| onHoverDecrease | ArkTS-Dyn: (isHover: boolean) => void <br>ArkTS-Sta: [OnCounterHoverCallback](#oncounterhovercallback22) | 否  | 是 | 鼠标进入或退出Counter组件的减小按钮触发该回调。<br>isHover：表示鼠标是否悬浮在减小按钮组件上，鼠标进入时为true，退出时为false。<br>默认值：不触发鼠标进入或退出Counter组件的增加按钮时的回调。<br>值为undefined时，按默认值处理。 |
+| onHoverIncrease | ArkTS-Dyn: (isHover: boolean) => void <br>ArkTS-Sta: [OnCounterHoverCallback](#oncounterhovercallback23) | 否  | 是 | 鼠标进入或退出Counter组件的增加按钮触发该回调。<br>isHover：表示鼠标是否悬浮在增加按钮组件上，鼠标进入时为true，退出时为false。<br>默认值：不触发鼠标进入或退出Counter组件的增加按钮时的回调。 <br>值为undefined时，按默认值处理。 |
+| onHoverDecrease | ArkTS-Dyn: (isHover: boolean) => void <br>ArkTS-Sta: [OnCounterHoverCallback](#oncounterhovercallback23) | 否  | 是 | 鼠标进入或退出Counter组件的减小按钮触发该回调。<br>isHover：表示鼠标是否悬浮在减小按钮组件上，鼠标进入时为true，退出时为false。<br>默认值：不触发鼠标进入或退出Counter组件的增加按钮时的回调。<br>值为undefined时，按默认值处理。 |
 
 ## InlineStyleOptions
 
@@ -171,7 +171,7 @@ InlineStyleOptions定义了数值内联型Counter的属性和事件。
 | min       | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否  | 是 | 设置Counter的最小值。<br>默认值：0。 <br>取值范围：[0, +∞)内的整数，小于0时，按照默认值处理。 <br>值为undefined时，按默认值处理。  |
 | max       | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否  | 是 | 设置Counter的最大值。<br>默认值：999。  <br>取值范围：[0, +∞)内的整数，小于0时，按照默认值处理。 <br>值为undefined时，按默认值处理。   |
 | textWidth | ArkTS-Dyn: number <br>ArkTS-Sta: double | 否  | 是 | 设置数值文本的宽度。<br>默认值：自适应文本宽度。<br>取值范围：[0, +∞)。 <br>单位：vp。    |
-| onChange  | ArkTS-Dyn: (value: number) => void <br>ArkTS-Sta: [OnInlineCounterChange](#oninlinecounterchange22) | 否  | 是 | 当数值改变时，返回当前值。<br>value：当前显示的数值。<br>默认值：数值改变时，不返回值。 <br>值为undefined时，按默认值处理。 |
+| onChange  | ArkTS-Dyn: (value: number) => void <br>ArkTS-Sta: [OnInlineCounterChange](#oninlinecounterchange23) | 否  | 是 | 当数值改变时，返回当前值。<br>value：当前显示的数值。<br>默认值：数值改变时，不返回值。 <br>值为undefined时，按默认值处理。 |
 
 ## NumberStyleOptions
 
@@ -218,7 +218,7 @@ DateStyleOptions定义了日期内联型Counter的属性和事件。
 | year         | ArkTS-Dyn: number <br>ArkTS-Sta: int  | 否  | 是 | 设置日期内联型初始年份。<br>默认值：1<br>取值范围：[1, 5000]<br>值为undefined时，按默认值处理。   |
 | month        | ArkTS-Dyn: number <br>ArkTS-Sta: int  | 否  | 是 | 设置日期内联型初始月份。<br>默认值：1<br>取值范围：[1, 12]<br>值为undefined时，按默认值处理。     |
 | day          | ArkTS-Dyn: number <br>ArkTS-Sta: int  | 否  | 是 | 设置日期内联型初始日。<br>默认值：1<br>取值范围：[1, 31] <br>说明：每个月份的具体取值范围由该月份的实际天数决定。 <br>值为undefined时，按默认值处理。       |
-| onDateChange | ArkTS-Dyn: (date: [DateData](#datedata)) => void <br>ArkTS-Sta: [OnDateCounterChangeCallback](#ondatecounterchangecallback22) | 否  | 是 | 当日期改变时，返回当前日期。 <br>值为undefined时，不显示当前的日期值。 |
+| onDateChange | ArkTS-Dyn: (date: [DateData](#datedata)) => void <br>ArkTS-Sta: [OnDateCounterChangeCallback](#ondatecounterchangecallback23) | 否  | 是 | 当日期改变时，返回当前日期。 <br>值为undefined时，不显示当前的日期值。 |
 
 ## DateData
 
@@ -286,7 +286,7 @@ toString(): string
 | -------- | -------- |
 | string | 当前日期值。 |
 
-## OnCounterHoverCallback<sup>22+</sup>
+## OnCounterHoverCallback<sup>23+</sup>
 
 type OnCounterHoverCallback = (isHover: boolean) => void
 
@@ -304,7 +304,7 @@ type OnCounterHoverCallback = (isHover: boolean) => void
 | ---------- | ------ | ------ | ---------------------------- |
 | isHover    | boolean | 是 | 表示鼠标是否悬浮在组件上，鼠标进入时为true，退出时为false。 |
 
-## OnInlineCounterChange<sup>22+</sup>
+## OnInlineCounterChange<sup>23+</sup>
 
 type OnInlineCounterChange = (value: int) => void
 
@@ -320,9 +320,9 @@ type OnInlineCounterChange = (value: int) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---------- | ------ | ------ | ---------------------------- |
-| value      | double | 是 | 当前显示的数值。 |
+| value      | int | 是 | 当前显示的数值。 |
 
-## OnDateCounterChangeCallback<sup>22+</sup>
+## OnDateCounterChangeCallback<sup>23+</sup>
 
 type OnDateCounterChangeCallback = (date: DateData) => void
 

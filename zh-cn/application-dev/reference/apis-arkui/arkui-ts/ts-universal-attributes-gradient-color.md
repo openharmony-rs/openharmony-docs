@@ -28,7 +28,7 @@ ArkTS-Sta: linearGradient(value: LinearGradientOptions | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -74,6 +74,10 @@ linearGradient(options: Optional\<LinearGradientOptions>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                                       | 类型                                                         | 必填 | 说明                                                         |
 | ------------------------------------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | angle                                      | number&nbsp;\|&nbsp;string                                   | 否   | 线性渐变的起始角度。角度为0度时渐变方向为从下往上（即0点方向）。0点方向顺时针旋转为正向角度。<br/> 取值范围：(-∞,+∞)，设置的值大于0时，按顺时针方向，小于0时，按逆时针方向。 </br>默认值：180 </br>角度为字符串时，合法的取值为纯数字或纯数字后带"deg"（度）、"rad"（弧度）、"grad"（梯度）、"turn"（圈）单位，例如："90"、 "90deg"、"1.57rad"。|
@@ -97,7 +101,7 @@ ArkTS-Sta: sweepGradient(value: SweepGradientOptions | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -141,12 +145,16 @@ sweepGradient(options: Optional\<SweepGradientOptions>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                                       | 类型                                                         | 必填 | 说明                                                         |
 | ------------------------------------------ | ------------------------------------------------------------ | ---- |------------------------------------------------------------- |
 | center                                    | [[Length](./ts-types.md#length), Length]                     | 是   | 为角度渐变的中心点，即相对于当前组件左上角的坐标。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。           |
-| start                                     | number&nbsp;\|&nbsp;string                                   | 否   | 角度渐变的起点。&nbsp;默认值：0。<br/>角度为字符串时，合法的取值为纯数字或纯数字后带"deg"（度）、"rad"（弧度）、"grad"（梯度）、"turn"（圈）单位。例如："90"、 "90deg"、"1.57rad"。取值有0~360度的限制，转换为度的单位之后，值在0~360度之间，设置为小于0度的值时，按值为0度处理，设置为大于360度的值时，按值为360度处理。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                            |
-| end                                       | number&nbsp;\|&nbsp;string                                   | 否   | 角度渐变的终点。&nbsp;默认值：0。<br/>角度为字符串时，合法的取值为纯数字或纯数字后带"deg"（度）、"rad"（弧度）、"grad"（梯度）、"turn"（圈）单位。例如："90"、 "90deg"、"1.57rad"。取值有0~360度的限制，转换为度的单位之后，值在0~360度之间，设置为小于0度的值时，按值为0度处理，设置为大于360度的值时，按值为360度处理。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                            |
-| rotation                                   | number&nbsp;\|&nbsp;string                                   | 否   | 角度渐变的旋转角度。默认值：0。<br/>角度为字符串时，合法的取值为纯数字或纯数字后带"deg"（度）、"rad"（弧度）、"grad"（梯度）、"turn"（圈）单位。例如："90"、 "90deg"、"1.57rad"。取值有0~360度的限制，转换为度的单位之后，值在0~360度之间，设置为小于0度的值时，按值为0度处理，设置为大于360度的值时，按值为360度处理。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                              |
+| start                                     | ArkTS-Dyn: number&nbsp;\|&nbsp;string  <br/>ArkTS-Sta: double \| string                            | 否   | 角度渐变的起点。&nbsp;默认值：0。<br/>角度为字符串时，合法的取值为纯数字或纯数字后带"deg"（度）、"rad"（弧度）、"grad"（梯度）、"turn"（圈）单位。例如："90"、 "90deg"、"1.57rad"。取值有0~360度的限制，转换为度的单位之后，值在0~360度之间，设置为小于0度的值时，按值为0度处理，设置为大于360度的值时，按值为360度处理。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                            |
+| end                                       | ArkTS-Dyn: number&nbsp;\|&nbsp;string  <br/>ArkTS-Sta: double \| string       | 否   | 角度渐变的终点。&nbsp;默认值：0。<br/>角度为字符串时，合法的取值为纯数字或纯数字后带"deg"（度）、"rad"（弧度）、"grad"（梯度）、"turn"（圈）单位。例如："90"、 "90deg"、"1.57rad"。取值有0~360度的限制，转换为度的单位之后，值在0~360度之间，设置为小于0度的值时，按值为0度处理，设置为大于360度的值时，按值为360度处理。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                            |
+| rotation                                   | ArkTS-Dyn: number&nbsp;\|&nbsp;string  <br/>ArkTS-Sta: double \| string   string                                   | 否   | 角度渐变的旋转角度。默认值：0。<br/>角度为字符串时，合法的取值为纯数字或纯数字后带"deg"（度）、"rad"（弧度）、"grad"（梯度）、"turn"（圈）单位。例如："90"、 "90deg"、"1.57rad"。取值有0~360度的限制，转换为度的单位之后，值在0~360度之间，设置为小于0度的值时，按值为0度处理，设置为大于360度的值时，按值为360度处理。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                              |
 | colors | Array&lt;[[ResourceColor](ts-types.md#resourcecolor),&nbsp;number] | 是   | 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | metricsColors<sup>20+</sup> | Array&lt;[[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12),&nbsp;number] | 否   | 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。设置metricsColors时colors失效。每个渐变ColorMetrics的色域属性应当统一，设置不同色域属性则认为非法。默认值为透明色。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | repeating                                 | boolean                                                      | 否   | 为渐变的颜色重复着色。<br>默认值：false <br>true：允许为渐变的颜色重复着色。<br>false：不允许为渐变的颜色重复着色。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                       |
@@ -173,7 +181,7 @@ ArkTS-Sta: radialGradient(value: RadialGradientOptions | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

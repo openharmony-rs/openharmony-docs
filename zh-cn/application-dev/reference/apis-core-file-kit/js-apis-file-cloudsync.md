@@ -1720,6 +1720,8 @@ try {
 
 ## MultiDownloadProgress<sup>20+</sup>
 
+### 属性
+
 云文件批量缓存的进度信息。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -1738,6 +1740,186 @@ try {
 | downloadedSize  | ArkTS-Dyn: number<br> ArkTS-Sta: long      | 否   | 否   | 已缓存的文件大小，取值范围为 [0, INT64_MAX)，单位：Byte。如果进度异常，返回值为 INT64_MAX。             |
 | totalSize       | ArkTS-Dyn: number<br> ArkTS-Sta: long      | 否   | 否   | 待缓存的文件总大小，取值范围为 [0, INT64_MAX)，单位为 Byte。如果进度异常，返回值为 INT64_MAX。 |
 | errType         | [DownloadErrorType](#downloaderrortype11) | 否   | 否   | 返回批量缓存任务执行失败时的错误类型。 |
+
+### getFailedFiles<sup>20+</sup>
+
+getFailedFiles(): Array&lt;FailedFileInfo&gt;
+
+获取批量缓存失败的文件列表。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
+**返回值：**
+
+| 类型                                             | 说明                                                |
+| ------------------------------------------------ | --------------------------------------------------- |
+| Array&lt;[FailedFileInfo](#failedfileinfo20)&gt; | 返回缓存失败的文件URI列表及其对应的错误类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let taskId = -1;
+let failedList: Array<cloudSync.FailedFileInfo> = [];
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (data: cloudSync.MultiDownloadProgress) => {
+  console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSync.State.FAILED) {
+    console.info(`Batch download stopped, error type: ${data.errType}.`);
+    failedList = data.getFailedFiles();
+  }
+};
+
+try {
+  fileCache.on('batchDownload', callback);
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+}
+
+let uriList: Array<string> = [];
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
+  taskId = downloadId;
+  console.info("start batch download successfully");
+}).catch((err: BusinessError) => {
+  console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let taskId: long = -1;
+let failedList: Array<cloudSync.FailedFileInfo> = [];
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (data: cloudSync.MultiDownloadProgress) => {
+  console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSync.State.FAILED) {
+    console.info(`Batch download stopped, error type: ${data.errType}.`);
+    failedList = data.getFailedFiles();
+  }
+};
+
+try {
+  fileCache.onBatchDownload(callback);
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+}
+
+let uriList: Array<string> = [];
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then<long>((downloadId: long): void => {
+  taskId = downloadId;
+  console.info("start batch download successfully");
+}).catch((err: BusinessError<void>): void => {
+  console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
+### getSuccessfulFiles<sup>20+</sup>
+
+getSuccessfulFiles(): Array&lt;string&gt;
+
+获取批量缓存成功的文件列表。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
+**返回值：**
+
+| 类型                | 说明                                  |
+| ------------------- | ------------------------------------- |
+| Array&lt;string&gt; | 数组类型，返回缓存成功的文件URI列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let finishedList: Array<string> = [];
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (data: cloudSync.MultiDownloadProgress) => {
+  console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSync.State.COMPLETED) {
+    console.info(`Batch download stopped, error type: ${data.errType}.`);
+    finishedList = data.getSuccessfulFiles();
+  }
+};
+
+try {
+  fileCache.on('batchDownload', callback);
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+}
+
+let uriList: Array<string> = [];
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
+  console.info(`start batch download successfully, taskId: ${downloadId}`);
+}).catch((err: BusinessError) => {
+  console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let finishedList: Array<string> = [];
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (data: cloudSync.MultiDownloadProgress) => {
+  console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSync.State.COMPLETED) {
+    console.info(`Batch download stopped, error type: ${data.errType}.`);
+    finishedList = data.getSuccessfulFiles();
+  }
+};
+
+try {
+  fileCache.onBatchDownload(callback);
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+}
+
+let uriList: Array<string> = [];
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then<long>((downloadId: long): void => {
+  console.info(`start batch download successfully, taskId: ${downloadId}`);
+}).catch((err: BusinessError<void>): void => {
+  console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
 
 ## cloudSync.registerChange<sup>12+</sup>
 

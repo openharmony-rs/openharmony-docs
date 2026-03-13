@@ -41,6 +41,10 @@ FoldSplitContainer({
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | primary | Callback\<void> | 是 | @BuilderParam | 主要区域回调函数。 |
@@ -60,11 +64,15 @@ FoldSplitContainer({
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | isExtraRegionPerpendicular | boolean | 否 | 扩展区域是否从上到下贯穿整个组件，当且仅当extra有效时此字段才生效。设置为true时表示扩展区域从上到下贯穿整个组件，设置为false时表示扩展区域不从上到下贯穿整个组件。<br/>默认值：true |
-| verticalSplitRatio | number | 否 | 主要区域与次要区域之间的高度比例。<br/>默认值：PresetSplitRatio.LAYOUT_1V1 |
-| horizontalSplitRatio | number | 否 | 主要区域与扩展区域之间的宽度比例，当且仅当extra有效时此字段才生效。<br/>默认值：PresetSplitRatio.LAYOUT_3V2 |
+| verticalSplitRatio | ArkTS-Dyn: number<br/>ArkTS-Sta: [PresetSplitRatio](#presetsplitratio) | 否 | 主要区域与次要区域之间的高度比例。<br/>默认值：PresetSplitRatio.LAYOUT_1V1 |
+| horizontalSplitRatio | ArkTS-Dyn: number<br/>ArkTS-Sta: [PresetSplitRatio](#presetsplitratio) | 否 | 主要区域与扩展区域之间的宽度比例，当且仅当extra有效时此字段才生效。<br/>默认值：PresetSplitRatio.LAYOUT_3V2 |
 | extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | 否 | 扩展区域的位置信息，当且仅当isExtraRegionPerpendicular = false有效时此字段才生效。<br/>默认值：ExtraRegionPosition.top |
 
 ## HoverModeRegionLayoutOptions
@@ -75,10 +83,14 @@ FoldSplitContainer({
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | showExtraRegion | boolean | 否 | 可折叠屏幕在半折叠状态下是否显示扩展区域。设置为true时表示显示扩展区域，设置为false时表示不显示扩展区域。<br/>默认值：false |
-| horizontalSplitRatio | number | 否 | 主要区域与扩展区域之间的宽度比例，当且仅当extra有效时此字段才生效。<br/>默认值：PresetSplitRatio.LAYOUT_3V2 |
+| horizontalSplitRatio | ArkTS-Dyn: number<br/>ArkTS-Sta: [PresetSplitRatio](#presetsplitratio) | 否 | 主要区域与扩展区域之间的宽度比例，当且仅当extra有效时此字段才生效。<br/>默认值：PresetSplitRatio.LAYOUT_3V2 |
 | extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | 否 | 扩展区域的位置信息，当且仅当showExtraRegion时此字段才生效。<br/>默认值：ExtraRegionPosition.top |
 
 > **说明：**
@@ -94,9 +106,13 @@ FoldSplitContainer({
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| verticalSplitRatio | number | 否 | 主要区域与次要区域之间的高度比例。默认值：PresetSplitRatio.LAYOUT_1V1 |
+| verticalSplitRatio | ArkTS-Dyn: number<br/>ArkTS-Sta: [PresetSplitRatio](#presetsplitratio) | 否 | 主要区域与次要区域之间的高度比例。默认值：PresetSplitRatio.LAYOUT_1V1 |
 
 ## OnHoverStatusChangeHandler
 
@@ -108,7 +124,11 @@ onHoverStatusChange事件处理。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
@@ -122,11 +142,15 @@ onHoverStatusChange事件处理。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | foldStatus | [display.FoldStatus](../js-apis-display.md#foldstatus10) | 是 | 设备的折叠状态。 |
 | isHoverMode | boolean | 是 | app当前是否处于悬停态。设置为true时表示当前为悬停态，设置为false时表示当前为非悬停态。 |
-| appRotation | number | 是 | 应用旋转角度。 |
+| appRotation | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 应用旋转角度。 |
 | windowStatusType | [window.WindowStatusType](../arkts-apis-window-e.md#windowstatustype11) | 是 | 窗口模式。 |
 
 ## ExtraRegionPosition
@@ -136,6 +160,10 @@ onHoverStatusChange事件处理。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -150,9 +178,13 @@ onHoverStatusChange事件处理。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| LAYOUT_1V1 | 1 | 1:1比例。 |
+| LAYOUT_1V1 | ArkTS-Dyn: 1<br/>ArkTS-Sta: 1.0 | 1:1比例。 |
 | LAYOUT_3V2 | 1.5 | 3:2比例。 |
 | LAYOUT_2V3 | 0.6666666666666666 | 2:3比例。 |
 

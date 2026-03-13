@@ -613,7 +613,7 @@ on(type: 'keyRequired', callback: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyRequired](#onkeyrequired23)。
 
@@ -655,7 +655,7 @@ onKeyRequired(callback: (eventInfo: EventInfo) => void): void
 
 监听密钥请求事件。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyRequired')](#onkeyrequired)。
 
@@ -697,7 +697,7 @@ off(type: 'keyRequired', callback?: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyRequired](#offkeyrequired23)。
 
@@ -737,7 +737,7 @@ offKeyRequired(callback?: (eventInfo: EventInfo) => void): void
 
 注销密钥请求事件监听。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyRequired')](#offkeyrequired)。
 
@@ -777,7 +777,7 @@ on(type: 'keyExpired', callback: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyExpired](#onkeyexpired23)。
 
@@ -819,7 +819,7 @@ onKeyExpired(callback: (eventInfo: EventInfo) => void): void
 
 监听密钥过期事件。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyExpired')](#onkeyexpired)。
 
@@ -862,7 +862,7 @@ off(type: 'keyExpired', callback?: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyExpired](#offkeyexpired23)。
 
@@ -901,7 +901,7 @@ offKeyExpired(callback?: (eventInfo: EventInfo) => void): void
 
 注销密钥过期事件监听。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyExpired')](#offkeyexpired)。
 
@@ -941,7 +941,7 @@ on(type: 'vendorDefined', callback: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onVendorDefined](#onvendordefined23)。
 
@@ -983,7 +983,7 @@ onVendorDefined(callback: (eventInfo: EventInfo) => void): void
 
 监听DRM解决方案自定义事件。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('vendorDefined')](#onvendordefined)。
 
@@ -1025,7 +1025,7 @@ off(type: 'vendorDefined', callback?: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offVendorDefined](#offvendordefined23)。
 
@@ -1065,7 +1065,7 @@ offVendorDefined(callback?: (eventInfo: EventInfo) => void): void
 
 注销DRM解决方案自定义事件监听。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('vendorDefined')](#offvendordefined)。
 
@@ -1105,7 +1105,7 @@ on(type: 'expirationUpdate', callback: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onExpirationUpdate](#onexpirationupdate23)。
 
@@ -1148,7 +1148,7 @@ onExpirationUpdate(callback: (eventInfo: EventInfo) => void): void
 
 监听密钥过期更新事件。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[onExpirationUpdate](#onexpirationupdate)。
 
@@ -1190,7 +1190,7 @@ off(type: 'expirationUpdate', callback?: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offExpirationUpdate](#offexpirationupdate23)。
 
@@ -1230,7 +1230,7 @@ offExpirationUpdate(callback?: (eventInfo: EventInfo) => void): void
 
 注销过期更新事件监听。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('expirationUpdate')](#offexpirationupdate)。
 
@@ -1270,7 +1270,7 @@ on(type: 'keysChange', callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onKeysChange](#onkeyschange23)。
 
@@ -1284,7 +1284,7 @@ on(type: 'keysChange', callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean)
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，固定为'keysChange'。密钥变化时触发。 |
-| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) | 是   | 回调函数，监听密钥变化并返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                 |
+| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) => void  | 是   | 回调函数，监听密钥变化并返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                 |
 
 **错误码：**
 
@@ -1315,7 +1315,7 @@ onKeysChange(callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean) => void):
 
 监听密钥变化事件。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keysChange')](#onkeyschange)。
 
@@ -1327,7 +1327,7 @@ onKeysChange(callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean) => void):
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
-| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) | 是   | 回调函数，返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                 |
+| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) => void | 是   | 回调函数，返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                 |
 
 **错误码：**
 
@@ -1359,7 +1359,7 @@ off(type: 'keysChange', callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolea
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offKeysChange](#offkeyschange23)。
 
@@ -1373,7 +1373,7 @@ off(type: 'keysChange', callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolea
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，固定为'keysChange'。 |
-| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) | 否   | 回调函数，监听密钥变更并返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                |
+| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) => void | 否   | 回调函数，监听密钥变更并返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                |
 
 **错误码：**
 
@@ -1400,7 +1400,7 @@ offKeysChange(callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolean) => void
 
 注销密钥变化事件监听。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keysChange')](#offkeyschange)。
 
@@ -1412,7 +1412,7 @@ offKeysChange(callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolean) => void
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
-| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) | 否   | 回调函数，监听密钥变更并返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                |
+| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) => void | 否   | 回调函数，监听密钥变更并返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                |
 
 **错误码：**
 

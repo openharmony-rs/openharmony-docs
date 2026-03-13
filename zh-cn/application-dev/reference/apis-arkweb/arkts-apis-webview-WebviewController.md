@@ -16221,7 +16221,11 @@ getHitTest(): WebHitTestType
 >
 > 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **返回值：**
 
@@ -16276,7 +16280,11 @@ getHitTestValue(): HitTestValue
 >
 > 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **返回值：**
 
@@ -17933,7 +17941,66 @@ struct WebComponent {
   }
 }
 ```
-  
+
+## setSocketIdleTimeout<sup>21+</sup>
+
+ArkTS-Dyn: static setSocketIdleTimeout(timeout: number): void
+
+ArkTS-Sta: static setSocketIdleTimeout(timeout: int): void
+
+设置ArkWeb中已使用过的空闲socket的超时时间，即已使用过的socket可以处于空闲状态的最大时长。如果设置的值与已存在的空闲socket超时时间不同，则根据新的值对已存在的空闲socket进行清理。
+
+未使用该接口设置空闲socket的超时时间时，ArkWeb的默认值为300s。
+
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：**  21
+
+**ArkTS-Sta起始版本：**  23
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                                                     |
+| -------- | ------- | ---- | -------------------------------------------------------- |
+| timeout | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | ArkWeb中已经使用过的空闲socket的超时时间。<br>取值范围：[30,300]，单位：s。<br>小于30时生效值为30，大于300时生效值为300。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        webview.WebviewController.setSocketIdleTimeout(200);
+        AppStorage.setOrCreate("abilityWant", want);
+    }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+'use static'
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import window from '@ohos.window';
+import { BusinessError } from '@ohos.base';
+import hilog from '@ohos.hilog';
+import { webview } from '@kit.ArkWeb';
+import { AppStorage } from 'arkui.stateManagement.storage.appStorage';
+
+class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    webview.WebviewController.setSocketIdleTimeout(200);
+    AppStorage.setOrCreate("abilityWant", want);
+  }
+}
+```
+
 ## setErrorPageEnabled<sup>20+</sup>
 
 setErrorPageEnabled(enable: boolean): void
@@ -18250,9 +18317,7 @@ static setUserAgentClientHintsEnabled(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 24
-
-**模型约束：** ArkTS-Sta支持在Stage模型下使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -18262,7 +18327,6 @@ static setUserAgentClientHintsEnabled(enabled: boolean): void
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -18346,7 +18410,34 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
+## setUserAgentClientHintsEnabled<sup>24+</sup>
+
+static setUserAgentClientHintsEnabled(enabled: boolean): void
+
+设置是否开启UserAgent Client Hints功能。
+
+> **说明：**
+>
+> User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
+>
+> 不使用该方法时，默认不开启UserAgent Client Hints功能。
+
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名              | 类型    | 必填   |  说明 |
+| ------------------ | ------- | ---- | ------------- |
+| enabled | boolean | 是   | 是否开启UserAgent Client Hints功能。<br/>true表示开启，false表示不开启。 |
+
+**示例：**
+
 ```ts
 // xxx.ets
 'use static'
@@ -18439,11 +18530,33 @@ static getUserAgentClientHintsEnabled(): boolean
 
 查询UserAgent Client Hints功能当前是否开启。
 
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 24
+
+**返回值：**
+
+| 类型    | 说明                                     |
+| ------- | --------------------------------------- |
+| boolean | 返回UserAgent Client Hints功能开启状态。true表示已开启；false表示已关闭。 |
+
+**示例：**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
+
+## getUserAgentClientHintsEnabled<sup>24+</sup>
+
+static getUserAgentClientHintsEnabled(): boolean
+
+查询UserAgent Client Hints功能当前是否开启。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 24
 
