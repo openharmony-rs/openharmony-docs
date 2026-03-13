@@ -185,24 +185,27 @@
 ### 在index.ets文件中调用函数
 
    <!-- @[native_transient_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import testTransientTask from 'libentry.so';
-
+   
    @Entry
    @Component
    struct Index {
      @State message: string = '';
-
+     // ...
+   
      build() {
        Row() {
          Column() {
+           // ...
            Text(this.message)
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
            Button() {
              Text("RequestSuspendDelay").fontSize(20)
            }
+           .id('request_suspend_delay')
            .margin({ top: 10, bottom: 10 })
            .width(250)
            .height(40)
@@ -210,10 +213,11 @@
            .onClick(() => {
              this.RequestSuspendDelay();
            })
-
+   
            Button(){
              Text('GetRemainingDelayTime').fontSize(20)
            }
+           .id('get_remaining_delay_time')
            .margin({ top: 10, bottom: 10 })
            .width(250)
            .height(40)
@@ -221,10 +225,11 @@
            .onClick(() => {
              this.GetRemainingDelayTime();
            })
-
+   
            Button(){
              Text('CancelSuspendDelay').fontSize(20)
            }
+           .id('cancel_suspend_delay')
            .margin({ top: 10, bottom: 10 })
            .width(250)
            .height(40)
@@ -232,10 +237,11 @@
            .onClick(() => {
              this.CancelSuspendDelay();
            })
-
+   
            Button(){
              Text('GetTransientTaskInfo').fontSize(20)
            }
+           .id('get_transient_task_info')
            .margin({ top: 10, bottom: 10 })
            .width(250)
            .height(40)
@@ -248,22 +254,23 @@
        }
        .height('100%')
      }
-
+   
      RequestSuspendDelay() {
        let requestId = testTransientTask.RequestSuspendDelay();
+       // ...
        console.info('The return requestId is ' + requestId);
      }
-
+   
      GetRemainingDelayTime() {
        let time = testTransientTask.GetRemainingDelayTime();
        console.info('The time is ' + time);
      }
-
+   
      CancelSuspendDelay() {
        let ret = testTransientTask.CancelSuspendDelay();
        console.info('The ret is ' + ret);
      }
-
+   
      GetTransientTaskInfo() {
        let ret = testTransientTask.GetTransientTaskInfo();
        console.info('The ret is ' + JSON.stringify(ret));
