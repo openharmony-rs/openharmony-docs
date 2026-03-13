@@ -9267,3 +9267,25 @@ ArkTS-Dyn示例：
     }
   }
   ```
+
+## onRenderExited<sup>(deprecated)</sup>
+
+onRenderExited(callback: (event?: { detail: object }) => boolean)
+
+应用渲染进程异常退出时触发该回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[onRenderExited<sup>9+</sup>](#onRenderExited9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback | (event?: { detail: object }) => boolean | 是 | 渲染进程由无响应状态变回正常运行状态时触发的回调。 |
