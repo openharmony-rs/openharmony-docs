@@ -209,7 +209,7 @@ Enumerates HTTP protocol versions.
 
 | Enum| Description|
 | -- | -- |
-| OH_HTTP_NONE = 0 | Following cURL protocol version.|
+| OH_HTTP_NONE = 0 | Protocol version complies with cURL.|
 | OH_HTTP1_1 | HTTP 1.1 version.|
 | OH_HTTP2 | HTTP 2 version.|
 | OH_HTTP3 | HTTP 3 version.|
