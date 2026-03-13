@@ -198,7 +198,6 @@ import { BusinessError } from '@ohos.base';
 import { typeNode } from 'arkui.FrameNode';
 import { BuilderNode } from 'arkui.BuilderNode';
 import { UIContext } from '@ohos.arkui.UIContext';
-import { State } from '@ohos.arkui.stateManagement';
 import { FrameNode, NodeController } from '@ohos.arkui.node';
 
 import {
@@ -261,9 +260,7 @@ class TextNodeController extends NodeController {
 
 @Entry
 @Component
-export struct PageSix {
-  // @State count: int = 0;
-
+struct Index {
   private message: string = 'createPiP';
   private pipController: PiPWindow.PiPController | undefined = undefined;
   private mXComponentController: XComponentController =
@@ -406,7 +403,69 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@ohos.base';
+import { typeNode } from 'arkui.FrameNode';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { XComponentController, XComponentOptions } from '@ohos.arkui.component';
 
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  Context,
+  Builder,
+  wrapBuilder,
+  XComponentType,
+  XComponentOptions,
+  XComponentController,
+  Color,
+  NavDestination,
+} from '@ohos.arkui.component'
+
+@Entry
+@Component
+struct Index {
+  private message: string = 'createPiP'
+  private pipController: PiPWindow.PiPController | undefined = undefined;
+  private xComponentController: XComponentController = new XComponentController();
+  private context: UIContext = this.getUIContext(); // 可传入UIContext或在布局中通过this.getUIContext()为context赋有效值
+  private contentWidth: int = 800; // 假设当前内容宽度800px。
+  private contentHeight: int = 600; // 假设当前内容高度600px。
+  private config: PiPWindow.PiPConfiguration = {
+    context: this.getUIContext().getHostContext() as Context,
+    componentController: this.xComponentController,
+    templateType: PiPWindow.PiPTemplateType.VIDEO_PLAY,
+    contentWidth: this.contentWidth,
+    contentHeight: this.contentHeight,
+  };
+  private options: XComponentOptions = {
+    type: XComponentType.SURFACE,
+    controller: this.xComponentController
+  }
+  private xComponent: typeNode.XComponent = typeNode.createXComponentNodeWithOptions(this.context, this.options);
+
+  createPiP() {
+    let promise: Promise<PiPWindow.PiPController> = PiPWindow.create(this.config, this.xComponent);
+    promise.then((data: PiPWindow.PiPController) => {
+      this.pipController = data;
+      console.info(`Succeeded in creating pip controller. Data:${data}`);
+    }).catch((err: BusinessError): void => {
+      console.error(`Failed to create pip controller. Cause:${err.code}, message:${err.message}`);
+    });
+  }
+
+  // 仅用于功能测试，实际开发过程中开发者按功能需求设计组件
+  build() {
+    NavDestination() {
+      Button(this.message)
+        .onClick(() => {
+          this.createPiP();
+        })
+    }
+  }
+}
 ```
 
 ## PiPConfiguration
