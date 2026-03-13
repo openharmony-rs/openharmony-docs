@@ -99,3 +99,6 @@
 3. Q：JS执行时无法找到 `OH_JSVM_DefineClass` 定义的类
 
    A：检查是否将定义的类绑定到上下文中，见[上下文绑定对象](jsvm-guidelines.md#上下文绑定对象)
+
+4. Q: 调用JSVM-API时出现`JSVM Fatal Error Massage:(openHandleScopes)==(openHandleScopesBefore)`错误
+   A: 调用JSVM-API时未遵循其使用规范，导致HandleScopes层数发生变化，调用结束后无法通过JSVM系统层检查，则返回该报错。需要检查是否规范调用JSVM API，参考[JSVM-API使用规范]()
