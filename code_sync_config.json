@@ -4760,7 +4760,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest2.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":51,
 						"name":"EventDecoratorTest2",
 						"start_line":15
 					}
@@ -16337,7 +16337,7 @@
 					{
 						"end_line":116,
 						"name":"parent_component",
-						"start_line":19
+						"start_line":16
 					}
 				]
 			},
