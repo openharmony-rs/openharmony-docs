@@ -1,4 +1,4 @@
-# @ohos.taskpool（启动任务池）
+# @ohos.taskpool (启动任务池)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @lijiamin2025-->
