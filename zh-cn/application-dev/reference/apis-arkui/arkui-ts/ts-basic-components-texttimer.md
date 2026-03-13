@@ -24,6 +24,10 @@ TextTimer(options?: TextTimerOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -39,6 +43,10 @@ TextTimer(options?: TextTimerOptions)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型     | 必填  | 说明                   |
 | ----------- | -------- | -------- | -------- |
@@ -68,7 +76,7 @@ ArkTS-Sta: format(value: string | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -93,7 +101,7 @@ ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -117,7 +125,7 @@ ArkTS-Sta: fontSize(value: Length | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -141,7 +149,7 @@ ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -165,7 +173,7 @@ ArkTS-Sta: fontWeight(value: int | FontWeight | ResourceStr | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -189,7 +197,7 @@ ArkTS-Sta: fontFamily(value: ResourceStr | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -211,7 +219,7 @@ ArkTS-Sta: textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt; | undefi
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -329,9 +337,9 @@ ContentModifier接口使用的TextTimer配置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型    |    必填      |  说明              |
 | ------ | ------ | ------ |-------------------------------- |
@@ -351,7 +359,7 @@ type TimerCallback = (utc: long, elapsedTime: long) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

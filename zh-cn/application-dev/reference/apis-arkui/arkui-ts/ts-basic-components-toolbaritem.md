@@ -23,6 +23,10 @@ ToolBarItem(options?: ToolBarItemOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                              | 必填 | 说明                                                         |
@@ -39,6 +43,10 @@ ToolBarItem(options?: ToolBarItemOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型                                                  | 必填 | 说明                                                         |
 | --------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | placement | [ToolBarItemPlacement](#toolbaritemplacement枚举说明) | 否   | 设置工具栏项的放置位置。<br/>默认值: ToolBarItemPlacement.TOP_BAR_LEADING<br/>设置为ToolBarItemPlacement.TOP_BAR_LEADING时，将工具栏项放置在对应顶部栏的开头位置。<br/>设置为ToolBarItemPlacement.TOP_BAR_TRAILING时，将工具栏项放置在对应顶部栏的末尾位置。<br/> |
@@ -48,6 +56,10 @@ ToolBarItem(options?: ToolBarItemOptions)
 定义工具栏项在标题栏对应分栏的放置位置选项。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 值   | 说明                                       |
 | ---------------- | ---- | ------------------------------------------ |

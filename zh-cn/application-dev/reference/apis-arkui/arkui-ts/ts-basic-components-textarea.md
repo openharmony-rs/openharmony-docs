@@ -69,7 +69,7 @@ ArkTS-Sta: placeholderColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -91,7 +91,7 @@ ArkTS-Sta: placeholderFont(value: Font | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -121,7 +121,7 @@ ArkTS-Sta: textAlign(value: TextAlign | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -163,7 +163,7 @@ ArkTS-Sta: caretColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -188,7 +188,7 @@ ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -210,7 +210,7 @@ ArkTS-Sta: fontSize(value: Length | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -232,7 +232,7 @@ ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -254,7 +254,7 @@ ArkTS-Sta: fontWeight(value: int | FontWeight | string | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -276,7 +276,7 @@ ArkTS-Sta: fontFamily(value: ResourceStr | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -298,7 +298,7 @@ ArkTS-Sta: inputFilter(value: ResourceStr | undefined, error?: ((value: string) 
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -323,7 +323,7 @@ ArkTS-Sta: copyOption(value: CopyOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -345,7 +345,7 @@ ArkTS-Sta: maxLength(value: int | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -371,7 +371,7 @@ ArkTS-Sta: showCounter(value: boolean | undefined, options?: InputCounterOptions
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -394,7 +394,7 @@ ArkTS-Sta: style(value: TextContentStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -418,7 +418,7 @@ ArkTS-Sta: enableKeyboardOnFocus(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -440,7 +440,7 @@ ArkTS-Sta: selectionMenuHidden(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -462,7 +462,7 @@ ArkTS-Sta: barState(value: BarState | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -621,7 +621,7 @@ ArkTS-Sta: type(value: TextAreaType | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -643,7 +643,7 @@ ArkTS-Sta: enterKeyType(value: EnterKeyType | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -665,7 +665,7 @@ ArkTS-Sta: enableAutoFill(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -711,7 +711,7 @@ ArkTS-Sta: contentType(contentType: ContentType | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -733,7 +733,7 @@ ArkTS-Sta: lineHeight(value: double | string | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -759,7 +759,7 @@ ArkTS-Sta: decoration(value: TextDecorationOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -785,7 +785,7 @@ ArkTS-Sta: letterSpacing(value: double | string | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -815,7 +815,7 @@ ArkTS-Sta: fontFeature(value: string | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -840,7 +840,7 @@ ArkTS-Sta: wordBreak(value: WordBreak | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -866,7 +866,7 @@ ArkTS-Sta: selectedBackgroundColor(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -888,7 +888,7 @@ ArkTS-Sta: caretStyle(value: CaretStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -910,7 +910,7 @@ ArkTS-Sta: textIndent(value: Dimension | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -940,7 +940,7 @@ ArkTS-Sta: textOverflow(value: TextOverflow | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -969,7 +969,7 @@ ArkTS-Sta: minFontSize(value: double | string | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -995,7 +995,7 @@ ArkTS-Sta: maxFontSize(value: double | string | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1024,7 +1024,7 @@ ArkTS-Sta: heightAdaptivePolicy(value: TextHeightAdaptivePolicy | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1046,7 +1046,7 @@ ArkTS-Sta: lineSpacing(value: LengthMetrics | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1091,7 +1091,7 @@ ArkTS-Sta: lineBreakStrategy(strategy: LineBreakStrategy | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1113,7 +1113,7 @@ ArkTS-Sta: editMenuOptions(editMenu: EditMenuOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1137,7 +1137,7 @@ ArkTS-Sta: enablePreviewText(enable: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1163,7 +1163,7 @@ ArkTS-Sta: enableHapticFeedback(isEnabled: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1196,7 +1196,7 @@ ArkTS-Sta: autoCapitalizationMode(mode: AutoCapitalizationMode | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1218,7 +1218,7 @@ ArkTS-Sta: keyboardAppearance(appearance: KeyboardAppearance | undefined)
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1284,7 +1284,7 @@ ArkTS-Sta: stopBackPress(isStopped: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1306,7 +1306,7 @@ ArkTS-Sta: halfLeading(halfLeading: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1328,7 +1328,7 @@ ArkTS-Sta: minFontScale(scale: double | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1350,7 +1350,7 @@ ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1374,7 +1374,7 @@ EllipsisMode.START和EllipsisMode.CENTER仅在maxLines设置为1生效。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1530,7 +1530,7 @@ ArkTS-Sta: onChange(callback:&nbsp;EditableTextOnChangeCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1552,7 +1552,7 @@ ArkTS-Sta: onEditChange(callback:&nbsp;((isEditing:&nbsp;boolean)&nbsp;=&gt;&nbs
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1574,7 +1574,7 @@ ArkTS-Sta: onCopy(callback:&nbsp;((value:&nbsp;string)&nbsp;=>&gt;&nbsp;void) | 
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1596,7 +1596,7 @@ ArkTS-Sta: onCut(callback:&nbsp;((value:&nbsp;string)&nbsp;=>&gt;&nbsp;void) | u
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1619,7 +1619,7 @@ ArkTS-Sta: onPaste(callback:&nbsp;(value:&nbsp;string, event:&nbsp;PasteEvent)&n
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1642,7 +1642,7 @@ ArkTS-Sta: onTextSelectionChange(callback: ((selectionStart: int, selectionEnd: 
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1665,7 +1665,7 @@ ArkTS-Sta: onContentScroll(callback: (totalOffsetX: double, totalOffsetY: double
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1708,7 +1708,7 @@ ArkTS-Sta: onSubmit(callback: TextAreaSubmitCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1730,7 +1730,7 @@ ArkTS-Sta: onWillInsert(callback: Callback<InsertValue, boolean> | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1752,7 +1752,7 @@ ArkTS-Sta: onDidInsert(callback: Callback\<InsertValue> | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1774,7 +1774,7 @@ ArkTS-Sta: onWillDelete(callback: Callback\<DeleteValue, boolean> | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1796,7 +1796,7 @@ ArkTS-Sta: onDidDelete(callback: Callback\<DeleteValue> | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1824,7 +1824,7 @@ onWillChange的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
