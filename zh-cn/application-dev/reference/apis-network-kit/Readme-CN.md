@@ -86,7 +86,7 @@
   - [@system.fetch (数据请求)](js-apis-system-fetch.md)
 - 错误码<!--network-arkts-errcode-->
   - [HTTP错误码](errorcode-net-http.md)
-  - [SOCKET错误码](errorcode-net-socket.md)
+  - [Socket错误码](errorcode-net-socket.md)
   - [webSocket错误码](errorcode-net-webSocket.md)
   - [网络连接管理错误码](errorcode-net-connection.md)
   - [以太网连接错误码](errorcode-net-ethernet.md)
