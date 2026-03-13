@@ -131,7 +131,7 @@
 2. 注册函数
 
    <!-- @[registration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
