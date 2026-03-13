@@ -131,7 +131,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 
 3. Obtain the native **XComponent** at the C++ layer. You are advised to save the **XComponent** in a singleton. This step must be performed during napi_init.
 
-    Create a **PluginManager** singleton to manage the native **XComponent**.
+    Create a **PluginManger** singleton to manage the native **XComponent**.
    <!-- @[display_soloist_create_plugin_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/plugin/plugin_manager.h) -->
    
    ``` C
