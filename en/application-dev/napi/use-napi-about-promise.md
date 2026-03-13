@@ -17,7 +17,7 @@ A promise is an object used to handle asynchronous operations in ArkTS. It has t
 - **Synchronous**: Code is executed line by line in sequence. Each line of code is executed after the previous line of code is executed. If an operation takes a long time, the entire application will be blocked.
 - **Asynchronous**: Tasks can be executed concurrently without waiting for the end of the previous task. Common asynchronous operations apply for timers, event listening, and network requests. Instead of blocking subsequent tasks, the asynchronous task uses a callback or promise to process its result.
 - **Promise**: an ArkTS object used to handle asynchronous operations. It is customized by using **then()**, **catch()**, and **finally()**.
-- **deferred**: Indicates an object used to control the promise state. It can be used to mark the promise state as **fulfilled** or **rejected** at a future time.
+- **deferred**: an object used to control the promise state. It can be used to mark the promise state as **fulfilled** or **rejected** at a future time.
 - **resolve**: a function used to change the promise state from **pending** to **fulfilled**. The parameters passed to **resolve()** can be obtained from **then()** of the **Promise** object.
 - **reject**: a function used to change the promise state from **pending** to **rejected**. The parameters passed to **reject()** can be obtained from **catch()** of the **Promise** object.
 

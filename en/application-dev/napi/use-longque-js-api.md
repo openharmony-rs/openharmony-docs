@@ -33,19 +33,19 @@ Note: Longque JS APIs are in the experimental phase. Before using the APIs, read
 | createDelegate | Delegate creation.| Creates a delegate object for **underlyingObject**. The read and write operations on the delegate object are mapped to **underlyingObject**. You can specify the initial delegate object through **initObject** and the property filter through **propertyFilterFlags**. By default, all enumerable string key properties in **underlyingObject** and its prototype chain are mapped.|
 
 ### Parameters
-(1) **underlyingObject**: mandatory. Underlying object to delegate. Parameter requirements:
+(1) **underlyingObject**: This parameter is mandatory. Underlying object to delegate. Parameter requirements:
 - **underlyingObject** must be an object. Otherwise, the **TypeError** exception is thrown.
 - If **underlyingObject** is a delegate object, a **TypeError** exception is thrown.
 - If the **SKIP_PROTOTYPE_CHAIN** filter is not specified and a delegate object exists in the **underlyingObject** prototype chain, a **TypeError** exception is thrown.
 
-(2) **initObject**: optional. Initial delegate object. If **undefined** is passed, the initial object is not specified and is automatically created by the API. Parameter requirements:
+(2) **initObject**: This parameter is optional. Initial delegate object. If **undefined** is passed, the initial object is not specified and is automatically created by the API. Parameter requirements:
 - **initObject** must be an object. Otherwise, a **TypeError** exception is thrown.
 - If **initObject** is a delegate object, a **TypeError** exception is thrown.
 - The delegate object cannot be used as **initObject**. Otherwise, a **TypeError** exception is thrown.
 - If **initObject** is not extensible, a **TypeError** exception is thrown.
 - If some properties of **initObject** cannot be defined, a **TypeError** exception is thrown. In this case, only some properties of **initObject** are successfully defined.
 
-(3) **propertyFilterFlags**: optional. Property filter. If **undefined** is passed, no filter is specified. Parameter requirements:
+(3) **propertyFilterFlags**: This parameter is optional. Property filter. If **undefined** is passed, no filter is specified. Parameter requirements:
 - The following lists the supported property filters (which may be extended in the future).
 ```sh
 __Longque__.SKIP_PROTOTYPE_CHAIN: Delegates only the underlyingObject properties and skips the prototype chain.
