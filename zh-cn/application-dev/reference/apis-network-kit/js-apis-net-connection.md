@@ -3711,7 +3711,7 @@ TCP端口状态信息。
 | tcpRemotePort | number | 否 | 是 |TCP网络远程端口，取值范围\[0, 65535]，默认值为0。 |
 | tcpUid        | number | 否 | 是 |监听该TCP端口的进程UID，默认值为0。 |
 | tcpPid        | number | 否 | 是 |监听该TCP端口的用户会UID，默认值为0。 |
-| tcpState      | [TcpState](#tcpstate) | 否 | 是 |TCP网络状态，默认值为0。  |
+| tcpState      | [TcpState](#tcpstate24) | 否 | 是 |TCP网络状态，默认值为0。  |
 
 
 ## UdpNetPortStatesInfo<sup>24+</sup>
