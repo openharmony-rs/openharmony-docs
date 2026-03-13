@@ -6895,11 +6895,11 @@ onOcclusionStateChanged(callback: Callback<window.OcclusionState>): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[onOcclusionStateChanged](#onocclusionstatechanged23)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[onOcclusionStateChanged](#onocclusionstatechanged22)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6939,7 +6939,7 @@ off(type: 'occlusionStateChanged', callback?: Callback&lt;OcclusionState&gt;): v
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onOcclusionStateChanged](#onocclusionstatechanged23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offOcclusionStateChanged](#offocclusionstatechanged23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6988,7 +6988,7 @@ offOcclusionStateChanged(callback?: Callback&lt;OcclusionState&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("occlusionStateChanged")](#onocclusionstatechanged22)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("occlusionStateChanged")](#offocclusionstatechanged22)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
