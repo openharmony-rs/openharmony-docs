@@ -146,7 +146,7 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -181,7 +181,7 @@ off(event: 'progress', callback?: Callback\<SyncProgress>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -218,7 +218,7 @@ start(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -264,7 +264,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -308,7 +308,7 @@ stop(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -347,7 +347,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -386,7 +386,7 @@ getLastSyncTime(): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -425,7 +425,7 @@ getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -494,7 +494,7 @@ on(event: 'progress', callback: Callback\<DownloadProgress>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -536,7 +536,7 @@ on(event: 'batchDownload', callback: Callback&lt;MultiDownloadProgress&gt;): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -583,7 +583,7 @@ off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -627,7 +627,7 @@ off(event: 'batchDownload', callback?: Callback&lt;MultiDownloadProgress&gt;): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -675,7 +675,7 @@ start(uri: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -728,7 +728,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -782,7 +782,7 @@ startBatch(uris: Array&lt;string&gt;, fileType?: DownloadFileType): Promise&lt;n
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -840,7 +840,7 @@ stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -885,7 +885,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -938,7 +938,7 @@ stopBatch(downloadId: number, needClean?: boolean): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -987,7 +987,7 @@ cleanFileCache(uri: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1092,7 +1092,7 @@ getFailedFiles(): Array&lt;FailedFileInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1146,7 +1146,7 @@ getSuccessfulFiles(): Array&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1200,7 +1200,7 @@ registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1219,9 +1219,9 @@ let path = "/data/storage/el2/cloud/1.txt";
 let uri = fileUri.getUriFromPath(path);
 let onCallback1 = (changeData: cloudSync.ChangeData) => {
   if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-    //file had added, do something
+    // file had added, do something
   } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-    //file had removed, do something
+    // file had removed, do something
   }
 }
 cloudSync.registerChange(uri, false, onCallback1);
@@ -1245,7 +1245,7 @@ unregisterChange(uri: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1264,9 +1264,9 @@ let path = "/data/storage/el2/cloud/1.txt";
 let uri = fileUri.getUriFromPath(path);
 let onCallback1 = (changeData: cloudSync.ChangeData) => {
   if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-    //file had added, do something
+    // file had added, do something
   } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-    //file had removed, do something
+    // file had removed, do something
   }
 }
 cloudSync.registerChange(uri, false, onCallback1);
@@ -1359,7 +1359,7 @@ constructor()
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1398,7 +1398,7 @@ getHistoryVersionList(uri: string, versionNumLimit: number): Promise&lt;Array&lt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1456,7 +1456,7 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;[Ve
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1521,7 +1521,7 @@ replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1596,7 +1596,7 @@ isFileConflict(uri: string): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1648,7 +1648,7 @@ clearFileConflict(uri: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1707,7 +1707,7 @@ getCoreFileSyncState(uri: string): FileState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
