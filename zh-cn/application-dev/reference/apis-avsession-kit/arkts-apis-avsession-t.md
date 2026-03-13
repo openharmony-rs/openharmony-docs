@@ -183,7 +183,7 @@ type EventProcess = (event: string, args: Record\<string, Object>) => void
 
 定义处理事件和参数的通用函数类型。
 
-**ArkTS模式：** 该类型仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -202,7 +202,7 @@ type ConnectionEvent = (state: ConnectionState, device: OutputDeviceInfo) => voi
 
 系统提供的连接事件，用于指示设备连接状态和信息。
 
-**ArkTS模式：** 该类型仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -221,7 +221,7 @@ type VideoSizeEvent = (width: int, height: int) => void
 
 视频尺寸变化事件的回调函数类型。
 
-**ArkTS模式：** 该类型仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 

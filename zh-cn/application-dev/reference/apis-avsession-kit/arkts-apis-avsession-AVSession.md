@@ -2564,13 +2564,13 @@ enableDesktopLyric(enable: boolean): Promise\<void>
 
 当前会话是否启用桌面歌词功能。使用Promise异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -2682,6 +2682,8 @@ struct Index {
 
 setDesktopLyricVisible(visible: boolean): Promise\<void>
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 设置当前会话桌面歌词的显示状态。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -2689,8 +2691,6 @@ setDesktopLyricVisible(visible: boolean): Promise\<void>
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -2805,13 +2805,13 @@ isDesktopLyricVisible(): Promise\<boolean>
 
 查询当前会话桌面歌词的显示状态。使用Promise异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -2918,13 +2918,13 @@ onDesktopLyricVisibilityChanged(callback: Callback\<boolean>): void
 
 显示桌面歌词状态变更的监听事件。使用callback异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -3033,13 +3033,13 @@ offDesktopLyricVisibilityChanged(callback?: Callback\<boolean>): void
 
 取消显示桌面歌词状态变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -3144,13 +3144,13 @@ setDesktopLyricState(state: DesktopLyricState): Promise\<void>
 
 设置当前会话桌面歌词状态。使用Promise异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -3271,13 +3271,13 @@ getDesktopLyricState(): Promise\<DesktopLyricState>
 
 获取当前会话桌面歌词状态。使用Promise异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -3390,13 +3390,13 @@ onDesktopLyricStateChanged(callback: Callback\<DesktopLyricState>): void
 
 桌面歌词状态变更的监听事件。使用callback异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -3507,13 +3507,13 @@ offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
 
 取消桌面歌词状态变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
