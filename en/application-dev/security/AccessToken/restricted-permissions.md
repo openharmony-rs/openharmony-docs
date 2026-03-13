@@ -1020,19 +1020,3 @@ Allows an application to customize the BLE advertiser name.
 **Supported devices**：General
 
 **Since**：23
-
-## ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION
-
-Allows an application to register ObjectEditorExtensionAbility components.
-
-With this permission, the application can provide embedded content editing services for use by other applications.
-
-<!--RP67--><!--RP67End-->
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
-
-**Since**: 24
