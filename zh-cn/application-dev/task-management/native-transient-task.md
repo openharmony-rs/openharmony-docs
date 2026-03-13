@@ -172,10 +172,10 @@
 ### 在index.d.ts文件中声明函数
 
    <!-- @[declaration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
-   ```ts
+   
+   ``` TypeScript
    import backgroundTaskManager from '@kit.BackgroundTasksKit';
-
+   
    export const RequestSuspendDelay: () => number;
    export const GetRemainingDelayTime: () => number;
    export const CancelSuspendDelay: () => number;
