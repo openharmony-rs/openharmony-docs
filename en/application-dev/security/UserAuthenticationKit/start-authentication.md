@@ -82,7 +82,7 @@ The user authentication widget supports the following types of authentication:
 
 **Example 1**
 
- Initiate facial authentication and lock screen password authentication at ATL3 or higher.
+ Initiate facial + fingerprint + lock screen password authentication at ATL3 or higher.
 
 <!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
@@ -134,7 +134,7 @@ The user authentication widget supports the following types of authentication:
 
 **Example 2**
 
-Initiate user authentication with face recognition (trusted authentication level ≥ ATL3), along with authentication type-related validation and reuse of the maximum valid duration for device unlock, and retrieve the authentication result.
+Initiate facial authentication at ATL3 or higher, and enable the device unlock result to be reused for the same type of authentication within the specified time.
 
 <!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
@@ -191,7 +191,7 @@ Initiate user authentication with face recognition (trusted authentication level
 
 **Example 3**
 
-Initiate user authentication with face recognition (trusted authentication level ≥ ATL3), validation associated with any application authentication type, and reuse of the maximum valid duration for any application authentication, then retrieve the authentication result.
+Initiate facial authentication at ATL3 or higher, and enable the device unlock result to be reused for any type of authentication within the maximum authentication validity of any application.
 
 <!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 

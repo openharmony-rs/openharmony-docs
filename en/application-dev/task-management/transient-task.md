@@ -18,7 +18,7 @@ An application is suspended after it runs in the background for a short period o
 
 - **Quantity limit**: An application can request a maximum of three transient tasks during a time segment. As shown in the figure below, the application requests two transient tasks in the time segments ①, ②, and ③, and one transient task in the time segment ④.
 
-- **Quota mechanism**: An application has a certain quota for transient tasks (adjusted based on the system status and user habits). The default quota for a single day (within 24 hours) is 10 minutes, and the maximum quota for each request is 3 minutes. In case of [low battery](../reference/apis-basic-services-kit/js-apis-battery-info.md), the default quota for each request is 1 minute. After the quota is used up, the application cannot request transient tasks anymore. The system also provides the [backgroundTaskManager.getRemainingDelayTime](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagergetremainingdelaytime-1) API for an application to query the remaining duration of a transient task so as to determine whether to continue running other services.
+- **Quota mechanism**: An application has a certain quota for transient tasks (adjusted based on the system status and user habits). The default quota for a single day (within 24 hours) is 10 minutes, and the maximum quota for each request is 3 minutes. In case of the battery with [BatteryCapacityLevel](../reference/apis-basic-services-kit/js-apis-battery-info.md#batterycapacitylevel9) set to **LEVEL_LOW**, the default quota for each request is 1 minute. After the quota is used up, the application cannot request transient tasks anymore. The system also provides the [backgroundTaskManager.getRemainingDelayTime](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagergetremainingdelaytime-1) API for an application to query the remaining duration of a transient task so as to determine whether to continue running other services.
 
 - **Quota calculation**: Transient tasks are timed only when the application is running in the background. If the application has multiple transient tasks during the same time segment, no repeated timing is performed. As in the figure below, the application has two transient tasks, A and B. Task A is requested when the application is running in the foreground, and the timing starts when the application switches to the background (marked as ①). When the application switches to the foreground, the timing stops (marked as ②). When the application switches to the background again, the timing starts again (marked as ③). When task A is finished, task B still exists, and therefore the timing continues (marked as ④). In this process, the total time consumed by the transient tasks is ①+③+④. 
   
@@ -55,7 +55,7 @@ The table below lists the main APIs used for transient task development. For det
 
 2. Request a transient task and implement the callback. The callback is triggered when the transient task is about to end and is independent of the service of the application. After the request for the transient task is successful, the application normally executes its own service logic.
    
-   <!-- @[request_suspend_delay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
+   <!-- @[request_suspend_delay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
 
    ``` TypeScript
    let id: number;         // ID of the transient task.
@@ -85,7 +85,7 @@ The table below lists the main APIs used for transient task development. For det
 
 3. Obtain the remaining time of the transient task. Based on the remaining time, the application determines whether to continue to run other services. For example, the application has two small tasks. After the first task is executed, it queries the remaining time of the current transient task to determine whether to execute the second task.
 
-   <!-- @[get_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
+   <!-- @[get_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
 
    ``` TypeScript
    async function getRemainingDelayTime() {
@@ -99,7 +99,7 @@ The table below lists the main APIs used for transient task development. For det
 
 4. Cancels a transient task.
    
-   <!-- @[cancel_suspend_delay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
+   <!-- @[cancel_suspend_delay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
 
    ``` TypeScript
    function cancelSuspendDelay() {
