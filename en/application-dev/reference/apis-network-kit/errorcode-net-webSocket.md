@@ -15,11 +15,11 @@
 
 **Error Message**
 
-Websocket connect failed.
+WebSocket connect failed.
 
 **Description**
 
-This error code is reported if the WebSocket connection fails.
+WebSocket connection failed.
 
 **Possible Causes**
 
@@ -39,7 +39,7 @@ Websocket url error.
 
 **Description**
 
-This error code is reported if the WebSocket URL is incorrect.
+The WebSocket URL is incorrect.
 
 **Possible Causes**
 
@@ -59,7 +59,7 @@ Websocket certificate file does not exist.
 
 **Description**
 
-The WebSocket certificate does not exist.
+The WebSocket certificate is not found.
 
 **Possible Causes**
 
@@ -70,7 +70,6 @@ The certificate path is incorrect or no certificate is configured.
 1. Check whether the CA certificate path is valid.
 
 2. If the **WebSocketRequestOptions.clientCert** is specified, check whether the certificate path and private key path are valid.
-
 
 ## 2302003 WebSocket Connection Already Exists
 
@@ -88,7 +87,8 @@ The WebSocket connection has been established.
 
 **Solution**
 
-The WebSocket connection has been established. You do not need to call the **WebSocket.connect** API again. No further action is required.
+The WebSocket connection has been established. You do not need to call **WebSocket.connect** again. No other processing is required.
+
 
 ## 2302004 Listening Failed on the Specified NIC
 
@@ -102,7 +102,7 @@ This error code is reported if the WebSocketServer failed to perform listening o
 
 **Possible Causes**
 
-The IP address in the WebSocketServer server configuration file is invalid.
+The IP address in the WebSocketServer configuration file is invalid.
 
 **Solution**
 
@@ -120,7 +120,7 @@ This error code is reported if the WebSocketServer failed to perform listening o
 
 **Possible Causes**
 
-The port number in the WebSocketServer server configuration file is invalid.
+The port number in the WebSocketServer configuration file is invalid.
 
 **Solution**
 
