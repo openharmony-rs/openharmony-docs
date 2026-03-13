@@ -8230,7 +8230,7 @@ ArkTS-Sta: sendMessageRequest(code: int, data: MessageSequence, reply: MessageSe
   | data     | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                 |
   | reply    | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                   |
   | options  | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                   |
-  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | 是   | 回调函数。使用callback异步回调。当消息发送成功时，可从RequestResult中读取服务端返回的数据。 |
+  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | 是   | 回调函数。当消息发送成功时，可从RequestResult中读取服务端返回的数据。 |
 
 **错误码：**
 
@@ -8264,7 +8264,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 | data     | [MessageParcel](#messageparceldeprecated)                    | 是   | 保存待发送数据的MessageParcel对象。                    |
 | reply    | [MessageParcel](#messageparceldeprecated)                    | 是   | 接收应答数据的MessageParcel对象。                            |
 | options  | [MessageOption](#messageoption)                              | 是   | 本次请求的同异步模式，默认同步调用。                         |
-| callback | AsyncCallback&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | 是   | 接收发送结果的回调。使用callback异步回调。 |
+| callback | AsyncCallback&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | 是   | 接收发送结果的回调。                                         |
 
 ### registerDeathRecipient<sup>9+</sup>
 
@@ -8820,7 +8820,7 @@ ArkTS-Sta: sendMessageRequest(code: int, data: MessageSequence, reply: MessageSe
   | data     | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                            |
   | reply    | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                                    |
   | options  | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
-  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | 是   | 回调函数。使用callback异步回调。当消息发送成功时，可从RequestResult中读取服务端返回的数据。 |
+  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | 是   | 回调函数。当消息发送成功时，可从RequestResult中读取服务端返回的数据。 |
 
 **错误码：**
 
@@ -8854,7 +8854,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 | data     | [MessageParcel](#messageparceldeprecated)                    | 是   | 保存待发送数据的MessageParcel对象。                    |
 | reply    | [MessageParcel](#messageparceldeprecated)                    | 是   | 接收应答数据的MessageParcel对象。                            |
 | options  | [MessageOption](#messageoption)                              | 是   | 本次请求的同异步模式，默认同步调用。                         |
-| callback | AsyncCallback&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | 是   | 接收发送结果的回调。使用callback异步回调。 |
+| callback | AsyncCallback&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | 是   | 接收发送结果的回调。                                         |
 
 ### getLocalInterface<sup>9+</sup>
 
@@ -10968,7 +10968,7 @@ ArkTS-Sta: sendMessageRequest(code: int, data: MessageSequence, reply: MessageSe
 | data          | [MessageSequence](#messagesequence9)                  | 是   | 保存待发送数据的MessageSequence对象。                  |
 | reply         | [MessageSequence](#messagesequence9)                  | 是   | 接收应答数据的MessageSequence对象。                          |
 | options       | [MessageOption](#messageoption)                       | 是   | 本次请求的同异步模式，默认同步调用。                         |
-| callback      | AsyncCallback&lt;[RequestResult](#requestresult9)&gt; | 是   | 回调函数。使用callback异步回调。当消息发送成功时，可从RequestResult中读取服务端返回的数据。 |
+| callback      | AsyncCallback&lt;[RequestResult](#requestresult9)&gt; | 是   | 回调函数。当消息发送成功时，可从RequestResult中读取服务端返回的数据。 |
 
 **错误码：**
 
@@ -11002,7 +11002,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 | data          | [MessageParcel](#messageparceldeprecated)                    | 是   | 保存待发送数据的MessageParcel对象。                    |
 | reply         | [MessageParcel](#messageparceldeprecated)                    | 是   | 接收应答数据的MessageParcel对象。                            |
 | options       | [MessageOption](#messageoption)                              | 是   | 本次请求的同异步模式，默认同步调用。                         |
-| callback      | AsyncCallback&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | 是   | 接收发送结果的回调。使用callback异步回调。 |
+| callback      | AsyncCallback&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | 是   | 接收发送结果的回调。                                         |
 
 ### onRemoteMessageRequest<sup>23+</sup>
 
