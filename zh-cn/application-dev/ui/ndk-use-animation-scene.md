@@ -137,9 +137,9 @@
 
 ## 组件出现/消失转场
 
-该示例主要演示了如何通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md)中的NODE_ROTATE_TRANSITION，NODE_SCALE_TRANSITION，NODE_TRANSLATE_TRANSITION属性配置转场参数，并通过NODE_TRANSFORM_CENTER属性设置NODE_SCALE_TRANSITION和NODE_ROTATE_TRANSITION动效的中心点坐标，实现组件的插入和删除时显示过渡动效。
+该示例主要演示了如何通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md)中的NODE_ROTATE_TRANSITION，NODE_SCALE_TRANSITION，NODE_TRANSLATE_TRANSITION属性配置转场参数，并通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md)中的NODE_TRANSFORM_CENTER属性设置NODE_SCALE_TRANSITION和NODE_ROTATE_TRANSITION动效的中心点坐标，实现组件的插入和删除时显示过渡动效。
 
-1. 创建可交互界面，界面中包含一个Button组件，点击可以控制转场节点的添加和移除。其中[ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontent8h.md)类型节点的获取与使用可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
+1. 创建可交互界面，界面中包含一个Button组件，点击可以控制转场节点的添加和移除。其中[ArkUI_NodeContentHandle](../reference/apis-arkui/capi-native-node-h.md)类型节点的获取与使用可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
 
    <!-- @[main_view_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
    
@@ -284,7 +284,7 @@
 
 该示例主要演示如何通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md)中的NODE_GEOMETRY_TRANSITION属性来实现一镜到底转场，NDK接口开发的UI界面挂载到ArkTS主页面的完整流程可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
 
-1. 先创建一个设置了NODE_GEOMETRY_TRANSITION属性的image节点，同时设置该节点的宽度、高度和位置，用于区别于另一个image节点，然后将当前image节点挂载到一个父节点，当前示例中父节点为stack。
+1. 创建一个设置了[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md)中的NODE_GEOMETRY_TRANSITION属性的image节点，同时设置该节点的宽度、高度和位置，用于区别于另一个image节点，然后将当前image节点挂载到一个父节点，当前示例中父节点为stack。
 
    <!-- @[imageTransition_view_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
    
