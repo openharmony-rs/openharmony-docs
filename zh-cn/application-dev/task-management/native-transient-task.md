@@ -151,7 +151,7 @@
 3. 注册模块
 
    <!-- @[registration_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    static napi_module demoModule = {
        .nm_version = 1,
@@ -162,7 +162,7 @@
        .nm_priv = ((void*)0),
        .reserved = { 0 },
    };
-
+   
    extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
    {
        napi_module_register(&demoModule);
