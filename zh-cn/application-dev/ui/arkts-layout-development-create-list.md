@@ -894,7 +894,7 @@ ListItem() {
    <!-- @[define_the_data_to_be_done](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ToDo.ets) -->
    
    ``` TypeScript
-   //ToDo.ets
+   // ToDo.ets
    import { util } from '@kit.ArkTS';
    
    export class ToDo {
@@ -1071,15 +1071,15 @@ ListItem() {
    
    ``` TypeScript
    Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-   // ···
+     // ...
    }
-   // ···
+   // ...
    .gesture(
      GestureGroup(GestureMode.Exclusive,
        LongPressGesture()
          .onAction(() => {
            if (!this.isEditMode) {
-             this.isEditMode = true; //进入编辑模式
+             this.isEditMode = true; // 进入编辑模式
            }
          })
      )
@@ -1527,7 +1527,7 @@ List(
        } else {
          // 向上滑动处理
        }
-     // ···
+       // ...
      })
      ```
 
@@ -1561,7 +1561,7 @@ List(
        if (rect) {
          // 当前节点在页面内的剩余显示范围
          let leftRect = rect.y + rect.height;
-         //   终点位置
+         // 终点位置
          let mainPosition = -velocity * DEFAULT_FRICTION / FRICTION_SCALE;
          if (leftRect + mainPosition > 0.75 * this.listHeight) {
            this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START);
