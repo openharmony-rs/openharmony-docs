@@ -30,11 +30,11 @@
 1. 封装函数
 
    <!-- @[encapsulation_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    #include "napi/native_api.h"
    #include "transient_task/transient_task_api.h"
-
+   
    TransientTask_DelaySuspendInfo delaySuspendInfo;
    const int32_t TransientTask_TIMER = 3;
    static void Callback(void)
@@ -42,7 +42,7 @@
        // 短时任务即将结束，业务在这里取消短时任务
        OH_BackgroundTaskManager_CancelSuspendDelay(delaySuspendInfo.requestId);
    }
-
+   
    // 申请短时任务
    static napi_value RequestSuspendDelay(napi_env env, napi_callback_info info)
    {
@@ -55,7 +55,7 @@
        }
        return result;
    }
-
+   
    // 获取剩余时间
    static napi_value GetRemainingDelayTime(napi_env env, napi_callback_info info)
    {
@@ -69,7 +69,7 @@
        }
        return result;
    }
-
+   
    // 取消短时任务
    static napi_value CancelSuspendDelay(napi_env env, napi_callback_info info)
    {
@@ -78,10 +78,10 @@
        napi_create_int32(env, res, &result);
        return result;
    }
-
+   
    // 获取所有短时任务信息
    TransientTask_TransientTaskInfo transientTaskInfo;
-
+   
    static napi_value GetTransientTaskInfo(napi_env env, napi_callback_info info)
    {
        napi_value result;
@@ -101,7 +101,7 @@
                if (transientTaskInfo.transientTasks[index].requestId == 0) {
                    continue;
                }
-            
+               
                napi_value napiWork = nullptr;
                napi_create_object(env, &napiWork);
    
