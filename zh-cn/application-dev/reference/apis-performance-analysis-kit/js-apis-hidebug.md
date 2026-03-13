@@ -1446,6 +1446,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 hidebug.setProcDumpInSharedOOM(true);
 ```
+
 ## hidebug.getRssInfo<sup>24+</sup>
 
 getRssInfo(): RssInfo
