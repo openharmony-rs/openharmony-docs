@@ -791,6 +791,8 @@ async function example(context: Context) {
 
 ## getAlbumIdByLpath<sup>22+</sup>
 
+ArkTS-Dyn: getAlbumIdByLpath(lpath: string): Promise&lt;number&gt;
+
 ArkTS-Sta: getAlbumIdByLpath(lpath: string): Promise&lt;int&gt;
 
 根据相册的虚拟路径获取媒体库相册的ID。使用Promise异步回调。
@@ -815,7 +817,7 @@ ArkTS-Sta: getAlbumIdByLpath(lpath: string): Promise&lt;int&gt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;int&gt; | Promise对象，返回相册lpath对应的媒体库相册的ID。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回相册lpath对应的媒体库相册的ID。 |
 
 **错误码：**
 
@@ -1867,60 +1869,499 @@ async function example(context: Context) {
 }
 ```
 
-## getAlbumIdByLpath<sup>22+</sup>
+## on('photoChange')<sup>20+</sup> 
 
-getAlbumIdByLpath(lpath: string): Promise&lt;number&gt;
+on(type: 'photoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
-根据相册的虚拟路径获取媒体库相册的ID。使用Promise异步回调。
+注册'photoChange'监听媒体资产，并通过callback方式返回资产变化结果，可以注册多个callback。
 
-该接口仅支持以下相册：相机相册（'/DCIM/Camera'）、截图相册（'/Pictures/Screenshots'）和屏幕录制相册（'/Pictures/Screenrecords'）。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-​**模型约束**： 此接口仅可在Stage模型下使用。
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
 
-**ArkTS-Dyn起始版本：** 22
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Sta起始版本：** 23
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
-| 参数名  | 类型    | 必填 | 说明                       |
-| ------- | ------- | ---- | -------------------------- |
-| lpath | string | 是 | 相册的虚拟路径，lpath长度不能超过255个字符。 |
-
-**返回值：**
-
-| 类型                                    | 说明              |
-| --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise对象，返回相册lpath对应的媒体库相册的ID。 |
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| type | string | 是   | 注册监听媒体资产，取值为'photoChange'。注册完成后，有资产发生变化时，通过callback返回变更信息。 |
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 是   | 返回变更的媒体资产信息[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)。<br>**注意：**<br>该接口可以注册多个不同的callback监听，[off('photoChange')](#offphotochange20)既可以关闭所有监听，也可以关闭指定callback监听。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151     | The lpath is invalid, such as null, undefined and empty. |
-| 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoChange'; 2. The same callback is registered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  console.info('getAlbumIdByLpath');
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onPhotoChangeDemo.');
 
   try {
-      let albumId: number = await phAccessHelper.getAlbumIdByLpath('testLpath');
-      console.info('requestFile:: albumId: ', albumId);
+    // 注册onCallback1监听。
+    phAccessHelper.on('photoChange', onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.on('photoChange', onCallback2);
+  } catch (error) {
+    console.error('onPhotoChangeDemo failed, errCode is', error);
+  }
+}
+```
 
-      console.info('getAlbumIdByLpath completed.');
-      console.info(`albumId : ${albumId}`);
-    } catch (err) {
-      console.error(`getAlbumIdByLpath failed: ${err.code}, ${err.message}`);
-    }
+## onPhotoChange<sup>23+</sup> 
+
+onPhotoChange(callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
+
+注册'photoChange'监听媒体资产，并通过callback方式返回资产变化结果，可以注册多个callback。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 是   | 返回变更的媒体资产信息[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)。<br>**注意：**<br>该接口可以注册多个不同的callback监听，[offPhotoChange](#offphotochange23)既可以关闭所有监听，也可以关闭指定callback监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoChange'; 2. The same callback is registered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onPhotoChangeDemo.');
+
+  try {
+    // 注册onCallback1监听。
+    phAccessHelper.onPhotoChange(onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.onPhotoChange(onCallback2);
+  } catch (error) {
+    console.error('onPhotoChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+## off('photoChange')<sup>20+</sup> 
+
+off(type: 'photoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
+
+取消对'photoChange'媒体资产的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| type | string | 是   | 取消监听媒体资产，取值为'photoChange'。取消监听后，有资产发生变化时，不再通过callback返回变更信息。 |
+| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 否   | 取消[on('photoChange')](#onphotochange20)注册时指定的callback监听；不填时，则取消对'photoChange'的所有监听。<br>**注意：**<br>取消注册的callback后，有资产发生变化时，不会进入此回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoChange'; 2. The same callback is unregistered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('offPhotoChangeDemo.');
+
+  try {
+    // 注册onCallback1监听。
+    phAccessHelper.on('photoChange', onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.on('photoChange', onCallback2);
+
+    // 关闭onCallback1监听，onCallback2继续监听。
+    phAccessHelper.off('photoChange', onCallback1);
+  } catch (error) {
+    console.error('offPhotoChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+## offPhotoChange<sup>23+</sup> 
+
+offPhotoChange(callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
+
+取消对'photoChange'媒体资产的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 否   | 取消[onPhotoChange](#onphotochange23)注册时指定的callback监听；不填时，则取消对'photoChange'的所有监听。<br>**注意：**<br>取消注册的callback后，有资产发生变化时，不会进入此回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoChange'; 2. The same callback is unregistered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('offPhotoChangeDemo.');
+
+  try {
+    // 注册onCallback1监听。
+    phAccessHelper.onPhotoChange(onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.onPhotoChange(onCallback2);
+
+    // 关闭onCallback1监听，onCallback2继续监听。
+    phAccessHelper.offPhotoChange(onCallback1);
+  } catch (error) {
+    console.error('offPhotoChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+## on('photoAlbumChange')<sup>20+</sup> 
+
+on(type: 'photoAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
+
+注册'photoAlbumChange'监听相册，并通过callback方式返回相册变化结果，可以注册多个callback。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| type | string | 是   | 注册监听相册，取值为'photoAlbumChange'。注册完成后，有相册发生变化时，通过callback返回变更信息。 |
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 是   | 返回变更的相册信息[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)。<br>**注意：**<br>该接口可以注册多个不同的callback监听，[off('photoAlbumChange')](#offphotoalbumchange20)既可以关闭所有监听，也可以关闭指定callback监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoAlbumChange'; 2. The same callback is registered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onPhotoAlbumChangeDemo.');
+
+  try {
+    // 注册onCallback1监听。
+    phAccessHelper.on('photoAlbumChange', onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.on('photoAlbumChange', onCallback2);
+  } catch (error) {
+    console.error('onPhotoAlbumChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+## onPhotoAlbumChange<sup>23+</sup> 
+
+onPhotoAlbumChange(callback: Callback&lt;AlbumChangeInfos&gt;): void
+
+注册'photoAlbumChange'监听相册，并通过callback方式返回相册变化结果，可以注册多个callback。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 是   | 返回变更的相册信息[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)。<br>**注意：**<br>该接口可以注册多个不同的callback监听，[offPhotoAlbumChange](#offphotoalbumchange23)既可以关闭所有监听，也可以关闭指定callback监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoAlbumChange'; 2. The same callback is registered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onPhotoAlbumChangeDemo.');
+
+  try {
+    // 注册onCallback1监听。
+    phAccessHelper.onPhotoAlbumChange(onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.onPhotoAlbumChange(onCallback2);
+  } catch (error) {
+    console.error('onPhotoAlbumChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+## off('photoAlbumChange')<sup>20+</sup> 
+
+off(type: 'photoAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
+
+取消对'photoAlbumChange'相册的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| type | string | 是   | 取消监听相册，取值为'photoAlbumChange'。取消监听后，有相册发生变化时，不再通过callback返回变更信息。 |
+| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 否   | 取消[on('photoAlbumChange')](#onphotoalbumchange20)注册时指定的callback监听；不填时，则取消对'photoAlbumChange'的所有监听。<br>**注意：**<br>取消注册的callback后，有相册发生变化时，不会进入此回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoAlbumChange'; 2. The same callback is unregistered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onPhotoAlbumChangeDemo.');
+
+  try {
+    // 注册onCallback1监听。
+    phAccessHelper.on('photoAlbumChange', onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.on('photoAlbumChange', onCallback2);
+
+    // 关闭onCallback1监听，onCallback2继续监听。
+    phAccessHelper.off('photoAlbumChange', onCallback1);
+  } catch (error) {
+    console.error('onPhotoAlbumChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+## offPhotoAlbumChange<sup>23+</sup> 
+
+off(callback?: Callback&lt;AlbumChangeInfos&gt;): void
+
+取消对'photoAlbumChange'相册的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 否   | 取消[onPhotoAlbumChange](#onphotoalbumchange23)注册时指定的callback监听；不填时，则取消对'photoAlbumChange'的所有监听。<br>**注意：**<br>取消注册的callback后，有相册发生变化时，不会进入此回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoAlbumChange'; 2. The same callback is unregistered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('offPhotoAlbumChangeDemo.');
+
+  try {
+    // 注册onCallback1监听。
+    phAccessHelper.onPhotoAlbumChange(onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.onPhotoAlbumChange(onCallback2);
+
+    // 关闭onCallback1监听，onCallback2继续监听。
+    phAccessHelper.offPhotoAlbumChange(onCallback1);
+  } catch (error) {
+    console.error('offPhotoAlbumChangeDemo failed, errCode is', error);
+  }
 }
 ```
 
