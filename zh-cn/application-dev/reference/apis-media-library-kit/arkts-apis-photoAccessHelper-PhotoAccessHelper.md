@@ -1881,7 +1881,7 @@ on(type: 'photoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -1957,7 +1957,7 @@ onPhotoChange(callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoChange'; 2. The same callback is registered repeatedly. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The same callback is registered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
@@ -2002,7 +2002,7 @@ off(type: 'photoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2081,7 +2081,7 @@ offPhotoChange(callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoChange'; 2. The same callback is unregistered repeatedly. |
+| 23800151 | 23800151 The scenario parameter verification fails. Possible causes: The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
@@ -2129,7 +2129,7 @@ on(type: 'photoAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2205,7 +2205,7 @@ onPhotoAlbumChange(callback: Callback&lt;AlbumChangeInfos&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoAlbumChange'; 2. The same callback is registered repeatedly. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The same callback is registered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
@@ -2250,7 +2250,7 @@ off(type: 'photoAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2304,7 +2304,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ## offPhotoAlbumChange<sup>23+</sup> 
 
-off(callback?: Callback&lt;AlbumChangeInfos&gt;): void
+offPhotoAlbumChange(callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
 取消对'photoAlbumChange'相册的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。
 
@@ -2314,7 +2314,7 @@ off(callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2329,7 +2329,7 @@ off(callback?: Callback&lt;AlbumChangeInfos&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoAlbumChange'; 2. The same callback is unregistered repeatedly. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**

@@ -88,7 +88,7 @@ createAsset(displayName: string, callback: AsyncCallback&lt;PhotoAsset&gt;): voi
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -152,7 +152,7 @@ createAsset(displayName: string): Promise&lt;PhotoAsset&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -220,7 +220,7 @@ createAsset(displayName: string, options: PhotoCreateOptions, callback: AsyncCal
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -288,7 +288,7 @@ createAsset(displayName: string, options: PhotoCreateOptions): Promise&lt;PhotoA
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -626,7 +626,7 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, options: FetchOptions, callback: 
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -690,7 +690,7 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, callback: AsyncCallback&lt;FetchR
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -772,7 +772,7 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, options?: FetchOptions): Promise&
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1014,7 +1014,7 @@ ArkTS-Sta: getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptio
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1097,7 +1097,7 @@ ArkTS-Sta: getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptio
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1181,7 +1181,7 @@ saveFormInfo(info:FormInfo, callback: AsyncCallback&lt;void&gt;):void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1250,7 +1250,7 @@ saveFormInfo(info:FormInfo):Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1321,7 +1321,7 @@ removeFormInfo(info:FormInfo, callback: AsyncCallback&lt;void&gt;):void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1380,7 +1380,7 @@ removeFormInfo(info:FormInfo):Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1444,7 +1444,7 @@ ArkTS-Sta: createAssetsForApp(bundleName: string, appName: string, tokenId: long
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1514,7 +1514,7 @@ ArkTS-Sta: grantPhotoUriPermission(tokenId: long, uri: string, photoPermissionTy
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -1580,7 +1580,7 @@ ArkTS-Sta: grantPhotoUrisPermission(tokenId: long, uriList: Array&lt;string&gt;,
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -1649,7 +1649,7 @@ ArkTS-Sta: cancelPhotoUriPermission(tokenId: long, uri: string, photoPermissionT
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -1713,7 +1713,7 @@ ArkTS-Sta: startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePr
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -1778,7 +1778,7 @@ ArkTS-Sta: stopThumbnailCreationTask(taskId: int): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -1827,7 +1827,7 @@ getIndexConstructProgress(): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -1888,7 +1888,7 @@ getDataAnalysisProgress(analysisType: AnalysisType): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -1945,7 +1945,7 @@ getSharedPhotoAssets(options: FetchOptions): Array\<SharedPhotoAsset\>
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESS_MEDIALIB_THUMB_DB
 
@@ -2010,7 +2010,7 @@ ArkTS-Sta: startAssetAnalysis(type: AnalysisType, assetUris?: Array&lt;string&gt
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -2071,7 +2071,7 @@ ArkTS-Sta: createAssetsForAppWithMode(boundleName: string, appName: string, appI
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -2148,7 +2148,7 @@ ArkTS-Sta: getKeyFrameThumbnail(beginFrameTimeMs: long, type: ThumbnailType): Pr
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -2219,7 +2219,7 @@ saveGalleryFormInfo(info:GalleryFormInfo):Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2290,7 +2290,7 @@ updateGalleryFormInfo(info:GalleryFormInfo):Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2363,7 +2363,7 @@ removeGalleryFormInfo(info:GalleryFormInfo):Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2423,7 +2423,7 @@ ArkTS-Sta: getAlbumsByIds(albumIds: Array&lt;int&gt;): Promise&lt;Map&lt;int, Al
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -2483,7 +2483,7 @@ createAssetsForAppWithAlbum(source: PhotoCreationSource, albumUri: string, isAut
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -3453,7 +3453,7 @@ getExif(): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -3521,7 +3521,7 @@ getExif(callback: AsyncCallback&lt;string&gt;): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3735,7 +3735,7 @@ setPending(pendingState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3802,7 +3802,7 @@ setPending(pendingState: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3860,7 +3860,7 @@ isEdited(callback: AsyncCallback&lt;boolean&gt;): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3927,7 +3927,7 @@ isEdited(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -3992,7 +3992,7 @@ requestEditData(callback: AsyncCallback&lt;string&gt;): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4057,7 +4057,7 @@ requestEditData(): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -4118,7 +4118,7 @@ getEditData(): Promise&lt;MediaAssetEditData&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -4179,7 +4179,7 @@ ArkTS-Sta: requestSource(callback: AsyncCallback&lt;int&gt;): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4244,7 +4244,7 @@ ArkTS-Sta: requestSource(): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -4306,7 +4306,7 @@ commitEditedAsset(editData: string, uri: string, callback: AsyncCallback&lt;void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4377,7 +4377,7 @@ commitEditedAsset(editData: string, uri: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4446,7 +4446,7 @@ revertToOriginal(callback: AsyncCallback&lt;void&gt;)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4511,7 +4511,7 @@ revertToOriginal(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -4710,7 +4710,7 @@ cancelPhotoRequest(requestId: string): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4781,7 +4781,7 @@ getAnalysisData(analysisType: AnalysisType): Promise\<string>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4841,7 +4841,7 @@ getThumbnailData(type: ThumbnailType): Promise&lt;ArrayBuffer&gt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4905,40 +4905,40 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | --- | ---- | ---- | --- |
-| fileId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 图片资产标识id。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| uri | string | 否 | 否 | 图片资产uri。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| data | string | 否 | 否 | 图片资产的路径数据。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否 | 图片资产的媒体类型。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| displayName | string | 否 | 否 | 图片资产的显示名称。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| size | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 否 | 否 | 图片资产文件大小。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| dataAdded | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 添加了图片资产数据。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| dataModified | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 更改了图片资产数据。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| duration | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 视频类型的图片资产时长。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| width | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 图片资产的像素宽度。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 图片资产的像素高度。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| dataTaken | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 图片资产拍照后存入本地时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| orientation | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 图片资产的旋转角度。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| isFavorite | boolean | 否 | 否 | 是否收藏了此图片。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| title | string | 否 | 否 | 图片资产的标题。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | 否 | 否 | 图片资产存在位置。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| dataTrashed | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 图片资产是否在回收站中。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| hidden | boolean | 否 | 否 | 图片资产是否隐藏。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| userComment | string | 否 | 否 | 图片资产的用户评论信息。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| cameraShotKey | string | 否 | 否 | 图片资产相机拍摄信息。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| dateYear | string | 否 | 否 | 图片资产创建年份时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| dateMonth | string | 否 | 否 | 图片资产创建月份时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| dateDay | string | 否 | 否 | 图片资产创建日时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| pending | boolean | 否 | 否 | 图片资产等待状态，true为等待。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| dateAddedMs | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 图片资产数据添加后经过时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| dateTrashedMs | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 图片资产数据进回收站后经过时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| subtype | [PhotoSubtype](#photosubtype) | 否 | 否 | 图片资产子类型。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| movingPhotoEffectMode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | 否 | 否 | 动态照片效果模式。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | 否 | 否 | 媒体文件的动态范围类型。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| thumbnailReady | boolean | 否 | 否 | 图片资产的缩略图是否准备好。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| lcdSize | string | 否 | 否 | 图片资产的lcd缩略图宽高信息。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| thmSize | string | 否 | 否 | 图片资产的thumb缩略图宽高信息。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23|
-| thumbnailModifiedMs<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 图片资产的缩略图状态改变后经过时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
-| thumbnailVisible<sup>14+</sup> | [ThumbnailVisibility](#thumbnailvisibility14) | 否 | 否 | 图片资产的缩略图是否可见。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
+| fileId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 图片资产标识id。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| uri | string | 否 | 否 | 图片资产uri。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| data | string | 否 | 否 | 图片资产的路径数据。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否 | 图片资产的媒体类型。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| displayName | string | 否 | 否 | 图片资产的显示名称。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 否 | 否 | 图片资产文件大小。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| dataAdded | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 添加了图片资产数据。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| dataModified | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 更改了图片资产数据。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| duration | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 视频类型的图片资产时长。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| width | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 图片资产的像素宽度。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 图片资产的像素高度。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| dataTaken | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 图片资产拍照后存入本地时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| orientation | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 图片资产的旋转角度。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| isFavorite | boolean | 否 | 否 | 是否收藏了此图片。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| title | string | 否 | 否 | 图片资产的标题。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | 否 | 否 | 图片资产存在位置。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| dataTrashed | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 图片资产是否在回收站中。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| hidden | boolean | 否 | 否 | 图片资产是否隐藏。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| userComment | string | 否 | 否 | 图片资产的用户评论信息。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| cameraShotKey | string | 否 | 否 | 图片资产相机拍摄信息。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| dateYear | string | 否 | 否 | 图片资产创建年份时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| dateMonth | string | 否 | 否 | 图片资产创建月份时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| dateDay | string | 否 | 否 | 图片资产创建日时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| pending | boolean | 否 | 否 | 图片资产等待状态，true为等待。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| dateAddedMs | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 图片资产数据添加后经过时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| dateTrashedMs | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 图片资产数据进回收站后经过时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| subtype | [PhotoSubtype](#photosubtype) | 否 | 否 | 图片资产子类型。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| movingPhotoEffectMode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | 否 | 否 | 动态照片效果模式。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | 否 | 否 | 媒体文件的动态范围类型。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| thumbnailReady | boolean | 否 | 否 | 图片资产的缩略图是否准备好。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| lcdSize | string | 否 | 否 | 图片资产的lcd缩略图宽高信息。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| thmSize | string | 否 | 否 | 图片资产的thumb缩略图宽高信息。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| thumbnailModifiedMs<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 图片资产的缩略图状态改变后经过时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 20|
+| thumbnailVisible<sup>14+</sup> | [ThumbnailVisibility](#thumbnailvisibility14) | 否 | 否 | 图片资产的缩略图是否可见。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 20|
 
 ## Album
 
@@ -4950,10 +4950,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称           | 类型    | 只读   | 可选  | 说明   |
 | ------------ | ------ | ---- | ---- | ------- |
-| lpath<sup>18+</sup>    | string | 是    | 是   | 相册虚拟路径。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23|
-| dateAdded<sup>18+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是    | 是   | 相册添加时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23|
-| dateModified<sup>18+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是    | 是   | 相册修改时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23|
-| coverUriSource<sup>20+</sup>    | number | 是    | 是   | 相册封面来源。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
+| lpath<sup>18+</sup>    | string | 是    | 是   | 相册虚拟路径。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 20|
+| dateAdded<sup>18+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是    | 是   | 相册添加时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 20|
+| dateModified<sup>18+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是    | 是   | 相册修改时间。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 20|
+| coverUriSource<sup>20+</sup>    | number | 是    | 是   | 相册封面来源。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 20|
 
 ### recoverAssets<sup>(deprecated)</sup>
 
@@ -5402,7 +5402,7 @@ getFaceId(): Promise\<string>
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -5459,7 +5459,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 ### 属性
 
@@ -5481,7 +5481,7 @@ constructor(compatibleFormat: string, formatVersion: string)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5514,7 +5514,7 @@ let assetEditData: photoAccessHelper.MediaAssetEditData = new photoAccessHelper.
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 ### createAssetRequest<sup>11+</sup>
 
@@ -5591,7 +5591,7 @@ setFavorite(favoriteState: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5648,7 +5648,7 @@ setHidden(hiddenState: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5705,7 +5705,7 @@ setUserComment(userComment: string): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5763,7 +5763,7 @@ setEditData(editData: MediaAssetEditData): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5827,7 +5827,7 @@ addResource(type: ResourceType, proxy: PhotoProxy): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5885,7 +5885,7 @@ ArkTS-Sta: setLocation(longitude: double, latitude: double): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5943,7 +5943,7 @@ setCameraShotKey(cameraShotKey: string): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5992,7 +5992,7 @@ setEffectMode(mode: MovingPhotoEffectMode): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -6046,7 +6046,7 @@ setSupportedWatermarkType(watermarkType: WatermarkType): void
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -6103,7 +6103,7 @@ static deleteLocalAssetsPermanently(context: Context, assets: Array\<PhotoAsset>
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -6233,7 +6233,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 ### constructor<sup>11+</sup>
 
@@ -6247,7 +6247,7 @@ constructor(assets: Array&lt;PhotoAsset&gt;)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -6297,7 +6297,7 @@ setFavorite(favoriteState: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -6354,7 +6354,7 @@ setHidden(hiddenState: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -6411,7 +6411,7 @@ setUserComment(userComment: string): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -6468,7 +6468,7 @@ setIsRecentShow(isRencentShow: boolean): void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -6521,7 +6521,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 ### createAlbumRequest<sup>11+</sup>
 
@@ -6596,7 +6596,7 @@ static deleteAlbums(context: Context, albums: Array&lt;Album&gt;): Promise&lt;vo
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -6709,7 +6709,7 @@ setCoverUri(coverUri: string): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -6769,7 +6769,7 @@ resetCoverUri(): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
@@ -6820,7 +6820,7 @@ moveAssets(assets: Array&lt;PhotoAsset&gt;, targetAlbum: Album): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -6950,7 +6950,7 @@ recoverAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -7070,7 +7070,7 @@ deleteAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -7193,7 +7193,7 @@ ArkTS-Sta: setDisplayLevel(displayLevel: int): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -7250,7 +7250,7 @@ setIsMe(): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
@@ -7301,7 +7301,7 @@ dismissAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -7368,7 +7368,7 @@ mergeAlbum(target: Album): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -7433,7 +7433,7 @@ placeBefore(album: Album): void;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -7488,7 +7488,7 @@ dismiss(): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
@@ -7533,7 +7533,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 ### constructor<sup>12+</sup>
 
@@ -7547,7 +7547,7 @@ constructor(album: Album)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -7599,7 +7599,7 @@ getHighlightAlbumInfo(type: HighlightAlbumInfoType): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -7668,7 +7668,7 @@ getHighlightResource(resourceUri: string): Promise&lt;ArrayBuffer&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -7736,7 +7736,7 @@ ArkTS-Sta: setHighlightUserActionData(type: HighlightUserActionType, actionData:
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -7808,7 +7808,7 @@ setSubTitle(title: string): void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -7873,7 +7873,7 @@ ArkTS-Sta: static deleteHighlightAlbums(context: Context, albums: Array&lt;Album
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -7936,7 +7936,7 @@ async function example(context: Context) {
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 ### constructor<sup>18+</sup> 
 
@@ -7950,7 +7950,7 @@ constructor(album: Album)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -8008,7 +8008,7 @@ ArkTS-Sta: setOrderPosition(assets: Array&lt;PhotoAsset&gt;, position: Array&lt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -8080,7 +8080,7 @@ async function example(context: Context) {
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 ### constructor<sup>18+</sup> 
 
@@ -8094,7 +8094,7 @@ constructor(album: Album)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -8151,7 +8151,7 @@ ArkTS-Sta: getOrderPosition(assets: Array&lt;PhotoAsset&gt;): Promise&lt;Array&l
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -8224,7 +8224,7 @@ async function example(context: Context) {
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 ### getCloudEnhancementInstance<sup>13+</sup>
 
@@ -8296,7 +8296,7 @@ submitCloudEnhancementTasks(photoAssets: Array&lt;PhotoAsset&gt;, hasCloudWaterm
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -8366,7 +8366,7 @@ ArkTS-Sta: submitCloudEnhancementTasks(photoAssets: Array&lt;PhotoAsset&gt;, has
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -8436,7 +8436,7 @@ prioritizeCloudEnhancementTask(photoAsset: PhotoAsset): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -8505,7 +8505,7 @@ cancelCloudEnhancementTasks(photoAssets: Array&lt;PhotoAsset&gt;): Promise&lt;vo
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -8573,7 +8573,7 @@ cancelAllCloudEnhancementTasks(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -8622,7 +8622,7 @@ queryCloudEnhancementTaskState(photoAsset: PhotoAsset): Promise&lt;CloudEnhancem
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -8717,7 +8717,7 @@ syncCloudEnhancementTaskStatus(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -8766,7 +8766,7 @@ getCloudEnhancementPair(asset: PhotoAsset): Promise&lt;PhotoAsset&gt;
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -8837,7 +8837,7 @@ setVideoEnhancementAttr(videoEnhancementType: VideoEnhancementType, photoId: str
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -8890,7 +8890,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 ### getCloudMediaAssetManagerInstance<sup>14+</sup>
 
@@ -8951,7 +8951,7 @@ startDownloadCloudMedia(downloadType: CloudMediaDownloadType): Promise&lt;void&g
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -9005,7 +9005,7 @@ pauseDownloadCloudMedia(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -9052,7 +9052,7 @@ cancelDownloadCloudMedia(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -9099,7 +9099,7 @@ retainCloudMediaAsset(retainType: CloudMediaRetainType): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -9153,7 +9153,7 @@ getCloudMediaAssetStatus(): Promise&lt;CloudMediaAssetStatus&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -9209,7 +9209,7 @@ isVideoReady(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -9671,7 +9671,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -9685,8 +9685,8 @@ async example() {
 
 | 名称                  | 值    | 说明                        |
 | ------------------- | ---- | ------------------------- |
-| SOURCE<sup>18+</sup> | 2048 | 来源相册。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
-| SMART<sup>11+</sup> | 4096 | 智慧分析相册。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| SOURCE<sup>18+</sup> | 2048 | 来源相册。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 20 |
+| SMART<sup>11+</sup> | 4096 | 智慧分析相册。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
 
 ## AlbumSubtype
 
@@ -9696,20 +9696,20 @@ async example() {
 
 | 名称                                | 值          | 说明                              |
 | --------------------------------- | ---------- | ------------------------------- |
-| HIDDEN                            | 1027       | 隐藏相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23         |
-| TRASH                             | 1028       | 回收站。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23          |
-| SCREENSHOT                        | 1029       | 截屏和录屏相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23      |
-| CAMERA                            | 1030       | 相机拍摄的照片和视频相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| SOURCE\_GENERIC<sup>11+</sup>     | 2049       | 来源相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23         |
-| CLASSIFY<sup>11+</sup>            | 4097       | 分类相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23         |
-| GEOGRAPHY\_LOCATION<sup>11+</sup> | 4099       | 地图相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23         |
-| GEOGRAPHY\_CITY<sup>11+</sup>     | 4100       | 城市相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23         |
-| SHOOTING\_MODE<sup>11+</sup>      | 4101       | 拍摄模式相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23       |
-| PORTRAIT<sup>11+</sup>            | 4102       | 人像相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23         |
-| GROUP_PHOTO<sup>13+</sup>         | 4103       | 合影相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23         |
-| HIGHLIGHT<sup>12+</sup>           | 4104       | 时刻相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23         |
-| HIGHLIGHT_SUGGESTIONS<sup>12+</sup> | 4105     | 时刻建议相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23         |
-| CLOUD_ENHANCEMENT<sup>13+</sup> | 1032     | AI云增强相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23         |
+| HIDDEN                            | 1027       | 隐藏相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20         |
+| TRASH                             | 1028       | 回收站。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20          |
+| SCREENSHOT                        | 1029       | 截屏和录屏相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20      |
+| CAMERA                            | 1030       | 相机拍摄的照片和视频相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
+| SOURCE\_GENERIC<sup>11+</sup>     | 2049       | 来源相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20         |
+| CLASSIFY<sup>11+</sup>            | 4097       | 分类相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20         |
+| GEOGRAPHY\_LOCATION<sup>11+</sup> | 4099       | 地图相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20         |
+| GEOGRAPHY\_CITY<sup>11+</sup>     | 4100       | 城市相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20         |
+| SHOOTING\_MODE<sup>11+</sup>      | 4101       | 拍摄模式相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20       |
+| PORTRAIT<sup>11+</sup>            | 4102       | 人像相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20         |
+| GROUP_PHOTO<sup>13+</sup>         | 4103       | 合影相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20         |
+| HIGHLIGHT<sup>12+</sup>           | 4104       | 时刻相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20         |
+| HIGHLIGHT_SUGGESTIONS<sup>12+</sup> | 4105     | 时刻建议相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20         |
+| CLOUD_ENHANCEMENT<sup>13+</sup> | 1032     | AI云增强相册。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20         |
 
 ## RequestPhotoType<sup>11+</sup>
 
@@ -9721,7 +9721,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -9737,21 +9737,21 @@ async example() {
 
 | 名称          | 值              | 说明                                                       |
 | ------------- | ------------------- | ---------------------------------------------------------- |
-| DATE_TRASHED  | 'date_trashed'  | 删除日期（删除文件时间距1970年1月1日的秒数值）。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                 |
-| HIDDEN  | 'hidden'            | 文件的隐藏状态。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                               |
-| CAMERA_SHOT_KEY  | 'camera_shot_key'  | 锁屏相机拍照或录像的标记字段（仅开放给系统相机,其key值由系统相机定义）。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23            |
-| USER_COMMENT<sup>10+</sup>  | 'user_comment'            | 用户注释信息。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23           |
-| DATE_YEAR<sup>11+</sup>  | 'date_year'            | 创建文件的年份。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23           |
-| DATE_MONTH<sup>11+</sup>  | 'date_month'            | 创建文件的月份。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23           |
-| DATE_DAY<sup>11+</sup>  | 'date_day'            | 创建文件的日期。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23           |
-| PENDING<sup>11+</sup>  | 'pending'            | pending状态。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23           |
-| DATE_TRASHED_MS<sup>12+</sup>  | 'date_trashed_ms'  | 删除日期（删除文件时间距1970年1月1日的毫秒数值）。**系统接口**：此接口为系统接口。<br>注意：查询照片时，不支持基于该字段排序。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| MOVING_PHOTO_EFFECT_MODE<sup>12+</sup>  | 'moving_photo_effect_mode' | 动态照片效果模式。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| CE_AVAILABLE<sup>13+</sup>  | 'ce_available' | 云增强任务标识。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23 |
-| SUPPORTED_WATERMARK_TYPE<sup>14+</sup>  | 'supported_watermark_type' | 水印可编辑标识。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
-| IS_CE_AUTO<sup>18+</sup>  | 'is_auto' | 是否支持自动云增强。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
-| OWNER_ALBUM_ID<sup>18+</sup>  | 'owner_album_id' | 照片所属的相册id。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
-| IS_RECENT_SHOW<sup>18+</sup>  | 'is_recent_show' | 是否设置为最近显示。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| DATE_TRASHED  | 'date_trashed'  | 删除日期（删除文件时间距1970年1月1日的秒数值）。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                 |
+| HIDDEN  | 'hidden'            | 文件的隐藏状态。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                               |
+| CAMERA_SHOT_KEY  | 'camera_shot_key'  | 锁屏相机拍照或录像的标记字段（仅开放给系统相机,其key值由系统相机定义）。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20            |
+| USER_COMMENT<sup>10+</sup>  | 'user_comment'            | 用户注释信息。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20           |
+| DATE_YEAR<sup>11+</sup>  | 'date_year'            | 创建文件的年份。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20           |
+| DATE_MONTH<sup>11+</sup>  | 'date_month'            | 创建文件的月份。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20           |
+| DATE_DAY<sup>11+</sup>  | 'date_day'            | 创建文件的日期。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20           |
+| PENDING<sup>11+</sup>  | 'pending'            | pending状态。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20           |
+| DATE_TRASHED_MS<sup>12+</sup>  | 'date_trashed_ms'  | 删除日期（删除文件时间距1970年1月1日的毫秒数值）。**系统接口**：此接口为系统接口。<br>注意：查询照片时，不支持基于该字段排序。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| MOVING_PHOTO_EFFECT_MODE<sup>12+</sup>  | 'moving_photo_effect_mode' | 动态照片效果模式。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| CE_AVAILABLE<sup>13+</sup>  | 'ce_available' | 云增强任务标识。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20 |
+| SUPPORTED_WATERMARK_TYPE<sup>14+</sup>  | 'supported_watermark_type' | 水印可编辑标识。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 20 |
+| IS_CE_AUTO<sup>18+</sup>  | 'is_auto' | 是否支持自动云增强。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 20 |
+| OWNER_ALBUM_ID<sup>18+</sup>  | 'owner_album_id' | 照片所属的相册id。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 20 |
+| IS_RECENT_SHOW<sup>18+</sup>  | 'is_recent_show' | 是否设置为最近显示。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 20 |
 | SUM_SIZE<sup>19+</sup>  | 'sum(size)' | 文件大小总和。在fetchColumns中填入SUM_SIZE属性时，仅获取到第一个资产，并且属性中带有所有资产的总大小。**系统接口**：此接口为系统接口。 |
 
 ## AlbumKeys
@@ -9762,10 +9762,10 @@ async example() {
 
 | 名称                              | 值                    | 说明                                                       |
 | --------------------------------- | -------------------- | ----------------------------------------------------- |
-| ALBUM_LPATH<sup>18+</sup>          | 'lpath'                 | 相册的虚拟路径。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23            |
-| BUNDLE_NAME<sup>18+</sup>          | 'bundle_name'                 | 相册的包名。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23            |
-| DATE_MODIFIED<sup>18+</sup>        | 'date_modified'         | 相册修改的时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23            |
-| COVER_URI_SOURCE<sup>20+</sup>     | 'cover_uri_source'      | 相册封面的来源。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23            |
+| ALBUM_LPATH<sup>18+</sup>          | 'lpath'                 | 相册的虚拟路径。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 20            |
+| BUNDLE_NAME<sup>18+</sup>          | 'bundle_name'                 | 相册的包名。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 20            |
+| DATE_MODIFIED<sup>18+</sup>        | 'date_modified'         | 相册修改的时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 20            |
+| COVER_URI_SOURCE<sup>20+</sup>     | 'cover_uri_source'      | 相册封面的来源。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 20            |
 
 ## HiddenPhotosDisplayMode<sup>11+</sup>
 
@@ -9777,7 +9777,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称          | 值              | 说明                                                       |
 | ------------- | ------------------- | ---------------------------------------------------------- |
@@ -9794,7 +9794,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称                   | 类型                | 必填 | 说明                                              |
 | ---------------------- | ------------------- | ---- | ------------------------------------------------ |
@@ -9812,7 +9812,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称                   | 类型                | 必填 | 说明                                              |
 | ---------------------- | ------------------- | ---- | ------------------------------------------------ |
@@ -9829,7 +9829,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称                   | 类型                | 只读 | 可选 | 说明                                              |
 | ---------------------- | ------------------- | ---- | ---- | ------------------------------------------------ |
@@ -9846,9 +9846,9 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
-| 名称                   | 类型                              | 只读 | 可选 | 说明                                              |
+| 名称                   | 类型                              | 可读 | 可写 | 说明                                              |
 | ---------------------- |---------------------------------| ---- |---- | ------------------------------------------------ |
 | sourceMode           | [SourceMode](#sourcemode11)     | 是   | 是   | 资源文件的读取类型，可以指定当前请求获取的是源文件，或是编辑后的文件。**系统接口**：此接口为系统接口。 |
 
@@ -9862,7 +9862,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 ## MediaChangeRequest<sup>11+</sup>
 
@@ -9871,22 +9871,6 @@ async example() {
 **注意**：媒体变更请求需要在调用[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)后才会提交生效。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-### 属性
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
-
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-| 名称           | 类型    | 只读   | 可选  | 说明   |
-| ------------ | ------ | ---- | ---- | ------- |
-| comment<sup>23+</sup>    | string | 是    | 否   | 用于MediaChangeRequest类型校验。<br>如果类（如[MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md)或[MediaAlbumChangeRequest](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md)）对象可以访问，就说明该类是MediaChangeRequest的实现类。 |
 
 ## FormInfo<sup>11+</sup>
 
@@ -9898,7 +9882,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称                   | 类型                | 必填 | 说明                                              |
 | ---------------------- | ------------------- | ---- | ------------------------------------------------ |
@@ -9915,7 +9899,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称                   | 类型                | 必填 | 说明                                              |
 | ---------------------- | ------------------- | ---- | ------------------------------------------------ |
@@ -9930,9 +9914,9 @@ async example() {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| PHOTO_PROXY |  3 |  表示照片代理资源。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| PRIVATE_MOVING_PHOTO_RESOURCE<sup>13+</sup> |  4 |  表示私有动态照片资源。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23 |
-| PRIVATE_MOVING_PHOTO_METADATA<sup>18+</sup> |  5 |  表示私有动态照片元数据资源。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| PHOTO_PROXY |  3 |  表示照片代理资源。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
+| PRIVATE_MOVING_PHOTO_RESOURCE<sup>13+</sup> |  4 |  表示私有动态照片资源。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20 |
+| PRIVATE_MOVING_PHOTO_METADATA<sup>18+</sup> |  5 |  表示私有动态照片元数据资源。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 20 |
 
 ## DefaultChangeUri
 
@@ -9942,7 +9926,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称              | 值                      | 说明                                                         |
 | ----------------- | ----------------------- | ------------------------------------------------------------ |
@@ -9958,7 +9942,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -9974,7 +9958,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -9988,21 +9972,21 @@ async example() {
 
 | 名称                            | 值  | 说明       |
 | :---------------------------- | :- | :------- |
-| ANALYSIS\_AESTHETICS\_SCORE   | 0  | 美学评分分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23    |
-| ANALYSIS\_LABEL               | 1  | 分类标签分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23    |
-| ANALYSIS\_OCR                 | 2  | 文字识别分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23    |
-| ANALYSIS\_FACE                | 3  | 人脸检测分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23    |
-| ANALYSIS\_OBJECT              | 4  | 目标检测分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23    |
-| ANALYSIS\_RECOMMENDATION      | 5  | 推荐构图分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23    |
-| ANALYSIS\_SEGMENTATION        | 6  | 抠图分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23    |
-| ANALYSIS\_COMPOSITION         | 7  | 美学构图分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23   |
-| ANALYSIS\_SALIENCY            | 8  | 最佳呈现主体中心分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23   |
-| ANALYSIS\_DETAIL\_ADDRESS     | 9  | 详细地址分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23    |
-| ANALYSIS\_HUMAN\_FACE\_TAG<sup>12+</sup>    | 10 | 人像聚类信息分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23    |
-| ANALYSIS\_HEAD\_POSITION<sup>12+</sup>      | 11 | 人头、宠物头位置分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23    |
-| ANALYSIS\_BONE\_POSE<sup>12+</sup>        | 12 | 人体骨骼点信息分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23    |
-| ANALYSIS\_VIDEO\_LABEL<sup>12+</sup>        | 13 | 视频标签。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23    |
-| ANALYSIS\_HIGHLIGHT<sup>12+</sup>        | 14 | 时刻标签。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23    |
+| ANALYSIS\_AESTHETICS\_SCORE   | 0  | 美学评分分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20    |
+| ANALYSIS\_LABEL               | 1  | 分类标签分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20    |
+| ANALYSIS\_OCR                 | 2  | 文字识别分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20    |
+| ANALYSIS\_FACE                | 3  | 人脸检测分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20    |
+| ANALYSIS\_OBJECT              | 4  | 目标检测分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20    |
+| ANALYSIS\_RECOMMENDATION      | 5  | 推荐构图分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20    |
+| ANALYSIS\_SEGMENTATION        | 6  | 抠图分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20    |
+| ANALYSIS\_COMPOSITION         | 7  | 美学构图分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20   |
+| ANALYSIS\_SALIENCY            | 8  | 最佳呈现主体中心分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20   |
+| ANALYSIS\_DETAIL\_ADDRESS     | 9  | 详细地址分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20    |
+| ANALYSIS\_HUMAN\_FACE\_TAG<sup>12+</sup>    | 10 | 人像聚类信息分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20    |
+| ANALYSIS\_HEAD\_POSITION<sup>12+</sup>      | 11 | 人头、宠物头位置分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20    |
+| ANALYSIS\_BONE\_POSE<sup>12+</sup>        | 12 | 人体骨骼点信息分析类别。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20    |
+| ANALYSIS\_VIDEO\_LABEL<sup>12+</sup>        | 13 | 视频标签。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20    |
+| ANALYSIS\_HIGHLIGHT<sup>12+</sup>        | 14 | 时刻标签。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20    |
 
 ## HighlightAlbumInfoType<sup>12+</sup>
 
@@ -10014,7 +9998,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称            | 值  | 说明       |
 | :------------ | :- | :------- |
@@ -10031,7 +10015,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称                           | 值  | 说明       |
 | :---------------------------- | :- | :------- |
@@ -10056,7 +10040,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称                           | 值  | 说明       |
 | :---------------------------- | :- | :------- |
@@ -10073,13 +10057,13 @@ async example() {
 
 | 名称                           | 值  | 说明       |
 | :---------------------------- | :- | :------- |
-| DEFAULT          | 0  | 默认模式。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
-| BOUNCE\_PLAY     | 1  | 来回播放。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
-| LOOP\_PLAY       | 2  | 循环播放。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
-| LONG\_EXPOSURE   | 3  | 长曝光。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23  |
-| MULTI\_EXPOSURE  | 4  | 多曝光。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23  |
-| CINEMA\_GRAPH<sup>13+</sup>  | 5  | 微动瞬间。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23  |
-| IMAGE\_ONLY<sup>13+</sup>  | 10  | 关闭模式。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23  |
+| DEFAULT          | 0  | 默认模式。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20|
+| BOUNCE\_PLAY     | 1  | 来回播放。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20|
+| LOOP\_PLAY       | 2  | 循环播放。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20|
+| LONG\_EXPOSURE   | 3  | 长曝光。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20  |
+| MULTI\_EXPOSURE  | 4  | 多曝光。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20  |
+| CINEMA\_GRAPH<sup>13+</sup>  | 5  | 微动瞬间。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20  |
+| IMAGE\_ONLY<sup>13+</sup>  | 10  | 关闭模式。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20  |
 
 ## PhotoPermissionType<sup>12+</sup>
 
@@ -10095,7 +10079,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -10112,7 +10096,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -10131,7 +10115,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -10153,7 +10137,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -10172,7 +10156,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称                   | 类型                | 必定提供 | 说明                                              |
 | ---------------------- | ------------------- | ---- | ------------------------------------------------ |
@@ -10192,7 +10176,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -10210,7 +10194,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称                           | 值  | 说明       |
 | :---------------------------- | :- | :------- |
@@ -10227,7 +10211,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -10246,7 +10230,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -10263,7 +10247,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -10279,7 +10263,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -10297,7 +10281,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -10322,7 +10306,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称                   | 类型                | 必定提供 | 说明                                              |
 | ---------------------- | ------------------- | ---- | ------------------------------------------------ |
@@ -10338,7 +10322,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
@@ -10380,70 +10364,51 @@ async example() {
 
 | 名称  | 类型                | 只读 | 可选 | 说明                                              |
 | ---- | ------- | ---- |  ---- | ----- |
-| fileId | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 否 | 媒体资产（图片/视频）的id。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
-| dateDay | string  | 否 | 否 | 创建媒体文件的日期。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
-| isFavorite | boolean  | 否 | 否 | 表示媒体资产（图片/视频）的收藏状态。true表示资产已收藏，false表示资产未收藏。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
-| isHidden | boolean  | 否 | 否 | 表示媒体资产（图片/视频）的隐藏状态。true表示资产已隐藏，false表示资产未隐藏。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
-| strongAssociation | [StrongAssociationType](#strongassociationtype20)  | 否 | 否 | 图片的强关联类型。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
-| thumbnailVisible | [ThumbnailVisibility](#thumbnailvisibility14)  | 否 | 否 | 缩略图的可访问性。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
-| dateTrashedMs |ArkTS-Dyn: number<br/>ArkTS-Sta: long  |否 | 否 | 文件删除时的Unix时间戳（单位：毫秒）。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
-| dateAddedMs | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否 | 否 | 文件创建时的Unix时间戳（单位：毫秒）。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
-| dateTakenMs | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否 | 否 | 文件拍摄时的Unix时间戳（单位：毫秒）。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
-| position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16)  | 否 | 是 | 媒体资产（图片/视频）的所在位置。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
-| displayName | string  | 否 | 是 | 媒体资产（图片/视频）的显示名称。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
-| size | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否 | 是 | 媒体资产（图片/视频）的文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
-| albumChangeInfos | ArkTS-Dyn: [AlbumChangeInfo](#albumchangeinfo20)[]<br/>ArkTS-Sta: [AlbumChangeInfo](#albumchangeinfo20)[] \| null  | 否 | 是 | 智慧相册的相册变更信息。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。  |
+| fileId | number  | 否 | 否 | 媒体资产（图片/视频）的id。<br>**系统接口**：此接口为系统接口。  |
+| dateDay | string  | 否 | 否 | 创建媒体文件的日期。<br>**系统接口**：此接口为系统接口。  |
+| isFavorite | boolean  | 否 | 否 | 表示媒体资产（图片/视频）的收藏状态。true表示资产已收藏，false表示资产未收藏。<br>**系统接口**：此接口为系统接口。  |
+| isHidden | boolean  | 否 | 否 | 表示媒体资产（图片/视频）的隐藏状态。true表示资产已隐藏，false表示资产未隐藏。<br>**系统接口**：此接口为系统接口。  |
+| strongAssociation | [StrongAssociationType](#strongassociationtype20)  | 否 | 否 | 图片的强关联类型。<br>**系统接口**：此接口为系统接口。  |
+| thumbnailVisible | [ThumbnailVisibility](#thumbnailvisibility14)  | 否 | 否 | 缩略图的可访问性。<br>**系统接口**：此接口为系统接口。  |
+| dateTrashedMs |number  |否 | 否 | 文件删除时的Unix时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。  |
+| dateAddedMs | number  | 否 | 否 | 文件创建时的Unix时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。  |
+| dateTakenMs | number  | 否 | 否 | 文件拍摄时的Unix时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。  |
 
 ## PhotoAssetChangeData<sup>20+</sup>
 
 媒体资产（图片/视频）的具体变更数据。
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                   | 类型                | 只读 | 可选 | 说明          |
 | ---- | ------- | ---- |  ---- | ----- |
 | thumbnailChangeStatus | [ThumbnailChangeStatus](#thumbnailchangestatus20)  | 否 | 否 | 缩略图（图片/视频）更新的状态。<br>**系统接口**：此接口为系统接口。 |
-| version       |  ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否 | 否 | 媒体资产（图片/视频）信息通知的版本号，用于确定通知的顺序。<br>**系统接口**：此接口为系统接口。  |
+| version       |  number  | 否 | 否 | 媒体资产（图片/视频）信息通知的版本号，用于确定通知的顺序。<br>**系统接口**：此接口为系统接口。  |
 
 ## AlbumChangeInfo<sup>20+</sup>
 
 相册信息。
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  | 类型                | 只读 | 可选 | 说明                                              |
 | ---- | ------- | ---- |  ---- | ----- |
-| hiddenCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 否 | 相册中的隐藏资产数量。<br>**系统接口**：此接口为系统接口。 |
+| hiddenCount | number  | 否 | 否 | 相册中的隐藏资产数量。<br>**系统接口**：此接口为系统接口。 |
 | hiddenCoverUri | string  | 否 | 否 | 相册中隐藏封面资产的uri。<br>**系统接口**：此接口为系统接口。 |
 | isCoverChanged | boolean  | 否 | 否 | 相册封面文件内容是否变化。true表示封面文件内容发生变化，false表示封面文件内容未发生变化。<br>**系统接口**：此接口为系统接口。 |
 | isHiddenCoverChanged | boolean  | 否 | 否 | 相册隐藏封面文件内容是否变化。true表示隐藏封面文件内容发生变化，false表示隐藏封面文件内容未发生变化。<br>**系统接口**：此接口为系统接口。 |
 | coverInfo | [PhotoAssetChangeInfo](#photoassetchangeinfo20)  | 否 | 是 | 相册封面资产的信息。<br>**系统接口**：此接口为系统接口。 |
 | hiddenCoverInfo | [PhotoAssetChangeInfo](#photoassetchangeinfo20)  | 否 | 是 | 相册隐藏封面资产的信息。<br>**系统接口**：此接口为系统接口。 |
-| orderSection | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是 | 相册的排序区域，用于确认相册在图库中的展示区域。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。 |
-| albumOrder | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是 | 相册的排序值。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23<br>**系统接口**：此接口为系统接口。 |
-| hidden<sup>23+</sup>    | boolean  | 否 | 是 | 相册是否为隐藏状态。true表示相册为隐藏状态，false表示相册不为隐藏状态。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
 ## AlbumChangeData<sup>20+</sup>
 
 相册的具体变更数据。
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                   | 类型                | 只读 | 可选 | 说明       |
 | ---- | ------- | ---- |  ---- | ----- |
-| version | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否 | 否 | 相册信息通知的版本号，用于确定通知的顺序。<br>**系统接口**：此接口为系统接口。 |
+| version | number  | 否 | 否 | 相册信息通知的版本号，用于确定通知的顺序。<br>**系统接口**：此接口为系统接口。 |
 
 ## PhotoAssetCustomRecord<sup>20+</sup>
 
@@ -10469,7 +10434,7 @@ async example() {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 20
 
 | 名称                      | 值   | 说明                             |
 | ------------------------- | ---- | -------------------------------- |
