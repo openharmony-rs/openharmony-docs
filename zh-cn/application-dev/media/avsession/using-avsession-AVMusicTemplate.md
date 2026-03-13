@@ -6,13 +6,13 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 23开始，当媒体应用接入媒体中心使用统一的界面风格时，需要提供媒体相关信息，并响应媒体中心下发的控制（搜索，播放，暂停等）命令。
+从API version 23开始，当媒体应用接入音频模板使用统一的界面风格时，需要提供媒体相关信息，并响应音频模板控制方（媒体中心是OpenHarmony系统预置的音频模板控制方，以下统称为媒体中心）下发的控制（搜索，播放，暂停等）命令。
 
 媒体中心同时支持音频和视频内容，且两者的接入方式相同。本文档以音频场景为例进行说明。
 
 ## 基本概念
 
-音频模板（AVMusicTemplate）：用于描述音频模板相关属性，包含标识当前媒体会话的ID（sessionId）、会话标签（sessionTag）和操作方法等属性。
+音频模板（AVMusicTemplate）：用于描述音频模板相关属性，包含标识当前媒体会话的ID（sessionId）、会话标签（sessionTag）等属性和与媒体中心数据交互的操作方法。
 
 
 ## 接口说明
@@ -25,7 +25,7 @@
 
 1. 在进程启动时，调用接口[createAVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplate)创建音频模板（每个媒体应用创建一个音频模板，不需要重复创建），拉起媒体中心。
 
-   以下示例代码仅展示创建AVMusicTemplate对象的接口调用，应用在真正使用时，需要确保AVMusicTemplate对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
+   以下示例代码仅展示创建AVMusicTemplate对象的接口调用，应用在真正使用时，需要参考接口[@ohos.backgroundTaskManager (后台任务管理)](../../reference/apis-backgroundtasks-kit/js-apis-backgroundTaskManager.md)确保AVMusicTemplate对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
 
    <!-- @[ability_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
