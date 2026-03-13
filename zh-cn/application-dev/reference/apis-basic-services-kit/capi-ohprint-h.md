@@ -473,7 +473,7 @@ Print_ErrorCode OH_Print_StartPrinterDiscovery(Print_PrinterDiscoveryCallback ca
 
 | 类型                                                 | 说明                                                         |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | 返回 [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode) 表示执行成功。<br>         [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode) 需要 ohos.permission.PRINT 权限。<br>         [PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode) 无法连接到打印服务能力。<br>         [PRINT_ERROR_SERVER_FAILURE](capi-ohprint-h.md#print_errorcode) 从 BMS 查询打印扩展列表失败。<br>         [PRINT_ERROR_INVALID_EXTENSION](capi-ohprint-h.md#print_errorcode) 未找到可用的打印扩展。 |
+| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | 返回 [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode) 表示执行成功。<br>         [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode) 需要 ohos.permission.PRINT 权限。<br>         [PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode) 无法连接到打印服务。<br>         [PRINT_ERROR_SERVER_FAILURE](capi-ohprint-h.md#print_errorcode) 从 BMS 查询打印扩展列表失败。<br>         [PRINT_ERROR_INVALID_EXTENSION](capi-ohprint-h.md#print_errorcode) 未找到可用的打印扩展。 |
 
 ### OH_Print_StopPrinterDiscovery()
 
