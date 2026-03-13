@@ -1,5 +1,10 @@
 # devicedebug工具
-
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangfenging -->
+<!--Designer: @zl_startup-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @jinqiuheng-->
 
 devicedebug工具向开发者提供对调试应用发送信号的能力，目前仅支持向AMS管理的debug类型的应用进程的pid发送signal信号，达到终止对应pid进程的能力。
 
