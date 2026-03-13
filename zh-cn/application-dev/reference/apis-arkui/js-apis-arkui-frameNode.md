@@ -26,6 +26,10 @@ import { FrameNode, LayoutConstraint, ExpandMode, typeNode, NodeAdapter } from "
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型   | 只读 | 可选 | 说明                   |
 | ------ | ------ | ---- | ---- | ---------------------- |
 | attributeSetting  | boolean | 否   | 是   | FrameNode是否支持跨ArkTS语言进行属性设置。<br/>true表示支持跨ArkTS语言进行属性设置，false表示不支持跨ArkTS语言进行属性设置。<br/>默认为false。 |
@@ -53,6 +57,10 @@ FrameNode选项，可设置FrameNode是否支持多线程操作。
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -309,6 +317,10 @@ appendChild(node: FrameNode): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                    | 必填 | 说明                  |
@@ -335,12 +347,16 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                      | 必填 | 说明                                                                         |
 | ------- | ----------------------------------------- | ---- | ---------------------------------------------------------------------------- |
 | child   | [FrameNode](#framenode)                   | 是   | 需要添加的子节点。<br/>**说明：**<br/> child节点不可以为声明式创建的节点，即不可修改的FrameNode。仅有从BuilderNode中获取的声明式节点可以作为子节点。若子节点不符合规格，则抛出异常信息。<br/> child节点不可以拥有父节点，否则抛出异常信息。                                                           |
-| sibling | [FrameNode](#framenode)&nbsp;\|&nbsp;null | 是   | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
+| sibling | [FrameNode](#framenode)&nbsp;\|&nbsp;null |  是   | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
 
 **错误码：**
 
@@ -388,6 +404,10 @@ clearChildren(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **错误码：**
 
 | 错误码ID | 错误信息                         |
@@ -432,7 +452,9 @@ ArkTS-Sta: getChild(index: int): FrameNode | null
 
 ### getChild<sup>15+</sup> 
 
-getChild(index: number, expandMode?: ExpandMode): FrameNode | null
+ArkTS-Dyn: getChild(index: number, expandMode?: ExpandMode): FrameNode | null
+
+ArkTS-Sta: getChild(index: int, expandMode?: ExpandMode): FrameNode | null
 
 获取当前节点指定位置的子节点，支持指定子节点展开模式。
 
@@ -440,11 +462,15 @@ getChild(index: number, expandMode?: ExpandMode): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| index  | number | 是   | 需要查询的子节点的序列号。<br/>若当前节点有n个子节点，index取值范围为[0, n-1]。 |
+| index  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 需要查询的子节点的序列号。<br/>若当前节点有n个子节点，index取值范围为[0, n-1]。 |
 | expandMode | [ExpandMode](#expandmode15) | 否 | 指定子节点展开模式。<br/>默认值：ExpandMode.EXPAND |
 
 **返回值：**
@@ -657,7 +683,9 @@ ArkTS-Sta: moveTo(targetParent: FrameNode, index?: int): void
 
 ### getPositionToWindow<sup>12+</sup> 
 
-getPositionToWindow(): Position
+ArkTS-Dyn: getPositionToWindow(): Position
+
+ArkTS-Sta: getPositionToWindow(): NodePosition
 
 获取FrameNode相对于窗口的位置偏移，单位为VP。
 
@@ -665,11 +693,15 @@ getPositionToWindow(): Position
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明                            |
 | -------- | ------------------------------- |
-| [Position](./js-apis-arkui-graphics.md#position) | 节点相对于窗口的位置偏移，单位为VP。 |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 节点相对于窗口的位置偏移，单位为VP。 |
 
 **示例：**
 
@@ -739,7 +771,9 @@ struct Index {
 
 ### getPositionToParent<sup>12+</sup>
 
-getPositionToParent(): Position
+ArkTS-Dyn: getPositionToParent(): Position
+
+ArkTS-Sta: getPositionToParent(): NodePosition
 
 获取FrameNode相对于父组件的位置偏移，单位为VP。
 
@@ -747,11 +781,15 @@ getPositionToParent(): Position
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Position](./js-apis-arkui-graphics.md#position) | 节点相对于父组件的位置偏移，单位为VP。 |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 节点相对于父组件的位置偏移，单位为VP。 |
 
 **示例：**
 
@@ -821,7 +859,9 @@ struct Index {
 
 ### getPositionToScreen<sup>12+</sup> 
 
-getPositionToScreen(): Position
+ArkTS-Dyn: getPositionToScreen(): Position
+
+ArkTS-Sta: getPositionToScreen(): NodePosition
 
 获取FrameNode相对于屏幕的位置偏移，单位为VP。
 
@@ -829,11 +869,15 @@ getPositionToScreen(): Position
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明                            |
 | -------- | ------------------------------- |
-| [Position](./js-apis-arkui-graphics.md#position) | 节点相对于屏幕的位置偏移，单位为VP。 |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 节点相对于屏幕的位置偏移，单位为VP。 |
 
 **示例：**
 
@@ -903,10 +947,9 @@ struct Index {
 
 ### getGlobalPositionOnDisplay<sup>20+</sup> 
 
-ArkTS-Dyn: getGlobalPositionOnDisplay(): position
+ArkTS-Dyn: getGlobalPositionOnDisplay(): Position
 
 ArkTS-Sta: getGlobalPositionOnDisplay(): NodePosition
-
 
 获取FrameNode相对于全局屏幕的位置偏移，单位为VP。
 
@@ -930,7 +973,9 @@ ArkTS-Sta: getGlobalPositionOnDisplay(): NodePosition
 
 ### getPositionToParentWithTransform<sup>12+</sup>
 
-getPositionToParentWithTransform(): Position
+ArkTS-Dyn: getPositionToParentWithTransform(): Position
+
+ArkTS-Sta: getPositionToParentWithTransform(): NodePosition
 
 获取FrameNode相对于父组件带有绘制属性的位置偏移，单位为VP，绘制属性比如transform, translate等，返回的坐标是组件布局时左上角变换后的坐标。
 
@@ -938,11 +983,15 @@ getPositionToParentWithTransform(): Position
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Position](./js-apis-arkui-graphics.md#position) | 节点相对于父组件的位置偏移，单位为VP。 当设置了其他（比如：transform, translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 节点相对于父组件的位置偏移，单位为VP。 当设置了其他（比如：transform, translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
 
 **示例：**
 
@@ -1011,7 +1060,9 @@ struct Index {
 
 ### getPositionToWindowWithTransform<sup>12+</sup>
 
-getPositionToWindowWithTransform(): Position
+ArkTS-Dyn: getPositionToWindowWithTransform(): Position
+
+ArkTS-Sta: getPositionToWindowWithTransform(): NodePosition
 
 获取FrameNode相对于窗口带有绘制属性的位置偏移，单位为VP，绘制属性比如transform, translate等，返回的坐标是组件布局时左上角变换后的坐标。
 
@@ -1019,11 +1070,15 @@ getPositionToWindowWithTransform(): Position
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Position](./js-apis-arkui-graphics.md#position) | 节点相对于窗口的位置偏移，单位为VP。 当设置了其他（比如：transform, translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 节点相对于窗口的位置偏移，单位为VP。 当设置了其他（比如：transform, translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
 
 **示例：**
 
@@ -1091,7 +1146,9 @@ struct Index {
 
 ### getPositionToScreenWithTransform<sup>12+</sup>
 
-getPositionToScreenWithTransform(): Position
+ArkTS-Dyn: getPositionToScreenWithTransform(): Position
+
+ArkTS-Sta: getPositionToScreenWithWithTransform(): NodePosition
 
 获取FrameNode相对于屏幕带有绘制属性的位置偏移，单位为VP，绘制属性比如transform, translate等，返回的坐标是组件布局时左上角变换后的坐标。
 
@@ -1099,11 +1156,15 @@ getPositionToScreenWithTransform(): Position
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Position](./js-apis-arkui-graphics.md#position) | 节点相对于屏幕的位置偏移，单位为VP。 当设置了其他（比如：transform, translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 节点相对于屏幕的位置偏移，单位为VP。 当设置了其他（比如：transform, translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
 
 **示例：**
 
@@ -1194,7 +1255,9 @@ getMeasuredSize(): Size
 
 ### getLayoutPosition<sup>12+</sup>
 
-getLayoutPosition(): Position
+ArkTS-Dyn: getLayoutPosition(): Position
+
+ArkTS-Sta: getLayoutPosition(): NodePosition
 
 获取FrameNode布局后相对于父组件的位置偏移，单位为PX。该偏移是父容器对该节点进行布局之后的结果，因此布局之后生效的offset属性和不参与布局的position属性不影响该偏移值。
 
@@ -1202,11 +1265,15 @@ getLayoutPosition(): Position
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Position](./js-apis-arkui-graphics.md#position) | 节点布局后相对于父组件的位置偏移，单位为PX。 |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 节点布局后相对于父组件的位置偏移，单位为PX。 |
 
 **示例：**
 
@@ -1214,9 +1281,9 @@ getLayoutPosition(): Position
 
 ### getUserConfigBorderWidth<sup>12+</sup>
 
-ArkTS-Dyn: getUserConfigBorderWidth(): Edges\<LengthMetrics\>
+ArkTS-Dyn: getUserConfigBorderWidth(): Edges\<LengthMetrics>
 
-ArkTS-Sta: getUserConfigBorderWidth(): NodeEdges\<LengthMetrics\>
+ArkTS-Sta: getUserConfigBorderWidth(): NodeEdges\<LengthMetrics>
 
 获取用户设置的边框宽度。
 
@@ -1226,13 +1293,13 @@ ArkTS-Sta: getUserConfigBorderWidth(): NodeEdges\<LengthMetrics\>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\>| 用户设置的边框宽度。 |
+| ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)> | 用户设置的边框宽度。 |
 
 **示例：**
 
@@ -1240,9 +1307,9 @@ ArkTS-Sta: getUserConfigBorderWidth(): NodeEdges\<LengthMetrics\>
 
 ### getUserConfigPadding<sup>12+</sup>
 
-ArkTS-Dyn: getUserConfigPadding(): Edges\<LengthMetrics\>
+ArkTS-Dyn: getUserConfigPadding(): Edges\<LengthMetrics>
 
-ArkTS-Sta: getUserConfigPadding(): NodeEdges\<LengthMetrics\>
+ArkTS-Sta: getUserConfigPadding(): NodeEdges\<LengthMetrics>
 
 获取用户设置的内边距。
 
@@ -1252,13 +1319,13 @@ ArkTS-Sta: getUserConfigPadding(): NodeEdges\<LengthMetrics\>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> | 用户设置的内边距。 |
+| ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest12)<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)> | 用户设置的内边距。 |
 
 **示例：**
 
@@ -1266,9 +1333,9 @@ ArkTS-Sta: getUserConfigPadding(): NodeEdges\<LengthMetrics\>
 
 ### getUserConfigMargin<sup>12+</sup>
 
-ArkTS-Dyn: getUserConfigMargin(): Edges\<LengthMetrics\>
+ArkTS-Dyn: getUserConfigMargin(): Edges\<LengthMetrics>
 
-ArkTS-Sta: getUserConfigMargin(): NodeEdges\<LengthMetrics\>
+ArkTS-Sta: getUserConfigMargin(): NodeEdges\<LengthMetrics>
 
 获取用户设置的外边距。
 
@@ -1278,13 +1345,13 @@ ArkTS-Sta: getUserConfigMargin(): NodeEdges\<LengthMetrics\>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> | 用户设置的外边距。 |
+| ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)> | 用户设置的外边距。 |
 
 **示例：**
 
@@ -1812,7 +1879,9 @@ FrameNode的自定义测量方法，该方法会重写默认测量方法，在Fr
 
 ### onLayout<sup>12+</sup>
 
-onLayout(position: Position): void
+ArkTS-Dyn: onLayout(position: Position): void
+
+ArkTS-Sta: onLayout(position: NodePosition): void
 
 FrameNode的自定义布局方法，该方法会重写默认布局方法，在FrameNode进行布局时被调用，为FrameNode及其子节点指定位置。
 
@@ -1820,11 +1889,15 @@ FrameNode的自定义布局方法，该方法会重写默认布局方法，在Fr
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| position | [Position](./js-apis-arkui-graphics.md#position) | 是   | 组件进行布局时使用的位置信息。 |
+| position | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 是   | 组件进行布局时使用的位置信息。 |
 
 **示例：**
 
@@ -1852,7 +1925,9 @@ setMeasuredSize(size: Size): void
 
 ### setLayoutPosition<sup>12+</sup>
 
-setLayoutPosition(position: Position): void
+ArkTS-Dyn: setLayoutPosition(position: Position): void
+
+ArkTS-Sta: setLayoutPosition(position: NodePosition): void
 
 设置FrameNode的布局后的位置，默认单位PX。
 
@@ -1860,11 +1935,15 @@ setLayoutPosition(position: Position): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| position | [Position](./js-apis-arkui-graphics.md#position) | 是   | FrameNode的布局后的位置。 |
+| position | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 是   | FrameNode的布局后的位置。 |
 
 **示例：**
 
@@ -2277,9 +2356,11 @@ struct Index {
 
 请参考[节点自定义示例](#节点自定义示例)。
 
-### setCrossLanguageOptions<sup>15+</sup>
+### setCrossLanguageOptions<sup>15+</sup> 
 
-setCrossLanguageOptions(options: CrossLanguageOptions): void
+ArkTS-Dyn: setCrossLanguageOptions(options: CrossLanguageOptions): void
+
+ArkTS-Sta: setCrossLanguageOptions(value: CrossLanguageOptions): void
 
 设置当前FrameNode的跨ArkTS语言访问选项。例如ArkTS语言创建的节点，设置该节点是否可通过非ArkTS语言进行属性设置。当前FrameNode如果不可修改或不可设置跨ArkTS语言访问选项，抛出异常信息。
 
@@ -2291,11 +2372,15 @@ setCrossLanguageOptions(options: CrossLanguageOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型                    | 必填 | 说明                  |
 | ------------ | ----------------------- | ---- | --------------------- |
-| options | [CrossLanguageOptions](#crosslanguageoptions15) | 是   | 跨ArkTS语言访问选项。 |
+| options/value | [CrossLanguageOptions](#crosslanguageoptions15) | 是   | 跨ArkTS语言访问选项。 |
 
 **错误码：**
 
@@ -2439,9 +2524,11 @@ ArkTS-Sta: removeSupportedUIStates(uiStates: int): void
 
 请参考[组件设置和删除多态样式状态示例](#组件设置和删除多态样式状态示例)。
 
-### createAnimation<sup>20+</sup>
+### createAnimation<sup>20+</sup> 
 
-createAnimation(property: AnimationPropertyType, startValue: Optional\<number[]>, endValue: number[], param: AnimateParam): boolean
+ArkTS-Dyn: createAnimation(property: AnimationPropertyType, startValue: Optional<number[]>, endValue: number[], param: AnimateParam): boolean
+
+ArkTS-Sta: createAnimation(property: AnimationPropertyType, startValue: double[] | undefined, endValue: double[], param: AnimateParam): boolean
 
 创建FrameNode上属性的动画。
 
@@ -2449,11 +2536,15 @@ createAnimation(property: AnimationPropertyType, startValue: Optional\<number[]>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
 | property  | [AnimationPropertyType](./arkui-ts/ts-appendix-enums.md#animationpropertytype20) | 是   | 动画属性枚举。 |
-| startValue  | Optional\<number[]> | 是 | 动画属性的起始值。取值为undefined或数组，取值为数组时数组长度需要和属性枚举匹配。如果为undefined则表示不显式指定动画初值，节点上一次设置的属性终值为此次动画的起点值。如果取值为数组，<br/>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]。<br/>**说明：**<br/>当节点上从未设置过该属性时，需要显式指定startValue才能正常创建动画。当节点上已经设置过属性（如第二次及之后创建动画），则推荐不显式指定startValue或者显式指定startValue为上一次的终值，表示使用上一次的终值作为新的动画起点，避免起始值跳变。 |
-| endValue  | number[] | 是 | 动画属性的终止值。取值为数组，数组长度需要和属性枚举匹配。<br/>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]。 |
+| startValue  | ArkTS-Dyn: Optional\<number[]><br/>ArkTS-Sta: double[] \| undefined | 是 | 动画属性的起始值。取值为undefined或数组，取值为数组时数组长度需要和属性枚举匹配。如果为undefined则表示不显式指定动画初值，节点上一次设置的属性终值为此次动画的起点值。如果取值为数组，<br/>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]。<br/>**说明：**<br/>当节点上从未设置过该属性时，需要显式指定startValue才能正常创建动画。当节点上已经设置过属性（如第二次及之后创建动画），则推荐不显式指定startValue或者显式指定startValue为上一次的终值，表示使用上一次的终值作为新的动画起点，避免起始值跳变。 |
+| endValue  | ArkTS-Dyn: number[]<br/>ArkTS-Sta: double[] | 是 | 动画属性的终止值。取值为数组，数组长度需要和属性枚举匹配。<br/>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]。 |
 | param  | [AnimateParam](./arkui-ts/ts-explicit-animation.md#animateparam对象说明) | 是 | 动画参数。包含时长、动画曲线、结束回调等参数。 |
 
 **返回值：**
@@ -2490,15 +2581,21 @@ cancelAnimations(properties: AnimationPropertyType[]): boolean
 
 请参考[动画创建与取消示例](#动画创建与取消示例)。
 
-### getNodePropertyValue<sup>20+</sup>
+### getNodePropertyValue<sup>20+</sup> 
 
-getNodePropertyValue(property: AnimationPropertyType): number[]
+ArkTS-Dyn: getNodePropertyValue(property: AnimationPropertyType): number[]
+
+ArkTS-Sta: getNodePropertyValue(property: AnimationPropertyType): double[]
 
 获取FrameNode上的属性值。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
@@ -2508,7 +2605,7 @@ getNodePropertyValue(property: AnimationPropertyType): number[]
 
 | 类型               | 说明               |
 | ------------------ | ------------------ |
-| number[] | 表示渲染节点上的属性值，返回的数组长度与属性枚举相关，异常时返回空数组。<br/>对不同属性枚举的返回值格式：<br/>- 当节点已经释放，调用过[dispose](#dispose12)方法，或者属性枚举非法时，返回长度为0的空数组。<br/>- 对于AnimationPropertyType.ROTATION，返回值为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，返回值为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，返回值为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，返回值为[opacity]，表示不透明度。<br/>**说明：**<br/>1. 动画正常取消后，节点上的属性值被恢复为取消时的值，通过该接口可以获取取消后的显示值。<br/>2. 动画期间该接口的返回值为该属性的终值，而不是动画过程的实时值。<br/>|
+| ArkTS-Dyn: number[]<br/>ArkTS-Sta: double[] | 表示渲染节点上的属性值，返回的数组长度与属性枚举相关，异常时返回空数组。<br/>对不同属性枚举的返回值格式：<br/>- 当节点已经释放，调用过[dispose](#dispose12)方法，或者属性枚举非法时，返回长度为0的空数组。<br/>- 对于AnimationPropertyType.ROTATION，返回值为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，返回值为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，返回值为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，返回值为[opacity]，表示不透明度。<br/>**说明：**<br/>1. 动画正常取消后，节点上的属性值被恢复为取消时的值，通过该接口可以获取取消后的显示值。<br/>2. 动画期间该接口的返回值为该属性的终值，而不是动画过程的实时值。<br/>|
 
 **示例：**
 
@@ -2552,15 +2649,17 @@ export function frameNodeTrans(frameNode:Object) {
 
 ```
 
-### convertPosition<sup>22+</sup>
+### convertPosition<sup>22+</sup> 
 
-convertPosition(position: NodePosition, targetNode: FrameNode): NodePosition
+ArkTS-Dyn: convertPosition(position: Position, targetNode: FrameNode): Position
+
+ArkTS-Sta: convertPosition(position: NodePosition, targetNode: FrameNode): NodePosition
 
 将点的坐标从当前节点的坐标系转换为目标节点的坐标系。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
 
 **ArkTS-Sta起始版本：** 22
 
@@ -2568,14 +2667,14 @@ convertPosition(position: NodePosition, targetNode: FrameNode): NodePosition
 
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| position | [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 是   | 当前节点坐标系中的相对坐标。 |
+| position | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 是   | 当前节点坐标系中的相对坐标。 |
 | targetNode  | [FrameNode](#framenode-1) | 是   | 本次坐标转换的目标节点，转换得到的点坐标就是该节点坐标系中的相对坐标。 |
 
 **返回值：**
 
 | 类型               | 说明               |
 | ------------------ | ------------------ |
-| [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 目标节点局部坐标系中的转换坐标。 |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 目标节点局部坐标系中的转换坐标。 |
 
 
 **错误码：**
@@ -2751,7 +2850,113 @@ ArkTS-Sta: convertPositionFromWindow(positionByWindow: NodePosition): NodePositi
 
 请参考[局部与窗口坐标转化示例](#局部与窗口坐标转化示例)。
 
+### isInRenderState<sup>23+</sup>
 
+isInRenderState(): boolean
+
+获取FrameNode是否处于渲染状态。当FrameNode对应的RenderNode在渲染树上时，认为FrameNode处于渲染状态。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型    | 说明               |
+| ------- | ------------------ |
+| boolean | 节点是否处于渲染状态。true表示处于渲染状态，false表示不处于渲染状态。 |
+
+### isOnMainTreeTree<sup>23+</sup>
+
+isOnMainTree(): boolean
+
+获取FrameNode是否挂载到主节点树上。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型    | 说明               |
+| ------- | ------------------ |
+| boolean | 节点是否挂载到主节点树上。true表示挂载到主节点树上，false表示未挂载到主节点树上。 |
+
+### invalidateAttributes<sup>21+</sup>
+
+invalidateAttributes(): void
+
+在当前帧中触发节点更新。
+
+当节点属性在当前帧的build阶段之后被修改时，节点更新将被延迟到下一帧。此函数强制在当前帧内立即进行节点更新，以确保渲染效果同步应用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+### adoptChild<sup>22+</sup>
+
+adoptChild(child: FrameNode): void
+
+当前节点收养目标子节点。被收养的节点不能有现有的父节点。此操作不会实际将其追加为子节点，但只允许它像子节点一样接收生命周期回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                    | 必填 | 说明                  |
+| ------ | ----------------------- | ---- | --------------------- |
+| child  | [FrameNode](#framenode) | 是   | 被收养的目标节点。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息                          |
+| -------- | -------------------------------- |
+| 100021   | The FrameNode is not modifiable. |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be disposed." |
+| 100026   | The current FrameNode has been disposed. |
+
+### removeAdoptedChild<sup>22+</sup>
+
+removeAdoptedChild(child: FrameNode): void
+
+移除目标收养子节点。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                    | 必填 | 说明                  |
+| ------ | ----------------------- | ---- | --------------------- |
+| child  | [FrameNode](#framen) | 是   | 被收养的目标节点。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息                          |
+| -------- | -------------------------------- |
+| 100021   | The FrameNode is not modifiable. |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be null." |
+| 100026   | The current FrameNode has been disposed. |
+
+ 
 ## TypedFrameNode<sup>12+</sup>
 
 TypedFrameNode继承自[FrameNode](#framenode)，用于声明具体类型的FrameNode。

@@ -30,7 +30,7 @@ ArkTS-Sta: stateStyles(value: StateStyles | undefined): this
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -46,9 +46,10 @@ ArkTS-Sta: stateStyles(value: StateStyles | undefined): this
 
 
 ## CustomStyles
+
 定义用于多态样式的回调类型。
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
