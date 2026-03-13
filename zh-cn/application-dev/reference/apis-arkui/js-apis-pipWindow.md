@@ -689,10 +689,6 @@ type PiPVideoActionEvent = 'playbackStateChanged' | 'nextVideo' | 'previousVideo
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 24
-
 | 类型                         | 说明                                      |
 | ---------------------------- | ----------------------------------------- |
 | 'playbackStateChanged'       | 播放状态发生了变化。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24  |
@@ -711,10 +707,6 @@ type PiPCallActionEvent = 'hangUp' | 'micStateChanged' | 'videoStateChanged' | '
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 24
-
 | 类型                | 说明               |
 | ------------------- | ------------------ |
 | 'hangUp'             | 挂断视频通话。   <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24   |
@@ -732,10 +724,6 @@ type PiPMeetingActionEvent = 'hangUp' | 'voiceStateChanged' | 'videoStateChanged
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 24
 
 | 类型                | 说明               |
 | ------------------- | ------------------ |
