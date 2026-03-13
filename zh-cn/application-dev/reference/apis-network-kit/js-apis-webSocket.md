@@ -66,7 +66,7 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
->**注意：**
+> **注意：**
 >
 >URL地址长度不能超过1024个字符，否则会连接失败。从API version 15开始，URL地址长度限制由1024修改为2048。
 
@@ -716,6 +716,8 @@ ws.off('close');
 on(type: 'error', callback: ErrorCallback): void
 
 订阅WebSocket的Error事件，使用callback异步回调。
+
+关于[error](#onerror)事件回调的错误码说明：WebSocket的本质是HTTP协议升级，若服务器同意升级，服务器会返回101。状态码表示协议从HTTP切换为WebSocket协议（触发open回调），而如果服务器拒绝了升级或出现其他异常，则返回200，表示服务器只是将请求当作普通的HTTP请求来处理。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1575,7 +1577,7 @@ type HttpProxy = connection.HttpProxy
 | serverPort | number | 否   | 否   | 服务端监听的端口号。                   |
 | serverCert | [ServerCert](#servercert19) | 否  | 是   | 指定服务端证书的信息，包括服务端证书文件路径和服务端证书的私钥文件路径。 |
 | protocol   | string | 否   | 是   | 自定义协议。 |
-| maxConcurrentClientsNumber | number | 否 | 否   | 最大并发客户端数量，当到达最大数时，服务端拒绝新连接。默认最大数量为10。 |
+| maxConcurrentClientsNumber | number | 否 | 否   | 最大并发客户端数量，当达到最大数时，服务端拒绝新连接。默认最大数量为10。 |
 | maxConnectionsForOneClient | number | 否 | 否   | 单个客户端的最大连接数。默认最大数量为10。 |
 
 ## ServerCert<sup>19+</sup>

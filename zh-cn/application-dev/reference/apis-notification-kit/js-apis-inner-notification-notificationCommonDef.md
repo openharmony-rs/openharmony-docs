@@ -32,5 +32,5 @@
 | 名称   | 类型   | 只读 | 可选 | 说明   |
 | ------ | ------ | ----| -- |  ------ |
 | bundleName | string | 否  | 否 | 应用程序的包名。 |
-| appName    | string | 是  | 是 | 标识应用的名称。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中label获取。 |
 | appIndex   | number | 是  | 否 | 应用包的分身索引标识，仅在分身应用中生效。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中appIndex获取。 |
+| appName    | string | 是  | 是 | 标识应用的名称。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中label获取。 |

@@ -432,7 +432,7 @@ showError(value?: ResourceStr | undefined)
 
 Sets the error message displayed when an error occurs.
 
-If the data type is **ResourceStr** and the input content does not comply with specifications, the error message is displayed. If the error message does not fit in one line, an ellipsis (…) is displayed to represent clipped text. If the data type is **undefined**, no error message is displayed. For details, see [Example 2](#example-2-setting-underlines).
+If the data type is **ResourceStr** and the input content does not comply with specifications, the error message is displayed. If the error message does not fit in one line, an ellipsis is displayed to represent clipped text. If the data type is **undefined**, no error message is displayed. For details, see [Example 2](#example-2-setting-underlines).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1095,7 +1095,7 @@ Sets the appearance of the keyboard when the text box is focused.
 
 | Name| Type| Mandatory| Description|
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------ |
-| appearance | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15)> | Yes  | Appearance of the keyboard.<br>Default value: **KeyboardAppearance.NONE_IMMERSIVE**|
+| appearance | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15)> | Yes  | Appearance of the keyboard.<br>Default value: **KeyboardAppearance.NONE_IMMERSIVE**|
 
 ### strokeWidth<sup>20+</sup>
 
@@ -1111,7 +1111,7 @@ Sets the text stroke width.
 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | Yes  | Text stroke width. When the unit of **LengthMetrics** is **px**:<br>Values < 0: solid text. Values > 0: outlined text.<br>Default value: **0** (no stroke).|
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | Yes  | Text stroke width. When the unit of **LengthMetrics** is **px**:<br>Values < 0: solid text. Values > 0: outlined text.<br>Default value: **0** (no stroke).|
 
 ### strokeColor<sup>20+</sup>
 
@@ -1127,7 +1127,7 @@ Sets the text stroke color.
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Stroke color. Default value: font color. Invalid values are treated as the default value.|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Stroke color. Default value: font color. Invalid values are treated as the default value.|
 
 ### stopBackPress<sup>15+</sup>
 
@@ -1143,7 +1143,7 @@ Sets whether to block the back button.
 
 | Name| Type                                               | Mandatory| Description                                     |
 | ------ | --------------------------------------------------- | ---- | ----------------------------------------- |
-| isStopped  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to prevent the back button press from being propagated to other components or applications.<br>**true** to prevent, **false** otherwise.<br>Default value: **true**. If an invalid value is set, the default value is used.|
+| isStopped  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to prevent the back button press from being propagated to other components or applications.<br>**true** to prevent, **false** otherwise.<br>Default value: **true**. If an invalid value is set, the default value is used.|
 
 ### halfLeading<sup>18+</sup>
 
@@ -1159,7 +1159,7 @@ Sets whether to vertically center the text in a line and evenly distribute the l
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| halfLeading | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes | Whether to vertically center the text.<br>Whether half leading is enabled. Half leading is the leading split in half and applied equally to the top and bottom edges. The value **true** means that half leading is enabled, and **false** means the opposite.<br>Default value: **false**|
+| halfLeading | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes | Whether to vertically center the text.<br>Whether half leading is enabled. Half leading is the leading split in half and applied equally to the top and bottom edges. The value **true** means that half leading is enabled, and **false** means the opposite.<br>Default value: **false**|
 
 ### minFontScale<sup>18+</sup>
 
@@ -1175,7 +1175,7 @@ Sets the minimum font scale factor for text.
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | Yes  | Minimum font scale factor for text. The **undefined** type is supported.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is handled as 0. A value greater than 1 is handled as 1. Abnormal values are ineffective by default.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 18: Setting the Minimum and Maximum Font Scale Factors](#example-18-setting-the-minimum-and-maximum-font-scale-factors).|
+| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number \| [Resource](ts-types.md#resource)> | Yes  | Minimum font scale factor for text. The **undefined** type is supported.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is handled as 0. A value greater than 1 is handled as 1. Abnormal values are ineffective by default.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 18: Setting the Minimum and Maximum Font Scale Factors](#example-18-setting-the-minimum-and-maximum-font-scale-factors).|
 
 ### maxFontScale<sup>18+</sup>
 
@@ -1191,7 +1191,7 @@ Sets the maximum font scale factor for text.
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | Yes  | Maximum font scale factor for text. The **undefined** type is supported.<br>Value range: [1, +∞)<br>**NOTE**<br>A value less than 1 is handled as 1. Abnormal values are ineffective by default.<br>After the maxFontScale attribute is set, the showError attribute can be enlarged to twice at most.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 18: Setting the Minimum and Maximum Font Scale Factors](#example-18-setting-the-minimum-and-maximum-font-scale-factors).|
+| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number \| [Resource](ts-types.md#resource)> | Yes  | Maximum font scale factor for text. The **undefined** type is supported.<br>Value range: [1, +∞)<br>**NOTE**<br>A value less than 1 is handled as 1. Abnormal values are ineffective by default.<br>After the maxFontScale attribute is set, the showError attribute can be enlarged to twice at most.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 18: Setting the Minimum and Maximum Font Scale Factors](#example-18-setting-the-minimum-and-maximum-font-scale-factors).|
 
 ### cancelButton<sup>18+</sup>
 
@@ -1225,7 +1225,7 @@ When the text is not in the editing state, the ellipsisMode attribute takes effe
 
 | Name| Type                                               | Mandatory| Description                                     |
 | ------ | --------------------------------------------------- | ---- | ----------------------------------------- |
-| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[EllipsisMode](ts-appendix-enums.md#ellipsismode11)> | Yes  | Ellipsis position.<br>Default value: **EllipsisMode.END**|
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[EllipsisMode](ts-appendix-enums.md#ellipsismode11)> | Yes  | Ellipsis position.<br>Default value: **EllipsisMode.END**|
 
 ### enableAutoFillAnimation<sup>20+</sup>
 
@@ -1241,7 +1241,7 @@ Sets whether to enable the autofill animation.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable the auto-fill animation.<br>**true**: enable<br>**false**: disable<br><br>Default value: **true**<br>**NOTE**<br>After this function is enabled, the animation takes effect only when the input mode (specified by #inputtype) is set to Password, NEW_PASSWORD, or NUMBER_PASSWORD. |
+| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable the auto-fill animation.<br>**true**: enable<br>**false**: disable<br><br>Default value: **true**<br>**NOTE**<br>After this function is enabled, the animation takes effect only when the input mode (specified by #inputtype) is set to Password, NEW_PASSWORD, or NUMBER_PASSWORD. |
 
 ### enableAutoSpacing<sup>20+</sup>
 
@@ -1257,7 +1257,7 @@ Sets whether to enable automatic spacing between Chinese and Western characters.
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable automatic spacing between Chinese and Western characters.<br>**true** to enable, **false** otherwise.<br>Default value: **false**|
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable automatic spacing between Chinese and Western characters.<br>**true** to enable, **false** otherwise.<br>Default value: **false**|
 
 ## InputType
 

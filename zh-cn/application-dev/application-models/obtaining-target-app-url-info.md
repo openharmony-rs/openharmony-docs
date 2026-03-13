@@ -62,7 +62,7 @@
     1. 使用[aa工具](../tools/aa-tool.md)，获取目标应用的abilityName。
 
         ```bash
-        hdc shell "aa dump -l | grep com.examplmyapplication"
+        hdc shell "aa dump -l | grep com.example.myapplication"
         ```
 
     2. 通过查看输出中的`Mission ID`部分，获取abilityName即为`EntryAbility`。

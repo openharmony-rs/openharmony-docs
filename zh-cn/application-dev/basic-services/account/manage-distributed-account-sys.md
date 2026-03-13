@@ -7,7 +7,7 @@
 <!--Tester: @zhaimengchao-->
 <!--Adviser: @zengyawen-->
 
-OEM厂商可以通过[分布式账号SDK](../../reference/apis-basic-services-kit/js-apis-distributed-account.md)将自有账号与本地系统账号建立关联关系。
+OEM厂商可以通过[@ohos.account.distributedAccount](../../reference/apis-basic-services-kit/js-apis-distributed-account.md)将自有账号与本地系统账号建立关联关系。
 
 ## 开发准备
 

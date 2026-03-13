@@ -32,7 +32,7 @@
 
 **迁移规则**
 
-- [aboutToRecyle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)生命周期无需改动，可保留原实现。
+- [aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)生命周期无需改动，可保留原实现。
 
 - [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18)生命周期在组件复用V2中进行了优化，去除了参数的同时，在复用前会自动重置各状态变量（详情参考[复用前的组件内状态变量重置](./arkts-new-reusableV2.md#复用前的组件内状态变量重置)），无需开发者在aboutToReuse中手动赋值回初始值。
 
@@ -326,7 +326,7 @@ export struct OneMoment {
   }
 }
 ```
-![](figures/v1_v2_reusable_if_two.png)
+![](figures/v1_v2_reusable_if_two.gif)
 
 ### 列表滚动-Repeat全量加载使用场景
 
@@ -682,7 +682,7 @@ struct QuestionSwiperItem {
   }
 }
 ```
-![](figures/v1_v2_reusable_waterflow.gif)
+![](figures/v1_v2_reusable_swiper.gif)
 
 
 ### 列表滚动-ListItemGroup使用场景
@@ -701,7 +701,7 @@ struct ListItemGroupAndReusable {
   itemHead(text: string) {
     Text(text)
       .fontSize(20)
-      .backgroundColor(0xAABBCC)
+      .backgroundColor(0xff519db4)
       .width('100%')
       .padding(10)
   }
@@ -754,7 +754,7 @@ class DataSrc {
   @Trace dataScr1: string[] = [];
 }
 ```
-![](figures/v1_v2_reusable_listitemgroup.png)
+![](figures/v1_v2_reusable_listitemgroup.gif)
 
 ### 多种条目类型使用场景
 

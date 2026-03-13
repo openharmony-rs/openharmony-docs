@@ -148,7 +148,7 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 | 参数名   | 类型        | 必填 | 说明                     |
 | ------- | ----------- | ---- | ------------------------ |
 | ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 当前划词面板依赖的上下文信息。 |
-| info    | [PanelInfo](./js-apis-selectionInput-selectionPanel-sys.md)   | 是   | 划词面板信息。 |
+| info    | [PanelInfo](./js-apis-selectionInput-selectionPanel-sys.md#panelinfo)   | 是   | 划词面板信息。 |
 
 **返回值：**
 | 类型   | 说明                                                                 |

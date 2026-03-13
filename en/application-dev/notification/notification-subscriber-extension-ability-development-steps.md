@@ -51,7 +51,7 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
    ```
 3. Connect to the wearable, obtain the address using the API of [Bluetooth module](../connectivity/connectivity-kit-intro.md#bluetooth), and then subscribe to or unsubscribe from notifications through the [subscribe](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionsubscribe)/[unsubscribe](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionunsubscribe) API.
 
-4. After implementing [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md), call the [OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings) API at an appropriate time to open the notification subscription settings screen and guide the user to grant the permission for obtaining notifications from the device. This screen is displayed as a semi-modal dialog box. It is recommended that you provide a notification authorization button on the device management screen. When the user taps the button, the [OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings) API is called.
+4. After implementing [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md), call the [openSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings) API at an appropriate time to open the notification subscription settings screen and guide the user to grant the permission for obtaining notifications from the device. This screen is displayed as a semi-modal dialog box. It is recommended that you provide a notification authorization button on the device management screen. When the user taps the button, the [openSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings) API is called.
 
 5. Configure **ExtensionAbilities** in the **module.json5** file of the application.
    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/module.json5)-->
@@ -79,32 +79,33 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
      }
    ```
 
-## Sample Code for Classic Bluetooth
+7. The following uses classic Bluetooth as an example. You can use BLE for connection as required.
 
-1. The following uses classic Bluetooth as an example. You can use BLE for connection as required.
-2. After the user receives a message, the application establishes a Bluetooth connection if the current connection is invalid.
-3. If an active Bluetooth connection already exists, the application directly uses this connection to send the message.
-4. If message transmission fails, the application will re-establish the connection and retry sending the message once the connection is successfully established.
-5. The application requests the **ohos.permission.ACCESS_BLUETOOTH** permission. For details about how to configure and apply for permissions, see [Declaring Permissions](../security/AccessToken/declare-permissions.md) and [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
+8. After the user receives a message, the application establishes a Bluetooth connection if the current connection is invalid.
+
+9. If an active Bluetooth connection already exists, the application directly uses this connection to send the message.
+
+10. If message transmission fails, the application will re-establish the connection and retry sending the message once the connection is successfully established.
+
+11. Apply for the [ohos.permission.ACCESS_BLUETOOTH](../security/AccessToken/permissions-for-all-user.md#ohospermissionaccess_bluetooth) permission. For details about how to configure and apply for permissions, see [Declaring Permissions](../security/AccessToken/declare-permissions.md) and [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
-   import { BusinessError } from '@ohos.base';
+   import { BusinessError } from '@kit.BasicServicesKit';
    import { socket } from '@kit.ConnectivityKit'
-   import extensionSubscription from '@ohos.notificationExtensionSubscription';
-   import util from '@ohos.util'; // Import the util module of OpenHarmony.
+   import { util } from '@kit.ArkTS'; 
    
    const DOMAIN = 0x0000;
    class TransferInfo {
      public type: string = ''
-     public info: extensionSubscription.NotificationInfo | undefined
+     public info: notificationExtensionSubscription.NotificationInfo | undefined
      public cancelHashCodes: Array<string> | undefined
    }
-   
-   class SppClientManager {
-     // Define the socket ID of the client.
+
+    // Spp means Serial Port Profile   
+    class SppClientManager {
      private clientNumber: number = -1;
      private peerDevice: string = '';
    
@@ -116,11 +117,9 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
        return this.clientNumber !== -1;
      }
    
-     // Initiate a connection.
      public async startConnect(): Promise<boolean> {
-       // Configure connection parameters.
        let option: socket.SppOptions = {
-         uuid: '00009999-0000-1000-8000-00805F9B34FB', // UUID of the target SPP service on the server. Ensure the server supports the connection associated with this UUID.
+         uuid: '00009999-0000-1000-8000-00805F9B34FB', 
          secure: false,
          type: socket.SppType.SPP_RFCOMM
        };
@@ -145,17 +144,15 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
          return;
        }
        hilog.info(DOMAIN, 'testTag', `prepare sending data to client ${this.clientNumber}`);
-       const textEncoder = new util.TextEncoder();
-       const uint8Array = textEncoder.encodeInto(jsonStr);
-       const arrayBuffer = uint8Array.buffer; // ArrayBuffer to be sent
+       const textEncoder:util.TextEncoder = new util.TextEncoder();
+       const uint8Array: Uint8Array = textEncoder.encodeInto(jsonStr);
+       const arrayBuffer = uint8Array.buffer;
    
-       // Send data via sppWrite.
        socket.sppWrite(this.clientNumber, arrayBuffer);
-       hilog.info(DOMAIN, 'testTag', `sending success size: ${arrayBuffer.byteLength} bytes, data: ${jsonStr}`);
+       hilog.info(DOMAIN, 'testTag', `sending success size:${arrayBuffer.byteLength} bytes, data: ${jsonStr}`);
      }
    
-     // Send data.
-     public sendNotificationData(notificationInfo: extensionSubscription.NotificationInfo) {
+     public sendNotificationData(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
        let info: TransferInfo = {
          type: 'publish',
          info: notificationInfo,
@@ -173,7 +170,6 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
          info: undefined
        };
    
-       // Serialize NotificationInfo into a JSON string.
        let jsonStr = JSON.stringify(info);
        this.sendData(jsonStr);
      }
@@ -183,17 +179,14 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
        hilog.info(DOMAIN, 'testTag', `client data: ${JSON.stringify(data)}`);
      };
    
-     // Close the connection.
      public stopConnect() {
        hilog.info(DOMAIN, 'testTag', `closeSppClient ${this.clientNumber}`);
        try {
-         // Unsubscribe from the event.
          socket.off('sppRead', this.clientNumber, this.read);
        } catch (err) {
          hilog.error(DOMAIN, 'testTag', `off sppRead errCode: ${err.code}, errMessage: ${err.message}`);
        }
        try {
-         // Close the client-side connection.
          socket.sppCloseClientSocket(this.clientNumber);
          this.clientNumber = -1;
        } catch (err) {
@@ -215,14 +208,20 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
      onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
        hilog.info(DOMAIN, 'testTag', `on receive message ${JSON.stringify(notificationInfo)}`)
        notificationExtensionSubscription.getSubscribeInfo()
-         .then(info => {
+         .then(async (info) => {
            if (this.sppClientManager == undefined) {
              this.sppClientManager = new SppClientManager(info[0].addr);
            }
            if (this.sppClientManager.isConnect()) {
              this.sendPublishWithRetry(notificationInfo);
            } else {
-             this.sppClientManager.startConnect()
+             try {
+               await this.sppClientManager.startConnect().then(() => {
+                 hilog.info(DOMAIN, 'testTag', `startConnect success`);
+               });
+             } catch (err) {
+               hilog.error(DOMAIN, 'testTag', `Failed to start connect: ${JSON.stringify(err)}`);
+             }
              setTimeout(() => {
                this.sendPublishWithRetry(notificationInfo);
              }, 3000)
@@ -234,30 +233,42 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
      }
    
      // Sends a publish notification and retries once upon failure.
-     private sendPublishWithRetry(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
+     private async sendPublishWithRetry(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
        try {
          this.sppClientManager!.sendNotificationData(notificationInfo);
        } catch (err) {
          hilog.error(DOMAIN, 'testTag', `send failed, errCode ${err.code}, errorMessage ${err.message}, and retry one times`);
-         this.sppClientManager!.startConnect();
+         try {
+           await this.sppClientManager!.startConnect().then(() => {
+             hilog.info(DOMAIN, 'testTag', `startConnect success`);
+           });
+         } catch (err) {
+           hilog.error(DOMAIN, 'testTag', `Failed to start connect: ${JSON.stringify(err)}`);
+         }
          setTimeout(() => {
            this.sppClientManager!.sendNotificationData(notificationInfo);
          }, 3000);
        }
      }
    
-     // Called back when notifications is cancelled.
+     // Called back when notifications are cancelled.
      onCancelMessages(hashCodes: Array<string>): void {
        hilog.info(DOMAIN, 'testTag', `on cancel message ${JSON.stringify(hashCodes)}`)
        notificationExtensionSubscription.getSubscribeInfo()
-         .then(info => {
+         .then(async (info) => {
            if (this.sppClientManager == undefined) {
              this.sppClientManager = new SppClientManager(info[0].addr);
            }
            if (this.sppClientManager.isConnect()) {
              this.sendCancelWithRetry(hashCodes);
            } else {
-             this.sppClientManager.startConnect()
+             try {
+               await this.sppClientManager.startConnect().then(() => {
+                 hilog.info(DOMAIN, 'testTag', `startConnect success`);
+               });
+             } catch (err) {
+               hilog.error(DOMAIN, 'testTag', `Failed to start connect: ${JSON.stringify(err)}`);
+             }
              setTimeout(() => {
                this.sendCancelWithRetry(hashCodes);
              }, 3000)
@@ -268,12 +279,18 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
      }
    
      // Retries a cancel operation if it fails.
-     private sendCancelWithRetry(hashCodes: string[]) {
+     private async sendCancelWithRetry(hashCodes: string[]) {
        try {
          this.sppClientManager!.sendCancelNotificationData(hashCodes);
        } catch (err) {
          hilog.error(DOMAIN, 'testTag', `send failed, errCode ${err.code}, errorMessage ${err.message}, and retry one times`);
-         this.sppClientManager!.startConnect();
+         try {
+           await this.sppClientManager!.startConnect().then(() => {
+             hilog.info(DOMAIN, 'testTag', `startConnect success`);
+           });
+         } catch (err) {
+           hilog.error(DOMAIN, 'testTag', `Failed to start connect: ${JSON.stringify(err)}`);
+         }
          setTimeout(() => {
            this.sppClientManager!.sendCancelNotificationData(hashCodes);
          }, 3000);

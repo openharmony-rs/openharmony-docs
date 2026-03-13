@@ -152,7 +152,7 @@ Queries the information about the nearest **NavDestination** component (in **Nav
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| isInner  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to search inward for the nearest **NavDestination** component in the navigation stack.<br>**true**: Search inward.<br>**false**: Search outward.|
+| isInner  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to search inward for the nearest **NavDestination** component in the navigation stack.<br>**true**: Search inward.<br>**false**: Search outward.|
 
 **Return value**
 

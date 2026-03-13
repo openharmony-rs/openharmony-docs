@@ -47,7 +47,7 @@ getDefaultApplication(type: string, userId?: number): Promise\<BundleInfo>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -113,7 +113,7 @@ getDefaultApplication(type: string, userId: number, callback: AsyncCallback\<Bun
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -179,7 +179,7 @@ getDefaultApplication(type: string, callback: AsyncCallback\<BundleInfo>) : void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -249,7 +249,7 @@ getDefaultApplicationSync(type: string, userId?: number): BundleInfo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -317,7 +317,7 @@ setDefaultApplication(type: string, elementName: ElementName, userId?: number): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
@@ -401,7 +401,7 @@ setDefaultApplication(type: string, elementName: ElementName, userId: number, ca
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
@@ -480,7 +480,7 @@ setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCal
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
@@ -557,7 +557,7 @@ setDefaultApplicationSync(type: string, elementName: ElementName, userId?: numbe
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
@@ -648,7 +648,7 @@ resetDefaultApplication(type: string, userId?: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -714,7 +714,7 @@ resetDefaultApplication(type: string, userId: number, callback: AsyncCallback\<v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -781,7 +781,7 @@ resetDefaultApplication(type: string, callback: AsyncCallback\<void>) : void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -844,7 +844,7 @@ resetDefaultApplicationSync(type: string, userId?: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |

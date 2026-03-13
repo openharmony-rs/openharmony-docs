@@ -1861,8 +1861,8 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 | 202     | Caller is not a system application. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
-| 5400103 | I/O error. |
-| 20700004 | Data size exceeds the limit. |
+| 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. System sound manager service error.|
+| 20700004 | Data size exceeds the limit. Note:This error is returned when the file size is between 200MB and 2GB.|
 | 20700005 | The number of files exceeds the limit. |
 | 20700006 | Insufficient ROM space. |
 
@@ -1931,8 +1931,8 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 | 202     | Caller is not a system application. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
-| 5400103 | I/O error. |
-| 20700004 | Data size exceeds the limit. |
+| 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. Ringtone library error. 4. System sound manager service error.|
+| 20700004 | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.|
 | 20700005 | The number of files exceeds the limit. |
 | 20700006 | Insufficient ROM space. |
 

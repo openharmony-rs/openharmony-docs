@@ -204,7 +204,7 @@ To obfuscate string literal property names, you must use this option together wi
 -enable-string-property-obfuscation
 ```
 
-According to the preceding configuration, the obfuscation effect of **"fritstName"** and **"personAge"** is as follows:
+According to the preceding configuration, the obfuscation effect of **"firstName"** and **"personAge"** is as follows:
 
 ```ts
 // Before obfuscation:
