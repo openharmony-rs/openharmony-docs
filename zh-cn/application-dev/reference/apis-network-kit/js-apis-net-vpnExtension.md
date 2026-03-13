@@ -1,4 +1,4 @@
-# @ohos.net.vpnExtension (VPN 增强管理)
+# @ohos.net.vpnExtension (VPN增强管理)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->

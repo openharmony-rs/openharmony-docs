@@ -162,7 +162,7 @@ send(options: UDPSendOptions, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -284,7 +284,7 @@ send(options: UDPSendOptions): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -767,7 +767,7 @@ getLocalAddress(): Promise\<NetAddress\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1098,7 +1098,7 @@ Socket的连接信息。
 
 UDP 其余错误码映射形式为：2301000 + Linux内核错误码。
 
-错误码的详细介绍参见[SOCKET 错误码](errorcode-net-socket.md)。
+错误码的详细介绍参见[SOCKET错误码](errorcode-net-socket.md)。
 
 ## socket.constructMulticastSocketInstance<sup>11+</sup>
 
@@ -1147,7 +1147,7 @@ addMembership(multicastAddress: NetAddress, callback: AsyncCallback\<void\>): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -1204,7 +1204,7 @@ addMembership(multicastAddress: NetAddress): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -1253,7 +1253,7 @@ dropMembership(multicastAddress: NetAddress, callback: AsyncCallback\<void\>): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -1309,7 +1309,7 @@ dropMembership(multicastAddress: NetAddress): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -1358,7 +1358,7 @@ setMulticastTTL(ttl: number, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -1410,7 +1410,7 @@ setMulticastTTL(ttl: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -1453,7 +1453,7 @@ getMulticastTTL(callback: AsyncCallback\<number\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -1497,7 +1497,7 @@ getMulticastTTL(): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | ------- | ----------------------- |
@@ -1539,7 +1539,7 @@ setLoopbackMode(flag: boolean, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -1588,7 +1588,7 @@ setLoopbackMode(flag: boolean): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | ------- | ----------------------- |
@@ -1629,7 +1629,7 @@ getLoopbackMode(callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | ------- | ----------------------- |
@@ -1672,7 +1672,7 @@ getLoopbackMode(): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | ------- | ----------------------- |
@@ -1902,7 +1902,7 @@ connect(options: TCPConnectOptions, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -2003,7 +2003,7 @@ connect(options: TCPConnectOptions): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -2748,7 +2748,7 @@ getLocalAddress(): Promise\<NetAddress\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -3063,7 +3063,7 @@ listen(address: NetAddress, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -3123,7 +3123,7 @@ listen(address: NetAddress): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -3175,7 +3175,7 @@ getState(callback: AsyncCallback\<SocketStateBase\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
@@ -3233,7 +3233,7 @@ getState(): Promise\<SocketStateBase\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
@@ -3345,7 +3345,7 @@ setExtraOptions(options: TCPExtraOptions, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
@@ -3425,7 +3425,7 @@ setExtraOptions(options: TCPExtraOptions): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
@@ -3496,7 +3496,7 @@ getLocalAddress(): Promise\<NetAddress\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -3754,7 +3754,7 @@ TCPSocketServer停止监听并释放通过[listen](#listen10)方法绑定的端�
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -3823,7 +3823,7 @@ send(options: TCPSendOptions, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3875,7 +3875,7 @@ send(options: TCPSendOptions): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3921,7 +3921,7 @@ close(callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3966,7 +3966,7 @@ close(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4010,7 +4010,7 @@ getRemoteAddress(callback: AsyncCallback\<NetAddress\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
@@ -4058,7 +4058,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
@@ -4098,7 +4098,7 @@ getLocalAddress(): Promise\<NetAddress\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -4456,7 +4456,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 
 TCP 其余错误码映射形式为：2301000 + Linux内核错误码。
 
-错误码的详细介绍参见[SOCKET 错误码](errorcode-net-socket.md)。
+错误码的详细介绍参见[SOCKET错误码](errorcode-net-socket.md)。
 
 ## socket.constructLocalSocketInstance<sup>11+</sup>
 
@@ -4509,7 +4509,7 @@ bind(address: LocalAddress): Promise\<void\>;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                    |
 | ------- | -------------------------- |
@@ -4567,7 +4567,7 @@ connect(options: LocalConnectOptions): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -4630,7 +4630,7 @@ send(options: LocalSendOptions): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -4689,7 +4689,7 @@ close(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -4837,7 +4837,7 @@ setExtraOptions(options: ExtraOptionsBase): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -4901,7 +4901,7 @@ getExtraOptions(): Promise\<ExtraOptionsBase\>;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -4959,7 +4959,7 @@ getLocalAddress(): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -5404,7 +5404,7 @@ listen(address: LocalAddress): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 | -------- | --------------------------- |
@@ -5510,7 +5510,7 @@ setExtraOptions(options: ExtraOptionsBase): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
@@ -5625,7 +5625,7 @@ getLocalAddress(): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -5887,7 +5887,7 @@ LocalSocketServer停止监听并释放通过[listen](#listen11)方法绑定的�
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -5964,7 +5964,7 @@ send(options: LocalSendOptions): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6006,7 +6006,7 @@ close(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | -------------------- |
@@ -6043,7 +6043,7 @@ getLocalAddress(): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -6399,7 +6399,7 @@ server.on('connect', (connection: socket.LocalSocketConnection) => {
 
 LocalSocket 错误码映射形式为：2301000 + Linux内核错误码。
 
-错误码的详细介绍参见[SOCKET 错误码](errorcode-net-socket.md)。
+错误码的详细介绍参见[SOCKET错误码](errorcode-net-socket.md)。
 
 ## socket.constructTLSSocketInstance<sup>9+</sup>
 
@@ -6448,7 +6448,7 @@ constructTLSSocketInstance(tcpSocket: TCPSocket): TLSSocket
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                             |
 |---------|----------------------------------|
@@ -6511,7 +6511,7 @@ bind(address: NetAddress, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -6567,7 +6567,7 @@ bind(address: NetAddress): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
@@ -6610,7 +6610,7 @@ getState(callback: AsyncCallback\<SocketStateBase\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)。
 
 | 错误码ID | 错误信息                        |
 | ------- | ------------------------------ |
@@ -6660,7 +6660,7 @@ getState(): Promise\<SocketStateBase\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)。
 
 | 错误码ID | 错误信息                        |
 | ------- | ------------------------------ |
@@ -6709,7 +6709,7 @@ setExtraOptions(options: TCPExtraOptions, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | ------- | -----------------------------  |
@@ -6783,7 +6783,7 @@ setExtraOptions(options: TCPExtraOptions): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | ------- | ------------------------------ |
@@ -9376,7 +9376,7 @@ TLSSocketServer停止监听并释放通过[listen](#listen10-2)方法绑定的�
 
 **错误码：**
 
-以下错误码的详细介绍请参见[SOCKET 错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[SOCKET错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |

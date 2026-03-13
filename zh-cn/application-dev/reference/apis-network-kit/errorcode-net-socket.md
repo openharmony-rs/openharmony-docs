@@ -1,4 +1,4 @@
-# SOCKET 错误码
+# SOCKET错误码
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->

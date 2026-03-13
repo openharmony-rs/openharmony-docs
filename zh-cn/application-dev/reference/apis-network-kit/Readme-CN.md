@@ -15,8 +15,8 @@
   - [@ohos.net.socket (Socket连接)](js-apis-socket.md)
   - [@ohos.net.statistics (流量管理)](js-apis-net-statistics.md)
   - [@ohos.net.sharing (网络共享管理)](js-apis-net-sharing.md)
-  - [@ohos.net.vpnExtension (VPN 增强管理)](js-apis-net-vpnExtension.md)
-  - [@ohos.net.vpn (VPN 管理)](js-apis-net-vpn.md)
+  - [@ohos.net.vpnExtension (VPN增强管理)](js-apis-net-vpnExtension.md)
+  - [@ohos.net.vpn (VPN管理)](js-apis-net-vpn.md)
   - [@ohos.net.webSocket (WebSocket连接)](js-apis-webSocket.md)
   - [@ohos.net.netFirewall (网络防火墙)](js-apis-net-netfirewall.md)
   - [@ohos.net.networkSecurity (网络安全校验)](js-apis-networkSecurity.md)
@@ -29,8 +29,8 @@
   - [@ohos.net.policy (网络策略管理)（系统接口）](js-apis-net-policy-sys.md)
   - [@ohos.net.sharing (网络共享管理)（系统接口）](js-apis-net-sharing-sys.md)
   - [@ohos.net.statistics (流量管理)（系统接口）](js-apis-net-statistics-sys.md)
-  - [@ohos.net.vpn (VPN 管理)（系统接口）](js-apis-net-vpn-sys.md)
-  - [@ohos.net.vpnExtension (VPN 增强管理)（系统接口）](js-apis-net-vpnExtension-sys.md)
+  - [@ohos.net.vpn (VPN管理)（系统接口）](js-apis-net-vpn-sys.md)
+  - [@ohos.net.vpnExtension (VPN增强管理)（系统接口）](js-apis-net-vpnExtension-sys.md)
   - [@ohos.net.netFirewall (网络防火墙)(系统接口)](js-apis-net-netfirewall-sys.md)
   <!--DelEnd-->
 - C API<!--network-c-->
@@ -86,7 +86,7 @@
   - [@system.fetch (数据请求)](js-apis-system-fetch.md)
 - 错误码<!--network-arkts-errcode-->
   - [HTTP错误码](errorcode-net-http.md)
-  - [SOCKET 错误码](errorcode-net-socket.md)
+  - [SOCKET错误码](errorcode-net-socket.md)
   - [webSocket错误码](errorcode-net-webSocket.md)
   - [网络连接管理错误码](errorcode-net-connection.md)
   - [以太网连接错误码](errorcode-net-ethernet.md)
