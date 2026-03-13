@@ -422,7 +422,7 @@ new Date("2020-11-03");
 new Date("11-02-2021");
 ```
 
-If the string is in other formats, you can convert it to a date object by calling **new Date(year:number,month:number,day?:number,hour?:number,minute?:number,second?:number,ms?:number)**.
+For strings in other formats, you can convert it to a Date object by calling **new Date(year:number,month:number,day?:number,hour?:number,minute?:number,second?:number,ms?:number)**.
 
 ```ts
 // Syntax for creating a date based on parameters:

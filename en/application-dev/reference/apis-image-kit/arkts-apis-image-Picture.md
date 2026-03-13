@@ -165,7 +165,7 @@ Sets an auxiliary picture.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -176,7 +176,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 ```ts
 async function SetAuxiliaryPicture(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // Support for HDR images is required.
+  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // An HDR-compatible image is required.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -221,7 +221,7 @@ Obtains an auxiliary picture by type.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -261,7 +261,7 @@ Sets the metadata for this Picture object. This API uses a promise to return the
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -275,7 +275,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function SetPictureObjMetadata(exifContext: Context) {
   const exifResourceMgr = exifContext.resourceManager;
-  const exifRawFile = await exifResourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
+  const exifRawFile = await exifResourceMgr.getRawFileContent("exif.jpg"); // An image containing Exif metadata is required.
   let exifOps: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -324,7 +324,7 @@ Obtains the metadata of this Picture object. This API uses a promise to return t
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -365,7 +365,7 @@ Marshals this Picture object and writes it to a MessageSequence object.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
