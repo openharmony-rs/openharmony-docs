@@ -6,13 +6,13 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 23开始，音频模板提供统一的UI界面，帮助用户在操作上，对已完成接入的媒体应用实现无缝切换。
+从API version 23开始，音频模板提供统一的UI界面（播放列表，播放状态，媒体详情等），操作（搜索，收藏，播放，暂停等）方法，帮助用户在已完成接入的媒体应用间无缝切换。
 
 音频模板同时支持音频和视频内容，且两者的接入方式相同。本文档以音频场景为例进行说明。
 
 ## 基本概念
 
-音频模板控制器（AVMusicTemplateController）：包含标识媒体会话的ID（sessionId）和音频模板控制器是否已销毁（isDestroy）等，与媒体应用进行数据交互的方法。音频模板通过接入[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)与已完成接口[AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)接入的媒体应用进行数据交互进行界面展示，并给媒体应用下发播控（搜索，播放，暂停等）指令。
+音频模板控制器（AVMusicTemplateController）：包含标识媒体会话的ID（sessionId）和音频模板控制器是否已销毁（isDestroy）等，与媒体应用进行数据交互的方法。音频模板通过接入接口[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)获取已完成接口[AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)接入的媒体应用数据进行展示，并将用户的操作指令下发给媒体应用。
 
 
 ## 接口说明
