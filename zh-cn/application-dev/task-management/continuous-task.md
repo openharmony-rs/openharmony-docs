@@ -155,7 +155,7 @@
    
    从API version 16开始，支持通过[BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
 
-   <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
@@ -325,7 +325,7 @@
    
    从API version 16开始，支持通过[BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
 
-   <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/IndexAsyncAndAwait.ets) -->
+   <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/IndexAsyncAndAwait.ets) -->
 
    ``` TypeScript
    @Entry
@@ -434,7 +434,7 @@
 
    **跨设备或跨应用**申请长时任务示例代码如下。跨设备或跨应用在后台执行长时任务时，可以通过Call的方式在后台创建并运行UIAbility，具体使用请参考[通过跨设备Call调用实现多端协同](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)。
    
-   <!-- @[continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
+   <!-- @[continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
    
    ``` TypeScript
    const MSG_SEND_METHOD: string = 'CallSendMsg';
@@ -713,4 +713,4 @@
 
 针对长时任务开发，有以下相关实例可供参考：
 
-- [长时任务（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/ContinuousTask)
+- [长时任务（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/ContinuousTask)

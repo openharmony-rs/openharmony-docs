@@ -29,7 +29,7 @@
 
 1. 封装函数
 
-   <!-- @[encapsulation_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[encapsulation_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
 
    ``` C++
    #include "napi/native_api.h"
@@ -130,7 +130,7 @@
 
 2. 注册函数
 
-   <!-- @[registration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[registration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
 
    ``` C++
    EXTERN_C_START
@@ -150,7 +150,7 @@
 
 3. 注册模块
 
-   <!-- @[registration_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[registration_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
 
    ``` C++
    static napi_module demoModule = {
@@ -171,7 +171,7 @@
 
 ### 在index.d.ts文件中声明函数
 
-   <!-- @[declaration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   <!-- @[declaration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
    ```ts
    import backgroundTaskManager from '@kit.BackgroundTasksKit';
@@ -184,7 +184,7 @@
 
 ### 在index.ets文件中调用函数
 
-   <!-- @[native_transient_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[native_transient_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    import testTransientTask from 'libentry.so';
