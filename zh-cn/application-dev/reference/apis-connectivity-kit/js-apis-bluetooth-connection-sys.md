@@ -22,11 +22,11 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport, callback: As
 
 向可信的远端设备发起蓝牙配对。通过非蓝牙扫描的方式(例如NFC等)获取到外设的地址，可以通过该接口发起配对。使用Callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -40,7 +40,7 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport, callback: As
 | transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | 是    | 表示设备类型，例如传统蓝牙设备或低功耗蓝牙设备。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当发起配对成功，err为undefined，否则为错误对象。   |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -79,11 +79,11 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise&lt;
 
 向可信的远端设备发起蓝牙配对。通过非蓝牙扫描的方式(例如NFC等)获取到外设的地址，可以通过该接口发起配对。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -102,7 +102,7 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise&lt;
 | ------------------------------------------------- | ------------------- |
 | Promise&lt;void&gt; | 返回promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -138,11 +138,11 @@ cancelPairedDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 删除配对的远程设备。使用Callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -155,7 +155,7 @@ cancelPairedDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 | deviceId | string | 是    | 表示要删除的远程设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除远程配对设备成功，err为undefined，否则为错误对象。   |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -190,11 +190,11 @@ cancelPairedDevice(deviceId: string): Promise&lt;void&gt;
 
 删除配对的远程设备。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -212,7 +212,7 @@ cancelPairedDevice(deviceId: string): Promise&lt;void&gt;
 | ------------------- | ------------- |
 | Promise&lt;void&gt; | 返回promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -250,11 +250,11 @@ cancelPairingDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 删除正在配对中的远程设备。使用Callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -267,7 +267,7 @@ cancelPairingDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 | deviceId | string | 是    | 表示要删除的远程设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除远程配对设备成功，err为undefined，否则为错误对象。   |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -299,11 +299,11 @@ cancelPairingDevice(deviceId: string): Promise&lt;void&gt;
 
 删除正在配对中的远程设备。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -321,7 +321,7 @@ cancelPairingDevice(deviceId: string): Promise&lt;void&gt;
 | ------------------- | ------------- |
 | Promise&lt;void&gt; | 返回promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -353,11 +353,11 @@ getLocalProfileUuids(callback: AsyncCallback&lt;Array&lt;ProfileUuids&gt;&gt;): 
 
 获取本地设备的profile UUID。使用Callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -369,7 +369,7 @@ getLocalProfileUuids(callback: AsyncCallback&lt;Array&lt;ProfileUuids&gt;&gt;): 
 | -------- | ------ | ---- | ----------------------------------- |
 | callback | AsyncCallback&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | 是    | 回调函数。当获取UUID成功，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -403,11 +403,11 @@ getLocalProfileUuids(): Promise&lt;Array&lt;ProfileUuids&gt;&gt;
 
 获取本地设备的profile UUID。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -419,7 +419,7 @@ getLocalProfileUuids(): Promise&lt;Array&lt;ProfileUuids&gt;&gt;
 | ------------------- | ------------- |
 |   Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | 返回promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -455,11 +455,11 @@ disconnectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;)
 
 断开远端设备所有连接的profiles。使用Callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -472,7 +472,7 @@ disconnectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;)
 | deviceId | string | 是    | 表示断开的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 以callback形式异步返回结果。当发起断开成功，err为undefined，否则为错误对象。   |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -510,11 +510,11 @@ disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
 断开远端设备所有连接的profiles。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -532,7 +532,7 @@ disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 | ------------------------------------------------- | ------------------- |
 | Promise&lt;void&gt; | 以Promise形式返回断开profiles的结果，返回true为成功，false为失败。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -568,9 +568,9 @@ getRemoteProductId(deviceId: string): string
 
 获取对端蓝牙设备的Product ID。从API16开始不再校验ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH权限。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -588,7 +588,7 @@ getRemoteProductId(deviceId: string): string
 | ------ | ------------- |
 | string | 以字符串格式返回设备Product ID。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -617,11 +617,11 @@ setRemoteDeviceType(deviceId: string, type: DeviceType): Promise&lt;void&gt;
 
 设置蓝牙远端设备自定义类型。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -640,7 +640,7 @@ setRemoteDeviceType(deviceId: string, type: DeviceType): Promise&lt;void&gt;
 | ------------------- | ------------- |
 | Promise&lt;void&gt; | 以Promise形式返回设置蓝牙远端设备类型的结果，设置失败时返回错误码信息。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -672,9 +672,9 @@ getRemoteDeviceType(deviceId: string): Promise&lt;DeviceType&gt;
 
 获取蓝牙远端设备自定义类型。使用Promise异步回调。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -692,7 +692,7 @@ getRemoteDeviceType(deviceId: string): Promise&lt;DeviceType&gt;
 | ------------------- | ------------- |
 | Promise&lt;[DeviceType](#devicetype12)&gt; | 以Promise形式返回设置蓝牙远端设备类型的结果，返回值为设备类型。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -724,9 +724,9 @@ controlDeviceAction(controlDeviceActionParams: ControlDeviceActionParams): Promi
 
 查找蓝牙耳机设备时，向耳机发送控制命令。使用Promise异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH（该权限仅系统应用可申请）。
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH（该权限仅系统应用可申请）。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -744,7 +744,7 @@ controlDeviceAction(controlDeviceActionParams: ControlDeviceActionParams): Promi
 | ------------------- | ------------- |
 | Promise&lt;void&gt; | 返回promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -786,11 +786,11 @@ updateCloudBluetoothDevice(trustedPairedDevices: TrustedPairedDevices): Promise&
 
 更新云设备到蓝牙设置。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -808,7 +808,7 @@ updateCloudBluetoothDevice(trustedPairedDevices: TrustedPairedDevices): Promise&
 | ------------------- | ------------- |
 | Promise&lt;void&gt; | 以Promise形式返回设置云设备的结果。设置失败时返回错误码信息。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -870,7 +870,7 @@ try {
 
 描述配对请求参数。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -884,7 +884,7 @@ try {
 
 控制命令的配置参数。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -903,7 +903,7 @@ try {
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -928,7 +928,7 @@ try {
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -950,7 +950,7 @@ try {
 
 描述电量信息的内容。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -965,7 +965,7 @@ try {
 
 枚举，控制类型。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -983,7 +983,7 @@ try {
 
 枚举，控制动作。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -1000,7 +1000,7 @@ try {
 
 枚举，控制对象。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -1017,7 +1017,7 @@ try {
 
 云设备列表。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -1031,7 +1031,7 @@ try {
 
 云设备信息。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力：** SystemCapability.Communication.Bluetooth.Core。
 
 **ArkTS-Dyn起始版本：** 15
 

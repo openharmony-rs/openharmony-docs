@@ -4,7 +4,8 @@ socket模块提供了操作和管理蓝牙socket的方法。
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 
@@ -20,9 +21,13 @@ sppListen(name: string, options: SppOptions, callback: AsyncCallback&lt;number&g
 
 创建一个服务端监听Socket。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -32,7 +37,7 @@ sppListen(name: string, options: SppOptions, callback: AsyncCallback&lt;number&g
 | options   | [SppOptions](#sppoptions)     | 是    | spp监听配置参数。              |
 | callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当创建服务端scoket成功，err为undefined，data为获取到的服务端socket的id；否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -70,13 +75,59 @@ try {
 ```
 
 
+## socket.getL2capPsm<sup>20+</sup>
+getL2capPsm(serverSocket: number): number
+
+获取服务端L2CAP链路类型套接字的协议/服务多路复用器值（Protocol/Service Multiplexer, [PSM](../../connectivity/terminology.md#psm)），该值用于标识特定的服务数据传输通道。
+
+>**说明：**
+>
+> 需要在服务端调用完[socket.sppListen](#socketspplisten)后调用该接口，且传入的链路类型[SppType](#spptype)需是SPP_L2CAP或SPP_L2CAP_BLE。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**参数：**
+
+| 参数名          | 类型                          | 必填   | 说明                      |
+| ------------ | --------------------------- | ---- | ----------------------- |
+| serverSocket | number | 是 | 服务端套接字的ID。<br>该值是调用[socket.sppListen](#socketspplisten)接口后，通过其异步callback获取到的。           |
+
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| number | 返回L2CAP链路类型套接字的psm值。<br>- [SppType](#spptype)设置为SPP_L2CAP_BLE时，返回值的有效值范围为[0x01, 0xFF]。<br>- [SppType](#spptype)设置为SPP_L2CAP时，返回值的有效值范围为[0x0000, 0xFFFF]。<br>- 服务端通道建立异常或[SppType](#spptype)非L2CAP链路类型时，返回-1。|          
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 服务端获取客户端设备地址。
+let serverNumber = 1; // 此处serverNumber需赋值为调用sppListen接口后，回调中得到的serverNumber。
+try {
+    let l2capPsm: number = socket.getL2capPsm(serverNumber);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
 ## socket.sppAccept
 
 sppAccept(serverSocket: number, callback: AsyncCallback&lt;number&gt;): void
 
 服务端监听socket等待客户端连接。使用Callback异步回调。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -85,7 +136,7 @@ sppAccept(serverSocket: number, callback: AsyncCallback&lt;number&gt;): void
 | serverSocket | number                      | 是    | 服务端socket的id。<br>该值是调用[sppListen](#socketspplisten)接口后，通过其异步callback获取到的。           |
 | callback     | AsyncCallback&lt;number&gt; | 是    | 回调函数。当收到客户端的连接时，err为undefined，data为该客户端socket的id；否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -127,9 +178,13 @@ sppConnect(deviceId: string, options: SppOptions, callback: AsyncCallback&lt;num
 
 客户端向远端设备发起spp连接。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -139,7 +194,7 @@ sppConnect(deviceId: string, options: SppOptions, callback: AsyncCallback&lt;num
 | options   | [SppOptions](#sppoptions)     | 是    | spp客户端连接配置参数。                  |
 | callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当客户端发起连接成功，err为undefined，data为当前客户端socket的id；否则为错误对象。        |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -182,7 +237,11 @@ getDeviceId(clientSocket: number): string
 
 通过clientSocket获取对端设备地址。服务端、客户端均可调用，传入非法clientSocket无法获取。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 17
 
 **参数：**
 
@@ -196,7 +255,7 @@ getDeviceId(clientSocket: number): string
 | ---------------------------------------- | -------------------------- |
 | string | 返回对端设备地址。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
@@ -233,7 +292,11 @@ sppCloseServerSocket(socket: number): void
 
 关闭服务端监听Socket，入参socket由sppListen接口返回。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -241,7 +304,7 @@ sppCloseServerSocket(socket: number): void
 | ------ | ------ | ---- | --------------- |
 | socket | number | 是    | 服务端监听socket的id。<br>该值是调用[sppListen](#socketspplisten)接口，通过其异步callback获取到的。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -271,7 +334,11 @@ sppCloseClientSocket(socket: number): void
 
 关闭客户端socket，入参socket由sppAccept或sppConnect接口获取。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -279,7 +346,7 @@ sppCloseClientSocket(socket: number): void
 | ------ | ------ | ---- | ------------- |
 | socket | number | 是    | 客户端socket的id。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -309,7 +376,11 @@ sppWrite(clientSocket: number, data: ArrayBuffer): void
 
 通过socket向远端发送数据，入参clientSocket由sppAccept或sppConnect接口获取 。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -318,7 +389,7 @@ sppWrite(clientSocket: number, data: ArrayBuffer): void
 | clientSocket | number      | 是    | 客户端socket的id。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。 |
 | data         | ArrayBuffer | 是    | 写入的数据。        |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -351,7 +422,11 @@ on(type: 'sppRead', clientSocket: number, callback: Callback&lt;ArrayBuffer&gt;)
 
 订阅spp读请求事件，入参clientSocket由sppAccept或sppConnect接口获取。使用Callback异步回调。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -361,7 +436,7 @@ on(type: 'sppRead', clientSocket: number, callback: Callback&lt;ArrayBuffer&gt;)
 | clientSocket | number                      | 是    | 客户端socket的id。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。              |
 | callback     | Callback&lt;ArrayBuffer&gt; | 是    | 指定订阅的回调函数，会返回读取到的数据。       |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -395,7 +470,11 @@ off(type: 'sppRead', clientSocket: number, callback?: Callback&lt;ArrayBuffer&gt
 
 取消订阅spp读请求事件，入参clientSocket由sppAccept或sppConnect接口获取。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -405,7 +484,7 @@ off(type: 'sppRead', clientSocket: number, callback?: Callback&lt;ArrayBuffer&gt
 | clientSocket | number                      | 是    | 客户端socket的id。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
 | callback     | Callback&lt;ArrayBuffer&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[socket.on('sppRead')](#socketonsppread)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -433,7 +512,11 @@ sppWriteAsync(clientSocket: number, data: ArrayBuffer): Promise&lt;void&gt;
 
 通过socket向远端发送数据的异步接口，该接口支持断开连接时SPP操作异常错误返回。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -448,7 +531,7 @@ sppWriteAsync(clientSocket: number, data: ArrayBuffer): Promise&lt;void&gt;
 | ----------------------------- | ---------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -482,13 +565,17 @@ sppReadAsync(clientSocket: number): Promise&lt;ArrayBuffer&gt;
 
 通过socket读取对端所发送数据的异步接口，该接口支持断开连接时SPP操作异常错误返回。
 
-> **注意**：
+> **注意：** 
 >
 > - 该接口不可与[socket.on('sppRead')](#socketonsppread)接口混用，同一路socket只能使用[socket.on('sppRead')](#socketonsppread)或者socket.sppReadAsync其中一个接口。
 >
 > - 该接口与[socket.on('sppRead')](#socketonsppread)使用方式不同，需要业务循环使用读取数据。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -502,7 +589,7 @@ sppReadAsync(clientSocket: number): Promise&lt;ArrayBuffer&gt;
 | ----------------------------- | ---------- |
 | Promise&lt;ArrayBuffer&gt; | Promise对象。返回读取的数据。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -539,25 +626,154 @@ while (flag) {
 ```
 
 
+## socket.getMaxReceiveDataSize<sup>22+</sup>
+
+getMaxReceiveDataSize(clientSocket: number): number
+
+客户端和服务端均可使用，获取当前套接字链路类型下最大接收数据的大小。
+
+- 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
+- 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
+- 若套接字链路类型为[SPP_RFCOMM](#spptype)时，最大接收数据大小无限制且返回值为0。
+
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名          | 类型                          | 必填   | 说明                                       |
+| ------------ | --------------------------- | ---- | ---------------------------------------- |
+| clientSocket | number                      | 是    | 客户端套接字的ID。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
+
+**返回值：**
+
+| 类型                            | 说明         |
+| ----------------------------- | ---------- |
+| number | 返回最大接收数据的大小，单位：Byte。 |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 入参clientNumber由sppAccept或sppConnect接口获取。
+let clientSocket = 1; 
+try {
+    let result: number = socket.getMaxReceiveDataSize(clientSocket);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## socket.getMaxTransmitDataSize<sup>22+</sup>
+
+getMaxTransmitDataSize(clientSocket: number): number
+
+客户端和服务端均可使用，获取套接字当前链路类型下最大发送数据的大小。
+
+- 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
+- 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
+- 若套接字链路类型为[SPP_RFCOMM](#spptype)时，最大发送数据大小无限制且返回值为0。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**参数：**
+
+| 参数名          | 类型                          | 必填   | 说明                                       |
+| ------------ | --------------------------- | ---- | ---------------------------------------- |
+| clientSocket | number                      | 是    | 客户端套接字的ID。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
+
+**返回值：**
+
+| 类型                            | 说明         |
+| ----------------------------- | ---------- |
+| number | 返回最大发送数据的大小，单位：Byte。 |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 入参clientNumber由sppAccept或sppConnect接口获取。
+let clientSocket = 1; 
+try {
+    let result: number = socket.getMaxTransmitDataSize(clientSocket);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## socket.isConnected<sup>22+</sup>
+
+isConnected(clientSocket: number): boolean
+
+客户端和服务端均可使用，检查当前链路是否已连接。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**参数：**
+
+| 参数名          | 类型                          | 必填   | 说明                                       |
+| ------------ | --------------------------- | ---- | ---------------------------------------- |
+| clientSocket | number                      | 是    | 客户端套接字的ID。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
+
+**返回值：**
+
+| 类型                            | 说明         |
+| ----------------------------- | ---------- |
+| boolean | 套接字链路是否已连接，true表示已连接，false表示未连接。 |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 入参clientNumber由sppAccept或sppConnect接口获取。
+let clientSocket = 1; 
+try {
+    let result: boolean = socket.isConnected(clientSocket);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
 ## SppOptions
 
 描述spp的配置参数。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 | 名称     | 类型                | 只读   | 可选   | 说明          |
 | ------ | ------------------- | ---- | ---- | ----------- |
-| uuid   | string              | 否    | 否    | spp单据的uuid。 |
-| secure | boolean             | 否    | 否    | 是否是安全通道。true表示是安全通道，false表示非安全通道。    |
-| type   | [SppType](#spptype)            | 否    | 否    | Spp链路类型。    |
+| uuid   | string              | 否    | 否    | spp单据的uuid。<br>**ArkTS-Dyn起始版本**: 10 |
+| secure | boolean             | 否    | 否    | 是否是安全通道。true表示是安全通道，false表示非安全通道。<br>**ArkTS-Dyn起始版本**: 10 |
+| type   | [SppType](#spptype)            | 否    | 否    | Spp链路类型。<br>**ArkTS-Dyn起始版本**: 10 |
+| psm<sup>20+</sup>   | number              | 否    | 是    |协议/服务多路复用器值，用于标识特定的服务数据传输通道。不填写该参数时默认值为-1。<br>对于客户端：<br>- SppType设置为SPP_RFCOMM时，该参数不填。<br>-  SppType设置为SPP_L2CAP_BLE或SPP_L2CAP时，需和服务端的psm值保持一致。<br>对于服务端：<br>- SppType设置为SPP_RFCOMM时，该参数不填。<br>- SppType设置为SPP_L2CAP_BLE时，psm值必须由系统自动分配，有效值范围为[0x01, 0xFF]。<br>- SppType设置为SPP_L2CAP时，psm值可以主动设置或蓝牙子系统分配，若为主动设置，其有效范围为[0x00, 0xFFFF]，并且需要满足低位字节最低位必须为1，高位字节最低位必须为0；若为蓝牙子系统分配，该参数不填，可以通过[socket.getL2capPsm](#socketgetl2cappsm20)接口获取psm值。<br>**ArkTS-Dyn起始版本**: 20|
 
 
 ## SppType
 
 枚举，Spp链路类型。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本**: 10
 
 | 名称         | 值  | 说明            |
 | ---------- | ---- | ------------- |
 | SPP_RFCOMM | 0    | 表示rfcomm链路类型。 |
+| SPP_L2CAP<sup>20+</sup> | 1    | 基于传统蓝牙（BR/EDR）的L2CAP链路。 |
+| SPP_L2CAP_BLE<sup>20+</sup> | 2    | 基于低功耗蓝牙（BLE）的L2CAP链路。 |

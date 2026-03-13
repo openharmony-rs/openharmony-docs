@@ -1945,7 +1945,8 @@ try {
 
 ## BundleInstaller.createAppClone<sup>12+</sup>
 
-ArkTS-Dyn: createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): Promise\<number\><br>
+ArkTS-Dyn: createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): Promise\<number\>
+
 ArkTS-Sta: createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): Promise\<int\>
 
 创建应用分身，使用Promise异步回调。
@@ -2296,7 +2297,8 @@ try {
 
 ## BundleInstaller.installPreexistingApp<sup>12+</sup>
 
-ArkTS-Dyn: installPreexistingApp(bundleName: string, userId?: number): Promise\<void\><br>
+ArkTS-Dyn: installPreexistingApp(bundleName: string, userId?: number): Promise\<void\>
+
 ArkTS-Sta: installPreexistingApp(bundleName: string, userId?: int): Promise\<void\>
 
 安装应用，使用Promise异步回调。

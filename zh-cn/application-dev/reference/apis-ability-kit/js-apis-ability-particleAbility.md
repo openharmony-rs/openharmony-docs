@@ -3,9 +3,11 @@
 particleAbility模块提供了操作Data和Service类型的Ability的能力，包括启动、停止指定的particleAbility，获取dataAbilityHelper，连接、断连指定的ServiceAbility等。
 
 > **说明：**
-> 
+>
+> 本模块仅支持ArkTS-Dyn。
+>
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
+>
 > 本模块接口仅可在FA模型下使用。
 
 ## 使用限制
@@ -29,6 +31,10 @@ startAbility(parameter: StartAbilityParameter, callback: AsyncCallback\<void>): 
 > 组件启动规则详见：[组件启动规则（FA模型）](../../application-models/component-startup-rules-fa.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -61,7 +67,7 @@ particleAbility.startAbility(
     if (error && error.code !== 0) {
       console.error(`startAbility fail, error: ${JSON.stringify(error)}`);
     } else {
-      console.log(`startAbility success, data: ${JSON.stringify(data)}`);
+      console.info(`startAbility success, data: ${JSON.stringify(data)}`);
     }
   },
 );
@@ -78,6 +84,10 @@ startAbility(parameter: StartAbilityParameter): Promise\<void>
 > 组件启动规则详见：[组件启动规则（FA模型）](../../application-models/component-startup-rules-fa.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -124,6 +134,10 @@ terminateSelf(callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名     | 类型                 | 必填 | 说明                 |
@@ -153,6 +167,10 @@ terminateSelf(): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **返回值：**
 
 | 类型           | 说明                      |
@@ -170,8 +188,6 @@ particleAbility.terminateSelf().then(() => {
 });
 ```
 
-
-
 ## particleAbility.acquireDataAbilityHelper
 
 acquireDataAbilityHelper(uri: string): DataAbilityHelper
@@ -184,6 +200,10 @@ acquireDataAbilityHelper(uri: string): DataAbilityHelper
 > 跨应用访问dataAbility，对端应用需配置关联启动。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -218,17 +238,21 @@ startBackgroundRunning(id: number, request: NotificationRequest, callback: Async
 
 **系统能力**：SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 > **说明：**
 >
 > 从API version 9开始不再维护，建议使用[backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning)替代。
 
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | id | number | 是 | 长时任务通知id号。 |
-  | request | [NotificationRequest](../apis-notification-kit/js-apis-notification.md#notificationrequest) | 是 | 通知参数，用于显示通知栏的信息。 |
-  | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当向系统申请长时任务成功，err为undefined，否则为错误对象。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| id | number | 是 | 长时任务通知id号。 |
+| request | [NotificationRequest](../apis-notification-kit/js-apis-notification.md#notificationrequest) | 是 | 通知参数，用于显示通知栏的信息。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当向系统申请长时任务成功，err为undefined，否则为错误对象。 |
 
  **示例**：
 
@@ -284,6 +308,10 @@ startBackgroundRunning(id: number, request: NotificationRequest): Promise&lt;voi
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **系统能力**：SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 > **说明：**
 >
@@ -351,6 +379,10 @@ cancelBackgroundRunning(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 > **说明：**
 >
 > 从API version 9开始不再维护，建议使用[backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning)替代。
@@ -387,6 +419,10 @@ cancelBackgroundRunning(): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 > **说明：**
 >
 > 从API version 9开始不再维护，建议使用[backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning-1)替代。
@@ -422,8 +458,11 @@ connectAbility(request: Want, options:ConnectOptions): number
 > 组件启动规则详见：[组件启动规则（FA模型）](../../application-models/component-startup-rules-fa.md)。
 > 跨应用连接serviceAbility，对端应用需配置关联启动。
 
-
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -453,10 +492,10 @@ let connId = particleAbility.connectAbility(
   },
   {
     onConnect: (element, remote) => {
-      console.log(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
+      console.info(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
     },
     onDisconnect: (element) => {
-      console.log(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
+      console.info(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
     },
     onFailed: (code) => {
       console.error(`particleAbilityTest ConnectAbility onFailed errCode: ${code}`);
@@ -465,7 +504,7 @@ let connId = particleAbility.connectAbility(
 );
 
 particleAbility.disconnectAbility(connId).then((data) => {
-  console.log(`data: ${data}`);
+  console.info(`data: ${data}`);
 }).catch((error: BusinessError) => {
   console.error(`particleAbilityTest result errCode: ${error.code}`);
 });
@@ -479,12 +518,16 @@ disconnectAbility(connection: number, callback:AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | connection | number               | 是    | 表示断开连接的ServiceAbility的ID。 |
-  | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当断开当前ability与指定ServiceAbility的连接成功，err为undefined，否则为错误对象。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| connection | number               | 是    | 表示断开连接的ServiceAbility的ID。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当断开当前ability与指定ServiceAbility的连接成功，err为undefined，否则为错误对象。 |
 
 **示例**：
 
@@ -500,10 +543,10 @@ let connId = particleAbility.connectAbility(
   },
   {
     onConnect: (element, remote) => {
-      console.log(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
+      console.info(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
     },
     onDisconnect: (element) => {
-      console.log(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
+      console.info(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
     },
     onFailed: (code) => {
       console.error(`particleAbilityTest ConnectAbility onFailed errCode: ${code}`);
@@ -524,6 +567,10 @@ disconnectAbility(connection: number): Promise\<void>
 断开当前ability与指定ServiceAbility的连接。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -552,10 +599,10 @@ let connId = particleAbility.connectAbility(
   },
   {
     onConnect: (element, remote) => {
-      console.log(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
+      console.info(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
     },
     onDisconnect: (element) => {
-      console.log(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
+      console.info(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
     },
     onFailed: (code) => {
       console.error(`particleAbilityTest ConnectAbility onFailed errCode: ${code}`);
@@ -564,7 +611,7 @@ let connId = particleAbility.connectAbility(
 );
 
 particleAbility.disconnectAbility(connId).then(() => {
-  console.log('disconnectAbility success');
+  console.info('disconnectAbility success');
 }).catch((error: BusinessError) => {
   console.error(`particleAbilityTest result errCode : ${error.code}`);
 });
@@ -574,6 +621,10 @@ particleAbility.disconnectAbility(connId).then(() => {
 定义启动Ability时返回的错误码。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 | 名称                             | 值    | 说明                                       |
 | ------------------------------ | ---- | ---------------------------------------- |

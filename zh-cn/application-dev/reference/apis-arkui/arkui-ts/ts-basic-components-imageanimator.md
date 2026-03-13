@@ -25,13 +25,17 @@ ImageAnimator()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 ## 属性
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
 
 ### images
 
-ArkTS-Dyn: images(value: Array&lt;ImageFrameInfo&gt;)
+ArkTS-Dyn: images(value: Array\<ImageFrameInfo>)
 
 ArkTS-Sta: images(value: Array\<ImageFrameInfo> | undefined)
 
@@ -45,13 +49,13 @@ ArkTS-Sta: images(value: Array\<ImageFrameInfo> | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                                   | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: Array&lt;[ImageFrameInfo](#imageframeinfo对象说明)&gt; <br/>ArkTS-Sta: Array&lt;[ImageFrameInfo](#imageframeinfo对象说明)&gt; \| undefined| 是   | 设置图片帧信息集合。每一帧的帧信息(ImageFrameInfo)包含图片路径、图片大小、图片位置和图片播放时长信息，详见[ImageFrameInfo](#imageframeinfo对象说明)对象说明。<br/>默认值：[] <br/> **说明：** 传入数组的内容过大时，内存占用会随之升高。此内存由开发者自行控制。因此，开发者在传入数据前，请充分评估内存消耗情况，以避免内存不足等问题。 |
+| value  | ArkTS-Dyn: Array<[ImageFrameInfo](#imageframeinfo对象说明)> <br/>ArkTS-Sta: Array<[ImageFrameInfo](#imageframeinfo对象说明)> \| undefined| 是   | 设置图片帧信息集合。每一帧的帧信息(ImageFrameInfo)包含图片路径、图片大小、图片位置和图片播放时长信息，详见[ImageFrameInfo](#imageframeinfo对象说明)对象说明。<br/>默认值：[] <br/> **说明：** 传入数组的内容过大时，内存占用会随之升高。此内存由开发者自行控制。因此，开发者在传入数据前，请充分评估内存消耗情况，以避免内存不足等问题。 |
 
 ### state
 
@@ -69,7 +73,7 @@ ArkTS-Sta: state(value: AnimationStatus | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -93,13 +97,9 @@ ArkTS-Sta: duration(value: int | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
-
-**ArkTs-Dyn起始版本：** 7
-
-**ArkTs-Sta起始版本：** 22
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -121,7 +121,7 @@ ArkTS-Sta: reverse(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -145,7 +145,7 @@ ArkTS-Sta: fixedSize(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -185,7 +185,7 @@ ArkTS-Sta: fillMode(value: FillMode | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -207,13 +207,9 @@ ArkTS-Sta: iterations(value: int | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
-
-**ArkTs-Dyn起始版本：** 7
-
-**ArkTs-Sta起始版本：** 22
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
@@ -233,13 +229,13 @@ ArkTS-Sta: monitorInvisibleArea(monitorInvisibleArea: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| monitorInvisibleArea  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是 | 当设置为true时，组件将基于系统的[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)可见性判定，控制组件的暂停和播放。<br/> 当组件的运行状态为[AnimationStatus](ts-appendix-enums.md#animationstatus)的Running时，若判定组件不可见，则自动执行暂停操作；若判定为可见，则自动恢复播放。<br/>默认值：false <br/> **说明：** <br/>当该属性由true动态修改为false时，组件将依据当前的[AnimationStatus](ts-appendix-enums.md#animationstatus)状态进行处理。<br/> 例如，若当前状态为Running且因[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)的不可见回调暂停，则在属性由true改为false后，组件会从上次暂停的位置重新开始播放。<br/>由该属性导致的不可见暂停和可见暂停操作不会改变用户设置的[state](./ts-basic-components-imageanimator.md#state)值。 |
+| monitorInvisibleArea  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是 | 当设置为true时，组件将基于系统的[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)可见性判定，控制组件的暂停和播放。<br/> 当组件的运行状态为[AnimationStatus](ts-appendix-enums.md#animationstatus)的Running时，若判定组件不可见，则自动执行暂停操作；若判定为可见，则自动恢复播放。<br/>默认值：false <br/> **说明：** <br/>当该属性由true动态修改为false时，组件将依据当前的[AnimationStatus](ts-appendix-enums.md#animationstatus)状态进行处理。<br/> 例如，若当前状态为Running且因[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)的不可见回调暂停，则在属性由true改为false后，组件会从上次暂停的位置重新开始播放。<br/>由该属性导致的不可见暂停和可见暂停操作不会不会改变用户设置的[state](./ts-basic-components-imageanimator.md#state)值。 |
 
 ## ImageFrameInfo对象说明
 
@@ -249,9 +245,9 @@ ArkTS-Sta: monitorInvisibleArea(monitorInvisibleArea: boolean | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本：** 7
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型   | 必填 | 说明 |
 | -------- | -------------- | -------- | -------- |
@@ -268,7 +264,9 @@ ArkTS-Sta: monitorInvisibleArea(monitorInvisibleArea: boolean | undefined)
 
 ### onStart
 
-onStart(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
+ArkTS-Sta: onStart(event: (() => void) | undefined)
+
+ArkTS-Dyn: onStart(event: () => void)
 
 状态回调，动画开始播放时触发。
 
@@ -278,9 +276,15 @@ onStart(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 ### onPause
 
-onPause(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
+ArkTS-Sta: onPause(event: (() => void) | undefined)
+
+ArkTS-Dyn: onPause(event: () => void)
 
 状态回调，动画暂停播放时触发。
 
@@ -290,9 +294,15 @@ onPause(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 ### onRepeat
 
-onRepeat(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
+ArkTS-Sta: onRepeat(event: (() => void) | undefined)
+
+ArkTS-Dyn: onRepeat(event: () => void)
 
 状态回调，动画重复播放时触发。
 
@@ -300,9 +310,15 @@ onRepeat(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 ### onCancel
 
-onCancel(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
+ArkTS-Sta: onCancel(event: (() => void) | undefined)
+
+ArkTS-Dyn: onCancel(event: () => void)
 
 状态回调，动画返回最初状态时触发。
 
@@ -312,9 +328,15 @@ onCancel(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 ### onFinish
 
-onFinish(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
+ArkTS-Sta: onFinish(event: (() => void) | undefined)
+
+ArkTS-Dyn: onFinish(event: () => void)
 
 状态回调，动画播放完成时或者停止播放时触发。 
 
@@ -324,6 +346,9 @@ onFinish(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 ## 示例
 

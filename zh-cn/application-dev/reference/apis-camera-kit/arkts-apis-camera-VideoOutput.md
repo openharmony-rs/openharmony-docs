@@ -25,7 +25,7 @@ start(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -88,7 +88,7 @@ start(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -148,7 +148,7 @@ stop(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -202,7 +202,7 @@ stop(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -302,7 +302,7 @@ onFrameStart(callback: AsyncCallback\<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -380,7 +380,7 @@ offFrameStart(callback?: AsyncCallback\<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -450,7 +450,7 @@ onFrameEnd(callback: AsyncCallback\<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -519,7 +519,7 @@ offFrameEnd(callback?: AsyncCallback\<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -593,7 +593,7 @@ onError(callback: ErrorCallback): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -658,7 +658,7 @@ offError(callback?: ErrorCallback): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -686,7 +686,7 @@ getSupportedFrameRates(): Array\<FrameRateRange\>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -722,7 +722,7 @@ ArkTS-Sta: setFrameRate(minFps: int, maxFps: int): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -772,7 +772,7 @@ getActiveFrameRate(): FrameRateRange
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -801,7 +801,7 @@ getActiveProfile(): VideoProfile
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -847,7 +847,7 @@ isMirrorSupported(): boolean
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -880,7 +880,7 @@ enableMirror(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -936,9 +936,9 @@ function enableMirror(videoOutput: camera.VideoOutput, mirrorMode: boolean, aVRe
 
 ## getVideoRotation<sup>12+</sup>
 
-ArkTS-Dyn: getVideoRotation(deviceDegree: number): ImageRotation
+ArkTS-Dyn: getVideoRotation(deviceDegree?: number): ImageRotation
 
-ArkTS-Sta: getVideoRotation(deviceDegree: int): ImageRotation
+ArkTS-Sta: getVideoRotation(deviceDegree?: int): ImageRotation
 
 获取录像旋转角度。
 
@@ -946,19 +946,21 @@ ArkTS-Sta: getVideoRotation(deviceDegree: int): ImageRotation
 - 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度，手机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
 - 屏幕显示方向：需要屏幕显示的图片左上角为第一个像素点为坐标原点。锁屏时与自然方向一致。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 设备旋转角度（单位：度）。 |
+| deviceDegree | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 设备旋转角度，单位：度。 |
 
 **返回值：**
 
@@ -972,7 +974,6 @@ ArkTS-Sta: getVideoRotation(deviceDegree: int): ImageRotation
 
 | 错误码ID   | 错误信息                         |
 |---------|------------------------------|
-| 7400101 | Parameter missing or parameter type incorrect.  |
 | 7400201 | Camera service fatal error.  |
 
 **示例：**

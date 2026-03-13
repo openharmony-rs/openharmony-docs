@@ -4,9 +4,11 @@
 
 > **说明**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](./js-apis-arkui-UIContext.md#uicontext)说明。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](./js-apis-arkui-UIContext.md#uicontext)说明。
 
 ## 导入模块
 
@@ -30,6 +32,10 @@ registerFont(options: FontOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名     | 类型                          | 必填   | 说明          |
@@ -43,6 +49,10 @@ registerFont(options: FontOptions): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 类型     | 必填   | 说明           |
 | ---------- | ------ | ---- | ------------ |
@@ -135,6 +145,10 @@ getSystemFontList(): Array\<string>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **返回值：**
 
 | 类型                 | 说明               |
@@ -191,6 +205,10 @@ getFontByName(fontName: string): FontInfo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名      | 类型      | 必填    | 说明          |
@@ -211,6 +229,10 @@ getFontByName(fontName: string): FontInfo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型    | 必填  | 说明                       |
 | -------------- | ------- | ------------------------- | ------------------------- |
 | path           | string  | 是 | 系统字体的文件路径。        |
@@ -218,8 +240,8 @@ getFontByName(fontName: string): FontInfo
 | fullName       | string  | 是 | 系统字体的名称。           |
 | family         | string  | 是 | 系统字体的字体家族。       |
 | subfamily      | string  | 是 | 系统字体的子字体家族。      |
-| weight         | number  | 是 | 系统字体的字重。<br/>取值范围：[0,8]，取值间隔为1，分别对应[FontWeight](../apis-arkgraphics2d/js-apis-graphics-text.md#fontweight)枚举中的值。<br/>默认值：0        |
-| width          | number  | 是 | 系统字体的宽度。<br/>取值范围：[1,9]，取值间隔为1，分别对应[FontWidth](../apis-arkgraphics2d/js-apis-graphics-text.md#fontwidth)枚举中的值。    |
+| weight         | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是 | 系统字体的字重。<br/>取值范围：[0,8]，取值间隔为1，分别对应[FontWeight](../apis-arkgraphics2d/js-apis-graphics-text.md#fontweight)枚举中的值。<br/>默认值：0        |
+| width          | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是 | 系统字体的宽度。<br/>取值范围：[1,9]，取值间隔为1，分别对应[FontWidth](../apis-arkgraphics2d/js-apis-graphics-text.md#fontwidth)枚举中的值。    |
 | italic         | boolean | 是 | 系统字体是否倾斜。<br/>默认值：false<br/>值为true，表示斜体字体，值为false，表示非斜体字体。          |
 | monoSpace      | boolean | 是 | 系统字体是否紧凑。<br/>默认值：false<br/>值为true，表示等宽字体，值为false，表示非等宽字体。         |
 | symbolic       | boolean | 是 | 系统字体是否支持符号字体。<br/>默认值：false<br/>值为true，表示支持符号字体，值为false，表示不支持符号字体。  |
@@ -272,6 +294,10 @@ getUIFontConfig() : UIFontConfig
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 | 类型             | 说明                          |
 | ---------------- | ---------------------------- |
@@ -284,6 +310,11 @@ getUIFontConfig() : UIFontConfig
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型    | 必填  | 说明                       |
 | -------------- | ------- | ------------------------- | ------------------------- |
 | fontDir        | Array\<string>  | 是 | 系统字体文件所在的路径。      |
@@ -297,6 +328,11 @@ getUIFontConfig() : UIFontConfig
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型    | 必填  | 说明                       |
 | -------------- | ------- | ------------------------- | ------------------------- |
 | family        | string | 是 | 字体集名，字体文件中指定的"family"值。      |
@@ -310,6 +346,11 @@ getUIFontConfig() : UIFontConfig
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型    | 必填  | 说明                       |
 | -------------- | ------- | ------------------------- | ------------------------- |
 | fontSetName  | string | 是 | 备用字体集所对应的字体集名称。      |
@@ -322,10 +363,15 @@ getUIFontConfig() : UIFontConfig
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型    | 必填  | 说明                       |
 | -------------- | ------- | ------------------------- | ------------------------- |
 | name          | string  | 是 | 别名名称。      |
-| weight        | number  | 是 | 当weight>0时表示此字体集只包含所指定weight的字体，当weight=0时，表示此字体集包含所有字体。<br/>可返回的值有0、100、400、700、900。 |
+| weight        | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 是 | 当weight>0时表示此字体集只包含所指定weight的字体，当weight=0时，表示此字体集包含所有字体。<br/>可返回的值有0、100、400、700、900。 |
 
 ## UIFontAdjustInfo<sup>11+</sup>
 
@@ -334,10 +380,15 @@ getUIFontConfig() : UIFontConfig
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型    | 必填  | 说明                       |
 | -------------- | ------- | ------------------------- | ------------------------- |
-| weight        | number  | 是 | 字体原本的weight值。<br/>可返回的值有50、80、100、200。      |
-| to            | number  | 是 | 字体在应用中显示的weight值。<br/>可返回的值有100、400、700、900。 |
+| weight        | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 是 | 字体原本的weight值。<br/>可返回的值有50、80、100、200。      |
+| to            | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是 | 字体在应用中显示的weight值。<br/>可返回的值有100、400、700、900。 |
 
 ## UIFontFallbackInfo<sup>11+</sup>
 
@@ -346,6 +397,11 @@ getUIFontConfig() : UIFontConfig
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型    | 必填  | 说明                       |
 | -------------- | ------- | ------------------------- | ------------------------- |
 | language       | string  | 是 | 字体集所支持的语言类型，语言格式为bcp47。    |

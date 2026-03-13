@@ -167,18 +167,68 @@ panel.offSizeUpdate((windowSize: window.Size, keyboardArea: inputMethodEngine.Ke
 });
 ```
 
-## FluidLightMode<sup>20+</sup>
+### setShadow<sup>22+</sup>
 
-枚举，输入法流光模式。
+setShadow(radius: double, color: string, offsetX: double, offsetY: double): void
+
+设置输入法面板的阴影效果，包括阴影半径、颜色、水平偏移和垂直偏移。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**系统接口：** 此接口为系统接口。
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明     |
+| -------- | ---------------------- | ---- | -------- |
+| radius | double | 是   | 阴影模糊半径。数值越大，阴影越模糊；取值需≥0，若传入负数会触发参数校验错误。 |
+| color | string | 是   | 阴影颜色。仅支持十六进制颜色格式，不支持命名颜色或RGB/RGBA函数格式。 |
+| radius | double | 是   | 阴影水平偏移量。正数表示阴影向右偏移，负数表示向左偏移，0 表示无水平偏移。 |
+| radius | double | 是   | 阴影垂直偏移量。正数表示阴影向下偏移，负数表示向上偏移，0 表示无垂直偏移。 |
+
+
+**返回值：**
+
+| 类型   | 说明                             |
+| ------- | ------------------------------ |
+| void | 无返回值。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息                                                |
+| -------- | ------------------------------------------------------- |
+| 12800002 | Input method engine service error. |
+| 12800013 | window manager service error. |
+| 12800014 | Invalid parameter. |
+
+**示例：**
+
+```ts
+const shadowRadius = 8.0;
+const shadowColor = '#80000000';
+const offsetX = 2.0;
+const offsetY = 2.0;
+this.panel?.setShadow(shadowRadius, shadowColor, offsetX, offsetY);
+```
+
+## FluidLightMode<sup>20+</sup>
+
+枚举，输入法流体光效模式。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 值 | 说明               |
 | ------------ | -- | ------------------ |
 | NONE | 0 | 不使用流光模式。 |
-| BACKGROUND_FLUID_LIGHT  | 1 | 背景流光。 |
+| BACKGROUND_FLUID_LIGHT | 1 | 开启背景流光模式。此时系统面板会变为透明，流光效果需要由编辑框宿主应用实现。 |
 
 ## EditorAttribute
 
@@ -196,7 +246,11 @@ panel.offSizeUpdate((windowSize: window.Size, keyboardArea: inputMethodEngine.Ke
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型                                  | 只读 | 可选 | 说明           |
 | ------ | ------------------------------------ | ---- | ---- | -------------- |
-| fluidLightMode | [FluidLightMode](#fluidlightmode20) | 否   | 是   | 流光模式，如果不填充，则默认为NONE。<br>该属性仅系统应用可以使用。 |
+| fluidLightMode | [FluidLightMode](#fluidlightmode20) | 否   | 是   | 流光模式。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 | |
 <!--no_check-->

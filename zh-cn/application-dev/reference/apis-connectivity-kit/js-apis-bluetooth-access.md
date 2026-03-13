@@ -21,17 +21,17 @@ enableBluetooth(): void
 
 开启蓝牙。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -63,15 +63,15 @@ enableBluetoothAsync(): Promise&lt;void&gt;
 - 蓝牙开关状态结果可通过[access.on('stateChange')](#accessonstatechange)的回调函数获取到。
 - 建议蓝牙开关状态是[STATE_OFF](#bluetoothstate)时，才调用该接口开启蓝牙（可使用[access.getState](#accessgetstate)判断当前蓝牙开关状态）。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -79,7 +79,7 @@ enableBluetoothAsync(): Promise&lt;void&gt;
 | ------------------- | -------------------------------------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -115,17 +115,17 @@ disableBluetooth(): void
 
 关闭蓝牙。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -157,15 +157,15 @@ disableBluetoothAsync(): Promise&lt;void&gt;
 - 蓝牙开关状态结果可通过[access.on('stateChange')](#accessonstatechange)的回调函数获取到。
 - 建议蓝牙开关状态是[STATE_ON](#bluetoothstate)时，才调用该接口关闭蓝牙（可使用[access.getState](#accessgetstate)判断当前蓝牙开关状态）。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -173,7 +173,7 @@ disableBluetoothAsync(): Promise&lt;void&gt;
 | ------------------- | -------------------------------------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -209,13 +209,14 @@ getState(): BluetoothState
 
 获取蓝牙开关状态。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
+
 
 **返回值：**
 
@@ -223,7 +224,7 @@ getState(): BluetoothState
 | --------------------------------- | ---------------- |
 | [BluetoothState](#bluetoothstate) | 表示蓝牙开关状态。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -251,13 +252,13 @@ on(type: 'stateChange', callback: Callback&lt;BluetoothState&gt;): void
 
 订阅蓝牙设备开关状态事件。使用Callback异步回调。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onStateChange](#accessonStateChange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#accessonStateChange22)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -268,7 +269,7 @@ on(type: 'stateChange', callback: Callback&lt;BluetoothState&gt;): void
 | type     | string                                            | 是    | 填写"stateChange"字符串，表示蓝牙状态改变事件。               |
 | callback | Callback&lt;[BluetoothState](#bluetoothstate)&gt; | 是    | 表示回调函数的入参，蓝牙状态。回调函数由用户创建并通过该接口注册。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -292,19 +293,19 @@ try {
 }
 ```
 
-## access.onStateChange<sup>22+</sup>
+## access.onStateChange<sup>23+</sup>
 
 onStateChange(callback: Callback&lt;BluetoothState&gt;): void
 
 订阅蓝牙设备开关状态事件。使用Callback异步回调。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('stateChange')](#accessonstatechange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('stateChange')](#accessonstatechange)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -312,7 +313,7 @@ onStateChange(callback: Callback&lt;BluetoothState&gt;): void
 | -------- | ------------------------------------------------- | ----- | ---------------------------------------------------------- |
 | callback | Callback&lt;[BluetoothState](#bluetoothstate)&gt; | 是    | 表示回调函数的入参，蓝牙状态。回调函数由用户创建并通过该接口注册。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -342,13 +343,13 @@ off(type: 'stateChange', callback?: Callback&lt;BluetoothState&gt;): void
 
 取消订阅蓝牙设备开关状态事件。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offStateChange](#accessoffstatechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#accessoffstatechange22)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -359,7 +360,7 @@ off(type: 'stateChange', callback?: Callback&lt;BluetoothState&gt;): void
 | type     | string                                   | 是    | 填写"stateChange"字符串，表示蓝牙状态改变事件。           |
 | callback | Callback&lt;[BluetoothState](#bluetoothstate)&gt; | 否    | 表示取消订阅蓝牙状态改变事件上报。不填该参数则取消订阅该type对应的所有回调。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -384,19 +385,19 @@ try {
 }
 ```
 
-## access.offStateChange<sup>22+</sup>
+## access.offStateChange<sup>23+</sup>
 
 offStateChange(callback?: Callback&lt;BluetoothState&gt;): void
 
 取消订阅蓝牙设备开关状态事件。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('stateChange')](#accessoffstatechange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('stateChange')](#accessoffstatechange)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -404,7 +405,7 @@ offStateChange(callback?: Callback&lt;BluetoothState&gt;): void
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | callback | Callback&lt;[BluetoothState](#bluetoothstate)&gt; | 否    | 表示取消订阅蓝牙状态改变事件上报。不填该参数则取消订阅该type对应的所有回调。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -436,15 +437,15 @@ addPersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 
 需注意，使用该接口时，开发者应明确该虚拟随机地址对应的对端蓝牙设备真实地址是不变的，若对端设备地址发生变化，持久化保存的地址信息也会失效，无法继续使用。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
 
-**原子化服务API**：从API version 16开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 16开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -458,7 +459,7 @@ addPersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 | ----------------------------- | ---------- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -493,15 +494,15 @@ deletePersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 删除一个持久化的蓝牙虚拟设备地址。
 
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
 
-**原子化服务API**：从API version 16开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 16开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -515,7 +516,7 @@ deletePersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 | ----------------------------- | ---------- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -549,15 +550,15 @@ getPersistentDeviceIds(): string[];
 获取该应用持久化过的蓝牙虚拟设备地址。
 
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
 
-**原子化服务API**：从API version 16开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 16开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -565,7 +566,7 @@ getPersistentDeviceIds(): string[];
 | --------------------------------- | ---------------- |
 | string[] | 表示该应用持久化过的蓝牙虚拟设备地址列表。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -598,15 +599,15 @@ isValidRandomDeviceId(deviceId: string): boolean;
 判断对端蓝牙设备的虚拟地址是否是有效。
 
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 16开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 16开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -620,7 +621,7 @@ isValidRandomDeviceId(deviceId: string): boolean;
 | --------------------------------- | ---------------- |
 | boolean | 表明蓝牙虚拟设备地址是否有效。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -647,18 +648,62 @@ try {
 }
 ```
 
+## access.convertUuid<sup>22+</sup>
+
+convertUuid(uuid: string): string
+
+将指定格式的的UUID转换为128bit的UUID。
+
+常用的UUID格式主要包括16bit、32bit和128bit三种格式。蓝牙协议定义的128bit格式的基准UUID为：00000000-0000-1000-8000-00805f9b34fb。若输入16bit或者32bit的UUID，将基于蓝牙基准UUID进行转换。若输入128bit的UUID，将不做转换直接输出该UUID。
+
+- 若输入16bit的UUID，例如“1801”，将输出“00001801-0000-1000-8000-00805f9b34fb”。
+- 若输入32bit的UUID，例如“12341801”，将输出“12341801-0000-1000-8000-00805f9b34fb”。
+- 若输入128bit的UUID，例如“11112222-3333-4444-5555-666677778888”，将直接输出该UUID。
+- 若输入不符合以上格式的UUID或包含非16进制范围内的字符，将返回[401](../errorcode-universal.md#401-参数检查失败)错误码。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| uuid     | string                                   | 是    | 16bit、32bit、128bit的UUID。           |
+
+**返回值：**
+
+| 类型                              | 说明              |
+| --------------------------------- | ---------------- |
+| string | 转换后的128bit的UUID。|
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let inputUuid: string = '1801';
+    let convertedUuid: string = access.convertUuid(inputUuid);
+    console.info("convertedUuid: " + convertedUuid);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
 
 ## BluetoothState
 
 枚举，蓝牙开关状态。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                    | 值  | 说明                 |
 | --------------------- | ---- | ------------------ |

@@ -42,7 +42,7 @@ ArkTS-Sta: vertical(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -66,7 +66,7 @@ ArkTS-Sta: color(value: ResourceColor| undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -90,7 +90,7 @@ ArkTS-Sta: strokeWidth(value: double | string | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -114,7 +114,7 @@ ArkTS-Sta: lineCap(value: LineCapStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

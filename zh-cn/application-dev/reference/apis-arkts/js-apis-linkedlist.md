@@ -244,22 +244,11 @@ ArkTS-Sta: insert(index: int, element: T): void
 
 **错误码：**
 
-ArkTS-Dyn错误码：
-
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200001 | The value of index is out of range. |
-| 10200011 | The insert method cannot be bound. |
-
-ArkTS-Sta错误码：
-
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of index is out of range. |
 | 10200011 | The insert method cannot be bound. |
 
@@ -355,21 +344,12 @@ ArkTS-Sta: get(index: int): T
 
 **错误码：**
 
-ArkTS-Dyn错误码：
-
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200011 | The get method cannot be bound. |
-
-ArkTS-Sta错误码：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 10200001 | The value of index is out of range. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The get method cannot be bound. |
 
 **示例：**
@@ -696,7 +676,8 @@ removeByIndex(index: int): T \| undefined
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 10200001 | The value of "index" is out of range. It must be >= 0 && <= \$\{length\}. |
+| 10200001 | The value of "index" is out of range. It must be >= 0 && <= ${length}. Received value is: ${index} |
+| 10200010 | Container is empty. |
 
 **示例：**
 
@@ -1186,23 +1167,13 @@ ArkTS-Sta: set(index: int, element: T): T
 
 **错误码：**
 
-ArkTS-Dyn错误码：
-
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of index is out of range. |
-| 10200011 | The set method cannot be bound. |
-
-ArkTS-Sta错误码：
-
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 10200001 | The value of index is out of range. |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The set method cannot be bound. |
 
 **示例：**
@@ -1307,6 +1278,7 @@ getFirst(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The getFirst method cannot be bound. |
 
 **示例：**
@@ -1359,6 +1331,7 @@ getLast(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The getLast method cannot be bound. |
 
 **示例：**

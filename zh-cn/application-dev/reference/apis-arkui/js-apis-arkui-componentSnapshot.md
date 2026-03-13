@@ -2,7 +2,7 @@
 
 本模块提供获取组件截图的能力，包括已加载的组件的截图和没有加载的组件的截图。组件截图只能够截取组件大小的区域，如果组件的绘制超出了它的区域，或子组件的绘制超出了父组件的区域，这些在组件区域外绘制的内容不会在截图中呈现。兄弟节点堆叠在组件区域内，截图不会显示兄弟组件。
 
-缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的是还是图形变换前的效果。
+缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的还是图形变换前的效果。
 
 组件截图典型使用场景（如长截图）及最佳实践请参考[使用组件截图](../../ui/arkts-uicontext-component-snapshot.md)。
 
@@ -43,6 +43,10 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: SnapshotOptio
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -121,6 +125,10 @@ get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -207,6 +215,10 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -317,6 +329,10 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明         |
@@ -420,6 +436,10 @@ getSync(id: string, options?: SnapshotOptions): image.PixelMap
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明                                       |
@@ -491,9 +511,9 @@ struct SnapshotExample {
 
 | 名称           | 类型             | 只读   |   可选           | 说明                         |
 | ---------------|------------     | -------|---------------------| -----------------------------|
-| scale           | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  是 | 指定截图时图形侧绘制pixelmap的缩放比例，比例过大时截图时间会变长，或者截图可能会失败。<br/>取值范围：[0, +∞)，当小于等于0时按默认情况处理。 <br/> 默认值：1 <br/>**说明：** <br/>请不要截取过大尺寸的图片，截图不建议超过屏幕尺寸的大小。当要截取的图片目标长宽超过底层限制时，截图会返回失败，不同设备的底层限制不同。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22   |
-| waitUntilRenderFinished    | boolean | 否  |  是  | 设置是否强制系统在截图前等待所有绘制指令执行完毕。true表示强制系统在截图前等待所有绘制指令执行完毕，false表示不强制系统在截图前等待所有绘制指令执行完毕。该选项可尽可能确保截图内容是最新的状态，应尽量开启。需要注意的是，开启后接口可能需要更长的时间返回，具体的时间依赖页面当时时刻需要重绘区域的大小。<br>默认值：false <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22        |
-| region<sup>15+</sup> | [SnapshotRegionType](#snapshotregiontype15) | 否  |  是 | 指定截图的矩形区域范围，默认为整个组件。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
+| scale           | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  是 | 指定截图时图形侧绘制pixelmap的缩放比例，比例过大时截图时间会变长，或者截图可能会失败。<br/>取值范围：[0, +∞)，当小于等于0时按默认情况处理。 <br/> 默认值：1 <br/>**说明：** <br/>请不要截取过大尺寸的图片，截图不建议超过屏幕尺寸的大小。当要截取的图片目标长宽超过底层限制时，截图会返回失败，不同设备的底层限制不同。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23   |
+| waitUntilRenderFinished    | boolean | 否  |  是  | 设置是否强制系统在截图前等待所有绘制指令执行完毕。true表示强制系统在截图前等待所有绘制指令执行完毕，false表示不强制系统在截图前等待所有绘制指令执行完毕。该选项可尽可能确保截图内容是最新的状态，应尽量开启。需要注意的是，开启后接口可能需要更长的时间返回，具体的时间依赖页面当时时刻需要重绘区域的大小。<br>默认值：false <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23        |
+| region<sup>15+</sup> | [SnapshotRegionType](#snapshotregiontype15) | 否  |  是 | 指定截图的矩形区域范围，默认为整个组件。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | colorMode<sup>23+</sup> | [ColorModeOptions](#colormodeoptions23) | 否  | 是 | 指定截图使用的色彩空间。<br/>默认值：{colorSpace: SRGB, isAuto: false}<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 | dynamicRangeMode<sup>23+</sup> | [DynamicRangeModeOptions](#dynamicrangemodeoptions23) | 否  | 是 | 指定截图使用的动态范围模式。<br/>默认值：{dynamicRangeMode: STANDARD, isAuto: false}<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
@@ -734,6 +754,10 @@ type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型   | 说明   |
 | ------ | ------ |
 | [SnapshotRegion](#snapshotregion15) | 表示组件截图的矩形区域。 |
@@ -749,7 +773,7 @@ type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型   | 只读  |  可选 | 说明                                    |
 | ------ | ------ | ---- | ----- | ---------------------------------- |
@@ -768,7 +792,7 @@ type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型   | 只读 |  可选  |  说明                                           |
 | ------ | ------ | ---- | ---- | -------------------------------------------------------- |

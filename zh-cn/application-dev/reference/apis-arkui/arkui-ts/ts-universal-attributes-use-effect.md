@@ -45,7 +45,7 @@ ArkTS-Sta: useEffect(useEffect: boolean | undefined, effectType: EffectType | un
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -90,6 +90,10 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值   | 说明                   |
 | -------- | ---- | ---------------------- |

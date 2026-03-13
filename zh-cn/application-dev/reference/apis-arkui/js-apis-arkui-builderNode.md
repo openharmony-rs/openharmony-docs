@@ -33,10 +33,14 @@ import { BuilderNode, RenderOptions, NodeRenderType } from "@kit.ArkUI";
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                | 值  | 说明                         |
 | ------------------- | --- | ---------------------------- |
-| RENDER_TYPE_DISPLAY | 0   | 表示该节点将被显示到屏幕上。 |
-| RENDER_TYPE_TEXTURE | 1   | 表示该节点将被导出为纹理。   |
+| RENDER_TYPE_DISPLAY | 0   | 表示该节点将被显示到屏幕上。   |
+| RENDER_TYPE_TEXTURE | 1   | 表示该节点将被导出为纹理。     |
 
 > **说明：**
 >
@@ -55,6 +59,10 @@ import { BuilderNode, RenderOptions, NodeRenderType } from "@kit.ArkUI";
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型                                   | 必填 | 说明                                                         |
 | ------------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -81,6 +89,10 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 参数名    | 类型                                    | 必填 | 说明                                                              |
 | --------- | --------------------------------------- | ---- | ----------------------------------------------------------------- |
@@ -109,6 +121,10 @@ build(builder: WrappedBuilder\<Args>, arg?: Object): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                                            | 必填 | 说明                                                                                   |
@@ -132,6 +148,10 @@ build(builder: WrappedBuilder\<Args>, arg: Object, options: [BuildOptions](#buil
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -209,9 +229,9 @@ build的可选参数。
 
 | 名称          | 类型                                   | 必填 | 说明                                                         |
 | ------------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| nestingBuilderSupported |boolean | 否   | 是否支持Builder嵌套Builder进行使用。其中，false表示Builder使用的入参一致，true表示Builder使用的入参不一致。默认值：false<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| localStorage<sup>20+</sup> |[LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 给当前builderNode设置localStorage，挂载在此builderNode下的自定义组件共享该localStorage，如果自定义组件构造函数同时也传入localStorage，优先使用构造函数中传入的localStorage。默认值：null<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务
-| useParallel<sup>20+</sup> | boolean | 否   | 定义build方法是否以并行的方式创建组件，true表示启用并行，false表示不启用并行。默认值：false<br/>**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+| nestingBuilderSupported |boolean | 否   | 是否支持Builder嵌套Builder进行使用。其中，false表示Builder使用的入参一致，true表示Builder使用的入参不一致。默认值：false<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| localStorage<sup>20+</sup> |[LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 给当前builderNode设置localStorage，挂载在此builderNode下的自定义组件共享该localStorage，如果自定义组件构造函数同时也传入localStorage，优先使用构造函数中传入的localStorage。默认值：null<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
+| useParallel<sup>20+</sup> | boolean | 否   | 定义build方法是否以并行的方式创建组件，true表示启用并行，false表示不启用并行。默认值：false<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
 
 **示例：**
 
@@ -335,6 +355,10 @@ getFrameNode(): FrameNode | null
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -556,6 +580,10 @@ update(arg: Object): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
@@ -681,6 +709,10 @@ OffsetA为buildNode相对于父组件的偏移量，可以通过FrameNode中的[
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                                                      | 必填 | 说明       |
@@ -793,6 +825,10 @@ dispose(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ```ts
 import { RenderNode, FrameNode, NodeController, BuilderNode } from "@kit.ArkUI";
 
@@ -884,6 +920,10 @@ reuse(param?: Object): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
@@ -900,6 +940,10 @@ recycle(): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 ```ts
 import { FrameNode, NodeController, BuilderNode, UIContext } from "@kit.ArkUI";
@@ -1088,6 +1132,10 @@ updateConfiguration(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 > **说明：**
 >
 > updateConfiguration接口用于通知对象更新，更新所使用的系统环境由应用当前的系统环境变化决定。
@@ -1255,6 +1303,10 @@ isDisposed(): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明               |
@@ -1320,6 +1372,10 @@ inheritFreezeOptions(enabled: boolean): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

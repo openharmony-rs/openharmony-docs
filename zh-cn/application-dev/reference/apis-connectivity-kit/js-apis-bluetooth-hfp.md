@@ -22,11 +22,11 @@ type BaseProfile = baseProfile.BaseProfile
 
 基础Profile接口定义。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
@@ -39,11 +39,11 @@ createHfpAgProfile(): HandsFreeAudioGatewayProfile
 
 创建hfp profile实例。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -51,7 +51,7 @@ createHfpAgProfile(): HandsFreeAudioGatewayProfile
 | ----------------------------- | ---------- |
 | [HandsFreeAudioGatewayProfile](#handsfreeaudiogatewayprofile) | 返回该profile的实例。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 

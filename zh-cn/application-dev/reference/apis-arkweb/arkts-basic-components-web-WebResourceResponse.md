@@ -154,11 +154,8 @@ ArkTS-Sta: getResponseDataEx(): string | int | ArrayBuffer | Resource | undefine
 
 |类型|说明|
 |---|---|
-|string|返回HTML格式的字符串。|
-|ArkTS-Dyn: number<br>ArkTS-Sta: int|返回文件句柄。|
-|ArrayBuffer|返回二进制数据。|
-|[Resource](../apis-arkui/arkui-ts/ts-types.md#resource)|返回`$rawfile`资源。|
-|undefined|如果没有可用数据，返回`undefined`。|
+|ArkTS-Dyn: string \| number \| ArrayBuffer \| Resource \| undefined <br> ArkTS-Sta: string \| int \| ArrayBuffer \| Resource \| undefined|返回HTML格式的字符串。\|返回文件句柄。\|返回二进制数据。\|返回$rawfile资源。\|如果没有可用数据，返回undefined。|
+
 
 ## getResponseIsReady<sup>13+</sup>
 

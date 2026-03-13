@@ -10,7 +10,7 @@
 
 ## WebviewController<sup>9+</sup>
 
-type WebviewController = WebviewController
+type WebviewController = webview.WebviewController
 
 提供Web控制器的方法。
 
@@ -22,7 +22,7 @@ type WebviewController = WebviewController
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [WebviewController](./arkts-apis-webview-WebviewController.md)  | 通过WebviewController可以控制Web组件各种行为。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。 |
+| [webview.WebviewController](./arkts-apis-webview-WebviewController.md)  | 通过WebviewController可以控制Web组件各种行为。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。 |
 
 ## OnAdsBlockedCallback<sup>12+</sup>
 
@@ -293,6 +293,30 @@ type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => We
 | 类型               | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
 | [WebKeyboardOptions](./arkts-basic-components-web-i.md#webkeyboardoptions12) | 回调函数通过返回[WebKeyboardOptions](./arkts-basic-components-web-i.md#webkeyboardoptions12)来决定ArkWeb内核拉起不同类型的软键盘。 |
+
+## OnOverrideErrorPageCallback<sup>20+</sup>
+
+type OnOverrideErrorPageCallback = (errorPageEvent: OnErrorReceiveEvent) => string
+
+onOverrideErrorPage的回调函数，网页加载失败时触发。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名             | 类型      | 必填   | 说明                                       |
+| -------------- | ---- | ---- | ---------------------------------------- |
+| errorPageEvent | [OnErrorReceiveEvent](./arkts-basic-components-web-i.md#onerrorreceiveevent12) | 是 | 网页加载遇到错误时返回的相关信息。      |
+
+**返回值：**
+
+| 类型      | 说明                       |
+| ------- | ------------------------ |
+| string | 返回以Base64编码的HTML文本内容。 |
 
 ## MouseInfoCallback<sup>20+<sup>
 

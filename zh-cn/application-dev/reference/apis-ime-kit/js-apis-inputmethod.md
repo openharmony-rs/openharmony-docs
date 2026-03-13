@@ -797,7 +797,7 @@ getInputMethodController(): InputMethodController
 
 > **说明：** 
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[getController()](#inputmethodgetcontroller9)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[getController](#inputmethodgetcontroller9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -825,7 +825,7 @@ getInputMethodSetting(): InputMethodSetting
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[getSetting()](#inputmethodgetsetting9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getSetting](#inputmethodgetsetting9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1182,6 +1182,8 @@ type OnMessageCallback = (msgId: string, msgParam?: ArrayBuffer) => void
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
 | 参数名       | 类型          | 必填 | 说明                          |
 | ------- | ----------------- | ---- | ----------------------------- |
 | msgId    | string        | 是   | 接收到的自定义通信数据的标识符。  |
@@ -1201,9 +1203,9 @@ type OnMessageCallback = (msgId: string, msgParam?: ArrayBuffer) => void
 
 ### 属性
 
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Dyn起始版本：** 15
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1327,6 +1329,8 @@ type SetPreviewTextCallback = (text: string, range: Range) => void
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
 | 参数名       | 类型          | 必填 | 说明                          |
 | ------- | ----------------- | ---- | ----------------------------- |
 | text    | string            | 是   | 预览文本内容。                 |
@@ -1415,39 +1419,6 @@ inputMethodController.attach(true, textConfig, (err?: BusinessError) => {
   console.info('Succeeded in attaching the inputMethod.');
 });
 ```
-
-## AttachFailureReason<sup>22+</sup>
-
-枚举，绑定失败的原因。
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**ArkTS-Dyn起始版本：** 22
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称 | 值 |说明 |
-| -------- | -------- |-------- |
-| CALLER_NOT_FOCUSED    | 0 |表示调用者非焦点窗口所属应用导致的失败。 |
-| IME_ABNORMAL  | 1 |表示输入法应用异常导致的失败。 |
-| SERVICE_ABNORMAL  | 2 |表示输入法框架服务异常导致的失败。 |
-
-## AttachOptions<sup>23+</sup>
-
-绑定输入法的附加选项。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason23) | 否 | 是 |请求键盘输入的原因。|
-| showKeyboard | boolean | 否 | 是 | 绑定输入法成功后，是否拉起输入法键盘。<br>- true表示拉起。<br>- false表示不拉起。|
 
 ### attach<sup>10+</sup>
 
@@ -1567,7 +1538,7 @@ attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: Req
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -1727,7 +1698,7 @@ discardTypingText(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800009 | input method client detached. |
 | 12800015 | the other side does not accept the request. |
 
@@ -1787,7 +1758,7 @@ showTextInput(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -1849,7 +1820,7 @@ showTextInput(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -1913,7 +1884,7 @@ showTextInput(requestKeyboardReason: RequestKeyboardReason): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -1976,7 +1947,7 @@ hideTextInput(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached.             |
 
@@ -2040,7 +2011,7 @@ hideTextInput(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -2094,7 +2065,7 @@ detach(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -2151,7 +2122,7 @@ detach(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -2212,7 +2183,7 @@ ArkTS-Sta: setCallingWindow(windowId: int, callback: AsyncCallback&lt;void&gt;):
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached.             |
 
@@ -2289,7 +2260,7 @@ ArkTS-Sta: setCallingWindow(windowId: int): Promise&lt;void&gt;
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -2351,7 +2322,7 @@ updateCursor(cursorInfo: CursorInfo, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached.             |
 
@@ -2422,7 +2393,7 @@ updateCursor(cursorInfo: CursorInfo): Promise&lt;void&gt;
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -2488,7 +2459,7 @@ ArkTS-Sta: changeSelection(text: string, start: int, end: int, callback: AsyncCa
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached.             |
 
@@ -2561,7 +2532,7 @@ ArkTS-Sta: changeSelection(text: string, start: int, end: int): Promise&lt;void&
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -2621,7 +2592,7 @@ updateAttribute(attribute: InputAttribute, callback: AsyncCallback&lt;void&gt;):
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached.             |
 
@@ -2692,7 +2663,7 @@ updateAttribute(attribute: InputAttribute): Promise&lt;void&gt;
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -2756,7 +2727,7 @@ stopInputSession(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -2828,7 +2799,7 @@ stopInputSession(): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -2900,7 +2871,7 @@ showSoftKeyboard(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -2964,7 +2935,7 @@ showSoftKeyboard(): Promise&lt;void&gt;
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -3024,7 +2995,7 @@ hideSoftKeyboard(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -3088,7 +3059,7 @@ hideSoftKeyboard(): Promise&lt;void&gt;
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -3155,7 +3126,7 @@ sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void&gt;
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Incorrect parameter types. 2. Incorrect parameter length.  |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800009 | input method client detached.               |
 | 12800014 | the input method is in basic mode.          |
 | 12800015 | the other side does not accept the request. |
@@ -3215,12 +3186,6 @@ recvMessage(msgHandler?: MessageHandler): void
 | ---------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
 | msgHandler | [MessageHandler](#messagehandler15) | 否   | 该对象通过[onMessage](#onmessage15)接收来自输入法应用所发送的自定义通信数据，并通过[onTerminated](#onterminated15)接收终止此对象订阅的消息。<br>若不填写此参数，则取消全局已注册的[MessageHandler](#messagehandler15)对象，同时触发其[onTerminated](#onterminated15)回调函数。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
@@ -3273,7 +3238,7 @@ stopInput(callback: AsyncCallback&lt;boolean&gt;): void
 > 
 > 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用该接口结束输入会话。
 > 
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession()](#stopinputsession9)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession](#stopinputsession9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3315,7 +3280,7 @@ stopInput(): Promise&lt;boolean&gt;
 > 
 > 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用该接口结束输入会话。
 > 
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession()](#stopinputsession9)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession](#stopinputsession9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3424,7 +3389,6 @@ onInsertText(callback: Callback&lt;string&gt;): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **示例：**
@@ -3573,7 +3537,6 @@ onDeleteLeft(callback: Callback&lt;int&gt;): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **示例：**
@@ -3705,7 +3668,6 @@ onDeleteRight(callback: Callback&lt;int&gt;): void
 
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | ----- | ---- | ----- |
-| type     | string  | 是   | 设置监听类型，固定取值为'deleteRight'。|
 | callback | Callback&lt;int&gt; | 是   | 回调函数，返回需要向右删除的文本长度。<br/>根据传入的删除长度，在回调函数中操作编辑框中的文本。 |
 
 **错误码：**
@@ -3714,7 +3676,6 @@ onDeleteRight(callback: Callback&lt;int&gt;): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **示例：**
@@ -3854,7 +3815,6 @@ onSendKeyboardStatus(callback: Callback&lt;KeyboardStatus&gt;): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **示例：**
@@ -3994,7 +3954,6 @@ onSendFunctionKey(callback: Callback&lt;FunctionKey&gt;): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **示例：**
@@ -4134,7 +4093,6 @@ onMoveCursor(callback: Callback&lt;Direction&gt;): void
 
 | 错误码ID | 错误信息                           |
 | -------- | -------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **示例：**
@@ -4274,7 +4232,6 @@ onHandleExtendAction(callback: Callback&lt;ExtendAction&gt;): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **示例：**
@@ -4411,14 +4368,6 @@ onSelectByRange(callback: Callback&lt;Range&gt;): void
 | -------- | ---- | ---- | ------- |
 | callback | Callback&lt;[Range](#range10)&gt; | 是   | 回调函数，返回需要选中的文本范围。<br/>根据传入的文本范围，开发者在回调函数中编辑框中相应文本。|
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                |
-| -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-
 **示例：**
 
 ```ts
@@ -4552,14 +4501,6 @@ onSelectByMovement(callback: Callback&lt;Movement&gt;): void
 | 参数名   | 类型   | 必填 | 说明     |
 | -------- | ----- | ---- | ------ |
 | callback | Callback&lt;[Movement](#movement10)&gt; | 是   | 回调函数，返回光标移动的方向。<br/>根据传入的光标移动方向，选中编辑框中相应文本。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                |
-| -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -4696,7 +4637,7 @@ onGetLeftTextOfCursor(callback: GetTextCallback): void
 
 | 参数名   | 类型   | 必填 | 说明     |
 | -------- | ----- | ---- | ------ |
-| callback | [GetTextCallback](#GetTextCallback23) | 是   | 回调函数，获取编辑框最新状态下光标左侧指定长度的文本内容并返回。 |
+| callback | [GetTextCallback](#gettextcallback23) | 是   | 回调函数，获取编辑框最新状态下光标左侧指定长度的文本内容并返回。 |
 
 **错误码：**
 
@@ -4704,7 +4645,6 @@ onGetLeftTextOfCursor(callback: GetTextCallback): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **示例：**
@@ -4772,7 +4712,7 @@ offGetLeftTextOfCursor(callback?: GetTextCallback): void
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callback | [GetTextCallback](#GetTextCallback23) | 否  | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | [GetTextCallback](#gettextcallback23) | 否  | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
 
@@ -4848,7 +4788,7 @@ onGetRightTextOfCursor(callback: GetTextCallback): void
 
 | 参数名   | 类型   | 必填 | 说明     |
 | -------- | ----- | ---- | ------ |
-| callback | [GetTextCallback](#GetTextCallback23) | 是   | 回调函数，获取编辑框最新状态下光标右侧指定长度的文本内容并返回。 |
+| callback | [GetTextCallback](#gettextcallback23) | 是   | 回调函数，获取编辑框最新状态下光标右侧指定长度的文本内容并返回。 |
 
 **错误码：**
 
@@ -4856,7 +4796,6 @@ onGetRightTextOfCursor(callback: GetTextCallback): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **示例：**
@@ -4924,7 +4863,7 @@ offGetRightTextOfCursor(callback?: GetTextCallback): void
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callback | [GetTextCallback](#GetTextCallback23) | 否  |取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | [GetTextCallback](#gettextcallback23) | 否  |取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
 
@@ -5000,7 +4939,7 @@ onGetTextIndexAtCursor(callback: GetTextIndexAtCursorCallback): void
 
 | 参数名   | 类型   | 必填 | 说明     |
 | -------- | ----- | ---- | ------ |
-| callback | [GetTextIndexAtCursorCallback](#GetTextIndexAtCursorCallback23) | 是   | 回调函数，获取编辑框最新状态下光标处文本索引并返回。 |
+| callback | [GetTextIndexAtCursorCallback](#gettextindexatcursorcallback23) | 是   | 回调函数，获取编辑框最新状态下光标处文本索引并返回。 |
 
 **错误码：**
 
@@ -5008,7 +4947,6 @@ onGetTextIndexAtCursor(callback: GetTextIndexAtCursorCallback): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **示例：**
@@ -5076,7 +5014,7 @@ offGetTextIndexAtCursor(callback?:GetTextIndexAtCursorCallback): void
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callback | [GetTextIndexAtCursorCallback](#GetTextIndexAtCursorCallback23) | 否  | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | [GetTextIndexAtCursorCallback](#gettextindexatcursorcallback23) | 否  | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -5175,14 +5113,6 @@ onSetPreviewText(callback: SetPreviewTextCallback): void
 | 参数名   | 类型   | 必填 | 说明     |
 | -------- | ----- | ---- | ------ |
 | callback | [SetPreviewTextCallback](#setpreviewtextcallback17) | 是   | 回调函数。用于接收文本预览的内容并返回。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                             |
-| -------- | -------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -5386,14 +5316,6 @@ onFinishTextPreview(callback: Callback&lt;void&gt;): void
 | -------- | ----- | ---- | ------ |
 | callback | Callback&lt;void&gt; | 是   | 回调函数。用于处理预览文本结束的逻辑，类型为void。|
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                             |
-| -------- | -------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-
 **示例：**
 
 ```ts
@@ -5509,13 +5431,46 @@ inputMethodController.offFinishTextPreview();
 console.info(`All callbacks unsubscribed from finishTextPreview`);
 ```
 
+## AttachFailureReason<sup>22+</sup>
+
+枚举，绑定失败的原因。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 值 |说明 |
+| -------- | -------- |-------- |
+| CALLER_NOT_FOCUSED    | 0 |表示调用者非焦点窗口所属应用导致的失败。 |
+| IME_ABNORMAL  | 1 |表示输入法应用异常导致的失败。 |
+| SERVICE_ABNORMAL  | 2 |表示输入法框架服务异常导致的失败。 |
+
+## AttachOptions<sup>23+</sup>
+
+绑定输入法的附加选项。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason23) | 否 | 是 |请求键盘输入的原因。|
+| showKeyboard | boolean | 否 | 是 | 绑定输入法成功后，是否拉起输入法键盘。<br>- true表示拉起。<br>- false表示不拉起。|
+
 ## ImeChangeCallback<sup>23+</sup>
 
-export type ImeChangeCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => void
+type ImeChangeCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => void
 
 当输入法属性对象及子类型对象变化时的回调函数。
 
-**ArkTS模式：**  该接口仅适用于ArkTs-Sta。
+**ArkTS模式：**  该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5530,11 +5485,11 @@ export type ImeChangeCallback = (inputMethodProperty: InputMethodProperty, input
 
 ## GetTextCallback<sup>23+</sup>
 
-export type GetTextCallback = (length: int) => string
+type GetTextCallback = (length: int) => string
 
 获取编辑框最新状态下光标左侧指定长度的文本内容。
 
-**ArkTS模式：**  该接口仅适用于ArkTs-Sta。
+**ArkTS模式：**  该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5554,11 +5509,11 @@ export type GetTextCallback = (length: int) => string
 
 ## GetTextIndexAtCursorCallback<sup>23+</sup>
 
-export type GetTextIndexAtCursorCallback = () => int
+type GetTextIndexAtCursorCallback = () => int
 
 当光标处文本索引变化时触发的回调函数。
 
-**ArkTS模式：**  该接口仅适用于ArkTs-Sta。
+**ArkTS模式：**  该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5626,7 +5581,7 @@ onImeChange(callback: ImeChangeCallback): void
 
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | [ImeChangeCallback](#ImeChangeCallback23)  | 是 | 回调函数，返回输入法属性对象及子类型对象。 |
+| callback | [ImeChangeCallback](#imechangecallback23)  | 是 | 回调函数，返回输入法属性对象及子类型对象。 |
 
 **示例：**
 
@@ -5683,7 +5638,7 @@ offImeChange(callback?: ImeChangeCallback): void
 
 | 参数名   | 类型    | 必填 | 说明          |
 | -------- | --------- | ---- | --------------- |
-| callback | [ImeChangeCallback](#ImeChangeCallback23)  | 否 | 回调函数，返回取消订阅的输入法属性对象及子类型对象。 |
+| callback | [ImeChangeCallback](#imechangecallback23)  | 否 | 回调函数，返回取消订阅的输入法属性对象及子类型对象。 |
 
 **示例：**
 
@@ -6312,9 +6267,10 @@ let imeProp: Array<inputMethod.InputMethodProperty> = inputMethodSetting.getAllI
 showOptionalInputMethods(callback: AsyncCallback&lt;boolean&gt;): void
 
 显示输入法选择对话框。使用callback异步回调。
+
 > **说明：**
 >
-> 从API version 9开始支持，从API version 18开始废弃。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6362,7 +6318,7 @@ showOptionalInputMethods(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 18开始废弃。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6474,7 +6430,7 @@ displayOptionalInputMethod(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6510,7 +6466,7 @@ displayOptionalInputMethod(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

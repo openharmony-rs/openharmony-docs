@@ -28,7 +28,7 @@ ArkTS-Sta: focusable(value: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -40,7 +40,7 @@ ArkTS-Sta: focusable(value: boolean | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## tabIndex<sup>9+</sup>
 
@@ -56,7 +56,7 @@ ArkTS-Sta: tabIndex(index: int | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -68,7 +68,7 @@ ArkTS-Sta: tabIndex(index: int | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## defaultFocus<sup>9+</sup>
 
@@ -88,7 +88,7 @@ ArkTS-Sta: defaultFocus(value: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -100,7 +100,7 @@ ArkTS-Sta: defaultFocus(value: boolean | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## groupDefaultFocus<sup>9+</sup>
 
@@ -116,7 +116,7 @@ ArkTS-Sta: groupDefaultFocus(value: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -128,7 +128,7 @@ ArkTS-Sta: groupDefaultFocus(value: boolean | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## focusOnTouch<sup>9+</sup>
 
@@ -144,7 +144,7 @@ ArkTS-Sta: focusOnTouch(value: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -156,7 +156,7 @@ ArkTS-Sta: focusOnTouch(value: boolean | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## focusBox<sup>12+</sup>
 
@@ -172,7 +172,7 @@ ArkTS-Sta: focusBox(style: FocusBoxStyle | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -184,7 +184,7 @@ ArkTS-Sta: focusBox(style: FocusBoxStyle | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## focusControl<sup>9+</sup>
 
@@ -204,6 +204,10 @@ requestFocus(value: string): boolean
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -227,6 +231,10 @@ requestFocus(value: string): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 参数类型 | 必填 | 描述 |
 | ---- | ---- | ---- | ---- |
 | margin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 焦点框相对组件边缘的距离。<br/>正数代表外侧，负数代表内侧。不支持百分比。 |
@@ -247,7 +255,7 @@ ArkTS-Sta: focusScopePriority(scopeId: string | undefined, priority?: FocusPrior
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -268,6 +276,10 @@ ArkTS-Sta: focusScopePriority(scopeId: string | undefined, priority?: FocusPrior
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 描述        |
 | ----------- | --------- |
 | AUTO | 默认的优先级，缺省时组件的获焦优先级。 |
@@ -281,6 +293,10 @@ ArkTS-Sta: focusScopePriority(scopeId: string | undefined, priority?: FocusPrior
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值    | 说明        |
 | -----------| ----------- | --------- |
@@ -326,7 +342,7 @@ ArkTS-Sta: focusScopeId(id: string | undefined, isGroup?: boolean, arrowStepOut?
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -340,7 +356,7 @@ ArkTS-Sta: focusScopeId(id: string | undefined, isGroup?: boolean, arrowStepOut?
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## tabStop<sup>14+</sup>
 
@@ -356,7 +372,7 @@ ArkTS-Sta: tabStop(isTabStop: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -368,7 +384,7 @@ ArkTS-Sta: tabStop(isTabStop: boolean | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 **描述走焦的时候的按键以及获焦组件**
 
@@ -390,7 +406,7 @@ ArkTS-Sta: nextFocus(nextStep: FocusMovement | undefined): this
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -402,7 +418,7 @@ ArkTS-Sta: nextFocus(nextStep: FocusMovement | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## FocusMovement<sup>18+</sup>对象说明
 
@@ -411,6 +427,10 @@ ArkTS-Sta: nextFocus(nextStep: FocusMovement | undefined): this
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |

@@ -50,7 +50,7 @@ on(type: 'spatializationEnabledChangeForCurrentDevice', callback: Callback<boole
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSpatializationEnabledChangeForCurrentDevice](#onSpatializationEnabledChangeForCurrentDevice22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSpatializationEnabledChangeForCurrentDevice](#onSpatializationEnabledChangeForCurrentDevice23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -127,7 +127,7 @@ off(type: 'spatializationEnabledChangeForCurrentDevice', callback?: Callback<boo
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSpatializationEnabledChangeForCurrentDevice](#offSpatializationEnabledChangeForCurrentDevice22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSpatializationEnabledChangeForCurrentDevice](#offSpatializationEnabledChangeForCurrentDevice23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 

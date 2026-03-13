@@ -146,7 +146,7 @@ import { formInfo } from '@kit.FormKit';
 | FORM_PERMISSION_GRANTED_KEY<sup>12+</sup> | 'ohos.extra.param.key.permission_granted' | 用户是否授权。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 | ORIGINAL_FORM_KEY<sup>20+</sup> | 'ohos.extra.param.key.original_form_id' | 用groupId关联的一组卡片，在调整大小时，会先创建新尺寸的卡片，再删除旧尺寸的卡片。新尺寸卡片创建时want参数会通过该key传递旧尺寸卡片的卡片id。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 | EDIT_FORM_KEY<sup>22+</sup> | 'ohos.extra.param.key.edit_form_id' | 在半模态页面的卡片编辑中，通过onAddForm回调函数传递该key表示被编辑的卡片id，用来确保预览卡片与被编辑卡片信息同步。如果卡片onAddForm回调函数中携带了该key，则说明当前卡片为半模态页面中的预览卡片，需要基于被编辑卡片来筛选预览卡片内容。 <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23 |
-
+| UPDATE_FORM_REASON_KEY<sup>24+</sup> | 'ohos.extra.param.key.update_form_reason' | [卡片更新的原因](#formupdatereason24)。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24 |
 
 ## FormDimension
 
@@ -225,6 +225,25 @@ import { formInfo } from '@kit.FormKit';
 | FORM_DEFAULT | 1   | 表示卡片创建原因为默认创建。 <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23|
 | FORM_SHARE   | 2   | 表示卡片创建原因为共享创建。 <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23|
 | FORM_SIZE_CHANGE<sup>20+</sup>  | 3   | 表示卡片创建原因为尺寸变化。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 20 |
+
+## FormUpdateReason<sup>24+</sup> 
+
+卡片更新原因枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称        | 值   | 说明         |
+| ----------- | ---- | ------------ |
+| UNKNOWN        | -1 | 卡片更新的原因未知。|
+| FORM_NODE_REUSE      | 0   | 卡片更新的原因是节点复用。|
 
 ## OverflowInfo<sup>20+</sup>
 
