@@ -7225,7 +7225,7 @@ on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**ArtTS模式：** 此接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onSystemDensityChange](#onsystemdensitychange23)。
 
@@ -7273,7 +7273,7 @@ onSystemDensityChange(callback: Callback&lt;double&gt;): void
 
 开启本窗口所处屏幕的系统显示大小缩放系数变化事件的监听。比如，当调整窗口所处屏幕的显示大小缩放系数时，可以从此接口监听到这个行为。
 
-**ArtTS模式：** 此接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('systemDensityChange')](#onsystemdensitychange15)。
 
@@ -7321,7 +7321,7 @@ off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**ArtTS模式：** 此接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offSystemDensityChange](#offsystemdensitychange23)。
 
@@ -7370,7 +7370,7 @@ offSystemDensityChange(callback?: Callback&lt;double&gt;): void
 
 关闭本窗口所处屏幕的系统显示大小缩放系数变化事件的监听。
 
-**ArtTS模式：** 此接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('systemDensityChange')](#offsystemdensitychange15)。
 
