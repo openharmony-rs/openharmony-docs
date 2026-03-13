@@ -4905,8 +4905,6 @@ onCustomDataChange(callback: Callback\<Record\<string, Object>>): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('customDataChange')](#oncustomDataChange20)。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
@@ -4988,8 +4986,6 @@ offCustomDataChange(callback?: Callback\<Record\<string, Object>>): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('customDataChange')](#offcustomDataChange20)。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 

@@ -8025,6 +8025,8 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
@@ -8060,6 +8062,8 @@ onCustomDataChange(callback: Callback\<Record\<string, Object>>): void
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('customDataChange')](#oncustomDataChange20)。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8098,6 +8102,8 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
@@ -8131,6 +8137,8 @@ offCustomDataChange(callback?: Callback\<Record\<string, Object>>): void
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('customDataChange')](#offcustomDataChange20)。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

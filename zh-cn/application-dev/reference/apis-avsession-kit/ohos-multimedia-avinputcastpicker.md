@@ -60,7 +60,7 @@ AVInputCastPicker({
 | -------- | -------- | -------- | -------- | -------- |
 | customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @BuilderParam| 自定义样式。建议应用自定义组件样式，可有效提升组件显示速度。 |
 | onStateChange |[OnPickerStateCallback](#onpickerstatecallback) | 否 | - | 设备列表状态变更回调。<br>state：设备列表状态变更回调函数参数。 |
-| build<br>（为ArkTS-Sta特有参数） |void | 是 | ArkTS-Sta: @Builder | 构建组件的方法。 |
+| build<sup>23+</sup> |void | 是 | @Builder | 构建组件的方法。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23 |
 
 ## OnPickerStateCallback
 
