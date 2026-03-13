@@ -346,7 +346,7 @@ function getAttribute() {
 
 setAttribute(portId: number, attribute: SerialAttribute): void
 
-设置串口的配置参数。如果未调用该方法，使用默认配置参数（波特率：9600bps；据位：8；校验位：0；停止位：1）。
+设置串口的配置参数。如果未调用该方法，使用默认配置参数（波特率：9600bps；数据位：8；校验位：0；停止位：1）。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
