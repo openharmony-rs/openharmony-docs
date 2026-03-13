@@ -336,7 +336,7 @@
    例如，在登录导致用户信息变化的场景下，需要注册监听[onUserInfoChange](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md#onuserinfochange)。因为用户在媒体中心界面扫码登录时，登录状态只有媒体应用能感知。
 
       <!-- @[register_user_info_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-      
+   
       ``` TypeScript
       import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
       // ...
