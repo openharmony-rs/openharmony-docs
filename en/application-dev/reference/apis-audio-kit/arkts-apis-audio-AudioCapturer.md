@@ -888,7 +888,7 @@ Subscribes to the audio input device change event, which is triggered when an au
 | Name  | Type                      | Mandatory| Description                                       |
 | :------- | :------------------------- | :--- | :------------------------------------------ |
 | type     | string                     | Yes  | Event type. The event **'inputDeviceChange'** is triggered when an audio input device is changed.|
-| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) > | Yes  | Callback used to return the information about the new audio input device.|
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) > | Yes  | Callback used to return the updated information about the audio input device.|
 
 **Error codes**
 
@@ -1184,7 +1184,7 @@ Unsubscribes from the audio capturer state change event. This API uses an asynch
 
 | Name| Type  | Mandatory| Description                                               |
 | :----- | :----- | :--- | :-------------------------------------------------- |
-| type   | string | Yes  | Event type. The event **'stateChange'** is triggered when the state of the audio capturer is changed.|
+| type   | string | Yes  | Event type. The event **'stateChange'** is triggered when the listening for audio capturer state change event is canceled.|
 | callback | Callback\<[AudioState](arkts-apis-audio-e.md#audiostate8)> | No| Callback used to return the audio status.|
 
 **Error codes**
@@ -1421,7 +1421,6 @@ read(size: number, isBlockingRead: boolean, callback: AsyncCallback<ArrayBuffer\
 Reads the buffer. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [on('readData')](#onreaddata11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
@@ -1460,7 +1459,6 @@ read(size: number, isBlockingRead: boolean): Promise<ArrayBuffer\>
 Reads the buffer. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [on('readData')](#onreaddata11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Capturer

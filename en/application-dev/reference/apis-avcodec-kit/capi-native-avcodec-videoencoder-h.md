@@ -91,9 +91,9 @@ Enumerates the bit rate modes of a video encoder.
 
 | Value| Description|
 | -- | -- |
-| CBR = 0 | Constant bit rate.<br>**Deprecated from**: 14<br>**Substitute**: [BITRATE_MODE_CBR](capi-native-avcodec-base-h.md#oh_bitratemode)|
-| VBR = 1 | Variable bit rate.<br>**Deprecated from**: 14<br>**Substitute**: [BITRATE_MODE_VBR](capi-native-avcodec-base-h.md#oh_bitratemode)|
-| CQ = 2 | Constant quality.<br>**Deprecated from**: 14<br>**Substitute**: [BITRATE_MODE_CQ](capi-native-avcodec-base-h.md#oh_bitratemode)|
+| CBR = 0 | Constant bit rate.<br>**Substitute**: [BITRATE_MODE_CBR](capi-native-avcodec-base-h.md#oh_bitratemode)|
+| VBR = 1 | Variable bit rate.<br>**Substitute**: [BITRATE_MODE_VBR](capi-native-avcodec-base-h.md#oh_bitratemode)|
+| CQ = 2 | Constant quality.<br>**Substitute**: [BITRATE_MODE_CQ](capi-native-avcodec-base-h.md#oh_bitratemode)|
 
 
 ## Function Description

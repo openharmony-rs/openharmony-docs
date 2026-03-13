@@ -110,7 +110,7 @@ The possible causes are as follows:
 
 1. Check that the target device administrator application has been enabled.
 2. Check that the specified device administrator ability component of the target device administrator application has been enabled.
-3. Check that the device administrator application to be disabled is the caller itself.
+3. Check whether the device administrator application to be disabled is the caller itself.
 
 ## 9200006 Invalid User ID
 
@@ -509,7 +509,7 @@ When a log collection task is being executed, the [systemManager.startCollectLog
 
 **Solution**
 
-After the previous log collection task is complete (that is, the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23) callback is received), the [systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23) API is called to create a log collection task.
+Wait until the previous log collection task is complete (that is, the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23) callback is received), and then call the [systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23) API to create a new log collection task.
 
 ## 9201010 Failed to Configure the Ethernet Network Interface
 

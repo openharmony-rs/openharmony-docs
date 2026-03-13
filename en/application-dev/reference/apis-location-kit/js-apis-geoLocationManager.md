@@ -55,10 +55,10 @@ Defines a geocoding request.
 | country<sup>12+</sup> | string | No| Yes| Country information. The country code complies with the ISO 3166-1 alpha-2 standard. **CN** indicates China. The default language is obtained from **Language and region** in **Settings**.|
 | description | string | No| No| Location information, for example, No. xx, xx Road, Pudong District, Shanghai. The value is a string of a maximum of 100 characters.|
 | maxItems | number | No| Yes| Maximum number of location records to be returned. The specified value must be greater than or equal to **0**. A value smaller than **10** is recommended. The default value is **1**.|
-| minLatitude | number | No| Yes| Minimum latitude. This parameter is used with **minLongitude**, **maxLatitude**, and **maxLongitude** to specify the latitude and longitude ranges. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported. The following three parameters are mandatory if this parameter is specified.|
-| minLongitude | number | No| Yes| Minimum longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
-| maxLatitude | number | No| Yes| Maximum latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported.|
-| maxLongitude | number | No| Yes| Maximum longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
+| minLatitude | number | No| Yes| Minimum latitude. This parameter is used with **minLongitude**, **maxLatitude**, and **maxLongitude** to specify the latitude and longitude ranges. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported. The default value is **0**. The following three parameters are mandatory if this parameter is specified.|
+| minLongitude | number | No| Yes| Minimum longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported. The default value is **0**.|
+| maxLatitude | number | No| Yes| Maximum latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported. The default value is **0**.|
+| maxLongitude | number | No| Yes| Maximum longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported. The default value is **0**.|
 
 
 ## GeoAddress
@@ -99,8 +99,8 @@ Defines a location request.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| priority | [LocationRequestPriority](#locationrequestpriority) | No| Yes| Priority of the location request. This parameter is effective only when **scenario** is set to **UNSET**. If this parameter and **scenario** are set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestPriority](#locationrequestpriority). The default value is **FIRST_FIX**.|
-| scenario | [LocationRequestScenario](#locationrequestscenario) | No| Yes| Scenario of the location request. The **priority** parameter is effective only when this parameter is set to **UNSET**. If this parameter and **priority** are set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestScenario](#locationrequestscenario). The default value is **UNSET**.|
+| priority | [LocationRequestPriority](#locationrequestpriority) | No| Yes| Priority of the location request. This parameter is effective only when **scenario** is set to **UNSET**. If this parameter and **scenario** are both set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestPriority](#locationrequestpriority). The default value is **FIRST_FIX**.|
+| scenario | [LocationRequestScenario](#locationrequestscenario) | No| Yes| Scenario of the location request. The **priority** parameter is effective only when this parameter is set to **UNSET**. If this parameter and **priority** are both set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestScenario](#locationrequestscenario). The default value is **UNSET**.|
 | timeInterval | number | No| Yes|  Time interval at which location information is reported, in seconds.<br>The value is greater than or equal to 0.<br>The default value is the minimum interval allowed in the corresponding positioning mode.<br>The default value is 1s for GNSS positioning and 20s for network positioning.<br>If the value is less than the minimum interval, the minimum interval takes effect.<br>If the value is set to **0**, location information is directly reported without checking of the time interval.|
 | distanceInterval | number | No| Yes| Distance interval at which location information is reported, in meters. The specified value must be greater than or equal to **0**. The default value is **0**. If this parameter is set to **0**, there is no limitation on the location reporting distance.|
 | maxAccuracy | number | No| Yes|  Location accuracy requested by the application, in meters. This parameter is valid only when the precise location function is enabled (both the **ohos.permission.APPROXIMATELY\_LOCATION** and **ohos.permission.LOCATION** permissions are granted). It is invalid when the approximate location function is enabled (only the **ohos.permission.APPROXIMATELY\_LOCATION** permission is enabled).<br>When this parameter is effective, the system compares the [location](#location) information reported by the GNSS or network location service with the location information requested by the application. If the accuracy in the reported [location](#location) information is less than or equal to **maxAccuracy**, the system sends the reported location information to the application. Otherwise, the system discards the location information.<br>The value must be greater than or equal to **0**. The default value is **0**, indicating no limitation on the location accuracy.<br>If **scenario** is set to **NAVIGATION**, **TRAJECTORY_TRACKING**, or **CAR_HAILING** or **priority** is set to **ACCURACY**, you are advised to set **maxAccuracy** to a value greater than **10**.<br>If scenario is set to **DAILY_LIFE_SERVICE** or **NO_POWER** or **priority** is set to **LOW_POWER** or **FIRST_FIX**, you are advised to set **maxAccuracy** to a value greater than **100**.<br>|
@@ -116,10 +116,10 @@ Defines a location request.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| priority | [LocationRequestPriority](#locationrequestpriority) | No| Yes| Priority of the location request. This parameter is effective only when **scenario** is set to **UNSET**. If this parameter and **scenario** are set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestPriority](#locationrequestpriority). The default value is **FIRST_FIX**.|
-| scenario | [LocationRequestScenario](#locationrequestscenario) | No| Yes| Scenario of the location request. The **priority** parameter is effective only when this parameter is set to **UNSET**. If this parameter and **priority** are set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestScenario](#locationrequestscenario). The default value is **UNSET**.|
+| priority | [LocationRequestPriority](#locationrequestpriority) | No| Yes| Priority of the location request. This parameter is effective only when **scenario** is set to **UNSET**. If this parameter and **scenario** are both set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestPriority](#locationrequestpriority). The default value is **FIRST_FIX**.|
+| scenario | [LocationRequestScenario](#locationrequestscenario) | No| Yes| Scenario of the location request. The **priority** parameter is effective only when this parameter is set to **UNSET**. If this parameter and **priority** are both set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestScenario](#locationrequestscenario). The default value is **UNSET**.|
 | maxAccuracy | number | No| Yes|  Location accuracy requested by the application, in meters. This parameter is valid only when the precise location function is enabled (both the **ohos.permission.APPROXIMATELY\_LOCATION** and **ohos.permission.LOCATION** permissions are granted). It is invalid when the approximate location function is enabled (only the **ohos.permission.APPROXIMATELY\_LOCATION** permission is enabled).<br>When this parameter is effective, the system compares the [location](#location) information reported by the GNSS or network location service with the location information requested by the application. If the accuracy in the reported [location](#location) information is less than or equal to **maxAccuracy**, the system sends the reported location information to the application. Otherwise, the system discards the location information.<br>The value must be greater than or equal to **0**. The default value is **0**, indicating no limitation on the location accuracy.<br>If **scenario** is set to **NAVIGATION**, **TRAJECTORY_TRACKING**, or **CAR_HAILING** or **priority** is set to **ACCURACY**, you are advised to set **maxAccuracy** to a value greater than **10**.<br>If scenario is set to **DAILY_LIFE_SERVICE** or **NO_POWER** or **priority** is set to **LOW_POWER** or **FIRST_FIX**, you are advised to set **maxAccuracy** to a value greater than **100**.|
-| timeoutMs | number | No| Yes| Timeout duration, in milliseconds. The minimum value is **1000**. The specified value must be greater than or equal to **1000**.|
+| timeoutMs | number | No| Yes| Timeout duration, in milliseconds. The minimum value is **1000**. The default value is **5000**. The specified value must be greater than or equal to **1000**.|
 
 
 ## ContinuousLocationRequest<sup>12+</sup>
@@ -599,8 +599,8 @@ Defines a beacon fence request. Either **transitionCallback** or **fenceExtensio
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | beacon | [BeaconFence](#beaconfence20) | No| No| Beacon fence configuration.|
-| transitionCallback | Callback&lt;[GeofenceTransition](#geofencetransition12)&gt; | No| Yes| Callback of the beacon fence transition event. Only foreground callback is supported.|
-| fenceExtensionAbilityName | string | No| Yes| [FenceExtensionAbility](js-apis-app-ability-FenceExtensionAbility.md) name.|
+| transitionCallback | Callback&lt;[GeofenceTransition](#geofencetransition12)&gt; | No| Yes| Callback of the beacon fence transition event. The default value is **undefined**. Only foreground callback is supported.|
+| fenceExtensionAbilityName | string | No| Yes| [FenceExtensionAbility](js-apis-app-ability-FenceExtensionAbility.md) name. The default value is an empty string.|
 
 
 ## geoLocationManager.on('locationChange')
@@ -1603,7 +1603,7 @@ Obtains the current position. This API uses a promise to return the result.
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | request | [CurrentLocationRequest](#currentlocationrequest) &#124; [SingleLocationRequest](#singlelocationrequest12) | No| Location request.<br>**SingleLocationRequest** is newly added in API version 12.|
+  | request | [CurrentLocationRequest](#currentlocationrequest) &#124; [SingleLocationRequest](#singlelocationrequest12) | No| Location request.<br>**SingleLocationRequest** is newly added in API version 12. If this parameter is not set, **CurrentLocationRequest** is used as the default value.|
 
 **Return value**
 
@@ -3086,7 +3086,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 ## geoLocationManager.getActiveGeoFences<sup>23+</sup>
 
-getActiveGeoFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
+getActiveGeoFences(): Promise&lt;Map&lt;number, Geofence&gt;&gt;
 
 Queries the current valid geofence information. This API uses a promise to return the result.
 
@@ -3098,7 +3098,7 @@ Queries the current valid geofence information. This API uses a promise to retur
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;Map&lt;int, [Geofence](#geofence)&gt;&gt; | Promise that returns the valid geofence information. The key in the Map is **fenceId**, and the value is the specific information about the corresponding geofence.|
+  | Promise&lt;Map&lt;number, [Geofence](#geofence)&gt;&gt; | Promise that returns the valid geofence information. The key in the Map is **fenceId**, and the value is the specific information about the corresponding geofence.|
 
 **Error codes**
 
