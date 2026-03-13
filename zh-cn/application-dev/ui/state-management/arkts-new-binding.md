@@ -203,14 +203,14 @@ struct BindMenuInterface {
   | [Search](../../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#searchoptions18对象说明) | value | 18   |
   | [BindSheet](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet) | isShow | 18   |
   | [BindContentCover](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover) | isShow | 18   |
-  | [SideBarContainer](../../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md#sidebarwidth) | sideBarWidth | 18   |
-  | [Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarwidth9) | navBarWidth | 18   |
+  | [SideBarContainer](../../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md#属性) | sideBarWidth | 18   |
+  | [Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#属性) | navBarWidth | 18   |
   | [Toggle](../../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#toggleoptions18对象说明) | isOn | 18   |
-  | [Checkbox](../../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md#select) | select | 18   |
-  | [CheckboxGroup](../../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md#selectall) | selectAll | 18   |  
-  | [Radio](../../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md#checked) | checked | 18   |  
+  | [Checkbox](../../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md#属性) | select | 18   |
+  | [CheckboxGroup](../../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md#属性) | selectAll | 18   |  
+  | [Radio](../../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md#属性) | checked | 18   |  
   | [Rating](../../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md#ratingoptions18对象说明) | rating | 18   |  
   | [Slider](../../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#slideroptions对象说明) | value | 18   |  
   | [Select](../../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#selected) | selected | 18   |  
-  | [Select](../../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#value) | value | 18   |
+  | [Select](../../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#属性) | value | 18   |
   | [MenuItem](../../reference/apis-arkui/arkui-ts/ts-basic-components-menuitem.md#selected) | selected | 18   |
