@@ -83,7 +83,7 @@ OH_AVScreenCapture_SetMicrophoneEnabled(capture, isMic);
 
 
 ```c++
-//  value值设为0，表示全屏屏蔽模式。value值设为1，表示窗口屏蔽模式。默认为全屏屏蔽模式。
+// value值设为0，表示全屏屏蔽模式。value值设为1，表示窗口屏蔽模式。默认为全屏屏蔽模式。
 int value = 0;
 OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
 OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, value);
