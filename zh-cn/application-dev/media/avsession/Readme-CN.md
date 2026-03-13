@@ -26,5 +26,5 @@
 - 音频模板<!--music-template-->
   - [使用音频模板](using-avsession-AVMusicTemplate.md)
   <!--Del-->
-  - [音频模板操控概述(仅对系统应用开放)](using-avsession-AVMusicTemplateController-sys.md)
+  - [音频模板概述(仅对系统应用开放)](using-avsession-AVMusicTemplateController-sys.md)
   <!--DelEnd-->

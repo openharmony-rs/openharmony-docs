@@ -1,4 +1,4 @@
-# 音频模板操控概述(仅对系统应用开放)
+# 音频模板概述(仅对系统应用开放)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
@@ -6,13 +6,13 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 23开始，OpenHarmony系统预置的媒体中心支持作为音频模板控制方（以下统称为“媒体中心”）为媒体应用提供统一风格的界面展示，与媒体应用进行数据交互，并给媒体应用下发播控（搜索，播放，暂停等）命令。
+从API version 23开始，OpenHarmony系统预置的媒体中心支持作为音频模板（以下统称为“媒体中心”）为媒体应用提供统一风格的界面展示，与媒体应用进行数据交互，并给媒体应用下发播控（搜索，播放，暂停等）命令。
 
 媒体中心同时支持音频和视频内容，且两者的接入方式相同。本文档以音频场景为例进行说明。
 
 ## 基本概念
 
-音频模板控制器（AVMusicTemplateController）：包含标识媒体会话的ID（sessionId）和音频模板控制器是否已销毁（isDestroy）等。可通过其查询和接受媒体应用相关信息，下发播控指令。
+音频模板控制器（AVMusicTemplateController）：包含标识媒体会话的ID（sessionId）和音频模板控制器是否已销毁（isDestroy）等，与媒体应用进行数据交互的方法。
 
 
 ## 接口说明
@@ -21,7 +21,7 @@
 
 ## 开发步骤
 
-媒体中心作为音频模板控制方的开发基本步骤如下所示：
+媒体中心作为音频模板的开发基本步骤如下所示：
 
 1. 创建音频模板控制器（为每个接入音频模板的媒体应用创建一个音频模板控制器，不需要重复创建），监听音频模板创建和销毁状态，同步创建和销毁音频模板控制器。需要用到如下接口：
 
@@ -278,7 +278,7 @@
    }
    ```
 
-3. 下发媒体控制指令。媒体中心根据操作下发指令给媒体应用。下发指令接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
+3. 下发媒体操作指令。媒体中心根据操作下发指令给媒体应用。下发指令接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
    例如，搜播需要调用接口[playForSearch](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md#playforsearch)下发搜播指令给媒体应用（该接口支持音视频，示例仅以音频为例）。视频需将参数实体类SearchPlayInfo的成员变量更换为SearchPlayVideoInfo类型的videoInfo。
 
