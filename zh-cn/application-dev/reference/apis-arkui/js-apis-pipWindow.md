@@ -834,7 +834,7 @@ type StateChangeCallback = (state: PiPState, reason: string) => void
 | 参数名                       | 类型           | 必填    | 说明                                |
 |--------------------------|--------------|--------------|-----------------------------------|
 | state       |  [PiPState](#pipstate)       | 是 | 当前画中画生命周期状态。 |
-| status | int | 是 | 当前生命周期的切换原因。 <br/>在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，reason始终为“0”，无需关注。<br/>从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，reason为当前生命周期的切换原因：<br/>"requestStart"：应用调用startPip接口；<br/>"autoStart"：应用退后台触发画中画自动启动；<br/>"requestDelete"：应用调用stopPip接口；<br/>"panelActionDelete"：用户点击画中画窗口的关闭按钮；<br/>"dragDelete"：用户将画中画窗口拖入垃圾桶；<br/>"panelActionRestore"：用户点击画中画窗口的还原按钮（无还原按钮时可点击画中画窗口）触发还原；<br/>"other"：其他原因，如新的画中画窗口拉起导致当前窗口被关闭、应用主窗口被关闭等场景。 |
+| reason | string | 是 | 当前生命周期的切换原因。 <br/>在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，reason始终为“0”，无需关注。<br/>从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，reason为当前生命周期的切换原因：<br/>"requestStart"：应用调用startPip接口；<br/>"autoStart"：应用退后台触发画中画自动启动；<br/>"requestDelete"：应用调用stopPip接口；<br/>"panelActionDelete"：用户点击画中画窗口的关闭按钮；<br/>"dragDelete"：用户将画中画窗口拖入垃圾桶；<br/>"panelActionRestore"：用户点击画中画窗口的还原按钮（无还原按钮时可点击画中画窗口）触发还原；<br/>"other"：其他原因，如新的画中画窗口拉起导致当前窗口被关闭、应用主窗口被关闭等场景。 |
 
 
 ## ControlEventParam<sup>12+</sup>
