@@ -24,7 +24,7 @@ ArkTS-Sta: scrollBar(barState: BarState | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -108,7 +108,7 @@ ArkTS-Sta: scrollBarWidth(value: double | string | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -136,7 +136,7 @@ ArkTS-Sta: edgeEffect(edgeEffect: EdgeEffect | undefined, options?: EdgeEffectOp
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -165,7 +165,7 @@ ArkTS-Sta: nestedScroll(value: NestedScrollOptions | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -193,7 +193,7 @@ ArkTS-Sta: enableScrollInteraction(value: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -221,7 +221,7 @@ ArkTS-Sta: friction(value: double | Resource | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -249,7 +249,7 @@ ArkTS-Sta: flingSpeedLimit(speedLimit: double | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -277,13 +277,13 @@ ArkTS-Sta: fadingEdge(enabled: boolean | undefined, options?: FadingEdgeOptions)
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名  | 类型                                              | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enabled | ArkTS-Dyn: Optional&lt;boolean&gt;ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
+| enabled | ArkTS-Dyn: Optional&lt;boolean&gt;<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
 | options | [FadingEdgeOptions](#fadingedgeoptions14对象说明) | 否   | 边缘渐隐参数对象。可以通过该对象定义边缘渐隐效果属性，比如设置渐隐长度。 |
 
 **返回值：**
@@ -306,7 +306,7 @@ ArkTS-Sta: clipContent(clip: ContentClipMode | RectShape | undefined): this
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -336,7 +336,7 @@ ArkTS-Sta: backToTop(backToTop: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -483,7 +483,7 @@ ArkTS-Sta: onReachStart(event: (() => void) | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -513,7 +513,7 @@ ArkTS-Sta: onReachEnd(event: (() => void) | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -547,7 +547,7 @@ ArkTS-Sta: onScrollStart(event: (() => void) | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -581,7 +581,7 @@ ArkTS-Sta: onScrollStop(event: (() => void) | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -860,8 +860,8 @@ ArkTS-Sta: onDidStopFling(handler: VoidCallback | undefined): this
 
 | 参数名   | 类型  | 必填 | 描述              |
 | ----- | ------| ------- | ----------------- |
-| alwaysEnabled | boolean | 是 | 组件内容大小小于组件自身时，设置是否开启滑动效果。设置为true开启滑动效果，设置为false关闭滑动效果。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
-| effectEdge<sup>18+</sup> | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 否 | 设置边缘效果生效的边缘。<br/>如果设置[EffectEdge](#effectedge18枚举说明).START表示只有起始边生效。如果设置[EffectEdge](#effectedge18枚举说明).END表示只有末尾边生效。<br/>默认值为[EffectEdge](#effectedge18枚举说明).START \| [EffectEdge](#effectedge18枚举说明).END表示双边同时生效。当设置为其它异常值时，则默认双边同时生效。<br/>如果需要双边都不生效，可将edgeEffect设置为EdgeEffect.None。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 22 |
+| alwaysEnabled | boolean | 是 | 组件内容大小小于组件自身时，设置是否开启滑动效果。设置为true开启滑动效果，设置为false关闭滑动效果。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| effectEdge<sup>18+</sup> | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 否 | 设置边缘效果生效的边缘。<br/>如果设置[EffectEdge](#effectedge18枚举说明).START表示只有起始边生效。如果设置[EffectEdge](#effectedge18枚举说明).END表示只有末尾边生效。<br/>默认值为[EffectEdge](#effectedge18枚举说明).START \| [EffectEdge](#effectedge18枚举说明).END表示双边同时生效。当设置为其它异常值时，则默认双边同时生效。<br/>如果需要双边都不生效，可将edgeEffect设置为EdgeEffect.None。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## FadingEdgeOptions<sup>14+</sup>对象说明
 
@@ -921,9 +921,9 @@ ArkTS-Sta: onDidStopFling(handler: VoidCallback | undefined): this
 
 ## OnWillScrollCallback<sup>12+</sup>
 
-ArkTS-Dyn：type OnWillScrollCallback = (scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => void | ScrollResult
+ArkTS-Dyn: type OnWillScrollCallback = (scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => void | ScrollResult
 
-ArkTS-Sta：type OnWillScrollCallback = (scrollOffset: double, scrollState: ScrollState, scrollSource: ScrollSource) => undefined | ScrollResult
+ArkTS-Sta: type OnWillScrollCallback = (scrollOffset: double, scrollState: ScrollState, scrollSource: ScrollSource) => undefined | ScrollResult
 
 滚动组件滑动前触发的回调。
 
@@ -933,7 +933,7 @@ ArkTS-Sta：type OnWillScrollCallback = (scrollOffset: double, scrollState: Scro
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -965,7 +965,7 @@ ArkTS-Sta: type OnScrollCallback = (scrollOffset: double, scrollState: ScrollSta
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
@@ -982,7 +982,7 @@ ArkTS-Sta: type OnScrollCallback = (scrollOffset: double, scrollState: ScrollSta
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
@@ -1014,7 +1014,7 @@ ChildrenMainSize有参构造函数。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1037,7 +1037,7 @@ ArkTS-Sta: set childDefaultSize(value: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1053,6 +1053,8 @@ ArkTS-Sta: set childDefaultSize(value: double): void
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
 
+### get childDefaultSize()
+
 ArkTS-Dyn: get childDefaultSize(): number
 
 ArkTS-Sta: get childDefaultSize(): double
@@ -1065,7 +1067,7 @@ ArkTS-Sta: get childDefaultSize(): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：** 
 
@@ -1077,7 +1079,7 @@ ArkTS-Sta: get childDefaultSize(): double
 
 ArkTS-Dyn: splice(start: number, deleteCount?: number, childrenSize?: Array\<number>): void
 
-ArkTS-Dyn: splice(start: int, deleteCount?: int, childrenSize?: Array\<double>): void
+ArkTS-Sta: splice(start: int, deleteCount?: int, childrenSize?: Array\<double\>): void
 
 批量增删改子组件在主轴方向的大小信息。
 
@@ -1087,7 +1089,7 @@ ArkTS-Dyn: splice(start: int, deleteCount?: int, childrenSize?: Array\<double>):
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1128,7 +1130,7 @@ ArkTS-Sta: update(index: int, childSize: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

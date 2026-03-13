@@ -2,7 +2,9 @@
 
 列表包含一系列相同宽度的列表项。适合连续、多行呈现同类数据，例如图片和文本。
 
-> **说明：**
+> **说明：** 
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -20,6 +22,10 @@ chainAnimationOptions(value: ChainAnimationOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                     | 必填   | 说明                           |
@@ -34,6 +40,10 @@ chainAnimationOptions(value: ChainAnimationOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      |  值  | 说明                                       |
 | ------- | ------ | ---------------------------------------- |
 | DEFAULT | 0 | 默认效果，列表滚动到边缘以后继续拖动，拖拽方向上的列表项间距缩小，<br/>拖拽反方向上的列表项间距扩大。 |
@@ -46,6 +56,10 @@ chainAnimationOptions(value: ChainAnimationOptions)
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                                       | 必填   | 说明                                       |
 | ------------ | ---------------------------------------- | ---- | ---------------------------------------- |
