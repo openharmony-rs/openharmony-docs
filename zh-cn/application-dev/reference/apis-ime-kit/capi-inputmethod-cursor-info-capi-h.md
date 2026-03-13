@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## 概述
@@ -41,7 +41,7 @@
 
 ### OH_CursorInfo_Create()
 
-```
+```c
 InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double width, double height)
 ```
 
@@ -65,11 +65,11 @@ InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double wid
 
 | 类型 | 说明 |
 | -- | -- |
-| [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) * | 如果创建成功，返回一个指向新创建的[InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)实例的指针。<br> 成功时返回实例。如果创建失败，对象返回NULL，可能的失败原因有应用地址空间满。 |
+| [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) * | 如果创建成功，返回一个指向新创建的[InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)实例的指针。<br> 如果创建失败，对象返回NULL，可能的失败原因有应用地址空间满。 |
 
 ### OH_CursorInfo_Destroy()
 
-```
+```c
 void OH_CursorInfo_Destroy(InputMethod_CursorInfo *cursorInfo)
 ```
 
@@ -88,7 +88,7 @@ void OH_CursorInfo_Destroy(InputMethod_CursorInfo *cursorInfo)
 
 ### OH_CursorInfo_SetRect()
 
-```
+```c
 InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, double left, double top, double width, double height)
 ```
 
@@ -117,7 +117,7 @@ InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, 
 
 ### OH_CursorInfo_GetRect()
 
-```
+```c
 InputMethod_ErrorCode OH_CursorInfo_GetRect(InputMethod_CursorInfo *cursorInfo, double *left, double *top, double *width, double *height)
 ```
 

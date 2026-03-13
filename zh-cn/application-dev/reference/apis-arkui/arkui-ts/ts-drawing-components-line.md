@@ -33,7 +33,7 @@ Line(options?: LineOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [LineOptions](ts-drawing-components-line.md#lineoptions18对象说明) | 否 | Line绘制区域。<br/>异常值undefined和null按照无效值处理。 |
+| options | [LineOptions](ts-drawing-components-line.md#lineoptions18对象说明) | 否 | Line绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ## LineOptions<sup>18+</sup>对象说明
 
@@ -110,7 +110,7 @@ fill(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                   |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：Color.Black<br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Black<br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
 
 ### fillOpacity
 
@@ -146,7 +146,7 @@ stroke(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照Color.Black处理。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Transparent<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。 |
 
 ### strokeDashArray
 
@@ -290,7 +290,7 @@ antiAlias(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true<br/>异常值undefined和null按照默认值处理。 |
+| value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true<br/>异常值undefined和null按照false处理。 |
 
 ## 示例
 
@@ -511,7 +511,7 @@ struct LineTypeExample {
 class MyLineModifier implements AttributeModifier<LineAttribute> {
   applyNormalAttribute(instance: LineAttribute): void {
     // 一个起始点为（10, 10），终点为（120, 10）的直线，边框颜色#2787D9，边框间隙[20]，向左偏移15，线条两端样式为半圆，边框透明度0.5，边框宽度10，抗锯齿开启
-    instance.startPoint([10,10])
+    instance.startPoint([10, 10])
     instance.endPoint([120, 10])
     instance.stroke("#2787D9")
     instance.strokeDashArray([20])

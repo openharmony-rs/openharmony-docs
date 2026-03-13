@@ -21,6 +21,13 @@ In NDK multi-window development scenarios requiring cross-instance attribute con
 This example demonstrates the basic usage of the **OH_ArkUI_RunTaskInScope** API, using **OH_ArkUI_NodeUtils_GetAttachedNodeHandleById** to retrieve components from previous pages. For details, see [OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid). The **userData** parameter passes a component pointer for setting corresponding component attributes.
 
 
+<!-- @[runtaskinscopethree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+const uint32_t VALUE_2 = 250;
+const uint32_t VALUE_3 = 480;
+```
+
 <!-- @[runtaskinscopeone_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++

@@ -74,7 +74,7 @@ The file declares the native APIs used to query the codec capability.
 
 ### OH_AVCodecCategory
 
-```
+```c
 enum OH_AVCodecCategory
 ```
 
@@ -93,7 +93,7 @@ Enumerates the codec categories.
 
 ### OH_AVCapabilityFeature
 
-```
+```c
 enum OH_AVCapabilityFeature
 ```
 
@@ -117,7 +117,7 @@ Enumerates the optional features that can be used in specific codec scenarios.
 
 ### OH_AVCodec_GetCapability()
 
-```
+```c
 OH_AVCapability *OH_AVCodec_GetCapability(const char *mime, bool isEncoder)
 ```
 
@@ -144,7 +144,7 @@ Obtains the codec capability recommended by the system.
 
 ### OH_AVCodec_GetCapabilityByCategory()
 
-```
+```c
 OH_AVCapability *OH_AVCodec_GetCapabilityByCategory(const char *mime, bool isEncoder, OH_AVCodecCategory category)
 ```
 
@@ -172,7 +172,7 @@ Obtains the codec capability by category, which can be a hardware codec or softw
 
 ### OH_AVCapability_IsHardware()
 
-```
+```c
 bool OH_AVCapability_IsHardware(OH_AVCapability *capability)
 ```
 
@@ -198,7 +198,7 @@ Checks whether a codec capability instance describes a hardware codec.
 
 ### OH_AVCapability_GetName()
 
-```
+```c
 const char *OH_AVCapability_GetName(OH_AVCapability *capability)
 ```
 
@@ -224,7 +224,7 @@ Obtains the codec name.
 
 ### OH_AVCapability_GetMaxSupportedInstances()
 
-```
+```c
 int32_t OH_AVCapability_GetMaxSupportedInstances(OH_AVCapability *capability)
 ```
 
@@ -250,7 +250,7 @@ Obtains the maximum number of codec instances supported by a codec.
 
 ### OH_AVCapability_GetEncoderBitrateRange()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetEncoderBitrateRange(OH_AVCapability *capability, OH_AVRange *bitrateRange)
 ```
 
@@ -277,7 +277,7 @@ Obtains the bit rate range supported by an encoder.
 
 ### OH_AVCapability_IsEncoderBitrateModeSupported()
 
-```
+```c
 bool OH_AVCapability_IsEncoderBitrateModeSupported(OH_AVCapability *capability, OH_BitrateMode bitrateMode)
 ```
 
@@ -304,7 +304,7 @@ Checks whether an encoder supports a specific bit rate mode.
 
 ### OH_AVCapability_GetEncoderQualityRange()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetEncoderQualityRange(OH_AVCapability *capability, OH_AVRange *qualityRange)
 ```
 
@@ -331,7 +331,7 @@ Obtains the quality range supported by an encoder.
 
 ### OH_AVCapability_GetEncoderComplexityRange()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetEncoderComplexityRange(OH_AVCapability *capability, OH_AVRange *complexityRange)
 ```
 
@@ -358,7 +358,7 @@ Obtains the complexity range supported by an encoder.
 
 ### OH_AVCapability_GetAudioSupportedSampleRates()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetAudioSupportedSampleRates(OH_AVCapability *capability, const int32_t **sampleRates, uint32_t *sampleRateNum)
 ```
 
@@ -386,7 +386,7 @@ Obtains the sample rates supported by an audio codec.
 
 ### OH_AVCapability_GetAudioSupportedSampleRateRanges()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetAudioSupportedSampleRateRanges(OH_AVCapability *capability, OH_AVRange **sampleRateRanges, uint32_t *rangesNum)
 ```
 
@@ -414,7 +414,7 @@ Obtains the sample rate ranges supported by an audio codec.
 
 ### OH_AVCapability_GetAudioChannelCountRange()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetAudioChannelCountRange(OH_AVCapability *capability, OH_AVRange *channelCountRange)
 ```
 
@@ -441,7 +441,7 @@ Obtains the count range of audio channels supported by an audio codec.
 
 ### OH_AVCapability_GetVideoWidthAlignment()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetVideoWidthAlignment(OH_AVCapability *capability, int32_t *widthAlignment)
 ```
 
@@ -468,7 +468,7 @@ Obtains the video width alignment supported by a video codec.
 
 ### OH_AVCapability_GetVideoHeightAlignment()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetVideoHeightAlignment(OH_AVCapability *capability, int32_t *heightAlignment)
 ```
 
@@ -495,7 +495,7 @@ Obtains the video height alignment supported by a video codec.
 
 ### OH_AVCapability_GetVideoWidthRangeForHeight()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetVideoWidthRangeForHeight(OH_AVCapability *capability, int32_t height, OH_AVRange *widthRange)
 ```
 
@@ -523,7 +523,7 @@ Obtains the video width range supported by a video codec based on a given height
 
 ### OH_AVCapability_GetVideoHeightRangeForWidth()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetVideoHeightRangeForWidth(OH_AVCapability *capability, int32_t width, OH_AVRange *heightRange)
 ```
 
@@ -551,7 +551,7 @@ Obtains the video height range supported by a video codec based on a given width
 
 ### OH_AVCapability_GetVideoWidthRange()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetVideoWidthRange(OH_AVCapability *capability, OH_AVRange *widthRange)
 ```
 
@@ -578,7 +578,7 @@ Obtains the video width range supported by a video codec.
 
 ### OH_AVCapability_GetVideoHeightRange()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetVideoHeightRange(OH_AVCapability *capability, OH_AVRange *heightRange)
 ```
 
@@ -605,7 +605,7 @@ Obtains the video height range supported by a video codec.
 
 ### OH_AVCapability_IsVideoSizeSupported()
 
-```
+```c
 bool OH_AVCapability_IsVideoSizeSupported(OH_AVCapability *capability, int32_t width, int32_t height)
 ```
 
@@ -633,7 +633,7 @@ Checks whether a video codec supports a specific video size.
 
 ### OH_AVCapability_GetVideoFrameRateRange()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetVideoFrameRateRange(OH_AVCapability *capability, OH_AVRange *frameRateRange)
 ```
 
@@ -660,7 +660,7 @@ Obtains the video frame rate range supported by a video codec.
 
 ### OH_AVCapability_GetVideoFrameRateRangeForSize()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetVideoFrameRateRangeForSize(OH_AVCapability *capability, int32_t width, int32_t height, OH_AVRange *frameRateRange)
 ```
 
@@ -689,7 +689,7 @@ Obtains the video frame rate range supported by a video codec based on a given v
 
 ### OH_AVCapability_AreVideoSizeAndFrameRateSupported()
 
-```
+```c
 bool OH_AVCapability_AreVideoSizeAndFrameRateSupported(OH_AVCapability *capability, int32_t width, int32_t height, int32_t frameRate)
 ```
 
@@ -718,7 +718,7 @@ Checks whether a video codec supports the combination of a video size and frame 
 
 ### OH_AVCapability_GetVideoSupportedPixelFormats()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetVideoSupportedPixelFormats(OH_AVCapability *capability, const int32_t **pixelFormats, uint32_t *pixelFormatNum)
 ```
 
@@ -746,7 +746,7 @@ Obtains the video pixel formats supported by a video codec.
 
 ### OH_AVCapability_GetVideoSupportedNativeBufferFormats()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetVideoSupportedNativeBufferFormats(OH_AVCapability *capability, const OH_NativeBuffer_Format **nativeBufferFormats, uint32_t *nativeBufferFormatNum)
 ```
 
@@ -774,7 +774,7 @@ Obtains the OH_NativeBuffer formats supported by a video codec. This function pr
 
 ### OH_AVCapability_GetSupportedProfiles()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetSupportedProfiles(OH_AVCapability *capability, const int32_t **profiles, uint32_t *profileNum)
 ```
 
@@ -802,7 +802,7 @@ Obtains the profiles supported by a codec.
 
 ### OH_AVCapability_GetSupportedLevelsForProfile()
 
-```
+```c
 OH_AVErrCode OH_AVCapability_GetSupportedLevelsForProfile(OH_AVCapability *capability, int32_t profile, const int32_t **levels, uint32_t *levelNum)
 ```
 
@@ -831,7 +831,7 @@ Obtains the codec levels supported by a profile.
 
 ### OH_AVCapability_AreProfileAndLevelSupported()
 
-```
+```c
 bool OH_AVCapability_AreProfileAndLevelSupported(OH_AVCapability *capability, int32_t profile, int32_t level)
 ```
 
@@ -859,7 +859,7 @@ Checks whether a codec supports the combination of a profile and level.
 
 ### OH_AVCapability_IsFeatureSupported()
 
-```
+```c
 bool OH_AVCapability_IsFeatureSupported(OH_AVCapability *capability, OH_AVCapabilityFeature feature)
 ```
 
@@ -886,7 +886,7 @@ Checks whether a codec supports a feature.
 
 ### OH_AVCapability_GetFeatureProperties()
 
-```
+```c
 OH_AVFormat *OH_AVCapability_GetFeatureProperties(OH_AVCapability *capability, OH_AVCapabilityFeature feature)
 ```
 
@@ -910,5 +910,3 @@ Obtains the properties of a feature. You must manually release the OH_AVFormat i
 | Type| Description|
 | -- | -- |
 | [OH_AVFormat](capi-core-oh-avformat.md) * | Pointer to an OH_AVFormat instance.|
-
-<!--no_check-->

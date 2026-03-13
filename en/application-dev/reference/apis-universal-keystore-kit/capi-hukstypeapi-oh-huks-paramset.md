@@ -7,13 +7,17 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_ParamSet {...}
+```
+
 ## Overview
 
 Defines the struct of a parameter set.
 
 **Since**: 9
 
-**Related module:** [HuksTypeApi](capi-hukstypeapi.md)
+**Related module**: [HuksTypeApi](capi-hukstypeapi.md)
 
 **Header file**: [native_huks_type.h](capi-native-huks-type-h.md)
 

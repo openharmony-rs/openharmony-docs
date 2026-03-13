@@ -9,6 +9,7 @@
 - ArkTS APIs<!--user-authentication-arkts-->
   - [@ohos.userIAM.userAuth (User Authentication)](js-apis-useriam-userauth.md)
   <!--Del-->
+  - [@ohos.userIAM.companionDeviceAuth (Companion Device Authentication) (System API)](js-apis-useriam-companiondeviceauth-sys.md)
   - [@ohos.userIAM.faceAuth (Facial Authentication) (System API)](js-apis-useriam-faceauth-sys.md)
   - [@ohos.userIAM.userAccessCtrl (User Access Control) (System API)](js-apis-useriam-useraccessctrl-sys.md)
   - [@ohos.userIAM.userAuth (User Authentication) (System API)](js-apis-useriam-userauth-sys.md)

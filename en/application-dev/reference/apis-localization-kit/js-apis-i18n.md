@@ -15,7 +15,7 @@ This module provides system-related and enhanced [i18n](../../internationalizati
 >
 >  - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  - The APIs of this module conform to the [Common Locale Data Repository (CLDR)](https://cldr.unicode.org) internationalization database. The processing result may change with CLDR evolution. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, visit the official website.
+>  - The APIs of this module are based on the [CLDR](https://cldr.unicode.org) internationalization database. The processing results of the APIs may be adjusted as the CLDR standard evolves. For example, the return value of the [date and time formatting API](#simplenumberformat18) is used only for UI display. Do not hardcode the return value or make assumptions about the return value. Otherwise, version compatibility problems may occur. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, see the official CLDR documentation.
 >
 >  - Since API version 11, some APIs of this module are supported in ArkTS widgets.
 
@@ -804,7 +804,7 @@ Obtains entity information in the **text** object.
 
 | Name | Type  | Mandatory  | Description               |
 | ---- | ---- | ---- | ----------------- |
-| text | string | Yes   | **text** object.|
+| text | string | Yes   | Input text.|
 
 **Return value**
 
@@ -1444,6 +1444,9 @@ getLocationName(phoneNumber: string, locale: string): string
 
 Obtains the home location of a phone number.
 
+> **Description**
+> This API can be used to obtain the home location of a dialed number in real time since API version 23.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Global.I18n
@@ -1465,9 +1468,20 @@ Obtains the home location of a phone number.
   ```ts
   import { i18n } from '@kit.LocalizationKit';
 
+  // Obtain the home location of the complete phone number.
   let phonenumberFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN');
   let locationName: string = phonenumberFormat.getLocationName('158****2345', 'zh-CN'); // locationName = 'Zhanjiang, Guangdong Province'
   let locName: string = phonenumberFormat.getLocationName('0039312****789', 'zh-CN'); // locName = 'Italy'
+
+  // Obtain the home area of the phone number being dialed.
+  let option: i18n.PhoneNumberFormatOptions = { type: 'TYPING' };
+  let typingFormatter: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN', option);
+  let formatResult = typingFormatter.getLocationName('1', 'en'); // formatResult = ''
+  formatResult = typingFormatter.getLocationName('13', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('133', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('1334', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('13342', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('133426', 'en'); // formatResult = 'Dongguan, Guangdong'
   ```
 
 
@@ -1481,7 +1495,7 @@ Options for **PhoneNumberFormat** object initialization.
 
 | Name  | Type    | Read-Only  | Optional  | Description                                      |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| type | string | No   | Yes   | Type of the phone number. The value can be **E164**, **INTERNATIONAL**, **NATIONAL**, **RFC3966**, or **TYPING**.<br>- In API version 8, **type** is mandatory.<br>- In API version 9 or later, **type** is optional.<br>- In API version 12 or later, TYPING is supported, which indicates that the dialed number is formatted in real time.|
+| type | string | No   | Yes   | Type of the phone number. The value can be **E164**, **INTERNATIONAL**, **NATIONAL**, **RFC3966**, or **TYPING**.<br>- In API version 8, **type** is mandatory.<br>- In API version 9 or later, **type** is optional.<br>- In API version 12 or later, TYPING is supported, which indicates that the dialed number is formatted in real time.<br>- In API version 23 or later, TYPING supports real-time obtaining of the home location of a dialed number.|
 
 
 ## UnitInfo<sup>8+</sup>
@@ -1601,7 +1615,7 @@ Obtains the index of the **text** object.
 
 | Name | Type    | Mandatory  | Description          |
 | ---- | ------ | ---- | ------------ |
-| text | string | Yes   | **text** object.|
+| text | string | Yes   | Input text.|
 
 **Return value**
 
@@ -2477,7 +2491,7 @@ Converts the input text from the source format to the target format.
 
 | Name | Type    | Mandatory  | Description    |
 | ---- | ------ | ---- | ------ |
-| text | string | Yes   | **text** object.|
+| text | string | Yes   | Input text.|
 
 **Return value**
 
@@ -2490,7 +2504,7 @@ Converts the input text from the source format to the target format.
   import { i18n } from '@kit.LocalizationKit';
 
   let transliterator: i18n.Transliterator = i18n.Transliterator.getInstance('Any-Latn');
-  let wordArray: string[] = ['中国', '德国', '美国', '法国']
+  let wordArray: string[] = ['China', 'Germany', 'US', 'France"]
   for (let i = 0; i < wordArray.length; i++) {
     let transliterateLatn: string =
       transliterator.transform(wordArray[i]); // transliterateLatn: 'zhōng guó', 'dé guó', 'měi guó', 'fǎ guó'
@@ -2498,12 +2512,12 @@ Converts the input text from the source format to the target format.
 
   // Chinese transliteration and tone removal
   transliterator = i18n.Transliterator.getInstance('Any-Latn;Latin-Ascii');
-  let transliterateAscii: string = transliterator.transform('中国'); // transliterateAscii = 'zhong guo'
+  let transliterateAscii: string = transliterator.transform ('China'); // transliterateAscii = 'zhong guo'
 
   // Chinese surname pronunciation
   transliterator = i18n.Transliterator.getInstance('Han-Latin/Names');
-  let transliterateNames: string = transliterator.transform('单老师'); // transliterateNames = 'shàn lǎo shī'
-  transliterateNames = transliterator.transform('长孙无忌'); // transliterateNames = 'zhǎng sūn wú jì'
+  let transliterateNames: string = transliterator.transform('Teacher Shan'); // transliterateNames = 'shàn lǎo shī'
+  transliterateNames = transliterator.transform('Long Sun No Taboo'); // transliterateNames = 'zhǎng sūn wú jì'
   ```
 
 
@@ -3244,7 +3258,7 @@ Normalizes input strings.
 
 | Name   | Type    | Mandatory  | Description                       |
 | ------ | ------ | ---- | ------------------------- |
-| text | string | Yes   | **text** object.|
+| text | string | Yes   | Input text.|
 
 **Return value**
 
@@ -3698,6 +3712,135 @@ Formats the date and time.
   }
   ```
 
+## StyledDateTimeFormat<sup>23+</sup>
+
+Formats the rich text time and date.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Global.I18n
+
+### constructor<sup>23+</sup>
+
+constructor(dateTimeFormat: Intl.DateTimeFormat | SimpleDateTimeFormat, options?: StyledDateTimeFormatOptions)
+
+Creates an object for formatting the time and date that need to be displayed in rich text.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Parameters**
+
+|   Name |      Type     | Mandatory|     Description     |
+| --------- | ------------- | ---- | ------------- |
+| dateTimeFormat | [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) \| [SimpleDateTimeFormat](#simpledatetimeformat18) | Yes  | Object used to format the date and time. |
+| options | [StyledDateTimeFormatOptions](#styleddatetimeformatoptions23) | No| Specifies the configuration items of the time and date formatting object. The default value is the default text style. |
+
+**Example**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let yearTextStyle: TextStyle = new TextStyle({ fontColor: Color.Red });
+  let monthTextStyle: TextStyle = new TextStyle({ fontColor: Color.Green });
+  let dayTextStyle: TextStyle = new TextStyle({ fontColor: Color.Blue });
+
+  // Create a StyledDateTimeFormat object through Intl.DateTimeFormat.
+  let dateFormat: Intl.DateTimeFormat = new Intl.DateTimeFormat('zh-Hans-CN', { dateStyle: 'full' });
+  let styledDateFormat: i18n.StyledDateTimeFormat = new i18n.StyledDateTimeFormat(dateFormat, {
+    year: yearTextStyle,
+    month: monthTextStyle,
+    day: dayTextStyle
+  });
+
+  let hourTextStyle: TextStyle = new TextStyle({ fontColor: Color.Yellow });
+  let minuteTextStyle: TextStyle = new TextStyle({ fontColor: Color.Orange });
+  let secondTextStyle: TextStyle = new TextStyle({ fontColor: Color.Pink });
+
+  // Create a StyledDateTimeFormat object through SimpleDateTimeFormat.
+  let locale: Intl.Locale = new Intl.Locale('zh-Hans-CN');
+  let simpleTimeFormat: i18n.SimpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton('hhmmss', locale);
+  let styledTimeFormat: i18n.StyledDateTimeFormat = new i18n.StyledDateTimeFormat(simpleTimeFormat, {
+    hour: hourTextStyle,
+    minute: minuteTextStyle,
+    second: secondTextStyle
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call i18n.StyledDateTimeFormat failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+### format<sup>23+</sup>
+
+format(date: Date): StyledString
+
+Formats the date and time as a rich text object.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Parameters**
+
+|   Name |      Type     | Mandatory|     Description     |
+| --------- | ------------- | ---- | ------------- |
+| date | Date | Yes| Date and time to be formatted. |
+
+**Return value**
+
+|       Type       |         Description         |
+| ----------------- | ----------------------|
+| [StyledString](../apis-arkui/arkui-ts/ts-universal-styled-string.md#styledstring) | Rich text object after formatting.|
+
+**Example**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let yearTextStyle: TextStyle = new TextStyle({ fontColor: Color.Red });
+  let monthTextStyle: TextStyle = new TextStyle({ fontColor: Color.Green });
+  let dayTextStyle: TextStyle = new TextStyle({ fontColor: Color.Blue });
+
+  // Create a StyledDateTimeFormat object through Intl.DateTimeFormat.
+  let dateFormat: Intl.DateTimeFormat = new Intl.DateTimeFormat('zh-Hans-CN', { dateStyle: 'full' });
+  let styledDateFormat: i18n.StyledDateTimeFormat = new i18n.StyledDateTimeFormat(dateFormat, {
+    year: yearTextStyle,
+    month: monthTextStyle,
+    day: dayTextStyle
+  });
+  let date: Date = new Date(2025, 11, 1);
+  // formattedDate.getString() is 'Monday, December 1, 2025'. When formattedDate is displayed, 2025 is in red, 12 is in green, and 1 is in blue.
+  let formattedDate: StyledString = styledDateFormat.format(date);
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call StyledNumberFormat.format failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+## StyledDateTimeFormatOptions<sup>23+</sup>
+
+Optional configuration items for creating the time and date formatting object for rich text display.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Global.I18n
+
+| Name           | Type            |  Read-Only  |  Optional  |  Description                                  |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| year        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Specifies the text style of the year. The default value is the default text style of StyledString.    |
+| month        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Specifies the text style of the month. The default value is the default text style of StyledString.   |
+| day       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Specifies the text style of the day. The default value is the default text style of StyledString.    |
+| hour       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Specifies the text style of the hour. The default value is the default text style of StyledString.    |
+| minute      | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Specifies the text style of the minute. The default value is the default text style of StyledString.    |
+| second        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Specifies the text style of the second. The default value is the default text style of StyledString.   |
+| dayPeriod       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Specifies the text style of the period. The default value is the default text style of StyledString.    |
+| weekday        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Specifies the text style of the week. The default value is the default text style of StyledString.    |
+| era        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Specifies the text style of the era. The default value is the default text style of StyledString.    |
+| timeZoneName   | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Specifies the text style of the time zone name. The default value is the default text style of StyledString. |
 
 ## i18n.getSimpleNumberFormatBySkeleton<sup>20+</sup>
 
@@ -4021,10 +4164,134 @@ Represents optional configuration items for the **NumberFormat** object.
 
 | Name           | Type            |  Read-Only  |  Optional  |  Description                                  |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
-| integer        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Text style for the integer part. The default value is the default text style.    |
-| decimal        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Text style for the decimal point. The default value is the default text style.   |
-| fraction       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Text style for the fraction part. The default value is the default text style.    |
-| unit           | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Text style for the unit. The default value is the default text style.    |
+| integer        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Text style for the integer part. The default value is the default text style of StyledString.    |
+| decimal        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Text style for the decimal point. The default value is the default text style of StyledString.   |
+| fraction       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Text style for the fraction part. The default value is the default text style of StyledString.    |
+| unit           | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   No   |   Yes   |  Text style for the unit. The default value is the default text style of StyledString.    |
+
+## AdvancedMeasureFormat<sup>23+</sup>
+
+Performs number formatting.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+### constructor<sup>23+</sup>
+
+constructor(numberFormat: Intl.NumberFormat, options?: AdvancedMeasureFormatOptions)
+
+Creates a **NumberForma**t object for the specified locale.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+|   Name |      Type     | Mandatory|     Description     |
+| --------- | ------------- | ---- | ------------- |
+| numberFormat | [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) | Yes  | **NumberFormat** object. |
+| options | [AdvancedMeasureFormatOptions](#advancedmeasureformatoptions23) | No| Configuration options of the **NumberFormat** object. |
+
+**Example**
+  ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
+  let numFmt: Intl.NumberFormat = new Intl.NumberFormat('zh-Hans-CN', { style: 'unit', unit: 'fahrenheit' });
+  let advancedMeasureFormat: i18n.AdvancedMeasureFormat = new i18n.AdvancedMeasureFormat(numFmt, {
+    unitUsage: i18n.UnitUsage.TEMPERATURE_PERSON
+  });
+  ```
+
+### format<sup>23+</sup>
+
+format(num: number): string
+
+Formats a number.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+|   Name |      Type     | Mandatory|     Description     |
+| --------- | ------------- | ---- | ------------- |
+| num | number | Yes| Number to be formatted. |
+
+**Return value**
+
+|       Type       |         Description         |
+| ----------------- | ----------------------|
+| string | Formatted text.|
+
+**Example**
+  ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
+  let numFmt: Intl.NumberFormat = new Intl.NumberFormat('zh-Hans-CN', { style: 'unit', unit: 'fahrenheit' });
+  let advancedMeasureFormat: i18n.AdvancedMeasureFormat = new i18n.AdvancedMeasureFormat(numFmt, {
+    unitUsage: i18n.UnitUsage.TEMPERATURE_PERSON
+  });
+  let result = advancedMeasureFormat.format(100); // result = '37.778°C'
+  ```
+
+## AdvancedMeasureFormatOptions<sup>23+</sup>
+
+Optional configuration items for creating a number format object.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name           | Type            |  Read-Only  |  Optional  |  Description                                  |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| unitUsage        | [UnitUsage](#unitusage23) |   No   |   Yes   |  Enumerates unit formatting scenarios.    |
+
+## UnitUsage<sup>23+</sup>
+
+Enumerates unit formatting scenarios.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| AREA_LAND_AGRICULT | 1 | Agricultural land area.|
+| AREA_LAND_COMMERCL | 2 | Commercial land area.|
+| AREA_LAND_RESIDNTL | 3 | Residential land area.|
+| LENGTH_PERSON | 4 | Height.|
+| LENGTH_PERSON_SMALL | 5 | High-precision height.|
+| LENGTH_RAINFALL | 6 | Rainfall amount.|
+| LENGTH_ROAD | 7 | Road length.|
+| LENGTH_ROAD_SMALL | 8 | High-precision road length.|
+| LENGTH_SNOWFALL | 9 | Snowfall amount.|
+| LENGTH_VEHICLE | 10 | Vehicle length.|
+| LENGTH_VISIBLTY | 11 | Visibility.|
+| LENGTH_VISIBLTY_SMALL | 12 | High-precision visibility.|
+| LENGTH_PERSON_INFORMAL | 13 | Oral height.|
+| LENGTH_PERSON_SMALL_INFORMAL | 14 | High-precision oral height.|
+| LENGTH_ROAD_INFORMAL | 15 | Oral road length.|
+| SPEED_ROAD_TRAVEL | 16 | Vehicle speed.|
+| SPEED_WIND | 17 | Wind speed.|
+| TEMPERATURE_PERSON | 18 | Body temperature.|
+| TEMPERATURE_WEATHER | 19 | Air temperature.|
+| VOLUME_VEHICLE_FUEL | 20 | Vehicle fuel volume.|
+| ELAPSED_TIME_SECOND | 21 | Past time.|
+| SIZE_FILE_BYTE | 22 | File size.|
+| SIZE_SHORTFILE_BYTE | 23 | Short file size.|
 
 ## i18n.getDisplayCountry<sup>(deprecated)</sup>
 
@@ -4143,7 +4410,7 @@ Obtains the system region.
 
 getSystemLocale(): string
 
-> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [System.getSystemLocaleInstance](#getsystemlocaleinstance20) instead.
+> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [System.getSystemLocale](#getsystemlocaledeprecated) instead.
 
 Obtains the system locale.
 
@@ -4576,5 +4843,3 @@ Obtains the type of the input character.
 | Type    | Description         |
 | ------ | ----------- |
 | string | Type of the input character.|
-
-<!--no_check-->

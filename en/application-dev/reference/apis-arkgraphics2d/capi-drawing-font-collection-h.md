@@ -13,6 +13,8 @@ This file declares the functions related to the font collection in the drawing m
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -35,7 +37,7 @@ This file declares the functions related to the font collection in the drawing m
 
 ### OH_Drawing_CreateFontCollection()
 
-```
+```c
 OH_Drawing_FontCollection* OH_Drawing_CreateFontCollection(void)
 ```
 
@@ -55,7 +57,7 @@ Creates an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md
 
 ### OH_Drawing_DestroyFontCollection()
 
-```
+```c
 void OH_Drawing_DestroyFontCollection(OH_Drawing_FontCollection* fontCollection)
 ```
 
@@ -76,7 +78,7 @@ Destroys an **OH_Drawing_FontCollection** object and reclaims the memory occupie
 
 ### OH_Drawing_DisableFontCollectionFallback()
 
-```
+```c
 void OH_Drawing_DisableFontCollectionFallback(OH_Drawing_FontCollection* fontCollection)
 ```
 
@@ -88,6 +90,9 @@ Disables the system fonts.
 
 **Since**: 12
 
+**Deprecated from**: 18
+
+**Replaced by**: [OH_Drawing_DisableFontCollectionSystemFont()](#oh_drawing_disablefontcollectionsystemfont)
 
 **Parameters**
 
@@ -97,7 +102,7 @@ Disables the system fonts.
 
 ### OH_Drawing_DisableFontCollectionSystemFont()
 
-```
+```c
 void OH_Drawing_DisableFontCollectionSystemFont(OH_Drawing_FontCollection* fontCollection)
 ```
 
@@ -118,7 +123,7 @@ Disables the system fonts.
 
 ### OH_Drawing_CreateSharedFontCollection()
 
-```
+```c
 OH_Drawing_FontCollection* OH_Drawing_CreateSharedFontCollection(void)
 ```
 
@@ -138,7 +143,7 @@ Creates a shareable [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcoll
 
 ### OH_Drawing_ClearFontCaches()
 
-```
+```c
 void OH_Drawing_ClearFontCaches(OH_Drawing_FontCollection* fontCollection)
 ```
 
@@ -159,7 +164,7 @@ Clears the font cache. (The font cache has a memory limit and a clearing mechani
 
 ### OH_Drawing_GetFontCollectionGlobalInstance()
 
-```
+```c
 OH_Drawing_FontCollection* OH_Drawing_GetFontCollectionGlobalInstance(void)
 ```
 

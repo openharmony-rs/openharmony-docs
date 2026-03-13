@@ -85,7 +85,7 @@
       if (!previewProfilesArray) {
         console.error("createOutput previewProfilesArray == null || undefined");
       }
-      //photoProfiles属性为获取当前设备支持的拍照输出流。
+      // photoProfiles属性为获取当前设备支持的拍照输出流。
       let photoProfilesArray: Array<camera.Profile> = cameraOutputCapability.photoProfiles;
       if (!photoProfilesArray) {
         console.error("createOutput photoProfilesArray == null || undefined");

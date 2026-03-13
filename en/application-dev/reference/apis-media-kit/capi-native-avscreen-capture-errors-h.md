@@ -32,7 +32,7 @@ The file declares the error codes generated during screen capture.
 
 ### OH_AVSCREEN_CAPTURE_ErrCode
 
-```
+```c
 enum OH_AVSCREEN_CAPTURE_ErrCode
 ```
 

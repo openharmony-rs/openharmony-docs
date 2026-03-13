@@ -4,7 +4,7 @@
 <!--Owner: @chenshi51-->
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
@@ -19,6 +19,10 @@
 - [订阅崩溃事件（ArkTS）](hiappevent-watcher-crash-events-arkts.md)。
 
 - [订阅崩溃事件（C/C++）](hiappevent-watcher-crash-events-ndk.md)。
+
+> **说明：**
+>
+> 崩溃事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)和原子化服务场景下使用HiAppEvent进行订阅。从API version 22开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用HiAppEvent进行订阅。
 
 ## 检测原理
 
@@ -102,7 +106,7 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | time | number | 事件触发时间，单位为ms。 |
 | crash_type | string | 崩溃类型，支持NativeCrash（native代码异常）和JsError（js代码异常）两种类型。检测方法请参见[CppCrash（NativeCrash）检测](cppcrash-guidelines.md)和[Js Crash（JsError）检测](jscrash-guidelines.md)。 |
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台状态；false表示应用处于后台状态。 |
-| release_type | string | 标识应用打包时使用的SDK的发布类型。具体说明详见[ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的releaseType。<br>**说明**：从API version 23开始支持。 |
+| release_type | string | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API version 23开始支持。 |
 | cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |
@@ -187,10 +191,10 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
-| rss | number | 进程实际占用内存大小，单位KB。 |
-| sys_free_mem | number | 空闲内存大小，单位KB。 |
-| sys_avail_mem | number | 可用内存大小，单位KB。 |
-| sys_total_mem | number | 总内存大小，单位KB。 |
+| rss | number | 进程实际占用内存大小，单位KB。对应[cppcrash日志](cppcrash-guidelines.md#日志规格)或[jscrash日志](jscrash-guidelines.md#日志规格)中Process Memory字段。|
+| sys_free_mem | number | 空闲内存大小，单位KB。对应[cppcrash日志](cppcrash-guidelines.md#日志规格)或[jscrash日志](jscrash-guidelines.md#日志规格)中Device Memory字段的Free。|
+| sys_avail_mem | number | 可用内存大小，单位KB。对应[cppcrash日志](cppcrash-guidelines.md#日志规格)或[jscrash日志](jscrash-guidelines.md#日志规格)中Device Memory字段的Available。|
+| sys_total_mem | number | 总内存大小，单位KB。对应[cppcrash日志](cppcrash-guidelines.md#日志规格)或[jscrash日志](jscrash-guidelines.md#日志规格)中Device Memory字段的Total。|
 
 ## 崩溃事件自定义参数设置
 

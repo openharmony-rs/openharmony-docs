@@ -1,7 +1,7 @@
 # 输入设备与事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -24,6 +24,8 @@
 
 [支持触控板输入事件](./arkts-interaction-development-guide-touchpad.md)：触控板设备及如何处理其产生的事件。
 
-[支持按键输入事件](./arkts-interaction-development-guide-keyboard.md)：键盘类设备及如何处理其产生的事件。
+[支持键盘输入事件](./arkts-interaction-development-guide-keyboard.md)：键盘类设备及如何处理其产生的事件。
+
+[支持游戏手柄输入事件](./arkts-interaction-development-guide-gamepad.md)：游戏手柄设备及如何处理其产生的事件。
 
 [支持表冠输入事件](./arkts-common-events-crown-event.md)：旋转表冠及其如何处理其产生的事件。

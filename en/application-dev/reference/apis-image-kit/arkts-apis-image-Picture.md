@@ -6,12 +6,14 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+An image that contains special information can be decoded into a picture object, which generally contains the main picture, auxiliary picture, and metadata. The main picture contains most information about the image and is mainly used to render the image. The auxiliary picture is used to store data related to but different from the main picture, revealing more comprehensive details. The metadata is generally used to store information about the image file. The picture object class is used to read or write picture objects. Before calling any API in Picture, you must use [image.createPicture](arkts-apis-image-f.md#imagecreatepicture13) to create a Picture object.
+
+Images occupy a large amount of memory. When you finish using a Picture instance, call [release](#release13) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 13.
-
-An image that contains special information can be decoded into a picture object, which generally contains the main picture, auxiliary picture, and metadata. The main picture contains most information about the image and is mainly used to render the image. The auxiliary picture is used to store data related to but different from the main picture, revealing more comprehensive details. The metadata is generally used to store information about the image file. The picture object class is used to read or write picture objects. Before calling any API in Picture, you must use [createPicture](arkts-apis-image-f.md#imagecreatepicture13) to create a Picture object.
 
 ## Modules to Import
 
@@ -240,7 +242,7 @@ async function GetAuxiliaryPicture(pictureObj : image.Picture) {
 
 setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
-Sets the metadata for this Picture object.
+Sets the metadata for this Picture object. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -304,7 +306,7 @@ async function SetPictureObjMetadata(exifContext: Context) {
 
 getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
-Obtains the metadata of this Picture object.
+Obtains the metadata of this Picture object. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -422,6 +424,10 @@ async function Marshalling_UnMarshalling(pictureObj : image.Picture) {
 release(): void
 
 Releases this Picture object.
+
+Images occupy a large amount of memory. When you finish using a Picture instance, call this API to free the memory promptly.
+
+Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

@@ -96,7 +96,7 @@ The file declares the APIs for image decoding.
 
 ### IMAGE_DYNAMIC_RANGE
 
-```
+```c
 enum IMAGE_DYNAMIC_RANGE
 ```
 
@@ -114,7 +114,7 @@ Enumerates the desired dynamic range for decoding.
 
 ### IMAGE_ALLOCATOR_TYPE
 
-```
+```c
 enum IMAGE_ALLOCATOR_TYPE
 ```
 
@@ -132,7 +132,7 @@ Enumerates the types of allocators used to allocate PixelMap memory.
 
 ### Image_CropAndScaleStrategy
 
-```
+```c
 enum Image_CropAndScaleStrategy
 ```
 
@@ -152,7 +152,7 @@ Enumerates the cropping and scaling strategies when **desiredSize** and **desire
 
 ### OH_ImageSourceInfo_Create()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_Create(OH_ImageSource_Info **info)
 ```
 
@@ -177,7 +177,7 @@ Creates the pointer to an OH_ImageSource_Info object.
 
 ### OH_ImageSourceInfo_GetWidth()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t *width)
 ```
 
@@ -203,7 +203,7 @@ Obtains the image width.
 
 ### OH_ImageSourceInfo_GetHeight()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t *height)
 ```
 
@@ -229,7 +229,7 @@ Obtains the image height.
 
 ### OH_ImageSourceInfo_GetDynamicRange()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bool *isHdr)
 ```
 
@@ -255,7 +255,7 @@ Obtains the dynamic range of an image.
 
 ### OH_ImageSourceInfo_GetMimetype()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_MimeType *mimetype)
 ```
 
@@ -281,7 +281,7 @@ Obtains the MIME type of an image.
 
 ### OH_ImageSourceInfo_Release()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)
 ```
 
@@ -306,7 +306,7 @@ Releases the pointer to an OH_ImageSource_Info object.
 
 ### OH_DecodingOptions_Create()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_Create(OH_DecodingOptions **options)
 ```
 
@@ -331,7 +331,7 @@ Creates the pointer to an OH_DecodingOptions object.
 
 ### OH_DecodingOptions_GetPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options,int32_t *pixelFormat)
 ```
 
@@ -357,7 +357,7 @@ Obtains the pixel format.
 
 ### OH_DecodingOptions_SetPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetPixelFormat(OH_DecodingOptions *options,int32_t pixelFormat)
 ```
 
@@ -383,7 +383,7 @@ Sets the pixel format.
 
 ### OH_DecodingOptions_GetIndex()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetIndex(OH_DecodingOptions *options, uint32_t *index)
 ```
 
@@ -409,7 +409,7 @@ Obtains the index of an image.
 
 ### OH_DecodingOptions_SetIndex()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetIndex(OH_DecodingOptions *options, uint32_t index)
 ```
 
@@ -435,7 +435,7 @@ Sets the index for an image.
 
 ### OH_DecodingOptions_GetRotate()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetRotate(OH_DecodingOptions *options, float *rotate)
 ```
 
@@ -461,7 +461,7 @@ Obtains the rotation degree.
 
 ### OH_DecodingOptions_SetRotate()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetRotate(OH_DecodingOptions *options, float rotate)
 ```
 
@@ -487,7 +487,7 @@ Sets the rotation angle.
 
 ### OH_DecodingOptions_GetDesiredSize()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options,Image_Size *desiredSize)
 ```
 
@@ -513,7 +513,7 @@ Obtains the desired output size.
 
 ### OH_DecodingOptions_SetDesiredSize()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options,Image_Size *desiredSize)
 ```
 
@@ -539,7 +539,7 @@ Sets the desired output size.
 
 ### OH_DecodingOptions_GetDesiredRegion()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetDesiredRegion(OH_DecodingOptions *options,Image_Region *desiredRegion)
 ```
 
@@ -565,7 +565,7 @@ Obtains the region to decode.<br> Since the corresponding **SetDesiredRegion** f
 
 ### OH_DecodingOptions_SetDesiredRegion()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetDesiredRegion(OH_DecodingOptions *options,Image_Region *desiredRegion)
 ```
 
@@ -591,7 +591,7 @@ Sets the region to decode.<br> The actual decoding will process the entire origi
 
 ### OH_DecodingOptions_GetDesiredDynamicRange()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetDesiredDynamicRange(OH_DecodingOptions *options,int32_t *desiredDynamicRange)
 ```
 
@@ -617,7 +617,7 @@ Obtains the desired dynamic range configured during decoding.
 
 ### OH_DecodingOptions_SetDesiredDynamicRange()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetDesiredDynamicRange(OH_DecodingOptions *options,int32_t desiredDynamicRange)
 ```
 
@@ -643,7 +643,7 @@ Sets the desired dynamic range during decoding.
 
 ### OH_DecodingOptions_GetDesiredColorSpace()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetDesiredColorSpace(OH_DecodingOptions *options, int32_t *colorSpace)
 ```
 
@@ -669,7 +669,7 @@ Obtains the color space set in the decoding options.
 
 ### OH_DecodingOptions_SetDesiredColorSpace()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetDesiredColorSpace(OH_DecodingOptions *options, int32_t colorSpace)
 ```
 
@@ -695,7 +695,7 @@ Sets the desired color space for the decoding options.
 
 ### OH_DecodingOptions_SetCropAndScaleStrategy()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetCropAndScaleStrategy(OH_DecodingOptions *options,int32_t cropAndScaleStrategy)
 ```
 
@@ -721,7 +721,7 @@ Sets the cropping and scaling strategy used during decoding.
 
 ### OH_DecodingOptions_GetCropAndScaleStrategy()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetCropAndScaleStrategy(OH_DecodingOptions *options,int32_t *cropAndScaleStrategy)
 ```
 
@@ -747,7 +747,7 @@ Obtains the cropping and scaling strategy used during decoding.
 
 ### OH_DecodingOptions_GetCropRegion()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetCropRegion(OH_DecodingOptions *options, Image_Region *cropRegion)
 ```
 
@@ -773,7 +773,7 @@ Obtains the cropping region in the decoding options.
 
 ### OH_DecodingOptions_SetCropRegion()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetCropRegion(OH_DecodingOptions *options, Image_Region *cropRegion)
 ```
 
@@ -799,7 +799,7 @@ Sets the cropping region in the decoding options.
 
 ### OH_DecodingOptions_Release()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_Release(OH_DecodingOptions *options)
 ```
 
@@ -824,7 +824,7 @@ Releases the pointer to an OH_DecodingOptions object.
 
 ### OH_ImageSourceNative_CreateFromUri()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreateFromUri(char *uri, size_t uriSize, OH_ImageSourceNative **res)
 ```
 
@@ -851,7 +851,7 @@ Creates the pointer to an OH_ImageSourceNative object based on a URI.
 
 ### OH_ImageSourceNative_CreateFromFd()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreateFromFd(int32_t fd, OH_ImageSourceNative **res)
 ```
 
@@ -877,7 +877,7 @@ Creates the pointer to an OH_ImageSourceNative object based on a file descriptor
 
 ### OH_ImageSourceNative_CreateFromData()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSize, OH_ImageSourceNative **res)
 ```
 
@@ -904,7 +904,7 @@ Creates the pointer to an OH_ImageSourceNative object based on buffer data.<br> 
 
 ### OH_ImageSourceNative_CreateFromDataWithUserBuffer()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data, size_t datalength,OH_ImageSourceNative **imageSource)
 ```
 
@@ -931,7 +931,7 @@ Creates an image source from data buffer. The data buffer is directly accessed b
 
 ### OH_ImageSourceNative_CreateFromRawFile()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFile, OH_ImageSourceNative **res)
 ```
 
@@ -957,7 +957,7 @@ Creates the pointer to an OH_ImageSourceNative object by using the raw file desc
 
 ### OH_ImageSourceNative_CreatePixelmap()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source, OH_DecodingOptions *options,OH_PixelmapNative **pixelmap)
 ```
 
@@ -984,7 +984,7 @@ Creates the pointer to an OH_PixelmapNative object based on decoding options.
 
 ### OH_ImageSourceNative_CreatePixelmapUsingAllocator()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source,OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)
 ```
 
@@ -1012,7 +1012,7 @@ Creates an OH_PixelmapNative object based on decoding options and memory type, w
 
 ### OH_ImageSourceNative_CreatePixelmapList()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *source, OH_DecodingOptions *options,OH_PixelmapNative *resVecPixMap[], size_t size)
 ```
 
@@ -1040,7 +1040,7 @@ Creates an array of OH_PixelmapNative objects based on decoding options.<br> Thi
 
 ### OH_ImageSourceNative_CreatePicture()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreatePicture(OH_ImageSourceNative *source, OH_DecodingOptionsForPicture *options,OH_PictureNative **picture)
 ```
 
@@ -1067,7 +1067,7 @@ Creates the pointer to an OH_PictureNative object based on decoding options.
 
 ### OH_ImageSourceNative_CreatePictureAtIndex()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *source, uint32_t index,OH_PictureNative **picture)
 ```
 
@@ -1094,7 +1094,7 @@ Creates the pointer to an OH_PictureNative object at the specified index.
 
 ### OH_ImageSourceNative_GetDelayTimeList()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_GetDelayTimeList(OH_ImageSourceNative *source, int32_t *delayTimeList, size_t size)
 ```
 
@@ -1121,7 +1121,7 @@ Obtains the image delay time list.
 
 ### OH_ImageSourceNative_GetImageInfo()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_GetImageInfo(OH_ImageSourceNative *source, int32_t index,OH_ImageSource_Info *info)
 ```
 
@@ -1148,7 +1148,7 @@ Obtains the information about an image with a given index.
 
 ### OH_ImageSourceNative_GetImageProperty()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *source, Image_String *key,Image_String *value)
 ```
 
@@ -1175,7 +1175,7 @@ Obtains the value of an image property.
 
 ### OH_ImageSourceNative_GetImagePropertyWithNull()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNative *source, Image_String *key,Image_String *value)
 ```
 
@@ -1202,7 +1202,7 @@ Obtains the value of an image property. The output **value.data** is terminated 
 
 ### OH_ImageSourceNative_ModifyImageProperty()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *source, Image_String *key,Image_String *value)
 ```
 
@@ -1229,7 +1229,7 @@ Modifies the value of an image property.
 
 ### OH_ImageSourceNative_GetFrameCount()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_GetFrameCount(OH_ImageSourceNative *source, uint32_t *frameCount)
 ```
 
@@ -1255,7 +1255,7 @@ Obtains the number of image frames.
 
 ### OH_ImageSourceNative_GetSupportedFormats()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_GetSupportedFormats(Image_MimeType **supportedFormats, size_t *length)
 ```
 
@@ -1281,7 +1281,7 @@ Obtains the supported image formats that can be decoded.
 
 ### OH_ImageSourceNative_Release()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_Release(OH_ImageSourceNative *source)
 ```
 
@@ -1306,7 +1306,7 @@ Releases the pointer to an OH_ImageSourceNative object.
 
 ### OH_DecodingOptionsForPicture_Create()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptionsForPicture_Create(OH_DecodingOptionsForPicture **options)
 ```
 
@@ -1331,7 +1331,7 @@ Creates the pointer to an OH_DecodingOptionsForPicture object.
 
 ### OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options,Image_AuxiliaryPictureType **desiredAuxiliaryPictures, size_t *length)
 ```
 
@@ -1358,7 +1358,7 @@ Obtains desired auxiliary pictures in the decoding options (auxiliary pictures c
 
 ### OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options,Image_AuxiliaryPictureType *desiredAuxiliaryPictures, size_t length)
 ```
 
@@ -1385,7 +1385,7 @@ Sets desired auxiliary pictures in the decoding options.
 
 ### OH_DecodingOptionsForPicture_Release()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptionsForPicture_Release(OH_DecodingOptionsForPicture *options)
 ```
 

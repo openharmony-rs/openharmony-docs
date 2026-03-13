@@ -360,9 +360,11 @@ OH_Drawing_FilterDestroy(filter);
 目前只支持两种图像滤波器：
 
 - 基于颜色滤波器的图像滤波器。
+
   可通过OH_Drawing_ImageFilterCreateFromColorFilter()接口实现，接口接受2个参数，颜色滤波器colorFilter和图像滤波器input，即把颜色滤波器的效果叠加到图像滤波器input上，input可为空，input为空则只添加颜色滤波器效果。
 
 - 具有模糊效果的图像滤波器。
+
   可通过OH_Drawing_ImageFilterCreateBlur()接口实现，接口接受4个参数，分别为X轴上的模糊标准差、Y轴上的模糊标准差、平铺模式和图像滤波器（input）。
 
   最终效果即为在输入的图像滤波器（input）的基础上进行模糊化处理，即滤波器效果可叠加，input可为空，input为空则只添加模糊效果。

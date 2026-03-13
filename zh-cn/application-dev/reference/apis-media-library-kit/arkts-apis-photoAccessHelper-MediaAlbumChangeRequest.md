@@ -6,22 +6,30 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
+
+相册变更请求。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Class首批接口从API version 11开始支持。
-
-MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)
-
-相册变更请求。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## 导入模块
 
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
+
+## 属性
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称           | 类型    | 只读   | 可选  | 说明   |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | 是    | 否   | 用于[MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)类型校验。<br>如果类（如MediaAlbumChangeRequest）对象可以访问，就说明该类是MediaChangeRequest的实现类。 |
 
 ## constructor<sup>11+</sup>
 
@@ -72,7 +80,9 @@ getAlbum(): Album
 
 获取当前相册变更请求中的相册。
 
-**注意**：对于创建相册的变更请求，在调用[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效之前，该接口返回null。
+> **注意：**
+>
+> 对于创建相册的变更请求，在调用接口[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)的提交生效之前，该接口会返回null。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 

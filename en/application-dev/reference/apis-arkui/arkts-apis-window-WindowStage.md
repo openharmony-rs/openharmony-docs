@@ -11,6 +11,8 @@
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this interface are supported since API version 9.
+>
+> - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
 Implements a window manager, which manages each basic window unit, that is, [Window](arkts-apis-window-Window.md) instance.
 
@@ -48,7 +50,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300005 | This window stage is abnormal. |
 
 **Example**
@@ -57,6 +59,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -110,7 +113,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300005 | This window stage is abnormal. |
 
 **Example**
@@ -119,6 +122,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -170,7 +174,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300005 | This window stage is abnormal. |
 
 **Example**
@@ -178,6 +182,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -228,7 +233,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and can not be created again.|
 
 **Example**
 
@@ -236,6 +241,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -299,7 +305,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and can not be created again.|
 
 **Example**
 
@@ -307,6 +313,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -366,7 +373,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. The subWindow has been created and can not be created again. |
 | 1300005 | This window stage is abnormal. |
 
 **Example**
@@ -375,6 +382,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -433,6 +441,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -485,6 +494,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -507,7 +517,9 @@ export default class EntryAbility extends UIAbility {
 
 loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void&gt;): void
 
-Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage, and transfers the state attribute to the page through a local storage. This API uses an asynchronous callback to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage, and transfers the state attribute to the page through a local storage. This API uses an asynchronous callback to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -520,7 +532,7 @@ Loads the content of a page, with its path in the current project specified, to 
 | Name  | Type                                           | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
 | path     | string                                          | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project. |
-| storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | Yes  | Page-level UI state storage unit, which is used to transfer the state attribute for the page.|
+| storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | Yes  | Page-level UI state storage unit, which is used to transfer the state attribute for the page content loaded to the window.|
 | callback | AsyncCallback&lt;void&gt;                       | Yes  | Callback used to return the result.                                                  |
 
 **Error codes**
@@ -530,7 +542,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **Example**
 
@@ -538,6 +550,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -567,7 +580,9 @@ export default class EntryAbility extends UIAbility {
 
 loadContent(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 
-Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage, and transfers the state attribute to the page through a local storage. This API uses a promise to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage, and transfers the state attribute to the page through a local storage. This API uses a promise to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -580,7 +595,7 @@ Loads the content of a page, with its path in the current project specified, to 
 | Name | Type                                           | Mandatory| Description                                                        |
 | ------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
 | path    | string                                          | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project.|
-| storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No  | Page-level UI state storage unit, which is used to transfer the state attribute for the page.|
+| storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No  | Page-level UI state storage unit, which is used to transfer the state attribute for the page content loaded to the window. This parameter is left blank by default.|
 
 **Return value**
 
@@ -595,7 +610,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **Example**
 
@@ -603,6 +618,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -631,7 +647,9 @@ export default class EntryAbility extends UIAbility {
 
 loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
-Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage. This API uses an asynchronous callback to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage. This API uses an asynchronous callback to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -653,7 +671,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **Example**
 
@@ -661,6 +679,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -687,7 +706,9 @@ export default class EntryAbility extends UIAbility {
 
 loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback&lt;void&gt;): void
 
-Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage, and transfers the state attribute to the page through a local storage. This API uses an asynchronous callback to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage, and transfers the state attribute to the page through a local storage. This API uses an asynchronous callback to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -700,7 +721,7 @@ Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | name     | string                                                  | Yes  | Name of the named route page.                                            |
-| storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | Yes  | Page-level UI state storage unit, which is used to transfer the state attribute for the page.|
+| storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | Yes  | Page-level UI state storage unit, which is used to transfer the state attribute for the page content loaded to the window.|
 | callback | AsyncCallback&lt;void&gt;                               | Yes  | Callback used to return the result.                                                  |
 
 **Error codes**
@@ -710,7 +731,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002  | This window state is abnormal.                |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **Example**
 
@@ -720,6 +741,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import * as Index from '../pages/Index'; // Import the named route page.
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -771,7 +793,9 @@ export struct Index {
 
 loadContentByName(name: string, callback: AsyncCallback&lt;void&gt;): void
 
-Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage. This API uses an asynchronous callback to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage. This API uses an asynchronous callback to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -793,7 +817,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002  | This window state is abnormal.                |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **Example**
 
@@ -803,6 +827,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import * as Index from '../pages/Index'; // Import the named route page.
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -850,7 +875,9 @@ export struct Index {
 
 loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
-Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage, and transfers the state attribute to the page through a local storage. This API uses a promise to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage, and transfers the state attribute to the page through a local storage. This API uses a promise to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -863,7 +890,7 @@ Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page
 | Name | Type        | Mandatory| Description                                                        |
 | ------- | ------------ | ---- | ------------------------------------------------------------ |
 | name    | string       | Yes  | Name of the named route page.                                            |
-| storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No  | Page-level UI state storage unit, which is used to transfer the state attribute for the page.|
+| storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No  | Page-level UI state storage unit, which is used to transfer the state attribute for the page content loaded to the window. This parameter is left blank by default.|
 
 **Return value**
 
@@ -878,7 +905,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002  | This window state is abnormal.                |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **Example**
 
@@ -888,6 +915,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import * as Index from '../pages/Index'; // Import the named route page.
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -933,6 +961,67 @@ export struct Index {
 }
 ```
 
+## releaseUIContent<sup>24+</sup>
+
+releaseUIContent(): Promise&lt;void&gt;
+
+Releases the content of the main window page of this WindowStage. This API uses a promise to return the result.<br>If this API is called when the application is running in the foreground, the page content will not be released immediately. The page content will be released only after the application transitions to the background. If this API is called when the main window does not load the page content, the API call does not take effect and no error is reported.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+For details about the error codes, see [Window Error Codes](errorcode-window.md).
+| ID| Error Message|
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+
+**Example**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  windowStage?: window.WindowStage;
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    this.windowStage = windowStage;
+    try {
+      let promise = windowStage.loadContent('pages/page');
+      promise.then(() => {
+        console.info('Succeeded in loading the content.');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to load the content. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+
+  onBackground():  void {
+    try {
+      this.windowStage?.releaseUIContent().then(() => {
+        console.info('Succeeded in releasing the content.');
+      });
+    } catch (exception) {
+      console.error(`Failed to release the content. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+};
+```
+
 ## on('windowStageEvent')<sup>9+</sup>
 
 on(eventType: 'windowStageEvent', callback: Callback&lt;WindowStageEventType&gt;): void
@@ -967,6 +1056,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -1022,6 +1112,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -1096,6 +1187,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -1161,6 +1253,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -1204,13 +1297,17 @@ If there is an existing event subscribed to by calling [on('windowWillClose')](a
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
-**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+**Device behavior differences**
+
+Before <!--RP4-->OpenHarmony 6.1<!--RP4End-->, this API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, error code 801 is returned.
+
+Since <!--RP4-->OpenHarmony 6.1<!--RP4End-->, this API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, no error is thrown and this API does not take effect until the device is in the freeform window state. If the device does not support freeform windows, no error is thrown and this API does not take effect.
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| eventType  | string                                                       | Yes  | Event type. The value is fixed at **'windowStageClose'**, indicating that the close button in the three-button navigation bar of the main window is clicked|
+| eventType  | string                                                       | Yes  | Event type. The value is fixed at **'windowStageClose'**, indicating that the close button in the three-button navigation bar of the main window is clicked.|
 | callback | Callback&lt;void&gt; | Yes  | Callback invoked when the close button in the top-right corner of the main window is clicked. It does not return any parameter. The internal logic of the callback function requires a return value of the Boolean type. The return value determines whether to continue to close the main window. The value **true** means not to close the main window, and **false** means to continue to close the main window.|
 
 **Error codes**
@@ -1259,7 +1356,11 @@ Unsubscribes from the event indicating that the main window is closed.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
-**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+**Device behavior differences**
+
+Before <!--RP4-->OpenHarmony 6.1<!--RP4End-->, this API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, error code 801 is returned.
+
+Since <!--RP4-->OpenHarmony 6.1<!--RP4End-->, this API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, no error is thrown and this API does not take effect until the device is in the freeform window state. If the device does not support freeform windows, no error is thrown and this API does not take effect.
 
 **Parameters**
 
@@ -1335,8 +1436,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300005 | This window stage is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The main window is not created or destroyed. |
+| 1300005 | This window stage is abnormal. Possible cause: The window stage is not created or destroyed. |
 
 **Example**
 
@@ -1406,6 +1507,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -1447,14 +1549,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300005 | This window stage is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The main window is not created or destroyed. |
+| 1300005 | This window stage is abnormal. Possible cause: The window stage is not created or destroyed. |
 
 **Example**
 
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -1476,7 +1579,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowModal(isModal: boolean): Promise&lt;void&gt;
 
-Enables the modal property of the main window. This API uses a promise to return the result. It works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Enables the modal property of the main window. This API uses a promise to return the result.
 
 This API must be called by the main window and the setting takes effect for the main window. After the modal property of the main window is enabled, other main windows in the same application process and their child windows do not respond to user interactions until the main window is closed or the main window's modal property is disabled.
 
@@ -1486,7 +1589,7 @@ This API must be called by the main window and the setting takes effect for the 
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, error code 801 is returned.
 
 **Parameters**
 
@@ -1509,7 +1612,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally. |
 | 1300005 | This window stage is abnormal. |
 
@@ -1519,6 +1622,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -1569,7 +1673,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window stage is not created or destroyed; 2. The main window is not created or destroyed; 3. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 
 **Example**
@@ -1578,6 +1682,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -1601,10 +1706,7 @@ Enables or disables the auto-save feature for the size of the last closed main w
 
 When the auto-save feature is enabled, within the same UIAbility, the size of the last closed main window is remembered. When this main window is restarted, it will open at the remembered size according to the rules.
 
-The following rules apply in stacking scenarios:
-
-1. If the current instance is a free-form window, the next opened window will adopt the same size when stacked.
-2. If the current instance is maximized or in full-screen mode, the next opened window will maintain the maximized state when stacked.
+The following rules apply in stacking scenarios: 1. If the current instance is a free-form window, the next opened window will adopt the same size when stacked. 2. If the current instance is maximized or in full-screen mode, the next opened window will maintain the maximized state when stacked.
 
 The following table describes the memory rules:
 |Last Window State|Memorizing Rule|
@@ -1621,7 +1723,11 @@ The following table describes the memory rules:
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**
+
+In versions earlier than <!--RP4-->OpenHarmony 6.1<!--RP4End-->, this API can be called properly on 2-in-1 devices, and error code 801 is returned on other devices.
+
+Since <!--RP4-->OpenHarmony 6.1<!--RP4End-->, this API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, no error is thrown and this API does not take effect until the device is in the freeform window state. If the device does not support freeform windows, no error is thrown and this API does not take effect.
 
 **Parameters**
 
@@ -1644,7 +1750,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003  | This window manager service works abnormally. |
 
 **Example**
@@ -1653,6 +1759,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -1697,7 +1804,11 @@ The following table describes the memory rules:
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**
+
+In versions earlier than <!--RP4-->OpenHarmony 6.1<!--RP4End-->, this API can be called properly on 2-in-1 devices, and error code 801 is returned on other devices.
+
+Since <!--RP4-->OpenHarmony 6.1<!--RP4End-->, this API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, no error is thrown and this API does not take effect until the device is in the freeform window state. If the device does not support freeform windows, no error is thrown and this API does not take effect.
 
 **Parameters**
 
@@ -1721,7 +1832,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Function setWindowRectAutoSave can not work correctly due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003  | This window manager service works abnormally. |
 
 **Example**
@@ -1730,6 +1841,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -1761,7 +1873,11 @@ Checks whether the auto-save feature is enabled for the main window's size. This
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**
+
+In versions earlier than <!--RP4-->OpenHarmony 6.1<!--RP4End-->, this API can be called properly on 2-in-1 devices, and error code 801 is returned on other devices.
+
+Since <!--RP4-->OpenHarmony 6.1<!--RP4End-->, this API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window). If the device does not support freeform windows, no error is thrown and false is returned.
 
 **Return value**
 
@@ -1776,7 +1892,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | ID| Error Message|
 | ------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 
 **Example**
@@ -1785,6 +1901,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -1818,9 +1935,9 @@ Sets the supported window modes of the main window. This API uses a promise to r
 
 **Device behavior differences**
 
-Before API version 22, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+In versions earlier than <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, error code 801 is returned.
 
-Starting from API version 22, this API can be called on a device that supports freeform windows and is in the freeform window state, and the setting takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be property called, and the setting takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
+Since <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be properly called on a device that supports freeform windows and is in the freeform window state, and the call takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be property called, and the call takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
 
 **Parameters**
 
@@ -1840,9 +1957,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                      |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error.|
 | 1300003  | This window manager service works abnormally. |
 
 **Example**
@@ -1851,6 +1967,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // EntryAbility.ets
 import { UIAbility, bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -1886,9 +2003,9 @@ Sets the supported window modes for the main window and optionally disables the 
 
 **Device behavior differences**
 
-Before API version 22, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+In versions earlier than <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, error code 801 is returned.
 
-Starting from API version 22, this API can be called on a device that supports freeform windows and is in the freeform window state, and the setting takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be property called, and the setting takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
+Since <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be properly called on a device that supports freeform windows and is in the freeform window state, and the call takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be property called, and the call takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
 
 **Parameters**
 
@@ -1910,7 +2027,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                      |
 | -------- | ------------------------------ |
 | 801      | Capability not supported. Function setSupportedWindowModes can not work correctly due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error.|
 | 1300003  | This window manager service works abnormally. |
 | 1300016  | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. 3. Incorrect parameter format. |
 
@@ -1920,6 +2037,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // EntryAbility.ets
 import { UIAbility, bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...

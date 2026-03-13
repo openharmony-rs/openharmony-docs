@@ -943,7 +943,7 @@ console.info(`has sim card: ` + hasSimCard);
 
 getSimAccountInfo\(slotId: number, callback: AsyncCallback\<IccAccountInfo\>\): void
 
-Obtains account information of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Obtains SIM card account information. This API uses an asynchronous callback to return the result.
 
 **Required permission**: ohos.permission.GET_TELEPHONY_STATE
 
@@ -990,7 +990,7 @@ sim.getSimAccountInfo(0, (err:BusinessError , data: sim.IccAccountInfo) => {
 
 getSimAccountInfo\(slotId: number\): Promise\<IccAccountInfo\>
 
-Obtains account information of the SIM card in the specified slot. This API uses a promise to return the result.
+Obtains SIM card account information. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_TELEPHONY_STATE
 
@@ -1512,14 +1512,9 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-async function exampleGetSimLabel(slotId) {
-    try {
-        const simLabel = await sim.getSimLabel(slotId);
-        console.info(`SIM card label: ${simLabel}`);
-    } catch (err) {
-        console.error(`Failed to obtain the SIM card label: ${err.code} - ${err.message}`);
-    }
-}
+sim.getSimLabel(0, (err: BusinessError, data: sim.SimLabel) => {
+  console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+});
 ```
 
 ## sim.getSimLabel<sup>20+</sup>
@@ -1561,16 +1556,11 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-async getSimLabel(slotId: number): Promise<sim.SimLabel|null> {
-    try {
-      const simLabel: sim.SimLabel =
-        await sim.getSimLabel(slotId);
-      return simLabel;
-    } catch (err) {
-      this.handleError(this.getSimLabel.name, err);
-      return null;
-    }
-  }
+sim.getSimLabel(0).then((data: sim.SimLabel) => {
+  console.info(`getSimLabel success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`getSimState failed, promise: err->${JSON.stringify(err)}`);
+});
 ```
 
 ## sim.getSimLabelSync<sup>20+</sup>
@@ -1596,18 +1586,11 @@ Obtains the SIM card label based on the specified SIM card slot ID.
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-function exampleGetSimLabelSync() {
-    try {
-        const slotId = 0; 
-        const simLabel = sim.getSimLabelSync(slotId);
-        console.info(`SIM card label: ${simLabel}`);
-    } catch (err) {
-        console.error (`Failed to obtain the SIM card label: ${err.message}`);
-    }
-}
+
+let simLabel: sim.SimLabel = sim.getSimLabelSync(0);
+console.info(`The sim state is:` + simLabel);
 ```
 
 ## SimType<sup>20+</sup>

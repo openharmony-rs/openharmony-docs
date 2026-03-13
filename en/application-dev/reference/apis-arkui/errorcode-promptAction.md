@@ -26,11 +26,13 @@ This error code is reported when there is an issue with the content node of the 
 
 **Possible Causes**
 
-The custom component node passed to the dialog box is empty or incorrect.
+The custom content node passed to the dialog box is empty or incorrect.
 
 **Solution**
 
-N/A
+1. Check whether the content node of the custom dialog box exists. You can do so using the [getFrameNodeById()](./arkts-apis-uicontext-uicontext.md#getframenodebyid12) API.
+
+2. Ensure that the content node can be rendered properly.
 
 ## 103302 Custom Dialog Box Already Exists
 
@@ -48,7 +50,7 @@ The custom dialog box associated with the content node is currently displayed.
 
 **Solution**
 
-N/A
+Reinitialize and bind a content node that can be rendered properly to the dialog box.
 
 ## 103303 Custom Dialog Box Not Found
 
@@ -70,7 +72,9 @@ The custom dialog box associated with the content node is not open.
 
 **Solution**
 
-N/A
+1. Ensure that the custom dialog box associated with the content node is open.
+
+2. Ensure that the content node of the custom dialog box is the target content node that needs to be updated or closed.
 
 ## 103304 Target ID Not Found
 
@@ -88,7 +92,7 @@ The provided **targetId** is invalid, or the node corresponding to the **targetI
 
 **Solution**
 
-N/A
+Check whether the node corresponding to the provided **targetId** exists. You can query the node using the [getFrameNodeById()](./arkts-apis-uicontext-uicontext.md#getframenodebyid12) API.
 
 ## 103305 Node Not Mounted
 
@@ -106,7 +110,9 @@ The node with the specified **targetId** is not mounted in the component tree.
 
 **Solution**
 
-N/A
+1. Check whether the node corresponding to the provided **targetId** exists. You can query the node using the [getFrameNodeById()](./arkts-apis-uicontext-uicontext.md#getframenodebyid12) API.
+
+2. Check whether the node corresponding to the provided **targetId** has been mounted to the main node tree. You can do so using the [isAttached()](./js-apis-arkui-frameNode.md#isattached12) API of the content node.
 
 ## 103401 Toast Not Found
 
@@ -124,4 +130,4 @@ The toast has not been displayed or has already been closed.
 
 **Solution**
 
-N/A
+Ensure that the toast is being displayed.

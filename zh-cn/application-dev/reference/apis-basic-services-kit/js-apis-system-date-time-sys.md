@@ -3,8 +3,8 @@
 <!--Subsystem: Time-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 本模块主要由系统时间和系统时区功能组成。开发者可以设置、获取系统时间及系统时区。
 
@@ -358,7 +358,7 @@ updateNtpTime(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                    |
 |-------|-------------------------------------------------------------------------------------------------------------|
@@ -400,11 +400,11 @@ getNtpTime(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                    |
 |-------|-------------------------------------------------------------------------------------------------------------|
-| 13000002    | Location NTP time of the system is invalid.                                                           |
+| 13000002    | updateNtpTime() is not called successfully.                                                           |
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
 
 **示例：**

@@ -14,7 +14,6 @@ The **Radio** component allows users to select from a set of mutually exclusive 
 
 A radio button is created using the **Radio** component with [RadioOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md#radiooptions). The following example demonstrates how to use the **value** and **group** properties in **RadioOptions**:
 
-
 ```ts
 Radio(options: {value: string, group: string})
 ```
@@ -23,7 +22,9 @@ In this API, **value** indicates the name of the radio button, and **group** ind
 
 In addition, you can customize the style of the radio button for both the selected and unselected states.
 
-```ts
+<!-- @[click_radio_to_show_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioButton.ets) -->
+
+``` TypeScript
 Radio({ value: 'Radio1', group: 'radioGroup' })
   .checked(false)
 Radio({ value: 'Radio2', group: 'radioGroup' })
@@ -33,84 +34,90 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 
 ![en-us_image_0000001562820821](figures/en-us_image_0000001562820821.png)
 
-
 ## Adding Events
 
 The **Radio** component supports the [universal events](../reference/apis-arkui/arkui-ts/ts-component-general-events.md). In addition, it can be bound to the **onChange** event to execute custom logic when the selection changes.
 
-```ts
-  Radio({ value: 'Radio1', group: 'radioGroup' })
-    .onChange((isChecked: boolean) => {
-      if(isChecked) {
-        // Operation
-      }
-    })
-  Radio({ value: 'Radio2', group: 'radioGroup' })
-    .onChange((isChecked: boolean) => {
-      if(isChecked) {
-        // Operation
-      }
-    })
+<!-- @[click_radio_event_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioButton.ets) -->
+
+``` TypeScript
+Radio({ value: 'Radio1', group: 'radioGroup' })
+  .onChange((isChecked: boolean) => {
+    if(isChecked) {
+      // Operation
+      // ···
+    }
+  })
+Radio({ value: 'Radio2', group: 'radioGroup' })
+  .onChange((isChecked: boolean) => {
+    if(isChecked) {
+      // Operation
+      // ···
+    }
+  })
 ```
 
 
-## Example
+## Example Scenario
 
 In this example, the **Radio** components are used to switch between sound modes.
 
+<!-- @[click_radio_to_change_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSample.ets) -->
 
-```ts
+``` TypeScript
 // xxx.ets
 import { promptAction } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct RadioExample {
-  @State Rst: promptAction.ShowToastOptions = { 'message': 'Ringing mode.' };
-  @State Vst: promptAction.ShowToastOptions = { 'message': 'Vibration mode.' };
-  @State Sst: promptAction.ShowToastOptions = { 'message': 'Silent mode.' };
+export struct RadioExample {
+  @State rst: promptAction.ShowToastOptions = { 'message': 'Ringing mode.' };
+  @State vst: promptAction.ShowToastOptions = { 'message': 'Vibration mode.' };
+  @State sst: promptAction.ShowToastOptions = { 'message': 'Silent mode.' };
 
   build() {
-    Row() {
-      Column() {
-        Radio({ value: 'Radio1', group: 'radioGroup' }).checked(true)
-          .height(50)
-          .width(50)
-          .onChange((isChecked: boolean) => {
-            if (isChecked) {
-              // Switch to the ringing mode.
-              this.getUIContext().getPromptAction().showToast(this.Rst);
-            }
-          })
-        Text('Ringing')
-      }
+    // ···
+      Row() {
+        Column() {
+          Radio({ value: 'Ringing', group: 'radioGroup' }).checked(true)
+            .height(50)
+            .width(50)
+            .onChange((isChecked: boolean) => {
+              if (isChecked) {
+                // Switch to the ringing mode.
+                this.getUIContext().getPromptAction().openToast(this.rst);
+              }
+            })
+          Text('Ringing')
+        }
 
-      Column() {
-        Radio({ value: 'Radio2', group: 'radioGroup' })
-          .height(50)
-          .width(50)
-          .onChange((isChecked: boolean) => {
-            if (isChecked) {
-              // Switch to the vibration mode.
-              this.getUIContext().getPromptAction().showToast(this.Vst);
-            }
-          })
-        Text('Vibration')
-      }
+        Column() {
+          Radio({ value: 'Vibration', group: 'radioGroup' })
+            .height(50)
+            .width(50)
+            .onChange((isChecked: boolean) => {
+              if (isChecked) {
+                // Switch to the vibration mode.
+                this.getUIContext().getPromptAction().openToast(this.vst);
+              }
+            })
+          Text('Vibration')
+        }
 
-      Column() {
-        Radio({ value: 'Radio3', group: 'radioGroup' })
-          .height(50)
-          .width(50)
-          .onChange((isChecked: boolean) => {
-            if (isChecked) {
-              // Switch to the silent mode.
-              this.getUIContext().getPromptAction().showToast(this.Sst);
-            }
-          })
-        Text('Silent')
-      }
-    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+        Column() {
+          Radio({ value: 'Silent', group: 'radioGroup' })
+            .height(50)
+            .width(50)
+            .onChange((isChecked: boolean) => {
+              if (isChecked) {
+                // Switch to the silent mode.
+                this.getUIContext().getPromptAction().openToast(this.sst);
+              }
+            })
+          Text('Silent')
+        }
+      }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+    // ···
   }
 }
 ```

@@ -32,6 +32,8 @@ queryAssociatedDomains(bundleName: string): string[]
 
 通过应用的包名查询其关联的网站域名列表。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **需要权限：** ohos.permission.GET_APP_DOMAIN_BUNDLE_INFO
 
 **系统能力：** SystemCapability.BundleManager.AppDomainVerify
@@ -57,9 +59,9 @@ queryAssociatedDomains(bundleName: string): string[]
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | System API accessed by non-system app. |
 | 401 | Parameter error.|
-| 29900001 | System internal error. |
+| 29900001 |  Internal error. |
 
 **示例：**
 
@@ -80,6 +82,8 @@ domains.forEach(domain => {
 queryAssociatedBundleNames(domain: string): string[]
 
 通过网站域名查询其关联的应用包名列表。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限：** ohos.permission.GET_APP_DOMAIN_BUNDLE_INFO
 
@@ -106,9 +110,9 @@ queryAssociatedBundleNames(domain: string): string[]
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | System API accessed by non-system app. |
 | 401 | Parameter error.|
-| 29900001 | System internal error. |
+| 29900001 |  Internal error. |
 
 **示例：**
 

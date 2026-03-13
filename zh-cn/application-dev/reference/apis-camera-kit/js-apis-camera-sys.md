@@ -207,7 +207,7 @@ function isCameraMuteSupported(cameraManager: camera.CameraManager): boolean {
 }
 ```
 
-### muteCamera
+### muteCamera<sup>(deprecated)</sup>
 
 muteCamera(mute: boolean): void
 
@@ -580,18 +580,7 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 }
 ```
 
-## CameraOcclusionDetectionResult<sup>12+</sup>
-相机模组被遮挡状态。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称                           | 类型                                                | 只读 | 可选 | 说明                |
-| ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
-| isCameraOccluded                 | boolean              |  是  | 否 |遮挡状态，true为遮挡状态，false为不遮挡状态。        |
-
-## CameraOutputCapability<sup>10+</sup>
+## CameraOutputCapability
 
 相机输出能力项。
 
@@ -601,7 +590,7 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 
 | 名称                           | 类型                                                | 只读 | 可选 | 说明                |
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
-| depthProfiles                 | Array\<[DepthProfile](#depthprofile13)\>              |  是  | 否 | 支持的深度流配置信息集合。        |
+| depthProfiles<sup>13+</sup>       | Array\<[DepthProfile](#depthprofile13)\>              |  是  | 否 | 支持的深度流配置信息集合。        |
 
 ## CameraFormat
 
@@ -623,88 +612,6 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 相机设备输入对象。
 
 会话中[Session](arkts-apis-camera-Session.md)使用的相机信息。
-
-### on('cameraOcclusionDetection')<sup>12+</sup>
-
-on(type: 'cameraOcclusionDetection', callback: AsyncCallback\<CameraOcclusionDetectionResult\>): void
-
-监听CameraInput的遮挡事件，通过注册回调函数获取结果。使用callback异步回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名     | 类型                              | 必填 | 说明                                          |
-| -------- | -------------------------------- | --- | ------------------------------------------- |
-| type     | string                           | 是   | 监听事件，固定为'cameraOcclusionDetection'，CameraInput对象创建成功可监听。相机模组遮挡状态发生改变时触发该事件并返回结果。 |
-| callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | 是   | 回调函数，用于获取结果。返回遮挡状态。  |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202 | Not System Application. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, CameraOcclusionDetectionResult: camera.CameraOcclusionDetectionResult): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error('cameraOcclusionDetection with errorCode = ' + err.code);
-    return;
-  }
-  console.info(`isCameraOccluded : ${CameraOcclusionDetectionResult.isCameraOccluded}`);
-}
-
-function registerCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
-  cameraInput.on('cameraOcclusionDetection', callback);
-}
-```
-
-### off('cameraOcclusionDetection')<sup>12+</sup>
-
-off(type: 'cameraOcclusionDetection', callback?: AsyncCallback\<CameraOcclusionDetectionResult\>): void
-
-注销CameraInput遮挡监听事件。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名     | 类型             | 必填 | 说明                                                      |
-| -------- | --------------- | ---- |---------------------------------------------------------|
-| type     | string          | 是   | 监听事件，固定为'cameraOcclusionDetection'，CameraInput对象创建成功可监听。 |
-| callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | 否   | 回调函数，可选参数，有就是匹配on('cameraOcclusionDetection') callback（callback对象不可是匿名函数）。                  |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202 | Not System Application. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, CameraOcclusionDetectionResult: camera.CameraOcclusionDetectionResult): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error('cameraOcclusionDetection with errorCode = ' + err.code);
-    return;
-  }
-  console.info(`isCameraOccluded : ${CameraOcclusionDetectionResult.isCameraOccluded}`);
-}
-
-function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
-  cameraInput.off('cameraOcclusionDetection', callback);
-}
-```
 
 ## DepthDataAccuracy<sup>13+</sup>
 
@@ -760,17 +667,31 @@ function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): vo
 | format | [CameraFormat](#cameraformat)   | 是 |  否  | 深度图的格式。 |
 | depthMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)    | 是 |  否  | 深度图。 |
 | qualityLevel | [DepthDataQualityLevel](#depthdataqualitylevel13)   | 是 |  否  | 深度图的质量。 |
-| accuracy | [DepthDataAccuracy](#depthdataaccuracy13) | 是 |  否  | 深度图的精度。 |
+| dataAccuracy | [DepthDataAccuracy](#depthdataaccuracy13) | 是 |  否  | 深度图的精度。 |
 
 ### release<sup>13+</sup>
 
-release(): void
+release(): Promise\<void\>
 
-释放输出资源。
+释放输出资源。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型            | 说明                     |
+| -------------- | ----------------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 202 | Not System Application. |
 
 **示例：**
 
@@ -1063,7 +984,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function isDepthFusionSupported(DepthFusionQuery: camera.DepthFusionQuery): void {
   try {
-    let isSupperted: boolean = DepthFusionQuery.isDepthFusionSupported();
+    let isSupported: boolean = DepthFusionQuery.isDepthFusionSupported();
     console.info('Indicate that isDepthFusionSupported method execution success.');
   } catch (error) {
     let err = error as BusinessError;
@@ -1143,6 +1064,7 @@ isDepthFusionEnabled(): boolean
 **示例：**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 function isDepthFusionEnabled(DepthFusion: camera.DepthFusion): boolean {
   let isEnable: boolean = false;
   try {
@@ -1570,7 +1492,7 @@ function unregisterSketchStatusChanged(previewOutput: camera.PreviewOutput): voi
 
 getThumbnail(): Promise<image.PixelMap>
 
-通过缩略图代理类提供的方法，获取缩略图 PixelMap。
+通过缩略图代理类提供的方法，获取缩略图PixelMap。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2240,88 +2162,6 @@ function unregisterQuickThumbnail(photoOutput: camera.PhotoOutput): void {
 
 metadata流。继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
-### addMetadataObjectTypes<sup>13+</sup> 
-
-addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
-
-新增需要上报的检测对象类型。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名                  | 类型                                               | 必填 | 说明                          |
-| -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202                    |  Not system application.        |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400103                |  Session not config.                                   |
-| 7400201                |  Camera service fatal error.                           |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
-  try {
-    metadataOutput.addMetadataObjectTypes(types);
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`addMetadataObjectTypes error. error code: ${err.code}`);
-  }
-}
-```
-
-### removeMetadataObjectTypes<sup>13+</sup> 
-
-removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
-
-删除需要上报的检测对象类型。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名                  | 类型                                               | 必填 | 说明                          |
-| -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202                    |  Not system application.        |
-| 7400101                |  Parameter missing or parameter type incorrect.                                   |
-| 7400103                |  Session not config.                                   |
-| 7400201                |  Camera service fatal error.                           |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
-  try {
-    metadataOutput.removeMetadataObjectTypes(types);
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`removeMetadataObjectTypes error. error code: ${err.code}`);
-  }
-}
-```
-
 ## MetadataObjectType
 
 枚举，metadata元数据检测类型。
@@ -2686,8 +2526,6 @@ function setExposure(nightPhotoSession: camera.NightPhotoSession): void {
 
 枚举，场景特性枚举。
 
-**系统接口：** 此接口为系统接口。
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 | 名称                            | 值   | 说明                        |
@@ -2864,7 +2702,7 @@ getZoomPointInfos(): Array\<ZoomPointInfo\>
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                      |
-| 7400103                |  Session not config.                          |
+| 7400103                |  Session not config, only throw in session usage.      |
 
 **示例：**
 
@@ -3197,11 +3035,11 @@ function getColorEffect(session: camera.PhotoSessionForSys): camera.ColorEffectT
 | SOFT                  | 2    | 柔和的色彩效果。  |
 | BLACK_WHITE<sup>12+</sup>    | 3    | 黑白色彩效果。  |
 
-## Portrait<sup>11+</sup>
+## PortraitQuery<sup>12+</sup>
 
-人像类，用于设置人像参数。
+人像查询类，用于获取人像参数。
 
-### getSupportedPortraitEffects<sup>10+</sup>
+### getSupportedPortraitEffects
 
 getSupportedPortraitEffects(): Array\<PortraitEffect\>
 
@@ -3235,11 +3073,17 @@ function getSupportedPortraitEffects(portraitPhotoSession: camera.PortraitPhotoS
 }
 ```
 
-### setPortraitEffect<sup>10+</sup>
+## Portrait<sup>11+</sup>
+
+Portrait继承自[PortraitQuery](#portraitquery12)。
+
+人像类，用于设置人像参数。
+
+### setPortraitEffect
 
 setPortraitEffect(effect: PortraitEffect): void
 
-设置人像虚化效果。需要先检查设备是否支持人像虚化模式，可以通过[getSupportedPortraitEffects](#getsupportedportraiteffects10)获取当前设备所支持的PortraitEffects。
+设置人像虚化效果。需要先检查设备是否支持人像虚化模式，可以通过[getSupportedPortraitEffects](#getsupportedportraiteffects)获取当前设备所支持的PortraitEffects。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3249,7 +3093,7 @@ setPortraitEffect(effect: PortraitEffect): void
 
 | 参数名         | 类型                        | 必填 | 说明                      |
 | ------------ |----------------------------- | -- | -------------------------- |
-| effect | [PortraitEffect](#portraiteffect)  | 是 | 人像虚化效果，通过[getSupportedPortraitEffects](#getsupportedportraiteffects10)接口获取。   |
+| effect | [PortraitEffect](#portraiteffect)  | 是 | 人像虚化效果，通过[getSupportedPortraitEffects](#getsupportedportraiteffects)接口获取。   |
 
 **错误码：**
 
@@ -3278,7 +3122,7 @@ function setPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession, po
 }
 ```
 
-### getPortraitEffect<sup>10+</sup>
+### getPortraitEffect
 
 getPortraitEffect(): PortraitEffect
 
@@ -3559,12 +3403,11 @@ getSupportedBeautyTypes(): Array\<BeautyType>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
-| 202             |  Not System Application.                      |
 
 **示例：**
 
@@ -3728,7 +3571,7 @@ function getBeauty(captureSession: camera.CaptureSession): number {
 
 ## PhotoSessionForSys<sup>11+</sup>
 
-PhotoSessionForSys extends PhotoSession, Beauty, ColorEffect, ColorManagement, SceneDetection
+PhotoSessionForSys extends PhotoSession, Beauty, ColorEffect, ColorManagement, Macro, SceneDetection, EffectSuggestion, DepthFusion
 
 提供给系统应用的PhotoSession，普通拍照模式会话类，继承自[Session](arkts-apis-camera-Session.md)，用于设置普通拍照模式的参数以及保存所需要的所有资源[CameraInput](arkts-apis-camera-CameraInput.md)、[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
@@ -4061,7 +3904,7 @@ function callback(focusTrackingInfo: camera.FocusTrackingInfo): void {
                                        height ${focusTrackingInfo.trackingRegion.height}`);
 }
 
-function registerFocusTrakingInfoChanged(session: camera.VideoSessionForSys): void {
+function registerFocusTrackingInfoChanged(session: camera.VideoSessionForSys): void {
   session.on('focusTrackingInfoAvailable', callback);
 }
 ```
@@ -4094,7 +3937,7 @@ off(type: 'focusTrackingInfoAvailable', callback?: Callback\<FocusTrackingInfo\>
 **示例**：
 
 ```ts
-function unregisterFocusTrakingInfoChanged(session: camera.VideoSessionForSys): void {
+function unregisterFocusTrackingInfoChanged(session: camera.VideoSessionForSys): void {
   session.off('focusTrackingInfoAvailable');
 }
 ```
@@ -7985,8 +7828,8 @@ TryAE参数信息，TryAE是指延时摄影时硬件会根据环境光照变化�
 
 | 名称 | 类型    | 只读 | 可选 | 说明           |
 | ---- | ------- | ---- |--| -------------- |
-| isTryAEDone        | boolean  | 是   | 否 | TryAE是否完成。        |
-| isTryAEHintNeeded  | boolean  | 是   | 是 | 是否需要TryAE。        |
+| isTryAEDone        | boolean  | 是   | 否 | 表示TryAE是否完成。true表示已完成，false表示未完成。       |
+| isTryAEHintNeeded  | boolean  | 是   | 是 | 表示是否需要TryAE。true表示需要，false表示不需要。        |
 | previewType        | [TimeLapsePreviewType](#timelapsepreviewtype12) | 是   | 是 | 预览类型。        |
 | captureInterval    | number   | 是   | 是 | 拍摄间隔，单位毫秒（ms）。        |
 
@@ -8509,6 +8352,7 @@ startTryAE(): void
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103 | Session not config.     |
+| 7400201 | Camera service fatal error.     |
 
 **示例：**
 

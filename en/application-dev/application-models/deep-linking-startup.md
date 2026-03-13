@@ -57,7 +57,6 @@ A configuration example is as follows:
               {
                 // scheme is mandatory and can be customized. The following uses link as an example. Replace it with the actual scheme.
                 "scheme": "link",
-                // host is mandatory. Configure the domain name to be matched.
                 "host": "www.example.com"
               }
             ]

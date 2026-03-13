@@ -1283,7 +1283,7 @@ setUserOperation(operateAction: number, params: string): void
   ```ts
   import { BusinessError } from '@ohos.base';
 
- try {
+  try {
     /*
       operateAction = 0 - 允许授权
       operateAction = 1 - 取消授权

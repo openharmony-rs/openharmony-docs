@@ -1,7 +1,7 @@
 # Building and Running Applications Using OpenMP
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yangming4249-->
+<!--Owner: @rePeek-->
 <!--Designer: @ychen3--->
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @fang-jinxu-->
@@ -10,10 +10,10 @@ The OpenHarmony NDK provides dynamic and static library files of OpenMP so that 
 
 ## How to Develop
 
-### 1. Creating a Native C++ Project
+### Creating a Native C++ Project
 [Creating an NDK Project](./create-with-ndk.md)
 
-### 2. Adding Dependencies
+### Adding Dependencies
 
 There are two ways to incorporate the OpenMP library: static linking and dynamic linking.
 
@@ -32,7 +32,7 @@ target_link_libraries(entry PUBLIC libomp.a libace_napi.z.so libhilog_ndk.z.so)
 
 (2) Open the **entry/build-profile.json5** file, and add **-static-openmp -fopenmp** to **cppFlags** under **buildOption** > **externalNativeOptions**.
 
-```
+```JSON
 "buildOption": {
     "externalNativeOptions": {
       "path": "./src/main/cpp/CMakeLists.txt",
@@ -52,7 +52,7 @@ target_link_libraries(entry PUBLIC libomp.so libace_napi.z.so libhilog_ndk.z.so)
 
  (2) Open the **entry/build-profile.json5** file, and add **-fopenmp** to **cppFlags** under **buildOption** > **externalNativeOptions**.
 
-```
+```JSON
 "buildOption": {
     "externalNativeOptions": {
       "path": "./src/main/cpp/CMakeLists.txt",
@@ -64,7 +64,7 @@ target_link_libraries(entry PUBLIC libomp.so libace_napi.z.so libhilog_ndk.z.so)
 
  (3) Copy the dynamic library file **libomp.so** in the {*SDK installation directory*}\{*Version number*}**\openharmony\native\llvm\lib\aarch64-linux-ohos** directory to the **entry/libs/arm64-v8a** directory of the project.
 
-### 3. Modifying Source Files
+### Modifying Source Files
 
  (1) In **entry/src/main/cpp/napi_init.cpp**, include the **omp.h** header file, and add the **OmpTest** function.
 
@@ -76,7 +76,7 @@ target_link_libraries(entry PUBLIC libomp.so libace_napi.z.so libhilog_ndk.z.so)
 #undef LOG_DOMAIN 
 #undef LOG_TAG 
 #define LOG_DOMAIN 0x3200 // Global domain, which identifies the service domain.
-#define LOG_TAG "MY_TAG" // Global tag, which identifies the module log tag.
+#define LOG_TAG "MY_TAG"  // Global tag, which identifies the module log tag.
 
 static napi_value OmpTest(napi_env env, napi_callback_info info)
 {
@@ -150,7 +150,7 @@ struct Index {
 }
 ```
 
-### 4. Running the Application and Verifying the Result
+### Running the Application and Verifying the Result
 
 Check the device connection and [sign the application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-signing-V5) information. Click the **Run** button in the upper right corner of DevEco Studio. After the application is started, the **Hello OpenMP** page is displayed on the device. Tap **Hello OpenMP** and view the **Log** page on DevEco Studio. You can see multiple "Hello OpenMP!" messages.  
 

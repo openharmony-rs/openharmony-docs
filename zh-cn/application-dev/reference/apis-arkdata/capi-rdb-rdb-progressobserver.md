@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct {...} Rdb_ProgressObserver
+typedef struct Rdb_ProgressObserver {...} Rdb_ProgressObserver
 ```
 
 ## 概述

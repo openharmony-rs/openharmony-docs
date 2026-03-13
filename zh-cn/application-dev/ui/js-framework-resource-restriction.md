@@ -68,7 +68,7 @@ resources/res-dark.json:
         "clockFace": "common/dark_face.png"
     },
     "colors": {
-	"background": "#000000"
+    "background": "#000000"
     }
 }
 ```
@@ -81,7 +81,7 @@ resources/res-defaults.json:
         "clockFace": "common/face.png"
     },
     "colors": {
-	"background": "#ffffff"
+    "background": "#ffffff"
     }
 }
 ```

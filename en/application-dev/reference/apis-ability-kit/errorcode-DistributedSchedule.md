@@ -1,4 +1,10 @@
 # Distributed Scheduler Error Codes
+<!--Kit: Ability Kit-->
+<!--Subsystem: DistributedSched-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -213,47 +219,6 @@ The possible causes are as follows:
 
 Verify the bundle name.
 
-## 3 Failed to flatten the object.
-
-**Error Message**
-
-Failed to flatten the object.
-
-**Description**
-
-This error code is reported if the system parameter **DMS_PROXY_INTERFACE_TOKEN** fails flattening when an API of **continuationManager** is called.
-
-**Possible Causes**
-
-The system parameter **DMS_PROXY_INTERFACE_TOKEN** fails to be written in serialization.
-
-**Solution**
-
-Make sure the system functions properly. Restart the system when needed.
-
-## 7 The object is null.
-
-**Error Message**
-
-The object is null.
-
-**Description**
-
-This error code is reported if DMS and other objects are empty or reading in serialization fails when an API of **continuationManager** is called.
-
-**Possible Causes**
-
-The possible causes are as follows:
-1. Reading the input parameters in serialization fails.
-2. The DMS service is not started or the binder object is not obtained.
-3. Other services on which DMS depends are not started or the binder object is not obtained.
-
-**Solution**
-
-1. Check whether the input parameters are valid.
-2. Check whether the DMS service is started normally. Restart the service or device when needed.
-3. Check whether other services on which DMS depends are started normally. Restart the services or device when needed.
-
 ## 29360207 The number of registrations has reached the upper limit.
 
 **Error Message**
@@ -306,7 +271,7 @@ The specified callback has been registered.
 
 **Solution**
 
-Do not use the same callback for repeated registration.
+Use a different callback for registration.
 
 ## 29360210 The callback is not registered.
 

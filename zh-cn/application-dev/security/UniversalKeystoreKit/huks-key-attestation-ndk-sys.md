@@ -24,16 +24,17 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 4. 将密钥别名与参数集作为参数传入[OH_Huks_AttestKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_attestkeyitem)方法中，即可证明密钥。
 
-```c++
+## 开发步骤
+<!-- @[non_anonymized_key_proof_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/NonanonymousKeyProof/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include "huks/native_huks_api.h"
 #include "huks/native_huks_param.h"
 #include "napi/native_api.h"
-#include <string.h>
+#include <cstring>
 
-OH_Huks_Result InitParamSet(
-    struct OH_Huks_ParamSet **paramSet,
-    const struct OH_Huks_Param *params,
-    uint32_t paramCount)
+OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param *params,
+                            uint32_t paramCount)
 {
     OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
     if (ret.errorCode != OH_HUKS_SUCCESS) {
@@ -54,6 +55,7 @@ OH_Huks_Result InitParamSet(
 
 static uint32_t g_size = 4096;
 static uint32_t CERT_COUNT = 4;
+
 void FreeCertChain(struct OH_Huks_CertChain *certChain, const uint32_t pos)
 {
     if (certChain == nullptr || certChain->certs == nullptr) {
@@ -87,38 +89,36 @@ int32_t ConstructDataToCertChain(struct OH_Huks_CertChain *certChain)
         certChain->certs[i].data = (uint8_t *)malloc(certChain->certs[i].size);
         if (certChain->certs[i].data == nullptr) {
             FreeCertChain(certChain, i);
-            return OH_HUKS_ERR_CODE_INTERNAL_ERROR;
+            return OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT;
         }
     }
     return 0;
 }
 
 static struct OH_Huks_Param g_genAttestParams[] = {
-    { .tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_RSA },
-    { .tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_RSA_KEY_SIZE_2048 },
-    { .tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_VERIFY },
-    { .tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256 },
-    { .tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_PSS },
-    { .tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB },
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_RSA},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_RSA_KEY_SIZE_2048},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_VERIFY},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_PSS},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB},
 };
+
 #define CHALLENGE_DATA "hi_challenge_data"
-static struct OH_Huks_Blob g_challenge = { sizeof(CHALLENGE_DATA), (uint8_t *)CHALLENGE_DATA };
+static struct OH_Huks_Blob g_challenge = {sizeof(CHALLENGE_DATA), (uint8_t *)CHALLENGE_DATA};
 static napi_value AttestKey(napi_env env, napi_callback_info info)
 {
     /* 1.确定密钥别名 */
-    struct OH_Huks_Blob genAlias = {
-        (uint32_t)strlen("test_attest"),
-        (uint8_t *)"test_attest"
-    };
+    struct OH_Huks_Blob genAlias = {(uint32_t)strlen("test_attest"), (uint8_t *)"test_attest"};
     static struct OH_Huks_Param g_attestParams[] = {
-        { .tag = OH_HUKS_TAG_ATTESTATION_CHALLENGE, .blob = g_challenge },
-        { .tag = OH_HUKS_TAG_ATTESTATION_ID_ALIAS, .blob = genAlias },
+        {.tag = OH_HUKS_TAG_ATTESTATION_CHALLENGE, .blob = g_challenge},
+        {.tag = OH_HUKS_TAG_ATTESTATION_ID_ALIAS, .blob = genAlias},
     };
     struct OH_Huks_ParamSet *genParamSet = nullptr;
     struct OH_Huks_ParamSet *attestParamSet = nullptr;
     OH_Huks_Result ohResult;
-    OH_Huks_Blob certs = { 0 };
-    OH_Huks_CertChain certChain = { &certs, 0 };
+    OH_Huks_Blob certs = {0};
+    OH_Huks_CertChain certChain = {&certs, 0};
     do {
         /* 2.初始化密钥参数集 */
         ohResult = InitParamSet(&genParamSet, g_genAttestParams, sizeof(g_genAttestParams) / sizeof(OH_Huks_Param));
@@ -134,10 +134,7 @@ static napi_value AttestKey(napi_env env, napi_callback_info info)
             break;
         }
 
-        ohResult.errorCode = ConstructDataToCertChain(&certChain);
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-            break;
-        }
+        (void)ConstructDataToCertChain(&certChain);
         /* 3.证明密钥 */
         ohResult = OH_Huks_AttestKeyItem(&genAlias, attestParamSet, &certChain);
     } while (0);

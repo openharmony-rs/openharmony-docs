@@ -147,7 +147,7 @@ Describes the audio and video recording profile.
 | Name            | Type                                        | Read-Only| Optional| Description                                                        |
 | ---------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | audioBitrate     | number                                       | No  | Yes  | Audio encoding bit rate. This parameter is mandatory for audio recording.<br>Supported bit rate ranges:<br>- Range [32000, 500000] for the AAC encoding format.<br>- 64000 for the G.711 μ-law encoding format.<br>- Range [8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000] for the MP3 encoding format.<br>When the MP3 encoding format is used, the mapping between the sample rate and bit rate is as follows:<br>- When the sample rate is lower than 16 kHZ, the bit rate range is [8000 - 64000].<br>- When the sample rate ranges from 16 kHz to 32 kHz, the bit rate range is [8000, 160000].<br>- When the sample rate is greater than 32 kHz, the bit rate range is [32000, 320000].<br>- Range [4750, 5150, 5900, 6700, 7400, 7950, 10200, 12200] for the AMR-NB encoding format.<br>- Range [6600, 8850, 12650, 14250, 15850, 18250, 19850, 23050, 23850] for the AMR-WB encoding format.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| audioChannels    | number                                       | No  | Yes  | Audio channel count. This parameter is mandatory for audio recording.<br>- Range [1, 8] for the AAC encoding format.<br>- 1 for the G.711 μ-law encoding format.<br>- Range [1, 2] for the MP3 encoding format.<br>- 1 for the AMR-NB and AMR-WB encoding formats.<br> **Atomic service API**: This API can be used in atomic services since API version 12.      |
+| audioChannels    | number                                       | No  | Yes  | Audio channel count. This parameter is mandatory for audio recording.<br>- Range [1, 2] for the AAC encoding format.<br>- 1 for the G.711 μ-law encoding format.<br>- Range [1, 2] for the MP3 encoding format.<br>- 1 for the AMR-NB and AMR-WB encoding formats.<br> **Atomic service API**: This API can be used in atomic services since API version 12.      |
 | audioCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | No  | Yes  | Audio encoding format. This parameter is mandatory for audio recording.<br>Currently, AUDIO_AAC, AUDIO_MP3, AUDIO_G711MU, AUDIO_AMR_NB, and AUDIO_AMR_WB are supported.<br> **Atomic service API**: This API can be used in atomic services since API version 12.    |
 | aacProfile<sup>22+</sup>       | [AacProfile](arkts-apis-media-e.md#aacprofile22)             | No  | Yes  | Extended audio encoding format. The default value is **AAC_LC**.<br>Currently, the following formats are supported: **AAC_LC**, **AAC_HE**, and **AAC_HE_V2**.<br> **Atomic service API**: This API can be used in atomic services since API version 22.    |
 | audioSampleRate  | number                                       | No  | Yes  | Audio sample rate. This parameter is mandatory for audio recording.<br>Supported sample rate ranges:<br>- Range [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000] for the AAC encoding format.<br>- 8000 for the G.711 μ-law encoding format.<br>- Range [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000] for the MP3 encoding format.<br>- 8000 for the AMR-NB encoding format.<br>- 16000 for the AMR-WB encoding format.<br>Variable bit rate. The bit rate is for reference only.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -167,7 +167,7 @@ The following table lists the audio parameters. For details about each parameter
 
 |Encoding Format|Container Format|Sample Rate|Bit Rate|Audio Channel Count|
 |----|----|----|----|----|
-|AUDIO_AAC|MP4, M4A|[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]|[32000-500000]|[1-8]|
+|AUDIO_AAC|MP4, M4A|[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]|[32000-500000]|[1-2]|
 |AUDIO_MP3|MP3|[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000]|<br>- When the sample rate is lower than 16000, the bit rate range is [8000, 16000, 32000, 40000, 48000, 56000, 64000].<br>- When the sample rate ranges from 16000 to 32000, the bit rate range is [8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000].<br>- When the sample rate is greater than 32000, the bit rate range is [32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000].|[1-2]|
 |AUDIO_G711MU|WAV|[8000]|[64000]|[1]|
 |AUDIO_AMR_NB<sup>18+</sup> |AMR|[8000]|[4750, 5150, 5900, 6700, 7400, 7950, 10200, 12200]|[1]|
@@ -305,6 +305,21 @@ Describes the output size of the video thumbnail fetched.
 | width  | number | No  | Yes  | Width of the thumbnail.<br>- If this parameter is set to a value less than 0, the width will be the original video width.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the height ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
 | height | number | No  | Yes  | Height of the thumbnail.<br>- If this parameter is set to a value less than 0, the height will be the original video height.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the width ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
 
+## FrameInfo<sup>23+</sup>
+
+Describes the return value of the operation for obtaining video thumbnails in batches, including the time point for requesting frame extraction, actual time point for frame extraction, format of thumbnails output from the video, and result of obtaining a single thumbnail.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+| Name  | Type  | Read-Only| Optional| Description                                                                           |
+|--------|--------|------|------|---------------------------------------------------------------------------------|
+| requestedTimeUs  | number | No  | No  | Time point for requesting frame extraction.|
+| actualTimeUs | number | No  | Yes  | Actual time point for frame extraction.|
+| image | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No  | Yes  | Format of the thumbnail output from the video.|
+| result | [FetchResult](arkts-apis-media-e.md#fetchresult23) | No  | No  | Result of the task for obtaining a single thumbnail. For example, the task is successful, failed, or canceled.|
+
 ## MediaStream<sup>19+</sup>
 
 Defines the media stream data information.
@@ -337,7 +352,8 @@ Defines a media data loader, which needs to be implemented by applications.
 **Example**
 
 ```ts
-import HashMap from '@ohos.util.HashMap';
+import { HashMap } from '@kit.ArkTS';
+import { media } from '@kit.MediaKit';
 
 let headers: Record<string, string> = {"User-Agent" : "User-Agent-Value"};
 let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx",  headers);
@@ -402,8 +418,9 @@ Describes the screen capture strategy.
 
 | Name                 | Type   | Read-Only| Optional| Description                |
 | --------------------- | ------- | --- | --- | -------------------- |
-| keepCaptureDuringCall | boolean | No| Yes | Whether to keep screen capture during a cellular call.|
+| keepCaptureDuringCall | boolean | No| Yes | Whether to keep screen capture during a cellular call. The value **true** means to keep screen capture during a cellular call, and **false** means the opposite. The default value is **false**.|
 | enableBFrame | boolean | No| Yes| Whether to enable B-frame encoding for screen capture. **true** to enable, **false** otherwise. The default value is **false**.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet the restrictions, B-frames will be skipped during screen capture, and no error will be returned.|
+| privacyMaskMode<sup>23+</sup> | number | No| Yes| Mask mode for privacy windows during screen capture.<br> - **0**: Full-screen mask mode for privacy windows. The default value is **0**.<br> - **1**: Window mask mode for privacy windows.<br> - If this parameter is set to other values, an error is returned.<br> **Model restriction**: This API can be used only in the stage model.|
 
 ## AVScreenCaptureRecordConfig<sup>12+</sup>
 
@@ -414,10 +431,10 @@ Defines the screen capture parameters.
 | Name             | Type                                                        | Read-Only| Optional| Description                                                        |
 | ----------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | fd                | number                                                       | No  | No  | FD of the file output.                                          |
-| frameWidth        | number                                                       | No  | Yes  | Video width, in px. The default value varies according to the display in use.|
-| frameHeight       | number                                                       | No  | Yes  | Video height, in px. The default value varies according to the display in use.|
-| videoBitrate      | number                                                       | No  | Yes  | Video bit rate. The default value is **10000000**.                            |
-| audioSampleRate   | number                                                       | No  | Yes  | Audio sample rate. This value is used for both internal capture and external capture (using microphones). Only **48000** (default value) and **16000** are supported.|
+| frameWidth        | number                                                       | No  | Yes  | Width of the screen recording video, in pixels.<br>The default screen width varies depending on the screen.|
+| frameHeight       | number                                                       | No  | Yes  | Height of the screen recording video, in pixels.<br>The default screen height varies depending on the screen.|
+| videoBitrate      | number                                                       | No  | Yes  | Bit rate of the screen recording video.<br>The default value is **10000000**.                           |
+| audioSampleRate   | number                                                       | No  | Yes  | Audio sampling rate of the screen recording.<br>This value is used for both the system sound and microphone. Only **48000** (default) and **16000** are supported.|
 | audioChannelCount | number                                                       | No  | Yes  | Audio channel count. This value is used for both internal capture and external capture (using microphones). Only **1** and **2** (default) are supported.|
 | audioBitrate      | number                                                       | No  | Yes  | Audio bit rate. This value is used for both internal capture and external capture (using microphones). The default value is **96000**.|
 | preset            | [AVScreenCaptureRecordPreset](arkts-apis-media-e.md#avscreencapturerecordpreset12) | No  | Yes  | Encoding and container format used. The default value is **SCREEN_RECORD_PRESET_H264_AAC_MP4**.|
@@ -425,10 +442,22 @@ Defines the screen capture parameters.
 | fillMode<sup>18+</sup>            | [AVScreenCaptureFillMode](arkts-apis-media-e.md#avscreencapturefillmode18)| No  | Yes  | Video fill mode during screen capture.|
 | strategy<sup>20+</sup>            | [AVScreenCaptureStrategy](#avscreencapturestrategy20)| No  | Yes  | Screen capture strategy.|
 
+## AVMetricsEvent<sup>23+</sup>
+
+Describes the information about a metric event.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+| Name  | Type  | Read-Only| Optional| Description                                                        |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| event  | [AVMetricsEventType](arkts-apis-media-e.md#avmetricseventtype23) | No  | No  | Type of the metric event.<br>**Model restriction**: This API can be used only in the stage model.|
+| timeStamp | number | No  | No  | System time when an event occurs.|
+| playbackPosition | number | No  | No  | Playback position when an event occurs.|
+| details | Record\<string, Object> | No  | No  | Detailed information about an event. The information contained in an event varies according to the event type.<br>The information includes the stalling duration (**duration**: number) and the media type (**media**: [MediaType](arkts-apis-media-e.md#mediatype8)) of the stalling.<br>**Model restriction**: This API can be used only in the stage model.|
+
 ## AudioRecorderConfig<sup>(deprecated)</sup>
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVRecorderConfig](#avrecorderconfig9) instead.
 
 Describes audio recording configurations.

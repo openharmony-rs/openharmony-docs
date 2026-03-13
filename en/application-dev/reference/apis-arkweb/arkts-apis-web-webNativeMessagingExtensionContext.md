@@ -17,7 +17,7 @@ WebNativeMessagingExtensionContext is the context of web native message extensio
 ## Modules to Import
 
 ```ts
-import WebNativeMessagingExtensionContext from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
 ```
 
 ## WebNativeMessagingExtensionContext

@@ -1,4 +1,10 @@
 # DistributedSchedule错误码
+<!--Kit: Ability Kit-->
+<!--Subsystem: DistributedSched-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -212,47 +218,6 @@ Failed to get the missionInfo of the specified bundle name.
 **处理步骤**
 
 请检查输入的bundleName是否正确。
-
-## 3 序列化对象失败
-
-**错误信息**
-
-Failed to flatten the object.
-
-**错误描述**
-
-当调用continuationManager相关接口时，若系统参数DMS_PROXY_INTERFACE_TOKEN序列化写失败，会报此错误码。
-
-**可能原因**
-
-该错误码表示对象序列化过程中出现错误，可能原因是系统参数DMS_PROXY_INTERFACE_TOKEN序列化写失败。
-
-**处理步骤**
-
-请检查系统功能是否正常或者重启。
-
-## 7 空对象
-
-**错误信息**
-
-The object is null.
-
-**错误描述**
-
-当调用流转和迁移相关接口时，若出现dms以及其他对象为空或序列化读失败，会报此错误码。
-
-**可能原因**
-
-该错误码表示接口依赖的服务对象或参数对象为空，可能原因如下。
-1. 入参序列化读失败。
-2. DMS服务没有正常启动或binder对象无法正常获取。
-3. DMS依赖的其他服务没有正常启动或者binder对象无法获取。
-
-**处理步骤**
-
-1. 检查入参是否为有效合法值。
-2. 检查DMS服务是否正常启动，重新启动服务或重启设备。
-3. 检查DMS依赖的其他服务是否正常启动，重新启动服务或重启设备。
 
 ## 29360207 注册超出最大次数
 

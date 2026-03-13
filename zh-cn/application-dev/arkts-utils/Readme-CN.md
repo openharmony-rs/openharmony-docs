@@ -4,7 +4,7 @@
 <!--Owner: @flyingwolf-->
 <!--Designer: @flyingwolf-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 - [ArkTS简介](arkts-overview.md)
 - ArkTS基础类库<!--arkts-utils-->
@@ -20,6 +20,7 @@
     - [容器类库概述](container-overview.md)
     - [线性容器](linear-container.md)
     - [非线性容器](nonlinear-container.md)
+  - [基础库常见问题](commonlibrary-faq.md)
 - ArkTS并发<!--arkts-concurrency-->
   - [并发概述](concurrency-overview.md)
   - [异步并发](async-concurrency-overview.md)
@@ -102,6 +103,7 @@
     - [方舟字节码基本原理](arkts-bytecode-fundamentals.md)
     - [方舟字节码函数命名规则](arkts-bytecode-function-name.md)
     - [编译期自定义修改方舟字节码](customize-bytecode-during-compilation.md)
+    - [方舟字节码生成常见问题](es2abc-faq.md)
   - [Disassembler反汇编工具](tool-disassembler.md)
   - ArkGuard源码混淆工具<!--arkts-arkguard-->
     - [ArkGuard混淆概述](source-obfuscation-overview.md)

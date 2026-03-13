@@ -173,6 +173,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 
 
 方式二：通过像素图（PixelMap）创建Canvas。从API Version 20开始，支持使用此种方式创建Canvas。
+
 像素图是系统中用来表示图片的统一的数据结构，相比于drawing模块中提供的位图，像素图具备通用性，并且能够更好地发挥系统的能力。
 
 1. 添加链接库。
@@ -276,7 +277,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 
 GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力优于CPU，适用于绘制图片或区域相对大的场景，但目前GPU后端的Canvas针对绘制复杂路径的能力还有欠缺。同CPU后端Canvas，目前C/C++接口的绘制需要依赖于XComponent，GPU后端Canvas需要先离屏绘制再借助XComponent上屏。
 
-1. 当前创建GPU后端的Canvas依赖EGL的能力，需要在CMakeList.txt中添加EGL的动态依赖库。
+1. 当前创建GPU后端的Canvas依赖EGL的能力，需要在CMakeLists.txt中添加EGL的动态依赖库。
 
    ```c++
    // CMakeLists.txt

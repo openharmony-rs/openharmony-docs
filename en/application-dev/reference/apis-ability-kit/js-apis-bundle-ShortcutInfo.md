@@ -12,10 +12,13 @@ The module defines shortcut information configured in the configuration file. Fo
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This module is deprecated since API version 9. You are advised to use [bundleManager-ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) instead.
+> The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) instead.
 
 ## ShortcutInfo<sup>(deprecated)<sup>
-This API is deprecated since API version 9. You are advised to use [bundleManager-ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) instead.
+
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [bundleManager-ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) instead.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework
 

@@ -19,7 +19,7 @@ startAbilityByType接口中type字段为mail，对应的wantParam参数：
 | 参数名                                | 类型                                                         | 必填 | 说明                                                         |
 | ------------------------------------- | ------------------------------------------------------------ | ------ | ------------------------------------------------------------ |
 | email                                 | string[ ]                                                    | 否   | 收件人邮箱地址（支持多个且以逗号分隔）。                       |
-| cc                                    | string[ ]                                                    | 否   | 抄收人邮箱地址（支持多个且以逗号分隔）。                       |
+| cc                                    | string[ ]                                                    | 否   | 抄送人邮箱地址（支持多个且以逗号分隔）。                       |
 | bcc                                   | string[ ]                                                    | 否   | 密送人邮箱地址（支持多个且以逗号分隔）。                       |
 | subject                               | string                                                       | 否   | 邮件主题。                                                     |
 | body                                  | string                                                       | 否   | 邮件内容。                                                     |
@@ -57,7 +57,7 @@ startAbilityByType接口中type字段为mail，对应的wantParam参数：
                             let wantParam: Record<string, Object> = {
                                 'sceneType': 1,
                                 'email': [encodeURI('xxx@example.com'), encodeURI('xxx@example.com')], // 收件人邮箱地址，多值以逗号分隔，对数组内容使用encodeURI()方法进行url编码
-                                'cc': [encodeURI('xxx@example.com'), encodeURI('xxx@example.com')], // 抄收人邮箱地址，多值以逗号分隔，对数组内容使用encodeURI()方法进行url编码
+                                'cc': [encodeURI('xxx@example.com'), encodeURI('xxx@example.com')], // 抄送人邮箱地址，多值以逗号分隔，对数组内容使用encodeURI()方法进行url编码
                                 'bcc': [encodeURI('xxx@example.com'), encodeURI('xxx@example.com')], // 密送人邮箱地址，多值以逗号分隔，对数组内容使用encodeURI()方法进行url编码
                                 'subject': encodeURI('邮件主题'), // 邮件主题，对内容使用encodeURI()方法进行url编码
                                 'body': encodeURI('邮件正文'), // 邮件正文，对内容使用encodeURI()方法进行url编码
@@ -133,7 +133,7 @@ startAbilityByType接口中type字段为mail，对应的wantParam参数：
     | 参数名  | 类型      | 必填 | 说明                                   |
     | ------- | --------- | ---- | -------------------------------------- |
     | email   | string[ ] | 否   | 收件人邮箱地址（支持多个且以逗号分隔）。 |
-    | cc      | string[ ] | 否   | 抄收人邮箱地址（支持多个且以逗号分隔）。 |
+    | cc      | string[ ] | 否   | 抄送人邮箱地址（支持多个且以逗号分隔）。 |
     | bcc     | string[ ] | 否   | 密送人邮箱地址（支持多个且以逗号分隔）。 |
     | subject | string    | 否   | 邮件主题。                               |
     | body    | string    | 否   | 邮件内容。                               |

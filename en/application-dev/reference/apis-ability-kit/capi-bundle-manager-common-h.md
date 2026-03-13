@@ -32,7 +32,7 @@ The file declares the error codes defined by BundleManager.
 
 ### BundleManager_ErrorCode
 
-```
+```c
 enum BundleManager_ErrorCode
 ```
 

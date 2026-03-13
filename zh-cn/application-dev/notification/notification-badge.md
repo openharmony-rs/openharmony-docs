@@ -35,7 +35,7 @@
 
 1. 导入NotificationManager模块。
 
-   <!-- @[manage_notification_badges_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets) -->    
+   <!-- @[manage_notification_badges_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->    
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -52,7 +52,7 @@
    
    示例为调用setBadgeNumber接口增加角标，在发布完新的通知后，调用该接口。
 
-   <!-- @[add_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets) -->
+   <!-- @[add_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
    
    ``` TypeScript
    let badgeNumber: number = 9;
@@ -68,7 +68,7 @@
 
    一条通知被查看后，应用需要调用接口设置剩下未读通知个数，桌面刷新角标。
 
-   <!-- @[reduce_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets) -->
+   <!-- @[reduce_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
    
    ``` TypeScript
    let badgeNumber: number = 8;
@@ -90,7 +90,7 @@
 
     示例如下：
 
-    <!-- @[increase_badge_count_seq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets) -->
+    <!-- @[increase_badge_count_seq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
     
     ``` TypeScript
     let badgeNumber: number = 10;
@@ -115,7 +115,7 @@
 
     示例如下：
 
-    <!-- @[update_badge_count_idempotent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets) -->
+    <!-- @[update_badge_count_idempotent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
     
     ``` TypeScript
     let badgeNumber: number = 10;

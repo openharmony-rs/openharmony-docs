@@ -42,7 +42,7 @@ getSecurityPatchTag(admin: Want): string
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -99,7 +99,7 @@ getDeviceEncryptionStatus(admin: Want): DeviceEncryptionStatus
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 
 **返回值：**
 
@@ -143,7 +143,7 @@ try {
 
 getPasswordPolicy(): PasswordPolicy
 
-获取设备口令策略。
+获取设备锁屏口令策略。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -155,7 +155,7 @@ getPasswordPolicy(): PasswordPolicy
 
 | 类型                   | 说明                      |
 | --------------------- | ------------------------- |
-| [PasswordPolicy](./js-apis-enterprise-securityManager.md#passwordpolicy) | 设备口令策略。 |
+| [PasswordPolicy](./js-apis-enterprise-securityManager.md#passwordpolicy) | 设备锁屏口令策略。 |
 
 **错误码**：
 

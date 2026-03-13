@@ -1,4 +1,4 @@
-# WantAgentInfo
+# WantAgentInfo (System API)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -20,6 +20,17 @@ The module defines the information required for triggering a WantAgent.
 ```ts
 import { wantAgent as abilityWantAgent } from '@kit.AbilityKit';
 ```
+
+## WantAgentInfo
+
+Defines the information required for triggering a WantAgent object. The information can be used as an input parameter in [getWantAgent](js-apis-app-ability-wantAgent.md#wantagentgetwantagent) to obtain a specified WantAgent object.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name          | Type                           | Read-Only| Optional| Description                  |
+| -------------- | ------------------------------ | ---- | ---- |---------------------- |
+| userId<sup>22+</sup>    | number | No| Yes| User ID.<br>The value must be greater than or equal to 0.<br>The default value is the user ID of the caller. <br>**Model restriction**: This API can be used only in the stage model.|
+
 
 ## LocalWantAgentInfo<sup>20+</sup>
 

@@ -14,7 +14,7 @@ Implements an **AdsBlockManager** instance to set custom ad blocking configurati
 >
 > - The initial APIs of this class are supported since API version 12.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 >
 > - Static methods must be used on the user interface (UI) thread.
 

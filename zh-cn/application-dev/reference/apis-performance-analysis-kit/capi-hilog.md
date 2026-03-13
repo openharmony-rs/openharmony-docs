@@ -5,7 +5,7 @@
 <!--Owner: @liuyifeifei;@buzhenwang-->
 <!--Designer: @shenchenkai-->
 <!--Tester: @liyang2235-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -14,7 +14,6 @@ HiLog模块实现日志打印功能。开发者可以通过使用这些接口实
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
 **起始版本：** 8
-
 ## 文件汇总
 
 | 名称 | 描述 |

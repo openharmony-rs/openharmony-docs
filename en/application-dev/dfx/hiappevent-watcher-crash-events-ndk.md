@@ -29,26 +29,23 @@ After the application starts, add an event watcher before any service logic runs
 
 The following example describes how to subscribe to a crash event triggered by button clicking.
 
-1. Obtain the dependency **jsoncpp** of the sample project.
-
-   Specifically, obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by referring to **Amalgamated source** in [JsonCpp](https://github.com/open-source-parsers/jsoncpp).
+1. Obtain the **jsoncpp** file on which the sample project depends. Click [HiAppEvent Sample Project EventSub](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub) and **click Download the directory** to download the EventSub project file.
 
 2. Create a native C++ project and import the preceding files to the project. The directory structure is as follows:
 
    ```yml
    entry:
+     libs:    // Folder for storing the third-party library associated with jsoncpp.
      src:
        main:
          cpp:
-           - json:
-               - json.h
-               - json-forwards.h
+           - thirdparty:
+               jsoncpp:    // Folder for storing the third-party library associated with jsoncpp.
            - types:
                libentry:
                  - index.d.ts
            - CMakeLists.txt
            - napi_init.cpp
-           - jsoncpp.cpp
          ets:
            - entryability:
                - EntryAbility.ets
@@ -56,25 +53,37 @@ The following example describes how to subscribe to a crash event triggered by b
                - Index.ets
    ```
 
+   The source code corresponding to the **jsoncpp** library file in this sample project is derived from [the third-party open-source library JsonCpp](https://github.com/open-source-parsers/jsoncpp/archive/refs/tags/1.9.6.tar.gz)
+
 3. In the **CMakeLists.txt** file, add the source file and dynamic libraries.
 
    ```cmake
-   # Add the jsoncpp.cpp file, which is used to parse the JSON strings in the subscription events.
-   add_library(entry SHARED napi_init.cpp jsoncpp.cpp)
+   add_library(entry SHARED napi_init.cpp)
    # Add libhiappevent_ndk.z.so and libhilog_ndk.z.so (log output). 
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
+   set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
+   set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
+   # Check whether the entry/build directory exists.
+   execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${DEST_DIR})
+   # Decompress jsoncpp-1.9.6.tar.gz to entry/build to obtain the directory of the jsoncpp header file.
+   execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
+       WORKING_DIRECTORY ${DEST_DIR})
+
+   # Add the third-party library libjsoncpp.so (used to parse JSON strings in subscription events).
+   target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
+   target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
    ```
 
 4. In the **napi_init.cpp** file, import the dependency files and define **LOG_TAG**.
 
-    <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
     
     ``` C++
     #include "napi/native_api.h"
-    #include "json/json.h"
-    #include "hilog/log.h"
+    // Adapt the path for referencing json.h based on the location of the third-party library jsoncpp in the project.
+    #include "../../../build/jsoncpp-1.9.6/include/json/json.h"
     #include "hiappevent/hiappevent.h"
-    #include "hiappevent/hiappevent_event.h"
+    #include "hilog/log.h"
     
     #undef LOG_TAG
     #define LOG_TAG "testTag"

@@ -1,4 +1,10 @@
 # @ohos.multimedia.avCastPickerParam (投播组件参数)
+<!--Kit: AVSession Kit-->
+<!--Subsystem:Multimedia-->
+<!--Owner: @ccfriend; @liao_qian-->
+<!--Designer: @ccfriend-->
+<!--Tester:@chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
 
 avCastPickerParam提供了[@ohos.multimedia.avCastPicker](ohos-multimedia-avcastpicker.md)组件状态枚举值。
 
@@ -6,7 +12,7 @@ avCastPickerParam提供了[@ohos.multimedia.avCastPicker](ohos-multimedia-avcast
 >
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-## AVCastPickerState<sup>11+</sup>
+## AVCastPickerState
 
 投播组件设备列表状态参数选项。
 

@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 > **NOTE**
 >
@@ -32,7 +32,7 @@ The caller does not have the permission to access the URI or path.
 
 1. Check whether the caller cannot use the URI shared by another application. For details, see [access control mechanisms](../../security/AccessToken/access-token-overview.md) of the system.
 
-2. Check whether the permission is obtained by Picker. The permission obtained by Picker is temporary. For details, see [System Pickers](../../application-models/system-app-startup.md).
+2. Check whether the permission is obtained by Picker. The permission obtained by Picker is temporary. For details, see [System Pickers](../../application-models/system-app-startup.md#methods-of-starting-a-system-application).
 
 3. Check whether the URI is a concatenated path, which has no permission by default.
 
@@ -258,7 +258,7 @@ The permission is denied.
 
 2. Check the kernel log for [AVC log information](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-security-selinux-develop-intro.md). If yes,<!--RP1--> see [SELinux Development](../../../device-dev/subsystems/subsys-security-selinux-develop-intro.md).<!--RP1End-->
 
-3. Check whether the file path is a [sandbox path](../../file-management/app-sandbox-directory.md). The File Management system does not allow operations on files outside the sandbox directory.
+3. Check whether the file path is a sandbox path. The file management system does not allow operations on files outside the sandbox directory. For details, see [Application Sandbox Directory and Application Sandbox Path](../../file-management/app-sandbox-directory.md#application-sandbox-directory-and-application-sandbox-path).
 
 ### 13900013 Incorrect Address
 
@@ -1134,6 +1134,95 @@ The specified user ID is incorrect.
 
 Check that the user ID is correct.
 
+### 13600010 Invalid Input Parameter
+
+**Error Message**
+
+The input parameter is invalid.
+
+**Description**
+
+The input parameter is invalid.
+
+**Possible Causes**
+
+The input parameter is incorrect.
+
+**Solution**
+
+Check whether the input parameter is within the invalid range.
+
+### 13600011 Failed to Report the Space Usage of a Specified Service
+
+**Error Message**
+
+Failed to report the specified business space usage.
+
+**Description**
+
+Failed to report the space usage of a specified service.
+
+**Possible Causes**
+
+The interaction with the database is abnormal.
+
+**Solution**
+
+Restart the device and try again.
+
+### 13600012 Failed to Query the Space Usage of a Specified Service
+
+**Error Message**
+
+Failed to query the specified business space usage.
+
+**Description**
+
+Failed to query the space usage of a specified service.
+
+**Possible Causes**
+
+The interaction with the database is abnormal.
+
+**Solution**
+
+Restart the device and try again.
+
+### 13600013 Failed to Query the Space Usage of All Services
+
+**Error Message**
+
+Failed to query all business space usage.
+
+**Description**
+
+Failed to query the space usage of all services.
+
+**Possible Causes**
+
+The interaction with the database is abnormal.
+
+**Solution**
+
+Restart the device and try again.
+
+### 13600015 Failed to Obtain Disk Space Usage Information
+
+**Error Message**
+
+Failed to traverse the query data partition directory.
+
+**Description**
+
+Failed to obtain the disk space usage information.
+
+**Possible Causes**
+
+The underlying file system is abnormal.
+
+**Solution**
+
+Restart the device and try again.
 ## User File Access Error Codes
 
 ### 14300001 IPC Failed

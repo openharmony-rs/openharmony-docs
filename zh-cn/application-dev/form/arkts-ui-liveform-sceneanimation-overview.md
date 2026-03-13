@@ -3,9 +3,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
-场景动效类型互动卡片支持在特定场景下触发互动卡片的特有效果。例如，开发者可以选择将动效渲染区域扩展到卡片自身的渲染区域之外，营造“破框”效果。
+从API version 20开始，场景动效类型互动卡片支持在特定场景下触发互动卡片的特有效果。例如，开发者可以选择将动效渲染区域扩展到卡片自身的渲染区域之外，营造“破框”效果。
 
 ## 基本概念
 
@@ -39,6 +39,10 @@
 
 ## 约束和限制
 
+### 支持的场景
+1. 当前互动卡片动效只有在[FormLocation](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formlocation20)为“DESKTOP”的单张卡片上面才能生效。
+2. 由于性能功耗影响只支持部分机型，在不支持的机型会报[801](../reference/errorcode-universal.md#801-该设备不支持此api)错误码。
+
 ### 请求参数约束
 1. 互动卡片申请动效的最大合法动效时长：3500ms，倒计时结束时，卡片将切换回非激活态。<!--Del-->系统应用额外支持长时激活卡片，其动效的时间不受限制，可参考[场景动效类型互动卡片开发指导（仅对系统应用开放）](arkts-ui-liveform-sceneanimation-development-sys.md)。<!--DelEnd-->
 2. 由卡片定时定点刷新触发的互动卡片动效，一天内单张卡片最多触发50次。
@@ -57,7 +61,9 @@
 ![live-form-overflow-rule.png](figures/live-form-overflow-rule.png)
 
 例如：某设备上一个2*2卡片宽度为158vp，高度为158vp。对应上图则有：
+
 （1）AD=158vp，AB=158vp，IJ=158\*1.5=237vp，IL=158\*1.5=237vp。
+
 （2）IA两点水平相距39.5vp，垂直相距39.5vp。
 
 因此，以A点为原点，向右为X轴正方向，向下为Y轴正方向，图5中E点的合法坐标可以是（-20，-20），EF边长合法值可以是200vp，EH边长合法值可以是200vp。

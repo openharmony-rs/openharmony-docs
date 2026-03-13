@@ -4,7 +4,7 @@
 
 **Access Level**
 
-Public APIs
+Public API
 
 **Reason for Change**
 
@@ -12,7 +12,7 @@ The APIs can be called only by system applications.
 
 **Change Impact**
 
-This change has no impact on system applications. For third-party applications, error code 202 will be thrown if the deprecated APIs are called in OpenHarmony_4.1.3.5 or later; error code 201 will be thrown if the deprecated APIs are called in an earlier version.
+This change has no impact on system applications. For third-party applications, error code 201 is reported when the API is called in the old version, and error code 202 is reported when the API is called in the new version.
 
 **API Level**
 
@@ -45,7 +45,7 @@ interface/sdk-js/api/@ohos.account.osAccount.d.ts:
     getCurrentOsAccount(): Promise<OsAccountInfo>;
 ```
 
-After the change:
+After change:
 
 All the above APIs are deprecated, without substitute APIs.
 
@@ -58,13 +58,13 @@ No adaptation is required for system applications. If a third-party application 
 
 **Access Level**
 
-Public APIs
+Public API
 
 **Reason for Change**
 
-- The APIs have spelling errors.
+1. The APIs have spelling errors.
 
-- Similar APIs are defined in different formats.
+2. Similar APIs are named in different formats.
 
 **Change Impact**
 
@@ -72,11 +72,11 @@ The deprecated APIs will not be maintained after five versions. Use substitute A
 
 **API Level**
 
-checkOsAccountVerified (9)
+checkOsAccountVerified(9)
 
-isVerified (8)
+isVerified(8)
 
-isActived (8)
+isActived(8)
 
 **Change Since**
 
@@ -92,7 +92,7 @@ interface/sdk-js/api/@ohos.account.osAccount.d.ts:
     checkOsAccountVerified(callback: AsyncCallback<boolean>): void;
     checkOsAccountVerified(): Promise<boolean>;
 ```
-Substitute API:
+Substitute APIs:
 ```js
     isOsAccountUnlocked(): Promise<boolean>;
 ```

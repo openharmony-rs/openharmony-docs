@@ -207,15 +207,14 @@ function isCameraMuteSupported(cameraManager: camera.CameraManager): boolean {
 }
 ```
 
-### muteCamera
+### muteCamera<sup>(deprecated)</sup>
 
 muteCamera(mute: boolean): void
 
 Mutes or unmutes the camera device.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 12. You are advised to use [muteCameraPersistent](#mutecamerapersistent12) instead.
+>This API is supported since API version 10 and deprecated since API version 12. You are advised to use [muteCameraPersistent](#mutecamerapersistent12) instead.
 
 **System API**: This is a system API.
 
@@ -523,8 +522,8 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
-| 7400101 	      |  Parameter missing or parameter type incorrect. |
+| 202             |  Not System Application.       |
+| 7400101         |  Parameter missing or parameter type incorrect. |
 
 **Example**
 
@@ -581,18 +580,7 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 }
 ```
 
-## CameraOcclusionDetectionResult<sup>12+</sup>
-Describes the status indicating whether the camera is occluded.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name                          | Type                                               | Read-only| Optional| Description               |
-| ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
-| isCameraOccluded                 | boolean              |  Yes | No|Whether the camera is occluded. **true** if occluded, **false** otherwise.       |
-
-## CameraOutputCapability<sup>10+</sup>
+## CameraOutputCapability
 
 Describes the camera output capability.
 
@@ -602,7 +590,7 @@ Describes the camera output capability.
 
 | Name                          | Type                                               | Read-only| Optional| Description               |
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
-| depthProfiles                 | Array\<[DepthProfile](#depthprofile13)\>              |  Yes | No| Supported depth stream profiles.       |
+| depthProfiles<sup>13+</sup>       | Array\<[DepthProfile](#depthprofile13)\>              |  Yes | No| Supported depth stream profiles.       |
 
 ## CameraFormat
 
@@ -624,88 +612,6 @@ Enumerates the camera output formats.
 Defines the camera input object.
 
 It provides camera device information used in [Session](arkts-apis-camera-Session.md).
-
-### on('cameraOcclusionDetection')<sup>12+</sup>
-
-on(type: 'cameraOcclusionDetection', callback: AsyncCallback\<CameraOcclusionDetectionResult\>): void
-
-Subscribes to CameraInput occlusion events. This API uses an asynchronous callback to return the result.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name    | Type                             | Mandatory| Description                                         |
-| -------- | -------------------------------- | --- | ------------------------------------------- |
-| type     | string                           | Yes  | Event type. The value is fixed at **'cameraOcclusionDetection'**. The event can be listened for when a CameraInput instance is created. It is triggered when the occlusion status of the camera module changes, and the occlusion status is returned.|
-| callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | Yes  | Callback used to return the occlusion status. |
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202 | Not System Application. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, CameraOcclusionDetectionResult: camera.CameraOcclusionDetectionResult): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error('cameraOcclusionDetection with errorCode = ' + err.code);
-    return;
-  }
-  console.info(`isCameraOccluded : ${CameraOcclusionDetectionResult.isCameraOccluded}`);
-}
-
-function registerCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
-  cameraInput.on('cameraOcclusionDetection', callback);
-}
-```
-
-### off('cameraOcclusionDetection')<sup>12+</sup>
-
-off(type: 'cameraOcclusionDetection', callback?: AsyncCallback\<CameraOcclusionDetectionResult\>): void
-
-Unsubscribes from CameraInput occlusion events.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name    | Type            | Mandatory| Description                                                     |
-| -------- | --------------- | ---- |---------------------------------------------------------|
-| type     | string          | Yes  | Event type. The value is fixed at **'cameraOcclusionDetection'**. The event can be listened for when a CameraInput instance is created.|
-| callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('cameraOcclusionDetection')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)                 |
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202 | Not System Application. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, CameraOcclusionDetectionResult: camera.CameraOcclusionDetectionResult): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error('cameraOcclusionDetection with errorCode = ' + err.code);
-    return;
-  }
-  console.info(`isCameraOccluded : ${CameraOcclusionDetectionResult.isCameraOccluded}`);
-}
-
-function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
-  cameraInput.off('cameraOcclusionDetection', callback);
-}
-```
 
 ## DepthDataAccuracy<sup>13+</sup>
 
@@ -761,17 +667,31 @@ Describes a depth data object.
 | format | [CameraFormat](#cameraformat)   | Yes|  No | Camera output format.|
 | depthMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)    | Yes|  No | Depth map.|
 | qualityLevel | [DepthDataQualityLevel](#depthdataqualitylevel13)   | Yes|  No | Quality level of the depth map.|
-| accuracy | [DepthDataAccuracy](#depthdataaccuracy13) | Yes|  No | Accuracy of the depth map.|
+| dataAccuracy | [DepthDataAccuracy](#depthdataaccuracy13) | Yes|  No | Accuracy of the depth map.|
 
 ### release<sup>13+</sup>
 
-release(): void
+release(): Promise\<void\>
 
-Releases depth data output resources.
+Releases depth data output resources. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Return value**
+
+| Type           | Description                    |
+| -------------- | ----------------------- |
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 202 | Not System Application. |
 
 **Example**
 
@@ -1064,7 +984,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function isDepthFusionSupported(DepthFusionQuery: camera.DepthFusionQuery): void {
   try {
-    let isSupperted: boolean = DepthFusionQuery.isDepthFusionSupported();
+    let isSupported: boolean = DepthFusionQuery.isDepthFusionSupported();
     console.info('Indicate that isDepthFusionSupported method execution success.');
   } catch (error) {
     let err = error as BusinessError;
@@ -1144,6 +1064,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 function isDepthFusionEnabled(DepthFusion: camera.DepthFusion): boolean {
   let isEnable: boolean = false;
   try {
@@ -1571,7 +1492,7 @@ A class object that functions as a thumbnail proxy.
 
 getThumbnail(): Promise<image.PixelMap>
 
-Obtains the PixelMap of a thumbnail.
+Obtains the PixelMap of a thumbnail. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1589,7 +1510,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 
 **Example**
 
@@ -1625,7 +1546,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 
 **Example**
 
@@ -1667,7 +1588,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 | 7400101         |  Parameter missing or parameter type incorrect.          |
 | 7400104         |  Session not running.          |
 | 7400201         |  Camera service fatal error.   |
@@ -1715,7 +1636,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 | 7400104         |  Session not running.          |
 | 7400201         |  Camera service fatal error.   |
 
@@ -1895,9 +1816,7 @@ function isAutoHighQualityPhotoSupported(photoOutput: camera.PhotoOutput): boole
 
 enableAutoHighQualityPhoto(enabled: boolean): void
 
-Enables automatic high quality for photos.
-
-Before using this API, call [isAutoHighQualityPhotoSupported](#isautohighqualityphotosupported13) to check whether automatic high quality is supported.
+Enables automatic high quality for photos. Before using this API, call [isAutoHighQualityPhotoSupported](#isautohighqualityphotosupported13) to check whether automatic high quality is supported.
 
 **System API**: This is a system API.
 
@@ -1953,7 +1872,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 
 **Example**
 
@@ -1999,7 +1918,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 
 **Example**
 
@@ -2046,7 +1965,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202                	 |  Not System Application.        |
+| 202                    |  Not System Application.        |
 | 7400104                |  session is not running.        |
 
 **Example**
@@ -2108,7 +2027,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202                	 |  Not System Application.        |
+| 202                    |  Not System Application.        |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400104                |  session is not running.        |
 | 7400201                |  Camera service fatal error.        |
@@ -2243,88 +2162,6 @@ function unregisterQuickThumbnail(photoOutput: camera.PhotoOutput): void {
 
 Implements metadata streams. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
-### addMetadataObjectTypes<sup>13+</sup> 
-
-addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
-
-Adds the types of metadata objects to be detected.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name                 | Type                                              | Mandatory| Description                         |
-| -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | Yes | Metadata object types, which are obtained through **getSupportedOutputCapability**.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202                    |  Not system application.        |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400103                |  Session not config.                                   |
-| 7400201                |  Camera service fatal error.                           |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
-  try {
-    metadataOutput.addMetadataObjectTypes(types);
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`addMetadataObjectTypes error. error code: ${err.code}`);
-  }
-}
-```
-
-### removeMetadataObjectTypes<sup>13+</sup> 
-
-removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
-
-Removes the types of metadata objects to be detected.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name                 | Type                                              | Mandatory| Description                         |
-| -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | Yes | Metadata object types, which are obtained through **getSupportedOutputCapability**.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202                    |  Not system application.        |
-| 7400101                |  Parameter missing or parameter type incorrect.                                   |
-| 7400103                |  Session not config.                                   |
-| 7400201                |  Camera service fatal error.                           |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
-  try {
-    metadataOutput.removeMetadataObjectTypes(types);
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`removeMetadataObjectTypes error. error code: ${err.code}`);
-  }
-}
-```
-
 ## MetadataObjectType
 
 Enumerates the types of metadata objects used for camera detection.
@@ -2354,7 +2191,7 @@ Enumerates the types of emotions in the detected human face information.
 
 ## MetadataObject
 
-Implements the basic metadata object used for camera detection. It is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the basic metadata object used for camera detection. It serves as the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2365,7 +2202,7 @@ Implements the basic metadata object used for camera detection. It is the data s
 
 ## MetadataFaceObject<sup>13+</sup>
 
-Implements the human face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the human face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2381,13 +2218,13 @@ Implements the human face metadata object used for camera detection. It inherits
 
 ## MetadataHumanBodyObject<sup>13+</sup>
 
-Implements the human body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the human body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataCatFaceObject<sup>13+</sup>
 
-Implements the cat face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the cat face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2398,13 +2235,13 @@ Implements the cat face metadata object used for camera detection. It inherits f
 
 ## MetadataCatBodyObject<sup>13+</sup>
 
-Implements the cat body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the cat body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataDogFaceObject<sup>13+</sup>
 
-Implements the dog face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the dog face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2415,19 +2252,19 @@ Implements the dog face metadata object used for camera detection. It inherits f
 
 ## MetadataDogBodyObject<sup>13+</sup>
 
-Implements the dog body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the dog body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataSalientDetectionObject<sup>13+</sup>
 
-Implements the salient detection metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the salient detection metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataBarcodeObject<sup>14+</sup>
 
-Implements the barcode metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information of [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the barcode metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2490,9 +2327,7 @@ function getSupportedBeautyTypes(portraitPhotoSession: camera.PortraitPhotoSessi
 
 getSupportedBeautyRange(type: BeautyType): Array\<number\>
 
-Obtains the levels that can be set a beauty type.
-
-The beauty levels vary according to the device type. The following table is only an example.
+Obtains the levels that can be set a beauty type. The beauty levels vary according to the device type. The following table is only an example.
 
 | Input Parameter          | Example Return Value   | Return Value Description    |
 | ----------------| ----  | ---------|
@@ -2659,7 +2494,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202                	 |  Not System Application.  |
+| 202                    |  Not System Application.  |
 | 7400102                |  Operation not allowed.   |
 | 7400103                |  Session not config.      |
 
@@ -2690,8 +2525,6 @@ Enumerates the tripod statuses.
 ## SceneFeatureType<sup>12+</sup>
 
 Enumerates the scene features.
-
-**System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2869,7 +2702,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                      |
-| 7400103                |  Session not config.                          |
+| 7400103                |  Session not config, only throw in session usage.      |
 
 **Example**
 
@@ -3202,11 +3035,11 @@ Enumerates the color effect types.
 | SOFT                  | 2    | Soft color effect. |
 | BLACK_WHITE<sup>12+</sup>    | 3    | Black and white color effect. |
 
-## Portrait<sup>11+</sup>
+## PortraitQuery<sup>12+</sup>
 
-Provides the APIs for portrait photo settings.
+Queries portrait parameters.
 
-### getSupportedPortraitEffects<sup>10+</sup>
+### getSupportedPortraitEffects
 
 getSupportedPortraitEffects(): Array\<PortraitEffect\>
 
@@ -3240,11 +3073,17 @@ function getSupportedPortraitEffects(portraitPhotoSession: camera.PortraitPhotoS
 }
 ```
 
-### setPortraitEffect<sup>10+</sup>
+## Portrait<sup>11+</sup>
+
+**Portrait** inherits from [PortraitQuery](#portraitquery12).
+
+Provides the APIs for portrait photo settings.
+
+### setPortraitEffect
 
 setPortraitEffect(effect: PortraitEffect): void
 
-Sets a portrait effect. Before the setting, call [getSupportedPortraitEffects](#getsupportedportraiteffects10) to obtain the supported portrait effects and check whether the target portrait effect is supported.
+Sets a portrait effect. Before the setting, use [getSupportedPortraitEffects](#getsupportedportraiteffects) to obtain the supported portrait effects and check whether the target portrait effect is supported.
 
 **System API**: This is a system API.
 
@@ -3254,7 +3093,7 @@ Sets a portrait effect. Before the setting, call [getSupportedPortraitEffects](#
 
 | Name        | Type                       | Mandatory| Description                     |
 | ------------ |----------------------------- | -- | -------------------------- |
-| effect | [PortraitEffect](#portraiteffect)  | Yes| Portrait effect, which can be obtained through [getSupportedPortraitEffects](#getsupportedportraiteffects10).  |
+| effect | [PortraitEffect](#portraiteffect)  | Yes| Portrait effect, which can be obtained through [getSupportedPortraitEffects](#getsupportedportraiteffects).  |
 
 **Error codes**
 
@@ -3283,7 +3122,7 @@ function setPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession, po
 }
 ```
 
-### getPortraitEffect<sup>10+</sup>
+### getPortraitEffect
 
 getPortraitEffect(): PortraitEffect
 
@@ -3541,8 +3380,7 @@ function setPhysicalAperture(session: camera.PortraitPhotoSession, physicalApert
 Implements a capture session, which saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera and requests the camera to complete shooting or video recording.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [PhotoSession](arkts-apis-camera-PhotoSession.md) and [VideoSession](arkts-apis-camera-VideoSession.md) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [PhotoSession](arkts-apis-camera-PhotoSession.md) and [VideoSession](arkts-apis-camera-VideoSession.md) instead.
 
 ### getSupportedBeautyTypes<sup>(deprecated)</sup>
 
@@ -3551,8 +3389,7 @@ getSupportedBeautyTypes(): Array\<BeautyType>
 Obtains the supported beauty types.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getSupportedBeautyTypes](#getsupportedbeautytypes11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getSupportedBeautyTypes](#getsupportedbeautytypes11) instead.
 
 **System API**: This is a system API.
 
@@ -3566,12 +3403,11 @@ Obtains the supported beauty types.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
-| 202             |  Not System Application.                      |
 
 **Example**
 
@@ -3596,8 +3432,7 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 | SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB, for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11) instead.
 
 **System API**: This is a system API.
 
@@ -3644,8 +3479,7 @@ setBeauty(type: BeautyType, value: number): void
 Sets a beauty type and its level. Beauty mode is turned off only when all the [beauty types](#beautytype) obtained through [getSupportedBeautyTypes](#getsupportedbeautytypesdeprecated) are disabled.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.setBeauty](#setbeauty11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.setBeauty](#setbeauty11) instead.
 
 **System API**: This is a system API.
 
@@ -3690,8 +3524,7 @@ getBeauty(type: BeautyType): number
 Obtains the level of the beauty type in use.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getBeauty](#getbeauty11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getBeauty](#getbeauty11) instead.
 
 **System API**: This is a system API.
 
@@ -3738,7 +3571,7 @@ function getBeauty(captureSession: camera.CaptureSession): number {
 
 ## PhotoSessionForSys<sup>11+</sup>
 
-PhotoSessionForSys extends PhotoSession, Beauty, ColorEffect, ColorManagement, SceneDetection
+PhotoSessionForSys extends PhotoSession, Beauty, ColorEffect, ColorManagement, Macro, SceneDetection, EffectSuggestion, DepthFusion
 
 Implements a photo session for system applications, which sets the parameters of the normal photo mode and saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera. It inherits from [Session](arkts-apis-camera-Session.md).
 
@@ -3920,7 +3753,7 @@ Enumerates the focus tracking modes.
 
 ## FocusTrackingInfo<sup>15+</sup>
 
-Describes the focus tracking information, which is obtained by calling VideoSessionForSys.[on('focusTrackingInfoAvailable')](#onfocustrackinginfoavailable15).
+Describes the focus tracking information, which is obtained by calling **VideoSessionForSys.**[on('focusTrackingInfoAvailable')](#onfocustrackinginfoavailable15).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -3931,7 +3764,7 @@ Describes the focus tracking information, which is obtained by calling VideoSess
 
 ## LightStatus<sup>18+</sup>
 
-Enumerates the camera light statuses, which are obtained by calling VideoSessionForSys.[on('lightStatusChange')](#onlightstatuschange18).
+Enumerates the camera light statuses, which are obtained by calling **VideoSessionForSys.**[on('lightStatusChange')](#onlightstatuschange18).
 
 **System API**: This is a system API.
 
@@ -4071,7 +3904,7 @@ function callback(focusTrackingInfo: camera.FocusTrackingInfo): void {
                                        height ${focusTrackingInfo.trackingRegion.height}`);
 }
 
-function registerFocusTrakingInfoChanged(session: camera.VideoSessionForSys): void {
+function registerFocusTrackingInfoChanged(session: camera.VideoSessionForSys): void {
   session.on('focusTrackingInfoAvailable', callback);
 }
 ```
@@ -4104,7 +3937,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-function unregisterFocusTrakingInfoChanged(session: camera.VideoSessionForSys): void {
+function unregisterFocusTrackingInfoChanged(session: camera.VideoSessionForSys): void {
   session.off('focusTrackingInfoAvailable');
 }
 ```
@@ -5212,7 +5045,6 @@ isSlowMotionDetectionSupported(): boolean
 Checks whether the device supports slow-motion detection.
 
 > **NOTE**
->
 > This API must be called after [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1) is called.
 
 **System API**: This is a system API.
@@ -5258,7 +5090,6 @@ setSlowMotionDetectionArea(area: Rect): void
 Sets an area for slow-motion detection.
 
 > **NOTE**
->
 > Before the setting, call [isSlowMotionDetectionSupported](#isslowmotiondetectionsupported12) to check whether the device supports slow-motion detection.
 This API must be called after [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1) is called.
 
@@ -5604,9 +5435,7 @@ function getExposureMeteringMode(professionalPhotoSession: camera.ProfessionalPh
 
 setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void
 
-Sets an exposure metering mode.
-
-Before the setting, call [isExposureMeteringModeSupported](#isexposuremeteringmodesupported12) to check whether the target exposure metering mode is supported.
+Sets an exposure metering mode. Before the setting, call [isExposureMeteringModeSupported](#isexposuremeteringmodesupported12) to check whether the target exposure metering mode is supported.
 
 **System API**: This is a system API.
 
@@ -5823,9 +5652,7 @@ Provides APIs to obtain and set the camera focus mode and focus position.
 
 setFocusAssist(enabled: boolean): void
 
-Sets the focus assist.
-
-Before the setting, call [isFocusAssistSupported](#isfocusassistsupported12) to check whether the device supports the focus assist.
+Sets the focus assist. Before the setting, call [isFocusAssistSupported](#isfocusassistsupported12) to check whether the device supports the focus assist.
 
 **System API**: This is a system API.
 
@@ -6270,7 +6097,9 @@ setIso(iso: number): void
 
 Sets the ISO.
 
-**NOTE**: When the ISO is set to 0, automatic ISO is used.
+> **NOTE**
+>
+> When the ISO is set to 0, automatic ISO is used.
 
 **System API**: This is a system API.
 
@@ -8000,8 +7829,8 @@ Describes the Try AE parameters. Try AE indicates that the hardware reports the 
 
 | Name| Type   | Read-only| Optional| Description          |
 | ---- | ------- | ---- |--| -------------- |
-| isTryAEDone        | boolean  | Yes  | No| Whether Try AE is complete.       |
-| isTryAEHintNeeded  | boolean  | Yes  | Yes| Whether Try AE is required.       |
+| isTryAEDone        | boolean  | Yes  | No| Whether Try AE is complete. **true** if complete, **false** otherwise.      |
+| isTryAEHintNeeded  | boolean  | Yes  | Yes| Whether Try AE is required. **true** if required, **false** otherwise.       |
 | previewType        | [TimeLapsePreviewType](#timelapsepreviewtype12) | Yes  | Yes| Preview type.       |
 | captureInterval    | number   | Yes  | Yes| Shooting interval, in ms.       |
 
@@ -8524,6 +8353,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103 | Session not config.     |
+| 7400201 | Camera service fatal error.     |
 
 **Example**
 

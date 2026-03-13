@@ -52,7 +52,7 @@ The file declares the APIs used to access the image rectangle, size, format, and
 
 ### Image Formats
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -69,7 +69,7 @@ Enumerates the image formats.
 
 ### Image Color Channel Types
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -91,7 +91,7 @@ Enumerates the image color channel types.
 
 ### OH_Image_InitImageNative()
 
-```
+```c
 ImageNative* OH_Image_InitImageNative(napi_env env, napi_value source)
 ```
 
@@ -121,7 +121,7 @@ Parses an ImageNative object from an Image object at the JavaScript native layer
 
 ### OH_Image_ClipRect()
 
-```
+```c
 int32_t OH_Image_ClipRect(const ImageNative* native, struct OhosImageRect* rect)
 ```
 
@@ -147,7 +147,7 @@ Obtains OhosImageRect of an ImageNative object.
 
 ### OH_Image_Size()
 
-```
+```c
 int32_t OH_Image_Size(const ImageNative* native, struct OhosImageSize* size)
 ```
 
@@ -177,7 +177,7 @@ The type of data stored in the ImageNative object depends on whether the applica
 
 ### OH_Image_Format()
 
-```
+```c
 int32_t OH_Image_Format(const ImageNative* native, int32_t* format)
 ```
 
@@ -203,7 +203,7 @@ Obtains the format of an ImageNative object.
 
 ### OH_Image_GetComponent()
 
-```
+```c
 int32_t OH_Image_GetComponent(const ImageNative* native, int32_t componentType, struct OhosImageComponent* componentNative)
 ```
 
@@ -230,7 +230,7 @@ Obtains OhosImageComponent of an ImageNative object.
 
 ### OH_Image_Release()
 
-```
+```c
 int32_t OH_Image_Release(ImageNative* native)
 ```
 

@@ -2,9 +2,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} OH_NativeXComponent_TouchEvent
+```
 
 ## Overview
 
@@ -32,5 +36,5 @@ Defines the touch event.
 | float force | Pressure of the touch event.|
 | int64_t deviceId | ID of the device where the current touch event is triggered.|
 | int64_t timeStamp | Timestamp of the touch point. It is interval between the time when the event is triggered and the time when the system starts, in nanoseconds.|
-| [OH_NativeXComponent_TouchPoint](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-touchpoint.md) touchPoints[OH_MAX_TOUCH_POINTS_NUMBER] | Array of the touch points.|
+| [OH_NativeXComponent_TouchPoint](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-touchpoint.md) touchPoints[[OH_NATIVE_XCOMPONENT_MAX_TOUCH_POINTS_NUMBER]](capi-native-interface-xcomponent-h.md#variables)| Array of the touch points.|
 | uint32_t numPoints | Number of current touch points. The value **1** indicates single-finger touch, while a value greater than **1** indicates multi-finger touch.|

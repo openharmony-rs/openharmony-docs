@@ -28,9 +28,9 @@ Adds the device access permission for the application. System applications are g
 
 **usbManager.requestRight** triggers a dialog box to request for user authorization, whereas **addRight** adds the access permission directly without displaying a dialog box.
 
-**NOTE**
-
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [addDeviceAccessRight](#adddeviceaccessright12).
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [addDeviceAccessRight](#adddeviceaccessright12) instead.
 
 **System API**: This is a system API.
 
@@ -74,9 +74,9 @@ usbFunctionsFromString(funcs: string): number
 
 Converts the USB function list in the string format to a numeric mask in Device mode.
 
-**NOTE**
-
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getFunctionsFromString](#getfunctionsfromstring12).
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getFunctionsFromString](#getfunctionsfromstring12) instead.
 
 **System API**: This is a system API.
 
@@ -116,9 +116,9 @@ usbFunctionsToString(funcs: FunctionType): string
 
 Converts the USB function list in the numeric mask format to a string in Device mode.
 
-**NOTE**
-
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getStringFromFunctions](#getstringfromfunctions12).
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getStringFromFunctions](#getstringfromfunctions12) instead.
 
 **System API**: This is a system API.
 
@@ -158,9 +158,9 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
 Sets the current USB function list in Device mode. This API uses a promise to return the result.
 
-**NOTE**
-
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [setDeviceFunctions](#setdevicefunctions12).
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [setDeviceFunctions](#setdevicefunctions12) instead.
 
 **System API**: This is a system API.
 
@@ -205,9 +205,9 @@ getCurrentFunctions(): FunctionType
 
 Obtains the numeric mask combination for the USB function list in Device mode. When the developer mode is disabled, **undefined** may be returned if no device is connected. Check whether the return value of the API is empty.
 
-**NOTE**
-
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getDeviceFunctions](#getdevicefunctions12).
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getDeviceFunctions](#getdevicefunctions12) instead.
 
 **System API**: This is a system API.
 
@@ -240,9 +240,9 @@ getPorts(): Array\<USBPort\>
 
 Obtains the list of all physical USB ports. When the developer mode is disabled, **undefined** may be returned if no device is connected. Check whether the return value of the API is empty.
 
-**NOTE**
-
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getPortList](#getportlist12).
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getPortList](#getportlist12) instead.
 
 **System API**: This is a system API.
 
@@ -275,8 +275,8 @@ getSupportedModes(portId: number): PortModeType
 
 Obtains the mask combination for the supported mode list of a given USB port.
 
-**NOTE**
-
+> **NOTE**
+>
 > This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getPortSupportModes](#getportsupportmodes12) instead.
 
 **System API**: This is a system API.
@@ -316,9 +316,9 @@ setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): 
 
 Sets the role types supported by a specified port, which can be **powerRole** (for charging) and **dataRole** (for data transfer). This API uses a promise to return the result.
 
-**NOTE**
-
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [setPortRoleTypes](#setportroletypes12).
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [setPortRoleTypes](#setportroletypes12) instead.
 
 **System API**: This is a system API.
 
@@ -366,8 +366,8 @@ Adds the device access permission for the application. System applications are g
 
 **usbManager.requestRight** triggers a dialog box to request for user authorization, whereas **addDeviceAccessRight** adds the access permission directly without displaying a dialog box.
 
-**NOTE**
-
+> **NOTE**
+>
 > This API is supported since API version 12.
 
 **System API**: This is a system API.
@@ -431,8 +431,8 @@ getFunctionsFromString(funcs: string): number
 
 Converts the USB function list in the string format to a numeric mask in Device mode.
 
-**NOTE**
-
+> **NOTE**
+>
 > This API is supported since API version 12.
 
 **System API**: This is a system API.
@@ -477,8 +477,8 @@ getStringFromFunctions(funcs: FunctionType): string
 
 Converts the USB function list in the numeric mask format to a string in Device mode.
 
-**NOTE**
-
+> **NOTE**
+>
 > This API is supported since API version 12.
 
 **System API**: This is a system API.
@@ -523,8 +523,8 @@ setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
 Sets the current USB function list in Device mode. This API uses a promise to return the result.
 
-**NOTE**
-
+> **NOTE**
+>
 > This API is supported since API version 12.
 
 **System API**: This is a system API.
@@ -576,8 +576,8 @@ getDeviceFunctions(): FunctionType
 
 Obtains the numeric mask combination for the USB function list in Device mode. When the developer mode is disabled, **undefined** may be returned if no device is connected. Check whether the return value of the API is empty.
 
-**NOTE**
-
+> **NOTE**
+>
 > This API is supported since API version 12.
 
 **System API**: This is a system API.
@@ -598,7 +598,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                                       |
 | -------- | ------------------------------------------------------------------------------- |
-| 401      | Parameter error. No parameters are required.                                    |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.                                    |
@@ -615,8 +614,8 @@ getPortList(): Array\<USBPort\>
 
 Obtains the list of all physical USB ports. When the developer mode is disabled, **undefined** may be returned if no device is connected. Check whether the return value of the API is empty.
 
-**NOTE**
-
+> **NOTE**
+>
 > This API is supported since API version 12.
 
 **System API**: This is a system API.
@@ -639,7 +638,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
 
 **Example**
@@ -695,8 +693,8 @@ setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleTyp
 
 Sets the role types supported by a specified port, which can be **powerRole** (for charging) and **dataRole** (for data transfer). This API uses a promise to return the result.
 
-**NOTE**
-
+> **NOTE**
+>
 > This API is supported since API version 12.
 
 **System API**: This is a system API.
@@ -763,7 +761,7 @@ Adds the permission to applications for accessing USB accessories.
 | Name   | Type        | Mandatory| Description                    |
 | --------- | ------------ | ---- | ------------------------ |
 | tokenId   | number       | Yes  | Token ID of the application.|
-| accessory | USBAccessory | Yes  | USB accessory.               |
+| accessory | [USBAccessory](js-apis-usbManager.md#usbaccessory14) | Yes  | USB accessory.               |
 
 **Error codes**
 

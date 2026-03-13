@@ -59,7 +59,7 @@ subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, c
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//subscribe回调
+// subscribe回调
 let subscribeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
@@ -73,7 +73,7 @@ let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
-//不会对bundleNames进行校验，开发者自己确定需要订阅哪些bundleName
+// 不会对bundleNames进行校验，开发者自己确定需要订阅哪些bundleName
 let info: notificationSubscribe.NotificationSubscribeInfo = {
   bundleNames: ["bundleName1","bundleName2"]
 };
@@ -573,7 +573,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let hashCode: string = 'hashCode';
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCode, reason).then(() => {
-	console.info("remove success");
+  console.info("remove success");
 }).catch((err: BusinessError) => {
   console.error(`remove fail: ${JSON.stringify(err)}`);
 });
@@ -823,7 +823,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 不指定应用时，删除所有通知
 notificationSubscribe.removeAll().then(() => {
-	console.info("removeAll success");
+  console.info("removeAll success");
 }).catch((err: BusinessError) => {
   console.error(`removeAll fail: ${JSON.stringify(err)}`);
 });
@@ -924,7 +924,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: number = 1;
 notificationSubscribe.removeAll(userId).then(() => {
-	console.info("removeAll success");
+  console.info("removeAll success");
 }).catch((err: BusinessError) => {
   console.error(`removeAll fail: ${JSON.stringify(err)}`);
 });
@@ -947,7 +947,7 @@ distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise\<v
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
 | hashcode | string | 是   | 通知唯一ID。 |
-| operationInfo | [OperationInfo](#operationinfo18) | 否   | 跨设备协同操作信息。 |
+| operationInfo | [OperationInfo](#operationinfo18) | 否   | 跨设备协同操作信息，默认为空。 |
 
 **返回值：**
 
@@ -980,7 +980,7 @@ let operationInfo: notificationSubscribe.OperationInfo = {
   buttonIndex: 1,
 };
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
-	console.info("distributeOperation success");
+  console.info("distributeOperation success");
 }).catch((err: BusinessError) => {
   console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
 });

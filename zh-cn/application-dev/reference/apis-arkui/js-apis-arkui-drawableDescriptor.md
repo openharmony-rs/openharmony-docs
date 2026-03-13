@@ -55,13 +55,13 @@ try {
 ```
 ## DrawableDescriptor
 
-父类对象提供可重写的方法，包含：获取[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)能力，图片资源加载能力。
+父类对象提供可重写的方法，包含：获取[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)实例，图片资源加载能力。
 
 ### getPixelMap
 
 getPixelMap(): image.PixelMap
 
-获取pixelMap。
+获取PixelMap实例。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -167,7 +167,7 @@ drawable.load().then((result: DrawableDescriptorLoadedResult) => {
 
 ## PixelMapDrawableDescriptor<sup>12+</sup>
 
-支持通过传入pixelMap创建PixelMapDrawableDescriptor对象。继承自[DrawableDescriptor](#drawabledescriptor)。
+支持通过传入PixelMap创建PixelMapDrawableDescriptor对象。继承自[DrawableDescriptor](#drawabledescriptor)。
 
 ### constructor<sup>12+</sup>
 
@@ -568,6 +568,21 @@ struct Index {
 }
 ```
 
+## AnimationStopMode<sup>24+</sup>
+
+动图停止模式。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称      | 值  | 说明              |
+| ---------- | ---- |------------------------ |
+| FIRST_FRAME   | 0 | 动图停止时回到首帧。 |
+| LAST_FRAME | 1 | 动图停止时停留在最后一帧。 |
+
 ## AnimationOptions<sup>12+</sup>
 
 动画播放参数。包括播放时延，迭代次数，单帧播放时间，是否自动播放。
@@ -580,6 +595,7 @@ struct Index {
 | iterations | number | 否   | 是 |设置图片数组播放次数。<br/>值为-1时表示无限播放，值为0时表示不播放，值大于0时表示有限的播放次数。<br/>默认值为1。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | frameDurations<sup>21+</sup> | Array\<number> | 否 | 是 |设置动图中的单帧播放时间。不设置则按照总时间播放。<br/>设置的优先级高于duration，即同时设置了duration和frameDurations时，duration不生效。<br/>当设置的frameDurations长度与图片的数量不一致时，按照总时间播放。<br/>单位：毫秒<br/> **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | autoPlay<sup>21+</sup> | boolean | 否  | 是 |设置动图是否自动播放。<br/> true表示自动播放，false表示不自动播放。<br/>默认值为true。<br/> **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| stopMode<sup>24+</sup> | [AnimationStopMode](#animationstopmode24) | 否  | 是 |设置动图的停止模式。<br/> 默认值：AnimationStopMode.FIRST_FRAME，表示动图停止时回到首帧。<br/> **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **示例：**
 
@@ -669,7 +685,7 @@ AnimatedDrawableDescriptor的构造函数。
 
 | 参数名     | 类型              | 必填  | 说明                                       |
 | --------- | ---------------- | ---- | ------------------------------------------ |
-| src | ResourceStr \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | 是   | 动图资源地址或者[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象构成的的数组。<br/> ResourceStr当前支持的范围：应用资源Resource，沙箱路径（file://\<bundleName>/\<sandboxPath>），BASE64字符串。 |
+| src | [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | 是   | 动图资源地址或者[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象构成的数组。<br/> ResourceStr当前支持的范围：应用资源Resource，沙箱路径（file://\<bundleName>/\<sandboxPath>），BASE64字符串。 |
 | options   | [AnimationOptions](#animationoptions12) | 否   | 动画控制参数。 |
 
 **示例：**
@@ -804,7 +820,7 @@ struct Example {
 
 ## AnimationController<sup>21+</sup>
 
-动画控制器对象。包含控制动画播放、恢复、暂停、停止和状态查询等方法。
+动画控制器对象。包含控制动画播放、停止、恢复、暂停和状态查询等方法。
 
 ### start<sup>21+</sup>
 

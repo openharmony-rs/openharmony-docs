@@ -115,6 +115,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{publ
 ## napi_call_function
 
 在C/C++侧对ArkTS函数进行调用。
+
 注意事项：napi_call_function传入的argv的长度必须大于等于argc声明的数量，并且每个元素都应初始化为nullptr。
 
 cpp部分代码

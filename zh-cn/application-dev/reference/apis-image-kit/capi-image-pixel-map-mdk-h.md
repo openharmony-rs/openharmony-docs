@@ -67,7 +67,7 @@
 
 ### PixelMap透明度类型
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -86,7 +86,7 @@ PixelMap 透明度类型的枚举。
 
 ### PixelMap编辑类型
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -103,7 +103,7 @@ PixelMap编辑类型的枚举。
 
 ### OH_PixelMap_AntiAliasingLevel
 
-```
+```c
 enum OH_PixelMap_AntiAliasingLevel
 ```
 
@@ -125,7 +125,7 @@ Pixelmap缩放时采用的缩放算法。
 
 ### OH_PixelMap_CreatePixelMap()
 
-```
+```c
 int32_t OH_PixelMap_CreatePixelMap(napi_env env, OhosPixelMapCreateOps info,void* buf, size_t len, napi_value* res)
 ```
 
@@ -158,7 +158,7 @@ int32_t OH_PixelMap_CreatePixelMap(napi_env env, OhosPixelMapCreateOps info,void
 
 ### OH_PixelMap_CreatePixelMapWithStride()
 
-```
+```c
 int32_t OH_PixelMap_CreatePixelMapWithStride(napi_env env, OhosPixelMapCreateOps info,void* buf, size_t len, int32_t rowStride, napi_value* res)
 ```
 
@@ -190,7 +190,7 @@ int32_t OH_PixelMap_CreatePixelMapWithStride(napi_env env, OhosPixelMapCreateOps
 
 ### OH_PixelMap_CreateAlphaPixelMap()
 
-```
+```c
 int32_t OH_PixelMap_CreateAlphaPixelMap(napi_env env, napi_value source, napi_value* alpha)
 ```
 
@@ -217,7 +217,7 @@ int32_t OH_PixelMap_CreateAlphaPixelMap(napi_env env, napi_value source, napi_va
 
 ### OH_PixelMap_InitNativePixelMap()
 
-```
+```c
 NativePixelMap* OH_PixelMap_InitNativePixelMap(napi_env env, napi_value source)
 ```
 
@@ -243,7 +243,7 @@ NativePixelMap* OH_PixelMap_InitNativePixelMap(napi_env env, napi_value source)
 
 ### OH_PixelMap_GetBytesNumberPerRow()
 
-```
+```c
 int32_t OH_PixelMap_GetBytesNumberPerRow(const NativePixelMap* native, int32_t* num)
 ```
 
@@ -269,7 +269,7 @@ int32_t OH_PixelMap_GetBytesNumberPerRow(const NativePixelMap* native, int32_t* 
 
 ### OH_PixelMap_GetIsEditable()
 
-```
+```c
 int32_t OH_PixelMap_GetIsEditable(const NativePixelMap* native, int32_t* editable)
 ```
 
@@ -295,7 +295,7 @@ int32_t OH_PixelMap_GetIsEditable(const NativePixelMap* native, int32_t* editabl
 
 ### OH_PixelMap_IsSupportAlpha()
 
-```
+```c
 int32_t OH_PixelMap_IsSupportAlpha(const NativePixelMap* native, int32_t* alpha)
 ```
 
@@ -321,7 +321,7 @@ int32_t OH_PixelMap_IsSupportAlpha(const NativePixelMap* native, int32_t* alpha)
 
 ### OH_PixelMap_SetAlphaAble()
 
-```
+```c
 int32_t OH_PixelMap_SetAlphaAble(const NativePixelMap* native, int32_t alpha)
 ```
 
@@ -347,7 +347,7 @@ int32_t OH_PixelMap_SetAlphaAble(const NativePixelMap* native, int32_t alpha)
 
 ### OH_PixelMap_GetDensity()
 
-```
+```c
 int32_t OH_PixelMap_GetDensity(const NativePixelMap* native, int32_t* density)
 ```
 
@@ -373,7 +373,7 @@ int32_t OH_PixelMap_GetDensity(const NativePixelMap* native, int32_t* density)
 
 ### OH_PixelMap_SetDensity()
 
-```
+```c
 int32_t OH_PixelMap_SetDensity(const NativePixelMap* native, int32_t density)
 ```
 
@@ -399,7 +399,7 @@ int32_t OH_PixelMap_SetDensity(const NativePixelMap* native, int32_t density)
 
 ### OH_PixelMap_SetOpacity()
 
-```
+```c
 int32_t OH_PixelMap_SetOpacity(const NativePixelMap* native, float opacity)
 ```
 
@@ -425,7 +425,7 @@ int32_t OH_PixelMap_SetOpacity(const NativePixelMap* native, float opacity)
 
 ### OH_PixelMap_Scale()
 
-```
+```c
 int32_t OH_PixelMap_Scale(const NativePixelMap* native, float x, float y)
 ```
 
@@ -454,7 +454,7 @@ int32_t OH_PixelMap_Scale(const NativePixelMap* native, float x, float y)
 
 ### OH_PixelMap_ScaleWithAntiAliasing()
 
-```
+```c
 int32_t OH_PixelMap_ScaleWithAntiAliasing(const NativePixelMap* native, float x, float y,OH_PixelMap_AntiAliasingLevel level)
 ```
 
@@ -484,7 +484,7 @@ int32_t OH_PixelMap_ScaleWithAntiAliasing(const NativePixelMap* native, float x,
 
 ### OH_PixelMap_Translate()
 
-```
+```c
 int32_t OH_PixelMap_Translate(const NativePixelMap* native, float x, float y)
 ```
 
@@ -513,7 +513,7 @@ int32_t OH_PixelMap_Translate(const NativePixelMap* native, float x, float y)
 
 ### OH_PixelMap_Rotate()
 
-```
+```c
 int32_t OH_PixelMap_Rotate(const NativePixelMap* native, float angle)
 ```
 
@@ -541,7 +541,7 @@ int32_t OH_PixelMap_Rotate(const NativePixelMap* native, float angle)
 
 ### OH_PixelMap_Flip()
 
-```
+```c
 int32_t OH_PixelMap_Flip(const NativePixelMap* native, int32_t x, int32_t y)
 ```
 
@@ -570,7 +570,7 @@ int32_t OH_PixelMap_Flip(const NativePixelMap* native, int32_t x, int32_t y)
 
 ### OH_PixelMap_Crop()
 
-```
+```c
 int32_t OH_PixelMap_Crop(const NativePixelMap* native, int32_t x, int32_t y, int32_t width, int32_t height)
 ```
 
@@ -601,7 +601,7 @@ int32_t OH_PixelMap_Crop(const NativePixelMap* native, int32_t x, int32_t y, int
 
 ### OH_PixelMap_GetImageInfo()
 
-```
+```c
 int32_t OH_PixelMap_GetImageInfo(const NativePixelMap* native, OhosPixelMapInfos *info)
 ```
 
@@ -629,7 +629,7 @@ int32_t OH_PixelMap_GetImageInfo(const NativePixelMap* native, OhosPixelMapInfos
 
 ### OH_PixelMap_AccessPixels()
 
-```
+```c
 int32_t OH_PixelMap_AccessPixels(const NativePixelMap* native, void** addr)
 ```
 
@@ -655,7 +655,7 @@ int32_t OH_PixelMap_AccessPixels(const NativePixelMap* native, void** addr)
 
 ### OH_PixelMap_UnAccessPixels()
 
-```
+```c
 int32_t OH_PixelMap_UnAccessPixels(const NativePixelMap* native)
 ```
 

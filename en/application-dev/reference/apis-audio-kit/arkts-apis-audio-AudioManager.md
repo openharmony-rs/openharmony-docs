@@ -162,6 +162,8 @@ getVolumeManager(): AudioVolumeManager
 
 Obtains an AudioVolumeManager instance.
 
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
 **Return value**
@@ -417,9 +419,9 @@ Sets the volume for a stream. This API uses an asynchronous callback to return t
 
 > **NOTE**
 > 
-> This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
+> - This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 > 
-> Applications cannot directly adjust the system volume. They can use the system volume panel to control the volume. For details about the samples and introduction, see [AVVolumePanel Reference](ohos-multimedia-avvolumepanel.md).
+> - Applications cannot directly adjust the system volume. They can use the system volume panel to control the volume. For details about the examples and descriptions, see [Volume Panel](ohos-multimedia-avvolumepanel.md) in the API reference.
 
 **Required permissions**: ohos.permission.ACCESS_NOTIFICATION_POLICY
 
@@ -457,9 +459,9 @@ Sets the volume for a stream. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
+> - This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 >
-> Applications cannot directly adjust the system volume. They can use the system volume panel to control the volume. For details about the samples and introduction, see [AVVolumePanel Reference](ohos-multimedia-avvolumepanel.md).
+> - Applications cannot directly adjust the system volume. They can use the system volume panel to control the volume. For details about the examples and descriptions, see [Volume Panel](ohos-multimedia-avvolumepanel.md) in the API reference.
 
 **Required permissions**: ohos.permission.ACCESS_NOTIFICATION_POLICY
 
@@ -1419,7 +1421,7 @@ on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback\<InterruptAc
 
 Subscribes to the audio interruption event, which is triggered when the audio focus is changed. This API uses an asynchronous callback to return the result.
 
-Same as [on('audioInterrupt')](arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9), this API is used to listen for focus is changed. However, this API is used in scenarios without audio streams (no AudioRenderer instance is created), such as frequency modulation (FM) and voice wakeup.
+Same as [on('audioInterrupt')](arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9), this API is used to listen for focus changes. However, this API is used in scenarios without audio streams (no AudioRenderer instance is created), such as frequency modulation (FM) and voice wakeup.
 
 > **NOTE**
 >

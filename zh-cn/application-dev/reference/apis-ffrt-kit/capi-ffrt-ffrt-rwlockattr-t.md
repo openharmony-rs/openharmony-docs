@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 
 ```c
@@ -28,6 +28,6 @@ FFRT读写锁属性结构。
 
 | 名称 | 描述 |
 | -- | -- |
-| long storage | FFRT读写锁属性所占空间 |
+| long storage | FFRT读写锁属性占用空间 |
 
 

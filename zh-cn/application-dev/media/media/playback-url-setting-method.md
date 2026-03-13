@@ -32,7 +32,7 @@
  this.avPlayer.url = url;
 ```
 
-**情况二：HLS媒体资源播放(点播/直播)**
+**情况二：HLS媒体资源播放（点播/直播）**
 ```ts
  import { media } from '@kit.MediaKit';
  // 类成员定义avPlayer。

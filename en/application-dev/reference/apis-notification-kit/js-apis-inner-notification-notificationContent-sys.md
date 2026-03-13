@@ -93,6 +93,8 @@ Enumerates the statuses of the common live view.
 | LIVE_VIEW_INCREMENTAL_UPDATE | 1  | The live view is updated in incremental mode.|
 | LIVE_VIEW_END                | 2  | The live view is ended.    |
 | LIVE_VIEW_FULL_UPDATE        | 3  | The live view is updated in full mode.|
+| LIVE_VIEW_PENDING_CREATE<sup>23+</sup>     | 4  | The live view is created by condition.<br>**Model restriction**: This API can be used only in the stage model.|
+| LIVE_VIEW_PENDING_END<sup>23+</sup>        | 6  | The live view is terminated by condition.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## NotificationIconButton<sup>18+</sup>
 
@@ -112,6 +114,8 @@ Describes the information of a system notification button.
 ## IconType<sup>18+</sup>
 
 type IconType = Resource | image.PixelMap
+
+Describes the icon types.
 
 **System capability**: SystemCapability.Notification.Notification
 

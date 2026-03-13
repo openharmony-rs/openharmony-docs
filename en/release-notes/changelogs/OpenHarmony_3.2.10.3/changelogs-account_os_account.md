@@ -1,9 +1,9 @@
 # Account Subsystem Changelog
 
-## cl.account_os_account.1 createOsAccountForDomain Error Code Change
+## cl.account_os_account.1 createOsAccountForDomain Error Code Is Changed
 
 Changed the error code returned when the domain account created by **createOsAccountForDomain()** already exists from **12300001** to **12300004**.
-Changed the error information from "common system error" to "The account already exists".
+Changed the error message from "common system error" to "The account already exists".
 
 **Change Impact**
 
@@ -34,7 +34,7 @@ try {
 }
 ```
 
-## cl.account_os_account.2 Application Account getAllAccounts() Permission Change 
+## cl.account_os_account.2 Application Account getAllAccounts() Permission Is Changed
 
 Removed the **ohos.permission.GET_ALL_APP_ACCOUNTS** permission that is originally required for an application to call **getAllAccounts()** to obtain accessible accounts.
 
@@ -66,9 +66,9 @@ try {
 }
 ``` 
 
-## cl.account_os_account.3 Application Account getAccountsByOwner() Permission Change
+## cl.account_os_account.3 Application Account getAccountsByOwner() Permission Is Changed
 
-Removed the **ohos.permission.GET_ALL_APP_ACCOUNTS** permission that is originally required for an application to call **getAccountsByOwner()** to obtain the accessible accounts based on the account owner .
+Removed the **ohos.permission.GET_ALL_APP_ACCOUNTS** permission that is originally required for an application to call **getAccountsByOwner()** to obtain the accessible accounts based on the account owner.
 
 **Change Impact**
 

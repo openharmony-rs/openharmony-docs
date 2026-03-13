@@ -10,6 +10,8 @@
 
 为网络搜索模块定义C接口。
 
+**引用文件：** <telephony/core_service/telephony_radio.h>
+
 **库：** libtelephony_radio.so
 
 **系统能力：** SystemCapability.Telephony.CoreService
@@ -31,7 +33,7 @@
 
 ### OH_Telephony_GetNetworkState()
 
-```
+```c
 Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state)
 ```
 
@@ -60,7 +62,7 @@ Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state
 
 ### OH_Telephony_GetNetworkStateForSlot()
 
-```
+```c
 Telephony_RadioResult OH_Telephony_GetNetworkStateForSlot(int32_t slotId, Telephony_NetworkState *state)
 ```
 

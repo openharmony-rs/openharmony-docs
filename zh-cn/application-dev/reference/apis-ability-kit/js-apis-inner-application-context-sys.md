@@ -33,7 +33,7 @@ createBundleContext(bundleName: string): Context
 >
 > stage模型多module的情况下可能发生资源id冲突的情况，建议使用[application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext12)替代。
 >
-> 从 API Version 12 开始废弃，建议使用[application.createBundleContext](./js-apis-app-ability-application-sys.md#applicationcreatebundlecontext12)替代。
+> 从API version 9 开始支持，从API version 12 开始废弃，建议使用[application.createBundleContext](./js-apis-app-ability-application-sys.md#applicationcreatebundlecontext12)替代。
 
 **系统接口**：此接口为系统接口。
 
@@ -59,6 +59,8 @@ createBundleContext(bundleName: string): Context
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
@@ -88,7 +90,7 @@ createModuleContext(bundleName: string, moduleName: string): Context
 
 > **说明：**
 >
-> 从 API Version 12 开始废弃，建议使用[application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext12)替代。
+> 从API version 9 开始支持，从API version 12 开始废弃，建议使用[application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext12)替代。
 
 **系统接口**：此接口为系统接口。
 

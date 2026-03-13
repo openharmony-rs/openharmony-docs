@@ -1,18 +1,18 @@
 # Print_PrintDocCallback
-<!--Kit: Basic Services Kit-->	
-<!--Subsystem: Print-->	
-<!--Owner: @guoshengbang-->	
-<!--Designer: @Q-haosu-->	
-<!--Tester: @Q-haosu-->	
-<!--Adviser: @fang-jinxu-->
+ <!--Kit: Basic Services Kit-->   
+ <!--Subsystem: Print-->  
+ <!--Owner: @guoshengbang-->  
+ <!--Designer: @Q-haosu-->    
+ <!--Tester: @Q-haosu-->  
+ <!--Adviser: @fang-jinxu-->
 
-```
+```c
 typedef struct {...} Print_PrintDocCallback
 ```
 
 ## Overview
 
-Defines the print job callback struct.
+Defines a struct for the print job state callback.
 
 **Since**: 13
 
@@ -24,7 +24,7 @@ Defines the print job callback struct.
 
 ### Member Variables
 
-| Name| Description|
-| -- | -- |
+| Name                                                        | Description              |
+| ------------------------------------------------------------ | ------------------ |
 | [Print_OnStartLayoutWrite](capi-ohprint-h.md#print_onstartlayoutwrite) startLayoutWriteCb | Callback to be invoked when the file write-back starts.|
 | [Print_OnJobStateChanged](capi-ohprint-h.md#print_onjobstatechanged) jobStateChangedCb | Callback to be invoked when the print job state changes.|

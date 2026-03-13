@@ -19,10 +19,10 @@ Linear containers optimize data access speed, enabling operations such as adding
 | ArrayList | Dynamic array, which occupies a contiguous block of memory. This type is recommended for frequent element access.|
 | List | Singly linked list, where memory can be non-contiguous. This type is recommended for frequent insertions and deletions when using a singly linked list.|
 | LinkedList | Doubly linked list, where memory can be non-contiguous. This type is recommended for frequent insertions and deletions when using a doubly linked list.|
-| Deque | Double-ended queue, which allows element operations at both ends and occupies a contiguous block of memory. This type is recommended for frequent access and manipulation of head and tail elements.
-| Queue | Queue, which inserts elements at the tail and removes them from the head, and occupies a contiguous block of memory. This type is suitable for First In First Out (FIFO) scenarios.
+| Deque | Double-ended queue, which allows element operations at both ends and occupies a contiguous block of memory. This type is recommended for frequent access and manipulation of head and tail elements.|
+| Queue | Queue, which inserts elements at the tail and removes them from the head, and occupies a contiguous block of memory. This type is suitable for First In First Out (FIFO) scenarios.|
 | Stack | Stack, which allows insertions and deletions only at one end, and occupies a contiguous block of memory. It is applicable to first-in-last-out scenarios.|
-| Vector | Dynamic array, which occupies a contiguous block of memory. This type is no longer maintained; use ArrayList instead.
+| Vector | Dynamic array, which occupies a contiguous block of memory. This type is no longer maintained; use ArrayList instead.|
 
 ## ArrayList
 
@@ -98,7 +98,7 @@ You can use the **get**/**set** APIs to modify the stored elements. Common APIs 
 | Modifying elements| set(index:number, element: T) | Modifies the element at the specified index.|
 | Modifying elements| list[index] = element | Modifies the element at the specified index. If the index is out of range (index < 0 or index >= list.length) or the array is sparse (there are unassigned indexes), undefined behavior may occur.|
 | Removing elements| remove(element: T) | Removes the first matching element.|
-| Removing elements| removeByIndex(index:number) | Deletes the element at the specified index.|
+| Removing elements| removeByIndex(index:number) | Removes the element at the specified index.|
 
 ## Deque
 
@@ -204,51 +204,48 @@ Common APIs for adding, removing, modifying, and accessing elements in Vector ar
 
 This section provides usage examples for common linear containers, including ArrayList, Deque, Stack, and List, covering importing modules, adding elements, accessing elements, and modifying elements. The example code is as follows:
 
+<!-- @[linear_container](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/ArkTsContainerLibrary/LinearContainers/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-// ArrayList
-import { ArrayList } from '@kit.ArkTS'; // Import the ArrayList module.
+``` TypeScript
+import { ArrayList, Deque, Stack, List } from '@kit.ArkTS'; // Import the ArrayList, Deque, Stack, and List modules.
 
-let arrayList1: ArrayList<string> = new ArrayList();
-arrayList1.add('a'); // Add an element with the value 'a'.
-let arrayList2: ArrayList<number> = new ArrayList();
-arrayList2.add(1); // Add an element with the value 1.
-console.info(`result: ${arrayList2[0]}`); // Access the element at index 0. Output: result: 1
-arrayList1[0] = 'one'; // Modify the element at index 0.
-console.info(`result: ${arrayList1[0]}`); // Output: result: one
-
-// Deque
-import { Deque } from '@kit.ArkTS'; // Import the Deque module.
-
-let deque1: Deque<string> = new Deque();
-deque1.insertFront('a'); // Add an element with the value 'a' to the header.
-let deque2: Deque<number> = new Deque();
-deque2.insertFront(1); // Add an element with the value 1 to the header.
-console.info(`result: ${deque2.getFirst()}`); // Access the first element. Output: result: 1
-deque1.insertEnd('one'); // Add an element with the value 'one'.
-console.info(`result: ${deque1.getLast()}`); // Access the last element. Output: result: one
-
-// Stack
-import { Stack } from '@kit.ArkTS'; // Import the Stack module.
-
-let stack1: Stack<string> = new Stack();
-stack1.push('a'); // Add an element with the value 'a' to the Stack.
-let stack2: Stack<number> = new Stack();
-stack2.push(1); // Add an element with the value 1 to the Stack.
-console.info(`result: ${stack1.peek()}`); // Access the top element of the Stack. Output: result: a
-console.info(`result: ${stack2.pop()}`); // Remove and return the top element. Output: result: 1
-console.info(`result: ${stack2.length}`); // Output: result: 0
-
-// List
-import { List } from '@kit.ArkTS'; // Import the List module.
-
-let list1: List<string> = new List();
-list1.add('a'); // Add an element with the value 'a'.
-let list2: List<number> = new List();
-list2.insert(0, 0); // Insert an element with the value 0 at index 0.
-let list3: List<Array<number>> = new List();
-let b2 = [1, 2, 3];
-list3.add(b2); // Add an element of the Array type.
-console.info(`result: ${list1[0]}`); // Access the element at index 0. Output: result: a
-console.info(`result: ${list3.get(0)}`); // Access the element at index 0. Output: result: 1,2,3
+// ...
+  let arrayList1: ArrayList<string> = new ArrayList();
+  arrayList1.add('a'); // Add an element with the value 'a'.
+  let arrayList2: ArrayList<number> = new ArrayList();
+  arrayList2.add(1); // Add an element with the value 1.
+  console.info(`result: ${arrayList2[0]}`); // Access the element at index 0. Output: result: 1
+  // ...
+  arrayList1[0] = 'one'; // Modify the element at index 0.
+  console.info(`result: ${arrayList1[0]}`); // Output: result: one
+  // ...
+  let deque1: Deque<string> = new Deque();
+  deque1.insertFront('a'); // Add an element with the value 'a' to the header.
+  let deque2: Deque<number> = new Deque();
+  deque2.insertFront(1); // Add an element with the value 1 to the header.
+  console.info(`result: ${deque2.getFirst()}`); // Access the first element. Output: result: 1
+  // ...
+  deque1.insertEnd('one'); // Add an element with the value 'one'.
+  console.info(`result: ${deque1.getLast()}`); // Access the last element. Output: result: one
+  // ...
+  let stack1: Stack<string> = new Stack();
+  stack1.push('a'); // Add an element with the value 'a' to the Stack.
+  let stack2: Stack<number> = new Stack();
+  stack2.push(1); // Add an element with the value 1 to the Stack.
+  console.info(`result: ${stack1.peek()}`); // Access the top element of the Stack. Output: result: a
+  // ...
+  console.info(`result: ${stack2.pop()}`); // Remove and return the top element. Output: result: 1
+  // ...
+  console.info(`result: ${stack2.length}`); // Output: result: 0
+  // ...
+  let list1: List<string> = new List();
+  list1.add('a'); // Add an element with the value 'a'.
+  let list2: List<number> = new List();
+  list2.insert(0, 0); // Insert an element with the value 0 at index 0.
+  let list3: List<Array<number>> = new List();
+  let b2 = [1, 2, 3];
+  list3.add(b2); // Add an element of the Array type.
+  console.info(`result: ${list1[0]}`); // Access the element at index 0. Output: result: a
+  // ...
+  console.info(`result: ${list3.get(0)}`); // Access the element at index 0. Output: result: 1,2,3
 ```

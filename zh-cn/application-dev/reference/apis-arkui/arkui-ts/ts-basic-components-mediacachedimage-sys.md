@@ -27,8 +27,8 @@ MediaCachedImage(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource
 
 **参数：** 
 
-| 参数名 | 类型                                                     | 必填 | 说明                                                     |	
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |	
+| 参数名 | 类型                                                     | 必填 | 说明                                                     |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | src    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)&nbsp;\|&nbsp;[ASTCResource](#astcresource12) | 是   | 图片的数据源，支持媒体库资源，PixelMap、ResourceStr、DrawableDescriptor的引用方式可参考Image的[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)，ASTCResource为纹理资源，只支持系统应用。 |
 
 ## 属性

@@ -20,6 +20,7 @@
     - [Functions](arkts-apis-data-relationalStore-f.md)
     - [Interface (RdbStore)](arkts-apis-data-relationalStore-RdbStore.md)
     - [Interface (ResultSet)](arkts-apis-data-relationalStore-ResultSet.md)
+    - [Class (LiteResultSet)](arkts-apis-data-relationalStore-LiteResultSet.md)
     - [Interface (Transaction)](arkts-apis-data-relationalStore-Transaction.md)
     - [Interfaces (其他)](arkts-apis-data-relationalStore-i.md)
     - [Class (RdbPredicates)](arkts-apis-data-relationalStore-RdbPredicates.md)
@@ -85,6 +86,7 @@
   - 结构体<!--arkdata-struct-->
     - [OH_Cursor](capi-rdb-oh-cursor.md)
     - [OH_Predicates](capi-rdb-oh-predicates.md)
+    - [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)
     - [OH_VObject](capi-rdb-oh-vobject.md)
     - [OH_VBucket](capi-rdb-oh-vbucket.md)
     - [OH_Rdb_Config](capi-rdb-oh-rdb-config.md)

@@ -424,9 +424,9 @@ std::string sourcecodestr = R"JS(
     FunctionNameInJSContext() // The call is successful.
     consolelog(FunctionNameInJSContext.name) // Print "NativeFunction."
     try {
-    	NativeFunction() // If the function cannot be found, throw an exception.
+        NativeFunction() // If the function cannot be found, throw an exception.
     } catch (e) {
-    	consolelog(e.message)
+        consolelog(e.message)
     }
 )JS";
 ```

@@ -45,9 +45,11 @@
 @Component
 struct Index {
   @State @Watch('onChange') num: number = 0; // @Watch入参为函数名
+
   onChange() {
     console.info(`num change to ${this.num}`);
   }
+
   build() {
     Column() {
       Text(`num is: ${this.num}`)
@@ -63,7 +65,9 @@ struct Index {
 
 Monitor: MonitorDecorator
 
-@Monitor装饰器用于状态管理V2中对状态变量变化的监听。@Monitor相关内容的详细使用方式见[@Monitor装饰器：状态变量修改监听](../../../ui/state-management/arkts-new-monitor.md)。
+@Monitor装饰器用于状态管理V2中对状态变量变化的监听。@Monitor相关内容的详细使用方式见[@Monitor装饰器：状态变量修改异步监听](../../../ui/state-management/arkts-new-monitor.md)。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -74,6 +78,8 @@ Monitor: MonitorDecorator
 type MonitorDecorator = (value: string, ...args: string[]) => MethodDecorator
 
 @Monitor装饰器的实际类型。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -100,21 +106,27 @@ class Info {
   @Trace name: string = 'Tom';
   @Trace age: number = 25;
   @Trace height: number = 175;
-  @Monitor('name') // 监听一个变量
-  onNameChange(monitor: IMonitor) {
+
+  // 监听一个变量
+  @Monitor('name')
+  onNameChange() {
     console.info(`name change to ${this.name}`);
   }
-  @Monitor('age', 'height') // 监听多个变量
+
+  // 监听多个变量
+  @Monitor('age','height')
   onRecordChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
       console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
     })
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local info: Info = new Info();
+
   build() {
     Column() {
       Text(`info.name: ${this.info.name}`)
@@ -137,6 +149,8 @@ struct Index {
 
 ### 属性
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -150,6 +164,8 @@ struct Index {
 value\<T\>(path?: string): IMonitorValue\<T\> | undefined
 
 获取指定path的变化信息。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -175,12 +191,16 @@ class Info {
   @Trace name: string = 'Tom';
   @Trace age: number = 25;
   @Trace height: number = 175;
-  @Monitor('name') // 监听一个变量
+
+  // 监听一个变量
+  @Monitor('name')
   onNameChange(monitor: IMonitor) {
     // 未指定value的入参时，默认使用dirty中的第一个路径作为入参
     console.info(`path: ${monitor.value()?.path} change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
-  @Monitor('age', 'height') // 监听多个变量
+
+  // 监听多个变量
+  @Monitor('age','height')
   onRecordChange(monitor: IMonitor) {
     // 指定value的入参时，将返回入参路径path对应的变量变化值信息
     monitor.dirty.forEach((path: string) => {
@@ -188,10 +208,12 @@ class Info {
     })
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local info: Info = new Info();
+
   build() {
     Column() {
       Text(`info.name: ${this.info.name}`)
@@ -213,6 +235,8 @@ struct Index {
 @Monitor监听变量变化的具体信息，通过IMonitor的value接口获取。T为变量类型。
 
 ### 属性
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -245,6 +269,78 @@ struct Index {
       Text(`info.name: ${this.info.name}`)
         .onClick(() => {
           this.info.name = 'Bob'; // 输出日志：path: name change from Tom to Bob
+        })
+    }
+  }
+}
+```
+
+## SyncMonitor<sup>23+</sup>
+
+SyncMonitor: MonitorDecorator
+
+@SyncMonitor装饰器用于状态管理V2中对状态变量变化的监听。@SyncMonitor相关内容的详细使用方式见[@SyncMonitor装饰器：状态变量修改同步监听](../../../ui/state-management/arkts-new-syncmonitor.md)。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称        | 类型             | 说明                           |
+| ----------- | ---------------- | ------------------------------ |
+| SyncMonitor | [MonitorDecorator](#monitordecorator12) | 属性装饰器，监听状态变量的修改。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[状态管理错误码](../errorcode-stateManagement.md#130001-addmonitorclearmonitor非法路径)。
+
+| 错误码ID | 错误信息             |
+| -------- | -------------------- |
+| 130001   | The path is invalid. |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@ObservedV2
+class Info {
+  @Trace name: string = 'Tom';
+  @Trace age: number = 25;
+  @Trace height: number = 175;
+
+  // 监听一个变量
+  @SyncMonitor('name')
+  onNameChange() {
+    hilog.info(0xFF00, 'testTag', '%{public}s', `name change to ${this.name}`);
+  }
+
+  // 监听多个变量
+  @SyncMonitor('age','height')
+  onRecordChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      hilog.info(0xFF00, 'testTag', '%{public}s',
+        `${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
+    })
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local info: Info = new Info();
+
+  build() {
+    Column() {
+      Text(`info.name: ${this.info.name}`)
+        .onClick(() => {
+          this.info.name = 'Bob'; // 输出日志：name change to Bob
+        })
+      Text(`info.age: ${this.info.age}, info.height: ${this.info.height}`)
+        .onClick(() => {
+          this.info.age++; // 输出日志：age change from 25 to 26
+          this.info.height++; // 输出日志：height change from 175 to 176
         })
     }
   }

@@ -32,7 +32,7 @@
 
 ### OH_AVImageGenerator_QueryOptions
 
-```
+```c
 enum OH_AVImageGenerator_QueryOptions
 ```
 

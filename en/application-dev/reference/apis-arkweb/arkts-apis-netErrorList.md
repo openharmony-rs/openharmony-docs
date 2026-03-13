@@ -158,7 +158,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_UNSAFE_PORT | -312 | The port is unsafe.|
 |ERR_INVALID_RESPONSE | -320 | The response is invalid.|
 |ERR_INVALID_CHUNKED_ENCODING | -321 | The chunked encoding is invalid.|
-|ERR_METHOD_UNSUPPORTED | -322 |	The method is not supported.|
+|ERR_METHOD_UNSUPPORTED | -322 | The method is not supported.|
 |ERR_UNEXPECTED_PROXY_AUTH | -323 | The proxy authentication is unexpected.|
 |ERR_EMPTY_RESPONSE | -324 | The response is empty.|
 |ERR_RESPONSE_HEADERS_TOO_BIG | -325 | The value of response headers is too large.|
@@ -167,7 +167,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_MALFORMED_IDENTITY | -329 | The identity used for authentication is invalid.|
 |ERR_CONTENT_DECODING_FAILED | -330 | The response content failed to be decoded.|
 |ERR_NETWORK_IO_SUSPENDED | -331 | The operation failed because all network I/Os are suspended.|
-|ERR_SYN_REPLY_NOT_RECEIVED | -332 |	The **FLIP** data is received when **SYN_REPLY** is not received on the stream.|
+|ERR_SYN_REPLY_NOT_RECEIVED | -332 | The **FLIP** data is received when **SYN_REPLY** is not received on the stream.|
 |ERR_ENCODING_CONVERSION_FAILED | -333 | The response failed to be converted to the target encoding.|
 |ERR_UNRECOGNIZED_FTP_DIRECTORY_LISTING_FORMAT | -334 | The format of the FTP directory list cannot be recognized.|
 |ERR_NO_SUPPORTED_PROXIES | -336 | There is no supported proxy.|
@@ -176,7 +176,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_UNSUPPORTED_AUTH_SCHEME | -339 | The authentication scheme is not supported.|
 |ERR_ENCODING_DETECTION_FAILED | -340 | The encoding detection failed.|
 |ERR_MISSING_AUTH_CREDENTIALS | -341 | The authentication credentials are missing.|
-|ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS | -342 |	The security library status is unexpected.|
+|ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS | -342 | The security library status is unexpected.|
 |ERR_MISCONFIGURED_AUTH_ENVIRONMENT | -343 | The authentication environment is incorrectly configured.|
 |ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS | -344 | The security library status is undocumented.|
 |ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN | -345 | The response body is too big.|
@@ -215,7 +215,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_TOO_MANY_ACCEPT_CH_RESTARTS | -382 | The **ACCEPT_CH_RESTARTS** has been triggered too many times.|
 | | -383 | In the same request, the IP address space of the remote endpoint is different from the previous one. Cache entries for any affected requests should be marked as invalid.|
 |ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY | -384 | The cached IP address space of the remote endpoint is blocked by a local network access policy.|
-|ERR_CACHE_MISS | -400 |	There is no requested entry in the cache.|
+|ERR_CACHE_MISS | -400 | There is no requested entry in the cache.|
 |ERR_CACHE_READ_FAILURE | -401 | The data cannot be read from the disk cache.|
 |ERR_CACHE_WRITE_FAILURE | -402 | The data cannot be written to the disk cache.|
 |ERR_CACHE_OPERATION_UNSUPPORTED | -403 | The entry does not support this operation.|
@@ -263,7 +263,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_DNS_TIMED_OUT | -803 | The DNS transaction times out.|
 |ERR_DNS_CACHE_MISS | -804 | The entry is not found in the cache or other local sources.|
 |ERR_DNS_SEARCH_EMPTY | -805 | The suffix search list rule prevents the resolution of a given host name.|
-|ERR_DNS_SORT_ERROR | -806 |	Addresses are not sorted according to RFC 3484.|
+|ERR_DNS_SORT_ERROR | -806 | Addresses are not sorted according to RFC 3484.|
 |ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED | -808 | The host name of the DNS-over-HTTPS server cannot be resolved.|
 |ERR_DNS_NAME_HTTPS_ONLY | -809 | DNS has identified that the request is prohibited due to insecure connections (HTTP/WS). The application should handle this error like HTTP redirection, redirecting the connection to secure HTTPS or WSS.|
 |ERR_DNS_REQUEST_CANCELED | -810 | All DNS requests related to this task are canceled.|

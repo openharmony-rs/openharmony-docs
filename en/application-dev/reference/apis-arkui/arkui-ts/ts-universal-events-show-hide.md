@@ -1,7 +1,7 @@
 # Show/Hide Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -16,13 +16,13 @@ The show/hide event is triggered when a component is mounted or unmounted from t
 
 onAttach(callback: Callback\<void>): T
 
-Triggered when this component is mounted to the component tree.
+Triggered when this component is mounted to the component tree. Due to the following limitations, it is recommended that you use [onAppear](#onappear) instead of this callback.
 
 > **NOTE**
 >
-> This callback is triggered before the component layout and rendering process.
+> - This callback is triggered before the component layout and rendering process.
 >
-> Modifying the component tree within the callback is prohibited, including initiating animations or altering the component structure through conditional statements like **if-else**.
+> - Modifying the component tree within the callback is prohibited, including initiating animations or altering the component structure through conditional statements like **if-else**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -45,7 +45,7 @@ Triggered when this component is mounted to the component tree.
 
 onDetach(callback: Callback\<void>): T
 
-Triggered when this component is unmounted from the component tree.
+Triggered when this component is unmounted from the component tree. You are advised to use [onDisAppear](#ondisappear) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

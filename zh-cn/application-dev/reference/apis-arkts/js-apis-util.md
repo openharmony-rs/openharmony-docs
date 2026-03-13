@@ -121,7 +121,7 @@ Formatted object using %o: { name: 'John',
   address:
   { city: 'New York',
     country: 'USA' } }
-*/
+ */
 const percentage = 80;
 let arg = 'homework';
 formattedString = util.format('John finished %d%% of the %s', percentage, arg);
@@ -560,6 +560,89 @@ console.info(stack);
 // 输出当前主线程的栈追踪信息。
 ```
 
+## ArkTSVM<sup>23+</sup>
+
+ArkTSVM是一个类，用于给开发者提供虚拟机的维测能力。
+
+### setMultithreadingDetectionEnabled<sup>23+</sup>
+
+static setMultithreadingDetectionEnabled(enabled: boolean): void
+
+若enabled为true则开启，为false则关闭。开启多线程检测，多线程问题的cppcrash文件里会包含多线程信息。关闭多线程检测，则多线程问题的cppcrash文件里不会包含多线程信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| enabled  | boolean  | 是       | 控制多线程检测开关的开启或关闭 。true表示开启，false表示关闭。|
+
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+// 打开多线程检测开关
+util.ArkTSVM.setMultithreadingDetectionEnabled(true);
+// 关闭多线程检测开关
+util.ArkTSVM.setMultithreadingDetectionEnabled(false);
+```
+
+### getAllVMHeapMemoryInfo<sup>24+</sup>
+
+static getAllVMHeapMemoryInfo(): Promise<HeapMemoryInfo[]>
+
+获取所有VM线程的堆内存信息，包括线程ID、线程名称、堆类型和堆对象大小。使用Promise异步回调。
+
+> **说明：**
+>
+> 此接口在执行时会暂停所有VM线程运行以获取内存信息。由于需要等待所有VM线程暂停，高负载场景下调用此接口的耗时可能较高。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise<[HeapMemoryInfo](js-apis-util.md#heapmemoryinfo24)[]> | Promise对象，解析为HeapMemoryInfo对象数组，每个对象包含线程ID、线程名称、堆类型和堆对象大小。此方法可以获取本地堆和共享堆的内存信息。|
+
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+util.ArkTSVM.getAllVMHeapMemoryInfo().then(
+  result => {
+    result.forEach(info => {
+      console.info(info.threadId?.toString());
+      console.info(info.threadName);
+      console.info(info.heapType);
+      console.info(info.heapObjectSize.toString());
+    })
+  }
+);
+```
+
+## HeapMemoryInfo<sup>24+</sup>
+
+描述ArkTS-VM本地堆或当前进程的共享堆内存信息，包含线程标识和堆内存大小等详细数据。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| threadId | number | 否 | 是 | 线程ID。如果此内存信息描述的是ArkTS-VM本地堆，该值为表示运行线程ID的整数；如果此内存信息描述的是共享堆，该值为**undefined**。|
+| threadName | string | 否 | 是 | 线程名称。如果此内存信息描述的是ArkTS-VM本地堆，该值为表示运行线程名称的字符串；如果此内存信息描述的是共享堆，该值为**undefined**。|
+| heapType | string | 否 | 否 | 堆类型。目前有两种取值，"local"表示堆类型为本地堆，"shared"表示堆类型为共享堆。|
+| heapObjectSize | number | 否 | 否 | 堆对象大小，单位为KB（向上取整的整数）。|
+
 ## TextDecoderOptions<sup>11+</sup>
 
 解码相关选项参数，包含两个属性fatal和ignoreBOM。
@@ -641,7 +724,7 @@ class MyClass {
   static data: string = 'data000';
   static bar(arg: string): string {
     console.info('bar arg is ' + arg);
-	return MyClass.data;
+    return MyClass.data;
   }
 }
 
@@ -889,7 +972,7 @@ static create(encoding?: string, options?: TextDecoderOptions): TextDecoder
 | 参数名   | 类型   | 必填 | 说明                                             |
 | -------- | ------ | ---- | ------------------------------------------------ |
 | encoding | string | 否   | 编码格式，默认值是'utf-8'。                      |
-| options  | [TextDecoderOptions](#textdecoderoptions11) | 否   | 解码相关选项参数，存在两个属性fatal和ignoreBOM。|
+| options  | [TextDecoderOptions](#textdecoderoptions11) | 否   | 解码相关选项参数，存在两个属性fatal和ignoreBOM。此参数不填时，对应各属性取其默认值。 |
 
 **返回值：**
 
@@ -924,6 +1007,10 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 
 将输入参数解码后输出对应文本。
 
+> **说明：**
+>
+> 该接口会正常解析值为\0的字节，将其转换为Unicode字符\u0000（空字符），不会导致解码中断或错误。
+
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -952,6 +1039,7 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 **示例：**
 
 ```ts
+// 当解析不含有\0的字节的示例代码
 let textDecoderOptions: util.TextDecoderOptions = {
   fatal: false,
   ignoreBOM : true
@@ -964,6 +1052,25 @@ let uint8 = new Uint8Array([0xEF, 0xBB, 0xBF, 0x61, 0x62, 0x63]);
 let retStr = textDecoder.decodeToString(uint8, decodeToStringOptions);
 console.info("retStr = " + retStr);
 // 输出结果：retStr = abc
+```
+
+```ts
+// 当解析含有\0的字节的示例代码
+let textDecoderOptions: util.TextDecoderOptions = {
+  fatal: false,
+  ignoreBOM : true
+}
+let decodeToStringOptions: util.DecodeToStringOptions = {
+  stream: false
+}
+let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+let uint8 = new Uint8Array([97, 98, 0, 99]);
+let retStr = textDecoder.decodeToString(uint8, decodeToStringOptions);
+console.info("retStr = " + retStr);
+// 输出结果：retStr = abc
+let retJson = JSON.stringify(retStr)
+console.info("retJson = " + retJson);
+// 输出结果：retJson = ab/u0000c
 ```
 
 ### decodeWithStream<sup>(deprecated)</sup>
@@ -1124,6 +1231,7 @@ console.info("retStr = " + retStr);
 ## TextEncoder
 
 TextEncoder将字符串编码为字节数组，支持多种编码格式。
+
 在使用TextEncoder进行编码时，需要注意不同编码格式下字符所占的字节数不同。务必明确指定编码格式，以确保编码结果正确。
 
 ### 属性
@@ -2441,6 +2549,10 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 
 删除值后执行后续操作，这些操作由开发者自行实现。本接口会在删除操作时被调用，如[get<sup>9+</sup>](#get9)、[put<sup>9+</sup>](#put9)、[remove<sup>9+</sup>](#remove9)、[clear<sup>9+</sup>](#clear9)、[updateCapacity<sup>9+</sup>](#updatecapacity9)接口。
 
+> **说明：**
+>
+> 若此回调方法在[clear<sup>9+</sup>](#clear9)、[updateCapacity<sup>9+</sup>](#updatecapacity9)接口调用之后触发执行，传入的key和value参数类型为MapIterator，可参照示例二进行后续操作。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -2462,7 +2574,7 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
-**示例：**
+**示例一：**
 
 ```ts
 class ChildLRUCache<K, V> extends util.LRUCache<K, V> {
@@ -2485,6 +2597,61 @@ let lru = new ChildLRUCache<number, number>(2);
 lru.put(1, 1);
 lru.put(2, 2);
 lru.put(3, 3);
+```
+
+**示例二：**
+
+```ts
+class TestClass {
+  str:string = '';
+  constructor(input: string) {
+    this.str = input;
+  }
+}
+
+class ChildLRUCache extends util.LRUCache<string, TestClass> {
+  constructor(capacity?: number) {
+    super(capacity);
+  }
+
+  afterRemoval(isEvict: boolean, key: string, value: TestClass, newValue: TestClass): void {
+    if(value.toString().indexOf('[object Map Iterator]') >= 0) {
+      console.info('调用clear进入');
+      console.info('isEvict = ' + isEvict);
+      const keysIterator = (key as ESObject as IterableIterator<string>);
+      const valuesIterator = (value as ESObject as IterableIterator<TestClass>);
+
+      let keyEntry = keysIterator.next();
+      let valueEntry = valuesIterator.next();
+      while (!keyEntry.done && !valueEntry.done) {
+        console.info(`key = ${keyEntry.value}, valueStr = ${valueEntry.value.str}`);
+        keyEntry = keysIterator.next();
+        valueEntry = valuesIterator.next();
+      }
+    } else {
+      console.info('调用put进入');
+      console.info('isEvict = ' + isEvict);
+      console.info('key = ' + key + '  valueStr = ' + value.str);
+    }
+  }
+}
+let test1 = new TestClass('testA');
+let test2 = new TestClass('testB');
+let test3 = new TestClass('testC');
+let lru = new ChildLRUCache(2);
+lru.put('aa', test1);
+lru.put('bb', test2);
+lru.put('cc', test3);    // 删除'aa'键值对
+lru.clear();             // 清空整个缓冲区
+/*
+输出结果：调用put进入
+         isEvict = true
+         key = aa  valueStr = testA
+         调用clear进入
+         isEvict = false
+         key = bb, valueStr = testB
+         key = cc, valueStr = testC
+ */
 ```
 
 ### contains<sup>9+</sup>
@@ -3514,7 +3681,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
   aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
   aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
-  */
+   */
 
   // BASIC编码
   let base64Helper = new util.Base64Helper();
@@ -3530,7 +3697,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   console.info("result = " + result);
   /*
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
-  */
+   */
   
   // MIME_URL_SAFE编码
   let base64Helper = new util.Base64Helper();
@@ -3546,7 +3713,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   console.info("result = " + result);
   /*
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
-  */
+   */
   // MIME_URL_SAFE编码
   let base64Helper = new util.Base64Helper();
   let array =
@@ -3563,7 +3730,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
   aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
   aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
-  */
+   */
   ```
 
 ### decodeSync<sup>9+</sup>
@@ -3606,7 +3773,7 @@ decodeSync(src: Uint8Array | string, options?: Type): Uint8Array
   console.info("result = " + result);
   /*
   输出结果：result = 77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101
-  */
+   */
   ```
 
 
@@ -3695,7 +3862,7 @@ encodeToString(src: Uint8Array, options?: Type): Promise&lt;string&gt;
     输出结果：TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
     aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
     aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
-    */
+     */
 
   })
   ```
@@ -3741,7 +3908,7 @@ decode(src: Uint8Array | string, options?: Type): Promise&lt;Uint8Array&gt;
     console.info(val.toString());
     /*
     输出结果：77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101
-    */
+     */
   })
   ```
 
@@ -5949,7 +6116,7 @@ entries(): IterableIterator&lt;[K, V]&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.Symbol.iterator<sup>9+</sup>](#symboliterator9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.[Symbol.iterator]<sup>9+</sup>](#symboliterator9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
 

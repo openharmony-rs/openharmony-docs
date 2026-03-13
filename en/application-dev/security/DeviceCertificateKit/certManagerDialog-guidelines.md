@@ -47,12 +47,19 @@ The following table describes the commonly used APIs.
 
 3. Open the certificate management dialog box.
 
-   ```ts
-   /* context is application context information, which is obtained by the caller. The context here is only an example. */
-   let context: common.Context = new UIContext().getHostContext() as common.Context;
+   <!-- @[certificate_management_dialog_box_development_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerDialogSample.ets) -->
+   
+   ``` TypeScript
+   import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   
    async function certificateManagerDialogSample() {
+     /* context is application context information, which is obtained by the caller. The context here is only an example. */
+     let context: common.Context = new UIContext().getHostContext() as common.Context;
      /* pageType specifies the type of the page to display. In this example, pageType is PAGE_MAIN, which indicates the main page of the Certificate Manager application. */
-     let pageType: certificateManagerDialog.CertificateDialogPageType = certificateManagerDialog.CertificateDialogPageType.PAGE_MAIN;
+     let pageType: certificateManagerDialog.CertificateDialogPageType =
+       certificateManagerDialog.CertificateDialogPageType.PAGE_MAIN;
      try {
        certificateManagerDialog.openCertificateManagerDialog(context, pageType).then(() => {
          console.info('Succeeded in opening certificate manager dialog.');
@@ -64,22 +71,49 @@ The following table describes the commonly used APIs.
      }
    }
    ```
+
+
 4. Call the APIs for installing a certificate, uninstalling a certificate, and viewing certificate details, respectively. These APIs are available only to 2-in-1 devices.
 
-   ```ts
-   /* context is application context information, which is obtained by the caller. The context here is only an example. */
-   let context: common.Context = new UIContext().getHostContext() as common.Context;
-   async function userCADialogSample() {
-     let certUri: string = '';
-     let certType = certificateManagerDialog.CertificateType.CA_CERT;
-     /* The user CA certificate data must be assigned based on the service. */
-     let cert = new Uint8Array([
-       0x30, 0x82, 0x01, 0x2E, 0x30, 0x81, 0xD5, 0x02, 0x14, 0x28, 0x75, 0x71, 0x22, 0xDF, 0xDC, 0xCB,
-     ]);
-
+   <!-- @[certificate_management_ca_dialog_development_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerCaDialogSample.ets) -->
+   
+   ``` TypeScript
+   import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   import { UIContext } from '@kit.ArkUI';
+   import { util } from '@kit.ArkTS';
+   
+   let certType = certificateManagerDialog.CertificateType.CA_CERT;
+   let certUri: string = '';
+   /* The user CA certificate data must be assigned based on the service. */
+   let cert: Uint8Array = new util.TextEncoder().encodeInto(`-----BEGIN CERTIFICATE-----
+   MIIDSTCCAjECFFRZKkiBuiZ+zqfjJOg05yeTePM9MA0GCSqGSIb3DQEBCwUAMGEx
+   CzAJBgNVBAYTAmNuMQ0wCwYDVQQIDARvaG9zMQswCQYDVQQHDAJjbTEhMB8GA1UE
+   CgwYSW50ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMRMwEQYDVQQDDApUZXN0Um9vdENB
+   MB4XDTI1MTAxNTA3MzE0MloXDTI2MTAxNTA3MzE0MlowYTELMAkGA1UEBhMCY24x
+   DTALBgNVBAgMBG9ob3MxCzAJBgNVBAcMAmNtMSEwHwYDVQQKDBhJbnRlcm5ldCBX
+   aWRnaXRzIFB0eSBMdGQxEzARBgNVBAMMClRlc3RSb290Q0EwggEiMA0GCSqGSIb3
+   DQEBAQUAA4IBDwAwggEKAoIBAQC5p4eoQJyTBvn01M8SwEi8dguTIPGmD3a8SGIj
+   KXaB6ltv742H5EBjgk+zC8+Gis0ehEqwk3pVnnmByeYvrERxsUqDt69/FndlfTxI
+   C2/2MxWVk97g/6TpJ5Lt2mTrH+rSOgUDyU27aPn12ZnDF1mLsT+U+CBmfj4+J4tW
+   yzdFNj7kcKMQQok+L1dtFlDNMNpMA1UqADzoC3XgFl49CpDtoFId9DVsgUPkPfX1
+   89cCunomgJe1b17FzxfNu2yhbl5cnUEjeHGbmBgBIB7uG8tjGstnDPx7fl3Xrj+Q
+   fRrwCpVKD9RxoyUBFbHttixxY5bHFUdvHRB251sxD+JfxxxLAgMBAAEwDQYJKoZI
+   hvcNAQELBQADggEBAEGbNqcMU7C/lrIytI/OTtzYbkWDsfnRSPxlCUoZ2Xh3S83A
+   SNQ9Ze5tDwWdW9Hlde9May6hzvuQSYeMLLnyM8WGResXCs7UbnSQe7fGfUu+xDGb
+   h4tamnRFtZydxCCgDT9lIdHeutlPwOuxlR4HXpeowGeGJX0iFrdo6D0iXAY34hic
+   yLQzuBqE/1s3PLA83Fi4EOOOV7P/ahmOLtBFlHbySHV68i9PNeNr9SDykH9/RgI9
+   5G8ZTZj8oSmbTGGtfNuVXybMyJMRlz6BkxG++kYcg7STRBqHGX7RrWHiupguNreO
+   4sJBdSpWBq172ZEyOvTqC4xX9lLYqwwBQ++TFoo=
+   -----END CERTIFICATE-----`);
+   
+   async function installUserCADialogSample() {
+     /* context is application context information, which is obtained by the caller. The context here is only an example. */
+     let context: common.Context = new UIContext().getHostContext() as common.Context;
+     let certScope = certificateManagerDialog.CertificateScope.CURRENT_USER; /* Install the certificate under the current user. */
      try {
        /* Install the certificate. */
-       let certScope = certificateManagerDialog.CertificateScope.CURRENT_USER; /* Install the certificate under the current user. */
        certificateManagerDialog.openInstallCertificateDialog(context, certType, certScope, cert).then((result) => {
          console.info('Succeeded in opening install ca dialog.');
          certUri = result;
@@ -89,7 +123,11 @@ The following table describes the commonly used APIs.
      } catch (error) {
        console.error(`Failed to open install ca dialog. Code: ${error.code}, message: ${error.message}`);
      }
-
+   }
+   
+   async function uninstallUserCADialogSample() {
+     /* context is application context information, which is obtained by the caller. The context here is only an example. */
+     let context: common.Context = new UIContext().getHostContext() as common.Context;
      try {
        /* Uninstall the certificate. */
        certificateManagerDialog.openUninstallCertificateDialog(context, certType, certUri).then(() => {
@@ -100,7 +138,11 @@ The following table describes the commonly used APIs.
      } catch (error) {
        console.error(`Failed to open uninstall ca dialog. Code: ${error.code}, message: ${error.message}`);
      }
-
+   }
+   
+   async function certDetailDialogSample() {
+     /* context is application context information, which is obtained by the caller. The context here is only an example. */
+     let context: common.Context = new UIContext().getHostContext() as common.Context;
      try {
        let property: certificateManagerDialog.CertificateDialogProperty = {
          showInstallButton: false    /* Do not display the button for installing the certificate. */

@@ -158,7 +158,7 @@ The code for the **fit_content.html** page is as follows:
 
 The height of the DOM node of the core content is 0.
 
-If the CSS **height: <number& > vh** is conflict with the **Web** component size adaptation page layout, check whether **height: vh** is the first CSS height style from the body node. For example, in the following structure, the height of the DOM node whose ID is 2 is 0.
+If the CSS **height: \<number> vh** is conflict with the **Web** component size adaptation page layout, check whether **height: \<number> vh** is the first CSS height style from the body node. For example, in the following structure, the height of the DOM node whose ID is 2 is 0.
 
 ```html
 <body>

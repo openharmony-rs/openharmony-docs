@@ -90,13 +90,13 @@ Sets the opacity of the fill area. This attribute can be dynamically set using [
 
 | Name| Type                                                        | Mandatory| Description                          |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>The value range is [0.0, 1.0]. A value less than 0.0 is treated as **0.0**. A value greater than 1.0 is treated as **1.0**. Any other value is treated as **1.0**.<br>The value can also be a string of the number format. The value range is the same as that of the number format.<br>The value can also be a string in the system or application resources. The value range is the same as that of the number format.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.<br>Default value: **1.0**|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>The value range is [0.0, 1.0]. A value less than 0.0 is treated as **0.0**. A value greater than 1.0 is treated as **1.0**. Any other value is treated as **1.0**.<br>The value can also be a string of the number format. The value range is the same as that of the number format.<br>The value can also be a string in the system or application resources. The value range is the same as that of the number format.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.<br>Default value: **1.0**|
 
 ### stroke
 
 stroke(value: ResourceColor)
 
-Sets the stroke color. This attribute can be dynamically set in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default border opacity is 0, that is, no border is displayed.
+Sets the border color. This attribute can be dynamically set in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default border opacity is 0, that is, no border is displayed.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -114,7 +114,7 @@ Sets the stroke color. This attribute can be dynamically set in [attributeModifi
 
 strokeDashArray(value: Array&lt;any&gt;)
 
-Sets stroke dashes. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value must be greater than or equal to 0. If the value is abnormal, the default value is used.
+Sets the border gap. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value must be greater than or equal to 0. If the value is abnormal, the default value is used.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -144,13 +144,13 @@ Sets the offset of the border drawing start point. This attribute can be dynamic
 
 | Name| Type                      | Mandatory| Description                                |
 | ------ | -------------------------- | ---- | ------------------------------------ |
-| value  | number \| string | Yes  | Offset of the start point for drawing the stroke.<br>Default value: **0**<br>Default unit: vp<br>If the value is undefined or null, the default value will be used. If the value is NaN or Infinity, strokeDashArray will be ineffective.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Offset of the start point for drawing the stroke.<br>Default value: **0**<br>Default unit: vp<br>If the value is undefined or null, the default value will be used. If the value is NaN or Infinity, strokeDashArray will be ineffective.|
 
 ### strokeLineCap
 
 strokeLineCap(value: LineCapStyle)
 
-Sets the cap style of the stroke.This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+Sets the border endpoint drawing style. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -168,7 +168,7 @@ Sets the cap style of the stroke.This attribute can be dynamically set using [at
 
 strokeLineJoin(value: LineJoinStyle)
 
-Sets the join style of the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute does not work for the **Ellipse** component, which does not have corners.
+Sets the border corner drawing style. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute does not work for the **Ellipse** component, which does not have corners.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -186,7 +186,7 @@ Sets the join style of the stroke. This attribute can be dynamically set using [
 
 strokeMiterLimit(value: number | string)
 
-Sets the limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The Ellipse component does not support the setting of sharp corners. Therefore, this attribute is invalid.
+Sets the maximum ratio of the miter length to the border width. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The Ellipse component does not support the setting of sharp corners. Therefore, this attribute is invalid.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -198,13 +198,13 @@ Sets the limit on the ratio of the miter length to the value of **strokeWidth** 
 
 | Name| Type                      | Mandatory| Description                                          |
 | ------ | -------------------------- | ---- | ---------------------------------------------- |
-| value  | number \| string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**<br>If the value is undefined, null, or NaN, the default value is used. If the value is Infinity, stroke becomes invalid.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**<br>If the value is undefined, null, or NaN, the default value is used. If the value is Infinity, stroke becomes invalid.|
 
 ### strokeOpacity
 
 strokeOpacity(value: number | string | Resource)
 
-Sets the stroke opacity. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value range is [0.0, 1.0]. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.
+Sets the border opacity. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value range is [0.0, 1.0]. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -216,13 +216,13 @@ Sets the stroke opacity. This attribute can be dynamically set using [attributeM
 
 | Name| Type                                                        | Mandatory| Description                      |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: transparency set by the [stroke](#stroke) API.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: transparency set by the [stroke](#stroke) API.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
 
 ### strokeWidth
 
 strokeWidth(value: Length)
 
-Sets the stroke width. This attribute can be dynamically set using the [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) method. If of the string type, this attribute cannot be set in percentage. A percentage is processed as 1 px.
+Sets the stroke width. This attribute can be dynamically set using the [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) method. If this attribute is of the string type, percentage values are not supported and will be treated as 1 px.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -315,7 +315,7 @@ The following example shows how to use attributeModifier to dynamically set the 
 // xxx.ets
 class MyEllipseModifier implements AttributeModifier<EllipseAttribute> {
   applyNormalAttribute(instance: EllipseAttribute): void {
-    //Set the fill color to #707070, fill opacity to 0.5, border color to #2787D9, border gap to [20], left offset to 15, line end style to semi-circle, border opacity to 0.5, border width to 10, and anti-aliasing to enabled.
+    // Set the fill color to #707070, fill opacity to 0.5, border color to #2787D9, border gap to [20], left offset to 15, line end style to semi-circle, border opacity to 0.5, border width to 10, and anti-aliasing to enabled.
     instance.fill("#707070")
     instance.fillOpacity(0.5)
     instance.stroke("#2787D9")

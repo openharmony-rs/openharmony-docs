@@ -48,3 +48,6 @@ Describes the bundle options used to set or query application information.
 | --------- | -------------- | ---- | ---- | ------------------- |
 | userId | number         | No  | Yes  | User ID. By default, the user is the current caller.            |
 | appIndex | number         | No  | Yes  | Index of an application clone. The default value is **0**, indicating the main application.   |
+| bundleName<sup>23+</sup> | string         | No  | Yes  | Bundle name of the application. The default value is an empty string.   |
+| moduleName<sup>23+</sup> | string         | No  | Yes  | Module name to which the ability belongs. The default value is an empty string.   |
+| abilityName<sup>23+</sup> | string         | No  | Yes  | Ability name. The default value is an empty string.   |

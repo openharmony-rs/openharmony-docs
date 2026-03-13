@@ -35,28 +35,32 @@
 **开发实例**
 
 1. 导入模块。
-   ```ts
+
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/PhoneNumberFormatting.ets) -->
+   
+   ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
    ```
-   <!-- [import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/PhoneNumberFormatting.ets) -->
 
 2. 处理号码。
 
-   ```ts
+   <!-- @[format_phone_numbers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/PhoneNumberFormatting.ets) -->
+   
+   ``` TypeScript
    // 格式化电话号码
    let phoneNumberFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN');
    let formattedPhoneNumber = phoneNumberFormat.format('158****2312'); // formattedPhoneNumber = '158 **** 2312'
-
+   
    // RFC3966类型的电话号码
    let rfcFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN', { type: 'RFC3966' });
    let formattedRFCPhoneNumber = rfcFormat.format('158****2312'); // formattedRFCPhoneNumber = 'tel:+86-158-****-2312'
-
+   
    // 判断电话号码是否有效
    let isValid = phoneNumberFormat.isValidNumber('158****2312'); // isValid = true
-
+   
    // 以某种语言显示号码归属地
    let locationName = phoneNumberFormat.getLocationName('158****2312', 'en-GB'); // locationName = 'XiAn, Shanxi'
-
+   
    // 拨号中的电话号码格式化
    let typingFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN', { type: 'TYPING' });
    let phoneNumber = '0755453';
@@ -66,4 +70,3 @@
      formatResult = typingFormat.format(formatResult);
    }
    ```
-   <!-- [format_phone_numbers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/PhoneNumberFormatting.ets) -->

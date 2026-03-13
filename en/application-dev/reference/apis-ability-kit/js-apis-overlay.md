@@ -68,8 +68,8 @@ try {
     .then(() => {
       console.info('setOverlayEnabled success');
     }).catch((err: BusinessError) => {
-      console.error('setOverlayEnabled failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
-    });
+    console.error('setOverlayEnabled failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
+  });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
@@ -313,7 +313,8 @@ let targetModuleName = "feature";
 try {
   overlay.getTargetOverlayModuleInfos(targetModuleName, (err, data) => {
     if (err) {
-      console.error('getTargetOverlayModuleInfos failed due to err code : ' + err.code + ' ' + 'message :' + err.message);
+      console.error('getTargetOverlayModuleInfos failed due to err code : ' + err.code + ' ' + 'message :' +
+      err.message);
       return;
     }
     console.info('overlayModuleInfo is ' + JSON.stringify(data));

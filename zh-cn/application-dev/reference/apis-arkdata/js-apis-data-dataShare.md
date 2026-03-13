@@ -82,7 +82,7 @@ export default class EntryAbility extends UIAbility {
 | ---------- | ----------------------------------------------------------- | ----| ---- | -------------- |
 | uri        | string                                                      | 否 | 否  | 共享配置的全局唯一标识。固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复。字符串长度不超过256个字节。 |
 | value      | [ValueType](js-apis-data-valuesBucket.md#valuetype)         | 否 | 是   | 共享配置的值。不填则为空字符串。字符串长度不超过4096个字节。当首次发布共享配置时，如果未填写，将默认设置为空字符串。在更新共享配置时，如果未填写，共享配置的值将不会被更新。     |
-| allowList  | string\[]                                         | 否 | 是   | 允许订阅和读取共享配置的应用程序列表。不填则为空的字符串数组。数组最大长度为256，超过256的部分不生效。数组中每个元素为应用的[appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)，单个appIdentifier最大长度128字节，超过128字节的appIdentifier不会生效。当首次发布共享配置时，如果未填写，将默认为空的允许列表。在更新共享配置时，如果未填写，共享配置的允许列表将不会被更新。一个空的允许列表表示只有发布者能够访问该共享配置。 |
+| allowList  | string\[]                                         | 否 | 是   | 允许订阅和读取共享配置的应用程序列表。不填则为空的字符串数组。数组最大长度为256，超过256的部分不生效。数组中每个元素为应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，单个appIdentifier最大长度128字节，超过128字节的appIdentifier不会生效。当首次发布共享配置时，如果未填写，将默认为空的允许列表。在更新共享配置时，如果未填写，共享配置的允许列表将不会被更新。一个空的允许列表表示只有发布者能够访问该共享配置。 |
 
 ## DataProxyChangeInfo<sup>20+</sup>
 
@@ -274,7 +274,7 @@ results.forEach((result) => {
 
 publish(data: ProxyData[], config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt;
 
-发布共享配置项。发布后，发布者和允许列表中指定的应用可以访问该共享配置项。如果要发布的URI已经存在，则更新对应的共享配置项。如果发布的配置项中存在任一URI的长度超出上限或者格式校验失败，则当前发布操作失败。只有发布者才允许更新共享配置项，每个应用支持最多32个共享配置。
+发布共享配置项。使用Promise异步回调。发布后，发布者和允许列表中指定的应用可以访问该共享配置项。如果要发布的URI已经存在，则更新对应的共享配置项。如果发布的配置项中存在任一URI的长度超出上限或者格式校验失败，则当前发布操作失败。只有发布者才允许更新共享配置项，每个应用支持最多32个共享配置。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -306,12 +306,12 @@ publish(data: ProxyData[], config: DataProxyConfig): Promise&lt;DataProxyResult[
 const newConfigData: dataShare.ProxyData[] = [{
   uri: 'datashareproxy://com.example.app1/config1',
   value: 'Value1',
-  allowList: ['com.example.app2', 'com.example.app3'],
+  allowList: ['appIdentifier2', 'appIdentifier3'], //此处字符串仅作示例，使用时需替换为应用实际的appIdentifier
 }, {
   uri: 'datashareproxy://com.example.app1/config2',
   value: 'Value2',
-  allowList: ['com.example.app3', 'com.example.app4'],
-},];
+  allowList: ['appIdentifier3', 'appIdentifier4'], //此处字符串仅作示例，使用时需替换为应用实际的appIdentifier
+}];
 const config: dataShare.DataProxyConfig = {
   type: dataShare.DataProxyType.SHARED_CONFIG,
 };
@@ -328,7 +328,7 @@ dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProx
 
 delete(uris: string[], config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt;
 
-根据URI删除指定的共享配置项，只有配置发布方能删除共享配置项。
+根据URI删除指定的共享配置项。使用Promise异步回调。只有配置发布方能删除共享配置项。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -337,7 +337,7 @@ delete(uris: string[], config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt
 | 参数名     | 类型                        | 必填 | 说明                    |
 | -------- | ----------------------------- | ---- | ------------------------ |
 | uris     | string\[]          | 是   | 表示需要删除的共享配置对应的URI数组，数组最大长度为32。URI固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
-| config   | [DataProxyConfig](#dataproxyconfig20)   | 是   | 表示共享配置的类型。 |
+| config   | [DataProxyConfig](#dataproxyconfig20)   | 是   | 表示数据代理操作的配置。 |
 
 **返回值：**
 
@@ -375,7 +375,7 @@ dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyR
 
 get(uris: string[], config: DataProxyConfig): Promise&lt;DataProxyGetResult[]&gt;
 
-根据URI获取指定的共享配置项。只有发布者和允许列表中指定的应用可以访问该共享配置项。
+根据URI获取指定的共享配置项。使用Promise异步回调。只有发布者和允许列表中指定的应用可以访问该共享配置项。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -384,7 +384,7 @@ get(uris: string[], config: DataProxyConfig): Promise&lt;DataProxyGetResult[]&gt
 | 参数名     | 类型                        | 必填 | 说明                    |
 | -------- | ----------------------------- | ---- | ------------------------ |
 | uris     | string\[]         | 是   | 表示需要获取的共享配置的URI数组，数组最大长度为32。URI固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
-| config   | [DataProxyConfig](#dataproxyconfig20)   | 是   | 表示共享配置的类型。 |
+| config   | [DataProxyConfig](#dataproxyconfig20)   | 是   | 表示数据代理操作的配置。 |
 
 **返回值：**
 

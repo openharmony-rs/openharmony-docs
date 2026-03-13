@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 该模块提供空间查询相关的常用功能：包括对内外卡的空间查询、对应用分类数据统计的查询、对应用数据的查询等。
 
@@ -22,7 +22,7 @@ import { storageStatistics } from '@kit.CoreFileKit';
 
 getCurrentBundleStats(): Promise&lt;BundleStats&gt;
 
-应用异步获取当前应用存储空间大小（单位为Byte），以Promise方式返回。
+应用异步获取当前应用存储空间大小（单位为Byte），使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -44,20 +44,20 @@ getCurrentBundleStats(): Promise&lt;BundleStats&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  storageStatistics.getCurrentBundleStats().then((BundleStats: storageStatistics.BundleStats) => {
-    console.info("getCurrentBundleStats successfully:" + JSON.stringify(BundleStats));
-  }).catch((err: BusinessError) => {
-    console.error("getCurrentBundleStats failed with error:"+ JSON.stringify(err));
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getCurrentBundleStats().then((BundleStats: storageStatistics.BundleStats) => {
+  console.info("getCurrentBundleStats successfully:" + JSON.stringify(BundleStats));
+}).catch((err: BusinessError) => {
+  console.error("getCurrentBundleStats failed with error:"+ JSON.stringify(err));
+});
+```
 
 ## storageStatistics.getCurrentBundleStats<sup>9+</sup>
 
 getCurrentBundleStats(callback: AsyncCallback&lt;BundleStats&gt;): void
 
-应用异步获取当前应用存储空间大小（单位为Byte），以callback方式返回。
+应用异步获取当前应用存储空间大小（单位为Byte），使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -79,23 +79,23 @@ getCurrentBundleStats(callback: AsyncCallback&lt;BundleStats&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  storageStatistics.getCurrentBundleStats((error: BusinessError, bundleStats: storageStatistics.BundleStats) => {
-    if (error) {
-      console.error("getCurrentBundleStats failed with error:" + JSON.stringify(error));
-    } else {
-      // do something
-      console.info("getCurrentBundleStats successfully:" + JSON.stringify(bundleStats));
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getCurrentBundleStats((error: BusinessError, bundleStats: storageStatistics.BundleStats) => {
+  if (error) {
+    console.error("getCurrentBundleStats failed with error:" + JSON.stringify(error));
+  } else {
+    // do something
+    console.info("getCurrentBundleStats successfully:" + JSON.stringify(bundleStats));
+  }
+});
+```
 
 ## storageStatistics.getTotalSize<sup>15+</sup>
 
 getTotalSize(): Promise&lt;number&gt;
 
-获取内置存储的总空间大小（单位为Byte），以Promise方式返回。
+获取内置存储的总空间大小（单位为Byte），使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -116,20 +116,20 @@ getTotalSize(): Promise&lt;number&gt;
 
 **示例：**
 
-  ```ts
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 storageStatistics.getTotalSize().then((number: number) => {
   console.info("getTotalSize successfully:" + JSON.stringify(number));
 }).catch((err: BusinessError) => {
   console.error("getTotalSize failed with error:"+ JSON.stringify(err));
 });
-  ```
+```
 
 ## storageStatistics.getTotalSize<sup>15+</sup>
 
 getTotalSize(callback: AsyncCallback&lt;number&gt;): void
 
-获取内置存储的总空间大小（单位为Byte），以callback方式返回。
+获取内置存储的总空间大小（单位为Byte），使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -151,7 +151,7 @@ getTotalSize(callback: AsyncCallback&lt;number&gt;): void
 
 **示例：**
 
-  ```ts
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 storageStatistics.getTotalSize((error: BusinessError, number: number) => {
   if (error) {
@@ -161,7 +161,7 @@ storageStatistics.getTotalSize((error: BusinessError, number: number) => {
     console.info("getTotalSize successfully:" + number);
   }
 });
-  ```
+```
 
 ## storageStatistics.getTotalSizeSync<sup>15+</sup>
 
@@ -188,7 +188,7 @@ getTotalSizeSync(): number
 
 **示例：**
 
-  ```ts
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let number = storageStatistics.getTotalSizeSync();
@@ -197,13 +197,13 @@ try {
   let error: BusinessError = err as BusinessError;
   console.error("getTotalSizeSync failed with error:" + JSON.stringify(error));
 }
-  ```
+```
 
 ## storageStatistics.getFreeSize<sup>15+</sup>
 
 getFreeSize(): Promise&lt;number&gt;
 
-获取内置存储的可用空间大小（单位为Byte），以Promise方式返回。
+获取内置存储的可用空间大小（单位为Byte），使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -224,20 +224,20 @@ getFreeSize(): Promise&lt;number&gt;
 
 **示例：**
 
-  ```ts
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 storageStatistics.getFreeSize().then((number: number) => {
   console.info("getFreeSize successfully:" + JSON.stringify(number));
 }).catch((err: BusinessError) => {
   console.error("getFreeSize failed with error:" + JSON.stringify(err));
 });
-  ```
+```
 
 ## storageStatistics.getFreeSize<sup>15+</sup>
 
 getFreeSize(callback: AsyncCallback&lt;number&gt;): void
 
-获取内置存储的可用空间大小（单位为Byte），以callback方式返回。
+获取内置存储的可用空间大小（单位为Byte），使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -259,7 +259,7 @@ getFreeSize(callback: AsyncCallback&lt;number&gt;): void
 
 **示例：**
 
-  ```ts
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 storageStatistics.getFreeSize((error: BusinessError, number: number) => {
   if (error) {
@@ -269,7 +269,7 @@ storageStatistics.getFreeSize((error: BusinessError, number: number) => {
     console.info("getFreeSize successfully:" + number);
   }
 });
-  ```
+```
 
 ## storageStatistics.getFreeSizeSync<sup>15+</sup>
 
@@ -296,7 +296,7 @@ getFreeSizeSync(): number
 
 **示例：**
 
-  ```ts
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let number = storageStatistics.getFreeSizeSync();
@@ -305,7 +305,7 @@ try {
   let error: BusinessError = err as BusinessError;
   console.error("getFreeSizeSync failed with error:" + JSON.stringify(error));
 }
-  ```
+```
 
 ## BundleStats<sup>9+</sup>
 
@@ -316,3 +316,116 @@ try {
 | appSize   | number  | 否 | 否 | 应用安装文件大小（单位为Byte）。    |
 | cacheSize | number  | 否 | 否  | 应用缓存文件大小（单位为Byte）。   |
 | dataSize  | number  | 否 | 否  | 应用文件存储大小（除应用安装文件）（单位为Byte）。 |
+
+## storageStatistics.getTotalInodes<sup>24+</sup>
+ 	 
+getTotalInodes(): Promise&lt;number&gt;
+
+获取文件系统的inode资源总量，仅支持查询系统数据分区。使用Promise异步回调。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                  | 说明                                                  |
+| --------------------- | ----------------------------------------------------- |
+| Promise&lt;number&gt; | Promise对象，返回文件系统inode资源总量。                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                                                      |
+| -------- | ------------------------------------------------------------ |
+| 13600001 | IPC error.                                                   |
+| 13600016 | Failed to query the inode information of the data partition. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+storageStatistics.getTotalInodes().then((totalInodes: number) => {
+  console.info("getTotalInodes successfully: " + totalInodes);
+}).catch((err: BusinessError) => {
+  console.error(`getTotalInodes failed. Code: ${err.code}, Message: ${err.message}`);
+});
+```
+
+## storageStatistics.getFreeInodes<sup>24+</sup>
+
+getFreeInodes(): Promise&lt;number&gt;
+
+获取文件系统的inode资源剩余量，仅支持查询系统数据分区。使用Promise异步回调。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                  | 说明                                                  |
+| --------------------- | ----------------------------------------------------- |
+| Promise&lt;number&gt; | Promise对象，返回文件系统inode资源剩余量。               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                                                      |
+| -------- | ------------------------------------------------------------ |
+| 13600001 | IPC error.                                                   |
+| 13600016 | Failed to query the inode information of the data partition. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+storageStatistics.getFreeInodes().then((freeInodes: number) => {
+  console.info("getFreeInodes successfully: " + freeInodes);
+}).catch((err: BusinessError) => {
+  console.error(`getFreeInodes failed. Code: ${err.code}, Message: ${err.message}`);
+});
+```
+
+## storageStatistics.getCurrentBundleInodes<sup>24+</sup>
+
+getCurrentBundleInodes(): Promise&lt;number&gt;
+
+获取当前应用的inode占用量，使用Promise异步回调。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                  | 说明                                                  |
+| --------------------- | ----------------------------------------------------- |
+| Promise&lt;number&gt; | Promise对象，返回当前应用的inode占用量。               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                                                      |
+| -------- | ------------------------------------------------------------ |
+| 13600001 | IPC error.                                                   |
+| 13600002 | File system not supported.                                   |
+| 13600010 | The input parameter is invalid.                              |
+| 13600017 | Failed to query the inode information of the application.    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+storageStatistics.getCurrentBundleInodes().then((curInodes: number) => {
+  console.info("getCurrentBundleInodes successfully: " + curInodes);
+}).catch((err: BusinessError) => {
+  console.error(`getCurrentBundleInodes failed. Code: ${err.code}, Message: ${err.message}`);
+});
+```

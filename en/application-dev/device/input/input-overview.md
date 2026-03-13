@@ -1,4 +1,4 @@
-# Introduction to Input Kit
+# About This Kit
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -27,7 +27,7 @@ As a basic service provided by the system for applications, Input Kit fulfills i
   | ------------------------------------------------------------ | -------------------------- |-----|
   | setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void | Sets the shortcut key shield status. The value **true** means to shield shortcut keys, and the value **false** means the opposite.|ohos.permission.INPUT_CONTROL_DISPATCHING|
   | getShieldStatus(shieldMode: ShieldMode): boolean | Obtains the shortcut key shield status. The value **true** means to shield shortcut keys, and the value **false** means the opposite.|ohos.permission.INPUT_CONTROL_DISPATCHING|
-    
+
 2. The APIs provided by the [inputConsumer](inputconsumer-guidelines-sys.md), [inputEventClient](inputeventclient-guidelines-sys.md), [inputMonitor](inputmonitor-guidelines-sys.md), and [shortKey](shortkey-guidelines-sys.md) modules are system APIs. Wherein, the APIs provided by the [inputMonitor](inputmonitor-guidelines-sys.md) module require the **ohos.permission.INPUT_MONITORING** permission.
 
 <!--DelEnd-->

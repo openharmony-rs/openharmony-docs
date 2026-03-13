@@ -40,7 +40,7 @@
 
 ### OH_AVSamplesBuffer_AppendOneBuffer()
 
-```
+```c
 OH_AVErrCode OH_AVSamplesBuffer_AppendOneBuffer(OH_AVSamplesBuffer *samplesBuffer, OH_AVBuffer *avBuffer)
 ```
 
@@ -65,7 +65,7 @@ OH_AVErrCode OH_AVSamplesBuffer_AppendOneBuffer(OH_AVSamplesBuffer *samplesBuffe
 
 ### OH_AVSamplesBuffer_GetRemainedCapacity()
 
-```
+```c
 int32_t OH_AVSamplesBuffer_GetRemainedCapacity(OH_AVSamplesBuffer *samplesBuffer)
 ```
 
@@ -85,11 +85,11 @@ int32_t OH_AVSamplesBuffer_GetRemainedCapacity(OH_AVSamplesBuffer *samplesBuffer
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_AVSamplesBuffer实例剩余可使用容量，单位为字节。如果sampleBuffer或data poniter为nullptr或无效，则返回-1。 |
+| int32_t | OH_AVSamplesBuffer实例剩余可使用容量，单位为字节。如果sampleBuffer或data pointer为nullptr或无效，则返回3。 |
 
 ### OH_LowPowerAVSink_GetCapability()
 
-```
+```c
 OH_LowPowerAVSink_Capability *OH_LowPowerAVSink_GetCapability()
 ```
 

@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 - ArkTS API<!--ime-arkts-->
@@ -13,6 +13,7 @@
   - [@ohos.InputMethodSubtype (输入法子类型)](js-apis-inputmethod-subtype.md)
   <!--Del-->
   - [@ohos.inputMethod (输入法框架)(系统接口)](js-apis-inputmethod-sys.md)
+  - [@ohos.inputMethodEngine (输入法服务)(系统接口)](js-apis-inputmethodengine-sys.md)
   <!--DelEnd-->
   - [@ohos.inputMethod (输入法框架)](js-apis-inputmethod.md)
   - [@ohos.inputMethodEngine (输入法服务)](js-apis-inputmethodengine.md)

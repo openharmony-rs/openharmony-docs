@@ -136,7 +136,7 @@ For details about the error codes, see [backgroundProcessManager Error Codes](er
 | 201      | Permission denied. |
 | 801      | Capability not supported. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. PowerSaveMode status is out of range. |
-| 31800003      | Setup error, This setting is overridden by setting in Task Manager. |
+| 31800003      | Setup erro, This setting is overridden by settings in Task Manager. |
 | 31800004      | The setting failed due to system scheduling reasons. |
 
 **Example**
@@ -203,7 +203,7 @@ try {
 }
 ```
 
-## backgroundProcessManager.getPowerSaveMode<sup>22+</sup>
+## backgroundProcessManager.getPowerSaveMode<sup>23+</sup>
 
 getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 
@@ -245,7 +245,7 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 // Replace the process ID with the actual one.
 let pid = 33333;
 try {
-    backgroundProcessManager.getPowerSaveMode(pid).then((result: PowerSaveMode) => {
+    backgroundProcessManager.getPowerSaveMode(pid).then((result: backgroundProcessManager.PowerSaveMode) => {
         console.info("getPowerSaveMode: " + result.toString());
     });
 } catch (error) {

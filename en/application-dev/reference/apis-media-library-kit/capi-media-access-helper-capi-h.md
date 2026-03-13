@@ -1,4 +1,10 @@
 # media_access_helper_capi.h
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -28,7 +34,7 @@ You can use the APIs to create an album, and access and modify the media data in
 
 ### OH_MediaAccessHelper_ApplyChanges()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAccessHelper_ApplyChanges(OH_MediaAssetChangeRequest* changeRequest)
 ```
 

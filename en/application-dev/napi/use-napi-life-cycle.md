@@ -44,19 +44,38 @@ The following table lists the APIs for ArkTS object lifecycle management.
 
 If you are just starting out with Node-API, see [Node-API Development Process](use-napi-process.md). The following demonstrates only the C++ and ArkTS code related to lifecycle management.
 
-### napi_open_handle_scope and napi_close_handle_scope
+The following header files are required for the C++ code:
+```cpp
+#include "napi/native_api.h"
+// log.h is used to print logs in C++.
+#include "hilog/log.h"
+```
+The following modules are required for the ArkTS code:
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+```
 
-Use **napi_open_handle_scope** to create a context and use **napi_close_handle_scope** to close the context. You can use these two APIs to manage the **napi_value** lifecycle of an ArkTS object, which prevents the object from being incorrectly garbage-collected. 
-Properly using these two APIs can minimize lifecycle and prevent memory leaks.
+### napi_open_handle_scope<br>napi_close_handle_scope
 
-For details about the code, see:
-[Lifecycle Management](napi-guidelines.md#lifecycle-management)
+Use **napi_open_handle_scope** to create a context and use **napi_close_handle_scope** to close the context. You can use these two APIs to manage the **napi_value** lifecycle of an ArkTS object, which prevents the object from being incorrectly garbage-collected.  
+
+Note that the API supports only the single-layer nested scope structure. There is only one active scope at any time, and all newly created handles will be associated with that scope. Scopes must be closed in the reverse order of opening. In addition, all scopes created in the native method must be closed before the method returns.
+
+For details about the code of lifecycle management, see:
+
+[Lifecycle Management](napi-guidelines.md#lifecycle-management) 
+
+For details about the code of typical incorrect usage, see:
+
+[Typical Error Scenarios](napi-faq-about-stability.md#what-are-the-typical-error-scenarios-of-lifecycle-related-development-between-napi_open_handle_scope-and-napi_close_handle_scope)
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->  
 
+``` C++
+// napi_open_handle_scope, napi_close_handle_scope
 static napi_value HandleScopeTest(napi_env env, napi_callback_info info)
 {
     // Call napi_open_handle_scope to open a scope.
@@ -74,8 +93,8 @@ static napi_value HandleScopeTest(napi_env env, napi_callback_info info)
     napi_get_named_property(env, obj, "key", &result);
     // Close the scope. Then, the object handle created within the scope is automatically released.
     napi_close_handle_scope(env, scope);
-    // The value of result is 'handleScope'.
-    return result;
+    // result has left the scope. If it is used, stability problems may occur. To use objects outside the scope, you are advised to use the napi_open_escapable_handle_scope APIs.
+    return nullptr;
 }
 
 static napi_value HandleScope(napi_env env, napi_callback_info info)
@@ -98,42 +117,86 @@ static napi_value HandleScope(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+
 
 API declaration:
 
-```ts
-// index.d.ts
-export const handleScopeTest: () => string;
+index.d.ts
+<!-- @[napi_open_close_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const handleScopeTest: () => string; // napi_open_handle_scope, napi_close_handle_scope
+
 export const handleScope: () => string;
 ```
-<!-- @[napi_open_close_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// napi_open_handle_scope  napi_close_handle_scope
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API handleScopeTest: %{public}s', testNapi.handleScopeTest());
+  hilog.info(0x0000, 'testTag', 'Test Node-API handleScopeTest: %{public}s',
+    testNapi.handleScopeTest());
   hilog.info(0x0000, 'testTag', 'Test Node-API handleScope: %{public}s', testNapi.handleScope());
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API handleScopeTest errorCode: %{public}s, errorMessage: %{public}s', error.code, error.message);
+  hilog.error(0x0000, 'testTag',
+    'Test Node-API handleScopeTest errorCode: %{public}s, errorMessage: %{public}s', error.code,
+    error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
+
+
+The framework layer defines the API mapping table between the ArkTS and native sides in the core initialization function **Init**. When the ArkTS side accesses the native function through the API in the mapping table, the framework layer automatically adds the scope. You do not need to add the **napi_open_handle_scope** and **napi_close_handle_scope** APIs to manage the lifecycle of ArkTS objects. That is, the scope is automatically opened when the native function is called and automatically closed when the native function ends. The lifecycle of the ArkTS object created in the native function ends when the native function returns, and no memory leak occurs. The following example defines the **NewObject** function. (You do not need to add **napi_open_handle_scope** and **napi_close_handle_scope** to define the function in the API mapping table to manage the lifecycle of the ArkTS object.)
+```cpp
+// Open the scope before calling NewObject.
+napi_value NewObject(napi_env env, napi_callback_info info)
+{
+    napi_value object = nullptr;
+    // Create an empty object.
+    napi_create_object(env, &object);
+    // Set the object property.
+    napi_value name = nullptr;
+    // Set the property name to "name".
+    napi_create_string_utf8(env, "name", NAPI_AUTO_LENGTH, &name);
+    napi_value value = nullptr;
+    // Set the property value to "Hello from N-API!"
+    napi_create_string_utf8(env, "Hello from Node-API!", NAPI_AUTO_LENGTH, &value);
+    // Set the property on the object.
+    napi_set_property(env, object, name, value);
+    // After the result leaves the scope, the object handle is released, and the object returned to ArkTS is managed by ArkTS.
+    return object;
+}
+// The framework layer closes the scope after the NewObject function call ends.
+
+// Core initialization function.
+static napi_value Init(napi_env env, napi_value exports)
+{
+    // Define the API mapping table.
+    napi_property_descriptor desc[] = {
+        { "newObject", nullptr, NewObject, nullptr, nullptr, nullptr, napi_default, nullptr }
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+```
 
 ### napi_open_escapable_handle_scope, napi_close_escapable_handle_scope, and napi_escape_handle
 
 Use **napi_open_escapable_handle_scope** to open an escapable scope, which allows the declared values in the scope to be returned to the parent scope. The scope must be closed using **napi_close_escapable_handle_scope**. Use **napi_escape_handle** to promote the lifecycle of an ArkTS object so that it is valid for the lifetime of the parent scope.
+
 These APIs are helpful for managing ArkTS objects more flexibly in C/C++, especially when passing cross-scope values.
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_open_close_escapable_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// napi_open_escapable_handle_scope, napi_close_escapable_handle_scope, and napi_escape_handle
 static napi_value EscapableHandleScopeTest(napi_env env, napi_callback_info info)
 {
     // Create an escapable scope.
@@ -146,41 +209,50 @@ static napi_value EscapableHandleScopeTest(napi_env env, napi_callback_info info
     napi_value value = nullptr;
     napi_create_string_utf8(env, "Test napi_escapable_handle_scope", NAPI_AUTO_LENGTH, &value);
     napi_set_named_property(env, obj, "key", value);
-    // Call napi_escape_handle to promote the ArkTS object handle to make it valid with the lifetime of the outer scope.
-    napi_value escapedObj = nullptr;
-    napi_escape_handle(env, scope, obj, &escapedObj);
+    napi_value prop = nullptr;
+    napi_get_named_property(env, obj, "key", &prop);
+    // Call napi_escape_handle to escape the property value to a scope outside.
+    napi_value result = nullptr;
+    napi_escape_handle(env, scope, prop, &result);
     // Close the escapable scope to clear resources.
     napi_close_escapable_handle_scope(env, scope);
-    // Obtain and return the property of the object whose scope is promoted. You can also obtain napi_escapable_handle_scope here.
-    napi_value result = nullptr;
-    // To verify the escape implementation, obtain the object property here. "undefined" is obtained.
-    napi_get_named_property(env, escapedObj, "key", &result);
+    // The escaped result can be used outside the scope.
     return result;
 }
 ```
-<!-- @[napi_open_close_escapable_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+
 
 API declaration:
 
-```ts
-// index.d.ts
-export const escapableHandleScopeTest: () => string;
-```
+index.d.ts
 <!-- @[napi_open_close_escapable_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const escapableHandleScopeTest: () => string; // napi_open_escapable_handle_scope, napi_close_escapable_handle_scope, and napi_escape_handle
+```
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_open_close_escapable_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// napi_open_escapable_handle_scope, napi_close_escapable_handle_scope, and napi_escape_handle
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API EscapableHandleScopeTest: %{public}s', testNapi.escapableHandleScopeTest());
+  hilog.info(0x0000, 'testTag', 'Test Node-API EscapableHandleScopeTest: %{public}s',
+    testNapi.escapableHandleScopeTest());
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API EscapableHandleScopeTest errorCode: %{public}s, errorMessage: %{public}s', error.code, error.message);
+  hilog.error(0x0000, 'testTag',
+    'Test Node-API EscapableHandleScopeTest errorCode: %{public}s, errorMessage: %{public}s',
+    error.code,
+    error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_open_close_escapable_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
+### napi_ref
+
+Use **napi_ref** to manage the lifecycle of ArkTS objects. **napi_ref** is a reference type, which can be strong reference or weak reference. It is a weak reference when the **ref** count is 0, and a strong reference when the **ref** count is greater than 0. A strong reference prevents the garbage collector from reclaiming the referenced object. It is suitable for scenarios where the object needs to be kept alive for a long time. However, the reference count and release must be managed manually; otherwise, memory leaks will occur. A weak reference, by contrast, does not prevent garbage collection and allows the object to be reclaimed normally when it is no longer held by any other strong references. It is applicable to temporary reference scenarios such as caching, as it can become invalid automatically, but it is necessary to check whether the object is still alive when obtaining it. You need to use strong and weak reference types correctly to balance memory management and performance.
 
 ### napi_create_reference and napi_delete_reference
 
@@ -202,16 +274,187 @@ Use **napi_get_reference_value** to obtain the ArkTS object associated with the 
 >
 > As a result, calling this API may yield a null pointer even if **napi_ref** is valid.
 
+Sample code for using a weak reference:
+
+When creating a weak reference, initialize the reference count to 0. The **ref** created in this way is a weak reference, which does not prevent the object from being garbage collected. Before obtaining the reference, initialize **weakValue** to **nullptr**. After obtaining the value, check whether **weakValue** is still **nullptr**. If yes, the object has been garbage collected. If no, the object can still be used.
+
+CPP code:
+
+``` C++
+#include "napi/native_api.h"
+
+napi_ref g_weakRef = nullptr;
+
+static napi_value CreateWeakReference(napi_env env, napi_callback_info info)
+{
+    napi_value value = nullptr;
+    napi_create_string_utf8(env, "This is a test property", NAPI_AUTO_LENGTH, &value);
+    napi_value jsObject = nullptr;
+    napi_create_object(env, &jsObject);
+    napi_set_named_property(env, jsObject, "test", value);
+
+    // Clear the previous reference (if any).
+    if (g_weakRef != nullptr) {
+        napi_delete_reference(env, g_weakRef);
+        g_weakRef = nullptr;
+    }
+
+    // Create a weak reference. The weak reference does not prevent garbage collection and will be reclaimed when no other strong reference exists.
+    napi_status status = napi_create_reference(env, jsObject, 0, &g_weakRef);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to create weak reference");
+        return nullptr;
+    }
+
+    return nullptr;
+}
+
+static napi_value GetWeakReferenceValue(napi_env env, napi_callback_info info)
+{
+    napi_value weakValue;
+    napi_status status = napi_get_reference_value(env, g_weakRef, &weakValue);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to get reference value");
+        return nullptr;
+    }
+
+    // Check whether the object has been reclaimed.
+    if (weakValue == nullptr) {
+        napi_throw_error(env, nullptr, "Object has been garbage collected");
+        return nullptr;
+    }
+
+    // Obtain the properties of the object to check whether it is still valid.
+    napi_value result = nullptr;
+    napi_get_named_property(env, weakValue, "test", &result);
+
+    return result;
+}
+```
+
+API declaration:
+
+// index.d.ts
+
+``` TypeScript
+export const createWeakReference: () => void;
+
+export const getWeakReferenceValue: () => string;
+```
+
+ArkTS code:
+
+``` TypeScript
+try {
+    testNapi.createWeakReference();
+    hilog.info(0x0000, 'testTag', 'reference test: %{public}s', testNapi.getWeakReferenceValue());
+} catch (error) {
+    hilog.error(0x0000, 'testTag', `Call error: ${error.message}`);
+}
+```
+
+Sample code for using a strong reference:
+
+When creating a strong reference, initialize the reference count to **1**. The **ref** created in this way is a strong reference, which guarantees the object will not be garbage collected. When the reference is no longer used, call **napi_delete_reference** to destroy the reference, preventing memory leaks.
+
+CPP code:
+
+``` C++
+#include "napi/native_api.h"
+
+// Global strong reference.
+napi_ref g_strongRef = nullptr;
+
+// Create a strong reference.
+static napi_value CreateStrongReference(napi_env env, napi_callback_info info)
+{
+    napi_value value = nullptr;
+    napi_create_string_utf8(env, "This is a test property", NAPI_AUTO_LENGTH, &value);
+    napi_value jsObject = nullptr;
+    napi_create_object(env, &jsObject);
+    napi_set_named_property(env, jsObject, "test", value);
+
+    // Clear the previous strong reference (if any).
+    if (g_strongRef != nullptr) {
+        napi_delete_reference(env, g_strongRef);
+        g_strongRef = nullptr;
+    }
+
+    // Create a strong reference (by initializing the reference count to 1) to prevent the garbage collection.
+    napi_status status = napi_create_reference(env, jsObject, 1, &g_strongRef);
+
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to create strong reference");
+        return nullptr;
+    }
+
+    return nullptr;
+}
+
+static napi_value GetStrongReferenceValue(napi_env env, napi_callback_info info)
+{
+    napi_value jsValue;
+    napi_status status = napi_get_reference_value(env, g_strongRef, &jsValue);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to get reference value");
+        return nullptr;
+    }
+
+    // Obtain the properties of the object to check whether it is still valid.
+    napi_value result = nullptr;
+    napi_get_named_property(env, jsValue, "test", &result);
+
+    return result;
+}
+
+// Clear the strong reference.
+static napi_value CleanupStrongReference(napi_env env, napi_callback_info info) {
+    napi_value ret = nullptr;
+    if (g_strongRef != nullptr) {
+        // Forcibly delete the reference, even if the reference count is not 0.
+        napi_delete_reference(env, g_strongRef);
+        g_strongRef = nullptr;
+        napi_get_boolean(env, true, &ret);
+        return ret;
+    }
+    napi_get_boolean(env, false, &ret);
+    return ret;
+}
+```
+
+API declaration:
+
+// index.d.ts
+
+``` TypeScript
+export const createStrongReference: () => void;
+
+export const getStrongReferenceValue: () => string;
+
+export const cleanupStrongReference: () => void;
+```
+
+ArkTS code:
+
+``` TypeScript
+try {
+    testNapi.createStrongReference();
+    hilog.info(0x0000, 'testTag', 'reference test: %{public}s', testNapi.getStrongReferenceValue());
+    testNapi.cleanupStrongReference();
+} catch (error) {
+    hilog.error(0x0000, 'testTag', `Call error: ${error.message}`);
+}
+```
+
 ### napi_add_finalizer
 
 Use **napi_add_finalizer** to add a **napi_finalizer** callback, which will be called when the ArkTS object is garbage-collected.
 
 CPP code:
 
-```cpp
-// log.h is used to print logs in C++.
-#include "hilog/log.h"
-#include "napi/native_api.h"
+<!-- @[napi_create_delete_reference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 // Create a pointer to napi_ref to store the created reference. Before calling napi_add_finalizer, allocate a variable of the napi_ref type and pass its address as the result parameter.
 napi_ref gRefFinalizer = nullptr;
 
@@ -287,7 +530,8 @@ static napi_value CreateReference(napi_env env, napi_callback_info info)
     uint32_t result = 0;
     status = napi_reference_ref(env, gRef, &result);
     OH_LOG_INFO(LOG_APP, "Test Node-API napi_reference_ref, count = %{public}d.", result);
-    if (status != napi_ok || result != 2) {
+    uint32_t numCount = 2;
+    if (status != napi_ok || result != numCount) {
         // If the reference count passed in does not increase, throw an error.
         napi_throw_error(env, nullptr, "napi_reference_ref fail");
         return nullptr;
@@ -315,7 +559,8 @@ static napi_value DeleteReference(napi_env env, napi_callback_info info)
     napi_value count = nullptr;
     napi_status status = napi_reference_unref(env, gRef, &result);
     OH_LOG_INFO(LOG_APP, "Test Node-API napi_reference_unref, count = %{public}d.", result);
-    if (status != napi_ok || result != 1) {
+    uint32_t numCount = 1;
+    if (status != napi_ok || result != numCount) {
         // If the reference count passed in does not decrease, throw an error.
         napi_throw_error(env, nullptr, "napi_reference_unref fail");
         return nullptr;
@@ -342,35 +587,48 @@ static napi_value DeleteReference(napi_env env, napi_callback_info info)
     return returnResult;
 }
 ```
-<!-- @[napi_create_delete_reference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+
 
 API declaration:
 
-```ts
 // index.d.ts
-export const addFinalizer: () => Object | undefined;
-export const createReference: () => Object | undefined;
-export const useReference: () => Object | undefined;
-export const deleteReference: () => string | undefined;
-```
 <!-- @[napi_create_delete_reference_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const addFinalizer: () => Object | undefined; // napi_add_finalizer
+
+export const createReference: () => Object | undefined; // napi_create_reference and napi_reference_ref
+
+export const useReference: () => Object | undefined; // napi_get_reference_value
+
+export const deleteReference: () => string | undefined; // napi_delete_reference and napi_reference_unref
+```
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_create_delete_reference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// napi_add_finalizer
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API addFinalizer: %{public}s', JSON.stringify(testNapi.addFinalizer()));
-  hilog.info(0x0000, 'testTag', 'Test Node-API createReference: %{public}s', JSON.stringify(testNapi.createReference()));
-  hilog.info(0x0000, 'testTag', 'Test Node-API useReference: %{public}s', JSON.stringify(testNapi.useReference()));
-  hilog.info(0x0000, 'testTag', 'Test Node-API deleteReference: %{public}s', testNapi.deleteReference());
+  hilog.info(0x0000, 'testTag', 'Test Node-API addFinalizer: %{public}s',
+    JSON.stringify(testNapi.addFinalizer()));
+  hilog.info(0x0000, 'testTag', 'Test Node-API createReference: %{public}s',
+    JSON.stringify(testNapi.createReference()));
+  hilog.info(0x0000, 'testTag', 'Test Node-API useReference: %{public}s',
+    JSON.stringify(testNapi.useReference()));
+  hilog.info(0x0000, 'testTag', 'Test Node-API deleteReference: %{public}s',
+    testNapi.deleteReference());
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API ReferenceTest errorCode: %{public}s, errorMessage: %{public}s', error.code, error.message);
+  hilog.error(0x0000, 'testTag',
+    'Test Node-API ReferenceTest errorCode: %{public}s, errorMessage: %{public}s', error.code,
+    error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_create_delete_reference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
+
 
 To print logs in the native CPP, add the following information to the **CMakeLists.txt** file and add the header file by using **#include "hilog/log.h"**.
 

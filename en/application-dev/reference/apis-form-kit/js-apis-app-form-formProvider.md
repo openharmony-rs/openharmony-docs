@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 The **formProvider** module provides APIs to obtain widget information, update widgets, and set the update time.
@@ -129,9 +129,12 @@ try {
 
 ## formProvider.updateForm
 
-updateForm(formId: string, formBindingData: formBindingData.FormBindingData,callback: AsyncCallback&lt;void&gt;): void
+updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
 Updates a widget. This API uses an asynchronous callback to return the result.
+> **NOTE**
+>
+> Starting from API version 20, when widget refresh data is updated via shared memory, the total size of the refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier versions, the upper limit for image files is 5, with a per-image memory limit of 2 MB. Any images that exceed these limits will display abnormally.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -189,6 +192,9 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
 Updates a widget. This API uses a promise to return the result.
+> **NOTE**
+>
+> Starting from API version 20, when widget refresh data is updated via shared memory, the total size of the refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier versions, the upper limit for image files is 5, with a per-image memory limit of 2 MB. Any images that exceed these limits will display abnormally.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -408,7 +414,7 @@ Opens the widget editing page.
 | ------ | ------ |----|----------------------------------------------------|
 | abilityName | string | Yes | Ability name on the editing page.                                    |
 | formId | string | Yes | Widget ID.                                             |
-| isMainPage | boolean | No | Whether the page is the main editing page.<br>- **true**: The page is the main editing page.<br>- **false**: The page is not the main editing page.<br> |
+| isMainPage | boolean | No | Whether the page is the main editing page.<br>- **true**: The page is the main editing page.<br>- **false**: The page is not the main editing page.<br>Default value: **true**.|
 
 **Error codes**
 
@@ -452,6 +458,74 @@ struct Page {
         .onClick(() => {
           console.info(`${TAG} onClick.....`);
           formProvider.openFormEditAbility('ability://EntryFormEditAbility', '1386529921');
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## formProvider.closeFormEditAbility<sup>23+</sup>
+
+closeFormEditAbility(isMainPage?: boolean): void
+
+Closes the widget editing page.
+
+**System capability**: SystemCapability.Ability.Form
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                                                |
+| ------ | ------ |----|----------------------------------------------------|
+| isMainPage | boolean | No | Whether to close the main editing page. The value **true** means closing the main editing page, and **false** means closing a non-main editing page.<br>Default value: **true**.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md#801-api-not-supported) and [Widget Error Codes](errorcode-form.md).
+
+| Error Code ID   | Error Message|
+|----------| -------- |
+| 801      | Capability not supported due to limited device capabilities. |
+| 16500050 | IPC connection error. |
+| 16501015 | Cannot close the widget editing page opened by other apps. |
+
+**Example**
+
+```ts
+import { formProvider } from '@kit.FormKit';
+
+const TAG: string = 'FormEditDemo-Page] -->';
+
+@Entry
+@Component
+struct Page {
+  @State message: string = 'Hello World';
+
+  aboutToAppear(): void {
+    console.info(`${TAG} aboutToAppear.....`);
+  }
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('PageHelloWorld')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Top },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          console.info(`${TAG} onClick.....`);
+          try {
+            formProvider.closeFormEditAbility();
+            console.info(`${TAG} close FormEditAbility success.`);
+          } catch (error) {
+            console.error(`${TAG} close FormEditAbility faild, code: ${error.code}, message: ${error.message}`);
+          }
         })
     }
     .height('100%')
@@ -618,6 +692,11 @@ try {
 requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;
 
 Requests an animation. This API takes effect only for [scene-based widgets](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field). This API uses a promise to return the result.
+> **NOTE**
+>
+> - This API is unavailable in the power-saving mode and will return the error code 16501000.
+> - If the device's thermal level reaches HOT and no tap event occurs, the API returns error code 16501000. If the thermal level reaches OVERHEATED, the API returns error code 16501000 in any case. For details about thermal level information, see [ThermalLevel](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
+
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -929,8 +1008,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { formProvider } from '@kit.FormKit';
 
 try {
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  // Replace the widget with the actual one to be updated.
+  // Replace the information with the actual widget information to be updated.
   let moduleName: string = 'entry';
   let abilityName: string = 'EntryFormAbility';
   let formName: string = 'formName';
@@ -983,6 +1063,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { formProvider } from '@kit.FormKit';
 
 try {
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
   formProvider.reloadAllForms(context).then((reloadNum: number) => {
     console.info(`reloadAllForms success, reload number: ${reloadNum}`);

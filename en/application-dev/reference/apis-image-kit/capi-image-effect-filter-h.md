@@ -103,7 +103,7 @@ The file declares the APIs related to an image effect filter.<br> With these API
 
 ### ImageEffect_DataType
 
-```
+```c
 enum ImageEffect_DataType
 ```
 
@@ -128,7 +128,7 @@ Enumerates the data types.
 
 ### ImageEffect_Format
 
-```
+```c
 enum ImageEffect_Format
 ```
 
@@ -152,7 +152,7 @@ Enumerates the pixel formats.
 
 ### ImageEffect_BufferType
 
-```
+```c
 enum ImageEffect_BufferType
 ```
 
@@ -175,7 +175,7 @@ Enumerates the buffer types.
 
 ### OH_EffectFilterInfo_Create()
 
-```
+```c
 OH_EffectFilterInfo *OH_EffectFilterInfo_Create()
 ```
 
@@ -195,7 +195,7 @@ Creates an OH_EffectFilterInfo instance. The instance must be released by callin
 
 ### OH_EffectFilterInfo_SetFilterName()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_SetFilterName(OH_EffectFilterInfo *info, const char *name)
 ```
 
@@ -223,7 +223,7 @@ Sets a filter name.
 
 ### OH_EffectFilterInfo_GetFilterName()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_GetFilterName(OH_EffectFilterInfo *info, char **name)
 ```
 
@@ -251,7 +251,7 @@ Obtains a filter name.
 
 ### OH_EffectFilterInfo_SetSupportedBufferTypes()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedBufferTypes(OH_EffectFilterInfo *info, uint32_t size, ImageEffect_BufferType *bufferTypeArray)
 ```
 
@@ -280,7 +280,7 @@ Sets the buffer types supported by a filter.
 
 ### OH_EffectFilterInfo_GetSupportedBufferTypes()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedBufferTypes(OH_EffectFilterInfo *info, uint32_t *size, ImageEffect_BufferType **bufferTypeArray)
 ```
 
@@ -309,7 +309,7 @@ Obtains the buffer types supported by a filter.
 
 ### OH_EffectFilterInfo_SetSupportedFormats()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedFormats(OH_EffectFilterInfo *info, uint32_t size, ImageEffect_Format *formatArray)
 ```
 
@@ -338,7 +338,7 @@ Sets the pixel formats supported by a filter.
 
 ### OH_EffectFilterInfo_GetSupportedFormats()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedFormats(OH_EffectFilterInfo *info, uint32_t *size, ImageEffect_Format **formatArray)
 ```
 
@@ -367,7 +367,7 @@ Obtains the pixel formats supported by a filter.
 
 ### OH_EffectFilterInfo_Release()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_Release(OH_EffectFilterInfo *info)
 ```
 
@@ -394,7 +394,7 @@ Destroys an OH_EffectFilterInfo instance.
 
 ### OH_EffectBufferInfo_Create()
 
-```
+```c
 OH_EffectBufferInfo *OH_EffectBufferInfo_Create()
 ```
 
@@ -414,7 +414,7 @@ Creates an OH_EffectBufferInfo instance. The instance must be released by callin
 
 ### OH_EffectBufferInfo_SetAddr()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_SetAddr(OH_EffectBufferInfo *info, void *addr)
 ```
 
@@ -442,7 +442,7 @@ Sets the address of an effect buffer.
 
 ### OH_EffectBufferInfo_GetAddr()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_GetAddr(OH_EffectBufferInfo *info, void **addr)
 ```
 
@@ -470,7 +470,7 @@ Obtains the address of an effect buffer.
 
 ### OH_EffectBufferInfo_SetWidth()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_SetWidth(OH_EffectBufferInfo *info, int32_t width)
 ```
 
@@ -498,7 +498,7 @@ Sets the image width.
 
 ### OH_EffectBufferInfo_GetWidth()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_GetWidth(OH_EffectBufferInfo *info, int32_t *width)
 ```
 
@@ -526,7 +526,7 @@ Obtains the image width.
 
 ### OH_EffectBufferInfo_SetHeight()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_SetHeight(OH_EffectBufferInfo *info, int32_t height)
 ```
 
@@ -554,7 +554,7 @@ Sets the image height.
 
 ### OH_EffectBufferInfo_GetHeight()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_GetHeight(OH_EffectBufferInfo *info, int32_t *height)
 ```
 
@@ -582,7 +582,7 @@ Obtains the image height.
 
 ### OH_EffectBufferInfo_SetRowSize()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_SetRowSize(OH_EffectBufferInfo *info, int32_t rowSize)
 ```
 
@@ -610,7 +610,7 @@ Sets the number of bytes per row for an image.
 
 ### OH_EffectBufferInfo_GetRowSize()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_GetRowSize(OH_EffectBufferInfo *info, int32_t *rowSize)
 ```
 
@@ -638,7 +638,7 @@ Obtains the number of bytes per row of an image.
 
 ### OH_EffectBufferInfo_SetEffectFormat()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_SetEffectFormat(OH_EffectBufferInfo *info, ImageEffect_Format format)
 ```
 
@@ -666,7 +666,7 @@ Sets the pixel format for an image.
 
 ### OH_EffectBufferInfo_GetEffectFormat()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_GetEffectFormat(OH_EffectBufferInfo *info, ImageEffect_Format *format)
 ```
 
@@ -694,7 +694,7 @@ Obtains the pixel format of an image.
 
 ### OH_EffectBufferInfo_SetTextureId()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_SetTextureId(OH_EffectBufferInfo *info, int32_t textureId)
 ```
 
@@ -722,7 +722,7 @@ Sets the texture ID of the image for an OH_EffectBufferInfo struct.
 
 ### OH_EffectBufferInfo_GetTextureId()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_GetTextureId(OH_EffectBufferInfo *info, int32_t *textureId)
 ```
 
@@ -750,7 +750,7 @@ Obtains the texture ID of an image from an OH_EffectBufferInfo struct.
 
 ### OH_EffectBufferInfo_Release()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_Release(OH_EffectBufferInfo *info)
 ```
 
@@ -777,7 +777,7 @@ Destroys an OH_EffectBufferInfo instance.
 
 ### OH_EffectFilterDelegate_SetValue()
 
-```
+```c
 typedef bool (*OH_EffectFilterDelegate_SetValue)(OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value)
 ```
 
@@ -806,7 +806,7 @@ Defines a pointer to the callback function for setting parameters of a custom fi
 
 ### OH_EffectFilterDelegate_PushData()
 
-```
+```c
 typedef void (*OH_EffectFilterDelegate_PushData)(OH_EffectFilter *filter, OH_EffectBufferInfo *info)
 ```
 
@@ -828,7 +828,7 @@ Defines a pointer to the callback function used by a custom filter to push image
 
 ### OH_EffectFilterDelegate_Render()
 
-```
+```c
 typedef bool (*OH_EffectFilterDelegate_Render)(OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData)
 ```
 
@@ -857,7 +857,7 @@ Defines a pointer to the callback function for rendering an image using a custom
 
 ### OH_EffectFilterDelegate_Save()
 
-```
+```c
 typedef bool (*OH_EffectFilterDelegate_Save)(OH_EffectFilter *filter, char **info)
 ```
 
@@ -885,7 +885,7 @@ Defines a pointer to the callback function for serializing a custom filter. Filt
 
 ### OH_EffectFilterDelegate_Restore()
 
-```
+```c
 typedef OH_EffectFilter *(*OH_EffectFilterDelegate_Restore)(const char *info)
 ```
 
@@ -912,7 +912,7 @@ Defines a pointer to the callback function for deserializing a custom filter.
 
 ### OH_EffectFilter_Create()
 
-```
+```c
 OH_EffectFilter *OH_EffectFilter_Create(const char *name)
 ```
 
@@ -939,7 +939,7 @@ Creates an OH_EffectFilter instance. The instance must be released by calling [O
 
 ### OH_EffectFilter_SetValue()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilter_SetValue(OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value)
 ```
 
@@ -968,7 +968,7 @@ Sets a filter parameter.
 
 ### OH_EffectFilter_GetValue()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilter_GetValue(OH_EffectFilter *filter, const char *key, ImageEffect_Any *value)
 ```
 
@@ -997,7 +997,7 @@ Obtains a filter parameter.
 
 ### OH_EffectFilter_Register()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilter_Register(const OH_EffectFilterInfo *info, const ImageEffect_FilterDelegate *delegate)
 ```
 
@@ -1025,7 +1025,7 @@ Registers a custom filter.
 
 ### OH_EffectFilter_LookupFilters()
 
-```
+```c
 ImageEffect_FilterNames *OH_EffectFilter_LookupFilters(const char *key)
 ```
 
@@ -1052,7 +1052,7 @@ Obtains filters that meet given conditions.
 
 ### OH_EffectFilter_ReleaseFilterNames()
 
-```
+```c
 void OH_EffectFilter_ReleaseFilterNames()
 ```
 
@@ -1066,7 +1066,7 @@ Releases filter name memory resources.
 
 ### OH_EffectFilter_LookupFilterInfo()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilter_LookupFilterInfo(const char *name, OH_EffectFilterInfo *info)
 ```
 
@@ -1094,7 +1094,7 @@ Obtains the filter information.
 
 ### OH_EffectFilter_Render()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilter_Render(OH_EffectFilter *filter, OH_PixelmapNative *inputPixelmap, OH_PixelmapNative *outputPixelmap)
 ```
 
@@ -1123,7 +1123,7 @@ Starts image rendering.
 
 ### OH_EffectFilter_RenderWithTextureId()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilter_RenderWithTextureId(OH_EffectFilter *filter, int32_t inputTextureId, int32_t outputTextureId, int32_t colorSpace)
 ```
 
@@ -1153,7 +1153,7 @@ Applies the filter effect using texture IDs. This function does not support usin
 
 ### OH_EffectFilter_Release()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilter_Release(OH_EffectFilter *filter)
 ```
 
@@ -1180,7 +1180,7 @@ Destroys an OH_EffectFilter instance.
 
 ### OH_EffectBufferInfo_SetTimestamp()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_SetTimestamp(OH_EffectBufferInfo *info, int64_t timestamp)
 ```
 
@@ -1208,7 +1208,7 @@ Sets the filter timestamp.
 
 ### OH_EffectBufferInfo_GetTimestamp()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_GetTimestamp(OH_EffectBufferInfo *info, int64_t *timestamp)
 ```
 

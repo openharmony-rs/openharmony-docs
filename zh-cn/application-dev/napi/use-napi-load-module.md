@@ -27,6 +27,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
 - 禁止在非主线程当中使用该接口。
 - 禁止在Init函数中使用该接口。
 - 禁止在线程安全函数的回调函数当中进行文件路径的加载。
+- 在信号函数中调用不安全，直接调用可能导致栈溢出。
 
 建议使用[napi_load_module_with_info](use-napi-load-module-with-info.md)来进行模块加载，该接口支持了更多的场景。
 

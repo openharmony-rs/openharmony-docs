@@ -30,7 +30,7 @@ import { collections } from '@kit.ArkTS';
 | 名称   | 类型   | 只读 | 可选 | 说明              |
 | ------ | ------ | ---- | ---- | ----------------|
 | buffer | ArrayBuffer | 是   | 否  | ArkTS Uint8ClampedArray底层使用的buffer。|
-| byteLength | number | 是   | 否   | ArkTS Uint8ClampedArray的所占的字节数。|
+| byteLength | number | 是   | 否   | ArkTS Uint8ClampedArray所占的字节数。|
 | byteOffset | number | 是   | 否   | ArkTS Uint8ClampedArray距离其ArrayBuffer起始位置的偏移。|
 | length | number | 是   | 否  | ArkTS Uint8ClampedArray元素个数。|
 | BYTES_PER_ELEMENT | number | 是   | 否   | ArkTS Uint8ClampedArray中每个元素所占用的字节数。|
@@ -353,7 +353,7 @@ static of(...items: number[]): Uint8ClampedArray
 
 | 参数名    | 类型          | 必填 | 说明                            |
 | --------- | ------------- | ---- | ------------------------------- |
-| items | number[] | 否   | 用于创建数组的元素，参数个数可以是0个、1个或者多个。 |
+| items | number[] | 否   | 用于创建数组的元素，参数个数可以是0个、1个或者多个。默认值为空数组。 |
 
 **返回值：**
 

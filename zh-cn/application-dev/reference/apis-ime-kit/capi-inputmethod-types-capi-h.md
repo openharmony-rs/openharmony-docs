@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## 概述
@@ -39,7 +39,7 @@
 
 ### InputMethod_KeyboardStatus
 
-```
+```c
 enum InputMethod_KeyboardStatus
 ```
 
@@ -57,7 +57,7 @@ enum InputMethod_KeyboardStatus
 
 ### InputMethod_EnterKeyType
 
-```
+```c
 enum InputMethod_EnterKeyType
 ```
 
@@ -81,7 +81,7 @@ enum InputMethod_EnterKeyType
 
 ### InputMethod_Direction
 
-```
+```c
 enum InputMethod_Direction
 ```
 
@@ -101,7 +101,7 @@ enum InputMethod_Direction
 
 ### InputMethod_ExtendAction
 
-```
+```c
 enum InputMethod_ExtendAction
 ```
 
@@ -120,7 +120,7 @@ enum InputMethod_ExtendAction
 
 ### InputMethod_TextInputType
 
-```
+```c
 enum InputMethod_TextInputType
 ```
 
@@ -150,7 +150,7 @@ enum InputMethod_TextInputType
 
 ### InputMethod_CommandValueType
 
-```
+```c
 enum InputMethod_CommandValueType
 ```
 
@@ -169,7 +169,7 @@ enum InputMethod_CommandValueType
 
 ### InputMethod_ErrorCode
 
-```
+```c
 enum InputMethod_ErrorCode
 ```
 
@@ -182,7 +182,7 @@ enum InputMethod_ErrorCode
 | 枚举项 | 描述 |
 | -- | -- |
 | IME_ERR_OK = 0 | 成功。 |
-| IME_ERR_UNDEFINED = 1 | 查询失败。 |
+| IME_ERR_UNDEFINED = 1 | 未定义错误。 |
 | IME_ERR_PARAMCHECK = 401 | 参数检查失败。 |
 | IME_ERR_PACKAGEMANAGER = 12800001 | 包管理异常。 |
 | IME_ERR_IMENGINE = 12800002 | 输入法应用异常。 |
@@ -197,7 +197,7 @@ enum InputMethod_ErrorCode
 
 ### InputMethod_RequestKeyboardReason
 
-```
+```c
 enum InputMethod_RequestKeyboardReason
 ```
 

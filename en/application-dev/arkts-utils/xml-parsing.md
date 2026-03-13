@@ -35,67 +35,80 @@ The XML module provides the XmlPullParser class to parse XML text. The input is 
 
 1. Import the module.
 
-    ```ts
-    import { xml, util } from '@kit.ArkTS'; // Use the API provided by the util module to encode text.
-    ```
+   <!-- @[parsingXML_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
+   
+   ``` TypeScript
+   import { xml, util } from '@kit.ArkTS'; // Use the API provided by the util module to encode text.
+   ```
 
 2. Create an XmlPullParser object.
 
    You can create an XmlPullParser object based on ArrayBuffer or DataView. Both methods yield the same results.
 
-    ```ts
-    let strXml: string =
-    '<?xml version="1.0" encoding="utf-8"?>' +
-      '<note importance="high" logged="true">' +
-      '<title>Play</title>' +
-      '<lens>Work</lens>' +
-      '</note>';
-    let textEncoder: util.TextEncoder = new util.TextEncoder();
-    let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // Encode data to prevent garbled Chinese characters.
-    // Method 1: Create an XmlPullParser object based on ArrayBuffer.
-    let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
+   <!-- @[parsingXML_xmlPullParser](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
    
-    // Method 2: Create an XmlPullParser object based on DataView.
-    // let dataView: DataView = new DataView(arrBuffer.buffer as object as ArrayBuffer);
-    // let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(dataView, 'UTF-8');
-    ```
+   ``` TypeScript
+   let strXml: string =
+     '<?xml version="1.0" encoding="utf-8"?>' +
+       '<note importance="high" logged="true">' +
+       '<title>Play</title>' +
+       '<lens>Work</lens>' +
+       '</note>';
+   let textEncoder: util.TextEncoder = new util.TextEncoder();
+   let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // Encode data to prevent garbled Chinese characters.
+   // Method 1: Create an XmlPullParser object based on ArrayBuffer.
+   let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
+   ```
+
+   <!-- @[parsingXML_xmlPullParser_method_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->   
+   
+   ``` TypeScript
+   // Method 2: Create an XmlPullParser object based on DataView.
+   let dataView: DataView = new DataView(arrBuffer.buffer as object as ArrayBuffer);
+   let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(dataView, 'UTF-8');
+   ```
 
 3. Customize a callback function. In this example, the callback function directly prints the tags and their values.
 
-    ```ts
-    function func(name: string, value: string): boolean {
-      if (name == 'note') {
-        console.info(name);
-      }
-      if (value == 'Play' || value == 'Work') {
-        console.info('    ' + value);
-      }
-      if (name == 'title' || name == 'lens') {
-        console.info('  ' + name);
-      }
-      return true; // The value true means to continue parsing, and false means to stop parsing.
-    }
-    ```
+   <!-- @[parsingXML_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
+   
+   ``` TypeScript
+   function func(name: string, value: string): boolean {
+     if (name == 'note') {
+       console.info(name);
+     }
+     if (value == 'Play' || value == 'Work') {
+       console.info('    ' + value);
+       // ...
+     }
+     if (name == 'title' || name == 'lens') {
+       console.info('  ' + name);
+     }
+     return true; // The value true means to continue parsing, and false means to stop parsing.
+   }
+   ```
 
 4. Set parsing options and call the **parseXml** function.
 
-    ```ts
-    let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func};
-    xmlParser.parseXml(options);
-    ```
+   <!-- @[parsingXML_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
+   
+   ``` TypeScript
+   let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func};
+   xmlParser.parseXml(options);
+   ```
 
-	The output is as follows:
+   The output is as follows:
 
-	```
-	note
-	  title
-	    Play
-	  title
-	  lens
-	    Work
-	  lens
-	note
-	```
+   ```txt
+   note
+     title
+       Play
+     title
+     lens
+       Work
+     lens
+   note
+   ```
 
 
 
@@ -104,45 +117,53 @@ The XML module provides the XmlPullParser class to parse XML text. The input is 
 
 1. Import the module.
 
-    ```ts
-    import { xml, util } from '@kit.ArkTS'; // Use the util module to encode text.
-    ```
+   <!-- @[attribute_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingAttributesAndValues.ets) -->
+   
+   ``` TypeScript
+   import { xml, util } from '@kit.ArkTS'; // Use the util module to encode text.
+   ```
 
 2. Create an XmlPullParser object.
 
-    ```ts
-    let strXml: string =
-      '<?xml version="1.0" encoding="utf-8"?>' +
-        '<note importance="high" logged="true">' +
-        '    <title>Play</title>' +
-        '    <title>Happy</title>' +
-        '    <lens>Work</lens>' +
-        '</note>';
-    let textEncoder: util.TextEncoder = new util.TextEncoder();
-    let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // Encode data to prevent garbled Chinese characters.
-    let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
-    ```
+   <!-- @[attribute_xmlPullParser](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingAttributesAndValues.ets) -->
+   
+   ``` TypeScript
+   let strXml: string =
+     '<?xml version="1.0" encoding="utf-8"?>' +
+       '<note importance="high" logged="true">' +
+       '    <title>Play</title>' +
+       '    <title>Happy</title>' +
+       '    <lens>Work</lens>' +
+       '</note>';
+   let textEncoder: util.TextEncoder = new util.TextEncoder();
+   let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // Encode data to prevent garbled Chinese characters.
+   let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
+   ```
 
 3. Customize a callback function. In this example, the callback function directly prints the attributes and their values.
 
-    ```ts
-    let str: string = '';
-    function func(name: string, value: string): boolean {
-      str += name + ' ' + value + ' ';
-      return true; // The value true means to continue parsing, and false means to stop parsing.
-    }
-    ```
+   <!-- @[attribute_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingAttributesAndValues.ets) -->
+   
+   ``` TypeScript
+   let str: string = '';
+   function func(name: string, value: string): boolean {
+     str += name + ' ' + value + ' ';
+     return true; // The value true means to continue parsing, and false means to stop parsing.
+   }
+   ```
 
 4. Set parsing options and call the **parseXml** function.
 
-    ```ts
-    let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, attributeValueCallbackFunction:func};
-    xmlParser.parseXml(options);
-    console.info(str); // Print all attributes and their values.
-    ```
-
-   The output is as follows:
+   <!-- @[attribute_parseXml](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingAttributesAndValues.ets) -->
+   
+   ``` TypeScript
+   let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, attributeValueCallbackFunction:func};
+   xmlParser.parseXml(options);
+   console.info(str); // Print all attributes and their values.
    ```
+ 
+   The output is as follows:
+   ```txt
    importance high logged true // Attributes and values of the note node
    ```
 
@@ -151,52 +172,61 @@ The XML module provides the XmlPullParser class to parse XML text. The input is 
 
 1. Import the module.
 
-    ```ts
-    import { xml, util } from '@kit.ArkTS'; // Use the util module to encode text.
-    ```
+   <!-- @[eventTypes_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingEventTypesAndElementInformation.ets) -->
+   
+   ``` TypeScript
+   import { xml, util } from '@kit.ArkTS'; // Use the util module to encode text.
+   ```
 
 2. Create an XmlPullParser object.
 
-    ```ts
-    let strXml: string =
-      '<?xml version="1.0" encoding="utf-8"?>' +
-      '<note importance="high" logged="true">' +
-      '<title>Play</title>' +
-      '</note>';
-    let textEncoder: util.TextEncoder = new util.TextEncoder();
-    let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // Encode data to prevent garbled Chinese characters.
-    let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
-    ```
+   <!-- @[eventTypes_xmlPullParser](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingEventTypesAndElementInformation.ets) -->
+   
+   ``` TypeScript
+   let strXml: string =
+     '<?xml version="1.0" encoding="utf-8"?>' +
+       '<note importance="high" logged="true">' +
+       '<title>Play</title>' +
+       '</note>';
+   let textEncoder: util.TextEncoder = new util.TextEncoder();
+   let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // Encode data to prevent garbled Chinese characters.
+   let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
+   ```
 
 3. Customize a callback function. In this example, the callback function directly prints the event types and element depths.
 
-    ```ts
-    let str: string = '';
-    function func(name: xml.EventType, value: xml.ParseInfo): boolean {
-      str = name + ' ' + value.getDepth(); // Obtain the current depth of an element in the XML document.
-      console.info(str);
-      return true; // The value true means to continue parsing, and false means to stop parsing.
-    }
-    ```
+   <!-- @[eventTypes_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingEventTypesAndElementInformation.ets) -->
+   
+   ``` TypeScript
+   let str: string = '';
+   function func(name: xml.EventType, value: xml.ParseInfo): boolean {
+     str = name + ' ' + value.getDepth(); // Obtain the current depth of an element in the XML document.
+     console.info(str);
+     // ...
+     return true; // The value true means to continue parsing, and false means to stop parsing.
+   }
+   ```
 
 4. Set parsing options and call the **parseXml** function.
 
-     ```ts
-     let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func};
-     xmlParser.parseXml(options);
-     ```
+   <!-- @[eventTypes_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingEventTypesAndElementInformation.ets) -->
+   
+   ``` TypeScript
+   let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func};
+   xmlParser.parseXml(options);
+   ```
 
    The output is as follows:
 
-	```
-	 0 0 // First digit 0: <?xml version="1.0" encoding="utf-8"?> corresponds to event type START_DOCUMENT, which value is 0; second digit 0: The depth is 0.
-	 2 1 // First digit 2: <note importance="high" logged="true"> corresponds to event type START_TAG, which value is 2; second digit 1: The depth is 1.
-	 2 2 // First digit 2: <title> corresponds to event type START_TAG, which value is 2; second digit 2: The depth is 2.
-	 4 2 // First digit 4: "Play" corresponds to event type TEXT, which value is 4; second digit 2: The depth is 2.
-	 3 2 // First digit 3: </title> corresponds to event type END_TAG, which value is 3; second digit 2: The depth is 2.
-	 3 1 // First digit 3: </note> corresponds to event type END_TAG, which value is 3; second digit 1: The depth is 1.
-	 1 0 // First digit 1: corresponds to event type END_DOCUMENT, which value is 1; second digit 0: The depth is 0.
-	```
+   ```txt
+   0 0 // First digit 0: <?xml version="1.0" encoding="utf-8"?> corresponds to event type START_DOCUMENT, which value is 0; second digit 0: The depth is 0.
+   2 1 // First digit 2: <note importance="high" logged="true"> corresponds to event type START_TAG, which value is 2; second digit 1: The depth is 1.
+   2 2 // First digit 2: <title> corresponds to event type START_TAG, which value is 2; second digit 2: The depth is 2.
+   4 2 // First digit 4: "Play" corresponds to event type TEXT, which value is 4; second digit 2: The depth is 2.
+   3 2 // First digit 3: </title> corresponds to event type END_TAG, which value is 3; second digit 2: The depth is 2.
+   3 1 // First digit 3: </note> corresponds to event type END_TAG, which value is 3; second digit 1: The depth is 1.
+   1 0 // First digit 1: corresponds to event type END_DOCUMENT, which value is 1; second digit 0: The depth is 0.
+   ```
 
 
 
@@ -205,10 +235,11 @@ The XML module provides the XmlPullParser class to parse XML text. The input is 
 
 This example demonstrates how to use all parsing options to parse XML tags, attributes, and event types.
 
+<!-- @[example_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ExampleScenario.ets) -->
 
-```ts
+``` TypeScript
 import { xml, util } from '@kit.ArkTS';
-
+// ...
 let strXml: string =
   '<?xml version="1.0" encoding="UTF-8"?>' +
     '<book category="COOKING">' +
@@ -235,22 +266,23 @@ function attFunc(name: string, value: string): boolean {
 function tokenFunc(name: xml.EventType, value: xml.ParseInfo): boolean {
   str = name + ' ' + value.getDepth();
   console.info('token-' + str);
+  // ...
   return true;
 }
-
-let options: xml.ParseOptions = {
-  supportDoctype: true,
-  ignoreNameSpace: true,
-  tagValueCallbackFunction: tagFunc,
-  attributeValueCallbackFunction: attFunc,
-  tokenValueCallbackFunction: tokenFunc
-};
-xmlParser.parseXml(options);
+// ...
+  let options: xml.ParseOptions = {
+    supportDoctype: true,
+    ignoreNameSpace: true,
+    tagValueCallbackFunction: tagFunc,
+    attributeValueCallbackFunction: attFunc,
+    tokenValueCallbackFunction: tokenFunc
+  };
+  xmlParser.parseXml(options);
 ```
 
 The output is as follows:
 
-```
+```txt
 tag-
 token-0 0
 tag-book

@@ -6,7 +6,7 @@
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 ```c
-typedef struct {...} OH_Drawing_FontAdjustInfo
+typedef struct OH_Drawing_FontAdjustInfo {...} OH_Drawing_FontAdjustInfo
 ```
 
 ## 概述

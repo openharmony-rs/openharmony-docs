@@ -12,18 +12,16 @@
 
 数据安全标签和设备安全等级越高，加密措施和访问控制措施越严格，数据安全性越高。
 
-
 ### 数据安全标签
 
 按照数据分类分级规范要求，可将数据分为S1、S2、S3、S4四个安全等级。
 
-  | 风险等级 | 风险标准 | 定义 | 样例 | 
+| 风险等级 | 风险标准 | 定义 | 样例 | 
 | -------- | -------- | -------- | -------- |
 | 严重 | S4 | 业界法律法规定义的特殊数据类型，涉及个人的最私密领域的信息或一旦泄露、篡改、破坏、销毁可能会给个人或组织造成重大的不利影响的数据。 | 政治观点、宗教和哲学信仰、工会成员资格、基因数据、生物信息、健康和性生活状况，性取向等或设备认证鉴权、个人信用卡等财务信息等。 | 
 | 高 | S3 | 数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严峻的不利影响。 | 个人实时精确定位信息、运动轨迹等。 | 
 | 中 | S2 | 数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严重的不利影响。 | 个人的详细通信地址、姓名昵称等。 | 
 | 低 | S1 | 数据的泄露、篡改、破坏、销毁可能会给个人或组织导致有限的不利影响。 | 性别、国籍、用户申请记录等。 | 
-
 
 ### 设备安全等级
 <!--RP1-->
@@ -173,28 +171,28 @@
 具体接口及功能，可见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
 
 
-  
-```ts
-import { UIAbility } from '@kit.AbilityKit';
+<!-- @[rdb_accessControlByDeviceAndDataLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/pages/accessControlByDeviceAndDataLevel.ets) -->  
+
+``` TypeScript
 import { relationalStore } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { UIContext } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 
-export default class EntryAbility extends UIAbility {
-  async onCreate(): Promise<void> {
-    let store: relationalStore.RdbStore | undefined = undefined;
-    let context = this.context;
+let store: relationalStore.RdbStore | undefined = undefined;
 
-    try {
-      const STORE_CONFIG: relationalStore.StoreConfig = {
-        name: 'RdbTest.db',
-        securityLevel: relationalStore.SecurityLevel.S3
-      };
-      store = await relationalStore.getRdbStore(context, STORE_CONFIG);
-      console.info('Succeeded in getting RdbStore.')
-    } catch (e) {
-      const err = e as BusinessError;
-      console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
-    }
+export async function accessControlByDeviceAndDataLevel() {
+  /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
+  const context = new UIContext().getHostContext() as common.UIAbilityContext;
+  try {
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: 'RdbTest.db',
+      // 设置数据库安全级别为S3
+      securityLevel: relationalStore.SecurityLevel.S3
+    };
+    store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+    console.info('Succeeded in getting RdbStore.')
+  } catch (err) {
+    console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
   }
 }
 ```

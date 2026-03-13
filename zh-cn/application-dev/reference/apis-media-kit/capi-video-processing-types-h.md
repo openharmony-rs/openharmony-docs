@@ -63,7 +63,7 @@
 
 ### VideoDetailEnhancer_QualityLevel
 
-```
+```c
 enum VideoDetailEnhancer_QualityLevel
 ```
 
@@ -88,7 +88,7 @@ enum VideoDetailEnhancer_QualityLevel
 
 ### VideoMetadataGeneratorStyleControl
 
-```
+```c
 enum VideoMetadataGeneratorStyleControl
 ```
 
@@ -113,7 +113,7 @@ enum VideoMetadataGeneratorStyleControl
 
 ### VideoProcessing_ErrorCode
 
-```
+```c
 enum VideoProcessing_ErrorCode
 ```
 
@@ -139,7 +139,7 @@ enum VideoProcessing_ErrorCode
 
 ### VideoProcessing_State
 
-```
+```c
 enum VideoProcessing_State
 ```
 
@@ -159,7 +159,7 @@ enum VideoProcessing_State
 
 ### OH_VideoProcessingCallback_OnError()
 
-```
+```c
 typedef void (*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor, VideoProcessing_ErrorCode error, void* userData)
 ```
 
@@ -189,7 +189,7 @@ VIDEO_PROCESSING_ERROR_PROCESS_FAILED，处理过程中出错。
 
 ### OH_VideoProcessingCallback_OnState()
 
-```
+```c
 typedef void (*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProcessor, VideoProcessing_State state, void* userData)
 ```
 
@@ -211,7 +211,7 @@ typedef void (*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProc
 
 ### OH_VideoProcessingCallback_OnNewOutputBuffer()
 
-```
+```c
 typedef void (*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing* videoProcessor, uint32_t index, void* userData)
 ```
 

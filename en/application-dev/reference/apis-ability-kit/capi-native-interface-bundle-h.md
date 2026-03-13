@@ -48,7 +48,7 @@ The file declares the APIs for obtaining the application information, including 
 
 ### OH_NativeBundle_GetCurrentApplicationInfo()
 
-```
+```c
 OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()
 ```
 
@@ -66,7 +66,7 @@ Obtains the current application information, including the bundle name and finge
 
 ### OH_NativeBundle_GetAppId()
 
-```
+```c
 char* OH_NativeBundle_GetAppId()
 ```
 
@@ -84,7 +84,7 @@ Obtains the appId of the current application. The appId is the unique identifier
 
 ### OH_NativeBundle_GetAppIdentifier()
 
-```
+```c
 char* OH_NativeBundle_GetAppIdentifier()
 ```
 
@@ -101,7 +101,7 @@ Obtains the appIdentifier of the current application. The appIdentifier does not
 
 ### OH_NativeBundle_GetMainElementName()
 
-```
+```c
 OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()
 ```
 
@@ -119,7 +119,7 @@ Obtains the mainElement information of the current application, including the bu
 
 ### OH_NativeBundle_GetCompatibleDeviceType()
 
-```
+```c
 char* OH_NativeBundle_GetCompatibleDeviceType()
 ```
 
@@ -137,7 +137,7 @@ Obtains the compatible device type of the current application. It helps you opti
 
 ### OH_NativeBundle_IsDebugMode()
 
-```
+```c
 bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)
 ```
 
@@ -161,7 +161,7 @@ Checks whether the current application is in debug mode.
 
 ### OH_NativeBundle_GetModuleMetadata()
 
-```
+```c
 OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)
 ```
 
@@ -185,7 +185,7 @@ Obtains the module metadata array of the current application. After using this f
 
 ### OH_NativeBundle_GetAbilityResourceInfo()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, OH_NativeBundle_AbilityResourceInfo** abilityResourceInfo, size_t* size)
 ```
 

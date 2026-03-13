@@ -15,9 +15,11 @@ For details about the corresponding algorithm specifications, see [Scrypt](crypt
 
    **ScryptSpec** is a child class of [KdfSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#kdfspec11). You need to specify the following:
 
-   - **algName**: algorithm to use, which is **SCRYPT**.
+   - **algName**: algorithm to use, which is **'SCRYPT'**.
    - **passphrase**: original password used to generate the derived key.
+
       If the string type is used, pass in the data used for key derivation instead of the string type such as HexString or base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
+      
    - **salt**: salt value.
    - **n**: number of iterations. The value must be a positive integer.
    - **p**: parallelization parameter. The value must be a positive integer.
@@ -25,7 +27,7 @@ For details about the corresponding algorithm specifications, see [Scrypt](crypt
    - **maxMemory**: maximum memory size. The value must be a positive integer.
    - **keySize**: length of the key to derive, in bytes. The value must be a positive integer.
 
-2. Call [cryptoFramework.createKdf](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekdf11) with the string parameter set to **SCRYPT** to create a key derivation function object (**Kdf**) with the scrypt algorithm.
+2. Call [cryptoFramework.createKdf](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekdf11) with the string parameter set to **'SCRYPT'** to create a key derivation function object (**Kdf**) with the scrypt algorithm.
 
 3. Call [Kdf.generateSecret](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesecret11) with the **SCRYPT** object to generate a derived key.
 
@@ -39,16 +41,20 @@ For details about the corresponding algorithm specifications, see [Scrypt](crypt
 
 - Return the result using **await**:
 
-  ```ts
+  <!-- @[use_scrypt_for_key_derivation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/SCRYPTDerivation/entry/src/main/ets/pages/Await.ets) -->
+  
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
-  async function ScryptAwait() {
+  import { buffer } from '@kit.ArkTS';
+  
+  async function scryptAwait() {
     try {
       let spec: cryptoFramework.ScryptSpec = {
         algName: 'SCRYPT',
         salt: new Uint8Array(16),
-        passphrase: "password",
+        passphrase: 'password',
         n:1024,
         p:16,
         r:8,
@@ -57,7 +63,7 @@ For details about the corresponding algorithm specifications, see [Scrypt](crypt
       };
       let kdf = cryptoFramework.createKdf('SCRYPT');
       let secret = await kdf.generateSecret(spec);
-      console.info("key derivation output is " + secret.data);
+      console.info('key derivation output: ' + secret.data);
     } catch(error) {
       let e: BusinessError = error as BusinessError;
       console.error('key derivation failed, errCode: ' + e.code + ', errMsg: ' + e.message);
@@ -65,13 +71,17 @@ For details about the corresponding algorithm specifications, see [Scrypt](crypt
   }
   ```
 
-- Return the result using a promise:
 
-  ```ts
+- Return the result using a promise:
+  <!-- @[use_scrypt_for_key_derivation_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/SCRYPTDerivation/entry/src/main/ets/pages/Promise.ets) -->
+  
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
-  function ScryptPromise() {
+  import { buffer } from '@kit.ArkTS';
+  
+  function scryptPromise() {
     let spec: cryptoFramework.ScryptSpec = {
       algName: 'SCRYPT',
       passphrase: '123456',
@@ -85,19 +95,22 @@ For details about the corresponding algorithm specifications, see [Scrypt](crypt
     let kdf = cryptoFramework.createKdf('SCRYPT');
     let kdfPromise = kdf.generateSecret(spec);
     kdfPromise.then((secret) => {
-      console.info("key derivation output is " + secret.data);
+      console.info('key derivation output: ' + secret.data);
     }).catch((error: BusinessError) => {
-      console.error("key derivation error.");
+      console.error(`key derivation failed: errCode: ${error.code}, message: ${error.message}`);
     });
   }
   ```
 
-- Return the result synchronously:
 
-  ```ts
+- Return the result synchronously:
+  <!-- @[use_scrypt_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/SCRYPTDerivation/entry/src/main/ets/pages/Sync.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  import { buffer } from '@kit.ArkTS';
+  
   function kdfSync() {
     try {
       let spec: cryptoFramework.ScryptSpec = {
@@ -112,7 +125,7 @@ For details about the corresponding algorithm specifications, see [Scrypt](crypt
       };
       let kdf = cryptoFramework.createKdf('SCRYPT');
       let secret = kdf.generateSecretSync(spec);
-      console.info("[Sync]key derivation output is " + secret.data);
+      console.info('[Sync]key derivation output: ' + secret.data);
     } catch(error) {
       let e: BusinessError = error as BusinessError;
       console.error('key derivation failed, errCode: ' + e.code + ', errMsg: ' + e.message);

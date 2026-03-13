@@ -7,8 +7,8 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-```
-typedef struct {...} NativeChildProcess_FdList
+```c
+typedef struct NativeChildProcess_FdList {...} NativeChildProcess_FdList
 ```
 
 ## Overview

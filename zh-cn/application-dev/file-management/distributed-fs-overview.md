@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 分布式文件系统（hmdfs，OpenHarmony Distributed File System）提供跨设备的文件访问能力，适用于以下场景：
 
@@ -14,7 +14,7 @@
 
 - 户外拍摄的照片，回家打开平板直接访问原设备拍摄的照片。
 
-hmdfs在分布式软总线动态组网的基础上，为网络上各个设备结点提供一个全局一致的访问视图，支持开发者通过基础文件系统的接口进行读写访问，具有高性能、低延时等优点。
+hmdfs在分布式软总线动态组网的基础上，为网络上各个设备节点提供一个全局一致的访问视图，支持开发者通过基础文件系统的接口进行读写访问，具有高性能、低延时等优点。
 
 ## 分布式文件系统架构
 
@@ -23,6 +23,10 @@ hmdfs在分布式软总线动态组网的基础上，为网络上各个设备结
 - distributedfile_daemon：主要负责设备上线监听、通过软总线建立链路，并根据分布式的设备安全等级执行不同的数据流转策略。
 
 - hmdfs：实现在内核的网络文件系统，包括缓存管理、文件访问、元数据管理和冲突管理等。
+  > **注意**：
+  >
+  > [/data/storage/el2/distributedfiles/](app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系) 目录下面的文件不能随意删除，详细注意事项请参考[跨设备文件共享和访问](file-access-across-devices.md)。
+
   - 缓存管理
     - 设备分布式组网后，hmdfs提供文件的互访能力，但不会主动进行文件数据传输和拷贝。如果应用需要将数据保存到本地，需主动拷贝。
     - hmdfs保证Close-to-Open的一致性，即一端写关闭后，另外一端可以读取到最新数据，不保证文件内容的实时一致性。

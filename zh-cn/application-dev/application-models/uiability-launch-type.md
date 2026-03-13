@@ -143,10 +143,10 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
       build() {
         Row() {
           Column() {
-            // ···
-            // app.string.new_doc资源文件中的value值为'新建一个文档'
+            // ...
+            // 请将$r('app.string.new_doc')替换为实际资源文件，在本示例中该资源文件的value值为"新建一个文档"
             Button($r('app.string.new_doc'))
-            // ···
+            // ...
               .onClick(() => {
                 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 // context为调用方UIAbility的UIAbilityContext;
@@ -168,9 +168,9 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
                 this.KEY_NEW = this.KEY_NEW + 'a';
               })
     
-            // app.string.open_old_doc资源文件中的value值为'打开已保存文档'
+            // 请将$r('app.string.open_old_doc')替换为实际资源文件，在本示例中该资源文件的value值为"打开已保存文档"
             Button($r('app.string.open_old_doc'))
-            // ···
+            // ...
               .onClick(() => {
                 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 // context为调用方UIAbility的UIAbilityContext;

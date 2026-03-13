@@ -7,7 +7,7 @@
 <!--Adviser: @huipeizi-->
 <!--deprecated_code_no_check-->
 
-ServiceAbility的启动与其他Ability并无区别，应用开发者可以在PageAbility中通过featureAbility的startAbility接口拉起ServiceAbility，在ServiceAbility中通过particleAbility的startAbility接口拉起ServiceAbility。ServiceAbility的启动规则详见[组件启动规则](component-startup-rules.md)章节。
+ServiceAbility的启动与其他Ability并无区别，应用开发者可以在PageAbility中通过featureAbility的startAbility接口拉起ServiceAbility，在ServiceAbility中通过particleAbility的startAbility接口拉起ServiceAbility。ServiceAbility的启动规则详见[FA模型组件启动规则](component-startup-rules-fa.md)章节。
 
 
 如下示例展示了在PageAbility中通过startAbility启动bundleName为"com.example.myapplication"，abilityName为"ServiceAbility"的ServiceAbility的方法。启动[FA模型](ability-terminology.md#fa模型)的ServiceAbility时，需要在abilityName前拼接bundleName字符串。
@@ -47,7 +47,7 @@ struct PageServiceAbility {
 ```
 
 
-执行上述代码后，Ability将通过[`startAbility()`](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法来启动ServiceAbility。
+执行上述代码后，Ability将通过[`startAbility()`](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilitystartability)方法来启动ServiceAbility。
 
 
 - 如果ServiceAbility尚未运行，则系统会先调用onStart()来初始化ServiceAbility，再回调Service的onCommand()方法来启动ServiceAbility。

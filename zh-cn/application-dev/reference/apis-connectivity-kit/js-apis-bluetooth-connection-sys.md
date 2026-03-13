@@ -748,7 +748,7 @@ updateCloudBluetoothDevice(trustedPairedDevices: TrustedPairedDevices): Promise&
 
 | 参数名    | 类型      | 必填   | 说明                               |
 | ------ | ------- | ---- | -------------------------------- |
-| trustedPairedDevices   | [TrustedPairedDevices](#trustedpaireddevices15)  | 是    | 表示云设备列表。  |  
+| trustedPairedDevices   | [TrustedPairedDevices](#trustedpaireddevices15)  | 是    | 表示云设备列表。  |
 
 **返回值：**
 
@@ -814,6 +814,135 @@ try {
 ```
 
 
+## connection.pairDeviceOutOfBand<sup>23+</sup>
+
+pairDeviceOutOfBand(transport: BluetoothTransport, p192Data: OobData | null, p256Data: OobData | null): Promise&lt;void&gt;
+
+通过带外（Out of Band, [OOB](../../connectivity/terminology.md#oob)）通信机制发起与对端蓝牙设备的配对流程。使用Promise异步回调。
+
+- 蓝牙配对状态通过[on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange)的回调结果获取。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型     | 必填   | 说明                                  |
+| -------- | ------ | ---- | ----------------------------------- |
+| transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | 是    | 表示在配对对端设备时使用的传输方式。<br>- 若使用传统蓝牙（BR/EDR），则传入TRANSPORT_BR_EDR。若使用低功耗蓝牙（BLE），则传入TRANSPORT_LE。不支持其他[BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport)类型。|
+| p192Data | [OobData](#oobdata23) \| null | 是    | 配对过程中使用的OOB数据。P-192指一种椭圆曲线算法，其秘钥长度为192位，在蓝牙4.1及以前的传统配对方案中广泛使用。<br>- 若不使用该值，需传入null。<br>- p192Data与p256Data需至少传入一个有效值，若两者同时传入，则p256Data生效，p192Data不生效。|
+| p256Data | [OobData](#oobdata23) \| null | 是    | 配对过程中使用的OOB数据。P-256指一种椭圆曲线算法，其秘钥长度为256位，自蓝牙4.2开始成为安全连接的核心基础。基于P-256的OOB数据相比基于P-192的OOB数据具有更强的抗攻击能力与保密性。若非必须兼容蓝牙4.1或更早版本的旧设备，推荐使用p256Data。<br>- 若不使用该值，需传入null。<br>- p192Data与p256Data需至少传入一个有效值，若两者同时传入，则p256Data生效，p192Data不生效。|
+
+**返回值：**
+
+| 类型                  | 说明            |
+| ------------------- | ------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+import { common } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let transport: connection.BluetoothTransport = connection.BluetoothTransport.TRANSPORT_LE;
+    let addressInfo: common.BluetoothAddress = {
+        "address": "11:22:33:44:55:66",
+        "addressType": common.BluetoothAddressType.REAL, // 必须为实际MAC地址类型
+        "rawAddressType": common.BluetoothRawAddressType.RANDOM
+    };
+    let confirmHash: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10]);
+    let randomHash: Uint8Array = new Uint8Array([0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11]);
+    let oobData: connection.OobData = {
+        "deviceId": addressInfo,
+        "confirmationHash": confirmHash,
+        "randomizerHash": randomHash,
+        "deviceName": "testName",
+        "deviceRole": connection.DeviceRole.DEVICE_ROLE_PERIPHERAL_ONLY
+    }
+    connection.pairDeviceOutOfBand(transport, null, oobData).then(() => {
+        console.info('pairDeviceOufOfBand');
+    }, (err: BusinessError) => {
+        console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+    });
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+## connection.generateLocalOobData<sup>23+</sup>
+
+generateLocalOobData(transport: BluetoothTransport): Promise&lt;OobData&gt;
+
+获取本机的带外（Out of Band, [OOB](../../connectivity/terminology.md#oob)）通信数据。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型     | 必填   | 说明                                  |
+| -------- | ------ | ---- | ----------------------------------- |
+| transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | 是    | 表示在配对对端设备时使用的传输方式。<br>- 若使用传统蓝牙（BR/EDR），则传入TRANSPORT_BR_EDR。若使用低功耗蓝牙（BLE），则传入TRANSPORT_LE。不支持其他[BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport)类型。|
+
+**返回值：**
+
+| 类型                  | 说明            |
+| ------------------- | ------------- |
+| Promise&lt;[OobData](#oobdata23)&gt; | Promise对象，返回本机的OOB数据。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let transport: connection.BluetoothTransport = connection.BluetoothTransport.TRANSPORT_LE;
+    connection.generateLocalOobData(transport).then((oobData: connection.OobData) => {
+        console.info(`generateLocalOobData: ${JSON.stringify(oobData)}`);
+    }, (err: BusinessError) => {
+        console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+    });
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
 ## PinRequiredParam
 
 描述配对请求参数。
@@ -870,14 +999,14 @@ try {
 
 | 名称                               | 值    | 说明              |
 | -------------------------------- | ------ | --------------- |
-| DEVICE_TYPE_DEFAULT<sup>12+</sup> | 0 | 默认设备类型，与原类型一致。<br/>此接口为系统接口。 |
-| DEVICE_TYPE_CAR<sup>12+</sup>  | 1 | 汽车。<br/>此接口为系统接口。  |
-| DEVICE_TYPE_HEADSET<sup>12+</sup>  | 2 | 耳机。<br/>此接口为系统接口。  |
-| DEVICE_TYPE_HEARING<sup>12+</sup>   | 3 | 助听器<br/>此接口为系统接口。  |
-| DEVICE_TYPE_GLASSES<sup>12+</sup>    | 4 | 眼镜。<br/>此接口为系统接口。  |
-| DEVICE_TYPE_WATCH<sup>12+</sup>     | 5 | 手表。<br/>此接口为系统接口。  |
-| DEVICE_TYPE_SPEAKER<sup>12+</sup>     | 6 | 音响。<br/>此接口为系统接口。  |
-| DEVICE_TYPE_OTHERS<sup>12+</sup>     | 7 | 其他设备。<br/>此接口为系统接口。  |
+| DEVICE_TYPE_DEFAULT | 0 | 默认设备类型，与原类型一致。<br/>此接口为系统接口。 |
+| DEVICE_TYPE_CAR  | 1 | 汽车。<br/>此接口为系统接口。  |
+| DEVICE_TYPE_HEADSET  | 2 | 耳机。<br/>此接口为系统接口。  |
+| DEVICE_TYPE_HEARING   | 3 | 助听器<br/>此接口为系统接口。  |
+| DEVICE_TYPE_GLASSES    | 4 | 眼镜。<br/>此接口为系统接口。  |
+| DEVICE_TYPE_WATCH     | 5 | 手表。<br/>此接口为系统接口。  |
+| DEVICE_TYPE_SPEAKER     | 6 | 音响。<br/>此接口为系统接口。  |
+| DEVICE_TYPE_OTHERS     | 7 | 其他设备。<br/>此接口为系统接口。  |
 
 
 ## BatteryInfo<sup>12+</sup>
@@ -905,6 +1034,7 @@ try {
 | VIBRATE | 1 | 表示控制类型为振动。 |
 | FLASH | 2 | 表示控制类型为闪光。 |
 | LOCK | 3 | 表示控制类型为锁定。 |
+| ERASE | 4 | 表示控制类型为擦除。 |
 
 
 ## ControlTypeValue<sup>15+</sup>
@@ -975,3 +1105,39 @@ try {
 | deviceNameTime  | number | 否    | 否    | 表示设备名字的修改时间。   |
 | secureAdvertisingInfo  | ArrayBuffer | 否    | 否    | 表示设备广播信息。   |
 | pairState  | number | 否    | 否    | 表示设备配对状态。   |
+
+## OobData<sup>23+</sup>
+
+用于OOB配对的数据对象。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称       | 类型   | 只读   | 可选   | 说明          |
+| -------- | ------ | ---- | ---- | ----------- |
+| deviceId  | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 否    | 否    | 蓝牙设备的地址信息。<br>- 在使用OobData时，[BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress)中的address、addressType和rawAddressType均为必选参数，且addressType必须设置为REAL。|
+| confirmationHash | Uint8Array | 否 | 否 | 确认哈希值，长度为16个Byte。 |
+| randomizerHash | Uint8Array | 否 | 是 | 随机哈希值，长度为16个Byte。若不设置该值，则默认值为全0。 |
+| deviceName | string | 否 | 是 | 蓝牙设备的名称。若不设置该值，则默认值为空字符串。|
+| deviceRole | [DeviceRole](#devicerole23) | 否 | 是 | 蓝牙设备在连接过程中的角色。若不设置该值，则默认值为DEVICE_ROLE_PERIPHERAL_ONLY。|
+
+
+## DeviceRole<sup>23+</sup>
+
+枚举，蓝牙设备在连接过程中的[角色](../../connectivity/bluetooth/bluetooth-overview.md#设备角色)。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称           | 值   | 说明                 |
+| -------------- | ---- | -------------------- |
+| DEVICE_ROLE_PERIPHERAL_ONLY       | 0    | 表示该蓝牙设备仅支持作为外围设备。 |
+| DEVICE_ROLE_CENTRAL_ONLY      | 1    | 表示该蓝牙设备仅支持作为中心设备。 |
+| DEVICE_ROLE_BOTH_PREFER_PERIPHERAL | 2    | 表示该蓝牙设备既可以作为中心设备，也可以作为外围设备，但优先作为外围设备。 |
+| DEVICE_ROLE_BOTH_PREFER_CENTRAL | 3    |  表示该蓝牙设备既可以作为中心设备，也可以作为外围设备，但优先作为中心设备。  |

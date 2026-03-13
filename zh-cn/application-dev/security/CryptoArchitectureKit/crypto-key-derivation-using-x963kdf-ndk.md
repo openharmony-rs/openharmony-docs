@@ -23,12 +23,15 @@
 
 4. 调用[OH_CryptoKdf_Derive](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_derive)，指定目标密钥的字节长度，进行密钥派生。
 
-```C++
-#include "CryptoArchitectureKit/crypto_architecture_kit.h"
-#include <stdio.h>
-#include <string.h>
+<!-- @[x963kdf_test_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/X963KDFDerivation/entry/src/main/cpp/types/project/x963kdf_test.cpp) -->
 
-static OH_Crypto_ErrCode doTestX963Kdf()
+``` C++
+#include "CryptoArchitectureKit/crypto_architecture_kit.h"
+#include <cstdio>
+#include <cstring>
+#include "file.h"
+
+OH_Crypto_ErrCode doTestX963Kdf()
 {
     // 创建X963KDF参数对象。
     OH_CryptoKdfParams *params = nullptr;
@@ -48,7 +51,6 @@ static OH_Crypto_ErrCode doTestX963Kdf()
         OH_CryptoKdfParams_Destroy(params);
         return ret;
     }
-
 
     // 设置应用程序特定信息。
     const char *infoData = "infostring";

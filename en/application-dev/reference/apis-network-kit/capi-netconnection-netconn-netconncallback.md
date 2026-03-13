@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct NetConn_NetConnCallback {...} NetConn_NetConnCallback
+```
+
 ## Overview
 
 Defines network status callbacks.

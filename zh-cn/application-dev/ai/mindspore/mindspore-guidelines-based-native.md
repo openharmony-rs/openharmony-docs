@@ -597,3 +597,4 @@ struct Index {
 
 - [基于Native接口的MindSpore Lite应用开发（C/C++）（API11）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo)
 
+<!--RP1--><!--RP1End-->

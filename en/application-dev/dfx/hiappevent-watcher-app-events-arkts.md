@@ -57,138 +57,138 @@ import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
 
    Subscribe to the crash event using **OnReceive**. After receiving the event, the watcher immediately triggers the **OnReceive** callback. In the **EntryAbility.ets** file, define the methods related to the watcher of the **OnReceive** type.
 
-   <!-- @[AppEvent_Crash_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-``` TypeScript
-    hiAppEvent.addWatcher({
-      // Set the watcher name. The system identifies different watchers based on their names.
-      name: 'AppCrashWatcher',
-      // Set the subscription filters. For example, subscribe to the crash event of the system event.
-      appEventFilters: [
-        {
-          domain: hiAppEvent.domain.OS,
-          names: [hiAppEvent.event.APP_CRASH]
-        }
-      ],
-      // Implement the onReceive callback, which is called in real time after an event is detected.
-      onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
-        hilog.info(0x0000, 'testTag', 'AppEvents HiAppEvent success to read event with onReceive callback from ArkTS');
-        hilog.info(0x0000, 'testTag', `domain=${domain}`);
-        for (const eventGroup of appEventGroups) {
-          hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventName=${eventGroup.name}`);
-          for (const eventInfo of eventGroup.appEventInfos) {
-            // Obtain the timestamp of the crash event.
-            hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventInfo.params.time=${JSON.stringify(eventInfo.params['time'])}`);
-            // Obtain the bundle name of the crashed application.
-            hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventInfo.params.bundle_name=${JSON.stringify(eventInfo.params['bundle_name'])}`);
-            // Obtain the error log file about the crash event.
-            hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
-          }
-        }
-      }
-    });
-```
+   <!-- @[AppEvent_Crash_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+   
+   ``` TypeScript
+   hiAppEvent.addWatcher({
+     // Set the watcher name. The system identifies different watchers based on their names.
+     name: 'AppCrashWatcher',
+     // Set the subscription filters. For example, subscribe to the crash event of the system event.
+     appEventFilters: [
+       {
+         domain: hiAppEvent.domain.OS,
+         names: [hiAppEvent.event.APP_CRASH]
+       }
+     ],
+     // Implement the onReceive callback, which is called in real time after an event is detected.
+     onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+       hilog.info(0x0000, 'testTag', 'AppEvents HiAppEvent success to read event with onReceive callback from ArkTS');
+       hilog.info(0x0000, 'testTag', `domain=${domain}`);
+       for (const eventGroup of appEventGroups) {
+         hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventName=${eventGroup.name}`);
+         for (const eventInfo of eventGroup.appEventInfos) {
+           // Obtain the timestamp of the crash event.
+           hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventInfo.params.time=${JSON.stringify(eventInfo.params['time'])}`);
+           // Obtain the bundle name of the crashed application.
+           hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventInfo.params.bundle_name=${JSON.stringify(eventInfo.params['bundle_name'])}`);
+           // Obtain the error log file about the crash event.
+           hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
+         }
+       }
+     }
+   });
+   ```
 
    Subscribe to the button click event using **OnTrigger**. The **OnTrigger()** callback can be triggered only when the conditions specified by **OnTrigger()** are met. In the **napi_init.cpp** file, define the methods related to **OnTrigger()**.
 
-   <!-- @[AppEvent_Click_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-``` TypeScript
-    hiAppEvent.addWatcher({
-      // Set the watcher name. The system identifies different watchers based on their names.
-      name: 'ButtonClickWatcher',
-      // Add the application events to watch, for example, button onclick events.
-      appEventFilters: [{ domain: 'button' }],
-      // Set the subscription callback trigger condition. For example, trigger a callback when one event is logged.
-      triggerCondition: { row: 1 },
-      // Implement the subscription callback function to apply custom processing to the obtained event logging data.
-      onTrigger: (curRow: number, curSize: number, holder: hiAppEvent.AppEventPackageHolder) => {
-        // If the holder object is null, return after the error is recorded.
-        if (holder == null) {
-          hilog.error(0x0000, 'testTag', 'AppEvents HiAppEvent holder is null');
-          return;
-        }
-        hilog.info(0x0000, 'testTag', 'AppEvents HiAppEvent success to read event with onTrigger callback from ArkTS');
-        hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent onTrigger: curRow=%{public}d, curSize=%{public}d`, curRow, curSize);
-        let eventPkg: hiAppEvent.AppEventPackage | null = null;
-        // Fetch the subscription event package based on the specified threshold (1 event by default) until all subscription event data is fetched.
-        // If all subscription event data is fetched, return a null event package to end this subscription callback.
-        while ((eventPkg = holder.takeNext()) != null) {
-          // Apply custom processing to the event logging data obtained, for example, print the event logging data in the log.
-          hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.packageId=%{public}d`, eventPkg.packageId);
-          hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.row=%{public}d`, eventPkg.row);
-          hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.size=%{public}d`, eventPkg.size);
-          for (const eventInfo of eventPkg.data) {
-            hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.info=%{public}s`, eventInfo);
-          }
-        }
-      }
-    });
-```
+   <!-- @[AppEvent_Click_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+   
+   ``` TypeScript
+   hiAppEvent.addWatcher({
+     // Set the watcher name. The system identifies different watchers based on their names.
+     name: 'ButtonClickWatcher',
+     // Add the application events to watch, for example, button onclick events.
+     appEventFilters: [{ domain: 'button' }],
+     // Set the subscription callback trigger condition. For example, trigger a callback when one event is logged.
+     triggerCondition: { row: 1 },
+     // Implement the subscription callback function to apply custom processing to the obtained event logging data.
+     onTrigger: (curRow: number, curSize: number, holder: hiAppEvent.AppEventPackageHolder) => {
+       // If the holder object is null, return after the error is recorded.
+       if (holder == null) {
+         hilog.error(0x0000, 'testTag', 'AppEvents HiAppEvent holder is null');
+         return;
+       }
+       hilog.info(0x0000, 'testTag', 'AppEvents HiAppEvent success to read event with onTrigger callback from ArkTS');
+       hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent onTrigger: curRow=%{public}d, curSize=%{public}d`, curRow, curSize);
+       let eventPkg: hiAppEvent.AppEventPackage | null = null;
+       // Fetch the subscription event package based on the specified threshold (1 event by default) until all subscription event data is fetched.
+       // If all subscription event data is fetched, return a null event package to end this subscription callback.
+       while ((eventPkg = holder.takeNext()) != null) {
+         // Apply custom processing to the event logging data obtained, for example, print the event logging data in the log.
+         hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.packageId=%{public}d`, eventPkg.packageId);
+         hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.row=%{public}d`, eventPkg.row);
+         hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.size=%{public}d`, eventPkg.size);
+         for (const eventInfo of eventPkg.data) {
+           hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.info=%{public}s`, eventInfo);
+         }
+       }
+     }
+   });
+   ```
 
 3. In the **entry/src/main/ets/pages/Index.ets** file, import the dependent modules.
 
-   <!-- @[EventSub_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
-```
+   <!-- @[EventSub_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 4. In the **entry/src/main/ets/pages/Index.ets** file of the project, add the **WatchAppCrash ArkTS&C++** button to trigger a crash event, and add the **writeEventArkTS** button in **onClick()** to log the event. The sample code is as follows:
 
    Trigger a crash event.
 
-   <!-- @[AppEvent_Crash_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-        Button('WatchAppCrash ArkTS&C++')
-          .type(ButtonType.Capsule)
-          .margin({
-            top: 20
-          })
-          .backgroundColor('#0D9FFB')
-          .width('80%')
-          .height('5%')
-          .onClick(() => {
-            // Construct a scenario in onClick() to trigger a crash event.
-            let result: object = JSON.parse('');
-          })
-```
+   <!-- @[AppEvent_Crash_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   Button('WatchAppCrash ArkTS&C++')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       // Construct a scenario in onClick() to trigger a crash event.
+       let result: object = JSON.parse('');
+     })
+   ```
 
    Log events in the button click function.
 
-   <!-- @[AppEvent_Click_ArkTS_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-        Button('writeEvent ArkTS')
-          .type(ButtonType.Capsule)
-          .margin({
-            top: 20
-          })
-          .backgroundColor('#0D9FFB')
-          .width('80%')
-          .height('5%')
-          .onClick(() => {
-            // In onClick(), use hiAppEvent.write() to log an event when the button is clicked.
-            let eventParams: Record<string, number> = {'clickTime': 100};
-            let eventInfo: hiAppEvent.AppEventInfo = {
-              // Define the event domain.
-              domain: 'button',
-              // Define the event name.
-              name: 'click',
-              // Define the event type.
-              eventType: hiAppEvent.EventType.BEHAVIOR,
-              // Define the event parameters.
-              params: eventParams,
-            };
-            hiAppEvent.write(eventInfo).then(() => {
-              hilog.info(0x0000, 'testTag', `AppEvents writeEvent ArkTS success`);
-            }).catch((err: BusinessError) => {
-              hilog.error(0x0000, 'testTag', `AppEvents HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
-            });
-          })
-```
+   <!-- @[AppEvent_Click_ArkTS_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   Button('writeEvent ArkTS')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       // In onClick(), use hiAppEvent.write() to log an event when the button is clicked.
+       let eventParams: Record<string, number> = {'clickTime': 100};
+       let eventInfo: hiAppEvent.AppEventInfo = {
+         // Define the event domain.
+         domain: 'button',
+         // Define the event name.
+         name: 'click',
+         // Define the event type.
+         eventType: hiAppEvent.EventType.BEHAVIOR,
+         // Define the event parameters.
+         params: eventParams,
+       };
+       hiAppEvent.write(eventInfo).then(() => {
+         hilog.info(0x0000, 'testTag', `AppEvents writeEvent ArkTS success`);
+       }).catch((err: BusinessError) => {
+         hilog.error(0x0000, 'testTag', `AppEvents HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
+       });
+     })
+   ```
 
 ## Debugging and Verification
 

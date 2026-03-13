@@ -39,7 +39,7 @@ Invoked when data is moved during drag-and-drop sorting. This callback is effect
 
 onMove(handler: Optional\<OnMoveHandler\>, eventHandler: ItemDragEventHandler): T
 
-Invoked when data is moved during drag-and-drop sorting. This callback is effective only when the parent container component is [List](./ts-container-list.md) and each iteration of **ForEach**, **LazyForEach**, or **Repeat** generates a **ListItem** component. It allows you to define custom drag actions and handle various drag events. Compared with [onMove](#onmove), this API supports the **eventHander** parameter for listening for callback events reported during drag and drop operations.
+Invoked when data is moved during drag-and-drop sorting. This callback is effective only when the parent container component is [List](./ts-container-list.md) and each iteration of **ForEach**, **LazyForEach**, or **Repeat** generates a **ListItem** component. It allows you to define custom drag actions and handle various drag events. Compared with [onMove](#onmove), this API supports the **eventHandler** parameter for listening for callback events reported during drag and drop operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

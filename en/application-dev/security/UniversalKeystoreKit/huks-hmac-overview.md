@@ -9,6 +9,8 @@
 
 A message authentication code (MAC) is used for verifying the authenticity and integrity of information transmitted or stored on unreliable media. A hash-based message authentication code (HMAC) is a MAC involving a cryptographic hash function and a secret cryptographic key. The HMAC can be used with any cryptographic hash function, such as SHA-256 and SM3. HUKS supports the use of HMAC with mainstream message digest (MD) algorithms.
 
+The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
+
 ## Supported Algorithms
 
 The following table lists the HMAC specifications supported by the system.
@@ -23,3 +25,4 @@ You are advised to use mandatory specifications in your development for compatib
 | SHA-256 | 192 to 1024 | 8+ | Yes|
 | SHA-384, SHA-512| 256 to 1024 | 8+ | Yes|
 | SM3 | <!--RP1-->8 to 4096 <!--RP1End--> | 8+ | Yes|
+<!--no_check-->

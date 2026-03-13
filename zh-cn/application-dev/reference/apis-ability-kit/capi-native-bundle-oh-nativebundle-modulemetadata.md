@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
-typedef struct {...} OH_NativeBundle_ModuleMetadata
+typedef struct OH_NativeBundle_ModuleMetadata {...} OH_NativeBundle_ModuleMetadata
 ```
 
 ## 概述

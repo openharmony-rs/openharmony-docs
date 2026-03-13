@@ -11,7 +11,7 @@
 
 - It will be helpful if you understand [permission groups and permissions](app-permission-mgmt-overview.md#permission-groups-and-permissions) before requesting permission groups for your application.
 
-- It helps minimize the number of dialogs that are presented to the user when an application requests closely related permissions. The user simply needs to grant the permissions all at once, except for the Location, Contacts, Call Logs, Phone, Messaging, and Calendar permissions.
+- It helps minimize the number of dialogs that are presented to the user when an application requests closely related permissions. The user simply needs to grant the permissions all at once, except for the Location, Contacts, <!--Del-->Call Logs, Phone, Messaging,<!--DelEnd--> and Calendar permission groups.
 
   The following uses the Location and Camera permission groups as an example.
 
@@ -49,11 +49,9 @@
  
 - [ohos.permission.WRITE_CALENDAR](permissions-for-all-user.md#ohospermissionwrite_calendar)
  
-<!--Del-->
-- ohos.permission.READ_WHOLE_CALENDAR
+- [ohos.permission.READ_WHOLE_CALENDAR](restricted-permissions.md#ohospermissionread_whole_calendar)
 
-- ohos.permission.WRITE_WHOLE_CALENDAR
-<!--DelEnd-->
+- [ohos.permission.WRITE_WHOLE_CALENDAR](restricted-permissions.md#ohospermissionwrite_whole_calendar)
 
 <!--RP1-->
 ## Fitness
@@ -73,7 +71,7 @@
 
 - [ohos.permission.MEDIA_LOCATION](permissions-for-all-user.md#ohospermissionmedia_location)
 
-- [ohos.permission.SHORT_TERM_WRITE_IMAGEVIDEO](restricted-permissions.md#ohospermissionshort_term_write_imagevideo)
+<!--RP4--><!--RP4End-->
 
 ## Music and Audio
 
@@ -156,7 +154,7 @@
 ## Files<sup>(deprecated)</sup>
 
 > **NOTE**
-> This permission group is deprecated since API version 12.
+> Since API version 9, alternatives are supported.
 
 <!--Del-->
 - ohos.permission.READ_DOCUMENT

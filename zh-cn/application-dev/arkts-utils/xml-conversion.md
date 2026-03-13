@@ -24,7 +24,9 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
 
 1. 引入所需的模块。
 
-   ```ts
+   <!-- @[xmlChange_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { convertxml } from '@kit.ArkTS';
    ```
 
@@ -34,14 +36,16 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
    >
    > 请确保传入的XML文本符合标准格式，若包含“&”字符，请使用实体引用“\&amp;”替换。
 
-   ```ts
+   <!-- @[xmlChange_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
    let xml: string =
-    '<?xml version="1.0" encoding="utf-8"?>' +
-    '<note importance="high" logged="true">' +
-    '    <title>Happy</title>' +
-    '    <todo>Work</todo>' +
-    '    <todo>Play</todo>' +
-    '</note>';
+     '<?xml version="1.0" encoding="utf-8"?>' +
+       '<note importance="high" logged="true">' +
+       '    <title>Happy</title>' +
+       '    <todo>Work</todo>' +
+       '    <todo>Play</todo>' +
+       '</note>';
    let options: convertxml.ConvertOptions = {
      // trim: false 转换后是否删除文本前后的空格，否
      // declarationKey: "_declaration" 转换后文件声明使用_declaration来标识
@@ -56,23 +60,27 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
      // nameKey: "_name" 转换后标签名称使用_name标识
      // elementsKey: "_elements" 转换后元素使用_elements标识
      trim: false,
-     declarationKey: "_declaration",
-     instructionKey: "_instruction",
-     attributesKey: "_attributes",
-     textKey: "_text",
-     cdataKey: "_cdata",
-     doctypeKey: "_doctype",
-     commentKey: "_comment",
-     parentKey: "_parent",
-     typeKey: "_type",
-     nameKey: "_name",
-     elementsKey: "_elements"
+     declarationKey: '_declaration',
+     instructionKey: '_instruction',
+     attributesKey: '_attributes',
+     textKey: '_text',
+     cdataKey: '_cdata',
+     doctypeKey: '_doctype',
+     commentKey: '_comment',
+     parentKey: '_parent',
+     typeKey: '_type',
+     nameKey: '_name',
+     elementsKey: '_elements'
    }
    ```
 
+   <!-- @[xmlChange_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  
+
 3. 调用fastConvertToJSObject函数并打印结果。
 
-   ```ts
+   <!-- @[xmlChange_console](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
    let conv: convertxml.ConvertXML = new convertxml.ConvertXML();
    let result: object = conv.fastConvertToJSObject(xml, options);
    let strRes: string = JSON.stringify(result); // 将js对象转换为json字符串，用于显式输出

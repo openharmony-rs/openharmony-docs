@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @hongjin-li_admin-->
-<!--Designer: @JerryH1011-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
@@ -18,6 +18,17 @@ Once the screen is locked, the keys for sensitive data are destroyed, preventing
 ```ts
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
+
+## DataType
+
+Enumerates the types of sensitive data that can be accessed on the lock screen.
+
+ **System capability**: SystemCapability.Security.ScreenLockFileManager
+
+| Name      | Value        | Description          |
+| ---------- | ---------- | -------------- |
+| MEDIA_DATA | 0x00000001 | Media data.|
+| ALL_DATA   | 0xffffffff | All encrypted data.    |
 
 ## AccessStatus
 

@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Hid_DeviceHandle Hid_DeviceHandle
+```
+
 ## Overview
 
 Defines the opaque USB HID device structure.

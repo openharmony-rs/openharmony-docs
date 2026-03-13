@@ -9,6 +9,8 @@
 
 You can use the keys in HUKS to encrypt or decrypt data.
 
+The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
+
 ## Supported Algorithms
 
 The following table lists the supported specifications for key encryption and decryption.
@@ -52,3 +54,4 @@ Before implementing the specifications for mini-system devices, determine whethe
 | RSA/ECB/NoPadding | - | 12+ |
 | RSA/ECB/PKCS1_V1_5 | - | 12+ |
 | RSA/ECB/OAEP | SHA-256 is used as the MD algorithm.| 12+ |
+<!--no_check-->

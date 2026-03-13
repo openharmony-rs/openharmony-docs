@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_Rect
+```
+
 ## Overview
 
 Defines a mask area.
@@ -22,7 +26,7 @@ Defines a mask area.
 
 | Name| Description|
 | -- | -- |
-| float x | X-coordinate of the mask area.|
-| float y | Y-coordinate of the mask area.|
-| float width | Width of the mask area.|
-| float height | Height of the mask area.|
+| float x | X-coordinate of the mask area, in vp.|
+| float y | Y-coordinate of the mask area, in vp.|
+| float width | Width of the mask area, in vp.|
+| float height | Height of the mask area, in vp.|

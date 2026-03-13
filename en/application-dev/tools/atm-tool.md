@@ -39,7 +39,7 @@ atm perm [-h] [-g -i <token-id> -p <permission-name>] [-c -i <token-id> -p <perm
 **Parameters**
 | Parameter                                              | Description                 | 
 | -------------------------------------------------- | ---------------------- | 
-| -h                                        | Displays help information.| Commands supported by the **atm perm** command.|
+| -h                                        | Displays help information. Commands supported by the **atm perm** command.|
 | -g&nbsp;-i \<token-id\>&nbsp;-p \<permission-name\> | Grants a specified permission to an application based on the token ID of the application process. The **-g**, **-i**, and **-p** parameters are mandatory. The return value indicates whether the operation is successful.   | 
 | -c&nbsp;-i \<token-id\>&nbsp;-p \<permission-name\> | Cancels a specified permission for an application based on the token ID of the application process. The **-c**, **-i**, and **-p** parameters are mandatory. The return value indicates whether the operation is successful.   | 
 

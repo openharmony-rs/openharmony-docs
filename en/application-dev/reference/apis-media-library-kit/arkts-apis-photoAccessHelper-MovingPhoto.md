@@ -6,14 +6,12 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+MovingPhoto provides APIs for managing a moving photo instance.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 12.
-
-MovingPhoto provides APIs for managing a moving photo instance.
-
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
 
@@ -94,7 +92,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 requestContent(imageFileUri: string, videoFileUri: string): Promise\<void>
 
-Requests the image data and video data of this moving photo and writes them to the specified URIs, respectively.
+Requests the image data and video data of this moving photo and writes them to the specified URIs, respectively. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -102,8 +100,8 @@ Requests the image data and video data of this moving photo and writes them to t
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-- When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Accessing and Managing Moving Photos](../../media/medialibrary/photoAccessHelper-movingphoto.md).
-- For the moving photos saved to the media library by this application, the application can access them without the ohos.permission.READ_IMAGEVIDEO permission.
+- When you call this API in Picker mode, you do not need to request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Accessing and Managing Moving Photos](../../media/medialibrary/photoAccessHelper-movingphoto.md).
+- For moving photos saved to the media library by this application, the application can access them without the **ohos.permission.READ_IMAGEVIDEO** permission.
 
 **Parameters**
 
@@ -116,7 +114,7 @@ Requests the image data and video data of this moving photo and writes them to t
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> |Promise that returns no value.|
 
 **Error codes**
 
@@ -188,7 +186,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 requestContent(resourceType: ResourceType, fileUri: string): Promise\<void>
 
-Requests the moving photo content of the specified resource type and writes it to the specified URI.
+Requests the moving photo content of the specified resource type and writes it to the specified URI. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -196,8 +194,8 @@ Requests the moving photo content of the specified resource type and writes it t
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-- When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Accessing and Managing Moving Photos](../../media/medialibrary/photoAccessHelper-movingphoto.md).
-- For the moving photos saved to the media library by this application, the application can access them without the ohos.permission.READ_IMAGEVIDEO permission.
+- When you call this API in Picker mode, you do not need to request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Accessing and Managing Moving Photos](../../media/medialibrary/photoAccessHelper-movingphoto.md).
+- For moving photos saved to the media library by this application, the application can access them without the **ohos.permission.READ_IMAGEVIDEO** permission.
 
 **Parameters**
 
@@ -210,7 +208,7 @@ Requests the moving photo content of the specified resource type and writes it t
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> |Promise that returns no value.|
 
 **Error codes**
 
@@ -277,7 +275,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 requestContent(resourceType: ResourceType): Promise\<ArrayBuffer>
 
-Requests the moving photo content of the specified resource type and returns it in ArrayBuffer format.
+Requests the moving photo content of the specified resource type and returns it in ArrayBuffer format. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -285,8 +283,8 @@ Requests the moving photo content of the specified resource type and returns it 
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-- When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Accessing and Managing Moving Photos](../../media/medialibrary/photoAccessHelper-movingphoto.md).
-- For the moving photos saved to the media library by this application, the application can access them without the ohos.permission.READ_IMAGEVIDEO permission.
+- When you call this API in Picker mode, you do not need to request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Accessing and Managing Moving Photos](../../media/medialibrary/photoAccessHelper-movingphoto.md).
+- For moving photos saved to the media library by this application, the application can access them without the **ohos.permission.READ_IMAGEVIDEO** permission.
 
 **Parameters**
 

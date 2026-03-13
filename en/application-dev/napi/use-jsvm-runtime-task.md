@@ -16,7 +16,7 @@ If you are just starting out with JSVM-API, see [JSVM-API Development Process](u
 
 Create multiple JS runtime environments and run JS code.
 
-  ```cpp
+```cpp
 #include <map>
 #include <mutex>
 #include <deque>
@@ -339,7 +339,7 @@ static int32_t TestJSVM() {
 ```
 <!-- @[runtime_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmDebug/runtimetask/src/main/cpp/hello.cpp) -->
 Expected result:
-```
+```cpp
 JSVM CreateJsCore START
 JSVM CreateJsCore END
 TEST coreId: 0

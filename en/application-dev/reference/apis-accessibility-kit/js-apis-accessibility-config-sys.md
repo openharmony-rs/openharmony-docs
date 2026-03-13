@@ -31,9 +31,9 @@ import { config } from '@kit.AccessibilityKit';
 | daltonizationState<sup>11+</sup>   | [Config](#config)\<boolean>                                                                | No| No| Whether to enable daltonization. It must be used with **daltonizationColorFilter**. The value **true** indicates that daltonization is enabled, and **false** indicates the opposite.<br>Default value: **false**               |
 | daltonizationColorFilter           | [Config](#config)&lt;[DaltonizationColorFilter](#daltonizationcolorfilter)&gt;             | No| No| Configuration of the daltonization filter.                                              |
 | contentTimeout                     | [Config](#config)\<number>                                                                 | No| No| Recommended duration for content display. The value ranges from 0 to 5000, in milliseconds.<br> Default value: **0**                            |
-| animationOff                       | [Config](#config)\<boolean>                                                                | No| No| Whether to disable animation. The value **true** indicates that animation is disabled, and **false** indicates the opposite.<br>Default value: **0**                                            |
+| animationOff                       | [Config](#config)\<boolean>                                                                | No| No| Whether to disable animation. The value **true** indicates that animation is disabled, and **false** indicates the opposite.<br>Default value: **false**                                            |
 | brightnessDiscount                 | [Config](#config)\<number>                                                                 | No| No| Brightness discount. The value ranges from 0 to 1.0.<br> Default value: **0.0**                                     |
-| mouseKey                           | [Config](#config)\<boolean>                                                                | No| No| Whether to enable the mouse button. The value **true** indicates that the mouse button is enabled, and **false** indicates the opposite. <br>Default value: **0**                                             |
+| mouseKey                           | [Config](#config)\<boolean>                                                                | No| No| Whether to enable the mouse button. The value **true** indicates that the mouse button is enabled, and **false** indicates the opposite. <br>Default value: **false**                                             |
 | mouseAutoClick                     | [Config](#config)\<number>                                                                 | No| No| Configuration of the automatic mouse click operation. The value ranges from 0 to 5000, in milliseconds. The value **0** indicates that the automatic mouse click is not triggered; other values indicate that the operation is triggered when the mouse pointer is hovered for a specified period of time.<br>Default value: **0**               |
 | shortkey                           | [Config](#config)\<boolean>                                                                | No| No| Whether to enable the accessibility extension shortcut key. The value **true** indicates that the auxiliary extension shortcut key is enabled, and **false** indicates the opposite.<br>Default value: **false**                                         |
 | shortkeyTarget                     | [Config](#config)\<string>                                                                 | No| No| Target application for the accessibility extension shortcut key. The value format is 'bundleName/abilityName'.  |
@@ -46,8 +46,6 @@ import { config } from '@kit.AccessibilityKit';
 | ignoreRepeatClick<sup>11+</sup>    | [Config](#config)\<boolean>                                                                | No| No| Whether to ignore repeated clicks. This parameter must be used together with **repeatClickInterval**. The value **true** indicates that the feature of ignoring repeated clicks is enabled, and **false** indicates the opposite.<br>Default value: **false**                  |
 | repeatClickInterval<sup>11+</sup>  | [Config](#config)&lt;[RepeatClickInterval](#repeatclickinterval11)&gt;                     | No| No| Interval between repeated clicks.                                            |
 
-For a boolean return value, **True** means that the feature is enabled, and **False** means the opposite.
- 
 ## enableAbility
 
 enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): Promise&lt;void&gt;
@@ -64,20 +62,20 @@ Enables an accessibility extension ability. This API uses a promise to return th
 
 | Name| Type                                                                          | Mandatory| Description|
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| name | string                                                                       | Yes| Name of the accessibility extension ability. The format is 'bundleName/abilityName'.|
+| name | string                                                                       | Yes| Name of the accessibility extension ability, in the format of **'*bundleName*/*abilityName*'**.|
 | capability | Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt; | Yes| Capability of the accessibility extension ability.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<void>| Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -117,7 +115,7 @@ Enables an accessibility extension ability. This API uses an asynchronous callba
 
 | Name| Type                                                                             | Mandatory| Description|
 | -------- |---------------------------------------------------------------------------------| -------- | -------- |
-| name | string                                                                          | Yes| Name of the accessibility extension ability. The format is 'bundleName/abilityName'.|
+| name | string                                                                          | Yes| Name of the accessibility extension ability, in the format of **'*bundleName*/*abilityName*'**.|
 | capability | Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt; | Yes| Capability of the accessibility extension ability.|
 | callback | AsyncCallback&lt;void&gt;                                                       | Yes| Callback used to return the result.|
 
@@ -125,7 +123,7 @@ Enables an accessibility extension ability. This API uses an asynchronous callba
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -151,6 +149,66 @@ config.enableAbility(name, capability, (err: BusinessError) => {
 });
 ```
 
+## enableAbilityWithCallback<sup>23+</sup>
+
+enableAbilityWithCallback(name: string, capability: Array&lt;accessibility.Capability&gt;, connectCallback: ConnectCallback): Promise&lt;void&gt;
+
+Enables the auxiliary extension ability and specifies [ConnectCallback](#connectcallback23) to be invoked when the state of an auxiliary extension ability changes. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                                          | Mandatory| Description|
+| -------- |------------------------------------------------------------------------------| -------- | -------- |
+| name | string                                                                       | Yes| Name of the accessibility extension ability, in the format of **'*bundleName*/*abilityName*'**.|
+| capability | Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt; | Yes| Capabilities of the auxiliary extension ability.|
+| connectCallback | [ConnectCallback](#connectcallback23)                             | Yes| Callback to be invoked when the state of an auxiliary extension ability changes.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
+
+| ID| Error Message|
+| ------- | -------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 9300001 | Invalid bundle name or ability name.  |
+| 9300002 | Target ability already enabled. |
+
+**Example**
+
+```ts
+import { accessibility, config } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let name: string = 'com.ohos.example/axExtension';
+let capability: accessibility.Capability[] = ['retrieve'];
+let connectCallback: config.ConnectCallback = {
+  onDisconnect: () => {
+    console.info(`Ability is disconnected.`)
+  }
+}
+
+config.enableAbilityWithCallback(name, capability, connectCallback).then(() => {
+  console.info(`Succeeded in enable ability, name is ${name}, capability is ${capability}`);
+}).catch((err: BusinessError) => {
+  console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## disableAbility
 
 disableAbility(name: string): Promise&lt;void&gt;
@@ -167,19 +225,19 @@ Disables an accessibility extension ability. This API uses a promise to return t
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| name | string | Yes| Name of the accessibility extension ability. The format is 'bundleName/abilityName'.|
+| name | string | Yes| Name of the accessibility extension ability, in the format of **'*bundleName*/*abilityName*'**.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<void>| Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -217,14 +275,14 @@ Disables an accessibility extension ability. This API uses an asynchronous callb
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| name | string | Yes| Name of the accessibility extension ability. The format is 'bundleName/abilityName'.|
+| name | string | Yes| Name of the accessibility extension ability, in the format of **'*bundleName*/*abilityName*'**.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -271,7 +329,7 @@ Adds a listener for changes in the list of enabled accessibility extension abili
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -310,7 +368,7 @@ Cancels a listener for changes in the list of enabled accessibility extension ab
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -349,7 +407,7 @@ Adds a listener for changes in the list of installed accessibility extension abi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -388,7 +446,7 @@ Cancels a listener for changes in the list of installed accessibility extension 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -425,7 +483,7 @@ Sets the magnification state. Ensure that magnification is enabled before callin
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -452,7 +510,7 @@ Implements configuration, acquisition, and listening for properties.
 
 set(value: T): Promise&lt;void&gt;
 
-Sets the property value. This API uses a promise to return the result.
+Sets the value of a property. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -470,13 +528,13 @@ Sets the property value. This API uses a promise to return the result.
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<void>| Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -520,7 +578,7 @@ Sets the property value. This API uses an asynchronous callback to return the re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -547,7 +605,7 @@ config.highContrastText.set(value, (err: BusinessError) => {
 
 get(): Promise&lt;T&gt;
 
-Obtains the property value. This API uses a promise to return the result.
+Obtains the value of a property. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -563,7 +621,7 @@ Obtains the property value. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -601,7 +659,7 @@ Obtains the property value. This API uses an asynchronous callback to return the
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
@@ -642,7 +700,7 @@ Adds a listener for property changes. This API uses an asynchronous callback to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -680,7 +738,7 @@ Cancels the listener for property changes. This API uses an asynchronous callbac
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -695,10 +753,42 @@ config.highContrastText.off((data: boolean) => {
 });
 ```
 
+## ConnectCallback<sup>23+</sup>
+
+Callback provided when the [enableAbilityWithCallback](#enableabilitywithcallback23) API is called to enable an accessibility extension ability. This callback will be invoked when the connection to an auxiliary extension ability is disconnected.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name        | Type                                        | Read-Only| Optional| Description                                    |
+| ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |
+| onDisconnect | [OnDisconnectCallback](#ondisconnectcallback23) | No  | No  | Callback to be invoked when the connection to an auxiliary extension ability is disconnected.|
+
+
+## OnDisconnectCallback<sup>23+</sup>
+
+type OnDisconnectCallback = () => void
+
+Describes the callback to be invoked when the connection to **AccessibilityExtensionAbility** is disconnected.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+
 ## DaltonizationColorFilter
 
 Enumerates the daltonization filters. 
-**DaltonizationColorFilter** takes effect only when the daltonization filter is enabled ([daltonizationState](#properties) set to **true**).
+The configuration of **DaltonizationColorFilter** takes effect only when [daltonizationState](#properties) is set to **true**; the normal type <sup>11+</sup> is used when [daltonizationState](#properties) is set to **false**.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -713,6 +803,8 @@ Enumerates the daltonization filters.
 
 Defines the length of time for a click. 
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 | Name         | Description        |
@@ -724,7 +816,9 @@ Defines the length of time for a click.
 ## RepeatClickInterval<sup>11+</sup>
 
 Defines the interval between repeated clicks. 
-**RepeatClickInterval** takes effect only when repeated clicks are ignored ([ignoreRepeatClick](#properties) set to **true**).
+The configuration of **RepeatClickInterval** takes effect when [ignoreRepeatClick](#properties) is set to **true**; the normal type is used when [ignoreRepeatClick](#properties) is set to **false**.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 

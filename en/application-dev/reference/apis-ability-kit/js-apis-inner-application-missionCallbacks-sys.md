@@ -29,6 +29,8 @@ Called to notify that the list of missions has changed.
 
 **System API**: This is a system API.
 
+**Required permissions**: ohos.permission.MANAGE_MISSIONS
+
 **Parameters**
 
 | Name| Template| Mandatory| Description|
@@ -70,6 +72,8 @@ Called to notify that the snapshot has changed.
 
 **System API**: This is a system API.
 
+**Required permissions**: ohos.permission.MANAGE_MISSIONS
+
 **Parameters**
 
 | Name| Template| Mandatory| Description|
@@ -110,6 +114,8 @@ Called to notify that the network connection is interrupted.
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API**: This is a system API.
+
+**Required permissions**: ohos.permission.MANAGE_MISSIONS
 
 **Parameters**
 

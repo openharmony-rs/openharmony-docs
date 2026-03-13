@@ -7,7 +7,7 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct TransientTask_DelaySuspendInfo {...} TransientTask_DelaySuspendInfo
 ```
 

@@ -18,7 +18,7 @@ To use location services, turn on the Location switch on your device. If the swi
 ## Applying for Permissions
 
 <!--RP1-->
-For details, see [Applying for Location Permissions](../../device/location/location-guidelines.md#how-to-develop).
+For details, see [Applying for Location Permissions (ArkTS)](../../device/location/location-permission-guidelines.md#how-to-develop).
 <!--RP1End-->
 
 ## Modules to Import
@@ -39,13 +39,13 @@ Defines a reverse geocoding request.
 | locale | string | No| Yes| Language used for the location description. **zh** indicates Chinese, and **en** indicates English. The default language is obtained from **Language and region** in **Settings**.|
 | country<sup>12+</sup> | string | No| Yes| Country information. The country code complies with the ISO 3166-1 alpha-2 standard. **CN** indicates China. The default language is obtained from **Language and region** in **Settings**.|
 | latitude | number | No| No| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported.|
-| longitude | number | No| No| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude . The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
+| longitude | number | No| No| Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
 | maxItems | number | No| Yes| Maximum number of location records to be returned. The specified value must be greater than or equal to **0**. A value smaller than **10** is recommended. The default value is **1**.|
 
 
 ## GeoCodeRequest
 
-Defines a reverse geocoding request.
+Defines a geocoding request.
 
 **System capability**: SystemCapability.Location.Location.Geocoder
 
@@ -55,7 +55,7 @@ Defines a reverse geocoding request.
 | country<sup>12+</sup> | string | No| Yes| Country information. The country code complies with the ISO 3166-1 alpha-2 standard. **CN** indicates China. The default language is obtained from **Language and region** in **Settings**.|
 | description | string | No| No| Location information, for example, No. xx, xx Road, Pudong District, Shanghai. The value is a string of a maximum of 100 characters.|
 | maxItems | number | No| Yes| Maximum number of location records to be returned. The specified value must be greater than or equal to **0**. A value smaller than **10** is recommended. The default value is **1**.|
-| minLatitude | number | No| Yes| Minimum latitude. This parameter is used with **minLongitude**, **maxLatitude**, and **maxLongitude** to specify the latitude and longitude ranges. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported. The following three parameters are mandatory is this parameter is specified.|
+| minLatitude | number | No| Yes| Minimum latitude. This parameter is used with **minLongitude**, **maxLatitude**, and **maxLongitude** to specify the latitude and longitude ranges. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported. The following three parameters are mandatory if this parameter is specified.|
 | minLongitude | number | No| Yes| Minimum longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
 | maxLatitude | number | No| Yes| Maximum latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported.|
 | maxLongitude | number | No| Yes| Maximum longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
@@ -70,13 +70,13 @@ Geocoding address information.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | latitude | number | No| Yes | Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported.|
-| longitude | number | No| Yes | Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude . The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
+| longitude | number | No| Yes | Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
 | locale | string | No| Yes | Language used for the location description. **zh** indicates Chinese, and **en** indicates English.|
 | placeName | string | No| Yes | Address information.|
 | countryCode | string | No| Yes | Country code.|
 | countryName | string | No| Yes| Country name.|
-| administrativeArea | string | No| Yes| Level-1 administrative region, which is generally is a province or state.|
-| subAdministrativeArea | string | No| Yes| Level-2 administrative region, which is generally is a city.|
+| administrativeArea | string | No| Yes| Level-1 administrative region, which is generally a province or state.|
+| subAdministrativeArea | string | No| Yes| Level-2 administrative region, which is generally a city.|
 | locality | string | No| Yes| Locality information, which is usually a city.|
 | subLocality | string | No| Yes| Sub-locality information, which is usually a district or county.|
 | roadName | string | No| Yes| Road name.|
@@ -230,7 +230,7 @@ Location information.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | latitude | number| No| No| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| longitude | number| No| No| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude . The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| longitude | number| No| No| Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | altitude | number | No| No| Location altitude, in meters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | accuracy | number | No| No| Location accuracy, in meters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | speed | number | No| No|Speed, in m/s.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -273,6 +273,8 @@ Defines a GNSS geofence request.
 | monitorTransitionEvents | Array&lt;[GeofenceTransitionEvent](#geofencetransitionevent12)&gt; | No| No| List of geofence transition events. The array can contain no more than three elements.|
 | notifications | Array&lt;[NotificationRequest](../apis-notification-kit/js-apis-notification.md#notificationrequest)&gt; | No| Yes| List of notifications for geofence transition events.<br>The sequence of **monitorTransitionEvents** must correspond to that of **notifications**. For example, if **monitorTransitionEvents[0]** is **[GeofenceTransitionEvent](#geofencetransitionevent12).GEOFENCE_TRANSITION_EVENT_ENTER**, **notifications[0]** must be set to the notification that needs to be displayed when a user enters the geofence. The default value is an empty array.|
 | geofenceTransitionCallback | AsyncCallback&lt;[GeofenceTransition](#geofencetransition12)&gt; | No| No| Callback used to receive geofence transition events.|
+| loiterTimeMs<sup>23+</sup> | number | No| Yes| Dwell duration, in milliseconds. You need to pay attention to the **GEOFENCE_TRANSITION_DWELL** event. If the time the device takes to dwell in the polygon geofence reaches the value of this parameter, an **GEOFENCE_TRANSITION_DWELL** event is reported. The detection period of the dwell status is 10,000 ms. For example, if this parameter is set to **15000**, the dwell status is reported when the device dwells in the polygon geofence for more than 20,000 ms. If this parameter is set to **5000**, the dwell status is reported when the device dwells in the polygon geofence for more than 10,000 ms.|
+| fenceExtensionAbilityName<sup>23+</sup> | string | No| Yes| Name of **FenceExtensionAbility**. For details, see [@ohos.app.ability.FenceExtensionAbility (FenceExtensionAbility)](js-apis-app-ability-FenceExtensionAbility.md). To start **FenceExtensionAbility** in the background, you need to apply for the background location permission by referring to the [guide of applying for location permissions](../../device/location/location-permission-guidelines.md#how-to-develop). |
 
 
 ## CountryCode
@@ -372,7 +374,7 @@ Enumerates satellite constellation types.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| CONSTELLATION_CATEGORY_UNKNOWN   | 0 | Unknown type. This is the default value.|
+| CONSTELLATION_CATEGORY_UNKNOWN   | 0 | Unknown category. This is the default value.|
 | CONSTELLATION_CATEGORY_GPS   | 1 | Global positioning system (GPS), a high-precision radio navigation positioning system made up of artificial earth satellites launched by the United States.|
 | CONSTELLATION_CATEGORY_SBAS    | 2 | Satellite-based augmentation system (SBAS), which supports wide-area or regional augmentation through the use of geostationary (GEO) satellites for broadcasting augmentation information, such as ephemeris error, satellite clock difference, and ionospheric delay, to users. It enhances the accuracy, integrity, and availability of basic global navigation satellite systems.|
 | CONSTELLATION_CATEGORY_GLONASS    | 3 | Global navigation satellite system (GLONASS), a Russia space-based satellite navigation system that provides a global coverage positioning service similar to the GPS.|
@@ -458,7 +460,7 @@ Enumerates error codes in a continuous location request.
 | -------- | -------- | -------- |
 | LOCATING_FAILED_DEFAULT   | -1 |  Default value.|
 | LOCATING_FAILED_LOCATION_PERMISSION_DENIED   | -2 | Failed to verify the **ohos.permission.APPROXIMATELY_LOCATION** or **ohos.permission.LOCATION** permission.|
-| LOCATING_FAILED_BACKGROUND_PERMISSION_DENIED    | -3 | Failed to verify the location permission when the application is running in the background. <!--RP3-->For details about how to apply for the location permission, see [Applying for Location Permissions](../../device/location/location-guidelines.md#how-to-develop).<!--RP3End--> |
+| LOCATING_FAILED_BACKGROUND_PERMISSION_DENIED    | -3 | Failed to verify the location permission when the application is running in the background. <!--RP3-->For details about how to apply for the location permission, see [Applying for Location Permissions (ArkTS)](../../device/location/location-permission-guidelines.md#how-to-develop).<!--RP3End--> |
 | LOCATING_FAILED_LOCATION_SWITCH_OFF    | -4 | Location switch turned off.|
 | LOCATING_FAILED_INTERNET_ACCESS_FAILURE    | -5 | Network access denied.|
 
@@ -639,25 +641,34 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   import { geoLocationManager } from '@kit.LocationKit';
 
   // Method 1: Use LocationRequest as the input parameter.
-  let requestInfo:geoLocationManager.LocationRequest = {'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX, 'scenario': geoLocationManager.LocationRequestScenario.UNSET, 'timeInterval': 1, 'distanceInterval': 0, 'maxAccuracy': 0};
-  let locationChange = (location:geoLocationManager.Location):void => {
-      console.info('locationChange: data: ' + JSON.stringify(location));
+  let requestInfo: geoLocationManager.LocationRequest = {
+    'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX,
+    'scenario': geoLocationManager.LocationRequestScenario.UNSET,
+    'timeInterval': 1,
+    'distanceInterval': 0,
+    'maxAccuracy': 0
+  };
+  let locationChange = (location: geoLocationManager.Location): void => {
+    console.info('locationChange: data: ' + JSON.stringify(location));
   };
   try {
-      geoLocationManager.on('locationChange', requestInfo, locationChange);
+    geoLocationManager.on('locationChange', requestInfo, locationChange);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
 
   // Method 2: Use ContinuousLocationRequest as the input parameter.
-  let request:geoLocationManager.ContinuousLocationRequest = {'interval': 1, 'locationScenario': geoLocationManager.UserActivityScenario.NAVIGATION};
-  let locationCallback = (location:geoLocationManager.Location):void => {
-      console.info('locationCallback: data: ' + JSON.stringify(location));
+  let request: geoLocationManager.ContinuousLocationRequest = {
+    'interval': 1,
+    'locationScenario': geoLocationManager.UserActivityScenario.NAVIGATION
+  };
+  let locationCallback = (location: geoLocationManager.Location): void => {
+    console.info('locationCallback: data: ' + JSON.stringify(location));
   };
   try {
-      geoLocationManager.on('locationChange', request, locationCallback);
+    geoLocationManager.on('locationChange', request, locationCallback);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -697,15 +708,21 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
 
-  let requestInfo:geoLocationManager.LocationRequest = {'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX, 'scenario': geoLocationManager.LocationRequestScenario.UNSET, 'timeInterval': 1, 'distanceInterval': 0, 'maxAccuracy': 0};
-  let locationChange = (location:geoLocationManager.Location):void => {
+  let requestInfo: geoLocationManager.LocationRequest = {
+    'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX,
+    'scenario': geoLocationManager.LocationRequestScenario.UNSET,
+    'timeInterval': 1,
+    'distanceInterval': 0,
+    'maxAccuracy': 0
+  };
+  let locationChange = (location: geoLocationManager.Location): void => {
     console.info('locationChange: data: ' + JSON.stringify(location));
   };
   try {
-      geoLocationManager.on('locationChange', requestInfo, locationChange);
-      geoLocationManager.off('locationChange', locationChange);
+    geoLocationManager.on('locationChange', requestInfo, locationChange);
+    geoLocationManager.off('locationChange', locationChange);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -745,25 +762,30 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
 
-  let requestInfo:geoLocationManager.LocationRequest = {'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX, 'scenario': geoLocationManager.LocationRequestScenario.UNSET, 'timeInterval': 1, 'distanceInterval': 0, 'maxAccuracy': 0};
-  let locationChange = (location:geoLocationManager.Location):void => {
-      console.info('locationChange: data: ' + JSON.stringify(location));
+  let requestInfo: geoLocationManager.LocationRequest = {
+    'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX,
+    'scenario': geoLocationManager.LocationRequestScenario.UNSET,
+    'timeInterval': 1,
+    'distanceInterval': 0,
+    'maxAccuracy': 0
+  };
+  let locationChange = (location: geoLocationManager.Location): void => {
+    console.info('locationChange: data: ' + JSON.stringify(location));
   };
   try {
-      geoLocationManager.on('locationChange', requestInfo, locationChange);
+    geoLocationManager.on('locationChange', requestInfo, locationChange);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
 
-  let locationErrorChange = (errcode: geoLocationManager.LocationError):void => {
+  let locationErrorChange = (errcode: geoLocationManager.LocationError): void => {
     console.info('locationErrorChange: data: ' + JSON.stringify(errcode));
   };
   try {
     geoLocationManager.on('locationError', locationErrorChange);
   } catch (err) {
-    console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
-  
   ```
 
 
@@ -802,14 +824,14 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
 
-  let locationErrorChange = (errcode: geoLocationManager.LocationError):void => {
+  let locationErrorChange = (errcode: geoLocationManager.LocationError): void => {
     console.info('locationErrorChange: data: ' + JSON.stringify(errcode));
   };
   try {
     geoLocationManager.on('locationError', locationErrorChange);
     geoLocationManager.off('locationError', locationErrorChange);
   } catch (err) {
-    console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -844,13 +866,13 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
 
-  let locationEnabledChange = (state:boolean):void => {
+  let locationEnabledChange = (state: boolean): void => {
       console.info('locationEnabledChange: ' + JSON.stringify(state));
   }
   try {
       geoLocationManager.on('locationEnabledChange', locationEnabledChange);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+      console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -868,7 +890,7 @@ Unsubscribes from location service status change events.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type. The value **locationEnabledChange** indicates a location service status change.|
-  | callback | Callback&lt;boolean&gt; | No| Callback to unregister. The callback must be the same as that passed by the **on** API. If this parameter is not specified, all callbacks of the specified event type are unregistered.|
+  | callback | Callback&lt;boolean&gt; | No| Callback to unregister. The value **true** indicates that the location switch is enabled and the value **false** indicates the opposite. The callback must be the same as that passed by the **on** API. If this parameter is not specified, all callbacks of the specified event type are unregistered.|
 
 **Error codes**
 
@@ -885,14 +907,14 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
 
-  let locationEnabledChange = (state:boolean):void => {
+  let locationEnabledChange = (state: boolean): void => {
       console.info('locationEnabledChange: state: ' + JSON.stringify(state));
   }
   try {
       geoLocationManager.on('locationEnabledChange', locationEnabledChange);
       geoLocationManager.off('locationEnabledChange', locationEnabledChange);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+      console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -932,14 +954,17 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
 
-  let cachedLocationsCb = (locations:Array<geoLocationManager.Location>):void => {
-      console.info('cachedGnssLocationsChange: locations: ' + JSON.stringify(locations));
+  let cachedLocationsCb = (locations: Array<geoLocationManager.Location>): void => {
+    console.info('cachedGnssLocationsChange: locations: ' + JSON.stringify(locations));
   }
-  let requestInfo:geoLocationManager.CachedGnssLocationsRequest = {'reportingPeriodSec': 10, 'wakeUpCacheQueueFull': true};
+  let requestInfo: geoLocationManager.CachedGnssLocationsRequest = {
+    'reportingPeriodSec': 10,
+    'wakeUpCacheQueueFull': true
+  };
   try {
-      geoLocationManager.on('cachedGnssLocationsChange', requestInfo, cachedLocationsCb);
+    geoLocationManager.on('cachedGnssLocationsChange', requestInfo, cachedLocationsCb);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -978,15 +1003,18 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
 
-  let cachedLocationsCb = (locations:Array<geoLocationManager.Location>):void => {
-      console.info('cachedGnssLocationsChange: locations: ' + JSON.stringify(locations));
+  let cachedLocationsCb = (locations: Array<geoLocationManager.Location>): void => {
+    console.info('cachedGnssLocationsChange: locations: ' + JSON.stringify(locations));
   }
-  let requestInfo:geoLocationManager.CachedGnssLocationsRequest = {'reportingPeriodSec': 10, 'wakeUpCacheQueueFull': true};
+  let requestInfo: geoLocationManager.CachedGnssLocationsRequest = {
+    'reportingPeriodSec': 10,
+    'wakeUpCacheQueueFull': true
+  };
   try {
-      geoLocationManager.on('cachedGnssLocationsChange', requestInfo, cachedLocationsCb);
-      geoLocationManager.off('cachedGnssLocationsChange');
+    geoLocationManager.on('cachedGnssLocationsChange', requestInfo, cachedLocationsCb);
+    geoLocationManager.off('cachedGnssLocationsChange');
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1025,43 +1053,43 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
 
-  let gnssStatusCb = (satelliteStatusInfo:geoLocationManager.SatelliteStatusInfo):void => {
-      console.info('satelliteStatusChange: ' + JSON.stringify(satelliteStatusInfo));
-      // Number of satellites.
-      let totalNumber: number = satelliteStatusInfo.satellitesNumber;
-      let satelliteIds: Array<number> = satelliteStatusInfo.satelliteIds;
-      let carrierToNoiseDensitys: Array<number> = satelliteStatusInfo.carrierToNoiseDensitys;
-      let altitudes: Array<number> = satelliteStatusInfo.altitudes;
-      let azimuths: Array<number> = satelliteStatusInfo.azimuths;
-      let carrierFrequencies: Array<number> = satelliteStatusInfo.carrierFrequencies;
-      let satelliteConstellations: Array<geoLocationManager.SatelliteConstellationCategory> | undefined = satelliteStatusInfo.satelliteConstellation;
-      let satelliteAdditionalInfos: Array<number> | undefined = satelliteStatusInfo.satelliteAdditionalInfo;
-      for (let i = 0;i < totalNumber;i++) {
-        // Satellite ID.
-        let satelliteId: number = satelliteIds[i];
-        // Carrier-to-noise density ratio of the satellite whose ID is ${satelliteId}.
-        let carrierToNoiseDensity: number = carrierToNoiseDensitys[i];
-        // Altitude angle information of the satellite whose ID is ${satelliteId}.
-        let altitude: number = altitudes[i];
-        // Azimuth of the satellite whose ID is ${satelliteId}.
-        let azimuth: number = azimuths[i];
-        // Carrier frequency of the satellite whose ID is ${satelliteId}.
-        let carrierFrequencie: number = carrierFrequencies[i];
-        if (satelliteConstellations != undefined) {
-          // Constellation of the satellite whose ID is ${satelliteId}.
-          let satelliteConstellation: geoLocationManager.SatelliteConstellationCategory = satelliteConstellations[i];
-        }
-        if (satelliteAdditionalInfos != undefined) {
-          // Additional information about the satellite whose ID is ${satelliteId}, for example, use of the satellite in the latest location resolution and the availability of ephemeris data, almanac data, and carrier frequency information.
-          let satelliteAdditionalInfo: number = satelliteAdditionalInfos[i];
-        }
+  let gnssStatusCb = (satelliteStatusInfo: geoLocationManager.SatelliteStatusInfo): void => {
+    console.info('satelliteStatusChange: ' + JSON.stringify(satelliteStatusInfo));
+    // Number of satellites.
+    let totalNumber: number = satelliteStatusInfo.satellitesNumber;
+    let satelliteIds: Array<number> = satelliteStatusInfo.satelliteIds;
+    let carrierToNoiseDensitys: Array<number> = satelliteStatusInfo.carrierToNoiseDensitys;
+    let altitudes: Array<number> = satelliteStatusInfo.altitudes;
+    let azimuths: Array<number> = satelliteStatusInfo.azimuths;
+    let carrierFrequencies: Array<number> = satelliteStatusInfo.carrierFrequencies;
+    let satelliteConstellations: Array<geoLocationManager.SatelliteConstellationCategory> | undefined = satelliteStatusInfo.satelliteConstellation;
+    let satelliteAdditionalInfos: Array<number> | undefined = satelliteStatusInfo.satelliteAdditionalInfo;
+    for (let i = 0;i < totalNumber; i++) {
+      // Satellite ID.
+      let satelliteId: number = satelliteIds[i];
+      // Carrier-to-noise density ratio of the satellite whose ID is ${satelliteId}.
+      let carrierToNoiseDensity: number = carrierToNoiseDensitys[i];
+      // Altitude angle information of the satellite whose ID is ${satelliteId}.
+      let altitude: number = altitudes[i];
+      // Azimuth of the satellite whose ID is ${satelliteId}.
+      let azimuth: number = azimuths[i];
+      // Carrier frequency of the satellite whose ID is ${satelliteId}.
+      let carrierFrequency: number = carrierFrequencies[i];
+      if (satelliteConstellations != undefined) {
+        // Constellation of the satellite whose ID is ${satelliteId}.
+        let satelliteConstellation: geoLocationManager.SatelliteConstellationCategory = satelliteConstellations[i];
       }
+      if (satelliteAdditionalInfos != undefined) {
+        // Additional information about the satellite whose ID is ${satelliteId}, for example, use of the satellite in the latest location resolution and the availability of ephemeris data, almanac data, and carrier frequency information.
+        let satelliteAdditionalInfo: number = satelliteAdditionalInfos[i];
+      }
+    }
   }
 
   try {
-      geoLocationManager.on('satelliteStatusChange', gnssStatusCb);
+    geoLocationManager.on('satelliteStatusChange', gnssStatusCb);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1101,14 +1129,14 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
 
-  let gnssStatusCb = (satelliteStatusInfo:geoLocationManager.SatelliteStatusInfo):void => {
-      console.info('satelliteStatusChange: ' + JSON.stringify(satelliteStatusInfo));
+  let gnssStatusCb = (satelliteStatusInfo: geoLocationManager.SatelliteStatusInfo): void => {
+    console.info('satelliteStatusChange: ' + JSON.stringify(satelliteStatusInfo));
   }
   try {
-      geoLocationManager.on('satelliteStatusChange', gnssStatusCb);
-      geoLocationManager.off('satelliteStatusChange', gnssStatusCb);
+    geoLocationManager.on('satelliteStatusChange', gnssStatusCb);
+    geoLocationManager.off('satelliteStatusChange', gnssStatusCb);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1148,14 +1176,14 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
 
-  let nmeaCb = (str:string):void => {
-      console.info('nmeaMessage: ' + JSON.stringify(str));
+  let nmeaCb = (str: string): void => {
+    console.info('nmeaMessage: ' + JSON.stringify(str));
   }
 
   try {
-      geoLocationManager.on('nmeaMessage', nmeaCb );
+    geoLocationManager.on('nmeaMessage', nmeaCb);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1195,15 +1223,15 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
 
-  let nmeaCb = (str:string):void => {
-      console.info('nmeaMessage: ' + JSON.stringify(str));
+  let nmeaCb = (str: string): void => {
+    console.info('nmeaMessage: ' + JSON.stringify(str));
   }
 
   try {
-      geoLocationManager.on('nmeaMessage', nmeaCb);
-      geoLocationManager.off('nmeaMessage', nmeaCb);
+    geoLocationManager.on('nmeaMessage', nmeaCb);
+    geoLocationManager.off('nmeaMessage', nmeaCb);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1212,7 +1240,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void
 
-Subscribes to status change events of the specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
+Subscribes to status change events of a specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
 
 **Permission required**: ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1246,25 +1274,28 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   import { wantAgent } from '@kit.AbilityKit';
 
 
-  let wantAgentInfo:wantAgent.WantAgentInfo = {
-      wants: [
-          {
-              bundleName: "com.example.myapplication",
-              abilityName: "EntryAbility",
-              action: "action1"
-          }
-      ],
-      actionType: wantAgent.OperationType.START_ABILITY,
-      requestCode: 0,
-      wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+  let wantAgentInfo: wantAgent.WantAgentInfo = {
+    wants: [
+      {
+        bundleName: "com.example.myapplication",
+        abilityName: "EntryAbility",
+        action: "action1"
+      }
+    ],
+    actionType: wantAgent.OperationType.START_ABILITY,
+    requestCode: 0,
+    wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
   };
-  
+
   wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj) => {
-    let requestInfo:geoLocationManager.GeofenceRequest = {'scenario': 0x301, "geofence": {"latitude": 31.12, "longitude": 121.11, "radius": 100, "expiration": 10000}};
+    let requestInfo: geoLocationManager.GeofenceRequest = {
+      'scenario': 0x301,
+      "geofence": { "latitude": 31.12, "longitude": 121.11, "radius": 100, "expiration": 10000 }
+    };
     try {
-        geoLocationManager.on('gnssFenceStatusChange', requestInfo, wantAgentObj);
+      geoLocationManager.on('gnssFenceStatusChange', requestInfo, wantAgentObj);
     } catch (err) {
-        console.error("errCode:" + err.code + ", message:"  + err.message);
+      console.error("errCode:" + err.code + ", message:" + err.message);
     }
   });
   ```
@@ -1274,7 +1305,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void
 
-Unsubscribes from status change events of the specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
+Unsubscribes from status change events of a specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
 
 **Permission required**: ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1307,27 +1338,30 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   import { geoLocationManager } from '@kit.LocationKit';
   import { wantAgent } from '@kit.AbilityKit';
 
-  
-  let wantAgentInfo:wantAgent.WantAgentInfo = {
-      wants: [
-          {
-              bundleName: "com.example.myapplication",
-              abilityName: "EntryAbility",
-              action: "action1",
-          }
-      ],
-      actionType: wantAgent.OperationType.START_ABILITY,
-      requestCode: 0,
-      wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+
+  let wantAgentInfo: wantAgent.WantAgentInfo = {
+    wants: [
+      {
+        bundleName: "com.example.myapplication",
+        abilityName: "EntryAbility",
+        action: "action1",
+      }
+    ],
+    actionType: wantAgent.OperationType.START_ABILITY,
+    requestCode: 0,
+    wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
   };
-  
+
   wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj) => {
-    let requestInfo:geoLocationManager.GeofenceRequest = {'scenario': 0x301, "geofence": {"latitude": 31.12, "longitude": 121.11, "radius": 100, "expiration": 10000}};;
+    let requestInfo: geoLocationManager.GeofenceRequest = {
+      'scenario': 0x301,
+      "geofence": { "latitude": 31.12, "longitude": 121.11, "radius": 100, "expiration": 10000 }
+    };
     try {
-        geoLocationManager.on('gnssFenceStatusChange', requestInfo, wantAgentObj);
-        geoLocationManager.off('gnssFenceStatusChange', requestInfo, wantAgentObj);
+      geoLocationManager.on('gnssFenceStatusChange', requestInfo, wantAgentObj);
+      geoLocationManager.off('gnssFenceStatusChange', requestInfo, wantAgentObj);
     } catch (err) {
-        console.error("errCode:" + err.code + ", message:"  + err.message);
+      console.error("errCode:" + err.code + ", message:" + err.message);
     }
   });
   ```
@@ -1365,14 +1399,14 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
 
-  let callback = (code:geoLocationManager.CountryCode):void => {
-      console.info('countryCodeChange: ' + JSON.stringify(code));
+  let callback = (code: geoLocationManager.CountryCode): void => {
+    console.info('countryCodeChange: ' + JSON.stringify(code));
   }
 
   try {
-      geoLocationManager.on('countryCodeChange', callback);
+    geoLocationManager.on('countryCodeChange', callback);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1408,15 +1442,15 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
 
-  let callback = (code:geoLocationManager.CountryCode):void => {
-      console.info('countryCodeChange: ' + JSON.stringify(code));
+  let callback = (code: geoLocationManager.CountryCode): void => {
+    console.info('countryCodeChange: ' + JSON.stringify(code));
   }
 
   try {
-      geoLocationManager.on('countryCodeChange', callback);
-      geoLocationManager.off('countryCodeChange', callback);
+    geoLocationManager.on('countryCodeChange', callback);
+    geoLocationManager.off('countryCodeChange', callback);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1459,37 +1493,44 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // Method 1: Use CurrentLocationRequest as the input parameter.
-  let requestInfo:geoLocationManager.CurrentLocationRequest = {'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX, 'scenario': geoLocationManager.LocationRequestScenario.UNSET,'maxAccuracy': 0};
-  let locationChange = (err:BusinessError, location:geoLocationManager.Location):void => {
-      if (err) {
-          console.error('locationChange: err=' + JSON.stringify(err));
-      }
-      if (location) {
-          console.info('locationChange: location=' + JSON.stringify(location));
-      }
+  let requestInfo: geoLocationManager.CurrentLocationRequest = {
+    'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX,
+    'scenario': geoLocationManager.LocationRequestScenario.UNSET,
+    'maxAccuracy': 0
+  };
+  let locationChange = (err: BusinessError, location: geoLocationManager.Location): void => {
+    if (err) {
+      console.error('locationChange: err=' + JSON.stringify(err));
+    }
+    if (location) {
+      console.info('locationChange: location=' + JSON.stringify(location));
+    }
   };
 
   try {
-      geoLocationManager.getCurrentLocation(requestInfo, locationChange);
+    geoLocationManager.getCurrentLocation(requestInfo, locationChange);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
-  
+
   // Method 2: Use SingleLocationRequest as the input parameter.
-  let request:geoLocationManager.SingleLocationRequest = {'locatingTimeoutMs': 10000, 'locatingPriority': geoLocationManager.LocatingPriority.PRIORITY_ACCURACY};
-  let locationCallback = (err:BusinessError, location:geoLocationManager.Location):void => {
-      if (err) {
-          console.error('locationChange: err=' + JSON.stringify(err));
-      }
-      if (location) {
-          console.info('locationChange: location=' + JSON.stringify(location));
-      }
+  let request: geoLocationManager.SingleLocationRequest = {
+    'locatingTimeoutMs': 10000,
+    'locatingPriority': geoLocationManager.LocatingPriority.PRIORITY_ACCURACY
+  };
+  let locationCallback = (err: BusinessError, location: geoLocationManager.Location): void => {
+    if (err) {
+      console.error('locationChange: err=' + JSON.stringify(err));
+    }
+    if (location) {
+      console.info('locationChange: location=' + JSON.stringify(location));
+    }
   };
 
   try {
-      geoLocationManager.getCurrentLocation(request, locationCallback);
+    geoLocationManager.getCurrentLocation(request, locationCallback);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1529,19 +1570,20 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  let locationChange = (err:BusinessError, location:geoLocationManager.Location) => {
-      if (err) {
-          console.error('locationChange: err=' + JSON.stringify(err));
-      }
-      if (location) {
-          console.info('locationChange: location=' + JSON.stringify(location));
-      }
+
+  let locationChange = (err: BusinessError, location: geoLocationManager.Location) => {
+    if (err) {
+      console.error('locationChange: err=' + JSON.stringify(err));
+    }
+    if (location) {
+      console.info('locationChange: location=' + JSON.stringify(location));
+    }
   };
 
   try {
-      geoLocationManager.getCurrentLocation(locationChange);
+    geoLocationManager.getCurrentLocation(locationChange);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1589,29 +1631,36 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   import { BusinessError } from '@kit.BasicServicesKit';
 
   // Method 1: Use CurrentLocationRequest as the input parameter.
-  let requestInfo:geoLocationManager.CurrentLocationRequest = {'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX, 'scenario': geoLocationManager.LocationRequestScenario.UNSET,'maxAccuracy': 0};
+  let requestInfo: geoLocationManager.CurrentLocationRequest = {
+    'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX,
+    'scenario': geoLocationManager.LocationRequestScenario.UNSET,
+    'maxAccuracy': 0
+  };
   try {
-      geoLocationManager.getCurrentLocation(requestInfo).then((result) => {
-          console.info('current location: ' + JSON.stringify(result));
-      })  
-      .catch((error:BusinessError) => {
-          console.error('promise, getCurrentLocation: error=' + JSON.stringify(error));
+    geoLocationManager.getCurrentLocation(requestInfo).then((result) => {
+      console.info('current location: ' + JSON.stringify(result));
+    })
+      .catch((error: BusinessError) => {
+        console.error('promise, getCurrentLocation: error=' + JSON.stringify(error));
       });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
-  
+
   // Method 2: Use SingleLocationRequest as the input parameter.
-  let request:geoLocationManager.SingleLocationRequest = {'locatingTimeoutMs': 10000, 'locatingPriority': geoLocationManager.LocatingPriority.PRIORITY_ACCURACY};
+  let request: geoLocationManager.SingleLocationRequest = {
+    'locatingTimeoutMs': 10000,
+    'locatingPriority': geoLocationManager.LocatingPriority.PRIORITY_ACCURACY
+  };
   try {
-      geoLocationManager.getCurrentLocation(request).then((result) => {
-          console.info('current location: ' + JSON.stringify(result));
-      })  
-      .catch((error:BusinessError) => {
-          console.error('promise, getCurrentLocation: error=' + JSON.stringify(error));
+    geoLocationManager.getCurrentLocation(request).then((result) => {
+      console.info('current location: ' + JSON.stringify(result));
+    })
+      .catch((error: BusinessError) => {
+        console.error('promise, getCurrentLocation: error=' + JSON.stringify(error));
       });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1650,10 +1699,11 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      let location = geoLocationManager.getLastLocation();
+    let location = geoLocationManager.getLastLocation();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1687,10 +1737,11 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      let locationEnabled = geoLocationManager.isLocationEnabled();
+    let locationEnabled = geoLocationManager.isLocationEnabled();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1725,18 +1776,23 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  let reverseGeocodeRequest:geoLocationManager.ReverseGeoCodeRequest = {"latitude": 31.12, "longitude": 121.11, "maxItems": 1};
+
+  let reverseGeocodeRequest: geoLocationManager.ReverseGeoCodeRequest = {
+    "latitude": 31.12,
+    "longitude": 121.11,
+    "maxItems": 1
+  };
   try {
-      geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err, data) => {
-          if (err) {
-              console.error('getAddressesFromLocation: err=' + JSON.stringify(err));
-          }
-          if (data) {
-              console.info('getAddressesFromLocation: data=' + JSON.stringify(data));
-          }
-      });
+    geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err, data) => {
+      if (err) {
+        console.error('getAddressesFromLocation: err=' + JSON.stringify(err));
+      }
+      if (data) {
+        console.info('getAddressesFromLocation: data=' + JSON.stringify(data));
+      }
+    });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1777,16 +1833,21 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  let reverseGeocodeRequest:geoLocationManager.ReverseGeoCodeRequest = {"latitude": 31.12, "longitude": 121.11, "maxItems": 1};
+
+  let reverseGeocodeRequest: geoLocationManager.ReverseGeoCodeRequest = {
+    "latitude": 31.12,
+    "longitude": 121.11,
+    "maxItems": 1
+  };
   try {
-      geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
-          console.info('getAddressesFromLocation: ' + JSON.stringify(data));
-      })
-      .catch((error:BusinessError) => {
-          console.error('promise, getAddressesFromLocation: error=' + JSON.stringify(error));
+    geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
+      console.info('getAddressesFromLocation: ' + JSON.stringify(data));
+    })
+      .catch((error: BusinessError) => {
+        console.error('promise, getAddressesFromLocation: error=' + JSON.stringify(error));
       });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1821,18 +1882,19 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "No. xx, xx Road, Pudong District, Shanghai", "maxItems": 1};
+
+  let geocodeRequest: geoLocationManager.GeoCodeRequest = { "description": "No. xx, xx Road, Pudong District, Shanghai", "maxItems": 1};
   try {
-      geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
-          if (err) {
-              console.error('getAddressesFromLocationName: err=' + JSON.stringify(err));
-          }
-          if (data) {
-              console.info('getAddressesFromLocationName: data=' + JSON.stringify(data));
-          }
-      });
+    geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
+      if (err) {
+        console.error('getAddressesFromLocationName: err=' + JSON.stringify(err));
+      }
+      if (data) {
+        console.info('getAddressesFromLocationName: data=' + JSON.stringify(data));
+      }
+    });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1841,7 +1903,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 getAddressesFromLocationName(request: GeoCodeRequest): Promise&lt;Array&lt;GeoAddress&gt;&gt;
 
-Converts geographic descriptions into coordinates through geocoding. This API uses an a promise to return the result. 
+Converts geographic descriptions into coordinates through geocoding. This API uses a promise to return the result. 
 
 **System capability**: SystemCapability.Location.Location.Geocoder
 
@@ -1873,16 +1935,17 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "No. xx, xx Road, Pudong District, Shanghai", "maxItems": 1};
+
+  let geocodeRequest: geoLocationManager.GeoCodeRequest = { "description": "No. xx, xx Road, Pudong District, Shanghai", "maxItems": 1};
   try {
-      geoLocationManager.getAddressesFromLocationName(geocodeRequest).then((result) => {
-          console.info('getAddressesFromLocationName: ' + JSON.stringify(result));
-      })
-      .catch((error:BusinessError) => {
-          console.error('promise, getAddressesFromLocationName: error=' + JSON.stringify(error));
+    geoLocationManager.getAddressesFromLocationName(geocodeRequest).then((result) => {
+      console.info('getAddressesFromLocationName: ' + JSON.stringify(result));
+    })
+      .catch((error: BusinessError) => {
+        console.error('promise, getAddressesFromLocationName: error=' + JSON.stringify(error));
       });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1913,10 +1976,11 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      let isAvailable = geoLocationManager.isGeocoderAvailable();
+    let isAvailable = geoLocationManager.isGeocoderAvailable();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1953,17 +2017,18 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.getCachedGnssLocationsSize((err, size) => {
-          if (err) {
-              console.error('getCachedGnssLocationsSize: err=' + JSON.stringify(err));
-          }
-          if (size) {
-              console.info('getCachedGnssLocationsSize: size=' + JSON.stringify(size));
-          }
-      });
+    geoLocationManager.getCachedGnssLocationsSize((err, size) => {
+      if (err) {
+        console.error('getCachedGnssLocationsSize: err=' + JSON.stringify(err));
+      }
+      if (size) {
+        console.info('getCachedGnssLocationsSize: size=' + JSON.stringify(size));
+      }
+    });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -2000,15 +2065,16 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
-      geoLocationManager.getCachedGnssLocationsSize().then((result) => {
-          console.info('promise, getCachedGnssLocationsSize: ' + JSON.stringify(result));
-      }) 
-      .catch((error:BusinessError) => {
-          console.error('promise, getCachedGnssLocationsSize: error=' + JSON.stringify(error));
+    geoLocationManager.getCachedGnssLocationsSize().then((result) => {
+      console.info('promise, getCachedGnssLocationsSize: ' + JSON.stringify(result));
+    })
+      .catch((error: BusinessError) => {
+        console.error('promise, getCachedGnssLocationsSize: error=' + JSON.stringify(error));
       });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -2046,14 +2112,15 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.flushCachedGnssLocations((err) => {
-          if (err) {
-              console.error('flushCachedGnssLocations: err=' + JSON.stringify(err));
-          }
-      });
+    geoLocationManager.flushCachedGnssLocations((err) => {
+      if (err) {
+        console.error('flushCachedGnssLocations: err=' + JSON.stringify(err));
+      }
+    });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -2091,15 +2158,16 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
-      geoLocationManager.flushCachedGnssLocations().then(() => {
-          console.info('promise, flushCachedGnssLocations success');
-      })
-      .catch((error:BusinessError) => {
-          console.error('promise, flushCachedGnssLocations: error=' + JSON.stringify(error));
+    geoLocationManager.flushCachedGnssLocations().then(() => {
+      console.info('promise, flushCachedGnssLocations success');
+    })
+      .catch((error: BusinessError) => {
+        console.error('promise, flushCachedGnssLocations: error=' + JSON.stringify(error));
       });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -2133,15 +2201,16 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  let requestInfo:geoLocationManager.LocationCommand = {'scenario': 0x301, 'command': "command_1"};
+
+  let requestInfo: geoLocationManager.LocationCommand = { 'scenario': 0x301, 'command': "command_1" };
   try {
-      geoLocationManager.sendCommand(requestInfo, (err) => {
-          if (err) {
-              console.error('sendCommand: err=' + JSON.stringify(err));
-          }
-      });
+    geoLocationManager.sendCommand(requestInfo, (err) => {
+      if (err) {
+        console.error('sendCommand: err=' + JSON.stringify(err));
+      }
+    });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -2181,16 +2250,17 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  let requestInfo:geoLocationManager.LocationCommand = {'scenario': 0x301, 'command': "command_1"};
+
+  let requestInfo: geoLocationManager.LocationCommand = { 'scenario': 0x301, 'command': "command_1" };
   try {
-      geoLocationManager.sendCommand(requestInfo).then(() => {
-          console.info('promise, sendCommand success');
-      })  
-      .catch((error:BusinessError) => {
-          console.error('promise, sendCommand: error=' + JSON.stringify(error));
+    geoLocationManager.sendCommand(requestInfo).then(() => {
+      console.info('promise, sendCommand success');
+    })
+      .catch((error: BusinessError) => {
+        console.error('promise, sendCommand: error=' + JSON.stringify(error));
       });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -2224,17 +2294,18 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.getCountryCode((err, result) => {
-          if (err) {
-              console.error('getCountryCode: err=' + JSON.stringify(err));
-          }
-          if (result) {
-              console.info('getCountryCode: result=' + JSON.stringify(result));
-          }
-      });
+    geoLocationManager.getCountryCode((err, result) => {
+      if (err) {
+        console.error('getCountryCode: err=' + JSON.stringify(err));
+      }
+      if (result) {
+        console.info('getCountryCode: result=' + JSON.stringify(result));
+      }
+    });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -2268,16 +2339,17 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
-      geoLocationManager.getCountryCode()
+    geoLocationManager.getCountryCode()
       .then((result) => {
-          console.info('promise, getCountryCode: result=' + JSON.stringify(result));
+        console.info('promise, getCountryCode: result=' + JSON.stringify(result));
       })
-      .catch((error:BusinessError) => {
-          console.error('promise, getCountryCode: error=' + JSON.stringify(error));
+      .catch((error: BusinessError) => {
+        console.error('promise, getCountryCode: error=' + JSON.stringify(error));
       });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -2285,7 +2357,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 addGnssGeofence(fenceRequest: GnssGeofenceRequest): Promise&lt;number&gt;
 
-Adds a GNSS geofence and subscribes to geofence transition events. This API uses a promise to return the result.
+Adds a GNSS geofence and subscribes to geofence events. This API uses a promise to return the result.
 
 The application can pass a callback to [GnssGeofenceRequest](#gnssgeofencerequest12) to receive geofence transition events. It can also pass [NotificationRequest](../apis-notification-kit/js-apis-notification.md#notificationrequest) so that a notification is displayed when a geofence transition event occurs.
 
@@ -2332,8 +2404,8 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   }
   // Specify the types of geofence transition events to listen for. Geofence entry and exit events are used as an example.
   let transitionStatusList: Array<geoLocationManager.GeofenceTransitionEvent> = [
-    geoLocationManager.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_ENTER,
-    geoLocationManager.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_EXIT,
+  geoLocationManager.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_ENTER,
+  geoLocationManager.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_EXIT,
   ];
   // Create a notification object for GEOFENCE_TRANSITION_EVENT_ENTER.
   let notificationRequest1: notificationManager.NotificationRequest = {
@@ -2354,7 +2426,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
       notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
       normal: {
         title: "Geofence Notification",
-        text:'Geofence Exit',
+        text: 'Geofence Exit',
         additionalText: ""
       }
     }
@@ -2370,14 +2442,18 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
     monitorTransitionEvents: transitionStatusList,
     // Specify the notification objects for geofence transition events. This parameter is optional.
     notifications: notificationRequestList,
+    // Specify the duration during which the device dwells in the geofence. This parameter is optional.
+    loiterTimeMs: 10000,
+    // Specify the name of FenceExtensionAbility to be started for the geofence callback. This parameter is optional.
+    fenceExtensionAbilityName: "FenceExtensionAbility",
     // Specify the callback used to receive geofence transition events.
-    geofenceTransitionCallback: (err : BusinessError, transition : geoLocationManager.GeofenceTransition) => {
+    geofenceTransitionCallback: (err: BusinessError, transition: geoLocationManager.GeofenceTransition) => {
       if (err) {
         console.error('geofenceTransitionCallback: err=' + JSON.stringify(err));
       }
       if (transition) {
         console.info("GeofenceTransition: %{public}s", JSON.stringify(transition));
-    }
+      }
     }
   }
   try {
@@ -2387,11 +2463,11 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
       console.info("addGnssGeofence success, fence id: " + id);
       let fenceId = id;
     }).catch((err: BusinessError) => {
-      console.error("addGnssGeofence failed, promise errCode:" + (err as BusinessError).code + 
-        ",errMessage:" + (err as BusinessError).message);
+      console.error("addGnssGeofence failed, promise errCode:" + (err as BusinessError).code +
+      ",errMessage:" + (err as BusinessError).message);
     });
-  } catch(error) {
-      console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
+  } catch (error) {
+    console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
   }
   ```
   
@@ -2400,7 +2476,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 removeGnssGeofence(geofenceId: number): Promise&lt;void&gt;
 
-Removes a GNSS geofence and unsubscribes from geofence transition events. This API uses a promise to return the result.
+Removes a GNSS geofence and unsubscribes from geofence events. This API uses a promise to return the result.
 
 This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
 
@@ -2418,7 +2494,7 @@ This API is supported only by certain GNSS chip models. If the required chip mod
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;void&gt; | Promise that that returns no value.|
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -2442,10 +2518,10 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   try {
     geoLocationManager.removeGnssGeofence(fenceId).then(() => {
       console.info("removeGnssGeofence success fenceId:" + fenceId);
-    }).catch((error : BusinessError) => {
+    }).catch((error: BusinessError) => {
       console.error("removeGnssGeofence: error=" + JSON.stringify(error));
     });
-  } catch(error) {
+  } catch (error) {
     console.error("removeGnssGeofence: error=" + JSON.stringify(error));
   }
   ```
@@ -2478,10 +2554,11 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
     let supportedCoordTypes: Array<geoLocationManager.CoordinateSystemType> = geoLocationManager.getGeofenceSupportedCoordTypes();
     console.info("getGeofenceSupportedCoordTypes return:" + JSON.stringify(supportedCoordTypes));
-  } catch(error) {
+  } catch (error) {
     console.error("getGeofenceSupportedCoordTypes: error=" + JSON.stringify(error));
   }
   ```
@@ -2491,7 +2568,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 getCurrentWifiBssidForLocating(): string
 
-Obtains the Basic Service Set Identifier (BSSID) of the connected Wi-Fi access point (AP).
+Obtains the Basic Service Set Identifier (BSSID) of the connected Wi-Fi access point (AP). If the device is not connected to a Wi-Fi network, error code **3301900** will be returned. You are advised to use the **try-catch** structure to capture exceptions according to the sample code.
 
 **Required permissions**: ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2519,10 +2596,11 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
     let bssid: string = geoLocationManager.getCurrentWifiBssidForLocating();
     console.info("get wifi bssid:" + bssid);
-  } catch(error) {
+  } catch (error) {
     console.error("getCurrentWifiBssidForLocating: errCode" + error.code + ", errMessage" + error.message);
   }
   ```
@@ -2569,13 +2647,13 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   import { geoLocationManager } from '@kit.LocationKit';
 
 
-  let callback = (result: geoLocationManager.BluetoothScanResult):void => {
-      console.info('bluetoothScanResultChange: ' + JSON.stringify(result));
+  let callback = (result: geoLocationManager.BluetoothScanResult): void => {
+    console.info('bluetoothScanResultChange: ' + JSON.stringify(result));
   };
   try {
-      geoLocationManager.on('bluetoothScanResultChange', callback);
+    geoLocationManager.on('bluetoothScanResultChange', callback);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
 
   ```
@@ -2614,14 +2692,14 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
 
-  let callback = (result: geoLocationManager.BluetoothScanResult):void => {
-      console.info('bluetoothScanResultChange: ' + JSON.stringify(result));
+  let callback = (result: geoLocationManager.BluetoothScanResult): void => {
+    console.info('bluetoothScanResultChange: ' + JSON.stringify(result));
   };
   try {
-      geoLocationManager.on('bluetoothScanResultChange', callback);
-      geoLocationManager.off('bluetoothScanResultChange', callback);
+    geoLocationManager.on('bluetoothScanResultChange', callback);
+    geoLocationManager.off('bluetoothScanResultChange', callback);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -2648,6 +2726,7 @@ Queries whether the system supports the POI service.
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   let poiServiceState = geoLocationManager.isPoiServiceSupported();
   console.info("poiServiceState:" + poiServiceState);
   ```
@@ -2657,7 +2736,7 @@ Queries whether the system supports the POI service.
 
 getPoiInfo(): Promise&lt;PoiInfo&gt;
 
-Obtains the POI near the current location.
+Obtains the POI near the current location. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2686,6 +2765,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
     if (geoLocationManager.isPoiServiceSupported()) {
       geoLocationManager.getPoiInfo().then((poiInfo) => {
@@ -2694,7 +2774,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
         }
       })
     }
-  } catch(error) {
+  } catch (error) {
     console.error("getPoiInfo errCode:" + error.code + ", errMessage:" + error.message);
   }
   ```
@@ -2729,14 +2809,33 @@ Obtains the linear distance between two locations.
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-    let location1: geoLocationManager.Location = {"latitude": 30.12, "longitude": 120.11, "altitude": 0, "accuracy": 0,
-      "speed": 0, "timeStamp": 0, "direction": 0, "timeSinceBoot": 0, "additionSize": 0}
-    let location2: geoLocationManager.Location = {"latitude": 30.12, "longitude": 120.11, "altitude": 0, "accuracy": 0,
-      "speed": 0, "timeStamp": 0, "direction": 0, "timeSinceBoot": 0, "additionSize": 0}
+    let location1: geoLocationManager.Location = {
+      "latitude": 30.12,
+      "longitude": 120.11,
+      "altitude": 0,
+      "accuracy": 0,
+      "speed": 0,
+      "timeStamp": 0,
+      "direction": 0,
+      "timeSinceBoot": 0,
+      "additionSize": 0
+    }
+    let location2: geoLocationManager.Location = {
+      "latitude": 30.12,
+      "longitude": 120.11,
+      "altitude": 0,
+      "accuracy": 0,
+      "speed": 0,
+      "timeStamp": 0,
+      "direction": 0,
+      "timeSinceBoot": 0,
+      "additionSize": 0
+    }
     let distance = geoLocationManager.getDistanceBetweenLocations(location1, location2);
     console.info("distance:" + distance);
-  } catch(error) {
+  } catch (error) {
     console.error("getDistanceBetweenLocations: errCode" + error.code + ", errMessage" + error.message);
   }
   ```
@@ -2746,7 +2845,7 @@ Obtains the linear distance between two locations.
 
 addBeaconFence(fenceRequest: BeaconFenceRequest): Promise&lt;number&gt;
 
-Subscribes to status change events of the specified beacon fence. This API uses a promise to return the result.
+Adds a beacon fence and subscribes to beacon fence events. This API uses a promise to return the result.
 
 A beacon fence refers to a virtual fence created through the cooperation of a Bluetooth beacon and a mobile phone application. When a user approaches or leaves a specific beacon, the mobile phone application receives a notification.
 
@@ -2788,6 +2887,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
     // The iBeacon protocol is used as an example. The format is as follows:
     // 01 byte    type = 0x02
@@ -2801,21 +2901,21 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
     let manufactureDataMaskBuffer: Uint8Array = new Uint8Array([0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF,
       0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF]);
 
-    let manufactureData:geoLocationManager.BeaconManufactureData = {
+    let manufactureData: geoLocationManager.BeaconManufactureData = {
       manufactureId: 0X004C,
       manufactureData: manufactureDataBuffer.buffer,
       manufactureDataMask: manufactureDataMaskBuffer.buffer
     };
 
-    let beacon:geoLocationManager.BeaconFence = {
+    let beacon: geoLocationManager.BeaconFence = {
       identifier: "11",
       beaconFenceInfoType: geoLocationManager.BeaconFenceInfoType.BEACON_MANUFACTURE_DATA,
-      manufactureData:manufactureData
+      manufactureData: manufactureData
     };
 
-    let fenceRequest:geoLocationManager.BeaconFenceRequest = {
+    let fenceRequest: geoLocationManager.BeaconFenceRequest = {
       beacon: beacon,
-      transitionCallback: (transition : geoLocationManager.GeofenceTransition) => {
+      transitionCallback: (transition: geoLocationManager.GeofenceTransition) => {
         if (transition) {
           console.info("GeofenceTransition: err" + JSON.stringify(transition));
         }
@@ -2824,10 +2924,10 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
     };
     geoLocationManager.addBeaconFence(fenceRequest).then((id) => {
       console.info("addBeaconFence success, fence id:" + id);
-    }).catch((err : BusinessError) => {
+    }).catch((err: BusinessError) => {
       console.error('promise, addBeaconFence: error=' + JSON.stringify(err));
     });
-  } catch(error) {
+  } catch (error) {
     console.error("addBeaconFence: errCode" + error.code + ", errMessage" + error.message);
   }
   ```
@@ -2837,7 +2937,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
 
-Deletes a beacon fence and unsubscribes from beacon fence events. This API uses a promise to return the result.
+Removes a beacon fence and unsubscribes from beacon fence events. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2856,7 +2956,7 @@ Deletes a beacon fence and unsubscribes from beacon fence events. This API uses 
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;void&gt; | Promise that that returns no value.|
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -2874,30 +2974,31 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
     let manufactureDataBuffer: Uint8Array = new Uint8Array([0X02, 0X15, 0X00, 0X11, 0X22, 0X33, 0X44, 0X55,
       0X66, 0X77, 0X88, 0X99, 0XAA, 0XBB, 0XCC, 0XDD, 0XEE, 0XFF, 0X11, 0X22, 0X33, 0X44, 0X55]);
     let manufactureDataMaskBuffer: Uint8Array = new Uint8Array([0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF,
       0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF]);
 
-    let manufactureData:geoLocationManager.BeaconManufactureData = {
+    let manufactureData: geoLocationManager.BeaconManufactureData = {
       manufactureId: 0X004C,
       manufactureData: manufactureDataBuffer.buffer,
       manufactureDataMask: manufactureDataMaskBuffer.buffer
     };
 
-    let beacon:geoLocationManager.BeaconFence = {
+    let beacon: geoLocationManager.BeaconFence = {
       identifier: "11",
       beaconFenceInfoType: geoLocationManager.BeaconFenceInfoType.BEACON_MANUFACTURE_DATA,
-      manufactureData:manufactureData
+      manufactureData: manufactureData
     };
     geoLocationManager.removeBeaconFence(beacon).then(() => {
       console.info("promise, removeBeaconFence success");
     })
-    .catch((error:BusinessError) => {
-      console.error("promise, removeBeaconFence: errCode" + error.code + ", errMessage" + error.message);
-    });
-  } catch(error) {
+      .catch((error: BusinessError) => {
+        console.error("promise, removeBeaconFence: errCode" + error.code + ", errMessage" + error.message);
+      });
+  } catch (error) {
     console.error("removeBeaconFence: errCode" + error.code + ", errMessage" + error.message);
   }
   ```
@@ -2921,10 +3022,11 @@ Checks whether the current device supports beacon fences.
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      let isBeaconFenceSupported = geoLocationManager.isBeaconFenceSupported();
+    let isBeaconFenceSupported = geoLocationManager.isBeaconFenceSupported();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -2932,7 +3034,7 @@ Checks whether the current device supports beacon fences.
 
 isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, needStartScan: boolean): Promise&lt;boolean&gt;
 
-Checks whether a specified BSSID exists in the latest WLAN scan result.
+Checks whether a specified BSSID exists in the latest WLAN scan result. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
@@ -2969,14 +3071,62 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
     let wlanBssidArray: Array<string> = ["02:1b:32:23:ea:91", "02:1b:32:23:ea:93"];
     let rssiThreshold: number = -70;
     let needStartScan: boolean = true;
     geoLocationManager.isWlanBssidMatched(wlanBssidArray, rssiThreshold, needStartScan).then((res) => {
-          console.info("Wlan Bssid Matched Result:" + res);
+      console.info("Wlan Bssid Matched Result:" + res);
     })
-  } catch(error) {
+  } catch (error) {
     console.error("isWlanBssidMatched: errCode" + error.code + ", errMessage" + error.message);
+  }
+  ```
+
+## geoLocationManager.getActiveGeoFences<sup>23+</sup>
+
+getActiveGeoFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
+
+Queries the current valid geofence information. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
+
+**System capability**: SystemCapability.Location.Location.Geofence
+
+**Return value**
+
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;Map&lt;int, [Geofence](#geofence)&gt;&gt; | Promise that returns the valid geofence information. The key in the Map is **fenceId**, and the value is the specific information about the corresponding geofence.|
+
+**Error codes**
+
+For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.getActiveGeoFences} due to limited device capabilities.          |
+
+**Example**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+  try {
+    geoLocationManager.getActiveGeoFences().then((res) => {
+      if (res) {
+        console.info("fence num:" + res.size);
+        for (const item of res) {
+          console.info("data=" + JSON.stringify(item));
+        }
+      }
+    })
+      .catch((error: BusinessError) => {
+        console.error('promise, getActiveGeoFences: error=' + JSON.stringify(error));
+      });
+  } catch (error) {
+    console.error("getActiveGeoFences: errCode" + error.code + ", errMessage" + error.message);
   }
   ```

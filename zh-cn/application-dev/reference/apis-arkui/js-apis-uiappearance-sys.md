@@ -162,7 +162,7 @@ setFontScale(fontScale: number): Promise\<void>
 
 **示例：** 
 
-  ```ts
+```ts
 import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -178,7 +178,7 @@ try {
     let message = (error as BusinessError).message;
     console.error('Set fontScale failed, ' + message);
 }
-  ```
+```
 
 
 ## uiAppearance.setFontWeightScale<sup>12+</sup>
@@ -222,7 +222,7 @@ setFontWeightScale(fontWeightScale: number): Promise\<void>
 
 **示例：** 
 
-  ```ts
+```ts
 import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -238,4 +238,4 @@ try {
     let message = (error as BusinessError).message;
     console.error('Set fontWeightScale failed, ' + message);
 }
- ```
+```

@@ -351,6 +351,7 @@ console.dirxml('count:');
 static group(...arguments: Object[]): void
 
 默认将后续行的缩进增加两个空格。
+
 如果提供需要打印的信息，则首先打印信息，没有额外的缩进。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -366,8 +367,8 @@ static group(...arguments: Object[]): void
 **示例：**
 
 ```js
-console.info("outter");
-// outter
+console.info("outer");
+// outer
 console.group();
 console.info("level 1");
 //   level 1
@@ -396,8 +397,8 @@ static groupCollapsed(...arguments: Object[]): void
 **示例：**
 
 ```js
-console.groupCollapsed("outter");
-// outter
+console.groupCollapsed("outer");
+// outer
 console.groupCollapsed();
 console.info("level 1");
 //   level 1
@@ -420,14 +421,14 @@ static groupEnd(): void
 **示例：**
 
 ```js
-console.info("outter");
-// outter
+console.info("outer");
+// outer
 console.group();
 console.info("level 1");
 //   level 1
 console.groupEnd();
-console.info("outter");
-// outter
+console.info("outer");
+// outer
 ```
 
 ## console.table<sup>10+</sup>

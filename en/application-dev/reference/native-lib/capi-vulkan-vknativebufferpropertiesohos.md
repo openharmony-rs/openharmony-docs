@@ -7,6 +7,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct VkNativeBufferPropertiesOHOS {...} VkNativeBufferPropertiesOHOS
+```
+
 ## Overview
 
 The struct describes the properties of the NativeBuffer.

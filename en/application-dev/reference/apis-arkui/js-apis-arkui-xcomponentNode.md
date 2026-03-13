@@ -2,14 +2,16 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 <!--deprecated_code_no_check-->
 
 The **XComponentNode** module provides APIs for the XComponentNode, which represent an [XComponent](arkui-ts/ts-basic-components-xcomponent.md) in the component tree. You can write [EGL](../native-lib/egl.md)/[OpenGL ES](../native-lib/opengles.md) and media data and display it on the **XComponent**, whose rendering type can be dynamically modified.
 
-> Note: The APIs of this module are deprecated since API version 12. You are advised to use [XComponent type node](./js-apis-arkui-frameNode.md#xcomponent12) for implementation instead.
+> **NOTE**
+>
+> This module is deprecated since API version 12. You are advised to use the [typeNode of the XComponent type](./js-apis-arkui-frameNode.md#xcomponent12) instead.
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
@@ -21,13 +23,17 @@ The **XComponentNode** module provides APIs for the XComponentNode, which repres
 import { XComponentNode } from "@kit.ArkUI";
 ```
 
-## XComponentNode
+## XComponentNode<sup>(deprecated)</sup>
 
-### constructor
+### constructor<sup>(deprecated)</sup>
 
 constructor(uiContext: UIContext, options: RenderOptions, id: string, type: XComponentType, libraryName?: string)
 
 Constructor used to create an XComponentNode.
+
+> **NOTE**
+>
+> This API is supported since API version 11 and deprecated since API version 12. You are advised to use [createNode](./js-apis-arkui-frameNode.md#createnodexcomponent12) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,11 +51,15 @@ Constructor used to create an XComponentNode.
 >
 > You need to explicitly specify **selfIdealSize** in [RenderOptions](./js-apis-arkui-builderNode.md#renderoptions). Otherwise, the XComponentNode's content size is empty, resulting in no content being displayed.
 
-### onCreate
+### onCreate<sup>(deprecated)</sup>
 
 onCreate(event?: Object): void
 
 Called when the XComponentNode loading is complete.
+
+> **NOTE**
+>
+> This API is supported since API version 11 and deprecated since API version 12. You are advised to use [onLoad](arkui-ts/ts-basic-components-xcomponent.md#onload) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,19 +69,27 @@ Called when the XComponentNode loading is complete.
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | event  | Object | No  | Context of the **XComponent** object. The APIs contained in the context are defined at the C++ layer by developers.|
 
-### onDestroy
+### onDestroy<sup>(deprecated)</sup>
 
 onDestroy(): void
 
 Called when the XComponentNode is destroyed.
 
+> **NOTE**
+>
+> This API is supported since API version 11 and deprecated since API version 12. You are advised to use [onDestroy](arkui-ts/ts-basic-components-xcomponent.md#ondestroy) instead.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-### changeRenderType
+### changeRenderType<sup>(deprecated)</sup>
 
 changeRenderType(type: NodeRenderType): boolean
 
 Changes the rendering type of the XComponentNode.
+
+> **NOTE**
+>
+> This API is supported since API version 11 and deprecated since API version 12. You are advised to use [appendChild](./js-apis-arkui-frameNode.md#appendchild12) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -141,3 +159,9 @@ struct Index {
 ```
 
 ![XComponentNodeSample](figures/xcomponent_node.jpg)
+
+<!--Del-->
+> **NOTE**
+>
+> The native layer compilation output in this example references the [OpenGL Triangular Pyramid](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkOpenGL) (API version 10) dynamic library. To build the complete example, download that project and copy all files from its **cpp** directory to your current project's **cpp** directory.
+<!--DelEnd-->

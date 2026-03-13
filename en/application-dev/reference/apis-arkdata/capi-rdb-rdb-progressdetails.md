@@ -6,8 +6,8 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-```
-typedef struct {...} Rdb_ProgressDetails
+```c
+typedef struct Rdb_ProgressDetails {...} Rdb_ProgressDetails
 ```
 
 ## Overview

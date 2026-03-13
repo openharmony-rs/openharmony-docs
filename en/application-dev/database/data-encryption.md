@@ -131,22 +131,25 @@ The **cryptoParam** setting involves the following scenarios:
 If **cryptoParam** is not set, the default configuration is used for database encryption and decryption.
 
 
-<!-- @[encryption_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
+<!-- @[encryption_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit'
+import { UIContext } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 ```
 
 
 
-<!-- @[defaultConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
+<!-- @[defaultConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
 
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
-let context = getContext();
 
+/* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
+const context = new UIContext().getHostContext() as common.UIAbilityContext;
 try {
   const STORE_CONFIG: relationalStore.StoreConfig = {
     name: 'RdbTest.db',
@@ -165,11 +168,10 @@ try {
 
 If **cryptoParam** is set, the specified key and algorithm are used for database encryption and decryption.
 
-<!-- @[customizedConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
+<!-- @[customizedConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
 
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
-let context = getContext();
 // Initialize the key to be used. Hard-coded keys are used as an example. You should use a secure key management service in actual development.
 let key = new Uint8Array(32);
 for (let i = 0; i < 32; i++) {
@@ -192,6 +194,9 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
   encrypt: true,
   cryptoParam: CRYPTO_PARAM
 }
+
+/* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
+const context = new UIContext().getHostContext() as common.UIAbilityContext;
 try {
   store = await relationalStore.getRdbStore(context, STORE_CONFIG);
   if (store == null) {

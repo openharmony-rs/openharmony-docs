@@ -33,7 +33,7 @@ The file declares the error codes defined by AbilityBase.
 
 ### AbilityBase_ErrorCode
 
-```
+```c
 enum AbilityBase_ErrorCode
 ```
 

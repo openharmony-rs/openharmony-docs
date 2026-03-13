@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -39,7 +39,7 @@ The **shared_mutex.h** file declares read-write lock APIs in C.
 
 ### ffrt_rwlock_init()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_init(ffrt_rwlock_t* rwlock, const ffrt_rwlockattr_t* attr)
 ```
 
@@ -49,13 +49,12 @@ Initializes a read-write lock.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the read-write lock.|
-| [const ffrt_rwlockattr_t](capi-ffrt-ffrt-rwlockattr-t.md)* attr | Pointer to the read-write lock attribute.|
+| [const ffrt_rwlockattr_t](capi-ffrt-ffrt-rwlockattr-t.md)* attr | Pointer to the **rwlock** property. Only the default value (null) is supported.|
 
 **Returns**
 
@@ -65,7 +64,7 @@ Initializes a read-write lock.
 
 ### ffrt_rwlock_wrlock()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_wrlock(ffrt_rwlock_t* rwlock)
 ```
 
@@ -74,7 +73,6 @@ FFRT_C_API int ffrt_rwlock_wrlock(ffrt_rwlock_t* rwlock)
 Obtains a write lock.
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -90,7 +88,7 @@ Obtains a write lock.
 
 ### ffrt_rwlock_trywrlock()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_trywrlock(ffrt_rwlock_t* rwlock)
 ```
 
@@ -99,7 +97,6 @@ FFRT_C_API int ffrt_rwlock_trywrlock(ffrt_rwlock_t* rwlock)
 Attempts to obtain a write lock.
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -115,7 +112,7 @@ Attempts to obtain a write lock.
 
 ### ffrt_rwlock_rdlock()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_rdlock(ffrt_rwlock_t* rwlock)
 ```
 
@@ -124,7 +121,6 @@ FFRT_C_API int ffrt_rwlock_rdlock(ffrt_rwlock_t* rwlock)
 Obtains a read lock.
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -140,7 +136,7 @@ Obtains a read lock.
 
 ### ffrt_rwlock_tryrdlock()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_tryrdlock(ffrt_rwlock_t* rwlock)
 ```
 
@@ -149,7 +145,6 @@ FFRT_C_API int ffrt_rwlock_tryrdlock(ffrt_rwlock_t* rwlock)
 Attempts to obtain a read lock.
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -165,7 +160,7 @@ Attempts to obtain a read lock.
 
 ### ffrt_rwlock_unlock()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_unlock(ffrt_rwlock_t* rwlock)
 ```
 
@@ -174,7 +169,6 @@ FFRT_C_API int ffrt_rwlock_unlock(ffrt_rwlock_t* rwlock)
 Releases the read-write lock.
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -190,7 +184,7 @@ Releases the read-write lock.
 
 ### ffrt_rwlock_destroy()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_destroy(ffrt_rwlock_t* rwlock)
 ```
 
@@ -199,7 +193,6 @@ FFRT_C_API int ffrt_rwlock_destroy(ffrt_rwlock_t* rwlock)
 Destroys the read-write lock.
 
 **Since**: 18
-
 
 **Parameters**
 

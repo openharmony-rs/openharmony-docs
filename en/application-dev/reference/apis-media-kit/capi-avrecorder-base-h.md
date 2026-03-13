@@ -59,7 +59,7 @@ The file declares the struct and enums used by the AVRecorder.
 
 ### OH_AVRecorder_AudioSourceType
 
-```
+```c
 enum OH_AVRecorder_AudioSourceType
 ```
 
@@ -82,7 +82,7 @@ Enumerates the audio source types of the AVRecorder.
 
 ### OH_AVRecorder_VideoSourceType
 
-```
+```c
 enum OH_AVRecorder_VideoSourceType
 ```
 
@@ -101,7 +101,7 @@ Enumerates the video source types of the AVRecorder.
 
 ### OH_AVRecorder_CodecMimeType
 
-```
+```c
 enum OH_AVRecorder_CodecMimeType
 ```
 
@@ -126,7 +126,7 @@ Enumerates the MIME types of the encoder.
 
 ### OH_AVRecorder_ContainerFormatType
 
-```
+```c
 enum OH_AVRecorder_ContainerFormatType
 ```
 
@@ -149,7 +149,7 @@ Enumerates the Container Format Types (CFTs).
 
 ### OH_AVRecorder_State
 
-```
+```c
 enum OH_AVRecorder_State
 ```
 
@@ -173,7 +173,7 @@ Enumerates the AVRecorder states.
 
 ### OH_AVRecorder_StateChangeReason
 
-```
+```c
 enum OH_AVRecorder_StateChangeReason
 ```
 
@@ -192,7 +192,7 @@ Enumerates the reasons for AVRecorder state changes.
 
 ### OH_AVRecorder_FileGenerationMode
 
-```
+```c
 enum OH_AVRecorder_FileGenerationMode
 ```
 
@@ -214,7 +214,7 @@ Enumerates the modes available for creating a recording file.
 
 ### OH_AVRecorder_OnStateChange()
 
-```
+```c
 typedef void (*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder,OH_AVRecorder_State state, OH_AVRecorder_StateChangeReason reason, void *userData)
 ```
 
@@ -238,7 +238,7 @@ Called when the AVRecorder state changes.
 
 ### OH_AVRecorder_OnError()
 
-```
+```c
 typedef void (*OH_AVRecorder_OnError)(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg,void *userData)
 ```
 
@@ -262,7 +262,7 @@ Called when an error occurs during recording.
 
 ### OH_AVRecorder_OnUri()
 
-```
+```c
 typedef void (*OH_AVRecorder_OnUri)(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userData)
 ```
 

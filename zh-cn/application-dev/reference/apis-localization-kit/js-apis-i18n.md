@@ -15,7 +15,7 @@
 >
 >  - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  - 本模块接口依据[CLDR](https://cldr.unicode.org) 国际化数据库进行处理，随着CLDR演进，本模块接口处理结果可能发生变化。其中，API version 12对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)，具体数据变化请参考官方链接。
+>  - 本模块接口基于[CLDR](https://cldr.unicode.org)国际化数据库实现，随着CLDR标准的迭代演进，接口处理结果可能会相应调整。例如[时间日期格式化接口](#simplenumberformat18)，其返回值仅适用于界面展示场景，开发者请勿对返回格式进行硬编码或假设性判断，否则可能导致版本兼容问题。其中，API version 12 对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)版本，具体数据变更详情可查阅CLDR官方文档。
 >
 >  - 从API version 11开始，本模块部分接口支持在ArkTS卡片中使用。
 
@@ -1572,7 +1572,7 @@ getIndexList(): Array&lt;string&gt;
 
   let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
   // indexList = [ '...', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-  //              'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '...' ]
+  // 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '...' ]
   let indexList: Array<string> = indexUtil.getIndexList();
   ```
 
@@ -4177,6 +4177,8 @@ format(value: number): StyledString
 
 **系统能力：** SystemCapability.Global.I18n
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 ### constructor<sup>23+</sup>
 
 constructor(numberFormat: Intl.NumberFormat, options?: AdvancedMeasureFormatOptions)
@@ -4187,17 +4189,19 @@ constructor(numberFormat: Intl.NumberFormat, options?: AdvancedMeasureFormatOpti
 
 **系统能力：** SystemCapability.Global.I18n
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 |   参数名  |      类型      | 必填 |     说明      |
 | --------- | ------------- | ---- | ------------- |
 | numberFormat | [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) | 是   | 用于格式化数字的对象。  |
-| options | [AdvancedMeasureFormatOptions](#advancedmeasureformatoptions23) | 否 | 指定数字格式化对象的配置项。  |
+| options | [AdvancedMeasureFormatOptions](#advancedmeasureformatoptions23) | 否 | 指定数字格式化对象的配置项。默认值：与[numberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)格式化效果一样。  |
 
 **示例：**
   ```ts
   import { i18n } from '@kit.LocalizationKit';
-  
+
   let numFmt: Intl.NumberFormat = new Intl.NumberFormat('zh-Hans-CN', { style: 'unit', unit: 'fahrenheit' });
   let advancedMeasureFormat: i18n.AdvancedMeasureFormat = new i18n.AdvancedMeasureFormat(numFmt, {
     unitUsage: i18n.UnitUsage.TEMPERATURE_PERSON
@@ -4213,6 +4217,8 @@ format(num: number): string
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -4245,6 +4251,8 @@ format(num: number): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
 | unitUsage        | [UnitUsage](#unitusage23) |   否    |   是    |  单位格式化使用场景的枚举。     |
@@ -4256,6 +4264,8 @@ format(num: number): string
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -4400,7 +4410,7 @@ getSystemRegion(): string
 
 getSystemLocale(): string
 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.getSystemLocaleInstance](#getsystemlocaleinstance20)代替。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.getSystemLocale](#getsystemlocaledeprecated)代替。
 
 获取系统区域ID。
 

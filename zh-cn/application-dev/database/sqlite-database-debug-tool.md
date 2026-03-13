@@ -9,10 +9,13 @@
 SQLite是一款轻量级、嵌入式、无服务器的关系型数据库管理系统，其核心优势在于将整个数据库存储于单一文件中，无需独立服务器进程，支持跨平台运行，被广泛应用于移动应用、嵌入式设备和桌面软件等场景。
 
 本调试工具基于hdc命令实现对SQLite数据库的操作，提供一种通过命令行接口高效管理SQLite数据库的方式，适用于开发、调试和运维阶段对数据库的快速操作与验证。
+
 <!--RP1-->
 >**说明：**
 >
->从OpenHarmony 6.0开始，支持使用SQLite调试工具。
+> - 从OpenHarmony 6.0开始，支持使用SQLite调试工具。
+> 
+> - 开发者也可以通过DevEco Studio调试数据库，具体操作方式请参考[访问应用数据库](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-database-inspector)。
 <!--RP1End-->
 
 ## 环境要求
@@ -130,7 +133,7 @@ sqlite>.help
   ```
 
 
-- 创建并打开新数据库	
+- 创建并打开新数据库
 
   若指定的数据库文件不存在，SQLite将自动创建该文件：
 

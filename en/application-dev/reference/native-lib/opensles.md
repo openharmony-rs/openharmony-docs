@@ -1,4 +1,10 @@
 # OpenSL ES
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 > OpenHarmony provides the OpenSL ES APIs for audio development at the native layer since SDK 8. As the version evolves, these APIs fail to meet the capability expansion requirements of the audio system and therefore are no longer recommended.
@@ -29,7 +35,7 @@ libOpenSLES.so
 |Object               |External Interface              |Interface Invocation                                                                          |Supported  |Description                 |
 | ------------------ | -------------------- | -------------------------------------------------------------------------------------|----------| -------------------- |
 |SLEngineItf         |CreateAudioPlayer     |CreateAudioPlayer(SLEngineItf self, SLObjectItf *pPlayer, SLDataSource *pAudioSrc, SLDataSink *pAudioSnk, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired) |Yes       |Creates an audio player.       |
-|SLEngineItf         |CreateAudioRecorder   |reateAudioRecorder(SLEngineItf self, SLObjectItf *pRecorder, SLDataSource *pAudioSrc, SLDataSink *pAudioSnk, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired)|Yes       |Creates an audio recorder.       |
+|SLEngineItf         |CreateAudioRecorder   |CreateAudioRecorder(SLEngineItf self, SLObjectItf *pRecorder, SLDataSource *pAudioSrc, SLDataSink *pAudioSnk, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired)|Yes       |Creates an audio recorder.       |
 |SLEngineItf         |CreateAudioOutputMix  |CreateOutputMix(SLEngineItf self, SLObjectItf *pMix, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired)|Yes       |Creates an audio output mixer.           |
 |SLObjectItf         |Realize               |Realize(SLObjectItf self, SLboolean async)                                            |Yes       |Realizes an audio player.       |
 |SLObjectItf         |getState              |GetState(SLObjectItf self, SLuint32 *pState)                                           |Yes       |Obtains the state.            |
