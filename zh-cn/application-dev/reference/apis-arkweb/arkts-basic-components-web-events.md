@@ -6216,7 +6216,7 @@ ArkTS-Sta: onNativeEmbedLifecycleChange(callback: ((event: NativeEmbedDataInfo) 
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | ArkTS-Dyn: (event: [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)) => void <br/>ArkTS-Sta: (event: [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)) => void \|  undefined| 是 | 同层标签生命周期变化时触发该回调。 |
+| callback       | ArkTS-Dyn: (event: [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)) => void <br/>ArkTS-Sta: ((event: [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)) => void) \|  undefined| 是 | 同层标签生命周期变化时触发该回调。 |
 
 **示例：**
 
@@ -6546,7 +6546,7 @@ ArkTS-Sta: onNativeEmbedGestureEvent(callback: ((event: NativeEmbedTouchInfo) =>
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | ArkTS-Dyn: (event: [NativeEmbedTouchInfo](./arkts-basic-components-web-i.md#nativeembedtouchinfo11)) => void <br/>ArkTS-Sta: (event: [NativeEmbedTouchInfo](./arkts-basic-components-web-i.md#nativeembedtouchinfo11)) => void \|  undefined| 是 | 手指触摸到同层标签时触发该回调。 |
+| callback       | ArkTS-Dyn: (event: [NativeEmbedTouchInfo](./arkts-basic-components-web-i.md#nativeembedtouchinfo11)) => void <br/>ArkTS-Sta: ((event: [NativeEmbedTouchInfo](./arkts-basic-components-web-i.md#nativeembedtouchinfo11)) => void) \|  undefined| 是 | 手指触摸到同层标签时触发该回调。 |
 
 **示例：**
 

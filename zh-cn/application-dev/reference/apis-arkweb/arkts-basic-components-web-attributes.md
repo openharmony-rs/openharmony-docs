@@ -3581,9 +3581,9 @@ ArkTS-Dyn示例：
 
 ## enableNativeEmbedMode<sup>11+</sup>
 
-ArkTS-Dyn: enableNativeEmbedMode(mode: boolean)
+ArkTS-Dyn: enableNativeEmbedMode(enabled: boolean)
 
-ArkTS-Sta: enableNativeEmbedMode(mode: boolean | undefined)
+ArkTS-Sta: enableNativeEmbedMode(enabled: boolean | undefined)
 
 设置是否开启同层渲染功能。当属性没有显式调用时，默认不开启同层渲染功能。
 
@@ -3597,7 +3597,7 @@ ArkTS-Sta: enableNativeEmbedMode(mode: boolean | undefined)
 
 | 参数名   | 类型                      | 必填   | 说明             |
 | ----- | ---------------------------------------- | ---- | ---------------- |
-| mode |  ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 是否开启同层渲染功能。<br>true表示开启同层渲染功能，false表示不开启同层渲染功能。<br>ArkTS-Dyn：传入undefined或null时为false。 <br>ArkTS-Sta：传入undefined时为false。|
+| enabled |  ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 是否开启同层渲染功能。<br>true表示开启同层渲染功能，false表示不开启同层渲染功能。<br>ArkTS-Dyn：传入undefined或null时为false。 <br>ArkTS-Sta：传入undefined时为false。|
 
 **示例：**
 
