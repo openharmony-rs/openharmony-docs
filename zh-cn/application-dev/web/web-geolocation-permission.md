@@ -16,13 +16,13 @@ Web组件根据[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webv
    ```json
    "requestPermissions":[
       {
-        "name" : "ohos.permission.LOCATION" // 精准定位
+        "name" : "ohos.permission.LOCATION"
       },
       {
-        "name" : "ohos.permission.APPROXIMATELY_LOCATION" // 模糊定位
+        "name" : "ohos.permission.APPROXIMATELY_LOCATION"
       },
       {
-        "name" : "ohos.permission.LOCATION_IN_BACKGROUND" // 后台定位
+        "name" : "ohos.permission.LOCATION_IN_BACKGROUND"
       }
     ]
    ```
