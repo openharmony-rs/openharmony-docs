@@ -23,7 +23,7 @@
 
 媒体应用接入媒体中心的基本步骤如下所示：
 
-1. 在进程启动时，调用接口[createAVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplate)创建音频模板（每个媒体应用创建一个音频模板，不需要重复创建），拉起媒体中心。
+1. 在进程启动时，调用接口[createAVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplate)创建音频模板（每个媒体应用创建一个音频模板，不需要重复创建）并拉起媒体中心。
 
    以下示例代码仅展示创建AVMusicTemplate对象的接口调用，应用在真正使用时，需要参考接口[@ohos.backgroundTaskManager (后台任务管理)](../../reference/apis-backgroundtasks-kit/js-apis-backgroundTaskManager.md)确保AVMusicTemplate对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
 
