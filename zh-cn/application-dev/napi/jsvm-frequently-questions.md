@@ -86,6 +86,10 @@
 
    A：检查HandleScope的使用是否正确，参考[生命周期管理](jsvm-guidelines.md#生命周期管理)
 
+5. Q: 调用JSVM-API时出现 `JSVM Fatal Error Massage:(openHandleScopes)==(openHandleScopesBefore)` 错误  
+   
+   A: 调用JSVM-API时未遵循其使用规范正确管理HandleScopes生命周期，导致HandleScopes层数发生变化，调用结束后无法通过JSVM系统层检查，则返回该报错。修改请参考[JSVM-API使用规范](jsvm-guidelines.md)，优先排查注入回调函数中的JSVM-API调用点。
+
 ## JSVM-API执行失败类
 
 1. Q：`OH_JSVM_GetCbInfo`无法获取JS函数参数
