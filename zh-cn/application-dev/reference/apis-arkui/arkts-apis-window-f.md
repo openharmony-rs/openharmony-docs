@@ -693,9 +693,9 @@ export default class EntryAbility extends UIAbility {
 
 ## window.shiftAppWindowPointerEvent<sup>15+</sup>
 
-ArkTs-Dyn: shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
+ArkTS-Dyn: shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
 
-ArkTs-Sta: shiftAppWindowPointerEvent(sourceWindowId: int, targetWindowId: int): Promise&lt;void&gt;
+ArkTS-Sta: shiftAppWindowPointerEvent(sourceWindowId: int, targetWindowId: int): Promise&lt;void&gt;
 
 主窗口和子窗口可正常调用，用于将鼠标输入事件从源窗口转移到目标窗口。使用Promise异步回调。
 
@@ -812,9 +812,9 @@ struct Index {
 ```
 
 ## window.shiftAppWindowTouchEvent<sup>20+</sup>
-ArkTs-Dyn: shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerId: number): Promise&lt;void&gt;
+ArkTS-Dyn: shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerId: number): Promise&lt;void&gt;
 
-ArkTs-Sta: shiftAppWindowTouchEvent(sourceWindowId: int, targetWindowId: int, fingerId: int): Promise&lt;void&gt;
+ArkTS-Sta: shiftAppWindowTouchEvent(sourceWindowId: int, targetWindowId: int, fingerId: int): Promise&lt;void&gt;
 
 主窗口和子窗口可正常调用，用于将触屏输入事件从源窗口转移到目标窗口。使用Promise异步回调。
 
@@ -987,9 +987,9 @@ export default class EntryAbility extends UIAbility {
       let displayId = 0;
       window.getWindowsByCoordinate(displayId, 2, 500, 500).then((data) => {
         console.info(`Succeeded in getting windows. Data: ${data}`);
-        for (let window of data) {
+        for (let windowObject of data) {
           // do something with window
-          windowClass = window;
+          windowClass = windowObject;
         }
       }).catch((err: BusinessError) => {
         console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
@@ -1476,7 +1476,9 @@ function reqPermissionsFromUser(permissions: Array<Permissions>, context: common
 
 ## window.getMainWindowSnapshot<sup>21+</sup>
 
-getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap | undefined&gt;&gt;
+ArkTS-Dyn: getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap | undefined&gt;&gt;
+
+ArkTS-Sta: getMainWindowSnapshot(windowId: Array&lt;int&gt;, config: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap | undefined&gt;&gt;
 
 获取一个或多个指定windowId的主窗口截图，使用Promise异步回调。
 
@@ -1494,7 +1496,7 @@ getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfi
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
-| windowId | Array&lt;number&gt; | 是   | 需要获取截图的主窗口ID列表。可通过[window.getAllMainWindowInfo()](#windowgetallmainwindowinfo21)获取到主窗口windowId。当windowId为null、undefined、小于0、存在重复值或数量超过512个时，返回错误码401；当windowId大于0但不存在对应窗口时，返回undefined。|
+| windowId | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;int&gt; | 是   | 需要获取截图的主窗口ID列表。可通过[window.getAllMainWindowInfo()](#windowgetallmainwindowinfo21)获取到主窗口windowId。当windowId为null、undefined、小于0、存在重复值或数量超过512个时，返回错误码401；当windowId大于0但不存在对应窗口时，返回undefined。|
 | config | [WindowSnapshotConfiguration](arkts-apis-window-i.md#windowsnapshotconfiguration21) | 是 | 获取窗口截图时的配置信息。 |
 
 **返回值：**
@@ -1514,6 +1516,8 @@ getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfi
 | 1300003  | This window manager service works abnormally. |
 
 **示例：**
+
+ArkTS-Dyn示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1578,6 +1582,71 @@ function reqPermissionsFromUser(permissions: Array<Permissions>, context: common
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
+      if (err?.code) {
+        console.error(`Failed to load the content. Cause: JSON.stringify(err)`);
+      }
+      reqPermissionsFromUser(permissions, this.context);
+      console.info('Success in loading the content');
+    });
+    try {
+      let windowIds: int[] = [];
+      let configs: window.WindowSnapshotConfiguration = {
+        useCache: false
+      }
+      let windowInfoPromise = window.getAllMainWindowInfo();
+      windowInfoPromise.then((mainWindowInfoList: Array<window.MainWindowInfo>) => {
+        for (let i = 0; i < mainWindowInfoList.length; i++) {
+          windowIds[i] = mainWindowInfoList[i].windowId;
+        }
+        let promise = window.getMainWindowSnapshot(windowIds, configs);
+        promise.then((list: Array<image.PixelMap | undefined>) => {
+          for (let i = 0; i < list.length; i++) {
+            console.info(`Get main window snapshot, getBytesNumberPerRow: ${list[i]?.getBytesNumberPerRow()}`);
+          }
+        }).catch((err: Error) => {
+          console.error(`Get main window snapshot failed. Error info: ${JSON.stringify(err)}`);
+        });
+      }).catch((err: Error) => {
+        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
+      });
+    } catch (err) {
+      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
+    }
+  }
+}
+
+const permissions: Array<Permissions> = ['ohos.permission.CUSTOM_SCREEN_CAPTURE'];
+function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  atManager.requestPermissionsFromUser(context, permissions).then((data: PermissionRequestResult): void => {
+    console.info('requestPermissionsFromUser');
+    let grantStatus: Array<int> = data.authResults;  
+    let length: number = grantStatus.length;
+    for (let i = 0; i < length; i++) {
+      if (grantStatus[i] === 0) {
+        // 用户授权
+      } else {
+        // 用户拒绝授权
+        return;
+      }
+    }
+  }).catch((err: Error) => {
+    console.error(`Failed to request permission from user. Code is ${err.code}, message is ${err.message}`);
+  })
+}
+```
+
 ## window.create<sup>(deprecated)</sup>
 
 create(id: string, type: WindowType, callback: AsyncCallback&lt;Window&gt;): void
@@ -1590,9 +1659,13 @@ create(id: string, type: WindowType, callback: AsyncCallback&lt;Window&gt;): voi
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在FA模型下使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1632,9 +1705,13 @@ create(id: string, type: WindowType): Promise&lt;Window&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在FA模型下使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1675,7 +1752,11 @@ create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncCallback&l
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1715,7 +1796,11 @@ create(ctx: BaseContext, id: string, type: WindowType): Promise&lt;Window&gt;
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1757,7 +1842,11 @@ find(id: string, callback: AsyncCallback&lt;Window&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[findWindow()](#windowfindwindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1793,7 +1882,11 @@ find(id: string): Promise&lt;Window&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[findWindow()](#windowfindwindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1832,9 +1925,13 @@ getTopWindow(callback: AsyncCallback&lt;Window&gt;): void
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getLastWindow()](#windowgetlastwindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在FA模型下使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -1869,9 +1966,13 @@ getTopWindow(): Promise&lt;Window&gt;
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getLastWindow()](#windowgetlastwindow9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在FA模型下使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **返回值：**
 
@@ -1904,7 +2005,11 @@ getTopWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getLastWindow()](#windowgetlastwindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1951,7 +2056,11 @@ getTopWindow(ctx: BaseContext): Promise&lt;Window&gt;
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getLastWindow()](#windowgetlastwindow9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 

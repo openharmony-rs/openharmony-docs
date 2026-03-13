@@ -60,13 +60,13 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | CURSOR_RIGHT<sup>9+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 4 | 光标右移。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | WINDOW_TYPE_INPUT_METHOD_FLOAT<sup>9+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 2105 | 输入法应用窗口风格标识。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 
-## inputMethodEngine.getinputMethodAbility<sup>9+</sup>
+## inputMethodEngine.getInputMethodAbility<sup>9+</sup>
 
-ArkTS-Dyn: getinputMethodAbility(): inputMethodAbility
+ArkTS-Dyn: getInputMethodAbility(): InputMethodAbility
 
-ArkTS-Sta: getinputMethodAbility(): inputMethodAbility | null
+ArkTS-Sta: getInputMethodAbility(): InputMethodAbility | null
 
-获取输入法应用客户端实例[inputMethodAbility](#inputmethodability)，仅支持输入法应用调用。<br/>输入法应用获取该实例后，可订阅软键盘显示/隐藏请求事件、创建/销毁输入法面板等。
+获取输入法应用客户端实例[InputMethodAbility](#inputmethodability)，仅支持输入法应用调用。<br/>输入法应用获取该实例后，可订阅软键盘显示/隐藏请求事件、创建/销毁输入法面板等。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -78,12 +78,12 @@ ArkTS-Sta: getinputMethodAbility(): inputMethodAbility | null
 
 | 类型                                      | 说明               |
 | ----------------------------------------- | ------------------ |
-| ArkTS-Dyn: [inputMethodAbility](#inputmethodability) <br>ArkTS-Sta: [inputMethodAbility](#inputmethodability) \| null | 输入法应用客户端。 |
+| ArkTS-Dyn: [InputMethodAbility](#inputmethodability) <br>ArkTS-Sta: [InputMethodAbility](#inputmethodability) \| null | 输入法应用客户端。 |
 
 **示例：**
 
 ```ts
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 ```
 
 ## inputMethodEngine.getKeyboardDelegate<sup>9+</sup>
@@ -120,7 +120,7 @@ getInputMethodEngine(): InputMethodEngine
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getinputMethodAbility()](#inputmethodenginegetinputmethodability9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[getInputMethodAbility](#inputmethodenginegetinputmethodability9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -148,7 +148,7 @@ createKeyboardDelegate(): KeyboardDelegate
 
 > **说明：**
 >
->从API version 8开始支持，API version 9开始废弃，建议使用[getKeyboardDelegate()](#inputmethodenginegetkeyboarddelegate9)替代。
+>从API version 8开始支持，API version 9开始废弃，建议使用[getKeyboardDelegate](#inputmethodenginegetkeyboarddelegate9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -200,6 +200,8 @@ type SizeChangeCallback = (size: window.Size, keyboardArea?: KeyboardArea) => vo
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
 | 参数名       | 类型                                                 | 必填 | 说明                             |
 | ------------ | ---------------------------------------------------- | ---- | -------------------------------- |
 | size         | [window.Size](../apis-arkui/arkts-apis-window-i.md#size7) | 是   | 当前面板大小。                   |
@@ -212,6 +214,8 @@ type IMAInputStartCallback = (kbController: KeyboardController, inputClient: Inp
 输入法绑定成功事件的回调函数类型，用于定义inputStart事件触发时执行的回调函数格式。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -325,20 +329,32 @@ type OnMessageCallback = (msgId: string, msgParam?: ArrayBuffer) => void
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
 | 参数名       | 类型          | 必填 | 说明                          |
 | ------- | ----------------- | ---- | ----------------------------- |
 | msgId    | string        | 是   | 接收到的自定义通信数据的标识符。  |
 | msgParam   | ArrayBuffer | 否   | 接收到的自定义通信数据的消息体。 |
 
-## InputMethodEngine
+## InputMethodEngine<sup>(deprecated)</sup>
 
 下列API均需使用[getInputMethodEngine](#inputmethodenginegetinputmethodenginedeprecated)获取到InputMethodEngine实例后，通过实例调用。
 
-### on('inputStart')
+> **说明：**
+>
+> 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility](#inputmethodability)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+### on('inputStart')<sup>(deprecated)</sup>
 
 on(type: 'inputStart', callback: (kbController: KeyboardController, textInputClient: TextInputClient) => void): void
 
 订阅输入法绑定成功事件。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility#on](#oninputstart9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -359,11 +375,15 @@ inputMethodEngine.getInputMethodEngine()
 });
 ```
 
-### off('inputStart')
+### off('inputStart')<sup>(deprecated)</sup>
 
 off(type: 'inputStart', callback?: (kbController: KeyboardController, textInputClient: TextInputClient) => void): void
 
 取消订阅输入法绑定成功事件。
+
+> **说明：**
+>
+> 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility#off](#offinputstart9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -383,11 +403,15 @@ inputMethodEngine.getInputMethodEngine()
 });
 ```
 
-### on('keyboardShow'|'keyboardHide')
+### on('keyboardShow'|'keyboardHide')<sup>(deprecated)</sup>
 
 on(type: 'keyboardShow'|'keyboardHide', callback: () => void): void
 
 订阅输入法软键盘显示或隐藏事件。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility#on](#onkeyboardshowkeyboardhide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -409,11 +433,15 @@ inputMethodEngine.getInputMethodEngine().on('keyboardHide', () => {
 });
 ```
 
-### off('keyboardShow'|'keyboardHide')
+### off('keyboardShow'|'keyboardHide')<sup>(deprecated)</sup>
 
 off(type: 'keyboardShow'|'keyboardHide', callback?: () => void): void
 
 取消订阅输入法软键盘显示或隐藏事件。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility#off](#offkeyboardshowkeyboardhide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -431,9 +459,9 @@ inputMethodEngine.getInputMethodEngine().off('keyboardShow');
 inputMethodEngine.getInputMethodEngine().off('keyboardHide');
 ```
 
-## inputMethodAbility
+## InputMethodAbility
 
-下列API均需使用[getinputMethodAbility](#inputmethodenginegetinputmethodability9)获取到inputMethodAbility实例后，通过实例调用。
+下列API均需使用[getInputMethodAbility](#inputmethodenginegetinputmethodability9)获取到InputMethodAbility实例后，通过实例调用。
 
 ### on('inputStart')<sup>9+</sup>
 
@@ -459,7 +487,7 @@ on(type: 'inputStart', callback: (kbController: KeyboardController, inputClient:
 **示例：**
 
 ```ts
-  inputMethodEngine.getinputMethodAbility()
+  inputMethodEngine.getInputMethodAbility()
     .on('inputStart', (kbController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
     let keyboardController = kbController;
     let inputClient = client;
@@ -491,7 +519,7 @@ off(type: 'inputStart', callback?: (kbController: KeyboardController, inputClien
 **示例：**
 
 ```ts
-inputMethodEngine.getinputMethodAbility().off('inputStart');
+inputMethodEngine.getInputMethodAbility().off('inputStart');
 ```
 
 ### on('inputStop')<sup>9+</sup>
@@ -518,7 +546,7 @@ on(type: 'inputStop', callback: () => void): void
 **示例：**
 
 ```ts
-inputMethodEngine.getinputMethodAbility().on('inputStop', () => {
+inputMethodEngine.getInputMethodAbility().on('inputStop', () => {
   console.info('inputMethodAbility inputStop');
 });
 ```
@@ -547,7 +575,7 @@ off(type: 'inputStop', callback: () => void): void
 **示例：**
 
 ```ts
-inputMethodEngine.getinputMethodAbility().off('inputStop', () => {
+inputMethodEngine.getInputMethodAbility().off('inputStop', () => {
   console.info('inputMethodAbility delete inputStop notification.');
 });
 ```
@@ -576,7 +604,7 @@ on(type: 'setCallingWindow', callback: (wid: number) => void): void
 **示例：**
 
 ```ts
-inputMethodEngine.getinputMethodAbility().on('setCallingWindow', (wid: number) => {
+inputMethodEngine.getInputMethodAbility().on('setCallingWindow', (wid: number) => {
   console.info('inputMethodAbility setCallingWindow');
 });
 ```
@@ -605,7 +633,7 @@ off(type: 'setCallingWindow', callback: (wid:number) => void): void
 **示例：**
 
 ```ts
-inputMethodEngine.getinputMethodAbility().off('setCallingWindow', (wid: number) => {
+inputMethodEngine.getInputMethodAbility().off('setCallingWindow', (wid: number) => {
   console.info('inputMethodAbility delete setCallingWindow notification.');
 });
 ```
@@ -634,10 +662,10 @@ on(type: 'keyboardShow'|'keyboardHide', callback: () => void): void
 **示例：**
 
 ```ts
-inputMethodEngine.getinputMethodAbility().on('keyboardShow', () => {
+inputMethodEngine.getInputMethodAbility().on('keyboardShow', () => {
   console.info('inputMethodAbility keyboardShow.');
 });
-inputMethodEngine.getinputMethodAbility().on('keyboardHide', () => {
+inputMethodEngine.getInputMethodAbility().on('keyboardHide', () => {
   console.info('inputMethodAbility keyboardHide.');
 });
 ```
@@ -666,10 +694,10 @@ off(type: 'keyboardShow'|'keyboardHide', callback?: () => void): void
 **示例：**
 
 ```ts
-inputMethodEngine.getinputMethodAbility().off('keyboardShow', () => {
+inputMethodEngine.getInputMethodAbility().off('keyboardShow', () => {
   console.info('inputMethodAbility delete keyboardShow notification.');
 });
-inputMethodEngine.getinputMethodAbility().off('keyboardHide', () => {
+inputMethodEngine.getInputMethodAbility().off('keyboardHide', () => {
   console.info('inputMethodAbility delete keyboardHide notification.');
 });
 ```
@@ -700,7 +728,7 @@ on(type: 'setSubtype', callback: (inputMethodSubtype: InputMethodSubtype) => voi
 ```ts
 import { InputMethodSubtype } from '@kit.IMEKit';
 
-inputMethodEngine.getinputMethodAbility().on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
+inputMethodEngine.getInputMethodAbility().on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
   console.info('inputMethodAbility setSubtype.');
 });
 ```
@@ -729,7 +757,7 @@ off(type: 'setSubtype', callback?: (inputMethodSubtype: InputMethodSubtype) => v
 **示例：**
 
 ```ts
-inputMethodEngine.getinputMethodAbility().off('setSubtype', () => {
+inputMethodEngine.getInputMethodAbility().off('setSubtype', () => {
   console.info('inputMethodAbility delete setSubtype notification.');
 });
 ```
@@ -758,7 +786,7 @@ on(type: 'securityModeChange', callback: Callback< SecurityMode>): void
 **示例：**
 
 ```ts
-inputMethodEngine.getinputMethodAbility().on('securityModeChange', (securityMode: inputMethodEngine.SecurityMode) => {
+inputMethodEngine.getInputMethodAbility().on('securityModeChange', (securityMode: inputMethodEngine.SecurityMode) => {
   console.info(`inputMethodAbility securityModeChange, security is ${securityMode}`);
 });
 ```
@@ -790,7 +818,7 @@ off(type: 'securityModeChange', callback?: Callback< SecurityMode>): void
 let securityChangeCallback = (securityMode: inputMethodEngine.SecurityMode) => {
   console.info(`inputMethodAbility securityModeChange, security is ${securityMode}`);
 };
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 inputMethodAbility.on('securityModeChange', securityChangeCallback);
 inputMethodAbility.off('securityModeChange', securityChangeCallback);
 ```
@@ -836,7 +864,7 @@ let privateCommandCallback = (record: Record<string, inputMethodEngine.CommandDa
   });
 }
 console.info(`regist private command `);
-inputMethodEngine.getinputMethodAbility().on('privateCommand', privateCommandCallback);
+inputMethodEngine.getInputMethodAbility().on('privateCommand', privateCommandCallback);
 ```
 
 ### off('privateCommand')<sup>12+</sup>
@@ -880,7 +908,7 @@ let privateCommandCallback = (record: Record<string, inputMethodEngine.CommandDa
   });
 }
 console.info(`regist private command `);
-inputMethodEngine.getinputMethodAbility().off('privateCommand', privateCommandCallback);
+inputMethodEngine.getInputMethodAbility().off('privateCommand', privateCommandCallback);
 ```
 
 ### on('callingDisplayDidChange')<sup>18+</sup>
@@ -922,7 +950,7 @@ let callingDisplayDidChangeCallback = (num: number) => {
   console.info(`display id: ${num}`);
 }
 console.info(`regist calling display changed`);
-inputMethodEngine.getinputMethodAbility().on('callingDisplayDidChange', callingDisplayDidChangeCallback);
+inputMethodEngine.getInputMethodAbility().on('callingDisplayDidChange', callingDisplayDidChangeCallback);
 ```
 
 ### off('callingDisplayDidChange')<sup>18+</sup>
@@ -953,7 +981,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMethodEngine } from '@kit.IMEKit';
 
 console.info(`unregist calling display changed `);
-inputMethodEngine.getinputMethodAbility().off('callingDisplayDidChange', (num: number) => {
+inputMethodEngine.getInputMethodAbility().off('callingDisplayDidChange', (num: number) => {
   console.info('inputMethodAbility delete calling display  notification.');
 });
 
@@ -987,7 +1015,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import inputMethodEngine from '@ohos.inputMethodEngine';
 
 console.info(`discard the typing text`);
-inputMethodEngine.getinputMethodAbility().on('discardTypingText', () => {
+inputMethodEngine.getInputMethodAbility().on('discardTypingText', () => {
   console.info('inputMethodAbility discard the typing text.');
 });
 ```
@@ -1020,7 +1048,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import inputMethodEngine from '@ohos.inputMethodEngine';
 
 console.info(`discard the typing text`);
-inputMethodEngine.getinputMethodAbility().off('discardTypingText', () => {
+inputMethodEngine.getInputMethodAbility().off('discardTypingText', () => {
   console.info('inputMethodAbility discard the typing text.');
 });
 ```
@@ -1052,7 +1080,7 @@ getSecurityMode(): SecurityMode
 **示例：**
 
 ```ts
-let security: inputMethodEngine.SecurityMode= inputMethodEngine.getinputMethodAbility().getSecurityMode();
+let security: inputMethodEngine.SecurityMode= inputMethodEngine.getInputMethodAbility().getSecurityMode();
 console.info(`getSecurityMode, securityMode is: ${security}`);
 ```
 
@@ -1092,7 +1120,7 @@ let panelInfo: inputMethodEngine.PanelInfo = {
   type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
   flag: inputMethodEngine.PanelFlag.FLG_FIXED
 }
-inputMethodEngine.getinputMethodAbility()
+inputMethodEngine.getInputMethodAbility()
   .createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
   if (err) {
     console.error(`Failed to createPanel: code: ${err.code} ,message: ${err.message}`);
@@ -1110,6 +1138,10 @@ createPanel(ctx: BaseContext, info: PanelInfo): Promise\<Panel>
 创建输入法面板，仅支持输入法应用调用。使用promise异步回调。<br>单个输入法应用仅允许创建一个[软键盘类型](#paneltype10)和[状态栏类型](#paneltype10)的面板。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1139,7 +1171,7 @@ let panelInfo: inputMethodEngine.PanelInfo = {
   type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
   flag: inputMethodEngine.PanelFlag.FLG_FIXED
 }
-inputMethodEngine.getinputMethodAbility().createPanel(this.context, panelInfo)
+inputMethodEngine.getInputMethodAbility().createPanel(this.context, panelInfo)
   .then((panel: inputMethodEngine.Panel) => {
     console.info('Succeed in creating panel.');
   }).catch((err: BusinessError) => {
@@ -1185,7 +1217,7 @@ let panelInfo: inputMethodEngine.PanelInfo = {
 }
 let inputPanel: inputMethodEngine.Panel | undefined = undefined;
 
-inputMethodEngine.getinputMethodAbility()
+inputMethodEngine.getInputMethodAbility()
 .createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
   if (err) {
     console.error(`Failed to create panel: code: ${err.code} ,message: ${err.message}`);
@@ -1196,7 +1228,7 @@ inputMethodEngine.getinputMethodAbility()
 })
 
 if (inputPanel) {
-  inputMethodEngine.getinputMethodAbility().destroyPanel(inputPanel, (err: BusinessError) => {
+  inputMethodEngine.getInputMethodAbility().destroyPanel(inputPanel, (err: BusinessError) => {
     if (err !== undefined) {
       console.error(`Failed to destroy panel: code: ${err.code} ,message: ${err.message}`);
       return;
@@ -1248,7 +1280,7 @@ let panelInfo: inputMethodEngine.PanelInfo = {
 }
 let inputPanel: inputMethodEngine.Panel | undefined = undefined;
 
-inputMethodEngine.getinputMethodAbility()
+inputMethodEngine.getInputMethodAbility()
   .createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
   if (err) {
     console.error(`Failed to create panel: code: ${err.code} ,message: ${err.message}`);
@@ -1259,7 +1291,7 @@ inputMethodEngine.getinputMethodAbility()
 })
 
 if (inputPanel) {
-  inputMethodEngine.getinputMethodAbility().destroyPanel(inputPanel).then(() => {
+  inputMethodEngine.getInputMethodAbility().destroyPanel(inputPanel).then(() => {
     console.info('Succeed in destroying panel.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to destroy panel: code: ${err.code} ,message: ${err.message}`);
@@ -1290,7 +1322,7 @@ onInputStart(callback: IMAInputStartCallback): void
 **示例：**
 
 ```ts
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
 inputMethodAbility!
 .onInputStart((kbController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
@@ -1323,7 +1355,7 @@ offInputStart(callback?: IMAInputStartCallback): void
 **示例：**
 
 ```ts
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
 inputMethodAbility!
   .offInputStart((kbController: inputMethodEngine.KeyboardController, textClient: inputMethodEngine.InputClient) => {
@@ -1354,7 +1386,7 @@ onInputStop(callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 inputMethodAbility!.onInputStop(() => {
   console.info('inputMethodAbility inputStop');
 });
@@ -1383,7 +1415,7 @@ offInputStop(callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 inputMethodAbility!.offInputStop(() => {
   console.info('inputMethodAbility delete inputStop notification.');
 });
@@ -1412,7 +1444,7 @@ onSetCallingWindow(callback: Callback&lt;int&gt;): void
 **示例：**
 
 ```ts
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 inputMethodAbility!.onSetCallingWindow((wid: int) => {
   console.info('inputMethodAbility setCallingWindow');
 });
@@ -1441,7 +1473,7 @@ offSetCallingWindow(callback: Callback&lt;int&gt;): void
 **示例：**
 
 ```ts
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 inputMethodAbility!.offSetCallingWindow((wid: int) => {
   console.info('inputMethodAbility delete setCallingWindow notification.');
 });
@@ -1471,7 +1503,7 @@ onKeyboardShow(callback:Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 inputMethodAbility!.onKeyboardShow(() => {
   console.info('inputMethodEngine keyboardShow.');
 });
@@ -1504,7 +1536,7 @@ offKeyboardShow(callback?: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
 inputMethodAbility!.offKeyboardShow(() => {
   console.info('inputMethodAbility delete keyboardShow notification.');
@@ -1537,7 +1569,7 @@ onKeyboardHide(callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 inputMethodAbility!.onKeyboardShow(() => {
   console.info('inputMethodEngine keyboardShow.');
 });
@@ -1569,7 +1601,7 @@ offKeyboardHide(callback?: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 inputMethodAbility!.offKeyboardShow(() => {
   console.info('inputMethodAbility delete keyboardShow notification.');
 });
@@ -1596,13 +1628,13 @@ onSetSubtype(callback: Callback&lt;InputMethodSubtype&gt;): void
 
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | [InputMethodSubtype](js-apis-inputmethod-subtype.md) | 是 | 回调函数，返回设置的输入法子类型。 |
+| callback | Callback<[InputMethodSubtype](js-apis-inputmethod-subtype.md)> | 是 | 回调函数，返回设置的输入法子类型。 |
 
 **示例：**
 
 ```ts
 import { InputMethodSubtype } from '@kit.IMEKit';
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
 inputMethodAbility!.onSetSubtype((inputMethodSubtype: InputMethodSubtype) => {
   console.info('inputMethodAbility setSubtype.');
@@ -1627,15 +1659,15 @@ offSetSubtype(callback?: Callback&lt;InputMethodSubtype&gt;): void
 
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | [InputMethodSubtype](js-apis-inputmethod-subtype.md) | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback<[InputMethodSubtype](js-apis-inputmethod-subtype.md)> | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
 ```ts
 import { InputMethodSubtype } from '@kit.IMEKit';
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
-inputMethodAbility!.onSetSubtype((inputMethodSubtype: InputMethodSubtype) => {
+inputMethodAbility!.offSetSubtype((inputMethodSubtype: InputMethodSubtype) => {
   console.info('inputMethodAbility setSubtype.');
 });
 ```
@@ -1658,12 +1690,12 @@ onSecurityModeChange(callback: Callback&lt;SecurityMode&gt;): void
 
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | [SecurityMode](#securitymode11) | 是 | 回调函数，返回当前输入法应用的安全模式。 |
+| callback | Callback<[SecurityMode](#securitymode11)> | 是 | 回调函数，返回当前输入法应用的安全模式。 |
 
 **示例：**
 
 ```ts
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
 inputMethodAbility!.onSecurityModeChange((securityMode: inputMethodEngine.SecurityMode) => {
   console.info(`inputMethodAbility securityModeChange, security is ${securityMode}`);
@@ -1688,12 +1720,12 @@ offSecurityModeChange(callback?: Callback&lt;SecurityMode&gt;): void
 
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | [SecurityMode](#securitymode11) | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback<[SecurityMode](#securitymode11)> | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
 ```ts
-let InputMethodEngine = inputMethodEngine.getinputMethodAbility();
+let InputMethodEngine = inputMethodEngine.getInputMethodAbility();
 let securityChangeCallback = (securityMode: inputMethodEngine.SecurityMode) => {
   console.info(`inputMethodAbility securityModeChange, security is ${securityMode}`);
 };
@@ -1735,7 +1767,7 @@ onPrivateCommand(callback: Callback&lt;Record&lt;string, CommandDataType&gt;&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMethodEngine } from '@kit.IMEKit';
 
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
 let privateCommandCallback = (record: Record<string, inputMethodEngine.CommandDataType>) => {
   record.forEach((key, value) => {
@@ -1781,7 +1813,7 @@ offPrivateCommand(callback?: Callback&lt;Record&lt;string, CommandDataType&gt;&g
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMethodEngine } from '@kit.IMEKit';
 
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 let privateCommandCallback = (record: Record<string, inputMethodEngine.CommandDataType>) => {
   record.forEach((key, value) => {
     console.info(`private command key: ${key}, value: ${value}`);
@@ -1825,7 +1857,7 @@ onCallingDisplayDidChange(callback: Callback&lt;int&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMethodEngine } from '@kit.IMEKit';
 
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 let callingDisplayDidChangeCallback = (num: int) => {
   console.info(`display id: ${num}`);
 }
@@ -1860,7 +1892,7 @@ offCallingDisplayDidChange(callback?: Callback&lt;int&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMethodEngine } from '@kit.IMEKit';
 
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
 console.info(`unregist calling display changed `);
 inputMethodAbility!.offCallingDisplayDidChange((num: int) => {
@@ -1894,7 +1926,7 @@ onDiscardTypingText(callback: Callback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import inputMethodEngine from '@ohos.inputMethodEngine';
 
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 console.info(`discard the typing text`);
 inputMethodAbility!.onDiscardTypingText(() => {
   console.info('inputMethodAbility discard the typing text.');
@@ -1927,7 +1959,7 @@ offDiscardTypingText(callback?: Callback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import inputMethodEngine from '@ohos.inputMethodEngine';
 
-let inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 console.info(`discard the typing text`);
 inputMethodAbility!.offDiscardTypingText(() => {
   console.info('inputMethodAbility discard the typing text.');
@@ -3969,57 +4001,11 @@ this.panel.setKeepScreenOn(isKeepScreenOn).then(() => {
 })
 ```
 
-### setShadow<sup>20+</sup>
-
-setShadow(radius: double, color: string, offsetX: double, offsetY: double): void
-
-设置输入法面板的阴影效果，包括阴影半径、颜色、水平偏移和垂直偏移。
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名   | 类型                   | 必填 | 说明     |
-| -------- | ---------------------- | ---- | -------- |
-| radius | double | 是   | 阴影模糊半径。数值越大，阴影越模糊；取值需≥0，若传入负数会触发参数校验错误。 |
-| color | string | 是   | 阴影颜色。仅支持十六进制颜色格式，不支持命名颜色或RGB/RGBA函数格式。 |
-| radius | double | 是   | 阴影水平偏移量。正数表示阴影向右偏移，负数表示向左偏移，0 表示无水平偏移。 |
-| radius | double | 是   | 阴影垂直偏移量。正数表示阴影向下偏移，负数表示向上偏移，0 表示无垂直偏移。 |
-
-
-**返回值：**
-
-| 类型   | 说明                             |
-| ------- | ------------------------------ |
-| void | 无返回值。  |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
-
-| 错误码ID | 错误信息                                                |
-| -------- | ------------------------------------------------------- |
-| 12800002 | Input method engine service error. |
-| 12800013 | window manager service error. |
-| 12800014 | Invalid parameter. |
-
-**示例：**
-
-```ts
-const shadowRadius = 8.0;
-const shadowColor = '#80000000';
-const offsetX = 2.0;
-const offsetY = 2.0;
-this.panel?.setShadow(shadowRadius, shadowColor, offsetX, offsetY);
-```
-
 ### getSystemPanelCurrentInsets<sup>21+</sup>
 
-getSystemPanelCurrentInsets(displayId: number): Promise\<SystemPanelInsets>
+ArkTS-Dyn: getSystemPanelCurrentInsets(displayId: number): Promise\<SystemPanelInsets>
+
+ArkTS-Sta: getSystemPanelCurrentInsets(displayId: long): Promise\<SystemPanelInsets | null>
 
 获取指定屏幕当前状态（例如：折叠或展开）下，当前输入法键盘状态（例如：悬浮或固定）下输入法软键盘相对系统面板的偏移区域。使用Promise异步回调。
 
@@ -4033,13 +4019,13 @@ getSystemPanelCurrentInsets(displayId: number): Promise\<SystemPanelInsets>
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| displayId | number | 是   | 输入法键盘所在屏幕的displayId，可通过[getDisplayId](#getdisplayid15)获取 |
+| displayId | ArkTS-Dyn: number <br>ArkTS-Sta: long | 是   | 输入法键盘所在屏幕的displayId，可通过[getDisplayId](#getdisplayid15)获取 |
 
 **返回值：**
 
 | 类型   | 说明                             |
 | ------- | ------------------------------ |
-| Promise\<[SystemPanelInsets](#systempanelinsets21)> | Promise对象。输入法键盘与系统面板的偏移区域。 |
+| ArkTS-Dyn: Promise\<[SystemPanelInsets](#systempanelinsets21)> <br>ArkTS-Sta: Promise\<[SystemPanelInsets](#systempanelinsets21) \| null> | Promise对象。输入法键盘与系统面板的偏移区域。 |
 
 **错误码：**
 
@@ -4057,7 +4043,7 @@ getSystemPanelCurrentInsets(displayId: number): Promise\<SystemPanelInsets>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMethodEngine } from '@kit.IMEKit';
 
-let inputMethodAbility: inputMethodEngine.inputMethodAbility = inputMethodEngine.getinputMethodAbility();
+let inputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 let panelConfig: inputMethodEngine.PanelInfo = {
   type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
   flag: inputMethodEngine.PanelFlag.FLG_FIXED
@@ -4189,8 +4175,8 @@ onHide(callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-panel!.onShow(() => {
-  console.info('Panel is showing.');
+panel!.onHide(() => {
+  console.info('Panel is hide.');
 });
 ```
 
@@ -4648,7 +4634,7 @@ onMessage(msgId: string, msgParam?: ArrayBuffer): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodEngine.getinputMethodAbility()
+inputMethodEngine.getInputMethodAbility()
   .on('inputStart', (kbController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
   let keyboardController = kbController;
   let inputClient = client;
@@ -4687,7 +4673,7 @@ onTerminated(): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodEngine.getinputMethodAbility()
+inputMethodEngine.getInputMethodAbility()
   .on('inputStart', (kbController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
   let keyboardController = kbController;
   let inputClient = client;
@@ -4743,7 +4729,7 @@ ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let action:number = 1;
+let action: number = 1;
 inputClient.sendKeyFunction(action, (err: BusinessError, result: boolean) => {
   if (err) {
     console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}`);
@@ -4761,7 +4747,7 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let action:long = 1;
+let action: int = 1;
 inputClient.sendKeyFunction(action, (err: BusinessError, result: boolean) => {
   if (err) {
     console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}`);
@@ -4816,7 +4802,7 @@ ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let action:number = 1;
+let action: number = 1;
 
 inputClient.sendKeyFunction(action).then((result: boolean) => {
   if (result) {
@@ -6486,7 +6472,7 @@ ArkTS-Dyn示例:
 import { inputMethodEngine } from '@kit.IMEKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodEngine.getinputMethodAbility().on('inputStart', (kbController, textInputClient) => {
+inputMethodEngine.getInputMethodAbility().on('inputStart', (kbController, textInputClient) => {
   let record: Record<string, inputMethodEngine.CommandDataType> = {
     "valueString1": "abcdefg",
     "valueString2": true,
@@ -6507,7 +6493,7 @@ ArkTS-Sta示例:
 import { inputMethodEngine } from '@kit.IMEKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodEngine.getinputMethodAbility().onInputStart((kbController, textInputClient) => {
+inputMethodEngine.getInputMethodAbility().onInputStart((kbController, textInputClient) => {
   let record: Record<string, inputMethodEngine.CommandDataType> = {
     "valueString1": "abcdefg",
     "valueString2": true,
@@ -6812,12 +6798,6 @@ recvMessage(msgHandler?: MessageHandler): void;
 | ---------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
 | msgHandler | [MessageHandler](#messagehandler15) | 否   | 该对象将通过[onMessage](#onmessage15)接收来自已绑定当前输入法应用的编辑框应用所发送的自定义通信数据，并通过[onTerminated](#onterminated15)接收终止此对象订阅的消息。<br>若不填写此参数，则取消全局已注册的[MessageHandler](#messagehandler15)对象，同时触发其[onTerminated](#onterminated15)回调函数。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
@@ -6834,7 +6814,7 @@ ArkTS-Dyn示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 
-inputMethodEngine.getinputMethodAbility()
+inputMethodEngine.getInputMethodAbility()
   .on('inputStart', (kbController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
   let keyboardController = kbController;
   let inputClient = client;
@@ -6857,7 +6837,7 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodEngine.getinputMethodAbility()
+inputMethodEngine.getInputMethodAbility()
 .onInputStart((kbController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
   let keyboardController = kbController;
   let inputClient = client;
@@ -6894,13 +6874,9 @@ ArkTS-Sta: getAttachOptions(): AttachOptions | null
 | ---- | ------------ |
 | ArkTS-Dyn: [AttachOptions](#attachoptions19) <br>ArkTS-Sta: [AttachOptions](#attachoptions19) \| null | 返回绑定输入法时的附加选项内容。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息         |
-| -------- | ---------------- |
-| 801      | Capability not supported. |
+> **注意：**
+>
+> 从API version 20 开始，错误码`801 Capability not supported.`被移除。
 
 **示例：**
 
@@ -7016,7 +6992,7 @@ let attachOptionsDidChangeCallback = (attachOptions: inputMethodEngine.AttachOpt
   console.info(`AttachOptionsDidChangeCallback1: attachOptionsDidChange event triggered`);
 };
 
-inputMethodEngine.getinputMethodAbility()
+inputMethodEngine.getInputMethodAbility()
   .onInputStart((kbController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
   let keyboardController = kbController;
   let inputClient = client;
@@ -7045,7 +7021,7 @@ offAttachOptionsDidChange(callback?: Callback&lt;AttachOptions&gt;): void
 
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;[AttachOptions](#attachoptions19)&gt; | 是   | 可选参数，需取消的目标回调函数：传入指定回调函数实例时，仅取消该回调的订阅；不传入时，取消所有attachOptionsDidChange事件的订阅。 |
+| callback | Callback&lt;[AttachOptions](#attachoptions19)&gt; | 否  | 可选参数，需取消的目标回调函数：传入指定回调函数实例时，仅取消该回调的订阅；不传入时，取消所有attachOptionsDidChange事件的订阅。 |
 
 **示例：**
 
@@ -7054,7 +7030,7 @@ let attachOptionsDidChangeCallback = (attachOptions: inputMethodEngine.AttachOpt
   console.info(`AttachOptionsDidChangeCallback1: attachOptionsDidChange event triggered`);
 };
 
-inputMethodEngine.getinputMethodAbility()
+inputMethodEngine.getInputMethodAbility()
   .onInputStart((kbController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
   let keyboardController = kbController;
   let inputClient = client;
@@ -7092,7 +7068,7 @@ inputMethodEngine.getinputMethodAbility()
 | ------------ | -------- | ---- | ---- | ------------------ |
 | enterKeyType | ArkTS-Dyn: number <br>ArkTS-Sta: int     | 是   | 否   | 编辑框的功能属性，详见[常量中的功能键定义](#常量)。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | inputPattern | ArkTS-Dyn: number <br>ArkTS-Sta: int     | 是   | 否   | 编辑框的文本属性，详见[常量中的编译框定义](#常量)。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| isTextPreviewSupported<sup>12+</sup> | boolean | 否 | 否 | 编辑框是否支持预上屏。<br/>- 值为true，表示支持。<br/>- 值为false，表示不支持。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| isTextPreviewSupported<sup>12+</sup> | boolean | 否 | 否 | 编辑框是否支持预上屏。<br/>- 值为true，表示支持。<br/>- 值为false，表示不支持。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | bundleName<sup>14+</sup> | string | 是 | 是 | 编辑框所属应用包名；该值可能为""，使用该属性时需要考虑为""的场景。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
 | immersiveMode<sup>15+</sup> | [ImmersiveMode](#immersivemode15) | 是   | 是   | 输入法沉浸模式。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | windowId<sup>18+</sup> | ArkTS-Dyn: number <br>ArkTS-Sta: int   | 是 | 是 | 编辑框设置所属窗口ID。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
@@ -7218,13 +7194,9 @@ inputMethodEngine.getinputMethodAbility()
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 19
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ---------------------------------------------------------- |
-| requestKeyboardReason    | [RequestKeyboardReason](#requestkeyboardreason19) | 否   | 是   | 该属性由编辑框应用设置，如果没有设置或设置非法值，则默认没有特定的原因触发键盘请求。 |
+| requestKeyboardReason    | [RequestKeyboardReason](#requestkeyboardreason19) | 否   | 是   | 该属性由编辑框应用设置，如果没有设置或设置非法值，则默认没有特定的原因触发键盘请求。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23 |
 | isSimpleKeyboardEnabled<sup>20+</sup>    | boolean | 否   | 是   | 是否使能简单键盘，该属性由编辑框应用设置，true表示使能简单键盘，false表示不使能简单键盘。<br/> 如果没有设置或设置非法值，则默认不使能简单键盘。 <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## WindowInfo<sup>12+</sup>
@@ -7291,21 +7263,6 @@ inputMethodEngine.getinputMethodAbility()
 | NONE | 0 | 不使用渐变模式。 |
 | LINEAR_GRADIENT | 1 | 线性渐变。 |
 
-## FluidLightMode<sup>20+</sup>
-
-枚举，输入法流体光效模式。
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称         | 值 | 说明               |
-| ------------ | -- | ------------------ |
-| NONE | 0 | 不使用流体光效模式。 |
-| BACKGROUND_FLUID_LIGHT | 1 | 背景流体光效模式。 |
-
 ## ImmersiveEffect<sup>20+</sup>
 
 沉浸效果。
@@ -7320,7 +7277,6 @@ inputMethodEngine.getinputMethodAbility()
 | ------ | ------------------------------------ | ---- | ---- | -------------- |
 | gradientHeight | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否   | 否   | 渐变高度，不能超过屏幕高度的15%。|
 | gradientMode | [GradientMode](#gradientmode20) | 否   | 否   | 渐变模式。 |
-| fluidLightMode | [FluidLightMode](#fluidlightmode20) | 否   | 是   | 流体光效模式。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 | |
 
 ## SystemPanelInsets<sup>21+</sup>
 

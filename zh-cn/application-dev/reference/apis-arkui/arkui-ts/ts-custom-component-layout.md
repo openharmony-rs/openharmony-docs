@@ -24,6 +24,10 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的节点
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型                                                       | 必填|说明                                                         |
@@ -48,6 +52,10 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名            | 类型                                                         |必填| 说明               |
@@ -68,6 +76,10 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 属性          | 类型      |只读|可选| 说明                  |
 |-------------|-----------|------|------|---------------------|
 | borderWidth | [EdgeWidth](ts-types.md#edgewidths9) |否|否| 父组件边框宽度。<br>单位：vp            |
@@ -80,12 +92,16 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 ### 属性
 
 | 名称         | 类型       | 只读|可选|  说明                                                      |
 |--------------|---------------------------------- | ------|-----------------------------------------------------|---------------------|
-| measureResult| [MeasureResult](#measureresult10) |   否|否| 子组件测量后的尺寸信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>单位：vp     |
-| uniqueId<sup>18+</sup>| number | 否 |否| 系统为子组件分配的唯一标识UniqueID。<br>取值范围[0,+∞)。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| measureResult| [MeasureResult](#measureresult10) |   否|否| 子组件测量后的尺寸信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>单位：vp <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23    |
+| uniqueId<sup>18+</sup>| number | 否 |否| 系统为子组件分配的唯一标识UniqueID。<br>取值范围[0,+∞)。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18<br/> **ArkTS-Sta起始版本：** 23|
 
 ### layout
 
@@ -96,6 +112,10 @@ layout(position: Position)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -117,7 +137,7 @@ ArkTS-Sta: getMargin() : DirectionalEdgesT\<double> | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -139,7 +159,7 @@ ArkTS-Sta: getPadding() : DirectionalEdgesT\<double> | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
  **返回值：**
 
@@ -161,7 +181,7 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double> | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -177,15 +197,23 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double> | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 ### 属性
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称         | 类型       | 必填      |  说明                                                      |
 |--------------|---------------------------------- | -----------------------------------------------|---------------------|
-| uniqueId<sup>18+</sup>| number | 否 | 系统为子组件分配的唯一标识UniqueID。|
+| uniqueId<sup>18+</sup>| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 系统为子组件分配的唯一标识UniqueID。|
 
 ### measure<sup>10+</sup>
 
@@ -201,7 +229,7 @@ ArkTS-Sta: measure(constraint: ConstraintSizeOptions) : MeasureResult | undefine
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -229,7 +257,7 @@ ArkTS-Sta: getMargin() : DirectionalEdgesT\<double\> | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -251,7 +279,7 @@ ArkTS-Sta: getPadding() : DirectionalEdgesT\<double\> | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
  **返回值：**
 
@@ -273,7 +301,7 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double\> | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -290,6 +318,10 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double\> | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 ## SizeResult<sup>10+</sup>
 
 组件尺寸信息。
@@ -297,6 +329,10 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double\> | undefined
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型   |只读|可选| 说明    |
 |--------|--------|------|------|-------|
@@ -312,6 +348,10 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double\> | undefined
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型 |只读|可选| 说明             |
 | ------ | ---- |------|------| ---------------- |
@@ -340,6 +380,10 @@ ArkUI框架会在自定义组件布局时，将该自定义组件的子节点信
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名        | 类型                                                         | 必填|说明               |
@@ -359,6 +403,10 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名        | 类型                                                         |必填| 说明               |
@@ -375,6 +423,10 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 | 名称       | 类型                                                     | 只读|可选|说明                                   |
 | ---------- | ------------------------------------------------------------ | ------|------|-------------------------------------- |
@@ -396,6 +448,10 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 | 名称          | 类型                                 | 只读|可选|描述                      |
 |-------------|--------------------------------------|------|------|-------------------------|
 | borderWidth | [EdgeWidths](ts-types.md#edgewidths9) | 否|否|边框宽度类型，用于描述组件边框不同方向的宽度。 |
@@ -411,6 +467,10 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 | 名称       | 类型                                                   | 只读|可选|说明             |
 | ---------- | ---------------------------------------------------------- | ------|------|---------------- |

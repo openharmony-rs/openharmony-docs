@@ -36,6 +36,10 @@ NavDestination()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ## 属性
 
 支持[通用属性](ts-component-general-attributes.md)。
@@ -56,7 +60,7 @@ ArkTS-Sta: title(value: string | CustomBuilder | NavDestinationCommonTitle | Nav
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -79,7 +83,7 @@ ArkTS-Sta: hideTitleBar(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -91,7 +95,7 @@ ArkTS-Sta: hideTitleBar(value: boolean | undefined)
 
 ArkTS-Dyn: hideTitleBar(hide: boolean, animated: boolean)
 
-ArkTS-Sta: ideTitleBar(hide: boolean | undefined, animated: boolean | undefined)
+ArkTS-Sta: hideTitleBar(hide: boolean | undefined, animated: boolean | undefined)
 
 设置是否隐藏标题栏。与[hideTitleBar](#hidetitlebar)相比，新增标题栏显隐时是否使用动画。
 
@@ -101,7 +105,7 @@ ArkTS-Sta: ideTitleBar(hide: boolean | undefined, animated: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -124,7 +128,7 @@ ArkTS-Sta: toolbarConfiguration(toolbarParam: Array&lt;ToolbarItem&gt; | CustomB
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -141,7 +145,7 @@ ArkTS-Sta: toolbarConfiguration(toolbarParam: Array&lt;ToolbarItem&gt; | CustomB
 
 ArkTS-Dyn: hideToolBar(hide: boolean, animated?: boolean)
 
-ArkTS-Sta: hideToolBar(hide: boolean | undefined, animated?: boolean)
+ArkTS-Sta: hideToolBar(hide: boolean | undefined, animated?: boolean | undefined)
 
 设置是否隐藏工具栏。与[hideToolBar](ts-basic-components-navigation.md#hidetoolbar)相比，新增工具栏显隐时是否使用动画。
 
@@ -151,14 +155,14 @@ ArkTS-Sta: hideToolBar(hide: boolean | undefined, animated?: boolean)
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | hide  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏工具栏。<br/>默认值：false<br/>true：隐藏工具栏。<br/>false：显示工具栏。 |
-| animated  | boolean | 否   | 设置是否使用动画显隐工具栏。<br/>默认值：false<br/>true：使用动画显示隐藏工具栏。<br/>false：不使用动画显示隐藏工具栏。 |
+| animated  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 否   | 设置是否使用动画显隐工具栏。<br/>默认值：false<br/>true：使用动画显示隐藏工具栏。<br/>false：不使用动画显示隐藏工具栏。 |
 
 ### mode <sup>11+</sup>
 
@@ -174,7 +178,7 @@ ArkTS-Sta: mode(value: NavDestinationMode | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -201,7 +205,7 @@ ArkTS-Sta: backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier | 
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -228,7 +232,7 @@ ArkTS-Sta: backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier | u
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -256,7 +260,7 @@ ArkTS-Sta: menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder | undefi
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -283,7 +287,7 @@ ArkTS-Sta: menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder | undefi
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -294,7 +298,9 @@ ArkTS-Sta: menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder | undefi
 
 ### ignoreLayoutSafeArea<sup>12+</sup>
 
-ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;LayoutSafeAreaEdge&gt;)
+ArkTS-Dyn: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;LayoutSafeAreaEdge&gt;)
+
+ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefined, edges?: Array&lt;LayoutSafeAreaEdge&gt; | undefined)
 
 控制组件的布局，使其扩展到非安全区域
 
@@ -302,12 +308,16 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                               | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| types  | Array <[LayoutSafeAreaType](ts-types.md#layoutsafeareatype12)> | 否   | 配置扩展安全区域的类型。<br />默认值：<br />[LayoutSafeAreaType.SYSTEM] |
-| edges  | Array <[LayoutSafeAreaEdge](ts-types.md#layoutsafeareaedge12)> | 否   | 配置扩展安全区域的方向。<br /> 默认值：<br />[LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM]。|
+| types  | ArkTS-Dyn: Array <[LayoutSafeAreaType](ts-types.md#layoutsafeareatype12)> <br/>ArkTS-Sta: Array&lt;LayoutSafeAreaType&gt; \| undefined| 否   | 配置扩展安全区域的类型。<br />默认值：<br />[LayoutSafeAreaType.SYSTEM] |
+| edges  | ArkTS-Dyn: Array <[LayoutSafeAreaEdge](ts-types.md#layoutsafeareaedge12)><br/>ArkTS-Sta: Array&lt;LayoutSafeAreaEdge&gt; \| undefined | 否   | 配置扩展安全区域的方向。<br /> 默认值：<br />[LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM]。|
 
 >  **说明：**
 >   
@@ -318,7 +328,9 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 
 ### systemBarStyle<sup>12+</sup>
 
-systemBarStyle(style: Optional&lt;SystemBarStyle&gt;)
+ArkTS-Dyn: systemBarStyle(style: Optional&lt;SystemBarStyle&gt;)
+
+ArkTS-Sta: systemBarStyle(style: SystemBarStyle | undefined)
 
 当Navigation中显示当前NavDestination时，设置对应系统状态栏的样式。
 
@@ -326,11 +338,15 @@ systemBarStyle(style: Optional&lt;SystemBarStyle&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)&gt; | 是   | 系统状态栏样式。 |
+| style  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)&gt;<br/>ArkTS-Sta: SystemBarStyle \| undefined | 是   | 系统状态栏样式。 |
 
 > **说明：**
 >
@@ -351,7 +367,7 @@ ArkTS-Sta: systemTransition(type: NavigationSystemTransitionType | undefined)
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -361,17 +377,23 @@ ArkTS-Sta: systemTransition(type: NavigationSystemTransitionType | undefined)
 
 ### recoverable<sup>14+</sup>
 
-recoverable(recoverable: Optional&lt;boolean&gt;)
+ArkTS-Dyn: recoverable(recoverable: Optional&lt;boolean&gt;)
+
+ArkTS-Sta: recoverable(recoverable: boolean | undefined)
 
 配置NavDestination是否可恢复。如配置为可恢复，当应用进程异常退出并重新冷启动时，可自动创建该NavDestination。该功能需NavDestination对应的Navigation也配置了[可恢复属性](ts-basic-components-navigation.md#recoverable14)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| recoverable  | [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;boolean&gt; | 是   | NavDestination是否可恢复，默认为不可恢复。<br/>默认值：false<br/>true：路由栈可恢复。<br/>false：路由栈不可恢复。 |
+| recoverable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是   | NavDestination是否可恢复，默认为不可恢复。<br/>默认值：false<br/>true：路由栈可恢复。<br/>false：路由栈不可恢复。 |
 
 >  **使用说明：**
 >
@@ -396,7 +418,7 @@ ArkTS-Sta: bindToScrollable(scrollers: Array&lt;Scroller&gt; | undefined)
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -423,7 +445,7 @@ ArkTS-Sta: bindToNestedScrollable(scrollInfos: Array&lt;NestedScrollInfo&gt; | u
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -433,7 +455,9 @@ ArkTS-Sta: bindToNestedScrollable(scrollInfos: Array&lt;NestedScrollInfo&gt; | u
 
 ### hideBackButton<sup>15+</sup>
 
-hideBackButton(hide: Optional&lt;boolean&gt;)
+ArkTS-Dyn: hideBackButton(hide: Optional&lt;boolean&gt;)
+
+ArkTS-Sta: hideBackButton(hide: boolean | undefined)
 
 设置是否隐藏标题栏中的返回键。
 
@@ -441,17 +465,21 @@ hideBackButton(hide: Optional&lt;boolean&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| hide  | [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;boolean&gt; | 是   | 是否隐藏标题栏中的返回键。 <br/>默认值：false<br/>true：隐藏返回键。<br/>false：显示返回键。 |
+| hide  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏中的返回键。 <br/>默认值：false<br/>true：隐藏返回键。<br/>false：显示返回键。 |
 
 ### customTransition<sup>15+</sup>
 
 ArkTS-Dyn: customTransition(delegate: NavDestinationTransitionDelegate)
 
-ArkTS-Dyn: customTransition(delegate: NavDestinationTransitionDelegate | undefined)
+ArkTS-Sta: customTransition(delegate: NavDestinationTransitionDelegate | undefined)
 
 设置NavDestination自定义转场动画。
 
@@ -465,7 +493,7 @@ ArkTS-Dyn: customTransition(delegate: NavDestinationTransitionDelegate | undefin
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -475,7 +503,9 @@ ArkTS-Dyn: customTransition(delegate: NavDestinationTransitionDelegate | undefin
 
 ### preferredOrientation<sup>19+</sup>
 
-preferredOrientation(orientation: Optional&lt;Orientation&gt;)
+ArkTS-Dyn: preferredOrientation(orientation: Optional&lt;Orientation&gt;)
+
+ArkTS-Sta: preferredOrientation(orientation: Orientation | undefined)
 
 设置NavDestination对应的显示方向。转场到该NavDestination后，系统也会将应用主窗口切到该显示方向。
 
@@ -492,15 +522,21 @@ preferredOrientation(orientation: Optional&lt;Orientation&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| orientation  | [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;[Orientation](../arkts-apis-window-e.md#orientation9)&gt; | 是   | NavDestination页面对应的Orientation。 |
+| orientation  | ArkTS-Sta: [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;[Orientation](../arkts-apis-window-e.md#orientation9)&gt;<br/> ArkTS-Sta: Orientation \| undefined| 是   | NavDestination页面对应的Orientation。 |
 
 ### enableStatusBar<sup>19+</sup>
 
-enableStatusBar(enabled: Optional&lt;boolean&gt;, animated?: boolean)
+ArkTS-Dyn: enableStatusBar(enabled: Optional&lt;boolean&gt;, animated?: boolean)
+
+ArkTS-Sta: enableStatusBar(enabled: boolean | undefined, animated?: boolean | undefined)
 
 设置进入该NavDestination后，显示或者隐藏系统的状态栏。
 
@@ -518,16 +554,22 @@ enableStatusBar(enabled: Optional&lt;boolean&gt;, animated?: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enabled  | [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;boolean&gt; | 是   | 进入该NavDestination后，系统状态栏的显示/隐藏状态。 |
-| animated  | boolean | 否   | 是否使用动画的方式显示/隐藏系统状态栏，默认值为：false。 |
+| enabled  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是   | 进入该NavDestination后，系统状态栏的显示/隐藏状态。 |
+| animated  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 否   | 是否使用动画的方式显示/隐藏系统状态栏，默认值为：false。 |
 
 ### enableNavigationIndicator<sup>19+</sup>
 
-enableNavigationIndicator(enabled: Optional&lt;boolean&gt;)
+ArkTS-Dyn: enableNavigationIndicator(enabled: Optional&lt;boolean&gt;)
+
+ArkTS-Sta: enableNavigationIndicator(enabled: boolean | undefined)
 
 设置进入该NavDestination后，显示或者隐藏系统的导航条。
 
@@ -545,11 +587,15 @@ enableNavigationIndicator(enabled: Optional&lt;boolean&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enabled  | [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;boolean&gt; | 是   | 进入该NavDestination后，系统导航条的显示/隐藏状态。 |
+| enabled  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是   | 进入该NavDestination后，系统导航条的显示/隐藏状态。 |
 
 ## NavDestinationMode枚举说明<sup>11+</sup>
 
@@ -558,6 +604,10 @@ NavDestination类型。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值 | 说明                                     |
 | ---- | --- | ---------------------------------------- |
@@ -572,14 +622,14 @@ NavDestination类型。
 
 | 名称   | 值   | 说明 |
 | ----  | ---   | ----- |
-| DEFAULT | 0 | 默认系统转场动画。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| NONE| 1 | 无系统转场动画。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| TITLE | 2 | 标题栏系统转场动画。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| CONTENT | 3 | 内容区系统转场动画。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| FADE<sup>15+</sup> | 4 | 渐变类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| EXPLODE<sup>15+</sup> | 5 | 中心缩放类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| SLIDE_RIGHT<sup>15+</sup> | 6 | 右侧平移类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| SLIDE_BOTTOM<sup>15+</sup> | 7 | 底部平移类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| DEFAULT | 0 | 默认系统转场动画。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
+| NONE| 1 | 无系统转场动画。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
+| TITLE | 2 | 标题栏系统转场动画。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
+| CONTENT | 3 | 内容区系统转场动画。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
+| FADE<sup>15+</sup> | 4 | 渐变类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| EXPLODE<sup>15+</sup> | 5 | 中心缩放类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| SLIDE_RIGHT<sup>15+</sup> | 6 | 右侧平移类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| SLIDE_BOTTOM<sup>15+</sup> | 7 | 底部平移类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 
 **说明：**
 >
@@ -597,9 +647,9 @@ NavDestination类型。
 
 ### onShown<sup>10+</sup>
 
-ArkTS-Dyn: onShown(callback:&nbsp;()&nbsp;=&gt;&nbsp;void)
+ArkTS-Dyn: onShown(callback: Callback&lt;VisibilityChangeReason&gt;)
 
-ArkTS-Sta: onShown(callback:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
+ArkTS-Sta: onShown(callback: Callback&lt;VisibilityChangeReason&gt; | undefined)
 
 当该NavDestination页面显示时触发此回调。
 
@@ -609,19 +659,19 @@ ArkTS-Sta: onShown(callback:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                                       |
 | --------- | ------ | ---- | ------------------------------------------ |
-| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void \| undefined | 是   | 当该NavDestination页面显示时触发此回调。 |
+| callback | ArkTS-Dyn: Callback&lt;[VisibilityChangeReason](#visibilitychangereason21枚举说明)&gt;<br/>ArkTS-Sta: Callback&lt;[VisibilityChangeReason](#visibilitychangereason21枚举说明)&gt; \| undefined | 是   | 当该NavDestination页面显示时触发此回调。 |
 
 ### onHidden<sup>10+</sup>
 
-ArkTS-Dyn: onHidden(callback:&nbsp;()&nbsp;=&gt;&nbsp;void)
+ArkTS-Dyn: onHidden(callback: Callback&lt;VisibilityChangeReason&gt;)
 
-ArkTS-Sta: onHidden(callback:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
+ArkTS-Sta: onHidden(callback: Callback&lt;VisibilityChangeReason&gt; | undefined)
 
 当该NavDestination页面隐藏时触发此回调。
 
@@ -631,19 +681,19 @@ ArkTS-Sta: onHidden(callback:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                                       |
 | --------- | ------ | ---- | ------------------------------------------ |
-| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void \| undefined | 是   | 当该NavDestination页面隐藏时触发此回调。 |
+| callback | ArkTS-Dyn: Callback&lt;[VisibilityChangeReason](#visibilitychangereason21枚举说明)&gt;<br/>ArkTS-Sta: Callback&lt;[VisibilityChangeReason](#visibilitychangereason21枚举说明)&gt; \| undefined | 是   | 当该NavDestination页面隐藏时触发此回调。 |
 
 ### onWillAppear<sup>12+</sup>
 
 ArkTS-Dyn: onWillAppear(callback: Callback\<void>)
 
-ArkTS-Sta: onWillAppear(callback: Callback\<void> | undefined)
+ArkTS-Sta: onWillAppear(callback: VoidCallback | undefined)
 
 当该Destination挂载之前触发此回调。在该回调中允许修改路由栈，当前帧生效。
 
@@ -653,19 +703,19 @@ ArkTS-Sta: onWillAppear(callback: Callback\<void> | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                                       |
 | --------- | ------ | ---- | ------------------------------------------ |
-| callback | ArkTS-Dyn: Callback\<void><br/>ArkTS-Sta: Callback\<void> \| undefined | 是   | 当该Destination挂载之前触发此回调。在该回调中允许修改路由栈，当前帧生效。 |
+| callback | ArkTS-Dyn: Callback\<void><br/>ArkTS-Sta: VoidCallback \| undefined | 是   | 当该Destination挂载之前触发此回调。在该回调中允许修改路由栈，当前帧生效。 |
 
 ### onWillShow<sup>12+</sup>
 
 ArkTS-Dyn: onWillShow(callback: Callback\<void>)
 
-ArkTS-Sta: onWillShow(callback:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
+ArkTS-Sta: onWillShow(callback: VoidCallback | undefined)
 
 当该Destination显示之前触发此回调。
 
@@ -675,19 +725,19 @@ ArkTS-Sta: onWillShow(callback:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                                       |
 | --------- | ------ | ---- | ------------------------------------------ |
-| callback | ArkTS-Dyn: callback\<void><br/>ArkTS-Sta: () => void \| undefined | 是   |当该Destination显示之前触发此回调。 |
+| callback | ArkTS-Dyn: Callback\<void><br/>ArkTS-Sta: VoidCallback \| undefined | 是   |当该Destination显示之前触发此回调。 |
 
 ### onWillHide<sup>12+</sup>
 
 ArkTS-Dyn: onWillHide(callback: Callback\<void>)
 
-ArkTS-Sta: onWillHide(callback:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
+ArkTS-Sta: onWillHide(callback: VoidCallback | undefined)
 
 当该Destination隐藏之前触发此回调。
 
@@ -697,19 +747,19 @@ ArkTS-Sta: onWillHide(callback:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                                       |
 | --------- | ------ | ---- | ------------------------------------------ |
-| callback | ArkTS-Dyn: callback\<void><br/>ArkTS-Sta: () => void \| undefined | 是   |当该Destination隐藏之前触发此回调。 |
+| callback | ArkTS-Dyn: Callback\<void><br/>ArkTS-Sta: VoidCallback \| undefined | 是   |当该Destination隐藏之前触发此回调。 |
 
 ### onWillDisappear<sup>12+</sup>
 
 ArkTS-Dyn: onWillDisappear(callback: Callback\<void>)
 
-ArkTS-Sta: onWillDisappear(callback: Callback\<void> | undefined)
+ArkTS-Sta: onWillDisappear(callback: VoidCallback | undefined)
 
 当该Destination卸载之前触发的生命周期(有转场动画时，在转场动画开始之前触发)。
 
@@ -719,13 +769,13 @@ ArkTS-Sta: onWillDisappear(callback: Callback\<void> | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                                       |
 | --------- | ------ | ---- | ------------------------------------------ |
-| callback | ArkTS-Dyn: Callback\<void><br/>ArkTS-Sta: Callback\<void> \| undefined | 是   | 当该Destination卸载之前触发的生命周期(有转场动画时，在转场动画开始之前触发)。 |
+| callback | ArkTS-Dyn: Callback\<void><br/>ArkTS-Sta: VoidCallback \| undefined | 是   | 当该Destination卸载之前触发的生命周期(有转场动画时，在转场动画开始之前触发)。 |
 
 ### onBackPressed<sup>10+</sup>
 
@@ -743,7 +793,7 @@ ArkTS-Sta: onBackPressed(callback:&nbsp;(()&nbsp;=&gt;&nbsp;boolean) | undefined
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -753,9 +803,9 @@ ArkTS-Sta: onBackPressed(callback:&nbsp;(()&nbsp;=&gt;&nbsp;boolean) | undefined
 
 ### onReady<sup>11+</sup>
 
-ArkTS-Dyn: onReady(callback:&nbsp;[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<[NavDestinationContext](#navdestinationcontext11)>)
+ArkTS-Dyn: onReady(callback: Callback\<NavDestinationContext\>)
 
-ArkTS-Sta: onReady(callback:&nbsp;[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<[NavDestinationContext](#navdestinationcontext11)> | undefined)
+ArkTS-Sta: onReady(callback: Callback\<NavDestinationContext\> | undefined)
 
 当NavDestination即将构建子组件之前会触发此回调。
 
@@ -765,17 +815,19 @@ ArkTS-Sta: onReady(callback:&nbsp;[Callback](../../apis-basic-services-kit/js-ap
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                                       |
 | --------- | ------ | ---- | ------------------------------------------ |
-| callback | ArkTS-Dyn:callback:&nbsp;[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<[NavDestinationContext](#navdestinationcontext11)><br/>ArkTS-Sta: callback:&nbsp;[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<[NavDestinationContext](#navdestinationcontext11)> \| undefined | 是   | 当NavDestination即将构建子组件之前会触发此回调。 |
+| callback | ArkTS-Dyn: Callback\<[NavDestinationContext](#navdestinationcontext11)\><br/>ArkTS-Sta: Callback\<[NavDestinationContext](#navdestinationcontext11)\> \| undefined | 是   | 当NavDestination即将构建子组件之前会触发此回调。 |
 
 ### onResult<sup>15+</sup>
 
-onResult(callback:&nbsp;Optional\<Callback\<ESObject\>\>)
+ArkTS-Dyn: onResult(callback: Optional\<Callback\<ESObject\>\>)
+
+ArkTS-Sta: onResult(callback: Callback\<Object | null | undefined\> | undefined)
 
 NavDestination返回时触发该回调。
 
@@ -783,14 +835,20 @@ NavDestination返回时触发该回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---------------- |
-|callback | [Optional](./ts-universal-attributes-custom-property.md)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<ESObject\>\>| 是 | 页面返回回调，入参为[pop](ts-basic-components-navigation.md#pop11)、[popToName](ts-basic-components-navigation.md#poptoname11)、[popToIndex](ts-basic-components-navigation.md#poptoindex11)接口传入的result参数。如果不传该参数，入参为undefined。|
+|callback | ArkTS-Dyn: [Optional](./ts-universal-attributes-custom-property.md#optional12)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<ESObject\>\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Object \| null \| undefined\> \| undefined | 是 | 页面返回回调，入参为[pop](ts-basic-components-navigation.md#pop11)、[popToName](ts-basic-components-navigation.md#poptoname11)、[popToIndex](ts-basic-components-navigation.md#poptoindex11)接口传入的result参数。如果不传该参数，入参为undefined。|
 
 ### onActive<sup>17+</sup>
 
-onActive(callback:&nbsp;Optional\<Callback\<NavDestinationActiveReason\>\>)
+ArkTS-Dyn: onActive(callback: Optional\<Callback\<NavDestinationActiveReason\>\>)
+
+ArkTS-Sta: onActive(callback: Callback\<NavDestinationActiveReason\> | undefined)
 
 NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）时，触发该回调。
 
@@ -798,14 +856,20 @@ NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---------------- |
-|callback | [Optional](./ts-universal-attributes-custom-property.md#optional12)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationActiveReason](#navdestinationactivereason17)\>\>| 是 | NavDestination由非激活态变为激活态的原因。|
+|callback | ArkTS-Dyn: [Optional](./ts-universal-attributes-custom-property.md#optional12)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationActiveReason](#navdestinationactivereason17)\>\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationActiveReason](#navdestinationactivereason17)\> \| undefined | 是 | NavDestination由非激活态变为激活态的原因。|
 
 ### onInactive<sup>17+</sup>
 
-onInactive(callback: &nbsp;Optional\<Callback\<NavDestinationActiveReason\>\>)
+ArkTS-Dyn: onInactive(callback: Optional\<Callback\<NavDestinationActiveReason\>\>)
+
+ArkTS-Sta: onInactive(callback: Callback\<NavDestinationActiveReason\> | undefined)
 
 NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶时上层有特殊组件遮挡）时，触发该回调。
 
@@ -813,14 +877,20 @@ NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---------------- |
-|callback | [Optional](./ts-universal-attributes-custom-property.md#optional12)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationActiveReason](#navdestinationactivereason17)\>\>| 是 | NavDestination由激活态变为非激活态的原因。|
+|callback | ArkTS-Dyn: [Optional](./ts-universal-attributes-custom-property.md#optional12)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callbackkit)\<[NavDestinationActiveReason](#navdestinationactivereason17)\>\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationActiveReason](#navdestinationactivereason17)\> \| undefined | 是 | NavDestination由激活态变为非激活态的原因。|
 
 ### onNewParam<sup>19+</sup>
 
-onNewParam(callback: &nbsp;Optional\<Callback\<ESObject\>\>)
+ArkTS-Dyn: onNewParam(callback: Optional\<Callback\<ESObject\>\>)
+
+ArkTS-Sta: onNewParam(callback: Callback\<Object | null | undefined\> | undefined)
 
 当之前存在于栈中的NavDestination页面通过[launchMode.MOVE_TO_TOP_SINGLETON](./ts-basic-components-navigation.md#launchmode12枚举说明)或[launchMode.POP_TO_SINGLETON](./ts-basic-components-navigation.md#launchmode12枚举说明)移动到栈顶时，触发该回调。
 
@@ -828,10 +898,14 @@ onNewParam(callback: &nbsp;Optional\<Callback\<ESObject\>\>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---------------- |
-|callback | [Optional](./ts-universal-attributes-custom-property.md#optional12)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<ESObject\>\>| 是 | onNewParam触发时的回调函数，入参为路由跳转时传递到目标页面的数据。|
+|callback | ArkTS-Dyn: [Optional](./ts-universal-attributes-custom-property.md#optional12)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<ESObject\>\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Object \| null \| undefined\> \| undefined | 是 | onNewParam触发时的回调函数，入参为路由跳转时传递到目标页面的数据。|
 
 > **说明：**
 >
@@ -844,6 +918,10 @@ NavDestination通用标题。
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型     | 必填   | 说明     |
 | ---- | ------ | ---- | ------ |
@@ -858,6 +936,10 @@ NavDestination自定义标题。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型                                       | 必填   | 说明       |
 | ------- | ---------------------------------------- | ---- | -------- |
 | builder | [CustomBuilder](ts-types.md#custombuilder8) | 是    | 设置标题栏内容。 |
@@ -871,9 +953,10 @@ NavDestination上下文信息。
 
 | 名称   | 类型     | 必填   |  说明     |
 | ---- | ------ | ----- | ------ |
-| pathInfo | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | 是 | 跳转NavDestination时指定的参数。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| pathStack  | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | 是 | 当前NavDestination所处的导航控制器。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| navDestinationId<sup>12+</sup> | string | 否 | 当前NavDestination的唯一ID，由系统自动生成，和组件通用属性id无关。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| pathInfo | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | 是 | 跳转NavDestination时指定的参数。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| pathStack  | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | 是 | 当前NavDestination所处的导航控制器。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| navDestinationId<sup>12+</sup> | string | 否 | 当前NavDestination的唯一ID。由系统自动生成，和组件通用属性id无关。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| mode<sup>22+</sup> | [NavDestinationMode](#navdestinationmode枚举说明11) | 否 | NavDestination的模式。 <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24|
 
 ### getConfigInRouteMap<sup>12+</sup>
 
@@ -884,6 +967,10 @@ getConfigInRouteMap(): RouteMapConfig |undefined
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值**
 
@@ -900,6 +987,10 @@ getConfigInRouteMap(): RouteMapConfig |undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型   |必填 | 说明 |
 | ----  | ---   | ---- |----- |
 | name  | string | 是 | 页面名称。|
@@ -914,6 +1005,10 @@ getConfigInRouteMap(): RouteMapConfig |undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型   |必填 | 说明 |
 | ----  | ---   | ---- |----- |
 | parent | [Scroller](./ts-container-scroll.md#scroller) | 是 | 可滚动容器组件的控制器。 |
@@ -927,6 +1022,10 @@ NavDestination激活态或者非激活态变化的原因。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 值 | 说明                                     |
 | ---- | -- | ---------------------------------------- |
 | TRANSITION | 0   | 通过页面跳转的方式使NavDestination激活态发生变化。                       |
@@ -936,21 +1035,41 @@ NavDestination激活态或者非激活态变化的原因。
 | OVERLAY | 4   | 通过OverlayManager开启或者关闭Overlay使NavDestination激活态发生变化。|
 | APP_STATE | 5   | 通过前后台切换使NavDestination激活态发生变化。 |
 
+## VisibilityChangeReason<sup>21+</sup>
+
+NavDestination可见性生命周期变化的原因。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 值 | 说明                                     |
+| ---- | -- | ---------------------------------------- |
+| TRANSITION | 0   | 通过页面跳转的方式使NavDestination可见性生命周期发生变化。                       |
+| CONTENT_COVER | 1   | 通过bindContentCover使NavDestination可见性生命周期发生变化。  |
+| APP_STATE | 2   | 通过应用前后台切换使NavDestination可见性生命周期发生变化。 |
+
 ## NavDestinationTransition<sup>15+</sup>
 
 NavDestination自定义动画接口。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型   |必填 | 说明 |
 | ----  | ---   | ---- |----- |
-| onTransitionEnd | Callback\<void> | 否 | 转场动画结束时的回调函数。 |
-| duration | number | 否 | 转场动画的持续时间，默认值为1000（毫秒）。 |
+| onTransitionEnd | ArkTS-Dyn: Callback\<void><br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) | 否 | 转场动画结束时的回调函数。 |
+| duration | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 转场动画的持续时间，默认值为1000（毫秒）。 |
 | curve | [Curve](ts-appendix-enums.md#curve) | 否 | 动画的曲线类型，默认值为[Curve.EaseInOut](ts-appendix-enums.md#curve)。 |
-| delay | number | 否 | 转场动画的延迟。默认值为0（毫秒）。 |
-| event | Callback\<void> | 是 | 指定转场动效的闭包函数，系统会根据闭包中对组件UI状态的修改，生成对应的过渡动画。参见[animateTo](../js-apis-arkui-UIContext.md#animateto)中的event。 |
+| delay | ArkTS-Dyn: number <br/>ArkTS-Sta: int| 否 | 转场动画的延迟。默认值为0（毫秒）。 |
+| event | ArkTS-Dyn: Callback\<void><br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) | 是 | 指定转场动效的闭包函数，系统会根据闭包中对组件UI状态的修改，生成对应的过渡动画。参见[animateTo](../js-apis-arkui-UIContext.md#animateto)中的event。 |
 
 ## NavDestinationTransitionDelegate<sup>15+</sup>
 
@@ -958,9 +1077,11 @@ type NavDestinationTransitionDelegate = (operation: NavigationOperation, isEnter
 
 NavDestination自定义转场动画的代理函数。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

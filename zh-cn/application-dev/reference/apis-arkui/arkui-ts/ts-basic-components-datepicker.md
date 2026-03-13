@@ -26,6 +26,10 @@ DatePicker(options?: DatePickerOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                            | 必填 | 说明                       |
@@ -40,12 +44,12 @@ DatePicker(options?: DatePickerOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型 | 必填 | 说明                                                         |
+| 名称     | 类型 | 必填 |说明                                                         |
 | -------- | ---- | ---- | ------------------------------------------------------------ |
-| start    | Date | 否   | 指定选择器的起始日期。<br/>默认值：Date('1970-1-1')          |
-| end      | Date | 否   | 指定选择器的结束日期。<br/>默认值：Date('2100-12-31')        |
-| selected | Date | 否   | 设置选中项的日期。<br/>默认值：当前系统日期<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 |
-| mode<sup>18+</sup> | [DatePickerMode](#datepickermode18枚举说明) | 否   | 设置[DatePicker](#datepicker)显示的日期选项列。<br/>默认值：DatePickerMode.DATE，日期列显示年、月、日三列。 小数值做取整处理。<br/>在DatePickerDialog中，当showTime=true时，此参数不生效，显示默认年月日三列。 |
+| start<sup>11+</sup>    | ArkTS-Dyn: Date<br/>ArkTS-Sta: Date | 否   | 指定选择器的起始日期。<br/>默认值：Date('1970-1-1')<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23         |
+| end<sup>11+</sup>      | ArkTS-Dyn: Date<br/>ArkTS-Sta: Date | 否   | 指定选择器的结束日期。<br/>默认值：Date('2100-12-31')<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23        |
+| selected<sup>11+</sup> | ArkTS-Dyn: Date<br/>ArkTS-Sta: Date \| Bindable\<Date> | 否   | 设置选中项的日期。<br/>默认值：当前系统日期<br />从API version 11开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| mode<sup>18+</sup> | [DatePickerMode](#datepickermode18枚举说明) | 否   | 设置[DatePicker](#datepicker)显示的日期选项列。<br/>默认值：DatePickerMode.DATE，日期列显示年、月、日三列。 小数值做取整处理。<br/>在DatePickerDialog中，当showTime=true时，此参数不生效，显示默认年月日三列。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 
 >  **说明：**
 >
@@ -60,6 +64,10 @@ DatePicker(options?: DatePickerOptions)
 **原子化服务API：** 从API version 18开始，该类型支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | - |-------- |
@@ -79,7 +87,7 @@ DatePicker(options?: DatePickerOptions)
 | 选中日期晚于结束日期    | 选中日期为结束日期  |
 | 起始日期晚于当前系统日期，选中日期未设置    | 选中日期为起始日期  |
 | 结束日期早于当前系统日期，选中日期未设置    | 选中日期为结束日期  |
-| 日期格式不符合规范，如‘1999-13-32’   | 取默认值  |
+| 日期格式不符合规范，如'1999-13-32'   | 取默认值  |
 | 起始日期或结束日期早于系统有效范围    | 起始日期或结束日期取起始日期默认值 |
 | 起始日期或结束日期晚于系统有效范围    | 起始日期或结束日期取结束日期默认值 |
 | 起始日期与结束日期同时早于系统有效范围 | 起始日期与结束日期取系统有效范围最早日期 |
@@ -107,7 +115,7 @@ ArkTS-Sta: lunar(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -135,6 +143,24 @@ lunar(isLunar: Optional\<boolean>)
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | isLunar | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 日期是否显示为农历。<br/>- true：显示为农历。<br/>- false：不显示为农历。<br/>默认值：false |
 
+### lunar<sup>23+</sup>
+
+lunar(value: boolean | undefined)
+
+设置弹窗的日期是否显示农历。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| value | boolean \| undefined | 是   | 日期是否显示为农历。<br/>- true：显示为农历。<br/>- false：不显示为农历。<br/>默认值：false |
+ 
 ### disappearTextStyle<sup>10+</sup>
 
 ArkTS-Dyn: disappearTextStyle(value: PickerTextStyle)
@@ -149,7 +175,7 @@ ArkTS-Sta: disappearTextStyle(value: PickerTextStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -177,6 +203,24 @@ disappearTextStyle(style: Optional\<PickerTextStyle>)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)> | 是   | 边缘项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
 
+### disappearTextStyle<sup>23+</sup>
+
+disappearTextStyle(value: PickerTextStyle | undefined)
+
+设置过渡项的文本样式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) \| undefined | 是   | 边缘项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+
 >  **说明：**
 >
 > 若选中项向上或向下的可视项数低于两项则无对应过渡项。
@@ -195,7 +239,7 @@ ArkTS-Sta: textStyle(value: PickerTextStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -221,7 +265,25 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| style | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)> | 是   | 待选项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)> | 是   | 待选项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+
+### textStyle<sup>23+</sup>
+
+textStyle(value: PickerTextStyle | undefined)
+
+设置一般项的文本样式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                          | 必填 | 说明                                                         |
+| ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) \| undefined | 是   | 待选项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
 
 >  **说明：**
 >
@@ -241,7 +303,7 @@ ArkTS-Sta: selectedTextStyle(value: PickerTextStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -269,6 +331,24 @@ selectedTextStyle(style: Optional\<PickerTextStyle>)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | style | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)> | 是   | 选中项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff007dff',<br/>font: {<br/>size: '20fp', <br/>weight: FontWeight.Medium<br/>}<br/>} <br/>当style的值为undefined时，使用默认值。|
 
+### selectedTextStyle<sup>23+</sup>
+
+selectedTextStyle(value: PickerTextStyle | undefined)
+
+设置选中项的文本样式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) \| undefined | 是   | 选中项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff007dff',<br/>font: {<br/>size: '20fp', <br/>weight: FontWeight.Medium<br/>}<br/>} <br/>当value的值为undefined时，使用默认值。|
+
 ### enableHapticFeedback<sup>18+</sup>
 
 ArkTS-Dyn: enableHapticFeedback(enable: Optional\<boolean>)
@@ -283,7 +363,9 @@ ArkTS-Sta: enableHapticFeedback(enable:  boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
@@ -301,7 +383,10 @@ ArkTS-Sta: enableHapticFeedback(enable:  boolean | undefined)
 >  ```
 
 ### digitalCrownSensitivity<sup>18+</sup>
-digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
+
+ArkTS-Dyn: digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
+
+ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
 
 设置表冠灵敏度。
 
@@ -309,9 +394,15 @@ digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
 | 参数名   | 类型                                     | 必填   | 说明                      |
 | ----- | ---------------------------------------- | ---- | ------------------------- |
-| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | 是    | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。                    |
+| sensitivity | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> <br/>ArkTS-Sta: [CrownSensitivity](ts-appendix-enums.md#crownsensitivity18) \| undefined | 是    | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。 |
 
 >  **说明：**
 >
@@ -344,6 +435,10 @@ ArkTS-Sta: canLoop(isLoop: boolean | undefined)
 选择器组件的文本样式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
 
 | 参数名   | 类型                                     | 必填   | 说明                      |
 | ----- | ---------------------------------------- | ---- | ------------------------- |
@@ -384,7 +479,7 @@ ArkTS-Sta: onDateChange(callback: Callback\<Date> \| undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -411,6 +506,24 @@ onDateChange(callback: Optional\<Callback\<Date>>)
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[Callback](ts-types.md#callback12)\<Date>> | 是   | 返回选中的时间，年、月、日为选中的日期，时、分取决于当前系统时间的时、分，秒恒为00。 |
+
+### onDateChange<sup>23+</sup>
+
+onDateChange(callback: Callback\<Date> | undefined)
+
+选择日期时触发该事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [Callback](ts-types.md#callback12)\<Date> \| undefined | 是   | 返回选中的时间，年、月、日为选中的日期，时、分取决于当前系统时间的时、分，秒恒为00。 |
  
 ## DatePickerResult对象说明
 
@@ -422,13 +535,13 @@ onDateChange(callback: Optional\<Callback\<Date>>)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                       |
 | ----- | ------ | ---- | ---- | ------------------------------------------ |
-| year  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | 选中日期的年。<br/>取值范围：与start、end有关，如果没有设置start、end，则取start、end默认值[1970， 2100]。                             |
-| month | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | 选中日期的月的索引值，索引从0开始，0表示1月，11表示12月。<br/>取值范围：与start、end有关，如果没有设置start、end，取值范围为[0， 11]。 |
-| day   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | 选中日期的日。<br/>取值范围：与start、end有关，如果没有设置start、end，取值范围为[1， 31]。                             |
+| year  | ArkTS-Dyn: number <br/> ArkTS-Sta: int | 否   | 否   | 选中日期的年。<br/>取值范围：与start、end有关，如果没有设置start、end，则取start、end默认值[1970， 2100]。                             |
+| month | ArkTS-Dyn: number <br/> ArkTS-Sta: int | 否   | 否   | 选中日期的月的索引值，索引从0开始，0表示1月，11表示12月。<br/>取值范围：与start、end有关，如果没有设置start、end，取值范围为[0， 11]。 |
+| day   | ArkTS-Dyn: number <br/> ArkTS-Sta: int | 否   | 否   | 选中日期的日。<br/>取值范围：与start、end有关，如果没有设置start、end，取值范围为[1， 31]。                             |
 
 ## 示例
 

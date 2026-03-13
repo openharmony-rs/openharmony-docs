@@ -4,7 +4,10 @@ EventHub模块提供了事件中心，提供订阅、取消订阅、触发事件
 
 > **说明：**
 >
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
+>
 >  - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
@@ -22,7 +25,7 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   eventFunc() {
-    console.log('eventFunc is called');
+    console.info('eventFunc is called');
   }
 
   onCreate() {
@@ -34,7 +37,7 @@ EventHub不是全局的事件中心，不同的context对象拥有不同的Event
 
 ## EventHub.on
 
-on(event: string, callback: Function): void;
+on(event: string, callback: Function): void
 
 订阅指定事件。
 > **说明：**
@@ -44,6 +47,10 @@ on(event: string, callback: Function): void;
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -93,7 +100,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   eventFunc() {
-    console.log(`eventFunc is called, value: ${this.value}`);
+    console.info(`eventFunc is called, value: ${this.value}`);
   }
 }
 ```
@@ -134,7 +141,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   eventFunc() {
-    console.log(`eventFunc is called, value: ${this.value}`);
+    console.info(`eventFunc is called, value: ${this.value}`);
   }
 }
 ```
@@ -150,6 +157,10 @@ off(event: string, callback?: Function): void;
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -188,11 +199,11 @@ export default class EntryAbility extends UIAbility {
   }
 
   eventFunc1() {
-    console.log('eventFunc1 is called');
+    console.info('eventFunc1 is called');
   }
 
   eventFunc2() {
-    console.log('eventFunc2 is called');
+    console.info('eventFunc2 is called');
   }
 }
 ```
@@ -206,6 +217,10 @@ emit(event: string, ...args: Object[]): void;
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -252,7 +267,64 @@ export default class EntryAbility extends UIAbility {
   }
 
   eventFunc(argOne: number, argTwo: number) {
-    console.log(`eventFunc is called, ${argOne}, ${argTwo}`);
+    console.info(`eventFunc is called, ${argOne}, ${argTwo}`);
   }
 }
 ```
+
+## EventHub.emit<sup>23+</sup>
+
+emit(event: string, ...args: (Object|null|undefined)[]): void
+
+触发指定事件。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                        | 必填 | 说明                                         |
+| ------- | --------------------------- | ---- | -------------------------------------------- |
+| event   | string                      | 是   | 事件名称。                                   |
+| ...args | (Object\|null\|undefined)[] | 否   | 可变参数，事件触发时，传递给回调函数的参数。 |
+
+**示例：**
+
+```ts
+// ArkTS-Sta示例
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    this.context.eventHub.on('myEvent', this.eventFunc);
+  }
+
+  onDestroy() {
+    try {
+      // 结果：
+      // eventFunc is called,undefined,undefined
+      this.context.eventHub.emit('myEvent');
+      // 结果：
+      // eventFunc is called,1,undefined
+      this.context.eventHub.emit('myEvent', 1);
+      // 结果：
+      // eventFunc is called,1,2
+      this.context.eventHub.emit('myEvent', 1, 2);
+    } catch (e) {
+      let code: number = (e as BusinessError).code;
+      let msg: string = (e as BusinessError).message;
+      console.error(`EventHub emit error, code: ${code}, msg: ${msg}`);
+    }
+    return undefined;
+  }
+
+  eventFunc(argOne: number, argTwo: number) {
+    console.info(`eventFunc is called, ${argOne}, ${argTwo}`);
+  }
+}
+```
+

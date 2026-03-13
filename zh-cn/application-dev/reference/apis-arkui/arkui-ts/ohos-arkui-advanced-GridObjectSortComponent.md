@@ -39,13 +39,16 @@ GridObjectSortComponent({options: GridObjectSortComponentOptions, dataList: Arra
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型                             | 必填 | 装饰器类型 | 说明         |
 | -------- | -------------------------------- | ---------- | ---- | ---- |
-| options  | [GridObjectSortComponentOptions](#gridobjectsortcomponentoptions) | 是     | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef      | 组件配置信息。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
-| dataList | Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)> | 是    | -     | 传入的数据，最大长度为50，数据长度超过50，只会取前50的数据。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
-| onSave | (select: Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)>, unselect: Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)>)  => void | 是 | - | 保存编辑排序的回调函数，返回编辑后的数据。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
-| onCancel | () => void | 是 | - | 取消保存数据的回调。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
+| options  | [GridObjectSortComponentOptions](#gridobjectsortcomponentoptions) | 是     | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef      | 组件配置信息。 |
+| dataList | Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)> | 是    | -     | 传入的数据，最大长度为50，数据长度超过50，只会取前50的数据。 |
+| onSave | (select: Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)>, unselect: Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)>)  => void | 是 | - | 保存编辑排序的回调函数，返回编辑后的数据。 |
+| onCancel | () => void | 是 | - | 取消保存数据的回调。 |
 
 ##  GridObjectSortComponentOptions
 
@@ -57,12 +60,12 @@ GridObjectSortComponent({options: GridObjectSortComponentOptions, dataList: Arra
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                      | 必填 | 说明                                                          |
 | -------------- | ------------------------- | ---- |-------------------------------------------------------------|
 | type           | [GridObjectSortComponentType](#gridobjectsortcomponenttype) | 否   | 组件展示形态：文字\|图片+文字。<br />默认：GridObjectSortComponentType.text |
-| imageSize      | number \| [Resource](ts-types.md#resource) | 否   | 图片的尺寸，单位vp。<br />取值范围：大于等于0。<br />默认值：56vp                 |
+| imageSize      | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br/>ArkTS-Sta: int \| [Resource](ts-types.md#resource)  | 否   | 图片的尺寸，单位vp。<br />取值范围：大于等于0。<br />默认值：56vp                 |
 | normalTitle | [ResourceStr](ts-types.md#resourcestr)     | 否   | 未编辑状态下显示的标题。<br />默认值：频道。                                   |
 | showAreaTitle | [ResourceStr](ts-types.md#resourcestr)     | 否   | 展示区域标题，第一个子标题。<br />默认值：长按拖动排序。                              |
 | addAreaTitle | [ResourceStr](ts-types.md#resourcestr)     | 否   | 添加区域标题，第二个子标题。<br />默认值：点击添加。                                |
@@ -78,7 +81,7 @@ GridObjectSortComponent({options: GridObjectSortComponentOptions, dataList: Arra
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值    | 说明           |
 | -------- | ----- | -------------- |
@@ -93,12 +96,12 @@ GridObjectSortComponent({options: GridObjectSortComponentOptions, dataList: Arra
 
 | 名称     | 类型                                   | 必填 | 说明                                                                                                                       |
 | -------- | -------------------------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------|
-| id       | number&nbsp;\|&nbsp;string             | 是   | 数据id序号，不可重复。<br />默认值：空字符串。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
-| text     | [ResourceStr](ts-types.md#resourcestr) | 是   | 显示文本信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
-| selected | boolean                                | 是   | 是否已经被添加，添加：true，未添加：false。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
-| url      | [ResourceStr](ts-types.md#resourcestr) | 否   | GridObjectSortComponentType类型为IMAGE_TEXT时，需要传入图片地址。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否   | GridObjectSortComponentType类型为IMAGE_TEXT时，需要传入Symbol图标资源。配置优先级高于url。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 22 |
-| order    | number                                 | 是   | 顺序序号。<br />取值范围：大于等于0。<br />默认值：0 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
+| id       | number&nbsp;\|&nbsp;string             | 是   | 数据id序号，不可重复。<br />默认值：空字符串。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| text     | [ResourceStr](ts-types.md#resourcestr) | 是   | 显示文本信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| selected | boolean                                | 是   | 是否已经被添加，添加：true，未添加：false。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| url      | [ResourceStr](ts-types.md#resourcestr) | 否   | GridObjectSortComponentType类型为IMAGE_TEXT时，需要传入图片地址。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否   | GridObjectSortComponentType类型为IMAGE_TEXT时，需要传入Symbol图标资源。配置优先级高于url。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| order    | number                                 | 是   | 顺序序号。<br />取值范围：大于等于0。<br />默认值：0 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 事件
 

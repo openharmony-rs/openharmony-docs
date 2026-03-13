@@ -22,7 +22,17 @@
 import selectionManager from '@ohos.selectionInput.selectionManager';
 ```
 
-## selectionManager.on('selectionCompleted')
+## selectionManager
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
+### selectionManager.on('selectionCompleted')
 
 on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
@@ -31,6 +41,8 @@ on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -63,7 +75,7 @@ try {
 }
 ```
 
-## onSelectionComplete
+### onSelectionComplete
 
 onSelectionComplete(callback: Callback\<SelectionInfo>): void
 
@@ -73,7 +85,7 @@ onSelectionComplete(callback: Callback\<SelectionInfo>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Sta起始版本**：24
 
@@ -105,7 +117,7 @@ try {
 }
 ```
 
-## selectionManager.off('selectionCompleted')
+### selectionManager.off('selectionCompleted')
 
 off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
@@ -114,6 +126,8 @@ off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -141,7 +155,7 @@ try {
 }
 ```
 
-## offSelectionComplete
+### offSelectionComplete
 
 offSelectionComplete(callback?: Callback\<SelectionInfo>): void
 
@@ -151,7 +165,7 @@ offSelectionComplete(callback?: Callback\<SelectionInfo>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Sta起始版本**：24
 
@@ -178,13 +192,15 @@ try {
 }
 ```
 
-## getSelectionContent()
+### getSelectionContent()
 
 getSelectionContent(): Promise\<string>
 
 获取选中文本的内容。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -201,7 +217,6 @@ getSelectionContent(): Promise\<string>
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 202 | Permission denied. Called by non-system application. |
 | 33600001   | Selection service exception. |
 | 33600004   | The interface is called too frequently. |
 | 33600005   | The interface is called at the wrong time. |
@@ -237,7 +252,7 @@ selectionManager.onSelectionComplete((info: selectionManager.SelectionInfo) => {
 });
 ```
 
-## createPanel
+### createPanel
 
 createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
@@ -247,7 +262,7 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -319,7 +334,7 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 export default ServiceExtAbility;
 ```
 
-## destroyPanel
+### destroyPanel
 
 destroyPanel(panel: Panel): Promise\<void>
 
@@ -327,7 +342,7 @@ destroyPanel(panel: Panel): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -417,7 +432,7 @@ export default ServiceExtAbility;
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -444,7 +459,7 @@ export default ServiceExtAbility;
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -460,7 +475,7 @@ setUiContent(path: string): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -512,7 +527,7 @@ show(): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -554,6 +569,8 @@ hide(): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本**：24
 
 **ArkTS-Sta起始版本**：24
@@ -594,7 +611,7 @@ startMoving(): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -649,7 +666,7 @@ ArkTS-Sta: moveToGlobalDisplay(x: int, y: int): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -704,6 +721,8 @@ on(type: 'destroyed', callback: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本**：24
 
 **参数：**
@@ -738,7 +757,7 @@ onDestroy(callback: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Sta起始版本**：24
 
@@ -773,6 +792,8 @@ off(type: 'destroyed', callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本**：24
 
 **参数：**
@@ -805,7 +826,7 @@ offDestroy(callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Sta起始版本**：24
 
@@ -837,6 +858,8 @@ on(type: 'hidden', callback: Callback\<void>): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -872,7 +895,7 @@ onHide(callback: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Sta起始版本**：24
 
@@ -907,6 +930,8 @@ off(type: 'hidden', callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本**：24
 
 **参数：**
@@ -939,7 +964,7 @@ offHide(callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Sta起始版本**：24
 
@@ -968,7 +993,7 @@ try {
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 

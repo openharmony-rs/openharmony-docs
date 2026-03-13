@@ -186,6 +186,7 @@
       - [复用标识](arkui-ts/ts-universal-attributes-reuse-id.md)
       - [复用选项](arkui-ts/ts-universal-attributes-reuse.md)
       - [自定义窗口工具栏](arkui-ts/ts-universal-attributes-toolbar.md)
+      - [设置源码跳转信息](arkui-ts/ts-universal-attributes-debugline.md)
   - 手势处理<!--gesture-handling-->
     - 绑定手势<!--gesture-binding-->
       - [绑定手势方法](arkui-ts/ts-gesture-settings.md)
@@ -402,6 +403,7 @@
     - [ContentSlot](arkui-ts/ts-components-contentSlot.md)
   - 自定义组件<!--custom-comp-->
     - [自定义组件的生命周期](arkui-ts/ts-custom-component-lifecycle.md)
+    - [自定义组件的生命周期（推荐）](arkui-ts/ts-custom-component-new-lifecycle.md)
     - [自定义组件的自定义布局](arkui-ts/ts-custom-component-layout.md)
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
     - 动态ArkTS自定义组件
@@ -542,6 +544,7 @@
         - [@Param](arkui-ts/ts-state-management-param-static.md)
         - [@Provider](arkui-ts/ts-state-management-provider-static.md)
         - [@Trace](arkui-ts/ts-state-management-trace-static.md)
+        - [@Env](arkui-ts/ts-state-management-env-static.md)
   - 公共定义<!--common-definitions-->
     - [基础类型定义](arkui-ts/ts-types.md)
     - [像素单位](arkui-ts/ts-pixel-units.md)

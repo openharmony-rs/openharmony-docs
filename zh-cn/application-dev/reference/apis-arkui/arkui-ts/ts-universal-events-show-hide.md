@@ -28,7 +28,7 @@ ArkTS-Sta: onAttach(callback: VoidCallback | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -56,7 +56,7 @@ ArkTS-Sta: onDetach(callback: VoidCallback | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -90,7 +90,7 @@ ArkTS-Sta: onAppear(event: (() => void) | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -121,7 +121,7 @@ ArkTS-Sta: onDisAppear(event: (() => void) | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 **参数：**

@@ -604,7 +604,8 @@ try {
 
 ## appControl.deleteDisposedStatusSync<sup>10+</sup>
 
-ArkTS-Dyn: deleteDisposedStatusSync(appId: string, appIndex:? number): void<br>
+ArkTS-Dyn: deleteDisposedStatusSync(appId: string, appIndex:? number): void
+
 ArkTS-Sta: deleteDisposedStatusSync(appId: string, appIndex:? int): void
 
 以同步方法删除指定应用或分身应用的处置状态。成功返回null，失败抛出对应异常。
@@ -713,7 +714,8 @@ try {
 
 ## appControl.getDisposedRule<sup>11+</sup>
 
-ArkTS-Dyn: getDisposedRule(appId: string, appIndex:? number): DisposedRule<br>
+ArkTS-Dyn: getDisposedRule(appId: string, appIndex:? number): DisposedRule
+
 ArkTS-Sta: getDisposedRule(appId: string, appIndex:? int): DisposedRule
 
 获取指定应用或分身应用已设置的拦截规则。
@@ -873,7 +875,8 @@ try {
 
 ## appControl.setDisposedRule<sup>11+</sup>
 
-ArkTS-Dyn: setDisposedRule(appId: string, rule: DisposedRule, appIndex:? number): void<br>
+ArkTS-Dyn: setDisposedRule(appId: string, rule: DisposedRule, appIndex:? number): void
+
 ArkTS-Sta: setDisposedRule(appId: string, rule: DisposedRule, appIndex:? int): void
 
 设置指定应用或分身应用的拦截规则。
@@ -1040,7 +1043,8 @@ struct Index {
 
 ## appControl.setUninstallDisposedRule<sup>15+</sup>
 
-ArkTS-Dyn: setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposedRule, appIndex:? number): void<br>
+ArkTS-Dyn: setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposedRule, appIndex:? number): void
+
 ArkTS-Sta: setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposedRule, appIndex:? int): void
 
 设置指定应用或分身应用的卸载处置规则。
@@ -1106,7 +1110,8 @@ try {
 
 ## appControl.getUninstallDisposedRule<sup>15+</sup>
 
-ArkTS-Dyn: getUninstallDisposedRule(appIdentifier: string, appIndex:? number): UninstallDisposedRule<br>
+ArkTS-Dyn: getUninstallDisposedRule(appIdentifier: string, appIndex:? number): UninstallDisposedRule
+
 ArkTS-Sta: getUninstallDisposedRule(appIdentifier: string, appIndex:? int): UninstallDisposedRule
 
 获取指定应用或分身应用已设置的卸载处置规则。
@@ -1166,7 +1171,8 @@ try {
 
 ## appControl.deleteUninstallDisposedRule<sup>15+</sup>
 
-ArkTS-Dyn: deleteUninstallDisposedRule(appIdentifier: string, appIndex:? number): void<br>
+ArkTS-Dyn: deleteUninstallDisposedRule(appIdentifier: string, appIndex:? number): void
+
 ArkTS-Sta: deleteUninstallDisposedRule(appIdentifier: string, appIndex:? int): void
 
 删除指定应用或分身应用的卸载处置规则。

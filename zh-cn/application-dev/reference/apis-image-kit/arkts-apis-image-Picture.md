@@ -57,7 +57,7 @@ async function GetMainPixelmap() {
 }
 ```
 
-## getMainPixelmap<sup>22+</sup>
+## getMainPixelmap<sup>23+</sup>
 
 getMainPixelmap(): PixelMap | undefined
 
@@ -67,7 +67,7 @@ getMainPixelmap(): PixelMap | undefined
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -94,7 +94,7 @@ function GetMainPixelmapFunc(picture: image.Picture): void {
 
 getHdrComposedPixelmap(): Promise\<PixelMap>
 
-合成hdr图并获取hdr图的pixelmap。使用Promise异步回调。
+合成HDR图并获取HDR图的pixelmap。使用Promise异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -142,7 +142,102 @@ async function GetHdrComposedPixelmap() {
 }
 ```
 
-## getHdrComposedPixelmap<sup>22+</sup>
+## getHdrComposedPixelmapWithOptions<sup>23+</sup>
+
+getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise\<PixelMap | undefined>
+
+合成HDR图像并返回HDR图像的PixelMap，支持传入合成参数（如PixelMapFormat等）。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名           | 类型                 | 必填 | 说明         |
+| ---------------- | -------------------- | ---- | ------------ |
+| options             | [HdrComposeOptions](arkts-apis-image-i.md#hdrcomposeoptions23) | 否   | 合成HDR的选项。 |
+
+**返回值：**
+
+| 类型                          | 说明                        |
+| ----------------------------- | --------------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap或undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7600201 | Unsupported operation.|
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
+  if (picture == null) {
+    console.error('picture is null');
+    return;
+  }
+
+  let opt: image.HdrComposeOptions = {
+    desiredPixelFormat: image.PixelMapFormat.RGBA_1010102
+  };
+  let hdrComposedPixelmap: image.PixelMap | undefined = await picture.getHdrComposedPixelmapWithOptions(opt);
+  if (hdrComposedPixelmap == null || hdrComposedPixelmap == undefined) {
+    console.error(`GetHdrComposedPixelmapWithOptions failed`);
+    return;
+  }
+
+  hdrComposedPixelmap.getImageInfo().then((imageInfo: image.ImageInfo) => {
+    if (imageInfo !== null) {
+      console.info(`GetHdrComposedPixelmapWithOptions information height:${imageInfo.size.height} width:${imageInfo.size.width}`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`GetHdrComposedPixelmapWithOptions information failed error.code: ${error.code} ,error.message: ${error.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { image } from '@kit.ImageKit';
+
+async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
+  if (picture == null) {
+    console.error('picture is null');
+    return;
+  }
+
+  let opt: image.HdrComposeOptions = {
+    desiredPixelFormat: image.PixelMapFormat.RGBA_1010102
+  };
+  let hdrComposedPixelmap: image.PixelMap | undefined = await picture.getHdrComposedPixelmapWithOptions(opt);
+  if (hdrComposedPixelmap == null || hdrComposedPixelmap == undefined) {
+    console.error(`GetHdrComposedPixelmapWithOptions failed`);
+    return;
+  }
+  try {
+    let imageInfo = await hdrComposedPixelmap.getImageInfo();
+    if (imageInfo && imageInfo.size) {
+      console.info(`GetHdrComposedPixelmapWithOptions information height:${imageInfo.size.height} width:${imageInfo.size.width}`);
+    }
+  } catch (err) {
+    console.error(`GetHdrComposedPixelmapWithOptions information failed error.code: ${err.code} ,error.message: ${err.message}`);
+  }
+}
+```
+
+## getHdrComposedPixelmap<sup>23+</sup>
 
 getHdrComposedPixelmap(): Promise\<PixelMap | undefined>
 
@@ -152,7 +247,7 @@ getHdrComposedPixelmap(): Promise\<PixelMap | undefined>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -194,7 +289,7 @@ getGainmapPixelmap(): PixelMap | null
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -204,7 +299,7 @@ getGainmapPixelmap(): PixelMap | null
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -232,7 +327,7 @@ async function GetGainmapPixelmap() {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -260,7 +355,7 @@ setAuxiliaryPicture(type: AuxiliaryPictureType, auxiliaryPicture: AuxiliaryPictu
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -279,7 +374,7 @@ setAuxiliaryPicture(type: AuxiliaryPictureType, auxiliaryPicture: AuxiliaryPictu
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -308,7 +403,7 @@ async function SetAuxiliaryPicture(context: Context) {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -333,7 +428,7 @@ getAuxiliaryPicture(type: AuxiliaryPictureType): AuxiliaryPicture | null
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -357,7 +452,7 @@ getAuxiliaryPicture(type: AuxiliaryPictureType): AuxiliaryPicture | null
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -369,7 +464,7 @@ async function GetAuxiliaryPicture() {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -398,7 +493,7 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -424,7 +519,7 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -458,7 +553,7 @@ async function SetPictureObjMetadata(exifContext: Context) {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -527,7 +622,7 @@ async function GetPictureObjMetadataProperties() {
 }
 ```
 
-## getMetadata<sup>22+</sup>
+## getMetadata<sup>23+</sup>
 
 getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 
@@ -537,7 +632,7 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -557,7 +652,6 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 7600202  | Unsupported metadata. Possible causes: Unsupported metadata type. |
 
 **示例：**
@@ -586,7 +680,7 @@ marshalling(sequence: rpc.MessageSequence): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -605,7 +699,7 @@ marshalling(sequence: rpc.MessageSequence): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -652,7 +746,7 @@ async function Marshalling_UnMarshalling() {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
 import { image } from '@kit.ImageKit';
@@ -722,11 +816,11 @@ release(): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -745,7 +839,7 @@ async function Release() {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { image } from '@kit.ImageKit';
 

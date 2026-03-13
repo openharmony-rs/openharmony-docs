@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅适用于ArkTS-Dyn。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -19,6 +20,8 @@ createPixelMap(colors: ArrayBuffer, options: image.InitializationOptions): Promi
 通过属性创建PixelMap，默认采用BGRA_8888格式处理数据，通过Promise返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -58,6 +61,8 @@ createPixelMapFromParcel(sequence: rpc.MessageSequence): PixelMap
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名                 | 类型                                                  | 必填 | 说明                                     |
@@ -76,15 +81,15 @@ createPixelMapFromParcel(sequence: rpc.MessageSequence): PixelMap
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 62980096 | If the operation failed|
-| 62980097 | If the ipc error|
-| 62980115 | Invalid input parameter|
-| 62980105 | Failed to get the data|
-| 62980177 | Abnormal API environment|
-| 62980178 | Failed to create the PixelMap|
-| 62980179 | Abnormal buffer size|
-| 62980180 | FD mapping failed|
-| 62980246 | Failed to read the PixelMap|
+| 62980096 | Operation failed. |
+| 62980097 | IPC error. |
+| 62980115 | Invalid input parameter. |
+| 62980105 | Failed to get the data. |
+| 62980177 | Abnormal API environment. |
+| 62980178 | Failed to create the PixelMap. |
+| 62980179 | Abnormal buffer size. |
+| 62980180 | FD mapping failed. |
+| 62980246 | Failed to read the PixelMap. |
 
 **示例：**
 
@@ -154,6 +159,8 @@ createPixelMapFromSurface(surfaceId: string, region: image.Region): Promise\<Pix
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名                 | 类型                 | 必填 | 说明                                     |
@@ -172,7 +179,7 @@ createPixelMapFromSurface(surfaceId: string, region: image.Region): Promise\<Pix
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 62980115 | Invalid input parameter|
+| 62980115 | If the image parameter invalid. |
 | 62980105 | Failed to get the data|
 | 62980178 | Failed to create the PixelMap|
 
@@ -199,6 +206,8 @@ createPixelMapSync(colors: ArrayBuffer, options: image.InitializationOptions): P
 通过属性创建PixelMap，同步返回PixelMap结果。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -236,17 +245,19 @@ async function Demo() {
 
 ## sendableImage.convertFromPixelMap
 
-convertFromPixelMap(pixelMap: image.PixelMap): PixelMap
+convertFromPixelMap(pixelmap: image.PixelMap): PixelMap
 
 通过image下的PixelMap创建出一个sendableImage下的PixelMap，同步返回PixelMap结果。原PixelMap的方法均不可再调用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名  | 类型                                             | 必填 | 说明                                                             |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| pixelMap | [image.PixelMap](arkts-apis-image-PixelMap.md) | 是   | image下的非sendable的PixelMap。 |
+| pixelmap | [image.PixelMap](arkts-apis-image-PixelMap.md) | 是   | image下的非sendable的PixelMap。 |
 
 **返回值：**
 | 类型                             | 说明                  |
@@ -259,7 +270,7 @@ convertFromPixelMap(pixelMap: image.PixelMap): PixelMap
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+|  401    | If the image parameter invalid. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 62980104 | Failed to initialize the internal object.|
 
 **示例：**
@@ -279,22 +290,24 @@ async function Demo() {
 
 ## sendableImage.convertToPixelMap
 
-convertToPixelMap(pixelMap: PixelMap): image.PixelMap
+convertToPixelMap(pixelmap: PixelMap): image.PixelMap
 
 通过sendableImage下的PixelMap创建出一个image下的PixelMap，同步返回PixelMap结果。原PixelMap的方法均不可再调用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名  | 类型                                             | 必填 | 说明                                                             |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| pixelMap | [PixelMap](#pixelmap) | 是   | sendableImage下的PixelMap。 |
+| pixelmap | [PixelMap](#pixelmap) | 是   | sendableImage下的PixelMap。 |
 
 **返回值：**
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 成功同步返回image下的非sendable的PixelMap对象，失败抛出异常。 |
+| [image.PixelMap](arkts-apis-image-PixelMap.md) | 成功同步返回image下的非sendable的PixelMap对象，失败抛出异常。 |
 
 **错误码：**
 
@@ -302,7 +315,7 @@ convertToPixelMap(pixelMap: PixelMap): image.PixelMap
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+|  401    | If the image parameter invalid. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
 | 62980104 | Failed to initialize the internal object.|
 
 **示例：**
@@ -320,6 +333,20 @@ async function Demo() {
 }
 ```
 
+## ISendable
+
+type ISendable = lang.ISendable
+
+ISendable是所有Sendable类型（除null和undefined）的父类型。自身没有任何必须的方法和属性。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+| 类型                | 说明                     |
+| ------------------ | ------------------------ |
+| [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#langisendable)  | 所有Sendable类型的父类型。               |
+
 ## PixelMap
 
 图像像素类，用于读取或写入图像数据以及获取图像信息。在调用PixelMap的方法前，需要先通过[createPixelMap](#sendableimagecreatepixelmap)创建一个PixelMap实例。目前pixelmap序列化大小最大128MB，超过会送显失败。大小计算方式为(宽\*高\*每像素占用字节数)。
@@ -331,6 +358,8 @@ sendableImage下的PixelMap支持sendable属性，支持worker线程共享。sen
 ### 属性
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 | 名称              | 类型    | 只读 | 可选 | 说明                       |
 | -----------------| ------- | ---- | ---- | -------------------------- |
@@ -346,6 +375,8 @@ readPixelsToBuffer(dst: ArrayBuffer): Promise\<void>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -387,6 +418,8 @@ readPixelsToBufferSync(dst: ArrayBuffer): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
@@ -424,6 +457,8 @@ readPixels(area: image.PositionArea): Promise\<void>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -470,6 +505,8 @@ readPixelsSync(area: image.PositionArea): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型                           | 必填 | 说明                     |
@@ -513,6 +550,8 @@ writePixels(area: image.PositionArea): Promise\<void>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -563,6 +602,8 @@ writePixelsSync(area: image.PositionArea): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型                           | 必填 | 说明                 |
@@ -611,6 +652,8 @@ writeBufferToPixels(src: ArrayBuffer): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明           |
@@ -654,6 +697,8 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明           |
@@ -696,11 +741,13 @@ getImageInfo(): Promise\<image.ImageInfo>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型                              | 说明                                                        |
 | --------------------------------- | ----------------------------------------------------------- |
-| Promise\<[ImageInfo](arkts-apis-image-i.md#imageinfo)> | Promise实例，用于异步获取图像像素信息，失败时返回错误信息。 |
+| Promise\<[image.ImageInfo](arkts-apis-image-i.md#imageinfo)> | Promise实例，用于异步获取图像像素信息，失败时返回错误信息。 |
 
 **示例：**
 
@@ -731,11 +778,13 @@ getImageInfoSync(): image.ImageInfo
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型                              | 说明                                                        |
 | --------------------------------- | ----------------------------------------------------------- |
-| [ImageInfo](arkts-apis-image-i.md#imageinfo)           | 图像像素信息。                                                |
+| [image.ImageInfo](arkts-apis-image-i.md#imageinfo)           | 图像像素信息。                                                |
 
 **错误码：**
 
@@ -768,6 +817,8 @@ getBytesNumberPerRow(): number
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型   | 说明                 |
@@ -789,6 +840,8 @@ getPixelBytesNumber(): number
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
@@ -812,6 +865,8 @@ getDensity():number
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型   | 说明            |
@@ -833,6 +888,8 @@ opacity(rate: number): Promise\<void>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -873,6 +930,8 @@ opacitySync(rate: number): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                           |
@@ -911,6 +970,8 @@ createAlphaPixelmap(): Promise\<PixelMap>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型                             | 说明                        |
@@ -943,6 +1004,8 @@ createAlphaPixelmapSync(): PixelMap
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型                             | 说明                  |
@@ -955,7 +1018,7 @@ createAlphaPixelmapSync(): PixelMap
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  401    | Parameter error. Possible causes: 1.Parameter verification failed. |
 |  501    | Resource Unavailable. |
 
 **示例：**
@@ -979,6 +1042,8 @@ scale(x: number, y: number): Promise\<void>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1022,6 +1087,8 @@ scaleSync(x: number, y: number): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                            |
@@ -1061,6 +1128,8 @@ translate(x: number, y: number): Promise\<void>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1103,6 +1172,8 @@ translateSync(x: number, y: number): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                            |
@@ -1143,6 +1214,8 @@ rotate(angle: number): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                          |
@@ -1182,6 +1255,8 @@ rotateSync(angle: number): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                          |
@@ -1219,6 +1294,8 @@ flip(horizontal: boolean, vertical: boolean): Promise\<void>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1262,6 +1339,8 @@ flipSync(horizontal: boolean, vertical: boolean): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名     | 类型                 | 必填 | 说明                          |
@@ -1302,11 +1381,13 @@ crop(region: image.Region): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型               | 必填 | 说明        |
 | ------ | ------------------ | ---- | ----------- |
-| region | [Region](../apis-image-kit/arkts-apis-image-i.md#region8) | 是   | 裁剪的尺寸。|
+| region | [image.Region](../apis-image-kit/arkts-apis-image-i.md#region8) | 是   | 裁剪的尺寸。|
 
 **返回值：**
 
@@ -1343,11 +1424,13 @@ cropSync(region: image.Region): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | -------------------- | ---- | ----------------------------- |
-| region   | [Region](../apis-image-kit/arkts-apis-image-i.md#region8)   | 是   | 裁剪的尺寸。                  |
+| region   | [image.Region](../apis-image-kit/arkts-apis-image-i.md#region8)   | 是   | 裁剪的尺寸。                  |
 
 **错误码：**
 
@@ -1379,6 +1462,8 @@ getColorSpace(): colorSpaceManager.ColorSpaceManager
 获取图像广色域信息。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
@@ -1413,6 +1498,8 @@ setColorSpace(colorSpace: colorSpaceManager.ColorSpaceManager): void
 设置图像广色域信息。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1449,6 +1536,8 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\
 根据输入的目标色彩空间对图像像素颜色进行色彩空间转换，使用Promise形式返回。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1498,6 +1587,8 @@ marshalling(sequence: rpc.MessageSequence): void
 将PixelMap序列化后写入MessageSequence。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1579,6 +1670,8 @@ unmarshalling(sequence: rpc.MessageSequence): Promise\<PixelMap>
 如需使用同步方式创建PixelMap可使用：[createPixelMapFromParcel](#sendableimagecreatepixelmapfromparcel)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1670,6 +1763,8 @@ release():Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型           | 说明                            |
@@ -1703,6 +1798,8 @@ async function Demo() {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 | 名称   | 类型   | 只读 | 可选 | 说明           |
 | ------ | ------ | ---- | ---- | -------------- |
 | height | number | 否   | 否   | 输出图片的高，单位：像素。 |
@@ -1718,6 +1815,8 @@ async function Demo() {
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 | 名称 | 类型          | 只读 | 可选 | 说明         |
 | ---- | ------------- | ---- | ---- | ------------ |
@@ -1735,6 +1834,8 @@ createImageSource(uri: string): ImageSource
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1769,6 +1870,8 @@ createImageSource(fd: number): ImageSource
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1808,6 +1911,8 @@ createImageSource(buf: ArrayBuffer): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明             |
@@ -1836,6 +1941,8 @@ createImageReceiver(size: image.Size, format: image.ImageFormat, capacity: numbe
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                   |
@@ -1856,7 +1963,7 @@ createImageReceiver(size: image.Size, format: image.ImageFormat, capacity: numbe
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  401    | The parameter check failed. |
 
 **示例：**
 
@@ -1886,6 +1993,8 @@ createPixelMap(options?: image.DecodingOptions): Promise\<PixelMap>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1925,6 +2034,8 @@ release(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型           | 说明                        |
@@ -1957,6 +2068,8 @@ sendableImageSourceApi.release().then(() => {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 | 名称     | 类型               | 只读 | 可选 | 说明                                               |
 | -------- | ------------------ | ---- | ---- | -------------------------------------------------- |
 | clipRect | [Region](#region) | 否   | 否   | 要裁剪的图像区域。                                 |
@@ -1971,6 +2084,8 @@ getComponent(componentType: image.ComponentType): Promise\<image.Component>
 根据图像的组件类型从图像中获取组件缓存并使用Promise方式返回结果。getComponent是线程不安全的。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -2013,8 +2128,9 @@ release(): Promise\<void>
 
 在接收另一个图像前必须先释放对应资源。release是线程不安全的。
 
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
@@ -2053,6 +2169,8 @@ async function Demo() {
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
+**ArkTS-Dyn起始版本：** 12
+
 | 名称     | 类型                         | 只读 | 可选 | 说明               |
 | -------- | ---------------------------- | ---- | ---- | ------------------ |
 | size     | [image.Size](./arkts-apis-image-i.md#size)                | 是   | 否   | 图片大小。         |
@@ -2066,6 +2184,8 @@ getReceivingSurfaceId(): Promise\<string>
 用于获取一个surface id供Camera或其他组件使用。使用promise返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
@@ -2101,6 +2221,8 @@ readLatestImage(): Promise\<Image>
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型                      | 说明               |
@@ -2135,6 +2257,8 @@ readNextImage(): Promise\<Image>
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型                      | 说明                 |
@@ -2167,6 +2291,8 @@ on(type: 'imageArrival', callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                                                   |
@@ -2197,6 +2323,8 @@ release(): Promise\<void>
 释放ImageReceiver实例并使用promise返回结果。release是线程不安全的。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 

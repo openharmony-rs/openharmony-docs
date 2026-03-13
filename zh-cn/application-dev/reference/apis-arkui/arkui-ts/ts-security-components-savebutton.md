@@ -28,13 +28,15 @@ SaveButton()
 
 为避免控件样式不合法导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[SaveButton](#savebutton-3)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 ### SaveButton
 
@@ -44,11 +46,35 @@ SaveButton(options: SaveButtonOptions)
 
 为避免控件样式不合法导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[SaveButton](#savebutton-3)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| options | [SaveButtonOptions](#savebuttonoptions) | 是 | 创建包含指定元素的保存控件。<br/>默认值：<br/>{<br/>icon: SaveIconStyle.FULL_FILLED,<br/>text: SaveDescription.DOWNLOAD,<br/>buttonType: ButtonType.Capsule <br/>} |
+
+### SaveButton
+
+SaveButton(options?: SaveButtonOptions)
+
+创建保存控件。
+
+为避免因控件样式不合法而导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[SaveButton](#savebutton-1)和[SaveButton](#savebutton-2)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Sta起始版本：** 23
 
@@ -56,7 +82,7 @@ SaveButton(options: SaveButtonOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [SaveButtonOptions](#savebuttonoptions) | 是 | 创建包含指定元素的保存控件。 |
+| options | [SaveButtonOptions](#savebuttonoptions) | 否 | 无options参数时，创建带有默认图标、文本、背景的保存控件。有options参数时，创建包含指定元素的保存控件。<br/>默认值：<br/>{<br/>icon: SaveIconStyle.FULL_FILLED,<br/>text: SaveDescription.DOWNLOAD,<br/>buttonType: ButtonType.Capsule <br/>} |
 
 ## SaveButtonOptions
 

@@ -2639,15 +2639,11 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称        | 值   | 说明       |
 | ----------- | ---- | ---------- |
-| PIN<sup>10+</sup>         | 1    | 口令认证。 |
-| FACE        | 2    | 人脸认证。 |
-| FINGERPRINT | 4    | 指纹认证。 |
+| PIN<sup>10+</sup>         | 1    | 口令认证。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
+| FACE        | 2    | 人脸认证。<br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23 |
+| FINGERPRINT | 4    | 指纹认证。<br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## AuthTrustLevel<sup>8+</sup>
 

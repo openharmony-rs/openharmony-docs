@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 从API version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 
 ## 导入模块
@@ -18,8 +20,11 @@ import { uiAppearance } from '@kit.ArkUI';
 
 深色模式枚举。
 
-
 **系统能力：** SystemCapability.ArkUI.UiAppearance
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -- | -- | -- |
@@ -37,6 +42,12 @@ getDarkMode(): DarkMode
 >
 > 在API version 19及之前版本中，该接口为系统接口。开发者使用该接口时需要申请ohos.permission.UPDATE_CONFIGURATION权限。
 <!--DelEnd-->
+
+**系统能力：** SystemCapability.ArkUI.UiAppearance
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：** 
 
@@ -70,7 +81,9 @@ try {
 
 ## uiAppearance.getFontScale
 
-getFontScale(): number
+ArkTS-Dyn: getFontScale(): number
+
+ArkTS-Sta: getFontScale(): double
 
 获取系统当前的字体大小缩放比例。
 
@@ -80,11 +93,17 @@ getFontScale(): number
 > 在API version 19及之前版本中，该接口为系统接口。开发者使用该接口时需要申请ohos.permission.UPDATE_CONFIGURATION权限。
 <!--DelEnd-->
 
+**系统能力：** SystemCapability.ArkUI.Ui.UiAppearance
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：** 
 
 | 类型 | 说明 |
 | -- | -- |
-| number | 系统当前的字体大小缩放比例。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 系统当前的字体大小缩放比例。 |
 
 **错误码：**
 
@@ -112,7 +131,9 @@ try {
 
 ## uiAppearance.getFontWeightScale
 
-getFontWeightScale(): number
+ArkTS-Dyn: getFontWeightScale(): number
+
+ArkTS-Sta: getFontWeightScale(): double
 
 获取系统当前的字体粗细缩放比例。
 
@@ -122,11 +143,17 @@ getFontWeightScale(): number
 > 在API version 19及之前版本中，该接口为系统接口。开发者使用该接口时需要申请ohos.permission.UPDATE_CONFIGURATION权限。
 <!--DelEnd-->
 
+**系统能力：** SystemCapability.ArkUI.UiAppearance
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：** 
 
 | 类型 | 说明 |
 | -- | -- |
-| number | 系统当前的字体粗细缩放比例。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 系统当前的字体粗细缩放比例。 |
 
 **错误码：**
 

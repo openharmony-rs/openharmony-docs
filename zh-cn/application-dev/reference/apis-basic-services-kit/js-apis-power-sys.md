@@ -309,7 +309,8 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
 
 ## power.setScreenOffTime<sup>12+</sup>
 
-ArkTS-Dyn: setScreenOffTime(timeout: number): void  
+ArkTS-Dyn: setScreenOffTime(timeout: number): void
+
 ArkTS-Sta: setScreenOffTime(timeout: long): void
 
 设置熄屏超时时间。

@@ -24,7 +24,7 @@ ArkTS-Sta: rotate(value: RotateOptions | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -102,7 +102,7 @@ ArkTS-Sta: translate(value: TranslateOptions | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -156,7 +156,7 @@ ArkTS-Sta: scale(value: ScaleOptions | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -208,7 +208,7 @@ ArkTS-Sta: transform(value: Matrix4Transit | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -236,7 +236,7 @@ transform(transform: Optional\<object>): T
 
 | 参数名 | 类型                                    | 必填 | 说明                     |
 | ------ | --------------------------------------- | ---- | ------------------------ |
-| transform | Optional\<object> |  | 设置当前组件的变换矩阵。object当前仅支持[Matrix4Transit](../js-apis-matrix4.md)矩阵对象类型。<br/>当transform的值为undefined时，恢复为单位矩阵的效果。 |
+| transform | Optional\<object> | 是 | 设置当前组件的变换矩阵。object当前仅支持[Matrix4Transit](../js-apis-matrix4.md)矩阵对象类型。<br/>当transform的值为undefined时，恢复为单位矩阵的效果。 |
 
 **返回值：**
 
@@ -246,7 +246,9 @@ transform(transform: Optional\<object>): T
 
 ## transform3D<sup>20+</sup>
 
-transform3D(transform: Optional\<Matrix4Transit>): T
+ArkTS-Dyn: transform3D(transform: Optional\<Matrix4Transit>): T
+
+ArkTS-Sta: transform3D(transform: Matrix4Transit | undefined): this
 
 设置组件的三维变换矩阵。当涉及包含透视效果的三维变换时，transform接口显示效果可能有误，推荐使用transform3D接口。
 
@@ -254,11 +256,15 @@ transform3D(transform: Optional\<Matrix4Transit>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名    | 类型                                               | 必填 | 说明                                                         |
 | --------- | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| transform | Optional\<[Matrix4Transit](#matrix4transit20)> | 是   | 三维变换矩阵。<br/>当transform的值为undefined时，恢复为单位矩阵的效果。 |
+| transform | ArkTS-Dyn: Optional\<[Matrix4Transit](#matrix4transit20)><br/>ArkTS-Sta: Matrix4Transit \| undefined| 是   | 三维变换矩阵。<br/>当transform的值为undefined时，恢复为单位矩阵的效果。 |
 
 **返回值：**
 
@@ -274,6 +280,10 @@ type Matrix4Transit = Matrix4Transit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                              | 说明           |
 | --------------------------------- | -------------- |
 | [Matrix4Transit](../js-apis-matrix4.md#matrix4transit)     | 单位矩阵对象。 |
@@ -286,16 +296,17 @@ type Matrix4Transit = Matrix4Transit
 
 | 名称                      | 类型                       | 必填 | 说明                                                         |
 | ------------------------- | -------------------------- | ---- | ------------------------------------------------------------ |
-| x                         | number                     | 否   | 旋转轴向量x坐标。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
-| y                         | number                     | 否   | 旋转轴向量y坐标。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
-| z                         | number                     | 否   | 旋转轴向量z坐标。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
-| angle                     | number&nbsp;\|&nbsp;string | 是   | 旋转角度。取值为正时相对于旋转轴方向顺时针转动，取值为负时相对于旋转轴方向逆时针转动。取值可为string类型，如'90deg'。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| centerX                   | number&nbsp;\|&nbsp;string | 否   | 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| centerY                   | number&nbsp;\|&nbsp;string | 否   | 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| centerZ<sup>10+</sup>     | number                     | 否   | z轴锚点，即3D旋转中心点的z轴分量。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
-| perspective<sup>10+</sup> | number                     | 否   | 视距，即视点到z=0平面的距离。<br/>旋转轴和旋转中心点都基于坐标系设定，组件发生位移时，坐标系不会随之移动。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| x                         | ArkTS-Dyn: number<br/>ArkTS-Sta: double         | 否   | 旋转轴向量x坐标。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23|
+| y                         | ArkTS-Dyn: number<br/>ArkTS-Sta: double           | 否   | 旋转轴向量y坐标。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23|
+| z                         | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 旋转轴向量z坐标。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23|
+| angle                     | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 是   | 旋转角度。取值为正时相对于旋转轴方向顺时针转动，取值为负时相对于旋转轴方向逆时针转动。取值可为string类型，如'90deg'。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
+| centerX                   | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 否   | 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
+| centerY                   | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string| 否   | 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
+| centerZ<sup>10+</sup>     | ArkTS-Dyn: number<br/>ArkTS-Sta: double                   | 否   | z轴锚点，即3D旋转中心点的z轴分量。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23 |
+| perspective<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                | 否   | 视距，即视点到z=0平面的距离。<br/>旋转轴和旋转中心点都基于坐标系设定，组件发生位移时，坐标系不会随之移动。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 <br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23|
 
 ## RotateAngleOptions<sup>20+</sup>对象说明
+
 指定各轴旋转角的旋转参数选项。
 
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
@@ -304,15 +315,19 @@ type Matrix4Transit = Matrix4Transit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                      | 类型                       | 必填 | 说明                                                         |
 | ------------------------- | -------------------------- | ---- | ------------------------------------------------------------ |
-| angleX                    | number&nbsp;\|&nbsp;string | 否   | X轴方向上的旋转角。取值为正时相对于旋转轴方向顺时针转动，取值为负时逆时针转动。取值可为string类型，如'90deg'。<br/>默认值：0<br/>取值范围：(-∞, +∞) |
-| angleY                    | number&nbsp;\|&nbsp;string | 否   | Y轴方向上的旋转角。取值为正时相对于旋转轴方向顺时针转动，取值为负时逆时针转动。取值可为string类型，如'90deg'。<br/>默认值：0<br/>取值范围：(-∞, +∞) |
-| angleZ                    | number&nbsp;\|&nbsp;string | 否   | Z轴方向上的旋转角。取值为正时相对于旋转轴方向顺时针转动，取值为负时逆时针转动。取值可为string类型，如'90deg'。<br/>默认值：0<br/>取值范围：(-∞, +∞) |
-| centerX                   | number&nbsp;\|&nbsp;string | 否   | 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。<br/>单位：vp<br/>默认值：'50%'<br/>取值范围：(-∞, +∞) |
-| centerY                   | number&nbsp;\|&nbsp;string | 否   | 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。<br/>单位：vp<br/>默认值：'50%'<br/>取值范围：(-∞, +∞) |
-| centerZ                   | number                     | 否   | z轴锚点，即3D旋转中心点的z轴分量。<br/>默认值：0<br/>取值范围：(-∞, +∞) |
-| perspective               | number                     | 否   | 视距，即视点到z=0平面的距离。<br/>旋转轴和旋转中心点都基于坐标系设定，组件发生位移时，坐标系不会随之移动。<br/>默认值：0<br/>取值范围：(-∞, +∞) |
+| angleX                    | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 否   | X轴方向上的旋转角。取值为正时相对于旋转轴方向顺时针转动，取值为负时逆时针转动。取值可为string类型，如'90deg'。<br/>默认值：0<br/>取值范围：(-∞, +∞) |
+| angleY                    | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 否   | Y轴方向上的旋转角。取值为正时相对于旋转轴方向顺时针转动，取值为负时逆时针转动。取值可为string类型，如'90deg'。<br/>默认值：0<br/>取值范围：(-∞, +∞) |
+| angleZ                    | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 否   | Z轴方向上的旋转角。取值为正时相对于旋转轴方向顺时针转动，取值为负时逆时针转动。取值可为string类型，如'90deg'。<br/>默认值：0<br/>取值范围：(-∞, +∞) |
+| centerX                   | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 否   | 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。<br/>单位：vp<br/>默认值：'50%'<br/>取值范围：(-∞, +∞) |
+| centerY                   | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 否   | 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。<br/>单位：vp<br/>默认值：'50%'<br/>取值范围：(-∞, +∞) |
+| centerZ                   | ArkTS-Dyn: number<br/>ArkTS-Sta: double                   | 否   | z轴锚点，即3D旋转中心点的z轴分量。<br/>默认值：0<br/>取值范围：(-∞, +∞) |
+| perspective               | ArkTS-Dyn: number<br/>ArkTS-Sta: double                  | 否   | 视距，即视点到z=0平面的距离。<br/>旋转轴和旋转中心点都基于坐标系设定，组件发生位移时，坐标系不会随之移动。<br/>默认值：0<br/>取值范围：(-∞, +∞) |
 
 ## TranslateOptions对象说明
 
@@ -322,11 +337,15 @@ type Matrix4Transit = Matrix4Transit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型                       | 必填 | 说明            |
 | ---- | -------------------------- | ---- | --------------- |
-| x    | number&nbsp;\|&nbsp;string | 否   | x轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
-| y    | number&nbsp;\|&nbsp;string | 否   | y轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
-| z    | number&nbsp;\|&nbsp;string | 否   | z轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
+| x    | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 否   | x轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
+| y    | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 否   | y轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
+| z    | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 否   | z轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
 
 ## ScaleOptions对象说明
 
@@ -336,13 +355,17 @@ type Matrix4Transit = Matrix4Transit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 类型                       | 必填 | 说明                                                         |
 | ------- | -------------------------- | ---- | ------------------------------------------------------------ |
-| x       | number                     | 否   | x轴的缩放倍数。x>1时以x轴方向放大，0<x<1时以x轴方向缩小，x<0时沿x轴反向并缩放。 |
-| y       | number                     | 否   | y轴的缩放倍数。y>1时以y轴方向放大，0<y<1时以y轴方向缩小，y<0时沿y轴反向并缩放。 |
-| z       | number                     | 否   | z轴的缩放倍数。z>1时以z轴方向放大，0<z<1时以z轴方向缩小，z<0时沿z轴反向并缩放。 |
-| centerX | number&nbsp;\|&nbsp;string | 否   | 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。<br/>单位：vp |
-| centerY | number&nbsp;\|&nbsp;string | 否   | 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。<br/>单位：vp |
+| x       |ArkTS-Dyn: number<br/>ArkTS-Sta: double                | 否   | x轴的缩放倍数。x>1时以x轴方向放大，0<x<1时以x轴方向缩小，x<0时沿x轴反向并缩放。 |
+| y       | ArkTS-Dyn: number<br/>ArkTS-Sta: double                  | 否   | y轴的缩放倍数。y>1时以y轴方向放大，0<y<1时以y轴方向缩小，y<0时沿y轴反向并缩放。 |
+| z       | ArkTS-Dyn: number<br/>ArkTS-Sta: double                   | 否   | z轴的缩放倍数。z>1时以z轴方向放大，0<z<1时以z轴方向缩小，z<0时沿z轴反向并缩放。 |
+| centerX | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 否   | 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。<br/>单位：vp |
+| centerY | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 否   | 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。<br/>单位：vp |
 
 > **说明：**
 >

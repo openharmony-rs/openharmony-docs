@@ -47,9 +47,11 @@ import { distributedKVStore } from '@kit.ArkData';
 
 分布式键值数据库常量。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 | 名称                  | 类型   | 只读 | 可选 | 说明                                                       |
 | --------------------- | ------ | ---- | ---- | ---------------------------------------------------------- |
@@ -60,6 +62,27 @@ import { distributedKVStore } from '@kit.ArkData';
 | MAX_QUERY_LENGTH      | number | 是   | 否   | 值为512000，表示最大查询长度，单位字节。                   |
 | MAX_BATCH_SIZE        | number | 是   | 否   | 值为128，表示最大批处理操作数量。                          |
 
+## Constants
+
+分布式键值数据库常量。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                  | 值  | 说明                                                       |
+| --------------------- | ---- | ---------------------------------------------------------- |
+| MAX_BATCH_SIZE        |  128  | 值为128，表示最大批处理操作数量。                          |
+| MAX_STORE_ID_LENGTH   |  128  | 值为128，表示数据库标识符允许的最大长度，单位字节。        |
+| MAX_KEY_LENGTH_DEVICE |  896  | 值为896，表示设备协同数据库中Key允许的最大长度，单位字节。 |
+| MAX_KEY_LENGTH        |  1024 | 值为1024，表示数据库中Key允许的最大长度，单位字节。        |
+| MAX_QUERY_LENGTH      |  512000  | 值为512000，表示最大查询长度，单位字节。                   |
+| MAX_VALUE_LENGTH      |  4194303  | 值为4194303，表示数据库中Value允许的最大长度，单位字节。   |
+
 ## ValueType
 
 数据类型枚举。
@@ -68,18 +91,15 @@ import { distributedKVStore } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称       | 值 | 说明                 |
 | ---------- | - | -------------------- |
-| STRING     | 0 | 表示值类型为字符串。   |
-| INTEGER    | 1 | 表示值类型为整数。     |
-| FLOAT      | 2 | 表示值类型为浮点数。   |
-| BYTE_ARRAY | 3 | 表示值类型为字节数组。 |
-| BOOLEAN    | 4 | 表示值类型为布尔值。   |
-| DOUBLE     | 5 | 表示值类型为双浮点数。 |
+| STRING     | 0 | 表示值类型为字符串。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
+| INTEGER    | 1 | 表示值类型为整数。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 9|
+| FLOAT      | 2 | 表示值类型为浮点数。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 9|
+| BYTE_ARRAY | 3 | 表示值类型为字节数组。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
+| BOOLEAN    | 4 | 表示值类型为布尔值。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
+| DOUBLE     | 5 | 表示值类型为双浮点数。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
+| LONG<sup>23+</sup>| 6 | 表示值类型为长整数。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23|
 
 ## Value
 
@@ -2696,6 +2716,10 @@ isNull(field: string): Query
 构造一个Query对象以查询具有值为null的指定字段的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 > **说明：**
 >
@@ -8192,7 +8216,7 @@ class KvstoreModel {
 
 ### offSyncComplete<sup>23+</sup>
 
-offSyncComplete(syncCallback?: Callback&lt;Array&lt;[string, number]&gt;&gt;): void
+offSyncComplete(syncCallback?: Callback&lt;Array&lt;[string, int]&gt;&gt;): void
 
 取消订阅端端同步完成事件回调通知。
 
@@ -8208,7 +8232,7 @@ offSyncComplete(syncCallback?: Callback&lt;Array&lt;[string, number]&gt;&gt;): v
 
 | 参数名       | 类型                                      | 必填 | 说明                                                       |
 | ------------ | --------------------------------------------- | ---- | ---------------------------------------------------------- |
-| syncCallback | Callback&lt;Array&lt;[string, number]&gt;&gt; | 否   | 取消订阅的同步完成回调函数。如果该参数不填，则取消所有已订阅的同步完成回调函数。如果存在同一个数据库的多个ArkTS实例(通过[getKVStore](#getkvstore)接口获取)分别注册监听了同步完成事件，则对于任意一个ArkTS实例取消其所有已订阅的同步完成回调函数时，其余ArkTS实例已订阅的所有同步完成回调函数也会被取消。  |
+| syncCallback | Callback&lt;Array&lt;[string, int]&gt;&gt; | 否   | 取消订阅的同步完成回调函数。如果该参数不填，则取消所有已订阅的同步完成回调函数。如果存在同一个数据库的多个ArkTS实例(通过[getKVStore](#getkvstore)接口获取)分别注册监听了同步完成事件，则对于任意一个ArkTS实例取消其所有已订阅的同步完成回调函数时，其余ArkTS实例已订阅的所有同步完成回调函数也会被取消。  |
 
 **示例：**
 
