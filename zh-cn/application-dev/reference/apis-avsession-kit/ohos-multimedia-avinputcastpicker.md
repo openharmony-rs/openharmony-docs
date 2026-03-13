@@ -21,10 +21,22 @@ import { AVInputCastPicker } from '@kit.AVSessionKit';
 
 ## AVInputCastPicker
 
+ArkTS-Dyn:
+
 ```
 AVInputCastPicker({
   customPicker?: CustomBuilder;
   onStateChange?: (state: AVCastPickerState) => void;
+})
+```
+
+ArkTS-Sta:
+
+```
+AVInputCastPicker({
+  customPicker?: CustomBuilder;
+  onStateChange?: (state: AVCastPickerState) => void;
+  build(): void;
 })
 ```
 
@@ -40,14 +52,18 @@ AVInputCastPicker({
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | @Prop | 自定义样式。建议应用自定义组件样式，可有效提升组件显示速度。 |
+| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @BuilderParam| 自定义样式。建议应用自定义组件样式，可有效提升组件显示速度。 |
 | onStateChange |[OnPickerStateCallback](#onpickerstatecallback) | 否 | - | 设备列表状态变更回调。<br>state：设备列表状态变更回调函数参数。 |
+| build<sup>23+</sup> |void | 是 | @Builder | 构建组件的方法。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23 |
 
 ## OnPickerStateCallback
+
 type OnPickerStateCallback = (state: AVCastPickerState) => void
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。

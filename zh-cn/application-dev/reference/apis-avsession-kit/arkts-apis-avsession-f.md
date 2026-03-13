@@ -261,6 +261,43 @@ getAVSession(context: Context): Promise\<AVSession>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession;
+            let context: Context = this.getUIContext().getHostContext() as Context;
+            let sessionId: string;  // 供后续函数入参使用。
+            let sessionTag: string;
+
+            avSession.getAVSession(context).then(async (data: avSession.AVSession) => {
+              currentAVSession = data;
+              sessionId = currentAVSession.sessionId;
+              sessionTag = currentAVSession.sessionTag;
+              console.info(`GetAVSession : SUCCESS : sessionId=${sessionId}, sessionTag=${sessionTag}`);
+            }).catch((err: BusinessError) => {
+              console.error(`GetAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
@@ -327,6 +364,8 @@ getAllSessionDescriptors(): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
@@ -356,6 +395,38 @@ struct Index {
   }
 }
 
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
+              console.info(`getAllSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
+              if (descriptors.length > 0 ) {
+                console.info(`getAllSessionDescriptors : SUCCESS : descriptors[0].isActive : ${descriptors[0].isActive}`);
+                console.info(`GetAllSessionDescriptors : SUCCESS : descriptors[0].type : ${descriptors[0].type}`);
+                console.info(`GetAllSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`);
+              }
+            }).catch((err: BusinessError) => {
+              console.error(`GetAllSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## avSession.createController<sup>23+</sup>
@@ -397,6 +468,42 @@ createController(sessionId: string): Promise\<AVSessionController>
 | 6600102  | The session does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
+              console.info(`getAllSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
+              if (descriptors.length > 0 ) {
+                avSession.createController(descriptors[0]?.sessionId).then((avcontroller: avSession.AVSessionController) => {
+                  console.info('CreateController : SUCCESS ');
+                }).catch((err: BusinessError) => {
+                  console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
+                });
+              }
+            }).catch((err: BusinessError) => {
+              console.error(`GetAllSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -461,6 +568,8 @@ onSessionCreate(callback: Callback\<AVSessionDescriptor>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { avSession } from '@kit.AVSessionKit';
 @Entry
@@ -484,6 +593,32 @@ struct Index {
   }
 }
 
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.onSessionCreate((descriptor: avSession.AVSessionDescriptor) => {
+              console.info(`on sessionCreate : isActive : ${descriptor.isActive}`);
+              console.info(`on sessionCreate : type : ${descriptor.type}`);
+              console.info(`on sessionCreate : sessionTag : ${descriptor.sessionTag}`);
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## avSession.onSessionDestroy<sup>23+</sup>
@@ -516,6 +651,32 @@ onSessionDestroy(callback: Callback\<AVSessionDescriptor>): void
 | 6600101  | Session service exception. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.onSessionDestroy((descriptor: avSession.AVSessionDescriptor) => {
+              console.info(`on sessionDestroy : ${descriptor.sessionId}`);
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
@@ -569,6 +730,34 @@ onTopSessionChange(callback: Callback\<AVSessionDescriptor>): void
 | 6600101  | Session service exception. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.onTopSessionChange((descriptor: avSession.AVSessionDescriptor) => {
+              console.info(`on topSessionChange : isActive : ${descriptor.isActive}`);
+              console.info(`on topSessionChange : type : ${descriptor.type}`);
+              console.info(`on topSessionChange : sessionTag : ${descriptor.sessionTag}`);
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
@@ -625,6 +814,32 @@ offSessionCreate(callback?: Callback\<AVSessionDescriptor>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.onSessionCreate((descriptor: avSession.AVSessionDescriptor) => {
+            });
+            avSession.offSessionCreate();
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
 ```ts
 import { avSession } from '@kit.AVSessionKit';
 @Entry
@@ -677,6 +892,32 @@ offSessionDestroy(callback?: Callback\<AVSessionDescriptor>): void
 | 6600101  | Session service exception. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.onSessionDestroy((descriptor: avSession.AVSessionDescriptor) => {
+            });
+            avSession.offSessionDestroy();
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
@@ -731,6 +972,8 @@ offTopSessionChange(callback?: Callback\<AVSessionDescriptor>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { avSession } from '@kit.AVSessionKit';
 @Entry
@@ -751,4 +994,84 @@ struct Index {
     .height('100%')
   }
 }
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.offTopSessionChange((descriptor: avSession.AVSessionDescriptor) => {
+            });
+            avSession.offTopSessionChange();
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## avSession.isDesktopLyricSupported<sup>23+</sup>
+
+isDesktopLyricSupported(): Promise\<boolean>
+
+设备是否支持桌面歌词功能。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型                       | 说明                               |
+|----------------------------|-----------------------------------|
+| Promise\<boolean> | Promise对象。返回true表示设备支持桌面歌词功能；返回false表示设备不支持桌面歌词功能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID   | 错误信息                                             |
+|---------|--------------------------------------------------------|
+| 6600101 | Session service exception.                             |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+
+avSession.isDesktopLyricSupported().then((isSupported: boolean) => {
+  console.info(`isDesktopLyricSupported : SUCCESS : isSupported : ${isSupported}`);
+}).catch((err: BusinessError) => {
+  console.error(`isDesktopLyricSupported BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+
+avSession.isDesktopLyricSupported().then((isSupported: boolean) => {
+  console.info(`isDesktopLyricSupported : SUCCESS : isSupported : ${isSupported}`);
+}).catch((err: BusinessError) => {
+  console.error(`isDesktopLyricSupported BusinessError: code: ${err.code}, message: ${err.message}`);
+});
 ```

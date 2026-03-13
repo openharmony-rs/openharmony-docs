@@ -52,6 +52,7 @@ AVCastPicker({
 | sessionType<sup>12+</sup> | string | 否| ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef | 会话类型，可参考[AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)。默认值为当前应用创建的AVSessionType。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | customPicker<sup>12+</sup> | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @BuilderParam | 自定义样式。建议应用自定义组件样式，可有效提升组件显示速度。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | onStateChange<sup>11+</sup> | ArkTS-Dyn: (state: [AVCastPickerState](js-apis-avCastPickerParam.md)) => void<br>ArkTS-Sta: OnPickerStateCallback | 否 | - | 投播状态更改回调。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| build<sup>23+</sup> |void | 是 | @Builder | 构建组件的方法。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23 |
 
 ## 事件
 
@@ -103,3 +104,21 @@ struct Index {
   }
 }
 ```
+
+## OnPickerStateCallback<sup>23+</sup>
+
+type OnPickerStateCallback = (state: AVCastPickerState) => void
+
+投播组件状态变化的回调函数类型。
+
+**ArkTS模式：** 该类型仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                      |
+| ------ | ------ | ---- | ----------------------------------------- |
+| state     | [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate10)  | 是   | 投播组件状态。 |
