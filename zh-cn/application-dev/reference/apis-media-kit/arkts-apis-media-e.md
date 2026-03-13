@@ -97,9 +97,9 @@ Codec MIME类型枚举。
 
 | 名称         | 值                    | 说明                        |
 | ------------ | --------------------- | --------------------------- |
-| AAC_LC       |     0                 | 表示 AAC Low-Complexity 类型。        |
-| AAC_HE       |     1                 | 表示 AAC High-Efficiency 类型。        |
-| AAC_HE_V2    |     2                 | 表示 AAC High-Efficiency version 2 类型。     |
+| AAC_LC       |     0                 | 表示AAC Low-Complexity类型。        |
+| AAC_HE       |     1                 | 表示AAC High-Efficiency类型。        |
+| AAC_HE_V2    |     2                 | 表示AAC High-Efficiency version 2类型。     |
 
 ## MediaDescriptionKey<sup>8+</sup>
 
