@@ -22,11 +22,11 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 蓝牙设备的Profile协议连接状态。Profile协议包括A2DP（Advanced Audio Distribution Profile）、HFP（Hands-Free Profile）和HID（Human Interface Device）等。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
@@ -39,11 +39,11 @@ type ProfileId = constant.ProfileId
 
 枚举，蓝牙Profile协议。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
@@ -56,11 +56,11 @@ type ProfileUuids = constant.ProfileUuids
 
 蓝牙Profile协议的UUID。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
@@ -73,11 +73,11 @@ type MajorClass = constant.MajorClass
 
 蓝牙设备的主要类型。蓝牙标准协议字段。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
@@ -90,15 +90,32 @@ type MajorMinorClass = constant.MajorMinorClass
 
 蓝牙设备的子类型，在[MajorClass](js-apis-bluetooth-constant.md#majorclass)基础上进一步细分的类型。蓝牙标准协议字段。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
 | [constant.MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass) | 蓝牙设备的子类型。 |
+
+
+## BluetoothAddress<sup>21+</sup>
+
+type BluetoothAddress = common.BluetoothAddress
+
+描述蓝牙设备地址信息的参数结构，包括地址与地址类型。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                  | 说明                  |
+| ------------------- | ------------------- |
+| [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 蓝牙设备的地址信息。 |
 
 
 ## connection.pairDevice
@@ -108,15 +125,15 @@ pairDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 主动发起与对端蓝牙设备的配对流程。使用Callback异步回调。
 - 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -125,7 +142,7 @@ pairDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 | deviceId | string | 是    | 需要配对的对端蓝牙设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | callback | AsyncCallback&lt;void&gt;  | 是    | 回调函数。当配对成功，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -161,15 +178,15 @@ pairDevice(deviceId: string): Promise&lt;void&gt;
 主动发起与对端蓝牙设备的配对流程。使用Promise异步回调。
 - 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -183,7 +200,7 @@ pairDevice(deviceId: string): Promise&lt;void&gt;
 | ------------------- | ------------- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -214,17 +231,81 @@ try {
 ```
 
 
+## connection.pairDevice<sup>21+</sup>
+
+pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
+
+主动发起与对端蓝牙设备的配对流程。使用Promise异步回调。
+- 若开发者已知目标设备的MAC地址及[地址类型](js-apis-bluetooth-common.md#bluetoothaddresstype)，建议调用此接口发起配对。
+- 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
+
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型     | 必填   | 说明                                  |
+| -------- | ------ | ---- | ----------------------------------- |
+| deviceId | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 是    | 需要配对的对端蓝牙设备地址信息，包括地址与地址类型。 |
+
+**返回值：**
+
+| 类型                  | 说明            |
+| ------------------- | ------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.ConnectivityKit';
+// promise
+try {
+    let btAddr: common.BluetoothAddress = {
+        "address": '11:22:33:44:55:66', // 目标设备的实际MAC地址或虚拟MAC地址
+        "addressType": common.BluetoothAddressType.REAL, // 相应的地址类型
+    }
+    connection.pairDevice(btAddr).then(() => {
+        console.info('pairDevice');
+    }, (error: BusinessError) => {
+        console.error('errCode: ' + error.code + ', errMessage' + error.message);
+    });
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
 ## connection.getRemoteDeviceName
 
 getRemoteDeviceName(deviceId: string): string
 
 获取对端蓝牙设备的名称。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -240,7 +321,7 @@ getRemoteDeviceName(deviceId: string): string
 | ------ | ------------- |
 | string | 以字符串格式返回设备名称。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -271,15 +352,15 @@ getRemoteDeviceName(deviceId: string, alias?: boolean): string
 
 获取对端蓝牙设备的名称，其中alias为可选参数。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 16开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 16开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -294,7 +375,7 @@ getRemoteDeviceName(deviceId: string, alias?: boolean): string
 | ------ | ------------- |
 | string | 以字符串格式返回设备名称。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -325,11 +406,11 @@ getRemoteDeviceClass(deviceId: string): DeviceClass
 
 获取对端蓝牙设备的类别。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -343,7 +424,7 @@ getRemoteDeviceClass(deviceId: string): DeviceClass
 | --------------------------- | -------- |
 | [DeviceClass](#deviceclass) | 对端设备的类别。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -367,6 +448,55 @@ try {
 ```
 
 
+## connection.getRemoteDeviceTransport<sup>20+</sup>
+
+getRemoteDeviceTransport(deviceId: string): BluetoothTransport
+
+获取对端蓝牙设备的传输类型。
+
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取设备的传输类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**参数：**
+
+| 参数名      | 类型     | 必填   | 说明                                |
+| -------- | ------ | ---- | --------------------------------- |
+| deviceId | string | 是    | 表示对端设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+
+**返回值：**
+
+| 类型                          | 说明       |
+| --------------------------- | -------- |
+| [BluetoothTransport](#bluetoothtransport) | 对端设备的传输类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Get transport failed.                        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let transport: connection.BluetoothTransport = connection.getRemoteDeviceTransport('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
 ## connection.getRemoteProfileUuids<sup>12+</sup>
 
 getRemoteProfileUuids(deviceId: string, callback: AsyncCallback&lt;Array&lt;ProfileUuids&gt;&gt;): void
@@ -374,13 +504,13 @@ getRemoteProfileUuids(deviceId: string, callback: AsyncCallback&lt;Array&lt;Prof
 获取对端蓝牙设备的Profile协议能力，通过UUID区分。使用Callback异步回调。
 - 建议仅对已配对的设备调用该方法。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -389,7 +519,7 @@ getRemoteProfileUuids(deviceId: string, callback: AsyncCallback&lt;Array&lt;Prof
 | deviceId | string | 是    | 表示对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | callback | AsyncCallback&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | 是    | 回调函数。当获取UUID成功，err为undefined，获取到的是Profile协议能力集合；否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -424,13 +554,13 @@ getRemoteProfileUuids(deviceId: string): Promise&lt;Array&lt;ProfileUuids&gt;&gt
 获取对端蓝牙设备的Profile协议能力，通过UUID区分。使用Promise异步回调。
 - 建议仅对已配对的设备调用该方法。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -444,7 +574,7 @@ getRemoteProfileUuids(deviceId: string): Promise&lt;Array&lt;ProfileUuids&gt;&gt
 | ------------------- | ------------- |
 |   Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | Promise对象，返回支持的Profile协议能力集合。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -479,13 +609,13 @@ getLocalName(): string
 
 获取本机蓝牙设备的名称。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -493,7 +623,7 @@ getLocalName(): string
 | ------ | --------- |
 | string | 本机蓝牙设备名称。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -522,15 +652,15 @@ getPairedDevices(): Array&lt;string&gt;
 
 获取已配对蓝牙设备的地址集合。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -538,7 +668,7 @@ getPairedDevices(): Array&lt;string&gt;
 | ------------------- | ------------- |
 | Array&lt;string&gt; | 已配对蓝牙设备的地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 已配对的地址不会变更。<br>- 若取消配对该设备或蓝牙关闭后，再次重新获取，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 | 
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -568,15 +698,15 @@ getPairState(deviceId: string): BondState
 
 获取对端蓝牙设备的配对状态信息。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -590,7 +720,7 @@ getPairState(deviceId: string): BondState
 | --------------------------- | -------- |
 | [BondState](#bondstate) | 表示设备的蓝牙配对状态。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -622,13 +752,13 @@ getProfileConnectionState(profileId?: ProfileId): ProfileConnectionState
 
 获取蓝牙Profile协议的连接状态，其中ProfileId为可选参数。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -642,7 +772,7 @@ getProfileConnectionState(profileId?: ProfileId): ProfileConnectionState
 | ------------------------------------------------- | ------------------- |
 | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | Profile协议的连接状态。 | 
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -676,13 +806,14 @@ setDevicePairingConfirmation(deviceId: string, accept: boolean): void
 收到对端蓝牙设备的配对请求事件后，确认请求结果。
 - 对端蓝牙的配对请求通过[on('pinRequired')](#connectiononpinrequired)的回调结果获取。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH（该权限仅系统应用可申请）
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH（该权限仅系统应用可申请）
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
+
 
 **参数：**
 
@@ -691,7 +822,7 @@ setDevicePairingConfirmation(deviceId: string, accept: boolean): void
 | deviceId | string | 是 | 表示对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 | 
 | accept   | boolean | 是    | 是否接受对端设备的配对请求。true表示接受，false表示不接受。       |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -727,13 +858,13 @@ setDevicePinCode(deviceId: string, code: string, callback: AsyncCallback&lt;void
 
 蓝牙配对时，弹框提示用户输入个人身份识别码（Personal identification number，PIN），调用此接口设置PIN码，完成蓝牙配对。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -743,7 +874,7 @@ setDevicePinCode(deviceId: string, code: string, callback: AsyncCallback&lt;void
 | code   | string  | 是    | 用户输入的PIN码，该字符串的字符个数范围为(0, 16]，例如："12345"。        |
 | callback   | AsyncCallback&lt;void&gt;  | 是    | 回调函数，当设置PinCode成功，err为undefined，否则为错误对象。        |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -777,13 +908,13 @@ setDevicePinCode(deviceId: string, code: string): Promise&lt;void&gt;
 
 蓝牙配对时，弹框提示用户输入PIN码，调用此接口请求用户输入PIN码，完成蓝牙配对。使用Promise异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -798,7 +929,7 @@ setDevicePinCode(deviceId: string, code: string): Promise&lt;void&gt;
 | ------------------- | ------------- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -838,9 +969,9 @@ setLocalName(name: string): void
 > **说明：**<br/>
 > 从API version 10开始支持，从API version 12开始废弃，不再提供替代接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -848,7 +979,7 @@ setLocalName(name: string): void
 | ---- | ------ | ---- | --------------------- |
 | name | string | 是    | 需要设置的蓝牙名称，名称长度范围：(0, 248]，单位：Byte。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -881,13 +1012,13 @@ ArkTS-Sta: setBluetoothScanMode(mode: ScanMode, duration: int): void
 
 设置蓝牙扫描模式，决定本机设备是否可被连接，或者可被发现。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -896,7 +1027,7 @@ ArkTS-Sta: setBluetoothScanMode(mode: ScanMode, duration: int): void
 | mode     | [ScanMode](#scanmode) | 是    | 蓝牙扫描模式。当扫描模式为SCAN_MODE_GENERAL_DISCOVERABLE时，超出duration持续时间(不为0)，扫描模式会重新设置为SCAN_MODE_CONNECTABLE。               |
 | duration | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是    | 设备可被发现的持续时间，单位：ms。设置为0则表示持续可发现。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -943,13 +1074,13 @@ getBluetoothScanMode(): ScanMode
 
 获取蓝牙扫描模式。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -957,7 +1088,7 @@ getBluetoothScanMode(): ScanMode
 | --------------------- | ------- |
 | [ScanMode](#scanmode) | 蓝牙扫描模式。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -990,17 +1121,17 @@ startBluetoothDiscovery(): void
 - 扫描结果可通过API version 10开始支持的[connection.on('bluetoothDeviceFind')](#connectiononbluetoothdevicefind)或者API version 18开始支持的[connection.on('discoveryResult')](#connectionondiscoveryresult18)的回调函数获取到。推荐使用[connection.on('discoveryResult')](#connectionondiscoveryresult18)，该方式可以获取到更多设备信息。<br>
 - 调用[stopBluetoothDiscovery](#connectionstopbluetoothdiscovery)可以停止该方法开启的扫描流程。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1036,17 +1167,17 @@ stopBluetoothDiscovery(): void
 - 关闭的扫描是由[connection.startBluetoothDiscovery](#connectionstartbluetoothdiscovery)触发的。<br>
 - 当应用不再需要扫描设备时，需主动调用该方法关闭扫描。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1076,13 +1207,13 @@ isBluetoothDiscovering(): boolean
 
 判断本机蓝牙设备是否处于设备扫描状态。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1090,7 +1221,7 @@ isBluetoothDiscovering(): boolean
 | ------------------- | ------------- |
 |   boolean           | 是否开启蓝牙发现。true表示正在发起设备扫描，false表示未发起设备扫描。  |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1122,15 +1253,15 @@ setRemoteDeviceName(deviceId: string, name: string): Promise&lt;void&gt;
 设置对端蓝牙设备的名称，不能设置为空字符串。如果设为空字符串会失败。使用Promise异步回调。
 - 建议仅对已配对的设备调用该方法。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1145,7 +1276,7 @@ setRemoteDeviceName(deviceId: string, name: string): Promise&lt;void&gt;
 | ------------------- | ------------- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1181,13 +1312,13 @@ getRemoteDeviceBatteryInfo(deviceId: string): Promise&lt;BatteryInfo&gt;
 获取对端蓝牙设备的电量信息。使用Promise异步回调。
 - 对端蓝牙设备的电量信息变更通过[on('batteryChange')](#connectiononbatterychange12)的回调结果获取。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1201,7 +1332,7 @@ getRemoteDeviceBatteryInfo(deviceId: string): Promise&lt;BatteryInfo&gt;
 | ------------------- | ------------- |
 | Promise&lt;[BatteryInfo](#batteryinfo12)&gt; | Promise对象，返回电量信息对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1233,13 +1364,13 @@ on(type: 'batteryChange', callback: Callback&lt;BatteryInfo&gt;): void
 
 订阅对端设备的电量信息变化事件。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onBatteryChange](#connectiononbatterychange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onBatteryChange](#connectiononbatterychange22)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -1250,7 +1381,7 @@ on(type: 'batteryChange', callback: Callback&lt;BatteryInfo&gt;): void
 | type     | string                              | 是    | 事件回调类型，支持的事件为'batteryChange'，表示对端设备的电量信息变化事件。当该设备通知电量变化时，会触发该事件。 |
 | callback | Callback&lt;[BatteryInfo](#batteryinfo12)&gt; | 是    | 指定订阅的回调函数，返回电量信息。    |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1274,21 +1405,21 @@ try {
 ```
 
 
-## connection.onBatteryChange<sup>22+</sup>
+## connection.onBatteryChange<sup>23+</sup>
 
 onBatteryChange(callback: Callback&lt;BatteryInfo&gt;): void
 
 订阅对端设备的电量信息变化事件。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('batteryChange')](#connectiononbatterychange12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('batteryChange')](#connectiononbatterychange12)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1296,7 +1427,7 @@ onBatteryChange(callback: Callback&lt;BatteryInfo&gt;): void
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | callback | Callback&lt;[BatteryInfo](#batteryinfo12)&gt; | 是    | 指定订阅的回调函数，返回电量信息。    |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1327,13 +1458,13 @@ off(type: 'batteryChange', callback?: Callback&lt;BatteryInfo&gt;): void
 
 取消订阅对端设备的电量信息变化事件。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offBatteryChange](#connectionoffbatterychange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offBatteryChange](#connectionoffbatterychange22)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -1344,7 +1475,7 @@ off(type: 'batteryChange', callback?: Callback&lt;BatteryInfo&gt;): void
 | type     | string                              | 是    | 事件回调类型，支持的事件为'batteryChange'，表示对端设备的电量信息变化事件。   |
 | callback | Callback&lt;[BatteryInfo](#batteryinfo12)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.on('batteryChange')](#connectiononbatterychange12)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1369,21 +1500,21 @@ try {
 ```
 
 
-## connection.offBatteryChange<sup>22+</sup>
+## connection.offBatteryChange<sup>23+</sup>
 
 offBatteryChange(callback?: Callback&lt;BatteryInfo&gt;): void
 
 取消订阅对端设备的电量信息变化事件。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('batteryChange')](#connectionoffbatterychange12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('batteryChange')](#connectionoffbatterychange12)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1391,7 +1522,7 @@ offBatteryChange(callback?: Callback&lt;BatteryInfo&gt;): void
 | -------- | ----------------------------------- | ---- | ---------------------------------------- |
 | callback | Callback&lt;[BatteryInfo](#batteryinfo12)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.on('batteryChange')](#connectiononbatterychange12)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1426,15 +1557,15 @@ on(type: 'bluetoothDeviceFind', callback: Callback&lt;Array&lt;string&gt;&gt;): 
 - 该上报方式只支持获取设备地址信息。<br>
 - 推荐使用API version 18开始支持的[connection.on('discoveryResult')](#connectionondiscoveryresult18)扫描上报方式，可获取到更多设备信息，包括设备地址、设备信号强度、设备名称和设备类型。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onBluetoothDeviceFind](#connectiononbluetoothdevicefind22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onBluetoothDeviceFind](#connectiononbluetoothdevicefind22)。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1445,7 +1576,7 @@ on(type: 'bluetoothDeviceFind', callback: Callback&lt;Array&lt;string&gt;&gt;): 
 | type     | string                              | 是    | 事件回调类型，支持的事件为'bluetoothDeviceFind'，表示蓝牙设备扫描结果上报事件。当调用[connection.startBluetoothDiscovery](#connectionstartbluetoothdiscovery)后，开始设备扫描，若扫描到设备，触发该事件。 |
 | callback | Callback&lt;Array&lt;string&gt;&gt; | 是    | 指定订阅的回调函数，会携带扫描到的设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若取消配对该设备或蓝牙关闭后，再次重新发起扫描，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。    |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1471,7 +1602,7 @@ try {
 ```
 
 
-## connection.onBluetoothDeviceFind<sup>22+</sup>
+## connection.onBluetoothDeviceFind<sup>23+</sup>
 
 onBluetoothDeviceFind(callback: Callback&lt;Array&lt;string&gt;&gt;): void
 
@@ -1480,15 +1611,15 @@ onBluetoothDeviceFind(callback: Callback&lt;Array&lt;string&gt;&gt;): void
 - 该上报方式只支持获取设备地址信息。<br>
 - 推荐使用API version 18开始支持的[connection.on('discoveryResult')](#connectionondiscoveryresult18)扫描上报方式，可获取到更多设备信息，包括设备地址、设备信号强度、设备名称和设备类型。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('bluetoothDeviceFind')](#connectiononbluetoothdevicefind)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('bluetoothDeviceFind')](#connectiononbluetoothdevicefind)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1496,7 +1627,7 @@ onBluetoothDeviceFind(callback: Callback&lt;Array&lt;string&gt;&gt;): void
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | callback | Callback&lt;Array&lt;string&gt;&gt; | 是    | 指定订阅的回调函数，会携带扫描到的设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若取消配对该设备或蓝牙关闭后，再次重新发起扫描，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。    |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1528,15 +1659,15 @@ off(type: 'bluetoothDeviceFind', callback?: Callback&lt;Array&lt;string&gt;&gt;)
 
 取消订阅蓝牙设备扫描结果上报事件。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offBluetoothDeviceFind](#connectionoffbluetoothdevicefind22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offBluetoothDeviceFind](#connectionoffbluetoothdevicefind22)。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1547,7 +1678,7 @@ off(type: 'bluetoothDeviceFind', callback?: Callback&lt;Array&lt;string&gt;&gt;)
 | type     | string                              | 是    | 事件回调类型，支持的事件为'bluetoothDeviceFind'，表示蓝牙设备扫描结果上报事件。   |
 | callback | Callback&lt;Array&lt;string&gt;&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.on('bluetoothDeviceFind')](#connectiononbluetoothdevicefind)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1573,21 +1704,21 @@ try {
 ```
 
 
-## connection.offBluetoothDeviceFind<sup>22+</sup>
+## connection.offBluetoothDeviceFind<sup>23+</sup>
 
 offBluetoothDeviceFind(callback?: Callback&lt;Array&lt;string&gt;&gt;): void
 
 取消订阅蓝牙设备扫描结果上报事件。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('bluetoothDeviceFind')](#connectionoffbluetoothdevicefind)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('bluetoothDeviceFind')](#connectionoffbluetoothdevicefind)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1595,7 +1726,7 @@ offBluetoothDeviceFind(callback?: Callback&lt;Array&lt;string&gt;&gt;): void
 | -------- | ----------------------------------- | ---- | ---------------------------------------- |
 | callback | Callback&lt;Array&lt;string&gt;&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.on('bluetoothDeviceFind')](#connectiononbluetoothdevicefind)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1628,13 +1759,13 @@ on(type: 'bondStateChange', callback: Callback&lt;BondStateParam&gt;): void
 
 订阅蓝牙配对状态变化事件。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onBondStateChange](#connectiononbondstatechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onBondStateChange](#connectiononbondstatechange22)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1645,7 +1776,7 @@ on(type: 'bondStateChange', callback: Callback&lt;BondStateParam&gt;): void
 | type     | string                                   | 是    | 事件回调类型，支持的事件为'bondStateChange'，表示蓝牙配对状态变化事件。<br>当调用[connection.pairDevice](#connectionpairdevice)发起主动配对，或者本机设备收到其他设备的配对请求时，触发该事件。 |
 | callback | Callback&lt;[BondStateParam](#bondstateparam)&gt; | 是    | 指定订阅的回调函数，会携带配对状态结果。    |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1671,21 +1802,21 @@ try {
 ```
 
 
-## connection.onBondStateChange<sup>22+</sup>
+## connection.onBondStateChange<sup>23+</sup>
 
 onBondStateChange(callback: Callback&lt;BondStateParam&gt;): void
 
 订阅蓝牙配对状态变化事件。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('bondStateChange')](#connectiononbondstatechange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('bondStateChange')](#connectiononbondstatechange)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1693,7 +1824,7 @@ onBondStateChange(callback: Callback&lt;BondStateParam&gt;): void
 | -------- | ---------------------------------------- | ---- | ------------------------------------ |
 | callback | Callback&lt;[BondStateParam](#bondstateparam)&gt; | 是    | 指定订阅的回调函数，会携带配对状态结果。    |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1725,13 +1856,13 @@ off(type: 'bondStateChange', callback?: Callback&lt;BondStateParam&gt;): void
 
 取消订阅蓝牙配对状态变化事件。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offBondStateChange](#connectionoffbondstatechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offBondStateChange](#connectionoffbondstatechange22)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1742,7 +1873,7 @@ off(type: 'bondStateChange', callback?: Callback&lt;BondStateParam&gt;): void
 | type     | string                                   | 是    | 事件回调类型，支持的事件为'bondStateChange'，表示蓝牙配对状态变化事件。     |
 | callback | Callback&lt;[BondStateParam](#bondstateparam)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.on('bondStateChange')](#connectiononbondstatechange)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1769,21 +1900,21 @@ try {
 ```
 
 
-## connection.offBondStateChange<sup>22+</sup>
+## connection.offBondStateChange<sup>23+</sup>
 
 offBondStateChange(callback?: Callback&lt;BondStateParam&gt;): void
 
 取消订阅蓝牙配对状态变化事件。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('bondStateChange')](#connectionoffbondstatechange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('bondStateChange')](#connectionoffbondstatechange)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1791,7 +1922,7 @@ offBondStateChange(callback?: Callback&lt;BondStateParam&gt;): void
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | callback | Callback&lt;[BondStateParam](#bondstateparam)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.on('bondStateChange')](#connectiononbondstatechange)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1824,13 +1955,13 @@ on(type: 'pinRequired', callback: Callback&lt;PinRequiredParam&gt;): void
 
 订阅配对请求事件。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onPinRequired](#connectiononpinrequired22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPinRequired](#connectiononpinrequired22)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1841,7 +1972,7 @@ on(type: 'pinRequired', callback: Callback&lt;PinRequiredParam&gt;): void
 | type     | string                                   | 是    | 事件回调类型，支持的事件为'pinRequired'，表示配对请求事件。<br>当调用[connection.pairDevice](#connectionpairdevice)发起主动配对，或者本机设备收到其他设备的配对请求时，触发该事件。     |
 | callback | Callback&lt;[PinRequiredParam](#pinrequiredparam)&gt; | 是    | 指定订阅的回调函数，会携带配对请求。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1867,21 +1998,21 @@ try {
 ```
 
 
-## connection.onPinRequired<sup>22+</sup>
+## connection.onPinRequired<sup>23+</sup>
 
 onPinRequired(callback: Callback&lt;PinRequiredParam&gt;): void
 
 订阅配对请求事件。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('pinRequired')](#connectiononpinrequired)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('pinRequired')](#connectiononpinrequired)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1889,7 +2020,7 @@ onPinRequired(callback: Callback&lt;PinRequiredParam&gt;): void
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
 | callback | Callback&lt;[PinRequiredParam](#pinrequiredparam)&gt; | 是    | 指定订阅的回调函数，会携带配对请求。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1921,13 +2052,13 @@ off(type: 'pinRequired', callback?: Callback&lt;PinRequiredParam&gt;): void
 
 取消订阅配对请求事件。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offPinRequired](#connectionoffpinrequired22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPinRequired](#connectionoffpinrequired22)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1938,7 +2069,7 @@ off(type: 'pinRequired', callback?: Callback&lt;PinRequiredParam&gt;): void
 | type     | string                                   | 是    | 事件回调类型，支持的事件为'pinRequired'，表示配对请求事件。             |
 | callback | Callback&lt;[PinRequiredParam](#pinrequiredparam)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.on('pinRequired')](#connectiononpinrequired)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1965,21 +2096,21 @@ try {
 ```
 
 
-## connection.offPinRequired<sup>22+</sup>
+## connection.offPinRequired<sup>23+</sup>
 
 offPinRequired(callback?: Callback&lt;PinRequiredParam&gt;): void
 
 取消订阅配对请求事件。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('pinRequired')](#connectionoffpinrequired)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('pinRequired')](#connectionoffpinrequired)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1987,7 +2118,7 @@ offPinRequired(callback?: Callback&lt;PinRequiredParam&gt;): void
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | callback | Callback&lt;[PinRequiredParam](#pinrequiredparam)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.on('pinRequired')](#connectiononpinrequired)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -2022,13 +2153,13 @@ on(type: 'discoveryResult', callback: Callback&lt;Array&lt;DiscoveryResult&gt;&g
 - 可扫描到的设备类型包括传统蓝牙设备和低功耗蓝牙设备。<br>
 - 该上报方式支持获取设备地址、设备信号强度、设备名称和设备类型。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onDiscoveryResult](#connectionondiscoveryresult22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDiscoveryResult](#connectionondiscoveryresult22)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -2039,7 +2170,7 @@ on(type: 'discoveryResult', callback: Callback&lt;Array&lt;DiscoveryResult&gt;&g
 | type     | string                              | 是    | 事件回调类型，支持的事件为'discoveryResult'，表示蓝牙设备扫描结果上报事件。当调用[connection.startBluetoothDiscovery](#connectionstartbluetoothdiscovery)后，开始设备扫描，若扫描到设备，触发该事件。 |
 | callback | Callback&lt;Array&lt;[DiscoveryResult](#discoveryresult18)&gt;&gt; | 是    | 指定订阅的回调函数，会携带扫描结果的集合。    |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -2065,7 +2196,7 @@ try {
 ```
 
 
-## connection.onDiscoveryResult<sup>22+</sup>
+## connection.onDiscoveryResult<sup>23+</sup>
 
 onDiscoveryResult(callback: Callback&lt;Array&lt;DiscoveryResult&gt;&gt;): void
 
@@ -2073,15 +2204,15 @@ onDiscoveryResult(callback: Callback&lt;Array&lt;DiscoveryResult&gt;&gt;): void
 - 可扫描到的设备类型包括传统蓝牙设备和低功耗蓝牙设备。<br>
 - 该上报方式支持获取设备地址、设备信号强度、设备名称和设备类型。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('discoveryResult')](#connectionondiscoveryresult18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('discoveryResult')](#connectionondiscoveryresult18)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2089,7 +2220,7 @@ onDiscoveryResult(callback: Callback&lt;Array&lt;DiscoveryResult&gt;&gt;): void
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | callback | Callback&lt;Array&lt;[DiscoveryResult](#discoveryresult18)&gt;&gt; | 是    | 指定订阅的回调函数，会携带扫描结果的集合。    |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -2121,13 +2252,13 @@ off(type: 'discoveryResult', callback?: Callback&lt;Array&lt;DiscoveryResult&gt;
 
 取消订阅蓝牙设备发现上报事件。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offDiscoveryResult](#connectionoffdiscoveryresult22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDiscoveryResult](#connectionoffdiscoveryresult22)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -2138,7 +2269,7 @@ off(type: 'discoveryResult', callback?: Callback&lt;Array&lt;DiscoveryResult&gt;
 | type     | string                              | 是    | 事件回调类型，支持的事件为'discoveryResult'，表示蓝牙设备扫描结果上报事件。   |
 | callback | Callback&lt;Array&lt;[DiscoveryResult](#discoveryresult18)&gt;&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.on('discoveryResult')](#connectionondiscoveryresult18)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -2164,21 +2295,21 @@ try {
 ```
 
 
-## connection.offDiscoveryResult<sup>22+</sup>
+## connection.offDiscoveryResult<sup>23+</sup>
 
 offDiscoveryResult(callback?: Callback&lt;Array&lt;DiscoveryResult&gt;&gt;): void
 
 取消订阅蓝牙设备发现上报事件。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('discoveryResult')](#connectionoffdiscoveryresult18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('discoveryResult')](#connectionoffdiscoveryresult18)。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2186,7 +2317,7 @@ offDiscoveryResult(callback?: Callback&lt;Array&lt;DiscoveryResult&gt;&gt;): voi
 | -------- | ----------------------------------- | ---- | ---------------------------------------- |
 | callback | Callback&lt;Array&lt;[DiscoveryResult](#discoveryresult18)&gt;&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.on('discoveryResult')](#connectionondiscoveryresult18)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -2213,6 +2344,94 @@ try {
 ```
 
 
+## connection.onScanModeChange<sup>23+</sup>
+
+onScanModeChange(callback: Callback&lt;ScanMode&gt;): void
+
+订阅蓝牙扫描模式变更事件。使用Callback异步回调。当调用[setBluetoothScanMode](#connectionsetbluetoothscanmode)更改当前蓝牙扫描模式后，如订阅此事件，则会收到携带最新扫描模式的回调函数。
+
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                               |
+| -------- | ---------------------------------------- | ---- | -------------------------------- |
+| callback | Callback&lt;[ScanMode](#scanmode)&gt; | 是    | 指定订阅的回调函数，会携带变更后最新的蓝牙扫描模式。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900099 | Operation failed.              |
+
+**示例：**
+
+```js
+function ScanModeChangeEvent(scanMode: connection.ScanMode) {
+    console.info(`Scan mode has changed, new mode: ${scanMode}`);
+}
+try {
+    connection.onScanModeChange(ScanModeChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+## connection.offScanModeChange<sup>23+</sup>
+
+offScanModeChange(callback?: Callback&lt;ScanMode&gt;): void
+
+取消订阅蓝牙扫描模式变更事件。
+
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;[ScanMode](#scanmode)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.onScanModeChange](#connectiononscanmodechange23)中的回调函数一致；若无传参，则取消订阅所有蓝牙扫描模式变更的回调函数通知。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+function ScanModeChangeEvent(scanMode: connection.ScanMode) {
+    console.info(`Scan mode has changed, new mode: ${scanMode}`);
+}
+try {
+    connection.offScanModeChange(ScanModeChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
 ## connection.getLastConnectionTime<sup>15+</sup>
 
 ArkTS-Dyn: getLastConnectionTime(deviceId: string): Promise&lt;number&gt;
@@ -2221,11 +2440,11 @@ ArkTS-Sta: getLastConnectionTime(deviceId: string): Promise&lt;long&gt;
 
 获取对端蓝牙设备最近一次连接的时间点。使用Promise异步回调。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2239,7 +2458,7 @@ ArkTS-Sta: getLastConnectionTime(deviceId: string): Promise&lt;long&gt;
 | ------------------- | ------------- |
 | ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回对端蓝牙设备最近一次连接的时间点。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -2289,13 +2508,13 @@ connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): v
 - 需先调用[connection.pairDevice](#connectionpairdevice)发起配对，且仅允许在每次发起配对后30s内调用此接口一次。
 - 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的profile能力。若存在应用需要的能力，才调用此接口。
 
-**需要权限：**: ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力：**: SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2343,13 +2562,13 @@ connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 - 需先调用[connection.pairDevice](#connectionpairdevice)发起配对，且仅允许在每次发起配对后30s内调用此接口一次。
 - 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的profile能力。若存在应用需要的能力，才调用此接口。
 
-**需要权限：**: ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力：**: SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2396,24 +2615,24 @@ try {
 
 描述配对状态结果的参数结构。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 | 名称       | 类型   | 只读 | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string      | 否    | 否    | 配对中的对端设备地址。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22 |
-| state    | [BondState](#bondstate)   | 否    | 否    | 配对状态。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22 |
-| cause<sup>12+</sup>| [UnbondCause](#unbondcause12) | 否 | 否 | 配对失败的原因。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| deviceId | string      | 否    | 否    | 配对中的对端设备地址。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| state    | [BondState](#bondstate)   | 否    | 否    | 配对状态。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| cause<sup>12+</sup>| [UnbondCause](#unbondcause12) | 否 | 否 | 配对失败的原因。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 
 ## PinRequiredParam
 
 描述配对请求的参数结构。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
@@ -2426,11 +2645,11 @@ try {
 
 描述蓝牙设备的类型。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型                                | 只读   | 可选   | 说明               |
 | --------------- | ----------------------------------- | ---- | ---- | ---------------- |
@@ -2443,11 +2662,11 @@ try {
 
 描述设备的电量信息。<br>只有支持蓝牙标准协议定义的电量信息AT（Attention）命令（包括：+XEVENT和IPHONEACCEV）的设备才支持上报有效的电量信息。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
@@ -2464,27 +2683,29 @@ try {
 
 枚举，表示设备传输类型。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                               | 值    | 说明              |
 | -------------------------------- | ------ | --------------- |
-| TRANSPORT_BR_EDR   | 0 | 传统蓝牙（Basic Rate/Enhanced Data Rate，BR/EDR）设备传输方式。若设备支持双模，默认使用该传输方式。 |
-| TRANSPORT_LE  | 1 | 低功耗蓝牙（Bluetooth Low Energy, BLE）设备传输方式。  |
+| TRANSPORT_BR_EDR   | 0 | 传统蓝牙（Basic Rate/Enhanced Data Rate，BR/EDR）设备传输方式。若设备支持双模，默认使用该传输方式。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| TRANSPORT_LE  | 1 | 低功耗蓝牙（Bluetooth Low Energy, BLE）设备传输方式。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23  |
+| TRANSPORT_DUAL<sup>20+</sup>  | 2 | 同时支持传统蓝牙（BR/EDR）和低功耗蓝牙（BLE）的双模设备传输方式。设备可以根据需要选择使用传统蓝牙（BR/EDR）或低功耗蓝牙（BLE）进行通信。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23  |
+| TRANSPORT_UNKNOWN<sup>20+</sup>  | 3 | 未知的设备传输方式。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23  |
 
 
 ## ScanMode
 
 枚举，表示扫描模式。该模式决定设备是否可被发现或可被连接。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                       | 值  | 说明              |
 | ---------------------------------------- | ---- | --------------- |
@@ -2500,13 +2721,13 @@ try {
 
 枚举，配对状态。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
@@ -2519,11 +2740,11 @@ try {
 
 枚举，配对失败原因。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
@@ -2538,11 +2759,11 @@ try {
 
 枚举，表示设备当前的充电状态。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
@@ -2555,11 +2776,11 @@ try {
 
 扫描到设备后，上报的扫描结果。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
