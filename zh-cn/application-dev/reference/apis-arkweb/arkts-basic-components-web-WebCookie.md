@@ -4,7 +4,7 @@
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块仅适用于ArkTS-Dyn。
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -24,8 +24,6 @@ WebCookie的构造函数。
 >
 > 从API version 8开始支持，从API version 23开始废弃。且不再提供新的接口作为替代。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。	 
-
 **ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -40,6 +38,8 @@ setCookie()
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[setCookie<sup>9+</sup>](./arkts-apis-webview-WebCookieManager.md#setcookiedeprecated)代替。
 
+**ArkTS-Dyn起始版本：** 8
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## saveCookie<sup>(deprecated)</sup>
@@ -51,5 +51,7 @@ saveCookie()
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[saveCookieAsync<sup>9+</sup>](./arkts-apis-webview-WebCookieManager.md#savecookieasync)代替。
+
+**ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
