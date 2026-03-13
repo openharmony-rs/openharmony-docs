@@ -494,7 +494,7 @@ for (let value of values) {
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS版本：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -526,7 +526,7 @@ $_iterator(): IterableIterator&lt;[string, string]&gt;
 
 **原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
-**ArkTS版本：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -619,7 +619,7 @@ type UrlCbFn = (value: string, key: string, searchParams: URLParams) => void
 | port | string | 否 | 否 | 获取和设置URL的端口部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
 | protocol | string | 否 | 否 | 获取和设置URL的协议部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
 | search | string | 否 | 否 | 获取和设置URL的序列化查询部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
-| searchParams<sup>(deprecated)</sup> | [URLSearchParams](#urlsearchparamsdeprecated) | 是 | 否 | 获取URLSearchParams表示URL查询参数的对象。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>- **说明：** 此属性从API version 7开始支持，从API version 9开始被废弃。建议使用params<sup>9+</sup>替代。 <br> **ArkTS-Dyn起始版本：** 7 |
+| searchParams<sup>(deprecated)</sup> | [URLSearchParams](#urlsearchparamsdeprecated) | 是 | 否 | 获取URLSearchParams表示URL查询参数的对象。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/> **说明：** 从API version 7开始支持，从API version 9开始废弃。建议使用params<sup>9+</sup>替代。 <br> **ArkTS-Dyn起始版本：** 7 |
 | params<sup>9+</sup> | [URLParams](#urlparams9) | 是 | 否 | 获取URLParams表示URL查询参数的对象。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
 | username | string | 否 | 否 | 获取和设置URL的用户名部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
 
