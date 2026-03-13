@@ -46,7 +46,7 @@ createVpnConnection(context: AbilityContext): VpnConnection
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息         |
 | --------- | ---------------- |
@@ -103,7 +103,7 @@ setUp(config: VpnConfig, callback: AsyncCallback\<number\>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                         |
 | --------- | ------------------------------------------------ |
@@ -179,7 +179,7 @@ setUp(config: VpnConfig): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                         |
 | --------- | ------------------------------------------------ |
@@ -251,7 +251,7 @@ protect(socketFd: number, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -332,7 +332,7 @@ protect(socketFd: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -409,7 +409,7 @@ destroy(callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -464,7 +464,7 @@ destroy(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |

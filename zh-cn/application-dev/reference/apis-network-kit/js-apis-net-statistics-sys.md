@@ -42,7 +42,7 @@ on(type: 'netStatsChange', callback: Callback\<NetStatsChangeInfo\>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -87,7 +87,7 @@ off(type: 'netStatsChange', callback?: Callback\<NetStatsChangeInfo>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -136,7 +136,7 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsIn
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -201,7 +201,7 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -262,7 +262,7 @@ getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback\<NetStatsInfo>): 
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -339,7 +339,7 @@ getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -399,7 +399,7 @@ getTrafficStatsByNetwork(networkInfo: NetworkInfo): Promise\<UidNetStatsInfo>
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -458,7 +458,7 @@ getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Promise\<Net
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -518,7 +518,7 @@ setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: numbe
 
 **错误码：**
 
-以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |

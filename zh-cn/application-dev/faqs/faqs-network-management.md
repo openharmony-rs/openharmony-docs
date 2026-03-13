@@ -184,14 +184,14 @@ netId的值如0、100分别代表什么含义？
 
 **解决措施**
 
-网络请求支持JS语言开发方式，可直接使用。具体使用参考如下文档：[网络连接](../reference/apis-network-kit/js-apis-http.md)
+网络请求支持JS语言开发方式，可直接使用。具体使用参考如下文档：[@ohos.net.http (数据请求)](../reference/apis-network-kit/js-apis-http.md)
 
 
 ## 基于JS开发智能手表应用，如何编写网络请求(API 9)
 
 **解决措施**
 
-网络请求支持JS语言开发方式，可直接使用。具体使用参考如下文档：[网络连接](../reference/apis-network-kit/js-apis-http.md)
+网络请求支持JS语言开发方式，可直接使用。具体使用参考如下文档：[@ohos.net.http (数据请求)](../reference/apis-network-kit/js-apis-http.md)
 
 
 ## 应用增加权限"ohos.permission.NOTIFICATION_CONTROLLER"，编译后无法启动(API 9)
