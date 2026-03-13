@@ -88,7 +88,7 @@
 
 5. Q: 调用JSVM-API时出现`JSVM Fatal Error Massage:(openHandleScopes)==(openHandleScopesBefore)`错误  
    
-   A: 调用JSVM-API时未遵循其使用规范正确管理HandleScopes生命周期，导致HandleScopes层数发生变化，调用结束后无法通过JSVM系统层检查，则返回该报错。需要检查是否在JSVM-API调用前后正确维护了HandleScopes层数，参考[JSVM-API使用规范](jsvm-guidelines.md)
+   A: 调用JSVM-API时未遵循其使用规范正确管理HandleScopes生命周期，导致HandleScopes层数发生变化，调用结束后无法通过JSVM系统层检查，则返回该报错，修改请参考[JSVM-API使用规范](jsvm-guidelines.md)。
 
 ## JSVM-API执行失败类
 
@@ -101,7 +101,7 @@
    A：`JSVM_PENDING_EXCEPTION`表明当前虚拟机环境中存在未处理的异常，可能是由于本次调用产生的`JS`异常，也可能是之前调用产生的未被清理的异常。可以通过在函数调用前插入`OH_JSVM_GetAndClearLastException`排查之前是否有未清除的异常。如果为之前的未清理异常，检查是否有JSVM接口调用未处理异常返回值；如果是本次产生的异常，需清理异常，避免影响后续的函数调用。获取并清理异常的函数为`OH_JSVM_GetAndClearLastException`
 
 3. Q：JS执行时无法找到 `OH_JSVM_DefineClass` 定义的类
-
+ 
    A：检查是否将定义的类绑定到上下文中，见[上下文绑定对象](jsvm-guidelines.md#上下文绑定对象)
 
 
