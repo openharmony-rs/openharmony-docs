@@ -20,6 +20,10 @@ WebKeyboardController的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ## insertText<sup>12+</sup>
 
 insertText(text: string): void
@@ -27,6 +31,10 @@ insertText(text: string): void
 Web输入框中插入字符。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -44,6 +52,10 @@ ArkTS-Sta: deleteForward(length: int): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                 |
@@ -59,6 +71,10 @@ ArkTS-Sta: deleteBackward(length: int): void
 从前往后删除Web输入框中指定长度的字符。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

@@ -142,6 +142,23 @@
 | FLOATING    | 4    | 表示APP自由悬浮形式窗口模式。   |
 | SPLIT_SCREEN  | 5    | 表示APP分屏模式。   |
 
+## PixelUnit<sup>22+</sup>
+
+像素单位枚举。
+
+物理像素单位和虚拟像素单位换算可使用[px2vp](./arkts-apis-uicontext-uicontext.md#px2vp12)和[vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称    | 值   | 说明   |
+| ------- | ---- | ----- |
+| PX | 0  | 物理像素单位（px）。  |
+| VP | 1  | 虚拟像素单位（vp）。  |
+
 ## MaximizePresentation<sup>12+</sup>
 
 窗口最大化时的布局枚举。
@@ -209,6 +226,10 @@
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
 | TOP_START  | 0    | 窗口左上角。|
@@ -237,6 +258,22 @@
 | ------ | ---- | --------------------- |
 | WINDOW_WILL_ROTATE| 0 | 窗口即将旋转。 |
 | WINDOW_DID_ROTATE | 1 | 窗口旋转结束。 |
+
+## RotationInfoType<sup>23+</sup>
+
+旋转信息类型枚举。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称       | 值     | 说明       |
+| ---------- | ------ | ---------- |
+| WINDOW_ORIENTATION  | 0      | 窗口所在屏幕的显示方向，以窗口模块对横竖屏的定义方式表示。<br>开发者在使用时，需要注意该方向表示[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)中的orientation参数。 |
+| DISPLAY_ORIENTATION | 1      | 屏幕显示方向，以屏幕模块对横竖屏的定义方式表示。<br>开发者在使用时，需要注意该方向表示[display](js-apis-display.md#display)对象的orientation属性。 |
+| DISPLAY_ROTATION    | 2      | 设备的屏幕顺时针旋转角度。<br>开发者在使用时，需要注意该方向表示[display](js-apis-display.md#display)对象的rotation属性。 |
 
 ## RectType<sup>19+</sup>
 

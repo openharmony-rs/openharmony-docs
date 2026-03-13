@@ -67,7 +67,7 @@ onAttachStateChange(callback: Callback\<AttachStateChangeInfo>): void
 
 **系统能力**：SystemCapability.Mechanic.Core
 
-**ArkTS-Dyn起始版本**: 23
+**ArkTS-Sta起始版本**: 23
 
 **参数：**
 
@@ -148,7 +148,7 @@ offAttachStateChange(callback?: Callback\<AttachStateChangeInfo>): void
 
 **系统能力**：SystemCapability.Mechanic.Core
 
-**ArkTS-Dyn起始版本**: 23
+**ArkTS-Sta起始版本**: 23
 
 **参数：**
 

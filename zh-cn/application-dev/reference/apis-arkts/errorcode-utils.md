@@ -158,6 +158,8 @@ Buffer长度要求为size的整数倍。其中size为16-bits、32-bits或者64-b
 
 The container is empty.
 
+**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。
+
 **错误描述**
 
 操作的容器为空。
@@ -175,6 +177,8 @@ The container is empty.
 **错误信息**
 
 The {methodName} method cannot be bound.
+
+**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。
 
 **错误描述**
 
@@ -554,6 +558,8 @@ Timeout exceeded.
 **错误信息**
 
 Concurrent modification error.
+
+**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。
 
 **错误描述**
 

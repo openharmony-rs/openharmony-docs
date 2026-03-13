@@ -910,9 +910,9 @@ if (matrix.getAll() != undefined) {
 
 ## postSkew<sup>20+</sup>
 
-ArkTS-Dyn: (kx: number, ky: number, px: number, py: number): void
+ArkTS-Dyn: postSkew(kx: number, ky: number, px: number, py: number): void
 
-ArkTS-Sta: (kx: double, ky: double, px: double, py: double): void
+ArkTS-Sta: postSkew(kx: double, ky: double, px: double, py: double): void
 
 当前矩阵右乘一个倾斜变换矩阵。
 

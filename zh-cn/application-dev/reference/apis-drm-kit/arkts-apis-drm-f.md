@@ -19,7 +19,7 @@ createMediaKeySystem(name: string): MediaKeySystem
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 

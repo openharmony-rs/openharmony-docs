@@ -16,11 +16,28 @@ InteropAbilityLifecycleCallback模块提供应用中不同ArkTS环境下的[UIAb
 import { InteropAbilityLifecycleCallback } from '@kit.AbilityKit';
 ```
 
-## InteropAbilityLifecycleCallback.onAbilityCreate
+## InteropAbilityLifecycleCallback
 
-ArkTS-Dyn: onAbilityCreate: (ability: any) => void
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-ArkTS-Sta: onAbilityCreate: (ability: Any) => void
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                 | 类型                                           | 只读 | 可选 | 说明                                                         |
+| -------------------- | ---------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| onAbilityCreate      | [AbilityCallbackFn](AbilityCallbackFn)         | 否   | 否   | 注册监听应用中不同ArkTS环境下UIAbility生命周期后，在UIAbility创建时触发回调。 |
+| onWindowStageCreate  | [WindowStageCallbackFn](WindowStageCallbackFn) | 否   | 否   | 注册监听应用中不同ArkTS环境下UIAbility生命周期后，在WindowStage创建时触发回调。 |
+| onWindowStageDestroy | [WindowStageCallbackFn](WindowStageCallbackFn) | 否   | 否   | 注册监听应用中不同ArkTS环境下UIAbility生命周期后，在WindowStage创建时触发回调。 |
+| onAbilityDestroy     | [AbilityCallbackFn](AbilityCallbackFn)         | 否   | 否   | 注册监听应用中不同ArkTS环境下UIAbility生命周期后，在UIAbility创建时触发回调。 |
+| onAbilityForeground  | [AbilityCallbackFn](AbilityCallbackFn)         | 否   | 否   | 注册监听应用中不同ArkTS环境下UIAbility生命周期后，在UIAbility创建时触发回调。 |
+| onAbilityBackground  | [AbilityCallbackFn](AbilityCallbackFn)         | 否   | 否   | 注册监听应用中不同ArkTS环境下UIAbility生命周期后，在UIAbility创建时触发回调。 |
+
+## AbilityCallbackFn
+
+ArkTS-Dyn: type AbilityCallbackFn = (ability: any) => void
+
+ArkTS-Sta: type AbilityCallbackFn = (ability: Any) => void
 
 注册监听应用中不同ArkTS环境下UIAbility生命周期后，在UIAbility创建时触发回调。
 
@@ -32,19 +49,19 @@ ArkTS-Sta: onAbilityCreate: (ability: Any) => void
 
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | ArkTS-Dyn: any<br/>ArkTS-Sta: Any | 是 | 触发回调的UIAbility对象。<br>**说明：** 在ArkTS-Dyn环境中触发回调时，ability为监听的ArkTS-Sta的UIAbility对象。在ArkTS-Sta环境中触发回调时，ability为监听的ArkTS-Dyn的UIAbility对象。|
+| 参数名  | 类型                              | 必填 | 说明                                                         |
+| ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
+| ability | ArkTS-Dyn: any<br/>ArkTS-Sta: Any | 是   | 触发回调的UIAbility对象。<br>**说明：** 在ArkTS-Dyn环境中触发回调时，ability为监听的ArkTS-Sta的UIAbility对象。在ArkTS-Sta环境中触发回调时，ability为监听的ArkTS-Dyn的UIAbility对象。 |
 
 **示例：**
 
 参见[InteropAbilityLifecycleCallback使用](#interopabilitylifecyclecallback使用)。
 
-## InteropAbilityLifecycleCallback.onWindowStageCreate
+## WindowStageCallbackFn
 
-ArkTS-Dyn: onWindowStageCreate: (ability: any, windowStage: window.WindowStage) => void
+ArkTS-Dyn: type WindowStageCallbackFn = (ability: any, windowStage: window.WindowStage) => void
 
-ArkTS-Sta: onWindowStageCreate: (ability: Any, windowStage: window.WindowStage) => void
+ArkTS-Sta: type WindowStageCallbackFn = (ability: Any, windowStage: window.WindowStage) => void
 
 注册监听应用中不同ArkTS环境下UIAbility生命周期后，在WindowStage创建时触发回调。
 
@@ -56,107 +73,10 @@ ArkTS-Sta: onWindowStageCreate: (ability: Any, windowStage: window.WindowStage) 
 
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | ArkTS-Dyn: any<br/>ArkTS-Sta: Any | 是 | 触发回调的UIAbility对象。<br>**说明：** 在ArkTS-Dyn环境中触发回调时，ability为监听的ArkTS-Sta的UIAbility对象。在ArkTS-Sta环境中触发回调时，ability为监听的ArkTS-Dyn的UIAbility对象。 |
-  | windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 传入的WindowStage对象。 |
-
-**示例：**
-
-参见[InteropAbilityLifecycleCallback使用](#interopabilitylifecyclecallback使用)。
-
-## InteropAbilityLifecycleCallback.onWindowStageDestroy
-
-ArkTS-Dyn: onWindowStageDestroy: (ability: any, windowStage: window.WindowStage) => void
-
-ArkTS-Sta: onWindowStageDestroy: (ability: Any, windowStage: window.WindowStage) => void
-
-注册监听应用中不同ArkTS环境下UIAbility生命周期后，在WindowStage销毁时触发回调。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | ArkTS-Dyn: any<br/>ArkTS-Sta: Any | 是 | 触发回调的UIAbility对象。<br>**说明：** 在ArkTS-Dyn环境中触发回调时，ability为监听的ArkTS-Sta的UIAbility对象。在ArkTS-Sta环境中触发回调时，ability为监听的ArkTS-Dyn的UIAbility对象。 |
-  | windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 传入的WindowStage对象。 |
-
-**示例：**
-
-参见[InteropAbilityLifecycleCallback使用](#interopabilitylifecyclecallback使用)。
-
-## InteropAbilityLifecycleCallback.onAbilityDestroy
-
-ArkTS-Dyn: onAbilityDestroy: (ability: any) => void
-
-ArkTS-Sta: onAbilityDestroy: (ability: Any) => void
-
-注册监听应用中不同ArkTS环境下UIAbility生命周期后，在UIAbility销毁时触发回调。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | ArkTS-Dyn: any<br/>ArkTS-Sta: Any | 是 | 触发回调的UIAbility对象。<br>**说明：** 在ArkTS-Dyn环境中触发回调时，ability为监听的ArkTS-Sta的UIAbility对象。在ArkTS-Sta环境中触发回调时，ability为监听的ArkTS-Dyn的UIAbility对象。 |
-
-**示例：**
-
-参见[InteropAbilityLifecycleCallback使用](#interopabilitylifecyclecallback使用)。
-
-## InteropAbilityLifecycleCallback.onAbilityForeground
-
-ArkTS-Dyn: onAbilityForeground: (ability: any) => void
-
-ArkTS-Sta: onAbilityForeground: (ability: Any) => void
-
-注册监听应用中不同ArkTS环境下UIAbility生命周期后，在UIAbility的状态从后台转到前台时触发回调。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | ArkTS-Dyn: any<br/>ArkTS-Sta: Any | 是 | 触发回调的UIAbility对象。<br>**说明：** 在ArkTS-Dyn环境中触发回调时，ability为监听的ArkTS-Sta的UIAbility对象。在ArkTS-Sta环境中触发回调时，ability为监听的ArkTS-Dyn的UIAbility对象。 |
-
-**示例：**
-
-参见[InteropAbilityLifecycleCallback使用](#interopabilitylifecyclecallback使用)。
-
-## InteropAbilityLifecycleCallback.onAbilityBackground
-
-ArkTS-Dyn: onAbilityBackground: (ability: any) => void
-
-ArkTS-Sta: onAbilityBackground: (ability: Any) => void
-
-注册监听应用中不同ArkTS环境下UIAbility生命周期后，在UIAbility的状态从前台转到后台时触发回调。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | ArkTS-Dyn: any<br/>ArkTS-Sta: Any | 是 | 触发回调的UIAbility对象。<br>**说明：** 在ArkTS-Dyn环境中触发回调时，ability为监听的ArkTS-Sta的UIAbility对象。在ArkTS-Sta环境中触发回调时，ability为监听的ArkTS-Dyn的UIAbility对象。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | ArkTS-Dyn: any<br/>ArkTS-Sta: Any | 是 | 触发回调的UIAbility对象。<br>**说明：** 在ArkTS-Dyn环境中触发回调时，ability为监听的ArkTS-Sta的UIAbility对象。在ArkTS-Sta环境中触发回调时，ability为监听的ArkTS-Dyn的UIAbility对象。 |
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 传入的WindowStage对象。 |
 
 **示例：**
 
@@ -167,37 +87,42 @@ ArkTS-Sta: onAbilityBackground: (ability: Any) => void
 **示例：**
 
 ArkTS-Sta示例：
-```ts
-'use static'
 
+```ts
 import { InteropAbilityLifecycleCallback, UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 声明UIAbility生命周期回调，需配置所有回调后才可以在ApplicationContext注册
 let interopAbilityLifecycleCallback: InteropAbilityLifecycleCallback = {
   onAbilityCreate: (ability: Any) => {
-    let abilityName: string = ESValue.wrap(ability).getProperty('context').getProperty('abilityInfo').getProperty('name');
+    let uiAblity: UIAbility = ability as UIAbility;
+    let abilityName: string = uiAblity.context.abilityInfo.name;;
     console.info(`InteropAbilityLifecycleCallback ${abilityName} onAbilityCreate.`);
   },
   onWindowStageCreate: (ability: Any, windowStage: window.WindowStage) => {
-    let abilityName: string = ESValue.wrap(ability).getProperty('context').getProperty('abilityInfo').getProperty('name');
+    let uiAblity: UIAbility = ability as UIAbility;
+    let abilityName: string = uiAblity.context.abilityInfo.name;;
     console.info(`InteropAbilityLifecycleCallback ${abilityName} onWindowStageCreate.`);
   },
   onWindowStageDestroy: (ability: Any, windowStage: window.WindowStage) => {
-    let abilityName: string = ESValue.wrap(ability).getProperty('context').getProperty('abilityInfo').getProperty('name');
+    let uiAblity: UIAbility = ability as UIAbility;
+    let abilityName: string = uiAblity.context.abilityInfo.name;;
     console.info(`InteropAbilityLifecycleCallback ${abilityName} onWindowStageDestroy.`);
   },
   onAbilityDestroy: (ability: Any) => {
-    let abilityName: string = ESValue.wrap(ability).getProperty('context').getProperty('abilityInfo').getProperty('name');
+    let uiAblity: UIAbility = ability as UIAbility;
+    let abilityName: string = uiAblity.context.abilityInfo.name;;
     console.info(`InteropAbilityLifecycleCallback ${abilityName} onAbilityDestroy.`);
   },
   onAbilityForeground: (ability: Any) => {
-    let abilityName: string = ESValue.wrap(ability).getProperty('context').getProperty('abilityInfo').getProperty('name');
+    let uiAblity: UIAbility = ability as UIAbility;
+    let abilityName: string = uiAblity.context.abilityInfo.name;;
     console.info(`InteropAbilityLifecycleCallback ${abilityName} onAbilityForeground.`);
   },
   onAbilityBackground: (ability: Any) => {
-    let abilityName: string = ESValue.wrap(ability).getProperty('context').getProperty('abilityInfo').getProperty('name');
+    let uiAblity: UIAbility = ability as UIAbility;
+    let abilityName: string = uiAblity.context.abilityInfo.name;;
     console.info(`InteropAbilityLifecycleCallback ${abilityName} onAbilityBackground.`);
   },
 };
@@ -215,11 +140,13 @@ export default class MyFirstAbility extends UIAbility {
 
   onDestroy() {
     try {
-    // 通过ApplicationContext注销监听应用内生命周期
+      // 通过ApplicationContext注销监听应用内生命周期
       this.context.getApplicationContext().offInteropAbilityLifecycle();
     } catch (paramError) {
       console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
     }
+    return undefined;
   }
 }
 ```
+

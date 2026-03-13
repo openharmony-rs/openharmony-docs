@@ -40,6 +40,10 @@ type Initializer\<T> = () => T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ## AttributeUpdater<T, C = Initializer\<T>>
 为[AttributeModifier](arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifiert)的实现类，开发者需要自定义class继承AttributeUpdater。
 
@@ -47,7 +51,12 @@ type Initializer\<T> = () => T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ### applyNormalAttribute
+
 applyNormalAttribute?(instance: T): void
 
 定义正常态更新属性函数。
@@ -56,6 +65,10 @@ applyNormalAttribute?(instance: T): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
@@ -63,6 +76,7 @@ applyNormalAttribute?(instance: T): void
 | instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如Button组件的ButtonAttribute，Text组件的TextAttribute等。|
 
 ### initializeModifier
+
 initializeModifier(instance: T): void
 
 AttributeUpdater首次设置给组件时提供的样式。
@@ -70,6 +84,10 @@ AttributeUpdater首次设置给组件时提供的样式。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -132,6 +150,7 @@ struct Index {
 
 
 ### attribute
+
 get attribute(): T | undefined
 
 获取AttributeUpdater中组件对应的属性类实例，通过该实例实现属性直通更新的功能。
@@ -139,6 +158,10 @@ get attribute(): T | undefined
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -185,6 +208,7 @@ struct updaterDemo2 {
 ![attributeUpdater2](figures/attribute-updater2.gif)
 
 ### updateConstructorParams
+
 updateConstructorParams: C
 
 用来更改组件的构造入参。C代表组件的构造函数类型。
@@ -194,6 +218,10 @@ updateConstructorParams: C
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：** 
 
@@ -242,6 +270,10 @@ onComponentChanged(component: T): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

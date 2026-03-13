@@ -6441,7 +6441,6 @@ onDataChange(type: SubscribeType, observer: Callback&lt;Array&lt;string&gt;&gt;\
 
 | **错误码ID** | **错误信息**        |
 |-----------|-------------|
-| 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800014  | The target instance is already closed.    |
@@ -6585,7 +6584,7 @@ on(event: 'autoSyncProgress', progress: Callback&lt;ProgressDetails&gt;): void
 
 | **错误码ID** | **错误信息**    |
 |-----------|--------|
-| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed;<br/>4. The event must be a not empty string; 5. The progress must be function. |
 | 801       | Capability not supported.  |
 | 14800014  | The target instance is already closed.     |
 
@@ -6633,7 +6632,6 @@ onAutoSyncProgress(progress: Callback&lt;ProgressDetails&gt;): void
 
 | **错误码ID** | **错误信息**    |
 |-----------|--------|
-| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported.  |
 | 14800014  | The target instance is already closed.     |
 
@@ -6741,6 +6739,8 @@ onStatistics(observer: Callback&lt;SqlExecutionInfo&gt;): void
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('statistics')<sup>12+</sup>](#onstatistics12)。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -7233,7 +7233,6 @@ offDataChange(type: SubscribeType, observer?: Callback&lt;Array&lt;string&gt;&gt
 
 | **错误码ID** | **错误信息**        |
 |-----------|-------------|
-| 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800014  | The target instance is already closed.    |
@@ -7409,7 +7408,6 @@ offAutoSyncProgress(progress?: Callback&lt;ProgressDetails&gt;): void
 
 | **错误码ID** | **错误信息**         |
 | ------------ |--------------------|
-| 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be valid. 3. The event must be a not empty string. 4. The progress must be function. |
 | 801       | Capability not supported.  |
 | 14800014  | The target instance is already closed.       |
 
@@ -7496,6 +7494,8 @@ offStatistics(observer?: Callback&lt;SqlExecutionInfo&gt;): void
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
@@ -7511,7 +7511,6 @@ offStatistics(observer?: Callback&lt;SqlExecutionInfo&gt;): void
 
 | **错误码ID** | **错误信息**    |
 |-----------|--------|
-| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800014  | The target instance is already closed.    |
 

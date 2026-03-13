@@ -117,7 +117,7 @@ path1.set(path);
 
 ArkTS-Dyn: moveTo(x: number, y: number) : void
 
-ArkTS-Dyn: moveTo(x: double, y: double) : void
+ArkTS-Sta: moveTo(x: double, y: double) : void
 
 设置自定义路径的起始点位置。
 

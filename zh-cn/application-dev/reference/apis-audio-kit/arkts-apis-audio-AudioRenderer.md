@@ -1233,7 +1233,7 @@ ArkTS-Sta: getAudioTime(): Promise\<long>
 
 **返回值：**
 
-| 类型             | 描述                    |
+| 类型             | 说明                    |
 | ---------------- | ----------------------- |
 | ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | Promise对象，返回时间戳。 |
 
@@ -1279,7 +1279,7 @@ ArkTS-Sta: getAudioTimeSync(): long
 
 **返回值：**
 
-| 类型             | 描述                    |
+| 类型             | 说明                    |
 | ---------------- | ----------------------- |
 | ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回时间戳。 |
 
@@ -1329,11 +1329,11 @@ getAudioTimestampInfo(): Promise\<AudioTimestampInfo>
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
-| 类型                                                    | 描述                    |
+| 类型                                                    | 说明                    |
 |-------------------------------------------------------| ----------------------- |
 | Promise\<[AudioTimestampInfo](arkts-apis-audio-i.md#audiotimestampinfo19)> | Promise对象，返回音频流时间戳和当前数据帧位置信息。 |
 
@@ -1381,11 +1381,11 @@ getAudioTimestampInfoSync(): AudioTimestampInfo
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
-| 类型             | 描述                    |
+| 类型             | 说明                    |
 | ---------------- | ----------------------- |
 | [AudioTimestampInfo](arkts-apis-audio-i.md#audiotimestampinfo19) | 返回音频流时间戳和当前数据帧位置信息。 |
 
@@ -1411,6 +1411,80 @@ try {
 }
 ```
 
+## getLatency<sup>23+</sup>
+
+ArkTS-Dyn: getLatency(type: AudioLatencyType): number
+
+ArkTS-Sta: getLatency(type: AudioLatencyType): int
+
+获取当前音频路由的预估时延。
+
+> **说明：**
+>
+> - 无线连接的音频设备，时延估算会存在误差，结果仅供参考。
+> - 由于时延未计入实时缓冲区，建议仅在音频播放开始时获取，避免频繁调用，否则可能因路由切换而阻塞该接口调用。
+> - 音频输出到硬件后的音画同步建议使用[getAudioTimestampInfo](#getaudiotimestampinfo19)或[getAudioTimestampInfoSync](#getaudiotimestampinfosync19)完成。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| type | [AudioLatencyType](arkts-apis-audio-e.md#audiolatencytype23) | 是 | 获取的时延类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回音频时延，单位为毫秒。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permitted in release state. |
+| 6800301 | System internal error, like audio service error. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let latency: number = audioRenderer.getLatency(audio.AudioLatencyType.LATENCY_TYPE_ALL);
+  console.info(`Current audio latency: ${latency}ms`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get latency. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let latency: int = audioRenderer.getLatency(audio.AudioLatencyType.LATENCY_TYPE_ALL);
+  console.info(`Current audio latency: ${latency}ms`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get latency. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## getBufferSize<sup>8+</sup>
 
 ArkTS-Dyn: getBufferSize(callback: AsyncCallback\<number>): void
@@ -1423,7 +1497,7 @@ ArkTS-Sta: getBufferSize(callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1479,7 +1553,7 @@ ArkTS-Sta: getBufferSize(): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1531,7 +1605,7 @@ ArkTS-Sta: getBufferSizeSync(): long
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1585,7 +1659,7 @@ ArkTS-Sta: setSpeed(speed: double): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1620,7 +1694,7 @@ ArkTS-Sta: getSpeed(): double
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1644,7 +1718,7 @@ setInterruptMode(mode: InterruptMode): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1696,7 +1770,7 @@ setInterruptMode(mode: InterruptMode, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1745,7 +1819,7 @@ setInterruptModeSync(mode: InterruptMode): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2521,7 +2595,7 @@ getCurrentOutputDevicesSync(): AudioDeviceDescriptors
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2601,7 +2675,7 @@ ArkTS-Sta: setVolumeWithRamp(volume: double, duration: int): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2677,6 +2751,86 @@ getSilentModeAndMixWithOthers(): boolean
 
 ```ts
 let on = audioRenderer.getSilentModeAndMixWithOthers();
+```
+
+## setLoudnessGain<sup>20+</sup>
+
+ArkTS-Dyn: setLoudnessGain(loudnessGain: number): Promise\<void>
+
+ArkTS-Sta: setLoudnessGain(loudnessGain: double): Promise\<void>
+
+设置播放响度。使用Promise异步回调。
+
+> **说明：**
+>
+> - 该接口仅支持类型为[STREAM_USAGE_MUSIC](arkts-apis-audio-e.md#streamusage)、[STREAM_USAGE_MOVIE](arkts-apis-audio-e.md#streamusage)或[STREAM_USAGE_AUDIOBOOK](arkts-apis-audio-e.md#streamusage)的音频流。
+> - 该接口不支持高清通路的响度设置。
+> - 由于音频框架与硬件之间存在缓冲区，响度调节实际生效存在延迟，时长取决于缓冲区长度。
+> - 建议在不同音频开始播放前预先设置响度，以实现最佳均衡效果。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型    | 必填 | 说明                                      |
+| ------------ | ------- | ---- | ----------------------------------------- |
+| loudnessGain | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 设置播放的响度值，单位为dB，响度范围为[-90.0, 24.0]。默认值为0.0dB。 |
+
+**返回值：**
+
+| 类型           | 说明                 |
+| -------------- | -------------------- |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800104 | Operation is not supported on this renderer, e.g. the stream usage of this renderer is not one of [STREAM_USAGE_MUSIC](arkts-apis-audio-e.md#streamusage), [STREAM_USAGE_MOVIE](arkts-apis-audio-e.md#streamusage), or [STREAM_USAGE_AUDIOBOOK](arkts-apis-audio-e.md#streamusage), or this renderer is routed through the high-resolution playback path. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.setLoudnessGain(1.0).then(() => {
+  console.info('setLoudnessGain success');
+}).catch((err: BusinessError) => {
+  console.error(`setLoudnessGain failed: ${err}`);
+});
+```
+
+## getLoudnessGain<sup>20+</sup>
+
+ArkTS-Dyn: getLoudnessGain(): number
+
+ArkTS-Sta: getLoudnessGain(): double
+
+获取播放响度。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型    | 说明             |
+|------- |-----------------  |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 返回播放的响度值。 |
+
+**示例：**
+
+```ts
+let loudnessGain = audioRenderer.getLoudnessGain();
 ```
 
 ## setDefaultOutputDevice<sup>12+</sup>

@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块从API version 18开始支持so预加载。
@@ -27,6 +29,10 @@ run(startupTasks: Array\<string\>, config?: StartupConfig): Promise\<void\>
 
 **系统能力**：SystemCapability.Ability.AppStartup
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -44,14 +50,14 @@ run(startupTasks: Array\<string\>, config?: StartupConfig): Promise\<void\>
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 
-  | 错误码ID | 错误信息 |
-  | ------- | -------------------------------- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 16000050 | Internal error. |
-  | 28800001 | Startup task or its dependency not found. |
-  | 28800002  | The startup tasks have circular dependencies. |
-  | 28800003 | An error occurred while running the startup tasks. |
-  | 28800004 | Running startup tasks timeout. |
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 16000050 | Internal error. |
+| 28800001 | Startup task or its dependency not found. |
+| 28800002  | The startup tasks have circular dependencies. |
+| 28800003 | An error occurred while running the startup tasks. |
+| 28800004 | Running startup tasks timeout. |
 
 **示例：**
 
@@ -67,8 +73,9 @@ export default class EntryAbility extends UIAbility {
     try {
       // 手动调用run方法
       startupManager.run(startParams).then(() => {
-        console.log(`StartupTest startupManager run then, startParams = ${startParams}.`);
-      }).catch((error: BusinessError) => {
+        console.info(`StartupTest startupManager run then, startParams = ${startParams}.`);
+      }).catch((err: Error) => {
+        let error = err as BusinessError;
         console.error(`StartupTest promise catch failed, error code: ${error.code}, error msg: ${error.message}.`);
       });
     } catch (error) {
@@ -89,6 +96,10 @@ run(startupTasks: Array\<string\>, context: common.AbilityStageContext, config: 
 执行启动框架启动任务或加载so文件。支持指定[AbilityStageContext](js-apis-inner-application-abilityStageContext.md)用于启动任务的加载。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AppStartup
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -128,7 +139,8 @@ export default class MyAbilityStage extends AbilityStage {
     hilog.info(0x0000, 'testTag', 'AbilityStage onCreate');
     let onCompletedCallback = (error: BusinessError<void>) => {
       if (error) {
-        hilog.error(0x0000, 'testTag', 'onCompletedCallback error: %{public}s', JSON.stringify(error));
+        hilog.error(0x0000, 'testTag',
+          `onCompletedCallback error, err code: ${error.code}, err msg: ${error.message}.`);
       } else {
         hilog.info(0x0000, 'testTag', 'onCompletedCallback: success.');
       }
@@ -145,13 +157,17 @@ export default class MyAbilityStage extends AbilityStage {
       // 手动调用run方法
       startupManager.run(["StartupTask_001", "libentry_001"], this.context, config).then(() => {
         hilog.info(0x0000, 'testTag', '%{public}s', 'startupManager.run success');
-      }).catch((error: BusinessError<void>) => {
-        hilog.error(0x0000, 'testTag', 'startupManager.run promise catch error: %{public}s', JSON.stringify(error));
+      }).catch((err: Error) => {
+        let error = err as BusinessError;
+        hilog.error(0x0000, 'testTag',
+          `startupManager.run promise catch error, err code: ${error.code}, err msg: ${error.message}.`);
       })
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'startupManager.run catch error: %{public}s', JSON.stringify(error));
+      hilog.error(0x0000, 'testTag',
+        `startupManager.run catch error, err code: ${error.code}, err msg: ${error.message}.`);
     }
   }
+
   // ...
 }
 ```
@@ -166,12 +182,17 @@ removeAllStartupTaskResults(): void
 
 **系统能力**：SystemCapability.Ability.AppStartup
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
 ```ts
 import { AbilityConstant, UIAbility, Want, startupManager } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -186,8 +207,10 @@ export default class EntryAbility extends UIAbility {
     startupManager.removeAllStartupTaskResults(); // 移除所有启动任务结果
 
     windowStage.loadContent('pages/Index', (err, data) => {
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+      if (err) {
+        let error = err as BusinessError;
+        hilog.error(0x0000, 'testTag',
+          `Failed to load the content. err code: ${error.code}, err msg: ${error.message}`);
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
@@ -205,25 +228,29 @@ getStartupTaskResult(startupTask: string): Object
 
 **系统能力**：SystemCapability.Ability.AppStartup
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | startupTask | string | 是 | 启动任务实现[StartupTask](./js-apis-app-appstartup-startupTask.md)接口的文件名或so文件名，所有启动任务都需要实现[StartupTask](./js-apis-app-appstartup-startupTask.md)接口的方法。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| startupTask | string | 是 | 启动任务实现[StartupTask](./js-apis-app-appstartup-startupTask.md)接口的文件名或so文件名，所有启动任务都需要实现[StartupTask](./js-apis-app-appstartup-startupTask.md)接口的方法。 |
 
 **返回值：**
 
-  | 类型 | 说明 |
-  | -------- | -------- |
-  | Object | 输入为启动任务名时，返回指定的启动任务结果。<br/> 输入为so文件名时，返回undefined。 |
+| 类型 | 说明 |
+| -------- | -------- |
+| Object | 输入为启动任务名时，返回指定的启动任务结果。<br/> 输入为so文件名时，返回undefined。 |
 
 **错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
-  | 错误码ID | 错误信息 |
-  | ------- | -------------------------------- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -231,6 +258,7 @@ getStartupTaskResult(startupTask: string): Object
 import { AbilityConstant, UIAbility, Want, startupManager } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -245,8 +273,10 @@ export default class EntryAbility extends UIAbility {
     let result = startupManager.getStartupTaskResult("StartupTask_001"); // 手动获取启动任务结果
     console.info("getStartupTaskResult result = " + result);
     windowStage.loadContent('pages/Index', (err, data) => {
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+      if (err) {
+        let error = err as BusinessError;
+        hilog.error(0x0000, 'testTag',
+          `Failed to load the content. Cause: error code ${error.code}, error msg ${error.message}`);
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
@@ -264,25 +294,29 @@ isStartupTaskInitialized(startupTask: string): boolean
 
 **系统能力**：SystemCapability.Ability.AppStartup
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | startupTask | string | 是 | 启动任务实现[StartupTask](js-apis-app-appstartup-startupTask.md)接口的类名称或so文件名称。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| startupTask | string | 是 | 启动任务实现[StartupTask](js-apis-app-appstartup-startupTask.md)接口的类名称或so文件名称。 |
 
 **返回值：**
 
-  | 类型 | 说明 |
-  | -------- | -------- |
-  | boolean | 返回布尔值，true表示该启动任务或so预加载任务已执行完成，false表示该启动任务或so预加载任务尚未执行完成。 |
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 返回布尔值，true表示该启动任务或so预加载任务已执行完成，false表示该启动任务或so预加载任务尚未执行完成。 |
 
 **错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
-  | 错误码ID | 错误信息 |
-  | ------- | -------------------------------- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -290,6 +324,7 @@ isStartupTaskInitialized(startupTask: string): boolean
 import { AbilityConstant, UIAbility, Want, startupManager } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -315,8 +350,10 @@ export default class EntryAbility extends UIAbility {
     }
 
     windowStage.loadContent('pages/Index', (err, data) => {
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+      if (err) {
+        let error = err as BusinessError;
+        hilog.error(0x0000, 'testTag',
+          `Failed to load the content. Cause: error code ${error.code}, error msg ${error.message}`);
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
@@ -337,19 +374,23 @@ removeStartupTaskResult(startupTask: string): void
 
 **系统能力**：SystemCapability.Ability.AppStartup
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | startupTask | string | 是 | 启动任务所实现[StartupTask](js-apis-app-appstartup-startupTask.md)接口的类名称或so文件名。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| startupTask | string | 是 | 启动任务所实现[StartupTask](js-apis-app-appstartup-startupTask.md)接口的类名称或so文件名。 |
 
 **错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
-  | 错误码ID | 错误信息 |
-  | ------- | -------------------------------- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -357,6 +398,7 @@ removeStartupTaskResult(startupTask: string): void
 import { AbilityConstant, UIAbility, Want, startupManager } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -372,8 +414,10 @@ export default class EntryAbility extends UIAbility {
     startupManager.removeStartupTaskResult("libentry_001");
 
     windowStage.loadContent('pages/Index', (err, data) => {
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+      if (err) {
+        let error = err as BusinessError;
+        hilog.error(0x0000, 'testTag',
+          `Failed to load the content. Cause: error code ${error.code}, error msg ${error.message}`);
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');

@@ -329,7 +329,7 @@ clamp(min: Value, max: Value): Decimal
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes:1. Incorrect parameter types;2. Parameter verification failed. |
-| 10200001 | The value of `min` is out of range.                          |
+| 10200001 | The value of `min` is out of range.                         |
 
 **示例：**
 
@@ -673,7 +673,7 @@ exp(): Decimal
 
 **返回值：**
 
-| 类型                | 返回值                                |
+| 类型                | 说明                                |
 | ------------------- | ------------------------------------- |
 | [Decimal](#decimal) | 返回自然指数运算后的Decimal对象实例。 |
 
@@ -1171,7 +1171,7 @@ Decimal的比较方法。
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| ArkTS-Dyn: number<br>ArkTS-Sta：double | 返回该Decimal与n的比较结果：<br>1:该Decimal大于比较值。<br/>-1:该Decimal小于比较值。<br/>0:该Decimal等于比较值。<br/>NaN:该Decimal与比较值有一个值为NaN。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta：double | 返回该Decimal与n的比较结果：<br>1:该Decimal大于比较值。<br/>-1:该Decimal小于比较值。<br/>0:该Decimal等于比较值。<br/>NaN:该Decimal与比较值有一个值为NaN。 |
 
 **错误码**：
 

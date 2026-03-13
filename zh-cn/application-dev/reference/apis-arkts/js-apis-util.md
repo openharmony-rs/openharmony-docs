@@ -410,7 +410,7 @@ generateRandomUUID(entropyCache?: boolean): string
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 |
+| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **示例：**
 
@@ -512,7 +512,7 @@ console.info("uuid = " + uuid);
 
 ArkTS-Dyn: getHash(object: object): number
 
-ArkTS-Sta: getHash(object: RecordData): long
+ArkTS-Sta: getHash(obj: RecordData): long
 
 获取对象的Hash值。首次获取时，则计算Hash值并保存到对象的Hash域（返回随机的Hash值）；后续获取时，直接从Hash域中返回Hash值（同一对象多次返回值保持不变）。
 
@@ -528,7 +528,7 @@ ArkTS-Sta: getHash(object: RecordData): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| object | ArkTS-Dyn: object <br> ArkTS-Sta: RecordData | 是 | 需要获取Hash值的对象。 |
+| ArkTS-Dyn: object <br> ArkTS-Sta: obj | ArkTS-Dyn: object <br> ArkTS-Sta: RecordData | 是 | 需要获取Hash值的对象。 |
 
 **返回值：**
 
@@ -586,6 +586,101 @@ let stack = util.getMainThreadStackTrace();
 console.info(stack);
 // 输出当前主线程的栈追踪信息。
 ```
+
+## ArkTSVM<sup>23+</sup>
+
+ArkTSVM是一个类，用于给开发者提供虚拟机的维测能力。
+
+### setMultithreadingDetectionEnabled<sup>23+</sup>
+
+static setMultithreadingDetectionEnabled(enabled: boolean): void
+
+若enabled为true则开启，为false则关闭。开启多线程检测，多线程问题的cppcrash文件里会包含多线程信息。关闭多线程检测，则多线程问题的cppcrash文件里不会包含多线程信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| enabled  | boolean  | 是       | 控制多线程检测开关的开启或关闭 。true表示开启，false表示关闭。|
+
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+// 打开多线程检测开关
+util.ArkTSVM.setMultithreadingDetectionEnabled(true);
+// 关闭多线程检测开关
+util.ArkTSVM.setMultithreadingDetectionEnabled(false);
+```
+
+### getAllVMHeapMemoryInfo<sup>24+</sup>
+
+static getAllVMHeapMemoryInfo(): Promise<HeapMemoryInfo[]>
+
+获取所有VM线程的堆内存信息，包括线程ID、线程名称、堆类型和堆对象大小。使用Promise异步回调。
+
+> **说明：**
+>
+> 此接口在执行时会暂停所有VM线程运行以获取内存信息。由于需要等待所有VM线程暂停，高负载场景下调用此接口的耗时可能较高。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise<[HeapMemoryInfo](js-apis-util.md#heapmemoryinfo24)[]> | Promise对象，解析为HeapMemoryInfo对象数组，每个对象包含线程ID、线程名称、堆类型和堆对象大小。此方法可以获取本地堆和共享堆的内存信息。|
+
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+util.ArkTSVM.getAllVMHeapMemoryInfo().then(
+  result => {
+    result.forEach(info => {
+      console.info(info.threadId?.toString());
+      console.info(info.threadName);
+      console.info(info.heapType);
+      console.info(info.heapObjectSize.toString());
+    })
+  }
+);
+```
+
+## HeapMemoryInfo<sup>24+</sup>
+
+描述ArkTS-VM本地堆或当前进程的共享堆内存信息，包含线程标识和堆内存大小等详细数据。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| threadId | number | 否 | 是 | 线程ID。如果此内存信息描述的是ArkTS-VM本地堆，该值为表示运行线程ID的整数；如果此内存信息描述的是共享堆，该值为**undefined**。|
+| threadName | string | 否 | 是 | 线程名称。如果此内存信息描述的是ArkTS-VM本地堆，该值为表示运行线程名称的字符串；如果此内存信息描述的是共享堆，该值为**undefined**。|
+| heapType | string | 否 | 否 | 堆类型。目前有两种取值，"local"表示堆类型为本地堆，"shared"表示堆类型为共享堆。|
+| heapObjectSize | number | 否 | 否 | 堆对象大小，单位为KB（向上取整的整数）。|
 
 ## util.printf<sup>(deprecated)</sup>
 
@@ -670,7 +765,7 @@ promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
 > **说明：**
 >
-> 此接口不可用，建议使用[util.promisify<sup>9+</sup>](#utilpromisify9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，此接口不可用，建议使用[util.promisify<sup>9+</sup>](#utilpromisify9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -682,13 +777,13 @@ promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| original | Function | 是 | 异步函数。 |
+| original | (err: Object, value: Object) =&gt; void | 是 | 异步函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Function | 采用遵循常见的错误优先的回调风格的函数（也就是将(err, value) => ...回调作为最后一个参数），并返回一个promise的函数。 |
+| Object | 采用遵循常见的错误优先的回调风格的函数（也就是将(err, value) => ...回调作为最后一个参数），并返回一个promise的函数。 |
 
 ## PromisifiedFunc<sup>20+</sup>
 
@@ -1564,7 +1659,7 @@ encodeInto(input: string, dest: Uint8Array): { read: number; written: number }
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Uint8Array | 返回编码后的Uint8Array对象。 |
+| { read: number; written: number } | 返回一个对象，read表示已编码的字符数，written表示编码字符所占用的字节数。 |
 
 **示例：**
 
@@ -7749,7 +7844,7 @@ entries(): IterableIterator&lt;[K, V]&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.Symbol.iterator<sup>9+</sup>](#symboliterator9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.Symbol.[Symbol.iterator]<sup>9+</sup>](#symboliterator9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

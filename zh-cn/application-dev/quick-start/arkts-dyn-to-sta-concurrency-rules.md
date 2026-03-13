@@ -1272,3 +1272,95 @@ async function test<T>(value:T) : Promise<T> {
     return value;
 }
 ```
+
+## taskpool执行中的任务被取消时不再抛cancel error
+
+**规则：** `arkts-not-support-running-cancel-error`
+
+**规则解释：**
+
+ArkTS-Sta中taskpool不支持执行中的任务被取消后抛出异常并从中获取TaskResult。
+
+**变更原因：**
+
+ArkTS-Sta执行中的任务被取消后，执行完成后不再抛cancel异常，以防止覆盖正常的返回值或异常。
+
+**适配建议：**
+
+开发者可以通过taskpool.execute(task).then(result)获取返回值，通过taskpool.execute(task).catch(err)获取异常。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+// MyFunc.ets
+export function sleepNew(time: number) {
+  let start: number = new Date().getTime();
+  while (new Date().getTime() - start < time) {
+    continue;
+  }
+}
+```
+
+```typescript
+import { taskpool } from '@kit.ArkTS';
+import { sleepNew } from './MyFun.ets';
+
+@Concurrent
+export function cancelTaskResultString(): string {
+  sleepNew(500);
+  if (new Date().getTime() % 2 === 0) {
+    return 'no error';
+  }
+  throw new Error('throw error');
+}
+
+function taskResultTest() {
+  let task = new taskpool.Task(cancelTaskResultString);
+  taskpool.execute(task).catch((e: BusinessError<taskpool.TaskResult>) => {
+    console.info('testTag: ' + (e.data!.error!).toString())
+    console.info('testTag: ' + (e.data!.result!).toString())
+  })
+  sleepNew(100)
+  taskpool.cancel(task);
+}
+```
+
+ArkTS-Sta
+
+```typescript
+function sleepNew(time: int) {
+  waitForCompletion(() => {
+    return new Promise<void>((res) => { setTimeout(() => res(undefined), time); });
+  });
+}
+
+function test(): string{
+  sleepNew(500);
+  let exitType = Date.now() % 3;
+  if (exitType === 0) {
+    return 'value branch';
+  } else if (exitType === 1) {
+    taskpool.Task.checkCancellation();
+    return 'checkCancellation branch';
+  } else {
+    if (taskpool.Task.isCanceled()) {
+      throw new Error('user cancel error branch');
+    }
+    return 'isCanceled branch';
+  }
+}
+
+function cancelRunningTaskTest() {
+  let TAG = 'testTag';
+  let task = new taskpool.Task(test);
+  taskpool.execute(task).then((value) => {
+    console.info(`${TAG} + ${value}`);
+  }).catch((err) => {
+    console.info(`${TAG} + ${err}`);
+  })
+  sleepNew(100);
+  taskpool.cancel(task);
+}
+```
