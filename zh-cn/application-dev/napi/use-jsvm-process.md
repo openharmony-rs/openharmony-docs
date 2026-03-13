@@ -12,7 +12,7 @@
 
 - Native侧：.cpp文件，实现模块的注册。需要提供注册lib库的名称，并在注册回调方法中定义接口的映射关系，即Native方法及对应的JS/ArkTS接口名称等。
 
-此处以在ArkTS/JS侧和Native侧实现RunJsVm()接口实现跨语言交互为例，展示使用JSVM-API进行跨语言交互的流程。
+此处以在ArkTS/JS侧和Native侧实现RunTest()接口实现跨语言交互为例，展示使用JSVM-API进行跨语言交互的流程。
 
 ## 创建Native C++工程
 
