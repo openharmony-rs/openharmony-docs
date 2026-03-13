@@ -946,7 +946,7 @@ getAppNativeMemInfoWithCache(forceRefresh?: boolean): NativeMemInfo
 
 > **注意**：
 >
-> 由于读取 `/proc/{pid}/smaps_rollup` 比较耗时，建议不在主线程中使用该接口。可以通过 `@ohos.taskpool` 或 `@ohos.worker` 开启异步线程，以避免应用卡顿。
+> 由于/proc/{pid}/smaps_rollup的读取比较耗时，建议不要在主线程中使用该接口，可通过[@ohos.taskpool](../apis-arkts/js-apis-taskpool.md)或[@ohos.worker](../apis-arkts/js-apis-worker.md)开启异步线程以避免应用出现卡顿。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1535,7 +1535,7 @@ ArkTS-Sta: enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: int): voi
 | 参数名   | 类型                                  | 必填 | 说明   |
 |---------|-------------------------------------|--------|-----|
 | options | [GwpAsanOptions](#gwpasanoptions20) | 否 | GWP-ASan配置项。未设置时，使用默认参数。|
-| duration | number | 否 | GWP-ASan持续时间，单位为天，默认值为7。需传入大于0的正整数。 |
+| duration | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | GWP-ASan持续时间，单位为天，默认值为7。需传入大于0的正整数。 |
 
 **错误码**：
 
@@ -1618,7 +1618,7 @@ ArkTS-Sta: getGwpAsanGrayscaleState(): int
 
 | 类型 | 说明 |
 |-----------|-------------|
-| number    |获取当前GWP-ASan剩余使能天数。若当前未使能，返回值0。|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int |获取当前GWP-ASan剩余使能天数。若当前未使能，返回值0。|
 
 **示例**：
 
