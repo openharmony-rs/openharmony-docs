@@ -12861,7 +12861,7 @@ ArkTS-Sta: setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&lt
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12883,9 +12883,9 @@ ArkTS-Sta: setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&lt
 | :------- | :-------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
 | 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation.                       |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported.    |
 
 **示例：**
 
