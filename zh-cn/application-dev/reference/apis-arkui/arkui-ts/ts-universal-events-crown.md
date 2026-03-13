@@ -29,7 +29,7 @@ ArkTS-Sta: onDigitalCrown(handler: Callback\<CrownEvent> | undefined): this
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 | 参数名      | 类型                             | 必填     | 描述                                      |
@@ -40,7 +40,7 @@ ArkTS-Sta: onDigitalCrown(handler: Callback\<CrownEvent> | undefined): this
 **返回值：**
 | 类型      | 描述           |
 | --------- | ---------------|
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this         | 返回当前组件。   |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this         | 返回当前组件。   |
 
 ## CrownEvent对象说明
 
@@ -52,7 +52,7 @@ ArkTS-Sta: onDigitalCrown(handler: Callback\<CrownEvent> | undefined): this
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                   | 类型           | 描述                                    |
 | --------------------- | -------------- | -------------------------------------- |

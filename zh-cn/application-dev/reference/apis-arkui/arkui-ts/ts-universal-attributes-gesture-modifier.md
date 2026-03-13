@@ -26,19 +26,19 @@ ArkTS-Sta: gestureModifier(modifier: GestureModifier | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明                                                         |
 | -------- | --------------------- | ---- | ------------------------------------------------------------ |
-| modifier | ArkTS-Dyn: [GestureModifier](#gesturemodifier-1)<br>ArkTS-Dyn: [GestureModifier](#gesturemodifier-1) \| undefined | 是   | 在当前组件上，动态设置组件绑定的手势，支持使用if/else语法。<br/>modifier: 手势修改器，开发者需要自定义class实现GestureModifier接口。 |
+| modifier | ArkTS-Dyn: [GestureModifier](#gesturemodifier-1)<br>ArkTS-Sta: [GestureModifier](#gesturemodifier-1) \| undefined | 是   | 在当前组件上，动态设置组件绑定的手势，支持使用if/else语法。<br/>modifier: 手势修改器，开发者需要自定义class实现GestureModifier接口。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## GestureModifier
 

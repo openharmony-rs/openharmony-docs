@@ -6,7 +6,7 @@
 >
 >  从API version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  该toolbar为组件通用属性，请注意与[Navigtion](ts-basic-components-navigation.md)组件自身的toolbar属性进行区分。
+>  该toolbar为组件通用属性，请注意与[Navigation](ts-basic-components-navigation.md)组件自身的toolbar属性进行区分。
 
 ## toolbar
 

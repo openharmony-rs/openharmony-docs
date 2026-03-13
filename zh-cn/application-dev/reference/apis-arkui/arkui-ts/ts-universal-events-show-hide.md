@@ -28,7 +28,7 @@ ArkTS-Sta: onAttach(callback: VoidCallback | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -40,7 +40,7 @@ ArkTS-Sta: onAttach(callback: VoidCallback | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onDetach<sup>12+</sup>
 
@@ -56,7 +56,7 @@ ArkTS-Sta: onDetach(callback: VoidCallback | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -68,7 +68,7 @@ ArkTS-Sta: onDetach(callback: VoidCallback | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onAppear
 
@@ -90,7 +90,7 @@ ArkTS-Sta: onAppear(event: (() => void) | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -102,8 +102,7 @@ ArkTS-Sta: onAppear(event: (() => void) | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
-
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onDisAppear
 
@@ -121,8 +120,7 @@ ArkTS-Sta: onDisAppear(event: (() => void) | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
-
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -130,12 +128,11 @@ ArkTS-Sta: onDisAppear(event: (() => void) | undefined): this
 | ------ | ------ | ---- | -------------------------- |
 | event  | ArkTS-Dyn: () => void  <br/>ArkTS-Sta: () => void | undefined| 是   | onDisAppear事件的回调函数，表示组件已卸载消失。 |
 
-
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 
 ## 示例

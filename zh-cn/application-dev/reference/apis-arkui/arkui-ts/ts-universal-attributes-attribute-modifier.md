@@ -4,11 +4,13 @@
 
 > **说明：**
 >
-> 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 在attributeModifier中设置的属性尽量不要与其他方法设置的属性相同，避免在页面刷新时attributeModifier不生效。
+> - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 从API version 20开始，attributeModifier支持自定义组件。
+> - 在attributeModifier中设置的属性尽量不要与其他方法设置的属性相同，避免在页面刷新时attributeModifier不生效。
+>
+> - 从API version 20开始，attributeModifier支持自定义组件。
 
 ## attributeModifier
 
@@ -19,6 +21,10 @@ attributeModifier(modifier: AttributeModifier\<T>): T
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -53,6 +59,10 @@ applyNormalAttribute(instance: T) : void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 ### applyPressedAttribute
 applyPressedAttribute(instance: T) : void
 
@@ -61,6 +71,10 @@ applyPressedAttribute(instance: T) : void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 ### applyFocusedAttribute
 applyFocusedAttribute(instance: T) : void
@@ -71,6 +85,10 @@ applyFocusedAttribute(instance: T) : void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 ### applyDisabledAttribute
 applyDisabledAttribute(instance: T) : void
 
@@ -79,6 +97,10 @@ applyDisabledAttribute(instance: T) : void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 ### applySelectedAttribute
 applySelectedAttribute(instance: T) : void
@@ -90,6 +112,10 @@ applySelectedAttribute(instance: T) : void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

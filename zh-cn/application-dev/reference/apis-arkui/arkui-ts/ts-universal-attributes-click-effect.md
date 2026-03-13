@@ -22,7 +22,7 @@ ArkTS-Sta: clickEffect(value: ClickEffect | null | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -65,6 +65,12 @@ clickEffect(effect: Optional\<ClickEffect | null>): T
 ## ClickEffect对象说明
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 参数类型                                                    | 必填 | 描述                                                         |
 | ----- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |

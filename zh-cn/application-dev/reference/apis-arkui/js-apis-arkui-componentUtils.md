@@ -31,6 +31,10 @@ getRectangleById(id: string): ComponentInfo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明       |
@@ -66,8 +70,12 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型             | 必填           | 说明                         |
-| ---------------|------------     | -----------------------------| -----------------------------|
+| ---------------|------------------|----------------|------------------------------|
 | size           | [Size](#size) | 是 | 组件大小。                    |
 | localOffset    | [Offset](#offset) | 是 | 组件相对于父组件信息。         |
 | windowOffset   | [Offset](#offset) | 是 | 组件相对于窗口信息。           |
@@ -85,10 +93,10 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型 | 只读 | 可选 |  说明                               |
-| -------- | ---- | ----|------------------------------| ----------------------------------|
+| -------- | ---- | ---- | ---- | ----------------------------------|
 | width    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否 | 组件宽度。<br />单位: px                      |
 | height   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否 | 组件高度。<br />单位: px                      |
 
@@ -100,10 +108,10 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型 | 只读 | 可选 | 说明                               |
-| --------| ---- | -----|------------------------------| -----------------------------------|
+| --------| ---- | ---- | ---- | -----------------------------------|
 | x       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否 | x点坐标。<br />单位: px                           |
 | y       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否 | y点坐标。<br />单位: px                           |
 
@@ -115,10 +123,10 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型 | 只读  | 可选 | 说明                               |
-| --------| ---- | ------|-----------------------------| -----------------------------------|
+| --------| ---- | ---- |   ---- | -----------------------------------|
 | x       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否 | x轴平移距离。<br />单位: px                       |
 | y       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否 | y轴平移距离。<br />单位: px                       |
 | z       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否 | z轴平移距离。<br />单位: px                       |
@@ -131,10 +139,10 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型 | 只读 | 可选 | 说明                               |
-| --------| ---- | -----|------------------------------| -----------------------------------|
+| --------| ---- | ---- | ---- | -----------------------------------|
 | x       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否 | x轴缩放倍数。<br />单位: px                       |
 | y       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否 | y轴缩放倍数。<br />单位: px                       |
 | z       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否 | z轴缩放倍数。<br />单位: px                       |
@@ -149,10 +157,10 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型 | 只读 | 可选 | 说明                               |
-| --------| ---- | ------|-----------------------------| -----------------------------------|
+| --------| ---- | ---- | ---- | -----------------------------------|
 | x       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否 | 旋转轴向量x坐标。<br />单位: px                   |
 | y       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否 | 旋转轴向量y坐标。<br />单位: px                   |
 | z       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否 | 旋转轴向量z坐标。<br />单位: px                   |
@@ -172,7 +180,7 @@ ArkTS-Sta: type Matrix4Result = [double,double,double,double,double,double,doubl
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明                               |
 | --------| -----------------------------------|
