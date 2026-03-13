@@ -9581,3 +9581,23 @@ type MonitorEvent = _MonitorEvent
 | STATUS_USER_DEFINED | 1<<3 | 仅用户自定义。 |
 | STATUS_APPLICATION_DEFINED | 1<<4 | 仅应用自定义。 |
 | STATUS_ALL_PRIORITY | 1<<5 | 全部通知优先。 |
+
+## GroupInfo <sup>26+</sup>
+
+type GroupInfo = _GroupInfo
+
+组通知定制信息。
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26
+
+**ArkTS-Sta起始版本**：26
+
+| 类型 | 说明 |
+| --- | --- |
+| [_GroupInfo](js-apis-inner-notification-notificationRequest-sys.md#groupinfo26) | 组通知定制信息的类型。 |
