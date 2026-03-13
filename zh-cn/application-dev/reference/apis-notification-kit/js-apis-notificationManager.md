@@ -1880,7 +1880,7 @@ notificationManager.isGeofenceEnabled().then((data: boolean) => {
 
 ## NotificationSetting<sup>20+</sup>
 
-通知提醒方式开关的设置状态，包括是否开启振动、是否开启响铃。从API version 26开始, 增加是否开启锁屏通知、是否开启横幅通知、是否开启通知角标数字展示和应用通知使能状态。
+通知提醒方式开关的设置状态。
 
 **系统能力**：SystemCapability.Notification.Notification
 

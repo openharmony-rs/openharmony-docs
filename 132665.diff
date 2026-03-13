@@ -1,0 +1,248 @@
+diff --git a/zh-cn/application-dev/application-models/system-app-startup.md b/zh-cn/application-dev/application-models/system-app-startup.md
+index e44310b483849a3f924d4687b9d07a5742c5b038..f7065ac85b0ee3e13821f51a0782e04a4fe2f6a3 100644
+--- a/zh-cn/application-dev/application-models/system-app-startup.md
++++ b/zh-cn/application-dev/application-models/system-app-startup.md
+@@ -46,7 +46,7 @@
+     - 拉起日历权限设置弹窗
+  
+ 
+-- **通知管理：** 当应用通过[requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)接口拉起通知授权弹框时，如果用户拒绝授权，将无法使用该接口再次拉起弹框，需要调用[openNotificationSettings()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettings13)接口，支持拉起通知管理弹窗。
++- **通知管理：** 当应用通过[requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)接口拉起通知授权弹框时，如果用户拒绝授权，将无法使用该接口再次拉起弹框，需要调用[openNotificationSettingsWithResult()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettingswithresult26)接口，支持拉起通知管理弹窗。
+ - **网络管理：** 当应用需要通过WLAN连接网络时，可以通过[openNetworkManagerSettings()](../reference/apis-basic-services-kit/js-apis-settings.md#settingsopennetworkmanagersettings18)接口拉起WLAN设置弹窗。
+ 
+ 
+diff --git a/zh-cn/application-dev/notification/notification-enable.md b/zh-cn/application-dev/notification/notification-enable.md
+index 2f0ce3be25bacf22c46d4819ce30c5e33290eafe..ff1abd27e6fb3c1222c93a3bdd28a7c70b1d2d34 100644
+--- a/zh-cn/application-dev/notification/notification-enable.md
++++ b/zh-cn/application-dev/notification/notification-enable.md
+@@ -7,7 +7,7 @@
+ <!--Tester: @wanghong1997-->
+ <!--Adviser: @fang-jinxu-->
+ 
+-应用需要获取用户授权才能发送通知。在通知发布前调用[requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10-1)接口，弹窗让用户选择是否允许发送通知。当用户拒绝授权后，将无法通过该接口再次拉起弹窗。如果应用需要向用户再次申请通知授权，则可以使用[openNotificationSettings](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettings13)接口拉起通知管理半模态弹窗。
++应用需要获取用户授权才能发送通知。在通知发布前调用[requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10-1)接口，弹窗让用户选择是否允许发送通知。当用户拒绝授权后，将无法通过该接口再次拉起弹窗。如果应用需要向用户再次申请通知授权，则可以使用[openNotificationSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettingswithresult26)接口拉起通知管理半模态弹窗。
+ 
+ ## 接口说明
+ 
+@@ -19,7 +19,7 @@
+ | -------- | -------- |
+ | isNotificationEnabled():Promise\<boolean\>       | 查询通知是否授权。  |
+ | requestEnableNotification(context: UIAbilityContext): Promise\<void\> | 请求发送通知的许可，第一次调用会弹窗让用户选择。     |
+-| openNotificationSettings(context: UIAbilityContext): Promise\<void\>  | 拉起通知管理弹窗。|
++| openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<NotificationSetting\>  | 拉起应用的通知设置界面，该页面以半模态形式呈现，可用于设置通知开关、通知提醒方式等。当半模态窗口关闭时返回用户设置的状态。|
+ 
+ 
+ ## 开发步骤
+@@ -76,11 +76,11 @@
+    notificationManager.isNotificationEnabled().then((data: boolean) => {
+      hilog.info(DOMAIN_NUMBER, TAG, `isNotificationEnabled success, data:  ${data}`);
+      if (!data) {
+-       notificationManager.openNotificationSettings(context).then(() => {
+-         hilog.info(DOMAIN_NUMBER, TAG, `[ANS] openNotificationSettings success`);
++       notificationManager.openNotificationSettingsWithResult(context).then((data) => {
++         hilog.info(DOMAIN_NUMBER, TAG, `[ANS] openNotificationSettingsWithResult success, data: ${JSON.stringify(data)}`);
+        }).catch((err: BusinessError) => {
+          hilog.error(DOMAIN_NUMBER, TAG,
+-           `[ANS] openNotificationSettings failed, code is ${err.code}, message is ${err.message}`);
++           `[ANS] openNotificationSettingsWithResult failed, code is ${err.code}, message is ${err.message}`);
+        });
+      }
+    }).catch((err: BusinessError) => {
+diff --git a/zh-cn/application-dev/notification/notification-subscriber-extension-ability-development-steps.md b/zh-cn/application-dev/notification/notification-subscriber-extension-ability-development-steps.md
+index a018edfc476af71a17a7f0cfceeaa7ea195af8e1..1c14ee70f2cbfd835246ca75cc44be1d4d17a299 100644
+--- a/zh-cn/application-dev/notification/notification-subscriber-extension-ability-development-steps.md
++++ b/zh-cn/application-dev/notification/notification-subscriber-extension-ability-development-steps.md
+@@ -52,7 +52,7 @@
+    ```
+ 3. 连接穿戴设备，使用[蓝牙模块](../connectivity/connectivity-kit-intro.md#蓝牙简介)接口获取地址，然后通过[subscribe](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionsubscribe)/[unsubscribe](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionunsubscribe)接口订阅或取消订阅通知。
+ 
+-4. 实现[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)后，还需要在合适的时机调用[openSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings)接口，打开通知扩展订阅设置页面，引导用户授予获取本机通知的权限，该页面以半模态弹窗显示。建议在设备管理页面提供一个通知授权的按钮，用户点击按钮则调用[openSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings)接口。
++4. 实现[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)后，还需要在合适的时机调用[openSubscriptionSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettingswithresult26)接口，打开通知扩展订阅设置页面，引导用户授予获取本机通知的权限，该页面以半模态弹窗显示，并在弹窗关闭时返回授权的结果。建议在设备管理页面提供一个通知授权的按钮，用户点击按钮则调用[openSubscriptionSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettingswithresult26)接口。
+ 
+ 5. 在应用的module.json5文件中配置extensionAbilities。
+    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/module.json5)-->
+diff --git a/zh-cn/application-dev/notification/notification-subscriber-extension-ability.md b/zh-cn/application-dev/notification/notification-subscriber-extension-ability.md
+index c0aa9e5456baae8c092abd92b78427f388491f45..7748ade66ba0798452f99a6d16aeac8b483a84fb 100644
+--- a/zh-cn/application-dev/notification/notification-subscriber-extension-ability.md
++++ b/zh-cn/application-dev/notification/notification-subscriber-extension-ability.md
+@@ -11,7 +11,7 @@
+ 
+ ## 前提条件
+ - 用户已通过手机中与穿戴设备配套的应用程序连接穿戴设备。
+-- 用户已在手机的穿戴应用中，通过[openSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings)接口拉起的半模态弹窗中，开启了“允许获取本机通知”与“已获取的本机通知”的开关。
++- 用户已在手机的穿戴应用中，通过[openSubscriptionSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettingswithresult26)接口拉起的半模态弹窗中，开启了“允许获取本机通知”与“已获取的本机通知”的开关。
+ ## 应用场景
+ <!--Del-->
+ - **生态诉求**：支持第三方穿戴接收系统通知
+diff --git a/zh-cn/application-dev/reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md b/zh-cn/application-dev/reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md
+index bef3eb5bb4f0fabdc3919e05a7644a24447d6771..08770e8763f1bb56b9ce0043b8545b1d167cb95d 100644
+--- a/zh-cn/application-dev/reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md
++++ b/zh-cn/application-dev/reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md
+@@ -70,6 +70,60 @@ try {
+ }
+ ```
+ 
++## notificationExtensionSubscription.openSubscriptionSettingsWithResult<sup>26+</sup>
++
++openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGrantSetting\>
++
++打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权"允许获取本机通知"开关与"已获取的本机通知"应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权的结果。
++
++**模型约束**：此接口仅可在Stage模型下使用。
++
++**系统能力**：SystemCapability.Notification.Notification
++
++**需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
++
++**参数：**
++
++| 参数名   | 类型                     | 必填 | 说明                 |
++| -------- | ------------------------ | ---- |--------------------|
++| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知设置页面绑定Ability的上下文。 |
++
++**返回值：**
++
++| 类型     | 说明 | 
++| ------- |--|
++| Promise\<[UserGrantSetting](#usergrantsetting26)\> | Promise对象，返回用户设置的授权的结果。 | 
++
++**错误码：**
++
++以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
++
++| 错误码ID | 错误信息                            |
++| -------- | ----------------------------------- |
++| 201      | Permission denied or current device not supported.     |  
++| 1600001  | Internal error.                     |
++| 1600018  | The notification settings window is already displayed.           |
++| 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
++
++**示例：**
++
++```ts
++import { common } from '@kit.AbilityKit';
++
++try {
++  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
++  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
++  notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
++    console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
++  }).catch((e:Error) => {
++    let error = e as BusinessError
++    console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
++  });
++} catch (error) {
++  console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
++}
++```
++
+ ## notificationExtensionSubscription.subscribe
+ 
+ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
+@@ -330,3 +384,17 @@ type GrantedBundleInfo = _GrantedBundleInfo
+ | 类型 | 说明 |
+ | --- | --- |
+ | [_GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | 授权应用的包信息。 |
++
++## UserGrantSetting<sup>26+</sup>
++
++type UserGrantSetting = _UserGrantSetting
++
++用户授权的设置信息。
++
++**模型约束**：此接口仅可在Stage模型下使用。
++
++**系统能力**： SystemCapability.Notification.Notification
++
++| 类型 | 说明 |
++| --- | --- |
++| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting26) | 用户授权的设置信息。 |
+diff --git a/zh-cn/application-dev/reference/apis-notification-kit/js-apis-notificationManager.md b/zh-cn/application-dev/reference/apis-notification-kit/js-apis-notificationManager.md
+index edbd505f9bb1529c2ff3ab438107e6c05f500067..a9dfc8576381a307d606459f818357ecc49cbac4 100644
+--- a/zh-cn/application-dev/reference/apis-notification-kit/js-apis-notificationManager.md
++++ b/zh-cn/application-dev/reference/apis-notification-kit/js-apis-notificationManager.md
+@@ -1400,7 +1400,7 @@ requestEnableNotification(context: UIAbilityContext, callback: AsyncCallback\<vo
+ > **说明：**
+ >
+ > - 仅当应用界面加载完成后（即调用[loadContent](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#loadcontent)成功），方可使用该接口。
+-> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettings](#notificationmanageropennotificationsettings13)二次申请授权，拉起通知管理弹窗。
++> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult26)二次申请授权，拉起通知管理弹窗。
+ 
+ **模型约束**：此接口仅可在Stage模型下使用。
+ 
+@@ -1465,7 +1465,7 @@ requestEnableNotification(context: UIAbilityContext): Promise\<void\>
+ > **说明：**
+ >
+ > - 仅当应用界面加载完成后（即调用[loadContent](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#loadcontent)成功），方可使用该接口。
+-> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettings](#notificationmanageropennotificationsettings13)二次申请授权，拉起通知管理弹窗。
++> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult26)二次申请授权，拉起通知管理弹窗。
+ 
+ **模型约束**：此接口仅可在Stage模型下使用。
+ 
+@@ -1753,6 +1753,66 @@ class MyAbility extends UIAbility {
+ }
+ ```
+ 
++## notificationManager.openNotificationSettingsWithResult<sup>26+</sup>
++
++openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<NotificationSetting\>
++
++拉起应用的通知设置界面，该页面以半模态形式呈现，可用于设置通知开关、通知提醒方式等。使用Promise异步回调, 当半模态窗口关闭时返回用户设置的状态。
++
++**模型约束**：此接口仅可在Stage模型下使用。
++
++**系统能力**：SystemCapability.Notification.NotificationSettings
++
++**参数：**
++
++| 参数名   | 类型                     | 必填 | 说明                 |
++| -------- | ------------------------ | ---- |--------------------|
++| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知设置页面绑定Ability的上下文。 |
++
++**返回值：**
++
++| 类型      | 说明        | 
++|---------|-----------|
++| Promise\<[NotificationSetting](#notificationsetting20)\> | Promise对象，返回此应用程序的通知设置。 | 
++
++**错误码：**
++
++以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
++
++| 错误码ID | 错误信息                            |
++| -------- | ----------------------------------- |
++| 801 | Capability not supported. |
++| 1600001  | Internal error.                     |
++| 1600003  | Failed to connect to the service.          |
++| 1600018  | The notification settings window is already displayed.           |
++
++**示例：**
++
++```ts
++import { BusinessError } from '@kit.BasicServicesKit';
++import { UIAbility } from '@kit.AbilityKit';
++import { window } from '@kit.ArkUI';
++import { hilog } from '@kit.PerformanceAnalysisKit';
++
++class MyAbility extends UIAbility {
++  onWindowStageCreate(windowStage: window.WindowStage) {
++    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
++    windowStage.loadContent('pages/Index', (err, data) => {
++      if (err.code) {
++        hilog.error(0x0000, 'testTag', `Failed to load the content. Cause: ${JSON.stringify(err) ?? ''}`);
++        return;
++      }
++      hilog.info(0x0000, 'testTag', `Succeeded in loading the content. Data: ${JSON.stringify(data) ?? ''}`);
++      notificationManager.openNotificationSettingsWithResult(this.context).then((data) => {
++        hilog.info(0x0000, 'testTag', `[ANS] openNotificationSettingsWithResult success, data: ${JSON.stringify(data)}`);
++      }).catch((err: BusinessError) => {
++        hilog.error(0x0000, 'testTag', `[ANS] openNotificationSettingsWithResult failed, code is ${err.code}, message is ${err.message}`);
++      });
++    });
++  }
++}
++```
++
+ ## notificationManager.getNotificationSetting<sup>20+</sup>
+ 
+ getNotificationSetting(): Promise\<NotificationSetting\>
