@@ -21,8 +21,8 @@
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ---- |
 | origin | string | 否  | 否 | 指定源的字符串索引。 |
-| usage  | double | 否  | 否 | 指定源的存储量。     |
-| quota  | double | 否  | 否 | 指定源的存储配额。   |
+| usage  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否  | 否 | 指定源的存储量。     |
+| quota  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否  | 否 | 指定源的存储配额。   |
 
 ## WebHeader
 
