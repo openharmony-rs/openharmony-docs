@@ -8,7 +8,7 @@
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
-## WebStorageOrigin<sup>9+</sup>
+## WebStorageOrigin
 
 提供Web SQL数据库的使用信息。
 
