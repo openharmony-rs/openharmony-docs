@@ -156,7 +156,7 @@
    从API version 16开始，支持通过[BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
 
    <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
      // 长时任务id
@@ -164,33 +164,35 @@
      // 长时任务取消原因
      console.info('OnContinuousTaskCancel callback reason ' + info.reason);
    }
-
+   
    @Entry
    @Component
    struct Index {
      @State message: string = 'ContinuousTask';
      // 通过getUIContext().getHostContext()方法，来获取page所在的UIAbility上下文
      private context: Context | undefined = this.getUIContext().getHostContext();
-
+   
+     // ...
+   
      OnContinuousTaskCancel() {
        try {
-          backgroundTaskManager.on('continuousTaskCancel', callback);
-          console.info(`Succeeded in operationing OnContinuousTaskCancel.`);
+         backgroundTaskManager.on('continuousTaskCancel', callback);
+         console.info(`Succeeded in operationing OnContinuousTaskCancel.`);
        } catch (error) {
-          console.error(`Operation OnContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+         console.error(`Operation OnContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
        }
      }
-
+   
      OffContinuousTaskCancel() {
        try {
-          // callback参数不传，则取消所有已注册的回调
-          backgroundTaskManager.off('continuousTaskCancel', callback);
-          console.info(`Succeeded in operationing OffContinuousTaskCancel.`);
+         // callback参数不传，则取消所有已注册的回调
+         backgroundTaskManager.off('continuousTaskCancel', callback);
+         console.info(`Succeeded in operationing OffContinuousTaskCancel.`);
        } catch (error) {
-          console.error(`Operation OffContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+         console.error(`Operation OffContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
        }
      }
-
+   
      // 申请长时任务.then()写法
      startContinuousTask() {
        let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -214,7 +216,7 @@
            // [backgroundTaskManager.BackgroundModeType.SUB_MODE] :backgroundTaskManager.BackgroundSubMode.CAR_KEY
          // }
        };
-
+   
        try {
          // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
          // 在原子化服务中，使用wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {替换下面一行代码
@@ -222,12 +224,12 @@
            try {
              let list: string[] = ['audioPlayback'];
              // let list: string[] = ['bluetoothInteraction']; 长时任务类型包含bluetoothInteraction，CAR_KEY子类型合法
-             // 在原子化服务中，let list: Array<string> = ["audioPlayback"];
              backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).
                then((res: backgroundTaskManager.ContinuousTaskNotification) => {
-               console.info("Operation startBackgroundRunning succeeded");
+               console.info('Operation startBackgroundRunning succeeded');
                // 此处执行具体的长时任务逻辑，如播音等。
                // 系统会对业务场景的真实性进行检测，如果没有实际执行对应的业务，系统可能会取消对应的长时任务并挂起应用。
+               // ...
              }).catch((error: BusinessError) => {
                console.error(`Failed to Operation startBackgroundRunning. code is ${error.code} message is ${error.message}`);
              });
@@ -239,16 +241,17 @@
          console.error(`Failed to Operation getWantAgent. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
        }
      }
-
+   
      // 取消长时任务.then()写法
      stopContinuousTask() {
-        backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
-          console.info(`Succeeded in operationing stopBackgroundRunning.`);
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
-        });
+       backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
+         console.info(`Succeeded in operationing stopBackgroundRunning.`);
+         // ...
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
+       });
      }
-
+   
      build() {
        Row() {
          Column() {
@@ -264,6 +267,7 @@
            .backgroundColor('#0D9FFB')
            .width(250)
            .height(40)
+           .id('applyContinuousTask')
            .onClick(() => {
              // 通过按钮申请长时任务
              this.startContinuousTask();
@@ -277,13 +281,14 @@
            .backgroundColor('#0D9FFB')
            .width(250)
            .height(40)
+           .id('resetContinuousTask')
            .onClick(() => {
              // 此处结束具体的长时任务的执行
    
              // 通过按钮取消长时任务
              this.stopContinuousTask();
            })
-
+   
            Button() {
              Text('注册长时任务取消回调').fontSize(25).fontWeight(FontWeight.Bold)
            }
@@ -296,7 +301,7 @@
              // 通过按钮注册长时任务取消回调
              this.OnContinuousTaskCancel();
            })
-
+   
            Button() {
              Text('取消注册长时任务取消回调').fontSize(25).fontWeight(FontWeight.Bold)
            }
@@ -309,6 +314,7 @@
              // 通过按钮取消注册长时任务取消回调
              this.OffContinuousTaskCancel();
            })
+           // ...
          }
          .width('100%')
        }
