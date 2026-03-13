@@ -136,7 +136,7 @@ constructor()
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -171,7 +171,7 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -211,7 +211,7 @@ onProgress(callback: Callback\<SyncProgress>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -252,7 +252,7 @@ off(event: 'progress', callback?: Callback\<SyncProgress>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -295,7 +295,7 @@ offProgress(callback?: Callback\<SyncProgress>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -336,7 +336,7 @@ start(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -406,7 +406,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -470,7 +470,7 @@ stop(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -527,7 +527,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -588,7 +588,7 @@ ArkTS-Sta: getLastSyncTime(): Promise&lt;long&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -649,7 +649,7 @@ ArkTS-Sta: getLastSyncTime(callback: AsyncCallback&lt;long&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -751,7 +751,7 @@ on(event: 'progress', callback: Callback\<DownloadProgress>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -798,7 +798,7 @@ on(event: 'batchDownload', callback: Callback&lt;MultiDownloadProgress&gt;): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -850,7 +850,7 @@ onProgress(callback: Callback\<DownloadProgress>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -895,7 +895,7 @@ onBatchDownload(callback: Callback&lt;MultiDownloadProgress&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -948,7 +948,7 @@ off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -997,7 +997,7 @@ off(event: 'batchDownload', callback?: Callback&lt;MultiDownloadProgress&gt;): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1045,7 +1045,7 @@ offProgress(callback?: Callback\<DownloadProgress>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1092,7 +1092,7 @@ offBatchDownload(callback?: Callback&lt;MultiDownloadProgress&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1144,7 +1144,7 @@ start(uri: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1226,7 +1226,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1305,7 +1305,7 @@ ArkTS-Sta: startBatch(uris: Array&lt;string&gt;, fileType?: DownloadFileType): P
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1392,7 +1392,7 @@ stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1458,7 +1458,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1536,7 +1536,7 @@ ArkTS-Sta: stopBatch(downloadId: long, needClean?: boolean): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1616,7 +1616,7 @@ cleanFileCache(uri: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1761,7 +1761,7 @@ getFailedFiles(): Array&lt;FailedFileInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1853,7 +1853,7 @@ getSuccessfulFiles(): Array&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1943,7 +1943,7 @@ registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1963,9 +1963,9 @@ ArkTS-Dyn示例：
   let uri = fileUri.getUriFromPath(path);
   let onCallback1 = (changeData: cloudSync.ChangeData) => {
     if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-      //file had added, do something
+      // file had added, do something
     } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-      //file had removed, do something
+      // file had removed, do something
     }
   }
   cloudSync.registerChange(uri, false, onCallback1);
@@ -2011,7 +2011,7 @@ unregisterChange(uri: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -2031,9 +2031,9 @@ ArkTS-Dyn示例：
   let uri = fileUri.getUriFromPath(path);
   let onCallback1 = (changeData: cloudSync.ChangeData) => {
     if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-      //file had added, do something
+      // file had added, do something
     } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-      //file had removed, do something
+      // file had removed, do something
     }
   }
   cloudSync.registerChange(uri, false, onCallback1);
@@ -2165,7 +2165,7 @@ constructor()
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -2210,7 +2210,7 @@ ArkTS-Sta: getHistoryVersionList(uri: string, versionNumLimit: int): Promise&lt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -2295,7 +2295,7 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;Ver
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -2395,7 +2395,7 @@ replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -2513,7 +2513,7 @@ isFileConflict(uri: string): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -2589,7 +2589,7 @@ clearFileConflict(uri: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -2679,7 +2679,7 @@ getCoreFileSyncState(uri: string): FileState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
