@@ -670,3 +670,17 @@
 **支持设备**：General
 
 **起始版本**：24
+
+## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
+
+允许应用查询ObjectEditorExtensionAbility信息和拉起ObjectEditorExtensionAbility组件。
+
+获取该权限后，应用可以查询当前可插入的嵌入内容类型，并编辑该类型的内容。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Phone | Tablet
+
+**起始版本**：24
