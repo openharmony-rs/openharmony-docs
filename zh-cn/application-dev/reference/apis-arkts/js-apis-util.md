@@ -987,6 +987,7 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 **示例：**
 
 ```ts
+// 当解析不含有\0的字节的示例代码
 let textDecoderOptions: util.TextDecoderOptions = {
   fatal: false,
   ignoreBOM : true
@@ -1058,7 +1059,6 @@ decodeWithStream(input: Uint8Array, options?: DecodeWithStreamOptions): string
 **示例：**
 
 ```ts
-// 当解析不含有\0的字节的示例代码
 let textDecoderOptions: util.TextDecoderOptions = {
   fatal: false,
   ignoreBOM : true
