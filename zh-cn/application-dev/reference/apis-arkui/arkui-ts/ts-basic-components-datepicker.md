@@ -45,8 +45,8 @@ DatePicker(options?: DatePickerOptions)
 
 | 名称     | 类型 | 只读 | 可选 | 说明                                                         |
 | -------- | ---- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| start    | Date | 否  | 是  | 指定选择器的起始日期。<br/>默认值：Date('1970-1-1')<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。          |
-| end      | Date | 否  | 是  | 指定选择器的结束日期。<br/>默认值：Date('2100-12-31')<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
+| start    | Date | 否  | 是  | 指定选择器的起始日期。<!--RP1--><!--RP1End--><br/>默认值：Date('1970-1-1')<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。          |
+| end      | Date | 否  | 是  | 指定选择器的结束日期。<!--RP2--><!--RP2End--><br/>默认值：Date('2100-12-31')<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
 | selected | Date | 否  | 是  | 设置选中项的日期。<br/>默认值：当前系统日期。<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | mode<sup>18+</sup> | [DatePickerMode](#datepickermode18枚举说明) | 否  | 是  | 设置日期展示模式。<br/>默认值：DatePickerMode.DATE，显示年、月、日三列。<br/>在[DatePickerDialog](ts-methods-datepicker-dialog.md)中，当[DatePickerDialogOptions](ts-methods-datepicker-dialog.md#datepickerdialogoptions对象说明)的showTime设置为true时，此参数不生效，默认显示年、月、日三列。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
