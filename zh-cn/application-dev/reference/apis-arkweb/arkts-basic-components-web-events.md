@@ -4340,7 +4340,7 @@ ArkTS-Sta: onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\> | undefined)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | ArkTS-Dyn: Callback\<[OnWindowNewExtEvent](./arkts-basic-components-web-i.md#onwindownewextevent23)\> <br/>ArkTS-Sta: Callback\<[OnWindowNewExtEvent](./arkts-basic-components-web-i.md#onwindownewextevent23) \| undefined | 是 | 网页要求用户创建窗口时触发的回调。    |
+| callback       | ArkTS-Dyn: Callback\<[OnWindowNewExtEvent](./arkts-basic-components-web-i.md#onwindownewextevent23)\> <br/>ArkTS-Sta: Callback\<[OnWindowNewExtEvent](./arkts-basic-components-web-i.md#onwindownewextevent23)\> \| undefined | 是 | 网页要求用户创建窗口时触发的回调。    |
 
 **示例：**
 
@@ -4682,7 +4682,7 @@ ArkTS-Sta: onWindowExit(callback: (() => void) | undefined)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: () => void \|  undefined| 是 | 窗口请求关闭的回调函数。 |
+| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: (() => void) \|  undefined| 是 | 窗口请求关闭的回调函数。 |
 
 **示例：**
 
@@ -4990,7 +4990,7 @@ ArkTS-Sta: onInterceptKeyEvent(callback: ((event: KeyEvent) => boolean) | undefi
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: (event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)) => boolean <br/>ArkTS-Sta: (event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)) => boolean \|  undefined| 是 | 触发的KeyEvent事件。<br>返回值为boolean类型，true表示将该KeyEvent传入Webview内核，false表示不将该KeyEvent传入ArkWeb内核。 |
+| callback | ArkTS-Dyn: (event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)) => boolean <br/>ArkTS-Sta: ((event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)) => boolean) \|  undefined| 是 | 触发的KeyEvent事件。<br>返回值为boolean类型，true表示将该KeyEvent传入Webview内核，false表示不将该KeyEvent传入ArkWeb内核。 |
 
 **示例：**
 
@@ -5822,7 +5822,7 @@ ArkTS-Sta: onControllerAttached(callback: (() => void) | undefined)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: () => void \|  undefined | 是 | 当ArkWeb控制器初始化成功时触发的回调。 |
+| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: (() => void \|  undefined) | 是 | 当ArkWeb控制器初始化成功时触发的回调。 |
 
 **示例：**
 
