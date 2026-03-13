@@ -483,9 +483,9 @@ Codec MIME类型枚举。
 
 | 名称                     | 值              | 说明                                                         |
 | ------------------------ | --------------- | ------------------------------------------------------------ |
-| WINDOW_ONLY       | 0   | 仅显示窗口列表                       |
-| SCREEN_ONLY        | 1    | 仅显示屏幕列表 |
-| SCREEN_AND_WINDOW        | 2    | 同时显示屏幕列表和窗口列表                 |
+| WINDOW_ONLY       | 0   | 仅显示窗口列表。                       |
+| SCREEN_ONLY        | 1    | 仅显示屏幕列表。 |
+| SCREEN_AND_WINDOW        | 2    | 同时显示屏幕列表和窗口列表。                 |
 
 ## AudioEncoder<sup>(deprecated)</sup>
 
