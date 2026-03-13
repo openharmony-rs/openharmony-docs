@@ -243,7 +243,7 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -288,7 +288,7 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -649,7 +649,7 @@ constructor(bundleName: string)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                                                                                          |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -692,7 +692,7 @@ getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                                                                                          |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -744,7 +744,7 @@ startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                                                                                          |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -798,7 +798,7 @@ stopDownload(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                                                                                          |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -872,7 +872,7 @@ if (needStop) {
 
   **错误码：**
 
-  以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+  以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
