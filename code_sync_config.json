@@ -8476,6 +8476,26 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/CustomDrawIrregularSample/entry/src/main/cpp/ArkUIIrregularGridNode.h",
+				"functions":[
+					{
+						"end_line":227,
+						"name":"irregular-grid",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/CustomDrawIrregularSample/entry/src/main/cpp/NativeEntry.cpp",
+				"functions":[
+					{
+						"end_line":157,
+						"name":"irregular-grid-entrance",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -17617,6 +17637,11 @@
 						"end_line":746,
 						"name":"arkUICustomNodeCpp_start",
 						"start_line":28
+					},
+					{
+						"end_line":747,
+						"name":"messageMaskCpp_start",
+						"start_line":29
 					}
 				]
 			},
@@ -17642,6 +17667,16 @@
 						"end_line":103,
 						"name":"drawCanvas_Start",
 						"start_line":82
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUIMessageMaskNode.h",
+				"functions":[
+					{
+						"end_line":285,
+						"name":"messageMaskNode_start",
+						"start_line":17
 					}
 				]
 			}
