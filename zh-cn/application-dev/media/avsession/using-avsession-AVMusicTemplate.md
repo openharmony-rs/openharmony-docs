@@ -276,7 +276,7 @@
    }
    ```
    
-4. 媒体应用启动时注册的事件监听需要在退出时注销，以释放资源。注销接口详情请查看[AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
+4. 媒体应用启动时注册的事件监听需要在应用退出时注销，以释放资源。注销接口详情请查看[AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
 
    <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
