@@ -412,8 +412,8 @@ Web同层渲染的配置。
 **ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| request | [PermissionRequest](./arkts-basic-components-web-PermissionRequest.md) | 否 | 否 | 通知Web组件用户操作行为。   |
+| -------------- | ---- | ---- | ------------|---------------------------- |
+| request | [PermissionRequest](./arkts-basic-components-web-PermissionRequest.md) | 否 | 否 | 通知Web组件用户操作行为。 |
 
 ## OnScreenCaptureRequestEvent<sup>12+</sup>
 
