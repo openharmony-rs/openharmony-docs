@@ -28,7 +28,7 @@
    - [createAVMusicTemplateController](../../reference/apis-avsession-kit/js-apis-avsession-avMusicTemplate-sys.md#avmusictemplatecreateavmusictemplatecontroller)：创建音频模板控制器。需要sessionId参数。
    - [getAllAVMusicTemplateDescriptors](../../reference/apis-avsession-kit/js-apis-avsession-avMusicTemplate-sys.md#avmusictemplategetallavmusictemplatedescriptors)：获取所有的音频模板描述。由于媒体应用创建音频模板可能发生在进程启动之前，所以无法通过音频模板创建事件获取sessionId。可在进程启动后，通过该方法获取sessionId。
    - [onAVMusicTemplateCreate](../../reference/apis-avsession-kit/js-apis-avsession-avMusicTemplate-sys.md#avmusictemplateonavmusictemplatecreate)：音频模板创建事件。
-   - [onAVMusicTemplateDestroy](../../reference/apis-avsession-kit/js-apis-avsession-avMusicTemplate-sys.md#avmusictemplateonavmusictemplatedestroy)：音频模板销毁事件。
+   - [onAVMusicTemplateDestroy](../../reference/apis-avsession-kit/js-apis-avsession-avMusicTemplate-sys.md#avmusictemplateonavmusictemplatedestroy)：监听音频模板销毁事件。
 
    <!-- @[create_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
    
