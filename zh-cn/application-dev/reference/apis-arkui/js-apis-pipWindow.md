@@ -695,11 +695,11 @@ type PiPVideoActionEvent = 'playbackStateChanged' | 'nextVideo' | 'previousVideo
 
 | 类型                         | 说明                                      |
 | ---------------------------- | ----------------------------------------- |
-| 'playbackStateChanged'       | 播放状态发生了变化。                      |
-| 'nextVideo'                  | 播放下一个视频。                          |
-| 'previousVideo'              | 播放上一个视频。                          |
-| 'fastForward'<sup>12+</sup>  | 视频进度快进。从API version 12 开始支持。 |
-| 'fastBackward'<sup>12+</sup> | 视频进度后退。从API version 12 开始支持。 |
+| 'playbackStateChanged'       | 播放状态发生了变化。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24  |
+| 'nextVideo'                  | 播放下一个视频。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24     |
+| 'previousVideo'              | 播放上一个视频。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24     |
+| 'fastForward'<sup>12+</sup>  | 视频进度快进。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 24 |
+| 'fastBackward'<sup>12+</sup> | 视频进度后退。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 24 |
 
 ## PiPCallActionEvent
 
@@ -717,10 +717,10 @@ type PiPCallActionEvent = 'hangUp' | 'micStateChanged' | 'videoStateChanged' | '
 
 | 类型                | 说明               |
 | ------------------- | ------------------ |
-| 'hangUp'             | 挂断视频通话。     |
-| 'micStateChanged'   | 打开或关闭麦克风。 |
-| 'videoStateChanged' | 打开或关闭摄像头。 |
-| 'voiceStateChanged'<sup>12+</sup> | 静音或解除静音。   |
+| 'hangUp'             | 挂断视频通话。   <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24   |
+| 'micStateChanged'   | 打开或关闭麦克风。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24  |
+| 'videoStateChanged' | 打开或关闭摄像头。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24  |
+| 'voiceStateChanged'<sup>12+</sup> | 静音或解除静音。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 24  |
 
 
 ## PiPMeetingActionEvent
@@ -739,10 +739,10 @@ type PiPMeetingActionEvent = 'hangUp' | 'voiceStateChanged' | 'videoStateChanged
 
 | 类型                | 说明               |
 | ------------------- | ------------------ |
-| 'hangUp'            | 挂断视频会议。     |
-| 'voiceStateChanged' | 静音或解除静音。   |
-| 'videoStateChanged' | 打开或关闭摄像头。 |
-| 'micStateChanged'<sup>12+</sup>   | 打开或关闭麦克风。 |
+| 'hangUp'            | 挂断视频会议。   <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24    |
+| 'voiceStateChanged' | 静音或解除静音。  <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24   |
+| 'videoStateChanged' | 打开或关闭摄像头。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24  |
+| 'micStateChanged'<sup>12+</sup>   | 打开或关闭麦克风。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 24  |
 
 
 ## PiPLiveActionEvent
@@ -755,14 +755,10 @@ type PiPLiveActionEvent = 'playbackStateChanged' | 'voiceStateChanged'
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 24
-
 | 类型                   | 说明             |
 | ---------------------- | ---------------- |
-| 'playbackStateChanged' | 播放或暂停直播。 |
-| 'voiceStateChanged'<sup>12+</sup> | 静音或解除静音。   |
+| 'playbackStateChanged' | 播放或暂停直播。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24 |
+| 'voiceStateChanged'<sup>12+</sup> | 静音或解除静音。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 24  |
 
 
 ## PiPControlStatus<sup>12+</sup>
