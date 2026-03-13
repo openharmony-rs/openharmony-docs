@@ -2009,7 +2009,7 @@ parentPort.onmessage = (): void => {
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[(event:Event)<sup>9+</sup>](#event-event9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[(event:Event)](#event-event9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
 
