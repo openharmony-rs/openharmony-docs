@@ -105,36 +105,6 @@ struct Index {
 }
 ```
 
-## build<sup>23+</sup>
-
-build(): void
-
-组件构建方法。
-
-**ArkTS模式：** 该方法仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
-
-**ArkTS-Sta起始版本：** 23
-
-**示例：**
-
-```ts
-@Entry
-@Component
-struct Index {
-  build() {
-    Row() {
-      Column() {
-        AVCastPicker()
-          .width('40vp')
-          .height('40vp')
-      }
-    }
-  }
-}
-```
-
 ## OnPickerStateCallback<sup>23+</sup>
 
 type OnPickerStateCallback = (state: AVCastPickerState) => void
