@@ -5840,7 +5840,7 @@ ArkTS-Sta: onControllerAttached(callback: (() => void) | undefined)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta:  (() => void) \|  undefined | 是 | 当ArkWeb控制器初始化成功时触发的回调。 |
+| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: (() => void) \|  undefined | 是 | 当ArkWeb控制器初始化成功时触发的回调。 |
 
 **示例：**
 
