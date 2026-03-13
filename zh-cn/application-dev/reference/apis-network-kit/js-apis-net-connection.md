@@ -3448,7 +3448,7 @@ ASCII/Unicode转码转换流程参数的枚举。
 | ALLOW_UNASSIGNED | 1 | 允许转换包含未分配Unicode代码点的域名(在Unicode字符集中，并非所有代码点都已分配字符，即未分配Unicode代码点)。 |
 | USE_STD3_ASCII_RULES | 2 | 在转换过程中，强制使用STD-3 ASCII规则（即RFC 1123标准）检查生成的ASCII域名。 |
 
-## TcpState
+## TcpState<sup>24+</sup>
 
 TCP状态。
 
@@ -3463,7 +3463,7 @@ TCP状态。
 | SYN_RECV    | 3  | 服务端接收SYN并发送ACK+SYN，等待客户端ACK（三次握手的第二步）。 |
 | FIN_WAIT1   | 4  | 主动端发送FIN，等待对方ACK。 |
 | FIN_WAIT2   | 5  | 主动端接收FIN的ACK，等待对方ACK。 |
-| TIME_WAIT   | 6  | 主动端接收对方FIN并回复ACK，等待2MSL（最大报文段生存时间）后彻底释放。 |
+| TIME_WAIT   | 6  | 主动端接收对方FIN并回复ACK，等待2倍最大报文段生存时间后彻底释放。 |
 | CLOSE       | 7  | 初始/关闭状态，无连接。 |
 | CLOSE_WAIT  | 8  | 被动端接收FIN并发送ACK，等待对方FIN。 |
 | LAST_ACK    | 9  | 被动端发送FIN后，等待对方ACK。 |
