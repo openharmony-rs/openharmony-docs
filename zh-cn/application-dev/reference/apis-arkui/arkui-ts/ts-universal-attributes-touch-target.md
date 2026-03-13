@@ -13,7 +13,7 @@
 
 ArkTS-Dyn: responseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
-ArkTS-Sta: responseRegion(value: Array\<Rectangle> | Rectangle | undefined): this
+ArkTS-Sta: responseRegion(value: Array&lt;Rectangle&gt; | Rectangle | undefined): this
 
 设置一个或多个触摸热区。
 
@@ -25,7 +25,7 @@ ArkTS-Sta: responseRegion(value: Array\<Rectangle> | Rectangle | undefined): thi
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -37,11 +37,11 @@ ArkTS-Sta: responseRegion(value: Array\<Rectangle> | Rectangle | undefined): thi
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
-## mouseResponseRegion<sup>22+</sup>
+## mouseResponseRegion<sup>23+</sup>
 
-mouseResponseRegion(value: Array\<Rectangle> | Rectangle | undefined)
+mouseResponseRegion(value: Array&lt;Rectangle&gt; | Rectangle | undefined)
 
 设置一个或多个触摸热区。
 
@@ -49,7 +49,7 @@ mouseResponseRegion(value: Array\<Rectangle> | Rectangle | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
  
@@ -63,8 +63,14 @@ mouseResponseRegion(value: Array\<Rectangle> | Rectangle | undefined)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 类型                       | 必填   | 描述                             |
-| ------ | ----------------------------- | -----| -------------------------------- |
+| ------ | ----------------------------- | ---- | -------------------------------- |
 | x      | [Length](ts-types.md#length)  | 否   | 触摸点相对于组件左上角的x轴坐标。<br/>默认值：0vp |
 | y      | [Length](ts-types.md#length)  | 否   | 触摸点相对于组件左上角的y轴坐标。<br/>默认值：0vp |
 | width  | [Length](ts-types.md#length)  | 否   | 触摸热区的宽度。<br/>默认值：'100%' |

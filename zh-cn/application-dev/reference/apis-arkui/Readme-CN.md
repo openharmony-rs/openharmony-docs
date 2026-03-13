@@ -191,6 +191,7 @@
     - 绑定手势<!--gesture-binding-->
       - [绑定手势方法](arkui-ts/ts-gesture-settings.md)
       - [设置组件绑定的手势](arkui-ts/ts-uigestureevent.md)
+      - [手势处理器](arkui-ts/ts-gesturehandler.md)
     - 基础手势<!--basic-gestures-->
       - [TapGesture](arkui-ts/ts-basic-gestures-tapgesture.md)
       - [LongPressGesture](arkui-ts/ts-basic-gestures-longpressgesture.md)
@@ -202,6 +203,7 @@
     - 手势控制<!--gesture-control-->
       - [自定义手势判定](arkui-ts/ts-gesture-customize-judge.md)
       - [手势拦截增强](arkui-ts/ts-gesture-blocking-enhancement.md)
+    - [手势公共接口](arkui-ts/ts-gesture-common.md)
   - 行列与堆叠<!--rows-columns-and-stacking-->
     - [Flex](arkui-ts/ts-container-flex.md)
     - [Column](arkui-ts/ts-container-column.md)

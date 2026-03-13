@@ -28,7 +28,7 @@ ArkTS-Sta: id(value: string | undefined): this
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -40,7 +40,7 @@ ArkTS-Sta: id(value: string | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ### key<sup>12+</sup>
 
@@ -56,7 +56,7 @@ ArkTS-Sta: key(value: string | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -68,7 +68,7 @@ ArkTS-Sta: key(value: string | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## 接口
 
@@ -81,6 +81,12 @@ getInspectorByKey(id: string): string
 此接口仅用于对应用的测试，使用时建议等应用启动且布局完成后再调用此接口。由于耗时长，不建议测试之外的场景使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数:**
 

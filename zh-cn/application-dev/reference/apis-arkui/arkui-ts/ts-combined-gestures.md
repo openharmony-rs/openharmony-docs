@@ -14,6 +14,10 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 参数类型                                                     | 必填 | 参数描述                                                     |
@@ -27,20 +31,30 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 描述                                       |
 | --------- | ---------------------------------------- |
-| Sequence  | 顺序识别，按照手势的注册顺序识别手势，直到所有手势识别成功。若有一个手势识别失败，后续手势识别均失败。<br>顺序识别手势组仅有最后一个手势可以响应onActionEnd。 |
+| Sequence  | 顺序识别，按照手势的注册顺序识别手势，直到所有手势识别成功。若有一个手势识别失败，后续手势识别均失败。<br/>顺序识别手势组仅有最后一个手势可以响应onActionEnd。 |
 | Parallel  | 并发识别，注册的手势同时识别，直到所有手势识别结束，手势识别互相不影响。     |
 | Exclusive | 互斥识别，注册的手势同时识别，若有一个手势识别成功，则结束手势识别。       |
 
 
 ## 事件
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                       | 功能描述                                 |
 | ---------------------------------------- | ------------------------------------ |
-| onCancel(event:&nbsp;()&nbsp;=&gt;&nbsp;void) | 顺序组合手势（GestureMode.Sequence）取消后触发回调。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| onCancel(event:&nbsp;()&nbsp;=&gt;&nbsp;void) | 顺序组合手势（GestureMode.Sequence）取消后触发回调。|
 
 
 ## 示例

@@ -26,7 +26,7 @@ ArkTS-Sta: accessibilityGroup(value: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -105,7 +105,7 @@ ArkTS-Sta: accessibilityText(value: string | undefined): this
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -135,7 +135,7 @@ ArkTS-Sta: accessibilityText(text: Resource | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -166,7 +166,7 @@ ArkTS-Sta: accessibilityDescription(value: string | undefined): this
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -196,7 +196,7 @@ ArkTS-Sta: accessibilityDescription(description: Resource | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -226,7 +226,7 @@ ArkTS-Sta: accessibilityLevel(value: string | undefined): this
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -256,7 +256,7 @@ ArkTS-Sta: accessibilityVirtualNode(builder: CustomBuilder | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -286,7 +286,7 @@ ArkTS-Sta: accessibilityChecked(isCheck: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -302,7 +302,9 @@ ArkTS-Sta: accessibilityChecked(isCheck: boolean | undefined): this
 
 ## accessibilitySelected<sup>13+</sup>
 
-accessibilitySelected(isSelect: boolean):T
+ArkTS-Dyn: accessibilitySelected(isSelect: boolean):T
+
+ArkTS-Sta: accessibilitySelected(isSelect: boolean | undefined): this
 
 无障碍节点是否选中的状态维护，用于支持单选的情况使用，表示组件是否被选中。
 
@@ -312,17 +314,21 @@ accessibilitySelected(isSelect: boolean):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| isSelect | boolean | 是   | 用于表示组件是否被选中。<br/>支持的值为：<br/>true：当前组件被选中。<br/>false：当前组件未被选中。<br/>undefined：由组件自行确定选中状态。<br/>默认值：undefined <br/>**说明：**<br/>1. [accessibilityChecked](ts-universal-attributes-accessibility.md#accessibilitychecked13)属性代表组件是多选模式，而accessibilitySelected属性代表组件是单选模式，组件不能同时存在两种选择模式，会造成无障碍状态冲突，导致屏幕朗读等无障碍辅助应用无法正确识别选中状态。如使用当前接口设置组件为单选模式（true、false），则需要保证未使用accessibilityChecked函数设置属性为true或者false，如果已设置，需使用accessibilityChecked函数设置accessibilityChecked属性为undefined模式。 |
+| isSelect | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 用于表示组件是否被选中。<br/>支持的值为：<br/>true：当前组件被选中。<br/>false：当前组件未被选中。<br/>undefined：由组件自行确定选中状态。<br/>默认值：undefined <br/>**说明：**<br/>1. [accessibilityChecked](ts-universal-attributes-accessibility.md#accessibilitychecked13)属性代表组件是多选模式，而accessibilitySelected属性代表组件是单选模式，组件不能同时存在两种选择模式，会造成无障碍状态冲突，导致屏幕朗读等无障碍辅助应用无法正确识别选中状态。如使用当前接口设置组件为单选模式（true、false），则需要保证未使用accessibilityChecked函数设置属性为true或者false，如果已设置，需使用accessibilityChecked函数设置accessibilityChecked属性为undefined模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## accessibilityRole<sup>18+</sup>
 
@@ -340,7 +346,7 @@ ArkTS-Sta: accessibilityRole(role: AccessibilityRoleType | undefined): this
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -361,6 +367,10 @@ ArkTS-Sta: accessibilityRole(role: AccessibilityRoleType | undefined): this
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值  | 说明             |
 | ---- | ---- | ------------------ |
@@ -506,7 +516,7 @@ ArkTS-Sta: accessibilityNextFocusId(nextId: string | undefined): this
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -536,7 +546,7 @@ ArkTS-Sta: accessibilityDefaultFocus(focus: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -566,7 +576,7 @@ ArkTS-Sta: accessibilityUseSamePage(pageMode: AccessibilitySamePageMode | undefi
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -587,6 +597,10 @@ ArkTS-Sta: accessibilityUseSamePage(pageMode: AccessibilitySamePageMode | undefi
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 值   | 说明                                                         |
 | ----------- | ---- | ------------------------------------------------------------ |
@@ -609,7 +623,7 @@ ArkTS-Sta: accessibilityScrollTriggerable(isTriggerable: boolean | undefined): t
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -639,7 +653,7 @@ ArkTS-Sta: accessibilityTextHint(value: string | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -676,7 +690,7 @@ ArkTS-Sta: accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel | undefined): t
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -712,7 +726,7 @@ ArkTS-Sta: accessibilityStateDescription(description: string | Resource | undefi
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| description  | string \| [Resource](ts-types.md#resource) \| undefined | 是   | 需要播报组件当前状态的语音播报文本。<br/>设置文本超过1000字符时，截取前1000字符进行播报。<br/>undefined：播报文本默认为空。 |
+| description | string \| [Resource](ts-types.md#resource) \| undefined | 是   | 需要播报组件当前状态的语音播报文本。<br/>设置文本超过1000字符时，截取前1000字符进行播报。<br/>undefined：播报文本默认为空。 |
 
 **返回值：**
 
@@ -886,9 +900,9 @@ struct Focus {
         .borderRadius(5)
         .accessibilityText("有accessibility有text优先读accessibility")
         .accessibilityLevel("yes")
-      // Button().accessibilityLevel("yes").accessibilityText("accessibility无text 读accessibility")
+      Button().accessibilityLevel("yes").accessibilityText("accessibility无text 读accessibility")
       Button("无accessibility有text 读text").accessibilityLevel("yes")
-      // Button()
+      Button()
       Button('btn123').accessibilityText("有accessibility有text btn123").accessibilityLevel("yes")
       Button('btn123').accessibilityLevel("yes")
     }
@@ -1038,10 +1052,10 @@ struct Index {
           this.isDownloading = !this.isDownloading;
           this.hintStr = this.isDownloading ? '状态变为下载中' : '状态变为暂停下载';
         })
-      // TextInput({ placeholder: '请输入手机号码' })
-      //   .accessibilityLevel('yes')
-      //   .accessibilityTextHint('请输入11位手机号码')
-      //   .width('80%')
+      TextInput({ placeholder: '请输入手机号码' })
+        .accessibilityLevel('yes')
+        .accessibilityTextHint('请输入11位手机号码')
+        .width('80%')
       Text('按照按钮类型播报')
         .accessibilityLevel('yes')
         .accessibilityRole(AccessibilityRoleType.BUTTON)

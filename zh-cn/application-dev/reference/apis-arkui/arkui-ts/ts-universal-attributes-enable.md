@@ -26,7 +26,7 @@ ArkTS-Sta: enabled(value: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -38,11 +38,11 @@ ArkTS-Sta: enabled(value: boolean | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## 示例
 
-该示例通过enable设置按钮可交互性。
+该示例通过enabled设置按钮可交互性。
 
 ```ts
 // xxx.ets

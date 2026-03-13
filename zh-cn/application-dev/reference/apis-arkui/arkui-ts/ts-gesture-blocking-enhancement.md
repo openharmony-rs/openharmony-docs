@@ -22,7 +22,7 @@ ArkTS-Sta: shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizer
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名        | 参数类型                    | 必填  | 参数描述                          |
@@ -33,7 +33,7 @@ ArkTS-Sta: shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizer
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## ShouldBuiltInRecognizerParallelWithCallback
 
@@ -45,577 +45,22 @@ type ShouldBuiltInRecognizerParallelWithCallback = (current: GestureRecognizer, 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| current | [GestureRecognizer](#gesturerecognizer) | 是   | 当前组件的系统内置手势识别器，当前版本只提供内置的[PAN_GESTURE](ts-gesture-customize-judge.md#gesturejudgeresult)类型的手势识别器。 |
-| others | Array\<[GestureRecognizer](#gesturerecognizer)\> | 是   | 响应链上更高优先级的其他组件相同类别的手势识别器。 |
+| current | [GestureRecognizer](./ts-gesture-common.md#gesturerecognizer12) | 是   | 当前组件的系统内置手势识别器，当前版本只提供内置的[PAN_GESTURE](./ts-gesture-common.md#gesturetype11)类型的手势识别器。 |
+| others | Array\<[GestureRecognizer](./ts-gesture-common.md#gesturerecognizer12)\> | 是   | 响应链上更高优先级的其他组件相同类别的手势识别器。 |
 
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| [GestureRecognizer](#gesturerecognizer) | 与current识别器绑定并行关系的某个手势识别器。 |
-
-## TouchRecognizer<sup>20+</sup> 
-
-触摸识别器对象。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-### getEventTargetInfo<sup>20+</sup>
-
-getEventTargetInfo(): EventTargetInfo
-
-返回当前手势识别器对应组件的信息。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 24
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| [EventTargetInfo](#eventtargetinfo) | 当前手势识别器对应组件的信息。 |
-
-### cancelTouch<sup>20+</sup>
-
-cancelTouch(): void
-
-向当前手势识别器发送触摸取消事件的信息。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 24
-
-## GestureRecognizer
-
-手势识别器对象。
-
-### getTag
-
-getTag(): string
-
-返回当前手势识别器的tag。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| string | 当前手势识别器的tag。 |
-
-### getType
-
-getType(): GestureControl.GestureType
-
-返回当前手势识别器的类型。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| [GestureControl.GestureType](ts-gesture-customize-judge.md#gesturetype) | 当前手势识别器的类型。 |
-
-### isBuiltIn
-
-isBuiltIn(): boolean
-
-返回当前手势识别器是否为系统内置手势。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| boolean | 当前手势识别器是否为系统内置手势。true表示手势识别器为系统内置手势，false表示非系统内置手势。 |
-
-### setEnabled
-
-setEnabled(isEnabled: boolean): void
-
-设置当前手势识别器的使能状态。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名     | 类型                           | 必填   | 说明  |
-| ------- | ---------------------------------- | ---- | ----- |
-| isEnabled   | boolean         | 是    | 手势识别器的使能状态。true表示当前手势识别器能够回调应用事件，false表示当前手势识别器不回调应用事件。 |
-
-### isEnabled
-
-isEnabled(): boolean
-
-返回当前手势识别器的使能状态。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| boolean | 当前手势识别器的使能状态。true表示当前手势识别器能够回调应用事件，false表示当前手势识别器不回调应用事件。 |
-
-### getState
-
-getState(): GestureRecognizerState
-
-返回当前手势识别器的状态。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| [GestureRecognizerState](#gesturerecognizerstate) | 当前手势识别器的状态。 |
-
-### getEventTargetInfo
-
-getEventTargetInfo(): EventTargetInfo
-
-返回当前手势识别器对应组件的信息。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| [EventTargetInfo](#eventtargetinfo) | 当前手势识别器对应组件的信息。 |
-
-### isValid
-
-isValid(): boolean;
-
-返回当前手势识别器是否有效。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| boolean | 当前手势识别器是否有效。当该识别器绑定的组件被析构或者该识别器不在响应链上时返回false。 |
-
-### getFingerCount<sup>18+</sup>
-
-ArkTS-Dyn: getFingerCount(): number
-
-ArkTS-Sta: getFingerCount(): int
-
-返回预设手指识别数阈值。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 22
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 预设手指识别数阈值。<br/>取值范围：[1, 10]，整数。 |
-
-### isFingerCountLimit<sup>18+</sup>
-
-isFingerCountLimit(): boolean
-
-返回预设手势是否会检测触摸屏幕上手指识别数量。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| boolean | 预设手势是否会检测触摸屏幕上手指识别数量。当绑定手势事件且会检测触摸屏幕上手指的数量时，返回true。当绑定手势事件且不会检测触摸屏幕上手指的数量时，返回false。 |
-
-### preventBegin<sup>20+</sup>
-
-preventBegin(): void
-
-阻止手势识别器参与手势处理。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
-## GestureRecognizerState
-
-定义手势识别器状态。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称    | 值   | 描述                               |
-| ------- | ---- | ---------------------------------- |
-| READY | 0    | 准备状态。 |
-| DETECTING    | 1    | 检测状态。 |
-| PENDING    | 2    | 等待状态。 |
-| BLOCKED    | 3    | 阻塞状态。 |
-| SUCCESSFUL    | 4    | 成功状态。 |
-| FAILED    | 5    | 失败状态。 |
-
-## EventTargetInfo
-
-手势识别器对应组件的信息。
-
-### getId
-
-getId(): string
-
-返回当前组件的组件标识。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| string | 当前组件的[组件标识](./ts-universal-attributes-component-id.md#id)。 |
-
-## ScrollableTargetInfo
-
-手势识别器对应的滚动类容器组件的信息，继承于[EventTargetInfo](#eventtargetinfo)。
-
-### isBegin
-
-isBegin(): boolean
-
-返回当前滚动类容器组件是否在顶部，如果为Swiper组件且在循环模式下返回false。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| boolean | 当前滚动类容器组件是否在顶部。true表示组件在顶部，false表示组件不在顶部。 |
-
-### isEnd
-
-isEnd(): boolean
-
-返回当前滚动类容器组件是否在底部，如果为Swiper组件且在循环模式下返回false。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| boolean | 当前滚动类容器组件是否在底部。true表示组件在底部，false表示组件不在底部。 |
-
-## PanRecognizer
-
-拖动手势识别器对象，继承于[GestureRecognizer](#gesturerecognizer)。
-
-### getPanGestureOptions
-
-getPanGestureOptions(): PanGestureOptions
-
-返回当前拖动手势识别器的属性。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| [PanGestureOptions](./ts-basic-gestures-pangesture.md#pangestureoptions) | 当前拖动手势识别器的属性。 |
-
-### getDirection<sup>19+</sup>
-
-getDirection(): PanDirection
-
-返回当前拖动手势识别器的方向。
-
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 19
-
-**ArkTS-Sta起始版本：** 24
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| [PanDirection](./ts-basic-gestures-pangesture.md#pandirection枚举说明) | 当前拖动手势识别器的方向。 |
-
-### getDistance<sup>19+</sup>
-
-ArkTS-Dyn: getDistance(): number
-
-ArkTS-Sta: getDistance(): double
-
-返回当前拖动手势识别器触发的最小滑动距离。
-
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 19
-
-**ArkTS-Sta起始版本：** 24
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖动手势识别器触发的最小滑动距离。单位：vp |
-
-### getDistanceMap<sup>19+</sup>
-
-ArkTS-Dyn: getDistanceMap(): Map\<SourceTool, number\>
-
-ArkTS-Sta: getDistanceMap(): Map\<SourceTool, double\>
-
-返回不同输入源的拖动手势识别器触发的最小滑动距离。
-
->  **说明：**
->
->  仅支持对通过Pan手势初始化配置修改的设备类型进行阈值查询；对于默认滑动阈值，可通过查询[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9).Unknown类型获取其他未主动设置的类型不返回。
-
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 19
-
-**ArkTS-Sta起始版本：** 24
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| ArkTS-Dyn: Map<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9), number><br/>ArkTS-Sta: Map<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9), double> | 不同输入源的拖动手势识别器触发的最小滑动距离。滑动距离的单位：vp |
-
-## TapRecognizer<sup>18+</sup>
-
-点击手势识别器对象，继承于[GestureRecognizer](#gesturerecognizer)。
-
-### getTapCount<sup>18+</sup>
-
-ArkTS-Dyn: getTapCount(): number
-
-ArkTS-Sta: getTapCount(): int
-
-返回预设点击手势识别器连续点击次数阈值。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 22
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 预设点击手势识别器连续点击次数阈值。<br/>取值范围：[0, +∞) |
-
-## LongPressRecognizer<sup>18+</sup>
-
-长按手势识别器对象，继承于[GestureRecognizer](#gesturerecognizer)。
-
-### isRepeat<sup>18+</sup>
-
-isRepeat(): boolean
-
-返回预设长按手势识别器是否连续触发事件回调。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| boolean | 预设长按手势识别器是否连续触发事件回调。当绑定长按手势且不会连续触发回调时，返回false。当绑定长按手势且会连续触发回调时，返回true。 |
-
-### getDuration<sup>18+</sup>
-
-ArkTS-Dyn: getDuration(): number
-
-ArkTS-Sta: getDuration(): int
-
-返回预设长按手势识别器触发长按最短时间阈值。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 22
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回预设长按手势识别器触发长按最短时间阈值，单位为ms。<br/>取值范围：[0, +∞) |
-
-## SwipeRecognizer<sup>18+</sup>
-
-滑动手势识别器对象，继承于[GestureRecognizer](#gesturerecognizer)。
-
-### getVelocityThreshold<sup>18+</sup>
-
-ArkTS-Dyn: getVelocityThreshold(): number
-
-ArkTS-Sta: getVelocityThreshold(): double
-
-返回预设滑动手势识别器识别滑动最小速度阈值。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 22
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 预设滑动手势识别器识别滑动最小速度阈值，单位为vp/s。<br/>取值范围：[0, +∞) |
-
-### getDirection<sup>18+</sup>
-
-getDirection(): SwipeDirection
-
-返回预设滑动手势识别器触发滑动手势滑动方向。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| [SwipeDirection](./ts-basic-gestures-swipegesture.md#swipedirection枚举说明) | 预设滑动手势识别器触发滑动手势滑动方向。 |
-
-## PinchRecognizer<sup>18+</sup>
-
-捏合手势识别器对象，继承于[GestureRecognizer](#gesturerecognizer)。
-
-### getDistance<sup>18+</sup>
-
-ArkTS-Dyn: getDistance(): number
-
-ArkTS-Sta: getDistance(): double
-
-返回预设捏合手势识别器最小识别距离阈值。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 22
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 预设捏合手势识别器最小识别距离阈值，单位为vp。<br/>取值范围：[0, +∞) |
-
-## RotationRecognizer<sup>18+</sup>
-
-旋转手势识别器对象，继承于[GestureRecognizer](#gesturerecognizer)。
-
-### getAngle<sup>18+</sup>
-
-ArkTS-Dyn: getAngle(): number
-
-ArkTS-Sta: getAngle(): double
-
-返回预设旋转手势识别器触发旋转手势最小改变度数阈值。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 22
-
-**返回值：**
-
-| 类型     | 说明        |
-| ------ | --------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 预设旋转手势识别器触发旋转手势最小改变度数阈值，单位为deg。<br/>取值范围：[0, +∞)<br/>**说明：** <br/>当输入的改变度数的值小于等于0或大于360时，会被转化为默认值，默认值为1。 |
+| [GestureRecognizer](./ts-gesture-common.md#gesturerecognizer12) | 与current识别器绑定并行关系的某个手势识别器。 |
 
 ## onGestureRecognizerJudgeBegin<sup>13+</sup>
 
@@ -634,7 +79,7 @@ ArkTS-Sta: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCa
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名        | 参数类型                    | 必填  | 参数描述                          |
@@ -656,7 +101,7 @@ ArkTS-Sta: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCa
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名        | 参数类型                    | 必填  | 参数描述                          |
@@ -667,7 +112,7 @@ ArkTS-Sta: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCa
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## GestureRecognizerJudgeBeginCallback
 
@@ -677,19 +122,24 @@ type GestureRecognizerJudgeBeginCallback = (event: BaseGestureEvent, current: Ge
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| event | [BaseGestureEvent](./ts-gesture-customize-judge.md#basegestureevent对象说明) | 是   | 当前基础手势事件信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| current | [GestureRecognizer](#gesturerecognizer) | 是   | 当前即将要响应的识别器对象。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| others | Array\<[GestureRecognizer](#gesturerecognizer)\> | 是   | 响应链上的其他手势识别器对象。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](#touchrecognizer20)\> | 否   | 响应链上的Touch识别器对象。 默认值为null，表示在当前手势绑定组件及其子孙组件没有可响应的Touch识别器。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明) | 是   | 当前基础手势事件信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| current | [GestureRecognizer](./ts-gesture-common.md#gesturerecognizer12) | 是   | 当前即将要响应的识别器对象。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| others | Array\<[GestureRecognizer](./ts-gesture-common.md#gesturerecognizer12)\> | 是   | 响应链上的其他手势识别器对象。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](./ts-gesture-common.md#touchrecognizer20)\> | 否   | 响应链上的Touch识别器对象。 默认值为null，表示在当前手势绑定组件及其子孙组件没有可响应的Touch识别器。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| [GestureJudgeResult](ts-gesture-customize-judge.md#gesturejudgeresult) | 手势是否裁决成功的判定结果。 |
+| [GestureJudgeResult](./ts-gesture-common.md#gesturejudgeresult11) | 手势是否裁决成功的判定结果。 |
 
 ## onTouchTestDone<sup>20+</sup>
 
@@ -737,14 +187,14 @@ type TouchTestDoneCallback = (event: BaseGestureEvent, recognizers: Array\<Gestu
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| event | [BaseGestureEvent](./ts-gesture-customize-judge.md#basegestureevent对象说明) | 是   | [触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后的基础手势事件的信息。 <br/>**说明：** <br/>仅包含BaseGestureEvent的信息，不包含其子类拓展信息。<br/>axisHorizontal和axisVertical的值为0。 |
-| recognizers | Array\<[GestureRecognizer](#gesturerecognizer)\> | 是   | [触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，所有手势识别器对象。 |
+| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明) | 是   | [触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后的基础手势事件的信息。 <br/>**说明：** <br/>仅包含BaseGestureEvent的信息，不包含其子类拓展信息。<br/>axisHorizontal和axisVertical的值为0。 |
+| recognizers | Array\<[GestureRecognizer](./ts-gesture-common.md#gesturerecognizer12)\> | 是   | [触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，所有手势识别器对象。 |
 
 ## 示例
 
 ### 示例1（嵌套滚动）
 
-该示例通过shouldBuiltInrecognizerParallelWith和onGestureRecognizerJudgeBegin实现了嵌套滚动的功能。内部组件优先响应滑动手势，当内部组件滑动至顶部或底部时，外部组件能够接替滑动。
+该示例通过shouldBuiltInRecognizerParallelWith和onGestureRecognizerJudgeBegin实现了嵌套滚动的功能。内部组件优先响应滑动手势，当内部组件滑动至顶部或底部时，外部组件能够接替滑动。
 
 ```ts
 // xxx.ets
