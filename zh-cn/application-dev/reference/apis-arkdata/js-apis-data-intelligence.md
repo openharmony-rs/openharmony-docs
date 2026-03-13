@@ -500,7 +500,7 @@ ArkTS-Sta: getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt;
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| ArkTS-Dyn：Promise&lt;Array&lt;number&gt;&gt; <br/>ArkTS-Sta：Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br/>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
 
 **错误码：**
 
