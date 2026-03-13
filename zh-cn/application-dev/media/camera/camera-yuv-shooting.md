@@ -175,15 +175,24 @@
             try {
               class MediaDataHandler implements photoAccessHelper.QuickImageDataHandler<image.Picture> {
                 onDataPrepared(data: image.Picture, imageSource: image.ImageSource, map: Map<string, string>) {
-                  if (data === undefined) {
-                    console.error("On photoAssetAvailable callback data is null or undefined");
+                  if (data != undefined) {
+                    console.info("On photoAssetAvailable callback data is not undefined");
+                    data.getMainPixelmap().then((pixelMap: image.PixelMap) => {
+                      callback(pixelMap, photoAsset.uri);
+                    }).catch((error: BusinessError) => {
+                      console.error("On photoAssetAvailable callback getMainPixelmap failed, error: ${error.message}");
+                    })
+                  } else if (data === undefined && imageSource != undefined) {
+                    console.info("On photoAssetAvailable callback data is undefined, and imageSource is not undefined");
+                    imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+                      callback(pixelMap, photoAsset.uri);
+                    }).catch((error: BusinessError) => {
+                      console.error("On photoAssetAvailable callback createPixelMap failed, error: ${error.message}");
+                    })
+                  } else {
+                    console.error("On photoAssetAvailable callback data and imageSource are both undefined");
                     return;
                   }
-                  imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
-                    callback(pixelMap, photoAsset.uri);
-                  }).catch((error: BusinessError) => {
-                    console.error("On photoAssetAvailable callback createPixelMap failed, error: ${error.message}");
-                  })
                 }
               }
               // 创建数据共享谓词。
