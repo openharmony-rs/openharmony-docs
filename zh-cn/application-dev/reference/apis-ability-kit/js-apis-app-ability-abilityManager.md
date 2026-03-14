@@ -142,7 +142,7 @@ export default class EntryAbility extends EmbeddableUIAbility {
 
 isEmbeddedUIExtensionSupported(): boolean
 
-判断当前设备是否支持[EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md)。
+开发者通过调用该接口判断[EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md)是否可以在当前设备上使用。
 
 **起始版本**：26.0.0
 
