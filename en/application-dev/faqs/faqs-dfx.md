@@ -141,7 +141,7 @@ Try the following procedure:
 
 5. Check the CPU usage of system processes and the memory usage of the current process.
 
-## How do I view stack traces for error logs generated in ArkCompiler?(API 10)
+## How do I view stack traces for error logs generated in ArkCompiler? (API 10)
 
 **Solution**
 

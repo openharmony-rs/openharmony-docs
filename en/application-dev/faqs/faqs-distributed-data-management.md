@@ -12,7 +12,7 @@ To encrypt an RDB store, set **encrypt** in **StoreConfig** to **true** when cre
 [RDB Store](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)
 
 
-## What do I do if the table data in an RDB store cannot be cleared by using **TRUNCATE TABLE**? (API version 9)
+## What should I do if the table data in an RDB store cannot be cleared by using **TRUNCATE TABLE**? (API version 9)
 
 **Symptom**
 
