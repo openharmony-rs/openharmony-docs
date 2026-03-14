@@ -19,7 +19,7 @@ PhotoAsset的成员类型。
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20 
 
 | 类型 | 说明 |
 | ---- | ---- |
