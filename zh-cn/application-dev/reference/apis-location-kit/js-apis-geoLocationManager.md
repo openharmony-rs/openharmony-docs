@@ -987,6 +987,8 @@ onLocationError(callback: Callback&lt;LocationError&gt;): void
 **示例**
 
   ```ts
+
+  
   import { geoLocationManager } from '@kit.LocationKit';
 
   let requestInfo:geoLocationManager.LocationRequest = {'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX, 'scenario': geoLocationManager.LocationRequestScenario.UNSET, 'timeInterval': 1, 'distanceInterval': 0, 'maxAccuracy': 0};
@@ -994,9 +996,18 @@ onLocationError(callback: Callback&lt;LocationError&gt;): void
       console.info('locationChange: data: ' + JSON.stringify(location));
   };
   try {
-      geoLocationManager.onLocationError(requestInfo, locationChange);
+      geoLocationManager.onLocationChange(requestInfo, locationChange);
   } catch (err) {
       console.error("errCode:" + err.code + ", message:"  + err.message);
+  }
+
+  let locationErrorChange = (errcode: geoLocationManager.LocationError):void => {
+    console.info('locationErrorChange: data: ' + JSON.stringify(errcode));
+  };
+  try {
+    geoLocationManager.onLocationError(locationErrorChange);
+  } catch (err) {
+    console.error("errCode:" + err.code + ", message:"  + err.message);
   }
   
   ```
@@ -3686,7 +3697,7 @@ ArkTS-Sta: isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold
 
   try {
     let wlanBssidArray: Array<string> = ["02:1b:32:23:ea:91", "02:1b:32:23:ea:93"];
-    let rssiThreshold: number = -70;
+    let rssiThreshold: int = -70;
     let needStartScan: boolean = true;
     geoLocationManager.isWlanBssidMatched(wlanBssidArray, rssiThreshold, needStartScan).then((res) => {
       console.info("Wlan Bssid Matched Result:" + res);
@@ -3733,16 +3744,11 @@ ArkTS-Sta: getActiveGeoFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
 
   try {
     geoLocationManager.getActiveGeoFences().then((res) => {
-      if (res) {
-        console.info("fence num:" + res.size);
-        for (const item of res) {
-          console.info("data=" + JSON.stringify(item));
-        }
-      }
+      console.info("data=" + JSON.stringify(res));
     })
-      .catch((error: BusinessError) => {
-        console.error('promise, getActiveGeoFences: error=' + JSON.stringify(error));
-      });
+    .catch((error) => {
+      console.error('promise, getActiveGeoFences: error=' + JSON.stringify(error));
+    });
   } catch (error) {
     console.error("getActiveGeoFences: errCode" + error.code + ", errMessage" + error.message);
   }
