@@ -14,7 +14,7 @@ The ModuleInfo module provides module information of an application.
 >
 > The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) instead.
 
-## ModuleInfo<sup>(deprecated)<sup>
+## ModuleInfo<sup>(deprecated)</sup>
 
 > **NOTE**
 >

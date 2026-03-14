@@ -792,7 +792,7 @@ try {
 
 getUninstallDisposedRule(appIdentifier: string, appIndex?: number): UninstallDisposedRule
 
-Obtains the uninstallation disposed rule of an application or an application clone.
+Obtains the uninstallation disposed rule with the highest priority of an application or an application clone.
 
 **System API**: This is a system API.
 

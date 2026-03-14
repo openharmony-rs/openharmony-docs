@@ -12,6 +12,7 @@ The ContinueCallback module defines the callback function that indicates the res
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > The APIs provided by this module are system APIs.
+> The APIs of this module can be used only in the stage model.
 
 ## ContinueCallback.onContinueDone
 
@@ -20,6 +21,8 @@ onContinueDone(result: number): void;
 Called when the mission continuation is complete.
 
 **System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 

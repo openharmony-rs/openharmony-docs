@@ -740,7 +740,7 @@ Sets the dark/light color mode for the application. This API can be called only 
 
 | Name| Type         | Mandatory| Description                |
 | ------ | ------------- | ---- | -------------------- |
-| colorMode | [ConfigurationConstant.ColorMode](js-apis-app-ability-configurationConstant.md#colormode) | Yes  | Dark/light color mode, which can be dark mode, light mode, or follow-system mode (default).|
+| colorMode | [ConfigurationConstant.ColorMode](js-apis-app-ability-configurationConstant.md#colormode) | Yes  | Dark and light color modes, including dark mode, light mode, and unset color mode (default).|
 
 **Error codes**
 
