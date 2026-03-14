@@ -37,7 +37,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. Cal [getCameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevice18) to obtain the front and rear cameras.
+2. Cal [getCameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevice18) to obtain the front and rear cameras. If the return value is **undefined**, based on the configuration information in the sample, it indicates that the current device does not support the default type of camera for the specified position (front/rear), and the multi-camera concurrent mode cannot be enabled.
    
    ```ts
    function getSupportedCamerasFn(cameraManager: camera.CameraManager)
@@ -55,7 +55,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
    }
    ```
 
-3. Obtain the corresponding concurrent capability set. Call [getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to obtain the [CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18) array, which describes the supported modes and output capabilities of the camera under each concurrent scenario. **The modes and output capabilities you configure must fall within the bounds of this concurrent capability set.** If an empty array is returned, the current device does not support concurrent mode.
+3. Obtain the corresponding concurrent capability set. Call [getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to obtain the [CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18) array, which describes the supported modes and output capabilities of the camera under each concurrent scenario. **The modes and output capabilities you configure must fall within the bounds of this concurrent capability set.** If an empty array is returned, the current device does not support concurrency mode.
 
    ```ts
    function getSupportedOutputCapabilityFn(cameraManager: camera.CameraManager, curCameraDeviceFront: camera.CameraDevice, curCameraDeviceBack: camera.CameraDevice)

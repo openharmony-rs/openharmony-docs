@@ -6,13 +6,21 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Photo capture is an important function of the camera application. Based on the complex logic of the camera device, the camera module provides APIs for you to set information such as resolution, flash, focal length, photo quality, and rotation angle.
+## Overview
+
+Photo capture is one of the important functions of the camera. The photo capture module is built on complex camera logic. To ensure the quality of photos taken by users, settings such as resolution, flash, focal length, photo quality, and rotation angle can be configured during intermediate steps.
+
+There are currently two photo capture solutions for camera development: [deferred photo capture](./camera-deferred-capture.md) and one-shot photo capture. **This section uses one-shot photo capture as an example.**
+
+- Deferred photo capture delivers low-quality images for thumbnail display, improving the perceived capture speed, while preserving high-quality images to ensure final output matches the system camera standard. This approach satisfies image processing algorithm requirements without blocking foreground capture speed, helping deliver competitive camera performance and a better user experience.
+- One-shot photo capture produces a single high-quality image after multi-frame fusion and multiple low-level algorithmic processing. As a result, Shot2See latency—the time from when the user taps the capture control to when a thumbnail appears in the thumbnail display area—is relatively long. One-shot photo capture also supports [quality-first strategy](#quality-first-strategy) via [high-performance photo capture](#high-performance-photo-capture), allowing you to optimize for either faster image output or higher image quality.
+ 
 
 ## How to Develop
 
 Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.
 
-1. Import the image module. To access the data output by the camera, you must use the image interface capabilities provided by the system. Here is how to import the image module.
+1. Import the [Image](../../reference/apis-image-kit/arkts-apis-image-Image.md) API. Retrieving photo capture output data requires using the **Image** API capabilities provided by the system. The method for importing the **Image** API is as follows.
 
    ```ts
    import { image } from '@kit.ImageKit';
@@ -184,6 +192,198 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
      }
    }
    ```
+## High-Performance Photo Capture
+
+High-performance photo capture is supported starting from API version 21. This feature allows you to set an explicit [quality-first strategy](#quality-first-strategy) for one-shot photo capture.
+
+User experience of one-shot photo capture is primarily measured by image output speed and final image quality. To meet differentiated requirements across scenarios, the emphasis on these two metrics varies. For example, street photography requires fast capture of fleeting moments, while landscape or portrait photography prioritizes optimal image quality.
+
+> **NOTE**
+>
+> Quality-first strategy is supported only for one-shot photo capture. Any such settings configured for deferred photo capture will not take effect.
+ 	
+
+### Quality-First Strategy
+
+For one-shot photo capture, two quality-first strategies are supported, each mapped to a distinct [PhotoQualityPrioritization](../../reference/apis-camera-kit/arkts-apis-camera-e.md#photoqualityprioritization21) enumeration value:
+
+- [SPEED](../../reference/apis-camera-kit/arkts-apis-camera-e.md#photoqualityprioritization21): prioritizes speed by reducing image quality to accelerate capture. This is the **default strategy** for one-shot photo capture if no explicit quality-first strategy is configured.
+- [HIGH_QUALITY](../../reference/apis-camera-kit/arkts-apis-camera-e.md#photoqualityprioritization21): prioritizes quality by allowing longer processing time to produce higher-quality images.
+
+### How to Correctly Set a Quality-First Strategy
+
+To properly set a quality-first strategy for one-shot photo capture, the high-performance photo capture feature provides the following two APIs:
+
+- [isPhotoQualityPrioritizationSupported](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#isphotoqualityprioritizationsupported21): queries whether the current device supports a specified quality-first strategy. Returns **true** if supported, **false** if not. You must verify support for the target strategy on the current device before configuration.
+- [setPhotoQualityPrioritization](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#setphotoqualityprioritization21): The core API for setting a quality-first strategy. Use this API to configure the desired strategy and enable high-performance photo capture.
+
+### How to Develop
+ 	 
+APIs related to high-performance photo capture must be called during the [camera session management (ArkTS)](camera-session-management.md) workflow. 
+ 	 
+The specific call timing is as follows: 
+
+- Call the following APIs after the completion of [commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11) in the enablement step of the [camera session management (ArkTS)](camera-session-management.md) workflow.
+
+  ```ts
+  async function startSession(videoSession: camera.VideoSession, cameraInput: camera.CameraInput, previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
+    try {
+      videoSession.addInput(cameraInput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to addInput. error: ${err.code}`);
+    }
+    let canAddPreviewOutput : boolean = false;
+    try {
+      canAddPreviewOutput = videoSession.canAddOutput(previewOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add previewOutput. error: ${err.code}`);
+    } 
+    if (!canAddPreviewOutput) {
+      console.error(`Failed to add preview output.`);
+      return;
+    }
+    try {
+      videoSession.addOutput(previewOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add previewOutput. error: ${err.code}`);
+    }
+    let canAddPhotoOutput : boolean = false
+    try {
+      canAddPhotoOutput = videoSession.canAddOutput(photoOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add photoOutput error: ${err.code}`);
+    }
+    if (!canAddPhotoOutput) {
+      console.error(`Failed to add photo output.`);
+      return;
+    }
+    try {
+      videoSession.addOutput(photoOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add photoOutput. error: ${err.code}`);
+    }
+    try {
+      await videoSession.commitConfig();
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to commitConfig. error: ${err.code}`);
+      return;
+    }
+   
+    try {
+      await videoSession.start();
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to start. error: ${err.code}`);
+    }
+    modeSwitchToHigh(videoSession, photoOutput);
+  }
+
+  async function modeSwitchToHigh(videoSession: camera.VideoSession, photoOutput: camera.PhotoOutput): Promise<void> {
+    try {
+      if (videoSession) {
+        let quality: camera.PhotoQualityPrioritization = camera.PhotoQualityPrioritization.HIGH_QUALITY;
+        let isSupported = false;
+        isSupported = photoOutput.isPhotoQualityPrioritizationSupported(quality);
+        if (isSupported) {
+          photoOutput.setPhotoQualityPrioritization(quality);
+        } else {
+          console.error(`session is not supported`);
+        }
+      } else {
+        console.error(`session is null`);
+      }
+    } catch {
+      console.error(`catch error`);
+    }
+  }
+  ```
+
+- Call the following APIs before [commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11) in the enablement step of the [camera session management (ArkTS)](camera-session-management.md) workflow.
+
+  ```ts
+  async function startSession(videoSession: camera.VideoSession, cameraInput: camera.CameraInput, previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
+    try {
+      videoSession.addInput(cameraInput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to addInput. error: ${err.code}`);
+    }
+    let canAddPreviewOutput : boolean = false;
+    try {
+      canAddPreviewOutput = videoSession.canAddOutput(previewOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add previewOutput. error: ${err.code}`);
+    } 
+    if (!canAddPreviewOutput) {
+      console.error(`Failed to add preview output.`);
+      return;
+    }
+    try {
+      videoSession.addOutput(previewOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add previewOutput. error: ${err.code}`);
+    }
+    let canAddPhotoOutput : boolean = false
+    try {
+      canAddPhotoOutput = videoSession.canAddOutput(photoOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add photoOutput error: ${err.code}`);
+    }
+    if (!canAddPhotoOutput) {
+      console.error(`Failed to add photo output.`);
+      return;
+    }
+    try {
+      videoSession.addOutput(photoOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add photoOutput. error: ${err.code}`);
+    }
+    modeSwitchToHigh(videoSession, photoOutput);
+    try {
+      await videoSession.commitConfig();
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to commitConfig. error: ${err.code}`);
+      return;
+    }
+   
+    try {
+      await videoSession.start();
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to start. error: ${err.code}`);
+    }
+  }
+
+  async function modeSwitchToHigh(videoSession: camera.VideoSession, photoOutput: camera.PhotoOutput): Promise<void> {
+    try {
+      if (videoSession) {
+        let quality: camera.PhotoQualityPrioritization = camera.PhotoQualityPrioritization.HIGH_QUALITY;
+        let isSupported = false;
+        isSupported = photoOutput.isPhotoQualityPrioritizationSupported(quality);
+        if (isSupported) {
+          photoOutput.setPhotoQualityPrioritization(quality);
+        } else {
+          console.error(`session is not supported`);
+        }
+      } else {
+        console.error(`session is null`);
+      }
+    } catch {
+      console.error(`catch error`);
+    }
+  }
+  ```
 
 ## Status Listening
 

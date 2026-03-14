@@ -11,7 +11,7 @@ A single foldable device can use different cameras depending on its fold state. 
 
 The number of supported cameras can differ among foldable devices in various fold states.
 
-For example, foldable device A has three cameras: B (rear), C (front), and D (front). In the unfolded state, calling [CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras) returns both cameras B (rear) and C (front). However, in the folded state, only camera D (front) is accessible. Therefore, when using the rear camera or switching between cameras, it is crucial to first verify the existence of the rear camera.
+For example, a foldable device has three cameras: rear camera A, front camera B, and front camera C. In the unfolded state, you can obtain rear camera A and front camera B via the [CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras) API; in the folded state, you can obtain rear camera A and front camera C. Different fold states yield different available cameras. Therefore, you must re-fetch camera information when the fold state changes.
 
 Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.
 
@@ -138,7 +138,7 @@ function hasCameraAt(cameraManager: camera.CameraManager, cameraPosition: camera
 }
 ```
 ## Camera Switching Logic
-When a fold state change is detected, the **foldStatus** variable, decorated with @StorageLink, is updated. This triggers the **reloadXComponent** API to reload the **XComponent**, thereby implementing the camera switching logic.
+When a fold state change is detected, update the **foldStatus** variable decorated with [@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink). This triggers the **reloadXComponent** method to reload the **XComponent** component, thereby implementing camera switching.
 ## Complete Sample Code
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -182,7 +182,7 @@ struct Index {
   private mContext: Context | undefined = undefined;
 
   private preFoldStatus: display.FoldStatus = this.getFoldStatus();
-  // Listen for the foldable screen status. You can use cameraManager.on(type: 'foldStatusChange', callback: AsyncCallback<FoldStatusInfo>): void;
+  // Listen for the foldable screen state. You can use cameraManager.on(type: 'foldStatusChange', callback: AsyncCallback<FoldStatusInfo>): void;
   // or display.on(type: 'foldStatusChange', callback: Callback<FoldStatus>): void;.
   private foldStatusCallback =
     (err: BusinessError, info: camera.FoldStatusInfo): void => this.registerFoldStatusChanged(err, info);
