@@ -95,9 +95,13 @@ setFontSize(fontSize: number | string): void
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+|  参数名        | 类型                                    | 必填  | 说明  |
+| ------------------------- | ------------------ | ----- | --------------- |
+| fontSize | number \| string | 是 | 字体大小，取值范围参考[fontSize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize)。<br>**ArkTS-Dyn起始版本：** 20 |
 
 ## 示例
 

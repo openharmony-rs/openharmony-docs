@@ -47,6 +47,6 @@ ArkTS-Sta: type OperationValueType = long | double | string | boolean
 
 | 类型                    | 说明                          |
 | ---------------------- | -------------------------------- |
-| number<br>ArkTS-Dyn: number<br>ArkTS-Sta: long \| double    | 表示字段类型为数字，可取任意值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long \| double    | 表示字段类型为数字，可取任意值。 |
 | string    | 表示字段类型为字符串，可取任意值。 |
 | boolean   | 表示字段类型为布尔值。 |
