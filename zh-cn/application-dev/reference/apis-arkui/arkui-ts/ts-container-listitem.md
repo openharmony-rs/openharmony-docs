@@ -28,6 +28,10 @@ ListItem(value?: ListItemOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                      | 必填 | 说明                                                     |
@@ -45,6 +49,10 @@ ListItem(value?: string)
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -66,7 +74,11 @@ sticky(value: Sticky)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
+**参数：**
 
 | 参数名 | 类型                                | 必填 | 说明                                       |
 | ------ | ----------------------------------- | ---- | ------------------------------------------ |
@@ -82,7 +94,11 @@ editable(value: boolean | EditMode)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                       |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------ |
@@ -104,9 +120,9 @@ ArkTS-Sta: selectable(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                              |
 | ------ | ------- | ---- | ------------------------------------------------- |
@@ -132,9 +148,9 @@ ArkTS-Sta：从API version 22开始，该属性支持[$$](../../../ui/state-mana
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                     |
 | ------ | ------- | ---- | ---------------------------------------- |
@@ -154,9 +170,9 @@ ArkTS-Sta: swipeAction(value: SwipeActionOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                              | 必填 | 说明                 |
 | ------ | ------------------------------------------------- | ---- | -------------------- |
@@ -169,6 +185,10 @@ ListItem吸顶效果枚举。
 从API version 9开始废弃不再使用，推荐使用[List组件stickyStyle枚举](ts-container-list.md#stickystyle9枚举说明)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -184,6 +204,10 @@ ListItem元素编辑模式枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 | 名称     | 值 | 说明      |
 | ------ | ------ | --------- |
 | None   |  0  | 编辑操作不限制。    |
@@ -197,6 +221,10 @@ ListItem元素编辑模式枚举。
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值 | 说明      |
 | ------ | ------ | --------- |
@@ -213,10 +241,10 @@ start和end对应的@builder函数中顶层必须是单个组件，不能是if/e
 
 | 名称                         | 类型                                                         | 必填 | 说明                                                         |
 | ---------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| start                        | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10对象说明) | 否   | ListItem向右划动时item左边的组件（List垂直布局时）或ListItem向下划动时item上方的组件（List水平布局时）。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 22 |
-| end                          | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10对象说明) | 否   | ListItem向左划动时item右边的组件（List垂直布局时）或ListItem向上划动时item下方的组件（List水平布局时）。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 22 |
-| edgeEffect                   | [SwipeEdgeEffect](#swipeedgeeffect9枚举说明)                 | 否   | 滑动效果。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 22 |
-| onOffsetChange<sup>11+</sup> | ArkTS-Dyn: (offset: number) => void<br/> ArkTS-Sta: (offset: double) => void                                     | 否   | 滑动操作偏移量更改时调用。 <br/>**说明：** <br/> 当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列表方向为“水平”时）位置发生变化触发，以vp为单位。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
+| start                        | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10对象说明) | 否   | ListItem向右划动时item左边的组件（List垂直布局时）或ListItem向下划动时item上方的组件（List水平布局时）。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| end                          | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10对象说明) | 否   | ListItem向左划动时item右边的组件（List垂直布局时）或ListItem向上划动时item下方的组件（List水平布局时）。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| edgeEffect                   | [SwipeEdgeEffect](#swipeedgeeffect9枚举说明)                 | 否   | 滑动效果。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| onOffsetChange<sup>11+</sup> | ArkTS-Dyn: (offset: number) => void<br/> ArkTS-Sta: (offset: double) => void                                     | 否   | 滑动操作偏移量更改时调用。 <br/>**说明：** <br/> 当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列表方向为“水平”时）位置发生变化触发，以vp为单位。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## SwipeActionItem<sup>10+</sup>对象说明
 
@@ -242,6 +270,10 @@ ListItem组件参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 类型                                  | 必填 | 说明                                                         |
 | ----- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | style | [ListItemStyle](#listitemstyle10枚举说明) | 否   | 设置List组件卡片样式。<br/>默认值：ListItemStyle.NONE<br/>设置为ListItemStyle.NONE时无样式。<br/>设置为ListItemStyle.CARD时，建议配合[ListItemGroup](ts-container-listitemgroup.md)的ListItemGroupStyle.CARD同时使用，显示默认卡片样式。  <br/>卡片样式下，ListItem默认规格：高度48vp，宽度100%，左右内边距8vp。如果需要实现ListItem高度自适应，可以把height设置为undefined。<br/>卡片样式下，为卡片内的列表选项提供了默认的focus、hover、press、selected和disable样式。<br/>**说明：**<br/>当前卡片模式下，使用默认Axis.Vertical排列方向，如果listDirection属性设置为Axis.Horizontal，会导致显示混乱；List属性alignListItem默认为ListItemAlign.Center，居中对齐显示。 |
@@ -253,6 +285,10 @@ List组件卡片样式枚举。
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值  | 说明             |
 | ---- | ---- | ------------------ |
@@ -266,6 +302,10 @@ List组件卡片样式枚举。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 值     | 说明                                                       |
 | --------- | --------- | ------------------------------------------------------------ |

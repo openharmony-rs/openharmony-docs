@@ -22,6 +22,10 @@ import { Theme, ThemeControl, CustomColors, Colors, CustomTheme } from '@kit.Ark
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型                | 只读 | 可选 | 说明       |
 | ------ |-------------------|-----|-----|----------|
 | colors | [Colors](#colors) | 否   | 否   |  主题颜色资源。 |
@@ -33,6 +37,10 @@ import { Theme, ThemeControl, CustomColors, Colors, CustomTheme } from '@kit.Ark
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                           | 类型                                                 | 只读 | 可选 | 说明               |
 |-------------------------------|-----------------------------------------------------|-----|-----|------------------|
@@ -109,6 +117,10 @@ type CustomColors = Partial\<Colors>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型  | 说明           |
 |-----|--------------|
 | Partial<[Colors](#colors)>   | 自定义主题颜色资源类型。 |
@@ -119,9 +131,9 @@ type CustomDarkColors = Partial\<Colors>
 
 自定义深色主题颜色资源类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -139,9 +151,15 @@ ThemeControl将自定义Theme应用于App组件内，实现App组件风格跟随
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 ### setDefaultTheme
 
-setDefaultTheme(theme: [CustomTheme](#customtheme)): void
+ArkTS-Dyn: setDefaultTheme(theme: [CustomTheme](#customtheme)): void
+
+ArkTS-Sta: setDefaultTheme(theme: [CustomTheme](#customtheme) | undefined): void
 
 将用户自定义Theme设置应用级默认主题，实现应用风格跟随Theme切换。
 
@@ -153,9 +171,13 @@ ArkTS-Sta：需确保在页面build前执行。因运行于静态类型上下文
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 参数名       | 类型                           | 必填 | 说明             |
 |--------------|------------------------------|------|----------------|
-| theme | [CustomTheme](#customtheme)  | 是    | 表示设置的自定义主题风格。 |
+| theme | ArkTS-Dyn: [CustomTheme](#customtheme)<br/>ArkTS-Sta: [CustomTheme](#customtheme) \| undefined  | 是  | 表示设置的自定义主题风格。 |
 
 **示例**
 

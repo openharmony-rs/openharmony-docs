@@ -28,6 +28,7 @@ import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 
 ## ParallelizeUI
+
 ParallelizeUI(options: ParallelOption | undefined, content_: () => void)
 
 声明式的并行化创建UI方法。options参数为undefined时，默认开启并行化创建。

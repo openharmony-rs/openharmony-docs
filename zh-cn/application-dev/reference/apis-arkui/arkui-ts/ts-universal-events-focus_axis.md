@@ -22,7 +22,7 @@ ArkTS-Sta: onFocusAxisEvent(event: Callback\<FocusAxisEvent> | undefined): this
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -34,7 +34,7 @@ ArkTS-Sta: onFocusAxisEvent(event: Callback\<FocusAxisEvent> | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## FocusAxisEvent对象说明
 
@@ -46,7 +46,7 @@ ArkTS-Sta: onFocusAxisEvent(event: Callback\<FocusAxisEvent> | undefined): this
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                    | 属性类型                                       | 描述                 |
 | ------------------------------------- | ---------------------------------------- | --------------------------- |

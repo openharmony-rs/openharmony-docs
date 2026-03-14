@@ -30,7 +30,7 @@ ArkTS-Sta: onAreaChange(event: ((oldValue: Area, newValue: Area) => void) | unde
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

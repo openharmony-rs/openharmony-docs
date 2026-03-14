@@ -27,7 +27,7 @@ import { BasicPrefetcher, IDataSourcePrefetching, IPrefetcher } from '@ohos.arku
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ### setDataSource
 ArkTs-Dyn：setDataSource(dataSource: IDataSourcePrefetching): void
@@ -42,7 +42,7 @@ ArkTs-Sta：setDataSource(dataSource: IDataSourcePrefetching\<T\>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -93,7 +93,7 @@ ArkTs-Sta：visibleAreaChanged(minVisible: int, maxVisible: int): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -141,7 +141,7 @@ BasicPrefetcher是IPrefetcher的基础实现。它提供了一种智能数据预
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ### constructor
 ArkTs-Dyn：constructor(dataSource?: IDataSourcePrefetching)
@@ -156,7 +156,7 @@ ArkTs-Sta：constructor(dataSource?: IDataSourcePrefetching\<T\>)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -177,7 +177,7 @@ ArkTs-Sta：setDataSource(dataSource: IDataSourcePrefetching\<T\>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -198,7 +198,7 @@ ArkTs-Sta：visibleAreaChanged(minVisible: int, maxVisible: int): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -217,7 +217,7 @@ ArkTs-Sta：visibleAreaChanged(minVisible: int, maxVisible: int): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ### prefetch
 ArkTs-Dyn：prefetch(index: number): Promise\<void\> | void
@@ -232,7 +232,7 @@ ArkTs-Sta：prefetch(index: int): Promise\<void\> | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -259,7 +259,7 @@ ArkTs-Sta：cancel(index: int): Promise\<void\> | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

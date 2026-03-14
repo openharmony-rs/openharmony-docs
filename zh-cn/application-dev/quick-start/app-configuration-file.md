@@ -94,6 +94,7 @@ app.json5配置文件包含以下标签。
 | assetAccessGroups | 配置应用的Group ID，它和Developer ID一起组成群组信息。<br/>打包HAP时，DevEco使用开发者证书对群组信息签名，其中群组信息由Developer ID（由应用市场分配）+ Group ID（开发者配置）组成。<br/>**说明：** <br/>从API version 18开始，支持该字段。| 字符串数组 | 该标签可缺省，缺省值为空。 |
 | appPreloadPhase | 配置应用预加载到不同阶段。支持的取值如下：<br/>-processCreated：预加载到进程创建完成阶段。<br/>-abilityStageCreated：预加载到[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)创建完成阶段。<br/>-windowStageCreated：预加载到[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。<br/>**说明：** <br/>从API version 20开始，支持该字段。<br>仅在[应用](../reference/apis-ability-kit/js-apis-bundleManager.md#bundletype)的entry模块配置有效。| 字符串| 该标签可缺省，缺省时不进行预加载。 |
 | [startMode](../application-models/application-component-configuration-stage.md#应用启动模式配置) | 配置应用的启动模式，支持的取值如下：<br/>-&nbsp;mainTask：主任务模式，表示图标启动后打开主UIAbility。<br/>-&nbsp;recentTask：最近任务模式，表示图标启动后打开最近使用的UIAbility。<br/>**说明：**<br/>从API version 20开始，支持该字段。<br/>仅在launchType为[单实例模式](../application-models/uiability-launch-type.md#singleton启动模式)时生效。<br/>该字段仅支持phone和tablet设备(不包含自由多窗)。 | 字符串 | 该标签可缺省，缺省值为mainTask。 |
+| buildVersion | 标识应用的构建版本号。<br/>取值为长度不超过18字节的字符串，必须由数字和点构成，建议采用“A.B.C”三段式。三段式建议的含义如下：<br/>第一段：主版本号/Major，用于标识重大修改的版本，例如实现新的重大特性或重大变化。<br/>第二段：次版本号/Minor，用于表示实现较突出的特性，例如新特性添加或大问题修复。<br/>第三段：特性版本号/Feature，用于标识规划的新版本特性。<br/>**说明：**<br/>从API version 23开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
 
 ## icon标签
 

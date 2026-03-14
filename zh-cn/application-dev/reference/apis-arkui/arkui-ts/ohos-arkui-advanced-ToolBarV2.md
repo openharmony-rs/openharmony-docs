@@ -24,7 +24,9 @@ import { ToolBarV2 } from '@kit.ArkUI';
 
 ## ToolBarV2
 
-ToolbarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifier: DividerModifier, toolBarModifier: ToolBarV2Modifier})
+ArkTS-Dyn: ToolbarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifier: DividerModifier, toolBarModifier: ToolBarV2Modifier})
+
+ArkTS-Sta: ToolbarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: int, dividerModifier: DividerModifier, toolBarModifier: ToolBarV2Modifier})
 
 工具栏。
 
@@ -36,12 +38,12 @@ ToolbarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifi
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                   | 类型                                                               | 必填 | 装饰器类型               | 说明                                                           |
 | -------------------- | ---------------------------------------------------------------- | -- |---------------------|--------------------------------------------------------------|
 | toolBarList          | [ToolBarV2Item](#toolbarv2item)\[]                               | 是  | @Param<br/>@Require | 工具栏列表。                                                       |
-| activatedIndex       | number                                                           | 否  | @Param              | 激活态的子项。<br ></div>默认值：-1，即无工具栏子项为激活态。<br />取值范围：[-1,4]。      |
+| activatedIndex       | ArkTS-Dyn: number<br/>ArkTS-Sta: int                             | 否  | @Param              | 激活态的子项。<br ></div>默认值：-1，即无工具栏子项为激活态。<br />取值范围：[-1,4]。      |
 | dividerModifier<sup> | [DividerModifier](ts-universal-attributes-attribute-modifier.md) | 否  | @Param              | 工具栏头部分割线属性，可设置分割线高度、颜色等。<br />默认不生效。                         |
 | toolBarModifier<sup> | [ToolBarV2Modifier](#toolbarv2modifier)                          | 否  | @Param              | 工具栏属性，可设置工具栏高度、背景色、内边距（仅在工具栏子项数量小于5时生效）、是否显示按压态。<br />默认不生效。 |
 
@@ -50,15 +52,15 @@ ToolbarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifi
 
 **装饰器类型：**@ObservedV2
 
+### 属性
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
-
-### 属性
+**ArkTS-Sta起始版本：** 23
 
 | 名称                           | 类型                                              | 必填 | 装饰器类型  | 说明                                                                                                                                                                                                        |
 | ---------------------------- | ----------------------------------------------- | -- | :----- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -82,7 +84,7 @@ ToolBarV2Item的构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                                            | 必填 | 说明       |
 | :------ |:----------------------------------------------| :- | :------- |
@@ -98,7 +100,7 @@ ToolBarV2Item的构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                       | 类型                                              | 必填 | 说明                                                                                                                                                                                                             |
 |:-------------------------| :---------------------------------------------- | :- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -122,7 +124,7 @@ type ToolBarV2ItemAction = (index: number) => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -142,7 +144,7 @@ type ToolBarV2ItemAction = (index: number) => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -164,7 +166,7 @@ ToolBarV2ItemText的构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                                                    | 必填 | 说明         |
 | :------ |:------------------------------------------------------| :- | :--------- |
@@ -180,7 +182,7 @@ ToolBarV2ItemText的构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 类型                                                          | 必填 | 说明                                                       |
 | :------------------ |:------------------------------------------------------------| :- |:---------------------------------------------------------|
@@ -200,7 +202,7 @@ ToolBarV2ItemText的构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -222,7 +224,7 @@ ToolBarV2ItemImage的构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                                                    | 必填 | 说明         |
 | :------ | :------------------------------------------------------ | :- | :--------- |
@@ -238,7 +240,7 @@ ToolBarV2ItemImage的构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 类型                                                          | 必填 | 说明                                                       |
 |:--------------------|:------------------------------------------------------------| :- |:---------------------------------------------------------|
@@ -258,7 +260,7 @@ type ToolBarV2ItemIconType = ToolBarV2ItemImage | ToolBarV2SymbolGlyph
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型                   | 说明            |
 | :------------------- | :------------ |
@@ -275,7 +277,7 @@ ToolBarV2Modifier提供设置工具栏高度(height)、背景色(backgroundColor
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ### backgroundColor
 
@@ -289,7 +291,7 @@ backgroundColor(backgroundColor: ColorMetrics): ToolBarV2Modifier
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -314,7 +316,7 @@ padding(padding: LengthMetrics): ToolBarV2Modifier
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -339,7 +341,7 @@ height(height: LengthMetrics): ToolBarV2Modifier
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -365,7 +367,7 @@ stateEffect(stateEffect: boolean): ToolBarV2Modifier
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -389,7 +391,7 @@ stateEffect(stateEffect: boolean): ToolBarV2Modifier
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值 | 说明              |
 | -------- | - | --------------- |
@@ -409,7 +411,7 @@ ToolBarV2SymbolGlyph定义Symbol图标的属性。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -430,7 +432,7 @@ ToolBarV2SymbolGlyph的构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 参数名     | 类型                                                        | 必填 | 说明          |
 | :------ | :---------------------------------------------------------- | :- | :---------- |
@@ -446,7 +448,7 @@ ToolBarV2SymbolGlyphOptions定义图标的属性。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型                                                                   | 必填 | 说明                                                                                   |
 | --------- | -------------------------------------------------------------------- | -- | ------------------------------------------------------------------------------------ |

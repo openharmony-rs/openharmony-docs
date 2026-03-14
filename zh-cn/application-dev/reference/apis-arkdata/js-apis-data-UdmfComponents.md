@@ -29,6 +29,7 @@ import { ContentFormCard, FormType } from '@kit.ArkData';
 ## ContentFormCard
 
 ArkTS-Dyn: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: number, formHeight?: number, handleOnClick?: Function})
+
 ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: double, formHeight?: double, handleOnClick?: Function})
 
 内容卡片控件，用于在应用内展示标题、描述、内容图片、应用信息等。

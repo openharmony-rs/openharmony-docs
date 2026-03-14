@@ -4,7 +4,8 @@ map模块提供了访问信息相关功能的方法。
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 
@@ -21,7 +22,11 @@ type BaseProfile = baseProfile.BaseProfile
 
 基础Profile接口定义。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
@@ -34,7 +39,11 @@ createMapMseProfile(): MapMseProfile
 
 创建mapMse profile实例。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **返回值：**
 
@@ -54,7 +63,7 @@ try {
 }
 ```
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 

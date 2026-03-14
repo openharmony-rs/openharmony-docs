@@ -14,6 +14,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型                                   | 必填 | 说明 |
 | ------ | ------------------------------------------ | ---- | -------- |
 | width  | [Length](ts-types.md#length)               | 否   | 光标尺寸，不支持百分比。<br/>默认值：'2vp' |
@@ -48,7 +52,7 @@ ArkTS-Sta: getLineCount(): int | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -70,7 +74,7 @@ ArkTS-Sta: getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffin
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -192,7 +196,7 @@ ArkTS-Sta: getLineMetrics(lineNumber: int): LineMetrics | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -220,7 +224,7 @@ ArkTS-Sta: getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, height
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -243,6 +247,10 @@ ArkTS-Sta: getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, height
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                   | 只读 | 可选 | 说明                      |
 | --------- | --------------------- | ---- | ---- | ------------------------ |
@@ -357,6 +365,10 @@ onCreateMenu(menuItems: Array\<TextMenuItem>): Array\<TextMenuItem>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明   |
@@ -378,6 +390,10 @@ onMenuItemClick(menuItem: TextMenuItem, range: TextRange): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -426,10 +442,14 @@ type OnPrepareMenuCallback = (menuItems: Array\<TextMenuItem\>) => Array\<TextMe
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| start | number | 否 | 起始索引。 |
-| end | number | 否 | 结束索引。 |
+| start | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 起始索引。 |
+| end | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 结束索引。 |
 
 ## EditableTextOnChangeCallback<sup>12+</sup>
 
@@ -440,6 +460,10 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -457,11 +481,11 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 | 名称  | 值   | 说明                               |
 | ----- | ----- | --------------------------------- |
-| PHONE_NUMBER  | 0 | 电话号码 |
-| URL | 1 | 链接 |
-| EMAIL | 2 | 邮箱 |
-| ADDRESS | 3 | 地址 |
-| DATE_TIME<sup>12+</sup> | 4 | 时间 |
+| PHONE_NUMBER  | 0 | 电话号码<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
+| URL | 1 | 链接<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
+| EMAIL | 2 | 邮箱<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
+| ADDRESS | 3 | 地址<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
+| DATE_TIME<sup>12+</sup> | 4 | 时间<br/> **ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23 |
 
 ## TextDeleteDirection<sup>12+</sup>枚举说明
 
@@ -504,6 +528,10 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明 |
 | ------- | ---- | ------------------- |
 | SELECTION_MENU | 0 | 文本选择菜单。|
@@ -516,6 +544,10 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ------- | ---- | ------------------- |
@@ -530,9 +562,13 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 类型                          | 必填 | 说明                                                         |
 | ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| insertOffset  | number | 是   | 插入的值的位置信息。 |
+| insertOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 插入的值的位置信息。 |
 | insertValue  | string | 是   | 插入的值。 |
 
 ## DeleteValue<sup>12+</sup>对象说明
@@ -541,9 +577,13 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 类型                                                    | 必填 | 说明                                                    |
 | ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| deleteOffset  | number | 是   | 删除的值的位置信息。 |
+| deleteOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 删除的值的位置信息。 |
 | direction  | [TextDeleteDirection](#textdeletedirection12枚举说明) | 是   | 删除值的方向。 |
 | deleteValue  | string | 是   | 删除的值。 |
 
@@ -567,6 +607,10 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型                                             | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | -------------------------------------------------------- |
 | offset | number | 是   | 预上屏内容的起始位置。 |
@@ -582,6 +626,10 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型                                             | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | -------------------------------------------------------- |
 | enableVariableFontWeight | boolean | 否   | 是否支持字重无极调节。<br/>默认值：false<br/>值为true，表示支持字重调节，值为false，表示不支持字重调节。 |
@@ -591,6 +639,10 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => void
 
 文本变换后回调。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -611,6 +663,10 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
 | onWillChange | Callback<[StyledStringChangeValue](#styledstringchangevalue12), boolean> | 否 | 文本内容将要变化回调函数。 |
@@ -623,6 +679,10 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
@@ -638,6 +698,10 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明 |
 | ------- | ---- | ------------------- |
 | NONE | 0 | 默认状态无效。|
@@ -652,6 +716,10 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 ### setSelection<sup>12+</sup>
 
@@ -709,7 +777,7 @@ ArkTS-Sta: getLayoutManager(): LayoutManager | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -741,7 +809,7 @@ ArkTS-Sta: isEditing(): boolean | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -773,7 +841,7 @@ ArkTS-Sta: getCaretOffset(): int | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -795,7 +863,7 @@ ArkTS-Sta: setCaretOffset(offset: int): boolean | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -823,7 +891,7 @@ ArkTS-Sta: getPreviewText?(): PreviewText | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -869,7 +937,7 @@ ArkTS-Sta: getStyledString(): MutableStyledString | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

@@ -10,7 +10,9 @@
 
 > **说明：**
 > 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -28,6 +30,10 @@ createEffect(source: image.PixelMap): Filter
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -72,6 +78,10 @@ createColorPicker(source: image.PixelMap): Promise\<ColorPicker>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -121,7 +131,9 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ## effectKit.createColorPicker<sup>10+</sup>
 
-createColorPicker(source: image.PixelMap, region: Array\<number>): Promise\<ColorPicker>
+ArkTS-Dyn: createColorPicker(source: image.PixelMap, region: Array\<number>): Promise\<ColorPicker>
+
+ArkTS-Sta: createColorPicker(source: image.PixelMap, region: Array\<double>): Promise\<ColorPicker>
 
 通过传入的PixelMap创建选定取色区域的ColorPicker实例，使用Promise异步回调。
 
@@ -131,12 +143,16 @@ createColorPicker(source: image.PixelMap, region: Array\<number>): Promise\<Colo
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | ----------- | ---- | -------------------------- |
 | source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   |  image模块创建的PixelMap实例。可通过图片解码或直接创建获得，具体可见[图片开发指导](../../media/image/image-overview.md)。 |
-| region   | Array\<number> | 是   |  指定图片的取色区域。<br>数组元素个数为4，取值范围为[0, 1]，分别表示图片区域的左、上、右、下位置，图片最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。数组第三个元素需大于第一个元素，第四个元素需大于第二个元素。|
+| region   | ArkTS-Dyn: Array\<number><br>ArkTS-Sta: Array\<double> | 是   |  指定图片的取色区域。<br>数组元素个数为4，取值范围为[0, 1]，分别表示图片区域的左、上、右、下位置，图片最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。数组第三个元素需大于第一个元素，第四个元素需大于第二个元素。|
 
 **返回值：**
 
@@ -190,6 +206,10 @@ createColorPicker(source: image.PixelMap, callback: AsyncCallback\<ColorPicker>)
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                | 必填 | 说明                       |
@@ -233,7 +253,9 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ## effectKit.createColorPicker<sup>10+</sup>
 
-createColorPicker(source: image.PixelMap, region:Array\<number>, callback: AsyncCallback\<ColorPicker>): void
+ArkTS-Dyn: createColorPicker(source: image.PixelMap, region: Array\<number>, callback: AsyncCallback\<ColorPicker>): void
+
+ArkTS-Sta: createColorPicker(source: image.PixelMap, region: Array\<double>, callback: AsyncCallback\<ColorPicker>): void
 
 通过传入的PixelMap创建选定取色区域的ColorPicker实例，使用callback异步回调。
 
@@ -243,12 +265,16 @@ createColorPicker(source: image.PixelMap, region:Array\<number>, callback: Async
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                | 必填 | 说明                       |
 | -------- | ------------------ | ---- | -------------------------- |
 | source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是  |image模块创建的PixelMap实例。可通过图片解码或直接创建获得，具体可见[图片开发指导](../../media/image/image-overview.md)。  |
-| region   | Array\<number> | 是   |  指定图片的取色区域。<br>数组元素个数为4，取值范围为[0, 1]，数组元素分别表示图片区域的左、上、右、下位置，图片最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。数组第三个元素需大于第一个元素，第四个元素需大于第二个元素。|
+| region   | ArkTS-Dyn: Array\<number><br>ArkTS-Sta: Array\<double> | 是   |  指定图片的取色区域。<br>数组元素个数为4，取值范围为[0, 1]，数组元素分别表示图片区域的左、上、右、下位置，图片最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。数组第三个元素需大于第一个元素，第四个元素需大于第二个元素。|
 | callback | AsyncCallback\<[ColorPicker](#colorpicker)> | 是  | 回调函数。返回创建的ColorPicker实例。 |
 
 **错误码：**
@@ -295,18 +321,26 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-| 名称   | 类型   | 可读 | 可写 | 说明              |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 类型   | 只读 | 可选 | 说明              |
 | ------ | ----- | ---- | ---- | ---------------- |
-| red   | number | 是   | 否   | 红色分量值，取值范围[0x0, 0xFF]。           |
-| green | number | 是   | 否   | 绿色分量值，取值范围[0x0, 0xFF]。           |
-| blue  | number | 是   | 否   | 蓝色分量值，取值范围[0x0, 0xFF]。           |
-| alpha | number | 是   | 否   | 透明通道分量值，取值范围[0x0, 0xFF]。       |
+| red   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 红色分量值，取值范围[0x0, 0xFF]。           |
+| green | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 绿色分量值，取值范围[0x0, 0xFF]。           |
+| blue  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 蓝色分量值，取值范围[0x0, 0xFF]。           |
+| alpha | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 透明通道分量值，取值范围[0x0, 0xFF]。       |
 
 ## TileMode<sup>14+</sup>
 
 着色器效果平铺模式的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                   | 值   | 说明                           |
 | ---------------------- | ---- | ------------------------------ |
@@ -330,6 +364,10 @@ getMainColor(): Promise\<Color>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -379,6 +417,10 @@ getMainColorSync(): Color
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明                                  |
@@ -426,6 +468,10 @@ getLargestProportionColor(): Color
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                                            |
@@ -463,7 +509,9 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ### getTopProportionColors<sup>12+</sup>
 
-getTopProportionColors(colorCount: number): Array<Color | null>
+ArkTS-Dyn: getTopProportionColors(colorCount: number): Array<Color | null>
+
+ArkTS-Sta: getTopProportionColors(colorCount: int): Array<Color | null>
 
 读取图像占比靠前的颜色值，个数由`colorCount`指定，结果写入[Color](#color)的数组里，使用同步方式返回。
 
@@ -473,10 +521,14 @@ getTopProportionColors(colorCount: number): Array<Color | null>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 | 参数名      | 类型   | 必填 | 说明              |
 | ---------- | ------ | ---- | ------------------------------------------- |
-| colorCount | number | 是   | 需要取主色的个数，向下取整。<br>**说明：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，取值范围为[1, 10]，取色个数大于10视为取前10个；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，取值范围为[1, 20]，取色个数大于20视为取前20个。   |
+| colorCount | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 需要取主色的个数，向下取整。<br>**说明：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，取值范围为[1, 10]，取色个数大于10视为取前10个；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，取值范围为[1, 20]，取色个数大于20视为取前20个。   |
 
 **返回值：**
 
@@ -529,6 +581,10 @@ getHighestSaturationColor(): Color
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                                            |
@@ -576,6 +632,10 @@ getAverageColor(): Color
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                                            |
@@ -613,7 +673,9 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ### isBlackOrWhiteOrGrayColor<sup>10+</sup>
 
-isBlackOrWhiteOrGrayColor(color: number): boolean
+ArkTS-Dyn: isBlackOrWhiteOrGrayColor(color: number): boolean
+
+ArkTS-Sta: isBlackOrWhiteOrGrayColor(color: long): boolean
 
 判断图像是否为黑白灰颜色，返回true或false。
 
@@ -623,11 +685,15 @@ isBlackOrWhiteOrGrayColor(color: number): boolean
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | ----------- | ---- | -------------------------- |
-| color| number | 是   |  需要判断是否黑白灰色的颜色值，取值范围[0x0, 0xFFFFFFFF]。 |
+| color| ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   |  需要判断是否黑白灰色的颜色值，取值范围[0x0, 0xFFFFFFFF]。 |
 
 **返回值：**
 
@@ -669,7 +735,9 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ### blur
 
-blur(radius: number): Filter
+ArkTS-Dyn: blur(radius: number): Filter
+
+ArkTS-Sta: blur(radius: double): Filter
 
 将模糊效果添加到效果链表中，返回链表的头节点。
 
@@ -683,11 +751,15 @@ blur(radius: number): Filter
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  radius   | number | 是   | 模糊半径，单位是像素。模糊效果与所设置的值成正比，值越大效果越明显。 |
+|  radius   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 模糊半径，单位是像素。模糊效果与所设置的值成正比，值越大效果越明显。 |
 
 **返回值：**
 
@@ -722,7 +794,9 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ### blur<sup>14+</sup>
 
-blur(radius: number, tileMode: TileMode): Filter
+ArkTS-Dyn: blur(radius: number, tileMode: TileMode): Filter
+
+ArkTS-Sta: blur(radius: double, tileMode: TileMode): Filter
 
 将模糊效果添加到效果链表中，返回链表的头节点。
 
@@ -732,11 +806,15 @@ blur(radius: number, tileMode: TileMode): Filter
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  radius   | number | 是   | 模糊半径，单位是像素。模糊效果与所设置的值成正比，值越大效果越明显。 |
+|  radius   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 模糊半径，单位是像素。模糊效果与所设置的值成正比，值越大效果越明显。 |
 |  tileMode   | [TileMode](#tilemode14) | 是   | 着色器效果平铺模式。影响图像边缘的模糊效果。目前仅支持CPU渲染，所以目前着色器平铺模式仅支持DECAL。 |
 
 **返回值：**
@@ -778,6 +856,10 @@ invert(): Filter
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                                            |
@@ -810,17 +892,23 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ### setColorMatrix<sup>12+</sup>
 
-setColorMatrix(colorMatrix: Array\<number>): Filter
+ArkTS-Dyn: setColorMatrix(colorMatrix: Array\<number>): Filter
+
+ArkTS-Sta: setColorMatrix(colorMatrix: Array\<double>): Filter
 
 将自定义效果添加到效果链表中，返回链表的头节点。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  colorMatrix  |   Array\<number> | 是   | 自定义颜色矩阵。 <br>用于创建效果滤镜的 5x4 大小的矩阵，矩阵元素取值范围为[0, 1]，0和1代表的是矩阵中对应位置的颜色通道的权重，0代表该颜色通道不参与计算，1代表该颜色通道参与计算并保持原始权重。 |
+|  colorMatrix  |   ArkTS-Dyn: Array\<number><br>ArkTS-Sta: Array\<double> | 是   | 自定义颜色矩阵。 <br>用于创建效果滤镜的 5x4 大小的矩阵，矩阵元素取值范围为[0, 1]，0和1代表的是矩阵中对应位置的颜色通道的权重，0代表该颜色通道不参与计算，1代表该颜色通道参与计算并保持原始权重。 |
 
 **返回值：**
 
@@ -867,7 +955,9 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ### brightness
 
-brightness(bright: number): Filter
+ArkTS-Dyn: brightness(bright: number): Filter
+
+ArkTS-Sta: brightness(bright: double): Filter
 
 将高亮效果添加到效果链表中，返回链表的头节点。
 
@@ -877,11 +967,15 @@ brightness(bright: number): Filter
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  bright   | number | 是   | 高亮程度，取值范围在0-1之间，取值为0时图像保持不变。 |
+|  bright   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高亮程度，取值范围在0-1之间，取值为0时图像保持不变。 |
 
 **返回值：**
 
@@ -926,6 +1020,10 @@ grayscale(): Filter
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                                            |
@@ -968,6 +1066,10 @@ getEffectPixelMap(): Promise<image.PixelMap>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                   | 说明           |
@@ -997,6 +1099,57 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 })
 ```
 
+### getEffectPixelMap<sup>20+</sup>
+
+getEffectPixelMap(useCpuRender: boolean): Promise<image.PixelMap>
+
+获取已添加链表效果的源图像的image.PixelMap，使用Promise异步回调。
+
+**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
+
+**参数：**
+
+| 参数名 | 类型        | 必填 | 说明                                                         |
+| ------ | ----------- | ---- | ------------------------------------------------------------ |
+|  useCpuRender   | boolean | 是   | 是否使用cpu渲染。 |
+
+**返回值：**
+
+| 类型                   | 说明           |
+| ---------------------- | -------------- |
+| Promise\<image.PixelMap>  | Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
+
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+};
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createEffect(pixelMap).grayscale().getEffectPixelMap(false).then(data => {
+    console.info('getPixelBytesNumber = ', data.getPixelBytesNumber());
+  })
+})
+```
+
 ### getPixelMap<sup>(deprecated)</sup>
 
 getPixelMap(): image.PixelMap
@@ -1006,6 +1159,10 @@ getPixelMap(): image.PixelMap
 > **说明：**
 >
 > 此接口从API version 9开始支持，从API version 11开始废弃，推荐使用[getEffectPixelMap](#geteffectpixelmap11)。
+
+**ArkTS模式：** 此接口仅支持ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

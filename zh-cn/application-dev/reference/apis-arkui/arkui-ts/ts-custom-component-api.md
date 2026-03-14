@@ -17,6 +17,10 @@ getUIContext(): UIContext
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
+
 **返回值：**
 
 | 类型                                                      | 说明                    |
@@ -51,6 +55,10 @@ getUniqueId(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                      | 说明                    |
@@ -82,6 +90,10 @@ queryNavDestinationInfo(): NavDestinationInfo | undefined;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -128,6 +140,10 @@ queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undef
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -255,6 +271,10 @@ queryNavigationInfo(): NavigationInfo | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                                       | 说明      |
@@ -311,6 +331,10 @@ queryRouterPageInfo(): RouterPageInfo | undefined;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                         | 说明                         |
@@ -344,6 +368,10 @@ getDialogController(): PromptActionDialogController | undefined
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -426,6 +454,10 @@ type PromptActionDialogController = promptAction.DialogController
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明                         |
 | ------------------------------------------------------------ | ---------------------------- |

@@ -15,7 +15,7 @@
 
 | 名称           | 类型                                                                        | 只读 | 可选 | 说明               |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| contentType<sup>(deprecated)</sup> | [notification.ContentType](./js-apis-notification.md#contenttype)  | 否  | 是  | 通知内容类型。<br>从API version 7 开始支持，从API version 11开始不再维护，建议使用[notificationContentType](#notificationcontent-1)代替。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn<br/>**ArkTS-Dyn起始版本**：7       |
+| contentType<sup>(deprecated)</sup> | ArkTS-Dyn: [notification.ContentType](./js-apis-notification.md#contenttype)  | 否  | 是  | 通知内容类型。从API version 7 开始支持，从API version 11 开始废弃，建议使用[notificationContentType](#notificationcontent-1)代替。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn。 <br/>**ArkTS-Dyn起始版本**：7       |
 | notificationContentType<sup>11+</sup>    | [notificationManager.ContentType](./js-apis-notificationManager.md#contenttype)                | 否  | 是  | 通知内容类型。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23       |
 | normal         | [NotificationBasicContent](#notificationbasiccontent)                      | 否  | 是  | 基本类型通知内容。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23   |
 | longText       | [NotificationLongTextContent](#notificationlongtextcontent)                | 否  | 是  | 长文本类型通知内容。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23 |
@@ -101,7 +101,7 @@
 | picture        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  否  | 否  | 通知的图片内容(图像像素的总字节数不能超过2MB)。|
 
 
-## NotificationSystemLiveViewContent
+## NotificationSystemLiveViewContent<sup>11+</sup>
 
 描述系统实况窗通知内容。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。继承自[NotificationBasicContent](#notificationbasiccontent)。
 

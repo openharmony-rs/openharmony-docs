@@ -3,8 +3,10 @@
 AbilityMonitor模块提供匹配满足指定条件的受监视能力对象的方法的能力，最近匹配的ability对象将保存在AbilityMonitor对象中。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
 
 ## 导入模块
 
@@ -21,6 +23,10 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                                         | 类型     | 只读 | 可选 | 说明                                                         |
 | ------------------------------------------------------------ | -------- | ---- | ---- | ------------------------------------------------------------ |
@@ -52,9 +58,10 @@ let monitor: abilityDelegatorRegistry.AbilityMonitor = {
 }
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
-  if (error) {
-    console.error(`addAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+abilityDelegator.addAbilityMonitor(monitor, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`addAbilityMonitor fail, error: ${JSON.stringify(err)}`);
   }
-});
+})
 ```
+

@@ -1248,17 +1248,70 @@ XML解析选项。
 
 **系统能力：** SystemCapability.Utils.Lang。
 
-**ArkTS-Dyn起始版本：** 8
+| 名称                           | 类型                                                         | 只读  | 可选 | 说明                                    |
+| ------------------------------ | ------------------------------------------------------------ | ---- | ----|  --------------------------------------- |
+| supportDoctype                 | boolean                                                      | 否  | 是 | 是否解析文档类型，false表示不解析文档类型，true表示解析文档类型，默认值false。<br/> **ArkTS-Dyn起始版本：** 8 <br/>  **ArkTS-Sta起始版本：** 23|
+| ignoreNameSpace                | boolean                                                      | 否  | 是 | 是否忽略命名空间，忽略命名空间后，将不会对其进行解析。true表示忽略命名空间，false表示不忽略命名空间，默认值false。<br/> **ArkTS-Dyn起始版本：** 8 <br/>  **ArkTS-Sta起始版本：** 23 |
+| tagValueCallbackFunction       | (name: string, value: string) =&gt; boolean | 否 | 是  | 解析开始标签、标签值和结束标签，默认值undefined，表示不解析。 <br/> **ArkTS-Dyn起始版本：** 8 <br/>  **ArkTS-Sta起始版本：** 23|
+| attributeValueCallbackFunction | (name: string, value: string) =&gt; boolean | 否 | 是  | 解析属性和属性值，默认值undefined，表示不解析。 <br/> **ArkTS-Dyn起始版本：** 8 <br/>  **ArkTS-Sta起始版本：** 23|
+|attributeWithTagCallbackFunction<sup>20+</sup>| [AttributeWithTagCb](#attributewithtagcb20) |否 |是 | 解析tagName标签，默认值undefined，表示不解析。<br/> **ArkTS-Dyn起始版本：** 20 <br/>  **ArkTS-Sta起始版本：** 24 |
+| tokenValueCallbackFunction     | (eventType: [EventType](#eventtype), value: [ParseInfo](#parseinfo)) =&gt; boolean | 否  | 是 | 解析元素事件类型([EventType](#eventtype))和[ParseInfo](#parseinfo)属性，默认值undefined，表示不解析。<br/> **ArkTS-Dyn起始版本：** 8 <br/>  **ArkTS-Sta起始版本：** 23 |
 
-**ArkTS-Sta起始版本：** 23
+## AttributeWithTagCb<sup>20+</sup>
 
-| 名称                           | 类型                                                         | 必填 | 说明                                    |
-| ------------------------------ | ------------------------------------------------------------ | ---- | --------------------------------------- |
-| supportDoctype                 | boolean                                                      | 否   | 是否解析文档类型，false表示不解析文档类型，true表示解析文档类型，默认值false。 |
-| ignoreNameSpace                | boolean                                                      | 否   | 是否忽略命名空间，忽略命名空间后，将不会对其进行解析。true表示忽略命名空间，false表示不忽略命名空间，默认值false。 |
-| tagValueCallbackFunction       | (name: string, value: string) =&gt; boolean | 否   | 解析开始标签、标签值和结束标签，默认值undefined，表示不解析。 |
-| attributeValueCallbackFunction | (name: string, value: string) =&gt; boolean | 否   | 解析属性和属性值，默认值undefined，表示不解析。 |
-| tokenValueCallbackFunction     | (eventType: [EventType](#eventtype), value: [ParseInfo](#parseinfo)) =&gt; boolean | 否   | 解析元素事件类型([EventType](#eventtype))和[ParseInfo](#parseinfo)属性，默认值undefined，表示不解析。 |
+type AttributeWithTagCb = (tagName: string, key: string, value: string) => boolean
+
+ParseOptions中attributeWithTagCallbackFunction的回调方法，三个字符串参数都是由XML解析器在解析过程中自动提取的，开发者无法直接自定义这些值。开发者只能在回调函数中通过返回值来决定如何处理这些已存在的属性。
+
+**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| tagName | string | 是 | 当前属性所属XML元素的标签名。 |
+| key | string | 是 | 当前属性所属XML元素的名称。 |
+| value | string | 是 | 当前属性所属XML元素的值。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 是否继续解析xml数据，true表示继续解析数据，false表示结束解析。 |
+
+**示例：**
+
+```ts
+let xmlStr = 
+    '<?xml version="1.0" encoding="utf-8"?>' +
+    '<column name="Giana"><value integer="1"/></column>' +
+    '<column name="category"><value Boolean="true"/></column>' +
+    '<column name="day"><orange Boolean="3"/></column>';
+let textEncoder = new util.TextEncoder();
+let arrBuffer = textEncoder.encodeInto(xmlStr);
+let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
+
+let attrWithTag = (tagName: string, key: string, value: string): boolean => {
+    if (tagName == "orange") {
+        console.info('key: ',key,' value: ',value); // key:  Boolean  value:  3
+        arktest.assertEQ(value, '3');
+    }
+    return true;
+}
+
+let options: xml.ParseOptions = {
+    supportDoctype: true,
+    ignoreNameSpace: true,
+    attributeWithTagCallbackFunction:attrWithTag
+};
+that.parseXml(options);
+```
 
 ## ParseInfo
 

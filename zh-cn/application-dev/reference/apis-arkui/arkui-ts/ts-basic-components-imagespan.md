@@ -47,7 +47,7 @@ ArkTS-Sta: verticalAlign(value: ImageSpanAlignment | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -69,7 +69,7 @@ ArkTS-Sta: objectFit(value: ImageFit | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -91,7 +91,7 @@ ArkTS-Sta: alt(value:&nbsp;PixelMap | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -113,7 +113,7 @@ ArkTS-Sta: colorFilter(filter: ColorFilter | DrawingColorFilter | undefined)
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -137,7 +137,7 @@ ImageSpan组件创建后，不支持动态修改该属性的值。
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -163,7 +163,7 @@ ArkTS-Sta: onComplete(callback: ImageCompleteCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -185,7 +185,7 @@ ArkTS-Sta: onError(callback: ImageErrorCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -203,6 +203,10 @@ type ImageCompleteCallback = (result: ImageLoadResult) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 参数名 | 类型                       | 必填 | 说明                               |
 | ------ | -------------------------- | ---- | ---------------------------------- |
 | result  | [ImageLoadResult](#imageloadresult12对象说明) | 是   | 图片数据加载成功和解码成功触发回调时返回的对象。 |
@@ -214,6 +218,10 @@ type ImageCompleteCallback = (result: ImageLoadResult) => void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                       | 类型   | 必填 | 说明                                                         |
 | ---------------------------- | ------ | ---- | ------------------------------------------------------------ |

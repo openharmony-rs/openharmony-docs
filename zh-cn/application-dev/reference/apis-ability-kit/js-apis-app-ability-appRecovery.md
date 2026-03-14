@@ -23,9 +23,9 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值   | 说明       |
 | ---------- | ---- | ---------- |
@@ -42,9 +42,9 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
@@ -59,9 +59,9 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
@@ -80,9 +80,9 @@ enableAppRecovery(restart?: [RestartFlag](#restartflag), saveOccasion?: [SaveOcc
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -127,19 +127,19 @@ API10时将启动由[setRestartWant](#apprecoverysetrestartwant10)指定的Abili
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
-    
+
 ```ts
 import { appRecovery, errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.log('onUnhandledException, errorMsg: ', errorMsg);
+    console.info('onUnhandledException, errorMsg: ', errorMsg);
     appRecovery.restartApp();
   }
 };
@@ -159,13 +159,13 @@ saveAppState(): boolean
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
-
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **返回值：**
 
@@ -181,7 +181,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.log('onUnhandledException, errorMsg: ', errorMsg);
+    console.info('onUnhandledException, errorMsg: ', errorMsg);
     appRecovery.saveAppState();
   }
 };
@@ -205,9 +205,9 @@ saveAppState(context?: UIAbilityContext): boolean
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -229,7 +229,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.log('onUnhandledException, errorMsg: ', errorMsg);
+    console.info('onUnhandledException, errorMsg: ', errorMsg);
     appRecovery.saveAppState(this.context);
   }
 };
@@ -253,9 +253,9 @@ setRestartWant(want: Want): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -264,6 +264,8 @@ setRestartWant(want: Want): void
 | want | [Want](js-apis-app-ability-want.md)| 是 | 通过设置Want中"bundleName"和"abilityName"字段来指定恢复重启的Ability。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { appRecovery, Want } from '@kit.AbilityKit';
@@ -287,3 +289,30 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { appRecovery, Want } from '@kit.AbilityKit';
+import { Entry, Component, Button, FontWeight } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Button("启动到恢复Ability")
+      .fontSize(40)
+      .fontWeight(FontWeight.Bold)
+      .onClick(() => {
+        // set restart want
+        let want: Want = {
+          bundleName: "ohos.samples.recovery",
+          abilityName: "RecoveryAbility"
+        };
+
+        appRecovery.setRestartWant(want);
+      })
+  }
+}
+```
+

@@ -25,7 +25,7 @@ getAVPlaybackState(callback: AsyncCallback\<AVPlaybackState>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -39,7 +39,7 @@ getAVPlaybackState(callback: AsyncCallback\<AVPlaybackState>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
 
@@ -83,7 +83,7 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -97,7 +97,7 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
 
@@ -137,7 +137,7 @@ getSupportedDecoders(): Promise\<Array\<DecoderType>>
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -151,7 +151,7 @@ getSupportedDecoders(): Promise\<Array\<DecoderType>>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
 
@@ -197,7 +197,7 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise\<ResolutionLeve
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -217,7 +217,7 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise\<ResolutionLeve
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
 
@@ -260,7 +260,7 @@ getSupportedHdrCapabilities(): Promise\<Array\<hdrCapability.HDRFormat>>
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -274,7 +274,7 @@ getSupportedHdrCapabilities(): Promise\<Array\<hdrCapability.HDRFormat>>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
 
@@ -324,7 +324,7 @@ ArkTS-Sta: getSupportedPlaySpeeds(): Promise\<Array\<double>>
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -338,7 +338,7 @@ ArkTS-Sta: getSupportedPlaySpeeds(): Promise\<Array\<double>>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
 
@@ -385,7 +385,7 @@ sendControlCommand(command: AVCastControlCommand): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -406,8 +406,8 @@ sendControlCommand(command: AVCastControlCommand): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
-| 6600105  | Invalid session command.Stop sending the command or event,sending commands supported by the controlled end. |
+| 6600101  | Session service exception.|
+| 6600105  | Invalid session command.|
 | 6600109  | The remote connection is not established. |
 
 **示例：**
@@ -448,7 +448,7 @@ sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -464,8 +464,8 @@ sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback\<void>
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
-| 6600105  | Invalid session command.Stop sending the command or event,sending commands supported by the controlled end. |
+| 6600101  | Session service exception. |
+| 6600105  | Invalid session command. |
 | 6600109  | The remote connection is not established. |
 
 **示例：**
@@ -500,6 +500,268 @@ aVCastController.sendControlCommand(avCommand, (err: BusinessError | null) => {
 });
 ```
 
+## sendCustomData<sup>20+</sup>
+
+sendCustomData(data: Record\<string, Object>): Promise\<void>
+
+发送私有数据到远端设备。使用Promise异步回调。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                                                         |
+| ------ | ---------------------- | ---- | ------------------------------------------------------------ |
+| data   | Record\<string, Object> | 是   | 应用程序填充的自定义数据。<br>服务端仅解析key：string为'customData'，且Object为string类型的对象。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() { 
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession | undefined = undefined;
+            let tag = "createNewSession";
+            let context: Context = this.getUIContext().getHostContext() as Context;
+
+            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
+            if (err) {
+                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            } else {
+                currentAVSession = data;
+            }
+            });
+            if (currentAVSession !== undefined) {
+            (currentAVSession as avSession.AVSession).sendCustomData({customData : "This is custom data"}).then(() => {
+                console.info('sendCustomData successfully');
+            }).catch((err: BusinessError) => {
+                console.error(`sendCustomData BusinessError: code: ${err.code}, message: ${err.message}`);
+            })
+            }
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() { 
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession | undefined = undefined;
+            let tag = "createNewSession";
+            let context: Context = this.getUIContext().getHostContext() as Context;
+
+            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
+            if (err) {
+                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            } else {
+                currentAVSession = data;
+            }
+            });
+            if (currentAVSession !== undefined) {
+            (currentAVSession as avSession.AVSession).sendCustomData({customData : "This is custom data"}).then(() => {
+                console.info('sendCustomData successfully');
+            }).catch((err: BusinessError) => {
+                console.error(`sendCustomData BusinessError: code: ${err.code}, message: ${err.message}`);
+            })
+            }
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## on('customDataChange')<sup>20+</sup>
+
+on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
+
+注册从远程设备发送的自定义数据的监听器。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCustomDataChange](#onCustomDataChange23)。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 20
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                           | 是   | 事件回调类型，支持事件'customDataChange'，当媒体提供方发送自定义数据时，触发该事件。 |
+| callback | Callback\<Record\<string, Object>> | 是   | 回调函数，用于接收自定义数据。                               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 6600101  | Session service exception. |
+
+**示例：**
+
+```ts
+currentAVSession.on('customDataChange', (callback) => {
+    console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
+});
+```
+
+## onCustomDataChange<sup>23+</sup>
+
+onCustomDataChange(callback: Callback<Record<string, Object>>): void
+
+注册从远程设备发送的自定义数据的监听器。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('customDataChange')](#oncustomDataChange20)。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<Record\<string, Object>> | 是   | 回调函数，用于接收自定义数据。                               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 6600101  | Session service exception. |
+
+**示例：**
+
+```ts
+aVCastController.onCustomDataChange((data: Record<string, Object>) => {
+  console.info(`onCustomDataChange, data: ${JSON.stringify(data)}`);
+});
+```
+
+## off('customDataChange')<sup>20+</sup>
+
+off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): void
+
+取消自定义数据监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[off('customDataChange')](#offcustomDataChange23)。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 20
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                           | 是   | 取消对应的监听事件，支持的事件是'customDataChange'。         |
+| callback | Callback\<Record\<string, Object>> | 否   | 注册监听事件时的回调函数。该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 6600101  | Session service exception. |
+
+**示例：**
+
+```ts
+currentAVSession.off('customDataChange');
+```
+
+## offCustomDataChange<sup>23+</sup>
+
+offCustomDataChange(callback?: Callback<Record<string, Object>>): void
+
+取消自定义数据监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('customDataChange')](#offcustomDataChange20)。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<Record\<string, Object>> | 否   | 注册监听事件时的回调函数。该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 6600101  | Session service exception. |
+
+**示例：**
+
+```ts
+aVCastController.offCustomDataChange(callback);
+```
+
 ## prepare<sup>10+</sup>
 
 prepare(item: AVQueueItem, callback: AsyncCallback\<void>): void
@@ -510,7 +772,7 @@ prepare(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -526,7 +788,7 @@ prepare(item: AVQueueItem, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600109  | The remote connection is not established. |
 
 **示例：**
@@ -608,7 +870,7 @@ prepare(item: AVQueueItem): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -629,7 +891,7 @@ prepare(item: AVQueueItem): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600109  | The remote connection is not established. |
 
 **示例：**
@@ -704,7 +966,7 @@ start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -720,7 +982,7 @@ start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600109  | The remote connection is not established. |
 
 **示例：**
@@ -803,7 +1065,7 @@ start(item: AVQueueItem): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -824,7 +1086,7 @@ start(item: AVQueueItem): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600109  | The remote connection is not established. |
 
 **示例：**
@@ -899,7 +1161,7 @@ getCurrentItem(callback: AsyncCallback\<AVQueueItem>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -913,7 +1175,7 @@ getCurrentItem(callback: AsyncCallback\<AVQueueItem>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
 
@@ -957,7 +1219,7 @@ getCurrentItem(): Promise\<AVQueueItem>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -971,7 +1233,7 @@ getCurrentItem(): Promise\<AVQueueItem>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
 
@@ -1009,7 +1271,7 @@ getValidCommands(callback: AsyncCallback<Array\<AVCastControlCommandType>>): voi
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1023,7 +1285,7 @@ getValidCommands(callback: AsyncCallback<Array\<AVCastControlCommandType>>): voi
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
 
@@ -1065,7 +1327,7 @@ getValidCommands(): Promise<Array\<AVCastControlCommandType>>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1079,7 +1341,7 @@ getValidCommands(): Promise<Array\<AVCastControlCommandType>>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
 
@@ -1119,7 +1381,7 @@ processMediaKeyResponse(assetId: string, response: Uint8Array): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1141,7 +1403,7 @@ processMediaKeyResponse(assetId: string, response: Uint8Array): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
 
@@ -1181,7 +1443,7 @@ release(callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1195,7 +1457,7 @@ release(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------------------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
 
@@ -1239,7 +1501,7 @@ release(): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1253,7 +1515,7 @@ release(): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
 
@@ -1283,11 +1545,13 @@ aVCastController.release().then(() => {
 
 ## on('playbackStateChange')<sup>10+</sup>
 
-on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state: AVPlaybackState) => void): void
+on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', callback: (state: AVPlaybackState) => void): void
 
 设置播放状态变化的监听事件。结果通过callback异步回调方式返回。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlaybackStateChange](#onPlaybackStateChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1300,7 +1564,7 @@ on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'playbackStateChange'`：当播放状态变化时，触发该事件。 |
-| filter   | Array\<string\>&nbsp;&#124;&nbsp;'all' | 是   | 'all' 表示关注播放状态所有字段变化；Array\<string\> 表示关注Array中的字段变化。 |
+| filter   | Array\<keyof AVPlaybackState\>&nbsp;&#124;&nbsp;'all' | 是   | 'all' 表示关注播放状态所有字段变化；Array\<keyof AVPlaybackState\> 表示关注Array中的字段变化。 |
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void | 是   | 回调函数，参数state是变化后的播放状态。                      |
 
 **错误码：**
@@ -1310,11 +1574,9 @@ on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
@@ -1327,7 +1589,7 @@ aVCastController.on('playbackStateChange', playbackFilter, (playbackState: avSes
 });
 ```
 
-## onPlaybackStateChange<sup>22+</sup>
+## onPlaybackStateChange<sup>23+</sup>
 
 onPlaybackStateChange(filter: Array\<string>, callback: Callback\<AVPlaybackState>): void
 
@@ -1335,9 +1597,11 @@ onPlaybackStateChange(filter: Array\<string>, callback: Callback\<AVPlaybackStat
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('playbackStateChange')](#onplaybackStateChange10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1352,11 +1616,9 @@ onPlaybackStateChange(filter: Array\<string>, callback: Callback\<AVPlaybackStat
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. 1. Required parameters are missing. 2. Provided parameters have invalid types. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 let playbackFilter: Array<string> = ['state', 'speed', 'loopMode'];
@@ -1365,7 +1627,7 @@ aVCastController.onPlaybackStateChange(playbackFilter, (playbackState: avSession
 });
 ```
 
-## onPlaybackStateChangeAll<sup>22+</sup>
+## onPlaybackStateChangeAll<sup>23+</sup>
 
 onPlaybackStateChangeAll(callback: Callback\<AVPlaybackState>): void
 
@@ -1373,9 +1635,11 @@ onPlaybackStateChangeAll(callback: Callback\<AVPlaybackState>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('playbackStateChange')](#onplaybackStateChange10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1389,11 +1653,9 @@ onPlaybackStateChangeAll(callback: Callback\<AVPlaybackState>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. 1. Required parameters are missing. 2. Provided parameters have invalid types. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.onPlaybackStateChangeAll((playbackState: avSession.AVPlaybackState) => {
@@ -1408,6 +1670,8 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 媒体控制器取消监听播放状态变化的事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPlaybackStateChange](#offPlaybackStateChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1429,17 +1693,15 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.off('playbackStateChange');
 ```
 
-## offPlaybackStateChange<sup>22+</sup>
+## offPlaybackStateChange<sup>23+</sup>
 
 offPlaybackStateChange(callback?: Callback\<AVPlaybackState>): void
 
@@ -1447,15 +1709,17 @@ offPlaybackStateChange(callback?: Callback\<AVPlaybackState>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('playbackStateChange')](#offplaybackStateChange10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                     |
-| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 否   | 回调函数，参数state是变化后的播放状态。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                      |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback<[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)> | 否   | 回调函数，参数state是变化后的播放状态。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1463,12 +1727,9 @@ offPlaybackStateChange(callback?: Callback\<AVPlaybackState>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offPlaybackStateChange();
@@ -1481,6 +1742,8 @@ on(type: 'mediaItemChange', callback: Callback\<AVQueueItem>): void
 设置投播当前播放媒体内容的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMediaItemChange](#onMediaItemChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1502,11 +1765,9 @@ on(type: 'mediaItemChange', callback: Callback\<AVQueueItem>): void
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
@@ -1514,7 +1775,7 @@ aVCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
 });
 ```
 
-## onMediaItemChange<sup>22+</sup>
+## onMediaItemChange<sup>23+</sup>
 
 onMediaItemChange(callback: Callback\<AVQueueItem>): void
 
@@ -1522,9 +1783,11 @@ onMediaItemChange(callback: Callback\<AVQueueItem>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('mediaItemChange')](#onmediaItemChange10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1538,11 +1801,9 @@ onMediaItemChange(callback: Callback\<AVQueueItem>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.onMediaItemChange((item: avSession.AVQueueItem) => {
@@ -1557,6 +1818,8 @@ off(type: 'mediaItemChange'): void
 取消设置投播当前播放媒体内容的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMediaItemChange](#offMediaItemChange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1577,17 +1840,15 @@ off(type: 'mediaItemChange'): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.off('mediaItemChange');
 ```
 
-## offMediaItemChange<sup>22+</sup>
+## offMediaItemChange<sup>23+</sup>
 
 offMediaItemChange(): void
 
@@ -1595,9 +1856,11 @@ offMediaItemChange(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('playNext')](#onplayNext10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 **错误码：**
@@ -1606,11 +1869,9 @@ offMediaItemChange(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offMediaItemChange();
@@ -1623,6 +1884,8 @@ on(type: 'playNext', callback: Callback\<void>): void
 设置播放下一首资源的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlayNext](#onPlayNext23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1644,11 +1907,9 @@ on(type: 'playNext', callback: Callback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.on('playNext', () => {
@@ -1656,7 +1917,7 @@ aVCastController.on('playNext', () => {
 });
 ```
 
-## onPlayNext<sup>22+</sup>
+## onPlayNext<sup>23+</sup>
 
 onPlayNext(callback: NoParamCallback): void
 
@@ -1664,9 +1925,11 @@ onPlayNext(callback: NoParamCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('mediaItemChange')](#offmediaItemChange10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1680,11 +1943,9 @@ onPlayNext(callback: NoParamCallback): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.onPlayNext(() => {
@@ -1699,6 +1960,8 @@ off(type: 'playNext'): void
 取消设置播放下一首资源的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPlayNext](#offPlayNext23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1719,17 +1982,15 @@ off(type: 'playNext'): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.off('playNext');
 ```
 
-## offPlayNext<sup>22+</sup>
+## offPlayNext<sup>23+</sup>
 
 offPlayNext(): void
 
@@ -1737,9 +1998,11 @@ offPlayNext(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('playNext')](#offPlayNext10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -1747,11 +2010,9 @@ offPlayNext(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offPlayNext();
@@ -1764,6 +2025,8 @@ on(type: 'playPrevious', callback: Callback\<void>): void
 设置播放上一首资源的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlayPrevious](#onPlayPrevious23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1785,11 +2048,9 @@ on(type: 'playPrevious', callback: Callback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.on('playPrevious', () => {
@@ -1797,7 +2058,7 @@ aVCastController.on('playPrevious', () => {
 });
 ```
 
-## onPlayPrevious<sup>22+</sup>
+## onPlayPrevious<sup>23+</sup>
 
 onPlayPrevious(callback: NoParamCallback): void
 
@@ -1805,9 +2066,11 @@ onPlayPrevious(callback: NoParamCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('requestPlay')](#offrequestPlay11)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1821,11 +2084,9 @@ onPlayPrevious(callback: NoParamCallback): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.onPlayPrevious(() => {
@@ -1840,6 +2101,8 @@ off(type: 'playPrevious'): void
 取消设置播放上一首资源的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPlayPrevious](#offPlayPrevious23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1860,17 +2123,15 @@ off(type: 'playPrevious'): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.off('playPrevious');
 ```
 
-## offPlayPrevious<sup>22+</sup>
+## offPlayPrevious<sup>23+</sup>
 
 offPlayPrevious(): void
 
@@ -1878,9 +2139,11 @@ offPlayPrevious(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('playPrevious')](#onplayPrevious10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 **错误码：**
@@ -1889,11 +2152,9 @@ offPlayPrevious(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offPlayPrevious();
@@ -1906,6 +2167,8 @@ on(type: 'requestPlay', callback: Callback\<AVQueueItem>): void
 设置请求播放的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onRequestPlay](#onRequestPlay23)。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1925,11 +2188,9 @@ on(type: 'requestPlay', callback: Callback\<AVQueueItem>): void
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.on('requestPlay', (item: avSession.AVQueueItem) => {
@@ -1937,7 +2198,7 @@ aVCastController.on('requestPlay', (item: avSession.AVQueueItem) => {
 });
 ```
 
-## onRequestPlay<sup>22+</sup>
+## onRequestPlay<sup>23+</sup>
 
 onRequestPlay(callback: Callback\<AVQueueItem>): void
 
@@ -1945,9 +2206,11 @@ onRequestPlay(callback: Callback\<AVQueueItem>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('playPrevious')](#offplayPrevious10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1961,11 +2224,9 @@ onRequestPlay(callback: Callback\<AVQueueItem>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.onRequestPlay((item: avSession.AVQueueItem) => {
@@ -1980,6 +2241,8 @@ off(type: 'requestPlay', callback?: Callback\<AVQueueItem>): void
 取消设置请求播放的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offRequestPlay](#offRequestPlay23)。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1999,17 +2262,15 @@ off(type: 'requestPlay', callback?: Callback\<AVQueueItem>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.off('requestPlay');
 ```
 
-## offRequestPlay<sup>22+</sup>
+## offRequestPlay<sup>23+</sup>
 
 offRequestPlay(callback?: Callback\<AVQueueItem>): void
 
@@ -2019,7 +2280,9 @@ offRequestPlay(callback?: Callback\<AVQueueItem>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('requestPlay')](#onrequestPlay11)。
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2033,11 +2296,9 @@ offRequestPlay(callback?: Callback\<AVQueueItem>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offRequestPlay();
@@ -2050,6 +2311,8 @@ on(type: 'endOfStream', callback: Callback\<void>): void
 设置播放结束的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onEndOfStream](#onEndOfStream23)。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2069,11 +2332,9 @@ on(type: 'endOfStream', callback: Callback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.on('endOfStream', () => {
@@ -2081,7 +2342,7 @@ aVCastController.on('endOfStream', () => {
 });
 ```
 
-## onEndOfStream<sup>22+</sup>
+## onEndOfStream<sup>23+</sup>
 
 onEndOfStream(callback: NoParamCallback): void
 
@@ -2089,9 +2350,11 @@ onEndOfStream(callback: NoParamCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('endOfStream')](#onendOfStream11)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2105,11 +2368,9 @@ onEndOfStream(callback: NoParamCallback): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.onEndOfStream(() => {
@@ -2124,6 +2385,8 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 取消设置播放结束的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offEndOfStream](#offEndOfStream23)。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2143,17 +2406,15 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.off('endOfStream');
 ```
 
-## offEndOfStream<sup>22+</sup>
+## offEndOfStream<sup>23+</sup>
 
 offEndOfStream(callback?: NoParamCallback): void
 
@@ -2161,9 +2422,11 @@ offEndOfStream(callback?: NoParamCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('endOfStream')](#offendOfStream11)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2177,11 +2440,9 @@ offEndOfStream(callback?: NoParamCallback): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offEndOfStream();
@@ -2194,6 +2455,8 @@ on(type: 'seekDone', callback: Callback\<number>): void
 设置seek结束的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSeekDone](#onSeekDone23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2215,11 +2478,9 @@ on(type: 'seekDone', callback: Callback\<number>): void
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.on('seekDone', (pos: number) => {
@@ -2227,7 +2488,7 @@ aVCastController.on('seekDone', (pos: number) => {
 });
 ```
 
-## onSeekDone<sup>22+</sup>
+## onSeekDone<sup>23+</sup>
 
 onSeekDone(callback: Callback\<int>): void
 
@@ -2235,9 +2496,11 @@ onSeekDone(callback: Callback\<int>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('seekDone')](#onseekDone10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2251,11 +2514,9 @@ onSeekDone(callback: Callback\<int>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.onSeekDone((pos: int) => {
@@ -2270,6 +2531,8 @@ off(type: 'seekDone'): void
 取消设置seek结束的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSeekDone](#offSeekDone23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2290,17 +2553,15 @@ off(type: 'seekDone'): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.off('seekDone');
 ```
 
-## offSeekDone<sup>22+</sup>
+## offSeekDone<sup>23+</sup>
 
 offSeekDone(): void
 
@@ -2308,9 +2569,11 @@ offSeekDone(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('seekDone')](#offseekDone10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -2318,11 +2581,9 @@ offSeekDone(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offSeekDone();
@@ -2335,6 +2596,8 @@ on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandTy
 会话支持的有效命令变化监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onValidCommandChange](#onValidCommandChange23)。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2354,12 +2617,10 @@ on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandTy
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.on('validCommandChange', (validCommands: avSession.AVCastControlCommandType[]) => {
@@ -2368,7 +2629,7 @@ aVCastController.on('validCommandChange', (validCommands: avSession.AVCastContro
 });
 ```
 
-## onValidCommandChange<sup>22+</sup>
+## onValidCommandChange<sup>23+</sup>
 
 onValidCommandChange(callback: Callback<Array\<AVCastControlCommandType>>): void
 
@@ -2376,9 +2637,11 @@ onValidCommandChange(callback: Callback<Array\<AVCastControlCommandType>>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('validCommandChange')](#onvalidCommandChange11)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2392,12 +2655,10 @@ onValidCommandChange(callback: Callback<Array\<AVCastControlCommandType>>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.onValidCommandChange((validCommands: avSession.AVCastControlCommandType[]) => {
@@ -2413,6 +2674,8 @@ off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommand
 媒体控制器取消监听会话有效命令变化的事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offValidCommandChange](#offValidCommandChange23)。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2432,18 +2695,16 @@ off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommand
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.off('validCommandChange');
 ```
 
-## offValidCommandChange<sup>22+</sup>
+## offValidCommandChange<sup>23+</sup>
 
 offValidCommandChange(callback?: Callback<Array\<AVCastControlCommandType>>): void
 
@@ -2451,9 +2712,11 @@ offValidCommandChange(callback?: Callback<Array\<AVCastControlCommandType>>): vo
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('validCommandChange')](#offvalidCommandChange11)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2467,12 +2730,10 @@ offValidCommandChange(callback?: Callback<Array\<AVCastControlCommandType>>): vo
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offValidCommandChange();
@@ -2486,16 +2747,18 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onVideoSizeChange](#onVideoSizeChange23)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
-| callback | (width: int, height: int) => void | 是   | 回调函数。返回视频尺寸。                                                   |
+| 参数名   | 类型                                    | 必填 | 说明                                                         |
+| -------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                                  | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
+| callback | (width: number, height: number) => void | 是   | 回调函数。返回视频尺寸。                                     |
 
 **错误码：**
 
@@ -2504,11 +2767,9 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.on('videoSizeChange', (width: number, height: number) => {
@@ -2516,7 +2777,7 @@ aVCastController.on('videoSizeChange', (width: number, height: number) => {
 });
 ```
 
-## onVideoSizeChange<sup>22+</sup>
+## onVideoSizeChange<sup>23+</sup>
 
 onVideoSizeChange(callback: VideoSizeEvent): void
 
@@ -2524,9 +2785,11 @@ onVideoSizeChange(callback: VideoSizeEvent): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('videoSizeChange')](#onvideoSizeChange12)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2540,11 +2803,9 @@ onVideoSizeChange(callback: VideoSizeEvent): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.onVideoSizeChange((width: int, height: int) => {
@@ -2560,6 +2821,8 @@ off(type: 'videoSizeChange'): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offVideoSizeChange](#offVideoSizeChange23)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Dyn起始版本：** 12
@@ -2577,17 +2840,15 @@ off(type: 'videoSizeChange'): void
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.off('videoSizeChange');
 ```
 
-## offVideoSizeChange<sup>22+</sup>
+## offVideoSizeChange<sup>23+</sup>
 
 offVideoSizeChange(): void
 
@@ -2595,9 +2856,11 @@ offVideoSizeChange(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('videoSizeChange')](#offvideoSizeChange12)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -2605,11 +2868,9 @@ offVideoSizeChange(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offVideoSizeChange();
@@ -2622,6 +2883,8 @@ on(type: 'error', callback: ErrorCallback): void
 监听远端播放器的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onError23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2649,11 +2912,9 @@ on(type: 'error', callback: ErrorCallback): void
 | 5400104  | Time out.      |
 | 5400105  | Service died.         |
 | 5400106  | Unsupport format.     |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2663,7 +2924,7 @@ aVCastController.on('error', (error: BusinessError) => {
 })
 ```
 
-## onError<sup>22+</sup>
+## onError<sup>23+</sup>
 
 onError(callback: ErrorCallback): void
 
@@ -2671,9 +2932,11 @@ onError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2693,11 +2956,9 @@ onError(callback: ErrorCallback): void
 | 5400104  | Time out.      |
 | 5400105  | Service died.         |
 | 5400106  | Unsupport format.     |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2714,6 +2975,8 @@ off(type: 'error'): void
 取消监听播放的错误事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offError23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2740,17 +3003,15 @@ off(type: 'error'): void
 | 5400104  | Time out.      |
 | 5400105  | Service died.         |
 | 5400106  | Unsupport format.     |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.off('error')
 ```
 
-## offError<sup>22+</sup>
+## offError<sup>23+</sup>
 
 offError(): void
 
@@ -2758,9 +3019,11 @@ offError(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror10)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -2774,11 +3037,9 @@ offError(): void
 | 5400104  | Time out.      |
 | 5400105  | Service died.         |
 | 5400106  | Unsupport format.     |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offError()
@@ -2791,6 +3052,8 @@ on(type: 'keyRequest', callback: KeyRequestCallback): void
 在线DRM资源投播时，设置许可证请求的事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyRequest](#onKeyRequest23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2813,11 +3076,9 @@ on(type: 'keyRequest', callback: KeyRequestCallback): void
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
@@ -2826,7 +3087,7 @@ let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, re
 aVCastController.on('keyRequest', keyRequestCallback);
 ```
 
-## onKeyRequest<sup>22+</sup>
+## onKeyRequest<sup>23+</sup>
 
 onKeyRequest(callback: KeyRequestCallback): void
 
@@ -2834,9 +3095,11 @@ onKeyRequest(callback: KeyRequestCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyRequest')](#onkeyrequest12)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2851,11 +3114,9 @@ onKeyRequest(callback: KeyRequestCallback): void
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 let keyRequestCallback: avSession.KeyRequestCallback = (assetId: string, requestData: Uint8Array) => {
@@ -2871,6 +3132,8 @@ off(type: 'keyRequest', callback?: KeyRequestCallback): void
 取消监听许可证请求的事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyRequest](#offKeyRequest23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2892,17 +3155,15 @@ off(type: 'keyRequest', callback?: KeyRequestCallback): void
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 aVCastController.off('keyRequest');
 ```
 
-## offKeyRequest<sup>22+</sup>
+## offKeyRequest<sup>23+</sup>
 
 offKeyRequest(callback?: KeyRequestCallback): void
 
@@ -2910,9 +3171,11 @@ offKeyRequest(callback?: KeyRequestCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyRequest')](#offkeyRequest12)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2926,11 +3189,9 @@ offKeyRequest(callback?: KeyRequestCallback): void
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offKeyRequest();
@@ -2943,6 +3204,8 @@ on(type: 'castControlGenericError', callback: ErrorCallback): void
 监听投播通用错误事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCastControlGenericError](#onCastControlGenericError23)。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -2981,8 +3244,6 @@ on(type: 'castControlGenericError', callback: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2991,7 +3252,7 @@ aVCastController.on('castControlGenericError', (error: BusinessError) => {
 })
 ```
 
-## onCastControlGenericError<sup>22+</sup>
+## onCastControlGenericError<sup>23+</sup>
 
 onCastControlGenericError(callback: ErrorCallback): void
 
@@ -2999,9 +3260,11 @@ onCastControlGenericError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('castControlGenericError')](#oncastControlGenericError13)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3032,8 +3295,6 @@ onCastControlGenericError(callback: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Sta示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3049,6 +3310,8 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 取消监听投播通用的错误事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCastControlGenericError](#offCastControlGenericError23)。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -3073,13 +3336,11 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 aVCastController.off('castControlGenericError');
 ```
 
-## offCastControlGenericError<sup>22+</sup>
+## offCastControlGenericError<sup>23+</sup>
 
 offCastControlGenericError(callback?: ErrorCallback): void
 
@@ -3087,9 +3348,11 @@ offCastControlGenericError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('castControlGenericError')](#offcastControlGenericError13)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3098,8 +3361,6 @@ offCastControlGenericError(callback?: ErrorCallback): void
 | callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offCastControlGenericError();
@@ -3112,6 +3373,8 @@ on(type: 'castControlIoError', callback: ErrorCallback): void
 监听投播输入/输出的错误事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCastControlIoError](#onCastControlIoError23)。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -3153,8 +3416,6 @@ on(type: 'castControlIoError', callback: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3163,7 +3424,7 @@ aVCastController.on('castControlIoError', (error: BusinessError) => {
 })
 ```
 
-## onCastControlIoError<sup>22+</sup>
+## onCastControlIoError<sup>23+</sup>
 
 onCastControlIoError(callback: ErrorCallback): void
 
@@ -3171,9 +3432,11 @@ onCastControlIoError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyRequest')](#onkeyRequest12)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3207,8 +3470,6 @@ onCastControlIoError(callback: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Sta示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3224,6 +3485,8 @@ off(type: 'castControlIoError', callback?: ErrorCallback): void
 取消监听投播输入/输出的错误事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCastControlIoError](#offCastControlIoError23)。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -3248,13 +3511,11 @@ off(type: 'castControlIoError', callback?: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 aVCastController.off('castControlIoError');
 ```
 
-## offCastControlIoError<sup>22+</sup>
+## offCastControlIoError<sup>23+</sup>
 
 offCastControlIoError(callback?: ErrorCallback): void
 
@@ -3262,9 +3523,11 @@ offCastControlIoError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyRequest')](#offkeyRequest12)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3272,17 +3535,7 @@ offCastControlIoError(callback?: ErrorCallback): void
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息              |
-| -------- | --------------------- |
-| 401 |  Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offCastControlIoError();
@@ -3295,6 +3548,8 @@ on(type: 'castControlParsingError', callback: ErrorCallback): void
 监听投播解析的错误事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCastControlParsingError](#onCastControlParsingError23)。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -3324,8 +3579,6 @@ on(type: 'castControlParsingError', callback: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3334,7 +3587,7 @@ aVCastController.on('castControlParsingError', (error: BusinessError) => {
 })
 ```
 
-## onCastControlParsingError<sup>22+</sup>
+## onCastControlParsingError<sup>23+</sup>
 
 onCastControlParsingError(callback: ErrorCallback): void
 
@@ -3342,9 +3595,11 @@ onCastControlParsingError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('castControlGenericError')](#oncastControlGenericError13)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3366,8 +3621,6 @@ onCastControlParsingError(callback: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Sta示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3383,6 +3636,8 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 取消监听投播解析的错误事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCastControlParsingError](#offCastControlParsingError23)。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -3407,13 +3662,11 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 aVCastController.off('castControlParsingError');
 ```
 
-## offCastControlParsingError<sup>22+</sup>
+## offCastControlParsingError<sup>23+</sup>
 
 offCastControlParsingError(callback?: ErrorCallback): void
 
@@ -3421,9 +3674,11 @@ offCastControlParsingError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('castControlParsingError')](#offcastControlParsingError13)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3432,8 +3687,6 @@ offCastControlParsingError(callback?: ErrorCallback): void
 | callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offCastControlParsingError();
@@ -3446,6 +3699,8 @@ on(type: 'castControlDecodingError', callback: ErrorCallback): void
 监听投播解码的错误事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCastControlDecodingError](#onCastControlDecodingError23)。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -3476,8 +3731,6 @@ on(type: 'castControlDecodingError', callback: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3486,7 +3739,7 @@ aVCastController.on('castControlDecodingError', (error: BusinessError) => {
 })
 ```
 
-## onCastControlDecodingError<sup>22+</sup>
+## onCastControlDecodingError<sup>23+</sup>
 
 onCastControlDecodingError(callback: ErrorCallback): void
 
@@ -3494,9 +3747,11 @@ onCastControlDecodingError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('castControlDecodingError')](#oncastControlDecodingError13)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3519,8 +3774,6 @@ onCastControlDecodingError(callback: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Sta示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3536,6 +3789,8 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 取消监听投播解码的错误事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCastControlDecodingError](#offCastControlDecodingError23)。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -3560,13 +3815,11 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 aVCastController.off('castControlDecodingError');
 ```
 
-## offCastControlDecodingError<sup>22+</sup>
+## offCastControlDecodingError<sup>23+</sup>
 
 offCastControlDecodingError(callback?: ErrorCallback): void
 
@@ -3574,20 +3827,19 @@ offCastControlDecodingError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('castControlDecodingError')](#offcastControlDecodingError13)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 	取消对应的监听事件，支持的事件是'castControlDecodingError'。 |
 | callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offCastControlDecodingError();
@@ -3600,6 +3852,8 @@ on(type: 'castControlAudioRendererError', callback: ErrorCallback): void
 监听投播音频渲染器的错误事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCastControlAudioRendererError](#onCastControlAudioRendererError23)。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -3627,8 +3881,6 @@ on(type: 'castControlAudioRendererError', callback: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3637,7 +3889,7 @@ aVCastController.on('castControlAudioRendererError', (error: BusinessError) => {
 })
 ```
 
-## onCastControlAudioRendererError<sup>22+</sup>
+## onCastControlAudioRendererError<sup>23+</sup>
 
 onCastControlAudioRendererError(callback: ErrorCallback): void
 
@@ -3645,9 +3897,11 @@ onCastControlAudioRendererError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('castControlAudioRendererError')](#oncastControlAudioRendererError13)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3667,8 +3921,6 @@ onCastControlAudioRendererError(callback: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Sta示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3684,6 +3936,8 @@ off(type: 'castControlAudioRendererError', callback?: ErrorCallback): void
 取消监听投播音频渲染器的错误事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCastControlAudioRendererError](#offCastControlAudioRendererError23)。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -3708,13 +3962,11 @@ off(type: 'castControlAudioRendererError', callback?: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 aVCastController.off('castControlAudioRendererError');
 ```
 
-## offCastControlAudioRendererError<sup>22+</sup>
+## offCastControlAudioRendererError<sup>23+</sup>
 
 offCastControlAudioRendererError(callback?: ErrorCallback): void
 
@@ -3722,9 +3974,11 @@ offCastControlAudioRendererError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('castControlAudioRendererError')](#offcastControlAudioRendererError13)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3733,8 +3987,6 @@ offCastControlAudioRendererError(callback?: ErrorCallback): void
 | callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offCastControlAudioRendererError();
@@ -3747,6 +3999,8 @@ on(type: 'castControlDrmError', callback: ErrorCallback): void
 监听投播drm的错误事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCastControlDrmError](#onCastControlDrmError23)。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -3781,8 +4035,6 @@ on(type: 'castControlDrmError', callback: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3791,7 +4043,7 @@ aVCastController.on('castControlDrmError', (error: BusinessError) => {
 })
 ```
 
-## onCastControlDrmError<sup>22+</sup>
+## onCastControlDrmError<sup>23+</sup>
 
 onCastControlDrmError(callback: ErrorCallback): void
 
@@ -3799,9 +4051,11 @@ onCastControlDrmError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('castControlDrmError')](#oncastControlDrmError13)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3828,8 +4082,6 @@ onCastControlDrmError(callback: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Sta示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3845,6 +4097,8 @@ off(type: 'castControlDrmError', callback?: ErrorCallback): void
 取消监听投播drm的错误事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCastControlDrmError](#offCastControlDrmError23)。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -3869,13 +4123,11 @@ off(type: 'castControlDrmError', callback?: ErrorCallback): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 aVCastController.off('castControlDrmError');
 ```
 
-## offCastControlDrmError<sup>22+</sup>
+## offCastControlDrmError<sup>23+</sup>
 
 offCastControlDrmError(callback?: ErrorCallback): void
 
@@ -3883,9 +4135,11 @@ offCastControlDrmError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('castControlDrmError')](#offcastControlDrmError13)。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3894,8 +4148,6 @@ offCastControlDrmError(callback?: ErrorCallback): void
 | callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **示例：**
-
-ArkTS-Sta示例：
 
 ```ts
 aVCastController.offCastControlDrmError();

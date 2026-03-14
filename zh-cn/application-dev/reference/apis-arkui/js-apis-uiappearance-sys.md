@@ -25,8 +25,11 @@ setDarkMode(mode: DarkMode, callback: AsyncCallback\<void>): void
 设置系统深色模式。
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
-
 **系统能力：** SystemCapability.ArkUI.UiAppearance
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -75,7 +78,11 @@ setDarkMode(mode: DarkMode): Promise\<void>;
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
@@ -131,7 +138,7 @@ ArkTS-Sta: setFontScale(fontScale: double): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -193,7 +200,7 @@ ArkTS-Sta: setFontWeightScale(fontWeightScale: double): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

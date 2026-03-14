@@ -5,9 +5,10 @@ DriverExtensionContext模块是DriverExtensionAbility的上下文环境，继承
 DriverExtensionContext模块提供DriverExtensionAbility实现中需要主动发起的操作。
 
 > **说明：**
-> 
->  - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->  - 本模块接口仅可在Stage模型下使用。
+>
+> - 本模块同时支持 ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -37,6 +38,10 @@ updateDriverState(): void;
 驱动状态上报。预留接口，暂不提供具体功能。
 
 **系统能力**：SystemCapability.Driver.ExternalDevice
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 

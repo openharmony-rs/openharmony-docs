@@ -23,7 +23,10 @@ import { ColorMetrics, LengthMetrics, ProgressButtonV2,  ProgressButtonV2Color }
 
 ## ProgressButtonV2
 
-ProgressButtonV2({progress: number, content: ResourceStr, progressButtonWidth?: LengthMetrics, onClicked: ClickCallback,
+ArkTS-Dyn: ProgressButtonV2({progress: number, content: ResourceStr, progressButtonWidth?: LengthMetrics, onClicked: ClickCallback,
+isEnabled: boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
+
+ArkTS-Sta: ProgressButtonV2({progress: int, content: ResourceStr, progressButtonWidth?: LengthMetrics, onClicked: ClickCallback,
 isEnabled: boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
 
 文本下载按钮，可显示具体下载进度。
@@ -36,11 +39,11 @@ isEnabled: boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRad
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                | 类型                                                            | 必填 | 装饰器类型                  | 说明                                                                                |
 |-----------------------------------|---------------------------------------------------------------|----|------------------------|-----------------------------------------------------------------------------------|
-| progress                          | number                                                        | 是  | \@Require <br/>\@Param | 下载按钮的当前进度值。<br/>取值范围：[0,100]。设置小于0的数值时置为0，设置大于100的数值置为100。<br/>默认值：0                                                                       |
+| progress                          | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                | 是  | \@Require <br/>\@Param | 下载按钮的当前进度值。<br/>取值范围：[0,100]。设置小于0的数值时置为0，设置大于100的数值置为100。<br/>默认值：0                                                                       |
 | content                           | [ResourceStr](ts-types.md#resourcestr)                        | 是  | \@Require <br/>\@Param | 下载按钮的文本。                                                                          |
 | progressButtonWidth               | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | \@Param <br/>\@Once  | 下载按钮的宽度。<br/>默认值：44vp                                                           |
 | onClicked                         | [ClickCallback](#clickcallback)                               | 是  | \@Param                | 下载按钮的点击回调。                                                       |
@@ -63,7 +66,7 @@ type ClickCallback = () => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## ProgressButtonV2Color
 下载按钮颜色选项。
@@ -78,7 +81,7 @@ type ClickCallback = () => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型           | 必填 | 装饰器类型   | 说明                        |
 |-----------------|--------------|----|---------|---------------------------|
@@ -98,7 +101,7 @@ constructor(options: ProgressButtonV2ColorOptions);
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                           | 必填 | 说明    |
 |---------|------------------------------|----|-------|
@@ -114,7 +117,7 @@ constructor(options: ProgressButtonV2ColorOptions);
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型           | 必填 | 说明                        |
 |-----------------|--------------|----|---------------------------|

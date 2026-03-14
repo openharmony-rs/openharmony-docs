@@ -18,7 +18,8 @@ import { defaultAppManager } from '@kit.AbilityKit';
 
 ## defaultAppManager.getDefaultApplication
 
-ArkTS-Dyn: getDefaultApplication(type: string, userId?: number): Promise\<BundleInfo><br>
+ArkTS-Dyn: getDefaultApplication(type: string, userId?: number): Promise\<BundleInfo>
+
 ArkTS-Sta: getDefaultApplication(type: string, userId?: int): Promise\<BundleInfo>
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息，使用Promise异步回调。
@@ -125,7 +126,8 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 ## defaultAppManager.getDefaultApplication
 
-ArkTS-Dyn: getDefaultApplication(type: string, userId: number, callback: AsyncCallback\<BundleInfo>): void<br>
+ArkTS-Dyn: getDefaultApplication(type: string, userId: number, callback: AsyncCallback\<BundleInfo>): void
+
 ArkTS-Sta: getDefaultApplication(type: string, userId: int, callback: AsyncCallback\<BundleInfo>): void
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息，使用callback异步回调。
@@ -329,7 +331,8 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 ## defaultAppManager.getDefaultApplicationSync<sup>10+</sup>
 
-ArkTS-Dyn: getDefaultApplicationSync(type: string, userId?: number): BundleInfo<br>
+ArkTS-Dyn: getDefaultApplicationSync(type: string, userId?: number): BundleInfo
+
 ArkTS-Sta: getDefaultApplicationSync(type: string, userId?: int): BundleInfo
 
 以同步方法根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息，使用BundleInfo返回结果。
@@ -401,7 +404,8 @@ try {
 
 ## defaultAppManager.setDefaultApplication
 
-ArkTS-Dyn: setDefaultApplication(type: string, elementName: ElementName, userId?: number): Promise\<void><br>
+ArkTS-Dyn: setDefaultApplication(type: string, elementName: ElementName, userId?: number): Promise\<void>
+
 ArkTS-Sta: setDefaultApplication(type: string, elementName: ElementName, userId?: int): Promise\<void>
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用，使用Promise异步回调。
@@ -544,7 +548,8 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 ## defaultAppManager.setDefaultApplication
 
-ArkTS-Dyn: setDefaultApplication(type: string, elementName: ElementName, userId: number, callback: AsyncCallback\<void>) : void<br>
+ArkTS-Dyn: setDefaultApplication(type: string, elementName: ElementName, userId: number, callback: AsyncCallback\<void>) : void
+
 ArkTS-Sta: setDefaultApplication(type: string, elementName: ElementName, userId: int, callback: AsyncCallback\<void>): void
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用，使用callback异步回调。
@@ -799,7 +804,8 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 ## defaultAppManager.setDefaultApplicationSync<sup>10+</sup>
 
-ArkTS-Dyn: setDefaultApplicationSync(type: string, elementName: ElementName, userId?: number): void<br>
+ArkTS-Dyn: setDefaultApplicationSync(type: string, elementName: ElementName, userId?: number): void
+
 ArkTS-Sta: setDefaultApplicationSync(type: string, elementName: ElementName, userId?: int): void
 
 以同步方法根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用。
@@ -890,7 +896,8 @@ try {
 
 ## defaultAppManager.resetDefaultApplication
 
-ArkTS-Dyn: resetDefaultApplication(type: string, userId?: number): Promise\<void><br>
+ArkTS-Dyn: resetDefaultApplication(type: string, userId?: number): Promise\<void>
+
 ArkTS-Sta: resetDefaultApplication(type: string, userId?: int): Promise\<void>
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用，使用Promise异步回调。
@@ -999,7 +1006,8 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
 
 ## defaultAppManager.resetDefaultApplication
 
-ArkTS-Dyn: resetDefaultApplication(type: string, userId: number, callback: AsyncCallback\<void>): void<br>
+ArkTS-Dyn: resetDefaultApplication(type: string, userId: number, callback: AsyncCallback\<void>): void
+
 ArkTS-Sta: resetDefaultApplication(type: string, userId: int, callback: AsyncCallback\<void>) : void
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用，使用callback异步回调。
@@ -1201,7 +1209,8 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
 
 ## defaultAppManager.resetDefaultApplicationSync<sup>10+</sup>
 
-ArkTS-Dyn: resetDefaultApplicationSync(type: string, userId?: number): void<br>
+ArkTS-Dyn: resetDefaultApplicationSync(type: string, userId?: number): void
+
 ArkTS-Sta: resetDefaultApplicationSync(type: string, userId?: int): void
 
 以同步方法根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用。

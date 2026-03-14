@@ -38,7 +38,7 @@ ArkTS-Sta: textBackgroundStyle(style: TextBackgroundStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -60,7 +60,7 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<ContainerSpanAttribute
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

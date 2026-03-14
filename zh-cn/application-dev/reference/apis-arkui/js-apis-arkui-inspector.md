@@ -31,7 +31,11 @@ createComponentObserver(id: string): ComponentObserver
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明       |
 | ------ | ------ | ---- | ---------- |
@@ -67,6 +71,8 @@ on(type: 'layout', callback: () => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onLayout<sup>23+</sup>](#onlayout23)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -78,7 +84,7 @@ on(type: 'layout', callback: () => void): void
 | type     | string | 是   | 必须填写字符串'layout'。<br>layout: 组件布局完成。|
 | callback | () => void  | 是   | 监听layout的回调。|
 
-### onLayout<sup>22+<sup>
+### onLayout<sup>23+</sup>
 
 onLayout(callback: VoidCallback): void
 
@@ -86,9 +92,11 @@ onLayout(callback: VoidCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('layout')](#onlayout)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -106,6 +114,8 @@ off(type: 'layout', callback?: () => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offLayout<sup>23+</sup>](#offlayout23)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -117,7 +127,7 @@ off(type: 'layout', callback?: () => void): void
 | type     | string | 是   | 必须填写字符串'layout'。<br>layout: 组件布局完成。|
 | callback | () => void  | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('layout')](#onlayout)方法中的callback为相同对象时才能取消回调成功。|
 
-### offLayout<sup>22+<sup>
+### offLayout<sup>23+</sup>
 
 offLayout(callback?: VoidCallback): void
 
@@ -125,9 +135,11 @@ offLayout(callback?: VoidCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('layout')](#offlayout)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -145,6 +157,8 @@ on(type: 'draw', callback: () => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onDraw<sup>23+</sup>](#ondraw23)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -156,17 +170,19 @@ on(type: 'draw', callback: () => void): void
 | type     | string | 是   | 必须填写字符串'draw'。<br>draw: 组件绘制送显完成。|
 | callback | () => void  | 是   | 监听draw的回调。                                     |
 
-### onDraw<sup>22+<sup>
+### onDraw<sup>23+</sup>
 
-onDraw(callback: VoidCallback): void
+onDraw(callback: Void): void
 
 通过句柄向对应的查询条件注册回调，当组件绘制送显完成时会触发该回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('draw')](#ondraw)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -184,6 +200,8 @@ off(type: 'draw', callback?: () => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offDraw<sup>23+</sup>](#offdraw23)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -195,7 +213,7 @@ off(type: 'draw', callback?: () => void): void
 | type     | string | 是   | 必须填写字符串'draw'。<br>draw: 组件绘制送显完成。|
 | callback | () => void   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('draw')](#ondraw)方法中的callback为相同对象时才能取消回调成功。 |
 
-### offDraw<sup>22+<sup>
+### offDraw<sup>23+</sup>
 
 offDraw(callback?: VoidCallback): void
 
@@ -203,9 +221,11 @@ offDraw(callback?: VoidCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('draw')](#offdraw)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -213,7 +233,7 @@ offDraw(callback?: VoidCallback): void
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDraw](#ondraw22)方法中的callback为相同对象时才能取消回调成功。 |
 
-### on('drawChildren')<sup>20+<sup>
+### on('drawChildren')<sup>20+</sup>
 
 on(type: 'drawChildren',  callback: Callback\<void\>): void
 
@@ -222,6 +242,8 @@ on(type: 'drawChildren',  callback: Callback\<void\>): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onDrawChildren<sup>23+</sup>](#ondrawchildren23)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -234,7 +256,7 @@ on(type: 'drawChildren',  callback: Callback\<void\>): void
 | type     | string | 是   | 必须填写字符串'drawChildren'。<br>drawChildren: 子组件绘制送显完成。|
 | callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<void>  | 是   | 监听drawChildren的回调。                                     |
 
-### onDrawChildren<sup>22+<sup>
+### onDrawChildren<sup>23+</sup>
 
 onDrawChildren(callback: VoidCallback): void
 
@@ -242,9 +264,11 @@ onDrawChildren(callback: VoidCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('drawChildren')](#ondrawchildren20)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -252,7 +276,7 @@ onDrawChildren(callback: VoidCallback): void
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)  | 是   | 监听drawChildren的回调。                                     |
 
-### off('drawChildren')<sup>20+<sup>
+### off('drawChildren')<sup>20+</sup>
 
 off(type: 'drawChildren', callback?: Callback\<void\>): void
 
@@ -261,6 +285,8 @@ off(type: 'drawChildren', callback?: Callback\<void\>): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offDrawChildren<sup>23+</sup>](#offdrawchildren23)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -273,7 +299,7 @@ off(type: 'drawChildren', callback?: Callback\<void\>): void
 | type     | string | 是   | 必须填写字符串'drawChildren'。<br>drawChildren: 子组件绘制送显完成。|
 | callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<void>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('drawChildren')](#ondrawchildren20)方法中的callback为相同对象时才能取消回调成功。 |
 
-### offDrawChildren<sup>22+<sup>
+### offDrawChildren<sup>23+</sup>
 
 offDrawChildren(callback?: VoidCallback): void
 
@@ -281,15 +307,17 @@ offDrawChildren(callback?: VoidCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('drawChildren')](#offdrawchildren20)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDrawChildren](#ondrawchildren22)方法中的callback为相同对象时才能取消回调成功。 |
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDrawChildren](#ondrawchildren23)方法中的callback为相同对象时才能取消回调成功。 |
 
 **示例：**
 

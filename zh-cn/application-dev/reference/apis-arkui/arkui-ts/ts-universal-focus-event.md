@@ -30,17 +30,23 @@ ArkTS-Sta: onFocus(event: (() => void) | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## onBlur
 
-onBlur(event:()&nbsp;=&gt;&nbsp;void)
+ArkTS-Dyn: onBlur(event: () => void)
+
+ArkTS-Sta: onBlur(event: (() => void) | undefined)
 
 当前组件失去焦点时触发的回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 
 ## 示例

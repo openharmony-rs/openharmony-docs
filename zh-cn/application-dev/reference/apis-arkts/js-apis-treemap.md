@@ -123,13 +123,13 @@ for (let item of numbers) {
 
 ```
 
-### constructor<sup>20+</sup>
+### constructor<sup>23+</sup>
 
 constructor(comparator?: TreeMapComparator\<K\>)
 
 TreeMap的构造函数，支持通过比较函数对元素进行升序或降序排序。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -385,13 +385,13 @@ let result = treeMap.get("sparrow");
 console.info("result:", result); // result: 356
 ```
 
-### get<sup>20+</sup>
+### get<sup>23+</sup>
 
 get(key: K): V \| undefined
 
 获取指定键key所对应的value值，为空时返回undefined。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -447,7 +447,7 @@ getFirstKey(): K
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 10200011 | The getFirstKey method cannot be bound. |
-| 10200010 | Container is empty. |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 
 **示例：**
 
@@ -497,7 +497,7 @@ getLastKey(): K
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 10200011 | The getLastKey method cannot be bound. |
-| 10200010 | Container is empty. |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 
 **示例：**
 
@@ -542,21 +542,11 @@ setAll(map: TreeMap<K, V>): void
 
 **错误码**
 
-ArkTS-Dyn错误码：
-
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200011 | The setAll method cannot be bound. |
-
-ArkTS-Sta错误码：
-
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200011 | The setAll method cannot be bound. |
 
 **示例：**
@@ -627,21 +617,11 @@ set(key: K, value: V): Object
 
 **错误码**
 
-ArkTS-Dyn错误码：
-
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200011 | The set method cannot be bound. |
-
-ArkTS-Sta错误码：
-
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200011 | The set method cannot be bound. |
 
 **示例：**
@@ -705,13 +685,13 @@ let result = treeMap.remove("sparrow"); // 删除数据
 console.info("result = " + result); // result = 356
 ```
 
-### remove<sup>20+</sup>
+### remove<sup>23+</sup>
 
 remove(key: K): V | undefined
 
 删除指定key对应的元素。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -787,13 +767,13 @@ let result = treeMap.getLowerKey(3);
 console.info("result:", result); // result: 2
 ```
 
-### getLowerKey<sup>20+</sup>
+### getLowerKey<sup>23+</sup>
 
 getLowerKey(key: K): K \| undefined
 
 获取容器中比传入key排序靠前一位的键，为空时返回undefined。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -817,7 +797,7 @@ getLowerKey(key: K): K \| undefined
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 10200011 | The getLastKey method cannot be bound. |
+| 10200011 | The getLowerKey method cannot be bound. |
 | 10200010 | Container is empty. |
 
 **示例：**
@@ -876,13 +856,13 @@ let result = treeMap.getHigherKey(3);
 console.info("result:", result); // result: 4
 ```
 
-### getHigherKey<sup>20+</sup>
+### getHigherKey<sup>23+</sup>
 
 getHigherKey(key: K): K \| undefined
 
 获取容器中比传入key排序靠后一位的键，为空时返回undefined。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -906,7 +886,7 @@ getHigherKey(key: K): K \| undefined
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 10200011 | The getLastKey method cannot be bound. |
+| 10200011 | The getHigherKey method cannot be bound. |
 | 10200010 | Container is empty. |
 
 **示例：**
@@ -1213,13 +1193,13 @@ treeMap.forEach((value ?: number, key ?: string) : void => {
  }
 ```
 
-### forEach<sup>20+</sup>
+### forEach<sup>23+</sup>
 
-forEach(callbackfn: TreeMapForEachCb\<K, V\>): void
+forEach(callbackFn: TreeMapForEachCb\<K, V\>): void
 
 通过回调函数来遍历实例对象上的元素以及元素对应的下标。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1400,13 +1380,13 @@ while(!temp.done) {
  }
 ```
 
-### $_iterator<sup>20+</sup>
+### $_iterator<sup>23+</sup>
 
 \$_iterator(): IterableIterator&lt;[K, V]&gt;
 
 返回一个迭代器，迭代器的每一项都是一个JavaScript对象，并返回该对象。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1442,13 +1422,13 @@ for (let item of treeMap) {
  }
 ```
 
-### TreeMapForEachCb\<K, V\><sup>20+</sup>
+### TreeMapForEachCb\<K, V\><sup>23+</sup>
 
 type TreeMapForEachCb\<K, V\> = (value: V, key: K, map: TreeMap\<K, V\>) => void
 
 TreeMap中forEach方法的回调函数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1464,13 +1444,13 @@ TreeMap中forEach方法的回调函数。
 | key | K | 是 | 当前遍历到的元素键值对的键。 |
 | map | [TreeMap<K, V>](#treemap) | 是 | 当前调用[forEach](#foreach20)方法的实例对象。 |
 
-### TreeMapComparator\<K\><sup>20+</sup>
+### TreeMapComparator\<K\><sup>23+</sup>
 
 type TreeMapComparator\<K\> = (firstValue: K, secondValue: K) => double
 
 TreeMap中[constructor](#constructor20)方法的回调函数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 

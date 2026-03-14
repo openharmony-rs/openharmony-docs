@@ -27,13 +27,13 @@ ArkTS-Sta: hitTestBehavior(value: HitTestMode | undefined): this
 
 | 参数名            | 类型     | 必填                             | 说明                               |
 | -------------------- | -------- | ---------------------------------------- | ---------------------------------------- |
-| value | ArkTS-Dyn: [HitTestMode](#hittestmode枚举说明) <br/>ArkTS-Sta: [HitTestMode](#hittestmode枚举说明) \|&nbsp;undefined | 是 | 设置当前组件的触摸测试类型。<br>默认值： HitTestMode.Default |
+| value | ArkTS-Dyn: [HitTestMode](#hittestmode枚举说明) <br/>ArkTS-Sta: [HitTestMode](#hittestmode枚举说明) \| undefined | 是 | 设置当前组件的触摸测试类型。<br>默认值： HitTestMode.Default |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## HitTestMode枚举说明
 
@@ -117,7 +117,7 @@ struct BlockHierarchy {
             .onTouch((event) => {
               console.info('HitTestMode button150 touched type: ' + (event as TouchEvent).type);
             })
-            .hitTestBehavior(HitTestMode.Transparent) // 从API version 20开始，新增BLOCK_HIERARCHY
+            .hitTestBehavior(HitTestMode.Transparent)
           Button()
             .id('button100')
             .backgroundColor('#707070')
@@ -138,7 +138,7 @@ struct BlockHierarchy {
             .hitTestBehavior(HitTestMode.Transparent)
         }
         .width("100%").height("100%")
-        // 设置触摸测试模式，自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试
+        // 设置触摸测试模式，自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试（从API version 20开始，新增BLOCK_HIERARCHY）
         .hitTestBehavior(HitTestMode.BLOCK_HIERARCHY)
         .onTouch((event) => {
           console.info('HitTestMode stack touched type: ' + (event as TouchEvent).type);
@@ -196,14 +196,14 @@ struct BlockDescendants {
             })
         }
         .width("100%").height("100%")
-        // 设置触摸测试模式，自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试
+        // 设置触摸测试模式，自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试（从API version 20开始，新增BLOCK_DESCENDANTS）
         .hitTestBehavior(HitTestMode.BLOCK_DESCENDANTS)
         .onTouch((event) => {
           console.info('HitTestMode stack touched type: ' + (event as TouchEvent).type);
         })
 
         Text('Transparent')
-          .hitTestBehavior(HitTestMode.Transparent) // 从API version 20开始，新增BLOCK_DESCENDANTS
+          .hitTestBehavior(HitTestMode.Transparent)
           .width("100%").height("100%")
           .onTouch((event) => {
             console.info('HitTestMode text touched type: ' + (event as TouchEvent).type);

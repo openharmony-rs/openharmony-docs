@@ -35,7 +35,7 @@ Gauge(options: GaugeOptions)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -53,9 +53,9 @@ Gauge(options: GaugeOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
@@ -83,7 +83,7 @@ ArkTS-Sta: value(value: double | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -107,13 +107,9 @@ ArkTS-Sta: startAngle(angle: double | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
-
-**ArkTs-Dyn起始版本：** 8
-
-**ArkTs-Sta起始版本：** 22
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -135,7 +131,7 @@ ArkTS-Sta: endAngle(angle: double | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -169,7 +165,7 @@ ArkTS-Sta: colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor 
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -193,7 +189,7 @@ ArkTS-Sta: strokeWidth(length: Length | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -215,7 +211,7 @@ ArkTS-Sta: description(value: CustomBuilder | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -237,7 +233,7 @@ ArkTS-Sta: trackShadow(value: GaugeShadowOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -259,7 +255,7 @@ ArkTS-Sta: indicator(value: GaugeIndicatorOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -283,7 +279,7 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -305,7 +301,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<GaugeConfiguration> | unde
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -319,6 +315,12 @@ GaugeShadowOptions继承自[MultiShadowOptions](ts-types.md#multishadowoptions10
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 ## GaugeIndicatorOptions<sup>11+</sup>对象说明
 
 数据量规图表指针选项。
@@ -326,6 +328,10 @@ GaugeShadowOptions继承自[MultiShadowOptions](ts-types.md#multishadowoptions10
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型 | 必填 | 说明 |
 | ------------- | ------- | ---- | -------- |
@@ -340,9 +346,9 @@ GaugeShadowOptions继承自[MultiShadowOptions](ts-types.md#multishadowoptions10
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 类型    | 必填 | 说明              |
 | ------ | ------ | ----| ---------------- |

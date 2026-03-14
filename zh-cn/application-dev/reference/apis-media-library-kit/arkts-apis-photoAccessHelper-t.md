@@ -19,11 +19,13 @@ PhotoAsset的成员类型。
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20 
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明 |
 | ---- | ---- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int \| long \| double | 表示值类型为数字，可取任意值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 表示值类型为数字，可取任意值。 |
+| ArkTS-Sta: long | 表示值类型为数字，可取任意值。 |
+| ArkTS-Sta: double | 表示值类型为数字，可取任意值。 |
 | string | 表示值类型为字符，可取任意值。|
 | boolean | 表示值类型为布尔类型。 |
 
@@ -50,3 +52,19 @@ ArkTS-Sta: type OperationValueType = long | double | string | boolean
 | ArkTS-Dyn: number<br>ArkTS-Sta: long \| double    | 表示字段类型为数字，可取任意值。 |
 | string    | 表示字段类型为字符串，可取任意值。 |
 | boolean   | 表示字段类型为布尔值。 |
+
+## PhotoAssetParams<sup>21+</sup>
+
+type PhotoAssetParams = Record\<string, MemberType\>[]
+
+文件属性名称及其值的Record类型数组。
+
+**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Record\<string, [MemberType](#membertype)\>[] | 文件属性名称及其值的Record类型数组。 |

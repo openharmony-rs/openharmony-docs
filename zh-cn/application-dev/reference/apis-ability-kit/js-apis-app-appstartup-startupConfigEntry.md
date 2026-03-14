@@ -5,6 +5,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口仅可在Stage模型下使用。
@@ -22,6 +24,10 @@ onConfig?(): StartupConfig
 应用启动时调用以配置应用启动框架的设置。
 
 **系统能力**：SystemCapability.Ability.AppStartup
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -67,6 +73,10 @@ onRequestCustomMatchRule(want: Want): string
 
 **系统能力**：SystemCapability.Ability.AppStartup
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -91,7 +101,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
   // ...
 
   onRequestCustomMatchRule(want: Want): string {
-    if (want?.parameters?.customParam == 'param1') {
+    if (want?.parameters!['customParam'] == 'param1') {
       return 'customRule1';
     }
     return "";

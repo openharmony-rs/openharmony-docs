@@ -154,21 +154,11 @@ hasAll(map: LightWeightMap<K, V>): boolean
 
 **错误码：**
 
-ArkTS-Dyn错误码：
-
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200011 | The hasAll method cannot be bound. |
-
-ArkTS-Sta错误码：
-
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200011 | The hasAll method cannot be bound. |
 
 **示例：**
@@ -327,21 +317,11 @@ ArkTS-Sta: increaseCapacityTo(minimumCapacity: int): void
 
 **错误码：**
 
-ArkTS-Dyn错误码：
-
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200011 | The increaseCapacityTo method cannot be bound. |
-
-ArkTS-Sta错误码：
-
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200011 | The increaseCapacityTo method cannot be bound. |
 
 **示例：**
@@ -671,21 +651,11 @@ setAll(map: LightWeightMap<K, V>): void
 
 **错误码：**
 
-ArkTS-Dyn错误码：
-
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200011 | The setAll method cannot be bound. |
-
-ArkTS-Sta错误码：
-
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200011 | The setAll method cannot be bound. |
 
 **示例：**
@@ -874,21 +844,11 @@ ArkTS-Sta: removeAt(index: int): boolean
 
 **错误码：**
 
-ArkTS-Dyn错误码：
-
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200011 | The removeAt method cannot be bound. |
-
-ArkTS-Sta错误码：
-
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200011 | The removeAt method cannot be bound. |
 
 **示例：**
@@ -943,22 +903,11 @@ ArkTS-Sta: setValueAt(index: int, newValue: V): boolean
 
 **错误码：**
 
-ArkTS-Dyn错误码：
-
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200001 | The value of index is out of range. |
-| 10200011 | The setValueAt method cannot be bound. |
-
-ArkTS-Sta错误码：
-
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of index is out of range. |
 | 10200011 | The setValueAt method cannot be bound. |
 
@@ -1299,7 +1248,7 @@ for(let i = 0; i < 10; i++) {
 
 ### forEach<sup>23+</sup>
 
-forEach(callbackFn: LightWeightMapCbFn\<K, V\>)
+forEach(callbackFn: LightWeightMapCbFn\<K, V\>): void
 
 通过回调函数来遍历实例对象上的元素以及元素对应的下标。
 

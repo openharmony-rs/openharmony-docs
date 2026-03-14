@@ -25,6 +25,10 @@ ScrollBar(value: ScrollBarOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -95,9 +99,13 @@ ArkTS-Sta: scrollBarColor(color: ColorMetrics | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| scroller | [Scroller](ts-container-scroll.md#scroller) | 是 | 可滚动组件的控制器。用于与可滚动组件进行绑定。 |
+| scroller | [Scroller](ts-container-scroll.md#scroller) | 是 | 滚动条组件参数。用于与可滚动组件进行绑定。 |
 | direction | [ScrollBarDirection](#scrollbardirection枚举说明) | 否 | 滚动条的方向，控制可滚动组件对应方向的滚动。<br/>默认值：ScrollBarDirection.Vertical |
 | state | [BarState](ts-appendix-enums.md#barstate) | 否 | 滚动条状态。<br/>默认值：BarState.Auto |
 
@@ -117,11 +125,14 @@ ArkTS-Sta: scrollBarColor(color: ColorMetrics | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 说明 |
 | -------- | -------- |
 | Vertical | 纵向滚动条。 |
 | Horizontal | 横向滚动条。 |
-
 
 ## 示例1（设置子节点）
 
