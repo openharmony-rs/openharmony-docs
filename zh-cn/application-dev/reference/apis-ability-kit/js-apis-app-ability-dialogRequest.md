@@ -133,12 +133,12 @@ export default class EntryAbility extends UIAbility {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型   | 必填 | 说明                        |
-| ---- | ------ | ---- | --------------------------- |
-| left  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 弹框边框的左上角的X坐标。 |
-| top  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 弹框边框的左上角的Y坐标。 |
-| width  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 弹框的宽度，单位为px。 |
-| height  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 弹框的高度，单位为px。 |
+| 名称 | 类型   | 只读 | 可选 | 说明                        |
+| ---- | ------ | ---- | --------------------------- | --------------------------- |
+| left  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否   | 弹框边框的左上角的X坐标。 |
+| top  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否  | 弹框边框的左上角的Y坐标。 |
+| width  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否  | 弹框的宽度，单位为px。 |
+| height  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否  | 弹框的高度，单位为px。 |
 
 ## RequestInfo
 
@@ -152,9 +152,9 @@ export default class EntryAbility extends UIAbility {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称      | 类型       | 必填   | 说明     |
-| ------------ | ------------------| ------ | ---------------------- |
-| windowRect<sup>10+</sup>            | [WindowRect](#windowrect10)    | 否   | 表示模态弹框的位置属性。          |
+| 名称      | 类型       | 只读 | 可选 | 说明     |
+| ------------ | ------------------| ------ | ---------------------- | ---------------------- |
+| windowRect<sup>10+</sup>            | [WindowRect](#windowrect10)    | 否  | 是  | 表示模态弹框的位置属性。          |
 
 **示例：**
 

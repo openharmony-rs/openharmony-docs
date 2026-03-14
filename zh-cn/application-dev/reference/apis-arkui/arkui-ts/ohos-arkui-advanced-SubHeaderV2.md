@@ -52,7 +52,7 @@ titleBuild?: SubHeaderV2TitleBuilder;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型                                                      | 必填 | 装饰器类型 | 说明                                     |
 | -------- |---------------------------------------------------------| -------- | -------- |----------------------------------------|
@@ -75,7 +75,7 @@ type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型                        | 说明                     |
 | ----------------------------- |------------------------|
@@ -95,7 +95,7 @@ type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明                           |
 | -------- | -------- | -------- | -------- |------------------------------|
@@ -116,7 +116,7 @@ constructor(options: SubHeaderV2TitleOptions)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -134,7 +134,7 @@ constructor(options: SubHeaderV2TitleOptions)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填  | 说明                          |
 | -------- | -------- | -------- |-----------------------------|
@@ -157,12 +157,12 @@ select内容以及事件。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型                                                               | 必填 | 装饰器类型| 说明                                                                        |
 | -------- |------------------------------------------------------------------| -------- | -------- |---------------------------------------------------------------------------|
 | options | [SelectOption](ts-basic-components-select.md#selectoption对象说明)[] | 是 | @Trace | 下拉选项内容。                                                                   |
-| selectedIndex | number                                                           | 否 |@Trace | 设置下拉菜单初始选项的索引。<br />第一项的索引为0。<br />当不设置selected属性时，<br />默认选择值为-1，菜单项不选中。 |
+| selectedIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                       | 否 |@Trace | 设置下拉菜单初始选项的索引。<br />第一项的索引为0。<br />当不设置selected属性时，<br />默认选择值为-1，菜单项不选中。 |
 | selectedContent | [ResourceStr](ts-types.md#resourcestr)                         | 否 | @Trace | 设置下拉按钮本身的文本内容。默认值：'' 。从API version 20开始，支持Resource类型。                             |
 | onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)                                   | 否 | @Trace | 下拉菜单选中某一项的回调。 <br />默认值：undefined                                               |
 | defaultFocus | boolean | 否 | @Trace |下拉按钮是否为默认焦点。<br/>true：下拉按钮是默认焦点。<br/>false：下拉按钮不是默认焦点。<br />默认值：false                                  |
@@ -179,7 +179,7 @@ select内容以及事件构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -197,19 +197,21 @@ select内容以及事件构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型                                                               | 必填  | 说明                                                                        |
 | -------- |------------------------------------------------------------------| -------- |---------------------------------------------------------------------------| 
 | options | [SelectOption](ts-basic-components-select.md#selectoption对象说明)[] | 是 | 下拉选项内容。                                                                   |
-| selectedIndex | number                                                           | 否 | 设置下拉菜单初始选项的索引。<br />第一项的索引为0。<br />当不设置selected属性时，<br />默认选择值为-1，菜单项不选中。 |
+| selectedIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                       | 否 | 设置下拉菜单初始选项的索引。<br />第一项的索引为0。<br />当不设置selected属性时，<br />默认选择值为-1，菜单项不选中。 |
 | selectedContent | [ResourceStr](ts-types.md#resourcestr)                                                           | 否 | 设置下拉按钮本身的文本内容。默认值：''。从API version 20开始，支持Resource类型。                                                      |
 | onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)          | 否 | 下拉菜单选中某一项的回调。<br />默认值：undefined                                                |
 | defaultFocus | boolean | 否 | 下拉按钮是否为默认焦点。<br/>true：下拉按钮是默认焦点。<br/>false：下拉按钮不是默认焦点。<br />默认值：false                                  |
 
 ## SubHeaderV2SelectOnSelect
 
-type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?: string) => void
+ArkTS-Dyn: type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?: string) => void
+
+ArkTS-Sta: type SubHeaderV2SelectOnSelect = (selectedIndex: int, selectedContent?: string) => void
 
 下拉菜单选中某一项的回调类型。
 
@@ -219,13 +221,13 @@ type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?: strin
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名            | 类型     | 必填 | 说明                       |
 |:--------------|:-------|:---|:-------------------------|
-| selectedIndex   | number | 是  | 下拉菜单选中某一项的回调类型。表示选中项的索引。 |
+| selectedIndex   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是  | 下拉菜单选中某一项的回调类型。表示选中项的索引。 |
 | selectedContent | string | 否  | 下拉菜单选中某一项的回调类型。表示选中项的值。  |
 
 ## SubHeaderV2OperationType
@@ -238,7 +240,7 @@ type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?: strin
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -259,7 +261,7 @@ type SubHeaderV2OperationItemType = ResourceStr | SymbolGlyphModifier
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型                        | 说明                                |
 | ----------------------------- |-----------------------------------|
@@ -280,7 +282,7 @@ type SubHeaderV2OperationItemType = ResourceStr | SymbolGlyphModifier
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明                                                  |
 | -------- | -------- | -------- | -------- |-----------------------------------------------------|
@@ -303,7 +305,7 @@ constructor(options: SubHeaderV2OperationItemOptions)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -323,7 +325,7 @@ type SubHeaderV2OperationItemAction = () => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## SubHeaderV2OperationItemOptions
 
@@ -335,7 +337,7 @@ type SubHeaderV2OperationItemAction = () => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                       | 类型                                          | 必填  | 说明                                                  |
 |--------------------------|---------------------------------------------| -------- |-----------------------------------------------------|
@@ -358,7 +360,7 @@ type SubHeaderV2TitleBuilder= () => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。

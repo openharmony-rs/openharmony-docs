@@ -42,7 +42,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -101,7 +101,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -168,7 +168,7 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -226,7 +226,7 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -312,7 +312,7 @@ ArkTS-Sta: notifyDataChange(userId: int, extraData: ExtraData): Promise&lt;void&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -375,7 +375,7 @@ ArkTS-Sta: notifyDataChange(userId: int, extraData: ExtraData, callback: AsyncCa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -445,7 +445,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -511,7 +511,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -585,7 +585,7 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -642,7 +642,7 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -726,7 +726,7 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -791,7 +791,7 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -869,7 +869,7 @@ constructor(bundleName: string)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                                                                                          |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -912,7 +912,7 @@ getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                                                                                          |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -966,7 +966,7 @@ startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                                                                                          |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1022,7 +1022,7 @@ stopDownload(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                                                                                          |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

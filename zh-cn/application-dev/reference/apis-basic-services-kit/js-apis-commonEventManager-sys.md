@@ -21,6 +21,12 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 全部系统公共事件枚举定义请参见[系统公共事件定义](./common_event/commonEventManager-definitions.md)。
 
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 ## commonEventManager.publishAsUser
 
 ArkTS-Dyn: publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): void

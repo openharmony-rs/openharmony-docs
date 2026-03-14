@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块仅适用于ArkTS-Dyn。
+>
 > - 从API Version 9 开始，该模块接口不再维护，推荐使用新模块接口[@ohos.systemDateTime (系统时间、时区)](js-apis-date-time.md)。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -19,7 +21,15 @@ getCurrentTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 获取自Unix纪元以来经过的时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -61,7 +71,15 @@ getCurrentTime(callback: AsyncCallback&lt;number&gt;): void
 
 获取自Unix纪元以来经过的时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -102,7 +120,15 @@ getCurrentTime(isNano?: boolean): Promise&lt;number&gt;
 
 获取自Unix纪元以来经过的时间，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -147,7 +173,15 @@ getRealActiveTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 获取自系统启动以来经过的时间，不包括深度睡眠时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -189,7 +223,15 @@ getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 获取自系统启动以来经过的时间，不包括深度睡眠时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -230,7 +272,15 @@ getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 
 获取自系统启动以来经过的时间，不包括深度睡眠时间，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -275,7 +325,15 @@ getRealTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 获取自系统启动以来经过的时间，包括深度睡眠时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -317,7 +375,15 @@ getRealTime(callback: AsyncCallback&lt;number&gt;): void
 
 获取自系统启动以来经过的时间，包括深度睡眠时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -358,7 +424,15 @@ getRealTime(isNano?: boolean): Promise&lt;number&gt;
 
 获取自系统启动以来经过的时间，包括深度睡眠时间，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -403,7 +477,15 @@ getDate(callback: AsyncCallback&lt;Date&gt;): void
 
 获取当前系统日期，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[如何将时间格式的字符串string转换为Date对象](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)中的`new Date()`方法替代，`new Date()`返回`Date`实例对象。
+
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -444,7 +526,15 @@ getDate(): Promise&lt;Date&gt;
 
 获取当前系统日期，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[如何将时间格式的字符串string转换为Date对象](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)中的`new Date()`方法替代，`new Date()`返回`Date`实例对象。
+
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **返回值：**
 
@@ -483,7 +573,15 @@ getTimezone(callback: AsyncCallback&lt;string&gt;): void
 
 获取系统时区，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTimezone](js-apis-date-time.md#systemdatetimegettimezone)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -524,7 +622,15 @@ getTimezone(): Promise&lt;string&gt;
 
 获取系统时区，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTimezone](js-apis-date-time.md#systemdatetimegettimezone-1)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **返回值：**
 
@@ -563,9 +669,17 @@ setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
 
 设置系统时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
+
 **需要权限：** ohos.permission.SET_TIME
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：7
 
 **参数：**
 
@@ -609,9 +723,17 @@ setTime(time : number) : Promise&lt;void&gt;
 
 设置系统时间，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
+
 **需要权限：** ohos.permission.SET_TIME
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：7
 
 **参数：**
 
@@ -658,9 +780,17 @@ setDate(date: Date, callback: AsyncCallback&lt;void&gt;): void
 
 设置系统日期，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
+
 **需要权限：** ohos.permission.SET_TIME
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：7
 
 **参数：**
 
@@ -703,9 +833,17 @@ setDate(date: Date): Promise&lt;void&gt;
 
 设置系统日期，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
+
 **需要权限：** ohos.permission.SET_TIME
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：7
 
 **参数：**
 
@@ -751,9 +889,17 @@ setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 
 设置系统时区，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
+
 **需要权限：** ohos.permission.SET_TIME_ZONE
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：7
 
 **参数：**
 
@@ -795,9 +941,17 @@ setTimezone(timezone: string): Promise&lt;void&gt;
 
 使用Promise异步回调设置系统时区。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
+
 **需要权限：** ohos.permission.SET_TIME_ZONE
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：7
 
 **参数：**
 

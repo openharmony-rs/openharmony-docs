@@ -20,7 +20,7 @@ import { constant } from '@kit.ConnectivityKit';
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 11
 

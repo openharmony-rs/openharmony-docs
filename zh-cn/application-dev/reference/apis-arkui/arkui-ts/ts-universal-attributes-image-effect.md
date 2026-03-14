@@ -72,7 +72,7 @@ ArkTS-Sta: blur(blurRadius: double | undefined, options?: BlurOptions, sysOption
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,7 +106,7 @@ ArkTS-Sta: shadow(value: ShadowOptions | ShadowStyle | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -160,7 +160,7 @@ ArkTS-Sta: grayscale(value: double | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -214,7 +214,7 @@ ArkTS-Sta: brightness(value: double | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -268,7 +268,7 @@ ArkTS-Sta:saturate(value: double | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -322,7 +322,7 @@ ArkTS-Sta: contrast(value: double | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -376,7 +376,7 @@ ArkTS-Sta: invert(value: double | InvertOptions | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -430,7 +430,7 @@ ArkTS-Sta: sepia(value: double | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -484,7 +484,7 @@ ArkTS-Sta: hueRotate(value: double | string | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -538,7 +538,7 @@ ArkTS-Sta: colorBlend(value: Color | string | Resource | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -613,7 +613,7 @@ ArkTS-Sta: linearGradientBlur(value: double | undefined, options: LinearGradient
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -642,7 +642,7 @@ ArkTS-Sta: renderGroup(value: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -694,7 +694,7 @@ ArkTS-Sta: blendMode(value: BlendMode | undefined, type?: BlendApplyType): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -765,7 +765,7 @@ ArkTS-Sta: useShadowBatching(value: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -817,7 +817,7 @@ ArkTS-Sta: sphericalEffect(value: double | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -867,7 +867,7 @@ ArkTS-Sta: lightUpEffect(value: double | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -939,7 +939,7 @@ ArkTS-Sta: pixelStretchEffect(options: PixelStretchEffectOptions | undefined): t
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -961,6 +961,10 @@ ArkTS-Sta: pixelStretchEffect(options: PixelStretchEffectOptions | undefined): t
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型                | 必填   | 说明             |
 | ------ | ----------------- | ---- | -------------- |
 | left   | [Length](ts-types.md#length) | 否    | 组件图像左边沿像素扩展距离。 |
@@ -978,6 +982,10 @@ systemBarEffect(): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                     |
@@ -991,6 +999,10 @@ systemBarEffect(): T
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 描述                                   |
 | -------- | ---------------------------------------- |
@@ -1020,6 +1032,10 @@ systemBarEffect(): T
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                | 描述     |
 | ----------------- | ------ |
 | OUTER_DEFAULT_XS  | 超小阴影。  |
@@ -1038,6 +1054,10 @@ systemBarEffect(): T
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 描述                                                             |
 | ---------------| ------                                                        |
@@ -1076,6 +1096,10 @@ systemBarEffect(): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 类型                                                        | 必填  | 说明                                                         |
 | ------------- | ----------------------------------------------------------- | ----- | ------------------------------------------------------------ |
 | fractionStops | Array\<[FractionStop](#fractionstop12)>                                    | 是    | 数组中保存的每一个二元数组（取值0-1，小于0则为0，大于1则为1）表示[模糊程度, 模糊位置]；模糊位置需严格递增，开发者传入的数据不符合规范会记录日志，渐变模糊数组中二元数组个数必须大于等于2，否则渐变模糊不生效。 |
@@ -1083,7 +1107,9 @@ systemBarEffect(): T
 
 ## FractionStop<sup>12+</sup>
 
-FractionStop = [ number, number ]
+ArkTS-Dyn: FractionStop = [ number, number ]
+
+ArkTS-Sta: FractionStop = [ double, double ]
 
 定义模糊段。
 
@@ -1091,10 +1117,14 @@ FractionStop = [ number, number ]
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 取值范围       | 说明                                                       |
 | ------------- | ---------------------------------------------------------- |
-| number        |   分数,值1表示不透明，0表示完全透明。<br/>取值范围：[0,1]      |
-| number        |   停止位置,值1表示区域结束位置，0表示区域开始位置。<br/> 取值范围:[0,1] |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double       |   分数,值1表示不透明，0表示完全透明。<br/>取值范围：[0,1]      |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double        |   停止位置,值1表示区域结束位置，0表示区域开始位置。<br/> 取值范围:[0,1] |
 
 ## InvertOptions<sup>11+</sup>对象说明
 
@@ -1102,12 +1132,16 @@ FractionStop = [ number, number ]
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            |  类型  | 必填  | 说明                                       |
 | -------------- | ------ | ----- | ------------------------------------------ |
-| low            | number | 是    | 背景颜色灰度值大于阈值区间时的取值。 <br/>取值范围：[0,1]                 |
-| high           | number | 是    | 背景颜色灰度值小于阈值区间时的取值。  <br/>取值范围：[0,1]            |
-| threshold      | number | 是    | 灰度阈值。    <br/>取值范围：[0,1]                              |
-| thresholdRange | number | 是    | 阈值范围。<br/>取值范围：[0,1]<br/>**说明：**<br/>灰度阈值上下偏移thresholdRange构成阈值区间，背景颜色灰度值在区间内取值由high线性渐变到low。|
+| low            | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 是    | 背景颜色灰度值大于阈值区间时的取值。 <br/>取值范围：[0,1]                 |
+| high           |ArkTS-Dyn: number<br/>ArkTS-Sta: double   number | 是    | 背景颜色灰度值小于阈值区间时的取值。  <br/>取值范围：[0,1]            |
+| threshold      | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 是    | 灰度阈值。    <br/>取值范围：[0,1]                              |
+| thresholdRange | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 是    | 阈值范围。<br/>取值范围：[0,1]<br/>**说明：**<br/>灰度阈值上下偏移thresholdRange构成阈值区间，背景颜色灰度值在区间内取值由high线性渐变到low。|
 
 ## BackgroundImageOptions<sup>18+</sup>
 
@@ -1116,6 +1150,10 @@ FractionStop = [ number, number ]
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 >  **说明：**
 >
@@ -1140,7 +1178,7 @@ ArkTS-Sta: freeze(value: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

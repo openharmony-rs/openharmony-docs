@@ -14,25 +14,55 @@
 
 ## 接口
 
-### XComponent<sup>19+</sup>
+### XComponent<sup>(deprecated)</sup>
 
-XComponent(params: NativeXComponentParameters)
+XComponent(value: {id: string, type: string, libraryname?: string, controller?: XComponentController})
 
-在Native侧获取XComponent节点实例、注册XComponent持有的Surface的生命周期回调和触摸、鼠标、按键等组件事件回调。
+创建XComponent组件。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**说明：**
+
+从API version 12开始废弃，建议使用[XComponent(options: XComponentOptions)](#xcomponent10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 19
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
-| 参数名  | 类型                                | 必填 | 说明                           |
-| ------- | --------------------------------------- | ---- | ------------------------------ |
-| params | [NativeXComponentParameters](#nativexcomponentparameters19) | 是   | 定义XComponent的具体配置参数。 |
+| 参数名      | 类型                                      | 必填 | 说明                                                         |
+| ----------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
+| id          | string                                        | 是   | 组件的唯一标识，支持最大的字符串长度128。                    |
+| type        | string                                        | 是   | 用于指定XComponent组件类型，可选值仅有两个为：<br/>-"surface"：用于EGL/OpenGLES和媒体数据写入，开发者定制的绘制内容单独展示到屏幕上。<br/>-"component"<sup>9+</sup> ：XComponent将变成一个容器组件，并可在其中执行非UI逻辑以动态加载显示内容。<br/>其他值均会被视为"surface"类型 |
+| libraryname | string                                        | 否   | 应用Native层编译输出动态库名称（对应的动态库不支持跨模块加载），仅XComponent类型为"surface"时有效。 |
+| controller  | [XComponentController](#xcomponentcontroller) | 否   | 给组件绑定一个控制器，通过控制器调用组件方法，仅XComponent类型为"surface"时有效。 |
+
+### XComponent<sup>10+</sup>
+
+XComponent(value: {id: string, type: XComponentType, libraryname?: string, controller?: XComponentController})
+
+创建XComponent组件，支持Native侧触发XComponent生命周期回调。
+
+该接口从API version 12开始不再演进，推荐使用[XComponent(options: XComponentOptions)](#xcomponent12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[XComponent](#xcomponent23)。
+
+**ArkTS-Dyn起始版本：** 10
+
+**参数：**
+
+| 参数名      | 类型                                      | 必填 | 说明                                                         |
+| ----------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
+| id          | string                                        | 是   | 组件的唯一标识，支持最大的字符串长度128。                    |
+| type        | [XComponentType](ts-appendix-enums.md#xcomponenttype10)   | 是   | 用于指定XComponent组件类型。                                 |
+| libraryname | string                                        | 否   | 用Native层编译输出动态库名称（对应的动态库不支持跨模块加载），仅类型为SURFACE或TEXTURE时有效。 |
+| controller  | [XComponentController](#xcomponentcontroller) | 否   | 给组件绑定一个控制器，通过控制器调用组件方法，仅类型为SURFACE或TEXTURE时有效。 |
 
 ### XComponent<sup>12+</sup>
 
@@ -44,9 +74,11 @@ XComponent(options: XComponentOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 20
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[XComponent](#xcomponent23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -54,71 +86,47 @@ XComponent(options: XComponentOptions)
 | ------- | --------------------------------------- | ---- | ------------------------------ |
 | options | [XComponentOptions](#xcomponentoptions12) | 是   | 定义XComponent的具体配置参数。 |
 
-### XComponent<sup>10+</sup>
+### XComponent<sup>19+</sup>
 
-XComponent(value: {id: string, type: XComponentType, libraryname?: string, controller?: XComponentController})
+XComponent(params: NativeXComponentParameters)
 
-创建XComponent组件，支持Native侧触发XComponent生命周期回调。
+在Native侧获取XComponent节点实例、注册XComponent持有的Surface的生命周期回调和触摸、鼠标、按键等组件事件回调。
 
-该接口从API version 12开始不再演进，推荐使用[XComponent(options: XComponentOptions)](#xcomponent12)。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[XComponent](#xcomponent23)。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Dyn起始版本：** 10
+**参数参数：**
 
-**参数：** 
+| 参数名  | 类型                                | 必填 | 说明                           |
+| ------- | --------------------------------------- | ---- | ------------------------------ |
+| params | [NativeXComponentParameters](#nativexcomponentparameters19) | 是   | 定义XComponent的具体配置参数。 |
 
-| 参数名      | 类型                                      | 必填 | 说明                                                         |
-| ----------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| id          | string                                        | 是   | 组件的唯一标识，支持最大的字符串长度128。                    |
-| type        | [XComponentType](ts-appendix-enums.md#xcomponenttype10)   | 是   | 用于指定XComponent组件类型。                                 |
-| libraryname | string                                        | 否   | 用Native层编译输出动态库名称（对应的动态库不支持跨模块加载），仅类型为SURFACE或TEXTURE时有效。 |
-| controller  | [XComponentController](#xcomponentcontroller) | 否   | 给组件绑定一个控制器，通过控制器调用组件方法，仅类型为SURFACE或TEXTURE时有效。 |
+### XComponent<sup>23+</sup>
 
-### XComponent<sup>20+</sup>
-
-XComponent(params: XComponentParameters | XComponentOptions | NativeXComponentParameters )
+XComponent(params: XComponentParameters | XComponentOptions | NativeXComponentParameters)
 
 创建XComponent组件。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[XComponent](#xcomponent10)、[XComponent](#xcomponent12)和[XComponent](#xcomponent19)。
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型                                | 必填 | 说明                           |
 | ------- | --------------------------------------- | ---- | ------------------------------ |
-| params | [XComponentParameters](#xcomponentparameters20) \| [XComponentOptions](#xcomponentoptions12) \| [NativeXComponentParameters](#nativexcomponentparameters19) | 是   | 定义XComponent的具体配置参数。 |
-
-### XComponent<sup>(deprecated)</sup>
-
-XComponent(value: {id: string, type: string, libraryname?: string, controller?: XComponentController})
-
-**说明：**
-
-从API version 12开始废弃，建议使用[XComponent(options: XComponentOptions)](#xcomponent12)替代。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 8
-
-**参数：** 
-
-| 参数名      | 类型                                      | 必填 | 说明                                                         |
-| ----------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| id          | string                                        | 是   | 组件的唯一标识，支持最大的字符串长度128。                    |
-| type        | string                                        | 是   | 用于指定XComponent组件类型，可选值仅有两个为：<br/>-"surface"：用于EGL/OpenGLES和媒体数据写入，开发者定制的绘制内容单独展示到屏幕上。<br/>-"component"<sup>9+</sup> ：XComponent将变成一个容器组件，并可在其中执行非UI逻辑以动态加载显示内容。<br/>其他值均会被视为"surface"类型 |
-| libraryname | string                                        | 否   | 应用Native层编译输出动态库名称（对应的动态库不支持跨模块加载），仅XComponent类型为"surface"时有效。 |
-| controller  | [XComponentcontroller](#xcomponentcontroller) | 否   | 给组件绑定一个控制器，通过控制器调用组件方法，仅XComponent类型为"surface"时有效。 |
+| params | [XComponentParameters](#xcomponentparameters23) \| [XComponentOptions](#xcomponentoptions12) \| [NativeXComponentParameters](#nativexcomponentparameters19) | 是   | 定义XComponent的具体配置参数。 |
 
 ## XComponentOptions<sup>12+</sup>
 
@@ -130,7 +138,7 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -148,14 +156,14 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | type | [XComponentType](ts-appendix-enums.md#xcomponenttype10)         | 否 | 否   | 用于指定XComponent组件类型。 |
 | imageAIOptions | [ImageAIOptions](ts-image-common.md#imageaioptions) | 否 | 是 | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。 |
 
-## XComponentParameters<sup>20+</sup>
+## XComponentParameters<sup>23+</sup>
 
 定义XComponent的具体配置参数，支持Native侧触发XComponent生命周期回调。
 
@@ -165,16 +173,16 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | id          | string       | 否    | 否   | 组件的唯一标识，支持最大的字符串长度128。                    |
 | type        | [XComponentType](ts-appendix-enums.md#xcomponenttype10)   | 否 |否  | 用于指定XComponent组件类型。                                 |
-| nativeXComponentHandler | Callback&lt;[NativeXComponentPointer](#nativexcomponentpointer20)&gt;                           |否           | 否   | 用于处理NativeXComponent实例的回调。 |
+| nativeXComponentHandler | Callback&lt;[NativeXComponentPointer](#nativexcomponentpointer23)&gt;                           |否           | 否   | 用于处理NativeXComponent实例的回调。 |
 | controller  | [XComponentController](#xcomponentcontroller) | 否 |是   | 给组件绑定一个控制器，通过控制器调用组件方法，仅类型为SURFACE或TEXTURE时有效。 |
 
-## NativeXComponentPointer<sup>20+</sup>
+## NativeXComponentPointer<sup>23+</sup>
 
 type NativeXComponentPointer = long
 
@@ -184,7 +192,7 @@ NativeXComponent指针类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 |类型 | 说明 |
 | ---- | ---- |
@@ -205,7 +213,9 @@ NativeXComponent指针类型。
   
 ### enableAnalyzer<sup>12+</sup>
 
-enableAnalyzer(enable: boolean)
+ArkTS-Dyn: enableAnalyzer(enable: boolean)
+
+ArkTS-Sta: enableAnalyzer(enable: boolean | undefined)
 
 设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能。
 本功能需要搭配XComponentController的[StartImageAnalyzer](#startimageanalyzer12)和[StopImageAnalyzer](#stopimageanalyzer12)一起使用。
@@ -217,13 +227,13 @@ enableAnalyzer(enable: boolean)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| enable | boolean | 是 | 是否启用图像分析功能。<br/>true：开启图像分析；false：关闭图像分析。<br/>默认值：false |
+| enable | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用图像分析功能。<br/>true：开启图像分析；false：关闭图像分析。<br/>默认值：false |
 
   > **说明：**
   >
@@ -243,7 +253,7 @@ ArkTS-Sta: enableSecure(isSecure: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -269,7 +279,7 @@ hdrBrightness(brightness: number)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -295,9 +305,27 @@ hdrBrightness(brightness: number)
 
 ### onLoad
 
-ArkTS-Dyn: onLoad(callback: OnNativeLoadCallback )
+onLoad(callback: function)
 
-ArkTS-Sta: onLoad(callback: VoidCallback | undefined)
+插件加载完成时回调事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onLoad](#onload23)。
+
+**ArkTS-Dyn起始版本：** 8
+
+**参数：**
+
+| 参数名   | 类型   | 必填   | 说明                                       |
+| ----- | ------ | ---- | ---------------------------------------- |
+| callback | function | 是    | XComponent持有的Surface创建后回调事件。|
+
+### onLoad<sup>12+</sup>
+
+onLoad(callback: function)
 
 插件加载完成时回调事件。
 
@@ -305,15 +333,59 @@ ArkTS-Sta: onLoad(callback: VoidCallback | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 22
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onLoad](#onload23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
 | 参数名   | 类型   | 必填   | 说明                                       |
 | ----- | ------ | ---- | ---------------------------------------- |
-| callback | ArkTS-Dyn: [OnNativeLoadCallback](#onnativeloadcallback18)<br>ArkTS-Sta: [VoidCallback](./ts-types.md#voidcallback12) \| undefined| 是    | XComponent持有的Surface创建后回调事件。|
+| callback | function | 是    | XComponent持有的Surface创建后回调事件。|
+
+### onLoad<sup>18+</sup>
+
+onLoad(callback: OnNativeLoadCallback)
+
+插件加载完成时回调事件。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onLoad](#onload23)。
+
+**ArkTS-Dyn起始版本：** 18
+
+**参数：**
+
+| 参数名   | 类型   | 必填   | 说明                                       |
+| ----- | ------ | ---- | ---------------------------------------- |
+| callback | [OnNativeLoadCallback](#onnativeloadcallback18) | 是    | XComponent持有的Surface创建后回调事件。|
+
+### onLoad<sup>23+</sup>
+
+onLoad(callback: VoidCallback | undefined)
+
+插件加载完成时回调事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onLoad](#onload)、[onLoad](#onload12)和[onLoad](#onload18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型   | 必填   | 说明                                       |
+| ----- | ------ | ---- | ---------------------------------------- |
+| callback | [VoidCallback](./ts-types.md#voidcallback12) \| undefined | 是    | XComponent持有的Surface创建后回调事件。|
 
 > **说明：**
 > 
@@ -321,9 +393,27 @@ ArkTS-Sta: onLoad(callback: VoidCallback | undefined)
 
 ### onDestroy
 
-ArkTS-Dyn: onDestroy(event: VoidCallback )
+onDestroy(event: function)
 
-ArkTS-Sta: onDestroy(event: VoidCallback | undefined)
+插件卸载完成时回调事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onDestroy](#ondestroy23)。
+
+**ArkTS-Dyn起始版本：** 8
+
+**参数：**
+
+|   参数名   | 类型    | 必填 | 说明                      |
+| ---------- | ------- | ---- | ------------------------- |
+| event      | function | 是   | XComponent销毁后回调事件。 |
+
+### onDestroy<sup>12+</sup>
+
+onDestroy(event: function)
 
 插件卸载完成时回调事件。
 
@@ -331,15 +421,59 @@ ArkTS-Sta: onDestroy(event: VoidCallback | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 22
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onDestroy](#ondestroy23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
-| 参数名   | 类型   | 必填   | 说明                                       |
-| ----- | ------ | ---- | ---------------------------------------- |
-| event | ArkTS-Dyn: [VoidCallback](./ts-types.md#voidcallback12)<br>ArkTS-Sta: [VoidCallback](./ts-types.md#voidcallback12) \| undefined | 是    | XComponent销毁后回调事件。 |
+|   参数名   | 类型    | 必填 | 说明                      |
+| ---------- | ------- | ---- | ------------------------- |
+| event      | function | 是   | XComponent销毁后回调事件。 |
+
+### onDestroy<sup>18+</sup>
+
+onDestroy(event: VoidCallback)
+
+插件卸载完成时回调事件。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onDestroy](#ondestroy23)。
+
+**ArkTS-Dyn起始版本：** 18
+
+**参数：**
+
+|   参数名   | 类型    | 必填 | 说明                      |
+| ---------- | ------- | ---- | ------------------------- |
+| event      | [VoidCallback](./ts-types.md#voidcallback12) | 是   | XComponent销毁后回调事件。 |
+
+### onDestroy<sup>23+</sup>
+
+onDestroy(event: VoidCallback | undefined)
+
+插件卸载完成时回调事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onDestroy](#ondestroy)、[onDestroy](#ondestroy12)和[onDestroy](#ondestroy18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+|   参数名   | 类型    | 必填 | 说明                      |
+| ---------- | ------- | ---- | ------------------------- |
+| event      | [VoidCallback](./ts-types.md#voidcallback12) \| undefined | 是   | XComponent销毁后回调事件。 |
 
 ## OnNativeLoadCallback<sup>18+</sup>
 
@@ -371,7 +505,7 @@ XComponent组件的控制器，可以将此对象绑定至XComponent组件，然
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ### constructor
 
@@ -389,7 +523,7 @@ xcomponentController: XComponentController = new XComponentController();
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ### getXComponentSurfaceId<sup>9+</sup>
 
@@ -403,7 +537,7 @@ getXComponentSurfaceId(): string
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -466,7 +600,7 @@ setXComponentSurfaceRect(rect: SurfaceRect): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -494,7 +628,7 @@ getXComponentSurfaceRect(): SurfaceRect
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -514,7 +648,7 @@ onSurfaceCreated(surfaceId: string): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -538,7 +672,7 @@ onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -563,7 +697,7 @@ onSurfaceDestroyed(surfaceId: string): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -647,7 +781,7 @@ setXComponentSurfaceRotation(rotationOptions: SurfaceRotationOptions): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -677,7 +811,7 @@ getXComponentSurfaceRotation(): Required\<SurfaceRotationOptions>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -757,7 +891,7 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------- | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -773,7 +907,7 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------- | ------ | ------ | ---- | ------------------------------------------------------------ |

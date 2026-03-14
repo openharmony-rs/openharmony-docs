@@ -26,6 +26,10 @@ SymbolSpan(value: Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -56,7 +60,7 @@ ArkTS-Sta: fontColor(value: Array&lt;ResourceColor&gt; | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -80,7 +84,7 @@ ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -106,7 +110,7 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -130,7 +134,7 @@ ArkTS-Sta: renderingStrategy(value: SymbolRenderingStrategy | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -158,7 +162,7 @@ ArkTS-Sta: effectStrategy(value: SymbolEffectStrategy | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -178,9 +182,9 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier<SymbolSpanAttribute> | 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

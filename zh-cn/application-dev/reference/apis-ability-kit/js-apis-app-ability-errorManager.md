@@ -3,7 +3,9 @@
 ErrorManager模块提供对错误观察器的注册和注销的能力。
 
 > **说明：**
-> 
+>
+> 本模块仅支持ArkTS-Dyn。
+>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -27,8 +29,12 @@ on(type: 'error', observer: ErrorObserver): number
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'error'，表示错误观察器。 |
@@ -36,9 +42,9 @@ on(type: 'error', observer: ErrorObserver): number
 
 **返回值：**
 
-  | 类型 | 说明 |
-  | -------- | -------- |
-  | number | 观察器的index值，和观察器一一对应。 |
+| 类型 | 说明 |
+| -------- | -------- |
+| number | 观察器的index值，和观察器一一对应。 |
 
 **错误码**：
 
@@ -51,6 +57,7 @@ on(type: 'error', observer: ErrorObserver): number
 
 **示例：**
     
+
 ```ts
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -88,8 +95,12 @@ on(type: 'globalErrorOccurred', observer: GlobalObserver): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：**
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'globalErrorOccurred'，表示错误观察器。 |
@@ -102,7 +113,7 @@ on(type: 'globalErrorOccurred', observer: GlobalObserver): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 16200001 | The caller has been released. |
+| 16200001 | If the caller is invalid. |
 
 **示例：**
     
@@ -139,8 +150,12 @@ off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：**
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'globalErrorOccurred'，表示错误观察器。 |
@@ -153,8 +168,8 @@ off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 16200001 | The caller has been released. |
-| 16300004 | The observer does not exist. |
+| 16200001 | If the caller is invalid. |
+| 16300004 | If the observer does not exist |
 
 **示例：**
     
@@ -189,8 +204,12 @@ off(type: 'error', observerId: number,  callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'error'，表示错误观察器。 |
@@ -239,8 +258,12 @@ off(type: 'error', observerId: number): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'error'，表示错误观察器。 |
@@ -294,8 +317,12 @@ on(type: 'loopObserver', timeout: number, observer: LoopObserver): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'loopObserver'，表示注册主线程消息处理耗时监听器。 |
@@ -334,8 +361,12 @@ on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：**
- 
+
 | 参数名                   | 类型                                                          | 必填 | 说明                                       |
 |-----------------------|-------------------------------------------------------------| -------- |------------------------------------------|
 | type                  | string                                                      | 是 | 填写'globalUnhandledRejectionDetected'，表示注册被拒绝promise监听器。 |
@@ -348,7 +379,7 @@ on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 16200001 | The caller has been released. |
+| 16200001 | If the caller is invalid. |
 
 **示例：**
 
@@ -384,8 +415,12 @@ on(type: 'unhandledRejection', observer: UnhandledRejectionObserver): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
- 
+
 | 参数名                   | 类型                                                          | 必填 | 说明                                       |
 |-----------------------|-------------------------------------------------------------| -------- |------------------------------------------|
 | type                  | string                                                      | 是 | 填写'unhandledRejection'，表示注册被拒绝promise监听器。 |
@@ -398,7 +433,7 @@ on(type: 'unhandledRejection', observer: UnhandledRejectionObserver): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 16200001 | The caller has been released. |
+| 16200001 | If the caller is invalid. |
 
 **示例：**
     
@@ -437,8 +472,12 @@ on(type: 'freeze', observer: FreezeObserver): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：**
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'freeze'，表示应用主线程freeze观察器。 |
@@ -473,8 +512,12 @@ off(type: 'loopObserver', observer?: LoopObserver): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'loopObserver'，表示应用主线程观察器。 |
@@ -508,6 +551,10 @@ off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：**
 
 | 参数名                   | 类型                              | 必填 | 说明                                           |
@@ -522,8 +569,8 @@ off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 16200001 | The caller has been released. |
-| 16300004 | The observer does not exist. |
+| 16200001 | If the caller is invalid. |
+| 16300004 | If the observer does not exist |
 
 **示例：**
     
@@ -561,6 +608,10 @@ off(type: 'unhandledRejection', observer?: UnhandledRejectionObserver): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名                   | 类型                              | 必填 | 说明                                           |
@@ -575,8 +626,8 @@ off(type: 'unhandledRejection', observer?: UnhandledRejectionObserver): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 16200001 | The caller has been released. |
-| 16300004 | The observer does not exist. |
+| 16200001 | If the caller is invalid. |
+| 16300004 | If the observer does not exist |
 
 **示例：**
     
@@ -638,8 +689,12 @@ off(type: 'freeze', observer?: FreezeObserver): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：**
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'freeze'，表示应用主线程freeze观察器。 |
@@ -652,7 +707,7 @@ off(type: 'freeze', observer?: FreezeObserver): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 16300004 | The observer does not exist. |
+| 16300004 | If the observer does not exist |
 
 **示例：**
     
@@ -676,6 +731,10 @@ ErrorObserver模块。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 | 类型 | 说明 |
 | --- | --- |
 | [_ErrorObserver.default](js-apis-inner-application-errorObserver.md) | ErrorObserver模块。 |
@@ -690,6 +749,10 @@ LoopObserver模块。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 | 类型 | 说明 |
 | --- | --- |
 | [_LoopObserver](js-apis-inner-application-loopObserver.md) | LoopObserver模块。 |
@@ -703,6 +766,10 @@ type UnhandledRejectionObserver = (reason: Error | any, promise: Promise\<any>) 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -721,6 +788,10 @@ type FreezeObserver = () => void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 ## GlobalObserver<sup>18+</sup>
 
 type GlobalObserver = (reason: GlobalError) => void
@@ -730,6 +801,10 @@ type GlobalObserver = (reason: GlobalError) => void
 **原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -746,6 +821,10 @@ type GlobalObserver = (reason: GlobalError) => void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 | 名称  | 类型  | 只读  | 可选  | 说明  |
 | ---- | ----- | ---- | ----- | ------ |
 | instanceName | string | 否 | 否 | 表示虚拟机实例名称。 |
@@ -758,6 +837,10 @@ type GlobalObserver = (reason: GlobalError) => void
 **原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
 
 | 名称  | 值  | 说明   |
 | ---- | --- | ------ |

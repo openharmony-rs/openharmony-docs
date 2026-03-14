@@ -56,7 +56,7 @@ ArkTS-Sta: onClick(event: Callback\<ClickEvent> | undefined, distanceThreshold: 
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onClick
 
@@ -94,11 +94,11 @@ ArkTS-Sta: onClick(event: ((event: ClickEvent) => void) | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## ClickEvent对象说明
 
-继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent对象说明8)。
+继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent对象说明)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,8 +138,8 @@ ArkTS-Sta: onClick(event: ((event: ClickEvent) => void) | undefined): this
 
 | 名称   | 参数类型                      | 描述         |
 | ---- | ------------------------- | ---------- |
-| area | [Area](ts-types.md#area8) | 目标元素的区域信息。 |
-| id<sup>15+</sup> | [string](ts-universal-attributes-component-id.md) | 开发者设置的节点id。默认值：undefined |
+| area | [Area](ts-types.md#area8) | 目标元素的区域信息。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| id<sup>15+</sup> | string | 开发者设置的节点id。默认值：undefined<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 示例
 

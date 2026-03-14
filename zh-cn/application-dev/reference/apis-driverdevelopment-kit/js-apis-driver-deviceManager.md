@@ -2,9 +2,10 @@
 
 本模块主要提供管理外部设备的相关功能，包括查询设备列表、绑定设备和解除绑定设备。
 
->  **说明：**
-> 
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> **说明：**
+>
+> - 本模块同时支持 ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -24,15 +25,15 @@ ArkTS-Sta: queryDevices(busType?: int): Array&lt;Readonly&lt;Device&gt;&gt;
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
-**ArkTS-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                 |
 | ------- | ------ | ---- | ------------------------------------ |
-| busType | ArkTs-Dyn: number<br> ArkTs-Sta: int | 否   | 设备总线类型，不填则查找所有类型设备。|
+| busType | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否   | 设备总线类型，不填则查找所有类型设备。|
 
 **返回值：**
 
@@ -63,6 +64,120 @@ try {
 }
 ```
 
+## deviceManager.bindDriverWithDeviceId<sup>19+</sup>
+
+ArkTS-Dyn: bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt;;
+
+ArkTS-Sta: bindDriverWithDeviceId(deviceId: long, onDisconnect: AsyncCallback&lt;long&gt;): Promise&lt;RemoteDeviceDriver&gt;;
+
+根据queryDevices()返回的设备信息绑定设备。使用Promise异步回调。
+
+需要调用[deviceManager.queryDevices](#devicemanagerquerydevices)获取设备信息列表。
+
+**需要权限：** ohos.permission.ACCESS_DDK_DRIVERS
+
+**系统能力：** SystemCapability.Driver.ExternalDevice
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                        | 必填 | 说明                         |
+| ------------ | --------------------------- | ---- | ---------------------------- |
+| deviceId     | ArkTS-Dyn: number<br> ArkTS-Sta: long                      | 是   | 设备ID，通过queryDevices获得。 |
+| onDisconnect | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br> ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 绑定设备断开的回调。           |
+
+**返回值：**
+
+| 类型                              | 说明                                      |
+| --------------------------------- | -----------------------------------------|
+| Promise&lt;[RemoteDeviceDriver](#remotedevicedriver11)&gt; | Promise对象，返回RemoteDeviceDriver对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息                                 |
+| -------- | ---------------------------------------- |
+| 201      | The permission check failed.             |
+| 26300001  | ExternalDeviceManager service exception. |
+| 26300002  | The driver service does not allow any client to bind. |
+
+**示例：**
+
+```ts
+import { deviceManager } from '@kit.DriverDevelopmentKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
+  deviceManager.bindDriverWithDeviceId(12345678, (error : BusinessError, data : long) => {
+    console.error(`Device is disconnected`);
+  }).then((data: deviceManager.RemoteDeviceDriver) => {
+    console.info(`bindDriverWithDeviceId success, Device_Id is ${data.deviceId}.
+    remote is ${data.remote != null ? data.remote.getDescriptor() : "null"}`);
+  }, (error: BusinessError) => {
+    console.error(`bindDriverWithDeviceId async fail. Code is ${error.code}, message is ${error.message}`);
+  });
+} catch (error) {
+  console.error(`bindDriverWithDeviceId fail. Code is ${error.code}, message is ${error.message}`);
+}
+```
+
+## deviceManager.unbindDriverWithDeviceId<sup>19+</sup>
+
+ArkTS-Dyn: unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt;
+
+ArkTS-Sta: unbindDriverWithDeviceId(deviceId: long): Promise&lt;int&gt;
+
+解除设备绑定。使用Promise异步回调。
+
+**需要权限**：ohos.permission.ACCESS_DDK_DRIVERS
+
+**系统能力：**  SystemCapability.Driver.ExternalDevice
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                           |
+| -------- | ------ | ---- | ------------------------------ |
+| deviceId | ArkTS-Dyn: number<br> ArkTS-Sta: long | 是   | 设备ID，通过[queryDevices](#devicemanagerquerydevices)获得。|
+
+**返回值：**
+
+| 类型                  | 说明                      |
+| --------------------- | ------------------------- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt;  | Promise对象，返回设备ID。|
+
+**错误码：**
+
+| 错误码ID | 错误信息                                 |
+| -------- | ---------------------------------------- |
+| 201      | The permission check failed.             |
+| 26300001 | ExternalDeviceManager service exception. |
+| 26300003 | There is no binding relationship. |
+
+**示例：**
+
+```ts
+import { deviceManager } from '@kit.DriverDevelopmentKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
+  deviceManager.unbindDriverWithDeviceId(12345678).then((data : int) => {
+    console.info(`unbindDriverWithDeviceId success, Device_Id is ${data}.`);
+  }, (error : BusinessError) => {
+    console.error(`unbindDriverWithDeviceId async fail. Code is ${error.code}, message is ${error.message}`);
+  });
+} catch (error) {
+  console.error(`unbindDriverWithDeviceId fail. Code is ${error.code}, message is ${error.message}`);
+}
+```
+
 ## deviceManager.bindDevice<sup>(deprecated)</sup>
 
 bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;,
@@ -78,6 +193,8 @@ bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;,
 **需要权限：** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -138,13 +255,15 @@ bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;,
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名       | 类型                        | 必填 | 说明                         |
 | ------------ | --------------------------- | ---- | ---------------------------- |
 | deviceId     | number                      | 是   | 设备ID，通过queryDevices获得。 |
 | onDisconnect | AsyncCallback&lt;number&gt; | 是   | 绑定设备断开的回调。           |
-| callback     | AsyncCallback&lt;RemoteDeviceDriver&gt;| 是 | 指示绑定结果，包括设备 ID 和远程对象。 |
+| callback     | AsyncCallback&lt;[RemoteDeviceDriver](#remotedevicedriver11)&gt;| 是 | 指示绑定结果，包括设备 ID 和远程对象。 |
 
 **错误码：**
 
@@ -192,6 +311,8 @@ bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise
 **需要权限：** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -249,6 +370,8 @@ bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): P
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名       | 类型                        | 必填 | 说明                         |
@@ -260,7 +383,7 @@ bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): P
 
 | 类型                              | 说明                                      |
 | --------------------------------- | -----------------------------------------|
-| Promise&lt;RemoteDeviceDriver&gt; | Promise对象，返回RemoteDeviceDriver对象。 |
+| Promise&lt;[RemoteDeviceDriver](#remotedevicedriver11)&gt; | Promise对象，返回RemoteDeviceDriver对象。 |
 
 **错误码：**
 
@@ -303,6 +426,8 @@ unbindDevice(deviceId: number, callback: AsyncCallback&lt;number&gt;): void
 **需要权限**：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
 **系统能力：**  SystemCapability.Driver.ExternalDevice
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -351,6 +476,8 @@ unbindDevice(deviceId: number): Promise&lt;number&gt;
 
 **系统能力：**  SystemCapability.Driver.ExternalDevice
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                           |
@@ -388,119 +515,6 @@ try {
   console.error(`unbindDevice fail. Code is ${error.code}, message is ${error.message}`);
 }
 ```
-## deviceManager.bindDriverWithDeviceId<sup>19+</sup>
-
-ArkTS-Dyn: bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt;;
-
-ArkTS-Sta: bindDriverWithDeviceId(deviceId: long, onDisconnect: AsyncCallback&lt;long&gt;): Promise&lt;RemoteDeviceDriver&gt;;
-
-根据queryDevices()返回的设备信息绑定设备。
-
-需要调用[deviceManager.queryDevices](#devicemanagerquerydevices)获取设备信息列表。
-
-**需要权限：** ohos.permission.ACCESS_DDK_DRIVERS
-
-**系统能力：** SystemCapability.Driver.ExternalDevice
-
-**ArkTS-Dyn起始版本**：19
-
-**ArkTS-Sta起始版本**：20
-
-**参数：**
-
-| 参数名       | 类型                        | 必填 | 说明                         |
-| ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | ArkTs-Dyn: number<br> ArkTs-Sta: long | 是   | 设备ID，通过queryDevices获得。|
-| onDisconnect | ArkTs-Dyn: AsyncCallback&lt;number&gt;<br> ArkTs-Sta: AsyncCallback&lt;long&gt; | 是   | 绑定设备断开的回调。           |
-
-**返回值：**
-
-| 类型                              | 说明                                      |
-| --------------------------------- | -----------------------------------------|
-| Promise&lt;RemoteDeviceDriver&gt; | Promise对象，返回[RemoteDeviceDriver](#remotedevicedriver11)对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息                                 |
-| -------- | ---------------------------------------- |
-| 201      | The permission check failed. |
-| 26300001  | ExternalDeviceManager service exception.|
-| 26300002  | The driver service does not allow any client to bind.|
-
-**示例：**
-
-```ts
-import { deviceManager } from '@kit.DriverDevelopmentKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-  deviceManager.bindDriverWithDeviceId(12345678, (error : BusinessError, data : long) => {
-    console.error(`Device is disconnected`);
-  }).then((data: deviceManager.RemoteDeviceDriver) => {
-    console.info(`bindDriverWithDeviceId success, Device_Id is ${data.deviceId}.
-    remote is ${data.remote != null ? data.remote.getDescriptor() : "null"}`);
-  }, (error: BusinessError) => {
-    console.error(`bindDriverWithDeviceId async fail. Code is ${error.code}, message is ${error.message}`);
-  });
-} catch (error) {
-  console.error(`bindDriverWithDeviceId fail. Code is ${error.code}, message is ${error.message}`);
-}
-```
-
-## deviceManager.unbindDriverWithDeviceId<sup>19+</sup>
-
-ArkTS-Dyn: unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt;
-
-ArkTS-Sta: unbindDriverWithDeviceId(deviceId: long): Promise&lt;int&gt;
-
-解除设备绑定。
-
-**需要权限**：ohos.permission.ACCESS_DDK_DRIVERS
-
-**系统能力：**  SystemCapability.Driver.ExternalDevice
-
-**ArkTS-Dyn起始版本**：19
-
-**ArkTS-Sta起始版本**：20
-
-**参数：**
-
-| 参数名   | 类型   | 必填 | 说明                           |
-| -------- | ------ | ---- | ------------------------------ |
-| deviceId | ArkTs-Dyn: number<br> ArkTs-Sta: long | 是   | 设备ID，通过queryDevices获得。|
-
-**返回值：**
-
-| 类型                  | 说明                      |
-| --------------------- | ------------------------- |
-| ArkTs-Dyn: Promise&lt;number&gt;<br> ArkTs-Sta: Promise&lt;int&gt;  | Promise对象，返回设备ID。|
-
-**错误码：**
-
-| 错误码ID | 错误信息                                 |
-| -------- | ---------------------------------------- |
-| 201      | The permission check failed.             |
-| 26300001 | ExternalDeviceManager service exception. |
-| 26300003 | There is no binding relationship. |
-
-**示例：**
-
-```ts
-import { deviceManager } from '@kit.DriverDevelopmentKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-  deviceManager.unbindDriverWithDeviceId(12345678).then((data : int) => {
-    console.info(`unbindDriverWithDeviceId success, Device_Id is ${data}.`);
-  }, (error : BusinessError) => {
-    console.error(`unbindDriverWithDeviceId async fail. Code is ${error.code}, message is ${error.message}`);
-  });
-} catch (error) {
-  console.error(`unbindDriverWithDeviceId fail. Code is ${error.code}, message is ${error.message}`);
-}
-```
 
 ## Device
 
@@ -508,15 +522,15 @@ try {
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
-**ArkTS-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
-| 名称        | 类型                | 必填 | 说明       |
-| ----------- | ------------------- | ---- | ---------- |
-| busType     | [BusType](#bustype) | 是   | 总线类型。 |
-| deviceId    | ArkTs-Dyn: number<br> ArkTs-Sta: long  | 是   | 设备ID。|
-| description | string              | 是   | 设备描述。 |
+| 名称        | 类型                | 只读 | 可选 | 说明       |
+| ----------- | ------------------- | ---- | ---- | ---------- |
+| busType     | [BusType](#bustype) | 否   | 否   | 总线类型。 |
+| deviceId    | ArkTS-Dyn: number<br> ArkTS-Sta: long              | 否   | 否   | 设备ID。   |
+| description | string              | 否   | 否   | 设备描述。 |
 
 ## USBDevice
 
@@ -524,20 +538,24 @@ USB设备信息，继承自[Device](#device)。
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
-**ArkTS-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
-| 名称      | 类型   | 必填 | 说明                |
-| --------- | ------ | ---- | ------------------- |
-| vendorId  | ArkTs-Dyn: number<br> ArkTs-Sta: int | 是   | USB设备Vendor ID。|
-| productId |ArkTs-Dyn: number<br> ArkTs-Sta: int | 是   | USB设备Product ID。|
+| 名称      | 类型   | 只读 | 可选 | 说明                |
+| --------- | ------ | ---- | ---- | ------------------- |
+| vendorId  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否   | 否   | USB设备Vendor ID。  |
+| productId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否   | 否   | USB设备Product ID。 |
 
 ## BusType
 
 设备总线类型。
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值  | 说明          |
 | ---- | --- | ------------- |
@@ -549,11 +567,11 @@ USB设备信息，继承自[Device](#device)。
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
-**ArkTS-Dyn起始版本**：19
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
-| 名称      | 类型   | 必填 | 说明                |
-| --------- | ------ | ---- | ------------------- |
-| deviceId<sup>11+</sup>  | ArkTs-Dyn: number<br> ArkTs-Sta: long | 是   | 设备ID。|
-| remote<sup>11+</sup> | [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | 是   | 远程驱动程序对象。 |
+| 名称      | 类型   | 只读 | 可选 | 说明                |
+| --------- | ------ | ---- | ---- | ------------------- |
+| deviceId<sup>11+</sup>  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否   | 否   | 设备ID。  |
+| remote<sup>11+</sup> | [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | 否   | 否   | 远程驱动程序对象。 |

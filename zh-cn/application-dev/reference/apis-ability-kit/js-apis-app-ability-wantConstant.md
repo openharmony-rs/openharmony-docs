@@ -70,11 +70,8 @@ import { wantConstant } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityBase
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                                | 值 | 说明           |
 | ----------------------------------- |---|--------------|
-| WINDOW        | 0 | 表示独立窗口拉起模式。  |
-| EMBEDDED_FULL       | 1 | 表示嵌入式全屏拉起模式。 |
+| WINDOW        | 0 | 表示独立窗口拉起模式。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| EMBEDDED_FULL       | 1 | 表示嵌入式全屏拉起模式。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| EMBEDDED_HALF<sup>23+</sup> | 2 | 表示嵌入式半屏拉起模式。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |

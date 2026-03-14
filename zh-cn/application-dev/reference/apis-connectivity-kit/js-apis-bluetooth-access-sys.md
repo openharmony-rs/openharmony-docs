@@ -22,11 +22,11 @@ factoryReset(callback: AsyncCallback&lt;void&gt;): void
 
 恢复蓝牙出厂设置。使用Callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -38,7 +38,7 @@ factoryReset(callback: AsyncCallback&lt;void&gt;): void
 | -------- | ------------------------------------------------- | ----- | ---------------------------------------------------------- |
 | callback     | AsyncCallback&lt;void&gt;             | 是    | 回调函数。当恢复蓝牙出厂设置时成功，err为undefined，否则为错误对象。       |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -73,11 +73,11 @@ factoryReset(): Promise&lt;void&gt;
 
 恢复蓝牙出厂设置。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -89,7 +89,7 @@ factoryReset(): Promise&lt;void&gt;
 | --------------------------------- | ---------------- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -121,11 +121,11 @@ getLocalAddress(): string
 
 获取本端设备的蓝牙地址。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_LOCAL_MAC
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_LOCAL_MAC
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -137,7 +137,7 @@ getLocalAddress(): string
 | --------- | ------------------ |
 | string    | 本端设备的蓝牙地址。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -167,11 +167,11 @@ restrictBluetooth(): Promise&lt;void&gt;
 
 约束当前蓝牙设备的BR/EDR能力。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -183,7 +183,7 @@ restrictBluetooth(): Promise&lt;void&gt;
 | --------------------------------- | ---------------- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -217,11 +217,11 @@ notifyDialogResult(notifyDialogResultParams: NotifyDialogResultParams): Promise&
 - 与API version 20开始支持的[access.enableBluetoothAsync](js-apis-bluetooth-access.md#accessenablebluetoothasync20)搭配使用，应用申请开启蓝牙，调用该接口会将用户操作开关蓝牙对话框的行为通知给蓝牙服务。
 - 与API version 20开始支持的[access.disableBluetoothAsync](js-apis-bluetooth-access.md#accessdisablebluetoothasync20)搭配使用，应用申请关闭蓝牙，调用该接口会将用户操作开关蓝牙对话框的行为通知给蓝牙服务。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -239,7 +239,7 @@ notifyDialogResult(notifyDialogResultParams: NotifyDialogResultParams): Promise&
 | ------------------- | -------------------------------------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -271,9 +271,9 @@ try {
 
 用户操作对话框的行为。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -289,9 +289,9 @@ try {
 
 枚举，对话框类型。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 20
 

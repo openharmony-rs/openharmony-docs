@@ -20,6 +20,10 @@ LazyVGridLayout()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 ## 属性
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
@@ -51,7 +55,7 @@ auto-stretch模式只支持track-size为一个有效列宽值，并且track-size
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -73,7 +77,7 @@ ArkTS-Sta: columnsGap(value: LengthMetrics | undefined): this
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -101,7 +105,7 @@ ArkTS-Sta: rowsGap(value: LengthMetrics | undefined): this
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

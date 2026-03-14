@@ -22,11 +22,11 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 蓝牙设备的profile连接状态。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
@@ -37,24 +37,24 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 描述profile状态改变参数。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 | 名称     | 类型                           | 只读 | 可选 | 说明                            |
 | -------- | ----------------------------- | ---- | ---- | ------------------------------- |
-| deviceId | string                        | 否   | 否   | 蓝牙设备地址，例如："XX:XX:XX:XX:XX:XX"。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22 |
-| state    | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate)        | 否   | 否   | 蓝牙设备的profile连接状态。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22 |
-| cause<sup>12+</sup>| [DisconnectCause](#disconnectcause12) | 否 | 否 | 断连的原因。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| deviceId | string                        | 否   | 否   | 蓝牙设备地址，例如："XX:XX:XX:XX:XX:XX"。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| state    | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate)        | 否   | 否   | 蓝牙设备的profile连接状态。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| cause<sup>12+</sup>| [DisconnectCause](#disconnectcause12) | 否 | 否 | 断连的原因。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 
 ## DisconnectCause<sup>12+</sup>
 
 枚举，断连的原因。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
@@ -72,13 +72,13 @@ getConnectedDevices(): Array&lt;string&gt;
 
 获取已连接设备列表。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -86,7 +86,7 @@ getConnectedDevices(): Array&lt;string&gt;
 | ------------------- | ------------------- |
 | Array&lt;string&gt; | 返回当前已连接设备的地址。基于信息安全考虑，此处获取的设备地址为随机MAC地址。<br> 配对成功后，该地址不会变更。<br> 已配对设备取消配对后重新扫描或蓝牙服务下电时，该随机地址会变更。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -119,13 +119,13 @@ getConnectionState(deviceId: string): ProfileConnectionState
 
 获取设备profile的连接状态。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -139,7 +139,7 @@ getConnectionState(deviceId: string): ProfileConnectionState
 | ------------------------------------------------- | ----------------------- |
 | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | 返回profile的连接状态。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -173,9 +173,13 @@ on(type: 'connectionStateChange', callback: Callback&lt;StateChangeParam&gt;): v
 
 订阅连接状态变化事件。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -184,7 +188,7 @@ on(type: 'connectionStateChange', callback: Callback&lt;StateChangeParam&gt;): v
 | type     | string                                   | 是    | 事件回调类型，支持的事件为'connectionStateChange'，表示连接状态变化事件。<br>当连接状态变化时，触发该事件。 |
 | callback | Callback&lt;[StateChangeParam](#statechangeparam)&gt; | 是    | 指定订阅的回调函数，会携带蓝牙profile连接状态。                        |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
@@ -210,6 +214,49 @@ try {
 }
 ```
 
+## onConnectionStateChange<sup>23+</sup>
+
+onConnectionStateChange(callback: Callback<StateChangeParam>): void
+
+订阅连接状态变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;[StateChangeParam](#statechangeparam)&gt; | 是    | 指定订阅的回调函数，会携带蓝牙profile连接状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+
+**示例：**
+
+```js
+import { a2dp } from '@kit.ConnectivityKit';
+function onReceiveEvent(data: baseProfile.StateChangeParam) {
+    console.info('a2dp state = '+ JSON.stringify(data));
+}
+try {
+    let a2dpSrc = a2dp.createA2dpSrcProfile();
+    a2dpSrc.onConnectionStateChange(onReceiveEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
 
 ## BaseProfile.off('connectionStateChange')
 
@@ -217,9 +264,13 @@ off(type: 'connectionStateChange', callback?: Callback&lt;[StateChangeParam](#st
 
 取消订阅连接状态变化事件。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -228,7 +279,7 @@ off(type: 'connectionStateChange', callback?: Callback&lt;[StateChangeParam](#st
 | type     | string                                   | 是    | 事件回调类型，支持的事件为'connectionStateChange'，表示连接状态变化事件。 |
 | callback | Callback&lt;[StateChangeParam](#statechangeparam)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[BaseProfile.on('connectionStateChange')](#baseprofileonconnectionstatechange)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。                               |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
@@ -250,6 +301,51 @@ try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
     a2dpSrc.on('connectionStateChange', onReceiveEvent);
     a2dpSrc.off('connectionStateChange', onReceiveEvent);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+## offConnectionStateChange<sup>23+</sup>
+
+offConnectionStateChange(callback?: Callback<StateChangeParam>): void
+
+取消订阅连接状态变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;[StateChangeParam](#statechangeparam)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[BaseProfile.on('connectionStateChange')](#baseprofileonconnectionstatechange)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。                               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+
+**示例：**
+
+```js
+import { a2dp } from '@kit.ConnectivityKit';
+function onReceiveEvent(data: baseProfile.StateChangeParam) {
+    console.info('a2dp state = '+ JSON.stringify(data));
+}
+try {
+    let a2dpSrc = a2dp.createA2dpSrcProfile();
+    a2dpSrc.offConnectionStateChange(onReceiveEvent);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }

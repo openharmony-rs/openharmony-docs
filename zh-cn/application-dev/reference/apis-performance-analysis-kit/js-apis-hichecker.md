@@ -37,9 +37,9 @@ addCheckRule(rule: bigint): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：9
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -77,9 +77,9 @@ removeCheckRule(rule: bigint): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：9
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -117,9 +117,9 @@ containsCheckRule(rule: bigint): boolean
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：9
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -166,11 +166,11 @@ addRule(rule: bigint): void
 
 添加一条或多条规则到系统，系统根据添加的规则进行检测或反馈。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -203,7 +203,7 @@ removeRule(rule: bigint): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -230,9 +230,9 @@ getRule(): bigint
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTs-Dyn起始版本**：8
+**ArkTS-Dyn起始版本**：8
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本**：20
 
 **返回值：**
 
@@ -264,7 +264,7 @@ contains(rule: bigint): boolean
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 

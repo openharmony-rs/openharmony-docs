@@ -39,15 +39,6 @@ URLParams的构造函数。
 | -------- | -------- | -------- | -------- |
 | init | ArkTS-Dyn: string[][] <br> ArkTS-Sta: [string, string][] \| Record&lt;string, string&gt; \| string \| URLParams | 否 | 入参对象。<br/>- string[][]：字符串二维数组。<br/>- Record&lt;string, string&gt;：对象列表。<br/>- string：字符串。<br/>- URLParams：对象。<br/>- 默认值：null。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 |
-
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -106,16 +97,6 @@ append(name: string, value: string): void
 | name | string | 是 | 需要插入搜索参数的键名。 |
 | value | string | 是 | 需要插入搜索参数的值。 |
 
-**错误码：**
-
-ArkTS-Dyn错误码：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
-
 **示例：**
 
 ```ts
@@ -144,16 +125,6 @@ delete(name: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | name | string | 是 | 需要删除的键值名称。 |
-
-**错误码：**
-
-ArkTS-Dyn错误码：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -190,13 +161,6 @@ getAll(name: string): string[]
 | -------- | -------- |
 | string[] | 返回指定名称的所有键对应值的集合。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -286,14 +250,6 @@ forEach(callbackFn: (value: string, key: string, searchParams: URLParams) => voi
 | key | string | 是 | 当前遍历到的键名。 |
 | searchParams | [URLParams](#urlparams9) | 是 | 当前调用forEach方法的实例对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -371,14 +327,6 @@ ArkTS-Sta: get(name: string): string | undefined
 | -------- | -------- |
 | ArkTS-Dyn: string \| null <br> ArkTS-Sta: string \| undefined | 返回第一个值。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 |
-
 **示例：**
 
 ```ts
@@ -414,14 +362,6 @@ has(name: string): boolean
 | -------- | -------- |
 | boolean | 是否存在相对应的key值，存在返回true，否则返回false。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
-
 **示例：**
 
 ```ts
@@ -451,14 +391,6 @@ set(name: string, value: string): void
 | -------- | -------- | -------- | -------- |
 | name | string | 是 | 将要设置的参数的键值名。 |
 | value | string | 是 | 所要设置的参数值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -562,7 +494,7 @@ for (let value of values) {
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS版本：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -594,7 +526,7 @@ $_iterator(): IterableIterator&lt;[string, string]&gt;
 
 **原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
-**ArkTS版本：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -687,7 +619,7 @@ type UrlCbFn = (value: string, key: string, searchParams: URLParams) => void
 | port | string | 否 | 否 | 获取和设置URL的端口部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
 | protocol | string | 否 | 否 | 获取和设置URL的协议部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
 | search | string | 否 | 否 | 获取和设置URL的序列化查询部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
-| searchParams<sup>(deprecated)</sup> | [URLSearchParams](#urlsearchparamsdeprecated) | 是 | 否 | 获取URLSearchParams表示URL查询参数的对象。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>- **说明：** 此属性从API version 7开始支持，从API version 9开始被废弃。建议使用params<sup>9+</sup>替代。 <br> **ArkTS-Dyn起始版本：** 7 |
+| searchParams<sup>(deprecated)</sup> | [URLSearchParams](#urlsearchparamsdeprecated) | 是 | 否 | 获取URLSearchParams表示URL查询参数的对象。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/> **说明：** 从API version 7开始支持，从API version 9开始废弃。建议使用params<sup>9+</sup>替代。 <br> **ArkTS-Dyn起始版本：** 7 |
 | params<sup>9+</sup> | [URLParams](#urlparams9) | 是 | 否 | 获取URLParams表示URL查询参数的对象。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
 | username | string | 否 | 否 | 获取和设置URL的用户名部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
 
@@ -824,7 +756,6 @@ URL静态成员函数。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200002 | Invalid url string. |
 
 **示例：**
@@ -1133,8 +1064,7 @@ get(name: string): string | null
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 返回第一个值。 |
-| null | 如果没找到，返回 null。 |
+| string | null| 如果找到，返回第一个值，如果没找到，返回 null。 |
 
 **示例：**
 

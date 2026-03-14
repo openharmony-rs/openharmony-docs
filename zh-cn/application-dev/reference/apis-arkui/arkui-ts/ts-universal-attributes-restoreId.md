@@ -2,13 +2,17 @@
 
 组件的分布式迁移标识，指明了该组件在分布式迁移场景下可以将特定状态恢复到对端设备。
 
->  **说明：**
+>  **说明：** 
 >
->  从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## restoreId
 
-restoreId(value: number)
+ArkTS-Dyn: restoreId(value: number)
+
+ArkTS-Sta: restoreId(value: int | undefined): this
 
 标记支持分布式迁移的组件Id，用于两端设备组件的配对。
 
@@ -20,7 +24,7 @@ restoreId(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 标记支持分布式迁移的组件Id，用于两端设备组件的配对。同一个应用中各个支持分布式迁移组件的Id必须不同。 |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 标记支持分布式迁移的组件Id，用于两端设备组件的配对。同一个应用中各个支持分布式迁移组件的Id必须不同。 |
 
 ## 支持的组件
 

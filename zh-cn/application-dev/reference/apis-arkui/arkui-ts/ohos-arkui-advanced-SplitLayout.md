@@ -40,11 +40,11 @@ SplitLayout({mainImage: Resource, primaryText: string, secondaryText?: string, t
 
 | 名称 | 类型 | 必填 | 装饰器类型        | 说明     |
 | -------- | -------- | -------- |---------------|--------|
-| mainImage | [ResourceStr](ts-types.md#resourcestr) | 是 | @State | 传入图片。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22  |
-| primaryText | [ResourceStr](ts-types.md#resourcestr) | 是 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef         | 标题内容。 <br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22 |
-| secondaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef         | 副标题内容。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22 |
-| tertiaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef         | 辅助文本。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22  |
-| container | ()&nbsp;=&gt;&nbsp;void | 是 | @BuilderParam | 容器内组件。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22 |
+| mainImage | [ResourceStr](ts-types.md#resourcestr) | 是 | @State | 传入图片。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23  |
+| primaryText | [ResourceStr](ts-types.md#resourcestr) | 是 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef         | 标题内容。 <br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| secondaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef         | 副标题内容。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| tertiaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef         | 辅助文本。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23  |
+| container | ()&nbsp;=&gt;&nbsp;void | 是 | @BuilderParam | 容器内组件。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。

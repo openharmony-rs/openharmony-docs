@@ -33,7 +33,7 @@ getActiveVideoStabilizationMode(): VideoStabilizationMode
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -79,7 +79,7 @@ setVideoStabilizationMode(mode: VideoStabilizationMode): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

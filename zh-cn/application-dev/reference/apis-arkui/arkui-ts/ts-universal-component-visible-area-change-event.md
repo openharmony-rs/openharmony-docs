@@ -22,7 +22,7 @@ ArkTS-Sta: onVisibleAreaChange(ratios: Array&lt;double&gt; | undefined, event: V
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -35,7 +35,7 @@ ArkTS-Sta: onVisibleAreaChange(ratios: Array&lt;double&gt; | undefined, event: V
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 > **说明：**
 >
@@ -60,14 +60,14 @@ ArkTS-Sta: onVisibleAreaApproximateChange(options: VisibleAreaEventOptions | und
 
 **ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
 | options  | ArkTS-Dyn: [VisibleAreaEventOptions](./ts-types.md#visibleareaeventoptions12)<br/>ArkTS-Sta: [VisibleAreaEventOptions](./ts-types.md#visibleareaeventoptions12)&nbsp;\|&nbsp;undefined | 是   | 可见区域变化相关的参数。 |
-| event  | ArkTS-Dyn: [VisibleAreaChangeCallback](./ts-types.md#visibleareachangecallback12)<br/>ArkTS-Sta: [VisibleAreaChangeCallback](./ts-types.md#visibleareachangecallback12)&nbsp;\|&nbsp;undefined | 是   | onVisibleAreaChange事件的回调函数。当组件可见面积与自身面积的比值接近options中设置的阈值时触发该回调。 |
+| event  | ArkTS-Dyn: [VisibleAreaChangeCallback](./ts-types.md#visibleareachangecallback12)<br/>ArkTS-Sta: [VisibleAreaChangeCallback](./ts-types.md#visibleareachangecallback12)&nbsp;\|&nbsp;undefined | 否   | onVisibleAreaChange事件的回调函数。当组件可见面积与自身面积的比值接近options中设置的阈值时触发该回调。 |
 
 >**说明：**
 >
@@ -214,18 +214,18 @@ struct ScrollExample {
             .margin({ top: 50, bottom: 20 })
             .backgroundColor(Color.Green)
               // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调。
-            .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 1000}, (isExpanding: boolean, currentRatio: number) => {
-              console.info('Test Text isExpanding: ' + isExpanding + ', currentRatio:' + currentRatio)
-              if (isExpanding && currentRatio >= 1.0) {
-                console.info('Test Text is fully visible. currentRatio:' + currentRatio)
-                this.testTextStr = 'Test Text is fully visible'
-              }
+              .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 1000}, (isExpanding: boolean, currentRatio: number) => {
+                console.info('Test Text isExpanding: ' + isExpanding + ', currentRatio:' + currentRatio)
+                if (isExpanding && currentRatio >= 1.0) {
+                  console.info('Test Text is fully visible. currentRatio:' + currentRatio)
+                  this.testTextStr = 'Test Text is fully visible'
+                }
 
-              if (!isExpanding && currentRatio <= 0.0) {
-                console.info('Test Text is completely invisible.')
-                this.testTextStr = 'Test Text is completely invisible'
-              }
-            })
+                if (!isExpanding && currentRatio <= 0.0) {
+                  console.info('Test Text is completely invisible.')
+                  this.testTextStr = 'Test Text is completely invisible'
+                }
+              })
 
           Row() {
             Text('Test Row Visible  Change')
@@ -235,7 +235,7 @@ struct ScrollExample {
           }
           .height(200)
           .backgroundColor(Color.Yellow)
-          .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
+          .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 1000}, (isExpanding: boolean, currentRatio: number) => {
             console.info('Test Row isExpanding:' + isExpanding + ', currentRatio:' + currentRatio)
             if (isExpanding && currentRatio >= 1.0) {
               console.info('Test Row is fully visible.')

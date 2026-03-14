@@ -31,7 +31,7 @@ import { collections } from '@kit.ArkTS';
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型   | 只读 | 可选 | 说明                  |
 | ------ | ------ | ---- | ---- | --------------------- |
@@ -52,7 +52,7 @@ BitVector的构造函数。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -80,7 +80,7 @@ ArkTS-Sta: push(element: int): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -100,7 +100,7 @@ ArkTS-Sta: push(element: int): boolean
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200011 | The push method cannot be bound.                             |
 | 10200201 | Concurrent modification error.                               |
 
@@ -129,7 +129,7 @@ ArkTS-Sta: pop(): int | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -143,8 +143,8 @@ ArkTS-Sta: pop(): int | undefined
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
-| 10200011 | The pop method cannot be bound. |
-| 10200201 | Concurrent modification error.  |
+| 10200011 | The pop method cannot be bound. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 10200201 | Concurrent modification error. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -173,7 +173,7 @@ ArkTS-Sta: has(element: int, fromIndex: int, toIndex: int): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -226,7 +226,7 @@ ArkTS-Sta: setBitsByRange(element: int, fromIndex: int, toIndex: int): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -242,7 +242,7 @@ ArkTS-Sta: setBitsByRange(element: int, fromIndex: int, toIndex: int): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The setBitsByRange method cannot be bound.                   |
 | 10200201 | Concurrent modification error.                               |
@@ -273,7 +273,7 @@ ArkTS-Sta: setAllBits(element: int): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -287,7 +287,7 @@ ArkTS-Sta: setAllBits(element: int): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200011 | The setAllBits method cannot be bound.                       |
 | 10200201 | Concurrent modification error.                               |
 
@@ -317,7 +317,7 @@ ArkTS-Sta: getBitsByRange(fromIndex: int, toIndex: int): BitVector
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -338,7 +338,7 @@ ArkTS-Sta: getBitsByRange(fromIndex: int, toIndex: int): BitVector
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The getBitsByRange method cannot be bound.                   |
 | 10200201 | Concurrent modification error.                               |
@@ -374,7 +374,7 @@ ArkTS-Sta: resize(size: int): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -388,7 +388,7 @@ ArkTS-Sta: resize(size: int): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200011 | The resize method cannot be bound.                           |
 | 10200201 | Concurrent modification error.                               |
 
@@ -421,7 +421,7 @@ ArkTS-Sta: getBitCountByRange(element: int, fromIndex: int, toIndex: int): int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -443,7 +443,7 @@ ArkTS-Sta: getBitCountByRange(element: int, fromIndex: int, toIndex: int): int
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The getBitCountByRange method cannot be bound.               |
 | 10200201 | Concurrent modification error.                               |
@@ -488,7 +488,7 @@ ArkTS-Sta: getIndexOf(element: int, fromIndex: int, toIndex: int): int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -510,7 +510,7 @@ ArkTS-Sta: getIndexOf(element: int, fromIndex: int, toIndex: int): int
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The getIndexOf method cannot be bound.                       |
 | 10200201 | Concurrent modification error.                               |
@@ -555,7 +555,7 @@ ArkTS-Sta: getLastIndexOf(element: int, fromIndex: int, toIndex: int): int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -577,7 +577,7 @@ ArkTS-Sta: getLastIndexOf(element: int, fromIndex: int, toIndex: int): int
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The getLastIndexOf method cannot be bound.                   |
 | 10200201 | Concurrent modification error.                               |
@@ -622,7 +622,7 @@ ArkTS-Sta: flipBitByIndex(index: int): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -636,7 +636,7 @@ ArkTS-Sta: flipBitByIndex(index: int): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of index is out of range.                          |
 | 10200011 | The flipBitByIndex method cannot be bound.                   |
 | 10200201 | Concurrent modification error.                               |
@@ -667,7 +667,7 @@ ArkTS-Sta: flipBitsByRange(fromIndex: int, toIndex: int): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -682,7 +682,7 @@ ArkTS-Sta: flipBitsByRange(fromIndex: int, toIndex: int): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The flipBitsByRange method cannot be bound.                  |
 | 10200201 | Concurrent modification error.                               |
@@ -713,7 +713,7 @@ ArkTS-Sta: values(): IterableIterator\<int>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -811,7 +811,7 @@ for (let item of bitVector) {
 }
 ```
 
-## $_iterator<sup>20+</sup>
+## $_iterator<sup>23+</sup>
 
 \$_iterator\(): IterableIterator&lt;int&gt;
 
@@ -825,7 +825,7 @@ for (let item of bitVector) {
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -886,7 +886,7 @@ bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
 console.info("BitVector Element Index at 1: " + bitVector[1]);
 ```
 
-## [index: int]<sup>20+</sup>
+## [index: int]<sup>23+</sup>
 
 &#91;index: int&#93;: int
 
@@ -896,7 +896,7 @@ console.info("BitVector Element Index at 1: " + bitVector[1]);
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 参数名    | 类型   | 必填 | 说明                     |
 | ----- | ------ | ---- | -------------------------- |
@@ -907,6 +907,14 @@ console.info("BitVector Element Index at 1: " + bitVector[1]);
 | 类型   | 说明                 |
 | ----- | ---------------------|
 | int | 返回int数据类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 10200001 | The value of fromIndex or toIndex is out of range.           |
 
 **示例：**
 

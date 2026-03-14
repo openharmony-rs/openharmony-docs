@@ -4,15 +4,40 @@ AbilityLifecycleCallback模块提供应用上下文[ApplicationContext](js-apis-
 
 > **说明：**
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
 ```ts
 import { AbilityLifecycleCallback } from '@kit.AbilityKit';
 ```
+
+## 属性
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                     | 类型                                                        | 只读 | 可选 | 说明                                                         |
+| ------------------------ | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| onAbilityWillCreate      | [OnAbilityWillCreateFn](#onabilitywillcreatefn23)           | 否   | 是   | 注册监听应用上下文的生命周期后，在UIAbility的[onCreate](js-apis-app-ability-uiAbility.md#oncreate)触发前回调。 |
+| onWindowStageWillCreate  | [OnWindowStageWillCreateFn](#onwindowstagewillcreatefn23)   | 否   | 是   | 注册监听应用上下文的生命周期后，在UIAbility的[onWindowStageCreate](js-apis-app-ability-uiAbility.md#onwindowstagecreate)触发前回调。 |
+| onWillNewWant            | [OnWillNewWantFn](#onwillnewwantfn23)                       | 否   | 是   | 注册监听应用上下文的生命周期后，在UIAbility的[onNewWant](js-apis-app-ability-uiAbility.md#onnewwant)触发前回调。 |
+| onNewWant                | [OnNewWantFn](#onnewwantfn23)                               | 否   | 是   | 注册监听应用上下文的生命周期后，在UIAbility的[onNewWant](js-apis-app-ability-uiAbility.md#onnewwant)触发后回调。 |
+| onWindowStageWillDestroy | [OnWindowStageWillDestroyFn](#onwindowstagewilldestroyfn23) | 否   | 是   | 注册监听应用上下文的生命周期后，在UIAbility的[onWindowStageDestroy](js-apis-app-ability-uiAbility.md#onwindowstagedestroy)触发前回调。 |
+| onAbilityWillDestroy     | [OnAbilityWillDestroyFn](#onabilitywilldestroyfn23)         | 否   | 是   | 注册监听应用上下文的生命周期后，在UIAbility的[onDestroy](js-apis-app-ability-uiAbility.md#ondestroy)触发前回调。 |
+| onAbilityWillForeground  | [OnAbilityWillForegroundFn](#onabilitywillforegroundfn23)   | 否   | 是   | 注册监听应用上下文的生命周期后，在UIAbility的[onForeground](js-apis-app-ability-uiAbility.md#onforeground)触发前回调。 |
+| onAbilityWillBackground  | [OnAbilityWillBackgroundFn](#onabilitywillbackgroundfn23)   | 否   | 是   | 注册监听应用上下文的生命周期后，在UIAbility的[onBackground](js-apis-app-ability-uiAbility.md#onbackground)触发前回调。 |
+| onWindowStageWillRestore | [OnWindowStageWillRestoreFn](#onwindowstagewillrestorefn23) | 否   | 是   | 注册监听应用上下文的生命周期后，在UIAbility的[onWindowStageRestore](js-apis-app-ability-uiAbility.md#onwindowstagerestore)触发前回调。 |
+| onWindowStageRestore     | [OnWindowStageRestoreFn](#onwindowstagerestorefn23)         | 否   | 是   | 注册监听应用上下文的生命周期后，在UIAbility的[onWindowStageRestore](js-apis-app-ability-uiAbility.md#onwindowstagerestore)触发后回调。 |
+| onAbilityWillSaveState   | [OnAbilityWillSaveStateFn](#onabilitywillsavestatefn23)     | 否   | 是   | 注册监听应用上下文的生命周期后，在UIAbility的[onSaveState](js-apis-app-ability-uiAbility.md#onsavestate)触发前回调。 |
+| onAbilitySaveState       | [OnAbilitySaveStateFn](#onabilitysavestatefn23)             | 否   | 是   | 注册监听应用上下文的生命周期后，在UIAbility的[onSaveState](js-apis-app-ability-uiAbility.md#onsavestate)触发后回调。 |
 
 ## AbilityLifecycleCallback.onAbilityCreate
 
@@ -24,15 +49,19 @@ onAbilityCreate(ability: UIAbility): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onWindowStageCreate
 
@@ -44,16 +73,20 @@ onWindowStageCreate(ability: UIAbility, windowStage: window.WindowStage): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
-  | windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onWindowStageActive
 
@@ -65,16 +98,20 @@ onWindowStageActive(ability: UIAbility, windowStage: window.WindowStage): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
-  | windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onWindowStageInactive
 
@@ -86,16 +123,20 @@ onWindowStageInactive(ability: UIAbility, windowStage: window.WindowStage): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
-  | windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onWindowStageDestroy
 
@@ -107,16 +148,20 @@ onWindowStageDestroy(ability: UIAbility, windowStage: window.WindowStage): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
-  | windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onAbilityDestroy
 
@@ -128,15 +173,19 @@ onAbilityDestroy(ability: UIAbility): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onAbilityForeground
 
@@ -148,15 +197,19 @@ onAbilityForeground(ability: UIAbility): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onAbilityBackground
 
@@ -168,15 +221,19 @@ onAbilityBackground(ability: UIAbility): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onAbilityContinue
 
@@ -188,15 +245,19 @@ onAbilityContinue(ability: UIAbility): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onAbilityWillCreate<sup>12+</sup>
 
@@ -208,15 +269,19 @@ onAbilityWillCreate?(ability: UIAbility): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onWindowStageWillCreate<sup>12+</sup>
 
@@ -228,16 +293,20 @@ onWindowStageWillCreate?(ability: UIAbility, windowStage: window.WindowStage): v
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
-  | windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onWindowStageWillDestroy<sup>12+</sup>
 
@@ -249,16 +318,20 @@ onWindowStageWillDestroy?(ability: UIAbility, windowStage: window.WindowStage): 
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
-  | windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onAbilityWillForeground<sup>12+</sup>
 
@@ -270,15 +343,19 @@ onAbilityWillForeground?(ability: UIAbility): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onAbilityWillDestroy<sup>12+</sup>
 
@@ -290,15 +367,19 @@ onAbilityWillDestroy?(ability: UIAbility): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onAbilityWillBackground<sup>12+</sup>
 
@@ -310,15 +391,19 @@ onAbilityWillBackground?(ability: UIAbility): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onWillNewWant<sup>12+</sup>
 
@@ -330,15 +415,19 @@ onWillNewWant?(ability: UIAbility): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onNewWant<sup>12+</sup>
 
@@ -350,15 +439,19 @@ onNewWant?(ability: UIAbility): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onAbilityWillContinue<sup>12+</sup>
 
@@ -370,15 +463,19 @@ onAbilityWillContinue?(ability: UIAbility): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | ------ | ------ | ------ | ------ |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ------ | ------ |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onWindowStageWillRestore<sup>12+</sup>
 
@@ -390,16 +487,20 @@ onWindowStageWillRestore?(ability: UIAbility, windowStage: window.WindowStage): 
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | ------ | ------ | ------ | ------ |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
-  | windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ------ | ------ |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onWindowStageRestore<sup>12+</sup>
 
@@ -411,16 +512,20 @@ onWindowStageRestore?(ability: UIAbility, windowStage: window.WindowStage): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | ------ | ------ | ------ | ------ |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
-  | windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ------ | ------ |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 当前WindowStage对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onAbilityWillSaveState<sup>12+</sup>
 
@@ -432,15 +537,19 @@ onAbilityWillSaveState?(ability: UIAbility): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | ------ | ------ | ------ | ------ |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ------ | ------ |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
 ## AbilityLifecycleCallback.onAbilitySaveState<sup>12+</sup>
 
@@ -452,166 +561,729 @@ onAbilitySaveState?(ability: UIAbility): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | ------ | ------ | ------ | ------ |
-  | ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ------ | ------ |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是 | 当前Ability对象。 |
 
 **示例：**
 
-参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用)。
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
 
-## AbilityLifecycleCallback使用
+## OnAbilityWillCreateFn<sup>23+</sup>
+
+type OnAbilityWillCreateFn = (ability: UIAbility) => void
+
+注册监听应用上下文的生命周期后，在UIAbility的[onCreate](js-apis-app-ability-uiAbility.md#oncreate)触发前回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                          | 必填 | 说明              |
+| ------- | --------------------------------------------- | ---- | ----------------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是   | 当前Ability对象。 |
 
 **示例：**
-GlobalContext.ts
-全局Context
+
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
+
+## OnWindowStageWillCreateFn<sup>23+</sup>
+
+type OnWindowStageWillCreateFn = (ability: UIAbility, windowStage: window.WindowStage) => void
+
+注册监听应用上下文的生命周期后，在UIAbility的[onWindowStageCreate](js-apis-app-ability-uiAbility.md#onwindowstagecreate)触发前回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                                         | 必填 | 说明                  |
+| ----------- | ------------------------------------------------------------ | ---- | --------------------- |
+| ability     | [UIAbility](js-apis-app-ability-uiAbility.md)                | 是   | 当前Ability对象。     |
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是   | 当前WindowStage对象。 |
+
+**示例：**
+
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
+
+## OnWillNewWantFn<sup>23+</sup>
+
+type OnWillNewWantFn = (ability: UIAbility) => void
+
+注册监听应用上下文的生命周期后，在UIAbility的[onNewWant](js-apis-app-ability-uiAbility.md#onnewwant)触发前回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                          | 必填 | 说明              |
+| ------- | --------------------------------------------- | ---- | ----------------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是   | 当前Ability对象。 |
+
+**示例：**
+
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
+
+## OnNewWantFn<sup>23+</sup>
+
+type OnNewWantFn = (ability: UIAbility) => void
+
+注册监听应用上下文的生命周期后，在UIAbility的[onNewWant](js-apis-app-ability-uiAbility.md#onnewwant)触发后回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                          | 必填 | 说明              |
+| ------- | --------------------------------------------- | ---- | ----------------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是   | 当前Ability对象。 |
+
+**示例：**
+
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
+
+## OnWindowStageWillDestroyFn<sup>23+</sup>
+
+type OnWindowStageWillDestroyFn = (ability: UIAbility, windowStage: window.WindowStage) => void
+
+注册监听应用上下文的生命周期后，在UIAbility的[onWindowStageDestroy](js-apis-app-ability-uiAbility.md#onwindowstagedestroy)触发前回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                                         | 必填 | 说明                  |
+| ----------- | ------------------------------------------------------------ | ---- | --------------------- |
+| ability     | [UIAbility](js-apis-app-ability-uiAbility.md)                | 是   | 当前Ability对象。     |
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是   | 当前WindowStage对象。 |
+
+**示例：**
+
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
+
+## OnAbilityWillDestroyFn<sup>23+</sup>
+
+type OnAbilityWillDestroyFn = (ability: UIAbility) => void
+
+注册监听应用上下文的生命周期后，在UIAbility的[onDestroy](js-apis-app-ability-uiAbility.md#ondestroy)触发前回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                          | 必填 | 说明              |
+| ------- | --------------------------------------------- | ---- | ----------------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是   | 当前Ability对象。 |
+
+**示例：**
+
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
+
+## OnAbilityWillForegroundFn<sup>23+</sup>
+
+type OnAbilityWillForegroundFn = (ability: UIAbility) => void
+
+注册监听应用上下文的生命周期后，在UIAbility的[onForeground](js-apis-app-ability-uiAbility.md#onforeground)触发前回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                          | 必填 | 说明              |
+| ------- | --------------------------------------------- | ---- | ----------------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是   | 当前Ability对象。 |
+
+**示例：**
+
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
+
+## OnAbilityWillBackgroundFn<sup>23+</sup>
+
+type OnAbilityWillBackgroundFn = (ability: UIAbility) => void
+
+注册监听应用上下文的生命周期后，在UIAbility的[onBackground](js-apis-app-ability-uiAbility.md#onbackground)触发前回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                          | 必填 | 说明              |
+| ------- | --------------------------------------------- | ---- | ----------------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是   | 当前Ability对象。 |
+
+**示例：**
+
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
+
+## OnAbilityWillContinueFn<sup>23+</sup>
+
+type OnAbilityWillContinueFn = (ability: UIAbility) => void
+
+注册监听应用上下文的生命周期后，在Ability迁移前触发回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                          | 必填 | 说明              |
+| ------- | --------------------------------------------- | ---- | ----------------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是   | 当前Ability对象。 |
+
+**示例：**
+
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
+
+## OnWindowStageWillRestoreFn<sup>23+</sup>
+
+type OnWindowStageWillRestoreFn = (ability: UIAbility, windowStage: window.WindowStage) => void
+
+注册监听应用上下文的生命周期后，在UIAbility的[onWindowStageRestore](js-apis-app-ability-uiAbility.md#onwindowstagerestore)触发前回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                                         | 必填 | 说明                  |
+| ----------- | ------------------------------------------------------------ | ---- | --------------------- |
+| ability     | [UIAbility](js-apis-app-ability-uiAbility.md)                | 是   | 当前Ability对象。     |
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是   | 当前WindowStage对象。 |
+
+**示例：**
+
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
+
+## OnWindowStageRestoreFn<sup>23+</sup>
+
+type OnWindowStageRestoreFn = (ability: UIAbility, windowStage: window.WindowStage) => void
+
+注册监听应用上下文的生命周期后，在UIAbility的[onWindowStageRestore](js-apis-app-ability-uiAbility.md#onwindowstagerestore)触发后回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                                         | 必填 | 说明                  |
+| ----------- | ------------------------------------------------------------ | ---- | --------------------- |
+| ability     | [UIAbility](js-apis-app-ability-uiAbility.md)                | 是   | 当前Ability对象。     |
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是   | 当前WindowStage对象。 |
+
+**示例：**
+
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
+
+## OnAbilityWillSaveStateFn<sup>23+</sup>
+
+type OnAbilityWillSaveStateFn = (ability: UIAbility) => void
+
+注册监听应用上下文的生命周期后，在UIAbility的[onSaveState](js-apis-app-ability-uiAbility.md#onsavestate)触发前回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                          | 必填 | 说明              |
+| ------- | --------------------------------------------- | ---- | ----------------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是   | 当前Ability对象。 |
+
+**示例：**
+
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
+
+## OnAbilitySaveStateFn<sup>23+</sup>
+
+type OnAbilitySaveStateFn = (ability: UIAbility) => void
+
+注册监听应用上下文的生命周期后，在UIAbility的[onSaveState](js-apis-app-ability-uiAbility.md#onsavestate)触发后回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                          | 必填 | 说明              |
+| ------- | --------------------------------------------- | ---- | ----------------- |
+| ability | [UIAbility](js-apis-app-ability-uiAbility.md) | 是   | 当前Ability对象。 |
+
+**示例：**
+
+参见[AbilityLifecycleCallback使用](#abilitylifecyclecallback使用示例)。
+
+## AbilityLifecycleCallback使用示例
+
+本示例展示了生命周期监听机制的部分使用场景：
+
+1. 在[AbilityStage](../../application-models/abilitystage.md)创建时注册监听。
+2. 在[AbilityStage](../../application-models/abilitystage.md)销毁时注销监听。
+3. 监听到对应UIAbility创建时加载资源，监听到对应UIAbility销毁时释放资源。
+4. 在UIAbility创建、销毁及前后台状态切换时，记录事件并向外发送通知。
+
+**示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
-// 构造单例对象
-export class GlobalContext {
-  private constructor() {}
-  private static instance: GlobalContext;
-  private _objects = new Map<string, Object>();
+// 以MyStage.ets文件为例，使用AbilityLifecycleCallback监听UIAbility生命周期
+import { AbilityLifecycleCallback, AbilityStage, application, UIAbility } from "@kit.AbilityKit";
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { JSON } from "@kit.ArkTS";
+import { window } from "@kit.ArkUI";
+import { BusinessError } from "@kit.BasicServicesKit";
 
-  public static getContext(): GlobalContext {
-    if (!GlobalContext.instance) {
-      GlobalContext.instance = new GlobalContext();
-    }
-    return GlobalContext.instance;
-  }
+const DOMAIN = 0x0000;
+const TAG = 'testTag';
 
-  getObject(value: string): Object | undefined {
-    return this._objects.get(value);
-  }
-
-  setObject(key: string, objectClass: Object): void {
-    this._objects.set(key, objectClass);
-  }
+function loadContent() {
+  // 加载数据
 }
-```
 
-MyFirstAbility.ts
-应用的第一个Ability
-```ts
-import { AbilityLifecycleCallback, UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
+function releaseContent() {
+  // 释放数据
+}
 
-// 导入GlobalContext，以开发者自己声明的路径为准
-import { GlobalContext } from '../GlobalContext';
+function recordAbilityEvent(abilityName: string) {
+  // 执行打点
+}
 
-// 声明ability生命周期回调，需配置所有回调后才可以在applicationContext注册
+function publishEvent() {
+  // 对外发布通知
+}
+
 let abilityLifecycleCallback: AbilityLifecycleCallback = {
-  onAbilityCreate(ability){
-    console.log('AbilityLifecycleCallback onAbilityCreate.');
+  onAbilityCreate(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'onAbilityCreate: ' + ability.context.abilityInfo.name);
+    // UIAbility事件打点记录
+    recordAbilityEvent(ability.context.abilityInfo.name);
+    // 模拟入口UIAbility创建时，加载资源对外发布通知
+    if (ability.context.abilityInfo.name === 'EntryAbility') {
+      loadContent();
+      publishEvent();
+    }
   },
-  onWindowStageCreate(ability, windowStage){
-    console.log('AbilityLifecycleCallback onWindowStageCreate.');
+  onWindowStageCreate(ability: UIAbility, windowStage: window.WindowStage) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageCreate.');
   },
-  onWindowStageActive(ability, windowStage){
-    console.log('AbilityLifecycleCallback onWindowStageActive.');
+  onWindowStageActive(ability: UIAbility, windowStage: window.WindowStage) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageActive.');
   },
-  onWindowStageInactive(ability, windowStage){
-    console.log('AbilityLifecycleCallback onWindowStageInactive.');
+  onWindowStageInactive(ability: UIAbility, windowStage: window.WindowStage) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageInactive.');
   },
-  onWindowStageDestroy(ability, windowStage){
-    console.log('AbilityLifecycleCallback onWindowStageDestroy.');
+  onWindowStageDestroy(ability: UIAbility, windowStage: window.WindowStage) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageDestroy.');
   },
-  onAbilityDestroy(ability){
-    console.log('AbilityLifecycleCallback onAbilityDestroy.');
+  onAbilityDestroy(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'onAbilityDestroy: ' + ability.context.abilityInfo.name);
+    recordAbilityEvent(ability.context.abilityInfo.name);
+    // 模拟入口UIAbility销毁时，释放资源
+    if (ability.context.abilityInfo.name === 'EntryAbility') {
+      releaseContent();
+      publishEvent();
+    }
   },
-  onAbilityForeground(ability){
-    console.log('AbilityLifecycleCallback onAbilityForeground.');
+  onAbilityForeground(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityForeground.');
+    recordAbilityEvent(ability.context.abilityInfo.name);
+    if (ability.context.abilityInfo.name === 'EntryAbility') {
+      publishEvent();
+    }
   },
-  onAbilityBackground(ability){
-    console.log('AbilityLifecycleCallback onAbilityBackground.');
+  onAbilityBackground(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityBackground.');
+    recordAbilityEvent(ability.context.abilityInfo.name);
+    if (ability.context.abilityInfo.name === 'EntryAbility') {
+      publishEvent();
+    }
   },
-  onAbilityContinue(ability){
-    console.log('AbilityLifecycleCallback onAbilityContinue.');
+  onAbilityContinue(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityContinue.');
   },
-  onNewWant(ability) {
-    console.log('AbilityLifecycleCallback onNewWant');
+  onNewWant(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onNewWant');
   },
-  onWillNewWant(ability) {
-    console.log('AbilityLifecycleCallback onWillNewWant');
+  onWillNewWant(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWillNewWant');
   },
-  onAbilityWillCreate(ability) {
-    console.log('AbilityLifecycleCallback onAbilityWillCreate');
+  onAbilityWillCreate(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityWillCreate');
   },
-  onWindowStageWillCreate(ability, windowStage) {
-    console.log('AbilityLifecycleCallback onWindowStageWillCreate');
+  onWindowStageWillCreate(ability: UIAbility, windowStage: window.WindowStage) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageWillCreate');
   },
-  onWindowStageWillDestroy(ability, windowStage) {
-    console.log('AbilityLifecycleCallback onWindowStageWillDestroy');
+  onWindowStageWillDestroy(ability: UIAbility, windowStage: window.WindowStage) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageWillDestroy');
   },
-  onAbilityWillDestroy(ability) {
-    console.log('AbilityLifecycleCallback onAbilityWillDestroy');
+  onAbilityWillDestroy(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityWillDestroy');
   },
-  onAbilityWillForeground(ability) {
-    console.log('AbilityLifecycleCallback onAbilityWillForeground');
+  onAbilityWillForeground(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityWillForeground');
   },
-  onAbilityWillBackground(ability) {
-    console.log('AbilityLifecycleCallback onAbilityWillBackground');
+  onAbilityWillBackground(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityWillBackground');
   },
   onAbilityWillContinue(ability: UIAbility) {
-    console.log('AbilityLifecycleCallback onAbilityWillContinue.');
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityWillContinue.');
   },
   onWindowStageWillRestore(ability: UIAbility, windowStage: window.WindowStage) {
-    console.log('AbilityLifecycleCallback onWindowStageWillRestore.');
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageWillRestore.');
   },
   onWindowStageRestore(ability: UIAbility, windowStage: window.WindowStage) {
-    console.log('AbilityLifecycleCallback onWindowStageRestore.');
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageRestore.');
   },
   onAbilityWillSaveState(ability: UIAbility) {
-    console.log('AbilityLifecycleCallback onAbilityWillSaveState.');
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityWillSaveState.');
   },
   onAbilitySaveState(ability: UIAbility) {
-    console.log('AbilityLifecycleCallback onAbilitySaveState.');
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilitySaveState.');
   }
 };
 
-export default class MyFirstAbility extends UIAbility {
-  onCreate() {
-    console.log('MyAbilityStage onCreate');
-    // 1.通过context属性获取applicationContext
-    let applicationContext = this.context.getApplicationContext();
-    // 2.通过applicationContext注册监听应用内生命周期
+let lifecycleId = -1; // 保存监听id
+
+export default class MyStage extends AbilityStage {
+  onCreate(): void {
+    hilog.info(DOMAIN, TAG, 'AbilityStage onCreate')
+
+    // AbilityStage创建时注册UIAbility生命周期监听，并把监听id保存起来
     try {
-      let lifecycleId = applicationContext.on('abilityLifecycle', abilityLifecycleCallback);
-      GlobalContext.getContext().setObject("lifecycleId", lifecycleId);
-      console.log(`registerAbilityLifecycleCallback lifecycleId: ${GlobalContext.getContext().getObject('lifecycleId')}`);
-    } catch (paramError) {
-      console.error(`error: ${paramError.code}, ${paramError.message}`);
+      let applicationContext = application.getApplicationContext();
+      lifecycleId = applicationContext.on('abilityLifecycle', abilityLifecycleCallback);
+    } catch (e) {
+      hilog.error(DOMAIN, TAG, `register abilityLifecycle failed: ${JSON.stringify(e)}`);
     }
+  }
+
+  onDestroy(): void {
+    // AbilityStage销毁时取消UIAbility生命周期监听注册
+    let applicationContext = application.getApplicationContext();
+    applicationContext.off('abilityLifecycle', lifecycleId).catch((e: BusinessError) => {
+      hilog.error(DOMAIN, TAG, `unregister abilityLifecycle failed: ${JSON.stringify(e)}`);
+    });
   }
 }
 ```
 
-MySecondAbility.ts
-应用的第二个Ability
 ```ts
-import { UIAbility } from '@kit.AbilityKit';
+// 以EntryAbility.ets为例，展示应用入口UIAbility
+import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
 
-// 导入GlobalContext，以开发者自己声明的路径为准
-import { GlobalContext } from '../GlobalContext';
-import { BusinessError } from '@ohos.base';
+const DOMAIN = 0x0000;
+const TAG = 'testTag';
 
-export default class MySecondAbility extends UIAbility {
-  onDestroy() {
-    let applicationContext = this.context.getApplicationContext();
-    let lifecycleId = GlobalContext.getContext().getObject("lifecycleId") as number;
-    try {
-    // 3.通过applicationContext注销监听应用内生命周期
-      applicationContext.off('abilityLifecycle', lifecycleId, (error) => {
-        if (error && error.code !== 0) {
-          console.error(`unregisterAbilityLifecycleCallback fail, error: ${JSON.stringify(error)}`);
-        } else {
-          console.log('unregisterAbilityLifecycleCallback success.');
-        }
-      });
-    } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
-    }
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+    hilog.info(DOMAIN, TAG, 'EntryAbility onCreate');
+  }
+
+  onDestroy(): void {
+    hilog.info(DOMAIN, TAG, 'EntryAbility onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // 主窗创建
+    hilog.info(DOMAIN, TAG, 'EntryAbility onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        hilog.error(DOMAIN, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      hilog.info(DOMAIN, TAG, 'Succeeded in loading the content.');
+    });
+  }
+
+  onWindowStageDestroy(): void {
+    // 主窗销毁
+    hilog.info(DOMAIN, TAG, 'EntryAbility onWindowStageDestroy');
+  }
+
+  onForeground(): void {
+    // UIAbility切换到前台
+    hilog.info(DOMAIN, TAG, 'EntryAbility onForeground');
+  }
+
+  onBackground(): void {
+    // UIAbility切换到后台
+    hilog.info(DOMAIN, TAG, 'EntryAbility  onBackground');
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+// 以MyStage.ets文件为例，使用AbilityLifecycleCallback监听UIAbility生命周期
+import { AbilityLifecycleCallback, AbilityStage, application, UIAbility } from "@kit.AbilityKit";
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from "@kit.ArkUI";
+import { BusinessError } from "@kit.BasicServicesKit";
+
+const DOMAIN = 0x0000;
+const TAG = 'testTag';
+
+function loadContent() {
+  // 加载数据
+}
+
+function releaseContent() {
+  // 释放数据
+}
+
+function recordAbilityEvent(abilityName: string) {
+  // 执行打点
+}
+
+function publishEvent() {
+  // 对外发布通知
+}
+
+class MyAbilityLifecycleCallback extends AbilityLifecycleCallback {
+  onAbilityCreate(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'onAbilityCreate: ' + ability.context.abilityInfo.name);
+    // UIAbility事件打点记录
+    recordAbilityEvent(ability.context.abilityInfo.name);
+    // 模拟入口UIAbility创建时，加载资源对外发布通知
+    if (ability.context.abilityInfo.name === 'EntryAbility') {
+      loadContent();
+      publishEvent();
+    }
+  }
+
+  onWindowStageCreate(ability: UIAbility, windowStage: window.WindowStage) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageCreate.');
+  }
+
+  onWindowStageActive(ability: UIAbility, windowStage: window.WindowStage) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageActive.');
+  }
+
+  onWindowStageInactive(ability: UIAbility, windowStage: window.WindowStage) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageInactive.');
+  }
+
+  onWindowStageDestroy(ability: UIAbility, windowStage: window.WindowStage) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageDestroy.');
+  }
+
+  onAbilityDestroy(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'onAbilityDestroy: ' + ability.context.abilityInfo.name);
+    recordAbilityEvent(ability.context.abilityInfo.name);
+    // 模拟入口UIAbility销毁时，释放资源
+    if (ability.context.abilityInfo.name === 'EntryAbility') {
+      releaseContent();
+      publishEvent();
+    }
+  }
+
+  onAbilityForeground(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityForeground.');
+    recordAbilityEvent(ability.context.abilityInfo.name);
+    if (ability.context.abilityInfo.name === 'EntryAbility') {
+      publishEvent();
+    }
+  }
+
+  onAbilityBackground(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityBackground.');
+    recordAbilityEvent(ability.context.abilityInfo.name);
+    if (ability.context.abilityInfo.name === 'EntryAbility') {
+      publishEvent();
+    }
+  }
+
+  onAbilityContinue(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityContinue.');
+  }
+
+  onNewWantFn(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onNewWant');
+  }
+
+  onWillNewWantFn(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWillNewWant');
+  }
+
+  onAbilityWillCreateFn(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityWillCreate');
+  }
+
+  onWindowStageWillCreateFn(ability: UIAbility, windowStage: window.WindowStage) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageWillCreate');
+  }
+
+  onWindowStageWillDestroyFn(ability: UIAbility, windowStage: window.WindowStage) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageWillDestroy');
+  }
+
+  onAbilityWillDestroyFn(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityWillDestroy');
+  }
+
+  onAbilityWillForegroundFn(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityWillForeground');
+  }
+
+  onAbilityWillBackgroundFn(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityWillBackground');
+  }
+
+  onAbilityWillContinue(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityWillContinue.');
+  }
+
+  onWindowStageWillRestoreFn(ability: UIAbility, windowStage: window.WindowStage) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageWillRestore.');
+  }
+
+  onWindowStageRestoreFn(ability: UIAbility, windowStage: window.WindowStage) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onWindowStageRestore.');
+  }
+
+  onAbilityWillSaveStateFn(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilityWillSaveState.');
+  }
+
+  onAbilitySaveStateFn(ability: UIAbility) {
+    hilog.info(DOMAIN, TAG, 'AbilityLifecycleCallback onAbilitySaveState.');
+  }
+}
+
+let lifecycleId = -1; // 保存监听id
+
+export default class MyStage extends AbilityStage {
+  onCreate(): void {
+    hilog.info(DOMAIN, TAG, 'AbilityStage onCreate')
+
+    // AbilityStage创建时注册UIAbility生命周期监听，并把监听id保存起来
+    try {
+      let abilityLifecycleCallback = new MyAbilityLifecycleCallback();
+      let applicationContext = application.getApplicationContextInstance();
+      lifecycleId = applicationContext.onAbilityLifecycle(abilityLifecycleCallback);
+    } catch (e) {
+      hilog.error(DOMAIN, TAG, `register abilityLifecycle failed: ${JSON.stringify(e)}`);
+    }
+  }
+
+  onDestroy(): void {
+    // AbilityStage销毁时取消UIAbility生命周期监听注册
+    let applicationContext = application.getApplicationContextInstance();
+    applicationContext.offAbilityLifecycle(lifecycleId).catch((err) => {
+      let e = err as BusinessError;
+      hilog.error(DOMAIN, TAG, `unregister abilityLifecycle failed: ${JSON.stringify(e)}`);
+    });
+  }
+}
+```
+
+```ts
+// 以EntryAbility.ets为例，展示应用入口UIAbility
+import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from "@kit.BasicServicesKit";
+
+const DOMAIN = 0x0000;
+const TAG = 'testTag';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+    hilog.info(DOMAIN, TAG, 'EntryAbility onCreate');
+  }
+
+  onDestroy(): Promise<void> | undefined {
+    hilog.info(DOMAIN, TAG, 'EntryAbility onDestroy');
+    return undefined;
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // 主窗创建
+    hilog.info(DOMAIN, TAG, 'EntryAbility onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (error): void => {
+      let err = error as BusinessError;
+      if (err.code) {
+        hilog.error(DOMAIN, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      hilog.info(DOMAIN, TAG, 'Succeeded in loading the content.');
+    });
+  }
+
+  onWindowStageDestroy(): void {
+    // 主窗销毁
+    hilog.info(DOMAIN, TAG, 'EntryAbility onWindowStageDestroy');
+  }
+
+  onForeground(): void {
+    // UIAbility切换到前台
+    hilog.info(DOMAIN, TAG, 'EntryAbility onForeground');
+  }
+
+  onBackground(): void {
+    // UIAbility切换到后台
+    hilog.info(DOMAIN, TAG, 'EntryAbility  onBackground');
+  }
+}
+```
+
