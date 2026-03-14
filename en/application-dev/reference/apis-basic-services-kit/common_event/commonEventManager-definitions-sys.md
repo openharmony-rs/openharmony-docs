@@ -640,6 +640,20 @@ When there is a change in the audio quality of the device, the common event serv
 
 **Value**: usual.event.AUDIO_QUALITY_CHANGE
 
+### COMMON_EVENT_RESTORE_END<sup>23+</sup>
+ 	 
+Indicates that an application finished restored.
+
+When a data migration application use the backup and restore framework to finish a restoration task, the common event service is triggered to publish this event.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: ohos.permission.RESTORE_END_NOTIFICATION
+
+**Value**: "usual.event.RESTORE_END"
+
 
 ## Reserved Common Event
 
