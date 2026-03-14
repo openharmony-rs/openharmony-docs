@@ -2585,11 +2585,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
@@ -2645,11 +2645,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
@@ -2708,11 +2708,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
@@ -2768,11 +2768,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
@@ -2831,11 +2831,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
@@ -2891,11 +2891,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
@@ -2954,11 +2954,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
@@ -3014,11 +3014,11 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-  // file had changed, do something.
+  // 文件发生了变更，采取措施。
 }
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){

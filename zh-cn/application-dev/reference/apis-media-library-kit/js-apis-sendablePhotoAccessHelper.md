@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅适用于ArkTS-Dyn。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -23,6 +24,8 @@ getPhotoAccessHelper(context: Context): PhotoAccessHelper
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -75,6 +78,8 @@ getAssets(options: photoAccessHelper.FetchOptions): Promise&lt;FetchResult&lt;Ph
 获取图片和视频资源，使用Promise方式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -140,6 +145,8 @@ getBurstAssets(burstKey: string, options: photoAccessHelper.FetchOptions): Promi
 获取连拍照片资源，使用Promise方式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -218,6 +225,8 @@ createAsset(photoType: PhotoType, extension: string, options?: photoAccessHelper
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **参数：**
@@ -278,6 +287,8 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options?: photoAccessHelper.Fe
 获取相册前需先保证相册存在。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -348,6 +359,8 @@ getAlbums(options: photoAccessHelper.FetchOptions): Promise&lt;FetchResult&lt;Al
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **参数：**
@@ -414,6 +427,8 @@ release(): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型                | 说明                    |
@@ -459,6 +474,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 | 名称        | 类型                    | 只读 | 可选 | 说明                                                         |
 | ----------- | ----------------------- | ---- | ---- | ------------------------------------------------------------ |
 | uri<sup>12+</sup>         | string                  | 是   | 否   | 媒体文件资源uri（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件uri介绍中的[媒体文件uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -472,6 +489,8 @@ convertToPhotoAsset():  photoAccessHelper.PhotoAsset
 将Sendable类型PhotoAsset转换为非Sendable类型PhotoAsset。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
@@ -522,6 +541,8 @@ get(member: string): photoAccessHelper.MemberType
 获取PhotoAsset成员参数。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -579,6 +600,8 @@ set(member: string, value: string): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
@@ -632,6 +655,8 @@ commitModify(): Promise&lt;void&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
@@ -688,6 +713,8 @@ getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 获取文件的缩略图，传入缩略图尺寸，使用Promise方式返回异步结果。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**ArkTS-Dyn起始版本：** 12
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -755,6 +782,8 @@ getCount(): number
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型   | 说明               |
@@ -798,6 +827,8 @@ isAfterLast(): boolean
 检查结果集是否指向最后一行。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
@@ -848,6 +879,8 @@ close(): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **错误码：**
 
 详细错误码请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
@@ -889,6 +922,8 @@ getFirstObject(): Promise&lt;T&gt;
 获取文件检索结果中的第一个文件资产。此方法使用Promise方式来异步返回。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
@@ -935,6 +970,8 @@ getNextObject(): Promise&lt;T&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型             | 说明                                  |
@@ -980,6 +1017,8 @@ getLastObject(): Promise&lt;T&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型             | 说明                                    |
@@ -1023,6 +1062,8 @@ getObjectByPosition(index: number): Promise&lt;T&gt;
 获取文件检索结果中具有指定索引的文件资产。此方法使用Promise形式返回文件Asset。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1075,6 +1116,8 @@ getAllObjects(): Promise&lt;Array&lt;T&gt;&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型                          | 说明                                        |
@@ -1119,6 +1162,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 | 名称         | 类型                          | 只读                         | 可选 | 说明             |
 | ------------ | ----------------------------- | ---------------------------- | ---- | ---------------- |
 | albumType    | [AlbumType](#albumtype)       | 是                           | 否   | 相册类型。       |
@@ -1137,6 +1182,10 @@ convertToPhotoAlbum(): photoAccessHelper.Album
 将Sendable类型Album转换为非Sendable类型Album。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**返回值：**
 
 | 类型                    | 说明                                                      |
 | ----------------------- | --------------------------------------------------------- |
@@ -1192,6 +1241,8 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1257,6 +1308,8 @@ commitModify(): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 **返回值：**
 
 | 类型                | 说明                    |
@@ -1308,6 +1361,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 | 名称  | 值   | 说明   |
 | ----- | ---- | ------ |
 | IMAGE | 1    | 图片。 |
@@ -1321,6 +1376,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 14
+
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | DEFAULT |  0 |  默认照片类型。 |
@@ -1333,6 +1390,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 **系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 14
+
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | SDR |  0 |  标准动态范围类型。|
@@ -1344,6 +1403,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
 | 名称   | 值   | 说明           |
 | ------ | ---- | -------------- |
 | USER   | 0    | 用户相册。     |
@@ -1354,6 +1415,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 枚举，相册子类型，表示具体的相册类型。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 | 名称          | 值         | 说明       |
 | ------------- | ---------- | ---------- |
