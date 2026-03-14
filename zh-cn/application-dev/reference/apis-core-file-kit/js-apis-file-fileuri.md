@@ -61,7 +61,7 @@ constructor是FileUri的构造函数。
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 | 错误码ID| 错误信息        |
 | -------- | ---------- |
 | 13900005 | I/O error |
@@ -122,7 +122,7 @@ getFullDirectoryUri(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID| 错误信息|
 | -------- |--------|
@@ -162,7 +162,7 @@ isRemoteUri(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID| 错误信息|
 | --------- |--------|
