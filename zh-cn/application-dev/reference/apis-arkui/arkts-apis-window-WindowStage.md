@@ -2382,9 +2382,7 @@ export default class EntryAbility extends UIAbility {
 
 ## setCustomDensity<sup>15+</sup>
 
-ArkTS-Dyn: setCustomDensity(density: number): void
-
-ArkTS-Sta: setCustomDensity(density: double): void
+setCustomDensity(density: number): void
 
 支持应用主窗口自定义其显示大小缩放系数。
 
@@ -2396,17 +2394,17 @@ ArkTS-Sta: setCustomDensity(density: double): void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名           | 类型    | 必填 | 说明                         |
 | ---------------- | ------- | ---- | ---------------------------- |
-| density | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 自定义显示大小缩放系数。该参数为浮点数，取值范围为[0.5, 4.0]或-1.0。4.0表示窗口可显示的最大显示大小缩放系数，-1.0表示窗口使用系统显示大小缩放系数。 |
+| density | number | 是   | 自定义显示大小缩放系数。该参数为浮点数，取值范围为[0.5, 4.0]或-1.0。4.0表示窗口可显示的最大显示大小缩放系数，-1.0表示窗口使用系统显示大小缩放系数。 |
 
 **错误码：**
 
@@ -2421,8 +2419,6 @@ ArkTS-Sta: setCustomDensity(density: double): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -2436,27 +2432,6 @@ export default class EntryAbility extends UIAbility {
       windowStage.setCustomDensity(-1.0);
     } catch (exception) {
       console.error(`Failed to set custom density. Cause code: ${exception.code}, message: ${exception.message}`);
-    }
-  }
-};
-```
-
-ArkTS-Sta示例：
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    console.info('onWindowStageCreate');
-    try {
-      windowStage.setCustomDensity(-1.0);
-    } catch (exception) {
-      let error = exception as BusinessError;
-      console.error(`Failed to set custom density. Cause code: ${error.code}, message: ${error.message}`);
     }
   }
 };

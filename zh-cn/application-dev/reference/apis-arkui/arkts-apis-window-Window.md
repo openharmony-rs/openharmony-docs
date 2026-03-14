@@ -1,4 +1,4 @@
-# Interface (Window)
+﻿# Interface (Window)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @waterwin-->
@@ -1629,7 +1629,7 @@ setWindowContainerColor(activeColor: string, inactiveColor: string): void
 | ------- | ------------------------------ |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The main window is not created or destroyed.|
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.|
 | 1300004 | Unauthorized operation.                      |
 
 **示例：**
@@ -6848,6 +6848,8 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onOcclusionStateChanged](#onocclusionstatechanged23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **ArkTS-Dyn起始版本：** 22
@@ -6882,6 +6884,53 @@ try {
 }
 ```
 
+## onOcclusionStateChanged()<sup>23+</sup>
+
+onOcclusionStateChanged(callback: Callback<window.OcclusionState>): void
+
+开启窗口可见性状态变化事件的监听。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
+- 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-Window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
+- 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
+- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是可见的。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[onOcclusionStateChanged](#onocclusionstatechanged22)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[OcclusionState](arkts-apis-window-e.md#occlusionstate22)&gt; | 是   | 窗口可见性变化时的回调函数。详情见[可见性状态](arkts-apis-window-e.md#occlusionstate22)。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
+    console.info(`Window occlusion state changed: ${data}`);
+  };
+  windowClass.on('occlusionStateChanged', callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('occlusionStateChanged')<sup>22+</sup>
 
 off(type: 'occlusionStateChanged', callback?: Callback&lt;OcclusionState&gt;): void
@@ -6889,6 +6938,8 @@ off(type: 'occlusionStateChanged', callback?: Callback&lt;OcclusionState&gt;): v
 关闭窗口可见性状态变化事件的监听。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offOcclusionStateChanged](#offocclusionstatechanged23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6926,6 +6977,55 @@ try {
   windowClass.off('occlusionStateChanged');
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offOcclusionStateChanged<sup>23+</sup>
+
+offOcclusionStateChanged(callback?: Callback&lt;OcclusionState&gt;): void
+
+关闭窗口可见性状态变化事件的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("occlusionStateChanged")](#offocclusionstatechanged22)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[OcclusionState](arkts-apis-window-e.md#occlusionstate22)&gt; | 否   | 若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口可见性变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
+    console.info(`Window occlusion state changed: ${data}`);
+  };
+  // 通过on接口开启监听
+  windowClass.onOcclusionStateChanged(callback);
+  // 关闭指定callback的监听
+  windowClass.offOcclusionStateChanged(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offOcclusionStateChanged();
+} catch (exception) {
+  let error = exception as window.Error;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -7125,7 +7225,7 @@ on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**ArtTS模式：** 此接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onSystemDensityChange](#onsystemdensitychange23)。
 
@@ -7173,7 +7273,7 @@ onSystemDensityChange(callback: Callback&lt;double&gt;): void
 
 开启本窗口所处屏幕的系统显示大小缩放系数变化事件的监听。比如，当调整窗口所处屏幕的显示大小缩放系数时，可以从此接口监听到这个行为。
 
-**ArtTS模式：** 此接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('systemDensityChange')](#onsystemdensitychange15)。
 
@@ -7221,7 +7321,7 @@ off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**ArtTS模式：** 此接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offSystemDensityChange](#offsystemdensitychange23)。
 
@@ -7270,7 +7370,7 @@ offSystemDensityChange(callback?: Callback&lt;double&gt;): void
 
 关闭本窗口所处屏幕的系统显示大小缩放系数变化事件的监听。
 
-**ArtTS模式：** 此接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('systemDensityChange')](#offsystemdensitychange15)。
 
@@ -7885,7 +7985,7 @@ ArkTS-Sta: setWindowGrayScale(grayScale: double): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                     |
 | --------- | ------ | -- | ---------------------------------------- |
-| grayScale | ArkTS: number<br>ArkTS-Sta: double | 是 | 窗口灰阶。该参数为浮点数，取值范围为[0.0, 1.0]。0.0表示窗口图像无变化，1.0表示窗口图像完全转为灰度图像，0.0至1.0之间时效果呈线性变化。 |
+| grayScale | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 窗口灰阶。该参数为浮点数，取值范围为[0.0, 1.0]。0.0表示窗口图像无变化，1.0表示窗口图像完全转为灰度图像，0.0至1.0之间时效果呈线性变化。 |
 
 **返回值：**
 
