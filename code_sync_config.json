@@ -12901,7 +12901,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUINode.h",
 				"functions":[
 					{
-						"end_line":225,
+						"end_line":273,
 						"name":"arkui_node",
 						"start_line":16
 					}
@@ -15760,7 +15760,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUINode.h",
 				"functions":[
 					{
-						"end_line":83,
+						"end_line":125,
 						"name":"Cpp_ArkUINode",
 						"start_line":15
 					}
