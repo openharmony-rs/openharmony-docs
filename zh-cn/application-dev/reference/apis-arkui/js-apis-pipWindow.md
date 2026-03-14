@@ -503,9 +503,9 @@ struct Index {
 
 | 名称   | 类型 | 只读 | 可选 | 说明       |
 | ------ | -------- | ---- | ---- | ---------- |
-| width  | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是   | 否   | 窗口宽度，单位为px，该参数应为正整数，不大于屏幕宽。 |
-| height | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是   | 否   | 窗口高度，单位为px，该参数应为正整数，不大于屏幕高。 |
-| scale  | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是   | 否   | 窗口缩放比，显示大小相对于width和height的缩放比，该参数为浮点数，取值范围大于0.0，小于等于1.0。等于1表示与width和height一样大。 |
+| width  | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否   | 否   | 窗口宽度，单位为px，该参数应为正整数，不大于屏幕宽。 |
+| height | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否   | 否   | 窗口高度，单位为px，该参数应为正整数，不大于屏幕高。 |
+| scale  | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否   | 否   | 窗口缩放比，显示大小相对于width和height的缩放比，该参数为浮点数，取值范围大于0.0，小于等于1.0。等于1表示与width和height一样大。 |
 
 ## PiPWindowInfo<sup>15+</sup>
 
@@ -521,8 +521,8 @@ struct Index {
 
 | 名称   | 类型 | 只读 | 可选 | 说明       |
 | ------ | -------- | ---- | ---- | ---------- |
-| windowId  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 否   | 画中画窗口ID。 |
-| size  | [PiPWindowSize](#pipwindowsize15)  | 是   | 否   | 画中画窗口大小。 |
+| windowId  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | 画中画窗口ID。 |
+| size  | [PiPWindowSize](#pipwindowsize15)         | 否   | 否   | 画中画窗口大小。 |
 
 ## PiPTemplateType
 
@@ -977,9 +977,9 @@ this.pipController.setAutoStartEnabled(enable);
 
 ### updateContentSize
 
-ArkTS-Dyn：updateContentSize(width: number, height: number): void
+ArkTS-Dyn: updateContentSize(width: number, height: number): void
 
-ArkTS-Sta：updateContentSize(width: int, height: int): void
+ArkTS-Sta: updateContentSize(width: int, height: int): void
 
 当媒体源切换时，向画中画控制器更新媒体源尺寸信息。
 
