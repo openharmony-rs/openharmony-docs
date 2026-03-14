@@ -683,7 +683,7 @@ workScheduler.isLastWorkTimeOut(500)
 **ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型                                |  只读   | 可选   | 说明               |
-| --------------- | --------------------------------- | ---- | ---------------- |
+| --------------- | --------------------------------- | ---- | ---- |---------------- |
 | workId          | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    |延迟任务ID。          |
 | bundleName      | string                                  | 否    | 否    |延迟任务所在应用的包名。           |
 | abilityName     | string                                  | 否    | 否    | 包内ability名称。 |
