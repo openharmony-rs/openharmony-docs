@@ -490,7 +490,7 @@ GNSS地理围栏请求参数。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | deviceId | string | 否 | 否 | 表示扫描到的设备地址。例如："XX:XX:XX:XX:XX:XX"。 |
-| rssi | number | 否 | 否 | 表示扫描到的设备的rssi值。 |
+| rssi | number | 否 | 否 | 表示扫描到的设备的rssi值，单位dBm。 |
 | data | ArrayBuffer | 否 | 是 | 表示扫描到的设备发送的广播包。 |
 | deviceName | string | 否 | 否 | 表示扫描到的设备名称。 |
 | connectable | boolean | 否 | 否 | 表示扫描到的设备是否可连接。true表示可连接，false表示不可连接。 |
