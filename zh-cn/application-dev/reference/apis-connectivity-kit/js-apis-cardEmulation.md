@@ -151,6 +151,10 @@ import cardEmulation from '@ohos.nfc.cardEmulation';
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 值         | 说明                |
 | ------- | --------- | ----------------- |
 | PAYMENT | "payment" | 卡模拟应用所使用的业务是支付类型。 |
@@ -214,6 +218,10 @@ hasHceCapability(): boolean
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型  | 说明                           |
@@ -263,6 +271,10 @@ isDefaultService(elementName: ElementName, type: CardType): boolean
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -354,6 +366,10 @@ start(elementName: ElementName, aidList: string[]): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填 | 说明                    |
@@ -407,6 +423,10 @@ stop(elementName: ElementName): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填 | 说明                    |
@@ -434,7 +454,7 @@ on(type: 'hceCmd', callback: AsyncCallback\<number[]>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onHceCmd](#onhcecmd22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onHceCmd](#onhcecmd23)。
 
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
 
@@ -535,7 +555,7 @@ export default {
 }
 ```
 
-### onHceCmd<sup>22+</sup>
+### onHceCmd<sup>23+</sup>
 
 onHceCmd(callback: AsyncCallback\<int[]>): void
 
@@ -549,7 +569,7 @@ onHceCmd(callback: AsyncCallback\<int[]>): void
 
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -577,7 +597,7 @@ off(type: 'hceCmd', callback?: AsyncCallback\<number[]>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offHceCmd](#offhcecmd22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offHceCmd](#offhcecmd23)。
 
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
 
@@ -640,7 +660,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### offHceCmd<sup>22+</sup>
+### offHceCmd<sup>23+</sup>
 
 offHceCmd(callback?: AsyncCallback\<int[]>): void
 
@@ -654,7 +674,7 @@ offHceCmd(callback?: AsyncCallback\<int[]>): void
 
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -739,19 +759,20 @@ sendResponse(responseApdu: number[]): void
 ### transmit<sup>9+</sup>
 
 ArkTS-Dyn: transmit(response: number[]): Promise\<void>
+
 ArkTS-Sta: transmit(response: int[]): Promise\<void>
 
 发送APDU数据到对端读卡设备，使用Promise异步回调。应用程序必须在[on](#on8)收到读卡设备发送的APDU数据后，才调用该接口响应数据。
 
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -828,23 +849,25 @@ hceService.transmit(responseData).then(() => {
 }).catch((err: BusinessError | null): void => {
   console.error("transmit Promise error:", err);
 });
+```
 
 ### transmit<sup>9+</sup>
 
 ArkTS-Dyn: transmit(response: number[], callback: AsyncCallback\<void>): void
+
 ArkTS-Sta: transmit(response: int[], callback: AsyncCallback\<void>): void
 
 发送APDU数据到对端读卡设备，使用Callback异步回调。应用程序必须在[on](#on8)收到读卡设备发送的APDU数据后，才调用该接口响应数据。
 
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
