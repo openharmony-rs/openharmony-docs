@@ -669,8 +669,7 @@ async wantAgentDownload(url: string, fileName: string, callback: (progress: numb
         logger.error(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
       })
       task.on('completed', async (progress) => {
-        console.warn('Request download completed, ' + JSON.stringify(progress));
-        logger.error(TAG, `Request download completed, ${JSON.stringify(progress)}`);
+        logger.info(TAG, `Request download completed, ${JSON.stringify(progress)}`);
         // 获取文件状态信息，其中包含大小
         let filePath = filesDir + '/' + fileName;
         // 获取文件状态信息，其中包含大小
