@@ -366,7 +366,7 @@
 						"start_line":16
 					},
 					{
-						"end_line":94,
+						"end_line":101,
 						"name":"getDevices",
 						"start_line":32
 					},
@@ -376,9 +376,9 @@
 						"start_line":98
 					},
 					{
-						"end_line":147,
+						"end_line":159,
 						"name":"connectDevice",
-						"start_line":118
+						"start_line":125
 					},
 					{
 						"end_line":196,
@@ -386,9 +386,9 @@
 						"start_line":151
 					},
 					{
-						"end_line":434,
+						"end_line":503,
 						"name":"closePipe",
-						"start_line":420
+						"start_line":483
 					}
 				]
 			}
@@ -406,7 +406,7 @@
 						"start_line":16
 					},
 					{
-						"end_line":94,
+						"end_line":101,
 						"name":"getDevices",
 						"start_line":32
 					},
@@ -416,19 +416,19 @@
 						"start_line":98
 					},
 					{
-						"end_line":147,
+						"end_line":159,
 						"name":"connectDevice",
-						"start_line":118
+						"start_line":125
 					},
 					{
-						"end_line":223,
+						"end_line":238,
 						"name":"controlTransfer",
-						"start_line":200
+						"start_line":212
 					},
 					{
-						"end_line":434,
+						"end_line":503,
 						"name":"closePipe",
-						"start_line":420
+						"start_line":483
 					}
 				]
 			}
@@ -446,7 +446,7 @@
 						"start_line":16
 					},
 					{
-						"end_line":94,
+						"end_line":101,
 						"name":"getDevices",
 						"start_line":32
 					},
@@ -456,14 +456,14 @@
 						"start_line":98
 					},
 					{
-						"end_line":147,
+						"end_line":159,
 						"name":"connectDevice",
-						"start_line":118
+						"start_line":125
 					},
 					{
-						"end_line":434,
+						"end_line":503,
 						"name":"closePipe",
-						"start_line":420
+						"start_line":483
 					}
 				]
 			}
@@ -481,7 +481,7 @@
 						"start_line":16
 					},
 					{
-						"end_line":94,
+						"end_line":101,
 						"name":"getDevices",
 						"start_line":32
 					},
@@ -491,14 +491,14 @@
 						"start_line":98
 					},
 					{
-						"end_line":263,
+						"end_line":293,
 						"name":"interruptTransfer_getEndpoint",
-						"start_line":227
+						"start_line":242
 					},
 					{
-						"end_line":272,
+						"end_line":309,
 						"name":"interruptTransfer_claimInterface",
-						"start_line":264
+						"start_line":294
 					},
 					{
 						"end_line":304,
@@ -526,7 +526,7 @@
 						"start_line":16
 					},
 					{
-						"end_line":94,
+						"end_line":101,
 						"name":"getDevices",
 						"start_line":32
 					},
@@ -536,14 +536,14 @@
 						"start_line":98
 					},
 					{
-						"end_line":355,
+						"end_line":406,
 						"name":"isochronousTransfer_getEndpoint",
-						"start_line":318
+						"start_line":355
 					},
 					{
-						"end_line":374,
+						"end_line":437,
 						"name":"isochronousTransfer_claimInterface",
-						"start_line":356
+						"start_line":407
 					},
 					{
 						"end_line":406,
