@@ -76,7 +76,14 @@
    
    ``` TypeScript
    // 获取设备列表。
-   let deviceList: usbManager.USBDevice[] = usbManager.getDevices();
+   let deviceList: usbManager.USBDevice[] = [];
+   try {
+     deviceList = usbManager.getDevices();
+   } catch (error) {
+       console.error(`USB getDevices failed: ${error}`);
+       this.logInfo_ += '\n[ERROR] USB getDevices failed: ' + JSON.stringify(error);
+   }
+   
    console.info(`deviceList: ${deviceList}`);
    this.logInfo_ += '\n[INFO] deviceList: ' + JSON.stringify(deviceList);
    if (deviceList === undefined || deviceList.length === 0) {
@@ -85,55 +92,55 @@
      return;
    }
    /*
-   deviceList结构示例
-   [
-     {
-       name: '1-1',
-       serial: '',
-       manufacturerName: '',
-       productName: '',
-       version: '',
-       vendorId: 7531,
-       productId: 2,
-       clazz: 9,
-       subClass: 0,
-       protocol: 1,
-       devAddress: 1,
-       busNum: 1,
-       configs: [
-         {
-           id: 1,
-           attributes: 224,
-           isRemoteWakeup: true,
-           isSelfPowered: true,
-           maxPower: 0,
-           name: '1-1',
-           interfaces: [
-             {
-               id: 0,
-               protocol: 0,
-               clazz: 9,
-               subClass: 0,
-               alternateSetting: 0,
-               name: '1-1',
-               endpoints: [
-                 {
-                   address: 129,
-                   attributes: 3,
-                   interval: 12,
-                   maxPacketSize: 4,
-                   direction: 128,
-                   number: 1,
-                   type: 3,
-                   interfaceId: 0,
-                 }
-               ]
-             }
-           ]
-         }
-       ]
-     }
-   ]
+     deviceList结构示例
+     [
+       {
+         name: '1-1',
+         serial: '',
+         manufacturerName: '',
+         productName: '',
+         version: '',
+         vendorId: 7531,
+         productId: 2,
+         clazz: 9,
+         subClass: 0,
+         protocol: 1,
+         devAddress: 1,
+         busNum: 1,
+         configs: [
+           {
+             id: 1,
+             attributes: 224,
+             isRemoteWakeup: true,
+             isSelfPowered: true,
+             maxPower: 0,
+             name: '1-1',
+             interfaces: [
+               {
+                 id: 0,
+                 protocol: 0,
+                 clazz: 9,
+                 subClass: 0,
+                 alternateSetting: 0,
+                 name: '1-1',
+                 endpoints: [
+                   {
+                     address: 129,
+                     attributes: 3,
+                     interval: 12,
+                     maxPacketSize: 4,
+                     direction: 128,
+                     number: 1,
+                     type: 3,
+                     interfaceId: 0,
+                   }
+                 ]
+               }
+             ]
+           }
+         ]
+       }
+     ]
     */
    this.deviceList_ = deviceList;
    ```
@@ -173,28 +180,33 @@
      return;
    }
    let deviceList: usbManager.USBDevice[] = this.deviceList_;
-   if (!usbManager.hasRight(deviceList[0]?.name)) {
-     console.error('permission denied');
-     this.logInfo_ += '\n[ERROR] permission denied';
-     return;
+   try {
+     if (!usbManager.hasRight(deviceList[0]?.name)) {
+       console.error('permission denied');
+       this.logInfo_ += '\n[ERROR] permission denied';
+       return;
+     }
+     // 打开设备，获取数据传输通道。
+     let pipe: usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
+     if (!deviceList?.[0]?.configs?.[0]?.interfaces?.[0]) {
+       console.error('invalid interface');
+       this.logInfo_ += '\n[ERROR] invalid interface';
+       return;
+     }
+     let interface1: usbManager.USBInterface = deviceList?.[0]?.configs?.[0]?.interfaces?.[0];
+     /*
+       打开对应接口，在设备信息（deviceList）中选取对应的interface。
+       interface1为设备配置中的一个接口。
+      */
+     usbManager.claimInterface(pipe, interface1, true);
+     this.pipe_ = pipe;
+     this.interface_ = interface1;
+     console.info('open device success');
+     this.logInfo_ += '\n[INFO] open device success';
+   } catch (error) {
+     console.error(`USB hasRight failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
    }
-   // 打开设备，获取数据传输通道。
-   let pipe: usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
-   if (!deviceList?.[0]?.configs?.[0]?.interfaces?.[0]) {
-     console.error('invalid interface');
-     this.logInfo_ += '\n[ERROR] invalid interface';
-     return;
-   }
-   let interface1: usbManager.USBInterface = deviceList?.[0]?.configs?.[0]?.interfaces?.[0];
-   /*
-    打开对应接口，在设备信息（deviceList）中选取对应的interface。
-   interface1为设备配置中的一个接口。
-    */
-   usbManager.claimInterface(pipe, interface1, true);
-   this.pipe_ = pipe;
-   this.interface_ = interface1;
-   console.info('open device success');
-   this.logInfo_ += '\n[INFO] open device success';
    ```
 
 
@@ -268,8 +280,14 @@
    }
    let pipe: usbManager.USBDevicePipe = this.pipe_;
    let interface1: usbManager.USBInterface = this.interface_;
-   usbManager.releaseInterface(pipe, interface1);
-   usbManager.closePipe(pipe);
+   try {
+     usbManager.releaseInterface(pipe, interface1);
+     usbManager.closePipe(pipe);
+   } catch (error) {
+     console.error(`failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] failed: ' + JSON.stringify(error);
+   }
+   
    this.pipe_ = undefined;
    this.interface_ = undefined;
    console.info('close device success');

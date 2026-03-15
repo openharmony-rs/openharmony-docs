@@ -73,7 +73,14 @@
    
    ``` TypeScript
    // 获取设备列表。
-   let deviceList: usbManager.USBDevice[] = usbManager.getDevices();
+   let deviceList: usbManager.USBDevice[] = [];
+   try {
+     deviceList = usbManager.getDevices();
+   } catch (error) {
+       console.error(`USB getDevices failed: ${error}`);
+       this.logInfo_ += '\n[ERROR] USB getDevices failed: ' + JSON.stringify(error);
+   }
+   
    console.info(`deviceList: ${deviceList}`);
    this.logInfo_ += '\n[INFO] deviceList: ' + JSON.stringify(deviceList);
    if (deviceList === undefined || deviceList.length === 0) {
@@ -82,55 +89,55 @@
      return;
    }
    /*
-   deviceList结构示例
-   [
-     {
-       name: '1-1',
-       serial: '',
-       manufacturerName: '',
-       productName: '',
-       version: '',
-       vendorId: 7531,
-       productId: 2,
-       clazz: 9,
-       subClass: 0,
-       protocol: 1,
-       devAddress: 1,
-       busNum: 1,
-       configs: [
-         {
-           id: 1,
-           attributes: 224,
-           isRemoteWakeup: true,
-           isSelfPowered: true,
-           maxPower: 0,
-           name: '1-1',
-           interfaces: [
-             {
-               id: 0,
-               protocol: 0,
-               clazz: 9,
-               subClass: 0,
-               alternateSetting: 0,
-               name: '1-1',
-               endpoints: [
-                 {
-                   address: 129,
-                   attributes: 3,
-                   interval: 12,
-                   maxPacketSize: 4,
-                   direction: 128,
-                   number: 1,
-                   type: 3,
-                   interfaceId: 0,
-                 }
-               ]
-             }
-           ]
-         }
-       ]
-     }
-   ]
+     deviceList结构示例
+     [
+       {
+         name: '1-1',
+         serial: '',
+         manufacturerName: '',
+         productName: '',
+         version: '',
+         vendorId: 7531,
+         productId: 2,
+         clazz: 9,
+         subClass: 0,
+         protocol: 1,
+         devAddress: 1,
+         busNum: 1,
+         configs: [
+           {
+             id: 1,
+             attributes: 224,
+             isRemoteWakeup: true,
+             isSelfPowered: true,
+             maxPower: 0,
+             name: '1-1',
+             interfaces: [
+               {
+                 id: 0,
+                 protocol: 0,
+                 clazz: 9,
+                 subClass: 0,
+                 alternateSetting: 0,
+                 name: '1-1',
+                 endpoints: [
+                   {
+                     address: 129,
+                     attributes: 3,
+                     interval: 12,
+                     maxPacketSize: 4,
+                     direction: 128,
+                     number: 1,
+                     type: 3,
+                     interfaceId: 0,
+                   }
+                 ]
+               }
+             ]
+           }
+         ]
+       }
+     ]
     */
    this.deviceList_ = deviceList;
    ```
@@ -170,12 +177,27 @@
      return;
    }
    let usbDevice: usbManager.USBDevice = this.deviceList_[0];
-   if (!usbManager.hasRight(usbDevice.name)) {
-     console.error('permission denied');
-     this.logInfo_ += '\n[ERROR] permission denied';
+   try {
+     if (!usbManager.hasRight(usbDevice.name)) {
+       console.error('permission denied');
+       this.logInfo_ += '\n[ERROR] permission denied';
+       return;
+     }
+   } catch (error) {
+     console.error(`USB hasRight failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
      return;
    }
-   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(usbDevice);
+   
+   let devicePipe: usbManager.USBDevicePipe;
+   try {
+     devicePipe = usbManager.connectDevice(usbDevice);
+   } catch (error) {
+     console.error(`USB connectDevice failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB connectDevice failed: ' + JSON.stringify(error);
+     return;
+   }
+   
    let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
    let usbInterfaces: usbManager.USBInterface[] = [];
    let usbInterface: usbManager.USBInterface | undefined = undefined;
@@ -208,10 +230,16 @@
    
    ``` TypeScript
    // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
-   let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
-   if (claimInterfaceResult !== 0) {
-     console.error(`claimInterface error = ${claimInterfaceResult}`)
-     this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+   try {
+     let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
+     if (claimInterfaceResult !== 0) {
+       console.error(`claimInterface error = ${claimInterfaceResult}`)
+       this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+       return;
+     }
+   } catch (error) {
+     console.error(`USB claimInterface failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
      return;
    }
    ```
