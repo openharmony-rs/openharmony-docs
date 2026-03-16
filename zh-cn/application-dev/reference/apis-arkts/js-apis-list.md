@@ -182,7 +182,7 @@ ArkTS-Sta: insert(element: T, index: int): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The insert method cannot be bound. |
 
@@ -282,7 +282,7 @@ ArkTS-Sta: get(index: int): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of index is out of range. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The get method cannot be bound. |
 
@@ -773,7 +773,7 @@ replaceAllElements(callbackfn: ListReplaceCb\<T\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callbackFn | [ListReplaceCb\<T\>](#listreplacecbt23) | 是 | 回调函数。 |
+| callbackfn | [ListReplaceCb\<T\>](#listreplacecbt23) | 是 | 回调函数。 |
 
 **示例：**
 
@@ -862,7 +862,7 @@ forEach(callbackfn: ListForEachCb\<T\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callbackFn | [ListForEachCb\<T\>](#listforeachcbt23) | 是 | 回调函数。 |
+| callbackfn | [ListForEachCb\<T\>](#listforeachcbt23) | 是 | 回调函数。 |
 
 **示例：**
 
@@ -906,7 +906,7 @@ sort(comparator: ListComparatorFn\<T\>): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The sort method cannot be bound. |
 
 **示例：**
@@ -978,7 +978,7 @@ ArkTS-Sta: getSubList(fromIndex: int, toIndex: int): List&lt;T&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of fromIndex or toIndex is out of range. |
 | 10200011 | The getSubList method cannot be bound. |
 
@@ -1087,7 +1087,7 @@ ArkTS-Sta: set(index: int, element: T): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The set method cannot be bound. |
 
