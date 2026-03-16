@@ -9,11 +9,14 @@ ArkTS-Sta内存天然共享，无需使用`@Sendable`装饰器。
 文档中涉及到的各种任务概念：
 - 任务组任务：对应为[TaskGroup](#taskgroup)任务。
 - 串行队列任务：对应为[SequenceRunner](#sequencerunner)任务。
+- 异步队列任务：对应为[AsyncRunner](#asyncrunner)任务。
 - 周期任务：被[executePeriodically](#taskpoolexecuteperiodically)执行过的任务。
 
 > **说明：**
 >
-> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅适用于ArkTS-Sta。
+>
+> - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## taskpool.execute
 
@@ -151,11 +154,6 @@ execute(task: Task, configs: Configs): Promise\<Any>
 ```ts
 import hilog from '@ohos.hilog';
 
-function printArgs(args: number): number {
-    hilog.info(0x0000, "testTag", "printArgs: " + args);
-    return args;
-}
-
 function longRunningTask(duration: int): string {
     let start = Date.now();
     while ((Date.now() - start) < duration) {
@@ -164,20 +162,20 @@ function longRunningTask(duration: int): string {
     return 'success';
 }
 
-// 执行带超时配置的任务
-let task1: taskpool.Task = new taskpool.Task(printArgs, 100.0);
-taskpool.execute(task1, { timeout: 1000 }).then((value: Any) => {
+// 任务正常完成，输出 "taskpool result: success"
+let task1: taskpool.Task = new taskpool.Task(longRunningTask, 500);
+taskpool.execute(task1, { timeout: 1000, priority: taskpool.Priority.HIGH }).then((value: Any) => {
   hilog.info(0x0000, "testTag", "taskpool result: " + value);
 }).catch((e: Error) => {
-  hilog.info(0x0000, "testTag", "taskpool error: " + e.message);
+  hilog.info(0x0000, "testTag", "error: " + e.message);
 });
 
-// 执行带超时和优先级的任务
-let task2: taskpool.Task = new taskpool.Task(longRunningTask, 200);
-taskpool.execute(task2, { timeout: 100, priority: taskpool.Priority.HIGH }).then((value: Any) => {
+// 任务执行超时，输出 "error: taskpool:: task has been timeout"
+let task2: taskpool.Task = new taskpool.Task(longRunningTask, 1000);
+taskpool.execute(task2, { timeout: 500, priority: taskpool.Priority.HIGH }).then((value: Any) => {
   hilog.info(0x0000, "testTag", "taskpool result: " + value);
 }).catch((e: Error) => {
-  hilog.info(0x0000, "testTag", "taskpool error: " + e.message);
+  hilog.info(0x0000, "testTag", "error: " + e.message);
 });
 ```
 
@@ -282,26 +280,26 @@ function longRunningTask(duration: int): string {
     return 'success';
 }
 
-// 执行带超时配置的任务组
+// 任务组正常完成，输出 "taskpool execute res is:success,100"
 let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
-taskGroup.addTask(longRunningTask, 50);
+taskGroup.addTask(longRunningTask, 500);
 taskGroup.addTask(printArgs, 100.0);
 
-taskpool.execute(taskGroup, { timeout: 100 }).then((res: Array<Any>) => {
+taskpool.execute(taskGroup, { timeout: 1000, priority: taskpool.Priority.HIGH }).then((res: Array<Any>) => {
   hilog.info(0x0000, "testTag", "taskpool execute res is:" + res);
 }).catch((e: Error) => {
-  hilog.info(0x0000, "testTag", "taskpool error: " + e.message);
+  hilog.info(0x0000, "testTag", "error: " + e.message);
 });
 
-// 执行带超时和优先级的任务组
+// 任务组执行超时，输出 "error: taskpool:: task group has been timeout"
 let taskGroup2: taskpool.TaskGroup = new taskpool.TaskGroup();
-taskGroup2.addTask(longRunningTask, 50);
+taskGroup2.addTask(longRunningTask, 1000);
 taskGroup2.addTask(printArgs, 200.0);
 
-taskpool.execute(taskGroup2, { timeout: 100, priority: taskpool.Priority.HIGH }).then((res: Array<Any>) => {
+taskpool.execute(taskGroup2, { timeout: 500, priority: taskpool.Priority.HIGH }).then((res: Array<Any>) => {
   hilog.info(0x0000, "testTag", "taskpool execute res is:" + res);
 }).catch((e: Error) => {
-  hilog.info(0x0000, "testTag", "taskpool error: " + e.message);
+  hilog.info(0x0000, "testTag", "error: " + e.message);
 });
 ```
 
@@ -575,20 +573,20 @@ function longRunningTask(duration: int): string {
     return 'success';
 }
 
-// 配置超时时间为100毫秒
-let task1: taskpool.Task = new taskpool.Task(longRunningTask, 200);
-taskpool.execute(task1, { timeout: 100 }).then((value: Any) => {
+// 配置超时时间为1000毫秒。任务正常完成，输出 "taskpool result: success"
+let task1: taskpool.Task = new taskpool.Task(longRunningTask, 500);
+taskpool.execute(task1, { timeout: 1000 }).then((value: Any) => {
   hilog.info(0x0000, "testTag", "taskpool result: " + value);
 }).catch((e: Error) => {
-  hilog.info(0x0000, "testTag", "taskpool error: " + e.message);
+  hilog.info(0x0000, "testTag", "error: " + e.message);
 });
 
-// 配置超时时间为100毫秒，优先级为HIGH
-let task2: taskpool.Task = new taskpool.Task(longRunningTask, 50);
-taskpool.execute(task2, { timeout: 100, priority: taskpool.Priority.HIGH }).then((value: Any) => {
+// 配置超时时间为500毫秒，优先级为HIGH。任务执行超时，输出 "error: taskpool:: task has been timeout"
+let task2: taskpool.Task = new taskpool.Task(longRunningTask, 1000);
+taskpool.execute(task2, { timeout: 500, priority: taskpool.Priority.HIGH }).then((value: Any) => {
   hilog.info(0x0000, "testTag", "taskpool result: " + value);
 }).catch((e: Error) => {
-  hilog.info(0x0000, "testTag", "taskpool error: " + e.message);
+  hilog.info(0x0000, "testTag", "error: " + e.message);
 });
 ```
 
