@@ -935,7 +935,7 @@ Since API version 23, the **-keep-object-props** configuration option can be use
 
 - If only property obfuscation (**-enable-property-obfuscation**) is enabled and the **-keep-object-props** option is selected, the property names in the object literals will be collected to the trustlist and will not be obfuscated.
 
-- If both property obfuscation (**-enable-property-obfuscation**) and string property obfuscation (**-enable-string-property-obfuscation**) are enabled and the**-keep-object-props** option is selected, the property names and string property names in the object literals will be collected to the trustlist and will not be obfuscated. 
+- If both property obfuscation (**-enable-property-obfuscation**) and string property obfuscation (**-enable-string-property-obfuscation**) are enabled and the **-keep-object-props** option is selected, the property names and string property names in the object literals will be collected to the trustlist and will not be obfuscated. 
 
 >**NOTE**
 >
