@@ -609,8 +609,9 @@ try {
   console.error(`Failed to auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-**返回示例：**
+
 ```
+// 返回示例
 [
 	{
     	"bundleName": "com.example.edmtest",
@@ -748,8 +749,9 @@ try {
   console.error(`Failed to get auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-**返回示例：**
+
 ```
+// 返回示例
 [
 	{
     	"bundleName": "com.example.edmtest",
