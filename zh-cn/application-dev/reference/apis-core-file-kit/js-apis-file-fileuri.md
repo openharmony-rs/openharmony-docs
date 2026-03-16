@@ -173,7 +173,7 @@ isRemoteUri(): boolean
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   function isRemoteUriExample() {
-    let uri = "file://com.example.demo/data/storage/el2/base/test.txt?networkid=xxxx";//?networkid设备id，远端URI的标识
+    let uri = "file://com.example.demo/data/storage/el2/base/test.txt?networkid=xxxx";// ?networkid设备id，远端URI的标识
     let fileUriObject = new fileUri.FileUri(uri);
     let ret = fileUriObject.isRemoteUri();
     if (ret) {
