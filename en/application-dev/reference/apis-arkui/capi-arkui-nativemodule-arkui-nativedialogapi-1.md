@@ -42,7 +42,7 @@ Provides a collection of native-side custom dialog box APIs provided by ArkUI.
 | [int32_t (\*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCustomAnimation)](#enablecustomanimation) | Specifies whether to use a custom animation for a custom dialog box.|
 | [int32_t (\*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDismissEvent eventHandler)](#registeronwilldismiss) | Registers a callback for a custom dialog box so that the user can decide whether to close the dialog box after they touch the back button or press the Esc key.|
 | [int32_t (\*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)](#show) | Shows a custom dialog box.|
-| [int32_t (\*close)(ArkUI_NativeDialogHandle handle)](#close) | Closes a custom dialog box. If the dialog box has been closed, this API does not take effect.|
+| [int32_t (\*close)(ArkUI_NativeDialogHandle handle)](#close) | Closes a custom dialog box. If the dialog box has been closed, this API does not take effect. This API is executed asynchronously in the background. The dialog box node is removed from the tree only after the dismissal animation is complete. If you want to open the dialog box again after closing it, wait for 300 ms and then perform the operation again.|
 | [int32_t (\*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, void* userData, void (\*callback)(ArkUI_DialogDismissEvent* event))](#registeronwilldismisswithuserdata) | Registers a callback for the dismissal event of a custom dialog box.|
 
 ## Member Function Description
@@ -154,9 +154,9 @@ Sets the alignment mode of a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  int32_t alignment | Alignment mode. The parameter type is **ArkUI_Alignment**.|
-|  float offsetX | Horizontal offset of the custom dialog box. The value is a floating point number.|
-|  float offsetY | Vertical offset of the custom dialog box. The value is a floating point number.|
+|  int32_t alignment | Alignment mode. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment).|
+|  float offsetX | Horizontal offset of the dialog box. The value is a floating point number, in vp.|
+|  float offsetY | Vertical offset of the dialog box. The value is a floating point number, in vp.|
 
 **Returns**
 
@@ -172,7 +172,7 @@ int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)
 
 **Description**
 
-Resets the alignment mode of a custom dialog box to its default settings.
+Resets the alignment mode of a custom dialog box to its default settings. The default value is **ARKUI_ALIGNMENT_TOP_START**. For details, see [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment).
 
 > **NOTE**
 >
@@ -318,10 +318,10 @@ Sets the background corner radius for a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  float topLeft | Radius of the upper left corner of the custom dialog box background.|
-|  float topRight | Radius of the upper right corner of the custom dialog box background.|
-| float bottomLeft | Radius of the lower left corner of the custom dialog box background.|
-|  float bottomRight | Radius of the lower right corner of the custom dialog box background.|
+|  float topLeft | Radius of the upper left corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
+|  float topRight | Radius of the upper right corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
+| float bottomLeft | Radius of the lower left corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
+|  float bottomRight | Radius of the lower right corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
 
 **Returns**
 
@@ -348,7 +348,7 @@ Sets the number of grid columns occupied by a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  int32_t gridCount | Number of grid columns occupied by the dialog box. The default value is subject to the window size, and the maximum value is the maximum number of columns supported by the system.|
+|  int32_t gridCount | Number of grids. The default value is subject to the window size, and the maximum value is the [maximum number of columns supported by the system](../../ui/arkts-layout-development-grid-layout.md#columns).<br>The value is an integer greater than or equal to 0.|
 
 **Returns**
 
@@ -364,7 +364,7 @@ int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomS
 
 **Description**
 
-Specifies whether to use a custom style for the custom dialog box.
+Specifies whether to use a custom style for a custom dialog box.
 
 > **NOTE**
 >
@@ -469,7 +469,7 @@ int32_t (*close)(ArkUI_NativeDialogHandle handle)
 **Description**
 
 
-Closes a custom dialog box. If the dialog box has been closed, this API does not take effect.
+Closes a custom dialog box. If the dialog box has been closed, this API does not take effect. This API is executed asynchronously in the background. The dialog box node is removed from the tree only after the dismissal animation is complete. If you want to open the dialog box again after closing it, wait for 300 ms and then perform the operation again.
 
 **Parameters**
 
@@ -481,7 +481,7 @@ Closes a custom dialog box. If the dialog box has been closed, this API does not
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful. This only indicates that the close command is successfully delivered, but does not indicate that the dialog box is completely closed.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### registerOnWillDismissWithUserData()
 
