@@ -1,4 +1,4 @@
-# Using TaskPool for Independent Time-Consuming Tasks
+# Using TaskPool for Independent Time-consuming Tasks
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @lijiamin2025-->

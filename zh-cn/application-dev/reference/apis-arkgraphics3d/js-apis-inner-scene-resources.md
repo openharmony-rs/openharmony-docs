@@ -571,7 +571,7 @@ function finish(): void {
 | BACKGROUND_NONE | 0 | 无背景。|
 | BACKGROUND_IMAGE | 1 | 图片背景。 |
 | BACKGROUND_CUBEMAP | 2 | 立方体贴图背景。|
-| BACKGROUND_EQUIRECTANGULAR | 3 | 等距矩形背景。 |
+| BACKGROUND_EQUIRECTANGULAR | 3 | 等距柱状投影背景。 |
 
 ## Environment
 环境类型，继承自[SceneResource](#sceneresource-1)。

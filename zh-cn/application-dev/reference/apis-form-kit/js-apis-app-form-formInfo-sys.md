@@ -303,7 +303,7 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
 
 ## TemplateFormDetailInfoCallback<sup>23+</sup>
 
-type TemplateFormDetailInfoCallback =  (info: Array\<TemplateFormDetailInfo>): void
+type TemplateFormDetailInfoCallback =  (info: Array\<TemplateFormDetailInfo>) => void
 
 模板卡真实卡片信息回调。
 
@@ -356,7 +356,7 @@ let templateFormDetailInfoCallback: formInfo.TemplateFormDetailInfoCallback =
 
 ## PublishFormCrossBundleControlCallback<sup>23+</sup>
 
-type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo): boolean
+type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo) => boolean
 
 跨应用加卡管控回调。
 

@@ -10,8 +10,7 @@
 The advertising module provides APIs for requesting and displaying ads.
 
 > **NOTE**<br>
->
-> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -242,7 +241,7 @@ For details about the following error codes, see [Ads Service Framework Error Co
 | ID| Error Message                                                                            |
 |----------|--------------------------------------------------------------------------------------|
 | 401      | Invalid input parameter. Possible causes: Mandatory parameters are left unspecified. |
-| 21800001 | operation javascriptRegister error.                                                  |
+| 21800001 | System internal error.                                                  |
 
 **Example**
 
@@ -296,7 +295,7 @@ For details about the following error codes, see [Ads Service Framework Error Co
 | ID| Error Message                                                                            |
 |----------|--------------------------------------------------------------------------------------|
 | 401      | Invalid input parameter. Possible causes: Mandatory parameters are left unspecified. |
-| 21800001 | operation javascriptRegister error.                                                  |
+| 21800001 | System internal error.                                                  |
 
 **Example**
 

@@ -39,7 +39,7 @@ createMediaKeySystem(name: string): MediaKeySystem
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -85,7 +85,7 @@ isMediaKeySystemSupported(name: string): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -133,7 +133,7 @@ isMediaKeySystemSupported(name: string, mimeType: string): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -182,7 +182,7 @@ isMediaKeySystemSupported(name: string, mimeType: string, level: ContentProtecti
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -229,7 +229,7 @@ getMediaKeySystemUuid(name: string): string;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |

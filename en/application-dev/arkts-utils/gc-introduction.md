@@ -4,7 +4,7 @@
 <!--Owner: @dwhuawei-->
 <!--Designer: @yingguofeng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 Garbage Collection (GC) is a process that identifies and reclaims memory no longer in use by a program. It aims to free up unused memory space. Modern programming languages implement two primary types of GC algorithms: reference counting and tracing GC.
 
@@ -68,7 +68,7 @@ This approach is highly efficient as it does not move objects. However, since th
 ![image](./figures/mark-copy.png)
 
 During the traversal of the object graph, reachable objects are copied to a new memory space. After the traversal is complete, the old memory space is reclaimed. 
-This approach eliminates memory fragmentation and completes the GC process in a single traversal, making it efficient. However, it requires reserving half of the memory space to ensure all live objects can be copied, resulting in lower space utilization.
+This approach eliminates memory fragmentation and completes the GC process in a single traversal, making it efficient. However, it requires reserving half of the memory space to ensure all reachable objects can be copied, resulting in low space utilization.
 
 **Mark-Compact Collection**
 
@@ -308,7 +308,7 @@ Note: The shared heap is designed for objects shared across threads to improve e
 
 In performance-sensitive scenarios, the GC trigger threshold of the thread is temporarily adjusted to the maximum heap size (448 MB for the main thread by default), minimizing GC-triggered frame drops. (Smart GC does not take effect for the Worker thread and TaskPool thread.) However, if a performance-sensitive scenario persists too long and object allocation reaches the maximum heap size, GC is triggered, potentially resulting in longer GC times due to accumulated objects.
 
-**Performance-Sensitive Scenarios**
+**Performance-sensitive Scenarios**
 
 - Application cold start
 - Application scrolling

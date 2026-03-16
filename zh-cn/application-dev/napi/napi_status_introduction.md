@@ -441,7 +441,7 @@
 | napi_acquire_threadsafe_function | 指示线程安全函数可以开始使用。 | napi_generic_failure | threadsafe_function正在关闭/已关闭 | 请勿在napi_release_threadsafe_function关闭了func后再调用本接口 |
 | napi_release_threadsafe_function | 指示线程安全函数将停止使用。 | napi_invalid_arg | 入参func为nullptr | 确保入参正确 |
 | napi_release_threadsafe_function | 指示线程安全函数将停止使用。 | napi_generic_failure | threadsafe_function正在关闭/已关闭 | 请勿在napi_release_threadsafe_function关闭了func后再调用本接口 |
-| napi_release_threadsafe_function | 指示线程安全函数将停止使用。 | napi_generic_failure | 调用本接口时，占用threadsafe_function的线程数是0 | release次数需要与initial_thread_count和aquire匹配 |
+| napi_release_threadsafe_function | 指示线程安全函数将停止使用。 | napi_generic_failure | 调用本接口时，占用threadsafe_function的线程数是0 | release次数需要与initial_thread_count和acquire匹配 |
 | napi_release_threadsafe_function | 指示线程安全函数将停止使用。 | napi_generic_failure | uv_async_send失败 | NA |
 | napi_release_threadsafe_function | 指示线程安全函数将停止使用。 | napi_generic_failure | 入参env已销毁 | 确保入参正确 |
 | napi_ref_threadsafe_function | 指示在主线程上运行的事件循环在线程安全函数被销毁之前不应退出。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
@@ -652,11 +652,11 @@
 | napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
 | napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例。 | napi_object_expected | 入参js_object不是SendableObject类型 | 确保入参正确 |
 | napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常 | 根据异常信息（hilog/crash栈）处理异常 |
-| napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行（若异步则需线程安全）。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
-| napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行（若异步则需线程安全）。 | napi_invalid_arg | 入参js_object为nullptr | 确保入参正确 |
-| napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行（若异步则需线程安全）。 | napi_invalid_arg | 入参native_object为nullptr | 确保入参正确 |
-| napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行（若异步则需线程安全）。 | napi_object_expected | 入参js_object不是ArkTS Object类型 | 确保入参正确 |
-| napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行（若异步则需线程安全）。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常 | 根据异常信息（hilog/crash栈）处理异常 |
+| napi_wrap_enhance | 在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_wrap_enhance | 在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。 | napi_invalid_arg | 入参js_object为nullptr | 确保入参正确 |
+| napi_wrap_enhance | 在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。 | napi_invalid_arg | 入参native_object为nullptr | 确保入参正确 |
+| napi_wrap_enhance | 在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。 | napi_object_expected | 入参js_object不是ArkTS Object类型 | 确保入参正确 |
+| napi_wrap_enhance | 在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常 | 根据异常信息（hilog/crash栈）处理异常 |
 | napi_create_ark_context | 创建一个新的运行时上下文环境。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
 | napi_create_ark_context | 创建一个新的运行时上下文环境。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常 | 根据异常信息（hilog/crash栈）处理异常 |
 | napi_switch_ark_context | 切换到指定的运行时上下文环境。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |

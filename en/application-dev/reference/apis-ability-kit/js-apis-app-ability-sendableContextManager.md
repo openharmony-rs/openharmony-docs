@@ -550,7 +550,7 @@ workerPort.onmessage = (e: MessageEvents) => {
   let object: SendableObject = e.data;
   let sendableContext: sendableContextManager.SendableContext = object.sendableContext;
   if (object.contextName == 'EntryAbilityContext') {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'convert to uiability context.');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'convert to UIAbility context.');
     try {
       let context: common.UIAbilityContext = sendableContextManager.convertToUIAbilityContext(sendableContext);
       // Obtain the sandbox path after obtaining the Context object.
@@ -592,7 +592,7 @@ Enables the cross-thread data transfer feature of [EventHub](./js-apis-inner-app
 
 **Example**
 
-Enable the cross-thread data transfer feature of [EventHub](./js-apis-inner-application-eventHub.md) in a [Context](./js-apis-inner-application-context.md) object in the main thread, convert the Context object to a [SenableContext](js-apis-inner-application-sendableContext.md) object, and send the SendableContext object to the [Worker](../apis-arkts/js-apis-worker.md) thread.
+Enable the cross-thread data transfer feature of [EventHub](./js-apis-inner-application-eventHub.md) in a [Context](./js-apis-inner-application-context.md) object on the main thread, convert the **Context** object to a [SendableContext](js-apis-inner-application-sendableContext.md) object, and send the **SendableContext** object to the [Worker](../apis-arkts/js-apis-worker.md) thread.
 
 ```ts
 import { common, sendableContextManager } from '@kit.AbilityKit';
@@ -649,7 +649,7 @@ struct Index {
 }
 ```
 
-After receiving the [SendableContext](js-apis-inner-application-sendableContext.md) object in the [Worker](../apis-arkts/js-apis-worker.md) thread, convert it to a [Context](./js-apis-inner-application-context.md) object. Then, enable the cross-thread data transfer feature of [EventHub](./js-apis-inner-application-eventHub.md) in the Context object in the Worker thread, and send a message back to the main thread using this feature.
+After receiving the [SendableContext](js-apis-inner-application-sendableContext.md) object on the [Worker](../apis-arkts/js-apis-worker.md) thread, convert it to a [Context](./js-apis-inner-application-context.md) object. Then, enable the cross-thread data transfer feature of [EventHub](./js-apis-inner-application-eventHub.md) in the Context object on the Worker thread, and send a message back to the main thread using this feature.
 
 ```ts
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';

@@ -1152,7 +1152,7 @@ let appActions: Record<string, cloudData.ClearAction> = {
   'test_bundleName2': cloudData.ClearAction.CLEAR_CLOUD_DATA_AND_INFO,
   'test_bundleName3': cloudData.ClearAction.CLEAR_CLOUD_NONE,
 };
-let config: Record<stringm, cloudData.ClearConfig> = {
+let config: Record<string, cloudData.ClearConfig> = {
   'test_bundleName': {
     dbInfo: {
       'test_storeName': {

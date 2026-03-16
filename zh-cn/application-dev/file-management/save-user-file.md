@@ -11,6 +11,7 @@
 **权限说明**
 
 - 通过Picker获取的URI默认只具备**临时读写权限**，临时授权在应用退出后台自动失效。
+- 如果设置[autoCreateEmptyFile参数为false](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)，获取的URI除了具备**临时读写权限**外，还具备**临时创建和删除权限**。
 - 获取持久化权限需要通过[FilePicker设置永久授权](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)方式获取。
 - 使用Picker对音频、图片、视频、文档类文件的保存操作**无需申请权限**。
 
@@ -46,7 +47,9 @@
    //指定保存的文件或者目录的URI（可选）。
    documentSaveOptions.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
    // 保存文件类型['后缀类型描述|后缀类型'],选择所有文件：'所有文件(*.*)|.*'（可选） ，如果选择项存在多个后缀（最多限制100个过滤后缀），默认选择第一个。如果不传该参数，默认无过滤后缀。
-   documentSaveOptions.fileSuffixChoices = ['文档|.txt', '.pdf']; 
+   documentSaveOptions.fileSuffixChoices = ['文档|.txt', '.pdf'];
+   // 保存文件时，由应用决定是否预置空文件。默认为true，Picker会预置空文件并且返回文件的URI数组。false不预置空文件，只会返回文件的URI数组。
+   documentSaveOptions.autoCreateEmptyFile = false; 
    ```
 
 3. 创建[文件选择器DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#constructor12)实例。调用[save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口拉起FilePicker界面进行文件保存。
@@ -66,10 +69,10 @@
    });
    ```
 
-
    > **注意**：
    >
    > 1. URI存储建议：
+   > 	- Picker会默认[预置空文件](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[基础文件API](../reference/apis-core-file-kit/js-apis-file-fs.md)进行文件读写操作。
    > 	- 避免在Picker回调中直接操作URI。
    > 	- 建议使用全局变量保存URI以供后续使用。
    >
@@ -80,11 +83,11 @@
 
    ```ts
    if (uris.length > 0) {
-   	let uri: string = uris[0];
-   	//这里需要注意接口权限参数是fs.OpenMode.READ_WRITE。
-   	let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
-   	console.info('file fd: ' + file.fd);
-    }
+      let uri: string = uris[0];
+      // 这里需要注意接口权限参数是fs.OpenMode.READ_WRITE。
+      let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+      console.info('file fd: ' + file.fd);
+   }
    ```
 
 5. 通过（fd）使用[基础文件API的fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
@@ -111,7 +114,7 @@
    ```ts
    const audioSaveOptions = new picker.AudioSaveOptions();
    // 保存文件名（可选） 
-   audioSaveOptions.newFileNames = ['AudioViewPicker01.mp3']; 
+   audioSaveOptions.newFileNames = ['AudioViewPicker01.mp3'];
    ```
 
 3. 创建[音频选择器AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)实例。调用[save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save-5)接口拉起FilePicker界面进行文件保存。
@@ -131,10 +134,10 @@
    });
    ```
 
-
    > **注意**：
    >
    > 1. URI存储建议：
+   > 	- Picker会默认[预置空文件](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[基础文件API](../reference/apis-core-file-kit/js-apis-file-fs.md)进行文件读写操作。
    > 	- 避免在Picker回调中直接操作URI。
    > 	- 建议使用全局变量保存URI以供后续使用。
    >
@@ -146,7 +149,7 @@
    ```ts
    if (uris.length > 0) {
       let uri: string = uris[0];
-      //这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
+      // 这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
       let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
       console.info('file fd: ' + file.fd);
    }
@@ -187,7 +190,7 @@
    ```ts
    const documentSaveOptions = new picker.DocumentSaveOptions();
    // 配置保存的模式为DOWNLOAD，若配置了DOWNLOAD模式，此时配置的其他documentSaveOptions参数将不会生效。
-   documentSaveOptions.pickerMode = picker.DocumentPickerMode.DOWNLOAD; 
+   documentSaveOptions.pickerMode = picker.DocumentPickerMode.DOWNLOAD;
    ```
 
 3. 保存到下载目录。

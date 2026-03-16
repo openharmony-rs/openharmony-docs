@@ -1,5 +1,12 @@
 # Intelligent Voice Error Codes
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @y00416036-->
+<!--Designer: @jinjunwen-->
+<!--Tester: @gx1016-->
+<!--Adviser: @fang-jinxu-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -34,7 +41,7 @@ Invalid parameter.
 
 This error code is reported if a certain parameter passed in the API is invalid.
 
-**Possible Cause**
+**Possible Causes**
 
 The parameter is invalid. For example, the parameter value is not within the range supported.
 
@@ -52,7 +59,7 @@ Init failed.
 
 This error code is reported if an error occurs while the enrollment engine is initialized.
 
-**Possible Cause**
+**Possible Causes**
 
 1. Repeated initialization.
 2. Lack of resources for initialization of the enrollment engine.

@@ -15,7 +15,7 @@ JSVM-API provides APIs for basic JavaScript (JS) object operations, including cr
 You may need to define and operate objects when using JSVM-API in development. For example, define an API with an object as an input parameter, perform operations on the object, and have a result object returned. In this process, you need to ensure that the API definition is clear and compatible with the properties and methods of the object.
 
 - API: defines the interaction protocol between components. An API includes input parameters, output result, and possible error handling. By calling APIs, components can interact and exchange data with each other without knowing the internal implementation details.
-- Object: a composite data type that allows values of different types to be stored as an independent entity in JS. An object is a collection of properties and methods. A property is a value associated with an object, and a method is an operation that the object can perform.
+- Object: a composite data type that allows values of different types in an independent entity in JS. An object is a collection of properties and methods. A property is a value associated with an object, and a method is an operation that the object can perform.
 
 ## Available APIs
 
@@ -498,7 +498,9 @@ JSVM CheckObjectTypeTag:1
 ### OH_JSVM_CreateExternal
 
 Call **OH_JSVM_CreateExternal** to create a JS object that wraps an external pointer.
-**NOTE**<br>When a JS object is garbage-collected, the content pointed to by the wrapped external pointer is not directly managed by GC. Only the function corresponding to the third input parameter (if it is not nullptr) is called.
+> **NOTE**
+>
+> When a JS object is garbage-collected, the content pointed to by the wrapped external pointer is not directly managed by GC. Only the function corresponding to the third input parameter (if it is not nullptr) is called.
 
 CPP code:
 

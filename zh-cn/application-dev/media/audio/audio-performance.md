@@ -39,7 +39,7 @@
 
 音频工作组的目标是：​​更低的音频延迟​​；避免音频断断续续​​；降低音频失真​​；更流畅、更可靠的音频播放体验。
 
-在开发播放音频类应用时，开发者需要先创建音频工作组，再将工作组运行信息的周期性告知系统。当运行结束后，需要及时清理音频工作组。更多具体的音频工作组的使用和示例，可以参考：[音频工作组使用说明](audio-workgroup.md)​。
+在开发播放音频类应用时，开发者需要先创建音频工作组，再将工作组运行信息的周期性告知系统。当运行结束后，需要及时清理音频工作组。更多具体的音频工作组的使用和示例，可以参考：[音频工作组管理](audio-workgroup.md)​。
 
 ### 音频时间戳与音画同步
 
@@ -61,7 +61,7 @@
 
 DevEco Profiler是一个帮助开发者更高效地进行性能问题的分析的场景化调优工具，集成在DevEco Studio中，可以在应用开发过程中直接使用。
 
-工具的具体使用方式可参考指南：[DevEco Profiler性能调优概述](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-description)。
+工具的具体使用方式可参考指南：[性能调优工具简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-description)。
 
 DevEco Profiler主要用于对应用内运行流程进行分析和调优，指南中有详细的分析步骤说明，此文不再赘述。
 
@@ -69,7 +69,7 @@ DevEco Profiler主要用于对应用内运行流程进行分析和调优，指�
 
 HiSmartPerf工具是一个独立的性能调优工具，用于采集测试时间段内系统、CPU和GPU的性能数据。通过可视化界面进行直观的呈现，便于开发者分析所开发应用运行时的性能表现和原因，以此为基础进行深入的性能优化，以使应用运行更加流畅。
 
-HiSmartPerf工具完整的介绍可参考指南：[HiSmartPerf工具使用指南](https://developer.huawei.com/consumer/cn/doc/AppGallery-connect-Guides/smartperf-tool-0000001873208929)。
+HiSmartPerf工具完整的介绍可参考指南：[HiSmartPerf](https://developer.huawei.com/consumer/cn/doc/AppGallery-connect-Guides/smartperf-tool-0000001873208929)。
 
 在此，提供使用HiSmartPerf分析音频播放场景的案例。
 

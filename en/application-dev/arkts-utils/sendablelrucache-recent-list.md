@@ -16,64 +16,66 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
 1. Create a SendableLruCache instance and set its maximum capacity based on service requirements.<br>
    In this example, the maximum capacity of the SendableLruCache instance is set to 4, the Sendable class is used for management, and the Sendable class instance is exported.
 
-   ```ts
+   <!-- @[define_SendableClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/utils/LruCache.ets) -->     
+   
+   ``` TypeScript
    // LruCache.ets
-
    import { ArkTSUtils } from '@kit.ArkTS';
-
+   
    // Use the 'use shared' marker to mark a module shareable.
-   "use shared"
-
+   'use shared'
+   
    // The SendableClass instance can be shared across different threads.
    @Sendable
    class SendableClass {
      // Lock the SendableLruCache instances to prevent data inconsistency caused by concurrent operations from multiple threads.
-     lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
-     books_: ArkTSUtils.SendableLruCache<string, string> = new ArkTSUtils.SendableLruCache<string, string>(4);
-
+     private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+     private books_: ArkTSUtils.SendableLruCache<string, string> = new ArkTSUtils.SendableLruCache<string, string>(4);
+   
      constructor() {
-       this.books_.put("fourth", "Book4");
-       this.books_.put("third", "Book3");
-       this.books_.put("second", "Book2");
-       this.books_.put("first", "Book1");
+       this.books_.put('fourth', 'Book4');
+       this.books_.put('third', 'Book3');
+       this.books_.put('second', 'Book2');
+       this.books_.put('first', 'Book1');
      }
-
+   
      // Wrap the put, get, and keys methods and perform the lock operation.
      public async put(key: string, value: string) {
        await this.lock_.lockAsync(() => {
          this.books_.put(key, value);
        })
      }
-
+   
      public async get(key: string): Promise<string | undefined> {
        return this.lock_.lockAsync(() => {
          return this.books_.get(key);
        });
      }
-
+   
      public async keys(): Promise<string[]> {
        return this.lock_.lockAsync(() => {
          return this.books_.keys();
        });
      }
    }
-
+   
    export let lruCache = new SendableClass();
    ```
 
 2. In the same directory as the **Index.ets** page, create four book pages. Each page shows its own book information. Register the path of each page in the **main_pages.json** file under **src/main/resources/base/profile/**.
 
-   ```ts
+   <!-- @[define_book1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book1.ets) -->     
+   
+   ``` TypeScript
    // Book1.ets
-
    @Entry
    @Component
    struct Index1 {
      @State message: string = 'Hello World!';
-
+   
      build() {
        RelativeContainer() {
-         Text("Content of book 1")
+         Text('Content of book 1')
            .id('first book')
            .fontSize(20)
            .padding(10)
@@ -86,9 +88,9 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
            .fontSize(20)
            .padding(10)
            .fontWeight(FontWeight.Bold)
-           .position({ x: "50%" })
+           .position({ x: '50%' })
            .onClick(() => {
-             this.getUIContext().getRouter().pushUrl({ url: 'pages/Index' });
+             this.getUIContext().getRouter().pushUrl({ url: 'pages/GetRecentList' });
            })
        }
        .height('100%')
@@ -96,17 +98,19 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
      }
    }
    ```
-   ```ts
-   // Book2.ets
 
+   <!-- @[define_book2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book2.ets) -->   
+   
+   ``` TypeScript
+   // Book2.ets
    @Entry
    @Component
    struct Index2 {
      @State message: string = 'Hello World!';
-
+   
      build() {
        RelativeContainer() {
-         Text("Content of book 2")
+         Text('Content of book 2')
            .id('second book')
            .fontSize(20)
            .padding(10)
@@ -119,9 +123,9 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
            .fontSize(20)
            .padding(10)
            .fontWeight(FontWeight.Bold)
-           .position({ x: "50%" })
+           .position({ x: '50%' })
            .onClick(() => {
-             this.getUIContext().getRouter().pushUrl({ url: 'pages/Index' });
+             this.getUIContext().getRouter().pushUrl({ url: 'pages/GetRecentList' });
            })
        }
        .height('100%')
@@ -129,17 +133,19 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
      }
    }
    ```
-   ```ts
-   // Book3.ets
 
+   <!-- @[define_book3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book3.ets) -->  
+   
+   ``` TypeScript
+   // Book3.ets
    @Entry
    @Component
    struct Index3 {
      @State message: string = 'Hello World!';
-
+   
      build() {
        RelativeContainer() {
-         Text("Content of book 3")
+         Text('Content of book 3')
            .id('third book')
            .fontSize(20)
            .padding(10)
@@ -152,9 +158,9 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
            .fontSize(20)
            .padding(10)
            .fontWeight(FontWeight.Bold)
-           .position({ x: "50%" })
+           .position({ x: '50%' })
            .onClick(() => {
-             this.getUIContext().getRouter().pushUrl({ url: 'pages/Index' });
+             this.getUIContext().getRouter().pushUrl({ url: 'pages/GetRecentList' });
            })
        }
        .height('100%')
@@ -162,17 +168,19 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
      }
    }
    ```
-   ```ts
-   // Book4.ets
 
+   <!-- @[define_book4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book4.ets) -->   
+   
+   ``` TypeScript
+   // Book4.ets
    @Entry
    @Component
    struct Index4 {
      @State message: string = 'Hello World!';
-
+   
      build() {
        RelativeContainer() {
-         Text("Content of book 4")
+         Text('Content of book 4')
            .id('fourth book')
            .fontSize(20)
            .padding(10)
@@ -185,9 +193,9 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
            .fontSize(20)
            .padding(10)
            .fontWeight(FontWeight.Bold)
-           .position({ x: "50%" })
+           .position({ x: '50%' })
            .onClick(() => {
-             this.getUIContext().getRouter().pushUrl({ url: 'pages/Index' });
+             this.getUIContext().getRouter().pushUrl({ url: 'pages/GetRecentList' });
            })
        }
        .height('100%')
@@ -195,7 +203,8 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
      }
    }
    ```
-   ```json
+   
+   ``` json
    // main_pages.json
 
    {
@@ -211,29 +220,31 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
 
 3. Each time a user accesses the bookshelf page, the application displays the list of recently accessed books.
 
-   ```ts
-   // Index.ets
-
+   <!-- @[get_recentList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/GetRecentList.ets) -->     
+   
+   ``` TypeScript
+   // GetRecentList.ets
    import { taskpool } from '@kit.ArkTS';
-   import { lruCache } from './LruCache'
-
+   import { lruCache } from '../utils/LruCache'
+   // ...
+   
    @Concurrent
    async function updateBooks(key: string, value: string) {
      // Update the latest access list in the child thread.
      await lruCache.put(key, value);
    }
-
+   
    @Entry
    @Component
-   struct Index {
+   struct GetRecentList {
      @State message: string = 'Bookshelf'
      @State books: string[] = [];
-
+   
      async aboutToAppear () {
        // The application automatically obtains the list of recently accessed books.
        this.books = await lruCache.keys();
      }
-
+   
      build() {
        Column({ space: 1 }) {
          Text(this.message)
@@ -288,9 +299,11 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
              taskpool.execute(updateBooks, this.books[0], value);
              this.getUIContext().getRouter().pushUrl({ url: 'pages/' + value });
            })
+         // ...
        }
        .height('100%')
        .width('100%')
      }
    }
    ```
+   

@@ -36,36 +36,38 @@
 
 - 异步方法示例：
 
-  ```ts
+  <!-- @[rsa_pkcs1_encrypt_decrypt_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_pkcs1/RSAPKCS1Async.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
-  // 加密消息。
+  
+  // 加密消息
   async function encryptMessagePromise(publicKey: cryptoFramework.PubKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('RSA1024|PKCS1');
     await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, publicKey, null);
     let encryptData = await cipher.doFinal(plainText);
     return encryptData;
   }
-
-  // 解密消息。
+  
+  // 解密消息
   async function decryptMessagePromise(privateKey: cryptoFramework.PriKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('RSA1024|PKCS1');
     await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, privateKey, null);
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
-
-  // 生成RSA密钥对。
+  
+  // 生成RSA密钥对
   async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
     let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
     let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
     let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
     let keyPair = await rsaGenerator.convertKey(pubKeyBlob, priKeyBlob);
-    console.info('convertKey success');
+    console.info('convertKey result: success.');
     return keyPair;
   }
-
+  
   async function main() {
     let pkData =
       new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
@@ -106,53 +108,56 @@
     let pubKey = keyPair.pubKey;
     let priKey = keyPair.priKey;
     let message = 'This is a test';
-    // 把字符串按utf-8解码为Uint8Array。
+    // 把字符串按utf-8解码为Uint8Array
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
     let encryptText = await encryptMessagePromise(pubKey, plainText);
     let decryptText = await decryptMessagePromise(priKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
-      // 把Uint8Array按utf-8编码为字符串。
+      console.info('decrypt ok.');
+      // 把Uint8Array按utf-8编码为字符串
       let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
       console.info('decrypted result string:' + messageDecrypted);
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
   ```
 
+
 - 同步方法示例：
 
-  ```ts
+  <!-- @[rsa_pkcs1_encrypt_decrypt_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_pkcs1/RSAPKCS1Sync.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
-  // 加密消息。
+  
+  // 加密消息
   function encryptMessage(publicKey: cryptoFramework.PubKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('RSA1024|PKCS1');
     cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, publicKey, null);
     let encryptData = cipher.doFinalSync(plainText);
     return encryptData;
   }
-
-  // 解密消息。
+  
+  // 解密消息
   function decryptMessage(privateKey: cryptoFramework.PriKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('RSA1024|PKCS1');
     decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, privateKey, null);
     let decryptData = decoder.doFinalSync(cipherText);
     return decryptData;
   }
-
-  // 生成RSA密钥对。
+  
+  // 生成RSA密钥对
   function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
     let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
     let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
     let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
     let keyPair = rsaGenerator.convertKeySync(pubKeyBlob, priKeyBlob);
-    console.info('convertKeySync success');
+    console.info('convertKeySync result: success.');
     return keyPair;
   }
-
+  
   function main() {
     let pkData =
       new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
@@ -193,17 +198,17 @@
     let pubKey = keyPair.pubKey;
     let priKey = keyPair.priKey;
     let message = 'This is a test';
-    // 把字符串按utf-8解码为Uint8Array。
+    // 把字符串按utf-8解码为Uint8Array
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
     let encryptText = encryptMessage(pubKey, plainText);
     let decryptText = decryptMessage(priKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
-      // 把Uint8Array按utf-8编码为字符串。
+      console.info('decrypt ok.');
+      // 把Uint8Array按utf-8编码为字符串
       let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
       console.info('decrypted result string:' + messageDecrypted);
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
   ```

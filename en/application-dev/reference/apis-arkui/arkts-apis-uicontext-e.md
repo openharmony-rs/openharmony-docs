@@ -109,3 +109,18 @@ Enumerates resolution strategies for **UIContext** objects.
 | UNIQUE | 3 | Obtain the UIContext of the unique UI instance (when only one UI instance exists).|
 | LAST_FOREGROUND | 4| Obtain the UIContext of the instance that most recently switched to the foreground.|
 | UNDEFINED | 5 | Obtain a UIContext with an ambiguous calling scope.|
+
+## CustomKeyboardContinueFeature<sup>23+</sup>
+
+Sets whether the input context persists when switching custom keyboards.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model constraint**: This API can be used only in the stage model.
+
+| Name  | Value  | Description      |
+| ------ | ---- | ---------- |
+| ENABLED | 0 | The input context persists.|
+| DISABLED | 1 | The input context does not persist.|

@@ -47,6 +47,10 @@ Http_Headers *OH_Http_CreateHeaders(void)
 
 创建HTTP请求或者响应的头。
 
+> **说明：**
+>
+> 建议在本次HTTP请求结束后，及时调用[OH_Http_DestroyHeaders](#oh_http_destroyheaders)销毁HTTP请求或者响应的头，执行资源清理等操作。
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 20
@@ -220,6 +224,10 @@ int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_
 
 发起HTTP请求。
 
+> **说明：**
+>
+> 建议在本次HTTP请求收到响应并处理完毕后，及时调用[OH_Http_Destroy](#oh_http_destroy)中断HTTP请求。
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **需要权限：** ohos.permission.INTERNET
@@ -249,7 +257,7 @@ void OH_Http_Destroy(struct Http_Request **request)
 
 **描述**
 
-销毁HTTP请求。
+中断HTTP请求。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -260,6 +268,6 @@ void OH_Http_Destroy(struct Http_Request **request)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [struct Http_Request](capi-netstack-http-request.md) **request | 要销毁的请求，指向Http_Request的指针，参考[Http_Request](capi-netstack-http-request.md)。 |
+| [struct Http_Request](capi-netstack-http-request.md) **request | 要中断的请求，指向Http_Request的指针，参考[Http_Request](capi-netstack-http-request.md)。 |
 
 

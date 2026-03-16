@@ -16,7 +16,7 @@ LauncherAbilityInfo信息，通过接口[innerBundleManager.getLauncherAbilityIn
 >
 > 本模块为系统接口。
 
-## LauncherAbilityInfo<sup>(deprecated)<sup>
+## LauncherAbilityInfo<sup>(deprecated)</sup>
 
 > **说明：**
 >

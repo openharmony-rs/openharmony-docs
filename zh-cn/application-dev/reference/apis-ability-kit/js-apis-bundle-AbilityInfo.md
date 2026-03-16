@@ -14,7 +14,7 @@ Ability信息，未做特殊说明的属性，均通过[bundle.getAbilityInfo](j
 >
 > 从API version 9开始，该模块不再维护，建议使用[bundleManager-AbilityInfo](js-apis-bundleManager-abilityInfo.md)替代。
 
-## AbilityInfo<sup>(deprecated)<sup>
+## AbilityInfo<sup>(deprecated)</sup>
 
 > **说明：**
 >

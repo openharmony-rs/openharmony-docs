@@ -127,7 +127,7 @@ In the stage model, when the main window of an application moves from the foregr
 
   - For applications that do not support running on 2-in-1 devices, or that can run on both phones and 2-in-1 devices, moving a window from the foreground to the background will trigger the UIAbility to transition to the background.
 
-  - For applications that do not support running on phones but do support running on  2-in-1 devices, moving a window from the foreground to the background will not trigger the UIAbility to transition to the background.
+  - For applications that do not support running on phones but do support running on 2-in-1 devices, moving a window from the foreground to the background will not trigger the UIAbility to transition to the background.
 
 - **On 2-in-1 devices**:
 

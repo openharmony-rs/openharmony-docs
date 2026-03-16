@@ -11,7 +11,7 @@
 
 不同折叠设备在不同折叠状态下支持的摄像头数量不同。
 
-例如，折叠设备A拥有三颗摄像头：B（后置）、C（前置）、D（前置）。在展开状态下，通过[CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)接口可获取到B（后置）和C（前置）两颗摄像头，而在折叠状态下，仅可获取到D（前置）摄像头。因此，在使用后置摄像头或需要切换摄像头的场景下，需先判断是否存在后置摄像头。
+例如，折叠设备拥有三颗摄像头：后置摄像头A、前置摄像头B和前置摄像头C。在展开状态下，通过[CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)接口可获取到后置摄像头A和前置摄像头B；在折叠状态下，可获取到后置摄像头A和前置摄像头C。不同的折叠状态获取到的镜头不同，因此，在折叠状态变化时，需要重新获取镜头信息。
 
 详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
@@ -138,7 +138,7 @@ function hasCameraAt(cameraManager: camera.CameraManager, cameraPosition: camera
 }
 ```
 ## 摄像头切换逻辑
-在监听到折叠状态发生变化时通过设置被@StorageLink修饰的foldStatus变量改变，触发reloadXComponent方法重新加载XComponent组件，从而实现相机的切换逻辑。
+在监听到折叠状态发生变化时通过设置被[@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink)修饰的foldStatus变量改变，触发reloadXComponent方法重新加载XComponent组件，从而实现相机的切换逻辑。
 ## 完整示例
 ```ts
 import { camera } from '@kit.CameraKit';

@@ -29,7 +29,7 @@ insertProxyRule(proxyRule: string, schemeFilter?: ProxySchemeFilter): void
 | 参数名          | 类型     |  必填  | 说明           |
 | ---------------| ------- | ---- | ------------- |
 | proxyRule      | string  | 是   | URL要使用的代理。 |
-| schemeFilter   | [ProxySchemeFilter](./arkts-apis-webview-e.md#proxyschemefilter15)  | 否   | 与schemeFilter匹配的URL会使用代理。<br>默认值：MATCH_ALL_SCHEMES。 |
+| schemeFilter   | [ProxySchemeFilter](./arkts-apis-webview-e.md#proxyschemefilter15)  | 否   | 与schemeFilter匹配的URL会使用代理。<br>默认值：MATCH_ALL_SCHEMES。<br>传入undefined或null会抛出异常错误码401。 |
 
 **错误码：**
 
@@ -55,7 +55,7 @@ insertDirectRule(schemeFilter?: ProxySchemeFilter): void
 
 | 参数名          | 类型     |  必填  | 说明           |
 | ---------------| ------- | ---- | ------------- |
-| schemeFilter   | [ProxySchemeFilter](./arkts-apis-webview-e.md#proxyschemefilter15)  | 否   | 与schemeFilter匹配的URL会直接与服务器相连。<br>默认值：MATCH_ALL_SCHEMES |
+| schemeFilter   | [ProxySchemeFilter](./arkts-apis-webview-e.md#proxyschemefilter15)  | 否   | 与schemeFilter匹配的URL会直接与服务器相连。<br>默认值：MATCH_ALL_SCHEMES。 <br>传入undefined或null会抛出异常错误码401。|
 
 **错误码：**
 

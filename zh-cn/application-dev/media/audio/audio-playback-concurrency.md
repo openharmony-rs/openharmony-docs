@@ -92,7 +92,7 @@
 
 设置焦点模式的方法：
 
-- 若[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，则可以通过修改AVPlayer的[audioInterruptMode](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md)属性进行设置。
+- 若[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，则可以通过修改AVPlayer的[audioInterruptMode](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)属性进行设置。
 
 - 若[使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)，则可以调用[OH_AVPlayer_SetAudioInterruptMode](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiointerruptmode)函数进行设置。
 
@@ -174,7 +174,7 @@ import { audio } from '@kit.AudioKit';  // 导入audio模块。
 import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
 
 let isPlay: boolean; // 是否正在播放，实际开发中，对应与音频播放状态相关的模块。
-let isDucked: boolean; //是否降低音量，实际开发中，对应与音频音量相关的模块。
+let isDucked: boolean; // 是否降低音量，实际开发中，对应与音频音量相关的模块。
 let started: boolean; // 标识符，记录“开始播放（start）”操作是否成功。
 
 async function onAudioInterrupt(): Promise<void> {
@@ -347,6 +347,7 @@ async function onAudioInterrupt(): Promise<void> {
 **从API version 20开始支持该功能。**
 
 在保持现有特性的基础上，应用可通过AudioSession申请焦点，提升多音频流播放的连续性。
+
 典型使用场景如下：
 
 - 在多个小视频滑动播放时，多个音频流频繁申请和释放焦点可能导致漏音。使用AudioSession申请一次焦点，可以避免中间多个音频流播放时频繁申请和释放焦点，从而防止漏音。

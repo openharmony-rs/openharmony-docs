@@ -328,8 +328,7 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 **示例：**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
-import { common2D } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -342,7 +341,7 @@ struct BezierWarpExample {
 
   build() {
     Column() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
         .foregroundFilter(uiEffect.createFilter().bezierWarp(this.valueBezier))
     }
   }
@@ -661,44 +660,6 @@ struct MaskDispersion {
 }
 ```
 
-### hdrBrightnessRatio<sup>20+</sup>
-hdrBrightnessRatio(ratio: number): Filter
-
-为组件内容添加HDR（高动态范围成像）提亮效果。不建议嵌套使用，强行嵌套使用可能造成过曝现象。
-
-提亮效果需要开启HDR渲染管线才能生效，某些场景下即使尝试触发HDR渲染管线也无法开启HDR，例如：设备硬件规格不支持HDR。
-
-设备当前支持最大提亮倍数为设备当前的最大亮度除以设备SDR参考白亮度得到的值。
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-| 参数名         | 类型                  | 必填 | 说明                       |
-| ------------- | --------------------- | ---- | ------------------------- |
-| ratio  | number         | 是   | 提亮倍数，取值范围为[1.0, 设备当前支持最大提亮倍数]。设置小于1.0的值时，按值为1.0处理；当值等于1.0时，不做任何处理；当值大于1.0时，会尝试触发HDR渲染管线，设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理。|
-
-**返回值：**
-
-| 类型              | 说明                               |
-| ----------------- | --------------------------------- |
-| [Filter](#filter) | 返回挂载了HDR提亮效果的Filter。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 202 | Permission verification failed. A non-system application calls a system API. |
-
-**示例：**
-
-```ts
-filter.hdrBrightnessRatio(2.0)
-```
-
 ### maskTransition<sup>20+</sup>
 maskTransition(alphaMask: Mask, factor?: number, inverse?: boolean): Filter
 
@@ -746,10 +707,10 @@ struct Index {
   @State rippleMaskRadius: number = 0.1
   build() {
     Stack() {
-      //转场前页面
+      // 转场前页面
       Image($r("app.media.before")).width("100%").height("100%")
         if (this.enterNewPage){
-          //转场后页面
+          // 转场后页面
           Column().width("100%").height("100%").backgroundImage($r("app.media.after"))
             .backgroundFilter(uiEffect.createFilter()
               .maskTransition(
@@ -1397,7 +1358,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   }
   let mask = uiEffect.Mask.createPixelMapMask(pixelMap, srcRect, dstRect, fillColor);
 }).catch((error: BusinessError)=>{
-  console.error('Failed to create pixelmap. code is ${error.code}, message is ${error.message}');
+  console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
 })
 ```
 
@@ -1436,6 +1397,7 @@ static createPixelMapMask(pixelMap: image.PixelMap): Mask
 ```ts
 import { uiEffect } from '@kit.ArkGraphics2D';
 import { image } from '@kit.ImageKit';
+import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
@@ -1454,7 +1416,7 @@ struct Index {
 
   private getPixelMap(): image.PixelMap | undefined {
     try {
-      let context: Context = getContext(this) as Context;
+      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       // this path should be created in local
       const path: string = context.resourceDir + "/perlin_worley_noise_3d_64.bmp";
       const imageSource: image.ImageSource = image.createImageSource(path);
@@ -1543,7 +1505,7 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 **示例：**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
+import { uiEffect } from '@kit.ArkGraphics2D'
 // values: [[1.0, 0.5], [1.0, 1.0]] => color0: 1.0; color1: 1.0; position0: 0.5; position1: 1.0
 let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[1.0, 0.5], [1.0, 1.0]]);
 @Entry
@@ -1551,7 +1513,7 @@ let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[
 struct RadialGradientMaskExample {
   build() {
     Stack() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
       Column()
         .width('100%')
         .height('100%')
@@ -1604,7 +1566,7 @@ let mask = uiEffect.Mask.createWaveGradientMask({x: 0.5, y: 0.5}, 0.01, 0.5, 0.1
 struct WaveGradientMaskExample {
   build() {
     Stack() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
       Column()
         .width('100%')
         .height('100%')

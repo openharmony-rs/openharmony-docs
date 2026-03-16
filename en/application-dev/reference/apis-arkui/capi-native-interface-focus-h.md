@@ -58,7 +58,7 @@ Enumerates the key event processing priority modes.
 | Value| Description|
 | -- | -- |
 | ARKUI_KEY_PROCESSING_MODE_FOCUS_NAVIGATION = 0 | Key events are used for focus navigation.|
-| ARKUI_KEY_PROCESSING_MODE_FOCUS_ANCESTOR_EVENT | Key events are passed up to ancestor components.|
+| ARKUI_KEY_PROCESSING_MODE_FOCUS_ANCESTOR_EVENT = 1 | Key events are passed up to ancestor components.|
 
 
 ## Function Description

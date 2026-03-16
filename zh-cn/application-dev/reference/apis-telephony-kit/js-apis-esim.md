@@ -45,7 +45,7 @@ isSupported\(slotId: number\): boolean
 
 | 错误码ID              | 错误信息                           |
 | --------------------- | ---------------------------------- |
-| 401 | Invalid parameter value.     |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.   |
 |3120001| Service connection failed. |
 |3120002| System internal error.     |
 
@@ -87,7 +87,7 @@ addProfile\(profile: DownloadableProfile\): Promise\<boolean\>
 | 错误码ID              | 错误信息                           |
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied.           |
-| 401 | Invalid parameter value.     |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.     |
 | 801 | Capability not supported.    |
 |3120001| Service connection failed. |
 |3120002| System internal error.     |

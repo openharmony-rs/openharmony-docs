@@ -50,7 +50,7 @@
 
    在AppScope/[app.json5配置文件](../quick-start/app-configuration-file.md)中把bundleName设定为："com.ohos.passwordbox"，例如：
 
-   ```json
+   ```json5
    "app": {
      "bundleName": "com.ohos.passwordbox",
       // ...
@@ -61,7 +61,7 @@
 
    在entry/src/main/[module.json5配置文件](../quick-start/module-configuration-file.md)中配置AutoFillAbility，例如：
 
-   ```json
+   ```json5
    "extensionAbilities": [
       {
         "name": "AutoFillAbility",
@@ -312,7 +312,7 @@
 
    在AppScope/[app.json5配置文件](../quick-start/app-configuration-file.md)中把bundleName设定为："com.ohos.textautofill"，例如：
 
-   ```json
+   ```json5
    "app": {
      "bundleName": "com.ohos.textautofill",
       // ...
@@ -323,7 +323,7 @@
 
    在entry/src/main/[module.json5配置文件](../quick-start/module-configuration-file.md)中配置AutoFillAbility，例如：
 
-   ```json
+   ```json5
    "extensionAbilities": [
       {
          "name": "AutoFillAbility",

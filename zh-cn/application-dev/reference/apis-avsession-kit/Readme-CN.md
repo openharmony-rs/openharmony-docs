@@ -23,6 +23,17 @@
   - [@ohos.multimedia.avsession (媒体会话管理)(系统接口)](js-apis-avsession-sys.md)
   - application
     - [MediaControlExtensionContext (播控扩展能力上下文)(系统接口)](js-apis-inner-application-MediaControlExtensionContext-sys.md)
+    <!--DelEnd-->
+  - @ohos.multimedia.avMusicTemplate (音频模板)<!--apis-avsession-avmusictemplate-->
+    - [模块描述](arkts-apis-AVMusicTemplate.md)
+    - [Functions](arkts-apis-avsession-AVMusicTemplate-f.md)
+    - [Class (AVMusicTemplate)](arkts-apis-avsession-AVMusicTemplate.md)
+    - [Class (AVMusicTemplateController)](arkts-apis-avsession-AVMusicTemplateController.md)
+    - [Interface (其他)](arkts-apis-avsession-AVMusicTemplate-i.md)
+    - [Enums](arkts-apis-avsession-AVMusicTemplate-e.md)
+    - [Types](arkts-apis-avsession-AVMusicTemplate-t.md)
+  <!--Del-->
+  - [@ohos.multimedia.avMusicTemplate (音频模板)(系统接口)](js-apis-avsession-avMusicTemplate-sys.md)
   <!--DelEnd-->
 - ArkTS组件<!--avsession-comp-->
   - [@ohos.multimedia.avCastPicker (投播组件)](ohos-multimedia-avcastpicker.md)
@@ -34,10 +45,23 @@
     - [native_avmetadata.h](capi-native-avmetadata-h.md)
     - [native_avsession.h](capi-native-avsession-h.md)
     - [native_avsession_errors.h](capi-native-avsession-errors-h.md)
+    - [native_avcastcontroller.h](capi-native-avcastcontroller-h.md)
+    - [native_avplaybackstate.h](capi-native-avplaybackstate-h.md)
+    - [native_avqueueitem.h](capi-native-avqueueitem-h.md)
+    - [native_avsession_base.h](capi-native-avsession-base-h.md)
+    - [native_deviceinfo.h](capi-native-deviceinfo-h.md)
   - 结构体<!--avsession-struct-->
     - [OH_AVMetadataBuilderStruct](capi-ohavsession-oh-avmetadatabuilderstruct.md)
     - [OH_AVMetadataStruct](capi-ohavsession-oh-avmetadatastruct.md)
     - [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md)
     - [OH_AVSession](capi-ohavsession-oh-avsession.md)
+    - [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)
+    - [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)
+    - [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md)
+    - [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md)
+    - [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md)
+    - [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-deviceinfo.md)
+    - [AVSession_DeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md)
 - 错误码<!--avsession-arkts-errcode-->
   - [媒体会话管理错误码](errorcode-avsession.md)
+  - [音频模板错误码](errorcode-avsession-avmusictemplate.md)

@@ -20,7 +20,8 @@
 - 网络消费者：数据网络的使用方。例如应用或系统服务。
 - 网络探测：检测网络有效性，避免将网络从可用网络切换到不可用网络。包括绑定网络探测、DNS探测、HTTP探测及HTTPS探测。
 - 网络优选：处理多网络共存时选择最优网络。在网络状态、网络信息及评分发生变化时被触发。
-- 默认网络：默认路由所在的网络。
+- 默认网络：系统默认使用的网络。由系统决定，与应用是否指定网络无关，通常为WIFI /蜂窝/以太网/蓝牙其中之一。
+- 网络句柄：网络的唯一标识。
 
 ## 场景介绍
 
@@ -80,10 +81,27 @@
      hilog.info(0x0000, 'testTag', 'Network available, NetId is ' + data.netId);
      // ...
    });
-   
+     
    // 订阅事件，如果当前指定网络不可用，通过on_netUnavailable通知用户
    conn.on('netUnavailable', (data: void) => {
      hilog.info(0x0000, 'testTag', 'Network unavailable, data is ' + JSON.stringify(data));
+     // ...
+   });
+   // 订阅网络能力变化事件，如果当前指定网络的能力发生变化，通过on_netCapabilitiesChange通知用户
+   conn.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
+     hilog.info(0x0000, 'testTag', 'Network netCapabilitiesChange, data is ' + JSON.stringify(data));
+     // ...
+   });
+     
+   // 订阅网络连接信息变化事件，如果当前指定网络的连接信息发生变化，通过on_netConnectionPropertiesChange通知用户
+   conn.on('netConnectionPropertiesChange', (data: connection.NetConnectionPropertyInfo) => {
+     hilog.info(0x0000, 'testTag', 'Network netConnectionPropertiesChange, data is ' + JSON.stringify(data));
+     // ...
+   });
+     
+   // 订阅网络丢失事件，如果当前处于连接状态的指定网络断开，通过on_netLost通知用户
+   conn.on('netLost', (data: connection.NetHandle) => {
+     hilog.info(0x0000, 'testTag', 'Network netLost, data is ' + JSON.stringify(data));
      // ...
    });
    ```

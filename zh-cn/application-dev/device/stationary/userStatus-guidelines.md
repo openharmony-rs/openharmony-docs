@@ -8,7 +8,11 @@
 
 UserStatus（用户状态感知）模块提供用户感知能力，可以感知到操作者特定状态，例如：检测用户年龄组。
 
-详细的接口介绍请参考[userStatus接口](../../reference/apis-multimodalawareness-kit/js-apis-awareness-userStatus.md)。
+详细的接口介绍请参考[@ohos.multimodalAwareness.userStatus](../../reference/apis-multimodalawareness-kit/js-apis-awareness-userStatus.md)。
+
+> **说明：**
+> 
+> 本模块首批接口从API version 20开始支持，从API version 24废弃。
 
 ## 感知用户年龄组开发指导
 ### 场景介绍

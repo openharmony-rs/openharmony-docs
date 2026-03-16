@@ -11,7 +11,7 @@
   - 图片解码<!--image-decoding-arts-->
     - [使用ImageSource完成图片解码](image-decoding.md)
     - [使用ImageSource完成多图对象解码](image-picture-decoding.md)
-    - [申请图片解码内存](image-allocator-type.md)
+    - [图片解码内存优化(ArkTS)](image-allocator-type.md)
   - 图片编码<!--image-encoding-arts-->
     - [使用ImagePacker完成图片编码](image-encoding.md)
     - [使用ImagePacker完成多图对象编码](image-picture-encoding.md)
@@ -25,7 +25,7 @@
   - 图片解码<!--image-decoding-c-->
     - [使用Image_NativeModule完成图片解码](image-source-c.md)
     - [使用Image_NativeModule完成多图对象解码](image-source-picture-c.md)
-    - [申请图片解码内存](image-allocator-type-c.md)
+    - [图片解码内存优化(C/C++)](image-allocator-type-c.md)
   - 图片编码<!--image-encoding-c-->
     - [使用Image_NativeModule完成图片编码](image-packer-c.md)
     - [使用Image_NativeModule完成多图对象编码](image-packer-picture-c.md)

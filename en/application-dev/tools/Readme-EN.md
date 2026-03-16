@@ -1,12 +1,12 @@
 # Debugging Tools
 <!--Kit: Common-->
 <!--Subsystem: Common-->
-<!--Owner: @foryourself-->
+<!--Owner: @jinqiuheng-->
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
-- [Command Line Tools](command-line-tools-overview.md)
+- [About This Kit](command-line-tools-overview.md)
 - [Ability Assistant](aa-tool.md)
 - [Bundle Manager](bm-tool.md)
 - Packing and Unpacking Tools<!--packing-unpacking-->
@@ -32,4 +32,5 @@
   - [mediatool](mediatool.md)
   - [devicedebug](devicedebug-tool.md)
   - [rawheap-translator](rawheap-translator.md)
+  <!--RP1--><!--RP1End-->
 - [Binary Sign Tool](binary-sign-tool.md)

@@ -10,6 +10,8 @@
 
 定义音视频元数据键。
 
+**引用文件：** <multimedia/player_framework/avmetakeys.h>
+
 **库：** libavmedia_base.so
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
@@ -24,7 +26,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| const char * OH_AVMETA_KEY_TRACK_INDEX | 轨道索引，值类型为int32_t。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.Core |
+| const char * OH_AVMETA_KEY_TRACK_INDEX | 轨道索引，值类型为int32_t。<br>**起始版本：** 23 |
 | const char * OH_AVMETA_KEY_TRACK_TYPE | 轨道类型，值类型为int32_t。<br>**起始版本：** 23 |
 | const char * OH_AVMETA_KEY_MIME_TYPE | 编解码器MIME类型，值类型为字符串（string）。<br>**起始版本：** 23 |
 | const char * OH_AVMETA_KEY_DURATION | 媒体时长（单位：微秒），值类型为int64_t。<br>**起始版本：** 23 |

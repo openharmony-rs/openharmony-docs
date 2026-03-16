@@ -32,8 +32,8 @@ Adds an overlay to this component, which can be text, a custom component, or [Co
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | string \| [CustomBuilder](ts-types.md#custombuilder8)<sup>10+</sup> \| [ComponentContent](#componentcontent12)<sup>12+</sup> | Yes  | Content of the overlay, which can be text or a custom component.<br>**NOTE**<br>When the overlay is a custom component, it cannot obtain focus through sequential keyboard navigation. Using **CustomBuilder** will cause the overlay content to be destroyed and recreated on page refresh, which may incur performance overhead. For scenarios with frequent page updates, using **ComponentContent** is recommended.|
-| options | [OverlayOptions](#overlayoptions12) | No  | Options for positioning the overlay.<br>**NOTE**<br>In versions earlier than API version 12, **options** is defined as follows:<br>{<br>align?: [Alignment](ts-appendix-enums.md#alignment), <br>offset?: {x?: number, y?: number}<br>} |
+| value   | string&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)<sup>10+</sup>&nbsp;\| [ComponentContent](#componentcontent12)<sup>12+</sup> | Yes  | Content of the overlay, which can be text or a custom component.<br>**NOTE**<br>When the overlay is a custom component, it cannot obtain focus through sequential keyboard navigation. Using **CustomBuilder** will cause the overlay content to be destroyed and recreated on page refresh, which may incur performance overhead. For scenarios with frequent page updates, using **ComponentContent** is recommended.|
+| options | [OverlayOptions](#overlayoptions12) | No  | Options for positioning the overlay.<br>**NOTE**<br>In versions earlier than API version 12, **options** is defined as follows:<br>{<br>align?:&nbsp;[Alignment](ts-appendix-enums.md#alignment),&nbsp;<br>offset?:&nbsp;{x?:&nbsp;number, y?:&nbsp;number}<br>} |
 
 **Return value**
 
@@ -114,6 +114,7 @@ struct OverlayExample {
         Text('floating layer')
           .fontSize(12).fontColor(0xCCCCCC).maxLines(1)
         Column() {
+          // Replace $r('app.media.img') with the image resource file you use.
           Image($r('app.media.img'))
             .width(240).height(240)
             .overlay("Winter is a beautiful season, especially when it snows.", {
@@ -140,6 +141,7 @@ This example demonstrates how to set an overlay using a custom builder.
 struct OverlayExample {
   @Builder OverlayNode() {
     Column() {
+      // Replace $r('app.media.img1') with the image resource file you use.
       Image($r('app.media.img1'))
       Text("This is overlayNode").fontSize(20).fontColor(Color.White)
     }
@@ -151,6 +153,7 @@ struct OverlayExample {
 
   build() {
     Column() {
+      // Replace $r('app.media.img2') with the image resource file you use.
       Image($r('app.media.img2'))
         .overlay(this.OverlayNode(), { align: Alignment.Center })
         .objectFit(ImageFit.Contain)

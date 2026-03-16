@@ -870,14 +870,14 @@ Enumerates the custom types of a remote Bluetooth device.
 
 | Name                              | Value   | Description             |
 | -------------------------------- | ------ | --------------- |
-| DEVICE_TYPE_DEFAULT<sup>12+</sup> | 0 | Default device type, which is the same as the original type.<br>This is a system API.|
-| DEVICE_TYPE_CAR<sup>12+</sup>  | 1 | Car.<br>This is a system API. |
-| DEVICE_TYPE_HEADSET<sup>12+</sup>  | 2 | Headset.<br>This is a system API. |
-| DEVICE_TYPE_HEARING<sup>12+</sup>   | 3 | Hearing aid.<br>This is a system API. |
-| DEVICE_TYPE_GLASSES<sup>12+</sup>    | 4 | Glasses. <br>This is a system API. |
-| DEVICE_TYPE_WATCH<sup>12+</sup>     | 5 | Watch.<br>This is a system API. |
-| DEVICE_TYPE_SPEAKER<sup>12+</sup>     | 6 | Speaker.<br>This is a system API. |
-| DEVICE_TYPE_OTHERS<sup>12+</sup>     | 7 | Other device.<br>This is a system API. |
+| DEVICE_TYPE_DEFAULT | 0 | Default device type, which is the same as the original type.<br>This is a system API.|
+| DEVICE_TYPE_CAR  | 1 | Car.<br>This is a system API. |
+| DEVICE_TYPE_HEADSET  | 2 | Headset.<br>This is a system API. |
+| DEVICE_TYPE_HEARING   | 3 | Hearing aid.<br>This is a system API. |
+| DEVICE_TYPE_GLASSES    | 4 | Glasses. <br>This is a system API. |
+| DEVICE_TYPE_WATCH     | 5 | Watch.<br>This is a system API. |
+| DEVICE_TYPE_SPEAKER     | 6 | Speaker.<br>This is a system API. |
+| DEVICE_TYPE_OTHERS     | 7 | Other device.<br>This is a system API. |
 
 
 ## BatteryInfo<sup>12+</sup>

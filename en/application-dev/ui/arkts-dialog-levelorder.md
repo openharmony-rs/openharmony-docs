@@ -31,7 +31,7 @@ Using **levelOrder** to manage the display sequence of dialog boxes is only supp
     @Builder
     normalCustomDialog(index: number) {
       Column() {
-        // The value in the 'open_normal_dialog' resource file is 'I am a normal dialog box.'
+        // Configure the resource whose name is 'open_normal_dialog' and value is a non-empty string in the resources\base\element\string.json file.
         Text(this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('open_normal_dialog') as string +
           index).fontSize(30)
       }.height(400).padding(5).justifyContent(FlexAlign.SpaceBetween)
@@ -46,10 +46,10 @@ Using **levelOrder** to manage the display sequence of dialog boxes is only supp
     @Builder
     topCustomDialog() {
       Column() {
-        // The value in the 'app.string.top_dialog' resource file is 'I am a top-level dialog box.'
+        // Replace $r('app.string.top_dialog') with the actual resource file. In this example, the value in the resource file is "I am a top-level dialog box."
         Text($r('app.string.top_dialog')).fontSize(30)
         Row({ space: 50 }) {
-          // The value in the 'app.string.open_dialog' resource file is 'Open Normal Dialog Box.'
+          // Replace $r('app.string.open_dialog') with the actual resource file. In this example, the value in the resource file is "Open Normal Dialog Box."
           Button($r('app.string.open_dialog'))
             .onClick(() => {
               this.getUIContext().getPromptAction().openCustomDialog({
@@ -107,7 +107,7 @@ Using **levelOrder** to manage the display sequence of dialog boxes is only supp
    @Builder
    normalCustomDialog(index: number) {
      Column() {
-       // The value in the 'open_normal_dialog' resource file is 'I am a normal dialog box.'
+       // Configure the resource whose name is 'open_normal_dialog' and value is a non-empty string in the resources\base\element\string.json file.
        Text(this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('open_normal_dialog') as string +
          index).fontSize(30)
      }.height(400).padding(5).justifyContent(FlexAlign.SpaceBetween)
@@ -117,10 +117,10 @@ Using **levelOrder** to manage the display sequence of dialog boxes is only supp
    @Builder
    topCustomDialog() {
      Column() {
-       // The value in the 'app.string.top_dialog' resource file is 'I am a top-level dialog box.'
+       // Replace $r('app.string.top_dialog') with the actual resource file. In this example, the value in the resource file is "I am a top-level dialog box."
        Text($r('app.string.top_dialog')).fontSize(30)
        Row({ space: 50 }) {
-         // The value in the 'app.string.open_dialog' resource file is 'Open Normal Dialog Box.'
+         // Replace $r('app.string.open_dialog') with the actual resource file. In this example, the value in the resource file is "Open Normal Dialog Box."
          Button($r('app.string.open_dialog'))
            .onClick(() => {
              this.getUIContext().getPromptAction().openCustomDialog({
@@ -143,7 +143,7 @@ Using **levelOrder** to manage the display sequence of dialog boxes is only supp
      NavDestination() {
        Row() {
          Column({ space: 5 }) {
-           // The value in the 'app.string.click_dialog' resource file is 'Show Dialog Box.'
+           // Replace $r('app.string.click_dialog') with the actual resource file. In this example, the value in the resource file is "Show Dialog Box."
            Button($r('app.string.click_dialog'))
              .fontSize(20)
              .onClick(() => {

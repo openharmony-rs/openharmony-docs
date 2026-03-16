@@ -4,7 +4,7 @@
 <!--Owner: @mlkgeek-->
 <!--Designer: @StevenLai1994-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
@@ -398,3 +398,121 @@ Use After Free at 0x5b46ddaff0 (0 bytes into a 16-byte allocation at 0x5b46ddaff
   #12 0xfffffffffffffffe
 * End GWP-ASan report *
 ```
+
+## AddrSanitizer聚类
+
+### 聚类简介
+
+应用程序在不同版本或同一版本的不同时间，AddrSanitizer可能因同一原因产生故障，但AddrSanitizer故障日志中的大部分信息会随版本、时间等因素变化，导致难以快速判断是否为重复问题。此外，AddrSanitizer故障信息中包含系统侧和应用侧的调用栈，这不利于开发者快速定位和排查应用侧的问题。
+
+因此，为避免重复分析多份故障信息，提高应用故障问题的分析效率，需要对AddrSanitizer故障信息进行聚类；同时，聚类也能帮助开发者对不同原因问题进行分类统计。
+
+判断多份日志是否属于同一问题，主要基于以下两个维度：
+
+- 地址越界的故障类型。
+- 业务相关调用栈，过滤基础库后的栈顶前两帧。
+
+通过上述信息可对问题进行初步定界。
+
+### 提取聚类信息
+
+1. **提取故障类型**
+
+    不同类型日志的故障类型提取方式如下：
+
+   - GWP-ASan
+
+     在[GWP-ASan日志](#gwp-asan日志规格)中，故障类型根据原始日志中包含"at"的行提取。可能的故障类型包括Use After Free、Double Free、Invalid (Wild) Free等，详细类型说明可参考[GWP-ASan异常检测类型](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-gwpasan-detection#section73731529454)。
+
+   - ASan/HWASan/MemDebug
+
+     在[ASan](#asan日志规格)、[HWASan](#hwasan日志规格)和[MemDebug](#memdebug日志规格)日志中，故障原因通过日志中的"Reason"字段提取，提取结果将作为后续聚类依据。详细字段说明可参考[AddrSanitizer日志type字段说明](hiappevent-watcher-address-sanitizer-events.md)。
+
+2. **标准化栈信息**
+   
+    提取故障类型作为特征后，首先使用正则匹配筛选堆栈内容。然后，为了确保聚类准确性，需要对堆栈信息进行标准化和清洗。主要规则如下：
+   
+   - 去除易变信息：行号、相同的BuildID和绝对地址。
+   - 过滤基础库栈帧：
+
+      ```text
+      libc.so
+      libc++.so
+      libclang_rt.hwasan.so
+      libclang_rt.asan.so
+      ld-musl-aarch64-asan.so
+      ld-musl-aarch64.so
+      ```
+
+   - 保留业务相关栈帧：保留业务so路径作为关键特征。
+
+    对调用栈进行标准化后，最后得到的特征栈如下：
+
+    | 原始栈帧内容                                                                                                                  | 标准化后栈帧内容                                |
+    | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+    |#0 0x5b6d263a58  (/system/lib64/libclang_rt.hwasan.so+0x23a58) (BuildId: a1396c21a0290124b0e0ebd03a4cced52b1addcc)| 忽略（基础库）|
+    | #1 0x661be0e870  (/data/storage/el1/bundle/libs/arm64/libentry.so+0x4e870) (BuildId: 5bc0684c2c3fc90841c2498efe1af4fd4792e5a8)| /data/storage/el1/bundle/libs/arm64/libentry.so+0x4e870 |
+
+### 提取聚类特征
+
+在完成标准化后，根据不同故障类型提取关键栈作为特征：
+
+1. Use After Free
+
+    | 故障特征  | 来源 | 提取规则                                                      |
+    | ----------- | -------- | --------------------------------------------------------------- |
+    | 故障特征1 | 使用栈 | 过滤基础库后，取栈顶的前两帧（so名+相对偏移） |
+    | 故障特征2 | 释放栈 | 过滤基础库后，取栈顶的前两帧（so名+相对偏移） |
+
+2. Double Free
+
+    | 故障特征  | 来源       | 提取规则                                                      |
+    | ----------- | -------------- | --------------------------------------------------------------- |
+    | 故障特征1 | 第一次释放栈 | 过滤基础库后，取栈顶的前两帧（so名+相对偏移） |
+    | 故障特征2 | 第二次释放栈 | 过滤基础库后，取栈顶的前两帧（so名+相对偏移） |
+
+3. 其他故障类型
+
+    | 故障特征 | 来源     | 提取规则                                                      |
+    | ---------- | ------------ | --------------------------------------------------------------- |
+    | 故障特征 | 使用栈 | 过滤基础库后，取栈顶的前两帧（so名+相对偏移） |
+
+### 生成聚类特征
+
+最终聚类特征为：故障类型+若干条标准化业务栈帧，以GWP-ASan日志为例：
+
+```text
+*** GWP-ASan detected a memory error ***
+Use After Free at 0x5bab376000 (0 bytes into a 64-byte allocation at 0x5bab376000) by thread 52616 here:
+ #0 0x5cad4c7ba4  (/data/storage/el1/bundle/libs/arm64/libsample.so+0x7ba4) (BuildId: 2a3f1826c75a903f89c46b8ffcd1846295fdebcf)
+ #1 0x5cad4c849c  (/data/storage/el1/bundle/libs/arm64/libsample.so+0x849c) (BuildId: 2a3f1826c75a903f89c46b8ffcd1846295fdebcf)
+ #2 0x5aef3bc03c  (/lib/ld-musl-aarch64.so.1+0x1dd03c) (BuildId: c89ea5bf4368de59af764818c03eb41b)
+0x5bab376000 was deallocated by thread 52616 here:
+ #0 0x5aef331010  (/lib/ld-musl-aarch64.so.1+0x152010) (BuildId: c89ea5bf4368de59af764818c03eb41b)
+ #1 0x5aef329614  (/lib/ld-musl-aarch64.so.1+0x14a614) (BuildId: c89ea5bf4368de59af764818c03eb41b)
+ #2 0x5cad4c7b9c  (/data/storage/el1/bundle/libs/arm64/libsample.so+0x7b9c) (BuildId: 2a3f1826c75a903f89c46b8ffcd1846295fdebcf)
+ #3 0x5cad4c849c  (/data/storage/el1/bundle/libs/arm64/libsample.so+0x849c) (BuildId: 2a3f1826c75a903f89c46b8ffcd1846295fdebcf)
+ #4 0x5cad4c8434  (/data/storage/el1/bundle/libs/arm64/libsample.so+0x8434) (BuildId: 2a3f1826c75a903f89c46b8ffcd1846295fdebcf)
+0x5bab376000 was allocated by thread 52616 here:
+ #0 0x5aef331010  (/lib/ld-musl-aarch64.so.1+0x152010) (BuildId: c89ea5bf4368de59af764818c03eb41b)
+ #1 0x5aef3292e4  (/lib/ld-musl-aarch64.so.1+0x14a2e4) (BuildId: c89ea5bf4368de59af764818c03eb41b)
+ #2 0x5aef34b5e0  (/lib/ld-musl-aarch64.so.1+0x16c5e0) (BuildId: c89ea5bf4368de59af764818c03eb41b)
+ #3 0x5cad4c7b84  (/data/storage/el1/bundle/libs/arm64/libsample.so+0x7b84) (BuildId: 2a3f1826c75a903f89c46b8ffcd1846295fdebcf)
+ #4 0x5cad4c849c  (/data/storage/el1/bundle/libs/arm64/libsample.so+0x849c) (BuildId: 2a3f1826c75a903f89c46b8ffcd1846295fdebcf)
+*** End GWP-ASan report ***
+```
+
+根据聚类规则：
+
+- 从“at”处提取故障类型：Use After Free。
+- 分别对使用栈与释放栈进行标准化。
+- 过滤基础库栈帧后，取栈顶前两帧作为关键特征。
+
+最终生成的聚类特征如下：
+
+| 故障特征   | 聚类特征 |
+|---|---|
+| 故障特征1-使用栈 | /data/storage/el1/bundle/libs/arm64/libsample.so+0x7ba4<br>/data/storage/el1/bundle/libs/arm64/libsample.so+0x849c |
+| 故障特征2-释放栈 | /data/storage/el1/bundle/libs/arm64/libsample.so+0x7b9c<br>/data/storage/el1/bundle/libs/arm64/libsample.so+0x849c |
+
+开发者可通过比对多份日志的聚类特征来归并AddrSanitizer故障，也可以对故障类型和故障特征内容计算哈希值，用于问题分类统计与自动化分析。

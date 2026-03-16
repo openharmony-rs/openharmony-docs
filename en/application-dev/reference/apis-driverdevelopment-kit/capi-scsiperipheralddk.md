@@ -1,4 +1,4 @@
-# SCSIPeripheralDDK
+# ScsiPeripheralDDK
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @lixinsheng2-->

@@ -25,7 +25,7 @@
   Native JSBridge方案解决了ArkTS环境的冗余切换，同时允许回调在非UI线程上运行，避免造成UI阻塞。
 
 ## 使用Native接口实现JSBridge通信（推荐）
-原先，Native同步接口不支持返回值，其返回类型固定为void。然而，为满足业务扩展需求，自API version 18起，引入了替代接口，支持bool、string和buffer类型的返回值。
+原先，Native同步接口不支持返回值，其返回类型固定为void。然而，为满足业务扩展需求，自API version 18起，引入了替代接口，支持bool、string类型的返回值。
 
 另外针对同步接口[registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex)和异步接口[registerAsyncJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerasyncjavascriptproxyex)，新增了参数[permission](#前端页面调用应用侧函数)字段，用于调用权限控制。
 
@@ -369,7 +369,7 @@
   ```c++
   # the minimum version of CMake.
   cmake_minimum_required(VERSION 3.4.1)
-  project(NDKJSBridg)
+  project(NDKJSBridge)
 
   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -1024,7 +1024,7 @@ ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native 
   ```c++
   # the minimum version of CMake.
   cmake_minimum_required(VERSION 3.4.1)
-  project(NDKJSBridg)
+  project(NDKJSBridge)
 
   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 

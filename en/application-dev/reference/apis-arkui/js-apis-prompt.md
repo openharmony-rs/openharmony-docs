@@ -267,7 +267,7 @@ Describes the options for showing the action menu.
 
 | Name   | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| title   | string                                                       | No  | Title text.                                                  |
+| title   | string                                                       | No  | Title of the menu.                                                  |
 | buttons | [[Button](#button),[Button](#button)?,[Button](#button)?,[Button](#button)?,[Button](#button)?,[Button](#button)?] | Yes  | Array of menu item buttons. The array structure is **{text:'button', color: '\#666666'}**. Up to six buttons are supported. If there are more than six buttons, extra buttons will not be displayed.|
 
 ## ActionMenuSuccessResponse

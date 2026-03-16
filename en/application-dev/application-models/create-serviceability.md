@@ -73,7 +73,7 @@
    
     Declare the ServiceAbility in the **config.json** file by setting its **type** attribute to **service**. The **visible** attribute specifies whether the ServiceAbility can be called by other applications. The value **true** means that the ServiceAbility can be called by other applications, and **false** means that the ServiceAbility can be called only within the application. To enable the ServiceAbility to be called by other applications, set **visible** to **true** when registering the ServiceAbility and enable associated startup. For details about the startup rules, see [Component Startup Rules](component-startup-rules.md).
     
-    ```json
+    ```json5
     {
       // ...
       "module": {

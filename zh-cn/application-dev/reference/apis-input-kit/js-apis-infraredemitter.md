@@ -79,11 +79,13 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
 
+**设备行为差异**：该接口在支持红外发射器的Phone和TV设备上返回红外信号的频率范围，在其他不支持红外发射器的设备上返回一组最大和最小频率，且均为0Hz。建议使用[hasIrEmitter](#infraredemitterhasiremitter23)接口查询设备是否支持红外发射器。
+
 **返回值**：
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | 红外信号的频率范围，包含多组最大和最小频率。<br/>当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
+| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | 红外信号的频率范围，包含多组最大和最小频率。<br/>从API version 23开始，当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
 
 **错误码：**
 
@@ -132,7 +134,7 @@ struct Index {
 
 hasIrEmitter(): Promise&lt;boolean&gt;
 
-查询设备是否配备红外发射器。
+查询设备是否配备红外发射器。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 

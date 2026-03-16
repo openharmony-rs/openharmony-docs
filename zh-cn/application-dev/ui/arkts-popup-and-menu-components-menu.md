@@ -208,7 +208,6 @@ export struct SupportAvoidCentralAxisMenuExample {
   @State arrayStr: Array<string> = [this.upScreen, this.middleAxle, this.lowerScreen];
   @State enableHoverMode: boolean | undefined = true;
   @State showInSubwindow: boolean = false;
-  @State placement: Placement | undefined = undefined;
 
   @Builder
   MyMenu1() {
@@ -225,65 +224,33 @@ export struct SupportAvoidCentralAxisMenuExample {
 
   build() {
     NavDestination() {
-      RelativeContainer() {
-        Column() {
-          Button(this.zone + this.arrayStr[this.index])
-            .onClick(() => {
-              if (this.index < 2) {
-                this.index++
-              } else {
-                this.index = 0
-              }
-            })
+      Column({ space: 5 }) {
+        Button(this.zone + this.arrayStr[this.index])
+          .onClick(() => {
+            if (this.index < 2) {
+              this.index++
+            } else {
+              this.index = 0
+            }
+          })
 
-          Button(this.hoverModeStart + this.enableHoverMode)
-            .id('hoverMode_start')
-            .onClick(() => {
-              if (this.enableHoverMode === undefined) {
-                this.enableHoverMode = true
-              } else if (this.enableHoverMode === true) {
-                this.enableHoverMode = false
-              } else {
-                this.enableHoverMode = undefined
-              }
-            })
-
-          Button('MenuPlacement:' + this.placement)
-            .onClick(() => {
-              if (this.placement === undefined) {
-                this.placement = Placement.Bottom
-              } else if (this.placement === Placement.Bottom) {
-                this.placement = Placement.Top
-              } else {
-                this.placement = undefined
-              }
-            })
-        }
-
-        Row() {
-          Button('Menu')
-            .fontWeight(FontWeight.Bold)
-            .bindMenu(this.MyMenu1(), {
-              enableHoverMode: this.enableHoverMode,
-              showInSubWindow: this.showInSubwindow,
-              placement: this.placement
-            })
-
-          Select([{ value: 'text1' }, { value: 'text2' }, { value: 'text3' }, { value: 'text4' }, { value: 'text5' },
-            { value: 'text6' }, { value: 'text7' }, { value: 'text8' }, { value: 'text9' }, { value: 'text10' },
-            { value: 'text11' },
-            { value: 'text12' }])
-            .value('Select')
-
-        }
-        .alignRules({
-          center: { anchor: '__container__', align: VerticalAlign.Center },
-          middle: { anchor: '__container__', align: HorizontalAlign.Center }
-        })
-        .margin({
-          top: this.index === 2 ? 330 : this.index === 1 ? 50 : 0,
-          bottom: this.index === 0 ? 330 : 0
-        })
+        Button(this.hoverModeStart + this.enableHoverMode)
+          .id('hoverMode_start')
+          .onClick(() => {
+            if (this.enableHoverMode === undefined) {
+              this.enableHoverMode = true
+            } else if (this.enableHoverMode === true) {
+              this.enableHoverMode = false
+            } else {
+              this.enableHoverMode = undefined
+            }
+          })
+        Button('Menu')
+          .fontWeight(FontWeight.Bold)
+          .bindMenu(this.MyMenu1(), {
+            enableHoverMode: this.enableHoverMode,
+            showInSubWindow: this.showInSubwindow
+          })
       }
       .height('100%')
       .width('100%')

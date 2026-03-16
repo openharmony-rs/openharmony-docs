@@ -40,6 +40,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | routerMap<sup>12+</sup>           | Array\<[RouterItem](js-apis-bundleManager-hapModuleInfo.md#routeritem12)>           | 是   | 否   | 应用的路由表配置，由hapModulesInfo下的routerMap信息，根据RouterItem中的name字段进行去重后合并得到。通过调用[getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP获取。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | appIndex<sup>12+</sup>    | number    | 是   | 否   | 应用包的分身索引标识，仅在分身应用中生效。 |
 | firstInstallTime<sup>18+</sup>                        | number                                                       | 是   | 是   | 应用在当前设备的首次安装时间戳，表示从1970-01-01 08:00:00 UTC+8逝去的毫秒数，单位毫秒，预置应用的首次安装时间戳为1533657660000。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| buildVersion<sup>23+</sup>                        | string                                                       | 是   | 是   | 应用包的构建版本号，用于标识相同发布版本下的不同构建版本包，对应[app.json5](../../quick-start/app-configuration-file.md)中配置的buildVersion字段。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 
 ## ReqPermissionDetail
@@ -85,9 +86,9 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
-| appId     | string         | 是   | 否   | 应用的appId，表示应用的唯一标识，详情信息可参考[什么是appId](../../quick-start/common_problem_of_application.md#什么是appid)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                 |
+| appId     | string         | 是   | 否   | 应用的appId，表示应用的唯一标识，详情信息可参考[什么是appId](../../quick-start/common-problem-of-application.md#什么是appid)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                 |
 |fingerprint| string         | 是   | 否   | 应用包的指纹信息，由签名证书通过SHA-256算法计算哈希值生成。使用的签名证书发生变化时，该字段也会发生变化。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。            |
-|appIdentifier<sup>11+</sup>| string         | 是   | 否   | 应用的唯一标识。详情信息可参考[什么是appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。          |
+|appIdentifier<sup>11+</sup>| string         | 是   | 否   | 应用的唯一标识。详情信息可参考[什么是appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。          |
 |certificate<sup>14+</sup>| string         | 是   | 是   | 应用的证书公钥。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。            |
 
 ## AppCloneIdentity<sup>14+<sup>

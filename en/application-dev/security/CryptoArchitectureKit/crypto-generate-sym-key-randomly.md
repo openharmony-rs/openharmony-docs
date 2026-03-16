@@ -23,9 +23,11 @@ For details about the algorithm specifications, see [AES](crypto-sym-key-generat
 
 - Example: Randomly generate a 256-bit AES key (using promise-based APIs).
 
-  ```ts
+  <!-- @[generate_aes_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKeyArkTS/entry/src/main/ets/pages/aes/Promise.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function testGenerateAesKey() {
     // Create a SymKeyGenerator instance.
     let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
@@ -34,15 +36,18 @@ For details about the algorithm specifications, see [AES](crypto-sym-key-generat
     promiseSymKey.then(key => {
       // Obtain the binary data of the symmetric key and output a 256-bit key, which is of 32 bytes.
       let encodedKey = key.getEncoded();
-      console.info('key hex:' + encodedKey.data);
+      console.info('key hex: ' + encodedKey.data);
     });
   }
   ```
 
-- Example using synchronous API [generateSymKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkeysync12):
-  ```ts
-  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
+- Example using synchronous API [generateSymKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkeysync12):
+  <!-- @[generate_aes_key_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKeyArkTS/entry/src/main/ets/pages/aes/Sync.ets) -->
+  
+  ``` TypeScript
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  
   function testSyncGenerateAesKey() {
     // Create a SymKeyGenerator instance.
     let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
@@ -50,9 +55,10 @@ For details about the algorithm specifications, see [AES](crypto-sym-key-generat
     let promiseSymKey = symKeyGenerator.generateSymKeySync();
     // Obtain the binary data of the symmetric key and output a 256-bit key, which is of 32 bytes.
     let encodedKey = promiseSymKey.getEncoded();
-    console.info('key hex:' + encodedKey.data);
+    console.info('key hex: ' + encodedKey.data);
   }
   ```
+
 
 ## Randomly Generating an SM4 Key
 
@@ -68,9 +74,11 @@ For details about the algorithm specifications, see [SM4](crypto-sym-key-generat
 
 - Example: Randomly generate a 128-bit SM4 key (using promise-based APIs).
 
-  ```ts
+  <!-- @[generate_sm4_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKeyArkTS/entry/src/main/ets/pages/sm4/Promise.ets) --> 
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function testGenerateSM4Key() {
     // Create a SymKeyGenerator instance.
     let symKeyGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
@@ -79,15 +87,18 @@ For details about the algorithm specifications, see [SM4](crypto-sym-key-generat
     promiseSymKey.then(key => {
       // Obtain the binary data of the symmetric key and output a 128-bit byte stream, which is of 16 bytes.
       let encodedKey = key.getEncoded();
-      console.info('key hex:' + encodedKey.data);
+      console.info('key hex: ' + encodedKey.data);
     });
   }
   ```
 
-- Example using synchronous API [generateSymKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkeysync12):
-  ```ts
-  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
+- Example using synchronous API [generateSymKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkeysync12):
+  <!-- @[generate_sm4_key_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKeyArkTS/entry/src/main/ets/pages/sm4/Sync.ets) --> 
+  
+  ``` TypeScript
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  
   function testSyncGenerateSm4Key() {
     // Create a SymKeyGenerator instance.
     let symKeyGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
@@ -95,6 +106,6 @@ For details about the algorithm specifications, see [SM4](crypto-sym-key-generat
     let promiseSymKey = symKeyGenerator.generateSymKeySync();
     // Obtain the binary data of the symmetric key and output a 128-bit byte stream, which is of 16 bytes.
     let encodedKey = promiseSymKey.getEncoded();
-    console.info('key hex:' + encodedKey.data);
+    console.info('key hex: ' + encodedKey.data);
   }
   ```

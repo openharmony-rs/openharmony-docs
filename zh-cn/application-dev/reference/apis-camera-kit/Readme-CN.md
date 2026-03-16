@@ -17,6 +17,7 @@
     - [Interface (CameraInput)](arkts-apis-camera-CameraInput.md)
     - [Interface (CameraManager)](arkts-apis-camera-CameraManager.md)
     - [Interface (CameraOutput)](arkts-apis-camera-CameraOutput.md)
+    - [Interface (CapturePhoto)](arkts-apis-camera-CapturePhoto.md)
     - [Interface (ColorManagement)](arkts-apis-camera-ColorManagement.md)
     - [Interface (ColorManagementQuery)](arkts-apis-camera-ColorManagementQuery.md)
     - [Interface (ControlCenter)](arkts-apis-camera-ControlCenter.md)
@@ -29,7 +30,6 @@
     - [Interface (MacroQuery)](arkts-apis-camera-MacroQuery.md)
     - [Interface (MetadataOutput)](arkts-apis-camera-MetadataOutput.md)
     - [Interface (Photo)](arkts-apis-camera-Photo.md)
-    - [Interface (PhotoEx)](arkts-apis-camera-PhotoEx.md)
     - [Interface (PhotoOutput)](arkts-apis-camera-PhotoOutput.md)
     - [Interface (PhotoSession)](arkts-apis-camera-PhotoSession.md)
     - [Interface (PreviewOutput)](arkts-apis-camera-PreviewOutput.md)
@@ -104,5 +104,6 @@
     - [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)
     - [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md)
     - [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)
+    - [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md)
 - 错误码<!--camera-arkts-errcode-->
   - [Camera错误码](errorcode-camera.md)

@@ -11,7 +11,7 @@ To ensure data security, delete the key that is no longer required.
 
 The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 
-## Add the dynamic library in the CMake script.
+## Linking the Dynamic Library in the CMake Script
 ```txt
 target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```
@@ -22,7 +22,9 @@ For example, delete a 256-bit HKDF key.
 
 1. Specify the key alias. For details about the naming rules, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
 
-2. Use [OH_Huks_DeleteKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_deletekeyitem) to delete the key.
+2. Initialize the key property set. This is used to specify the properties for deleting the key. If a single key or non-group key is deleted, this set can be left empty.
+
+3. Use [OH_Huks_DeleteKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_deletekeyitem) to delete the key.
 
 <!-- @[key_deletion_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyDeletion/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -102,4 +104,3 @@ static napi_value DeleteKey(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
-<!--no_check-->

@@ -111,7 +111,7 @@ Navigates to a specified page in the application.
 
 > **NOTE**
 >
-> - This method is supported since API version 9 and deprecated since API version 18. You are advised to use [pushUrl](arkts-apis-uicontext-router.md#pushurl-1) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [pushUrl](arkts-apis-uicontext-router.md#pushurl-1) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -651,7 +651,7 @@ router.pushNamedRoute({
   })
 ```
 
-For details, see [UI Development-Named Route](../../ui/arkts-routing.md#named-route).
+For details, see [Named Route](../../ui/arkts-routing.md#named-route).
 
 ## router.pushNamedRoute<sup>(deprecated)</sup>
 
@@ -875,7 +875,7 @@ router.pushNamedRoute({
 
 replaceNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result.
+Replaces the current page with another one using the named route and destroys the current page.
 
 > **NOTE**
 >
@@ -941,7 +941,7 @@ router.replaceNamedRoute({
 
 replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&gt;): void
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses an asynchronous callback to return the result.
+Replaces the current page with another one using the named route and destroys the current page.
 
 > **NOTE**
 >
@@ -1000,7 +1000,7 @@ router.replaceNamedRoute({
 
 replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result.
+Replaces the current page with another one using the named route and destroys the current page.
 
 > **NOTE**
 >
@@ -1068,7 +1068,7 @@ router.replaceNamedRoute({
 
 replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses an asynchronous callback to return the result.
+Replaces the current page with another one using the named route and destroys the current page.
 
 > **NOTE**
 >
@@ -1474,7 +1474,7 @@ Describes the page routing options.
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| url    | string | No  | No  | URL of the target page, in either of the following formats:<br>- Absolute path of the page. The value is available in the pages list in the **config.json** file, for example:<br>- pages/index/index<br>- pages/detail/detail<br>- special value. If the value of url is **"/"**, the application navigates to the home page. By default, the home page is set to the first item in the **src** value array.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| url    | string | No  | No  | URL of the target page, in either of the following formats:<br>- Absolute path of the page. The value is available in the pages list in the **config.json** file, for example:<br>  - pages/index/index<br>  - pages/detail/detail<br>- special value. If the value of **url** is **"/"**, the application navigates to the home page. By default, the home page is set to the first item in the **src** value array.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | params | Object | No  | Yes  | Data that needs to be passed to the target page during redirection. The received data becomes invalid when the page is switched to another page. The target page can use **router.getParams()** to obtain the passed parameters, for example, **this.keyValue** (**keyValue** is the value of a key in **params**). In the web-like paradigm, these parameters can be directly used on the target page. If the field specified by **key** already exists on the target page, the passed value of the key will be displayed.<br>**NOTE**<br>The **params** parameter can only carry serializable data. Objects returned by methods and system APIs (for example, **PixelMap** objects defined and returned by media APIs) cannot be passed. To pass such objects, extract from them the basic type attributes to be passed, and then construct objects of the object type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | recoverable<sup>14+</sup> | boolean | No  | Yes  | Whether the corresponding page is recoverable.<br>Default value: **true**. <br>**true**: The corresponding page is recoverable.<br>**false**: The corresponding page is not recoverable.<br>**NOTE**<br> If an application is switched to the background and is later closed by the system due to resource constraints or other reasons, a page marked as recoverable can be restored by the system when the application is brought back to the foreground. For more details, see [UIAbility Backup and Restore](../../application-models/ability-recover-guideline.md).|
 
@@ -1542,7 +1542,7 @@ export default {
 > 
 > Directly using **router** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a [UIContext](arkts-apis-uicontext-uicontext.md) instance using **getUIContext**, and then obtain the associated **router** object using [getRouter](arkts-apis-uicontext-uicontext.md#getrouter).
 
-<!--deperecated_code_no_check-->
+<!--deprecated_code_no_check-->
 ```ts
 // Navigate to the target page through router.pushUrl with the params parameter carried.
 import { router } from '@kit.ArkUI';
@@ -1784,4 +1784,3 @@ Disables the display of a confirm dialog box before returning to the previous pa
 ```ts
 router.disableAlertBeforeBackPage();
 ```
-<!--no_check-->

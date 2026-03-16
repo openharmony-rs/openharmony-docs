@@ -54,9 +54,9 @@ Some components allow for animation customization for their child components thr
 
 - For a scroll or click gesture, you can implement various effects by changing affine properties of the child component.
 
-- To customize the animation for a scroll , you can add a listener to listen for scroll distance in the **onScroll** callback and calculate the affine property of each component. You can also define gestures, monitor positions through the gestures, and manually call **ScrollTo** to change the scrolled-to position.
+- If you want to customize the animation effect during the scrolling, you can monitor the scrolling distance in the [onScroll](../reference/apis-arkui/arkui-ts/ts-container-grid.md#onscrolldeprecated) callback and calculate the affine properties of each component. You can also define gestures, monitor positions through the gestures, and manually call **ScrollTo** to change the scrolled-to position.
 
-- Fine-tune the final scrolled-to position in the **onScrollStop** callback or gesture end callback.
+- You can fine-tune the scrolled-to position in the [onScrollStop](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md#onscrollstop14) callback or the callback for gesture completion.
 
 The following is an example of customizing the swipe animation for the **Scroll** component:
 
@@ -453,7 +453,7 @@ struct ListAutoSortExample {
             this.backAnimator = this.getUIContext()?.createAnimator({
               // Create a spring animation.
               duration: 1000, // Animation duration, in milliseconds.
-              easing: 'interpolating-spring(0, 1, 150, 24)', // 150: spring stiffness, 24: spring damping.
+              easing: 'interpolating-spring(0, 1, 150, 24)', // 150: spring stiffness; 24: spring damping.
               delay: 0, // Animation delay.
               fill: 'none',
               direction: 'normal',

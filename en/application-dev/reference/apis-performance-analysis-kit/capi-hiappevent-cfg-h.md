@@ -5,11 +5,11 @@
 <!--Owner: @liujiaxing2024-->
 <!--Designer: @junjie_shi-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
-Defines the configuration items of the event logging configuration function. If you want to configure the application event logging function, you can directly use configuration item constants.
+Defines the configuration items of the event logging configuration function. To configure the application event logging functionality, you can directly use configuration item constants.
 
 **File to include**: <hiappevent/hiappevent_cfg.h>
 

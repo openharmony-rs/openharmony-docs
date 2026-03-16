@@ -15,14 +15,14 @@ This topic walks you through on how to query key aliases.
 
 The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 
-## Add the dynamic library in the CMake script.
+## Linking the Dynamic Library in the CMake Script
 ```txt
 target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```
 
 ## How to Develop
 
-1. Initialize the key property set to query the tags of key aliases. The tags support only [OH_HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel).
+1. Initialize the key property set to query the tags of key aliases. Only the tag [OH_HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag) is supported.
 
 2. Call [OH_Huks_ListAliases](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_listaliases) to query key aliases.
 
@@ -87,4 +87,3 @@ static napi_value ListAliases(napi_env env, napi_callback_info info)
    return ret;
 }
 ```
-<!--no_check-->

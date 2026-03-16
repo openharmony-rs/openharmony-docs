@@ -158,7 +158,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     formProvider.updateForm(formId, obj2).then(() => {
       console.info(`FormExtensionAbility context updateForm`);
     }).catch((error: BusinessError) => {
-      console.error(`FormExtensionAbility context updateForm failed, data: ${error}`);
+      console.error(`FormExtensionAbility context updateForm failed, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
     });
   }
 };
@@ -208,9 +208,9 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     for (let i: number = 0; i < keys.length; i++) {
       console.info(`FormExtensionAbility onChangeFormVisibility, key: ${keys[i]}, value= ${newStatus[keys[i]]}`);
       formProvider.updateForm(keys[i], obj2).then(() => {
-        console.info(`FormExtensionAbility context updateForm`);
+        console.info('FormExtensionAbility context updateForm');
       }).catch((error: BusinessError) => {
-        console.error(`Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
+        console.error(`Operation updateForm failed. , code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
       });
     }
   }
@@ -306,7 +306,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   onConfigurationUpdate(newConfig: Configuration) {
     // This lifecycle callback is triggered only when the configuration is updated while the FormExtensionAbility is alive.
     // If no operation is performed within 10 seconds after a FormExtensionAbility instance is created, the instance will be deleted.
-    console.info(`onConfigurationUpdate, config: ${JSON.stringify(newConfig)}`);
+    console.info(`onConfigurationUpdate, config: ${newConfig?.language}`);
   }
 };
 ```

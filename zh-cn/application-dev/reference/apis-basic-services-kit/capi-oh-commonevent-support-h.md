@@ -13,6 +13,8 @@
 
 **库：** libohcommonevent.so
 
+**引用文件：** <BasicServicesKit/oh_commonevent_support.h>
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12

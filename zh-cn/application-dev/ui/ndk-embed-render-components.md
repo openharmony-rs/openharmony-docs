@@ -370,10 +370,14 @@
 
 在进行如下代码开发前，请参考[接入ArkTS页面](ndk-access-the-arkts-page.md)，创建前置工程。
 
-完整示例请参考[native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)。
+<!--RP1-->完整示例请参考[native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)。<!--RP1End-->
 
 1. NDK初始化组件环境，并创建对应的渲染节点根节点。
+
+   <!-- @[Create_RootNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->  
+   
    ``` C++
+   
    std::shared_ptr<ArkUIBaseNode> custom_ = nullptr;
    std::shared_ptr<ArkUIRenderNode> render_ = nullptr;
    
@@ -409,37 +413,41 @@
        scroll->AddChild(column);
        return scroll;
    }
-
+   
    napi_value CreateRenderNodeGetNodeExample(napi_env env, napi_callback_info info)
    {
-        size_t argc = 2;
-        napi_value args[2] = {nullptr, nullptr};
-        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-        // 获取ArkTS侧组件挂载点。
-        ArkUI_NodeContentHandle contentHandle;
-        int32_t result = OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
-        if (result != ARKUI_ERROR_CODE_NO_ERROR) {
-            return nullptr;
-        }
-
-        // 创建Native侧组件树根节点。
-        auto scrollNode = std::make_shared<ArkUIScrollNode>();
-        // 将Native侧组件树根节点挂载到UI主树上。
-        result = OH_ArkUI_NodeContent_AddNode(contentHandle, scrollNode->GetHandle());
-        if (result != ARKUI_ERROR_CODE_NO_ERROR) {
-            OH_LOG_ERROR(LOG_APP, "OH_ArkUI_NodeContent_AddNode Failed %{public}d", result);
-            return nullptr;
-        }
-        // 保存Native侧组件树。
-        g_nodeMap[contentHandle] = scrollNode;
-        auto rootNode = testGetRenderNodeDemo();
-        scrollNode->AddChild(rootNode);
-        return nullptr;
+       size_t argc = 2;
+       napi_value args[2] = {nullptr, nullptr};
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+       // 获取ArkTS侧组件挂载点。
+       ArkUI_NodeContentHandle contentHandle;
+       int32_t result = OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           return nullptr;
+       }
+   
+       // 创建Native侧组件树根节点。
+       auto scrollNode = std::make_shared<ArkUIScrollNode>();
+       // 将Native侧组件树根节点挂载到UI主树上。
+       result = OH_ArkUI_NodeContent_AddNode(contentHandle, scrollNode->GetHandle());
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           OH_LOG_ERROR(LOG_APP, "OH_ArkUI_NodeContent_AddNode Failed %{public}d", result);
+           return nullptr;
+       }
+       // 保存Native侧组件树。
+       g_nodeMap[contentHandle] = scrollNode;
+       auto rootNode = testGetRenderNodeDemo();
+       scrollNode->AddChild(rootNode);
+       return nullptr;
    }
    ```
 
 2. ArkTS侧创建节点并传递该节点至CAPI。
+
+   <!-- @[Create_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/ets/pages/GetNode.ets) -->  
+   
    ``` TypeScript
+   
    import { BuilderNode, FrameNode, NodeContent, NodeController, typeNode } from '@kit.ArkUI';
    import entry from 'libentry.so';
    import { webview } from '@kit.ArkWeb';
@@ -480,7 +488,7 @@
    
    @Builder
    function buildTextWithFunc(fun: Function) {
-     Web({ src: 'www.baidu.com', controller: new webview.WebviewController() })
+     Web({ src: 'https://www.example.com', controller: new webview.WebviewController() })
    }
    
    @Builder
@@ -554,7 +562,11 @@
    ```
 
 3. C-API侧获取该节点，接纳节点并获取对应的渲染节点。
+
+   <!-- @[Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->  
+   
    ``` C++
+   
    napi_value Adopt(napi_env env, napi_callback_info info)
    {
        size_t argc = 1;
@@ -565,8 +577,26 @@
        if (result != ARKUI_ERROR_CODE_NO_ERROR) {
            return nullptr;
        }
+       result = OH_ArkUI_NativeModule_AdoptChild(custom_->GetHandle(), nodeHandle_);
        OH_ArkUI_RenderNodeUtils_GetRenderNode(nodeHandle_, &renderHandle_);
        OH_ArkUI_RenderNodeUtils_AddChild(render_->GetHandle(), renderHandle_);
+       return nullptr;
+   }
+   ```
+
+4. C-API侧解除已被接纳节点的接纳状态，释放其对应的渲染节点。
+
+   <!-- @[Remove_Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->
+   
+   ``` C++
+   
+   napi_value RemoveAdopt(napi_env env, napi_callback_info info)
+   {
+       OH_ArkUI_NativeModule_RemoveAdoptedChild(custom_->GetHandle(), nodeHandle_);
+       // 解除节点的接纳状态后，需要额外调用OH_ArkUI_RenderNodeUtils_DisposeNode释放对应的渲染节点，否则会导致内存泄漏。
+       OH_ArkUI_RenderNodeUtils_DisposeNode(renderHandle_);
+       nodeHandle_ = nullptr;
+       renderHandle_ = nullptr;
        return nullptr;
    }
    ```

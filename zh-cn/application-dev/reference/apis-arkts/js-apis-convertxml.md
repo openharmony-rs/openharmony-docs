@@ -101,6 +101,8 @@ largeConvertToJSObject(xml: string, options?: ConvertOptions): Object
 
 > **说明：**
 >
+> 当传入的XML文本无法正确解析为Object类型对象时，打印异常信息并返回一个仅包含XML标签头的基础Object对象。
+>
 > 在Windows环境中，通常以回车符（CR）和换行符（LF）一对字符来表示换行。本接口转换后的对象以换行符（LF）表示换行。
 
 **原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。

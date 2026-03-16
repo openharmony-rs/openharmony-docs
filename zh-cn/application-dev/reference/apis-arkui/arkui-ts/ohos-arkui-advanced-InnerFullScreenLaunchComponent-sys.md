@@ -90,7 +90,7 @@ import { InnerFullScreenLaunchComponent, LaunchController } from '@kit.ArkUI';
 struct Index {
 
   @Builder
-  ColumChild() {
+  ColumnChild() {
     Column() {
       Text('InnerFullScreenLaunchComponent').fontSize(16).margin({top: 100})
       Button('start 日出日落')
@@ -110,7 +110,7 @@ struct Index {
   build() {
     Column() {
       InnerFullScreenLaunchComponent({
-          content: this.ColumChild,
+          content: this.ColumnChild,
           controller: this.controller,
           onReceive: (data) => {
             console.info("onReceive, data: " + data['ohos.atomicService.window']);

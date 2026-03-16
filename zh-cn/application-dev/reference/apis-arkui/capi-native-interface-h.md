@@ -20,6 +20,8 @@
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
+**相关示例：** <!--RP1-->[NativeNodeInterfaceSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/NativeNodeInterfaceSample)<!--RP1End-->
+
 ## 汇总
 
 ### 枚举
@@ -91,12 +93,12 @@ void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const
 
 | 类型 | 说明 |
 | -- | -- |
-| void* | 返回native接口抽象指针，在转化为具体类型后进行使用。 |
+| void* | 返回native接口抽象指针，在转换为具体类型后进行使用。 |
 
 ### OH_ArkUI_GetModuleInterface()
 
 ```c
-OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                             \
+#define OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                     \
 do {                                                                                                 \
         void* anyNativeAPI = OH_ArkUI_QueryModuleInterfaceByName(nativeAPIVariantKind, #structType); \
         if (anyNativeAPI) {                                                                          \

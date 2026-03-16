@@ -11,7 +11,7 @@
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - @ohos.dlpPermission归属的Kit已由'DataLossPreventionKit'变更为'DataProtectionKit'，建议开发者使用新模块名'@kit.DataProtectionKit'完成模块导入。如果使用'@kit.DataLossPreventionKit'导入，仅能调用改名前的接口，无法使用新增接口。
+> - @ohos.dlpPermission归属的Kit已由`DataLossPreventionKit`变更为`DataProtectionKit`，建议开发者使用新模块名`@kit.DataProtectionKit`完成模块导入。如果使用`@kit.DataLossPreventionKit`导入，仅能调用改名前的接口，无法使用新增接口。
 
 ## 导入模块
 
@@ -59,7 +59,7 @@ let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 let file: number | undefined = undefined;
 try {
   file = fileIo.openSync(uri).fd;
-  let res = dlpPermission.isDLPFile(file); // 是否加密DLP文件。
+  let res = dlpPermission.isDLPFile(file);
   console.info('res', res);
 } catch (err) {
   console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错。
@@ -203,7 +203,7 @@ try {
     if (inSandbox) {
       dlpPermission.getDLPPermissionInfo((err, res) => {
         if (err != undefined) {
-          console.error('getDLPPermissionInfo error,', err.code, err.message);
+          console.error('getDLPPermissionInfo error', err.code, err.message);
         } else {
           console.info('res', JSON.stringify(res));
         }
@@ -211,7 +211,7 @@ try {
     }
   });
 } catch (err) {
-  console.error('getDLPPermissionInfo error,', (err as BusinessError).code, (err as BusinessError).message);
+  console.error('getDLPPermissionInfo error', (err as BusinessError).code, (err as BusinessError).message);
 }
 ```
 
@@ -445,13 +445,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   dlpPermission.isInSandbox((err, data) => {
     if (err) {
-      console.error('isInSandbox error,', err.code, err.message);
+      console.error('isInSandbox error', err.code, err.message);
     } else {
       console.info('isInSandbox, data', JSON.stringify(data));
     }
   }); // 是否在沙箱内。
 } catch (err) {
-  console.error('isInSandbox error,', (err as BusinessError).code, (err as BusinessError).message);
+  console.error('isInSandbox error', (err as BusinessError).code, (err as BusinessError).message);
 }
 ```
 
@@ -525,13 +525,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   dlpPermission.getDLPSupportedFileTypes((err, res) => {
     if (err != undefined) {
-      console.error('getDLPSupportedFileTypes error,', err.code, err.message);
+      console.error('getDLPSupportedFileTypes error', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
     }
   }); // 获取支持DLP的文件类型。
 } catch (err) {
-  console.error('getDLPSupportedFileTypes error,', (err as BusinessError).code, (err as BusinessError).message);
+  console.error('getDLPSupportedFileTypes error', (err as BusinessError).code, (err as BusinessError).message);
 }
 ```
 
@@ -1335,7 +1335,7 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 
 > **说明：**
 >
-> 该接口仅支持企业账号调用，需要企业自行搭建企业账号服务器配套使用。使用该接口可以将明文文件加密生成权限受控文件，仅拥有完全控制权限的用户可以打开。
+> 该接口仅支持企业账号调用，需要企业自行搭建企业账号服务器配套使用。使用该接口可以将明文文件加密生成权限受控文件，由企业服务器管控账号是否有权限解密该文件。
 
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
@@ -1400,7 +1400,7 @@ async function ExampleFunction(plainFilePath: string, dlpFilePath: string) {
     await dlpPermission.generateDlpFileForEnterprise(plaintextFd, dlpFd, dlpProperty, customProperty);
     console.info('Successfully generate DLP file for enterprise.');
   } catch(err) {
-    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message);
   } finally {
     if (dlpFd) {
       fileIo.closeSync(dlpFd);
@@ -1419,7 +1419,7 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 将DLP文件解密生成明文文件。使用Promise异步回调。
 >**说明：**
 >
-> 仅拥有完全控制权限的用户可以解密DLP文件。
+> 该接口仅支持企业账号调用，需要企业自行搭建企业账号服务器配套使用。由企业服务器管控账号是否有权限解密DLP文件。
 
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
@@ -1471,7 +1471,7 @@ async function ExampleFunction(plainFilePath: string, dlpFilePath: string) {
     await dlpPermission.decryptDlpFile(dlpFd, plaintextFd);
     console.info('Successfully decrypt DLP file.');
   } catch(err) {
-    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message);
   } finally {
     if (dlpFd) {
       fileIo.closeSync(dlpFd);
@@ -1536,7 +1536,7 @@ async function ExampleFunction(dlpFilePath: string) {
     let policy: string = await dlpPermission.queryDlpPolicy(dlpFd);
     console.info('DLP policy:' + policy);
   } catch(err) {
-    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message);
   } finally {
     if (dlpFd) {
       fileIo.closeSync(dlpFd);

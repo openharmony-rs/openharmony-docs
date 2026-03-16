@@ -13,6 +13,7 @@ The **fileAccess** module provides a framework for accessing and operating user 
 > - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The APIs provided by this module are system APIs.
 > - Currently, the APIs of this module can be called only by **FilePicker** and **FileManager**.
+> - The APIs of this module are deprecated since API version 23. You are advised to use [File Management](js-apis-file-fs.md) APIs instead.
 
 ## Modules to Import
 
@@ -614,9 +615,9 @@ Provides a **FileAccessHelper** object.
 
 getRoots() : Promise&lt;RootIterator&gt;
 
-Obtains information about the device root nodes of the file management services associated with the **Helper** object. This API uses a promise to return
+Obtains information about the device root nodes of the file management services associated with the **Helper** object.  
 
-a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
+This API uses a promise to return a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
 
 **System API**: This is a system API.
 
@@ -669,9 +670,9 @@ async function getRoots() {
 
 getRoots(callback:AsyncCallback&lt;RootIterator&gt;) : void
 
-Obtains information about the device root nodes of the file management services associated with the **Helper** object. This API uses an asynchronous callback to return
+Obtains information about the device root nodes of the file management services associated with the **Helper** object.  
 
-a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
+This API uses an asynchronous callback to return a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
 
 **System API**: This is a system API.
 
@@ -1538,7 +1539,6 @@ Obtains a **FileInfo** object based on a URI. This API uses an asynchronous call
     console.error("getFileInfoFromUri failed, errCode:" + error.code + ", errMessage:" + error.message);
   }
   ```
-
 
 ### getFileInfoFromRelativePath<sup>10+</sup>
 
@@ -2424,7 +2424,7 @@ async function moveItemFunc01() {
 }
 ```
 
-Example 2: Move a file or directory with **force** set to **true**.
+Example 2: Copy a file or directory with **force** set to **true**.
 
 ```ts
 import { BusinessError } from '@ohos.base';

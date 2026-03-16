@@ -422,7 +422,7 @@ new Date("2020-11-03");
 new Date("11-02-2021");
 ```
 
-其他格式字符串可使用new Date(year:number,month:number,day?:number,hour?:number,mintue?:number,second?:number,ms?:number)方法来获取Date对象。
+其他格式字符串可使用new Date(year:number,month:number,day?:number,hour?:number,minute?:number,second?:number,ms?:number)方法来获取Date对象。
 
 ```ts
 // 根据参数创建日期的语法：

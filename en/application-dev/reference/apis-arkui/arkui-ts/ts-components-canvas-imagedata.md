@@ -12,13 +12,13 @@ An **ImageData** object stores pixel data rendered on a canvas.
 >
 >  This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> To ensure successful drawing, make sure the object's area does not exceed 16000 x 16000, with its width and height not greater than 16384 px. If the created area exceeds 536870911 px, the returned width and height are both 0 px, and **data** is **undefined**.
+> A constructor used to create an **ImageData** object. To ensure successful drawing, make sure the object's area does not exceed 16000 x 16000, with its width and height not greater than 16384 px. If the created area exceeds 536870911 px, the returned width and height are both 0 px, and **data** is **undefined**.
 
 ## constructor
 
 constructor(width: number, height: number, data?: Uint8ClampedArray)
 
-Creates an **ImageData** object with the specified width, height, and data. If data is not provided, a one-dimensional array filled with zeros is used.
+Creates an **ImageData** object with the specified width, height, and color. If data is not defined, it is populated with a one‑dimensional array of 0s.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -31,13 +31,13 @@ Creates an **ImageData** object with the specified width, height, and data. If d
 | ------ | ----- | ----- | ----- |
 | width | number |Yes| Width of the rectangle.<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as **0**.|
 | height | number |Yes| Height of the rectangle.<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as **0**.|
-| data | [Uint8ClampedArray](../../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md) |No| A one-dimensional array of color values. The values range from 0 to 255.<br>If the value specified is **undefined**, **data** is **undefined**.<br>Default value: a one-dimensional array of all zeros|
+| data | [Uint8ClampedArray](../../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md) |No| A one-dimensional array of color values. The values range from 0 to 255.<br>If the value specified is **undefined**, **data** is **undefined**.<br>Default value: a one-dimensional array of all 0s|
 
 ## constructor<sup>12+</sup>
 
 constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: LengthMetricsUnit)
 
-Creates an **ImageData** object with the specified width, height, and data. If data is not provided, a one-dimensional array filled with zeros is used. The unit parameter configures the unit mode for the **ImageData** object.
+Creates an **ImageData** object with the specified width, height, and color. If data is not defined, it is populated with a one‑dimensional array of 0s. The unit of the **ImageData** object can be configured using **unit**.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -51,10 +51,10 @@ Creates an **ImageData** object with the specified width, height, and data. If d
 | ------ | ----- | ----- | ----- |
 | width | number |Yes| Width of the rectangle.<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as **0**.|
 | height | number |Yes| Height of the rectangle.<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as **0**.|
-| data | [Uint8ClampedArray](../../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md) |No| A one-dimensional array of color values. The values range from 0 to 255.<br>If the value specified is **undefined**, **data** is **undefined**.<br>Default value: a one-dimensional array of all zeros|
+| data | [Uint8ClampedArray](../../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md) |No| A one-dimensional array of color values. The values range from 0 to 255.<br>If the value specified is **undefined**, **data** is **undefined**.<br>Default value: a one-dimensional array of all 0s|
 | unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | No  |  Unit mode of the **ImageData** object. The value cannot be dynamically changed once set. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>Invalid values **undefined**, **NaN** and **Infinity** are treated as the default value.<br>Default value: **DEFAULT**.|
 
-## Attributes
+## Properties
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 

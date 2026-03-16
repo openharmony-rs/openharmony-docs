@@ -18,7 +18,7 @@ Declares the USB DDK APIs used by the USB host to access USB devices.
 
 **Since**: 10
 
-**Related module**: [UsbDDK](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-usbddk.md)
 
 ## Summary
 
@@ -31,7 +31,7 @@ Declares the USB DDK APIs used by the USB host to access USB devices.
 | [int32_t OH_Usb_ReleaseResource(void)](#oh_usb_releaseresource) | Releases the USB DDK.|
 | [int32_t OH_Usb_GetDeviceDescriptor(uint64_t deviceId, struct UsbDeviceDescriptor *desc)](#oh_usb_getdevicedescriptor) | Obtains the device descriptor.|
 | [int32_t OH_Usb_GetConfigDescriptor(uint64_t deviceId, uint8_t configIndex, struct UsbDdkConfigDescriptor ** const config)](#oh_usb_getconfigdescriptor) | Obtains the configuration descriptor. To avoid memory leakage, use [OH_Usb_FreeConfigDescriptor](capi-usb-ddk-api-h.md#oh_usb_freeconfigdescriptor) to release a descriptor after use.|
-| [void OH_Usb_FreeConfigDescriptor(const struct UsbDdkConfigDescriptor * const config)](#oh_usb_freeconfigdescriptor) | Releases the configuration descriptor. To avoid memory leakage, release a descriptor after use.|
+| [void OH_Usb_FreeConfigDescriptor(struct UsbDdkConfigDescriptor * const config)](#oh_usb_freeconfigdescriptor) | Releases the configuration descriptor. To avoid memory leakage, release a descriptor after use.|
 | [int32_t OH_Usb_ClaimInterface(uint64_t deviceId, uint8_t interfaceIndex, uint64_t *interfaceHandle)](#oh_usb_claiminterface) | Declares a USB interface.|
 | [int32_t OH_Usb_ReleaseInterface(uint64_t interfaceHandle)](#oh_usb_releaseinterface) | Releases a USB interface.|
 | [int32_t OH_Usb_SelectInterfaceSetting(uint64_t interfaceHandle, uint8_t settingIndex)](#oh_usb_selectinterfacesetting) | Activates the alternate setting of a USB interface.|
@@ -148,7 +148,7 @@ Obtains the configuration descriptor. To avoid memory leakage, use [OH_Usb_FreeC
 | Name                                              | Description|
 |---------------------------------------------------| -- |
 | uint64_t deviceId                                 | Device ID.|
-| uint8_t configIndex                               | Configuration index, which corresponds to the **bConfigurationValue** field in the USB configuration descriptor.|
+| uint8_t configIndex                               | Configuration index, which corresponds to the **bConfigurationValue** field of the configuration descriptor in the USB protocol.|
 | struct [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) ** const config | Configuration descriptor, which includes the standard configuration descriptor defined in the USB protocol and the associated interface descriptor and endpoint descriptor.|
 
 **Returns**
@@ -160,7 +160,7 @@ Obtains the configuration descriptor. To avoid memory leakage, use [OH_Usb_FreeC
 ### OH_Usb_FreeConfigDescriptor()
 
 ```c
-void OH_Usb_FreeConfigDescriptor(const struct UsbDdkConfigDescriptor * const config)
+void OH_Usb_FreeConfigDescriptor(struct UsbDdkConfigDescriptor * const config)
 ```
 
 **Description**

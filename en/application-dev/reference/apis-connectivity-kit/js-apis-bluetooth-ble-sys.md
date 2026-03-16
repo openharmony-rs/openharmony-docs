@@ -80,7 +80,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
 let descriptors: Array<ble.BLEDescriptor>  = [];
 let bufferDesc = new ArrayBuffer(2);
 let descV = new Uint8Array(bufferDesc);
@@ -102,7 +101,7 @@ try {
         console.info('timestamp is: ' + rspContext.timestamp);
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -117,3 +116,13 @@ Information reported by the Bluetooth subsystem to the application after the cli
 | Name      | Type       | Read-Only| Optional  | Description                                |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
 | timestamp     | number      | No| No   | Time when the local end receives the GATT response message from the peer end, in the UNIX timestamp format. The value is in microseconds.                   |
+
+## ScanFilter
+
+Defines the scan filters for BLE advertising packet data. Only advertising packets that meet the filter criteria are reported.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+| Name                                    | Type   | Read-Only| Optional | Description                                                        |
+| ------------------------------------------ | -------- | ---- | ---- | ------------------------------------------------------------ |
+| irk<sup>23+</sup> | Uint8Array | No| Yes| Identity Resolving Key (IRK), which is used to filter the BLE advertising packet that carries the [resolvable private address](./js-apis-bluetooth-common.md#bluetoothrawaddresstype23).<br>The resolvable private address of a Bluetooth device changes over time. If the IRK and public address or static random address of the device are known, BLE advertising packets sent by the same Bluetooth device at different time can be filtered.<br>When this parameter is used, the address and address type must be specified by the address parameters in [ScanFilter](js-apis-bluetooth-ble.md#scanfilter). The address must be a valid public address or static random address, [addressType](js-apis-bluetooth-common.md#bluetoothaddresstype) must be set to **REAL**, and [rawAddressType](js-apis-bluetooth-common.md#bluetoothrawaddresstype23) must be set based on the actual address.<br>**System API**: This is a system API.|

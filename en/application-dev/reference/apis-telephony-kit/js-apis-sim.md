@@ -943,7 +943,7 @@ console.info(`has sim card: ` + hasSimCard);
 
 getSimAccountInfo\(slotId: number, callback: AsyncCallback\<IccAccountInfo\>\): void
 
-Obtains account information of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Obtains SIM card account information. This API uses an asynchronous callback to return the result.
 
 **Required permission**: ohos.permission.GET_TELEPHONY_STATE
 
@@ -990,7 +990,7 @@ sim.getSimAccountInfo(0, (err:BusinessError , data: sim.IccAccountInfo) => {
 
 getSimAccountInfo\(slotId: number\): Promise\<IccAccountInfo\>
 
-Obtains account information of the SIM card in the specified slot. This API uses a promise to return the result.
+Obtains SIM card account information. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_TELEPHONY_STATE
 

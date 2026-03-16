@@ -15,7 +15,7 @@ The [Group Key](huks-group-key-overview.md) feature is supported since API versi
 
 1. Specify the key alias. For details about the naming rules, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
 
-2. Initialize the key property set to specify [the property tags of keys](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag). When a single key is queried, **TAG** can be empty.
+2. Initialize the key property set. This is used to specify the properties for querying a key. To query a single key or non-group key, this set can be left empty.
 
 3. Use [hasKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukshaskeyitem11) to check whether the key exists.
 
@@ -114,4 +114,3 @@ async function executeCheckKey(): Promise<string> {
   }
 }
 ```
-<!--no_check-->

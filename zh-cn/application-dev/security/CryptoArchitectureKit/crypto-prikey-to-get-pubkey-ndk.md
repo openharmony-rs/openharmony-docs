@@ -30,22 +30,16 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 5. 比较公钥数据与期望值是否相等。
 
-```c++
+<!-- @[prikey_get_pubkey_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/cpp/types/project/prikey_get_pubkey.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_asym_key.h"
 #include <cstring>
+#include "file.h"
 
-static OH_Crypto_ErrCode randomGenerateAsymKey()
+static OH_Crypto_ErrCode CovertPriketToKeyPair(OH_CryptoAsymKeyGenerator *ctx, OH_CryptoKeyPair **keyPair)
 {
-    OH_CryptoAsymKeyGenerator *ctx = nullptr;
-    OH_CryptoKeyPair *keyPair = nullptr;
-    OH_Crypto_ErrCode ret;
-
-    ret = OH_CryptoAsymKeyGenerator_Create("RSA1024|PRIMES_2", &ctx);
-    if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoAsymKeyGenerator_Destroy(ctx);
-        return ret;
-    }
     uint8_t privData[] = {
         0x30, 0x82, 0x01, 0x3c, 0x02, 0x01, 0x00, 0x02, 0x41, 0x00, 0xe4, 0x0c, 0xc1, 0x45, 0x43, 0xff,
         0x9f, 0x2c, 0x02, 0x99, 0x11, 0x00, 0xff, 0x45, 0xb0, 0x8e, 0x01, 0xe1, 0x2f, 0x83, 0xf4, 0xe3,
@@ -68,6 +62,25 @@ static OH_Crypto_ErrCode randomGenerateAsymKey()
         0xbe, 0x19, 0x10, 0x81, 0x5d, 0x0f, 0x20, 0x7a, 0x34, 0x70, 0x55, 0xae, 0xc6, 0x5e, 0xb7, 0xb9,
         0xea, 0x26, 0x82, 0x9f, 0x8d, 0x72, 0xdc, 0xd0, 0x3b, 0x75, 0xfd, 0xf3, 0x58, 0x61, 0x9e, 0xcc,
     };
+    Crypto_DataBlob dataBlob = { .data = privData, .len = sizeof(privData) };
+    OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Convert(ctx, CRYPTO_DER, nullptr, &dataBlob, keyPair);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    return ret;
+}
+
+OH_Crypto_ErrCode doTestGetPubkeyFromPrikey()
+{
+    OH_CryptoAsymKeyGenerator *ctx = nullptr;
+    OH_CryptoKeyPair *keyPair = nullptr;
+
+    OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create("RSA1024|PRIMES_2", &ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_CryptoAsymKeyGenerator_Destroy(ctx);
+        return ret;
+    }
+
     uint8_t expectedPubData[] = {
         0x30, 0x5c, 0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x01, 0x01, 0x05,
         0x00, 0x03, 0x4b, 0x00, 0x30, 0x48, 0x02, 0x41, 0x00, 0xe4, 0x0c, 0xc1, 0x45, 0x43, 0xff, 0x9f,
@@ -77,8 +90,7 @@ static OH_Crypto_ErrCode randomGenerateAsymKey()
         0x3f, 0x8c, 0x58, 0x5d, 0xdd, 0x9f, 0x0c, 0x04, 0xc1, 0x02, 0x03, 0x01, 0x00, 0x01
     };
 
-    Crypto_DataBlob dataBlob = { .data = privData, .len = sizeof(privData) };
-    ret = OH_CryptoAsymKeyGenerator_Convert(ctx, CRYPTO_DER, nullptr, &dataBlob, &keyPair);
+    ret = CovertPriketToKeyPair(ctx, &keyPair);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoAsymKeyGenerator_Destroy(ctx);
         OH_CryptoKeyPair_Destroy(keyPair);
@@ -87,7 +99,7 @@ static OH_Crypto_ErrCode randomGenerateAsymKey()
 
     OH_CryptoPubKey *pubKey = OH_CryptoKeyPair_GetPubKey(keyPair);
     Crypto_DataBlob pubData = { .data = nullptr, .len = 0 };
-     ret = OH_CryptoPubKey_Encode(pubKey, CRYPTO_DER, nullptr, &pubData);
+    ret = OH_CryptoPubKey_Encode(pubKey, CRYPTO_DER, nullptr, &pubData);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoAsymKeyGenerator_Destroy(ctx);
         OH_CryptoKeyPair_Destroy(keyPair);
@@ -106,3 +118,4 @@ static OH_Crypto_ErrCode randomGenerateAsymKey()
     return ret;
 }
 ```
+

@@ -16,7 +16,7 @@ The **Counter** component enables precise numerical value adjustment.
 
 ## Modules to Import
 
-```
+```ts
 import { CounterType, CounterComponent, CounterOptions, DateData } from '@kit.ArkUI';
 ```
 
@@ -26,7 +26,7 @@ Not supported
 
 ## CounterComponent
 
-CounterComponent({ options: CounterOptions })
+CounterComponent({&nbsp;options:&nbsp;CounterOptions&nbsp;})
 
 Defines a **Counter** component instance.
 
@@ -93,7 +93,7 @@ Defines common attributes and events for all counter types.
 | Name           | Type                     | Read-Only| Optional| Description                                                        |
 | --------------- | ------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | focusable       | boolean                   | No | Yes | Whether the counter is focusable.<br>**NOTE**<br>This attribute only applies to list and compact counters.<br>Default value: **true**.<br>**true**: focusable. **false**: not focusable.<br>If the value is **undefined**, the default value is used.|
-| step            | number                    | No | Yes | Step of the counter.<br>Value range: an integer greater than or equal to 1.<br>Default value: **1**<br>If the value is **undefined**, the default value is used.|
+| step            | number                    | No | Yes | Step of the counter.<br>Value range: an integer greater than or equal to 1.<br>Default value: **1**<br>If the value is out of the range, the default value is used.|
 | onHoverIncrease | (isHover: boolean) => void | No | Yes | Callback invoked when the mouse pointer is moved over or away from the increase button of the counter.<br>**isHover**: whether the mouse pointer is hovering over the component. The value **true** means that the mouse pointer enters the component, and the value **false** means that the mouse pointer leaves the component.<br>Default value: no callback triggered.<br>If the value is **undefined**, the default value is used.|
 | onHoverDecrease | (isHover: boolean) => void | No | Yes | Callback invoked when the mouse pointer is moved over or away from the decrease button of the counter.<br>**isHover**: whether the mouse pointer is hovering over the component. The value **true** means that the mouse pointer enters the component, and the value **false** means that the mouse pointer leaves the component.<br>Default value: no callback triggered.<br>If the value is **undefined**, the default value is used.|
 
@@ -109,10 +109,10 @@ Inherits from [CommonOptions](#commonoptions).
 
 | Name     | Type                  | Read-Only| Optional| Description                                                  |
 | --------- | ---------------------- | ---- | ------------------------------------------------------ | ------------------------------------------------------ |
-| value     | number                 | No | Yes | Initial value of the counter.<br>Default value: **0**<br>Value range: [min, max].<br>If the value is **undefined**, the default value is used.|
+| value     | number                 | No | Yes | Initial value of the counter.<br>Default value: **0**<br>Value range: [min, max].<br>When the value exceeds the allowed range, it is handled as follows: if the value is **undefined**, the default value is applied; otherwise, the maximum allowed value is used.|
 | min       | number                 | No | Yes | Minimum value of the counter.<br>Default value: **0**<br>Value range: (-∞, +∞)<br>If the value is **undefined**, the default value is used.|
 | max       | number                 | No | Yes | Maximum value of the counter.<br>Default value: **999**<br>Value range: (-∞, +∞)<br>If the value is **undefined**, the default value is used.|
-| textWidth | number                 | No | Yes | Text width of the counter.<br>Default value: auto-adjusted width.<br>Value range: [0, +∞)<br>Unit: vp.<br>If the value is **undefined**, the default value is used.|
+| textWidth | number                 | No | Yes | Text width of the counter.<br>Default value: auto-adjusted width.<br>Value range: [0, +∞)<br>Unit: vp.<br>When the value exceeds the allowed range, it is handled as follows: if the value is **undefined**, the default value is applied; otherwise, the maximum allowed value is used.|
 | onChange  | (value: number) => void | No | Yes | Callback invoked when the value changes. The current value is returned.<br>**value**: current value.<br>Default value: no callback triggered.<br>If the value is **undefined**, the default value is used.|
 
 ## NumberStyleOptions
@@ -145,9 +145,9 @@ Inherits from [CommonOptions](#commonoptions).
 
 | Name        | Type                               | Read-Only| Optional| Description                                                     |
 | ------------ | ----------------------------------- | ---- | --------------------------------------------------------- | --------------------------------------------------------- |
-| year         | number                              | No | Yes | Initial year of the counter.<br>Default value: **1**<br>Value range: [1, 5000]<br>If the value is **undefined**, the default value is used.|
-| month        | number                              | No | Yes | Initial month of the counter.<br>Default value: **1**<br>Value range: [1, 12]<br>If the value is **undefined**, the default value is used.|
-| day          | number                              | No | Yes | Initial day of the counter.<br>Default value: **1**<br>Value range: [1, 31]<br>If the value is **undefined**, the default value is used.|
+| year         | number                              | No | Yes | Initial year of the counter.<br>Default value: **1**<br>Value range: [1, 5000]<br>If the value is out of the range, the default value is used.|
+| month        | number                              | No | Yes | Initial month of the counter.<br>Default value: **1**<br>Value range: [1, 12]<br>If the value is out of the range, the default value is used.|
+| day          | number                              | No | Yes | Initial day of the counter.<br>Default value: **1**<br>Value range: [1, 31]<br>If the value is out of the range, the default value is used.|
 | onDateChange | (date: [DateData](#datedata)) => void | No | Yes | Callback invoked when the date changes. The current date is returned.<br>**date**: current date.<br>If the value is **undefined**, the current date value is not displayed.|
 
 ## DateData
@@ -160,9 +160,9 @@ Defines date attributes, including year, month, and day.
 
 | Name | Type  | Read-Only| Optional| Description                                                        |
 | ----- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| year  | number | No  | No  | Initial year of the counter.<br>Default value: **1**<br>Value range: [1, 5000]<br>If the value is **undefined**, the default value is used.|
-| month | number | No  | No  | Initial month of the counter.<br>Default value: **1**<br>Value range: [1, 12]<br>If the value is **undefined**, the default value is used.|
-| day   | number | No  | No  | Initial day of the counter.<br>Default value: **1**<br>Value range: [1, 31]<br>If the value is **undefined**, the default value is used.|
+| year  | number | No  | No  | Initial year of the counter.<br>Default value: **1**<br>Value range: [1, 5000]<br>If the value is out of the range, the default value is used.|
+| month | number | No  | No  | Initial month of the counter.<br>Default value: **1**<br>Value range: [1, 12]<br>If the value is out of the range, the default value is used.|
+| day   | number | No  | No  | Initial day of the counter.<br>Default value: **1**<br>Value range: [1, 31]<br>If the value is out of the range, the default value is used.|
 
 ### constructor
 

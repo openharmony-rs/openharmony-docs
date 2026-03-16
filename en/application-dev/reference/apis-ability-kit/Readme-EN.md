@@ -221,10 +221,10 @@
       - [BundleResourceInfo (System API)](js-apis-bundleManager-BundleResourceInfo-sys.md)
       - [BusinessAbilityInfo (System API)](js-apis-bundleManager-businessAbilityInfo-sys.md)
       - [dispatchInfo (System API)](js-apis-bundleManager-dispatchInfo-sys.md)
-      - [LauncherAbilityResourceInfo (System API)](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)
+      - [LauncherAbilityResourceInfo (System API)](js-apis-LauncherAbilityResourceInfo-sys.md)
       - [permissionDef (System API)](js-apis-bundleManager-permissionDef-sys.md)
       - [PluginBundleInfo (System API)](js-apis-bundleManager-pluginBundleInfo-sys.md)
-      - [recoverableApplicationInfo (System API)](js-apis-bundleManager-recoverableApplicationInfo-sys.md)
+      - [recoverableApplicationInfo (System API)](js-apis-recoverableApplicationInfo-sys.md)
       - [remoteAbilityInfo (System API)](js-apis-bundleManager-remoteAbilityInfo-sys.md)
       - [SharedBundleInfo (System API)](js-apis-bundleManager-sharedBundleInfo-sys.md)
       <!--DelEnd-->

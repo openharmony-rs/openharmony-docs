@@ -89,8 +89,8 @@ Ability上次退出原因，该类型为枚举，可配合UIAbility的[onCreate(
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
 | UNKNOWN          | 0    | 未知原因。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| ABILITY_NOT_RESPONDING<sup>(deprecated)</sup> | 1    | Ability未响应。<br>**说明:** 从API version 9开始支持，从API version 10开始废弃，请使用APP_FREEZE替代。|
-| NORMAL | 2    | 用户主动关闭，应用程序正常退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**说明**：当开发者直接调用[process.exit()](../apis-arkts/js-apis-process.md#processexitdeprecated)、内核kill命令等非Ability Kit提供的能力强制退出应用进程时，也会返回NORMAL。 |
+| ABILITY_NOT_RESPONDING<sup>(deprecated)</sup> | 1    | Ability组件未响应。<br>**说明:** 从API version 9开始支持，从API version 10开始废弃，请使用APP_FREEZE替代。|
+| NORMAL | 2    | 用户主动关闭应用，应用程序正常退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**说明**：当开发者直接调用[process.exit()](../apis-arkts/js-apis-process.md#processexitdeprecated)、内核kill命令等非Ability Kit提供的能力强制退出应用进程时，也会返回NORMAL。 |
 | CPP_CRASH<sup>10+</sup>  | 3    | [进程崩溃](../../dfx/cppcrash-guidelines.md)导致的应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | JS_ERROR<sup>10+</sup>  | 4    | 当应用存在JS语法错误并未被开发者捕获时，触发JS_ERROR故障，导致应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | APP_FREEZE<sup>10+</sup>  | 5    | [应用冻屏](../../dfx/appfreeze-guidelines.md)导致的应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -134,6 +134,7 @@ export default class MyAbility extends UIAbility {
 | pss | number | 否 | 否 | Ability上次退出时所在进程实际使用的物理内存大小，单位KB。 <br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。|
 | timestamp | number | 否 | 否 | Ability上次退出时的时间戳。 <br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。|
 | processState<sup>20+</sup> | [appManager.ProcessState](js-apis-app-ability-appManager.md#processstate10) | 否 | 是 | Ability上次退出时的进程状态。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
+| killReason<sup>24+</sup> | string | 否 | 是 | Ability上次退出时的原因，取值详见[应用终止事件reason字段说明](../../dfx/hiappevent-watcher-app-killed-events.md#reason字段说明)。<br/>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
 
 **示例**:
 
@@ -151,7 +152,8 @@ export default class MyAbility extends UIAbility {
       \n rss: ${launchParam.lastExitDetailInfo.rss}
       \n pss: ${launchParam.lastExitDetailInfo.pss}
       \n timestamp: ${launchParam.lastExitDetailInfo.timestamp}
-      \n processState: ${launchParam.lastExitDetailInfo.processState}.`
+      \n processState: ${launchParam.lastExitDetailInfo.processState}
+      \n killReason: ${launchParam.lastExitDetailInfo?.killReason}.`
       );
     }
   }
@@ -194,20 +196,21 @@ export default class MyAbility extends UIAbility {
 | ---                         | --- | ---           |
 | MEMORY_LEVEL_MODERATE       | 0   | 表示整机可用内存适中。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。| 
 | MEMORY_LEVEL_LOW            | 1   | 表示整机可用内存低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。| 
-| MEMORY_LEVEL_CRITICAL       | 2   | 表示整机可用内极低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
-| MEMORY_LEVEL_UI_HIDDEN<sup>23+</sup>      | 3   | 表示应用程序的所有UI界面已不可见，此时应该释放一些资源。该枚举仅对从前台切换到后台的应用生效。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|  
-| MEMORY_LEVEL_BACKGROUND_MODERATE<sup>23+</sup>     | 4   | 表示应用刚被使用过，即处于应用使用排序链表（LRU）的前三分之一区间，暂时不会被系统清理。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|  
-| MEMORY_LEVEL_BACKGROUND_LOW<sup>23+</sup>    | 5   | 表示应用已被用户使用完一段时间，即处于应用使用排序链表（LRU）的中间三分之一区间，存在被系统清理的风险。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。| 
-| MEMORY_LEVEL_BACKGROUND_CRITICAL<sup>23+</sup>    | 6   | 表示应用长期未被使用，即处于应用使用排序链表（LRU）的后三分之一区间，会被系统优先清理。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
+| MEMORY_LEVEL_CRITICAL       | 2   | 表示整机可用内存极低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
+| MEMORY_LEVEL_UI_HIDDEN<sup>24+</sup>      | 3   | 表示应用程序的所有UI界面已不可见，此时应该释放一些资源。该枚举仅对从前台切换到后台的应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
+| MEMORY_LEVEL_BACKGROUND_MODERATE<sup>24+</sup>     | 4   | 表示应用刚被使用过，即处于应用使用排序链表（LRU）的头部，暂时不会被系统清理。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
+| MEMORY_LEVEL_BACKGROUND_LOW<sup>24+</sup>    | 5   | 表示应用已被用户使用完一段时间，即处于应用使用排序链表（LRU）的中部，存在被系统清理的风险。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
+| MEMORY_LEVEL_BACKGROUND_CRITICAL<sup>24+</sup>    | 6   | 表示应用长期未被使用，即处于应用使用排序链表（LRU）的尾部，会被系统优先清理。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
 
 > **说明：**
 > 
 > - 不同产品的触发条件可能存在差异。以12G内存的标准设备为例：
->   - 当整机可用内存下降至1700M~1800M时，会触发取值为0的onMemoryLevel回调，表示当前整机可用内存适中。
->   - 当整机可用内存下降至1600M~1700M时，会触发取值为1的onMemoryLevel回调，表示当前整机可用内存偏低。
->   - 当整机可用内存下降至1600M以下时，会触发取值为2的onMemoryLevel回调，表示当前整机可用内存很低。
+>   - 当整机可用内存下降至1700MB~1800MB时，会触发取值为0的onMemoryLevel回调，表示当前整机可用内存适中。
+>   - 当整机可用内存下降至1600MB~1700MB时，会触发取值为1的onMemoryLevel回调，表示当前整机可用内存偏低。
+>   - 当整机可用内存下降至1600MB以下时，会触发取值为2的onMemoryLevel回调，表示当前整机可用内存很低。
 >
 > - LRU：表示按应用最近使用顺序排序的链表。通常将最近使用的应用放在链表头部（位置靠前），将最不常用的应用放在链表尾部（位置靠后）。当内存不足时，位置靠后的应用将优先被清理。
+> - 当LRU发生变化时，后台应用会根据处于应用使用排序链表（LRU）的位置，触发对应MemoryLevel级别(MEMORY_LEVEL_BACKGROUND_MODERATE、MEMORY_LEVEL_BACKGROUND_LOW、MEMORY_LEVEL_BACKGROUND_CRITICAL)的onMemoryLevel回调。如果应用被冻结，则会在应用唤醒时收到对应的onMemoryLevel回调，因此不建议在此回调接口中做耗时操作。
 
 **示例：**
 

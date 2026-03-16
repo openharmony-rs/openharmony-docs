@@ -1483,7 +1483,9 @@ promise.then((data: number) => {
 
 getSimLabel(slotId: number, callback: AsyncCallback\<SimLabel\>): void
 
-查看卡槽ID和SIM卡的对应关系：- 卡槽1对应SIM卡1或SIM卡2- 卡槽2对应SIM卡2或ESIMX
+查看卡槽ID和SIM卡的对应关系：
+- 卡槽1对应SIM卡1或SIM卡2
+- 卡槽2对应SIM卡2或ESIMX
 
 **系统能力**：SystemCapability.Telephony.CoreService
 

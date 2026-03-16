@@ -76,7 +76,7 @@ export default class EntryAbility extends UIAbility {
       abilityName: 'UIExtensionProvider',
       moduleName: 'entry',
       parameters: {
-        //与UIExtensionAbility在module.json5中"type"字段配置一致
+        // 与UIExtensionAbility在module.json5中"type"字段配置一致
         'ability.want.params.uiExtensionType': 'sys/commonUI'
       }
     };

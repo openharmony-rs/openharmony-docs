@@ -42,10 +42,14 @@ A child element does not necessarily adopt the dependency shown above to determi
 ### Setting Reference Boundaries
 
 Specify which boundary of the current component aligns with the anchor. Child components within the container can have both horizontal and vertical reference boundaries.
+
 * In the horizontal direction, component boundaries can align with the anchor using start (**left**), center (**middle**), or end (**right**) boundaries. When all three boundaries are specified, only the start (**left**) and center (**middle**) boundaries take effect.
-![relative-layout-alignrules01](figures/relative-layout-alignrules01.png)
+
+  ![relative-layout-alignrules01](figures/relative-layout-alignrules01.png)
+
 * In the vertical direction, component boundaries can align with the anchor using top, center, or bottom boundaries. When all three boundaries are specified, only the top and center boundaries take effect.
-![relative-layout-alignrules02](figures/relative-layout-alignrules02.png)
+
+  ![relative-layout-alignrules02](figures/relative-layout-alignrules02.png)
 
 ### Setting Anchors
 

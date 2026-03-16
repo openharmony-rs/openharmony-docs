@@ -1004,8 +1004,8 @@ SmartPerf Device是一款基于系统开发的性能功耗测试工具，操作�
     | ChildsharedClean        | 子进程共享的未改写页面。      |单位：KB|
     | sharedDirty             | 进程共享的已改写页面。      |单位：KB|
     | ChildsharedDirty        | 子进程共享的已改写页面。      |单位：KB|
-    | priviateClean           | 进程私有的未改写页面。      |单位：KB|
-    | ChildpriviateClean      | 子进程私有的未改写页面。      |单位：KB|
+    | privateClean           | 进程私有的未改写页面。      |单位：KB|
+    | ChildprivateClean      | 子进程私有的未改写页面。      |单位：KB|
     | privateDirty            | 进程私有的已改写页面。      |单位：KB|
     | ChildprivateDirty       | 子进程私有的已改写页面。      |单位：KB|
     | swapTotal               | 进程总的交换内存。          |单位：KB|

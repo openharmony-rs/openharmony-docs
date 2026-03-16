@@ -20,7 +20,7 @@
    import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
    
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
-   // Worker接收宿主线程的消息，做相应的处理
+   // Worker接收宿主线程的消息，进行相应的处理
    workerPort.onmessage = (e: MessageEvents): void => {
      if (e.data === 'hello world') {
        workerPort.postMessage('success');
@@ -93,4 +93,4 @@
    <!-- @[respond_worker_instant_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/WorkerCommunicatesWithMainthread.ets) -->
 
 
-在示例代码中，Worker接收宿主线程的消息，并进行处理后将结果返回给宿主线程。实现了宿主线程与Worker之间的即时通信，使宿主线程能够方便地使用Worker的运行结果。
+在示例代码中，Worker接收宿主线程的消息，并处理后将结果返回给宿主线程。实现了宿主线程与Worker之间的即时通信，使宿主线程能够方便地使用Worker的运行结果。

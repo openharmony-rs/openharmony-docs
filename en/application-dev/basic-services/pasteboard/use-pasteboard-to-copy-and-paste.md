@@ -41,7 +41,7 @@ To ensure that applications have the same understanding of the pasteboard data a
 - Pasteboard data is personal data. The pasteboard provides security components and the ohos.permission.READ_PASTEBOARD permission granted by the user for applications to read the pasteboard data.<br>
 - The data written by the application to the pasteboard may be in multiple formats, so the applications need to select the most appropriate format based on the current page and scenario to paste the data.
 
--The pasteboard also provides TS APIs and NDK APIs. Applications can select appropriate APIs as required to support the copy and paste functionality.
+- The pasteboard also provides TS APIs and NDK APIs. Applications can select appropriate APIs as required to support the copy and paste functionality.
 
 ## Using Basic Data Types for Copy and Paste
 
@@ -62,17 +62,15 @@ The ArkTS data type corresponds to the pasteboard type. For details, see [ohos.p
 
 ### Available APIs
 
-For details about the APIs, see [API Reference](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9).
-
 After obtaining URI data using the **getData** API, use the [fs.copy](../../reference/apis-core-file-kit/js-apis-file-fs.md#fscopy11) API of File Manager to obtain the file.
 
 | Name| Description                                                                                                                                       |
 | -------- |----------------------------------------------------------------------------------------------------------------------------------------|
-| setData(data: PasteData, callback: AsyncCallback&lt;void&gt;): void | Writes a **PasteData** object to the pasteboard. This API uses an asynchronous callback to return the result.|
-| setData(data: PasteData): Promise&lt;void&gt; | Writes a **PasteData** object to the pasteboard. This API uses a promise to return the result.|
-| getData( callback: AsyncCallback&lt;PasteData&gt;): void | Reads a **PasteData** object from the pasteboard. This API uses an asynchronous callback to return the result.|
-| getData(): Promise&lt;PasteData&gt; | Reads a **PasteData** object from the pasteboard. This API uses a promise to return the result.|
-| getDataSync(): PasteData | Reads a **PasteData** object from the pasteboard. This API returns the result synchronously and cannot be called in the same thread as **SetData**.|
+| [setData(data: PasteData, callback: AsyncCallback&lt;void&gt;): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setdata9) | Writes a **PasteData** object to the pasteboard. This API uses an asynchronous callback to return the result.|
+| [setData(data: PasteData): Promise&lt;void&gt;](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setdata9-1) | Writes a **PasteData** object to the pasteboard. This API uses a promise to return the result.|
+| [getData( callback: AsyncCallback&lt;PasteData&gt;): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9) | Reads a **PasteData** object from the pasteboard. This API uses an asynchronous callback to return the result.|
+| [getData(): Promise&lt;PasteData&gt;](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9-1) | Reads a **PasteData** object from the pasteboard. This API uses a promise to return the result.|
+| [getDataSync(): PasteData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdatasync11) | Reads a **PasteData** object from the pasteboard. This API returns the result synchronously and cannot be called in the same thread as **SetData**.|
 
 ### Example
 
@@ -113,14 +111,12 @@ Currently, the following basic data types are supported for copy and paste: text
 
 ### Available APIs
 
-For details about the APIs, see [API Reference](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12).
-
 | Name| Description                                                                                                  |
 | -------- |---------------------------------------------------------------------------------------------------|
-| setUnifiedData(data: udc.UnifiedData): Promise\<void\> | Writes the data of a unified data object to the system pasteboard.                  |
-| setUnifiedDataSync(data: udc.UnifiedData): void | Writes the data of a unified data object to the system pasteboard. This API returns the result synchronously.         |
-| getUnifiedData(): Promise\<udc.UnifiedData\> | Reads the data of a unified data object from the system pasteboard.                          |
-| getUnifiedDataSync(): udc.UnifiedData | Reads the data of a unified data object from the system pasteboard. This API returns the result synchronously.                 |
+| [setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setunifieddata12) | Writes the data of a unified data object to the system pasteboard.                  |
+| [setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setunifieddatasync12) | Writes the data of a unified data object to the system pasteboard. This API returns the result synchronously.         |
+| [getUnifiedData(): Promise\<unifiedDataChannel.UnifiedData\>](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12) | Reads the data of a unified data object from the system pasteboard.                          |
+| [getUnifiedDataSync(): unifiedDataChannel.UnifiedData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddatasync12) | Reads the data of a unified data object from the system pasteboard. This API returns the result synchronously.                 |
 
 ### Example
 

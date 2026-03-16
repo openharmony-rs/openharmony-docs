@@ -14,7 +14,7 @@
 >
 > 从API version 9开始，该模块不再维护。建议使用[bundleManager-ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)替代。
 
-## ShortcutInfo<sup>(deprecated)<sup>
+## ShortcutInfo<sup>(deprecated)</sup>
 
 > **说明：**
 >

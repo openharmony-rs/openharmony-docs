@@ -27,7 +27,7 @@ on(event: InnerEvent, callback: Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -61,7 +61,7 @@ on(eventId: string, callback:  Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -90,7 +90,7 @@ on<T\>(eventId: string, callback:  Callback\<GenericEventData<T\>\>): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -133,7 +133,7 @@ once(event: InnerEvent, callback: Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -166,7 +166,7 @@ once(eventId: string, callback: Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -195,7 +195,7 @@ once<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -240,7 +240,7 @@ off(eventId: number): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -265,7 +265,7 @@ off(eventId: string): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -290,7 +290,7 @@ off(eventId: number, callback: Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -322,7 +322,7 @@ off(eventId: string, callback: Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -354,7 +354,7 @@ off<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -402,14 +402,14 @@ emit(event: InnerEvent, data?: EventData): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
 | 参数名 | 类型                      | 必填 | 说明           |
 | ------ | ------------------------- | ---- | ------------- |
 | event  | [InnerEvent](#innerevent) | 是   | 发送的事件，其中[EventPriority](#eventpriority)用于指定事件被发送的优先级。 |
-| data   | [EventData](#eventdata)   | 否   | 事件携带的数据。 |
+| data   | [EventData](#eventdata)   | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -441,14 +441,14 @@ emit(eventId: string, data?: EventData): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明             |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。   |
-| data    | [EventData](#eventdata) | 否   | 事件携带的数据。 |
+| data    | [EventData](#eventdata) | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -475,14 +475,14 @@ emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明             |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。   |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据。 |
+| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -516,7 +516,7 @@ emit(eventId: string, options: Options, data?: EventData): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -524,7 +524,7 @@ emit(eventId: string, options: Options, data?: EventData): void
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。   |
 | options | [Options](#options11)   | 是   | 事件优先级。     |
-| data    | [EventData](#eventdata) | 否   | 事件携带的数据。 |
+| data    | [EventData](#eventdata) | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -555,7 +555,7 @@ emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -563,7 +563,7 @@ emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。   |
 | options | [Options](#options11)   | 是   | 事件优先级。     |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据。 |
+| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -597,7 +597,7 @@ getListenerCount(eventId: number | string): number
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -615,7 +615,7 @@ getListenerCount(eventId: number | string): number
 **示例：**
 
 ```ts
-let count = emitter.getListenerCount("eventId");
+let count: number = emitter.getListenerCount("eventId");
 ```
 
 ## EventPriority
@@ -624,7 +624,7 @@ let count = emitter.getListenerCount("eventId");
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**:  `SystemCapability.Notification.Emitter`
+**系统能力**： `SystemCapability.Notification.Emitter`
 
 | 名称      | 值    | 说明                                                |
 | --------- | ---- | --------------------------------------------------- |
@@ -639,7 +639,7 @@ let count = emitter.getListenerCount("eventId");
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 | 名称     | 类型                        | 只读 | 可选 | 说明                                 |
 | -------- | ------------------------------- | ---- | ---- | ------------------------------ |
@@ -652,7 +652,7 @@ let count = emitter.getListenerCount("eventId");
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 | 名称 | 类型           | 只读 | 可选 | 说明           |
 | ---- | ------------------ | ---- | ---- | -------------- |
@@ -664,7 +664,7 @@ let count = emitter.getListenerCount("eventId");
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 | 名称     | 类型                            | 只读 | 可选 | 说明           |
 | -------- | ------------------------------- | ---- | ---- | -------------- |
@@ -676,7 +676,7 @@ let count = emitter.getListenerCount("eventId");
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 | 名称     | 类型                            | 只读 | 可选 | 说明           |
 | -------- | ------------------------------- | ---- | ---- | -------------- |
@@ -685,7 +685,7 @@ let count = emitter.getListenerCount("eventId");
 
 ## Emitter<sup>22+</sup>
 
-该功能支持在同一进程的同一Emitter类实例中,跨不同线程或同一线程内发送和处理事件。它能够实现持续订阅事件、单次订阅事件、取消订阅事件以及将事件发送到事件队列。
+该功能支持在同一进程的同一Emitter类实例中，跨不同线程或同一线程内发送和处理事件。它能够实现持续订阅事件、单次订阅事件、取消订阅事件以及将事件发送到事件队列。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -705,7 +705,7 @@ constructor()
 
 
 ```ts
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 ```
 
 ### on<sup>22+</sup>
@@ -716,7 +716,7 @@ on(eventId: string, callback:  Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -730,7 +730,7 @@ on(eventId: string, callback:  Callback\<EventData\>): void
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
@@ -747,7 +747,7 @@ on<T\>(eventId: string, callback:  Callback\<GenericEventData<T\>\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -761,7 +761,7 @@ on<T\>(eventId: string, callback:  Callback\<GenericEventData<T\>\>): void
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 @Sendable
 class Sample {
@@ -792,7 +792,7 @@ once(eventId: string, callback: Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -806,7 +806,7 @@ once(eventId: string, callback: Callback\<EventData\>): void
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
@@ -823,7 +823,7 @@ once<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -837,7 +837,7 @@ once<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 @Sendable
 class Sample {
@@ -870,7 +870,7 @@ off(eventId: string): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -881,7 +881,7 @@ off(eventId: string): void
 **示例：**
 
 ```ts
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 emitter1.off("eventId");
 ```
@@ -896,7 +896,7 @@ off(eventId: string, callback: Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -910,7 +910,7 @@ off(eventId: string, callback: Callback\<EventData\>): void
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
@@ -929,7 +929,7 @@ off<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -954,7 +954,7 @@ class Sample {
   count: number;
 }
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.GenericEventData<Sample>): void => {
   console.info(`eventData: ${JSON.stringify(eventData?.data)}`);
@@ -978,19 +978,19 @@ emit(eventId: string, data?: EventData): void
 
 **原子化服务API：** 从API version 22开始支持原子化服务。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明             |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。   |
-| data    | [EventData](#eventdata) | 否   | 事件携带的数据。 |
+| data    | [EventData](#eventdata) | 否   | 事件携带的数据，默认为空。|
 
 **示例：**
 
 ```ts
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 let eventData: emitter.EventData = {
   data: {
   "content": "content",
@@ -1013,14 +1013,14 @@ emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明             |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据。 |
+| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -1036,7 +1036,7 @@ class Sample {
   count: number;
 }
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let eventData: emitter.GenericEventData<Sample> = {
   data: new Sample()
@@ -1057,7 +1057,7 @@ emit(eventId: string, options: Options, data?: EventData): void
 
 **原子化服务API：** 从API version 22开始支持原子化服务。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -1065,12 +1065,12 @@ emit(eventId: string, options: Options, data?: EventData): void
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。   |
 | options | [Options](#options11)   | 是   | 事件优先级。     |
-| data    | [EventData](#eventdata) | 否   | 事件携带的数据。 |
+| data    | [EventData](#eventdata) | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 
 ```ts
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let options: emitter.Options = {
   priority: emitter.EventPriority.HIGH
@@ -1097,7 +1097,7 @@ emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -1105,7 +1105,7 @@ emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。   |
 | options | [Options](#options11)   | 是   | 事件优先级。     |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据。 |
+| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -1121,7 +1121,7 @@ class Sample {
   count: number;
 }
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let options: emitter.Options = {
   priority: emitter.EventPriority.HIGH
@@ -1141,7 +1141,7 @@ getListenerCount(eventId: string): number
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -1159,6 +1159,6 @@ getListenerCount(eventId: string): number
 **示例：**
 
 ```ts
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 let count = emitter1.getListenerCount("eventId");
 ```

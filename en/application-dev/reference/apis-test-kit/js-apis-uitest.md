@@ -17,7 +17,7 @@ This module provides the following functions:
 - [Driver<sup>9+</sup>](#driver9): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
 - [UiWindow<sup>9+</sup>](#uiwindow9): works as the entry class and provides APIs for obtaining window attributes, dragging windows, and adjusting window sizes.
 - [By<sup>(deprecated)</sup>](#bydeprecated): provides UI component feature description APIs for component filtering and matching. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
-- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [[Component<sup>9+</sup>](#component9)](#on9) instead.
+- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
 - [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
 
 > **NOTE**
@@ -278,6 +278,7 @@ Since API version 9, the UiTest framework provides a wide range of UI component 
 The APIs provided by the **On** class exhibit the following features:<br>1. Allow one or more attributes as the match conditions. For example, you can specify both the **text** and **id** attributes to find the target component.<br>2. Provide multiple match patterns for component attributes.<br>3. Support absolute positioning and relative positioning for components. APIs such as [ON.isBefore](#isbefore9) and [ON.isAfter](#isafter9) can be used to specify the features of adjacent components to assist positioning.<br>All APIs provided in the **On** class are synchronous. You are advised to use the static constructor **ON** to create an **On** object in chain mode.
 
 ```ts
+// xxx.test.ets
 import { ON } from '@kit.TestKit';
 
 ON.text('123').type('Button');
@@ -321,6 +322,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.text('123'); // Use the static constructor ON to create an On object and specify the text attribute of the target component.
@@ -359,6 +361,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.id('123'); // Use the static constructor ON to create an On object and specify the ID attribute of the target component.
@@ -398,6 +401,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { MatchPattern, On, ON } from '@kit.TestKit';
 
 let on: On = ON.id('id', MatchPattern.REG_EXP_ICASE); // Use case-insensitive regular expression to match the ID attribute value of the component.
@@ -436,6 +440,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.type('Button'); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
@@ -475,6 +480,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON, MatchPattern } from '@kit.TestKit';
 
 let on: On = ON.type('Button', MatchPattern.EQUALS); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
@@ -513,6 +519,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.clickable(true); // Use the static constructor ON to create an On object and specify the clickable attribute of the target component.
@@ -551,6 +558,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.longClickable(true); // Use the static constructor ON to create an On object and specify the longClickable attribute of the target component.
@@ -589,6 +597,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.scrollable(true); // Use the static constructor ON to create an On object and specify the scrollable attribute of the target component.
@@ -627,6 +636,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.enabled(true); // Use the static constructor ON to create an On object and specify the enabled attribute of the target component.
@@ -665,6 +675,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.focused(true); // Use the static constructor ON to create an On object and specify the focused attribute of the target component.
@@ -703,6 +714,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.selected(true); // Use the static constructor ON to create an On object and specify the selected attribute of the target component.
@@ -741,6 +753,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.checked(true); // Use the static constructor ON to create an On object and specify the checked attribute of the target component.
@@ -779,6 +792,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.checkable(true); // Use the static constructor ON to create an On object and specify the checkable attribute of the target component.
@@ -817,6 +831,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located before the given attribute component.
@@ -856,6 +871,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located after the given attribute component.
@@ -895,6 +911,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located within the given attribute component.
@@ -934,6 +951,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.inWindow('com.uitestScene.acts'); // Use the static constructor ON to create an On object and specify that the target component is located within the given application window.
@@ -973,6 +991,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.description('123'); // Use the static constructor ON to create an On object and specify the description attribute of the target component.
@@ -1012,6 +1031,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { MatchPattern, On, ON } from '@kit.TestKit';
 
 let on: On = ON.hint('welcome', MatchPattern.EQUALS); // Use the static constructor ON to create an On object with the hint text attribute of the target component specified.
@@ -1050,6 +1070,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.belongingDisplay(0); // Use the static constructor ON to create an On object and specify the ID of the display to which the target component belongs.
@@ -1093,6 +1114,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.originalText('123'); // Use the static constructor ON to create an On object and specify the originalText attribute of the target component.
@@ -1101,6 +1123,7 @@ let on: On = ON.originalText('123'); // Use the static constructor ON to create 
 ## Component<sup>9+</sup>
 
 Represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
+
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
 ### click<sup>9+</sup>
@@ -1131,6 +1154,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, ON, Component } from '@kit.TestKit';
 
 async function demo() {
@@ -1168,6 +1192,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1205,6 +1230,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1242,6 +1268,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1259,7 +1286,7 @@ Obtains the text information of this component. This API uses a promise to retur
 
 > **NOTE**
 >
-> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API cannot be used to obtain the text information of the component. In this case, you can use [Component.getOriginalText ()](#getoriginaltext20) to obtain the text information of the component.
+> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API cannot be used to obtain the text information of the component. In this case, you can use [Component.getOriginalText ()](#getoriginaltext20) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1283,6 +1310,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1320,6 +1348,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1357,6 +1386,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1394,6 +1424,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1431,6 +1462,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1472,6 +1504,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1513,6 +1546,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1554,6 +1588,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1595,6 +1630,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1637,6 +1673,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1678,6 +1715,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1719,6 +1757,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1767,6 +1806,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1812,6 +1852,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 **Example**
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function mode_demo() {
@@ -1849,6 +1890,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1893,6 +1935,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1939,6 +1982,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1983,6 +2027,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2027,6 +2072,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2073,6 +2119,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2118,6 +2165,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2162,6 +2210,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2199,6 +2248,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2235,6 +2285,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2271,6 +2322,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2308,6 +2360,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2320,6 +2373,7 @@ async function demo() {
 ## Driver<sup>9+</sup>
 
 The **Driver** class is the main entry to the UiTest framework. It provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
+
 All APIs provided by this class, except **Driver.create()**, use a promise to return the result and must be invoked using **await**.
 
 ### create<sup>9+</sup>
@@ -2349,6 +2403,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2390,6 +2445,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2432,6 +2488,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2474,6 +2531,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2516,6 +2574,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -2559,6 +2618,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2602,6 +2662,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2637,6 +2698,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2679,6 +2741,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2721,6 +2784,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 import { KeyCode } from '@kit.InputKit';
 
@@ -2765,6 +2829,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 import { KeyCode } from '@kit.InputKit';
 
@@ -2810,6 +2875,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2855,6 +2921,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2898,6 +2965,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2940,6 +3008,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2983,6 +3052,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3025,6 +3095,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3068,6 +3139,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3111,6 +3183,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3157,6 +3230,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3201,6 +3275,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3249,6 +3324,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3296,6 +3372,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3338,6 +3415,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3381,6 +3459,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3425,6 +3504,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, DisplayRotation } from '@kit.TestKit';
 
 async function demo() {
@@ -3460,6 +3540,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { DisplayRotation, Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3502,6 +3583,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { DisplayRotation, Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3546,6 +3628,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3581,6 +3664,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3623,6 +3707,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3658,6 +3743,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3700,6 +3786,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3735,6 +3822,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3772,6 +3860,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3816,6 +3905,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3859,6 +3949,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3904,6 +3995,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3947,6 +4039,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
@@ -4001,6 +4094,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDirection } from '@kit.TestKit';
 
 async function demo() {
@@ -4045,6 +4139,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDirection } from '@kit.TestKit';
 
 async function demo() {
@@ -4088,6 +4183,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4138,6 +4234,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
@@ -4184,6 +4281,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4226,6 +4324,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4261,6 +4360,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
@@ -4308,6 +4408,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4353,6 +4454,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
@@ -4398,6 +4500,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
@@ -4444,6 +4547,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
@@ -4488,6 +4592,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4534,6 +4639,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4581,6 +4687,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4624,6 +4731,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -4671,6 +4779,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -4707,7 +4816,7 @@ Simulates a multi-finger swipe gesture on the touchpad. This API uses a promise 
 | ------ |-----------------------------------------------|----|-----------------------|
 | fingers      | number                                        | Yes | Number of fingers. The value can be 3 or 4.|
 | direction | [UiDirection](#uidirection10)                 | Yes | Swipe direction.          |
-| options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | No | Additional options.       |
+| options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | No | Additional options for the multi-finger swipe gesture on the touchpad. The default values of the attributes in **TouchPadSwipeOptions** are used by default.       |
 
 **Return value**
 
@@ -4728,6 +4837,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDirection } from '@kit.TestKit';
 
 async function demo() {
@@ -4776,6 +4886,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDirection } from '@kit.TestKit';
 
 async function demo() {
@@ -4818,6 +4929,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4861,6 +4973,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4904,6 +5017,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4949,6 +5063,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4994,6 +5109,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
@@ -5044,6 +5160,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -5097,6 +5214,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, Point } from '@kit.TestKit';
 
 async function demo() {
@@ -5149,6 +5267,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
@@ -5201,6 +5320,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -5247,6 +5367,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -5292,6 +5413,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -5338,6 +5460,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
@@ -5374,6 +5497,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
@@ -5394,6 +5518,7 @@ async function demo() {
 ## UiWindow<sup>9+</sup>
 
 The **UiWindow** class represents a window on the UI and provides APIs for obtaining window attributes, dragging a window, and adjusting the window size.
+
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
 ### getBundleName<sup>9+</sup>
@@ -5424,6 +5549,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5461,6 +5587,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5498,6 +5625,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5535,6 +5663,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5572,6 +5701,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5611,6 +5741,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5648,6 +5779,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5667,7 +5799,7 @@ Moves a window to the target point. This API uses a promise to return the result
 
 **System capability**: SystemCapability.Test.UiTest
 
-**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices and tablets. If it is called on other device types, error code 17000005 is returned.
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Parameters**
 
@@ -5696,6 +5828,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5714,6 +5847,8 @@ Resizes a window based on the specified width, height, and direction. This API u
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Parameters**
 
@@ -5743,6 +5878,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, ResizeDirection, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5762,7 +5898,7 @@ Switches to the split-screen mode. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Test.UiTest
 
-**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices and tablets. If it is called on other device types, error code 17000005 is returned.
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Return value**
 
@@ -5783,6 +5919,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5802,7 +5939,7 @@ Maximizes a window. This API uses a promise to return the result. This API is ap
 
 **System capability**: SystemCapability.Test.UiTest
 
-**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices and tablets. If it is called on other device types, error code 17000005 is returned.
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Return value**
 
@@ -5823,6 +5960,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5842,7 +5980,7 @@ Minimizes a window. This API uses a promise to return the result. This API is ap
 
 **System capability**: SystemCapability.Test.UiTest
 
-**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices and tablets. If it is called on other device types, error code 17000005 is returned.
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Return value**
 
@@ -5863,6 +6001,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5882,7 +6021,7 @@ Resumes a window to its previous mode. This API uses a promise to return the res
 
 **System capability**: SystemCapability.Test.UiTest
 
-**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices and tablets. If it is called on other device types, error code 17000005 is returned.
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Return value**
 
@@ -5903,6 +6042,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5922,7 +6062,7 @@ Closes a window. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Test.UiTest
 
-**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices and tablets. If it is called on other device types, error code 17000005 is returned.
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Return value**
 
@@ -5943,6 +6083,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5980,6 +6121,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -6017,6 +6159,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiWindow, Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -6058,6 +6201,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
@@ -6100,6 +6244,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
@@ -6145,6 +6290,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIElementInfo, UIEventObserver, WindowChangeOptions, WindowChangeType } from '@kit.TestKit';
 
 async function demo() {
@@ -6196,6 +6342,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIElementInfo, UIEventObserver, ComponentEventOptions, ComponentEventType, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -6231,6 +6378,7 @@ The APIs provided by the **By** class exhibit the following features:<br>1. Allo
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
 
 ```ts
+// xxx.test.ets
 import { BY } from '@kit.TestKit';
 
 BY.text('123').type('Button');
@@ -6264,6 +6412,7 @@ Specifies the text attribute of the target component. Multiple match patterns ar
 **Example**
 
 ```ts
+// xxx.test.ets
 import { BY, By } from '@kit.TestKit';
 
 let by: By = BY.text('123'); // Use the static constructor BY to create a By object and specify the text attribute of the target component.
@@ -6297,6 +6446,7 @@ Specifies the key attribute of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.key('123'); // Use the static constructor BY to create a By object and specify the key attribute of the target component.
@@ -6330,6 +6480,7 @@ Specifies the ID attribute of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.id(123); // Use the static constructor BY to create a By object and specify the id attribute of the target component.
@@ -6363,6 +6514,7 @@ Specifies the type attribute of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.type('Button'); // Use the static constructor BY to create a By object and specify the type attribute of the target component.
@@ -6396,6 +6548,7 @@ Specifies the clickable attribute of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.clickable(true); // Use the static constructor BY to create a By object and specify the clickable attribute of the target component.
@@ -6429,6 +6582,7 @@ Specifies the scrollable attribute of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.scrollable(true); // Use the static constructor BY to create a By object and specify the scrollable attribute of the target component.
@@ -6461,6 +6615,7 @@ Specifies the enabled attribute of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.enabled(true); // Use the static constructor BY to create a By object and specify the enabled attribute of the target component.
@@ -6493,6 +6648,7 @@ Specifies the focused attribute of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.focused(true); // Use the static constructor BY to create a By object and specify the focused attribute of the target component.
@@ -6525,6 +6681,7 @@ Specifies the selected status of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.selected(true); // Use the static constructor BY to create a By object and specify the selected attribute of the target component.
@@ -6557,6 +6714,7 @@ Specifies that the target component is located before the given attribute compon
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 // Use the static constructor BY to create a by object and specify that the target component is located before the given attribute component.
@@ -6590,6 +6748,7 @@ Specifies that the target component is located after the given attribute compone
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 // Use the static constructor BY to create a by object and specify that the target component is located after the given attribute component.
@@ -6600,11 +6759,12 @@ let by: By = BY.type('Text').isAfter(BY.text('123')); // Search for the first Te
 ## UiComponent<sup>(deprecated)</sup>
 
 In **UiTest**, the **UiComponent** class represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
+
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [[Component<sup>9+</sup>](#component9)](#on9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
 
 ### click<sup>(deprecated)</sup>
 
@@ -6627,6 +6787,7 @@ Clicks this component. This API uses a promise to return the result.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, Driver, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6657,6 +6818,7 @@ Double-clicks this component. This API uses a promise to return the result.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6687,6 +6849,7 @@ Long-clicks this component. This API uses a promise to return the result.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6717,6 +6880,7 @@ Obtains the ID of this component. This API uses a promise to return the result.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6747,6 +6911,7 @@ Obtains the key of this component. This API uses a promise to return the result.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6777,6 +6942,7 @@ Obtains the text information of this component. This API uses a promise to retur
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6807,6 +6973,7 @@ Obtains the type of this component. This API uses a promise to return the result
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6837,6 +7004,7 @@ Obtains the clickable status of this component. This API uses a promise to retur
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6871,6 +7039,7 @@ Obtains the scrollable status of this component. This API uses a promise to retu
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6906,6 +7075,7 @@ Obtains the enabled status of this component. This API uses a promise to return 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6941,6 +7111,7 @@ Obtains the focused status of this component. This API uses a promise to return 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6975,6 +7146,7 @@ Obtains the selected status of this component. This API uses a promise to return
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -7015,6 +7187,7 @@ Inputs text to a component. This API takes effect only for editable text compone
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -7051,6 +7224,7 @@ Scrolls on this component to search for the target component (applicable to comp
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -7063,11 +7237,12 @@ async function demo() {
 ## UiDriver<sup>(deprecated)</sup>
 
 The **UiDriver** class is the main entry to the UiTest framework. It provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
+
 All APIs provided by this class, except **UiDriver.create()**, use a promise to return the result and must be invoked using **await**.
 
 > **NOTE**
 >
-> This method is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
 
 ### create<sup>(deprecated)</sup>
 
@@ -7090,6 +7265,7 @@ Creates a **UiDriver** object and returns the object created. This API is a stat
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -7124,6 +7300,7 @@ Delays this **UiDriver** object within the specified duration. This API uses a p
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -7159,6 +7336,7 @@ Searches this **UiDriver** object for the target component that matches the give
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -7194,6 +7372,7 @@ Searches this **UiDriver** object for all components that match the given attrib
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -7239,6 +7418,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY } from '@kit.TestKit';
 
 async function demo() {
@@ -7268,6 +7448,7 @@ Presses the Back button on this **UiDriver** object. This API uses a promise to 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -7303,6 +7484,7 @@ Triggers the key of this **UiDriver** object that matches the given key code. Th
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDriver } from '@kit.TestKit';
 import { KeyCode } from '@kit.InputKit';
 
@@ -7341,6 +7523,7 @@ Clicks a specific point of this **UiDriver** object based on the given coordinat
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -7377,6 +7560,7 @@ Double-clicks a specific point of this **UiDriver** object based on the given co
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -7413,6 +7597,7 @@ Long-clicks a specific point of this **UiDriver** object based on the given coor
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -7451,6 +7636,7 @@ Swipes on this **UiDriver** object from the start point to the end point based o
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -7487,6 +7673,7 @@ Captures the current screen of this **UiDriver** object and saves it as a PNG im
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {

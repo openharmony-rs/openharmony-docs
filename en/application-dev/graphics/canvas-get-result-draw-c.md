@@ -173,6 +173,7 @@ Method 1: Create a canvas by binding a bitmap.
 
 
 Method 2: Create a canvas using a pixel map. This method is supported since API version 20.
+
 A pixel map is a unified data structure used to represent images in the system. Compared with bitmaps provided by the drawing module, pixel maps are more universal and can better leverage the system capabilities.
 
 1. Add link libraries.
@@ -276,7 +277,7 @@ A pixel map is a unified data structure used to represent images in the system. 
 
 A GPU backend canvas is a canvas that is drawn based on the GPU. The parallel computing capability of the GPU is better than that of the CPU. It is applicable to scenarios where images or large areas are drawn. However, the GPU backend canvas currently cannot draw complex paths. Similar to the CPU backend canvas, drawing using the C/C++ APIs depends on XComponent. The GPU backend canvas needs to be drawn offscreen and then displayed on the screen through XComponent.
 
-1. Currently, the creation of the GPU backend canvas depends on the EGL capability. You need to add the dynamic dependency library of the EGL to the **CMakeList.txt** file.
+1. Currently, the creation of the GPU backend canvas depends on the EGL capability. You need to add the dynamic dependency library of the EGL to the **CMakeLists.txt** file.
 
    ```c++
    // CMakeLists.txt

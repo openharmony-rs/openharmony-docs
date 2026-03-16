@@ -22,7 +22,7 @@ This animation is activated once the user rotates the screen.
 struct rotation {
   build() {
     Stack() {
-      // Replace $r('app.media.tree') with the resource file you use.
+      // Replace $r('app.media.tree') with the actual resource file.
       Image($r('app.media.tree'))
         .position({ x: 0, y: 0 })
         .size({ width: 100, height: 100 })
@@ -65,7 +65,7 @@ struct rotation {
 
       // Switch the component's visual effect when the screen display orientation changes.
       if (this.myOrientation == display.Orientation.PORTRAIT || this.myOrientation == display.Orientation.PORTRAIT_INVERTED) {
-        // Replace $r('app.media.sky') with the resource file you use.
+        // Replace $r('app.media.sky') with the actual resource file.
         Image($r('app.media.sky'))
           .size({ width: 100, height: 100 })
           .id('image1')
@@ -73,7 +73,7 @@ struct rotation {
         // You can also implement opacity changes for rotation transition animations by setting TransitionEffect.OPACITY.
         // .transition(TransitionEffect.OPACITY)
       } else {
-        // Replace $r('app.media.tree') with the resource file you use.
+        // Replace $r('app.media.tree') with the actual resource file.
         Image($r('app.media.tree'))
           .position({ x: 0, y: 0 })
           .size({ width: 200, height: 200 })
@@ -89,17 +89,18 @@ struct rotation {
 }
 ```
 
-Listen for the **windowsSizeChange** event to manage the transitions. For example, you can add logic in the **onWindowStageCreate** API of the **EntryAbility.ets** file to obtain the screen display orientation.
+Listen for the **windowsSizeChange** event to manage the transitions. For example, you can add processing logic to the [onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) method in the **EntryAbility.ets** file to obtain the display orientation of the screen.
 <!-- @[window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
+import { display, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
 const TAG: string = 'EntryAbility';
-// ···
+// ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // ···
+    // ...
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
     let mainWindow: window.Window;
     try {
@@ -123,7 +124,7 @@ const TAG: string = 'EntryAbility';
       hilog.error(DOMAIN, TAG, '%{public}s', 'error');
       return;
     }
-    // ···
+    // ...
 
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
@@ -134,7 +135,7 @@ const TAG: string = 'EntryAbility';
     });
   }
 
-// ···
+  // ...
 ```
 
 Add **"orientation": "auto_rotation"** to the **abilities** list in the **module.json5** file of the project.

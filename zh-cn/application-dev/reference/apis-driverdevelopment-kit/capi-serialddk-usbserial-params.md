@@ -16,7 +16,7 @@ typedef struct UsbSerial_Params {...} __attribute__((aligned(8))) UsbSerial_Para
 
 **起始版本：** 18
 
-**相关模块：** [SerialDdk](capi-serialddk.md)
+**相关模块：** [USBSerialDDK](capi-serialddk.md)
 
 **所在头文件：** [usb_serial_types.h](capi-usb-serial-types-h.md)
 

@@ -27,6 +27,8 @@ Device Certificate Kit（设备证书服务）面向应用开发者，提供了[
 
 ![](figures/certificate_framework_architecture.png)
 
+<!--PR1--><!--PR1End-->
+
 ### 与相关Kit的关系
 
 证书算法库的功能使用时，涉及公钥的生成和获取，这部分依赖[Crypto Architecture Kit](../CryptoArchitectureKit/crypto-architecture-kit-intro.md)加解密算法框架服务的能力。
@@ -35,7 +37,7 @@ Device Certificate Kit（设备证书服务）面向应用开发者，提供了[
 
 证书管理主要提供系统级的证书管理能力，通过证书管理模块可以确保证书在传输和存储过程中的安全性，防止未经授权的访问和使用。
 
-当前提供的能力包括。
+当前提供的能力包括：
 
 1. 应用证书凭据的安装、获取、使用及删除的能力。
 2. 用户CA证书的安装、获取及删除的能力。

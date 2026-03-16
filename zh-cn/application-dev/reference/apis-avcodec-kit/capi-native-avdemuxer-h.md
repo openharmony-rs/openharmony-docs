@@ -3,7 +3,7 @@
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @mr-chencxy-->
-<!--Designer: @dpy2650--->
+<!--Designer: @dpy2650-->
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -247,7 +247,7 @@ OH_AVErrCode OH_AVDemuxer_ReadSampleBuffer(OH_AVDemuxer *demuxer, uint32_t track
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVDemuxer](capi-avdemuxer-oh-avdemuxer.md) *demuxer | 指向OH_AVDemuxer实例的指针。 |
-| uint32_t trackIndex | 本次读取压缩帧的轨道的索引。. |
+| uint32_t trackIndex | 本次读取压缩帧的轨道的索引。|
 | OH_AVBuffer *sample | 指向OH_AVBuffer实例的指针，用于储存压缩帧数据以及相关信息。 |
 
 **返回：**
@@ -371,6 +371,6 @@ OH_AVErrCode OH_AVDemuxer_GetMediaKeySystemInfo(OH_AVDemuxer *demuxer, DRM_Media
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br>         AV_ERR_INVALID_VAL：<br>                           1. 输入的demuxer指针为空或为非解封装器实例。<br>                           2. mediaKeySystemInfo为nullptr。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br>         AV_ERR_OPERATE_NOT_PERMIT：解封装引擎未初始化或初始化失败。<br>         AV_ERR_INVALID_VAL：<br>                           1. 输入的demuxer指针为空或为非解封装器实例。<br>                           2. mediaKeySystemInfo为nullptr。 |
 
 

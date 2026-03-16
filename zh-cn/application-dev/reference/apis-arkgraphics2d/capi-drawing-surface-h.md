@@ -71,7 +71,7 @@ OH_Drawing_Surface* OH_Drawing_SurfaceCreateOnScreen(OH_Drawing_GpuContext* gpuC
 
 **描述**
 
-使用图形处理器上下文创建一个与屏幕窗口绑定的surface对象，用于管理画布绘制的内容。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>gpuContext或window为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+使用图形处理器上下文创建一个与屏幕窗口绑定的surface对象，用于管理画布绘制的内容。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>gpuContext或window为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。<br>imageInfo的宽高和window的宽高需保持一致。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

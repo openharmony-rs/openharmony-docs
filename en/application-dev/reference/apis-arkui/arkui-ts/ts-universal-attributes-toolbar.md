@@ -1,7 +1,7 @@
 # Toolbar Configuration
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,9 +10,9 @@ You can configure the toolbar for a component.
 
 >  **NOTE**
 >
->  The feature is supported since API version 20. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  This toolbar is a universal attribute for components. Note the distinction from the toolbar attribute of the [Navigation](ts-basic-components-navigation.md) component.
+> - This toolbar is a universal attribute for components. Note the distinction from the toolbar attribute of the [Navigation](ts-basic-components-navigation.md) component.
 
 ## toolbar
 
@@ -55,10 +55,7 @@ Creates a toolbar (consisting of [ToolBarItem](ts-basic-components-toolbaritem.m
 
 ## Example
 
-This example demonstrates how to:
-
-1. Bind the universal **toolbar** attribute to a [Button](ts-basic-components-button.md) component under [Navigation](ts-basic-components-navigation.md), adding two button toolbar items at the start of the **Navbar** section in the title bar.
-2. Bind the **toolbar** attribute to a [Text](ts-basic-components-text.md) component under [NavDestination](ts-basic-components-navdestination.md) to add a slider and a search bar component as toolbar items at the end of the **NavDestination** section in the title bar.
+This example demonstrates how to: 1. Bind the universal **toolbar** attribute to a [Button](ts-basic-components-button.md) component under [Navigation](ts-basic-components-navigation.md), adding two button toolbar items at the start of the **Navbar** section in the title bar. 2. Bind the **toolbar** attribute to a [Text](ts-basic-components-text.md) component under [NavDestination](ts-basic-components-navdestination.md) to add a slider and a search bar component as toolbar items at the end of the **NavDestination** section in the title bar.
 
 ```ts
 // xxx.ets

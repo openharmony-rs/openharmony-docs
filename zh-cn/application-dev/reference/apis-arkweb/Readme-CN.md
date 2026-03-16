@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @yp99ustc-->
-<!--Designer: @ctqctq99-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -35,6 +35,8 @@
     - [Class (WebSchemeHandlerRequest)](arkts-apis-webview-WebSchemeHandlerRequest.md)
     - [Class (WebSchemeHandlerResponse)](arkts-apis-webview-WebSchemeHandlerResponse.md)
     - [Class (WebStorage)](arkts-apis-webview-WebStorage.md)  
+    - [Class (UserAgentBrandVersion)](arkts-apis-webview-UserAgentBrandVersion.md)
+    - [Class (UserAgentMetadata)](arkts-apis-webview-UserAgentMetadata.md)
     - [Class (VerifyPinHandler)](arkts-basic-components-web-VerifyPinHandler.md)
     - [Interface (BackForwardList)](arkts-apis-webview-BackForwardList.md)
     - [Interface (NativeMediaPlayerBridge)](arkts-apis-webview-NativeMediaPlayerBridge.md)

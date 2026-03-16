@@ -35,7 +35,7 @@ Obtains an array of the launcher ability information based on a given bundle nam
 
 > **NOTE**
 >
-> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetlauncherabilityinfo9) instead.
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetlauncherabilityinfo) instead.
 
 **Required permissions**
 
@@ -66,7 +66,7 @@ Obtains an array of the launcher ability information based on a given bundle nam
 
 > **NOTE**
 >
-> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetlauncherabilityinfo9) instead.
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetlauncherabilityinfo) instead.
 
 **Required permissions**
 
@@ -229,7 +229,7 @@ Obtains the information about all launcher abilities. This API uses an asynchron
 
 > **NOTE**
 >
-> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getAllLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetalllauncherabilityinfo9) instead.
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getAllLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetalllauncherabilityinfo) instead.
 
 **Required permissions**
 
@@ -258,7 +258,7 @@ Obtains the information about all launcher abilities. This API uses a promise to
 
 > **NOTE**
 >
-> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getAllLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetalllauncherabilityinfo9) instead.
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getAllLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetalllauncherabilityinfo) instead.
 
 **Required permissions**
 
@@ -292,7 +292,7 @@ Obtains an array of the shortcut information based on a given bundle name. This 
 
 > **NOTE**
 >
-> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getShortcutInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetshortcutinfo9) instead.
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getShortcutInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetshortcutinfo) instead.
 
 **Required permissions**
 
@@ -321,7 +321,7 @@ Obtains an array of the shortcut information based on a given bundle name. This 
 
 > **NOTE**
 >
-> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getShortcutInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetshortcutinfo9) instead.
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getShortcutInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetshortcutinfo) instead.
 
 **Required permissions**
 

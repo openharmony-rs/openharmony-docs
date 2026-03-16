@@ -128,7 +128,7 @@ constructor(description: string, unit: LengthMetricsUnit)
 
 addPath(path: Path2D, transform?: Matrix2D): void
 
-将另一个路径添加到当前的路径对象中。
+将另一个路径添加到当前的路径对象中，并使用Matrix2D对象对新添加的路径对象进行图形变换。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

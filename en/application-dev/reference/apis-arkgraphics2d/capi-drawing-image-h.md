@@ -15,6 +15,8 @@ This file declares the functions related to the image in the drawing module.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -36,7 +38,7 @@ This file declares the functions related to the image in the drawing module.
 
 ### OH_Drawing_ImageCreate()
 
-```
+```c
 OH_Drawing_Image* OH_Drawing_ImageCreate(void)
 ```
 
@@ -56,7 +58,7 @@ Creates an **OH_Drawing_Image** object that describes an array of two-dimensiona
 
 ### OH_Drawing_ImageDestroy()
 
-```
+```c
 void OH_Drawing_ImageDestroy(OH_Drawing_Image* image)
 ```
 
@@ -77,7 +79,7 @@ Destroys an **OH_Drawing_Image** object and reclaims the memory occupied by the 
 
 ### OH_Drawing_ImageBuildFromBitmap()
 
-```
+```c
 bool OH_Drawing_ImageBuildFromBitmap(OH_Drawing_Image* image, OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -105,7 +107,7 @@ Builds an image from a bitmap by sharing or copying bitmap pixels. If the bitmap
 
 ### OH_Drawing_ImageGetWidth()
 
-```
+```c
 int32_t OH_Drawing_ImageGetWidth(OH_Drawing_Image* image)
 ```
 
@@ -132,7 +134,7 @@ Obtains the image width, that is, the number of pixels in each line.<br>This API
 
 ### OH_Drawing_ImageGetHeight()
 
-```
+```c
 int32_t OH_Drawing_ImageGetHeight(OH_Drawing_Image* image)
 ```
 
@@ -159,7 +161,7 @@ Obtains the image height, that is, the number of pixel lines.<br>This API may re
 
 ### OH_Drawing_ImageGetImageInfo()
 
-```
+```c
 void OH_Drawing_ImageGetImageInfo(OH_Drawing_Image* image, OH_Drawing_Image_Info* imageInfo)
 ```
 

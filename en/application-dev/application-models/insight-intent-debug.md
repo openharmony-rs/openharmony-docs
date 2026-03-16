@@ -16,15 +16,21 @@ Intent debugging is supported only on mobile phones, and the corresponding API v
 ## Function Access
 
 1. Enable the intent debugging capability.
+
      1. Tap **Settings** on your device.
      2. Choose **System** from the menu.
      3. Choose **Developer options**.
      4. Choose **InsightIntent debugging** and turn on the function switch.
+
 2. View intents. On the **InsightIntent debugging** page, tap **View all InsightIntents on device**.
+
    You can view all registered intents on the current page.
+
 3. Debug intents.
+
      1. Set intent parameters.
      2. Tap **Execute InsightIntent**.
+     
         If the intent implemented is correct, the execution is successful. The execution results of different types of intents are as follows:
 
       | Decorator| Execution Mode| Intent Call Result|

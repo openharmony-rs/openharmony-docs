@@ -48,7 +48,7 @@ This file declares the functions for obtaining and using **NativeImage**.
 | [int32_t OH_NativeImage_GetSurfaceId(OH_NativeImage* image, uint64_t* surfaceId)](#oh_nativeimage_getsurfaceid) | - | Obtains the surface ID of an **OH_NativeImage** instance.<br>This function is not thread-safe.|
 | [int32_t OH_NativeImage_SetOnFrameAvailableListener(OH_NativeImage* image, OH_OnFrameAvailableListener listener)](#oh_nativeimage_setonframeavailablelistener) | - | Registers a listener to listen for frame availability events.<br>Do not call other functions of this module in the callback.<br>This function is not thread-safe.|
 | [int32_t OH_NativeImage_UnsetOnFrameAvailableListener(OH_NativeImage* image)](#oh_nativeimage_unsetonframeavailablelistener) | - | Deregisters the listener used to listen for frame availability events.<br>This function is not thread-safe.|
-| [void OH_NativeImage_Destroy(OH_NativeImage** image)](#oh_nativeimage_destroy) | - | Destroys an **OH_NativeImage** instance created by calling **OH_NativeImage_Create**. After the instance is destroyed,<br>the pointer to the **OH_NativeImage** instance is assigned **NULL**.<br>This function is not thread-safe.|
+| [void OH_NativeImage_Destroy(OH_NativeImage** image)](#oh_nativeimage_destroy) | - | Destroys an **OH_NativeImage** instance created by calling **OH_NativeImage_Create**. After the instance is destroyed, the pointer to the **OH_NativeImage** instance is assigned **NULL**.<br>This function is not thread-safe.|
 | [int32_t OH_NativeImage_GetTransformMatrixV2(OH_NativeImage* image, float matrix[16])](#oh_nativeimage_gettransformmatrixv2) | - | Obtains, based on the rotation angle set by the producer, the transform matrix of the texture image that recently called the **OH_NativeImage_UpdateSurfaceImage** function.<br>The matrix is updated only after [OH_NativeImage_UpdateSurfaceImage](capi-native-image-h.md#oh_nativeimage_updatesurfaceimage) is called.<br>This function is not thread-safe.|
 | [int32_t OH_NativeImage_GetBufferMatrix(OH_NativeImage* image, float matrix[16])](#oh_nativeimage_getbuffermatrix) | - | Obtains the transformation matrix calculated based on the rotation angle set by the producer and the actual valid content area of the buffer.<br>This function returns a transformation matrix that is determined by the buffer's rotation angle and actual valid content area during the consumption of the buffer by [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md), specifically when calling [OH_NativeImage_UpdateSurfaceImage](capi-native-image-h.md#oh_nativeimage_updatesurfaceimage) or [OH_NativeImage_AcquireNativeWindowBuffer](capi-native-image-h.md#oh_nativeimage_acquirenativewindowbuffer).<br>This function is not thread-safe.|
 | [int32_t OH_NativeImage_AcquireNativeWindowBuffer(OH_NativeImage* image,OHNativeWindowBuffer** nativeWindowBuffer, int* fenceFd)](#oh_nativeimage_acquirenativewindowbuffer) | - | Obtain an **OHNativeWindowBuffer** instance through the **OH_NativeImage** instance on the consumer side.<br>This function cannot be used in together with [OH_NativeImage_UpdateSurfaceImage](capi-native-image-h.md#oh_nativeimage_updatesurfaceimage).<br>This function creates an **OHNativeWindowBuffer**.<br>When using the **OHNativeWindowBuffer**, call [OH_NativeWindow_NativeObjectReference](capi-external-window-h.md#oh_nativewindow_nativeobjectreference) to increase its reference count by one.<br>When finishing using the **OHNativeWindowBuffer**, call [OH_NativeWindow_NativeObjectUnreference](capi-external-window-h.md#oh_nativewindow_nativeobjectunreference) to decrease the reference count by one.<br>This function must be used in pair with [OH_NativeImage_ReleaseNativeWindowBuffer](capi-native-image-h.md#oh_nativeimage_releasenativewindowbuffer). Otherwise, memory leak occurs.<br>When **fenceFd** is used up, you must close it.<br>This function is not thread-safe.|
@@ -276,7 +276,7 @@ Obtains the transformation matrix of the texture image that recently called the 
 | Name| Description|
 | -- | -- |
 | [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | Pointer to an **OH_NativeImage** instance.|
-| matrix |  Buffer used to store the 4 * 4 transform matrix obtained.|
+| matrix |  Buffer used to store the 4 × 4 transformation matrix obtained.|
 
 **Returns**
 
@@ -375,7 +375,7 @@ void OH_NativeImage_Destroy(OH_NativeImage** image)
 
 **Description**
 
-Destroys an **OH_NativeImage** instance created by calling **OH_NativeImage_Create**. After the instance is destroyed,<br>the pointer to the **OH_NativeImage** instance is assigned **NULL**.<br>This function is not thread-safe.
+Destroys an **OH_NativeImage** instance created by calling **OH_NativeImage_Create**. After the instance is destroyed, the pointer to the **OH_NativeImage** instance is assigned **NULL**.<br>This function is not thread-safe.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
 
@@ -408,7 +408,7 @@ Obtains, based on the rotation angle set by the producer, the transform matrix o
 | Name| Description|
 | -- | -- |
 | [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | Pointer to an **OH_NativeImage** instance.|
-| matrix |  Buffer used to store the 4 * 4 transform matrix obtained.|
+| matrix |  Buffer used to store the 4 × 4 transformation matrix obtained.|
 
 **Returns**
 
@@ -436,7 +436,7 @@ Obtains the transformation matrix calculated based on the rotation angle set by 
 | Name| Description|
 | -- | -- |
 | [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | Pointer to an [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md) instance.|
-| matrix |  Buffer used to store the 4 x 4 transformation matrix obtained.|
+| matrix |  Buffer used to store the 4 × 4 transformation matrix obtained.|
 
 **Returns**
 

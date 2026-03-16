@@ -37,7 +37,7 @@
 |---------------------------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ability.params.stream                 | string  | 指示携带的文件URI要授权给目标方，用于待打开的文件存在其他文件依赖的场景。例如打开本地html文件依赖本地其余资源文件的场景等。对应的value必须是string类型的文件URI数组。文件URI的获取参考表1中uri参数。 |
 | ohos.ability.params.showDefaultPicker | boolean | 表示是否强制展示文件打开方式的选择弹框，缺省为false。<br>- false：表示由系统策略或默认应用设置决定直接拉起文件打开应用还是展示弹框。<br>- true：表示始终展示弹框。                                                                            |
-| showCaller                            | boolean | 表示调用方本身是否作为目标方应用之一参与匹配，缺省为false。<br>- false：不参与匹配。<br>- true：参与匹配。                                                                            |
+| showCaller                            | boolean | 表示调用方本身作为目标方应用匹配成功时，是否在打开文件的应用选择弹框中展示，缺省为false。<br>- false：不展示。<br>- true：展示。                                                                            |
 
 **表3** [flags](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#flags)相关参数说明
 

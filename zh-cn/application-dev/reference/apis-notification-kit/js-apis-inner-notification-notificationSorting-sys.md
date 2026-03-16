@@ -14,7 +14,7 @@
 >
 > 本模块为系统接口。
 
-## 属性
+## NotificationSorting
 
 **系统能力**：SystemCapability.Notification.Notification
 

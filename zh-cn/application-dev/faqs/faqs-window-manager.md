@@ -176,7 +176,7 @@ try {
 
 **解决措施**
 
-1.Abilty级别配置：在模块配置文件module.json5中将EntryAbility设置为"orientation"。  
+1.Ability级别配置：在模块配置文件module.json5中将EntryAbility设置为"orientation"。  
 2.动态设置：使用window.setPreferredOrientation设置窗口方向。
 
 **代码示例**
@@ -293,9 +293,9 @@ display.on('change', (data) => {
 
 [display.on('change')](../reference/apis-arkui/js-apis-display.md#displayonaddremovechange)
 
-## 如何同时获取屏幕方向orientation和系统规避区avoidAreaChange信息(API 10)
+## 如何同时获取屏幕方向orientation和系统避让区avoidAreaChange信息(API 10)
 
-可以通过[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onavoidareachange9)接口监听窗口系统规避区域的变化，在callback中获取avoidAreaChange信息，并通过Display实例获取屏幕方向orientation等信息。
+可以通过[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onavoidareachange9)接口监听窗口系统避让区域的变化，在callback中获取avoidAreaChange信息，并通过Display实例获取屏幕方向orientation等信息。
 
 ```ts
 // 请确保已获取到相关Window实例，即windowClass

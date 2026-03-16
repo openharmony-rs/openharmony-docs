@@ -52,26 +52,26 @@ getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let textConfig:intelligence.ModelConfig = {
-  version:intelligence.ModelVersion.BASIC_MODEL,
-  isNpuAvailable:false,
-  cachePath:"/data"
+let textConfig: intelligence.ModelConfig = {
+  version: intelligence.ModelVersion.BASIC_MODEL,
+  isNpuAvailable: false,
+  cachePath: "/data"
 }
-let textEmbedding:intelligence.TextEmbedding;
+let textEmbedding: intelligence.TextEmbedding;
 
 intelligence.getTextEmbeddingModel(textConfig)
-  .then((data:intelligence.TextEmbedding) => {
+  .then((data: intelligence.TextEmbedding) => {
     console.info("Succeeded in getting TextModel");
     textEmbedding = data;
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to get TextModel and code is " + err.code);
   })
 ```
@@ -106,26 +106,26 @@ getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt;
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let imageConfig:intelligence.ModelConfig = {
-    version:intelligence.ModelVersion.BASIC_MODEL,
-    isNpuAvailable:false,
-    cachePath:"/data"
+let imageConfig: intelligence.ModelConfig = {
+  version: intelligence.ModelVersion.BASIC_MODEL,
+  isNpuAvailable: false,
+  cachePath: "/data"
 }
-let imageEmbedding:intelligence.ImageEmbedding;
+let imageEmbedding: intelligence.ImageEmbedding;
 
 intelligence.getImageEmbeddingModel(imageConfig)
-  .then((data:intelligence.ImageEmbedding) => {
+  .then((data: intelligence.ImageEmbedding) => {
     console.info("Succeeded in getting ImageModel");
     imageEmbedding = data;
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to get ImageModel and code is " + err.code);
   })
 ```
@@ -161,24 +161,24 @@ splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let splitConfig:intelligence.SplitConfig = {
-  size:10,
-  overlapRatio:0.1
+let splitConfig: intelligence.SplitConfig = {
+  size: 10,
+  overlapRatio: 0.1
 }
 let splitText = 'text';
 
 intelligence.splitText(splitText, splitConfig)
-  .then((data:Array<string>) => {
+  .then((data: Array<string>) => {
     console.info("Succeeded in splitting Text");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to split Text and code is " + err.code);
   })
 ```
@@ -260,7 +260,7 @@ loadModel(): Promise&lt;void&gt;
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
 
@@ -271,7 +271,7 @@ textEmbedding.loadModel()
   .then(() => {
     console.info("Succeeded in loading Model");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to load Model and code is " + err.code);
   })
 ```
@@ -299,7 +299,7 @@ releaseModel(): Promise&lt;void&gt;
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
 
@@ -310,7 +310,7 @@ textEmbedding.releaseModel()
   .then(() => {
     console.info("Succeeded in releasing Model");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to release Model and code is " + err.code);
   })
 ```
@@ -347,21 +347,20 @@ getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-
 textEmbedding.loadModel();
 let text = 'text';
 textEmbedding.getEmbedding(text)
-  .then((data:Array<number>) => {
+  .then((data: Array<number>) => {
     console.info("Succeeded in getting Embedding");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to get Embedding and code is " + err.code);
   })
 ```
@@ -398,21 +397,20 @@ getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;numb
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-
 textEmbedding.loadModel();
-let batchTexts = ['text1','text2'];
+let batchTexts = ['text1', 'text2'];
 textEmbedding.getEmbedding(batchTexts)
-  .then((data:Array<Array<number>>) => {
+  .then((data: Array<Array<number>>) => {
     console.info("Succeeded in getting Embedding");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to get Embedding and code is " + err.code);
   })
 ```
@@ -448,7 +446,7 @@ loadModel(): Promise&lt;void&gt;
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
 
@@ -459,7 +457,7 @@ imageEmbedding.loadModel()
   .then(() => {
     console.info("Succeeded in loading Model");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to load Model and code is " + err.code);
   })
 ```
@@ -487,7 +485,7 @@ releaseModel(): Promise&lt;void&gt;
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
 
@@ -498,7 +496,7 @@ imageEmbedding.releaseModel()
   .then(() => {
     console.info("Succeeded in releasing Model");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to release Model and code is " + err.code);
   })
 ```
@@ -535,7 +533,7 @@ getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
 
@@ -545,10 +543,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 imageEmbedding.loadModel();
 let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
 imageEmbedding.getEmbedding(image)
-  .then((data:Array<number>) => {
+  .then((data: Array<number>) => {
     console.info("Succeeded in getting Embedding");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to get Embedding and code is " + err.code);
   })
 ```

@@ -44,7 +44,7 @@ canPreconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): boo
 
 | 类型      | 说明                                      |
 |---------|-----------------------------------------|
-| boolean | true: 支持指定预配值类型。<br/>false: 不支持指定预配值类型。 |
+| boolean | 是否支持指定预配置类型。true表示支持，fals表示不支持。 |
 
 **错误码：**
 
@@ -479,7 +479,7 @@ off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 | 参数名     | 类型                    | 必填 | 说明                                                                     |
 | -------- | ------------------------ | ---- |------------------------------------------------------------------------|
 | type     | string                   | 是   | 注销监听事件，固定为'macroStatusChanged'，session创建成功可触发此事件。|
-| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，如果指定参数则取消对应callback (callback对象不可是匿名函数)，否则参数默认为空，取消所有callback。 |
+| callback | AsyncCallback\<boolean\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则参数默认为空，取消所有callback。 |
 
 **示例：**
 

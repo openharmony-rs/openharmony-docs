@@ -37,10 +37,10 @@
 
 创建完成后，DevEco Studio会在工程生成cpp目录，目录中包含types/libentry/index.d.ts、napi_init.cpp、CMakeLists.txt等文件。
 
-1. 打开src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加包管理的libbundle_ndk.z.so。
+1. 打开src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加包管理的libbundle_ndk.so。
 
     ```c++
-    target_link_libraries(entry PUBLIC libace_napi.z.so libbundle_ndk.z.so)
+    target_link_libraries(entry PUBLIC libace_napi.z.so libbundle_ndk.so)
     ```
 
 2. 打开src/main/cpp/napi_init.cpp文件，添加头文件。
@@ -355,7 +355,7 @@
         // 该接口从API version 21开始支持
         OH_NativeBundle_GetDrawableDescriptor(temp, &rawDrawable);
         if (rawDrawable) {
-            //使用ArkUI_DrawableDescriptor对象绘制图标
+            // 使用ArkUI_DrawableDescriptor对象绘制图标
         }
     }
     

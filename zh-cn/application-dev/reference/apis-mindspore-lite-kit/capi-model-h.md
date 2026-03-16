@@ -68,6 +68,7 @@
 | [OH_AI_API OH_AI_Status OH_AI_ExportModelBuffer(OH_AI_ModelHandle model, OH_AI_ModelType model_type, void *model_data,size_t *data_size, OH_AI_QuantizationType quantization_type,bool export_inference_only, char **output_tensor_name, size_t num)](#oh_ai_exportmodelbuffer) | - | 导出训练模型内存缓存，仅用于端侧训练。                                                                                                                                                                                                                                 |
 | [OH_AI_API OH_AI_Status OH_AI_ExportWeightsCollaborateWithMicro(OH_AI_ModelHandle model, OH_AI_ModelType model_type,const char *weight_file, bool is_inference,bool enable_fp16, char **changeable_weights_name,size_t num)](#oh_ai_exportweightscollaboratewithmicro) | - | 导出模型权重，只能用于micro推理，仅用于端侧训练。                                                                                                                                                                                                                         |
 | [OH_AI_API OH_AI_Status OH_AI_ModelLoadConfig(OH_AI_ModelHandle model, const char *config_path)](#oh_ai_modelloadconfig) | - | 加载模型配置文件。 |
+| [OH_AI_API OH_AI_Status OH_AI_ModelPredictWithConfig(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_TensorHandleArray *outputs, const char *config, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)](#oh_ai_modelpredictwithconfig) | - | 执行模型推理，支持每次推理设置不同推理参数。 |
 
 ## 函数说明
 
@@ -866,3 +867,32 @@ OH_AI_API OH_AI_Status OH_AI_ModelLoadConfig(OH_AI_ModelHandle model, const char
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | 枚举类型的状态码[OH_AI_Status](capi-status-h.md#oh_ai_status)，若成功返回OH_AI_STATUS_SUCCESS，失败则返回具体错误码。 |
 
+### OH_AI_ModelPredictWithConfig()
+
+```c
+OH_AI_API OH_AI_Status OH_AI_ModelPredictWithConfig(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_TensorHandleArray *outputs, const char *config, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)
+															
+```
+
+**描述**
+
+执行模型推理，支持每次推理设置不同推理参数。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md) model | 模型对象指针。 |
+| [const OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) inputs | 模型输入对应的张量数组结构体。 |
+| [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) *outputs | 模型输出对应的张量数组结构体的指针。 |
+| const char *config | 模型配置文件。字符串长度限制跟随文件系统。 |
+| [const OH_AI_KernelCallBack](capi-model-h.md#oh_ai_kernelcallback) before | 模型推理前执行的回调函数。 |
+| after | 模型推理后执行的回调函数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | 枚举类型的状态码[OH_AI_Status](capi-status-h.md#oh_ai_status)，若成功返回OH_AI_STATUS_SUCCESS，失败则返回具体错误码。 |

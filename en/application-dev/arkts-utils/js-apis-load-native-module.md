@@ -4,9 +4,9 @@
 <!--Owner: @shilei123-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
-The **loadNativeModule** API is used to dynamically load native modules in synchronous mode. Using this API increases the time for loading the .so file. You need to evaluate the impact on the functionality.
+The [loadNativeModule](../reference/common/js-apis-common-load-native-module.md) API is used to dynamically load native modules in synchronous mode. Using this API increases the time for loading the .so file. You need to evaluate the impact on the functionality.
 
 ## API Description
 

@@ -24,11 +24,15 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
-## inputConsumer.on
+## inputConsumer.on('key')
 
 on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): void
 
-订阅系统快捷键，当满足条件的组合按键输入事件发生时，使用Callback异步方式上报组合按键数据。
+订阅系统快捷键，当满足条件的组合按键输入事件发生时，使用callback异步方式上报组合按键数据。
+> **说明：**
+>
+> - 支持仅订阅按键的down事件，或者同时订阅按键的down事件和up事件。
+> - 若需要仅订阅按键的up事件，会存在down事件被焦点窗口消费，而无up事件闭环的风险，需要排查设计实现是否合理。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -84,11 +88,11 @@ struct Index {
 ```
 
 
-## inputConsumer.off
+## inputConsumer.off('key')
 
 off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
-取消订阅系统快捷键。
+取消订阅系统快捷键。使用callback异步回调。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -289,7 +293,7 @@ struct Index {
 | --------- | ------ | ---- | ---- | ------- |
 | preKeys    | Array\<number>   | 否    | 否 | 前置按键集合，数量范围[0, 4]，前置按键无顺序要求。<br>如组合按键Ctrl+Alt+A中，Ctrl+Alt称为前置按键。 |
 | finalKey             | number  | 否    |  否 | 最终按键，此项必填，最终按键触发上报回调函数。<br>如组合按键Ctrl+Alt+A中，A称为最终按键。 |
-| isFinalKeyDown       | boolean | 否    |  否 | 最终按键状态。<br>ture表示按键按下，false表示按键抬起。 |
+| isFinalKeyDown       | boolean | 否    |  否 | 最终按键状态。<br>true表示按键按下，false表示按键抬起。 |
 | finalKeyDownDuration | number  | 否    |  否 | 最终按键保持按下持续时间，单位：μs。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。   |
 | isRepeat<sup>18+</sup> | boolean  | 否      | 是      | 是否上报重复的按键事件。true表示上报，false表示不上报，若不填默认为true。 |
 

@@ -49,7 +49,7 @@ You can create a button using the following methods:
   ``` TypeScript
   Button({ type: ButtonType.Normal, stateEffect: true }) {
     Row() {
-      // Replace $r('app.media.loading') with the image resource file you use.
+      // Replace $r('app.media.loading') with the actual resource file.
       Image($r('app.media.loading')).width(20).height(40).margin({ left: 12 })
       Text('loading').fontSize(12).fontColor(0xffffff).margin({ left: 5, right: 12 })
     }.alignItems(VerticalAlign.Center)
@@ -112,6 +112,7 @@ Buttons comes in four types, set using the **type** parameter: Capsule, Circle, 
   ![en-us_image_0000001563060641](figures/en-us_image_0000001563060641.png)
 
 - Rounded rectangle button
+
   The rounded rectangle button has a default corner radius of 20 vp when [controlSize](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#controlsize11) is **NORMAL**, and 14 vp when [controlSize](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#controlsize11) is **SMALL**. You can define custom corner radius settings through **borderRadius**.
 
   <!-- @[create_rounded_rectangle_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
@@ -178,7 +179,7 @@ Buttons comes in four types, set using the **type** parameter: Capsule, Circle, 
   
   ``` TypeScript
   Button({ type: ButtonType.Circle, stateEffect: true }) {
-    // Replace $r('app.media.ic_public_delete_filled') with the image resource file you use.
+    // Replace $r('app.media.ic_public_delete_filled3') with the actual resource file.
     Image($r('app.media.ic_public_delete_filled')).width(30).height(30)
   }.width(55).height(55).margin({ 'left': 20 }).backgroundColor(0xF55A42)
   ```
@@ -274,9 +275,9 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
       }.title('pageOne')
       .onBackPressed(() => {
         const popDestinationInfo = this.pathStack.pop(); // Pop the top element out of the navigation stack.
-        // The value in the $r('app.string.return_value') resource file is "Return value."
+        // Replace $r('app.string.return_value') with the actual resource file. In this example, the value in the resource file is "Return value."
         hilog.info(DOMAIN, 'testTag', 'pop' + $r('app.string.return_value') + JSON.stringify(popDestinationInfo));
-        return true
+        return true;
       })
       .onReady((context: NavDestinationContext) => {
         this.pathStack = context.pathStack;
@@ -297,7 +298,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
       }.title('pageTwo')
       .onBackPressed(() => {
         const popDestinationInfo = this.pathStack.pop(); // Pop the top element out of the navigation stack.
-        // The value in the $r('app.string.return_value') resource file is "Return value."
+        // Replace $r('app.string.return_value') with the actual resource file. In this example, the value in the resource file is "Return value."
         hilog.info(DOMAIN, 'testTag', 'pop' + $r('app.string.return_value') + JSON.stringify(popDestinationInfo));
         return true;
       })
@@ -320,7 +321,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
       }.title('pageThree')
       .onBackPressed(() => {
         const popDestinationInfo = this.pathStack.pop(); // Pop the top element out of the navigation stack.
-        // The value in the $r('app.string.return_value') resource file is "Return value."
+        /// Replace $r('app.string.return_value') with the actual resource file. In this example, the value in the resource file is "Return value."
         hilog.info(DOMAIN, 'testTag', 'pop' + $r('app.string.return_value') + JSON.stringify(popDestinationInfo));
         return true;
       })
@@ -393,7 +394,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
           }.width('90%')
   
           Button() {
-            // Replace $r('app.media.ic_public_add') with the image resource file you use.
+            // Replace $r('app.media.ic_public_add') with the actual resource file.
             Image($r('app.media.ic_public_add'))
              .width(50)
              .height(50)

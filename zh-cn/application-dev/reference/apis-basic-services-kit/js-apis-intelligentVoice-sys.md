@@ -548,7 +548,7 @@ getUploadFiles(maxCount: number): Promise&lt;Array&lt;UploadFile&gt;&gt;
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 22700101 | No memory.                        |
 | 22700102 | Invalid parameter.                            |
 | 22700107 | System error.                            |
@@ -1154,6 +1154,7 @@ enrollForResult(isLast: boolean, callback: AsyncCallback&lt;EnrollCallbackInfo&g
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 22700107 | System error.                             |
 
 **示例：**
 
@@ -1204,6 +1205,7 @@ enrollForResult(isLast: boolean): Promise&lt;EnrollCallbackInfo&gt;
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 22700107 | System error.                             |
 
 **示例：**
 

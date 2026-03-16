@@ -16,7 +16,7 @@ typedef struct DDK_Ashmem {...} DDK_Ashmem
 
 **起始版本：** 12
 
-**相关模块：** [BaseDdk](capi-baseddk.md)
+**相关模块：** [Ddk](capi-baseddk.md)
 
 **所在头文件：** [ddk_types.h](capi-ddk-types-h.md)
 

@@ -88,7 +88,7 @@ The following examples demonstrate how to use **viewPort**:
     build() {
       Column() {
         // Draw a circle whose width and height are both 75.
-        // Replace $r('app.string.OriginalSizeCircle') with the resource file you use.
+        // Replace $r('app.string.OriginalSizeCircle') with the actual resource file. In this example, the value in the resource file is "Original-size Circle component."
         Text($r('app.string.OriginalSizeCircle')).margin({ top: 20 })
         Circle({ width: 75, height: 75 }).fill('rgb(39, 135, 217)')
   
@@ -97,7 +97,7 @@ The following examples demonstrate how to use **viewPort**:
             // Create a Shape component with a 150 x 150 size and yellow background. Set the viewport to 75 x 75.
             // Fill the viewport with a blue rectangle and draw a 75-diameter circle in the viewport.
             // After the drawing is complete, the viewport is scaled up to match the component size.
-            // Replace $r('app.string.EnlargedCircle') with the resource file you use.
+            // Replace $r('app.string.EnlargedCircle') with the actual resource file. In this example, the value in the resource file is "Enlarged Circle component within the shape."
             Text($r('app.string.EnlargedCircle'))
             Shape() {
               Rect().width('100%').height('100%').fill('rgb(39, 135, 217)')
@@ -113,7 +113,7 @@ The following examples demonstrate how to use **viewPort**:
             // Create a Shape component with a 150 x 150 size and yellow background. Set the viewport to 300 x 300.
             // Fill the viewport with a green rectangle and draw a 75-diameter circle in the viewport.
             // After the drawing is complete, the viewport is scaled down to match the component size.
-            // Replace $r('app.string.ShrunkCircle') with the resource file you use.
+            // Replace $r('app.string.ShrunkCircle') with the actual resource file. In this example, the value in the resource file is "Reduced Circle component within the shape."
             Text($r('app.string.ShrunkCircle'))
             Shape() {
               Rect().width('100%').height('100%').fill('rgb(213, 213, 213)')
@@ -275,7 +275,10 @@ You can customize the component style by setting various style attributes.
   ![strokeLineJoin](figures/strokeLineJoin.jpg)
 
 - Use [strokeMiterLimit](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokemiterlimit) to set the maximum ratio between the miter length and stroke width.
-  The miter length represents the distance from the outer corner point to the inner corner point, while the stroke width is defined by the [strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth) attribute. **strokeMiterLimit** requires values greater than or equal to 1 and takes effect when[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin) is set to **LineJoinStyle.Miter**.
+
+  The miter length represents the distance from the outer corner point to the inner corner point, while the stroke width is defined by the [strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth) attribute.
+  
+  **strokeMiterLimit** requires values greater than or equal to 1 and takes effect when[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin) is set to **LineJoinStyle.Miter**.
 
   <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) -->
   
@@ -403,8 +406,8 @@ You can customize the component style by setting various style attributes.
     @State meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360];
   
     aboutToAppear(): void {
-      // Replace 'common/image/image.png' with the image resource file you use.
-      let img: ImageBitmap = new ImageBitmap('common/image/image.png');
+      // Replace 'resources/base/media/image.png' with the image resource file you use.
+      let img: ImageBitmap = new ImageBitmap('resources/base/media/image.png');
       ctx.drawImage(img, 0, 0, 100, 100);
       this.pixelMap = ctx.getPixelMap(0, 0, 150, 150);
     }
@@ -416,8 +419,8 @@ You can customize the component style by setting various style attributes.
           .width(150)
           .height(150)
           .onClick(() => {
-            // Replace 'common/image/image.png' with the image resource file you use.
-            let img: ImageBitmap = new ImageBitmap('common/image/image.png');
+            // Replace 'resources/base/media/image.png' with the image resource file you use.
+            let img: ImageBitmap = new ImageBitmap('resources/base/media/image.png');
             ctx.drawImage(img, 0, 0, 100, 100);
             this.pixelMap = ctx.getPixelMap(1, 1, 150, 150);
             this.myNodeController.rebuild();

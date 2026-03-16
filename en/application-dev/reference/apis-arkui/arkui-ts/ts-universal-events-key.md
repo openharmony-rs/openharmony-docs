@@ -1,17 +1,18 @@
 # Key Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-A key event is triggered when a focusable component, such as **Button**, receives input from a keyboard, remote control, or any other key-based input devices. For normally non-focusable components (such as **Text** and **Image**), set **focusable** to **true** to enable key event handling.
+A key event is triggered when a focusable component, such as **Button**, receives input from a physical keyboard, remote control, or any other key-based input devices. For components that are not focusable by default, like **Text** and **Image**, you can set the [focusable](ts-universal-attributes-focus.md#focusable) attribute to **true** to enable key events.
+
 For details about the process and specific timing of the key event triggering, see [Key Event Data Flow](../../../ui/arkts-interaction-development-guide-keyboard.md#key-event-data-flow).
 
 >  **NOTE**
 >
->  This event is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## onKeyEvent
 
@@ -112,13 +113,13 @@ If the callback returns **true**, the key event is marked as consumed and will n
 | Name                                   | Type                   | Read-Only   |  Optional  |  Description                        |
 | ------------------------------------- | ---------------------------------------- |--------- | ------------- | -------------------------- |
 | type                                  | [KeyType](ts-appendix-enums.md#keytype) |  No |  No    |Key type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
-| [keyCode](../../apis-input-kit/js-apis-keycode.md#keycode) | number           |  No       |  No    |Key code.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
-| keyText                               | string                   |  No  |  No    |Key value.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
+| [keyCode](../../apis-input-kit/js-apis-keycode.md#keycode) | number           |  No       |  No    |Key value.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
+| keyText                               | string                   |  No  |  No    |Name of the key.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
 | keySource                             | [KeySource](ts-appendix-enums.md#keysource) |  No|  No    |Type of the input device that triggers the key event.<br>**Atomic service API**: This API can be used in atomic services since API version 11.            |
 | deviceId                              | number                |  No   |  No    |ID of the input device that triggers the key event.<br>**Atomic service API**: This API can be used in atomic services since API version 11.            |
 | metaKey                               | number            |  No        |  No    |State of the Meta key (the key located next to the **Ctrl** key in the lower left corner of the keyboard, or the key marked with a window logo) when the key event occurs. The value **1** indicates that the Meta key is pressed, and **0** indicates that it is not pressed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | timestamp                             | number                 |  No     |  No    |Timestamp of the event. It is the interval between the time when the event is triggered and the time when the system starts, in nanoseconds.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| stopPropagation                       | () => void             |  No   |  No    |Stops the event from bubbling upwards or downwards.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                 |
+| stopPropagation                       | () => void             |  No   |  No    |Blocks [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling) propagation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                 |
 | intentionCode<sup>10+</sup>           | [IntentionCode](#intentioncode10) |  No  |  No    |Intention corresponding to the key.<br>Default value: **IntentionCode.INTENTION_UNKNOWN**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
 | unicode<sup>14+</sup>                              | number              |  No        |  Yes    |Unicode value of the key. Non-space basic Latin characters in the 0x0021-0x007E range are supported. Characters with a value of 0 are not supported. In the case of key combination, this API returns the Unicode value of the key corresponding to the key event.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | isNumLockOn<sup>19+</sup>                               | boolean              |  No       |  Yes   |NumLock state. **true**: locked. **false**: unlocked.<br>**Atomic service API**: This API can be used in atomic services since API version 19.                    |
@@ -309,7 +310,7 @@ struct KeyEventExample {
     Column() {
       Button('onKeyEvent')
         .defaultFocus(true)
-        .width(140).height(70)
+        .width(112).height(56)
         .onKeyEvent((event?: KeyEvent) => {
           // Use stopPropagation to prevent the key event from bubbling up.
           if (event) {
@@ -352,3 +353,5 @@ struct KeyEventExample {
   }
 }
 ```
+
+![keyEvent4](figures/keyEvent_unicode4.gif) 

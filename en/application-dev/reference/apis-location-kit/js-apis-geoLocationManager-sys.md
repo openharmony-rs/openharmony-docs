@@ -83,8 +83,8 @@ Defines the configuration of the mock reverse geocoding function.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| location |  [ReverseGeoCodeRequest](js-apis-geoLocationManager.md#reversegeocoderequest) | No| No| Latitude and longitude information. **System API**: This is a system API.|
-| geoAddress |  [GeoAddress](#geoaddress) | No| No|Geographical name. **System API**: This is a system API.|
+| location |  [ReverseGeoCodeRequest](js-apis-geoLocationManager.md#reversegeocoderequest) | No| No| Latitude and longitude information.<br>**System API**: This is a system API.|
+| geoAddress |  [GeoAddress](#geoaddress) | No| No|Geographical name.<br>**System API**: This is a system API.|
 
 
 ## LocationMockConfig
@@ -97,8 +97,8 @@ Defines the configuration of the mock location switch.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| timeInterval | number | No| No| Time interval at which mock locations are reported, in seconds. **System API**: This is a system API.|
-| locations | Array&lt;[Location](#location)&gt; | No| No| Array of mocked locations. **System API**: This is a system API.|
+| timeInterval | number | No| No| Time interval at which mock locations are reported, in seconds.<br>**System API**: This is a system API.|
+| locations | Array&lt;[Location](#location)&gt; | No| No| Array of mocked locations.<br>**System API**: This is a system API.|
 
 ## LocatingRequiredDataConfig<sup>10+</sup>
 
@@ -110,13 +110,13 @@ Defines the configuration for obtaining the required data of the location servic
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| type | [LocatingRequiredDataType](#locatingrequireddatatype10) | No| No| Type of the required data. **System API**: This is a system API.|
-| needStartScan |  boolean | No| No| **true**: Scanning needs to be initiated.<br>**false**: Scanning does not need to be initiated. **System API**: This is a system API.|
-| scanInterval |  number | No| Yes| Scanning interval, in milliseconds. The specified value must be greater than **0**. The default value is **10000**. **System API**: This is a system API.|
-| scanTimeout |  number | No| Yes| Scanning timeout interval, in milliseconds. The value ranges from **0** to **600000**. The default value is **10000**. **System API**: This is a system API.|
-| slotId<sup>23+</sup> |  number | No| Yes| Slot ID of a SIM card.<br>**0**: slot 1.<br>**1**: slot 2. **System API**: This is a system API.|
-| arfcn<sup>23+</sup> |  Array&lt;number&gt; | No| Yes| Absolute Radio Frequency Channel Number (ARFCN). **System API**: This is a system API.|
-| plmnId<sup>23+</sup> |  Array&lt;number&gt; | No| Yes| Public Land Mobile Network Identifier (PLMN ID) of a SIM card. **System API**: This is a system API.|
+| type | [LocatingRequiredDataType](#locatingrequireddatatype10) | No| No| Type of the required data.<br>**System API**: This is a system API.|
+| needStartScan |  boolean | No| No| **true**: Scanning needs to be initiated.<br>**false**: Scanning does not need to be initiated.<br>**System API**: This is a system API.|
+| scanInterval |  number | No| Yes| Scanning interval, in milliseconds. The specified value must be greater than **0**. The default value is **10000**.<br>**System API**: This is a system API.|
+| scanTimeout |  number | No| Yes| Scanning timeout interval, in milliseconds. The value ranges from **0** to **600000**. The default value is **10000**.<br>**System API**: This is a system API.|
+| slotId<sup>23+</sup> |  number | No| Yes| Slot ID of a SIM card.<br>**0**: slot 1.<br>**1**: slot 2.<br>**System API**: This is a system API.|
+| arfcn<sup>23+</sup> |  Array&lt;number&gt; | No| Yes| Absolute Radio Frequency Channel Number (ARFCN).<br>**System API**: This is a system API.|
+| plmnId<sup>23+</sup> |  Array&lt;number&gt; | No| Yes| Public Land Mobile Network Identifier (PLMN ID) of a SIM card.<br>**System API**: This is a system API.|
 
 
 ## ContinuousLocationRequest<sup>12+</sup>
@@ -129,7 +129,7 @@ Defines a continuous location request.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| sportsType<sup>18+</sup> | [SportsType](#sportstype18) | No| Yes| Sports type.<br>**Atomic service API**: This API can be used in atomic services since API version 18. **System API**: This is a system API.|
+| sportsType<sup>18+</sup> | [SportsType](#sportstype18) | No| Yes| Sports type.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**System API**: This is a system API.|
 
 
 ## LocatingRequiredData<sup>10+</sup>
@@ -142,11 +142,11 @@ Defines the required data of the location service, including the Wi-Fi or Blueto
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| wifiData | [WifiScanInfo](#wifiscaninfo10) | No| Yes| Wi-Fi scanning result. **System API**: This is a system API.|
-| bluetoothData |  [BluetoothScanInfo](#bluetoothscaninfo10) | No| Yes| Bluetooth scanning result. **System API**: This is a system API.|
-| slotId<sup>23+</sup> |  number | No| Yes| Slot ID of a SIM card.<br>**0**: slot 1.<br>**1**: slot 2. **System API**: This is a system API.|
-| campedCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | No| Yes| Camped cell information. **System API**: This is a system API.|
-| neighboringCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | No| Yes| Neighboring cell information. **System API**: This is a system API.|
+| wifiData | [WifiScanInfo](#wifiscaninfo10) | No| Yes| Wi-Fi scanning result.<br>**System API**: This is a system API.|
+| bluetoothData |  [BluetoothScanInfo](#bluetoothscaninfo10) | No| Yes| Bluetooth scanning result.<br>**System API**: This is a system API.|
+| slotId<sup>23+</sup> |  number | No| Yes| Slot ID of a SIM card.<br>**0**: slot 1.<br>**1**: slot 2.<br>**System API**: This is a system API.|
+| campedCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | No| Yes| Camped cell information.<br> **System API**: This is a system API.|
+| neighboringCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | No| Yes| Neighboring cell information.<br> **System API**: This is a system API.|
 
 
 ## WifiScanInfo<sup>10+</sup>
@@ -159,11 +159,11 @@ Defines the Wi-Fi scanning information, including the SSID, BSSID, and RSSI of t
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | No| No| Service set identifier (SSID) of a Wi-Fi hotspot, in UTF-8 format. **System API**: This is a system API.|
-| bssid | string | No| No| Base station subsystem identifier (BSSID) of a Wi-Fi hotspot. **System API**: This is a system API.|
-| rssi | number | No| No| Received signal strength indicator (RSSI) of a Wi-Fi hotspot, in dBm. **System API**: This is a system API.|
-| frequency | number | No| No| Frequency of a Wi-Fi hotspot, in Hz. **System API**: This is a system API.|
-| timestamp | number | No| No| Scanning timestamp. **System API**: This is a system API.|
+| ssid | string | No| No| Service set identifier (SSID) of a Wi-Fi hotspot, in UTF-8 format.<br>**System API**: This is a system API.|
+| bssid | string | No| No| Base station subsystem identifier (BSSID) of a Wi-Fi hotspot.<br> **System API**: This is a system API.|
+| rssi | number | No| No| Received signal strength indicator (RSSI) of a Wi-Fi hotspot, in dBm.<br> **System API**: This is a system API.|
+| frequency | number | No| No| Frequency of a Wi-Fi hotspot, in Hz.<br>**System API**: This is a system API.|
+| timestamp | number | No| No| Scanning timestamp.<br> **System API**: This is a system API.|
 
 
 ## BluetoothScanInfo<sup>10+</sup>
@@ -176,10 +176,10 @@ Defines the Bluetooth scanning information.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| deviceName | string | No| No| Name of a Bluetooth device. **System API**: This is a system API.|
-| macAddress | string | No| No| MAC address of a Bluetooth device. **System API**: This is a system API.|
-| rssi | number | No| No| Signal strength of a Bluetooth device, in dBm. **System API**: This is a system API.|
-| timestamp | number | No| No| Scanning timestamp. **System API**: This is a system API.|
+| deviceName | string | No| No| Name of a Bluetooth device.<br> **System API**: This is a system API.|
+| macAddress | string | No| No| MAC address of a Bluetooth device.<br> **System API**: This is a system API.|
+| rssi | number | No| No| Signal strength of a Bluetooth device, in dBm.<br> **System API**: This is a system API.|
+| timestamp | number | No| No| Scanning timestamp.<br> **System API**: This is a system API.|
 
 
 ## CellInfo<sup>23+</sup>
@@ -192,16 +192,16 @@ Defines cellular cell information.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| timeSinceBoot | number | No| No| Duration from the time when the device is started to the time when the location is successfully obtained, in nanoseconds. Enabling and then disabling the airplane mode is not considered as a device restart. **System API**: This is a system API.|
-| cellId | number | No| No| Cellular cell ID. **System API**: This is a system API.|
-| lac | number | No| No| Location area code. **System API**: This is a system API.|
-| mcc | number | No| No| Mobile country code (MCC). **System API**: This is a system API.|
-| mnc | number | No| No| Mobile network code (MNC). **System API**: This is a system API.|
-| rat | number | No| No| Radio access technology. **System API**: This is a system API.|
-| signalIntensity | number | No| No| Signal strength. **System API**: This is a system API.|
-| arfcn | number | No| No| Absolute Radio Frequency Channel Number (ARFCN). **System API**: This is a system API.|
-| pci | number | No| No| Physical cell ID. **System API**: This is a system API.|
-| additionsMap | Map&lt;string, string&gt; | No| No| Additional information. **System API**: This is a system API.|
+| timeSinceBoot | number | No| No| Duration from the time when the device is started to the time when the location is successfully obtained, in nanoseconds. Enabling and then disabling the airplane mode is not considered as a device restart.<br>**System API**: This is a system API.|
+| cellId | number | No| No| Cellular cell ID.<br> **System API**: This is a system API.|
+| lac | number | No| No| Location area code.<br>**System API**: This is a system API.|
+| mcc | number | No| No| Mobile country code (MCC).<br>**System API**: This is a system API.|
+| mnc | number | No| No| Mobile network code (MNC).<br> **System API**: This is a system API.|
+| rat | number | No| No| Radio access technology.<br> **System API**: This is a system API.|
+| signalIntensity | number | No| No| Signal strength.<br>**System API**: This is a system API.|
+| arfcn | number | No| No| Absolute Radio Frequency Channel Number (ARFCN).<br> **System API**: This is a system API.|
+| pci | number | No| No| Physical cell ID.<br>**System API**: This is a system API.|
+| additionsMap | Map&lt;string, string&gt; | No| No| Additional information.<br>**System API**: This is a system API.|
 
 
 ## LocationPrivacyType
@@ -214,9 +214,9 @@ Defines the privacy statement type.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| OTHERS | 0 | Other scenarios. Reserved field. **System API**: This is a system API.|
-| STARTUP | 1 | Privacy statement displayed in the startup wizard. The user needs to choose whether to agree with the statement. **System API**: This is a system API.|
-| CORE_LOCATION | 2 | Privacy statement displayed when enabling the location service. **System API**: This is a system API.|
+| OTHERS | 0 | Other scenarios. Reserved field.<br>**System API**: This is a system API.|
+| STARTUP | 1 | Privacy statement displayed in the startup wizard. The user needs to choose whether to agree with the statement.<br> **System API**: This is a system API.|
+| CORE_LOCATION | 2 | Privacy statement displayed when enabling the location service.<br> **System API**: This is a system API.|
 
 ## LocatingRequiredDataType<sup>10+</sup>
 
@@ -228,9 +228,9 @@ Defines the type of the required data of the location service.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| WIFI  | 1 | Wi-Fi scanning information. **System API**: This is a system API.|
-| BLUETOOTH | 2 | Bluetooth scanning information. **System API**: This is a system API.|
-| CELLULAR<sup>23+</sup> | 3 | Cellular cell information. **System API**: This is a system API.|
+| WIFI  | 1 | Wi-Fi scanning information.<br> **System API**: This is a system API.|
+| BLUETOOTH | 2 | Bluetooth scanning information.<br> **System API**: This is a system API.|
+| CELLULAR<sup>23+</sup> | 3 | Cellular cell information.<br> **System API**: This is a system API.|
 
 
 ## LocationIconStatus<sup>12+</sup>
@@ -243,9 +243,9 @@ Defines the location icon status.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| LOCATING_NOT_STARTED  | 0 | No location services are available and the location icon does not need to be displayed. **System API**: This is a system API.|
-| LOCATING_STARTED | 1 | Common location is in progress, and the common location icon needs to be displayed. **System API**: This is a system API.|
-| HD_LOCATING_STARTED | 2 | High-precision location is in progress, and the high-precision location icon needs to be displayed. **System API**: This is a system API.|
+| LOCATING_NOT_STARTED  | 0 | No location services are available and the location icon does not need to be displayed.<br> **System API**: This is a system API.|
+| LOCATING_STARTED | 1 | Common location is in progress, and the common location icon needs to be displayed.<br> **System API**: This is a system API.|
+| HD_LOCATING_STARTED | 2 | High-precision location is in progress, and the high-precision location icon needs to be displayed.<br> **System API**: This is a system API.|
 
 
 ## SportsType<sup>18+</sup>

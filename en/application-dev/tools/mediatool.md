@@ -50,6 +50,7 @@ mediatool list <resource-uri>
 ```
 
 Displays the information of a resource file specified by **\<resource-uri>** in the media library in CSV format.
+
 For example, if the URI of image A in the media library is **file://media/Photo/3/IMG_1721381297_001/MyImage.jpg**, you can run **mediatool list file://media/Photo/3** or **mediatool list file://media/Photo/3/IMG_1721381297_001/MyImage.jpg** to display the resource information.
 
 The following resource information is contained:

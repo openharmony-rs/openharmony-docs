@@ -31,7 +31,7 @@ Applies a foreground blur style to the component.
 | Name | Type                                                        | Mandatory| Description                    |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | value   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | Yes  | Settings of the foreground blur style.          |
-| options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions) | No  | Foreground blur options.|
+| options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions) | No  | Defines the foreground blur options. For details about the default value, see [ForegroundBlurStyleOptions](#foregroundblurstyleoptions).|
 
 **Return value**
 
@@ -53,8 +53,8 @@ Applies a foreground blur style to the component. Compared to [foregroundBlurSty
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style   | Optional\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Settings of the foreground blur style.<br>If **style** is set to **undefined**, no blur is applied.|
-| options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions) | No  | Foreground blur options.                                    |
+| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Settings of the foreground blur style.<br>If **style** is set to **undefined**, no blur is applied.|
+| options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions) | No  | Defines the foreground blur options. For details about the default value, see [ForegroundBlurStyleOptions](#foregroundblurstyleoptions).                                  |
 
 **Return value**
 
@@ -68,6 +68,11 @@ foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOp
 
 Applies a foreground blur style to the component. Compared to [foregroundBlurStyle<sup>18+</sup>](#foregroundblurstyle18), this API adds the **sysOptions** parameter, which allows for system adaptive adjustments.
 
+>  **NOTE**
+>
+>  **foregroundBlurStyle** is a real-time blurring API that performs rendering frame by frame, which incurs significant performance overhead. When both the blur content and blur radius remain unchanged, it is recommended that you use the static blur API [blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur). For best practices, see [Image Blurring Optimization – When to Use](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519).
+
+
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -76,7 +81,7 @@ Applies a foreground blur style to the component. Compared to [foregroundBlurSty
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style   | Optional\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Settings of the foreground blur style.<br>If **style** is set to **undefined**, no blur is applied.|
+| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Settings of the foreground blur style.<br>If **style** is set to **undefined**, no blur is applied.|
 | options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions) | No  | Foreground blur options.                                    |
 | sysOptions   |  [SystemAdaptiveOptions](ts-universal-attributes-background.md#systemadaptiveoptions19)    |   No  |  System adaptive adjustment options.<br>Default value: **{ disableSystemAdaptation: false }**   |
 
@@ -86,14 +91,9 @@ Applies a foreground blur style to the component. Compared to [foregroundBlurSty
 | ------ | ------------------------ |
 | T | Current component.|
 
->  **NOTE**
->
->  **foregroundBlurStyle** is a real-time blurring API that performs rendering frame by frame, which incurs significant performance overhead. When both the blur content and blur radius remain unchanged, it is recommended that you use the static blur API [blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur). For best practices, see [Image Blurring Optimization – When to Use](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519).
-
 ## ForegroundBlurStyleOptions
-Inherited from [BlurStyleOptions](#blurstyleoptions).
 
-Defines the foreground blur options.
+Inherits from [BlurStyleOptions](#blurstyleoptions) to define the foreground blur options.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

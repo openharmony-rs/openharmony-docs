@@ -1,4 +1,4 @@
-# Introduction to Hardware Compatibility
+# Overview
 
 
 When you use C or C++ to develop OpenHarmony native libraries, hardware matters. OpenHarmony can run on devices of different architectures and from a variety of vendors. It is a great challenge to ensure the compatibility and consistent experience of applications that use OpenHarmony native libraries on different devices.

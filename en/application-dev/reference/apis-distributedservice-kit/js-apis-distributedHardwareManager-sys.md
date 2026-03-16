@@ -40,7 +40,7 @@ Enumerates the types of the distributed hardware.
 
 | Name         | Value  | Description                        |
 | :------------ | ---- | ---------------------------- |
-| ALL           | 0    | All distributed applications.        |
+| ALL           | 0    | All distributed hardware.        |
 | CAMERA        | 1    | Distributed camera.            |
 | SCREEN        | 8    | Distributed screen.            |
 | MODEM_MIC     | 256  | Distributed microphone for mobile calls.|
