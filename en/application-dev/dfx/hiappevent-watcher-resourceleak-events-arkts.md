@@ -9,7 +9,7 @@
 
 ## Available APIs
 
-This topic describes how to use the ArkTS APIs provided by HiAppEvent to subscribe to resource leak events. For details about how to use the APIs, see [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
+This topic describes how to use the ArkTS APIs provided by HiAppEvent to subscribe to resource leak events. For details about the parameter restrictions and value ranges, see [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
 
 
 ### APIs for Setting Custom Parameters

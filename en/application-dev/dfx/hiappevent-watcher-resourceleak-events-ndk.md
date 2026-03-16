@@ -9,7 +9,7 @@
 
 ## Available APIs
 
-This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscribe to resource leak events. For details about how to use the APIs (such as parameter usage restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
+This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscribe to resource leak events. For details about the parameter restrictions and value ranges, see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
 
 **Subscription APIs**
 
