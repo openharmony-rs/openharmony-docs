@@ -8,6 +8,6 @@
 <!--Adviser: @ge-yafang-->
 
 - ArkTS API<!--calendar-arkts-->
-  - [@ohos.calendarManager（日程管理）](js-apis-calendarManager.md)
+  - [@ohos.calendarManager（日程管理能力）](js-apis-calendarManager.md)
 - 错误码<!--calendar-arkts-errorcode-->
   - [日历服务错误码](errorcode-calendarManager.md)
