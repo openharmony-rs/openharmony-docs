@@ -113,7 +113,7 @@ int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)
 
 **描述**
 
-获取PixelMap的信息，并记录信息到[OhosPixelMapInfo](capi-image-ohospixelmapinfo.md)体中。
+获取PixelMap的信息，并记录信息到[OhosPixelMapInfo](capi-image-ohospixelmapinfo.md)结构体中。
 
 **起始版本：** 8
 
