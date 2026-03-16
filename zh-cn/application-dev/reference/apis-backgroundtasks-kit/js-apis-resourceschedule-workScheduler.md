@@ -527,7 +527,7 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
 | 类型                              | 说明                                       |
 | ------------------------------- | ---------------------------------------- |
-|boolean| 检查延迟任务最后一次执行是否超时，如果workId有效，则返回从WorkSchedulerService获取的任务最后一次执行是否超时；否则，抛出异常。true，对应workId延迟任务最后一次执行超时，false，对应workId延迟任务最后一次执行未超时。|
+|boolean| 检查延迟任务最后一次执行是否超时，如果workId有效，则返回从WorkSchedulerService获取的任务最后一次执行是否超时；否则，抛出异常。<br>true表示对应workId延迟任务最后一次执行超时；false表示对应workId延迟任务最后一次执行未超时。|
 
 **错误码：**
 
