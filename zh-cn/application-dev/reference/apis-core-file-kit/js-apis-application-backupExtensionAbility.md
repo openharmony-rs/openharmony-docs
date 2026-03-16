@@ -101,7 +101,7 @@ class BackupExt extends BackupExtensionAbility {
   onBackupEx(backupInfo: string): string {
     try {
       if (backupInfo == "") {
-        //当backupInfo为空时，应用根据业务自行做处理。
+        // 当backupInfo为空时，应用根据业务自行做处理。
         console.info("backupInfo is empty");
       }
       console.info(`onBackupEx ok`);
@@ -134,11 +134,11 @@ interface ErrorInfo {
   errorInfo: string
 }
 class BackupExt extends BackupExtensionAbility {
-  //异步实现
+  // 异步实现
   async onBackupEx(backupInfo: string): Promise<string> {
     try {
       if (backupInfo == "") {
-        //当backupInfo为空时，应用根据业务自行做处理。
+        // 当backupInfo为空时，应用根据业务自行做处理。
         console.info("backupInfo is empty");
       }
       console.info(`onBackupEx ok`);
@@ -224,7 +224,7 @@ class BackupExt extends BackupExtensionAbility {
   async onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): Promise<string> {
     try {
       if (restoreInfo == "") {
-        //当restoreInfo为空时，应用根据业务自行做处理。
+        // 当restoreInfo为空时，应用根据业务自行做处理。
         console.info("restoreInfo is empty");
       }
       console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
@@ -261,7 +261,7 @@ class BackupExt extends BackupExtensionAbility {
   onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): string {
     try {
       if (restoreInfo == "") {
-        //当restoreInfo为空时，应用根据业务自行做处理。
+        // 当restoreInfo为空时，应用根据业务自行做处理。
         console.info("restoreInfo is empty");
       }
       console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
