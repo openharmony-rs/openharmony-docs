@@ -12,7 +12,7 @@
 
 ## 基本概念
 
-音频模板（AVMusicTemplate）：用于描述音频模板相关属性，包含标识当前媒体会话的ID（sessionId）、会话标签（sessionTag）等属性，与音频模板UI数据交互的操作方法。媒体应用可通过接入接口[AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)与播控中心进行数据交互，并响应播控中心的操作指令。
+音频模板（AVMusicTemplate）：用于描述音频模板相关能力的类，包含标识当前媒体会话的ID（sessionId）、会话标签（sessionTag）等属性，以及与播控中心进行数据交互的操作方法。媒体应用可通过其向播控中心上报媒体相关信息，以及响应播控中心的操作指令。
 
 ## 接口说明
 
