@@ -96,9 +96,9 @@ type ArrayUnionType = Array\<Int8Array\> | Array\<Uint8Array\> | Array\<Uint8Cla
 | Array\<DataView\> | 表示DataView类型的数组。 |
 | Array\<Blob\> | 表示Blob类型的数组。 |
 
-## buffer.BufferEncoding
+## BufferEncoding
 
-type BufferEncoding = | 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
+type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
 
 表示支持的编码格式类型。
 
