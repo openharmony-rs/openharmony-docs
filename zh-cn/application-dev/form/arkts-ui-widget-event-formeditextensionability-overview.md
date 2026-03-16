@@ -221,6 +221,25 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
          }
        ],
        ```
+       
+       ``` JSON5
+       // entry\src\main\module.json5
+       "extensionAbilities": [
+         // ...
+         {
+           // 一级编辑页配置
+           "name": "EntryFormEditAbility",
+           "srcEntry": "./ets/entryformeditability/EntryFormEditAbility.ets",
+           "type": "formEdit"
+         },
+         {
+           // 二级编辑页配置
+           "name": "FormEditSecPageAbility",
+           "srcEntry": "./ets/entryformeditability/FormEditSecPageAbility.ets",
+           "type": "formEdit"
+         }
+       ],
+       ```
 
     4. 卡片form_config.json文件实现。
     ```json5
