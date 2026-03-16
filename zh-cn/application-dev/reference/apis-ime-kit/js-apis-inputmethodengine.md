@@ -352,6 +352,8 @@ on(type: 'inputStart', callback: (kbController: KeyboardController, textInputCli
 
 订阅输入法绑定成功事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 > **说明：**
 >
 > 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility#on](#oninputstart9)替代。
@@ -381,6 +383,8 @@ off(type: 'inputStart', callback?: (kbController: KeyboardController, textInputC
 
 取消订阅输入法绑定成功事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 > **说明：**
 >
 > 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility#off](#offinputstart9)替代。
@@ -408,6 +412,8 @@ inputMethodEngine.getInputMethodEngine()
 on(type: 'keyboardShow'|'keyboardHide', callback: () => void): void
 
 订阅输入法软键盘显示或隐藏事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 > **说明：**
 >
@@ -438,6 +444,8 @@ inputMethodEngine.getInputMethodEngine().on('keyboardHide', () => {
 off(type: 'keyboardShow'|'keyboardHide', callback?: () => void): void
 
 取消订阅输入法软键盘显示或隐藏事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 > **说明：**
 >
