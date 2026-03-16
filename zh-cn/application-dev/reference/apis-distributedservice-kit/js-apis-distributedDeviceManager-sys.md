@@ -193,6 +193,25 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 |  wiseDeviceId       | string  | 否 | 否   |  已注册设备标识。          |
 |  onlineStatus    | ArkTS-Dyn: number <br /> ArkTS-Sta: int  | 否 | 否   |  设备在线状态，包括<br /> - 0：表示设备处于离线状态。<br /> - 1：表示设备处于在线状态。<br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
 
+## DeviceIdentification<sup>24+</sup>
+
+用于分布式设备识别的结构体。
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统API**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
+| 名称       | 类型  | 只读 | 可选              | 说明          |
+|----------| ---- | ------ | --------- |-------------|
+| deviceId | string  | 否 | 否   | 应用获取的匿名化设备ID。 |
+| udid     | string  | 否 | 否   | 设备唯一标识。     |
+
 ## DeviceManager
 
 设备管理实例，用于获取可信设备和本地设备的相关信息。在调用DeviceManager的方法前，需要先通过createDeviceManager构建一个DeviceManager实例dmInstance。
@@ -1136,5 +1155,73 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getDeviceNetworkIdList errCode:' + e.code + ',errMessage:' + e.message);
+  }
+  ```
+### getIdentificationByDeviceIds<sup>24+</sup>
+
+getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIdentification&gt;;
+
+根据设备ID查询设备标识。
+
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM，ohos.permission.DISTRIBUTED_DATASYNC，ohos.permission.sec.ACCESS_UDID
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统API**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
+**参数：**
+
+  | 参数名       | 类型                  | 必填  | 说明               |
+  | ------------- |---------------------| ---- |------------------|
+  |   deviceIds      | Array&lt;string&gt; |  是   | 应用程序可以获取的设备ID列表。 |
+
+**返回值：**
+
+  | 类型                                                           | 说明            |
+  |--------------------------------------------------------------| --------------- |
+  | Array&lt;[DeviceIdentification](#deviceidentification24)&gt; |  DeviceIdentification列表。|
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+
+| 错误码ID    | 错误信息                                                                                                              |
+|----------|-------------------------------------------------------------------------------------------------------------------|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.            |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Parameter verification failed; |
+| 11600101 | Failed to execute the function.                                                                                   |
+
+**示例：**
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit'
+
+  private idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
+  getDeviceUdids(deviceIds: Array<string>): void {
+    let deviceManager: distributedDeviceManager.DeviceManager | null = null;
+    try {
+      deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
+      this.idsLists = deviceManager?.getIdentificationByDeviceIds(deviceIds);
+      console.info("Successfully retrieved UDID list");
+    } catch (error) {
+      console.error('Get device UDID failed:', error);
+      this.idsLists = [];
+    } finally {
+      if (deviceManager) {
+        try {
+          distributedDeviceManager.releaseDeviceManager(deviceManager);
+          console.info("deviceManager released successfully");
+        } catch (releaseError) {
+          console.error('Release device manager failed:', releaseError);
+        }
+      }
+    }
   }
   ```
