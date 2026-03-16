@@ -6,14 +6,13 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 23开始，媒体播控中心（系统应用）通过实现音频模板提供的系统接口，来提供统一的UI界面以及媒体播控能力，对接入音频模板的媒体应用进行统一的界面显示和播控管理。播控中心持播放列表、收藏列表、媒体详情等界面的展示以及媒体播放、暂停、搜索、收藏等能力。该文档介绍音频模板系统接口能力及开发基本流程，包括监听媒体应用接入音频模板、查询媒体应用业务数据、给媒体应用下发操作指令等， 媒体应用接入请参考文档[使用音频模板](using-avsession-AVMusicTemplate.md)。
+从API version 23开始，媒体播控中心（系统应用）通过实现音频模板提供的系统接口，对接入音频模板的媒体应用提供统一的UI界面（播放列表、收藏列表、媒体详情等）以及媒体播控操作（播放、暂停、搜索、收藏等）。该文档介绍音频模板系统接口能力及开发基本流程，包括监听媒体应用接入音频模板、查询媒体应用业务数据、给媒体应用下发操作指令等， 媒体应用接入请参考文档[使用音频模板](using-avsession-AVMusicTemplate.md)。
 
 音频模板同时支持音频和视频内容，且两者的接入方式相同。本文档以音频场景为例进行说明。
 
 ## 基本概念
 
 音频模板控制器（AVMusicTemplateController）：包含标识媒体会话的ID（sessionId）和音频模板控制器是否已销毁（isDestroy）等，与媒体应用进行数据交互的方法。音频模板通过接入接口[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)获取已完成接口[AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)接入的媒体应用数据进行展示，并将用户的操作指令下发给媒体应用。
-
 
 ## 接口说明
 
