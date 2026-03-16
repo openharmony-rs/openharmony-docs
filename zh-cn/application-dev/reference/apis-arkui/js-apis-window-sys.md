@@ -1289,13 +1289,14 @@ import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
+  // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     let windowClass: window.Window | undefined = undefined;
     const parentWindowEventListener = (windowId: number, event: window.WindowEventType) => {
       // ...
     }
-    let promise = window.createSubWindowAndBindParent('test', 100, this.context, parentWindowEventListener);
     try {
+      let promise = window.createSubWindowAndBindParent('test', 100, this.context, parentWindowEventListener);
       promise.then((data) => {
         console.info('Succeeded in creating the window. Data:' + JSON.stringify(data));
         windowClass = data;
