@@ -887,6 +887,15 @@ error: Failed to install the HAP or HSP because the dependent module does not ex
 
 在安装HAP前，使用[bm install](#安装命令install)命令安装依赖的HSP。
 
+场景三：依赖集成态HSP：
+
+如果依赖集成态HSP，通过hdc工具安装应用时，需要同时或提前安装集成态HSP编译后的包。是否依赖集成态HSP，可以通过如下方法查询：
+
+DevEco Studio自动安装运行应用时，查看`Run`中的日志，如果存在`remote_hsp`目录，说明依赖集成态HSP，`remote_hsp`目录下的HSP文件就是集成态HSP编译后的包。
+
+![示例图](figures/remote_hsp.png)
+
+
 ### 9568259 安装解析配置文件缺少字段
 **错误信息**
 
