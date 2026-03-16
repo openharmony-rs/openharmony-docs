@@ -27,7 +27,7 @@
 
 - 使用文件分享的相关接口，需确认设备具有以下系统能力：SystemCapability.FileManagement.AppFileService.FolderAuthorization。
 
-- 在调用文件分享的相关接口前，需要申请权限："[ohos.permission.FILE_ACCESS_PERSIST](../security/AccessToken/restricted-permissions.md##ohos.permission.FILE_ACCESS_PERSIST)"，申请方式请参考[选择申请权限的方式](../security/AccessToken/determine-application-mode.md)。
+- 在调用文件分享的相关接口前，需要申请权限："[ohos.permission.FILE_ACCESS_PERSIST](../security/AccessToken/restricted-permissions.md#ohospermissionfile_access_persist)"，申请方式请参考[选择申请权限的方式](../security/AccessToken/determine-application-mode.md)。
 
 ## 开发步骤
 
