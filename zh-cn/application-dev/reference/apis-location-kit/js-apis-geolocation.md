@@ -3,10 +3,10 @@
 位置服务提供GNSS定位、网络定位、地理编码、逆地理编码、国家码和地理围栏等基本功能。
 
 > **说明：**
-> 本模块仅适用于ArkTS-Dyn。
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 从API Version 9开始，该接口不再维护，推荐使用新接口[geoLocationManager](js-apis-geoLocationManager.md)。
 > 本模块能力仅支持WGS-84坐标系。
+> 本模块仅适用于ArkTS-Dyn。
 
 ## 申请权限
 
