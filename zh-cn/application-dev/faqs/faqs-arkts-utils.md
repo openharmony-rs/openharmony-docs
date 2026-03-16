@@ -425,7 +425,7 @@ function consumer(e: MessageEvents) {
   let i32a = new Int32Array(sab);
   console.info("Customer: received sab");
   while (true) {
-    Atomics.wait(i32a, 0, 0); //blocked here until be waked.
+    Atomics.wait(i32a, 0, 0); // blocked here until be waked.
     let length = i32a.length;
     for (let i = length - 1; i > 0; i--) {
       console.info("arraybuffer " + i + " value is " + i32a[i]);
@@ -480,9 +480,10 @@ Sendable对象需要满足一定的规格：
 5. @Sendable只能写在ArkTS(ets)文件中
 6. 不支持#定义私有属性，要用private
 7. 导出Sendable类的文件，不能导出非Sendable属性
-8. 传输方式有如下两种：
-    8.1 序列化传递：深拷贝到其他线程，非共享模式。
-    8.2 共享模式：可以跨线程引用传递，多线程可同时读写，开发者需要自行采用同步机制避免多线程竞争。
+8. 传输方式有如下两种： 
+   8.1 序列化传递：深拷贝到其他线程，非共享模式。
+
+   8.2 共享模式：可以跨线程引用传递，多线程可同时读写，开发者需要自行采用同步机制避免多线程竞争。
 
 **参考链接**
 
