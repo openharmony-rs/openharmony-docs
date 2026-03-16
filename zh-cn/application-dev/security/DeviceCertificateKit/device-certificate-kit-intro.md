@@ -27,6 +27,8 @@ Device Certificate Kit（设备证书服务）面向应用开发者，提供了[
 
 ![](figures/certificate_framework_architecture.png)
 
+<!--PR1--><!--PR1End-->
+
 ### 与相关Kit的关系
 
 证书算法库的功能使用时，涉及公钥的生成和获取，这部分依赖[Crypto Architecture Kit](../CryptoArchitectureKit/crypto-architecture-kit-intro.md)加解密算法框架服务的能力。
