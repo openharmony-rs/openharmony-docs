@@ -417,7 +417,7 @@
 | isFocused | boolean | 否   | 是   | 窗口是否获焦。true表示窗口获焦；false表示窗口未获焦。返回值与[isFocused()](arkts-apis-window-Window.md#isfocused12)接口一致。   |
 | globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 是   | 全局坐标系下的窗口尺寸。扩展屏场景下以主屏左上角为坐标原点，虚拟屏场景下以虚拟屏左上角为坐标原点。默认值：[0, 0, 0, 0]。|
 | displayId | number | 否 | 是 | 窗口所在屏幕的ID。折叠屏半折场景下，返回窗口实际所属屏幕ID。<br>**起始版本：** 26.0.0 |
-| globalRect<sup>26+</sup> | [Rect](arkts-apis-window-i.md#rect7) | 否 | 是 | 全局坐标系下窗口实际显示区域（位置和尺寸）。默认值：[0, 0, 0, 0]。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| globalRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 是 | 全局坐标系下窗口实际显示区域（位置和尺寸）。默认值：[0, 0, 0, 0]。<br>**起始版本：** 26.0.0 |
 
 ## TransitionAnimation<sup>20+</sup>
 
