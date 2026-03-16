@@ -170,7 +170,7 @@
        // 获取传感器的厂商名称。
        ret = OH_SensorInfo_GetVendorName(sensorInfoTemp, vendorName, &length);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor vender name is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor vendor name is failed");
            return ret;
        }
        Sensor_Type sensorType;
@@ -359,6 +359,6 @@
                 // ...
               } catch (error) {
                 let e: BusinessError = error as BusinessError;
-                hilog.error(DOMAIN, 'testTag', `Failed to invoke getSensorInfos. Code: ${e.code}, message: ${e.message}`);
+                hilog.error(DOMAIN, 'testTag', `Failed to invoke subscriber. Code: ${e.code}, message: ${e.message}`);
               }
     ```

@@ -500,7 +500,7 @@ Json文件共包含3个属性。
    
    ``` TypeScript
    const vibratorInfoParam: vibrator.VibratorInfoParam = {
-     deviceId: -1   // deviceid 需要是查询出来真实存在的设备
+     deviceId: -1   // deviceId 需要是查询出来真实存在的设备
    }
    try {
      vibrator.stopVibration(vibratorInfoParam).then(() => {

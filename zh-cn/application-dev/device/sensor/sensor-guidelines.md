@@ -328,7 +328,7 @@
       let currentPressure = 1500.0;
       const promise = sensor.getDeviceAltitude(seaPressure, currentPressure);
       promise.then((data: number) => {
-        console.info('Succeeded in getting sensor_getDeviceAltitude_Promise', data);
+        console.info('Succeeded in getting device altitude: ', data);
       }, (err: BusinessError) => {
         console.error(`Failed to get altitude. Code: ${err.code}, message: ${err.message}`);
       });
@@ -653,11 +653,11 @@
           console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
         }
       }, (err: BusinessError) => {
-        console.error(`Failed to getOrientation. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to get orientation. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to getOrientation Code: ${e.code}, message: ${e.message}`);
+      console.error(`Failed to get orientation. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
@@ -734,7 +734,7 @@
       sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER).then((data: sensor.Sensor) => {
         console.info('Succeeded in getting sensor: ' + JSON.stringify(data));
       }, (err: BusinessError) => {
-        console.error(`Failed to get singleSensor . Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to get singleSensor. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
