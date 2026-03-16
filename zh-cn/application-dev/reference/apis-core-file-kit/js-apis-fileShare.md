@@ -70,7 +70,7 @@ import { fileShare } from '@kit.CoreFileKit';
 | 名称  | 类型  | 只读 | 可选 | 说明                                                   |
 |------|-------|------|-----|------------------------------------------------------|
 | uri| string | 否   | 否 | 需要授予或使能权限的URI。                                       |
-| operationMode | number | 否   | 否 | 授予或使能权限的URI访问模式，参考[OperationMode](#operationmode11)，如需授予多个权限，可以组合使用，例如使用READ_MODE | WRITE_MODE授予读写权限。 |
+| operationMode | number | 否   | 否 | 授予或使能权限的URI访问模式，参考[OperationMode](#operationmode11)，如需授予多个权限，可以组合使用，例如使用READ_MODE \| WRITE_MODE授予读写权限。 |
 
 ## PathPolicyInfo<sup>15+</sup>
 

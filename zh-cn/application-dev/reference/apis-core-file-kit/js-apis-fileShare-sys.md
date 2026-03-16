@@ -38,7 +38,7 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags, ca
 | uri   | string| 是   | 公共目录文件uri。 |
 | bundleName   | string| 是   | 分享目标的包名。   |
 | flag   | [wantConstant.Flags](../apis-ability-kit/js-apis-app-ability-wantConstant.md#flags) | 是   | 授权的权限。     |
- | callback | AsyncCallback&lt;void&gt;| 是    | 异步授权之后的回调。 |
+| callback | AsyncCallback&lt;void&gt;| 是    | 异步授权之后的回调。 |
 
 **错误码：**
 
