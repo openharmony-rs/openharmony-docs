@@ -3,10 +3,10 @@
 位置服务提供GNSS定位、网络定位、地理编码、逆地理编码、国家码和地理围栏等基本功能。
 
 > **说明：**
+> 本模块仅适用于ArkTS-Dyn。
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 从API Version 9开始，该接口不再维护，推荐使用新接口[geoLocationManager](js-apis-geoLocationManager.md)。
 > 本模块能力仅支持WGS-84坐标系。
-> 本模块仅适用于ArkTS-Dyn。
 
 ## 申请权限
 
@@ -1200,8 +1200,6 @@ sendCommand(command: LocationCommand): Promise&lt;boolean&gt;
 > **说明：**<br/>
 > 从API version 9开始废弃，建议使用[geoLocationManager.ReverseGeoCodeRequest](js-apis-geoLocationManager.md#reversegeocoderequest)替代。
 
-**需要权限**：ohos.permission.LOCATION
-
 **系统能力**：SystemCapability.Location.Location.Geocoder
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1218,8 +1216,6 @@ sendCommand(command: LocationCommand): Promise&lt;boolean&gt;
 
 > **说明：**<br/>
 > 从API version 9开始废弃，建议使用[geoLocationManager.GeoCodeRequest](js-apis-geoLocationManager.md#geocoderequest)替代。
-
-**需要权限**：ohos.permission.LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Geocoder
 
@@ -1240,8 +1236,6 @@ sendCommand(command: LocationCommand): Promise&lt;boolean&gt;
 
 > **说明：**<br/>
 > 从API version 9开始废弃，建议使用[geoLocationManager.GeoAddress](js-apis-geoLocationManager.md#geoaddress)替代。
-
-**需要权限**：ohos.permission.LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Geocoder
 
@@ -1274,8 +1268,6 @@ sendCommand(command: LocationCommand): Promise&lt;boolean&gt;
 > **说明：**<br/>
 > 从API version 9开始废弃，建议使用[geoLocationManager.LocationRequest](js-apis-geoLocationManager.md#locationrequest)替代。
 
-**需要权限**：ohos.permission.LOCATION
-
 **系统能力**：SystemCapability.Location.Location.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1294,8 +1286,6 @@ sendCommand(command: LocationCommand): Promise&lt;boolean&gt;
 > **说明：**<br/>
 > 从API version 9开始废弃，建议使用[geoLocationManager.CurrentLocationRequest](js-apis-geoLocationManager.md#currentlocationrequest)替代。
 
-**需要权限**：ohos.permission.LOCATION
-
 **系统能力**：SystemCapability.Location.Location.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1313,8 +1303,6 @@ sendCommand(command: LocationCommand): Promise&lt;boolean&gt;
 > **说明：**<br/>
 > 从API version 8开始支持。
 > 从API version 9开始废弃，建议使用[geoLocationManager.SatelliteStatusInfo](js-apis-geoLocationManager.md#satellitestatusinfo)替代。
-
-**需要权限**：ohos.permission.LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Gnss
 
@@ -1336,8 +1324,6 @@ sendCommand(command: LocationCommand): Promise&lt;boolean&gt;
 > 从API version 8开始支持。
 > 从API version 9开始废弃，建议使用[geoLocationManager.CachedGnssLocationsRequest](js-apis-geoLocationManager.md#cachedgnsslocationsrequest)替代。
 
-**需要权限**：ohos.permission.LOCATION
-
 **系统能力**：SystemCapability.Location.Location.Gnss
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1353,8 +1339,6 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 > **说明：**<br/>
 > 从API version 8开始支持。
 > 从API version 9开始废弃，建议使用[geoLocationManager.Geofence](js-apis-geoLocationManager.md#geofence)替代。
-
-**需要权限**：ohos.permission.LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -1374,8 +1358,6 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 > 从API version 8开始支持。
 > 从API version 9开始废弃，建议使用[geoLocationManager.GeofenceRequest](js-apis-geoLocationManager.md#geofencerequest)替代。
 
-**需要权限**：ohos.permission.LOCATION
-
 **系统能力**：SystemCapability.Location.Location.Geofence
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1393,8 +1375,6 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 > 从API version 8开始支持。
 > 从API version 9开始废弃，建议使用[geoLocationManager.LocationCommand](js-apis-geoLocationManager.md#locationcommand)替代。
 
-**需要权限**：ohos.permission.LOCATION
-
 **系统能力**：SystemCapability.Location.Location.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1409,8 +1389,6 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 
 > **说明：**<br/>
 > 从API version 9开始废弃，建议使用[geoLocationManager.Location](js-apis-geoLocationManager.md#location)替代。
-
-**需要权限**：ohos.permission.LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -1436,8 +1414,6 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 > 从API version 8开始支持。
 > 从API version 9开始废弃，替代接口geoLocationManager.LocationPrivacyType仅供系统应用使用。
 
-**需要权限**：ohos.permission.LOCATION
-
 **系统能力**：SystemCapability.Location.Location.Core
 
 | 名称 | 值 | 说明 |
@@ -1453,8 +1429,6 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 
 > **说明：**<br/>
 > 从API version 9开始废弃，建议使用[geoLocationManager.LocationRequestPriority](js-apis-geoLocationManager.md#locationrequestpriority)替代。
-
-**需要权限**：ohos.permission.LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -1472,8 +1446,6 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 
 > **说明：**<br/>
 > 从API version 9开始废弃，建议使用[geoLocationManager.LocationRequestScenario](js-apis-geoLocationManager.md#locationrequestscenario)替代。
-
-**需要权限**：ohos.permission.LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -1493,8 +1465,6 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 
 > **说明：**<br/>
 > 从API version 9开始废弃，建议使用[位置服务子系统错误码](errorcode-geoLocationManager.md)替代。
-
-**需要权限**：ohos.permission.LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
 
