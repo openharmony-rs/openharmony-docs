@@ -10668,7 +10668,7 @@ async function example(context: Context) {
 }
 ```
 
-### setDownloadSpecificCloudMediaNetworkPolicy<sup>24+</sup>
+### setDownloadSpecificCloudMediaNetworkPolicy<sup>26+</sup>
 
 setDownloadSpecificCloudMediaNetworkPolicy(assetUris: string[], networkPolicy: CloudDownloadNetworkPolicy): Promise\<void\>
 
@@ -10685,7 +10685,7 @@ setDownloadSpecificCloudMediaNetworkPolicy(assetUris: string[], networkPolicy: C
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
 | assetUris | string[]  \| null | 是   | 需要设置策略的下载的原图和视频的uri列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
-| networkPolicy | [CloudDownloadNetworkPolicy](#clouddownloadnetworkpolicy24) | 是   | 批量下载网络策略。 |
+| networkPolicy | [CloudDownloadNetworkPolicy](#clouddownloadnetworkpolicy26) | 是   | 批量下载网络策略。 |
 
 
 **返回值：**
@@ -10965,6 +10965,7 @@ queryDownloadSpecificCloudMediaTaskCount(predicates: dataSharePredicates.DataSha
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. predicates null or undefined. |
 
 **示例：**
 
@@ -10986,7 +10987,7 @@ async function example(context: Context) {
 }
 ```
 
-### queryDownloadSpecificCloudMediaTaskCountAndSize<sup>24+</sup>
+### queryDownloadSpecificCloudMediaTaskCountAndSize<sup>26+</sup>
 
 queryDownloadSpecificCloudMediaTaskCountAndSize(predicates: dataSharePredicates.DataSharePredicates): Promise\<int[]\>
 
@@ -12745,7 +12746,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | SUSPICIOUS |  2 |  疑似风险图片。  |
 | REJECTED |  3 |  确认风险图片。  |
 
-## CloudDownloadNetworkPolicy<sup>24+</sup>
+## CloudDownloadNetworkPolicy<sup>26+</sup>
 
 枚举，批量下载网络策略类型枚举。
 
