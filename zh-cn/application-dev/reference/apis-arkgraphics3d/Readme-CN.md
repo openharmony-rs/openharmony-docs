@@ -14,6 +14,6 @@
     - [SceneType](js-apis-inner-scene-types.md)
     - [SceneResources](js-apis-inner-scene-resources.md)
     <!--Del-->
-    - [SceneResources (系统接口)](js-apis-inner-scene-resources-sys.md)
+    - [SceneResource (系统接口)](js-apis-inner-scene-resources-sys.md)
     <!--DelEnd-->
     - [ScenePostProcessSettings](js-apis-inner-scene-post-process-settings.md)
