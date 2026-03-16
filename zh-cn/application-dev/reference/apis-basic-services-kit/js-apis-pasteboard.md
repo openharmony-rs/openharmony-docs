@@ -3590,17 +3590,13 @@ try {
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
-**ArkTS-Dyn起始版本：** 13
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 值  | 说明    |
 | ---- | --- | ------ |
-| URL   | 0   | URL类型。       |
-| NUMBER    | 1   | 数字类型。   |
-| EMAIL_ADDRESS | 2   | 邮箱地址类型。 |
-| HTTP_URL<sup>24+</sup> | 3   | HTTP web链接类型。 |
-| FLIGHT_NUMBER<sup>24+</sup> | 4   | 航班号类型。 |
+| URL   | 0   | URL类型。</br> **ArkTS-Dyn起始版本**：13</br>**ArkTS-Sta起始版本**：23       |
+| NUMBER    | 1   | 数字类型。</br> **ArkTS-Dyn起始版本**：13</br>**ArkTS-Sta起始版本**：23   |
+| EMAIL_ADDRESS | 2   | 邮箱地址类型。</br> **ArkTS-Dyn起始版本**：13</br>**ArkTS-Sta起始版本**：23 |
+| HTTP_URL | 3   | HTTP web链接类型。</br> **ArkTS-Dyn起始版本**：24</br>**ArkTS-Sta起始版本**：24 |
+| FLIGHT_NUMBER | 4   | 航班号类型。</br> **ArkTS-Dyn起始版本**：24</br>**ArkTS-Sta起始版本**：24 |
 
 ### detectPatterns<sup>13+</sup>
 
