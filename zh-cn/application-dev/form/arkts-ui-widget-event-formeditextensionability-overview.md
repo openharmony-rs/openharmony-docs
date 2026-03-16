@@ -202,6 +202,25 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 
     3. 新增EntryFormEditAbility需要在module.json5配置，配置如下。
        <!-- @[FormEditDemo_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/module.json5) --> 
+       
+       ``` JSON5
+       // entry\src\main\module.json5
+       "extensionAbilities": [
+         // ...
+         {
+           // 一级编辑页配置
+           "name": "EntryFormEditAbility",
+           "srcEntry": "./ets/entryformeditability/EntryFormEditAbility.ets",
+           "type": "formEdit"
+         },
+         {
+           // 二级编辑页配置
+           "name": "FormEditSecPageAbility",
+           "srcEntry": "./ets/entryformeditability/FormEditSecPageAbility.ets",
+           "type": "formEdit"
+         }
+       ],
+       ```
 
     4. 卡片form_config.json文件实现。
     ```json5
