@@ -76,11 +76,15 @@ This error code is reported during navigation when the builder function for crea
 
 **Possible Causes**
 
-The builder function for creating the **NavDestination** component is not registered at the time of navigation.
+- The builder function for creating the **NavDestination** component is not registered at the time of navigation.
+
+- The target page does not contain the **Navigation** component.
+
+- The routing table is not configured.
 
 **Solution**
 
-Make sure the **builder** function for creating the **NavDestination** component is registered.
+Check whether the **Navigation** component provides the builder function for creating **NavDestination**. Ensure that the routing table is correctly configured and the target page contains the **Navigation** component.
 
 ## 100006 NavDestination Not Found
 
@@ -98,7 +102,7 @@ No **NavDestination** component is available for navigation.
 
 **Solution**
 
-Make sure there is a **NavDestiantion** component for navigation.
+Make sure there is a **NavDestination** component for navigation.
 
 ## 106200 Invalid Index Value
 

@@ -1,4 +1,4 @@
-# ArkUI_DragAction
+# ArkUI_GestureRecognizerHandle*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
@@ -7,15 +7,15 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
-typedef struct ArkUI_DragAction ArkUI_DragAction
+typedef ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray
 ```
 
 ## Overview
 
-Defines a struct for a drag action.
+Defines a gesture recognizer handle array.
 
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [drag_and_drop.h](capi-drag-and-drop-h.md)
+**Header file**: [native_gesture.h](capi-native-gesture-h.md)

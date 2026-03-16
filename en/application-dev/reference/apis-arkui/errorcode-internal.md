@@ -24,6 +24,8 @@ When used for the [Navigation](arkui-ts/ts-basic-components-navigation.md) routi
 
 When used for [@ohos.arkui.componentSnapshot](js-apis-arkui-componentSnapshot.md): "The builder is not a valid build function."
 
+When used for [@ohos.arkui.componentUtils](js-apis-arkui-componentUtils.md): "UI execution context not found."
+
 **Symptom**
 
 For [@ohos.animator](js-apis-animator.md) and [@ohos.promptAction](js-apis-promptAction.md), this error code is reported when an internal error that cannot be rectified by developers occurs, with specific details included in the error message.
