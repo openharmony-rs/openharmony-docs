@@ -1,4 +1,4 @@
-# 废弃的Class (WebController, deprecated)
+# Class (WebController)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
