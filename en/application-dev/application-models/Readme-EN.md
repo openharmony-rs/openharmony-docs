@@ -56,6 +56,7 @@
     - Starting a Specified Application<!--directional-redirection-->
       - [Overview of Starting a Specified Application](app-startup-overview.md)
       - [(Optional) Using canOpenLink to Check Application Accessibility](canopenlink.md)
+      - [Obtaining the URL of the Target Application](obtaining-target-app-url-info.md)
       - [Using Deep Linking for Application Redirection](deep-linking-startup.md)
       <!--Del-->
       - [Using App Linking for Application Redirection](app-linking-startup.md)
