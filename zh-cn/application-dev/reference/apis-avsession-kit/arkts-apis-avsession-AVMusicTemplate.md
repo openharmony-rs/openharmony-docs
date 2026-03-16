@@ -15,7 +15,7 @@
 ## 导入模块
 
 ```ts
-import { aVMusicTemplate } from '@kit.AVSessionKit';
+import { avMusicTemplate } from '@kit.AVSessionKit';
 ```
 
 ## 属性
