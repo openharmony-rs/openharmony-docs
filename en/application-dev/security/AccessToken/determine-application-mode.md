@@ -9,9 +9,9 @@
 
 You need to determine whether your application needs related permissions before accessing data or performing an operation. If permissions are required, request the permissions in the application installation package.
 
-The procedure for requesting a permission varies depending on the permission level and authorization mode. Before requesting a permission, you need to:
+The level and [authorization mode](app-permission-mgmt-overview.md#authorization-mode) of each permission are different. Therefore, the permission application mode is also different. Before requesting a permission, you need to:
 
-1. Determine the permission type of the target permission by referring to the permission list.
+1. Confirm the permission name based on the **Required permissions** or **@permission** field in the API, and verify the permission type by searching the [permission list](app-permissions.md) page.
 2. Request the permission by following the corresponding operation path.
 
 You can request a permission based on its level and authorization mode by referring to the following operation paths.
@@ -22,8 +22,8 @@ You can request a permission based on its level and authorization mode by referr
 | -------- | -------- | -------- |
 | [Open system_grant permission](permissions-for-all.md)| system_grant | [Declare permission](declare-permissions.md) &gt; Access API| 
 | [Open user_grant permission](permissions-for-all-user.md)| user_grant  | [Declare permission](declare-permissions.md) &gt; [Request user authorization](request-user-authorization.md) &gt; Access API| 
-| <!--Del-->[system_grant permission available for system applications via ACL](permissions-for-system-apps.md)<br><!--DelEnd-->[Restricted permission](restricted-permissions.md)| system_grant | <!--RP1-->[Request restricted permission](declare-permissions-in-acl.md)<!--RP1End--> &gt; [Declare permission](declare-permissions.md) > Access API| 
-| <!--Del-->[user_grant permission available for system applications via ACL](permissions-for-system-apps-user.md)<br><!--DelEnd-->[Restricted permission](restricted-permissions.md)| user_grant | <!--RP1-->[Request restricted permission](declare-permissions-in-acl.md)<!--RP1End--> &gt; [Declare permission](declare-permissions.md) > [Request user authorization](request-user-authorization.md) > Access API|
+| <!--Del-->[system_grant permission available for system applications via ACL](permissions-for-system-apps.md)<br><!--DelEnd--> [restricted permission (system authorization)](restricted-permissions.md)| system_grant | [Request restricted permission](declare-permissions-in-acl.md) &gt; [Declare permission](declare-permissions.md) > Access API| 
+| <!--Del-->[user_grant permission available for system applications via ACL](permissions-for-system-apps-user.md)<br><!--DelEnd--> [restricted permission (user authorization)](restricted-permissions.md)| user_grant | [Request restricted permission](declare-permissions-in-acl.md) &gt; [Declare permission](declare-permissions.md) > [Request user authorization](request-user-authorization.md) > Access API|
 
 <!--Del-->
 > **NOTE**
@@ -46,7 +46,7 @@ To change the application APL to system_basic or system_core, modify the Harmony
 
 Modify the **"bundle-info"** &gt; **"apl"** field in the **HarmonyAppProvision** configuration file.
 
-```json
+```json5
 "bundle-info" : {
     // ...
     "apl": "system_basic",

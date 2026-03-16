@@ -6,21 +6,21 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **UIPickerComponent** container is a component used to implement user selection operations. It supports single selection from a limited set of options and can be applied to various scenarios such as time selection, date selection, region selection, and status selection. The UIPickerComponent container is displayed in a 3D scroll wheel style. The options can be customized as required, including text, image, and image-text combination.
+The **UIPickerComponent** container is used to implement user selection operations. It supports single selection from a limited set of options and can be applied to various scenarios such as time selection, date selection, region selection, and status selection. Its display effect is a three-dimensional wheel style, supporting customizable options including text type, image type, and text-image combination type.
 
 >  **NOTE**
 >
 > - This component is supported since API version 22. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The height of each option row in the UIPickerComponent container is fixed at 40 vp, and a maximum of seven options can be displayed. Due to the three-dimensional wheel display effect, options other than the selected one will be rotated at different angles, so the actual visible height will be less than 40 vp.
+> - The height of the **UIPickerComponent** container options is fixed at 40 vp, and a maximum of seven options can be displayed. Due to the three-dimensional wheel display effect, options other than the selected one will be rotated at different angles, so the actual visible height will be less than 40 vp.
 >
-> - You are advised to set the [height](./ts-universal-attributes-size.md#height) of the UIPickerComponent container to 200 vp. When the set height is greater than or equal to this recommended value, all 7 options can be fully displayed. Otherwise, the display area will be cropped from the top and bottom edges towards the center, and the number of displayed options will be reduced accordingly, always keeping the selected item vertically centered.
+> - It is recommended that the [height](./ts-universal-attributes-size.md#height) of the **UIPickerComponent** container be set to 200 vp. When the set height is greater than or equal to this recommended value, all 7 options can be fully displayed. Otherwise, the display area will be cropped from the top and bottom edges towards the center, and the number of displayed options will be reduced accordingly, always keeping the selected item vertically centered.
 >
-> - If the [width](./ts-universal-attributes-size.md#width) is not set for the UIPickerComponent container, the maximum width of visible child components in the current view is used as the container width. You are advised to set the width of the UIPickerComponent container or set the same width for each child component to prevent the container width from dynamically changing during sliding, which affects the display effect.
+> - When the **UIPickerComponent** container's [width](./ts-universal-attributes-size.md#width) is not set, the maximum width of the visible child components in the current view is taken as the container width. You are advised to set the width of the **UIPickerComponent** container or set the same width for each child component to avoid dynamic changes in container width during sliding, which affects the display effect.
 >
-> - The alignment mode of child components in the UIPickerComponent container is fixed to center alignment. The alignment mode of child components cannot be changed using the [align](ts-universal-attributes-location.md#align) attribute.
+> - The alignment mode of child components in the **UIPickerComponent** container is fixed to center alignment, and cannot be changed via the [align](ts-universal-attributes-location.md#align) attribute.
 >
-> - The UIPickerComponent container is not supported on smart watches.
+> - Currently, the **UIPickerComponent** container does not support wearables.
 
 ## Child Components
 
@@ -42,14 +42,14 @@ The **UIPickerComponent** container is a component used to implement user select
 >
 > - The text-image combination option requires that the **Row** container contain the **Text** and **Image** components. When using the text-image combination option, you are advised to set the image's [height](./ts-universal-attributes-size.md#height) to 40 vp or below to avoid cropping when images are large.
 >
-> - The default value of the fontSize attribute of all text components (including the text components in the Row container) in the UIPickerComponent container is 20 fp. User settings will override the default value, and abnormal values will be processed according to the result of handling the text component's [fontSize](./ts-basic-components-text.md#fontsize). You are advised to set the **fontSize** attribute to a unified value or not to set it to ensure a good display effect.
+> - The **fontSize** attribute of all text components (including the **Text** components in the **Row** container) in the **UIPickerComponent** container is 20 fp by default. User settings will override the default value, and abnormal values will be processed according to the result of handling the text component's [fontSize](./ts-basic-components-text.md#fontsize). You are advised to set the **fontSize** attribute to a unified value or not to set it to ensure a good display effect.
 
 
 ## APIs
 
 UIPickerComponent(options?: UIPickerComponentOptions)
 
-Creates a UIPickerComponent container. The selected item is determined by the value of the selectedIndex attribute in the options parameter.
+Creates a **UIPickerComponent** container, whose selected item is determined by the **selectedIndex** attribute in the **options** parameter.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -61,11 +61,11 @@ Creates a UIPickerComponent container. The selected item is determined by the va
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options |  [UIPickerComponentOptions](#uipickercomponentoptions)| No| Parameters for configuring the UIPickerComponent container.|
+| options |  [UIPickerComponentOptions](#uipickercomponentoptions)| No| Parameters of the **UIPickerComponent** container.|
 
 ## UIPickerComponentOptions
 
-Parameters of the UIPickerComponent container.
+Describes the parameters of the **UIPickerComponent** container.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -97,7 +97,7 @@ Sets whether the option list can loop scrolling.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether loop scrolling is enabled.<br>- **true**: Loop scrolling is enabled.<br>- **false**: Loop scrolling is disabled.<br>Default value: **true**<br>If the value of **isLoop** is **undefined**, the default value is used.<br>If the number of child components is less than 8, loop scrolling will not occur regardless of whether isLoop is set to **true** or **false**.|
+| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether loop scrolling is enabled.<br>- **true**: Loop scrolling is enabled.<br>- **false**: Loop scrolling is disabled.<br>Default value: **true**<br>If the value of **isLoop** is **undefined**, the default value is used.<br>If the number of child components is less than 8, loop scrolling will not occur regardless of whether **isLoop** is set to **true** or **false**.|
 
 ### enableHapticFeedback
 
@@ -124,7 +124,7 @@ To enable haptic feedback, you must declare the following permission under **req
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**<br>If the value of **enable** is **undefined**, the default value is used.<br>After this function is enabled, whether haptic feedback is available depends on the hardware support of the system.|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**<br>If the value of **enable** is **undefined**, the default value is used.<br>After this function is enabled, whether haptic feedback is available depends on the hardware support of the system.|
 
 ### selectionIndicator
 
@@ -142,7 +142,7 @@ Sets the style of the selected item indicator.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle)> | Yes  | Style of the selected item indicator.<br>Default value:<br>{<br>type: PickerIndicatorType.BACKGROUND,<br>borderRadius: {<br>value:12,<br>unit:LengthUnit.vp<br>},<br>backgroundColor: 'sys.color.comp_background_tertiary'<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle)> | Yes  | Style of the selected item indicator.<br>Default value:<br>{<br>type: PickerIndicatorType.BACKGROUND,<br>borderRadius: {<br>value:12,<br>unit:LengthUnit.vp<br>},<br>backgroundColor: 'sys.color.comp_background_tertiary'<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 ## Events
 
@@ -170,13 +170,13 @@ Triggered when the selected item changes.
 
 | Name| Type                                      | Mandatory| Description                                             |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| callback  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | Yes  | Callback triggered when the selected item changes.<br>If **callback** is set to **undefined**, the callback is not used.|
+| callback  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | Yes  | Callback triggered when the selected item changes.<br>If **callback** is set to **undefined**, the callback is not used.|
 
 ### onScrollStop
 
 onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 
-Triggered when the picker scrolling stops. The picker scrolling stops when the sliding animation triggered by an action is complete. If a new sliding animation is triggered before the previous one finishes, it does not count as scrolling stop.
+Triggered when the picker scrolling stops. The picker scrolling stops when the scrolling animation triggered by an action is complete. If a new scrolling animation is triggered before the previous one finishes, it does not count as scrolling stop.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -188,7 +188,7 @@ Triggered when the picker scrolling stops. The picker scrolling stops when the s
 
 | Name| Type                                      | Mandatory| Description                                             |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | Yes  | Callback triggered when the picker scrolling stops.<br>If **callback** is set to **undefined**, the callback is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | Yes  | Callback triggered when the picker scrolling stops.<br>If **callback** is set to **undefined**, the callback is not used.|
 
 ## PickerIndicatorStyle
 
@@ -204,9 +204,9 @@ Sets parameters of the selected item indicator style.
 | ----- | ------ | ---- | ---- | ------------------------------------------ |
 | type  | [PickerIndicatorType](#pickerindicatortype)| No  | No  | Type of the selected item indicator.<br>Default value: **PickerIndicatorType.BACKGROUND**<br>If the value of **type** is a decimal number, the integer after rounding down is used. If the value of **type** is not within the value range of **PickerIndicatorType**, the default value is used.|
 | strokeWidth |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)      | No  | Yes  | Stroke width of the divider.<br>Default value: **2.0px**.<br>Unit: same as that of **LengthMetrics**<br>Value range: [0, half the height of the selected item (that is, 20 vp)]. If the value of **strokeWidth** is less than 0 or greater than half the height of the selected item, the default value is used. Percentages are not supported.<br>**NOTE**<br>1. This parameter takes effect only when **type** is set to **PickerIndicatorType.DIVIDER**.<br>2. If this parameter is set in **LengthMetrics.resource** mode, the value of a non-length attribute will be treated as 0 vp. |
-| dividerColor       | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Color of the divider.<br>Default value: 'sys.color.comp_divider'<br>**NOTE**<br>This parameter takes effect only when **type** is set to **PickerIndicatorType.DIVIDER**.|
-| startMargin |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)       | No  | Yes  | Distance between the divider and the start end of the UIPickerComponent container.<br>Default value: **0**<br>Unit: same as that of **LengthMetrics**<br>Value range: The sum of startMargin and endMargin cannot exceed the width of the UIPickerComponent container. If the value is less than 0 or the sum of startMargin and endMargin exceeds the width of the UIPickerComponent container, the default value is used. Percentages are not supported.<br>**NOTE**<br>This parameter takes effect only when **type** is set to **PickerIndicatorType.DIVIDER**.|
-| endMargin   |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | No  | Yes  | Distance between the divider and the end of the UIPickerComponent container.<br>Default value: **0**<br>Unit: same as that of **LengthMetrics**<br>Value range: The sum of startMargin and endMargin cannot exceed the width of the UIPickerComponent container. If the value is less than 0 or the sum of startMargin and endMargin exceeds the width of the UIPickerComponent container, the default value is used. Percentages are not supported.<br>**NOTE**<br>This parameter takes effect only when **type** is set to **PickerIndicatorType.DIVIDER**.|
+| dividerColor       | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Color of the divider.<br>Default value: **'sys.color.comp_divider'**<br>**NOTE**<br>This parameter takes effect only when **type** is set to **PickerIndicatorType.DIVIDER**.|
+| startMargin |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)       | No  | Yes  | Distance between the divider and the start edge of the **UIPickerComponent** container.<br>Default value: **0**<br>Unit: same as that of **LengthMetrics**<br>Value range: The sum of **startMargin** and **endMargin** must not exceed the width of the **UIPickerComponent** container. If the value is less than 0 or the sum of **startMargin** and **endMargin** exceeds the width of the **UIPickerComponent** container, the default value is used. Percentages are not supported.<br>**NOTE**<br>This parameter takes effect only when **type** is set to **PickerIndicatorType.DIVIDER**.|
+| endMargin   |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | No  | Yes  | Distance between the divider and the end edge of the **UIPickerComponent** container.<br>Default value: **0**<br>Unit: same as that of **LengthMetrics**<br>Value range: The sum of **startMargin** and **endMargin** must not exceed the width of the **UIPickerComponent** container. If the value is less than 0 or the sum of **startMargin** and **endMargin** exceeds the width of the **UIPickerComponent** container, the default value is used. Percentages are not supported.<br>**NOTE**<br>This parameter takes effect only when **type** is set to **PickerIndicatorType.DIVIDER**.|
 | backgroundColor  | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Background color of the selected item.<br>Default value: **'sys.color.comp_background_tertiary'**<br>**NOTE**<br>This parameter takes effect only when **type** is set to **PickerIndicatorType.BACKGROUND**.  |
 | borderRadius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) &nbsp;\|&nbsp; [BorderRadiuses](ts-types.md#borderradiuses9) &nbsp;\|&nbsp; [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | No | Yes | Background border radius of the selected item.<br>Default value: **{ value:12, unit:LengthUnit.vp }**, meaning 12 vp for all corners<br>Value range: no more than half of the smaller value between the width and height of the selected item. If the value is less than 0, the default value is used. If the value is greater than the maximum value, the maximum value is used.<br>**NOTE**<br>1. This parameter takes effect only when **type** is set to **PickerIndicatorType.BACKGROUND**.<br>2. [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12): Sets the size and unit of the four corner radii in a unified manner.<br>3. [BorderRadiuses](ts-types.md#borderradiuses9): Sets the size (unit: vp) of the four corner radii individually.<br>4. [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12): Sets the size and unit of the four corner radii individually.|
 
@@ -247,7 +247,7 @@ Defines the callback types for the [onChange](#onchange) and [onScrollStop](#ons
 
 ### Example 1: Switching Loop Scrolling and Enabling/Disabling Haptic Feedback
 
-Since API version 22, this example shows how to switch between cyclic scrolling and enabling/disabling touch feedback of the UIPickerComponent container by tapping a button.
+Since API version 22, this example demonstrates how to switch the loop scrolling of the **UIPickerComponent** container and how to enable or disable haptic feedback via button clicks.
 
 ```ts
 // xxx.ets
@@ -273,7 +273,7 @@ struct UIPickerComponentAttrsExample {
             Text(item)
           })
         }
-        // Loop the option list looping.
+        // Configure the option list looping.
         .canLoop(this.loop)
         // Configure haptic feedback.
         .enableHapticFeedback(this.hapticFeedback)
@@ -310,7 +310,7 @@ struct UIPickerComponentAttrsExample {
 
 ### Example 2: Setting Event Callbacks
 
-In API version 22 and later versions, this example implements the onChange and onScrollStop event callbacks of the UIPickerComponent container based on the status selection.
+Since API version 22, this example demonstrates how to set the **onChange** and **onScrollStop** callbacks of the **UIPickerComponent** container based on status selection.
 
 ```ts
 // xxx.ets
@@ -356,7 +356,7 @@ struct UIPickerComponentEventsExample {
 
 ### Example 3: Setting the Selected Item Index
 
-From API version 22, this example shows how to set the index of the selected item in the UIPickerComponent container.
+Since API version 22, this example demonstrates how to set the selected item index of the **UIPickerComponent** container.
 
 ```ts
 // xxx.ets
@@ -407,7 +407,7 @@ struct UIPickerComponentSelectedIndexExample {
 
 ### Example 4: Setting the Selected Item Indicator
 
-From API version 22, this example shows how to set the indicator of the selected item in the UIPickerComponent container. Scenarios include the following: When using a background indicator, set the background color and background corner radius. When using a divider indicator, set the divider color, divider width, start side margin, end side margin.
+Since API version 22, this example demonstrates how to set the selected item indicator of the **UIPickerComponent** container. Scenarios include the following: When using a background indicator, set the background color and background corner radius. When using a divider indicator, set the divider color, divider width, start side margin, and end side margin.
 
 ```ts
 // xxx.ets
@@ -445,7 +445,7 @@ struct UIPickerComponentIndicatorExample {
   dividerBuilder() {
     Column() {
       Row() {
-        Text ('Divider Stroke Width')
+        Text('Divider Stroke Width')
       }.margin(2)
 
       Row() {
@@ -476,7 +476,7 @@ struct UIPickerComponentIndicatorExample {
       }
 
       Row() {
-        Text ('Start Side Margin')
+        Text('Start Side Margin')
       }.margin(2)
 
       Row() {
@@ -507,7 +507,7 @@ struct UIPickerComponentIndicatorExample {
       }
 
       Row() {
-        Text ('End Side Margin')
+        Text('End Side Margin')
       }.margin(2)
 
       Row() {
@@ -538,11 +538,11 @@ struct UIPickerComponentIndicatorExample {
       }
 
       Row() {
-        Text ('Divider Color')
+        Text('Divider Color')
       }
 
       Row() {
-        Button ('Blue')
+        Button('Blue')
           .onClick(() => {
             this.dividerColor = Color.Blue
           })
@@ -550,7 +550,7 @@ struct UIPickerComponentIndicatorExample {
           .height(30)
           .width(73)
           .margin(2)
-        Button ('Black')
+        Button('Black')
           .onClick(() => {
             this.dividerColor = Color.Black
           })
@@ -561,7 +561,7 @@ struct UIPickerComponentIndicatorExample {
       }
 
       Row() {
-        Button ('Ignore Custom Settings')
+        Button('Ignore Custom Settings')
           .onClick(() => {
             this.dividerColor = undefined
           })
@@ -577,11 +577,11 @@ struct UIPickerComponentIndicatorExample {
   backgroundBuilder() {
     Column() {
       Row() {
-        Text ('Corner Radius Settings')
+        Text('Corner Radius Settings')
       }.margin(2)
 
       Column() {
-        Button ('Use LengthMetrics to Implement Unified Corner Radius')
+        Button('Use LengthMetrics to Implement Unified Corner Radius')
           .onClick(() => {
             this.bgBorderRadius = this.bgBorderRadiuses1
           })
@@ -589,7 +589,7 @@ struct UIPickerComponentIndicatorExample {
           .height(30)
           .width(300)
           .margin(2)
-        Button ('Use BorderRadiuses to Achieve Top Rounded, Bottom Square')
+        Button('Use BorderRadiuses to Achieve Top Rounded, Bottom Square')
           .onClick(() => {
             this.bgBorderRadius = this.bgBorderRadiuses2
           })
@@ -597,7 +597,7 @@ struct UIPickerComponentIndicatorExample {
           .height(30)
           .width(300)
           .margin(2)
-        Button ('Use LocalizedBorderRadiuses to Achieve Top Square, Bottom Rounded')
+        Button('Use LocalizedBorderRadiuses to Achieve Top Square, Bottom Rounded')
           .onClick(() => {
             this.bgBorderRadius = this.bgBorderRadiuses3
           })
@@ -608,11 +608,11 @@ struct UIPickerComponentIndicatorExample {
       }.margin(2)
 
       Row() {
-        Text ('Background Color Settings')
+        Text('Background Color Settings')
       }.margin(2)
 
       Row() {
-        Button ('Blue')
+        Button('Blue')
           .onClick(() => {
             this.bgColor = Color.Blue
           })
@@ -620,7 +620,7 @@ struct UIPickerComponentIndicatorExample {
           .height(30)
           .width(73)
           .margin(2)
-        Button ('Green')
+        Button('Green')
           .onClick(() => {
             this.bgColor = Color.Green
           })
@@ -631,7 +631,7 @@ struct UIPickerComponentIndicatorExample {
       }
 
       Row() {
-        Button ('Ignore Custom Settings')
+        Button('Ignore Custom Settings')
           .onClick(() => {
             this.bgColor = undefined
           })
@@ -673,11 +673,11 @@ struct UIPickerComponentIndicatorExample {
       Tabs({ barPosition: BarPosition.Start, index: this.curTabIndex, controller: this.controller }) {
         TabContent() {
           this.backgroundBuilder()
-        }.tabBar ('Background Indicator')
+        }.tabBar('Background Indicator')
 
         TabContent() {
           this.dividerBuilder()
-        }.tabBar ('Divider Indicator')
+        }.tabBar('Divider Indicator')
       }
       .vertical(false)
       .barMode(BarMode.Fixed)
@@ -702,11 +702,11 @@ struct UIPickerComponentIndicatorExample {
 }
 ```
 
-![containerPicker](./figures/ContainerPickerDemo4.gif)
+
 
 ### Example 5: Customizing the Month Picker
 
-In API version 22 and later versions, this example uses the UIPickerComponent container to nest the text child component to implement a month selector.
+Since API version 22, this example demonstrates how to use the **UIPickerComponent** container to nest text child components to implement the month picker.
 
 ```ts
 // xxx.ets
@@ -719,7 +719,7 @@ struct MonthUIPickerComponentExample {
   aboutToAppear(): void {
     // Construct options.
     for (let i = 1; i <= 12; i++) {
-      this.monthArray.push (i + 'Month')
+      this.monthArray.push(i + 'Month')
     }
   }
 
@@ -734,7 +734,7 @@ struct MonthUIPickerComponentExample {
         })
       }
       .width('70%')
-      // Loop the option list looping.
+      // Configure the option list looping.
       .canLoop(true)
       // Disable haptic feedback.
       .enableHapticFeedback(false)
@@ -744,7 +744,7 @@ struct MonthUIPickerComponentExample {
       .onChange((idx: number) => {
         console.info('UIPickerComponent item changed: ' + this.monthArray[idx])
       })
-      // Subscribe to the sliding stop event.
+      // Subscribe to the scrolling stop event.
       .onScrollStop((idx: number) => {
         console.info('UIPickerComponent scroll stopped: ' + this.monthArray[idx])
       })
@@ -754,11 +754,11 @@ struct MonthUIPickerComponentExample {
 }
 ```
 
-![containerPicker](./figures/ContainerPickerDemo5.gif)
+
 
 ### Example 6: Customizing the Area Picker
 
-Starting with API version 22, this example uses a combination of multiple columns of UIPickerComponent containers to implement a locale selector.
+Since API version 22, this example demonstrates how to use the multi-column **UIPickerComponent** container combination to implement an area selector.
 
 ```ts
 // xxx.ets
@@ -872,11 +872,11 @@ struct RegionUIPickerComponentExample {
 }
 ```
 
-![containerPicker](./figures/ContainerPickerDemo6.gif)
+
 
 ### Example 7: Customizing Option Types
 
-In API version 22 and later versions, the UIPickerComponent container is used to implement the selector of different option types, including the text selector, image selector, and image-text combined selector.
+Since API version 22, this example uses the **UIPickerComponent** container to implement pickers with different option types, including text picker, image picker, and text-image combination picker.
 
 ```ts
 // xxx.ets
@@ -947,15 +947,15 @@ struct UIPickerComponentExample {
       Tabs({ barPosition: BarPosition.Start, index: this.curTabIndex, controller: this.controller }) {
         TabContent() {
           this.TextPicker()
-        }.tabBar ('Text Picker')
+        }.tabBar('Text Picker')
 
         TabContent() {
           this.ImagePicker()
-        }.tabBar ('Image Picker')
+        }.tabBar('Image Picker')
 
         TabContent() {
           this.HybridPicker()
-        }.tabBar ('Text-Image Picker')
+        }.tabBar('Text-Image Picker')
       }
       .vertical(true)
       .divider({ strokeWidth: 1 })
@@ -969,18 +969,18 @@ struct UIPickerComponentExample {
 }
 ```
 
-![containerPicker](./figures/ContainerPickerDemo7.gif)
+
 
 ### Example 8: Customizing the Time Picker
 
-In API version 22 and later, this example implements a time picker with the following functions: enabling/disabling loop scrolling, showing/hiding seconds, toggling 24-hour format, displaying/hiding leading zeros, adapting to the current system language for content rendering, and adjusting the column display order based on language habits.
+Since API version 22, this example implements a time picker with the following functions: enabling/disabling loop scrolling, showing/hiding seconds, toggling 24-hour format, displaying/hiding leading zeros, adapting to the current system language for content rendering, and adjusting the column display order based on language habits.
 
 > **NOTE**
 > - In this example, the content of each column of the time picker is displayed in the corresponding language based on the system language. For example, AM/PM is displayed in the English system.
 > - In this example, the columns of the time picker are adjusted according to the system language, for example: English system displays hour/minute/second/AMPM.
 
-To achieve text switching with system language, you need to add the text for the corresponding languages in the project's resource directory, for example:
-- Chinese (default): Create the base directory in the resource directory, create the element directory in the base directory, and add the string.json file to the element directory. If the file already exists, add the following key-value pairs to the file. Do not overwrite the original file. The following shows the file content:
+To achieve text switching with system language, you need to add the text for the corresponding languages in the project's **resource** directory, for example:
+- Chinese (default): Create the **base** directory in the **resource** directory, create the **element** directory in the **base** directory, and add the **string.json** file to the **element** directory. (If the file already exists, add the following key-value pair in the name-value format to the file. Do not directly overwrite the original file.) The following shows the file content:
     ```json
     {
       "string": [
@@ -1424,4 +1424,4 @@ struct TimeUIPickerComponentExample {
 }
 ```
 
-![containerPicker](./figures/ContainerPickerDemo8.gif)
+

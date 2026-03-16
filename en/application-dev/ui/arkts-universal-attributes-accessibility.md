@@ -18,7 +18,7 @@ When the [accessibility attributes](../reference/apis-arkui/arkui-ts/ts-universa
 
 - All user interaction scenarios are covered, such as button tapping, text browsing, chart interaction, and dynamic content update.
 
-- This service is applicable to phones, tablets, and wearables.
+- This service is applicable to phones and tablets.
 
 ## Highlights
 
@@ -40,6 +40,118 @@ Accessibility information can be correctly set for all interactive UI components
 
 <!--RP1--><!--RP1End-->
 
+## Setting the Accessibility Text
+
+The [accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext) attribute is used to provide text to be read for components without text content and provide information for visual-only elements in accessibility scenarios. It is recommended that the text be concise and convey the key information of the component. For example, the description "play" can be provided for a play button without text. If the component already has text content and the **accessibilityText** attribute is also set, only the content set by **accessibilityText** is read.
+
+**accessibilityText** is mainly used to briefly describe the feature of a component, rather than specific operations or prompt messages. You are not advised to set lengthy information in **accessibilityText**, such as operation guidance like "Double-tap with one finger to play" or status information like "This feature is not supported."
+
+This attribute supports strings or resource references.
+
+The following provides two examples to describe how to add accessibility text (**accessibilityText**) to an icon button without default text.
+
+Example 1: If there is only an image and no accessibility text is set, the system plays "Image, double-tap with one finger to execute." Users cannot understand the function of the image button through the announcement.
+
+<!-- @[accessibility_text_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityTextCase01.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityTextCase01 {
+  build() {
+    // ...
+      Column() {
+        // Ensure that the icon exists in the resource/base/media directory. You can replace the icon with an appropriate one.
+        Image($r('app.media.play'))
+          .width(60)
+          .height(60)
+          .onClick(() => {
+            // Core logic for playing audio and video.
+          })
+      }
+      .backgroundColor('#f1f2f3')
+      // ...
+  }
+}
+```
+
+Example 2: Add the **accessibilityText** attribute to example 1 and set the value to "Play, image, double-tap with one finger to execute." Users can understand the function of the image button through the announcement.
+
+<!-- @[accessibility_text_start02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityTextCase02.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityTextCase02 {
+  build() {
+    // ...
+      Column() {
+        // Ensure that the icon exists in the resource/base/media directory. You can replace the icon with an appropriate one.
+        Image($r('app.media.play'))
+          .width(60)
+          .height(60)
+          .onClick(() => {
+            // Core logic for playing audio and video.
+          })
+          .accessibilityText ('Play')
+      }
+      .backgroundColor('#f1f2f3')
+      // ...
+  }
+}
+```
+
+## Setting Accessibility Notifications
+
+The [accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitydescription) attribute is used to provide more detailed component description, helping users understand the operation to be performed and the possible consequences, especially when the consequences cannot be inferred from the component attributes or accessibility text. For example, it can explain why a component is unavailable, or convey information that the system's default usage hints cannot. This information is played after the text content. If the current control has a default usage hint (for example, for a component that can be tapped, the default usage hint is "Double-tap with one finger to execute"), the accessibility description will replace the system's usage hint, that is, only the accessibility description will be played.
+
+After the usage hint of the accessibility tool is disabled, the accessibility description will not be played.
+
+The following provides two examples to illustrate how to set the accessibility description for the **Button** component.
+
+Example 1: The **Button** component is used as the full-screen button for video playback. When the **Column** component is focused, the accessibility description "Button, double-tap with one finger **to execute**" is played, which is difficult for users to understand.
+
+<!-- @[accessibility_description_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityDescriptionCase01.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityDescriptionCase01 {
+  build() {
+    // ...
+      Button()
+        .background(Color.Blue)
+        .onClick(() => {
+          // Full-screen logic.
+        })
+      // ...
+  }
+}
+```
+
+Example 2: After **accessibilityDescription** is set based on example 1, the announcement "Button, double-tap with one finger to **display in full screen**," is played, allowing users to clearly understand that the action is for full-screen operation.
+
+<!-- @[accessibility_description_start02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityDescriptionCase02.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityDescriptionCase02 {
+  build() {
+    // ...
+      Button()
+        .background(Color.Blue)
+        .onClick(() => {
+          // Full-screen logic.
+        })
+        // Custom hint for the service.
+        .accessibilityDescription ('Double-tap with one finger to display in full screen')
+      // ...
+  }
+}
+```
+
+
 ## Setting Accessibility Groups
 
 The [accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitygroup) attribute is used to set whether to enable accessibility groups. If this feature is enabled, the component and all its child components are treated as a whole, and accessibility services no longer process child components individually. The **accessibilityGroup** attribute supports the following values:
@@ -48,15 +160,47 @@ The [accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attribute
 
 - **true**: Accessibility grouping is enabled.
 
-Here is an example using the **Column** component to enable accessibility grouping:
+The following two examples compare the effects of accessibility grouping in the **Column** component.
 
-<!-- @[accessibility_group_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) --> 
+Example 1: In this scenario, there are three individually focusable **Text** nodes, making it difficult for users to effectively perceive the complete time information.
+
+<!-- @[accessibility_group_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityGroupCase01.ets) --> 
 
 ``` TypeScript
-Column() {
-  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
+@Entry
+@Component
+export struct AccessibilityGroupCase01 {
+  build() {
+    // ...
+      Column() {
+        Text ('2026')
+        Text('Jan. 27')
+        Text ('Tuesday')
+      }
+      // ...
+  }
 }
-.accessibilityGroup(true)
+```
+
+Example 2: Building on Example 1, After **accessibilityGroup** is added, the **Column** component becomes focusable and concatenates all Text texts under the Column into the text "2026 Jan. 27 Tuesday", while disabling individual focus on a single **Text** node.
+
+<!-- @[accessibility_group_start02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityGroupCase02.ets) --> 
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityGroupCase02 {
+  build() {
+    // ...
+      Column() {
+        Text ('2026')
+        Text('Jan. 27')
+        Text ('Tuesday')
+      }
+      .accessibilityGroup(true)
+      // ...
+  }
+}
 ```
 
 ## Setting the Accessibility Level
@@ -71,90 +215,23 @@ The [accessibilityLevel](../reference/apis-arkui/arkui-ts/ts-universal-attribute
 
 - **"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.
 
-Here is an example using the **Column** component to set its accessibility level to **"yes"**:
+This example uses the **Text** component as an example. If **Text.accessibilityLevel("yes")** is set, the component can be recognized by accessibility services. If not, "Text 1" cannot be focused independently.
 
-<!-- @[accessibility_level_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
-
-``` TypeScript
-Column() {
-  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
-}
-.accessibilityGroup(true)
-  .accessibilityLevel('yes')
-```
-
-## Setting the Accessibility Text
-
-The [accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext) attribute is used to provide text to be read for components without text content and provide information for visual-only elements in accessibility scenarios. It is recommended that the text be concise and convey the key information of the component. For example, the description "play" can be provided for a play button without text. If the component already has text content and the **accessibilityText** attribute is also set, only the content set by **accessibilityText** is read.
-
-**accessibilityText** is mainly used to briefly describe the feature of a component, rather than specific operations or prompt messages. You are not advised to set lengthy information in **accessibilityText**, such as operation guidance like "Double-tap with one finger to play" or status information like "This feature is not supported."
-
-This attribute supports strings or resource references.
-
-In this example, the accessibility text of the play icon is set to "play".
-
-<!-- @[accessibility_text_group_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
-
-``` TypeScript
-Column() {
-  Image($r('app.media.play')) // Only an icon is displayed. No default text is provided.
-  .width(60)
-  .height(60)
-  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text12'))
-  .onClick(() => {
-      // Core logic for playing audio and video.
-  })
-}
-```
-
-## Setting Accessibility Description
-
-The [accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitydescription) attribute is used to provide more detailed component description, for example, the reason why the component is currently unavailable, or the meaning that cannot be expressed by the system guide for beginners, helping users understand the operation to be performed and the operation result. After the text content is broadcasted, this accessibility description will be broadcasted. If the current component has a default guide for beginners (for example, for a component that can be tapped, the default content is "double-tap with one finger to execute"), the content of **accessibilityDescription** will be broadcasted instead of the system guide.
-
-In this example, **accessibilityDescription** of the **Button** component is set to **Double-tap with one finger to play**.
-
-<!-- @[accessibility_description_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
-
-``` TypeScript
-Column() {
-  Button()
-  .width(120)
-  .height(40)
-  .accessibilityLevel('yes')
-  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text12'))
-  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text13'))
-  .onClick(() => {
-      // Core logic for playing audio and video.
-  })
-}
-```
-
-## Setting Accessibility Virtual Nodes
-
-The [accessibilityVirtualNode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityvirtualnode11) attribute is used to add virtual accessibility nodes to the custom drawing component. The assistive tool reads the information about these nodes instead of the actual displayed content.
-
-<!-- @[virtual_node_example_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets) -->
+<!-- @[accessibility_level_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityLevelCase01.ets) -->
 
 ``` TypeScript
 @Entry
 @Component
-struct VirtualNodeExample {
-  @Builder customAccessibilityNode() {
-    // Replace $r('app.string.UniversalAttributesAccessibility_text6') with the actual resource file. In this example, the value in the resource file is "Text 2."
-    Text($r('app.string.UniversalAttributesAccessibility_text6'))
-      .fontSize(50)
-      .fontWeight(FontWeight.Bold)
-  }
+export struct AccessibilityLevelCase01 {
   build() {
-    Column() {
-      // Replace $r('app.string.UniversalAttributesAccessibility_text5') with the actual resource file. In this example, the value in the resource file is "Text 1."
-      Text($r('app.string.UniversalAttributesAccessibility_text5'))
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-    }
-    .accessibilityGroup(true)
-    .accessibilityLevel('yes')
-    .accessibilityVirtualNode(this.customAccessibilityNode)
+    // ...
+        Column() {
+          Text('HelloWorld')
+          Text('Text 1')
+            .accessibilityLevel('yes')
+      }
+      .accessibilityGroup(true)
+      // ...
   }
 }
 ```
@@ -165,7 +242,7 @@ struct VirtualNodeExample {
 
 ### Setting Selection State for Multi-Select Scenarios
 
-The [accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13) attribute is used to indicate whether a component (for example, two-state or three-state component like check box or toggle button) is checked in multi-select scenarios. It applies to scenarios requiring clear "selected/unselected" semantics and supports the following values:
+The [accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13) attribute is used to indicate whether a component (for example, two-state or three-state component like check box or toggle button) is selected in single-select scenarios. It applies to scenarios requiring clear "selected/unselected" semantics and supports the following values:
 
 - **undefined** (default): automatically determined by the system (depending on the component's own state, such as the **isOn** attribute of a **Toggle** component).
 
@@ -183,11 +260,8 @@ Column() {
 }
 .accessibilityGroup(true)
   .accessibilityLevel('yes')
-  // Replace $r('app.string.UniversalAttributesAccessibility_text7') with the actual resource file. In this example, the value in the resource file is "Group."
-  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-  // Replace $r('app.string.UniversalAttributesAccessibility_text8') with the actual resource file.
-     In this example, the value in the resource file is "The Column component can be selected, and the content to be announced is 'Group'." */
-  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
+  .accessibilityText ('Group')
+  .accessibilityDescription('The Column component can be selected, and the announced content is "Group"')
   .accessibilityChecked(true)
 ```
 
@@ -212,10 +286,8 @@ Column() {
 .accessibilityGroup(true)
   .accessibilityLevel('yes')
   // Replace $r('app.string.UniversalAttributesAccessibility_text7') with the actual resource file. In this example, the value in the resource file is "Group."
-  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-  // Replace $r('app.string.UniversalAttributesAccessibility_text8') with the actual resource file.
-     In this example, the value in the resource file is "The Column component can be selected, and the content to be announced is 'Group'." */
-  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
+  .accessibilityText ('Group')
+  .accessibilityDescription('The Column component can be selected, and the announced content is "Group"')
   .accessibilitySelected(undefined)
 ```
 
@@ -229,6 +301,35 @@ In ArkUI accessibility attributes, both [accessibilityChecked](../reference/apis
 | Semantic objectives| Physical state of components (for example, whether a switch is on).| Navigation focus item (for example, current selected item in a list).|
 | State persistence| Usually requires explicit saving (such as form submission).| Temporary (changes with focus movement).|
 | Typical components| **Checkbox** and **Toggle**.        | **List** and **Tabs**.       |
+
+## Setting Accessibility Virtual Nodes
+
+The [accessibilityVirtualNode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityvirtualnode11) attribute is used to add virtual accessibility nodes to the custom drawing component. The assistive tool reads the information about these nodes instead of the actual displayed content.
+
+This example uses the **Text** component as an example. After **accessibilityVirtualNode** is set, "Text 2" can be recognized , focused, and announced by the assistive tool in accessibility mode, while the UI still displays "Text 1."
+
+<!-- @[virtual_node_example_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct VirtualNodeExample {
+  @Builder customAccessibilityNode() {
+    Text('Text 2')
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+  }
+
+  build() {
+    Column() {
+      Text('Text 1')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+    .accessibilityVirtualNode(this.customAccessibilityNode)
+  }
+}
+```
 
 ## Recommendations
 
@@ -269,23 +370,18 @@ export struct AccessibilityText {
       Row() {
         // ...
         Column() {
-          // Replace $r('app.string.UniversalAttributesAccessibility_text5') with the actual resource file. In this example, the value in the resource file is "Text 1."
-          Text($r('app.string.UniversalAttributesAccessibility_text5'))
+          Text('Text 1')
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
-          // Replace $r('app.string.UniversalAttributesAccessibility_text6') with the actual resource file. In this example, the value in the resource file is "Text 2."
-          Text($r('app.string.UniversalAttributesAccessibility_text6'))
+          Text('Text 2')
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
         }
         .width('100%')
           .accessibilityGroup(true)
           .accessibilityLevel('yes')
-          // Replace $r('app.string.UniversalAttributesAccessibility_text7') with the actual resource file. In this example, the value in the resource file is "Group."
-          .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-          // Replace $r('app.string.UniversalAttributesAccessibility_text8') with the actual resource file.
-             In this example, the value in the resource file is "The Column component can be selected, and the content to be announced is 'Group'." */
-          .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
+          .accessibilityText ('Group')
+          .accessibilityDescription('The Column component can be selected, and the announced content is "Group"')
           .accessibilityVirtualNode(this.customAccessibilityNode)
           .accessibilityChecked(true)
           .accessibilitySelected(undefined)

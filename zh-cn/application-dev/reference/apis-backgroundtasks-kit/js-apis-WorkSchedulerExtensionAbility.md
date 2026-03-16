@@ -25,6 +25,8 @@ import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
 
 type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext
 
+WorkSchedulerExtensionContext是WorkSchedulerExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
+
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 | 类型 | 说明 |
@@ -32,6 +34,8 @@ type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext
 | [_WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)|  WorkSchedulerExtension的上下文环境。 |
 
 ## WorkSchedulerExtensionAbility
+
+延迟任务回调，当满足调度条件或调度结束时，系统会回调应用WorkSchedulerExtensionAbility中[onWorkStart()](#onworkstart)或[onWorkStop()](#onworkstop)的方法。
 
 ### 属性
 
@@ -49,7 +53,7 @@ onWorkStart(work: workScheduler.WorkInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名  | 类型                                       | 必填   | 说明             |
 | ---- | ---------------------------------------- | ---- | -------------- |
@@ -77,7 +81,7 @@ onWorkStop(work: workScheduler.WorkInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名  | 类型                                       | 必填   | 说明             |
 | ---- | ---------------------------------------- | ---- | -------------- |

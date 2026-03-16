@@ -22,7 +22,7 @@
 
 - SDK版本配置：
 
-  扩展外设管理提供的ArkTs接口，所需SDK版本为API16及以上才可使用。
+  扩展外设管理提供的ArkTS接口，所需SDK版本为API16及以上才可使用。
 
 
 - HDC配置：
@@ -42,7 +42,7 @@
 
 USB设备管理主要提供的功能有：查询USB设备列表、USB设备权限控制、设置USB设备配置等。
 
-USB类开放能力如下，具体请查阅[API参考文档](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
+USB类开放能力如下，具体请查阅[@ohos.usbManager](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
 
 **表1** USB类的开放能力接口
 
@@ -141,7 +141,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
        ]
      }
    ]
-   */
+    */
    this.deviceList_ = deviceList;
    ```
 
@@ -195,7 +195,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
    /*
     打开对应接口，在设备信息（deviceList）中选取对应的interface。
    interface1为设备配置中的一个接口。
-   */
+    */
    usbManager.claimInterface(pipe, interface1, true);
    this.pipe_ = pipe;
    this.interface_ = interface1;

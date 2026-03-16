@@ -53,17 +53,17 @@ Defines the data structures for the C APIs of the HTTP request module.
 
 | Name                              | Description                                                                                   |
 |----------------------------------|---------------------------------------------------------------------------------------|
-| OHOS_HTTP_MAX_PATH_LEN 128       | Defines the maximum path length of an HTTP request.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack  |
-| OHOS_HTTP_MAX_STR_LEN 256        | Defines the maximum string length of an HTTP request.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack    |
-| OHOS_HTTP_DNS_SERVER_NUM_MAX 3   | Defines the maximum number of DNS servers for an HTTP request.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack |
-| NET_HTTP_METHOD_GET "GET"        | Sets the HTTP request method to GET.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack    |
-| NET_HTTPMETHOD_HEAD "HEAD"       | Sets the HTTP request method to HEAD.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack   |
-| NET_HTTPMETHOD_OPTIONS "OPTIONS" | Sets the HTTP request method to OPTIONS.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack|
-| NET_HTTPMETHOD_TRACE "TRACE"     | Sets the HTTP request method to TRACE.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack  |
-| NET_HTTPMETHOD_DELETE "DELETE"   | Sets the HTTP request method to DELETE.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack |
-| NET_HTTP_METHOD_POST "POST"      | Sets the HTTP request method to POST.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack   |
-| NET_HTTP_METHOD_PUT "PUT"        | Sets the HTTP request method to PUT.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack    |
-| NET_HTTP_METHOD_PATCH "CONNECT"  | Sets the HTTP request method to CONNECT.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack|
+| OHOS_HTTP_MAX_PATH_LEN 128       | Defines the maximum path length of an HTTP request.<br>**Since**: 20  |
+| OHOS_HTTP_MAX_STR_LEN 256        | Defines the maximum string length of an HTTP request.<br>**Since**: 20    |
+| OHOS_HTTP_DNS_SERVER_NUM_MAX 3   | Defines the maximum number of DNS servers for an HTTP request.<br>**Since**: 20 |
+| NET_HTTP_METHOD_GET "GET"        | Sets the HTTP request method to GET.<br>**Since**: 20    |
+| NET_HTTPMETHOD_HEAD "HEAD"       | Sets the HTTP request method to HEAD.<br>**Since**: 20   |
+| NET_HTTPMETHOD_OPTIONS "OPTIONS" | Sets the HTTP request method to OPTIONS.<br>**Since**: 20|
+| NET_HTTPMETHOD_TRACE "TRACE"     | Sets the HTTP request method to TRACE.<br>**Since**: 20  |
+| NET_HTTPMETHOD_DELETE "DELETE"   | Sets the HTTP request method to DELETE.<br>**Since**: 20 |
+| NET_HTTP_METHOD_POST "POST"      | Sets the HTTP request method to POST.<br>**Since**: 20   |
+| NET_HTTP_METHOD_PUT "PUT"        | Sets the HTTP request method to PUT.<br>**Since**: 20    |
+| NET_HTTP_METHOD_PATCH "CONNECT"  | Sets the HTTP request method to CONNECT.<br>**Since**: 20|
 
 ### Functions
 

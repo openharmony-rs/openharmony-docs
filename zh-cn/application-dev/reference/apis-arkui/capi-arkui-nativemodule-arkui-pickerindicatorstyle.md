@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+``` c
+typedef struct {...} ArkUI_PickerIndicatorStyle
+```
+
 ## 概述
 
 选中项指示器的样式。

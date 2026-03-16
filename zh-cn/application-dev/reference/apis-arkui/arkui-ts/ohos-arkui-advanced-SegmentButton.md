@@ -33,7 +33,7 @@ import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray } fr
 
 ## SegmentButton
 
-SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked: Callback\<number\>, maxFontScale: number \| Resource })
+SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked: Callback\<number\>, maxFontScale: number \| Resource, enableStateAnimation: boolean })
 
 **装饰器类型：**@Component
 
@@ -47,6 +47,7 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 | selectedIndexes | number[]                                      | 是   | @Link       | 分段按钮的选中项编号，第一项的编号为0，之后顺序增加。<br/>**说明：**<br/>`selectedIndexes`使用[@Link装饰器：父子双向同步](../../../ui/state-management/arkts-link.md)，仅支持有效的按钮编号（第一个按钮编号为0，之后按顺序累加），如没有选中项可传入空数组`[]`。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onItemClicked<sup>13+</sup> | Callback\<number\> | 否 | - | 当分段按钮选项被点击时，触发的回调函数接收被点击的选项下标作为参数。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | maxFontScale<sup>14+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是 | @Prop | 分段按钮选项文字的最大字体放大倍数。<br/>取值范围：[1, 2]<br>当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| enableStateAnimation<sup>24+</sup>       | boolean   | 是 | @Prop| 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；false表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 >**说明：** 
 >
@@ -1202,3 +1203,59 @@ struct Index {
 ```
 
 ![segmentbutton-sample6](figures/segmentbutton-sample6.png)
+
+### 示例7（开启SegmentButton的属性动画）
+
+此示例展示了SegmentButton开启enableStateAnimation后，在通过状态变量修改selectedIndexes的值时，按钮切换也具有动画效果。
+
+从API version 24开始，[SegmentButton](#segmentbutton-1)新增enableStateAnimation属性。
+
+```ts
+import { ItemRestriction, SegmentButton, SegmentButtonItemTuple, SegmentButtonOptions, SegmentButtonTextItem } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
+    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
+  });
+  @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
+    buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }] as SegmentButtonItemTuple,
+    multiply: false,
+    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
+  });
+  @State tabSelectedIndexes: number[] = [0]; // 页签按钮的选中索引值，默认选中第一个
+  @State singleSelectCapsuleSelectedIndexes: number[] = [0]; // 单选按钮的选中索引值，默认选中第一个
+  @State currentSelectedIndex: number = 0; // 切换选中项的索引计数器
+
+  build() {
+    Row() {
+      Column() {
+        Column({ space: 25 }) {
+          SegmentButton({
+            options: this.tabOptions,
+            selectedIndexes: $tabSelectedIndexes,
+            enableStateAnimation: true // 开启属性动画
+          })
+          SegmentButton({
+            options: this.singleSelectCapsuleOptions,
+            selectedIndexes: $singleSelectCapsuleSelectedIndexes,
+            enableStateAnimation: true // 开启属性动画
+          })
+
+          Button('change selectedIndexes').onClick((event: ClickEvent) => {
+            // 通过状态变量自增修改选中项的索引值，若超出最大索引则重置为0
+            this.currentSelectedIndex = this.currentSelectedIndex < 2 ? this.currentSelectedIndex + 1 : 0;
+            this.tabSelectedIndexes = [this.currentSelectedIndex];
+            this.singleSelectCapsuleSelectedIndexes = [this.currentSelectedIndex];
+          })
+        }.width('90%')
+      }.width('100%')
+    }.height('100%')
+  }
+}
+```
+
+![segmentbutton-sample83](figures/segmentbutton-sample83.gif)
+

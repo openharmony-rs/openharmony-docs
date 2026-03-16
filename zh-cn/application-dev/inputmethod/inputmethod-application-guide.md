@@ -815,18 +815,13 @@
    <!-- @[input_case_input_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
    
    ``` TypeScript
-   import deviceInfo from '@ohos.deviceInfo';
+   import { deviceInfo } from '@kit.BasicServicesKit';
    import Log from '../../model/Log';
    import { EditView } from '../../components/EditView';
    import { InputHandler } from '../model/KeyboardController';
    import {
      MenuType,
      SubMenuType,
-     keySourceListData,
-     numberSourceListData,
-     symbolSourceListData,
-     keySourceListType,
-     sourceListType
    } from '../../model/KeyboardKeyData';
    import { KeyMenu } from '../../components/KeyMenu';
    import { NumberMenu } from '../../components/NumberMenu';

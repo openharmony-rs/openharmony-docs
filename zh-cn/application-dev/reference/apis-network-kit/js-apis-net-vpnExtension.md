@@ -333,7 +333,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
     vpnConnection.destroy().then(() => {
       console.info("destroy success.");
     }).catch((error : BusinessError) => {
-      console.error(destroy fail. Code:${error.code}, message:${error.message});
+      console.error(`destroy fail. Code:${error.code}, message:${error.message}`);
     });
   }
   SetupVpn() {
@@ -558,6 +558,10 @@ generateVpnId(): Promise\<string\>
 生成VPN唯一标识。使用Promise异步回调。
 
 如需使用系统多VPN能力，需调用该接口生成vpnId，配置到VpnConfig中。
+
+>**注意**
+>
+>当前系统多VPN能力仅支持IPv4。
 
 **系统能力**：SystemCapability.Communication.NetManager.Vpn
 

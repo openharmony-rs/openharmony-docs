@@ -1,7 +1,7 @@
 # native_key_event.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -138,7 +138,7 @@ Enumerates the key codes for key events.
 | ARKUI_KEYCODE_EQUALS = 2058 | Key =                    |
 | ARKUI_KEYCODE_LEFT_BRACKET = 2059 | Key [                    |
 | ARKUI_KEYCODE_RIGHT_BRACKET = 2060 | Key ]                    |
-| ARKUI_KEYCODE_BACKSLASH = 2061 | Key \                   |
+| ARKUI_KEYCODE_BACKSLASH = 2061 | Key \\                   |
 | ARKUI_KEYCODE_SEMICOLON = 2062 | Key ;                    |
 | ARKUI_KEYCODE_APOSTROPHE = 2063 | Key '              |
 | ARKUI_KEYCODE_SLASH = 2064 | Key /                    |

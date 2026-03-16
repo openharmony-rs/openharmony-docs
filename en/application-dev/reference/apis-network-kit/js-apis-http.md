@@ -178,7 +178,7 @@ Initiates an HTTP request to a given URL. This API uses an asynchronous callback
 
 > **NOTE**
 >
->(1) This API can receive only data whose size is less than 5 MB. If the data size exceeds 5 MB, you need to set **maxLimit** to a larger value in [HttpRequestOptions](#httprequestoptions) or call [requestInStream](#requestinstream10) to initiate a streaming request.<br>
+>(1) This API can receive only data whose size is less than 5 MB. If the data size exceeds 5 MB, you need to set **maxLimit** to a larger value in [HttpRequestOptions](#httprequestoptions) or call [requestInStream](#requestinstream10) to initiate a streaming request. Since API version 23, this API can receive a maximum of 50 MB data. In versions earlier than API version 23, this API can receive a maximum of 5 MB data, and any data exceeding this threshold will fail to be received.<br>
 >(2) If you need to pass in cookies, add them to the **options** parameter.<br>
 >(3) If the URL contains non-English characters, call **encodeURL(url)** to encode the URL before initiating an HTTP request.
 
@@ -264,7 +264,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 > **NOTE**
 >
->(1) This API can receive only data whose size is less than 5 MB. If the data size exceeds 5 MB, you need to set **maxLimit** to a larger value in [HttpRequestOptions](#httprequestoptions) or call [requestInStream](#requestinstream10) to initiate a streaming request.<br>
+>(1) This API can receive only data whose size is less than 5 MB. If the data size exceeds 5 MB, you need to set **maxLimit** to a larger value in [HttpRequestOptions](#httprequestoptions) or call [requestInStream](#requestinstream10) to initiate a streaming request. Since API version 23, this API can receive a maximum of 50 MB data. In versions earlier than API version 23, this API can receive a maximum of 5 MB data, and any data exceeding this threshold will fail to be received.<br>
 >(2) If you need to pass in cookies, add them to the **options** parameter.<br>
 >(3) If the URL contains non-English characters, call **encodeURL(url)** to encode the URL before initiating an HTTP request.
 
@@ -373,7 +373,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 > **NOTE**
 >
->(1) This API can receive only data whose size is less than 5 MB. If the data size exceeds 5 MB, you need to set **maxLimit** to a larger value in [HttpRequestOptions](#httprequestoptions) or call [requestInStream](#requestinstream10) to initiate a streaming request.<br>
+>(1) This API can receive only data whose size is less than 5 MB. If the data size exceeds 5 MB, you need to set **maxLimit** to a larger value in [HttpRequestOptions](#httprequestoptions) or call [requestInStream](#requestinstream10) to initiate a streaming request. Since API version 23, this API can receive a maximum of 50 MB data. In versions earlier than API version 23, this API can receive a maximum of 5 MB data, and any data exceeding this threshold will fail to be received.<br>
 >(2) If you need to pass in cookies, add them to the **options** parameter.<br>
 >(3) If the URL contains non-English characters, call **encodeURL(url)** to encode the URL before initiating an HTTP request.
 
@@ -1156,7 +1156,7 @@ Defines the options for initiating an HTTP request.
 | resumeFrom<sup>11+</sup> | number | No| Yes| Download start position. This field can be used only for the GET method. As stipulated in section 3.1 of RFC 7233, servers are allowed to ignore range requests.<br>- If the HTTP PUT method is used, do not use this option because it may conflict with other options.<br>- The value ranges from **1** to **4294967296** (4 GB). If the value is out of this range, this field does not take effect.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | resumeTo<sup>11+</sup> | number | No| Yes| Download end position. This field can be used only for the GET method. As stipulated in section 3.1 of RFC 7233, servers are allowed to ignore range requests.<br>- If the HTTP PUT method is used, do not use this option because it may conflict with other options.<br>- The value ranges from **1** to **4294967296** (4 GB). If the value is out of this range, this field does not take effect.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | clientCert<sup>11+</sup> | [ClientCert](#clientcert11) | No| Yes| Client certificate.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| dnsOverHttps<sup>11+</sup> | string | No| Yes| Specifies whether to use an HTTPS server for DNS resolution.<br>The value must be URL-encoded in the following format: "https:// host:port/path".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| dnsOverHttps<sup>11+</sup> | string | No| Yes| Whether to use an HTTPS server for DNS resolution.<br>The value must be URL-encoded in the following format: "https:// host:port/path".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | dnsServers<sup>11+</sup> | Array\<string\> | No| Yes| Array of DNS servers used for DNS resolution.<br>- A maximum of three DNS servers can be set. If there are more than three DNS servers, only the first three DNS servers are used.<br>- The DNS servers must be expressed as IPv4 or IPv6 addresses.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | maxLimit<sup>11+</sup>   | number   | No| Yes| Maximum number of bytes in a response.<br>The default value is 5\*1024\*1024, in bytes. The maximum value is **100\*1024\*1024**.<br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | multiFormDataList<sup>11+</sup> | Array<[MultiFormData](#multiformdata11)> | No| Yes| Form data list. This field is valid when **content-Type** is set to **multipart/form-data**.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -1164,13 +1164,13 @@ Defines the options for initiating an HTTP request.
 | addressFamily<sup>15+</sup> | [AddressFamily](#addressfamily15) | No| Yes| IP address family. You can specify an address type for domain name resolution.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | remoteValidation<sup>18+</sup> | [RemoteValidation](#remotevalidation18)                             | No| Yes| Certificate authority (CA), which is used to verify the identity of a remote server. If the parameter is not set, the default value is used. The options are as follows:<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | tlsOptions<sup>18+</sup> | [TlsOptions](#tlsoptions18)                                         | No| Yes| TLS configuration.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| serverAuthentication<sup>18+</sup> | [ServerAuthentication](#serverauthentication18)                     | No| Yes| Indicates whether to verify the server identity during a secure connection. The identity is not verified by default.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| serverAuthentication<sup>18+</sup> | [ServerAuthentication](#serverauthentication18)                     | No| Yes| Whether to verify the server identity during a secure connection. The identity is not verified by default.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | sslType<sup>20+</sup> | [SslType](#ssltype20) | No| Yes| Security communication protocol. You can use TLS (default) or TLCP. If TLCP is used, the related options (such as **caPath**, **clientCert**, and **clientEncCert**) must be set to valid values.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | clientEncCert<sup>20+</sup> | [ClientCert](#clientcert11) | No| Yes| Client certificate, which is used by the server to verify the client identity.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | customMethod<sup>23+</sup> | string | No| Yes| Custom request method. For example, when the WebDAV extension protocol is implemented, **customMethod** has a higher priority than **method**.<br>- The default value is an empty string. The value can contain a maximum of 128 characters. If the value exceeds 128 characters, the setting does not take effect.<br>- If **customMethod** meets the WebDAV extension protocol request requirements but the server does not support the request, the server response code of the request is usually 405 or 501 (the actual result depends on the server behavior).<br>- If **customMethod** does not meet the WebDAV extension protocol request requirements, the server response code of the request is usually 400 or 405 (the actual result depends on the server behavior).|
 | maxRedirects<sup>23+</sup> | number | No| Yes| The maximum number of redirections can be specified for HttpRequest.<br>- The default value is 30.<br>- The value range is [0, 2147483647]. If the value is set to **0**, redirection is disabled. If the number of redirections on the server exceeds the maximum number of redirections, error code 2300047 is returned. If the value is out of the range, the default value **30** takes effect.|
-| sniHostName<sup>23+</sup> | string | No| Yes| Allows the client to declare the target domain name to the server in the TLS handshake phase by configuring the server name indication (SNI). In this way, the server can select the corresponding SSL/TLS certificate based on the domain name for encrypted communication.<br>- The default value is an empty string. The value of **sniHostName** can contain a maximum of 255 characters. If the length limit is exceeded or the value is an empty string, the setting does not take effect.|
-| pathPreference<sup>23+</sup> |[PathPreference](#pathpreference23) | No| Yes|Specifies the network to be activated in an HTTP request.|
+| sniHostName<sup>23+</sup> | string | No| Yes| Used to allow the client to declare the target domain name to the server in the TLS handshake phase by configuring the server name indication (SNI). In this way, the server can select the corresponding SSL/TLS certificate based on the domain name for encrypted communication.<br>- The default value is an empty string. The value of **sniHostName** can contain a maximum of 255 characters. If the length limit is exceeded or the value is an empty string, the setting does not take effect.|
+| pathPreference<sup>23+</sup> |[PathPreference](#pathpreference23) | No| Yes|Used to specify the network to be activated in an HTTP request.|
 
 ## RequestMethod
 
@@ -1553,7 +1553,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
 
 ## HttpDataType<sup>9+</sup>
 
-HTTP data type.
+Enumerates HTTP data types.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1655,7 +1655,7 @@ Defines HTTP server identity verification information.
 
 ## TlsConfig<sup>18+</sup>
 
-Defines the the TLS configuration, including the version and cipher suite.
+Defines the TLS configuration, including the version and cipher suite.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1895,7 +1895,7 @@ Enumerates the types of HTTP interceptors.
 
 ## HttpRequestContext<sup>22+</sup>
 
-HTTP request context data. The object instance is passed as a parameter in the [interceptorHandle](#interceptorhandle22) method of the interceptor. You can use this object to obtain and modify the information about the HTTP request.
+Defines HTTP request context data. The object instance is passed as a parameter in the [interceptorHandle](#interceptorhandle22) method of the interceptor. You can use this object to obtain and modify the information about the HTTP request.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1913,7 +1913,7 @@ HTTP request context data. The object instance is passed as a parameter in the [
 
 type ChainContinue = boolean
 
-Whether to continue to process the interceptor chain.
+Specifies whether to continue to process the interceptor chain.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1925,7 +1925,7 @@ Whether to continue to process the interceptor chain.
 
 ## HttpInterceptor<sup>22+</sup>
 
-HTTP interceptor API, used to define the interception processing function.
+Defines the HTTP interceptor API, which is used to define the interception processing function.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1983,7 +1983,7 @@ let customInterceptor = new CustomInterceptor();
 
 ## HttpInterceptorChain<sup>22+</sup>
 
-HTTP interceptor chain.
+Defines HTTP interceptor chain.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -2241,8 +2241,6 @@ Enumerates the types of networks specified in an HTTP request.
 >
 > It is recommended that this parameter be used in scenarios such as network concurrency.<br>
 > If the specified network is not activated, the system uses the default network.
-
-**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Communication.NetStack
 

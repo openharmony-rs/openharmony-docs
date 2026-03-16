@@ -284,7 +284,7 @@ Creates a VPN based on the specified configuration. This API uses a promise to r
 
 > **NOTE**
 >
-> You are advised to call [destroy()](#destroy) or [destroy(vpnId: string)](#destroy20) to destroy the VPN network and clear resources when the VPN network is not needed.
+> You are advised to call [destroy()](#destroy) or [destroy(vpnId: string)](#destroy20) to destroy the VPN and clear resources when the VPN is not needed.
 
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 
@@ -328,6 +328,13 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
     let vpnConnection : vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
     console.info("vpn createVpnConnection: " + JSON.stringify(vpnConnection));
     this.SetupVpn();
+    
+    // If no VPN is required, call destroy() to destroy the VPN and clear resources.
+    vpnConnection.destroy().then(() => {
+      console.info("destroy success.");
+    }).catch((error : BusinessError) => {
+      console.error(`destroy fail. Code:${error.code}, message:${error.message}`);
+    });
   }
   SetupVpn() {
         class Address {
@@ -498,7 +505,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 
 destroy(vpnId: string): Promise\<void\>
   
-Destroys a VPN network based on the specified VPN ID. This API uses a promise to return the result.
+Destroys a VPN based on the specified VPN ID. This API uses a promise to return the result.
   
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 

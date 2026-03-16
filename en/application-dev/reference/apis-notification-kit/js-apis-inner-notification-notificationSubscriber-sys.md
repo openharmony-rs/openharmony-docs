@@ -632,9 +632,7 @@ try {
 }
 ```
 
-## onSystemUpdate<sup>23+</sup>
-
-onSystemUpdate?: SystemUpdateCallback
+## Attribute
 
 Callback function for notifications of system property value changes.
 
@@ -646,9 +644,9 @@ Callback function for notifications of system property value changes.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| ------------ | ------------------------ | ---- | -------------------------- |
-| onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | No| Returns notification information containing the system property value.|
+| Name  | Type   | Read Only| Optional| Description            |
+| ------ | ------- | ---- | --- | ---------------- |
+| onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | No| Yes| Notification information that carries the system property value.|
 
 **Example**
 
@@ -656,7 +654,7 @@ Callback function for notifications of system property value changes.
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onSystemUpdate: (data: notificationSubscribe.SubscribeCallbackData) => {
     let req = data.request;
-    console.info(`onSystemUpdate callback req.priorityType:: ${req.priorityNotificationType}`);
+    console.info(`onSystemUpdate callback req.priorityType: ${req.priorityNotificationType}`);
   }
 };
 try {
@@ -709,7 +707,7 @@ try {
 
 ## EnabledSilentReminderChangedCallback<sup>24+</sup>
 
-EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminderCallbackData): void
+type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminderCallbackData) => void
 
 Defines a callback function to listen for the enabling state changes of the application's silent reminder.
 
@@ -742,9 +740,7 @@ Defines a callback function to listen for the enabling state changes of the appl
 
 ## BadgeEnabledChangedCallback<sup>12+</sup>
 
-### (data: EnabledNotificationCallbackData)<sup>12+</sup>
-
-(data: EnabledNotificationCallbackData): void
+type BadgeEnabledChangedCallback = (data: EnabledNotificationCallbackData) => void
 
 Defines a callback function to listen for the enabling state changes of the application badge.
 
@@ -782,7 +778,7 @@ Defines a callback function to listen for the enabling state changes of the appl
 
 ## SystemUpdateCallback<sup>23+</sup>
 
-SystemUpdateCallback = (data: SubscribeCallbackData) => void
+type SystemUpdateCallback = (data: SubscribeCallbackData) => void
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -792,6 +788,6 @@ SystemUpdateCallback = (data: SubscribeCallbackData) => void
 
 **Parameters**
 
-| Name       | Type  | Read Only| Optional| Description        |
-| ----------- | ------ | ---- | ---- | ------------ |
-| data | [SubscribeCallbackData](#subscribecallbackdata) | Yes| Yes| Returns notification information containing the system property value.|
+| Name      | Type  | Mandatory| Description        |
+| ----------- | ------ | ---- | ------------ |
+| data | [SubscribeCallbackData](#subscribecallbackdata) | Yes| Notification information that carries the system property value.|

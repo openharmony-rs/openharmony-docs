@@ -56,3 +56,77 @@ if (ret != 0) {
 // 清理libxml2全局状态
 xmlCleanupParser();
 ```
+
+## 定时器被误删除
+
+由于定时器ID为进程共享，是从0开始的，开发者误操作容易导致定时器被删除。
+
+例如以下场景：
+
+```ts
+export class testClass {
+    // 初始值设置为0
+    private timeoutId: number = 0;
+    private interbalId: number = 0;
+
+    // 在某些情况下没有调用setTimeout设置定时器就调用了clearAnimation函数删除了定时器，就会导致timeoutId为0的定时器被删除
+    clearAnimation(): void {
+        clearInterval(this.interbalId);
+        clearTimeout(this.timeoutId);
+    }
+}
+```
+
+可以通过以下方法快速定位：
+
+重写globalThis.clearTimeout函数，实现在调用clearTimeout函数时打印调用栈，快速定位定时器是在哪里被删除的。
+
+调用顺序为先调用clearTimeout.ts文件中的test()函数，再调用TimerTest.ets文件中的timerTestCase()函数。
+
+示例代码：
+
+```ts
+// 自定义TS文件clearTimeout.ts
+
+// test函数需要在程序调用clearTimeout函数之前调用
+export function test() {
+    // 完全兼容原始 clearTimeout 类型
+    const origClear = globalThis.clearTimeout;
+    globalThis.clearTimeout = (...args: any[]) => {
+        const timeoutId = args[0];
+
+        // 检查所有可能的 timerId = 0 的情况
+        if (timeoutId === 0 || timeoutId === "0") {
+            console.info("清除 timerId = 0 !", new Error().stack);
+            // 触发断点
+            debugger;
+        }
+
+        // 使用 apply 确保正确传递所有参数
+        return origClear.apply(this, args);
+    }
+}
+```
+
+```ts
+// 自定义ets文件TimerTest.ets
+
+let timeoutId: number = 0;
+
+export function timerTestCase() {
+    test1();
+    clearTime();
+}
+
+function test1() {
+    timeoutId = setTimeout(() => {
+        console.info("begin");
+    }, 1);
+    console.info("timeoutId = " + timeoutId);
+}
+
+function clearTime() {
+    clearTimeout(timeoutId);
+    console.info("clearTimeout Id = " + timeoutId);
+}
+```

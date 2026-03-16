@@ -9,12 +9,12 @@
 
 This topic provides signing and signature verification development cases with the following algorithms:
 
-- [Key algorithm ECC256 and digest algorithm SHA-256](#ecc256sha256)
-- [Key algorithm SM2 and digest algorithm SM3](#sm2sm3)
-- [Key algorithm SM2 and digest algorithm NoDigest](#sm2nodigest)
-- [Key algorithm RSA, digest algorithm SHA-256, and padding mode PSS](#rsasha256pss)
-- [Key algorithm RSA, digest algorithm SHA-256, and padding mode PKCS #1 v1.5](#rsasha256pkcs1_v1_5)
-- [Key algorithm RSA, digest algorithm SHA-384, and padding mode PSS](#rsa2048sha384pss)
+- The key algorithm is ECC256 and digest algorithm is SHA-256. For details, see [ECC256/SHA-256](#ecc256sha-256).
+- The key algorithm is SM2 and digest algorithm is SM3. For details, see [SM2/SM3](#sm2sm3).
+- The key algorithm is SM2 and digest algorithm is NoDigest. For details, see [SM2/NoDigest](#sm2nodigest).
+- The key algorithm is RSA, digest algorithm is SHA-256, and padding mode is PSS. For details, see [RSA/SHA-256/PSS](#rsasha-256pss).
+- The key algorithm is RSA, digest algorithm is SHA-256, and padding mode is PKCS1_V1_5. For details, see [RSA/SHA-256/PKCS1_V1_5](#rsasha-256pkcs1_v1_5).
+- The key algorithm is RSA, digest algorithm is SHA-384, and padding mode is PSS. For details, see [RSA2048/SHA384/PSS](#rsa2048sha384pss).
 <!--RP1--><!--RP1End-->
 
 For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-signing-signature-verification-overview.md#supported-algorithms).
@@ -37,7 +37,7 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 
 2. Obtain the plaintext to be signed.
 
-3. Obtain the property parameter [HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions), which contains the **properties** and **inData** fields. Pass in the plaintext to be signed in **inData**, and [algorithm parameters](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) in **properties**.
+3. Obtain the property parameter [HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions), which contains the **properties** and **inData** fields. Pass the plaintext data to **inData** and use [HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) to set algorithm parameters for **properties**.
 
 4. Use [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9) to initialize a key session. The session handle is returned after the initialization.
 
@@ -49,7 +49,7 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 
 2. Obtain the signature to be verified.
 
-3. Obtain the property parameter [HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions), which contains the **properties** and **inData** fields. Pass in the signature in **inData**, and [algorithm parameters](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) in **properties**.
+3. Obtain the property parameter [HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions), which contains the **properties** and **inData** fields. Pass the signature to **inData** and use [HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) to set algorithm parameters for **properties**.
 
 4. Use [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9) to initialize a key session. The session handle is returned after the initialization.
 
@@ -62,7 +62,7 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 Use [deleteKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksdeletekeyitem9) to delete the key that is not required. For details, see [Deleting a Key](huks-delete-key-arkts.md).
 ## Development Cases
 
-### ECC256/SHA256
+### ECC256/SHA-256
 <!-- @[key_algorithm_ECC256SHA256](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/ets/pages/ECC256SHA256.ets) -->
 
 ``` TypeScript
@@ -572,7 +572,7 @@ async function testSignVerify() {
   await deleteSm2Key(keyAlias);
 }
 ```
-### RSA/SHA256/PSS
+### RSA/SHA-256/PSS
 <!-- @[key_algorithm_RSASHA256PSS](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/ets/pages/RSASHA256PSS.ets) -->
 
 ``` TypeScript
@@ -751,7 +751,7 @@ export async function testSignVerify() {
   await deleteRsaKey(keyAlias);
 }
 ```
-### RSA/SHA256/PKCS1_V1_5
+### RSA/SHA-256/PKCS1_V1_5
 <!-- @[key_algorithm_RSASHA256PKCS1_V1_5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/ets/pages/RSASHA256PKCS1_V1_5.ets) -->
 
 ``` TypeScript

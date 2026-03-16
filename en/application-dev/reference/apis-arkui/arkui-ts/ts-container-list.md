@@ -103,7 +103,7 @@ In addition to [universal attributes](ts-component-general-attributes.md) and [s
 
 > **NOTE**
 >
-> The default value of the universal attribute [clip](ts-universal-attributes-sharp-clipping.md) is **true** for the **List** component.
+> The default value of the universal attribute [clip](ts-universal-attributes-sharp-clipping.md#clip12) is **true** for the **List** component.
 
 ### listDirection
 
@@ -221,7 +221,7 @@ Sets the number of list items or list item groups to be cached (preloaded) and s
 
 If the first parameter of the **cachedCount** attribute is of the **number** type, a specified number (specified by **count**) of rows of list items will be preloaded and laid out above and below the visible area during idle frames.
 
-If the first parameter of the **cachedCount** attribute is of the **CacheCountInfo** type, preloading and layout will occur during idle frames when the number of cached rows is less than **CacheCountInfo.minCount**. When the number of cached rows is greater than **CacheCountInfo.maxCount**, the nodes outside the specified range will  be destroyed or reused. When the UI is idle (no animation or user operation), a specified number (specified by **CacheCountInfo.maxCount**) of rows of list items will be preloaded above and below the visible area.
+If the first parameter of the **cachedCount** attribute is of the **CacheCountInfo** type, preloading and layout will occur during idle frames when the number of cached rows is less than **CacheCountInfo.minCount**. When the number of cached rows is greater than **CacheCountInfo.maxCount**, the nodes outside the specified range will be destroyed or reused. When the UI is idle (no animation or user operation), a specified number (specified by **CacheCountInfo.maxCount**) of rows of list items will be preloaded above and below the visible area.
 
 When calculating the number of rows for list items, the system takes into account the number of rows from the list items within a list item group. If a list item group does not contain any list items, then the entire list item group is counted as one row. This attribute can be combined with the [clip](ts-universal-attributes-sharp-clipping.md#clip12) or [clipContent](ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
 
@@ -316,15 +316,14 @@ Sets whether to enable multiselect.
 
 lanes(value: number | LengthConstrain, gutter?: Dimension)
 
-Sets the number of columns or rows in the list. If the value is set to the **gutter** type, it indicates the gap between columns. It takes effect when the number of columns is greater than 1.
+Sets the number of columns or rows in the **List** component. (When the **List** is scrolled vertically, the number of columns is displayed. When the **List** is scrolled horizontally, the number of rows is displayed.)
 
-The rules are as follows:
+The following example describes how to set the number of columns:
 
-- If the value is of the **number** type, the number of columns or rows is specified. The column width is determined by dividing the cross-axis size of the **List** component by the number of columns.
-- If the value is of the **LengthConstrain** type, the minimum and maximum number of columns or rows are specified. That is, the value parameter of **lanes** is set to** {minLength, maxLength}**. The number of **lanes** (that is, the number of columns) is determined based on the width of the **List** component to ensure that the column width is always in the {minLength, maxLength} range during scaling. The **minLength** condition is prioritized, meaning that the cross-axis size of **ListItem** components is first guaranteed to meet the minimum constraint.
- - If the **value** parameter of **lane**s is set to **{minLength, maxLength}** and the cross-axis size constraint of the parent component is infinite, the list is displayed in one column. The column width of the list will equal the maximum column width of the **ListItem** within the visible area.
+- If **value** is a number, the number of columns is specified based on the number.
+- If **value** is of the **LengthConstrain** type, **minLength** in **LengthConstrain** indicates the minimum column width. The **List** component calculates the maximum number of columns based on its minimum column width. In addition, **LengthConstrain** is passed to the child components of the **List** component as the maximum and minimum layout width constraints. These constraints take effect when the child components do not have a specified width.
 - Each list item group occupies one row in multi-column mode. Its child list items are arranged based on the **lanes** attribute of the list.
-- When the **value** parameter of **lanes** is set to **{minLength, maxLength}**, the number of columns in **ListItemGroup** is calculated based on the cross-axis size of **ListItemGroup**. If the cross-axis width of the list item group is different from that of the list, the number of columns in the list item group may be different from that in the list.
+- If **value** is of the **LengthConstrain** type, the number of columns in **ListItemGroup** is calculated based on the width of **ListItemGroup**. Therefore, when the width of **ListItemGroup** is different from that of the **List** component, the number of columns in **ListItemGroup** may be different from that in the **List** component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -337,7 +336,7 @@ The rules are as follows:
 | Name              | Type                                                        | Mandatory| Description                                    |
 | -------------------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
 | value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) | Yes  | Number of columns or rows in the list.<br>Default value: **1**<br>Value range: [1, +∞)|
-| gutter<sup>10+</sup> | [Dimension](ts-types.md#dimension10)                         | No  | Gap between columns.<br>Default value: **0**<br>Value range: [0, +∞)|
+| gutter<sup>10+</sup> | [Dimension](ts-types.md#dimension10)                         | No  | Column gap or row gap.<br>Default value: **0**<br>Value range: [0, +∞)<br>**NOTE**<br>This parameter takes effect when the number of columns or rows is greater than 1.|
 
 ### lanes<sup>22+</sup>
 
@@ -635,7 +634,7 @@ Sets the focus wrap mode for arrow keys.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| mode   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[FocusWrapMode](ts-appendix-enums.md#focuswrapmode20)\> | Yes  | Focus wrap mode for cross-axis arrow keys.<br>Default value: **FocusWrapMode.DEFAULT**<br>**NOTE**<br>Abnormal values are treated as the default value, meaning that cross-axis arrow keys cannot wrap.|
+| mode   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[FocusWrapMode](ts-appendix-enums.md#focuswrapmode20)\> | Yes  | Focus wrap mode for cross-axis arrow keys.<br>Default value: **FocusWrapMode.DEFAULT**<br>**NOTE**<br>Abnormal values are treated as the default value, meaning that cross-axis arrow keys cannot wrap.|
 
 ### syncLoad<sup>20+</sup>
 
@@ -1479,6 +1478,13 @@ export class ListDataSource implements IDataSource {
     }
   }
 
+  // Notify LazyForEach that all child components need to be reloaded.
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    });
+  }
+
   // Notify the controller of data deletion.
   notifyDataDelete(index: number): void {
     this.listeners.forEach(listener => {
@@ -1503,6 +1509,10 @@ export class ListDataSource implements IDataSource {
   public insertItem(index: number, data: number): void {
     this.list.splice(index, 0, data);
     this.notifyDataAdd(index);
+  }
+
+  public reloadData(): void {
+    this.notifyDataReload();
   }
 }
 ```
@@ -1632,7 +1642,7 @@ import { ListDataSource } from './ListDataSource';
 @Entry
 @Component
 struct ListExample {
-  arr: ListDataSource=new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   @State editFlag: boolean = false;
 
   build() {
@@ -1658,6 +1668,7 @@ struct ListExample {
                     if (index != undefined) {
                       console.info(this.arr.getData(index) + 'Delete');
                       this.arr.deleteItem(index);
+                      this.arr.reloadData();
                       console.info(JSON.stringify(this.arr));
                       this.editFlag = false;
                     }
@@ -1665,7 +1676,7 @@ struct ListExample {
                 }
               }
             }
-          }, (item: number) => item.toString())
+          }, (item: number, index: number) => item.toString() + index.toString())
         }.width('90%')
         .scrollBar(BarState.Off)
         .friction(0.6)
@@ -1745,7 +1756,7 @@ struct ListExample {
 ### Example 5: Implementing Accurate Scrolling
 This example shows that, by setting the [childrenMainSize](#childrenmainsize12) attribute, the list can jump to an exact specific location when the **scrollTo** API is called, even when the heights of the child components are inconsistent.
 
-For usage with state management V2, see [List and makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#scroll-components).
+For usage with state management V2, see [List and makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#scrollable-component).
 
 For details about **ListDataSource** and the complete code, see [Example 1: Adding a Scroll Event](#example-1-adding-a-scroll-event).
 
@@ -2188,7 +2199,7 @@ struct ListScrollBarMarginExample {
 
 ### Example 12: Implementing Dragging with OnMove
 
-Starting from API version 20, this his example demonstrates how to use the [onMove](./ts-universal-attributes-drag-sorting.md#onmove) API of **ForEach** to sort items by dragging them. The list can automatically scroll when an item is dragged to the edge of the list.
+Starting from API version 12, this example demonstrates how to use the [onMove](./ts-universal-attributes-drag-sorting.md#onmove) API of **ForEach** to sort items by dragging them. The list can automatically scroll when an item is dragged to the edge of the list.
 
 ```ts
 @Entry
@@ -2296,34 +2307,40 @@ struct ListExample {
   scrollerForList: Scroller = new Scroller()
   @State contentWidth: number = -1;
   @State contentHeight: number = -1;
+
   build() {
     Column() {
       List({ space: 20, initialIndex: 0, scroller: this.scrollerForList }) {
         ForEach(this.arr, (item: number) => {
           ListItem() {
             Text('' + item)
-              .width('100%').height(100).fontSize(16)
-              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
           }
         }, (item: string) => item)
       }
       .width('90%').height('90%')
+
       // Button to obtain the content size.
       Button('GetContentSize')
-        .onClick(()=> {
-            // Scroller throws an exception when not bound to a component; wrap with try-catch for safety.
-          	try {
-              // Obtain the content width using contentSize.
-              this.contentWidth=this.scrollerForList.contentSize().width;
-              // Obtain the content height using contentSize.
-              this.contentHeight=this.scrollerForList.contentSize().height;
-            } catch (error) {
-              let err: BusinessError = error as BusinessError;
-      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
-            }
+        .onClick(() => {
+          // Scroller throws an exception when not bound to a component; wrap with try-catch for safety.
+          try {
+            // Obtain the content width using contentSize.
+            this.contentWidth = this.scrollerForList.contentSize().width;
+            // Obtain the content height using contentSize.
+            this.contentHeight = this.scrollerForList.contentSize().height;
+          } catch (error) {
+            let err: BusinessError = error as BusinessError;
+            console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+          }
         })
       // Display the obtained content size.
-      Text('Width: '+ this.contentWidth+', Height: '+ this.contentHeight)
+      Text('Width: ' + this.contentWidth + ', Height: ' + this.contentHeight)
         .fontColor(Color.Red)
         .height(50)
     }
@@ -2559,21 +2576,44 @@ struct ContactsList {
 }
 ```
 
+![scrollToItemInGroup](figures/scrollToItemInGroup.gif)
 
-
-### Example 16: Setting the Multi-Selection Gather Animation
+### Example 17: Setting the Multi-Selection Gather Animation
 
 This example demonstrates how to gather selected list items in the display area when [a long press triggers context menu](ts-universal-attributes-menu.md#bindcontextmenu8) on list items by enabling the multi-selection gather animation switch for **ListItem**.
 
 From API version 23, the [edit mode options](#editmodeoptions23) API is added to the **List** component, which can be used to set the multi-selection gather animation.
 
+For details about **ListDataSource** and the complete code, see [Example 1: Adding a Scroll Event](#example-1-adding-a-scroll-event).
+
+<!--code_no_check-->
 ```ts
 // xxx.ets
+import { ListDataSource } from './ListDataSource';
+
 @Entry
 @Component
 struct ListExample {
-  numbers1: string[] = ['0', '1', '2'];
-  numbers2: string[] = ['0', '1', '2'];
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  @State isSelected: boolean[] = [];
+  selectedCount: number = 0;
+
+  @Styles
+  normalStyles(): void {
+    .opacity(1.0)
+  }
+
+  @Styles
+  selectStyles(): void {
+    .opacity(0.4)
+  }
+
+  onPageShow(): void {
+    let i: number = 0;
+    for (i = 0; i < 10; i++) {
+      this.isSelected.push(false);
+    }
+  }
 
   @Builder
   MenuBuilder() {
@@ -2592,36 +2632,42 @@ struct ListExample {
     }.width(100)
   }
 
-  @Builder
-  MyPreview() {
-    Column() {
-      Image($r('app.media.startIcon'))
-        .width(200)
-        .height(200)
-    }
-  }
-
   build() {
     Column({ space: 5 }) {
-      Text('List')
       List({ space: 10 }) {
-        ForEach(this.numbers1, (day: string) => {
-          ForEach(this.numbers1, (day: string) => {
+        LazyForEach(this.arr, (item: number) => {
             ListItem() {
-              Text(day)
+              Text(item.toString())
                 .fontSize(16)
                 .backgroundColor(Color.White)
                 .width('100%')
                 .height(50)
                 .textAlign(TextAlign.Center)
             }
-            .selected(true)
+            .selected(this.isSelected[item])
+            // Set the multi-selection display effects.
+            .stateStyles({
+              normal: this.normalStyles,
+              selected: this.selectStyles
+            })
             .bindContextMenu(this.MenuBuilder, ResponseType.LongPress,
               { preview: MenuPreviewMode.IMAGE, hapticFeedbackMode: HapticFeedbackMode.ENABLED })
-          }, (day: string) => day)
-        }, (day: string) => day)
+            .onClick(() => {
+              this.isSelected[item] = !this.isSelected[item];
+              console.info(`item:${item}, this.isSelected[item]:${this.isSelected[item]}`)
+              if (this.isSelected[item]) {
+                ++this.selectedCount;
+              } else {
+                --this.selectedCount;
+              }
+            })
+        }, (item: number) => item.toString())
       }
-      .editModeOptions({ enableGatherSelectedItemsAnimation: true })
+      .editModeOptions({
+        enableGatherSelectedItemsAnimation: true, onGetPreviewBadge: () => {
+          return this.selectedCount;
+        }
+      })
       .width('90%')
       .height(300)
       .scrollBar(BarState.Off)

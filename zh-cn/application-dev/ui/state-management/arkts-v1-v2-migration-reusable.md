@@ -32,7 +32,7 @@
 
 **迁移规则**
 
-- [aboutToRecyle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)生命周期无需改动，可保留原实现。
+- [aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)生命周期无需改动，可保留原实现。
 
 - [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18)生命周期在组件复用V2中进行了优化，去除了参数的同时，在复用前会自动重置各状态变量（详情参考[复用前的组件内状态变量重置](./arkts-new-reusableV2.md#复用前的组件内状态变量重置)），无需开发者在aboutToReuse中手动赋值回初始值。
 
@@ -141,7 +141,7 @@ struct Index {
   build() {
     Column() {
       Button('Hello')
-        .fontSize(30)
+        .fontSize(24)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
           this.switch = !this.switch;
@@ -149,7 +149,7 @@ struct Index {
       if (this.switch) {
         // 如果只有一个复用的组件，可以不用设置reuse
         Child({ message: new Message('Child') })
-          .reuse({reuseId: () => 'Child'})
+          .reuse({ reuseId: () => 'Child' })
       }
     }
     .height('100%')
@@ -171,13 +171,15 @@ struct Child {
     Column() {
       Text(this.message.value)
         .fontSize(30)
+        .margin(20)
     }
     .borderWidth(1)
+    .margin({ top: 10 })
     .height(100)
   }
 }
 ```
-
+![](figures/v1_v2_reusable_if.gif)
 
 ### 列表滚动-Repeat使用场景
 
@@ -216,7 +218,7 @@ struct ReuseV2Demo {
 @ReusableV2
 @ComponentV2
 export struct CardViewV2 {
-  // 被@State修饰的变量item才能更新，未被@State修饰的变量不会更新
+  // 使用@Param @Once接收外部传入变量并观察变化
   @Param @Once item: string = '';
 
   aboutToReuse(): void {
@@ -233,7 +235,7 @@ export struct CardViewV2 {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_repeat.gif)
 
 ### 列表滚动-if使用场景
 
@@ -262,17 +264,17 @@ struct Index {
 
   build() {
     Column() {
-      List({ space: 3}) {
+      List({ space: 3 }) {
         Repeat(this.dataSource)
           .virtualScroll()
           .each((ri) => {
             ListItem() {
               if (ri.item.image) {
-                OneMoment({ moment: ri.item})
-                  .reuse({reuseId: () => 'withImage'})
+                OneMoment({ moment: ri.item })
+                  .reuse({ reuseId: () => 'withImage' })
               } else {
-                OneMoment({ moment: ri.item})
-                  .reuse({reuseId: () => 'noImage'})
+                OneMoment({ moment: ri.item })
+                  .reuse({ reuseId: () => 'noImage' })
               }
             }
           })
@@ -281,6 +283,7 @@ struct Index {
     }
   }
 }
+
 @ObservedV2
 class FriendMoment {
   @Trace id: string = '';
@@ -304,7 +307,7 @@ export struct OneMoment {
   // 复用id相同的组件才能触发复用
   aboutToReuse(): void {
     // 如无需对状态变量做额外修改，aboutToReuse回调可移除
-    console.info('=====aboutToReuse====OneMoment==复用了==' + this.moment.text);
+    console.info(`=====aboutToReuse====OneMoment==复用了==${this.moment.text}`);
   }
 
   build() {
@@ -323,7 +326,7 @@ export struct OneMoment {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_if_two.gif)
 
 ### 列表滚动-Repeat全量加载使用场景
 
@@ -427,7 +430,7 @@ class ListItemObject {
   @Trace isExpand: boolean = false;
 }
 ```
-
+![](figures/v1_v2_reusable_repeat_two.gif)
 
 ### Grid使用场景
 
@@ -455,7 +458,7 @@ struct MyComponent {
           .virtualScroll()
           .each((ri) => {
             GridItem() {
-              ReusableV2ChildComponent({item: ri.item})
+              ReusableV2ChildComponent({ item: ri.item })
             }
           })
       }
@@ -474,6 +477,7 @@ struct MyComponent {
 @ComponentV2
 struct ReusableV2ChildComponent {
   @Param item: number = 0;
+
   aboutToAppear() {
   }
 
@@ -493,7 +497,7 @@ struct ReusableV2ChildComponent {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_grid.png)
 
 ### WaterFlow使用场景
 
@@ -566,7 +570,7 @@ struct Index {
             .virtualScroll()
             .each((ri) => {
               FlowItem() {
-                ReusableV2FlowItem({ item: ri.item})
+                ReusableV2FlowItem({ item: ri.item })
               }.onAppear(() => {
                 if (ri.item + 20 == this.dataSource.length) {
                   for (let i = 0; i < 50; i++) {
@@ -575,13 +579,13 @@ struct Index {
                 }
               })
             })
-        }
+        }.margin({ left: 160, top: 10 })
       }
     }
   }
 }
 ```
-
+![](figures/v1_v2_reusable_waterflow.gif)
 
 ### Swiper使用场景
 
@@ -618,6 +622,7 @@ struct Index {
     .margin({ top: 5 })
   }
 }
+
 @ObservedV2
 class Question {
   @Trace id: string = '';
@@ -677,6 +682,7 @@ struct QuestionSwiperItem {
   }
 }
 ```
+![](figures/v1_v2_reusable_swiper.gif)
 
 
 ### 列表滚动-ListItemGroup使用场景
@@ -695,7 +701,7 @@ struct ListItemGroupAndReusable {
   itemHead(text: string) {
     Text(text)
       .fontSize(20)
-      .backgroundColor(0xAABBCC)
+      .backgroundColor(0xff519db4)
       .width('100%')
       .padding(10)
   }
@@ -748,7 +754,7 @@ class DataSrc {
   @Trace dataScr1: string[] = [];
 }
 ```
-
+![](figures/v1_v2_reusable_listitemgroup.gif)
 
 ### 多种条目类型使用场景
 
@@ -803,7 +809,7 @@ struct ReusableV2Component {
 
   aboutToReuse() {
     // 如无需对状态变量做额外修改，aboutToReuse回调可移除
-    console.info('ReusableComponent aboutToReuse called' + this.item)
+    console.info(`ReusableComponent aboutToReuse called${this.item}`)
   }
 
   build() {
@@ -822,6 +828,7 @@ struct ReusableV2Component {
   }
 }
 ```
+![](figures/v1_v2_reusable_limit.png)
 
 **组合型**
 
@@ -976,3 +983,4 @@ struct ChildComponentD {
   }
 }
 ```
+![](figures/v1_v2_reusable_group.png)

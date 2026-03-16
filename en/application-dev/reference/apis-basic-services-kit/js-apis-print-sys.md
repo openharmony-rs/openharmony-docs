@@ -137,9 +137,9 @@ Defines a print job.
 | jobSubstate<sup>11+</sup> | [PrintJobSubState](./js-apis-print.md#printjobsubstate14) | No| No| Substate of the print job.|
 | copyNumber | number | No| No| Copy of the file list.|
 | pageRange | [PrinterRange](#printerrange) | No| No| Print range.|
-| isSequential | boolean | No| No| Whether the printing is sequential. The value **true** means that the printing is sequential; the value **false** means the opposite. The default value is **false**.|
+| isSequential | boolean | No| No| Whether pages are printed in sequential order. The value **true** indicates that pages are printed in sequential order, and **false** indicates the opposite. The default value is **false**.|
 | pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | No| No| Selected page size.|
-| isLandscape | boolean | No| No| Whether the printing is in landscape mode. The value **true** means that the printing is in landscape mode; the value **false** means the printing is in portrait mode The default value is **false**.|
+| isLandscape | boolean | No| No| Whether pages are printed in landscape mode. The value **true** indicates that pages are printed in landscape mode, and **false** indicates that pages are printed in portrait mode. The default value is **false**.|
 | colorMode | number | No| No| Color mode.|
 | duplexMode | number | No| No| Single-sided or double-sided printing mode.|
 | margin | [PrintMargin](#printmargin) | No| Yes| Current page margin.|

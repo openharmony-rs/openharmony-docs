@@ -6,7 +6,7 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-The deviceInfo module provides terminal device information query, which cannot be configured by developers.
+The **deviceInfo** module provides terminal device information query, which cannot be configured by developers.
 
 > **NOTE**
 >
@@ -47,7 +47,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | displayVersion | string | Yes| Product version.<br>Example: <!--RP8-->XXX X.X.X.X<!--RP8End--> |
 | incrementalVersion | string | Yes| Incremental version.<br>Example: default|
 | osReleaseType | string | Yes| OS release type. The options are as follows:<br>- **Canary**: Preliminary release open only to specific developers. This release does not promise API stability and may require tolerance of instability.<br>- **Beta**: Release open to all developers. This release does not promise API stability and may require tolerance of instability.<br>- **Release**: Official release open to all developers. This release promises that all APIs are stable.<br>Example: <!--RP9-->Canary/Beta/Release<!--RP9End--> |
-| osFullName | string | Yes| System version. The version number is in the format of **OpenHarmony-x.x.x.x**, where **x** is a digit.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Example: <!--RP10-->Openharmony-5.0.0.1<!--RP10End--> |
+| osFullName | string | Yes| System version. The version number is in the format of **OpenHarmony-x.x.x.x**<!--RP12-->, where **x** is a digit.<!--RP12End--><br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Example: <!--RP10-->Openharmony-5.0.0.1<!--RP10End--> |
 | majorVersion | number | Yes| Major version number, which increments with the main version. The value is the first digit in **osFullName**. You are advised to use **deviceInfo.majorVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement.<br>Example: 5|
 | seniorVersion | number | Yes| Senior version number, which increments with architecture and feature updates. The value is the second digit in **osFullName**. You are advised to use **deviceInfo.seniorVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement.<br>Example: 0|
 | featureVersion | number | Yes| Feature version number. The value is the third digit in **osFullName**. You are advised to use **deviceInfo.featureVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement.<br>Example: 0|

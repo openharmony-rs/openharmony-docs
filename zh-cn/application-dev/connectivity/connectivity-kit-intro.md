@@ -68,7 +68,7 @@ WLAN系统为用户提供接入WLAN网络功能（STA模式）、点对点的数
 ### NFC简介
 NFC英文全称Near Field Communication，近距离无线通信。NFC服务提供NFC开关控制、NFC标签读写、NFC卡模拟等业务功能。
 
-- **NFC开关**<br/>
+- **NFC开关控制**<br/>
   NFC开关模块，提供了打开NFC和关闭NFC功能。打开或关闭NFC的应用程序，需要声明权限"ohos.permission.MANAGE_SECURE_SETTINGS"，该权限只有系统应用才能声明。因此，只有系统应用才能打开或关闭NFC。详情请参考[@ohos.nfc.controller API参考](../reference/apis-connectivity-kit/js-apis-nfcController.md)。
 
 - **NFC标签读写**<br/>

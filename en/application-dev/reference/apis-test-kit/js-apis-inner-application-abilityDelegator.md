@@ -1150,7 +1150,7 @@ Only the following shell commands are supported: aa, bm, cp, mkdir, rm, uinput, 
 | Name     | Type  | Mandatory| Description                         |
 | ----------- | ------ | ---- | ----------------------------- |
 | cmd         | string | Yes  | Shell command string.              |
-| timeoutSecs | number | No  | Command timeout period, in seconds.|
+| timeoutSecs | number | No  | Command timeout period, in seconds. The default value is **0**, indicating that the timeout period is not set.|
 
 **Return value**
 

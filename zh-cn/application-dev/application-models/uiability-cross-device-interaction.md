@@ -61,6 +61,8 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 | release():&nbsp;void | 释放通用组件的Caller通信接口。 |
 | on(type:&nbsp;"release",&nbsp;callback:&nbsp;OnReleaseCallback):&nbsp;void | 注册通用组件通信断开监听通知。 |
 
+## 开发步骤
+
 ### 创建Callee被调用端
 
 在[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)被调用端，需要实现指定方法的数据接收回调函数、数据的序列化及反序列化方法。在需要接收数据期间，通过[on](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#on)接口注册监听，无需接收数据时通过[off](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#off)接口解除监听。

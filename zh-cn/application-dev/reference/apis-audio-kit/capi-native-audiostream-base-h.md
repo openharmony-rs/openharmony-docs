@@ -57,6 +57,8 @@
 | [OH_AudioStream_PrivacyType](#oh_audiostream_privacytype) | OH_AudioStream_PrivacyType | 用于标识对应播放音频流是否支持被其他应用录制。 |
 | [OH_AudioData_Callback_Result](#oh_audiodata_callback_result) | OH_AudioData_Callback_Result | 定义音频数据回调结果。 |
 | [OH_AudioStream_LatencyType](#oh_audiostream_latencytype) | OH_AudioStream_LatencyType | 定义音频时延类型。 |
+| [OH_AudioStream_PlaybackCaptureMode](#oh_audiostream_playbackcapturemode) | OH_AudioStream_PlaybackCaptureMode | 表示内录（录制设备内部应用的声音）的过滤类型，每种过滤类型可录制不同的播放流类型。该API暂不对外支持。 |
+| [OH_AudioStream_PlaybackCaptureStartState](#oh_audiostream_playbackcapturestartstate) | OH_AudioStream_PlaybackCaptureStartState | 定义内录的启动状态，该状态在调用[OH_AudioCapturer_RequestPlaybackCaptureStart](./capi-native-audiocapturer-h.md#oh_audiocapturer_requestplaybackcapturestart)函数后异步返回。该API暂不对外支持。 |
 
 ### 函数
 
@@ -264,7 +266,7 @@ enum OH_AudioStream_SourceType
 | AUDIOSTREAM_SOURCE_TYPE_INVALID = -1 | 不合法状态。 |
 | AUDIOSTREAM_SOURCE_TYPE_MIC = 0 | 录音。 |
 | AUDIOSTREAM_SOURCE_TYPE_VOICE_RECOGNITION = 1 | 语音识别。 |
-| AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE = 2 | 播放录音。**废弃版本：** 12<br>**替代接口：** [OH_AVScreenCapture](../apis-media-kit/capi-avscreencapture-oh-avscreencapture.md) |
+| AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE = 2 | 播放录音。<br>**废弃版本：** 12<br>**替代接口：** [OH_AVScreenCapture](../apis-media-kit/capi-avscreencapture-oh-avscreencapture.md) |
 | AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION = 7 | 通话。 |
 | AUDIOSTREAM_SOURCE_TYPE_VOICE_MESSAGE = 10 | 语音消息。<br>**起始版本：** 12 |
 | AUDIOSTREAM_SOURCE_TYPE_CAMCORDER = 13 | 录像。<br>**起始版本：** 13 |
@@ -285,9 +287,11 @@ enum OH_AudioStream_Event
 
 **废弃版本：** 20
 
+**替代接口：** [OH_AudioRenderer_OutputDeviceChangeCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_outputdevicechangecallback)
+
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIOSTREAM_EVENT_ROUTING_CHANGED = 0 | 音频的路由已更改。<br>**起始版本：** 10<br>**废弃版本：** 20<br>**替代接口：** [OH_AudioRenderer_OutputDeviceChangeCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_outputdevicechangecallback) |
+| AUDIOSTREAM_EVENT_ROUTING_CHANGED = 0 | 音频的路由已更改。 |
 
 ### OH_AudioInterrupt_ForceType
 
@@ -453,6 +457,42 @@ enum OH_AudioStream_LatencyType
 | AUDIOSTREAM_LATENCY_TYPE_ALL = 0 | 获取包含软件与硬件在内的整体音频处理时延。 |
 | AUDIOSTREAM_LATENCY_TYPE_SOFTWARE = 1 | 获取软件部分的时延，包括软件侧音效处理。 |
 | AUDIOSTREAM_LATENCY_TYPE_HARDWARE = 2 | 获取硬件部分的时延，包括硬件抽象层（HAL） 、驱动与硬件侧音效处理。 |
+
+### OH_AudioStream_PlaybackCaptureMode
+
+```c
+enum OH_AudioStream_PlaybackCaptureMode
+```
+
+**描述**
+
+表示内录（录制设备内部应用的声音）的过滤类型，每种过滤类型可录制不同的播放流类型。该API暂不对外支持。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| AUDIOSTREAM_PLAYBACKCAPTURE_MODE_DEFAULT = 0x0 | 默认模式。录制大部分音频流，但不包括提示音流和隐私流。<br>**起始版本：** 23 |
+| AUDIOSTREAM_PLAYBACKCAPTURE_MODE_MEDIA = 0x1 | 媒体模式。获取媒体、语音消息和未知流等。<br>**起始版本：** 23 |
+| AUDIOSTREAM_PLAYBACKCAPTURE_MODE_EXCLUDING_SELF = 0x8000 | 排除自身模式。获取除应用自身播放的音频以外的流。<br>**起始版本：** 23 |
+
+### OH_AudioStream_PlaybackCaptureStartState
+
+```c
+enum OH_AudioStream_PlaybackCaptureStartState
+```
+
+**描述**
+
+定义内录的启动状态，该状态在调用[OH_AudioCapturer_RequestPlaybackCaptureStart](./capi-native-audiocapturer-h.md#oh_audiocapturer_requestplaybackcapturestart)函数后异步返回。该API暂不对外支持。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_SUCCESS = 0 | 启动内录成功。<br>**起始版本：** 23 |
+| AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_FAILED = 1 | 启动内录失败。原因是请求焦点（根据流类型做优先级的选择）过程中被打断，或发生系统内部错误。<br>**起始版本：** 23 |
+| AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_NOT_AUTHORIZED = 2 | 用户未授权，启动内录失败。<br>**起始版本：** 23 |
 
 
 ## 函数说明

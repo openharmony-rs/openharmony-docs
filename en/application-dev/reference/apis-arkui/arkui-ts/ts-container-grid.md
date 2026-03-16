@@ -551,7 +551,7 @@ Sets the alignment mode of grid items in the grid. For details about the usage, 
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
-| alignment | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[GridItemAlignment](#griditemalignment12)\> | Yes  | Alignment mode of grid items in the grid.<br>Default value: **GridItemAlignment.DEFAULT**|
+| alignment | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[GridItemAlignment](#griditemalignment12)\> | Yes  | Alignment mode of grid items in the grid.<br>Default value: **GridItemAlignment.DEFAULT**|
 
 ### focusWrapMode<sup>20+</sup>
 
@@ -567,7 +567,7 @@ Sets the focus wrap mode for cross-axis arrow keys.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| mode   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[FocusWrapMode](ts-appendix-enums.md#focuswrapmode20)\> | Yes  | Focus wrap mode for cross-axis arrow keys.<br>Default value: **FocusWrapMode.DEFAULT**<br>**NOTE**<br>Abnormal values are treated as the default value, meaning that cross-axis arrow keys cannot wrap.|
+| mode   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[FocusWrapMode](ts-appendix-enums.md#focuswrapmode20)\> | Yes  | Focus wrap mode for cross-axis arrow keys.<br>Default value: **FocusWrapMode.DEFAULT**<br>**NOTE**<br>Abnormal values are treated as the default value, meaning that cross-axis arrow keys cannot wrap.|
 
 ### syncLoad<sup>20+</sup>
 
@@ -688,7 +688,7 @@ Drag gesture recognition is also initiated by a long press, and the event proces
 
 The floating grid element being dragged can move within the application window. If it is necessary to restrict its movement range, this can be achieved through custom gestures. For details, see [Example 16: Customizing the Drag Effect for GridItem](#example-16-customizing-the-drag-effect-for-griditem).
 
-Automatic scrolling is not supported when a grid item is dragged to the edge of the grid. You can use the universal drag event to implement this function. For details, see [Example 17: Dragging GridItem Components with Drag Events](#example-17-dragging-grid-items-with-drag-events). 
+Automatic scrolling is not supported when a grid item is dragged to the edge of the grid. You can use the universal drag event to implement this function. For details, see [Example 17: Dragging GridItem Components with Drag Events](#example-17-dragging-grid-items-with-drag-events).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1057,7 +1057,7 @@ struct GridExample {
       .backgroundColor(0xFAEEE0)
       .height(300)
 
-      Text('Use of GridLayoutOptions: onGetRectByIndex').fontColor(0xCCCCCC).fontSize(9).width('90%')
+      Text('Usage of GridLayoutOptions: onGetRectByIndex.').fontColor(0x000000).fontSize(14).width('90%')
 
       Grid(undefined, this.layoutOptions3) {
         ForEach(this.numbers2, (day: string) => {
@@ -1152,7 +1152,7 @@ import { GridDataSource } from './GridDataSource';
 struct GridExample {
   numbers: GridDataSource = new GridDataSource([]);
   scroller: Scroller = new Scroller();
-  @State gridPosition: number = 0 // 0 indicates scrolling to the top of the grid, 1 indicates scrolling to the center, and 2 indicates scrolling to the bottom.
+  @State gridPosition: number = 0; // 0 indicates scrolling to the top of the grid, 1 indicates scrolling to the center, and 2 indicates scrolling to the bottom.
 
   aboutToAppear() {
     let list: string[] = [];
@@ -1166,7 +1166,7 @@ struct GridExample {
 
   build() {
     Column({ space: 5 }) {
-      Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
+      Text('Grid').fontColor(0x000000).fontSize(16).width('90%')
       Grid(this.scroller) {
         LazyForEach(this.numbers, (day: string) => {
           GridItem() {
@@ -1200,7 +1200,7 @@ struct GridExample {
       .onScrollBarUpdate((index: number, offset: number) => {
         console.info('XXX' + 'Grid onScrollBarUpdate,index : ' + index.toString() + ',offset' + offset.toString());
         return { totalOffset: (index / 5) * (80 + 10) - offset, totalLength: 80 * 5 + 10 * 4 };
-      }) // The sample code applies only to the current data source. If the data source changes, modify the code or delete this attribute.
+      })  // The sample code applies only to the current data source. If the data source changes, modify the code or delete this attribute.
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
         console.info(scrollOffset.toString());
         console.info(scrollState.toString());
@@ -1275,6 +1275,7 @@ struct GridExample {
 
   build() {
     Column({ space: 5 }) {
+      Text('Grid1').fontColor(0x000000).fontSize(16).width('90%')
       Grid(this.scroller, this.layoutOptions1) {
         LazyForEach(this.numbers, (day: string) => {
           GridItem() {
@@ -1296,7 +1297,7 @@ struct GridExample {
       .backgroundColor(0xFAEEE0)
       .height(300)
 
-      Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
+      Text('Grid2').fontColor(0x000000).fontSize(16).width('90%')
       // The grid does not scroll, and undefined is used to reserve space.
       Grid(undefined, this.layoutOptions2) {
         LazyForEach(this.numbers, (day: string) => {
@@ -1550,7 +1551,7 @@ struct GridExample {
     this.numbers = new GridDataSource(list);
   }
 
-  changeIndex(index1: number, index2: number) { // Exchange the array position.
+  changeIndex(index1: number, index2: number) { // Exchange the array positions.
     this.numbers.swapItem(index1, index2);
   }
 
@@ -1638,8 +1639,8 @@ struct GridExample {
     Scroll() {
       Column({ space: 5 }) {
         Blank()
-        Text ('Valid only when layoutDirection, maxCount, minCount, and cellLength are not set for rowsTemplate and columnsTemplate.')
-          .fontSize(15).fontColor(0xCCCCCC).width('90%')
+        Text('The layoutDirection, maxCount, minCount, and cellLength parameters take effect only when neither rowsTemplate nor columnsTemplate is set.')
+          .fontSize(16).fontColor(0x000000).width('90%')
         Grid() {
           LazyForEach(this.numbers, (day: string) => {
             GridItem() {
@@ -1920,7 +1921,7 @@ struct GridExample {
 
   build() {
     Column({ space: 5 }) {
-      Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
+      Text('Grid').fontColor(0x000000).fontSize(16).width('90%')
       Grid(this.scroller) {
         LazyForEach(this.numbers, (day: string) => {
           GridItem() {
@@ -2536,7 +2537,7 @@ struct GridExample {
 }
 ```
 
-
+![gridScrollWithPanGesture](figures/gridScrollWithPanGesture.gif)
 
 ### Example 16: Customizing the Drag Effect for GridItem
 
@@ -2975,7 +2976,7 @@ struct GridExample {
 
   build() {
     Column({ space: 5 }) {
-      Text ('Scrollable Grid and LazyForEach')
+      Text('Scrollable Grid and LazyForEach')
       Row() {
         // Button to obtain the content size.
         Button('GetContentSize')
@@ -3028,7 +3029,7 @@ struct GridExample {
   }
 }
 ```
-
+![gridContentSize](figures/gridContentSize.gif)
 
 ### Example 20: Setting the Multi-selection Gather Animation
 
@@ -3038,6 +3039,7 @@ Starting from API version 23, the **Grid** component has added the [edit mode op
 
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
+<!--code_no_check-->
 ```ts
 // xxx.ets
 import { GridDataSource } from './GridDataSource';

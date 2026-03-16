@@ -213,7 +213,8 @@
        "pages/Book1",
        "pages/Book2",
        "pages/Book3",
-       "pages/Book4"
+       "pages/Book4",
+       "pages/GetRecentList"
      ]
    }
    ```

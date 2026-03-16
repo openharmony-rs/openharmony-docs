@@ -729,7 +729,7 @@ Sets the audio volume mode for an AVPlayer.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
-**Since**: 18
+**Since**: 19
 
 **Parameters**
 

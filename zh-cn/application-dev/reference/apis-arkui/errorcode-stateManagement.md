@@ -124,7 +124,7 @@ Not supported type! The type should have function constructor signature.
 
 **错误信息**
 
-The default creator should be function when first connect
+The default creator should be function when first connect.
 
 **错误描述**
 
@@ -327,11 +327,11 @@ Illegal variable value error with decorated variable
 
 **错误信息**
 
-The key is invalid, key must be a string type
+The key is invalid, key must be string or TypeConstructorWithArgs type.
 
 **错误描述**
 
-使用[AppStorageV2](./js-apis-stateManagement.md#appstoragev2)和[remove](./js-apis-stateManagement.md#remove)接口传入的key不合法。
+使用[AppStorageV2](./js-apis-stateManagement.md#appstoragev2)、[PersistenceV2](./js-apis-stateManagement.md#persistencev2)的[remove](./js-apis-stateManagement.md#remove)接口和PersistenceV2的[save](./js-apis-stateManagement.md#save)接口传入key不合法。
 
 **可能原因**
 
@@ -339,4 +339,4 @@ key不是string或[TypeConstructorWithArgs\<T\>](./js-apis-stateManagement.md#ty
 
 **处理步骤**
 
-确保调用AppStorageV2的remove传入key参数为string或TypeConstructorWithArgs\<T\>类型。
+确保调用AppStorageV2、PersistenceV2的remove接口和PersistenceV2的save接口时传入的key参数为string或TypeConstructorWithArgs\<T\>类型。

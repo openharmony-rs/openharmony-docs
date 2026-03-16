@@ -143,7 +143,7 @@ try {
 
 getPasswordPolicy(): PasswordPolicy
 
-获取设备口令策略。
+获取设备锁屏口令策略。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -155,7 +155,7 @@ getPasswordPolicy(): PasswordPolicy
 
 | 类型                   | 说明                      |
 | --------------------- | ------------------------- |
-| [PasswordPolicy](./js-apis-enterprise-securityManager.md#passwordpolicy) | 设备口令策略。 |
+| [PasswordPolicy](./js-apis-enterprise-securityManager.md#passwordpolicy) | 设备锁屏口令策略。 |
 
 **错误码**：
 

@@ -490,6 +490,61 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 })
 ```
 
+## statistics.setCalibrationTraffic<sup>26+</sup>
+
+setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: number): Promise\<void>;
+
+设置流量校准数据。在做流量校准时，可通过本接口设置相关流量数据。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.GET_NETWORK_STATS
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名         | 类型                            | 必填 | 说明                                         |
+|-------------|-------------------------------|----|--------------------------------------------|
+| simId         | number                        | 是  | SIM卡ID。                               |
+| remainTraffic | number | 是  | 当前剩余流量，单位：Byte。 |
+| totalTraffic | number | 否  | 套餐总流量，单位：Byte。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                               |
+|-----------------------------------------------------------|----------------------------------|
+| Promise\<void> | Promise对象，无返回结果。|
+
+**错误码：**
+
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[statistics 错误码](errorcode-net-statistics.md)。
+
+| 错误码 ID | 错误信息                                     |
+| --------- | -------------------------------------------- |
+| 201       | Permission denied.                           |
+| 202       | Non-system applications use system APIs.     |
+| 401       | Parameter error.                             |
+| 801       | Capability not supportedr.                             |
+| 2100001   | Invalid parameter value, such as simId error.                     |
+| 2100002   | Failed to connect to the service.            |
+| 2100003   | System internal error, such as nullptr.                       |
+
+**示例**
+
+```js
+import { connection, statistics } from '@kit.NetworkKit';
+
+let simId:number = 1;
+let remainData:number = 600*1024*1024;   // 当前剩余流量为600MB。
+let totalData:number = 1024*1024*1024;   // 套餐总流量为1GB。
+statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
+  console.info(`setCalibrationTraffic succ`);
+}).catch((error: BusinessError) => {
+  console.info(`setCalibrationTraffic error. code:${error.code}, message:${error.message}`);
+});
+```
+
 ## IfaceInfo
 
 查询网卡历史流量参数信息。

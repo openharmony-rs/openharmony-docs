@@ -1025,7 +1025,7 @@ download(config: DownloadConfig, callback: AsyncCallback&lt;DownloadTask&gt;): v
 以下错误码的详细介绍请参见[上传下载错误码](errorcode-request.md)与[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | The permissions check fails. |
 
 **示例：**
@@ -2375,13 +2375,13 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
 | url | string | 否 | 否 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。 |
-| header | Object | 否 | 是 | 添加要包含在下载请求中的HTTPS标志头。|
+| header | Object | 否 | 是 | 添加要包含在下载请求中的HTTPS标志头。默认值为空。|
 | enableMetered | boolean | 否 | 是 | 表示设置是否允许在按流量计费的连接下下载任务的配置信息。true表示允许，false表示不允许。默认值为false。<br>**说明：**<br> Wi-Fi为非计费网络，数据流量为计费网络。 |
 | enableRoaming | boolean | 否 | 是 | 表示设置是否允许在漫游网络中下载任务的配置信息。true表示允许，false表示不允许。默认值为false。|
 | description | string | 否 | 是 | 设置下载会话的描述。默认值为空字符串。 |
 | filePath<sup>7+</sup> | string | 否 | 是 | 设置下载路径。默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br/>-&nbsp;FA模型下使用[Context.getCacheDir](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir)方法获取应用存储路径。<br/>-&nbsp;Stage模型下使用[Context (Stage模型的上下文基类)](../apis-ability-kit/js-apis-inner-application-context.md)中AbilityContext的类获取文件路径。|
 | networkType | number | 否 | 是 | 设置允许下载的网络类型，通过[网络类型常量](#常量)的位运算方式决定允许的网络类型，支持如下几种设置方式: <br/>- 仅支持蜂窝网络下载，参数为NETWORK_MOBILE或0x00000001 <br/>- 仅支持WLAN网络下载，参数为NETWORK_WIFI或0x00010000<br/>- 参数默认值，支持蜂窝/WLAN网络下载，参数为NETWORK_MOBILE \| NETWORK_WIFI或0x00010001。<br/>当参数为NETWORK_MOBILE \| NETWORK_WIFI时，enableMetered和enableRoaming参数不生效。|
-| title | string | 否 | 是 | 设置下载任务名称。 |
+| title | string | 否 | 是 | 设置下载任务名称。默认值为download。 |
 | background<sup>9+</sup> | boolean | 否 | 是 | 后台任务通知开关，启用后可在通知中显示下载状态。true表示启用，false表示禁用。默认值为false。 |
 
 
@@ -2486,7 +2486,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | mimeType<sup>(deprecated)</sup> | string | 否 | 是 | 文件的mimeType，通过文件名获取，默认值为文件名后缀。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> 从 API version 18 开始废弃，建议使用contentType替代。 |
 | contentType<sup>18+</sup> | string | 否 | 是 | 文件内容类型，默认值为文件名后缀。该选项会被填写到HTTP表单指定的Content-Type字段中。 |
 | filename | string | 否 | 是 | 文件名，默认值通过路径获取。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| extras | object | 否 | 是 | 文件信息的附加内容，该参数不会体现在HTTP请求中。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| extras | object | 否 | 是 | 文件信息的附加内容，该参数不会体现在HTTP请求中。默认值为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 
 ## request.agent.FormItem<sup>10+</sup> 
@@ -2572,7 +2572,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | index | number | 是 | 否 | 任务中当前正在处理的文件索引。                                                     |
 | processed | number | 是 | 否 | 任务中当前文件的已处理数据大小，单位为字节（B）。                                               |
 | sizes | Array&lt;number&gt; | 是 | 否 | 任务中文件的大小，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，sizes为 -1。 |
-| extras | object | 是 | 是 | 交互的额外内容，例如：来自服务器的响应的header和body。                                     |
+| extras | object | 是 | 是 | 交互的额外内容，例如：来自服务器的响应的header和body。默认值为空。                                     |
 
 
 ## request.agent.Faults<sup>10+</sup>  
@@ -2664,7 +2664,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | title   | string | 否 | 是 | 通知栏自定义标题。若不设置则使用默认显示方式。title长度上限为1024B。 |
 | text    | string | 否 | 是 | 通知栏自定义正文。若不设置则使用默认显示方式。text长度上限为3072B。  |
 | visibility<sup>21+</sup> | number | 否 | 是 | 设置任务的通知栏显示方式，通过[VISIBILITY常量](#常量-1)的位运算方式决定显示方式，任务通知的显示方式，包括如下几种：<br/>- 仅显示完成通知，参数为VISIBILITY_COMPLETION或1，任务完成/失败后展示对应通知。<br/>- 仅显示进度通知，参数为VISIBILITY_PROGRESS或2，任务在进行中显示进度通知，当任务下载成功/失败后会直接退出进度通知，不会显示完成通知。<br/>- 显示进度通知/完成通知，参数为VISIBILITY_COMPLETION \| VISIBILITY_PROGRESS或3，任务在进行中显示进度通知，当任务下载成功/失败后会退出进度通知，并显示完成通知。<br/>若不设置该参数，则根据gauge字段来判断；若无gauge字段，则仅显示完成通知。|
-| wantAgent<sup>22+</sup> | [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) | 否 | 是 | 通知参数，用于实现点击任务通知后跳转的功能。|
+| wantAgent<sup>22+</sup> | [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) | 否 | 是 | 通知参数，用于实现点击任务通知后跳转的功能。默认值为空。|
 
 
 **示例：**
@@ -3552,7 +3552,7 @@ off(event: 'progress', callback?: (progress: [Progress](#requestagentprogress10)
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'progress'，表示任务进度。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。 |
+  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有进度回调函数。 |
 
 回调函数的参数：
 
@@ -3645,7 +3645,7 @@ off(event: 'completed', callback?: (progress: [Progress](#requestagentprogress10
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'completed'，表示任务完成。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。 |
+  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有完成回调函数。 |
 
 回调函数的参数：
 
@@ -3738,7 +3738,7 @@ off(event: 'failed', callback?: (progress: [Progress](#requestagentprogress10)) 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'failed'，表示任务失败。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。 |
+  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有失败回调函数。 |
 
 回调函数的参数：
 
@@ -3828,7 +3828,7 @@ off(event: 'pause', callback?: (progress: [Progress](#requestagentprogress10)) =
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'pause'，表示任务暂停。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。 |
+  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有暂停回调函数。 |
 
 回调函数的参数：
 
@@ -3918,7 +3918,7 @@ off(event: 'resume', callback?: (progress: [Progress](#requestagentprogress10)) 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'resume'，表示任务恢复。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。 |
+  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有恢复回调函数。 |
 
 回调函数的参数：
 
@@ -4008,7 +4008,7 @@ off(event: 'remove', callback?: (progress: [Progress](#requestagentprogress10)) 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'remove'，表示任务被移除。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。 |
+  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有移除回调函数。 |
 
 回调函数的参数：
 
@@ -5187,7 +5187,7 @@ getTask(context: BaseContext, id: string, token?: string): Promise&lt;Task&gt;
   | -------- | -------- | -------- | -------- |
   | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是 | 基于应用程序的上下文。 |
   | id | string | 是 | 任务id。 |
-  | token | string | 否 | 任务查询token。 |
+  | token | string | 否 | 任务查询token。默认值为空。 |
 
 **返回值：** 
 
@@ -5566,7 +5566,7 @@ search(filter?: Filter): Promise&lt;Array&lt;string&gt;&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | filter | [Filter](#requestagentfilter10) | 否 | 过滤条件。 |
+  | filter | [Filter](#requestagentfilter10) | 否 | 过滤条件。默认值为空。 |
 
 **返回值：** 
 
