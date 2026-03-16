@@ -203,7 +203,7 @@ stop(id: number): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let streamID: number = 0; //streamID为start方法返回的streamID,此处只做初始化。
+let streamID: number = 0; // streamID为start方法返回的streamID,此处只做初始化。
 systemTonePlayer.stop(streamID).then(() => {
   console.info('Succeeded in doing stop.');
 }).catch((err: BusinessError) => {
