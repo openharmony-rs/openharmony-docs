@@ -2124,7 +2124,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 offSinglePhotoAlbumChange(album?: Album, callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
-Cancels the listener for a single album. Note the following:
+Unregisters the listener for a single album. Note the following:
 
 1. If no parameter is specified, all listeners for the single albums are unregistered.
 
@@ -2141,7 +2141,7 @@ Cancels the listener for a single album. Note the following:
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | album | Album | No| Album for which the listener is unregistered. After the unregistration is complete, any change to the album is no longer returned through the callback.|
-| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | No| Callback used for the unregistration. If this parameter is not specified, all callbacks of the **asset** parameter are unregistered.|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | No| Callback used for the unregistration. If this parameter is not specified, all callbacks of the **album** parameter are unregistered.|
 
 **Error codes**
 

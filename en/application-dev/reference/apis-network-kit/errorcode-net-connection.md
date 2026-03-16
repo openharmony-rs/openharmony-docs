@@ -148,7 +148,7 @@ The API caller is not a VPN application.
 
 Ensure that the API is called in a VPN application.
 
-## 2100400 Incorrect NIC Name (non-Ethernet)
+## 2100400 Incorrect NIC Name (Non-Ethernet)
 
 **Error Message**
 

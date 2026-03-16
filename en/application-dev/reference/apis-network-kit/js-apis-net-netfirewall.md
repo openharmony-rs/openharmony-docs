@@ -541,7 +541,7 @@ Defines a firewall rule.
 | userId      | number                                                      | No|No|System user ID, which must exist.                  |
 | name        | string                                                      | No|No|Rule name. This parameter is mandatory and can contain a maximum of 128 characters.                               |
 | direction   | [NetFirewallRuleDirection](#netfirewallruledirection)       | No|No|Rule direction, which can be inbound or outbound.                                        |
-| action      | [FirewallRuleAction](#firewallruleaction)                   | No|No|Action, which can be allow or deny.                                                        |
+| action      | [FirewallRuleAction](#firewallruleaction)                   | No|No|Action, which can be allowing or denying.                                                        |
 | type        | [NetFirewallRuleType](#netfirewallruletype)                 | No|No|Rule type, which can be IP, Domain, or DNS.                                                   |
 | isEnabled   | boolean                                                     | No|No|Whether to enable the rule. The value **true** means to enable the rule, and the value **false** means the opposite.                                                    |
 | id          | number                                                      | No|Yes| ID of the firewall rule.                                                      |

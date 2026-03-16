@@ -420,7 +420,7 @@ Replaces the image selected by the user in the **PhotoPickerComponent** with the
 
 saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;, configs?: Array&lt;photoAccessHelper.PhotoCreationConfig&gt;, saveMode?: SaveMode): void
 
-Saves files in a URI list. Generally, this API is used together with [replacePhotoPickerPreview](#replacephotopickerpreview15) to save the new images or videos in the application sandbox path to Gallery.
+Saves files in a URI list. Generally, this API is used together with [replacePhotoPickerPreview](#replacephotopickerpreview15) to save the **newUris** of the images or videos in the application sandbox path to Gallery.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
