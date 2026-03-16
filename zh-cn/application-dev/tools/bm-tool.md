@@ -886,7 +886,7 @@ error: Failed to install the HAP or HSP because the dependent module does not ex
 场景二：依赖的HSP与HAP不在同一工程内：
 
 在安装HAP前，使用[bm install](#安装命令install)命令安装依赖的HSP。
-  
+
 ### 9568259 安装解析配置文件缺少字段
 **错误信息**
 
