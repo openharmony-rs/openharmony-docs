@@ -122,7 +122,6 @@ struct Child {
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG = '[Sample_EventDecorator]';
 const DOMAIN = 0xF811;
-const BUNDLE = 'EventDecorator_';
 @ComponentV2
 struct Child2 {
   @Param index: number = 0;
@@ -133,7 +132,7 @@ struct Child2 {
       Text(`Child index: ${this.index}`)
         .onClick(() => {
           this.changeIndex(20);
-          hilog.info(DOMAIN, TAG, BUNDLE, `after changeIndex ${this.index}`);
+          hilog.info(DOMAIN, TAG, `after changeIndex ${this.index}`);
         })
     }
   }
@@ -149,7 +148,7 @@ struct Index2 {
         index: this.index,
         changeIndex: (val: number) => {
           this.index = val;
-          hilog.info(DOMAIN, TAG, BUNDLE, `in changeIndex ${this.index}`);
+          hilog.info(DOMAIN, TAG, `in changeIndex ${this.index}`);
         }
       })
     }
