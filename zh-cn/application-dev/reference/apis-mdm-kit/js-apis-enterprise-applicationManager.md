@@ -577,7 +577,7 @@ getAutoStartApps(admin: Want): Array\<Want>
 
 | 类型                                                         | 说明                 |
 | ------------------------------------------------------------ | -------------------- |
-| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | 应用自启动名单数组。从API version 24支持，返回是否隐藏UI的配置。 |
+| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | 应用自启动名单数组。从API version 24开始，支持返回是否隐藏UI的配置。 |
 
 **错误码**：
 
