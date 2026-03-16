@@ -229,7 +229,8 @@ WiFi模块中使用wifi.getIpInfo().ipAddress，报错Error: assertion (wifiDevi
  
 **解决方案**
 
-目前提供了C接口的有如下几个模块：  
+目前提供了C接口的有如下几个模块：
+
 自定义DNS解析、证书校验、WebSocket  
 
 没直接提供C接口的可以通过AKI机制调用ArkTS接口。
