@@ -1485,7 +1485,7 @@ List中forEach方法的回调函数。
 | -------- | -------- | -------- | -------- |
 | value | T | 是 | 当前遍历到的元素。 |
 | index | int | 是 | 当前遍历到的下标值，默认值为0。 |
-| List | [List&lt;T&gt;](#list) | 是 | 当前调用[forEach](#foreach23)方法的实例对象。 |
+| list | [List&lt;T&gt;](#list) | 是 | 当前调用[forEach](#foreach23)方法的实例对象。 |
 
 ### ListReplaceCb\<T\><sup>23+</sup>
 

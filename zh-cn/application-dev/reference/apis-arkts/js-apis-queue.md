@@ -461,4 +461,4 @@ Queue中forEach方法的回调函数。
 | -------- | -------- | -------- | -------- |
 | value | T | 是 | 当前遍历到的元素。 |
 | index | int | 是 | 当前遍历到的下标值。 |
-| Queue | [Queue&lt;T&gt;](#queue) | 是 | 当前调用[forEach](#foreach20)方法的实例对象。 |
+| queue | [Queue&lt;T&gt;](#queue) | 是 | 当前调用[forEach](#foreach23)方法的实例对象。 |
