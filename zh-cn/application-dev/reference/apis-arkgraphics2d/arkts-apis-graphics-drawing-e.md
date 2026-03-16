@@ -214,6 +214,10 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 字型边缘效果类型枚举。
 
+> **说明：**
+>
+> FontEdging不支持位图字体（如点阵字体、emoji等）。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -223,10 +227,6 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 | ALIAS | 0    | 无抗锯齿处理。 |
 | ANTI_ALIAS  | 1    | 使用抗锯齿来平滑字型边缘。 |
 | SUBPIXEL_ANTI_ALIAS  | 2    | 使用次像素级别的抗锯齿平滑字型边缘，可以获得更平滑的字型渲染效果。 |
-
-> **说明：**
->
-> FontEdging不支持位图字体（如点阵字体、emoji等）。
 
 ## FontHinting<sup>12+</sup>
 
