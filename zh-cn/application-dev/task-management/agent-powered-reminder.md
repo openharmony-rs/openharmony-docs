@@ -28,7 +28,7 @@
 - **跳转限制**：点击提醒通知后跳转的应用必须是申请代理提醒的本应用。
 
 ## 与相关Kit的关系
-- 当到达设置的提醒时间点后，代理提醒使用Notification Kit发布通知，通知会显示在通知中心，通知样式请参考[Notification Kit通知样式](../notification/notification-overview.md#通知样式)中文本类型。
+- 当到达设置的提醒时间点后，代理提醒使用Notification Kit发布通知，通知会显示在通知中心，通知样式请参考[Notification Kit通知样式](../notification/notification-overview.md#通知样式)中的文本类型。
 
 ## 模拟器支持情况
 
