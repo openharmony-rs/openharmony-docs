@@ -10661,7 +10661,7 @@ async function example(context: Context) {
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
     let taskRespMap : Map<string, photoAccessHelper.CloudAssetDownloadCode> =
-      await cloudMediaAssetManagerInstance.startDownloadSpecificCloudMedia(assetURIs);
+      await cloudMediaAssetManagerInstance.startDownloadSpecificCloudMedia(assetURIs, 2);
   } catch (err) {
     console.error(`failed with error: ${err.code}, ${err.message}`);
   }
