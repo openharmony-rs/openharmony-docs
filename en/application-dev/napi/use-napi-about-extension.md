@@ -156,7 +156,7 @@ static napi_value CreateObjectWithProperties(napi_env env, napi_callback_info in
     napi_value argv[1] = {nullptr};
     // Obtain the parameters of the call.
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
-    // Declare a napi_property_descriptor array desc. The desc array contains a property named "name", whose value is the first input parameter argv[0].
+    // Declare a napi_property_descriptor array desc. It contains a property named "name", whose value is the first input parameter argv[0].
     napi_property_descriptor desc[] = {
         {"name", nullptr, nullptr, nullptr, nullptr, argv[0], napi_default_jsproperty, nullptr}};
     napi_value object = nullptr;
@@ -278,7 +278,7 @@ static napi_value RunScriptPath(napi_env env, napi_callback_info info)
 {
     napi_value value = nullptr;
     // The .abc file in the rawfile directory of the application.
-    const char *scriptPath = "/entry/src/main/resources/rawfile/test.abc";
+    const char *scriptPath = "/entry/resources/rawfile/test.abc";
     // Call napi_run_script_path to execute the file of the specified path.
     napi_status status = napi_run_script_path(env, scriptPath, &value);
     // Check whether the script execution is successful. If the execution fails, return false.

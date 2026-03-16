@@ -82,10 +82,10 @@ Describes the configuration of a Picker. It inherits from [photoAccessHelper.Bas
 | maxSelectedReminderMode         | [ReminderMode](#remindermode)           | No | Yes| Mode of the reminder when the number of selected items reaches the maximum. The options are **NONE**, **TOAST**, and **MASK**. The default value **TOAST**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                        |
 | orientation                     | [PickerOrientation](#pickerorientation) | No | Yes| Sliding preview direction of the grid page. The options are **HORIZONTAL** and **VERTICAL**. The default value is **VERTICAL**. (This parameter is supported since API version 20. In earlier versions, the system defaults to vertical.)<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                |
 | selectMode                      | [SelectMode](#selectmode)               | No | Yes | Select mode, which can be **SINGLE_SELECT** or **MULTI_SELECT**. The default value is **MULTI_SELECT**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                     |
-| maxPhotoSelectNumber            | number                                  | No | Yes| Maximum number of images that can be selected. The maximum value is **500**, which is limited by **MaxSelected**. The default value is **500**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                          |
-| maxVideoSelectNumber            | number                                  | No | Yes| Maximum number of videos that can be selected. The maximum value is **500**, and it is restricted by the maximum number of media files that can be selected in the system. The default value is **500**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                          |
-| isSlidingSelectionSupported<sup>13+</sup>     | boolean                                 | No | Yes| Whether sliding selection (selecting multiple items by sliding finger across the screen) is supported. The value **true** means that sliding selection is supported. By default, it is not supported. This parameter is not available for repeat selection.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                           |
-| photoBrowserCheckboxPosition<sup>13+</sup>    | [number, number]                        | No | Yes| Position of the check box on the photo browser page. The first parameter specifies the offset in the X direction, and the second parameter specifies the offset in the Y direction. The value range is 0-1, which indicates the offset (from 0% to 100%) to the upper-left corner of the component. The default value is [0, 0].<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
+| maxPhotoSelectNumber            | number                                  | No | Yes| Maximum number of images that can be selected. The maximum value is **500**, which is limited by **MaxSelected**. The default value is **500**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                          |
+| maxVideoSelectNumber            | number                                  | No | Yes| Maximum number of videos that can be selected. The maximum value is **500**, and it is restricted by the maximum number of media files that can be selected in the system. The default value is **500**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                          |
+| isSlidingSelectionSupported<sup>13+</sup>     | boolean                                 | No | Yes| Whether sliding selection (selecting multiple items by sliding finger across the screen) is supported. The value **true** means that sliding selection is supported. The default value is **false**. This parameter is not available for repeat selection.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                           |
+| photoBrowserCheckboxPosition<sup>13+</sup>    | [number, number]                        | No | Yes| Position of the check box on the photo browser page. The first parameter specifies the offset in the X direction, and the second parameter specifies the offset in the Y direction. The value range is [0, 1], which indicates the offset (from 0% to 100%) to the upper-left corner of the component. The default value is [0, 0].<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | gridMargin<sup>14+</sup>        | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | No | Yes| Margin of the component on a grid page.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | photoBrowserMargin<sup>14+</sup>    | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | No | Yes| Margin of the component on a photo browser page.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | singleLineConfig<sup>20+</sup>             | [SingleLineConfig](#singlelineconfig20)                                                | No | Yes| Single-line display mode of a grid page. In single-line mode, the component does not provide functions for viewing a larger image. The component does not support callbacks related to large images, and the PickerController does not support APIs related to large images, making API calls ineffective.<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |  
@@ -202,7 +202,7 @@ Sends data of the specified type to the **PhotoPickerComponent**.
 
 addData(dataType: DataType, data: Object): void
 
-Sends additional configuration data to the **PhotoPickerComponent**. The [DataType](#datatype) parameter identifies the type of data to send, and only the **SET_BADGE_CONFIGS** type is supported for this method currently.
+Sends additional configuration data to the **PhotoPickerComponent**. The [DataType](#datatype) parameter identifies the type of data to send, and only the **SET_BADGE_CONFIGS** type is supported currently.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
@@ -219,7 +219,7 @@ Sends additional configuration data to the **PhotoPickerComponent**. The [DataTy
 
 deleteData(dataType: DataType, data: Object): void
 
-Sends removal configuration data to the **PhotoPickerComponent**. The [DataType](#datatype) parameter identifies the type of data being sent, and only the **SET_BADGE_CONFIGS** type is supported for this method currently.
+Sends removal configuration data to the **PhotoPickerComponent**. The [DataType](#datatype) parameter identifies the type of data to send, and only the **SET_BADGE_CONFIGS** type is supported currently.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
@@ -236,7 +236,7 @@ Sends removal configuration data to the **PhotoPickerComponent**. The [DataType]
 
 setMaxSelected(maxSelected: MaxSelected): void
 
-Sets the maximum number of images, videos, or images and videos that can be selected in real time.
+Sets the maximum number of images, videos, or images and videos that can be selected on a real-time basis.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -314,7 +314,7 @@ Replaces the image selected by the user in the **PhotoPickerComponent** with the
 
 saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;, configs?: Array&lt;photoAccessHelper.PhotoCreationConfig&gt;, saveMode?: SaveMode): void
 
-Saves files in a URI list. Generally, this API is used together with [replacePhotoPickerPreview](#replacephotopickerpreview15) to save the new images or videos in the application sandbox path to Gallery.
+Saves files in a URI list. Generally, this API is used together with [replacePhotoPickerPreview](#replacephotopickerpreview15) to save the **newUris** of the images or videos in the application sandbox path to Gallery.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -326,8 +326,8 @@ Saves files in a URI list. Generally, this API is used together with [replacePho
 |-------------|----------------------------------------------------------------| ----- |-------------------|
 | trustedUris     | Array&lt;string&gt; | Yes| URIs of the images or videos in the application sandbox path. Generally, **trustedUris** comes from **newUri** of new images generated by [replacePhotoPickerPreview](#replacephotopickerpreview15).|
 | callback  | AsyncCallback&lt;Array&lt;string&gt;&gt;          | Yes| URIs of the new files in Gallery.            |
-| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | No| Configuration parameters corresponding to the original files.<br>**NOTE**<br>If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.            |
-| saveMode | [SaveMode](#savemode15)           | No| Mode for saving the files.            |
+| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | No| Configuration parameters corresponding to the original files.<br>**NOTE**<br>If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.<br>By default, the values of **title**, **fileNameExtension**, and **photoType** of **mediaItem** corresponding to **trustedUris** are used, and the value of **subtype** is fixed to **DEFAULT**.            |
+| saveMode | [SaveMode](#savemode15)           | No| Mode for saving the files.<br>By default, the **SAVE_AS** mode is used to save the files as new files.          |
 
 ### updatePickerOptions<sup>22+</sup>
 
@@ -353,7 +353,7 @@ Updates the attributes of the **PhotoPickerComponent**. This API uses a promise 
 
 ## BaseItemInfo
 
-Represents the image and video information.
+Represents basic image and video information.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -363,7 +363,7 @@ Represents the image and video information.
 | mimeType | string                | No| Yes  | MIME type of the image or video.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
 | width    | number                | No| Yes  | Width of the image or video, in px.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
 | height   | number                | No| Yes  | Height of the image or video, in px.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
-| size     | number                | No| Yes  | Size of the image or video, in bytes.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
+| size     | number                | No| Yes  | Size of the image or video, in bytes.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
 | duration   | number                | No| Yes  | Video duration, in milliseconds. For an image or a moving photo, the value **-1** is returned.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | No| Yes  | Subtype of the photo. The options are **DEFAULT**, **MOVING_PHOTO**, and **BRUST**.<br>The default value is **DEFAULT (0)**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | No| Yes  | Dynamic range type of the media file. The options are **HDR** and **SDR**.<br>For moving photos, this parameter specifies the dynamic range type of the cover image.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
@@ -373,9 +373,8 @@ Represents the image and video information.
 
 ## ItemInfo
 
-It inherits from [BaseItemInfo](#baseiteminfo), adding the parameter **itemType**.
-
-Represents the image and video information.
+Represents the image and video information. It inherits from [BaseItemInfo](#baseiteminfo), adding the parameter **itemType**.
+ 
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

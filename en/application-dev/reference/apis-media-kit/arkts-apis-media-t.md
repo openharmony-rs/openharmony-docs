@@ -132,7 +132,7 @@ Describes the callback used to listen for video super resolution status changes.
 
 Super resolution is automatically disabled in either of the following cases:
 * The current super resolution algorithm only works with videos that have a frame rate of 30 fps or lower. If the video frame rate exceeds 30 fps, or if the input frame rate exceeds the processing capability of the super resolution algorithm in scenarios such as fast playback, super resolution is automatically disabled.
-* The current super resolution algorithm supports input resolutions from 320 x 320 to 1920 x 1080, in px. If the input video resolution exceeds the range during playback, super resolution is automatically disabled.
+* The current super resolution algorithm supports input resolutions from 320 × 320 to 1920 × 1080, in px. If the input video resolution exceeds the range during playback, super resolution is automatically disabled.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -312,7 +312,7 @@ This callback function is implemented by applications to release related resourc
 **Example**
 
 ```ts
-import HashMap from '@ohos.util.HashMap';
+import { HashMap } from '@kit.ArkTS';
 
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 
@@ -330,7 +330,6 @@ type AudioState = 'idle' | 'playing' | 'paused' | 'stopped' | 'error'
 Describes the audio playback state. You can obtain the state through the **state** property.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVPlayerState](#avplayerstate9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -350,7 +349,6 @@ type VideoPlayState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | '
 Describes the video playback state. You can obtain the state through the **state** property.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [AVPlayerState](#avplayerstate9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoPlayer

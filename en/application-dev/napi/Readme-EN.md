@@ -11,7 +11,7 @@
   - [Overview](build-with-ndk-overview.md)
   - [Building an NDK Project with the DevEco Studio Template](build-with-ndk-ide.md)
   - [Building an NDK Project with the Command Line CMake](build-with-ndk-cmake.md)
-  - [Building an NDK Project with Prebuilt Libraries](build-with-ndk-prebuilts.md)
+  - [Building an NDK Project with Prebuilt Libraries](build-with-ndk-prebuilts.md)<!--RP1--><!--RP1End-->
 - Code Development<!--coding-->
   - [Overview](develop-code-overview.md)
   - C/C++ Standard Library<!--c-cpp-->
@@ -131,7 +131,7 @@
     - [Native Bundle Development](native-bundle-guidelines.md)
 - Debugging and Profiling<!--debugging-profiling-->
   - [Overview](debug-performance-profiling-overview.md)
-  - [C/C++ Memory Error Detection](debug-asan.md)
+  - [C/C++ Memory Error Detection](debug-asan.md)<!--RP2--><!--RP2End-->
 - Hardware Compatibility<!--hardware-compatibility-->
   - [Overview](hw-guide.md)
   - [OpenHarmony ABIs](ohos-abi.md)

@@ -154,7 +154,7 @@ load(uri: string): Promise\<number>
 
 Loads a sound. This API uses a promise to return the result.
 
-This API uses an asynchronous promise to obtain the resource ID. The input parameter URL is a string starting with **fd://**, which is generated based on the file descriptor (FD) obtained.
+This API uses a promise to obtain the resource ID. The input parameter URL is a string starting with **fd://**, which is generated based on the file descriptor (FD) obtained.
 
 This API cannot be used to load resources in the **rawfile** directory. Instead, use [load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void](#load-2) or [load(fd: number, offset: number, length: number): Promise\<number>](#load-3).
 
@@ -347,7 +347,7 @@ load(fd: number, offset: number, length: number): Promise\<number>
 
 Loads a sound. This API uses a promise to return the result.
 
-This API uses an asynchronous promise to obtain the resource ID. For the input parameter, resource information can be passed in manually or acquired automatically by reading the application's built-in resources.
+This API uses a promise to obtain the resource ID. For the input parameter, resource information can be passed in manually or acquired automatically by reading the application's built-in resources.
 
 >**NOTE**
 >
@@ -475,7 +475,7 @@ Plays a sound and obtains the stream ID. This API uses an asynchronous callback 
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -541,7 +541,7 @@ Plays a sound using default parameters and obtains the stream ID. This API uses 
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -606,7 +606,7 @@ Plays a sound and obtains the stream ID. This API uses a promise to return the r
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -667,11 +667,11 @@ Stops audio playback. This API uses an asynchronous callback to return the resul
 | Name  | Type                  | Mandatory| Description                       |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | Yes  | Audio stream ID, which is obtained by calling **play()**.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void> | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -735,7 +735,7 @@ Stops audio playback. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -788,11 +788,11 @@ Sets the loop mode. This API uses an asynchronous callback to return the result.
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | Yes  | Audio stream ID, which is obtained by calling **play()**.|
 | loop | number | Yes  | Number of loops.<br>If this parameter is set to a value greater than or equal to 0, the number of times the content is actually played is the value of **loop** plus 1.<br> If this parameter is set to a value less than 0, the content is played repeatedly.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void> | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -858,7 +858,7 @@ Sets the loop mode. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -912,11 +912,11 @@ Sets the priority for an audio stream. This API uses an asynchronous callback to
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | Yes  | Audio stream ID, which is obtained by calling **play()**.|
 | priority | number | Yes  | Priority. The value **0** means the lowest priority. The value is an integer greater than or equal to 0.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void> | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -981,7 +981,7 @@ Sets the priority for an audio stream. This API uses a promise to return the res
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -1036,11 +1036,11 @@ Sets the playback rate for an audio stream. This API uses an asynchronous callba
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | Yes  | Audio stream ID, which is obtained by calling **play()**.|
 | rate | [audio.AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8) | Yes  | Playback rate.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void> | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -1105,7 +1105,7 @@ Sets the playback rate for an audio stream. This API uses a promise to return th
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -1159,13 +1159,13 @@ Sets the volume for an audio stream. This API uses an asynchronous callback to r
 | Name  | Type                  | Mandatory| Description                       |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | Yes  | Audio stream ID, which is obtained by calling **play()**.|
-| leftVolume | number | Yes  | Volume of the left channel. The value ranges from 0.0 to 1.0.|
-| rightVolume | number | Yes  | Volume of the right channel. The value ranges from 0.0 to 1.0. Currently, setting the volume for the right channel does not take effect. The volume set for the left channel is used.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| leftVolume | number | Yes  | Volume of the left channel. The value range is [0.0, 1.0].|
+| rightVolume | number | Yes  | Volume of the right channel. The value range is [0.0, 1.0]. Currently, setting the volume for the right channel does not take effect. The volume set for the left channel is used.|
+| callback | AsyncCallback\<void> | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -1220,8 +1220,8 @@ Sets the volume for an audio stream. This API uses a promise to return the resul
 | Name  | Type                  | Mandatory| Description                       |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | Yes  | Audio stream ID, which is obtained by calling **play()**.|
-| leftVolume | number | Yes  | Volume of the left channel. The value ranges from 0.0 to 1.0.|
-| rightVolume | number | Yes  | Volume of the right channel. The value ranges from 0.0 to 1.0. Currently, setting the volume for the right channel does not take effect. The volume set for the left channel is used.|
+| leftVolume | number | Yes  | Volume of the left channel. The value range is [0.0, 1.0].|
+| rightVolume | number | Yes  | Volume of the right channel. The value range is [0.0, 1.0]. Currently, setting the volume for the right channel does not take effect. The volume set for the left channel is used.|
 
 **Return value**
 
@@ -1231,7 +1231,7 @@ Sets the volume for an audio stream. This API uses a promise to return the resul
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -1284,7 +1284,7 @@ Unloads a sound. This API uses an asynchronous callback to return the result.
 | Name  | Type                  | Mandatory| Description                       |
 | -------- | ---------------------- | ---- | --------------------------- |
 | soundID | number | Yes  | Sound ID, which is obtained by calling **load()**.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void> | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1403,7 +1403,7 @@ Releases a **SoundPool** instance. This API uses an asynchronous callback to ret
 
 | Name  | Type                  | Mandatory| Description                       |
 | -------- | ---------------------- | ---- | --------------------------- |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void> | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 

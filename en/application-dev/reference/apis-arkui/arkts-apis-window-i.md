@@ -23,7 +23,7 @@ Describes the parameters for creating a child window or system window.
 | name       | string                     | No| No| Window name.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core                                              |
 | windowType | [WindowType](arkts-apis-window-e.md#windowtype7) | No| No| Window type.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core                       |
 | ctx        | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | No| Yes| Current application context. If no value is passed, no context is used.<br>In the FA model, do not pass in this parameter when creating a child window. Otherwise, an error is reported.<br>In the stage model, you must pass in this parameter when creating a floating window, modal window, or system window.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core|
-| displayId  | number                     | No| Yes| ID of the current screen. If it is not set, the screen ID of the parent window is used by default.<br>The value is a non-negative integer and must correspond to an existing screen.<br>In scenarios involving extended screens or heterogeneous virtual screens, a global floating window can be displayed on a specified screen by setting the screen ID.<br>For modal windows and system windows, this parameter takes no effect, and the parent window's screen ID is used by default.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core    |
+| displayId  | number                     | No| Yes| Screen ID of the current window. If it is not set, the screen ID of the parent window is used by default.<br>The value is a non-negative integer and must correspond to an existing screen.<br>In scenarios involving extended screens or heterogeneous virtual screens, a global floating window can be displayed on a specified screen by setting the screen ID.<br>For modal windows and system windows, this parameter takes no effect, and the parent window's screen ID is used by default.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core    |
 | parentId   | number                     | No| Yes| ID of the parent window. If this parameter is not set, the default value **-1** is used. The default parent window is the main window corresponding to the current application context.<br>In the FA model, the parameter value must be a non-negative integer and must correspond to an existing parent window.<br>This parameter is invalid in the stage model.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core                                              |
 | decorEnabled<sup>12+</sup> | boolean | No| Yes| Whether the window decoration is enabled. This parameter is valid only when **windowType** is set to **TYPE_DIALOG**. **true** if enabled, **false** otherwise. The default value is **false**.<br>**System capability**: SystemCapability.Window.SessionManager|
 | title<sup>12+</sup> | string| No| Yes| Title of the window when **decorEnabled** is set to **true**. The title display area should not go past the left side of the three-button area of the system. Any part that goes beyond will show as an ellipsis. If this parameter is not set, an empty string is used.<br>**System capability**: SystemCapability.Window.SessionManager|
@@ -160,7 +160,7 @@ Describes the value and reason returned upon a window rectangle (position and si
 
 ## AvoidAreaOptions<sup>12+</sup>
 
-Describes the new area where the window cannot be displayed. The new area is returned when the corresponding event is triggered.
+Returns the new avoid area and its type after the system avoid area changes.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -168,8 +168,8 @@ Describes the new area where the window cannot be displayed. The new area is ret
 
 | Name      | Type     | Read-Only| Optional| Description              |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | No  | No  | Type of the new area returned.|
-| area   | [AvoidArea](arkts-apis-window-i.md#avoidarea7)         | No  | No  | New area returned.|
+| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | No  | No  | Type of the new avoid area returned after the system avoid area changes.|
+| area   | [AvoidArea](arkts-apis-window-i.md#avoidarea7)         | No  | No  | New avoid area returned after the system avoid area changes.|
 
 ## WindowProperties
 
@@ -266,7 +266,7 @@ Describes the window movement configuration.
 
 | Name  | Type  | Read-Only| Optional| Description                                      |
 | ------ | ------ | ---- | ---- | ------------------------------------------ |
-| displayId | number | No| Yes|Target display ID. The value must be an integer. If a non-integer is passed in, the value is rounded down. If this parameter is passed in, the window is positioned relative to the top-left corner of the target display. If this parameter is left empty or the target display ID does not exist, the window is positioned relative to the top-left corner of the current display.|
+| displayId | number | No| Yes|Target display ID. The value must be an integer. If a non-integer is passed in, the value is rounded down. The default value is **undefined**. If this parameter is passed in, the window is positioned relative to the top-left corner of the target display. If this parameter is left empty or set to **undefined**, or the target display ID does not exist, the window is positioned relative to the top-left corner of the current display.|
 
 ## WindowDensityInfo<sup>15+</sup>
 
@@ -466,7 +466,7 @@ In this callback function, the parameter type is [RotationChangeInfo](arkts-apis
 
 | Type| Description|
 | -------------------------------- | ------------------------------------ |
-| U | Value of type [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void.|
+| U | Value of type [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void.| .|
 
 ## SubWindowOptions<sup>11+</sup>
 

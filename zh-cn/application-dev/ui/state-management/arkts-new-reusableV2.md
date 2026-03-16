@@ -212,20 +212,24 @@ struct Index {
   @Local condition2: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('step1. appear')
+        .width('60%')
         .onClick(() => {
           this.condition1 = true;
         })
       Button('step2. recycle')
+        .width('60%')
         .onClick(() => {
           this.condition2 = false;
         })
       Button('step3. reuse')
+        .width('60%')
         .onClick(() => {
           this.condition2 = true;
         })
       Button('step4. disappear')
+        .width('60%')
         .onClick(() => {
           this.condition1 = false;
         })
@@ -233,6 +237,7 @@ struct Index {
         NormalV2Component({ condition: this.condition2 })
       }
     }
+    .width('100%')
   }
 }
 
@@ -283,6 +288,8 @@ struct ReusableV2Component {
 
 倘若该复用组件下有子组件时，会在回收和复用时递归调用子组件的aboutToRecycle和aboutToReuse（与子组件是否被标记复用无关），直到遍历完所有的孩子组件。
 
+![lifecycle](./figures/reusablev2-lifecycle.gif)
+
 ## 复用阶段的冻结
 
 在之前的复用中，V1组件在复用池中仍能响应更新，这会对性能带来一定的负面影响，需要开发者使用组件冻结能力，才能够使V1组件在复用池中时不响应更新。针对这一点，V2组件在复用时将会被自动冻结，不会响应在回收期间发生的变化。这一个期间包括`aboutToRecycle`，即`aboutToRecycle`中的修改不会刷新到UI上，也不会触发\@Computed以及\@Monitor。冻结状态将持续到aboutToReuse前，即`aboutToReuse`及之后的变量更改，才会正常触发UI刷新、\@Computed重新计算以及\@Monitor的调用。
@@ -310,12 +317,14 @@ struct Index {
   @Local condition: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('Reuse/Recycle')
+        .width('60%')
         .onClick(() => {
           this.condition = !this.condition;
         })
       Button('Change value')
+        .width('60%')
         .onClick(() => {
           info.age++;
         })
@@ -323,6 +332,7 @@ struct Index {
         ReusableV2Component()
       }
     }
+    .width('100%')
   }
 }
 
@@ -365,6 +375,8 @@ struct ReusableV2Component {
 2. 点击`Reuse/Recycle`按钮，此时调用`aboutToRecycle`回调并输出`aboutToRecycle`的日志，但\@Monitor不被触发，且`onRender`方法不被回调。
 3. 点击`Change value`按钮，UI无变化，\@Monitor不触发且`onRender`方法不被回调。
 4. 点击`Reuse/Recycle`按钮，此时调用`aboutToReuse`回调并输出`aboutToReuse`的日志，\@Monitor触发并输出日志`info.age change`且`onRender`方法回调输出`info.age onRender`，UI发生变化。
+
+![freeze](./figures/reusablev2-freeze.gif)
 
 如果去掉`aboutToReuse`方法中的自增操作，则上述第四步不会触发\@Monitor回调。
 
@@ -417,12 +429,12 @@ struct Index {
   @Local condition: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('Recycle/Reuse')
         .onClick(() => {
           this.condition = !this.condition;
         })
-      Column() {
+      Column({ space: 10 }) {
         Text('Variables of parent component')
         Text(`local: ${this.local}`)
           .onClick(() => {
@@ -432,7 +444,9 @@ struct Index {
           .onClick(() => {
             this.inheritProvider++;
           })
-      }.borderWidth(2)
+      }
+      .width('80%')
+      .borderWidth(2)
 
       if (this.condition) {
         ReusableV2Component({
@@ -444,6 +458,7 @@ struct Index {
         })
       }
     }
+    .width('100%')
   }
 }
 
@@ -479,8 +494,8 @@ struct ReusableV2Component {
   }
 
   build() {
-    Column() {
-      Column() {
+    Column({ space: 10 }) {
+      Column({ space: 10 }) {
         Text('Variables reset to local initial values')
         Text(`val: ${this.val}`)
           .onClick(() => {
@@ -502,9 +517,11 @@ struct ReusableV2Component {
           .onClick(() => {
             this.selfConsumer++;
           })
-      }.borderWidth(2)
+      }
+      .width('80%')
+      .borderWidth(2)
 
-      Column() {
+      Column({ space: 10 }) {
         Text('Reset to an external variable')
         Text(`paramOut: ${this.paramOut}`)
           .onClick(() => {
@@ -514,18 +531,22 @@ struct ReusableV2Component {
           .onClick(() => {
             this.paramOnce++;
           })
-      }.borderWidth(2)
+      }
+      .width('80%')
+      .borderWidth(2)
 
-      Column() {
+      Column({ space: 10 }) {
         Text('Depending on the parent component')
         Text(`inheritConsumer: ${this.inheritConsumer}`)
           .onClick(() => {
             this.inheritConsumer++;
           })
         Text(`plusParam: ${this.plusParam}`)
-      }.borderWidth(2)
+      }
+      .width('80%')
+      .borderWidth(2)
 
-      Column() {
+      Column({ space: 10 }) {
         Text('Not reset')
         Text(`noDecoVariable: ${this.noDecoVariable}`)
         Text(`noDecoInfo.age: ${this.noDecoInfo.age}`)
@@ -533,13 +554,18 @@ struct ReusableV2Component {
             this.noDecoInfo.age++;
           }) // 能够触发刷新但是复用时不会被重置
         Text(`readOnlyVariable: ${this.readOnlyVariable}`)
-      }.borderWidth(2)
+      }
+      .width('80%')
+      .borderWidth(2)
     }
+    .width('100%')
   }
 }
 ```
 
 开发者可以尝试点击各个变量，并点击`Recycle/Reuse`按钮查看复用后的重置情况。
+
+![reset](./figures/reusablev2-reset.gif)
 
 需要注意的是，上面的例子中`noDecoInfo`未被重置，如果存在监听`noDecoInfo.age`的\@Monitor，因为noDecoInfo本身未产生变化，所以该\@Monitor也不会被重置，因此在后续第一次更改`noDecoInfo.age`时，`IMonitorValue`的`before`值将不会被重置，仍是复用前的值。
 
@@ -568,8 +594,9 @@ struct Index {
   @Local condition: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('Recycle/Reuse')
+        .width('60%')
         .onClick(() => {
           this.condition = !this.condition;
         })
@@ -577,6 +604,7 @@ struct Index {
         ReusableV2Component()
       }
     }
+    .width('100%')
   }
 }
 
@@ -617,6 +645,8 @@ struct ReusableV2Component {
 2. 点击`Recycle/Reuse`两次，UI刷新为`noDecoInfo.age: 35`，\@Monitor触发并输出日志`age change from 31 to 35`。
 3. 点击`noDecoInfo.age: 35`，UI刷新为`noDecoInfo.age: 36`，\@Monitor触发并输出日志`age change from 35 to 36`。
 
+![resetmonitor](./figures/reusablev2-resetmonitor.gif)
+
 由于冻结机制的存在，在aboutToRecycle中赋值不会被\@Monitor观察到。而在经历完变量重置后，变量又会被赋予新的值，因此对于组件内状态变量来说，在aboutToRecycle中赋值不会有明显的效果；而常量（例如上面的`noDecoInfo`）由于冻结机制的存在，在aboutToRecycle中更改`age`也不会被观察到，并且因为不会被重置，所以相关的\@Monitor也不会被重置，即这里的`age`值本身未被重置，也就不会重置与之绑定的\@Monitor。最终表现出来的现象即：第二步回调的\@Monitor中，`monitor.value()?.before`得到的值为31，而非age的初始值30。
 
 针对这一现象，推荐开发者在复用的场景减少使用类似的常量对象包含[\@Trace](./arkts-new-observedV2-and-trace.md)属性的写法，以确保复用场景的功能符合预期。
@@ -641,8 +671,9 @@ struct Index {
   @Local condition: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('Recycle/Reuse')
+        .width('60%')
         .onClick(() => {
           this.condition = !this.condition;
         }) // 点击切换回收/复用状态
@@ -650,6 +681,7 @@ struct Index {
         ReusableV2Component()
       }
     }
+    .width('100%')
   }
 }
 
@@ -673,6 +705,8 @@ struct ReusableV2Component {
   }
 }
 ```
+
+![if](./figures/reusablev2-if.gif)
 
 ### 在Repeat组件中使用
 
@@ -721,6 +755,7 @@ struct Index {
                 ReusableV2Component({ num: obj.item })
               }
             }
+            .width('100%')
           })
       }.height('50%')
       .cachedCount(2)
@@ -753,6 +788,8 @@ struct ReusableV2Component {
 }
 ```
 
+![repeat](./figures/reusablev2-repeat.gif)
+
 ### 在Repeat组件非懒加载场景的each属性中使用
 
 Repeat组件非懒加载场景中，会在删除/创建子树时触发回收/复用。
@@ -772,20 +809,24 @@ struct Index {
   @Local condition: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('Delete/Create Repeat')
+        .width('60%')
         .onClick(() => {
           this.condition = !this.condition;
         })
       Button('Add element')
+        .width('60%')
         .onClick(() => {
           this.simpleList.push(this.simpleList.length + 1);
         })
       Button('Delete element')
+        .width('60%')
         .onClick(() => {
           this.simpleList.pop();
         })
       Button('Change element')
+        .width('60%')
         .onClick(() => {
           this.simpleList[0]++;
         })
@@ -797,11 +838,13 @@ struct Index {
                 Column() {
                   ReusableV2Component({ num: obj.item })
                 }
+                .width('100%')
               }
             })
         }
       }
     }
+    .width('100%')
   }
 }
 
@@ -830,10 +873,13 @@ struct ReusableV2Component {
 }
 ```
 
+![repeat-nonvirtual](./figures/reusablev2-repeat-nonvirtual.gif)
+
 ### 在ForEach组件中使用
+
 >**说明：**
 >
->推荐开发者使用Repeat组件的非懒加载场景代替[ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)组件
+>推荐开发者使用Repeat组件的非懒加载场景代替[ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)组件。
 
 下面的例子中使用了ForEach组件渲染了数个可复用组件，由于每次点击`Click to change`按钮时key值都会发生变化，因此从第二次点击开始都会触发回收与复用（由于ForEach先判断有无可复用节点时复用池仍未初始化，因此第一次点击会创建新的节点，而后初始化复用池同时回收节点）。
 
@@ -855,11 +901,13 @@ struct Index {
       ForEach(this.simpleList, (num: number, index) => {
         Row() {
           Button('Click to change')
+            .margin({ right: 10 })
             .onClick(() => {
               this.simpleList[index]++;
             })
           ReusableV2Component({ num: num })
         }
+        .margin({ bottom: 10 })
       }) // 每次修改完key发生变化
     }
   }
@@ -890,10 +938,13 @@ struct ReusableV2Component {
 }
 ```
 
+![foreach](./figures/reusablev2-foreach.gif)
+
 ### 在LazyForEach组件中使用
+
 >**说明：**
 >
->推荐开发者使用Repeat组件的懒加载场景代替[LazyForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)组件
+>推荐开发者使用Repeat组件的懒加载场景代替[LazyForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)组件。
 
 下面的例子中使用了LazyForEach渲染了数个可复用组件，在滑动时可以先观察到组件创建，直到预加载节点全部创建完成之后，再滑动则触发复用和回收。
 
@@ -1056,3 +1107,5 @@ struct ChildComponent {
   }
 }
 ```
+
+![lazyforeach](./figures/reusablev2-lazyforeach.gif)

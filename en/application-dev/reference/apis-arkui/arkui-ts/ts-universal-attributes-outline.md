@@ -54,7 +54,7 @@ Sets the outline attributes in one declaration. Compared with [outline](#outline
 
 | Name| Type                                     | Mandatory| Description|
 | ------ | ----------------------------------------- | ---- | ---- |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OutlineOptions](ts-types.md#outlineoptions11)>| Yes  |   Outline attributes.<br>If **options** is **undefined**, the component reverts to its original style with no outline.  |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OutlineOptions](ts-types.md#outlineoptions11)>| Yes  |   Outline attributes.<br>If **options** is **undefined**, the component reverts to its original style with no outline.  |
 
 **Return value**
 
@@ -118,7 +118,7 @@ Sets the outline style. If this API is not used, a solid line is displayed by de
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OutlineStyle](#outlinestyle11)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11)> | Yes  | Outline style.<br>If **style** is **undefined**, the component reverts to its original style with no outline.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OutlineStyle](#outlinestyle11)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11)> | Yes  | Outline style.<br>If **style** is **undefined**, the component reverts to its original style with no outline.|
 
 **Return value**
 
@@ -166,7 +166,7 @@ Sets the thickness of the outline. If this API is not used, there will be no cha
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11)> | Yes  | Outline thickness. Percentage values are not supported.<br>If **width** is **undefined**, the component reverts to its original style with no outline width.|
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11)> | Yes  | Outline thickness. Percentage values are not supported.<br>If **width** is **undefined**, the component reverts to its original style with no outline width.|
 
 **Return value**
 
@@ -214,7 +214,7 @@ Sets the color of the outline. If this API is not used, the default color black 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](ts-types.md#localizededgecolors12)> | Yes  | Outline color.<br>If **color** is **undefined**, the component reverts to its original style with the outline color of **Color.Black**.|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](ts-types.md#localizededgecolors12)> | Yes  | Outline color.<br>If **color** is **undefined**, the component reverts to its original style with the outline color of **Color.Black**.|
 
 **Return value**
 
@@ -262,7 +262,7 @@ Sets the radius of the outline corners. If this API is not used, there will be n
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| radius | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](ts-types.md#outlineradiuses11)> | Yes  | Radius of the outline corners. Percentage values are not supported.<br>Maximum effective value: Component width/2 + outlineWidth or component height/2 + outlineWidth<br>If **radius** is **undefined**, the component reverts to its original style with the outline corner radius of 0.|
+| radius | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](ts-types.md#outlineradiuses11)> | Yes  | Radius of the outline corners. Percentage values are not supported.<br>Maximum effective value: Component width/2 + outlineWidth or component height/2 + outlineWidth<br>If **radius** is **undefined**, the component reverts to its original style with the outline corner radius of 0.|
 
 **Return value**
 

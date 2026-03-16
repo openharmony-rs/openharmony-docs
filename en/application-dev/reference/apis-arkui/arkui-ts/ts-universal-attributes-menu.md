@@ -1125,7 +1125,6 @@ struct Index {
 }
 ```
 
-![preview-builder](figures/zh-cn_image_bindMenuLifeCycle.gif)
 
 ### Example 16: Setting the Menu Mask
 
@@ -1270,7 +1269,6 @@ struct Index {
 
 ```
 
-![bindMenu-CustomBuilder](figures/bindMenuWithCustomBuilder.gif)
 
 ### Sample 19: Displaying Different Menus Based on the Trigger Mode
 

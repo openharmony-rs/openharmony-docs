@@ -25,7 +25,7 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string | null>>
 
 Obtains the values of properties from the image's metadata. This API uses a promise to return the result.
 
-For details about how to obtain the property values, see [PropertyKey](arkts-apis-image-e.md#propertykey7), [FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13), and [GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20).
+For details about how to obtain the property values, see [PropertyKey](arkts-apis-image-e.md#propertykey7), [FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13), and [GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -43,7 +43,7 @@ For details about how to obtain the property values, see [PropertyKey](arkts-api
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -57,7 +57,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function GetProperties(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // An image containing Exif metadata is required.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -84,7 +84,7 @@ setProperties(records: Record\<string, string | null>): Promise\<void>
 
 Sets the values of properties for the image's metadata. This API uses a promise to return the result.
 
-For details about how to obtain the property values, see [PropertyKey](arkts-apis-image-e.md#propertykey7), [FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13), and [GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20).
+For details about how to obtain the property values, see [PropertyKey](arkts-apis-image-e.md#propertykey7), [FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13), and [GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -102,7 +102,7 @@ For details about how to obtain the property values, see [PropertyKey](arkts-api
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -116,7 +116,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function SetProperties(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // An image containing Exif metadata is required.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -147,7 +147,7 @@ getAllProperties(): Promise\<Record<string, string | null>>
 
 Obtains all properties and values from the image's metadata. This API uses a promise to return the result.
 
-For details about how to obtain the property values, see [PropertyKey](arkts-apis-image-e.md#propertykey7), [FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13), and [GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20).
+For details about how to obtain the property values, see [PropertyKey](arkts-apis-image-e.md#propertykey7), [FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13), and [GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -164,7 +164,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function GetAllProperties(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // An image containing Exif metadata is required.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -208,7 +208,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function Clone(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // An image containing Exif metadata is required.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }

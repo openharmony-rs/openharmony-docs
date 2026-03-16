@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供ArkUI在Native侧的动画接口定义集合。
+提供ArkUI在Native侧的动画接口定义集合。native_animate.h中的接口需要在主线程上调用。
 
 **引用文件：** <arkui/native_animate.h>
 

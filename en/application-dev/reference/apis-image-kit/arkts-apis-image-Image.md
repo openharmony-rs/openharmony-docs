@@ -48,7 +48,7 @@ Obtains the component buffer from the Image instance based on the color componen
 
 | Name       | Type                                   | Mandatory| Description                |
 | ------------- | --------------------------------------- | ---- | -------------------- |
-| componentType | [ComponentType](arkts-apis-image-e.md#componenttype9)        | Yes  | Color component type of the image. (Currently, only **ComponentType:JPEG** is supported. The format actually returned is determined by the producer, for example, camera.)   |
+| componentType | [ComponentType](arkts-apis-image-e.md#componenttype9)        | Yes  | Component type. (Currently, only **ComponentType:JPEG** is supported. The format actually returned is determined by the producer, for example, camera.)   |
 | callback      | AsyncCallback<[Component](arkts-apis-image-i.md#component9)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the component buffer obtained; otherwise, **err** is an error object. |
 
 **Example**
@@ -79,7 +79,7 @@ Obtains the component buffer from the Image instance based on the color componen
 
 | Name       | Type                            | Mandatory| Description            |
 | ------------- | -------------------------------- | ---- | ---------------- |
-| componentType | [ComponentType](arkts-apis-image-e.md#componenttype9) | Yes  | Color component type of the image. (Currently, only **ComponentType:JPEG** is supported. The format actually returned is determined by the producer, for example, camera.)|
+| componentType | [ComponentType](arkts-apis-image-e.md#componenttype9) | Yes  | Component type. (Currently, only **ComponentType:JPEG** is supported. The format actually returned is determined by the producer, for example, camera.)|
 
 **Return value**
 
@@ -170,4 +170,3 @@ async function Release(img : image.Image) {
   })
 }
 ```
-<!--no_check-->

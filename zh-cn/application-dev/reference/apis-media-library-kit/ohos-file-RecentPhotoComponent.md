@@ -16,9 +16,13 @@
 
 ```ts
 import {
-  RecentPhotoComponent, RecentPhotoOptions, RecentPhotoCheckResultCallback, RecentPhotoInfo, RecentPhotoCheckInfoCallback,
-  RecentPhotoClickCallback, PhotoSource, RecentPhotoInfo, RecentPhotoCheckInfoCallback,
+  RecentPhotoComponent, RecentPhotoOptions, RecentPhotoCheckResultCallback,
+  RecentPhotoClickCallback, PhotoSource
 } from '@kit.MediaLibraryKit';
+import {
+  RecentPhotoInfo,
+  RecentPhotoCheckInfoCallback
+} from '@ohos.file.RecentPhotoComponent'
 ```
 
 ## 属性
@@ -149,12 +153,14 @@ import {
    RecentPhotoComponent, 
    RecentPhotoOptions, 
    PhotoSource, 
-   RecentPhotoInfo, 
    RecentPhotoCheckResultCallback, 
    RecentPhotoClickCallback, 
-   RecentPhotoCheckInfoCallback,
    BaseItemInfo
 } from '@kit.MediaLibraryKit';
+import {
+  RecentPhotoInfo,
+  RecentPhotoCheckInfoCallback
+} from '@ohos.file.RecentPhotoComponent'
 
 @Entry
 @Component

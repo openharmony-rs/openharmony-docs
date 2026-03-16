@@ -134,7 +134,7 @@ struct FontExample {
 
 getSystemFontList(): Array\<string>
 
-Obtains this system font list.
+Obtains the system font list.
 
 This API only takes effect on PCs/2-in-1 devices and returns an empty array on other devices.
 
@@ -275,9 +275,12 @@ struct FontExample {
 ```
 
 ## font.getUIFontConfig<sup>11+</sup>
+
 getUIFontConfig() : UIFontConfig
 
-Obtains the UI font configuration of the system.
+Obtains the UI font configuration information in the system font configuration file.
+
+This API can only obtain the information in the configuration file. If the UI context is not clear, **undefined** may be returned. If you want to obtain the full font configuration information, you are advised to use the [getSystemFontFullNamesByType](../apis-arkgraphics2d/js-apis-graphics-text.md#textgetsystemfontfullnamesbytype14) API of the font engine.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

@@ -48,7 +48,7 @@ Sets the click feedback effect of the component. Compared with [clickEffect](#cl
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| effect | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ClickEffect](#clickeffect)&nbsp;\|&nbsp;null> | Yes  | Sets the click feedback effect of the component.<br>**NOTE**<br>Use **undefined** or **null** to disable the click feedback effect.<br>Avoid using this feature in scenarios where the component size dynamically changes.<br>This attribute is not supported when the component cannot trigger universal events.<br>After the click feedback effect triggers scaling, the touch point may fall outside the control, making the component unresponsive to gesture events.|
+| effect | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ClickEffect](#clickeffect)&nbsp;\|&nbsp;null> | Yes  | Sets the click feedback effect of the component.<br>**NOTE**<br>Use **undefined** or **null** to disable the click feedback effect.<br>Avoid using this feature in scenarios where the component size dynamically changes.<br>This attribute is not supported when the component cannot trigger universal events.<br>After the click feedback effect triggers scaling, the touch point may fall outside the control, making the component unresponsive to gesture events.|
 
 **Return value**
 

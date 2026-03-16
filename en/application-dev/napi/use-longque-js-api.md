@@ -1,4 +1,11 @@
 # Using Longque JS APIs
+<!--Kit: NDK Development-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Designer: @knightaoko-->
+<!--Tester: @test_lzz-->
+<!--Adviser: @fang-jinxu-->
+
 Provided by Longque JS Engine, Longque JS APIs are used to build stable and high-performance applications on OpenHarmony. They are under the **__Longque__** object. You can use **__Longque__.version** to obtain the API version for determining features.
 
 Note: Longque JS APIs are in the experimental phase. Before using the APIs, read this topic to evaluate their stability and compatibility.
@@ -23,22 +30,22 @@ Note: Longque JS APIs are in the experimental phase. Before using the APIs, read
 ### Description
 | API | Usage | Description|
 | -- | -- | -- |
-| createDelegate | Delegate creation.| Creates a delegate object for **underlyingObject**. The read and write operations on the delegate object are mapped to **underlyingObject**. You can specify the initial delegate object through **initObject** and the property filter through **propertyFilterFlags**. By default, all enumerable string key properties in **underlyingObject** and its prototype chain are mapped.
+| createDelegate | Delegate creation.| Creates a delegate object for **underlyingObject**. The read and write operations on the delegate object are mapped to **underlyingObject**. You can specify the initial delegate object through **initObject** and the property filter through **propertyFilterFlags**. By default, all enumerable string key properties in **underlyingObject** and its prototype chain are mapped.|
 
 ### Parameters
-(1) **underlyingObject**: Underlying object to delegate. This parameter is mandatory. Parameter requirements:
+(1) **underlyingObject**: This parameter is mandatory. Underlying object to delegate. Parameter requirements:
 - **underlyingObject** must be an object. Otherwise, the **TypeError** exception is thrown.
 - If **underlyingObject** is a delegate object, a **TypeError** exception is thrown.
 - If the **SKIP_PROTOTYPE_CHAIN** filter is not specified and a delegate object exists in the **underlyingObject** prototype chain, a **TypeError** exception is thrown.
 
-(2) **initObject**: Initial delegate object. This parameter is optional. If **undefined** is passed, the initial object is not specified and is automatically created by the API. Parameter requirements:
+(2) **initObject**: This parameter is optional. Initial delegate object. If **undefined** is passed, the initial object is not specified and is automatically created by the API. Parameter requirements:
 - **initObject** must be an object. Otherwise, a **TypeError** exception is thrown.
 - If **initObject** is a delegate object, a **TypeError** exception is thrown.
 - The delegate object cannot be used as **initObject**. Otherwise, a **TypeError** exception is thrown.
 - If **initObject** is not extensible, a **TypeError** exception is thrown.
 - If some properties of **initObject** cannot be defined, a **TypeError** exception is thrown. In this case, only some properties of **initObject** are successfully defined.
 
-(3) **propertyFilterFlags**: Property filter. This parameter is optional. If **undefined** is passed, no filter is specified. Parameter requirements:
+(3) **propertyFilterFlags**: This parameter is optional. Property filter. If **undefined** is passed, no filter is specified. Parameter requirements:
 - The following lists the supported property filters (which may be extended in the future).
 ```sh
 __Longque__.SKIP_PROTOTYPE_CHAIN: Delegates only the underlyingObject properties and skips the prototype chain.
@@ -158,8 +165,157 @@ static int32_t TestJSVM() {
 ```
 
 Expected output:
-```
+``` ts
 JSVM API TEST: {"42":0,"x":1,"_y":2,"$z":3,"foo":"foo"}
 JSVM API TEST: {"42":0,"x":1,"foo":"foo"}
 JSVM API TEST: {"42":100,"x":1}
+```
+
+### Performance Testing Sample Code
+
+This sample code demonstrates how to test the performance before and after using Longque JS APIs.
+
+C++ code:
+``` cpp
+// JS code to be executed.
+static const char *STR_TASK = R"JS(
+  // Original JS code
+  function base(underlying) {
+    var obj = {};
+    var tryDefineProperty = function (key) {
+      if (key.indexOf('_') === 0 || key.indexOf('$') === 0 || key === 'constructor') {
+        return false;
+      }
+      Object.defineProperty(obj, key, {
+        configurable: true,
+        enumerable: true,
+        get: function get() {
+          return underlying[key];
+        },
+        set: function set(value) {
+          return (underlying[key] = value);
+        },
+      });
+      return true;
+    };
+    for (var key in underlying) {
+      if (!tryDefineProperty(key)) {
+        continue;
+      }
+    }
+    return obj;
+  }
+
+  // Code after the Longque JSVM API is used
+  function opt(underlying) {
+    var delegate = __Longque__.createDelegate(
+      underlying,
+      undefined,
+      __Longque__.SKIP_PREFIX_UNDERSCORE |
+      __Longque__.SKIP_PREFIX_DOLLAR |
+      __Longque__.SKIP_CONSTRUCTOR,
+    );
+    return delegate;
+  }
+
+  // Performance test
+  function doTest(tag, func, underlying, times) {
+    const begin = Date.now();
+    var obj = null;
+    for (var i = 0; i < times; ++i) {
+      obj = func(underlying);
+    }
+    const end = Date.now();
+    consoleinfo(`[${tag}] Time cost: ${(end - begin).toFixed(0)} ms`);
+    return obj;
+  }
+
+  function testEntry() {
+    var underlying = {
+      x: 1,
+      y: 2,
+      foo: 'foo',
+      _bar: '_bar',
+      _hi: '_hi',
+      $test: '$test',
+      constructor: 'ctor',
+      pi: 3.14,
+    };
+    for (var i = 0; i < 100; ++i) {
+      underlying[`key_${i}`] = i;
+    }
+    const n = 10000;
+    // Test the runtime of the original JS code.
+    doTest('base', base, underlying, n);
+    // Test the runtime after the Longque JSVM API is used.
+    doTest('opt', opt, underlying, n);
+  }
+
+  testEntry();
+)JS";
+
+// Ensure normal printing of the JS code information.
+static JSVM_Value ConsoleInfo(JSVM_Env env, JSVM_CallbackInfo info) {
+    size_t argc = 1;
+    JSVM_Value args[1];
+    char log[256] = "";
+    size_t logLength = 0;
+    JSVM_CALL(OH_JSVM_GetCbInfo(env, info, &argc, args, NULL, NULL));
+  
+    OH_JSVM_GetValueStringUtf8(env, args[0], log, 255, &logLength);
+    log[255] = 0;
+    OH_LOG_INFO(LOG_APP, "JSVM API TEST: %{public}s", log);
+    return nullptr;
+}
+
+// Register the consoleinfo callback.
+JSVM_CallbackStruct param[] = {
+    {.data = nullptr, .callback = ConsoleInfo},
+};
+JSVM_PropertyDescriptor descriptor[] = {
+    {"consoleinfo", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+};
+
+static int32_t TestJSVM() {
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    if (g_aa == 0) {
+        OH_JSVM_Init(&init_options);
+        g_aa++;
+    }
+    // Create a JSVM instance and open the VM scope.
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+    CHECK(OH_JSVM_CreateVM(&options, &vm));
+    JSVM_VMScope vm_scope;
+    CHECK(OH_JSVM_OpenVMScope(vm, &vm_scope));
+  
+    JSVM_Env env;
+    CHECK(OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env));
+    JSVM_EnvScope envScope;
+    CHECK_RET(OH_JSVM_OpenEnvScope(env, &envScope));
+    JSVM_HandleScope handlescope;
+    CHECK_RET(OH_JSVM_OpenHandleScope(env, &handlescope));
+    JSVM_Value sourcecodevalue;
+    CHECK_RET(OH_JSVM_CreateStringUtf8(env, STR_TASK, strlen(STR_TASK), &sourcecodevalue));
+    JSVM_Script script;
+    CHECK_RET(OH_JSVM_CompileScript(env, sourcecodevalue, nullptr, 0, true, nullptr, &script));
+    JSVM_Value result;
+    CHECK_RET(OH_JSVM_RunScript(env, script, &result));
+  
+    // Close and destroy the environment and the VM.
+    CHECK_RET(OH_JSVM_CloseHandleScope(env, handlescope));
+    CHECK_RET(OH_JSVM_CloseEnvScope(env, envScope));
+    CHECK(OH_JSVM_DestroyEnv(env));
+    CHECK(OH_JSVM_CloseVMScope(vm, vm_scope));
+    CHECK(OH_JSVM_DestroyVM(vm));
+    return 0;
+}
+```
+
+Output of a test:
+``` ts
+JSVM API TEST: [base] Time cost: 414 ms
+JSVM API TEST: [opt] Time cost: 148 ms
 ```

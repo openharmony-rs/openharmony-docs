@@ -66,7 +66,7 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 **System capability**: SystemCapability.Communication.NetStack
 
->**NOTE**
+> **NOTE**
 >
 >The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters.
 
@@ -717,6 +717,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 Subscribes to WebSocket error events. This API uses an asynchronous callback to return the result.
 
+The error code of the [error](#onerror) event callback is described as follows: WebSocket is essentially an HTTP protocol upgrade. If the server agrees to the upgrade, the server returns 101. The status code indicates that the protocol is switched from HTTP to WebSocket (the **open** callback is triggered). If the server rejects the upgrade or other exceptions occur, the server returns 200, indicating that the server only processes the request as a common HTTP request.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Communication.NetStack
@@ -912,7 +914,7 @@ Starts the WebSocketServer service based on the specified **config**. This API u
 
 > **NOTE**
 >
-> When this method is called for multiple times, do not listen on the same port.
+> You are advised not to listen for the same port when calling this API multiple times.
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -1123,7 +1125,7 @@ Closes a WebSocket connection. This API uses a promise to return the result.
 | Name | Type                   | Mandatory| Description                                                    |
 | ---------- | --------------------- | ---- | ----------------------------------------------------- |
 | connection | [WebSocketConnection](#websocketconnection19) | Yes | Client information, including the IP address and port number.                  |
-| options    | [webSocket.WebSocketCloseOptions](#websocketcloseoptions) | No | Defines the optional parameters carried in the request for closing a WebSocket connection.<br>By default, the error code is 200, and the cause is **Websocket connect failed**.|
+| options    | [webSocket.WebSocketCloseOptions](#websocketcloseoptions) | No | Optional parameters carried in the request for closing a WebSocket connection.<br>By default, the error code is 200, and the cause is **Websocket connect failed**.|
 
 **Return value**
 
