@@ -379,9 +379,8 @@ struct Parent {
 
 > **说明：**
 >
->  - 此场景下自定义组件内仅有一个使用\@BuilderParam装饰的属性。
-> 
->  - 此场景下自定义组件不支持通用属性。
+>  - 在ArkTS-Sta自定义组件内可以使用多个\@BuilderParam装饰的属性，尾随闭包只会对最后一个@BuilderParam装饰属性进行赋值，此场景下自定义组件支持通用属性。
+>  - 在ArkTS-Dyn自定义组件内仅有一个使用\@BuilderParam装饰的属性，此场景下自定义组件不支持通用属性。
 
 开发者可以将尾随闭包内的内容看作\@Builder装饰的函数传给\@BuilderParam。
 
@@ -441,6 +440,9 @@ struct CustomContainerUser {
 }
 ```
 
+**图5** 示例效果图
+
+![builderparam-demo4](figures/builderparam-demo4.png)
 
 
 **ArkTS-Sta:**
@@ -457,6 +459,8 @@ struct CustomContainer {
   closerBuilder() {
   }
 
+  // this.closerBuilder初始化子组件@BuilderParam
+  @BuilderParam mainContentBuilder: () => void = this.closerBuilder;
   // 使用父组件的尾随闭包{}(@Builder装饰的方法)初始化子组件@BuilderParam
   @BuilderParam closer: () => void = this.closerBuilder;
 
@@ -464,6 +468,7 @@ struct CustomContainer {
     Column() {
       Text(this.header)
         .fontSize(30)
+      this.mainContentBuilder()
       this.closer()
     }
   }
@@ -487,7 +492,7 @@ struct CustomContainerUser {
   build() {
     Column() {
       // 创建CustomContainer，在创建CustomContainer时，通过其后紧跟一个大括号“{}”形成尾随闭包
-      // 作为传递给子组件CustomContainer @BuilderParam closer: () => void的参数
+      // 这里用尾随闭包传递closer属性（其他@BuilderParam需要通过字面量初始化）
       CustomContainer({ header: this.text }) {
         Column() {
           specificParam('testA', 'testB')
@@ -500,9 +505,10 @@ struct CustomContainerUser {
   }
 }
 ```
-**图5** 示例效果图
 
-![builderparam-demo4](figures/builderparam-demo4.png)
+**图6** 示例效果图
+
+![builderparam-demo5](figures/builderparam-demo5.png)
 
 使用全局`@Builder`和局部`@Builder`通过尾随闭包的形式对[\@ComponentV2](../state-management-static/arkts-static-componentv2.md)装饰的自定义组件中的`@BuilderParam`进行初始化。
 
@@ -580,7 +586,7 @@ struct ParentPage {
   }
 }
 ```
-**图6** 示例效果图
+**图7** 示例效果图
 
 ![trailing-closure-initializes-component](figures/trailing-closure-initializes-component.png)
 
@@ -660,7 +666,7 @@ struct ParentPage {
   }
 }
 ```
-**图7** 示例效果图
+**图8** 示例效果图
 
 ![initializing-by-trailing-closure](figures/initializing-by-trailing-closure.png)
 
@@ -931,7 +937,7 @@ struct ChildPageBuilderParam {
 ```
 
 
-**图8** 示例效果图
+**图9** 示例效果图
 
 ![builderparam-demo7](figures/builderparam-demo7.gif)
 
@@ -1018,7 +1024,7 @@ struct ParentPage {
 }
 ```
 
-**图9** 示例效果图
+**图10** 示例效果图
 
 ![initializing-builderparam-by-builder](figures/initializing-builderparam-by-builder.png)
 
@@ -1105,7 +1111,7 @@ struct ParentPage {
   }
 }
 ```
-**图10** 示例效果图
+**图11** 示例效果图
 
 ![initializing-by-builder](figures/initializing-by-builder.png)
 
@@ -1191,7 +1197,7 @@ struct ParentPage {
   }
 }
 ```
-**图11** 示例效果图
+**图12** 示例效果图
 
 ![using-builderparam-in-component](figures/using-builderparam-in-component.png)
 
@@ -1267,7 +1273,7 @@ struct ParentPage {
   }
 }
 ```
-**图12** 示例效果图
+**图13** 示例效果图
 
 ![using-BuilderParam-in-ComponentV2](figures/using-BuilderParam-in-ComponentV2.png)
 
@@ -1385,7 +1391,7 @@ struct ParentPage {
   }
 }
 ```
-**图13** 示例效果图
+**图14** 示例效果图
 
 ![change-content-UI-refresh](figures/change-content-UI-refresh.gif)
 
@@ -1520,7 +1526,7 @@ struct ChildPage {
   }
 }
 ```
-**图14** 示例效果图
+**图15** 示例效果图
 
 ![builderparam-combined-with-require](figures/builderparam-combined-with-require.png)
 
@@ -1623,7 +1629,7 @@ struct ChildPage {
       this.ChildBuilder()
     }
   }
-}
+} 
 ```
 **ArkTS-Sta:**
 ```ts
@@ -1654,6 +1660,6 @@ struct ChildPage {
   }
 }
 ```
-**图15** 示例效果图
+**图16** 示例效果图
 
 ![builderparam-combined-with-require](figures/builderparam-combined-with-require.png)
