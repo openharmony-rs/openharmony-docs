@@ -58,9 +58,24 @@ ArkTS-Sta: type Rounding = int
 
 **ArkTS-Sta起始版本：** 23
 
+ArkTS-Dyn类型说明：
+
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| ArkTS-Dyn: 0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| 7 \| 8 <br>ArkTS-Sta: int | 0：向远离零的方向舍入。与[Decimal.ROUND_UP](#常量)一致。<br>1：向靠近零的方向舍入。与[Decimal.ROUND_DOWN](#常量)一致。<br>2：向正无穷方向舍入。与[Decimal.ROUND_CEILING](#常量)一致。<br>3：向负无穷方向舍入。与[Decimal.ROUND_FLOOR](#常量)一致。<br> 4：向最近的邻值舍入。如果距离相等，则远离零方向舍入。与[Decimal.ROUND_HALF_UP](#常量)一致。<br>5：向最近的邻值舍入。如果距离相等，则靠近零方向舍入。与[Decimal.ROUND_HALF_DOWN](#常量)一致。<br>6：向最近的邻值舍入。如果距离相等，则向偶数邻值舍入。与[Decimal.ROUND_HALF_EVEN](#常量)一致。<br>7：向最近的邻值舍入。如果距离相等，则向正无穷方向舍入。与[Decimal.ROUND_HALF_CEILING](#常量)一致。<br> 8：向最近的邻值舍入。如果距离相等，则向负无穷方向舍入。与[Decimal.ROUND_HALF_FLOOR](#常量)一致。 |
+| 0    | 向远离零的方向舍入。与[Decimal.ROUND_UP](#常量)一致。           |
+| 1    | 向靠近零的方向舍入。与[Decimal.ROUND_DOWN](#常量)一致。           |
+| 2    | 向正无穷方向舍入。与[Decimal.ROUND_CEILING](#常量)一致。           |
+| 3    | 向负无穷方向舍入。与[Decimal.ROUND_FLOOR](#常量)一致。           |
+| 4    | 向最近的邻值舍入。如果距离相等，则远离零方向舍入。与[Decimal.ROUND_HALF_UP](#常量)一致。           |
+| 5    | 向最近的邻值舍入。如果距离相等，则靠近零方向舍入。与[Decimal.ROUND_HALF_DOWN](#常量)一致。           |
+| 6    | 向最近的邻值舍入。如果距离相等，则向偶数邻值舍入。与[Decimal.ROUND_HALF_EVEN](#常量)一致。           |
+| 7    | 向最近的邻值舍入。如果距离相等，则向正无穷方向舍入。与[Decimal.ROUND_HALF_CEILING](#常量)一致。           |
+| 8    | 向最近的邻值舍入。如果距离相等，则向负无穷方向舍入。与[Decimal.ROUND_HALF_FLOOR](#常量)一致。           |
+
+ArkTS-Sta类型说明：
+| 类型 | 说明                                                         |
+| ---- | ------------------------------------------------------------ |
+| int    | 取值范围：0-8。<br>0：向远离零的方向舍入。与[Decimal.ROUND_UP](#常量)一致。<br>1：向靠近零的方向舍入。与[Decimal.ROUND_DOWN](#常量)一致。<br>2：向正无穷方向舍入。与[Decimal.ROUND_CEILING](#常量)一致。<br>3：向负无穷方向舍入。与[Decimal.ROUND_FLOOR](#常量)一致。<br> 4：向最近的邻值舍入。如果距离相等，则远离零方向舍入。与[Decimal.ROUND_HALF_UP](#常量)一致。<br>5：向最近的邻值舍入。如果距离相等，则靠近零方向舍入。与[Decimal.ROUND_HALF_DOWN](#常量)一致。<br>6：向最近的邻值舍入。如果距离相等，则向偶数邻值舍入。与[Decimal.ROUND_HALF_EVEN](#常量)一致。<br>7：向最近的邻值舍入。如果距离相等，则向正无穷方向舍入。与[Decimal.ROUND_HALF_CEILING](#常量)一致。<br> 8：向最近的邻值舍入。如果距离相等，则向负无穷方向舍入。与[Decimal.ROUND_HALF_FLOOR](#常量)一致。           |
 
 ## Modulo
 
@@ -80,9 +95,18 @@ ArkTS-Sta: type Modulo = int
 
 **ArkTS-Sta起始版本：** 23
 
+ArkTS-Dyn类型说明：
+
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
-| ArkTS-Dyn: [Rounding](#rounding) \| 9<br>ArkTS-Sta: int | Rounding：模运算下的舍入类型。与[Rounding](#常量)表示的舍入模式相同。<br>9：余模运算下，余数始终为正。欧几里得除法。与[Decimal.EUCLIDEAN](#常量)一致。 |
+| [Rounding](#rounding)  | 模运算下的舍入类型。与[Rounding](#常量)表示的舍入模式相同。      |
+| 9                      | 余模运算下，余数始终为正。欧几里得除法。与[Decimal.EUCLIDEAN](#常量)一致。      |
+
+ArkTS-Sta类型说明：
+
+| 类型 | 说明                                                         |
+| ---- | ------------------------------------------------------------ |
+| int  | 取值范围：0-9。<br>模运算下的舍入类型。与[Rounding](#常量)表示的舍入模式相同。<br>9：余模运算下，余数始终为正。欧几里得除法。与[Decimal.EUCLIDEAN](#常量)一致。     |
 
 ## DecimalConfig
 
@@ -99,7 +123,7 @@ ArkTS-Sta: type Modulo = int
 | 名称      | 类型                   | 只读 | 可选 | 说明                                                         |
 | --------- | ---------------------- | ---- | ---- | ------------------------------------------------------------ |
 | precision | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 运算结果的最大有效位数，取值范围为[1, 1e9]，默认值为20。 |
-| rounding  | [Rounding](#rounding) | 否   | 否   | 舍入模式，取值范围为0到8的整数，默认值为4。 |
+| rounding  | [Rounding](#rounding) | 否   | 是   | 舍入模式，取值范围为0到8的整数，默认值为4。 |
 | toExpNeg  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 指数表示法的负指数值的极限值，若Decimal的负指数小于等于该值时，使用科学计数法表示，[toString](#tostring)方法中使用，取值范围为[-9e15, 0]，默认值为-7。 |
 | toExpPos  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 指数表示法的正指数值的极限值，若Decimal的正指数大于等于该值时，使用科学计数法表示，[toString](#tostring)方法中使用，取值范围为[0, 9e15]，默认值为21。 |
 | minE      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 负指数极限，若Decimal的指数值小于该值，会下溢到零，取值范围为[-9e15, 0]，默认值为-9e15。 |
