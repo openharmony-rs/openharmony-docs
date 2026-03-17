@@ -38,7 +38,7 @@
    }
    ```
 
-2. 解析NodeContent，转换为C中的[ArkUI_NodeContentHandle](../reference/apis-arkui/capi-native-node-h.md)对象。
+2. 解析NodeContent，转换为C中的[ArkUI_NodeContentHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodecontent8h.md)对象。
 
    <!-- @[get_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/NativeEntry.cpp) -->
    
@@ -139,7 +139,7 @@
 
 该示例主要演示了如何通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md)中的NODE_ROTATE_TRANSITION，NODE_SCALE_TRANSITION，NODE_TRANSLATE_TRANSITION属性配置转场参数，并通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md)中的NODE_TRANSFORM_CENTER属性设置NODE_SCALE_TRANSITION和NODE_ROTATE_TRANSITION动效的中心点坐标，实现组件的插入和删除时显示过渡动效。
 
-1. 创建可交互界面，界面中包含一个Button组件，点击可以控制转场节点的添加和移除。其中[ArkUI_NodeContentHandle](../reference/apis-arkui/capi-native-node-h.md)类型节点的获取与使用可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
+1. 创建可交互界面，界面中包含一个Button组件，点击可以控制转场节点的添加和移除。其中[ArkUI_NodeContentHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodecontent8h.md)类型节点的获取与使用可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
 
    <!-- @[main_view_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
    
@@ -384,7 +384,7 @@
    }
    ```
 
-3. 在stack的OnImageTransitionClicked监听回调函数中添加两个节点的上下树逻辑，控制节点的上下树，确保同时只有一个节点存在，同时，当其中一个节点挂载到父节点时需要重置[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md)中的NODE_GEOMETRY_TRANSITION属性的值，并重新传入相同的值。
+3. 在stack的OnImageTransitionClicked监听回调函数中添加两个节点的上下树逻辑，控制节点的上下树，确保同时只有一个节点存在，同时，当其中一个节点挂载到父节点时需要重置[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md)中的NODE_GEOMETRY_TRANSITION属性的值，并重新设置为原来的值。
 
    <!-- @[imageTransition_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
    
@@ -436,7 +436,7 @@
    }
    ```
 
-![zh-cn_image_one_shot_transition](figures/zh-cn_image_one_shot_transition.gif)
+   ![zh-cn_image_one_shot_transition](figures/zh-cn_image_one_shot_transition.gif)
 
 ## 使用关键帧动画
 
