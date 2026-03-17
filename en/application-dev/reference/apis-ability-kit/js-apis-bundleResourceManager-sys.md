@@ -105,7 +105,7 @@ try {
 
 getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag)): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
 
-Obtains the bundle information of the entry ability of an application based on the given bundle name and resource flags. This API returns the result synchronously.
+Obtains the launcher ability resource information of an application based on the given bundle name and resource flags. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
@@ -373,7 +373,7 @@ try {
 
 getBundleResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)
 
-Obtains the resource information of an application based on the given bundle name, resource flags, and app index. This API returns the result synchronously.
+Obtains the bundle resource information of the current application or application clone based on the given bundle name, resource flags, and app index. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
@@ -433,7 +433,7 @@ try {
 
 getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
 
-Obtains the launcher ability resource information of an application based on the given bundle name, resource flags, and app index. This API returns the result synchronously.
+Obtains the launcher ability resource information of the current application or application clone based on the given bundle name, resource flags, and app index. This API returns the result synchronously.
 
 **System API**: This is a system API.
 

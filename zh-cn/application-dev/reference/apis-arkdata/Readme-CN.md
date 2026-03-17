@@ -49,9 +49,9 @@
     - [@ohos.data.distributedData (分布式数据管理)](js-apis-distributed-data.md)
     - [@ohos.data.rdb (关系型数据库)](js-apis-data-rdb.md)
     - [@ohos.data.storage (轻量级存储)](js-apis-data-storage.md)
-    - [@system.storage数据存储](js-apis-system-storage.md)
+    - [@system.storage (数据存储)](js-apis-system-storage.md)
     - data/rdb<!--data-rdb-->
-      - [resultSet结果集](js-apis-data-resultset.md)
+      - [resultSet (结果集)](js-apis-data-resultset.md)
 - ArkTS 组件<!--arkdata-comp-->
   - [@ohos.data.UdmfComponents (内容卡片)](js-apis-data-UdmfComponents.md)
 - C API<!--arkdata-c-->

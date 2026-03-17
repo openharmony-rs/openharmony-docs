@@ -268,7 +268,7 @@ try {
 
 connectToNetwork(networkId: number): boolean
 
-Connects to the specified network.
+Connects to a hotspot.
 
 **System API**: This is a system API.
 

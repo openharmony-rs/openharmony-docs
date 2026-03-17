@@ -6,6 +6,8 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+<!--deprecated_code_no_check-->
+
 ## 使用读写权限打开picker返回的uri失败(API 10)
 
 **问题现象**

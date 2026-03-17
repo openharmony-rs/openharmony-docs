@@ -9,7 +9,6 @@
 The module defines the application information. An application can obtain its own application information through [bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself), with **GET_BUNDLE_INFO_WITH_APPLICATION** passed in to [bundleFlags](js-apis-bundleManager.md#bundleflag).
 
 > **NOTE**
->
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
@@ -33,7 +32,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | icon                       | string                                                       | Yes  | No  | Application icon. It corresponds to the **icon** field in the [app.json5](../../quick-start/app-configuration-file.md) file. For details about **icon**, see the **iconResource** field in this table.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | iconId                     | number                                                       | Yes  | No  | Resource ID of the application icon. It is automatically generated during compilation and build based on the icon configured for the application.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | process                    | string                                                       | Yes  | No  | Process name.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| permissions                | Array\<string>                                               | Yes  | No  | Permissions required for accessing the application. The permissions can be obtained by passing in **GET_BUNDLE_INFO_WITH_APPLICATION** and **GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION** to the **bundleFlags** parameter of [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| permissions                | Array\<string>                                               | Yes  | No  | Permission list required for accessing the application<!--Del-->. The permission list can be obtained by passing in **GET_APPLICATION_INFO_WITH_PERMISSION** to the **appFlags** parameter of [getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo) <!--DelEnd-->.<br>This field is not returned when the [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) or [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14) is used to obtain application information. You can obtain the permission list by obtaining the [bundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1).reqPermissionDetails.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | codePath                   | string                                                       | Yes  | No  | Installation directory of the application.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | metadata<sup>(deprecated)<sup>  | Map\<string, Array\<[Metadata](js-apis-bundleManager-metadata.md)>> | Yes  | No  | Metadata of the application. The information can be obtained by passing in **GET_BUNDLE_INFO_WITH_APPLICATION** and **GET_BUNDLE_INFO_WITH_METADATA** to the **bundleFlags** parameter of [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself).<br>Note: Supported since API version 9 and deprecated since API version 10. You are advised to use **metadataArray** instead.|
 | metadataArray<sup>10+</sup>              | Array\<[ModuleMetadata](#modulemetadata10)> | Yes  | No  | Metadata of the application. The information can be obtained by passing in **GET_BUNDLE_INFO_WITH_APPLICATION** and **GET_BUNDLE_INFO_WITH_METADATA** to the **bundleFlags** parameter of [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -81,5 +80,3 @@ Describes the metadata of a module.
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | moduleName| string         | Yes  | No  | Module name.  |
 | metadata  | Array\<[Metadata](js-apis-bundleManager-metadata.md)>      | Yes  | No  | Metadata list of the module.|
-
-<!--no_check-->
