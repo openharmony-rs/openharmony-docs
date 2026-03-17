@@ -22,7 +22,7 @@
 
 ## 开发步骤
 
-音频模板的开发基本步骤如下所示：
+音频模板系统的开发基本步骤如下所示：
 
 1. 创建音频模板控制器（为每个接入音频模板的媒体应用创建一个音频模板控制器，不需要重复创建），监听音频模板创建和销毁状态，同步创建和销毁音频模板控制器。需要用到如下接口：
 
@@ -222,9 +222,9 @@
    }
    ```
 
-2. 音频模板可查询媒体应用提供的数据，用于界面展示。查询接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
+2. 音频模板系统可查询媒体应用提供的数据，用于界面展示。查询接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
-   例如，实现音频模板主界面显示需要先调用接口[queryMainTabs](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md#querymaintabs)获取媒体应用主标签数据，再调用接口[queryMediaTabContent](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md#querymediatabcontent)获取媒体应用标签页内容。
+   例如，实现音频模板系统主界面显示需要先调用接口[queryMainTabs](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md#querymaintabs)获取媒体应用主标签数据，再调用接口[queryMediaTabContent](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md#querymediatabcontent)获取媒体应用标签页内容。
 
    <!-- @[query_home_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
    
@@ -279,7 +279,7 @@
    }
    ```
 
-3. 下发媒体操作指令。音频模板根据操作下发指令给媒体应用。下发指令接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
+3. 下发媒体操作指令。音频模板系统根据操作下发指令给媒体应用。下发指令接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
    例如，搜播需要调用接口[playForSearch](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md#playforsearch)下发搜播指令给媒体应用（该接口支持音视频，示例仅以音频为例）。视频需将参数实体类SearchPlayInfo的成员变量更换为SearchPlayVideoInfo类型的videoInfo。
 
@@ -332,9 +332,9 @@
    }
    ```
 
-4. 在不能实时获取数据的场景下，音频模板需要注册监听，接受音频模板提供方主动同步过来的数据。监听接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
+4. 在不能实时获取数据的场景下（登录、下载等），音频模板系统需要注册监听，接受媒体应用主动同步过来的数据。监听接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
-   例如，在登录导致用户信息变化的场景下，需要注册监听[onUserInfoChange](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md#onuserinfochange)。因为用户在音频模板界面扫码登录时，登录状态只有媒体应用能感知。
+   例如，在登录导致用户信息变化的场景下，需要注册监听[onUserInfoChange](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md#onuserinfochange)。因为用户在音频模板系统界面扫码登录时，登录状态只有媒体应用能感知。
 
       <!-- @[register_user_info_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
    
@@ -361,7 +361,7 @@
       }
       ```
 
-5. 在音频模板应用退出时及时取消事件监听，并释放资源。注销音频模板接口详情请查看[@ohos.multimedia.avMusicTemplate(音频模板)(系统接口)](../../reference/apis-avsession-kit/js-apis-avsession-avMusicTemplate-sys.md)，注销事件监听接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
+5. 在音频模板系统应用退出时及时取消事件监听，并释放资源。注销音频模板接口详情请查看[@ohos.multimedia.avMusicTemplate(音频模板)(系统接口)](../../reference/apis-avsession-kit/js-apis-avsession-avMusicTemplate-sys.md)，注销事件监听接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
    <!-- @[release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
    
