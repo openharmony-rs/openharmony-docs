@@ -59,7 +59,7 @@ Constructs an **OffscreenCanvas** object for creating an offscreen canvas object
 | ------ | -------- | ---- | ------------------------------------- |
 | width  | number   | Yes | Width of the offscreen canvas.<br>**NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
 | height | number   | Yes | Height of the offscreen canvas.<br>**NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
-| unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes  |  Unit mode of the OffscreenCanvas object. The value cannot be dynamically changed once set. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>Default value: **DEFAULT**.|
+| unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes  |  Unit mode of the OffscreenCanvas object. The value cannot be dynamically changed once set. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>Default value: **DEFAULT**|
 
 ## Attributes
 
@@ -221,13 +221,13 @@ Obtains the drawing context of the offscreen canvas.
 | Name | Type| Mandatory| Description   |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | contextType | string | Yes  | Type of the drawing context of the offscreen canvas. The value can only be **"2d"**.<br>**"2d"**: creates an **OffscreenCanvasRenderingContext2D** object that represents a two-dimensional rendering context.<br>The values **undefined** and **null** are considered as invalid values, and **undefined** is returned.|
-| options      | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | No| Parameters of the **OffscreenCanvasRenderingContext2D** object. For details, see [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings).<br>**undefined** and **null** values are processed based on the default value of [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings).<br>Default value: **null**.|
+| options      | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | No| Parameters of the **OffscreenCanvasRenderingContext2D** object. For details, see [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings).<br>**undefined** and **null** values are processed based on the default value of [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings).<br>Default value: **null**|
 
 **Return value**
 
 | Type                                                        | Description                             |
 | ------------------------------------------------------------ | --------------------------------- |
-| [OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md) | Drawing context of the offscreen canvas. If the input parameter contextType of the **getContext** method is not **"2d"** (including null or undefined), **undefined** will be returned. Before using the method, check whether the return value is **undefined**.|
+| [OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md) | Drawing context of the offscreen canvas. If the input parameter **contextType** of the **getContext** method is not **"2d"** (including null or undefined), **undefined** will be returned. Before using the method, check whether the return value is **undefined**.|
 
 **Example**
 
@@ -299,6 +299,7 @@ Since API version 11, when an application creates a [worker thread](../../../ark
 
 ```ts
 import { worker } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { common } from '@kit.AbilityKit';
@@ -317,7 +318,7 @@ struct OffscreenCanvasExamplePage {
     try {
       this.imgPixelMap = resourceMgr.getDrawableDescriptor($r("app.media.startIcon").id).getPixelMap();
     } catch (error) {
-      console.error("resourceMgr getDrawableDescriptor error, error code: " + error);
+      console.error(`resourceMgr getDrawableDescriptor error, error code: ${(error as BusinessError).code}`);
     }
   }
 

@@ -70,7 +70,7 @@ Creates an **ImageData** object with the specified width, height, and color. If 
 
 >  **NOTE**
 >
->  You can use the [px2vp](ts-pixel-units.md#px2vpdeprecated) API for unit conversion.
+>  The [px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12) API can be used for unit conversion.
 
 ## Example
 
