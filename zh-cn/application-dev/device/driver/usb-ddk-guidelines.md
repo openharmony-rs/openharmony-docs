@@ -208,7 +208,7 @@ libusb_ndk.z.so
     struct UsbRequestPipe pipe;
     pipe.interfaceHandle = g_interfaceHandle;
     pipe.endpoint = g_dataEp;
-    pipe.timeout = 4; //  中断传输超时时间，保持和手写板bInterval保持一致
+    pipe.timeout = 4; // 中断传输超时时间，保持和手写板bInterval保持一致
     // 读取手写板数据
     // 通过USB中断传输方式，读取键值
     ret = OH_Usb_SendPipeRequest(&pipe, devMmap);
