@@ -218,7 +218,7 @@ update(data: ArrayBuffer): void
 
 digest(): string
 
-计算传给被哈希的所有数据的摘要。
+计算传递给哈希处理的所有数据的摘要。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
