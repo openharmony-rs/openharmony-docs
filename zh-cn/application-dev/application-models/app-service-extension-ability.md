@@ -79,7 +79,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
     ``` TypeScript
     import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
     import { rpc } from '@kit.IPCKit';
-    // ···
+    // ...
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
     const TAG: string = '[MyAppServiceExtAbility]';
@@ -103,7 +103,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
       onCreate(want: Want): void {
         let appServiceExtensionContext = this.context;
         hilog.info(DOMAIN_NUMBER, TAG, `onCreate, want: ${want.abilityName}`);
-        // ···
+        // ...
       }
     
       onRequest(want: Want, startId: number): void {
@@ -274,25 +274,25 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
   
   ``` TypeScript
   import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
-  // ···
+  // ...
   import { BusinessError } from '@kit.BasicServicesKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
   const TAG: string = '[MyAppServiceExtAbility]';
-  // ···
+  // ...
   
   export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
     onCreate(want: Want): void {
-      // ···
+      // ...
       // 执行业务逻辑
       this.context.terminateSelf().then(() => {
         hilog.info(0x0000, TAG, '----------- terminateSelf succeed -----------');
       }).catch((error: BusinessError) => {
-        hilog.error(0x0000, TAG, `terminateSelf failed, error.code: ${error.code}, error.message: $   {error.message}`);
+        hilog.error(0x0000, TAG, `terminateSelf failed, error.code: ${error.code}, error.message: ${error.message}`);
       });
     }
   
-  // ···
+    // ...
   };
   ```
 
