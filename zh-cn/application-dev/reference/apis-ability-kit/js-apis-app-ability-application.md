@@ -34,7 +34,7 @@ import { application } from '@kit.AbilityKit';
 | TYPE_CREATE_WINDOW_STAGE     | 3   |    进程最终预加载到[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。           |
 | TYPE_CREATE_BACKGROUND_ABILITY <sup>23+</sup>          | 4   |    进程最终预加载到[onBackground](./js-apis-app-ability-uiAbility.md#onbackground)执行完成阶段。      |
 
-## application.createModuleContext<sup>12+</sup>
+## application.createModuleContext
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
 

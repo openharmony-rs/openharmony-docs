@@ -3448,7 +3448,7 @@ ASCII/Unicode转码转换流程参数的枚举。
 | ALLOW_UNASSIGNED | 1 | 允许转换包含未分配Unicode代码点的域名(在Unicode字符集中，并非所有代码点都已分配字符，即未分配Unicode代码点)。 |
 | USE_STD3_ASCII_RULES | 2 | 在转换过程中，强制使用STD-3 ASCII规则（即RFC 1123标准）检查生成的ASCII域名。 |
 
-## TcpState
+## TcpState<sup>24+</sup>
 
 TCP状态。
 
@@ -3463,7 +3463,7 @@ TCP状态。
 | SYN_RECV    | 3  | 服务端接收SYN并发送ACK+SYN，等待客户端ACK（三次握手的第二步）。 |
 | FIN_WAIT1   | 4  | 主动端发送FIN，等待对方ACK。 |
 | FIN_WAIT2   | 5  | 主动端接收FIN的ACK，等待对方ACK。 |
-| TIME_WAIT   | 6  | 主动端接收对方FIN并回复ACK，等待2MSL（最大报文段生存时间）后彻底释放。 |
+| TIME_WAIT   | 6  | 主动端接收对方FIN并回复ACK，等待2倍最大报文段生存时间后彻底释放。 |
 | CLOSE       | 7  | 初始/关闭状态，无连接。 |
 | CLOSE_WAIT  | 8  | 被动端接收FIN并发送ACK，等待对方FIN。 |
 | LAST_ACK    | 9  | 被动端发送FIN后，等待对方ACK。 |
@@ -3584,14 +3584,16 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称    | 类型   | 只读|可选 |说明                      |
-| ------ | ------ | --- |---|------------------------- |
-| interfaceName | string                              | 否 | 否 |网卡名称。                                |
-| domains       | string                              | 否 | 否 |域名。                                    |
-| linkAddresses | Array\<[LinkAddress](#linkaddress)> | 否 | 否 |链路信息。                                |
-| routes        | Array\<[RouteInfo](#routeinfo)>     | 否 | 否 |路由信息。                                |
-| dnses         | Array\<[NetAddress](#netaddress)>   | 否 | 否 |网络地址，参考[NetAddress](#netaddress)。 |
-| mtu           | number                              | 否 | 否 |最大传输单元。                            |
+| 名称    | 类型   | 只读|可选 | 说明                                                                                             |
+| ------ | ------ | --- |---|------------------------------------------------------------------------------------------------|
+| interfaceName | string                              | 否 | 否 | 网卡名称。                                                                                          |
+| domains       | string                              | 否 | 否 | 域名。                                                                                            |
+| linkAddresses | Array\<[LinkAddress](#linkaddress)> | 否 | 否 | 链路信息。                                                                                          |
+| routes        | Array\<[RouteInfo](#routeinfo)>     | 否 | 否 | 路由信息。                                                                                          |
+| dnses         | Array\<[NetAddress](#netaddress)>   | 否 | 否 | 网络地址，参考[NetAddress](#netaddress)。                                                              |
+| mtu           | number                              | 否 | 否 | 最大传输单元。                                                                                        |
+| isIPv4LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv4是否可用。true：当IPv4地址有效，且存在IPv4的默认路由时，认为IPv4可用；false：当IPv4地址无效，或者不存在IPv4的默认路由时，认为IPv4不可用。 |
+| isIPv6LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv6是否可用。true：当IPv6地址有效，且存在IPv4的默认路由时，认为IPv6可用；false：当IPv6地址无效，或者不存在IPv6的默认路由时，认为IPv6不可用。 |
 
 ## RouteInfo
 
@@ -3711,7 +3713,7 @@ TCP端口状态信息。
 | tcpRemotePort | number | 否 | 是 |TCP网络远程端口，取值范围\[0, 65535]，默认值为0。 |
 | tcpUid        | number | 否 | 是 |监听该TCP端口的进程UID，默认值为0。 |
 | tcpPid        | number | 否 | 是 |监听该TCP端口的用户会UID，默认值为0。 |
-| tcpState      | [TcpState](#tcpstate) | 否 | 是 |TCP网络状态，默认值为0。  |
+| tcpState      | [TcpState](#tcpstate24) | 否 | 是 |TCP网络状态，默认值为0。  |
 
 
 ## UdpNetPortStatesInfo<sup>24+</sup>

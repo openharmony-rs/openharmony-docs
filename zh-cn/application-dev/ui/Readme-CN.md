@@ -281,7 +281,9 @@
     - [绑定手势事件](ndk-bind-gesture-events.md)
     - [拖拽事件](ndk-drag-event.md)
     - [监听组件布局和绘制送显事件](ndk-inspector-component-observer.md)
-  - [使用动画](ndk-use-animation.md)
+  - 使用动画<!--arkts-use-animation-ndk-->
+    - [动画概述](ndk-use-animation.md)
+    - [使用动画开发指导](ndk-use-animation-scene.md)
   - 构建布局<!--arkts-build-layout-ndk-->
     - [使用列表](ndk-loading-long-list.md)
     - [使用瀑布流](ndk-waterflow.md)

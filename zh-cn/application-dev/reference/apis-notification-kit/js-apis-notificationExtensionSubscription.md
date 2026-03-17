@@ -70,6 +70,60 @@ try {
 }
 ```
 
+## notificationExtensionSubscription.openSubscriptionSettingsWithResult<sup>26+</sup>
+
+openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGrantSetting\>
+
+打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权"允许获取本机通知"开关与"已获取的本机通知"应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权的结果。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                 |
+| -------- | ------------------------ | ---- |--------------------|
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知设置页面绑定Ability的上下文。 |
+
+**返回值：**
+
+| 类型     | 说明 | 
+| ------- |--|
+| Promise\<[UserGrantSetting](#usergrantsetting26)\> | Promise对象，返回用户设置的授权的结果。 | 
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied or current device not supported.     |  
+| 1600001  | Internal error.                     |
+| 1600018  | The notification settings window is already displayed.           |
+| 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+try {
+  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
+    console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
+  }).catch((e:Error) => {
+    let error = e as BusinessError
+    console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
+  });
+} catch (error) {
+  console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
+}
+```
+
 ## notificationExtensionSubscription.subscribe
 
 subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
@@ -330,3 +384,17 @@ type GrantedBundleInfo = _GrantedBundleInfo
 | 类型 | 说明 |
 | --- | --- |
 | [_GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | 授权应用的包信息。 |
+
+## UserGrantSetting<sup>26+</sup>
+
+type UserGrantSetting = _UserGrantSetting
+
+用户授权的设置信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**： SystemCapability.Notification.Notification
+
+| 类型 | 说明 |
+| --- | --- |
+| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting26) | 用户授权的设置信息。 |

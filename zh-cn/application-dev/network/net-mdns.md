@@ -9,7 +9,7 @@
 ## 简介
 
 MDNS即多播DNS（Multicast DNS），提供局域网内的本地服务添加、移除、发现、解析等能力。
-- 本地服务：局域网内服务的提供方，比如打印机、扫描器等。
+- 本地服务：局域网内服务的提供方，比如打印机、扫描仪等。
 
 MDNS管理的典型场景有：
 
@@ -17,7 +17,7 @@ MDNS管理的典型场景有：
 - 发现本地服务，通过DiscoveryService对象，对指定类型的本地服务状态变化进行监听。
 
 > **说明：**
-> 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用promise函数，更多方式可以查阅[MDNS管理-API参考](../reference/apis-network-kit/js-apis-net-mdns.md)。
+> 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用promise函数，更多方式可以查阅[@ohos.net.mdns (MDNS管理)](../reference/apis-network-kit/js-apis-net-mdns.md)。
 
 以下分别介绍具体开发方式。
 
