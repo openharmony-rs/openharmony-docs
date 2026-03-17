@@ -818,7 +818,7 @@ try {
 
 pairDeviceOutOfBand(transport: BluetoothTransport, p192Data: OobData | null, p256Data: OobData | null): Promise&lt;void&gt;
 
-Initiates pairing with the peer Bluetooth device through the out-of-band ([OOB](../../connectivity/terminology.md#oob)) communication mechanism. This API uses a promise to return the result.
+Initiates pairing with the peer Bluetooth device through the out-of-band (OOB) communication mechanism. This API uses a promise to return the result.
 
 - You can obtain the Bluetooth pairing status from the callback of [on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange).
 
@@ -892,7 +892,7 @@ try {
 
 generateLocalOobData(transport: BluetoothTransport): Promise&lt;OobData&gt;
 
-Obtains the out-of-band ([OOB](../../connectivity/terminology.md#oob)) communication data of the local device. This API uses a promise to return the result.
+Obtains the out-of-band (OOB) communication data of the local device. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
