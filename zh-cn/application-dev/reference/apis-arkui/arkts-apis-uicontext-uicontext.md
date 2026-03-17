@@ -4363,3 +4363,45 @@ export struct pageThreeTmp {
 ```
 
 ![getCurrentPageRootNode](arkui-ts/figures/getCurrentPageRootNode.jpg)
+
+## isEasySplit<sup>24+</sup>
+
+isEasySplit(): boolean
+
+获取当前UI实例的兼容模式分栏状态。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| boolean | 返回当前UI实例的兼容模式分栏状态。true表示处于分栏模式，false表示未处于分栏模式。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct Index {
+  @State isEasySplit: boolean = false;
+
+  build() {
+    Column() {
+      Text(`${this.isEasySplit ? 'current is easy split mode' : 'current is not easy split mode'}`)
+        .fontSize(20)
+        .margin(10)
+      Button('Check EasySplit')
+        .onClick(() => {
+          this.isEasySplit = this.getUIContext()?.isEasySplit();
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```

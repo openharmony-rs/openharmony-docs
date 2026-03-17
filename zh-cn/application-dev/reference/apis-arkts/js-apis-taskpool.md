@@ -1,4 +1,4 @@
-# @ohos.taskpool（启动任务池）
+# @ohos.taskpool (启动任务池)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @lijiamin2025-->
@@ -542,7 +542,7 @@ try {
   taskpool.execute(taskGroup, config);
 } catch (e) {
   // taskpool: execute again err code:10200059,
-  // message:TaskGroup cannot be re-executed,taskGroup has already set timeout.
+  // message:TaskGroup cannot be re-executed, taskGroup has already set timeout.
   console.error(`taskpool: execute again err code:${e.code}, message:${e.message}`);
 }
 ```

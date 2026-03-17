@@ -129,11 +129,3 @@ hdc shell
 bm dump -n ohos.app.hap.myapplication |grep '"appId":'
 ```
 ![alt text](figures/get_appId.png)
-
-1. 单个~text~, 不预览
-2. 两个~~删除~~
-3. 前3后2~~~text~~
-4. 前2后3~~text~~~
-5. 前4后4~~~~text~~~~
-6. 前5后5~~~~~text~~~~~
-7. 前6后10~~~~~~text~~~~~~~~~~

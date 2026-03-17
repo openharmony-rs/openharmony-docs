@@ -136,12 +136,12 @@ Provides type definitions for **NativeNode** APIs.
 | [int32_t OH_ArkUI_RegisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node,void* userData, void (\*onDrawCompleted)(void* userData))](#oh_arkui_registerdrawcallbackonnodehandle) | - | Registers a drawing completion callback function for a specific node.|
 | [int32_t OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node)](#oh_arkui_unregisterlayoutcallbackonnodehandle) | - | Unregisters the layout completion callback function for a specific node.|
 | [int32_t OH_ArkUI_UnregisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node)](#oh_arkui_unregisterdrawcallbackonnodehandle) | - | Unregisters the drawing completion callback function for a specific node.|
-| [int32_t OH_ArkUI_GetNodeSnapshot(ArkUI_NodeHandle node, ArkUI_SnapshotOptions* snapshotOptions,OH_PixelmapNative** pixelmap)](#oh_arkui_getnodesnapshot) | - | Obtains a snapshot of a given component. If the node is not in the component tree or has not been rendered, the snapshot operation will fail. When the Pixelmap is no longer used, you should call [OH_PixelmapNative_Release](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release) to release it.|
+| [int32_t OH_ArkUI_GetNodeSnapshot(ArkUI_NodeHandle node, ArkUI_SnapshotOptions* snapshotOptions,OH_PixelmapNative** pixelmap)](#oh_arkui_getnodesnapshot) | - | Obtains a snapshot of a given component. If the node is not in the component tree or has not been rendered, the snapshot operation will fail. When the PixelMap is no longer used, you should call [OH_PixelmapNative_Release](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release) to release it.|
 | [int32_t OH_ArkUI_NodeUtils_GetAttachedNodeHandleById(const char* id, ArkUI_NodeHandle* node)](#oh_arkui_nodeutils_getattachednodehandlebyid) | - | Obtains the target node based on the provided user ID.|
 | [int32_t OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId(const uint32_t uniqueId, ArkUI_NodeHandle* node)](#oh_arkui_nodeutils_getnodehandlebyuniqueid) | - | Obtain a node by its unique ID.|
 | [int32_t OH_ArkUI_NodeUtils_GetNodeUniqueId(ArkUI_NodeHandle node, int32_t* uniqueId)](#oh_arkui_nodeutils_getnodeuniqueid) | - | Obtains the unique ID of the target node.|
 | [int32_t OH_ArkUI_NativeModule_AdoptChild(ArkUI_NodeHandle node, ArkUI_NodeHandle child)](#oh_arkui_nativemodule_adoptchild) | - | Adopts the target node as an affiliated node. The adopted node must not have an existing parent. This API is not used to add a node as a child node. Instead, it only allows the node to receive lifecycle callbacks of the corresponding child node.|
-| [int32_t OH_ArkUI_NativeModule_RemoveAdoptedChild(ArkUI_NodeHandle node, ArkUI_NodeHandle child)](#oh_arkui_nativemodule_removeadoptedchild) | - | Removes a previously adopted node.|
+| [int32_t OH_ArkUI_NativeModule_RemoveAdoptedChild(ArkUI_NodeHandle node, ArkUI_NodeHandle child)](#oh_arkui_nativemodule_removeadoptedchild) | - | Removes a previously-adopted affiliated node.|
 | [int32_t OH_ArkUI_NativeModule_IsInRenderState(ArkUI_NodeHandle node, bool* isInRenderState)](#oh_arkui_nativemodule_isinrenderstate) | - | Checks whether this node is in render state. A node is considered to be in render state when its corresponding **RenderNode** is present in the render tree.|
 | [int32_t OH_ArkUI_NodeUtils_SetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_CrossLanguageOption* option)](#oh_arkui_nodeutils_setcrosslanguageoption) | - | Sets the cross-language options for the target node.|
 | [int32_t OH_ArkUI_NodeUtils_GetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_CrossLanguageOption* option)](#oh_arkui_nodeutils_getcrosslanguageoption) | - | Obtains the cross-language options for the target node.|
@@ -685,7 +685,7 @@ Enumerates the ArkUI style attributes that can be set on the native side.
 | NODE_SCROLL_BAR_WIDTH = 1002001 | Defines the width of the scrollbar. This attribute can be set, reset, and obtained as required through APIs. [List](arkui-ts/ts-container-list.md), [Scroll](arkui-ts/ts-container-scroll.md), and [WaterFlow](arkui-ts/ts-container-waterflow.md) are supported since API version 12, and [Grid](arkui-ts/ts-container-grid.md) is supported since API version 22.<br>Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:<br> .value[0].f32: width of the scrollbar, in vp. The default value is **4**.<br>Values less than 0 are treated as the default value. The value **0** means not to show the scrollbar.<br> Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):<br> .value[0].f32: width of the scrollbar, in vp. |
 | NODE_SCROLL_BAR_COLOR = 1002002 | Defines the color of the scrollbar. This attribute can be set, reset, and obtained as required through APIs. [List](arkui-ts/ts-container-list.md), [Scroll](arkui-ts/ts-container-scroll.md), and [WaterFlow](arkui-ts/ts-container-waterflow.md) are supported since API version 12, and [Grid](arkui-ts/ts-container-grid.md) is supported since API version 22.<br>Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:<br> .data[0].u32: color of the scrollbar, in 0xARGB format. Default value: **0x66182431**.<br>Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):<br> .data[0].u32: color of the scrollbar, in 0xARGB format. |
 | NODE_SCROLL_SCROLL_DIRECTION = 1002003 | Defines the scroll direction. This attribute can be set, reset, and obtained as required through APIs.<br>Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:<br> .value[0].i32: scroll direction. The parameter type is [ArkUI_ScrollDirection](capi-native-type-h.md#arkui_scrolldirection). The default value is **ARKUI_SCROLL_DIRECTION_VERTICAL**.<br> Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):<br> .value[0].i32: scroll direction. The parameter type is [ArkUI_ScrollDirection](capi-native-type-h.md#arkui_scrolldirection).|
-| NODE_SCROLL_EDGE_EFFECT = 1002004 | Defines the effect used at the edges of the component when the boundary of the scrollable content is reached. This attribute can be set, reset, and obtained as required through APIs.<br>Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:<br> .value[0].i32: effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect). Default value: **ARKUI_EDGE_EFFECT_NONE** for the **Grid**, **Scroll**, and **WaterFlow** components; **ARKUI_EDGE_EFFECT_SPRING** for the **List** component.<br> .value[1]?.i32: whether to enable the scroll effect when the component content size is smaller than the component itself. The value **1** means to enable the scroll effect, and **0** means the opposite. Default value: **0** for the **List**, **Grid**, and **WaterFlow** components; **1** for the **Scroll** component.<br> .value[2]?.i32: direction where the edge effect takes effect. The parameter type is [ArkUI_EffectEdge](capi-native-type-h.md#arkui_effectedge). The default value is **ARKUI_EFFECT_EDGE_START**.| ARKUI_EFFECT_EDGE_END.<br> This parameter is supported since API version 18.<br> Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):<br> .value[0].i32: effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect).<br> .value[1].i32: whether to enable the scroll effect when the component content size is smaller than the component itself. The value **1** means to enable the scroll effect, and **0** means the opposite.<br> .value[2].i32: direction where the edge effect takes effect. The parameter type is [ArkUI_EffectEdge](capi-native-type-h.md#arkui_effectedge). This parameter is supported since API version 18.|
+| NODE_SCROLL_EDGE_EFFECT = 1002004 | Defines the effect used at the edges of the component when the boundary of the scrollable content is reached. This attribute can be set, reset, and obtained as required through APIs.<br>Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:<br> .value[0].i32: effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect). Default value: **ARKUI_EDGE_EFFECT_NONE** for the **Grid**, **Scroll**, and **WaterFlow** components; **ARKUI_EDGE_EFFECT_SPRING** for the **List** component.<br> .value[1]?.i32: whether to enable the scroll effect when the component content size is smaller than the component itself. The value **1** means to enable the scroll effect, and **0** means the opposite. Default value: **0** for the **List**, **Grid**, and **WaterFlow** components; **1** for the **Scroll** component.<br> .value[2]?.i32: direction where the edge effect takes effect. The parameter type is [ArkUI_EffectEdge](capi-native-type-h.md#arkui_effectedge). The default value is **ARKUI_EFFECT_EDGE_START**.| ARKUI_EFFECT_EDGE_END.<br> This parameter is supported since API version 18.<br> Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):<br> .value[0].i32: effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect).<br> .value[1].i32: whether the scroll effect is enabled when the component content size is smaller than the component itself. The value **1** means the scroll effect is enabled, and **0** means the opposite.<br> .value[2].i32: direction where the edge effect takes effect. The parameter type is [ArkUI_EffectEdge](capi-native-type-h.md#arkui_effectedge). This parameter is supported since API version 18.|
 | NODE_SCROLL_ENABLE_SCROLL_INTERACTION = 1002005 | Sets whether to support scroll gestures. When this attribute is set to **0**, scrolling by finger or mouse is not supported, but the scrolling controller API is not affected.<br>The **List**, **Scroll**, and **WaterFlow** components are supported since API version 12, and the **Grid** component is supported since API version 22.<br>Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:<br> .value[0].i32: whether to support scroll gestures. The default value is **1**. **1**: Scroll gestures are supported. **0**: Scroll gestures are not supported.<br> Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):<br> .value[0].i32: whether scroll gestures are supported.|
 | NODE_SCROLL_FRICTION = 1002006 | Sets the friction coefficient. It applies only to gestures in the scrolling area, and it affects only indirectly the scroll chaining during the inertial scrolling process.<br>The **List**, **Scroll**, and **WaterFlow** components are supported since API version 12, and the **Grid** component is supported since API version 22.<br>Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:<br> .value[0].f32: friction coefficient. The default value is **0.6** for non-wearable devices and **0.9** for wearable devices. Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used.<br> Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):<br> .value[0].f32: friction coefficient.|
 | NODE_SCROLL_SNAP = 1002007 | Defines the scroll snapping mode of the [Scroll](arkui-ts/ts-container-scroll.md) component. This attribute can be set, reset, and obtained as required through APIs.<br>Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:<br> .value[0].i32: scroll snapping mode. The parameter type is [ArkUI_ScrollSnapAlign](capi-native-type-h.md#arkui_scrollsnapalign). The default value is **ARKUI_SCROLL_SNAP_ALIGN_NONE**.<br> .value[1].i32: whether to enable the snap to start feature. When scroll snapping is defined for the **Scroll** component, setting this attribute to **false** enables the component to scroll between the start edge and the first snap point. The default value is **true**. It is valid only when there are multiple snap points.<br> .value[2].i32: whether to enable the snap to end feature. When scroll snapping is defined for the **Scroll** component, setting this attribute to **false** enables the component to scroll between the end edge and the last snap point. The default value is **true**. It is valid only when there are multiple snap points.<br> .value[3...].f32: snap points for the **Scroll** component. Each snap point defines the offset from an edge to which the **Scroll** component can scroll. One or more snap points are supported.<br> Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):<br> .value[0].i32: scroll snapping mode. The parameter type is [ArkUI_ScrollSnapAlign](capi-native-type-h.md#arkui_scrollsnapalign).<br> .value[1].i32: whether the snap is enabled to start feature. When scroll snapping is defined for the **Scroll** component, setting this attribute to **false** enables the component to scroll between the start edge and the first snap point.<br> .value[2].i32: whether the snap is enabled to end feature. When scroll snapping is defined for the **Scroll** component, setting this attribute to **false** enables the component to scroll between the end edge and the last snap point.<br> .value[3...].f32: snap points for the **Scroll** component. Each snap point defines the offset from an edge to which the **Scroll** component can scroll.|
@@ -2387,7 +2387,7 @@ Obtains the layout area size of the component. The size does not count in transf
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
 | [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md)* size | Size of the layout area, in px.|
 
 **Return value**
@@ -2414,7 +2414,7 @@ Obtains the position of the component's layout area relative to its parent compo
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* localOffset | Offset of the component handle relative to the parent component, in px.|
 
 **Return value**
@@ -2441,7 +2441,7 @@ Obtains the position of the component's layout area relative to the window. The 
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* globalOffset | Offset of the component handle relative to the window, in px.|
 
 **Return value**
@@ -2468,7 +2468,7 @@ Obtains the position of the component's layout area relative to the screen. The 
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* screenOffset | Offset of the component handle relative to the screen, in px.|
 
 **Return value**
@@ -2495,7 +2495,7 @@ Obtains the offset of the specified component relative to the global display. Th
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* offset | Offset of the component handle relative to the screen, in px.|
 
 **Return value**
@@ -2522,7 +2522,7 @@ Obtains the position of the component in the window, including the translation a
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* translateOffset | Accumulated offset of the component, its parent component, and its ancestor node, in px.|
 
 **Return value**
@@ -2549,7 +2549,7 @@ Obtains the position of the component on the screen, including the translation a
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* translateOffset | Accumulated offset of the component, its parent component, and its ancestor node, in px.|
 
 **Return value**
@@ -2576,7 +2576,7 @@ Sets a custom property for a component. This API takes effect only in the main t
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
 | const char* name | Name of the custom property. A null pointer is not allowed.|
 | const char* value | Value of the custom property. A null pointer is not allowed.|
 
@@ -2598,7 +2598,7 @@ Removes a custom property that has been set for the specified component.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
 | const char* name | Name of the custom property.|
 
 ### OH_ArkUI_NodeUtils_GetCustomProperty()
@@ -2619,7 +2619,7 @@ Obtains the value of a custom property of the specified component.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
 | const char* name | Name of the custom property.|
 | [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md)** handle | Pointer to the struct that receives the custom property corresponding to the key parameter name.|
 
@@ -3280,8 +3280,8 @@ Adopts the target node as an affiliated node. The adopted node must not have an 
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer, which specifies the parent node of the node to be adopted.|
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | **ArkUI_NodeHandle** pointer, which specifies the child node to be adopted.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to an **ArkUI_NodeHandle**, which specifies the parent node of the node to be adopted.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | Pointer to **ArkUI_NodeHandle**, which specifies the child node to be adopted.|
 
 **Return value**
 
@@ -3297,7 +3297,7 @@ int32_t OH_ArkUI_NativeModule_RemoveAdoptedChild(ArkUI_NodeHandle node, ArkUI_No
 
 **Description**
 
-Removes a previously adopted node.
+Removes a previously-adopted affiliated node.
 
 **Since**: 22
 
@@ -3305,8 +3305,8 @@ Removes a previously adopted node.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer, which specifies the parent node.|
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | **ArkUI_NodeHandle** pointer, which specifies the child node to be removed.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**, which specifies the parent node.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | Pointer to **ArkUI_NodeHandle**, which specifies the node to be removed.|
 
 **Return value**
 

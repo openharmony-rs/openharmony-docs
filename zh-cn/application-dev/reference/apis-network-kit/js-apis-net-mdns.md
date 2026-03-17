@@ -33,7 +33,7 @@ addLocalService(context: Context, serviceInfo: LocalServiceInfo, callback: Async
 | 参数名        | 类型                             | 必填 | 说明                                     |
 |-------------|----------------------------------|-----------|-------------------------------------------------|
 | context     | Context                          | 是       | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | 是        |   MDNS服务的信息。      |
+| serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | 是        |   mDNS服务的信息。      |
 | callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | 是        |   回调函数。成功添加error为undefined，data为添加到本地的MDNS服务信息。      |
 
 **错误码：**
@@ -537,7 +537,7 @@ discoveryService.stopSearchingMDNS();
 
 on(type: 'discoveryStart', callback: Callback\<DiscoveryEventInfo\>): void
 
-订阅开启监听MDNS服务的通知。
+订阅开启监听mDNS服务的通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
