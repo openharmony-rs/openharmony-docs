@@ -514,6 +514,7 @@ try {
     autoSync: false,
     kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
     securityLevel: distributedKVStore.SecurityLevel.S3,
+    // 从API version 24开始，可使用rootDir指定数据库cu路径
     rootDir: "/data/storage/el2/database/entry"
   };
   kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then((store: distributedKVStore.SingleKVStore) => {
