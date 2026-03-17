@@ -1127,12 +1127,12 @@ ViewModel层管理UI状态和业务逻辑，连接Model和View。通过监控Mod
   import { Type } from '@kit.ArkUI';
   import TaskListModel from '../model/TaskListModel';
   import TaskViewModel from './TaskViewModel';
-
+  
   @ObservedV2
   export default class TaskListViewModel {
     @Type(TaskViewModel)
     @Trace public tasks: TaskViewModel[] = [];
-
+  
     async loadTasks(context: common.UIAbilityContext) {
       let taskList = new TaskListModel([]);
       await taskList.loadTasks(context);
@@ -1142,17 +1142,17 @@ ViewModel层管理UI状态和业务逻辑，连接Model和View。通过监控Mod
         this.tasks.push(taskViewModel);
       }
     }
-
+  
     finishAll(ifFinish: boolean): void {
       for (let task of this.tasks) {
         task.isFinish = ifFinish;
       }
     }
-
+  
     addTask(newTask: TaskViewModel): void {
       this.tasks.push(newTask);
     }
-
+  
     removeTask(removedTask: TaskViewModel): void {
       this.tasks.splice(this.tasks.indexOf(removedTask), 1);
     }
