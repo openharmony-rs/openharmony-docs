@@ -1014,8 +1014,8 @@ SetTorchModeOnWithLevel(torchLevel: double): void
 **示例：**
 
 ```ts
-function SetTorchModeOnWithLevel(cameraManager: camera.CameraManager, torchLevel: double): void {
-  cameraManager.SetTorchModeOnWithLevel(torchLevel);
+function SetTorchModeOnWithLevel(cameraManager: camera.CameraManager, torchLevel: number): void {
+  cameraManager.setTorchModeOnWithLevel(torchLevel);
   return ;
 }
 ```
