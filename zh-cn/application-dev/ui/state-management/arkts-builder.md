@@ -965,7 +965,7 @@ struct ReusableChildTwoPage {
 
 ### \@Builder支持状态变量刷新
 
-从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详情请参考[状态管理API文档](../../reference/apis-arkui/js-apis-stateManagement.md)。
+从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。函数详情请参考状态管理API文档中的[makeBinding](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)。
 
 <!-- @[builder_supports_state_variable_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderSupports.ets) --> 
 
@@ -1659,7 +1659,7 @@ struct MakeBindingTest1 {
   }
 }
 ```
-MutableBinding的使用规格详见[状态管理API文档](../../reference/apis-arkui/js-apis-stateManagement.md)。
+使用规格详见状态管理API文档中的[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)。
 
 【正例】
 <!-- @[not_passed_set_accessor_builder_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AccessorCorrectUsage.ets) -->
