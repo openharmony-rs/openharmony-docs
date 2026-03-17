@@ -270,7 +270,7 @@ The following example describes how to subscribe to a crash event triggered by b
     export const registerWatcherCrashEvent: () => void;
     ```
 
-7. In the **EntryAbility.ets** file, add the following API to **onCreate()**.
+7. In the **EntryAbility.ets** file, add the following APIs to **onCreate()**.
 
     <!-- @[Sys_Crash_Event_Call_Capi_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
