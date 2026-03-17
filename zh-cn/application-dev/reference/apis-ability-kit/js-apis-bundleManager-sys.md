@@ -5314,7 +5314,7 @@ let bundleName: string = 'com.ohos.demo';
 try {
   bundleManager.getExtResource(bundleName).then((modules: Array<string>) => {
     for (let i = 0; i < modules.length; i++) {
-      hilog.info(0x0000, 'testTag', 'getExtResource item: %s', modules[i]);
+      hilog.info(0x0000, 'testTag', 'getExtResource item: %{public}s', modules[i]);
     }
   }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', 'getExtResource failed. Cause: %{public}s', err.message);
@@ -5624,7 +5624,7 @@ let bundleName: string = 'com.ohos.demo';
 
 try {
   bundleManager.getDynamicIcon(bundleName).then((data) => {
-    hilog.info(0x0000, 'testTag', 'getDynamicIcon successfully %s', JSON.stringify(data));
+    hilog.info(0x0000, 'testTag', 'getDynamicIcon successfully %{public}s', JSON.stringify(data));
   }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', 'getDynamicIcon failed. Cause: %{public}s', err.message);
   });
@@ -6215,7 +6215,7 @@ let bundleName: string = 'com.ohos.demo';
 
 try {
   bundleManager.getDynamicIconInfo(bundleName).then((data) => {
-    hilog.info(0x0000, 'testTag', 'getDynamicIconInfo successfully %s', JSON.stringify(data));
+    hilog.info(0x0000, 'testTag', 'getDynamicIconInfo successfully %{public}s', JSON.stringify(data));
   }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', 'getDynamicIconInfo failed. Cause: %{public}s', err.message);
   });
