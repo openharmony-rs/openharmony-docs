@@ -4225,7 +4225,7 @@ getBaseFile(): File
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4267,7 +4267,7 @@ openRead(): ReadStream
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4318,7 +4318,7 @@ readFully(): ArrayBuffer
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4369,7 +4369,7 @@ startWrite(): WriteStream
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4404,7 +4404,7 @@ finishWrite(): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4438,7 +4438,7 @@ failWrite(): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4473,7 +4473,7 @@ delete(): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -6270,7 +6270,7 @@ seek(offset: number, whence?: WhenceType): number;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
