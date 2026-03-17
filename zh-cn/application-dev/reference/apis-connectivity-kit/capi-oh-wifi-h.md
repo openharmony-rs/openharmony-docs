@@ -115,7 +115,7 @@ Wifi_ResultCode OH_Wifi_GetDeviceMacAddress(char *macAddr, unsigned int *macAddr
 ### OH_Wifi_GetIpv4Address()
 
 ```c
-Wifi_ResultCode OH_Wifi_GetLinkedInfo(OHWifiLinkedInfo *info)
+Wifi_ResultCode OH_Wifi_GetLinkedInfo(OH_WifiLinkedInfo *info)
 ```
 
 **描述**
@@ -130,7 +130,7 @@ Wifi_ResultCode OH_Wifi_GetLinkedInfo(OHWifiLinkedInfo *info)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OHWifiLinkedInfo *info | OHWifiLinkedInfo 结构体。 |
+| OH_WifiLinkedInfo *info | OH_WifiLinkedInfo 结构体。 |
 
 **返回：**
 
