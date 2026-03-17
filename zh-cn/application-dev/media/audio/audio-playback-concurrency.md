@@ -331,7 +331,7 @@ async function onAudioInterrupt(): Promise<void> {
 
 具体方法可参考[音频会话管理(ArkTS)](audio-session-management.md)或[音频会话管理(C/C++)](using-ohaudio-for-session.md)。
 
-音频会话停用事件（AudioSessionDeactivatedEvent）包含参数音频会话停用原因（AudioSessionDeactivatedReason），该参数表示AudioSession被停用的原因，主要有两种：
+音频会话停用事件（AudioSessionDeactivatedEvent）包含`AudioSessionDeactivatedReason`参数，用于标识会话停用的具体原因（如焦点被抢占或超时）。
 
 - 应用焦点被抢占（DEACTIVATED_LOWER_PRIORITY）：该应用所有的音频流全部被其他音频流打断，丢失焦点，AudioSession被同时停用。
 
