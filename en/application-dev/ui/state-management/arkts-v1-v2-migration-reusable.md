@@ -17,7 +17,7 @@ This document describes how to migrate components from V1 to V2, involving the f
 ## \@Reusable->\@ReusableV2 Migration Rule
 
 
-### V1 to V2 Component Migration
+### V1 -> V2 Component Migration
 
 **Migration Rules**
 
@@ -41,7 +41,7 @@ This document describes how to migrate components from V1 to V2, involving the f
 @Reusable
 @Component
 struct ReusableComponent {
-  // There is a possibility that external values are transferred. You can migrate the values to @Local or @Param @Once.
+  // There is a possibility of external value transfer. The value can be transferred to @Local or @Param @Once.
   @State val: string = 'Hello World';
   aboutToRecycle(): void {
     // This is where you can release memory-intensive content or other non-essential resource references to avoid continuous memory usage.
@@ -58,23 +58,23 @@ struct ReusableComponent {
   }
 }
 
-// Component after V2 migration.
+// Migrated V2 Component
 @ReusableV2
 @ComponentV2
 struct ReusableV2Component {
-  // If no external value is passed, @Local can be used.
+  // Migrate to @Local when there are no externally passed values
   @Local val: string = 'Hello World';
-  // If an external value is passed, @Param @Once can be used.
+  // Migrate to @Param or @Once when an external input value exists.
   @Require @Param @Once param: string;
   aboutToRecycle(): void {
     // aboutToRecycle does not need to be changed.
     console.info('ReusableComponent aboutToRecycle called');
   }
   aboutToReuse(): void { // aboutToReuse does not have any parameter.
-    // When aboutToReuse is executed, @Local is reset to Hello World, and @Param @Once is reset to the external input value.
+    // When aboutToReuse is executed, @Local has been reset back to 'Hello World', and @Param/@Once have been reset back to the externally passed values.
     console.info('ReusableComponent aboutToReuse called');
     this.val = 'Hello ArkUI'; // The value can be changed to another one during reuse.
-    this.param = 'Hello ArkUI'; // @Param @Once can be modified locally.
+    this.param = 'Hello ArkUI'; // @Param/@Once can be modified locally.
   }
   build() {
     Column() {
@@ -86,16 +86,16 @@ struct ReusableV2Component {
 ```
 
 
-### reuseId->reuse
+### reuseId -> reuse
 
 **Migration Rules**
 
 In component reuse V1, the [reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid) attribute is used to mark the reuse group of a component. After the migration to component reuse V2, the [reuse](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md#reuse) attribute needs to be used.
 
 ```ts
-// V1 original writing method
+// Original writing method of V1
 ReusableComponent().reuseId('groupA')
-// V2 after migration
+// Writing method after migration to V2
 ReusableV2Component().reuse({reuseId: () => 'groupA'})
 ```
 
@@ -107,11 +107,11 @@ ReusableV2Component().reuse({reuseId: () => 'groupA'})
 In component reuse V1, components in the reuse pool are frozen only when the **freezeWhenInactive** switch is turned on. For details, see [Custom Component Freezing Function](./arkts-custom-components-freeze.md). In component reuse V2, the freezing function is automatically enabled. For details, see [Component Freezing in the Reuse Phase](./arkts-new-reusableV2.md#component-freezing-in-the-reuse-phase).
 
 
-### LazyForEach->Repeat
+### LazyForEach -> Repeat
 
 **Migration Rules**
 
-In component reuse V1, LazyForEach is often used with component reuse to implement high-performance lazy loading. In component reuse V2, you are advised to use [Repeat](../rendering-control/arkts-new-rendering-control-repeat.md) instead of [LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md). Repeat can reuse components. Compared with LazyForEach, Repeat has a simpler API and better performance. For details about how to migrate **LazyForEach** to **Repeat**, see Migrating from LazyForEach to Repeat.
+In component reuse V1, **LazyForEach** is often used with component reuse to implement high-performance lazy loading. In component reuse V2, you are advised to use [Repeat](../rendering-control/arkts-new-rendering-control-repeat.md) instead of [LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md). **Repeat** can reuse components. Compared with **LazyForEach**, **Repeat** has simpler APIs and better performance. For details about how to migrate **LazyForEach** to **Repeat**, see Migrating from LazyForEach to Repeat.
 
 
 ## @Reusable -> @ReusableV2 Migration Example
@@ -141,15 +141,15 @@ struct Index {
   build() {
     Column() {
       Button('Hello')
-        .fontSize(30)
+        .fontSize(24)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
           this.switch = !this.switch;
         })
       if (this.switch) {
-        // If only one component to be reused, you do not need to set reuse.
+        // If there is only one reusable component, you do not need to set the reuse property.
         Child({ message: new Message('Child') })
-          .reuse({reuseId: () => 'Child'})
+          .reuse({ reuseId: () => 'Child' })
       }
     }
     .height('100%')
@@ -171,13 +171,15 @@ struct Child {
     Column() {
       Text(this.message.value)
         .fontSize(30)
+        .margin(20)
     }
     .borderWidth(1)
+    .margin({ top: 10 })
     .height(100)
   }
 }
 ```
-
+![](figures/v1_v2_reusable_if.gif)
 
 ### List Scrolling with Repeat
 
@@ -216,7 +218,7 @@ struct ReuseV2Demo {
 @ReusableV2
 @ComponentV2
 export struct CardViewV2 {
-  // Only the item variable decorated with@State will be updated.
+  // Use @Param and @Once to receive external variables and observe the changes.
   @Param @Once item: string = '';
 
   aboutToReuse(): void {
@@ -233,7 +235,7 @@ export struct CardViewV2 {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_repeat.gif)
 
 ### List Scrolling with if Statements
 
@@ -250,7 +252,7 @@ struct Index {
   aboutToAppear(): void {
     for (let i = 0; i < 20; i++) {
       let title = i + 1 + 'test_if';
-      // You can replace the image content with the app.media.startIcon image.
+      // Replace the content of the displayed image. The following uses app.media.startIcon as an example.
       this.dataSource.push(new FriendMoment(i.toString(), title, 'app.media.startIcon'));
     }
 
@@ -262,17 +264,17 @@ struct Index {
 
   build() {
     Column() {
-      List({ space: 3}) {
+      List({ space: 3 }) {
         Repeat(this.dataSource)
           .virtualScroll()
           .each((ri) => {
             ListItem() {
               if (ri.item.image) {
-                OneMoment({ moment: ri.item})
-                  .reuse({reuseId: () => 'withImage'})
+                OneMoment({ moment: ri.item })
+                  .reuse({ reuseId: () => 'withImage' })
               } else {
-                OneMoment({ moment: ri.item})
-                  .reuse({reuseId: () => 'noImage'})
+                OneMoment({ moment: ri.item })
+                  .reuse({ reuseId: () => 'noImage' })
               }
             }
           })
@@ -281,6 +283,7 @@ struct Index {
     }
   }
 }
+
 @ObservedV2
 class FriendMoment {
   @Trace id: string = '';
@@ -304,13 +307,13 @@ export struct OneMoment {
   // Only components with the same reuseId trigger reuse.
   aboutToReuse(): void {
     // If no extra modification is required for the state variable, the aboutToReuse callback can be removed.
-    console.info('=====aboutToReuse====OneMoment==Reused==' + this.moment.text);
+    console.info(`=====aboutToReuse====OneMoment==Reused==${this.moment.text}`);
   }
 
   build() {
     Column() {
       Text(this.moment.text)
-      // Conditional rendering with if
+      // if branch judgment
       if (this.moment.image !== '') {
         Flex({ wrap: FlexWrap.Wrap }) {
           Image($r(this.moment.image)).height(50).width(50)
@@ -323,7 +326,7 @@ export struct OneMoment {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_if_two.gif)
 
 ### List Scrolling with Repeat Full Loading
 
@@ -383,13 +386,13 @@ struct ListItemView {
   @Require @Param obj: ListItemObject;
 
   aboutToAppear(): void {
-    // Click update. When you enter the page for the first time and slide up and down, the ForEach full expansion attribute is used, and the reuse fails.
+    // Click update. When you swipe up and down for the first time, the ForEach full expansion attribute is used, and reusing is not supported.
     console.info('=====aboutToAppear=====ListItemView==Created==');
   }
 
   aboutToReuse() {
-    // Reuse succeeds after clear and update are clicked
-    // because multiple destroyed custom components are repeatedly created in a frame.
+    // Reuse succeeds after you click Clear and update again.
+    // It meets the requirement of repeatedly creating multiple destroyed custom components in a frame.
     // If no extra modification is required for the state variable, the aboutToReuse callback can be removed.
     console.info('=====aboutToReuse====ListItemView==Reused==');
   }
@@ -455,7 +458,7 @@ struct MyComponent {
           .virtualScroll()
           .each((ri) => {
             GridItem() {
-              ReusableV2ChildComponent({item: ri.item})
+              ReusableV2ChildComponent({ item: ri.item })
             }
           })
       }
@@ -474,12 +477,13 @@ struct MyComponent {
 @ComponentV2
 struct ReusableV2ChildComponent {
   @Param item: number = 0;
+
   aboutToAppear() {
   }
 
   build() {
     Column() {
-      // You can replace the image content with the app.media.startIcon image.
+      // Replace the content of the displayed image. The following uses app.media.startIcon as an example.
       Image($r('app.media.startIcon'))
         .objectFit(ImageFit.Fill)
         .layoutWeight(1)
@@ -493,7 +497,7 @@ struct ReusableV2ChildComponent {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_grid.png)
 
 ### WaterFlow
 
@@ -510,7 +514,7 @@ struct ReusableV2FlowItem {
   build() {
     Column() {
       Text('N' + this.item).fontSize(24).height(26).margin(10)
-      // You can replace the image content with the app.media.startIcon image.
+      // Replace the content of the displayed image. The following uses app.media.startIcon as an example.
       Image($r('app.media.startIcon'))
         .objectFit(ImageFit.Cover)
         .width(50)
@@ -531,13 +535,13 @@ struct Index {
   private itemWidthArray: number[] = [];
   private itemHeightArray: number[] = [];
 
-  // Calculate random size for flow items.
+  // Calculate the width and height of the flow item.
   getSize() {
     let ret = Math.floor(Math.random() * this.maxSize);
     return (ret > this.minSize ? ret : this.minSize);
   }
 
-  // Generate size arrays for flow items.
+  // Save the width and height of the flow item.
   getItemSizeArray() {
     for (let i = 0; i < 100; i++) {
       this.itemWidthArray.push(this.getSize());
@@ -558,7 +562,7 @@ struct Index {
         Button('back top')
           .height('5%')
           .onClick(() => {
-            // Scroll to top when the component is clicked.
+            // Click to return to the top.
             this.scroller.scrollEdge(Edge.Top);
           })
         WaterFlow({ scroller: this.scroller }) {
@@ -566,7 +570,7 @@ struct Index {
             .virtualScroll()
             .each((ri) => {
               FlowItem() {
-                ReusableV2FlowItem({ item: ri.item})
+                ReusableV2FlowItem({ item: ri.item })
               }.onAppear(() => {
                 if (ri.item + 20 == this.dataSource.length) {
                   for (let i = 0; i < 50; i++) {
@@ -575,13 +579,13 @@ struct Index {
                 }
               })
             })
-        }
+        }.margin({ left: 160, top: 10 })
       }
     }
   }
 }
 ```
-
+![](figures/v1_v2_reusable_waterflow.gif)
 
 ### Swiper
 
@@ -599,7 +603,7 @@ struct Index {
     for (let i = 0; i < 1000; i++) {
       let title = i + 1 + 'test_swiper';
       let answers = ['test1', 'test2', 'test3', 'test4'];
-      // You can replace the image content with the app.media.startIcon image.
+      // Replace the content of the displayed image. The following uses app.media.startIcon as an example.
       this.dataSource.push(new Question(i.toString(), title, $r('app.media.startIcon'), answers));
     }
   }
@@ -618,6 +622,7 @@ struct Index {
     .margin({ top: 5 })
   }
 }
+
 @ObservedV2
 class Question {
   @Trace id: string = '';
@@ -677,6 +682,7 @@ struct QuestionSwiperItem {
   }
 }
 ```
+![](figures/v1_v2_reusable_swiper.gif)
 
 
 ### List Scrolling with ListItemGroup
@@ -695,7 +701,7 @@ struct ListItemGroupAndReusable {
   itemHead(text: string) {
     Text(text)
       .fontSize(20)
-      .backgroundColor(0xAABBCC)
+      .backgroundColor(0xff519db4)
       .width('100%')
       .padding(10)
   }
@@ -758,7 +764,7 @@ The sample code for using multiple item types of \@ReusableV2 is as follows:
 
 **Standard**
 
-Reusable components have the same layout. For implementation examples, see the examples in the list scrolling sections.
+The layout of the reusable components is the same. For details, see the examples in the list scrolling part of this document.
 
 **Limited Variation**
 
@@ -803,7 +809,7 @@ struct ReusableV2Component {
 
   aboutToReuse() {
     // If no extra modification is required for the state variable, the aboutToReuse callback can be removed.
-    console.info('ReusableComponent aboutToReuse called' + this.item)
+    console.info(`ReusableComponent aboutToReuse called${this.item}`)
   }
 
   build() {
@@ -822,10 +828,11 @@ struct ReusableV2Component {
   }
 }
 ```
+![](figures/v1_v2_reusable_limit.png)
 
 **Composite**
 
-There are multiple differences between reusable components, but they usually share common child components. After the three reusable components are converted into the [@Builder](./arkts-builder.md) function in composite mode, the shared child components are placed under the parent component **MyComponentV2**. The reuse cache is shared at the parent component level for child component reuse, reducing resource consumption during component creation.
+There are multiple differences between reusable components, but they usually share common child components. After the three reusable components are converted into the [@Builder](./arkts-builder.md) function in composite mode, the shared child components are placed under the parent component **MyComponentV2**. When these child components are reused, the cache pool is shared at the parent component level to reduce resource consumption during component creation.
 
 ```ts
 @Entry
@@ -849,7 +856,7 @@ struct MyComponentV2 {
     }
   }
 
-  // Builder version of itemBuilderTwo after conversion.
+  // Format after itemBuilderTwo is converted to Builder.
   @Builder
   itemBuilderTwo(item: string) {
     Column() {
@@ -859,7 +866,7 @@ struct MyComponentV2 {
     }
   }
 
-  // Builder version of itemBuilderThree after conversion.
+  // Format after itemBuilderThree is converted to Builder.
   @Builder
   itemBuilderThree(item: string) {
     Column() {
@@ -914,7 +921,7 @@ struct ChildComponentA {
       Grid() {
         ForEach((new Array(20)).fill(''), (item: string, index: number) => {
           GridItem() {
-            // You can replace the image content with the app.media.startIcon image.
+            // Replace the content of the displayed image. The following uses app.media.startIcon as an example.
             Image($r('app.media.startIcon'))
               .height(20)
           }
@@ -976,3 +983,4 @@ struct ChildComponentD {
   }
 }
 ```
+![](figures/v1_v2_reusable_group.png)
