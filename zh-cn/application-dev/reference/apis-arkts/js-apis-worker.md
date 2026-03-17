@@ -285,10 +285,7 @@ workerInstance.postMessage("hello world");
 let buffer = new ArrayBuffer(8);
 
 // 填入options参数，buffer的所有权会转移到Worker线程，在宿主线程中将不可用
-workerInstance.postMessage(buffer, [buffer]);
-
-// 未填入options参数，默认值为undefined，通过拷贝数据的方式将buffer发送到Worker线程
-workerInstance.postMessage(buffer);
+workerInstance.postMessage(buffer, {transfer: [buffer]});
 ```
 
 
@@ -792,7 +789,7 @@ workerInstance.addEventListener("alert", () => {
   console.info("alert listener callback");
 })
 
-let result: Boolean = workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未支持
+let result: boolean = workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未支持
 
 console.info("dispatchEvent result is: ", result);
 ```
