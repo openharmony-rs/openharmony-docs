@@ -950,19 +950,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets",
 				"functions":[
 					{
-						"end_line":495,
+						"end_line":552,
 						"name":"input_case_input_KeyboardController358",
-						"start_line":348
+						"start_line":389
 					},
 					{
-						"end_line":574,
+						"end_line":639,
 						"name":"input_case_input_KeyboardController507",
-						"start_line":497
+						"start_line":554
 					},
 					{
-						"end_line":716,
+						"end_line":783,
 						"name":"input_case_input_KeyboardController587",
-						"start_line":576
+						"start_line":641
 					}
 				]
 			},
@@ -2571,9 +2571,9 @@
 						"start_line":67
 					},
 					{
-						"end_line":65,
+						"end_line":78,
 						"name":"input_case_input_switchInputMethod",
-						"start_line":55
+						"start_line":63
 					}
 				]
 			},
@@ -2604,12 +2604,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/CustomInput.ets",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":46,
 						"name":"input_case_input_CustomInputText",
 						"start_line":17
 					},
 					{
-						"end_line":68,
+						"end_line":77,
 						"name":"input_case_input_CustomInput",
 						"start_line":16
 					}
