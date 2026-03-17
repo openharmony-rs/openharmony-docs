@@ -392,7 +392,6 @@ Enumerates the display mode for the screen capture picker.
 ## AudioEncoder<sup>(deprecated)</sup>
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 8. You are advised to use [CodecMimeType](#codecmimetype8) instead.
 
 Enumerates the audio encoding formats.
@@ -410,7 +409,6 @@ Enumerates the audio encoding formats.
 ## AudioOutputFormat<sup>(deprecated)</sup>
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 8. You are advised to use [ContainerFormatType](#containerformattype8) instead.
 
 Enumerates the audio output formats.
@@ -430,7 +428,6 @@ Enumerates the audio output formats.
 Enumerates the media error codes.
 
 > **NOTE**
->
 > This enum is supported since API version 8 and deprecated since API version 11. You are advised to use [Media Error Codes](#averrorcode9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.Core

@@ -40,8 +40,8 @@ Defines the structs and enums for external key management extensions.
 
 | Name| Description|
 | -- | -- |
-| OH_HUKS_EXTERNAL_CRYPTO_MAX_PROVIDER_NAME_LEN 100 | Maximum byte length of the provider name.<br>**Since**: 22|
-| OH_HUKS_EXTERNAL_CRYPTO_MAX_RESOURCE_ID_LEN 512 | Maximum byte length of the **resourceId** name.<br>**Since**: 22|
+| OH_HUKS_EXTERNAL_CRYPTO_MAX_PROVIDER_NAME_LEN 100 | Defines the maximum length of the provider name.<br>**Since**: 22|
+| OH_HUKS_EXTERNAL_CRYPTO_MAX_RESOURCE_ID_LEN   512 | Defines the maximum length of the resource ID.<br>**Since**: 22|
 
 ## Enum Description
 

@@ -66,7 +66,7 @@ struct Index {
               keyDownDuration: 0,
               isIntercepted: false
             }
-            
+
             class EventDown {
               KeyEvent: inputEventClient.KeyEvent | null = null
             }
@@ -80,7 +80,7 @@ struct Index {
               keyDownDuration: 0,
               isIntercepted: false
             };
-            
+
             class EventUp {
               KeyEvent: inputEventClient.KeyEvent | null = null
             }
@@ -184,7 +184,7 @@ Permission required: ohos.permission.INJECT_INPUT_EVENT
 
 | Name      | Type                   | Mandatory  | Description       |
 | -------- | --------------------- | ---- | --------- |
-| mouseEvent | [MouseEventData](#mouseeventdata11) | Yes   | Mouse/touchpad event to inject.|
+| mouseEvent | [MouseEventData](#mouseeventdata11) | Yes   | Mouse/touchpad event to inject. [Action](js-apis-mouseevent.md#action) in this parameter cannot be set to **CANCEL**.|
 
 **Error codes**
 
@@ -298,7 +298,7 @@ Permission required: ohos.permission.INJECT_INPUT_EVENT
 
 | Name      | Type                   | Mandatory  | Description       |
 | -------- | --------------------- | ---- | --------- |
-| touchEvent | [TouchEventData](#toucheventdata11) | Yes   | Touch event data.|
+| touchEvent | [TouchEventData](#toucheventdata11) | Yes   | Touch event information. [Action](js-apis-touchevent.md#action) in this parameter cannot be set to **CANCEL**.|
 
 **Error codes**
 

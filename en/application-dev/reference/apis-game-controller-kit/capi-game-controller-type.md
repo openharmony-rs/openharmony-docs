@@ -10,6 +10,8 @@
 
 Defines common enumeration types for the **GameController** module.
 
+**File to include**: <GameControllerKit/game_controller_type.h>
+
 **Library:** libohgame_controller.z.so
 
 **System capability**: SystemCapability.Game.GameController

@@ -94,7 +94,7 @@ For multi-thread NDK API calling specifications, see [Multi-threaded NDK API Set
 
 - A multi-threaded NDK API is called in a non-UI thread to operate an attached component.
 
-For common issues during multi-threaded NDK adaptation, see [UI Parallelization FAQs](multi-thread-ui-build-faq.md).
+For common issues during multi-threaded NDK adaptation, see [FAQs About UI Parallelization](multi-thread-ui-build-faq.md).
 
 ## Multi-threaded NDK API Set Specifications
 

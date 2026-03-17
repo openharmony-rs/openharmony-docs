@@ -6,14 +6,14 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-apis-media-f.md#mediacreateavmetadataextractor11) to create an AVMetadataExtractor instance.
+
+For details about the demo of obtaining audio or video metadata and video thumbnails, see [Using AVMetadataExtractor to Extract Audio and Video Metadata (ArkTS)](../../media/media/avmetadataextractor.md).
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 11.
-
-AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-apis-media-f.md#mediacreateavmetadataextractor11) to create an AVMetadataExtractor instance.
-
-For details about the demo of obtaining audio or video metadata and video thumbnails, see [Using AVMetadataExtractor to Extract Audio and Video Metadata (ArkTS)](../../media/media/avmetadataextractor.md).
 
 ## Modules to Import
 
@@ -187,7 +187,7 @@ Obtains the media metadata. This API uses a promise to return the result.
 
 | Type          | Description                                    |
 | -------------- | ---------------------------------------- |
-| Promise\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)>  | Promise used to return the result. which is an AVMetadata instance.|
+| Promise\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)>  | Promise used to return the result, which is an AVMetadata instance.|
 
 **Error codes**
 

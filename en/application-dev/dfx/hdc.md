@@ -667,7 +667,7 @@ hdc install [-cwd path|-r|-s|-w waitingTime|-u userId|-p|-h] src
 
 > **NOTE**
 >
-> if the -w and -u parameters require combined use with their values, you must enclose the parameter variables and their values in quotation marks (for example, **"-w 180"** and **"-u 100"**). This prevents command execution failures caused by abnormal parameter parsing.
+> When the **install** command is executed to use the command parameters of the bm module, if the -w and -u parameters require combined use with their values, you must enclose the parameter variables and their values in quotation marks (for example, **"-w 180"** and **"-u 100"**). This prevents command execution failures caused by abnormal parameter parsing.
 
 ```shell
 # Install the example.hap file.

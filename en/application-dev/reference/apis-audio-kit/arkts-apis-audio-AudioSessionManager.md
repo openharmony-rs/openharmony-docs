@@ -734,6 +734,8 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 | 6800101 | Parameter verification failed. |
 | 6800301 | Audio client call audio service error, System error. |
 
+**Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -766,6 +768,8 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 | ID| Error Message|
 | ------- | --------------------------------------------|
 | 6800301 | Audio client call audio service error, System error. |
+
+**Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

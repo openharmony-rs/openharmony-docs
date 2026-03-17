@@ -2348,7 +2348,6 @@ write(buffer: ArrayBuffer, callback: AsyncCallback\<number>): void
 Writes the buffer. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [on('writeData')](#onwritedata11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2414,7 +2413,6 @@ write(buffer: ArrayBuffer): Promise\<number>
 Writes the buffer. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [on('writeData')](#onwritedata11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2482,7 +2480,6 @@ setRenderRate(rate: AudioRendererRate, callback: AsyncCallback\<void>): void
 Sets the render rate. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [uninitialize][setSpeed](#setspeed11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2515,7 +2512,6 @@ setRenderRate(rate: AudioRendererRate): Promise\<void>
 Sets the render rate. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [uninitialize][setSpeed](#setspeed11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2551,7 +2547,6 @@ getRenderRate(callback: AsyncCallback\<AudioRendererRate>): void
 Obtains the audio renderer rate. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [getSpeed](#getspeed11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2579,7 +2574,6 @@ getRenderRate(): Promise\<AudioRendererRate>
 Obtains the audio renderer rate. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [getSpeed](#getspeed11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2609,7 +2603,6 @@ getRenderRateSync(): AudioRendererRate
 Obtains the audio renderer rate. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [getSpeed](#getspeed11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
