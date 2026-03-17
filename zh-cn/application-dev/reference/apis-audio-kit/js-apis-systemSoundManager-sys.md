@@ -2432,7 +2432,7 @@ systemSoundManagerInstance.removeCustomizedToneList([ringPath]).then((value: sys
 });
 ```
 
-## RingtonePlayer<sup>10+</sup>
+## RingtonePlayer
 
 type RingtonePlayer = _RingtonePlayer
 
@@ -2460,7 +2460,7 @@ type SystemTonePlayer = _SystemTonePlayer
 |-----------------|-----------|
 | [_SystemTonePlayer](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneplayer) | 系统提示音播放器。 |
 
-## RingtoneOptions<sup>10+</sup>
+## RingtoneOptions
 
 type RingtoneOptions = _RingtoneOptions
 
