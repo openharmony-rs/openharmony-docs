@@ -3,6 +3,7 @@
 如果需要在页面中获得当前Ability的Context，可调用getContext接口获取当前页面关联的UIAbilityContext或ExtensionContext。
 
 > **说明：**
+> - 本模块仅适用于ArkTS-Dyn。
 > - 该接口从API version 9开始支持，从API version 18开始废弃，建议使用[UIContext](js-apis-arkui-UIContext.md#uicontext)中的[getHostContext](js-apis-arkui-UIContext.md#gethostcontext12)替代。
 > - 该接口仅限Stage模型使用。
 
