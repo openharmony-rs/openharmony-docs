@@ -1,4 +1,4 @@
-# @ohos.app.form.FormEditExtensionAbility  (FormEditExtensionAbility)
+# @ohos.app.form.FormEditExtensionAbility (FormEditExtensionAbility)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
