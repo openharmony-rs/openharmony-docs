@@ -606,3 +606,20 @@ AI会话操作的结果状态。
 | SUCCESS | 0 | 操作执行成功。  |
 | FAILURE | 1 | 操作执行失败。  |
 | RUNNING | 2 | 操作正在执行中。 |
+
+## WebKeyboardAppearanceMode
+
+WebView中输入法沉浸模式。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 值 | 说明 |
+| ------- | ----  | ------------------- |
+| NONE_IMMERSIVE  | 0 |默认外观模式，不采用沉浸式风格。 |
+| IMMERSIVE       | 1 |沉浸式模式，跟随系统。|
+| LIGHT_IMMERSIVE | 2 |浅色沉浸式风格。                |
+| DARK_IMMERSIVE  | 3 |深色沉浸式风格。                |
