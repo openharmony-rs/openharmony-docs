@@ -2326,8 +2326,7 @@ radio.getNetworkCapability(slotId, type).then((data: radio.NetworkCapabilityStat
 
 ## radio.setNetworkCapability<sup>10+</sup>
 
-setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: NetworkCapabilityState,
-      callback: AsyncCallback\<void\>\): void
+setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: NetworkCapabilityState, callback: AsyncCallback\<void\>\): void
 
 设置指定网络类型的开关状态。使用callback异步回调。
 
