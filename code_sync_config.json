@@ -33476,6 +33476,11 @@
 						"end_line":1687,
 						"name":"sensor_js_get_single_sensor_sync_example",
 						"start_line":1679
+					},
+					{
+						"end_line":1628,
+						"name":"sensor_js_get_rotation_matrix_two_param_callback_example",
+						"start_line":1613
 					}
 				]
 			}
@@ -33626,28 +33631,26 @@
 						"end_line":575,
 						"name":"vibrator_js_vibrator_is_hd_haptic_supported_example",
 						"start_line":563
-					}
-				]
-			},
-			{
-				"file_name":"openharmony/applications_app_samples/master/ code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets",
-				"functions":[
+					},
 					{
 						"end_line":515,
 						"name":"vibrator_js_get_vibrator_info_sync_example",
 						"start_line":504
-					}
-				]
-			},
-			{
-				"file_name":"openharmony/ applications_app_samples/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/ pages/Index.ets",
-				"functions":[
+					},
 					{
 						"end_line":537,
 						"name":"vibrator_js_get_vibrator_info_sync_by_device_id_example",
 						"start_line":523
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/ code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/ applications_app_samples/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/ pages/Index.ets",
+				"functions":[]
 			}
 		]
 	},
