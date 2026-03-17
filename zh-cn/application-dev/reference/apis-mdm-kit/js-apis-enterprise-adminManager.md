@@ -1,4 +1,4 @@
-# @ohos.enterprise.adminManager (admin权限管理)
+# @ohos.enterprise.adminManager（admin权限管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
