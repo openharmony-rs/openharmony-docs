@@ -254,7 +254,7 @@ contentModifier(modifier: Optional<ContentModifier\<CheckBoxGroupConfiguration>>
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier\<CheckBoxGroupConfiguration>](#checkboxgroupconfiguration21对象说明)> | 是   | 在CheckboxGroup组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义类以实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<ContentModifier\<[CheckBoxGroupConfiguration](#checkboxgroupconfiguration21对象说明)>> | 是   | 在CheckboxGroup组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义类以实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ## 事件
 
