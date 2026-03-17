@@ -1066,14 +1066,14 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
   import { common } from '@kit.AbilityKit';
   import { util } from '@kit.ArkTS';
   import TaskModel from './TaskModel';
-
+  
   export default class TaskListModel {
     public tasks: TaskModel[] = [];
-
+  
     constructor(tasks: TaskModel[]) {
       this.tasks = tasks;
     }
-
+  
     async loadTasks(context: common.UIAbilityContext) {
       let getJson = await context.resourceManager.getRawFileContent('defaultTasks.json');
       let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
