@@ -106,7 +106,7 @@ enableHapticsInSilentMode(enable: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID  | 错误信息                             |
 |---------|-----------------------------------|
@@ -147,7 +147,7 @@ setHapticsIntensity(intensity: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID   | 错误信息                              |
 |---------|-----------------------------------|
@@ -199,7 +199,7 @@ setHapticsRamp(duration: number, startIntensity: number, endIntensity: number): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID   | 错误信息                              |
 |---------|-----------------------------------|
