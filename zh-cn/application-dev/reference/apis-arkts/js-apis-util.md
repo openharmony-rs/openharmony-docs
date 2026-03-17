@@ -597,6 +597,8 @@ static getAllVMHeapMemoryInfo(): Promise<HeapMemoryInfo[]>
 
 获取所有VM线程的堆内存信息，包括线程ID、线程名称、堆类型和堆对象大小。使用Promise异步回调。
 
+接口获取到的堆包含两种类型：local堆，即应用进程中每个ArkTS线程独有的虚拟机堆；shared堆，即应用进程中所有ArkTS线程共享的虚拟机堆。
+
 > **说明：**
 >
 > 此接口在执行时会暂停所有VM线程运行以获取内存信息。由于需要等待所有VM线程暂停，高负载场景下调用此接口的耗时可能较高。
@@ -609,7 +611,7 @@ static getAllVMHeapMemoryInfo(): Promise<HeapMemoryInfo[]>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise<[HeapMemoryInfo](js-apis-util.md#heapmemoryinfo24)[]> | Promise对象，解析为HeapMemoryInfo对象数组，每个对象包含线程ID、线程名称、堆类型和堆对象大小。此方法可以获取本地堆和共享堆的内存信息。|
+| Promise<[HeapMemoryInfo](js-apis-util.md#heapmemoryinfo24)[]> | Promise对象，解析为HeapMemoryInfo对象数组，每个对象包含线程ID、线程名称、堆类型和堆对象大小。此方法可以获取local堆和shared堆的内存信息。|
 
 **示例：**
 
@@ -630,7 +632,7 @@ util.ArkTSVM.getAllVMHeapMemoryInfo().then(
 
 ## HeapMemoryInfo<sup>24+</sup>
 
-描述ArkTS-VM本地堆或当前进程的共享堆内存信息，包含线程标识和堆内存大小等详细数据。
+描述local堆或shared堆的内存信息，包含线程标识和堆内存大小等详细数据。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -638,9 +640,9 @@ util.ArkTSVM.getAllVMHeapMemoryInfo().then(
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| threadId | number | 否 | 是 | 线程ID。如果此内存信息描述的是ArkTS-VM本地堆，该值为表示运行线程ID的整数；如果此内存信息描述的是共享堆，该值为**undefined**。|
-| threadName | string | 否 | 是 | 线程名称。如果此内存信息描述的是ArkTS-VM本地堆，该值为表示运行线程名称的字符串；如果此内存信息描述的是共享堆，该值为**undefined**。|
-| heapType | string | 否 | 否 | 堆类型。目前有两种取值，"local"表示堆类型为本地堆，"shared"表示堆类型为共享堆。|
+| threadId | number | 否 | 是 | 线程ID。如果此内存信息描述的是local堆，该值为表示运行线程ID的整数；如果此内存信息描述的是shared堆，该值为**undefined**。|
+| threadName | string | 否 | 是 | 线程名称。如果此内存信息描述的是local堆，该值为表示运行线程名称的字符串；如果此内存信息描述的是shared堆，该值为**undefined**。|
+| heapType | string | 否 | 否 | 堆类型。目前有两种取值，"local"表示堆类型为local堆，"shared"表示堆类型为shared堆。|
 | heapObjectSize | number | 否 | 否 | 堆对象大小，单位为KB（向上取整的整数）。|
 
 ## TextDecoderOptions<sup>11+</sup>
