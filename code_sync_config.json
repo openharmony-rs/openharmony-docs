@@ -35596,12 +35596,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets",
 				"functions":[
 					{
-						"end_line":504,
+						"end_line":497,
 						"name":"check_renderstate",
 						"start_line":28
 					},
 					{
-						"end_line":521,
+						"end_line":514,
 						"name":"regist_listeningrendererchange",
 						"start_line":29
 					},
@@ -35611,17 +35611,17 @@
 						"start_line":30
 					},
 					{
-						"end_line":555,
+						"end_line":527,
 						"name":"regist_renderchangechallback",
 						"start_line":31
 					},
 					{
-						"end_line":557,
+						"end_line":534,
 						"name":"unregist_renderchangechallback",
-						"start_line":554
+						"start_line":531
 					},
 					{
-						"end_line":607,
+						"end_line":551,
 						"name":"get_allstreaminfo",
 						"start_line":32
 					}
@@ -35801,22 +35801,22 @@
 						"start_line":23
 					},
 					{
-						"end_line":463,
+						"end_line":456,
 						"name":"check_spacesound",
 						"start_line":24
 					},
 					{
-						"end_line":472,
+						"end_line":465,
 						"name":"check_isspacesoundon",
 						"start_line":25
 					},
 					{
-						"end_line":488,
+						"end_line":481,
 						"name":"regist_spacesoundcallback",
 						"start_line":26
 					},
 					{
-						"end_line":495,
+						"end_line":488,
 						"name":"unregist_spacesoundcallback",
 						"start_line":27
 					}
@@ -35916,37 +35916,37 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets",
 				"functions":[
 					{
-						"end_line":211,
+						"end_line":210,
 						"name":"create_audiorender",
 						"start_line":18
 					},
 					{
-						"end_line":193,
+						"end_line":192,
 						"name":"init_oncallback",
 						"start_line":17
 					},
 					{
-						"end_line":194,
+						"end_line":193,
 						"name":"init_callback",
 						"start_line":52
 					},
 					{
-						"end_line":244,
+						"end_line":243,
 						"name":"render_start",
 						"start_line":49
 					},
 					{
-						"end_line":307,
+						"end_line":306,
 						"name":"render_stop",
 						"start_line":50
 					},
 					{
-						"end_line":351,
+						"end_line":350,
 						"name":"render_release",
 						"start_line":51
 					},
 					{
-						"end_line":354,
+						"end_line":353,
 						"name":"render_process",
 						"start_line":16
 					}
@@ -36166,17 +36166,17 @@
 						"start_line":19
 					},
 					{
-						"end_line":366,
+						"end_line":365,
 						"name":"get_systemvolume",
 						"start_line":20
 					},
 					{
-						"end_line":382,
+						"end_line":378,
 						"name":"regist_volumechangecallback",
 						"start_line":21
 					},
 					{
-						"end_line":415,
+						"end_line":408,
 						"name":"set_appvolume",
 						"start_line":22
 					},
@@ -36186,7 +36186,7 @@
 						"start_line":417
 					},
 					{
-						"end_line":452,
+						"end_line":445,
 						"name":"Renderset_streamvolume",
 						"start_line":53
 					}
