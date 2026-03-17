@@ -914,7 +914,7 @@ console.info("BitVector Element Index at 1: " + bitVector[1]);
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 10200001 | The value of fromIndex or toIndex is out of range.           |
+| 10200001 | The value of index is out of range.                          |
 
 **示例：**
 
