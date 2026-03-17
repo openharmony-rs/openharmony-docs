@@ -63,7 +63,7 @@ import { audio } from '@kit.AudioKit';
 // ...
   let isSpatializationEnabledForCurrentDevice = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
   console.info(`Succeeded in using isSpatializationEnabledForCurrentDevice function,
-    IsSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}.`);
+   IsSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}.`);
 ```
 
 **订阅当前发声设备空间音频渲染效果的开关状态变化事件**
@@ -80,7 +80,7 @@ import { audio } from '@kit.AudioKit';
   audioSpatializationManager.on('spatializationEnabledChangeForCurrentDevice',
     (isSpatializationEnabledForCurrentDevice: boolean) => {
     console.info(`Succeeded in using on function, IsSpatializationEnabledForCurrentDevice:
-      ${isSpatializationEnabledForCurrentDevice}.`);
+     ${isSpatializationEnabledForCurrentDevice}.`);
     // ...
   });
 ```
