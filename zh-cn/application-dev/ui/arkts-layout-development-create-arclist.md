@@ -316,9 +316,9 @@ ArcList({ initialIndex: 2 }) {
 
 ``` TypeScript
 ArcListItem() {
-// ···
+  // ...
 }
-.autoScale(false)
+// .autoScale(false)
 ```
 
   **图5** 列表项关闭自动缩放
