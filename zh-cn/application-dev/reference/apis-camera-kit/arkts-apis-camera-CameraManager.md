@@ -970,13 +970,13 @@ function unregisterTorchStatusChange(cameraManager: camera.CameraManager): void 
 }
 ```
 
-## isTorchLevelControlSupported<sup>11+</sup>
+## isTorchLevelControlSupported<sup>23+</sup>
 
 isTorchLevelControlSupported(): boolean
 
 检测设备是否支持手电筒亮度调节功能。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -995,13 +995,13 @@ function isTorchLevelControlSupported(cameraManager: camera.CameraManager): bool
 }
 ```
 
-## SetTorchModeOnWithLevel<sup>11+</sup>
+## SetTorchModeOnWithLevel<sup>23+</sup>
 
 SetTorchModeOnWithLevel(torchLevel: double): void
 
 手电筒设置指定亮度级别。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
