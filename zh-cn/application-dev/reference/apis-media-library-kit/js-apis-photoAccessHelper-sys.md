@@ -11582,6 +11582,9 @@ async function example(context: Context) {
 | COMPOSITE_DISPLAY_STATUS<sup>22+</sup> | 'composite_display_status' | 复合图资产显示状态。**系统接口**：此接口为系统接口。 |
 | VIDEO_MODE<sup>22+</sup>  | 'video_mode' | 视频文件的log模式。**系统接口**：此接口为系统接口。 |
 | EDIT_DATA_EXIST<sup>22+</sup>  | 'edit_data_exist' | 资产的编辑数据已存在。**系统接口**：此接口为系统接口。 |
+| PACKAGE_NAME<sup>23+</sup> | 'package_name' | 文件的包名信息。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+| PHOTO_RISK_STATUS<sup>23+</sup> | 'photo_risk_status' | 图片风控状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+
 
 ## AlbumKeys
 
