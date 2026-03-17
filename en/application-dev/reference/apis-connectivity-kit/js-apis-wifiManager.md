@@ -586,7 +586,7 @@ Represents EAP configuration information.
 
 ## WifiWapiConfig<sup>12+</sup>
 
-Configuration of the WAPI(Wireless LAN Authentication and Privacy Infrastructure) authentication protocol.
+Configuration of the Wireless LAN Authentication and Privacy Infrastructure (WAPI) protocol.
 
 When a user connects to the WLAN through the WAPI authentication protocol, the user can configure parameters or certificates in the following ways:
 - Method 1: Configure a certificate for connection. The key fields in WifiDeviceConfig are configured as follows:
@@ -1028,7 +1028,7 @@ connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
 This API is used to connect an application to a candidate network added by a user and prompt the user to confirm the trust during the connection. This API uses a promise to return the result.
 
-- When this API is called, the system displays a message, asking the user to confirm whether to trust and connect to the specified candidate network. This API uses a promise to return the result.
+- When this API is called, the system prompts the user to confirm whether to trust and connect to the specified candidate network.
 - User confirmation is a necessary step in the connection process. The connection operation is not performed before the user confirms the trust.
 - You are advised to trigger a WLAN scan by calling the **startScan** API before initiating a connection, and then connect to the candidate network after the updating of the scan result is detected by using the [wifiManager.on('wifiScanStateChange')](#wifimanageronwifiscanstatechange) method. This improves the connection success rate.
 
