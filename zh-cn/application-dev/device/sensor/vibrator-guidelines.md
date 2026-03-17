@@ -30,6 +30,7 @@
 | getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt; | 同步查询一个或所有设备的马达信息列表。返回VibratorInfo包含设备ID、马达ID、设备名称、是否支持高清振动、是否本地设备等信息。       |
 | on(type: 'vibratorStateChange', callback: Callback&lt;VibratorStatusEvent&gt;): void | 注册马达设备上线下状态变化的监听。callback参数VibratorStatusEvent可返回事件时间戳、设备ID、马达数量、上线或下线等信息。  |
 | off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;): void | 注销马达设备上线下状态变化的监听。                                                           |
+| isHdHapticSupported(): boolean | 查询是否支持高清振动。                                                           |
 
 
 ## 振动效果说明
@@ -107,7 +108,7 @@
 }
 ```
 
-Json文件共包含3个属性。
+JSON文件共包含3个属性。
 1. "MetaData"属性中为文件头信息，可在如下属性中添加描述：
 
      | 名称          | 必填项 | 说明                                          |
@@ -199,7 +200,7 @@ Json文件共包含3个属性。
 
    **情形一** 查询所有马达信息：
 
-   <!-- @[vibrator_js_get_vibrator_info_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/ code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[vibrator_js_get_vibrator_info_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -214,12 +215,12 @@ Json文件共包含3个属性。
 
    **情形二** 查询指定设备的一个或多个马达信息：
 
-   <!-- @[vibrator_js_get_vibrator_info_sync_by_device_id_example](https://gitcode.com/openharmony/ applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/ pages/Index.ets) --> 
+   <!-- @[vibrator_js_get_vibrator_info_sync_by_device_id_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
      const vibratorParam: vibrator.VibratorInfoParam = {
-       deviceId: -1    // deviceid 需要是查询出来真实存在的设备
+       deviceId: -1    // deviceId 需要是查询出来真实存在的设备
      }
      const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync(vibratorParam);
      console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
@@ -496,11 +497,11 @@ Json文件共包含3个属性。
 
    **方式三** 停止指定设备的振动：
 
-   <!-- @[vibrator_js_stop_vibrator_by_device_id_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[vibrator_js_stop_vibrator_by_device_id_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    const vibratorInfoParam: vibrator.VibratorInfoParam = {
-     deviceId: -1   // deviceid 需要是查询出来真实存在的设备
+     deviceId: -1   // deviceId 需要是查询出来真实存在的设备
    }
    try {
      vibrator.stopVibration(vibratorInfoParam).then(() => {

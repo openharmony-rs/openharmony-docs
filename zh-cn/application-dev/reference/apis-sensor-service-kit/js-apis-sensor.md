@@ -406,8 +406,7 @@ try {
 
 ###  GYROSCOPE_UNCALIBRATED<sup>9+</sup>
 
-on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;,
-      options?: Options): void
+on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options): void
 
 订阅未校准陀螺仪传感器数据。
 
@@ -600,8 +599,7 @@ try {
 
 ###   LINEAR_ACCELEROMETER<sup>9+</sup>
 
-on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;,
-        options?: Options): void
+on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;, options?: Options): void
 
 订阅线性加速度传感器数据。
 
@@ -849,8 +847,7 @@ try {
 
 ### PEDOMETER_DETECTION<sup>9+</sup>
 
-on(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;,
-        options?: Options): void
+on(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options): void
 
 订阅计步检测器传感器数据。
 
@@ -943,8 +940,7 @@ try {
 
 ### ROTATION_VECTOR<sup>9+</sup>
 
-on(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;,
-        options?: Options): void
+on(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;, options?: Options): void
 
 订阅旋转矢量传感器数据。
 
@@ -1836,7 +1832,7 @@ once(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectio
 
 获取一次计步检测器传感器数据。
 
-**系需要权限**：ohos.permission.ACTIVITY_MOTION 
+**需要权限**：ohos.permission.ACTIVITY_MOTION 
 
 **系统能力**：SystemCapability.Sensors.Sensor 
 
@@ -5480,8 +5476,7 @@ try {
 
 ## sensor.getAngleVariation<sup>9+</sup>
 
- getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Array&lt;number&gt;,
-        callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Array&lt;number&gt;, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 计算两个旋转矩阵之间的角度变化，使用Callback异步方式返回结果。
 
@@ -5711,8 +5706,7 @@ try {
 
 ## sensor.transformRotationMatrix<sup>9+</sup> 
 
-transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions,
-        callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 根据指定坐标系映射旋转矩阵，使用Callback异步方式返回结果。
 
