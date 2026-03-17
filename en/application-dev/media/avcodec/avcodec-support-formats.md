@@ -29,6 +29,7 @@ Currently, the following decoding capabilities are supported:
 When you attempt to create a decoder using the MIME type, if the system supports hardware decoding, the system preferentially creates a hardware decoder instance. If the system does not support hardware decoding or the hardware decoder resources are insufficient, the system creates a software decoder instance.
 
 The decoding capability provided by the system is closely related to the device. You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
+
 For example, you can query the <!--RP16-->hardware decoding capabilities of H.264 and H.265<!--RP16End--> by using <!--RP15-->**OH_AVCODEC_MIMETYPE_VIDEO_AVC** and **OH_AVCODEC_MIMETYPE_VIDEO_HEVC**<!--RP15End-->.<!--RP16End-->
 
 For details about the development guide, see [Video Decoding](video-decoding.md).
@@ -44,6 +45,7 @@ Currently, the following encoding capabilities are supported:
 If the system does not support the required encoding capability, the encoder instance fails to be created.
 
 Supported MIME types for encoder creation include H.264 (OH_AVCODEC_MIMETYPE_VIDEO_AVC) and H.265 (OH_AVCODEC_MIMETYPE_VIDEO_HEVC).
+
 You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
 For details about the development guide, see [Video Encoding](video-encoding.md).
@@ -158,7 +160,7 @@ The keys defined for file-level data are as follows:
 
 > **NOTE**
 >
-> Custom keys must start with **com.openharmony.**. The value type can be int32_t, float, or string. The value type uint8_t* is supported since API version 20.
+> Custom keys must start with **"com.openharmony."**. The value type can be int32_t, float, or string. The value type uint8_t* is supported since API version 20.
 
 Key values of configuration options are described as follows:
 
