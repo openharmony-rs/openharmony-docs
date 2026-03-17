@@ -1259,7 +1259,7 @@ createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext,
 | 参数名   | 类型                     | 必填 | 说明                                                |
 | -------- | ----------------------- | -- |---------------------------------------------------|
 | name | string | 是 | 窗口名称。|
-| parentId | number | 是 | 指定窗口ID。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| parentId | number | 是 | 指定窗口ID。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。|
 | ctx | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是 | 当前应用上下文信息。|
 | parentWindowEventListener | [WindowEventListener](arkts-apis-window-t.md#windoweventlistener24) | 是 | 回调函数。返回绑定父窗的生命周期变化。|
 
