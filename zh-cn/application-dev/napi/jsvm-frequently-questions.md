@@ -90,6 +90,28 @@
    
    A: 调用JSVM-API时未遵循其使用规范正确管理HandleScopes生命周期，导致HandleScopes层数发生变化，调用结束后无法通过JSVM系统层检查，则返回该报错。修改请参考[JSVM-API使用规范](jsvm-guidelines.md)，优先排查注入回调函数中的JSVM-API调用点。
 
+6. Q: 在调用JSVM-API时出现崩溃，调用栈可能有如下两种情况：
+   ```txt
+   #00 pc 00000000068f670/system/lib64/libv8_shared.so(v8::internal::PagedSpaceBase::RelinkFreeListCategories(v8::internal::PageMetadata*)+72)
+   #01 pc 00000000068f670/system/lib64/libv8_shared.so(v8::internal::PagedSpaceBase::RelinkFreeListCategories(v8::internal::PageMetadata*)+80)
+   #02 pc 0000000006608bc/system/lib64/libv8_shared.so(v8::internal::MarkCompactCollector::StartSweepSpace(v8::internal::PageSpace*)+132)
+   #03 pc 000000000649de8/system/lib64/libv8_shared.so(v8::internal::MarkCompactCollector::Sweep()+576)
+   ```
+
+   ```txt
+   #00 pc 0000000003b902c/system/lib64/libv8_shared.so(Builtins_JumpIfToBooleanFalseHandler+44)
+   #01 pc 00000000022765c/system/lib64/libv8_shared.so(Builtins_InterpreterEntryTrampoline+284)
+   #02 pc 00000000022765c/system/lib64/libv8_shared.so(Builtins_InterpreterEntryTrampoline+284)
+   ```
+
+   A: 应用侧执行完`OH_JSVM_DestoryEnv()`接口后，仍在执行业务逻辑，尝试调用JSVM-API，触发Crash。该崩溃可能由两种情况产生：
+
+      a) 回调函数中含有JSVM-API，在被触发时应用侧已经执行完`OH_JSVM_DestoryEnv()`，此时若函数将JSVM-API交付给JSVM进行调用，JSVM会自动识别是否已经执行完`OH_JSVM_DestoryEnv()`，若执行完则不进行API调用。若已经执行完`OH_JSVM_DestoryEnv()`，直接在回调函数内尝试调用JSVM-API，则会抛出该异常。
+
+      b）在跨线程调用场景中，可能出现在环境线程已经执行完`OH_JSVM_DestoryEnv()`后，其他线程仍在尝试调用JSVM-API的情况，此时也会抛出该异常。
+      
+      如需获取更详细信息，请参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process)
+
 ## JSVM-API执行失败类
 
 1. Q：`OH_JSVM_GetCbInfo`无法获取JS函数参数
