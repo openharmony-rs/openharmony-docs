@@ -740,7 +740,7 @@ ArkTS-Dyn: getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: nu
 
 ArkTS-Sta: getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: int, device: DeviceType): double
 
-获取系统通过音频流、音量等级和设备类型计算出的音量db值。
+获取系统通过音频流、音量等级和设备类型计算出的音量dB值。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -760,7 +760,7 @@ ArkTS-Sta: getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: in
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: double | 音频流的音量db值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 音频流的音量dB值。 |
 
 **错误码：**
 
@@ -773,7 +773,7 @@ ArkTS-Sta: getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: in
 **示例：**
 
 ```ts
-// 获取系统通过音频流、音量等级和设备类型计算出的音量db值。
+// 获取系统通过音频流、音量等级和设备类型计算出的音量dB值。
 import { BusinessError } from '@kit.BasicServicesKit';
 import { audio } from '@kit.AudioKit'
 
