@@ -567,7 +567,7 @@ focusable(value: boolean)
 
 - 有获焦能力，但默认不可获焦的组件，典型的是Text、Image组件，此类组件缺省情况下无法获焦，若需要使其获焦，可使用通用属性focusable(true)使能。对于没有配置focusable属性，有获焦能力但默认不可获焦的组件，例如没有可获焦子组件的容器组件，为其配置onClick或是单指单击的Tap手势，该组件会隐式地成为可获焦组件。如果其focusable属性被设置为false，即使配置了上述事件，该组件依然不可获焦。
 
-- 无获焦能力的组件，通常是无任何交互行为的展示类组件，例如Blank、Circle组件，此类组件即使使用focusable属性也无法使其可获焦。
+- 无获焦能力的组件，通常是无任何交互行为的展示类组件，例如[Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md)、[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)、[Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md)组件，此类组件即使使用focusable属性也无法使其可获焦。
 
 设置容器组件可获焦：
 
