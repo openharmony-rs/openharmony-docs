@@ -1009,7 +1009,7 @@ SetTorchModeOnWithLevel(torchLevel: double): void
 
 | 参数名     | 类型             | 必填 | 说明       |
 | -------- | --------------- | ---- | --------- |
-| torchLevel | double| 是 | 手电筒亮度级别。通常范围是0.0~1.0（0为最暗，1为最亮）。 |
+| torchLevel | double| 是 | 手电筒亮度级别。通常范围是0.0~1.0（0.0为最暗，1.0为最亮）。 |
 
 **示例：**
 
