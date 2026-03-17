@@ -609,7 +609,7 @@ closeKVStore(appId: string, storeId: string, kvConfig?: Options): Promise&lt;voi
 | ------- | -------- | ---- | ------------------------------------------------------------ |
 | appId   | string   | 是   | 应用的BundleName，不可为空且长度不大于256。                           |
 | storeId | string   | 是   | 要关闭的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
-| kvConfig<sup>24+</sup> | [Options](#options)  | 否   | 要关闭的数据库的配置信息， 默认为空。 |
+| kvConfig<sup>24+</sup> | [Options](#options)  | 否   | 要关闭的数据库的配置信息，默认为空。 |
 
 **返回值：**
 
