@@ -101,7 +101,6 @@ libusb_ndk.z.so
     ret = OH_Usb_GetDeviceDescriptor(g_devHandle, &devDesc);
 ```
 
-
 2. 获取配置描述符及声明接口。
     
     使用 **usb_ddk_api.h** 的 **OH_Usb_GetConfigDescriptor** 接口获取配置描述符 **config**，并使用 OH_Usb_ClaimInterface 声明"认领"接口。
@@ -133,7 +132,6 @@ libusb_ndk.z.so
     ret = OH_Usb_ClaimInterface(g_devHandle, g_interface, &g_interfaceHandle);
 ```
 
-
 3. 获取当前激活接口的备用设置及激活备用设置（可选）。
 
     使用 **usb_ddk_api.h** 的 **OH_Usb_GetCurrentInterfaceSetting** 获取备用设置，并使用 **OH_Usb_SelectInterfaceSetting** 激活备用设置。
@@ -155,7 +153,6 @@ libusb_ndk.z.so
     }
 ```
 
-
 4. 发送控制读请求、发送控制写请求（可选）。
 
     使用 **usb_ddk_api.h** 的**OH_Usb_SendControlReadRequest**发送控制读请求，或者使用**OH_Usb_SendControlWriteRequest**发送控制写请求。
@@ -175,7 +172,6 @@ libusb_ndk.z.so
         auto ret = OH_Usb_SendControlReadRequest(g_interfaceHandle, &strDescSetup, UINT32_MAX, strDesc, &len);
     ```
 
-
     <!-- @[driver_usb_step4_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
     ``` C++
@@ -192,7 +188,6 @@ libusb_ndk.z.so
         int32_t ret = OH_Usb_SendControlWriteRequest(g_interfaceHandle, &strDescSetup, timeout, data, dataLen);
     ```
 
-
 5. 创建内存映射缓冲区及发送请求（可选）。
 
     使用 **usb_ddk_api.h** 的**OH_Usb_CreateDeviceMemMap**接口创建内存映射缓冲区**devMmap**，并使用**OH_Usb_SendPipeRequest**发送请求。
@@ -205,19 +200,17 @@ libusb_ndk.z.so
         int32_t ret = OH_Usb_CreateDeviceMemMap(g_devHandle, bufferLen, &devMmap);
     ```
 
-
     <!-- @[driver_usb_step5_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
     ``` C++
             struct UsbRequestPipe pipe;
             pipe.interfaceHandle = g_interfaceHandle;
             pipe.endpoint = g_dataEp;
-            pipe.timeout = 4; //  中断传输超时时间，保持和手写板bInterval保持一致
+            pipe.timeout = 4; // 中断传输超时时间，保持和手写板bInterval保持一致
             // 读取手写板数据
             // 通过USB中断传输方式，读取键值
             ret = OH_Usb_SendPipeRequest(&pipe, devMmap);
     ```
-
 
 6. 释放资源。
 
@@ -236,7 +229,6 @@ libusb_ndk.z.so
     // 释放USB DDK
     OH_Usb_Release();
 ```
-
 
 7. 获取可识别的USB设备列表（独立步骤，可选）。
 
