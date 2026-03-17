@@ -19,6 +19,7 @@ OpenHarmony provides two printing methods:
 > 
 > When the print service is no longer used, call **OH_Print_Release()** to release the print client resources and cancel event subscription.
 
+   
 
 ## How to Develop
 
@@ -57,7 +58,7 @@ struct Index {
     build() {
         Button("call native")
             .onClick(() => {
-                let ctx = this.getUIContext().getHostContext();; // Obtain the context of the ability.
+                let ctx = this.getUIContext().getHostContext(); // Obtain the context of the ability.
                 if (ctx === undefined) {
                     console.error('get fileUri or context failed');
                     return;

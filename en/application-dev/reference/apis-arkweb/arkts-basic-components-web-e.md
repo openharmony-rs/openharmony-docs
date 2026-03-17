@@ -70,7 +70,7 @@ Enumerates the cache modes.
 | Name     | Value| Description                                  |
 | ------- | -- | ------------------------------------ |
 | Default<sup>9+</sup> | 0 | The cache that has not expired is preferentially used to load resources. If the cache is invalid or no cache is available, resources are obtained from the Internet.|
-| None    | 1 | The cache (including expired caches) is preferentially used to load resources. If no cache is available, resources are obtained from the Internet.    |
+| None    | 1 | The cache (including expired resources) is preferentially used to load resources. If no cache is available, resources are obtained from the network.    |
 | Online  | 2 | The cache is not used to load the resources. All resources are forcibly obtained from the Internet.              |
 | Only    | 3 | The local cache alone is used to load the resources.                       |
 
