@@ -2489,7 +2489,7 @@ For details about the error codes, see [Network Connection Management Error Code
 ```typescript
 import { connection } from '@kit.NetworkKit';
 
-let result = connection.getDnsAscii ("www.example.com," connection.ConversionProcess.NO_CONFIGURATION);
+let result = connection.getDnsAscii("www.example.com," connection.ConversionProcess.NO_CONFIGURATION);
 console.info(result);  // Expected result: www.xn--fsq092h.com
 let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info(result);  // Expected result: www.example.com
@@ -2508,7 +2508,7 @@ Converts host names from ASCII to Unicode using the Punycode encoding mode and u
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ---- | ----------------- |
 | host | string | Yes| Host name to be converted.|
-| flag | [ConversionProcess](#conversionprocess23) | No| Conversion flow parameter. The default value is NO_CONFIGURATION.|
+| flag | [ConversionProcess](#conversionprocess23) | No| Conversion flow parameter. The default value is **NO_CONFIGURATION**.|
 
 **Return value**
 
@@ -2535,6 +2535,70 @@ let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.Conversi
 console.info(result);  // Expected result: www.example.com
 let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info(result);  // Expected result: www.example.com
+```
+
+## connection.getSystemNetPortStates<sup>24+</sup>
+
+getSystemNetPortStates(): Promise\<NetPortStatesInfo>
+
+Obtains information about all TCP and UDP ports currently listened by the system, and the PID and UID of the processes that listen for the ports. Both IPv4 and IPv6 addresses are supported. 
+
+> **NOTE**
+>
+> This API is used to obtain information about the TCP and UDP ports currently listened by the system. The detailed fields are as follows:
+>
+>  TCP port fields: local address, local port, remote address, remote port, TCP connection status, process PID, and process UID 
+>
+>  UDP port fields: local address, local port, process PID, and process UID 
+
+**Required permissions**: ohos.permission.GET_IP_MAC_INFO
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Return value**
+
+| Type  | Description                    |
+| ------ | ----------------------- |
+| Promise\<[NetPortStatesInfo](#netportstatesinfo24)> | Promise used to return the TCP and UDP port information.|
+
+
+**Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                         |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100002 | Failed to connect to the service.|
+| 2100003 | System internal error.            |
+
+**Example**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getSystemNetPortStates().then((data: connection.NetPortStatesInfo) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  if (data.tcpPortStatesInfo?.length) {
+    data.tcpPortStatesInfo?.forEach(item => {
+      console.info(`Succeeded to get Tcp data: ${JSON.stringify(item)}`);
+    })
+  } else {
+    console.info("TcpPortStatesInfo is undefined ");
+  }
+  if (data.udpPortStatesInfo?.length) {
+    data.udpPortStatesInfo?.forEach(item => {
+      console.info(`Succeeded to get Udp data: ${JSON.stringify(item)}`);
+    })
+  } else {
+    console.info("UdpPortStatesInfo is undefined ");
+  }
+}).catch((error: BusinessError) => {
+  console.error(`Error fetching getSystemNetPortStates. Code:${error.code}, message:${error.message}`);
+});
 ```
 
 ## NetConnection
@@ -3384,6 +3448,28 @@ Enumerates the parameters of the ASCII/Unicode transcoding process.
 | ALLOW_UNASSIGNED | 1 | Allows the translation of domain names that contain unassigned Unicode code points (in a Unicode character set, not all code points are assigned characters, i.e., unassigned Unicode code points).|
 | USE_STD3_ASCII_RULES | 2 | During the conversion, the STD-3 ASCII rule (RFC 1123 standard) is forcibly used to check the generated ASCII domain name.|
 
+## TcpState
+
+Enumerates TCP states.
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+|            Name        | Value  | Description       |
+| ----------------------- | ---- | ---------- |
+| ESTABLISHED | 1  | The connection is established, and data can be sent and received properly. |
+| SYN_SENT    | 2  | The client sends SYN and waits for ACK+SYN from the server (the first step of the three-way handshake).|
+| SYN_RECV    | 3  | The server receives SYN and sends ACK+SYN, and waits for ACK from the client (the second step of the three-way handshake).|
+| FIN_WAIT1   | 4  | The active end sends FIN and waits for ACK from the peer end.|
+| FIN_WAIT2   | 5  | The active end receives ACK of FIN and waits for ACK from the peer end.|
+| TIME_WAIT   | 6  | The active end receives FIN from the peer end and replies with ACK. After 2MSL (maximum segment lifetime), the connection is completely released.|
+| CLOSE       | 7  | Initial/closed state, with no connection.|
+| CLOSE_WAIT  | 8  | The passive end receives FIN and sends ACK, and waits for FIN from the peer end.|
+| LAST_ACK    | 9  | The passive end sends FIN and waits for ACK from the peer end.|
+| LISTEN      | 10 | The server listens and waits for the client to connect.|
+| CLOSING     | 11 | Both ends send FIN and wait for ACK from each other.  |
+
 ## HttpProxy<sup>10+</sup>
 
 Represents the HTTP proxy configuration.
@@ -3608,3 +3694,51 @@ Enumerates network protocol types.
 | --------------- | ---- | ------------ |
 | PROTO_TYPE_TCP  | 6    | TCP network protocol.|
 | PROTO_TYPE_UDP  | 17   | UDP network protocol.|
+
+## TcpNetPortStatesInfo<sup>24+</sup>
+
+Describes the TCP port state information.
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| tcpLocalIp    | string | No| No|Local IP address of the TCP network.                      |
+| tcpLocalPort  | number | No| Yes|Local port of the TCP network. The value range is [0, 65535]. The default value is **0**.|
+| tcpRemoteIp   | string | No| Yes|Remote IP address of the TCP network. The default value is **0.0.0.0**. |
+| tcpRemotePort | number | No| Yes|Remote port of the TCP network. The value range is [0, 65535]. The default value is **0**.|
+| tcpUid        | number | No| Yes|UID of the process that listens for the TCP port. The default value is **0**.|
+| tcpPid        | number | No| Yes|UID of the user who listens for the TCP port. The default value is **0**.|
+| tcpState      | [TcpState](#tcpstate) | No| Yes|TCP network state. The default value is **0**. |
+
+
+## UdpNetPortStatesInfo<sup>24+</sup>
+
+Describes the UDP port state information.
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| udpLocalIp    | string | No| No|Local IP address of the UDP network.                      |
+| udpLocalPort  | number | No| Yes|Local port of the UDP network. The value range is [0, 65535]. The default value is **0**.|
+| udpUid        | number | No| Yes|UID of the process that listens for the UDP port. The default value is **0**.|
+| udpPid        | number | No| Yes|UID of the user who listens for the UDP port. The default value is **0**.|
+
+
+## NetPortStatesInfo<sup>24+</sup>
+
+Describes the information about the TCP and UDP ports that are currently listened for by the system.
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo>](#tcpnetportstatesinfo24)\> | No| No| TCP information currently listened for by the system.  |
+| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | No| No| UDP information currently listened for by the system.  |

@@ -74,7 +74,7 @@ The current FrameNode and the target FrameNode do not have a common ancestor nod
 
 **Description**
 
-This error code is reported when the current node and the target node do not share a common parent node.
+This error code is reported when the current node and the target node do not share a common ancestor node.
 
 **Possible Causes**
 

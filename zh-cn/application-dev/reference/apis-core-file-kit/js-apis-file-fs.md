@@ -36,7 +36,7 @@ import { fileIo as fs } from '@kit.CoreFileKit';
 
 获取沙箱路径的方式及其接口用法也可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>将指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义解及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
 
-## fs.stat
+## fileIo.stat
 
 stat(file: string | number): Promise&lt;Stat&gt;
 
@@ -74,7 +74,7 @@ stat(file: string | number): Promise&lt;Stat&gt;
   });
   ```
 
-## fs.stat
+## fileIo.stat
 
 stat(file: string | number, callback: AsyncCallback&lt;Stat&gt;): void
 
@@ -108,7 +108,7 @@ stat(file: string | number, callback: AsyncCallback&lt;Stat&gt;): void
   });
   ```
 
-## fs.statSync
+## fileIo.statSync
 
 statSync(file: string | number): Stat
 
@@ -141,7 +141,7 @@ statSync(file: string | number): Stat
   console.info("get file info succeed, the size of file is " + stat.size);
   ```
 
-## fs.access
+## fileIo.access
 
 access(path: string, mode?: AccessModeType): Promise&lt;boolean&gt;
 
@@ -185,7 +185,7 @@ access(path: string, mode?: AccessModeType): Promise&lt;boolean&gt;
   });
   ```
 
-## fs.access<sup>12+</sup>
+## fileIo.access<sup>12+</sup>
 
 access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boolean&gt;
 
@@ -227,7 +227,7 @@ access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boo
   });
   ```
 
-## fs.access
+## fileIo.access
 
 access(path: string, callback: AsyncCallback&lt;boolean&gt;): void
 
@@ -267,7 +267,7 @@ access(path: string, callback: AsyncCallback&lt;boolean&gt;): void
   });
   ```
 
-## fs.accessSync
+## fileIo.accessSync
 
 accessSync(path: string, mode?: AccessModeType): boolean
 
@@ -312,7 +312,7 @@ accessSync(path: string, mode?: AccessModeType): boolean
   }
   ```
 
-## fs.accessSync<sup>12+</sup>
+## fileIo.accessSync<sup>12+</sup>
 
 accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
@@ -356,7 +356,7 @@ accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
   }
   ```
 
-## fs.close
+## fileIo.close
 
 close(file: number | File): Promise&lt;void&gt;
 
@@ -395,7 +395,7 @@ close(file: number | File): Promise&lt;void&gt;
   });
   ```
 
-## fs.close
+## fileIo.close
 
 close(file: number | File, callback: AsyncCallback&lt;void&gt;): void
 
@@ -431,7 +431,7 @@ close(file: number | File, callback: AsyncCallback&lt;void&gt;): void
   });
   ```
 
-## fs.closeSync
+## fileIo.closeSync
 
 closeSync(file: number | File): void
 
@@ -459,7 +459,7 @@ closeSync(file: number | File): void
   fs.closeSync(file);
   ```
 
-## fs.copy<sup>11+</sup>
+## fileIo.copy<sup>11+</sup>
 
 copy(srcUri: string, destUri: string, options?: CopyOptions): Promise\<void>
 
@@ -518,7 +518,7 @@ try {
 }
 ```
 
-## fs.copy<sup>11+</sup>
+## fileIo.copy<sup>11+</sup>
 
 copy(srcUri: string, destUri: string, callback: AsyncCallback\<void>): void
 
@@ -566,7 +566,7 @@ try {
 }
 ```
 
-## fs.copy<sup>11+</sup>
+## fileIo.copy<sup>11+</sup>
 
 copy(srcUri: string, destUri: string, options: CopyOptions, callback: AsyncCallback\<void>): void
 
@@ -622,7 +622,7 @@ try {
 }
 ```
 
-## fs.copyFile
+## fileIo.copyFile
 
 copyFile(src: string | number, dest: string | number, mode?: number): Promise&lt;void&gt;
 
@@ -663,7 +663,7 @@ copyFile(src: string | number, dest: string | number, mode?: number): Promise&lt
   });
   ```
 
-## fs.copyFile
+## fileIo.copyFile
 
 copyFile(src: string | number, dest: string | number, mode: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -701,7 +701,7 @@ copyFile(src: string | number, dest: string | number, mode: number, callback: As
   });
   ```
 
-## fs.copyFile
+## fileIo.copyFile
 
 copyFile(src: string | number, dest: string | number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -739,7 +739,7 @@ copyFile(src: string | number, dest: string | number, callback: AsyncCallback&lt
   ```
 
 
-## fs.copyFileSync
+## fileIo.copyFileSync
 
 copyFileSync(src: string | number, dest: string | number, mode?: number): void
 
@@ -769,7 +769,7 @@ copyFileSync(src: string | number, dest: string | number, mode?: number): void
   fs.copyFileSync(srcPath, dstPath);
   ```
 
-## fs.copyDir<sup>10+</sup>
+## fileIo.copyDir<sup>10+</sup>
 
 copyDir(src: string, dest: string, mode?: number): Promise\<void>
 
@@ -809,7 +809,7 @@ copyDir(src: string, dest: string, mode?: number): Promise\<void>
   });
   ```
 
-## fs.copyDir<sup>10+</sup>
+## fileIo.copyDir<sup>10+</sup>
 
 copyDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -851,7 +851,7 @@ copyDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
   });
   ```
 
-## fs.copyDir<sup>10+</sup>
+## fileIo.copyDir<sup>10+</sup>
 
 copyDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -894,7 +894,7 @@ copyDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
   });
   ```
 
-## fs.copyDirSync<sup>10+</sup>
+## fileIo.copyDirSync<sup>10+</sup>
 
 copyDirSync(src: string, dest: string, mode?: number): void
 
@@ -930,7 +930,7 @@ copyDirSync(src: string, dest: string, mode?: number): void
   }
   ```
 
-## fs.dup<sup>10+</sup>
+## fileIo.dup<sup>10+</sup>
 
 dup(fd: number): File
 
@@ -966,7 +966,7 @@ dup(fd: number): File
   fs.closeSync(file2);
   ```
 
-## fs.connectDfs<sup>12+</sup>
+## fileIo.connectDfs<sup>12+</sup>
 
 connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 
@@ -981,7 +981,7 @@ connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
   | 参数名  | 类型     | 必填   | 说明                                       |
   | ---- | ------ | ---- | ---------------------------------------- |
   | networkId   | string | 是    | 设备的网络Id。通过[distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)接口调用[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)获得。                             |
-  | listeners | [DfsListeners](#fsdfslisteners12) | 是    | 分布式文件系统状态监听器。                |
+  | listeners | [DfsListeners](#fileiodfslisteners12) | 是    | 分布式文件系统状态监听器。                |
 
 **返回值：**
 
@@ -1017,7 +1017,7 @@ connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
   }
   ```
 
-## fs.disconnectDfs<sup>12+</sup>
+## fileIo.disconnectDfs<sup>12+</sup>
 
 disconnectDfs(networkId: string): Promise&lt;void&gt;
 
@@ -1062,7 +1062,7 @@ disconnectDfs(networkId: string): Promise&lt;void&gt;
   }
   ```
 
-## fs.setxattr<sup>12+</sup>
+## fileIo.setxattr<sup>12+</sup>
 
 setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
 
@@ -1104,7 +1104,7 @@ setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
   });
 
   ```
-## fs.setxattrSync<sup>12+</sup>
+## fileIo.setxattrSync<sup>12+</sup>
 
 setxattrSync(path: string, key: string, value: string): void
 
@@ -1142,7 +1142,7 @@ setxattrSync(path: string, key: string, value: string): void
 
   ```
 
-## fs.getxattr<sup>12+</sup>
+## fileIo.getxattr<sup>12+</sup>
 
 getxattr(path: string, key: string): Promise&lt;string&gt;
 
@@ -1183,7 +1183,7 @@ getxattr(path: string, key: string): Promise&lt;string&gt;
 
   ```
 
-## fs.getxattrSync<sup>12+</sup>
+## fileIo.getxattrSync<sup>12+</sup>
 
 getxattrSync(path: string, key: string): string
 
@@ -1225,7 +1225,7 @@ getxattrSync(path: string, key: string): string
 
   ```
 
-## fs.mkdir
+## fileIo.mkdir
 
 mkdir(path: string): Promise&lt;void&gt;
 
@@ -1263,7 +1263,7 @@ mkdir(path: string): Promise&lt;void&gt;
   });
   ```
 
-## fs.mkdir<sup>11+</sup>
+## fileIo.mkdir<sup>11+</sup>
 
 mkdir(path: string, recursion: boolean): Promise\<void>
 
@@ -1302,7 +1302,7 @@ mkdir(path: string, recursion: boolean): Promise\<void>
   });
   ```
 
-## fs.mkdir
+## fileIo.mkdir
 
 mkdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1337,7 +1337,7 @@ mkdir(path: string, callback: AsyncCallback&lt;void&gt;): void
   });
   ```
 
-## fs.mkdir<sup>11+</sup>
+## fileIo.mkdir<sup>11+</sup>
 
 mkdir(path: string, recursion: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1373,7 +1373,7 @@ mkdir(path: string, recursion: boolean, callback: AsyncCallback&lt;void&gt;): vo
   });
   ```
 
-## fs.mkdirSync
+## fileIo.mkdirSync
 
 mkdirSync(path: string): void
 
@@ -1400,7 +1400,7 @@ mkdirSync(path: string): void
   fs.mkdirSync(dirPath);
   ```
 
-## fs.mkdirSync<sup>11+</sup>
+## fileIo.mkdirSync<sup>11+</sup>
 
 mkdirSync(path: string, recursion: boolean): void
 
@@ -1428,7 +1428,7 @@ mkdirSync(path: string, recursion: boolean): void
   fs.mkdirSync(dirPath, true);
   ```
 
-## fs.open
+## fileIo.open
 
 open(path: string, mode?: number): Promise&lt;File&gt;
 
@@ -1469,7 +1469,7 @@ open(path: string, mode?: number): Promise&lt;File&gt;
   ```
 
 
-## fs.open
+## fileIo.open
 
 open(path: string, mode: number, callback: AsyncCallback&lt;File&gt;): void
 
@@ -1508,7 +1508,7 @@ open(path: string, mode: number, callback: AsyncCallback&lt;File&gt;): void
   });
   ```
 
-## fs.open
+## fileIo.open
 
 open(path: string, callback: AsyncCallback&lt;File&gt;): void
 
@@ -1544,7 +1544,7 @@ open(path: string, callback: AsyncCallback&lt;File&gt;): void
   });
   ```
 
-## fs.openSync
+## fileIo.openSync
 
 openSync(path: string, mode?: number): File
 
@@ -1580,7 +1580,7 @@ openSync(path: string, mode?: number): File
   fs.closeSync(file);
   ```
 
-## fs.read
+## fileIo.read
 
 read(fd: number, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&gt;
 
@@ -1627,7 +1627,7 @@ read(fd: number, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&
   });
   ```
 
-## fs.read
+## fileIo.read
 
 read(fd: number, buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallback&lt;number&gt;): void
 
@@ -1670,7 +1670,7 @@ read(fd: number, buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCall
   });
   ```
 
-## fs.readSync
+## fileIo.readSync
 
 readSync(fd: number, buffer: ArrayBuffer, options?: ReadOptions): number
 
@@ -1708,7 +1708,7 @@ readSync(fd: number, buffer: ArrayBuffer, options?: ReadOptions): number
   fs.closeSync(file);
   ```
 
-## fs.rmdir
+## fileIo.rmdir
 
 rmdir(path: string): Promise&lt;void&gt;
 
@@ -1750,7 +1750,7 @@ rmdir(path: string): Promise&lt;void&gt;
   });
   ```
 
-## fs.rmdir
+## fileIo.rmdir
 
 rmdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1789,7 +1789,7 @@ rmdir(path: string, callback: AsyncCallback&lt;void&gt;): void
   });
   ```
 
-## fs.rmdirSync
+## fileIo.rmdirSync
 
 rmdirSync(path: string): void
 
@@ -1820,7 +1820,7 @@ rmdirSync(path: string): void
   fs.rmdirSync(dirPath);
   ```
 
-## fs.unlink
+## fileIo.unlink
 
 unlink(path: string): Promise&lt;void&gt;
 
@@ -1858,7 +1858,7 @@ unlink(path: string): Promise&lt;void&gt;
   });
   ```
 
-## fs.unlink
+## fileIo.unlink
 
 unlink(path: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1893,7 +1893,7 @@ unlink(path: string, callback: AsyncCallback&lt;void&gt;): void
   });
   ```
 
-## fs.unlinkSync
+## fileIo.unlinkSync
 
 unlinkSync(path: string): void
 
@@ -1921,7 +1921,7 @@ unlinkSync(path: string): void
   ```
 
 
-## fs.write
+## fileIo.write
 
 write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;number&gt;
 
@@ -1965,7 +1965,7 @@ write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): Promise
   });
   ```
 
-## fs.write
+## fileIo.write
 
 write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions, callback: AsyncCallback&lt;number&gt;): void
 
@@ -2005,7 +2005,7 @@ write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions, callback
   });
   ```
 
-## fs.writeSync
+## fileIo.writeSync
 
 writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): number
 
@@ -2044,7 +2044,7 @@ writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): num
   fs.closeSync(file);
   ```
 
-## fs.truncate
+## fileIo.truncate
 
 truncate(file: string | number, len?: number): Promise&lt;void&gt;
 
@@ -2084,7 +2084,7 @@ truncate(file: string | number, len?: number): Promise&lt;void&gt;
   });
   ```
 
-## fs.truncate
+## fileIo.truncate
 
 truncate(file: string | number, len?: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2121,7 +2121,7 @@ truncate(file: string | number, len?: number, callback: AsyncCallback&lt;void&gt
   });
   ```
 
-## fs.truncateSync
+## fileIo.truncateSync
 
 truncateSync(file: string | number, len?: number): void
 
@@ -2150,7 +2150,7 @@ truncateSync(file: string | number, len?: number): void
   fs.truncateSync(filePath, len);
   ```
 
-## fs.readLines<sup>11+</sup>
+## fileIo.readLines<sup>11+</sup>
 
 readLines(filePath: string, options?: Options): Promise&lt;ReaderIterator&gt;
 
@@ -2193,7 +2193,7 @@ readLines(filePath: string, options?: Options): Promise&lt;ReaderIterator&gt;
   });
   ```
 
-## fs.readLines<sup>11+</sup>
+## fileIo.readLines<sup>11+</sup>
 
 readLines(filePath: string, options?: Options, callback: AsyncCallback&lt;ReaderIterator&gt;): void
 
@@ -2233,7 +2233,7 @@ readLines(filePath: string, options?: Options, callback: AsyncCallback&lt;Reader
   });
   ```
 
-## fs.readLinesSync<sup>11+</sup>
+## fileIo.readLinesSync<sup>11+</sup>
 
 readLinesSync(filePath: string, options?: Options): ReaderIterator
 
@@ -2327,7 +2327,7 @@ next(): ReaderIteratorResult
 | done | boolean     |  迭代器是否已完成迭代。true：已完成迭代；false：未完成迭代。          |
 | value    | string     | 逐行读取的文件文本内容。 |
 
-## fs.readText
+## fileIo.readText
 
 readText(filePath: string, options?: ReadTextOptions): Promise&lt;string&gt;
 
@@ -2366,7 +2366,7 @@ readText(filePath: string, options?: ReadTextOptions): Promise&lt;string&gt;
   });
   ```
 
-## fs.readText
+## fileIo.readText
 
 readText(filePath: string, options?: ReadTextOptions, callback: AsyncCallback&lt;string&gt;): void
 
@@ -2409,7 +2409,7 @@ readText(filePath: string, options?: ReadTextOptions, callback: AsyncCallback&lt
   });
   ```
 
-## fs.readTextSync
+## fileIo.readTextSync
 
 readTextSync(filePath: string, options?: ReadTextOptions): string
 
@@ -2452,7 +2452,7 @@ readTextSync(filePath: string, options?: ReadTextOptions): string
   console.info("readText succeed:" + str);
   ```
 
-## fs.lstat
+## fileIo.lstat
 
 lstat(path: string): Promise&lt;Stat&gt;
 
@@ -2488,7 +2488,7 @@ lstat(path: string): Promise&lt;Stat&gt;
   });
   ```
 
-## fs.lstat
+## fileIo.lstat
 
 lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
 
@@ -2521,7 +2521,7 @@ lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
   });
   ```
 
-## fs.lstatSync
+## fileIo.lstatSync
 
 lstatSync(path: string): Stat
 
@@ -2553,7 +2553,7 @@ lstatSync(path: string): Stat
   console.info("lstat succeed, the size of file is " + fileStat.size);
   ```
 
-## fs.rename
+## fileIo.rename
 
 rename(oldPath: string, newPath: string): Promise&lt;void&gt;
 
@@ -2597,7 +2597,7 @@ rename(oldPath: string, newPath: string): Promise&lt;void&gt;
   });
   ```
 
-## fs.rename
+## fileIo.rename
 
 rename(oldPath: string, newPath: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2638,7 +2638,7 @@ rename(oldPath: string, newPath: string, callback: AsyncCallback&lt;void&gt;): v
   });
   ```
 
-## fs.renameSync
+## fileIo.renameSync
 
 renameSync(oldPath: string, newPath: string): void
 
@@ -2671,7 +2671,7 @@ renameSync(oldPath: string, newPath: string): void
   fs.renameSync(srcFile, dstFile);
   ```
 
-## fs.fsync
+## fileIo.fsync
 
 fsync(fd: number): Promise&lt;void&gt;
 
@@ -2710,7 +2710,7 @@ fsync(fd: number): Promise&lt;void&gt;
   });
   ```
 
-## fs.fsync
+## fileIo.fsync
 
 fsync(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2746,7 +2746,7 @@ fsync(fd: number, callback: AsyncCallback&lt;void&gt;): void
   ```
 
 
-## fs.fsyncSync
+## fileIo.fsyncSync
 
 fsyncSync(fd: number): void
 
@@ -2773,7 +2773,7 @@ fsyncSync(fd: number): void
   fs.closeSync(file);
   ```
 
-## fs.fdatasync
+## fileIo.fdatasync
 
 fdatasync(fd: number): Promise&lt;void&gt;
 
@@ -2812,7 +2812,7 @@ fdatasync(fd: number): Promise&lt;void&gt;
   });
   ```
 
-## fs.fdatasync
+## fileIo.fdatasync
 
 fdatasync(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2847,7 +2847,7 @@ fdatasync(fd: number, callback: AsyncCallback&lt;void&gt;): void
   });
   ```
 
-## fs.fdatasyncSync
+## fileIo.fdatasyncSync
 
 fdatasyncSync(fd: number): void
 
@@ -2874,7 +2874,7 @@ fdatasyncSync(fd: number): void
   fs.closeSync(file);
   ```
 
-## fs.symlink
+## fileIo.symlink
 
 symlink(target: string, srcPath: string): Promise&lt;void&gt;
 
@@ -2917,7 +2917,7 @@ symlink(target: string, srcPath: string): Promise&lt;void&gt;
   ```
 
 
-## fs.symlink
+## fileIo.symlink
 symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): void
 
 基于文件路径创建符号链接，使用callback异步回调。
@@ -2955,7 +2955,7 @@ symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): v
   });
   ```
 
-## fs.symlinkSync
+## fileIo.symlinkSync
 
 symlinkSync(target: string, srcPath: string): void
 
@@ -2986,7 +2986,7 @@ symlinkSync(target: string, srcPath: string): void
   fs.symlinkSync(srcFile, dstFile);
   ```
 
-## fs.listFile
+## fileIo.listFile
 listFile(path: string, options?: ListFileOptions): Promise<string[]>
 
 默认列出当前目录下所有文件名和目录名。支持过滤。使用promise异步回调。
@@ -3039,7 +3039,7 @@ listFile(path: string, options?: ListFileOptions): Promise<string[]>
   });
   ```
 
-## fs.listFile
+## fileIo.listFile
 listFile(path: string, options?: ListFileOptions, callback: AsyncCallback<string[]>): void
 
 默认列出当前目录下所有文件名和目录名。支持过滤。使用callback异步回调。
@@ -3089,7 +3089,7 @@ listFile(path: string, options?: ListFileOptions, callback: AsyncCallback<string
   });
   ```
 
-## fs.listFileSync
+## fileIo.listFileSync
 
 listFileSync(path: string, options?: ListFileOptions): string[]
 
@@ -3139,7 +3139,7 @@ listFileSync(path: string, options?: ListFileOptions): string[]
   }
   ```
 
-## fs.lseek<sup>11+</sup>
+## fileIo.lseek<sup>11+</sup>
 
 lseek(fd: number, offset: number, whence?: WhenceType): number
 
@@ -3174,7 +3174,7 @@ lseek(fd: number, offset: number, whence?: WhenceType): number
   fs.closeSync(file);
   ```
 
-## fs.moveDir<sup>10+</sup>
+## fileIo.moveDir<sup>10+</sup>
 
 moveDir(src: string, dest: string, mode?: number): Promise\<void>
 
@@ -3217,7 +3217,7 @@ moveDir(src: string, dest: string, mode?: number): Promise\<void>
   });
   ```
 
-## fs.moveDir<sup>10+</sup>
+## fileIo.moveDir<sup>10+</sup>
 
 moveDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -3262,7 +3262,7 @@ moveDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
   });
   ```
 
-  ## fs.moveDir<sup>10+</sup>
+## fileIo.moveDir<sup>10+</sup>
 
 moveDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -3308,7 +3308,7 @@ moveDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
   });
   ```
 
-## fs.moveDirSync<sup>10+</sup>
+## fileIo.moveDirSync<sup>10+</sup>
 
 moveDirSync(src: string, dest: string, mode?: number): void
 
@@ -3354,7 +3354,7 @@ try {
 }
 ```
 
-## fs.moveFile
+## fileIo.moveFile
 
 moveFile(src: string, dest: string, mode?: number): Promise\<void>
 
@@ -3397,7 +3397,7 @@ moveFile(src: string, dest: string, mode?: number): Promise\<void>
   });
   ```
 
-## fs.moveFile
+## fileIo.moveFile
 
 moveFile(src: string, dest: string, mode: number, callback: AsyncCallback\<void>): void
 
@@ -3437,7 +3437,7 @@ moveFile(src: string, dest: string, mode: number, callback: AsyncCallback\<void>
   });
   ```
 
-## fs.moveFile
+## fileIo.moveFile
 
 moveFile(src: string, dest: string, callback: AsyncCallback\<void>): void
 
@@ -3476,7 +3476,7 @@ moveFile(src: string, dest: string, callback: AsyncCallback\<void>): void
   });
   ```
 
-## fs.moveFileSync
+## fileIo.moveFileSync
 
 moveFileSync(src: string, dest: string, mode?: number): void
 
@@ -3509,7 +3509,7 @@ moveFileSync(src: string, dest: string, mode?: number): void
   console.info("move file succeed");
   ```
 
-## fs.mkdtemp
+## fileIo.mkdtemp
 
 mkdtemp(prefix: string): Promise&lt;string&gt;
 
@@ -3544,7 +3544,7 @@ mkdtemp(prefix: string): Promise&lt;string&gt;
   });
   ```
 
-## fs.mkdtemp
+## fileIo.mkdtemp
 
 mkdtemp(prefix: string, callback: AsyncCallback&lt;string&gt;): void
 
@@ -3576,7 +3576,7 @@ mkdtemp(prefix: string, callback: AsyncCallback&lt;string&gt;): void
   });
   ```
 
-## fs.mkdtempSync
+## fileIo.mkdtempSync
 
 mkdtempSync(prefix: string): string
 
@@ -3606,7 +3606,7 @@ mkdtempSync(prefix: string): string
   let res = fs.mkdtempSync(pathDir + "/XXXXXX");
   ```
 
-## fs.utimes<sup>11+</sup>
+## fileIo.utimes<sup>11+</sup>
 
 utimes(path: string, mtime: number): void
 
@@ -3634,7 +3634,7 @@ utimes(path: string, mtime: number): void
   fs.utimes(filePath, new Date().getTime());
   ```
 
-## fs.createRandomAccessFile<sup>10+</sup>
+## fileIo.createRandomAccessFile<sup>10+</sup>
 
 createRandomAccessFile(file: string | File, mode?: number): Promise&lt;RandomAccessFile&gt;
 
@@ -3674,7 +3674,7 @@ createRandomAccessFile(file: string | File, mode?: number): Promise&lt;RandomAcc
   });
   ```
 
-## fs.createRandomAccessFile<sup>10+</sup>
+## fileIo.createRandomAccessFile<sup>10+</sup>
 
 createRandomAccessFile(file: string | File, callback: AsyncCallback&lt;RandomAccessFile&gt;): void
 
@@ -3709,7 +3709,7 @@ createRandomAccessFile(file: string | File, callback: AsyncCallback&lt;RandomAcc
   });
   ```
 
-  ## fs.createRandomAccessFile<sup>10+</sup>
+## fileIo.createRandomAccessFile<sup>10+</sup>
 
 createRandomAccessFile(file: string | File, mode: number, callback: AsyncCallback&lt;RandomAccessFile&gt;): void
 
@@ -3745,7 +3745,7 @@ createRandomAccessFile(file: string | File, mode: number, callback: AsyncCallbac
   });
   ```
 
-## fs.createRandomAccessFile<sup>12+</sup>
+## fileIo.createRandomAccessFile<sup>12+</sup>
 
 createRandomAccessFile(file: string | File, mode?: number, options?: RandomAccessFileOptions): Promise&lt;RandomAccessFile&gt;
 
@@ -3785,7 +3785,7 @@ fs.createRandomAccessFile(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE,
 ```
 
 
-## fs.createRandomAccessFileSync<sup>10+</sup>
+## fileIo.createRandomAccessFileSync<sup>10+</sup>
 
 createRandomAccessFileSync(file: string | File, mode?: number): RandomAccessFile
 
@@ -3819,7 +3819,7 @@ createRandomAccessFileSync(file: string | File, mode?: number): RandomAccessFile
   randomAccessFile.close();
   ```
 
-## fs.createRandomAccessFileSync<sup>12+</sup>
+## fileIo.createRandomAccessFileSync<sup>12+</sup>
 
 createRandomAccessFileSync(file: string | File, mode?: number, options?: RandomAccessFileOptions): RandomAccessFile
 
@@ -3854,7 +3854,7 @@ createRandomAccessFileSync(file: string | File, mode?: number, options?: RandomA
   randomAccessFile.close();
   ```
 
-## fs.createStream
+## fileIo.createStream
 
 createStream(path: string, mode: string): Promise&lt;Stream&gt;
 
@@ -3895,7 +3895,7 @@ createStream(path: string, mode: string): Promise&lt;Stream&gt;
   ```
 
 
-## fs.createStream
+## fileIo.createStream
 
 createStream(path: string, mode: string, callback: AsyncCallback&lt;Stream&gt;): void
 
@@ -3932,7 +3932,7 @@ createStream(path: string, mode: string, callback: AsyncCallback&lt;Stream&gt;):
   })
   ```
 
-## fs.createStreamSync
+## fileIo.createStreamSync
 
 createStreamSync(path: string, mode: string): Stream
 
@@ -3969,7 +3969,7 @@ createStreamSync(path: string, mode: string): Stream
   ```
 
 
-## fs.fdopenStream
+## fileIo.fdopenStream
 
 fdopenStream(fd: number, mode: string): Promise&lt;Stream&gt;
 
@@ -4016,7 +4016,7 @@ fdopenStream(fd: number, mode: string): Promise&lt;Stream&gt;
 >
 > 使用文件描述符创建的文件流时，文件描述符的生命周期将由文件流对象管理。调用文件流的close()函数后，初始的文件描述符也会被关闭。
 
-## fs.fdopenStream
+## fileIo.fdopenStream
 
 fdopenStream(fd: number, mode: string, callback: AsyncCallback&lt;Stream&gt;): void
 
@@ -4060,7 +4060,7 @@ fdopenStream(fd: number, mode: string, callback: AsyncCallback&lt;Stream&gt;): v
 >
 > 使用文件描述符创建的文件流，文件描述符的生命周期也交由文件流对象，在调用文件流的close()函数后，初始的文件描述符也会被关闭。
 
-## fs.fdopenStreamSync
+## fileIo.fdopenStreamSync
 
 fdopenStreamSync(fd: number, mode: string): Stream
 
@@ -4100,7 +4100,7 @@ fdopenStreamSync(fd: number, mode: string): Stream
 >
 > 使用文件描述符创建的文件流，文件描述符的生命周期也交由文件流对象，在调用文件流的close()函数后，初始的文件描述符也会被关闭。
 
-## fs.createReadStream<sup>12+</sup>
+## fileIo.createReadStream<sup>12+</sup>
 
 createReadStream(path: string, options?: ReadStreamOptions ): ReadStream
 
@@ -4142,7 +4142,7 @@ createReadStream(path: string, options?: ReadStreamOptions ): ReadStream
   });
   ```
 
-## fs.createWriteStream<sup>12+</sup>
+## fileIo.createWriteStream<sup>12+</sup>
 
 createWriteStream(path: string, options?: WriteStreamOptions): WriteStream
 
@@ -4225,7 +4225,7 @@ getBaseFile(): File
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4267,7 +4267,7 @@ openRead(): ReadStream
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4318,7 +4318,7 @@ readFully(): ArrayBuffer
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4369,7 +4369,7 @@ startWrite(): WriteStream
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4404,7 +4404,7 @@ finishWrite(): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4438,7 +4438,7 @@ failWrite(): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4473,7 +4473,7 @@ delete(): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4505,7 +4505,7 @@ try {
 }
 ```
 
-## fs.createWatcher<sup>10+</sup>
+## fileIo.createWatcher<sup>10+</sup>
 
 createWatcher(path: string, events: number, listener: WatchEventListener): Watcher
 
@@ -4725,7 +4725,7 @@ copySignal.onCancel();
 
 ## Stat
 
-文件具体信息，在调用Stat的方法前，需要先通过[stat()](#fsstat)方法（同步或异步）构建一个Stat实例。
+文件具体信息，在调用Stat的方法前，需要先通过[stat()](#fileiostat)方法（同步或异步）构建一个Stat实例。
 
 ### 属性
 
@@ -4931,7 +4931,7 @@ isSymbolicLink(): boolean
 
 ## Stream
 
-文件流，在调用Stream的方法前，需要先通过[fs.createStream](#fscreatestream)方法或者[fs.fdopenStream](#fsfdopenstream)（同步或异步）来构建一个Stream实例。
+文件流，在调用Stream的方法前，需要先通过[fileIo.createStream](#fileiocreatestream)方法或者[fileIo.fdopenStream](#fileiofdopenstream)（同步或异步）来构建一个Stream实例。
 
 ### close
 
@@ -5557,7 +5557,7 @@ unlock(): void
   fs.closeSync(file);
   ```
 
-## fs.DfsListeners<sup>12+</sup>
+## fileIo.DfsListeners<sup>12+</sup>
 
 事件监听类。创建DFSListener对象，用于监听分布式文件系统状态。
 
@@ -5567,7 +5567,7 @@ unlock(): void
 
 onStatus(networkId: string, status: number): void;
 
-事件回调类。参数由[connectDfs](#fsconnectdfs12)传入。
+事件回调类。参数由[connectDfs](#fileioconnectdfs12)传入。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -6173,7 +6173,7 @@ open接口flags参数常量。文件打开标签。
 
 ## ReadStream<sup>12+</sup>
 
-文件可读流，需要先通过[fs.createReadStream](#fscreatereadstream12)方法来构建一个ReadStream实例。ReadStream继承自数据流基类[stream.Readable](../apis-arkts/js-apis-stream.md#readable)。
+文件可读流，需要先通过[fileIo.createReadStream](#fileiocreatereadstream12)方法来构建一个ReadStream实例。ReadStream继承自数据流基类[stream.Readable](../apis-arkts/js-apis-stream.md#readable)。
 
 **规格**：ReadStream读到的数据为解码后的字符串，其编码格式当前仅支持'utf-8'。
 
@@ -6240,7 +6240,7 @@ close(): void
 
 ## WriteStream<sup>12+</sup>
 
-文件可写流，需要先通过[fs.createWriteStream](#fscreatewritestream12)方法来构建一个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../apis-arkts/js-apis-stream.md#writable)。
+文件可写流，需要先通过[fileIo.createWriteStream](#fileiocreatewritestream12)方法来构建一个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../apis-arkts/js-apis-stream.md#writable)。
 
 ### 属性
 
@@ -6274,7 +6274,7 @@ seek(offset: number, whence?: WhenceType): number;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
