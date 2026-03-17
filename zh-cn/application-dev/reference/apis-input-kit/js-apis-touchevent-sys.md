@@ -46,7 +46,7 @@ import { FixedMode, Touch, TouchEvent } from '@kit.InputKit';
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
 | fixedDisplayX | number | 否    | 是    | 适配单手模式下screenX坐标的修正值。 |
 | fixedDisplayY | number | 否    | 是    | 适配单手模式下screenY坐标的修正值。    |
-| blobId<sup>24+</sup> | number | 否    | 是    | 触摸点属性标识。当前仅支持单指触摸：左手触摸为1, 右手触摸为2。 |
+| blobId<sup>24+</sup> | number | 否    | 是    | 触摸点属性标识。当前仅支持单指触摸：左手触摸为1， 右手触摸为2。 |
 
 ## TouchEvent
 
