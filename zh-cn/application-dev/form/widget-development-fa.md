@@ -216,7 +216,7 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
 卡片需要在应用配置文件config.json中进行配置。
 
 - JS模块，用于对应卡片的JS相关资源，内部字段结构说明：
-    | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
+  | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
   | -------- | -------- | -------- | -------- |
   | name | 表示JS&nbsp;Component的名字。该标签不可缺省，默认值为default。 | 字符串 | 否 |
   | pages | 表示JS&nbsp;Component的页面用于列举JS&nbsp;Component中每个页面的路由信息[页面路径+页面名称]。该标签不可缺省，取值为数组，数组第一个元素代表JS&nbsp;FA首页。 | 数组 | 否 |
@@ -227,7 +227,7 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
   配置示例如下：
 
   
-  ```json
+  ```json5
   "js": [
     // ...
     {
@@ -245,7 +245,7 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
   ```
   
 - abilities模块，用于对应卡片的FormAbility，内部字段结构说明：
-    | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
+  | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
   | -------- | -------- | -------- | -------- |
   | name | 表示卡片的类名。字符串最大长度为127字节。 | 字符串 | 否 |
   | description | 表示卡片的描述。取值可以是描述性内容，也可以是对描述性内容的资源索引，以支持多语言。字符串最大长度为255字节。 | 字符串 | 可缺省，缺省为空。 |
@@ -266,7 +266,7 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
   配置示例如下：
 
   
-  ```json
+  ```json5
   "abilities": [
     // ...
     {
