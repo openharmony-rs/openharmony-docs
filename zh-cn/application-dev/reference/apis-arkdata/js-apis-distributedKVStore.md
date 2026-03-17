@@ -595,7 +595,7 @@ try {
 }
 ```
 
-### closeKVStore<sup>24+</sup>
+### closeKVStore
 
 closeKVStore(appId: string, storeId: string, kvConfig?: Options): Promise&lt;void&gt;
 
@@ -640,6 +640,7 @@ const options: distributedKVStore.Options = {
   kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
   schema: undefined,
   securityLevel: distributedKVStore.SecurityLevel.S3,
+  // 从API version 24开始，可使用rootDir指定数据库存储路径
   rootDir: "/data/storage/el2/database/entry"
 }
 try {
@@ -733,7 +734,7 @@ try {
 }
 ```
 
-### deleteKVStore<sup>24+</sup>
+### deleteKVStore
 
 deleteKVStore(appId: string, storeId: string, kvConfig?: Options): Promise&lt;void&gt;
 
@@ -779,6 +780,7 @@ const options: distributedKVStore.Options = {
   kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
   schema: undefined,
   securityLevel: distributedKVStore.SecurityLevel.S3,
+  // 从API version 24开始，可使用rootDir指定数据库存储路径
   rootDir: "/data/storage/el2/database/entry"
 }
 try {
