@@ -1393,8 +1393,13 @@ struct Index {
           Button('更改所有按钮文字')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons =
-                SegmentButtonItemOptionsArray.create([{ text: 'a' }, { text: 'b' },
-                  { text: 'c' }, { text: 'd' }, { text: 'e' }]);
+                SegmentButtonItemOptionsArray.create([
+                  { text: 'a' } as SegmentButtonTextItem,
+                  { text: 'b' } as SegmentButtonTextItem,
+                  { text: 'c' } as SegmentButtonTextItem,
+                  { text: 'd' } as SegmentButtonTextItem,
+                  { text: 'e' } as SegmentButtonTextItem
+                ]);
             })
         }.width('90%')
       }.width('100%')
