@@ -10965,7 +10965,6 @@ queryDownloadSpecificCloudMediaTaskCount(predicates: dataSharePredicates.DataSha
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
-| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. predicates null or undefined. |
 
 **示例：**
 
@@ -11020,6 +11019,7 @@ queryDownloadSpecificCloudMediaTaskCountAndSize(predicates: dataSharePredicates.
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. predicates null or undefined. |
 
 **示例：**
 
