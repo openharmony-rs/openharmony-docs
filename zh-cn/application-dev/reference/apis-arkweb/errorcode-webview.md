@@ -64,12 +64,12 @@ URL错误，可能原因：
 **错误描述**
 
 1. resource路径错误。
-2. 通过runJavaScript调用一个返回空ArrayBuffer的JS方法。
+2. 通过runJavaScript调用H5侧的方法，这个方法返回了空的ArrayBuffer。
 
 **可能原因**
 
 1. 资源路径下文件不存在或无法访问。
-2. 通过runJavaScript调用一个返回空ArrayBuffer的JS方法。
+2. 通过runJavaScript调用H5侧的方法，这个方法返回了空的ArrayBuffer。
 
 **处理步骤**
 
