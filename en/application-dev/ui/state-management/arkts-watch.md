@@ -93,7 +93,7 @@ change() {
 - Common variables cannot be decorated by \@Watch. Otherwise, an error will be reported during compilation.
 
 ```ts
-// Incorrect format.
+// Incorrect usage.
 @Watch('change') num: number = 10;
 change() {
   console.info(`xxx`);
@@ -247,6 +247,9 @@ To show that the triggering time of the \@Watch callback is based on the actual 
 <!-- @[parent_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets) -->
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { common } from '@kit.AbilityKit';
+
 @Observed
 class Task {
   public isFinished: boolean = false;
@@ -284,7 +287,7 @@ struct ParentComponent {
   build() {
     Column() {
       // Replace $r('app.string.watch_text7') with the actual resource file. In this example, the value in the resource file is "Finished".
-      // Replace $r('app.string.watch_text7') with the actual resource file. In this example, the value in the resource file is "Not Finished".
+      // Replace $r('app.string.watch_text8') with the actual resource file. In this example, the value in the resource file is "Not Finished".
       Text(`${this.type1} ${this.taskA.isFinished ? this.getUIContext()
         .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
         this.getUIContext()
@@ -330,7 +333,7 @@ struct ChildComponent {
   build() {
     Column() {
       // Replace $r('app.string.watch_text7') with the actual resource file. In this example, the value in the resource file is "Finished".
-      // Replace $r('app.string.watch_text7') with the actual resource file. In this example, the value in the resource file is "Not Finished".
+      // Replace $r('app.string.watch_text8') with the actual resource file. In this example, the value in the resource file is "Not Finished".
       Text(`${this.type1} ${this.taskA.isFinished ? this.getUIContext()
         .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
         this.getUIContext()

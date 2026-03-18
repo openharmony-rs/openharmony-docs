@@ -52,7 +52,7 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 | ---------- | ---------------------------------------- |
 | Initialization and update from the parent component| Prohibited. Only initialization using the property corresponding to the key in AppStorage is supported. If the corresponding key does not exist, initialization uses the local default value.|
 | Child component initialization    | Supported. Can be used to initialize variables decorated with [\@State](./arkts-state.md), [\@Link](./arkts-link.md), [\@Prop](./arkts-prop.md), or [\@Provide](./arkts-provide-and-consume.md).|
-| Whether external access is supported | Not supported.                                      |
+| Access from outside the component | Not supported.                                      |
 
   **Figure 1** \@StorageProp initialization rule 
 
@@ -105,7 +105,7 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 | ---------- | ---------------------------------------- |
 | Initialization and update from the parent component| Forbidden.                                     |
 | Child component initialization    | Supported. The decorated variable can be used to initialize a regular variable or an \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.|
-| Whether external access is supported | Not supported.                                      |
+| Access from outside the component | Not supported.                                      |
 
   **Figure 2** \@StorageLink initialization rule 
 
@@ -746,7 +746,7 @@ Compared with the use of @StorageLink, the use of **emit** allows you to subscri
 >
 > The **emit** API is not available in DevEco Studio Previewer.
 
-<!-- @[appstorage_page_eight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageEight.ets) -->
+<!-- @[appstorage_page_eight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageEight.ets) --> 
 
 ``` TypeScript
 import { emitter } from '@kit.BasicServicesKit';

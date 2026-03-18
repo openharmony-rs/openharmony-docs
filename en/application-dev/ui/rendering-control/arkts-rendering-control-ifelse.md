@@ -71,6 +71,7 @@ struct IfExample {
   }
 }
 ```
+![](figures/render_if.gif)
 
 Each branch of the **if** statement includes a build function. Each of such build functions must create one or more components. On initial render, **if** will execute a build function and add the generated child component to its parent component.
 
@@ -82,9 +83,9 @@ Each branch of the **if** statement includes a build function. Each of such buil
 
 In this example, when **count** increases from 0 to 1, the condition **if (this.count > 0)** becomes true, executing the branch's build function to create and add a **Text** component to the parent **Column**. If **count** changes back to 0 later, then the **Text** component will be removed from the **Column** component. Since there is no **else** branch, no new build function will be executed.
 
-### if/else Statements and Child Component States
+### if/ else Statements and Child Component States
 
-This example demonstrates **if/else** statements with child components containing [\@State](../state-management/arkts-state.md) decorated variables.
+This example involves an **if/else** statement and a child component with a [\@State](../state-management/arkts-state.md) decorated variable.
 
 <!-- @[render_if_else](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/IfElseRendering.ets) -->
 
@@ -130,6 +131,7 @@ struct MainView {
   }
 }
 ```
+![](figures/render_if_else.gif)
 
 Initial rendering: creates **CounterView** child component with label **'CounterView \#positive'** and initial **counter** value **0**.
 
@@ -191,6 +193,7 @@ struct KeepMainView {
   }
 }
 ```
+![](figures/render_keep_counter.gif)
 
 Here, the \@State decorated variable **counter** is owned by the parent component. Therefore, it is not destroyed when the **KeepCounterView** component instance is destroyed. The **KeepCounterView** component references the state through the [\@Link](../state-management/arkts-link.md) decorator. The state must be moved from a child to its parent (or parent of parent) to avoid losing it when the conditional content (or repeated content) is destroyed.
 
@@ -249,3 +252,4 @@ struct NestedIf {
   }
 }
 ```
+![](figures/render_nested_if.gif)
