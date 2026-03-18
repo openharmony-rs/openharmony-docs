@@ -12,6 +12,7 @@
 > **说明：**  
 > 本模块首批接口从API version 20开始支持。
 > 当前界面仅包含本模块的公开接口。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 
@@ -24,6 +25,10 @@ import { scan } from '@kit.BasicServicesKit';
 定义扫描错误码的枚举。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
@@ -49,6 +54,10 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
 | SCAN_CONSTRAINT_NONE | 0 | 无限制。 |
@@ -61,6 +70,10 @@ import { scan } from '@kit.BasicServicesKit';
 定义物理单位的枚举。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
@@ -78,6 +91,10 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
 | SCAN_TYPE_BOOL | 0 | 布尔类型。 |
@@ -91,6 +108,10 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
 | UPDATE_STR | 'update' | 更新码，表示扫描仪id的变化。 |
@@ -101,6 +122,10 @@ import { scan } from '@kit.BasicServicesKit';
 定义扫描仪发现方式的枚举。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
@@ -113,12 +138,16 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| minValue | number | 否 | 否 | 范围的最小值。 |
-| maxValue | number | 否 | 否 | 范围的最大值。 |
-| quantValue | number | 否 | 否 | 范围的量化值。 |
+| minValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 范围的最小值。 |
+| maxValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 范围的最大值。 |
+| quantValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 范围的量化值。 |
 
 ## ScannerParameter
 
@@ -126,18 +155,22 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | optionName | string | 否 | 否 | 选项名称。 |
-| optionIndex | number | 否 | 否 | 选项索引。 |
+| optionIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 选项索引。 |
 | optionTitle | string | 否 | 否 | 选项标题。 |
 | optionDesc | string | 否 | 否 | 选项描述。 |
 | optionType | [OptionValueType](#optionvaluetype) | 否 | 否 | 选项值类型。 |
 | optionUnit | [PhysicalUnit](#physicalunit) | 否 | 否 | 选项物理单位。 |
 | optionConstraintType | [ConstraintType](#constrainttype) | 否 | 否 | 选项约束类型。 |
 | optionConstraintString | string[] | 否 | 是 | 选项字符串约束。 |
-| optionConstraintInt | number[] | 否 | 是 | 选项整数约束。 |
+| optionConstraintInt | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 否 | 是 | 选项整数约束。 |
 | optionConstraintRange | [Range](#range) | 否 | 是 | 选项范围约束。 |
 
 ## ScannerOptionValue
@@ -146,11 +179,15 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | valueType | [OptionValueType](#optionvaluetype) | 否 | 否 | 值类型。 |
-| numValue | number | 否 | 是 | 数值。 |
+| numValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 数值。 |
 | strValue | string | 否 | 是 | 字符串值。 |
 | boolValue | boolean | 否 | 是 | 布尔值。 |
 
@@ -160,11 +197,15 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| progress | number | 否 | 否 | 当前进度百分比，范围从0~100。 |
-| pictureFd | number | 否 | 否 | 扫描图片的文件描述符。 |
+| progress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 当前进度百分比，范围从0~100。 |
+| pictureFd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 扫描图片的文件描述符。 |
 | isFinal | boolean | 否 | 否 | 是否是本次扫描的最后一张图片。true表示是最后一张图片，false表示不是最后一张图片。 |
 
 ## ScannerDevice
@@ -172,6 +213,10 @@ import { scan } from '@kit.BasicServicesKit';
 定义扫描仪设备的接口。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
@@ -188,6 +233,10 @@ import { scan } from '@kit.BasicServicesKit';
 定义扫描仪同步设备的接口。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
@@ -207,6 +256,10 @@ init(): Promise&lt;void&gt;
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 | **类型** | **说明** |
@@ -242,6 +295,10 @@ exit(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
@@ -276,6 +333,10 @@ startScannerDiscovery(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
@@ -309,6 +370,10 @@ openScanner(scannerId: string): Promise&lt;void&gt;
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -350,6 +415,10 @@ closeScanner(scannerId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -390,6 +459,10 @@ getScannerParameter(scannerId: string): Promise&lt;ScannerParameter[]&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -422,7 +495,9 @@ scan.getScannerParameter(scannerId).then((parameters: scan.ScannerParameter[]) =
 
 ## scan.setScannerParameter
 
-setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOptionValue): Promise&lt;void&gt;
+ArkTS-Dyn: setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOptionValue): Promise&lt;void&gt;
+
+ArkTS-Sta: setScannerParameter(scannerId: string, optionIndex: int, value: ScannerOptionValue): Promise&lt;void&gt;
 
 设置扫描仪参数。使用Promise异步回调。
 
@@ -430,11 +505,15 @@ setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOption
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID。 |
-| optionIndex | number | 是 | 要设置的选项的索引。 |
+| optionIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 要设置的选项的索引。 |
 | value | [ScannerOptionValue](#scanneroptionvalue) | 是 | 要设置的值。 |
 
 **返回值：**
@@ -469,7 +548,9 @@ scan.setScannerParameter(scannerId, optionIndex, value).then(() => {
 
 ## scan.setScanAutoOption
 
-setScanAutoOption(scannerId: string, optionIndex: number): Promise&lt;void&gt;
+ArkTS-Dyn: setScanAutoOption(scannerId: string, optionIndex: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setScanAutoOption(scannerId: string, optionIndex: int): Promise&lt;void&gt;
 
 设置扫描选项为自动模式。使用Promise异步回调。
 
@@ -477,11 +558,15 @@ setScanAutoOption(scannerId: string, optionIndex: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID。 |
-| optionIndex | number | 是 | 要设置为自动的选项的索引。 |
+| optionIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 要设置为自动的选项的索引。 |
 
 **返回值：**
 | **类型** | **说明** |
@@ -511,7 +596,9 @@ scan.setScanAutoOption(scannerId, optionIndex).then(() => {
 
 ## scan.getScannerCurrentSetting
 
-getScannerCurrentSetting(scannerId: string, optionIndex: number): Promise&lt;ScannerOptionValue&gt;
+ArkTS-Dyn: getScannerCurrentSetting(scannerId: string, optionIndex: number): Promise&lt;ScannerOptionValue&gt;
+
+ArkTS-Sta: getScannerCurrentSetting(scannerId: string, optionIndex: int): Promise&lt;ScannerOptionValue&gt;
 
 获取当前扫描仪设置。使用Promise异步回调。
 
@@ -519,11 +606,15 @@ getScannerCurrentSetting(scannerId: string, optionIndex: number): Promise&lt;Sca
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID。 |
-| optionIndex | number | 是 | 要获取的选项的索引。 |
+| optionIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 要获取的选项的索引。 |
 
 **返回值：**
 | **类型** | **说明** |
@@ -560,6 +651,10 @@ startScan(scannerId: string, batchMode: boolean): Promise&lt;void&gt;
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -603,6 +698,10 @@ cancelScan(scannerId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -643,6 +742,10 @@ getPictureScanProgress(scannerId: string): Promise&lt;PictureScanProgress&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -679,9 +782,13 @@ on(type: 'scanDeviceFound', callback: Callback&lt;ScannerDevice&gt;): void
 
 注册扫描仪设备发现事件回调。使用callback异步回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -705,15 +812,54 @@ scan.on('scanDeviceFound', (device: scan.ScannerDevice) => {
 })
 ```
 
+## scan.onScanDeviceFound
+
+onScanDeviceFound(callback: Callback&lt;ScannerDevice&gt;): void
+
+注册扫描仪设备发现事件回调。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | 是 | 回调函数，返回扫描仪设备发现信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { scan } from '@kit.BasicServicesKit';
+
+scan.onScanDeviceFound((device: scan.ScannerDevice) => {
+    console.info('scan device found: ' + JSON.stringify(device));
+})
+```
+
 ## scan.off
 
 off(type: 'scanDeviceFound', callback?: Callback&lt;ScannerDevice&gt;): void
 
 取消注册扫描仪设备发现事件回调。使用callback异步回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -740,15 +886,57 @@ scan.on('scanDeviceFound', callback);
 scan.off('scanDeviceFound', callback);
 ```
 
+## scan.offScanDeviceFound
+
+offScanDeviceFound(callback?: Callback&lt;ScannerDevice&gt;): void
+
+取消注册扫描仪设备发现事件回调。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | 否 | 回调函数，返回扫描仪设备发现信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { scan } from '@kit.BasicServicesKit';
+
+let callback = (device: scan.ScannerDevice) => {
+    console.info('scan device found: ' + JSON.stringify(device));
+};
+scan.onScanDeviceFound(callback);
+// 取消注册
+scan.offScanDeviceFound(callback);
+```
+
 ## scan.on
 
 on(type: 'scanDeviceSync', callback: Callback&lt;ScannerSyncDevice&gt;): void
 
 注册扫描仪设备同步事件回调。使用callback异步回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -772,15 +960,54 @@ scan.on('scanDeviceSync', (device: scan.ScannerSyncDevice) => {
 })
 ```
 
+## scan.onScanDeviceSync
+
+onScanDeviceSync(callback: Callback&lt;ScannerSyncDevice&gt;): void
+
+注册扫描仪设备同步事件回调。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[ScannerSyncDevice](#scannersyncdevice)&gt; | 是 | 回调函数，返回扫描仪设备同步信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { scan } from '@kit.BasicServicesKit';
+
+scan.onScanDeviceSync((device: scan.ScannerSyncDevice) => {
+    console.info('scan device sync: ' + JSON.stringify(device));
+})
+```
+
 ## scan.off
 
 off(type: 'scanDeviceSync', callback?: Callback&lt;ScannerSyncDevice&gt;): void
 
 取消注册扫描仪设备同步事件回调。使用callback异步回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -805,4 +1032,42 @@ let callback = (device: scan.ScannerSyncDevice) => {
 scan.on('scanDeviceSync', callback);
 // 取消注册
 scan.off('scanDeviceSync', callback);
+```
+
+## scan.offScanDeviceSync
+
+offScanDeviceSync(callback?: Callback&lt;ScannerSyncDevice&gt;): void
+
+取消注册扫描仪设备同步事件回调。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[ScannerSyncDevice](#scannersyncdevice)&gt; | 否 | 回调函数，返回扫描仪设备同步信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { scan } from '@kit.BasicServicesKit';
+
+let callback = (device: scan.ScannerSyncDevice) => {
+    console.info('scan device sync: ' + JSON.stringify(device));
+};
+scan.onScanDeviceSync(callback);
+// 取消注册
+scan.offScanDeviceSync(callback);
 ```
