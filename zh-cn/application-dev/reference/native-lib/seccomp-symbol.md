@@ -327,7 +327,7 @@ Tid:13893, Name:e.myapplication
 | inotify_add_watch | all | 全平台设备 |- |
 | inotify_rm_watch | all | 全平台设备 |- |
 | eventfd2 | all | 全平台设备 |- |
-| eventfd | arm | 全平台设备 |- |- |
+| eventfd | arm | 全平台设备 |- |
 | epoll_create1 | all | 全平台设备 |- |
 | epoll_create | arm | 全平台设备 |- |
 | epoll_ctl | all | 全平台设备 |- |
