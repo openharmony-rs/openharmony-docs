@@ -182,7 +182,7 @@ let rendererInfo: audio.AudioRendererInfo = {
 ## Querying and Listening for Audio Output Devices Using AudioSession
 Applications using the player SDK to play audio streams do not hold an AudioRenderer object. As a result, they cannot flexibly control the selection of playback devices and listen for the device status. Starting from API version 20, AudioSession not only introduces focus management but also provides capabilities for managing audio output devices, including setting the default output device and listening for device changes. For more information, refer to the following documentation:
 - ArkTS APIs: [AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)
-- C APIs: [OH_AudioSessionManager](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md)
+- C APIs: [native_audio_session_manager.h](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md)
 
 ### Creating an AudioSession Instance
 Before using AudioSessionManager to manage audio devices, import the module and create an AudioSessionManager instance.

@@ -389,11 +389,11 @@ This error code is reported if the SSL certificate or SSH key of the remote serv
 
 **Cause**
 
-It is probable that the server identity verification fails because the certificate has expired.
+The server identity cannot be verified, for example, the certificate has expired.
 
 **Solution**
 
-Check whether the certificate is valid.
+You are advised to locate the fault by referring to [Certificate Verification Process on the TLS Client](../../network/http-request.md#certificate-verification-process-on-the-tls-client).
 
 ## 2300061 Unrecognized or Incorrect HTTP Encoding Format
 

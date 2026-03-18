@@ -14,6 +14,8 @@ This file declares the functions related to sampling in the drawing module. It i
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -39,7 +41,7 @@ This file declares the functions related to sampling in the drawing module. It i
 
 ### OH_Drawing_FilterMode
 
-```
+```c
 enum OH_Drawing_FilterMode
 ```
 
@@ -56,7 +58,7 @@ Defines an enum for the filter modes.
 
 ### OH_Drawing_MipmapMode
 
-```
+```c
 enum OH_Drawing_MipmapMode
 ```
 
@@ -77,7 +79,7 @@ Defines an enum for the mipmap modes.
 
 ### OH_Drawing_SamplingOptionsCreate()
 
-```
+```c
 OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode filterMode,OH_Drawing_MipmapMode mipmapMode)
 ```
 
@@ -105,7 +107,7 @@ Creates an **OH_Drawing_SamplingOptions** object.<br>This API may return an erro
 
 ### OH_Drawing_SamplingOptionsCopy()
 
-```
+```c
 OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCopy(OH_Drawing_SamplingOptions* samplingOptions)
 ```
 
@@ -136,7 +138,7 @@ If **samplingOptions** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is return
 
 ### OH_Drawing_SamplingOptionsDestroy()
 
-```
+```c
 void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptions)
 ```
 

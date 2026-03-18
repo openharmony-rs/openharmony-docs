@@ -5,7 +5,7 @@
 <!--Owner: @BruceZong-->
 <!--Designer: @gcw_qzKyUhyU-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **logLibrary** module provides APIs for obtaining various system maintenance and test logs.
 

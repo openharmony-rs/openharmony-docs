@@ -99,3 +99,22 @@ The function cannot be called from a non-main thread.
 **处理步骤**
 
 在主线程中调用该函数。
+
+## 120007 实例不存在
+
+**错误信息**
+
+The UIContext is not available.
+
+**错误描述**
+
+实例不存在。
+
+**可能原因**
+
+传入的实例非法或者对应的示例已销毁。
+
+**处理步骤**
+
+传入有效的UIContext对象。
+

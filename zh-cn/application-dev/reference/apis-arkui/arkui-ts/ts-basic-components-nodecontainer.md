@@ -17,7 +17,7 @@
 >
 > 当前不支持使用[动态属性设置](./ts-universal-attributes-attribute-modifier.md)。
 >
-> 该组件下的节点树构建中会使用UI实例[UIContext](../arkts-apis-uicontext-uicontext.md)，当实例切换时可能会因为实例不匹配而出现问题，因此该组件当前不支持跨实例的节点复用。
+> 该组件下的节点树构建时会使用UI实例[UIContext](../arkts-apis-uicontext-uicontext.md)，实例切换时可能会因实例不匹配，导致所绑定[NodeController](../js-apis-arkui-nodeController.md)的[makeNode](../js-apis-arkui-nodeController.md#makenode)回调方法的入参为undefined，因此该组件当前不支持跨实例的节点复用。
 >
 > 该组件未销毁时，不会主动触发挂载节点的下树。
 

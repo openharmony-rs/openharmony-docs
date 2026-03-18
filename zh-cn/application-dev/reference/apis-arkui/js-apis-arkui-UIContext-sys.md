@@ -409,6 +409,34 @@ struct MyStateSample {
 }
 ```
 
+### getLuminanceSampler<sup>23+</sup>
+
+getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
+
+获取[LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md)取色对象，通过该对象设置背景亮度取色参数、注册亮度变化监听回调、取消注册监听回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。 
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名     | 类型    | 必填   | 说明      |
+| --- | --- | --- | --- |
+| target | [TargetInfo](arkts-apis-uicontext-i.md#targetinfo18) | 是 | 目标组件的标识。 |
+
+**返回值**：
+
+| 类型                                              | 说明                                                         |
+| ------------------------------------------------- | ------------------------------------------------------------ |
+| [LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md) | 返回背景亮度取色器。 |
+
+**示例：**
+
+参考[offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange23)接口的示例。
+
 ## ComponentSnapshot<sup>12+</sup>
 
 以下API需先使用UIContext中的[getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。

@@ -29,11 +29,11 @@
 - 编码示例：
 
   <!-- @[prikey_encoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyEncoding.ets) -->
-
+  
   ``` TypeScript
-
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function prikeyEncoding() {
     let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
     let keyPair = rsaGenerator.generateKeyPairSync();
@@ -43,7 +43,7 @@
     }
     let priPemKey = keyPair.priKey;
     let priString = priPemKey.getEncodedPem('PKCS1', options);
-    console.info('[sync]TestPriKeyPkcs1Encoded priString output is ' + priString);
+    console.info('[sync]TestPriKeyPkcs1Encoded priString output: ' + priString);
   }
   ```
 
@@ -51,12 +51,12 @@
 - 解码示例：
 
   <!-- @[prikey_decoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyDecoding.ets) -->
-
+  
   ``` TypeScript
-
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   let priKeyPkcs1EncodingStr : string =
   '-----BEGIN RSA PRIVATE KEY-----\n'+
     'Proc-Type: 4,ENCRYPTED\n'+
@@ -75,17 +75,17 @@
     'iOLN1cPdEVQjzwDHLqXP2DbWW1z9iRepLZlEm1hLRLEmOrTGKezYupVv306SSa6J\n'+
     'OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n'+
     '-----END RSA PRIVATE KEY-----';
-
+  
   async function prikeyDecoding() {
     let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
     asyKeyGenerator.convertPemKey(null, priKeyPkcs1EncodingStr, '123456')
       .then(keyPair => {
         let priKey = keyPair.priKey;
         if (priKey) {
-          console.info('convertPemKey success.');
+          console.info('convertPemKey result: success.');
         }
       }).catch((error: BusinessError) => {
-      console.error('convertPemKey error, error message is ' + error.message);
+      console.error(`convertPemKey failed: errCode: ${error.code}, message: ${error.message}`);
     });
   }
   ```

@@ -479,10 +479,10 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------------------------------|
-| additions | {[key:string]:object} | 否 | 否 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty， 默认为空。|
+| additions | Record<string, object> | 否 | 否 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty， 默认为空。|
 | mimeTypes | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。 |
 | tag | string | 否 | 否 | 用户自定义标签，默认为空。 |
-| timestamp | number | 是 | 否 | 剪贴板数据的写入时间戳（单位：ms）。 |
+| timestamp | number | 是 | 否 | 剪贴板数据的写入时间戳（单位：已开机时间的ns数）。 |
 | localOnly | boolean | 否 | 否 | 配置剪贴板内容是否为“仅在本地”，默认值为false。其值会被shareOption属性覆盖，推荐使用[ShareOption](#shareoption9)属性。 |
 | shareOption<sup>9+</sup> | [ShareOption](#shareoption9) | 否 | 否 | 指示剪贴板数据可以粘贴到的范围，默认值为CROSSDEVICE。 |
 
@@ -560,7 +560,7 @@ cancel(): void
 
 ```ts
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-import { fileUri} from '@kit.CoreFileKit';
+import { fileUri } from '@kit.CoreFileKit';
 @Entry
 @Component
 struct PasteboardTest {
@@ -588,7 +588,7 @@ struct PasteboardTest {
                 progressListener: progressListenerInfo,
               };
               systemPasteboard.getDataWithProgress(params).then((pasteData: pasteboard.PasteData) => {
-                console.error('getDataWithProgress succ');
+                console.info('getDataWithProgress success');
               }).catch((err: BusinessError) => {
                 console.error('Failed to get PasteData. Cause: ' + err.message);
               })
@@ -634,7 +634,7 @@ struct PasteboardTest {
 | plainText | string | 是 | 否 | 纯文本内容。 |
 | uri | string | 是 | 否 | URI内容。 |
 | pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 否 | PixelMap内容。 |
-| data<sup>9+</sup> | Record<string, ArrayBuffer>; | 是 | 否 | 自定义数据内容。 |
+| data<sup>9+</sup> | Record<string, ArrayBuffer> | 是 | 否 | 自定义数据内容。 |
 
 ### toPlainText<sup>9+</sup>
 
@@ -1244,7 +1244,7 @@ getRecord(index: number): PasteDataRecord
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
-| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1513,7 +1513,7 @@ pasteData.addWantRecord(object);
 
 addTextRecord(text: string): void
 
-向当前剪贴板内容中添加一条纯文本条目，并将MIME_TEXT_PLAIN添加到[PasteDataProperty](#pastedataproperty7)的mimeTypes中。入参均不能为空，否则添加失败。
+向当前剪贴板内容中添加一条纯文本条目，并将MIMETYPE_TEXT_PLAIN添加到[PasteDataProperty](#pastedataproperty7)的mimeTypes中。入参均不能为空，否则添加失败。
 
 > **说明：**
 >
@@ -2018,7 +2018,7 @@ systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
 
 hasRemoteData(): boolean
 
-判断剪贴板数据是否在远端设备上。由于数据跨端传输耗时较大，如果剪贴板数据在远端设备上，不建议在UI线程执行(1)检查剪贴板数据中是否包含自定义数据类型或(2)读取剪贴板数据。
+判断剪贴板数据是否在远端设备上。由于数据跨端传输耗时较大，如果剪贴板数据在远端设备上，不建议在UI线程执行检查剪贴板数据中是否包含自定义数据类型，或读取剪贴板数据。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -2028,7 +2028,7 @@ hasRemoteData(): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 表示用于指示剪贴板数据是否在远端设备上。true表示剪贴板数据在远端设备上；false表示剪贴板数据不在远端设备上。默认为true/false。 |
+| boolean | 返回指示剪贴板数据是否在远端设备上的结果。true表示剪贴板数据在远端设备上；false表示剪贴板数据不在远端设备上。默认为false。 |
 
 **示例：**
 
@@ -2855,7 +2855,7 @@ setAppShareOptions(shareOptions: ShareOption): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| shareOptions | [ShareOption](js-apis-pasteboard.md#shareoption9) | 是 | 可粘贴的范围，参数只允许pasteboard.ShareOption.INAPP。|
+| shareOptions | [ShareOption](#shareoption9) | 是 | 可粘贴的范围，参数只允许pasteboard.ShareOption.INAPP。|
 
 **错误码：**
 
@@ -2919,6 +2919,8 @@ try {
 | URL                              | 0   | URL类型。                                                              |
 | NUMBER                        | 1   | 数字类型。                                                    |
 | EMAIL_ADDRESS | 2   | 邮箱地址类型。 |
+| HTTP_URL<sup>24+</sup> | 3   | HTTP web链接类型。 |
+| FLIGHT_NUMBER<sup>24+</sup> | 4   | 航班号类型。 |
 
 ### detectPatterns<sup>13+</sup>
 
@@ -3042,7 +3044,7 @@ getDataWithProgress(params: GetDataParams): Promise&lt;PasteData&gt;
 
 ```ts
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-import { fileUri} from '@kit.CoreFileKit';
+import { fileUri } from '@kit.CoreFileKit';
 @Entry
 @Component
 struct PasteboardTest {
@@ -3068,7 +3070,7 @@ struct PasteboardTest {
                 progressListener: progressListenerInfo,
               };
               systemPasteboard.getDataWithProgress(params).then((pasteData: pasteboard.PasteData) => {
-                console.error('getDataWithProgress succ');
+                console.info('getDataWithProgress success');
               }).catch((err: BusinessError) => {
                 console.error('Failed to get PasteData. Cause: ' + err.message);
               })

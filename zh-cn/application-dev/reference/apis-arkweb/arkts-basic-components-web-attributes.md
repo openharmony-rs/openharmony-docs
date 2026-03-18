@@ -1428,7 +1428,7 @@ struct NewWebViewComp {
                     }
                 })
                 .onActivateContent(() => {
-                    //该Web需要展示到前台，建议应用在这里进行tab或window切换的动作
+                    // 该Web需要展示到前台，建议应用在这里进行tab或window切换的动作
                     console.info("NewWebViewComp onActivateContent")
                 })
         }
@@ -3258,7 +3258,7 @@ optimizeParserBudget(optimizeParserBudget: boolean)
 
 ArkWeb内核在解析HTML文档结构时采取分段解析策略，旨在避免过多占用主线程资源，并使网页具有渐进式加载能力。ArkWeb内核默认使用解析时间作为分段点，当单次解析时间超过阈值时，会中断解析，随后进行布局和渲染操作。
 
-开启优化后，ArkWeb内核将不仅检查解析时间是否超出限制，还会额外判断解析的Token（HTML文档的最小解析单位，例如`<div>`、`attr="xxx"`等）数量是否超过内核规定的阈值，并下调此阈值。当页面的FCP(First Contentful Paint 首次内容绘制）触发时会恢复成默认的中断判断逻辑。这将使得网页在FCP到来之前的解析操作更频繁，从而提高首帧内容被提前解析完成并进入渲染阶段的可能性，同时有效缩减首帧渲染的工作量，最终实现FCP时间提前。
+开启优化后，ArkWeb内核将不仅检查解析时间是否超出限制，还会额外判断解析的Token（HTML文档的最小解析单位，例如`<div>`、`attr="xxx"`等）数量是否超过内核规定的阈值，并下调此阈值。当页面的FCP（First Contentful Paint 首次内容绘制）触发时会恢复成默认的中断判断逻辑。这将使得网页在FCP到来之前的解析操作更频繁，从而提高首帧内容被提前解析完成并进入渲染阶段的可能性，同时有效缩减首帧渲染的工作量，最终实现FCP时间提前。
 
 由于页面的FCP触发时会恢复成默认分段解析逻辑，因此分段解析HTML优化仅对每个Web组件加载的首个页面生效。
 
@@ -3997,6 +3997,47 @@ enableAutoFill(value: boolean)
       </form>
     </body>
   </html>
+  ```
+
+## enableDefaultContextMenu<sup>24+</sup>
+
+enableDefaultContextMenu(enable: boolean)
+
+设置是否启用默认右键上下文菜单。不调用该方法时，默认不启用。默认菜单仅支持CUT、COPY、PASTE、SELECT_ALL菜单项。
+
+> **说明：**
+>
+> - 当设置了[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)回调并在回调中返回true时，本接口的设置不生效。
+> - 默认菜单项会受[editMenuOptions](#editmenuoptions12)控制，通过该属性可以自定义菜单选项。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                                    |
+| ------- | ------- | ---- | --------------------------------------- |
+| enable  | boolean | 是   | 是否启用默认右键上下文菜单，true表示启用，false表示不启用。<br>传入undefined或null时为false。 |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .enableDefaultContextMenu(true)
+      }
+    }
+  }
   ```
 
 ## password<sup>(deprecated)</sup>

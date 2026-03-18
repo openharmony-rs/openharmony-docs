@@ -178,7 +178,8 @@ Enumerates the image file types.
 | Enum| Description|
 | -- | -- |
 | MEDIA_LIBRARY_IMAGE_JPEG = 1 | JPEG.|
-| MEDIA_LIBRARY_FILE_VIDEO = 3 | MPEG type.<br>**Since**: 19|
+| MEDIA_LIBRARY_IMAGE_HEIF = 2 | HEIF.<br>**Since**: 23|
+| MEDIA_LIBRARY_FILE_VIDEO = 3 | MPEG.<br>**Since**: 19|
 
 ### MediaLibrary_MediaQuality
 
@@ -290,3 +291,26 @@ Called when the requested moving photo is ready.
 |  [MediaLibrary_MediaQuality](#medialibrary_mediaquality) mediaQuality | Quality of the requested resource, which is specified by [MediaLibrary_MediaQuality](#medialibrary_mediaquality).|
 |  [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype) type | Media content type of the requested resource, which is specified by [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype).|
 | [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)* movingPhoto | Pointer to the [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance obtained when the requested moving photo is ready.|
+
+### OH_MediaLibrary_OnQuickImageDataPrepared()
+
+```c
+typedef void (*OH_MediaLibrary_OnQuickImageDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_ImageSourceNative* imageSourceNative, OH_PictureNative* pictureNative)
+```
+
+**Description**
+
+This callback is called when the requested image source is ready. If an image buffer exists in the system, an image object is returned, reducing the encoding time.
+
+**Since**: 23
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [MediaLibrary_ErrorCode](#medialibrary_errorcode) result | Result of processing the requested resource.|
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | **MediaLibrary_RequestId** of the requested resource.|
+| [MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality) mediaQuality | **MediaLibrary_MediaQuality** of the requested resource.|
+| [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype) type | **MediaLibrary_MediaContentType** of the requested resource.|
+| [OH_ImageSourceNative](../apis-image-kit/capi-image-nativemodule-oh-imagesourcenative.md)\* imageSourceNative | Used to obtain the **OH_ImageSourceNative** information when preparing the image file. Otherwise, **imageSourceNative** is null.|
+| [OH_PictureNative](../apis-image-kit/capi-image-nativemodule-oh-picturenative.md)\* pictureNative | Used to obtain the **OH_PictureNative** information when preparing the image source. Otherwise, **pictureNative** is null.|

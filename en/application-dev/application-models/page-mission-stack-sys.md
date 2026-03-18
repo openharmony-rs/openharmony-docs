@@ -11,8 +11,7 @@
 
 A single UIAbility component can implement multiple pages and redirection between these pages. The redirection relationship inside the UIAbility component is called page stack, which is managed by the ArkUI framework. For example, Page1 -&gt; Page2 -&gt; Page3 of UIAbility1 and PageA -&gt; PageB -&gt; PageC of UIAbility2 in the figure below are two page stacks.
 
-**Figure 1** Page stack
-
+**Figure 1** Page stack 
 ![mission-record](figures/mission-record.png)
 
 - A page stack is formed as follows (Steps 2, 3, 5, and 6 are page redirection and managed by ArkUI):
@@ -57,5 +56,5 @@ The mission startup relationship recorded by the MissionList may be broken in th
   ![mission-chain2](figures/mission-chain2.png)
 
 - A UIAbility singleton is repeatedly started by different missions (including other abilities or the home screen). For example, AbilityB in the figure below is a singleton.
-
+  
   ![mission-chain3](figures/mission-chain3.png)

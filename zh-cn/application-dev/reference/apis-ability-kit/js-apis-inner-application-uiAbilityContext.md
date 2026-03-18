@@ -1518,7 +1518,7 @@ restoreWindowStage(localStorage: LocalStorage): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| localStorage | LocalStorage | 是 | 用于恢复window stage的存储数据。 |
+| localStorage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是 | 用于恢复window stage的存储数据。 |
 
 **错误码：**
 
@@ -1930,7 +1930,7 @@ showAbility(): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中、或处于[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)的Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -2030,7 +2030,7 @@ hideAbility(): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中、或处于[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)的Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 

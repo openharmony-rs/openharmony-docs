@@ -22,10 +22,10 @@
 - 异步方法示例：
 
   <!-- @[use_dh_for_key_negotiation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/DH/DHAsync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   async function dhAwait() {
     let keyGen = cryptoFramework.createAsyKeyGenerator('DH_modp1536');
     // 随机生成公私钥对A
@@ -39,10 +39,10 @@
     let secret2 = await keyAgreement.generateSecret(keyPairA.priKey, keyPairB.pubKey);
     // 两种协商的结果应当一致
     if (secret1.data.toString() === secret2.data.toString()) {
-      console.info('DH success');
-      console.info('DH output is ' + secret1.data);
+      console.info('DH result: success.');
+      console.info('DH output: ' + secret1.data);
     } else {
-      console.error('DH result is not equal');
+      console.error('DH result is not equal.');
     }
   }
   ```
@@ -51,10 +51,10 @@
 - 同步方法示例：
 
   <!-- @[use_dh_for_key_negotiation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/DH/DHSync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function dhAwait() {
     let keyGen = cryptoFramework.createAsyKeyGenerator('DH_modp1536');
     // 随机生成公私钥对A
@@ -68,10 +68,10 @@
     let secret2 = keyAgreement.generateSecretSync(keyPairA.priKey, keyPairB.pubKey);
     // 两种协商的结果应当一致
     if (secret1.data.toString() === secret2.data.toString()) {
-      console.info('DH success');
-      console.info('DH output is ' + secret1.data);
+      console.info('DH result: success.');
+      console.info('DH output: ' + secret1.data);
     } else {
-      console.error('DH result is not equal');
+      console.error('DH result is not equal.');
     }
   }
   ```

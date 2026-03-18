@@ -143,7 +143,7 @@ export default class AVPlayerDemo {
 
 在 entry/src/main/cpp/mslite_napi.cpp，调用[MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md)，依次对3个模型进行推理，推理代码流程如下。
 
-1. 引用对应的头文件。说明：需要用户下载三方库，其中librosa来源是[LibrosaCpp](https://github.com/ewan-xu/LibrosaCpp)，libsamplerate来源是[libsamplerate](https://github.com/libsndfile/libsamplerate)，下载后置于entry/src/main/cpp/third_party目录下。AudioFile.h的来源是[AudioFile](https://github.com/adamstark/AudioFile/blob/1.1.2/AudioFile.h)，base64.h、base64.cc的来源是[whisper.axera](https://github.com/ml-inory/whisper.axera/tree/main/cpp/src)下载后置于entry/src/main/cpp/src目录下。
+1. 引用对应的头文件。说明：需要用户下载三方库，其中librosa来源是[LibrosaCpp](https://github.com/ewan-xu/LibrosaCpp)，libsamplerate来源是[libsamplerate](https://github.com/libsndfile/libsamplerate)，下载后置于entry/src/main/cpp/third_party目录下。AudioFile.h的来源是[AudioFile](https://github.com/adamstark/AudioFile/blob/1.1.2/AudioFile.h)，base64.h、base64.cpp的来源是[whisper.axera](https://github.com/ml-inory/whisper.axera/tree/main/cpp/src)下载后置于entry/src/main/cpp/src目录下。
 
    <!-- @[napi_asr_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
@@ -709,7 +709,8 @@ export default class AVPlayerDemo {
 
 ### 调用封装的ArkTS模块进行推理并输出结果
 
-在 entry/src/main/ets/pages/Index.ets 中，调用封装的ArkTS模块，最后对推理结果进行处理。
+在 entry/src/main/ets/pages/Index.ets 中，调用封装的ArkTS模块，最后对推理结果进行处理。若提示@nutpi/chinese_transverter不存在，请参考[中文简繁体转换器三方库](https://developer.huawei.com/consumer/cn/forum/topic/0202169478029484501?fid=0109140870620153026)安装@nutpi/chinese_transverter组件。
+
 
 <!-- @[index_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/Index.ets) -->
 

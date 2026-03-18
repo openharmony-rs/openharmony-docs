@@ -97,7 +97,7 @@ canLoop(isLoop: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否可循环滚动。<br/>- true：可循环滚动。<br/>- false：不可循环滚动。<br/>默认值：true<br/>当isLoop的值为undefined时，使用默认值。<br/>如果子组件的个数小于8个，无论isLoop设置为true还是false，都不会循环滚动。 |
+| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否可循环滚动。<br/>- true：可循环滚动。<br/>- false：不可循环滚动。<br/>默认值：true<br/>当isLoop的值为undefined时，使用默认值。<br/>如果子组件的个数小于8个，无论isLoop设置为true还是false，都不会循环滚动。 |
 
 ### enableHapticFeedback
 
@@ -124,7 +124,7 @@ enableHapticFeedback(enable: Optional\<boolean>)
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>当enable的值为undefined时，使用默认值。<br/>开启后，是否存在触控反馈取决于系统硬件支持情况。|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>当enable的值为undefined时，使用默认值。<br/>开启后，是否存在触控反馈取决于系统硬件支持情况。|
 
 ### selectionIndicator
 
@@ -142,7 +142,7 @@ selectionIndicator(style: Optional\<PickerIndicatorStyle>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle对象说明)> | 是   | 选中项指示器的样式。<br/>默认值：<br/>{<br/>type: PickerIndicatorType.BACKGROUND,<br/>borderRadius: {<br/>value:12,<br/>unit:LengthUnit.vp<br/>},<br/>backgroundColor: 'sys.color.comp_background_tertiary'<br/>}<br/>当style的值为undefined时，使用默认值。|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle对象说明)> | 是   | 选中项指示器的样式。<br/>默认值：<br/>{<br/>type: PickerIndicatorType.BACKGROUND,<br/>borderRadius: {<br/>value:12,<br/>unit:LengthUnit.vp<br/>},<br/>backgroundColor: 'sys.color.comp_background_tertiary'<br/>}<br/>当style的值为undefined时，使用默认值。|
 
 ## 事件
 
@@ -170,7 +170,7 @@ onChange(callback: Optional\<OnUIPickerComponentCallback>)
 
 | 参数名 | 类型                                       | 必填 | 说明                                              |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| callback  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | 是   | 当选中项发生变化时触发的回调函数。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | 是   | 当选中项发生变化时触发的回调函数。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ### onScrollStop
 
@@ -188,7 +188,7 @@ onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 
 | 参数名 | 类型                                       | 必填 | 说明                                              |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | 是   | 当选择器滑动停止时触发的回调函数。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | 是   | 当选择器滑动停止时触发的回调函数。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ## PickerIndicatorStyle对象说明
 

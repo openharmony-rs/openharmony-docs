@@ -233,7 +233,7 @@ int OH_IPCSkeleton_ResetCallingIdentity(char **identity, int32_t *len, OH_IPC_Me
 
 | 参数项 | 描述 |
 | ------ | ---- |
-| char **identity | identity 用于存储调凭证的内存地址，该内存由用户提供的分配器进行内存分配，用户使用完后需要主动释放，不能为空。 |
+| char **identity | identity 用于存储调用凭证的内存地址，该内存由用户提供的分配器进行内存分配，用户使用完后需要主动释放，不能为空。 |
 | int32_t *len | len 写入identity的数据长度，不能为空。 |
 | [OH_IPC_MemAllocator](capi-ipc-cparcel-h.md#oh_ipc_memallocator) allocator | allocator 用户指定的用来分配identity的内存分配器，不能为空。 |
 

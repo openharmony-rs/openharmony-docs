@@ -9,8 +9,11 @@
 
 The [digital envelope](huks-key-import-overview.md#digital-envelope-import) feature is supported since API version 23.
 
-The following uses how to import RSA and AES keys using digital envelope as an example. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-key-import-overview.md#supported-algorithms). **The DSA algorithm is not supported for key import using digital envelope.** To import a key using digital envelope, the tag **HUKS_TAG_UNWRAP_ALGORITHM_SUITE** is required, and the tag value is **HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING**. When importing a key pair of an asymmetric key using digital envelope, you need to add [OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) and encapsulate the public key in X.509 DER format into the tag. Only key pairs can be imported for asymmetric keys.
+The following uses how to import RSA and AES keys using digital envelope as an example. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-key-import-overview.md#supported-algorithms). **The DSA algorithm is not supported for key import using digital envelope.**
 
+To import keys using digital envelope, you need to use the [HUKS_TAG_UNWRAP_ALGORITHM_SUITE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) tag whose value is [HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksunwrapsuite9).
+
+When importing a key pair of an asymmetric key using digital envelope, you need to add the [HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) tag and encapsulate the public key in X.509 DER format into the tag. Only key pairs can be imported for asymmetric keys.
 
 ## How to Develop
 1. Device A (service side) generates an SM4 key (**cipherSm4**).

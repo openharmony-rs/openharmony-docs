@@ -1,4 +1,4 @@
-# Using hiTraceChain (C/C++)
+# Using HiTraceChain (C/C++)
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
@@ -9,7 +9,7 @@
 
 ## Available APIs
 
-The APIs for distributed call chain tracing are provided by the HiTraceChain module. For details, see [trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md).
+The APIs for distributed call chain tracing are provided by the **HiTraceChain** module. For details, see [trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md).
 
 The following table lists the APIs provided by HiTraceChain for implementing the basic distributed tracing functionality. The corresponding APIs are also available in ArkTS.
 

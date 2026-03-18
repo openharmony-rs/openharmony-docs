@@ -373,8 +373,8 @@ int32_t OH_NativeXComponent_GetXComponentSize(OH_NativeXComponent* component, co
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
 | const void* window | 表示NativeWindow句柄。 |
-| uint64_t* width | 表示指向当前Surface宽度的指针。 |
-| uint64_t* height | 表示指向当前Surface高度的指针。 |
+| uint64_t* width | 表示指向当前Surface宽度的指针。单位：vp。 |
+| uint64_t* height | 表示指向当前Surface高度的指针。单位：vp。 |
 
 **返回：**
 
@@ -402,8 +402,8 @@ int32_t OH_NativeXComponent_GetXComponentOffset(OH_NativeXComponent* component, 
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
 | const void* window | 表示NativeWindow句柄。 |
-| double* x | 表示指向当前Surface相对于XComponent父组件左顶点x坐标的指针。 |
-| double* y | 表示指向当前Surface相对于XComponent父组件左顶点y坐标的指针。 |
+| double* x | 表示指向当前Surface相对于XComponent父组件左顶点x坐标的指针。单位：vp。 |
+| double* y | 表示指向当前Surface相对于XComponent父组件左顶点y坐标的指针。单位：vp。 |
 
 **返回：**
 
@@ -1248,7 +1248,6 @@ int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component,
 
 **替代接口：** [OH_ArkUI_NodeContent_AddNode](capi-native-node-h.md#oh_arkui_nodecontent_addnode)
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1278,7 +1277,6 @@ int32_t OH_NativeXComponent_DetachNativeRootNode(OH_NativeXComponent* component,
 **废弃版本：** 20
 
 **替代接口：** [OH_ArkUI_NodeContent_RemoveNode](capi-native-node-h.md#oh_arkui_nodecontent_removenode)
-
 
 **参数：**
 
@@ -1769,7 +1767,7 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(OH_ArkUI_SurfaceCallback* c
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)* callback | 表示指向Surface生命周期回调的指针。 |
-| void (\*onSurfaceChanged)(OH_ArkUI_SurfaceHolder* surfaceHolder, uint64_t width, uint64_t height) | 表示声明Surface大小改变时会触发的回调事件。- surfaceHolder: 表示指向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例的指针。- width: 表示Surface大小变化后的宽度。- height: 表示Surface大小变化后的高度。 |
+| void (\*onSurfaceChanged)(OH_ArkUI_SurfaceHolder* surfaceHolder, uint64_t width, uint64_t height) | 表示声明Surface大小改变时会触发的回调事件。- surfaceHolder: 表示指向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例的指针。- width: 表示Surface大小变化后的宽度。单位：vp。- height: 表示Surface大小变化后的高度。单位：vp。 |
 
 ### OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent()
 

@@ -24,10 +24,14 @@
 
 2. 在控件中，使用Text组件作为自绘编辑框的文本显示组件，使用状态变量inputText作为Text组件要显示的内容。
 
-   <!-- @[input_case_input_CustomInputText](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/components/CustomInput.ets) -->
+   <!-- @[input_case_input_CustomInputText](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/CustomInput.ets) -->
    
    ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
    import { inputMethod } from '@kit.IMEKit';
+   import Log from '../model/Log';
+   
+   const TAG = '[Submenu]';
    
    @Component
    export struct CustomInput {
@@ -56,10 +60,14 @@
 
 3. 在控件中获取inputMethodController实例，先在文本点击时调用controller实例的attach方法绑定和拉起软键盘，再注册监听输入法插入文本、删除等方法。本示例仅展示插入、删除。
 
-   <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/components/CustomInput.ets) -->
+   <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/CustomInput.ets) -->
    
    ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
    import { inputMethod } from '@kit.IMEKit';
+   import Log from '../model/Log';
+   
+   const TAG = '[Submenu]';
    
    @Component
    export struct CustomInput {
@@ -85,20 +93,25 @@
      }
      async attachAndListener() { // 绑定和设置监听
        focusControl.requestFocus('customInput');
-       await this.inputController.attach(true, {
-         inputAttribute: {
-           textInputType: inputMethod.TextInputType.TEXT,
-           enterKeyType: inputMethod.EnterKeyType.SEARCH
+       try {
+         await this.inputController.attach(true, {
+           inputAttribute: {
+             textInputType: inputMethod.TextInputType.TEXT,
+             enterKeyType: inputMethod.EnterKeyType.SEARCH
+           }
+         });
+         if (!this.isAttach) {
+           this.inputController.on('insertText', (text) => {
+             this.inputText += text;
+           })
+           this.inputController.on('deleteLeft', (length) => {
+             this.inputText = this.inputText.substring(0, this.inputText.length - length);
+           })
+           this.isAttach = true;
          }
-       });
-       if (!this.isAttach) {
-         this.inputController.on('insertText', (text) => {
-           this.inputText += text;
-         })
-         this.inputController.on('deleteLeft', (length) => {
-           this.inputText = this.inputText.substring(0, this.inputText.length - length);
-         })
-         this.isAttach = true;
+       } catch (err) {
+         let error = err as BusinessError;
+         Log.showError(TAG, `attach catch error: ${error.code} ${error.message}`);
        }
      }
    
@@ -113,7 +126,7 @@
 
 4. 在应用界面布局中引入该控件即可，此处假设使用界面为Index.ets和控件CustomInput.ets在同一目录下。
 
-   <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/PrivatePreview.ets) -->
+   <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/pages/PrivatePreview.ets) -->
    
    ``` TypeScript
    CustomInput()

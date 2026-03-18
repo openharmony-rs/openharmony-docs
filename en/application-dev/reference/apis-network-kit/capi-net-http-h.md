@@ -47,6 +47,10 @@ Http_Headers *OH_Http_CreateHeaders(void)
 
 Creates an HTTP request or response header.
 
+> **NOTE**
+>
+> You are advised to call [OH_Http_DestroyHeaders](#oh_http_destroyheaders) to destroy the HTTP request or response header and clear resources after the HTTP request is complete.
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
@@ -220,6 +224,10 @@ int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_
 
 Initiates an HTTP request.
 
+> **NOTE**
+>
+> You are advised to call [OH_Http_Destroy](#oh_http_destroy) to interrupt the HTTP request after the HTTP request receives a response and the response is processed.
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Required permission**: ohos.permission.INTERNET
@@ -249,7 +257,7 @@ void OH_Http_Destroy(struct Http_Request **request)
 
 **Overview**
 
-Destroys an HTTP request.
+Stops the HTTP request.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -260,4 +268,4 @@ Destroys an HTTP request.
 
 | Name| Description|
 | -- | -- |
-| [struct Http_Request](capi-netstack-http-request.md) **request | Pointer to **Http_Request**. For details, see [Http_Request](capi-netstack-http-request.md).|
+| [struct Http_Request](capi-netstack-http-request.md) **request | Pointer to the request to be interrupted, which is a pointer to **Http_Request**. For details, see [Http_Request](capi-netstack-http-request.md).|

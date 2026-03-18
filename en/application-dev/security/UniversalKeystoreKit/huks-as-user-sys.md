@@ -24,8 +24,9 @@ APIs with the `userId` parameter are provided as enhancement to existing APIs.
 
 When using these APIs, observe the following:
 
-1. You can pass in [HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel) in **options** to specify the security level for the key stored.
-2. If you do not pass [HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel) in **options**, this API uses the key in the CE storage area corresponding to the specified **userId** by default, which is equivalent to passing in [HUKS_AUTH_STORAGE_LEVEL_CE](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel).
+1. The user can also include the [HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) tag in the **options** parameter to specify the DE, CE, or ECE zone of the specified user.
+
+2. If no [HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) tag is passed through the **options** parameter, the key in the CE storage area with the specified **userId** is used by default. That is, if the **HUKS_TAG_AUTH_STORAGE_LEVEL** parameter is not passed, it is equivalent to passing this parameter with the value [HUKS_AUTH_STORAGE_LEVEL_CE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksauthstoragelevel11).
 
 The algorithm specifications and the usage of the APIs are the same as those of the APIs without **userId**.
 
@@ -34,7 +35,7 @@ The algorithm specifications and the usage of the APIs are the same as those of 
 | [generateKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksgeneratekeyitemasuser)              |   Generates a key.          |  [generateKeyItem](huks-key-generation-arkts.md)             |
 | [deleteKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksdeletekeyitemasuser)                  |   Deletes a key.          |  [deleteKeyItem](huks-delete-key-arkts.md)               |
 | [importKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksimportkeyitemasuser)                  |   Imports a key in plaintext.     |  [importKeyItem](huks-import-key-in-plaintext-arkts.md)                |
-| [importWrappedKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksimportwrappedkeyitemasuser)    |  Imports an encrypted key.       |  [importWrappedKeyItem](huks-import-wrapped-key-arkts.md)             |
+| [importWrappedKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksimportwrappedkeyitemasuser)    |  Imports keys in secure mode.       |  [importWrappedKeyItem](huks-import-wrapped-key-arkts.md)             |
 | [exportKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksexportkeyitemasuser)                  |   Exports a key.       |  [exportKeyItem](huks-export-key-arkts.md)                |
 | [getKeyItemPropertiesAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksgetkeyitempropertiesasuser)    |  Obtains key properties.    |  [getKeyItemProperties](huks-obtain-key-properties-arkts.md)             |
 | [hasKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#hukshaskeyitemasuser)                        |  Checks whether a key exists.   |  [hasKeyItem](huks-check-key-arkts.md)               |

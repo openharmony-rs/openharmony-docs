@@ -20,7 +20,7 @@ The certificate framework provides APIs for parsing, serializing, signing an X.5
 
 Before you get started, familiarity with the basic certificate concepts is helpful, which include but are not limited to the following:
 
-- Digital certificate<br>- X.509 (also referred to as "X509" in this document)<br>- Certificate chain<br>- To Be Signed (TBS)<br>- CRL
+- Digital certificate<br>- X.509 (also referred to as "X509" in this document)<br>- Certificate chain<br>- To Be Signed (TBS, which refers to the data structure to be signed in an X.509 certificate, including the version number, serial number, signature algorithm identifier, issuer, validity period, subject, subject public key information, and extension)<br>- CRL
 
 ## Certificate Specifications
 
@@ -65,6 +65,14 @@ You can use the certificate framework to implement the following functionalities
 - [Certificate and CRL Collection Development](create-get-cert-crl-object.md)
 - [Certificate Chain Development](create-verify-certchain-object.md)
 - [Creating a TrustAnchor Object Array from a p12 File](create-trustanchor-from-p12.md)
+- [Using the Prebuilt CA Certificate to Validate a Certificate Chain](verify-certchain-by-systemca.md)
+- [Certificate Signing with CMS](create-cms-sign-object.md)
+- [Certificate Encapsulation with CMS](create-cms-enveloped-object.md)
+- [Certificate Signature Verification with CMS](create-cms-verify-object.md)
+- [Certificate Decapsulation with CMS](create-cms-decapsulation-object.md)
+- [Creating and Parsing a Certificate with PKCS #12](create-parse-pkcs12.md)
+- [Online Validation of Certificate Revocation Status of a Certificate Chain](create-verify-cerchainvalidator-revocation-object.md)
+- [Downloading the Missing Intermediate CA Certificate During Certificate Chain Validation](allow-download-Intermediate-Cert.md)
 
 The following table lists the classes provided by the certificate framework. Based on the classes, you can learn the related APIs.
 

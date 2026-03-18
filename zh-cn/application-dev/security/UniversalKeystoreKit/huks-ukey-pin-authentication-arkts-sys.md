@@ -17,6 +17,8 @@
 
 3. 调用接口[authUkeyPin](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto-sys.md#huksexternalcryptoauthukeypin)验证PIN码。
 
+## 开发案例
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';

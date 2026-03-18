@@ -64,7 +64,7 @@ Passive focus traversal occurs in the following scenarios:
 - **autofocus**: Elements with the **autofocus** style are focused by default after web pages are loaded. If the element supports text input, the cursor blinks in the text box, but the soft keyboard is not displayed. For details about how to automatically display the soft keyboard, see [Automatically Displaying the Soft Keyboard](web-docking-softkeyboard.md#automatically-displaying-the-soft-keyboard).
 
 
-- Menu display: By default, the ArkUI component with the **overlay** attribute is focused. When the **Web** component is used together with this type of component such as [menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md), [datepicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md), [timepicker](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md), drop-down list box, and dialog box, the **Web** component loses focus.
+- Menu display: By default, the ArkUI component with the **overlay** attribute is focused. When the **Web** component is used together with this type of component such as [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md), [DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md), [TimePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md), drop-down list box, and dialog box, the **Web** component loses focus.
 
 ## Controlling the Focus of the Web Component and ArkUI Component
 

@@ -98,7 +98,7 @@
     // gcm模式解密doFinal时传入空，验证init时传入的tag数据，如果验证失败会抛出异常。
     let decryptData = await decoder.doFinal(null);
     if (decryptData == null) {
-      console.info('GCM decrypt success, decryptData is null');
+      console.info('GCM decrypt result: success, decryptData is null.');
     }
     return decryptUpdate;
   }
@@ -107,7 +107,7 @@
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
     let symKey = await aesGenerator.convertKey(symKeyBlob);
-    console.info('convertKey success');
+    console.info('convertKey result: success.');
     return symKey;
   }
   
@@ -119,10 +119,10 @@
     let encryptText = await encryptMessagePromise(symKey, plainText);
     let decryptText = await decryptMessagePromise(symKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
+      console.info('decrypt ok.');
       console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
   ```
@@ -182,7 +182,7 @@
     // gcm模式解密doFinal时传入空，验证init时传入的tag数据，如果验证失败会抛出异常。
     let decryptData = decoder.doFinalSync(null);
     if (decryptData == null) {
-      console.info('GCM decrypt success, decryptData is null');
+      console.info('GCM decrypt result: success, decryptData is null.');
     }
     return decryptUpdate;
   }
@@ -191,7 +191,7 @@
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
     let symKey = aesGenerator.convertKeySync(symKeyBlob);
-    console.info('convertKeySync success');
+    console.info('convertKeySync result: success.');
     return symKey;
   }
   
@@ -203,10 +203,10 @@
     let encryptText = encryptMessage(symKey, plainText);
     let decryptText = decryptMessage(symKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
+      console.info('decrypt ok.');
       console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
   ```

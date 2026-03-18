@@ -46,16 +46,18 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
 
 - Example (using asynchronous APIs):
 
-  ```ts
+  <!-- @[async_symmetry_encrypt_decrypt_sm4_gcm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_gcm_encryption_decryption/sm4_gcm_encryption_decryption_asynchronous.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genGcmParamsSpec() {
     let ivBlob = generateRandom(12); // 12 bytes
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -65,19 +67,19 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
     let dataTag = new Uint8Array(arr);
     let tagBlob: cryptoFramework.DataBlob = {
       data: dataTag
-    }; 
+    };
     // Obtain the GCM authTag from the Cipher.doFinal result in encryption and fill it in the params parameter of Cipher.init in decryption.
     let gcmParamsSpec: cryptoFramework.GcmParamsSpec = {
       iv: ivBlob,
       aad: aadBlob,
       authTag: tagBlob,
-      algName: "GcmParamsSpec"
+      algName: 'GcmParamsSpec'
     };
     return gcmParamsSpec;
   }
-
+  
   let gcmParams = genGcmParamsSpec();
-
+  
   // Encrypt the message.
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
@@ -87,6 +89,7 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
     gcmParams.authTag = await cipher.doFinal(null);
     return encryptUpdate;
   }
+  
   // Decrypt the message.
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
@@ -94,46 +97,51 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
     let decryptUpdate = await decoder.update(cipherText);
     // In GCM mode, pass in null in Cipher.doFinal in decryption. Verify the tag data passed in Cipher.init. If the verification fails, an exception will be thrown.
     let decryptData = await decoder.doFinal(null);
-    if (decryptData === null) {
-      console.info('GCM decrypt success, decryptData is null');
+    if (decryptData == null) {
+      console.info('GCM decrypt result: success, decryptData is null.');
     }
     return decryptUpdate;
   }
+  
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let sm4Generator = cryptoFramework.createSymKeyGenerator('SM4_128');
     let symKey = await sm4Generator.convertKey(symKeyBlob);
-    console.info('convertKey success');
+    console.info('convertKey result: success.');
     return symKey;
   }
+  
   async function main() {
     let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
     let symKey = await genSymKeyByData(keyData);
-    let message = "This is a test";
+    let message = 'This is a test';
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
     let encryptText = await encryptMessagePromise(symKey, plainText);
     let decryptText = await decryptMessagePromise(symKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
+      console.info('decrypt ok.');
       console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
   ```
 
+
 - Example (using synchronous APIs):
 
-  ```ts
+  <!-- @[sync_symmetry_encrypt_decrypt_sm4_gcm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_gcm_encryption_decryption/sm4_gcm_encryption_decryption_synchronous.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genGcmParamsSpec() {
     let ivBlob = generateRandom(12); // 12 bytes
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -149,13 +157,13 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
       iv: ivBlob,
       aad: aadBlob,
       authTag: tagBlob,
-      algName: "GcmParamsSpec"
+      algName: 'GcmParamsSpec'
     };
     return gcmParamsSpec;
   }
-
+  
   let gcmParams = genGcmParamsSpec();
-
+  
   // Encrypt the message.
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
@@ -165,6 +173,7 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
     gcmParams.authTag = cipher.doFinalSync(null);
     return encryptUpdate;
   }
+  
   // Decrypt the message.
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
@@ -172,30 +181,32 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
     let decryptUpdate = decoder.updateSync(cipherText);
     // In GCM mode, pass in null in Cipher.doFinal in decryption. Verify the tag data passed in Cipher.init. If the verification fails, an exception will be thrown.
     let decryptData = decoder.doFinalSync(null);
-    if (decryptData === null) {
-      console.info('GCM decrypt success, decryptData is null');
+    if (decryptData == null) {
+      console.info('GCM decrypt result: success, decryptData is null.');
     }
     return decryptUpdate;
   }
+  
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let sm4Generator = cryptoFramework.createSymKeyGenerator('SM4_128');
     let symKey = sm4Generator.convertKeySync(symKeyBlob);
-    console.info('convertKeySync success');
+    console.info('convertKeySync result: success.');
     return symKey;
   }
+  
   function main() {
     let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
     let symKey = genSymKeyByData(keyData);
-    let message = "This is a test";
+    let message = 'This is a test';
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
     let encryptText = encryptMessage(symKey, plainText);
     let decryptText = decryptMessage(symKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
+      console.info('decrypt ok.');
       console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
   ```

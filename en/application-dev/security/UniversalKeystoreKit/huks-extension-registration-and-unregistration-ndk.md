@@ -22,6 +22,8 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so
 
 2. Call [OH_Huks_RegisterProvider](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_registerprovider).
 
+## Development Cases
+
 ```c++
 #include "napi/native_api.h"
 #include "huks/native_huks_api.h"
@@ -206,11 +208,6 @@ OH_Huks_Result InitParamSet(
     }
     return ret;
 }
-
-static struct OH_Huks_Blob g_abilityName = {
-    (uint32_t)strlen("testAbility"),
-    (uint8_t *)"testAbility"
-};
 
 struct OH_Huks_Blob g_providerName = {
     (uint32_t)strlen("testProviderName"),

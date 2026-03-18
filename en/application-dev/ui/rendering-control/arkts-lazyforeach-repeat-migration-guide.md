@@ -21,7 +21,7 @@ In Example 1, **LazyForEach** is used within a [List](../arkts-layout-developmen
 **Example 1 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
@@ -181,7 +181,8 @@ After the previous migration steps, Example 1 has been successfully converted fr
 
 ```ts
 @Entry
-@ComponentV2 // Using state management V2
+@ComponentV2
+  // Use state management V2.
 struct MyComponent {
   @Local data: Array<string> = []; // Data source is a state management V2 decorated array.
 
@@ -226,7 +227,7 @@ Example 2 demonstrates the primary data operations.
 **Example 2 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
@@ -387,21 +388,33 @@ struct MyComponent {
     Column({ space: 3 }) {
       // Add a new item on click.
       Button('Add new item')
-        .onClick(() => { this.data.push(`New item ${this.count++}`); })
+        .onClick(() => {
+          this.data.push(`New item ${this.count++}`);
+        })
       // Delete an item on click.
       Button('Delete item 0')
-        .onClick(() => { this.data.splice(0, 1); })
+        .onClick(() => {
+          this.data.splice(0, 1);
+        })
       // Swap items on click.
       Button('Swap item 0 and item 1')
-        .onClick(() => { let temp: string = this.data[0];
-                         this.data[0] = this.data[1];
-                         this.data[1] = temp; })
+        .onClick(() => {
+          let temp: string = this.data[0];
+          this.data[0] = this.data[1];
+          this.data[1] = temp;
+        })
       // Modify a single item on click.
       Button('Change item 0')
-        .onClick(() => { this.data.splice(0, 1, `Changed item ${this.count++}`); })
+        .onClick(() => {
+          this.data.splice(0, 1, `Changed item ${this.count++}`);
+        })
       // Modify multiple items on click.
       Button('Change all items')
-        .onClick(() => { this.data = this.data.map((item: string) => { return 'Changed ' + item; }); })
+        .onClick(() => {
+          this.data = this.data.map((item: string) => {
+            return 'Changed ' + item;
+          });
+        })
       List({ space: 3 }) {
         Repeat(this.data)
           .each((repeatItem: RepeatItem<string>) => {
@@ -436,7 +449,7 @@ Example 3 demonstrates sub-property observation.
 **Example 3 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -569,7 +582,7 @@ Example 4 demonstrates how to use the @Local decorator with **LazyForEach** to o
 **Example 4 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -724,7 +737,7 @@ Example 5 demonstrates how to use the @Param decorator with **LazyForEach** to o
 **Example 5 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -862,7 +875,7 @@ Example 6 demonstrates a typical implementation:
 **Example 6 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
@@ -990,7 +1003,7 @@ Example 7 demonstrates a typical component reuse scenario:
 **Example 7 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -1205,7 +1218,7 @@ Example 8 demonstrates a typical template rendering scenario:
 **Example 8 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -1589,8 +1602,7 @@ class BasicDataSource implements IDataSource {
   notifyDataMove(from: number, to: number): void {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
-      // Method 2: listener.onDatasetChange(
-      //         [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
+      // Method 2: listener.onDatasetChange([{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
     });
   }
 

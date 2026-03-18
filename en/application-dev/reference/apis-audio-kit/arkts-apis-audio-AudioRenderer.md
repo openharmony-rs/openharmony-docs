@@ -877,6 +877,58 @@ try {
 }
 ```
 
+## getLatency<sup>23+</sup>
+
+getLatency(type: AudioLatencyType): number
+
+Obtains the estimated latency of the current audio route.
+
+> **NOTE**
+>
+> - The estimated latency of a wireless audio device may be inaccurate. The result is for reference only.
+> - Since the latency is not counted in the real-time buffer, you are advised to obtain the latency only when the audio playback starts to avoid frequent calls. Otherwise, the API call may be blocked due to route switching.
+> - You are advised to use [getAudioTimestampInfo](#getaudiotimestampinfo19) or [getAudioTimestampInfoSync](#getaudiotimestampinfosync19) to implement audio and video synchronization after the audio is output to the hardware.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Renderer
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------ | ---- | ---- | ---- |
+| type | [AudioLatencyType](arkts-apis-audio-e.md#audiolatencytype23) | Yes| Obtains the latency type.|
+
+**Return value**
+
+| Type| Description|
+| ---- | ---- |
+| number | Audio latency, in milliseconds.|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permitted in release state. |
+| 6800301 | System internal error, like audio service error. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const latency: number = audioRenderer.getLatency(audio.AudioLatencyType.LATENCY_TYPE_ALL);
+  console.info(`Current audio latency: ${latency}ms`);
+} catch (err) {
+  const error = err as BusinessError;
+  console.error(`Failed to get latency. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## getBufferSize<sup>8+</sup>
 
 getBufferSize(callback: AsyncCallback\<number>): void
@@ -979,7 +1031,7 @@ Sets the playback speed.
 
 | Name| Type                                    | Mandatory| Description                  |
 | ------ | ---------------------------------------- | ---- |----------------------|
-| speed | number | Yes  | Playback speed, which ranges from 0.25 to 4.0.|
+| speed | number | Yes  | Playback rate, which ranges from 0.25 to 4.0.|
 
 **Error codes**
 
@@ -1674,6 +1726,8 @@ Sets the default audio output device. This API uses a promise to return the resu
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
+**Device behavior difference**: If the default audio output device is set to earpiece on a device without a earpiece, the speaker will still be used for audio output.
+
 **Parameters**
 
 | Name    | Type            | Mandatory  | Description                                                     |
@@ -2045,7 +2099,7 @@ Unsubscribes from the audio renderer state change event. This API uses an asynch
 
 | Name| Type  | Mandatory| Description                                               |
 | :----- | :----- | :--- | :-------------------------------------------------- |
-| type   | string | Yes  | Event type. The event **'stateChange'** is triggered when the state of the audio renderer is changed.|
+| type   | string | Yes  | Event type. The event **'stateChange'** is triggered when the listening for audio renderer state change event is canceled.|
 | callback | Callback\<[AudioState](arkts-apis-audio-e.md#audiostate8)> | No| Callback used to return the audio status.|
 
 **Error codes**
@@ -2348,7 +2402,6 @@ write(buffer: ArrayBuffer, callback: AsyncCallback\<number>): void
 Writes the buffer. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [on('writeData')](#onwritedata11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2414,7 +2467,6 @@ write(buffer: ArrayBuffer): Promise\<number>
 Writes the buffer. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [on('writeData')](#onwritedata11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2482,7 +2534,6 @@ setRenderRate(rate: AudioRendererRate, callback: AsyncCallback\<void>): void
 Sets the render rate. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [uninitialize][setSpeed](#setspeed11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2515,7 +2566,6 @@ setRenderRate(rate: AudioRendererRate): Promise\<void>
 Sets the render rate. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [uninitialize][setSpeed](#setspeed11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2551,7 +2601,6 @@ getRenderRate(callback: AsyncCallback\<AudioRendererRate>): void
 Obtains the audio renderer rate. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [getSpeed](#getspeed11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2579,7 +2628,6 @@ getRenderRate(): Promise\<AudioRendererRate>
 Obtains the audio renderer rate. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [getSpeed](#getspeed11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2609,7 +2657,6 @@ getRenderRateSync(): AudioRendererRate
 Obtains the audio renderer rate. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [getSpeed](#getspeed11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer

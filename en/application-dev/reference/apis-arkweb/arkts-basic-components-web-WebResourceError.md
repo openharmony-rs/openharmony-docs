@@ -36,7 +36,7 @@ Obtains the error code for resource loading.
 
 | Type    | Description         |
 | ------ | ----------- |
-| number | Error code for resource loading. For details about error codes, see [WebNetErrorList](arkts-apis-netErrorList.md).|
+| number | Error code for resource loading. For details about the error code, see [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) and HTTP status codes.|
 
 ## getErrorInfo
 

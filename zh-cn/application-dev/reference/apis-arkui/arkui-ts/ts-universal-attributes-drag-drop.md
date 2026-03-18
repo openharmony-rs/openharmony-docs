@@ -149,13 +149,15 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 
 ## DragPreviewOptions<sup>11+</sup>
 
+设置拖拽过程中预览图处理模式及数量角标的显示。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | --- |
 | mode | [DragPreviewMode](#dragpreviewmode11枚举说明) &nbsp;\|&nbsp; Array<[DragPreviewMode](#dragpreviewmode11枚举说明)><sup>12+</sup> | 否 | 是 | 表示拖拽过程中背板图处理模式。<br/>默认值：DragPreviewMode.AUTO<br/>当组件同时设置DragPreviewMode.AUTO和其它枚举值时，以DragPreviewMode.AUTO为准，其它枚举值设置无效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | numberBadge<sup>12+</sup> | boolean &nbsp;\|&nbsp; number | 否 | 是 | 控制数量角标是否显示，或强制设置显示的数量。当设置数量角标时取值范围为[0，2<sup>31</sup>-1]，超过取值范围时会按默认状态处理。当设置为浮点数时，只显示整数部分。<br/>**说明：** <br>在多选拖拽场景，需通过该接口设置拖拽对象的数量。<br/>默认值：true。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| modifier<sup>12+</sup> | [ImageModifier](#imagemodifier12)| 否 | 是 | 用于配置拖拽背板图的样式Modifier对象，可使用图片组件所支持的属性和样式来配置背板图样式(参考示例6)，当前支持透明度，阴影，背景模糊度，圆角。文本拖拽只支持默认效果，不支持通过modifier进行自定义。<br/>1.透明度<br/>通过[opacity](ts-universal-attributes-opacity.md#opacity)设置不透明度，不透明度的取值范围为0-1。设置0或不设置时采用默认值0.95，设置1或异常值时不透明。<br/>2.阴影<br/>通过[shadow](ts-universal-attributes-image-effect.md#shadow)设置阴影。<br/>3.背景模糊度<br/>通过[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)或[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)设置背景模糊度，如果两者同时设置，以后设置的属性为准。<br/>4.圆角<br/>通过[border](ts-universal-attributes-border.md#border)或[borderRadius](ts-universal-attributes-border.md#borderradius)设置圆角，当同时在mode和modifier中设置圆角，mode设置的圆角显示优先级低于modifier设置。<br/>默认值：空，无法修改属性。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| modifier<sup>12+</sup> | [ImageModifier](#imagemodifier12)| 否 | 是 | 用于配置拖拽背板图的样式Modifier对象，可使用图片组件所支持的属性和样式来配置背板图样式(参考示例6)，当前支持透明度，阴影，背景模糊度，圆角。文本拖拽只支持默认效果，不支持通过modifier进行自定义。<br/>1.透明度<br/>通过[opacity](ts-universal-attributes-opacity.md#opacity)设置不透明度，不透明度的取值范围为0-1。设置0或不设置时采用背板图透明度的默认值0.95，设置1或异常值时不透明。<br/>2.阴影<br/>通过[shadow](ts-universal-attributes-image-effect.md#shadow)设置阴影。<br/>3.背景模糊度<br/>通过[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)或[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)设置背景模糊度，如果两者同时设置，以后设置的属性为准。<br/>4.圆角<br/>通过[border](ts-universal-attributes-border.md#border)或[borderRadius](ts-universal-attributes-border.md#borderradius)设置圆角，当同时在mode和modifier中设置圆角，mode设置的圆角显示优先级低于modifier设置。<br/>默认值：空，无法修改属性。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | sizeChangeEffect<sup>19+</sup> | [DraggingSizeChangeEffect](#draggingsizechangeeffect19枚举说明)<sup>19+</sup> | 否 | 是 | 用于选择长按浮起图与拖拽预览图过渡效果。<br/>默认值：DraggingSizeChangeEffect.DEFAULT。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 
 ## DragPreviewMode<sup>11+</sup>枚举说明
@@ -245,7 +247,7 @@ struct ImageExample {
   @State aBlockArr: string[] = [];
   @State bBlockArr: string[] = [];
   @State AVisible: Visibility = Visibility.Visible;
-  @State dragSuccess :Boolean = false;
+  @State dragSuccess: Boolean = false;
 
   build() {
     Column() {
@@ -261,7 +263,7 @@ struct ImageExample {
           .draggable(true)
           .onDragEnd((event: DragEvent) => {
             let ret = event.getResult();
-            if(ret == 0) {
+            if (ret == 0) {
               console.info("enter ret == 0")
               this.AVisible = Visibility.Hidden;
             } else {
@@ -271,21 +273,22 @@ struct ImageExample {
           })
       }
       .margin({ bottom: 20 })
+
       Row() {
-        Column(){
+        Column() {
           Text('不允许释放区域')
             .fontSize('15dp')
             .height('10%')
-          List(){
-            ForEach(this.aBlockArr, (item:string, index) => {
+          List() {
+            ForEach(this.aBlockArr, (item: string, index) => {
               ListItem() {
                 Image(item)
                   .width(100)
                   .height(100)
-                  .border({width: 1})
+                  .border({ width: 1 })
               }
-              .margin({ left: 30 , top : 30})
-            }, (item:string) => item)
+              .margin({ left: 30, top: 30 })
+            }, (item: string) => item)
           }
           .height('90%')
           .width('100%')
@@ -295,37 +298,38 @@ struct ImageExample {
             this.aBlockArr.splice(JSON.parse(extraParams as string)?.insertIndex, 0, this.uri);
             console.info("ondrop not udmf data");
           })
-          .border({width: 1})
+          .border({ width: 1 })
         }
         .height("50%")
         .width("45%")
         .border({ width: 1 })
         .margin({ left: 12 })
-        Column(){
+
+        Column() {
           Text('可释放区域')
             .fontSize('15dp')
             .height('10%')
-          List(){
-            ForEach(this.bBlockArr, (item:string, index) => {
+          List() {
+            ForEach(this.bBlockArr, (item: string, index) => {
               ListItem() {
                 Image(item)
                   .width(100)
                   .height(100)
-                  .border({width: 1})
+                  .border({ width: 1 })
               }
-              .margin({ left: 30 , top : 30})
-            }, (item:string) => item)
+              .margin({ left: 30, top: 30 })
+            }, (item: string) => item)
           }
-          .border({width: 1})
+          .border({ width: 1 })
           .height('90%')
           .width('100%')
           .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
           .onDrop((event?: DragEvent, extraParams?: string) => {
             console.info("enter onDrop")
-            let dragData:UnifiedData = (event as DragEvent).getData() as UnifiedData;
-            if(dragData != undefined) {
-              let arr:Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
-              if(arr.length > 0) {
+            let dragData: UnifiedData = (event as DragEvent).getData() as UnifiedData;
+            if (dragData != undefined) {
+              let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
+              if (arr.length > 0) {
                 let image = arr[0] as unifiedDataChannel.Image;
                 this.uri = image.imageUri;
                 this.bBlockArr.splice(JSON.parse(extraParams as string)?.insertIndex, 0, this.uri);
@@ -359,8 +363,9 @@ struct ImageExample {
 // xxx.ets
 @Entry
 @Component
-struct DragPreviewDemo{
-  @Builder dragPreviewBuilder() {
+struct DragPreviewDemo {
+  @Builder
+  dragPreviewBuilder() {
     Column() {
       Text("dragPreview")
         .width(150)
@@ -373,7 +378,8 @@ struct DragPreviewDemo{
     }
   }
 
-  @Builder MenuBuilder() {
+  @Builder
+  MenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Text("menu item 1")
         .fontSize(15)
@@ -398,8 +404,8 @@ struct DragPreviewDemo{
   build() {
     Row() {
       Column() {
-        // ('/resource/image.jpeg')需要替换为开发者所需的图像资源文件
-        Image('/resource/image.jpeg')
+        // $r('app.media.image')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.image'))
           .width("30%")
           .draggable(true)
           .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
@@ -425,26 +431,36 @@ struct DragPreviewDemo{
 // xxx.ets
 @Entry
 @Component
-struct dragPreviewOptionsDemo{
+struct dragPreviewOptionsDemo {
   build() {
     Row() {
       Column() {
-        // ('/resource/image.jpeg')需要替换为开发者所需的图像资源文件
-        Image('/resource/image.jpeg')
+        // $r('app.media.image')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.image'))
           .margin({ top: 10 })
           .width("30%")
           .draggable(true)
           .dragPreviewOptions({ mode: DragPreviewMode.AUTO })
-        // ('/resource/image.jpeg')需要替换为开发者所需的图像资源文件
-        Image('/resource/image.jpeg')
+        // $r('app.media.image')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.image'))
           .margin({ top: 10 })
           .width("30%")
-          .border({ radius: { topLeft: 1, topRight: 2, bottomLeft: 4, bottomRight: 8 } })
+          .border({
+            radius: {
+              topLeft: 1,
+              topRight: 2,
+              bottomLeft: 4,
+              bottomRight: 8
+            }
+          })
           .draggable(true)
           .onDragStart(() => {
             console.info("Image onDragStart")
           })
-          .dragPreviewOptions({ mode: [ DragPreviewMode.ENABLE_DEFAULT_SHADOW, DragPreviewMode.ENABLE_DEFAULT_RADIUS, DragPreviewMode.ENABLE_DRAG_ITEM_GRAY_EFFECT ] })
+          .dragPreviewOptions({
+            mode: [DragPreviewMode.ENABLE_DEFAULT_SHADOW, DragPreviewMode.ENABLE_DEFAULT_RADIUS,
+              DragPreviewMode.ENABLE_DRAG_ITEM_GRAY_EFFECT]
+          })
       }
       .width("100%")
       .height("100%")
@@ -464,9 +480,10 @@ struct dragPreviewOptionsDemo{
 @Entry
 @Component
 struct Example {
-  @State numbers: number[] = [0, 1, 2, 3, 4 , 5, 6, 7, 8]
+  @State numbers: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
   build() {
-    Column({ space: 5}) {
+    Column({ space: 5 }) {
       Grid() {
         ForEach(this.numbers, (item: number) => {
           GridItem() {
@@ -479,11 +496,11 @@ struct Example {
           .height(90)
           .selectable(true)
           .selected(true)
-          .dragPreviewOptions({}, {isMultiSelectionEnabled:true})
-          .onDragStart(()=>{
+          .dragPreviewOptions({}, { isMultiSelectionEnabled: true })
+          .onDragStart(() => {
 
           })
-    }, (item: string) => item)
+        }, (item: string) => item)
       }
       .columnsTemplate('1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr')
@@ -504,9 +521,10 @@ struct Example {
 @Entry
 @Component
 struct Example {
-  @State numbers: number[] = [0, 1, 2, 3, 4 , 5, 6, 7, 8]
+  @State numbers: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
   build() {
-    Column({ space: 5}) {
+    Column({ space: 5 }) {
       Grid() {
         ForEach(this.numbers, (item: number) => {
           GridItem() {
@@ -519,11 +537,11 @@ struct Example {
           .height(90)
           .selectable(true)
           .selected(true)
-          .dragPreviewOptions({}, {isMultiSelectionEnabled:true, defaultAnimationBeforeLifting:true})
-          .onDragStart(()=>{
+          .dragPreviewOptions({}, { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true })
+          .onDragStart(() => {
 
           })
-    }, (item: string) => item)
+        }, (item: string) => item)
       }
       .columnsTemplate('1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr')
@@ -546,7 +564,7 @@ import { ImageModifier } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct dragPreviewOptionsDemo{
+struct dragPreviewOptionsDemo {
   @State myModifier: ImageAttribute = new ImageModifier().opacity(0.5)
   @State vis: boolean = true
   @State changeValue: string = ''
@@ -554,17 +572,18 @@ struct dragPreviewOptionsDemo{
   @State positionInfo: CaretOffset = { index: 0, x: 0, y: 0 }
   controller: SearchController = new SearchController()
   @State OpacityIndex: number = 0
-  @State OpacityList:(number | undefined | null)[]=[
-    0.3,0.5,0.7,1,-50,0,10,undefined,null
+  @State OpacityList: (number | undefined | null)[] = [
+    0.3, 0.5, 0.7, 1, -50, 0, 10, undefined, null
   ]
+
   build() {
     Row() {
       Column() {
         Text(this.OpacityList[this.OpacityIndex] + "")
         Button("Opacity")
-          .onClick(()=> {
+          .onClick(() => {
             this.OpacityIndex++
-            if(this.OpacityIndex > this.OpacityList.length - 1){
+            if (this.OpacityIndex > this.OpacityList.length - 1) {
               this.OpacityIndex = 0
             }
           })
@@ -573,7 +592,9 @@ struct dragPreviewOptionsDemo{
           .margin({ top: 10 })
           .width("100%")
           .draggable(true)
-          .dragPreviewOptions({modifier: this.myModifier.opacity(this.OpacityList[this.OpacityIndex]) as ImageModifier})
+          .dragPreviewOptions({
+            modifier: this.myModifier.opacity(this.OpacityList[this.OpacityIndex]) as ImageModifier
+          })
       }
       .width("50%")
       .height("50%")
@@ -820,8 +841,9 @@ struct ImageDrag {
 // xxx.ets
 @Entry
 @Component
-struct DragPreviewDemo{
-  @Builder MenuBuilder() {
+struct DragPreviewDemo {
+  @Builder
+  MenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Text("menu item 1")
         .fontSize(15)
@@ -850,7 +872,8 @@ struct DragPreviewDemo{
         Image($r('app.media.app_icon'))
           .width("30%")
           .draggable(true)
-          .dragPreviewOptions({}, {isMultiSelectionEnabled:true, defaultAnimationBeforeLifting:true, enableHapticFeedback: true})
+          .dragPreviewOptions({},
+            { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true, enableHapticFeedback: true })
           .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
           .onDragStart(() => {
             console.info("Image onDragStart")
@@ -883,6 +906,7 @@ struct LiftingExampleDemo {
         .backgroundColor(Color.Green)
     }
   }
+
   @Builder
   MenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
@@ -905,6 +929,7 @@ struct LiftingExampleDemo {
     }
     .width(100)
   }
+
   build() {
     Column() {
       Column() {
@@ -929,6 +954,7 @@ struct LiftingExampleDemo {
             delayCreating: true
           })
       }.width("%")
+
       Column() {
         Text("仅用于浮起效果")
           .fontSize(30)
@@ -1174,9 +1200,9 @@ struct CustomExample {
             .draggable(true)
             .onDragStart((event: DragEvent) => {
               // 构造符合UnifiedData类型的数据
-              let customCardData : Record<string, string> = {
-                'uniformDataType' : 'custom.card',
-                'value' : '自定义卡片'
+              let customCardData: Record<string, string> = {
+                'uniformDataType': 'custom.card',
+                'value': '自定义卡片'
               }
               let unifiedRecord = new unifiedDataChannel.UnifiedRecord('custom.card', customCardData);
               let unifiedData = new unifiedDataChannel.UnifiedData(unifiedRecord);

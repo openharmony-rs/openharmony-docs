@@ -29,7 +29,7 @@ HDR_GAINMAP_METADATA关键字对应的gainmap相关元数据值，参考ISO 2149
 | uint16_t writerVersion | 元数据编写器使用的版本。 |
 | uint16_t miniVersion | 元数据解析需要理解的最小版本。 |
 | uint8_t gainmapChannelNum | Gainmap的颜色通道数，值为3时RGB通道的元数据值不同，值为1时各通道元数据值相同。 |
-| bool useBaseColorFlag | 是否使用基础图的色彩空间，参考ISO 21496-1。 |
+| bool useBaseColorFlag | 是否使用基础图的色彩空间，参考ISO 21496-1。true表示使用，false表示不使用。 |
 | float baseHeadroom | 基础图提亮比，参考ISO 21496-1。 |
 | float alternateHeadroom | 提取的可选择图像提亮比，参考ISO 21496-1。 |
 | float gainmapMax[3] | 增强图像的最大值，参考ISO 21496-1。 |

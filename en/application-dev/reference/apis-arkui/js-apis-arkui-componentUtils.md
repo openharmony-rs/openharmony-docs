@@ -49,7 +49,7 @@ Obtains a **ComponentInfo** object based on the component ID and synchronously r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message               |
 | ------ | ------------------- |
@@ -177,11 +177,11 @@ type Matrix4Result = [number,number,number,number,number,number,number,number,nu
 | m32    | number | Yes  | Translation value of the z-axis, in px. The default value is **0** for the identity matrix.|
 | m33    | number | Yes  | Valid in homogeneous coordinates, presenting the perspective projection effect.  |
 
-**Example**
+## Example
 
-> **NOTE**
->
-> You are advised to use [getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils) to obtain the **ComponentUtils** object associated with the current UI context.
+### Example 1: Obtaining the ComponentUtils Object
+
+You are advised to use [getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils) to obtain the **ComponentUtils** object associated with the current UI context.
 
 ```ts
 import { matrix4, componentUtils } from '@kit.ArkUI';
@@ -214,15 +214,17 @@ struct Utils {
         .height(100)
         .key("image_01")
       Button('getRectangleById')
-      .onClick(() => {
-        this.value = JSON.stringify(this.getUIContext().getComponentUtils().getRectangleById("image_01")) // You are advised to use this.getUIContext().getComponentUtils().
-      }).margin(10).id('onClick')
+        .onClick(() => {
+          this.value = JSON.stringify(this.getUIContext()
+            .getComponentUtils()
+            .getRectangleById("image_01")) // You are advised to use this.getUIContext().getComponentUtils().
+        }).margin(10).id('onClick')
       Text(this.value)
         .margin(20)
         .width(300)
         .height(300)
         .borderWidth(2)
-    }.margin({left: 50})
+    }.margin({ left: 50 })
   }
 }
 ```

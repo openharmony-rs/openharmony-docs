@@ -92,11 +92,11 @@ async function testCmsDecryptTest() {
       }
     };
     await cms.addRecipientInfo(recipientInfo);
-    console.info('add recipient success:' + recipientInfo.keyAgreeInfo?.digestAlgorithm);
+    console.info('add recipient result: success, digestAlgorithm = ' + recipientInfo.keyAgreeInfo?.digestAlgorithm);
     let envelopeData = await cms.doFinal(plainText, option);
-    console.info('doFinal success:' + envelopeData);
+    console.info('doFinal result: success, envelopeData = ' + envelopeData);
     let cipherText = await cms.getEncryptedContentData();
-    console.info('cipherText success:' + cipherText);
+    console.info('getEncryptedContentData result: success, cipherText = ' + cipherText);
     let config: cert.CmsEnvelopedDecryptionConfig = {
       keyInfo: {
         key: ECC_256_PRIVATE
@@ -105,10 +105,10 @@ async function testCmsDecryptTest() {
     let cmsDecrypt: cert.CmsParser = cert.createCmsParser();
     await cmsDecrypt.setRawData(envelopeData, cert.CmsFormat.PEM);
     let decPlainText: Uint8Array = await cmsDecrypt.decryptEnvelopedData(config);
-    console.info('[XTS] Decrypt success:' + decPlainText);
-    console.info('decryptEnvelopedData success.');
+    console.info('[XTS] decryptEnvelopedData result: success, decPlainText = ' + decPlainText);
+    console.info('decryptEnvelopedData result: success.');
   } catch (error) {
-    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+    console.error(`verifySignedData failed: errCode: ${error.code}, message: ${error.message}`);
   }
 }
 ```

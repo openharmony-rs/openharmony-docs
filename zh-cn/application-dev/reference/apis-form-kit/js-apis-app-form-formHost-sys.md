@@ -2090,7 +2090,7 @@ acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
-| 16501000 | An internal functional error occurred. |
+| 16501000 | An internal functional error occurred. invalid input parameter during form operation. |
 
 **示例：**
 
@@ -2146,7 +2146,7 @@ acquireFormData(formId: string): Promise\<Record\<string, Object>>
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
-| 16501000 | An internal functional error occurred. |
+| 16501000 | An internal functional error occurred. invalid input parameter during form operation. |
 
 **示例：**
 
@@ -2245,7 +2245,7 @@ struct CardExample {
               console.info('formHost recv router event.');
               // 卡片使用方自己处理跳转
               this.context.startAbility(want, (err: BusinessError) => {
-                console.info(`formHost startAbility error, code: ${err.code}, message: ${err.message}`);
+                console.error(`formHost startAbility error, code: ${err.code}, message: ${err.message}`);
               });
             }, (err: BusinessError) => {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
@@ -2669,7 +2669,7 @@ try {
     console.error(`formHost recover forms error, code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
-  console.info(`catch error, code: ${e.code}, message: ${e.message}`);
+  console.error(`catch error, code: ${e.code}, message: ${e.message}`);
 }
 ```
 ## recycleForms<sup>12+</sup>
@@ -2823,7 +2823,7 @@ try {
 }
 ```
 
-## updateFormLockedState<sup>18+</sup>
+## updateFormLockedState<sup>22+</sup>
 
 updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
@@ -3300,7 +3300,7 @@ onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo.md#forminfo) | 是   | 回调函数，监控模板卡片静态配置信息变化。 |
+| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo-sys.md#templateformdetailinfocallback23) | 是   | 回调函数，监控模板卡片静态配置信息变化。 |
 
 **错误码：**
 
@@ -3350,7 +3350,7 @@ offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallba
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo.md#forminfo) | 否   | 回调函数，监控模板卡片静态配置信息变化。 |
+| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo-sys.md#templateformdetailinfocallback23) | 否   | 回调函数，监控模板卡片静态配置信息变化。 |
 
 **错误码：**
 
@@ -3373,5 +3373,59 @@ try {
   console.info(`offTemplateFormDetailInfoChange success`);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.getFormIdsByFormLocation<sup>24+</sup>
+
+getFormIdsByFormLocation(location: formInfo.FormLocation): Promise&lt;Array&lt;string&gt;&gt;
+
+获取设备上指定卡片位置的卡片标识列表。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| location | [formInfo.FormLocation](js-apis-app-form-formInfo-sys.md#formlocation12) | 是 | 卡片位置。 |
+
+**返回值：**
+
+| 类型                                                                                     | 说明                                |
+|:---------------------------------------------------------------------------------------| :---------------------------------- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回查询到的卡片标识列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+| 16501016 | The location of the widget is invalid. |
+
+**示例：**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getFormIdsByFormLocation(formInfo.FormLocation.DESKTOP).then((formIds: Array<string>) => {
+    console.info('formHost getFormIdsByFormLocation success.');
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```

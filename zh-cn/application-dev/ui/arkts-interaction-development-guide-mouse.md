@@ -31,9 +31,10 @@ onMouse(event: (event?: MouseEvent) => void)
 
 开发者可以通过回调中的MouseEvent对象获取触发事件的坐标（displayX/displayY/windowX/windowY/x/y）、按键（[MouseButton](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mousebutton8)）、行为（[MouseAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8)）、时间戳（[timestamp](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8)）、交互组件的区域（[EventTarget](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#eventtarget8)）、事件来源（[SourceType](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetype枚举说明8)）等。MouseEvent的回调函数stopPropagation用于设置当前事件是否阻止冒泡。
 
->**说明：**
+> **说明：**
 >
->按键（MouseButton）的值：Left/Right/Middle/Back/Forward 均对应鼠标上的实体按键，当这些按键被按下或松开时触发这些按键的事件。None表示无按键，会出现在鼠标没有按键按下或松开的状态下，移动鼠标所触发的事件中。
+> 按键（MouseButton）的值：Left/Right/Middle/Back/Forward均对应鼠标上的实体按键，当这些按键被按下或松开时触发这些按键的事件。None表示没有鼠标按键按下或松开的状态下，仅移动鼠标所触发的事件。
+
 <!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/mouseMove/MouseMove.ets) -->
 
 ``` TypeScript

@@ -225,7 +225,7 @@ Write file failed.
 
 **可能原因**
 
-当前系统用户没有outFile参数指定的输出文件的写权限。
+当前用户没有outFile参数指定的输出文件的写权限。
 
 **处理步骤**
 
@@ -243,7 +243,7 @@ Read file failed.
 
 **可能原因**
 
-profileFile参数指定的文件不存在，或当前用户没有该的读权限。
+profileFile参数指定的文件不存在，或当前用户没有该文件的读权限。
 
 **处理步骤**
 
@@ -316,7 +316,7 @@ issuer或subject参数支持的格式为：X=xx,XX=xxx。示例：C=CN,O=OpenHar
 
 **错误信息**
 
-Certificate format is in correct, please check your appCertFile parameter.
+Certificate format is incorrect, please check your appCertFile parameter.
 
 **错误描述**
 
@@ -446,7 +446,7 @@ generate csr failed.
 
 **错误信息**
 
-key alias not found.
+Key alias not found.
 
 **错误描述**
 
@@ -725,7 +725,7 @@ Write zip file failed.
 
 **可能原因**
 
-当前系统用户没有outFile参数指定的输出文件的写权限。
+当前用户没有outFile参数指定的输出文件的写权限。
 
 **处理步骤**
 
@@ -771,7 +771,7 @@ Zip format failed
 
 **错误信息**
 
-Invalid File Format.
+Invalid file format.
 
 **错误描述**
 
@@ -789,7 +789,7 @@ Invalid File Format.
 
 **错误信息**
 
-Input Stream Read Error.
+Input stream read error.
 
 **错误描述**
 
@@ -807,7 +807,7 @@ Input Stream Read Error.
 
 **错误信息**
 
-Certificates Error.
+Certificates error.
 
 **错误描述**
 
@@ -829,7 +829,7 @@ Certificates Error.
 
 **错误信息**
 
-Profile Content Error.
+Profile content error.
 
 **错误描述**
 
@@ -859,7 +859,7 @@ Profile内容错误。
 
 **错误信息**
 
-module.json Content Error.
+module.json content error.
 
 **错误描述**
 
@@ -937,7 +937,7 @@ Invalid algorithm.
 
 **错误信息**
 
-Code Sign Internal Error.
+Code sign internal error.
 
 **错误描述**
 

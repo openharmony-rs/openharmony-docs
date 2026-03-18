@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @yp99ustc-->
-<!--Designer: @ctqctq99-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -78,7 +78,7 @@
     - [Interfaces（其他）](arkts-basic-components-web-i.md)
     - [Enums](arkts-basic-components-web-e.md)
     - [Types](arkts-basic-components-web-t.md)
-    - [废弃的Class (WebController, deprecated)](arkts-basic-components-web-WebController.md)
+    - [Class (WebController)](arkts-basic-components-web-WebController.md)
 - C API<!--arkweb-c-->
   - 模块<!--arkweb-module-->
     - [Web](capi-web.md)

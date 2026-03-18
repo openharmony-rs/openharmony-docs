@@ -137,7 +137,7 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
         console.info(TAG, `startUIAbility success`);
       });
     } catch (e) {
-      console.error(TAG, `startUIAbility failed:${e}`);
+      console.error(TAG, `startUIAbility failed, code: ${e.code}, message: ${e.message}`);
       return
     }
   }

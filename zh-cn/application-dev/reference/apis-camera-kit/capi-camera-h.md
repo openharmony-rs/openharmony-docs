@@ -155,7 +155,7 @@ enum Camera_SceneMode
 | -- | -- |
 | NORMAL_PHOTO = 1 | 普通相机模式。 |
 | NORMAL_VIDEO = 2 | 普通视频模式。 |
-| SECURE_PHOTO = 12 | 安全相机模式。 |
+| SECURE_PHOTO = 12 | 安全相机模式，主要为银行等有活体检测等安全诉求的应用提供。安全相机的使用需要加密算法框架及可信应用服务，详情请参见[Device Certificate Kit简介](../../security/DeviceCertificateKit/device-certificate-kit-intro.md)。 |
 
 ### Camera_Position
 
@@ -267,6 +267,7 @@ enum Camera_ExposureMode
 
 | 枚举项 | 描述 |
 | -- | -- |
+| EXPOSURE_MODE_UNSPECIFIED = -1    | 曝光模式未指定。<br>**起始版本：** 24|
 | EXPOSURE_MODE_LOCKED = 0 | 锁定曝光模式。 不支持曝光区域中心点设置。<br>设置该模式后，每次拍照时曝光都会默认锁定。|
 | EXPOSURE_MODE_AUTO = 1 | 自动曝光模式。支持曝光区域中心点设置，可以使用[OH_CaptureSession_SetMeteringPoint](capi-capture-session-h.md#oh_capturesession_setmeteringpoint)接口设置曝光区域中心点。<br>设置该模式后，仅设置后的首次拍照生效。 |
 | EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | 连续自动曝光。<br>设置该模式后，拍照系统会根据每次的环境变化自动调整曝光。 |
@@ -464,7 +465,7 @@ enum Camera_PreconfigType
 | PRECONFIG_1080P = 1 | 预配置照片分辨率为1080P。 |
 | PRECONFIG_4K = 2 | 预配置照片分辨率为4K。 |
 | PRECONFIG_HIGH_QUALITY = 3 | 预配置照片为高质量。 |
-| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br> 从API version 23开始支持。 |
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br> **起始版本:** 23 |
 
 ### Camera_PreconfigRatio
 

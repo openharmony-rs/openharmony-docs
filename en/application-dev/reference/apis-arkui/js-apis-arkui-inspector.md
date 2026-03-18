@@ -27,7 +27,7 @@ Binds to the specified component and returns the corresponding observation handl
 
 > **NOTE**
 > 
-> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [createComponentObserver](arkts-apis-uicontext-uiinspector.md#createcomponentobserver) instead. Obtain the [UIInspector](arkts-apis-uicontext-uiinspector.md) instance using the [getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector) method in [UIContext](arkts-apis-uicontext-uicontext.md), and then call the createComponentObserver method via this instance.
+> - This method has been deprecated since API version 18. You are advised to use the [getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector) method in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [UIInspector](arkts-apis-uicontext-uiinspector.md) instance, and then use the instance to call the substitute method [createComponentObserver](arkts-apis-uicontext-uiinspector.md#createcomponentobserver).
 >
 > - Since API version 10, you can use the [getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [UIInspector](arkts-apis-uicontext-uiinspector.md) object associated with the current UI context.
 
@@ -125,7 +125,7 @@ Unregisters the drawing completion callback through this handle.
 | type     | string | Yes  | Event type. The value is fixed at **'draw'**.<br>**'draw'**: completion of component drawing.|
 | callback | () => void   | No  | Callback to unregister. If this parameter is not specified, all callbacks under this handle are unregistered. The callback must be the same object as the one registered with the [on('draw')](#ondraw) API to successfully unregister.|
 
-### on('drawChildren')<sup>20+<sup>
+### on('drawChildren')<sup>20+</sup>
 
 on(type: 'drawChildren',  callback: Callback\<void\>): void
 
@@ -142,7 +142,7 @@ Registers a child component drawing completion callback through [ComponentObserv
 | type     | string | Yes  | Event type. The value is fixed at **'drawChildren'**.<br>**'drawChildren'**: completion of child component drawing.|
 | callback | Callback\<void\>  | Yes  | Child component drawing completion callback.                                    |
 
-### off('drawChildren')<sup>20+<sup>
+### off('drawChildren')<sup>20+</sup>
 
 off(type: 'drawChildren', callback?: Callback\<void\>): void
 
@@ -159,9 +159,49 @@ Unregisters the child component drawing completion callback through this handle.
 | type     | string | Yes  | Event type. The value is fixed at **'drawChildren'**.<br>**'drawChildren'**: completion of child component drawing.|
 | callback | Callback\<void\>   | No  | Callback to unregister. If this parameter is not specified, all callbacks under this handle are unregistered. The callback must be the same object as the one registered with the [on('drawChildren')20+](#ondrawchildren20) API to successfully unregister.|
 
+### onLayoutChildren<sup>23+</sup>
+
+onLayoutChildren(callback: Callback\<void\>): void
+
+Registers a callback used to listen for the **layoutChildren** event using [ComponentObserver](#componentobserver). This API uses an asynchronous callback to return the result.
+
+When the node that is currently listened is used as the root node and the nodes in the subtree are laid out, this callback is triggered. When multiple **layoutChildren** callbacks exist in the component tree, only the topmost callback will be triggered.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                                                        |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void\>  | Yes  | Callback used to listen for the **layoutChildren** event.                             |
+
+### offLayoutChildren<sup>23+</sup>
+
+offLayoutChildren(callback?: Callback\<void\>): void
+
+Unregisters the callback used to listen for the **layoutChildren** event. This API uses an asynchronous callback to return the result.
+
+To stop triggering a specific callback after the child component layout is complete, you only need to unregister the callback based on the corresponding query condition using its handle.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                                                        |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void\>   | No  | Callback to unregister. If this parameter is not specified, all callbacks under this handle are unregistered. The callback can be successfully unregistered only when it matches the callback in the [onLayoutChildren23+](#onlayoutchildren23) method.|
+
 ## Example
 
-The following example demonstrates how to register the component layout and drawing completion callbacks.
+The following example demonstrates how to register the component layout and drawing completion callbacks. Since API version 23, the [onLayoutChildren](#onlayoutchildren23) API is available to listen for the layout completion events of nodes in the subtree.
 
 ```ts
 import { inspector } from '@kit.ArkUI';
@@ -213,6 +253,15 @@ struct ImageExample {
     // this.listenerForImage.off('layout', OffFuncLayout)
     // this.listenerForImage.off('draw', OffFuncDraw)
     // this.listenerForRow.off('drawChildren', OffFuncDrawChildren)
+    
+    let onLayoutChildrenComplete: () => void = (): void => {
+      // After the LayoutChildren event is received, you can customize the implementation logic.
+    }
+    let uniqueId: number = this.getUniqueId();
+    let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId)
+    listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete)
+    // Unregister callbacks through the handle. You should decide when to call these APIs.
+    // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
   }
 }
 ```

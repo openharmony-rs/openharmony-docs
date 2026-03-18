@@ -366,7 +366,7 @@ CPP code:
 <!-- @[napi_get_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-// Use napi_get_element ro develop arrays.
+// Use napi_get_element to develop arrays.
 static napi_value NapiGetElement(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed from ArkTS.

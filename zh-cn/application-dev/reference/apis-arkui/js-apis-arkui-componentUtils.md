@@ -49,7 +49,7 @@ getRectangleById(id: string): ComponentInfo
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
@@ -214,15 +214,17 @@ struct Utils {
         .height(100)
         .key("image_01")
       Button('getRectangleById')
-      .onClick(() => {
-        this.value = JSON.stringify(this.getUIContext().getComponentUtils().getRectangleById("image_01")) // 建议使用this.getUIContext().getComponentUtils()接口
-      }).margin(10).id('onClick')
+        .onClick(() => {
+          this.value = JSON.stringify(this.getUIContext()
+            .getComponentUtils()
+            .getRectangleById("image_01")) // 建议使用this.getUIContext().getComponentUtils()接口
+        }).margin(10).id('onClick')
       Text(this.value)
         .margin(20)
         .width(300)
         .height(300)
         .borderWidth(2)
-    }.margin({left: 50})
+    }.margin({ left: 50 })
   }
 }
 ```

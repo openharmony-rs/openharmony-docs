@@ -151,7 +151,7 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 
 | 参数名 | 类型                                               | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| types  | Array <[LayoutSafeAreaType](#layoutsafeareatype12)> | 否   | 扩展布局安全区域的类型。<br />默认值：[LayoutSafeAreaType.SYSTEM]，扩展至所有安全区域，比如：状态栏，导航栏和[组件级安全区（safeAreaPadding）](./ts-universal-attributes-size.md#safeareapadding14)。<br />非法值：按默认值处理。 |
+| types  | Array <[LayoutSafeAreaType](#layoutsafeareatype12)> | 否   | 扩展布局安全区域的类型。<br />默认值：[LayoutSafeAreaType.SYSTEM]，扩展至所有安全区域，比如：状态栏，导航栏和组件级安全区（[safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)）。<br />非法值：按默认值处理。 |
 | edges  | Array <[LayoutSafeAreaEdge](#layoutsafeareaedge12)> | 否   | 扩展布局安全区的边缘，并且支持镜像能力。<br />默认值：[LayoutSafeAreaEdge.ALL]，扩展组件所有边缘。<br />非法值：按默认值处理。|
 
 **返回值：**
@@ -180,7 +180,7 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
-| SYSTEM   |  0 |设置后，组件的布局范围可扩展至[组件级安全区（safeAreaPadding）](./ts-universal-attributes-size.md#safeareapadding14)和页面级安全区（状态栏、导航栏、挖孔区）。   |
+| SYSTEM   |  0 |设置后，组件的布局范围可扩展至组件级安全区（[safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)）和页面级安全区（状态栏、导航栏、挖孔区）。   |
 
 ## LayoutSafeAreaEdge<sup>12+</sup>
 

@@ -33,7 +33,7 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 
 2. Specify the data to be encrypted.
 
-3. Set encryption [algorithm parameters](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam). Add the group key tag [HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag).
+3. Use [HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) to set encryption algorithm parameters. Add the group key tag [HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag).
 
 4. Call [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9) to initialize a key session and obtain the session handle.
 
@@ -45,7 +45,7 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 
 2. Specify the ciphertext to be decrypted.
 
-3. Set decryption [algorithm parameters](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam). Add the group key tag [HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag).
+3. Use [HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) to set decryption algorithm parameters. Add the group key tag [HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag).
 
 4. Call [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9) to initialize a key session and obtain the session handle.
 

@@ -32,14 +32,14 @@ importVCard\(context: Context, filePath: string, accountId: number, callback: As
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| Context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)   | 是   | 应用上下文。 |
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)   | 是   | 应用上下文。 |
 | filePath   | string                      | 是   | VCF(vcard file)文件地址。 |
 | accountId | number | 是                  | 联系人账户ID。|
 | callback | AsyncCallback&lt;void&gt; | 是   |回调函数，返回导入成功或失败的状态码。   |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -83,9 +83,9 @@ importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| Context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)      | 是   | 应用上下文。 |
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)      | 是   | 应用上下文。 |
 | filePath   | string                      | 是   | VCF(vcard file)文件地址。 |
-| accountId   | number                      | 是   | 联系人账户ID。 |
+| accountId   | number                      | 否   | 联系人账户ID。 |
 
 **返回值：**
 
@@ -95,7 +95,7 @@ importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -139,13 +139,13 @@ importVCard\(context: Context, filePath: string, callback: AsyncCallback\<void\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| Context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)  | 是   | 应用上下文。|
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)  | 是   | 应用上下文。|
 | filePath | string | 是   |  VCF(vcard file)文件地址。|
 | callback | AsyncCallback&lt;void&gt; | 是   |回调函数，返回导入成功或失败的状态码。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -176,7 +176,7 @@ class EntryAbility extends UIAbility {
 
 ## vcard.exportVCard
 
-exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, options: VCardBuliderOptions, callback: AsyncCallback\<string\>\): void
+exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, options: VCardBuilderOptions, callback: AsyncCallback\<string\>\): void
 
 将联系人导出为 VCF(vcard file)文件。使用callback异步回调。
 
@@ -188,14 +188,14 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| Context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                    | 是   | 应用上下文。 |
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                    | 是   | 应用上下文。 |
 | predicates| [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md)| 是   | 查询语句。 |
-|  options  | VCardBuilderOptions | 否   | VCard版本与编码类型。|
+|  options  | VCardBuilderOptions | 是   | VCard版本与编码类型。|
 | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。生成的 VCF(vcard file)文件地址。                             |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -244,9 +244,9 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| Context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)               | 是   | 应用上下文。 |
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)               | 是   | 应用上下文。 |
 | predicates | [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md) | 是   | 查询语句。 |
-| options   | VCardBuilderOptions | 是   | VCard版本与编码类型。 |  
+| options   | VCardBuilderOptions | 否   | VCard版本与编码类型。 |  
 
 **返回值：**
 
@@ -256,7 +256,7 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -306,13 +306,13 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| Context      | [Context](../apis-ability-kit/js-apis-inner-application-context.md)     | 是   | 应用上下文。 |
+| context      | [Context](../apis-ability-kit/js-apis-inner-application-context.md)     | 是   | 应用上下文。 |
 | predicates   | [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md) | 是   | 查询语句。 |
 | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。生成的 VCF(vcard file)文件地址。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -343,3 +343,25 @@ class EntryAbility extends UIAbility {
 }
 
 ```
+## VCardBuilderOptions
+
+VCard版本和编码信息。
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+| 名称         | 类型   | 只读| 可选|    说明    |
+| ------------ | ------ | ----|----| ---------- |
+| cardType     | [VCardType](#vcardtype) |  否| 是 | VCard版本类型 (默认值为VERSION_21)。     |
+| charset       | string |  否|是  | VCard编码类型（默认值为'UTF-8'）。     |
+
+## VCardType
+
+VCard版本类型。
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+| 名称            | 值   | 说明       |
+| --------------- | ---- | ---------- |
+| VERSION_21 | 0 | VCard2.1版本。 |
+| VERSION_30 | 1 | VCard3.0版本。 |
+| VERSION_40 | 2 | VCard4.0版本。 |

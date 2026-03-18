@@ -17,7 +17,7 @@ PerfTest功能设计图如下所示：
 
 ![perftest](figures/perftest.png)
 
-PerfTest对外提供ArkTS API，包括性能测试策略设置、性能测试执行、测试结果获取等能力。<!--RP1-->具体请参考[API文档](../reference/apis-test-kit/js-apis-perftest.md)<!--RP1End-->。
+PerfTest对外提供ArkTS API，包括性能测试策略设置、性能测试执行、测试结果获取等能力。<!--RP1-->具体请参考[@ohos.test.PerfTest](../reference/apis-test-kit/js-apis-perftest.md)API文档<!--RP1End-->。
 
 跨语言通信层负责上层ArkTS接口与底层C++接口的转换，包括参数校验、JSON序列化对象处理和异常处理等。作为PerfTest的客户端，它提供启动入口和功能调用接口。该层由测试应用加载运行，通过IPC与服务端通信实现功能调用和生命周期管理。此外，该层还负责管理C++层对ArkTS回调函数的调用。
 
