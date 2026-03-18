@@ -180,7 +180,7 @@ reset(): void
 **示例：**
 
 ```ts
-audioRecorder.on('reset', () => {    //设置'reset'事件回调。
+audioRecorder.on('reset', () => {    // 设置'reset'事件回调。
   console.info('audio recorder reset called');
 });
 audioRecorder.reset();
