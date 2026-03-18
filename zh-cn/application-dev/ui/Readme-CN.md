@@ -296,6 +296,9 @@
       - [使用滑动选择器Picker](ndk-picker.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
   - [构建表单组件](ndk-build-form-components.md)
+  - 构建导航类组件<!--arkts-build-navigation-ndk-->
+    - [导航页面信息查询](ndk-navigation-query.md)
+    - [使用滑块视图容器 (Swiper)](ndk-swiper.md)
   - [构建自定义组件](ndk-build-custom-components.md)
   - [嵌入ArkTS组件](ndk-embed-arkts-components.md)
   - [构建渲染节点](ndk-embed-render-components.md)
