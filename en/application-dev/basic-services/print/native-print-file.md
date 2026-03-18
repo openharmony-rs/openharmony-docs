@@ -7,11 +7,11 @@
 <!--Tester: @guoshengbang-->
 <!--Adviser: @RayShih-->
 
-The OS provides two printing methods:
+OpenHarmony provides two printing methods:
 
-[Method 1](#3-method-1-starting-the-print-preview-page-to-send-print-jobs): An application calls an API to start the system print preview page and sends a print job for the rendered PDF file to a printer. This method is suitable for applications that need to quickly print files using system capabilities.
+[Method 1](#step-3-starting-the-print-preview-page-to-send-print-jobs): An application calls an API to start the system print preview page and sends a print job for the rendered PDF file to a printer. This method is applicable to applications that require printing functionality but for which developers do not wish to develop a preview page.
 
-[Method 2](#4-method-2-discovering-and-connecting-to-printers-to-send-print-jobs): An application calls the print APIs to discover and connect to printers and sends print jobs. This method is suitable for applications that have their own print preview pages. The applications can discover printers, obtain the printer capabilities, and construct a print job.
+[Method 2](#step-4-discovering-and-connecting-to-printers-to-send-print-jobs): An application calls the print APIs to discover and connect to printers and sends print jobs. This method is applicable to applications that have a developed preview page. Applications can call APIs to discover printers, obtain the printer capabilities, and construct a print job.
 
 > **NOTE**
 >
@@ -19,11 +19,10 @@ The OS provides two printing methods:
 > 
 > When the print service is no longer used, call **OH_Print_Release()** to release the print client resources and cancel event subscription.
 
-   
 
 ## How to Develop
 
-### 1. Including header files.
+### Step 1: Including header files.
 
 ```c++
 #include <cstdint>
@@ -36,7 +35,7 @@ The OS provides two printing methods:
 #include "BasicServicesKit/ohprint.h"
 ```
 
-### 2. Adding dynamic link libraries to the CMake script.
+### Step 2: Adding Dynamic Link Libraries to the CMake Script
 
 ```txt
 target_link_libraries(entry PUBLIC
@@ -46,7 +45,7 @@ target_link_libraries(entry PUBLIC
 )
 ```
 
-### 3. Method 1: Starting the print preview page to send print jobs.
+### Step 3: Starting the Print Preview Page to Send Print Jobs
 
 ```ts
 import { Context } from '@kit.AbilityKit';
@@ -119,7 +118,7 @@ Print_ErrorCode ret = OH_Print_StartPrintByNative(printJobName, printDocCallback
 OH_Print_Release()
 ```
 
-### 4. Method 2: Discovering and connecting to printers to send print jobs.
+### Step 4: Discovering and Connecting to Printers to Send Print Jobs
 
 ```c++
 // Initialize the print service.

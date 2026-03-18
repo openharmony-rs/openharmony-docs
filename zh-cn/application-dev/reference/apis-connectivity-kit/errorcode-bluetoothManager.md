@@ -482,3 +482,76 @@ Invalid advertising id.
 **处理步骤**
 
 检查传入的广播标识符是否为[startAdvertising](js-apis-bluetooth-ble.md#blestartadvertising11)接口返回的有效标识符。
+
+## 2903050 HID不在前台
+
+**错误信息**
+
+HID application is not int the foreground.
+
+**错误描述**
+
+注册HID设备能力的应用不在前台。
+
+**可能原因**
+
+当前注册HID设备能力的应用处于后台。
+
+**处理步骤**
+
+检查注册HID能力的应用是否处于前台。
+
+## 2903051 HID已注册
+
+**错误信息**
+
+Any HID application has been registered.
+
+**错误描述**
+
+其他应用已经注册过HID设备能力。
+
+**可能原因**
+
+只允许一个应用注册HID设备能力。
+
+**处理步骤**
+
+检查是否已经有其他应用注册HID设备能力。
+
+## 2903052 HID未注册
+
+**错误信息**
+
+HID application does not register.
+
+**错误描述**
+
+当前应用还没有注册HID设备能力。
+
+**可能原因**
+
+应用只有在注册HID设备能力之后才能和HID主机进行连接并进行数据交互。
+
+**处理步骤**
+
+检查当前应用注册HID设备能力是否成功。
+
+## 2903053 HID未连接
+
+**错误信息**
+
+HID device is not connected.
+
+**错误描述**
+
+当前HID设备还没有连接HID主机。
+
+**可能原因**
+
+只有在连接完成之后HID设备才能和HID主机进行数据交互。
+
+**处理步骤**
+
+检查当前应用是否注册HID设备能力并连接HID主机成功。
+

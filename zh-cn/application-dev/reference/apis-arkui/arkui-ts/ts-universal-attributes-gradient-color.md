@@ -56,7 +56,7 @@ linearGradient(options: Optional\<LinearGradientOptions>): T
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[LinearGradientOptions](#lineargradientoptions18对象说明)> | 是   | 线性渐变。<br/>当options的值为undefined时，恢复为无线性渐变的效果。 |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LinearGradientOptions](#lineargradientoptions18对象说明)> | 是   | 线性渐变。<br/>当options的值为undefined时，恢复为无线性渐变的效果。 |
 
 **返回值：**
 
@@ -125,7 +125,7 @@ sweepGradient(options: Optional\<SweepGradientOptions>): T
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[SweepGradientOptions](#sweepgradientoptions18对象说明)> | 是   | 角度渐变。<br/>当options的值为undefined时，恢复为无角度渐变的效果。 |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SweepGradientOptions](#sweepgradientoptions18对象说明)> | 是   | 角度渐变。<br/>当options的值为undefined时，恢复为无角度渐变的效果。 |
 
 **返回值：**
 
@@ -204,7 +204,7 @@ radialGradient(options: Optional\<RadialGradientOptions>): T
 
 | 参数名     | 类型                                         | 必填                             | 说明                               |
 | -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[RadialGradientOptions](#radialgradientoptions18对象说明)> | 是 | 径向渐变。<br/>当options的值为undefined时，恢复为无径向渐变的效果。 |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[RadialGradientOptions](#radialgradientoptions18对象说明)> | 是 | 径向渐变。<br/>当options的值为undefined时，恢复为无径向渐变的效果。 |
 
 **返回值：**
 

@@ -79,4 +79,4 @@ Enumerates the vibration scenarios.
 | VIBRATOR_USAGE_TOUCH = 5 | Touch|
 | VIBRATOR_USAGE_MEDIA = 6 | Multimedia|
 | VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7 | Physical feedback|
-| VIBRATOR_USAGE_SIMULATE_REALITY = 8 | Simulated reality|
+| VIBRATOR_USAGE_SIMULATED_REALITY = 8 | Simulated reality|

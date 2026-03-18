@@ -51,7 +51,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 > **说明：**
 > 
-> 在onMemoryLevel回调中释放UI组件，可能会阻塞当前进程的主线程任务，因此不建议在该回调中释放UI组件。
+> onMemoryLevel回调运行在当前进程的主线程中，如果在该回调中做耗时的UI组件释放，会阻塞主线程任务，因此不建议在该回调中释放UI组件。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -61,7 +61,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 回调返回整机可用的内存级别，显示当前整机可用内存的等级。|
+  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 整机可用内存级别，对应的触发场景详见[AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel)。|
 
 **示例：**
 

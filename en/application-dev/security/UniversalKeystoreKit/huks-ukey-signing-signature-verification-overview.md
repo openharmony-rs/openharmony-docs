@@ -18,15 +18,3 @@ After Ukey PIN authentication, an application can use **resourceId** to perform 
 ## Specifications
 
 The specifications are related to the implementation of the external hardware key management extension, which vary according to vendors.
-
-| Algorithm/MD Algorithm/Padding Mode| Remarks| API Version| Mandatory|
-| -------- | -------- | -------- | -------- |
-| RSA/SHA256/PKCS1 | The signature is in the ASN1 format.| 22+ | Yes|
-| RSA/SHA384/PKCS1 | The signature is in the ASN1 format.| 22+ | Yes|
-| RSA/SHA512/PKCS1 | The signature is in the ASN1 format.| 22+ | Yes|
-| RSA/SHA256/PSS | The signature is in the ASN1 format.| 22+ | Yes|
-| RSA/SHA384/PSS | The signature is in the ASN1 format.| 22+ | Yes|
-| RSA/SHA512/PSS | The signature is in the ASN1 format.| 22+ | Yes|
-| ECC/SHA256 | The signature is in the ASN1 format.| 22+ | Yes|
-| ECC/SHA384 | The signature is in the ASN1 format.| 22+ | Yes|
-| ECC/SHA512 | The signature is in the ASN1 format.| 22+ | Yes|

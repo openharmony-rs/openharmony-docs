@@ -466,7 +466,7 @@ int OH_Pasteboard_GetDataSource(OH_Pasteboard* pasteboard, char* source, unsigne
 | -- | -- |
 | [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | 表示指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例的指针。 |
 | char* source | 表示用于存放剪贴板数据源实例的指针，开发者需在调用接口前申请指针指向的内存。 |
-| unsigned int len | 表示source指针对应的内存长度，当内存长度不足时调用接口会失败，建议长度：128。 |
+| unsigned int len | 表示source指针对应的内存长度，当内存长度不足时调用接口会失败，建议长度：128字节。 |
 
 **返回：**
 
@@ -533,7 +533,7 @@ bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)
 
 **描述：**
 
-判断剪贴板数据是否在远端设备上。由于数据跨端传输耗时较大，如果剪贴板数据在远端设备上，不建议在UI线程执行(1)检查剪贴板数据中是否包含自定义数据类型或(2)读取剪贴板数据。
+判断剪贴板数据是否在远端设备上。由于数据跨端传输耗时较大，如果剪贴板数据在远端设备上，不建议在UI线程执行检查剪贴板数据中是否包含自定义数据类型，或读取剪贴板数据。
 
 **起始版本：** 24
 
@@ -547,7 +547,7 @@ bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 表示用于指示剪贴板数据是否在远端设备上。true表示剪贴板数据在远端设备上；false表示剪贴板数据不在远端设备上。默认为true/false。 |
+| bool | 返回指示剪贴板数据是否在远端设备上的结果。true表示剪贴板数据在远端设备上；false表示剪贴板数据不在远端设备上。默认为false。 |
 
 ### OH_Pasteboard_GetData()
 

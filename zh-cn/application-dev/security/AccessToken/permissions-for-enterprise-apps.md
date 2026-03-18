@@ -1,8 +1,8 @@
 # 企业类应用可用权限
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -402,9 +402,9 @@
 
 ## ohos.permission.SUPPORT_INSTALL_ON_U1
 
-允许应用安装在1用户。
+允许企业普通应用安装在特定用户下。
 
-1用户是支持三方应用单例运行的用户。
+特定用户是支持应用单例运行的用户。
 
 **权限级别**：system_basic
 

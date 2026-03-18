@@ -264,6 +264,10 @@ try {
 
 Call **napi_run_script_path** to run an .abc file.
 
+> **NOTE**
+>
+> Calling this API in the signal function is insecure. Direct calling may cause stack overflow.
+
 CPP code:
 
 <!-- @[node_api_module_run_script_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
@@ -750,7 +754,7 @@ static napi_value AboutSerialize(napi_env env, napi_callback_info info)
     napi_valuetype valuetype;
     napi_typeof(env, number, &valuetype);
     if (valuetype != napi_number) {
-        napi_throw_error(env, nullptr, "Node-API Wrong type of argment. Expects a number.");
+        napi_throw_error(env, nullptr, "Node-API Wrong type of argument. Expects a number.");
         return nullptr;
     }
     // Call napi_delete_serialization_data to delete the serialized data.
@@ -1384,13 +1388,13 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 
 | API| Description|
 | -------- | -------- |
-| napi_wrap_enhance | Wraps a Node-API instance into an ArkTS object and specifies the instance size. You can specify whether to execute the registered callback asynchronously (if asynchronous, it must be thread-safe).|
+| napi_wrap_enhance | Wraps a native instance of the specified size into an ArkTS object. During runtime, the instance size is counted and accumulated. When the accumulated size reaches the GC triggering threshold, the garbage collection process is started. You can specify whether to execute the registered callback asynchronously (if asynchronous, it must be thread-safe).|
 
 ### Example
 
 **napi_wrap_enhance**
 
-Call **napi_wrap_enhance** to wrap a Node-API instance into an ArkTS object and specify the instance size. You can specify whether to execute the registered callback asynchronously (if asynchronous, it must be thread-safe).
+Call **napi_wrap_enhance** to wrap a native instance of the specified size into an ArkTS object. During runtime, the instance size is counted and accumulated. When the accumulated size reaches the GC triggering threshold, the garbage collection process is started. You can specify whether to execute the registered callback asynchronously (if asynchronous, it must be thread-safe).
 
 CPP code:
 

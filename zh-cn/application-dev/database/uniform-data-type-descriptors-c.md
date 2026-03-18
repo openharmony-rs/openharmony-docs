@@ -98,7 +98,7 @@ bool isBelongsTo = OH_Utd_BelongsTo(typeIds1[0], typeIds2[0]);
 if (isBelongsTo) {
     OH_LOG_INFO(LOG_APP, "typeIds1[0] belongs to typeIds2[0]");
 } else {
-    OH_LOG_INFO(LOG_APP, "typeIds1[0] don't belongs to typeIds2[0]");
+    OH_LOG_INFO(LOG_APP, "typeIds1[0] doesn't belong to typeIds2[0]");
 }
 // 6. 比较两种方式获取到的typeIds1[0]是否是typeIds2[0]的低层级类型
 bool isLower = OH_Utd_IsLower(typeIds1[0], typeIds2[0]);

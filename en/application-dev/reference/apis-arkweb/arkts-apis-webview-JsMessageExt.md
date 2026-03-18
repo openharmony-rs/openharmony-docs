@@ -151,4 +151,4 @@ Obtains the error information about the JavaScript execution. For details about 
 
 | Type          | Description                                                     |
 | --------------| --------------------------------------------------------- |
-| string \| null | If an exception occurs or the return type is not supported, the error information is serialized into a string and returned. Otherwise, **null** is returned.|
+| string \| null | If an exception occurs during JavaScript execution or the return value is of the object type, **"Not support type: <{exception\object}>"** is returned.|The maximum string length is 2048 characters, and the excessive part will be truncated. If the object contains a member of the **callback** type, the member will be automatically ignored during serialization. In other cases, **null** is returned.|

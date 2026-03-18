@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -48,7 +48,6 @@ Initializes a condition variable.
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -74,7 +73,6 @@ Unblocks at least one of the threads that are blocked on a condition variable.
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -99,7 +97,6 @@ Unblocks all threads currently blocked on a condition variable.
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -123,7 +120,6 @@ FFRT_C_API int ffrt_cond_wait(ffrt_cond_t* cond, ffrt_mutex_t* mutex)
 Blocks the calling thread on a condition variable.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -150,7 +146,6 @@ Blocks the calling thread on a condition variable for a given duration. If **ffr
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -176,7 +171,6 @@ FFRT_C_API int ffrt_cond_destroy(ffrt_cond_t* cond)
 Destroys a condition variable.
 
 **Since**: 10
-
 
 **Parameters**
 

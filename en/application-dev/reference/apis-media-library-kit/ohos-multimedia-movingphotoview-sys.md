@@ -56,16 +56,46 @@ Enumerates the extended range modes available for the cover image of the **Movin
 | CONSTRAINT         | 1      | Allows limited extended range for the image content.|
 | STANDARD            | 2      | Keeps the image content within the standard dynamic range for SDR effects. The recommended decoding formats are UNKNOWN and RGBA_8888.|
 
+## MovingPhotoViewAttribute
+
+Defines the attribute functions of a moving photo.
+  
+### setPlaybackStrategy<sup>23+</sup>
+
+setPlaybackStrategy(strategy: media.PlaybackStrategy): MovingPhotoViewAttribute
+
+Sets the strategy for processing a moving photo while it is being played.
+
+**System API**: This is a system API.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+ 	 
+| Name| Type                                                                         | Mandatory| Description                            |
+| ------ | ----------------------------------------------------------------------------- | ---- | -------------------------------- |
+| strategy  | [media.PlaybackStrategy](../../../application-dev/reference/apis-media-kit/arkts-apis-media-i.md#playbackstrategy12) | Yes  | Strategy for processing a moving photo while it is being played.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Non-system applications are not allowed to use system APIs. |
+
 **Example**
 
-Set the decoding format and HDR effect format for moving photos in a system application.
+The system application can set the decoding format, HDR effect format, and strategy for processing a moving photo while playing it.
 
 ```ts
 // This example illustrates how to use the parameters. For detailed implementation, check the public API documentation for moving photos.
 // For API version 21 and earlier, use the following: import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
 // For API version 22 and later, use the following:
-import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
-import { PixelMapFormat, DynamicRangeMode } from '@ohos.multimedia.movingphotoview';
+import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, PixelMapFormat, DynamicRangeMode } from '@kit.MediaLibraryKit';
+import { media } from '@kit.MediaKit';
 
 let data: photoAccessHelper.MovingPhoto
 async function loading(context: Context) {
@@ -85,6 +115,7 @@ struct Index {
   controller: MovingPhotoViewController = new MovingPhotoViewController();
   format: undefined | PixelMapFormat = PixelMapFormat.YCBCR_P010;
   mode: undefined | DynamicRangeMode = DynamicRangeMode.HIGH;
+  playbackstrategy: media.PlaybackStrategy = {enableCameraPostprocessing: true};
   private uiContext: UIContext = this.getUIContext()
   aboutToAppear(): void {
     loading(this.uiContext.getHostContext()!)
@@ -101,6 +132,7 @@ struct Index {
             dynamicRangeMode: this.mode,
             playWithMask: false
           })
+          .setPlaybackStrategy(this.playbackstrategy)
         }
       }
     }
@@ -108,7 +140,7 @@ struct Index {
 }
 ```
 
-## MovingPhotoViewController<sup>12+</sup>
+## MovingPhotoViewController
 
 A MovingPhotoViewController object can be used to control a **MovingPhotoView** component. For details, see [Media Module](../apis-media-kit/arkts-apis-media.md).
 
@@ -236,6 +268,26 @@ Enables or disables the embedded video in a moving photo to play automatically, 
 | Name | Type   | Mandatory| Description                        |
 | ------- | ------- | ---- | ---------------------------- |
 | enabled| boolean| Yes  | Whether to enable autoplay. **true** to enable, **false** otherwise.<br></div>The default value is **false**.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Non-system applications are not allowed to use system APIs. |
+
+### notifyMovingPhotoTransition<sup>23+</sup>
+ 	 
+notifyMovingPhotoTransition(): void
+
+Notifies the component to execute the transition animation for the cover image.
+
+**System API**: This is a system API.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Error codes**
 

@@ -24,7 +24,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
 ### Native接口调用
 
-具体接口说明请参考[API文档](../../reference/apis-image-kit/capi-image-nativemodule.md)。
+具体接口说明请参考[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)。
 
 下述代码主要演示了Receiver的初始化、相机预览流的创建以及获取图像的信息和Receiver的释放等相关功能。
 
@@ -52,6 +52,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    #include "ohcamera/camera_manager.h"
    
    #include <mutex>
+   #include <shared_mutex> // C++17以上使用
    #include <condition_variable>
    ```
 
@@ -79,6 +80,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    static OH_ImageReceiverNative* g_receiver = nullptr;
    
    static std::mutex g_mutex;
+   static std::shared_mutex shared_receiver_mutex;
    static std::condition_variable g_condVar;
    static bool g_imageReady = false;
    static OH_ImageNative* g_imageInfoResult = nullptr;
@@ -197,6 +199,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
      {
          OH_LOG_INFO(LOG_APP, "ImageReceiverNativeCTest buffer available.");
      
+         // 共享锁（读）
+         std::shared_lock<std::shared_mutex> lock(shared_receiver_mutex);
          OH_ImageNative* image = nullptr;
          Image_ErrorCode errCode = OH_ImageReceiverNative_ReadNextImage(receiver, &image);
          if (errCode != IMAGE_SUCCESS) {
@@ -699,16 +703,20 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
            OH_LOG_INFO(LOG_APP, "No image receiver to release.");
            return nullptr;
        }
+   
        Image_ErrorCode errCode = OH_ImageReceiverNative_Off(g_receiver);
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "ImageReceiverNativeCTest image receiver off failed, errCode: %{public}d.", errCode);
        }
+   
+       // 独占锁（写）
+       std::unique_lock<std::shared_mutex> lock(shared_receiver_mutex);
        errCode = OH_ImageReceiverNative_Release(g_receiver);
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "Release image receiver failed, errCode: %{public}d.", errCode);
        }
+       
        g_receiver = nullptr;
-   
        return GetJsResultDemo(env, errCode);
    }
    ```

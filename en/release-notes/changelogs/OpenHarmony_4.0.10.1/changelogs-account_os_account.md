@@ -1,14 +1,14 @@
 # Account Subsystem Changelog
 
-## cl.account_os_account.1 Deletion of App Account Authorization Interfaces
+## cl.account_os_account.1 Deletion of Application Account Authorization APIs
 
 **Change Impact**
 
-Apps developed based on earlier versions cannot use the account authorization capability.
+Applications developed based on earlier versions cannot use the account authorization capability.
 
 **Key API/Component Changes**
 
-Involved interfaces:
+Involved APIs:
 
 interface/sdk-js/api/@ohos.account.appAccount.d.ts:
 
@@ -49,11 +49,11 @@ interface/sdk-js/api/@ohos.account.appAccount.AuthorizationExtensionAbility.d.ts
 
 After change:
 
-All the involved interfaces are deleted.
+All the involved APIs are deleted.
 
 **Adaptation Guide**
 
-The deleted interfaces cannot be used any longer.
+The deleted APIs cannot be used any longer.
 
 
 ## cl.account_os_account.2 Change of the Error Codes in addCredential()
@@ -64,7 +64,7 @@ For the applications developed based on earlier versions, you need to change the
 
 **Key API/Component Changes**
 
-Involved API:
+Involved APIs:
 
 ```js
   class UserIdentityManager {
@@ -74,7 +74,7 @@ Involved API:
   }
 ```
 
-Error code list:
+List of error codes.
 | ID| Error Message                    |
 | -------- | ------------------- |
 | 12300001 | System service exception. |

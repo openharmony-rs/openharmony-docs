@@ -1,7 +1,7 @@
 # 自定义事件拦截
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -31,7 +31,7 @@ onTouchIntercept(callback: Callback<TouchEvent, HitTestMode>): T
 
 | 参数名        | 类型                    | 必填  | 说明                         |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | Callback<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明), [HitTestMode](ts-appendix-enums.md#hittestmode9)> | 是     |  自定义事件拦截回调。在做[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)时回调此函数。通过返回值设置组件的[触摸碰撞测试模式](ts-universal-attributes-hit-test-behavior.md)。 |
+| callback      | Callback<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明), [HitTestMode](ts-appendix-enums.md#hittestmode9)> | 是     |  自定义事件拦截回调。在做[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)时回调此函数。通过返回值设置组件的[触摸测试类型](ts-universal-attributes-hit-test-behavior.md)。 |
 
 **返回值：**
 
@@ -75,7 +75,7 @@ struct Index {
         // 使用touches时需要先校验是否为空
         if (event && event.touches) {
           let touches = event.touches;
-          for(let i = 0; touches[i] != null; i++) {
+          for (let i = 0; touches[i] != null; i++) {
             console.info('onTouchIntercept touches:', JSON.stringify(touches[i]));
           }
         }

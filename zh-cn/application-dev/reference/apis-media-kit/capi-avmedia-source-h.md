@@ -10,6 +10,8 @@
 
 定义AVMediaSource的结构体和枚举类型。
 
+**引用文件：** <multimedia/player_framework/avmedia_source.h>
+
 **库：** libavmedia_source.so
 
 **系统能力：** SystemCapability.Multimedia.Media.Core

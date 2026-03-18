@@ -162,7 +162,7 @@ toSendableAsset(asset: NonSendableAsset): Asset
 
 | 参数名 | 类型                                   | 必填 | 说明                        |
 | ------ | -------------------------------------- | ---- | :-------------------------- |
-| asset  | [NonSendableAsset](#nonsendablebucket) | 是   | 不可跨线程传递的Asset数据。 |
+| asset  | [NonSendableAsset](#nonsendableasset) | 是   | 不可跨线程传递的Asset数据。 |
 
 **返回值**：
 
@@ -211,7 +211,7 @@ fromSendableAsset(asset: Asset): NonSendableAsset
 
 | 类型                                   | 说明                        |
 | -------------------------------------- | --------------------------- |
-| [NonSendableAsset](#nonsendablebucket) | 不可跨线程传递的Asset数据。 |
+| [NonSendableAsset](#nonsendableasset) | 不可跨线程传递的Asset数据。 |
 
 **错误码：**
 

@@ -77,7 +77,7 @@
 import { UIAbility} from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0X0000;
 const TAG: string = '[Sample_CreatMainWindow]';
@@ -162,7 +162,7 @@ export default class EntryAbility extends UIAbility {
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0X0000;
 const TAG: string = '[Sample_CreatSubWindow]';
@@ -268,7 +268,7 @@ export default class EntryAbility extends UIAbility {
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0X0000;
 const TAG: string = '[Sample_CreatSubWindow2]';
@@ -291,14 +291,14 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[create_sub_window2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript	
+``` TypeScript
 // Index.ets
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0X0000;
-const TAG: string = '[Sample_CreatSubWindow2]';
+const TAG : string = '[Sample_CreatSubWindow2]';
 
 let windowStage_: window.WindowStage | undefined = undefined;
 let sub_windowClass: window.Window | undefined = undefined;
@@ -467,7 +467,7 @@ struct SubWindow {
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0X0000;
 const TAG: string = '[Sample_SetWindowSystemBarEnable]';
@@ -565,7 +565,7 @@ export default class EntryAbility extends UIAbility {
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0X0000;
 const TAG: string = '[Sample_CreatFloatWindow]';
@@ -639,7 +639,7 @@ export default class EntryAbility extends UIAbility {
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0X0000;
 const TAG: string = '[Sample_ListenWindowStage]';

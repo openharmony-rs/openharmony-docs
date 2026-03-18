@@ -98,7 +98,7 @@ This file declares the functions related to typography in the drawing module.
 | [void OH_Drawing_TextStyleGetBackgroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* backgroundBrush)](#oh_drawing_textstylegetbackgroundbrush) | Obtains the background brush of a text style.|
 | [void OH_Drawing_SetTextStyleBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* backgroundPen)](#oh_drawing_settextstylebackgroundpen) | Sets the background pen for a text style.|
 | [void OH_Drawing_TextStyleGetBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* backgroundPen)](#oh_drawing_textstylegetbackgroundpen) | Obtains the background pen of a text style.|
-| [OH_Drawing_TypographyCreate* OH_Drawing_CreateTypographyHandler(OH_Drawing_TypographyStyle* style,OH_Drawing_FontCollection* fontCollection)](#oh_drawing_createtypographyhandler) | Creates an **OH_Drawing_TypographyCreate** object. Release this pointer by calling [OH_Drawing_DestroyTypographyHandler](capi-drawing-text-typography-h.md#oh_drawing_destroytypographyhandler) when this object is no longer needed.|
+| [OH_Drawing_TypographyCreate* OH_Drawing_CreateTypographyHandler(OH_Drawing_TypographyStyle* style,OH_Drawing_FontCollection* fontCollection)](#oh_drawing_createtypographyhandler) | Creates an **OH_Drawing_TypographyCreate** object. Release this pointer by calling [OH_Drawing_DestroyTypographyHandler](capi-drawing-text-typography-h.md#oh_drawing_destroytypographyhandler) when this object is no longer needed. You are advised to use the [OH_Drawing_CreateSharedFontCollection](capi-drawing-font-collection-h.md#oh_drawing_createsharedfontcollection) function to create an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.|
 | [void OH_Drawing_DestroyTypographyHandler(OH_Drawing_TypographyCreate* handler)](#oh_drawing_destroytypographyhandler) | Reclaims the memory occupied by an **OH_Drawing_TypographyCreate** object.|
 | [void OH_Drawing_TypographyHandlerPushTextStyle(OH_Drawing_TypographyCreate* handler, OH_Drawing_TextStyle* style)](#oh_drawing_typographyhandlerpushtextstyle) | Pushes a text style into the text style stack. Any text added afterward will use the style currently on top of the stack.|
 | [void OH_Drawing_TypographyHandlerAddText(OH_Drawing_TypographyCreate* handler, const char* text)](#oh_drawing_typographyhandleraddtext) | Adds text.|
@@ -287,6 +287,7 @@ This file declares the functions related to typography in the drawing module.
 | [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int* value)](#oh_drawing_gettypographystyleattributeint) | Obtains the typography style attribute of the **int** type.|
 | [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool value)](#oh_drawing_settypographystyleattributebool) | Sets the typography style attribute of the **bool** type.|
 | [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool* value)](#oh_drawing_gettypographystyleattributebool) | Obtains the typography style attribute of the **bool** type.|
+| [void OH_Drawing_DestroyPositionAndAffinity(OH_Drawing_PositionAndAffinity* positionAndAffinity)](#oh_drawing_destroypositionandaffinity) | Destroys an [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md) object and reclaims the memory occupied by the object.|
 
 ## Enum Description
 
@@ -679,8 +680,8 @@ Enumerates the scaling base styles of the line height. The default style is **TE
 
 | Value| Description|
 | -- | -- |
-| TEXT_LINE_HEIGHT_BY_FONT_SIZE = 0 | Uses the font size as the scaling base.<br>Formula for calculating the line height: FontSize x FontHeight.<br>**FontSize** can be obtained from the [OH_Drawing_TextStyleGetFontSize](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontsize) API.<br>**FontHeight** can be obtained from the [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight) API.|
-| TEXT_LINE_HEIGHT_BY_FONT_HEIGHT = 1 | Uses the font height as the scaling base.<br>Formula for calculating the line height: FontHeight x FontHeight.<br>The font height is obtained after the text is shaped using the font file.<br>**FontHeight** can be obtained from the [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight) API.|
+| TEXT_LINE_HEIGHT_BY_FONT_SIZE = 0 | Uses the font size as the scaling base.<br>Formula for calculating the line height: **FontSize** x **FontHeight**.<br>**FontSize** can be obtained from the [OH_Drawing_TextStyleGetFontSize](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontsize) API.<br>**FontHeight** can be obtained from the [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight) API.|
+| TEXT_LINE_HEIGHT_BY_FONT_HEIGHT = 1 | Uses the font height as the scaling base.<br>Formula for calculating the line height: font height x **FontHeight**.<br>The font height is obtained after the text is shaped using the font file.<br>**FontHeight** can be obtained from the [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight) API.|
 
 ### OH_Drawing_TextStyleAttributeId
 
@@ -720,7 +721,9 @@ Enumerates the typography style attributes.<br>For the common attributes of the 
 | TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING = 2 | Interline spacing.<br>**lineSpacing** is not restricted by the maximum and minimum line heights.<br>By default, line spacing is added to the last line.<br>You can set **textHeightBehavior** to **DISABLE_LAST_ASCENT** in [OH_Drawing_TypographyTextSetHeightBehavior](capi-drawing-text-typography-h.md#oh_drawing_typographytextsetheightbehavior) to disable the line spacing of the last line.<br>The default value is **0**.|
 | TYPOGRAPHY_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 3 | Scaling base style of the line height. For details, see [OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle).|
 | TYPOGRAPHY_STYLE_ATTR_I_FONT_WIDTH = 4 | Font width.|
-| TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5 | Sets whether to use punctuation compression at the beginning of a line in text layout.<br>**NOTE**<br>1. The font file must support the ss08 feature in [OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md). Otherwise, the compression cannot be performed.<br>2. Only the punctuations within the punctuation compression range at the beginning of a line are in the scope of this feature.<br>**Since**: 23|
+| TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5 | Sets whether to use punctuation compression at the beginning of a line in text layout.<br>**NOTE**<br>1. The font file must support the ss08 feature in [OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md). Otherwise, compression cannot be performed.<br>2. Only the punctuations within the punctuation compression range at the beginning of a line are in the scope of this feature.<br>**Since**: 23|
+| TYPOGRAPHY_STYLE_ATTR_B_INCLUDE_FONT_PADDING = 6 | Sets whether to enable the built-in padding of the font during text typography.<br>**Since**: 23|
+| TYPOGRAPHY_STYLE_ATTR_B_FALLBACK_LINE_SPACING = 7 | Sets whether to enable the line spacing rollback mechanism during text typography.<br>**Since**: 23|
 
 ## Function Description
 
@@ -1059,7 +1062,7 @@ Adds the decoration for a text style. Multiple decoration lines can be displayed
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to the [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md) object, which is obtained from [OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle).|
-| int decoration | Decoration to add. The value **1** means to add an underline, **2** means to add an overline, and 4 means to add a strikethrough. You can add multiple decoration lines at a time via bitwise OR operations.<br>If a decoration style that is not in the [OH_Drawing_TextDecoration](capi-drawing-text-typography-h.md#oh_drawing_textdecoration) enumeration is set, the original decoration is retained.|
+| int decoration | Decoration to add. The value **1** means to add an underline, **2** means to add an overline, and **4** means to add a strikethrough. You can add various decoration lines at a time via bitwise OR operations.<br>If a decoration style that is not in the [OH_Drawing_TextDecoration](capi-drawing-text-typography-h.md#oh_drawing_textdecoration) enumeration is set, the original decoration is retained.|
 
 ### OH_Drawing_RemoveTextStyleDecoration()
 
@@ -1081,7 +1084,7 @@ Removes the decoration for a text style.
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to the [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md) object, which is obtained from [OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle).|
-| int decoration | Decoration to remove. The value **1** means to remove an underline, **2** means to remove an overline, and 4 means to remove a strikethrough. You can remove various text decorations in a single operation using bitwise OR. <br>If a decoration style that is not in the [OH_Drawing_TextDecoration](capi-drawing-text-typography-h.md#oh_drawing_textdecoration) enumeration is set, the original decoration is retained.|
+| int decoration | Decoration to remove. The value **1** means to remove an underline, **2** means to remove an overline, and **4** means to remove a strikethrough. You can remove various text decorations at a time via bitwise OR operations.<br>If a decoration style that is not in the [OH_Drawing_TextDecoration](capi-drawing-text-typography-h.md#oh_drawing_textdecoration) enumeration is set, the original decoration is retained.|
 
 ### OH_Drawing_SetTextStyleDecorationColor()
 
@@ -1378,7 +1381,7 @@ OH_Drawing_TypographyCreate* OH_Drawing_CreateTypographyHandler(OH_Drawing_Typog
 
 **Description**
 
-Creates an **OH_Drawing_TypographyCreate** object. Release this pointer by calling [OH_Drawing_DestroyTypographyHandler](capi-drawing-text-typography-h.md#oh_drawing_destroytypographyhandler) when this object is no longer needed.
+Creates an **OH_Drawing_TypographyCreate** object. Release this pointer by calling [OH_Drawing_DestroyTypographyHandler](capi-drawing-text-typography-h.md#oh_drawing_destroytypographyhandler) when this object is no longer needed. You are advised to use the [OH_Drawing_CreateSharedFontCollection](capi-drawing-font-collection-h.md#oh_drawing_createsharedfontcollection) function to create an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -2358,7 +2361,7 @@ Sets the thickness scale factor for the decoration style of a text style.
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to the **OH_Drawing_TextStyle** object, which is obtained from [OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle).|
-| double decorationThicknessScale | Thickness scaling ratio. The default value is 1. If the value is less than or equal to 0, no decoration line is drawn.|
+| double decorationThicknessScale | Thickness scaling ratio. The default value is **1**. If the value is less than or equal to 0, no decoration line is drawn.|
 
 ### OH_Drawing_SetTextStyleLetterSpacing()
 
@@ -3620,7 +3623,7 @@ OH_Drawing_Range* OH_Drawing_TypographyGetLineTextRange(OH_Drawing_Typography* t
 
 **Description**
 
-Obtains the line bounds in a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called. This function can only be used to obtain the bounds of existing lines. That is, the line index must start from 0, and the maximum index is [OH_Drawing_TypographyGetLineCount](capi-drawing-text-typography-h.md#oh_drawing_typographygetlinecount) - 1.
+Obtains the line bounds in a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called. This function can only be used to obtain the bounds of existing lines. That is, the line index must start from 0, and the maximum index is [OH_Drawing_TypographyGetLineCount](capi-drawing-text-typography-h.md#oh_drawing_typographygetlinecount) – 1.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -3851,7 +3854,7 @@ Sets a background rectangle and style ID for a text style. The style ID is valid
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to the **OH_Drawing_TextStyle** object, which is obtained from [OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle).|
 | const [OH_Drawing_RectStyle_Info](capi-drawing-oh-drawing-rectstyle-info.md)* rectStyleInfo | Pointer to the [OH_Drawing_RectStyle_Info](capi-drawing-oh-drawing-rectstyle-info.md) object.|
-| int styleId | Style ID. The style ID is valid only when the background box is a rounded rectangle. Text processing is divided into multiple segments. Each segment has its own text style. **id** indicates the sequence number of the background box in which the segment is drawn.<br>If the ID of each segment in a row is 0, all segments are drawn in the same background box. If the IDs in a row are 0 and 1, the segment whose ID is 0 is drawn in a background box, the segment whose ID is 1 is drawn in another background box. Other cases can be deduced in the same way.|
+| int styleId | Style ID. The style ID is valid only when the background box is a rounded rectangle. Text processing is divided into multiple segments. Each segment has its own text style. **id** indicates the sequence number of the background box in which the segment is drawn.<br>If the ID of each segment in a row is **0**, all segments are drawn in the same background box. If a row contains segments with IDs **0** and **1**, the segment with ID **0** is drawn in a background box, and the segment with ID **1** is drawn in another background box. Other cases can be deduced in the same way.|
 
 ### OH_Drawing_TypographyHandlerAddSymbol()
 
@@ -5488,8 +5491,8 @@ Creates a text tab object.
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_TextAlign](#oh_drawing_textalign) alignment | Alignment mode of the text following the tab character. The value 1 means right alignment, 2 means center alignment, and 0 or other values mean left alignment.|
-| float location | Alignment position of the text following the tab character. The unit is px. The minimum value is 1.0.|
+| [OH_Drawing_TextAlign](#oh_drawing_textalign) alignment | Alignment mode of the text following the tab character. The value **1** means right alignment, **2** means center alignment, and **0** or other values mean left alignment.|
+| float location | Alignment position of the text following the tab character. The unit is px. The minimum value is **1.0**.|
 
 **Returns**
 
@@ -5543,7 +5546,7 @@ Obtains the alignment mode of a text tab.
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_TextAlign](#oh_drawing_textalign) | Alignment mode. The value 1 means right alignment, 2 means center alignment, and 0 or other values mean left alignment.|
+| [OH_Drawing_TextAlign](#oh_drawing_textalign) | Alignment mode. The value **1** means right alignment, **2** means center alignment, and **0** or other values mean left alignment.|
 
 ### OH_Drawing_GetTextTabLocation()
 
@@ -6062,7 +6065,7 @@ Sets the typography style attribute of the **bool** type.
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INVALID_PARAMETER** if **style** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **style** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
 
 ### OH_Drawing_GetTypographyStyleAttributeBool()
 
@@ -6090,4 +6093,22 @@ Obtains the typography style attribute of the **bool** type.
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INVALID_PARAMETER** if **style** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **style** or **value** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+
+### OH_Drawing_DestroyPositionAndAffinity()
+
+```c
+void OH_Drawing_DestroyPositionAndAffinity(OH_Drawing_PositionAndAffinity* positionAndAffinity)
+```
+
+**Description**
+
+Destroys an [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md) object and reclaims the memory occupied by the object.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md)* positionAndAffinity | Pointer to the [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md) object.|

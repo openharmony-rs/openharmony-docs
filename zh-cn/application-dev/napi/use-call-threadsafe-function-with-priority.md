@@ -1,4 +1,4 @@
-# 使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的的任务
+# 使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的任务
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->

@@ -389,7 +389,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   let file = fs.openSync(filePath);
   fs.close(file).then(() => {
-    console.info("File closed");
+    console.info("close file succeed");
   }).catch((err: BusinessError) => {
     console.error("close file failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -426,7 +426,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("close file failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("File closed");
+      console.info("close file succeed");
     }
   });
   ```
@@ -980,7 +980,7 @@ Triggers connection. If the peer device is abnormal, [onStatus](#onstatus12) in 
 
   | Name | Type    | Mandatory  | Description                                      |
   | ---- | ------ | ---- | ---------------------------------------- |
-  | networkId   | string | Yes   | Network ID of the device. The device network ID can be obtained from [deviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) using the related [distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md) API.                            |
+  | networkId   | string | Yes   | Network ID of the device. The device network ID can be obtained from [DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) using the related [distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md) API.                            |
   | listeners | [DfsListeners](#fsdfslisteners12) | Yes   | Listeners for distributed file system status.               |
 
 **Return value**
@@ -991,7 +991,7 @@ Triggers connection. If the peer device is abnormal, [onStatus](#onstatus12) in 
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -1031,7 +1031,7 @@ Triggers disconnection.
 
   | Name | Type    | Mandatory  | Description                                      |
   | ---- | ------ | ---- | ---------------------------------------- |
-  | networkId   | string | Yes   | Network ID of the device. The device network ID can be obtained from [deviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) using the related [distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md) API.                           |
+  | networkId   | string | Yes   | Network ID of the device. The device network ID can be obtained from [DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) using the related [distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md) API.                           |
 
 **Return value**
 
@@ -1041,7 +1041,7 @@ Triggers disconnection.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Space Statistics Error Codes](errorcode-filemanagement.md#space-statistics-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -1257,7 +1257,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   import { BusinessError } from '@kit.BasicServicesKit';
   let dirPath = pathDir + "/testDir";
   fs.mkdir(dirPath).then(() => {
-    console.info("Directory created");
+    console.info("mkdir succeed");
   }).catch((err: BusinessError) => {
     console.error("mkdir failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -1296,7 +1296,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   import { BusinessError } from '@kit.BasicServicesKit';
   let dirPath = pathDir + "/testDir1/testDir2/testDir3";
   fs.mkdir(dirPath, true).then(() => {
-    console.info("Directory created");
+    console.info("mkdir succeed");
   }).catch((err: BusinessError) => {
     console.error("mkdir failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -1332,7 +1332,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("mkdir failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("Directory created");
+      console.info("mkdir succeed");
     }
   });
   ```
@@ -1368,7 +1368,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("mkdir failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("Directory created");
+      console.info("mkdir succeed");
     }
   });
   ```
@@ -1617,7 +1617,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
   let arrayBuffer = new ArrayBuffer(4096);
   fs.read(file.fd, arrayBuffer).then((readLen: number) => {
-    console.info("Read file data successfully");
+    console.info("read file data succeed");
     let buf = buffer.from(arrayBuffer, 0, readLen);
     console.info(`The content of file: ${buf.toString()}`);
   }).catch((err: BusinessError) => {
@@ -1662,7 +1662,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("read failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("Read file data successfully");
+      console.info("read file data succeed");
       let buf = buffer.from(arrayBuffer, 0, readLen);
       console.info(`The content of file: ${buf.toString()}`);
     }
@@ -1744,7 +1744,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   import { BusinessError } from '@kit.BasicServicesKit';
   let dirPath = pathDir + "/testDir";
   fs.rmdir(dirPath).then(() => {
-    console.info("Directory removed");
+    console.info("rmdir succeed");
   }).catch((err: BusinessError) => {
     console.error("rmdir failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -1784,7 +1784,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("rmdir failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("Directory removed");
+      console.info("rmdir succeed");
     }
   });
   ```
@@ -1852,7 +1852,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
   fs.unlink(filePath).then(() => {
-    console.info("File removed");
+    console.info("remove file succeed");
   }).catch((err: BusinessError) => {
     console.error("remove file failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -1888,7 +1888,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("remove file failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("File removed");
+      console.info("remove file succeed");
     }
   });
   ```
@@ -2078,7 +2078,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   let len: number = 5;
   fs.truncate(filePath, len).then(() => {
-    console.info("File truncated");
+    console.info("truncate file succeed");
   }).catch((err: BusinessError) => {
     console.error("truncate file failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -2296,7 +2296,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 > **NOTE**
 >
-> If the line read by ReaderIterator is not in UTF-8 format, error code 13900037 will be returned.
+> If the line read by **ReaderIterator** is not in UTF-8 format, error code 13900037 will be returned.
 
 **Example**
 
@@ -2591,7 +2591,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let srcFile = pathDir + "/test.txt";
   let dstFile = pathDir + "/new.txt";
   fs.rename(srcFile, dstFile).then(() => {
-    console.info("File renamed");
+    console.info("rename succeed");
   }).catch((err: BusinessError) => {
     console.error("rename failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -2633,7 +2633,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("rename failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("File renamed");
+      console.info("rename succeed");
     }
   });
   ```
@@ -2702,7 +2702,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   let file = fs.openSync(filePath);
   fs.fsync(file.fd).then(() => {
-    console.info("Data flushed");
+    console.info("sync data succeed");
   }).catch((err: BusinessError) => {
     console.error("sync data failed with error message: " + err.message + ", error code: " + err.code);
   }).finally(() => {
@@ -2804,7 +2804,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   let file = fs.openSync(filePath);
   fs.fdatasync(file.fd).then(() => {
-    console.info("Data flushed");
+    console.info("sync data succeed");
   }).catch((err: BusinessError) => {
     console.error("sync data failed with error message: " + err.message + ", error code: " + err.code);
   }).finally(() => {
@@ -2906,7 +2906,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let srcFile = pathDir + "/test.txt";
   let dstFile = pathDir + "/test";
   fs.symlink(srcFile, dstFile).then(() => {
-    console.info("Symbolic link created");
+    console.info("symlink succeed");
   }).catch((err: BusinessError) => {
     console.error("symlink failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -2942,7 +2942,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("symlink failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("Symbolic link created");
+      console.info("symlink succeed");
     }
   });
   ```
@@ -2997,7 +2997,7 @@ You can configure the **recursion** parameter in **options** to recursively list
 
   | Type                  | Description        |
   | --------------------- | ---------- |
-  | Promise&lt;string[]&gt; | Promise used to return the file names listed.|
+  | Promise&lt;string[]&gt; | Promise used to return the file name array, which is encoded in UTF-8 format by default.|
 
 **Error codes**
 
@@ -3044,7 +3044,7 @@ You can configure the **recursion** parameter in **options** to recursively list
   | ------ | ------ | ---- | --------------------------- |
   | path | string | Yes   | Application sandbox path of the directory.|
   | options | [ListFileOptions](#listfileoptions11) | No   | Options for filtering files. The files are not filtered by default.|
-  | callback | AsyncCallback&lt;string[]&gt; | Yes   | Callback used to return the file names listed.             |
+  | callback | AsyncCallback&lt;string[]&gt; | Yes   | Callback used to return the file names listed. The files are encoded in UTF-8 by default.|
 
 
 **Error codes**
@@ -3101,7 +3101,7 @@ You can configure the **recursion** parameter in **options** to recursively list
 
   | Type                  | Description        |
   | --------------------- | ---------- |
-  | string[] | File names obtained.|
+  | string[] | File name array, which is encoded in UTF-8 format by default.|
 
 **Error codes**
 
@@ -3876,7 +3876,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   fs.createStream(filePath, "a+").then((stream: fs.Stream) => {
     stream.closeSync();
-    console.info("Stream created");
+    console.info("createStream succeed");
   }).catch((err: BusinessError) => {
     console.error("createStream failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -3915,7 +3915,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
       console.error("create stream failed with error message: " + err.message + ", error code: " + err.code);
     } else {
       stream.closeSync();
-      console.info("Stream created");
+      console.info("createStream succeed");
     }
   })
   ```
@@ -3952,7 +3952,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   ```ts
   let filePath = pathDir + "/test.txt";
   let stream = fs.createStreamSync(filePath, "r+");
-  console.info("Stream created");
+  console.info("createStream succeed");
   stream.closeSync();
   ```
 
@@ -3991,7 +3991,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   let file = fs.openSync(filePath);
   fs.fdopenStream(file.fd, "r+").then((stream: fs.Stream) => {
-    console.info("Stream opened");
+    console.info("openStream succeed");
     stream.closeSync();
   }).catch((err: BusinessError) => {
     console.error("openStream failed with error message: " + err.message + ", error code: " + err.code);
@@ -4943,7 +4943,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   let stream = fs.createStreamSync(filePath, "r+");
   stream.close().then(() => {
-    console.info("File stream closed");
+    console.info("close fileStream succeed");
   }).catch((err: BusinessError) => {
     console.error("close fileStream  failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -5033,7 +5033,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   let stream = fs.createStreamSync(filePath, "r+");
   stream.flush().then(() => {
-    console.info("Stream flushed");
+    console.info("flush succeed");
     stream.close();
   }).catch((err: BusinessError) => {
     console.error("flush failed with error message: " + err.message + ", error code: " + err.code);
@@ -5070,7 +5070,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("flush stream failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("Stream flushed");
+      console.info("flush succeed");
       stream.close();
     }
   });
@@ -5275,7 +5275,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     length: 5
   };
   stream.read(arrayBuffer, readOption).then((readLen: number) => {
-    console.info("Read data successfully");
+    console.info("read data succeed");
     let buf = buffer.from(arrayBuffer, 0, readLen);
     console.info(`The content of file: ${buf.toString()}`);
     stream.close();
@@ -5323,7 +5323,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("read stream failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("Read data successfully");
+      console.info("read data succeed");
       let buf = buffer.from(arrayBuffer, 0, readLen);
       console.info(`The content of file: ${buf.toString()}`);
       stream.close();

@@ -4,7 +4,7 @@
 <!--Owner: @hello_harmony-->
 <!--Designer: @StevenLai1994-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 FaultLogExtensionContext is the context of [FaultLogExtensionAbility](js-apis-hiviewdfx-FaultLogExtensionAbility.md) and inherits from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).
 
@@ -24,7 +24,7 @@ import { FaultLogExtensionAbility } from '@kit.PerformanceAnalysisKit';
 export default class MyFaultLogExtension extends FaultLogExtensionAbility {
     onFaultReportReady() {
         let context = this.context; // Obtain FaultLogExtensionContext.
-        console.info('cache dir is' + context.cacheDir); // Access the members in the context.
+        console.info('cache dir is ' + context.cacheDir); // Access the members in the context.
     }
 }
 ```

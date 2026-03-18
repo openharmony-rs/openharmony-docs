@@ -4,16 +4,19 @@
 <!--Owner: @jiyujia926-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 This document explains how to migrate data object state variables from V1 to V2.
+
 | V1 Decorator               | V2 Decorator                 |
 |------------------------|--------------------------|
 |[\@ObjectLink](./arkts-observed-and-objectlink.md)/[\@Observed](./arkts-observed-and-objectlink.md) /[\@Track](./arkts-track.md)|[\@ObservedV2](./arkts-new-observedV2-and-trace.md)/[\@Trace](./arkts-new-observedV2-and-trace.md)|
 
+
 ## Migration Examples
 
 ### \@ObjectLink/\@Observed/\@Track -> \@ObservedV2/\@Trace
+
 **Migration Rules**
 
 In V1, \@Observed and \@ObjectLink enable observation of objects and their first-level properties. Observing nested properties requires wrapping them in custom components with \@ObjectLink. \@Track provides property-level change tracking for precise updates.
@@ -21,6 +24,7 @@ In V1, \@Observed and \@ObjectLink enable observation of objects and their first
 In V2, \@ObservedV2 and \@Trace simplify the observation model. Observation capabilities are embedded directly into class objects and their nested properties. \@Trace combines observation with precise update control, replacing the functionality of \@Track. Key improvements are as follows:
 
 - Nested object observation: \@ObservedV2 and \@Trace enable direct observation of nested properties without wrapper components.
+
 - Precise updates: \@Trace ensures efficient UI updates at the property level.
 
 **Example**

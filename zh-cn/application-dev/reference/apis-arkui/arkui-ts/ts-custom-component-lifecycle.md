@@ -56,7 +56,7 @@ onDidBuild函数在自定义组件的build()函数执行后调用，开发者可
 
 aboutToDisappear?(): void
 
-aboutToDisappear函数在自定义组件析构销毁时执行。不允许在aboutToDisappear函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。具体使用说明，详见[自定义组件生命周期指南](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。
+aboutToDisappear函数在自定义组件析构销毁时执行。不允许在aboutToDisappear函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。具体使用说明，详见[自定义组件生命周期指南](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。不建议在aboutToDisappear函数调用后再触发例如[自定义弹窗的创建](./ts-methods-custom-dialog-box.md#open)等逻辑，这可能会因为组件树信息丢失导致应用行为异常，例如[@Consume](../../../ui/state-management/arkts-provide-and-consume.md)找不到对应的[@Provide](../../../ui/state-management/arkts-provide-and-consume.md)、弹窗内白屏不显示组件等。
 
 > **说明：**
 >
@@ -416,7 +416,7 @@ struct Child {
   }
 
   aboutToRecycle() {
-    //这里可以释放比较占内存的内容或其他非必要资源引用，避免一直占用内存，引发内存泄漏
+    // 这里可以释放比较占内存的内容或其他非必要资源引用，避免一直占用内存，引发内存泄漏
     console.info("Recycle Child,child进入复用池中");
   }
 
@@ -472,7 +472,7 @@ import { CustomTheme, CustomColors, Theme, ThemeControl } from '@kit.ArkUI';
 class BlueColors implements CustomColors {
   fontPrimary = Color.White;
   backgroundPrimary = Color.Blue;
-  brand = Color.Blue; //品牌色
+  brand = Color.Blue; // 品牌色
 }
 
 class PageCustomTheme implements CustomTheme {
@@ -543,7 +543,7 @@ import { CustomTheme, CustomColors, Theme, ThemeControl } from '@kit.ArkUI';
 class BlueColors implements CustomColors {
   fontPrimary = Color.White;
   backgroundPrimary = Color.Blue;
-  brand = Color.Blue; //品牌色
+  brand = Color.Blue; // 品牌色
 }
 
 class PageCustomTheme implements CustomTheme {

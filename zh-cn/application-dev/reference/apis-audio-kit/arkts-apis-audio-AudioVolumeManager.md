@@ -137,7 +137,7 @@ try {
 
 getAppVolumePercentage(): Promise<number\>
 
-获取应用的音量（范围为0到100）。使用Promise异步回调。
+获取应用的音量（范围为[0, 100]）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -163,7 +163,7 @@ audioVolumeManager.getAppVolumePercentage().then((value: number) => {
 
 setAppVolumePercentage(volume: number\): Promise<void\>
 
-设置应用的音量（范围为0到100）。使用Promise异步回调。
+设置应用的音量（范围为[0, 100]）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -542,7 +542,7 @@ try {
 
 getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: number, device: DeviceType): number
 
-获取系统通过音频流、音量等级和设备类型计算出的音量db值。
+获取系统通过音频流、音量等级和设备类型计算出的音量dB值。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -558,7 +558,7 @@ getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: number, devic
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number | 音频流的音量db值。 |
+| number | 音频流的音量dB值。 |
 
 **错误码：**
 
@@ -571,7 +571,7 @@ getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: number, devic
 **示例：**
 
 ```ts
-// 获取系统通过音频流、音量等级和设备类型计算出的音量db值。
+// 获取系统通过音频流、音量等级和设备类型计算出的音量dB值。
 import { BusinessError } from '@kit.BasicServicesKit';
 import { audio } from '@kit.AudioKit'
 

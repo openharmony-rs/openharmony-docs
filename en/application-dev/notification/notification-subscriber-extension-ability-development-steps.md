@@ -80,13 +80,15 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
      }
    ```
 
-## Sample Code for Classic Bluetooth
+7. The following uses classic Bluetooth as an example. You can use BLE for connection as required.
 
-1. The following uses classic Bluetooth as an example. You can use BLE for connection as required.
-2. After the user receives a message, the application establishes a Bluetooth connection if the current connection is invalid.
-3. If an active Bluetooth connection already exists, the application directly uses this connection to send the message.
-4. If message transmission fails, the application will re-establish the connection and retry sending the message once the connection is successfully established.
-5. The application requests the **ohos.permission.ACCESS_BLUETOOTH** permission. For details about how to configure and apply for permissions, see [Declaring Permissions](../security/AccessToken/declare-permissions.md) and [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
+8. After the user receives a message, the application establishes a Bluetooth connection if the current connection is invalid.
+
+9. If an active Bluetooth connection already exists, the application directly uses this connection to send the message.
+
+10. If message transmission fails, the application will re-establish the connection and retry sending the message once the connection is successfully established.
+
+11. Apply for the [ohos.permission.ACCESS_BLUETOOTH](../security/AccessToken/permissions-for-all-user.md#ohospermissionaccess_bluetooth) permission. For details about how to configure and apply for permissions, see [Declaring Permissions](../security/AccessToken/declare-permissions.md) and [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->   
    
    ``` TypeScript
@@ -94,7 +96,7 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
    import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { socket } from '@kit.ConnectivityKit'
-   import {util} from '@kit.ArkTS'; 
+   import { util } from '@kit.ArkTS'; 
    
    const DOMAIN = 0x0000;
    class TransferInfo {
@@ -102,7 +104,7 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
      public info: notificationExtensionSubscription.NotificationInfo | undefined
      public cancelHashCodes: Array<string> | undefined
    }
-   
+   // Spp means Serial Port Profile
    class SppClientManager {
      private clientNumber: number = -1;
      private peerDevice: string = '';
@@ -234,7 +236,7 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
        }
      }
    
-     // Called back when notifications is cancelled.
+     // Called back when notifications are cancelled.
      onCancelMessages(hashCodes: Array<string>): void {
        hilog.info(DOMAIN, 'testTag', `on cancel message ${JSON.stringify(hashCodes)}`)
        notificationExtensionSubscription.getSubscribeInfo()

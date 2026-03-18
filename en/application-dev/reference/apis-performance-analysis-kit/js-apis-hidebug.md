@@ -2,10 +2,10 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @yu_haoqiaida-->
+<!--Owner: @hello_harmony; @leiguangyu-->
 <!--Designer: @kutcherzhou1-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 HiDebug provides multiple methods for debugging and profiling applications. With these methods, you can obtain memory, CPU, GPU, and GC data, collect process trace and profiler data, and dump VM heap snapshots. Since most APIs of this module are both performance-consuming and time-consuming, and are defined based on the HiDebug module, you are advised to use these APIs only during the application debugging and profiling phases. If the APIs are required in other scenarios, evaluate the impact of the APIs on application performance.
 
@@ -920,7 +920,7 @@ Defines the memory limit of the application process.
 
 | Name     | Type  | Read Only| Optional| Description        |
 | --------- | ------ | --|----| ------------ |
-| rssLimit    | bigint |  No | No | Limit on the resident set size, in KB.    |
+| rssLimit    | bigint |  No | No | Limit on the physical memory size of the application process, in KB. Currently, the system does not limit the physical memory size of the process. However, the available physical memory of the process cannot exceed the maximum physical memory of the device. You can call [hidebug.getSystemMemInfo](#hidebuggetsystemmeminfo12) to obtain the physical memory usage of the device.    |
 | vssLimit  | bigint |  No | No | Limit on the virtual memory size, in KB.      |
 | vmHeapLimit | bigint |  No | No | Limit on the JS VM heap size of the calling thread, in KB.|
 | vmTotalHeapSize | bigint |  No | No | Limit on the JS heap memory size of the process, in KB. |
@@ -1397,3 +1397,37 @@ Describes the GPU memory data of an application, including the GL and Graph part
 | --------- |--------| ---- |---- |---------------------------------------------------------------------------------|
 | gl  | number |  No |   No | GL memory size (memory occupied by RenderService for loading required resources, such as images and textures), in KB.|
 | graph  | number |  No |   No | Graph memory size (DMA memory usage of the process), in KB, including the DMA buffers obtained directly through the API and those obtained through **allocator_host**.|
+
+## hidebug.setProcDumpInSharedOOM<sup>24+</sup>
+
+setProcDumpInSharedOOM(enable: boolean): void
+
+Changes the dump heap snapshot from the thread-level to the process-level.
+
+> **NOTE**
+>
+> To dump a process-level heap snapshot, you must call this API and pass **true**. In addition, SharedHeap OOM must occur.
+>
+> This API does not affect the heap snapshot dumped in other scenarios. For example, it does not affect the result of [dumpJsRawHeapData](#hidebugdumpjsrawheapdata18).
+>
+> This API can be called multiple times in the application lifecycle, but only the last call takes effect.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**Parameters**
+
+| Name        | Type | Mandatory| Description|
+|--------------|------|------|------|
+| enable | boolean | Yes| When SharedHeap OOM occurs in a process, the system dumps the heap snapshot of the corresponding level based on the information recorded when the process calls the API for the last time in its lifecycle.<br>**true**: process level.<br>**false**: thread level.<br> The default value is **false**.|
+
+**Example**:
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+hidebug.setProcDumpInSharedOOM(true);
+```

@@ -495,7 +495,7 @@ systemBarStyle(style: Optional&lt;SystemBarStyle&gt;)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)&gt; | 是   | 系统状态栏样式。 |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)&gt; | 是   | 系统状态栏样式。 |
 
 ### recoverable<sup>14+</sup>
 
@@ -516,7 +516,7 @@ recoverable(recoverable: Optional&lt;boolean&gt;)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| recoverable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | Navigation是否可恢复，默认为不可恢复。<br/>true：路由栈可恢复；false：路由栈不可恢复。<br/>传入参数非法时，按false处理。|
+| recoverable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | Navigation是否可恢复，默认为不可恢复。<br/>true：路由栈可恢复；false：路由栈不可恢复。<br/>传入参数非法时，按false处理。|
 
 ### enableDragBar<sup>14+</sup>
 
@@ -532,7 +532,7 @@ enableDragBar(isEnabled: Optional&lt;boolean&gt;)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| isEnabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | 是否开启拖拽条，默认为无拖拽条样式。<br/>true：有拖拽条样式；false：无拖拽条样式。<br/>传入参数非法时，按false处理。|
+| isEnabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | 是否开启拖拽条，默认为无拖拽条样式。<br/>true：有拖拽条样式；false：无拖拽条样式。<br/>传入参数非法时，按false处理。|
 
 ### enableModeChangeAnimation<sup>15+</sup>
 
@@ -548,7 +548,7 @@ enableModeChangeAnimation(isEnabled: Optional&lt;boolean&gt;)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| isEnabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | 是否开启单双栏切换动效。<br/>true：开启单双栏切换动效；false：关闭单双栏切换动效。<br/>传入参数非法时，按true处理。|
+| isEnabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | 是否开启单双栏切换动效。<br/>true：开启单双栏切换动效；false：关闭单双栏切换动效。<br/>传入参数非法时，按true处理。|
 
 ### enableToolBarAdaptation<sup>19+</sup>
 
@@ -606,6 +606,10 @@ divider(style: NavigationDividerStyle | null)
 enableVisibilityLifecycleWithContentCover(isEnabled: Optional&lt;boolean&gt;)
 
 设置是否启用[NavDestination](./ts-basic-components-navdestination.md)页面[onHidden](./ts-basic-components-navdestination.md#onhidden10)、[onShown](./ts-basic-components-navdestination.md#onshown10)生命周期与全模态的联动触发。
+
+>**说明：**
+>
+> 从API version 23开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -2089,8 +2093,8 @@ struct NavigationExample {
         .width(24)
         .height(24)
         .margin({ left: 24 })
-      // 'common/ic_public_more.svg'需要替换为开发者所需的资源文件
-      Image('common/ic_public_more.svg')
+      // 'resources/base/media/ic_public_more.svg'需要替换为开发者所需的资源文件
+      Image('resources/base/media/ic_public_more.svg')
         .width(24)
         .height(24)
         .margin({ left: 24 })
@@ -2224,7 +2228,7 @@ struct NavigationExample {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pageInfos.pushPath({ name: 'pageOne' }); //将name指定的NavDestination页面信息入栈
+            this.pageInfos.pushPath({ name: 'pageOne' }); // 将name指定的NavDestination页面信息入栈
           })
         Button('use interception', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -2267,7 +2271,7 @@ export struct PageOne {
           .margin(20)
           .onClick(() => {
             let tmp = new TmpClass();
-            this.pageInfos.pushPathByName('pageTwo', tmp); //将name指定的NavDestination页面信息入栈，传递的数据为param
+            this.pageInfos.pushPathByName('pageTwo', tmp); // 将name指定的NavDestination页面信息入栈，传递的数据为param
           })
         Button('singletonLaunchMode', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -2275,14 +2279,14 @@ export struct PageOne {
           .margin(20)
           .onClick(() => {
             this.pageInfos.pushPath({ name: 'pageOne' },
-              { launchMode: LaunchMode.MOVE_TO_TOP_SINGLETON }); //从栈底向栈顶查找，如果指定的名称已经存在，则将对应的NavDestination页面移到栈顶
+              { launchMode: LaunchMode.MOVE_TO_TOP_SINGLETON }); // 从栈底向栈顶查找，如果指定的名称已经存在，则将对应的NavDestination页面移到栈顶
           })
         Button('popToname', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pageInfos.popToName('pageTwo'); //回退路由栈到第一个名为name的NavDestination页面
+            this.pageInfos.popToName('pageTwo'); // 回退路由栈到第一个名为name的NavDestination页面
             console.info(`popToName ${JSON.stringify(this.pageInfos)}，` + 
               `返回值 ${JSON.stringify(this.pageInfos.popToName('pageTwo'))}`); 
           })
@@ -2316,7 +2320,7 @@ export struct PageOne {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pageInfos.clear(); //清除栈中所有页面
+            this.pageInfos.clear(); // 清除栈中所有页面
           })
         Button('get', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -2595,7 +2599,7 @@ export struct PageOne {
           .height(40)
           .margin(20)
           .onClick(() => {
-            //将name指定的NavDestination页面信息入栈，传递的数据为param
+            // 将name指定的NavDestination页面信息入栈，传递的数据为param
             this.pageInfos.pushDestinationByName('pageTwo', CustomTransition.getInstance().getAnimationId());
           })
       }
@@ -2698,7 +2702,7 @@ export struct PageTwo {
           .height(40)
           .margin(20)
           .onClick(() => {
-            //将name指定的NavDestination页面信息入栈，传递的数据为param
+            // 将name指定的NavDestination页面信息入栈，传递的数据为param
             this.pageInfos.pushPath({ name: 'pageOne', param: CustomTransition.getInstance().getAnimationId() });
           })
       }
@@ -4832,7 +4836,7 @@ struct NavigationExample {
       }
     }
     .mode(NavigationMode.Stack)
-    .enableToolBarAdaptation(this.enable) //是否启用工具栏自适应能力
+    .enableToolBarAdaptation(this.enable) // 是否启用工具栏自适应能力
     .backButtonIcon(new SymbolGlyphModifier($r('sys.symbol.ohos_wifi')))
     .titleMode(NavigationTitleMode.Mini)
     .menus(this.menuItems)
@@ -4929,7 +4933,9 @@ struct Index {
 
 ### 示例17（使用新增导航控制器方法）
 
-该示例演示如何使用路由拦截功能，并在[NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11)中获取mode。
+该示例通过设置[setInterception](#setinterception12)方法来实现路由拦截功能，并在[NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11)中获取mode。
+
+从API version 22开始，在setInterception的参数类型[NavigationInterception](#navigationinterception12)中新增了interception接口。
 
 ```ts
 // Index.ets
@@ -5170,7 +5176,7 @@ export struct PageTwo {
 
 在src/main目录下的工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"。
 
-```json
+```json5
 // src/main/resources/base/profile/router_map.json
 {
   "routerMap": [

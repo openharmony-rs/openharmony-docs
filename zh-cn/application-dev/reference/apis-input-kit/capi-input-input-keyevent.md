@@ -25,5 +25,5 @@ typedef struct Input_KeyEvent Input_KeyEvent
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Input_CreateKeyEvent](capi-oh-input-manager-h.md#oh_input_createkeyevent) | 创建按键事件对象。 |
+| [OH_Input_CreateKeyEvent](capi-oh-input-manager-h.md#oh_input_createkeyevent) | 创建按键事件对象。通过调用[OH_Input_DestroyKeyEvent](capi-oh-input-manager-h.md#oh_input_destroykeyevent)销毁按键事件对象。 |
 | [OH_Input_DestroyKeyEvent](capi-oh-input-manager-h.md#oh_input_destroykeyevent) | 销毁按键事件对象。 |

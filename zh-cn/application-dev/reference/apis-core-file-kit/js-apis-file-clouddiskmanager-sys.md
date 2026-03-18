@@ -97,7 +97,7 @@ getAllSyncFolders(): Promise&lt;Array&lt;SyncFolder&gt;&gt;
 | 801 | Device not supported. |
 | 34400003 | IPC communication failed. |
 | 34400014  | Temporary failure, Retry is recommended (e.g., network issues). |
-| 34400015  | Cloud disk not allowed on this device.|
+| 34400015  | Cloud disk is not allowed on this device.|
 
 **示例：**
 

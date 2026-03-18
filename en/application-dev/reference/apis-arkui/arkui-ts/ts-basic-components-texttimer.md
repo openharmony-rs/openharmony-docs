@@ -46,7 +46,7 @@ Options used to build the TextTimer component.
 
 | Name  | Type    | Read-Only| Optional| Description                  |
 | ----------- | -------- | -------- | -------- | -------- |
-| isCountDown | boolean  | No | Yes | Countdown switch. The value **true** means that the timer counts down (for example, from 30 seconds to 0 seconds), and **false** means that the timer counts up (for example, from 0 seconds to 30 seconds).<br>Default value: **false**|
+| isCountDown | boolean  | No | Yes | Countdown switch.<br>**true**: The timer counts down (for example, from 30 seconds to 0 seconds).<br>**false**: The timer counts up (for example, from 0 seconds to 30 seconds).<br>Default value: **false**|
 | count       | number   | No | Yes | Timer duration, in milliseconds. It is effective only when **isCountDown** is **true**. The maximum value is 86400000 ms (24 hours). If 0 < **count** < 86400000, **count** is the initial value of the timer. Otherwise, the default value is used as the initial value.<br>Default value: **60000**|
 | controller  | [TextTimerController](#texttimercontroller) | No| Yes| **TextTimer** controller.|
 
@@ -225,7 +225,7 @@ When the high-precision [format](#format) (SSS or SS) is set, the callback inter
 
 ## TextTimerController
 
-Implements a controller for controlling the **TextTimer** component. A **TextTimer** component can only be bound to one controller, and the relevant commands can only be called after the component has been created.
+Implements a controller for controlling the **TextTimer** component. A **TextTimer** component can only be bound to one controller, and the relevant commands can only be called after the component has been created. A **TextTimerController** can control only the last **TextTimer** component bound to it.
 
 **Widget capability**: Since API version 10, this API is supported in ArkTS widgets.
 

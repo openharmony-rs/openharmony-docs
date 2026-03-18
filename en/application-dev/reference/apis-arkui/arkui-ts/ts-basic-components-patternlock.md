@@ -40,11 +40,11 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 sideLength(value: Length)
 
-Sets the width and height (same value) of the component. If the value is 0 or a negative number, the component is not displayed.
+Sets the width and height (same value) of the component. If this attribute is set to **0** or a negative number, the component is not displayed.
 
 > **NOTE**
 > 
-> If the common attribute [aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio) is set for the PatternLock component and the value is not 1 (the component size is set to a rectangle), the 9-grid is still drawn as a square (exceeding the component range).
+> When the **PatternLock** component has the universal attribute [aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio) set and the ratio is not equal to 1 (the component is constrained to a rectangule), the nine‑grid pattern is still drawn as a square, which exceeds the component's bounds.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -70,7 +70,7 @@ Sets the radius of the dots in a grid. If this attribute is set to **0** or a ne
 
 | Name| Type                        | Mandatory| Description                              |
 | ------ | ---------------------------- | ---- | ---------------------------------- |
-| value  | [Length](ts-types.md#length) | Yes  |Radius of the dots in a grid.<br>Default value: **6vp**<br>Value range: (0, sideLength/11]. If the value is less than or equal to 0, the default value is used. If the value exceeds the maximum value, the maximum value is used.|
+| value  | [Length](ts-types.md#length) | Yes  |Radius of the dots in a grid.<br>Default value: **6vp**<br>Value range: (0, sideLength/11]. If the value is less than or equal to **0**, the default value is used. If the value exceeds the maximum value, the maximum value is used.|
 
 ### backgroundColor
 backgroundColor(value: ResourceColor)
@@ -153,7 +153,7 @@ Sets the path color.
 
 | Name| Type                                      | Mandatory| Description                                |
 | ------ | ------------------------------------------ | ---- | ------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Path color.<br>Default value: **'#33182431' **|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Path color.<br>Default value: **'#33182431'**|
 
 ### pathStrokeWidth
 
@@ -169,7 +169,7 @@ Sets the width of the path stroke. If this attribute is set to **0** or a negati
 
 | Name| Type                      | Mandatory| Description                         |
 | ------ | -------------------------- | ---- | ----------------------------- |
-| value  | number&nbsp;\|&nbsp;string | Yes  | Width of the path stroke.<br>Default value: **12vp**<br>Value range: (0, sideLength/3]. If the value is set to 0 or a negative number, the line is not displayed. If the value exceeds the maximum value, the maximum value is used.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Width of the path stroke.<br>Default value: **12vp**<br>Value range: (0, sideLength/3]. If the value is set to **0** or a negative number, the line is not displayed. If the value exceeds the maximum value, the maximum value is used.|
 
 ### autoReset
 
@@ -185,7 +185,7 @@ Sets whether to allow the user to reset the component status (that is, clear the
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to allow the user to reset the component status (that is, clear the input) by touching the component again after the input is complete.<br>true: Reset the component status (that is, clear the input) by touching the component again after the input is complete. false: Do not reset the component status (that is, clear the input) by touching the component again after the input is complete.<br>Default value: **true**|
+| value  | boolean | Yes  | Whether to allow the user to reset the component status (that is, clear the input) by touching the component again after the input is complete.<br>**true**: yes; **false**: no<br>Default value: **true**|
 
 ### activateCircleStyle<sup>12+</sup>
 
@@ -207,7 +207,7 @@ Sets the background circle style for the dots in a grid when they are in the act
 
 skipUnselectedPoint(skipped: boolean)
 
-Sets whether unselected dots in the grid are automatically selected when the password path passes over them.
+Sets whether unselected dots in the grid are automatically skipped when the password path passes over them.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -217,7 +217,7 @@ Sets whether unselected dots in the grid are automatically selected when the pas
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| skipped  | boolean | Yes  | Whether unselected dots in the grid are automatically selected when the password path passes over them.<br>true: Skip the grid dots that the selected password path passes through. false: Automatically select the grid dots that the selected password path passes through. Default value: **false**.|
+| skipped  | boolean | Yes  | Whether to unselected dots in the grid are automatically skipped when the password path passes over them.<br>**true** to skip the unselected dots when the password path passes over them; **false** otherwise. Default value: **false**|
 
 ## Events
 
@@ -263,21 +263,21 @@ The callback parameter is an array of digits, where each digit represents the in
 
 ## CircleStyleOptions<sup>12+</sup>
 
-This section describes the parameters of the ring style.
+Describes the parameters of the ring style.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 
 | Name         | Type| Read-Only| Optional| Description|
 | ------------- | ------- | ---- | -------- | -------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the background circle.<br>Default value: '#33182431'<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| color | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the background circle.<br>Default value: **'#33182431'**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | radius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Radius of the background circle.<br>Default value: 1.833 times (that is, 11/6) of the value of [circleRadius](#circleradius)<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
-| enableWaveEffect | boolean | No| Yes| Whether to enable the wave effect after the grid dot is selected.<br>true: The wave effect is displayed. false: The wave effect is not displayed.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
-| enableForeground<sup>15+</sup> | boolean | No| Yes| Whether the background circle is displayed above the grid dot.<br>true: The background ring is displayed above the grid dot and covers the grid dot. false: The background ring is displayed below the grid dot and does not cover the grid dot.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| enableWaveEffect | boolean | No| Yes| Whether to enable the wave effect after a grid dot is selected.<br>**true** to enable; **false** otherwise.<br>Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| enableForeground<sup>15+</sup> | boolean | No| Yes| Whether the background circle is displayed above the grid dot.<br>**true**: The background ring is displayed above the grid dot to cover the grid dot. **false**: The background ring is displayed below the grid dot and does not cover the grid dot.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 
 ## PatternLockController
 
-Controller of the PatternLock component, which is used to reset the component status.
+Controller of the **PatternLock** component, which is used to reset the component status.
 
 ### Objects to Import
 
@@ -309,7 +309,7 @@ Resets the component status.
 
 setChallengeResult(result: PatternLockChallengeResult): void
 
-Sets the correct or incorrect status of the pattern password.
+Challenge result of the pattern password.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -375,7 +375,7 @@ struct PatternLockExample {
 
 ### Example 2: Verifying the Password
 
-In this example, the [sideLength](#sidelength) attribute is used to set the grid size, the [circleRadius](#circleradius) attribute is used to set the grid dot style, and the [onPatternComplete](#onpatterncomplete) attribute is used. Property to set the callback when the password is entered.
+This example demonstrates how to use the [sideLength](#sidelength) attribute to set the grid size, how to use the [circleRadius](#circleradius) attribute to set the grid dot style, and how to use the [onPatternComplete](#onpatterncomplete) attribute to set the callback for password input.
 
 When the user completes the password input, different responses are given based on the input:<br>- If the password length is less than 5, a message is displayed to prompt the user to re-enter the password.<br>- After the first input, a message is displayed to prompt the user to enter the password again.<br>- After the second input, the system checks whether the two inputs match. If they match, a message is displayed to indicate that the password setup is successful; otherwise, the user is prompted to re-enter the password.
 

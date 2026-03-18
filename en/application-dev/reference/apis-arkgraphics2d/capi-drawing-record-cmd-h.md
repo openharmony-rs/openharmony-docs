@@ -14,6 +14,8 @@ This file declares the functions related to a recording command object.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 13
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -34,7 +36,7 @@ This file declares the functions related to a recording command object.
 
 ### OH_Drawing_RecordCmdUtilsCreate()
 
-```
+```c
 OH_Drawing_RecordCmdUtils* OH_Drawing_RecordCmdUtilsCreate(void)
 ```
 
@@ -54,7 +56,7 @@ Creates an **OH_Drawing_RecordCmdUtils** object.
 
 ### OH_Drawing_RecordCmdUtilsDestroy()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsDestroy(OH_Drawing_RecordCmdUtils* recordCmdUtils)
 ```
 
@@ -81,7 +83,7 @@ Destroys an **OH_Drawing_RecordCmdUtils** object and reclaims the memory occupie
 
 ### OH_Drawing_RecordCmdUtilsBeginRecording()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsBeginRecording(OH_Drawing_RecordCmdUtils* recordCmdUtils,int32_t width, int32_t height, OH_Drawing_Canvas** canvas)
 ```
 
@@ -111,7 +113,7 @@ Starts recording. This API must be used together with [OH_Drawing_RecordCmdUtils
 
 ### OH_Drawing_RecordCmdUtilsFinishRecording()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsFinishRecording(OH_Drawing_RecordCmdUtils* recordCmdUtils,OH_Drawing_RecordCmd** recordCmd)
 ```
 
@@ -139,7 +141,7 @@ Stops video recording. This function must be called after [OH_Drawing_RecordCmdU
 
 ### OH_Drawing_RecordCmdDestroy()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RecordCmdDestroy(OH_Drawing_RecordCmd* recordCmd)
 ```
 

@@ -41,7 +41,7 @@ onKeyEventDispatch(event: Callback<KeyEvent, boolean>): T
 These four methods differ only in their triggering timing (see [Key Event Data Flow](#key-event-data-flow)). The return value of **onKeyPreIme** determines whether events proceed to page shortcuts, input method, **onKeyEventDispatch**, and **onKeyEvent**.
 
 
-The methods are triggered when the bound component has focus and a key event occurs on the component. The callback parameter [KeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent) can be used to obtain the information about the key event, including [KeyType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#keytype), [keyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode), **keyText**, [KeySource](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#keysource), **deviceId**, **metaKey**, **timestamp**, and **stopPropagation**.
+The methods are triggered when the bound component has focus and a key event occurs on the component. The callback parameter [KeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent) can be used to obtain the information about the key event, including [KeyType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#keytype), [KeyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode), **keyText**, [KeySource](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#keysource), **deviceId**, **metaKey**, **timestamp**, and **stopPropagation**.
 
 <!-- @[listen_response_key_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKey.ets) -->
 
@@ -98,7 +98,7 @@ struct KeyEventExample {
 }
 ```
 
-In the preceding example, **onKeyEvent** is bound to the **Button** component and its parent container **Column**. After the application opens and loads a page, the first focusable non-container component in the component tree automatically obtains focus. Set the **Button** component as the default focus of the current page. Because the **Button** component is a child node of the **Column** component, the **Column** component also obtains focus. For details about the focus obtaining mechanism, see [Focus Event](arkts-common-events-focus-event.md).
+In the preceding example, **onKeyEvent** is bound to the **Button** component and its parent container **Column**. After the application opens and loads a page, the first focusable non-container component in the component tree automatically obtains focus. Set the **Button** component as the default focus of the current page. Because the **Button** component is a child node of the **Column** component, the **Column** component also obtains focus. For details about the focus acquisition mechanism, see [Implementing Focus Support](arkts-common-events-focus-event.md).
 
 
 ![en-us_image_0000001511421324](figures/en-us_image_0000001511421324.gif)

@@ -29,7 +29,7 @@ Game Controller Kit allows you to monitor controller online/offline events and q
 
 7. Game Controller Kit obtains information about all online game controllers from the device system.
 
-8. Unregister via **OHGameDeviceUnregisterDeviceMonitor** if monitoring is no longer needed.
+8. Unregister via **OH_GameDevice_UnregisterDeviceMonitor** if monitoring is no longer needed.
 
 
 ## Available APIs

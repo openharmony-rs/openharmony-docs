@@ -37,6 +37,7 @@
 通过MIME类型创建解码器时，如果系统平台支持硬件解码，系统平台会优先创建硬件解码器实例；如果系统平台不支持或者硬件解码器资源不足时，系统平台会创建软件解码器实例；如果系统平台无对应解码能力，会创建解码器实例失败。
 
 系统平台提供的解码能力和设备强相关，开发者可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取系统平台支持的软硬件解码能力和能力规格。
+
 例如可以通过<!--RP15-->OH_AVCODEC_MIMETYPE_VIDEO_AVC、OH_AVCODEC_MIMETYPE_VIDEO_HEVC<!--RP15End-->来查询系统平台支持的<!--RP16-->H.264、H.265的硬件解码能力。<!--RP16End-->
 
 具体开发指导请参考[视频解码](video-decoding.md)。
@@ -51,6 +52,7 @@
 如果系统平台无对应编码能力，会创建编码器实例失败。
 
 基于MimeType创建编码器时，可以配置为H.264(OH_AVCODEC_MIMETYPE_VIDEO_AVC)和H.265(OH_AVCODEC_MIMETYPE_VIDEO_HEVC)。
+
 系统平台支持情况和每种编码的能力范围，可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取。
 
 具体开发指导请参考[视频编码](video-encoding.md)。
@@ -146,6 +148,7 @@ DRM解密能力支持的解封装格式：<!--RP10-->mp4(H.264，AAC)、mpeg-ts(
 | wav      | -                     | G711mu(pcm-mulaw) 、raw(pcm)| -             |
 | aac      | -                     | AAC               | -             |
 | flac     | -                     | Flac              | jpeg、png、bmp |
+| ogg<sup>23+</sup>      | -                     | Vorbis、OPUS      | -              |
 
 > **说明：**
 >
@@ -158,6 +161,9 @@ DRM解密能力支持的解封装格式：<!--RP10-->mp4(H.264，AAC)、mpeg-ts(
    | OH_MD_KEY_CREATION_TIME            | 媒体文件创建时间的元数据，值类型为string（API14开始支持）。        |
    | OH_MD_KEY_COMMENT                  | 媒体文件注释的键，值类型为string（API20开始支持）。               |
    | OH_MD_KEY_ENABLE_MOOV_FRONT        | 媒体文件moov元数据是否前置标志，值类型为int32_t（API20开始支持）。 |
+   | OH_MD_KEY_LATITUDE                 | 纬度的键，值类型为float，范围为[-90.0, 90.0]。表示地理位置信息中的纬度（从API version 24开始支持）。 |
+   | OH_MD_KEY_LONGITUDE                | 经度的键，值类型为float，范围为[-180.0, 180.0]。表示地理位置信息中的经度（从API version 24开始支持）。 |
+   | OH_MD_KEY_ALTITUDE                 | 海拔的键，值类型为float，该键是可选的。表示地理位置信息中的海拔（从API version 24开始支持）。 |
 
 > **说明：**
 >
@@ -269,5 +275,12 @@ flac封装格式：
    | OH_MD_KEY_CHANNEL_LAYOUT           | 通道布局              |  可选  |
    | OH_MD_KEY_BITRATE                  | 码率                  |  可选  |
    | OH_MD_KEY_CODEC_CONFIG             | 编解码器特定数据       |  可选  |
-   
+
+ogg封装格式（从API version 23开始支持）：
+   |                key                 |         描述         | Vorbis |  OPUS  |
+   | ---------------------------------- | :------------------: | :----: | :----: |
+   | OH_MD_KEY_AUD_SAMPLE_RATE          | 采样率                |  必须  |  必须  |
+   | OH_MD_KEY_AUD_CHANNEL_COUNT        | 声道数                |  必须  |  必须  |
+   | OH_MD_KEY_CODEC_CONFIG             | 编解码器特定数据       |  必须  |  必须  |
+
 具体开发指导请参考[媒体数据封装](audio-video-muxer.md)。

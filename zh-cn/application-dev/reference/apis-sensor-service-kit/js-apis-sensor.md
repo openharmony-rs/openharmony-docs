@@ -406,8 +406,7 @@ try {
 
 ###  GYROSCOPE_UNCALIBRATED<sup>9+</sup>
 
-on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;,
-      options?: Options): void
+on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options): void
 
 订阅未校准陀螺仪传感器数据。
 
@@ -600,8 +599,7 @@ try {
 
 ###   LINEAR_ACCELEROMETER<sup>9+</sup>
 
-on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;,
-        options?: Options): void
+on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;, options?: Options): void
 
 订阅线性加速度传感器数据。
 
@@ -849,8 +847,7 @@ try {
 
 ### PEDOMETER_DETECTION<sup>9+</sup>
 
-on(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;,
-        options?: Options): void
+on(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options): void
 
 订阅计步检测器传感器数据。
 
@@ -1036,8 +1033,7 @@ try {
 
 ###  WEAR_DETECTION<sup>9+</sup>
 
-on(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;,
-        options?: Options): void
+on(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options): void
 
 订阅佩戴检测传感器数据。
 
@@ -1836,7 +1832,7 @@ once(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectio
 
 获取一次计步检测器传感器数据。
 
-**系需要权限**：ohos.permission.ACTIVITY_MOTION 
+**需要权限**：ohos.permission.ACTIVITY_MOTION 
 
 **系统能力**：SystemCapability.Sensors.Sensor 
 
@@ -5093,7 +5089,7 @@ getSensorListByDeviceSync(deviceId?: number): Array&lt;Sensor&gt;
 
 | 参数名          | 类型                                                         | 必填 | 说明     |
 | --------------- | ------------------------------------------------------------ | ---- |--------|
-| deviceId | number                 | 否   | 设备ID，默认为查询本地设备，默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[on](#sensorstatuschange19)获取。 |
+| deviceId | number                 | 否   | 设备ID，默认为查询本地设备，默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensorstatuschange19)获取。 |
 
 
 **返回值**：
@@ -5135,7 +5131,7 @@ getSingleSensorByDeviceSync(type: SensorId, deviceId?: number): Array&lt;Sensor&
 | 参数名          | 类型                                                         | 必填 | 说明       |
 | --------------- | ------------------------------------------------------------ | ---- |----------|
 | type     | [SensorId](#sensorid9) | 是   | 指定传感器类型。 |
-| deviceId | number                 | 否   | 设备ID，默认为查询本地设备，默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[on](#sensorstatuschange19)获取。 |
+| deviceId | number                 | 否   | 设备ID，默认为查询本地设备，默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensorstatuschange19)获取。 |
 
 
 **返回值**：
@@ -5480,8 +5476,7 @@ try {
 
 ## sensor.getAngleVariation<sup>9+</sup>
 
- getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Array&lt;number&gt;,
-        callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Array&lt;number&gt;, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 计算两个旋转矩阵之间的角度变化，使用Callback异步方式返回结果。
 
@@ -5711,8 +5706,7 @@ try {
 
 ## sensor.transformRotationMatrix<sup>9+</sup> 
 
-transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions,
-        callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 根据指定坐标系映射旋转矩阵，使用Callback异步方式返回结果。
 
@@ -6453,8 +6447,8 @@ try {
 
 | 名称          | 类型     | 只读  | 可选  | 说明             |
 |--------------|----------|-------|------|----------------- |
-| deviceId    | number    | 否    | 是    | 设备ID：默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[on](#sensorstatuschange19)获取。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。      |
-| sensorIndex | number    | 否    | 是    | 传感器索引：默认值为0，为设备上的默认传感器，其它传感器ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[on](#sensorstatuschange19)获取。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。 |
+| deviceId    | number    | 否    | 是    | 设备ID：默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensorstatuschange19)获取。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。      |
+| sensorIndex | number    | 否    | 是    | 传感器索引：默认值为0，为设备上的默认传感器，其它传感器ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensorstatuschange19)获取。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。 |
 
 
 ## SensorStatusEvent<sup>19+</sup>

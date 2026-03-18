@@ -398,7 +398,7 @@ skipToQueueItem(itemId: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -437,7 +437,7 @@ skipToQueueItem(itemId: number, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -553,7 +553,7 @@ sendAVKeyEvent(event: KeyEvent): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -604,7 +604,7 @@ sendAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -973,7 +973,7 @@ sendControlCommand(command: AVControlCommand): Promise\<void>
 
 > **说明：**
 >
-> 媒体控制方在使用sendControlCommand命令前，需要确保控制对应的媒体会话注册了对应的监听，注册媒体会话相关监听的方法请参见接口[on'play'](arkts-apis-avsession-AVSession.md#onplay10)、[on'pause'](arkts-apis-avsession-AVSession.md#onpause10)等。
+> 媒体控制方在使用sendControlCommand命令前，需要确保控制对应的媒体会话注册了对应的监听，注册媒体会话相关监听的方法请参见接口[on('play')](arkts-apis-avsession-AVSession.md#onplay10)、[on('pause')](arkts-apis-avsession-AVSession.md#onpause10)等。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -993,7 +993,7 @@ sendControlCommand(command: AVControlCommand): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1026,7 +1026,7 @@ sendControlCommand(command: AVControlCommand, callback: AsyncCallback\<void>): v
 
 > **说明：**
 >
-> 媒体控制方在使用sendControlCommand命令前，需要确保控制对应的媒体会话注册了对应的监听，注册媒体会话相关监听的方法请参见接口[on'play'](arkts-apis-avsession-AVSession.md#onplay10)、[on'pause'](arkts-apis-avsession-AVSession.md#onpause10)等。
+> 媒体控制方在使用sendControlCommand命令前，需要确保控制对应的媒体会话注册了对应的监听，注册媒体会话相关监听的方法请参见接口[on('play')](arkts-apis-avsession-AVSession.md#onplay10)、[on('pause')](arkts-apis-avsession-AVSession.md#onpause10)等。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1039,7 +1039,7 @@ sendControlCommand(command: AVControlCommand, callback: AsyncCallback\<void>): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------- |
@@ -1073,8 +1073,6 @@ sendCommonCommand(command: string, args: {[key: string]: Object}): Promise\<void
 通过会话控制器发送自定义控制命令到其对应的会话。结果通过Promise异步回调方式返回。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1143,8 +1141,6 @@ sendCommonCommand(command: string, args: {[key: string]: Object}, callback: Asyn
 通过会话控制器发送自定义命令到其对应的会话。结果通过callback异步回调方式返回。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1298,7 +1294,7 @@ getExtras(): Promise\<{[key: string]: Object}>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | parameter check failed. 1.Mandatory parameters art left unspecified. 2.Incorrect parameter types. 3.Parameter verification faied.|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1365,7 +1361,7 @@ getExtras(callback: AsyncCallback\<{[key: string]: Object}>): void
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| callback | AsyncCallback\<Record\<string, Object>> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 |
+| callback | AsyncCallback\<{[key: string]: Object}> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 |
 
 **错误码：**
 
@@ -1373,7 +1369,7 @@ getExtras(callback: AsyncCallback\<{[key: string]: Object}>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | parameter check failed. 1.Mandatory parameters art left unspecified. 2.Incorrect parameter types. 3.Parameter verification faied.|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -2131,7 +2127,7 @@ struct Index {
 
 ## on('metadataChange')<sup>10+</sup>
 
-on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (data: AVMetadata) => void): void
+on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (data: AVMetadata) => void)
 
 设置元数据变化的监听事件。
 
@@ -2155,7 +2151,7 @@ on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 | parameter check failed. 1.Mandatory parameters are left upspecified. 2.Incorrect parameter types.|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2195,7 +2191,7 @@ off(type: 'metadataChange', callback?: (data: AVMetadata) => void)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 | parameter check failed. 1.Mandatory parameters are left upspecified. 2.Incorrect parameter types.|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2222,7 +2218,7 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 | 参数名   | 类型       | 必填 | 说明      |
 | --------| -----------|-----|------------|
 | type     | string    | 是   | 事件回调类型，支持事件`'playbackStateChange'`，当播放状态需要更新时，触发该事件。<br>需要更新表示对应属性值被重新设置过，不论新值与旧值是否相同。 |
- | filter   | Array\<keyof AVPlaybackstate>\|'all' | 是   | 'all'表示关注播放状态所有字段更新。<br>Array\<keyof AVPlaybackstate> 表示关注Array中的字段更新。 |
+| filter   | Array\<keyof AVPlaybackState>\|'all' | 是   | 'all'表示关注播放状态所有字段更新。<br>Array\<keyof AVPlaybackstate> 表示关注Array中的字段更新。 |
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void       | 是   | 回调函数，参数state是需要更新的播放状态。只包含需要更新的播放状态属性，并不代表当前全量的播放状态。|
 
 **错误码：**
@@ -2231,7 +2227,7 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 | parameter check failed. 1.Mandatory parameters art left unspecified. 2.Incorrect parameter types.|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2270,7 +2266,7 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 | parameter check failed. 1.Mandatory parameters are left upspecified. 2.Incorrect parameter types.|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2341,7 +2337,7 @@ off(type: 'callMetadataChange', callback?: Callback\<CallMetadata>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
@@ -2818,7 +2814,7 @@ on(type: 'queueItemsChange', callback: (items: Array<[AVQueueItem](arkts-apis-av
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -2853,7 +2849,7 @@ off(type: 'queueItemsChange', callback?: (items: Array<[AVQueueItem](arkts-apis-
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
@@ -2886,7 +2882,7 @@ on(type: 'queueTitleChange', callback: (title: string) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -2921,7 +2917,7 @@ off(type: 'queueTitleChange', callback?: (title: string) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |

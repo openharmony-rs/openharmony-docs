@@ -34,19 +34,19 @@ The following scenarios illustrate these rules in practice:
 
 **Scenario 1**:
 
-![Scenario 1](figures/gesture-senario-01.png)
+![Scenario 1](figures/gesture-scenario-01.png)
 
 Pan A and Pan B are defined with identical threshold conditions. Pan B is bound to a child component, while Pan A is bound to the parent. As a result, Pan B is triggered first due to child component precedence.
 
 **Scenario 2**:
 
-![Scenario 2](figures/gesture-senario-02.png)
+![Scenario 2](figures/gesture-scenario-02.png)
 
 Pan A and Pan B are defined with different threshold conditions. Pan B is on a child component and has higher structural priority. However, Pan A has a lower threshold and may succeed first under normal movement speed. If the movement speed is high, both gestures may succeed due to spacing between report points. In this case, Pan B wins in contention because it processes the report point first.
 
 **Scenario 3**:
 
-![Scenario 3](figures/gesture-senario-03.png)
+![Scenario 3](figures/gesture-scenario-03.png)
 
 The gesture that matches the actual user operation is triggered.
 

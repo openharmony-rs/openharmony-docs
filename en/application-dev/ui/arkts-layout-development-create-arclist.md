@@ -50,8 +50,7 @@ export struct ArcListShow {
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // Replace $r('app.string.ArcListShow_title') with the actual resource file. In this example, the value in the resource file is "Displaying Data in ArcList."
-        ComponentCard({ title: $r('app.string.ArcListShow_title') }) {
+        // ...
           ArcList({ initialIndex: 2 }) {
             ArcListItem() {
               Row() {
@@ -146,10 +145,7 @@ export struct ArcListShow {
           .borderRadius('233px')
           .backgroundColor(Color.Black)
         }
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
+      // ...
     }
     .backgroundColor('#f1f2f3')
     // Replace $r('app.string.ArcListShow_title') with the actual resource file. In this example, the value in the resource file is "Displaying Data in ArcList."
@@ -173,7 +169,6 @@ ArkTS provides component loop rendering capabilities using [ForEach](../ui/rende
 ``` TypeScript
 import { ArcList, ArcListAttribute, ArcListItemAttribute, ArcListItem, LengthMetrics } from '@kit.ArkUI';
 import { util } from '@kit.ArkTS';
-import { ComponentCard } from '../../common/Card';
 import { common } from '@kit.AbilityKit';
 
 class Contact {
@@ -203,8 +198,7 @@ export struct ArcListContents {
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // Replace $r('app.string.ArcListContents_title') with the actual resource file. In this example, the value in the resource file is "Iterating ArcList Content."
-        ComponentCard({ title: $r('app.string.ArcListContents_title') }) {
+        // ...
           ArcList({ initialIndex: 2 }) {
             ForEach(this.contacts, (item: Contact) => {
               ArcListItem() {
@@ -232,10 +226,7 @@ export struct ArcListContents {
           .borderRadius('233px')
           .backgroundColor(Color.Black)
         }
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
+        // ...
     }
     .backgroundColor('#f1f2f3')
     // Replace $r('app.string.ArcListContents_title') with the actual resource file. In this example, the value in the resource file is "Iterating ArcList Content."

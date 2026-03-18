@@ -59,7 +59,7 @@ Defines the elements in the **certs** array of [HuksCryptoExtensionResult](#huks
 | Name| Type   | Read-Only| Optional| Description |
 | ------ | --------- | ---- | ---- | ------ |
 | purpose    | [certificateManager.CertificatePurpose](../apis-device-certificate-kit/js-apis-certManager.md#certificatepurpose22)  | No  | No  | Purpose of the key corresponding to the certificate chain.|
-| resourceId  | string | No  | No  | Resource ID.|
+| resourceId  | string | No  | No  | Resource ID in JSON format, which can be mapped to a resource in the Ukey.|
 | cert  | Uint8Array | No  | No  | Certificate.|
 
 ## HuksCryptoExtensionResult
@@ -70,13 +70,13 @@ Defines the common return value types of APIs.
 
 | Name| Type | Read-Only| Optional| Description|
 | ------ | ------ | ---- | ---- | ------ |
-| resultCode  | int | No  | No  | Error code.|
+| resultCode  | number | No  | No  | Error code.|
 | handle  | string | No  | Yes  | Resource handle.|
-| authState  | int | No  | Yes  | Authentication state.|
-| retryCount  | int | No  | Yes  | Number of retry times.|
+| authState  | number | No  | Yes  | Authentication state.|
+| retryCount  | number | No  | Yes  | Number of retry times.|
 | certs  | Array<[HuksCryptoExtensionCertInfo](#hukscryptoextensioncertinfo)> | No  | Yes  | Certificate.|
 | property  | Array<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | No  | Yes  | Property.|
-| outData  | int | No  | Yes  | Returned data.|
+| outData  | Uint8Array | No  | Yes  | Returned data.|
 
 ## CryptoExtensionAbility.onOpenResource
 
@@ -97,7 +97,7 @@ Opens a Ukey key resource based on the **resourceId** parameter. This API uses a
 
 | Type| Description|
 | ---------- | ----------- |
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0** and handle contains the resource handle information. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800001**: Ukey does not exist.<br>**34800002**: Ukey driver error.<br>**34800004**: Handle does not exist.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0** and handle contains the resource handle information. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800001**: The Ukey does not exist.<br>**34800002**: Ukey driver error.<br>**34800004**: The handle does not exist.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
 
 **Example**
 
@@ -113,7 +113,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -137,7 +137,7 @@ Closes the key resource of a Ukey based on the **handle** parameter. This API us
 
 | Type| Description|
 | ----------- | ------------- |
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0**, indicating that the resource is closed successfully. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800004**: Handle does not exist.<br>**34800005**: Handle is unavailable.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0**, indicating that the resource is closed successfully. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800004**: The handle does not exist.<br>**34800005**: The handle is unavailable.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
 
 **Example**
 
@@ -152,7 +152,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -177,7 +177,7 @@ Obtains the property based on the **handle** and **propertyId** parameters. This
 
 | Type   | Description  |
 | -------- | -----------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0**, and the **property** of **HuksCryptoExtensionResult** contains the obtained property carried by the [HUKS_EXT_CRYPTO_TAG_EXTRA_DATA](js-apis-huksExternalCrypto.md#huksexternalcryptotag) parameter. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800003**: Ukey PIN is not authenticated.<br>**34800004**: Handle does not exist.<br>**34800005**: Handle is unavailable.<br>**34800007**: Ukey PIN is locked.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0**, and the **property** of **HuksCryptoExtensionResult** contains the obtained property carried by the [HUKS_EXT_CRYPTO_TAG_EXTRA_DATA](js-apis-huksExternalCrypto.md#huksexternalcryptotag) parameter. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800003**: The Ukey PIN is not authenticated.<br>**34800004**: The handle does not exist.<br>**34800005**: The handle is unavailable.<br>**34800007**: The Ukey PIN is locked.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
 
 **Example**
 
@@ -194,7 +194,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -218,7 +218,7 @@ Requests the Ukey PIN authentication. This API uses a promise to return the resu
 
 | Type| Description|
 | -------- | --------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0** and **authState** is not **0**, indicating that the authentication request is successful. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800004**: Handle does not exist.<br>**34800005**: Handle is unavailable.<br>**34800006**: Ukey PIN error.<br>**34800007**: Ukey PIN is locked.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0** and **authState** is not **0**, indicating that the authentication request is successful. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800004**: The handle does not exist.<br>**34800005**: The handle is unavailable.<br>**34800006**: Ukey PIN error.<br>**34800007**: The Ukey PIN is locked.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
 
 **Example**
 
@@ -234,7 +234,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -258,7 +258,7 @@ Obtains the PIN authentication state of a Ukey. This API uses a promise to retur
 
 | Type  | Description |
 | -------- | ------- |
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0**, and the **authState** of **HuksCryptoExtensionResult** contains the obtained PIN authentication state. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800004**: Handle does not exist.<br>**34800005**: Handle is unavailable.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0**, and the **authState** of **HuksCryptoExtensionResult** contains the obtained PIN authentication state. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800004**: The handle does not exist.<br>**34800005**: The handle is unavailable.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
 
 **Example**
 
@@ -274,7 +274,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -298,7 +298,7 @@ Clears the PIN authentication state of the application. This API uses a promise 
 
 | Type| Description|
 | ------------ | ---------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0**, indicating that the PIN authentication state is cleared successfully. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800004**: Handle does not exist.<br>**34800005**: Handle is unavailable.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0**, indicating that the PIN authentication state is cleared successfully. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800004**: The handle does not exist.<br>**34800005**: The handle is unavailable.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
 
 **Example**
 
@@ -312,7 +312,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -330,13 +330,13 @@ Initializes a key session. (The first operation of the Init-Update-Finish proces
 | Name  | Type| Mandatory| Description|
 | -------- | ----- | ---- | ------- |
 | handle | string                      | Yes  | Resource handle.|
-| params  | [HuksOptions](js-apis-huks.md#huksoptions)  | Yes  | Input parameters. The application is identified by the [HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag) parameter.|
+| params  | [huks.HuksOptions](js-apis-huks.md#huksoptions)  | Yes  | Input parameters. The application is identified by the [HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag) parameter.|
 
 **Return value**
 
 | Type| Description|
 | --------- | ---------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0** and **handle** is not empty. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800003**: Ukey PIN is not authenticated.<br>**34800004**: Handle does not exist.<br>**34800005**: Handle is unavailable.<br>**34800007**: Ukey PIN is locked.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0** and **handle** is not empty. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800003**: The Ukey PIN is not authenticated.<br>**34800004**: The handle does not exist.<br>**34800005**: The handle is unavailable.<br>**34800007**: The Ukey PIN is locked.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
 
 **Example**
 
@@ -351,14 +351,14 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
 
 ## CryptoExtensionAbility.onUpdateSession
 
-onUpdateSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
+onUpdateSession(initHandle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
 
 Updates a key session. (The second operation of the Init-Update-Finish process.) This API uses a promise to return the result.
 
@@ -368,14 +368,14 @@ Updates a key session. (The second operation of the Init-Update-Finish process.)
 
 | Name  | Type | Mandatory| Description|
 | -------- | ----- | ---- | ------|
-| handle | string | Yes  | Resource handle.  |
-| params  | [HuksOptions](js-apis-huks.md#huksoptions)  | Yes  | Input parameters. The application is identified by the [HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag) parameter.|
+| initHandle | string | Yes  | Resource handle.  |
+| params  | [huks.HuksOptions](js-apis-huks.md#huksoptions)  | Yes  | Input parameters. The application is identified by the [HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag) parameter.|
 
 **Return value**
 
 | Type| Description|
 | --------- | ---------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0**. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800003**: Ukey PIN is not authenticated.<br>**34800004**: Handle does not exist.<br>**34800005**: Handle is unavailable.<br>**34800007**: Ukey PIN is locked.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0**. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800003**: The Ukey PIN is not authenticated.<br>**34800004**: The handle does not exist.<br>**34800005**: The handle is unavailable.<br>**34800007**: The Ukey PIN is locked.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
 
 **Example**
 
@@ -391,14 +391,14 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
 
 ## CryptoExtensionAbility.onFinishSession
 
-onFinishSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
+onFinishSession(initHandle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
 
 Ends a key session. (The last operation of the Init-Update-Finish process.) This API uses a promise to return the result.
 
@@ -408,14 +408,14 @@ Ends a key session. (The last operation of the Init-Update-Finish process.) This
 
 | Name  | Type| Mandatory| Description |
 | -------- | -------- | ---- | --------- |
-| handle | string  | Yes  | Resource handle.|
-| params  | [HuksOptions](js-apis-huks.md#huksoptions)  | Yes  | Input parameters. The application is identified by the [HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag) parameter, and the algorithm parameters (such as the algorithm type and padding mode) are also included.|
+| initHandle | string  | Yes  | Resource handle.|
+| params  | [huks.HuksOptions](js-apis-huks.md#huksoptions)  | Yes  | Input parameters. The application is identified by the [HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag) parameter, and the algorithm parameters (such as the algorithm type and padding mode) are also included.|
 
 **Return value**
 
 | Type| Description|
 | ------- | ---------- |
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0**. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800003**: Ukey PIN is not authenticated.<br>**34800004**: Handle does not exist.<br>**34800005**: Handle is unavailable.<br>**34800007**: Ukey PIN is locked.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **resultCode** is **0**. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800002**: Ukey driver error.<br>**34800003**: The Ukey PIN is not authenticated.<br>**34800004**: The handle does not exist.<br>**34800005**: The handle is unavailable.<br>**34800007**: The Ukey PIN is locked.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
 
 **Example**
 
@@ -431,7 +431,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -455,7 +455,7 @@ Queries the certificate of a specified resource ID. This API uses a promise to r
 
 | Type | Description |
 | ---------- | --------- |
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **certs** contains the single certificate obtained. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800001**: Ukey does not exist.<br>**34800002**: Ukey driver error.<br>**34800004**: Handle does not exist.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **certs** contains the single certificate obtained. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800001**: The Ukey does not exist.<br>**34800002**: Ukey driver error.<br>**34800004**: The handle does not exist.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
 
 **Example**
 
@@ -472,7 +472,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -495,7 +495,7 @@ Obtains the certificate information of all UKey devices under an extension. This
 
 | Type| Description|
 | ---------- | ---------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **certs** contains all the obtained certificates. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800001**: Ukey does not exist.<br>**34800002**: Ukey driver error.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. If the call is successful, **certs** contains all the obtained certificates. If the call fails, **resultCode** contains the error code.<br>Possible error code values:<br>**34800000**: Key extension error.<br>**34800001**: The Ukey does not exist.<br>**34800002**: Ukey driver error.<br>For details, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode).|
 
 **Example**
 
@@ -512,7 +512,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```

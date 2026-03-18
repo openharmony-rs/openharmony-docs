@@ -44,11 +44,11 @@
 - 异步方法示例：
 
   <!-- @[async_symmetry_encrypt_decrypt_sm4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_ecb_encryption_decryption/sm4_ecb_encryption_decryption_asynchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   // 加密消息
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|ECB|PKCS7');
@@ -56,7 +56,7 @@
     let encryptData = await cipher.doFinal(plainText);
     return encryptData;
   }
-
+  
   // 解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|ECB|PKCS7');
@@ -64,15 +64,15 @@
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
-
+  
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let symGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
     let symKey = await symGenerator.convertKey(symKeyBlob);
-    console.info('convertKey success');
+    console.info('convertKey result: success.');
     return symKey;
   }
-
+  
   async function main() {
     let keyData = new Uint8Array([7, 154, 52, 176, 4, 236, 150, 43, 237, 9, 145, 166, 141, 174, 224, 131]);
     let symKey = await genSymKeyByData(keyData);
@@ -81,10 +81,10 @@
     let encryptText = await encryptMessagePromise(symKey, plainText);
     let decryptText = await decryptMessagePromise(symKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
+      console.info('decrypt ok.');
       console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
   ```
@@ -93,11 +93,11 @@
 - 同步方法示例：
 
   <!-- @[sync_symmetry_encrypt_decrypt_sm4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_ecb_encryption_decryption/sm4_ecb_encryption_decryption_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   // 加密消息
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|ECB|PKCS7');
@@ -105,7 +105,7 @@
     let encryptData = cipher.doFinalSync(plainText);
     return encryptData;
   }
-
+  
   // 解密消息
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|ECB|PKCS7');
@@ -113,15 +113,15 @@
     let decryptData = decoder.doFinalSync(cipherText);
     return decryptData;
   }
-
+  
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let symGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
     let symKey = symGenerator.convertKeySync(symKeyBlob);
-    console.info('convertKeySync success');
+    console.info('convertKeySync result: success.');
     return symKey;
   }
-
+  
   function main() {
     let keyData = new Uint8Array([7, 154, 52, 176, 4, 236, 150, 43, 237, 9, 145, 166, 141, 174, 224, 131]);
     let symKey = genSymKeyByData(keyData);
@@ -130,10 +130,10 @@
     let encryptText = encryptMessage(symKey, plainText);
     let decryptText = decryptMessage(symKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
+      console.info('decrypt ok.');
       console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
   ```

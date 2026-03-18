@@ -6,11 +6,13 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-随着应用的功能越来越复杂，用户在使用应用时，找到某个功能的操作步骤也变得更加繁琐。为提升用户体验，可以对应用中常用的功能创建对应的桌面快捷方式，以达到快速启动应用、一键直达特定功能等目的。例如相机应用的 “快速拍照”、便签应用的 “新建便签” 和地图应用的常用地点导航等功能的快捷方式，用户通过快捷方式可以快速进入特定功能页面，既能大大提高操作效率，同时也增加了用户对应用的依赖性。使用快捷方式，还可以实现个性化定制的需求，创建多个快捷方式，以满足个性化的工作流程和操作偏好。
+随着应用的功能越来越复杂，用户在使用应用时，找到某个功能的操作步骤也变得更加繁琐。为提升用户体验，可以对应用中常用的功能创建对应的桌面快捷方式，以达到快速启动应用、一键直达特定功能等目的。例如相机应用的 “快速拍照”、便签应用的 “新建便签” 和地图应用的常用地点导航等功能的快捷方式，用户通过快捷方式可以快速进入特定功能页面，既能大大提高操作效率，同时也增加了用户对应用的依赖性。使用快捷方式，还可以实现个性化定制的需求，创建多个快捷方式，以满足个性化的工作流程和操作偏好。快捷方式的配置请参考[配置方法](#配置方法)，快捷方式的管理能力请参考[shortcutManager模块](../reference/apis-ability-kit/js-apis-shortcutManager.md)。
 
 ## 场景介绍
 
 以导航场景为例，用户使用地图应用导航时，通常先搜索目的地，然后开始导航。为了提升导航效率和操作便捷性，建议在地图应用中添加常去地点的快捷方式，如公司、家等。添加这些快捷方式后，用户长按应用图标，即可打开快捷方式入口，快速启动导航。详情请参见[桌面快捷方式](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-desktop-shortcuts)。
+
+<!--RP1--><!--RP1End-->
 
 ## 配置方法
 
@@ -20,7 +22,6 @@
     ```json
     {
       "string": [
-        // ···
         {
           "name": "share",
           "value": "分享好友"
@@ -36,7 +37,7 @@
 
 2. 配置快捷方式文件。
 
-    在模块的/resources/base/profile/目录下配置[快捷方式的配置文件](module-configuration-file.md#shortcuts标签)，如shortcuts_config.json，拷贝示例代码需要删除注释。
+    在模块的/resources/base/profile/目录下配置[快捷方式的配置文件](module-configuration-file.md#shortcuts标签)，如shortcuts_config.json。
 
     ```json
     {
@@ -106,3 +107,6 @@
 
 <img src="figures/shortcut_display.jpg"/>
 
+## 隐藏快捷方式
+
+可以通过[setShortcutVisibleForSelf](../reference/apis-ability-kit/js-apis-shortcutManager.md#shortcutmanagersetshortcutvisibleforself)接口隐藏或展示快捷方式。

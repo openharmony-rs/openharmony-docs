@@ -132,14 +132,15 @@ To stop a VPN connection, the VPN application needs to call **stopVpnExtensionAb
 
 The sample code is as follows:
 
-<!-- @[stop_vpn_extension_ability_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->
+<!-- @[stop_vpn_extension_ability_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->    
+
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 ```
 
-<!-- @[stop_vpn_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->
+<!-- @[stop_vpn_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->    
 
 ``` TypeScript
 const TITLE_FONT_SIZE = 35; // Title font size.
@@ -157,35 +158,35 @@ let want: Want = {
 struct StopVpn {
   @State message: string = 'VPN';
 
-// ···
+  // ...
   build() {
     Row() {
       Column() {
-        // ···
+        // ...
         Text(this.message)
           .fontSize(TITLE_FONT_SIZE)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Client');
           })
-        // ···
+        // ...
         Button('Start Extension').onClick(() => {
           vpnExtension.startVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16);
+        }).width('70%').fontSize(20).margin(16);
         Button($r('app.string.stop_vpnExt'))
           .onClick(() => {
             try {
               hilog.info(0x0000, 'testTag', 'btn end')
               vpnExtension.stopVpnExtensionAbility(want)
-            // ···
+              // ...
             } catch (err) {
-            // ···
+              // ...
               hilog.error(0x0000, 'testTag', 'developTag', 'stop vpnExt Fail %{public}s', JSON.stringify(err) ?? '');
             }
 
           })
           .width('70%')
-        // ···
+          // ...
           .fontSize(BUTTON_FONT_SIZE)
           .margin(BUTTON_MARGIN)
       }.width('100%');
@@ -196,21 +197,21 @@ struct StopVpn {
 
 After the **VPNExtensionAbility** is stopped, call [onDestroy](../reference/apis-network-kit/js-apis-VpnExtensionAbility.md#vpnextensionabilityondestroy) to destroy the VPN connection and release related resources.
 
-<!-- @[stop_vpn_extension_ability_on_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->
+<!-- @[stop_vpn_extension_ability_on_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->    
 
 ``` TypeScript
-private context = getContext(this) as common.VpnExtensionContext;
+private context = this.getUIContext().getHostContext() as common.VpnExtensionContext;
 private vpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection(this.context);
 
 Destroy() {
   hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Destroy');
-  // ···
+  // ...
   this.vpnConnection.destroy().then(() => {
     hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Destroy Success');
-  // ···
+    // ...
   }).catch((err: Error) => {
      hilog.error(0x0000, 'testTag', 'developTag', 'vpn Destroy Failed: %{public}s', JSON.stringify(err) ?? '');
-  // ···
+    // ...
   })
 }
 ```
@@ -221,24 +222,23 @@ When creating a VPN, generate a VPN ID as the unique identifier of the VPN.
 
 The sample code is as follows:
 
-<!-- @[get_vpn_id_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/GetVpnIdTest.ets) -->
+<!-- @[get_vpn_id_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/GetVpnIdTest.ets) --> 
 
 ``` TypeScript
-import VpnExtensionAbility from '@ohos.app.ability.VpnExtensionAbility';
-import { vpnExtension } from '@kit.NetworkKit';
-// ···
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
+// ...
 export class VpnTest extends VpnExtensionAbility {
   public vpnId: string = '';
-// ···
+  // ...
   getVpnId() {
-    // ···
+    // ...
       let vpnConnection = vpnExtension.createVpnConnection(this.context);
       vpnConnection?.generateVpnId().then((data) => {
         if (data) {
           this.vpnId = data;
         }
       });
-    // ···
+    // ...
   }
 };
 ```
@@ -247,26 +247,24 @@ export class VpnTest extends VpnExtensionAbility {
 
 To disconnect from the VPN, use the sample code below:
 
-<!-- @[destroy_vpn_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/DestroyVpnTest.ets) -->
+<!-- @[destroy_vpn_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/DestroyVpnTest.ets) --> 
 
 ``` TypeScript
-import VpnExtensionAbility from '@ohos.app.ability.VpnExtensionAbility';
-import { vpnExtension } from '@kit.NetworkKit';
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// ···
+// ...
 export class VpnTest extends VpnExtensionAbility {
   public vpnId: string = 'test_vpn_id';
   public vpnConnection: vpnExtension.VpnConnection | undefined;
-// ···
+  // ...
   destroy() {
-    // ···
+    // ...
       this.vpnConnection = vpnExtension.createVpnConnection(this.context);
       hilog.info(0x0000, 'testTag', 'create success');
       this.vpnConnection?.destroy(this.vpnId);
-    // ···
+      // ...
   }
 };
-
 ```
 
 ## Service Lifecycle Management
@@ -294,7 +292,8 @@ To ensure network connectivity, the system automatically stops the VPN connectio
 
 **Example**
 
-<!-- @[vpn_config_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->
+<!-- @[vpn_config_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->    
+
 ``` TypeScript
 import { vpnExtension } from '@kit.NetworkKit';
 import { common } from '@kit.AbilityKit';
@@ -342,14 +341,15 @@ let vpnConfig: vpnExtension.VpnConfig = {
 }
 ```
 
-<!-- @[vpn_config_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->
+<!-- @[vpn_config_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->    
 
 ``` TypeScript
-let context = getContext(this) as common.VpnExtensionContext;
+let context = this.getUIContext().getHostContext() as common.VpnExtensionContext;
 let vpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
 // Create a VPN connection and apply the configuration.
 vpnConnection.create(vpnConfig).then((data) => {
   hilog.info(0x0000, 'testTag', 'vpn create ' + JSON.stringify(data));
+  // ...
 })
 ```
 

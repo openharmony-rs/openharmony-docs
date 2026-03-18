@@ -38,11 +38,11 @@
 - 异步方法示例：
 
   <!-- @[rsa_segmentation_encrypt_decrypt_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_segmentation/RSASegmentationAsync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   // 分段加密消息
   async function rsaEncryptBySegment(pubKey: cryptoFramework.PubKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -62,7 +62,7 @@
     let cipherBlob: cryptoFramework.DataBlob = { data: cipherText };
     return cipherBlob;
   }
-
+  
   // 分段解密消息
   async function rsaDecryptBySegment(priKey: cryptoFramework.PriKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -82,7 +82,7 @@
     let decryptBlob: cryptoFramework.DataBlob = { data: decryptText };
     return decryptBlob;
   }
-
+  
   async function rsaEncryptLongMessage() {
     let message = 'This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
       'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
@@ -98,10 +98,10 @@
     let encryptText = await rsaEncryptBySegment(keyPair.pubKey, plainText);
     let decryptText = await rsaDecryptBySegment(keyPair.priKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
+      console.info('decrypt ok.');
       console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
   ```
@@ -110,11 +110,11 @@
 - 同步方法示例：
 
   <!-- @[rsa_segmentation_encrypt_decrypt_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_segmentation/RSASegmentationSync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   // 分段加密消息
   function rsaEncryptBySegment(pubKey: cryptoFramework.PubKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -134,7 +134,7 @@
     let cipherBlob: cryptoFramework.DataBlob = { data: cipherText };
     return cipherBlob;
   }
-
+  
   // 分段解密消息
   function rsaDecryptBySegment(priKey: cryptoFramework.PriKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -154,7 +154,7 @@
     let decryptBlob: cryptoFramework.DataBlob = { data: decryptText };
     return decryptBlob;
   }
-
+  
   function main() {
     let message = 'This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
       'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
@@ -170,10 +170,10 @@
     let encryptText = rsaEncryptBySegment(keyPair.pubKey, plainText);
     let decryptText = rsaDecryptBySegment(keyPair.priKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
+      console.info('decrypt ok.');
       console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
   ```

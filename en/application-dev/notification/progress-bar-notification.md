@@ -41,9 +41,9 @@ In the [NotificationTemplate](../reference/apis-notification-kit/js-apis-inner-n
    
    ``` TypeScript
    notificationManager.isSupportTemplate('downloadTemplate').then((data: boolean) => {
-     let isSupportTpl: boolean = data; // The value true means that the template of the downloadTemplate type is supported, and false means the opposite.
+     let isSupportTemplate: boolean = data; // The value true means that the template of the downloadTemplate type is supported, and false means the opposite.
      hilog.info(DOMAIN_NUMBER, TAG,
-       `Succeeded in supporting download template notification. data is ${isSupportTpl}`);
+       `Succeeded in supporting download template notification. data is ${isSupportTemplate}`);
    }).catch((err: BusinessError) => {
      hilog.error(DOMAIN_NUMBER, TAG,
        `Failed to support download template notification. Code is ${err.code}, message is ${err.message}`);

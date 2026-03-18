@@ -597,7 +597,7 @@ fillRect(x: number, y: number, width:number, height: number): void
 ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -635,14 +635,14 @@ clearRect(x: number, y: number, width:number, height: number): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.fillStyle = 'rgb(0,0,255)';
-      ctx.fillRect(0, 0, 400, 200);
-      ctx.clearRect(20, 20, 150, 100);
+      ctx.fillRect(100, 100, 200, 200);
+      ctx.clearRect(110, 110, 80, 50);
     }
   }
   ```
@@ -671,17 +671,17 @@ strokeRect(x: number, y: number, width:number, height: number): void
   ```html
   <!-- xxx.hml -->
   <div>
-    <canvas ref="canvas" style="width: 200px; height: 150px; "></canvas>
+    <canvas ref="canvas" style="width: 500px; height: 500px; "></canvas>
   </div>
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
-      ctx.strokeRect(30, 30, 200, 150);
+      ctx.strokeRect(100, 100, 200, 150);
     }
   }
   ```
@@ -714,7 +714,7 @@ fillText(text: string, x: number, y: number): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -752,7 +752,7 @@ strokeText(text: string, x: number, y: number): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -794,7 +794,7 @@ measureText(text: string): TextMetrics
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -826,7 +826,7 @@ stroke(): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -859,7 +859,7 @@ beginPath(): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -900,7 +900,7 @@ moveTo(x: number, y: number): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -939,7 +939,7 @@ lineTo(x: number, y: number): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -971,7 +971,7 @@ closePath(): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1018,7 +1018,7 @@ createPattern(image: Image, repetition: string): Object
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1063,7 +1063,7 @@ bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number,
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1104,7 +1104,7 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1147,7 +1147,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1188,7 +1188,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1232,7 +1232,7 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1272,7 +1272,7 @@ rect(x: number, y: number, width: number, height: number): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1302,7 +1302,7 @@ fill(): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1327,22 +1327,22 @@ clip(): void
   ```html
   <!-- xxx.hml -->
   <div>
-    <canvas ref="canvas" style="width: 200px; height: 150px;"></canvas>
+    <canvas ref="canvas" style="width: 500px; height: 500px;"></canvas>
   </div>
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
-      ctx.rect(0, 0, 200, 200);
+      ctx.rect(100, 100, 200, 200);
       ctx.stroke();
       ctx.clip();
       // Draw red rectangle after clip
       ctx.fillStyle = "rgb(255,0,0)";
-      ctx.fillRect(0, 0, 150, 150);
+      ctx.fillRect(100, 100, 150, 150);
     }
   }
   ```
@@ -1372,7 +1372,7 @@ rotate(rotate: number): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1409,7 +1409,7 @@ scale(x: number, y: number): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1458,7 +1458,7 @@ transform方法对应一个变换矩阵，想对一个图形进行变化的时�
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1505,7 +1505,7 @@ setTransform方法使用的参数和transform()方法相同，但setTransform()�
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1545,7 +1545,7 @@ translate(x: number, y: number): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1587,7 +1587,7 @@ createPath2D(path: Path2D, cmds: string): Path2D
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1639,7 +1639,7 @@ drawImage(image: Image | PixelMap, sx: number, sy: number, sWidth: number, sHeig
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       var test = this.$refs.canvas;
@@ -1671,7 +1671,7 @@ restore(): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1698,7 +1698,7 @@ save(): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1846,7 +1846,7 @@ createImageData(width: number, height: number): ImageData
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1885,7 +1885,7 @@ createImageData(imageData: ImageData): ImageData
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -1928,7 +1928,7 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const test = this.$element('getImageData')
@@ -1967,7 +1967,7 @@ putImageData(imageData: ImageData, dx: number, dy: number, dirtyX: number, dirty
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
       onShow() {
           const test = this.$element('putImageData')
@@ -2010,7 +2010,7 @@ putImageData(imageData: ImageData, dx: number, dy: number): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const test = this.$element('putImageData')
@@ -2062,7 +2062,7 @@ getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const test = this.$element('canvasId')
@@ -2095,7 +2095,7 @@ setLineDash(segments: Array): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -2132,7 +2132,7 @@ getLineDash(): Array
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;
@@ -2165,7 +2165,7 @@ transferFromImageBitmap(bitmap: ImageBitmap): void
   ```
 
   ```js
-  //xxx.js
+  // xxx.js
   export default {
     onShow() {
       const el = this.$refs.canvas;

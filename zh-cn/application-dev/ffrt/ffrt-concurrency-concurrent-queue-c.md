@@ -40,7 +40,7 @@ ffrt_queue_t create_bank_system(const char *name, int concurrency)
     // 创建一个并发队列
     ffrt_queue_t queue = ffrt_queue_create(ffrt_queue_concurrent, name, &queue_attr);
 
-    // 队列创建完后需要销毁队列属性
+    // 队列创建完成后需要销毁队列属性
     ffrt_queue_attr_destroy(&queue_attr);
     if (!queue) {
         printf("create queue failed\n");
