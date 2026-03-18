@@ -12,7 +12,7 @@
 
 ## 接口说明
 
-进行坐标和地理编码信息的相互转化，所使用的接口说明如下，详细信息参见：[Location Kit](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
+进行坐标和地理编码信息的相互转化，所使用的接口说明如下，详细信息参见Location Kit：[@ohos.geoLocationManager (位置服务)](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
 
 | 接口名 | 功能描述 | 
 | -------- | -------- |
