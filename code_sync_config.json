@@ -29598,6 +29598,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":17,
+						"name":"hitracechain_ndk_cmake_code",
+						"start_line":1
+					}
+				]
 			}
 		]
 	},
@@ -29615,6 +29625,16 @@
 						"end_line":127,
 						"name":"hitracemeter_ndk_native_code",
 						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_NDK/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":17,
+						"name":"hitracemeter_ndk_cmake_code",
+						"start_line":1
 					}
 				]
 			}
