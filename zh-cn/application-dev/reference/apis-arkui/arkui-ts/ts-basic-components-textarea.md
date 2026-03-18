@@ -161,6 +161,10 @@ horizontalScrolling(enabled: Optional\<boolean>)
 | ------ | ----- | ---- | ---- |
 | enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是 | 是否启用水平滚动。<br/>true表示启用水平滚动；false表示禁用水平滚动，文本将自动换行。|
 
+> **说明：**
+>
+> 以下场景不支持水平滚动：设置[内联模式](#style10)<!--Del-->；启用[语音按钮](./ts-basic-components-textarea-sys.md#voicebutton23)<!--DelEnd-->。
+
 ### caretColor
 
 caretColor(value: ResourceColor)
@@ -3145,3 +3149,39 @@ struct TextAreaExample {
 ```
 
 ![textareascrolltovisible](figures/textarea_scroll_to_visible.gif)
+
+### 示例33（设置水平滚动）
+
+本示例通过[horizontalScrolling](#horizontalscrolling24)设置水平滚动。
+
+从API version 24开始，新增horizontalScrolling接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State message: string = `Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+`
+
+  build() {
+    Column() {
+      TextArea({ text: this.message })
+        .horizontalScrolling(true)
+        .width('200vp')
+        .height('150vp')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![horizontal_scrolling](figures/textarea_horizontal_scrolling.png)
