@@ -1052,3 +1052,17 @@ With this permission, the driver application can bind external input devices con
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 24
+
+## ohos.permission.ALLOW_ACCESSORY_ACCESS
+
+Allow an application to use the accessory connection service for pairing and auto-wake functions.
+
+<!--RP70--><!--RP70End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 24
