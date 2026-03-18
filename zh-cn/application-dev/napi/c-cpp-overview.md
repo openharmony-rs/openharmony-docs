@@ -6,7 +6,7 @@
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @fang-jinxu-->
 
-OpenHarmony NDK提供业界标准库[libc标准库](../reference/native-lib/musl.md)、[标准C++库](../reference/native-lib/cpp.md)，本文用于介绍C/C++标准库在OpenHarmony中的机制，开发者了解这些机制有助于在NDK开发过程中避免相关问题。
+OpenHarmony NDK提供业界标准库[libc标准库](../reference/native-lib/musl.md)、[c++标准库](../reference/native-lib/cpp.md)，本文用于介绍C/C++标准库在OpenHarmony中的机制，开发者了解这些机制有助于在NDK开发过程中避免相关问题。
 
 ## C++兼容性
 
