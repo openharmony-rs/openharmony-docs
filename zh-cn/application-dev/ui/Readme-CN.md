@@ -292,6 +292,8 @@
       - [使用Text组件](ndk-use-text-component.md)
       - [使用属性字符串的文本绘制与显示](ndk-styled-string.md)
       - [输入框文本事件监听](ndk-textarea-event.md)
+  - 使用选择类组件<!--arkts-build-picker-ndk-->
+      - [使用滑动选择器Picker](ndk-picker.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
   - [构建表单组件](ndk-build-form-components.md)
   - [构建自定义组件](ndk-build-custom-components.md)
