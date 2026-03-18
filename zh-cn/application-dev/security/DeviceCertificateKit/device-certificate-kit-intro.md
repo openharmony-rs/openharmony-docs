@@ -27,7 +27,7 @@ Device Certificate Kit（设备证书服务）面向应用开发者，提供了[
 
 ![](figures/certificate_framework_architecture.png)
 
-<!--PR1--><!--PR1End-->
+<!--RP1--> <!--RP1End-->
 
 ### 与相关Kit的关系
 
