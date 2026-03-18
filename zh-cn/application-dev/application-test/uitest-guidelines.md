@@ -672,7 +672,7 @@ hdc shell uitest uiRecord read
    "CENTER_Y": "", // 预留字段，暂未使用
    "EVENT_TYPE": "pointer", // 操作类型
    "LENGTH": "0", // 总体步长
-   "OP_TYPE": "click", //事件类型，当前支持点击、双击、长按、拖拽、滑动、抛滑动作录制
+   "OP_TYPE": "click", // 事件类型，当前支持点击、双击、长按、拖拽、滑动、抛滑动作录制
    "VELO": "0.000000", // 离手速度
    "direction.X": "0.000000",// 总体移动X方向
    "direction.Y": "0.000000", // 总体移动Y方向
@@ -698,7 +698,7 @@ hdc shell uitest uiRecord read
      "direction.X": "0.000000", // X方向移动量
      "direction.Y": "0.000000" // Y方向移动量
    }],
-   "fingerNumber": "1" //手指数量
+   "fingerNumber": "1" // 手指数量
  }
  ```
 ### 注入UI模拟操作
