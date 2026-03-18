@@ -1,6 +1,6 @@
 # Seccomp开放系统调用清单
-<!--Kit: Seccomp Development-->
-<!--Subsystem: security-->
+<!--Kit: Common-->
+<!--Subsystem: Security-->
 <!--Owner: @ren_ze_hua-->
 <!--Designer: @JerryH1011-->
 <!--Tester: @leiyuqian-->
@@ -49,17 +49,17 @@ Tid:13893, Name:e.myapplication
 ### 内存管理类系统调用
 | 系统调用        | 支持架构      |支持设备     |
 | ------------ | ----------------- | ----------------- |
-| mbind	| all | PC|
+| mbind | all | PC|
 | mmap | arm64 | 全平台设备|
 | mmap | riscv64 | 全平台设备|
-| mmap2	| arm | 全平台设备|
+| mmap2 | arm | 全平台设备|
 | munmap | all | 全平台设备|
 | mremap | all | 全平台设备|
 | mprotect | all | 全平台设备|
-| msync	| all | 全平台设备|
-| mlock	| all | 全平台设备|
+| msync | all | 全平台设备|
+| mlock | all | 全平台设备|
 | munlock | all | 全平台设备|
-| mlockall | all | 全平台设备	|
+| mlockall | all | 全平台设备 |
 | munlockall | all | 全平台设备|
 | mincore | all | 全平台设备|
 | madvise | all | 全平台设备|
@@ -133,7 +133,7 @@ Tid:13893, Name:e.myapplication
 | symlinkat | all | 全平台设备 |
 | symlink | arm | 全平台设备 |
 | linkat | all | 全平台设备 |
-| link | arm | 全平台设备	 |
+| link | arm | 全平台设备  |
 | renameat | arm | 全平台设备 |
 | renameat | arm64 | 全平台设备 |
 | rename | arm | 全平台设备 |
@@ -145,7 +145,7 @@ Tid:13893, Name:e.myapplication
 | faccessat2 | all | 全平台设备 |
 | getcwd | all | 全平台设备 |
 | getdents64 | all | 全平台设备 |
-| getdents | arm | 全平台设备	 |
+| getdents | arm | 全平台设备  |
 | readlinkat | all | 全平台设备 |
 | readlink | arm | 全平台设备 |
 | newfstatat | arm64 | 全平台设备 |
@@ -168,14 +168,14 @@ Tid:13893, Name:e.myapplication
 | syncfs | all | 全平台设备 |
 | sync_file_range | arm64 | 全平台设备 |
 | sync_file_range | riscv64 | 全平台设备 |
-| sync_file_range2 | arm | 全平台设备	 |
+| sync_file_range2 | arm | 全平台设备  |
 | utimensat | all | 全平台设备 |
 | utimensat_time64 | arm | 全平台设备 |
 | pipe2 | all | 全平台设备 |
 | pipe | arm | 全平台设备 |
 | dup | all | 全平台设备 |
 | dup3 | all | 全平台设备 |
-| dup2 | arm | 全平台设备	 |
+| dup2 | arm | 全平台设备  |
 | sendfile | all | 全平台设备 |
 | sendfile64 | arm | 全平台设备 |
 | copy_file_range | all | 全平台设备 |
