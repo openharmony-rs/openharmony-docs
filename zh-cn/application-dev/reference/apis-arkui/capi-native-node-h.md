@@ -33,6 +33,7 @@
 | [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md) | ArkUI_StringAsyncEvent | 定义组件回调事件使用字符串参数的类型。                                                          |
 | [ArkUI_TextChangeEvent](capi-arkui-nativemodule-arkui-textchangeevent.md) | ArkUI_TextChangeEvent | 定义组件事件的混合类型数据。                                                               |
 | [ArkUI_NativeNodeAPI_1](capi-arkui-nativemodule-arkui-nativenodeapi-1.md) | ArkUI_NativeNodeAPI_1 | ArkUI提供的Native侧Node类型接口集合。Node模块相关接口需要在主线程上调用。                               |
+| [OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md) | OH_ArkUI_TextEditorChangeEvent | 定义TextEditor组件文本内容变化事件的结构体。 |
 | [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) | ArkUI_NodeEvent | 定义组件事件的通用结构类型。                                                               |
 | [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) | ArkUI_NodeCustomEvent | 定义自定义组件事件的通用结构类型。                                                            |
 | [ArkUI_NodeAdapter*](capi-arkui-nativemodule-arkui-nodeadapter8h.md) | ArkUI_NodeAdapterHandle | 定义组件适配器对象，用于滚动类组件的元素懒加载。                                                     |
@@ -162,6 +163,7 @@
 | [int32_t OH_ArkUI_Swiper_FinishAnimation(ArkUI_NodeHandle node)](#oh_arkui_swiper_finishanimation) | - | 停止指定的Swiper节点正在执行的翻页动画。 |
 | [int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDark, ArkUI_NodeType nodeType, uint32_t (*colorInvertFunc)(uint32_t color))](#oh_arkui_setforcedarkconfig) | - | 为组件和实例设置反色算法。 |
 | [ArkUI_TouchTestInfo* OH_ArkUI_NodeEvent_GetTouchTestInfo(ArkUI_NodeEvent* nodeEvent)](#oh_arkui_nodeevent_gettouchtestinfo) | - | 获取组件事件中的触摸测试信息。 |
+| [OH_ArkUI_TextEditorChangeEvent* OH_ArkUI_NodeEvent_GetTextEditorOnWillChangeEvent(ArkUI_NodeEvent* event)](#oh_arkui_nodeevent_gettexteditoronwillchangeevent) | - | 获取组件事件中的TextEditor组件文本内容变化数据。 |
 | [int32_t OH_ArkUI_NativeModule_ConvertPositionToWindow(ArkUI_NodeHandle currentNode, ArkUI_IntOffset localPosition, ArkUI_IntOffset* windowPosition)](#oh_arkui_nativemodule_convertpositiontowindow) | - | 将点的坐标从目标节点的坐标系转换至当前窗口的坐标系。|
 | [int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetNode, ArkUI_IntOffset windowPosition, ArkUI_IntOffset* localPosition)](#oh_arkui_nativemodule_convertpositionfromwindow) | - | 将点的坐标从当前窗口的坐标系转换至目标节点的坐标系。 |
 | [int32_t OH_ArkUI_Swiper_StartFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)](#oh_arkui_swiper_startfakedrag) | - | 启动Swiper节点的模拟拖拽操作。调用[OH_ArkUI_Swiper_FakeDragBy](capi-native-node-h.md#oh_arkui_swiper_fakedragby)模拟拖拽动作。调用[OH_ArkUI_Swiper_StopFakeDrag](capi-native-node-h.md#oh_arkui_swiper_stopfakedrag)停止模拟拖拽。<br> 模拟拖拽操作可以被真实拖拽操作打断。如果需要在模拟拖拽期间忽略用户的拖拽事件，请使用[NODE_SWIPER_DISABLE_SWIPE](capi-native-node-h.md#arkui_nodeattributetype)。 |
@@ -935,6 +937,8 @@ enum ArkUI_NodeEventType
 | NODE_TEXT_EDITOR_ON_SUBMIT = 22004 | 定义TextEditor组件输入法的回车键被按下时触发的事件。<br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含一个参数：<br><b>ArkUI_NodeComponentEvent.data[0].i32</b>：输入法的回车键类型[ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype)。<br>**起始版本：** 24 |
 | NODE_TEXT_EDITOR_ON_CUT = 22005 | 定义TextEditor组件执行剪切时触发的事件。<br>系统会根据回调函数返回值判断是否拦截组件的默认行为。<br>可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](#oh_arkui_nodeevent_setreturnnumbervalue)设置返回值。<br>返回值中索引为0的value.i32表示是否拦截组件的默认行为。<br>0：不拦截。1：拦截。<br>**起始版本：** 24 |
 | NODE_TEXT_EDITOR_ON_COPY = 22006 | 定义TextEditor组件执行复制时触发的事件。<br>系统会根据回调函数返回值判断是否拦截组件的默认行为。<br>可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](#oh_arkui_nodeevent_setreturnnumbervalue)设置返回值。<br>返回值中索引为0的value.i32表示是否拦截组件的默认行为。<br>0：不拦截。1：拦截。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_ON_WILL_CHANGE = 22007 | 定义TextEditor组件在内容将要改变时触发的事件。当事件回调发生时，可以通过[OH_ArkUI_NodeEvent_GetTextEditorOnWillChangeEvent](capi-native-node-h.md#oh_arkui_nodeevent_gettexteditoronwillchangeevent)从[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中获得[OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md)对象。 <br> 使用OH_ArkUI_TextEditorChangeEvent_XXX系列接口可以从该对象中获取更多信息。 <br> 系统会根据回调函数返回值判断当前内容是否允许被更改。 <br> 可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](capi-native-node-h.md#oh_arkui_nodeevent_setreturnnumbervalue)设置返回值。 <br> 返回值中索引为0的value.i32表示当前内容是否允许被更改。<b>0</b>：允许更改。<b>1</b>：不允许更改。 <br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_ON_DID_CHANGE = 22008 | 定义TextEditor组件在内容改变时触发的事件。事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。 <br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含四个参数： <br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：文本变化前将要被替换的文本范围的起始索引。 <br> <b>ArkUI_NodeComponentEvent.data[1].i32</b>：文本变化前将要被替换的文本范围的结束索引。 <br> <b>ArkUI_NodeComponentEvent.data[2].i32</b>：文本变化后新增内容的文本范围的起始索引。 <br> <b>ArkUI_NodeComponentEvent.data[3].i32</b>：文本变化后新增内容的文本范围的结束索引。 <br>**起始版本：** 24 |
 | NODE_SWIPER_EVENT_ON_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_SWIPER = 1001000 | 定义ARKUI_NODE_SWIPER当前元素索引变化时触发事件回调。事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含1个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：表示当前显示元素的索引。  |
 | NODE_SWIPER_EVENT_ON_ANIMATION_START = 1001001 | 定义ARKUI_NODE_SWIPER切换动画开始时触发回调。事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含5个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：表示当前显示元素的索引。<br> <b>ArkUI_NodeComponentEvent.data[1].i32</b>：表示切换动画目标元素的索引。<br> <b>ArkUI_NodeComponentEvent.data[2].f32</b>：表示主轴方向上当前显示元素相对Swiper起始位置的位移。<br> <b>ArkUI_NodeComponentEvent.data[3].f32</b>：表示主轴方向上目标元素相对Swiper起始位置的位移。<br> <b>ArkUI_NodeComponentEvent.data[4].f32</b>：表示离手速度。  |
 | NODE_SWIPER_EVENT_ON_ANIMATION_END = 1001002 | 定义ARKUI_NODE_SWIPER切换动画结束是触发回调。事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含2个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：表示当前显示元素的索引。<br> <b>ArkUI_NodeComponentEvent.data[1].f32</b>：表示主轴方向上当前显示元素相对Swiper起始位置的位移。  |
@@ -3858,6 +3862,30 @@ ArkUI_TouchTestInfo* OH_ArkUI_NodeEvent_GetTouchTestInfo(ArkUI_NodeEvent* nodeEv
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_TouchTestInfo](./capi-arkui-nativemodule-arkui-touchtestinfo.md)* | 返回指向[ArkUI_TouchTestInfo](./capi-arkui-nativemodule-arkui-touchtestinfo.md)对象的指针。若传入的参数无效或并非触摸测试信息，则返回null。 |
+
+### OH_ArkUI_NodeEvent_GetTextEditorOnWillChangeEvent()
+
+```c
+OH_ArkUI_TextEditorChangeEvent* OH_ArkUI_NodeEvent_GetTextEditorOnWillChangeEvent(ArkUI_NodeEvent* event)
+```
+
+**描述**
+
+获取组件事件中的TextEditor组件文本内容变化数据。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* event | 指向[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)组件事件对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md)* | 指向[OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md)数据对象的指针。<br>         若传入的参数无效或并非TextEditor组件文本内容变化事件信息，则返回<b>null</b>。 |
 
 ### OH_ArkUI_NativeModule_ConvertPositionToWindow()
 
