@@ -10990,7 +10990,7 @@ async function example(context: Context) {
 
 ### queryDownloadSpecificCloudMediaTaskCountAndSize<sup>26+</sup>
 
-queryDownloadSpecificCloudMediaTaskCountAndSize(predicates: dataSharePredicates.DataSharePredicates): Promise\<int[]\>
+queryDownloadSpecificCloudMediaTaskCountAndSize(predicates: dataSharePredicates.DataSharePredicates): Promise\<number[]\>
 
 查询云端媒体资产批量下载任务的总量和大小。使用Promise异步回调。
 
@@ -11014,7 +11014,7 @@ queryDownloadSpecificCloudMediaTaskCountAndSize(predicates: dataSharePredicates.
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise\<int[]\> | Promise对象，返回下载任务的总量和大小。 |
+| Promise\<number[]\> | Promise对象，返回下载任务的总量和大小。 |
 
 **错误码：**
 
