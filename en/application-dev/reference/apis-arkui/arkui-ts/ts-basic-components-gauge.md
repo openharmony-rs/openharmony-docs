@@ -20,7 +20,7 @@ This component can contain only one child component.
 
 > **NOTE**
 >
-> - Supported child component types: built-in and custom components, including https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/ui/rendering-control/arkts-rendering-control-foreach.md but excluding [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md) and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)
+> - Supported child component types: built-in and custom components, including [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) but excluding [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md) and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 >
 > - You are advised to use the **Text** component to build the current value and auxiliary text.
 >
@@ -99,7 +99,7 @@ Sets the start angle of the gauge.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| angle  | number | Yes  | Start angle of the gauge. The value **0** indicates 0 degrees, and a positive value indicates the clockwise direction.<br>Default value: **0**|
+| angle  | number | Yes  | Start angle of the gauge. The 0 o'clock is defined as 0 degrees. Clockwise rotation represents positive angles, and counterclockwise rotation represents negative angles. Values exceeding 360 degrees are equivalent to the remainder after division by 360 degrees.<br>Default value: **0**<br>Drawing from the start position to the end position is performed only in the clockwise direction.|
 
 ### endAngle
 
@@ -117,7 +117,7 @@ Sets the end angle of the gauge. Ensure an appropriate difference between the st
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| angle  | number | Yes  | End angle of the gauge. The value **0** indicates 0 degrees, and a positive value indicates the clockwise direction.<br>Default value: **360**|
+| angle  | number | Yes  | End angle of the gauge. The 0 o'clock is defined as 0 degrees. Clockwise rotation represents positive angles, and counterclockwise rotation represents negative angles. Values exceeding 360 degrees are equivalent to the remainder after division by 360 degrees.<br>Default value: **360**<br>Drawing from the start position to the end position is performed only in the clockwise direction.|
 
 ### colors
 
@@ -171,7 +171,6 @@ description(value: CustomBuilder)
 
 Sets the description of the gauge.
 
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -188,7 +187,6 @@ trackShadow(value: GaugeShadowOptions)
 
 Sets the shadow style of the gauge.
 
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -204,7 +202,6 @@ Sets the shadow style of the gauge.
 indicator(value: GaugeIndicatorOptions)
 
 Sets the indicator style of the gauge.
-
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -258,13 +255,11 @@ Creates a content modifier.
 
 Inherits from [MultiShadowOptions](ts-information-display-common.md#multishadowoptions) and has all attributes of **MultiShadowOptions**.
 
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 ## GaugeIndicatorOptions<sup>11+</sup>
 
 Provides gauge indicator options.
-
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
