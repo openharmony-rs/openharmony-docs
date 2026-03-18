@@ -27,8 +27,8 @@ typedef struct UsbSerial_Params {...} __attribute__((aligned(8))) UsbSerial_Para
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t baudRate | 波特率。 |
-| uint8_t nDataBits | 数据传输位数。 |
-| uint8_t nStopBits | 数据停止位数。 |
+| uint8_t nDataBits | 数据位比特数。 |
+| uint8_t nStopBits | 停止位比特数。 |
 | uint8_t parity | 校验参数设置。 |
 
 
