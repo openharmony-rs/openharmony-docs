@@ -48,9 +48,9 @@ type Transformer = (this: ISendable, key: string, value: ISendable | undefined |
 
 | 参数名 | 类型   | 必填 | 说明            |
 | ------ | ------ | ---- | --------------- |
-| this   | [ISendable](#isendable) | 是 | 在解析的键值对所属的对象。|
+| this   | [ISendable](#isendable) | 是 | 所解析的键值对所属的对象。|
 | key  | string | 是 | 属性名。|
-| value  | [ISendable](#isendable) \| undefined \| null| 是 | 在解析的键值对的值。|
+| value  | [ISendable](#isendable) \| undefined \| null| 是 | 所解析的键值对的值。|
 
 **返回值：**
 
@@ -212,40 +212,40 @@ hashMap.set("sh","b");
 hashMap.set("map","c");
 let str1 = ArkTSUtils.ASON.stringify(hashMap);
 console.info(str1);
-//期望输出：'{"sh":"b","ha":"a","map":"c"}'
+// 期望输出：'{"sh":"b","ha":"a","map":"c"}'
 let hashSet = new HashSet<string>();
 hashSet.add("ha");
 hashSet.add("sh");
 hashSet.add("set");
 let str2 = ArkTSUtils.ASON.stringify(hashSet);
 console.info(str2);
-//期望输出：'["set","sh","ha"]'
+// 期望输出：'["set","sh","ha"]'
 let map = new Map<string,string>();
 map.set("m","a");
 map.set("a","b");
 map.set("p","c");
 let str3 = ArkTSUtils.ASON.stringify(map);
 console.info(str3);
-//期望输出：'{"m":"a","a":"b","p":"c"}'
+// 期望输出：'{"m":"a","a":"b","p":"c"}'
 let set = new Set<string>();
 set.add("s");
 set.add("e");
 set.add("t");
 let str4 = ArkTSUtils.ASON.stringify(set);
 console.info(str4);
-//期望输出：'["s","e","t"]'
+// 期望输出：'["s","e","t"]'
 let sendableMap = new collections.Map<string,string>();
 sendableMap.set("send","a");
 sendableMap.set("able","b");
 sendableMap.set("map","c");
 let str5 = ArkTSUtils.ASON.stringify(sendableMap);
 console.info(str5);
-//期望输出：'{"send":"a","able":"b","map":"c"}'
+// 期望输出：'{"send":"a","able":"b","map":"c"}'
 let sendableSet = new collections.Set<string>();
 sendableSet.add("send");
 sendableSet.add("able");
 sendableSet.add("set");
 let str6 = ArkTSUtils.ASON.stringify(sendableSet);
 console.info(str6);
-//期望输出：'["send","able","set"]'
+// 期望输出：'["send","able","set"]'
 ```
