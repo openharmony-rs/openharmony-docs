@@ -3864,6 +3864,113 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### setAssetCompatibleCapability<sup>24+</sup>
+
+setAssetCompatibleCapability(tokenId: long, capability: AssetCompatibleCapability): Promise&lt;void&gt;
+
+根据TokenId配置资产兼容能力。
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| tokenId | long | 是   | 应用的TokenId。|
+| capability | AssetCompatibleCapability | 是   | 资产兼容能力|
+
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise<void> | 返回void。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | 23800151 - The scenario parameter verification fails, Invalid tokenId.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs.
+Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+    try {
+    let bundleInfo: bundleManager.BundleInfo = await bundleManager.getBundleInfoForSelf(1);
+    let cfg : photoAccessHelper.AssetCompatibleAbility = {
+        supportedHighResolution : true,
+    };
+    let tokenId : number = bundleInfo.appInfo.accessTokenId;
+    await phAccessHelper.setAssetCompatibleAbility(tokenId, cfg);
+  } catch (err) {
+    console.info('failed to setAssetCompatibleAbility err');
+  }
+}
+```
+
+### getAssetCompatibleCapability<sup>24+</sup>
+
+getAssetCompatibleCapability(tokenId: long): Promise<AssetCompatibleCapability>
+
+根据TokenId获取asset兼容的能力。向应用程序提供文件时，可以获取兼容性能力，并根据兼容性能力决定是否进行兼容性转换。
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| tokenId | long | 是   | 应用的TokenId。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise<AssetCompatibleCapability> | 返回指定的资产兼容性功能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | 23800151 - The scenario parameter verification fails, Invalid tokenId.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs.
+Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+    try {
+    let bundleInfo: bundleManager.BundleInfo = await bundleManager.getBundleInfoForSelf(1);
+    let tokenId : number = bundleInfo.appInfo.accessTokenId;
+    let config : photoAccessHelper.AssetCompatibleAbility = await phAccessHelper.getAssetCompatibleCapability(tokenId);
+  } catch (err) {
+    console.info('failed to getAssetCompatibleCapability err');
+  }
+}
+```
+
 ## getAlbumIdByBundleName<sup>22+</sup>
 
 getAlbumIdByBundleName(bundleName: string): Promise&lt;number&gt;
