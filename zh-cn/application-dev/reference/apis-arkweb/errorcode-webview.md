@@ -64,7 +64,6 @@ URL错误，可能原因：
 **错误描述**
 
 1. resource路径错误。
-
 2. 通过runJavaScript调用一个返回空ArrayBuffer的JS方法。
 
 **可能原因**
