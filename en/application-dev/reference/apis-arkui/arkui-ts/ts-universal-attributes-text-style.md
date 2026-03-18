@@ -67,7 +67,13 @@ getCaretOffset(): CaretOffset
 
 Obtains the position information of the caret.
 
-If the caret position cannot be obtained (for example, when the [TextInputController](./ts-basic-components-textinput.md#textinputcontroller8) is not bound to the [TextInput](./ts-basic-components-textinput.md) component), **null** is returned.
+> **NOTE**
+>
+> - If this API is called when the caret position is updated in the current frame, it will not take effect.
+> - For the **Search** component, the returned position information is the offset of the first character relative to the search icon in the component.
+> - If no text is entered in the **Search** component, the return value contains the position information relative to the component.
+> - The location information in the return value is the location of the caret relative to the editable component.
+> - If the caret position cannot be obtained (for example, when the [TextInputController](./ts-basic-components-textinput.md#textinputcontroller8) is not bound to the [TextInput](./ts-basic-components-textinput.md) component), **null** is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -79,13 +85,6 @@ If the caret position cannot be obtained (for example, when the [TextInputContro
 | ----------------------- | ---------------- |
 | [CaretOffset](#caretoffset11) | Position of the caret relative to the text box.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
-> **NOTE**
->
-> - If this API is called when the caret position is updated in the current frame, it will not take effect.
-> - For the **Search** component, the returned position information is the offset of the first character relative to the search icon in the component.
-> - If no text is entered in the **Search** component, the return value contains the position information relative to the component.
-> - The location information in the return value is the location of the caret relative to the editable component.
-
 ### addText<sup>15+</sup>
 
 addText(text: string, textOperationOptions?: TextContentControllerOptions): number
@@ -94,7 +93,7 @@ Inserts text at a specified position in the editable content. If no position is 
 
 This API does not work when the text is being dragged.
 
-**addText** only affects the UI performance within the application and has no effect on the internal logic of the input method application. Therefore, avoid calling this API for preview text.
+**addText** only affects the UI performance within the application and has no effect on the internal logic of the input method application. Therefore, avoid calling this API for the preview text.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -135,9 +134,9 @@ deleteText(range?: TextRange): void
 
 Deletes text within a specified range in the editable content.
 
-This API does not work when the text is being dragged.
-
-**deleteText** only affects the UI performance within the application and has no effect on the internal logic of the input method application. Therefore, avoid calling this API for preview text.
+> **NOTE**
+> - This API does not work when the text is being dragged.
+> - **deleteText** only affects the UI performance within the application and has no effect on the internal logic of the input method application. Therefore, avoid calling this API for the preview text.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -184,7 +183,7 @@ Provides configuration options for the character counter.
 | Name  | Type   |     Read-Only   |     Optional   |     Description   |
 | -------- | ------- | ----------- | ----------- | ----------- |
 | thresholdPercentage | number  | No| Yes| Threshold percentage for displaying the character counter. The character counter is displayed when the number of characters that have been entered is greater than the maximum number of characters multiplied by the threshold percentage value. When displayed, the character counter is in the following format: Number of characters that have been entered/Maximum number of characters allowed. It is visible when the number of characters entered is greater than the character limit multiplied by the threshold percentage value. Value range: [1, 100]. If the value is not an integer, it is rounded down to the nearest integer. If the value exceeds the valid value range, the character counter is not displayed. If the value is **undefined**, the character counter is displayed, but this parameter has no effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| highlightBorder     | boolean | No | Yes| Whether to highlight the text box border and character counter subscript in red. If **options** is not set, the text box border and character counter subscript turn red when the number of characters entered reaches the limit. If the character counter is displayed and **thresholdPercentage** is set to a valid value, the text box border and character counter subscript turn red when the number of entered characters exceeds the limit. If this parameter is **true**, the red border is displayed; if **false**, it is not displayed. (default) means to highlight the text box border and character counter subscript in red.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| highlightBorder     | boolean | No | Yes| Whether to highlight the text box border and character counter subscript in red. If **InputCounterOptions** is not set, the text box border and character counter subscript turn red when the number of characters entered reaches the limit. If the character counter is displayed and **thresholdPercentage** is set to a valid value, the text box border and character counter subscript turn red when the number of entered characters exceeds the limit. If this parameter is **true**, the red border is displayed; if **false**, it is not displayed.<br>Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | counterTextColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No| Yes| Text color of the character counter. When the input character count exceeds the maximum limit multiplied by the specified percentage, the counter displays the current count text using this color. If **counterTextColor** is not set, the default gray color is used.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 | counterTextOverflowColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No| Yes| Text color of the character counter when the maximum limit is exceeded. When the user input exceeds the maximum character count, both the counter text and border switch to this color to indicate overflow. If **counterTextOverflowColor** is not set, the default red color is used.<br>**NOTE**<br>The border color is changed only when the **highlightBorder** attribute of [InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11) is set.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
@@ -199,8 +198,8 @@ Describes the position of the caret relative to the text box.
 | Name  | Type   |     Read-Only   |     Optional   |     Description   |
 | -------- | ------- | ----------- | ----------- | ----------- |
 | index | number | No| No| Index of the caret position.   |
-| x     | number | No| No| X-coordinate of the caret relative to the text box, in px.|
-| y     | number | No| No| Y-coordinate of the caret relative to the text box, in px.|
+| x     | number | No| No| X coordinate of the cursor relative to the text box, in px.|
+| y     | number | No| No| Y coordinate of the cursor relative to the text box, in px.|
 
 ## TextDecorationOptions<sup>12+</sup>
 

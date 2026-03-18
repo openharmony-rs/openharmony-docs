@@ -16,7 +16,7 @@ You can set the foreground effect for a component.
 
 foregroundEffect(options: ForegroundEffectOptions): T
 
-Sets the foreground effect of the component.
+Sets the foreground effect of a component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
