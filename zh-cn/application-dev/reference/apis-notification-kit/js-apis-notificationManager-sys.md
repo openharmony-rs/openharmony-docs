@@ -9116,6 +9116,7 @@ getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[Notificati
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
 **ArkTS-Dyn起始版本**：26
 
 **ArkTS-Sta起始版本**：26
@@ -9146,6 +9147,7 @@ getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[Notificati
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -9157,6 +9159,20 @@ let bundles = [
 notificationManager.getNotificationStatisticsByBundle(bundles).then((data) => {
   console.info(`${TAG} getNotificationStatisticsByBundle data: ${JSON.stringify(data)}`)
 }).catch((err: BusinessError):void => {
+  console.info(`${TAG} getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
+});
+```
+
+ArkTS-Sta示例：
+```ts
+let TAG = 'testTag';
+let bundles = [
+  { bundle:"com.example.test01", } as notificationManager.BundleOption,
+  { bundle:"com.example.test02", } as notificationManager.BundleOption
+];
+notificationManager.getNotificationStatisticsByBundle(bundles).then((data) => {
+  console.info(`${TAG} getNotificationStatisticsByBundle data: ${JSON.stringify(data)}`)
+}).catch((err: Error):void => {
   console.info(`${TAG} getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
 });
 ```
