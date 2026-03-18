@@ -31,6 +31,7 @@ import { appRecovery } from '@kit.AbilityKit';
 | ALWAYS_RESTART   | 0    | 总是重启应用。 |
 | RESTART_WHEN_JS_CRASH   | 0x0001    | 发生JS_CRASH时重启应用。 |
 | RESTART_WHEN_APP_FREEZE   | 0x0002    | 发生APP_FREEZE时重启应用。 |
+| RESTART_WHEN_CPP_CRASH    | 0x0004    | 发生CPP_CRASH时重启应用(此值从 API version 24 开始支持)。 |
 | NO_RESTART           | 0xFFFF    | 总是不重启应用。 |
 
 ## SaveOccasionFlag
