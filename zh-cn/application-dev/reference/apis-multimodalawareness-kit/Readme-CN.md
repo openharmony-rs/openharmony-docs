@@ -9,12 +9,12 @@
 - ArkTS API<!--multimodal-awareness-arkts-->
   - [@ohos.stationary (设备状态感知框架)](js-apis-stationary.md)
   - [@ohos.multimodalAwareness.motion (动作感知能力)](js-apis-awareness-motion.md)
-  - [@js-apis-awareness-metadataBinding (记忆链接)](js-apis-awareness-metadataBinding.md)
+  - [@ohos.multimodalAwareness.metadataBinding (记忆链接)](js-apis-awareness-metadataBinding.md)
   - [@ohos.multimodalAwareness.deviceStatus (设备状态感知)](js-apis-awareness-deviceStatus.md)
   - [@ohos.multimodalAwareness.userStatus (用户状态感知)](js-apis-awareness-userStatus.md) 
   <!--Del-->
-  - [@js-apis-awareness-metadataBinding (记忆链接)(系统接口)](js-apis-awareness-metadataBinding-sys.md)
-  - [@js-apis-awareness-deviceStatus (设备状态感知)(系统接口)](js-apis-awareness-deviceStatus-sys.md)
+  - [@ohos.multimodalAwareness.metadataBinding (记忆链接)(系统接口)](js-apis-awareness-metadataBinding-sys.md)
+  - [@ohos.multimodalAwareness.deviceStatus (设备状态感知)(系统接口)](js-apis-awareness-deviceStatus-sys.md)
   - [@ohos.multimodalAwareness.onScreen (屏上感知)(系统接口)](js-apis-awareness-onScreen-sys.md)
   - [@ohos.multimodalAwareness.spatialAwareness (空间感知)(系统接口)](js-apis-awareness-spatialAwareness-sys.md)
   <!--DelEnd-->
