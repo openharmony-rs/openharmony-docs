@@ -769,7 +769,7 @@ atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlag
 });
 ```
 
-### PermissionRequestToggleStatus<sup>12+</sup>
+## PermissionRequestToggleStatus<sup>12+</sup>
 
 表示指定权限对应的弹窗开关状态的枚举。
 
