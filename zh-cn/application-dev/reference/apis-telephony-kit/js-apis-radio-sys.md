@@ -2528,7 +2528,7 @@ console.info(`IMEISV is:` + data);
 
 isManualNetworkScanning\(slotId: number\): Promise\<boolean\>
 
-获取手动搜网状态。
+获取手动搜网状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2546,7 +2546,7 @@ isManualNetworkScanning\(slotId: number\): Promise\<boolean\>
 
 | 类型               | 说明                                      |
 | ------------------ | ---------------------------------------- |
-| Promise\<boolean\> | 以Promise形式返回是否正在手动搜网中的结果。 |
+| Promise\<boolean\> | Promise对象。返回true表示正在手动搜网中，返回false表示已结束手动搜网。 |
 
 **错误码：**
 
@@ -2575,7 +2575,7 @@ radio.isManualNetworkScanning(0).then((state: boolean) => {
 
 startManualNetworkScan\(slotId: number, callback: AsyncCallback\<NetworkSearchRealTimeResult\>\): void
 
-开始手动搜网。
+开始手动搜网。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2619,7 +2619,7 @@ radio.startManualNetworkScan(0, (err: BusinessError, data: radio.NetworkSearchRe
 
 stopManualNetworkScan\(slotId: number\): Promise\<void\>
 
-结束手动搜网。
+结束手动搜网。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2637,7 +2637,7 @@ stopManualNetworkScan\(slotId: number\): Promise\<void\>
 
 | 类型            | 说明                    |
 | --------------- | ----------------------- |
-| Promise\<void\> | 以Promise形式返回停止手动搜网的结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
