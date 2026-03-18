@@ -988,7 +988,7 @@ isTorchLevelControlSupported(): boolean
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| boolean    | 返回值表示设备是否支持手电筒亮度调节功能，返回true表示设备支持手电筒亮度调节，返回false表示设备不支持手电筒亮度调节。若接口调用失败，返回undefined。 |
+| boolean    | 表示设备是否支持手电筒亮度调节功能。返回true表示支持，返回false表示不支持。若接口调用失败，返回undefined。 |
 
 **示例：**
 
