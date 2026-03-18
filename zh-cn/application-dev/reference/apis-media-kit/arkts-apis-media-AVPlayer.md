@@ -1335,7 +1335,7 @@ async function  test(){
 
 getMediaKeySystemInfos(): Array\<drm.MediaKeySystemInfo>
 
-获取当前播放的媒体资源的MediaKeySystemInfo。需要在[on('mediaKeySystemInfoUpdate')]事件触发成功后才能调用。
+获取当前播放的媒体资源的MediaKeySystemInfo。需要在[on('mediaKeySystemInfoUpdate')](#onmediakeysysteminfoupdate11)事件触发成功后才能调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
