@@ -153,7 +153,7 @@ import {
    RecentPhotoCheckResultCallback, 
    RecentPhotoClickCallback, 
    RecentPhotoInfo,
-   RecentPhotoCheckInfoCallback
+   RecentPhotoCheckInfoCallback,
    BaseItemInfo
 } from '@ohos.file.RecentPhotoComponent';
 
