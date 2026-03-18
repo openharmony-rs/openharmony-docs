@@ -105,7 +105,7 @@ SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE 8
 
 **描述**
 
-描述符格式传感数据的最小长度。
+描述符格式感应数据的最小长度。
 
 **起始版本：** 18
 
@@ -117,7 +117,7 @@ SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE 18
 
 **描述**
 
-固定格式传感数据的最小长度。
+固定格式感应数据的最小长度。
 
 **起始版本：** 18
 
@@ -141,7 +141,7 @@ SCSIPERIPHERAL_MAX_SENSE_DATA_LEN 252
 
 **描述**
 
-传感数据的最大长度。
+感应数据的最大长度。
 
 **起始版本：** 18
 
@@ -153,7 +153,7 @@ SCSIPERIPHERAL_VENDOR_ID_LEN 8
 
 **描述**
 
-厂家标识符的长度。
+厂商标识符的长度。
 
 **起始版本：** 18
 
