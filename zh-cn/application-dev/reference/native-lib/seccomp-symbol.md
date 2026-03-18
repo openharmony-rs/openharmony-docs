@@ -147,9 +147,6 @@ Tid:13893, Name:e.myapplication
 | renameat2 | all | 全平台设备 |
 | chdir | all | 全平台设备 |
 | fchdir | all | 全平台设备 |
-| fchmod | all | 全平台设备 |
-| fchmodat | all | 全平台设备 |
-| chmod | arm | 全平台设备 |
 | faccessat | all | 全平台设备 |
 | access | arm | 全平台设备 |
 | faccessat2 | all | 全平台设备 |
@@ -256,6 +253,9 @@ Tid:13893, Name:e.myapplication
 | ugetrlimit | arm | 全平台设备 |
 | setrlimit | all | 全平台设备 |
 | prlimit64 | all | 全平台设备 |
+| fchmod | all | 全平台设备 |
+| fchmodat | all | 全平台设备 |
+| chmod | arm | 全平台设备 |
 
 
 
