@@ -6630,14 +6630,9 @@ getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[Notificati
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let TAG = 'testTag';
-let bundle01: notificationManager.BundleOption = {
-  bundle:"com.example.test01",
-}
-let bundle02: notificationManager.BundleOption = {
-  bundle:"com.example.test02",
-}
 let bundles = [
-  bundle01, bundle02
+  { bundle:"com.example.test01", } as notificationManager.BundleOption,
+  { bundle:"com.example.test02", } as notificationManager.BundleOption
 ];
 notificationManager.getNotificationStatisticsByBundle(bundles).then((data) => {
   console.info(`${TAG} getNotificationStatisticsByBundle data: ${JSON.stringify(data)}`)
