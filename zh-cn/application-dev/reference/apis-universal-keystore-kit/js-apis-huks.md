@@ -2660,7 +2660,7 @@ API version 8-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | ------------------------- | ---- | --------------------- |
 | HUKS_ALG_RSA              | 1    | 表示使用RSA算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_ALG_ECC              | 2    | 表示使用ECC算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
-| HUKS_ALG_DSA              | 3    | 表示使用DSA算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
+| HUKS_ALG_DSA              | 3    | 表示使用DSA算法<!--RP5--><!--RP5End-->。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_ALG_AES              | 20   | 表示使用AES算法。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 | HUKS_ALG_HMAC             | 50   | 表示使用HMAC算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_ALG_HKDF             | 51   | 表示使用HKDF算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
@@ -3517,7 +3517,7 @@ getKeyProperties(keyAlias: string, options: HuksOptions) : Promise\<HuksResult>
 
 | 类型               | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| Promise\<[HuksResult](#huksoptions)> | Promise对象。返回HuksResult。HuksResult的properties返回密钥参数。 |
+| Promise\<[HuksResult](#huksresultdeprecated)> | Promise对象。返回HuksResult。HuksResult的properties返回密钥参数。 |
 
 **示例：**
 
