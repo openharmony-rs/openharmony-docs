@@ -24,9 +24,8 @@ import {
   DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType,
   MaxCountType, PhotoBrowserRange, PhotoBrowserUIElement,
   ItemsDeletedCallback, ExceedMaxSelectedCallback, CurrentAlbumDeletedCallback, SingleLineConfig,
-  BadgeConfig, PreselectedInfo, SaveMode, BadgeType, ItemDisplayRatio
-} from '@kit.MediaLibraryKit';
-import { VideoPlayerState } from '@ohos.file.PhotoPickerComponent';
+  BadgeConfig, PreselectedInfo, SaveMode, BadgeType, ItemDisplayRatio,VideoPlayerState
+} from '@ohos.file.PhotoPickerComponent';
 ```
 
 ## 属性
@@ -698,9 +697,9 @@ import {
   ExceedMaxSelectedCallback,
   CurrentAlbumDeletedCallback,
   videoPlayStateChangedCallback,
+  VideoPlayerState,
   photoAccessHelper
-} from '@kit.MediaLibraryKit';
-import { VideoPlayerState } from '@ohos.file.PhotoPickerComponent';
+} from '@ohos.file.PhotoPickerComponent';
 import { dataSharePredicates } from '@kit.ArkData';
 import { common } from '@kit.AbilityKit';
 
