@@ -10620,8 +10620,6 @@ startDownloadSpecificCloudMedia(assetUris: string[], taskSequence?: number): Pro
 
 开始云端媒体资产批量下载任务。使用Promise异步回调。
 
-**起始版本：** 21
-
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -10633,7 +10631,7 @@ startDownloadSpecificCloudMedia(assetUris: string[], taskSequence?: number): Pro
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
 | assetUris | string[] | 是   | 需要下载的原图和视频的uri列表。 |
-| taskSequence | number | 否   | 应用设置的序号, 值应大于等于0。 |
+| taskSequence | number | 否   | 应用设置的序号,默认值为0，值应大于等于0。 <br> 从API Version 24开始，支持taskSequence参数。 |
 
 **返回值：**
 
@@ -10688,7 +10686,7 @@ setDownloadSpecificCloudMediaNetworkPolicy(assetUris: string[], networkPolicy: C
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  \| null | 是   | 需要设置策略的下载的原图和视频的uri列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
+| assetUris | string[]  | 是   | 需要设置策略的下载的原图和视频的URI列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
 | networkPolicy | [CloudDownloadNetworkPolicy](#clouddownloadnetworkpolicy26) | 是   | 批量下载网络策略。 |
 
 
@@ -10731,8 +10729,6 @@ async function example(context: Context) {
 pauseDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 暂停云端媒体资产批量下载任务。使用Promise异步回调。
-
-**起始版本：** 21
 
 **系统接口**：此接口为系统接口。
 
@@ -10786,8 +10782,6 @@ resumeDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 恢复云端媒体资产批量下载任务。使用Promise异步回调。
 
-**起始版本：** 21
-
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -10840,8 +10834,6 @@ cancelDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 取消云端媒体资产批量下载任务。使用Promise异步回调。
 
-**起始版本：** 21
-
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -10893,8 +10885,6 @@ async function example(context: Context) {
 queryDownloadSpecificCloudMediaDetails(predicates: dataSharePredicates.DataSharePredicates): Promise\<CloudAssetDownloadStatus\>
 
 查询云端媒体资产批量下载任务信息。使用Promise异步回调。
-
-**起始版本：** 21
 
 **系统接口**：此接口为系统接口。
 
@@ -10949,8 +10939,6 @@ async function example(context: Context) {
 queryDownloadSpecificCloudMediaTaskCount(predicates: dataSharePredicates.DataSharePredicates): Promise\<number\>
 
 查询云端媒体资产批量下载任务总量。使用Promise异步回调。
-
-**起始版本：** 21
 
 **系统接口**：此接口为系统接口。
 
@@ -11066,8 +11054,6 @@ onDownloadProgressChange(callback: Callback\<CloudAssetDownloadProgressInfo\>): 
 
 监听云端媒体资产批量下载进度。
 
-**起始版本：** 21
-
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -11116,7 +11102,6 @@ offDownloadProgressChange(callback?: Callback\<CloudAssetDownloadProgressInfo\>)
 
 取消监听云端媒体资产批量下载进度相关通知。
 
-**起始版本：** 21
 
 **系统接口**：此接口为系统接口。
 
@@ -12680,8 +12665,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 枚举，下载进度通知事件类型。
 
-**起始版本：** 21
-
 **系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -12700,8 +12683,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 枚举，批量下载添加返回值类型。
 
-**起始版本：** 21
-
 **系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -12714,8 +12695,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 ## CloudAssetDownloadProgressInfo<sup>21+</sup>
 
 批量下载进度信息。
-
-**起始版本：** 21
 
 **系统接口**：此接口为系统接口。
 
@@ -12731,8 +12710,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 ## CloudAssetDownloadStatus<sup>21+</sup>
 
 批量下载任务信息。
-
-**起始版本：** 21
 
 **系统接口**：此接口为系统接口。
 
@@ -12788,6 +12765,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| DEFAULT |  0 |  默认，仅wifi下载。|
-| CELL |  1 |  蜂窝网络可下载。  |
-| WIFI |  2 |  WIFI网络可下载。  |
+| DEFAULT |  0 |  默认，用户未选择，仅WIFI下载。|
+| CELL |  1 |  用户选择过，蜂窝网络和WIFI均可下载。  |
+| WIFI |  2 |  用户选择过，WIFI网络可下载。  |
