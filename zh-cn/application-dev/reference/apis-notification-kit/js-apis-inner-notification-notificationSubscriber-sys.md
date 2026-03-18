@@ -1,4 +1,4 @@
-# NotificationSubscriber(系统接口)
+# NotificationSubscriber (系统接口)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @michael_woo888-->
