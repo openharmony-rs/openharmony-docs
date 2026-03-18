@@ -970,7 +970,7 @@ function unregisterTorchStatusChange(cameraManager: camera.CameraManager): void 
 }
 ```
 
-## isTorchLevelControlSupported<sup>23+</sup>
+## isTorchLevelControlSupported
 
 isTorchLevelControlSupported(): boolean
 
