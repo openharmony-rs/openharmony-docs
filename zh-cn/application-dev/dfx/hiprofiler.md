@@ -206,6 +206,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | RES_RN_HEAP_MASK | rn内存分配栈。 | 23 |
 | RES_DMABUF_MASK | dmabuf内存分配栈。 | 23 |
 | RES_ARK_GLOBAL_HANDLE | ark全局句柄分配栈。 | 23 |
+| RES_VMA_ARKWEB | 采集arkweb 内存分配栈。 | 23 |
 
 **结果分析**
 
