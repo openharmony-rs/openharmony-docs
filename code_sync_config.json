@@ -8661,36 +8661,6 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StyledStringNDK/entry/src/main/cpp/manager.cpp",
 				"functions":[
 					{
-						"end_line":68,
-						"name":"obtain_create_text",
-						"start_line":47
-					},
-					{
-						"end_line":78,
-						"name":"obtain_create_text_typographyStyle",
-						"start_line":74
-					},
-					{
-						"end_line":104,
-						"name":"obtain_create_text_styledString",
-						"start_line":80
-					},
-					{
-						"end_line":103,
-						"name":"obtain_create_text_placeholder",
-						"start_line":83
-					},
-					{
-						"end_line":111,
-						"name":"obtain_create_text_typography",
-						"start_line":106
-					},
-					{
-						"end_line":116,
-						"name":"obtain_create_text_attributeItem",
-						"start_line":112
-					},
-					{
 						"end_line":126,
 						"name":"obtain_create_text_all",
 						"start_line":15
