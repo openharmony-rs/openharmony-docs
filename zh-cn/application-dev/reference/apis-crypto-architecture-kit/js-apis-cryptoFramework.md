@@ -5865,6 +5865,7 @@ recover(signatureData: DataBlob): Promise\<DataBlob | null>
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c.         |
+| 17620004 | invalid function call. |
 | 17630001 | crypto operation error. |
 
 **示例：**
@@ -5980,6 +5981,7 @@ recoverSync(signatureData: DataBlob): DataBlob | null
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c.         |
+| 17620004 | invalid function call. |
 | 17630001 | crypto operation error. |
 
 ### setVerifySpec<sup>10+</sup>
