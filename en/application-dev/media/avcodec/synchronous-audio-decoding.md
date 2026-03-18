@@ -52,85 +52,85 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 1. Add the header files and namespace.
 
-    ```cpp
-    #include <multimedia/player_framework/native_avcodec_audiocodec.h>
-    #include <multimedia/native_audio_channel_layout.h>
-    #include <multimedia/player_framework/native_avcapability.h>
-    #include <multimedia/player_framework/native_avcodec_base.h>
-    #include <multimedia/player_framework/native_avformat.h>
-    #include <multimedia/player_framework/native_avbuffer.h>
+   ```cpp
+   #include <multimedia/player_framework/native_avcodec_audiocodec.h>
+   #include <multimedia/native_audio_channel_layout.h>
+   #include <multimedia/player_framework/native_avcapability.h>
+   #include <multimedia/player_framework/native_avcodec_base.h>
+   #include <multimedia/player_framework/native_avformat.h>
+   #include <multimedia/player_framework/native_avbuffer.h>
 
-    // Namespace of the C++ standard library.
-    using namespace std;
-    ```
+   // Namespace of the C++ standard library.
+   using namespace std;
+   ```
 
 2. Create a decoder instance. In the code snippet below, **OH_AVCodec *** is the pointer to the decoder instance created.
 
    You can create a decoder by MIME type or codec name.
 
    Method 1: Create a decoder by MIME type.
-    ```c++
-    // Create a decoder by MIME type. The following example creates an AAC decoder. The second parameter is set to false to indicate decoding.
-    OH_AVCodec *audioDec_ = OH_AudioCodec_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
-    ```
+   ```c++
+   // Create a decoder by MIME type. The following example creates an AAC decoder. The second parameter is set to false to indicate decoding.
+   OH_AVCodec *audioDec_ = OH_AudioCodec_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
+   ```
    Method 2: Create a decoder by codec name.
-    ```c++
-    // Create a decoder by name.
-    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
-    const char *name = OH_AVCapability_GetName(capability);
-    OH_AVCodec *audioDec_ = OH_AudioCodec_CreateByName(name);
-    ```
+   ```c++
+   // Create a decoder by name.
+   OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
+   const char *name = OH_AVCapability_GetName(capability);
+   OH_AVCodec *audioDec_ = OH_AudioCodec_CreateByName(name);
+   ```
 
 3. (Optional) Call **OH_AudioCodec_SetDecryptionConfig** to set the decryption configuration.
 
-    Call this API after the media key system information is obtained but before **Prepare()** is called. For details about how to obtain such information, see step 4 in [Media Data Demultiplexing](audio-video-demuxer.md).
+   Call this API after the media key system information is obtained but before **Prepare()** is called. For details about how to obtain such information, see step 4 in [Media Data Demultiplexing](audio-video-demuxer.md).
 
-    For details about DRM APIs, see [DRM](../../reference/apis-drm-kit/capi-drm.md).
+   For details about DRM APIs, see [DRM](../../reference/apis-drm-kit/capi-drm.md).
 
-     
+    
 
-    Add the header files.
+   Add the header files.
 
-    ```c++
-    #include <multimedia/drm_framework/native_mediakeysystem.h>
-    #include <multimedia/drm_framework/native_mediakeysession.h>
-    #include <multimedia/drm_framework/native_drm_err.h>
-    #include <multimedia/drm_framework/native_drm_common.h>
-    ```
-    Link the dynamic libraries in the CMake script.
+   ```c++
+   #include <multimedia/drm_framework/native_mediakeysystem.h>
+   #include <multimedia/drm_framework/native_mediakeysession.h>
+   #include <multimedia/drm_framework/native_drm_err.h>
+   #include <multimedia/drm_framework/native_drm_common.h>
+   ```
+   Link the dynamic libraries in the CMake script.
 
-    ``` cmake
-    target_link_libraries(sample PUBLIC libnative_drm.so)
-    ```
+   ``` cmake
+   target_link_libraries(sample PUBLIC libnative_drm.so)
+   ```
 
-    The sample code is as follows:
-    ```c++
-    // Create a media key system based on the media key system information. The following uses com.clearplay.drm as an example.
-    MediaKeySystem *system = nullptr;
-    int32_t ret = OH_MediaKeySystem_Create("com.clearplay.drm", &system);
-    if (system == nullptr) {
-        printf("create media key system failed");
-        return;
-    }
+   The sample code is as follows:
+   ```c++
+   // Create a media key system based on the media key system information. The following uses com.clearplay.drm as an example.
+   MediaKeySystem *system = nullptr;
+   int32_t ret = OH_MediaKeySystem_Create("com.clearplay.drm", &system);
+   if (system == nullptr) {
+       printf("create media key system failed");
+       return;
+   }
 
-    // Create a media key session.
-    MediaKeySession *session = nullptr;
-    DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
-    ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
-    if (ret != DRM_OK) {
-        // If the creation fails, refer to the DRM interface document and check logs.
-        printf("create media key session failed.");
-        return;
-    }
-    if (session == nullptr) {
-        printf("media key session is nullptr.");
-        return;
-    }
-    // Generate a media key request and set the response to the media key request.
-    // Set the decryption configuration, that is, assign the decryption session to the decoder. Currently, audio decryption does not support secure decoders. Therefore, set the secureAudio parameter to false.
-    bool secureAudio = false;
-    ret = OH_AudioCodec_SetDecryptionConfig(audioDec_, session, secureAudio);
-    ```
+   // Create a media key session.
+   MediaKeySession *session = nullptr;
+   DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
+   ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
+   if (ret != DRM_OK) {
+       // If the creation fails, refer to the DRM interface document and check logs.
+       printf("create media key session failed.");
+       return;
+   }
+   if (session == nullptr) {
+       printf("media key session is nullptr.");
+       return;
+   }
+   // Generate a media key request and set the response to the media key request.
+   // Set the decryption configuration, that is, assign the decryption session to the decoder. Currently, audio decryption does not support secure decoders. Therefore, set the secureAudio parameter to false.
+   bool secureAudio = false;
+   ret = OH_AudioCodec_SetDecryptionConfig(audioDec_, session, secureAudio);
+   ```
 
 4. Call **OH_AudioCodec_Configure()** to configure the decoder.
 
@@ -186,99 +186,99 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 6. Call **OH_AudioCodec_Start()** to start the decoder.
 
    Add the header file.
-    ```c++
-    #include <fstream>
-    ```
+   ```c++
+   #include <fstream>
+   ```
 
    The sample code is as follows:
-    ```c++
-    ifstream inputFile_;
-    ofstream outFile_;
+   ```c++
+   ifstream inputFile_;
+   ofstream outFile_;
 
-    // Set the input file path based on the actual situation. To demonstrate audio decoding, the input file here contains audio frames and related information (not a directly playable audio file).
-    const char* inputFilePath = "/";
-    // Set the output file path based on the actual situation. This guide only demonstrates audio decoding; decoded PCM data is saved to a file without further processing.
-    const char* outputFilePath = "/";
-    // Open the path of the binary file to be decoded.
-    inputFile_.open(inputFilePath, ios::in | ios::binary); 
-    // Set the path of the output file.
-    outFile_.open(outputFilePath, ios::out | ios::binary);
-    // Start decoding.
-    OH_AVErrCode ret = OH_AudioCodec_Start(audioDec_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
-   
+   // Set the input file path based on the actual situation. To demonstrate audio decoding, the input file here contains audio frames and related information (not a directly playable audio file).
+   const char* inputFilePath = "/";
+   // Set the output file path based on the actual situation. This guide only demonstrates audio decoding; decoded PCM data is saved to a file without further processing.
+   const char* outputFilePath = "/";
+   // Open the path of the binary file to be decoded.
+   inputFile_.open(inputFilePath, ios::in | ios::binary); 
+   // Set the path of the output file.
+   outFile_.open(outputFilePath, ios::out | ios::binary);
+   // Start decoding.
+   OH_AVErrCode ret = OH_AudioCodec_Start(audioDec_);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
+
 7. (Optional) Call **OH_AVCencInfo_SetAVBuffer()** to set the Common Encryption Scheme (CENC) information.
 
-    If the content being played is DRM encrypted and [demultiplexing](audio-video-demuxer.md) is performed by the upper-layer application, call **OH_AVCencInfo_SetAVBuffer()** to set the CENC information to the AVBuffer for media data decryption.
+   If the content being played is DRM encrypted and [demultiplexing](audio-video-demuxer.md) is performed by the upper-layer application, call **OH_AVCencInfo_SetAVBuffer()** to set the CENC information to the AVBuffer for media data decryption.
 
-    Add the header file.
+   Add the header file.
 
-    ```c++
-    #include <multimedia/player_framework/native_cencinfo.h>
-    ```
-    Link the dynamic libraries in the CMake script.
+   ```c++
+   #include <multimedia/player_framework/native_cencinfo.h>
+   ```
+   Link the dynamic libraries in the CMake script.
 
-    ``` cmake
-    target_link_libraries(sample PUBLIC libnative_media_avcencinfo.so)
-    ```
+   ``` cmake
+   target_link_libraries(sample PUBLIC libnative_media_avcencinfo.so)
+   ```
 
-    The sample code is as follows:
-    ```c++
-    auto buffer = signal_->inBufferQueue_.front();
-    uint32_t keyIdLen = DRM_KEY_ID_SIZE;
-    uint8_t keyId[] = {
-        0xd4, 0xb2, 0x01, 0xe4, 0x61, 0xc8, 0x98, 0x96,
-        0xcf, 0x05, 0x22, 0x39, 0x8d, 0x09, 0xe6, 0x28};
-    uint32_t ivLen = DRM_KEY_IV_SIZE;
-    uint8_t iv[] = {
-        0xbf, 0x77, 0xed, 0x51, 0x81, 0xde, 0x36, 0x3e,
-        0x52, 0xf7, 0x20, 0x4f, 0x72, 0x14, 0xa3, 0x95};
-    uint32_t encryptedBlockCount = 0;
-    uint32_t skippedBlockCount = 0;
-    uint32_t firstEncryptedOffset = 0;
-    uint32_t subsampleCount = 1;
-    DrmSubsample subsamples[1] = { {0x10, 0x16} };
-    // Create a CencInfo instance.
-    OH_AVCencInfo *cencInfo = OH_AVCencInfo_Create();
-    if (cencInfo == nullptr) {
-        // Handle exceptions.
-    }
-    // Set the decryption algorithm.
-    OH_AVErrCode errNo = OH_AVCencInfo_SetAlgorithm(cencInfo, DRM_ALG_CENC_AES_CTR);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set KeyId and Iv.
-    errNo = OH_AVCencInfo_SetKeyIdAndIv(cencInfo, keyId, keyIdLen, iv, ivLen);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set the sample information.
-    errNo = OH_AVCencInfo_SetSubsampleInfo(cencInfo, encryptedBlockCount, skippedBlockCount, firstEncryptedOffset,
-        subsampleCount, subsamples);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set the mode. KeyId, Iv, and SubSamples have been set.
-    errNo = OH_AVCencInfo_SetMode(cencInfo, DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set CencInfo to the AVBuffer.
-    errNo = OH_AVCencInfo_SetAVBuffer(cencInfo, buffer);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Destroy the CencInfo instance.
-    errNo = OH_AVCencInfo_Destroy(cencInfo);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
-   
+   The sample code is as follows:
+   ```c++
+   auto buffer = signal_->inBufferQueue_.front();
+   uint32_t keyIdLen = DRM_KEY_ID_SIZE;
+   uint8_t keyId[] = {
+       0xd4, 0xb2, 0x01, 0xe4, 0x61, 0xc8, 0x98, 0x96,
+       0xcf, 0x05, 0x22, 0x39, 0x8d, 0x09, 0xe6, 0x28};
+   uint32_t ivLen = DRM_KEY_IV_SIZE;
+   uint8_t iv[] = {
+       0xbf, 0x77, 0xed, 0x51, 0x81, 0xde, 0x36, 0x3e,
+       0x52, 0xf7, 0x20, 0x4f, 0x72, 0x14, 0xa3, 0x95};
+   uint32_t encryptedBlockCount = 0;
+   uint32_t skippedBlockCount = 0;
+   uint32_t firstEncryptedOffset = 0;
+   uint32_t subsampleCount = 1;
+   DrmSubsample subsamples[1] = { {0x10, 0x16} };
+   // Create a CencInfo instance.
+   OH_AVCencInfo *cencInfo = OH_AVCencInfo_Create();
+   if (cencInfo == nullptr) {
+       // Handle exceptions.
+   }
+   // Set the decryption algorithm.
+   OH_AVErrCode errNo = OH_AVCencInfo_SetAlgorithm(cencInfo, DRM_ALG_CENC_AES_CTR);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set KeyId and Iv.
+   errNo = OH_AVCencInfo_SetKeyIdAndIv(cencInfo, keyId, keyIdLen, iv, ivLen);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set the sample information.
+   errNo = OH_AVCencInfo_SetSubsampleInfo(cencInfo, encryptedBlockCount, skippedBlockCount, firstEncryptedOffset,
+       subsampleCount, subsamples);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set the mode. KeyId, Iv, and SubSamples have been set.
+   errNo = OH_AVCencInfo_SetMode(cencInfo, DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set CencInfo to the AVBuffer.
+   errNo = OH_AVCencInfo_SetAVBuffer(cencInfo, buffer);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Destroy the CencInfo instance.
+   errNo = OH_AVCencInfo_Destroy(cencInfo);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
+
 8. Invoke synchronous mode to write the data to decode and obtain the decoded output.
 
    Read data:
@@ -343,57 +343,57 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    When finished, set the flags to **AVCODEC_BUFFER_FLAGS_EOS**.
 
-    ```c++
-    bool inputFinished = false;
-    for (;;) {
-        if (!inputFinished) {
-            inputFinished = InputOneFrame(audioDec_, inputFile_);
-        }
-        uint32_t index;
-        OH_AVErrCode ret = OH_AudioCodec_QueryOutputBuffer(audioDec_, &index, 20000); // 20000us
-        if (ret == AV_ERR_TRY_AGAIN_LATER) {
-            // Timeout: exception handling. The timeout period is too short, or input/output buffers are not consumed/released (causing decoding blocking).
-            continue;
-        } else if (ret == AV_ERR_STREAM_CHANGED) {
-            // Callback processing after the decoding output parameters are changed. The application performs processing as required.
-            OH_AVFormat *outFormat = OH_AudioCodec_GetOutputDescription(audioDec_);
-            int32_t sampleRate;
-            int32_t channelCount;
-            int32_t sampleFormat;
-            if (OH_AVFormat_GetIntValue(outFormat, OH_MD_KEY_AUD_SAMPLE_RATE, &sampleRate)) {
-                // Check whether the sample rate changes and perform processing as required.
-            }
-            if (OH_AVFormat_GetIntValue(outFormat, OH_MD_KEY_AUD_CHANNEL_COUNT, &channelCount)) {
-                // Check whether the audio channel count changes and perform processing as required.
-            }
-            if (OH_AVFormat_GetIntValue(outFormat, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, &sampleFormat)) {
-                // Check whether the audio sample format changes and perform processing as required.
-            }
-            continue;
-        }
-        if (ret != AV_ERR_OK) {
-            // Handle exceptions.
-            break;
-        }
-        OH_AVBuffer *outputBuf = OH_AudioCodec_GetOutputBuffer(audioDec_, index);
-        if (outputBuf == nullptr) {
-            // Handle exceptions.
-            break;
-        }
-        OH_AVCodecBufferAttr attr;
-        if (OH_AVBuffer_GetBufferAttr(outputBuf, &attr) != AV_ERR_OK) {
-            // Handle exceptions.
-            break;
-        }
-        if (attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-            OH_AudioCodec_FreeOutputBuffer(audioDec_, index);
-            // Decoding output completed.
-            break;
-        }
-        outFile_.write(reinterpret_cast<char *>(OH_AVBuffer_GetAddr(outputBuf)), attr.size);
-        OH_AudioCodec_FreeOutputBuffer(audioDec_, index);
-    }
-    ```
+   ```c++
+   bool inputFinished = false;
+   for (;;) {
+       if (!inputFinished) {
+           inputFinished = InputOneFrame(audioDec_, inputFile_);
+       }
+       uint32_t index;
+       OH_AVErrCode ret = OH_AudioCodec_QueryOutputBuffer(audioDec_, &index, 20000); // 20000us
+       if (ret == AV_ERR_TRY_AGAIN_LATER) {
+           // Timeout: exception handling. The timeout period is too short, or input/output buffers are not consumed/released (causing decoding blocking).
+           continue;
+       } else if (ret == AV_ERR_STREAM_CHANGED) {
+           // Callback processing after the decoding output parameters are changed. The application performs processing as required.
+           OH_AVFormat *outFormat = OH_AudioCodec_GetOutputDescription(audioDec_);
+           int32_t sampleRate;
+           int32_t channelCount;
+           int32_t sampleFormat;
+           if (OH_AVFormat_GetIntValue(outFormat, OH_MD_KEY_AUD_SAMPLE_RATE, &sampleRate)) {
+               // Check whether the sample rate changes and perform processing as required.
+           }
+           if (OH_AVFormat_GetIntValue(outFormat, OH_MD_KEY_AUD_CHANNEL_COUNT, &channelCount)) {
+               // Check whether the audio channel count changes and perform processing as required.
+           }
+           if (OH_AVFormat_GetIntValue(outFormat, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, &sampleFormat)) {
+               // Check whether the audio sample format changes and perform processing as required.
+           }
+           continue;
+       }
+       if (ret != AV_ERR_OK) {
+           // Handle exceptions.
+           break;
+       }
+       OH_AVBuffer *outputBuf = OH_AudioCodec_GetOutputBuffer(audioDec_, index);
+       if (outputBuf == nullptr) {
+           // Handle exceptions.
+           break;
+       }
+       OH_AVCodecBufferAttr attr;
+       if (OH_AVBuffer_GetBufferAttr(outputBuf, &attr) != AV_ERR_OK) {
+           // Handle exceptions.
+           break;
+       }
+       if (attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
+           OH_AudioCodec_FreeOutputBuffer(audioDec_, index);
+           // Decoding output completed.
+           break;
+       }
+       outFile_.write(reinterpret_cast<char *>(OH_AVBuffer_GetAddr(outputBuf)), attr.size);
+       OH_AudioCodec_FreeOutputBuffer(audioDec_, index);
+   }
+   ```
 
 9. (Optional) Call **OH_AudioCodec_Flush()** to refresh the decoder.
 
@@ -406,18 +406,18 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    * To use the same decoder configuration after **AVCODEC_BUFFER_FLAGS_EOS** of the output buffer is set, call **OH_AudioCodec_Flush()** to refresh the decoder.
    * If a recoverable error occurs during the execution (**OH_AudioCodec_IsValid()** returns **true**), you can call **OH_AudioCodec_Flush()** to refresh the decoder and then call **OH_AudioCodec_Start()** to start decoding again.
 
-    ```c++
-    // Refresh the decoder.
-    OH_AVErrCode ret = OH_AudioCodec_Flush(audioDec_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Start decoding again.
-    ret = OH_AudioCodec_Start(audioDec_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```c++
+   // Refresh the decoder.
+   OH_AVErrCode ret = OH_AudioCodec_Flush(audioDec_);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Start decoding again.
+   ret = OH_AudioCodec_Start(audioDec_);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 10. (Optional) Call **OH_AudioCodec_Reset()** to reset the decoder.
 
