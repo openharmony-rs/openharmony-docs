@@ -49,7 +49,7 @@ AppStorageV2支持应用的[主线程](../../application-models/thread-model-sta
 
 - keys：返回所有AppStorageV2中的key。
 
-以上接口详细描述请参考状态管理API中的[AppStorageV2](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2)。
+以上接口详细描述请参考状态管理API文档中的[AppStorageV2](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2)。
 
 
 ## 使用限制
