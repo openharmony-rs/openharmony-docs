@@ -120,92 +120,223 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
 
   ArkUI框架提供了[OH_ArkUI_NodeEvent_GetInputEvent()](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeevent_getinputevent)接口，用于从输入交互相关的组件事件（如NODE_ON_CLICK_EVENT、NODE_TOUCH_EVENT等，具体可参见每个枚举定义的说明）中获取基础事件对象。然后，可通过调用[OH_ArkUI_PointerEvent_GetDisplayX()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_pointerevent_getdisplayx)、[OH_ArkUI_PointerEvent_GetDisplayXByIndex()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_pointerevent_getdisplayxbyindex)、[OH_ArkUI_UIInputEvent_GetAction()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_uiinputevent_getaction)和[OH_ArkUI_UIInputEvent_GetEventTime()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_uiinputevent_geteventtime)等接口，从基础事件中获取更多信息。应用根据获取的事件信息，在事件执行过程中实现差异化交互逻辑。
 
-    注册事件监听回调：
-    <!-- @[get_event_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    定义处理各类型事件的函数：
+    <!-- @[handle_event_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NormalNodeExample.h) -->
     
     ``` C
-    // 注册click事件
-    nodeAPI->registerNodeEvent(button, NODE_ON_CLICK_EVENT, 0, nullptr);
-    // 设置组件事件的全局监听
-    nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
-        // 从组件事件中获取基础事件对象
-        auto *inputEvent = OH_ArkUI_NodeEvent_GetInputEvent(event);
-        // 从组件事件获取事件类型
+    // 处理点击事件
+    void HandleClickEvent(ArkUI_NodeEvent *event, ArkUI_UIInputEvent *inputEvent)
+    {
         auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
-                     "NdkAddInteractionEvent_eventInfo inputEvent = %{public}p", inputEvent);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
-                     "NdkAddInteractionEvent_eventInfo eventType = %{public}d", eventType);
-        auto componentEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
-        // 获取组件事件中的数字类型数据
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
-                     "NdkAddInteractionEvent_eventInfo componentEvent = %{public}p", componentEvent);
-        // 获取触发该事件的组件对象
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "Click event triggered (eventType=%{public}d)", eventType);
+    
+        auto x = OH_ArkUI_PointerEvent_GetX(inputEvent);
+        auto y = OH_ArkUI_PointerEvent_GetY(inputEvent);
+        auto displayX = OH_ArkUI_PointerEvent_GetDisplayX(inputEvent);
+        auto displayY = OH_ArkUI_PointerEvent_GetDisplayY(inputEvent);
+        auto windowX = OH_ArkUI_PointerEvent_GetWindowX(inputEvent);
+        auto windowY = OH_ArkUI_PointerEvent_GetWindowY(inputEvent);
+        auto pointerCount = OH_ArkUI_PointerEvent_GetPointerCount(inputEvent);
+        auto xByIndex = OH_ArkUI_PointerEvent_GetXByIndex(inputEvent, 0);
+        auto yByIndex = OH_ArkUI_PointerEvent_GetYByIndex(inputEvent, 0);
+        auto displayXByIndex = OH_ArkUI_PointerEvent_GetDisplayXByIndex(inputEvent, 0);
+        auto displayYByIndex = OH_ArkUI_PointerEvent_GetDisplayYByIndex(inputEvent, 0);
+        auto windowXByIndex = OH_ArkUI_PointerEvent_GetWindowXByIndex(inputEvent, 0);
+        auto windowYByIndex = OH_ArkUI_PointerEvent_GetWindowYByIndex(inputEvent, 0);
+        auto pointerId = OH_ArkUI_PointerEvent_GetPointerId(inputEvent, 0);
+        auto pressure = OH_ArkUI_PointerEvent_GetPressure(inputEvent, 0);
+        auto action = OH_ArkUI_UIInputEvent_GetAction(inputEvent);
+        auto eventTime = OH_ArkUI_UIInputEvent_GetEventTime(inputEvent);
+        auto sourceType = OH_ArkUI_UIInputEvent_GetSourceType(inputEvent);
+        auto type = OH_ArkUI_UIInputEvent_GetType(inputEvent);
+    
+        std::string eventInfo =
+            "x: " + std::to_string(x) + ", y: " + std::to_string(y) +
+            ", displayX: " + std::to_string(displayX) + ", displayY: " + std::to_string(displayY) +
+            ", windowX: " + std::to_string(windowX) + ", windowY: " + std::to_string(windowY) +
+            ", pointerCount: " + std::to_string(pointerCount) + ", xByIndex: " + std::to_string(xByIndex) +
+            ", yByIndex: " + std::to_string(yByIndex) +
+            ", displayXByIndex: " + std::to_string(displayXByIndex) +
+            ", displayYByIndex: " + std::to_string(displayYByIndex) +
+            ", windowXByIndex: " + std::to_string(windowXByIndex) +
+            ", windowYByIndex: " + std::to_string(windowYByIndex) +
+            ", pointerId: " + std::to_string(pointerId) + ", pressure: " + std::to_string(pressure) +
+            ", action: " + std::to_string(action) + ", eventTime: " + std::to_string(eventTime) +
+            ", sourceType: " + std::to_string(sourceType) + ", type: " + std::to_string(type);
+    
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "ClickEvent: %{public}s", eventInfo.c_str());
+    }
+    
+    // 处理焦点事件
+    void HandleFocusEvent(ArkUI_NodeEvent *event)
+    {
+        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "Focus event triggered (eventType=%{public}d)", eventType);
         auto nodeHandle = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
-                     "NdkAddInteractionEvent_eventInfo nodeHandle = %{public}p", nodeHandle);
-        // 根据eventType来区分事件类型，进行差异化处理，其他获取事件信息的接口也可类似方式来进行差异化的处理
-        switch (eventType) {
-            case NODE_ON_CLICK_EVENT: {
-                // 触发点击事件所进行的操作，从基础事件获取事件信息
-                auto x = OH_ArkUI_PointerEvent_GetX(inputEvent);
-                auto y = OH_ArkUI_PointerEvent_GetY(inputEvent);
-                auto displayX = OH_ArkUI_PointerEvent_GetDisplayX(inputEvent);
-                auto displayY = OH_ArkUI_PointerEvent_GetDisplayY(inputEvent);
-                auto windowX = OH_ArkUI_PointerEvent_GetWindowX(inputEvent);
-                auto windowY = OH_ArkUI_PointerEvent_GetWindowY(inputEvent);
-                auto pointerCount = OH_ArkUI_PointerEvent_GetPointerCount(inputEvent);
-                auto xByIndex = OH_ArkUI_PointerEvent_GetXByIndex(inputEvent, 0);
-                auto yByIndex = OH_ArkUI_PointerEvent_GetYByIndex(inputEvent, 0);
-                auto displayXByIndex = OH_ArkUI_PointerEvent_GetDisplayXByIndex(inputEvent, 0);
-                auto displayYByIndex = OH_ArkUI_PointerEvent_GetDisplayYByIndex(inputEvent, 0);
-                auto windowXByIndex = OH_ArkUI_PointerEvent_GetWindowXByIndex(inputEvent, 0);
-                auto windowYByIndex = OH_ArkUI_PointerEvent_GetWindowYByIndex(inputEvent, 0);
-                auto pointerId = OH_ArkUI_PointerEvent_GetPointerId(inputEvent, 0);
-                auto pressure = OH_ArkUI_PointerEvent_GetPressure(inputEvent, 0);
-                auto action = OH_ArkUI_UIInputEvent_GetAction(inputEvent);
-                auto eventTime = OH_ArkUI_UIInputEvent_GetEventTime(inputEvent);
-                auto sourceType = OH_ArkUI_UIInputEvent_GetSourceType(inputEvent);
-                auto type = OH_ArkUI_UIInputEvent_GetType(inputEvent);
-                std::string eventInfo =
-                    "x: " + std::to_string(x) + ", y: " + std::to_string(y) +
-                    ", displayX: " + std::to_string(displayX) + ", displayY: " + std::to_string(displayY) +
-                    ", windowX: " + std::to_string(windowX) + ", windowY: " + std::to_string(windowY) +
-                    ", pointerCount: " + std::to_string(pointerCount) + ", xByIndex: " + std::to_string(xByIndex) +
-                    ", yByIndex: " + std::to_string(yByIndex) +
-                    ", displayXByIndex: " + std::to_string(displayXByIndex) +
-                    ", displayYByIndex: " + std::to_string(displayYByIndex) +
-                    ", windowXByIndex: " + std::to_string(windowXByIndex) +
-                    ", windowYByIndex: " + std::to_string(windowYByIndex) +
-                    ", pointerId: " + std::to_string(pointerId) + ", pressure: " + std::to_string(pressure) +
-                    ", action: " + std::to_string(action) + ", eventTime: " + std::to_string(eventTime) +
-                    ", sourceType: " + std::to_string(sourceType) + ", type: " + std::to_string(type);
-                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
-                             "NdkAddInteractionEvent_eventInfoOfCommonEvent eventInfo = %{public}s",
-                             eventInfo.c_str());
-                break;
-            }
-            default: {
-                break;
-            }
-        }
-    });
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "FocusEvent: nodeHandle=%{public}p", nodeHandle);
+    }
+    
+    // 处理失焦事件
+    void HandleBlurEvent(ArkUI_NodeEvent *event)
+    {
+        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "Blur event triggered (eventType=%{public}d)", eventType);
+        auto nodeHandle = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "BlurEvent: nodeHandle=%{public}p", nodeHandle);
+    }
+    
+    // 处理悬停事件
+    void HandleHoverEvent(ArkUI_NodeEvent *event, ArkUI_UIInputEvent *inputEvent)
+    {
+        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "Hover event triggered (eventType=%{public}d)", eventType);
+        auto x = OH_ArkUI_PointerEvent_GetX(inputEvent);
+        auto y = OH_ArkUI_PointerEvent_GetY(inputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "HoverEvent: x=%{public}f, y=%{public}f", x, y);
+    }
+    
+    // 处理键盘事件
+    void HandleKeyEvent(ArkUI_NodeEvent *event, ArkUI_UIInputEvent *inputEvent)
+    {
+        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "Key event triggered (eventType=%{public}d)", eventType);
+    
+        // 获取按键键码
+        auto keyCode = OH_ArkUI_KeyEvent_GetKeyCode(inputEvent);
+        // 获取按键类型
+        auto keyType = OH_ArkUI_KeyEvent_GetType(inputEvent);
+        // 获取按键键值
+        const char *keyText = OH_ArkUI_KeyEvent_GetKeyText(inputEvent);
+        // 获取Unicode码值
+        auto unicode = OH_ArkUI_KeyEvent_GetUnicode(inputEvent);
+        // 获取按键动作
+        auto action = OH_ArkUI_UIInputEvent_GetAction(inputEvent);
+    
+        // 获取CapsLock状态
+        bool capsLockOn = false;
+        auto capsLockResult = OH_ArkUI_KeyEvent_IsCapsLockOn(inputEvent, &capsLockOn);
+    
+        std::string keyInfo = "keyCode: " + std::to_string(keyCode) +
+            ", keyType: " + std::to_string(keyType) +
+            ", keyText: " + (keyText ? keyText : "null") +
+            ", unicode: " + std::to_string(unicode) +
+            ", action: " + std::to_string(action) +
+            ", capsLock: " + (capsLockOn ? "ON" : "OFF");
+    
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "KeyEvent: %{public}s", keyInfo.c_str());
+    }
+    
+    // 处理鼠标事件
+    void HandleMouseEvent(ArkUI_NodeEvent *event, ArkUI_UIInputEvent *inputEvent)
+    {
+        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "Mouse event triggered (eventType=%{public}d)", eventType);
+    
+        // 获取坐标信息
+        auto x = OH_ArkUI_PointerEvent_GetX(inputEvent);
+        auto y = OH_ArkUI_PointerEvent_GetY(inputEvent);
+        // 获取鼠标按键类型
+        auto mouseButton = OH_ArkUI_MouseEvent_GetMouseButton(inputEvent);
+        // 获取鼠标动作类型
+        auto mouseAction = OH_ArkUI_MouseEvent_GetMouseAction(inputEvent);
+        // 获取鼠标移动增量
+        auto deltaX = OH_ArkUI_MouseEvent_GetRawDeltaX(inputEvent);
+        auto deltaY = OH_ArkUI_MouseEvent_GetRawDeltaY(inputEvent);
+        // 获取事件时间
+        auto eventTime = OH_ArkUI_UIInputEvent_GetEventTime(inputEvent);
+    
+        std::string mouseInfo = "x: " + std::to_string(x) +
+            ", y: " + std::to_string(y) +
+            ", button: " + std::to_string(mouseButton) +
+            ", action: " + std::to_string(mouseAction) +
+            ", deltaX: " + std::to_string(deltaX) +
+            ", deltaY: " + std::to_string(deltaY) +
+            ", eventTime: " + std::to_string(eventTime);
+    
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "MouseEvent: %{public}s", mouseInfo.c_str());
+    }
     ```
 
-    解注册事件处理函数：
-    <!-- @[unregister_node_event_receicer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    注册节点事件：
+    <!-- @[register_node_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NormalNodeExample.h) -->
     
     ``` C
-    nodeAPI->unregisterNodeEventReceiver();
+    // 注册节点事件
+    void RegisterNodeEvents(ArkUI_NativeNodeAPI_1 *nodeAPI,
+                            std::shared_ptr<ArkUIButtonNode> button,
+                            std::shared_ptr<ArkUITextInputNode> textInput,
+                            std::shared_ptr<ArkUIColumnNode> hoverColumn)
+    {
+        // 注册点击事件
+        nodeAPI->registerNodeEvent(button->GetHandle(), NODE_ON_CLICK_EVENT, 0, nullptr);
+        // 注册焦点事件
+        nodeAPI->registerNodeEvent(textInput->GetHandle(), NODE_ON_FOCUS, 0, nullptr);
+        // 注册失焦事件
+        nodeAPI->registerNodeEvent(textInput->GetHandle(), NODE_ON_BLUR, 0, nullptr);
+        // 注册悬停事件
+        nodeAPI->registerNodeEvent(hoverColumn->GetHandle(), NODE_ON_HOVER_EVENT, 0, nullptr);
+        // 注册键盘事件
+        nodeAPI->registerNodeEvent(textInput->GetHandle(), NODE_ON_KEY_EVENT, 0, nullptr);
+        // 注册鼠标事件
+        nodeAPI->registerNodeEvent(hoverColumn->GetHandle(), NODE_ON_MOUSE, 0, nullptr);
+    }
     ```
 
-    解注册对应的事件类型：
-    <!-- @[unregister_node_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    注册全局事件监听器，通过switch-case分发到对应的处理函数：
+    <!-- @[register_global_event_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NormalNodeExample.h) -->
     
     ``` C
-    nodeAPI->unregisterNodeEvent(button, NODE_ON_CLICK_EVENT);
+    // 注册全局事件监听器
+    void RegisterGlobalEventReceiver(ArkUI_NativeNodeAPI_1 *nodeAPI)
+    {
+        nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
+            auto *inputEvent = OH_ArkUI_NodeEvent_GetInputEvent(event);
+            auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+    
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                         "Event received: eventType=%{public}d", eventType);
+    
+            auto nodeHandle = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                         "NodeHandle: nodeHandle=%{public}p", nodeHandle);
+    
+            switch (eventType) {
+                case NODE_ON_CLICK_EVENT:
+                    HandleClickEvent(event, inputEvent);
+                    break;
+                case NODE_ON_FOCUS:
+                    HandleFocusEvent(event);
+                    break;
+                case NODE_ON_BLUR:
+                    HandleBlurEvent(event);
+                    break;
+                case NODE_ON_HOVER_EVENT:
+                    HandleHoverEvent(event, inputEvent);
+                    break;
+                case NODE_ON_KEY_EVENT:
+                    HandleKeyEvent(event, inputEvent);
+                    break;
+                case NODE_ON_MOUSE:
+                    HandleMouseEvent(event, inputEvent);
+                    break;
+                default:
+                    break;
+            }
+        });
+    }
     ```
-
 
 
 - 深浅色变更事件
@@ -253,417 +384,408 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
 
 ## 完整示例
 
-1. 在ArkUINode基类对象中实现通用事件注册逻辑。
-
-    <!-- @[arkui_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUINode.h) -->
+1. ArkUIButtonNode对象中实现Button组件封装。
+    <!-- @[Cpp_ArkUIButtonNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUIButtonNode.h) -->
     
     ``` C
-    // ArkUINode.h
-    // 提供通用属性和事件的封装。
+    // ArkUIButtonNode.h
+    #ifndef MYAPPLICATION_ARKUIBUTTONNODE_H
+    #define MYAPPLICATION_ARKUIBUTTONNODE_H
     
-    #ifndef MYAPPLICATION_ARKUINODE_H
-    #define MYAPPLICATION_ARKUINODE_H
-    
-    #include "ArkUIBaseNode.h"
-    #include "NativeModule.h"
-    
-    #include <arkui/native_node.h>
-    #include <arkui/native_type.h>
+    #include "ArkUINode.h"
+    #include <string>
     
     namespace NativeModule {
     
-    class ArkUINode : public ArkUIBaseNode {
+    class ArkUIButtonNode : public ArkUINode {
     public:
-        explicit ArkUINode(ArkUI_NodeHandle handle) : ArkUIBaseNode(handle)
-        {
-            nativeModule_ = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
-            // 事件触发时需要通过函数获取对应的事件对象，这边通过设置节点自定义数据将封装类指针保持在组件上，方便后续事件分发。
-            nativeModule_->setUserData(handle_, this);
-            // 注册节点监听事件接受器。
-            nativeModule_->addNodeEventReceiver(handle_, ArkUINode::NodeEventReceiver);
-        }
+        ArkUIButtonNode()
+            : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_BUTTON)) {}
     
-        ~ArkUINode() override
-        {
-            if (onClick_) {
-                nativeModule_->unregisterNodeEvent(handle_, NODE_ON_CLICK_EVENT);
-            }
-            if (onTouch_) {
-                nativeModule_->unregisterNodeEvent(handle_, NODE_TOUCH_EVENT);
-            }
-            if (onDisappear_) {
-                nativeModule_->unregisterNodeEvent(handle_, NODE_EVENT_ON_DISAPPEAR);
-            }
-            if (onAppear_) {
-                nativeModule_->unregisterNodeEvent(handle_, NODE_EVENT_ON_APPEAR);
-            }
-            nativeModule_->removeNodeEventReceiver(handle_, ArkUINode::NodeEventReceiver);
-        }
-        // 设置节点宽度
-        void SetWidth(float width)
-        {
-            if (!handle_) {
-                return;
-            }
-            ArkUI_NumberValue value[] = {{.f32 = width}};
-            ArkUI_AttributeItem item = {value, 1};
-            nativeModule_->setAttribute(handle_, NODE_WIDTH, &item);
-        }
-        // 设置节点宽度（百分比形式）
-        void SetPercentWidth(float percent)
-        {
-            if (!handle_) {
-                return;
-            }
-            ArkUI_NumberValue value[] = {{.f32 = percent}};
-            ArkUI_AttributeItem item = {value, 1};
-            nativeModule_->setAttribute(handle_, NODE_WIDTH_PERCENT, &item);
-        }
-        // 设置节点高度
-        void SetHeight(float height)
-        {
-            if (!handle_) {
-                return;
-            }
-            ArkUI_NumberValue value[] = {{.f32 = height}};
-            ArkUI_AttributeItem item = {value, 1};
-            nativeModule_->setAttribute(handle_, NODE_HEIGHT, &item);
-        }
-        // 设置节点高度（百分比形式）
-        void SetPercentHeight(float percent)
-        {
-            if (!handle_) {
-                return;
-            }
-            ArkUI_NumberValue value[] = {{.f32 = percent}};
-            ArkUI_AttributeItem item = {value, 1};
-            nativeModule_->setAttribute(handle_, NODE_HEIGHT_PERCENT, &item);
-        }
-        // 设置节点背景颜色
-        void SetBackgroundColor(uint32_t color)
-        {
-            if (!handle_) {
-                return;
-            }
-            ArkUI_NumberValue value[] = {{.u32 = color}};
-            ArkUI_AttributeItem item = {value, 1};
-            nativeModule_->setAttribute(handle_, NODE_BACKGROUND_COLOR, &item);
-        }
-        // 处理通用事件。
-        void RegisterOnClick(const std::function<void(ArkUI_NodeEvent *event)> &onClick)
-        {
-            if (!handle_) {
-                return;
-            }
-            onClick_ = onClick;
-            // 注册点击事件。
-            nativeModule_->registerNodeEvent(handle_, NODE_ON_CLICK_EVENT, 0, nullptr);
-        }
+        ~ArkUIButtonNode() override {}
     
-        void RegisterOnTouch(const std::function<void(int32_t type, float x, float y)> &onTouch)
+        void SetLabel(const std::string &label)
         {
-            if (!handle_) {
-                return;
-            }
-            onTouch_ = onTouch;
-            // 注册触碰事件。
-            nativeModule_->registerNodeEvent(handle_, NODE_TOUCH_EVENT, 0, nullptr);
+            ArkUI_AttributeItem item = {nullptr, 0, label.c_str()};
+            nativeModule_->setAttribute(handle_, NODE_BUTTON_LABEL, &item);
         }
-    
-        void RegisterOnDisappear(const std::function<void()> &onDisappear)
-        {
-            if (!handle_) {
-                return;
-            }
-            onDisappear_ = onDisappear;
-            // 注册卸载事件。
-            nativeModule_->registerNodeEvent(handle_, NODE_EVENT_ON_DISAPPEAR, 0, nullptr);
-        }
-    
-        void RegisterOnAppear(const std::function<void()> &onAppear)
-        {
-            if (!handle_) {
-                return;
-            }
-            onAppear_ = onAppear;
-            // 注册挂载事件。
-            nativeModule_->registerNodeEvent(handle_, NODE_EVENT_ON_APPEAR, 0, nullptr);
-        }
-    
-    protected:
-        // 事件监听器函数指针。
-        static void NodeEventReceiver(ArkUI_NodeEvent *event)
-        {
-            // 获取事件发生的UI组件对象。
-            auto nodeHandle = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-            // 获取保持在UI组件对象中的自定义数据，返回封装类指针。
-            auto *node = reinterpret_cast<ArkUINode *>(
-                NativeModuleInstance::GetInstance()->GetNativeNodeAPI()->getUserData(nodeHandle));
-            // 基于封装类实例对象处理事件。
-            node->ProcessNodeEvent(event);
-        }
-        void ProcessNodeEvent(ArkUI_NodeEvent *event)
-        {
-            auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
-            switch (eventType) {
-                case NODE_ON_CLICK_EVENT: {
-                    if (onClick_) {
-                        onClick_(event);
-                    }
-                    break;
-                }
-                case NODE_TOUCH_EVENT: {
-                    if (onTouch_) {
-                        auto *uiInputEvent = OH_ArkUI_NodeEvent_GetInputEvent(event);
-                        float x = OH_ArkUI_PointerEvent_GetX(uiInputEvent);
-                        float y = OH_ArkUI_PointerEvent_GetY(uiInputEvent);
-                        auto type = OH_ArkUI_UIInputEvent_GetAction(uiInputEvent);
-                        onTouch_(type, x, y);
-                    }
-                }
-                case NODE_EVENT_ON_DISAPPEAR: {
-                    if (onDisappear_) {
-                        onDisappear_();
-                    }
-                    break;
-                }
-                case NODE_EVENT_ON_APPEAR: {
-                    if (onAppear_) {
-                        onAppear_();
-                    }
-                    break;
-                }
-                default: {
-                    // 组件特有事件交给子类处理
-                    OnNodeEvent(event);
-                }
-            }
-        }
-    
-        virtual void OnNodeEvent(ArkUI_NodeEvent *event) {}
-    
-        void OnAddChild(const std::shared_ptr<ArkUIBaseNode> &child) override
-        {
-            nativeModule_->addChild(handle_, child->GetHandle());
-        }
-    
-        void OnRemoveChild(const std::shared_ptr<ArkUIBaseNode> &child) override
-        {
-            nativeModule_->removeChild(handle_, child->GetHandle());
-        }
-    
-        void OnInsertChild(const std::shared_ptr<ArkUIBaseNode> &child, int32_t index) override
-        {
-            nativeModule_->insertChildAt(handle_, child->GetHandle(), index);
-        }
-    
-    private:
-        std::function<void(ArkUI_NodeEvent *event)> onClick_;
-        std::function<void()> onDisappear_;
-        std::function<void()> onAppear_;
-        std::function<void(int32_t type, float x, float y)> onTouch_;
     };
+    
     } // namespace NativeModule
     
-    #endif // MYAPPLICATION_ARKUINODE_H
+    #endif // MYAPPLICATION_ARKUIBUTTONNODE_H
     ```
 
-2. 在ArkUIListNode对象中实现列表事件注册逻辑。
-    <!-- @[arkui_list_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUIListNode.h) -->
+2. ArkUIColumnNode对象中实现Column组件封装。
+    <!-- @[Cpp_ArkUIColumnNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUIColumnNode.h) -->
     
     ``` C
-    // ArkUIListNode.h
-    // 列表封装类对象
-    
-    #ifndef MYAPPLICATION_ARKUILISTNODE_H
-    #define MYAPPLICATION_ARKUILISTNODE_H
+    // ArkUIColumnNode.h
+    #ifndef MYAPPLICATION_ARKUICOLUMNNODE_H
+    #define MYAPPLICATION_ARKUICOLUMNNODE_H
     
     #include "ArkUINode.h"
     
     namespace NativeModule {
-    class ArkUIListNode : public ArkUINode {
+    
+    class ArkUIColumnNode : public ArkUINode {
     public:
-        ArkUIListNode()
-            : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_LIST)) {}
+        ArkUIColumnNode()
+            : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_COLUMN)) {}
     
-        ~ArkUIListNode() override { nativeModule_->unregisterNodeEvent(handle_, NODE_LIST_ON_SCROLL_INDEX); }
-    
-        void SetScrollBarState(bool isShow)
-        {
-            if (!handle_) {
-                return;
-            }
-            ArkUI_ScrollBarDisplayMode displayMode =
-                isShow ? ARKUI_SCROLL_BAR_DISPLAY_MODE_ON : ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF;
-            ArkUI_NumberValue value[] = {{.i32 = displayMode}};
-            ArkUI_AttributeItem item = {value, 1};
-            nativeModule_->setAttribute(handle_, NODE_SCROLL_BAR_DISPLAY_MODE, &item);
-        }
-    
-        // 注册列表相关事件。
-        void RegisterOnScrollIndex(const std::function<void(int32_t index)> &onScrollIndex)
-        {
-            if (!handle_) {
-                return;
-            }
-            onScrollIndex_ = onScrollIndex;
-            nativeModule_->registerNodeEvent(handle_, NODE_LIST_ON_SCROLL_INDEX, 0, nullptr);
-        }
-    
-    protected:
-       // 处理List相关事件。
-        void OnNodeEvent(ArkUI_NodeEvent *event) override
-        {
-            auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
-            switch (eventType) {
-                case NODE_LIST_ON_SCROLL_INDEX: {
-                    auto index = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event)->data[0];
-                    if (onScrollIndex_) {
-                        onScrollIndex_(index.i32);
-                    }
-                }
-                default: {
-                }
-            }
-        }
-    
-    private:
-        std::function<void(int32_t index)> onScrollIndex_;
+        ~ArkUIColumnNode() override {}
     };
+    
     } // namespace NativeModule
     
-    #endif // MYAPPLICATION_ARKUILISTNODE_H
+    #endif // MYAPPLICATION_ARKUICOLUMNNODE_H
     ```
 
-
-3. 添加相关事件。
-    <!-- @[normal_text_list_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NormalTextListExample.h) -->
+3. ArkUITextInputNode对象中实现TextInput组件封装。
+    <!-- @[Cpp_ArkUITextInputNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUITextInputNode.h) -->
     
     ``` C
-    // NormalTextListExample.h
-    // 文本列表示例。
+    // ArkUITextInputNode.h
+    #ifndef MYAPPLICATION_ARKUITEXTINPUTNODE_H
+    #define MYAPPLICATION_ARKUITEXTINPUTNODE_H
     
-    #ifndef MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
-    #define MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
-    
-    #include "ArkUIBaseNode.h"
-    #include "ArkUIListItemNode.h"
-    #include "ArkUIListNode.h"
-    #include "ArkUITextNode.h"
-    #include <hilog/log.h>
-    
-    const unsigned int LOG_PRINT_DOMAIN = 0xF811;
-    const unsigned int LOOP_SIZE = 30;
-    const unsigned int FONT_SIZE = 16;
-    const unsigned int HEIGHT_SIZE = 200;
-    const float PERCENT_WIDTH_1 = 1;
-    const float PERCENT_HEIGHT_1 = 1;
+    #include "ArkUINode.h"
+    #include <string>
     
     namespace NativeModule {
     
-    std::shared_ptr<ArkUIBaseNode> CreateTextListExample()
-    {
-        // 创建组件并挂载
-        // 1：创建List组件。
-        auto list = std::make_shared<ArkUIListNode>();
-        list->SetPercentWidth(PERCENT_WIDTH_1);
-        list->SetPercentHeight(PERCENT_HEIGHT_1);
-        // 2：创建ListItem子组件并挂载到List上。
-        for (int32_t i = 0; i < LOOP_SIZE; ++i) {
-            auto listItem = std::make_shared<ArkUIListItemNode>();
-            auto textNode = std::make_shared<ArkUITextNode>();
-            textNode->SetTextContent(std::to_string(i));
-            textNode->SetFontSize(FONT_SIZE);
-            textNode->SetPercentWidth(PERCENT_WIDTH_1);
-            textNode->SetHeight(HEIGHT_SIZE);
-            textNode->SetBackgroundColor(0xFFfffacd);
-            textNode->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);
-            listItem->AddChild(textNode);
-            // 列表项注册点击事件。
-            auto onClick = [](ArkUI_NodeEvent *event) {
-                // 从组件事件中获取基础事件对象
-                auto *inputEvent = OH_ArkUI_NodeEvent_GetInputEvent(event);
-                if (inputEvent == nullptr) {
-                    return;
-                }
-                // 从组件事件获取事件类型
-                auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
-                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
-                             "NdkAddInteractionEvent_eventInfo inputEvent = %{public}p", inputEvent);
-                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
-                             "NdkAddInteractionEvent_eventInfo eventType = %{public}d", eventType);
-                auto componentEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
-                // 获取组件事件中的数字类型数据
-                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
-                             "NdkAddInteractionEvent_eventInfo componentEvent = %{public}p", componentEvent);
-                // 获取触发该事件的组件对象
-                auto nodeHandle = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-                if (nodeHandle == nullptr) {
-                    return;
-                }
-                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
-                             "NdkAddInteractionEvent_eventInfo nodeHandle = %{public}p", nodeHandle);
-                // 根据eventType来区分事件类型，进行差异化处理，其他获取事件信息的接口也可类似方式来进行差异化的处理
-                switch (eventType) {
-                    case NODE_ON_CLICK_EVENT: {
-                        // 触发点击事件所进行的操作，从基础事件获取事件信息
-                        auto x = OH_ArkUI_PointerEvent_GetX(inputEvent);
-                        auto y = OH_ArkUI_PointerEvent_GetY(inputEvent);
-                        auto displayX = OH_ArkUI_PointerEvent_GetDisplayX(inputEvent);
-                        auto displayY = OH_ArkUI_PointerEvent_GetDisplayY(inputEvent);
-                        auto windowX = OH_ArkUI_PointerEvent_GetWindowX(inputEvent);
-                        auto windowY = OH_ArkUI_PointerEvent_GetWindowY(inputEvent);
-                        auto pointerCount = OH_ArkUI_PointerEvent_GetPointerCount(inputEvent);
-                        auto xByIndex = OH_ArkUI_PointerEvent_GetXByIndex(inputEvent, 0);
-                        auto yByIndex = OH_ArkUI_PointerEvent_GetYByIndex(inputEvent, 0);
-                        auto displayXByIndex = OH_ArkUI_PointerEvent_GetDisplayXByIndex(inputEvent, 0);
-                        auto displayYByIndex = OH_ArkUI_PointerEvent_GetDisplayYByIndex(inputEvent, 0);
-                        auto windowXByIndex = OH_ArkUI_PointerEvent_GetWindowXByIndex(inputEvent, 0);
-                        auto windowYByIndex = OH_ArkUI_PointerEvent_GetWindowYByIndex(inputEvent, 0);
-                        auto pointerId = OH_ArkUI_PointerEvent_GetPointerId(inputEvent, 0);
-                        auto pressure = OH_ArkUI_PointerEvent_GetPressure(inputEvent, 0);
-                        auto action = OH_ArkUI_UIInputEvent_GetAction(inputEvent);
-                        auto eventTime = OH_ArkUI_UIInputEvent_GetEventTime(inputEvent);
-                        auto sourceType = OH_ArkUI_UIInputEvent_GetSourceType(inputEvent);
-                        auto type = OH_ArkUI_UIInputEvent_GetType(inputEvent);
-                        std::string eventInfo =
-                            "x: " + std::to_string(x) + ", y: " + std::to_string(y) +
-                            ", displayX: " + std::to_string(displayX) + ", displayY: " + std::to_string(displayY) +
-                            ", windowX: " + std::to_string(windowX) + ", windowY: " + std::to_string(windowY) +
-                            ", pointerCount: " + std::to_string(pointerCount) + ", xByIndex: " + std::to_string(xByIndex) +
-                            ", yByIndex: " + std::to_string(yByIndex) +
-                            ", displayXByIndex: " + std::to_string(displayXByIndex) +
-                            ", displayYByIndex: " + std::to_string(displayYByIndex) +
-                            ", windowXByIndex: " + std::to_string(windowXByIndex) +
-                            ", windowYByIndex: " + std::to_string(windowYByIndex) +
-                            ", pointerId: " + std::to_string(pointerId) + ", pressure: " + std::to_string(pressure) +
-                            ", action: " + std::to_string(action) + ", eventTime: " + std::to_string(eventTime) +
-                            ", sourceType: " + std::to_string(sourceType) + ", type: " + std::to_string(type);
-                        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
-                                     "NdkAddInteractionEvent_eventInfoOfCommonEvent eventInfo = %{public}s",
-                                     eventInfo.c_str());
-                    }
-                    default: {
-                        break;
-                    }
-                }
-            };
-            listItem->RegisterOnClick(onClick);
-            list->AddChild(listItem);
+    class ArkUITextInputNode : public ArkUINode {
+    public:
+        ArkUITextInputNode()
+            : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_TEXT_INPUT)) {}
+    
+        ~ArkUITextInputNode() override {}
+    
+        void SetPlaceholder(const std::string &placeholder)
+        {
+            ArkUI_AttributeItem item = {nullptr, 0, placeholder.c_str()};
+            nativeModule_->setAttribute(handle_, NODE_TEXT_INPUT_PLACEHOLDER, &item);
         }
-        // 3：注册List相关监听事件.
-        list->RegisterOnScrollIndex([](int32_t index) { OH_LOG_INFO(LOG_APP, "on list scroll index: %{public}d", index); });
-        // 4: 注册挂载事件。
-        list->RegisterOnAppear([]() { OH_LOG_INFO(LOG_APP, "on list mount to tree"); });
-        // 5: 注册卸载事件。
-        list->RegisterOnDisappear([]() { OH_LOG_INFO(LOG_APP, "on list unmount from tree"); });
-        return list;
-    }
+    
+        void SetType(ArkUI_TextInputType type)
+        {
+            ArkUI_NumberValue value[] = {{.i32 = type}};
+            ArkUI_AttributeItem item = {value, 1};
+            nativeModule_->setAttribute(handle_, NODE_TEXT_INPUT_TYPE, &item);
+        }
+    };
+    
     } // namespace NativeModule
     
-    #endif // MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
+    #endif // MYAPPLICATION_ARKUITEXTINPUTNODE_H
     ```
 
+4. 在NormalNodeExample对象中实现事件处理函数和事件注册逻辑。
+
+    <!-- @[Cpp_NormalNodeExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NormalNodeExample.h) -->
+    
+    ``` C
+    // NormalNodeExample.h
+    // 添加交互事件示例
+    #ifndef MYAPPLICATION_NORMALNODEEXAMPLE_H
+    #define MYAPPLICATION_NORMALNODEEXAMPLE_H
+    
+    #include "ArkUIColumnNode.h"
+    #include "ArkUIButtonNode.h"
+    #include "ArkUITextInputNode.h"
+    #include "ArkUITextNode.h"
+    #include "NativeModule.h"
+    #include <arkui/native_key_event.h>
+    #include <arkui/ui_input_event.h>
+    #include <hilog/log.h>
+    #include <string>
+    
+    #define DEFAULT_BLANK 20
+    #define DEFAULT_COMPONENT_HEIGHT 50.0f
+    #define DEFAULT_FONT_SIZE 16.0f
+    #define DEFAULT_SPACING 10.0f
+    #define DEFAULT_RADIUS 20.0f
+    
+    namespace NativeModule {
+    
+    #define LOG_PRINT_DOMAIN 0x0001
+    
+    // 创建Button组件
+    std::shared_ptr<ArkUIButtonNode> CreateButtonComponent()
+    {
+        auto button = std::make_shared<ArkUIButtonNode>();
+        button->SetPercentWidth(1.0f);
+        button->SetHeight(DEFAULT_COMPONENT_HEIGHT);
+        button->SetLabel("test click");
+        button->SetMargin(DEFAULT_BLANK, 0, DEFAULT_BLANK, 0);
+        return button;
+    }
+    
+    // 创建TextInput组件
+    std::shared_ptr<ArkUITextInputNode> CreateTextInputComponent()
+    {
+        auto textInput = std::make_shared<ArkUITextInputNode>();
+        textInput->SetPercentWidth(1.0f);
+        textInput->SetHeight(DEFAULT_COMPONENT_HEIGHT);
+        textInput->SetPlaceholder("test focus/blur/key");
+        textInput->SetMargin(0, 0, DEFAULT_BLANK, 0);
+        return textInput;
+    }
+    
+    // 创建悬停区域Column组件
+    std::shared_ptr<ArkUIColumnNode> CreateHoverColumnComponent()
+    {
+        auto hoverColumn = std::make_shared<ArkUIColumnNode>();
+        hoverColumn->SetPercentWidth(1.0f);
+        hoverColumn->SetHeight(DEFAULT_COMPONENT_HEIGHT);
+        hoverColumn->SetBackgroundColor(0xFFF5F5F5);
+        hoverColumn->SetBorderRadius(DEFAULT_RADIUS);
+    
+        auto hoverText = std::make_shared<ArkUITextNode>();
+        hoverText->SetTextContent("test hover/mouse");
+        hoverText->SetFontSize(DEFAULT_FONT_SIZE);
+        hoverColumn->AddChild(hoverText);
+    
+        return hoverColumn;
+    }
+    
+    // 处理点击事件
+    void HandleClickEvent(ArkUI_NodeEvent *event, ArkUI_UIInputEvent *inputEvent)
+    {
+        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "Click event triggered (eventType=%{public}d)", eventType);
+    
+        auto x = OH_ArkUI_PointerEvent_GetX(inputEvent);
+        auto y = OH_ArkUI_PointerEvent_GetY(inputEvent);
+        auto displayX = OH_ArkUI_PointerEvent_GetDisplayX(inputEvent);
+        auto displayY = OH_ArkUI_PointerEvent_GetDisplayY(inputEvent);
+        auto windowX = OH_ArkUI_PointerEvent_GetWindowX(inputEvent);
+        auto windowY = OH_ArkUI_PointerEvent_GetWindowY(inputEvent);
+        auto pointerCount = OH_ArkUI_PointerEvent_GetPointerCount(inputEvent);
+        auto xByIndex = OH_ArkUI_PointerEvent_GetXByIndex(inputEvent, 0);
+        auto yByIndex = OH_ArkUI_PointerEvent_GetYByIndex(inputEvent, 0);
+        auto displayXByIndex = OH_ArkUI_PointerEvent_GetDisplayXByIndex(inputEvent, 0);
+        auto displayYByIndex = OH_ArkUI_PointerEvent_GetDisplayYByIndex(inputEvent, 0);
+        auto windowXByIndex = OH_ArkUI_PointerEvent_GetWindowXByIndex(inputEvent, 0);
+        auto windowYByIndex = OH_ArkUI_PointerEvent_GetWindowYByIndex(inputEvent, 0);
+        auto pointerId = OH_ArkUI_PointerEvent_GetPointerId(inputEvent, 0);
+        auto pressure = OH_ArkUI_PointerEvent_GetPressure(inputEvent, 0);
+        auto action = OH_ArkUI_UIInputEvent_GetAction(inputEvent);
+        auto eventTime = OH_ArkUI_UIInputEvent_GetEventTime(inputEvent);
+        auto sourceType = OH_ArkUI_UIInputEvent_GetSourceType(inputEvent);
+        auto type = OH_ArkUI_UIInputEvent_GetType(inputEvent);
+    
+        std::string eventInfo =
+            "x: " + std::to_string(x) + ", y: " + std::to_string(y) +
+            ", displayX: " + std::to_string(displayX) + ", displayY: " + std::to_string(displayY) +
+            ", windowX: " + std::to_string(windowX) + ", windowY: " + std::to_string(windowY) +
+            ", pointerCount: " + std::to_string(pointerCount) + ", xByIndex: " + std::to_string(xByIndex) +
+            ", yByIndex: " + std::to_string(yByIndex) +
+            ", displayXByIndex: " + std::to_string(displayXByIndex) +
+            ", displayYByIndex: " + std::to_string(displayYByIndex) +
+            ", windowXByIndex: " + std::to_string(windowXByIndex) +
+            ", windowYByIndex: " + std::to_string(windowYByIndex) +
+            ", pointerId: " + std::to_string(pointerId) + ", pressure: " + std::to_string(pressure) +
+            ", action: " + std::to_string(action) + ", eventTime: " + std::to_string(eventTime) +
+            ", sourceType: " + std::to_string(sourceType) + ", type: " + std::to_string(type);
+    
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "ClickEvent: %{public}s", eventInfo.c_str());
+    }
+    
+    // 处理焦点事件
+    void HandleFocusEvent(ArkUI_NodeEvent *event)
+    {
+        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "Focus event triggered (eventType=%{public}d)", eventType);
+        auto nodeHandle = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "FocusEvent: nodeHandle=%{public}p", nodeHandle);
+    }
+    
+    // 处理失焦事件
+    void HandleBlurEvent(ArkUI_NodeEvent *event)
+    {
+        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "Blur event triggered (eventType=%{public}d)", eventType);
+        auto nodeHandle = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "BlurEvent: nodeHandle=%{public}p", nodeHandle);
+    }
+    
+    // 处理悬停事件
+    void HandleHoverEvent(ArkUI_NodeEvent *event, ArkUI_UIInputEvent *inputEvent)
+    {
+        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "Hover event triggered (eventType=%{public}d)", eventType);
+        auto x = OH_ArkUI_PointerEvent_GetX(inputEvent);
+        auto y = OH_ArkUI_PointerEvent_GetY(inputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "HoverEvent: x=%{public}f, y=%{public}f", x, y);
+    }
+    
+    // 处理键盘事件
+    void HandleKeyEvent(ArkUI_NodeEvent *event, ArkUI_UIInputEvent *inputEvent)
+    {
+        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "Key event triggered (eventType=%{public}d)", eventType);
+    
+        // 获取按键键码
+        auto keyCode = OH_ArkUI_KeyEvent_GetKeyCode(inputEvent);
+        // 获取按键类型
+        auto keyType = OH_ArkUI_KeyEvent_GetType(inputEvent);
+        // 获取按键键值
+        const char *keyText = OH_ArkUI_KeyEvent_GetKeyText(inputEvent);
+        // 获取Unicode码值
+        auto unicode = OH_ArkUI_KeyEvent_GetUnicode(inputEvent);
+        // 获取按键动作
+        auto action = OH_ArkUI_UIInputEvent_GetAction(inputEvent);
+    
+        // 获取CapsLock状态
+        bool capsLockOn = false;
+        auto capsLockResult = OH_ArkUI_KeyEvent_IsCapsLockOn(inputEvent, &capsLockOn);
+    
+        std::string keyInfo = "keyCode: " + std::to_string(keyCode) +
+            ", keyType: " + std::to_string(keyType) +
+            ", keyText: " + (keyText ? keyText : "null") +
+            ", unicode: " + std::to_string(unicode) +
+            ", action: " + std::to_string(action) +
+            ", capsLock: " + (capsLockOn ? "ON" : "OFF");
+    
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "KeyEvent: %{public}s", keyInfo.c_str());
+    }
+    
+    // 处理鼠标事件
+    void HandleMouseEvent(ArkUI_NodeEvent *event, ArkUI_UIInputEvent *inputEvent)
+    {
+        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "Mouse event triggered (eventType=%{public}d)", eventType);
+    
+        // 获取坐标信息
+        auto x = OH_ArkUI_PointerEvent_GetX(inputEvent);
+        auto y = OH_ArkUI_PointerEvent_GetY(inputEvent);
+        // 获取鼠标按键类型
+        auto mouseButton = OH_ArkUI_MouseEvent_GetMouseButton(inputEvent);
+        // 获取鼠标动作类型
+        auto mouseAction = OH_ArkUI_MouseEvent_GetMouseAction(inputEvent);
+        // 获取鼠标移动增量
+        auto deltaX = OH_ArkUI_MouseEvent_GetRawDeltaX(inputEvent);
+        auto deltaY = OH_ArkUI_MouseEvent_GetRawDeltaY(inputEvent);
+        // 获取事件时间
+        auto eventTime = OH_ArkUI_UIInputEvent_GetEventTime(inputEvent);
+    
+        std::string mouseInfo = "x: " + std::to_string(x) +
+            ", y: " + std::to_string(y) +
+            ", button: " + std::to_string(mouseButton) +
+            ", action: " + std::to_string(mouseAction) +
+            ", deltaX: " + std::to_string(deltaX) +
+            ", deltaY: " + std::to_string(deltaY) +
+            ", eventTime: " + std::to_string(eventTime);
+    
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                     "MouseEvent: %{public}s", mouseInfo.c_str());
+    }
+    
+    // 注册节点事件
+    void RegisterNodeEvents(ArkUI_NativeNodeAPI_1 *nodeAPI,
+                            std::shared_ptr<ArkUIButtonNode> button,
+                            std::shared_ptr<ArkUITextInputNode> textInput,
+                            std::shared_ptr<ArkUIColumnNode> hoverColumn)
+    {
+        // 注册点击事件
+        nodeAPI->registerNodeEvent(button->GetHandle(), NODE_ON_CLICK_EVENT, 0, nullptr);
+        // 注册焦点事件
+        nodeAPI->registerNodeEvent(textInput->GetHandle(), NODE_ON_FOCUS, 0, nullptr);
+        // 注册失焦事件
+        nodeAPI->registerNodeEvent(textInput->GetHandle(), NODE_ON_BLUR, 0, nullptr);
+        // 注册悬停事件
+        nodeAPI->registerNodeEvent(hoverColumn->GetHandle(), NODE_ON_HOVER_EVENT, 0, nullptr);
+        // 注册键盘事件
+        nodeAPI->registerNodeEvent(textInput->GetHandle(), NODE_ON_KEY_EVENT, 0, nullptr);
+        // 注册鼠标事件
+        nodeAPI->registerNodeEvent(hoverColumn->GetHandle(), NODE_ON_MOUSE, 0, nullptr);
+    }
+    
+    // 注册全局事件监听器
+    void RegisterGlobalEventReceiver(ArkUI_NativeNodeAPI_1 *nodeAPI)
+    {
+        nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
+            auto *inputEvent = OH_ArkUI_NodeEvent_GetInputEvent(event);
+            auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+    
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                         "Event received: eventType=%{public}d", eventType);
+    
+            auto nodeHandle = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[InteractionEventExample]",
+                         "NodeHandle: nodeHandle=%{public}p", nodeHandle);
+    
+            switch (eventType) {
+                case NODE_ON_CLICK_EVENT:
+                    HandleClickEvent(event, inputEvent);
+                    break;
+                case NODE_ON_FOCUS:
+                    HandleFocusEvent(event);
+                    break;
+                case NODE_ON_BLUR:
+                    HandleBlurEvent(event);
+                    break;
+                case NODE_ON_HOVER_EVENT:
+                    HandleHoverEvent(event, inputEvent);
+                    break;
+                case NODE_ON_KEY_EVENT:
+                    HandleKeyEvent(event, inputEvent);
+                    break;
+                case NODE_ON_MOUSE:
+                    HandleMouseEvent(event, inputEvent);
+                    break;
+                default:
+                    break;
+            }
+        });
+    }
+    
+    // 创建交互事件示例
+    std::shared_ptr<ArkUIBaseNode> CreateExample()
+    {
+        auto *nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
+    
+        auto column = std::make_shared<ArkUIColumnNode>();
+        column->SetPercentWidth(1.0f);
+        column->SetPercentHeight(1.0f);
+    
+        // 创建Button组件用于注册点击事件
+        auto button = CreateButtonComponent();
+        column->AddChild(button);
+    
+        // 创建TextInput组件用于注册焦点、失焦、键盘事件
+        auto textInput = CreateTextInputComponent();
+        column->AddChild(textInput);
+    
+        // 创建Column组件用于注册悬停、鼠标事件
+        auto hoverColumn = CreateHoverColumnComponent();
+        column->AddChild(hoverColumn);
+    
+        // 注册各组件的节点事件
+        RegisterNodeEvents(nodeAPI, button, textInput, hoverColumn);
+    
+        // 设置全局事件监听器
+        RegisterGlobalEventReceiver(nodeAPI);
+    
+        return column;
+    }
+    
+    } // namespace NativeModule
+    
+    #endif // MYAPPLICATION_NORMALNODEEXAMPLE_H
+    ```
 
    由于使用了日志相关接口，需要在CMakeLists.txt中添加对libhilog_ndk.z.so的引用，如下：
    
