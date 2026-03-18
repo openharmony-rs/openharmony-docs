@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
-该模块主要提供常用的工具函数，实现字符串编解码（[TextEncoder](#textencoder)，[TextDecoder](#textdecoder)）、有理数运算（[RationalNumber<sup>8+</sup>](#rationalnumber8)）、缓冲区管理（[LRUCache<sup>9+</sup>](#lrucache9)）、范围判断（[ScopeHelper<sup>9+</sup>](#scopehelper9)）、Base64编解码（[Base64Helper<sup>9+</sup>](#base64helper9)）、内置对象类型检查（[types<sup>8+</sup>](#types8)）、对方法进行插桩和替换（[Aspect<sup>11+</sup>](#aspect11)）等功能。
+该模块主要提供常用的工具函数，实现字符串编解码（[TextEncoder](#textencoder)，[TextDecoder](#textdecoder)）、有理数运算（[RationalNumber<sup>8+</sup>](#rationalnumber8)）、缓冲区管理（[LRUCache<sup>9+</sup>](#lrucache9)）、范围判断（[ScopeHelper<sup>9+</sup>](#scopehelper9)）、Base64编解码（[Base64Helper<sup>9+</sup>](#base64helper9)）、内置对象类型检查（[types<sup>8+</sup>](#types8)）、对方法进行插桩和替换（[Aspect<sup>11+</sup>](#aspect11)）、堆内存阈值配置（[HeapMemoryThreshold<sup>24+</sup>](#heapmemorythreshold24)）等功能。
 
 > **说明：**
 >
@@ -693,6 +693,76 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API createObject failed error: %{public}s', error.message);
 }
 ```
+
+### onVMHeapMemoryPressure<sup>24+</sup>
+
+static onVMHeapMemoryPressure(callback: Callback\<string\>, heapMemoryThreshold: HeapMemoryThreshold): boolean
+
+注册一个回调函数，在虚拟机完成垃圾回收后，如果堆内存超过临界警告阈值则触发回调执行。
+
+虚拟机是通过统计存活对象大小来判断是否达到内存警告阈值，由于虚拟机堆存在一定内存碎片以及浮动垃圾，无法保证在OOM前肯定会触发到回调。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback\<string\> | 是 | 垃圾回收后内存达到阈值时触发的回调函数，字符串参数表示内存压力事件的类型。 |
+| heapMemoryThreshold | [HeapMemoryThreshold](#heapmemorythreshold24) | 是 | 堆内存阈值配置，以百分比呈现，取值范围为[70, 95]。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 注册成功返回true，否则返回false。当不在主线程调用或回调已注册时返回false。 |
+
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+let callback = (event: string) => {
+  console.info('Memory pressure event: ' + event);
+};
+
+let threshold: util.HeapMemoryThreshold = {
+  localHeapThreshold: 75,
+  sharedHeapThreshold: 80,
+  processHeapThreshold: 85
+};
+
+let result : boolean = util.ArkTSVM.onVMHeapMemoryPressure(callback, threshold);
+console.info('Registration result: ' + result);
+```
+
+### offVMHeapMemoryPressure<sup>24+</sup>
+
+static offVMHeapMemoryPressure(): void
+
+取消已注册的内存预警回调函数。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+util.ArkTSVM.offVMHeapMemoryPressure();
+```
+
+## HeapMemoryThreshold<sup>24+</sup>
+
+堆内存阈值配置，用于指定触发回调的堆内存阈值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | ---- | ---- | ---- |
+| localHeapThreshold | number | 否 | 是 | 堆内存阈值配置，以百分比呈现，取值范围为[70, 95]。 |
+| sharedHeapThreshold | number | 否 | 是 | 堆内存阈值配置，以百分比呈现，取值范围为[70, 95]。 |
+| processHeapThreshold | number | 否 | 是 | 堆内存阈值配置，以百分比呈现，取值范围为[70, 95]。 |
 
 ## HeapMemoryInfo<sup>24+</sup>
 
