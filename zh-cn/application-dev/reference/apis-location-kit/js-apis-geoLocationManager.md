@@ -189,13 +189,13 @@ import { geoLocationManager } from '@kit.LocationKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | satellitesNumber | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示卫星个数。取值范围为大于等于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23 |
-| satelliteIds | ArkTS-Dyn: Array&lt;number&gt<br>ArkTS-Sta: Array&lt;int&gt; | 否 | 否 | 表示每个卫星的ID，数组类型。取值范围为大于等于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23 |
-| carrierToNoiseDensitys | ArkTS-Dyn: Array&lt;number&gt<br>ArkTS-Sta: Array&lt;double&gt; | 否 | 否 | 表示载波噪声功率谱密度比，即cn0。取值范围为大于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23 |
-| altitudes | ArkTS-Dyn: Array&lt;number&gt<br>ArkTS-Sta: Array&lt;double&gt; | 否 | 否 | 表示卫星高度角信息。单位是“度”，取值范围为-90到90。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23 |
-| azimuths | ArkTS-Dyn: Array&lt;number&gt<br>ArkTS-Sta: Array&lt;double&gt; | 否 | 否 | 表示方位角。单位是“度”，取值范围为0到360。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23 |
-| carrierFrequencies | ArkTS-Dyn: Array&lt;number&gt<br>ArkTS-Sta: Array&lt;double&gt; | 否 | 否 | 表示载波频率。单位是Hz，取值范围为大于等于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23 |
+| satelliteIds | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;int&gt; | 否 | 否 | 表示每个卫星的ID，数组类型。取值范围为大于等于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23 |
+| carrierToNoiseDensitys | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;double&gt; | 否 | 否 | 表示载波噪声功率谱密度比，即cn0。取值范围为大于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23 |
+| altitudes | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;double&gt; | 否 | 否 | 表示卫星高度角信息。单位是“度”，取值范围为-90到90。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23 |
+| azimuths | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;double&gt; | 否 | 否 | 表示方位角。单位是“度”，取值范围为0到360。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23 |
+| carrierFrequencies | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;double&gt; | 否 | 否 | 表示载波频率。单位是Hz，取值范围为大于等于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23 |
 | satelliteConstellation<sup>12+</sup> | Array&lt;[SatelliteConstellationCategory](#satelliteconstellationcategory12)&gt; | 否 | 是 | 表示卫星星座类型。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 23 |
-| satelliteAdditionalInfo<sup>12+</sup> | ArkTS-Dyn: Array&lt;number&gt<br>ArkTS-Sta: Array&lt;int&gt; | 否 | 是 | 表示卫星的附加信息。<br/>每个比特位代表不同含义，具体定义参见[SatelliteAdditionalInfo](#satelliteadditionalinfo12)。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 23 |
+| satelliteAdditionalInfo<sup>12+</sup> | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;int&gt; | 否 | 是 | 表示卫星的附加信息。<br/>每个比特位代表不同含义，具体定义参见[SatelliteAdditionalInfo](#satelliteadditionalinfo12)。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 23 |
 
 
 ## CachedGnssLocationsRequest
@@ -309,7 +309,8 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | geofenceId | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否 | 否 | 表示地理围栏ID。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 23  |
-| transitionEvent | [GeofenceTransitionEvent](#geofencetransitionevent12) | 否 | 否 | 表示当前发生的地理围栏事件。<br>**ArkTS-Dyn起始版本：** 12 |
+| transitionEvent | [GeofenceTransitionEvent](#geofencetransitionevent12) | 否 | 否 | 表示当前发生的地理围栏事件。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
+| beaconFence<sup>20+</sup> | [BeaconFence](#beaconfence20) | 否 | 是 | beacon围栏的参数配置。仅beacon围栏使用。<br/>从API version 20开始，支持该字段。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 23  |
 
 
 ## GnssGeofenceRequest<sup>12+</sup>
@@ -328,7 +329,8 @@ GNSS地理围栏请求参数。
 | monitorTransitionEvents | Array&lt;[GeofenceTransitionEvent](#geofencetransitionevent12)&gt; | 否 | 否 | 表示APP监听的地理围栏事件列表。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 23 |
 | notifications | Array&lt;[NotificationRequest](../apis-notification-kit/js-apis-notification.md#notificationrequest)&gt; | 否 | 是 | 表示地理围栏事件发生后弹出的通知对象列表。<br/>monitorTransitionEvents与notifications中的顺序要一一对应，例如monitorTransitionEvents[0]为[GeofenceTransitionEvent](#geofencetransitionevent12).GEOFENCE_TRANSITION_EVENT_ENTER，那notifications[0]中就需要填入用户进入围栏时需要弹出的通知对象。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 23 |
 | geofenceTransitionCallback | AsyncCallback&lt;[GeofenceTransition](#geofencetransition12)&gt; | 否 | 否 | 表示用于接收地理围栏事件的回调函数。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 23 |
-
+| loiterTimeMs<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 徘徊时间，单位为毫秒，需关注GEOFENCE_TRANSITION_DWELL事件。若设备在多边形围栏内徘徊时间达到该值，则上报GEOFENCE_TRANSITION_DWELL事件。徘徊状态检测周期为10000毫秒。例如：设置15000，将在驻留超过20000毫秒时上报驻留状态；设置5000，将在驻留超过10000毫秒时上报驻留状态。<br>**ArkTS-Dyn起始版本：** 23  <br>**ArkTS-Sta起始版本：** 23 |
+| fenceExtensionAbilityName<sup>23+</sup> | string | 否 | 是 | FenceExtensionAbility名称，参见[FenceExtensionAbility](js-apis-app-ability-FenceExtensionAbility.md)。后台拉起需要申请后台定位权限，权限申请方式参见[申请位置权限开发指导](../../device/location/location-permission-guidelines.md#开发步骤)。<br>**ArkTS-Dyn起始版本：** 23  <br>**ArkTS-Sta起始版本：** 23  |
 
 ## CountryCode
 
@@ -666,6 +668,79 @@ POI信息结构体。
 | WALKING    | 2 | 表示步行。<br>**ArkTS-Dyn起始版本：** 18  <br>**ArkTS-Sta起始版本：** 23 |
 | CYCLING     | 3 | 表示骑行。<br>**ArkTS-Dyn起始版本：** 18  <br>**ArkTS-Sta起始版本：** 23 |
 
+## BeaconFenceInfoType<sup>20+</sup>
+
+beacon围栏信息类型。当前仅支持设备制造商数据过滤。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| BEACON_MANUFACTURE_DATA   | 1 |  标识使用beacon设备制造商数据。 |
+
+
+## BeaconManufactureData<sup>20+</sup>
+
+beacon设备制造商数据。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| manufactureId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 制造商标识。 |
+| manufactureData | ArrayBuffer | 否 | 否 | 厂商自定义数据。例如：[0x02,0x15,0x00...0xFF,0x11,0x22,0x33,0x44,0x55] |
+| manufactureDataMask | ArrayBuffer | 否 | 否 | 搭配manufactureData使用，可设置过滤部分制造商数据，0xFF为全匹配，0x00为模糊匹配。例如：[0xFF,0xFF,0xFF...0xFF,0xFF,0xFF,0xFF,0xFF,0xFF] |
+
+
+## BeaconFence<sup>20+</sup>
+
+beacon围栏的参数配置。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| identifier | string | 否 | 否 | beacon围栏标识。可自行定义，如："123", "beaconName"。 |
+| beaconFenceInfoType | [BeaconFenceInfoType](#beaconfenceinfotype20) | 否 | 否 | beacon围栏信息类型。 |
+| manufactureData | [BeaconManufactureData](#beaconmanufacturedata20) | 否 | 是 | beacon设备制造商数据。 |
+
+
+## BeaconFenceRequest<sup>20+</sup>
+
+beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选其一，都不填则参数无效。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
+**ArkTS-Dyn起始版本：** 20
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| beacon | [BeaconFence](#beaconfence20) | 否 | 否 | beacon围栏的参数配置。 |
+| transitionCallback | Callback&lt;[GeofenceTransition](#geofencetransition12)&gt; | 否 | 是 | beacon围栏事件信息。默认值为undefined。仅支持前台回调。 |
+| fenceExtensionAbilityName | string | 否 | 是 | [FenceExtensionAbility](js-apis-app-ability-FenceExtensionAbility.md)名称。默认值为空字符串。 |
+
 
 ## geoLocationManager.on('locationChange')
 
@@ -673,7 +748,7 @@ on(type: 'locationChange', request: LocationRequest | ContinuousLocationRequest,
 
 开启位置变化订阅，并发起定位请求。使用callback异步回调。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -736,6 +811,8 @@ onLocationChange(request: LocationRequest | ContinuousLocationRequest, callback:
 
 开启位置变化订阅，并发起定位请求。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+
 **ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -748,7 +825,6 @@ onLocationChange(request: LocationRequest | ContinuousLocationRequest, callback:
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 设置事件类型。type为“locationChange”，表示位置变化。 |
   | request |  [LocationRequest](#locationrequest) &#124; [ContinuousLocationRequest](#continuouslocationrequest12) | 是 | 设置位置请求参数。<br/>ContinuousLocationRequest为API12新增参数。 |
   | callback | Callback&lt;[Location](#location)&gt; | 是 | 回调函数，返回位置信息。 |
 
@@ -799,7 +875,7 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 
 关闭位置变化订阅，并删除对应的定位请求。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -849,6 +925,8 @@ offLocationChange(callback?: Callback&lt;Location&gt;): void
 
 关闭位置变化订阅，并删除对应的定位请求。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+
 **ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -861,7 +939,6 @@ offLocationChange(callback?: Callback&lt;Location&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 设置事件类型。type为“locationChange”，表示位置变化。 |
   | callback | Callback&lt;[Location](#location)&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。 |
 
 **错误码**：
@@ -899,7 +976,7 @@ on(type: 'locationError', callback: Callback&lt;LocationError&gt;): void
 
 订阅持续定位过程中的错误码。使用callback异步回调。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -952,11 +1029,13 @@ ArkTS模式：该接口仅适用于ArkTS-Dyn
   ```
 
 
-## geoLocationManager.onLocationError<sup>12+</sup>
+## geoLocationManager.onLocationError
 
 onLocationError(callback: Callback&lt;LocationError&gt;): void
 
 订阅持续定位过程中的错误码。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
 
 **ArkTS-Sta起始版本：** 23
 
@@ -970,7 +1049,6 @@ onLocationError(callback: Callback&lt;LocationError&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 设置事件类型。type为“locationError”，表示持续定位过程中的错误码变化。 |
   | callback | Callback&lt;[LocationError](#locationerror12)&gt; | 是 | 回调函数，返回持续定位过程中的错误码。 |
 
 **错误码**：
@@ -1019,7 +1097,7 @@ off(type: 'locationError', callback?: Callback&lt;LocationError&gt;): void
 
 取消订阅持续定位过程中的错误码。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1062,11 +1140,13 @@ ArkTS模式：该接口仅适用于ArkTS-Dyn
   ```
 
 
-## geoLocationManager.offLocationError<sup>12+</sup>
+## geoLocationManager.offLocationError
 
 offLocationError(callback?: Callback&lt;LocationError&gt;): void
 
 取消订阅持续定位过程中的错误码。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1080,7 +1160,6 @@ offLocationError(callback?: Callback&lt;LocationError&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 设置事件类型。type为“locationError”，表示持续定位过程中的错误码变化。 |
   | callback | Callback&lt;[LocationError](#locationerror12)&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。 |
 
 **错误码**：
@@ -1117,7 +1196,7 @@ on(type: 'locationEnabledChange', callback: Callback&lt;boolean&gt;): void
 
 订阅位置服务状态变化。使用callback异步回调。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -1160,6 +1239,8 @@ onLocationEnabledChange(callback: Callback&lt;boolean&gt;): void
 
 订阅位置服务状态变化。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+
 **ArkTS-Sta起始版本：** 23
 
 **系统能力**：SystemCapability.Location.Location.Core
@@ -1168,7 +1249,6 @@ onLocationEnabledChange(callback: Callback&lt;boolean&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 设置事件类型。type为“locationEnabledChange”，表示位置服务状态。 |
   | callback | Callback&lt;boolean&gt; | 是 | 回调函数。返回true表示位置信息开关已经开启；返回false表示位置信息开关已经关闭。 |
 
 **错误码**：
@@ -1203,7 +1283,7 @@ off(type: 'locationEnabledChange', callback?: Callback&lt;boolean&gt;): void
 
 取消订阅位置服务状态变化。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -1247,6 +1327,8 @@ offLocationEnabledChange(callback?: Callback&lt;boolean&gt;): void
 
 取消订阅位置服务状态变化。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+
 **ArkTS-Sta起始版本：** 23
 
 **系统能力**：SystemCapability.Location.Location.Core
@@ -1255,7 +1337,6 @@ offLocationEnabledChange(callback?: Callback&lt;boolean&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 设置事件类型。type为“locationEnabledChange”，表示位置服务状态。 |
   | callback | Callback&lt;boolean&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。 |
 
 **错误码**：
@@ -1291,7 +1372,7 @@ on(type: 'cachedGnssLocationsChange', request: CachedGnssLocationsRequest, callb
 
 订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1340,6 +1421,8 @@ onCachedGnssLocationsChange(request: CachedGnssLocationsRequest, callback: Callb
 
 订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+
 **ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
@@ -1350,7 +1433,6 @@ onCachedGnssLocationsChange(request: CachedGnssLocationsRequest, callback: Callb
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 设置事件类型。type为“cachedGnssLocationsChange”，表示GNSS缓存定位结果上报。 |
   | request |  [CachedGnssLocationsRequest](#cachedgnsslocationsrequest) | 是 | GNSS缓存功能配置参数。 |
   | callback | Callback&lt;Array&lt;[Location](#location)&gt;&gt; | 是 | 回调函数，返回GNSS缓存位置。 |
 
@@ -1389,7 +1471,7 @@ off(type: 'cachedGnssLocationsChange', callback?: Callback&lt;Array&lt;Location&
 
 取消订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1438,6 +1520,8 @@ offCachedGnssLocationsChange(callback?: Callback&lt;Array&lt;Location&gt;&gt;): 
 
 取消订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+
 **ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
@@ -1448,7 +1532,6 @@ offCachedGnssLocationsChange(callback?: Callback&lt;Array&lt;Location&gt;&gt;): 
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 设置事件类型。type为“cachedGnssLocationsChange”，表示GNSS缓存定位结果上报。 |
   | callback | Callback&lt;Array&lt;[Location](#location)&gt;&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。 |
 
 **错误码**：
@@ -1487,7 +1570,7 @@ on(type: 'satelliteStatusChange', callback: Callback&lt;SatelliteStatusInfo&gt;)
 
 订阅GNSS卫星状态信息上报事件。使用callback异步回调。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1558,11 +1641,13 @@ ArkTS模式：该接口仅适用于ArkTS-Dyn
   ```
 
 
-## geoLocationManager.onSatelliteStatusChange()
+## geoLocationManager.onSatelliteStatusChange
 
 onSatelliteStatusChange(callback: Callback&lt;SatelliteStatusInfo&gt;): void
 
 订阅GNSS卫星状态信息上报事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1574,7 +1659,6 @@ onSatelliteStatusChange(callback: Callback&lt;SatelliteStatusInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 设置事件类型。type为“satelliteStatusChange”，表示订阅GNSS卫星状态信息上报。 |
   | callback | Callback&lt;[SatelliteStatusInfo](#satellitestatusinfo)&gt; | 是 | 回调函数，返回GNSS卫星状态信息。 |
 
 **错误码**：
@@ -1612,7 +1696,7 @@ off(type: 'satelliteStatusChange', callback?: Callback&lt;SatelliteStatusInfo&gt
 
 取消订阅GNSS卫星状态信息上报事件。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1654,11 +1738,13 @@ ArkTS模式：该接口仅适用于ArkTS-Dyn
   ```
 
 
-## geoLocationManager.offSatelliteStatusChange()
+## geoLocationManager.offSatelliteStatusChange
 
 offSatelliteStatusChange(callback?: Callback&lt;SatelliteStatusInfo&gt;): void
 
 取消订阅GNSS卫星状态信息上报事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1670,7 +1756,6 @@ offSatelliteStatusChange(callback?: Callback&lt;SatelliteStatusInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 设置事件类型。type为“satelliteStatusChange”，表示订阅GNSS卫星状态信息上报。 |
   | callback | Callback&lt;[SatelliteStatusInfo](#satellitestatusinfo)&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。 |
 
 **错误码**：
@@ -1708,7 +1793,7 @@ on(type: 'nmeaMessage', callback: Callback&lt;string&gt;): void
 
 订阅GNSS NMEA信息上报事件。使用callback异步回调。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1751,11 +1836,13 @@ ArkTS模式：该接口仅适用于ArkTS-Dyn
   ```
 
 
-## geoLocationManager.onNmeaMessage()
+## geoLocationManager.onNmeaMessage
 
 onNmeaMessage(callback: Callback&lt;string&gt;): void
 
 订阅GNSS NMEA信息上报事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1767,7 +1854,6 @@ onNmeaMessage(callback: Callback&lt;string&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 设置事件类型。type为“nmeaMessage”，表示订阅GNSS&nbsp;NMEA信息上报。 |
   | callback | Callback&lt;string&gt; | 是 | 回调函数，返回GNSS&nbsp;NMEA信息。 |
 
 **错误码**：
@@ -1806,7 +1892,7 @@ off(type: 'nmeaMessage', callback?: Callback&lt;string&gt;): void
 
 取消订阅GNSS NMEA信息上报事件。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1850,11 +1936,13 @@ ArkTS模式：该接口仅适用于ArkTS-Dyn
   ```
 
 
-## geoLocationManager.offNmeaMessage('nmeaMessage')
+## geoLocationManager.offNmeaMessage
 
 offNmeaMessage(callback?: Callback&lt;string&gt;): void
 
 取消订阅GNSS NMEA信息上报事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1866,7 +1954,6 @@ offNmeaMessage(callback?: Callback&lt;string&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 设置事件类型。type为“nmeaMessage”，表示订阅GNSS&nbsp;NMEA信息上报。 |
   | callback | Callback&lt;string&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。 |
 
 **错误码**：
@@ -1906,7 +1993,7 @@ on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): vo
 
 添加一个围栏，并订阅地理围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1970,7 +2057,7 @@ off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): v
 
 删除一个围栏，并取消订阅该围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2035,7 +2122,7 @@ on(type: 'countryCodeChange', callback: Callback&lt;CountryCode&gt;): void
 
 订阅国家码信息变化事件。使用callback异步回调。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -2075,11 +2162,13 @@ ArkTS模式：该接口仅适用于ArkTS-Dyn
   ```
 
 
-## geoLocationManager.onCountryCodeChange()
+## geoLocationManager.onCountryCodeChange
 
 onCountryCodeChange(callback: Callback&lt;CountryCode&gt;): void
 
 订阅国家码信息变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
 
 **ArkTS-Sta起始版本：** 23
 
@@ -2089,7 +2178,6 @@ onCountryCodeChange(callback: Callback&lt;CountryCode&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 设置事件类型。type为“countryCodeChange”，表示订阅国家码信息变化事件。 |
   | callback | Callback&lt;[CountryCode](#countrycode)&gt; | 是 | 回调函数，返回国家码信息。 |
 
 **错误码**：
@@ -2127,7 +2215,7 @@ off(type: 'countryCodeChange', callback?: Callback&lt;CountryCode&gt;): void
 
 取消订阅国家码变化事件。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -2167,11 +2255,13 @@ ArkTS模式：该接口仅适用于ArkTS-Dyn
   ```
 
 
-## geoLocationManager.offCountryCodeChange()
+## geoLocationManager.offCountryCodeChange
 
 offCountryCodeChange(callback?: Callback&lt;CountryCode&gt;): void
 
 取消订阅国家码变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
 
 **ArkTS-Sta起始版本：** 23
 
@@ -2181,7 +2271,6 @@ offCountryCodeChange(callback?: Callback&lt;CountryCode&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 设置事件类型。type为“countryCodeChange”，表示取消订阅国家码信息变化事件。 |
   | callback | Callback&lt;[CountryCode](#countrycode)&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。 |
 
 **错误码**：
@@ -2756,6 +2845,7 @@ isGeocoderAvailable(): boolean
 ## geoLocationManager.getCachedGnssLocationsSize
 
 ArkTS-Dyn: getCachedGnssLocationsSize(callback: AsyncCallback&lt;number&gt;): void
+
 ArkTS-Sta: getCachedGnssLocationsSize(callback: AsyncCallback&lt;int&gt;): void
 
 获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。
@@ -2790,24 +2880,27 @@ ArkTS-Sta: getCachedGnssLocationsSize(callback: AsyncCallback&lt;int&gt;): void
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.getCachedGnssLocationsSize((err, size) => {
-          if (err) {
-              console.error('getCachedGnssLocationsSize: err=' + JSON.stringify(err));
-          }
-          if (size) {
-              console.info('getCachedGnssLocationsSize: size=' + JSON.stringify(size));
-          }
-      });
+    geoLocationManager.getCachedGnssLocationsSize((err, size) => {
+      if (err) {
+        console.error('getCachedGnssLocationsSize: err=' + JSON.stringify(err));
+      }
+      if (size) {
+        console.info('getCachedGnssLocationsSize: size=' + JSON.stringify(size));
+      }
+    });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
+
 
 
 ## geoLocationManager.getCachedGnssLocationsSize
 
 ArkTS-Dyn: getCachedGnssLocationsSize(): Promise&lt;number&gt;
+
 ArkTS-Sta: getCachedGnssLocationsSize(): Promise&lt;int&gt;
 
 获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。
@@ -3150,6 +3243,7 @@ getCountryCode(): Promise&lt;CountryCode&gt;
 ## geoLocationManager.addGnssGeofence<sup>12+</sup>
 
 ArkTS-Dyn: addGnssGeofence(fenceRequest: GnssGeofenceRequest): Promise&lt;number&gt;
+
 ArkTS-Sta: addGnssGeofence(fenceRequest: GnssGeofenceRequest): Promise&lt;int&gt;
 
 添加一个GNSS地理围栏，并订阅地理围栏事件。使用Promise异步回调。
@@ -3270,6 +3364,7 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
 ## geoLocationManager.removeGnssGeofence<sup>12+</sup>
 
 ArkTS-Dyn: removeGnssGeofence(geofenceId: number): Promise&lt;void&gt;
+
 ArkTS-Sta: removeGnssGeofence(geofenceId: int): Promise&lt;void&gt;
 
 删除一个GNSS地理围栏，并取消订阅该地理围栏事件。使用Promise异步回调。
@@ -3424,13 +3519,11 @@ on(type: 'bluetoothScanResultChange', callback: Callback&lt;BluetoothScanResult&
 
 当前仅支持扫描BLE设备。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION 和 ohos.permission.LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
-
-**ArkTS-Dyn起始版本：** 16
 
 **ArkTS-Sta起始版本：** 23
 
@@ -3471,13 +3564,69 @@ ArkTS模式：该接口仅适用于ArkTS-Dyn
   ```
 
 
+## geoLocationManager.onBluetoothScanResultChange
+
+onBluetoothScanResultChange(callback: Callback&lt;BluetoothScanResult&gt;): void
+
+订阅蓝牙扫描信息上报事件，使用callback异步回调。
+
+<!--RP2--><!--RP2End-->
+
+本API会启动蓝牙扫描，为了避免产生较多功耗，需要开发者在适当的时机调用 [geoLocationManager.off('bluetoothScanResultChange')](#geolocationmanageroffbluetoothscanresultchange16)接口停止蓝牙扫描。
+
+当前仅支持扫描BLE设备。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION 和 ohos.permission.LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | Callback&lt;[BluetoothScanResult](#bluetoothscanresult16)&gt; | 是 | 回调函数，返回蓝牙扫描信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.on('bluetoothScanResultChange')} due to limited device capabilities.          |
+|3301000 | The location service is unavailable.                                           |
+|3301100 | The location switch is off.                                                 |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+
+  let callback = (result: geoLocationManager.BluetoothScanResult):void => {
+      console.info('bluetoothScanResultChange: ' + JSON.stringify(result));
+  };
+  try {
+      geoLocationManager.onBluetoothScanResultChange(callback);
+  } catch (err) {
+      console.error("errCode:" + err.code + ", message:"  + err.message);
+  }
+
+  ```
+
+
 ## geoLocationManager.off('bluetoothScanResultChange')<sup>16+</sup>
 
 off(type: 'bluetoothScanResultChange', callback?: Callback&lt;BluetoothScanResult&gt;): void
 
 取消订阅蓝牙扫描信息上报事件并停止蓝牙扫描。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION 和 ohos.permission.LOCATION
 
@@ -3522,13 +3671,61 @@ ArkTS模式：该接口仅适用于ArkTS-Dyn
   ```
 
 
+## geoLocationManager.offBluetoothScanResultChange
+
+offBluetoothScanResultChange(callback?: Callback&lt;BluetoothScanResult&gt;): void
+
+取消订阅蓝牙扫描信息上报事件并停止蓝牙扫描。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION 和 ohos.permission.LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | Callback&lt;[BluetoothScanResult](#bluetoothscanresult16)&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.off('bluetoothScanResultChange')} due to limited device capabilities.          |
+|3301000 | The location service is unavailable.                                           |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+  let callback = (result: geoLocationManager.BluetoothScanResult):void => {
+      console.info('bluetoothScanResultChange: ' + JSON.stringify(result));
+  };
+  try {
+      geoLocationManager.onBluetoothScanResultChange(callback);
+      geoLocationManager.offBluetoothScanResultChange(callback);
+  } catch (err) {
+      console.error("errCode:" + err.code + ", message:"  + err.message);
+  }
+  ```
+
+
 ## geoLocationManager.isPoiServiceSupported<sup>20+</sup>
 
 isPoiServiceSupported(): boolean
 
 查询系统（即软件）是否支持POI服务。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3558,7 +3755,7 @@ getPoiInfo(): Promise&lt;PoiInfo&gt;
 
 获取当前位置附近的POI信息。
 
-ArkTS模式：该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3604,6 +3801,7 @@ ArkTS模式：该接口仅适用于ArkTS-Dyn
 ## geoLocationManager.getDistanceBetweenLocations<sup>20+</sup>
 
 ArkTS-Dyn: getDistanceBetweenLocations(location1: Location, location2: Location): number
+
 ArkTS-Sta: getDistanceBetweenLocations(location1: Location, location2: Location): double
 
 获取两个位置之间的直线距离。
@@ -3628,7 +3826,7 @@ ArkTS-Sta: getDistanceBetweenLocations(location1: Location, location2: Location)
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 两个位置之间的直线距离，单位为米。 |
+  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 两个位置之间的直线距离，单位为米。 |
 
 
 **示例**
@@ -3648,9 +3846,208 @@ ArkTS-Sta: getDistanceBetweenLocations(location1: Location, location2: Location)
   ```
 
 
+## geoLocationManager.addBeaconFence<sup>20+</sup>
+
+addBeaconFence(fenceRequest: BeaconFenceRequest): Promise&lt;number&gt;
+
+添加一个beacon围栏，并订阅地理围栏事件。使用Promise异步回调。
+
+beacon围栏是指通过蓝牙beacon设备和手机应用配合，实现“虚拟围栏”的功能。当用户靠近或离开某个特定的beacon设备时，手机应用会收到通知。
+
+应用可以在入参[BeaconFenceRequest](#beaconfencerequest20)中传入回调函数用于接收围栏事件；也可以传入[FenceExtensionAbility](js-apis-app-ability-FenceExtensionAbility.md)名称，在系统识别到围栏事件发生时通知应用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | fenceRequest | [BeaconFenceRequest](#beaconfencerequest20) | 是 | 添加beacon围栏请求参数。 |
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;number&gt; | Promise对象，返回beacon围栏ID。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.addBeaconFence} due to limited device capabilities.          |
+|3501100 | Failed to add a beacon fence because the location switch is off.                                           |
+|3501101 | Failed to add a beacon fence because the bluetooth switch is off.                                                 |
+|3501601 | The number of beacon fence exceeds the maximum. |
+|3501603 | Duplicate beacon fence information. |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    // 以iBeacon协议为例，格式如下
+    // 01 byte    type = 0x02
+    // 01 byte    len = 0x15 = 21
+    // 16 byte    UUID
+    // 02 byte    major
+    // 02 byte    minor
+    // 01 byte    tx power
+    let manufactureDataBuffer: Uint8Array = new Uint8Array([0X02, 0X15, 0X00, 0X11, 0X22, 0X33, 0X44, 0X55,
+      0X66, 0X77, 0X88, 0X99, 0XAA, 0XBB, 0XCC, 0XDD, 0XEE, 0XFF, 0X11, 0X22, 0X33, 0X44, 0X55]);
+    let manufactureDataMaskBuffer: Uint8Array = new Uint8Array([0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF,
+      0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF]);
+
+    let manufactureData: geoLocationManager.BeaconManufactureData = {
+      manufactureId: 0X004C,
+      manufactureData: manufactureDataBuffer.buffer,
+      manufactureDataMask: manufactureDataMaskBuffer.buffer
+    };
+
+    let beacon: geoLocationManager.BeaconFence = {
+      identifier: "11",
+      beaconFenceInfoType: geoLocationManager.BeaconFenceInfoType.BEACON_MANUFACTURE_DATA,
+      manufactureData: manufactureData
+    };
+
+    let fenceRequest: geoLocationManager.BeaconFenceRequest = {
+      beacon: beacon,
+      transitionCallback: (transition: geoLocationManager.GeofenceTransition) => {
+        if (transition) {
+          console.info("GeofenceTransition: err" + JSON.stringify(transition));
+        }
+      },
+      fenceExtensionAbilityName: "MyFenceExtensionAbility",
+    };
+    geoLocationManager.addBeaconFence(fenceRequest).then((id) => {
+      console.info("addBeaconFence success, fence id:" + id);
+    }).catch((err: BusinessError) => {
+      console.error('promise, addBeaconFence: error=' + JSON.stringify(err));
+    });
+  } catch (error) {
+    console.error("addBeaconFence: errCode" + error.code + ", errMessage" + error.message);
+  }
+  ```
+
+
+## geoLocationManager.removeBeaconFence<sup>20+</sup>
+
+removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
+
+删除beacon围栏，并取消订阅地理围栏事件。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | beaconFence | [BeaconFence](#beaconfence20) | 否 | 传入beaconFence参数，删除指定围栏；不传入参数，删除该应用所有围栏。 |
+
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.removeBeaconFence} due to limited device capabilities.          |
+|3501602 | Failed to delete the fence due to incorrect beacon fence information. |
+
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let manufactureDataBuffer: Uint8Array = new Uint8Array([0X02, 0X15, 0X00, 0X11, 0X22, 0X33, 0X44, 0X55,
+      0X66, 0X77, 0X88, 0X99, 0XAA, 0XBB, 0XCC, 0XDD, 0XEE, 0XFF, 0X11, 0X22, 0X33, 0X44, 0X55]);
+    let manufactureDataMaskBuffer: Uint8Array = new Uint8Array([0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF,
+      0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF]);
+
+    let manufactureData: geoLocationManager.BeaconManufactureData = {
+      manufactureId: 0X004C,
+      manufactureData: manufactureDataBuffer.buffer,
+      manufactureDataMask: manufactureDataMaskBuffer.buffer
+    };
+
+    let beacon: geoLocationManager.BeaconFence = {
+      identifier: "11",
+      beaconFenceInfoType: geoLocationManager.BeaconFenceInfoType.BEACON_MANUFACTURE_DATA,
+      manufactureData: manufactureData
+    };
+    geoLocationManager.removeBeaconFence(beacon).then(() => {
+      console.info("promise, removeBeaconFence success");
+    })
+      .catch((error: BusinessError) => {
+        console.error("promise, removeBeaconFence: errCode" + error.code + ", errMessage" + error.message);
+      });
+  } catch (error) {
+    console.error("removeBeaconFence: errCode" + error.code + ", errMessage" + error.message);
+  }
+  ```
+
+
+## geoLocationManager.isBeaconFenceSupported<sup>20+</sup>
+
+isBeaconFenceSupported(): boolean;
+
+判断当前设备是否支持beacon围栏。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | boolean | true：支持beacon围栏。<br/>false：不支持beacon围栏。 |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+  try {
+    let isBeaconFenceSupported = geoLocationManager.isBeaconFenceSupported();
+  } catch (err) {
+    console.error("errCode:" + err.code + ", message:" + err.message);
+  }
+  ```
+
+
 ## geoLocationManager.isWlanBssidMatched<sup>21+</sup>
 
 ArkTS-Dyn: isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, needStartScan: boolean): Promise&lt;boolean&gt;
+
 ArkTS-Sta: isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: int, needStartScan: boolean): Promise&lt;boolean&gt;
 
 判断指定的BSSID是否存在于最新的WLAN扫描结果里。使用Promise异步回调。
@@ -3710,6 +4107,7 @@ ArkTS-Sta: isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold
 ## geoLocationManager.getActiveGeoFences<sup>23+</sup>
 
 ArkTS-Dyn: getActiveGeoFences(): Promise&lt;Map&lt;number, Geofence&gt;&gt;
+
 ArkTS-Sta: getActiveGeoFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
 
 查询当前有效的围栏信息。使用Promise异步回调。
