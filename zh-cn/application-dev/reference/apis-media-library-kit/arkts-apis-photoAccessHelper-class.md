@@ -39,7 +39,7 @@
 | recommendationOptions<sup>11+</sup>       | [RecommendationOptions](#recommendationoptions11)   | 否   | 是 | 图片推荐相关配置参数。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 24  |
 | preselectedUris<sup>11+</sup> | Array&lt;string&gt;  | 否   | 是 | 预选择图片的uri数据。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 24 |
 | isPreviewForSingleSelectionSupported<sup>12+</sup> | boolean  | 否   | 是 | 单选模式下是否需要进大图预览，true表示需要，false表示不需要，默认为true。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 24 |
-| singleSelectionMode<sup>18+</sup> | [SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18) | 否   | 是 | 单选模式类型。默认为大图预览模式（SingleSelectionMode.BROWSER_MODE）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 24 |
+| singleSelectionMode<sup>18+</sup> | [SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18) | 否   | 是 | 单选模式类型。默认为大图预览模式（SingleSelectionMode.BROWSER_MODE）。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 24 |
 | mimeTypeFilter<sup>19+</sup> | [MimeTypeFilter](#mimetypefilter19)  | 否   | 是 | 文件类型的过滤配置，支持指定多个类型过滤。<br>当配置mimeTypeFilter参数时，MIMEType的配置自动失效。<br>配置该参数时，仅显示配置过滤类型对应的媒体文件，建议提示用户仅支持选择指定类型的图片/视频。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 19<br>**ArkTS-Sta起始版本：** 24  |
 | fileSizeFilter<sup>19+</sup> | [FileSizeFilter](#filesizefilter19)  | 否   | 是 | 可选择媒体文件大小的过滤配置。<br>配置该参数时，仅显示配置文件大小范围的媒体文件，建议提示用户仅支持选择指定大小的图片/视频。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 19<br>**ArkTS-Sta起始版本：** 24  |
 | videoDurationFilter<sup>19+</sup> | [VideoDurationFilter](#videodurationfilter19)  | 否   | 是 | 可选择媒体文件视频时长的过滤配置。<br>配置该参数时，仅显示配置视频时长范围的媒体文件，建议提示用户仅支持选择指定时长视频。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 19<br>**ArkTS-Sta起始版本：** 24 |
@@ -60,7 +60,7 @@ PhotoSelectOptions extends BaseSelectOptions
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 24
 
