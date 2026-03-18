@@ -394,7 +394,6 @@ When the sync root update is complete, the common event service is triggered to 
 
 **Value**: usual.event.CLOUD_DISK_STATE_CHANGED
 
-
 ## Media Kit
 
 ### COMMON_EVENT_SCREEN_SHARE
