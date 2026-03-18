@@ -832,7 +832,7 @@ atManager.requestPermissionsFromUserWithWindowId(context, windowId, ['ohos.permi
 });
 ```
 
-### PermissionRequestToggleStatus<sup>12+</sup>
+## PermissionRequestToggleStatus<sup>12+</sup>
 
 表示指定权限对应的弹窗开关状态的枚举。
 
