@@ -253,7 +253,7 @@ The following APIs can trigger UI re-rendering:
 - Changing the array items: sort and fill
 
 Other APIs do not change the original array. Therefore, the UI re-rendering is not triggered.
-<!-- @[makeObserved_collections_Array_Set_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page4.ets) --> 
+<!-- @[makeObserved_collections_Array_Set_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page4.ets) -->
 
 ``` TypeScript
 import { collections } from '@kit.ArkTS';
@@ -302,11 +302,9 @@ struct Page4 {
         .color('blue')
         .margin(5)
 
-      /****************************APIs for Changing the Data Length**************************/
+      // APIs for changing the data length
       Scroll(this.scroller) {
         Column({ space: 10 }) {
-          // Divider()
-          //   .color('blue')
           // push: adds a new element.
           Button('push')
             .width('50%')
@@ -354,7 +352,7 @@ struct Page4 {
           Divider()
             .color('blue')
 
-          /****************************************APIs for Changing the Array Item*****************/
+          // Change the array items.
           // sort: arranging the Array item in descending order.
           Button('sort')
             .width('50%')
@@ -368,7 +366,7 @@ struct Page4 {
               this.arrCollect.fill(new Info(5), 0, 2);
             })
 
-          /*****************************APIs for Not Changing the Array Item***************************/
+          // APIs that do not change the array itself
           // slice: returns a new array. The original array is copied using Array.slice(start,end), which does not change the original array. Therefore, directly invoking slice does not trigger UI re-rendering.
           // You can construct a case to assign the return data of the shallow copy to this.arrCollect. Note that makeObserved must be called here. Otherwise, the observation capability will be lost after this.arr is assigned a value by a common variable.
           Button('slice')

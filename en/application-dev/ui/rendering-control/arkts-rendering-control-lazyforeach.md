@@ -133,7 +133,7 @@ When identical keys are generated for different data items, framework behavior b
 For details about the code of **BasicDataSource**, see [BasicDataSource Implementation for the String Array](#basicdatasource-implementation-for-the-string-array).
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -1207,7 +1207,7 @@ struct DragandDropSorting {
 For details about the code of **BasicDataSource**, see [BasicDataSource Implementation for the String Array](#basicdatasource-implementation-for-the-string-array).
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -1353,7 +1353,7 @@ After a data item is deleted, the **reloadData** method is called to rebuild the
 For details about the **GenericBasicDataSource** implementation, see [BasicDataSource Implementation for Generic Arrays](#basicdatasource-implementation-for-generic-arrays).
 
 ```ts
-/** For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section. **/
+// For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section.
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class MyDataSource extends GenericBasicDataSource<StringData> {
@@ -1525,7 +1525,7 @@ struct ImageFlickeringChildComponent {
 For details about the **GenericBasicDataSource** implementation, see [BasicDataSource Implementation for Generic Arrays](#basicdatasource-implementation-for-generic-arrays).
 
 ```ts
-/** For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section. **/
+// For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section.
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class MyDataSource extends GenericBasicDataSource<StringData> {
@@ -1703,7 +1703,7 @@ Invoking the **onDataReloaded** method within the **List** component's **onScrol
 For details about the code of **BasicDataSource**, see [BasicDataSource Implementation for the String Array](#basicdatasource-implementation-for-the-string-array).
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -1861,7 +1861,7 @@ Using @Reusable with [\@ComponentV2](../state-management/arkts-create-custom-com
 For details about the **GenericBasicDataSource** implementation, see [BasicDataSource Implementation for Generic Arrays](#basicdatasource-implementation-for-generic-arrays).
 
 ```ts
-/** For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section. **/
+// For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section.
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class MyDataSource extends GenericBasicDataSource<StringData> {
@@ -1953,7 +1953,7 @@ You need to define a proper function for key generation and return a key associa
 For details about the code of **BasicDataSource**, see [BasicDataSource Implementation for the String Array](#basicdatasource-implementation-for-the-string-array).
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -2032,7 +2032,7 @@ The parent component supporting lazy loading calculates the number of child comp
 For details about the code of **BasicDataSource**, see [BasicDataSource Implementation for the String Array](#basicdatasource-implementation-for-the-string-array).
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -2176,7 +2176,7 @@ export class BasicDataSource implements IDataSource {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
       // Method 2: listener.onDatasetChange(
-      //         [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
+      // [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
     });
   }
 
