@@ -418,7 +418,7 @@ let autoStartApps: Array<Want> = [
     // 下面为非必选参数
     parameters: {
       // 从API version 24开始支持，配置应用开机自启时，是否隐藏UI界面，true代表隐藏，该参数设置为true时，应用需接入状态栏，否则自启设置失败，抛出401异常。
-      isHiddenstart: true 
+      isHiddenStart: true 
     }
   }
 ];
@@ -610,7 +610,7 @@ try {
 }
 ```
 
-```
+```ts
 // 返回示例
 [
 	{
@@ -680,7 +680,7 @@ let autoStartApps: Array<Want> = [
     // 下面为非必选参数
     parameters: {
       // 从API version 24开始支持，配置应用开机自启时，是否隐藏UI界面，true代表隐藏，该参数设置为true时，应用需接入状态栏，否则自启设置失败，抛出401异常。
-      isHiddenstart: true 
+      isHiddenStart: true 
     }
   }
 ];
@@ -750,7 +750,7 @@ try {
 }
 ```
 
-```
+```ts
 // 返回示例
 [
 	{
