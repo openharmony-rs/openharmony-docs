@@ -1,953 +1,1690 @@
-# Atomics (原子操作)
-- Atomics用于解决多线程并发编程中的竞态条件问题，确保对共享数据的并发操作安全。
-- Atomics的所有方法都是静态方法，数据通过第一个参数`typedArray`传递。
-- `typedArray`指一类数组数据类型，具体请见下文表格。
-- `typedArray`是基于`ArrayBuffer`构建的。
+# Atomics (实例化原子类型接口)
 
-Atomics的各个方法不是每种`typedArray`都支持，各方法支持类型见下表：  
+ArkTS-Sta提供了一组实例化的原子类型，用于直接对单个共享值或对象引用执行原子操作。
 
-**类型支持表：**  
-| function |Int8Array|Int16Array|Int32Array|Uint8Array|Uint16Array|Uint32Array|BigInt64Array|BigUint64Array|
-|--|--|--|--|--|--|--|--|--|
-|add|支持|支持|支持|支持|支持|支持|支持|支持|
-|and|支持|支持|支持|支持|支持|支持|支持|支持|
-|compareExchange|支持|支持|支持|支持|支持|支持|支持|支持|
-|exchange|支持|支持|支持|支持|支持|支持|支持|支持|
-|load|支持|支持|支持|支持|支持|支持|支持|支持|
-|notify|不支持|不支持|支持|不支持|不支持|不支持|支持|不支持|
-|or|支持|支持|支持|支持|支持|支持|支持|支持|
-|store|支持|支持|支持|支持|支持|支持|支持|支持|
-|sub|支持|支持|支持|支持|支持|支持|支持|支持|
-|wait|不支持|不支持|支持|不支持|不支持|不支持|支持|不支持|
-|waitAsync|不支持|不支持|支持|不支持|不支持|不支持|支持|不支持|
-|xor|支持|支持|支持|支持|支持|支持|支持|支持|
+> **说明：**
+>
+> - 本文档仅适用于ArkTS-Sta。
+>
+> - 本文档中的实例化原子类型接口是当前推荐用法，更符合ArkTS-Sta的设计规范。
+>
+> - 基于typedArray的静态Atomics接口主要为兼容保留，不再作为推荐用法，相关内容请参见[基于typedArray的静态Atomics接口](arkts-sta-legacyatomics.md)。
 
-为了方便在各方法中表示支持的类型，将类型分为以下别名：
-- **smalltypedArray**: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array
-- **bigtypedArray**: BigInt64Array | BigUint64Array
+当前支持的实例化原子类型包括：AtomicReference\<T>、AtomicInt、AtomicLong、AtomicShort、AtomicByte、AtomicFloat、AtomicDouble、AtomicChar和AtomicBoolean。
 
-## add
+实例化原子类型的各个方法不是每种原子类都支持，各方法支持类型见下表：
 
-static add(typedArray: smalltypedArray, index: number, value: number): number  
+**类型支持表：**
+| function |AtomicReference\<T>|AtomicInt|AtomicLong|AtomicShort|AtomicByte|AtomicFloat|AtomicDouble|AtomicChar|AtomicBoolean|
+|--|--|--|--|--|--|--|--|--|--|
+|constructor|支持|支持|支持|支持|支持|支持|支持|支持|支持|
+|load|支持|支持|支持|支持|支持|支持|支持|支持|支持|
+|store|支持|支持|支持|支持|支持|支持|支持|支持|支持|
+|exchange|支持|支持|支持|支持|支持|支持|支持|支持|支持|
+|compareAndSwap|支持|支持|支持|支持|支持|支持|支持|支持|支持|
+|fetchAdd|不支持|支持|支持|支持|支持|支持|支持|不支持|不支持|
+|fetchSub|不支持|支持|支持|支持|支持|支持|支持|不支持|不支持|
+|fetchAnd|不支持|支持|支持|支持|支持|不支持|不支持|不支持|不支持|
+|fetchOr|不支持|支持|支持|支持|支持|不支持|不支持|不支持|不支持|
+|fetchXor|不支持|支持|支持|支持|支持|不支持|不支持|不支持|不支持|
+|isLockFree|支持|支持|支持|支持|支持|支持|支持|支持|支持|
 
-将typedArray[index]与value进行加法运算，结果写回typedArray[index]。
-此方法返回typedArray[index]被修改之前的值。
-此方法确保在修改typedArray[index]之前，其他线程不会进行读写操作。
+## AtomicReference\<T>
 
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | smalltypedArray                         | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。  |
-| value     | number                            | 是   | 执行运算的操作数，对应smalltypedArray中的元素类型，可为负数，不可为浮点数。        |
+AtomicReference\<T>用于对对象引用执行原子读写、交换和比较交换操作。
 
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| number      | 返回typedArray[index]被修改之前的值，与smalltypedArray中的元素类型一致，可为负数，不可为浮点数。   |
+### constructor
 
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
+constructor(ref: T)
 
-**示例**  
-```ts
-let ab = new ArrayBuffer(1024)
-let ta = new Uint8Array(ab)
-
-let old = Atomics.add(ta, 0, 12)
-let re = Atomics.load(ta, 0)
-console.info("old is:" + old) //0
-console.info("res is:" + re) //12
-```
-
-## add
-
-static add(typedArray: bigtypedArray, index: number, value: bigint): bigint  
-
-将typedArray[index]与value进行加法运算，结果写回typedArray[index]。  
-此方法返回在typedArray[index]被修改之前的值。  
-此方法确保在typedArray[index]被修改之前，typedArray[index]不会发生其他线程的读写操作。  
+构造AtomicReference\<T>实例，并使用ref作为初始引用值。
 
 **参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | bigtypedArray                          | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。  |
-| value     | bigint                            | 是   | 执行运算的操作数。         |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| bigint      | 返回typedArray[index]被修改之前的值。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
-
-**示例**  
-```ts
-let ab = new ArrayBuffer(1024)
-let ta = new BigInt64Array(ab)
-
-let old = Atomics.add(ta, 0, 12n)
-let re = Atomics.load(ta, 0)
-console.info("old is:" + old) //0
-console.info("res is:" + re) //12
-```
-
-## and
-
-static and(typedArray: smalltypedArray, index: number, value: number): number  
-
-将typedArray[index]与value进行按位与运算，结果写回typedArray[index]。  
-此方法返回在typedArray[index]被修改之前的值。  
-此方法确保在typedArray[index]被修改之前，typedArray[index]不会发生其他线程的读写操作。  
-
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | smalltypedArray                        | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。    |
-| value     | number                            | 是   | 执行运算的操作数，对应smalltypedArray中的元素类型，可为负数，不可为浮点数。         |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| number      | 返回typedArray[index]被修改之前的值，与smalltypedArray中的元素类型一致，可为负数，不可为浮点数。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| ref | T | 是 | AtomicReference\<T>的初始引用值。当泛型T包含null时，也可以传入null。 |
 
 **示例：**
 ```ts
-let ab = new ArrayBuffer(1024)
-let ta = new Uint8Array(ab)
-ta[0] = 3
-
-let old = Atomics.and(ta, 0, 2)
-let re = Atomics.load(ta, 0)
-console.info("old is:" + old) //3
-console.info("res is:" + re) //2
-```
-## and
-
-static and(typedArray: bigtypedArray, index: number, value: bigint): bigint  
-
-将typedArray[index]与value进行按位与运算，结果写回typedArray[index]。  
-此方法返回typedArray[index]被修改之前的值。  
-此方法确保在typedArray[index]被修改之前，typedArray[index]不会发生其他线程的读写操作。  
-
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | bigtypedArray                          | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。    |
-| value     | bigint                            | 是   | 执行运算的操作数。         |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| bigint      | 返回typedArray[index]被修改之前的值。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
-
-**示例：**
-```ts
-let ab = new ArrayBuffer(1024);
-let ta = new BigInt64Array(ab);
-ta[0] = 3n
-
-let old = Atomics.and(ta, 0, 2n)
-let re = Atomics.load(ta, 0)
-console.info("old is:" + old) //3
-console.info("res is:" + re) //2
-```
-
-## compareExchange
-
-static compareExchange(typedArray: smalltypedArray, index: number, expectedValue: number, replacementValue: number): number  
-
-如果typedArray[index]等于expectedValue，将typedArray[index]赋值为replacementValue，如果不相等则不做任何处理。  
-此方法返回typedArray[index]被修改之前的值。  
-此方法确保在typedArray[index]被修改之前，typedArray[index]不会发生其他线程的读写操作。  
-
-**参数：**
-| 名称     | 类型                                          | 必填 | 说明                   |
-| -------- | -------------------------------------------- | ---- | ---------------------- |
-| typedArray | smalltypedArray                              | 是   | 要操作的数组。    |
-| index     | number                                         | 是   | typedArray的索引。     |
-| expectedValue     | number             | 是   | 用于检查与typedArray[index]是否相等的值，对应smalltypedArray中的元素类型，可为负数，不可为浮点数。     |
-| replacementValue     | number          | 是   | typedArray[index]要被替换的值，对应smalltypedArray中的元素类型，可为负数，不可为浮点数。         |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| number       | 返回typedArray[index]被修改之前的值，与smalltypedArray中的元素类型一致，可为负数，不可为浮点数。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
-
-**示例：**
-```ts
-let ab = new ArrayBuffer(1024)
-let ta = new Uint8Array(ab)
-ta[0] = 7
-
-let old = Atomics.compareExchange(ta, 0, 7, 12)
-let re = Atomics.load(ta, 0)
-console.info("old is:" + old) //7
-console.info("res is:" + re) //12
-```
-## compareExchange
-
-static compareExchange(typedArray: bigtypedArray, index: number, expectedValue: bigint, replacementValue: bigint): bigint  
-
-如果typedArray[index]等于expectedValue，将typedArray[index]赋值为replacementValue，如果不相等则不做任何处理。  
-此方法返回typedArray[index]被修改之前的值。  
-此方法确保在typedArray[index]被修改之前，typedArray[index]不会发生其他线程的读写操作。  
-
-**参数：**
-| 名称     | 类型                                          | 必填 | 说明                   |
-| -------- | -------------------------------------------- | ---- | ---------------------- |
-| typedArray | bigtypedArray                                    | 是   | 要操作的数组。    |
-| index     | number                                         | 是   | typedArray的索引。     |
-| expectedValue     | bigint                              | 是   | 用于检查与typedArray[index]是否相等的值。     |
-| replacementValue     | bigint                           | 是   | typedArray[index]要被替换的值。         |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| bigint      | 返回typedArray[index]被修改之前的值。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
-
-**示例：**
-```ts
-let ab = new ArrayBuffer(1024)
-let ta = new BigInt64Array(ab)
-ta[0] = 7n
-
-let old = Atomics.compareExchange(ta, 0, 7n, 12n)
-let re = Atomics.load(ta, 0)
-console.info("old is:" + old) //7
-console.info("res is:" + re) //12
-```
-
-## exchange
-
-static exchange(typedArray: smalltypedArray, index: number, value: number): number  
-
-将typedArray[index]赋值为value。  
-此方法返回typedArray[index]被修改之前的值。  
-此方法确保在typedArray[index]被修改之前，typedArray[index]不会发生其他线程的读写操作。  
-
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | smalltypedArray                         | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。     |
-| value     | number         | 是   | typedArray[index]要被修改为的值，对应smalltypedArray中的元素类型，可为负数，不可为浮点数。     |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| number      | 返回typedArray[index]被修改前的值，对应smalltypedArray中的元素类型，可为负数，不可为浮点数。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
-
-**示例：**
-```ts
-let ab = new ArrayBuffer(1024)
-let ta = new Uint8Array(ab)
-
-let old = Atomics.exchange(ta, 0, 12)
-let re = Atomics.load(ta, 0)
-console.info("old is:" + old) //0
-console.info("res is:" + re) //12
-```
-## exchange
-
-static exchange(typedArray: bigtypedArray, index: number, value: bigint): bigint  
-
-将typedArray[index]赋值为value。  
-此方法返回typedArray[index]被修改之前的值。  
-此方法确保在typedArray[index]被修改之前，typedArray[index]不会发生其他线程的读写操作。  
-
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | bigtypedArray                         | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。     |
-| value     | bigint         | 是   | typedArray[index]要被修改为的值。         |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| bigint       | 返回typedArray[index]被修改前的值。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
-
-**示例：**
-```ts
-let ab = new ArrayBuffer(1024)
-let ta = new BigInt64Array(ab)
-
-let old = Atomics.exchange(ta, 0, 12n)
-let re = Atomics.load(ta, 0)
-console.info("old is:" + old) //0
-console.info("res is:" + re) //12
-```
-
-## isLockFree
-
-static isLockFree(byteSize: int): boolean
-
-Atomics的方法对数据字节大小有要求，只有符合字节大小要求的才能使用Atomics的方法。  
-此方法判断byteSize字节的大小是否适用于Atomics的方法。
-
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| byteSize | int                                 | 是   | 要判断是否可使用Atomics方法的字节大小。     |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| boolean      | 返回一个布尔值，表示是否可使用Atomics方法，true代表可以使用，false代表不可以使用。   |
-
-**示例：**
-```ts
-console.info("res is:" + Atomics.isLockFree(1)) //true
-console.info("res is:" + Atomics.isLockFree(2)) //true
-console.info("res is:" + Atomics.isLockFree(3)) //false
-console.info("res is:" + Atomics.isLockFree(4)) //true
-console.info("res is:" + Atomics.isLockFree(5)) //false
-console.info("res is:" + Atomics.isLockFree(6)) //false
-console.info("res is:" + Atomics.isLockFree(7)) //false
-console.info("res is:" + Atomics.isLockFree(8)) //true
-```
-
-## load
-
-static load(typedArray: smalltypedArray, index: number): number  
-
-返回typedArray[index]的值。  
-此方法确保在typedArray[index]被加载之前，typedArray[index]不会发生其他线程的读写操作。  
-
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | smalltypedArray                        | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。   |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| number      | 返回typedArray[index]的值，对应smalltypedArray中的元素类型，可为负数，不可为浮点数。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
-
-**示例：**
-```ts
-let ab = new ArrayBuffer(1024);
-let ta = new Uint8Array(ab);
-
-Atomics.add(ta, 0, 12);
-let re = Atomics.load(ta, 0)
-console.info("res is:" + re) //12
-```
-## load
-
-static load(typedArray: BigInt64Array, index: number): bigint  
-
-返回typedArray[index]的值。  
-此方法确保在typedArray[index]被加载之前，typedArray[index]不会发生其他线程的读写操作。  
-
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | BigInt64Array                         | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。   |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| bigint       | 返回typedArray[index]的值。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
-
-**示例：**
-```ts
-let ab = new ArrayBuffer(1024)
-let ta = new BigInt64Array(ab)
-
-Atomics.add(ta, 0, 12n)
-let re = Atomics.load(ta, 0)
-console.info("res is:" + re) //12
-```
-## load
-
-static load(typedArray: BigUint64Array, index: number): bigint  
-
-返回typedArray[index]的值。  
-此方法确保在typedArray[index]被加载之前，typedArray[index]不会发生其他线程的读写操作。  
-
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | BigUint64Array                         | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。   |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| bigint       | 返回typedArray[index]的值。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
-
-**示例：**
-```ts
-let ab = new ArrayBuffer(1024)
-let ta = new BigUint64Array(ab)
-
-Atomics.add(ta, 0, 12n)
-let re = Atomics.load(ta, 0)
-console.info("res is:" + re) //12
-```
-
-## notify
-
-static notify(typedArray: Int32Array | BigInt64Array, index: number, count?: number): int
-
-唤醒一些在等待typedArray[index]的Waiter。count可以指定唤醒Waiter的个数。  
-调用Atomics.wait(typedArray, index, value)会在typedArray[index]处产生一个Waiter。  
-wait等待时会将控制权让出，切换到其他任务执行，因此wait任务和notify任务可在同一线程中执行。
-
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | Int32Array \| BigInt64Array             | 是   | 要操作的数组。     |
-| index     | number                               | 是   |typedArray的索引，不能为负数。         |
-| count     | number                          | 否   | 要唤醒的休眠Waiter的数量。不能为负数，默认为Infinity。         |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| int         | 返回被唤醒的Waiter数量。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Index out of bounds" | 访问typedArray越界。<br>可能原因：index超出typedArray的边界。<br>处理步骤：确保传入的index在typedArray的范围内。如果无法保证，建议捕获RangeError异常。 |
-
-**示例：**  
-```ts
-function FuncWait(arr: BigInt64Array): void {
-    let re = Atomics.wait(arr, 0, 0n, 3000)
-    console.info("Atomics result: " + re) //ok
+class Container {
+    value: int = 1
 }
 
-function FuncNotify(arr: BigInt64Array): void {
-    let re = Atomics.wait(arr, 0, 0n, 1000)
-    console.info("Atomics result: " + re) //timed-out
-
-    Atomics.notify(arr, 0)
-}
-
-function testMain(): void {
-    let buf = new ArrayBuffer(1024)
-    let arr: BigInt64Array = new BigInt64Array(buf, 0)
-
-    Atomics.store(arr, 0, 0n)
-    let re = Atomics.wait(arr, 0, 1n)
-    console.info("Atomics result: " + re) //not-equal
-
-    let p1 = launch<void, (arr: BigInt64Array) => void>(FuncWait, arr)
-    FuncNotify(arr)
-    p1.Await()
-}
+let atomicRef = new AtomicReference<Container>(new Container())
 ```
 
-## or
+### load
 
-static or(typedArray: smalltypedArray, index: number, value: number): number  
+load(): T
 
-将typedArray[index]与value进行按位或运算，结果写回typedArray[index]。  
-此方法返回修改前的typedArray[index]值。  
-此方法确保在typedArray[index]被修改之前，typedArray[index]不会发生其他线程的读写操作。  
+原子读取当前引用值。
 
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | smalltypedArray                         | 是   | 要操作的数组。     |
-| index     | number                                | 是   | typedArray的索引。  |
-| value     | number                             | 是   | 执行运算的操作数，对应smalltypedArray中的元素类型，可为负数，不可为浮点数。   |
-
-**返回值：** 
-| 类型        | 说明                          |
-| ----------- | ---------------------------  |
-| number      | 返回typedArray[index]被修改之前的值，与smalltypedArray中的元素类型一致，可为负数，不可为浮点数。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前保存的引用值。 |
 
 **示例：**
 ```ts
-let ab = new ArrayBuffer(1024)
-let ta = new Uint8Array(ab)
-ta[0] = 2
-
-let old = Atomics.or(ta, 0, 1)
-let re = Atomics.load(ta, 0)
-console.info("old is:" + old) //2
-console.info("res is:" + re) //3
+let atomicRef = new AtomicReference<string>("hello")
+console.info(atomicRef.load()) // hello
 ```
-## or
 
-static or(typedArray: bigtypedArray, index: number, value: bigint): bigint  
+### store
 
-将typedArray[index]与value进行按位或运算，结果写回typedArray[index]。  
-此方法返回修改前的typedArray[index]值。  
-此方法确保在typedArray[index]被修改之前，typedArray[index]不会发生其他线程的读写操作。  
+store(ref: T): void
+
+原子写入新的引用值。
 
 **参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | bigtypedArray                         | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。  |
-| value     | bigint       | 是   | 执行运算的操作数。         |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| bigint       | 返回typedArray[index]被修改之前的值。        |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| ref | T | 是 | 要写入的新引用值。 |
 
 **示例：**
 ```ts
-let ab = new ArrayBuffer(1024)
-let ta = new BigInt64Array(ab)
-ta[0] = 2n
-
-let old = Atomics.or(ta, 0, 1n)
-let re = Atomics.load(ta, 0)
-console.info("old is:" + old) //2
-console.info("res is:" + re) //3
+let atomicRef = new AtomicReference<string>("hello")
+atomicRef.store("world")
+console.info(atomicRef.load()) // world
 ```
 
-## store
+### exchange
 
-static store(typedArray: smalltypedArray, index: number, value: number): number  
+exchange(ref: T): T
 
-将typedArray[index]赋值为value，并返回该值。
+原子写入新的引用值，并返回更新前的旧引用值。
 
 **参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | smalltypedArray                         | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。 |
-| value     | number         | 是   | 执行运算的操作数，对应smalltypedArray中的元素类型，可为负数，不可为浮点数。   |
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| ref | T | 是 | 要写入的新引用值。 |
 
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| number       | 返回要存储的新值value，对应smalltypedArray中的元素类型，可为负数，不可为浮点数。      |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回更新前的旧引用值。 |
 
 **示例：**
 ```ts
-let ab = new ArrayBuffer(1024)
-let ta = new Uint8Array(ab)
-
-let re = Atomics.store(ta, 0, 12)
-console.info("res is:" + re) //12
+let atomicRef = new AtomicReference<string>("a")
+let oldValue = atomicRef.exchange("b")
+console.info(oldValue) // a
+console.info(atomicRef.load()) // b
 ```
-## store
 
-static store(typedArray: bigtypedArray, index: number, value: bigint): bigint  
+### compareAndSwap
 
-将typedArray[index]赋值为value，并返回该值。  
+compareAndSwap(expected: T, ref: T): T
+
+如果当前引用值等于expected，则将其替换为ref；如果不相等，则不做修改。此方法返回修改前的旧引用值。
 
 **参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | bigtypedArray                         | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。 |
-| value     | bigint         | 是   | 执行运算的操作数。         |
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| expected | T | 是 | 预期的当前引用值。 |
+| ref | T | 是 | 匹配成功时要写入的新引用值。 |
 
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| bigint       | 返回要存储的新值value，对应smalltypedArray中的元素类型，可为负数，不可为浮点数。       |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 成功时返回expected，失败时返回实际的旧引用值。 |
 
 **示例：**
 ```ts
-let ab = new ArrayBuffer(1024)
-let ta = new BigInt64Array(ab)
-
-let re = Atomics.store(ta, 0, 12n)
-console.info("res is:" + re) //12
+let atomicRef = new AtomicReference<string>("a")
+let oldValue = atomicRef.compareAndSwap("a", "b")
+console.info(oldValue) // a
+console.info(atomicRef.load()) // b
 ```
 
-## sub
+### isLockFree
 
-static sub(typedArray: smalltypedArray, index: number, value: number): number  
+static isLockFree(): boolean
 
-将typedArray[index]与value做减法，结果写回typedArray[index]。  
-此方法返回typedArray[index]被修改之前的值。  
-此方法确保在typedArray[index]被修改之前，typedArray[index]不会发生其他线程的读写操作。  
+判断AtomicReference\<T>的实现是否为无锁实现。
 
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | smalltypedArray                         | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。         |
-| value     | number         | 是   | 执行运算的操作数，对应smalltypedArray中的元素类型，可为负数，不可为浮点数。    |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| number       | 返回typedArray[index]被修改之前的值，与smalltypedArray中的元素类型一致，可为负数，不可为浮点数。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | true表示无锁实现，false表示内部可能使用阻塞式同步机制。 |
 
 **示例：**
 ```ts
-let ab = new ArrayBuffer(1024)
-let ta = new Uint8Array(ab)
-ta[0] = 48
-
-let old = Atomics.sub(ta, 0, 12)
-let re = Atomics.load(ta, 0)
-console.info("old is:" + old) //48
-console.info("res is:" + re) //36
+console.info(AtomicReference.isLockFree().toString())
 ```
-## sub
 
-static sub(typedArray: bigtypedArray, index: number, value: bigint): bigint  
+## AtomicInt
 
-将typedArray[index]与value做减法，结果写回typedArray[index]。  
-此方法返回typedArray[index]被修改之前的值。  
-此方法确保在typedArray[index]被修改之前，typedArray[index]不会发生其他线程的读写操作。  
+AtomicInt用于对int类型值执行原子读写、交换、比较交换、加减和按位运算。
+
+### constructor
+
+constructor(val: int)
+
+构造AtomicInt实例，并使用val作为初始值。
 
 **参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | bigtypedArray                          | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。         |
-| value     | bigint                            | 是   | typedArray[index]要减去的值。         |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| bigint       | 返回typedArray[index]被修改之前的值。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | int | 是 | AtomicInt的初始值。 |
 
 **示例：**
 ```ts
-let ab = new ArrayBuffer(1024)
-let ta = new BigInt64Array(ab)
-ta[0] = 48n
-
-let old = Atomics.sub(ta, 0, 12n)
-let re = Atomics.load(ta, 0)
-console.info("old is:" + old) //48
-console.info("res is:" + re) //36
+let atomicInt = new AtomicInt(1)
 ```
 
-## wait
+### load
 
-static wait(typedArray: Int32Array, index: number, value: number, timeout?: number): string
+load(): int
 
-验证typedArray[index]是否等于value。如果不相等就直接返回"not-equal"。如果相等则进行等待状态。  
-当处于等待状态时，若收到notify信号，则结束等待并返回"ok"；如果设置了timeout超时时间，超过超时时间则不再等待并返回"time-out"，否则一直等待。  
-wait等待时会将控制权让出，切换到其他任务执行，因此wait任务和notify任务可在同一线程中执行。
+原子读取当前值。
 
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | Int32Array                         | 是   | 要操作的数组。     |
-| index     | number                               | 是   |typedArray的索引，不能为负数。   |
-| value     | number                           | 是   | typedArray[index]要比较相等性的数据。Int32类型取值范围         |
-| timeout     | number                           | 否   | 超时时间，单位毫秒（ms），不可为负数。     |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| string      | 返回等待结果。<br>"not-equal"：typedArray[index]不等于value；"ok"：<br>等待期间收到另外一个协程notify；<br>"timed-out"：等待超过设置的timeout超时时间。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Index out of bounds" | 访问typedArray越界。<br>可能原因：index超出typedArray的边界。<br>处理步骤：确保传入的index在typedArray的范围内。如果无法保证，建议捕获RangeError异常。 |
-
-**示例：**  
-```ts
-function FuncWait(arr: Int32Array): void {
-    let re = Atomics.wait(arr, 0, 0, 3000)
-    console.info("Atomics result: " + re) //ok
-}
-
-function FuncNotify(arr: Int32Array): void {
-    let re = Atomics.wait(arr, 0, 0, 1000)
-    console.info("Atomics result: " + re) //timed-out
-
-    Atomics.notify(arr, 0)
-}
-
-function testMain(): void {
-    let buf = new ArrayBuffer(1024)
-    let arr: Int32Array = new Int32Array(buf, 0)
-
-    Atomics.store(arr, 0, 0)
-    let re = Atomics.wait(arr, 0, 1)
-    console.info("Atomics result: " + re) //not-equal
-
-    let p1 = launch<void, (arr: Int32Array) => void>(FuncWait, arr)
-    FuncNotify(arr)
-    p1.Await()
-}
-```
-## wait
-
-static wait(typedArray: BigInt64Array, index: nubmer, value: bigint, timeout?: number): string
-
-验证typedArray[index]是否等于value。如果不相等就直接返回"not-equal"。如果相等则进行等待状态。  
-当处于等待状态时，若收到notify信号，则结束等待并返回"ok"；如果设置了timeout超时时间，超过超时时间则不再等待并返回"time-out"，否则一直等待。  
-wait等待时会将控制权让出，切换到其他任务执行，因此wait任务和notify任务可在同一线程中执行。
-
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | BigInt64Array                         | 是   | 要操作的数组。     |
-| index     | number                               | 是   |typedArray的索引，不能为负数。   |
-| value     | bigint                           | 是   | typedArray[index]要比较相等性的数据。         |
-| timeout     | number                           | 否   | 超时时间，单位毫秒（ms），不可为负数。     |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| string      | 返回等待结果。<br>"not-equal"：typedArray[index]不等于value；"ok"：<br>等待期间收到另外一个协程notify；<br>"timed-out"：等待超过设置的timeout超时时间。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Index out of bounds" | 访问typedArray越界。<br>可能原因：index超出typedArray的边界。<br>处理步骤：确保传入的index在typedArray的范围内。如果无法保证，建议捕获RangeError异常。 |
-
-**示例：**  
-```ts
-function FuncWait(arr: BigInt64Array): void {
-    let re = Atomics.wait(arr, 0, 0n, 3000)
-    console.info("Atomics result: " + re) //ok
-}
-
-function FuncNotify(arr: BigInt64Array): void {
-    let re = Atomics.wait(arr, 0, 0n, 1000)
-    console.info("Atomics result: " + re) //timed-out
-
-    Atomics.notify(arr, 0)
-}
-
-function testMain(): void {
-    let buf = new ArrayBuffer(1024)
-    let arr: BigInt64Array = new BigInt64Array(buf, 0)
-
-    Atomics.store(arr, 0, 0n)
-    let re = Atomics.wait(arr, 0, 1n)
-    console.info("Atomics result: " + re) //not-equal
-
-    let p1 = launch<void, (arr: BigInt64Array) => void>(FuncWait, arr)
-    FuncNotify(arr)
-    p1.Await()
-}
-```
-
-## waitAsync
-
-async static waitAsync(typedArray: Int32Array | BigInt64Array, index: number, value: bigint, timeout?: number): Promise\<string>
-
-等待共享内存的特定位置，与wait不同，不会阻塞调用者。  
-等待结果可通过返回值获得。  
-wait等待时会将控制权让出，切换到其他任务执行，因此wait任务和notify任务可在同一线程中执行。
-
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | Int32Array \| BigInt64Array            | 是   | 要操作的数组。     |
-| index     | number                               | 是   |typedArray的索引，不能为负数。   |
-| value      | bigint                          | 是   | typedArray[index]要比较相等性的数据。     |
-| timeout     | number                           | 否   | 超时时间，单位毫秒（ms），不可为负数。     |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| Promise\<string>   | 返回等待结果。<br>"not-equal"：typedArray[index]不等于value；<br>"ok"：等待期间收到另外一个协程notify；<br>"timed-out"：等待超过设置的timeout超时时间。 |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Index out of bounds" | 访问typedArray越界。<br>可能原因：index超出typedArray的边界。<br>处理步骤：确保传入的index在typedArray的范围内。如果无法保证，建议捕获RangeError异常。 |
-
-**示例：**  
-```ts
-function FuncWaitAsync(arr: Int32Array): void {
-    Atomics.store(arr, 0, 0)
-
-    let re: Promise<string> = Atomics.waitAsync(arr,0, 1n)
-    re.then((value: string): void => {
-        console.info(value) // not-equal
-    }, (err: Error): void => {
-        console.info("Test failed. The promise shouldn`t be rejected.")
-    });
-
-    let re2 = Atomics.waitAsync(arr, 0, 0n, 2000)
-    re2.then((value: string): void => {
-        console.info(value) // timed-out
-    }, (err: Error): void => {
-        console.info("Test failed. The promise shouldn`t be rejected.")
-    });
-
-    let re3 = Atomics.waitAsync(arr, 0, 0n, 10000)
-    re3.then((value: string): void => {
-        console.info(value) // ok
-    }, (err: Error): void => {
-        console.info("Test failed. The promise shouldn`t be rejected.")
-    });
-}
-
-function FuncNotify(arr: Int32Array): void {
-    setTimeout(() => {
-        Atomics.notify(arr, 0)
-    }, 5000);
-}
-
-function testMain(): void {
-    let buf = new ArrayBuffer(1024);
-    let arr: Int32Array = new Int32Array(buf, 0);
-    FuncWaitAsync(arr)
-    FuncNotify(arr)
-}
-```
-
-## xor
-
-static xor(typedArray: smalltypedArray, index: number, value: number): number  
-
-将typedArray[index]与value进行按位异或运算，结果写回typedArray[index]。
-此方法返回在typedArray[index]被修改之前的值。
-此方法确保在typedArray[index]被修改之前，typedArray[index]不会发生其他线程的读写操作。  
-
-**参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | smalltypedArray                        | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。    |
-| value     | number              | 是   | 执行运算的操作数，对应smalltypedArray中的元素类型，可为负数，不可为浮点数。 |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| number      | 返回typedArray[index]被修改之前的值，与smalltypedArray中的元素类型一致，可为负数，不可为浮点数。  |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| int | 返回当前保存的值。 |
 
 **示例：**
 ```ts
-let ab = new ArrayBuffer(1024)
-let ta = new Uint8Array(ab)
-ta[0] = 5
-
-let old = Atomics.xor(ta, 0, 1)
-let re = Atomics.load(ta, 0)
-console.info("old is:" + old) //5
-console.info("res is:" + re) //4
+let atomicInt = new AtomicInt(5)
+console.info(atomicInt.load().toString()) // 5
 ```
-## xor
 
-static xor(typedArray: bigtypedArray, index: number, value: bigint): bigint  
+### store
 
-将typedArray[index]与value进行按位异或运算，结果写回typedArray[index]。  
-此方法返回typedArray[index]被修改之前的值。  
-此方法确保在typedArray[index]被修改之前，typedArray[index]不会发生其他线程的读写操作。  
+store(val: int): void
+
+原子写入新值。
 
 **参数：**
-| 名称     | 类型                                    | 必填 | 说明                   |
-| -------- | --------------------------------------- | ---- | ---------------------- |
-| typedArray | bigtypedArray                          | 是   | 要操作的数组。     |
-| index     | number                               | 是   | typedArray的索引。    |
-| value     | bigint                            | 是   | 执行运算的操作数。         |
-
-**返回值：** 
-| 类型        | 说明                         |
-| ----------- | --------------------------- |
-| bigint       | 返回typedArray[index]被修改之前的值。   |
-
-**错误信息**
-| 错误信息        | 说明                         |
-| ----------- | --------------------------- |
-| "Unhandled array type!" | typedArray不在支持的类型范围内 |
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | int | 是 | 要写入的新值。 |
 
 **示例：**
 ```ts
-let ab = new ArrayBuffer(1024)
-let ta = new BigInt64Array(ab)
-ta[0] = 5n
+let atomicInt = new AtomicInt(1)
+atomicInt.store(2)
+console.info(atomicInt.load().toString()) // 2
+```
 
-let old = Atomics.xor(ta, 0, 1n)
-let re = Atomics.load(ta, 0)
-console.info("old is:" + old) //5
-console.info("res is:" + re) //4
+### exchange
+
+exchange(val: int): int
+
+原子写入新值，并返回更新前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | int | 是 | 要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| int | 返回更新前的旧值。 |
+
+**示例：**
+```ts
+let atomicInt = new AtomicInt(1)
+let oldValue = atomicInt.exchange(2)
+console.info(oldValue.toString()) // 1
+console.info(atomicInt.load().toString()) // 2
+```
+
+### compareAndSwap
+
+compareAndSwap(expected: int, val: int): int
+
+如果当前值等于expected，则将其替换为val；如果不相等，则不做修改。此方法返回修改前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| expected | int | 是 | 预期的当前值。 |
+| val | int | 是 | 匹配成功时要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| int | 成功时返回expected，失败时返回实际的旧值。 |
+
+**示例：**
+```ts
+let atomicInt = new AtomicInt(1)
+let oldValue = atomicInt.compareAndSwap(1, 2)
+console.info(oldValue.toString()) // 1
+console.info(atomicInt.load().toString()) // 2
+```
+
+### fetchAdd
+
+fetchAdd(val: int): int
+
+原子将当前值加上val，并返回加法执行前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | int | 是 | 执行加法运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| int | 返回加法执行前的旧值。 |
+
+**示例：**
+```ts
+let atomicInt = new AtomicInt(1)
+let oldValue = atomicInt.fetchAdd(4)
+console.info(oldValue.toString()) // 1
+console.info(atomicInt.load().toString()) // 5
+```
+
+### fetchSub
+
+fetchSub(val: int): int
+
+原子将当前值减去val，并返回减法执行前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | int | 是 | 执行减法运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| int | 返回减法执行前的旧值。 |
+
+**示例：**
+```ts
+let atomicInt = new AtomicInt(10)
+let oldValue = atomicInt.fetchSub(3)
+console.info(oldValue.toString()) // 10
+console.info(atomicInt.load().toString()) // 7
+```
+
+### fetchAnd
+
+fetchAnd(val: int): int
+
+原子将当前值与val执行按位与运算，并返回运算前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | int | 是 | 执行按位与运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| int | 返回按位与运算前的旧值。 |
+
+**示例：**
+```ts
+let atomicInt = new AtomicInt(15)
+let oldValue = atomicInt.fetchAnd(6)
+console.info(oldValue.toString()) // 15
+console.info(atomicInt.load().toString()) // 6
+```
+
+### fetchOr
+
+fetchOr(val: int): int
+
+原子将当前值与val执行按位或运算，并返回运算前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | int | 是 | 执行按位或运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| int | 返回按位或运算前的旧值。 |
+
+**示例：**
+```ts
+let atomicInt = new AtomicInt(3)
+let oldValue = atomicInt.fetchOr(4)
+console.info(oldValue.toString()) // 3
+console.info(atomicInt.load().toString()) // 7
+```
+
+### fetchXor
+
+fetchXor(val: int): int
+
+原子将当前值与val执行按位异或运算，并返回运算前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | int | 是 | 执行按位异或运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| int | 返回按位异或运算前的旧值。 |
+
+**示例：**
+```ts
+let atomicInt = new AtomicInt(5)
+let oldValue = atomicInt.fetchXor(3)
+console.info(oldValue.toString()) // 5
+console.info(atomicInt.load().toString()) // 6
+```
+
+### isLockFree
+
+static isLockFree(): boolean
+
+判断AtomicInt的实现是否为无锁实现。
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | true表示无锁实现，false表示内部可能使用阻塞式同步机制。 |
+
+**示例：**
+```ts
+console.info(AtomicInt.isLockFree().toString())
+```
+
+## AtomicLong
+
+AtomicLong用于对long类型值执行原子读写、交换、比较交换、加减和按位运算。
+
+### constructor
+
+constructor(val: long)
+
+构造AtomicLong实例，并使用val作为初始值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | long | 是 | AtomicLong的初始值。 |
+
+**示例：**
+```ts
+let atomicLong = new AtomicLong(16)
+```
+
+### load
+
+load(): long
+
+原子读取当前值。
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| long | 返回当前保存的值。 |
+
+**示例：**
+```ts
+let atomicLong = new AtomicLong(16)
+console.info(atomicLong.load().toString()) // 16
+```
+
+### store
+
+store(val: long): void
+
+原子写入新值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | long | 是 | 要写入的新值。 |
+
+**示例：**
+```ts
+let atomicLong = new AtomicLong(16)
+atomicLong.store(20)
+console.info(atomicLong.load().toString()) // 20
+```
+
+### exchange
+
+exchange(val: long): long
+
+原子写入新值，并返回更新前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | long | 是 | 要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| long | 返回更新前的旧值。 |
+
+**示例：**
+```ts
+let atomicLong = new AtomicLong(16)
+let oldValue = atomicLong.exchange(18)
+console.info(oldValue.toString()) // 16
+console.info(atomicLong.load().toString()) // 18
+```
+
+### compareAndSwap
+
+compareAndSwap(expected: long, val: long): long
+
+如果当前值等于expected，则将其替换为val；如果不相等，则不做修改。此方法返回修改前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| expected | long | 是 | 预期的当前值。 |
+| val | long | 是 | 匹配成功时要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| long | 成功时返回expected，失败时返回实际的旧值。 |
+
+**示例：**
+```ts
+let atomicLong = new AtomicLong(16)
+let oldValue = atomicLong.compareAndSwap(16, 20)
+console.info(oldValue.toString()) // 16
+console.info(atomicLong.load().toString()) // 20
+```
+
+### fetchAdd
+
+fetchAdd(val: long): long
+
+原子将当前值加上val，并返回加法执行前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | long | 是 | 执行加法运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| long | 返回加法执行前的旧值。 |
+
+**示例：**
+```ts
+let atomicLong = new AtomicLong(16)
+let oldValue = atomicLong.fetchAdd(4)
+console.info(oldValue.toString()) // 16
+console.info(atomicLong.load().toString()) // 20
+```
+
+### fetchSub
+
+fetchSub(val: long): long
+
+原子将当前值减去val，并返回减法执行前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | long | 是 | 执行减法运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| long | 返回减法执行前的旧值。 |
+
+**示例：**
+```ts
+let atomicLong = new AtomicLong(16)
+let oldValue = atomicLong.fetchSub(6)
+console.info(oldValue.toString()) // 16
+console.info(atomicLong.load().toString()) // 10
+```
+
+### fetchAnd
+
+fetchAnd(val: long): long
+
+原子将当前值与val执行按位与运算，并返回运算前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | long | 是 | 执行按位与运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| long | 返回按位与运算前的旧值。 |
+
+**示例：**
+```ts
+let atomicLong = new AtomicLong(10)
+let oldValue = atomicLong.fetchAnd(7)
+console.info(oldValue.toString()) // 10
+console.info(atomicLong.load().toString()) // 2
+```
+
+### fetchOr
+
+fetchOr(val: long): long
+
+原子将当前值与val执行按位或运算，并返回运算前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | long | 是 | 执行按位或运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| long | 返回按位或运算前的旧值。 |
+
+**示例：**
+```ts
+let atomicLong = new AtomicLong(2)
+let oldValue = atomicLong.fetchOr(4)
+console.info(oldValue.toString()) // 2
+console.info(atomicLong.load().toString()) // 6
+```
+
+### fetchXor
+
+fetchXor(val: long): long
+
+原子将当前值与val执行按位异或运算，并返回运算前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | long | 是 | 执行按位异或运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| long | 返回按位异或运算前的旧值。 |
+
+**示例：**
+```ts
+let atomicLong = new AtomicLong(5)
+let oldValue = atomicLong.fetchXor(3)
+console.info(oldValue.toString()) // 5
+console.info(atomicLong.load().toString()) // 6
+```
+
+### isLockFree
+
+static isLockFree(): boolean
+
+判断AtomicLong的实现是否为无锁实现。
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | true表示无锁实现，false表示内部可能使用阻塞式同步机制。 |
+
+**示例：**
+```ts
+console.info(AtomicLong.isLockFree().toString())
+```
+
+## AtomicShort
+
+AtomicShort用于对short类型值执行原子读写、交换、比较交换、加减和按位运算。
+
+### constructor
+
+constructor(val: short)
+
+构造AtomicShort实例，并使用val作为初始值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | short | 是 | AtomicShort的初始值。 |
+
+**示例：**
+```ts
+let atomicShort = new AtomicShort(3)
+```
+
+### load
+
+load(): short
+
+原子读取当前值。
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| short | 返回当前保存的值。 |
+
+**示例：**
+```ts
+let atomicShort = new AtomicShort(3)
+console.info(atomicShort.load().toString()) // 3
+```
+
+### store
+
+store(val: short): void
+
+原子写入新值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | short | 是 | 要写入的新值。 |
+
+**示例：**
+```ts
+let atomicShort = new AtomicShort(3)
+atomicShort.store(4)
+console.info(atomicShort.load().toString()) // 4
+```
+
+### exchange
+
+exchange(val: short): short
+
+原子写入新值，并返回更新前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | short | 是 | 要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| short | 返回更新前的旧值。 |
+
+**示例：**
+```ts
+let atomicShort = new AtomicShort(3)
+let oldValue = atomicShort.exchange(5)
+console.info(oldValue.toString()) // 3
+console.info(atomicShort.load().toString()) // 5
+```
+
+### compareAndSwap
+
+compareAndSwap(expected: short, val: short): short
+
+如果当前值等于expected，则将其替换为val；如果不相等，则不做修改。此方法返回修改前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| expected | short | 是 | 预期的当前值。 |
+| val | short | 是 | 匹配成功时要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| short | 成功时返回expected，失败时返回实际的旧值。 |
+
+**示例：**
+```ts
+let atomicShort = new AtomicShort(7)
+let oldValue = atomicShort.compareAndSwap(7, 2)
+console.info(oldValue.toString()) // 7
+console.info(atomicShort.load().toString()) // 2
+```
+
+### fetchAdd
+
+fetchAdd(val: short): short
+
+原子将当前值加上val，并返回加法执行前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | short | 是 | 执行加法运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| short | 返回加法执行前的旧值。 |
+
+**示例：**
+```ts
+let atomicShort = new AtomicShort(2)
+let oldValue = atomicShort.fetchAdd(3)
+console.info(oldValue.toString()) // 2
+console.info(atomicShort.load().toString()) // 5
+```
+
+### fetchSub
+
+fetchSub(val: short): short
+
+原子将当前值减去val，并返回减法执行前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | short | 是 | 执行减法运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| short | 返回减法执行前的旧值。 |
+
+**示例：**
+```ts
+let atomicShort = new AtomicShort(8)
+let oldValue = atomicShort.fetchSub(3)
+console.info(oldValue.toString()) // 8
+console.info(atomicShort.load().toString()) // 5
+```
+
+### fetchAnd
+
+fetchAnd(val: short): short
+
+原子将当前值与val执行按位与运算，并返回运算前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | short | 是 | 执行按位与运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| short | 返回按位与运算前的旧值。 |
+
+**示例：**
+```ts
+let atomicShort = new AtomicShort(7)
+let oldValue = atomicShort.fetchAnd(6)
+console.info(oldValue.toString()) // 7
+console.info(atomicShort.load().toString()) // 6
+```
+
+### fetchOr
+
+fetchOr(val: short): short
+
+原子将当前值与val执行按位或运算，并返回运算前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | short | 是 | 执行按位或运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| short | 返回按位或运算前的旧值。 |
+
+**示例：**
+```ts
+let atomicShort = new AtomicShort(3)
+let oldValue = atomicShort.fetchOr(4)
+console.info(oldValue.toString()) // 3
+console.info(atomicShort.load().toString()) // 7
+```
+
+### fetchXor
+
+fetchXor(val: short): short
+
+原子将当前值与val执行按位异或运算，并返回运算前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | short | 是 | 执行按位异或运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| short | 返回按位异或运算前的旧值。 |
+
+**示例：**
+```ts
+let atomicShort = new AtomicShort(5)
+let oldValue = atomicShort.fetchXor(3)
+console.info(oldValue.toString()) // 5
+console.info(atomicShort.load().toString()) // 6
+```
+
+### isLockFree
+
+static isLockFree(): boolean
+
+判断AtomicShort的实现是否为无锁实现。
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | true表示无锁实现，false表示内部可能使用阻塞式同步机制。 |
+
+**示例：**
+```ts
+console.info(AtomicShort.isLockFree().toString())
+```
+
+## AtomicByte
+
+AtomicByte用于对byte类型值执行原子读写、交换、比较交换、加减和按位运算。
+
+### constructor
+
+constructor(val: byte)
+
+构造AtomicByte实例，并使用val作为初始值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | byte | 是 | AtomicByte的初始值。 |
+
+**示例：**
+```ts
+let atomicByte = new AtomicByte(5)
+```
+
+### load
+
+load(): byte
+
+原子读取当前值。
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| byte | 返回当前保存的值。 |
+
+**示例：**
+```ts
+let atomicByte = new AtomicByte(5)
+console.info(atomicByte.load().toString()) // 5
+```
+
+### store
+
+store(val: byte): void
+
+原子写入新值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | byte | 是 | 要写入的新值。 |
+
+**示例：**
+```ts
+let atomicByte = new AtomicByte(5)
+atomicByte.store(6)
+console.info(atomicByte.load().toString()) // 6
+```
+
+### exchange
+
+exchange(val: byte): byte
+
+原子写入新值，并返回更新前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | byte | 是 | 要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| byte | 返回更新前的旧值。 |
+
+**示例：**
+```ts
+let atomicByte = new AtomicByte(5)
+let oldValue = atomicByte.exchange(1)
+console.info(oldValue.toString()) // 5
+console.info(atomicByte.load().toString()) // 1
+```
+
+### compareAndSwap
+
+compareAndSwap(expected: byte, val: byte): byte
+
+如果当前值等于expected，则将其替换为val；如果不相等，则不做修改。此方法返回修改前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| expected | byte | 是 | 预期的当前值。 |
+| val | byte | 是 | 匹配成功时要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| byte | 成功时返回expected，失败时返回实际的旧值。 |
+
+**示例：**
+```ts
+let atomicByte = new AtomicByte(5)
+let oldValue = atomicByte.compareAndSwap(5, 2)
+console.info(oldValue.toString()) // 5
+console.info(atomicByte.load().toString()) // 2
+```
+
+### fetchAdd
+
+fetchAdd(val: byte): byte
+
+原子将当前值加上val，并返回加法执行前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | byte | 是 | 执行加法运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| byte | 返回加法执行前的旧值。 |
+
+**示例：**
+```ts
+let atomicByte = new AtomicByte(1)
+let oldValue = atomicByte.fetchAdd(4)
+console.info(oldValue.toString()) // 1
+console.info(atomicByte.load().toString()) // 5
+```
+
+### fetchSub
+
+fetchSub(val: byte): byte
+
+原子将当前值减去val，并返回减法执行前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | byte | 是 | 执行减法运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| byte | 返回减法执行前的旧值。 |
+
+**示例：**
+```ts
+let atomicByte = new AtomicByte(8)
+let oldValue = atomicByte.fetchSub(3)
+console.info(oldValue.toString()) // 8
+console.info(atomicByte.load().toString()) // 5
+```
+
+### fetchAnd
+
+fetchAnd(val: byte): byte
+
+原子将当前值与val执行按位与运算，并返回运算前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | byte | 是 | 执行按位与运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| byte | 返回按位与运算前的旧值。 |
+
+**示例：**
+```ts
+let atomicByte = new AtomicByte(7)
+let oldValue = atomicByte.fetchAnd(6)
+console.info(oldValue.toString()) // 7
+console.info(atomicByte.load().toString()) // 6
+```
+
+### fetchOr
+
+fetchOr(val: byte): byte
+
+原子将当前值与val执行按位或运算，并返回运算前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | byte | 是 | 执行按位或运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| byte | 返回按位或运算前的旧值。 |
+
+**示例：**
+```ts
+let atomicByte = new AtomicByte(3)
+let oldValue = atomicByte.fetchOr(4)
+console.info(oldValue.toString()) // 3
+console.info(atomicByte.load().toString()) // 7
+```
+
+### fetchXor
+
+fetchXor(val: byte): byte
+
+原子将当前值与val执行按位异或运算，并返回运算前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | byte | 是 | 执行按位异或运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| byte | 返回按位异或运算前的旧值。 |
+
+**示例：**
+```ts
+let atomicByte = new AtomicByte(5)
+let oldValue = atomicByte.fetchXor(3)
+console.info(oldValue.toString()) // 5
+console.info(atomicByte.load().toString()) // 6
+```
+
+### isLockFree
+
+static isLockFree(): boolean
+
+判断AtomicByte的实现是否为无锁实现。
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | true表示无锁实现，false表示内部可能使用阻塞式同步机制。 |
+
+**示例：**
+```ts
+console.info(AtomicByte.isLockFree().toString())
+```
+
+## AtomicFloat
+
+AtomicFloat用于对float类型值执行原子读写、交换、比较交换、加减运算。
+
+### constructor
+
+constructor(val: float)
+
+构造AtomicFloat实例，并使用val作为初始值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | float | 是 | AtomicFloat的初始值。 |
+
+**示例：**
+```ts
+let atomicFloat = new AtomicFloat(1.5)
+```
+
+### load
+
+load(): float
+
+原子读取当前值。
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| float | 返回当前保存的值。 |
+
+**示例：**
+```ts
+let atomicFloat = new AtomicFloat(1.5)
+console.info(atomicFloat.load().toString()) // 1.5
+```
+
+### store
+
+store(val: float): void
+
+原子写入新值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | float | 是 | 要写入的新值。 |
+
+**示例：**
+```ts
+let atomicFloat = new AtomicFloat(1.5)
+atomicFloat.store(2.5)
+console.info(atomicFloat.load().toString()) // 2.5
+```
+
+### exchange
+
+exchange(val: float): float
+
+原子写入新值，并返回更新前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | float | 是 | 要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| float | 返回更新前的旧值。 |
+
+**示例：**
+```ts
+let atomicFloat = new AtomicFloat(1.5)
+let oldValue = atomicFloat.exchange(2.5)
+console.info(oldValue.toString()) // 1.5
+console.info(atomicFloat.load().toString()) // 2.5
+```
+
+### compareAndSwap
+
+compareAndSwap(expected: float, val: float): float
+
+如果当前值等于expected，则将其替换为val；如果不相等，则不做修改。此方法返回修改前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| expected | float | 是 | 预期的当前值。 |
+| val | float | 是 | 匹配成功时要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| float | 成功时返回expected，失败时返回实际的旧值。 |
+
+**示例：**
+```ts
+let atomicFloat = new AtomicFloat(1.5)
+let oldValue = atomicFloat.compareAndSwap(1.5, 3.0)
+console.info(oldValue.toString()) // 1.5
+console.info(atomicFloat.load().toString()) // 3
+```
+
+### fetchAdd
+
+fetchAdd(val: float): float
+
+原子将当前值加上val，并返回加法执行前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | float | 是 | 执行加法运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| float | 返回加法执行前的旧值。 |
+
+**示例：**
+```ts
+let atomicFloat = new AtomicFloat(1.5)
+let oldValue = atomicFloat.fetchAdd(0.5)
+console.info(oldValue.toString()) // 1.5
+console.info(atomicFloat.load().toString()) // 2
+```
+
+### fetchSub
+
+fetchSub(val: float): float
+
+原子将当前值减去val，并返回减法执行前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | float | 是 | 执行减法运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| float | 返回减法执行前的旧值。 |
+
+**示例：**
+```ts
+let atomicFloat = new AtomicFloat(3.5)
+let oldValue = atomicFloat.fetchSub(1.0)
+console.info(oldValue.toString()) // 3.5
+console.info(atomicFloat.load().toString()) // 2.5
+```
+
+### isLockFree
+
+static isLockFree(): boolean
+
+判断AtomicFloat的实现是否为无锁实现。
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | true表示无锁实现，false表示内部可能使用阻塞式同步机制。 |
+
+**示例：**
+```ts
+console.info(AtomicFloat.isLockFree().toString())
+```
+
+## AtomicDouble
+
+AtomicDouble用于对double类型值执行原子读写、交换、比较交换、加减运算。
+
+### constructor
+
+constructor(val: double)
+
+构造AtomicDouble实例，并使用val作为初始值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | double | 是 | AtomicDouble的初始值。 |
+
+**示例：**
+```ts
+let atomicDouble = new AtomicDouble(10.0)
+```
+
+### load
+
+load(): double
+
+原子读取当前值。
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| double | 返回当前保存的值。 |
+
+**示例：**
+```ts
+let atomicDouble = new AtomicDouble(10.0)
+console.info(atomicDouble.load().toString()) // 10
+```
+
+### store
+
+store(val: double): void
+
+原子写入新值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | double | 是 | 要写入的新值。 |
+
+**示例：**
+```ts
+let atomicDouble = new AtomicDouble(10.0)
+atomicDouble.store(11.5)
+console.info(atomicDouble.load().toString()) // 11.5
+```
+
+### exchange
+
+exchange(val: double): double
+
+原子写入新值，并返回更新前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | double | 是 | 要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| double | 返回更新前的旧值。 |
+
+**示例：**
+```ts
+let atomicDouble = new AtomicDouble(10.0)
+let oldValue = atomicDouble.exchange(12.0)
+console.info(oldValue.toString()) // 10
+console.info(atomicDouble.load().toString()) // 12
+```
+
+### compareAndSwap
+
+compareAndSwap(expected: double, val: double): double
+
+如果当前值等于expected，则将其替换为val；如果不相等，则不做修改。此方法返回修改前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| expected | double | 是 | 预期的当前值。 |
+| val | double | 是 | 匹配成功时要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| double | 成功时返回expected，失败时返回实际的旧值。 |
+
+**示例：**
+```ts
+let atomicDouble = new AtomicDouble(7.5)
+let oldValue = atomicDouble.compareAndSwap(7.5, 12.0)
+console.info(oldValue.toString()) // 7.5
+console.info(atomicDouble.load().toString()) // 12
+```
+
+### fetchAdd
+
+fetchAdd(val: double): double
+
+原子将当前值加上val，并返回加法执行前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | double | 是 | 执行加法运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| double | 返回加法执行前的旧值。 |
+
+**示例：**
+```ts
+let atomicDouble = new AtomicDouble(1.5)
+let oldValue = atomicDouble.fetchAdd(0.5)
+console.info(oldValue.toString()) // 1.5
+console.info(atomicDouble.load().toString()) // 2
+```
+
+### fetchSub
+
+fetchSub(val: double): double
+
+原子将当前值减去val，并返回减法执行前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | double | 是 | 执行减法运算的操作数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| double | 返回减法执行前的旧值。 |
+
+**示例：**
+```ts
+let atomicDouble = new AtomicDouble(10.0)
+let oldValue = atomicDouble.fetchSub(2.5)
+console.info(oldValue.toString()) // 10
+console.info(atomicDouble.load().toString()) // 7.5
+```
+
+### isLockFree
+
+static isLockFree(): boolean
+
+判断AtomicDouble的实现是否为无锁实现。
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | true表示无锁实现，false表示内部可能使用阻塞式同步机制。 |
+
+**示例：**
+```ts
+console.info(AtomicDouble.isLockFree().toString())
+```
+
+## AtomicChar
+
+AtomicChar用于对char类型值执行原子读写、交换和比较交换操作。
+
+### constructor
+
+constructor(val: char)
+
+构造AtomicChar实例，并使用val作为初始值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | char | 是 | AtomicChar的初始值。 |
+
+**示例：**
+```ts
+let atomicChar = new AtomicChar(c'a')
+```
+
+### load
+
+load(): char
+
+原子读取当前值。
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| char | 返回当前保存的值。 |
+
+**示例：**
+```ts
+let atomicChar = new AtomicChar(c'a')
+console.info(atomicChar.load()) // a
+```
+
+### store
+
+store(val: char): void
+
+原子写入新值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | char | 是 | 要写入的新值。 |
+
+**示例：**
+```ts
+let atomicChar = new AtomicChar(c'a')
+atomicChar.store(c'b')
+console.info(atomicChar.load()) // b
+```
+
+### exchange
+
+exchange(val: char): char
+
+原子写入新值，并返回更新前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | char | 是 | 要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| char | 返回更新前的旧值。 |
+
+**示例：**
+```ts
+let atomicChar = new AtomicChar(c'a')
+let oldValue = atomicChar.exchange(c'b')
+console.info(oldValue) // a
+console.info(atomicChar.load()) // b
+```
+
+### compareAndSwap
+
+compareAndSwap(expected: char, val: char): char
+
+如果当前值等于expected，则将其替换为val；如果不相等，则不做修改。此方法返回修改前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| expected | char | 是 | 预期的当前值。 |
+| val | char | 是 | 匹配成功时要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| char | 成功时返回expected，失败时返回实际的旧值。 |
+
+**示例：**
+```ts
+let atomicChar = new AtomicChar(c'a')
+let oldValue = atomicChar.compareAndSwap(c'a', c'b')
+console.info(oldValue) // a
+console.info(atomicChar.load()) // b
+```
+
+### isLockFree
+
+static isLockFree(): boolean
+
+判断AtomicChar的实现是否为无锁实现。
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | true表示无锁实现，false表示内部可能使用阻塞式同步机制。 |
+
+**示例：**
+```ts
+console.info(AtomicChar.isLockFree().toString())
+```
+
+## AtomicBoolean
+
+AtomicBoolean用于对boolean类型值执行原子读写、交换和比较交换操作。
+
+### constructor
+
+constructor(val: boolean)
+
+构造AtomicBoolean实例，并使用val作为初始值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | boolean | 是 | AtomicBoolean的初始值。 |
+
+**示例：**
+```ts
+let atomicBoolean = new AtomicBoolean(false)
+```
+
+### load
+
+load(): boolean
+
+原子读取当前值。
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 返回当前保存的值。 |
+
+**示例：**
+```ts
+let atomicBoolean = new AtomicBoolean(false)
+console.info(atomicBoolean.load().toString()) // false
+```
+
+### store
+
+store(val: boolean): void
+
+原子写入新值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | boolean | 是 | 要写入的新值。 |
+
+**示例：**
+```ts
+let atomicBoolean = new AtomicBoolean(false)
+atomicBoolean.store(true)
+console.info(atomicBoolean.load().toString()) // true
+```
+
+### exchange
+
+exchange(val: boolean): boolean
+
+原子写入新值，并返回更新前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| val | boolean | 是 | 要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 返回更新前的旧值。 |
+
+**示例：**
+```ts
+let atomicBoolean = new AtomicBoolean(false)
+let oldValue = atomicBoolean.exchange(true)
+console.info(oldValue.toString()) // false
+console.info(atomicBoolean.load().toString()) // true
+```
+
+### compareAndSwap
+
+compareAndSwap(expected: boolean, val: boolean): boolean
+
+如果当前值等于expected，则将其替换为val；如果不相等，则不做修改。此方法返回修改前的旧值。
+
+**参数：**
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| expected | boolean | 是 | 预期的当前值。 |
+| val | boolean | 是 | 匹配成功时要写入的新值。 |
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 成功时返回expected，失败时返回实际的旧值。 |
+
+**示例：**
+```ts
+let atomicBoolean = new AtomicBoolean(false)
+let oldValue = atomicBoolean.compareAndSwap(false, true)
+console.info(oldValue.toString()) // false
+console.info(atomicBoolean.load().toString()) // true
+```
+
+### isLockFree
+
+static isLockFree(): boolean
+
+判断AtomicBoolean的实现是否为无锁实现。
+
+**返回值：**
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | true表示无锁实现，false表示内部可能使用阻塞式同步机制。 |
+
+**示例：**
+```ts
+console.info(AtomicBoolean.isLockFree().toString())
 ```
