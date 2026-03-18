@@ -12761,9 +12761,9 @@
 						"start_line":440
 					},
 					{
-						"end_line":368,
+						"end_line":369,
 						"name":"gesture_callback",
-						"start_line":317
+						"start_line":318
 					}
 				]
 			},
