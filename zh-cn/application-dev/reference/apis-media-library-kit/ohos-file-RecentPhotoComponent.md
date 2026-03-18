@@ -15,6 +15,7 @@
 ## 导入模块
 
 ```ts
+// 在API version 22之前，导入RecentPhotoInfo、RecentPhotoCheckInfoCallback需要使用 'import { RecentPhotoInfo, RecentPhotoCheckInfoCallback } from @ohos.file.PhotoPickerComponent'
 import {
   RecentPhotoComponent, RecentPhotoOptions, RecentPhotoCheckResultCallback, RecentPhotoInfo, RecentPhotoCheckInfoCallback,
   RecentPhotoClickCallback, PhotoSource, RecentPhotoInfo, RecentPhotoCheckInfoCallback,
@@ -144,6 +145,7 @@ type RecentPhotoCheckInfoCallback = (recentPhotoExists: boolean, info: RecentPho
 
 ```ts
 // xxx.ets
+// 在API version 22之前，导入RecentPhotoInfo、RecentPhotoCheckInfoCallback需要使用 'import { RecentPhotoInfo, RecentPhotoCheckInfoCallback } from @ohos.file.PhotoPickerComponent'
 import {
   photoAccessHelper,
    RecentPhotoComponent, 
