@@ -103,7 +103,7 @@ libusb_ndk.z.so
 
 2. 获取配置描述符及声明接口。
     
-   使用 **usb_ddk_api.h** 的 **OH_Usb_GetConfigDescriptor** 接口获取配置描述符 **config**，并使用 OH_Usb_ClaimInterface 声明"认领"接口。
+   使用 **usb_ddk_api.h** 的 **OH_Usb_GetConfigDescriptor** 接口获取配置描述符 **config**，并使用 **OH_Usb_ClaimInterface** 声明"认领"接口。
 
    <!-- @[driver_usb_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
    
@@ -202,13 +202,13 @@ libusb_ndk.z.so
     ```
 
 
-    <!-- @[driver_usb_step5_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
+    <!-- @[driver_usb_step5_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->   
     
     ``` C++
     struct UsbRequestPipe pipe;
     pipe.interfaceHandle = g_interfaceHandle;
     pipe.endpoint = g_dataEp;
-    pipe.timeout = 4; //  中断传输超时时间，保持和手写板bInterval保持一致
+    pipe.timeout = 4; // 中断传输超时时间，保持和手写板bInterval保持一致
     // 读取手写板数据
     // 通过USB中断传输方式，读取键值
     ret = OH_Usb_SendPipeRequest(&pipe, devMmap);

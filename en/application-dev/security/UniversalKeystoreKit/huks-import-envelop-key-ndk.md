@@ -9,7 +9,11 @@
 
 The [digital envelope](./huks-key-import-overview.md#digital-envelope-import) feature is supported since API version 23.
 
-The following uses how to import RSA and AES keys using digital envelope as an example. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-key-import-overview.md#supported-algorithms). **The DSA algorithm is not supported for key import using digital envelope.** To import a key using digital envelope, the tag **HUKS_TAG_UNWRAP_ALGORITHM_SUITE** is required, and the tag value is **HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING**. When importing a key pair of an asymmetric key using digital envelope, you need to add [OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag) and encapsulate the public key in X.509 DER format into the tag. Only key pairs can be imported for asymmetric keys.
+The following uses how to import RSA and AES keys using digital envelope as an example. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-key-import-overview.md#supported-algorithms). **The DSA algorithm is not supported for key import using digital envelope.**
+
+To import keys using digital envelope, you need to use the [OH_HUKS_TAG_UNWRAP_ALGORITHM_SUITE](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag) whose value is [OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_algsuite).
+
+When importing a key pair of an asymmetric key using digital envelope, you need to add the [OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag) tag and encapsulate the public key in X.509 DER format into the tag. Only key pairs can be imported for asymmetric keys.
 
 ## Linking the Dynamic Library in the CMake Script
 ```txt
@@ -17,7 +21,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```
 ## How to Develop
 1. Device A (service side) generates an SM4 key (**cipherSm4**).
-2. Device A uses the generated SM4 key to encrypt the to-be-imported key **importKey** in ECB/NoPadding mode (**enImportKey** is set to **Encrypt(cipherSm4, importKey)**).
+2. Device A uses the generated SM4 key to encrypt the value of **importKey** in ECB/NoPadding mode, obtaining the encrypted key (enImportKey=Encrypt(cipherSm4, importKey)).
 3. Device B (key importer) exports the SM2 public key. Device A receives the key.
 4. Device A uses the received SM2 public key to encrypt the generated SM4 key (**enSm4** is set to **Encrypt(Sm2, cipherSm4)**).
 5. Device A sends the digital envelope data to device B.

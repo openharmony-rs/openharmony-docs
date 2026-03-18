@@ -9,8 +9,12 @@
 本模块提供XML生成和解析的接口。
 
 本模块提供了两种生成XML文件的方式:
-* [XmlSerializer](#xmlserializer)：适用于已知XML文本大小的情况
+* [XmlSerializer](#xmlserializer)：适用于已知XML文本大小的情况。
 * [XmlDynamicSerializer<sup>20+</sup>](#xmldynamicserializer20)：适用于未知XML文本大小的情况。
+
+本模块提供了两种解析XML文件的方式:
+* [XmlPullParser](#xmlpullparser)：适用于对xml文本进行随机访问和灵活解析的场景。
+* [XmlSAXParser<sup>24+</sup>](#xmlsaxparser24)：适用于流式解析xml文本的场景，当xml文本较大，其他解析方式会消耗较多内存，建议采用流式解析。
 
 > **说明：**
 >
@@ -1518,3 +1522,253 @@ console.info(str);
 | INSTRUCTION      | 8    | XML处理指令声明事件。 |
 | ENTITY_REFERENCE | 9    | 实体引用事件。        |
 | WHITESPACE       | 10   | 空白事件。            |
+
+## XmlSAXParser<sup>24+</sup>
+
+XmlSAXParser类用于以流式方式解析XML文本。适用于需要边读取边处理的场景，支持从[stream.Readable](js-apis-stream.md#readable) 流中读取XML数据并进行解析。
+
+### constructor<sup>24+</sup>
+
+constructor(inputStream: stream.Readable, encoding?: string)
+
+XmlSAXParser的构造函数。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名       | 类型             | 必填 | 说明                                             |
+| ------------ | ---------------- | ---- | ------------------------------------------------ |
+| inputStream  | [stream.Readable](js-apis-stream.md#readable)  | 是   | 用于读取XML数据的可读流实例。                    |
+| encoding     | string           | 否   | 编码格式，默认为'utf-8'（目前仅支持'utf-8'）。     |
+
+**示例：**
+
+```ts
+import { xml, stream } from '@kit.ArkTS';
+
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: number) {
+  }
+}
+
+let readableStream = new TestReadable();
+let saxParser = new xml.XmlSAXParser(readableStream, 'utf-8');
+```
+
+### parse<sup>24+</sup>
+
+parse(xmlSAXHandler: XmlSAXHandler): void
+
+使用SAX（Simple API for XML）方式解析XML数据。
+
+> **说明：**
+>
+> - 在调用parse函数后，用户可以通过控制流的方式来控制解析进度。任意数据块被消费后，解析器会解析相应的进度。具体流控制方式详见[@ohos.util.stream (数据流基类stream)](js-apis-stream.md)。
+> - parse接口注册了流的on监听器，不建议再对流的监听器进行操作。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名         | 类型                               | 必填 | 说明                    |
+| -------------- | ---------------------------------- | ---- | ----------------------- |
+| xmlSAXHandler  | [XmlSAXHandler](#xmlsaxhandler24)  | 是   | SAX处理器对象。         |
+
+**示例：**
+
+```ts
+import { xml, stream } from '@kit.ArkTS';
+
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: number) {
+  }
+}
+
+let readableStream = new TestReadable();
+let saxParser = new xml.XmlSAXParser(readableStream);
+
+let handler: xml.XmlSAXHandler = {
+  startDocument: () => {},
+  endDocument: () => {},
+  startElement: (elementName: string, namespaceURI: string | undefined, qName: string | undefined, attributes: Map<string, string>) => {},
+  endElement: (elementName: string, namespaceURI: string | undefined, qName: string | undefined) => {},
+  characters: (content: string) => {}
+};
+
+saxParser.parse(handler);
+```
+
+## XmlSAXHandler<sup>24+</sup>
+
+XmlSAXHandler定义了SAX解析xml文本时的回调方法。开发者需要实现这些回调方法来处理xml文本的不同部分。这些回调方法会在xml解析过程的对应时机触发。startDocument会在开始解析文档时触发，endDocument会在结束文档解析时触发，startElement会在开始解析元素时触发，endElement会在结束解析元素时触发，characters则会在解析元素间文本内容时触发。
+
+### startDocument<sup>24+</sup>
+
+startDocument(): void
+
+当解析器在XML文本开始解析时触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters<sup>24+</sup>](#characters24)。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+### endDocument<sup>24+</sup>
+
+endDocument(): void
+
+当解析器在XML文本结束解析时触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters<sup>24+</sup>](#characters24)。
+
+> **说明：**
+>
+> 当可读流结束时触发此回调。在stream中调用push()，传入null值，从而触发该回调。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+### startElement<sup>24+</sup>
+
+startElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined, attributes: Map<string, string>): void
+
+当解析器在XML文本中元素开始解析时触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters<sup>24+</sup>](#characters24)。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名        | 类型                      | 必填 | 说明                                   |
+| ------------- | ------------------------- | ---- | -------------------------------------- |
+| elementName   | string                    | 是   | 解析器回传的元素名称（不包含命名空间前缀）。例如，对于`<ns2:child>`，elementName为"child"。 |
+| namespaceURI  | string \| undefined       | 是   | 解析器回传的命名空间URI。例如，对于`xmlns:ns2="http://example.com/ns2"`，namespaceURI为`"http://example.com/ns2"`。如果元素没有命名空间则为undefined。 |
+| qName        | string \| undefined       | 是   | 解析器回传的元素限定名（包含命名空间前缀）。例如，对于`<ns2:child>`，qName为"ns2:child"。如果元素没有命名空间则qName为undefined。 |
+| attributes    | Map<string, string>       | 是   | 解析器回传的元素的属性映射表，键为属性名（可能包含命名空间前缀，如"ns2:attrA"），值为属性值。 |
+
+### endElement<sup>24+</sup>
+
+endElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined): void
+
+当解析器在XML文本中元素结束解析触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters<sup>24+</sup>](#characters24)。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名        | 类型                      | 必填 | 说明                                   |
+| ------------- | ------------------------- | ---- | -------------------------------------- |
+| elementName   | string                    | 是   | 解析器回传的元素名称（不包含命名空间前缀）。例如，对于`<ns2:child>`，elementName为"child"。 |
+| namespaceURI  | string \| undefined       | 是   | 解析器回传的命名空间URI。例如，对于`xmlns:ns2="http://example.com/ns2"`，namespaceURI为`"http://example.com/ns2"`。如果元素没有命名空间则为undefined。 |
+| qName        | string \| undefined       | 是   | 解析器回传的元素限定名（包含命名空间前缀）。例如，对于`<ns2:child>`，qName为"ns2:child"。如果元素没有命名空间则qName为undefined。 |
+
+### characters<sup>24+</sup>
+
+characters(content: string): void
+
+当解析器在XML元素内部遇到文本内容时调用的回调函数。该回调函数需要开发者自行实现。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明             |
+| -------- | ------ | ---- | ---------------- |
+| content  | string | 是   | 解析器回传元素中的文本内容。       |
+
+**示例：**
+
+```ts
+import { xml, stream } from '@kit.ArkTS';
+
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: number) {
+  }
+}
+
+const saxHandler: xml.XmlSAXHandler = {
+  startDocument() {
+    console.info("startDocument");
+  },
+  endDocument() {
+    console.info("endDocument");
+  },
+  startElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined, attributes: Map<string, string>) {
+    console.info("startElement elementName:", elementName);
+    console.info("startElement namespaceURI:", namespaceURI);
+    console.info("startElement qName:", qName);
+    if (attributes) {
+      attributes.forEach((value, key) => {
+        console.info("startElement attribute:", key, "=", value);
+      });
+    }
+  },
+  endElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined) {
+    console.info("endElement elementName:", elementName);
+  },
+  characters(content: string) {
+    console.info("characters:", content);
+  }
+};
+
+let readableStream = new TestReadable();
+let saxParser = new xml.XmlSAXParser(readableStream);
+saxParser.parse(saxHandler);
+
+let testData = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+  '<root xmlns:ns1="http://example.com/ns1">\n' +
+  '  <ns1:child ns1:attr1="value1" attr2="value2">Text content</ns1:child>\n' +
+  '</root>';
+
+readableStream.push(testData);
+readableStream.push(null);
+// 输出示例：
+// startDocument
+// startElement elementName: root
+// startElement namespaceURI: undefined
+// startElement qName: undefined
+// characters: 
+// 
+// startElement elementName: child
+// startElement namespaceURI: http://example.com/ns1
+// startElement qName: ns1:child
+// startElement attribute: attr2 = value2
+// startElement attribute: ns1:attr1 = value1
+// characters: Text content
+// endElement elementName: child
+// characters: 
+// endElement elementName: root
+// endDocument
+```

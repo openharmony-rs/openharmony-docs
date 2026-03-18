@@ -138,9 +138,9 @@ async function testCmsVerifyTest() {
     let verify: cert.CmsParser = cert.createCmsParser();
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
-    console.info(`verifySignedData success.`);
+    console.info(`verifySignedData result: success.`);
   } catch (error) {
-    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+    console.error(`verifySignedData failed: errCode: ${error.code}, message: ${error.message}`);
   }
 }
 ```

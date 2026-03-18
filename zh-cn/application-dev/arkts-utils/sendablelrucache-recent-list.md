@@ -16,19 +16,19 @@
 1. 创建SendableLruCache实例对象，并根据业务需求预设最大容量。<br/>
    此例设置SendableLruCache实例的最大容量为4，用SendableClass类管理，并导出SendableClass类实例对象。
 
-   <!-- @[define_SendableClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/utils/LruCache.ets) -->     
+   <!-- @[define_SendableClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/utils/LruCache.ets) -->
    
    ``` TypeScript
    // LruCache.ets
    import { ArkTSUtils } from '@kit.ArkTS';
    
-   // 使用use shared标记为共享模块。
+   // 使用use shared标记为共享模块
    'use shared'
    
-   // SendableClass实例对象在不同线程间可共享。
+   // SendableClass实例对象在不同线程间可共享
    @Sendable
    class SendableClass {
-     // 使用SendableLruCache实例对象时需加锁，避免多线程同时操作导致数据不一致。
+     // 使用SendableLruCache实例对象时需加锁，避免多线程同时操作导致数据不一致
      private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
      private books_: ArkTSUtils.SendableLruCache<string, string> = new ArkTSUtils.SendableLruCache<string, string>(4);
    
@@ -39,7 +39,7 @@
        this.books_.put('first', 'Book1');
      }
    
-     // 封装put、get、keys方法，加锁操作。
+     // 封装put、get、keys方法，加锁操作
      public async put(key: string, value: string) {
        await this.lock_.lockAsync(() => {
          this.books_.put(key, value);
@@ -204,7 +204,7 @@
    }
    ```
    
-   ``` json
+   ``` json5
    // main_pages.json
 
    {
@@ -213,14 +213,15 @@
        "pages/Book1",
        "pages/Book2",
        "pages/Book3",
-       "pages/Book4"
+       "pages/Book4",
+       "pages/GetRecentList"
      ]
    }
    ```
 
 3. 访问书架页面时，自动展示最近访问的图书列表。
 
-   <!-- @[get_recentList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/GetRecentList.ets) -->     
+   <!-- @[get_recentList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/GetRecentList.ets) -->
    
    ``` TypeScript
    // GetRecentList.ets
@@ -230,7 +231,7 @@
    
    @Concurrent
    async function updateBooks(key: string, value: string) {
-     // 在子线程更新最近访问列表。
+     // 在子线程更新最近访问列表
      await lruCache.put(key, value);
    }
    
@@ -241,7 +242,7 @@
      @State books: string[] = [];
    
      async aboutToAppear () {
-       // 自动获取最近访问的图书列表。
+       // 自动获取最近访问的图书列表
        this.books = await lruCache.keys();
      }
    
@@ -260,7 +261,7 @@
            .padding(10)
            .fontWeight(FontWeight.Bold)
            .onClick(async () => {
-             // 获取绑定的图书信息。
+             // 获取绑定的图书信息
              let value = await lruCache.get(this.books[3]);
              // 更新最近访问列表
              taskpool.execute(updateBooks, this.books[3], value);
@@ -271,9 +272,9 @@
            .padding(10)
            .fontWeight(FontWeight.Bold)
            .onClick(async () => {
-             // 获取绑定的图书信息。
+             // 获取绑定的图书信息
              let value = await lruCache.get(this.books[2]);
-             // 更新最近访问列表。
+             // 更新最近访问列表
              taskpool.execute(updateBooks, this.books[2], value);
              this.getUIContext().getRouter().pushUrl({ url: 'pages/' + value });
            })
@@ -282,9 +283,9 @@
            .padding(10)
            .fontWeight(FontWeight.Bold)
            .onClick(async () => {
-             // 获取绑定的图书信息。
+             // 获取绑定的图书信息
              let value = await lruCache.get(this.books[1]);
-             // 更新最近访问列表。
+             // 更新最近访问列表
              taskpool.execute(updateBooks, this.books[1], value);
              this.getUIContext().getRouter().pushUrl({ url: 'pages/' + value });
            })
@@ -293,9 +294,9 @@
            .padding(10)
            .fontWeight(FontWeight.Bold)
            .onClick(async () => {
-             // 获取绑定的图书信息。
+             // 获取绑定的图书信息
              let value = await lruCache.get(this.books[0]);
-             // 更新最近访问列表。
+             // 更新最近访问列表
              taskpool.execute(updateBooks, this.books[0], value);
              this.getUIContext().getRouter().pushUrl({ url: 'pages/' + value });
            })

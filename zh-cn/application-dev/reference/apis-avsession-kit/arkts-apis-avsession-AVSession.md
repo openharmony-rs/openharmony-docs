@@ -61,7 +61,7 @@ setAVMetadata(data: AVMetadata): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -119,7 +119,7 @@ setAVMetadata(data: AVMetadata, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -184,7 +184,7 @@ setCallMetadata(data: CallMetadata): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -231,9 +231,9 @@ class CallManager {
       console.info('setCallMetadata successfully');
     } catch (err) {
       if (err) {
-        console.error('setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}');
+        console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
       } else {
-        console.error('setCallMetadata Error: ${err}')
+        console.error(`setCallMetadata Error: ${err}`)
       }
     }
   }
@@ -257,7 +257,7 @@ setCallMetadata(data: CallMetadata, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -302,7 +302,7 @@ class CallManager {
       };
       this.currentAVSession?.setCallMetadata(calldata, (err: BusinessError) => {
         if (err) {
-          console.error('setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}');
+          console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
         } else {
           console.info("setCallMetadata successfully");
         }
@@ -336,7 +336,7 @@ setAVCallState(state: AVCallState): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -377,7 +377,7 @@ setAVCallState(state: AVCallState, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -427,7 +427,7 @@ setAVPlaybackState(state: AVPlaybackState): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -472,7 +472,7 @@ setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -526,7 +526,7 @@ setLaunchAbility(ability: WantAgent): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -594,7 +594,7 @@ setLaunchAbility(ability: WantAgent, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -675,11 +675,11 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 | parameter check failed. 1.mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -751,7 +751,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 | parameter check failed. 1.mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -820,7 +820,7 @@ setAVQueueItems(items: Array\<AVQueueItem>): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -910,7 +910,7 @@ setAVQueueItems(items: Array\<AVQueueItem>, callback: AsyncCallback\<void>): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -1010,7 +1010,7 @@ setAVQueueTitle(title: string): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -1048,7 +1048,7 @@ setAVQueueTitle(title: string, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -1075,7 +1075,7 @@ currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError) => {
 
 setExtras(extras: {[key: string]: Object}): Promise\<void>
 
-媒体提供方设置键值对形式的自定义媒体数据包，使用Promise异步回调。
+媒体提供方设置键值对形式的自定义媒体数据包。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1091,14 +1091,15 @@ setExtras(extras: {[key: string]: Object}): Promise\<void>
 
 | 类型           | 说明                          |
 | -------------- | ----------------------------- |
-| Promise\<void> | Promise对象。当自定义媒体数据包设置成功，无返回结果，否则返回错误对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified.2.Parameter verification failed.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -1286,6 +1287,8 @@ enableDesktopLyric(enable: boolean): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明       |
@@ -1356,6 +1359,8 @@ setDesktopLyricVisible(visible: boolean): Promise\<void>
 设置当前会话桌面歌词的显示状态。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1429,6 +1434,8 @@ isDesktopLyricVisible(): Promise\<boolean>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型           | 说明                          |
@@ -1492,6 +1499,8 @@ onDesktopLyricVisibilityChanged(callback: Callback\<boolean>): void
 显示桌面歌词状态变更的监听事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1557,6 +1566,8 @@ offDesktopLyricVisibilityChanged(callback?: Callback\<boolean>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型                   | 必填 | 说明                            |
@@ -1618,6 +1629,8 @@ setDesktopLyricState(state: DesktopLyricState): Promise\<void>
 设置当前会话桌面歌词状态。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1694,6 +1707,8 @@ getDesktopLyricState(): Promise\<DesktopLyricState>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型           | 说明                          |
@@ -1762,6 +1777,8 @@ onDesktopLyricStateChanged(callback: Callback\<DesktopLyricState>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型                   | 必填 | 说明                            |
@@ -1826,6 +1843,8 @@ offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
 取消桌面歌词状态变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -2404,7 +2423,7 @@ on(type: 'play', callback: () => void): void
 
 **错误码：**
   
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2474,7 +2493,7 @@ on(type: 'pause', callback: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2511,7 +2530,7 @@ on(type:'stop', callback: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2548,7 +2567,7 @@ on(type:'playNext', callback: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2618,7 +2637,7 @@ on(type:'playPrevious', callback: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2690,7 +2709,7 @@ on(type: 'fastForward', callback: (time?: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2760,7 +2779,7 @@ on(type:'rewind', callback: (time?: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2899,7 +2918,7 @@ on(type: 'seek', callback: (time: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2936,7 +2955,7 @@ on(type: 'setSpeed', callback: (speed: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2973,7 +2992,7 @@ on(type: 'setLoopMode', callback: (mode: LoopMode) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3010,7 +3029,7 @@ on(type: 'setTargetLoopMode', callback: Callback\<LoopMode>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3046,7 +3065,7 @@ on(type: 'toggleFavorite', callback: (assetId: string) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3083,7 +3102,7 @@ on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3120,7 +3139,7 @@ on(type: 'handleKeyEvent', callback: (event: KeyEvent) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | --------- |
@@ -3160,7 +3179,7 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3201,7 +3220,7 @@ on(type: 'commonCommand', callback: (command :string, args:{[key: string]: Objec
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 | parameter check failed. 1.Mandatory parameters are left upspecified. 2.Incorrect parameter types.|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -3262,7 +3281,7 @@ off(type: 'play', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3326,7 +3345,7 @@ off(type: 'pause', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3359,7 +3378,7 @@ off(type: 'stop', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3392,7 +3411,7 @@ off(type: 'playNext', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3456,7 +3475,7 @@ off(type: 'playPrevious', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3520,7 +3539,7 @@ off(type: 'fastForward', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3584,7 +3603,7 @@ off(type: 'rewind', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3648,7 +3667,7 @@ off(type: 'seek', callback?: (time: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3681,7 +3700,7 @@ off(type: 'setSpeed', callback?: (speed: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3714,7 +3733,7 @@ off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3747,7 +3766,7 @@ off(type: 'setTargetLoopMode', callback?: Callback\<LoopMode>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3779,7 +3798,7 @@ off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3812,7 +3831,7 @@ off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | --------- |
@@ -3845,7 +3864,7 @@ off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3878,7 +3897,7 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3946,7 +3965,7 @@ on(type: 'answer', callback: Callback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -3981,7 +4000,7 @@ off(type: 'answer', callback?: Callback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -4016,7 +4035,7 @@ on(type: 'hangUp', callback: Callback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -4051,7 +4070,7 @@ off(type: 'hangUp', callback?: Callback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -4086,7 +4105,7 @@ on(type: 'toggleCallMute', callback: Callback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -4121,7 +4140,7 @@ off(type: 'toggleCallMute', callback?: Callback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -4156,7 +4175,7 @@ on(type: 'castDisplayChange', callback: Callback\<CastDisplayInfo>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -4197,7 +4216,7 @@ currentAVSession.on('castDisplayChange', (display: avSession.CastDisplayInfo) =>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -4383,7 +4402,7 @@ on(type:'playFromAssetId', callback: (assetId: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -4421,7 +4440,7 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|

@@ -158,6 +158,6 @@ struct Index {
 
 > **注意：**
 > 
-> OpenMP程序运行时，Hilog中会输出“dlopen_impl load library header failed for libarcher.so”的报错信息（如下图）。该报错信息中提到的libarcher.so，在OpenMP程序开启Tsan检测时才需要使用。目前OpenHarmony未支持OpenMP程序的Tsan检测能力，因此该错误信息可忽略，不影响程序正常运行。
+> OpenMP程序运行时，HiLog中会输出“dlopen_impl load library header failed for libarcher.so”的报错信息（如下图）。该报错信息中提到的libarcher.so，在OpenMP程序开启Tsan检测时才需要使用。目前OpenHarmony未支持OpenMP程序的Tsan检测能力，因此该错误信息可忽略，不影响程序正常运行。
 >
 > ![image2](./figures/omp-error.png)

@@ -38,8 +38,12 @@
 
    | 属性名称 | 含义 | 数据类型 | 必填 |
    | -------- | -------- | -------- | -------- |
-   | path | 共享路径配置，默认为[el2目录](share-app-file.md#应用可分享目录)，scopes中的path不可重复。支持的取值如下：<br/>- `/base/files`<br/>- `/base/preferences`<br/>- `/base/haps` | string | scopes存在时必填 |
+   | path | 共享路径配置，当前仅支持[el2目录](share-app-file.md#应用可分享目录)，scopes中的path不可重复。支持的取值如下：<br/>- `/base/files`<br/>- `/base/preferences`<br/>- `/base/haps` | string | scopes存在时必填 |
    | permission | 共享路径权限。支持的取值如下：<br/>- `r`：只读。<br/>- `r+w`：读写。 | string | scopes存在时必填 |
+
+> **说明：**
+>
+> 应用更新时如涉及配置变更，将依据新配置进行管控，已分享文件的临时权限不受影响。
 
    share_files.json示例：
 

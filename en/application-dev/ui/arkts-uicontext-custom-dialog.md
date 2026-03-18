@@ -284,6 +284,7 @@ export class PromptActionClassNew {
     PromptActionClassNew.options = options;
   }
 
+  // Open a dialog box.
   static openDialog() {
     if (PromptActionClassNew.contentNode !== null) {
       PromptActionClassNew.ctx.getPromptAction().openCustomDialog(PromptActionClassNew.contentNode, PromptActionClassNew.options)
@@ -298,6 +299,7 @@ export class PromptActionClassNew {
     }
   }
 
+  // Close the dialog box.
   static closeDialog() {
     if (PromptActionClassNew.contentNode !== null) {
       PromptActionClassNew.ctx.getPromptAction().closeCustomDialog(PromptActionClassNew.contentNode)
@@ -312,8 +314,9 @@ export class PromptActionClassNew {
     }
   }
 
-  // ···
+  // ...
 
+  // Update the dialog box.
   static updateDialog(options: promptAction.BaseDialogOptions) {
     if (PromptActionClassNew.contentNode !== null) {
       PromptActionClassNew.ctx.getPromptAction().updateCustomDialog(PromptActionClassNew.contentNode, options)

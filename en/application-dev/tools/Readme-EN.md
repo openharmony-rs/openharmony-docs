@@ -1,10 +1,10 @@
 # Debugging Tools
 <!--Kit: Common-->
 <!--Subsystem: Common-->
-<!--Owner: @foryourself-->
+<!--Owner: @jinqiuheng-->
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 - [About This Kit](command-line-tools-overview.md)
 - [Ability Assistant](aa-tool.md)

@@ -199,7 +199,7 @@ Opens a dialog box for installing a certificate. This API uses a promise to retu
 
 **System capability**: SystemCapability.Security.CertificateManagerDialog
 
-**Device support**: This API is available on PCs/2-in-1 devices. For other devices, error code 29700004 is returned.
+**Device behavior differences**: This API can be properly called on PCs and 2-in-1 devices. If this API is called on other device types and **certType** is set to **CA_CERT**, error code 29700004 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -208,8 +208,8 @@ Opens a dialog box for installing a certificate. This API uses a promise to retu
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | Yes  | Context of the application.|
-| certType | [CertificateType](#certificatetype14)                   | Yes  | Type of the certificate to install.|
-| certScope | [CertificateScope](#certificatescope14)                   | Yes  | Defines the usage scope of the certificate to be installed.|
+| certType | [CertificateType](#certificatetype14)                   | Yes  | Type of the certificate to install. **CA_CERT**, **CREDENTIAL_USER**, and **CREDENTIAL_SYSTEM** are currently supported.|
+| certScope | [CertificateScope](#certificatescope14)                   | Yes  | Usage scope of the certificate to install. **CURRENT_USER** and **NOT_SPECIFIED** are currently supported.|
 | cert | Uint8Array                  | Yes  | Data of the certificate to install.|
 
 **Return value**

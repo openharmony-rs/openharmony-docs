@@ -57,7 +57,7 @@
 | [Image_ErrorCode OH_DecodingOptions_GetRotate(OH_DecodingOptions *options, float *rotate)](#oh_decodingoptions_getrotate) | 获取旋转角度。 |
 | [Image_ErrorCode OH_DecodingOptions_SetRotate(OH_DecodingOptions *options, float rotate)](#oh_decodingoptions_setrotate) | 设置旋转角度。 |
 | [Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)](#oh_decodingoptions_getdesiredsize) | 获取期望输出大小。 |
-| [Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)](#oh_decodingoptions_setdesiredsize) | 设置期望输出大小。 |
+| [Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)](#oh_decodingoptions_setdesiredsize) | 设置期望输出大小。desiredSize参数决定解码得到的PixelMap大小，且宽、高须为正整数。若与原尺寸比例不一致，则会进行拉伸/缩放到指定尺寸。默认为原始尺寸。 |
 | [Image_ErrorCode OH_DecodingOptions_GetDesiredRegion(OH_DecodingOptions *options, Image_Region *desiredRegion)](#oh_decodingoptions_getdesiredregion) | 获取解码区域。<br> 由于对应SetDesiredRegion接口无法满足区域解码诉求，从API version 19开始，推荐配套使用[OH_DecodingOptions_GetCropRegion](#oh_decodingoptions_getcropregion)接口替代。 |
 | [Image_ErrorCode OH_DecodingOptions_SetDesiredRegion(OH_DecodingOptions *options, Image_Region *desiredRegion)](#oh_decodingoptions_setdesiredregion) | 设置解码区域。<br> 实际解码结果会按照原图解码，无区域解码效果。从API version 19开始，推荐使用接口[OH_DecodingOptions_SetCropRegion](#oh_decodingoptions_setcropregion)替代。 |
 | [Image_ErrorCode OH_DecodingOptions_GetDesiredDynamicRange(OH_DecodingOptions *options, int32_t *desiredDynamicRange)](#oh_decodingoptions_getdesireddynamicrange) | 获取解码时设置的期望动态范围。 |
@@ -233,7 +233,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | 被操作的OH_ImageSource_Info指针。 |
-| uint32_t *height | 图片的高，单位：像素高 |
+| uint32_t *height | 图片的高，单位：像素 |
 
 **返回：**
 
@@ -259,7 +259,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bo
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | 被操作的OH_ImageSource_Info指针。 |
-| bool *isHdr | 表示是否为HDR。true表示是HDR，false表示不是HDR。 |
+| bool *isHdr | 表示是否为高动态范围（HDR）的信息。true表示是高动态范围的信息，false表示不是高动态范围的信息。 |
 
 **返回：**
 
@@ -367,7 +367,7 @@ Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options, i
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| int32_t *pixelFormat | pixel格式[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。 |
+| int32_t *pixelFormat | pixel格式[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)，默认值为RGBA_8888。 |
 
 **返回：**
 
@@ -393,7 +393,7 @@ Image_ErrorCode OH_DecodingOptions_SetPixelFormat(OH_DecodingOptions *options,in
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| int32_t pixelFormat | pixel格式[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。 |
+| int32_t pixelFormat | pixel格式[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)，默认值为RGBA_8888。 |
 
 **返回：**
 
@@ -419,7 +419,7 @@ Image_ErrorCode OH_DecodingOptions_GetIndex(OH_DecodingOptions *options, uint32_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| uint32_t *index | 解码图片序号。 |
+| uint32_t *index | 解码图片序号，默认值为0。 |
 
 **返回：**
 
@@ -445,7 +445,7 @@ Image_ErrorCode OH_DecodingOptions_SetIndex(OH_DecodingOptions *options, uint32_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| uint32_t index | 解码图片序号。 |
+| uint32_t index | 解码图片序号，默认值为0。 |
 
 **返回：**
 
@@ -471,7 +471,7 @@ Image_ErrorCode OH_DecodingOptions_GetRotate(OH_DecodingOptions *options, float 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| float *rotate | 旋转角度，单位为deg。 |
+| float *rotate | 旋转角度，单位为deg，默认值为0。 |
 
 **返回：**
 
@@ -497,7 +497,7 @@ Image_ErrorCode OH_DecodingOptions_SetRotate(OH_DecodingOptions *options, float 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| float rotate | 旋转角度，单位为deg。 |
+| float rotate | 旋转角度，单位为deg，默认值为0。 |
 
 **返回：**
 
@@ -523,7 +523,7 @@ Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options, I
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | 期望输出大小。 |
+| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | 期望输出大小，默认为原始图片尺寸。 |
 
 **返回：**
 
@@ -539,7 +539,7 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options, I
 
 **描述**
 
-设置期望输出大小。
+设置期望输出大小。desiredSize参数决定解码得到的PixelMap大小，且宽、高须为正整数。若与原尺寸比例不一致，则会进行拉伸/缩放到指定尺寸。默认为原始尺寸。
 
 **起始版本：** 12
 
@@ -549,7 +549,7 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options, I
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | 期望输出大小。 |
+| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | 期望输出大小，默认为原始图片尺寸。 |
 
 **返回：**
 
@@ -575,7 +575,7 @@ Image_ErrorCode OH_DecodingOptions_GetDesiredRegion(OH_DecodingOptions *options,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | 解码区域。 |
+| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | 解码区域，默认为完整图片大小的区域。 |
 
 **返回：**
 
@@ -601,7 +601,7 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredRegion(OH_DecodingOptions *options,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | 解码区域。 |
+| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | 解码区域，默认为完整图片大小的区域。 |
 
 **返回：**
 
@@ -627,7 +627,7 @@ Image_ErrorCode OH_DecodingOptions_GetDesiredDynamicRange(OH_DecodingOptions *op
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| int32_t *desiredDynamicRange | 期望的动态范围值[IMAGE_DYNAMIC_RANGE](#image_dynamic_range)。 |
+| int32_t *desiredDynamicRange | 期望的动态范围值[IMAGE_DYNAMIC_RANGE](#image_dynamic_range)，默认值为SDR。 |
 
 **返回：**
 
@@ -653,7 +653,7 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredDynamicRange(OH_DecodingOptions *op
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| int32_t desiredDynamicRange | 期望的动态范围值[IMAGE_DYNAMIC_RANGE](#image_dynamic_range)。 |
+| int32_t desiredDynamicRange | 期望的动态范围值[IMAGE_DYNAMIC_RANGE](#image_dynamic_range)，默认值为SDR。 |
 
 **返回：**
 

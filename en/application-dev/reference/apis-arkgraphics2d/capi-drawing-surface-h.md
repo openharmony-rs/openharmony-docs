@@ -14,6 +14,8 @@ This file declares the functions related to the surface in the drawing module, i
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -34,7 +36,7 @@ This file declares the functions related to the surface in the drawing module, i
 
 ### OH_Drawing_SurfaceCreateFromGpuContext()
 
-```
+```c
 OH_Drawing_Surface* OH_Drawing_SurfaceCreateFromGpuContext(OH_Drawing_GpuContext* gpuContext, bool flag, OH_Drawing_Image_Info imageInfo)
 ```
 
@@ -63,7 +65,7 @@ Creates an **OH_Drawing_Surface** object using the GPU context to manage the con
 
 ### OH_Drawing_SurfaceCreateOnScreen()
 
-```
+```c
 OH_Drawing_Surface* OH_Drawing_SurfaceCreateOnScreen(OH_Drawing_GpuContext* gpuContext, OH_Drawing_Image_Info imageInfo, void* window)
 ```
 
@@ -92,7 +94,7 @@ Creates an **OH_Drawing_Surface** object bound to the window using the GPU conte
 
 ### OH_Drawing_SurfaceGetCanvas()
 
-```
+```c
 OH_Drawing_Canvas* OH_Drawing_SurfaceGetCanvas(OH_Drawing_Surface* surface)
 ```
 
@@ -119,7 +121,7 @@ Obtains a canvas from an **OH_Drawing_Surface** object.<br>This API may return a
 
 ### OH_Drawing_SurfaceFlush()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_SurfaceFlush(OH_Drawing_Surface* surface)
 ```
 
@@ -146,7 +148,7 @@ Pushes the drawing content from an **OH_Drawing_Surface** object to the GPU for 
 
 ### OH_Drawing_SurfaceDestroy()
 
-```
+```c
 void OH_Drawing_SurfaceDestroy(OH_Drawing_Surface* surface)
 ```
 

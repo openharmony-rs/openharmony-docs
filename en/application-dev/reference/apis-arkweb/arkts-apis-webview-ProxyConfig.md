@@ -29,7 +29,7 @@ Inserts a proxy rule for URLs matching **schemeFilter**. If **schemeFilter** is 
 | Name         | Type    |  Mandatory | Description          |
 | ---------------| ------- | ---- | ------------- |
 | proxyRule      | string  | Yes  | The specified proxy.|
-| schemeFilter   | [ProxySchemeFilter](./arkts-apis-webview-e.md#proxyschemefilter15)  | No  | Filter used to specify URLs that use the proxy.<br>Default value: **MATCH_ALL_SCHEMES**.|
+| schemeFilter   | [ProxySchemeFilter](./arkts-apis-webview-e.md#proxyschemefilter15)  | No  | Filter used to specify URLs that use the proxy.<br>Default value: **MATCH_ALL_SCHEMES**.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
 
 **Error codes**
 
@@ -55,7 +55,7 @@ Inserts a proxy rule to specify that URLs matching **schemeFilter** are directly
 
 | Name         | Type    |  Mandatory | Description          |
 | ---------------| ------- | ---- | ------------- |
-| schemeFilter   | [ProxySchemeFilter](./arkts-apis-webview-e.md#proxyschemefilter15)  | No  | Filter used to specify URLs to be directly connected to the server.<br>Default value: **MATCH_ALL_SCHEMES**.|
+| schemeFilter   | [ProxySchemeFilter](./arkts-apis-webview-e.md#proxyschemefilter15)  | No  | Filter used to specify URLs to be directly connected to the server.<br>Default value: **MATCH_ALL_SCHEMES**.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
 
 **Error codes**
 

@@ -17,6 +17,42 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
+## ohos.permission.RUNNING_LOCK
+
+Allows an application to obtain a running lock to keep running in the background.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 7
+
+## ohos.permission.SET_WALLPAPER
+
+Allows an application to set wallpapers.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 7
+
+## ohos.permission.MODIFY_AUDIO_SETTINGS
+
+Allows an application to modify audio settings.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 8
+
 ## ohos.permission.RECEIVER_STARTUP_COMPLETED
 
 Allows an application to subscribe to the startup broadcast.
@@ -4036,7 +4072,7 @@ Allows a system service to access and read files in **/data/log/faultlog/faultlo
 
 **Enable via ACL**: true
 
-**Valid since**: 12
+**Valid since**: 13
 
 ## ohos.permission.START_RESTORE_NOTIFICATION
 
@@ -4061,18 +4097,6 @@ Allows an application to read weather data.
 **Enable via ACL**: true
 
 **Valid since**: 14
-
-## ohos.permission.ACCESS_MCU_LOG_DIR
-
-Allows a system application to access the microcontroller unit (MCU) log directory.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Valid since**: 12
 
 ## ohos.permission.GRANT_SHORT_TERM_WRITE_MEDIAVIDEO
 
@@ -4423,6 +4447,7 @@ Allows a system application to obtain the page information of a specified applic
 Allows a peripheral extension driver to access the USB Serial DDK APIs.
 
 The APIs can be used to develop the following types of peripheral extension drivers:
+
 Peripherals connected to the host via a USB bus and:
 
 1. InterfaceClass of the peripheral is Communication Device Control Class (0x02) and InterfaceSubClass follows ACMSubClass model(0x02).
@@ -4730,7 +4755,11 @@ Allows an application to install and uninstall fonts.
 
 **Enable via ACL**: true
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
 **Valid since**: 19
+
+**Changelog**: Since API version 23, this permission is also available on smartphones.
 
 ## ohos.permission.READ_PARENT_CONTROL_DATA
 
@@ -4778,7 +4807,7 @@ Allows an application to call the accessibility service extension APIs to query 
 
 Allows an application to read recording files from the file manager directory.
 
-**Permission level**: system_core
+**Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
@@ -4792,7 +4821,7 @@ Allows an application to read recording files from the file manager directory.
 
 Allows an application to write recording files to the file manager directory.
 
-**Permission level**: system_core
+**Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
@@ -5356,20 +5385,20 @@ Allows an application to dynamically register or remove custom UTD data types.
 
 **Since**: 22
 
-
 ## ohos.permission.MANAGE_MEDIA_SHARED_RESOURCE
 
 Allows a system application to access media sharing resources within the camera framework directory.
 
-**Permission level**：system_basic
+**Permission level**: system_basic
 
-**Authorization mode**：system_grant
+**Authorization mode**: system_grant
 
-**Enable via ACL**：true
+**Enable via ACL**: true
 
-**Supported devices**：General
+**Supported devices**: general devices
 
-**Since**：23
+**Since**: 23
+
 ## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
 
 Allows an application that has accessed Cloud to manage cloud data.
@@ -5414,7 +5443,7 @@ Allows an application to read image or video files from the user's cloud storage
 
 ## ohos.permission.ACCESS_SECURE_FENCE
 
-Allows a system application to access secure access fence capability..
+Allows a system application to access the security fence capability.
 
 **Permission level**: system_basic
 
@@ -5422,13 +5451,13 @@ Allows a system application to access secure access fence capability..
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablet | tv | car
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | cars
 
 **Since**: 23
 
 ## ohos.permission.ACCESS_MINI_SYSTEM
  	 
-Allows a system application to access the runtime capability framework.
+Allows a system application to use the running capability framework.
 
 **Permission level**: system_basic
 
@@ -5441,7 +5470,7 @@ Allows a system application to access the runtime capability framework.
 **Since**: 23
 
 ## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
-
+ 	
 Allows a system application to start the preview panel for adding application widgets to the home screen.
 
 With this permission, the system application can help users add the widgets to distribute to the home screen.
@@ -5454,11 +5483,11 @@ With this permission, the system application can help users add the widgets to d
 
 **Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
 
-**Since**: 20
+**Valid since**: 20
 
 ## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE_CONTROL
 
-Allows an application to add the WiseCard of other applications.
+Allows users to add WiseCard widgets of other apps.
 
 **Permission level**: system_basic
 
@@ -5469,3 +5498,159 @@ Allows an application to add the WiseCard of other applications.
 **Supported devices**: general devices
 
 **Since**: 23
+
+## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
+
+Allows an application to manage local education space accounts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: tablets
+
+**Since**: 23
+
+## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
+
+Allows an application to query the properties of local education space accounts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: tablets
+
+**Since**: 23
+
+## ohos.permission.MANAGE_STANDBY
+
+Allows an application to manage the standby state of the page, such as controlling when the page enters or exits the standby state.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
+
+**Since**: 23
+
+## ohos.permission.ACCESS_STANDBY
+
+Allows an application to query whether the page is in the standby state and access the page in this state.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
+
+**Since**: 23
+
+## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
+
+Allows an application to obtain the local account authorization.
+
+With this permission, the application can call the API to obtain the local account authorization. Once authorized, the application can handle sensitive tasks like creating or deleting local accounts, modifying account types, and adjusting time and time zone settings.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 24
+
+## ohos.permission.GET_AGENT_CARD
+
+Allows a system application to obtain AgentCard information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 24
+
+## ohos.permission.CONNECT_AGENT
+
+Allows a system application to connect to the Agent.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 24
+
+### ohos.permission.READ_APP_PROTECTION_RECORD
+
+Allows a system application to read application protection records.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
+
+### ohos.permission.WRITE_APP_PROTECTION_RECORD
+
+Allows a system application to modify application protection records.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
+
+### ohos.permission.READ_SPAM_SHIELD_SETTING
+
+Allows a system application to read the spam shield settings.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Valid since**: 26.0.0
+
+### ohos.permission.WRITE_SPAM_SHIELD_SETTING
+
+Allows a system application to modify the spam shield settings.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Valid since**: 26.0.0

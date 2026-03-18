@@ -7,7 +7,7 @@
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The ArkUI development framework provides list components through NDK APIs, enabling efficient display of structured, scrollable content. List components allow you to control the scroll position, group display content, and use **NodeAdapter** for lazy loading to improve list creation performance.
+The ArkUI development framework provides list components through NDK APIs, enabling efficient display of structured, scrollable content. List components allow you to control the scroll position, group display content, and use [NodeAdapter](#nodeadapter-overview) for lazy loading to improve list creation performance.
 
 ## Creating a List
 
@@ -20,15 +20,17 @@ For details, see [Listening for Component Events](ndk-listen-to-component-events
 ## Implementing Lazy Loading
 
 ### NodeAdapter Overview
+The NDK provides the **NodeAdapter** object as an alternative to [LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md) in ArkTS for on-demand generation of child components. NodeAdapter works with [List](../reference/apis-arkui/arkui-ts/ts-container-list.md)/[ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md), [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), and [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md) components.
 
-The NDK provides the [NodeAdapter](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodeadapter8h.md) object as an alternative to the **LazyForEach** functionality in ArkTS for on-demand generation of child components. **NodeAdapter** works with **List**, **ListItemGroup**, **Grid**, **WaterFlow**, and **Swiper** components.
-
-- Nodes with **NodeAdapter** set do not support direct child addition APIs like **addChild**. Child components are managed entirely by **NodeAdapter**. If a parent component already has child nodes, setting **NodeAdapter** will fail and return an error code.
+- Child components cannot be added to a node where **NodeAdapter** is set by using APIs such as [addChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild). Child components are managed entirely by **NodeAdapter**. If a parent component already has child nodes, setting **NodeAdapter** will fail and return an error code.
 
 - **NodeAdapter** notifies you of on-demand generation of components through relevant events. Similar to the component event mechanism, you need to register an [event listener](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_registereventreceiver) when using **NodeAdapter** and handle logic in the listener events. Relevant events are defined by [ArkUI_NodeAdapterEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype). **NodeAdapter** does not actively release off-screen component objects; you must release or cache and reuse component objects in the [NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype) event. The following image illustrates the event triggering mechanism in a typical list scrolling scenario.
 
   ![en-us_image_0000001949769409](figures/en-us_image_0000001949769409.png)
 
+<!--RP1-->
+This example demonstrates how to implement an adapter for lazy loading.
+<!--RP1End-->
 
 ### Implementing a Lazy Loading Adapter
 
@@ -37,7 +39,7 @@ Use the **ArkUIListItemAdapter** class to manage the lazy loading adapter. Creat
 <!-- @[Lazy_loading_of_text_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
 
 ``` C
-// ArkUIListItemAdapter
+// ArkUIListItemAdapter.h
 // Code for lazy loading functionality in a text list.
 
 #ifndef MYAPPLICATION_ARKUILISTITEMADAPTER_H
@@ -143,14 +145,18 @@ private:
 
     void OnAdapterEvent(ArkUI_NodeAdapterEvent *event)
     {
+        // Obtain the event type.
         auto type = OH_ArkUI_NodeAdapterEvent_GetType(event);
         switch (type) {
+            // Obtain the unique ID of the new element to add.
             case NODE_ADAPTER_EVENT_ON_GET_NODE_ID:
                 OnNewItemIdCreated(event);
                 break;
+            // Obtain the content of the new element to add.
             case NODE_ADAPTER_EVENT_ON_ADD_NODE_TO_ADAPTER:
                 OnNewItemAttached(event);
                 break;
+            // Remove elements from the adapter.
             case NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER:
                 OnItemDetached(event);
                 break;
@@ -178,7 +184,7 @@ private:
             auto textItem = std::dynamic_pointer_cast<ArkUITextNode>(recycledItem->GetChildren().back());
             textItem->SetTextContent(data_[index]);
             handle = recycledItem->GetHandle();
-            // ···
+            // ...
             // Release the reference in the cache pool.
             cachedItems_.pop();
         } else {
@@ -194,7 +200,7 @@ private:
             listItem->AddChild(textNode);
             // Create the swipe action item for the ListItem.
             auto swipeNode = std::make_shared<ArkUITextNode>();
-            // ···
+            // ...
             swipeNode->RegisterOnClick([this, data = data_[index]](ArkUI_NodeEvent *event) {
                 auto it = std::find(data_.begin(), data_.end(), data);
                 if (it != data_.end()) {
@@ -235,7 +241,7 @@ private:
 
 ### Applying the Lazy Loading Adapter in a List
 
-1. Add the **SetLazyAdapter** function in **ArkUIListNode** to set the **NODE_LIST_NODE_ADAPTER** attribute for the list node and pass the **NodeAdapter** as an attribute parameter.
+1. Add the **SetLazyAdapter** function to **ArkUIListNode**, set the [NODE_LIST_NODE_ADAPTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) property for the list node, and pass **NodeAdapter** as the input parameter.
    <!-- @[List_encapsulated_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListNode.h) -->
    
    ``` C
@@ -285,7 +291,7 @@ private:
            nativeModule_->setAttribute(handle_, NODE_LIST_NODE_ADAPTER, &item);
            adapter_ = adapter;
        }
-       // ···
+       // ...
    protected:
        void OnNodeEvent(ArkUI_NodeEvent *event) override
        {
@@ -402,16 +408,17 @@ private:
    ``` C
    // ArkUIListNode.h
    // Provide encapsulation for the list component. 
-   // ···
+   // ...
    class ArkUIListNode : public ArkUINode {
-       // ···
+   public:
+       // ...
        void ScrollTo(float offset)
        {
            ArkUI_NumberValue value[] = {{.f32 = 0}, {.f32 = offset}, {.f32 = 0}};
            ArkUI_AttributeItem Item = {.value = value, .size = 3};
            nativeModule_->setAttribute(handle_, NODE_SCROLL_OFFSET, &Item);
        }
-       // ···
+       // ...
    };
    ```
 2. Control the list to scroll to a specified element.
@@ -420,16 +427,17 @@ private:
    ``` C
    // ArkUIListNode.h
    // Provide encapsulation for the list component. 
-   // ···
+   // ...
    class ArkUIListNode : public ArkUINode {
-       // ···
+   public:
+       // ...
        void ScrollToIndex(int32_t index)
        {
            ArkUI_NumberValue value[] = {{.i32 = index}};
            ArkUI_AttributeItem Item = {.value = value, .size = 1};
            nativeModule_->setAttribute(handle_, NODE_LIST_SCROLL_TO_INDEX, &Item);
        }
-       // ···
+       // ...
    };
    ```
 
@@ -439,21 +447,22 @@ private:
    ``` C
    // ArkUIListNode.h
    // Provide encapsulation for the list component. 
-   // ···
+   // ...
    class ArkUIListNode : public ArkUINode {
-       // ···
+   public:
+       // ...
        void ScrollBy(float offset)
        {
            ArkUI_NumberValue value[] = {{.f32 = 0}, {.f32 = offset}};
            ArkUI_AttributeItem Item = {.value = value, .size = 2};
            nativeModule_->setAttribute(handle_, NODE_SCROLL_BY, &Item);
        }
-       // ···
+       // ...
    };
    ```
 ## Implementing Swipe-to-Delete for List Items
 
-1. Set the **NODE_LIST_ITEM_SWIPE_ACTION** attribute for **ListItem** and pass the **ArkUI_ListItemSwipeActionOption** object as an attribute parameter.
+1. Set the [NODE_LIST_ITEM_SWIPE_ACTION](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) attribute of [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) and pass the [ArkUI_ListItemSwipeActionOption](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) object as the attribute parameter.
    <!-- @[Provide_wrapper_class_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemNode.h) -->
    
    ``` C
@@ -469,9 +478,11 @@ private:
            : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_LIST_ITEM)) {}
        ~ArkUIListItemNode() override
        {
+           // Dispose of a ListItemSwipeActionOption instance.
            if (swipeAction_) {
                OH_ArkUI_ListItemSwipeActionOption_Dispose(swipeAction_);
            }
+           // Dispose of a ListItemSwipeActionItem instance.
            if (swipeItem_) {
                OH_ArkUI_ListItemSwipeActionItem_Dispose(swipeItem_);
            }
@@ -479,9 +490,13 @@ private:
        void SetSwiperAction(std::shared_ptr<ArkUINode> node)
        {
            swipeContent_ = node;
+           // Create a ListItemSwipeActionItem instance.
            swipeItem_ = OH_ArkUI_ListItemSwipeActionItem_Create();
+           // Set the layout content for the ListItemSwipeActionItem instance.
            OH_ArkUI_ListItemSwipeActionItem_SetContent(swipeItem_, node->GetHandle());
+           // Create a ListItemSwipeActionOption instance.
            swipeAction_ = OH_ArkUI_ListItemSwipeActionOption_Create();
+           // Set the layout content for the right edge (for a vertical layout) or bottom edge (for a horizontal layout) of the ListItemSwipeActionItem instance.
            OH_ArkUI_ListItemSwipeActionOption_SetEnd(swipeAction_, swipeItem_);
            ArkUI_AttributeItem Item = {.object = swipeAction_};
            nativeModule_->setAttribute(handle_, NODE_LIST_ITEM_SWIPE_ACTION, &Item);
@@ -497,14 +512,14 @@ private:
    #endif // MYAPPLICATION_ARKUILISTITEMNODE_H
    ```
 
-2. When creating a **ListItem**, create the swipe action item for the **ListItem** and bind a click event to perform the data source deletion operation in the click event. When reusing a **ListItem**, update the binding event of the swipe action item.
+2. When creating a [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md), create the swipe action item for it and bind the click event. In the click event, delete the data source. When reusing a **ListItem**, update the binding event of the swipe action item.
    <!-- @[Item_adapter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
    
    ``` C
-   // ArkUIListItemAdapter
-   // ···
+   // ArkUIListItemAdapter.h
+   // ...
    class ArkUIListItemAdapter {
-       // ···
+       // ...
        // Handle the display of new items in the visible area.
        void OnNewItemAttached(ArkUI_NodeAdapterEvent *event)
        {
@@ -561,17 +576,17 @@ private:
            // Set the element to be displayed.
            OH_ArkUI_NodeAdapterEvent_SetItem(event, handle);
        }
-       // ···
+       // ...
    };
    ```
-3. Add **RemoveItem** in **ArkUIListItemAdapter** to delete the data source and call the **OH_ArkUI_NodeAdapter_RemoveItem** API to instruct the framework to update the UI.
+3. Add **RemoveItem** to **ArkUIListItemAdapter** to delete data sources and call the [OH_ArkUI_NodeAdapter_RemoveItem](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_removeitem) API to instruct the framework to refresh the UI.
    <!-- @[Remove_Item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
    
    ``` C
-   // ArkUIListItemAdapter
-   // ···
+   // ArkUIListItemAdapter.h
+   // ...
    class ArkUIListItemAdapter {
-       // ···
+       // ...
        void RemoveItem(size_t  index)
        {
            // Remove the item at the specified index.
@@ -582,11 +597,11 @@ private:
            // Update the total count.
            OH_ArkUI_NodeAdapter_SetTotalNodeCount(handle_, data_.size());
        }
-       // ···
+       // ...
    };
    ```
 ## Using a Grouped List
-1. Implement a grouped list using the **ListItemGroup** component, which supports features to add headers and footers and use lazy loading.
+1. The [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) component is used to implement a grouped list. **ListItemGroup** supports the functions to add the [header](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) and [footer](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions), and supports lazy loading.
    <!-- @[Use_grouped_lists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemGroupNode.h) -->
    
    ``` C
@@ -605,18 +620,22 @@ private:
        void SetHeader(std::shared_ptr<ArkUINode> node)
        {
            if (node) {
+               // Create an attribute item, put the node handle into it, and set the header.
                ArkUI_AttributeItem Item = { .object = node->GetHandle() };
                nativeModule_->setAttribute(handle_, NODE_LIST_ITEM_GROUP_SET_HEADER, &Item);
            } else {
+               // If a null pointer (nullptr) is passed, the existing header is to be removed.
                nativeModule_->resetAttribute(handle_, NODE_LIST_ITEM_GROUP_SET_HEADER);
            }
        }
        void SetFooter(std::shared_ptr<ArkUINode> node)
        {
            if (node) {
+               // Create an attribute item, put the node handle into it, and set the footer.
                ArkUI_AttributeItem Item = { .object= node->GetHandle() };
                nativeModule_->setAttribute(handle_, NODE_LIST_ITEM_GROUP_SET_FOOTER, &Item);
            } else {
+               // If a null pointer (nullptr) is passed, the existing footer is to be removed.
                nativeModule_->resetAttribute(handle_, NODE_LIST_ITEM_GROUP_SET_FOOTER);
            }
        }
@@ -643,25 +662,25 @@ private:
    }
    #endif //MYAPPLICATION_ARKUILISTITEMGROUPNODE_H
    ```
-2. Set the sticky header for the **List** component.
+2. Set the sticky header for the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component.
    <!-- @[SetSticky](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListNode.h) -->
    
    ``` C
    // ArkUIListNode.h
    // Provide encapsulation for the list component. 
-   // ···
+   // ...
    class ArkUIListNode : public ArkUINode {
-       // ···
+       // ...
        void SetSticky(ArkUI_StickyStyle style)
        {
            ArkUI_NumberValue value[] = {{.i32 = style}};
            ArkUI_AttributeItem item = {value, 1};
            nativeModule_->setAttribute(handle_, NODE_LIST_STICKY, &item);
        }
-       // ···
+       // ...
    };
    ```
-3. Implement a grouped list UI using **ListItemGroup** under the **List** component.
+3. Use [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) under the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component to implement the grouped list.
    <!-- @[Grouped_List](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/LazyTextListExample.h) -->
    
    ``` C

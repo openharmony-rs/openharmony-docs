@@ -8,7 +8,7 @@
 
 The **TextClock** component displays the current system time in text format for different time zones. The time is accurate to seconds.
 
-When the component is invisible, the time change stops. The visible status of a component is processed based on [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange). If the visible threshold ratios is greater than 0, the component is visible.
+When the component is invisible, the time change stops. The visible status of a component is processed based on [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange). If the visible threshold **ratios** is greater than 0, the component is visible.
 
 >**NOTE**
 >
@@ -37,7 +37,7 @@ TextClock(options?: TextClockOptions)
 
 ## TextClockOptions<sup>18+</sup>
 
-Options used to build the TextClock component.
+Options used to build the **TextClock** component.
 
 > **NOTE**
 >
@@ -64,15 +64,15 @@ format(value: ResourceStr)
 
 Sets the time format, for example, **yyyy/MM/dd** or **yyyy-MM-dd**.
 
-**y**: year (yyyy indicates the complete year, and yy indicates the last two digits of the year.)<br>**M**: month (To display 01 for January, use **MM** instead.)<br>**d**: day (To display 01 for the first day, use **dd** instead.)<br>**E**: day of week (To display the full name, use **EEEE**; to display the abbreviation, use **E**, **EE**, or **EEE**.)<br>H: hour (24-hour format) h: hour (12-hour format)<br>**m**: minute<br>**s**: second<br>SS: centisecond (If the number of S in the format is less than 3, all S are processed as centiseconds.)<br>SSS: millisecond (If the number of Ss in the format is greater than or equal to 3, the unit is millisecond.)<br>**a**: morning/afternoon (This parameter does not take effect when the hour part is set to **H**.)
+**y**: year (yyyy indicates the complete year, and yy indicates the last two digits of the year.)<br>**M**: month (To display 01 for January, use **MM** instead.)<br>**d**: day (To display 01 for the first day, use **dd** instead.)<br>**E**: day of week (To display the full name, use **EEEE**; to display the abbreviation, use **E**, **EE**, or **EEE**.)<br>H: hour (24-hour format); h: hour (12-hour format)<br>**m**: minute<br>**s**: second<br>SS: centisecond (If the number of S characters in the format is less than 3, all are treated as centiseconds.)<br>SSS: millisecond (If the number of S characters in the format is greater than or equal to 3, all are treated as milliseconds.)<br>**a**: morning/afternoon (This parameter does not take effect when the hour part is set to **H**.)
 
-Date separators: year, month, day, slash (/), hyphen (-), and period (.) (You can customize the separator style. Letters cannot be used as separators. Chinese characters can be used as separators.)
+Date separators: year, month, day, slash (/), hyphen (-), and period (.) (Custom separator styles are allowed. Letters cannot be used as separators, while Chinese characters can be treated as separators.)
 
 The parts of the date can be used alone or combined with each other as needed. The time can be updated as frequent as once per second. As such, whenever possible, avoid setting the centisecond and millisecond parts separately.
 
 When an invalid letter is set, the letter is ignored. If all letters in **format** are invalid, the display format follows the system's language and hour format settings.  
 
-If format is an empty string ("") or undefined, the default value is used.
+If **format** is an empty string ("") or **undefined**, the default value is used.
 
 Default value outside of widgets: 12-hour format: aa hh:mm:ss; 24-hour format: HH:mm:ss.<br>Default value in widgets: 12-hour format: hh:mm, 24-hour format: HH:mm.<br>When used in widgets, the minimum time unit is minute. In this case, if the format contains seconds or centiseconds, the default value will be used.
 
@@ -138,7 +138,7 @@ Sets the font color.
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value for wearables: '#c5ffffff'. Default value for other devices: 'e6182431'|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value for wearables: '#c5ffffff'; default value for other devices: 'e6182431'|
 
 ### fontSize
 
@@ -156,7 +156,7 @@ Sets the font size.
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Font size. If **fontSize** is of the number type, the unit fp is used. The default font size is 16 fp. This parameter cannot be set in percentage.|
+| value  | [Length](ts-types.md#length) | Yes  | Font size. If **fontSize** is of the number type, the unit fp is used. The default font size is 16 fp. The value cannot be a percentage.|
 
 ### fontStyle
 
@@ -174,13 +174,13 @@ Sets the font style.
 
 | Name| Type                                       | Mandatory| Description                                   |
 | ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | Yes  | Font style.<br>Default value: FontStyle.Normal, indicating the standard font style (non-italic).|
+| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | Yes  | Font style.<br>Default value: **FontStyle.Normal**, indicating the standard font style (non-italic)|
 
 ### fontWeight
 
 fontWeight(value: number | FontWeight | string)
 
-Font weight of the text. If the value is too large, the text in different fonts may be truncated.
+Sets the font weight of the text. If the value is too large, the text in different fonts may be truncated.
 
 **Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.
 
@@ -192,7 +192,7 @@ Font weight of the text. If the value is too large, the text in different fonts 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | Yes  | Font width of the text. The value range of the number type is [100,&nbsp;900]. The value interval is 100. A larger value indicates a wider font. If the value of the number type is not within the value range, the default value is 400. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>Default value: **FontWeight.Normal**|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | Yes  | Font width of the text. The value range of the number type is [100,&nbsp;900]. The value interval is 100. A larger value indicates a wider font. If the value of the number type is not within the value range, the default value is **400**. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>Default value: **FontWeight.Normal**|
 
 ### fontFamily
 
@@ -270,7 +270,7 @@ Creates a content modifier.
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<TextClockConfiguration>](#textclockconfiguration12)| Yes  | Content modifier to apply to the text clock.<br>modifier: content modifier. You need to customize a class to implement the ContentModifier interface.|
+| modifier  | [ContentModifier\<TextClockConfiguration>](#textclockconfiguration12)| Yes  | Content modifier to apply to the text clock.<br>**modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API.|
 
 ### dateTimeOptions<sup>12+</sup>
 
@@ -288,7 +288,7 @@ Sets whether to display a leading zero for the hour.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| dateTimeOptions  | Optional<[DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated)> | Yes  | Whether to display leading zeros in the hour. It only supports setting the **hour** parameter. When the parameter value is **{hour: "2-digit"}**, a leading zero is displayed. When the parameter value is **{hour: "numeric"}**, no leading zero is displayed.<br>Default value: undefined. By default, leading zeros are displayed in 24-hour format, and leading zeros are not displayed in 12-hour format.|
+| dateTimeOptions  | Optional<[DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated)> | Yes  | Whether to display leading zeros in the hour. It only supports setting the **hour** parameter. When the parameter value is **{hour: "2-digit"}**, a leading zero is displayed. When the parameter value is **{hour: "numeric"}**, no leading zero is displayed.<br>Default value: **undefined**. By default, leading zeros are displayed in 24-hour format, but not displayed in 12-hour format.|
 
 ## Events
 
@@ -381,17 +381,17 @@ You need a custom class to implement the **ContentModifier** API.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | timeZoneOffset | number | No| No| Time zone offset of the text clock.<br>The value range is [-14, 12], indicating UTC+12 to UTC-12. A negative value indicates Eastern Standard Time, and a positive value indicates Western Standard Time. For example, **-8** indicates UTC+8. If the value is a floating point number within the value range, it is rounded off, with the decimal portion discarded.|
-| started | boolean | No| No| Whether the text clock is started.<br>The default value is true, indicating that the text clock is started. The value false indicates that the text clock is stopped.|
+| started | boolean | No| No| Whether the text clock is started.<br>**true**: The text clock is started.<br>**false**: The text clock is disabled.<br>Default value: **true**|
 | timeValue | number | No| No| Time zone offset of the text clock in seconds from UTC.|
 
 ## Example
 ### Example 1: Implementing a Text Clock with Start/Stop Control
 
-This example demonstrates basic **TextClock** usage by configuring clock text format using the [format](#format) attribute.
+This example demonstrates the basic usage of the **TextClock** component, setting the clock display format using the [format](#format) attribute.
 
 Clicking **"start TextClock"** triggers the callback to invoke **TextClockController** and initiate the clock. Clicking **"stop TextClock"** pauses the clock via **TextClockController**.
 
-The example continuously updates **accumulateTime** content during clock updates through the [TextClockController](#textclockcontroller) callback function.
+The example demonstrates how to continuously update **accumulateTime** content during clock updates by invoking the [TextClockController](#textclockcontroller) callback.
 
 ```ts
 @Entry
@@ -559,7 +559,7 @@ struct TextClockExample {
 ![ContentModifierExample](figures/text_clock_contentmodifier.gif)
 
 ### Example 4: Setting Leading Zero
-This sample demonstrates how to use the [dateTimeOptions](#datetimeoptions12) attribute to add or remove the leading zero for the hour field. In the 24-hour format, the hour field has a leading zero by default. You can use the [dateTimeOptions](#datetimeoptions12) property to remove the leading zero. In the 12-hour format, the hour field does not have a leading zero by default. You can use the [dateTimeOptions](#datetimeoptions12) property to add a leading zero.
+This example demonstrates how to use the [dateTimeOptions](#datetimeoptions12) attribute to add or remove the leading zero for the hour field. By default, the hour field includes a leading zero in the 24-hour format, but typically does not include a leading zero in the 12-hour format.
 ``` ts
 @Entry
 @Component
@@ -589,3 +589,54 @@ struct TextClockExample {
 }
 ```
 ![TextClockExample](figures/text_clock_datetimeoptions.png)
+
+### Example 5: Setting the Text Display Style
+This example demonstrates how to use the [fontFeature](#fontfeature11), [fontColor](#fontcolor), [fontStyle](#fontstyle), [fontWeight](#fontweight) and [fontFamily](#fontfamily) attributes to set the text display style of the clock.
+``` ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Text('fontFeature').fontColor(0xCCCCCC)
+      // Set text features.
+      TextClock()
+        .fontFeature('\"sinf\" off')
+      TextClock()
+        .fontFeature('\"sinf\" on')
+        .margin('10%')
+
+      // Set the font color.
+      Text('fontColor').fontColor(0xCCCCCC)
+      TextClock()
+        .fontColor(Color.Black)
+      TextClock()
+        .fontColor(Color.Blue)
+        .margin('10%')
+
+      Text('fontStyle').fontColor(0xCCCCCC)
+      // Set the font style.
+      TextClock()
+        .fontStyle(FontStyle.Normal)
+      TextClock()
+        .fontStyle(FontStyle.Italic)
+        .margin('10%')
+
+      Text('fontWeight').fontColor(0xCCCCCC)
+      Sets font weight.
+      TextClock()
+        .fontWeight(FontWeight.Normal)
+      TextClock()
+        .fontWeight(FontWeight.Bold)
+        .margin('10%')
+
+      Text('fontFamily').fontColor(0xCCCCCC)
+      // Set the font.
+      TextClock()
+        .fontFamily('HarmonyOS Sans')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```

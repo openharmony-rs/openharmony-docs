@@ -975,7 +975,11 @@ Memory copy failed.
 
 **错误信息**
 
-Failed to get image data.
+Failed to get the data from Surface.
+
+**错误描述**
+
+获取图像数据失败。
 
 **可能原因**
 
@@ -990,7 +994,7 @@ Failed to get image data.
 
 **错误信息**
 
-Unsupported operation.
+Unsupported operation, e.g. on cross-platform.
 
 **错误描述**
 
@@ -1064,6 +1068,10 @@ Unsupported memory format or pixel format.
 
 Invalid parameter.
 
+**错误描述**
+
+非法参数。
+
 **可能原因**
 
 输入的参数无效。
@@ -1113,6 +1121,10 @@ Memory copy failed.
 **错误信息**
 
 Failed to create the PixelMap.
+
+**错误描述**
+
+创建PixelMap失败。
 
 **可能原因**
 
@@ -1165,7 +1177,7 @@ Bad source.
 
 **错误信息**
 
-Unsupported mimetype.
+Unsupported MIME type.
 
 **错误描述**
 
@@ -1219,7 +1231,7 @@ Unsupported allocator type, e.g., use share memory to decode a HDR image as only
 
 **错误信息**
 
-Unsupported metadata. For example, the property key is not supported, or the property value is invalid.
+Unsupported metadata.
 
 **错误描述**
 
@@ -1257,6 +1269,10 @@ Unsupported options, e.g, cannot convert image into desired pixel format.
 **错误信息**
 
 Invalid parameter.
+
+**错误描述**
+
+非法参数。
 
 **可能原因**
 
@@ -1366,6 +1382,10 @@ Encode failed.
 **错误信息**
 
 Invalid parameter.
+
+**错误描述**
+
+非法参数。
 
 **可能原因**
 

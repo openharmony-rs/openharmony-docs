@@ -369,7 +369,7 @@
 
   ![zh-cn_image_0000001511580876](figures/zh-cn_image_0000001511580876.png)
 
-- ItemAlign.Stretch：交叉轴方向拉伸填充，在未设置尺寸时，拉伸到容器尺寸。
+- ItemAlign.Stretch：交叉轴方向拉伸填充，在未设置尺寸时，拉伸到容器尺寸。元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置[FlexWrap](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#flexwrap)为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行或列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。
 
 
   <!-- @[FlexItemAlignStretch_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignStretch.ets) -->
@@ -582,7 +582,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
       .backgroundColor('#F5DEB3')
     Text('flexBasis("auto")'+' width("40%")')
       .width('40%')
-      .flexBasis('auto')//设置width以及flexBasis值auto，使用width的值
+      .flexBasis('auto')// 设置width以及flexBasis值auto，使用width的值
       .height(100)
       .backgroundColor('#D2B48C')
   

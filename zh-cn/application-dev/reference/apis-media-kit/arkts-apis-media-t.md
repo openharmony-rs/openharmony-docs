@@ -77,7 +77,7 @@ track变更事件回调方法。
 
 type OnAVPlayerStateChangeHandle = (state: AVPlayerState, reason: StateChangeReason) => void
 
-状态机切换事件回调方法。
+播放状态机切换事件回调方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -132,7 +132,7 @@ type OnSuperResolutionChanged = (enabled: boolean) => void
 
 出现以下两种情况，超分算法会自动关闭。
 * 目前超分算法最高仅支持30帧及以下的视频。若视频帧率超过30帧，或者在倍速播放等场景下导致输入帧率超出超分算法处理能力，超分会自动关闭。
-* 目前超分算法支持输入分辨率范围为320x320 ~ 1920x1080，单位为像素。若播放过程中输入视频分辨率超出此范围，超分算法会自动关闭。
+* 目前超分算法支持输入分辨率范围为[320x320, 1920x1080]，单位为像素。若播放过程中输入视频分辨率超出此范围，超分算法会自动关闭。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -218,7 +218,7 @@ type AVRecorderState = 'idle' | 'prepared' | 'started' | 'paused' | 'stopped' | 
 
 type OnAVRecorderStateChangeHandler = (state: AVRecorderState, reason: StateChangeReason) => void
 
-状态机切换事件回调方法。
+录制状态机切换事件回调方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -329,7 +329,7 @@ type SourceCloseCallback = (uuid: number) => void
 **示例：**
 
 ```ts
-import HashMap from '@ohos.util.HashMap';
+import { HashMap } from '@kit.ArkTS';
 
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 

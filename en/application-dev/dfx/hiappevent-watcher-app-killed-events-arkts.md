@@ -13,7 +13,7 @@ For details, see [Application Killed Event Overview](./hiappevent-watcher-app-ki
 
 ## Available APIs
 
-For details about how to use the APIs (such as parameter usage restrictions and value ranges), see [HiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
+For details about how to use the APIs, see [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
 
 | Name                                             | Description                                        |
 | --------------------------------------------------- | -------------------------------------------- |

@@ -160,7 +160,7 @@ LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了
 
 - 当装饰的数据类型为class或者Object时，可以观察到对象整体赋值和对象属性变化（详见[从ui内部使用localstorage](#从ui内部使用localstorage)）。
 
-- 当装饰的对象是数组时，可以观察到数组添加、删除、更新数组单元的变化。
+- 当装饰的对象是数组时，可以观察到数组添加、删除、更新数组单元的变化。详见[装饰Array类型变量](#装饰array类型变量)。
 
 - 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。详见[装饰Date类型变量](#装饰date类型变量)。
 
@@ -1007,6 +1007,58 @@ struct LinkIndex {
       .width('100%')
     }
     .height('100%')
+  }
+}
+```
+
+### 装饰Array类型变量
+
+在下面的示例中，\@LocalStorageLink装饰的message类型为`number[]`，点击Button改变message的值，UI会随之刷新。
+
+<!-- @[localStorage_local_array_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalArraySample.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @LocalStorageLink('array') message: number[] = [0, 1, 2, 3];
+
+  build() {
+    Column() {
+      ForEach(this.message, (item: number) => {
+        Text(`${item}`)
+          .fontSize(20)
+          .margin(10)
+      })
+      // 新增数组元素，触发UI刷新
+      Button('Push element')
+        .onClick(() => {
+          this.message.push(4);
+        })
+        .width(300)
+        .margin(10)
+      // 删除数组元素，触发UI刷新
+      Button('Pop element')
+        .onClick(() => {
+          this.message.pop();
+        })
+        .width(300)
+        .margin(10)
+      // 对数组整体重新赋值，触发UI刷新
+      Button('Reset array')
+        .onClick(() => {
+          this.message = [9, 8, 7, 6];
+        })
+        .width(300)
+        .margin(10)
+      // 更新数组元素，触发UI刷新
+      Button('Modify element[0]')
+        .onClick(() => {
+          this.message[0] = 10;
+        })
+        .width(300)
+        .margin(10)
+    }
   }
 }
 ```

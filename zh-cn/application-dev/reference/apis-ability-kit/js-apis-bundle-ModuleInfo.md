@@ -14,7 +14,7 @@
 >
 > 从API version 9开始，该模块不再维护，建议使用[bundleManager-HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md)替代。
 
-## ModuleInfo<sup>(deprecated)<sup>
+## ModuleInfo<sup>(deprecated)</sup>
 
 > **说明：**
 >

@@ -73,7 +73,7 @@
 ```html
 <!-- index.hml -->
 <div class="container">
-    <list class="todo-wrapper">
+    <list class="todo-wrapper" ref="listObj">
         <list-item for="{{todolist}}" class="todo-item">
             <div style="flex-direction: column;align-items: center;justify-content: center;">
                 <text class="todo-title">{{$item.title}}</text>

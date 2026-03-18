@@ -17,6 +17,8 @@ From API version 22, **huksExternalCrypto** provides the APIs for registering an
 
 2. Call [registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider).
 
+## Development Cases
+
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';

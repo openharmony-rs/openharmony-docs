@@ -52,12 +52,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error.     |
 | 14800010  | Failed to open or delete the database by an invalid database path.   |
-| 14800011  | Failed to open the database because it is corrupted.    |
+| 14800011  | The current operation failed because the database is corrupted.    |
 | 14801001  | The operation is supported in the stage model only.    |
 | 14801002  | Invalid data group ID.   |
 | 14800017  | StoreConfig is changed. |
 | 14800020  | The secret key is corrupted or lost.   |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.    |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.   |
 | 14800023  | SQLite: Access permission denied.    |
 | 14800027  | SQLite: Attempt to write a readonly database.   |
@@ -163,12 +163,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800010  | Failed to open or delete the database by an invalid database path. |
-| 14800011  | Failed to open the database because it is corrupted.  |
+| 14800011  | The current operation failed because the database is corrupted.  |
 | 14801001  | The operation is supported in the stage model only.                               |
 | 14801002  | Invalid data group ID.                             |
 | 14800017  | StoreConfig is changed. |
 | 14800020  | The secret key is corrupted or lost.   |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.   |
 | 14800023  | SQLite: Access permission denied.    |
 | 14800027  | SQLite: Attempt to write a readonly database. |
@@ -614,7 +614,7 @@ This API returns **true** if the specified tokenizer is supported; returns **fal
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
 | tokenizer | [Tokenizer](arkts-apis-data-relationalStore-e.md#tokenizer17)               | Yes  | Tokenizer to check.|
 
-**Return Value**
+**Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
@@ -653,7 +653,7 @@ Obtains the SQL statement used to insert data. This API returns the result synch
 | values | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Yes| Field information and corresponding values of the data to be written to the database.|
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | No|Resolution used to resolve the conflict. <br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
 
-**Return Value**
+**Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
@@ -700,7 +700,7 @@ Obtains the SQL statement used to update data. This API returns the result synch
 | values | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Yes| Field information and corresponding values of the data to be written to the database.|
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | No| Resolution used to resolve the conflict. <br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
 
-**Return Value**
+**Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
@@ -746,7 +746,7 @@ Obtains the SQL statement used to delete data. This API returns the result synch
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | **RdbPredicates** object that matches the specified field.|
 
-**Return Value**
+**Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
@@ -785,7 +785,7 @@ Obtains the SQL statement used to query data. This API returns the result synchr
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | **RdbPredicates** object that matches the specified field.|
 | columns | Array\<string> | No| Columns to be queried. If this parameter is not specified, all columns are queried.|
 
-**Return Value**
+**Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |

@@ -29,16 +29,16 @@ The following example is based on the [Integrating with ArkTS Pages](ndk-access-
 
   > **NOTE**
   > 
-  > The **ArkUI_NodeEvent* event** parameter in event callbacks is only valid during the callback execution. Do not cache this pointer or process it asynchronously.
+  > The [ArkUI_NodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodeevent.md)* event parameter in event callbacks is only valid during the callback execution. Do not cache this pointer or process it asynchronously.
 
-    Define a pointer of type ArkUI_NativeNodeAPI_1:
+    Define a pointer of type [ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md):
     <!-- @[define_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Common.h) -->
     
     ``` C
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     ```
 
-    Call the **OH_ArkUI_GetModuleInterface** API to assign a value to the defined pointer.
+    Call the [OH_ArkUI_GetModuleInterface](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface) API to assign a value to the defined pointer:
     <!-- @[get_module_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NativeEntry.cpp) -->
     
     ``` C++
@@ -658,7 +658,7 @@ The following example is based on the [Integrating with ArkTS Pages](ndk-access-
 
    Since log-related APIs are used, add a reference to **libhilog_ndk.z.so** in the **CMakeLists.txt** file as follows:
    
-   ```
+   ```text
    add_library(entry SHARED napi_init.cpp NativeEntry.cpp)
    target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so libhilog_ndk.z.so)
    ```

@@ -114,6 +114,8 @@ Enumerates the display modes of a foldable device.
 
 Enumerates the types of corners on the screen.
 
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.Window.SessionManager
 
 | Name| Value| Description|
@@ -126,6 +128,10 @@ Enumerates the types of corners on the screen.
 ## RoundedCorner<sup>23+</sup>
 
 Describes a single rounded corner on the screen.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -649,6 +655,8 @@ onChangeWithAttribute(displayAttributeOption: Array&lt;string&gt;, callback: Cal
 
 Subscribes to changes of specified attributes of a display.
 
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Parameters**
@@ -665,7 +673,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ----------------------- |
 | 801     | Capability not supported. Function onChangeWithAttribute can not work correctly due to limited device capabilities. |
-| 1400003 | This display manager service works abnormally. Possible causes: Internal IPC error. |
+| 1400003 | This display manager service works abnormally. Possible causes: Internal IPC error. |   
 
 **Example**
 
@@ -1754,6 +1762,8 @@ Before calling any API in Display, you must use [getAllDisplays()](#displaygetal
 getRoundedCorner(): Array\<RoundedCorner\>
 
 Obtains the rounded corner information of the display. The rounded corner information of the display is determined by the product configuration. Only physical screens that have a defined corner-radius value returns rounded corner information; otherwise, an empty array is returned. Virtual displays always return an empty array.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Window.SessionManager
 

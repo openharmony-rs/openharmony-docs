@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -43,7 +43,6 @@ FFRT_C_API int ffrt_usleep(uint64_t usec)
 Sets the fixed sleep time.
 
 **Since**: 10
-
 
 **Parameters**
 

@@ -30,6 +30,6 @@ Enumerates the access permissions.
 
 | Name                | Value | Description    |
 | ------------------ | ---- | ------ |
-| UNKNOWN<sup>11+</sup> | 0    | Unknown.<br>This is a system API. |
-| ALLOWED<sup>11+</sup> | 1    | Access allowed.<br>This is a system API. |
-| REJECTED<sup>11+</sup> | 2    | Access rejected.<br>This is a system API.|
+| UNKNOWN | 0    | Unknown.<br>This is a system API. |
+| ALLOWED | 1    | Access allowed.<br>This is a system API. |
+| REJECTED | 2    | Access rejected.<br>This is a system API.|

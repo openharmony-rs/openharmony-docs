@@ -24,7 +24,7 @@ For details about the APIs, see [commonEventManager.publish](../../reference/api
 | publish(event:&nbsp;string,&nbsp;options:&nbsp;[CommonEventPublishData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md),&nbsp;callback:&nbsp;AsyncCallback<void\>) | Publishes a common event with given properties.|
 
 
-## Publishing a Common Event that Does Not Carry Information
+## Publishing a Common Event That Does Not Carry Information
 
 Common events that do not carry information can be published only as unordered common events.
 
@@ -51,14 +51,14 @@ Common events that do not carry information can be published only as unordered c
        hilog.error(DOMAIN_NUMBER, TAG,
          `Publish failed, code is ${JSON.stringify(err.code)}, message is ${JSON.stringify(err.message)}`);
      } else {
-       //...
+       // ...
        hilog.info(DOMAIN_NUMBER, TAG, `Publish success`);
      }
    });
    ```
 
 
-## Publishing a Common Event that Carries Information
+## Publishing a Common Event That Carries Information
 
 Common events that carry information can be published as unordered, ordered, and sticky common events, which are specified by the **isOrdered** and **isSticky** fields of [CommonEventPublishData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md).
 
@@ -97,7 +97,7 @@ Common events that carry information can be published as unordered, ordered, and
        hilog.error(DOMAIN_NUMBER, TAG,
          `Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
      } else {
-       //...
+       // ...
        hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in publishing common event.`);
      }
    });

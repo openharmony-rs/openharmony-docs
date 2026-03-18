@@ -5,7 +5,7 @@
 <!--Owner: @leiguangyu-->
 <!--Designer: @Maplestroy91-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 hiperf是一款集成多种性能分析功能的命令行工具，可用于分析系统性能瓶颈、定位软件热点及优化代码效率，支持采集和统计程序运行时的性能数据。
 
@@ -266,7 +266,7 @@ Supported events for hardware:
 | --exclude-thread | 不采集线程名，通过线程名排除特定线程的采样。多个线程名之间以逗号隔开。该参数不能和-a一起使用。 | 
 | --offcpu | 跟踪线程何时脱离CPU调度。 | 
 | -j | 分支堆栈采样，过滤器支持any、any_call、any_ret、ind_call、ind_jmp、cond、call。 | 
-| -s/--callstack | 设置回栈模式，可设置为fp(栈指针)、dwarf(调试信息表)两种模式中的一种，默认是fp模式。 | 
+| -s/--call-stack | 设置回栈模式，可设置为fp(栈指针)、dwarf(调试信息表)两种模式中的一种。 | 
 | --kernel-callchain | 采集内核态堆栈，该参数必须和-s参数一起使用。 | 
 | --callchain-useronly | 仅收集用户态堆栈。 | 
 | --delay-unwind | 回栈模式被设置为dwarf时，设置此选项后调用栈会在录制后展开。 | 
@@ -343,6 +343,7 @@ $ hiperf record -p 267 -d 10 -s dwarf
 | --control [command] | 采集操作启停控制参数。命令包括prepare/start/stop。该参数不能和-d一起使用。<br/>**说明**：从API version 20开始，支持该参数。 | 
 | -o | 设置输出文件路径，并允许用户自定义文件名称。<br>默认路径以设备上运行 hiperf stat -h/--help 时显示的 -o 参数说明为准。<br>该参数必须和--control prepare一起使用，不能和--control一起使用。<br/>**说明**：从API version 20开始，支持该参数。 | 
 | -a | 统计整机的性能数据。 |
+<!--RP2End-->
 
 **命令行示例**：
 

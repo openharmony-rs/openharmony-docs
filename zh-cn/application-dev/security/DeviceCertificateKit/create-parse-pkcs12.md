@@ -165,9 +165,9 @@ async function doTestCreatePkcs12() {
 
   try {
     let p12 = await cert.createPkcs12(data, config);
-    console.info(`createPkcs12 succeed p12 = ` + p12);
+    console.info(`createPkcs12 result: success, p12 = ` + p12);
     let out: cert.Pkcs12Data = await cert.parsePkcs12(p12, '123456');
-    console.info(`parsePKCS12 succeed.`);
+    console.info(`parsePKCS12 result: success.`);
     if (out.privateKey) {
       console.info(`privateKey:` + out.privateKey.toString());
     }
@@ -175,7 +175,7 @@ async function doTestCreatePkcs12() {
       console.info(`cert:` + out.cert.toString());
     }
     if (out.otherCerts && Array.isArray(out.otherCerts)) {
-      console.info(`otherCerts counts:`, out.otherCerts.length);
+      console.info(`otherCerts counts: `, out.otherCerts.length);
       out.otherCerts.forEach((cert, idx) => {
         console.info(`otherCerts[${idx}]:\n${cert.toString()}`);
       });
@@ -329,7 +329,7 @@ async function doTestCreatePkcs12Sync() {
 
   try {
     let p12 = cert.createPkcs12Sync(data, config);
-    console.info(`createPkcs12Sync succeed p12 = ` + p12);
+    console.info(`createPkcs12Sync result: success, p12 = ` + p12);
     let conf: cert.Pkcs12ParsingConfig = {
       password: '123456',
       needsCert: true,
@@ -338,7 +338,7 @@ async function doTestCreatePkcs12Sync() {
       needsOtherCerts: true,
     };
     let out: cert.Pkcs12Data = cert.parsePkcs12(p12, conf);
-    console.info(`parsePKCS12 succeed.`);
+    console.info(`parsePKCS12 result: success.`);
     if (out.privateKey) {
       console.info(`privateKey:` + out.privateKey.toString());
     }

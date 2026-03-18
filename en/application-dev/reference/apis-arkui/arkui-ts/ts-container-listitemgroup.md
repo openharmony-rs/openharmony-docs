@@ -9,21 +9,21 @@
 
 The **ListItemGroup** component is used to display list item groups. It must be used with the [List](ts-container-list.md) component. Unless specified otherwise, it spans the entire width of the **List** component.
 
-Lazy loading of ListItemGroup indicates that child components in the visible area are loaded on demand. Compared with full loading, lazy loading can improve the application startup speed and reduce the memory consumption. The lazy loading capabilities of ListItemGroup and [ForEach ](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach ](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat ](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) are different.
+Lazy loading of **ListItemGroup** loads the child components in the visible area as required. Compared with full loading, lazy loading can improve the application startup speed and reduce the memory usage. The lazy loading capabilities vary when the **ListItemGroup** component is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md).
 
- - When ListItemGroup is combined with ForEach, all child nodes are created at a time. The nodes within the screen range are laid out and rendered when required. When a user swipes, the nodes that are out of the screen range are not removed from the tree, and the nodes that are within the screen range are laid out and rendered.
+ - When **ListItemGroup** is used together with **ForEach**, all child nodes are created at a time. The nodes within the screen range are laid out and rendered when needed. When a user swipes, the nodes that are out of the screen range are not removed from the tree, and the nodes that are within the screen range are laid out and rendered.
 
- - When ListItemGroup is combined with LazyForEach, nodes within the screen range are created, laid out, and rendered at a time. When a user swipes, the nodes that are out of the screen range are removed from the tree, and the nodes that are within the screen range are created, laid out, and rendered.
+ - When **ListItemGroup** is used together with **LazyForEach**, all nodes within the screen range are created, laid out, and rendered at a time. When a user swipes, the nodes that are out of the screen range are removed from the tree, and the nodes that are within the screen range are created, laid out, and rendered.
 
- - When ListItemGroup is combined with Repeat with [virtualScroll](./ts-rendering-control-repeat.md#virtualscroll), the lazy loading behavior is the same as that of LazyForEach. When ListItemGroup is combined with Repeat without virtualScroll, the lazy loading behavior is the same as that of ForEach.
+ - When the **ListItemGroup** component is used together with **Repeat** with [virtualScroll](./ts-rendering-control-repeat.md#virtualscroll), the lazy loading behavior is the same as that of **LazyForEach**. When the **ListItemGroup** component is used together with **Repeat** without **virtualScroll**, the lazy loading behavior is the same as that of **ForEach**.
 
-ListItemGroup preloading refers to the process of loading child components that are not visible in the display area in advance when idle timeslots are available. Preloading can reduce frame loss during scrolling and improve smoothness. Preloading takes effect only when it is used together with lazy loading. The preloading capability varies depending on the combination of ListItemGroup and [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md).
+Preloading in **ListItemGroup** refers to loading not only the child components within the visible area but also some invisible child components outside the visible area during idle time. Preloading can reduce frame loss during scrolling and improve smoothness. Preloading takes effect only when lazy loading is used. The preloading capabilities vary when the **ListItemGroup** component is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md).
 
- - When ListItemGroup is combined with ForEach, if [cachedCount](./ts-container-list.md#cachedcount) is set, in addition to child components in the display area, subnodes within the cachedCount range outside the display area are pre-arranged based on the cachedCount attribute of the List component in idle timeslots.
+ - When the **ListItemGroup** component is used together with **ForEach** and [cachedCount](./ts-container-list.md#cachedcount) is set, in addition to laying out child components within the visible area, child components within the range of **cachedCount** outside the visible area are pre-laid out during idle time based on the **cachedCount** attribute of the **List** component.
 
- - When ListItemGroup is combined with LazyForEach, if [cachedCount](./ts-container-list.md#cachedcount) is set, in addition to child components in the display area, subnodes within the cachedCount range outside the display area are pre-created and pre-arranged based on the cachedCount attribute of the List component in idle timeslots.
+ - When the **ListItemGroup** component is used together with **LazyForEach** and [cachedCount](./ts-container-list.md#cachedcount) is set, in addition to creating and laying out child components within the visible area, child components within the range of **cachedCount** outside the visible area are created and pre-laid out during idle time based on the **cachedCount** attribute of the **List** component.
 
- - When ListItemGroup is combined with Repeat with [virtualScroll](./ts-rendering-control-repeat.md#virtualscroll), its preloading behavior is the same as that of LazyForEach. When ListItemGroup is combined with Repeat without virtualScroll, its preloading behavior is the same as that of ForEach.
+ - When the **ListItemGroup** component is used together with **Repeat** with [virtualScroll](./ts-rendering-control-repeat.md#virtualscroll), the preloading behavior is the same as that of **LazyForEach**. When the **ListItemGroup** component is used together with **Repeat** without **virtualScroll**, the preloading behavior is the same as that of **ForEach**.
 
 > **NOTE**
 >
@@ -37,13 +37,13 @@ ListItemGroup preloading refers to the process of loading child components that 
 
 ## Child Components
 
-This component supports the [ListItem](ts-container-listitem.md) child component. Child components can be dynamically generated using the rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)). LazyForEach or Repeat is recommended to optimize performance.
+Contains the [ListItem](ts-container-listitem.md) child component. Child components can be dynamically generated using rendering control types [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md). **LazyForEach** or **Repeat** is recommended to optimize performance.
 
 ## APIs
 
 ListItemGroup(options?: ListItemGroupOptions)
 
-Create a **ListItemGroup** component.
+Creates a **ListItemGroup** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -57,7 +57,7 @@ Create a **ListItemGroup** component.
 
 ## ListItemGroupOptions
 
-ListItemGroup component parameter.
+Describes the **ListItemGroup** component parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -66,11 +66,11 @@ ListItemGroup component parameter.
 | Name             | Type                                           | Read-Only| Optional  | Description                                                    |
 | ------------------- | --------------------------------------------------- | ---- | -- | ------------------------------------------------------------ |
 | header              | [CustomBuilder](ts-types.md#custombuilder8) &nbsp;   | No  | Yes| Header of the list item group.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
-| headerComponent<sup>13+</sup>              | [ComponentContent](../js-apis-arkui-ComponentContent.md)       | No  | Yes| Header of the list item group, in the type of ComponentContent.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside. This parameter takes precedence over the **header** parameter. This means that, if both **header** and **headerComponent** are set, the value of **headerComponent** is used.<br>You are not advised to use the same headerComponent for different ListItemGroups at the same time. Otherwise, display problems may occur.<br>**Atomic service API**: This API can be used in atomic services since API version 13.             |
+| headerComponent<sup>13+</sup>              | [ComponentContent](../js-apis-arkui-ComponentContent.md)       | No  | Yes| Header of the list item group, in the type of ComponentContent.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside. This parameter takes precedence over the **header** parameter. This means that, if both **header** and **headerComponent** are set, the value of **headerComponent** is used.<br>To avoid display issues, do not assign the same **headerComponent** to different **ListItemGroup** components.<br>**Atomic service API**: This API can be used in atomic services since API version 13.             |
 | footer              | [CustomBuilder](ts-types.md#custombuilder8) &nbsp;     | No  | Yes| Footer of the list item group.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
-| footerComponent<sup>13+</sup>              | [ComponentContent](../js-apis-arkui-ComponentContent.md)       | No  | Yes| Footer of the list item group, in the type of ComponentContent.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside. This parameter takes precedence over the **footer** parameter. This means that, if both **footer** and **footerComponent** are set, the value of **footerComponent** is used.<br>You are not advised to use the same footerComponent for different ListItemGroups at the same time. Otherwise, the display may be affected.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                          |
+| footerComponent<sup>13+</sup>              | [ComponentContent](../js-apis-arkui-ComponentContent.md)       | No  | Yes| Footer of the list item group, in the type of ComponentContent.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside. This parameter takes precedence over the **footer** parameter. This means that, if both **footer** and **footerComponent** are set, the value of **footerComponent** is used.<br>To avoid display issues, do not assign the same **footerComponent** to different **ListItemGroup** components.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                          |
 | space               | number&nbsp;\|&nbsp;string                          | No  | Yes| Spacing between list items. This parameter only affects the spacing between list items, but not spacing between the header and list items or between the footer and list items.<br>Default value: **0**<br>Unit: vp<br>**NOTE**<br>If this parameter is set to a negative number or a value greater than or equal to the length of the list content area, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| style<sup>10+</sup> | [ListItemGroupStyle](#listitemgroupstyle10) | No  | Yes| Style of the list item group.<br>Default value: ListItemGroupStyle.NONE<br>If this parameter is set to **ListItemGroupStyle.NONE**, no style is applied.<br>When **ListItemGroupStyle.CARD** is used, you are advised to pair it with **ListItemStyle.CARD** from [ListItem](ts-container-listitem.md) to apply the default card style.<br>In the card style, the default specifications for the **ListItemGroup** are as follows: horizontal margin of 12 vp on both left and right sides, and vertical as well as horizontal padding of 4 vp.<br>In the card style, the default focus, hover, press, selected, and disable styles are provided for the list options in the card.<br>**NOTE**<br>When **ListItemStyle.CARD** is set, the **listDirection** attribute of **List** must be **Axis.Vertical**. If **listDirection** is set to **Axis.Horizontal**, the display will be disordered. The default value of [alignListItem](./ts-container-list.md#alignlistitem9) is **ListItemAlign.Center**, which centers the items vertically.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| style<sup>10+</sup> | [ListItemGroupStyle](#listitemgroupstyle10) | No  | Yes| Style of the list item.<br>Default value: **ListItemGroupStyle.NONE**<br>If this parameter is set to **ListItemGroupStyle.NONE**, no style is applied.<br>When **ListItemGroupStyle.CARD** is used, you are advised to pair it with **ListItemStyle.CARD** from [ListItem](ts-container-listitem.md) to apply the default card style.<br>In the card style, the default specifications for the **ListItemGroup** are as follows: horizontal margin of 12 vp on both left and right sides, and vertical as well as horizontal padding of 4 vp.<br>The card style provides default focus, hover, press, selected, and disabled states for list items.<br>**NOTE**<br>When **ListItemStyle.CARD** is set, the **listDirection** attribute of **List** must be **Axis.Vertical**. If **listDirection** is set to **Axis.Horizontal**, the display will be disordered. The default value of [alignListItem](./ts-container-list.md#alignlistitem9) is **ListItemAlign.Center**, which centers the items vertically.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Attributes
 
@@ -80,7 +80,7 @@ divider(value: [ListDividerOptions](ts-container-list.md#listdivideroptions18) |
 
 Sets the style of the divider for the list items. By default, there is no divider.
 
-strokeWidth, startMargin, and endMargin do not support percentage setting.
+**strokeWidth**, **startMargin**, and **endMargin** cannot be set in percentage.
 
 When a list item has [polymorphic styles](ts-universal-attributes-polymorphic-style.md) applied, the dividers above and below the pressed child component are not rendered.
 
@@ -102,7 +102,7 @@ Sets the size information of the child components of a **ListItemGroup** compone
 
 > **NOTE**
 >
-> - The childrenMainSize attribute must be set for the List component to take effect.
+> - The **childrenMainSize** attribute of the **List** component must be set at the same time for the attribute to take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -112,11 +112,11 @@ Sets the size information of the child components of a **ListItemGroup** compone
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
-| value | [ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12) | Yes  | This object is used to maintain the size information of child components in the main axis direction.|
+| value | [ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12) | Yes  | Size information of child components in the main axis direction.|
 
 ## ListItemGroupStyle<sup>10+</sup>
 
-List component card style enumeration.
+Enumerates the card styles of the **List** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -133,9 +133,9 @@ List component card style enumeration.
 
 ### Example 1: Setting a Sticky Header and Footer
 
-This example uses [sticky](ts-container-list.md#sticky9) to implement the header sticking and footer sticking effects.
+This example uses [sticky](ts-container-list.md#sticky9) to implement the sticky header and footer.
 
-ListDataSource implements the LazyForEach data source interface [IDataSource](ts-rendering-control-lazyforeach.md#idatasource) to provide child components for List and ListItemGroup through LazyForEach.
+**ListDataSource** implements the **LazyForEach** data source API [IDataSource](ts-rendering-control-lazyforeach.md#idatasource), which is used to provide child components for **List** and **ListItemGroup** through **LazyForEach**.
 
 <!--code_no_check-->
 ```ts
@@ -169,14 +169,14 @@ export class TimeTableDataSource implements IDataSource {
     }
   }
 
-  // Notify the controller that data has changed.
+  // Notify the controller of data changes.
   notifyDataChange(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataChange(index);
     });
   }
 
-  //Modify the first element.
+  // Modify the first element.
   public change1stItem(temp: TimeTable): void {
     this.list[0] = temp;
     this.notifyDataChange(0);
@@ -253,7 +253,7 @@ struct ListItemGroupExample {
 
   @Builder
   itemFoot(num: number) {
-    Text ('Total' + num + 'lessons')
+    Text('Total lessons: ' + num)
       .fontSize(16)
       .backgroundColor(0xAABBCC)
       .width('100%')
@@ -289,7 +289,7 @@ struct ListItemGroupExample {
 
 ![en-us_image_0000001219864159](figures/en-us_image_listitemgroup.gif)
 
-### Example 2: Setting the Card Style
+### Example 2: Applying a Card-style Effect
 
 This example illustrates the card-style effect of the **ListItemGroup** component.
 
@@ -325,7 +325,7 @@ struct ListItemGroupExample2 {
             ForEach(item.itemStyles, (itemStyle: number, itemIndex?: number) => {
               ListItem({ style: itemStyle }) {
                 if (index != undefined && itemIndex != undefined) {
-                  Text('Item ' (itemIndex + 1) + 'n group ' (index + 1))
+                  Text('Item ' + (itemIndex + 1) + ' in group ' + (index + 1))
                     .width('100%')
                     .textAlign(TextAlign.Center)
                 }
@@ -352,7 +352,7 @@ interface ArrObject {
 
 ### Example 3: Setting Header and Footer
 
-This example uses [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) to set the header/footer.
+This example uses [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) to set the header and footer.
 
 For details about **ListDataSource** and the complete code, see [Example 1: Setting a Sticky Header and Footer](#example-1-setting-a-sticky-header-and-footer).
 
@@ -469,7 +469,7 @@ struct ListItemGroupExample {
     Column() {
       Button('update').width(100).height(50).onClick(() => {
         this.itemGroupArray.change1stItem({
-          title: 'Monday after update',
+          title: 'Updated Monday',
           projects: ['Language', 'Physics', 'History', 'Art']
         });
       })
@@ -487,13 +487,13 @@ struct ListItemGroupExample {
 }
 ```
 
-
+![zh-cn_image_listitemgroup_example03](figures/zh-cn_image_listitemgroup_example03.gif)
 
 ### Example 4: Setting a Multi-Column Layout
 
-This example shows how to use ListItemGroup in a multi-column layout. You can set the [lanes](./ts-container-list.md#lanes9) attribute of the List component to implement a multi-column layout.
+This example shows how to use **ListItemGroup** in a multi-column layout. The [lanes](./ts-container-list.md#lanes9) attribute of the **List** component is set to implement the multi-column layout.
 
-For details about ListDataSource and the complete code, see [Example 1: Setting a Sticky Header and Footer](#example-1-setting-a-sticky-header-and-footer).
+For details about **ListDataSource** and the complete code, see [Example 1: Setting a Sticky Header and Footer](#example-1-setting-a-sticky-header-and-footer).
 
 <!--code_no_check-->
 ```ts
@@ -569,7 +569,7 @@ struct MyItemGroup {
     }) {
       LazyForEach(this.itemArr, (project: string) => {
         ListItem() {
-          //Modify the ListItem style to adapt to the multi-column layout.
+          // Modify the ListItem style to adapt to the multi-column layout.
           Column() {
             Text(project)
               .fontSize(20)
@@ -637,8 +637,8 @@ struct ListItemGroupExample {
           MyItemGroup({ item: item })
         }, (item: TimeTable) => item.title)
       }
-      .lanes(3) // Set the layout to three columns.
-      .alignListItem(ListItemAlign.Center) // Align items in the cross axis.
+      .lanes(3) // Set the three-column layout.
+      .alignListItem(ListItemAlign.Center) // Align items in the center of the cross axis.
       .layoutWeight(1)
       .scrollBar(BarState.Auto)
       .width('100%')
@@ -652,4 +652,4 @@ struct ListItemGroupExample {
 }
 ```
 
-
+![list_multicolumn_layout](figures/list_multicolumn_layout.gif)

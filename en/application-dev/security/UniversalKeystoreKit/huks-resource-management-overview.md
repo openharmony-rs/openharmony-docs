@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-It is agreed that **resourceId** is used to uniquely identify a resource in external key management extensions (such as Ukey). Currently, **resourceId** can be returned through [certification query](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22). Each certificate chain corresponds to one **resourceId**. After obtaining **resourceId**, the application need to [open the resource](huks-open-close-resource-ndk.md#opening-resources) before performing subsequent key operations. After the operations are complete, the application [closes the resource](huks-open-close-resource-ndk.md#closing-resources).
+It is agreed that **resourceId** is used to uniquely identify a resource in external key management extensions (such as Ukey). Currently, **resourceId** can be returned through [certification query](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22). Each certificate chain corresponds to one **resourceId**. After obtaining **resourceId**, the application need to [open the resource](huks-open-close-resource-ndk.md#opening-resources) before performing subsequent key operations. After the operations are complete, the application need to [close the resource](huks-open-close-resource-ndk.md#closing-resources).
 
 > **NOTE**
 >

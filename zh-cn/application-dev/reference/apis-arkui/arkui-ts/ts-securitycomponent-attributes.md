@@ -71,7 +71,7 @@ position(value: Position): T
 
 | 参数名 | 类型 | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) |是 |安全控件的左上角相对于父容器左上角的偏移位置。<br/>默认值：<br/>{<br/>x: 0,<br/>y: 0<br/>}。|
+| value | [Position](ts-types.md#position) |是 |安全控件的左上角相对于父容器左上角的偏移位置。<br/>**异常情况说明**：<br/>1.当入参为异常值（如入参不符合Position定义等）、入参为Position类型但x和y均为异常值（如null或其他与格式要求不符的字符串等）时，该属性不生效；<br/>2.当入参的Position中，x和y有且仅有一个异常值时，值异常的属性会被置为0。如输入{x: 0, y: 'a'}，最终效果按{x: 0, y: 0}显示。 |
 
 **返回值：**
 
@@ -644,7 +644,7 @@ minFontScale(scale: number | Resource): T
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | number \| [Resource](ts-types.md#resource) | 是   | 文本最小的字体缩小倍数。<br/>取值范围：[0, 1]。<br/>**说明：** <br/>设置的值小于0时，按值为0处理，即缩小不受限制；设置的值大于1，按值为1处理，即缩小不生效；取值范围外为异常值，默认不生效。 |
+| scale  | number \| [Resource](ts-types.md#resource) | 是   | 文本最小的字体缩小倍数。<br/>取值范围：[0, 1]。<br/>**说明：** <br/>设置的值小于0时，按值为0处理，即缩小不受限制；设置的值大于1，按值为1处理，即缩小不生效。 |
 
 **返回值：**
 
@@ -737,7 +737,7 @@ maxLines(line: number | Resource): T
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| line  | number \| [Resource](ts-types.md#resource)<sup>20+</sup> | 是   | 文本的最大行数。<br/>number类型入参的取值范围：[1, +∞)。从API version 20开始，支持Resource类型。Resource类型仅支持'integer'，取值范围为[1, +∞)。<br/>**说明：** <br/>设置的值小于1时，按默认值100000处理。 |
+| line  | number \| [Resource](ts-types.md#resource)<sup>20+</sup> | 是   | 文本的最大行数。<br/>number类型入参的取值范围：[1, +∞)。从API version 20开始，支持Resource类型。Resource类型仅支持'integer'，取值范围为[1, +∞)。<br/>**说明：** <br/>设置的值小于1时，按默认值1000000处理。 |
 
 **返回值：**
 
@@ -1031,7 +1031,7 @@ struct Index {
                   Text('无需自适应调节')
                 }.width('90%')
 
-                //当前布局无需调整即可完整显示文本，文本无需自适应调节。
+                // 当前布局无需调整即可完整显示文本，文本无需自适应调节。
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1126,7 +1126,7 @@ struct Index {
                   Text('无需自适应调节')
                 }.width('90%')
 
-                //当前布局无需调整即可完整显示文本，文本无需自适应调节。
+                // 当前布局无需调整即可完整显示文本，文本无需自适应调节。
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1223,7 +1223,7 @@ struct Index {
                   Text('无需自适应调节')
                 }.width('90%')
 
-                //当前布局无需调整即可完整显示文本，文本无需自适应调节。
+                // 当前布局无需调整即可完整显示文本，文本无需自适应调节。
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })

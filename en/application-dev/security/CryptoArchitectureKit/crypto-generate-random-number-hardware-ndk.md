@@ -56,11 +56,14 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
 
 5. Call [OH_CryptoRand_GetAlgoName](../../reference/apis-crypto-architecture-kit/capi-crypto-rand-h.md#oh_cryptorand_getalgoname) to obtain the algorithm name used by the random number generator.
 
-```C++
-#include "CryptoArchitectureKit/crypto_architecture_kit.h"
-#include <stdio.h>
+<!-- @[rand_test_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/cpp/types/project/rand_test.cpp) -->
 
-static OH_Crypto_ErrCode doTestRandomNumber()
+``` C++
+#include "CryptoArchitectureKit/crypto_architecture_kit.h"
+#include <cstdio>
+#include "file.h"
+
+OH_Crypto_ErrCode doTestHardwareRandomNumber()
 {
     // Create a random number generator.
     OH_CryptoRand *rand = nullptr;

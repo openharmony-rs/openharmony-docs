@@ -142,13 +142,13 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
-      reportingMode: 0,
+      reportMode: 0,
       reportFrequency: 340
    };
    console.info('call onDistanceMeasure start');
    try {
       spatialAwareness.onDistanceMeasure(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('result = ' + ${data.distance});
+         console.info('result = ${data.distance}');
       });
    } catch (err) {
       console.error('call onDistanceMeasure failed, errCode = ' + err.code);
@@ -192,13 +192,13 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
-      reportingMode: 0,
+      reportMode: 0,
       reportFrequency: 340
    };
    console.info('call offDistanceMeasure start');
    try {
       spatialAwareness.offDistanceMeasure(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('result = ' + ${data.distance});
+         console.info('result = ${data.distance}');
       });
    } catch (err) {
       console.error('call offDistanceMeasure failed, errCode = ' + err.code);
@@ -242,13 +242,13 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
-      reportingMode: 0,
+      reportMode: 0,
       reportFrequency: 340
    };
    console.info('call onIndoorOrOutdoorIdentify start');
    try {
-      spatialAwareness.onIndoorOrOutdoorIdentify(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('result = ' + ${data.position});
+      spatialAwareness.onIndoorOrOutdoorIdentify(configParams, (data:spatialAwareness.DoorPositionResponse) => {
+         console.info('result = ${data.position}');
       });
    } catch (err) {
       console.error('call onIndoorOrOutdoorIdentify failed, errCode = ' + err.code);
@@ -292,13 +292,13 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
-      reportingMode: 0,
+      reportMode: 0,
       reportFrequency: 340
    };
    console.info('call offIndoorOrOutdoorIdentify start');
    try {
-      spatialAwareness.offIndoorOrOutdoorIdentify(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('result = ' + ${data.position});
+      spatialAwareness.offIndoorOrOutdoorIdentify(configParams, (data:spatialAwareness.DoorPositionResponse) => {
+         console.info('result = ${data.position}');
       });
    } catch (err) {
       console.error('call offIndoorOrOutdoorIdentify failed, errCode = ' + err.code);

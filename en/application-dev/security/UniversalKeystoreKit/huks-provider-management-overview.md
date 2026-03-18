@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-HUKS provides APIs for registering and unregistering an external key management extension provider (called Provider). When detecting that any Ukey device exists, the third-party driver HAP calls the Provider registration API to register the external key management capability provided by the driver HAP application with the system. When detecting that all Ukey devices are removed, the third-party driver HAP calls the Provider deregistration API to deregister the external key management capability provided by the driver HAP application from the system.
+HUKS provides APIs for registering and unregistering external key management extension (called Ukey Extension). When detecting that any Ukey device exists, the third-party driver HAP calls the Provider registration API to register the external key management capability provided by the driver HAP application with the system. When detecting that all Ukey devices are removed, the third-party driver HAP calls the Provider deregistration API to deregister the external key management capability provided by the driver HAP application from the system.
 
 > **NOTE**
 > 1. It is recommended that a Provider name contain the vendor information and be globally unique.

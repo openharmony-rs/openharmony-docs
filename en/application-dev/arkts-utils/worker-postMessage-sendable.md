@@ -11,8 +11,10 @@ It is a common requirement for communication between multi-level [Workers](worke
 This topic describes how to implement high-performance communication between multi-level Workers. The key is using [Sendable objects](arkts-sendable.md) with the Worker's [postMessageWithSharedSendable](../reference/apis-arkts/js-apis-worker.md#postmessagewithsharedsendable12) API for high-performance object passing between threads. For example, in a data cloning scenario with three Workers (one parent and two children), the parent Worker creates the child Workers, sends cloning tasks to them, and receives the results back.
 
 1. Create the **Sendable** folder in the **ets** folder, and prepare the Sendable class **CopyEntry** to encapsulate cloning task data.
+
+   <!-- @[copy_entry_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/Sendable/CopyEntry.ets) -->     
    
-   ```ts
+   ``` TypeScript
    // CopyEntry.ets
    @Sendable
    export class CopyEntry {
@@ -29,13 +31,15 @@ This topic describes how to implement high-performance communication between mul
 
 2. Create two Worker files. DevEco Studio supports one-click generation of Workers. Right-click any position in the {moduleName} directory and choose **New** > **Worker** to generate the Worker template file and configuration information. The following describes how to create a parent Worker and a child Worker. The parent Worker distributes tasks and closes the child and parent Workers once all tasks are complete. The child Workers receive tasks, perform cloning, and notify the parent Worker when the tasks are complete.
   
-   ```ts
+   <!-- @[parent_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/ParentWorker.ets) -->      
+   
+   ``` TypeScript
    // ParentWorker.ets
    import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker, collections, ArkTSUtils } from '@kit.ArkTS'
    import { CopyEntry } from '../Sendable/CopyEntry'
-
+   
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
-
+   
    // Calculate the number of tasks of worker1.
    let count1 = 0;
    // Calculate the number of tasks of worker2.
@@ -47,7 +51,7 @@ This topic describes how to implement high-performance communication between mul
    // Create a child Worker.
    const copyWorker1 = new worker.ThreadWorker('entry/ets/workers/ChildWorker.ets');
    const copyWorker2 = new worker.ThreadWorker('entry/ets/workers/ChildWorker.ets');
-
+   
    workerPort.onmessage = (e : MessageEvents) => {
      let array = e.data as collections.Array<CopyEntry>;
      sum = array.length;
@@ -64,7 +68,7 @@ This topic describes how to implement high-performance communication between mul
        }
      }
    }
-
+   
    copyWorker1.onmessage = async (e : MessageEvents) => {
      console.info('copyWorker1 onmessage:' + e.data);
      await asyncLock.lockAsync(() => {
@@ -81,7 +85,7 @@ This topic describes how to implement high-performance communication between mul
        }
      })
    }
-
+   
    copyWorker2.onmessage = async (e : MessageEvents) => {
      console.info('copyWorker2 onmessage:' + e.data);
      await asyncLock.lockAsync(() => {
@@ -98,33 +102,36 @@ This topic describes how to implement high-performance communication between mul
        }
      })
    }
-
+   
    workerPort.onmessageerror = (e : MessageEvents) => {
      console.error('onmessageerror:' + e.data);
    }
-
+   
    workerPort.onerror = (e : ErrorEvent) => {
      console.error('onerror:' + e.message);
    }
    ```
-   ```ts
+   
+   <!-- @[child_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/ChildWorker.ets) -->    
+   
+   ``` TypeScript
    // ChildWorker.ets
    import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker} from '@kit.ArkTS'
    import { CopyEntry } from '../Sendable/CopyEntry'
-
+   
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
-
+   
    workerPort.onmessage = (e : MessageEvents) => {
      let data = e.data as CopyEntry;
      // The copy operation is omitted.
      console.info(data.filePath);
-     workerPort.postMessageWithSharedSendable("done");
+     workerPort.postMessageWithSharedSendable('done');
    }
-
+   
    workerPort.onmessageerror = (e : MessageEvents) => {
      console.error('onmessageerror:' + e.data);
    }
-
+   
    workerPort.onerror = (e : ErrorEvent) => {
      console.error('onerror:' + e.message);
    }
@@ -132,7 +139,9 @@ This topic describes how to implement high-performance communication between mul
 
 3. On the main thread page of the UI, create a parent Worker, prepare the data required for the cloning task, and send the data to the parent Worker.
 
-   ```ts
+   <!-- @[multi_worker_high_performance_communication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/WorkerPostMessageSendable.ets) -->   
+   
+   ``` TypeScript
    // Index.ets
    import { worker, collections } from '@kit.ArkTS';
    import { CopyEntry } from '../Sendable/CopyEntry'
@@ -145,9 +154,9 @@ This topic describes how to implement high-performance communication between mul
      });
      return p;
    }
-
+   
    async function postMessageTest() {
-     let ss = new worker.ThreadWorker("entry/ets/workers/ParentWorker.ets");
+     let ss = new worker.ThreadWorker('entry/ets/workers/ParentWorker.ets');
      let isTerminate = false;
      ss.onexit = () => {
        isTerminate = true;
@@ -156,9 +165,9 @@ This topic describes how to implement high-performance communication between mul
      // Prepare data.
      for (let i = 0; i < 4; i++) {
        if (i % 2 == 0) {
-         array.push(new CopyEntry("copy1", "file://copy1.txt"));
+         array.push(new CopyEntry('copy1', 'file://copy1.txt'));
        } else {
-         array.push(new CopyEntry("copy2", "file://copy2.txt"));
+         array.push(new CopyEntry('copy2', 'file://copy2.txt'));
        }
      }
      // Send a message to the Worker thread.
@@ -166,9 +175,9 @@ This topic describes how to implement high-performance communication between mul
      while (!isTerminate) {
        await promiseCase();
      }
-     console.info("Worker thread has exited");
+     console.info('Worker thread has exited');
    }
-
+   
    @Entry
    @Component
    struct Index {
@@ -181,6 +190,7 @@ This topic describes how to implement high-performance communication between mul
              .fontWeight(FontWeight.Bold)
              .onClick(() => {
                postMessageTest();
+               // ...
              })
          }
          .width('100%')

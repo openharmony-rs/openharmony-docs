@@ -15,7 +15,7 @@ For details about the parameters, return values, and error codes, see [getAuthLo
 
 | API| Description|
 | -------- | -------- |
-| getAuthLockState(authType: UserAuthType): Promise\<AuthLockState> | Obtains the locking status of a specified authentication type to determine whether authentication can be initiated.|
+| getAuthLockState(authType: UserAuthType): Promise\<AuthLockState> | Obtains the locking status of a specified authentication type to determine whether authentication can be initiated.| 
 
 ## How to Develop
 

@@ -13,7 +13,7 @@
     "segment": {										
         "destPath": ""			
     },					                                                 # 发布类型为code-segment时为必填项，定义发布类型code-segment的代码还原路径（源码路径）			
-    "dirs": {"base/sensors/sensor_lite"},	                             # HPM包的目录结构，字段必填内容可以留空
+    "dirs": ["base/sensors/sensor_lite"],	                             # HPM包的目录结构，字段必填内容可以留空
     "scripts": {},			                                             # HPM包定义需要执行的脚本，字段必填，值非必填
     "licensePath": "COPYING",			
     "readmePath": {
@@ -48,7 +48,9 @@
  }
 ```
 
-> **注意**：lite上旧的部件在build/lite/components目录下对应子系统的json文件中，路径规则为：**{领域}/{子系统}/{部件}**，部件目录树规则如下：
+> **注意**：
+>
+> lite上旧的部件在build/lite/components目录下对应子系统的json文件中，路径规则为：**{领域}/{子系统}/{部件}**，部件目录树规则如下：
 
 ```shell
 component
@@ -62,7 +64,9 @@ component
 
 部件配置中需要配置部件的名称、源码路径、功能简介、是否必选、编译目标、RAM、ROM、编译输出、已适配的内核、可配置的特性和依赖等属性定义。
 
-> **注意**：部件配置中HiSysEvent打点配置文件使用说明，请参考文档[HiSysEvent打点配置](subsys-dfx-hisysevent-logging-config.md)。
+> **注意**：
+>
+> 部件配置中HiSysEvent打点配置文件使用说明，请参考文档[HiSysEvent打点配置](subsys-dfx-hisysevent-logging-config.md)。
 
 新增部件时需要在对应子系统json文件中添加相应的部件定义。产品所配置的部件必须在某个子系统中被定义过，否则会校验失败。
 

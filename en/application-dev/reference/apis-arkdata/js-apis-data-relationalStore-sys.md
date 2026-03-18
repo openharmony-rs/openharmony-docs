@@ -7,6 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 The relational database (RDB) store manages data based on relational models. It provides a complete mechanism for managing local databases based on the underlying SQLite. To satisfy different needs in complicated scenarios, the RDB store offers a series of APIs for performing operations such as adding, deleting, modifying, and querying data, and supports direct execution of SQL statements. The worker threads are not supported.
+
 ArkTS supports the following basic data types: number, string, binary data, and boolean. The maximum size of a data record is 2 MB. If a data record exceeds 2 MB, it can be inserted successfully but cannot be read.
 
 The **relationalStore** module provides the following functions:
@@ -14,6 +15,7 @@ The **relationalStore** module provides the following functions:
 - [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md): provides predicates indicating the nature, feature, or relationship of a data entity in an RDB store. It is used to define the operation conditions for an RDB store.
 - [RdbStore](arkts-apis-data-relationalStore-RdbStore.md): provides APIs for managing data in an RDB store.
 - [ResultSet](arkts-apis-data-relationalStore-ResultSet.md): provides APIs for accessing the result set obtained from the RDB store.
+- [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md): provides APIs for accessing the result set obtained from the RDB store.
 
 > **NOTE**
 > 
@@ -35,8 +37,8 @@ Defines the configuration of an RDB store.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| isSearchable<sup>11+</sup> | boolean | No| Yes| Whether the RDB store is searchable. The value **true** means the RDB store is searchable; the value **false** means the opposite. The default value is **false**.<br>**System API**: This is a system API.<br>This parameter is supported since API version 11.|
-| haMode<sup>12+</sup> | [HAMode](#hamode12) | No| Yes| High availability (HA) mode.<br>The value **SINGLE** means data can be written only to a single RDB store. The value **MAIN_REPLICA** means data can be written to the main and replica RDB stores to ensure HA. However, this mode is not supported in encryption and attach scenarios. The default value is **SINGLE**. The value **MAIN_REPLICA** may affect the database write performance.<br>**System API**: This is a system API.<br>This parameter is supported since API version 12.|
+| isSearchable<sup>11+</sup> | boolean | No| Yes| Whether the RDB store is searchable. The value **true** means the RDB store is searchable; the value **false** means the opposite. The default value is **false**.<br>**System API**: This is a system API.<br>This parameter is supported since API version 11.<br>|
+| haMode<sup>12+</sup> | [HAMode](#hamode12) | No| Yes| High availability (HA) mode.<br>The value **SINGLE** means data can be written only to a single RDB store. The value **MAIN_REPLICA** means data can be written to the main and replica RDB stores to ensure HA. However, this mode is not supported in encryption and attach scenarios. The default value is **SINGLE**. The value **MAIN_REPLICA** may affect the database write performance.<br>**System API**: This is a system API.<br>This parameter is supported since API version 12.<br>|
 
 ## HAMode<sup>12+</sup>
 
@@ -111,8 +113,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -209,8 +211,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -300,10 +302,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -371,10 +373,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -436,7 +438,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 
 **Example**
@@ -497,7 +499,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 
 **Example**
@@ -563,7 +565,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 
 **Example**
@@ -627,7 +629,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202       | if permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. 6.The callback must be a function.|
 | 801       | Capability not supported.  |
-| 14800014  | The RdbStore or ResultSet is already closed.      |
+| 14800014  | The target instance is already closed.      |
 
 **Example 1**: Manually sync data on the local device with the cloud.
 
@@ -713,7 +715,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202       | if permission verification failed, application which is not a system application uses system API.  |
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. |
 | 801       | Capability not supported.       |
-| 14800014  | The RdbStore or ResultSet is already closed.      |
+| 14800014  | The target instance is already closed.      |
 
 **Example 1**: Manually sync data on the local device with the cloud.
 
@@ -792,10 +794,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
 | 801       | Capability not supported.       |
 | 14800000  | Inner error.                      |
-| 14800011  | Failed to open the database because it is corrupted.           |
-| 14800014  | The RdbStore or ResultSet is already closed.                        |
+| 14800011  | The current operation failed because the database is corrupted.           |
+| 14800014  | The target instance is already closed.                        |
 | 14800015  | The database does not respond.          |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.             |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.          |
 | 14800023  | SQLite: Access permission denied.         |
 | 14800024  | SQLite: The database file is locked.         |
@@ -856,13 +858,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**     |
 |-----------|------|
-| 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
+| 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. |
 | 801       | Capability not supported.                 |
 | 14800000  | Inner error.          |
-| 14800011  | Failed to open the database because it is corrupted.       |
-| 14800014  | The RdbStore or ResultSet is already closed.      |
+| 14800011  | The current operation failed because the database is corrupted.       |
+| 14800014  | The target instance is already closed.      |
 | 14800015  | The database does not respond.        |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.        |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.         |
 | 14800023  | SQLite: Access permission denied.                    |
 | 14800024  | SQLite: The database file is locked.            |
@@ -928,10 +930,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
 | 801       | Capability not supported.       |
 | 14800000  | Inner error.            |
-| 14800011  | Failed to open the database because it is corrupted.         |
-| 14800014  | The RdbStore or ResultSet is already closed.          |
+| 14800011  | The current operation failed because the database is corrupted.         |
+| 14800014  | The target instance is already closed.          |
 | 14800015  | The database does not respond.          |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.           |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.    |
 | 14800023  | SQLite: Access permission denied.     |
 | 14800024  | SQLite: The database file is locked.     |
@@ -1076,10 +1078,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 14800000  | Inner error. |
 | 14800010  | Failed to open or delete the database by an invalid database path. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -1111,7 +1113,7 @@ if (store != undefined) {
 
 ## ResultSet
 
-Provides APIs to access the **resultSet** object returned by **query()**.
+Provides APIs to access the result set obtained by querying the RDB store. This result set is the collection of results returned with the **query()** method called.
 
 ### getFloat32Array<sup>12+</sup>
 
@@ -1141,10 +1143,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | The capability is not supported because the database is not a vector DB. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -1165,5 +1167,59 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let resultSet: relationalStore.ResultSet | undefined;
 if (resultSet != undefined) {
   const id = (resultSet as relationalStore.ResultSet).getFloat32Array(0);
+}
+```
+
+## LiteResultSet<sup>23+</sup>
+
+Provides APIs to access the result set obtained by querying the RDB store. This result set is the collection of results returned with the **query()** method called.
+
+### getFloat32Array<sup>23+</sup>
+
+getFloat32Array(columnIndex: number): Float32Array
+
+Obtains the value from the specified column in the current row and outputs it in a floating-point array.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Parameters**
+
+| Name     | Type  | Mandatory| Description                   |
+| ----------- | ------ | ---- | ----------------------- |
+| columnIndex | number | Yes  | Index of the target column, starting from 0.|
+
+**Return value**
+
+| Type      | Description                            |
+| ---------- | -------------------------------- |
+| Float32Array | Value obtained, in a Float32Array.|
+
+**Error codes**
+
+For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
+
+| **ID**| **Error Message**                                                |
+|-----------| ------------------------------------------------------------ |
+| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
+| 14800041  | Type conversion failed. |
+
+**Example**
+
+```ts
+async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const name = resultSet.getFloat32Array(resultSet.getColumnIndex("FLOATARRAY"));
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
 }
 ```

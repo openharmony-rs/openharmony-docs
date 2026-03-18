@@ -37,6 +37,7 @@ libchild_process.so
 1. (Main process) Register and unregister the callback for abnormal exit of native child processes.
 
     Call [OH_Ability_RegisterNativeChildProcessExitCallback](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_registernativechildprocessexitcallback) to register a callback for detecting child process exits. If the return value is **NCP_NO_ERROR**, the registration is successful.
+    
     Call [OH_Ability_UnregisterNativeChildProcessExitCallback](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_unregisternativechildprocessexitcallback) to unregister the callback used for detecting child process exits. If the return value is **NCP_NO_ERROR**, the unregistration is successful.
 
     <!-- @[register_native_child_process_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessExit/entry/src/main/cpp/MainProcessFile.cpp) -->

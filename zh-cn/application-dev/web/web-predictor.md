@@ -69,7 +69,7 @@ export default class EntryAbility extends UIAbility {
 
 ## 预加载
 
-此方法可针对资源级进行优化。如果能够预测到Web组件将要加载的页面或者即将要跳转的页面。可以通过[prefetchPage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchpage10)来预加载即将要加载页面。
+此方法可针对资源级进行优化。如果能够预测到Web组件将要加载的页面或者即将要跳转的页面。可以通过[prefetchPage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchpage10)来预加载即将要加载的页面。
 
 预加载会提前下载页面所需的资源，包括主资源子资源，避免阻塞页面渲染。但不会执行网页JavaScript代码。预加载是WebviewController的实例方法，需要一个已经关联好Web组件的WebviewController实例。
 
@@ -212,7 +212,7 @@ export default class EntryAbility extends UIAbility {
 
 推荐配合动态组件使用，使用离线的Web组件用于生成字节码缓存，并在适当的时机加载业务用Web组件使用这些字节码缓存。下方是代码示例：
 
-1. 首先，在EntryAbility中将UIContext存到localStorage中。
+1. 首先，在EntryAbility中将[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)存到[localStorage](../ui/state-management/arkts-localstorage.md)中。
 
    ```ts
    // EntryAbility.ets
@@ -334,7 +334,7 @@ export default class EntryAbility extends UIAbility {
    }
    ```
 
-   JavaScript资源的获取方式也可通过[网络请求](../reference/apis-network-kit/js-apis-http.md)的方式获取，但此方法获取到的http响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过网络请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
+   JavaScript资源的获取方式也可通过[网络请求](../reference/apis-network-kit/js-apis-http.md)的方式获取，但此方法获取到的HTTP响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过网络请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
 
 4. 编写业务用组件代码。
 
@@ -431,7 +431,7 @@ export default class EntryAbility extends UIAbility {
 
 推荐配合动态组件使用，使用离线的Web组件用于将资源注入到内核的内存缓存中，并在适当的时机加载业务用Web组件使用这些资源。下方是代码示例：
 
-1. 首先，在EntryAbility中将UIContext存到localStorage中。
+1. 首先，在EntryAbility中将[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)存到[localStorage](../ui/state-management/arkts-localstorage.md)中。
 
    ```ts
    // EntryAbility.ets

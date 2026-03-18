@@ -37,6 +37,7 @@
 - [组件内容模糊](ts-universal-attributes-foreground-blur-style.md)
 - [运动模糊](ts-universal-attributes-motionBlur.md)
 - [点击回弹效果](ts-universal-attributes-click-effect.md)
+- [点击音效](ts-universal-attributes-click-sound.md)
 - [无障碍属性](ts-universal-attributes-accessibility.md)
 - [动态属性设置](ts-universal-attributes-attribute-modifier.md)
 - [动态手势设置](ts-universal-attributes-gesture-modifier.md)

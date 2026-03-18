@@ -74,7 +74,7 @@ function StringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-let uid: number = 3511
+let uid: number = 3511;
 const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
 const pin = "123456";
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [

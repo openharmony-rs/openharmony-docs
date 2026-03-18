@@ -10,18 +10,19 @@
 
 1. Define a Sendable class and store the task ID in the class properties.
 
-   ```ts
+   <!-- @[define_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/utils/Sendable.ets) -->
+   
+   ``` TypeScript
    // sendable.ets
-
    @Sendable
    export class SendableTest {
-    // Store the task ID.
+     // Store the task ID.
      private taskId: number = 0;
-
+   
      constructor(id: number) {
        this.taskId = id;
      }
-
+   
      public getTaskId(): number {
        return this.taskId;
      }
@@ -30,44 +31,52 @@
 
 2. Submit a delayed task to the TaskPool from the UI main thread and cancel it from a child thread.
 
-   ```ts
-   // Index.ets
-
+   <!-- @[taskpool_cancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolCancel.ets) -->  
+   
+   ``` TypeScript
+   // TaskpoolCancel.ets
    import { taskpool } from '@kit.ArkTS';
-   import { SendableTest } from './sendable';
+   import { SendableTest } from '../utils/Sendable';
    import { BusinessError } from '@kit.BasicServicesKit';
+   import { PromptAction } from '@kit.ArkUI';
    
    @Concurrent
    function cancel(send: SendableTest) {
      // Cancel the task in the child thread based on the task ID.
      taskpool.cancel(send.getTaskId());
-     console.info("cancel task finished");
+     console.info('cancel task finished');
    }
    
    @Concurrent
    function delayed() {
-     console.info("delayed task finished");
+     console.info('delayed task finished');
    }
    
    @Entry
    @Component
-   struct Index {
-     @State message: string = 'Hello World';
+   struct TaskpoolCancel {
+     @State message: string = 'CancelTaskpool';
+     @State returnMessage: string = 'return...';
+     @State promptAction: PromptAction = this.getUIContext().getPromptAction();
    
      build() {
        Row() {
          Column() {
-           Text(this.message)
-             .fontSize(50)
+           Button(this.message)
+             .fontSize(25)
              .fontWeight(FontWeight.Bold)
              .onClick(async () => {
                let task = new taskpool.Task(delayed);
                taskpool.executeDelayed(2000, task).catch((e: BusinessError) => {
-                 console.error(`taskpool execute error, message is: ${e.message}`); // taskpool execute error, message is: taskpool:: task has been canceled
+                 console.error(`taskpool execute error, message is: ${e.message}`);
+                 // taskpool execute error, message is: taskpool:: task has been canceled.
                });
                let send = new SendableTest(task.taskId);
                taskpool.execute(cancel, send);
+               this.returnMessage = 'Taskpool canceled!';
+               this.promptAction.showToast({ message: this.returnMessage });
              })
+           // ...
          }
          .width('100%')
        }

@@ -71,10 +71,10 @@ Defines the type and style parameters of the chip.
 | accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the chip. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | accessibilityLevel<sup>14+</sup> | string | No| Yes| Accessibility level of the chip. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | accessibilitySelectedType<sup>14+</sup> | [AccessibilitySelectedType](#accessibilityselectedtype14) | No| Yes| Type of selected state for the chip.<br>Default value:<br>If the **activated** property is set but **accessibilitySelectedType** is not specified, the default type is **CHECKED**. If the **activated** property is not set, the default type is **CLICKED**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| maxFontScale<sup>23+</sup> | number \| [Resource](ts-types.md#resource) | No| Yes| Maximum font scale factor for the text and icon of the chip.<br>Value range: [1, +∞).<br>Values less than 1 are treated as 1. Abnormal values are ineffective by default.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| minFontScale<sup>23+</sup> | number \| [Resource](ts-types.md#resource) | No| Yes| Minimum font scale factor for the text and icon of the chip.<br>Value range: [0, 1].<br>Values less than 0 are treated as 0. Values greater than 1 are treated as 1. Abnormal values are ineffective by default.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| padding<sup>23+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12) | No| Yes| Padding of the chip.<br>Default value:<br>- When **size** is **ChipSize.SMALL** and **activated** is **true**: **{ start: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'), end: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.<br>- When **size** is **ChipSize.SMALL** and **activated** is **false**: **{ start: LengthMetrics.resource('sys.float.chip_small_text_padding'), end: LengthMetrics.resource('sys.float.chip_small_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.<br>- When **size** is not **ChipSize.SMALL** and **activated** is **true**: **{ start: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'), end: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.<br>- When **size** is not **ChipSize.SMALL** and **activated** is **false**: **{ start: LengthMetrics.resource('sys.float.chip_normal_text_padding'), end: LengthMetrics.resource('sys.float.chip_normal_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| fontSize<sup>23+</sup> | [Dimension](ts-types.md#dimension10) | No| Yes| Uniform font size for both text and icons in the chip. Percentage values are not supported.<br> The priority of **fontSize** is lower than the **fontSize** property in **prefixSymbol**, **label**, **suffixSymbol**, and **closeOptions**.<br>Default value:<br>- When **size** is **ChipSize.SMALL**: **$r('sys.float.chip_small_font_size')** for text and **$r('sys.float.chip_small_icon_size')** for icons.<br>- Other cases: **$r('sys.float.chip_normal_font_size')** for text and **$r('sys.float.chip_normal_icon_size')** for icons.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| maxFontScale<sup>23+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Yes| Maximum font scale factor for the text and icon of the chip.<br>Value range: [1, +∞).<br>Values less than 1 are treated as 1. Abnormal values are ineffective by default.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| minFontScale<sup>23+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Yes| Minimum font scale factor for the text and icon of the chip.<br>Value range: [0, 1].<br>Values less than 0 are treated as 0. Values greater than 1 are treated as 1. Abnormal values are ineffective by default.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| padding<sup>23+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12) | No| Yes| Padding of the chip.<br>Default value:<br>- When **size** is **ChipSize.SMALL** and **activated** is **true**: **{ start: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'), end: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.<br>- When **size** is **ChipSize.SMALL** and **activated** is **false**: **{ start: LengthMetrics.resource('sys.float.chip_small_text_padding'), end: LengthMetrics.resource('sys.float.chip_small_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.<br>- When **size** is not **ChipSize.SMALL** and **activated** is **true**: **{ start: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'), end: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.<br>- When **size** is not **ChipSize.SMALL** and **activated** is **false**: **{ start: LengthMetrics.resource('sys.float.chip_normal_text_padding'), end: LengthMetrics.resource('sys.float.chip_normal_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.<br>If the value is **undefined**, the default value is used.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| fontSize<sup>23+</sup> | [Dimension](ts-types.md#dimension10) | No| Yes| Uniform font size for both text and icons in the chip. Percentage values are not supported.<br> The priority of **fontSize** is lower than the **fontSize** property in **prefixSymbol**, **label**, **suffixSymbol**, and **closeOptions**.<br>Default value:<br>- When **size** is **ChipSize.SMALL**: **$r('sys.float.chip_small_font_size')** for text and **$r('sys.float.chip_small_icon_size')** for icons.<br>- Other cases: **$r('sys.float.chip_normal_font_size')** for text and **$r('sys.float.chip_normal_icon_size')** for icons.<br>If the value is **undefined**, the default value is used.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 > **NOTE**
 >
@@ -164,7 +164,7 @@ Inherits from [IconCommonOptions](#iconcommonoptions).
 | ------ | ---------- | ---- | ------------------ | ------------------ |
 | action | () => void | No | Yes | Action of the suffix icon.<br>If the value is **undefined**, no action is configured for the suffix icon.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | accessibilityText<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text, that is, accessibility label name, of the suffix icon. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: ' '<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the suffix icon. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the chip's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: ' '<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the suffix icon. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: ' '<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | accessibilityLevel<sup>14+</sup> | string | No| Yes| Accessibility level of the suffix icon. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" when **action** is set for the component and as "no" otherwise.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 
 ## AccessibilityOptions<sup>14+</sup>
@@ -211,12 +211,12 @@ Defines the prefix and suffix icon options.
 
 | Name  | Type      | Read-Only| Optional| Description              |
 | ------ | ---------- | ---- | ------------------ | ------------------ |
-| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No | Yes | Sets the icon in the inactive state.<br>Default value: The prefix or suffix icon is not displayed.<br>If the value is **undefined**, the default value is used.|
-| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No | Yes | Icon settings for the activated state.<br>Default value: The prefix or suffix icon is not displayed.<br>If the value is **undefined**, the default value is used.|
+| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Sets the icon in the inactive state.<br>Default value: The prefix or suffix icon is not displayed.<br>If the value is **undefined**, the default value is used.|
+| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Icon settings for the activated state.<br>Default value: The prefix or suffix icon is not displayed.<br>If the value is **undefined**, the default value is used.|
 
 > **NOTE**
 >
-> symbolEffect cannot be used to modify the animation type and effectStrategy cannot be used to set the animation.
+> The animation type cannot be modified via [SymbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12) and animations cannot be set via **effectStrategy**.
 >
 
 ## LabelOptions
@@ -251,7 +251,7 @@ Inherits from [AccessibilityOptions](#accessibilityoptions14).
 
 | Name | Type                                | Read-Only| Optional| Description                                                        |
 | ----- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-|fontSize<sup>23+</sup> | [Dimension](ts-types.md#dimension10) | No| Yes| Default close icon size of the chip.<br>Default value:<br> When **size** is **ChipSize.SMALL**:**$r('sys.float.chip_small_font_size')**.<br> Other cases: **$r('sys.float.chip_normal_font_size')**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+|fontSize<sup>23+</sup> | [Dimension](ts-types.md#dimension10) | No| Yes| Default close icon size of the chip. Percentage is not supported.<br>Default value:<br> When **size** is **ChipSize.SMALL**:**$r('sys.float.chip_small_font_size')**.<br> Other cases: **$r('sys.float.chip_normal_font_size')**.<br>If the value is **undefined**, the default value is used.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## LabelMarginOptions
 
@@ -265,8 +265,8 @@ Defines the spacing between the text and the left and right icons.
 
 | Name | Type                                | Read-Only| Optional| Description                                                        |
 | ----- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| left  | [Dimension](ts-types.md#dimension10) | No  | Yes  | Spacing between the text and the left icon. This parameter cannot be set in percentage.<br>Default value:<br>When **size** is set to **ChipSize.SMALL**, the default value of **left** is **4**.<br>When **size** is set to **ChipSize.NORMAL**, the default value of **left** is **6**.<br>Unit: vp.<br>If the value is **undefined**, the default value is used.<br>Value range: [0, +∞).|
-| right | [Dimension](ts-types.md#dimension10) | No  | Yes  | Spacing between the text and the right icon. This parameter cannot be set in percentage.<br>Default value:<br>When **size** is set to **ChipSize.SMALL**, the default value of **right** is **4**.<br>When **size** is set to **ChipSize.NORMAL**, the default value of **right** is **6**.<br>Unit: vp.<br>If the value is **undefined**, the default value is used.<br>Value range: [0, +∞).|
+| left  | [Dimension](ts-types.md#dimension10) | No  | Yes  | Spacing between the text and the left icon. This parameter cannot be set in percentage.<br>Default value:<br>When **size** is set to **ChipSize.SMALL**, the default value of **left** is **4**.<br>When **size** is set to **ChipSize.NORMAL**, the default value of **left** is **6**.<br>Unit: vp.<br>If the value is out of the range, the default value is used.<br>Value range: [0, +∞).|
+| right | [Dimension](ts-types.md#dimension10) | No  | Yes  | Spacing between the text and the right icon. This parameter cannot be set in percentage.<br>Default value:<br>When **size** is set to **ChipSize.SMALL**, the default value of **right** is **4**.<br>When **size** is set to **ChipSize.NORMAL**, the default value of **right** is **6**.<br>Unit: vp.<br>If the value is out of the range, the default value is used.<br>Value range: [0, +∞).|
 
 ## LocalizedLabelMarginOptions<sup>12+</sup>
 
@@ -481,9 +481,10 @@ struct Index {
         }
       })
 
-      Button('Activate/Deactivate').onClick(() => {
-        this.isActivated = !this.isActivated;
-      })
+      Button('Activate/Deactivate')
+        .onClick(() => {
+          this.isActivated = !this.isActivated;
+        })
     }
   }
 }
@@ -534,9 +535,10 @@ struct Index {
         }
       })
 
-      Button('Activate/Deactivate').onClick(() => {
-        this.isActivated = !this.isActivated;
-      })
+      Button('Activate/Deactivate')
+        .onClick(() => {
+          this.isActivated = !this.isActivated;
+        })
     }
   }
 }
@@ -583,7 +585,8 @@ struct ChipPage {
         backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
         borderRadius: $r('sys.float.ohos_id_corner_radius_button')
       })
-    }.justifyContent(FlexAlign.Center)
+    }
+    .justifyContent(FlexAlign.Center)
     .width('100%')
     .height('100%')
   }
@@ -595,7 +598,7 @@ struct ChipPage {
 
 ### Example 7: Implementing Accessibility for an Image-Type Suffix Icon
 
-This example implements the accessibility feature for a chip with an image-type suffix icon.
+This example demonstrates how to implement the accessibility feature for a chip with an image-type suffix icon. Clicking the suffix icon triggers the announcement of "icon, button, usage hists."
 
 ```ts
 import { Chip } from '@kit.ArkUI';
@@ -662,17 +665,17 @@ struct ChipExample2 {
               label: { text: 'Chip' },
               suffixIcon: {
                 src: $r('sys.media.ohos_ic_public_cut'),
-                accessibilityText: 'Icon',
+                accessibilityText: 'Icon', // Read "Icon, button, usage hints."
                 accessibilityDescription: 'Usage hints',
                 action: () => {
                   this.getUIContext().getPromptAction().showToast({
-                    message: 'Suffix icon touched.'
+                    message: 'Suffix icon clicked.'
                   });
                 }
               },
               onClicked: () => {
                 this.getUIContext().getPromptAction().showToast({
-                  message: 'Chip touched.'
+                  message: 'Chip clicked.'
                 });
               }
             })
@@ -686,7 +689,7 @@ struct ChipExample2 {
 
 ### Example 8: Implementing Accessibility for a Symbol-Type Suffix Icon
 
-This example implements the accessibility feature for a chip with a symbol-type suffix icon.
+This example demonstrates how to implement the accessibility feature for a chip with a symbol-type suffix icon. Clicking the suffix icon triggers the announcement of "music, button, usage hists."
 
 ```ts
 import { Chip, SymbolGlyphModifier } from '@kit.ArkUI';
@@ -758,12 +761,12 @@ struct ChipExample2 {
               },
               suffixSymbolOptions: {
                 activatedAccessibility: {
-                  accessibilityText: 'Music',
+                  accessibilityText: 'Music', // Read "Music, button, usage hints."
                   accessibilityDescription: 'Usage hints'
                 },
                 action: () => {
                   this.getUIContext().getPromptAction().showToast({
-                    message: 'Suffix symbol touched.'
+                    message: 'Suffix symbol clicked.'
                   });
                 }
               },
@@ -784,18 +787,18 @@ struct ChipExample2 {
               },
               suffixSymbolOptions: {
                 normalAccessibility: {
-                  accessibilityText: 'Music',
+                  accessibilityText: 'Music', // Read "Music, button, usage hints."
                   accessibilityDescription: 'Usage hints'
                 },
                 action: () => {
                   this.getUIContext().getPromptAction().showToast({
-                    message: 'Suffix symbol touched.'
+                    message: 'Suffix symbol clicked.'
                   });
                 }
               },
               onClicked: () => {
                 this.getUIContext().getPromptAction().showToast({
-                  message: 'Chip touched.'
+                  message: 'Chip clicked.'
                 });
               }
             })
@@ -840,7 +843,7 @@ struct ChipAccessibilityExample {
         },
         size: ChipSize.NORMAL,
         accessibilitySelectedType: AccessibilitySelectedType.CLICKED, // Clickable type
-        accessibilityDescription: 'This is a clickable chip', // Overall accessibility description
+        accessibilityDescription: 'This is a clickable chip.', // Overall accessibility description.
         accessibilityLevel: 'yes', // Make sure it can be recognized by accessibility services.
         closeOptions: {
           accessibilityDescription: 'Delete this chip. This operation cannot be undone.' // Provide detailed description for the delete button.
@@ -848,10 +851,10 @@ struct ChipAccessibilityExample {
         activated: this.clickedChipActivated,
         onClicked: () => {
           this.clickedChipActivated = !this.clickedChipActivated;
-          this.getUIContext().getPromptAction().showToast({ message: 'Clickable chip is clicked' });
+          this.getUIContext().getPromptAction().showToast({ message: 'Clickable chip is clicked.' });
         },
         onClose: () => {
-          this.getUIContext().getPromptAction().showToast({ message: 'The close icon of the clickable chip is clicked' });
+          this.getUIContext().getPromptAction().showToast({ message: 'The close icon of the clickable chip is clicked.' });
         }
       })
 
@@ -864,12 +867,12 @@ struct ChipAccessibilityExample {
         },
         size: ChipSize.NORMAL,
         accessibilitySelectedType: AccessibilitySelectedType.CHECKED, // Checkbox chip
-        accessibilityDescription: 'This is a checkbox chip', // Overall accessibility description
+        accessibilityDescription: 'This is a checkbox chip.', // Overall accessibility description.
         activated: this.checkedChipActivated,
         onClicked: () => {
           this.checkedChipActivated = !this.checkedChipActivated;
           this.getUIContext().getPromptAction().showToast({
-            message: this.checkedChipActivated ? 'Checkbox chip is selected' : 'Checkbox chip is deselected'
+            message: this.checkedChipActivated ? 'Checkbox chip is selected.' : 'Checkbox chip is deselected.'
           });
         }
       })
@@ -883,19 +886,19 @@ struct ChipAccessibilityExample {
         },
         size: ChipSize.NORMAL,
         accessibilitySelectedType: AccessibilitySelectedType.SELECTED, // Radio type
-        accessibilityDescription: 'This is a radio chip', // Overall accessibility description
+        accessibilityDescription: 'This is a radio chip.', // Overall accessibility description.
         activated: this.selectedChipActivated,
         onClicked: () => {
           this.selectedChipActivated = !this.selectedChipActivated;
           this.getUIContext().getPromptAction().showToast({
-            message: this.selectedChipActivated ? 'Radio chip is selected' : 'Radio chip is deselected'
+            message: this.selectedChipActivated ? 'Radio chip is selected.' : 'Radio chip is deselected.'
           });
         }
       })
 
       // Example of setting the accessibility level
       Chip({
-        label: { text: 'Accessibility level is set to no' },
+        label: { text: 'Accessibility level is set to no.' },
         size: ChipSize.NORMAL,
         accessibilityLevel: 'no', // This chip cannot be recognized by accessibility services.
         closeOptions: {

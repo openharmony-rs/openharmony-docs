@@ -30,6 +30,30 @@ A system error has occurred. Try again later.
 
 
 
+## 16700002 Parameter Check Failed
+
+**Error Message**
+
+Invalid parameter value.
+
+**Symptom**
+
+Parameter verification failed.
+
+**Possible Cause**
+
+1. A null parameter is incorrect (Null Argument Error).
+
+2. A parameter format is incorrect (Format Error).
+
+3. A value range is incorrect (Value Range Error).
+
+**Solution**
+
+Please review the parameter specification constraints and perform troubleshooting based on the possible causes.
+
+
+
 ## 16700101 Database Query Failed
 
 **Error Message**

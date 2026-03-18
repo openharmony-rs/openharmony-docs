@@ -5,7 +5,7 @@
 <!--Owner: @liuyifeifei;@buzhenwang-->
 <!--Designer: @shenchenkai-->
 <!--Tester: @liyang2235-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 在应用开发过程中，可在关键代码处输出日志信息。在运行应用后，通过查看日志信息来分析应用执行情况（如应用是否正常运行、代码运行时序、运行逻辑分支是否正常等）。
 
@@ -15,7 +15,7 @@
 
 ## 接口说明
 
-HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提供了对应的方法输出不同级别的日志，接口如下表所示，具体说明可查阅[API参考文档](../reference/apis-performance-analysis-kit/js-apis-hilog.md)。
+HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提供了对应的方法输出不同级别的日志，接口如下表所示，具体说明可查阅[@ohos.hilog](../reference/apis-performance-analysis-kit/js-apis-hilog.md)。
 
 | 接口名 | 功能描述 | 
 | -------- | -------- |
