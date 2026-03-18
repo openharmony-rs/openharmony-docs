@@ -664,7 +664,7 @@ hdc shell uitest uiRecord read
 
 录制数据中字段及含义如下。
 
- ```json
+ ```json5
  {
    "ABILITY": "com.ohos.launcher.MainAbility", // 被操作应用对应的Ability名称
    "BUNDLE": "com.ohos.launcher", // 被操作应用对应的包名
