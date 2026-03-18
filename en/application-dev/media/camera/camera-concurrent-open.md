@@ -37,18 +37,18 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. Cal [getCameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevice18) to obtain the front and rear cameras.
+2. Cal [getCameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevice18) to obtain the front and rear cameras. If the return value is **undefined**, based on the configuration information in the sample, it indicates that the current device does not support the default type of camera for the specified position (front/rear), and the multi-camera concurrent mode cannot be enabled.
    
    ```ts
    function getSupportedCamerasFn(cameraManager: camera.CameraManager)
    {
      let cameras = cameraManager.getSupportedCameras();
-
+   
      // Exit if fewer than two cameras are available (multi-camera not supported).
      if (cameras.length < 2) {
       return;
      }
-
+   
      // Obtain the logical rear and front cameras.
      let curCameraDeviceBack = cameraManager.getCameraDevice(camera.CameraPosition.CAMERA_POSITION_BACK, camera.CameraType.CAMERA_TYPE_DEFAULT);
      let curCameraDeviceFront = cameraManager.getCameraDevice(camera.CameraPosition.CAMERA_POSITION_FRONT, camera.CameraType.CAMERA_TYPE_DEFAULT);
@@ -172,7 +172,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
      }
      return avRecorder;
    }
-
+  
    function initFd(context: common.Context): number {
      let filesDir = context.filesDir;
      let filePath = filesDir + `/${Date.now()}.mp4`;
@@ -180,7 +180,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
      let file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
      return file.fd;
    }
-
+  
    async function prepareAVRecorder(videoProfileObj: camera.VideoProfile, curCameraDevice: camera.CameraDevice, avRecorder: media.AVRecorder, context: common.Context): Promise<void> {
      let fd = initFd(context);
      let videoConfig: media.AVRecorderConfig = {
@@ -205,7 +205,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
        console.error(`prepareAVRecorder prepare err`);
      });
    }
-
+  
    async function getVideoOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability, concurrentInfo: Array<camera.CameraConcurrentInfo>, curCameraDeviceFront: camera.CameraDevice, context: common.Context)
    {
     // Create a video recording output stream with video profile (format: 1003, size: 1920*1080). The video profile must be included in the concurrent capability set obtained from getCameraConcurrentInfos.
@@ -220,7 +220,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
          max: 60
        }
      };
-
+  
      // Replace the capability set.
      for (let i = 0; i < concurrentInfo.length; i++) {
        if (concurrentInfo[i].device.cameraPosition == camera.CameraPosition.CAMERA_POSITION_FRONT) {
@@ -441,31 +441,31 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
     ```ts
     // Flash.
     function hasFlashFn(flashMode: camera.FlashMode, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-
+    
       // Check whether the camera device has flash.
       let hasFlash = session?.hasFlash();
-
+    
       // Check whether a flash mode is supported.
       let isFlashModeSupported = session?.isFlashModeSupported(flashMode);
-
+    
       // Set the flash mode.
       if (isFlashModeSupported) {
         session?.setFlashMode(flashMode);
       }
     }
-
+    
     // Exposure.
     function hasExposureFn(ExposureMode: camera.ExposureMode, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-
+    
       // Check whether an exposure mode is supported.
       let hasFlash = session?.isExposureModeSupported(ExposureMode);
-  
+    
       // Set the exposure mode.
       if (hasFlash) {
         session?.setExposureMode(ExposureMode);
       }
     }
-
+    
     // Obtain the zoom ratio range.
     function getZoomRatioRange(session: camera.PhotoSession | camera.VideoSession | undefined = undefined): Array<number> {
       let zoomRatioRange: Array<number> = [];
@@ -474,10 +474,10 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
       }
       return zoomRatioRange;
     }
-
+    
     // Zoom.
     function setZoomRatioFn(zoomRatio: number, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-
+    
       // Obtain the supported zoom ratio range.
       let zoomRatioRange = getZoomRatioRange();
       try {
@@ -486,24 +486,24 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
         console.error(`setZoomRatioFn fail`);
       }
     }
-
+    
     // Exposure compensation.
     function setExposureBiasFn(exposureBias: number, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-
+    
       // Obtain the exposure compensation values of the camera device.
       let biasRangeArray: Array<number> | undefined = [];
       biasRangeArray = session?.getExposureBiasRange();
-
+    
       // Set an exposure compensation value for the device.
       session?.setExposureBias(exposureBias);
     }
-
+    
     // Focus mode.
     function setFocusMode(focusMode: camera.FocusMode, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-
+    
       // Check whether a focus mode is supported.
       let isSupported = session?.isFocusModeSupported(focusMode);
-
+    
       // Set the focus mode.
       if (!isSupported) {
         return;

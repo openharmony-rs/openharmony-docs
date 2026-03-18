@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-The HiDebug ArkTS APIs are independent. You can call them to obtain debugging information. For details about how to call the APIs, see the examples in [@ohos.hidebug (HiDebug)](../reference/apis-performance-analysis-kit/js-apis-hidebug.md).
+The HiDebug ArkTS APIs are independent. You can call them to obtain debugging information. For details, see the examples in [@ohos.hidebug](../reference/apis-performance-analysis-kit/js-apis-hidebug.md).
 
 ## How to Develop
 
