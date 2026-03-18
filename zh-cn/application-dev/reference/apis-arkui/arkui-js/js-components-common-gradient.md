@@ -12,7 +12,7 @@
 组件普遍支持在style或css中设置可以平滑过渡两个或多个指定的颜色。
 
 
-开发框架支持线性渐变(linear-gradient)和重复线性渐变(repeating-linear-gradient)两种渐变效果。
+开发框架支持线性渐变（linear-gradient）和重复线性渐变（repeating-linear-gradient）两种渐变效果。
 
 
 ## 线性渐变/重复线性渐变
