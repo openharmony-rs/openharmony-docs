@@ -4609,7 +4609,7 @@ if (store != undefined) {
 | ------ | ----------------------------------------- | ---- |-----------------------------------------------------------------|
 | tables | Array&lt;string&gt;                       | 是   | 要设置的分布式数据库的表名。                                                  |
 | type   | [DistributedType](arkts-apis-data-relationalStore-e.md#distributedtype10)     | 否   | 表的分布式类型。默认值是relationalStore.DistributedType.DISTRIBUTED_DEVICE。 |
-| config | [DistributedConfig](arkts-apis-data-relationalStore-i.md#distributedconfig10) | 否   | 表的分布式配置信息。不传入时默认autoSync为false，即只支持手动同步。                        |
+| config | [DistributedConfig](arkts-apis-data-relationalStore-i.md#distributedconfig10) | 否   | 表的分布式配置信息。不传入时默认autoSync为false，需要调用[cloudSync](#cloudsync10-3)接口触发端云同步。 |
 
 **返回值**：
 
