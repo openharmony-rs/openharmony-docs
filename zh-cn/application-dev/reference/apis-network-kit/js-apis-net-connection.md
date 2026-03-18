@@ -2621,7 +2621,7 @@ queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise\<Trace
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| destination | string | 是 | 目标域名或IP地址。 |
+| destination | string | 是 | 目标域名或IP地址，例如www.example.com、8.8.8.8。 |
 | option | [TraceRouteOptions](#tracerouteoptions26) | 否 | 路由跟踪的选项参数，缺省则使用默认配置。 |
 
 **返回值：**
@@ -2668,7 +2668,7 @@ queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInf
 
 > **说明：**
 >
-> 此接口用于对目标主机进行一段持续时间的网络探测，以获取丢包率和RTT信息。需要权限 `ohos.permission.INTERNET`。
+> 此接口用于对目标主机进行一段持续时间的网络探测，以获取丢包率和RTT信息。
 
 **需要权限**：ohos.permission.INTERNET。
 
@@ -2680,8 +2680,8 @@ queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInf
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| destination | string | 是 | 目标域名或IP地址。 |
-| duration | number | 是 | 探测持续时间，单位为秒，传入值需为正整数。 |
+| destination | string | 是 | 目标域名或IP地址，例如www.example.com、8.8.8.8。 |
+| duration | number | 是 | 探测持续时间，单位为秒，传入值需为正整数。探测间隔为1秒。若未出现异常，探测时间到期后返回探测结果。 |
 
 **返回值：**
 
@@ -3895,8 +3895,8 @@ UDP端口状态信息。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | jumpNo | number | 否 | 否 | 跳数序号。 |
-| address | string | 否 | 否 | 该跳的ip地址。 |
-| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。每一跳发送多个探测报文，数组元素依次为这些探测报文RTT中的最小值、平均值、最大值、标准差。 |
+| address | string | 否 | 否 | 该跳的IP地址。 |
+| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。每一跳发送5个探测报文，数组元素依次为这些探测报文RTT中的最小值、平均值、最大值、标准差。 |
   
 
 ## ProbeResultInfo<sup>26+</sup>
@@ -3909,5 +3909,5 @@ UDP端口状态信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| lossRate | number | 否 | 否 | 丢包率。例如，100表示100%丢包，50表示50%丢包。 |
-| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。对目的主机发送多个探测报文，数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。 |
+| lossRate | number | 否 | 否 | 丢包率，取值范围0-100。例如，100表示100%丢包，50表示50%丢包。 |
+| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。对目的主机发送多个探测报文，探测报文数量由duration决定。数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。 |
