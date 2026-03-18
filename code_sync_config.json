@@ -48161,5 +48161,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/ndk-navigation-query.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NDKNavigation/entry/src/main/cpp/QueryNavigation.h",
+				"functions":[
+					{
+						"end_line":87,
+						"name":"get_page_name",
+						"start_line":82
+					},
+					{
+						"end_line":105,
+						"name":"get_page_param",
+						"start_line":88
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NDKNavigation/entry/src/main/cpp/EntryModule.cpp",
+				"functions":[
+					{
+						"end_line":82,
+						"name":"get_page_state",
+						"start_line":70
+					},
+					{
+						"end_line":101,
+						"name":"get_stack_info",
+						"start_line":88
+					}
+				]
+			}
+		]
 	}
 ]
