@@ -203,6 +203,9 @@
       - [Popup Control](arkui-ts/ts-universal-attributes-popup.md)
       - [Tooltip Control](arkui-ts/ts-universal-attributes-tips.md)
       - [Menu Control](arkui-ts/ts-universal-attributes-menu.md)
+      <!--Del-->
+      - [Menu Control (System API)](arkui-ts/ts-universal-attributes-menu-sys.md)
+      <!--DelEnd-->
     - [Accessibility](arkui-ts/ts-universal-attributes-accessibility.md)
     - Transition<!--transition-->
       - [Modal Transition](arkui-ts/ts-universal-attributes-modal-transition.md)
@@ -275,6 +278,7 @@
     - [ArcScrollBar](arkui-ts/ts-basic-components-arcscrollbar.md)
     - [Scrollable Component Common APIs](arkui-ts/ts-container-scrollable-common.md)
     <!--Del-->
+    - [Grid (System API)](arkui-ts/ts-container-grid-sys.md)
     - [List (System API)](arkui-ts/ts-container-list-sys.md)
     <!--DelEnd-->
   - Navigation and Switching<!--navigation-and-switching-->
@@ -321,6 +325,7 @@
     <!--Del-->
     - [Text Component Common APIs (System API)](arkui-ts/ts-text-common-sys.md)
     - [TextInput (System API)](arkui-ts/ts-basic-components-textinput-sys.md)
+    - [TextArea (System API)](arkui-ts/ts-basic-components-textarea-sys.md)
     - [Styled String (System API)](arkui-ts/ts-universal-styled-string-sys.md)
     - [RichEditor (System API)](arkui-ts/ts-basic-components-richeditor-sys.md)
     <!--DelEnd-->
