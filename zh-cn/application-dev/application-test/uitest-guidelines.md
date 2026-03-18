@@ -37,7 +37,7 @@ UITest分为客户端和服务端。
 
 本章节介绍UI测试框架ArkTS API的具体使用方法。
 
-UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基础上进行UITest接口调用，接口的详细定义与参数说明可参考<!--RP13-->[API文档](../reference/apis-test-kit/js-apis-uitest.md)<!--RP13End-->。
+UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基础上进行UITest接口调用，接口的详细定义与参数说明可参考<!--RP13-->[UiTest](../reference/apis-test-kit/js-apis-uitest.md)API文档<!--RP13End-->。
 
 ### UI测试示例
 
