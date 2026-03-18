@@ -416,6 +416,8 @@
 | windowStatusType | [WindowStatusType](arkts-apis-window-e.md#windowstatustype11) | 否   | 否   | 窗口模式枚举。   |
 | isFocused | boolean | 否   | 是   | 窗口是否获焦。true表示窗口获焦；false表示窗口未获焦。返回值与[isFocused()](arkts-apis-window-Window.md#isfocused12)接口一致。   |
 | globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 是   | 全局坐标系下的窗口尺寸。扩展屏场景下以主屏左上角为坐标原点，虚拟屏场景下以虚拟屏左上角为坐标原点。默认值：[0, 0, 0, 0]。|
+| displayId | number | 否 | 是 | 窗口所在屏幕的ID。默认返回主屏幕ID，该参数为整数。<br>**起始版本：** 26.0.0 <br> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| globalRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 是 | 窗口所在物理屏幕上的真实显示区域。若窗口显示时经过了缩放，获取到的是缩放后窗口在屏幕上的真实位置和大小。默认值：[0, 0, 0, 0]。<br>**起始版本：** 26.0.0 <br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## TransitionAnimation<sup>20+</sup>
 
