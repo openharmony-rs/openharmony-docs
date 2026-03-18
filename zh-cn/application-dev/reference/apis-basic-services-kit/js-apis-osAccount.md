@@ -4388,8 +4388,8 @@ ArkTS-Sta示例：
 | isVerified<sup>(deprecated)</sup> | boolean                                                   | 否 | 否  | 账号是否验证。true表示指定账号已验证；false表示指定账号未验证。<br>**说明**：从API version 7开始支持，从API version 11开始废弃，建议使用isUnlocked。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。 <br/>**ArkTS-Dyn起始版本：** 7           |
 | isUnlocked<sup>11+</sup>      | boolean                                                       | 否 | 否  | 账号是否已解锁（EL2级别目录是否解密）。true表示指定账号已解锁；false表示指定账号未解锁。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                      |
 | photo<sup>8+</sup>             | string                                                       | 否 | 否  | 系统账号头像，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| createTime<sup>8+</sup>        | ArkTS-Dyn: number<br>ArkTS-Sta: long                           | 否 | 否  | 系统账号创建时间。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
-| lastLoginTime<sup>8+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: long                          | 否 | 否  | 系统账号最后一次登录时间，默认为空。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
+| createTime<sup>8+</sup>        | ArkTS-Dyn: number<br>ArkTS-Sta: long                           | 否 | 否  | 系统账号创建时间，以Unix时间戳格式表示，单位为s。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
+| lastLoginTime<sup>8+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: long                          | 否 | 否  | 系统账号最后一次登录时间，以Unix时间戳格式表示，单位为s。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
 | serialNumber<sup>8+</sup>      | ArkTS-Dyn: number<br>ArkTS-Sta: long                           | 否 | 否  | 系统账号SN码。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
 | isActived<sup>(deprecated)</sup>         | boolean                                            | 否 | 否  | 系统账号激活状态。true表示指定账号处于激活状态；false表示指定账号处于未激活状态。<br>**说明**：从API version 7开始支持，从API version 11开始废弃，建议使用isActivated。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。  <br/>**ArkTS-Dyn起始版本：** 7 |
 | isActivated<sup>11+</sup>         | boolean                                                   | 否 | 否  | 系统账号是否激活。true表示指定账号已激活；false表示指定账号未激活。  <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23   |
