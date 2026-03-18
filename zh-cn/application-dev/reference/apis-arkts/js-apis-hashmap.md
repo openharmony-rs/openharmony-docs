@@ -318,7 +318,7 @@ let result = hashMap.get("sparrow");
 
 setAll(map: HashMap<K, V>): void
 
-将一个HashMap中的所有元素组添加到另一个hashMap中。
+将一个HashMap中的所有元素组添加到另一个HashMap中。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -332,7 +332,7 @@ setAll(map: HashMap<K, V>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| map | HashMap<K, V> | 是 | 被添加元素的hashMap。 |
+| map | HashMap<K, V> | 是 | 被添加元素的HashMap。 |
 
 **错误码：**
 
@@ -403,7 +403,7 @@ set(key: K, value: V): Object
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Object | 返回添加或更新后的hashMap。 |
+| Object | 返回添加或更新后的HashMap。 |
 
 **错误码：**
 
