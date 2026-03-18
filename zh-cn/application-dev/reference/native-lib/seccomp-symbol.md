@@ -1,4 +1,4 @@
-# Seccomp开放系统调用清单
+# Seccomp开放系统调用列表
 <!--Kit: Common-->
 <!--Subsystem: Security-->
 <!--Owner: @ren_ze_hua-->
@@ -8,24 +8,26 @@
 
 ## 概述
 
-Seccomp（Secure Computing Mode）是Linux内核提供的轻量级系统调用过滤机制，自Linux 2.6.12首次引入后，已从仅支持**严格模式**（Strict）的极简形态，演进为以**Seccomp-BPF**（Berkeley Packet Filter）为核心的主流形态 ——OpenHarmony OS中采用的正是Seccomp-BPF模式，其核心目标是通过BPF程序自定义系统调用过滤规则，精准限制进程可调用的系统调用范围，降低恶意代码利用内核漏洞的风险，提升进程 / 容器 / 应用的安全隔离性。
+Seccomp（Secure Computing Mode）是Linux内核提供的轻量级系统调用过滤机制。该机制自Linux 2.6.12版本首次引入以来，已从仅支持严格模式（Strict）的极简形态，演进为以Seccomp‑BPF（Berkeley Packet Filter）为核心的主流形态。
 
-本文档聚焦OpenHarmony OS下Seccomp针对不同设备类型的开放系统调用清单，旨在帮助开发者：
+OpenHarmony采用Seccomp‑BPF模式，可通过BPF程序自定义系统调用过滤规则，精确限制进程可调用的系统调用范围，降低恶意代码利用内核漏洞带来的风险，提升进程、容器与应用的安全隔离性。
 
-1. 快速掌握Seccomp不同设备的系统调用管控差异；
+本文档聚焦在OpenHarmony环境下，Seccomp针对不同设备类型开放的系统调用列表，旨在帮助开发者：
 
-2. 基于业务场景选择合适的接口调用，避免因系统调用限制导致的功能异常。
+1. 快速掌握不同设备在Seccomp下的系统调用管控差异。
+
+2. 基于业务场景选择合适的接口调用，避免因系统调用限制导致功能异常。
 
 ## Seccomp机制简介
 
 1. 基本机制
 
-    Seccomp策略以策略文件的形式存在。在编译构建时，首先相关脚本解析策略文件来生成含BPF指令策略的源文件，然后编译成策略动态库。最后，用户态进程启动过程中，使用Seccomp系统调用将BPF指令策略加载到内核中。
+    Seccomp策略以策略文件的形式存在。在编译构建阶段，相关脚本会先解析策略文件，生成包含BPF指令策略的源文件，再将其编译成策略动态库。在用户态进程启动过程中，通过Seccomp系统调用将BPF指令策略加载至内核。
 
 2. 基本特点
-    - 子进程继承父进程的Seccomp策略。
-    - 在进程运行时Seccomp策略被加载到内核后，以单向链表的形式存在于内存中，且内容不能被修改。
-    - 进程可多次设置Seccomp策略。进程在执行系统调用时，内核会遍历单向链表中每个节点的策略，比较每个节点策略的返回值，最后得到优先级最高的返回值。
+    - 子进程会继承父进程的Seccomp策略。
+    - Seccomp策略在进程运行时加载到内核后，以单向链表形式存储于内存中，且内容不可修改。
+    - 进程可多次设置Seccomp策略。进程执行系统调用时，内核会遍历单向链表中每个节点的策略并比较其返回值，最终取优先级最高的返回值。
 
 ## Seccomp机制导致进程终止的判定方法
 
@@ -44,7 +46,7 @@ Tid:13893, Name:e.myapplication
 #01 pc 00002f68 /data/storage/el1/bundle/libs/arm/libentry.so(test()+64)
 ```
 
-## Seccomp符号表清单
+## Seccomp符号列表
 
 | 系统调用        | 支持架构      |支持设备     |备注     |
 | ------------ | ----------------- | ----------------- | ----------------- |
@@ -84,7 +86,7 @@ Tid:13893, Name:e.myapplication
 | personality | all | 全平台设备|- |
 | execve | all | 全平台设备|- |
 | execveat | all | 全平台设备| -|
-| clone | all | 全平台设备| 仅允许不包含以下命名空间标志的调用：<br>CLONE_NEWNS、<br>CLONE_NEWPID、<br>CLONE_NEWNETCLONE_NEWCGROUP、<br>CLONE_NEWUTS、<br>CLONE_NEWIPC、<br>CLONE_NEWUSER<br>符合条件返回 ALLOW，否则返回 TRAP |
+| clone | all | 全平台设备| 仅允许不包含以下命名空间标志的调用：<br>CLONE_NEWNS、<br>CLONE_NEWPID、<br>CLONE_NEWNETCLONE_NEWCGROUP、<br>CLONE_NEWUTS、<br>CLONE_NEWIPC、<br>CLONE_NEWUSER<br>符合条件返回ALLOW，否则返回TRAP。 |
 | io_setup | all | 全平台设备 |- |
 | io_destroy | all | 全平台设备 |- |
 | io_submit | all | 全平台设备 |- |
