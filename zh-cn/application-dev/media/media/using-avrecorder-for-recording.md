@@ -35,7 +35,7 @@
 
 ## 开发步骤及注意事项
 
- 详细的API说明请参考[AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)。
+详细的API说明请参考[AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)。
 
 1. 创建AVRecorder实例，实例创建完成进入idle状态。
 
