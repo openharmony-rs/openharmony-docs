@@ -95,7 +95,7 @@ backgroundColor(backgroundColor: ResourceColor): ToolBarModifier
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 13
 
 **ArkTS-Sta起始版本：** 23
 
@@ -121,7 +121,7 @@ padding(padding: LengthMetrics): ToolBarModifier
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 13
 
 **ArkTS-Sta起始版本：** 23
 
@@ -147,7 +147,7 @@ height(height: LengthMetrics): ToolBarModifier
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 13
 
 **ArkTS-Sta起始版本：** 23
 
@@ -174,7 +174,7 @@ stateEffect(stateEffect: boolean): ToolBarModifier
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 13
 
 **ArkTS-Sta起始版本：** 23
 
@@ -214,7 +214,7 @@ ToolBarSymbolGlyphOptions定义图标的属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 13
 
 **ArkTS-Sta起始版本：** 23
 

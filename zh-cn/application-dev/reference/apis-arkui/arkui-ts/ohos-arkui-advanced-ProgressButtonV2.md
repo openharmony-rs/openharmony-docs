@@ -43,7 +43,7 @@ isEnabled: boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRad
 
 | 名称                                | 类型                                                            | 必填 | 装饰器类型                  | 说明                                                                                |
 |-----------------------------------|---------------------------------------------------------------|----|------------------------|-----------------------------------------------------------------------------------|
-| progress                          | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                | 是  | \@Require <br/>\@Param | 下载按钮的当前进度值。<br/>取值范围：[0,100]。设置小于0的数值时置为0，设置大于100的数值置为100。<br/>默认值：0                                                                       |
+| progress                          | ArkTS-Dyn: number<br/>ArkTS-Sta: double                                       | 是  | \@Require <br/>\@Param | 下载按钮的当前进度值。<br/>取值范围：[0,100]。设置小于0的数值时置为0，设置大于100的数值置为100。<br/>默认值：0                                                                       |
 | content                           | [ResourceStr](ts-types.md#resourcestr)                        | 是  | \@Require <br/>\@Param | 下载按钮的文本。                                                                          |
 | progressButtonWidth               | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | \@Param <br/>\@Once  | 下载按钮的宽度。<br/>默认值：44vp                                                           |
 | onClicked                         | [ClickCallback](#clickcallback)                               | 是  | \@Param                | 下载按钮的点击回调。                                                       |

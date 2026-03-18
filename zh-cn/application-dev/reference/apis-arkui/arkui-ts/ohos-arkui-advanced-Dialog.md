@@ -42,7 +42,7 @@ TipsDialog({controller: CustomDialogController, imageRes: ResourceStr | PixelMap
 
 | 名称                          | 类型                                                         | 必填 | 装饰器类型 | 说明                                                                                                                                                                     |
 | ----------------------------- | ------------------------------------------------------------ | ---- | ---------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| controller                    | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller) | 是 | -          | 提示弹出框控制器。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                    |
+| controller                    | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller) | 是 | -          | 提示弹出框控制器。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23    |
 | imageRes                      | [ResourceStr<sup>12+</sup>](ts-types.md#resourcestr) \| [PixelMap<sup>12+</sup>](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | -          | 展示的图片。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | imageSize                     | [SizeOptions](ts-types.md#sizeoptions)                       | 否   | -          | 自定义图片尺寸。<br/>默认值：64*64vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | title                         | [ResourceStr](ts-types.md#resourcestr)                       | 否   | -          | 提示弹出框标题。<br/>  **说明：**  标题超过两行会显示“...”。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
@@ -116,7 +116,7 @@ AlertDialog({controller: CustomDialogController, primaryTitle?: ResourceStr, sec
 | 名称                         | 类型                                                         | 必填 | 说明                                                         |
 | ---------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | controller                   | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller) | 是 | 确认弹出框控制器。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| primaryTitle<sup>12+</sup>   | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 确认框一级标题。<br/> **说明：** 标题超过两行会显示“...”。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| primaryTitle<sup>12+</sup>   | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 确认框一级标题。<br/> **说明：** 标题超过两行会显示“...”。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 | secondaryTitle<sup>12+</sup> | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 确认框二级标题。<br/> **说明：** 标题超过两行会显示“...”。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 | content                      | [ResourceStr](ts-types.md#resourcestr)                       | 是   | 确认弹出框内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23|
 | primaryButton                | [ButtonOptions](#buttonoptions)                              | 否   | 确认框左侧按钮。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23|
@@ -197,7 +197,7 @@ PopoverDialog({visible: boolean, popover: PopoverOptions, targetBuilder: Callbac
 | -------- | -------- | -------- | -------- | -------- |
 | visible | boolean | 是 | \@Link | 跟手弹出框显示状态。value为true时，表示显示弹窗，value为false时，表示隐藏弹窗。<br/>默认值为false，隐藏弹窗。 |
 | popover | [PopoverOptions](#popoveroptions14) | 是 | ArkTS-Dyn:<br/>\@Prop<br/>\@Require<br>ArkTS-Sta:<br/>\@PropRef<br/>\@Require | 配置跟手弹窗的参数。 |
-| targetBuilder | Callback\<void> | 是 | \@Require<br/>\@BuilderParam | 跟手弹出框基于的目标组件。 |
+| targetBuilder | ArkTS-Dyn: Callback\<void><br/>ArkTS-Sta: () => void  | 是 | \@Require<br/>\@BuilderParam | 跟手弹出框基于的目标组件。 |
 
 
 ## ButtonOptions
