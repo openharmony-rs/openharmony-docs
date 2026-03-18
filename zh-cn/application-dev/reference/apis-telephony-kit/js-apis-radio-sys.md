@@ -2524,9 +2524,9 @@ let data: string = radio.getIMEISV(slotId);
 console.info(`IMEISV is:` + data);
 ```
 
-## radio.isManualNetworkScanning
+## radio.isManualNetworkScanning<sup>23+</sup>
 
-isManualNetworkScanning\(slotId: int\): Promise\<boolean\>
+isManualNetworkScanning\(slotId: number\): Promise\<boolean\>
 
 获取手动搜网状态。
 
@@ -2540,8 +2540,13 @@ isManualNetworkScanning\(slotId: int\): Promise\<boolean\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | int | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
+**返回值：**
+
+| 类型               | 说明                                      |
+| ------------------ | ---------------------------------------- |
+| Promise\<boolean\> | 以Promise形式返回是否正在手动搜网中的结果。 |
 
 **错误码：**
 
@@ -2566,9 +2571,9 @@ radio.isManualNetworkScanning(0).then((state: boolean) => {
 });
 ```
 
-## radio.startManualNetworkScan
+## radio.startManualNetworkScan<sup>23+</sup>
 
-startManualNetworkScan\(slotId: int, callback: AsyncCallback\<NetworkSearchRealTimeResult\>\): void
+startManualNetworkScan\(slotId: number, callback: AsyncCallback\<NetworkSearchRealTimeResult\>\): void
 
 开始手动搜网。
 
@@ -2582,9 +2587,8 @@ startManualNetworkScan\(slotId: int, callback: AsyncCallback\<NetworkSearchRealT
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | int | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| callback | AsyncCallback\<NetworkSearchRealTimeResult\> | 是   | 回调函数。返回搜网结果。     |
-
+| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| callback | AsyncCallback\<[NetworkSearchRealTimeResult](#networksearchrealtimeresult23)\> | 是   | 回调函数。返回搜网结果。     |
 
 **错误码：**
 
@@ -2611,9 +2615,9 @@ radio.startManualNetworkScan(0, (err: BusinessError, data: radio.NetworkSearchRe
 });
 ```
 
-## radio.stopManualNetworkScan
+## radio.stopManualNetworkScan<sup>23+</sup>
 
-stopManualNetworkScan\(slotId: int\): Promise\<void\>
+stopManualNetworkScan\(slotId: number\): Promise\<void\>
 
 结束手动搜网。
 
@@ -2627,8 +2631,13 @@ stopManualNetworkScan\(slotId: int\): Promise\<void\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | int | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
+**返回值：**
+
+| 类型            | 说明                    |
+| --------------- | ----------------------- |
+| Promise\<void\> | 以Promise形式返回停止手动搜网的结果。 |
 
 **错误码：**
 
@@ -2990,7 +2999,7 @@ IMS服务类型。
 | SERVICE_CAPABILITY_OFF | 0    | 网络能力关闭。 |
 | SERVICE_CAPABILITY_ON  | 1    | 网络能力打开。 |
 
-## NetworkSearchRealTimeResult
+## NetworkSearchRealTimeResult<sup>23+</sup>
 
 返回手动网络扫描的结果。
 
