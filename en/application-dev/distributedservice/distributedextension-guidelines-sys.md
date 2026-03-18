@@ -51,6 +51,9 @@ The application on device A integrates **DistributedExtensionAbility**. When DSo
 * You need to log in with the same HUAWEI ID on different devices.
 * Cross-device collaboration is supported only for UIAbility applications with the same bundle name on different devices.
 
+<!--RP1-->
+<!--RP1End-->
+
 ## Environment Setup
 
 ### Environment Requirements

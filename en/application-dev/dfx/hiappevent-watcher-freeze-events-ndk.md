@@ -9,7 +9,7 @@
 
 ## Overview
 
-This topic describes how to subscribe to application freeze events by using the C/C++ APIs provided by HiAppEvent. For details (such as parameter restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
+This topic describes how to subscribe to application freeze events by using the C/C++ APIs provided by HiAppEvent. For details about how to use the APIs (such as parameter restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
 
 ## Available APIs
 
@@ -24,7 +24,7 @@ This topic describes how to subscribe to application freeze events by using the 
 
 The following walks you through on how to subscribe to the application freeze events.
 
-1. Obtain the **jsoncpp** file on which the sample project depends. Specifically, download the source code package from [JsonCpp](https://github.com/open-source-parsers/jsoncpp) and obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by following the procedure described in **Amalgamated source**.
+1. Obtain the **jsoncpp** file on which the sample project depends. Specifically, download the source code package from [JsonCpp](https://github.com/open-source-parsers/jsoncpp) and obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by following the procedure described in **Amalgamated source** in the **README** file.
 
 2. Create a native C++ project and import the **jsoncpp** file to the project. The directory structure is as follows:
 

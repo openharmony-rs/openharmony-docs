@@ -10,15 +10,15 @@ During camera usage, preview stream replacement is inevitable in scenarios such 
 
 - Mode switching: Use preview stream snapshots to create a blur effect for transition.
   
-   The following depicts the transition from video mode to photo mode.
+  The following depicts the transition from video mode to photo mode.
 
-   ![](figures/mode-switching.gif)
+  ![](figures/mode-switching.gif)
 
 - Front/Rear camera switching: Use preview stream snapshots to create a blur-and-flip effect for transition.
 
-   The following demonstrates the transition from using the front camera to the rear camera.
+  The following demonstrates the transition from using the front camera to the rear camera.
 
-   ![](figures/front-rear-switching.gif)
+  ![](figures/front-rear-switching.gif)
 
 - Photo capture blackout: Use a blackout component to overlay the preview stream to create a blackout transition.
   
@@ -34,7 +34,9 @@ The sample code in the following steps is the internal method or logic of a cust
 
 1. Import dependencies. Specifically, import the camera, image, and ArkUI modules.
 
-   ```ts
+   <!-- @[import_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { camera } from '@kit.CameraKit';
    import { image } from '@kit.ImageKit';
    import { curves } from '@kit.ArkUI';
@@ -46,21 +48,35 @@ The sample code in the following steps is the internal method or logic of a cust
 
    Define the component's properties as follows:
 
-   ```ts
-   @State isShowBlack: boolean = false; // Whether to show the blackout component.
-   @StorageLink('captureClick') @Watch('onCaptureClick') captureClickFlag: number = 0; // Entry for the blackout animation.
-   @State flashBlackOpacity: number = 1; // Opacity of the blackout component.
+   <!-- @[anim_states](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   @State isShowBlur: boolean = false;
+   @State isShowBlack: boolean = false;
+   @StorageLink('modeChange') @Watch('onModeChange') modeChangeFlag: number = 0;
+   @StorageLink('switchCamera') @Watch('onSwitchCamera') switchCameraFlag: number = 0;
+   @StorageLink('frameStart') @Watch('onFrameStart') frameStartFlag: number = 0;
+   @StorageLink('captureClick') @Watch('onCaptureClick') captureClickFlag: number = 0;
+   @StorageLink('surfaceShot') screenshotPixelMap: image.PixelMap | undefined = undefined; // Snapshot of the preview stream.
+   @StorageLink('curPosition') curPosition: number = 0; // Current front/rear camera lens status.
+   @State shotImgBlur: number = 0;
+   @State shotImgOpacity: number = 1;
+   @State shotImgScale: ScaleOptions = { x: 1, y: 1 };
+   @State shotImgRotation: RotateOptions = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_0 }
+   @State flashBlackOpacity: number = 1;
    ```
 
    Implement the logic of the blackout component as follows:
 
-   ```ts
+   <!-- @[flash_black_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // The component is displayed during camera blackouts for photo capture or camera switching and is used to block the XComponent.
    if (this.isShowBlack) {
      Column()
        .key('black')
-       .width(this.getUIContext().px2vp(1080)) // The width and height must be the same as those of the XComponent of the preview stream. The layer is above the preview stream and below the snapshot component.
-       .height(this.getUIContext().px2vp(1920))
+       .width(this.getUIContext().px2vp(Constants.X_COMPONENT_SURFACE_HEIGHT))
+       .height(this.getUIContext().px2vp(Constants.X_COMPONENT_SURFACE_WIDTH))
        .backgroundColor(Color.Black)
        .opacity(this.flashBlackOpacity)
    }
@@ -68,38 +84,39 @@ The sample code in the following steps is the internal method or logic of a cust
 
 3. Implement the blackout effect.
 
-   ```ts
-   // Internal methods of the component decorated by @Component.
-   flashBlackAnim() {
-     console.info('flashBlackAnim E');
-     this.flashBlackOpacity = 1; // The blackout component is opaque.
-     this.isShowBlack = true; // Show the blackout component.
+   <!-- @[flash_black_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   private flashBlackAnim() {
+     Logger.info(TAG, 'flashBlackAnim E');
+     this.flashBlackOpacity = 1;
+     this.isShowBlack = true;
      animateToImmediately({
        curve: curves.interpolatingSpring(1, 1, 410, 38),
-       delay: 50, // A black screen is displayed after a delay of 50 ms.
+       delay: 50,
        onFinish: () => {
-         this.isShowBlack = false; // Hide the blackout component.
+         this.isShowBlack = false;
          this.flashBlackOpacity = 1;
-         console.info('flashBlackAnim X');
+         Logger.info(TAG, 'flashBlackAnim X');
        }
      }, () => {
-       this.flashBlackOpacity = 0; // The blackout component is changed from opaque to transparent.
+       this.flashBlackOpacity = 0;
      })
    }
    ```
 
 4. Trigger the blackout effect.
 
-   When a user touches the **PHOTO** button, the value of **CaptureClick** bound to the StorageLink is updated, and **onCaptureClick** is invoked. In this case, the animation starts to play.
+   Tap the capture button to update the value of **CaptureClick** bound to [@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink). This triggers the **onCaptureClick** method and starts playing the animation effect.
 
-   ```ts
+   <!-- @[capture_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    onCaptureClick(): void {
-     console.info('onCaptureClick');
+     Logger.info(TAG, 'onCaptureClick');
      this.flashBlackAnim();
    }
    ```
-
-
 
 ## Blur Animation
 
@@ -109,7 +126,9 @@ The sample code in the following steps (except step 2) is the internal method or
 
 1. Import dependencies. Specifically, import the camera, image, and ArkUI modules.
 
-   ```ts
+   <!-- @[import_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { camera } from '@kit.CameraKit';
    import { image } from '@kit.ImageKit';
    import { curves } from '@kit.ArkUI';
@@ -117,11 +136,14 @@ The sample code in the following steps (except step 2) is the internal method or
 
 2. Obtain a preview stream snapshot.
 
-   Preview stream snapshots are obtained by calling [image.createPixelMapFromSurface](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11) provided by the image module. In this API, **surfaceId** is the surface ID of the current preview stream, and **size** is the width and height of the current preview stream profile. Create a snapshot utility class (TS file), import the dependency, and export the snapshot retrieval API for the page to use. The code snippet below shows the implementation of the snapshot utility class:
+   Preview stream snapshots are obtained by calling [image.createPixelMapFromSurface](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11) provided by the image module. In this API, **surfaceId** is the surface ID of the current preview stream, and **size** is the width and height of the current preview stream profile. Create a snapshot utility class (TS file), import the dependency, and export the snapshot retrieval API for the page to use. The code snippet below shows the implementation of the snapshot utility class.
 
-   ```ts
+   <!-- @[blur_animate_util](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/common/utils/BlurAnimateUtil.ts) -->
+   
+   ``` TypeScript
    export class BlurAnimateUtil {
      public static surfaceShot: image.PixelMap;
+     // ...
    
      /**
       * Obtain a surface snapshot.
@@ -129,39 +151,30 @@ The sample code in the following steps (except step 2) is the internal method or
       * @returns
       */
      public static async doSurfaceShot(surfaceId: string) {
-       console.info(`doSurfaceShot surfaceId:${surfaceId}.`);
-       if (surfaceId === '') {
-         console.error('surface not ready!');
+       Logger.info(TAG, `doSurfaceShot surfaceId:${surfaceId}.`);
+       if ('' === surfaceId) {
+         Logger.error(TAG, 'surface not ready!');
          return;
        }
        try {
-         if (BlurAnimateUtil.surfaceShot) {
-           await BlurAnimateUtil.surfaceShot.release();
+         if (this.surfaceShot) {
+           await this.surfaceShot.release();
          }
-         BlurAnimateUtil.surfaceShot = await image.createPixelMapFromSurface(surfaceId, {
-           size: { width: 1920, height: 1080 }, // Obtain the width and height of the preview stream profile.
+         this.surfaceShot = await image.createPixelMapFromSurface(surfaceId, {
+           size: { width: Constants.X_COMPONENT_SURFACE_WIDTH, height: Constants.X_COMPONENT_SURFACE_HEIGHT }, // Obtain the width and height of the preview stream profile.
            x: 0,
            y: 0
          });
-         let imageInfo: image.ImageInfo = await BlurAnimateUtil.surfaceShot.getImageInfo();
-         console.info('doSurfaceShot surfaceShot:' + JSON.stringify(imageInfo.size));
+         let imageInfo: image.ImageInfo = await this.surfaceShot.getImageInfo();
+         Logger.info('doSurfaceShot surfaceShot:' + JSON.stringify(imageInfo.size));
        } catch (err) {
-         console.error(err);
+         Logger.error(JSON.stringify(err))
        }
      }
    
-     /**
-      * Obtain the snapshot captured by calling doSurfaceShot.
-      * @returns
-      */
-    public static getSurfaceShot(): image.PixelMap | undefined {
-       if (BlurAnimateUtil.surfaceShot === null || BlurAnimateUtil.surfaceShot === undefined) {
-          console.error("SurfaceShot is null!");
-          return undefined;
-        }
-        return BlurAnimateUtil.surfaceShot;
+     public static getSurfaceShot() {
+       return this.surfaceShot;
      }
-  
    }
    ```
 
@@ -171,38 +184,42 @@ The sample code in the following steps (except step 2) is the internal method or
 
    Define the component's properties as follows:
 
-   ```ts
-   @State isShowBlur: boolean = false; // Whether to show the snapshot component.
-   @State isShowBlack: boolean = false; // Blackout component. You can delete it if it is not needed.
-   @StorageLink('modeChange') @Watch('onModeChange') modeChangeFlag: number = 0; // Entry for triggering the mode switching animation.
-   @StorageLink('switchCamera') @Watch('onSwitchCamera') switchCameraFlag: number = 0; // Entry for triggering the front/rear camera switching animation.
-   @StorageLink('frameStart') @Watch('onFrameStart') frameStartFlag: number = 0; // Entry for the fade-out animation.
-   @State screenshotPixelMap: image.PixelMap | undefined = undefined; // PixelMap of the snapshot component.
-   @State surfaceId: string ="; // Surface ID of the XComponent of the current preview stream.
+   <!-- @[anim_states](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   @State isShowBlur: boolean = false;
+   @State isShowBlack: boolean = false;
+   @StorageLink('modeChange') @Watch('onModeChange') modeChangeFlag: number = 0;
+   @StorageLink('switchCamera') @Watch('onSwitchCamera') switchCameraFlag: number = 0;
+   @StorageLink('frameStart') @Watch('onFrameStart') frameStartFlag: number = 0;
+   @StorageLink('captureClick') @Watch('onCaptureClick') captureClickFlag: number = 0;
+   @StorageLink('surfaceShot') screenshotPixelMap: image.PixelMap | undefined = undefined; // Snapshot of the preview stream.
    @StorageLink('curPosition') curPosition: number = 0; // Current front/rear camera lens status.
-   @State shotImgBlur: number = 0; // Blur degree of the snapshot component.
-   @State shotImgOpacity: number = 1; // Opacity of the snapshot component.
-   @State shotImgScale: ScaleOptions = {x: 1, y: 1}; // Scale ratio of the snapshot component.
-   @State shotImgRotation: RotateOptions = { y: 0.5, angle: 0 } // Rotation angle of the snapshot component.
+   @State shotImgBlur: number = 0;
+   @State shotImgOpacity: number = 1;
+   @State shotImgScale: ScaleOptions = { x: 1, y: 1 };
+   @State shotImgRotation: RotateOptions = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_0 }
+   @State flashBlackOpacity: number = 1;
    ```
 
    Implement the snapshot component as follows:
 
-   ```ts
-   // Snapshot component is placed above the XComponent of the preview stream.
+   <!-- @[blur_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    if (this.isShowBlur) {
      Column() {
        Image(this.screenshotPixelMap)
          .blur(this.shotImgBlur)
          .opacity(this.shotImgOpacity)
-         .rotate(this.shotImgRotation) // Provided by ArkUI for component rotation.
+         .rotate(this.shotImgRotation) // Rotation capability provided by ArkUI, used to rotate components along a specified coordinate system.
          .scale(this.shotImgScale)
-         .width(this.getUIContext().px2vp(1080)) // The width and height must be the same as those of the XComponent of the preview stream. The layer is above the preview stream.
-         .height(this.getUIContext().px2vp(1920))
+         .width(this.getUIContext().px2vp(Constants.X_COMPONENT_SURFACE_HEIGHT))
+         .height(this.getUIContext().px2vp(Constants.X_COMPONENT_SURFACE_WIDTH))
          .syncLoad(true)
      }
-     .width(this.getUIContext().px2vp(1080))
-     .height(this.getUIContext().px2vp(1920))
+     .width(this.getUIContext().px2vp(Constants.X_COMPONENT_SURFACE_HEIGHT))
+     .height(this.getUIContext().px2vp(Constants.X_COMPONENT_SURFACE_WIDTH))
    }
    ```
 
@@ -214,46 +231,46 @@ The sample code in the following steps (except step 2) is the internal method or
 
    > **NOTE**
    >
-   > The **image.createPixelMapFromSurface** API, which is used to extract the surface content into a PixelMap, operates differently from the rendering logic of the XComponent. As such, different rotation compensations must be applied to both the image content and the component for the front and rear cameras.
+   > Since the [image.createPixelMapFromSurface](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11) API provided by the graphics framework retrieves a [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) by capturing the surface, its output differs from the rendering logic of the [XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) component. You must apply different **rotation compensation to both the image content and the component** based on **whether the front or rear camera is in use**.
 
-   ```ts
-   async showBlurAnim() {
-     console.info('showBlurAnim E');
+   <!-- @[show_blur_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   private async showBlurAnim() {
+     Logger.info(TAG, 'showBlurAnim E');
      // Obtain the surface snapshot.
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
-     if (shotPixel === undefined) {
-       console.error(`pixelMap is undefined`);
-       return;
-     }
      // The rear camera is used.
      if (this.curPosition === 0) {
-       console.info('showBlurAnim BACK');
-       // For candy bar phones, a 90° rotation compensation is applied to the content for a snapshot taken with the rear camera.
-       await shotPixel.rotate(90); // Provided by Image Kit for image content rotation.
-       // For candy bar phones, a 0° rotation compensation is applied to the component for a snapshot taken with the rear camera.
-       this.shotImgRotation = { y: 0.5, angle: 0 };
+       Logger.info(TAG, 'showBlurAnim BACK');
+       // Rotation compensation of 90° for rear camera snapshots on bar phones.
+       await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_90);
+       // Initial flip angle of 0° for rear camera snapshots on bar phones.
+       this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_0 };
      } else {
-       console.info('showBlurAnim FRONT');
-       // For candy bar phones, a 270° rotation compensation is applied to the content for a snapshot taken with the front camera.
-       await shotPixel.rotate(270);
-       // For candy bar phones, a 180° rotation compensation is applied to the component for a snapshot taken with the front camera.
-       this.shotImgRotation = { y: 0.5, angle: 180 };
+       Logger.info(TAG, 'showBlurAnim FRONT');
+       // Rotation compensation of 270° for front camera snapshots on bar phones.
+       await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_270);
+       // Mirror compensation for front camera snapshots on bar phones.
+       this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_180 };
      }
      this.screenshotPixelMap = shotPixel;
      // Initialize animation parameters.
      this.shotImgBlur = 0; // No blur.
      this.shotImgOpacity = 1; // Opaque.
-     this.isShowBlur = true; // Show the snapshot component.
+     // Trigger page rendering.
+     this.isShowBlur = true;
      animateToImmediately(
        {
-         duration: 200,
+         duration: BlurAnimateUtil.SHOW_BLUR_DURATION,
          curve: Curve.Friction,
          onFinish: async () => {
-           console.info('showBlurAnim X');
+           Logger.info(TAG, 'showBlurAnim X');
          }
        },
        () => {
-         this.shotImgBlur = 48; // Blur intensity of the snapshot component.
+         // Implement the blur change animation.
+         this.shotImgBlur = BlurAnimateUtil.ANIM_MODE_SWITCH_BLUR;
        }
      );
    }
@@ -263,22 +280,25 @@ The sample code in the following steps (except step 2) is the internal method or
 
    The fade-out blur animation is triggered by the event [on('frameStart')](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframestart) of the new preview stream. During this effect, the snapshot component gradually becomes clear, revealing the new preview stream.
 
-   ```ts
-   hideBlurAnim(): void {
+   <!-- @[hide_blur_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   private hideBlurAnim(): void {
      this.isShowBlack = false;
-     console.info('hideBlurAnim E');
+     Logger.info(TAG, 'hideBlurAnim E');
      animateToImmediately({
-       duration: 200,
+       duration: BlurAnimateUtil.HIDE_BLUR_DURATION,
        curve: Curve.FastOutSlowIn,
        onFinish: () => {
-         this.isShowBlur = false; // Hide the blur component.
+         // Remove the blur component from the component tree.
+         this.isShowBlur = false;
          this.shotImgBlur = 0;
          this.shotImgOpacity = 1;
-         console.info('hideBlurAnim X');
+         Logger.info(TAG, 'hideBlurAnim X');
        }
      }, () => {
        // Change the opacity of the snapshot component.
-       this.shotImgOpacity = 0; // Opacity change of the snapshot component.
+       this.shotImgOpacity = 0;
      });
    }
    ```
@@ -291,52 +311,51 @@ The sample code in the following steps (except step 2) is the internal method or
 
    To ensure that the preview stream is not exposed during flip, you must also build a blackout component to mask the XComponent, following the instructions provided in step 2 in [Blackout Animation](#blackout-animation).
 
-   ```ts
+   <!-- @[rotate_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    /**
     * A 90° rotation outwards first for transition between the front and real cameras.
     */
-   async rotateFirstAnim() {
-     console.info('rotateFirstAnim E');
+   private async rotateFirstAnim() {
+     Logger.info(TAG, 'rotateFirstAnim E');
      // Obtain the surface snapshot.
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
-     if (shotPixel === undefined) {
-       console.error(`pixelMap is undefined`);
-       return;
-     }
      // Switch from the rear camera to the front camera.
      if (this.curPosition === 1) {
-       console.info('rotateFirstAnim BACK');
-       // For candy bar phones, a 90° rotation compensation is applied to the content for a snapshot when switching from the rear camera to the front camera.
-       await shotPixel.rotate(90); // Provided by Image Kit for image content rotation.
-       // For candy bar phones, a 0° rotation compensation is applied to the component for a snapshot when switching from the rear camera to the front camera.
-       this.shotImgRotation = { y: 0.5, angle: 0 };
+       Logger.info(TAG, 'rotateFirstAnim BACK');
+         // Rotation compensation of 90° for snapshots when switching from rear to front camera on bar phones.
+       Rotation provided by await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_90); // Rotation capability provided by Image Kit, used to handle rotation of the image itself.
+       // Initial flip angle of 0° for snapshots when switching from rear to front camera on bar phones.
+       this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_0 };
      } else {
-       console.info('rotateFirstAnim FRONT');
-       // For candy bar phones, a 270° rotation compensation is applied to the content for a snapshot when switching from the front camera to the rear camera.
-       await shotPixel.rotate(270);
-       // For candy bar phones, a 180° rotation compensation is applied to the component for a snapshot when switching from the front camera to the rear camera.
-       this.shotImgRotation = { y: 0.5, angle: 180 };
+       Logger.info(TAG, 'rotateFirstAnim FRONT');
+       // Rotation compensation of 270° for snapshots when switching from front to rear camera on bar phones.
+       await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_270);
+       // Initial flip angle of 180° for snapshots when switching from front to rear camera on bar phones.
+       this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_180 };
      }
      this.screenshotPixelMap = shotPixel;
-     this.isShowBlack = true; // Show the blackout component to mask the preview stream.
-     this.isShowBlur = true; // Show the snapshot component.
+     // Trigger page rendering.
+     this.isShowBlack = true;
+     this.isShowBlur = true;
      animateToImmediately(
        {
-         duration: 200,
-         delay: 50, // This delay ensures that the component's scaling and blur effects are triggered in prior to the flip effect.
+         duration: BlurAnimateUtil.ROTATION_DURATION,
+         delay: BlurAnimateUtil.FLIP_DELAY, // This delay ensures that the component's scaling and blur effects are triggered in prior to the flip effect.
          curve: curves.cubicBezierCurve(0.20, 0.00, 0.83, 1.00),
          onFinish: () => {
-           console.info('rotateFirstAnim X');
-           // Trigger the second-phase flip effect after onFinish.
+           Logger.info(TAG, 'rotateFirstAnim X');
+           // Trigger the second-stage rotation after onFinish is invoked.
            this.rotateSecondAnim();
          }
        },
        () => {
-         // Flip outwards.
+         // Flip animation effect for the snapshot.
          if (this.curPosition === 1) {
-           this.shotImgRotation = { y: 0.5, angle: 90 };
+           this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_90 };
          } else {
-           this.shotImgRotation = { y: 0.5, angle: 270 };
+           this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_270 };
          }
        }
      )
@@ -346,40 +365,37 @@ The sample code in the following steps (except step 2) is the internal method or
     * Flip inwards by 90°.
     */
    async rotateSecondAnim() {
-     console.info('rotateSecondAnim E');
+     Logger.info(TAG, 'rotateSecondAnim E');
      // Obtain the surface snapshot.
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
-     if (shotPixel === undefined) {
-       console.error(`pixelMap is undefined`);
-       return;
-     }
      // The rear camera is used.
      if (this.curPosition === 1) {
-       // For candy bar phones, a 90° rotation compensation is applied to the content for a snapshot taken with the rear camera.
-       await shotPixel.rotate(90);
-       // A -90° rotation compensation is applied to the component to ensure that the image is not mirrored after the second-phase flip.
-       this.shotImgRotation = { y: 0.5, angle: 90 };
+       // Rotation compensation of 90° for rear camera on bar phones.
+       Rotation provided by await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_90); // Rotation capability provided by Image Kit, used to handle rotation of the image itself.
+       // Instantly adjust to -90° to ensure the image is not mirrored after the second-stage rotation.
+       this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_MINUS_90 };
      } else { // The front camera is used.
-       // For candy bar phones, a 270° rotation compensation is applied to the content for a snapshot taken with the front camera.
-       await shotPixel.rotate(270);
-       // For candy bar phones, a 180° rotation compensation is applied to the component for a snapshot taken with the front camera.
-       this.shotImgRotation = { y: 0.5, angle: 180 };
+       // Rotation compensation of 270° for front camera snapshots on bar phones.
+       await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_270);
+       // Mirror compensation for front camera snapshots on bar phones.
+       this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_180 };
      }
      this.screenshotPixelMap = shotPixel;
+   
      animateToImmediately(
        {
-         duration: 200,
+         duration: BlurAnimateUtil.ROTATION_DURATION,
          curve: curves.cubicBezierCurve(0.17, 0.00, 0.20, 1.00),
          onFinish: () => {
-           console.info('rotateSecondAnim X');
+           Logger.info(TAG, 'rotateSecondAnim X');
          }
        },
        () => {
-         // Flip inwards to the initial state.
+         // Flip to the initial state.
          if (this.curPosition === 1) {
-           this.shotImgRotation = { y: 0.5, angle: 0 };
+           this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_0 };
          } else {
-           this.shotImgRotation = { y: 0.5, angle: 180 };
+           this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_180 };
          }
        }
      )
@@ -389,25 +405,25 @@ The sample code in the following steps (except step 2) is the internal method or
     * Flip outwards by 90°.
     */
    blurFirstAnim() {
-     console.info('blurFirstAnim E');
+     Logger.info(TAG, 'blurFirstAnim E');
      // Initialize animation parameters.
      this.shotImgBlur = 0; // No blur.
      this.shotImgOpacity = 1; // Opaque.
      this.shotImgScale = { x: 1, y: 1 };
      animateToImmediately(
        {
-         duration: 200,
+         duration: BlurAnimateUtil.ROTATION_DURATION,
          curve: Curve.Sharp,
          onFinish: () => {
-           console.info('blurFirstAnim X');
+           Logger.info(TAG, 'blurFirstAnim X');
            this.blurSecondAnim();
          }
        },
        () => {
-         // Blur.
-         this.shotImgBlur = 48;
-         // Scale out.
-         this.shotImgScale = { x: 0.75, y: 0.75 };
+         // Implement the blur change animation.
+         this.shotImgBlur = BlurAnimateUtil.ANIM_MODE_SWITCH_BLUR;
+         // Implement the scale change animation.
+         this.shotImgScale = { x: BlurAnimateUtil.IMG_SCALE, y: BlurAnimateUtil.IMG_SCALE };
        }
      );
    }
@@ -416,17 +432,16 @@ The sample code in the following steps (except step 2) is the internal method or
     * Flip inwards by 90°.
     */
    blurSecondAnim() {
-     console.info('blurSecondAnim E');
+     Logger.info(TAG, 'blurSecondAnim E');
      animateToImmediately(
        {
-         duration: 200,
+         duration: BlurAnimateUtil.ROTATION_DURATION,
          curve: Curve.Sharp,
          onFinish: () => {
-           console.info('blurSecondAnim X');
+           Logger.info(TAG, 'blurSecondAnim X');
          }
        },
        () => {
-         // Scale in to the initial size.
          this.shotImgScale = { x: 1, y: 1 };
        }
      )
@@ -435,30 +450,36 @@ The sample code in the following steps (except step 2) is the internal method or
 
 7. Trigger the animations on demand.
 
-   For the mode switching animation, once a user touches the mode button, the **doSurfaceShot** API is invoked, the value of **modeChange** bound to the StorageLink is updated, and the **onModeChange** callback is triggered. In this case, the animation starts to play.
+   Mode switch animation trigger: Tap the mode button to immediately execute the **doSurfaceShot** snapshot method, update the value of **modeChange** bound to [@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink), and trigger the **onModeChange** method to start the animation.
 
-   ```ts
+   <!-- @[on_mode_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    onModeChange(): void {
-     console.info('onModeChange');
+     Logger.info(TAG, 'onModeChange');
      this.showBlurAnim();
    }
    ```
 
-   For the front/rear camera switching animation, once a user touches the button to switch between the front and rear cameras, the **doSurfaceShot** API is invoked, the value of **switchCamera** bound to the StorageLink is updated, and the **onSwitchCamera** callback is triggered. In this case, the animation starts to play.
+   Front/rear camera switch animation trigger: Tap the front/rear switch button to immediately execute the **doSurfaceShot** snapshot, update the value of **switchCamera** bound to [@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink), and trigger the **onSwitchCamera** method to start the animation.
 
-   ```ts
+   <!-- @[on_switch_camera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    onSwitchCamera(): void {
-     console.info('onSwitchCamera');
+     Logger.info(TAG, 'onSwitchCamera');
      this.blurFirstAnim();
      this.rotateFirstAnim();
    }
    ```
 
-   For the fade-out blur animation, you must listen for the event [on('frameStart')](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframestart) of the preview stream. Once the value of **frameStart** bound to the StorageLink is updated, and the **onFrameStart** callback is triggered, the animation starts.
+   Fade-out blur animation trigger: Listen for the preview stream first frame callback [on('frameStart')](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframestart), update the value of **frameStart** bound to [@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink), and trigger the **onFrameStart** method to start the animation.
 
-   ```ts
+   <!-- @[on_frame_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    onFrameStart(): void {
-     console.info('onFrameStart');
+     Logger.info(TAG, 'onFrameStart');
      this.hideBlurAnim();
    }
    ```

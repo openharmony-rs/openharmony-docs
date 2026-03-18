@@ -947,7 +947,7 @@ Triggers a notification for cross-device operations, such as tap-to-redirect and
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
 | hashcode | string | Yes  | Unique notification ID.|
-| operationInfo | [OperationInfo](#operationinfo18) | No  | Cross-device operation information.|
+| operationInfo | [OperationInfo](#operationinfo18) | No  | Cross-device operation information. This parameter is left empty by default.|
 
 **Return value**
 

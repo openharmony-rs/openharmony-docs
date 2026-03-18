@@ -24,7 +24,7 @@ During application development, you must subscribe to playback state changes and
 
 ## How to Develop
 
-1. Call **createSoundPool()** to create a SoundPool instance.
+1. Call [createSoundPool](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreatesoundpool10-1) to create a SoundPool instance.
 
    ```ts
    import { media } from '@kit.MediaKit';
@@ -43,7 +43,7 @@ During application development, you must subscribe to playback state changes and
    this.soundPool = await media.createSoundPool(14, audioRendererInfo); // A maximum of 14 streams can be played simultaneously.
    ```
 
-2. Call **on('loadComplete')** to listen for the completion of sound loading.
+2. Call [on('loadComplete')](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#onloadcomplete) to listen for the completion of sound loading.
 
    ```ts
    private soundId: number = 0;
@@ -56,9 +56,9 @@ During application development, you must subscribe to playback state changes and
 
 3. Call **on('playFinished')** or **on('playFinishedWithStreamId')** to listen for the completion of audio playback.
 
-    Only when **playFinished** or **playFinishedWithStreamId** is subscribed to will the registered callback be triggered upon the completion of audio playback.
+    When **'playFinished'** or **'playFinishedWithStreamId'** is subscribed to, the registered callback will be triggered upon the completion of audio playback.
 
-    When both **playFinished** and **playFinishedWithStreamId** are subscribed to, only the **playFinishedWithStreamId** callback is triggered upon audio playback completion, while the **playFinished** callback is not.
+    When both **'playFinished'** and **'playFinishedWithStreamId'** are subscribed to, only the **'playFinishedWithStreamId'** callback is triggered upon audio playback completion, while the **'playFinished'** callback is not.
 
     ```ts
     this.soundPool!.on('playFinished', () => {

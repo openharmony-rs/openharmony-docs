@@ -217,4 +217,3 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
        return result;
    }
    ```
-

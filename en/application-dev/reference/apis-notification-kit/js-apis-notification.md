@@ -10,7 +10,7 @@ The **Notification** module provides notification management capabilities, cover
 
 > **NOTE**
 >
-> The APIs provided by this module are no longer maintained since API version 9. You are advised to use [@ohos.notificationManager](js-apis-notificationManager.md).
+> The APIs of this module are deprecated since API version 9. You are advised to use [@ohos.notificationManager](js-apis-notificationManager.md) instead.
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > Notification subscription and unsubscription APIs are available only to system applications.

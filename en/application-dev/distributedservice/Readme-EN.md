@@ -15,5 +15,3 @@
   - [Distributed Extension Ability Development (for System Applications Only)](distributedextension-guidelines-sys.md)
   <!--DelEnd-->
   - [Enhanced Connection Development](linkEnhance_development-guide.md)
-- Distributed Hardware Connection Management<!--devconnect-distributed-->
-  - [Distributed Camera Development](camera-distributed.md)

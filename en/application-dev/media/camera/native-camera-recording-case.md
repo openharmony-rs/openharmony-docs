@@ -388,3 +388,6 @@ After obtaining the output stream capabilities supported by the camera, create a
         }
     }
     ```
+
+<!--RP1-->
+<!--RP1End-->
