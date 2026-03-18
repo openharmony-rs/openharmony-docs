@@ -13,9 +13,24 @@ As another important function of the camera application, video recording is the 
 Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API reference.
 
 1. Import the NDK, which provides camera-related properties and methods.
-     
-   ```c++
-   // Include the NDK header files.
+
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
+   
+   ``` C
+   #include <cstdint>
+   #include <native_buffer/buffer_common.h>
+   #include <unistd.h>
+   #include <string>
+   #include <thread>
+   #include <cstdio>
+   #include <fcntl.h>
+   #include <map>
+   #include <string>
+   #include <vector>
+   #include <native_buffer/native_buffer.h>
+   #include "iostream"
+   #include "mutex"
+   
    #include "hilog/log.h"
    #include "ohcamera/camera.h"
    #include "ohcamera/camera_input.h"
@@ -23,7 +38,27 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
    #include "ohcamera/photo_output.h"
    #include "ohcamera/preview_output.h"
    #include "ohcamera/video_output.h"
+   #include "napi/native_api.h"
    #include "ohcamera/camera_manager.h"
+   #include <window_manager/oh_display_info.h>
+   #include <window_manager/oh_display_manager.h>
+   
+   namespace OHOS_CAMERA_SAMPLE {
+   class NDKCamera {
+     public:
+       struct CameraBuildingConfig {
+           char *str;
+           uint32_t focusMode;
+           uint32_t cameraDeviceIndex;
+           bool isVideo;
+           bool isHdr;
+           char *videoId;
+       };
+       ~NDKCamera();
+       explicit NDKCamera(CameraBuildingConfig config);
+       // ...
+   };
+   } // namespace OHOS_CAMERA_SAMPLE
    ```
 
 2. Link the dynamic library in the CMake script.
@@ -37,60 +72,78 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
    ```
 
 3. Obtain the surface ID.
-   
-   Create an AVRecorder instance, and call **getInputSurface()** of the instance to obtain a surface ID.
+
+   The [OH_AVRecorder_Create()](../../reference/apis-media-kit/capi-avrecorder-h.md#oh_avrecorder_create) API provided by the system can be used to create an **AVRecorder** instance. You can obtain the surface ID via the [OH_AVRecorder_GetInputSurface()](../../reference/apis-media-kit/capi-avrecorder-h.md#oh_avrecorder_getinputsurface) method of the instance.
 
 4. Create a video output stream.
 
    Based on the surface ID passed in, call [OH_CameraManager_GetSupportedCameraOutputCapability](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapability) to obtain [Camera_OutputCapability](../../reference/apis-camera-kit/capi-oh-camera-camera-outputcapability.md). From there, you can access **videoProfiles** to obtain the video output streams supported by the device. Then, define video recording parameters and use **OH_CameraManager_CreateVideoOutput** to create a video output stream.
+  
+   > **NOTE**
+   >
+   > - The aspect ratio of the resolution for the preview stream and the recording output stream must be consistent. For example, if the aspect ratio in the sample code is 640:480 (equivalent to 4:3), the aspect ratio of the resolution for the preview stream must also be 4:3. Valid resolution options include: 640:480, 960:720, 1440:1080, etc.
+   >
+   > - Before setting the width and height of the resolution for the preview output stream, you must first query the configurable range of video frame width and height via [OH_AVRecorder_Profile](../../reference/apis-media-kit/capi-avrecorder-oh-avrecorder-profile.md).
 
-   ```c++
-   Camera_VideoOutput* CreateVideoOutput(Camera_Manager* cameraManager, char* videoSurfaceIdStr,
-       const Camera_VideoProfile* videoProfile)
+   <!-- @[create_video_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   Camera_ErrorCode NDKCamera::CreateVideoOutput(char *videoId)
    {
-       // Create a VideoOutput instance.
-       Camera_VideoOutput* videoOutput = nullptr;
-       Camera_ErrorCode ret = OH_CameraManager_CreateVideoOutput(cameraManager, videoProfile, videoSurfaceIdStr,
-           &videoOutput);
-       if (videoProfile == nullptr || videoOutput == nullptr || ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreateVideoOutput failed.");
+       if (videoProfile_ == nullptr) {
+           OH_LOG_ERROR(LOG_APP, "Get videoProfiles failed.");
+           return CAMERA_INVALID_ARGUMENT;
        }
-       return videoOutput;
+       ret_ = OH_CameraManager_CreateVideoOutput(cameraManager_, videoProfile_, videoId, &videoOutput_);
+       OH_LOG_ERROR(LOG_APP, " create video width: %{public}d, height: %{public}d, format: %{public}d",
+           videoProfile_->size.width, videoProfile_->size.height, videoProfile_->format);
+       if (videoId == nullptr || videoOutput_ == nullptr || ret_ != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "CreateVideoOutput failed.");
+           return CAMERA_INVALID_ARGUMENT;
+       }
+       VideoOutputRegisterCallback();
+       return ret_;
    }
    ```
 
 5. Start video recording.
-   
+
    Call [OH_VideoOutput_Start()](../../reference/apis-camera-kit/capi-video-output-h.md#oh_videooutput_start) to start the video output stream.
 
-   ```c++
-   // Start the video output stream.
-   Camera_ErrorCode VideoOutputStart(Camera_VideoOutput* videoOutput)
+   <!-- @[video_output_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   Camera_ErrorCode NDKCamera::VideoOutputStart(void)
    {
-       Camera_ErrorCode ret = OH_VideoOutput_Start(videoOutput);
-       if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_VideoOutput_Start failed.");
+       OH_LOG_INFO(LOG_APP, "VideoOutputStart begin.");
+       Camera_ErrorCode ret = OH_VideoOutput_Start(videoOutput_);
+       if (ret == CAMERA_OK) {
+           OH_LOG_INFO(LOG_APP, "OH_VideoOutput_Start success.");
+       } else {
+           OH_LOG_ERROR(LOG_APP, "OH_VideoOutput_Start failed. %d ", ret);
        }
        return ret;
    }
    ```
 
 6. Stop video recording.
-     
+
    Call [OH_VideoOutput_Stop()](../../reference/apis-camera-kit/capi-video-output-h.md#oh_videooutput_stop) to stop the video output stream.
 
-   ```c++
-   // Stop the video output stream.
-   Camera_ErrorCode VideoOutputStop(Camera_VideoOutput* videoOutput)
+   <!-- @[video_output_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   Camera_ErrorCode NDKCamera::VideoOutputStop(void)
    {
-       Camera_ErrorCode ret = OH_VideoOutput_Stop(videoOutput);
-       if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_VideoOutput_Stop failed.");
+       OH_LOG_ERROR(LOG_APP, "enter VideoOutputStop.");
+       ret_ = OH_VideoOutput_Stop(videoOutput_);
+       if (ret_ != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "VideoOutputStop failed.");
+           return CAMERA_INVALID_ARGUMENT;
        }
-       return ret;
+       return ret_;
    }
    ```
-
 
 ## Status Listening
 
@@ -98,32 +151,41 @@ During camera application development, you can listen for the status of the vide
 
 - Register the **'frameStart'** event to listen for recording start events. This event can be registered when a VideoOutput instance is created and is triggered when the bottom layer starts exposure for recording for the first time. Video recording starts as long as the event is triggered.
 
-  ```c++
-  void VideoOutputOnFrameStart(Camera_VideoOutput* videoOutput)
+  <!-- @[video_callback_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  
+  ``` C++
+  void VideoOutputOnFrameStart(Camera_VideoOutput *videoOutput)
   {
       OH_LOG_INFO(LOG_APP, "VideoOutputOnFrameStart");
   }
   ```
 
 - Register the **'frameEnd'** event to listen for recording end events. This event can be registered when a VideoOutput instance is created and is triggered when the last frame of recording ends. Video recording ends as long as a result is returned.
-    
-  ```c++
-  void VideoOutputOnFrameEnd(Camera_VideoOutput* videoOutput, int32_t frameCount)
+
+  <!-- @[video_callback_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  
+  ``` C++
+  void VideoOutputOnFrameEnd(Camera_VideoOutput *videoOutput, int32_t frameCount)
   {
       OH_LOG_INFO(LOG_APP, "VideoOutput frameCount = %{public}d", frameCount);
   }
   ```
 
 - Register the **'error'** event to listen for video output errors. The callback function returns an error code when a video output API is incorrectly used. For details about the error code types, see [Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode).
-    
-  ```c++
-  void VideoOutputOnError(Camera_VideoOutput* videoOutput, Camera_ErrorCode errorCode)
+
+  <!-- @[video_callback_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  
+  ``` C++
+  void VideoOutputOnError(Camera_VideoOutput *videoOutput, Camera_ErrorCode errorCode)
   {
       OH_LOG_INFO(LOG_APP, "VideoOutput errorCode = %{public}d", errorCode);
   }
   ```
-  ```c++
-  VideoOutput_Callbacks* GetVideoOutputListener(void)
+
+  <!-- @[get_video_listener_and_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  
+  ``` C++
+  VideoOutput_Callbacks *NDKCamera::GetVideoOutputListener(void)
   {
       static VideoOutput_Callbacks videoOutputListener = {
           .onFrameStart = VideoOutputOnFrameStart,
@@ -132,13 +194,13 @@ During camera application development, you can listen for the status of the vide
       };
       return &videoOutputListener;
   }
-
-  Camera_ErrorCode RegisterVideoOutputCallback(Camera_VideoOutput* videoOutput)
+  
+  Camera_ErrorCode NDKCamera::VideoOutputRegisterCallback(void)
   {
-      Camera_ErrorCode ret = OH_VideoOutput_RegisterCallback(videoOutput, GetVideoOutputListener());
-      if (ret != CAMERA_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_VideoOutput_RegisterCallback failed.");
+      ret_ = OH_VideoOutput_RegisterCallback(videoOutput_, GetVideoOutputListener());
+      if (ret_ != CAMERA_OK) {
+          OH_LOG_ERROR(LOG_APP, "OH_VideoOutput_RegisterCallback failed.");
       }
-      return ret;
+      return ret_;
   }
   ```

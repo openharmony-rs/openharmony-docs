@@ -11,7 +11,7 @@ HiDebug can obtain the memory, CPU, and GPU data of the system or application pr
 
 This topic describes the ArkTS and C/C++ APIs of the HiDebug module and classifies them by API capability.
 
-For details about the APIs, see [ArkTS API Reference](../reference/apis-performance-analysis-kit/js-apis-hidebug.md) and [C API Reference](../reference/apis-performance-analysis-kit/capi-hidebug-h.md).
+For details about the APIs, see [@ohos.hidebug](../reference/apis-performance-analysis-kit/js-apis-hidebug.md) and [hidebug.h](../reference/apis-performance-analysis-kit/capi-hidebug-h.md).
 
 ## Constraints
 
@@ -25,9 +25,9 @@ HiDebug can obtain the system memory, application process memory usage, applicat
 
 | Name| Description  |
 | -------- | -------- |
-| hidebug.getNativeHeapSize | Obtains the total number of bytes occupied by the total space (**uordblks** and **fordblks**, which are obtained through **mallinfo**) held by a process, which is measured by the memory allocator.|
-| hidebug.getNativeHeapAllocatedSize | Obtains the total number of bytes occupied by the total allocated space (**uordblks**, which is obtained through **mallinfo**) held by a process, which is measured by the memory allocator.|
-| hidebug.getNativeHeapFreeSize | Obtains the total number of bytes occupied by the total free space (**fordblks**, which is obtained from **mallinfo**) held by a process, which is measured by the memory allocator.|
+| hidebug.getNativeHeapSize | Obtains the total number of bytes occupied by the normal blocks held by the process, as counted by the memory allocator. This is the sum of **uordblks** and **fordblks** obtained from the **mallinfo** API.|
+| hidebug.getNativeHeapAllocatedSize | Obtains the total number of bytes occupied by the used normal blocks held by the process, as counted by the memory allocator. This is the value of **uordblks** obtained from the **mallinfo** API.|
+| hidebug.getNativeHeapFreeSize | Obtains the total number of bytes occupied by the free normal blocks held by the process, as counted by the memory allocator. This is the value of **fordblks** obtained from the **mallinfo** API.|
 | hidebug.getPss | Obtains the size of the physical memory actually used by the application process. This API is implemented by reading and summing up the values of <b class="+ topic/ph hi-d/b " id="b7835135125313">Pss</b> and <b class="+ topic/ph hi-d/b " id="b188351351155317">SwapPss</b> in the <b class="+ topic/ph hi-d/b " id="b183595116532">/proc/{pid}/smaps_rollup</b> node.|
 | hidebug.getVss | Obtains the virtual set size used by the application process. This API is implemented by reading the value of **size** (number of memory pages) from the **/proc/{pid}/statm** node and calculating the value using the following formula: **vss** = **size** × page size (4 KB/page).|
 | hidebug.getSharedDirty | Obtains the size of the shared dirty memory of a process. This API is implemented by reading the value of **Shared_Dirty** in **/proc/{pid}/smaps_rollup**.|
@@ -179,7 +179,7 @@ HiDebug can obtain VM memory data, GC statistics, and VM heap dump data.
 | hidebug.getVMRuntimeStat | Obtains the specified system [GC](../arkts-utils/gc-introduction.md) statistics based on parameters.|
 | hidebug.dumpJsRawHeapData | Dumps the original VM heap snapshot for the current thread in asynchronous mode. This API is used for JavaScript memory leak analysis.<br>Note: This API is supported since API version 18.|
 | hidebug.setJsRawHeapTrimLevel | Sets the trimming level of the original heap snapshot stored by the current process.<br>Note: This API is supported since API version 20.|
-| hidebug.dumpJsHeapData | Dumps the VM heap data in synchronous mode. This API is used for JavaScript memory leak analysis.|
+| hidebug.dumpJsHeapData | Dumps the VM heap data in synchronous mode. This API is used for [JavaScript memory leak analysis](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-js-memleak-detection).|
 | hidebug.getAppMemoryLimit | Obtains the memory limit of an application process. **vmHeapLimit** is the VM heap size limit of the current thread, and **vmTotalHeapSize** is the total size limit of all VM heaps in the current process.|
 | hidebug.getAppVMObjectUsedSize | Obtains the VM memory size occupied by ArkTS objects.<br>Note: This API is supported since API version 21.|
 
@@ -331,17 +331,6 @@ HiDebug provides the capabilities of enabling and disabling GWP-ASan and queryin
 | hidebug.enableGwpAsanGrayscale | Enables GWP-ASan to detect illegal behaviors in heap memory usage.<br>Note: This API is supported since API version 20.|
 | hidebug.disableGwpAsanGrayscale | Disables GWP-ASan.<br>Note: This API is supported since API version 20.|
 | hidebug.getGwpAsanGrayscaleState | Obtains the remaining days for which GWP-ASan is enabled.<br>Note: This API is supported since API version 20.|
-
-## Adding Debugging Information to Crash Logs
-
-HiDebug provides APIs for adding debugging information to crash logs. You can add debugging information to crash logs as required. If a program crashes, the debugging information is displayed in the crash logs.
-
-### APIs (C/C++)
-
-| Name| Description|
-| -------- | -------- |
-| OH_HiDebug_SetCrashObj | Adds debugging information to crash logs. This API should be used with **OH_HiDebug_ResetCrashObj**. If a program crashes between **OH_HiDebug_SetCrashObj** and **OH_HiDebug_ResetCrashObj**, the debugging information set by **OH_HiDebug_SetCrashObj** is added to the crash logs.<br>Note: This API is supported since API version 23.|
-| OH_HiDebug_ResetCrashObj | Resets the debugging information object to the status before **OH_HiDebug_SetCrashObj** is called. This API should be used with **OH_HiDebug_SetCrashObj**.<br>Note: This API is supported since API version 23.|
 
 ## Others
 

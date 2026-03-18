@@ -139,7 +139,7 @@ The table below lists the supported subtitle formats.
 | Subtitle Container Format| Protocol| Loading Mode|
 | -------- | -------- | -------- |
 | srt | File descriptor (FD) for local video on-demand (VOD), and HTTP/HTTPS/HLS/DASH for network VOD| External subtitle|
-| vtt | FD for local VOD, and HTTP/HTTPS/HLS/DASH for network VOD| External subtitle|
+| vtt | File descriptor (FD) for local video on-demand (VOD), and HTTP/HTTPS/HLS/DASH for network VOD| External subtitle|
 | webvtt | DASH for network VOD| Built-in subtitle|
 
 > **NOTE**

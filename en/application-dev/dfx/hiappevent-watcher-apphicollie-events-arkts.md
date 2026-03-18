@@ -9,7 +9,7 @@
 
 ## Overview
 
-Since API version 21, the ArkTS APIs are supported to subscribe to task execution timeout events. This topic describes how to use the ArkTS APIs provided by HiAppEvent to subscribe to task execution timeout events. For details about how to use the APIs (such as parameter restrictions and value ranges), see [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
+Since API version 21, the ArkTS APIs are supported to subscribe to task execution timeout events. This topic describes how to use the ArkTS APIs provided by HiAppEvent to subscribe to task execution timeout events. For details about the APIs (including parameter restrictions and value ranges), see [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
 
 ## Available APIs
 
