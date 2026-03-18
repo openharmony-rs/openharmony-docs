@@ -10992,7 +10992,7 @@ async function example(context: Context) {
 
 queryDownloadSpecificCloudMediaTaskCountAndSize(predicates: dataSharePredicates.DataSharePredicates): Promise\<int[]\>
 
-查询云端媒体资产批量下载任务总量和大小。使用Promise异步回调。
+查询云端媒体资产批量下载任务的总量和大小。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -11025,7 +11025,7 @@ queryDownloadSpecificCloudMediaTaskCountAndSize(predicates: dataSharePredicates.
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
-| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. predicates null or undefined. |
+| 23800151 | Scenario parameters fail to pass the verification. Possible causes: predicates null or undefined. |
 
 **示例：**
 
@@ -12765,6 +12765,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| DEFAULT |  0 |  默认，用户未选择，仅WIFI下载。|
-| CELL |  1 |  用户选择过，蜂窝网络和WIFI均可下载。  |
-| WIFI |  2 |  用户选择过，WIFI网络可下载。  |
+| DEFAULT |  0 |  默认，用户未确认，仅WIFI下载。|
+| CELL |  1 |  用户已确认，蜂窝网络和WIFI均可下载。  |
+| WIFI |  2 |  用户已确认，WIFI网络可下载。  |
