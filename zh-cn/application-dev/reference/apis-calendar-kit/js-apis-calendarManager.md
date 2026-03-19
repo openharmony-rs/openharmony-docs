@@ -156,10 +156,10 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calend
 
 **参数**：
 
-| 参数名          | 类型                                  | 必填 | 说明                               |
-| --------------- | ------------------------------------- | ---- | ---------------------------------- |
-| calendarAccount | [CalendarAccount](#calendaraccount)   | 是   | 日历账户信息。                     |
-| callback        | AsyncCallback\<[Calendar](#calendar)> | 是   | 回调函数，返回创建的Calendar对象。 |
+| 参数名          | 类型                                  | 必填 | 说明                                                      |
+| --------------- | ------------------------------------- | ---- |---------------------------------------------------------|
+| calendarAccount | [CalendarAccount](#calendaraccount)   | 是   | 日历账户信息。                                                 |
+| callback        | AsyncCallback\<[Calendar](#calendar)> | 是   | 回调函数，当创建账户成功时，err为undefined，data为创建成功的Calendar；否则为错误对象。 |
 
 **错误码：**
 
@@ -268,10 +268,10 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback\<void>): void
 
 **参数**：
 
-| 参数名   | 类型                  | 必填 | 说明                        |
-| -------- | --------------------- | ---- |---------------------------|
-| calendar | [Calendar](#calendar) | 是   | 即将删除的Calendar对象。无法删除默认账户。 |
-| callback | AsyncCallback\<void>  | 是   | 回调函数。成功无返回值；失败返回错误对象。     |
+| 参数名   | 类型                  | 必填 | 说明                                                      |
+| -------- | --------------------- | ---- |---------------------------------------------------------|
+| calendar | [Calendar](#calendar) | 是   | 即将删除的Calendar对象。无法删除默认账户。                               |
+| callback | AsyncCallback\<void>  | 是   | 回调函数，当删除账户成功时，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -402,9 +402,9 @@ getCalendar(callback: AsyncCallback\<Calendar>): void
 
 **参数**：
 
-| 参数名   | 类型                                 | 必填 | 说明                                 |
-| -------- | ------------------------------------ | ---- | ------------------------------------ |
-| callback | AsyncCallback<[Calendar](#calendar)> | 是   | 回调函数，返回查询到的Calendar对象。 |
+| 参数名   | 类型                                 | 必填 | 说明                                                     |
+| -------- | ------------------------------------ | ---- |--------------------------------------------------------|
+| callback | AsyncCallback<[Calendar](#calendar)> | 是   | 回调函数，当查询账户成功时，err为undefined，data为查询到的Calendar；否则为错误对象。 |
 
 **错误码：**
 
@@ -451,10 +451,10 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calendar>
 
 **参数**：
 
-| 参数名          | 类型                                 | 必填 | 说明                     |
-| --------------- | ------------------------------------ | ---- |------------------------|
-| calendarAccount | [CalendarAccount](#calendaraccount)  | 是   | 指定日历账户信息。              |
-| callback        | AsyncCallback<[Calendar](#calendar)> | 是   | 回调函数，返回查询到的Calendar对象。 |
+| 参数名          | 类型                                 | 必填 | 说明                                                     |
+| --------------- | ------------------------------------ | ---- |--------------------------------------------------------|
+| calendarAccount | [CalendarAccount](#calendaraccount)  | 是   | 指定日历账户信息。                                              |
+| callback        | AsyncCallback<[Calendar](#calendar)> | 是   | 回调函数，当查询账户成功时，err为undefined，data为查询到的Calendar；否则为错误对象。 |
 
 **错误码：**
 
@@ -566,9 +566,9 @@ getAllCalendars(callback: AsyncCallback\<Calendar[]>): void
 
 **参数**：
 
-| 参数名   | 类型                                   | 必填 | 说明                                      |
-| -------- | -------------------------------------- | ---- | ----------------------------------------- |
-| callback | AsyncCallback<[Calendar](#calendar)[]> | 是   | 回调函数， 返回查询到的Calendar对象数组。 |
+| 参数名   | 类型                                   | 必填 | 说明                                                       |
+| -------- | -------------------------------------- | ---- |----------------------------------------------------------|
+| callback | AsyncCallback<[Calendar](#calendar)[]> | 是   | 回调函数，当查询账户成功时，err为undefined，data为查询到的Calendar数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -727,10 +727,10 @@ addEvent(event: Event, callback: AsyncCallback\<number>): void
 
 **参数**：
 
-| 参数名   | 类型                   | 必填 | 说明                                                                    |
-| -------- | ---------------------- | ---- |-----------------------------------------------------------------------|
-| event    | [Event](#event)        | 是   | Event对象。                                                              |
-| callback | AsyncCallback\<number> | 是   | 回调函数，返回日程id，日程id是日程的唯一标识符，是数据库的自增主键，小于0代表日程创建失败，大于0代表日程创建成功，没有等于0的情况。 |
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                |
+| -------- | ---------------------- | ---- |-------------------------------------------------------------------------------------------------------------------|
+| event    | [Event](#event)        | 是   | Event对象。                                                                                                          |
+| callback | AsyncCallback\<number> | 是   | 回调函数，当添加日程成功时，err为undefined，data为日程id；否则为错误对象。 |
 
 **错误码：**
 
@@ -857,7 +857,7 @@ addEvents(events: Event[], callback: AsyncCallback\<void>): void
 | 参数名   | 类型                 | 必填 | 说明            |
 | -------- | -------------------- | ---- | --------------- |
 | events   | [Event](#event)[]    | 是   | Event对象数组。 |
-| callback | AsyncCallback\<void> | 是   | 回调函数。成功无返回值；失败返回错误对象。      |
+| callback | AsyncCallback\<void> | 是   | 回调函数，当添加日程成功时，err为undefined；否则为错误对象。      |
 
 **错误码：**
 
@@ -993,10 +993,10 @@ deleteEvent(id: number, callback: AsyncCallback\<void>): void
 
 **参数**：
 
-| 参数名   | 类型                 | 必填 | 说明                                     |
-| -------- | -------------------- | ---- |----------------------------------------|
+| 参数名   | 类型                 | 必填 | 说明                                    |
+| -------- | -------------------- | ---- |---------------------------------------|
 | id       | number               | 是   | 日程id，传入的日程id为整数，表示已创建日程的id，是日程的唯一标识符。 |
-| callback | AsyncCallback\<void> | 是   | 回调函数。成功无返回值；失败返回错误对象。                                  |
+| callback | AsyncCallback\<void> | 是   | 回调函数，当删除日程成功时，err为undefined；否则为错误对象。  |
 
 **示例**：
 
@@ -1112,10 +1112,10 @@ deleteEvents(ids: number[], callback: AsyncCallback\<void>): void
 
 **参数**：
 
-| 参数名   | 类型                 | 必填 | 说明         |
-| -------- | -------------------- | ---- | ------------ |
-| ids      | number[]             | 是   | 日程id数组。 |
-| callback | AsyncCallback\<void> | 是   | 回调函数。成功无返回值；失败返回错误对象。   |
+| 参数名   | 类型                 | 必填 | 说明                                               |
+| -------- | -------------------- | ---- |--------------------------------------------------|
+| ids      | number[]             | 是   | 日程id数组。                                          |
+| callback | AsyncCallback\<void> | 是   | 回调函数，当删除多个日程成功时，err为undefined；否则为错误对象。 |
 
 **示例**：
 
@@ -1255,10 +1255,10 @@ updateEvent(event: Event, callback: AsyncCallback\<void>): void
 
 **参数**：
 
-| 参数名   | 类型                 | 必填 | 说明                    |
-| -------- | -------------------- | ---- |-----------------------|
-| event    | [Event](#event)      | 是   | Event对象。       |
-| callback | AsyncCallback\<void> | 是   | 回调函数。成功无返回值；失败返回错误对象。 |
+| 参数名   | 类型                 | 必填 | 说明                                             |
+| -------- | -------------------- | ---- |------------------------------------------------|
+| event    | [Event](#event)      | 是   | Event对象。                                       |
+| callback | AsyncCallback\<void> | 是   | 回调函数，当更新日程成功时，err为undefined；否则为错误对象。 |
 
 **示例**：
 
@@ -1382,9 +1382,9 @@ API version 20之前，默认查询字段包括id、type、title、startTime、e
 
 **参数**：
 
-| 参数名   | 类型                             | 必填 | 说明                              |
-| -------- | -------------------------------- | ---- | --------------------------------- |
-| callback | AsyncCallback<[Event](#event)[]> | 是   | 回调函数，返回的是Event对象数组。 |
+| 参数名   | 类型                             | 必填 | 说明                                                    |
+| -------- | -------------------------------- | ---- |-------------------------------------------------------|
+| callback | AsyncCallback<[Event](#event)[]> | 是   | 回调函数，当查询日程成功时，err为undefined，data为查询到的Event数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -1436,11 +1436,11 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 
 **参数**：
 
-| 参数名      | 类型                             | 必填 | 说明                              |
-| ----------- | -------------------------------- | ---- | --------------------------------- |
-| eventFilter | [EventFilter](#eventfilter)      | 是   | 查询条件。                        |
-| eventKey    | (keyof [Event](#event))[]        | 是   | 查询字段。                        |
-| callback    | AsyncCallback<[Event](#event)[]> | 是   | 回调函数，返回的是Event对象数组。 |
+| 参数名      | 类型                             | 必填 | 说明                                                    |
+| ----------- | -------------------------------- | ---- |-------------------------------------------------------|
+| eventFilter | [EventFilter](#eventfilter)      | 是   | 查询条件。                                                 |
+| eventKey    | (keyof [Event](#event))[]        | 是   | 查询字段。                                                 |
+| callback    | AsyncCallback<[Event](#event)[]> | 是   | 回调函数，当查询日程成功时，err为undefined，data为查询到的Event数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -1630,10 +1630,10 @@ setConfig(config: CalendarConfig, callback: AsyncCallback\<void>): void
 
 **参数**：
 
-| 参数名   | 类型                              | 必填 | 说明           |
-| -------- | --------------------------------- | ---- | -------------- |
-| config   | [CalendarConfig](#calendarconfig) | 是   | 日历配置信息。 |
-| callback | AsyncCallback\<void>              | 是   | 回调函数。成功无返回值；失败返回错误对象。     |
+| 参数名   | 类型                              | 必填 | 说明                                                 |
+| -------- | --------------------------------- | ---- |----------------------------------------------------|
+| config   | [CalendarConfig](#calendarconfig) | 是   | 日历配置信息。                                            |
+| callback | AsyncCallback\<void>              | 是   | 回调函数，当设置Config成功时，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -2193,13 +2193,13 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 **系统能力**：SystemCapability.Applications.CalendarData
 
-| 名称  | 类型   | 只读 | 可选 | 说明                                                                                                                         |
-| ----- | ------ | ---- |----|----------------------------------------------------------------------------------------------------------------------------|
-| name  | string | 否   | 否  | 会议日程参与者的姓名。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                         |
-| email | string | 否   | 否  | 会议日程参与者的邮箱，邮箱格式为”用户名@域名.后缀“，用户名部分只能包含字母、数字、下划线 _、点 .、连字符 -。不能以点 . 开头或结尾。 不能连续出现两个点 ..。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| role<sup>12+</sup>  | [AttendeeRole](#attendeerole12) | 否   | 是  | 会议日程参与者的角色，不填时默认为空。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                  |
-| status<sup>18+</sup> | [AttendeeStatus](#attendeestatus18) | 否   | 是 | 会议日程参与者的状态，不填时默认为空。   <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                 |
-| type<sup>18+</sup>   | [AttendeeType](#attendeetype18)     | 否   | 是 | 会议日程参与者的类型，不填时默认为空。   <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                 |
+| 名称  | 类型   | 只读 | 可选 | 说明                                                                                                                                                                                      |
+| ----- | ------ | ---- |----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| name  | string | 否   | 否  | 会议日程参与者的姓名。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                      |
+| email | string | 否   | 否  | 会议日程参与者的邮箱，邮箱格式为“用户名@域名.后缀”，用户名部分只能包含字母、数字、下划线“_”、点 “.”、连字符 “-”。不能以点 “.” 开头或结尾。 不能连续出现两个点 “..”。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| role<sup>12+</sup>  | [AttendeeRole](#attendeerole12) | 否   | 是  | 会议日程参与者的角色，不填时默认为空。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                               |
+| status<sup>18+</sup> | [AttendeeStatus](#attendeestatus18) | 否   | 是 | 会议日程参与者的状态，不填时默认为空。   <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                              |
+| type<sup>18+</sup>   | [AttendeeType](#attendeetype18)     | 否   | 是 | 会议日程参与者的类型，不填时默认为空。   <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                              |
 
 ## EventService
 
