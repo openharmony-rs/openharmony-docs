@@ -457,6 +457,8 @@ struct CustomContainer {
 
   @Builder
   closerBuilder() {
+    Text('CustomContainer')
+        .fontSize(30)
   }
 
   // this.closerBuilder初始化子组件@BuilderParam
