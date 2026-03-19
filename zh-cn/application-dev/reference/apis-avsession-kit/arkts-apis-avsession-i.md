@@ -71,8 +71,8 @@
 | drmSchemes<sup>12+</sup>        | Array\<string>         | 否   | 是   | 当前session支持的DRM方案，取值为DRM方案uuid。|
 | skipIntervals<sup>11+</sup>  | [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)        | 否   | 是   | 快进快退支持的时间间隔。默认为SECONDS_15，即15秒。                            |
 |displayTags<sup>11+</sup>     | number                           | 否   | 是   | 媒体资源的金标类型，取值参考[DisplayTag](arkts-apis-avsession-e.md#displaytag11)。      |
-| rewindSkipIntervals | [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)        | 否   | 是   | 快退支持的时间间隔。默认为SECONDS_15，即15秒。<br>系统会使用此值作为快退操作的时间间隔，而非skipIntervals的值。<br>若未设置此参数，快退操作的时间间隔仍会沿用skipIntervals的值。<br>**起始版本**：26.0.0|
-| fastForwardSkipIntervals</sup> | [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)        | 否   | 是   | 快进支持的时间间隔。默认为SECONDS_15，即15秒。<br>系统会使用此值作为快进操作的时间间隔，而非skipIntervals的值。<br>若未设置此参数，快进操作的时间间隔仍会沿用skipIntervals的值。<br>**起始版本**：26.0.0|
+| rewindSkipIntervals | [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)        | 否   | 是   | 快退支持的时间间隔。默认为SECONDS_15，即15秒。<br>系统会使用此值作为快退操作的时间间隔，而非skipIntervals的值。<br>若未设置此参数，快退操作的时间间隔仍会沿用skipIntervals的值。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本**：26.0.0|
+| fastForwardSkipIntervals</sup> | [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)        | 否   | 是   | 快进支持的时间间隔。默认为SECONDS_15，即15秒。<br>系统会使用此值作为快进操作的时间间隔，而非skipIntervals的值。<br>若未设置此参数，快进操作的时间间隔仍会沿用skipIntervals的值。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本**：26.0.0|
 
 ## AVMediaDescription<sup>10+</sup>
 
