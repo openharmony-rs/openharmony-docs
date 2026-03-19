@@ -17038,17 +17038,17 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h",
 				"functions":[
 					{
-						"end_line":247,
+						"end_line":276,
 						"name":"Lazy_loading_of_text_list",
 						"start_line":15
 					},
 					{
-						"end_line":242,
+						"end_line":271,
 						"name":"Item_adapter",
 						"start_line":16
 					},
 					{
-						"end_line":243,
+						"end_line":272,
 						"name":"Remove_Item",
 						"start_line":17
 					}
@@ -17058,27 +17058,27 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListNode.h",
 				"functions":[
 					{
-						"end_line":146,
+						"end_line":151,
 						"name":"List_encapsulated_object",
 						"start_line":15
 					},
 					{
-						"end_line":139,
+						"end_line":144,
 						"name":"ScrollTo",
 						"start_line":16
 					},
 					{
-						"end_line":141,
+						"end_line":146,
 						"name":"ScrollToIndex",
 						"start_line":17
 					},
 					{
-						"end_line":142,
+						"end_line":147,
 						"name":"ScrollBy",
 						"start_line":19
 					},
 					{
-						"end_line":140,
+						"end_line":145,
 						"name":"SetSticky",
 						"start_line":18
 					}
@@ -17088,7 +17088,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/LazyTextListExample1.h",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":155,
 						"name":"Grouped_List_Interface",
 						"start_line":15
 					}
@@ -17098,7 +17098,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/NativeEntry.cpp",
 				"functions":[
 					{
-						"end_line":92,
+						"end_line":85,
 						"name":"Interface_entrance_mounting_file",
 						"start_line":15
 					}
@@ -17118,7 +17118,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemGroupNode.h",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":91,
 						"name":"Use_grouped_lists",
 						"start_line":16
 					}
@@ -17128,7 +17128,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/LazyTextListExample.h",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":120,
 						"name":"Grouped_List",
 						"start_line":15
 					}
