@@ -1423,7 +1423,7 @@ Defines the information about the transient task.
 | Name            | Type    | Read-Only  | Optional  | Description                                      |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | requestId       | number | No   | No   | Request ID of the transient task.                              |
-| actualDelayTime | number | No   | No   | Actual duration of the transient task requested by the application, in milliseconds.<br>Note: The maximum duration is 3 minutes in normal cases. In the case of a [low battery](../apis-basic-services-kit/js-apis-battery-info.md), the maximum duration is decreased to 1 minute.|
+| actualDelayTime | number | No   | No   | Actual duration of the transient task requested by the application, in milliseconds.<br>Note: The maximum duration of a transient task is 3 minutes in normal cases. In the case of a low battery ([BatteryCapacityLevel](../apis-basic-services-kit/js-apis-battery-info.md#batterycapacitylevel9) is **LEVEL_LOW**), the maximum duration is decreased to 1 minute.|
 
 ## TransientTaskInfo<sup>20+</sup>
 
