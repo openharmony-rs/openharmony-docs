@@ -10631,7 +10631,7 @@ startDownloadSpecificCloudMedia(assetUris: string[], taskSequence?: number): Pro
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
 | assetUris | string[] | 是   | 需要下载的原图和视频的uri列表。 |
-| taskSequence | number | 否   | 应用设置的序号，值应大于等于0。默认值为0。 <br> 从API Version 24开始，支持taskSequence参数。 |
+| taskSequence | number | 否   | 应用设置的序号，值应大于等于0。默认值为0。 <br> 从API Version 26开始，支持taskSequence参数。 |
 
 **返回值：**
 
@@ -12765,6 +12765,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| DEFAULT |  0 |  默认，用户未确认弹窗，仅WIFI下载。|
-| CELL |  1 |  用户已确认弹窗，蜂窝网络和WIFI均可下载。  |
+| DEFAULT |  0 |  默认，用户未确认弹窗，仅WIFI网络下载。|
+| CELL |  1 |  用户已确认弹窗，蜂窝网络和WIFI网络均可下载。  |
 | WIFI |  2 |  用户已确认弹窗，WIFI网络可下载。  |
