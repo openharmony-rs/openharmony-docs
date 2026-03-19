@@ -26,6 +26,7 @@
       <!--Del-->
       - [卡片代理刷新（仅对系统应用开放）](arkts-ui-widget-update-by-proxy-sys.md)
       <!--DelEnd-->
+      <!--RP3--><!--RP3End-->
       - [刷新本地图片和网络图片](arkts-ui-widget-image-update.md)
       - [根据卡片状态刷新不同内容](arkts-ui-widget-update-by-status.md)
     - ArkTS卡片页面交互<!--arkts-ui-widget-event-->
