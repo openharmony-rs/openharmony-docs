@@ -6629,16 +6629,16 @@ getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[BundleNoti
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundles = [
+let bundles: notificationManager.BundleOption[] = [
   { bundle:"com.example.test01", } as notificationManager.BundleOption,
   { bundle:"com.example.test02", } as notificationManager.BundleOption
 ];
 notificationManager.getNotificationStatisticsByBundle(bundles).then(
-   (data: notificationManager.BundleNotificationStatistics[]) => {
-     console.info(`getNotificationStatisticsByBundle success.`)
-   }).catch((err: BusinessError):void => {
-     console.error(`getNotificationStatisticsByBundle failed, code is ${err.code}, message is ${err.message}`);
-   });
+  (data: notificationManager.BundleNotificationStatistics[]) => {
+  console.info(`getNotificationStatisticsByBundle success, data is ${JSON.stringify(data)}`)
+}).catch((err: BusinessError):void => {
+  console.error(`getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
+});
 ```
 
 ## DoNotDisturbDate
