@@ -28,7 +28,7 @@ MDNS管理的典型场景有：
 ## 管理本地服务
 
 1. 设备连接WiFi。
-2. 从@kit.NetworkKit里导入mdns、错误码、以及common命名空间。
+2. 从@kit.NetworkKit里导入mdns、错误码、以及[common命名空间](../reference/apis-network-kit/js-apis-net-mdns.md)。
 
    <!-- @[MDNS_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
    
