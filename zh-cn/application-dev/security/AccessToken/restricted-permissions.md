@@ -994,6 +994,34 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**: 23
 
+## ohos.permission.MANAGE_RECENT_SNAPSHOT
+
+允许应用设置在Dock栏悬停显示的预览缩略图.
+
+<!--RP64--><!--RP64End-->
+
+**权限级别**: system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: PC/2in1
+
+**起始版本**: 26
+
+## ohos.permission.SET_WINDOW_ALPHA
+
+允许应用设置窗口透明度.
+
+<!--RP64--><!--RP64End-->
+
+**权限级别**: system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: PC/2in1
+
+**起始版本**: 26
+
 ## ohos.permission.MANAGE_CALL_FOR_DEVICES
 
 允许应用管理通话状态。如获取来电号码、接听、拒接、挂断等.
