@@ -19,6 +19,7 @@
 ## 导入模块
 
 ```ts
+// 在API version 23之前的版本中，需要使用 'import { api1, api2, ... } from @ohos.file.PhotoPickerComponent'的导入方式。
 import {
   PhotoPickerComponent, PickerController, PickerOptions,
   DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType,
@@ -884,6 +885,7 @@ Picker的颜色模式。
 
 ```ts
 // xxx.ets
+// 在API version 23之前的版本中，需要使用 'import { api1, api2, ... } from @ohos.file.PhotoPickerComponent'的导入方式。
 import {
   PhotoPickerComponent,
   PickerController,
