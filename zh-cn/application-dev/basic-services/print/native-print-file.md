@@ -48,7 +48,6 @@ class HiLog {
 ```
 
 ### 步骤2. 在CMake脚本中添加动态链接库
-
 初始路径为entry/src/main/cpp/types/CMakeLists.txt # C++ 源码目录 CMake 构建配置
 ```cmake
 target_link_libraries(entry PUBLIC
@@ -64,6 +63,7 @@ target_link_libraries(entry PUBLIC
 包装c++接口
 ```c++
 // napi_init.cpp
+
 static void PrinterDiscoveryCallback(Print_DiscoveryEvent event, const Print_PrinterInfo *printerInfo)
 {
     // 发现打印设备事件，以设备Id作为唯一标识符
@@ -178,6 +178,7 @@ EXTERN_C_END
 应用侧在页面被拉起的生命周期初始化，在页面关掉时释放。
 ```ts
 // Index.ets
+
 @Entry
 @Component
 struct Index {
@@ -193,10 +194,11 @@ struct Index {
 ```
 
 ### 步骤4. 通过接口拉起系统打印预览界面下发任务
-
+包装c++接口。
 ```c++
 // napi_init.cpp
-// WriteFile 由开发者实现，示例仅为简单的文件拷贝。根据当前用户修改后的打印参数，若需要更新打印文件可重新写入系统提供的fd中。
+
+// WriteFile 由开发者实现，示例仅为简单的文件拷贝。根据当前用户修改后的打印参数，若需要更新打印文件可重新写入系统提供的fd中
 static uint32_t WriteFile(uint32_t fd, const Print_PrintAttributes *oldAttrs, const Print_PrintAttributes *newAttrs){
     // 沙箱内合法路径
     const char* filePath = "/data/storage/el2/base/files/test.pdf";
@@ -218,22 +220,22 @@ static uint32_t WriteFile(uint32_t fd, const Print_PrintAttributes *oldAttrs, co
     return 0;
 }
 
-// 系统打印预览界面回调，首次拉起或用户修改打印参数时的延迟文件写入回调。可以根据新参数适当修改打印文件。
+// 系统打印预览界面回调，首次拉起或用户修改打印参数时的延迟文件写入回调。可以根据新参数适当修改打印文件
 static void OnStartLayoutWriteCb(const char *jobId,
                                 uint32_t fd,
                                 const Print_PrintAttributes *oldAttrs,
                                 const Print_PrintAttributes *newAttrs,
                                 Print_WriteResultCallback writeCallback)
 {
-    // 将数据写入系统提供的fd中，每次回调的fd不一定相同，请不要保存此fd。
+    // 将数据写入系统提供的fd中，每次回调的fd不一定相同，请不要保存此fd
     uint32_t retCode = WriteFile(fd, oldAttrs, newAttrs);
-    // 通知打印系统文件写入完成，若需要异步写入数据，请保存好jobId。
+    // 通知打印系统文件写入完成，若需要异步写入数据，请保存好jobId
     // retCode取值：0-写入成功，1-写入异常，2-无需重新写入
     writeCallback(jobId, retCode);
 }
 
-// 打印文件写入完成后，系统打印预览界面会进行预览，此时用户可以点击“开始打印”下发任务。
-// 任务ID对应的打印状态变化的回调函数。
+// 打印文件写入完成后，系统打印预览界面会进行预览，此时用户可以点击“开始打印”下发任务
+// 任务ID对应的打印状态变化的回调函数
 static void OnJobStateChangedCb(const char *jobId, uint32_t state)
 {
     // jobState取值：0-任务准备中，1-任务排队中， 2-任务打印中， 3-任务异常暂停， 4-任务结束， 100-任务未知异常
@@ -250,7 +252,7 @@ static napi_value NativeStartPrintByNative(napi_env env, napi_callback_info info
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     napi_unwrap(env, argv[0], &context);
 
-    // 调用打印接口以拉起系统打印预览界面。
+    // 调用打印接口以拉起系统打印预览界面
     std::string printJobName = "test";
     Print_PrintDocCallback printDocCallback = { OnStartLayoutWriteCb, OnJobStateChangedCb };
     Print_ErrorCode ret = OH_Print_StartPrintByNative(printJobName.c_str(), printDocCallback, context);
@@ -274,6 +276,7 @@ EXTERN_C_END
 主页上新增一个按钮，单击调用c++的nativeStartPrintByNative接口拉起打印预览界面
 ```ts
 // Index.ets
+
 @Entry
 @Component
 struct Index {
@@ -296,6 +299,7 @@ struct Index {
 ```
 
 ### 步骤5. 通过打印接口直接下发打印任务
+包装c++接口，示例仅演示从已添加打印设备列表获取信息并下发任务。
 
 ```c++
 // napi_init.cpp
@@ -338,7 +342,7 @@ static napi_value NativeStartPrintJob(napi_env env, napi_callback_info info) {
         return n_ret;
     }
     std::vector<uint32_t> fdList = { static_cast<uint32_t>(fd) };
-    // 本例子使用首选项 printerInfo->defaultValue 作为打印任务参数来下发任务。
+    // 本例子使用首选项 printerInfo->defaultValue 作为打印任务参数来下发任务
     Print_PrintJob* printJob = new Print_PrintJob{ "jobName",
                                                    fdList.data(),
                                                    static_cast<uint32_t>(fdList.size()),
@@ -379,9 +383,10 @@ static napi_value Init(napi_env env, napi_value exports)
 EXTERN_C_END
 ```
 
-主页上新增一个按钮，单击调用c++的nativeStartPrintByNative直接发送任务
+主页上新增一个按钮，单击调用c++的nativeStartPrintByNative直接发送任务。
 ```ts
 // Index.ets
+
 @Entry
 @Component
 struct Index {
