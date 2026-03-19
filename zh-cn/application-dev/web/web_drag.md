@@ -387,12 +387,12 @@ struct Index {
                 '});',
               (error, result) => {
                 if (error) {
-                  console.error(`run JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`)
+                  console.error(`run JavaScript error, ErrorCode: ${(error as BusinessError<void>).code},  Message: ${(error as BusinessError<void>).message}`)
                   return;
                 }
               });
           } catch (resError) {
-            console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
+            console.error(`ErrorCode: ${(resError as BusinessError<void>).code},  Message: ${(resError as BusinessError<void>).message}`);
           }
         })
       Web({
