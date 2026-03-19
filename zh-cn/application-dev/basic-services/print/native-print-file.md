@@ -137,10 +137,10 @@ static napi_value NativeInit(napi_env env, napi_callback_info info)
     napi_value n_ret = nullptr;
     napi_get_boolean(env, !ret, &n_ret);
     if (ret == 0) {
-        // 注册已添加设备状态变更事件监听
+        // 订阅已添加设备状态变更事件
         Print_ErrorCode error = OH_Print_RegisterPrinterChangeListener(PrinterChangeCallback);
         LOGI("OH_Print_RegisterPrinterChangeListener, ret = %{public}d", error);
-        // 注册设备发现相关事件监听
+        // 订阅设备发现相关事件
         error = OH_Print_StartPrinterDiscovery(PrinterDiscoveryCallback);
         LOGI("OH_Print_StartPrinterDiscovery, ret = %{public}d", error);
     }
@@ -151,7 +151,7 @@ static napi_value NativeRelease(napi_env env, napi_callback_info info)
 {
     // 取消订阅已添加设备状态变更事件
     OH_Print_UnregisterPrinterChangeListener();
-    // 取消订阅注册设备发现相关事件订阅
+    // 取消订阅设备发现相关事件
     OH_Print_StopPrinterDiscovery();
     // 释放打印服务
     Print_ErrorCode ret = OH_Print_Release();
