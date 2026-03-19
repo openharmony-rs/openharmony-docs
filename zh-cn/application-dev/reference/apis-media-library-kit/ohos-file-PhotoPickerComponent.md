@@ -697,9 +697,9 @@ import {
   ExceedMaxSelectedCallback,
   CurrentAlbumDeletedCallback,
   videoPlayStateChangedCallback,
-  VideoPlayerState,
-  photoAccessHelper
+  VideoPlayerState
 } from '@ohos.file.PhotoPickerComponent';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';
 import { common } from '@kit.AbilityKit';
 
