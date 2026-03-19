@@ -137,7 +137,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
 | 801      | Capability not supported.                                     |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.  |
-| 14400004 | Transmission I/O error.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
+| 14400004 | Service exception. Possible causes: <br>1. No accessory is plugged in.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 | 14400012 | Transmission I/O error.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
@@ -884,8 +884,8 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 | 14400007 | Resource busy. Possible causes: 1. The transfer has already been submitted. 2. The interface is claimed by another program or driver.|
 | 14400008 | No such device (it may have been disconnected). |
 | 14400009 | Insufficient memory. Possible causes: 1. Memory allocation failed. |
-| 14400010 | Transmission I/O error. |
-| 14400011 | Transmission I/O error. |
+| 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
+| 14400011 | The transfer is not in progress, or is already complete or cancelled. |
 | 14400012 | Transmission I/O error. |
 
 **示例：**
@@ -979,12 +979,12 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。|
 | 801 | Capability not supported. |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
-| 14400007 | No such device (it may have been disconnected). |
+| 14400007 | Resource busy. Possible causes: 1. The transfer has already been submitted. 2. The interface is claimed by another program or driver.|
 | 14400008 | No such device (it may have been disconnected). |
-| 14400009 | No such device (it may have been disconnected). |
-| 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
-| 14400011 | The transfer is not in progress, or is already complete or cancelled.|
-| 14400012 | The transfer is not in progress, or is already complete or cancelled.|
+| 14400009 | Insufficient memory. Possible causes: 1. Memory allocation failed. |
+| 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。|
+| 14400011 | The transfer is not in progress, or is already complete or cancelled.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。|
+| 14400012 | Transmission I/O error.|
 
 **示例：**
 
