@@ -46,7 +46,7 @@
     ``` TypeScript
     // 构建崩溃事件的自定义参数
     let crashParams: Record<string, hiAppEvent.ParamType> = {
-      "test_data": 100, // test_data为自定义数据，开发者可根据实际需求自定义params参数。
+      "test_data": 100, //test_data为自定义数据，开发者可根据实际需求自定义params参数。
     };
     // 开发者可以设置崩溃事件的自定义参数
     hiAppEvent.setEventParam(crashParams, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {
@@ -65,6 +65,21 @@
       // 开发者可以设置崩溃日志配置参数
       hiAppEvent.setEventConfig(hiAppEvent.event.APP_CRASH, crashConfigParams).then(() => {
         hilog.info(0x0000, 'testTag', `HiAppEvent success to set event config.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
+      });
+    }
+    
+    if (deviceInfo.sdkApiVersion >= 24) {  // API Version 24及以后版本，支持设置页面切换日志
+      // 配置页面切换日志
+      let switchLogPolicy : hiAppEvent.EventPolicy = {
+        "appCrashPolicy": {
+          "pageSwitchLogEnable": true
+        }
+      };
+      // 开发者可以设置崩溃日志配置参数
+      hiAppEvent.setEventPolicy(switchLogPolicy).then(() => {
+        hilog.info(0x0000, 'testTag', `HiAppEvent success to config event policy.`);
       }).catch((err: BusinessError) => {
         hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
       });
