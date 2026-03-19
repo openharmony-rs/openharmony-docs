@@ -1403,6 +1403,71 @@ struct FilterDemo {
 
 ![letterSpacingDemo](figures/letterSpacingDemo.jpeg)
 
+
+### antialias<sup>24+</sup>
+
+用于设置绘制图形和文本时是否开启抗锯齿。设置此接口会覆盖[RenderingContextSettings](#renderingcontextsettings)中的抗锯齿效果，未通过该接口设置时，默认值为undefined，与[RenderingContextSettings](#renderingcontextsettings)中的抗锯齿效果保持一致。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ------ | ------ |
+| boolean \| undefined | 否 | 否 | 设置绘制图形和文本时是否开启抗锯齿。<br/>true表示开启抗锯齿；false表示不开启抗锯齿。<br/>值为undefined时，与[RenderingContextSettings](#renderingcontextsettings)中的抗锯齿效果保持一致。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct AntialiasDemo {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          let anti = this.context.antialias;
+          console.info(`current antialias is ${anti}`);
+          // 设置antialias属性为非抗锯齿
+          this.context.antialias = false;
+          this.context.strokeStyle = 'rgb(0,0,0)';
+          this.context.lineWidth = 2;
+          this.context.beginPath();
+          this.context.arc(150, 150, 100, 0, Math.PI);
+          this.context.stroke();
+          this.context.font = 'normal bold 30vp monospace';
+          this.context.fillText("Hello World", 20, 100);
+          anti = this.context.antialias;
+          console.info(`current antialias is ${anti}`);
+
+          // 设置antialias属性为抗锯齿
+          this.context.antialias = true;
+          this.context.beginPath();
+          this.context.arc(150, 350, 100, 0, Math.PI);
+          this.context.stroke();
+          this.context.font = 'normal bold 30vp monospace';
+          this.context.fillText("Hello World", 20, 300);
+          anti = this.context.antialias;
+          console.info(`current antialias is ${anti}`);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![AntialiasDemo](figures/AntialiasDemo.jpeg)
+
 ## 方法
 
 以下方法在隐藏页面中调用会产生缓存，应避免在隐藏页面中频繁刷新Canvas。
@@ -4875,10 +4940,6 @@ type ImageSmoothingQuality = "high" | "low" | "medium"
 
 用来配置CanvasRenderingContext2D对象的参数，包括是否开启抗锯齿。
 
-> **说明：**
->
-> RenderingContextSettings的抗锯齿效果对文本绘制无影响。
-
 ### constructor
 
 constructor(antialias?: boolean)
@@ -4895,7 +4956,7 @@ constructor(antialias?: boolean)
 
 | 参数名       | 类型    | 必填   | 说明                          |
 | --------- | ------- | ---- | ----------------------------- |
-| antialias | boolean | 否    | 表明canvas是否开启抗锯齿。<br>异常值undefined按默认值处理。<br>false：表示不开启抗锯齿功能，true：表示开启抗锯齿。<br>默认值：false |
+| antialias | boolean | 否    | 表明canvas是否开启抗锯齿。<br>异常值undefined按默认值处理。<br>false：表示不开启抗锯齿功能，true：表示开启抗锯齿。<br>默认值：false<br>**说明：**<br>绘制文本默认开启抗锯齿效果，RenderingContextSettings的antialias无法影响绘制文本的抗锯齿效果，如需修改文本抗锯齿效果，请使用[antialias<sup>24+</sup>](#antialias24)接口。 |
 
 ### 属性
 
@@ -4907,4 +4968,4 @@ constructor(antialias?: boolean)
 
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ------ | -------- | --------- | ---------- | ------------------------------ |
-| antialias | boolean | 否 | 是 | 表明canvas是否开启抗锯齿。<br>异常值undefined按默认值处理。<br>false：表示不开启抗锯齿功能，true：表示开启抗锯齿。<br>默认值：false |
+| antialias | boolean | 否 | 是 | 表明canvas是否开启抗锯齿。<br>异常值undefined按默认值处理。<br>false：表示不开启抗锯齿功能，true：表示开启抗锯齿。<br>默认值：false<br>**说明：**<br>绘制文本默认开启抗锯齿效果，RenderingContextSettings的antialias无法影响绘制文本的抗锯齿效果，如需修改文本抗锯齿效果，请使用[antialias<sup>24+</sup>](#antialias24)接口。 |
