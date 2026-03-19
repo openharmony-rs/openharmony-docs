@@ -10631,7 +10631,7 @@ startDownloadSpecificCloudMedia(assetUris: string[], taskSequence?: number): Pro
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
 | assetUris | string[] | 是   | 需要下载的原图和视频的uri列表。 |
-| taskSequence | number | 否   | 应用设置的序号,默认值为0，值应大于等于0。 <br> 从API Version 24开始，支持taskSequence参数。 |
+| taskSequence | number | 否   | 应用设置的序号，值应大于等于0。默认值为0。 <br> 从API Version 24开始，支持taskSequence参数。 |
 
 **返回值：**
 
@@ -10686,7 +10686,7 @@ setDownloadSpecificCloudMediaNetworkPolicy(assetUris: string[], networkPolicy: C
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  | 是   | 需要设置策略的下载的原图和视频的URI列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
+| assetUris | string[]  | 是   | 需要设置策略的下载的原图和视频的URI列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务，将被设置策略。 |
 | networkPolicy | [CloudDownloadNetworkPolicy](#clouddownloadnetworkpolicy26) | 是   | 批量下载网络策略。 |
 
 
@@ -12765,6 +12765,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| DEFAULT |  0 |  默认，用户未确认，仅WIFI下载。|
-| CELL |  1 |  用户已确认，蜂窝网络和WIFI均可下载。  |
-| WIFI |  2 |  用户已确认，WIFI网络可下载。  |
+| DEFAULT |  0 |  默认，用户未确认弹窗，仅WIFI下载。|
+| CELL |  1 |  用户已确认弹窗，蜂窝网络和WIFI均可下载。  |
+| WIFI |  2 |  用户已确认弹窗，WIFI网络可下载。  |
