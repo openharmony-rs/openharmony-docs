@@ -312,7 +312,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) --> 
   
   ``` TypeScript
-  //开启抗锯齿
+  // 开启抗锯齿
   Circle()
     .width(150)
     .height(200)
