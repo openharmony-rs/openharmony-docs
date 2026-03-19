@@ -100,7 +100,7 @@ Invalid size of eap data.
 
 **处理步骤**
 
-确保bufferLen参数与EAP数据长度一致。。
+确保bufferLen参数与EAP数据长度一致。
 
 ## 33200006 无效的网络类型
 
