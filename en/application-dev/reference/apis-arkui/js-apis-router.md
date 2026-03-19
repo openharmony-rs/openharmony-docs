@@ -1784,3 +1784,210 @@ Disables the display of a confirm dialog box before returning to the previous pa
 ```ts
 router.disableAlertBeforeBackPage();
 ```
+
+## Example
+
+This example shows the redirection features of the router.[replace](#routerreplacedeprecated) and router.[replaceUrl](#routerreplaceurldeprecated) APIs in the web-like paradigm.
+
+The following describes the tree structure:
+```text
+pages
+├─ index
+│  ├─ index.css
+│  ├─ index.hml
+│  └─ index.js
+└─ routerPages
+   ├─ routerPage.css
+   ├─ routerPage.hml
+   └─ routerPage.js
+```
+```css
+/* index.css */
+.page {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #050816;
+}
+
+.page-name {
+  width: 78%;
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+  color: #f8fafc;
+}
+
+.tips {
+  width: 82%;
+  margin-top: 12px;
+  font-size: 12px;
+  text-align: center;
+  color: #cbd5e1;
+}
+
+.status {
+  width: 82%;
+  margin-top: 8px;
+  font-size: 12px;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.action-button {
+  width: 190px;
+  height: 42px;
+  border-radius: 21px;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+}
+
+.action-button-primary {
+  margin-top: 22px;
+  background-color: #2563eb;
+}
+
+.action-button-secondary {
+  margin-top: 10px;
+  background-color: #16a34a;
+}
+```
+```hml
+<!--index.hml-->
+<div class="page">
+    <text class="page-name">{{ pageName }}</text>
+    <text class="tips">{{ tips }}</text>
+    <text class="status">{{ statusText }}</text>
+    <input class="action-button action-button-primary" type="button" value="replace to routerPage" onclick="replaceToRouterPage"></input>
+    <input class="action-button action-button-secondary" type="button" value="replaceUrl to routerPage" onclick="replaceUrlToRouterPage"></input>
+</div>
+```
+```js
+// index.js
+import router from '@ohos.router';
+
+export default {
+    data: {
+        pageName: 'Index Page',
+        tips: 'Use replace or replaceUrl to open routerPage.',
+        statusText: 'Current page: index'
+    },
+    replaceToRouterPage: function() {
+        router.replace({
+            uri: 'pages/routerPages/routerPage',
+            params: {
+                statusText: 'Opened by router.replace.'
+            }
+        });
+    },
+    replaceUrlToRouterPage: function() {
+        router.replaceUrl({
+            uri: 'pages/routerPages/routerPage',
+            params: {
+                statusText: 'Opened by router.replaceUrl.'
+            }
+        });
+    }
+}
+```
+```css
+/* routerPage.css */
+.page {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #050816;
+}
+
+.page-name {
+  width: 78%;
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+  color: #f8fafc;
+}
+
+.tips {
+  width: 82%;
+  margin-top: 12px;
+  font-size: 12px;
+  text-align: center;
+  color: #cbd5e1;
+}
+
+.status {
+  width: 82%;
+  margin-top: 8px;
+  font-size: 12px;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.action-button {
+  width: 190px;
+  height: 42px;
+  border-radius: 21px;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+}
+
+.action-button-primary {
+  margin-top: 22px;
+  background-color: #2563eb;
+}
+
+.action-button-secondary {
+  margin-top: 10px;
+  background-color: #16a34a;
+}
+```
+```hml
+<!--routerPage.hml-->
+<div class="page">
+    <text class="page-name">{{ pageName }}</text>
+    <text class="tips">{{ tips }}</text>
+    <text class="status">{{ statusText }}</text>
+    <input class="action-button action-button-primary" type="button" value="replace to index" onclick="replaceToIndex"></input>
+    <input class="action-button action-button-secondary" type="button" value="replaceUrl to index" onclick="replaceUrlToIndex"></input>
+</div>
+```
+```js
+// routerPage.js
+import router from '@ohos.router';
+
+export default {
+    data: {
+        pageName: 'Router Page',
+        tips: 'Use replace or replaceUrl to return to index.',
+        statusText: 'Current page: routerPage'
+    },
+    replaceToIndex: function() {
+        router.replace({
+            uri: 'pages/index/index',
+            params: {
+                statusText: 'Returned by router.replace.'
+            }
+        });
+    },
+    replaceUrlToIndex: function() {
+        router.replaceUrl({
+            uri: 'pages/index/index',
+            params: {
+                statusText: 'Returned by router.replaceUrl.'
+            }
+        });
+    }
+}
+```
+
+![ohos_router_web_like.gif](figures/ohosRouterWebLikeDemo.gif)
