@@ -35,7 +35,7 @@ import { AddFormMenuItem } from '@kit.ArkUI';
 ```
 ArkTS-Sta导入模块：
 ```
-import { AddFormMenuItem } from '@ohos.arkui.advanced.FormMenu'; zg+=
+import { AddFormMenuItem } from '@ohos.arkui.advanced.FormMenu';
 ```
 
 
