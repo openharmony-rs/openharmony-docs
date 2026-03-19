@@ -20,7 +20,7 @@
 
 | 名称   | 类型   | 只读 | 可选  | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| fd     | number | 否  | 否  | 资源句柄，通过[resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9)获取，也可以通过[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)获取。    |
+| fd     | number | 否  | 否  | 资源句柄，通过[resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9)获取，也可以通过[fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen)获取。    |
 | offset | number | 否  | 是  | 资源偏移量，默认值为0，需要基于预置资源的信息输入，非法值会造成音视频资源解析错误。 |
 | length | number | 否  | 是  | 资源长度，默认值为文件中从偏移量开始的剩余字节，需要基于预置资源的信息输入，非法值会造成音视频资源解析错误。 |
 
@@ -85,7 +85,7 @@ import { media } from '@kit.MediaKit';
 function printfItemDescription(obj: media.MediaDescription, key: string) {
   let property: Object = obj[key];
   console.info('audio key is ' + key); // 通过key值获取对应的value。key值具体可见MediaDescriptionKey。
-  console.info('audio value is ' + property); // 对应key值得value。其类型可为任意类型，具体key对应value的类型可参考MediaDescriptionKey。
+  console.info('audio value is ' + property); // 对应key值的value。其类型可为任意类型，具体key对应value的类型可参考MediaDescriptionKey。
 }
 
 let avPlayer: media.AVPlayer | undefined = undefined;

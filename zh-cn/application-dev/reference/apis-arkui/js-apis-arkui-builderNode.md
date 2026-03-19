@@ -37,6 +37,8 @@
 > - 其余装饰器行为未定义，不建议使用。
 >
 > - 仅支持在自定义组件中使用[Repeat](../../ui/rendering-control/arkts-new-rendering-control-repeat.md)。
+>
+> - BuilderNode对象不支持使用JSON序列化。
 
 ## 导入模块
 

@@ -1,4 +1,4 @@
-# @ohos.data.UdmfComponents(内容卡片)
+# @ohos.data.UdmfComponents (内容卡片)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->

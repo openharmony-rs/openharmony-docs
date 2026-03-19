@@ -20,7 +20,15 @@ The **NotificationSubscriber** module provides callbacks for receiving or removi
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-## onConsume
+## NotificationSubscriber
+
+Provides callback methods for subscribers to receive and cancel notifications.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+### onConsume
 
 onConsume?: (data: SubscribeCallbackData) => void
 
@@ -62,7 +70,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onCancel
+### onCancel
 
 onCancel?: (data: SubscribeCallbackData) => void
 
@@ -104,7 +112,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onUpdate
+### onUpdate
 
 onUpdate?: (data: NotificationSortingMap) => void
 
@@ -142,7 +150,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onConnect
+### onConnect
 
 onConnect?: () => void
 
@@ -182,7 +190,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onDisconnect
+### onDisconnect
 
 onDisconnect?: () => void
 
@@ -236,7 +244,7 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 notificationSubscribe.unsubscribe(subscriber, unsubscribeCallback);
 ```
 
-## onDestroy
+### onDestroy
 
 onDestroy?: () => void
 
@@ -276,7 +284,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onDoNotDisturbDateChange<sup>(deprecated)</sup>
+### onDoNotDisturbDateChange<sup>(deprecated)</sup>
 
 onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
 
@@ -321,7 +329,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onDoNotDisturbChanged<sup>11+</sup>
+### onDoNotDisturbChanged<sup>11+</sup>
 
 onDoNotDisturbChanged?: (mode: notificationManager.DoNotDisturbDate) => void
 
@@ -362,7 +370,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onEnabledNotificationChanged<sup>8+</sup>
+### onEnabledNotificationChanged<sup>8+</sup>
 
 onEnabledNotificationChanged?: (callbackData: EnabledNotificationCallbackData) => void
 
@@ -404,7 +412,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onBadgeChanged<sup>10+</sup>
+### onBadgeChanged<sup>10+</sup>
 
 onBadgeChanged?: (data: BadgeNumberCallbackData) => void
 
@@ -444,47 +452,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onBadgeEnabledChanged<sup>12+</sup>
-
-onBadgeEnabledChanged?: BadgeEnabledChangedCallback
-
-Listens for the change of the notification badge enabling state.
-
-**System capability**: SystemCapability.Notification.Notification
-
-**System API**: This is a system API.
-
-**Parameters**
-
-| Name  | Type                                                        | Mandatory| Description                      |
-| -------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| onBadgeEnabledChanged | [BadgeEnabledChangedCallback](#badgeenabledchangedcallback12) | No  | Callback used to return the change of the notification badge enabling state.|
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('subscribeCallback');
-  }
-};
-
-let BadgeEnabledChangedCallback = (data: notificationSubscribe.EnabledNotificationCallbackData) => {
-  console.info(`onBadgeEnabledChanged, badge enabled state change to: ${JSON.stringify(data)}`);
-};
-let subscriber: notificationSubscribe.NotificationSubscriber = {
-  onBadgeEnabledChanged: BadgeEnabledChangedCallback
-};
-
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
-```
-
-
-## onBatchCancel<sup>11+</sup>
+### onBatchCancel<sup>11+</sup>
 
 onBatchCancel?: (data: Array<SubscribeCallbackData\>) => void
 
@@ -526,11 +494,11 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onEnabledPriorityChanged<sup>23+</sup>
+### onEnabledPriorityChanged<sup>23+</sup>
 
 onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackData) => void
 
-Called when the enabling status of the priority notification changes.
+Called when the enabling state of the priority notification changes.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -545,7 +513,6 @@ Called when the enabling status of the priority notification changes.
 **Example**
 
 ```ts
-import { notificationSubscribe } from '@kit.NotificationKit';
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onEnabledPriorityChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationCallbackData) => {
     console.info(`onEnabledPriorityChanged: ${JSON.stringify(callbackData)}`);
@@ -558,11 +525,11 @@ try {
 }
 ```
 
-## onEnabledPriorityByBundleChanged<sup>23+</sup>
+### onEnabledPriorityByBundleChanged<sup>23+</sup>
 
 onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByBundleCallbackData) => void
 
-Called when the enabling status of the application priority notification changes.
+Called when the enabling state of the application priority notification changes.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -577,10 +544,38 @@ Called when the enabling status of the application priority notification changes
 **Example**
 
 ```ts
-import { notificationSubscribe } from '@kit.NotificationKit';
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onEnabledPriorityByBundleChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationByBundleCallbackData) => {
     console.info(`onEnabledPriorityByBundleChanged: ${JSON.stringify(callbackData)}`);
+  }
+};
+try {
+  notificationSubscribe.subscribe(subscriber);
+} catch (error) {
+  console.error("subscribe failed");
+}
+```
+
+### Attribute
+
+Callback function for notifications of system property value changes.
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type   | Read Only| Optional| Description            |
+| ------ | ------- | ---- | --- | ---------------- |
+| onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | No| Yes| Notification information that carries the system property value.|
+| onBadgeEnabledChanged | [BadgeEnabledChangedCallback](#badgeenabledchangedcallback12) | No| Yes| Returns the changes of the enabling state of the application's badge.|
+
+**Example**
+
+```ts
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onSystemUpdate: (data: notificationSubscribe.SubscribeCallbackData) => {
+    let req = data.request;
+    console.info(`onSystemUpdate callback req.priorityType: ${req.priorityNotificationType}`);
   }
 };
 try {
@@ -632,25 +627,6 @@ try {
 | instanceKey<sup>(deprecated)</sup>  | number | Yes  | Yes  | Key value of an application instance. This parameter is supported since API version 12 and deprecated since API version 15. You are advised to use **appInstanceKey** instead.  |
 | appInstanceKey<sup>15+</sup>  | string | Yes  | Yes  | Key value of an application instance.  |
 
-
-## BadgeEnabledChangedCallback<sup>12+</sup>
-
-### (data: EnabledNotificationCallbackData)<sup>12+</sup>
-
-(data: EnabledNotificationCallbackData): void
-
-Defines a callback function to listen for the enabling status changes of the application badge.
-
-**System capability**: SystemCapability.Notification.Notification
-
-**System API**: This is a system API.
-
-**Parameters**
-
-| Name       | Type  | Mandatory| Description    |
-| --------- | ------ | ---- | ------------ |
-| data        | [EnabledNotificationCallbackData](#enablednotificationcallbackdata8) | Yes   |   Callback used to return the listened badge enabling state.|
-
 ## EnabledPriorityNotificationCallbackData<sup>23+</sup>
 
 **System capability**: SystemCapability.Notification.Notification
@@ -672,3 +648,74 @@ Defines a callback function to listen for the enabling status changes of the app
 | bundle      | string | Yes  | No  | Bundle name of the application.|
 | uid         | number | Yes  | No  | UID of the application. |
 | enableStatus | [PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | Yes | No | Whether the priority notification for an application is enabled.<br> - **DISABLE**: The priority notification is disabled.<br> - **ENABLE_BY_INTELLIGENT**: The priority notification can be enabled through intelligent recognition, user keyword matching, or application rule matching.<br> - **ENABLE**: The priority notification is enabled for all applications.|
+
+## BadgeEnabledChangedCallback<sup>12+</sup>
+
+type BadgeEnabledChangedCallback = (data: EnabledNotificationCallbackData) => void
+
+Defines a callback function to listen for the enabling state changes of the application badge.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name       | Type  | Mandatory| Description    |
+| --------- | ------ | ---- | ------------ |
+| data        | [EnabledNotificationCallbackData](#enablednotificationcallbackdata8) | Yes   |   Callback used to return the listened badge enabling state.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subscribeCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('subscribeCallback');
+  }
+};
+
+let BadgeEnabledChangedCallback = (data: notificationSubscribe.EnabledNotificationCallbackData) => {
+  console.info(`onBadgeEnabledChanged, badge enabled state change to: ${JSON.stringify(data)}`);
+};
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onBadgeEnabledChanged: BadgeEnabledChangedCallback
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+```
+
+## SystemUpdateCallback<sup>23+</sup>
+
+type SystemUpdateCallback = (data: SubscribeCallbackData) => void
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name      | Type  | Mandatory| Description        |
+| ----------- | ------ | ---- | ------------ |
+| data | [SubscribeCallbackData](#subscribecallbackdata) | Yes| Notification information that carries the system property value.|
+
+**Example**
+
+```ts
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onSystemUpdate: (data: notificationSubscribe.SubscribeCallbackData) => {
+    let req = data.request;
+    console.info(`onSystemUpdate callback req.priorityType:: ${req.priorityNotificationType}`);
+  }
+};
+try {
+  notificationSubscribe.subscribe(subscriber);
+} catch (error) {
+  console.error("subscribe failed");
+}
+```
