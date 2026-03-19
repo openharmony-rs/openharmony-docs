@@ -10631,7 +10631,7 @@ startDownloadSpecificCloudMedia(assetUris: string[], taskSequence?: number): Pro
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
 | assetUris | string[] | 是   | 需要下载的原图和视频的uri列表。 |
-| taskSequence | number | 否   | 应用设置的序号，值应大于等于0。默认值为0。 <br> 从API Version 26开始，支持taskSequence参数。 |
+| taskSequence | number | 否   | 应用设置的序号，值应大于等于0。默认值为0。 <br> **起始版本：** 26.0.0 |
 
 **返回值：**
 
