@@ -10946,7 +10946,7 @@
 						"start_line":34
 					},
 					{
-						"end_line":67,
+						"end_line":69,
 						"name":"set_gestures",
 						"start_line":50
 					},
@@ -10961,7 +10961,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets",
 				"functions":[
 					{
-						"end_line":78,
+						"end_line":82,
 						"name":"custom_gestures",
 						"start_line":15
 					}
