@@ -6629,16 +6629,15 @@ getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[BundleNoti
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let TAG = 'testTag';
 let bundles = [
   { bundle:"com.example.test01", } as notificationManager.BundleOption,
   { bundle:"com.example.test02", } as notificationManager.BundleOption
 ];
 notificationManager.getNotificationStatisticsByBundle(bundles).then(
    (data: notificationManager.BundleNotificationStatistics[]) => {
-     console.info(`${TAG} getNotificationStatisticsByBundle data: ${JSON.stringify(data)}`)
+     console.info(`getNotificationStatisticsByBundle success.`)
    }).catch((err: BusinessError):void => {
-     console.info(`${TAG} getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
+     console.error(`getNotificationStatisticsByBundle failed, code is ${err.code}, message is ${err.message}`);
    });
 ```
 
@@ -6889,8 +6888,8 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
-| lastTime | number | 否 | 否 | 最近收到通知的时间。数据格式：时间戳。单位：ms |
-| recentCount | number | 否 | 否 | 最近7天通知的总量。 |
+| lastTime | number | 否 | 否 | 最近收到通知的时间。数据格式：时间戳。单位：ms。 |
+| recentCount | number | 否 | 否 | 应用最近7天发布的通知总量。 |
 
 ## PriorityNotificationType<sup>23+</sup>
 
