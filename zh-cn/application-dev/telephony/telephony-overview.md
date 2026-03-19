@@ -1,4 +1,10 @@
 # Telephony Kit简介
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 Telephony Kit（蜂窝通信服务）提供一系列API帮助开发者开发通信类应用，包括：
 
