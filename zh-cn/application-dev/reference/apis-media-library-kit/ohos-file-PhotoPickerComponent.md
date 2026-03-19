@@ -25,7 +25,7 @@ import {
   DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType,
   MaxCountType, PhotoBrowserRange, PhotoBrowserUIElement,
   ItemsDeletedCallback, ExceedMaxSelectedCallback, CurrentAlbumDeletedCallback, SingleLineConfig,
-    BadgeConfig, PreselectedInfo, SaveMode, BadgeType, VideoPlayerState, ItemDisplayRatio
+  BadgeConfig, PreselectedInfo, SaveMode, BadgeType, VideoPlayerState, ItemDisplayRatio
 } from '@kit.MediaLibraryKit';
 ```
 
