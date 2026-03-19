@@ -31,8 +31,8 @@
 | [int OH_WebSocketClient_AddHeader(struct WebSocket *client, struct WebSocket_Header header)](#oh_websocketclient_addheader) | 将header头信息添加到client客户端request中。 |
 | [int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct WebSocket_RequestOptions options)](#oh_websocketclient_connect) | 客户端连接服务端。 |
 | [int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)](#oh_websocketclient_send) | 客户端向服务端发送数据。 |
-| [int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOption options)](#oh_websocketclient_close) | 客户端主动关闭webSocket连接。 |
-| [int OH_WebSocketClient_Destroy(struct WebSocket *client)](#oh_websocketclient_destroy) | 释放websocket连接上下文和资源。 |
+| [int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOption options)](#oh_websocketclient_close) | 客户端主动关闭WebSocket连接。 |
+| [int OH_WebSocketClient_Destroy(struct WebSocket *client)](#oh_websocketclient_destroy) | 释放WebSocket连接上下文和资源。 |
 
 ## 函数说明
 
@@ -164,7 +164,7 @@ int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOpt
 
 **描述**
 
-客户端主动关闭webSocket连接。
+客户端主动关闭WebSocket连接。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
