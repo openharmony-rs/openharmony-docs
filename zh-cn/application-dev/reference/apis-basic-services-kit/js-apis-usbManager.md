@@ -1066,7 +1066,7 @@ ArkTS-Sta: closePipe(pipe: USBDevicePipe): int
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: number<br> ArkTS-Sta: int  | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其他错误码如下：<br>- 5：数据量超过预期的最大值。<br>- -1：调用底层接口失败。 |
+| ArkTS-Dyn: number<br> ArkTS-Sta: int  | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其他错误码如下：<br>- -22：服务异常。<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。<br>关闭设备消息控制通道成功返回1；关闭设备消息控制通道失败返回0。<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。|
 
 **错误码：**
 
