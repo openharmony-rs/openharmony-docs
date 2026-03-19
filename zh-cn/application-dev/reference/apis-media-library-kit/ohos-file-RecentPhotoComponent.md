@@ -146,16 +146,18 @@ type RecentPhotoCheckInfoCallback = (recentPhotoExists: boolean, info: RecentPho
 ```ts
 // xxx.ets
 import {
-  photoAccessHelper,
-   RecentPhotoComponent, 
-   RecentPhotoOptions, 
-   PhotoSource, 
-   RecentPhotoCheckResultCallback, 
-   RecentPhotoClickCallback, 
-   RecentPhotoInfo,
-   RecentPhotoCheckInfoCallback,
-   BaseItemInfo
+  RecentPhotoComponent, 
+  RecentPhotoOptions, 
+  PhotoSource, 
+  RecentPhotoCheckResultCallback, 
+  RecentPhotoClickCallback, 
+  RecentPhotoInfo,
+  RecentPhotoCheckInfoCallback,
 } from '@ohos.file.RecentPhotoComponent';
+import {
+  photoAccessHelper,
+  BaseItemInfo
+} from '@kit.MediaLibraryKit'
 
 @Entry
 @Component
