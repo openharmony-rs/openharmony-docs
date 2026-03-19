@@ -20,10 +20,10 @@ Defines the notification flags.
 
 | Name            | Type                   | Read Only| Optional| Description                                        |
 | ---------------- | ---------------------- | ---- | -----|-------------------------------------------- |
-| soundEnabled     | [NotificationFlagStatus](#notificationflagstatus11) | No | Yes| Settings of sound for the notification. This parameter becomes writable starting from API version 23. Only [TYPE_CLOSE](#notificationflagstatus11) takes effect.   |
-| vibrationEnabled | [NotificationFlagStatus](#notificationflagstatus11) | No | Yes| Settings of vibration for the notification. This parameter becomes writable starting from API version 23. Only [TYPE_CLOSE](#notificationflagstatus11) takes effect.|
-| bannerEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | No | Yes| Settings of banner for the notification. Only [TYPE_CLOSE](#notificationflagstatus11) takes effect.|
-| lockScreenEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | No | Yes| Settings of screen lock for the notification. Only [TYPE_CLOSE](#notificationflagstatus11) takes effect.|
+| soundEnabled     | [NotificationFlagStatus](#notificationflagstatus11) | No | Yes| Settings of sound for the notification. The default value is **TYPE_NONE**. This parameter becomes writable starting from API version 23. Only [TYPE_CLOSE](#notificationflagstatus11) takes effect.   |
+| vibrationEnabled | [NotificationFlagStatus](#notificationflagstatus11) | No | Yes| Settings of vibration for the notification. The default value is **TYPE_NONE**. This parameter becomes writable starting from API version 23. Only [TYPE_CLOSE](#notificationflagstatus11) takes effect.|
+| bannerEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | No | Yes| Settings of banner for the notification. The default value is **TYPE_NONE**. Only [TYPE_CLOSE](#notificationflagstatus11) takes effect.|
+| lockScreenEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | No | Yes| Settings of screen lock for the notification. The default value is **TYPE_NONE**. Only [TYPE_CLOSE](#notificationflagstatus11) takes effect.|
 
 
 ## NotificationFlagStatus<sup>11+</sup>

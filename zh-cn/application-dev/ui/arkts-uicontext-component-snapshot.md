@@ -186,7 +186,7 @@ static async mergeImage(areaArray: image.PositionArea[], lastOffsetY: number, li
       longPixelMap.writePixelsSync(area);
     } catch (err) {
       let error = err as BusinessError;
-      Logger.error(TAG, `writePixelsSync err, code: ${error.code}, mesage: ${error.message}`);
+      Logger.error(TAG, `writePixelsSync err, code: ${error.code}, message: ${error.message}`);
     }
   }
   return longPixelMap;
@@ -242,7 +242,7 @@ async saveSnapshot(result: SaveButtonOnClickResult): Promise<void> {
     // ...
   } catch (err) {
     let error = err as BusinessError;
-    Logger.error(TAG, `saveSnapshot err, errCode: ${error.code}, error mesage: ${error.message}`);
+    Logger.error(TAG, `saveSnapshot err, errCode: ${error.code}, error message: ${error.message}`);
   }
 }
 ```

@@ -1426,7 +1426,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 ## Screen
 
-屏幕实例。
+[物理屏](../../displaymanager/display-terminology.md#物理屏)屏幕实例。
 
 下列API示例中都需先使用[getAllScreens()](#screengetallscreens)、[createVirtualScreen()](#screencreatevirtualscreen)中的任一方法获取到Screen实例，再通过此实例调用对应方法。
 

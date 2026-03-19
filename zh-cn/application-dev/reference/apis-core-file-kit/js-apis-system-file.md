@@ -28,7 +28,7 @@ move(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.moveFile](js-apis-file-fs.md#fsmovefile)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.moveFile](js-apis-file-fs.md#fileiomovefile)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -77,7 +77,7 @@ copy(Object): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.copyFile](js-apis-file-fs.md#fscopyfile)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -127,7 +127,7 @@ list(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.listFile](js-apis-file-fs.md#fslistfile)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.listFile](js-apis-file-fs.md#fileiolistfile)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -190,7 +190,7 @@ get(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.stat](js-apis-file-fs.md#fsstat)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.stat](js-apis-file-fs.md#fileiostat)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -249,7 +249,7 @@ delete(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.unlink](js-apis-file-fs.md#fsunlink)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.unlink](js-apis-file-fs.md#fileiounlink)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -297,7 +297,7 @@ writeText(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.write](js-apis-file-fs.md#fswrite)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.write](js-apis-file-fs.md#fileiowrite)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -348,7 +348,7 @@ writeArrayBuffer(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.write](js-apis-file-fs.md#fswrite)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.write](js-apis-file-fs.md#fileiowrite)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -378,7 +378,7 @@ export default {
   writeArrayBuffer() {       
     file.writeArrayBuffer({           
       uri: 'internal://app/test',           
-      buffer: new Uint8Array(8), //buffer为Uint8Array类型           
+      buffer: new Uint8Array(8), // buffer为Uint8Array类型
       success: function() {                
         console.info('call writeArrayBuffer success.');            
       },           
@@ -399,7 +399,7 @@ readText(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.readText](js-apis-file-fs.md#fsreadtext)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.readText](js-apis-file-fs.md#fileioreadtext)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -457,7 +457,7 @@ readArrayBuffer(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.read](js-apis-file-fs.md#fsread)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.read](js-apis-file-fs.md#fileioread)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -515,7 +515,7 @@ access(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.access](js-apis-file-fs.md#fsaccess)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.access](js-apis-file-fs.md#fileioaccess)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -563,7 +563,7 @@ mkdir(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.mkdir](js-apis-file-fs.md#fsmkdir)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.mkdir](js-apis-file-fs.md#fileiomkdir)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -611,7 +611,7 @@ rmdir(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.rmdir](js-apis-file-fs.md#fsrmdir)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.rmdir](js-apis-file-fs.md#fileiormdir)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
