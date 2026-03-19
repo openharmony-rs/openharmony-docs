@@ -278,8 +278,8 @@ export default class EntryAbility extends UIAbility {
 下面举例说明在不同时机使用静态方法替换全局接口的方法。
 
 使用全局接口：
-<!--deprecated_code_no_check-->
 
+<!--deprecated_code_no_check-->
 ``` TypeScript
 // entryability/EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -347,6 +347,7 @@ struct Index {
 
 <!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
+<!--deprecated_code_no_check-->
 ``` TypeScript
 // entryability/EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
