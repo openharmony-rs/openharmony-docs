@@ -5654,3 +5654,19 @@ Allows a system application to modify the spam shield settings.
 **Supported devices**: Phone | PC/2in1 | Tablet
 
 **Valid since**: 26.0.0
+
+## ohos.permission.EXEMPT_MOTION_SENSORS_RESTRICTION
+
+Allows an application to bypass sensor controls.
+
+With the permission, the application can always use sensors.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 24
