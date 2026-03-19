@@ -127,7 +127,7 @@ enum Input_KeyCode
 | KEYCODE_RIGHT_BRACKET = 2060 | 按键']' |
 | KEYCODE_BACKSLASH = 2061 | 按键'\\' |
 | KEYCODE_SEMICOLON = 2062 | 按键';' |
-| KEYCODE_APOSTROPHE = 2063 | 按键'\'' (单引号) |
+| KEYCODE_APOSTROPHE = 2063 | 按键''' (单引号) |
 | KEYCODE_SLASH = 2064 | 按键'/' |
 | KEYCODE_AT = 2065 | 按键'@' |
 | KEYCODE_PLUS = 2066 | 按键'+' |
