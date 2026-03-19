@@ -231,7 +231,11 @@ getTreeListener(): TreeListener
 
 ### on
 
+ArkTS-Dyn:
 on(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void;
+
+ArkTS-Sta:
+on(type: TreeListenType, callback: OnChangedCallback): void;
 
 注册监听。
 
@@ -246,12 +250,16 @@ on(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): v
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | 是 | 监听类型。 |
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 是 | 节点信息。 |
+| callback | ArkTS-Dyn: (callbackParam: [CallbackParam](#callbackparam)) =&gt; void <br/>ArkTS-Sta: [OnChangedCallback](#onchangedcallback) | 是 | 节点信息。 |
 
 
 ### once
 
+ArkTS-Dyn:
 once(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void;
+
+ArkTS-Sta:
+once(type: TreeListenType, callback: OnChangedCallback): void;
 
 注册一次监听。
 
@@ -266,13 +274,16 @@ once(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void):
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | 是 | 监听类型。 |
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 是 | 节点信息。 |
+| callback | ArkTS-Dyn: (callbackParam: [CallbackParam](#callbackparam)) =&gt; void <br/>ArkTS-Sta: [OnChangedCallback](#onchangedcallback) | 是 | 节点信息。 |
 
 
 ### off
 
-
+ArkTS-Dyn:
 off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void): void;
+
+ArkTS-Sta:
+off(type: TreeListenType, callback?: OnChangedCallback): void;
 
 取消监听。
 
@@ -287,7 +298,7 @@ off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void):
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | 是 | 监听类型。 |
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 否 | 节点信息。 |
+| callback | ArkTS-Dyn: (callbackParam: [CallbackParam](#callbackparam)) =&gt; void <br/>ArkTS-Sta: [OnChangedCallback](#onchangedcallback) | 否 | 节点信息。 |
 
 ## TreeListenType
 
@@ -322,6 +333,24 @@ off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void):
 | currentNodeId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 返回当前子节点id。<br />取值范围：大于等于0。              |
 | parentNodeId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 返回当前父节点id。<br />取值范围：大于等于-1。<br />默认值：-1 |
 | childIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 返回子索引。<br />取值范围：大于等于-1。<br />默认值：-1   |
+
+## OnChangedCallback<sup>23+</sup>
+
+type OnChangedCallback = (callbackParam: CallbackParam) => void;
+
+监听树节点的变化时的回调事件。回调函数的参数为树节点相关信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型  | 必填 | 说明                       |
+| ------ | ------ | ---- | -------------------------- |
+| callbackParam| [CallbackParam](#callbackparam) | 是   | 树节点相关信息。 |
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。
