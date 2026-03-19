@@ -22,7 +22,7 @@ OpenHarmony提供了两种打印方式：
 > c++接口需要在NDK工程中使用，请参考[NDK开发导读](../../napi/ndk-development-overview.md)。
 
 ### 步骤1. 引用NDK头文件
-初始路径为entry/src/main/cpp/types/napi_init.cpp # C++ 源码目录 NAPI 初始化入口（桥接 ArkTS 与 C++）
+初始路径为entry/src/main/cpp/types/napi_init.cpp # C++ 源码目录 NAPI 初始化入口（桥接 ArkTS 与 C++）。
 ```c++
 #include "hilog/log.h"
 #include "napi/native_api.h"
@@ -34,7 +34,7 @@ OpenHarmony提供了两种打印方式：
 #define LOGI(...) OH_LOG_INFO(LOG_APP, ##__VA_ARGS__)
 ```
 
-初始路径为entry/src/main/ets/pages/Index.ets # ArkTS 源码目录 主页面
+初始路径为entry/src/main/ets/pages/Index.ets # ArkTS 源码目录主页面。
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { testNapi } from 'libentry.so';
@@ -48,7 +48,7 @@ class HiLog {
 ```
 
 ### 步骤2. 在CMake脚本中添加动态链接库
-初始路径为entry/src/main/cpp/types/CMakeLists.txt # C++ 源码目录 CMake 构建配置
+初始路径为entry/src/main/cpp/types/CMakeLists.txt # C++ 源码目录 CMake 构建配置。
 ```cmake
 target_link_libraries(entry PUBLIC
     libace_napi.z.so
@@ -60,7 +60,7 @@ target_link_libraries(entry PUBLIC
 ### 步骤3. 绑定页面和打印服务生命周期
 建议将打印服务初始化和释放与使用系统打印能力的页面的生命周期绑定。
 
-包装c++接口
+包装c++接口。
 ```c++
 // napi_init.cpp
 
@@ -273,7 +273,7 @@ static napi_value Init(napi_env env, napi_value exports)
 EXTERN_C_END
 ```
 
-主页上新增一个按钮，单击调用c++的nativeStartPrintByNative接口拉起打印预览界面
+主页上新增一个按钮，单击调用c++的nativeStartPrintByNative接口拉起打印预览界面。
 ```ts
 // Index.ets
 
