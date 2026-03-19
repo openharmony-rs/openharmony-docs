@@ -802,7 +802,7 @@ class ClassTest{
 
 不支持class中static和instance变量重名的混淆，需要手动keep，或重命名变量
 
- <!-- @[staticArkGuardExample_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) --> 
+ <!-- @[staticArkGuardExample_classTest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) --> 
 ```typescript
 //StaticDemo.ets
 class ClassTest{
