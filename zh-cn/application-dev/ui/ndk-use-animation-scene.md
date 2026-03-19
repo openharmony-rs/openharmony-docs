@@ -38,7 +38,7 @@
    }
    ```
 
-2. 解析NodeContent，转换为C中的[ArkUI_NodeContentHandle](../reference/apis-arkui/capi-native-node-h.md)对象。
+2. 解析NodeContent，转换为C中的[ArkUI_NodeContentHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodecontent8h.md)对象。
 
    <!-- @[get_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/NativeEntry.cpp) -->
    
@@ -53,7 +53,7 @@
    <!-- @[get_Api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
    
    ``` C
-   // 获取ArkUI_NativeAnimateAPI接口
+   // 获取ArkUI_NativeAnimateAPI_1接口
    ArkUI_NativeAnimateAPI_1 *animateApi = nullptr;
    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
    ```
@@ -139,7 +139,7 @@
 
 该示例主要演示了如何通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md)中的NODE_ROTATE_TRANSITION，NODE_SCALE_TRANSITION，NODE_TRANSLATE_TRANSITION属性配置转场参数，并通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md)中的NODE_TRANSFORM_CENTER属性设置NODE_SCALE_TRANSITION和NODE_ROTATE_TRANSITION动效的中心点坐标，实现组件的插入和删除时显示过渡动效。
 
-1. 创建可交互界面，界面中包含一个Button组件，点击可以控制转场节点的添加和移除。其中[ArkUI_NodeContentHandle](../reference/apis-arkui/capi-native-node-h.md)类型节点的获取与使用可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
+1. 创建可交互界面，界面中包含一个Button组件，点击可以控制转场节点的添加和移除。其中[ArkUI_NodeContentHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodecontent8h.md)类型节点的获取与使用可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
 
    <!-- @[main_view_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
    
@@ -203,6 +203,8 @@
        nodeAPI->addChild(columnMain, column);
        nodeAPI->addChild(column, buttonShow);
        // ...
+       OH_ArkUI_NodeContent_AddNode(handle, columnMain);
+   }
    ```
 
 2. 创建一个设置了[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md)中的NODE_ROTATE_TRANSITION，NODE_SCALE_TRANSITION属性的节点，当目标节点上下树时会播放转场动画。
@@ -382,7 +384,7 @@
    }
    ```
 
-3. 在stack的OnImageTransitionClicked监听回调函数中添加两个节点的上下树逻辑，控制节点的上下树，确保同时只有一个节点存在，同时，当其中一个节点挂载到父节点时需要重置[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md)中的NODE_GEOMETRY_TRANSITION属性的值，并重新传入相同的值。
+3. 在stack的OnImageTransitionClicked监听回调函数中添加两个节点的上下树逻辑，控制节点的上下树，确保同时只有一个节点存在，同时，当其中一个节点挂载到父节点时需要重置[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md)中的NODE_GEOMETRY_TRANSITION属性的值，并重新设置为原来的值。
 
    <!-- @[imageTransition_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
    
@@ -434,7 +436,7 @@
    }
    ```
 
-![zh-cn_image_one_shot_transition](figures/zh-cn_image_one_shot_transition.gif)
+   ![zh-cn_image_one_shot_transition](figures/zh-cn_image_one_shot_transition.gif)
 
 ## 使用关键帧动画
 
@@ -456,26 +458,26 @@
    textNode->SetWidth(NUM_120);
    // 设置高度为120，NUM_120 = 120
    textNode->SetHeight(NUM_50);
-   // 创建button，后续创建的关键帧动画作用在button组件上
+   // 创建Button，后续创建的关键帧动画作用在Button组件上
    auto button = std::make_shared<ArkUIButtonNode>();
-   // 设置button初始宽高，NUM_100 = 100
+   // 设置Button初始宽高，NUM_100 = 100
    button->SetWidth(NUM_100);
    button->SetHeight(NUM_100);
-   // 存储button全局变量，在onTouch注册时需要使用
+   // 存储Button全局变量，在onTouch注册时需要使用
    g_keyframe_button = button;
-   // 注册点击事件到button上，NUM_1 = 1
+   // 注册点击事件到Button上，NUM_1 = 1
    button->RegisterNodeEvent(button->GetHandle(), NODE_ON_CLICK, NUM_1, nullptr);
    g_keyframe_text = std::make_shared<ArkUITextNode>();
-   // 该函数为封装功能为在text组件中打印Animateto中参数值，使用者根据需要自行封装
+   // 此函数用于封装Text组件中打印Animateto参数值的功能，使用者根据需要自行封装
    g_keyframe_text->KeyframeAnimatetoToString();
    auto onTouch = [](ArkUI_NodeEvent *event) {
-       // 点击button按钮时触发该逻辑，NUM_1 = 1
+       // 点击Button按钮时触发该逻辑，NUM_1 = 1
        if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_1) {
            // 获取context对象
            ArkUI_ContextHandle context = nullptr;
-           // std::shared_ptr<ArkUIButtonNode> g_keyframe_button存储button的全局变量，在onTouch注册时需要使用
+           // std::shared_ptr<ArkUIButtonNode> g_keyframe_button存储Button的全局变量，在onTouch注册时需要使用
            context = OH_ArkUI_GetContextByNode(g_keyframe_button->GetHandle());
-           // 获取ArkUI_NativeAnimateAPI接口
+           // 获取ArkUI_NativeAnimateAPI_1接口
            ArkUI_NativeAnimateAPI_1 *animateApi = nullptr;
            OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
                
@@ -545,7 +547,7 @@
    };
    // 注册点击事件的回调函数
    button->RegisterNodeEventReceiver(onTouch);
-   // 将button挂载在column上，返回column节点
+   // 将Button挂载在column上，返回column节点
    column->AddChild(g_keyframe_text);
    column->AddChild(textNode);
    column->AddChild(button);
@@ -568,29 +570,29 @@
        // 创建文本节点，内容区介绍“这是animator动画”
        auto textNode = std::make_shared<ArkUITextNode>();
        textNode->SetTextContent("这是animator动画");
-       textNode->SetWidth(NUM_120); // NUM_120 = 120
+       textNode->SetWidth(NUM_150); // NUM_150 = 150
        textNode->SetHeight(NUM_50); // NUM_50 = 50
        // 创建createButton，用于初始化animator参数
        auto createButton = std::make_shared<ArkUIButtonNode>();
-       // 创建button，后续创建的animator动画作用在button组件上
+       // 创建Button，后续创建的animator动画作用在Button组件上
        auto button = std::make_shared<ArkUIButtonNode>();
-       // 设置button初始宽高，NUM_100 = 100
+       // 设置Button初始宽高，NUM_100 = 100
        button->SetWidth(NUM_100);
        button->SetHeight(NUM_100);
-       // 存储button全局变量，在onTouch注册时需要使用
+       // 存储Button全局变量，在onTouch注册时需要使用
        g_animator_button = button;
-       // 注册点击事件到button上，NUM_3 = 3
+       // 注册点击事件到Button上，NUM_3 = 3
        createButton->RegisterNodeEvent(createButton->GetHandle(), NODE_ON_CLICK, NUM_3, nullptr);
        g_animator_text = std::make_shared<ArkUITextNode>();
        g_animator_text->AnimatorToString();
        auto onTouch = [](ArkUI_NodeEvent *event) {
-           // 点击button按钮时触发该逻辑，NUM_3 = 3
+           // 点击Button按钮时触发该逻辑，NUM_3 = 3
            if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_3) {
                // 获取context对象
                static ArkUI_ContextHandle context = nullptr;
                context = OH_ArkUI_GetContextByNode(g_animator_button->GetHandle());
    
-               // 获取ArkUI_NativeAnimateAPI接口
+               // 获取ArkUI_NativeAnimateAPI_1接口
                ArkUI_NativeAnimateAPI_1 *animateApi = nullptr;
                OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
                
@@ -654,7 +656,7 @@
        // 注册点击事件的回调函数
        createButton->RegisterNodeEventReceiver(onTouch);
        createButton->SetButtonLabel("create");
-       // 创建容器，用于存放button按键
+       // 创建容器，用于存放Button按键
        auto buttoColumn = std::make_shared<ArkUIColumnNode>();
        buttoColumn->SetPadding(NUM_30, false); // 设置布局格式，调整组件内间距，NUM_30 = 30
        buttoColumn->SetWidth(NUM_300); // NUM_300 = 300
@@ -667,7 +669,7 @@
        playButton->SetButtonLabel("play");
        playButton->RegisterNodeEvent(playButton->GetHandle(), NODE_ON_CLICK, NUM_4, nullptr);
        auto onTouchPlay = [](ArkUI_NodeEvent *event) {
-           // 点击button按钮时触发该逻辑，NUM_4 = 4
+           // 点击Button按钮时触发该逻辑，NUM_4 = 4
            if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_4) {
                OH_ArkUI_Animator_Play(animatorHandle);
            }
@@ -678,7 +680,7 @@
        finishButton->SetButtonLabel("finish");
        finishButton->RegisterNodeEvent(finishButton->GetHandle(), NODE_ON_CLICK, NUM_5, nullptr); // NUM_5 = 5
        auto onTouchFinish = [](ArkUI_NodeEvent *event) {
-           // 点击button按钮时触发该逻辑，NUM_5 = 5
+           // 点击Button按钮时触发该逻辑，NUM_5 = 5
            if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_5) {
                OH_ArkUI_Animator_Finish(animatorHandle);
            }
@@ -693,7 +695,7 @@
        resetButton->SetButtonLabel("reset");
        resetButton->RegisterNodeEvent(resetButton->GetHandle(), NODE_ON_CLICK, NUM_6, nullptr); // NUM_6 = 6
        auto onTouchReset = [](ArkUI_NodeEvent *event) {
-           // 点击button按钮时触发该逻辑，NUM_6 = 6
+           // 点击Button按钮时触发该逻辑，NUM_6 = 6
            if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_6) {
                static ArkUI_AnimatorOption *option =  OH_ArkUI_AnimatorOption_Create(NUM_0); // Animator动画状态数
                OH_ArkUI_AnimatorOption_SetDuration(option, NUM_1000); // NUM_1000 = 1000
@@ -720,7 +722,7 @@
        pauseButton->SetButtonLabel("pause");
        pauseButton->RegisterNodeEvent(pauseButton->GetHandle(), NODE_ON_CLICK, NUM_7, nullptr); // NUM_7 = 7
        auto onTouchPause = [](ArkUI_NodeEvent *event) {
-           // 点击button按钮时触发该逻辑，NUM_7 = 7
+           // 点击Button按钮时触发该逻辑，NUM_7 = 7
            if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_7) {
                OH_ArkUI_Animator_Pause(animatorHandle);
            }
@@ -735,7 +737,7 @@
        cancelButton->SetButtonLabel("cancel");
        cancelButton->RegisterNodeEvent(cancelButton->GetHandle(), NODE_ON_CLICK, NUM_8, nullptr); // NUM_8 = 8
        auto onTouchCancel = [](ArkUI_NodeEvent *event) {
-           // 点击button按钮时触发该逻辑，NUM_8 = 8
+           // 点击Button按钮时触发该逻辑，NUM_8 = 8
            if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_8) {
                OH_ArkUI_Animator_Cancel(animatorHandle);
            }
@@ -746,13 +748,13 @@
        reverseButton->SetButtonLabel("reverse");
        reverseButton->RegisterNodeEvent(reverseButton->GetHandle(), NODE_ON_CLICK, NUM_9, nullptr);
        auto onTouchReverse = [](ArkUI_NodeEvent *event) {
-           // 点击button按钮时触发该逻辑，NUM_9 = 9
+           // 点击Button按钮时触发该逻辑，NUM_9 = 9
            if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_9) {
                OH_ArkUI_Animator_Reverse(animatorHandle);
            }
        };
        reverseButton->RegisterNodeEventReceiver(onTouchReverse);
-       // 将button挂载在column上，返回column节点
+       // 将Button挂载在column上，返回column节点
        column->AddChild(g_animator_text);
        column->AddChild(textNode);
        column->AddChild(button);
