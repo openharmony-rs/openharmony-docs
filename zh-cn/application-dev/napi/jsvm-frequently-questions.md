@@ -121,7 +121,7 @@
 
       c) 若使用任务队列来进行js任务执行，出现了先抛出destory env的任务，后抛出普通js任务的情况，此时也可能导致该报错。针对这个情况，可以参考a情况做法，为JSVM实例添加flag，若任务取出时flag为true，则队列中剩余的任务需要全部跳过。
       
-      如需获取更详细信息，请参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process)
+      如需获取更详细信息，请参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)
 
 ## JSVM-API执行失败类
 
