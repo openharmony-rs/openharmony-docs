@@ -740,7 +740,7 @@ ArkTS-Sta中使用ArkTS-Dyn的ColorFilter对象。
   ```
   ![image](figures/colorFilterTransferSta.png)
 
-## PageMapBuilder<sup>22+</sup>
+## PageMapBuilder<sup>23+</sup>
 
 type PageMapBuilder = @Builder ((name: string, param: Object | null | undefined) => void)
 
@@ -750,7 +750,7 @@ Navigation路由的构造方式类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

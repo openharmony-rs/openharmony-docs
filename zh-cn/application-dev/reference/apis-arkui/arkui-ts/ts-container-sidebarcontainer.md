@@ -62,7 +62,7 @@ SideBarContainer(type?: SideBarContainerType)
 
 ArkTS-Dyn: showSideBar(value: boolean): SideBarContainerAttribute
 
-ArkTS-Sta: showSideBar(value: boolean | Bindable<boolean> | undefined): this
+ArkTS-Sta: showSideBar(value: boolean | Bindable<boolean> | undefined)
 
 设置是否显示侧边栏。
 
@@ -88,7 +88,7 @@ ArkTS-Sta：该属性支持双向绑定变量。
 
 ArkTS-Dyn: controlButton(value: ButtonStyle): SideBarContainerAttribute
 
-ArkTS-Sta: controlButton(value: ButtonStyle | undefined): this
+ArkTS-Sta: controlButton(value: ButtonStyle | undefined)
 
 设置侧边栏控制按钮的属性。
 
@@ -110,7 +110,7 @@ ArkTS-Sta: controlButton(value: ButtonStyle | undefined): this
 
 ArkTS-Dyn: showControlButton(value: boolean): SideBarContainerAttribute
 
-ArkTS-Sta: showControlButton(value: boolean | undefined): this
+ArkTS-Sta: showControlButton(value: boolean | undefined)
 
 设置是否显示控制按钮。
 
@@ -178,7 +178,7 @@ sideBarWidth(value: Length): SideBarContainerAttribute
 
 ### sideBarWidth<sup>23+</sup>
 
-sideBarWidth(value: Length | Bindable<Length> | undefined): this
+sideBarWidth(value: Length | Bindable<Length> | undefined)
 
 设置侧边栏的宽度。设置为小于0的值时按默认值显示。受最小宽度和最大宽度限制，不在限制区域内取最近的点。
 
@@ -248,7 +248,7 @@ minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时
 
 ### minSideBarWidth<sup>23+</sup>
 
-minSideBarWidth(value: Length | undefined): this
+minSideBarWidth(value: Length | undefined)
 
 设置侧边栏最小宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。
 
@@ -318,7 +318,7 @@ maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时
 
 ### maxSideBarWidth<sup>23+</sup>
 
-maxSideBarWidth(value: Length | undefined): this
+maxSideBarWidth(value: Length | undefined)
 
 设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。
 
@@ -522,9 +522,9 @@ minContentWidth优先于侧边栏的maxSideBarWidth与sideBarWidth属性，minCo
 
 ### onChange
 
-ArkTS-Dyn: onChange(callback: (value: boolean) => void): SideBarContainerAttribute
+ArkTS-Dyn: onChange(callback: (value: boolean) => void)
 
-ArkTS-Sta: onChange(callback: ((value: boolean) => void) | undefined): this
+ArkTS-Sta: onChange(callback: ((value: boolean) => void) | undefined)
 
 当侧边栏的状态在显示和隐藏之间切换时触发回调。
 
