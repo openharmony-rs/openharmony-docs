@@ -92,11 +92,11 @@ Invalid size of eap data.
 
 **错误描述**
 
-不合法的eap数据长度值。
+不合法的EAP数据长度值。
 
 **可能原因**
 
-传入的eap数据长度与EapData中的bufferLen不相等。
+传入的EAP数据长度与EapData中的bufferLen不相等。
 
 **处理步骤**
 

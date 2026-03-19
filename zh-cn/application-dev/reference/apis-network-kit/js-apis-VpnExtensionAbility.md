@@ -45,7 +45,7 @@ onCreate(want: Want): void
 
 | 参数名  | 类型                                       | 必填   | 说明             |
 | ---- | ---------------------------------------- | ---- | -------------- |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 表示启动意图的信息。 |
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 指示要启动的信息。 |
 
 **示例：** 
 
