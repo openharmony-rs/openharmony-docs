@@ -9151,32 +9151,30 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let TAG = 'testTag';
-let bundles = [
+let bundles: notificationManager.BundleOption[] = [
   { bundle:"com.example.test01", } as notificationManager.BundleOption,
   { bundle:"com.example.test02", } as notificationManager.BundleOption
 ];
 notificationManager.getNotificationStatisticsByBundle(bundles).then(
   (data: notificationManager.BundleNotificationStatistics[]) => {
-    console.info(`getNotificationStatisticsByBundle success.`);
-  }).catch((err: BusinessError):void => {
-    console.error(`getNotificationStatisticsByBundle failed, code is ${err.code}, message is ${err.message}`);
-  });
+  console.info(`getNotificationStatisticsByBundle success, data is ${JSON.stringify(data)}`)
+}).catch((err: BusinessError):void => {
+  console.error(`getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
+});
 ```
 
 ArkTS-Sta示例：
 ```ts
-let TAG = 'testTag';
-let bundles = [
+let bundles: notificationManager.BundleOption[] = [
   { bundle:"com.example.test01", } as notificationManager.BundleOption,
   { bundle:"com.example.test02", } as notificationManager.BundleOption
 ];
 notificationManager.getNotificationStatisticsByBundle(bundles).then(
   (data: notificationManager.BundleNotificationStatistics[]) => {
-    console.info(`getNotificationStatisticsByBundle success.`);
-  }).catch((err: Error):void => {
-    console.error(`getNotificationStatisticsByBundle failed, code is ${err.code}, message is ${err.message}`);
-  });
+  console.info(`getNotificationStatisticsByBundle success, data is ${JSON.stringify(data)}`)
+}).catch((err: Error):void => {
+  console.error(`getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
+});
 ```
 
 ## DoNotDisturbDate
