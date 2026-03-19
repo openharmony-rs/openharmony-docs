@@ -10,6 +10,24 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
+## 15100000 输入参数不符合要求
+
+**错误信息**
+
+Input parameters do not meet the API requirements, such as invalid value ranges, length limits, or incorrect formats.
+
+**错误描述**
+
+输入参数不符合API要求，例如无效的值范围、长度限制或格式不正确。
+
+**可能原因**
+
+在调用备份数据库接口[backupEx](js-apis-distributedKVStore.md#backupex24)、恢复数据库接口[restoreEx](js-apis-distributedKVStore.md#restoreex24)、删除备份数据库接口[deleteBackupEx](js-apis-distributedKVStore.md#deletebackupex24)时，传入的参数不符合API要求。
+
+**处理步骤**
+
+在调用备份数据库接口[backupEx](js-apis-distributedKVStore.md#backupex24)、恢复数据库接口[restoreEx](js-apis-distributedKVStore.md#restoreex24)、删除备份数据库接口[deleteBackupEx](js-apis-distributedKVStore.md#deletebackupex24)时，检查传入的参数是否满足API要求。
+
 ## 15100001 超过最大订阅数量
 
 **错误信息**
