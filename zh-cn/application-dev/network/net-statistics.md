@@ -23,7 +23,7 @@
 
 ## 开发步骤
 
-1. 导入statistics、socket以及错误码模块。
+1. 导入[statistics、socket](../reference/apis-network-kit/js-apis-net-statistics.md)以及错误码模块。
 
    <!-- @[flow_management_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    
