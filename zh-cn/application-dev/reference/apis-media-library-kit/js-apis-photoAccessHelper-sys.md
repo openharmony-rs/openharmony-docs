@@ -3881,7 +3881,7 @@ setAssetCompatibleCapability(tokenId: long, capability: AssetCompatibleCapabilit
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
 | tokenId | long | 是   | 应用的TokenId。|
-| capability | AssetCompatibleCapability | 是   | 资产兼容能力|
+| capability | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24) | 是   | 资产兼容能力|
 
 
 **返回值：**
@@ -3942,7 +3942,7 @@ getAssetCompatibleCapability(tokenId: long): Promise<AssetCompatibleCapability>
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise<AssetCompatibleCapability> | 返回指定的资产兼容性功能。 |
+| Promise<[AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24)> | 返回指定的资产兼容性功能。 |
 
 **错误码：**
 
