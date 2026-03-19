@@ -991,9 +991,11 @@ Allows an application to register and deregister the crypto extension.
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: PCs/2-in-1 devices | tablets
 
 **Since**: 22
+
+**Changelog**: Since API version 24, this permission is also available on tablets.
 
 ## ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 
