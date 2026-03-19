@@ -18,7 +18,7 @@
 
 >**说明：**
 >
->从API version 24开始，可通过在应用工程的[module.json5配置文件](./../../quick-start/module-configuration-file.md)中配置[metadata标签](./../../quick-start/module-configuration-file.md#metadata标签)来使能自定义组件支持跨[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md)迁移。具体配置方式为：新增[name](./../../quick-start/module-configuration-file.md#metadata标签)为`"enableCustomComponentCrossAbility"`，[value](./../../quick-start/module-configuration-file.md#metadata标签)为`"true"`。因为自定义组件提供的是UI能力，所以这里的Ability也特指[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)。具体示例参考[自定义组件支持跨Ability迁移](#自定义组件支持跨Ability迁移)。
+>从API version 24开始，可通过在应用工程的[module.json5配置文件](./../../quick-start/module-configuration-file.md)中配置[metadata标签](./../../quick-start/module-configuration-file.md#metadata标签)来使能自定义组件支持跨[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md)迁移。具体配置方式为：新增[name](./../../quick-start/module-configuration-file.md#metadata标签)为`"enableCustomComponentCrossAbility"`，[value](./../../quick-start/module-configuration-file.md#metadata标签)为`"true"`。因为自定义组件提供的是UI能力，所以这里的Ability也特指[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)。具体示例参考[自定义组件支持跨Ability迁移](#自定义组件支持跨ability迁移)。
 
 
 ## 自定义组件的基本用法
