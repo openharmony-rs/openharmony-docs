@@ -267,6 +267,7 @@ Enumerates the exposure modes.
 
 | Enum Item| Description|
 | -- | -- |
+| EXPOSURE_MODE_UNSPECIFIED = -1    | Unspecified exposure.<br>**Since**: 24|
 | EXPOSURE_MODE_LOCKED = 0 | Exposure locked. The metering point cannot be set.<br>After this mode is used, the exposure will be locked by default for each photo capture.|
 | EXPOSURE_MODE_AUTO = 1 | Auto exposure. The metering point can be set by calling [OH_CaptureSession_SetMeteringPoint](capi-capture-session-h.md#oh_capturesession_setmeteringpoint).<br>After this mode is used, it takes effect only for the first photo capture.|
 | EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | Continuous auto exposure.<br>After this mode is used, the camera system automatically adjusts the exposure based on the environment changes each time.|
