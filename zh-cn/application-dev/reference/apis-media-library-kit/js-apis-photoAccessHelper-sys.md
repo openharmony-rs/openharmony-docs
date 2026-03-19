@@ -10668,11 +10668,11 @@ async function example(context: Context) {
 }
 ```
 
-### setDownloadSpecificCloudMediaNetworkPolicy<sup>26+</sup>
+### setDownloadSpecificCloudMediaNetworkPolicy
 
 setDownloadSpecificCloudMediaNetworkPolicy(assetUris: string[], networkPolicy: CloudDownloadNetworkPolicy): Promise\<void\>
 
-设置云端媒体资产批量下载任务网络策略。使用Promise异步回调。
+设置云端媒体资产批量下载任务的网络策略。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -10686,8 +10686,8 @@ setDownloadSpecificCloudMediaNetworkPolicy(assetUris: string[], networkPolicy: C
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  | 是   | 需要设置策略的下载的原图和视频的URI列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务，将被设置策略。 |
-| networkPolicy | [CloudDownloadNetworkPolicy](#clouddownloadnetworkpolicy26) | 是   | 批量下载网络策略。 |
+| assetUris | string[]  | 是   | 需要设置策略的下载的原图和视频的URI列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务都将使用networkPolicy指定的网络策略。。 |
+| networkPolicy | [CloudDownloadNetworkPolicy](#clouddownloadnetworkpolicy) | 是   | 批量下载网络策略。 |
 
 
 **返回值：**
@@ -10988,7 +10988,7 @@ async function example(context: Context) {
 }
 ```
 
-### queryDownloadSpecificCloudMediaTaskCountAndSize<sup>26+</sup>
+### queryDownloadSpecificCloudMediaTaskCountAndSize
 
 queryDownloadSpecificCloudMediaTaskCountAndSize(predicates: dataSharePredicates.DataSharePredicates): Promise\<number[]\>
 
@@ -12753,7 +12753,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | SUSPICIOUS |  2 |  疑似风险图片。  |
 | REJECTED |  3 |  确认风险图片。  |
 
-## CloudDownloadNetworkPolicy<sup>26+</sup>
+## CloudDownloadNetworkPolicy
 
 枚举，批量下载网络策略类型枚举。
 
