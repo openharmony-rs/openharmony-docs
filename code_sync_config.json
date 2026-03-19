@@ -12856,11 +12856,6 @@
 						"start_line":209
 					},
 					{
-						"end_line":181,
-						"name":"get_event_information",
-						"start_line":108
-					},
-					{
 						"end_line":87,
 						"name":"shade_change_event",
 						"start_line":58
@@ -12869,31 +12864,68 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUINode.h",
-				"functions":[
-					{
-						"end_line":273,
-						"name":"arkui_node",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUIListNode.h",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NormalTextListExample.h",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NormalNodeExample.h",
 				"functions":[
 					{
-						"end_line":78,
-						"name":"arkui_list_node",
-						"start_line":16
+						"end_line":224,
+						"name":"handle_event_functions",
+						"start_line":80
+					},
+					{
+						"end_line":246,
+						"name":"register_node_events",
+						"start_line":226
+					},
+					{
+						"end_line":287,
+						"name":"register_global_event_receiver",
+						"start_line":248
+					},
+					{
+						"end_line":322,
+						"name":"Cpp_NormalNodeExample",
+						"start_line":15
 					}
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NormalTextListExample.h",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUIButtonNode.h",
 				"functions":[
 					{
-						"end_line":139,
-						"name":"normal_text_list_example",
-						"start_line":16
+						"end_line":42,
+						"name":"Cpp_ArkUIButtonNode",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUIColumnNode.h",
+				"functions":[
+					{
+						"end_line":35,
+						"name":"Cpp_ArkUIColumnNode",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUITextInputNode.h",
+				"functions":[
+					{
+						"end_line":49,
+						"name":"Cpp_ArkUITextInputNode",
+						"start_line":15
 					}
 				]
 			}
@@ -15768,10 +15800,14 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NormalTextListExample.h",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NormalNodeExample.h",
 				"functions":[
 					{
-						"end_line":60,
-						"name":"Cpp_NormalTextListExample",
+						"end_line":72,
+						"name":"Cpp_NormalNodeExample",
 						"start_line":15
 					}
 				]
