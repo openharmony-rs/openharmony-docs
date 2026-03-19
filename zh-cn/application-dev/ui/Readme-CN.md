@@ -294,6 +294,7 @@
       - [输入框文本事件监听](ndk-textarea-event.md)
   - 使用选择类组件<!--arkts-build-picker-ndk-->
       - [使用滑动选择器Picker](ndk-picker.md)
+  - [显示图片（Image）](ndk-image-component.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
   - [构建表单组件](ndk-build-form-components.md)
   - 构建导航类组件<!--arkts-build-navigation-ndk-->
