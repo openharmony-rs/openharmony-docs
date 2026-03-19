@@ -60,7 +60,6 @@ URL错误，可能原因：
 1. 请检查输入的resource路径是否正确。
 2. 使用runJavaScriptExt接口替代runJavaScript接口。
 
-
 ## 17100004 功能开关未打开
 
 **错误信息**
