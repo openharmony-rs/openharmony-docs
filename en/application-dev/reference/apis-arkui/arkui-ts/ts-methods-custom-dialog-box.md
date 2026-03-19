@@ -1112,7 +1112,7 @@ struct Example3 {
 
 ### Example 10: Implementing Dialog Boxes with Different customStyle Values
 
-This example demonstrates the effect of the dialog box content and safe area when the alignment mode is [DialogAlignment.Bottom](see #customdialogcontrolleroptions) and the value of [customStyle](#customdialogcontrolleroptions) is different.
+This example demonstrates the effect of the dialog box content and safe area when the alignment mode is [DialogAlignment.Bottom](#customdialogcontrolleroptions) and the value of [customStyle](#customdialogcontrolleroptions) is different.
 
 ```ts
 @CustomDialog
