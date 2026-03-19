@@ -119,17 +119,17 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
+    // 主窗口已销毁，释放 UI 相关资源
     console.info("Ability onWindowStageDestroy");
   }
 
   onForeground(): void {
-    // Ability has brought to foreground
+    // Ability 进入前台
     console.info("Ability onForeground");
   }
 
   onBackground(): void {
-    // Ability has back to background
+    // Ability 进入后台
     console.info("Ability onBackground");
   }
 }
@@ -148,9 +148,9 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calend
 
 根据日历账户信息，创建一个Calendar对象，使用callback异步回调。
 
-**需要权限**：API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**：ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -193,6 +193,7 @@ try {
     }
   });
 } catch (error) {
+  // 检查是否申请权限或参数是否错误。
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -203,9 +204,9 @@ createCalendar(calendarAccount: CalendarAccount): Promise\<Calendar>
 
 根据日历账户信息，创建一个Calendar对象，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -248,6 +249,7 @@ const calendarAccount: calendarManager.CalendarAccount = {
 calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
   console.info(`Succeeded in creating calendar data->${JSON.stringify(data)}`);
 }).catch((error : BusinessError) => {
+  // 检查是否申请权限或参数是否错误。
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -258,9 +260,9 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback\<void>): void
 
 删除指定Calendar对象，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -303,6 +305,7 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
       console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
       calendarMgr?.deleteCalendar(data, (err1: BusinessError) => {
         if (err1) {
+          // 检查参数是否正确。
           console.error(`Failed to delete calendar. Code: ${err1.code}, message: ${err1.message}`);
         } else {
           console.info("Succeeded in deleting calendar");
@@ -311,6 +314,7 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
     }
   });
 }).catch((error: BusinessError) => {
+  // 检查是否申请权限或参数是否正确。
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 })
 ```
@@ -321,9 +325,9 @@ deleteCalendar(calendar: Calendar): Promise\<void>
 
 删除指定Calendar对象，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -369,12 +373,15 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
     calendarMgr?.deleteCalendar(data).then(() => {
       console.info("Succeeded in deleting calendar");
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确。
       console.error(`Failed to delete calendar. Code: ${err.code}, message: ${err.message}`);
     });
   }).catch((err: BusinessError) => {
+    // 检查是否申请权限或参数是否正确。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   });
 }).catch((error: BusinessError) => {
+  // 检查是否申请权限或参数是否正确。
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 })
 ```
@@ -385,9 +392,9 @@ getCalendar(callback: AsyncCallback\<Calendar>): void
 
 获取默认Calendar对象，默认Calendar是日历存储首次运行时创建的，若创建Event时不关注其Calendar归属，则无须通过[createCalendar()](#createcalendar)创建Calendar，直接使用默认Calendar，使用callback异步回调。
 
-**需要权限**：API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**：ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -420,6 +427,7 @@ import { calendarManager } from '@kit.CalendarKit';
 
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查是否申请权限或参数是否正确。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -433,10 +441,9 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calendar>
 
 获取指定Calendar对象，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
-
+**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -478,12 +485,14 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
   calendarMgr?.getCalendar(calendarAccount, (err: BusinessError, data: calendarManager.Calendar) => {
     if (err) {
       console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
+      // 检查是否申请权限或参数是否错误后再次获取账户。
     } else {
       console.info(`Succeeded in getting calendar data -> ${JSON.stringify(data)}`);
     }
   });
 }).catch((error: BusinessError) => {
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
+  // 检查是否申请权限或参数是否错误后再次创建账户。
 })
 ```
 
@@ -493,9 +502,9 @@ getCalendar(calendarAccount?: CalendarAccount): Promise\<Calendar>
 
 获取默认Calendar对象或者指定Calendar对象，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -537,6 +546,7 @@ import { calendarManager } from '@kit.CalendarKit';
 calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
   console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+  // 检查是否申请权限。
   console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -547,9 +557,9 @@ getAllCalendars(callback: AsyncCallback\<Calendar[]>): void
 
 获取当前应用所有创建的Calendar对象以及默认Calendar对象，使用callback异步回调。
 
-**需要权限**：API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 
 **系统能力**： SystemCapability.Applications.CalendarData
@@ -598,9 +608,9 @@ getAllCalendars(): Promise\<Calendar[]>
 
 获取当前应用所有创建的Calendar对象以及默认Calendar对象，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 
 **系统能力**： SystemCapability.Applications.CalendarData
@@ -637,7 +647,9 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
     console.info(`account -> ${JSON.stringify(account)}`);
   })
 }).catch((err: BusinessError) => {
+  // 检查是否申请权限。
   console.error(`Failed to get all calendars. Code: ${err.code}, message: ${err.message}`);
+  
 });
 ```
 
@@ -680,8 +692,6 @@ const event: calendarManager.Event = {
 };
 calendarMgr?.editEvent(event).then((eventId: number): void => {
   console.info(`create Event id = ${eventId}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to create Event. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -705,13 +715,13 @@ calendarMgr?.editEvent(event).then((eventId: number): void => {
 
 addEvent(event: Event, callback: AsyncCallback\<number>): void
 
-创建日程，入参Event不填日程id、instanceStartTime和instanceEndTime，使用callback异步回调。
+创建日程，入参[Event](#Event)不填日程id、instanceStartTime和instanceEndTime，使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -751,12 +761,14 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
   calendar = data;
   calendar.addEvent(event, (err: BusinessError, data: number): void => {
     if (err) {
+      // 检查参数是否正确，权限是否申请。
       console.error(`Failed to addEvent. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info(`Succeeded in adding event, id -> ${data}`);
     }
   });
 }).catch((err: BusinessError) => {
+  // 检查是否申请权限。
   console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -765,13 +777,13 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
 
 addEvent(event: Event): Promise\<number>
 
-创建日程，入参Event不填日程id、instanceStartTime和instanceEndTime，使用Promise异步回调。
+创建日程，入参[Event](#Event)不填日程id、instanceStartTime和instanceEndTime，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -813,6 +825,7 @@ const event: calendarManager.Event = {
 };
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查是否申请权限。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -820,6 +833,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
     calendar.addEvent(event).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确，权限是否申请。
       console.error(`Failed to addEvent. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -830,11 +844,11 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 addEvents(events: Event[], callback: AsyncCallback\<void>): void
 
-批量创建日程，入参Event不填日程id、instanceStartTime和instanceEndTime，使用callback异步回调。
+批量创建日程，入参[Event](#Event)不填日程id、instanceStartTime和instanceEndTime，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -878,12 +892,14 @@ const events: calendarManager.Event[] = [
 ];
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查是否申请权限。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
     calendar = data;
     calendar.addEvents(events, (err: BusinessError) => {
       if (err) {
+        // 检查参数是否正确，权限是否申请。
         console.error(`Failed to add events. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info("Succeeded in adding events");
@@ -897,11 +913,11 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 addEvents(events: Event[]): Promise\<void>
 
-批量创建日程，入参Event不填日程id、instanceStartTime和instanceEndTime，使用Promise异步回调。
+批量创建日程，入参[Event](#Event)不填日程id、instanceStartTime和instanceEndTime，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -950,6 +966,7 @@ const events: calendarManager.Event[] = [
 ];
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查是否申请权限。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -957,6 +974,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
     calendar.addEvents(events).then(() => {
       console.info("Succeeded in adding events");
     }).catch((err: BusinessError) => {
+      // 检查参数是否错误，权限是否申请。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -998,6 +1016,7 @@ const event: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1007,12 +1026,14 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       id = data;
       calendar?.deleteEvent(id, (err: BusinessError) => {
         if (err) {
+          // 检查参数是否正确。
           console.error(`Failed to delete event. Code: ${err.code}, message: ${err.message}`);
         } else {
           console.info(`Succeeded in deleting event`);
         }
       });
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确，权限是否申请。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -1057,6 +1078,7 @@ const event: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar data->${JSON.stringify(data)}`);
@@ -1065,11 +1087,13 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       console.info(`Succeeded in adding event, id -> ${data}`);
       id = data;
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确，权限是否申请。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     calendar.deleteEvent(id).then(() => {
       console.info("Succeeded in deleting event");
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确，权限是否申请。
       console.error(`Failed to delete event. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -1117,6 +1141,7 @@ const event2: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1125,16 +1150,19 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       console.info(`Succeeded in adding event, id -> ${data}`);
       id1 = data;
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确，权限是否申请。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     await calendar.addEvent(event2).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
       id2 = data;
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     calendar.deleteEvents([id1, id2], (err: BusinessError) => {
       if (err) {
+        // 检查参数是否正确。
         console.error(`Failed to delete events. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info("Succeeded in deleting events");
@@ -1188,6 +1216,7 @@ const event2: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1196,17 +1225,20 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       console.info(`Succeeded in adding event, id -> ${data}`);
       id1 = data;
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确，权限是否申请。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     await calendar.addEvent(event2).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
       id2 = data;
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     calendar.deleteEvents([id1, id2]).then(() => {
       console.info("Succeeded in deleting events");
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确。
       console.error(`Failed to delete events. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -1247,6 +1279,7 @@ const oriEvent: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1256,10 +1289,12 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       oriEvent.id = data;
       oriEvent.title = 'newUpdate';
     }).catch((err: BusinessError) => {
+      // 检查权限是否申请，参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     calendar.updateEvent(oriEvent, (err: BusinessError) => {
       if (err) {
+        // 检查参数是否正确。
         console.error(`Failed to update event. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info("Succeeded in updating event");
@@ -1308,6 +1343,7 @@ const oriEvent: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1317,11 +1353,13 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       oriEvent.id = data;
       oriEvent.title = 'newUpdate';
     }).catch((err: BusinessError) => {
+      // 检查权限是否申请，参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     calendar.updateEvent(oriEvent).then(() => {
       console.info(`Succeeded in updating event`);
     }).catch((err: BusinessError) => {
+      // 参数是否正确。
       console.error(`Failed to update event. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -1336,9 +1374,9 @@ getEvents(callback: AsyncCallback\<Event[]>): void
 
 API version 20之前，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime。从API version 20开始，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。若查询字段为空，则不返回该字段。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1368,6 +1406,7 @@ import { calendarManager } from '@kit.CalendarKit';
 let calendar : calendarManager.Calendar | undefined = undefined;
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar data -> ${JSON.stringify(data)}`);
@@ -1389,9 +1428,9 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 
 获取Calendar下符合查询条件的Event，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1436,6 +1475,7 @@ const event2: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1443,16 +1483,19 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
     await calendar.addEvent(event1).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
     }).catch((err: BusinessError) => {
+      // 检查权限是否申请，参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     await calendar.addEvent(event2).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     const filter = calendarManager.EventFilter.filterById([id1, id2]);
     calendar.getEvents(filter, ['title', 'type', 'startTime', 'endTime'], (err: BusinessError, data: calendarManager.Event[]) => {
       if (err) {
+        // 检查参数是否正确。
         console.error(`Failed to get events. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info(`Succeeded in getting events, data -> ${JSON.stringify(data)}`);
@@ -1472,9 +1515,9 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event
 
 当没有入参时，可查询指定日历账户下的所有日程。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1518,6 +1561,7 @@ const event: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1525,6 +1569,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
     await calendar.addEvent(event).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
     }).catch((err: BusinessError) => {
+      // 检查权限是否申请，参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     // 根据MyEvent进行模糊查询，如果存在类似标题为MyEvent1类型的日程，也可查询出来
@@ -1532,6 +1577,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
     calendar.getEvents(filter).then((data: calendarManager.Event[]) => {
       console.info(`Succeeded in getting events, data -> ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确。
       console.error(`Failed to get events. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -1563,6 +1609,7 @@ import { calendarManager } from '@kit.CalendarKit';
 let calendar : calendarManager.Calendar | undefined = undefined;
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1611,12 +1658,14 @@ const config: calendarManager.CalendarConfig = {
 };
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
     calendar = data;
     calendar.setConfig(config, (err: BusinessError) => {
       if (err) {
+        // 检查权限是否申请，参数是否正确。
         console.error(`Failed to set config. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info(`Succeeded in setting config, config -> ${JSON.stringify(config)}`);
@@ -1669,6 +1718,7 @@ const config: calendarManager.CalendarConfig = {
 };
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1676,6 +1726,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
     calendar.setConfig(config).then(() => {
       console.info(`Succeeded in setting config, data->${JSON.stringify(config)}`);
     }).catch((err: BusinessError) => {
+      // 检查权限是否申请，参数是否正确。
       console.error(`Failed to set config. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -1707,6 +1758,7 @@ import { calendarManager } from '@kit.CalendarKit';
 let calendar : calendarManager.Calendar | undefined = undefined;
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1723,9 +1775,9 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 
 获取Calendar下符合查询条件的日程实例，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
-
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
+- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1773,6 +1825,7 @@ const event: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1780,12 +1833,14 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
     await calendar.addEvent(event).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
     }).catch((err: BusinessError) => {
+      // 检查权限是否申请，参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     calendar?.queryEventInstances(date.getTime(), date.getTime() + 60 * 60 * 1000, undefined,
       ["title", "startTime", "endTime", "instanceStartTime", "instanceEndTime",]).then((data: calendarManager.Event[]) => {
       console.info(`Succeeded in getting event instances, data -> ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确。
       console.error(`Failed to get event instances. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -1926,6 +1981,7 @@ const event2: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1934,18 +1990,21 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       console.info(`Succeeded in adding event, id -> ${data}`);
       id1 = data;
     }).catch((err: BusinessError) => {
+      // 检查权限是否申请，参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     await calendar.addEvent(event2).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
       id2 = data;
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     const filter = calendarManager.EventFilter.filterById([id1, id2]);
     calendar.getEvents(filter).then((data: calendarManager.Event[]) => {
       console.info(`Succeeded in getting events filter by id, data -> ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确。
       console.error(`Failed to filter by id. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -1994,6 +2053,7 @@ const event2: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -2001,17 +2061,20 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
     await calendar.addEvent(event1).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
     }).catch((err: BusinessError) => {
+      // 检查权限是否申请，参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     await calendar.addEvent(event2).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     const filter = calendarManager.EventFilter.filterByTime(1686931200000, 1687017600000);
     calendar.getEvents(filter).then((data: calendarManager.Event[]) => {
       console.info(`Succeeded in getting events filter by time, data -> ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确。
       console.error(`Failed to filter by time. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -2055,6 +2118,7 @@ const event: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
+    // 检查权限是否申请。
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -2062,12 +2126,14 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
     await calendar.addEvent(event).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
     }).catch((err: BusinessError) => {
+       // 检查权限是否申请，参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     const filter = calendarManager.EventFilter.filterByTitle('MyEvent');
     calendar.getEvents(filter).then((data: calendarManager.Event[]) => {
       console.info(`Succeeded in getting events filter by title, data -> ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
+      // 检查参数是否正确。
       console.error(`Failed to filter by title. Code: ${err.code}, message: ${err.message}`);
     });
   }
