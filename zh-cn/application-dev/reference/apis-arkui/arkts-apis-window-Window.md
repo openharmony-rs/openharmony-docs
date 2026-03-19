@@ -9461,7 +9461,7 @@ onRotationChange(callback: RotationChangeCallback&lt;RotationChangeInfo, Rotatio
 ```ts
 import { BusinessError } from '@Kit.BasicServicesKit';
 
-function calculateRect(info: window.RotationChangeInfo): window.Rect {
+const calculateRect = (info: window.RotationChangeInfo): window.Rect => {
     // calculate result with info
     let rect : window.Rect = {
       left: 0,
