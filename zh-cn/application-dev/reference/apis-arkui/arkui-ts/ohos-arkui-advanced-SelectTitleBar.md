@@ -55,7 +55,7 @@ ArkTS-Sta: SelectTitleBar({selected: int, options: Array&lt;SelectOption&gt;, me
 
 ## OnSelectedCallback<sup>23+</sup>
 
-OnSelectedCallback = (index: int) => void
+type OnSelectedCallback = (index: int) => void;
 
 下拉菜单项目选中触发的回调函数。
 
@@ -71,7 +71,7 @@ OnSelectedCallback = (index: int) => void
 
 | 参数名 | 类型  | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| index| index | 是   | 选中的索引。 |
+| index| int | 是   | 选中的索引。 |
 
 ## SelectTitleBarMenuItem
 
