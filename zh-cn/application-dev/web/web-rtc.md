@@ -12,7 +12,7 @@ Web组件可以通过W3C标准协议接口拉起摄像头和麦克风，通过[o
 
 - 使用摄像头和麦克风功能前请在module.json5中添加音视频相关权限，权限的添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-   ```json
+  ```json
     // src/main/resources/base/element/string.json
     {
       "name": "reason_for_camera",
@@ -26,7 +26,7 @@ Web组件可以通过W3C标准协议接口拉起摄像头和麦克风，通过[o
 
   ```json
     // src/main/module.json5
-    "requestPermissions": [
+    "requestPermissions":[
       {
         "name" : "ohos.permission.CAMERA",
         "reason": "$string:reason_for_camera",
