@@ -6588,9 +6588,9 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 ## notificationManager.getNotificationStatisticsByBundle<sup>26+</sup>
 
-getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[NotificationStatistics](#notificationstatistics26)[]\>
+getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[BundleNotificationStatistics](#bundlenotificationstatistics26)[]\>
 
-批量获取指定应用列表的通知统计信息， 使用Promise异步回调。
+批量获取指定应用列表的通知统计信息，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6604,13 +6604,13 @@ getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[Notificati
 
 | 参数名      | 类型                  | 必填 | 说明                         |
 | --------- | --------------------- | ---- | ---------------------------- |
-| bundles   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)[] | 是  | 应用的包信息列表 |
+| bundles   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)[] | 是  | 应用的包信息列表。 |
 
 **返回值：**
 
 | 类型            | 说明                                   |
 | --------------- | -------------------------------------- |
-| Promise\<[NotificationStatistics](#notificationstatistics26)[]\> | Promise对象。返回指定应用列表的通知统计信息。 |
+| Promise\<[BundleNotificationStatistics](#bundlenotificationstatistics26)[]\> | Promise对象。返回指定应用列表的通知统计信息。 |
 
 **错误码**：
 
@@ -6634,11 +6634,12 @@ let bundles = [
   { bundle:"com.example.test01", } as notificationManager.BundleOption,
   { bundle:"com.example.test02", } as notificationManager.BundleOption
 ];
-notificationManager.getNotificationStatisticsByBundle(bundles).then((data) => {
-  console.info(`${TAG} getNotificationStatisticsByBundle data: ${JSON.stringify(data)}`)
-}).catch((err: BusinessError):void => {
-  console.info(`${TAG} getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
-});
+notificationManager.getNotificationStatisticsByBundle(bundles).then(
+   (data :notificationManager.BundleNotificationStatistics[]) => {
+     console.info(`${TAG} getNotificationStatisticsByBundle data: ${JSON.stringify(data)}`)
+   }).catch((err: BusinessError):void => {
+     console.info(`${TAG} getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
+   });
 ```
 
 ## DoNotDisturbDate
@@ -6877,7 +6878,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | reminderFlags | number | 否 | 否 | 表示通知提醒方式的标志位。 |
 | silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
 
-## NotificationStatistics<sup>26+</sup>
+## BundleNotificationStatistics<sup>26+</sup>
 
 描述指定应用通知统计信息。
 
@@ -6887,9 +6888,9 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 否 | 指定应用的包信息。|
-| lastTime | number | 是 | 否 | 最近收到通知的时间。数据格式: 时间戳。 单位： ms |
-| recentCount | number | 是 | 否 | 最近7天通知的总量。 |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
+| lastTime | number | 否 | 否 | 最近收到通知的时间。数据格式：时间戳。单位：ms |
+| recentCount | number | 否 | 否 | 最近7天通知的总量。 |
 
 ## PriorityNotificationType<sup>23+</sup>
 
