@@ -786,7 +786,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":39,
 						"name":"EventSub_napi_Header",
 						"start_line":24
 					},
@@ -3232,7 +3232,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":39,
 						"name":"EventSub_napi_Header",
 						"start_line":24
 					},
@@ -3367,7 +3367,7 @@
 						"start_line":1126
 					},
 					{
-						"end_line":36,
+						"end_line":40,
 						"name":"EventSub_napi_nohiappevent_Header",
 						"start_line":23
 					}
@@ -11516,9 +11516,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":106,
+						"end_line":122,
 						"name":"Native_CrashEvent_Button",
-						"start_line":93
+						"start_line":98
 					},
 					{
 						"end_line":92,
@@ -11536,14 +11536,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":39,
 						"name":"EventSub_napi_Header",
 						"start_line":24
 					},
 					{
-						"end_line":516,
+						"end_line":583,
 						"name":"Sys_Crash_Crash_OnReceive",
-						"start_line":447
+						"start_line":492
 					},
 					{
 						"end_line":596,
