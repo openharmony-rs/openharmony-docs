@@ -6635,7 +6635,7 @@ let bundles = [
   { bundle:"com.example.test02", } as notificationManager.BundleOption
 ];
 notificationManager.getNotificationStatisticsByBundle(bundles).then(
-   (data :notificationManager.BundleNotificationStatistics[]) => {
+   (data: notificationManager.BundleNotificationStatistics[]) => {
      console.info(`${TAG} getNotificationStatisticsByBundle data: ${JSON.stringify(data)}`)
    }).catch((err: BusinessError):void => {
      console.info(`${TAG} getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
