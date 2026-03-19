@@ -2776,13 +2776,19 @@ error: bundle cannot be installed because the appId is not same with preinstalle
 
 **可能原因**
 
-安装应用签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)和<!--RP7-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-identifier<!--RP7End-->与已卸载的预置应用都不一致。
+虽然已卸载预置应用，但在安装新应用之前，系统仍会先安装预置应用包，随后再安装新应用包。这是因为预置应用的安装签名信息中的密钥和<!--RP7-->应用Profile签名文件中的app-identifier<!--RP7End-->，与新安装的应用对应信息不一致。
 
 **处理步骤**
 
-方法一：重新签名，保证应用签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)和<!--RP7-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-identifier<!--RP7End-->任意一个与预置应用的一致。
+方法一：重新签名。
 
-方法二：修改安装应用的[bundleName](../quick-start/app-configuration-file.md#配置文件标签)，确保与预置应用的不一致。
+通过重新签名，确保应用签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)和<!--RP7-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-identifier<!--RP7End-->至少有一项与预置应用保持一致。
+
+<!--RP11--><!--RP11End-->
+
+方法二：更换bundleName。
+
+修改安装应用的[bundleName](../quick-start/app-configuration-file.md#配置文件标签)，确保与预置应用的bundleName不一致。
 
 ### 9568418 应用设置了卸载处置规则，不允许直接卸载
 **错误信息**
