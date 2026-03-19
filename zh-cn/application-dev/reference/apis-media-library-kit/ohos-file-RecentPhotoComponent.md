@@ -15,6 +15,7 @@
 ## 导入模块
 
 ```ts
+// 在API version 23之前的版本中，需要使用 'import { api1, api2, ... } from @ohos.file.RecentPhotoComponent'的导入方式。
 import {
   RecentPhotoComponent, RecentPhotoOptions, RecentPhotoCheckResultCallback, RecentPhotoInfo, RecentPhotoCheckInfoCallback,
   RecentPhotoClickCallback, PhotoSource, RecentPhotoInfo, RecentPhotoCheckInfoCallback,
@@ -144,6 +145,7 @@ type RecentPhotoCheckInfoCallback = (recentPhotoExists: boolean, info: RecentPho
 
 ```ts
 // xxx.ets
+// 在API version 23之前的版本中，需要使用 'import { api1, api2, ... } from @ohos.file.RecentPhotoComponent'的导入方式。
 import {
   photoAccessHelper,
    RecentPhotoComponent, 
