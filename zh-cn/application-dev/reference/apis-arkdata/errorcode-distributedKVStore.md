@@ -18,15 +18,32 @@ Input parameters do not meet the API requirements, such as invalid value ranges,
 
 **错误描述**
 
-输入参数不符合API要求，例如无效的值范围、长度限制或格式不正确。
+1. 必填参数为空。
+
+2. 参数类型不正确。
+
+3. 参数校验失败。无论是同步还是异步接口，此类异常大部分都通过同步的方式抛出。
 
 **可能原因**
 
 在调用备份数据库接口[backupEx](js-apis-distributedKVStore.md#backupex24)、恢复数据库接口[restoreEx](js-apis-distributedKVStore.md#restoreex24)、删除备份数据库接口[deleteBackupEx](js-apis-distributedKVStore.md#deletebackupex24)时，传入的参数不符合API要求。
 
+1. 必选参数没有传入。
+
+2. 参数类型错误 (Type Error)。
+
+3. 参数数量错误 (Argument Count Error)。
+
+4. 空参数错误 (Null Argument Error)。
+
+5. 参数格式错误 (Format Error)。
+
+6. 参数值范围错误 (Value Range Error)。
+
+
 **处理步骤**
 
-在调用备份数据库接口[backupEx](js-apis-distributedKVStore.md#backupex24)、恢复数据库接口[restoreEx](js-apis-distributedKVStore.md#restoreex24)、删除备份数据库接口[deleteBackupEx](js-apis-distributedKVStore.md#deletebackupex24)时，检查传入的参数是否满足API要求。
+在调用备份数据库接口[backupEx](js-apis-distributedKVStore.md#backupex24)、恢复数据库接口[restoreEx](js-apis-distributedKVStore.md#restoreex24)、删除备份数据库接口[deleteBackupEx](js-apis-distributedKVStore.md#deletebackupex24)时，请检查必选参数是否传入，或者传入的参数类型是否错误。对于参数校验失败，阅读参数规格约束，按照可能原因进行排查。
 
 ## 15100001 超过最大订阅数量
 
