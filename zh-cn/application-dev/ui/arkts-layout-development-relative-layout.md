@@ -769,64 +769,113 @@ struct RelativeGuideLineExample {
 @Component
 struct Index {
   build() {
-    Row() {
-      RelativeContainer() {
-        Row() {
-          Text('row1')
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(100)
-        .height(100)
+    RelativeContainer() {
+      Text('item 1')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
         .backgroundColor('#a3cf62')
-        .id('row1')
-
-        Row() {
-          Text('row2')
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(100)
-        .height(100)
+        .id('item1')
+        .alignRules({
+          top: {
+            anchor: '__container__',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: '__container__',
+            align: HorizontalAlign.Start
+          }
+        })
+      Text('item 2')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
+        .backgroundColor('#a3cf62')
+        .id('item2')
+        .alignRules({
+          top: {
+            anchor: 'item1',
+            align: VerticalAlign.Bottom
+          },
+          left: {
+            anchor: 'item1',
+            align: HorizontalAlign.End
+          }
+        })
+      Text('item 3')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
+        .backgroundColor('#a3cf62')
+        .id('item3')
+        .alignRules({
+          bottom: {
+            anchor: 'item2',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: 'item2',
+            align: HorizontalAlign.End
+          }
+        })
+      Text('outer 1')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
         .backgroundColor('#00ae9d')
+        // 定义其位置
         .alignRules({
-          middle: { anchor: 'row1', align: HorizontalAlign.End },
-          top: { anchor: 'row1', align: VerticalAlign.Bottom }
+          top: {
+            anchor: 'barrier_bottom',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: 'barrier_left',
+            align: HorizontalAlign.Start
+          }
         })
-        .id('row2')
 
-        Row() {
-          Text('row3')
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(100)
-        .height(100)
-        .backgroundColor('#0a59f7')
+      Text('outer 2')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
+        .backgroundColor('#00ae9d')
+        // 定义其位置
         .alignRules({
-          left: { anchor: 'barrier1', align: HorizontalAlign.End },
-          top: { anchor: 'row1', align: VerticalAlign.Top }
+          top: {
+            anchor: 'barrier_top',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: 'barrier_right',
+            align: HorizontalAlign.Start
+          }
         })
-        .id('row3')
-
-        Row() {
-          Text('row4')
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(50)
-        .height(50)
-        .backgroundColor('#2ca9e0')
-        .alignRules({
-          left: { anchor: 'row1', align: HorizontalAlign.Start },
-          top: { anchor: 'barrier2', align: VerticalAlign.Bottom }
-        })
-        .id('row4')
-      }
-      .width(300)
-      .height(300)
-      .margin({ left: 50 })
-      .border({ width: 2, color: '#6699FF' })
-      .barrier([{ id: 'barrier1', direction: BarrierDirection.RIGHT, referencedId: ['row1', 'row2'] },
-        { id: 'barrier2', direction: BarrierDirection.BOTTOM, referencedId: ['row1', 'row2'] }])
     }
-    .height('100%')
+    .width('100%')
+    .padding(10)
+    .barrier([
+      {
+        id: 'barrier_left',
+        direction: BarrierDirection.LEFT,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+      {
+        id: 'barrier_right',
+        direction: BarrierDirection.RIGHT,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+      {
+        id: 'barrier_top',
+        direction: BarrierDirection.TOP,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+      {
+        id: 'barrier_bottom',
+        direction: BarrierDirection.BOTTOM,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+    ])
   }
 }
 ```
