@@ -654,6 +654,7 @@
 
 **取值：** usual.event.AUDIO_QUALITY_CHANGE
 
+
 ## 预留公共事件
 
 以下事件为预留公共事件，暂未支持。
