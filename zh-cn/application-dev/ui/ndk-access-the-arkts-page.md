@@ -157,7 +157,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 |    |——ArkUIListNode.h 节点封装扩展类。
 |    |——ArkUIListItemNode.h 节点封装扩展类。
 |    |——ArkUITextNode.h 节点封装扩展类。
-|    |——NormalTextListExample.h 示例代码文件。
+|    |——NormalNodeExample.h 示例代码文件。
 | 
 |——ets
 |    |——pages
@@ -329,7 +329,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     #include <arkui/native_node_napi.h>
     #include <js_native_api.h>
     #include "NativeEntry.h"
-    #include "NormalTextListExample.h"
+    #include "NormalNodeExample.h"
     
     namespace NativeModule {
     
@@ -345,11 +345,11 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
         OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
         NativeEntry::GetInstance()->SetContentHandle(contentHandle);
     
-        // 创建文本列表
-        auto list = CreateTextListExample();
+        // 创建组件节点
+        auto node = CreateExample();
     
         // 保持Native侧对象到管理类中，维护生命周期。
-        NativeEntry::GetInstance()->SetRootNode(list);
+        NativeEntry::GetInstance()->SetRootNode(node);
         return nullptr;
     }
     
@@ -542,6 +542,48 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_BACKGROUND_COLOR, &item);
         }
+        void SetMargin(float top, float right, float bottom, float left)
+        {
+            ArkUI_NumberValue value[] = {{top}, {right}, {bottom}, {left}};
+            ArkUI_AttributeItem item = {value, 4};
+            nativeModule_->setAttribute(handle_, NODE_MARGIN, &item);
+        }
+        void SetPadding(float top, float right, float bottom, float left)
+        {
+            ArkUI_NumberValue value[] = {{top}, {right}, {bottom}, {left}};
+            ArkUI_AttributeItem item = {value, 4};
+            nativeModule_->setAttribute(handle_, NODE_PADDING, &item);
+        }
+        void SetBorderWidth(float width)
+        {
+            ArkUI_NumberValue value[] = {{.f32 = width}};
+            ArkUI_AttributeItem item = {value, 1};
+            nativeModule_->setAttribute(handle_, NODE_BORDER_WIDTH, &item);
+        }
+        void SetBorderColor(uint32_t color)
+        {
+            ArkUI_NumberValue value[] = {{.u32 = color}};
+            ArkUI_AttributeItem item = {value, 1};
+            nativeModule_->setAttribute(handle_, NODE_BORDER_COLOR, &item);
+        }
+        void SetBorderRadius(float radius)
+        {
+            ArkUI_NumberValue value[] = {{.f32 = radius}};
+            ArkUI_AttributeItem item = {value, 1};
+            nativeModule_->setAttribute(handle_, NODE_BORDER_RADIUS, &item);
+        }
+        void SetOpacity(float opacity)
+        {
+            ArkUI_NumberValue value[] = {{.f32 = opacity}};
+            ArkUI_AttributeItem item = {value, 1};
+            nativeModule_->setAttribute(handle_, NODE_OPACITY, &item);
+        }
+        void SetScale(float x, float y)
+        {
+            ArkUI_NumberValue value[] = {{x}, {y}};
+            ArkUI_AttributeItem item = {value, 2};
+            nativeModule_->setAttribute(handle_, NODE_SCALE, &item);
+        }
     
     protected:
         // 组件树操作的实现类对接。
@@ -669,15 +711,15 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     #endif // MYAPPLICATION_ARKUITEXTNODE_H
     ```
    
-5. 完善步骤3的CreateTextListExample函数，实现Native文本列表的创建和挂载显示。
+5. 完善步骤3的CreateExample函数，实现Native文本列表的创建和挂载显示。
 
-    <!-- @[Cpp_NormalTextListExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NormalTextListExample.h) -->
+    <!-- @[Cpp_NormalNodeExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NormalNodeExample.h) -->
     
     ``` C
-    // NormalTextListExample.h
+    // NormalNodeExample.h
     
-    #ifndef MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
-    #define MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
+    #ifndef MYAPPLICATION_NORMALNODEEXAMPLE_H
+    #define MYAPPLICATION_NORMALNODEEXAMPLE_H
     
     #include "ArkUIBaseNode.h"
     #include "ArkUIListItemNode.h"
@@ -686,7 +728,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     
     namespace NativeModule {
     
-    std::shared_ptr<ArkUIBaseNode> CreateTextListExample()
+    std::shared_ptr<ArkUIBaseNode> CreateExample()
     {
         // 创建组件并挂载
         // 1：使用智能指针创建List组件。
@@ -697,7 +739,12 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
         const int itemCount = 30;
         const int fontSizes = 16;
         const float screenWidth = 1;
+        const float borderWidth = 2;
         const int defaultHeight = 100;
+        const int defaultRadius = 8;
+        const float defaultOpacity = 0.8;
+        const float defaultScale = 0.8;
+        const float blank = 5;
         // 2：创建ListItem子组件并挂载到List上。
         for (int32_t i = 0; i < itemCount; ++i) {
             auto listItem = std::make_shared<ArkUIListItemNode>();
@@ -710,6 +757,13 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
             textNode->SetHeight(defaultHeight);
             textNode->SetBackgroundColor(0xFFfffacd);
             textNode->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);
+            textNode->SetBorderWidth(borderWidth);
+            textNode->SetBorderColor(0xFF0000ff);
+            textNode->SetBorderRadius(defaultRadius);
+            textNode->SetMargin(blank, 0, blank, 0);
+            textNode->SetPadding(0, blank, 0, blank);
+            textNode->SetOpacity(defaultOpacity);
+            textNode->SetScale(defaultScale, 1);
             listItem->InsertChild(textNode, i);
             list->AddChild(listItem);
         }
@@ -717,5 +771,5 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     }
     } // namespace NativeModule
     
-    #endif // MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
+    #endif // MYAPPLICATION_NORMALNODEEXAMPLE_H
     ```
