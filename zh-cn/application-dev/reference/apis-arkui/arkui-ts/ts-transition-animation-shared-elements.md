@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-可以通过设置组件的sharedTransition属性将该元素标记为共享元素并设置对应的共享元素转场动效。sharedTransition仅发生在[页面路由（router）](../js-apis-router.md)跳转时。
+可以通过设置组件的sharedTransition属性将该元素标记为共享元素并设置对应的共享元素转场动效。sharedTransition仅发生在[@ohos.router (页面路由)](../js-apis-router.md)跳转时。
 
 > **说明：**
 >
@@ -54,7 +54,7 @@ sharedTransition(id: string, options?: sharedTransitionOptions): T
 | duration          |     number   |  否  |    是          | 描述共享元素转场动效播放时长。<br>默认值：1000 <br>单位：毫秒<br/>取值范围：[0, +∞) |
 | curve             |      [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)  | 否 | 是 | 动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，取值参考[AnimateParam](./ts-explicit-animation.md#animateparam对象说明)的curve参数。<br/>默认值：Curve.Linear |
 | delay          |     number   |  否  |  是         | 延迟播放时间。<br>默认值：0 <br>单位：毫秒 |
-| motionPath          | [MotionPathOptions](./ts-motion-path-animation.md)  |  否   |  是        | 运动路径信息。 |
+| motionPath          | [MotionPathOptions](./ts-motion-path-animation.md#motionpathoptions)  |  否   |  是        | 运动路径信息。 |
 | zIndex          |     number   |  否   |   是           | 设置Z轴。<br/>取值范围：(-∞, +∞)<br>默认值：0 |
 | type           |     [SharedTransitionEffectType](ts-appendix-enums.md#sharedtransitioneffecttype)   |  否  |  是 | 动画类型。<br>默认值：SharedTransitionEffectType.Exchange |
 
