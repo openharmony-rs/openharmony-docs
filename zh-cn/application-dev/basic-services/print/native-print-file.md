@@ -280,12 +280,12 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Button('OH_Print_StartPrintJob')
+        Button('OH_Print_StartPrintByNative')
           .onClick(() => {
-            MyLog.info("OH_Print_StartPrintByNative onClick");
+            HiLog.info("OH_Print_StartPrintByNative onClick");
             let ctx: Context | undefined = this.getUIContext().getHostContext();
             let ret: boolean= testNapi.nativeStartPrintByNative(ctx);
-            MyLog.info(`nativeStartPrintByNative ret: ${JSON.stringify(ret)}`);
+            HiLog.info(`nativeStartPrintByNative ret: ${JSON.stringify(ret)}`);
           })
       }
       .width('100%')
@@ -390,9 +390,9 @@ struct Index {
       Column() {
         Button('OH_Print_StartPrintJob')
           .onClick(() => {
-            MyLog.info("OH_Print_StartPrintJob onClick");
+            HiLog.info("OH_Print_StartPrintJob onClick");
             let ret: boolean = testNapi.nativeStartPrintJob();
-            MyLog.info(`OH_Print_StartPrintJob ret: ${JSON.stringify(ret)}`);
+            HiLog.info(`OH_Print_StartPrintJob ret: ${JSON.stringify(ret)}`);
           })
       }
       .width('100%')
