@@ -40,7 +40,7 @@ AtomicServiceNavigation({
     navDestinationBuilder?: NavDestinationBuilder,
     navBarWidthRange?: [Dimension, Dimension],
     minContentWidth?: Dimension,
-    sideBarOptions?: SideBarOptions,
+    sideBarOptions?: sideBarOptions,
     sideBarContent?: Callback<void>,
     menus?: CustomBuilder | Array<NavigationMenuItem>,
     stateChangeCallback?: Callback<boolean>,
