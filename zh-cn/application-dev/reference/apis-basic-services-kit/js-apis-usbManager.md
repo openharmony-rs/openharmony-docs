@@ -1066,7 +1066,7 @@ ArkTS-Sta: closePipe(pipe: USBDevicePipe): int
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: number<br> ArkTS-Sta: int  | **ArkTS-Dyn**：关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其他错误码如下：<br>- -22：服务异常。<br>**ArkTS-Sta**：关闭设备消息控制通道成功返回1；关闭设备消息控制通道失败返回0。|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int  | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回5。|
 
 **错误码：**
 
