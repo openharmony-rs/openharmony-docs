@@ -5627,6 +5627,20 @@
 
 **起始版本**：26.0.0
 
+### ohos.permission.SET_WINDOW_TOUCH_AREAS
+
+允许应用设置窗口事件热区。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
 ### ohos.permission.READ_SPAM_SHIELD_SETTING
 
 允许系统应用读取骚扰拦截配置项。

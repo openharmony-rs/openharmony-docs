@@ -5627,6 +5627,20 @@ Allows a system application to modify application protection records.
 
 **Valid since**: 26.0.0
 
+### ohos.permission.SET_WINDOW_TOUCH_AREAS
+
+Allow the application to set window event hot zones.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
+
 ### ohos.permission.READ_SPAM_SHIELD_SETTING
 
 Allows a system application to read the spam shield settings.
