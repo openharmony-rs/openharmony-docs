@@ -293,7 +293,7 @@ import { AtomicServiceTabs, TabBarOptions, TabBarPosition, OnContentWillChangeCa
 
 @Entry
 @Component
-struct AtomicserviceTabs  {
+struct AtomicServiceTabs  {
   @State flag: boolean = false;
   @State message: string = '首页';
   @State onClickNumber: number = 0;
