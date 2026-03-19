@@ -9107,7 +9107,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[BundleNotificationStatistics](#bundlenotificationstatistics26)[]\>
 
-批量获取指定应用列表的通知统计信息， 使用Promise异步回调。
+批量获取指定应用列表的通知统计信息，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9485,7 +9485,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
-| lastTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 最近收到通知的时间。数据格式：时间戳。 单位：ms |
+| lastTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 最近收到通知的时间。数据格式：时间戳。单位：ms |
 | recentCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否 | 否 | 最近7天通知的总量。 |
 
 ## PriorityNotificationType<sup>23+</sup>
