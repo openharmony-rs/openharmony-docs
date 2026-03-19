@@ -589,7 +589,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     build() {
       Column({ space: 10 }) {
         // ...
-        //绘制一个直径为150的圆
+        // 绘制一个直径为150的圆
         Circle()
           .width(150)
           .height(200)
