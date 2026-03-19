@@ -9,9 +9,9 @@
 
 OpenHarmony提供了两种打印方式：
 
-[方式一](#步骤4-通过接口拉起系统打印预览界面下发任务)：应用通过接口拉起系统打印预览界面，根据系统打印预览的参数实时修改pdf文件，适合自生没有实现打印预览能力的应用。
+[方式一](#步骤4-通过接口拉起系统打印预览界面下发任务)：应用通过接口拉起系统打印预览界面。适合没有实现打印预览能力的应用。
 
-[方式二](#步骤5-通过打印接口直接下发打印任务)：应用通过接口直接下发打印任务，适合已经自己实现打印预览能力的应用。
+[方式二](#步骤5-通过打印接口直接下发打印任务)：应用通过接口指定打印文件和选项直接下发打印任务，适合已经实现打印预览能力的应用。
 
 > **说明：**
 >
@@ -29,7 +29,7 @@ OpenHarmony提供了两种打印方式：
 #include "BasicServicesKit/ohprint.h"
 
 #undef LOG_TAG
-#define LOG_TAG "print c/c++ demo"
+#define LOG_TAG "print c/c++"
 #define LOGE(...) OH_LOG_ERROR(LOG_APP, ##__VA_ARGS__)
 #define LOGI(...) OH_LOG_INFO(LOG_APP, ##__VA_ARGS__)
 ```
@@ -39,6 +39,12 @@ OpenHarmony提供了两种打印方式：
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { testNapi } from 'libentry.so';
 import { Context } from '@kit.AbilityKit';
+
+class HiLog {
+  static info(...args:string[]): void {
+    hilog.info(0x0, "print c/c++ ", '%{public}s', `${args.join(' ')}`);
+  }
+}
 ```
 
 ### 步骤2. 在CMake脚本中添加动态链接库
@@ -53,7 +59,7 @@ target_link_libraries(entry PUBLIC
 ```
 
 ### 步骤3. 绑定页面和打印服务生命周期
-建议将打印服务初始化和释放于需要用到系统打印能力相关的页面生命周期绑定。
+建议将打印服务初始化和释放与使用系统打印能力的页面的生命周期绑定。
 
 包装c++接口
 ```c++
@@ -92,7 +98,7 @@ static void PrinterChangeCallback(Print_PrinterEvent event, const Print_PrinterI
 {
     // 以设备Id作为唯一标识符
     if (printerInfo == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "print c/c++", "printerInfo is nullptr");
+        LOGE("printerInfo is nullptr");
         return;
     }
     // 开发者需根据具体事件实现相关逻辑
@@ -126,13 +132,13 @@ static void PrinterChangeCallback(Print_PrinterEvent event, const Print_PrinterI
 static napi_value NativeInit(napi_env env, napi_callback_info info)
 {
     // 初始化打印服务
-    int32_t ret = OH_Print_Init();
+    Print_ErrorCode ret = OH_Print_Init();
     LOGI("nativeInit, ret = %{public}d", ret);
     napi_value n_ret = nullptr;
     napi_get_boolean(env, !ret, &n_ret);
     if (ret == 0) {
         // 注册已添加设备状态变更事件监听
-        int32_t error = OH_Print_RegisterPrinterChangeListener(PrinterChangeCallback);
+        Print_ErrorCode error = OH_Print_RegisterPrinterChangeListener(PrinterChangeCallback);
         LOGI("OH_Print_RegisterPrinterChangeListener, ret = %{public}d", error);
         // 注册设备发现相关事件监听
         error = OH_Print_StartPrinterDiscovery(PrinterDiscoveryCallback);
@@ -148,12 +154,25 @@ static napi_value NativeRelease(napi_env env, napi_callback_info info)
     // 取消订阅注册设备发现相关事件订阅
     OH_Print_StopPrinterDiscovery();
     // 释放打印服务
-    int32_t ret = OH_Print_Release();
+    Print_ErrorCode ret = OH_Print_Release();
     LOGI("nativeInit, ret = %{public}d", ret);
     napi_value n_ret = nullptr;
     napi_get_boolean(env, !ret, &n_ret);
     return n_ret;
 }
+
+// 添加napi接口声明
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
+        { "nativeInit", nullptr, NativeInit, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "nativeRelease", nullptr, NativeRelease, nullptr, nullptr, nullptr, napi_default, nullptr },
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+EXTERN_C_END
 ```
 
 应用侧在页面被拉起的生命周期初始化，在页面关掉时释放。
@@ -177,7 +196,7 @@ struct Index {
 
 ```c++
 // napi_init.cpp
-// WriteFile 由开发者实现，根据当前用户修改前后的打印参数，重新生成新的文件写入系统提供的fd中。示例仅为简单的文件拷贝。
+// WriteFile 由开发者实现，示例仅为简单的文件拷贝。根据当前用户修改后的打印参数，若需要更新打印文件可重新写入系统提供的fd中。
 static uint32_t WriteFile(uint32_t fd, const Print_PrintAttributes *oldAttrs, const Print_PrintAttributes *newAttrs){
     // 沙箱内合法路径
     const char* filePath = "/data/storage/el2/base/files/test.pdf";
@@ -199,14 +218,14 @@ static uint32_t WriteFile(uint32_t fd, const Print_PrintAttributes *oldAttrs, co
     return 0;
 }
 
-// 系统打印预览界面回调，首次拉起或用户修改打印参数时回调，注意每次回调会
+// 系统打印预览界面回调，首次拉起或用户修改打印参数时的延迟文件写入回调。可以根据新参数适当修改打印文件。
 static void OnStartLayoutWriteCb(const char *jobId,
                                 uint32_t fd,
                                 const Print_PrintAttributes *oldAttrs,
                                 const Print_PrintAttributes *newAttrs,
                                 Print_WriteResultCallback writeCallback)
 {
-    // 将数据写入系统提供的fd中
+    // 将数据写入系统提供的fd中，每次回调的fd不一定相同，请不要保存此fd。
     uint32_t retCode = WriteFile(fd, oldAttrs, newAttrs);
     // 通知打印系统文件写入完成，若需要异步写入数据，请保存好jobId。
     // retCode取值：0-写入成功，1-写入异常，2-无需重新写入
@@ -221,6 +240,7 @@ static void OnJobStateChangedCb(const char *jobId, uint32_t state)
     LOGI("dosomething with OnJobStateChangedCb, jobId: %{public}s, jobState: %{public}u", jobId, state);
 }
 
+// 下发打印任务
 static napi_value NativeStartPrintByNative(napi_env env, napi_callback_info info) {
     napi_value n_ret = nullptr;
     void *context = nullptr;
@@ -237,9 +257,21 @@ static napi_value NativeStartPrintByNative(napi_env env, napi_callback_info info
     napi_get_boolean(env, !ret, &n_ret);
     return n_ret;
 }
+
+// 添加napi接口声明
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
+        { "nativeStartPrintByNative", nullptr, NativeStartPrintByNative, nullptr, nullptr, nullptr, napi_default, nullptr },
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+EXTERN_C_END
 ```
 
-主页上新增一个按钮，点击调用c++的nativeStartPrintByNative接口拉起打印预览界面
+主页上新增一个按钮，单击调用c++的nativeStartPrintByNative接口拉起打印预览界面
 ```ts
 // Index.ets
 @Entry
@@ -250,11 +282,11 @@ struct Index {
       Column() {
         Button('OH_Print_StartPrintJob')
           .onClick(() => {
-            MyLog.info("OH_Print_StartPrintByNative onClick")
+            MyLog.info("OH_Print_StartPrintByNative onClick");
             let ctx: Context | undefined = this.getUIContext().getHostContext();
             let ret: boolean= testNapi.nativeStartPrintByNative(ctx);
             MyLog.info(`nativeStartPrintByNative ret: ${JSON.stringify(ret)}`);
-          });
+          })
       }
       .width('100%')
     }
@@ -308,24 +340,24 @@ static napi_value NativeStartPrintJob(napi_env env, napi_callback_info info) {
     std::vector<uint32_t> fdList = { static_cast<uint32_t>(fd) };
     // 本例子使用首选项 printerInfo->defaultValue 作为打印任务参数来下发任务。
     Print_PrintJob* printJob = new Print_PrintJob{ "jobName",
-                                                fdList.data(),
-                                                static_cast<uint32_t>(fdList.size()),
-                                                printerInfo->printerId,
-                                                1, // 打印份数
-                                                printerInfo->defaultValue.defaultPaperSource,
-                                                printerInfo->defaultValue.defaultMediaType,
-                                                printerInfo->defaultValue.defaultPageSizeId,
-                                                printerInfo->defaultValue.defaultColorMode,
-                                                printerInfo->defaultValue.defaultDuplexMode,
-                                                printerInfo->defaultValue.defaultResolution,
-                                                printerInfo->defaultValue.defaultMargin,
-                                                true,
-                                                printerInfo->defaultValue.defaultOrientation,
-                                                printerInfo->defaultValue.defaultPrintQuality,
-                                                DOCUMENT_FORMAT_PDF,
-                                                printerInfo->defaultValue.otherDefaultValues, };
+                                                   fdList.data(),
+                                                   static_cast<uint32_t>(fdList.size()),
+                                                   printerInfo->printerId,
+                                                   1, // 打印份数
+                                                   printerInfo->defaultValue.defaultPaperSource,
+                                                   printerInfo->defaultValue.defaultMediaType,
+                                                   printerInfo->defaultValue.defaultPageSizeId,
+                                                   printerInfo->defaultValue.defaultColorMode,
+                                                   printerInfo->defaultValue.defaultDuplexMode,
+                                                   printerInfo->defaultValue.defaultResolution,
+                                                   printerInfo->defaultValue.defaultMargin,
+                                                   true,
+                                                   printerInfo->defaultValue.defaultOrientation,
+                                                   printerInfo->defaultValue.defaultPrintQuality,
+                                                   DOCUMENT_FORMAT_PDF,
+                                                   printerInfo->defaultValue.otherDefaultValues, };
     ret = OH_Print_StartPrintJob(printJob);
-
+    close(fd);
     // 使用完打印机属性和添加列表后需要及时释放
     OH_Print_ReleasePrinterInfo(printerInfo);
     OH_Print_ReleasePrinterList(&pList);
@@ -333,9 +365,21 @@ static napi_value NativeStartPrintJob(napi_env env, napi_callback_info info) {
     napi_get_boolean(env, !ret, &n_ret);
     return n_ret;
 }
+
+// 添加napi接口声明
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
+        { "nativeStartPrintJob", nullptr, NativeStartPrintJob, nullptr, nullptr, nullptr, napi_default, nullptr },
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+EXTERN_C_END
 ```
 
-主页上新增一个按钮，点击调用c++的nativeStartPrintByNative直接发送任务
+主页上新增一个按钮，单击调用c++的nativeStartPrintByNative直接发送任务
 ```ts
 // Index.ets
 @Entry
@@ -344,12 +388,12 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Button('OH_Print_StartPrintByNative')
+        Button('OH_Print_StartPrintJob')
           .onClick(() => {
-            MyLog.info("OH_Print_StartPrintByNative onClick")
+            MyLog.info("OH_Print_StartPrintJob onClick");
             let ret: boolean = testNapi.nativeStartPrintJob();
-            MyLog.info(`OH_Print_StartPrintByNative ret: ${JSON.stringify(ret)}`);
-          });
+            MyLog.info(`OH_Print_StartPrintJob ret: ${JSON.stringify(ret)}`);
+          })
       }
       .width('100%')
     }
