@@ -26,8 +26,6 @@ Input parameters do not meet the API requirements, such as invalid value ranges,
 
 **可能原因**
 
-在调用备份数据库接口[backupEx](js-apis-distributedKVStore.md#backupex24)、恢复数据库接口[restoreEx](js-apis-distributedKVStore.md#restoreex24)、删除备份数据库接口[deleteBackupEx](js-apis-distributedKVStore.md#deletebackupex24)时，传入的参数不符合API要求。
-
 1. 必选参数没有传入。
 
 2. 参数类型错误 (Type Error)。
@@ -43,7 +41,7 @@ Input parameters do not meet the API requirements, such as invalid value ranges,
 
 **处理步骤**
 
-在调用备份数据库接口[backupEx](js-apis-distributedKVStore.md#backupex24)、恢复数据库接口[restoreEx](js-apis-distributedKVStore.md#restoreex24)、删除备份数据库接口[deleteBackupEx](js-apis-distributedKVStore.md#deletebackupex24)时，请检查必选参数是否传入，或者传入的参数类型是否错误。对于参数校验失败，阅读参数规格约束，按照可能原因进行排查。
+请检查必选参数是否传入，或者传入的参数类型是否错误。对于参数校验失败，阅读参数规格约束，按照可能原因进行排查。
 
 ## 15100001 超过最大订阅数量
 
