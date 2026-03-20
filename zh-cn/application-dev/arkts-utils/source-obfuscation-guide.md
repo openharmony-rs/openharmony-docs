@@ -47,10 +47,10 @@
     -enable-toplevel-obfuscation
     -enable-filename-obfuscation
     # -enable-export-obfuscation
-    -keep-property-name # white list for dynamic property names
+    -keep-property-name # whitelist for dynamic property names
     ```
 
-    推荐参考[混淆选项配置指导](#混淆选项配置指导)进行混淆选项的配置。关于混淆过程中涉及的所有配置文件的详情，请参考[三种混淆配置文件](#三种混淆配置文件)。
+    混淆过程中涉及的所有配置文件详情，请参阅[三种混淆配置文件](#三种混淆配置文件)。首次适配混淆时，建议按照[混淆选项配置指导](#混淆选项配置指导)来配置混淆选项。
 
     > **说明：**
     >
@@ -59,7 +59,7 @@
 
 * 配置混淆保留选项
 
-    开启混淆后，代码中的方法、属性或路径被混淆。但是在程序运行时，如果访问未混淆的方法、属性或路径，可能导致功能不可用。因此需要根据不同的场景配置保留选项。关于保留选项的排查场景和配置方法，参考[保留选项](source-obfuscation.md#保留选项)。
+    开启混淆后，代码中的方法、属性或路径被混淆。但是在程序运行时，如果访问未混淆的方法、属性或路径，可能导致功能不可用。因此需要根据不同的场景配置保留选项。关于保留选项的排查场景和配置方法，参考[ArkGuard混淆保留选项](./source-obfuscation-keep-options.md)。
 
     排查场景和配置字段时，推荐使用[混淆助手配置保留选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation#section19439175917123)，快速识别需要配置的保留选项和白名单字段。
 
@@ -97,7 +97,7 @@
 
   > **说明**：
   >
-  > 如果在`consumer-rules.txt`文件中配置了[混淆选项](source-obfuscation.md#混淆选项)，可能会对依赖了HAR或HSP的主模块产生影响。因此，建议仅在该文件中配置[保留选项](source-obfuscation.md#保留选项)。
+  > 如果在`consumer-rules.txt`文件中配置了[ArkGuard混淆配置选项](./source-obfuscation-rule-options.md)，可能会对依赖了HAR或HSP的主模块产生影响。因此，建议仅在该文件中配置[ArkGuard混淆保留选项](./source-obfuscation-keep-options.md)。
 
 * `obfuscation.txt`  
 
@@ -143,7 +143,7 @@
        console.info(obj002.dynamicPropertyName);// 使用点语法静态访问属性，需使用-keep-property-name dynamicPropertyName来保留该属性名
        ```
     2. 若代码中使用点语法访问未在ArkTS/TS/JS代码中定义的字段，比如访问native实现的so库，字段固定的json文件与数据库等场景：
-        1. 若在代码中引用so库的api，如```import testNapi from 'library.so';testNapi.foo();```需要使用`-keep-property-name` foo保留属性名称，详见[选项说明](source-obfuscation.md#-keep-property-name)。
+        1. 若在代码中引用so库的api，如```import testNapi from 'library.so';testNapi.foo();```需要使用[-keep-property-name](./source-obfuscation-keep-options.md#-keep-property-name) foo 来保留属性名称。
         2. 若在代码中使用json文件中的字段，需要使用`-keep-property-name`保留json文件中的字段名称。
         3. 若在代码中使用数据库相关的字段，需要使用`-keep-property-name`保留数据库中的字段名称。
     3. 若构建HAR模块并发布给其他模块使用的场景，要在HAR模块中的consumer-rules.txt文件中将不能被二次混淆的属性使用`-keep-property-name`保留。consumer-rules.txt文件在构建HAR时会生成obfuscation.txt文件。此HAR被其它模块依赖时，DevEco Studio会解析obfuscation.txt文件，读取文件中的白名单。

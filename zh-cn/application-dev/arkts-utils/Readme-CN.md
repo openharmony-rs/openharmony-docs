@@ -110,7 +110,9 @@
     - [Disassembler反汇编工具（ArkTS-Sta）](tool-disassembler-sta.md)
   - ArkGuard源码混淆工具<!--arkts-arkguard-->
     - [ArkGuard混淆概述](source-obfuscation-overview.md)
-    - [ArkGuard混淆原理及功能](source-obfuscation.md)
+    - [ArkGuard混淆原理](source-obfuscation.md)
+    - [ArkGuard混淆配置选项](source-obfuscation-rule-options.md)
+    - [ArkGuard混淆保留选项](source-obfuscation-keep-options.md)
     - [ArkGuard混淆开启指南](source-obfuscation-guide.md)
     - [不同包类型的源码混淆建议](source-obfuscation-practice.md)
     - [ArkGuard混淆常见问题](source-obfuscation-questions.md)
