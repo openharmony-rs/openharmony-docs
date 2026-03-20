@@ -199,13 +199,14 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | RES_THREAD_PTHREAD | 线程创建时的调用栈。 | 23 |
 | RES_THREAD_ALL | 以上线程相关操作时的调用栈。 | 23 |
 | RES_ARKTS_HEAP_MASK | arkts内存分配栈。 | 23 |
-| RES_JS_HEAP_MASK | arkweb内存分配栈。 | 23 |
+| RES_JS_HEAP_MASK | 龙雀虚拟机JSVM内存跟踪 | 23 |
 | RES_KMP_HEAP_MASK | kmp内存分配栈。 | 23 |
 | RES_SO_MASK | so内存分配栈。 | 23 |
 | RES_ASHMEM_MASK | ashmem内存分配栈。 | 23 |
 | RES_RN_HEAP_MASK | rn内存分配栈。 | 23 |
 | RES_DMABUF_MASK | dmabuf内存分配栈。 | 23 |
 | RES_ARK_GLOBAL_HANDLE | ark全局句柄分配栈。 | 23 |
+| RES_VMA_ARKWEB | ArkWeb PA分配器内存跟踪。 | 23 |
 
 **结果分析**
 
