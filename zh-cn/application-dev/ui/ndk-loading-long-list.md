@@ -544,7 +544,7 @@ private:
    ```
 ## ListItem横划删除 
 
-1. [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)设置[NODE_LIST_ITEM_SWIPE_ACTION](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)属性，将[ArkUI_ListItemSwipeActionOption](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)对象作为属性参数传入。
+1. [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)设置[NODE_LIST_ITEM_SWIPE_ACTION](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)属性，将[ArkUI_ListItemSwipeActionOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)对象作为属性参数传入。
    <!-- @[Provide_wrapper_class_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemNode.h) -->
    
    ``` C
