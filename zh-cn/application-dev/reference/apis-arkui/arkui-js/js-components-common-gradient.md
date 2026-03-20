@@ -9,10 +9,10 @@
 >  **说明：**
 >  从API version 4开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-组件普遍支持在style或css中设置可以平稳过渡两个或多个指定的颜色。
+组件普遍支持在style或css中设置可以平滑过渡两个或多个指定的颜色。
 
 
-开发框架支持线性渐变 (linear-gradient)和重复线性渐变 (repeating-linear-gradient)两种渐变效果。
+开发框架支持线性渐变（linear-gradient）和重复线性渐变（repeating-linear-gradient）两种渐变效果。
 
 
 ## 线性渐变/重复线性渐变
@@ -23,9 +23,9 @@
 ### 过渡方向
 
 通过direction或者angle指定过渡方向。
-- direction：进行方向渐变。
+- direction：指定方向进行渐变。
 
-- angle：进行角度渐变。
+- angle：指定角度进行渐变。
 
 ```js
 // xxx.js
