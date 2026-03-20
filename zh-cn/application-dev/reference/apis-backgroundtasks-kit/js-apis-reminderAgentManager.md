@@ -26,8 +26,6 @@ publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback\<number>):
 
 发布后台代理提醒。使用callback异步回调。
 
-代理提醒发布成功后，当到达设置的提醒时间点时，通知中心会弹出相应的提醒，此时如果[ReminderRequest.ringDuration](#reminderrequest)参数值大于0，则设置的自定义铃声默认在闹钟通道上播放，如果值不大于0，则不播放自定义铃声。
-
 > **说明：**
 >
 > 该接口需要申请通知弹窗权限[notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
@@ -79,8 +77,6 @@ reminderAgentManager.publishReminder(timer, (err: BusinessError, reminderId: num
 publishReminder(reminderReq: ReminderRequest): Promise\<number>
 
 发布后台代理提醒。使用Promise异步回调。
-
-如果[ReminderRequest.ringDuration](#reminderrequest)参数值大于0，则自定义铃声默认在闹钟通道上播放，如果值不大于0，则无响铃。
 
 > **说明：**
 >
@@ -1049,18 +1045,18 @@ reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => 
 | actionButton | [[ActionButton?, ActionButton?, ActionButton?]](#actionbutton) | 否 | 是 | 弹出的提醒通知中显示的按钮。<br>针对三方应用：最多支持两个按钮。<br>针对系统应用：从API version 10开始最多支持三个按钮，API version 10之前的版本最多支持两个按钮。 |
 | wantAgent | [WantAgent](#wantagent) | 否 | 是 | 点击通知后需要跳转的目标ability信息。 |
 | maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagent) | 否 | 是 | 提醒到达时，全屏显示自动拉起目标的ability信息。如果设备正在使用中，则弹出一个通知横幅框。 <br> 说明：该接口为预留接口，暂不支持使用。|
-| ringDuration | number | 否 | 是 | 指明响铃时长（单位：秒），默认1秒，最长30分钟。 |
+| ringDuration | number | 否 | 是 | 指明响铃时长（单位：秒），默认1秒，最长30分钟。<br> 当值大于0时，如果设置了[ReminderRequest.customRingUri](#reminderrequest)属性，则在指定的通道[ReminderRequest.ringChannel](#reminderrequest)上播放铃声。否则使用代理提醒默认的自定义提示音播放铃声。<br> 如果要使用系统设置中的通知铃声，值设置为0。 |
 | snoozeTimes | number | 否 | 是 | 指明延时提醒次数，默认0次（不适用于倒计时提醒类型）。 |
-| timeInterval | number | 否 | 是 | 执行延时提醒间隔（单位：秒），默认0秒，最少30秒（不适用于倒计时提醒类型）。 |
+| timeInterval | number | 否 | 是 | 执行延时提醒间隔（单位：秒），最少30秒（不适用于倒计时提醒类型）。 |
 | title | string | 否 | 是 | 指明提醒标题。 |
-| titleResourceId<sup>18+</sup> | number | 否 | 是 | 指明提醒标题的资源ID，通过 $r(资源名称).id 方法获取。 |
+| titleResourceId<sup>18+</sup> | number | 否 | 是 | 指明提醒标题的资源ID，通过`$r(资源名称).id`方法获取。 |
 | content | string | 否 | 是 | 指明提醒内容。 |
-| contentResourceId<sup>18+</sup> | number | 否 | 是 | 指明提醒内容的资源ID，通过 $r(资源名称).id 方法获取。 |
+| contentResourceId<sup>18+</sup> | number | 否 | 是 | 指明提醒内容的资源ID，通过`$r(资源名称).id`方法获取。 |
 | expiredContent | string | 否 | 是 | 指明提醒过期后需要显示的内容。 |
-| expiredContentResourceId<sup>18+</sup> | number | 否 | 是 | 指明提醒过期后内容的资源ID，通过 $r(资源名称).id 方法获取。 |
+| expiredContentResourceId<sup>18+</sup> | number | 否 | 是 | 指明提醒过期后内容的资源ID，通过`$r(资源名称).id`方法获取。 |
 | snoozeContent | string | 否 | 是 | 指明延时提醒时需要显示的内容（不适用于倒计时提醒类型）。 |
-| snoozeContentResourceId<sup>18+</sup> | number | 否 | 是 | 指明延时提醒内容的资源ID，通过 $r(资源名称).id 方法获取。 |
-| notificationId | number | 否 | 是 | 指明提醒使用的通知的id号，需开发者传入，相同id号的提醒会覆盖，默认值0。 |
+| snoozeContentResourceId<sup>18+</sup> | number | 否 | 是 | 指明延时提醒内容的资源ID，通过`$r(资源名称).id`方法获取。 |
+| notificationId | number | 否 | 是 | 指明提醒使用的通知的id号，需开发者传入，相同id号的提醒会覆盖，默认值为0。 |
 | groupId<sup>11+</sup> | string | 否 | 是 | 指明提醒使用相同的组id。相同组id中，一个提醒被点击不在提醒后，组内其他提醒也会被取消。 |
 | slotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 是 | 指明提醒的通道渠道类型。 |
 | tapDismissed<sup>10+</sup> | boolean | 否 | 是 | 通知是否自动清除，默认值为true，具体请参考[NotificationRequest.tapDismissed](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。<br> - true：点击通知消息或通知按钮后，自动删除当前通知。<br> - false：点击通知消息或通知按钮后，保留当前通知。 |
