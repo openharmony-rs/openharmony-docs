@@ -32,7 +32,7 @@ FormComponent (value: FormInfo)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 18  zg+=
+**ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 23
 
