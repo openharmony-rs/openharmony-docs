@@ -1229,7 +1229,7 @@ try {
 
 setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string): Promise&lt;void&gt;
 
-设置当前设备激活锁SA禁用或启用。禁用后查找设备功能不能使用。
+禁用/启用设备激活锁。设备激活锁被禁用后，将无法使用查找设备功能。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1244,14 +1244,14 @@ setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string)
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| isDisabled | boolean | 是 | 是否禁用激活锁SA。true表示禁用，false表示启用。 |
-| credential | string | 否 | 禁用凭据。当设置禁用时该参数必须填写有效凭据，设置启用时为空。|
+| isDisabled | boolean | 是 | 是否禁用激活锁。true表示禁用，false表示启用。 |
+| credential | string | 否 | 禁用凭据。当设置禁用时该参数必须填写有效凭据<!--RP5--><!--RP5End-->，设置启用时为空。|
 
 **返回值：**
 
 | 类型   | 说明                                |
 | ------ | ----------------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。当设置禁用状态失败时，会抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当设置禁用/启用失败时，会抛出错误对象。 |
 
 **错误码**：
 
@@ -1279,11 +1279,11 @@ let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-
-let credential: string = "testCredential";
+// 需根据实际情况进行替换
+let credential: string = "XXX";
 let isDisabled: boolean = true;
 systemManager.setActivationLockDisabled(wantTemp, isDisabled, credential).then(() => {
-  console.info('Succeeded in set activation lock status.');
+  console.info('Succeeded in setting activation lock status.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to set activation lock status. Code: ${err.code}, message: ${err.message}`);
 });
@@ -1293,7 +1293,7 @@ systemManager.setActivationLockDisabled(wantTemp, isDisabled, credential).then((
 
 isActivationLockDisabled(admin: Want): Promise&lt;boolean&gt;
 
-获取当前设备激活锁SA禁用状态。
+获取设备激活锁禁用状态。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1313,7 +1313,7 @@ isActivationLockDisabled(admin: Want): Promise&lt;boolean&gt;
 
 | 类型                   | 说明                      |
 | --------------------- | ------------------------- |
-| Promise&lt;boolean&gt; | Promise对象，返回当前设备激活锁SA的禁用状态。返回True表示设备激活锁SA处于禁用状态，查找设备功能无法使用；返回false表示设备激活锁SA处于启用状态，可以正常使用设备查找功能。 |
+| Promise&lt;boolean&gt; | Promise对象，返回当前设备激活锁的禁用状态。返回true表示设备激活锁处于禁用状态，查找设备功能无法使用；返回false表示设备激活锁处于启用状态，可以正常使用设备查找功能。 |
 
 **错误码**：
 
@@ -1340,7 +1340,7 @@ let wantTemp: Want = {
 };
 
 systemManager.isActivationLockDisabled(wantTemp).then(result => {
-  console.info(`Succeeded in get activation lock status: ${JSON.stringify(result)}`);
+  console.info(`Succeeded in getting activation lock status: ${JSON.stringify(result)}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to set activation lock status. Code: ${err.code}, message: ${err.message}`);
 });

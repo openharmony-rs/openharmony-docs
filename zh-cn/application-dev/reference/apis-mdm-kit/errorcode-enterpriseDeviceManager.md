@@ -587,10 +587,8 @@ Failed to enable or disable the activation lock.
 
 **可能原因**
 
-1. Json字符串解析失败。
-2. 接口返回errorCode值非0。
+<!--RP1-->设备不支持激活锁服务。<!--RP1End-->
 
 **处理步骤**
 
-1. 检查返回的Json字符串是否解析成功。
-2. 检查返回errorCode是否为0。
+<!--RP2-->设备不支持激活锁服务。<!--RP2End-->
