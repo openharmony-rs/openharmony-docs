@@ -30,7 +30,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_AVDemuxer](capi-avdemuxer-oh-avdemuxer.md) | OH_AVDemuxer | 为OH_AVDemuxer接口定义native层对象。 |
-| [DRM_MediaKeySystemInfo](capi-avdemuxer-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | 为DRM_MediaKeySystemInf接口定义native层对象。 |
+| [DRM_MediaKeySystemInfo](capi-avdemuxer-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | 为DRM_MediaKeySystemInfo接口定义native层对象。 |
 
 ### 函数
 
