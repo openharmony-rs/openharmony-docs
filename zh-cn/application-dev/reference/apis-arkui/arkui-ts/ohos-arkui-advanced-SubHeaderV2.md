@@ -135,7 +135,7 @@ constructor(options: SubHeaderV2TitleOptions)
 | secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 副标题内容。<br />默认值：undefined<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23   |
 | primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md)  | 否 | 设置标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md)  | 否 | 设置副标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 设置标题自定义朗读内容。<br />默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
+| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | 设置标题自定义朗读内容。<br />默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## SubHeaderV2Select
 
