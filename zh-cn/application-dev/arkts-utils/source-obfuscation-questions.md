@@ -37,8 +37,6 @@
 ### 排查非预期的混淆能力
 若出现预期外的混淆效果，检查是否由于依赖的本地模块或三方库开启了某些混淆选项。
 
-示例：
-
 假设当前模块未配置`-compact`，但混淆的中间产物中代码都被压缩成一行，可按照以下步骤排查混淆选项：
 
 1. 查看当前模块的oh-package.json5中的dependencies，此字段记录了当前模块的依赖信息。
@@ -102,7 +100,7 @@ let jsonProp = jsonData.i.j;
 
 **解决方案**
 
-将JSON文件中的字段配置到属性白名单中。示例如下：
+将JSON文件中的字段配置到属性白名单中。
 
 ```text
 -keep-property-name
@@ -165,7 +163,7 @@ namespace中的foo属于export元素，当通过`NS.foo`调用时被视为属性
 
 方案一：开启`-enable-property-obfuscation`选项。
 
-方案二：使用`-keep-global-name`选项将namespace中导出的方法配置到白名单中。示例如下：
+方案二：使用`-keep-global-name`选项将namespace中导出的方法配置到白名单中。
 
 ```text
 -keep-global-name
@@ -241,7 +239,7 @@ i();
 
 方案一：开启`-enable-property-obfuscation`选项。
 
-方案二：使用`-keep-global-name`选项将add配置到白名单中。示例如下：
+方案二：使用`-keep-global-name`选项将add配置到白名单中。
 
 ```text
 -keep-global-name
@@ -292,7 +290,7 @@ testNapi.m();
 
 **解决方案**
 
-将so库导出的方法配置到属性白名单中。示例如下：
+将so库导出的方法配置到属性白名单中。
 
 ```text
 -keep-property-name
@@ -355,7 +353,7 @@ n();
 
 **解决方案**
 
-将HSP模块导出的方法配置到`-keep-global-name`下，并且需要在HSP的`consumer-rules.txt`和`obfuscation-rules.txt`文件中都进行对应配置。示例如下：
+将HSP模块导出的方法配置到`-keep-global-name`下，并且需要在HSP的`consumer-rules.txt`和`obfuscation-rules.txt`文件中都进行对应配置。
 
 ```text
 // consumer-rules.txt
@@ -411,7 +409,7 @@ let petalMapWant: Want = {
 
 **解决方案**
 
-将混淆后会出现问题的属性名配置到属性白名单中，示例如下：
+将混淆后会出现问题的属性名配置到属性白名单中。
 
 ```text
 -keep-property-name
@@ -488,7 +486,7 @@ const person: MyInfo = {
 
 **解决方案**
 
-方案一：使用`interface`定义该属性的类型，并使用`export`进行导出，这样该属性将被自动加入到属性白名单中。示例如下：
+方案一：使用`interface`定义该属性的类型，并使用`export`进行导出，这样该属性将被自动加入到属性白名单中。
 
 <!-- @[export_file](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/FileOutside.ts) -->
 
@@ -503,7 +501,7 @@ export interface MyInfo2 {
 }
 ```
 
-方案二：使用`-keep-property-name`选项，将未直接导出的类型内的属性配置到属性白名单中。示例如下：
+方案二：使用`-keep-property-name`选项，将未直接导出的类型内的属性配置到属性白名单中。
 
 ```text
 -keep-property-name
@@ -579,7 +577,7 @@ const valueBucket: ValuesBucket = {
 
 **解决方案** 
 
-使用`-keep-property-name`选项将使用到的数据库字段配置到白名单。例如：
+使用`-keep-property-name`选项将使用到的数据库字段配置到白名单。
 
 ```text
 -keep-property-name
