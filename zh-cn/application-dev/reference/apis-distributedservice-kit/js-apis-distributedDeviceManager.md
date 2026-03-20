@@ -27,7 +27,7 @@ createDeviceManager(bundleName: string): DeviceManager
 
 创建一个设备管理实例。设备管理实例是分布式设备管理方法的调用入口。用于获取可信设备和本地设备的相关信息。
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -73,7 +73,7 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 设备管理实例不再使用后，通过该方法释放DeviceManager实例。
 
-**系统能力：**：SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -113,7 +113,7 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 分布式设备基本信息。
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：以下各项对应的系统能力均为SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -130,7 +130,7 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 表示设备状态。
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：以下各项对应的系统能力均为SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -146,9 +146,9 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 设备状态改变结果信息。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -163,7 +163,7 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**系统能力：**： SystemCapability.DistributedHardware.DeviceManager
+**系统能力**： SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -175,9 +175,9 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 设备发现失败原因。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -189,9 +189,9 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 设备发现成功，发现的设备信息。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -203,9 +203,9 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 DeviceManager 服务进程退出信息。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -216,9 +216,9 @@ DeviceManager 服务进程退出信息。
 
 认证设备结果信息。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -230,7 +230,7 @@ DeviceManager 服务进程退出信息。
 
 设备管理实例，用于获取可信设备和本地设备的相关信息。在调用DeviceManager的方法前，需要先通过createDeviceManager构建一个DeviceManager实例dmInstance。
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -242,9 +242,9 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;
 
 同步获取所有可信设备列表。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -286,9 +286,9 @@ getAvailableDeviceList(callback:AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt
 
 获取所有可信设备列表。使用callback异步回调。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -323,7 +323,7 @@ getAvailableDeviceList(callback:AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt
           console.error('getAvailableDeviceList errCode:' + err.code + ',errMessage:' + err.message);
           return;
         }
-        console.log('get available device info: ' + JSON.stringify(data));
+        console.info('get available device info: ' + JSON.stringify(data));
       });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
@@ -337,9 +337,9 @@ getAvailableDeviceList(): Promise&lt;Array&lt;DeviceBasicInfo&gt;&gt;
 
 获取所有可信设备列表。使用Promise异步回调。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -369,7 +369,7 @@ getAvailableDeviceList(): Promise&lt;Array&lt;DeviceBasicInfo&gt;&gt;
   try{
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     dmInstance.getAvailableDeviceList().then((data: Array<distributedDeviceManager.DeviceBasicInfo>) => {
-      console.log('get available device info: ' + JSON.stringify(data));
+      console.info('get available device info: ' + JSON.stringify(data));
       }).catch((err) => {
         let e: BusinessError = err as BusinessError;
         console.error('getAvailableDeviceList errCode:' + e.code + ',errMessage:' + e.message);
@@ -386,9 +386,9 @@ getLocalDeviceNetworkId(): string
 
 获取本地设备网络标识。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -418,7 +418,7 @@ getLocalDeviceNetworkId(): string
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceNetworkId: string = dmInstance.getLocalDeviceNetworkId();
-    console.log('local device networkId: ' + JSON.stringify(deviceNetworkId));
+    console.info('local device networkId: ' + JSON.stringify(deviceNetworkId));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getLocalDeviceNetworkId errCode:' + e.code + ',errMessage:' + e.message);
@@ -431,9 +431,9 @@ getLocalDeviceName(): string
 
 获取本地设备名称。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -463,7 +463,7 @@ getLocalDeviceName(): string
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceName: string = dmInstance.getLocalDeviceName();
-    console.log('local device name: ' + JSON.stringify(deviceName));
+    console.info('local device name: ' + JSON.stringify(deviceName));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
@@ -478,9 +478,9 @@ ArkTS-Sta: getLocalDeviceType(): int
 
 获取本地设备类型。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -513,7 +513,7 @@ ArkTS-Dyn示例：
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceType: number = dmInstance.getLocalDeviceType();
-    console.log('local device type: ' + JSON.stringify(deviceType));
+    console.info('local device type: ' + JSON.stringify(deviceType));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getLocalDeviceType errCode:' + e.code + ',errMessage:' + e.message);
@@ -541,9 +541,9 @@ getLocalDeviceId(): string
 
 获取本地设备id，实际值为udid-hash与appid和盐值基于sha256方式进行混淆后的值。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -573,7 +573,7 @@ getLocalDeviceId(): string
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceId: string = dmInstance.getLocalDeviceId();
-    console.log('local device id: ' + JSON.stringify(deviceId));
+    console.info('local device id: ' + JSON.stringify(deviceId));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getLocalDeviceId errCode:' + e.code + ',errMessage:' + e.message);
@@ -586,9 +586,9 @@ getDeviceName(networkId: string): string
 
 通过指定设备的网络标识获取该设备名称。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -627,7 +627,7 @@ getDeviceName(networkId: string): string
     let networkId = 'xxxxxxx';
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceName: string = dmInstance.getDeviceName(networkId);
-    console.log('device name: ' + JSON.stringify(deviceName)); 
+    console.info('device name: ' + JSON.stringify(deviceName)); 
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getDeviceName errCode:' + e.code + ',errMessage:' + e.message);
@@ -642,9 +642,9 @@ ArkTS-Sta: getDeviceType(networkId: string): int
 
 通过指定设备的网络标识获取该设备类型。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -684,7 +684,7 @@ ArkTS-Dyn示例：
     let networkId = 'xxxxxxx';
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceType: number = dmInstance.getDeviceType(networkId);
-    console.log('device type: ' + JSON.stringify(deviceType)); 
+    console.info('device type: ' + JSON.stringify(deviceType)); 
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getDeviceType errCode:' + e.code + ',errMessage:' + e.message);
@@ -716,9 +716,9 @@ ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, f
 
 发现周边设备。发现状态持续两分钟，超过两分钟，会停止发现，最大发现数量99个。wifi场景要求同局域网。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -809,9 +809,9 @@ stopDiscovering(): void
 
 停止发现周边设备。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -849,9 +849,9 @@ ArkTS-Sta: bindTarget(deviceId: string, bindParam: Record&lt;string, int | strin
 
 认证设备。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -956,9 +956,9 @@ unbindTarget(deviceId: string): void
 
 解除认证设备。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1002,13 +1002,13 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
 
 注册设备状态回调，以便在设备状态发生变化时根据应用捆绑包名通知应用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [onDeviceStateChange](#ondevicestatechange23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是 [onDeviceStateChange](#ondevicestatechange23)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1061,13 +1061,13 @@ onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;): void
 
 注册设备状态回调，以便在设备状态发生变化时根据应用捆绑包名通知应用。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是 [on('deviceStateChange')](#ondevicestatechange)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [on('deviceStateChange')](#ondevicestatechange)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1108,13 +1108,13 @@ off(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChang
 
 取消注册设备状态回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [offDeviceStateChange](#offdevicestatechange23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是 [offDeviceStateChange](#offdevicestatechange23)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1167,13 +1167,13 @@ offDeviceStateChange(callback?: Callback&lt;DeviceStateChangeResult&gt;): void
 
 取消注册设备状态回调。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是 [off('deviceStateChange')](#offdeviceStateChange)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('deviceStateChange')](#offdeviceStateChange)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1214,13 +1214,13 @@ on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&g
 
 注册发现设备成功回调监听。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [onDiscoverSuccess](#ondiscoversuccess23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是 [onDiscoverSuccess](#ondiscoversuccess23)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1272,13 +1272,13 @@ onDiscoverSuccess(callback: Callback&lt;DiscoverySuccessResult&gt;): void
 
 注册发现设备成功回调监听。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是 [on('discoverSuccess')](#ondiscoverSuccess)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [on('discoverSuccess')](#ondiscoverSuccess)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1319,13 +1319,13 @@ off(type: 'discoverSuccess', callback?: Callback&lt;{ device: DeviceBasicInfo; }
 
 取消注册设备发现成功回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [offDiscoverSuccess](#offdiscoversuccess23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是 [offDiscoverSuccess](#offdiscoversuccess23)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1377,13 +1377,13 @@ offDiscoverSuccess(callback?: Callback&lt;DiscoverySuccessResult&gt;): void
 
 取消注册设备发现成功回调。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是 [off('discoverSuccess')](#offdiscoverSuccess)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('discoverSuccess')](#offdiscoverSuccess)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1424,13 +1424,13 @@ on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;):
 
 注册设备名称变更回调，以便在设备名称改变时通知应用程序。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [onDeviceNameChange](#ondevicenamechange23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是 [onDeviceNameChange](#ondevicenamechange23)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1477,13 +1477,13 @@ onDeviceNameChange(callback: Callback&lt;DeviceNameChangeResult&gt;): void
 
 注册设备名称变更回调，以便在设备名称改变时通知应用程序。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是 [on('deviceNameChange')](#ondevicenamechange)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [on('deviceNameChange')](#ondevicenamechange)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1524,13 +1524,13 @@ off(type: 'deviceNameChange', callback?: Callback&lt;{ deviceName: string; }&gt;
 
 取消注册设备名称变更回调监听。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [offDeviceNameChange](#offdevicenamechange23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是 [offDeviceNameChange](#offdevicenamechange23)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1577,13 +1577,13 @@ offDeviceNameChange(callback?: Callback&lt;DeviceNameChangeResult&gt;): void
 
 取消注册设备名称变更回调监听。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是 [off('deviceNameChange')](#offdevicenamechange)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('deviceNameChange')](#offdevicenamechange)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1624,13 +1624,13 @@ on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;): void
 
 注册设备发现失败回调监听。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [onDiscoverFailure](#ondiscoverfailure23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是 [onDiscoverFailure](#ondiscoverfailure23)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1677,13 +1677,13 @@ onDiscoverFailure(callback: Callback&lt;DiscoveryFailureResult&gt;): void
 
 注册设备发现失败回调监听。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是 [on('discoverFailure')](#ondiscoverfailure)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [on('discoverFailure')](#ondiscoverfailure)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1724,13 +1724,13 @@ off(type: 'discoverFailure', callback?: Callback&lt;{ reason: number; }&gt;): vo
 
 取消注册设备发现失败回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [offDiscoverFailure](#offdiscoverfailure23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是 [offDiscoverFailure](#offdiscoverfailure23)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1777,13 +1777,13 @@ offDiscoverFailure(callback?: Callback&lt;DiscoveryFailureResult&gt;): void
 
 取消注册设备发现失败回调。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是 [off('discoverFailure')](#offdiscoverfailure)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('discoverFailure')](#offdiscoverfailure)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1824,13 +1824,13 @@ on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
 注册设备管理服务死亡回调，以便在服务死亡时通知应用程序。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [onServiceDie](#onservicedie23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是 [onServiceDie](#onservicedie23)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1873,13 +1873,13 @@ onServiceDie(callback: Callback&lt;ServiceDieData&gt;): void
 
 注册设备管理服务死亡回调，以便在服务死亡时通知应用程序。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是 [on('serviceDie')](#onservicedie)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [on('serviceDie')](#onservicedie)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1920,13 +1920,13 @@ off(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
 取消注册设备管理服务死亡回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [offServiceDie](#offservicedie23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是 [offServiceDie](#offservicedie23)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1969,13 +1969,13 @@ offServiceDie(callback?: Callback&lt;ServiceDieData&gt;): void
 
 取消注册设备管理服务死亡回调。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是 [off('serviceDie')](#offservicedie)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('serviceDie')](#offservicedie)。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **ArkTS-Sta起始版本：** 23
 
