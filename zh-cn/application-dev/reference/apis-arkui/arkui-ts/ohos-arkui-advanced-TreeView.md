@@ -250,7 +250,7 @@ on(type: TreeListenType, callback: OnChangedCallback): void;
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | 是 | 监听类型。 |
-| callback | ArkTS-Dyn: (callbackParam: [CallbackParam](#callbackparam)) =&gt; void <br/>ArkTS-Sta: [OnChangedCallback](#onchangedcallback) | 是 | 节点信息。 |
+| callback | ArkTS-Dyn: (callbackParam: [CallbackParam](#callbackparam)) =&gt; void <br/>ArkTS-Sta: [OnChangedCallback](#onchangedcallback23) | 是 | 节点信息。 |
 
 
 ### once
@@ -274,7 +274,7 @@ once(type: TreeListenType, callback: OnChangedCallback): void;
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | 是 | 监听类型。 |
-| callback | ArkTS-Dyn: (callbackParam: [CallbackParam](#callbackparam)) =&gt; void <br/>ArkTS-Sta: [OnChangedCallback](#onchangedcallback) | 是 | 节点信息。 |
+| callback | ArkTS-Dyn: (callbackParam: [CallbackParam](#callbackparam)) =&gt; void <br/>ArkTS-Sta: [OnChangedCallback](#onchangedcallback23) | 是 | 节点信息。 |
 
 
 ### off
@@ -298,7 +298,7 @@ off(type: TreeListenType, callback?: OnChangedCallback): void;
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | 是 | 监听类型。 |
-| callback | ArkTS-Dyn: (callbackParam: [CallbackParam](#callbackparam)) =&gt; void <br/>ArkTS-Sta: [OnChangedCallback](#onchangedcallback) | 否 | 节点信息。 |
+| callback | ArkTS-Dyn: (callbackParam: [CallbackParam](#callbackparam)) =&gt; void <br/>ArkTS-Sta: [OnChangedCallback](#onchangedcallback23) | 否 | 节点信息。 |
 
 ## TreeListenType
 
@@ -341,6 +341,8 @@ type OnChangedCallback = (callbackParam: CallbackParam) => void;
 监听树节点的变化时的回调事件。回调函数的参数为树节点相关信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
