@@ -18,6 +18,12 @@
 <!-- @[flex_flex_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKFlexSample/entry/src/main/cpp/ArkUIFlexNode.h) -->
 
 ``` C
+#ifndef NDKFLEXSAMPLE_ARKUIFLEXNODE_H
+#define NDKFLEXSAMPLE_ARKUIFLEXNODE_H
+
+#include "ArkUINode.h"
+
+namespace NativeModule {
 class ArkUIFlexNode : public ArkUINode {
 public:
     ArkUIFlexNode()
@@ -39,6 +45,9 @@ public:
         nativeModule_->setAttribute(handle_, NODE_FLEX_OPTION, &item);
     }
 };
+} // namespace NativeModule
+
+#endif // NDKFLEXSAMPLE_ARKUIFLEXNODE_H
 ```
 
 节点创建完成后，通过预实现的通用属性和上文实现的SetFlexOption，构造了一个预设样式的Flex组件。下面代码展示了如何设置容器按行排列子组件、子组件超出宽度后自动换行、每一行默认从起始位置开始布局。
@@ -99,7 +108,7 @@ inline std::shared_ptr<ArkUIFlexNode> CreateFlexWrapExample()
 {
     auto flex = CreateFlexContainer();
     const auto flexColors = CreateFlexColorSet();
-    for (int32_t index = 0; index < static_cast<int32_t>(flexColors.size()); ++index) { // 循环遍历数组，添加一组子节点
+    for (int32_t index = 0; index < static_cast<int32_t>(flexColors.size()); ++index) {
         flex->AddChild(CreateFlexExampleItem(index, flexColors[index]));
     }
     return flex;

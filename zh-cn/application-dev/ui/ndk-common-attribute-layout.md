@@ -19,28 +19,31 @@ NDK通用布局属性的推荐使用方式是：先在节点类中封装属性�
 
 <!-- @[layout_size_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->
 
-```C
+``` C
 void SetWidth(float width)
 {
     ArkUI_NumberValue value[] = {{.f32 = width}};
     ArkUI_AttributeItem item = {value, 1};
     nativeModule_->setAttribute(handle_, NODE_WIDTH, &item);
 }
-
 void SetPercentWidth(float percent)
 {
     ArkUI_NumberValue value[] = {{.f32 = percent}};
     ArkUI_AttributeItem item = {value, 1};
     nativeModule_->setAttribute(handle_, NODE_WIDTH_PERCENT, &item);
 }
-
 void SetHeight(float height)
 {
     ArkUI_NumberValue value[] = {{.f32 = height}};
     ArkUI_AttributeItem item = {value, 1};
     nativeModule_->setAttribute(handle_, NODE_HEIGHT, &item);
 }
-
+void SetPercentHeight(float percent)
+{
+    ArkUI_NumberValue value[] = {{.f32 = percent}};
+    ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_HEIGHT_PERCENT, &item);
+}
 void SetSize(float width, float height)
 {
     ArkUI_NumberValue value[] = {{.f32 = width}, {.f32 = height}};
@@ -51,7 +54,7 @@ void SetSize(float width, float height)
 
 <!-- @[layout_aspect_ratio_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->
 
-```C
+``` C
 void SetAspectRatio(float ratio)
 {
     ArkUI_NumberValue value[] = {{.f32 = ratio}};
@@ -64,7 +67,7 @@ void SetAspectRatio(float ratio)
 
 <!-- @[layout_size_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/LayoutAttributeExample.h) -->
 
-```C
+``` C
 inline std::shared_ptr<ArkUITextNode> CreateFixedSizeItem()
 {
     auto fixedItem = CreateDemoItem("NODE_SIZE\n112 x 68vp", SIZE_ITEM_BLUE);
@@ -99,28 +102,43 @@ SetSize()同时写入宽和高，适合固定尺寸组件；SetPercentWidth()通
 
 <!-- @[layout_spacing_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->
 
-```C
+``` C
+void SetPadding(float padding)
+{
+    ArkUI_NumberValue value[] = {{.f32 = padding}};
+    ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_PADDING, &item);
+}
 void SetPadding(float top, float right, float bottom, float left)
 {
     ArkUI_NumberValue value[] = {{.f32 = top}, {.f32 = right}, {.f32 = bottom}, {.f32 = left}};
     ArkUI_AttributeItem item = {value, 4};
     nativeModule_->setAttribute(handle_, NODE_PADDING, &item);
 }
-
+void SetPercentPadding(float percent)
+{
+    ArkUI_NumberValue value[] = {{.f32 = percent}};
+    ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_PADDING_PERCENT, &item);
+}
 void SetPercentPadding(float top, float right, float bottom, float left)
 {
     ArkUI_NumberValue value[] = {{.f32 = top}, {.f32 = right}, {.f32 = bottom}, {.f32 = left}};
     ArkUI_AttributeItem item = {value, 4};
     nativeModule_->setAttribute(handle_, NODE_PADDING_PERCENT, &item);
 }
-
+void SetMargin(float margin)
+{
+    ArkUI_NumberValue value[] = {{.f32 = margin}};
+    ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_MARGIN, &item);
+}
 void SetMargin(float top, float right, float bottom, float left)
 {
     ArkUI_NumberValue value[] = {{.f32 = top}, {.f32 = right}, {.f32 = bottom}, {.f32 = left}};
     ArkUI_AttributeItem item = {value, 4};
     nativeModule_->setAttribute(handle_, NODE_MARGIN, &item);
 }
-
 void SetPercentMargin(float percent)
 {
     ArkUI_NumberValue value[] = {{.f32 = percent}};
@@ -131,7 +149,7 @@ void SetPercentMargin(float percent)
 
 <!-- @[layout_spacing_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/LayoutAttributeExample.h) -->
 
-```C
+``` C
 inline std::shared_ptr<ArkUITextNode> CreatePercentWidthPaddingItem()
 {
     auto inner = CreateDemoItem("内容区", PADDING_ITEM_BLUE);
@@ -170,14 +188,13 @@ inline std::shared_ptr<ArkUITextNode> CreateMarginItem(const std::string &text, 
 
 <!-- @[layout_position_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->
 
-```C
+``` C
 void SetPosition(float x, float y)
 {
     ArkUI_NumberValue value[] = {{.f32 = x}, {.f32 = y}};
     ArkUI_AttributeItem item = {value, 2};
     nativeModule_->setAttribute(handle_, NODE_POSITION, &item);
 }
-
 void SetOffset(float x, float y)
 {
     ArkUI_NumberValue value[] = {{.f32 = x}, {.f32 = y}};
@@ -190,7 +207,7 @@ void SetOffset(float x, float y)
 
 <!-- @[layout_position_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/LayoutAttributeExample.h) -->
 
-```C
+``` C
 inline std::shared_ptr<ArkUITextNode> CreatePositionedItem()
 {
     auto positioned = CreateDemoItem("position(20, 18)", POSITION_ITEM_ORANGE);
@@ -219,33 +236,59 @@ inline std::shared_ptr<ArkUITextNode> CreateOffsetItem()
 
 <!-- @[layout_border_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->
 
-```C
+``` C
 void SetBorderWidth(float width)
 {
     ArkUI_NumberValue value[] = {{.f32 = width}};
     ArkUI_AttributeItem item = {value, 1};
     nativeModule_->setAttribute(handle_, NODE_BORDER_WIDTH, &item);
 }
-
+void SetBorderWidth(float top, float right, float bottom, float left)
+{
+    ArkUI_NumberValue value[] = {{.f32 = top}, {.f32 = right}, {.f32 = bottom}, {.f32 = left}};
+    ArkUI_AttributeItem item = {value, 4};
+    nativeModule_->setAttribute(handle_, NODE_BORDER_WIDTH, &item);
+}
+void SetBorderRadius(float radius)
+{
+    ArkUI_NumberValue value[] = {{.f32 = radius}};
+    ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_BORDER_RADIUS, &item);
+}
+void SetBorderRadius(float topLeft, float topRight, float bottomLeft, float bottomRight)
+{
+    ArkUI_NumberValue value[] = {
+        {.f32 = topLeft}, {.f32 = topRight}, {.f32 = bottomLeft}, {.f32 = bottomRight}
+    };
+    ArkUI_AttributeItem item = {value, 4};
+    nativeModule_->setAttribute(handle_, NODE_BORDER_RADIUS, &item);
+}
 void SetBorderColor(uint32_t color)
 {
     ArkUI_NumberValue value[] = {{.u32 = color}};
     ArkUI_AttributeItem item = {value, 1};
     nativeModule_->setAttribute(handle_, NODE_BORDER_COLOR, &item);
 }
-
+void SetBorderColor(uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)
+{
+    ArkUI_NumberValue value[] = {{.u32 = top}, {.u32 = right}, {.u32 = bottom}, {.u32 = left}};
+    ArkUI_AttributeItem item = {value, 4};
+    nativeModule_->setAttribute(handle_, NODE_BORDER_COLOR, &item);
+}
 void SetBorderStyle(ArkUI_BorderStyle style)
 {
     ArkUI_NumberValue value[] = {{.i32 = style}};
     ArkUI_AttributeItem item = {value, 1};
     nativeModule_->setAttribute(handle_, NODE_BORDER_STYLE, &item);
 }
-
-void SetBorderRadius(float radius)
+void SetBorderStyle(
+    ArkUI_BorderStyle top, ArkUI_BorderStyle right, ArkUI_BorderStyle bottom, ArkUI_BorderStyle left)
 {
-    ArkUI_NumberValue value[] = {{.f32 = radius}};
-    ArkUI_AttributeItem item = {value, 1};
-    nativeModule_->setAttribute(handle_, NODE_BORDER_RADIUS, &item);
+    ArkUI_NumberValue value[] = {
+        {.i32 = top}, {.i32 = right}, {.i32 = bottom}, {.i32 = left}
+    };
+    ArkUI_AttributeItem item = {value, 4};
+    nativeModule_->setAttribute(handle_, NODE_BORDER_STYLE, &item);
 }
 ```
 
