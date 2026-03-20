@@ -10,6 +10,8 @@
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 该组件不支持在Wearable设备上使用。
 
 
@@ -27,7 +29,7 @@ import { ProgressButton } from '@kit.ArkUI';
 ArkTS-Dyn: ProgressButton({progress: number, content: ResourceStr, progressButtonWidth?: Length, clickCallback: () => void, enable:
 boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
 
-ArkTS-Sta: ProgressButton({progress: int, content: ResourceStr, progressButtonWidth?: Length, clickCallback: () => void, enable:
+ArkTS-Sta: ProgressButton({progress: double, content: ResourceStr, progressButtonWidth?: Length, clickCallback: () => void, enable:
 boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
 
 **装饰器类型：**\@Component

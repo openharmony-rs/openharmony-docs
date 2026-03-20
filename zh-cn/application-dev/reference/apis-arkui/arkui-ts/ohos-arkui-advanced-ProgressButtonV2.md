@@ -11,6 +11,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件仅可在Stage模型下使用。
 > 
 > - 该组件不支持在Wearable设备上使用。
 
@@ -26,7 +28,7 @@ import { ColorMetrics, LengthMetrics, ProgressButtonV2,  ProgressButtonV2Color }
 ArkTS-Dyn: ProgressButtonV2({progress: number, content: ResourceStr, progressButtonWidth?: LengthMetrics, onClicked: ClickCallback,
 isEnabled: boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
 
-ArkTS-Sta: ProgressButtonV2({progress: int, content: ResourceStr, progressButtonWidth?: LengthMetrics, onClicked: ClickCallback,
+ArkTS-Sta: ProgressButtonV2({progress: double, content: ResourceStr, progressButtonWidth?: LengthMetrics, onClicked: ClickCallback,
 isEnabled: boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
 
 文本下载按钮，可显示具体下载进度。

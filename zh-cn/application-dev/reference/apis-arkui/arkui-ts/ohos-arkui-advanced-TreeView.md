@@ -13,6 +13,8 @@
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 该组件不支持在Wearable设备上使用。
 
 
@@ -231,11 +233,9 @@ getTreeListener(): TreeListener
 
 ### on
 
-ArkTS-Dyn:
-on(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void
+ArkTS-Dyn: on(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void
 
-ArkTS-Sta:
-on(type: TreeListenType, callback: OnChangedCallback): void
+ArkTS-Sta: on(type: TreeListenType, callback: OnChangedCallback): void
 
 注册监听。
 
@@ -255,11 +255,9 @@ on(type: TreeListenType, callback: OnChangedCallback): void
 
 ### once
 
-ArkTS-Dyn:
-once(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void
+ArkTS-Dyn: once(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void
 
-ArkTS-Sta:
-once(type: TreeListenType, callback: OnChangedCallback): void
+ArkTS-Sta: once(type: TreeListenType, callback: OnChangedCallback): void
 
 注册一次监听。
 
@@ -279,11 +277,9 @@ once(type: TreeListenType, callback: OnChangedCallback): void
 
 ### off
 
-ArkTS-Dyn:
-off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void): void
+ArkTS-Dyn: off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void): void
 
-ArkTS-Sta:
-off(type: TreeListenType, callback?: OnChangedCallback): void
+ArkTS-Sta: off(type: TreeListenType, callback?: OnChangedCallback): void
 
 取消监听。
 
@@ -336,15 +332,13 @@ off(type: TreeListenType, callback?: OnChangedCallback): void
 
 ## OnChangedCallback<sup>23+</sup>
 
-type OnChangedCallback = (callbackParam: CallbackParam) => void;
+type OnChangedCallback = (callbackParam: CallbackParam) => void
 
 监听树节点的变化时的回调事件。回调函数的参数为树节点相关信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
