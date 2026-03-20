@@ -49,7 +49,7 @@
 
 ## DES
 
-[DES](crypto-sym-key-generation-conversion-spec.md#des)算法的加密过程由 16 轮相同的加密函数组成，每轮都使用不同的子密钥。子密钥是通过对原始密钥进行一系列的置换和移位操作生成的。在每一轮中，明文块被分为左右两部分，然后通过一系列的置换、替换和异或操作进行加密。
+[DES](crypto-sym-key-generation-conversion-spec.md#des)算法的加密过程包含16轮相同的加密函数，每轮都使用不同的子密钥。子密钥是通过对原始密钥进行一系列的置换和移位操作生成的。在每一轮中，明文块被分为左右两部分，然后通过一系列的置换、替换和异或操作进行加密。
 
 算法库当前提供了DES加解密常用的4种加密模式：ECB、CBC、OFB和CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
@@ -187,7 +187,7 @@
 
 ## RC2
 
-从版本26.0.0开始，支持分组密码算法[RC2](crypto-sym-key-generation-conversion-spec.md#rc2)，分组长度为64位，密钥长度支持8位～1024位。
+从API版本26.0.0开始，支持分组密码算法[RC2](crypto-sym-key-generation-conversion-spec.md#rc2)，分组长度为64位，密钥长度支持8位～1024位。
 
 算法库当前提供了RC2加解密常用的分组模式：ECB、CBC、OFB、CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
@@ -208,7 +208,7 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../
 
 ## RC4
 
-从版本26.0.0开始，支持流密码算法[RC4](crypto-sym-key-generation-conversion-spec.md#rc4)，无需分组与填充。密钥长度支持8位～4096位。
+从API版本26.0.0开始，支持流密码算法[RC4](crypto-sym-key-generation-conversion-spec.md#rc4)，无需分组与填充。密钥长度支持8位～4096位。
 
 算法库当前提供RC4加解密，RC4为流密码模式，无需分组模式跟填充模式。
 
@@ -220,7 +220,7 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../
 
 ## Blowfish（BF）
 
-从版本26.0.0开始，支持密码算法[Blowfish](crypto-sym-key-generation-conversion-spec.md#blowfishbf)，是一种分组密码算法，分组长度为64位，长度支持32位～448位。
+从API版本26.0.0开始，支持密码算法[Blowfish](crypto-sym-key-generation-conversion-spec.md#blowfishbf)，是一种分组密码算法，分组长度为64位，长度支持32位～448位。
 
 > **说明：**
 >
@@ -239,7 +239,7 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../
 
 ## CAST
 
-从版本26.0.0开始，支持分组密码算法[CAST](crypto-sym-key-generation-conversion-spec.md#cast)，分组长度为64位，密钥长度支持40位～128位。
+从API版本26.0.0开始，支持分组密码算法[CAST](crypto-sym-key-generation-conversion-spec.md#cast)，分组长度为64位，密钥长度支持40位～128位。
 
 [CAST](crypto-sym-key-generation-conversion-spec.md#cast)为分组密码算法，分组长度为64位，密钥长度支持40位～128位。
 

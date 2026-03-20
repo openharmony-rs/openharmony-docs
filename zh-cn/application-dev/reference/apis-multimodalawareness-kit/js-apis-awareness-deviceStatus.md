@@ -1,4 +1,4 @@
-# @ohos.multimodalAwareness.deviceStatus（设备状态感知）
+# @ohos.multimodalAwareness.deviceStatus (设备状态感知)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
