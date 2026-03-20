@@ -2443,7 +2443,7 @@ Sets transition effect animation settings.
 
 > **NOTE**
 >
-> If [OH_ArkUI_TransitionEffect_Combine](oh_arkui_transitioneffect_combine) is used to combine transition effects, the animation parameter settings of a transition effect are applicable to the one following it.
+> If [OH_ArkUI_TransitionEffect_Combine](#oh_arkui_transitioneffect_combine) is used to combine transition effects, the animation parameter settings of a transition effect are applicable to the one following it.
 
 **Since**: 12
 
