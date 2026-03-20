@@ -14,7 +14,7 @@
 
 - **组件出现/消失转场**
 
-  [组件出现/消失转场](arkts-enter-exit-transition.md)主要用于容器组件中插入和删除子组件时，自动触发入场/出场过渡动效，提升用户体验。支持通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md)中的NODE_ROTATE_TRANSITION，NODE_SCALE_TRANSITION，NODE_TRANSLATE_TRANSITION，NODE_OPACITY_TRANSITION，NODE_MOVE_TRANSITION属性配置转场参数，分别对应旋转、缩放、位移、透明度、移动五种转场类型，支持独立配置转场动画的时长、动画曲线等，且无需手动控制动画启停，组件上下树时自动触发对应动效。具体使用场景可参考示例[组件出现/消失转场](ndk-use-animation-scene.md#组件出现消失转场)。
+  [组件出现/消失转场](arkts-enter-exit-transition.md)主要用于容器组件中插入和删除子组件时，自动触发入场/出场过渡动效，提升用户体验。支持通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_ROTATE_TRANSITION、NODE_SCALE_TRANSITION、NODE_TRANSLATE_TRANSITION、NODE_OPACITY_TRANSITION、NODE_MOVE_TRANSITION属性配置转场参数，分别对应旋转、缩放、位移、透明度、移动五种转场类型，支持独立配置转场动画的时长、动画曲线等，且无需手动控制动画启停，组件上下树时自动触发对应动效。具体使用场景可参考示例[组件出现/消失转场](ndk-use-animation-scene.md#组件出现消失转场)。
 
 - **一镜到底转场**
 
