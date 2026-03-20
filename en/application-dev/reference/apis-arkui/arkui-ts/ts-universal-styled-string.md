@@ -2185,7 +2185,7 @@ struct styled_string_set_customspan_demo {
     }
     this.isPageShow = false;
 
-    this.style.appendStyledString(new MutableStyledString("Text drawing sample CustomSpan", [
+    this.style.appendStyledString(new MutableStyledString("Text drawing Sample code CustomSpan", [
       {
         start: 0,
         length: 5,
@@ -2682,7 +2682,7 @@ struct styled_string_set_decorationstyle_demo {
 
 ![](figures/styledString_14.png)
 
-### Sample 14: Obtaining the Image Size in vp
+### Example 14: Obtaining the Image Size in vp
 
 This example illustrates how to configure styled strings with images and obtain the image size in vp using the [ImageAttachmentInterface](#imageattachmentinterface) API, available since API version 21.
 
