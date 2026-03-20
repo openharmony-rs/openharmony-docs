@@ -73,7 +73,7 @@ OpenHarmony的窗口模块将窗口界面分为系统窗口、应用窗口两种
 
 ### 生命周期概述
 
-在Stage模型下，一个UIAbility对应一个WindowStage，一个WindowStage对应一个应用主窗，UIAbility、WindowStage和应用主窗三者之间的关系如下图所示。
+在Stage模型下，一个UIAbility对应一个WindowStage，一个WindowStage对应一个应用主窗口，UIAbility、WindowStage和应用主窗口三者之间的关系如下图所示。
 
 ![windowRelation](figures/uiability-windowstage-mainwindow.png)
 

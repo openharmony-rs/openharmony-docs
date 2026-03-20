@@ -1206,50 +1206,71 @@ struct Index {
 
 ### 示例7（开启SegmentButton的属性动画）
 
-此示例展示了SegmentButton开启enableStateAnimation后，在通过状态变量修改selectedIndexes的值时，按钮切换也具有动画效果。
+本示例展示了SegmentButton开启属性动画，即enableStateAnimation设置为true后，修改选中项编号selectedIndexes值会触发按钮切换动画。并且选中项编号相同的两个SegmentButton组件，是否开启属性动画，也会呈现不同的切换动画。
 
 从API version 24开始，[SegmentButton](#segmentbutton-1)新增enableStateAnimation属性。
 
 ```ts
-import { ItemRestriction, SegmentButton, SegmentButtonItemTuple, SegmentButtonOptions, SegmentButtonTextItem } from '@kit.ArkUI';
+import { SegmentButton, SegmentButtonItemTuple, SegmentButtonOptions } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct Index {
-  @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
-    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
+struct Index12 {
+  @State singleSelectTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
+    buttons: [
+      { text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }
+    ] as SegmentButtonItemTuple,
+    multiply: false
   });
-  @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
-    buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }] as SegmentButtonItemTuple,
-    multiply: false,
-    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  });
-  @State tabSelectedIndexes: number[] = [0]; // 页签按钮的选中索引值，默认选中第一个
-  @State singleSelectCapsuleSelectedIndexes: number[] = [0]; // 单选按钮的选中索引值，默认选中第一个
-  @State currentSelectedIndex: number = 0; // 切换选中项的索引计数器
+
+  @State textCapsuleSingleSelected: number[] = [0]; // 单选按钮的选中索引值，默认选中第一个。
+
+  enableStateAnimation: boolean[] = [false, true];
+  @State enableStateAnimationIndex: number = 0;
+  @State currentSelectedIndex: number = 0; // 切换选中项的索引计数器。
 
   build() {
     Row() {
       Column() {
         Column({ space: 25 }) {
+          // 动画仅在手动点击切换选中项时生效，非点击类操作修改选中项均无动画。
           SegmentButton({
-            options: this.tabOptions,
-            selectedIndexes: $tabSelectedIndexes,
-            enableStateAnimation: true // 开启属性动画
-          })
-          SegmentButton({
-            options: this.singleSelectCapsuleOptions,
-            selectedIndexes: $singleSelectCapsuleSelectedIndexes,
-            enableStateAnimation: true // 开启属性动画
+            options: this.singleSelectTextCapsuleOptions,
+            selectedIndexes: this.textCapsuleSingleSelected // 未开启属性动画。
           })
 
-          Button('change selectedIndexes').onClick((event: ClickEvent) => {
-            // 通过状态变量自增修改选中项的索引值，若超出最大索引则重置为0
-            this.currentSelectedIndex = this.currentSelectedIndex < 2 ? this.currentSelectedIndex + 1 : 0;
-            this.tabSelectedIndexes = [this.currentSelectedIndex];
-            this.singleSelectCapsuleSelectedIndexes = [this.currentSelectedIndex];
+          Text('enableStateAnimation: ' + this.enableStateAnimation[this.enableStateAnimationIndex])
+            .fontSize(18)
+            .fontWeight(FontWeight.Bold)
+
+          Row({ space: 10 }) {
+            Button('false')
+              .onClick(() => {
+                this.enableStateAnimationIndex = 0;
+              })
+
+            Button('true')
+              .onClick(() => {
+                this.enableStateAnimationIndex = 1;
+              })
+          }
+          .width('100%')
+          .justifyContent(FlexAlign.Center)
+          .margin({ bottom: 10 })
+
+          // enableStateAnimation为true时，切换选中项会触发按钮切换动画。enableStateAnimation为false时，动画仅在手动点击切换选中项时生效，非点击类操作修改选中项均无动画。
+          SegmentButton({
+            options: this.singleSelectTextCapsuleOptions,
+            selectedIndexes: this.textCapsuleSingleSelected,
+            enableStateAnimation: this.enableStateAnimation[this.enableStateAnimationIndex] // 开启属性动画。
           })
+
+          Button('change selectedIndexes')
+            .onClick(() => {
+              // 对选中项的索引值进行自增操作，若超出最大索引则重置为0。
+              this.currentSelectedIndex = this.currentSelectedIndex < 2 ? this.currentSelectedIndex + 1 : 0;
+              this.textCapsuleSingleSelected = [this.currentSelectedIndex];
+            })
         }.width('90%')
       }.width('100%')
     }.height('100%')
@@ -1258,4 +1279,3 @@ struct Index {
 ```
 
 ![segmentbutton-sample83](figures/segmentbutton-sample83.gif)
-

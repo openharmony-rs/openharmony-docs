@@ -292,9 +292,9 @@ Describes the size of a PiP window.
 
 | Name  | Type| Read-Only| Optional| Description      |
 | ------ | -------- | ---- | ---- | ---------- |
-| width  | number   | Yes  | No  | Window width, in px. The value must be a positive integer and cannot be greater than the screen width.|
-| height | number   | Yes  | No  | Window height, in px. The value must be a positive integer and cannot be greater than the screen height.|
-| scale  | number   | Yes  | No  | Scale factor of the window, representing the display size relative to the width and height. The value is a floating-point number in the range (0.0, 1.0]. The value **1** means that the window matches the specified width and height.|
+| width  | number   | No  | No  | Window width, in px. The value must be a positive integer and cannot be greater than the screen width.|
+| height | number   | No  | No  | Window height, in px. The value must be a positive integer and cannot be greater than the screen height.|
+| scale  | number   | No  | No  | Scale factor of the window, representing the display size relative to the width and height. The value is a floating-point number in the range (0.0, 1.0]. The value **1** means that the window matches the specified width and height.|
 
 ## PiPWindowInfo<sup>15+</sup>
 
@@ -306,8 +306,8 @@ Describes the PiP window information.
 
 | Name  | Type| Read-Only| Optional| Description      |
 | ------ | -------- | ---- | ---- | ---------- |
-| windowId  | number   | Yes  | No  | ID of the PiP window.|
-| size  | [PiPWindowSize](#pipwindowsize15)  | Yes  | No  | Size of the PiP window.|
+| windowId  | number   | No  | No  | ID of the PiP window.|
+| size  | [PiPWindowSize](#pipwindowsize15)  | No  | No  | Size of the PiP window.|
 
 ## PiPTemplateType
 
