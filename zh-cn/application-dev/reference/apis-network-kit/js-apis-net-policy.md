@@ -96,6 +96,7 @@ getNetAccessPolicy(): Promise\<NetAccessPolicy>;
 **示例：**
 ```ts
 import { policy } from '@kit.NetworkKit';
+import { BusinessError } from '@ohos.base';
 
 policy.getNetAccessPolicy().then((policyInfo: policy.NetAccessPolicy) => {
   console.log(`getNetAccessPolicy success. WiFi: ${policyInfo.allowWiFi}, Cellular: ${policyInfo.allowCellular}`);
