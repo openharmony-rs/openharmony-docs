@@ -14,7 +14,7 @@
 >
 > 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.arkui.UIContext (UIContext)](arkts-apis-uicontext-uicontext.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[Class (UIContext)](arkts-apis-uicontext-uicontext.md)。
 
 ## UIContext
 
