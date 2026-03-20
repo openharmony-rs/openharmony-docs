@@ -1119,7 +1119,8 @@ struct Index {
   @Local refresh: number = 0;
   // 调用connect或globalConnect存储
   @Local p: Sample = PersistenceV2.connect(Sample, 'connectSample', () => new Sample())!;
-  // @Local p: Sample = PersistenceV2.globalConnect({ type: Sample, key: 'connectSample', defaultCreator: () => new Sample() })!;
+  // @Local p: Sample = PersistenceV2.globalConnect(
+  //   { type: Sample, key: 'connectSample', defaultCreator: () => new Sample() })!;
 
   build() {
     Column({ space: 5 }) {
