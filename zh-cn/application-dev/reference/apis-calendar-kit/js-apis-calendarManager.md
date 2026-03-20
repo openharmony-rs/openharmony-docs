@@ -11,7 +11,7 @@
 
 - 日历管理器[CalendarManager](#calendarmanager)用于管理日历[Calendar](#calendar)。
 
-- 日历[Calendar](#calendar)主要包含账户信息[CalendarAccount](#calendaraccount)和配置信息[CalendarConfig](#calendarconfig)。日历Calendar与日程[Event](#Event)属于从属关系，需要先创建日历Calendar对象，然后再通过日历Calendar创建日程Event对象，一个Calendar可以有多个Event，一个Event只属于一个Calendar。日历管理器是对日历的管理，日程过滤器是对日程的管理。
+- 日历[Calendar](#calendar)主要包含账户信息[CalendarAccount](#calendaraccount)和配置信息[CalendarConfig](#calendarconfig)。日历Calendar与日程[Event](#event)属于从属关系，需要先创建日历Calendar对象，然后再通过日历Calendar创建日程Event对象，一个Calendar可以有多个Event，一个Event只属于一个Calendar。日历管理器是对日历的管理，日程过滤器是对日程的管理。
 
 > **说明：**
 >
@@ -714,13 +714,13 @@ calendarMgr?.editEvent(event).then((eventId: number): void => {
 
 addEvent(event: Event, callback: AsyncCallback\<number>): void
 
-创建日程，入参[Event](#Event)不填日程id、instanceStartTime和instanceEndTime，使用callback异步回调。
+创建日程，入参[Event](#event)不填日程id、instanceStartTime和instanceEndTime，使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -776,13 +776,13 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
 
 addEvent(event: Event): Promise\<number>
 
-创建日程，入参[Event](#Event)不填日程id、instanceStartTime和instanceEndTime，使用Promise异步回调。
+创建日程，入参[Event](#event)不填日程id、instanceStartTime和instanceEndTime，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -843,11 +843,11 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 addEvents(events: Event[], callback: AsyncCallback\<void>): void
 
-批量创建日程，入参[Event](#Event)不填日程id、instanceStartTime和instanceEndTime，使用callback异步回调。
+批量创建日程，入参[Event](#event)不填日程id、instanceStartTime和instanceEndTime，使用callback异步回调。
 
 **需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -912,11 +912,11 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 addEvents(events: Event[]): Promise\<void>
 
-批量创建日程，入参[Event](#Event)不填日程id、instanceStartTime和instanceEndTime，使用Promise异步回调。
+批量创建日程，入参[Event](#event)不填日程id、instanceStartTime和instanceEndTime，使用Promise异步回调。
 
 **需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1248,7 +1248,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 updateEvent(event: Event, callback: AsyncCallback\<void>): void
 
-更新日程，入参[Event](#Event)需要填写被修改日程的id，使用callback异步回调。
+更新日程，入参[Event](#event)需要填写被修改日程的id，使用callback异步回调。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1307,7 +1307,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 updateEvent(event: Event): Promise\<void>
 
-更新日程，入参[Event](#Event)需要填写被修改日程的id，使用Promise异步回调。
+更新日程，入参[Event](#event)需要填写被修改日程的id，使用Promise异步回调。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
