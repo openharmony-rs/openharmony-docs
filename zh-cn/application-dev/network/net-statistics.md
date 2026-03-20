@@ -126,7 +126,7 @@
    ```
 6. 获取指定socket实时流量数据
 
-    调用[getSockfdRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetsockfdrxbytes11-1)接口，传入指定的sockFd获取指定socket实时上下行流量数据。
+    调用[getSockfdRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetsockfdrxbytes11)接口，传入指定的sockFd获取指定socket实时上下行流量数据。
 
    <!-- @[flow_management_getSockfdRxBytes_and_getSockfdTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    
