@@ -520,7 +520,7 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 -print-seeds ./seedFile.log
 ```
 
-如果不指定目录，开启后，默认在`obfuscation`目录下生成一个`seedFile.log`文件，用来显示匹配到的类及其成员，如下图。也可以自己配置目录，将结果输出到指定目录。
+用来显示匹配到的类及其成员。可以配置指定目录，将结果输出到指定目录, 如下图。 如果不指定目录，开启后，默认在`obfuscation`目录下生成一个`seedsFile.log`文件。
 
 ![bytecode-static-printseed](figures/bytecode-static-printseed.png)
 
@@ -643,6 +643,12 @@ let value: int|number|float = 3
 // 元组
 type UserTuple1 = [string, number, boolean];
 let uType1: UserTuple1 = ["Tom", 18, true];
+
+//std.core.Function
+let math1 = (a: number, b: number): number => {
+    return a + b;
+};
+math1(1,2)
 ```
 
 使用下面keep语句后，number1，str，value，uType1 将不会被混淆。
@@ -651,6 +657,7 @@ let uType1: UserTuple1 = ["Tom", 18, true];
 -keep package entry.src.main.ets.entryability.StaticDemo { number1: f64;}
 -keep package entry.src.main.ets.entryability.StaticDemo { str: std.core.String;}
 -keep package entry.src.main.ets.entryability.StaticDemo { value: {Ustd.core.Double,std.core.Float,std.core.Int};}
+-keep package entry.src.main.ets.entryability.StaticDemo { math1: std.core.Function;}
 -keep package entry.src.main.ets.entryability.StaticDemo { uType1: std.core.Tuple3;} // Tuple3,3表示有3个参数
 ```
 
@@ -660,6 +667,7 @@ let uType1: UserTuple1 = ["Tom", 18, true];
 -keep package entry.src.main.ets.entryability.StaticDemo { number1;}
 -keep package entry.src.main.ets.entryability.StaticDemo { str;}
 -keep package entry.src.main.ets.entryability.StaticDemo { value;}
+-keep package entry.src.main.ets.entryability.StaticDemo { math1;}
 -keep package entry.src.main.ets.entryability.StaticDemo { uType1;}
 ```
 
