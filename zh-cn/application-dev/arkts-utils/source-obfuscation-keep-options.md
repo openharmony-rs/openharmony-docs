@@ -6,21 +6,22 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @HelloCrease-->
 
-从API version 10开始，开启混淆后，代码中的方法、属性或路径被混淆。但是在程序运行时，如果访问未混淆的方法、属性或路径，可能导致功能不可用。因此需要根据不同的场景配置保留选项。
+从API version 10开始，开启混淆后代码中的方法、属性或路径将被混淆。但在运行时，如果访问是未被混淆的原始方法、属性或路径，可能会导致功能失效。因此需要根据不同的场景配置相应的保留选项。
 
 排查场景和配置字段时，推荐使用[混淆助手配置保留选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation#section19439175917123)，快速识别需要配置的保留选项和白名单字段。
 
-## 已有保留选项汇总
+## 保留选项汇总
 
-| 功能 | 选项 |
-| --- | --- |
-| 指定保留属性名称 | [`-keep-property-name`](#-keep-property-name) |
-| 指定保留顶层作用域或导入导出元素名称 | [`-keep-global-name`](#-keep-global-name) |
-| 指定保留文件/文件夹名称 | [`-keep-file-name`](#-keep-file-name) |
-| 指定保留注释 | [`-keep-comments`](#-keep-comments) |
-| 指定保留声明文件中的所有名称 | [`-keep-dts`](#-keep-dts) |
-| 指定保留源码文件中的所有名称 | [`-keep`](#-keep) |
-| 在代码压缩时排除指定路径的文件 | [`-keep-uncompact`](#-keep-uncompact) |
+| 功能 | 选项 | 起始API版本 |
+| --- | --- | --- |
+| 指定保留属性名称 | [`-keep-property-name`](#-keep-property-name) | 10 |
+| 指定保留顶层作用域或导入导出元素名称 | [`-keep-global-name`](#-keep-global-name) | 10 |
+| 指定保留文件/文件夹名称 | [`-keep-file-name`](#-keep-file-name) | 10 |
+| 指定保留注释 | [`-keep-comments`](#-keep-comments) | 12 |
+| 指定保留声明文件中的所有名称 | [`-keep-dts`](#-keep-dts) | 12 |
+| 指定保留源码文件中的所有名称 | [`-keep`](#-keep) | 12 |
+| 名称类和路径类的保留选项支持通配符 | [`保留选项支持的通配符`](#保留选项支持的通配符)  | 12 |
+| 在代码压缩时排除指定路径的文件 | [`-keep-uncompact`](#-keep-uncompact) | 26.0.0 |
 
 ## -keep-property-name
 
@@ -462,7 +463,7 @@ Human
 
 ## -keep-uncompact
 
-从API版本26开始，可通过`-keep-uncompact`指定相对路径下的源码**不参与**代码压缩。
+从API版本26.0.0开始，可通过`-keep-uncompact`指定相对路径下的源码**不参与**代码压缩。
 
 **使用该选项时，需要注意以下事项：**
 

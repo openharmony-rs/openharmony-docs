@@ -6,35 +6,32 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @HelloCrease-->
 
-## 已有混淆选项汇总
+从API version 10开始，ArkGuard提供混淆配置选项来控制混淆效果。开发者可在[obfuscation-rules.txt](./source-obfuscation-guide.md#三种混淆配置文件)文件中自定义这些选项。若开启混淆但未配置任何选项，则仅应用默认混淆效果，即混淆局部变量和参数名。
 
-| 功能 | 选项 |
-| --- | --- |
-| 默认混淆 | 开启混淆后生效 |
-| 关闭混淆 | [`-disable-obfuscation`](#-disable-obfuscation) |
-| 开启属性名称混淆 | [`-enable-property-obfuscation`](#-enable-property-obfuscation) |
-| 开启字符串属性名称混淆 | [`-enable-string-property-obfuscation`](#-enable-string-property-obfuscation) |
-| 开启顶层作用域名称混淆 | [`-enable-toplevel-obfuscation`](#-enable-toplevel-obfuscation) |
-| 开启导入导出名称混淆 | [`-enable-export-obfuscation`](#-enable-export-obfuscation) |
-| 开启文件名混淆 | [`-enable-filename-obfuscation`](#-enable-filename-obfuscation) |
-| 代码压缩 | [`-compact`](#-compact) |
-| 声明文件注释删除 | [`-remove-comments`](#-remove-comments) |
-| 删除console.*语句 | [`-remove-log`](#-remove-log) |
-| 名称缓存输出 | [`-print-namecache`](#-print-namecache) |
-| 名称缓存复用 | [`-apply-namecache`](#-apply-namecache) |
-| 输出未混淆名单 | [`-print-kept-names`](#-print-kept-names) |
-| 缩减语言预置白名单 | [`-extra-options strip-language-default`](#-extra-options-strip-language-default) |
-| 缩减系统预置白名单 | [`-extra-options strip-system-api-args`](#-extra-options-strip-system-api-args) |
-| 不保留未参与编译模块名称 | [`-extra-options strip-not-compiled-module-name`](#-extra-options-strip-not-compiled-module-name) |
-| 保留声明文件参数 | [`-keep-parameter-names`](#-keep-parameter-names) |
-| 合并依赖模块选项 | [`-enable-lib-obfuscation-options`](#-enable-lib-obfuscation-options) |
-| 通过注释在源码中标记白名单 | [`-use-keep-in-source`](#-use-keep-in-source) |
-| 保留对象字面量属性名称 | [`-keep-object-props`](#-keep-object-props) |
-| 删除指定的方法调用语句 | [`-remove-nosideeffects-calls`](#-remove-nosideeffects-calls) |
+## 混淆选项汇总
 
-## 默认混淆
-
-开启混淆后默认生效，仅混淆局部变量名及参数名。
+| 功能 | 选项 | 起始API版本 |
+| --- | --- | --- |
+| 关闭混淆 | [`-disable-obfuscation`](#-disable-obfuscation) | 10 |
+| 开启属性名称混淆 | [`-enable-property-obfuscation`](#-enable-property-obfuscation) | 10 |
+| 开启字符串属性名称混淆 | [`-enable-string-property-obfuscation`](#-enable-string-property-obfuscation) | 10 |
+| 开启顶层作用域名称混淆 | [`-enable-toplevel-obfuscation`](#-enable-toplevel-obfuscation) | 10 |
+| 开启导入导出名称混淆 | [`-enable-export-obfuscation`](#-enable-export-obfuscation) | 10 |
+| 开启文件名混淆 | [`-enable-filename-obfuscation`](#-enable-filename-obfuscation) | 10 |
+| 代码压缩 | [`-compact`](#-compact) | 10 |
+| 声明文件注释删除 | [`-remove-comments`](#-remove-comments) | 10 |
+| 删除console.*语句 | [`-remove-log`](#-remove-log) | 10 |
+| 名称缓存输出 | [`-print-namecache`](#-print-namecache) | 10 |
+| 名称缓存复用 | [`-apply-namecache`](#-apply-namecache) | 10 |
+| 输出未混淆名单 | [`-print-kept-names`](#-print-kept-names) | 18 |
+| 缩减语言预置白名单 | [`-extra-options strip-language-default`](#-extra-options-strip-language-default) | 18 |
+| 缩减系统预置白名单 | [`-extra-options strip-system-api-args`](#-extra-options-strip-system-api-args) | 18 |
+| 不保留未参与编译模块名称 | [`-extra-options strip-not-compiled-module-name`](#-extra-options-strip-not-compiled-module-name) | 22|
+| 保留声明文件参数 | [`-keep-parameter-names`](#-keep-parameter-names) | 18 |
+| 合并依赖模块选项 | [`-enable-lib-obfuscation-options`](#-enable-lib-obfuscation-options) | 18 |
+| 通过注释在源码中标记白名单 | [`-use-keep-in-source`](#-use-keep-in-source) | 19 |
+| 保留对象字面量属性名称 | [`-keep-object-props`](#-keep-object-props) | 23 |
+| 删除指定的方法调用语句 | [`-remove-nosideeffects-calls`](#-remove-nosideeffects-calls) | 23 |
 
 ## -disable-obfuscation
 
@@ -596,7 +593,7 @@
 
 从API version 18开始，支持此选项。
 
-混淆配置分为[混淆选项](#已有混淆选项汇总)和[保留选项](./source-obfuscation-keep-options.md)：
+混淆配置分为[混淆选项](#混淆选项汇总)和[保留选项](./source-obfuscation-keep-options.md)：
 - **默认情况下**，生效的混淆配置为当前编译模块的混淆配置与依赖模块的保留选项的合并结果。  
 - **启用该开关后**，生效的混淆配置为当前编译模块的混淆配置与依赖模块的混淆配置的合并结果。
 

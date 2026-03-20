@@ -6,31 +6,21 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @HelloCrease-->
 
-## 术语清单
+ArkGuard在编译时读取模块的build-profile.json5配置文件，解析并合并当前模块与依赖模块的混淆规则，然后对中间文件进行混淆处理，最终将结果输出至build目录。
 
-| 名词 | 释义 |
-| --- | --- |
-| [HAP](../quick-start/hap-package.md) | HAP（Harmony Ability Package）是应用安装和运行的基本单元。HAP包是由代码、资源、第三方库、配置文件等打包生成的模块包。 |
-| [HAR](../quick-start/har-package.md) | HAR（Harmony Archive）是静态共享包，通过HAR可以实现多个模块或多个工程共享ArkUI组件、资源等相关代码。通过Static Library创建HAR模块。 |
-| [HSP](../quick-start/in-app-hsp.md) | HSP（Harmony Shared Package）是动态共享包，通过HSP可以实现代码和资源的共享。通过Shared Library创建HSP模块。 |
-| 本地HAR | 源码形式的HAR模块。 |
-| 远程HAR | 构建后打包生成的HAR包。 |
-| 本地HSP | 源码形式的HSP模块。 |
-| 远程HSP | 构建后打包生成的HSP包。 |
-| 三方库 | 由第三方开发并发布的库，发布到OHPM中心仓，供其他应用使用。 |
-| 名称混淆 | 将代码中的类名、方法名、变量名、属性名、export变量名等标识符修改为简洁且无意义的修饰符。 |
+开发者可参考[ArkGuard混淆开启指南](./source-obfuscation-guide.md)，了解如何开启混淆并自定义混淆规则。
 
-## 混淆能力范围
+## 概述
 
 ### 适用语言
 ArkGuard支持ArkTS、TS和JS语言，不支持C/C++、JSON、资源文件等。
 
-### 混淆能力
+### 能力范围
 ArkGuard支持名称混淆、代码压缩和注释删除的基础混淆功能，不支持控制流混淆、数据混淆等高级混淆功能。
 
 名称混淆主要提供**名称重命名**和**配置保留白名单**的能力。
   
-### 混淆能力局限性
+### 约束限制
 
 **1.语言的限制**
 
@@ -176,37 +166,3 @@ test(a2);
 1. 如果`consumerFiles`指定的混淆配置文件中包含上述混淆选项，当其他模块依赖该模块时，这些选项会与主模块的混淆规则合并，从而影响主模块。因此不建议开发者在`consumer-rules.txt`文件中配置混淆选项，建议仅配置保留选项。
 
 2. 如果在`consumerFiles`指定的混淆配置文件中添加`-keep-dts`选项，该选项会被转换成`-keep-global-name`和`-keep-property-name`。
-
-## 混淆各功能起始API版本
-
-| 混淆选项 | 功能描述  | 起始API版本 |
-| ------- | --------- | ------ |
-| -disable-obfuscation         | 关闭混淆 | 10  |
-| -enable-property-obfuscation | 属性混淆 | 10 |
-| -enable-string-property-obfuscation | 字符串字面量属性名混淆 | 10 |
-| -enable-toplevel-obfuscation | 顶层作用域名称混淆 | 10 |
-| -enable-filename-obfuscation | HAR包文件/文件夹名称混淆 <br> HAP/HSP文件/文件夹名称混淆 | 10 <br> 12 |
-| -enable-export-obfuscation   | 向外导入或导出的名称混淆 | 10 |
-| -compact                     | 去除不必要的空格符和所有的换行符 | 10 |
-| -keep-uncompact              | 开启`-compact`时，指定路径下的源码不进行代码压缩 | 26.0.0 |
-| -remove-log                  | 删除特定场景中的console.* | 10 |
-| -print-namecache             | 将名称缓存保存到指定的文件路径 | 10 |
-| -apply-namecache             | 复用指定的名称缓存文件 | 10 |
-| -remove-comments             | 删除文件中所有注释 | 10 |
-| -keep-property-name          | 保留属性名 | 10 |
-| -keep-global-name            | 保留顶层作用域的名称 | 10 |
-| -keep-file-name              | 保留HAR包的文件/文件夹的名称 <br> 保留HAP/HSP包的文件/文件夹的名称 | 10 <br> 12 |
-| -keep-dts                    | 保留指定路径的.d.ts文件中的名称 | 12 |
-| -keep-comments               | 保留编译生成的声明文件中class、function、namespace、enum、struct、interface、module、type及属性上方的JsDoc注释 | 12 |
-| -keep                        | 保留指定路径中的所有名称 | 12 |
-| 通配符                       | 名称类和路径类的保留选项支持通配符 | 12 |
-| -print-kept-names | 输出未混淆名单 | 18 |
-| -extra-options strip-language-default | 缩减语言预置白名单 | 18 |
-| -extra-options strip-system-api-args | 缩减系统预置白名单 | 18 |
-| -extra-options strip-not-compiled-module-name | 不保留未参与编译模块名称 | 22 |
-| -keep-parameter-names | 保留声明文件参数 | 18 |
-| -enable-lib-obfuscation-options | 合并依赖模块选项 | 18 |
-| -use-keep-in-source          | 通过注释在源码中标记白名单 | 19 |
-| -keep-object-props          | 保留对象字面量属性名称 | 23 |
-| -remove-nosideeffects-calls   | 删除特定场景中指定的方法调用   | 23 |
-| -keep-uncompact   | 指定相对路径下的源码不参与代码压缩   | 26 |

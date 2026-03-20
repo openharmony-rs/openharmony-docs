@@ -11,7 +11,7 @@ ArkGuard是一款源码混淆工具，提供基础混淆功能。它将代码中
 
 本章节介绍ArkGuard源码混淆工具的使用方法和特点，帮助开发者高效利用ArkGuard进行源码混淆，提升代码复杂度，增加逆向工程难度。
 
-- [ArkGuard混淆原理](source-obfuscation.md)：说明混淆能力范围、混淆流程机制、混淆规则的合并策略，以及混淆各功能起始API版本。
+- [ArkGuard混淆原理](source-obfuscation.md)：说明混淆能力范围、混淆流程机制及混淆规则的合并策略。
 
 - [ArkGuard混淆配置选项](./source-obfuscation-rule-options.md)：说明混淆配置选项的作用及其使用方法。
 
