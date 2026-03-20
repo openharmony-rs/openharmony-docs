@@ -1778,7 +1778,7 @@ struct VideoExample {
         .border({ width: 1 })
       }
 
-      Button('Cancel data transfer')
+      Button('Cancel Data Transfer')
         .onClick(() => {
           try {
             this.getUIContext().getDragController().cancelDataLoading(this.udKey);
@@ -1791,4 +1791,4 @@ struct VideoExample {
   }
 }
 ```
-
+![DragEvent_setDataLoadParams](figures/dragLoading.gif)
