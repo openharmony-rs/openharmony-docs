@@ -712,6 +712,8 @@ let uType1: UserTuple1 = ["Tom", 18, true];
 
 **2.** 保留指定包下的内容不混淆。
 
+用于指定在混淆过程中需要保留的代码元素，支持类、属性、方法及整个文件等。其完整的语法规范详见[class_specification](#class_specification)。
+
 ```txt
 -keep package a.b.c.d { *; }
    
@@ -1154,7 +1156,7 @@ lastName
   
   obj.s1 = 'a';
   let key = 's1';
-  console.info(obj[key]); // key对应的变量值s应该被保留。
+  console.info(obj[key]); // key对应的变量值s1应该被保留。
   
   obj.t1 = 'b';
   console.info(obj['t' + '1']); // t1应该被保留。
@@ -1342,10 +1344,7 @@ export namespace Ns {
 
 
 ```txt
--keep-class-with-members class com.example.MyClass {
-    private static alias: string = 'test';
-    public async doAction(string):void;
-}
+-keep-class-with-members class com.example.MyClass {*}
 ```
 
 使用前后，效果如下：
@@ -1398,10 +1397,7 @@ export namespace Ns {
 保留指定类中指定成员（成员保留，类名不保留），支持使用[名称类通配符](#方法和属性名称支持通配符)。例如：
 
 ```txt
--keep-class-members  class com.example.MyClass {
-    private static alias: string = 'test';
-    public async doAction(string):void;
-}
+-keep-class-members  class com.example.MyClass {*}
 ```
 
 使用前后，效果如下：
@@ -1589,7 +1585,15 @@ class A {
 > 2. 泛型type类型keep时不能添加<>部分; 例如 Promise<void>类型在keep时, 需写成Promise。
 
 
-**1.** -keep class entry.src.main.ets.entryability.StaticDemo.ClassName {*;}，`ClassName`和`ClassMember`都不混淆。
+**1.** 保留类名或接口名不混淆，同时保留类中所有方法属性不混淆。
+
+```txt
+-keep class *.className {*;}
+./**
+```
+  例如：
+  
+  -keep class entry.src.main.ets.entryability.StaticDemo.ClassName {*;}，`ClassName`和`ClassMember`都不混淆。
 <!-- @[staticArkGuardExample_className](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->
   
 ```typescript
@@ -1620,7 +1624,15 @@ class ClassName implements interfaceTest {
 }
 ```
 
-**2.** -keep enum entry.src.main.ets.entryability.StaticDemo.Color {*;}，`Color`和`enum`值都不混淆
+**2.** 保留enum名称，同时保留enum中所有成员不混淆。
+  
+```txt
+-keep enum *.enumName {*;}
+./**
+```
+  例如：
+  
+  -keep enum entry.src.main.ets.entryability.StaticDemo.Color {*;}，`Color`和`enum`值都不混淆
 <!-- @[staticArkGuardExample_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->
   
 ```typescript
@@ -1668,7 +1680,15 @@ export enum Color {
 }
 ```
 
-**3.** -keep-class-members class entry.src.main.ets.entryability.StaticDemo.ClassMethod {public final method1(...):i32;}, 只保留`method1`不混淆
+**3.**  混淆类名，只保留类中的成员或方法。
+  
+```txt
+-keep-class-members class *.ClassName {*;}
+./**
+```
+  例如：
+  
+  -keep-class-members class entry.src.main.ets.entryability.StaticDemo.ClassMethod {public final method1(...):i32;}, 只保留`method1`不混淆
 <!-- @[staticArkGuardExample_classMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->
   
 ```typescript
@@ -1696,13 +1716,17 @@ class ClassMethod {
 }
 ```
 
-**4.** -keep @Anno2 class entry.src.main.ets.entryability.StaticDemo.ClassTest2 extends @Anno1 entry.src.main.ets.entryability.StaticDemo.ClassTest1 { *; }, `ClassTest2`和`Class2_Field`都不混淆
+**4.** 类如果使用注解，继承等，在keep时，要写全注解和类的路径。
+  
+  例如：
+  
+  -keep @Anno2 class entry.src.main.ets.entryability.StaticDemo.ClassTest2 extends @Anno1 entry.src.main.ets.entryability.StaticDemo.ClassTest1 { *; }, `ClassTest2`和`Class2_Field`都不混淆
 <!-- @[staticArkGuardExample_anno](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->
   
 ```typescript
 //StaticDemo.ets
 
-interface Anno1 {
+@interface Anno1 {
     f1: number = 123;
 }
 
@@ -1711,7 +1735,7 @@ class ClassTest1 {
     public Class1_Field: number = 123;
 }
 
-interface Anno2 {
+@interface Anno2 {
     f2: number = 123;
 }
 
@@ -1859,14 +1883,7 @@ class A {
 
 此时*表示匹配任意数量的任意字符，配置效果为所有属性名称都不混淆，而不是只有*属性不被混淆。
 
-
-
-## 混淆规则合并策略
-
-> **注意：**
->   
-> ArkTS-Sta的字节码混淆暂不支持
-  
+## 混淆规则合并策略  
 
 在编译一个模块时，默认情况下，生效的混淆规则为**当前编译模块的混淆规则**与**依赖模块混淆规则**的合并结果，具体规则如下：
 
