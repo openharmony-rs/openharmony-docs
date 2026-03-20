@@ -232,10 +232,10 @@ getTreeListener(): TreeListener
 ### on
 
 ArkTS-Dyn:
-on(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void;
+on(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void
 
 ArkTS-Sta:
-on(type: TreeListenType, callback: OnChangedCallback): void;
+on(type: TreeListenType, callback: OnChangedCallback): void
 
 注册监听。
 
@@ -256,10 +256,10 @@ on(type: TreeListenType, callback: OnChangedCallback): void;
 ### once
 
 ArkTS-Dyn:
-once(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void;
+once(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void
 
 ArkTS-Sta:
-once(type: TreeListenType, callback: OnChangedCallback): void;
+once(type: TreeListenType, callback: OnChangedCallback): void
 
 注册一次监听。
 
@@ -280,10 +280,10 @@ once(type: TreeListenType, callback: OnChangedCallback): void;
 ### off
 
 ArkTS-Dyn:
-off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void): void;
+off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void): void
 
 ArkTS-Sta:
-off(type: TreeListenType, callback?: OnChangedCallback): void;
+off(type: TreeListenType, callback?: OnChangedCallback): void
 
 取消监听。
 
