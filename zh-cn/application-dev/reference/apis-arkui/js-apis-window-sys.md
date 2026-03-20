@@ -568,6 +568,123 @@ try {
 }
 ```
 
+## window.attachLayoutToParentWindow<sup>9+</sup>
+attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWindowAttachOptions): Promise&lt;void&gt;
+
+设置一级子窗与主窗保持相对位置不变。使用Promise异步回调
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明           |
+| -------- | ------------------------- | ---- | -------------- |
+| anchorInfo       | [WindowAnchorInfo](#windowlayoutmode9)                    | 是   | 设置子窗的锚点参数 |
+| attachOptions       | [SubWindowAttachOptions](#windowlayoutmode9)                    | 是   | 设置子窗布局的附加参数 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function attachLayoutToParentWindow can not work correctly due to limited device capabilities.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
+| 1300003 | This window manager service works abnormally.|
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. The current window's parent window is not a main window; 3. Only level-1 subwindows are supported.|
+| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is maximized.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let anchorInfo : window.WindowAnchorInfo = {
+    anchorType: window.WindowAnchor.TOP_START,
+    offsetX: 0,
+    offsetY: 0
+  };
+  let attachOptions: window.SubWindowAttachOptions = {
+    currentLayoutMode: "layoutMode",
+    parentWindowSizeChangeCallback:(data: Size) => {
+      console.info(`Succeeded accept parentWindow size change, width: ${data.width}, height: ${data.height}`);
+    },
+    parentWindowStatusChangeCallback:(type: WindowStatusType) => {
+      console.info(`Succeeded accept parentWindow status change, statueType: ${type}`);
+    }
+  }
+  let promise = window.attachLayoutToParentWindow(anchorInfo, attachOptions);
+  promise.then(() => {
+    console.info('Succeeded in attach to the main window');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed attach to the main window. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed attach to the main window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+## window.detachLayoutToParentWindow<sup>9+</sup>
+detachLayoutToParentWindow(): Promise&lt;void&gt;
+
+设置一级子窗解除与主窗保持相对位置不变。使用Promise异步回调
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明           |
+| -------- | ------------------------- | ---- | -------------- |
+| anchorInfo       | [WindowAnchorInfo](#windowlayoutmode9)                    | 是   | 设置子窗的锚点参数 |
+| attachOptions       | [SubWindowAttachOptions](#windowlayoutmode9)                    | 是   | 设置子窗布局的附加参数 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function attachLayoutToParentWindow can not work correctly due to limited device capabilities.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
+| 1300003 | This window manager service works abnormally.|
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. The current window's parent window is not a main window; 3. Only level-1 subwindows are supported.|
+| 1300010 | The operation in the current window status is invalid. Possible cause:  Possible cause: The subwindow is not attached to the main window.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let promise = window.detachLayoutToParentWindow();
+  promise.then(() => {
+    console.info('Succeeded detach to the main window');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed detach to the main window. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed detach to the main window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## window.on('systemBarTintChange')<sup>8+</sup>
 
 on(type: 'systemBarTintChange', callback: Callback&lt;SystemBarTintState&gt;): void
