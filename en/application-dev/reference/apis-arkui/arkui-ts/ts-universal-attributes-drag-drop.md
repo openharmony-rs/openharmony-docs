@@ -1141,4 +1141,3 @@ struct Index {
 }
 ```
 
-![sizeChangeEffect.gif](figures/sizeChangeEffect.gif)

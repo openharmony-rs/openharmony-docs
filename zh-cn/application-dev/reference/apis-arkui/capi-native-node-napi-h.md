@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供ArkTS侧的FrameNode转换NodeHandle的方式。
+提供ArkTS侧的[FrameNode](js-apis-arkui-frameNode.md)转换[NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)的方式。
 
 **引用文件：** <arkui/native_node_napi.h>
 
@@ -90,7 +90,7 @@ int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_C
 **描述：**
 
 
-获取ArkTS侧创建的UIContext对象映射到Native侧的ArkUI_ContextHandle。
+获取ArkTS侧创建的[UIContext](arkts-apis-uicontext-uicontext.md)对象映射到Native侧的ArkUI_ContextHandle。
 
 **起始版本：** 12
 
@@ -156,7 +156,7 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromNapiValue(napi_env env, napi_value val
 | 参数项 | 描述 |
 | -- | -- |
 | napi_env env | napi的环境指针。 |
-| napi_value value | ArkTS侧创建的DrawableDescriptor对象。 |
+| napi_value value | ArkTS侧创建的[DrawableDescriptor](arkui-ts/ts-basic-components-image.md#drawabledescriptor10)对象。 |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)** drawableDescriptor | 接受ArkUI_DrawableDescriptor指针的对象。 |
 
 **返回：**
@@ -174,7 +174,7 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_v
 **描述：**
 
 
-将ArkTS侧创建的[$r](js-apis-arkui-resource.md)资源对象映射到Native侧的[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。
+将ArkTS侧通过$r()获取的资源对象转换为Native侧可使用的[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象。
 
 **起始版本：** 12
 

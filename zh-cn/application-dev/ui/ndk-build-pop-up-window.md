@@ -45,7 +45,7 @@
       }
   ```
 
-- 当不再需要弹窗操作时，需要主动调用dispose接口销毁弹窗控制器对象。
+- 当不再需要弹窗操作时，需要主动调用[dispose](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md#dispose)接口销毁弹窗控制器对象。
   <!-- @[dialog_dispose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
   
   ``` C++
@@ -72,9 +72,10 @@
           g_dialogOptions = OH_ArkUI_CustomDialog_CreateOptions(textNode->GetHandle());
       }
   ```
+
   > **说明：**
   > 
-  > ArkUITextNode的声明方式可以查看[ArkUINode.h](../ui/ndk-access-the-arkts-page.md)文件中的实现文本组件。
+  > ArkUITextNode的声明方式可以查看[ArkUINode.h](../ui/ndk-access-the-arkts-page.md#示例)文件中的实现文本组件。
 
 - 当不再需要弹窗操作时，需要主动调用[OH_ArkUI_CustomDialog_DisposeOptions](../reference/apis-arkui/capi-native-dialog-h.md#oh_arkui_customdialog_disposeoptions)接口销毁弹窗控制器对象。
   <!-- @[dialog_disposeOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
@@ -88,6 +89,11 @@
 可以设置弹窗对齐方式、偏移量，弹窗背板圆角弧度、背景色、蒙层颜色以及区域等。
 
 1. 创建弹窗内容节点。
+
+   > **说明：**
+   >
+   > 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)中相关介绍。
+
    <!-- @[create_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
    
    ``` C++
@@ -316,13 +322,18 @@
 
 ## 弹窗的生命周期
 
-从API version 19开始，弹窗显示和关闭前后，存在四个生命周期：registerOnWillAppear、registerOnDidAppear、registerOnWillDisappear、registerOnDidDisappear。
+从API version 19开始，弹窗显示和关闭前后，存在四个生命周期：[registerOnWillAppear](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registeronwillappear)、[registerOnDidAppear](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registerondidappear)、[registerOnWillDisappear](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registeronwilldisappear)、[registerOnDidDisappear](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registerondiddisappear)。
 
 这些生命周期方法需要在调用show方法之前调用，生命周期的时序如下：
 
 registerOnWillAppear -> 弹窗显示动画开始 -> 弹窗显示动画结束 -> registerOnDidAppear -> 弹窗显示完成 ->registerOnWillDisappear -> 弹窗关闭动画开始 ->  弹窗关闭动画结束 -> registerOnDidDisappear -> 弹窗关闭完成。
 
 创建一个弹窗，弹窗显示和关闭时会触发生命周期的回调函数。其中 ArkUI_NodeContentHandle 类型节点的获取与使用可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
+
+> **说明：**
+>
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)中相关介绍。
+ 
 <!-- @[dialog_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
 
 ``` C++

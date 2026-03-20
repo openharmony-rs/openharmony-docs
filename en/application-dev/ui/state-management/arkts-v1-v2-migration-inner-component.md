@@ -4,30 +4,34 @@
 <!--Owner: @liwenzhen3-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 This topic provides migration guidance for component state variables across different scenarios.
+
 | V1 Decorator               | V2 Decorator                 |
 |------------------------|--------------------------|
-| [\@State](./arkts-state.md)                 | No external initialization: [\@Local](./arkts-new-local.md)<br>One-time external initialization: [\@Param](./arkts-new-param.md) + [\@Once](./arkts-new-once.md)|
+| [\@State](./arkts-state.md)                 | No external initialization: [\@Local](./arkts-new-local.md)<br>One-time external initialization: [\@Param](./arkts-new-param.md) or [\@Once](./arkts-new-once.md)|
 | [\@Prop](./arkts-prop.md)                   | [\@Param](./arkts-new-param.md)                   |
-| [\@Link](./arkts-link.md)                  | [\@Param](./arkts-new-param.md)[\@Event](./arkts-new-event.md)    |
-|  [\@ObjectLink](./arkts-observed-and-objectlink.md)           |[\@Param](./arkts-new-param.md)[\@Event](./arkts-new-event.md)                   |
+| [\@Link](./arkts-link.md)                  | [\@Param](./arkts-new-param.md)/[\@Event](./arkts-new-event.md)    |
+|  [\@ObjectLink](./arkts-observed-and-objectlink.md)           |[\@Param](./arkts-new-param.md)/[\@Event](./arkts-new-event.md)                   |
 |  [\@Provide](./arkts-provide-and-consume.md)               |[\@Provider](./arkts-new-provider-and-consumer.md)                | 
 | [\@Consume](./arkts-provide-and-consume.md)               |[\@Consumer](./arkts-new-provider-and-consumer.md)                |
 | [\@Watch](./arkts-watch.md)               |[\@Monitor](./arkts-new-monitor.md)                |
 | No computed property capability (manual recalculation required)| [\@Computed](./arkts-new-computed.md)                |
 
+
 ## Migration Examples
 
-### \@State->\@Local
+### \@State -> \@Local
 
 **Migration Rules**
 
 In V1, \@State decorates internal component state variables. V2 provides \@Local as its replacement, but with significant differences in observation capabilities and initialization rules. The migration strategies for different use scenarios are as follows:
 
 - Primitive types: For primitive type variables, directly replace \@State with \@Local.
-- Complex types: In V1, @State can observe the top-level property changes of a complex object. In V2, \@Local can observe only the changes of the object itself. To listen for the internal property changes of an object, you can use \@ObservedV2 and \@Trace together.
+
+- Complex types: In V1, \@State can observe the top-level property changes of a complex object. In V2, \@Local can observe only the changes of the object itself. To listen for the internal property changes of an object, you can use \@ObservedV2 and \@Trace together.
+
 - External initialization: \@State in V1 supports initialization from external values, while \@Local in V2 prohibits external initialization. If an initial value needs to be passed in externally, you can use the \@Param and \@Once decorators.
 
 **Example**
@@ -112,12 +116,12 @@ class Child {
 @ComponentV2
 @Entry
 struct Example {
+  // @Local can only observe the object itself. Add @ObservedV2 and @Trace to Child to enable observation of internal properties.
   @Local child: Child = new Child();
 
   build() {
     Column() {
       Text(this.child.value.toString())
-      // @Local can only observe the object itself. Add @ObservedV2 and @Trace to Child to enable observation of internal properties.
       Button('value+1')
         .onClick(() => {
           this.child.value++;
@@ -182,6 +186,7 @@ struct Parent {
   }
 }
 ```
+
 
 ### \@Link -> \@Param/\@Event
 
@@ -262,14 +267,17 @@ struct Parent {
 }
 ```
 
+
 ### \@Prop -> \@Param
 
 **Migration Rules**
 
-In V1, the \@Prop decorator allows child components to receive and modify parent-passed parameters. In V2, \@Param replaces \@Prop. However, \@Param decorated parameters are read-only and cannot be modified in the child component. Depending on the scenario, there are several migration strategies:
+In V1, the \@Prop decorator allows child components to receive and modify parent-passed parameters. In V2, \@Param replaces \@Prop. However, \@Param decorated parameters are read-only and cannot be modified in the child component. Depending on the scenario, there are 3 migration strategies:
 
 - Primitive types: For primitive type parameters, replace \@Prop with \@Param.
+
 - Complex types: For complex objects requiring strict one-way data flow, perform a deep copy to prevent the child component from modifying the parent's data.
+
 - Variable modification by the child component: Use \@Once to allow one-time local modification. Note that if \@Once is used, the current child component is initialized only once, and changes from the parent component cannot be synchronized to the child component.
 
 **Example**
@@ -505,6 +513,7 @@ struct Parent {
 In V1, a child component can modify its @Prop decorated variables. These changes are applied locally and are not synced to the parent component. When the parent's data source updates, the child component receives the update and its local \@Prop values are overwritten.
 
 V1:
+
 - Changes to **localValue** in the child component **Child** are not synchronized to the parent component **Parent**.
 - When **Parent** updates **value**, **Child** is notified and its **localValue** is overwritten.
 
@@ -548,6 +557,7 @@ struct Parent {
 In V2, \@Param cannot be modified locally. When used with \@Once, the value is synchronized only once. In contrast, \@Monitor enables a writable local copy in the child component while still receiving updates from the parent component.
 
 V2:
+
 - When **Parent** is updated, it notifies the child component and triggers the **onValueChange** callback decorated with \@Monitor. This callback assigns the new value to **localValue** in the child component.
 - Modifications to **localValue** remain local and are not propagated to **Parent**.
 - Subsequent updates from **Parent** will overwrite **localValue** in the child component.
@@ -601,7 +611,9 @@ struct Parent {
 }
 ```
 
+
 ### \@Provide/\@Consume -> \@Provider/\@Consumer
+
 **Migration Rules**
 
 The functionality of \@Provide and \@Consume in V1 is largely similar to \@Provider and \@Consumer in V2, making them generally interchangeable. However, several key differences may require adjustments depending on your implementation.
@@ -609,9 +621,13 @@ The functionality of \@Provide and \@Consume in V1 is largely similar to \@Provi
 In V1, @Provide and @Consume enable data sharing between parent and child components. They can be matched by alias or attribute name, with \@Consume depending on the parent component's \@Provide. Local initialization is not supported before API version 20. In V2, \@Provider and \@Consumer enhance these features, offering more flexible data sharing. Key improvements are as follows:
 
 - Syntax requirement: In V1, \@Provide and \@Consume can be used without parentheses () if no alias is specified. In V2, \@Provider and \@Consumer must always be followed by parentheses (), whether or not an alias is specified.
+
 - Matching rules: In V1, \@Provide and \@Consume can be matched by alias or variable name. In V2, matching is performed only by alias. Once an alias is specified, it becomes the exclusive matching key.
+
 - Local initialization: In V1, \@Consume depends on the parent component's @Provide and does not support local initialization before API version 20. Since API version 20, local default values are used if no matching @Provide is found. For details, see [Setting Default Values for @Consume Decorated Variables](./arkts-provide-and-consume.md#setting-default-values-for-consume-decorated-variables). In V2, \@Consumer supports local initialization by default, using the local value if no matching \@Provider is available.
-- Initialization from the parent component: In V1, \@Provide can be directly initialized from the parent component. In V2, \@Provider does not support external initialization. You must use @Param with @Once to receive the initial value from the parent and assign it to \@Provider.
+
+- Initialization from the parent component: In V1, \@Provide can be directly initialized from the parent component. In V2, \@Provider does not support external initialization. You must use @Param with \@Once to receive the initial value from the parent and assign it to \@Provider.
+
 - Overriding support: In V1, \@Provide requires explicit **allowOverride** to support overriding. In V2, \@Provider supports overriding by default. \@Consumer automatically resolves to the nearest \@Provider in the component tree.
 
 **Example**
@@ -885,12 +901,15 @@ struct Child {
 }
 ```
 
+
 ### \@Watch -> \@Monitor
+
 **Migration Rules**
 
 In V1, \@Watch observes state variable changes and triggers specified callbacks. In V2, \@Monitor replaces \@Watch, offering more flexible change detection with access to both previous and current variable values. The migration policies for different use scenarios are as follows:
 
 - Single-variable listening: Directly replace \@Watch with \@Monitor.
+
 - Multi-variable listening: In V1, \@Watch cannot access the previous value of the variable before the change. In V2, \@Monitor can listen for multiple variables at the same time and can access the values of the variables before and after the change.
 
 **Example**
@@ -1006,6 +1025,7 @@ struct WatchExample {
     }
   }
 }
+
 ```
 
 V2:
@@ -1049,7 +1069,9 @@ struct MonitorExample {
 }
 ```
 
-### \@Computed
+
+### Repeated Calculation -> \@Computed Property
+
 **Migration Rules**
 
 V1 lacks computed property support, leading to redundant calculations during UI re-renders. To address this, V2 introduces the \@Computed decorator, allowing you to optimize and cache expensive computations.
@@ -1106,6 +1128,98 @@ struct Index {
         this.lastName += 'a';
       })
     }
+  }
+}
+```
+
+
+### Two-way Binding Migration from $$ to !!
+
+In state management V1, [$$](./arkts-two-way-sync.md) is recommended for implementing two-way binding for built-in components. In state management V2, [!!](./arkts-new-binding.md) is recommended for implementing two-way binding.
+
+> **NOTE**
+> 
+> The **!!** syntax is supported since API version 12.
+
+**Migration policies**
+
+For system component parameters, replace **$$** in V1 with **!!** in V2.
+
+V1:
+
+<!-- @[sync_state_manager_$$](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct TextInputExample {
+  @State text: string = '';
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column({ space: 20 }) {
+      Text(this.text)
+      TextInput({ text: $$this.text, placeholder: 'input your word...', controller: this.controller })
+        .placeholderColor(Color.Grey)
+        .placeholderFont({ size: 14, weight: 400 })
+        .caretColor(Color.Blue)
+        .width(300)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+V2 migration policy: Change the decorator to V1 and replace **$$** with **!!**.
+
+<!-- @[sync_state_manager_!!](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExampleV2.ets) -->
+
+``` TypeScript
+@Entry
+@ComponentV2
+struct TextInputExampleV2 {
+  @Local text: string = '';
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column({ space: 20 }) {
+      Text(this.text)
+      // Use !! to replace $$ in V2.
+      TextInput({ text: this.text!!, placeholder: 'input your word...', controller: this.controller })
+        .placeholderColor(Color.Grey)
+        .placeholderFont({ size: 14, weight: 400 })
+        .caretColor(Color.Blue)
+        .width(300)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+``` TypeScript
+@Entry
+@ComponentV2
+struct TextInputExampleV2 {
+  @Local text: string = '';
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column({ space: 20 }) {
+      Text(this.text)
+      // Use !! to replace $$ in V2.
+      TextInput({ text: this.text!!, placeholder: 'input your word...', controller: this.controller })
+        .placeholderColor(Color.Grey)
+        .placeholderFont({ size: 14, weight: 400 })
+        .caretColor(Color.Blue)
+        .width(300)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```

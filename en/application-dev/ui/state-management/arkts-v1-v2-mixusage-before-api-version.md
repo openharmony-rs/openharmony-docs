@@ -8,35 +8,35 @@
 
 ## Overview
 
-> **NOTE**:
+> **NOTE**
 > 
-> In this topic, the symbol "->" is used to indicate the transfer of variables. For example, "V1 -> V2" indicates that the state variable of V1 is transferred to the V2.
+> In this topic, the symbol "->" is used to indicate the passing of variables. For example, "V1 -> V2" indicates that a state variable of V1 is passed to the V2.
 
-Before API version 19, there are strict checks on the mixed use of V1 and V2. The rules for mixed use of V1 and V2 state management are as follows:
+Before API version 19, there are strict checks on the mixing scenarios. The rules for mixed use of V1 and V2 state management are as follows:
 
-**1. V1 -> V2 rules**
+**1. V1 -> V2 Rules**
 
-- The decorators of V2 cannot be used in the custom components of V1. Otherwise, an error is reported during compilation.
+- The V2 decorators cannot be used in the V1 custom components; otherwise, a compilation error will occur.
 
-- When no variable is transferred between components, the custom components of V2 can be used in the custom components of V1, including the custom components decorated by the third-party \@ComponentV2.
+- When no variable is passed between components, the V2 custom components (including imported third-party custom components decorated with \@ComponentV2) can be used in the V1 custom components.
 
-- When variables are transferred between components, such as passing variables of V1 to the custom components of V2, constraints are as follows:
-  - Variables that are not decorated in V1 (common variables): can be received only by using \@Param in V2.
-  - Variables that are decorated in V1 (state variables): can be received only by the \@Param, and are limited to simple data such as **boolean**, **number**, **enum**, **string**, **undefined** and **null**.
+- When variables are passed between components, such as passing variables of V1 to the V2 custom components, the following restrictions apply:
+  - Variables that are not decorated in V1 (common variables): V2 can only receive them using \@Param.
+  - Variables that are decorated in V1 (state variables): V2 can only receive them using \@Param, and only for the following simple data types: **boolean**, **number**, **enum**, **string**, **undefined** and **null**.
 
 **2. V2->V1 Rules**
 
-- Decorators of V1 cannot be used in custom components of V2; otherwise, a compilation error will occur.
+- V1 decorators cannot be used in V2 custom components; otherwise, a compilation error will occur.
 
-- When no variable is transferred between components, V2 custom components can use V1 custom components, including importing third-party custom components decorated with the \@Component decorator.
+- When no variable is passed between components, the V1 custom components (including imported third-party custom components decorated with \@Component) can be used in the V2 custom components.
 
-- When variables are transferred between components, such as passing variables of V2 to the custom components of V1, constraints are as follows:
-  - Transferring V2 common variables (not using the state variable decorator) to V1 custom components:
+- When variables are passed between components, such as passing variables of V2 to the V1 custom components, the following restrictions apply:
+  - Passing V2 common variables (not using the state variable decorator) to V1 custom components:
 
      If V1 uses state variables to receive the data, only the following V1 state variable decorators can be used: [@State](./arkts-state.md), [@Prop](./arkts-prop.md), and [@Provide](./arkts-provide-and-consume.md).
-  - Transferring V2 state variables (using the state variable decorator) to V1 custom components:
+  - Passing V2 state variables (using the state variable decorator) to V1 custom components:
 
-     If V1 uses a state variable decorator (also supported only by \@State, \@Prop, and \@Provide) to decorate received data, built-in data such as **Array**, **Set**, **Map**, and **Date** is not supported. Note that the V2 state variable supports the **Function** type, but the V1 state variable decorator does not support the **Function** type. If the **Function** type data is transferred, an error is reported during runtime verification. Take \@State as an example. For details, see [\@State Constraints](./arkts-state.md#constraints).
+     If V1 uses a state variable decorator (also supported only by \@State, \@Prop, and \@Provide) to decorate received data, built-in data such as **Array**, **Set**, **Map**, and **Date** is not supported. Note that the V2 state variable can be of the function type, but the V1 state variable decorator does not support the function type. If data of the function type is passed, a verification error is reported during runtime. Take \@State as an example. For details, see [\@State Constraints](./arkts-state.md#constraints).
   - [\@Link](./arkts-link.md) in V1 complies with the original initialization rules and can be initialized only by V1 state variables. For details, see [\@Link Initialization Rules](./arkts-link.md#variable-transferaccess-rules).
 
 
@@ -44,15 +44,15 @@ Before API version 19, there are strict checks on the mixed use of V1 and V2. Th
 
 - Mixed use of V1 and V2 decorators is not allowed.
 
-  The intra-component decorators in V1 cannot be used in the custom components of V2, and the intra-component decorators in V2 cannot be used in the custom components of V1. Otherwise, an error is reported during compilation.
+  The intra-component decorators in V1 cannot be used in V2 custom components, and the intra-component decorators in V2 cannot be used in V1 custom components. Otherwise, a compilation error occurs.
 
-- V1 decorators cannot be used with [@ObservedV2](./arkts-new-observedV2-and-trace.md). Otherwise, an error is reported during compilation.
+- V1 decorators cannot be used with [@ObservedV2](./arkts-new-observedV2-and-trace.md). Otherwise, a compilation error occurs.
 
-- V2 decorators cannot be used with [@Observed](./arkts-observed-and-objectlink.md). Otherwise, an error is reported during compilation.
+- V2 decorators cannot be used with [@Observed](./arkts-observed-and-objectlink.md). Otherwise, a compilation error occurs.
 
-- V1-&gt;V2 can only pass simple types of state variables. State variables of complex types cannot be passed. For example, if a class decorated with \@Observed or a built-in type (**Array**, **Map**, **Set**, or **Date**) decorated with the decorator is passed, an error is reported during compilation.
+- When passing state variables from V1 to V2, only simple types are supported. Passing complex types (for example, classes decorated with @Observed, and decorated built-in types like Array, Map, Set, or Date) will cause a compilation error.
 
-- V2-&gt;V1 can pass simple types of state variables and common classes. If a class decorated with \@ObservedV2 or a built-in type (**Array**, **Map**, **Set**, or **Date**) decorated with the decorator is passed, an error is reported during compilation.
+- When passing state variables from V2 to V1, simple types and common classes are supported. If a class decorated with \@ObservedV2 or a built-in type (Array, Map, Set, or Date) decorated with the decorator is passed, an error is reported during compilation.
 
 - In V1, \@ObjectLink can be initialized only by a class decorated with \@Observed.
 
@@ -61,11 +61,11 @@ Before API version 19, there are strict checks on the mixed use of V1 and V2. Th
 - Multiple decorators cannot decorate the same variable (except \@Watch, \@Once, and \@Require).
 
   ```ts
-  @State @Prop message: string = "";  // Multiple decorators of V1 cannot decorate the same variable. Otherwise, an error is reported during compilation.
+  @State @Prop message: string = "";  // Multiple V1 decorators cannot decorate the same variable. Otherwise, a compilation error occurs.
   ```
 
   ```ts
-  @Local @Param message: string = 'Hello World'; // Multiple decorators of V2 cannot decorate the same variable. Otherwise, an error is reported during compilation.
+  @Local @Param message: string = 'Hello World'; // Multiple V2 decorators cannot decorate the same variable. Otherwise, a compilation error occurs.
   ```
 
   All decorators cannot decorate the same variable except extended decorators \@Watch, \@Once, and \@Require that can be used with other decorators.
@@ -74,13 +74,15 @@ Before API version 19, there are strict checks on the mixed use of V1 and V2. Th
 ## Using V2 Custom Components in V1
 
 
-### Not Transferring Variables
+### Not Passing Variables
 
-When V2 custom components are used in V1, if no variable is transferred, there will be no impact. In the following sample code, **Child** is a V2 custom component that does not accept parameters. **Index** can directly use **Child**.
+When V2 custom components are used in V1, there will be no impact if no variable is passed. In the following sample code, **ChildSix** is a V2 custom component that does not accept parameters. **IndexSix** can directly use **ChildSix**.
+
+<!-- @[v1_use_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2InV1.ets) -->
 
 ``` TypeScript
 @ComponentV2
-struct Child {
+struct ChildSix {
   @Local message: string = 'hello';
 
   build() {
@@ -97,7 +99,7 @@ struct Child {
 
 @Entry
 @Component
-struct Index {
+struct IndexSix {
   @State message: string = 'Hello World';
 
   build() {
@@ -111,7 +113,7 @@ struct Index {
       Divider()
         .color(Color.Blue)
       // Use only V2 components with no parameters.
-      Child()
+      ChildSix()
     }
     .height('100%')
     .width('100%')
@@ -120,14 +122,16 @@ struct Index {
 ```
 
 
-### Transferring Undecorated Variables
+### Passing Undecorated Variables
 
-If a variable is not decorated, it cannot be observed. When transferring the variable to V2, note that V2 components have strict management on data input and the variable must be received through the [@Param](./arkts-new-param.md) decorator. In V2, the \@Param decorator is used to observe the received data. For the received **class**, you need to use the \@ObservedV2 and \@Trace decorators to observe the changes.
+If a variable is not decorated, it cannot be observed. When passing the variable to V2, note that V2 components have strict management on data input and the variable must be received through the [@Param](./arkts-new-param.md) decorator. In V2, the \@Param decorator is used to observe the received data. For the received class, you need to use the \@ObservedV2 and \@Trace decorators to observe the changes.
 
-In the following code example, **Child** is defined as a V2 component and accepts parameters such as **message**, **undefinedVal**, and **info**. The simple types **message** and **undefinedVal** received by \@Param in **Child** can be observed. The **class** variable **info** is not decorated with \@ObservedV2 and \@Trace, and cannot be observed.
+In the following sample code, **ChildTwo** is defined as a V2 component and accepts variables such as **message**, **undefinedVal**, and **info**. The simple variables **message** and **undefinedVal** received by \@Param in **ChildTwo** can observe changes. The class type variable **info** is not decorated with \@ObservedV2 and \@Trace, so it cannot observe class property changes.
+
+<!-- @[v1_to_v2_common_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1CommonVariablesToV2CustomComponent.ets) -->
 
 ``` TypeScript
-class Info {
+class InfoTwo {
   public myId: number;
   public name: string;
 
@@ -138,41 +142,41 @@ class Info {
 }
 
 @ComponentV2
-struct Child {
-  // V2 strictly manages data input. When receiving data from the parent component, the @Param decorator must be used to receive data.
+struct ChildTwo {
+  // V2 has strict management on data input. When data is passed from the parent component, the @Param decorator must be used to receive the data.
   @Param @Once message: string = 'hello'; // The change can be observed. @Event is used to synchronize the change back to the parent component. @Once is used to modify variables decorated by @Param.
   @Param @Once undefinedVal: string | undefined = undefined; // @Once is used to modify variables decorated by @Param.
-  @Param info: Info = new Info(); // The class attribute change cannot be observed.
+  @Param info: InfoTwo = new InfoTwo(); // The class property changes cannot be observed.
   @Require @Param set: Set<number>;
 
   build() {
     Column() {
-      Text(`child message:${this.message}`) // Display the string.
+      Text(`child message:${this.message}`) // Display the message variable.
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.message = 'world'; // Refresh the UI of the current component.
+          this.message = 'world'; // Update the current component.
         })
 
       Divider()
         .color(Color.Blue)
-      Text(`undefinedVal:${this.undefinedVal}`) // Display undefinedVal.
+      Text(`undefinedVal:${this.undefinedVal}`) // Display the undefinedVal variable.
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.undefinedVal = 'change to define'; // Refresh the UI of the current component.
+          this.undefinedVal = 'change to define'; // Update the current component.
         })
       Divider()
         .color(Color.Blue)
-      Text(`info id:${this.info.myId}`) // Display info.myId.
+      Text(`info id:${this.info.myId}`) // Display the info.myId variable.
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.info.myId++; // The information is not refreshed.
+          this.info.myId++; // The information is not updated.
         })
       Divider()
         .color(Color.Blue)
-      ForEach(Array.from(this.set.values()), (item: number) => {  // Display set.
+      ForEach(Array.from(this.set.values()), (item: number) => { // Display the set variable.
         Text(`${item}`)
           .fontSize(30)
       })
@@ -183,10 +187,10 @@ struct Child {
 
 @Entry
 @Component
-struct Index {
+struct IndexTwo {
   message: string = 'Hello World'; // Simple type.
-  undefinedVal: undefined = undefined; // Simple type, undefined.
-  info: Info = new Info(); // Class type.
+  undefinedVal: undefined = undefined; // Simple type undefined.
+  info: InfoTwo = new InfoTwo(); // Class type.
   set: Set<number> = new Set([10, 20]); // Built-in type.
 
   build() {
@@ -199,7 +203,7 @@ struct Index {
         })
       Divider()
         .color(Color.Blue)
-      Child({
+      ChildTwo({
         message: this.message,
         undefinedVal: this.undefinedVal,
         info: this.info,
@@ -213,14 +217,18 @@ struct Index {
 ```
 
 
-### Transferring Simple State Variables
 
-When V2 components are used in V1, the decorators in V1 components can only modify simple data types, including **boolean**, **number**, **string**, **null**, and **undefined**. The V2 component uses \@Param to receive parameters.
 
-If **class** types or built-in types (Array, Map, Set, and Date) decorated by \@State are transferred during the use of V2 components in V1, a compilation error is reported. In the following sample code, the \@State decorator needs to be deleted from the **info** and **set** variables. The behavior of \@Prop, \@Link, \@ObjectLink, \@Provide, \@Consume, \@StorageProp, \@StorageLink, \@LocalStorageProp and \@LocalStorageLink is the same as that of \@State.
+### Passing Simple Type State Variables
+
+When V2 components are used in V1, the decorators in V1 components can only modify simple data types, including **boolean**, **number**, **string**, **null**, and **undefined**. The V2 component uses \@Param to receive variables.
+
+If class types or built-in types (Array, Map, Set, and Date) decorated by \@State are passed during the use of V2 components in V1, a compilation error is reported. In the following sample code, the \@State decorator needs to be deleted from the **info** and **set** variables. The behavior of \@Prop, \@Link, \@ObjectLink, \@Provide, \@Consume, \@StorageProp, \@StorageLink, \@LocalStorageProp and \@LocalStorageLink is the same as that of \@State.
+
+<!-- @[v1_to_v2_state_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1StateVariablesToV2CustomComponent.ets) -->
 
 ``` TypeScript
-class Info {
+class InfoFour {
   public myId: number;
   public name: string;
 
@@ -231,16 +239,16 @@ class Info {
 }
 
 @ComponentV2
-struct Child {
-  // V2 has strict management on data input. When data is transferred from the parent component, the @Param decorator must be used to receive the data.
+struct ChildFour {
+  // V2 has strict management on data input. When data is passed from the parent component, the @Param decorator must be used to receive the data.
   @Param @Once message: string = 'hello';
   @Param @Once undefinedVal: string | undefined = undefined; // @Once is used to modify variables decorated by @Param.
-  @Param info: Info = new Info();
+  @Param info: InfoFour = new InfoFour();
   @Require @Param set: Set<number>;
-  
+
   build() {
     Column() {
-      Text(`child message:${this.message}`) // Display the string.
+      Text(`child message:${this.message}`) // Display the message variable.
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
@@ -248,12 +256,26 @@ struct Child {
         })
       Divider()
         .color(Color.Blue)
-      Text(`undefinedVal:${this.undefinedVal}`) // Display undefinedVal.
+      Text(`undefinedVal:${this.undefinedVal}`) // Display the undefinedVal variable.
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
           this.undefinedVal = 'change to define';
         })
+      Divider()
+        .color(Color.Blue)
+      Text(`info id:${this.info.myId}`) // Display the info.myId variable.
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.info.myId++;
+        })
+      Divider()
+        .color(Color.Blue)
+      ForEach(Array.from(this.set.values()), (item: number) => { // Display the set variable.
+        Text(`${item}`)
+          .fontSize(30)
+      })
     }
     .margin(5)
   }
@@ -261,11 +283,11 @@ struct Child {
 
 @Entry
 @Component
-struct Index {
+struct IndexFour {
   @State message: string = 'Hello World'; // Simple type data. Supported.
   @State undefinedVal: undefined = undefined; // Simple type, undefined. Supported.
-  @State info: Info = new Info(); // Class type. Not supported. To eliminate the compilation error, delete @State.
-  @State set: Set<number> = new Set([10, 20]); // Built-in type. Not supported. To eliminate the compilation error, delete @State.
+  @State info: InfoFour = new InfoFour(); // Class type. It cannot be passed. To eliminate the compilation error, delete @State.
+  @State set: Set<number> = new Set([10, 20]); // Built-in type. It cannot be passed. To eliminate the compilation error, delete @State.
 
   build() {
     Column() {
@@ -277,7 +299,7 @@ struct Index {
         })
       Divider()
         .color(Color.Blue)
-      Child({
+      ChildFour({
         message: this.message,
         undefinedVal: this.undefinedVal,
         info: this.info,
@@ -291,28 +313,30 @@ struct Index {
 ```
 
 
-### Transferring Class State Variables
 
-Given that parameter transfer in V1 using V2 components supports only simple type data rather than **class** type data, the following describes the migration solution for the **class** data transfer scenario.
+
+### Passing Class-Type State Variables
+
+When V2 components are used in V1 to pass parameters, V1 decorators only support decorating the data of the simple type and not class-type data. The following describes the migration solution for the class-type data passing scenario.
 
 **\@Observed Decorated Class**
 
-The V2 decorators cannot be used with \@Observed. When V1 transfers the \@Observed-decorated **class** type to the V2 custom component, the \@Param is not directly used to receive data. As shown in the following figure, the **V1BridgeComponent** is defined as the bridge layer. Listen to the data of the V1 component at the bridge layer and synchronize the data to the singleton data defined by V2. The V1 component directly uses **V1BridgeComponent** and introduces the V2 custom component in **V1BridgeComponent**.
+The V2 decorators cannot be used with \@Observed. When V1 passes the \@Observed-decorated class to the V2 custom component, the \@Param is not directly used to receive data. As shown in the following figure, the **V1BridgeComponent** component is defined as the bridge layer. At the bridge layer, listen to the data of the V1 component and synchronize the data to the singleton data defined in V2. The V1 component directly uses **V1BridgeComponent** and introduces the V2 custom component in **V1BridgeComponent**.
 
 ![mixsuage-example-observed-class](./figures/mixsuage-example-observed-class.png)
 
 The code snippet is as follows:
 
-1. Decorate the **class** singleton ViewModelV2 with the \@ObservedV2 decorator, and the V2 component **V2Comp** directly uses the instantiated singleton of ViewModelV2 for UI rendering.
+1. Decorate the class singleton **ViewModelV2** decorated with the \@ObservedV2 decorator, and use the instantiated singleton of **ViewModelV2** to render UI for the V2 component **V2Comp**.
+2. Add the bridge component **V1BridgeComponent** decorated with \@Component between the V1 component **V1Comp** and the V2 component **V2Comp**. Use \@Watch to listen to the data and assign the class data decorated with \@Observed in V1 to the class data decorated with \@ObservedV2 in V2.
+3. Directly introduce the bridge component **V1BridgeComponent** to the V1 component **V1Comp** and introduce the V2 component **V2Comp** to **V1BridgeComponent**.
 
-2. Add the bridge component **V1BridgeComponent** decorated with \@Component between the V1 component **V1Comp** and the V2 component **V2Comp**. Use \@Watch to listen to the data and assign the **class** data decorated with \@Observed in V1 to the **class** data decorated with \@ObservedV2 in V2.
-
-3. The V1 component **V1Comp** directly imports the bridge component **V1BridgeComponent**, which in turn imports the V2 component **V2Comp**.
+<!-- @[v1_to_v2_observed_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1ToV2_ObservedClass.ets) -->
 
 ``` TypeScript
 @Observed
 class ViewModelV1 {
-  @Track fontSize: number;
+  @Track public fontSize: number;
 
   constructor(fontSize: number) {
     this.fontSize = fontSize;
@@ -367,7 +391,7 @@ struct V1BridgeComponent {
 class ViewModelV2 {
   // Singleton instance.
   private static singleton_: ViewModelV2;
-  @Trace fontSize: number = 40;
+  @Trace public fontSize: number = 40;
 
   // Private constructor instance (external new is prohibited).
   private constructor() {
@@ -377,7 +401,6 @@ class ViewModelV2 {
     if (!ViewModelV2.singleton_) {
       ViewModelV2.singleton_ = new ViewModelV2();
     }
-    ;
     return ViewModelV2.singleton_;
   }
 }
@@ -406,9 +429,11 @@ struct V2Comp {
 
 The observation capability of \@ObservedV2+\@Trace is supported in both V1 and V2. However, in V1, the V1 decorator cannot be used together with the instance object decorated by \@ObservedV2. In the following sample code, if the **info** object is decorated with \@State, a compilation error occurs. In this case, the decorator of V1 needs to be removed.
 
+<!-- @[v1_to_v2_observedV2_trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1ToV2_ObservedV2AndTrace.ets) -->
+
 ``` TypeScript
 @ObservedV2
-class Info {
+class InfoTen {
   @Trace public myId: number;
   public name: string;
 
@@ -418,22 +443,39 @@ class Info {
   }
 }
 
-@Entry
-@Component
-struct Index {
-  // @State info: Info = new Info(); // Incorrect writing method. The **class** type is not supported. To eliminate compilation errors, delete @State.
-  info: Info = new Info(); // Correct writing method.
+@ComponentV2
+struct ChildTen {
+  // V2 has strict management on data input. When data is passed from the parent component, the @Param decorator must be used to receive the data.
+  @Param info: InfoTen = new InfoTen();
 
   build() {
     Column() {
-    Text(`Parent-V1 info id:${this.info.myId}`) // Display info:myId.
+      Text(`Child-V2 info id:${this.info.myId}`)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
           this.info.myId++; // Update.
         })
-        
-      Child({
+    }
+  }
+}
+
+@Entry
+@Component
+struct IndexTen {
+  // @State info: InfoTen = new InfoTen(); // Incorrect. The class type cannot be passed, so the compiler reports an error. To eliminate the compilation error, delete @State.
+  info: InfoTen = new InfoTen(); // Correct writing method.
+
+  build() {
+    Column() {
+      Text(`Parent-V1 info id:${this.info.myId}`)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.info.myId++; // Update.
+        })
+
+      ChildTen({
         info: this.info,
       })
     }
@@ -441,46 +483,30 @@ struct Index {
     .width('100%')
   }
 }
-
-@ComponentV2
-struct Child {
-
-  // V2 strictly manages data input. When receiving data from the parent component, the @Param decorator must be used to receive data.
-  @Param info: Info = new Info();
-
-  build() {
-    Column() {
-      Text(`Child-V2 info id:${this.info.myId}`) // Display info:myId.
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-        .onClick(() => {
-          this.info.myId++; // Update.
-        })
-    }
-  }
-}
 ```
 
 
-### Transferring Nested Objects
 
-The observation capability of the decorator of V1 is to function as a proxy for data. Therefore, when data is nested, the decorator of V1 can only disassemble the child component to observe lower-level data through \@Observed and \@ObjectLink. However, V2 cannot receive the object decorated by \@Observed, and \@ObjectLink cannot be used in V2. Lacking the deep-level observation capability as \@ObservedV2 combined with \@Trace has, the deep-level nesting of \@Observed is not discussed here; only the application scenarios of \@ObservedV2 in V1 are discussed.
+
+### Passing Nested Objects
+
+The observation capability of the V1 decorator is to function as a proxy for data. Therefore, when data is nested, the V1 decorator can only disassemble the child component to observe lower-level data through \@Observed and \@ObjectLink. However, V2 cannot receive the object decorated by \@Observed, and \@ObjectLink cannot be used in V2. Lacking the deep-level observation capability as \@ObservedV2 combined with \@Trace has, the deep-level nesting of \@Observed is not discussed here; only the application scenarios of \@ObservedV2 in V1 are discussed.
 
 **Class Decorated by \@Observed Nesting Class Decorated by \@ObservedV2**
 
-When \@ObservedV2 and \@Observed are nested, whether the **class** object can be decorated by the decorator of V1 depends on the decorator used by the outermost **class**. If the outermost **class** is decorated by \@Observed, it can be used with the V2 decorator, for example, \@State. \@State can observe only the top-level changes. To perform in-depth observation, variables should be transferred to \@ObjectLink.
+When \@ObservedV2 and \@Observed are nested, whether the **class** object can be decorated by the decorator of V1 depends on the decorator used by the outermost **class**. If the outermost **class** is decorated by \@Observed, it can be used with the V2 decorator, for example, \@State. \@State can observe only the top-level changes. To perform in-depth observation, variables should be passed to \@ObjectLink.
 
 In the following sample code:
 
-- The outermost **MessageInfoNested** class is decorated by \@Observed and can be decorated by \@State in the V1 component **Index**. The change of the second layer of \@State (**info** and **messageId** attributes) cannot trigger the refresh of the current layer. However, the change can be observed by \@ObjectLink and \@Param and triggers the re-render of the associated components.
+- The outermost **MessageInfoNested1** class is decorated with \@Observed and can be decorated with \@State in the V1 component **IndexOne**. The change of the second layer of \@State (**info** and **messageId** attributes) cannot trigger the refresh of the current layer. However, the change can be observed by \@ObjectLink and \@Param and triggers the re-render of the associated components.
+- The **messageInfo** attribute is passed to the V1 component. The V1 component **ChildOne** is received by \@ObjectLink. The class of the **info** attribute passed to the V2 component **GrandSon1** is modified with \@ObservedV2.
+- \@Track can prevent the **info** in the **MessageInfo1** class from being updated when the **messageId** is changed. When **messageId** is changed, the **info** is updated accordingly. However, this is not the observation capability of \@ObjectLink.
 
-- The **messageInfo** attribute is passed to the V1 component. The V1 component **Child** is received by \@ObjectLink. The class of the **info** attribute passed to the V2 component **GrandSon** is modified by \@ObservedV2.
-
-- \@Track can prevent the **info** in the **MessageInfo** class from being updated when the **messageId** is changed. When the **messageId** changed, the **info** is updated accordingly. However, this is not the observation capability of \@ObjectLink.
+<!-- @[observed_object_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/ObserveNestedClasses_ObservedAndObjectLink.ets) -->
 
 ``` TypeScript
 @ObservedV2
-class Info {
+class InfoOne {
   @Trace public myId: number;
   public name: string;
 
@@ -491,54 +517,43 @@ class Info {
 }
 
 @Observed
-class MessageInfo { // Top-level nesting.
-  @Track public info: Info; // Prevent the info from being updated due to the change of messageId.
+class MessageInfo1 { // Top-level nesting.
+  @Track public info: InfoOne; // Prevent the info from being updated due to the change of messageId.
   @Track public messageId: number; // Prevent the info from being updated when the messageId is changed.
 
-  constructor(info?: Info, messageId?: number) {
-    this.info = info || new Info();
+  constructor(info?: InfoOne, messageId?: number) {
+    this.info = info || new InfoOne();
     this.messageId = messageId || 0;
   }
 }
 
 @Observed
-class MessageInfoNested { // Dual-level nesting.
-  public messageInfo: MessageInfo;
+class MessageInfoNested1 { // Second-level nesting.
+  public messageInfo: MessageInfo1;
 
-  constructor(messageInfo?: MessageInfo) {
-    this.messageInfo = messageInfo || new MessageInfo();
+  constructor(messageInfo?: MessageInfo1) {
+    this.messageInfo = messageInfo || new MessageInfo1();
   }
 }
 
-@Entry
-@Component
-struct Index {
-  @State messageInfoNested: MessageInfoNested = new MessageInfoNested(); // For the data nested at three levels, you need to observe the internal data.
+@ComponentV2
+struct GrandSon1 {
+  @Param info: InfoOne = new InfoOne();
 
   build() {
     Column() {
-      // Observe messageInfoNested. @State can only observe the top-level data and cannot observe the changes.
-      Text(`messageInfoNested messageId:${this.messageInfoNested.messageInfo.messageId}`)
+      Text(`ObjectLink info info.myId:${this.info.myId}`) // The myId attribute is decorated with @Trace and can be observed.
         .fontSize(30)
         .onClick(() => {
-          this.messageInfoNested.messageInfo.messageId++; // The current component is not refreshed, and the UI of the child component Child1 is refreshed.
+          this.info.myId++; // The current component and parent component ChildOne are updated.
         })
-      Divider()
-        .color(Color.Blue)
-      // Observe messageInfoId through @ObjectLink.
-      Child({messageInfo: this.messageInfoNested.messageInfo}) // After disassembling, @ObjectLink can be used to view the deep changes.
-      Divider()
-        .color(Color.Blue)
     }
-    .height('100%')
-    .width('100%')
-    .margin(10)
   }
 }
 
 @Component
-struct Child {
-  @ObjectLink messageInfo: MessageInfo;
+struct ChildOne {
+  @ObjectLink messageInfo: MessageInfo1;
 
   build() {
     Column() {
@@ -554,30 +569,45 @@ struct Child {
         .onClick(() => {
           this.messageInfo.info.myId++; // The UI of the current component and GrandSon1 child component is refreshed.
         })
-      GrandSon({info1: this.messageInfo.info}); // Continue to disassemble child components at top-level.
+      GrandSon1({ info: this.messageInfo.info }); // Continue to disassemble the top-level child components.
     }
   }
 }
 
-@ComponentV2
-struct GrandSon {
-  @Param info1: Info = new Info();
+@Entry
+@Component
+struct IndexOne {
+  @State messageInfoNested: MessageInfoNested1 = new MessageInfoNested1(); // How to observe the internal of third-level nested data.
 
   build() {
     Column() {
-      Text(`ObjectLink info info.myId:${this.info1.myId}`) // The myId attribute is decorated by @Trace and can be observed.
+      // Observe messageInfoNested. @State can only observe the top-level data and cannot observe the changes.
+      Text(`messageInfoNested messageId:${this.messageInfoNested.messageInfo.messageId}`)
         .fontSize(30)
         .onClick(() => {
-          this.info1.myId++; // The current component and parent component Child1 are refreshed.
+          this.messageInfoNested.messageInfo.messageId++; // The current component is not updated, and the UI of the child component ChildOne is refreshed.
         })
+      Divider()
+        .color(Color.Blue)
+      // Observe messageInfoId through @ObjectLink.
+      ChildOne({ messageInfo: this.messageInfoNested.messageInfo }) // Using @ObjectLink for disassembling can view the deeper-level changes.
+      Divider()
+        .color(Color.Blue)
     }
+    .height('100%')
+    .width('100%')
+    .margin(10)
   }
 }
 ```
 
+
+
 **Observing Class Nested Classes via \@ObservedV2 and \@Trace**
 
-\@ObservedV2 combined with \@Trace implements the observation capability on class attributes. Therefore, when a class attribute is marked by \@Trace, changes can be observed no matter how many layers are nested. In the following example code, the **MessageInfoNested** object and its attributes are decorated with \@ObservedV2. When the **MessageInfoNested** object is used in the V1 component **Index**, it cannot be used with the V1 decorator. After the **messageInfo** attribute is transferred from the V1 component to the V2 component, the V2 component **Child** receives the attribute through \@Param, so that the changes can be observed.
+\@ObservedV2 combined with \@Trace implements the observation capability on class properties. Therefore, when a class property is decorated with \@Trace, changes can be observed no matter how deep it is nested. In the following sample code, the **MessageInfoNested** object and its properties are decorated with \@ObservedV2. When the **MessageInfoNested** object is used in the V1 component **Index**, it cannot be used with the V1 decorator. After the **messageInfo** property is passed from the V1 component to the V2 component, the V2 component **Child** receives the property through \@Param, so that the changes can be observed.
+
+<!-- @[observed_trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/ObserveNestedClasses_ObsevedV2AndTrace.ets) -->
 
 ``` TypeScript
 @ObservedV2
@@ -603,48 +633,11 @@ class MessageInfo { // Top-level nesting.
 }
 
 @ObservedV2
-class MessageInfoNested { // Dual-level nesting. If MessageInfoNested is decorated by @ObservedV2, it cannot be decorated by the decorator related to V1 state variable update, for example, @State.
+class MessageInfoNested { // Second-level nesting. If MessageInfoNested is decorated with @ObservedV2, it cannot be decorated with the decorators related to V1 state variable updates, for example, @State.
   public messageInfo: MessageInfo;
 
   constructor(messageInfo?: MessageInfo) {
     this.messageInfo = messageInfo || new MessageInfo();
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  messageInfoNested: MessageInfoNested = new MessageInfoNested(); // For the data nested at three levels, you need to observe the internal data.
-
-  build() {
-    Column() {
-      Text(`messageInfoNested messageId:${this.messageInfoNested.messageInfo.messageId}`)
-        .fontSize(30)
-        .onClick(() => {
-          this.messageInfoNested.messageInfo.messageId++;
-        })
-      Divider()
-        .color(Color.Blue)
-      Text(`messageInfoNested name:${this.messageInfoNested.messageInfo.info.name}`) // Being not decorated by @Trace, it is not observable.
-        .fontSize(30)
-        .onClick(() => {
-          this.messageInfoNested.messageInfo.info.name += 'a';
-        })
-      Divider()
-        .color(Color.Blue)
-      Text(`messageInfoNested myId:${this.messageInfoNested.messageInfo.info.myId}`) // Being decorated by @Trace, it can be observed no matter how many layers are nested.
-        .fontSize(30)
-        .onClick(() => {
-          this.messageInfoNested.messageInfo.info.myId++;
-        })
-      Divider()
-        .color(Color.Blue)
-
-      Child({messageInfo: this.messageInfoNested.messageInfo})
-    }
-    .height('100%')
-    .width('100%')
-    .margin(10)
   }
 }
 
@@ -662,12 +655,49 @@ struct Child {
     }
   }
 }
+
+@Entry
+@Component
+struct Index {
+  messageInfoNested: MessageInfoNested = new MessageInfoNested(); // How to observe the internal of third-level nested data.
+
+  build() {
+    Column() {
+      Text(`messageInfoNested messageId:${this.messageInfoNested.messageInfo.messageId}`)
+        .fontSize(30)
+        .onClick(() => {
+          this.messageInfoNested.messageInfo.messageId++;
+        })
+      Divider()
+        .color(Color.Blue)
+      Text(`messageInfoNested name:${this.messageInfoNested.messageInfo.info.name}`) // Changes cannot be observed because @Trace is not used. 
+        .fontSize(30)
+        .onClick(() => {
+          this.messageInfoNested.messageInfo.info.name += 'a';
+        })
+      Divider()
+        .color(Color.Blue)
+      Text(`messageInfoNested myId:${this.messageInfoNested.messageInfo.info.myId}`) // @Trace is used, and changes can be observed no matter how many levels of nesting.
+        .fontSize(30)
+        .onClick(() => {
+          this.messageInfoNested.messageInfo.info.myId++;
+        })
+      Divider()
+        .color(Color.Blue)
+      // Observe messageInfo through @ObservedV2 and @Trace.
+      Child({messageInfo: this.messageInfoNested.messageInfo})
+    }
+    .height('100%')
+    .width('100%')
+    .margin(10)
+  }
+}
 ```
 
 
 ## V2 Components Using V1 Components
 
-When V2 state variables are transferred to V1 custom components, the following constraints exist:
+Passing V2 state variables to V1 custom components must follow the following constraints:
 
 - V1 can receive data without using the decorator. In the V1 custom component, the variables that are not received using the decorator are considered as common variables.
 
@@ -676,26 +706,13 @@ When V2 state variables are transferred to V1 custom components, the following c
 - When V1 uses a decorator to receive data, data of the built-in type is not supported. Otherwise, a compilation error is reported.
 
 
-### Transferring Simple State Variables
+### Passing Simple State Variables
 
-When V2 transfers simple state variables to the V1 custom component, V1 can receive data only through the \@State, \@Prop, and \@Provide decorators. In the following example code, the **ThirdPartyComp** component simulates a third-party library and receives the Boolean value from the V2 component.
+When V2 passes simple state variables to the V1 custom component, V1 can receive data only through the \@State, \@Prop, and \@Provide decorators. In the following example code, the **ThirdPartyComp** component simulates a third-party library and receives the Boolean value from the V2 component.
+
+<!-- @[v2_to_v1_simpleData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2ToV1_SimpleData.ets) -->
 
 ``` TypeScript
-@Entry
-@ComponentV2
-struct V2Comp2 {
-  @Local param: boolean = false;
-
-  build() {
-    Column() {
-      Text(`V2Comp2:${this.param}`)
-
-      // The V2 component transfers the simple state variable to the third-party library of V1.
-      ThirdPartyComp({ prop: this.param })
-    }
-  }
-}
-
 // Simulate the V1 component imported from the third-party library.
 @Component
 struct ThirdPartyComp {
@@ -708,17 +725,34 @@ struct ThirdPartyComp {
     }
   }
 }
+
+@Entry
+@ComponentV2
+struct V2Comp2 {
+  @Local param: boolean = false;
+
+  build() {
+    Column() {
+      Text(`V2Comp2:${this.param}`)
+
+      // The V2 component passes the simple state variable to the third-party library of V1.
+      ThirdPartyComp({ prop: this.param })
+    }
+  }
+}
 ```
 
 
-### Transferring the Class Type
+### Passing the Class Type
 
 **Defining a Common Class**
 
-When passing data from V2 to V1 custom components, common class is supported. In the following sample code, the **Info** class is not decorated with \@ObservedV2. When the **Info** class is passed to the V1 component **Child**, it can be received using \@State. Modify the **info** variable in the V1 component and update the UI using the observation capability of \@State.
+When passing data from V2 to V1 custom components, common class is supported. In the following sample code, the **InfoFive** class is not decorated with \@ObservedV2. When the **InfoFive** class is passed to the V1 component **ChildFive**, it can be received using \@State. Modify the **info** variable in the V1 component and update the UI using the observation capability of \@State.
+
+<!-- @[v2_to_v1_common_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2CommonVariablesToV1CustomComponent.ets) -->
 
 ``` TypeScript
-class Info {
+class InfoFive {
   public myId: number;
   public name: string;
 
@@ -728,30 +762,14 @@ class Info {
   }
 }
 
-@Entry
-@ComponentV2
-struct Index {
-  @Provider() info: Info = new Info(); // Class type. It can be transferred.
-
-  build() {
-    Column() {
-      Child({
-        info: this.info,
-      })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-
 @Component
-struct Child {
+struct ChildFive {
   // State variable received by V1 from V2. Only @State, @Prop, and @Provide can be used to receive the variable.
-  @State info: Info = new Info(); // Top-level class attribute changes are observable.
-  
+  @State info: InfoFive = new InfoFive(); // Top-level class attribute changes are observable.
+
   build() {
     Column() {
-      Text(`info id:${this.info.myId}`) // Display info:myId.
+      Text(`info id:${this.info.myId}`)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
@@ -760,15 +778,35 @@ struct Child {
     }
   }
 }
+
+@Entry
+@ComponentV2
+struct IndexFive {
+  @Provider() info: InfoFive = new InfoFive(); // Class type. It can be passed.
+
+  build() {
+    Column() {
+      ChildFive({
+        info: this.info,
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
+
+
 
 **Defining a Class Decorated with \@ObserveV2**
 
-Decorators of V1 cannot be used together with \@ObservedV2. In the following sample code, the **Info** class is decorated with \@observedV2. When the V1 component receives variables, the **info** variable cannot be decorated with the V1 decorator. However, the UI can be refreshed through modification, which depends on the observation capability of \@ObservedV2 and \@Trace.
+Decorators of V1 cannot be used together with \@ObservedV2. In the following sample code, the **InfoNine** class is decorated with \@observedV2. When the V1 component receives variables, the **info** variable cannot be decorated with the V1 decorator. However, the UI can be refreshed through modification, which depends on the observation capability of \@ObservedV2 and \@Trace.
+
+<!-- @[v2_to_v1_observedV2_trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2ToV1_ObservedV2AndTrace.ets) -->
 
 ``` TypeScript
 @ObservedV2
-class Info {
+class InfoNine {
   @Trace public myId: number;
   public name: string;
 
@@ -778,29 +816,13 @@ class Info {
   }
 }
 
-@Entry
-@ComponentV2
-struct Index {
-  @Provider() info: Info = new Info();
-
-  build() {
-    Column() {
-      Child({
-        info: this.info,
-      })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-
 @Component
-struct Child {
-  info: Info = new Info(); // Decorators of V1 cannot be used together with @ObservedV2.
+struct ChildNine {
+  info: InfoNine = new InfoNine(); // Decorators of V1 cannot be used together with @ObservedV2.
 
   build() {
     Column() {
-      Text(`info id:${this.info.myId}`) // Display info:myId.
+      Text(`info id:${this.info.myId}`) // Display the info.myId variable.
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
@@ -809,28 +831,62 @@ struct Child {
     }
   }
 }
+
+@Entry
+@ComponentV2
+struct IndexNine {
+  @Provider() info: InfoNine = new InfoNine();
+
+  build() {
+    Column() {
+      ChildNine({
+        info: this.info,
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 
 
-### Transferring Common Built-in Types
 
-When a built-in type is transferred from V2 to V1, the V2 decorator defining the built-in type and the V1 decorator receiving the built-in type are mutually exclusive.
+### Passing Common Built-in Types
+
+When a built-in type is passed from V2 to V1, the V2 decorator defining the built-in type and the V1 decorator receiving the built-in type are mutually exclusive.
 
 - When V1 uses a decorator to receive data, the built-in type cannot be decorated in V2.
 - V1 can receive data without using the decorator. The received variables are common variables in the V1-defined component and can be decorated in V2.
 
-In the following sample code, V2 transfers the **set** variable to the V1 custom component, and the V1 component uses \@Provide to receive the **set** variable. Therefore, when defining the **set** variable in the V2 component **Index**, the **set** variable cannot be decorated with \@Local to avoid compilation errors.
+In the following sample code, V2 passes the **set** variable to the V1 custom component, and the V1 component uses \@Provide to receive the **set** variable. Therefore, when defining the **set** variable in the V2 component **IndexEight**, the **set** variable cannot be decorated with \@Local to avoid compilation errors.
+
+<!-- @[v2_to_v1_common_buildIn_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2ToV1_CommonBuildInClass.ets) -->
 
 ``` TypeScript
+@Component
+struct ChildEight {
+  // State variable received by V1 from V2. Only @State, @Prop, and @Provide can be used to receive the variable.
+  @Provide set: Set<number> = new Set();
+
+  build() {
+    Column() {
+      ForEach(Array.from(this.set.values()), (item: number) => { // Display the set variable.
+        Text(`${item}`)
+          .fontSize(30)
+      })
+    }
+  }
+}
+
 @Entry
 @ComponentV2
-struct Index {
-  // @Local set: Set<number> = new Set([10, 20]); // Incorrect writing method. The built-in type state variable cannot be transferred. To eliminate compilation errors, delete @Local.
+struct IndexEight {
+  // @Local set: Set<number> = new Set([10, 20]); // Incorrect. The built-in type state variable cannot be passed. To eliminate compilation errors, delete @Local.
   set: Set<number> = new Set([10, 20]); // Correct writing method.
 
   build() {
     Column() {
-      Child({
+      ChildEight({
         set: this.set
       })
     }
@@ -838,30 +894,17 @@ struct Index {
     .width('100%')
   }
 }
-
-@Component
-struct Child {
-  // State variable received by V1 from V2. Only @State, @Prop, and @Provide can be used to receive the variable.
-  @Provide set: Set<number> = new Set();
-
-  build() {
-    Column() {
-      ForEach(Array.from(this.set.values()), (item: number) => { // Display set.
-        Text(`${item}`)
-          .fontSize(30)
-      })
-    }
-  }
-}
 ```
+
+
 
 
 ## Summary
 
 Based on the analysis of the scenarios where V1 and V2 are used together, the following conclusions are drawn:
 
-- When V2 custom components are mixed in with V1 components (that is, when V1 components or class data are transferred to V2), most V1 capabilities are disabled in V2.
+- When V2 custom components are mixed in with V1 components (that is, when V1 components or class data are passed to V2), most V1 capabilities are disabled in V2.
 
-- When V1 custom components are mixed in with V2 components (that is, when V2 components or class data are transferred to V1), some features are opened. For example, \@ObservedV2 and \@Trace, which are the most helpful for observing V1 nested data.
+- When V1 custom components are mixed in with V2 components (that is, when V2 components or class data are passed to V1), some features are opened. For example, \@ObservedV2 and \@Trace, which are the most helpful for observing V1 nested data.
 
 Therefore, you are not advised to use V1 and V2 together during development. However, in terms of code migration, V1 developers can gradually migrate the code to V2 to steadily replace the V1 functional code. In addition, you are not advised to use V1 code in the V2 code architecture.

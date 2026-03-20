@@ -4403,6 +4403,7 @@ Allows a system application to obtain the page information of a specified applic
 Allows a peripheral extension driver to access the USB Serial DDK APIs.
 
 The APIs can be used to develop the following types of peripheral extension drivers:
+
 Peripherals connected to the host via a USB bus and:
 
 1. InterfaceClass of the peripheral is Communication Device Control Class (0x02) and InterfaceSubClass follows ACMSubClass model(0x02).
@@ -4758,7 +4759,7 @@ Allows an application to call the accessibility service extension APIs to query 
 
 Allows an application to read recording files from the file manager directory.
 
-**Permission level**: system_core
+**Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
@@ -4772,7 +4773,7 @@ Allows an application to read recording files from the file manager directory.
 
 Allows an application to write recording files to the file manager directory.
 
-**Permission level**: system_core
+**Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
@@ -5294,6 +5295,6 @@ With this permission, the system application can help users add the widgets to d
 
 **Enable via ACL**: true
 
-**Device**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
 
 **Valid since**: 20

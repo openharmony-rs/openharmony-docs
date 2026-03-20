@@ -81,8 +81,8 @@ struct LengthMetricsUnitDemo {
         .height(150)
         .backgroundColor('#ffff00')
         .onReady(() => {
-          this.contextPX.fillRect(10,10,100,100)
-          this.contextPX.clearRect(10,10,50,50)
+          this.contextPX.fillRect(10, 10, 100, 100)
+          this.contextPX.clearRect(10, 10, 50, 50)
         })
 
       Canvas(this.contextVP)
@@ -90,8 +90,8 @@ struct LengthMetricsUnitDemo {
         .height(150)
         .backgroundColor('#ffff00')
         .onReady(() => {
-          this.contextVP.fillRect(10,10,100,100)
-          this.contextVP.clearRect(10,10,50,50)
+          this.contextVP.fillRect(10, 10, 100, 100)
+          this.contextVP.clearRect(10, 10, 50, 50)
         })
     }
     .width('100%')
@@ -120,7 +120,7 @@ struct LengthMetricsUnitDemo {
 
 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | 否 | 否 | -&nbsp;类型为string时，表示设置填充区域的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置填充区域的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值设置无效。 |
+| string&nbsp;\|&nbsp;number<sup>10+</sup>&nbsp;\|&nbsp;[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | 否 | 否 | -&nbsp;类型为string时，表示设置填充区域的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置填充区域的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值设置无效，保持设置前效果。 |
 
 ```ts
 // xxx.ets
@@ -136,7 +136,7 @@ struct FillStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           this.context.fillStyle = '#0000ff'
           this.context.fillRect(20, 20, 150, 100)
         })
@@ -162,7 +162,7 @@ struct FillStyleExample {
 
 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| number | 否 | 否 | 默认值：1（px）<br/>默认单位：vp <br/> lineWidth取值不支持0和负数，0、负数和NaN按默认值处理，Infinity会导致lineWidth属性异常。 |
+| number | 否 | 否 | 默认值：1（px）<br/>默认单位：vp <br/> lineWidth取值不支持0和负数，0、负数和NaN按默认值处理，Infinity会导致lineWidth属性异常，不进行绘制。 |
 
 ```ts
 // xxx.ets
@@ -178,10 +178,10 @@ struct LineWidthExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
-        this.context.lineWidth = 5
-        this.context.strokeRect(25, 25, 85, 105)
-      })
+        .onReady(() => {
+          this.context.lineWidth = 5
+          this.context.strokeRect(25, 25, 85, 105)
+        })
     }
     .width('100%')
     .height('100%')
@@ -204,7 +204,7 @@ struct LineWidthExample {
 
 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md)  | 否 | 否 | <br/>-&nbsp;类型为string时，表示设置线条使用的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置线条使用的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值设置无效。 |
+| string&nbsp;\|&nbsp;number<sup>10+</sup>&nbsp;\|&nbsp;[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md)  | 否 | 否 | <br/>-&nbsp;类型为string时，表示设置线条使用的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置线条使用的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值设置无效，保持设置前效果。 |
 
 ```ts
 // xxx.ets
@@ -220,7 +220,7 @@ struct StrokeStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           this.context.lineWidth = 10
           this.context.strokeStyle = '#0000ff'
           this.context.strokeRect(25, 25, 155, 105)
@@ -310,15 +310,15 @@ struct LineJoinExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
-        this.context.beginPath()
-        this.context.lineWidth = 8
-        this.context.lineJoin = 'miter'
-        this.context.moveTo(30, 30)
-        this.context.lineTo(120, 60)
-        this.context.lineTo(30, 110)
-        this.context.stroke()
-      })
+        .onReady(() => {
+          this.context.beginPath()
+          this.context.lineWidth = 8
+          this.context.lineJoin = 'miter'
+          this.context.moveTo(30, 30)
+          this.context.lineTo(120, 60)
+          this.context.lineTo(30, 110)
+          this.context.stroke()
+        })
     }
     .width('100%')
     .height('100%')
@@ -350,14 +350,14 @@ struct LineJoinExample {
 struct MiterLimit {
   private settings: RenderingContextSettings = new RenderingContextSettings(true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Canvas(this.context)
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           this.context.lineWidth = 8
           this.context.lineJoin = 'miter'
           this.context.miterLimit = 3
@@ -365,7 +365,7 @@ struct MiterLimit {
           this.context.lineTo(60, 35)
           this.context.lineTo(30, 37)
           this.context.stroke()
-      })
+        })
     }
     .width('100%')
     .height('100%')
@@ -506,7 +506,7 @@ struct CanvasExample {
 struct TextBaseline {
   private settings: RenderingContextSettings = new RenderingContextSettings(true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Canvas(this.context)
@@ -529,7 +529,7 @@ struct TextBaseline {
           this.context.fillText('Alphabetic', 195, 120)
           this.context.textBaseline = 'hanging'
           this.context.fillText('Hanging', 295, 120)
-      })
+        })
     }
     .width('100%')
     .height('100%')
@@ -561,20 +561,20 @@ struct TextBaseline {
 struct GlobalAlpha {
   private settings: RenderingContextSettings = new RenderingContextSettings(true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Canvas(this.context)
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           this.context.fillStyle = 'rgb(0,0,255)'
           this.context.fillRect(0, 0, 50, 50)
           this.context.globalAlpha = 0.4
           this.context.fillStyle = 'rgb(0,0,255)'
           this.context.fillRect(50, 50, 50, 50)
-      })
+        })
     }
     .width('100%')
     .height('100%')
@@ -851,19 +851,19 @@ struct GlobalCompositeOperation {
 struct ShadowBlur {
   private settings: RenderingContextSettings = new RenderingContextSettings(true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Canvas(this.context)
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           this.context.shadowBlur = 30
           this.context.shadowColor = 'rgb(0,0,0)'
           this.context.fillStyle = 'rgb(255,0,0)'
           this.context.fillRect(20, 20, 100, 80)
-      })
+        })
     }
     .width('100%')
     .height('100%')
@@ -895,19 +895,19 @@ struct ShadowBlur {
 struct ShadowColor {
   private settings: RenderingContextSettings = new RenderingContextSettings(true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Canvas(this.context)
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           this.context.shadowBlur = 30
           this.context.shadowColor = 'rgb(0,0,255)'
           this.context.fillStyle = 'rgb(255,0,0)'
           this.context.fillRect(30, 30, 100, 100)
-      })
+        })
     }
     .width('100%')
     .height('100%')
@@ -939,20 +939,20 @@ struct ShadowColor {
 struct ShadowOffsetX {
   private settings: RenderingContextSettings = new RenderingContextSettings(true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Canvas(this.context)
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           this.context.shadowBlur = 10
           this.context.shadowOffsetX = 20
           this.context.shadowColor = 'rgb(0,0,0)'
           this.context.fillStyle = 'rgb(255,0,0)'
           this.context.fillRect(20, 20, 100, 80)
-      })
+        })
     }
     .width('100%')
     .height('100%')
@@ -984,19 +984,20 @@ struct ShadowOffsetX {
 struct ShadowOffsetY {
   private settings: RenderingContextSettings = new RenderingContextSettings(true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Canvas(this.context)
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           this.context.shadowBlur = 10
           this.context.shadowOffsetY = 20
           this.context.shadowColor = 'rgb(0,0,0)'
           this.context.fillStyle = 'rgb(255,0,0)'
           this.context.fillRect(30, 30, 100, 100)
-      })
+        })
     }
     .width('100%')
     .height('100%')
@@ -1029,18 +1030,18 @@ struct ImageSmoothingEnabled {
   private settings: RenderingContextSettings = new RenderingContextSettings(true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
   // "common/images/icon.jpg"需要替换为开发者所需的图像资源文件
-  private img:ImageBitmap = new ImageBitmap("common/images/icon.jpg")
-  
+  private img: ImageBitmap = new ImageBitmap("common/images/icon.jpg")
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Canvas(this.context)
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           this.context.imageSmoothingEnabled = false
-          this.context.drawImage( this.img,0,0,400,200)
-      })
+          this.context.drawImage(this.img, 0, 0, 400, 200)
+        })
     }
     .width('100%')
     .height('100%')
@@ -1081,7 +1082,7 @@ struct HeightExample {
         .backgroundColor('#ffff00')
         .onReady(() => {
           let h = this.context.height
-          this.context.fillRect(0, 0, 300, h/2)
+          this.context.fillRect(0, 0, 300, h / 2)
         })
     }
     .width('100%')
@@ -1123,7 +1124,7 @@ struct WidthExample {
         .backgroundColor('#ffff00')
         .onReady(() => {
           let w = this.context.width
-          this.context.fillRect(0, 0, w/2, 300)
+          this.context.fillRect(0, 0, w / 2, 300)
         })
     }
     .width('100%')
@@ -1205,32 +1206,32 @@ imageSmoothingEnabled为true时，用于设置图像平滑度，此属性为只�
 | [ImageSmoothingQuality](#imagesmoothingquality类型说明) | 否 | 否 | 默认值："low" |
 
 ```ts
-  // xxx.ets
-  @Entry
-  @Component
-  struct ImageSmoothingQualityDemo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true);
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    // "common/images/example.jpg"需要替换为开发者所需的图像资源文件
-    private img:ImageBitmap = new ImageBitmap("common/images/example.jpg");
+// xxx.ets
+@Entry
+@Component
+struct ImageSmoothingQualityDemo {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  // "common/images/example.jpg"需要替换为开发者所需的图像资源文件
+  private img: ImageBitmap = new ImageBitmap("common/images/example.jpg");
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('#ffff00')
-          .onReady(() =>{
-            let ctx = this.context
-            ctx.imageSmoothingEnabled = true
-            ctx.imageSmoothingQuality = 'high'
-            ctx.drawImage(this.img, 0, 0, 400, 200)
-          })
-      }
-      .width('100%')
-      .height('100%')
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('#ffff00')
+        .onReady(() => {
+          let ctx = this.context
+          ctx.imageSmoothingEnabled = true
+          ctx.imageSmoothingQuality = 'high'
+          ctx.drawImage(this.img, 0, 0, 400, 200)
+        })
     }
+    .width('100%')
+    .height('100%')
   }
+}
 ```
 
 ![ImageSmoothingQualityDemo](figures/ImageSmoothingQualityDemo.jpeg)
@@ -1251,33 +1252,33 @@ imageSmoothingEnabled为true时，用于设置图像平滑度，此属性为只�
 | [CanvasDirection](#canvasdirection类型说明) | 否 | 否 | 默认值："inherit" |
 
 ```ts
-  // xxx.ets
-  @Entry
-  @Component
-  struct DirectionDemo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true);
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+// xxx.ets
+@Entry
+@Component
+struct DirectionDemo {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('#ffff00')
-          .onReady(() =>{
-            let ctx = this.context
-            ctx.font = '48px serif';
-            ctx.textAlign = 'start'
-            ctx.fillText("Hi ltr!", 200, 50);
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('#ffff00')
+        .onReady(() => {
+          let ctx = this.context
+          ctx.font = '48px serif';
+          ctx.textAlign = 'start'
+          ctx.fillText("Hi ltr!", 200, 50);
 
-            ctx.direction = "rtl";
-            ctx.fillText("Hi rtl!", 200, 100);
-          })
-      }
-      .width('100%')
-      .height('100%')
+          ctx.direction = "rtl";
+          ctx.fillText("Hi rtl!", 200, 100);
+        })
     }
+    .width('100%')
+    .height('100%')
   }
+}
 ```
 
 ![directionDemo](figures/directionDemo.jpeg)
@@ -1298,62 +1299,62 @@ imageSmoothingEnabled为true时，用于设置图像平滑度，此属性为只�
 | string | 否 | 否 | <br/>支持的滤镜效果如下：<br/>- 'none': 无滤镜效果。<br/>- 'blur(\<length>)'：给图像设置高斯模糊，取值范围≥0，支持单位px、vp、rem，默认值：blur(0px)。<br/>- 'brightness([\<number>\|\<percentage>])'：给图片应用一种线性乘法，使其看起来更亮或更暗，支持数字和百分比参数，取值范围≥0，默认值：brightness(1)。<br/>- 'contrast([\<number>\|\<percentage>])'：调整图像的对比度，支持数字和百分比参数，取值范围≥0，默认值：contrast(1)。<br/>- 'grayscale([\<number>\|\<percentage>])'：将图像转换为灰度图像，支持数字和百分比参数，取值范围[0, 1]，默认值：grayscale(0)。<br/>- 'hue-rotate(\<angle>)'：给图像应用色相旋转，取值范围0deg-360deg，默认值：hue-rotate(0deg)。<br/>- 'invert([\<number>\|\<percentage>])'：反转输入图像，支持数字和百分比参数，取值范围[0, 1]，默认值：invert(0)。<br/>- 'opacity([\<number>\|\<percentage>])'：调整图像的透明程度，支持数字和百分比参数，取值范围[0, 1]，默认值：opacity(1)。<br/>- 'saturate([\<number>\|\<percentage>])'：转换图像饱和度，支持数字和百分比参数，取值范围≥0，默认值：saturate(1)。<br/>- 'sepia([\<number>\|\<percentage>])'：将图像转换为深褐色，支持数字和百分比参数，取值范围[0, 1]，默认值：sepia(0)。<br/> |
 
 ```ts
-  // xxx.ets
-  @Entry
-  @Component
-  struct FilterDemo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true);
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    // "common/images/example.jpg"需要替换为开发者所需的图像资源文件
-    private img: ImageBitmap = new ImageBitmap("common/images/example.jpg");
+// xxx.ets
+@Entry
+@Component
+struct FilterDemo {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  // "common/images/example.jpg"需要替换为开发者所需的图像资源文件
+  private img: ImageBitmap = new ImageBitmap("common/images/example.jpg");
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .onReady(() => {
-            let ctx = this.context
-            let img = this.img
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .onReady(() => {
+          let ctx = this.context
+          let img = this.img
 
-            ctx.drawImage(img, 0, 0, 100, 100);
+          ctx.drawImage(img, 0, 0, 100, 100);
 
-            ctx.filter = 'grayscale(50%)';
-            ctx.drawImage(img, 100, 0, 100, 100);
+          ctx.filter = 'grayscale(50%)';
+          ctx.drawImage(img, 100, 0, 100, 100);
 
-            ctx.filter = 'sepia(60%)';
-            ctx.drawImage(img, 200, 0, 100, 100);
+          ctx.filter = 'sepia(60%)';
+          ctx.drawImage(img, 200, 0, 100, 100);
 
-            ctx.filter = 'saturate(30%)';
-            ctx.drawImage(img, 0, 100, 100, 100);
+          ctx.filter = 'saturate(30%)';
+          ctx.drawImage(img, 0, 100, 100, 100);
 
-            ctx.filter = 'hue-rotate(90deg)';
-            ctx.drawImage(img, 100, 100, 100, 100);
+          ctx.filter = 'hue-rotate(90deg)';
+          ctx.drawImage(img, 100, 100, 100, 100);
 
-            ctx.filter = 'invert(100%)';
-            ctx.drawImage(img, 200, 100, 100, 100);
+          ctx.filter = 'invert(100%)';
+          ctx.drawImage(img, 200, 100, 100, 100);
 
-            ctx.filter = 'opacity(25%)';
-            ctx.drawImage(img, 0, 200, 100, 100);
+          ctx.filter = 'opacity(25%)';
+          ctx.drawImage(img, 0, 200, 100, 100);
 
-            ctx.filter = 'brightness(0.4)';
-            ctx.drawImage(img, 100, 200, 100, 100);
+          ctx.filter = 'brightness(0.4)';
+          ctx.drawImage(img, 100, 200, 100, 100);
 
-            ctx.filter = 'contrast(200%)';
-            ctx.drawImage(img, 200, 200, 100, 100);
+          ctx.filter = 'contrast(200%)';
+          ctx.drawImage(img, 200, 200, 100, 100);
 
-            ctx.filter = 'blur(5px)';
-            ctx.drawImage(img, 0, 300, 100, 100);
+          ctx.filter = 'blur(5px)';
+          ctx.drawImage(img, 0, 300, 100, 100);
 
-            // Applying multiple filters
-            ctx.filter = 'opacity(50%) contrast(200%) grayscale(50%)';
-            ctx.drawImage(img, 100, 300, 100, 100);
-          })
-      }
-      .width('100%')
-      .height('100%')
+          // Applying multiple filters
+          ctx.filter = 'opacity(50%) contrast(200%) grayscale(50%)';
+          ctx.drawImage(img, 100, 300, 100, 100);
+        })
     }
+    .width('100%')
+    .height('100%')
   }
+}
 ```
 
 ![filterDemo](figures/filterDemo.jpeg)
@@ -1370,7 +1371,7 @@ imageSmoothingEnabled为true时，用于设置图像平滑度，此属性为只�
 | ------ | ---------- | -------------- | ---------------------------------------- |
 | string&nbsp;\| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 否 | 当使用LengthMetrics时：<br/>字间距按照指定的单位设置；<br/>不支持FP、PERCENT和LPX（按无效值处理）；<br/>支持负数和小数，设为小数时字间距不四舍五入。<br/>当使用string时：<br/>不支持设置百分比（按无效值处理）；<br/>支持负数和小数，设为小数时字间距不四舍五入；<br/>若letterSpacing的赋值未指定单位（例如：letterSpacing='10'），且未指定LengthMetricsUnit时，默认单位设置为vp；<br/>指定LengthMetricsUnit为px时，默认单位设置为px；<br/>当letterSpacing的赋值指定单位时（例如：letterSpacing='10vp'），字间距按照指定的单位设置。<br/>默认值：0（输入无效值时，字间距设为默认值）<br/>注：推荐使用LengthMetrics，性能更好。 |
 
-```ts
+  ```ts
   // xxx.ets
   import { LengthMetrics, LengthUnit } from '@kit.ArkUI'
 
@@ -1398,7 +1399,7 @@ imageSmoothingEnabled为true时，用于设置图像平滑度，此属性为只�
       .height('100%')
     }
   }
-```
+  ```
 
 ![letterSpacingDemo](figures/letterSpacingDemo.jpeg)
 
@@ -1436,7 +1437,7 @@ fillRect(x: number, y: number, w: number, h: number): void
   struct FillRect {
     private settings: RenderingContextSettings = new RenderingContextSettings(true)
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    
+
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
@@ -1445,8 +1446,8 @@ fillRect(x: number, y: number, w: number, h: number): void
           .backgroundColor('rgb(213,213,213)')
           .onReady(() => {
             this.context.fillRect(30, 30, 100, 100)
-         })
-        }
+          })
+      }
       .width('100%')
       .height('100%')
     }
@@ -1493,9 +1494,9 @@ strokeRect(x: number, y: number, w: number, h: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.context.strokeRect(30, 30, 200, 150)
-        })
+          })
       }
       .width('100%')
       .height('100%')
@@ -1543,11 +1544,11 @@ clearRect(x: number, y: number, w: number, h: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.context.fillStyle = 'rgb(0,0,255)'
-            this.context.fillRect(20,20,200,200)
-            this.context.clearRect(30,30,150,100)
-        })
+            this.context.fillRect(20, 20, 200, 200)
+            this.context.clearRect(30, 30, 150, 100)
+          })
       }
       .width('100%')
       .height('100%')
@@ -1595,10 +1596,10 @@ fillText(text: string, x: number, y: number, maxWidth?: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.context.font = '30px sans-serif'
             this.context.fillText("Hello World!", 20, 100)
-        })
+          })
       }
       .width('100%')
       .height('100%')
@@ -1704,7 +1705,7 @@ measureText(text: string): TextMetrics
             this.context.font = '50px sans-serif'
             this.context.fillText("Hello World!", 20, 100)
             this.context.fillText("width:" + this.context.measureText("Hello World!").width, 20, 200)
-        })
+          })
       }
       .width('100%')
       .height('100%')
@@ -1902,7 +1903,7 @@ moveTo(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.context.beginPath()
             this.context.moveTo(10, 10)
             this.context.lineTo(280, 160)
@@ -1953,7 +1954,7 @@ lineTo(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.context.beginPath()
             this.context.moveTo(10, 10)
             this.context.lineTo(280, 160)
@@ -1997,13 +1998,13 @@ closePath(): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
-              this.context.beginPath()
-              this.context.moveTo(30, 30)
-              this.context.lineTo(110, 30)
-              this.context.lineTo(70, 90)
-              this.context.closePath()
-              this.context.stroke()
+          .onReady(() => {
+            this.context.beginPath()
+            this.context.moveTo(30, 30)
+            this.context.lineTo(110, 30)
+            this.context.lineTo(70, 90)
+            this.context.closePath()
+            this.context.stroke()
           })
       }
       .width('100%')
@@ -2050,7 +2051,7 @@ createPattern(image: ImageBitmap, repetition: string | null): CanvasPattern | nu
     private settings: RenderingContextSettings = new RenderingContextSettings(true)
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
     // "common/images/icon.jpg"需要替换为开发者所需的图像资源文件
-    private img:ImageBitmap = new ImageBitmap("common/images/icon.jpg")
+    private img: ImageBitmap = new ImageBitmap("common/images/icon.jpg")
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -2058,7 +2059,7 @@ createPattern(image: ImageBitmap, repetition: string | null): CanvasPattern | nu
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let pattern = this.context.createPattern(this.img, 'repeat')
             if (pattern) {
               this.context.fillStyle = pattern
@@ -2264,7 +2265,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.context.beginPath()
             this.context.arc(100, 75, 50, 0, 6.28)
             this.context.stroke()
@@ -2317,7 +2318,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             // 切线
             this.context.beginPath()
             this.context.strokeStyle = '#808080'
@@ -2326,7 +2327,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
             this.context.lineTo(360, 170);
             this.context.lineTo(110, 170);
             this.context.stroke();
-            
+
             // 圆弧
             this.context.beginPath()
             this.context.strokeStyle = '#000000'
@@ -2334,13 +2335,13 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
             this.context.moveTo(360, 20)
             this.context.arcTo(360, 170, 110, 170, 150)
             this.context.stroke()
-            
+
             // 起始点
             this.context.beginPath();
             this.context.fillStyle = '#00ff00';
             this.context.arc(360, 20, 4, 0, 2 * Math.PI);
             this.context.fill();
-            
+
             // 控制点
             this.context.beginPath();
             this.context.fillStyle = '#ff0000';
@@ -2403,7 +2404,7 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.context.beginPath()
             this.context.ellipse(200, 200, 50, 100, Math.PI * 0.25, Math.PI * 0.5, Math.PI * 2, false)
             this.context.stroke()
@@ -2458,7 +2459,7 @@ rect(x: number, y: number, w: number, h: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.context.rect(20, 20, 100, 100) // Create a 100*100 rectangle at (20, 20)
             this.context.stroke()
           })
@@ -2601,7 +2602,7 @@ fill(fillRule?: CanvasFillRule): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.context.rect(20, 20, 100, 100) // Create a 100*100 rectangle at (20, 20)
             this.context.fill()
           })
@@ -2650,7 +2651,7 @@ struct Fill {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let region = new Path2D()
           region.moveTo(30, 90)
           region.lineTo(110, 20)
@@ -2706,7 +2707,7 @@ clip(fillRule?: CanvasFillRule): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.context.rect(0, 0, 100, 200)
             this.context.stroke()
             this.context.clip()
@@ -2751,13 +2752,14 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
   struct Clip {
     private settings: RenderingContextSettings = new RenderingContextSettings(true)
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
+
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let region = new Path2D()
             region.moveTo(30, 90)
             region.lineTo(110, 20)
@@ -2766,7 +2768,7 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
             region.lineTo(190, 20)
             region.lineTo(270, 90)
             region.closePath()
-            this.context.clip(region,"evenodd")
+            this.context.clip(region, "evenodd")
             this.context.fillStyle = "rgb(0,255,0)"
             this.context.fillRect(0, 0, this.context.width, this.context.height)
           })
@@ -2804,7 +2806,7 @@ reset(): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.context.fillStyle = '#0000ff'
             this.context.fillRect(20, 20, 150, 100)
             this.context.reset()
@@ -2903,8 +2905,8 @@ resetTransform(): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
-            this.context.setTransform(1,0.5, -0.5, 1, 10, 10)
+          .onReady(() => {
+            this.context.setTransform(1, 0.5, -0.5, 1, 10, 10)
             this.context.fillStyle = 'rgb(0,0,255)'
             this.context.fillRect(0, 0, 100, 100)
             this.context.resetTransform()
@@ -2954,7 +2956,7 @@ rotate(angle: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.context.rotate(45 * Math.PI / 180)
             this.context.fillRect(70, 20, 50, 50)
           })
@@ -3003,7 +3005,7 @@ scale(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.context.lineWidth = 3
             this.context.strokeRect(30, 30, 50, 50)
             this.context.scale(2, 2) // Scale to 200%
@@ -3253,9 +3255,9 @@ getTransform(): Matrix2D
           .width('230vp')
           .height('120vp')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.context1.fillRect(50, 50, 50, 50);
-            this.context1.setTransform(1.2, Math.PI/8, Math.PI/6, 0.5, 30, -25);
+            this.context1.setTransform(1.2, Math.PI / 8, Math.PI / 6, 0.5, 30, -25);
             this.context1.fillRect(50, 50, 50, 50);
           })
         Text('context2');
@@ -3263,14 +3265,12 @@ getTransform(): Matrix2D
           .width('230vp')
           .height('120vp')
           .backgroundColor('#0ffff0')
-          .onReady(() =>{
+          .onReady(() => {
             this.context2.fillRect(50, 50, 50, 50);
             let storedTransform = this.context1.getTransform();
-            console.info("Matrix [scaleX = " + storedTransform.scaleX + ", scaleY = " + storedTransform.scaleY +
-            ", rotateX = " + storedTransform.rotateX + ", rotateY = " + storedTransform.rotateY +
-            ", translateX = " + storedTransform.translateX + ", translateY = " + storedTransform.translateY + "]")
+            console.info(`Matrix [scaleX = ${storedTransform.scaleX}, scaleY = ${storedTransform.scaleY}, rotateX = ${storedTransform.rotateX}, rotateY = ${storedTransform.rotateY}, translateX = ${storedTransform.translateX}, translateY = ${storedTransform.translateY}]`)
             this.context2.setTransform(storedTransform);
-            this.context2.fillRect(50,50,50,50);
+            this.context2.fillRect(50, 50, 50, 50);
           })
       }
       .width('100%')
@@ -3316,7 +3316,7 @@ translate(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.context.fillRect(10, 10, 50, 50)
             this.context.translate(70, 70)
             this.context.fillRect(10, 10, 50, 50)
@@ -4498,7 +4498,7 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[AI分析类库错误码](errorcode-image-analyzer.md)。
+以下错误码的详细介绍请参见[图像AI分析错误码](errorcode-image-analyzer.md)。
 
 | 错误码ID | 错误信息                                      |
 | -------- | -------------------------------------------- |
@@ -4555,7 +4555,8 @@ struct ImageAnalyzerExample {
               console.info("analysis complete")
             })
             .catch((error: BusinessError) => {
-              console.info("error code: " + error.code)
+              let e: BusinessError = error as BusinessError
+              console.error(`Error code: ${e.code}, message: ${e.message}`)
             })
         })
       Button('stop')

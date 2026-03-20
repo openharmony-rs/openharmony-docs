@@ -316,12 +316,12 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
 
       const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
-      // 接收子Worker返回的消息
+      // 注册onmessage回调，当Worker线程收到来自其宿主线程通过postMessage接口发送的消息时被调用，在Worker线程执行
       workerPort.onmessage = (e: MessageEvents) => {
         let data: string = e.data;
         console.info('workerPort onmessage is: ', data);
 
-        // 子Worker任务完成后，发送消息给宿主线程
+        // 向宿主线程发送消息
         workerPort.postMessage('2');
       }
 
@@ -463,7 +463,7 @@ parentWorker.postMessage('宿主线程发送消息给父Worker');
 // ParentWorker.ets
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 
- // 父Worker线程中与宿主线程通信的对象
+// 父Worker线程中与宿主线程通信的对象
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
 workerPort.onmessage = (e : MessageEvents) => {

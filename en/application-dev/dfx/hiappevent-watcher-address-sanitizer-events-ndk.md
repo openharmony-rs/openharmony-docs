@@ -8,7 +8,7 @@
 
 ## **Available APIs**
 
-For details about how to use the APIs (such as parameter usage restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
+For details about how to use the APIs (such as parameter restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
 
 **Subscription APIs**
 
@@ -23,7 +23,7 @@ The following describes how to subscribe an address sanitizer event for an array
 
 ### Step 1: Creating a Project
 
-1. Obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by referring to **Using JsonCpp in your project** in [JsonCpp](https://github.com/open-source-parsers/jsoncpp).
+1. Obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by referring to **Using JsonCpp in your project** in the **README** file of [JsonCpp](https://github.com/open-source-parsers/jsoncpp).
 
 2. Create a native C++ project and import the preceding files to the project. The directory structure is as follows:
 

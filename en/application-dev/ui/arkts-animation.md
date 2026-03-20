@@ -7,10 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-The UI contains various components (such as time and wallpaper) that users interact with on their devices. Attributes are APIs used to control the behavior of components. For example, you can adjust the location of a component on the screen through the location attribute.
-
-
-In most cases, changing attribute values triggers corresponding UI updates. Animations introduce smooth transitions during these updates, preventing abrupt changes that cause visual discontinuity.
+The UI is an interface for users to interact with devices, containing various visual components (such as buttons and lists). Attributes serve as APIs to control the behavior of components. The change of attribute values will cause the UI to update. Animation adds smooth transition effects when the UI changes, allowing attribute values to gradually change from the start state to the end state, avoiding abruptness caused by instantaneous changes and maintaining the user's visual focus.
 
 ![en-us_image_20230822](figures/en-us_image_20230822.gif)
 

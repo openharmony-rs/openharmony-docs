@@ -8,7 +8,7 @@
 
 For third-party framework platforms that are accessed through XComponent, the NDK provides functions for interoperability with accessibility services, enabling third-party framework components to support basic accessibility features in ArkUI. These include focus acquisition, accessibility node retrieval, and operation response.
 
-For single-instance scenarios, use [OH_NativeXComponent_GetNativeAccessibilityProvider](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_nativexcomponent_getnativeaccessibilityprovider) to obtain the accessibility provider, and then register the required callback functions [ArkUI_AccessibilityProviderCallbacks](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) via [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback).
+ If a single instance is required, use [OH_NativeXComponent_GetNativeAccessibilityProvider](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_nativexcomponent_getnativeaccessibilityprovider) of XComponent to obtain the [ArkUI_AccessibilityProvider](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovider.md) instance. and then register the required callback functions [ArkUI_AccessibilityProviderCallbacks](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) via [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback).
 
 For multi-instance scenarios, register callback functions [ArkUI_AccessibilityProviderCallbacksWithInstance](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovidercallbackswithinstance.md) using [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance).
 
@@ -39,8 +39,7 @@ This example demonstrates accessibility integration. For the complete implementa
    // For details about the complete implementation, see AccessibilityCapiSample.
    #include "AccessibilityManager.h"
    
-   // ···
-   // [StartExclude abilitycap_six_start]
+   // ...
    AccessibilityManager::AccessibilityManager()
    {
    // Multi-instance scenario
@@ -79,7 +78,7 @@ This example demonstrates accessibility integration. For the complete implementa
        g_provider = provider;
    }
    
-   // ···
+   // ...
    ```
 
 3. Third-party frameworks must implement the following callbacks:
@@ -112,6 +111,7 @@ This example demonstrates accessibility integration. For the complete implementa
            if (!rootNode) {
                return OH_NATIVEXCOMPONENT_RESULT_FAILED;
            }
+           // Set the root node information.
            OH_ArkUI_AccessibilityElementInfoSetElementId(rootNode, 0);
            OH_ArkUI_AccessibilityElementInfoSetParentId(rootNode, parentOfRoot);
            FakeWidget::Instance().fillAccessibilityElement(rootNode);
@@ -122,6 +122,7 @@ This example demonstrates accessibility integration. For the complete implementa
            rect.rightBottomX = NUMBER_THIRD;
            rect.rightBottomY = NUMBER_THIRD;
            ret = OH_ArkUI_AccessibilityElementInfoSetScreenRect(rootNode, &rect);
+           // Set the root node to be ignored by accessibility services.
            OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(rootNode, "no");
            auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
            int64_t childNodes[1024];
@@ -134,8 +135,10 @@ This example demonstrates accessibility integration. For the complete implementa
                int elementId = i + 1;
                childNodes[i] = elementId;
                auto child = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+               // Set the child node information.
                OH_ArkUI_AccessibilityElementInfoSetElementId(child, elementId);
                OH_ArkUI_AccessibilityElementInfoSetParentId(child, 0);
+               // Set the current component to be accessible to accessibility services.
                OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(child, "yes");
                objects[i]->fillAccessibilityElement(child);
    
@@ -228,12 +231,13 @@ This example demonstrates accessibility integration. For the complete implementa
 
 
    <!-- @[abilitycap_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
-
+   
    ``` C++
    int32_t AccessibilityManager::FindNextFocusAccessibilityNode(const char* instanceId, int64_t elementId,
        ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId,
        ArkUI_AccessibilityElementInfo *elementInfo)
    {
+       // Search for the next focusable accessibility node. The third-party framework needs to implement its own search policy in this method. The following logic is only an example.
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                     "FindNextFocusAccessibilityNode instanceId %{public}s "
                     "elementId: %{public}ld, requestId: %{public}d, direction: %{public}d",
@@ -286,7 +290,7 @@ This example demonstrates accessibility integration. For the complete implementa
 
 
    <!-- @[abilitycap_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
-
+   
    ``` C++
    int32_t AccessibilityManager::FindAccessibilityNodeInfosByText(const char* instanceId, int64_t elementId,
        const char *text, int32_t requestId, ArkUI_AccessibilityElementInfoList *elementList)
@@ -303,7 +307,7 @@ This example demonstrates accessibility integration. For the complete implementa
 
 
    <!-- @[abilitycap_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
-
+   
    ``` C++
    int32_t AccessibilityManager::FindFocusedAccessibilityNode(const char* instanceId, int64_t elementId,
        ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo *elementInfo)
@@ -320,7 +324,7 @@ This example demonstrates accessibility integration. For the complete implementa
 
 
    <!-- @[abilitycap_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
-
+   
    ``` C++
    void FillEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_AccessibilityElementInfo *elementInfo,
                   ArkUI_AccessibilityEventType eventType, std::string announcedText)
@@ -331,16 +335,18 @@ This example demonstrates accessibility integration. For the complete implementa
        if (elementInfo == nullptr) {
            return;
        }
+       // Set the event type.
        OH_ArkUI_AccessibilityEventSetEventType(eventInfo, eventType);
-   
+       // Set the element information corresponding to the event.
        OH_ArkUI_AccessibilityEventSetElementInfo(eventInfo, elementInfo);
        
        if (eventType == ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ANNOUNCE_FOR_ACCESSIBILITY && announcedText.size() > 0) {
+           // Set the accessibility text that takes precedence during announcement for the accessibility node.
            OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(eventInfo, announcedText.data());
        }
    }
    
-   // ···
+   // ...
    
    void AccessibilityManager::SendAccessibilityAsyncEvent(ArkUI_AccessibilityElementInfo *elementInfo,
                                                           ArkUI_AccessibilityEventType eventType,
@@ -356,32 +362,36 @@ This example demonstrates accessibility integration. For the complete implementa
        // 3. Call the API to send the event to the OpenHarmony side.
        OH_ArkUI_SendAccessibilityAsyncEvent(g_provider, eventInfo, callback);
    }
-   // [EndExclude abilitycap_one_start]
-   // ···
+   // ...
    
    int32_t AccessibilityManager::ExecuteAccessibilityAction(const char* instanceId, int64_t elementId,
        ArkUI_Accessibility_ActionType action, ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)
    {
+       // The third-party framework needs to implement the logic for executing the accessibility node behavior.
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                     "ExecuteAccessibilityAction instanceId %{public}s elementId: %{public}ld, "
                     "action: %{public}d, requestId: %{public}d",
                     instanceId, elementId, action, requestId);
        auto object = FakeWidget::Instance().GetChild(elementId);
+       // The passed accessibility node object may be null. A null check is required.
        if (!object) {
            return 0;
        }
+       // Obtain the accessibility node element.
        auto announcedText = object->GetAnnouncedForAccessibility();
        auto element = OH_ArkUI_CreateAccessibilityElementInfo();
        OH_ArkUI_AccessibilityElementInfoSetElementId(element, elementId);
        const char *actionKey = "some_key";
        char *actionValue = nullptr;
        OH_ArkUI_FindAccessibilityActionArgumentByKey(actionArguments, actionKey, &actionValue);
+       // Execute the corresponding behavior based on the action type.
        switch (action) {
            case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK:
                if (object) {
                    object->OnClick();
                    object->fillAccessibilityElement(element);
                }
+               // Send the specified event to the accessibility service.
                AccessibilityManager::SendAccessibilityAsyncEvent(element,
                    ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_CLICKED, announcedText);
                break;
@@ -417,7 +427,7 @@ This example demonstrates accessibility integration. For the complete implementa
 
 
    <!-- @[abilitycap_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
-
+   
    ``` C++
    int32_t AccessibilityManager::ClearFocusedFocusAccessibilityNode(const char* instanceId)
    {
@@ -431,7 +441,7 @@ This example demonstrates accessibility integration. For the complete implementa
 
 
    <!-- @[abilitycap_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
-
+   
    ``` C++
    int32_t AccessibilityManager::GetAccessibilityNodeCursorPosition(const char* instanceId, int64_t elementId,
        int32_t requestId, int32_t *index)
@@ -445,4 +455,4 @@ This example demonstrates accessibility integration. For the complete implementa
    }
    ```
 
-4. After successful integration, enable accessibility features in system settings.
+4. After the provider is successfully connected using the [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback) or [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance) callback, the accessibility function can be enabled.

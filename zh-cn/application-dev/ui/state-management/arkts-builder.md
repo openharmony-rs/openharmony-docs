@@ -113,7 +113,7 @@ struct BuilderSample {
 
 - 在\@Builder装饰的函数内部，不允许改变参数值。
 
-- \@Builder内UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数-1)。
+- \@Builder内UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数实现规则)。
 
 - 按回调传递和按引用传递时，支持\@Builder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持@Builder函数内UI组件刷新。
 
@@ -1659,7 +1659,7 @@ struct MakeBindingTest1 {
   }
 }
 ```
-MutableBinding的使用规格详见[状态管理API文档](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)。
+使用规格详见状态管理API文档中的[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)。
 
 【正例】
 <!-- @[not_passed_set_accessor_builder_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AccessorCorrectUsage.ets) -->

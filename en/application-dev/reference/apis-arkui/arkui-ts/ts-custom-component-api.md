@@ -142,7 +142,7 @@ struct MyComponent {
 
 queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undefined
 
-Queries the information about the nearest **NavDestination** component (in **NavPathStack**) associated with this custom component. The search direction is controlled by **isInner**: **true** for inward search and **false** for outward search.
+Queries the information about the nearest **NavDestination** component in the navigation stack for a custom component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -152,7 +152,7 @@ Queries the information about the nearest **NavDestination** component (in **Nav
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| isInner  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to search inward for the nearest **NavDestination** component in the navigation stack.<br>**true**: Search inward.<br>**false**: Search outward.|
+| isInner  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to search inward for the nearest **NavDestination** component in the navigation stack.<br>**true**: Search inward.<br>**false**: Search outward.|
 
 **Return value**
 
@@ -249,7 +249,7 @@ struct MyComponent {
 ```
 
 ```ts
-//route_map.json
+// route_map.json
 {
   "routerMap": [
     {

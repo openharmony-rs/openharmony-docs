@@ -10,7 +10,7 @@
 
 ## Development Guidelines
 
-The entire process of audio-haptic development involves management of audio and haptic sources, configuration of an audio latency mode and audio stream usage, and creation and management of an audio-haptic player. This topic uses the process of one-time audio-haptic playback as an example to describe how to use **AudioHaptic**. Before the development, read [AudioHaptic](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager) for better understanding.
+The entire process of audio-haptic development involves management of audio and haptic sources, configuration of an audio latency mode and audio stream usage, and creation and management of an audio-haptic player. This topic uses the process of one-time audio-haptic playback as an example to describe how to use **AudioHaptic**. Before the development, read [AudioHaptic](../../reference/apis-audio-kit/js-apis-audioHaptic.md) for better understanding.
 
 ### Requesting Permissions
 
@@ -92,7 +92,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    audioHapticManagerInstance.setStreamUsage(idForFd, usage);
    ```
 
-3. Create an AudioHapticPlayer instance.
+3. Call [createPlayer](../../reference/apis-audio-kit/js-apis-audioHaptic.md#createplayer) to create an **AudioHapticPlayer** instance.
 
    ```ts
    let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
@@ -106,7 +106,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    });
    ```
 
-4. Call **start()** to start the audio-haptic player.
+4. Call the [start](../../reference/apis-audio-kit/js-apis-audioHaptic.md#start) method to start audio playback and vibration at the same time.
 
    ```ts
    audioHapticPlayer.start().then(() => {
@@ -116,7 +116,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    });
    ```
 
-5. Call **stop()** to stop the audio-haptic player.
+5. Call the [stop](../../reference/apis-audio-kit/js-apis-audioHaptic.md#stop) method to stop audio playback and vibration at the same time.
 
    ```ts
    audioHapticPlayer.stop().then(() => {
@@ -126,7 +126,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    });
    ```
 
-6. Release the AudioHapticPlayer instance.
+6. Call the [release](../../reference/apis-audio-kit/js-apis-audioHaptic.md#release) method to release the **AudioHapticPlayer** instance.
 
    ```ts
    audioHapticPlayer.release().then(() => {
@@ -136,7 +136,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    });
    ```
 
-7. Unregister the audio and haptic sources.
+7. Call the [unregisterSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#unregistersource) method to unregister the audio and vibration resources.
 
    ```ts
    // For resources that are no longer used, you are advised to unregister them in a timely manner to avoid issues such as resource leaks, exceeding the maximum allowed number of registered resources, or other such issues.

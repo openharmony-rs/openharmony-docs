@@ -29,12 +29,12 @@ struct ParticleExample {
             },
           },
           color:{
-            range:['rgb(39, 135, 217)','rgb(0, 74, 175)'],// Initial color range.
+            range:['rgb(39, 135, 217)','rgb(0, 74, 175)'], // Initial color range.
           },
         },
       ]
       }).width(250).height(250)
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```

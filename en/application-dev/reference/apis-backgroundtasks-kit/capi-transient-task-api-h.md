@@ -83,7 +83,7 @@ Obtains the remaining time of a transient task.
 | Name| Description|
 | -- | -- |
 | int32_t requestId | Request ID of the transient task.|
-| int32_t *delayTime | Pointer to the remaining time.|
+| int32_t *delayTime | Pointer to the remaining time of the transient task, in ms.|
 
 **Return value**
 

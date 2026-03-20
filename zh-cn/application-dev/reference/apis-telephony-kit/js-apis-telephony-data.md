@@ -31,7 +31,7 @@ getDefaultCellularDataSlotId(callback: AsyncCallback\<number\>): void
 
 | 参数名   | 类型                    | 必填 | 说明                                       |
 | -------- | ----------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<number\> | 是   | 以callback形式异步返回结果。<br />- 0：卡槽1。 <br />- 1：卡槽2。 |
+| callback | AsyncCallback\<number\> | 是   | 以callback形式异步返回结果。<br />- 0：卡槽1。 <br />- 1：卡槽2。<br />- 2：esim和天际通场景下，默认移动数据的slotld为2。 |
 
 **示例：**
 
@@ -60,7 +60,7 @@ getDefaultCellularDataSlotId(): Promise\<number\>
 
 | 类型              | 说明                                                         |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<number\> | 以Promise形式返回获取默认移动数据的SIM卡。<br />- 0：卡槽1。 <br />- 1：卡槽2。 |
+| Promise\<number\> | 以Promise形式返回获取默认移动数据的SIM卡。<br />- 0：卡槽1。 <br />- 1：卡槽2。<br />- 2：esim和天际通场景下，默认移动数据的slotld为2。 |
 
 **示例：**
 
@@ -87,7 +87,7 @@ getDefaultCellularDataSlotIdSync(): number
 
 | 类型              | 说明                                                         |
 | ------ | -------------------------------------------------- |
-| number | 获取默认移动数据的SIM卡。<br />- 0：卡槽1。 <br />- 1：卡槽2。 |
+| number | 获取默认移动数据的SIM卡。<br />- 0：卡槽1。 <br />- 1：卡槽2。<br />- 2：esim和天际通场景下，默认移动数据的slotld为2。 |
 
 **示例：**
 
@@ -268,7 +268,7 @@ isCellularDataEnabled(callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -312,7 +312,7 @@ isCellularDataEnabled(): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -352,7 +352,7 @@ isCellularDataEnabledSync(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -395,7 +395,7 @@ isCellularDataRoamingEnabled(slotId: number, callback: AsyncCallback\<boolean\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -445,7 +445,7 @@ isCellularDataRoamingEnabled(slotId: number): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -493,7 +493,7 @@ isCellularDataRoamingEnabledSync(slotId: number): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -531,7 +531,7 @@ getDefaultCellularDataSimId(): number
 
 | 类型              | 说明                                                         |
 | ------ | -------------------------------------------------- |
-| number | 获取默认移动数据的SIM卡ID。<br/>与SIM卡绑定，从1开始递增。 |
+| number | 获取默认移动数据的SIM卡ID。<br/>与SIM卡绑定，从1开始递增。<br />- 0：无SIM卡。<br />- 9999：esim场景下，默认移动数据的SIM卡ID为9999。<br />- 99999：天际通场景下，默认移动数据的SIM卡ID为99999。 |
 
 **示例：**
 

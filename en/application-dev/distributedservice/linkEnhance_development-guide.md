@@ -62,7 +62,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 | start()                                    | Starts the server.                                                                                        |   
 | stop()                                     | Stops the server.                                                                                          |
 | close()                                    | Destroys a **Server** object and cancels all subscribed event callbacks. The **Server** object cannot be used after this API is called.                   |
-| on(type: 'acceptConnected')                | Subscribes to **acceptConnected** events.                                                                          |
+| on(type: 'connectionAccepted')                | Subscribes to **acceptConnected** events.                                                                          |
 | on(type: 'serverStopped')                  | Subscribes to **serverStopped** events.                                                                          |
 | createServer(name: string)                 | Creates a **Server** object.                                                                                     |
 

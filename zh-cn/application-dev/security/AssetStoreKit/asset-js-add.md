@@ -40,7 +40,7 @@
 | DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | 类型为Uint8Array，长度为1-2048字节。 | 可选 | 关键资产附属的本地信息，内容由业务自定义且无完整性保护，该项信息不会进行同步。 |
 | CONFLICT_RESOLUTION   | 类型为number，取值范围详见[ConflictResolution](../../reference/apis-asset-store-kit/js-apis-asset.md#conflictresolution)。 | 可选     | 新增关键资产时的冲突（如：别名相同）处理策略，默认值为THROW_ERROR，即抛出异常，由业务进行后续处理。  |
 | REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | 类型为boolean。 | 可选 | 是否加密业务自定义附属信息。为true时表示业务自定义附属信息加密存储，为false时表示业务自定义附属信息不加密存储。默认值为false。|
-| GROUP_ID<sup>18+</sup> | 类型为Uint8Array，长度为8-127字节。 | 可选 | 待新增的关键资产所属群组，默认新增不属于任何群组的关键资产。|
+| GROUP_ID<sup>18+</sup> | 类型为Uint8Array，长度为7-127字节。 | 可选 | 待新增的关键资产所属群组，默认新增不属于任何群组的关键资产。|
 | WRAP_TYPE<sup>18+</sup> | 类型为number，取值范围详见[WrapType](../../reference/apis-asset-store-kit/js-apis-asset.md#wraptype18)。 | 可选 | 关键资产支持的加密导入导出类型，默认值为NEVER，即不允许加密导入导出关键资产。|
 
 ## 约束和限制
@@ -59,7 +59,7 @@
 
 > **说明：**
 >
-> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[API文档](../../reference/apis-asset-store-kit/js-apis-asset.md)。
+> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[@ohos.security.asset (关键资产存储服务)](../../reference/apis-asset-store-kit/js-apis-asset.md)API文档。
 >
 > 在指定群组中新增一条关键资产的使用示例详见[新增群组关键资产](asset-js-group-access-control.md#新增群组关键资产)。
 

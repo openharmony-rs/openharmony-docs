@@ -178,7 +178,7 @@ Creates an instance of the intelligent voice enrollment engine. This API uses a 
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| Promise\<[EnrollIntelligentVoiceEngine](#enrollintelligentvoiceengine)\>           | Callback used to return the result.                  |
+| Promise\<[EnrollIntelligentVoiceEngine](#enrollintelligentvoiceengine)\>           | Promise used to return the result.                  |
 
 **Error codes**
 
@@ -279,7 +279,7 @@ Creates an instance of the intelligent voice wakeup engine. This API uses a prom
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| Promise\<[WakeupIntelligentVoiceEngine](#wakeupintelligentvoiceengine)>           | Callback used to return the result.                  |
+| Promise\<[WakeupIntelligentVoiceEngine](#wakeupintelligentvoiceengine)>           | Promise used to return the result.                  |
 
 **Error codes**
 

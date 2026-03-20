@@ -68,7 +68,7 @@ Sets whether to enable auto-scaling for the **ArcListItem** component.
 
 | Name| Type              | Mandatory| Description                                       |
 | ------ | ------------------ | ---- | ------------------------------------------- |
-| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable auto-scaling.<br>**true**: Enable auto-scaling.<br>**false**: Disable auto-scaling.<br>Default value: **true**.|
+| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable auto-scaling.<br>**true**: Enable auto-scaling.<br>**false**: Disable auto-scaling.<br>Default value: **true**.|
 
 ### swipeAction
 
@@ -84,7 +84,7 @@ Sets the swipe action item displayed when the **ArcListItem** component is swipe
 
 | Name | Type                                                        | Mandatory| Description                   |
 | ------- | ------------------------------------------------------------ | ---- | ----------------------- |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[SwipeActionOptions](ts-container-listitem.md#swipeactionoptions9)&gt; | Yes  | Swipe action item displayed when the **ArcListItem** component is swiped out from the screen edge.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[SwipeActionOptions](ts-container-listitem.md#swipeactionoptions9)&gt;| Yes  | Swipe action item displayed when the **ArcListItem** component is swiped out from the screen edge.|
 
 ## Example
 

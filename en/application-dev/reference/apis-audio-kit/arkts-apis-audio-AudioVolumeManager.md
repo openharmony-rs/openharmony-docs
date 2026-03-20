@@ -43,12 +43,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let groupId: number = audio.DEFAULT_VOLUME_GROUP_ID;
 
-audioVolumeManager.getVolumeGroupManager(groupId, (err: BusinessError, value: audio.AudioVolumeGroupManager) => {
+audioVolumeManager.getVolumeGroupManager(groupId, (err: BusinessError, audioVolumeGroupManager: audio.AudioVolumeGroupManager) => {
   if (err) {
-    console.error(`Failed to getVolumeGroupManager. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to get volume group manager. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in doing getVolumeGroupManager.');
+  console.info('Succeeded in getting volume group manager.');
 });
 
 ```
@@ -82,9 +82,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let groupId: number = audio.DEFAULT_VOLUME_GROUP_ID;
 
 audioVolumeManager.getVolumeGroupManager(groupId).then((audioVolumeGroupManager: audio.AudioVolumeGroupManager) => {
-  console.info('Succeeded in doing getVolumeGroupManager.');
+  console.info('Succeeded in getting volume group manager.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to getVolumeGroupManager. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get volume group manager. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -124,10 +124,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let audioVolumeGroupManager: audio.AudioVolumeGroupManager = audioVolumeManager.getVolumeGroupManagerSync(audio.DEFAULT_VOLUME_GROUP_ID);
-  console.info(`Get audioVolumeGroupManager success.`);
+  console.info('Succeeded in getting volume group manager.');
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get audioVolumeGroupManager, error: ${error}`);
+  console.error(`Failed to get volume group manager. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -135,7 +135,7 @@ try {
 
 getAppVolumePercentage(): Promise<number\>
 
-Obtains the volume of the application. This API uses a promise to return the result.
+Obtains the volume of the application. (The volume ranges from 0 to 100.) This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -143,7 +143,7 @@ Obtains the volume of the application. This API uses a promise to return the res
 
 | Type               | Description                |
 | ------------------- |--------------------|
-| Promise&lt;number&gt; | Promise used to return the application volume (ranging from 0 to 100).|
+| Promise&lt;number&gt; | Promise used to return the application volume.|
 
 **Example**
 
@@ -159,7 +159,7 @@ audioVolumeManager.getAppVolumePercentage().then((value: number) => {
 
 setAppVolumePercentage(volume: number\): Promise<void\>
 
-Sets the volume for the application. This API uses a promise to return the result.
+Sets the application volume (within a range of 0 to 100). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -280,7 +280,7 @@ audioVolumeManager.off('volumeChange', volumeChangeCallback);
 
 on(type: 'appVolumeChange', callback: Callback\<VolumeEvent>): void
 
-Subscribes to the application-level volume change event of the application. This API uses an asynchronous callback to return the result.
+Subscribes to the application-level volume change event of the application (triggered when the application-level volume is changed). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 

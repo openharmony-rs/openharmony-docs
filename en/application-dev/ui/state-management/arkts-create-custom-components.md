@@ -63,7 +63,6 @@ struct ParentComponent {
 }
 ```
 
-
 To fully understand the preceding example, a knowledge of the following concepts is essential:
 
 - [Basic Structure of a Custom Component](#basic-structure-of-a-custom-component)
@@ -72,7 +71,7 @@ To fully understand the preceding example, a knowledge of the following concepts
 
 - [Rules for Custom Component Parameters](#rules-for-custom-component-parameters)
 
-- [build()](#build)
+- [build() Implementation Rules](#build-implementation-rules)
 
 - [Universal Style of a Custom Component](#universal-style-of-a-custom-component)
 
@@ -87,48 +86,76 @@ The definition of a custom component must start with the \@Component struct foll
   >
   > The name assigned to a class, function, or custom component must be different from the name of any built-in component.
 
+### \@Entry
+
+A custom component decorated with \@Entry serves as the entry to a [UI page](../arkts-router-to-navigation.md#page-structure). A single page can only have one @Entry decorated custom component serving as its entry.
+
+  > **NOTE**
+  >
+  > This decorator can be used in ArkTS widgets since API version 9.
+  >
+  > Since API version 10, the \@Entry decorator accepts an optional [LocalStorage](../../reference/apis-arkui/arkui-ts/ts-state-management.md#localstorage9) parameter or an optional EntryOptions<sup>10+</sup> parameter.
+  >
+  > This decorator can be used in atomic services since API version 11.
+
+  <!-- @[Entry_UI_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Entry.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct MyComponent {
+    // ...
+  }
+  ```
+
+**EntryOptions<sup>10+</sup>**
+
+  Describes the named route options.
+
+  | Name  | Type  | Read-Only| Optional| Description                                                        |
+  | ------ | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  | routeName | string | No| Yes| Name of the target named route.|
+  | storage | [LocalStorage](arkts-localstorage.md) | No| Yes| Storage of the page-level UI state. If no value is passed, the framework creates a new LocalStorage instance as the default value.|
+  | useSharedStorage<sup>12+</sup> | boolean | No| Yes| Whether to use the LocalStorage instance passed by [loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9). The default value is **false**. **true**: Use the shared [LocalStorage](arkts-localstorage.md) instance. **false**: Do not use the shared [LocalStorage](arkts-localstorage.md) instance.|
+
+  > **NOTE**
+  >
+  > When **useSharedStorage** is set to **true** and **storage** is assigned a value, the value of **useSharedStorage** has a higher priority.
+
+  <!-- @[routeName_myPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/RouteName.ets) -->
+  
+  ``` TypeScript
+  @Entry({ routeName: 'myPage' })
+  @Component
+  struct MyComponent {
+    // ...
+  }
+  ```
+
 ### \@Component
 
-The \@Component decorator decorates only the structs declared by the **struct** keyword. The decorated **struct** has the componentization capability and needs to implement the build method to describe the UI. One struct can be decorated by only one \@Component. \@Component can accept an optional parameter of the Boolean type.
+The @Component decorated struct is a V1 custom component, which can use the capabilities of [state management V1](./arkts-state-management-overview.md#state-management-v1) decorators.
 
   > **NOTE**
   >
   > This decorator can be used in ArkTS widgets since API version 9.
   > 
-  > For the \@Component decorator, an optional parameter of the Boolean type is supported since API version 11.
+  > Since API version 11, \@Component can accept a [ComponentOptions parameter](../../reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions).
   >
   > This decorator can be used in atomic services since API version 11.
 
-  <!-- @[Component_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Component.ets) -->
-
+  <!-- @[Component_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Component.ets) --> 
+  
   ``` TypeScript
   @Component
   struct MyComponent {
-  // ···
-  }
-  ```
-
-
- **freezeWhenInactive<sup>11+</sup>**
-  Describes the [custom component freezing](arkts-custom-components-freeze.md) option.
-
-  | Name  | Type  | Read-Only| Optional| Description                                                        |
-  | ------ | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | freezeWhenInactive | boolean | No| No| Whether to enable component freezing. The default value is **false**. **true** means to enable component freezing, and **false** means the opposite.|
-
-  <!-- @[freezeWhenInactive_Component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/FreezeWhenInactive.ets) -->
-
-  ``` TypeScript
-  @Component({ freezeWhenInactive: true })
-  struct MyComponent {
-  // ···
+    // ...
   }
   ```
 
 ### \@ComponentV2
 
-To enable the use of [state management V2](./arkts-state-management-overview.md#state-management-v2) state variable decorators within custom components, you can use the @ComponentV2 decorator to decorate custom components.
-
+The @ComponentV2 decorated struct is a V2 custom component, which can use the capabilities of [state management V2](./arkts-state-management-overview.md#state-management-v2) decorators.
 >  **NOTE**
 >
 > The \@ComponentV2 decorator is supported since API version 12.
@@ -140,7 +167,7 @@ Similar to the [\@Component decorator](#component), the @ComponentV2 decorator d
 - In custom components decorated with \@ComponentV2, only new state variable decorators can be used, including [\@Local](arkts-new-local.md), [\@Param](arkts-new-param.md), [\@Once](arkts-new-once.md), [\@Event](arkts-new-event.md), [\@Provider](arkts-new-provider-and-consumer.md), and [\@Consumer](arkts-new-provider-and-consumer.md).
 - Custom components decorated with \@ComponentV2 do not support existing component capabilities such as [LocalStorage](arkts-localstorage.md).
 - \@ComponentV2 and \@Component cannot be used on the same struct.
-- \@ComponentV2 can use an optional parameter **freezeWhenInactive** of the **boolean** type to implement [component freezing](arkts-custom-components-freezeV2.md).
+- \@ComponentV2 supports an optional [ComponentOptions parameter](../../reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions) to implement the [component freezing function](arkts-custom-components-freezeV2.md).
 
 - A basic\@ComponentV2 decorated custom component should contain the following parts:
 
@@ -178,79 +205,48 @@ Unless otherwise specified, a custom component decorated with \@ComponentV2 main
 
 The **build()** function is used to define the declarative UI description of a custom component. Every custom component must define a **build()** function.
 
-  <!-- @[Declarative_UI_description](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/BuildFunction.ets) -->
-
+  <!-- @[Declarative_UI_description](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/BuildFunction.ets) --> 
+  
   ``` TypeScript
   @Component
   struct MyComponent {
     build() {
-      // ···
+      // ...
     }
   }
   ```
 
-### \@Entry
-
-The @Entry decorator marks a custom component as the entry point of a page. A single page can only have one @Entry decorated custom component serving as its entry. The \@Entry decorator accepts an optional parameter of type [LocalStorage](arkts-localstorage.md).
-
-  > **NOTE**
-  >
-  > This decorator can be used in ArkTS widgets since API version 9.
-  >
-  > Since API version 10, the \@Entry decorator accepts an optional parameter of type [LocalStorage](arkts-localstorage.md) or type **EntryOptions**<sup>10+</sup>.
-  >
-  > This decorator can be used in atomic services since API version 11.
-
-  <!-- @[Entry_UI_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Entry.ets) -->
-
-  ``` TypeScript
-  @Entry
-  @Component
-  struct MyComponent {
-  // ···
-  }
-  ```
-
-**EntryOptions<sup>10+</sup>**
-
-  Describes the named route options.
-
-  | Name  | Type  | Read-Only| Optional| Description                                                        |
-  | ------ | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | routeName | string | No| Yes| Name of the target named route.|
-  | storage | [LocalStorage](arkts-localstorage.md) | No| Yes| Storage of the page-level UI state. If no value is passed, the framework creates a new LocalStorage instance as the default value.|
-  | useSharedStorage<sup>12+</sup> | boolean | No| Yes| Whether to use the LocalStorage instance passed by [loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9). The default value is **false**. **true**: Use the shared [LocalStorage](arkts-localstorage.md) instance. **false**: Do not use the shared [LocalStorage](arkts-localstorage.md) instance.|
-
-  > **NOTE**
-  >
-  > When **useSharedStorage** is set to **true** and **storage** is assigned a value, the value of **useSharedStorage** has a higher priority.
-
-  <!-- @[routeName_myPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/RouteName.ets) -->
-
-  ``` TypeScript
-  @Entry({ routeName: 'myPage' })
-  @Component
-  struct MyComponent {
-  // ···
-  }
-  ```
-
-
 ### \@Reusable
 
-The \@Reusable decorator enables a custom component to be reusable. For details, see [\@Reusable Decorator: Reusing Components](./arkts-reusable.md#use-scenarios).
+Using @Reusable to decorate V1 custom components makes them reusable. For details, see [\@Reusable Decorator: Reusing Components](./arkts-reusable.md#use-scenarios).
 
   > **NOTE**
   >
   > This decorator can be used in ArkTS widgets since API version 10.
 
-  <!-- @[Reusable_MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Reusable.ets) -->
-
+  <!-- @[Reusable_MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Reusable.ets) --> 
+  
   ``` TypeScript
   @Reusable
   @Component
   struct MyComponent {
-  // ···
+    // ...
+  }
+  ```
+
+### \@ReusableV2
+
+Using \@ReusableV2 to decorate V2 custom components makes them reusable. For details, see [\@Reusable V2 Decorator: Reusing V2 Components](./arkts-new-reusableV2.md#use-cases).
+
+  > **NOTE**
+  >
+  > This decorator can be used in atomic services since API version 18.
+
+  ``` TypeScript
+  @ReusableV2
+  @ComponentV2
+  struct MyComponent {
+    // ...
   }
   ```
 
@@ -341,7 +337,7 @@ struct Son {
 }
 ```
 
-## build()
+## build() Implementation Rules
 
 Whatever declared in **build()** are called UI descriptions. UI descriptions must comply with the following rules:
 
@@ -544,7 +540,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   
   The behavior of changing the application state in the **build** function may be more covert than that in the preceding example. The following are some examples:
 
-  - Changing the state variable within the \@Builder, \@Extend, or \@Styles decorated method
+  - Changing the state variable within the \@Builder, [\@Extend](arkts-extend.md), or [\@Styles](arkts-style.md) method.
 
   - Changing the application state variable in the function called during parameter calculation, for example, **Text('${this.calcLabel()}')**
 
@@ -559,8 +555,8 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
     })
     ```
   
-    <!-- @[filter_New_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ForEachFilter.ets) -->
-  
+    <!-- @[filter_New_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ForEachFilter.ets) --> 
+    
     ``` TypeScript
     // Prefer: Call filter before sort() to return a new array. In this way, sort() does not change this.arr.
     ForEach(this.arr.filter((item, index) => index >= 2).sort(),
@@ -610,7 +606,7 @@ struct MyComponent {
 Static code blocks are used to initialize static attributes.
 - When you write static code blocks in a custom component decorated with \@Component or \@CustomDialog, the code will not be executed. From API version 22, the verification of static code blocks is added, and a compilation warning is displayed, indicating that the static code block does not take effect.
 
-  <!-- @[Static_code_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV1.ets) -->
+  <!-- @[Static_code_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV1.ets) --> 
   
   ``` TypeScript
   @Component
@@ -627,22 +623,22 @@ Static code blocks are used to initialize static attributes.
 
 - It is supported in the custom component decorated with \@ComponentV2.
 
-  <!-- @[Static_code_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV2.ets) -->
+  <!-- @[Static_code_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV2.ets) --> 
   
   ``` TypeScript
   @ComponentV2
   struct MyComponent {
     static a: string = '';
-    // The static block takes effect, and the value of a changes to hello world.
+    // The static block takes effect, and the value of a changes to 'hello world'.
     static {
       this.a = 'hello world';
     }
-  // ···
+    // ...
   }
   ```
 
 ### Mixing @Component and @ComponentV2
 
-For details about how to mix \@Component decorated custom components with \@ComponentV2 decorated custom components, see [Mixing Use of Custom Components](./arkts-custom-component-mixed-scenarios.md).
+For details about how to mix \@Component decorated custom components with \@ComponentV2 decorated custom components, <!--RP1-->see [Mixed Use of State Management V1 and V2](./arkts-v1-v2-mixusage-before-api-version.md)<!--RP1End-->.
 
 <!--no_check-->

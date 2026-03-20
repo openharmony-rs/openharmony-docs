@@ -49,7 +49,7 @@ Creates a TonePlayer instance. This API uses an asynchronous callback to return 
 | Name  | Type                                            | Mandatory| Description           |
 | -------- | ----------------------------------------------- | ---- | -------------- |
 | options  | [AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8)        | Yes  | Audio renderer information.|
-| callback | AsyncCallback<[TonePlayer](#toneplayer9)>       | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the TonePlayer instance obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback<[TonePlayer](#toneplayer9)>       | Yes  | Callback function. If the operation is successful, **err** is **undefined** and **data** is the TonePlayer instance obtained; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -246,7 +246,7 @@ Describes the audio effect properties.
 | ------------------ | ---- | ---- |---| --------- |
 | name         | string | No| No| Audio effect name.|
 | category     | string | No| No| Audio effect category.|
-| flag        | [EffectFlag](#effectflag18) | No| No| Audio effect flag.|
+| flag        | [EffectFlag](#effectflag18) | No| No| Audio effect category.|
 
 ## StreamUsage
 
@@ -622,7 +622,7 @@ Sets an audio scene. This API uses an asynchronous callback to return the result
 | Name  | Type                                | Mandatory| Description                |
 | :------- | :----------------------------------- | :--- | :------------------- |
 | scene    | [AudioScene](arkts-apis-audio-e.md#audioscene8) | Yes  | Audio scene to set.      |
-| callback | AsyncCallback<void\>                 | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback<void\>                 | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -872,7 +872,7 @@ Obtains the volume groups. This API uses an asynchronous callback to return the 
 | Name    | Type                                                        | Mandatory| Description                |
 | ---------- | ------------------------------------------------------------ | ---- | -------------------- |
 | networkId | string                                    | Yes  | Network ID of the device. The network ID of the local device is **audio.LOCAL_NETWORK_ID**.   |
-| callback  | AsyncCallback&lt;[VolumeGroupInfos](#volumegroupinfos9)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the volume groups obtained; otherwise, **err** is an error object.|
+| callback  | AsyncCallback&lt;[VolumeGroupInfos](#volumegroupinfos9)&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined** and **data** is the volume groups obtained; otherwise, **err** is an error object.|
 
 **Example**
 ```ts
@@ -967,7 +967,7 @@ try {
 
 getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
-Obtains the volume of an application based on the application ID. This API uses a promise to return the result.
+Obtains the volume of an application based on the application ID. (The volume range is 1 to 100.) This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1009,7 +1009,7 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 
 setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
-Sets the volume for an application based on the application ID. This API uses a promise to return the result.
+Sets the application volume (within a range of 0 to 100) based on the application ID. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1402,7 +1402,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                                            |
 | volume     | number                              | Yes  | Volume. The volume range can be obtained by calling [getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated) and [getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated).|
-| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -1558,7 +1558,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 | ---------- | ----------------------------------- | ---- | ------------------------------------- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                         |
 | mute       | boolean                             | Yes  | Mute status to set. **true** to mute, **false** otherwise.|
-| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -1628,7 +1628,7 @@ This permission is required only for muting or unmuting the ringer.
 | Name  | Type                           | Mandatory| Description                    |
 | -------- | ------------------------------- | ---- | ------------------------ |
 | mode     | [AudioRingMode](arkts-apis-audio-e.md#audioringmode) | Yes  | Ringer mode.          |
-| callback | AsyncCallback&lt;void&gt;       | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt;       | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -1817,7 +1817,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | adjustType | [VolumeAdjustType](#volumeadjusttype10) | Yes  | Volume adjustment type.                                            |
-| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1913,7 +1913,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                                            |
 | adjustType | [VolumeAdjustType](#volumeadjusttype10) | Yes  | Volume adjustment type.                                      |
-| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2141,7 +2141,7 @@ Selects an audio input device. Currently, only one input device can be selected.
 | Name                      | Type                                                        | Mandatory| Description                     |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | inputAudioDevices           | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Input device.              |
-| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 ```ts
@@ -2241,7 +2241,7 @@ Selects an audio output device. Currently, only one output device can be selecte
 | Name                      | Type                                                        | Mandatory| Description                     |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | outputAudioDevices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Output device.              |
-| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 ```ts
@@ -2341,7 +2341,7 @@ Selects an audio output device based on the filter criteria. Currently, only one
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | filter                      | [AudioRendererFilter](#audiorendererfilter9)                 | Yes  | Filter criteria.              |
 | outputAudioDevices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Information about the output device.              |
-| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 ```ts
@@ -3350,7 +3350,7 @@ Enables or disables spatial audio rendering. This API uses an asynchronous callb
 | Name                      | Type                                                        | Mandatory| Description                     |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | enable                      | boolean                                                      | Yes  | Whether to enable or disable spatial audio rendering. **true** to enable, **false** otherwise. |
-| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -3618,7 +3618,7 @@ Subscribes to the spatial audio rendering status change event, which is triggere
 | Name  | Type                                                | Mandatory| Description                                          |
 | :------- | :--------------------------------------------------- | :--- |:---------------------------------------------|
 | type     | string | Yes  | Event type. The event **'spatializationEnabledChange'** is triggered when the spatial audio rendering status is changed.|
-| callback | Callback<boolean\> | Yes  | Callback used to return the result, indicating whether spatial audio rendering is enabled. **true** if enabled, **false** otherwise.|
+| callback | Callback<boolean\> | Yes  | Callback function. indicating whether spatial audio rendering is enabled. **true** if enabled, **false** otherwise.|
 
 **Error codes**
 
@@ -3790,7 +3790,7 @@ Enables or disables head tracking. This API uses an asynchronous callback to ret
 | Name                      | Type                                                        | Mandatory| Description                     |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | enable                      | boolean                                                      | Yes  | Whether to enable or disable head tracking. **true** to enable, **false** otherwise. |
-| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -4664,6 +4664,7 @@ Enumerates the rendering targets of the audio renderer.
 ## TonePlayer<sup>9+</sup>
 
 Provides APIs for playing and managing DTMF tones, such as dial tones, ringback tones, supervisory tones, and proprietary tones.
+
 Before calling any API in TonePlayer, you must use [createTonePlayer](#audiocreatetoneplayer9) to create a TonePlayer instance.
 
 **System API**: This is a system API.
@@ -4683,7 +4684,7 @@ Loads the DTMF tone configuration. This API uses an asynchronous callback to ret
 | Name         | Type                       | Mandatory | Description                           |
 | :--------------| :-------------------------- | :-----| :------------------------------ |
 | type           | [ToneType](#tonetype9)       | Yes   | Tone type.                |
-| callback       | AsyncCallback<void\>        | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback       | AsyncCallback<void\>        | Yes   | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -4746,7 +4747,7 @@ Starts DTMF tone playing. This API uses an asynchronous callback to return the r
 
 | Name  | Type                | Mandatory| Description                          |
 | :------- | :------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback<void\> | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -4803,7 +4804,7 @@ Stops the tone that is being played. This API uses an asynchronous callback to r
 
 | Name  | Type                | Mandatory| Description                          |
 | :------- | :------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback<void\> | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -4860,7 +4861,7 @@ Releases the resources associated with the TonePlayer instance. This API uses an
 
 | Name  | Type                | Mandatory| Description                           |
 | :------- | :------------------- | :--- | :---------------------------- |
-| callback | AsyncCallback<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback<void\> | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -5237,7 +5238,7 @@ let flag = asrProcessingController.setAsrVoiceMuteMode(audio.AsrVoiceMuteMode.OU
 
 ## AudioRenderer<sup>8+</sup>
 
-Audio rendering class. Before calling any API in **AudioRenderer**, use [audio.createAudioRenderer](arkts-apis-audio-f.md#audiocreateaudiorenderer8) to create an **AudioRenderer** instance first.
+Audio rendering. Before calling any API in **AudioRenderer**, use [audio.createAudioRenderer](arkts-apis-audio-f.md#audiocreateaudiorenderer8) to create an **AudioRenderer** instance first.
 
 ### setTarget<sup>22+</sup>
 
@@ -5339,7 +5340,7 @@ async function getTarget(){
   await audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
   console.info('Succeeded in setting target.');
 
-  // If the SetTarget API has been called before this API is called, ensure that the SetTarget API has been successfully called. Otherwise, the obtained value may be inaccurate.
+  // If the SetTarget API has been called before this API is called, ensure that the SetTarget API has been successfully set. Otherwise, the obtained value may be inaccurate.
   let renderTarget = audioRenderer.getTarget();
   console.info(`Succeeded in getting target, RenderTarget: ${renderTarget}.`);
 }

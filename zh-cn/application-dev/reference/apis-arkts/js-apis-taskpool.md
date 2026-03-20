@@ -1,4 +1,4 @@
-# @ohos.taskpool（启动任务池）
+# @ohos.taskpool (启动任务池)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @lijiamin2025-->
@@ -1090,7 +1090,7 @@ Task的构造函数。
 
 ```ts
 @Concurrent
-function printArgs(args: number): number {
+function printArgs(args: string): string {
   console.info("printArgs: " + args);
   return args;
 }
@@ -1178,6 +1178,8 @@ function inspectStatus(arg: number): number {
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function inspectStatus(arg: number): number {
   // 第一次检查任务是否已经取消并作出响应
@@ -1201,8 +1203,8 @@ function inspectStatus(arg: number): number {
 let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
 taskpool.execute(task).then((res: Object) => {
   console.info("taskpool test result: " + res);
-}).catch((err: string) => {
-  console.error("taskpool test occur error: " + err);
+}).catch((e: BusinessError) => {
+  console.error("taskpool test occur error: " + e);
 });
 // 不调用cancel，isCanceled()默认返回false，task执行的结果为101
 ```
@@ -1512,7 +1514,7 @@ async function sendDataTest(num: number) {
 function taskpoolTest() {
   try {
     let task: taskpool.Task = new taskpool.Task(sendDataTest, 10);
-    task.onReceiveData((data: string) => {
+    task.onReceiveData((data: number) => {
       console.info("taskpool: data is: " + data);
     });
     taskpool.execute(task);
@@ -1922,6 +1924,8 @@ isDone(): boolean
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function inspectStatus(arg: number): number {
   // 1s sleep
@@ -1936,8 +1940,8 @@ async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
     console.info("taskpool test result: " + res);
-  }).catch((err: string) => {
-    console.error("taskpool test occur error: " + err);
+  }).catch((e: BusinessError) => {
+    console.error("taskpool test occur error: " + e);
   });
 
   setTimeout(() => {
@@ -2772,6 +2776,8 @@ taskpoolExecute();
 **示例三**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 // 支持async函数
 @Concurrent
 async function delayExecute(): Promise<Array<Object>> {
@@ -2784,8 +2790,8 @@ async function delayExecute(): Promise<Array<Object>> {
 async function taskpoolExecute(): Promise<void> {
   taskpool.execute(delayExecute).then((result: Object) => {
     console.info("taskPoolTest task result: " + result);
-  }).catch((err: string) => {
-    console.error("taskpool test occur error: " + err);
+  }).catch((e: BusinessError) => {
+    console.error("taskpool test occur error: " + e);
   });
 }
 
@@ -2796,6 +2802,8 @@ taskpoolExecute();
 
 ```ts
 // c.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function strSort(inPutArr: Array<string>): Array<string> {
   let newArr = inPutArr.sort();
@@ -2814,8 +2822,8 @@ export async function func2(): Promise<void> {
   let strArray: Array<string> = ['c test string', 'b test string', 'a test string'];
   taskpool.execute(strSort, strArray).then((result: Object) => {
     console.info("func2 result: " + result);
-  }).catch((err: string) => {
-    console.error("taskpool test occur error: " + err);
+  }).catch((e: BusinessError) => {
+    console.error("taskpool test occur error: " + e);
   });
 }
 ```
@@ -2831,6 +2839,8 @@ func2();
 **示例五**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 // 任务取消成功
 @Concurrent
 function inspectStatus(arg: number): number {
@@ -2856,8 +2866,8 @@ async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
     console.info("taskpool test result: " + res);
-  }).catch((err: string) => {
-    console.error("taskpool test occur error: " + err);
+  }).catch((e: BusinessError) => {
+    console.error("taskpool test occur error: " + e);
   });
   // 1s后取消task
   setTimeout(() => {
@@ -2875,6 +2885,8 @@ taskpoolCancel();
 **示例六**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 // 已执行的任务取消失败
 @Concurrent
 function inspectStatus(arg: number): number {
@@ -2898,8 +2910,8 @@ async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
     console.info("taskpool test result: " + res);
-  }).catch((err: string) => {
-    console.error("taskpool test occur error: " + err);
+  }).catch((e: BusinessError) => {
+    console.error("taskpool test occur error: " + e);
   });
 
   setTimeout(() => {

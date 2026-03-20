@@ -187,7 +187,7 @@ In the state management V2, the observation of complex objects is classified int
 
   Different from the state management V1, the framework does not create a proxy object for the instance when the state management V2 observes the common class. Therefore, the getTarget cannot be used to determine whether the instance is a proxy object. You can use the following methods:
 
-  - Check whether the attribute to be observed is decorated by [\@Trace](./arkts-track.md).
+  - Check whether the attribute to be observed is decorated by [\@Trace](./arkts-new-observedV2-and-trace.md).
   - Check whether the ArkUI State lane reports state variable changes. For details, see [State Management: Profiler](../ui-inspector-profiler.md#state-management-profiler).
 - Built-in types:
 

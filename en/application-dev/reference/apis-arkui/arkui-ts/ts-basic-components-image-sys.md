@@ -48,7 +48,7 @@ This attribute can be used to optimize jagged edges in SVG images on devices wit
 
 | Name| Type  | Mandatory| Description                               |
 | ------ | ------ | ---- | ----------------------------------- |
-| value  | number | Yes  | Antialiasing strength of the SVG image.<br>Default value: **0.0**.|
+| value  | number | Yes  | Antialiasing strength of the SVG image.<br>Default value: **0.0**|
 
 ### pointLight<sup>11+</sup>
 

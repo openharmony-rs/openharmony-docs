@@ -99,7 +99,7 @@ Format: help [-ah] [command]
 | hostname  | Obtains the current host name.<br>usage: hostname [-bdsf] [-F FILENAME] [newname] |
 | insmod    | Loads a kernel module.<br>usage: insmod MODULE [MODULE_OPTIONS] |
 | logger    | Records system logs.<br>usage: logger [-s] [-t TAG] [-p [FACILITY.]PRIORITY] [message...] |
-| lsmod     | Displays the loaded modules, their sizes, and their dependencies.<br>usage: lsmod |
+| lsmod     | Displays the loaded modules, as well as their sizes and dependencies.<br>usage: lsmod |
 | mix       | Displays the OSS audio channel or sets the volume.<br>usage: mix [-d DEV] [-c CHANNEL] [-l VOL] [-r RIGHT] |
 | modinfo   | Displays the kernel module information.<br>usage: modinfo [-0] [-b basedir] [-k kernel] [-F field] [module \| file...] |
 | nproc     | Prints the number of processors.<br>usage: nproc [--all] |

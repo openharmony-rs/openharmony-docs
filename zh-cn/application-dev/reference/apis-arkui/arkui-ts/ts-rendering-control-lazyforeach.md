@@ -148,7 +148,9 @@ onDataAdded(index: number): void
 
 通知组件index的位置有数据添加。添加数据完成后调用。
 
-> 从API version 8开始，建议使用[onDataAdd](#ondataadd8)。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 8开始废弃，建议使用[onDataAdd](#ondataadd8)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,11 +166,11 @@ onDataMoved(from: number, to: number): void
 
 通知组件数据有移动。将from和to位置的数据进行交换。
 
-> 从API version 8开始，建议使用[onDataMove](#ondatamove8)。
-
 > **说明：** 
 >
-> 数据移动前后键值要保持不变，如果键值有变化，应使用删除数据和新增数据接口。数据移动起始位置与数据移动目标位置交换完成后调用。
+> - 从API version 7开始支持，从API version 8开始废弃，建议使用[onDataMove](#ondatamove8)替代。
+>
+> - 数据移动前后键值要保持不变，如果键值有变化，应使用删除数据和新增数据接口。数据移动起始位置与数据移动目标位置交换完成后调用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,7 +187,9 @@ onDataDeleted(index: number): void
 
 通知组件删除index位置的数据并刷新LazyForEach的展示内容。删除数据完成后调用。
 
-> 从API version 8开始，建议使用[onDataDelete](#ondatadelete8)。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 8开始废弃，建议使用[onDataDelete](#ondatadelete8)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -201,7 +205,9 @@ onDataChanged(index: number): void
 
 通知组件index的位置有数据变化。改变数据完成后调用。
 
-> 从API version 8开始，建议使用[onDataChange](#ondatachange8)。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 8开始废弃，建议使用[onDataChange](#ondatachange8)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

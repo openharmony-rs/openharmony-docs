@@ -684,7 +684,7 @@ Obtains the volume of an audio renderer.
 | Name| Description|
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance, which is created by calling [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
-| float* volume | Pointer to the audio volume, in the range of [0.0, 1.0].|
+| float* volume | Pointer to the audio volume. The audio volume is in the range of [0.0, 1.0].|
 
 **Returns**
 
@@ -884,7 +884,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* 
 
 Sets the default built-in audio output device.<br> This function applies only to the scenario where [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) is set to voice messages, VoIP voice calls, and VoIP video calls and the available device types are the receiver, speaker, and system default device.<br> This function can be called at any time after an AudioRenderer instance is created. The system records the default built-in audio output device set by the application. When the application starts playback, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound.<br>
 
-**Device behavior difference**: If the default audio output device is set to earpiece on a device without a earpiece, the speaker will still be used for audio output.
+**Device behavior difference**: If the default audio output device is set to earpiece on a device without an earpiece, the speaker will still be used for audio output.
 
 **Since**: 12
 

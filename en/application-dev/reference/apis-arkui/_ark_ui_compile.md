@@ -90,7 +90,7 @@ Specify the type for the variable decorated with the decorator.
 
 ## 10905307 Failed to Verify the Specific Decorated Variable Type
 **Error Message**<br>
-\'@ObjectLink\' cannot be used with this type. Apply it only to classes decorated by \'@Observed\' or initialized using the return value of \'makeV1Observed\'.
+\'@ObjectLink\' cannot be used with this type. Apply it only to classes decorated with \'@Observed\' or initialized using the return value of \'makeV1Observed\'.
 
 **Description**<br>
 This error code is reported when the type of a variable decorated with @ObjectLink is not a class or union type decorated with @Observed defined in an .ets file.
@@ -324,7 +324,7 @@ Do not use structs to extend other classes or implement other APIs.
 
 ## 10905104 Failed to Verify the Static Method Decorator of the Custom Component
 **Error Message**<br>
-Static methods in custom components cannot be decorated by \'@LocalBuilder\'.
+Static methods in custom components cannot be decorated with \'@LocalBuilder\'.
 
 **Description**<br>
 This error code is reported when the @LocalBuilder decorator is used on static methods in custom components.
@@ -480,7 +480,7 @@ Make sure variables decorated with @Require, @Prop, or @BuilderParam are initial
 
 ## 10905213 Incorrect Mixed Use of V1 and V2 Components
 **Error Message**<br>
-A V2 component cannot be used with any member property decorated by \'@Link\' in a V1 component.
+A V2 component cannot be used with any member property decorated with \'@Link\' in a V1 component.
 
 **Description**<br>
 This error code is reported when a V2 component is used together with the @Link decorator of a V1 component.
@@ -701,7 +701,7 @@ Remove the parameters from the @Styles decorated method.
 
 ## 10905111 Incorrect Mixed Use of @AnimatedExtend and @Extend
 **Error Message**<br>
-The function can not be decorated by \'@Extend\' and \'@AnimatedExtend\' at the same time.
+The function can not be decorated with \'@Extend\' and \'@AnimatedExtend\' at the same time.
 
 **Description**<br>
 This error code is reported when both @AnimatedExtend and @Extend decorators are used to decorate the same API.
@@ -844,7 +844,7 @@ Apply the V1 member decorator according to the instructions provided in the erro
 
 ## 10905224 An @Observed Decorated Class Cannot Inherit from an @ObservedV2 Decorated Class
 **Error Message**<br>
-A class decorated by \'@Observed\' cannot inherit from a class decorated by \'@ObservedV2\'.
+A class decorated with \'@Observed\' cannot inherit from a class decorated with \'@ObservedV2\'.
 
 **Description**<br>
 This error code is reported when an @Observed decorated class inherits from an @ObservedV2 decorated class.
@@ -857,7 +857,7 @@ Inherit from a class decorated with @Observed or change the class decorator to @
 
 ## 10905225 An @ObservedV2 Decorated Class Cannot Inherit from an @Observed Decorated Class
 **Error Message**<br>
-A class decorated by \'@ObservedV2\' cannot inherit from a class decorated by \'@Observed\'.
+A class decorated with \'@ObservedV2\' cannot inherit from a class decorated with \'@Observed\'.
 
 **Description**<br>
 This error code is reported when an @ObservedV2 decorated class inherits from an @Observed decorated class.
@@ -870,7 +870,7 @@ Inherit from a class decorated with @ObservedV2 or change the class decorator to
 
 ## 10905226 Incorrect Mixed Use of @Observed and @ObservedV2
 **Error Message**<br>
-A class can not be decorated by \'@Observed\' and \'@ObservedV2\' at the same time.
+A class can not be decorated with \'@Observed\' and \'@ObservedV2\' at the same time.
 
 **Description**<br>
 This error code is reported when a class is decorated with both @Observed and @ObservedV2.
@@ -935,7 +935,7 @@ Use the decorator in question, such as @Monitor, only in @ObservedV2 decorated c
 
 ## 10905344 Incorrect Use of @Track and a V2 Decorator
 **Error Message**<br>
-\'xxx\' cannot be used with classes decorated by \'@ObservedV2\'. Use the \'@Trace\' decorator instead.
+\'xxx\' cannot be used with classes decorated with \'@ObservedV2\'. Use the \'@Trace\' decorator instead.
 
 **Description**<br>
 This error code is reported when a decorator designed for V1 is used with an @ObservedV2 decorated class.
@@ -1026,7 +1026,7 @@ Avoid using the same decorator multiple times on the same method.
 
 ## 10905121 Incorrect Mixed Use of Built-in Decorators
 **Error Message**<br>
-The member property or method can not be decorated by multiple built-in decorators.
+The member property or method can not be decorated with multiple built-in decorators.
 
 **Description**<br>
 This error code is reported when multiple built-in decorators are used to decorate the same member property or method.
@@ -1120,7 +1120,7 @@ Avoid using incompatible decorators on the same struct. Use only one appropriate
 Decorator \'@Component\', \'@ComponentV2\', or \'@CustomDialog\' is missing for struct \'xxx\'.
 
 **Description**<br>
-TThis error code is reported when a child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
+This error code is reported when a child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
 
 **Possible Cause**<br>
 The child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
@@ -1188,14 +1188,14 @@ Decorator \'@Component\', \'@ComponentV2\', or \'@CustomDialog\' is missing for 
 This error code is reported when a child component is not decorated with @Component, @ComponentV2, or @CustomDialog and is called by the parent component.
 
 **Possible Cause**<br>
-The child component is not decorated with the required decorators.
+The child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
 
 **Solution**<br>
 Make sure the child component is decorated with @Component, @ComponentV2, or @CustomDialog before calling it.
 
 ## 10905125 Incorrect Use of Multiple Decorators on the Same Member Property or Method
 **Error Message**<br>
-The member property or method can not be decorated by multiple decorators.
+The member property or method can not be decorated with multiple decorators.
 
 **Description**<br>
 This error code is reported when multiple decorators are used on the same member property or method.
@@ -1247,7 +1247,7 @@ Change the name of the custom component to a valid component name that is differ
 
 ## 10905127 Invalid @Styles Declaration
 **Error Message**<br>
-Should not add return type to the function that is decorated by Styles.
+Should not add return type to the function that is decorated with Styles.
 
 **Description**<br>
 This error code is reported when functions decorated with @Styles return function types.
@@ -1273,7 +1273,7 @@ Name the struct correctly.
 
 ## 10905128 Invalid @Extend Declaration
 **Error Message**<br>
-Should not add return type to the function that is decorated by Extend.
+Should not add return type to the function that is decorated with Extend.
 
 **Description**<br>
 This error code is reported when functions decorated with @Extend return function types.
@@ -1286,7 +1286,7 @@ Do not declare the return value of a function decorated with @Extend as a functi
 
 ## 10905129 Incorrect Mixed Use of @Computed and !!
 **Error Message**<br>
-A property decorated by \'xxx\' cannot be used with two-bind syntax.
+A property decorated with \'xxx\' cannot be used with two-bind syntax.
 
 **Description**<br>
 This error code is reported when the @Computed decorator is incorrectly used with two-way binding syntax.
@@ -1299,7 +1299,7 @@ Do not use the @Computed decorator and two-way binding syntax together.
 
 ## 10905130 Incorrect Use of @Computed on a Setter Method
 **Error Message**<br>
-A property decorated by \'xxx\' cannot define a set method.
+A property decorated with \'xxx\' cannot define a set method.
 
 **Description**<br>
 This error code is reported when the @Computed decorator is used on a setter method.
@@ -1338,7 +1338,7 @@ Do not use @Reusable and @ReusableV2 together. Choose one appropriate decorator.
 
 ## 10905242 Incorrect Use of @ReusableV2
 **Error Message**<br>
-\'@ReusableV2\' is only applicable to custom components decorated by \'@ComponentV2\'.
+\'@ReusableV2\' is only applicable to custom components decorated with \'@ComponentV2\'.
 
 **Description**<br>
 This error code is reported when @ReusableV2 is used to decorate custom components that are not decorated with @ComponentV2.

@@ -581,7 +581,7 @@ struct ParentPage {
       // When this.componentBuilder() is called, this points to the ParentPage component decorated by the @Entry. Therefore, the value of the label variable is 'Parent Page'.
       this.componentBuilder()
       ChildPage({
-        // Transfer this.componentBuilder to @BuilderParam customBuilderParam of the child component ChildPage.
+        // Pass this.componentBuilder to @BuilderParam customBuilderParam of the child component ChildPage.
         // this points to ChildPage, that is, the value of the label variable is 'Child Page'.
         customBuilderParam: this.componentBuilder,
         // Pass ():void=>{this.componentBuilder()} to @BuilderParam customChangeThisBuilderParam of the ChildPage component.
@@ -830,7 +830,7 @@ function globalBuilder() {
 struct CustomBuilderDemo {
   build() {
     Column() {
-      // No value is assigned to ChildBuilder. An error is reported during compilation or editing.
+      // Since no value has been assigned to the ChildBuilder variable decorated with @Require, an error will be thrown at this point both during compilation and editing.
       ChildPage()
     }
   }
@@ -901,7 +901,7 @@ struct CustomBuilderDemo {
 
   build() {
     Column() {
-      // ChildBuilder receives the variable decorated by @State. An error is reported during compilation or editing.
+      // When the ChildBuilder variable decorated with @BuilderParam receives a variable decorated with @State, compilation and editing errors will occur.
       ChildPage({ ChildBuilder: this.message })
     }
   }

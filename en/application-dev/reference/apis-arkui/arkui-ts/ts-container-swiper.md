@@ -399,7 +399,7 @@ Sets the number of elements to display per page.
 >
 > - This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 18.
 
-When the navigation dot is set to dot style and the number of child elements displayed in the viewport is greater than 1 (multi-page scenario), the number of displayed navigation dots follows the rules below.
+When the navigation indicator is set to dot style and the number of child elements displayed in the viewport is greater than 1 (multi-page scenario)<!--RP1--><!--RP1End-->, the number of displayed navigation dots follows the rules below.
 
 | Total Children Count > Visible Children Count| Swiping by Group Enabled| Loop Status       | Number of Navigation Dots Displayed                                          | Description                                    |
 | ------------------------------------------ | ------------ | --------------- | ------------------------------------------------------------ | ---------------------------------------- |
@@ -584,7 +584,7 @@ Sets the mode for flipping pages using the mouse wheel. If this API is not used,
 
 | Name| Type                                                       | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | Yes  | Mode for flipping pages using the mouse wheel.<br>If the value is **undefined**, the value **PageFlipMode.CONTINUOUS** is used.|
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | Yes  | Mode for flipping pages using the mouse wheel.<br>If the value is **undefined**, the value **PageFlipMode.CONTINUOUS** is used.|
 
 ### maintainVisibleContentPosition<sup>20+</sup>
 
@@ -780,7 +780,7 @@ When combining with [LazyForEach](../../../ui/rendering-control/arkts-rendering-
 
 | Name  | Type  | Mandatory  | Description                                    |
 | ----- | ------ | ---- | ---------------------------------------- |
-| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<Array\<number>> | Yes| Array of indexes of the child nodes to preload.|
+| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<Array\<number>> | Yes| Array of indexes of the child nodes to preload.|
 
 **Return value**
 
@@ -973,7 +973,7 @@ Sets the distance between the navigation indicator and the right edge (in [RTL](
 
 end(value: LengthMetrics): T
 
-Sets the distance between the navigation indicator and the left edge (in right-to-left scripts) or the right edge (in left-to-right scripts) of the **Swiper** component.
+Sets the distance between the navigation point indicator and the left edge (in right-to-left scripts) or the right edge (in left-to-right scripts) of the **Swiper** component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -1109,7 +1109,7 @@ Sets the height of a dot-style navigation indicator of the **Swiper** component.
 
 selectedItemWidth(value: Length): DotIndicator
 
-Sets the width of the selected dot in the dot-style navigation indicator.
+Sets the width of the selected dot-style navigation indicator.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -1121,7 +1121,7 @@ Sets the width of the selected dot in the dot-style navigation indicator.
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Width of the selected dot in the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp<br>Value range: (0, +∞)|
+| value  | [Length](ts-types.md#length) | Yes  | Width of the selected dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp<br>Value range: (0, +∞)|
 
 **Return value**
 
@@ -1133,7 +1133,7 @@ Sets the width of the selected dot in the dot-style navigation indicator.
 
 selectedItemHeight(value: Length): DotIndicator
 
-Sets the height of the selected dot in the dot-style navigation indicator.
+Sets the height of the selected dot-style navigation indicator.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -1239,7 +1239,7 @@ Sets the maximum number of navigation dots in the dot-style navigation indicator
 
 | Name         | Type  | Mandatory| Description                                                        |
 | --------------- | ------ | ---- | ------------------------------------------------------------ |
-| maxDisplayCount | number | Yes  | Maximum number of navigation dots in the dot-style navigation indicator. If the actual number of navigation dots exceeds this limit, the overflow effect is activated, as shown in [Example 5](#example-5-configuring-overflow-for-the-dot-style-indicator).<br>This parameter has no default value. If an invalid value is set, no overflow effect is applied.<br>Value range: [6, 9].<br>**NOTE**<br>In scenarios involving overflow display:<br>1. Interactive features, such as gestures and mouse operations, are not supported.<br>2. The position of the selected navigation dot corresponding to the middle page is not strictly fixed; it depends on the sequence of previous page-turning operations.<br>3. Currently, only scenarios with **displayCount** set to **1** are supported.|
+| maxDisplayCount | number | Yes  | Maximum number of navigation dots in the dot-style navigation point indicator. If the actual number of navigation dots exceeds this limit, the overflow effect is activated, as shown in [Example 5](#example-5-configuring-overflow-for-the-dot-style-indicator).<br>This parameter has no default value. If an invalid value is set, no overflow effect is applied.<br>Value range: [6, 9].<br>**NOTE**<br>In scenarios involving overflow display:<br>1. Interactive features, such as gestures and mouse operations, are not supported.<br>2. The position of the selected navigation dot corresponding to the middle page is not strictly fixed; it depends on the sequence of previous page-turning operations.<br>3. Currently, only scenarios with **displayCount** set to **1** are supported.|
 
 **Return value**
 
@@ -1251,7 +1251,7 @@ Sets the maximum number of navigation dots in the dot-style navigation indicator
 
 space(space: LengthMetrics): DotIndicator
 
-Sets the spacing between dot-style navigation indocators of the **Swiper** component.
+Sets the spacing between dot-style navigation indicators of the **Swiper** component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 19.
 
@@ -1536,7 +1536,7 @@ Triggered on a frame-by-frame basis when the page is turned by a swipe.
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
-| event  | [OnSwiperGestureSwipeCallback](#onswipergestureswipecallback18) | Yes  | Defines the callback triggered on a frame-by-frame basis when the page is turned by a swipe. **onGestureSwipe** is called after **onTouch**. For post-release operations, consider using [onAnimationStart](#onanimationstart9).|
+| event  | [OnSwiperGestureSwipeCallback](#onswipergestureswipecallback18) | Yes  | Callback triggered on a frame-by-frame basis when the page is turned by a swipe. **onGestureSwipe** is called after **onTouch**. For post-release operations, consider using [onAnimationStart](#onanimationstart9).|
 
 ### customContentTransition<sup>12+</sup>
 

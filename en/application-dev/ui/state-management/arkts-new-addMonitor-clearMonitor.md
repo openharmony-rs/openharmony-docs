@@ -15,7 +15,7 @@ Before using these APIs, it is recommended that you familiarize yourself with th
 >The **addMonitor** and **clearMonitor** APIs from **UIUtils** are supported in state management V2 since API version 20.
 
 
-## Overview
+## **Overview**
 If the decorator [\@Monitor](./arkts-new-monitor.md) is declared in [\@ObservedV2](./arkts-new-observedV2-and-trace.md) and [\@ComponentV2](./arkts-create-custom-components.md#componentv2), all \@ObservedV2 and \@ComponentV2 instances will have the same listening callback by default, and the corresponding listening callback cannot be canceled or deleted.
 
 For scenarios requiring dynamic management of listeners, use the [addMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#addmonitor20) and [clearMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#clearmonitor20) APIs to add or remove listeners on individual \@ObservedV2 and \@ComponentV2 instances.
@@ -29,7 +29,7 @@ For scenarios requiring dynamic management of listeners, use the [addMonitor](..
 
 - The **clearMonitor** API can only remove listeners added dynamically via **addMonitor**; it cannot remove static callbacks defined using the \@Monitor decorator.
 
-## Usage Rules
+## Use Rules
 - The **addMonitor** and **clearMonitor** APIs support batch processing by accepting an array of state variable paths to add or remove listeners for multiple properties simultaneously.
 ```ts
 import { UIUtils } from '@kit.ArkUI';
@@ -120,7 +120,7 @@ struct Page {
 
   aboutToAppear(): void {
     // Error: Attempting to register another listener named onChange1 for age
-    // fails with this log: FIX THIS APPLICATION ERROR: AddMonitor onChange1 failed when adding path age because duplicate key.
+    // Fails with this log: FIX THIS APPLICATION ERROR: AddMonitor onChange1 failed when adding path age because duplicate key.
     UIUtils.addMonitor(this.user, 'age', this.onChange1);
   }
 
@@ -151,10 +151,10 @@ class User {
   }
 
   constructor() {
-    // Correct usage: Register the onChange1 listener with the default synchronization mode configuration.
+    // Correct usage: Register the listener function onChange1 for 'a'. If no options are set, it defaults to an asynchronous listener callback.
     UIUtils.addMonitor(this, 'age', this.onChange1);
     // Error: Attempting to modify the synchronization mode after initial registration
-    // fails with this log: FIX THIS APPLICATION ERROR: addMonitor failed, current function onChange1 has already register as async, cannot change to sync anymore.
+    // Fails with this log: FIX THIS APPLICATION ERROR: addMonitor failed, current function onChange1 has already register as async, cannot change to sync anymore.
     UIUtils.addMonitor(this, 'age', this.onChange1, { isSynchronous: true });
   }
 }
@@ -398,7 +398,7 @@ struct Page {
 ## Rules for Listening for Changes with addMonitor
 The rules for listening for changes with **addMonitor** and the [\@Monitor](./arkts-new-monitor.md) decorator are largely consistent. The comparison is shown in the table below.
 
-|  Scenario| addMonitor| @Monitor  |
+|  When to Use| addMonitor| @Monitor  |
 |------|----|------|
 | [Listening for @Trace decorated properties in \@ObservedV2 classes](#listening-for-trace-decorated-properties-in-observedv2-classes-and-state-variables-in-componentv2-components)   | Supported| Supported|
 | [Listening for state variables in \@ComponentV2 components](#listening-for-trace-decorated-properties-in-observedv2-classes-and-state-variables-in-componentv2-components) | Supported| Supported|
@@ -410,7 +410,7 @@ The rules for listening for changes with **addMonitor** and the [\@Monitor](./ar
 | [Listening for synchronous state variable changes in constructors](#listening-for-synchronous-state-variable-changes-in-constructors)  | Supported| Not supported|
 | [Dynamically canceling listening of \@ObservedV2/\@ComponentV2 instances](#dynamically-canceling-listening-of-observedv2componentv2-instances)  | Supported| Not supported|
 
-## Use Cases
+## When to Use
 ### Listening for @Trace Decorated Properties in \@ObservedV2 Classes and State Variables in \@ComponentV2 Components
 
 In the following example:
@@ -586,7 +586,7 @@ struct Index {
 ```
 
 ### Listening for Variable Accessibility Changes
-[\@Monitor](./arkts-new-monitor.md#variables-cannot-be-observed-during-accessibility-changes) does not record the state of a state variable when it is inaccessible, so it cannot listen for accessibility changes.
+[\@Monitor does not record the state of a state variable when it is inaccessible](./arkts-new-monitor.md#variables-cannot-be-observed-during-accessibility-changes), so it cannot listen for accessibility changes.
 
 **addMonitor** records inaccessible states, enabling listening for accessibility changes. Example:
 

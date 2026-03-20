@@ -93,7 +93,7 @@ change() {
 - 常规变量不能被\@Watch装饰，否则编译期会报错。
 
 ```ts
-//错误写法
+// 错误写法
 @Watch('change') num: number = 10;
 change() {
   console.info(`xxx`);
@@ -247,6 +247,9 @@ struct BasketModifier {
 <!-- @[parent_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets) -->
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { common } from '@kit.AbilityKit';
+
 @Observed
 class Task {
   public isFinished: boolean = false;

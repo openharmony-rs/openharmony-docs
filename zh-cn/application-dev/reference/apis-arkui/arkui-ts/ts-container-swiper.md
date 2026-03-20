@@ -399,7 +399,7 @@ displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean)
 >
 > - 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-当导航点样式设定为圆形导航点，视窗内显示子元素数量大于1（多页场景），显示导航点数量情况如下表：
+当导航点样式设定为圆形导航点，视窗内显示子元素数量大于1（多页场景）<!--RP1--><!--RP1End-->，显示导航点数量情况如下表：
 
 | 子元素总数量是否大于视窗内显示的子元素数量 | 是否按组翻页 | 是否循环        | 圆形导航点显示数量                                           | 说明                                     |
 | ------------------------------------------ | ------------ | --------------- | ------------------------------------------------------------ | ---------------------------------------- |
@@ -584,7 +584,7 @@ pageFlipMode(mode: Optional\<PageFlipMode>)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>取undefined时，按取值为PageFlipMode.CONTINUOUS处理。 |
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>取undefined时，按取值为PageFlipMode.CONTINUOUS处理。 |
 
 ### maintainVisibleContentPosition<sup>20+</sup>
 
@@ -780,7 +780,7 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
 | 参数名   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
-| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<Array\<number>> | 是 | 需预加载的子节点的下标数组。|
+| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<Array\<number>> | 是 | 需预加载的子节点的下标数组。|
 
 **返回值：**
 

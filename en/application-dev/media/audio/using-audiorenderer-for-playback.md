@@ -63,9 +63,9 @@ During application development, you are advised to use [on('stateChange')](../..
    });
    ```
 
-2. Call **on('writeData')** to subscribe to the callback for audio data writing. You are advised to use this function in API version 12, since it returns a callback result.
+2. Call [on('writeData')](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onwritedata11) to subscribe to the audio data write callback. You are advised to use the method that supports returning callback results in API version 12.
 
-   - From API version 12, this function returns a callback result, enabling the system to determine whether to play the data in the callback based on the value returned.
+   - Starting from API version 12, this function returns a callback result, enabling the system to determine whether to play the data in the callback based on the value returned.
 
      > **NOTE**
      > 
@@ -154,7 +154,7 @@ During application development, you are advised to use [on('stateChange')](../..
      audioRenderer.on('writeData', writeDataCallback);
      ```
 
-3. Call **start()** to switch the **AudioRenderer** to the **running** state and start rendering.
+3. Call the [start](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8) method to enter the running state and start audio rendering.
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -168,7 +168,7 @@ During application development, you are advised to use [on('stateChange')](../..
    });
    ```
 
-4. Call **stop()** to stop rendering.
+4. Call the [stop](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#stop8) method to stop rendering.
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -182,7 +182,7 @@ During application development, you are advised to use [on('stateChange')](../..
    });
    ```
 
-5. Call **release()** to release the instance.
+5. Call the [release](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#release8) method to destroy the instance and release resources.
 
    Applications must properly manage **AudioRenderer** instances according to their needs, creating them as needed and releasing them promptly. This prevents excessive consumption of audio resources, which can lead to exceptions.
 
@@ -215,7 +215,7 @@ The sampling rate refers to the number of samples captured per second for a sing
 
 Resampling involves upsampling (adding samples through interpolation) or downsampling (removing samples through decimation) when there is a mismatch between the input and output audio sampling rates.
 
-The **AudioRenderer** supports all sampling rates defined in the enum **AudioSamplingRate**.
+AudioRenderer supports all sampling rates defined in [AudioSamplingRate](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosamplingrate8).
 
 If the input audio sampling rate configured by **AudioRenderer** is different from the output sampling rate of the device, the system resamples the input audio to match the output sampling rate.
 

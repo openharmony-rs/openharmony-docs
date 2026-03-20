@@ -193,6 +193,10 @@ Listens for changes in the system memory level status. Called when the available
 
 This API returns the result synchronously and does not support asynchronous callbacks.
 
+> **NOTE**
+>
+> The **onMemoryLevel** callback runs in the main thread of the current process. If time-consuming UI component release is performed in this callback, the main thread task will be blocked. Therefore, you are not advised to release UI components in the callback.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
@@ -201,7 +205,7 @@ This API returns the result synchronously and does not support asynchronous call
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | Yes| Memory level that indicates the memory usage status. When the specified memory level is reached, a callback will be invoked and the system will start adjustment.<br>**NOTE**<br>The trigger conditions may differ across various devices. For example, on a standard device with 12 GB of memory:<br>- A callback with value 0 is triggered when available memory drops between 1700 MB and 1800 MB.<br>- A callback with value 1 is triggered when available memory drops between 1600 MB and 1700 MB.<br>- A callback with value 2 is triggered when available memory falls below 1600 MB.|
+  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | Yes| Memory level that indicates the memory usage status. When the specified memory level is reached, a callback will be invoked and the system will start adjustment.<br>**NOTE**<br>The trigger conditions may differ across various devices. For example, on a standard device with 12 GB of memory:<br>- A callback with value 0 is triggered when available memory drops to between 1700 MB and 1800 MB.<br>- A callback with value 1 is triggered when available memory drops to between 1600 MB and 1700 MB.<br>- A callback with value 2 is triggered when available memory drops to below 1600 MB.|
 
 **Example**
 

@@ -6,23 +6,29 @@
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 
-The following table lists the common decorators in ArkUI.
+The following table lists the V2 state management decorators in ArkUI.
 
-| Common Decorator                                        | Description         |
-| -------------------------------------------------- | ------------------- |
-| [\@Require](./arkts-require.md)                    | Validates constructor input parameters.     |
-| [\@Builder](./arkts-builder.md)                    | Customizes builder function.   |
-| [\@LocalBuilder](./arkts-localBuilder.md)          | Maintains the component relationship.     |
-| [\@BuilderParam](./arkts-builderparam.md)          | References the \@Builder function.|
-| [\@Styles](./arkts-style.md)                       | Defines the component reuse style. |
-| [\@Extend](./arkts-extend.md)                      | Defines the extension component style. |
-| [\@AnimatableExtend](./arkts-animatable-extend.md) | Defines animatable attributes.   |
-| [\@Env](../arkts-env-system-property.md)           | Environment variables.         |
+| V2 State Management Decorator                                   | Description          |
+| --------------------------------------------------- | -------------------- |
+| [\@ComponentV2](./arkts-create-custom-components.md#componentv2) | Create a custom component.      |
+| [\@Local](./arkts-new-local.md)                     | Internal status of a component.      |
+| [\@Param](./arkts-new-param.md)                     | External input of the component.      |
+| [\@Once](./arkts-new-once.md)                       | Synchronizes initialization once.    |
+| [\@Event](./arkts-new-event.md)                     | Standardizes the component output.      |
+| [\@Provider](./arkts-new-provider-and-consumer.md)  | Establishes two-way synchronization with the child states.|
+| [\@Consumer](./arkts-new-provider-and-consumer.md)  | Establishes two-way synchronization with the ancestor states.|
+| [\@Monitor](./arkts-new-monitor.md)                 | Observes state variable changes.  |
+| [\@Computed](./arkts-new-computed.md)               | Computed attributes.          |
+| [\@ObservedV2](./arkts-new-observedV2-and-trace.md) | Marks the class observable.        |
+| [\@Trace](./arkts-new-observedV2-and-trace.md)      | Marks the class attribute observable.  |
+| [\@Type](./arkts-new-type.md)                       | Marks the types of the class attributes.  |
+| [\@ReusableV2](./arkts-new-reusableV2.md)           | Marks the component reusable.    |
 
 The following table lists the V1 state management decorators in ArkUI.
 
 | V1 State Management Decorator                                            | Description                                  |
 | ------------------------------------------------------------ | -------------------------------------------- |
+| [\@Component](./arkts-create-custom-components.md#component) | Create a custom component.                            |
 | [\@State](./arkts-state.md)                                  | Basic state variable.                              |
 | [\@Prop](./arkts-prop.md)                                    | Establishes one-way synchronization between the parent and child states.                      |
 | [\@Link](./arkts-link.md)                                    | Establishes two-way synchronization between the parent and child states.                      |
@@ -38,19 +44,15 @@ The following table lists the V1 state management decorators in ArkUI.
 | [\@Track](./arkts-track.md)                                  | Class object attribute update.                          |
 | [\@Reusable](./arkts-reusable.md)                            | Marks the component reusable.                            |
 
-The following table lists the V2 state management decorators in ArkUI.
+The following table lists the common UI decorators contained in ArkUI.
 
-| V2 State Management Decorator                                   | Description          |
-| --------------------------------------------------- | -------------------- |
-| [\@Local](./arkts-new-local.md)                     | Internal status of a component.      |
-| [\@Param](./arkts-new-param.md)                     | External input of the component.      |
-| [\@Once](./arkts-new-once.md)                       | Synchronizes initialization once.    |
-| [\@Event](./arkts-new-event.md)                     | Standardizes the component output.      |
-| [\@Provider](./arkts-new-provider-and-consumer.md)  | Establishes two-way synchronization with the child states.|
-| [\@Consumer](./arkts-new-provider-and-consumer.md)  | Establishes two-way synchronization with the ancestor states.|
-| [\@Monitor](./arkts-new-monitor.md)                 | Observes state variable changes.  |
-| [\@Computed](./arkts-new-computed.md)               | Computed attributes.          |
-| [\@ObservedV2](./arkts-new-observedV2-and-trace.md) | Marks the class observable.        |
-| [\@Trace](./arkts-new-observedV2-and-trace.md)      | Marks the class attribute observable.  |
-| [\@Type](./arkts-new-type.md)                       | Marks the types of the class attributes.  |
-| [\@ReusableV2](./arkts-new-reusableV2.md)           | Marks the component reusable.    |
+| Common Decorator                                        | Description         |
+| -------------------------------------------------- | ------------------- |
+| [\@Builder](./arkts-builder.md)                    | Customizes builder function.   |
+| [\@LocalBuilder](./arkts-localBuilder.md)          | Maintains the component relationship.     |
+| [\@BuilderParam](./arkts-builderparam.md)          | References the \@Builder function.|
+| [\@Styles](./arkts-style.md)                       | Defines the component reuse style. |
+| [\@Extend](./arkts-extend.md)                      | Defines the extension component style. |
+| [\@AnimatableExtend](./arkts-animatable-extend.md) | Defines animatable attributes.   |
+| [\@Require](./arkts-require.md)                    | Validates constructor input parameters.     |
+| [\@Env](../arkts-env-system-property.md)           | Environment variables.         |

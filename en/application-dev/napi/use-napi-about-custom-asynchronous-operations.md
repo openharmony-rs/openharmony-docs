@@ -37,7 +37,7 @@ Use **napi_async_init** to create an async context, and use **napi_async_destroy
 
 ### napi_make_callback
 
-Use **napi_make_callback** to call and execute an ArkTS callback after an async operation is complete.
+When writing a Node-API module, you must call the ArkTS callback function after an async operation is completed. You can use **napi_async_init** to create an async resource context, then use **napi_make_callback** to execute the ArkTS callback function.
 
 ### napi_open_callback_scope, napi_close_callback_scope
 
@@ -92,6 +92,8 @@ static napi_value AsynchronousWork(napi_env env, napi_callback_info info)
     if (funcType == napi_function) {
         napi_make_callback(env, context, recv, func, 1, argv, &result);
     } else {
+        napi_async_destroy(env, context);
+        napi_close_callback_scope(env, scope);
         napi_throw_error(env, nullptr, "Unexpected argument type");
         return nullptr;
     }

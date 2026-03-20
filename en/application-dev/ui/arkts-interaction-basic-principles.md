@@ -34,7 +34,7 @@ The event interaction pipeline describes the end-to-end process where ArkUI rece
 
    (4) Event Interception
    
-    You can intercept events at two levels:<br>Pre-chain: Configure hit test properties to affect the formation of the event response chain.<br>Post-chain:
+    You can intercept events at two levels:<br>Pre-chain: Configure hit test properties to affect the formation of the event response chain.<br> Post-chain:
 
     During event dispatch to the touch event response chain, you can block touch event propagation using touch interceptors.
 
@@ -83,13 +83,23 @@ Applications can intervene in hit test results through the following methods to 
 | Intervention Mode      | Description                            | API        | Remarks                                                                                                                                                                                                                                                                                                                                     |
 | -------------- | ------------------------------------ | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Response region setting  | Sets the region where a component can respond to user interactions.| [responseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)   | 1. The response region is used to determine whether the user's touch falls within its range; only touches within the range will be collected.<br>2. The response region also affects gesture recognition, such as clicks, which are triggered only when the touch is released within the response region range.<br>                                                                                                                                                                    |
+| Response region setting  | Sets the region where a component can respond to mouse interactions.| [mouseResponseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#mouseresponseregion10)   | Sets one or more mouse response regions. The function is similar to that of **responseRegion**, but it takes effect only for mouse events.<br>                                                                                                                                                                    |
+| Response region setting  | Sets the touch hotspot list of the component.| [responseRegionList](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregionlist22)   | Sets the touch hotspot list of the component. You can specify the input tool type (such as mouse and touch) applicable to each hotspot. When this API is called, the **responseRegion** and **mouseResponseRegion** APIs do not take effect. This function is supported since API version 22.<br>                                                                                                                                                                    |
 | Hit test control  | Intervenes in the collection results of the component itself and other components.        | [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)  | **hitTestBehavior** works similarly to **onTouchIntercept**, but it is statically configured.                                                                                                                                                                                                                                                                              |
 | Custom event interception| Intervenes in the collection results of the component itself and other components.        | [onTouchIntercept](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-touch-intercept.md#ontouchintercept) | This callback is triggered when the user triggers a press event and the system begins collecting all components that need to participate in event processing at the current position. Applications can return a **HitTestMode** value through this callback to influence the system's behavior in collecting child or sibling nodes. This enables dynamic control over interaction responses, such as allowing certain components to participate in interactions only under specific service conditions.<br>**onTouchIntercept** works similarly to **hitTestBehavior**, but it is a dynamic callback.|
 
 
 1. Response Region Setting
 
-   By default, a component's response region matches its own position and size, ensuring maximum consistency between user actions and visual feedback. In rare cases, applications may need to adjust the response region size to limit or expand the component's response range. This is achieved through the **responseRegion** API.
+   By default, a component's response region matches its own position and size, ensuring maximum consistency between user actions and visual feedback. In rare cases, you need to adjust the hotspot size to limit or expand the operation range of the component.
+
+   ArkUI provides the following three APIs to set the touch hotspot of a component:
+
+   - **responseRegion**: sets one or more touch hotspots, which is applicable to all input device types (such as touch and mouse). This API is supported since API version 8.
+
+   - **mouseResponseRegion**: sets one or more mouse touch hotspots, which is valid only for mouse events. This API is supported since API version 10.
+
+   - **responseRegionList**: sets the touch hotspot list of a component. You can specify the applicable input tool type for each hotspot. When this API is called, the **responseRegion** and **mouseResponseRegion** APIs do not take effect. This API is supported since API version 22.
 
    The response region affects the dispatch of pointer events and can be specified relative to the component's own area. One or more areas can be defined to partition the component's response region into multiple sections.
 
@@ -97,7 +107,7 @@ Applications can intervene in hit test results through the following methods to 
    >
    > **x** and **y** can be set to a positive or negative percentage value. Setting **x** to **'100%'** shifts the response region rightward by the component's width, while setting **x** to **'-100%'** shifts the response region leftward by the component's width. Setting **y** to **'100%'** shifts the response region downward by the component's height, while setting **y** to **'-100%'** shifts the response region upward by the component's height.
    >
-   > **width** and **height** can only be set to positive percentage values. When **width** is set to **'100%'**, the width of the response region is equal to that of the component. For example, if the width of a component is 100 vp, **'100%'** indicates that the width of the response region is also 100 vp. when **height** is set to **'100%'**, the height of the response region is equal to that of the component.
+   > **width** and **height** can only be set to positive percentage values. When **width** is set to **'100%'**, the width of the response region is equal to that of the component. For example, if the width of a component is 100 vp, **'100%'** indicates that the width of the response region is also 100 vp. When **height** is set to **'100%'**, the height of the response region is equal to that of the component.
    >
    > Percentage values are calculated relative to the component's own width and height.
 
@@ -109,12 +119,12 @@ Applications can intervene in hit test results through the following methods to 
    @Component
    struct FocusOnclickExample {
      @State text: string = '';
-     @State number:number = 0;
+     @State number: number = 0;
    
      build() {
        Column() {
          Text(this.text)
-           .margin({bottom:20})
+           .margin({ bottom: 20 })
          // Replace $r('app.string.button') with the actual resource file. In this example, the value in the resource file is "Button."
          Button($r('app.string.button'))
            .responseRegion([

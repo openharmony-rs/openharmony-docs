@@ -1,4 +1,4 @@
-# @ohos.accessibility (辅助应用)
+# @ohos.accessibility (辅助功能)
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->

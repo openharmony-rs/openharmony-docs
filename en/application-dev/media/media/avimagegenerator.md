@@ -14,7 +14,7 @@ The full process of obtaining the video thumbnail includes creating an AVImageGe
 
 Read [AVImageGenerator](../../reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md) for the API reference.
 
-1. Call **createAVImageGenerator()** to create an AVImageGenerator instance.
+1. Use [createAVImageGenerator()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavimagegenerator12-1) to create an instance.
 
    ```ts
    import { media } from '@kit.MediaKit';

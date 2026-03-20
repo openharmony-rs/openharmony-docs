@@ -429,6 +429,10 @@ getVersion(): Promise&lt;number&gt;
 | :------------ | :---------------------------------- |
 | Promise&lt;number&gt; | Promise对象，返回查询到的版本号。 |
 
+**错误码：**
+ 
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 202 | Not System App. Interface caller is not a system app. |
@@ -769,7 +773,7 @@ atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlag
 });
 ```
 
-### PermissionRequestToggleStatus<sup>12+</sup>
+## PermissionRequestToggleStatus<sup>12+</sup>
 
 表示指定权限对应的弹窗开关状态的枚举。
 

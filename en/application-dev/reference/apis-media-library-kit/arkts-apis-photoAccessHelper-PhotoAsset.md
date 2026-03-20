@@ -26,7 +26,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
 | uri                       | string                   | Yes  | No  | Media asset URI, for example, **file://media/Photo/1/IMG_datetime_0001/displayName.jpg**. For details, see [Media File URI](../../file-management/user-file-uri-intro.md#media-file-uri).<br>**Atomic service API**: This API can be used in atomic services since API version 12.        |
 | photoType   | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | Yes  | No  | Type of the file.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                                              |
-| displayName               | string                   | Yes  | No  | File name, including the file name extension, to display. The value contains 1 to 255 characters.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
+| displayName               | string                   | Yes  | No  | File name, including the file name extension, to display. The string length ranges from 1 to 255.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
 
 ## get
 
@@ -52,7 +52,7 @@ Obtains a **PhotoAsset** member parameter.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -97,8 +97,8 @@ Sets a **PhotoAsset** member parameter.
 
 | Name     | Type                       | Mandatory  | Description   |
 | -------- | ------------------------- | ---- | ----- |
-| member | string | Yes   | Name of the member parameter to set, for example, [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE. The value contains 1 to 255 characters.|
-| value | string | Yes   | Value of the member parameter to set. Only the value of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE can be changed. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The total length of the file name, which is in the format of title+file name extension, must be between 1 and 255 characters.<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ]  |
+| member | string | Yes   | Name of the member parameter to set, for example, [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE. The string length ranges from 1 to 255.|
+| value | string | Yes   | Value of the member parameter to set. Only the value of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE can be changed. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The string length ranges from 1 to 255. (The asset file name is in the format of title + file name extension.)<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ]  |
 
 **Error codes**
 
@@ -151,7 +151,7 @@ Commits the modification on the file metadata to the database. This API uses an 
 
 | Name     | Type                       | Mandatory  | Description   |
 | -------- | ------------------------- | ---- | ----- |
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the file metadata is modified successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback function. If the file metadata is modified successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -159,7 +159,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 If error code 14000001 is returned, refer to [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys) to learn about the format and length requirements of the file name.
 
-If error code 13900012 is returned, follow the instructions provided in [Before You Start](../../media/medialibrary/photoAccessHelper-preparation.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -272,7 +271,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
-Closes the current document This API uses an asynchronous callback to return the result.
+Closes the current file. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -285,7 +284,7 @@ Closes the current document This API uses an asynchronous callback to return the
 | Name     | Type                       | Mandatory  | Description   |
 | -------- | ------------------------- | ---- | ----- |
 | fd       | number                    | Yes   | FD of the file to close.|
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the current file is closed successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback function. If the current file is closed successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -333,7 +332,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 close(fd: number): Promise&lt;void&gt;
 
-Closes the current document This API uses a promise to return the result.
+Closes the current file. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -406,7 +405,7 @@ Obtains the thumbnail of a file. This API uses an asynchronous callback to retur
 
 | Name     | Type                                 | Mandatory  | Description              |
 | -------- | ----------------------------------- | ---- | ---------------- |
-| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback used to return the result. If the thumbnail of a file is successfully obtained, **err** is **undefined**, and **data** is the PixelMap of the thumbnail. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback function. If the thumbnail of a file is successfully obtained, **err** is **undefined**, and **data** is the PixelMap of the thumbnail. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -465,7 +464,7 @@ Obtains the file thumbnail of the given size. This API uses an asynchronous call
 | Name     | Type                                 | Mandatory  | Description              |
 | -------- | ----------------------------------- | ---- | ---------------- |
 | size     | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | Yes   | Size of the thumbnail.           |
-| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback used to return the result. If the thumbnail of a file is successfully obtained, **err** is **undefined**, and **data** is the PixelMap of the thumbnail. Otherwise, **err** is an error object. |
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback function. If the thumbnail of a file is successfully obtained, **err** is **undefined**, and **data** is the PixelMap of the thumbnail. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -592,7 +591,7 @@ Clones a media asset. The file name can be set, but the file type cannot be chan
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| title| string | Yes   | Title of the cloned asset. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The total length of the file name, which is in the format of title+file name extension, must be between 1 and 255 characters.<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ] |
+| title| string | Yes   | Title of the cloned asset. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The string length ranges from 1 to 255. (The asset file name is in the format of title + file name extension.)<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ] |
 
 **Return value**
 
@@ -656,7 +655,7 @@ The returned FD must be closed when it is not required.
 
 | Name     | Type                         | Mandatory  | Description                                 |
 | -------- | --------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the current file is opened successfully, **err** is **undefined**, and **data** is the file descriptor. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;number&gt; | Yes   | Callback function. If the current file is opened successfully, **err** is **undefined**, and **data** is the file descriptor. Otherwise, **err** is an error object.|
 
 **Error codes**
 

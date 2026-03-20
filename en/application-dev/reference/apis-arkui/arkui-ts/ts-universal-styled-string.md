@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Styled strings are strings with associated style attributes. They can be linked to a **Text** component using the [setStyledString](./ts-basic-components-text.md#setstyledstring12) API  in [TextController](./ts-basic-components-text.md#textcontroller11) and linked to a [RichEditor](./ts-basic-components-richeditor.md) component using the [setStyledString](ts-basic-components-richeditor.md#setstyledstring12) API in [RichEditorStyledStringController](./ts-basic-components-richeditor.md#richeditorstyledstringcontroller12).
+Styled strings are strings with associated style attributes. They can be linked to a **Text** component using the [setStyledString](./ts-basic-components-text.md#setstyledstring12) API in [TextController](./ts-basic-components-text.md#textcontroller11) and linked to a [RichEditor](./ts-basic-components-richeditor.md) component using the [setStyledString](ts-basic-components-richeditor.md#setstyledstring12) API in [RichEditorStyledStringController](./ts-basic-components-richeditor.md#richeditorstyledstringcontroller12).
 
 >  **NOTE**
 >

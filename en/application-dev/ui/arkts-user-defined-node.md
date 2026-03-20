@@ -15,9 +15,15 @@ Custom nodes in the ArkUI framework are node objects that provide basic capabili
 
 - [Built-in component](arkts-ui-development-overview.md): component provided directly by ArkUI. Components are essential elements of the UI, working together to shape the UI.
 
-- Entity node: underlying node in the component tree managed by the system. They handle attribute settings, lifecycle management, and other component logic. Custom nodes you obtain or create in TypeScript are essentially frontend objects that hold references to the corresponding entity nodes.
+- Entity node: The system maintains a component tree internally to process the logic of component attribute settings and lifecycle. Nodes on the component tree are entity nodes. Custom nodes you obtain or create in TypeScript are essentially frontend objects that hold references to the corresponding entity nodes.
 
 - Custom node: node created using the APIs provided by ArkUI. Custom nodes include custom component nodes (FrameNode), custom render nodes (RenderNode), custom declarative nodes (BuilderNode), and [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md).
+
+## Constraints and Limitations
+
+- **Single parent per node**: When using custom node-related capabilities, it must be ensured that each node has only one parent node at any given time. If the same node serves as a child of multiple parent nodes, issues such as abnormal event response, abnormal content display, abnormal positioning, or stability problems may occur.
+
+- **Avoid mesh or ring structures**: When using custom node-related capabilities, avoid mounting the node tree into a mesh or ring structure. For example, mutual referencing between parent and child nodes can create a ring structure, while a child node with multiple parents can create a mesh structure.
 
 ## Custom Placeholder Nodes
 

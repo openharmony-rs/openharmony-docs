@@ -638,7 +638,10 @@ struct VideoCreateComponent {
         previewUri: this.previewUri, // Set the preview image.
         currentProgressRate: this.curRate, // Set the playback speed.
         controller: this.controller,
-        posterOptions: { showFirstFrame: this.showFirstFrame, contentTransitionEffect: ContentTransitionEffect.OPACITY } // Disable the first frame display and set the preview image fade-in and fade-out animation.
+        posterOptions: {
+          showFirstFrame: this.showFirstFrame,
+          contentTransitionEffect: ContentTransitionEffect.OPACITY
+        } // Disable first frame display and set the preview image fade-in/fade-out animation.
       })
         .width('100%')
         .height(600)
@@ -655,34 +658,34 @@ struct VideoCreateComponent {
           console.info('onFinish');
         })
         .onError(() => {
-          console.info('onError');
+          console.error('onError');
         })
         .onStop(() => {
           console.info('onStop');
         })
         .onPrepared((e?: DurationObject) => {
           if (e != undefined) {
-            console.info('onPrepared is ' + e.duration);
+            console.info(`onPrepared is ${e.duration}`);
           }
         })
         .onSeeking((e?: TimeObject) => {
           if (e != undefined) {
-            console.info('onSeeking is ' + e.time);
+            console.info(`onSeeking is ${e.time}`);
           }
         })
         .onSeeked((e?: TimeObject) => {
           if (e != undefined) {
-            console.info('onSeeked is ' + e.time);
+            console.info(`onSeeked is ${e.time}`);
           }
         })
         .onUpdate((e?: TimeObject) => {
           if (e != undefined) {
-            console.info('onUpdate is ' + e.time);
+            console.info(`onUpdate is ${e.time}`);
           }
         })
         .onFullscreenChange((e?: FullscreenObject) => {
           if (e != undefined) {
-            console.info('onFullscreenChange is ' + e.fullscreen);
+            console.info(`onFullscreenChange is ${e.fullscreen}`);
           }
         })
 
@@ -745,6 +748,8 @@ interface FullscreenObject {
 }
 ```
 
+![VideoSample](figures/video_sample.gif)
+
 ### Example 2: Enabling AI Image Analyzer
 
 This example shows how to use the **enableAnalyzer** attribute to enable AI image analyzer.
@@ -795,7 +800,7 @@ struct ImageAnalyzerExample {
           this.controller.pause(); // Pause playback.
         }).margin(5)
         Button('getTypes').onClick(() => {
-            this.aiController.getImageAnalyzerSupportTypes();
+          this.aiController.getImageAnalyzerSupportTypes();
         }).margin(5)
       }
     }
@@ -969,34 +974,34 @@ class MyVideoModifier implements AttributeModifier<VideoAttribute> {
       console.info('video: onFinish');
     })
     instance.onError((err) => {
-      console.error('video: onError is code = ' + err.code + ', message = ' + err.message);
+      console.error(`video: onError is code = ${err.code}, message = ${err.message}`);
     })
     instance.onStop(() => {
       console.info('video: onStop');
     })
     instance.onPrepared((e?: DurationObject) => {
       if (e != undefined) {
-        console.info('video: onPrepared is ' + e.duration);
+        console.info(`video: onPrepared is ${e.duration}`);
       }
     })
     instance.onSeeking((e?: TimeObject) => {
       if (e != undefined) {
-        console.info('video: onSeeking is ' + e.time);
+        console.info(`video: onSeeking is ${e.time}`);
       }
     })
     instance.onSeeked((e?: TimeObject) => {
       if (e != undefined) {
-        console.info('video: onSeeked is ' + e.time);
+        console.info(`video: onSeeked is ${e.time}`);
       }
     })
     instance.onUpdate((e?: TimeObject) => {
       if (e != undefined) {
-        console.info('video: onUpdate is ' + e.time);
+        console.info(`video: onUpdate is ${e.time}`);
       }
     })
     instance.onFullscreenChange((e?: FullscreenObject) => {
       if (e != undefined) {
-        console.info('video: onFullscreenChange is ' + e.fullscreen);
+        console.info(`video: onFullscreenChange is ${e.fullscreen}`);
       }
     })
   }

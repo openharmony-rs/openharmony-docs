@@ -198,7 +198,7 @@ Sets whether to enable privacy-sensitive mode.
 
 | Name| Type                                                     | Mandatory| Description                                                 |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| isPrivacySensitiveMode  | [Optional\<boolean\>](ts-universal-attributes-custom-property.md#optionalt12) | Yes  | Whether to enable privacy-sensitive mode, in which the progress indicator is cleared and text content is masked. **true**: Enable privacy-sensitive mode. **false**: Disable privacy-sensitive mode.<br> Default value: **false**.<br>**NOTE**<br>Setting this parameter to **null** indicates that no specific privacy sensitivity is applied.<!--Del--><br>For widgets, this property must be used with [FormComponent](./ts-basic-components-formcomponent-sys.md) and the [obscured](./ts-universal-attributes-obscured.md) attribute to display privacy masking effects.<!--DelEnd--> |
+| isPrivacySensitiveMode  | [Optional\<boolean\>](ts-universal-attributes-custom-property.md#optionalt) | Yes  | Whether to enable privacy-sensitive mode, in which the progress indicator is cleared and text content is masked. **true**: Enable privacy-sensitive mode. **false**: Disable privacy-sensitive mode.<br> Default value: **false**.<br>**NOTE**<br>Setting this parameter to **null** indicates that no specific privacy sensitivity is applied.<!--Del--><br>For widgets, this property must be used with [FormComponent](./ts-basic-components-formcomponent-sys.md) and the [obscured](./ts-universal-attributes-obscured.md) attribute to display privacy masking effects.<!--DelEnd--> |
 
 ## ProgressConfiguration<sup>12+</sup>
 

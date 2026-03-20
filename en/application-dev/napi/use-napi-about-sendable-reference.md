@@ -286,11 +286,11 @@ You can use the **napi_create_strong_sendable_reference** API to create a Sendab
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
    /**
-   * Defines the event handler to be called when the worker thread receives a message sent by the host thread.
-   * The event handler is executed in the worker thread.
-   *
-   * @param event message data
-   */
+    * Defines the event handler to be called when the worker thread receives a message sent by the host thread.
+    * The event handler is executed in the worker thread.
+    *
+    * @param event message data
+    */
    workerPort.onmessage = (event: MessageEvents) => {
       let data: string = event.data;
       hilog.info(DOMAIN, 'testTag', data);
@@ -300,20 +300,20 @@ You can use the **napi_create_strong_sendable_reference** API to create a Sendab
    };
 
    /**
-   * Defines the event handler to be called when the worker receives a message that cannot be deserialized.
-   * The event handler is executed in the worker thread.
-   *
-   * @param event message data
-   */
+    * Defines the event handler to be called when the worker receives a message that cannot be deserialized.
+    * The event handler is executed in the worker thread.
+    *
+    * @param event message data
+    */
    workerPort.onmessageerror = (event: MessageEvents) => {
    };
 
    /**
-   * Defines the event handler to be called when an exception occurs during worker execution.
-   * The event handler is executed in the worker thread.
-   *
-   * @param event error message
-   */
+    * Defines the event handler to be called when an exception occurs during worker execution.
+    * The event handler is executed in the worker thread.
+    *
+    * @param event error message
+    */
    workerPort.onerror = (event: ErrorEvent) => {
    };
    ```
@@ -322,5 +322,5 @@ You can use the **napi_create_strong_sendable_reference** API to create a Sendab
 1. **napi_sendable_ref** can be created only for [Sendable objects](../arkts-utils/arkts-sendable.md#sendable-data-types).
 2. **napi_sendable_ref** can be used across ArkTS threads. When performing multithreaded operations, the caller must manage the release timing to avoid issues related to using after release.
 3. Within the same process, a maximum of 51200 **napi_sendable_ref** instances can coexist.
-4. **napi_sendable_ref** is different from other reference types. Therefore, you cannot forcibly convert **napi_ref** or **napi_strong_ref** to **napi_sendable_ref**. **napi_delete_strong_sendable_reference** and **napi_get_strong_sendable_reference_value** accept only **napi_sendable_ref** created by calling **napi_create_strong_sendable_reference**.
-5. When using the **napi_create_strong_sendable_reference**, **napi_get_strong_sendable_reference_value**, and **napi_delete_strong_sendable_reference** APIs, ensure that the input **env** parameter is the ArkTS thread environment object of the current API. Otherwise, multi-thread security problems may occur.
+4. **napi_sendable_ref** is different from other reference types. Therefore, you cannot forcibly convert **napi_ref** and **napi_strong_ref** to **napi_sendable_ref**. **napi_delete_strong_sendable_reference** and **napi_get_strong_sendable_reference_value** accept only **napi_sendable_ref** created by calling **napi_create_strong_sendable_reference**.
+5. When using the **napi_create_strong_sendable_reference**, **napi_get_strong_sendable_reference_value**, and **napi_delete_strong_sendable_reference** APIs, ensure that the input **env** parameter is the ArkTS thread environment object of the current API. Otherwise, [multithreading safety issues](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120) may occur.

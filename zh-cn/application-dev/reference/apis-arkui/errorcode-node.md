@@ -190,11 +190,10 @@ Operation on passed in nodes in non UI threads is not supported.
 **可能原因**
 
 1. 接口只支持在UI线程调用。
-2. 接口支持多线程调用，但是传入的节点已挂载到UI主树上。
-3. 接口支持多线程调用，但是传入的节点不是通过支持多线程的[createNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建的。
+2. 接口支持多线程调用，但是接口操作的节点处于Attached状态。
 
 **处理步骤**
 
 1. 调整函数调用时机，确保接口在UI线程调用。
-2. 将传入的节点从UI主树上卸载后再调用接口。
-3. 使用支持多线程调用[createNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建节点后再调用接口。
+2. 确认节点是由多线程[createNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建的。
+3. 参考[多线程NDK接口调用规范](../../ui/ndk-build-on-multi-thread.md#多线程ndk接口调用规范)，将组件所在组件树中所有不可转换的Attached组件移除。

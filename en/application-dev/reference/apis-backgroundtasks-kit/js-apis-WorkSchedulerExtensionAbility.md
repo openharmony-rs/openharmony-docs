@@ -25,13 +25,17 @@ import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
 
 type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext
 
+**WorkSchedulerExtensionContext** represents the context of **WorkSchedulerExtensionAbility** and is inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).
+
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
 | Type| Description|
 | -------- |  -------- |
-| [_WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)|  Context of the WorkSchedulerExtensionAbility.|
+| [_WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)|  Context of the **WorkSchedulerExtension**.|
 
 ## WorkSchedulerExtensionAbility
+
+Provides callbacks to be invoked when the scheduling conditions are met or the scheduling ends, for example, [onWorkStart()](#onworkstart) or [onWorkStop()](#onworkstop) in **WorkSchedulerExtensionAbility**.
 
 ### Properties
 
@@ -39,7 +43,7 @@ type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| context<sup>10+</sup> | [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)  | No| No| Context of the WorkSchedulerExtensionAbility. This context inherits from **ExtensionContext**.|
+| context<sup>10+</sup> | [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)  | No| No| Context of the **WorkSchedulerExtensionAbility**. This context inherits from **ExtensionContext**.|
 
 ### onWorkStart
 
@@ -73,7 +77,7 @@ Called when the system starts scheduling the deferred task.
 
 onWorkStop(work: workScheduler.WorkInfo): void
 
-Called when the system stops scheduling the deferred task. This callback is triggered when the deferred task times out for 2 minutes or the stopWork API is called to cancel the task.
+Called when the system stops scheduling the deferred task. This callback is triggered when the deferred task times out for 2 minutes or the [stopWork](js-apis-resourceschedule-workScheduler.md#workschedulerstopwork) API is called to cancel the task.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 

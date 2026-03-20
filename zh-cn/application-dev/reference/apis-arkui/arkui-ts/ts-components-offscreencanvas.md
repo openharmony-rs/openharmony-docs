@@ -299,6 +299,7 @@ struct OffscreenCanvasExamplePage {
 
 ```ts
 import { worker } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { common } from '@kit.AbilityKit';
@@ -317,7 +318,7 @@ struct OffscreenCanvasExamplePage {
     try {
       this.imgPixelMap = resourceMgr.getDrawableDescriptor($r("app.media.startIcon").id).getPixelMap();
     } catch (error) {
-      console.error("resourceMgr getDrawableDescriptor error, error code: " + error);
+      console.error(`resourceMgr getDrawableDescriptor error, error code: ${(error as BusinessError).code}`);
     }
   }
 

@@ -13,11 +13,11 @@ This module provides APIs for accessing the resources of a **WorkSchedulerExtens
 
 > **NOTE**
 > 
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs provided by this module are system APIs.
+> The APIs provided by this module are system APIs.
 
 ## How to Use
 
@@ -71,7 +71,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000019 | Can not match any component. |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 

@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-媒体资产进度处理器，应用在onProgress方法中获取媒体资产进度。
+媒体资产进度处理器，应用于onProgress方法中获取媒体资产进度。
 
 > **说明：**
 >
@@ -31,4 +31,4 @@ onProgress(progress: number): void
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| progress | number | 是   | 返回的进度百分比，范围为0~100。 |
+| progress | number | 是   | 返回的进度百分比，范围为[0, 100]。 |

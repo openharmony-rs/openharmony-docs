@@ -1028,7 +1028,7 @@ connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
 This API is used to connect an application to a candidate network added by a user and prompt the user to confirm the trust during the connection. This API uses a promise to return the result.
 
-- When this API is called, the system displays a message, asking the user to confirm whether to trust and connect to the specified candidate network. This API uses a promise to return the result.
+- When this API is called, the system prompts the user to confirm whether to trust and connect to the specified candidate network.
 - User confirmation is a necessary step in the connection process. The connection operation is not performed before the user confirms the trust.
 - You are advised to trigger a WLAN scan by calling the **startScan** API before initiating a connection, and then connect to the candidate network after the updating of the scan result is detected by using the [wifiManager.on('wifiScanStateChange')](#wifimanageronwifiscanstatechange) method. This improves the connection success rate.
 
@@ -3164,7 +3164,7 @@ Subscribes to P2P connection state changes. When the service exits, call off(typ
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pConnectionChange**.|
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo)&gt; | Yes| Callback used to return the P2P connection state.|
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo)&gt; | Yes| Callback used to return the WLAN state.|
 
 **Error codes**
 
@@ -3237,7 +3237,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice)&gt; | Yes| Callback used to return the P2P device state.|
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice)&gt; | Yes| Callback used to return the WLAN state.|
 
 **Error codes**
 
@@ -3377,7 +3377,7 @@ Subscribes to P2P persistent group changes. When the service exits, call off(typ
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPersistentGroupChange**.|
-  | callback | Callback&lt;void&gt; | Yes| Callback used to return the P2P persistent group state.|
+  | callback | Callback&lt;void&gt; | Yes| Callback used to return the WLAN state.|
 
 **Error codes**
 

@@ -57,67 +57,74 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 1. Add the required header files.
 
-    ```cpp
-    #include <multimedia/player_framework/native_avcodec_audiocodec.h>
-    #include <multimedia/native_audio_channel_layout.h>
-    #include <multimedia/player_framework/native_avcapability.h>
-    #include <multimedia/player_framework/native_avcodec_base.h>
-    #include <multimedia/player_framework/native_avformat.h>
-    #include <multimedia/player_framework/native_avbuffer.h>
-    ```
+   ```cpp
+   #include <multimedia/player_framework/native_avcodec_audiocodec.h>
+   #include <multimedia/native_audio_channel_layout.h>
+   #include <multimedia/player_framework/native_avcapability.h>
+   #include <multimedia/player_framework/native_avcodec_base.h>
+   #include <multimedia/player_framework/native_avformat.h>
+   #include <multimedia/player_framework/native_avbuffer.h>
+   ```
 
 2. Create a decoder instance. In the code snippet below, OH_AVCodec * is the pointer to the decoder instance created.
 
    You can create a decoder by MIME type or codec name.
 
    Method 1: Create a decoder by MIME type.
-    ```cpp
-    // Specify whether encoding is used. The value false means decoding.
-    bool isEncoder = false;
-    // Create a decoder by MIME type.
-    OH_AVCodec *audioDec_ = OH_AudioCodec_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC, isEncoder);
-    ```
+
+   ```cpp
+   // Specify whether encoding is used. The value false means decoding.
+   bool isEncoder = false;
+   // Create a decoder by MIME type.
+   OH_AVCodec *audioDec_ = OH_AudioCodec_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC, isEncoder);
+   ```
+
    Method 2: Create a decoder by codec name.
-    ```cpp
-    // Create a decoder by name.
-    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
-    const char *name = OH_AVCapability_GetName(capability);
-    OH_AVCodec *audioDec_ = OH_AudioCodec_CreateByName(name);
-    ```
+
+   ```cpp
+   // Create a decoder by name.
+   OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
+   const char *name = OH_AVCapability_GetName(capability);
+   OH_AVCodec *audioDec_ = OH_AudioCodec_CreateByName(name);
+   ```
+
    Add the header files and namespace.
-    ```cpp
-    #include <mutex>
-    #include <queue>
-    // Namespace of the C++ standard library.
-    using namespace std;
-    ```
+
+   ```cpp
+   #include <mutex>
+   #include <queue>
+   // Namespace of the C++ standard library.
+   using namespace std;
+   ```
+
    The sample code is as follows:
-    ```cpp
-    // Initialize the queues.
-    class ADecBufferSignal {
-    public:
-        std::mutex inMutex_;
-        std::mutex outMutex_;
-        std::mutex startMutex_;
-        std::condition_variable inCond_;
-        std::condition_variable outCond_;
-        std::condition_variable startCond_;
-        std::queue<uint32_t> inQueue_;
-        std::queue<uint32_t> outQueue_;
-        std::queue<OH_AVBuffer *> inBufferQueue_;
-        std::queue<OH_AVBuffer *> outBufferQueue_;
-    };
-    ADecBufferSignal *signal_;
-    ```
-   
+
+   ```cpp
+   // Initialize the queues.
+   class ADecBufferSignal {
+   public:
+       std::mutex inMutex_;
+       std::mutex outMutex_;
+       std::mutex startMutex_;
+       std::condition_variable inCond_;
+       std::condition_variable outCond_;
+       std::condition_variable startCond_;
+       std::queue<uint32_t> inQueue_;
+       std::queue<uint32_t> outQueue_;
+       std::queue<OH_AVBuffer *> inBufferQueue_;
+       std::queue<OH_AVBuffer *> outBufferQueue_;
+   };
+   ADecBufferSignal *signal_;
+   ```
+
 3. Call **OH_AudioCodec_RegisterCallback()** to register callback functions.
 
    Register the **OH_AVCodecCallback** struct that defines the following callback function pointers:
 
-    - **OH_AVCodecOnError**, a callback used to report a codec operation error
-    - **OH_AVCodecOnStreamChanged**, a callback used to report stream information changes, including changes in the sample rate, audio channel count, and audio sample format. The decoding formats that can detect these changes include <!--RP5--><!--RP5End-->AAC, FLAC, MP3, and VORBIS. (This callback is supported since API version 15.)
-    - **OH_AVCodecOnNeedInputBuffer**, a callback used to report input data required, which means that the decoder is ready for receiving data
-    - **OH_AVCodecOnNewOutputBuffer**, a callback used to report output data generated, which means that decoding is complete
+   - **OH_AVCodecOnError**, a callback used to report a codec operation error
+   - **OH_AVCodecOnStreamChanged**, a callback used to report stream information changes, including changes in the sample rate, audio channel count, and audio sample format. The decoding formats that can detect these changes include <!--RP5--><!--RP5End-->AAC, FLAC, MP3, and VORBIS. (This callback is supported since API version 15.)
+   - **OH_AVCodecOnNeedInputBuffer**, a callback used to report input data required, which means that the decoder is ready for receiving data
+   - **OH_AVCodecOnNewOutputBuffer**, a callback used to report output data generated, which means that decoding is complete
 
    You need to process the callback functions to ensure that the decoder runs properly.
 
@@ -125,118 +132,118 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    >
    > Do not call the decoder APIs or perform time-consuming operations in the callbacks.
 
-    ```cpp
-    // Implement the OH_AVCodecOnError callback function.
-    static void OnError(OH_AVCodec *codec, int32_t errorCode, void *userData)
-    {
-        (void)codec;
-        (void)errorCode;
-        (void)userData;
-    }
-    // Implement the OH_AVCodecOnStreamChanged callback function.
-    static void OnOutputFormatChanged(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
-    {
-        (void)codec;
-        (void)userData;
-        // Callback processing after the decoding output parameters are changed. The application performs processing as required.
-        int32_t sampleRate;
-        int32_t channelCount;
-        int32_t sampleFormat;
-        if (OH_AVFormat_GetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, &sampleRate)) {
-            // Check whether the sample rate changes and perform processing as required.
-        }
-        if (OH_AVFormat_GetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, &channelCount)) {
-            // Check whether the number of audio channels changes and perform processing as required.
-        }
-        if (OH_AVFormat_GetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, &sampleFormat)) {
-            // Check whether the audio sample format changes and perform processing as required.
-        }
-    }
-    // Implement the OH_AVCodecOnNeedInputBuffer callback function.
-    static void OnInputBufferAvailable(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *data, void *userData)
-    {
-        (void)codec;
-        ADecBufferSignal *signal = static_cast<ADecBufferSignal *>(userData);
-        unique_lock<mutex> lock(signal->inMutex_);
-        signal->inQueue_.push(index);
-        signal->inBufferQueue_.push(data);
-        signal->inCond_.notify_all();
-        // The input stream is sent to inBufferQueue_.
-    }
-    // Implement the OH_AVCodecOnNewOutputBuffer callback function.
-    static void OnOutputBufferAvailable(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *data, void *userData)
-    {
-        (void)codec;
-        ADecBufferSignal *signal = static_cast<ADecBufferSignal *>(userData);
-        unique_lock<mutex> lock(signal->outMutex_);
-        signal->outQueue_.push(index);
-        signal->outBufferQueue_.push(data);
-        signal->outCond_.notify_all();
-        // The index of the output buffer is sent to outQueue_.
-        // The decoded data is sent to outBufferQueue_.
-    }
-    ```
-    Configure the callback information.
-    ```cpp
-    signal_ = new ADecBufferSignal();
-    OH_AVCodecCallback cb_ = {&OnError, &OnOutputFormatChanged, &OnInputBufferAvailable, &OnOutputBufferAvailable};
-    // Set the asynchronous callbacks.
-    int32_t ret = OH_AudioCodec_RegisterCallback(audioDec_, cb_, signal_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```cpp
+   // Implement the OH_AVCodecOnError callback function.
+   static void OnError(OH_AVCodec *codec, int32_t errorCode, void *userData)
+   {
+       (void)codec;
+       (void)errorCode;
+       (void)userData;
+   }
+   // Implement the OH_AVCodecOnStreamChanged callback function.
+   static void OnOutputFormatChanged(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
+   {
+       (void)codec;
+       (void)userData;
+       // Callback processing after the decoding output parameters are changed. The application performs processing as required.
+       int32_t sampleRate;
+       int32_t channelCount;
+       int32_t sampleFormat;
+       if (OH_AVFormat_GetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, &sampleRate)) {
+           // Check whether the sample rate changes and perform processing as required.
+       }
+       if (OH_AVFormat_GetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, &channelCount)) {
+           // Check whether the number of audio channels changes and perform processing as required.
+       }
+       if (OH_AVFormat_GetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, &sampleFormat)) {
+           // Check whether the audio sample format changes and perform processing as required.
+       }
+   }
+   // Implement the OH_AVCodecOnNeedInputBuffer callback function.
+   static void OnInputBufferAvailable(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *data, void *userData)
+   {
+       (void)codec;
+       ADecBufferSignal *signal = static_cast<ADecBufferSignal *>(userData);
+       unique_lock<mutex> lock(signal->inMutex_);
+       signal->inQueue_.push(index);
+       signal->inBufferQueue_.push(data);
+       signal->inCond_.notify_all();
+       // The input stream is sent to inBufferQueue_.
+   }
+   // Implement the OH_AVCodecOnNewOutputBuffer callback function.
+   static void OnOutputBufferAvailable(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *data, void *userData)
+   {
+       (void)codec;
+       ADecBufferSignal *signal = static_cast<ADecBufferSignal *>(userData);
+       unique_lock<mutex> lock(signal->outMutex_);
+       signal->outQueue_.push(index);
+       signal->outBufferQueue_.push(data);
+       signal->outCond_.notify_all();
+       // The index of the output buffer is sent to outQueue_.
+       // The decoded data is sent to outBufferQueue_.
+   }
+   ```
+   Configure the callback information.
+   ```cpp
+   signal_ = new ADecBufferSignal();
+   OH_AVCodecCallback cb_ = {&OnError, &OnOutputFormatChanged, &OnInputBufferAvailable, &OnOutputBufferAvailable};
+   // Set the asynchronous callbacks.
+   int32_t ret = OH_AudioCodec_RegisterCallback(audioDec_, cb_, signal_);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 4. (Optional) Call **OH_AudioCodec_SetDecryptionConfig** to set the decryption configuration.
 
-    Call this API after the media key system information is obtained but before **Prepare()** is called. For details about how to obtain such information, see step 4 in [Media Data Demultiplexing](audio-video-demuxer.md).
+   Call this API after the media key system information is obtained but before **Prepare()** is called. For details about how to obtain such information, see step 4 in [Media Data Demultiplexing](audio-video-demuxer.md).
 
-    For details about DRM APIs, see [DRM](../../reference/apis-drm-kit/capi-drm.md).
+   For details about DRM APIs, see [DRM](../../reference/apis-drm-kit/capi-drm.md).
 
-     
+    
 
-    Add the header files.
+   Add the header files.
 
-    ```c++
-    #include <multimedia/drm_framework/native_mediakeysystem.h>
-    #include <multimedia/drm_framework/native_mediakeysession.h>
-    #include <multimedia/drm_framework/native_drm_err.h>
-    #include <multimedia/drm_framework/native_drm_common.h>
-    ```
-    Link the dynamic libraries in the CMake script.
-
-    ``` cmake
-    target_link_libraries(sample PUBLIC libnative_drm.so)
-    ```
-
-    The sample code is as follows:
-    ```c++
-    // Create a media key system based on the media key system information. The following uses com.clearplay.drm as an example.
-    MediaKeySystem *system = nullptr;
-    int32_t ret = OH_MediaKeySystem_Create("com.clearplay.drm", &system);
-    if (system == nullptr) {
-        printf("create media key system failed");
-        return;
-    }
-
-    // Create a media key session.
-    MediaKeySession *session = nullptr;
-    DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
-    ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
-    if (ret != DRM_OK) {
-        // If the creation fails, refer to the DRM interface document and check logs.
-        printf("create media key session failed.");
-        return;
-    }
-    if (session == nullptr) {
-        printf("media key session is nullptr.");
-        return;
-    }
-    // Generate a media key request and set the response to the media key request.
-    // Set the decryption configuration, that is, set the decryption session and secure channel flag to the decoder. (Currently, the secure channel is not supported for audio decryption and therefore the secure channel flag should be set to false.)
-    bool secureAudio = false;
-    ret = OH_AudioCodec_SetDecryptionConfig(audioDec_, session, secureAudio);
-    ```
+   ```c++
+   #include <multimedia/drm_framework/native_mediakeysystem.h>
+   #include <multimedia/drm_framework/native_mediakeysession.h>
+   #include <multimedia/drm_framework/native_drm_err.h>
+   #include <multimedia/drm_framework/native_drm_common.h>
+   ```
+   Link the dynamic libraries in the CMake script.
+   
+   ``` cmake
+   target_link_libraries(sample PUBLIC libnative_drm.so)
+   ```
+   
+   The sample code is as follows:
+   ```c++
+   // Create a media key system based on the media key system information. The following uses com.clearplay.drm as an example.
+   MediaKeySystem *system = nullptr;
+   int32_t ret = OH_MediaKeySystem_Create("com.clearplay.drm", &system);
+   if (system == nullptr) {
+       printf("create media key system failed");
+       return;
+   }
+   
+   // Create a media key session.
+   MediaKeySession *session = nullptr;
+   DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
+   ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
+   if (ret != DRM_OK) {
+       // If the creation fails, refer to the DRM interface document and check logs.
+       printf("create media key session failed.");
+       return;
+   }
+   if (session == nullptr) {
+       printf("media key session is nullptr.");
+       return;
+   }
+   // Generate a media key request and set the response to the media key request.
+   // Set the decryption configuration, that is, set the decryption session and secure channel flag to the decoder. (Currently, the secure channel is not supported for audio decryption and therefore the secure channel flag should be set to false.)
+   bool secureAudio = false;
+   ret = OH_AudioCodec_SetDecryptionConfig(audioDec_, session, secureAudio);
+   ```
 
 5. Call **OH_AudioCodec_Configure()** to configure the decoder.
 
@@ -287,7 +294,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
        // Handle exceptions.
    }
    ```
-   
+
 6. Call **OH_AudioCodec_Prepare()** to prepare internal resources for the decoder.
 
    ```cpp
@@ -296,137 +303,137 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
        // Handle exceptions.
    }
    ```
-   
+
 7. Call **OH_AudioCodec_Start()** to start the decoder.
 
    Add the header file.
-    ```c++
-    #include <fstream>
-    ```
+   ```c++
+   #include <fstream>
+   ```
    The sample code is as follows:
-    ```c++
-    ifstream inputFile_;
-    ofstream outFile_;
-
-    // Set the input file path based on the actual situation.
-    const char* inputFilePath = "/";
-    // Set the output file path based on the actual situation.
-    const char* outputFilePath = "/";
-    // Open the path of the binary file to be decoded.
-    inputFile_.open(inputFilePath, ios::in | ios::binary); 
-    // Set the path of the output file.
-    outFile_.open(outputFilePath, ios::out | ios::binary);
-    // Start decoding.
-    int32_t ret = OH_AudioCodec_Start(audioDec_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```c++
+   ifstream inputFile_;
+   ofstream outFile_;
    
+   // Set the input file path based on the actual situation.
+   const char* inputFilePath = "/";
+   // Set the output file path based on the actual situation.
+   const char* outputFilePath = "/";
+   // Open the path of the binary file to be decoded.
+   inputFile_.open(inputFilePath, ios::in | ios::binary); 
+   // Set the path of the output file.
+   outFile_.open(outputFilePath, ios::out | ios::binary);
+   // Start decoding.
+   int32_t ret = OH_AudioCodec_Start(audioDec_);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
+
 8. (Optional) Call **OH_AVCencInfo_SetAVBuffer()** to set the Common Encryption Scheme (CENC) information.
 
-    If the content being played is DRM encrypted and [demultiplexing](audio-video-demuxer.md) is performed by the upper-layer application, call **OH_AVCencInfo_SetAVBuffer()** to set the CENC information to the AVBuffer so that the media data can be decrypted in the AVBuffer.
+   If the content being played is DRM encrypted and [demultiplexing](audio-video-demuxer.md) is performed by the upper-layer application, call **OH_AVCencInfo_SetAVBuffer()** to set the CENC information to the AVBuffer so that the media data can be decrypted in the AVBuffer.
 
-    Add the header file.
+   Add the header file.
 
-    ```c++
-    #include <multimedia/player_framework/native_cencinfo.h>
-    ```
-    Link the dynamic libraries in the CMake script.
+   ```c++
+   #include <multimedia/player_framework/native_cencinfo.h>
+   ```
+   Link the dynamic libraries in the CMake script.
 
-    ``` cmake
-    target_link_libraries(sample PUBLIC libnative_media_avcencinfo.so)
-    ```
+   ``` cmake
+   target_link_libraries(sample PUBLIC libnative_media_avcencinfo.so)
+   ```
 
-    The sample code is as follows:
-    ```c++
-    auto buffer = signal_->inBufferQueue_.front();
-    uint32_t keyIdLen = DRM_KEY_ID_SIZE;
-    uint8_t keyId[] = {
-        0xd4, 0xb2, 0x01, 0xe4, 0x61, 0xc8, 0x98, 0x96,
-        0xcf, 0x05, 0x22, 0x39, 0x8d, 0x09, 0xe6, 0x28};
-    uint32_t ivLen = DRM_KEY_IV_SIZE;
-    uint8_t iv[] = {
-        0xbf, 0x77, 0xed, 0x51, 0x81, 0xde, 0x36, 0x3e,
-        0x52, 0xf7, 0x20, 0x4f, 0x72, 0x14, 0xa3, 0x95};
-    uint32_t encryptedBlockCount = 0;
-    uint32_t skippedBlockCount = 0;
-    uint32_t firstEncryptedOffset = 0;
-    uint32_t subsampleCount = 1;
-    DrmSubsample subsamples[1] = { {0x10, 0x16} };
-    // Create a CencInfo instance.
-    OH_AVCencInfo *cencInfo = OH_AVCencInfo_Create();
-    if (cencInfo == nullptr) {
-        // Handle exceptions.
-    }
-    // Set the decryption algorithm.
-    OH_AVErrCode errNo = OH_AVCencInfo_SetAlgorithm(cencInfo, DRM_ALG_CENC_AES_CTR);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set KeyId and Iv.
-    errNo = OH_AVCencInfo_SetKeyIdAndIv(cencInfo, keyId, keyIdLen, iv, ivLen);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set the sample information.
-    errNo = OH_AVCencInfo_SetSubsampleInfo(cencInfo, encryptedBlockCount, skippedBlockCount, firstEncryptedOffset,
-        subsampleCount, subsamples);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set the mode. KeyId, Iv, and SubSamples have been set.
-    errNo = OH_AVCencInfo_SetMode(cencInfo, DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set CencInfo to the AVBuffer.
-    errNo = OH_AVCencInfo_SetAVBuffer(cencInfo, buffer);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Destroy the CencInfo instance.
-    errNo = OH_AVCencInfo_Destroy(cencInfo);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
-   
+   The sample code is as follows:
+   ```c++
+   auto buffer = signal_->inBufferQueue_.front();
+   uint32_t keyIdLen = DRM_KEY_ID_SIZE;
+   uint8_t keyId[] = {
+       0xd4, 0xb2, 0x01, 0xe4, 0x61, 0xc8, 0x98, 0x96,
+       0xcf, 0x05, 0x22, 0x39, 0x8d, 0x09, 0xe6, 0x28};
+   uint32_t ivLen = DRM_KEY_IV_SIZE;
+   uint8_t iv[] = {
+       0xbf, 0x77, 0xed, 0x51, 0x81, 0xde, 0x36, 0x3e,
+       0x52, 0xf7, 0x20, 0x4f, 0x72, 0x14, 0xa3, 0x95};
+   uint32_t encryptedBlockCount = 0;
+   uint32_t skippedBlockCount = 0;
+   uint32_t firstEncryptedOffset = 0;
+   uint32_t subsampleCount = 1;
+   DrmSubsample subsamples[1] = { {0x10, 0x16} };
+   // Create a CencInfo instance.
+   OH_AVCencInfo *cencInfo = OH_AVCencInfo_Create();
+   if (cencInfo == nullptr) {
+       // Handle exceptions.
+   }
+   // Set the decryption algorithm.
+   OH_AVErrCode errNo = OH_AVCencInfo_SetAlgorithm(cencInfo, DRM_ALG_CENC_AES_CTR);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set KeyId and Iv.
+   errNo = OH_AVCencInfo_SetKeyIdAndIv(cencInfo, keyId, keyIdLen, iv, ivLen);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set the sample information.
+   errNo = OH_AVCencInfo_SetSubsampleInfo(cencInfo, encryptedBlockCount, skippedBlockCount, firstEncryptedOffset,
+       subsampleCount, subsamples);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set the mode. KeyId, Iv, and SubSamples have been set.
+   errNo = OH_AVCencInfo_SetMode(cencInfo, DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set CencInfo to the AVBuffer.
+   errNo = OH_AVCencInfo_SetAVBuffer(cencInfo, buffer);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Destroy the CencInfo instance.
+   errNo = OH_AVCencInfo_Destroy(cencInfo);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
+
 9. Call **OH_AudioCodec_PushInputBuffer()** to write the data to decode.
 
    You should fill in complete input data before calling this API.
 
    When finished, set the flags to **AVCODEC_BUFFER_FLAGS_EOS**.
 
-    ```c++
-    uint32_t index = signal_->inQueue_.front();
-    auto buffer = signal_->inBufferQueue_.front();
-    int32_t size;
-    int64_t pts;
-    // size is the length of each frame of the data to decode. pts is the timestamp of each frame and is used to indicate when the audio should be played.
-    // The values of size and pts are obtained from an audio and video resource file or data stream to decode.
-    // In the case of an audio and video resource file, the values are obtained from the buffer in the demultiplexed OH_AVDemuxer_ReadSampleBuffer.
-    // In the case of a data stream, the values are obtained from the data stream provider.
-    // In this example, the values of size and pts are obtained from the test file.
-    inputFile_.read(reinterpret_cast<char *>(&size), sizeof(size));
-    inputFile_.read(reinterpret_cast<char *>(&pts), sizeof(pts));
-    inputFile_.read((char *)OH_AVBuffer_GetAddr(buffer), size);
-    OH_AVCodecBufferAttr attr = {0};
-    if (inputFile_.eof()) {
-        attr.size = 0;
-        attr.flags = AVCODEC_BUFFER_FLAGS_EOS;
-    } else {
-        attr.size = size;
-        attr.flags = AVCODEC_BUFFER_FLAGS_NONE;
-    }
-    attr.pts = pts;
-    OH_AVBuffer_SetBufferAttr(buffer, &attr);
-    int32_t ret = OH_AudioCodec_PushInputBuffer(audioDec_, index);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
-   
+   ```c++
+   uint32_t index = signal_->inQueue_.front();
+   auto buffer = signal_->inBufferQueue_.front();
+   int32_t size;
+   int64_t pts;
+   // size is the length of each frame of the data to decode. pts is the timestamp of each frame and is used to indicate when the audio should be played.
+   // The values of size and pts are obtained from an audio and video resource file or data stream to decode.
+   // In the case of an audio and video resource file, the values are obtained from the buffer in the demultiplexed OH_AVDemuxer_ReadSampleBuffer.
+   // In the case of a data stream, the values are obtained from the data stream provider.
+   // In this example, the values of size and pts are obtained from the test file.
+   inputFile_.read(reinterpret_cast<char *>(&size), sizeof(size));
+   inputFile_.read(reinterpret_cast<char *>(&pts), sizeof(pts));
+   inputFile_.read((char *)OH_AVBuffer_GetAddr(buffer), size);
+   OH_AVCodecBufferAttr attr = {0};
+   if (inputFile_.eof()) {
+       attr.size = 0;
+       attr.flags = AVCODEC_BUFFER_FLAGS_EOS;
+   } else {
+       attr.size = size;
+       attr.flags = AVCODEC_BUFFER_FLAGS_NONE;
+   }
+   attr.pts = pts;
+   OH_AVBuffer_SetBufferAttr(buffer, &attr);
+   int32_t ret = OH_AudioCodec_PushInputBuffer(audioDec_, index);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
+
 10. Call **OH_AudioCodec_FreeOutputBuffer()** to release the decoded data.
 
     Once you have retrieved the decoded PCM stream, call **OH_AudioCodec_FreeOutputBuffer()** to free up the data.
@@ -525,3 +532,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     }
     ```
 
+## Samples
+
+The following sample is provided to help you better understand how to develop audio decoding:
+
+- [Audio Decoding](https://gitcode.com/openharmony/multimedia_av_codec/blob/master/test/nativedemo/audio_demo/avcodec_audio_avbuffer_decoder_demo.cpp)

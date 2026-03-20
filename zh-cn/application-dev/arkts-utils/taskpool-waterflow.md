@@ -31,7 +31,7 @@
 
 
     export function getImgFromDB() {
-      //此处模拟查询数据库，并返回数据
+      // 此处模拟查询数据库，并返回数据
       let task = new taskpool.Task(query);
       task.onReceiveData(fillImg);
       taskpool.execute(task);
@@ -95,7 +95,7 @@
         })
       }
 
-      //通知控制器数据批量修改
+      // 通知控制器数据批量修改
       notifyDatasetChange(operations: DataOperation[]): void {
         this.listeners.forEach(listener => {
           listener.onDatasetChange(operations);

@@ -734,6 +734,8 @@ setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPre
 | 6800101 | Parameter verification failed. |
 | 6800301 | Audio client call audio service error, System error. |
 
+**示例：**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -766,6 +768,8 @@ getBluetoothAndNearlinkPreferredRecordCategory(): BluetoothAndNearlinkPreferredR
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

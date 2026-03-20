@@ -18,11 +18,11 @@ Image Kit provides APIs for you to decode, encode, edit, and receive images, as 
 ## Basic Concepts
 Be familiar with the following basic concepts before development:
 
-- PixelMap
+- [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)
 
   PixelMap object. It can be used for reading/writing pixel data and performing operations such as cropping, scaling, translating, rotating, and mirroring. It can also be directly passed to the [Image component](../../ui/arkts-graphics-display.md) for display. Additionally, it provides APIs for obtaining image information, and obtaining and setting the color gamut and HDR metadata of images.
 
-- Picture
+- [Picture](../../reference/apis-image-kit/arkts-apis-image-Picture.md)
   
   An object that includes a main picture, auxiliary picture, and metadata. The main picture contains the primary image information; auxiliary pictures store additional information related to the main picture; metadata stores other information related to the image. Picture provides methods for obtaining the main picture, compositing HDR images, obtaining and setting auxiliary pictures, and obtaining and setting metadata.
 
@@ -44,9 +44,9 @@ Image Kit provides abundant image processing capabilities. You can use the entir
 
 You can manipulate specific parts of an image by performing [PixelMap operations](../image/image-pixelmap-operation.md) on the decoded PixelMap. Additionally, you can apply [image transformations](../image/image-transformation.md) such as cropping, scaling, translating, rotating, flipping, and opacity setting.
 
-You can add filter effects to images using [ImageEffect](../image/image-effect-guidelines.md) and enhance image details, convert color spaces, and process HDR images with **ImageProcessing**.
+Image Kit allows you to add filter effects to images using [ImageEffect](../image/image-effect-guidelines.md).
 
-You can read and edit image EXIF data, which means you can obtain and set extra properties in image files, like basic image information (width, height, rotation), photography settings (aperture, focal length), and GPS information (longitude, latitude).
+Image Kit also provides the ability to read and [edit image Exif information](../image/image-tool.md). You can get and set additional properties in image files, including basic image information such as width, height, and orientation; capture parameters such as aperture and focal length; and GPS information such as longitude and latitude.
 
 Figure 1 and Figure 2 show the image decoding and encoding processes. The PixelMap obtained after decoding can be used for image display, editing, and processing.
 
@@ -77,10 +77,18 @@ Figure 1 and Figure 2 show the image decoding and encoding processes. The PixelM
     In addition to the functionalities mentioned above, these APIs implements new features such as picture encoding and decoding. For details about the development guide, see [Using Image_NativeModule to Decode Images](image-source-c.md). You can find these APIs in [Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md). These APIs are available since API version 12 and are expected to keep evolving. You are encouraged to use them.
 
   > **NOTE**
-  >
   > You are not advised to use both sets of C APIs in your code. It may cause compatibility issues in some scenarios.
 
 ## Related Kits
 
-Image Kit handles image encoding, decoding, receiving, editing, and processing. It supports the **Image** component, Gallery, and other applications that have image-related requirements. The PixelMap obtained after image decoding can be passed to the [Image component](../../ui/arkts-graphics-display.md) for display. The ImageReceiver can be used to implement [secondary processing of preview streams](../camera/native-camera-preview-imageReceiver.md).
+Image Kit handles image encoding, decoding, receiving, editing, and processing. It supports the **Image** component, Gallery, and other applications that have image-related requirements. The PixelMap obtained after image decoding can be passed to the [Image component](../../ui/arkts-graphics-display.md) for display. The [ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md) can be used to implement [secondary processing of preview streams](../camera/native-camera-preview-imageReceiver.md).
 
+## Samples
+
+The following samples are provided to help you better understand how to develop images:
+
+- [Image Display and Processing (ArkTS, API version 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/Image)
+
+- [Image Display (ArkTS, API version 10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/ImageShow)
+
+- [Image Cropping and Segmentation (ArkTS, API version 10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Media/GamePuzzle)

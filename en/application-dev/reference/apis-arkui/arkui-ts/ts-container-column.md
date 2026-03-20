@@ -90,7 +90,7 @@ Sets the spacing between child components of the **Column** component. The spaci
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| space | [SpaceType](#spacetype18) | No| Yes| Vertical spacing between two adjacent child components.<br>This parameter has no effect if the value specified is a negative number, or if **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **0**<br>Unit: vp<br>Invalid values are treated as the default value.<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0, a string that can be converted to a number, or a Resource type that can be converted to a number.|
+| space | [SpaceType](#spacetype18) | No| Yes| Vertical spacing between two adjacent child components.<br>This parameter has no effect if the value specified is a negative number, or if **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **0**, in vp<br>Invalid values are treated as the default value.<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0, a string that can be converted to a number, or a Resource type that can be converted to a number.|
 
 ## SpaceType<sup>18+</sup>
 
@@ -171,7 +171,7 @@ Sets whether to reverse the vertical arrangement of child components.
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean\> | Yes  | Whether to reverse the vertical arrangement of child components.<br>Default value: **true**. **true**: Child components are arranged in reverse order vertically. **false**: Child components are arranged in normal order vertically.|
+| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\> | Yes  | Whether to reverse the vertical arrangement of child components.<br>Default value: **true**. **true**: Child components are arranged in reverse order vertically. **false**: Child components are arranged in normal order vertically.|
 
 >  **NOTE**
 >

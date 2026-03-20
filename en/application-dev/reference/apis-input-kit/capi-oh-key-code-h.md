@@ -203,7 +203,7 @@ Enumerates the key codes.
 | KEYCODE_BUTTON_THUMBR = 2315 | Joystick key THUMBR<br>**Since**: 22|
 | KEYCODE_SLEEP = 2600 | Sleep key<br>**Since**: 22|
 | KEYCODE_ZENKAKU_HANKAKU = 2601 | Zenkaku/Hankaku key<br>**Since**: 22|
-| KEYCODE_102ND = 2602 | 102nd key<br>**Since**: 22|
+| KEYCODE_102ND = 2602 | International Keyboard Extension key<br>**Since**: 22|
 | KEYCODE_RO = 2603 | Ro key<br>**Since**: 22|
 | KEYCODE_KATAKANA = 2604 | Katakana key<br>**Since**: 22|
 | KEYCODE_HIRAGANA = 2605 | Hiragana key<br>**Since**: 22|
@@ -340,7 +340,7 @@ Enumerates the key codes.
 | KEYCODE_XFER = 2805 | XFER key, which is used to start file transfer<br>**Since**: 22|
 | KEYCODE_PROG1 = 2806 | Program key 1<br>**Since**: 22|
 | KEYCODE_PROG2 = 2807 | Program key 2<br>**Since**: 22|
-| KEYCODE_MSDOS = 2808 | MS-DOS key<br>**Since**: 22|
+| KEYCODE_MSDOS = 2808 | DOS key<br>**Since**: 22|
 | KEYCODE_SCREENLOCK = 2809 | Screen Lock key<br>**Since**: 22|
 | KEYCODE_DIRECTION_ROTATE_DISPLAY = 2810 | Directional Rotation Display key<br>**Since**: 22|
 | KEYCODE_CYCLEWINDOWS = 2811 | Windows Cycle key<br>**Since**: 22|
@@ -376,7 +376,7 @@ Enumerates the key codes.
 | KEYCODE_BLUETOOTH = 2843 | Bluetooth key<br>**Since**: 22|
 | KEYCODE_WLAN = 2844 | WLAN key<br>**Since**: 22|
 | KEYCODE_UWB = 2845 | Ultra-wideband key<br>**Since**: 22|
-| KEYCODE_WWAN_WIMAX = 2846 | WWAN WiMAX key<br>**Since**: 22|
+| KEYCODE_WWAN_WIMAX = 2846 | Mobile Network Control key<br>**Since**: 22|
 | KEYCODE_RFKILL = 2847 | RF Kill key<br>**Since**: 22|
 | KEYCODE_CHANNEL = 3001 | Channel key<br>**Since**: 22|
 | KEYCODE_BTN_0 = 3100 | Button 0<br>**Since**: 22|

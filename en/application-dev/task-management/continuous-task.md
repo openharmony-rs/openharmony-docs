@@ -34,7 +34,7 @@ The table below lists the types of continuous tasks, which are used in various s
 
 Description of **DATA_TRANSFER**:
 
-- During data transfer, if an application uses the [upload and download agent API](../reference/apis-basic-services-kit/js-apis-request.md) to hand over tasks to the system, the application will be suspended in the background even if it has requested the continuous task of the **DATA_TRANSFER** type.
+- During data transfer, if an application uses the [@ohos.request (Upload and Download)](../reference/apis-basic-services-kit/js-apis-request.md) to hand over tasks to the system, the application will be suspended in the background even if it has requested the continuous task of the **DATA_TRANSFER** type.
 
 - During data transfer, the application needs to update the progress. If the progress is not updated for a long time (more than 10 minutes after the first update), the continuous task of the **DATA_TRANSFER** type will be canceled. The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning12).
 
@@ -72,11 +72,11 @@ Description of **AUDIO_PLAYBACK**:
 
 > **NOTE**
 >
-> - An application must proactively cancel a continuous task once the task is completed. Otherwise, the application will be suspended when moved to the background. For example, when a user taps the UI to pause music playback, the application must cancel the continuous task in a timely manner. When the user taps the UI again to continue music playback, the application needs to request a continuous task.
+> An application must proactively cancel a continuous task once the task is completed. Otherwise, the application will be suspended when moved to the background. For example, when a user taps the UI to pause music playback, the application must cancel the continuous task in a timely manner. When the user taps the UI again to continue music playback, the application needs to request a continuous task.
 >
-> - If an application that plays an audio in the background is [interrupted](../media/audio/audio-playback-concurrency.md), the system automatically detects and stops the continuous task. The application must request a continuous task again to restart the playback.
+> If an application that plays an audio in the background is [interrupted](../media/audio/audio-playback-concurrency.md), the system automatically detects and stops the continuous task. The application must request a continuous task again to restart the playback.
 >
-> - When an application that plays audio in the background stops a continuous task, it must suspend or stop the audio stream. Otherwise, the application will be forcibly terminated by the system.
+> When an application that plays audio in the background stops a continuous task, it must suspend or stop the audio stream. Otherwise, the application will be forcibly terminated by the system.
 
 ## Available APIs
 
@@ -141,7 +141,11 @@ The following walks you through how to request a continuous task for recording t
 
 4. Request and cancel a continuous task.
 
-   The code snippet below shows how an application requests and cancels a continuous task for itself.  
+   The code snippet below shows how an application requests and cancels a continuous task for itself.
+   
+   Since API version 15, you can use [on('continuousTaskCancel')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustaskcancel15) to listen for the cancellation of a continuous task.
+   
+   Since API version 16, you can use [BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16) to implement the Bluetooth car key function.
       
    ```ts
     function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
@@ -302,7 +306,11 @@ The following walks you through how to request a continuous task for recording t
 
 5. Request and cancel a continuous task using **async**/**await**.
 
-   The code snippet below shows how an application requests and cancels a continuous task using **async**/**await** for itself.  
+   The code snippet below shows how an application requests and cancels a continuous task using **async**/**await** for itself.
+   
+   Since API version 15, you can use [on('continuousTaskCancel')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustaskcancel15) to listen for the cancellation of a continuous task.
+   
+   Since API version 16, you can use [BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16) to implement the Bluetooth car key function.
       
    ```ts
     @Entry

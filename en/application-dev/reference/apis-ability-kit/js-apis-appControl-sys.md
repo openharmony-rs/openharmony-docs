@@ -36,7 +36,7 @@ Sets the disposed status for an application. This API uses a promise to return t
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | ID of the target application.<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information? ](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).              |
+| appId  | string | Yes   | ID of the target application.<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).              |
 | disposedWant | Want  | Yes| Disposal intent of the application.|
 
 **Return value**
@@ -97,7 +97,7 @@ Sets the disposed status for an application. This API uses an asynchronous callb
 
 | Name      | Type                             | Mandatory  | Description                                   |
 | ----------- | ------------------------------- | ---- | --------------------------------------- |
-| appId  | string | Yes   | ID of the target application.<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information? ](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).                     |
+| appId  | string | Yes   | ID of the target application.<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).                     |
 | disposedWant | Want  | Yes| Disposal intent of the application.|
 | callback    | AsyncCallback\<void> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
 
@@ -155,7 +155,7 @@ Sets the disposed status for an application. This API returns the result synchro
 
 | Name      | Type                             | Mandatory  | Description                                   |
 | ----------- | ------------------------------- | ---- | --------------------------------------- |
-| appId  | string | Yes   | ID of the target application.<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information? ](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).                     |
+| appId  | string | Yes   | ID of the target application.<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).                     |
 | disposedWant | Want  | Yes| Disposal intent of the application.|
 
 **Error codes**
@@ -204,7 +204,7 @@ Obtains the disposed status of an application. This API uses a promise to return
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | ID of the target application.<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information? ](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
+| appId  | string | Yes   | ID of the target application.<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
 
 **Return value**
 
@@ -262,7 +262,7 @@ Obtains the disposed status of an application. This API uses an asynchronous cal
 
 | Name      | Type    | Mandatory  | Description                                 |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | ID of the target application.<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information? ](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
+| appId  | string | Yes   | ID of the target application.<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
 | callback    | AsyncCallback\<Want> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the disposed status obtained; otherwise, **err** is an error object.                   |
 
 **Error codes**
@@ -316,7 +316,7 @@ Obtains the disposed status of an application. This API returns the result synch
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | ID of the target application.<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information? ](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
+| appId  | string | Yes   | ID of the target application.<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
 
 **Return value**
 
@@ -370,7 +370,7 @@ Deletes the disposed status for an application. This API uses a promise to retur
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | appId or appIdentifier of the target application. If a rule is set using appId, it must be deleted using appId; the same principle applies to appIdentifier.<br>**NOTE**<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information? ](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also a unique identifier of an application. For details, see [What is appIdentifier?](../../quick-start/common-problem-of-application.md#what-is-appidentifier) and [How do I obtain appIdentifier from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information). |
+| appId  | string | Yes   | appId or appIdentifier of the target application. If a rule is set using appId, it must be deleted using appId; the same principle applies to appIdentifier.<br>**NOTE**<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also a unique identifier of an application. For details, see [What is appIdentifier?](../../quick-start/common-problem-of-application.md#what-is-appidentifier) and [How do I obtain appIdentifier from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information). |
 
 **Return value**
 
@@ -428,7 +428,7 @@ Deletes the disposed status for an application. This API uses an asynchronous ca
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | appId or appIdentifier of the target application. If a rule is set using appId, it must be deleted using appId; the same principle applies to appIdentifier.<br>**NOTE**<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information? ](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also a unique identifier of an application. For details, see [What is appIdentifier?](../../quick-start/common-problem-of-application.md#what-is-appidentifier) and [How do I obtain appIdentifier from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information). |
+| appId  | string | Yes   | appId or appIdentifier of the target application. If a rule is set using appId, it must be deleted using appId; the same principle applies to appIdentifier.<br>**NOTE**<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also a unique identifier of an application. For details, see [What is appIdentifier?](../../quick-start/common-problem-of-application.md#what-is-appidentifier) and [How do I obtain appIdentifier from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information). |
 | callback    | AsyncCallback\<void> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**. otherwise, **err** is an error object.                  |
 
 **Error codes**
@@ -480,7 +480,7 @@ Deletes the disposed status for an application or an application clone. This API
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | appId or appIdentifier of the target application. If a rule is set using appId, it must be deleted using appId; the same principle applies to appIdentifier.<br>**NOTE**<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information? ](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also a unique identifier of an application. For details, see [What is appIdentifier?](../../quick-start/common-problem-of-application.md#what-is-appidentifier) and [How do I obtain appIdentifier from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information). |
+| appId  | string | Yes   | appId or appIdentifier of the target application. If a rule is set using appId, it must be deleted using appId; the same principle applies to appIdentifier.<br>**NOTE**<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also a unique identifier of an application. For details, see [What is appIdentifier?](../../quick-start/common-problem-of-application.md#what-is-appidentifier) and [How do I obtain appIdentifier from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information). |
 | appIndex<sup>12+</sup>   | number  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to delete the disposed status of the main application. A value greater than 0 means to delete the disposed status of the application clone. |
 
 **Error codes**
@@ -529,7 +529,7 @@ Obtains the disposed rule of an application or an application clone.
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | appId or appIdentifier of the target application. If a rule is set using appId, it must be obtained using appId; the same principle applies to appIdentifier.<br>**NOTE**<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information? ](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also a unique identifier of an application. For details, see [What is appIdentifier?](../../quick-start/common-problem-of-application.md#what-is-appidentifier) and [How do I obtain appIdentifier from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information). |
+| appId  | string | Yes   | appId or appIdentifier of the target application. If a rule is set using appId, it must be obtained using appId; the same principle applies to appIdentifier.<br>**NOTE**<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also a unique identifier of an application. For details, see [What is appIdentifier?](../../quick-start/common-problem-of-application.md#what-is-appidentifier) and [How do I obtain appIdentifier from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information). |
 | appIndex<sup>12+</sup>   | number  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to obtain the disposed rule of the main application. A value greater than 0 means to obtain the disposed rule of the application clone with the specified index.   |
 
 **Return value**
@@ -584,7 +584,7 @@ Sets the disposed rule for an application or an application clone.
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | appId or appIdentifier of the target application. If a rule is set using appId, it overwrites the one set with appIdentifier, and the reverse is also true.<br>**NOTE**<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information? ](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also a unique identifier of an application. For details, see [What is appIdentifier?](../../quick-start/common-problem-of-application.md#what-is-appidentifier) and [How do I obtain appIdentifier from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information). |
+| appId  | string | Yes   | appId or appIdentifier of the target application. If a rule is set using appId, it overwrites the one set with appIdentifier, and the reverse is also true.<br>**NOTE**<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also a unique identifier of an application. For details, see [What is appIdentifier?](../../quick-start/common-problem-of-application.md#what-is-appidentifier) and [How do I obtain appIdentifier from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information). |
 | rule | [DisposedRule](#disposedrule11) | Yes| Disposed rule to set.|
 | appIndex<sup>12+</sup>   | number  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to set the disposed rule for the main application. A value greater than 0 means to set the disposed rule for the application clone with the specified index.           |
 
@@ -743,7 +743,7 @@ Sets an uninstallation disposed rule for an application or an application clone.
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appIdentifier  | string | Yes   | appIdentifier of the target application.<br> If the application does not have an appIdentifier, use its appId instead. **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information? ](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
+| appIdentifier  | string | Yes   | appIdentifier of the target application.<br> If the application does not have an appIdentifier, use its appId instead. **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
 | rule | [UninstallDisposedRule](#uninstalldisposedrule15) | Yes| Uninstallation disposed rule.|
 | appIndex   | number  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to set the uninstallation disposed rule for the main application. A value greater than 0 means to set the uninstallation disposed rule for the application clone.       |
 
@@ -792,7 +792,7 @@ try {
 
 getUninstallDisposedRule(appIdentifier: string, appIndex?: number): UninstallDisposedRule
 
-Obtains the uninstallation disposed rule of an application or an application clone.
+Obtains the uninstallation disposed rule with the highest priority of an application or an application clone.
 
 **System API**: This is a system API.
 
@@ -804,7 +804,7 @@ Obtains the uninstallation disposed rule of an application or an application clo
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appIdentifier  | string | Yes   | appIdentifier of the target application.<br> If the application does not have an appIdentifier, use its appId instead. **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information? ](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
+| appIdentifier  | string | Yes   | appIdentifier of the target application.<br> If the application does not have an appIdentifier, use its appId instead. **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
 | appIndex   | number  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to obtain the uninstallation disposed rule of the main application. A value greater than 0 means to obtain the uninstallation disposed rule of the application clone.             |
 
 **Return value**
@@ -859,7 +859,7 @@ Deletes an uninstallation disposed rule for an application or an application clo
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appIdentifier  | string | Yes   | appIdentifier of the target application.<br> If the application does not have an appIdentifier, use its appId instead. **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information? ](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
+| appIdentifier  | string | Yes   | appIdentifier of the target application.<br> If the application does not have an appIdentifier, use its appId instead. **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
 | appIndex   | number  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to delete the uninstallation disposed rule of the main application. A value greater than 0 means to delete the uninstallation disposed rule of the application clone.           |
 
 **Error codes**
@@ -985,6 +985,6 @@ Describes the configurations for setting disposed rules in batches.
 
 | Name        | Type                           | Read-Only| Optional| Description                                                        |
 | ------------ | ------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| appId        | string                          | No  | No  | appId or appIdentifier of the target application. Identical appId and appIdentifier values indicate the same application instance. If a rule is set using appId, it overwrites the one set with appIdentifier, and the reverse is also true.<br>**NOTE**<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information? ](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also a unique identifier of an application. For details, see [What is appIdentifier?](../../quick-start/common-problem-of-application.md#what-is-appidentifier) and [How do I obtain appIdentifier from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information).|
+| appId        | string                          | No  | No  | appId or appIdentifier of the target application. Identical appId and appIdentifier values indicate the same application instance. If a rule is set using appId, it overwrites the one set with appIdentifier, and the reverse is also true.<br>**NOTE**<br> **appId** is a unique ID determined by the bundle name and signature information of an application. For details about how to obtain the ID, see [How do I obtain appId from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also a unique identifier of an application. For details, see [What is appIdentifier?](../../quick-start/common-problem-of-application.md#what-is-appidentifier) and [How do I obtain appIdentifier from application information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information).|
 | appIndex     | number                          | No  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to set the disposed rule for the main application. A value greater than 0 means to set the disposed rule for the application clone with the specified index.|
 | disposedRule | [DisposedRule](#disposedrule11) | No  | No  | Disposal rule of the application, including the type of the ability to be started during disposal.        |

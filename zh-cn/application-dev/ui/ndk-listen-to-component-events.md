@@ -225,7 +225,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
         const char* darkMsg;
     };
     
-    //注册回调函数
+    // 注册回调函数
     void onColorModeChange(ArkUI_SystemColorMode colorMode, void *userData)
     {
         ColorModeInfo* info = static_cast<ColorModeInfo*>(userData);
@@ -299,7 +299,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
             }
             nativeModule_->removeNodeEventReceiver(handle_, ArkUINode::NodeEventReceiver);
         }
-    
+        // 设置节点宽度
         void SetWidth(float width)
         {
             if (!handle_) {
@@ -309,6 +309,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_WIDTH, &item);
         }
+        // 设置节点宽度（百分比形式）
         void SetPercentWidth(float percent)
         {
             if (!handle_) {
@@ -318,6 +319,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_WIDTH_PERCENT, &item);
         }
+        // 设置节点高度
         void SetHeight(float height)
         {
             if (!handle_) {
@@ -327,6 +329,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_HEIGHT, &item);
         }
+        // 设置节点高度（百分比形式）
         void SetPercentHeight(float percent)
         {
             if (!handle_) {
@@ -336,6 +339,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_HEIGHT_PERCENT, &item);
         }
+        // 设置节点背景颜色
         void SetBackgroundColor(uint32_t color)
         {
             if (!handle_) {
@@ -475,7 +479,6 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
     #define MYAPPLICATION_ARKUILISTNODE_H
     
     #include "ArkUINode.h"
-    #include <hilog/log.h>
     
     namespace NativeModule {
     class ArkUIListNode : public ArkUINode {
@@ -537,7 +540,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
     <!-- @[normal_text_list_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NormalTextListExample.h) -->
     
     ``` C
-    // TextListExample.h
+    // NormalTextListExample.h
     // 文本列表示例。
     
     #ifndef MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
@@ -548,7 +551,13 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
     #include "ArkUIListNode.h"
     #include "ArkUITextNode.h"
     #include <hilog/log.h>
-    #include "Function.h"
+    
+    const unsigned int LOG_PRINT_DOMAIN = 0xF811;
+    const unsigned int LOOP_SIZE = 30;
+    const unsigned int FONT_SIZE = 16;
+    const unsigned int HEIGHT_SIZE = 200;
+    const float PERCENT_WIDTH_1 = 1;
+    const float PERCENT_HEIGHT_1 = 1;
     
     namespace NativeModule {
     

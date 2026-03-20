@@ -779,7 +779,7 @@ function GetImageInfoSync(pixelMap:image.PixelMap) {
 
 getBytesNumberPerRow(): number
 
-获取图像像素每行字节数。
+获取图像像素每行字节数。单位：字节。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -805,7 +805,7 @@ function GetBytesNumberPerRow(pixelMap: image.PixelMap) {
 
 getPixelBytesNumber(): number
 
-获取图像像素的总字节数。
+获取图像像素的总字节数。单位：字节。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -831,7 +831,7 @@ function GetPixelBytesNumber(pixelMap: image.PixelMap) {
 
 getDensity():number
 
-获取当前图像像素的密度。
+获取当前图像像素的密度。单位：ppi（像素/英寸）。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1330,7 +1330,7 @@ createScaledPixelMap(x: number, y: number, level?: AntiAliasingLevel): Promise\<
 | ------ | ------ | ---- | ------------------------------- |
 | x      | number | 是   | 宽度的缩放倍数。|
 | y      | number | 是   | 高度的缩放倍数。|
-| level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。|
+| level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法，默认值为AntiAliasingLevel.NONE。|
 
 **返回值：**
 
@@ -1379,7 +1379,7 @@ createScaledPixelMapSync(x: number, y: number, level?: AntiAliasingLevel): Pixel
 | ------ | ------ | ---- | ------------------------------- |
 | x      | number | 是   | 宽度的缩放倍数。|
 | y      | number | 是   | 高度的缩放倍数。|
-| level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。|
+| level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法，默认值为AntiAliasingLevel.NONE。|
 
 **返回值：**
 
@@ -1757,7 +1757,7 @@ rotate(angle: number, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | -------------------- | ---- | ----------------------------- |
-| angle    | number               | 是   | 图片旋转的角度。 |
+| angle    | number               | 是   | 图片旋转的角度。单位：角度。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当对图片进行旋转成功，err为undefined，否则为错误对象。|
 
 **示例：**
@@ -1801,7 +1801,7 @@ rotate(angle: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                          |
 | ------ | ------ | ---- | ----------------------------- |
-| angle  | number | 是   | 图片旋转的角度。 |
+| angle  | number | 是   | 图片旋转的角度。单位：角度。 |
 
 **返回值：**
 
@@ -1845,7 +1845,7 @@ rotateSync(angle: number): void
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | -------------------- | ---- | ----------------------------- |
-| angle    | number               | 是   | 图片旋转的角度。 |
+| angle    | number               | 是   | 图片旋转的角度。单位：角度。 |
 
 **错误码：**
 

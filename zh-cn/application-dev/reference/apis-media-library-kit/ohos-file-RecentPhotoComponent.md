@@ -16,9 +16,10 @@
 
 ```ts
 import {
-  RecentPhotoComponent, RecentPhotoOptions, RecentPhotoCheckResultCallback, RecentPhotoInfo, RecentPhotoCheckInfoCallback,
-  RecentPhotoClickCallback, PhotoSource, RecentPhotoInfo, RecentPhotoCheckInfoCallback,
-} from '@kit.MediaLibraryKit';
+  RecentPhotoComponent, RecentPhotoOptions, RecentPhotoCheckResultCallback,
+  RecentPhotoClickCallback, PhotoSource, RecentPhotoInfo,
+  RecentPhotoCheckInfoCallback
+} from '@ohos.file.RecentPhotoComponent';
 ```
 
 ## 属性
@@ -145,16 +146,18 @@ type RecentPhotoCheckInfoCallback = (recentPhotoExists: boolean, info: RecentPho
 ```ts
 // xxx.ets
 import {
+  RecentPhotoComponent, 
+  RecentPhotoOptions, 
+  PhotoSource, 
+  RecentPhotoCheckResultCallback, 
+  RecentPhotoClickCallback, 
+  RecentPhotoInfo,
+  RecentPhotoCheckInfoCallback,
+} from '@ohos.file.RecentPhotoComponent';
+import {
   photoAccessHelper,
-   RecentPhotoComponent, 
-   RecentPhotoOptions, 
-   PhotoSource, 
-   RecentPhotoInfo, 
-   RecentPhotoCheckResultCallback, 
-   RecentPhotoClickCallback, 
-   RecentPhotoCheckInfoCallback,
-   BaseItemInfo
-} from '@kit.MediaLibraryKit';
+  BaseItemInfo
+} from '@kit.MediaLibraryKit'
 
 @Entry
 @Component

@@ -17,10 +17,10 @@
 
 | 名称 | 描述                              |
 | -------- |---------------------------------|
-| sensor.on(sensorId, callback:AsyncCallback&lt;Response&gt;, options?: Options): void | 持续监听传感器数据变化。                    |
+| sensor.on(sensorId, callback: AsyncCallback&lt;Response&gt;, options?: Options): void | 持续监听传感器数据变化。                    |
 | sensor.on(type: 'sensorStatusChange', callback: Callback&lt;SensorStatusEvent&gt;): void | 监听传感器动态上下线的状态变化，callback返回传感器状态事件数据。 |
-| sensor.once(sensorId, callback:AsyncCallback&lt;Response&gt;): void | 获取一次传感器数据变化。                    |
-| sensor.off(sensorId, callback?:AsyncCallback&lt;void&gt;): void | 注销传感器数据的监听。                     |
+| sensor.once(sensorId, callback: AsyncCallback&lt;Response&gt;): void | 获取一次传感器数据变化。                    |
+| sensor.off(sensorId, callback?: AsyncCallback&lt;void&gt;): void | 注销传感器数据的监听。                     |
 | sensor.off(sensorId, sensorInfoParam?: SensorInfoParam, callback?:AsyncCallback&lt;void&gt;): void | 注销传感器数据的监听，可传入设置参数。             |
 | sensor.off(type: 'sensorStatusChange', callback?: Callback&lt;SensorStatusEvent&gt;): void | 注销传感器动态上下线的状态变化的监听。             |
 | sensor.getSensorList(callback: AsyncCallback\<Array\<Sensor>>): void| 获取设备上的所有传感器信息。                  |
@@ -111,16 +111,16 @@
 
    根据设备Id和传感器类型查询传感器。
 
-   <!-- @[sensor_js_get_single_sensor_by_device_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[sensor_js_get_single_sensor_by_device_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
      this.deviceId = -1;
      // 第二个参数deviceId 非必填
-     const sensorList: sensor.Sensor[] = sensor.getSingleSensorByDeviceSync(sensor.SensorId.ACCELERO this.   deviceId);
+     const sensorList: sensor.Sensor[] = sensor.getSingleSensorByDeviceSync(sensor.SensorId.ACCELEROMETER, this.deviceId);
      console.info(`sensorList length: ${sensorList.length}`);
      console.info(`sensorList Json: ${JSON.stringify(sensorList)}`);
-     // ···
+     // ...
    } catch (error) {
      let e: BusinessError = error as BusinessError;
      console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
@@ -320,7 +320,7 @@
 
     使用promise方式。
 
-    <!-- @[sensor_js_get_device_altitude_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_device_altitude_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     try {
@@ -328,7 +328,7 @@
       let currentPressure = 1500.0;
       const promise = sensor.getDeviceAltitude(seaPressure, currentPressure);
       promise.then((data: number) => {
-        console.info('Succeeded in getting sensor_getDeviceAltitude_Promise', data);
+        console.info('Succeeded in getting device altitude: ', data);
       }, (err: BusinessError) => {
         console.error(`Failed to get altitude. Code: ${err.code}, message: ${err.message}`);
       });
@@ -638,7 +638,7 @@
 
     使用promise方式。
 
-    <!-- @[sensor_js_get_orientation_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_orientation_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     try {
@@ -653,11 +653,11 @@
           console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
         }
       }, (err: BusinessError) => {
-        console.error(`Failed to getOrientation. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to get orientation. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to getOrientation Code: ${e.code}, message: ${e.message}`);
+      console.error(`Failed to get orientation. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
@@ -665,13 +665,13 @@
 
     使用callback方式。
 
-    <!-- @[sensor_js_get_rotation_matrix_two_param_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_rotation_matrix_two_param_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     try {
       let gravity = [-0.27775216, 0.5351276, 9.788099];
       let geomagnetic = [210.87253, -78.6096, -111.44444];
-      sensor.getRotationMatrix(gravity, geomagnetic, (err: BusinessError, data: sRotationMatrixResponse) =>     {
+      sensor.getRotationMatrix(gravity, geomagnetic, (err: BusinessError, data: sensor.RotationMatrixResponse) => {
         if (err) {
           console.error(`Failed to get rotationMatrix. Code: ${err.code}, message: ${err.message}`);
           return;
@@ -727,14 +727,14 @@
 
     使用promise方式。
 
-    <!-- @[sensor_js_get_single_sensor_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_single_sensor_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     try {
       sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER).then((data: sensor.Sensor) => {
         console.info('Succeeded in getting sensor: ' + JSON.stringify(data));
       }, (err: BusinessError) => {
-        console.error(`Failed to get singleSensor . Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to get singleSensor. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;

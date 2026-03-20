@@ -64,8 +64,6 @@ Inherits Array<[ToolBarOption](#toolbaroption)>.
 
 ## ToolBarOption
 
-ToolBarOption({content?: ResourceStr, action?: () => void, icon?: Resource, state?: ItemState, iconColor?: ResourceColor, activatedIconColor?: ResourceColor, textColor?: ResourceColor, activatedTextColor?: ResourceColor, toolBarSymbolOptions?: ToolBarSymbolGlyphOptions, accessibilityText?: ResourceStr, accessibilityDescription?: ResourceStr, accessibilityLevel?: string})
-
 Defines the content and attributes of a toolbar.
 
 **Decorator Type**: \@Observed
@@ -79,7 +77,7 @@ Defines the content and attributes of a toolbar.
 | content                                | [ResourceStr](ts-types.md#resourcestr)                    | No| No| Text of the toolbar item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                         |
 | action                                 | ()&nbsp;=&gt;&nbsp;void                                   | No| Yes| Click event of the toolbar item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                        |
 | icon                                   | [Resource](ts-types.md#resource)                          | No| Yes| Icon of the toolbar item.<br>If this parameter is not set or is set to **undefined**, the icon is not displayed.<br>If **toolBarSymbolOptions** has input parameters, **icon** is ineffective.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                  |
-| state                                  | [ItemState](#itemstate)                                   | No| Yes| State of the toolbar item.<br>Default value: **ItemState.ENABLE**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                |
+| state                                  | [ItemState](#itemstate)                                   | No| Yes| State of the toolbar item.<br>Default value: **ItemState.ENABLE**<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                |
 | iconColor<sup>13+</sup>                | [ResourceColor](ts-types.md#resourcecolor)                | No| Yes| Icon fill color of the toolbar item.<br>Default value: **$r('sys.color.icon_primary')**<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                               |
 | activatedIconColor<sup>13+</sup>       | [ResourceColor](ts-types.md#resourcecolor)                | No| Yes| Icon fill color of the toolbar option in the activated state.<br>Default value: **$r('sys.color.icon_emphasize')**<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                          |
 | textColor<sup>13+</sup>                | [ResourceColor](ts-types.md#resourcecolor)                | No| Yes| Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                                 |
@@ -208,8 +206,6 @@ Enumerates toolbar item states.
 | ACTIVATE | 3 | The toolbar item is activated.|
 
 ## ToolBarSymbolGlyphOptions<sup>13+</sup>
-
-ToolBarSymbolGlyphOptions({normal?: SymbolGlyphModifier, activated?: SymbolGlyphModifier})
 
 Defines the icon symbol options.
 

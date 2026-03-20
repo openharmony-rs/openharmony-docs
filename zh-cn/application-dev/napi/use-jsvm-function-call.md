@@ -85,7 +85,7 @@ static int32_t TEST_FUNC() {
     static bool isVMInit = false;
     if (!isVMInit) {
         isVMInit = true;
-        // 单个进程只用初始化一次
+        // 单个进程只需初始化一次
         OH_JSVM_Init(&initOptions);
     }
     CHECK_RET(OH_JSVM_CreateVM(nullptr, &vm));

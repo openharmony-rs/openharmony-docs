@@ -50,6 +50,7 @@
     - [@ohos.app.appstartup.startupManager (AppStartup Management)](js-apis-app-appstartup-startupManager.md)
     - [@ohos.app.appstartup.StartupTask (AppStartup Task)](js-apis-app-appstartup-startupTask.md)
     - [@ohos.app.ability.autoStartupManager (Auto-Startup Management)](js-apis-app-ability-autoStartupManager.md)
+    - [@ohos.continuation.continuationManager (Continuation/Collaboration Management)](js-apis-continuation-continuationManager.md)
     <!--Del-->
     - [@ohos.app.ability.AbilityConstant (Ability-related Constants) (System API)](js-apis-app-ability-abilityConstant-sys.md)
     - [@ohos.app.ability.application (Application) (System API)](js-apis-app-ability-application-sys.md)
@@ -66,6 +67,17 @@
     - [@ohos.app.ability.verticalPanelManager (Vertical Panel Management) (System API)](js-apis-app-ability-verticalpanelmanager-sys.md)
     - [@ohos.app.ability.UIExtensionContentSession (UIExtensionAbility UI Operation Class) (System API)](js-apis-app-ability-uiExtensionContentSession-sys.md)
     <!--DelEnd-->
+     - continuation<!--stage-model-continuation-->
+       - [continuationExtraParams](js-apis-continuation-continuationExtraParams.md)
+       - [continuationResult](js-apis-continuation-continuationResult.md)
+       <!--Del-->
+       - [ContinuableInfo (System API)](js-apis-inner-application-continuableInfo-sys.md)
+ 	   - [ContinueCallback (System API)](js-apis-inner-application-continueCallback-sys.md)
+ 	   - [ContinueMissionInfo (System API)](js-apis-inner-application-continueMissionInfo-sys.md)
+ 	   - [MissionCallbacks (System API)](js-apis-inner-application-missionCallbacks-sys.md)
+ 	   - [MissionDeviceInfo (System API)](js-apis-inner-application-missionDeviceInfo-sys.md)
+ 	   - [MissionParameter (System API)](js-apis-inner-application-missionParameter-sys.md)
+       <!--DelEnd-->
   - FA Model<!--fa-model-->
     - [@ohos.ability.ability (Ability Module)](js-apis-ability-ability.md)
     - [@ohos.ability.featureAbility (FeatureAbility Module)](js-apis-ability-featureAbility.md)
@@ -174,17 +186,11 @@
       - [AutoStartupCallback (System API)](js-apis-inner-application-autoStartupCallback-sys.md)
       - [AutoStartupInfo (System API)](js-apis-inner-application-autoStartupInfo-sys.md)
       - [Context (System API)](js-apis-inner-application-context-sys.md)
-      - [ContinuableInfo (System API)](js-apis-inner-application-continuableInfo-sys.md)
-      - [ContinueCallback (System API)](js-apis-inner-application-continueCallback-sys.md)
       - [ContinueDeviceInfo (System API)](js-apis-inner-application-continueDeviceInfo-sys.md)
-      - [ContinueMissionInfo (System API)](js-apis-inner-application-continueMissionInfo-sys.md)
       - [CustomData (System API)](js-apis-inner-application-customData-sys.md)
       - [ExtensionRunningInfo (System API)](js-apis-inner-application-extensionRunningInfo-sys.md)
-      - [MissionCallbacks (System API)](js-apis-inner-application-missionCallbacks-sys.md)
-      - [MissionDeviceInfo (System API)](js-apis-inner-application-missionDeviceInfo-sys.md)
       - [MissionInfo (System API)](js-apis-inner-application-missionInfo-sys.md)
       - [MissionListener (System API)](js-apis-inner-application-missionListener-sys.md)
-      - [MissionParameter (System API)](js-apis-inner-application-missionParameter-sys.md)
       - [MissionSnapshot (System API)](js-apis-inner-application-missionSnapshot-sys.md)
       - [MultiAppMode (System API)](js-apis-inner-application-multiAppMode-sys.md)
       - [PageNodeInfo (System API)](js-apis-inner-application-pageNodeInfo-sys.md)
@@ -243,7 +249,6 @@
     - [@ohos.application.Configuration (Configuration)](js-apis-application-configuration.md)
     - [@ohos.application.ConfigurationConstant (ConfigurationConstant)](js-apis-application-configurationConstant.md)
     - [@ohos.application.Want (Want)](js-apis-application-want.md)
-    - [@ohos.continuation.continuationManager (Continuation/Collaboration Management)](js-apis-continuation-continuationManager.md)
     - [@ohos.wantAgent (WantAgent Module)](js-apis-wantAgent.md)
     <!--Del-->
     - [@ohos.ability.wantConstant (wantConstant) (System API)](js-apis-ability-wantConstant-sys.md)
@@ -262,8 +267,6 @@
     - ability<!--ability-deprecated-->
       - [want](js-apis-inner-ability-want.md)
     - continuation<!--ability--continuation-->
-      - [continuationExtraParams](js-apis-continuation-continuationExtraParams.md)
-      - [continuationResult](js-apis-continuation-continuationResult.md)
     - bundle<!--bundle-->
       - [abilityInfo](js-apis-bundle-AbilityInfo.md)
       - [applicationInfo](js-apis-bundle-ApplicationInfo.md)

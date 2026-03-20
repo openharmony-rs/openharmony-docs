@@ -92,7 +92,7 @@ Applications can select the appropriate focus mode based on their needs. By defa
 
 You can set the audio focus mode in one of the following ways:
 
-- If you [use AVPlayer for audio playback (ArkTS)](../media/using-avplayer-for-playback.md), modify [audioInterruptMode](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) of AVPlayer to set the audio focus mode.
+- If you [use AVPlayer for audio playback (ArkTS)](../media/using-avplayer-for-playback.md), modify the [audioInterruptMode property](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#properties) of AVPlayer to set the audio focus mode.
 
 - If you [use AVPlayer for audio playback (C/C++)](../media/using-ndk-avplayer-for-playback.md), call [OH_AVPlayer_SetAudioInterruptMode](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiointerruptmode) to set the audio focus mode.
 

@@ -8,7 +8,7 @@
 
 ## Overview
 
-The following describes how to subscribe to application crash events by using the ArkTS APIs provided by HiAppEvent. For details about how to use the APIs (such as parameter restrictions and value ranges), see [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
+The following describes how to subscribe to application crash events by using the ArkTS APIs provided by HiAppEvent. For details about the APIs (including parameter restrictions and value ranges), see [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
 
 > **NOTE**
 >
@@ -234,7 +234,7 @@ If an application proactively captures the crash event, a callback is triggered 
 
 1. The application does not exit during exception handling.
 
-   When [errorManager.on](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror) is used to capture the **JsError** event, a callback is triggered before the application exits. If the application registers the [crash signal](cppcrash-guidelines.md#crash-signals) processing function but does not exit, the **NativeCrash** event triggers a callback before the application exits.
+   When [errorManager.on](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror) is used to capture the **JsError** crash event, a callback is triggered before the application exits. If the application registers the [crash signal](cppcrash-guidelines.md#crash-signals) processing function but does not exit, the **NativeCrash** event triggers a callback before the application exits.
 
 2. If the exception handling takes a long time, the application exits with a delay.
 

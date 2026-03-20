@@ -547,13 +547,13 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | id          | number                                                      | 否 |是| 防火墙规则的ID。                                                       |
 | description | string                                                      | 否 |是 |规则描述，可选，最多256个字符。                                |
 | appUid      | number                                                      | 否 |是 |应用程序或服务UID。                                            |
-| localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |本地IP地址。当ruleType=RULE_IP时有效，否则将被忽略，最多10个。         |
-| remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |远端IP地址。当ruleType=RULE_IP时有效，否则将被忽略，最多10个。 |
-| protocol    | number                                                      | 否 | 是|协议，包含TCP：6，UDP：17。当ruleType=RULE_IP时有效。  |
-| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 | 是|本地端口。当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
-| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口。当ruleType=RULE_IP时有效，否则将被忽略。最多10个。   |
-| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表，当ruleType=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
-| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS：当ruleType=RULE_DNS时有效，否则将被忽略。当ruleType=RULE_DNS时，该字段不能为空。                 |
+| localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |本地IP地址。当type=RULE_IP时有效，否则将被忽略，最多10个。         |
+| remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |远端IP地址。当type=RULE_IP时有效，否则将被忽略，最多10个。 |
+| protocol    | number                                                      | 否 | 是|协议，包含TCP：6，UDP：17。当type=RULE_IP时有效。  |
+| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 | 是|本地端口。当type=RULE_IP时有效，否则将被忽略，最多10个。   |
+| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口。当type=RULE_IP时有效，否则将被忽略。最多10个。   |
+| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表，当type=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
+| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS：当type=RULE_DNS时有效，否则将被忽略。当type=RULE_DNS时，该字段不能为空。                 |
 
 ## RequestParam
 
@@ -664,7 +664,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 | 名称        | 类型   |只读|可选| 说明                                             |
 | ----------- | -------|----|------|------------------------------------------|
-| type        | number | 否 |否 |1：IP地址或子网。该场景下必须指定address和mask字段，当使用单个IP时，mask字段需设置为32。 <br />2：IP段，该场景下必须指定starIp和endIp字段。  |
+| type        | number | 否 |否 |1：IP地址或子网。该场景下必须指定address和mask字段，当使用单个IP时，mask字段需设置为32。 <br />2：IP段，该场景下必须指定startIp和endIp字段。  |
 | family      | number | 否 | 是|1：表示family地址族设置为IPv4。<br />2：表示family地址族设置为IPv6。  <br />默认IPv4，其他当前不支持。      |
 | address     | string | 否 | 是|IP地址。当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。                   |
 | mask        | number | 否 |是 |IPv4：子网掩码。<br />IPv6：前缀。<br />当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。       |

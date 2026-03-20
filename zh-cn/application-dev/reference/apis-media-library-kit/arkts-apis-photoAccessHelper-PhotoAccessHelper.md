@@ -161,7 +161,7 @@ getBurstAssets(burstKey: string, options: FetchOptions): Promise&lt;FetchResult&
 
 | 参数名  | 类型                | 必填 | 说明             |
 | ------- | ------------------- | ---- | ---------------- |
-| burstKey | string   | 是   | 一组连拍照片的唯一标识：uuid(可传入[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)的BURST_KEY)。字符串长度为36。 |
+| burstKey | string   | 是   | 一组连拍照片的唯一标识：uuid（可传入[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)的BURST_KEY）。字符串长度为36字节。 |
 | options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions)   | 是   | 连拍照片检索选项。     |
 
 **返回值：**
@@ -838,7 +838,7 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 
 调用接口显示保存确认弹窗。如果用户同意保存，将返回一个已创建并授予保存权限的URI列表（此列表永久生效），应用可使用这些URI写入图片或视频。如果用户拒绝保存，将返回一个空列表。
 
-弹框需显示应用名称，但无法直接获取。因此，调用此接口时，请确保`module.json5`文件中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
+弹框需显示应用名称，但无法直接获取。因此，调用此接口时，请确保[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
 
 > **说明：**
 >
@@ -1554,7 +1554,7 @@ getAlbumIdByLpath(lpath: string): Promise&lt;number&gt;
 
 根据相册的虚拟路径获取媒体库相册的ID。使用Promise异步回调。
 
-该接口仅支持以下相册：相机相册('/DCIM/Camera')、截图相册('/Pictures/Screenshots')和屏幕录制相册('/Pictures/Screenrecords')。
+该接口仅支持以下相册：相机相册（'/DCIM/Camera'）、截图相册（'/Pictures/Screenshots'）和屏幕录制相册（'/Pictures/Screenrecords'）。
 
 ​**模型约束**： 此接口仅可在Stage模型下使用。
 

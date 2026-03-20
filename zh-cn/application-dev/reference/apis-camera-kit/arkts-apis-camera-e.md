@@ -108,9 +108,9 @@
 
 | 名称                         | 值       | 说明                                          |
 |----------------------------|---------|---------------------------------------------|
-| NORMAL_PHOTO               | 1       | 普通拍照模式。详情见[PhotoSession](arkts-apis-camera-PhotoSession.md)   |
-| NORMAL_VIDEO               | 2       | 普通录像模式。详情见[VideoSession](arkts-apis-camera-VideoSession.md)   |
-| SECURE_PHOTO<sup>12+</sup> | 12      | 安全相机模式。详情见[SecureSession](arkts-apis-camera-SecureSession.md) |
+| NORMAL_PHOTO               | 1       | 普通拍照模式。详情见[PhotoSession](arkts-apis-camera-PhotoSession.md)。   |
+| NORMAL_VIDEO               | 2       | 普通录像模式。详情见[VideoSession](arkts-apis-camera-VideoSession.md)。 |
+| SECURE_PHOTO<sup>12+</sup> | 12      | 安全相机模式。详情见[SecureSession](arkts-apis-camera-SecureSession.md)。 |
 
 ## CameraErrorCode
 
