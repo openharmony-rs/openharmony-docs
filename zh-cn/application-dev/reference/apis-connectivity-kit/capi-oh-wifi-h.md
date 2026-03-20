@@ -33,13 +33,12 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Wifi_ResultCode](#wifi_resultcode) | Wifi_ResultCode | 定义WIFI接口返回值的错误码。 
-| [OH_WifiConnState](#oh_wificonnstate) | OH_WifiConnState | 定义WLAN连接状态。 
-| [OH_WifiChannelWidth](#oh_wifichannelwidth) | OH_WifiChannelWidth | 定义当前连接热点的信道带宽。 
-| [OH_WifiStandard](#oh_wifistandard) | OH_WifiStandard | 当前连接热点的Wi-Fi标准。
-| [OH_WifiCategory](#oh_wificategory) | OH_WifiCategory | 热点支持的最高Wi-Fi级别。
-| [OH_WifiLinkType](#oh_wifilinketype) | OH_WifiLinkType | Wi-Fi7连接类型。
-|
+| [Wifi_ResultCode](#wifi_resultcode) | Wifi_ResultCode | 定义WIFI接口返回值的错误码。|
+| [OH_WifiConnState](#oh_wificonnstate) | OH_WifiConnState | 定义WLAN连接状态。 |
+| [OH_WifiChannelWidth](#oh_wifichannelwidth) | OH_WifiChannelWidth | 定义当前连接热点的信道带宽。 |
+| [OH_WifiStandard](#oh_wifistandard) | OH_WifiStandard | 当前连接热点的Wi-Fi标准。 |
+| [OH_WifiCategory](#oh_wificategory) | OH_WifiCategory | 热点支持的最高Wi-Fi级别。 |
+| [OH_WifiLinkType](#oh_wifilinketype) | OH_WifiLinkType | Wi-Fi7连接类型。 |
 
 ### 结构体
 
