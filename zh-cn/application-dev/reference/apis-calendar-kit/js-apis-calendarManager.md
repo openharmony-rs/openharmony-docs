@@ -148,9 +148,9 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calend
 
 根据日历账户信息，创建一个Calendar对象，使用callback异步回调。
 
-**需要权限**：ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -204,9 +204,9 @@ createCalendar(calendarAccount: CalendarAccount): Promise\<Calendar>
 
 根据日历账户信息，创建一个Calendar对象，使用Promise异步回调。
 
-**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -260,9 +260,9 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback\<void>): void
 
 删除指定Calendar对象，使用callback异步回调。
 
-**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -325,9 +325,9 @@ deleteCalendar(calendar: Calendar): Promise\<void>
 
 删除指定Calendar对象，使用Promise异步回调。
 
-**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -392,9 +392,9 @@ getCalendar(callback: AsyncCallback\<Calendar>): void
 
 获取默认Calendar对象，默认Calendar是日历存储首次运行时创建的，若创建Event时不关注其Calendar归属，则无须通过[createCalendar()](#createcalendar)创建Calendar，直接使用默认Calendar，使用callback异步回调。
 
-**需要权限**：ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -441,9 +441,9 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calendar>
 
 获取指定Calendar对象，使用callback异步回调。
 
-**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -502,9 +502,9 @@ getCalendar(calendarAccount?: CalendarAccount): Promise\<Calendar>
 
 获取默认Calendar对象或者指定Calendar对象，使用Promise异步回调。
 
-**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -557,9 +557,9 @@ getAllCalendars(callback: AsyncCallback\<Calendar[]>): void
 
 获取当前应用所有创建的Calendar对象以及默认Calendar对象，使用callback异步回调。
 
-**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 
 **系统能力**： SystemCapability.Applications.CalendarData
@@ -608,10 +608,9 @@ getAllCalendars(): Promise\<Calendar[]>
 
 获取当前应用所有创建的Calendar对象以及默认Calendar对象，使用Promise异步回调。
 
-**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
 
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -719,9 +718,9 @@ addEvent(event: Event, callback: AsyncCallback\<number>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -781,9 +780,9 @@ addEvent(event: Event): Promise\<number>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -846,9 +845,9 @@ addEvents(events: Event[], callback: AsyncCallback\<void>): void
 
 批量创建日程，入参[Event](#Event)不填日程id、instanceStartTime和instanceEndTime，使用callback异步回调。
 
-**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -915,9 +914,9 @@ addEvents(events: Event[]): Promise\<void>
 
 批量创建日程，入参[Event](#Event)不填日程id、instanceStartTime和instanceEndTime，使用Promise异步回调。
 
-**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.WRITE_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1374,9 +1373,9 @@ getEvents(callback: AsyncCallback\<Event[]>): void
 
 API version 20之前，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime。从API version 20开始，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。若查询字段为空，则不返回该字段。
 
-**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1428,9 +1427,9 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 
 获取Calendar下符合查询条件的Event，使用callback异步回调。
 
-**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1515,9 +1514,9 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event
 
 当没有入参时，可查询指定日历账户下的所有日程。
 
-**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
-- 在 API 10-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1775,9 +1774,9 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 
 获取Calendar下符合查询条件的日程实例，使用Promise异步回调。
 
-**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
-- 在 API 18-20时，使用此接口需申请ohos.permission.READ_CALENDAR权限。
-- 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -2193,13 +2192,13 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 **系统能力**：SystemCapability.Applications.CalendarData
 
-| 名称  | 类型   | 只读 | 可选 | 说明                                                                                                                                                                                      |
-| ----- | ------ | ---- |----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| name  | string | 否   | 否  | 会议日程参与者的姓名。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                      |
-| email | string | 否   | 否  | 会议日程参与者的邮箱，邮箱格式为“用户名@域名.后缀”，用户名部分只能包含字母、数字、下划线“_”、点 “.”、连字符 “-”。不能以点 “.” 开头或结尾。 不能连续出现两个点 “..”。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| role<sup>12+</sup>  | [AttendeeRole](#attendeerole12) | 否   | 是  | 会议日程参与者的角色，不填时默认为空。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                               |
-| status<sup>18+</sup> | [AttendeeStatus](#attendeestatus18) | 否   | 是 | 会议日程参与者的状态，不填时默认为空。   <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                              |
-| type<sup>18+</sup>   | [AttendeeType](#attendeetype18)     | 否   | 是 | 会议日程参与者的类型，不填时默认为空。   <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                              |
+| 名称  | 类型   | 只读 | 可选 | 说明                                                                                                                                                                                        |
+| ----- | ------ | ---- |----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| name  | string | 否   | 否  | 会议日程参与者的姓名。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                        |
+| email | string | 否   | 否  | 会议日程参与者的邮箱，邮箱格式为“用户名@域名.后缀”，用户名部分只能包含字母、数字、下划线“_”、点 “.”、连字符 “-”。不能以点 “.” 开头或结尾。 不能连续出现两个点（即“..”）。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| role<sup>12+</sup>  | [AttendeeRole](#attendeerole12) | 否   | 是  | 会议日程参与者的角色，不填时默认为空。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                 |
+| status<sup>18+</sup> | [AttendeeStatus](#attendeestatus18) | 否   | 是 | 会议日程参与者的状态，不填时默认为空。   <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                |
+| type<sup>18+</sup>   | [AttendeeType](#attendeetype18)     | 否   | 是 | 会议日程参与者的类型，不填时默认为空。   <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                |
 
 ## EventService
 
