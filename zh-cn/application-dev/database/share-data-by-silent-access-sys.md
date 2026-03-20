@@ -129,13 +129,12 @@
 
    **module.json5配置样例：**
 
+   以下配置仅作示例，应用需根据具体业务需求和数据库结构配置各个字段。
+
    ```json
-   // 以下配置仅作示例，应用需根据具体业务需求和数据库结构配置各个字段
    "proxyData": [
      {
-       // uri应根据实际应用包名以及数据库情况进行修改，当前仅为示例
        "uri": "datashareproxy://com.ohos.datashareprovider/datapath",
-       // 请根据应用的数据访问需求和权限要求进行配置，如配置应用自定义权限、系统权限或用户授权权限，当前权限仅为示例
        "requiredReadPermission": "ohos.permission.MANAGE_SECURE_SETTINGS",
        "requiredWritePermission": "ohos.permission.MANAGE_SECURE_SETTINGS",
        "metadata": {
@@ -308,12 +307,12 @@
 
 **module.json5配置样例：**
 
+以下配置仅为示例，应用需根据实际情况配置各个字段。
+
 ```json
-// 以下配置仅为示例，应用需根据实际情况配置各个字段
 "proxyData": [
   {
     "uri": "datashareproxy://com.acts.ohos.data.datasharetest/weather",
-    // 实际请按照应用具体场景需要的安全权限配置，如配置应用自定义权限、系统权限或用户授权权限，当前权限仅为示例
     "requiredReadPermission": "ohos.permission.READ_WEATHER_DATA",
     "requiredWritePermission": "ohos.permission.KEEP_BACKGROUND_RUNNING"
   }
