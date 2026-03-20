@@ -971,9 +971,9 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | minValue | number | 否 | 否 | 字体可变轴的最小值。 |
 | maxValue | number | 否 | 否 | 字体可变轴的最大值。 |
 | defaultValue | number | 否 | 否 | 字体可变轴的默认值。 |
-| flags | number | 否 | 否 | 字体可变轴的标志位。值为0或1，值为0时表示该轴不隐藏，值为1时表示该轴隐藏 |
+| flags | number | 否 | 否 | 字体可变轴的标志位。值为0或1，值为0时表示该轴不隐藏，值为1时表示该轴隐藏。 |
 | name | string | 否 | 否 | 字体可变轴的英文名称。 |
-| localName | string | 否 | 否 | 字体可变轴的本地化名称，可能为空。 |
+| localName | string | 否 | 否 | 字体可变轴的本地化名称，可以为空。 |
 
 ## FontVariationInstance<sup>24+</sup>
 
@@ -986,7 +986,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | - | - | - | - | - |
 | name | string | 否 | 否 | 字体可变实例的英文名称。 |
-| localName | string | 否 | 否 | 字体可变实例的本地化名称，可能为空。 |
+| localName | string | 否 | 否 | 字体可变实例的本地化名称，可以为空。 |
 | coordinates | Array<[FontVariation](#fontvariation)> | 否 | 否 | 可变字体属性数组。 |
 
 ## FontCollection
