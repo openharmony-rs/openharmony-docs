@@ -1414,6 +1414,55 @@ audioCapturer.setWillMuteWhenInterrupted(true).then(() => {
 });
 ```
 
+
+## setMuteHint<sup>24</sup>
+
+setMuteHint(mute: boolean): Promise&lt;void&gt;
+
+应用将当前录音流的自身静音状态传递给框架。此方法不会触发录音流静音，仅在部分场景用于优化设备功耗和内部处理策略。使用Promise异步回调。
+
+> **说明：**
+>
+> - 该接口用于向框架上报应用自身的静音状态，不会改变录音流的实际静音状态。
+> - 该接口仅在录音流处于运行态时允许调用，否则返回6800103。
+> - 流级muteHint设置仅对运行态录音流参与优先级生效；同一录音流同时设置流级和会话级muteHint时，流级[setMuteHint](#setmutehint24)优先级更高，以流级设置值为准。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名     | 类型             | 必填   | 说明                                                      |
+| ---------- |---------------- | ------ |---------------------------------------------------------|
+| mute | boolean  | 是  | 应用自身给底层框架上报的静音状态。当应用将当前流静音时传入true，取消静音时传入false。 |
+
+**返回值：**
+
+| 类型                | 说明                          |
+| ------------------- | ----------------------------- |
+| Promise&lt;void&gt;| Promise对象，无返回结果。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800103 | Operation not permitted at current state, stream is not running. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.setMuteHint(true).then(() => {
+  console.info('setMuteHint Success!');
+}).catch((err: BusinessError) => {
+  console.error(`setMuteHint Fail: ${err}`);
+});
+```
+
 ## read<sup>(deprecated)</sup>
 
 read(size: number, isBlockingRead: boolean, callback: AsyncCallback<ArrayBuffer\>): void

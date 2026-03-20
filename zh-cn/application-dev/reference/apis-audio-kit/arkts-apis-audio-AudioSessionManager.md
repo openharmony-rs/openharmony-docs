@@ -899,6 +899,55 @@ enableMuteSuggestionWhenMixWithOthers(enable: boolean): void
 audio.getAudioManager().getSessionManager().enableMuteSuggestionWhenMixWithOthers(true);
 ```
 
+
+## setCapturerMuteHint<sup>24</sup>
+
+setCapturerMuteHint(mute: boolean): Promise&lt;void&gt;
+
+应用将当前音频会话内录音流的应用自身静音状态传递给底层框架。该方法不会触发录音流静音，仅在部分场景用于优化设备功耗和内部处理策略。使用Promise异步回调。
+
+> **说明：**
+>
+> - 该接口用于向框架上报当前音频会话内录音流的应用自身静音状态，不会改变录音流的实际静音状态。
+> - 该接口仅在当前音频会话存在运行中的录音流时允许调用，否则返回6800103。
+> - 会话级muteHint设置仅对运行态录音流参与优先级生效。若某条录音流同时调用了[AudioCapturer.setMuteHint](arkts-apis-audio-AudioCapturer.md#setmutehint24)和本接口，则capturer级设置优先级更高，以capturer级设置值为准。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名   | 类型               | 必填 | 说明      |
+| -------- | ----------------- | ---- | --------- |
+| mute   | boolean           | 是   | 应用自身给底层框架上报的静音状态。当应用将当前流静音时传入true，取消静音时传入false。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ---------------------------------------------|
+| 6800103 | Operation not permit at current state, there is no audio capturer running. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioSessionManager.setCapturerMuteHint(true).then(() => {
+  console.info('Succeeded in doing setCapturerMuteHint.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setCapturerMuteHint. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## isOtherMediaPlaying<sup>23+</sup>
 
 isOtherMediaPlaying(): boolean
