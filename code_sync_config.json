@@ -3367,7 +3367,7 @@
 						"start_line":1126
 					},
 					{
-						"end_line":40,
+						"end_line":39,
 						"name":"EventSub_napi_nohiappevent_Header",
 						"start_line":23
 					}
@@ -11541,9 +11541,9 @@
 						"start_line":24
 					},
 					{
-						"end_line":583,
+						"end_line":581,
 						"name":"Sys_Crash_Crash_OnReceive",
-						"start_line":492
+						"start_line":490
 					},
 					{
 						"end_line":596,
