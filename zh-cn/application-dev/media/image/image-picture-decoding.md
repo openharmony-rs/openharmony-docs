@@ -10,7 +10,7 @@
 
 ## 开发步骤
 
-图片解码相关API的详细介绍请参见：[图片解码接口说明](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md)。
+图片解码相关API的详细介绍请参见[ImageSource](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md)。
 
 1. 全局导入Image模块。
 
@@ -125,7 +125,7 @@
      const imageSource: image.ImageSource = image.createImageSource(rawFileDescriptor);
      ```
 
-4. 设置解码参数DecodingOptions，解码获取picture多图对象。并对picture进行操作，如获取辅助图等。对于picture和辅助图的操作具体请参考[Image API参考文档](../../reference/apis-image-kit/arkts-apis-image-Picture.md)。
+4. 设置解码参数DecodingOptions，解码获取picture多图对象。并对picture进行操作，如获取辅助图等。对于picture和辅助图的具体操作请参考文档[Picture](../../reference/apis-image-kit/arkts-apis-image-Picture.md)。
 
    配置解码选项参数进行解码：
 

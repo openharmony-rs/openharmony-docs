@@ -318,10 +318,10 @@ int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  float topLeft | 设置弹窗背板左上角圆角半径，单位：vp。|
-|  float topRight | 设置弹窗背板右上角圆角半径，单位：vp。|
-| float bottomLeft | 设置弹窗背板左下圆角半径，单位：vp。|
-|  float bottomRight | 设置弹窗背板右下角圆角半径，单位：vp。|
+|  float topLeft | 设置弹窗背板左上角圆角半径，单位：vp。默认值：从API version 12开始，为32vp。API version 11及之前版本，为24vp。|
+|  float topRight | 设置弹窗背板右上角圆角半径，单位：vp。默认值：从API version 12开始，为32vp。API version 11及之前版本，为24vp。|
+| float bottomLeft | 设置弹窗背板左下圆角半径，单位：vp。默认值：从API version 12开始，为32vp。API version 11及之前版本，为24vp。|
+|  float bottomRight | 设置弹窗背板右下角圆角半径，单位：vp。默认值：从API version 12开始，为32vp。API version 11及之前版本，为24vp。|
 
 **返回：**
 

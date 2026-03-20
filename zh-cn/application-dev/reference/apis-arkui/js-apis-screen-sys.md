@@ -1102,6 +1102,56 @@ screen.setMultiScreenRelativePosition(mainScreenOptions, secondaryScreenOptions)
   console.error(`Failed to set multi screen relative position. Code:${err.code}, message is ${err.message}`);
 });
 ```
+## screen.resizeVirtualScreen<sup>24+</sup>
+
+resizeVirtualScreen(screenId: number, width: number, height: number): Promise&lt;void&gt;
+
+修改指定虚拟屏的尺寸，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名      | 类型        | 必填 | 说明                                                        |
+| ---------- | ----------- | ---  |------------------------------------------------------------|
+| screenId   | number      | 是   | 要修改的虚拟屏的屏幕ID，取值范围为[1000, 2147483647]的正整数，超出有效范围时返回错误码1400004。 |
+| width      | number      | 是   | 虚拟屏的新宽度，单位为px，取值范围为[1, 65536]的正整数，超出有效范围时返回错误码1400004。  |
+| height     | number      | 是   | 虚拟屏的新高度，单位为px，取值范围为[1, 65536]的正整数，超出有效范围时返回错误码1400004。  |
+
+**返回值：**
+
+| 类型                  | 说明                              |
+| --------------------- |---------------------------------|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+| 801     | Capability not supported. Function can not work because the current device does not support this ability.|
+| 1400001 | Invalid display or screen.|
+| 1400003 | This display manager service works abnormally.|
+| 1400004 | Parameter error. Possible cause: 1. Invalid parameter range.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenId: number = 1000;
+let width: number = 1920;
+let height: number = 1080;
+screen.resizeVirtualScreen(screenId, width, height).then(() => {
+  console.info(`Succeeded in resizing virtual screen: screenId=${screenId}, width=${width}, height=${height}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set screen area mirroring. Code:${err.code}, message is ${err.message}`);
+});
+```
 
 ## screen.makeMirrorWithRegion<sup>19+</sup>
 
@@ -1426,7 +1476,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 ## Screen
 
-屏幕实例。
+[物理屏](../../displaymanager/display-terminology.md#物理屏)屏幕实例。
 
 下列API示例中都需先使用[getAllScreens()](#screengetallscreens)、[createVirtualScreen()](#screencreatevirtualscreen)中的任一方法获取到Screen实例，再通过此实例调用对应方法。
 

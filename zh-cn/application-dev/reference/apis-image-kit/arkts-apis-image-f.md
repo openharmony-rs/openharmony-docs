@@ -1563,6 +1563,60 @@ async function CreateAuxiliaryPicture(context: Context) {
 }
 ```
 
+## image.createAuxiliaryPictureUsingAllocator<sup>24+</sup>
+
+createAuxiliaryPictureUsingAllocator(auxiliaryPictureInfo: AuxiliaryPictureInfo, allocatorType?: AllocatorType, pixels?: ArrayBuffer): AuxiliaryPicture
+
+使用指定的内存类型，根据辅助图信息和像素数据创建辅助图对象。
+
+> **说明：**
+>
+> - 在处理此接口返回的AuxiliaryPicture时，需要考虑内存中每行像素所占的空间的影响。
+> - 创建的辅助图像会使用输入的像素进行初始化。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名 |              类型             | 必填 | 说明                         |
+| ------ | ----------------------------------------------- | ---- | ---------------------------- |
+| auxiliaryPictureInfo | [AuxiliaryPictureInfo](arkts-apis-image-i.md#auxiliarypictureinfo13) | 是 | 辅助图图像信息。<br>- 输入的ArrayBuffer的pixelFormat和最终创建出的辅助图的实际pixelFormat需与auxiliaryPictureInfo中指定的pixelFormat保持一致。<br>- 当AuxiliaryPictureType为GAINMAP时，AllocatorType仅支持传入AUTO/DMA。<br>- 当传入SHARE_MEMORY时，返回错误码7600205。  |
+| allocatorType | [AllocatorType](arkts-apis-image-e.md#allocatortype15) | 否 | 图像解码的内存类型，AUTO及默认情况下按照DMA处理。  |
+| pixels | ArrayBuffer | 否 | 以buffer形式存放的图像数据。<br>当未提供ArrayBuffer参数时，默认创建空白辅助图。  |
+
+**返回值：**
+
+| 类型                                    | 说明                                       |
+| --------------------------------------- | ------------------------------------------ |
+| [AuxiliaryPicture](arkts-apis-image-AuxiliaryPicture.md) | 如果操作成功，则返回AuxiliaryPicture实例。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                      |
+| -------- | ------------------------------------------------------------ |
+| 7600205  | Unsupported allocator type,e.g., use shared memory to create a gainmap as only DMA supported hdr metadata. |
+| 7600206  | Invalid parameter, size.height or size.width is less than or equal to 0. |
+| 7600301  | Alloc memory failed. |
+
+**示例：**
+
+```ts
+import { image } from '@kit.ImageKit';
+
+function CreateAuxiliaryPictureUsingAllocator(info: image.AuxiliaryPictureInfo,  allocatorType?: image.AllocatorType, pixels?: ArrayBuffer ) {
+  let res : image.AuxiliaryPicture;
+  try {
+    res = image.createAuxiliaryPictureUsingAllocator(info, allocatorType, pixels);
+  } catch (error) {
+    console.error(`Failed to create auxiliary picture using allocator=${allocatorType} and pixels=${pixels?.byteLength}.`);
+  }
+}
+```
+
 ## image.createImageReceiver<sup>11+</sup>
 
 createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageReceiver

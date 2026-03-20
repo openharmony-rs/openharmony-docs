@@ -19,7 +19,7 @@ For details about the process for requesting the permissions, see [Workflow for 
 
 ## ohos.permission.hsdr.HSDR_ACCESS
 
-Allows an application to access OpenHarmony Security Detection and Response Framework.
+Allows an application to access the OpenHarmony Security Detection and Response Framework.
 
 **Permission level**: normal
 

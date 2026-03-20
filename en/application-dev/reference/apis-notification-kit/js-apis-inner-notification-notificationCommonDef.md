@@ -32,5 +32,18 @@ Describes the authorized bundle information.
 | Name  | Type  | Read Only| Optional| Description  |
 | ------ | ------ | ----| -- |  ------ |
 | bundleName | string | No | No| Bundle name of the application.|
-| appName    | string | Yes | Yes| Application name, which is obtained from the **label** of [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).|
 | appIndex   | number | Yes | No| Index of an application clone, which takes effect only for application clones. The value is obtained from the **appIndex** of [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).|
+| appName    | string | Yes | Yes| Application name, which is obtained from the **label** of [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).|
+
+## UserGrantSetting<sup>26+</sup>
+
+Describes the user authorization settings.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.Notification
+
+| Name  | Type  | Read Only| Optional| Description  |
+| ------ | ------ | ----| -- |  ------ |
+| userGrantEnabled | boolean | Yes | No| Whether the **Allow access to notifications on this device** switch is toggled on. true: **yes**; false: **no**.|
+| grantedBundleInfos    | Array\<[GrantedBundleInfo](#grantedbundleinfo22)\> | Yes | Yes| List of apps for which the **Allow access to notifications on this device** switch is toggled on.|

@@ -37,6 +37,8 @@ Compared with **BuilderNode**, **ReactiveBuilderNode** can generate a component 
 > - The behavior of other decorators is undefined. Avoid using those decorators.
 >
 > - [Repeat](../../ui/rendering-control/arkts-new-rendering-control-repeat.md) can be used only in custom components.
+>
+> - BuilderNode objects do not support JSON serialization.
 
 ## Modules to Import
 

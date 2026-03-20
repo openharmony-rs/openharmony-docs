@@ -55,7 +55,7 @@ import { AgentExtensionAbility } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context | AgentExtensionContext | 否 | 否 | AgentExtensionAbility的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。 |
+| context | [AgentExtensionContext](js-apis-inner-application-agentExtensionContext.md) | 否 | 否 | AgentExtensionAbility的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。 |
 
 ### onCreate
 

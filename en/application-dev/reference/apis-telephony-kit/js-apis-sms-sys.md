@@ -365,7 +365,7 @@ class EntryAbility extends UIAbility {
 
 downloadMms\(context: Context, mmsParams: MmsParams\): Promise&lt;void&gt;
 
-Sends an MMS message. This API uses a promise to return the result.
+Downloads an MMS message. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 

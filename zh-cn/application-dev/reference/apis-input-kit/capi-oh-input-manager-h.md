@@ -747,7 +747,7 @@ int32_t OH_Input_GetKeyCode(const struct Input_KeyState* keyState)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回按键状态对象的键值。 |
+| int32_t | 返回按键状态对象的键值。相关取值可参考[Input_KeyStateAction](#input_keystateaction)。 |
 
 ### OH_Input_SetKeyPressed()
 
@@ -796,7 +796,7 @@ int32_t OH_Input_GetKeyPressed(const struct Input_KeyState* keyState)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回按键状态对象的按键按下状态。 |
+| int32_t | 返回按键状态对象的按键按下状态。相关取值可参考[Input_KeyStateAction](#input_keystateaction)。 |
 
 ### OH_Input_SetKeySwitch()
 
@@ -845,7 +845,7 @@ int32_t OH_Input_GetKeySwitch(const struct Input_KeyState* keyState)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回按键状态对象的按键开关。 |
+| int32_t | 返回按键状态对象的按键开关。相关取值可参考[Input_KeyStateAction](#input_keystateaction)。 |
 
 ### OH_Input_InjectKeyEvent()
 
@@ -1015,7 +1015,7 @@ int32_t OH_Input_GetKeyEventKeyCode(const struct Input_KeyEvent* keyEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Key code. |
+| int32_t | 返回按键事件的键值。相关取值可参考[Input_KeyCode](capi-oh-key-code-h.md#input_keycode)。 |
 
 ### OH_Input_SetKeyEventActionTime()
 
@@ -1252,7 +1252,7 @@ int32_t OH_Input_GetMouseEventAction(const struct Input_MouseEvent* mouseEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 鼠标的动作。 |
+| int32_t | 鼠标的动作。相关取值可参考[Input_MouseEventAction](#input_mouseeventaction)。 |
 
 ### OH_Input_SetMouseEventDisplayX()
 

@@ -131,6 +131,7 @@
       - [弹性布局 (Flex)](arkts-layout-development-flex-layout.md)
       - [相对布局 (RelativeContainer)](arkts-layout-development-relative-layout.md)
       - [栅格布局 (GridRow/GridCol)](arkts-layout-development-grid-layout.md)
+      - [动态布局 (DynamicLayout)](arkts-layout-development-dynamiclayout.md)
       - [选项卡 (Tabs)](arkts-navigation-tabs.md)<!--RP1--><!--RP1End-->
   - 列表与网格<!--arkts-list-and-grid-->
     - [列表与网格概述](arkts-list-grid-development-overview.md)
@@ -280,19 +281,29 @@
     - [绑定手势事件](ndk-bind-gesture-events.md)
     - [拖拽事件](ndk-drag-event.md)
     - [监听组件布局和绘制送显事件](ndk-inspector-component-observer.md)
-  - [使用动画](ndk-use-animation.md)
+  - 使用动画<!--arkts-use-animation-ndk-->
+    - [动画概述](ndk-use-animation.md)
+    - [使用动画开发指导](ndk-use-animation-scene.md)
   - 构建布局<!--arkts-build-layout-ndk-->
     - [使用列表](ndk-loading-long-list.md)
     - [使用瀑布流](ndk-waterflow.md)
     - [使用网格](ndk-grid.md)
   - 使用文本<!--arkts-build-text-ndk-->
-      - [Text组件的文本绘制与显示](ndk-styled-string.md)
+      - [使用Text组件](ndk-use-text-component.md)
+      - [使用属性字符串的文本绘制与显示](ndk-styled-string.md)
       - [输入框文本事件监听](ndk-textarea-event.md)
+  - 使用选择类组件<!--arkts-build-picker-ndk-->
+      - [使用滑动选择器Picker](ndk-picker.md)
+  - [显示图片（Image）](ndk-image-component.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
+  - [构建表单组件](ndk-build-form-components.md)
+  - 构建导航类组件<!--arkts-build-navigation-ndk-->
+    - [导航页面信息查询](ndk-navigation-query.md)
+    - [使用滑块视图容器 (Swiper)](ndk-swiper.md)
   - [构建自定义组件](ndk-build-custom-components.md)
   - [嵌入ArkTS组件](ndk-embed-arkts-components.md)
   - [构建渲染节点](ndk-embed-render-components.md)
-  - [通过XComponent接入无障碍](ndk-accessibility-xcomponent.md)
+  - [通过自绘制接入无障碍](ndk-accessibility-xcomponent.md)
   - [自定义绘制](arkts-user-defined-draw.md)
   - [查询和操作自定义节点](ndk-node-query-operate.md)
   - [通过EmbeddedComponent拉起EmbeddedUIExtensionAbility](ndk-embedded-component.md)

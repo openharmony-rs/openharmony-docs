@@ -223,7 +223,7 @@ libscsi.z.so
 
 12. 以CDB方式发送SCSI命令（可选）。
 
-    使用 **scsi_peripheral_api.h** 的 **OH_SCSIPeripheral_SendRequestByCdb** 发送SCSI命令。
+    使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_SendRequestByCdb** 发送SCSI命令。
 
     <!-- @[driver_scsi_step12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
     

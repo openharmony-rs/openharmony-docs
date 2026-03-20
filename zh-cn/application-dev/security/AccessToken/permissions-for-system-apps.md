@@ -4807,7 +4807,7 @@
 
 允许应用从文件管理目录读取录音文件。
 
-**权限级别**：system_core
+**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
@@ -4821,7 +4821,7 @@
 
 允许应用向文件管理目录写入录音文件。
 
-**权限级别**：system_core
+**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
@@ -5588,6 +5588,78 @@
 ## ohos.permission.CONNECT_AGENT
 
 允许系统应用连接智能体。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：24
+
+### ohos.permission.READ_APP_PROTECTION_RECORD
+
+允许系统应用读取应用保护记录。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+### ohos.permission.WRITE_APP_PROTECTION_RECORD
+
+允许系统应用修改应用保护记录。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+### ohos.permission.READ_SPAM_SHIELD_SETTING
+
+允许系统应用读取骚扰拦截配置项。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+### ohos.permission.WRITE_SPAM_SHIELD_SETTING
+
+允许系统应用修改骚扰拦截配置项。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.EXEMPT_MOTION_SENSORS_RESTRICTION
+
+允许应用豁免传感器管控。
+
+获取该权限后，应用始终可以使用传感器。
 
 **权限级别**：system_basic
 

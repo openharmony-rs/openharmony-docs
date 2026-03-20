@@ -9,7 +9,7 @@
 
 ## Overview
 
-The TransientTask module provides C APIs for transient tasks.
+The **TransientTask** module provides C APIs for transient tasks.
 
 **Since**: 13
 ## Files

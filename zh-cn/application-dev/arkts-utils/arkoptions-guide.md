@@ -8,7 +8,7 @@
 
 ## 概述
 
-arkOptions主要提供ArkTS编译相关配置，当前文档介绍arkOptions中types配置类型、maxFlowDepth配置控制流分析最大栈深度等，arkOptions中的其他配置项请参考[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-configuration-file-overview)。
+arkOptions主要提供ArkTS编译相关配置，当前文档介绍arkOptions中types配置类型、maxFlowDepth配置控制流分析最大深度等，arkOptions中的其他配置项请参考[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-configuration-file-overview)。
 
 ## types
 
@@ -79,7 +79,7 @@ arkOptions下tscConfig中maxFlowDepth字段配置文件标签说明：
 
 | 属性名称 | 含义 | 配置范围 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- | -------- |
-| maxFlowDepth | 开发者通过maxFlowDepth字段自定义配置tsc编译过程中的tsc控制流分析最大栈，避免固定最大栈导致编译报栈问题。该配置项可配置的最小值为2000，可配置最大值为65535。 | 工程级 | 数字型 | 该标签可缺省，缺省值时使用tsc控制流分析最大栈默认值2000。 |
+| maxFlowDepth | 开发者通过maxFlowDepth字段自定义配置tsc编译过程中的tsc控制流分析最大深度，避免固定最大深度导致编译报错问题。该配置项可配置的最小值为2000，可配置最大值为65535。 | 工程级 | 数字型 | 该标签可缺省，缺省值时使用tsc控制流分析最大深度默认值2000。 |
 
 ### arkOptions下的tscConfig中maxFlowDepth字段配置说明
 

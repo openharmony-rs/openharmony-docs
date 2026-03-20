@@ -32,7 +32,7 @@ The following figure shows the effect of the **SaveButton** component.
 - Request the ohos.permission.CUSTOMIZE_SAVE_BUTTON permission from AppGallery Connect if you need to customize the icon and text of the **SaveButton** component.
 
   > **NOTE**
-  > The ohos.permission.CUSTOMIZE_SAVE_BUTTON permission is restricted and is available only when the default style cannot meet service requirements. For details about how to request this permission, see <!--RP1-->[Requesting Restricted Permissions](declare-permissions-in-acl.md)<!--RP1End-->.
+  > ohos.permission.CUSTOMIZE_SAVE_BUTTON is available only when the default style cannot meet service requirements. For details about how to apply for the permission, see [Requesting Restricted Permissions](declare-permissions-in-acl.md).
 
 ## How to Develop
 

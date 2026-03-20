@@ -316,3 +316,116 @@ try {
 | appSize   | number  | 否 | 否 | 应用安装文件大小（单位为Byte）。    |
 | cacheSize | number  | 否 | 否  | 应用缓存文件大小（单位为Byte）。   |
 | dataSize  | number  | 否 | 否  | 应用文件存储大小（除应用安装文件）（单位为Byte）。 |
+
+## storageStatistics.getTotalInodes<sup>24+</sup>
+ 	 
+getTotalInodes(): Promise&lt;number&gt;
+
+获取文件系统的inode资源总量，仅支持查询系统数据分区。使用Promise异步回调。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                  | 说明                                                  |
+| --------------------- | ----------------------------------------------------- |
+| Promise&lt;number&gt; | Promise对象，返回文件系统inode资源总量。                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                                                      |
+| -------- | ------------------------------------------------------------ |
+| 13600001 | IPC error.                                                   |
+| 13600016 | Failed to query the inode information of the data partition. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+storageStatistics.getTotalInodes().then((totalInodes: number) => {
+  console.info("getTotalInodes successfully: " + totalInodes);
+}).catch((err: BusinessError) => {
+  console.error(`getTotalInodes failed. Code: ${err.code}, Message: ${err.message}`);
+});
+```
+
+## storageStatistics.getFreeInodes<sup>24+</sup>
+
+getFreeInodes(): Promise&lt;number&gt;
+
+获取文件系统的inode资源剩余量，仅支持查询系统数据分区。使用Promise异步回调。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                  | 说明                                                  |
+| --------------------- | ----------------------------------------------------- |
+| Promise&lt;number&gt; | Promise对象，返回文件系统inode资源剩余量。               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                                                      |
+| -------- | ------------------------------------------------------------ |
+| 13600001 | IPC error.                                                   |
+| 13600016 | Failed to query the inode information of the data partition. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+storageStatistics.getFreeInodes().then((freeInodes: number) => {
+  console.info("getFreeInodes successfully: " + freeInodes);
+}).catch((err: BusinessError) => {
+  console.error(`getFreeInodes failed. Code: ${err.code}, Message: ${err.message}`);
+});
+```
+
+## storageStatistics.getCurrentBundleInodes<sup>24+</sup>
+
+getCurrentBundleInodes(): Promise&lt;number&gt;
+
+获取当前应用的inode占用量，使用Promise异步回调。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                  | 说明                                                  |
+| --------------------- | ----------------------------------------------------- |
+| Promise&lt;number&gt; | Promise对象，返回当前应用的inode占用量。               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                                                      |
+| -------- | ------------------------------------------------------------ |
+| 13600001 | IPC error.                                                   |
+| 13600002 | File system not supported.                                   |
+| 13600010 | The input parameter is invalid.                              |
+| 13600017 | Failed to query the inode information of the application.    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+storageStatistics.getCurrentBundleInodes().then((curInodes: number) => {
+  console.info("getCurrentBundleInodes successfully: " + curInodes);
+}).catch((err: BusinessError) => {
+  console.error(`getCurrentBundleInodes failed. Code: ${err.code}, Message: ${err.message}`);
+});
+```

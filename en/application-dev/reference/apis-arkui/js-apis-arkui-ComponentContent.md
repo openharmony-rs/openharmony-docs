@@ -14,9 +14,11 @@ You can create an entity encapsulation component in either of the following ways
 
 > **NOTE**
 > 
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> **ComponentContent** and **ReactiveComponentContent** are not available in DevEco Studio Previewer.
+> - **ComponentContent** and **ReactiveComponentContent** are not available in DevEco Studio Previewer.
+>
+> - ComponentContent objects do not support JSON serialization.
 
 
 ## Modules to Import

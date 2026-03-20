@@ -136,6 +136,7 @@
       - [Focus Event](arkui-ts/ts-universal-focus-event.md)
       - [Hover Event](arkui-ts/ts-universal-events-hover.md)
       - [Component Keyboard Shortcut Event](arkui-ts/ts-universal-events-keyboardshortcut.md)
+      - [Keyboard Determination Event](arkui-ts/ts-universal-events-onneedsoftkeyboard.md)
     - Event Dispatch Control<!--event-dispatch-control-->
       - [Custom Event Interception](arkui-ts/ts-universal-attributes-on-touch-intercept.md)
       - [Custom Event Dispatch](arkui-ts/ts-universal-attributes-on-child-touch-test.md)
@@ -193,6 +194,7 @@
       - [Drag and Drop Control](arkui-ts/ts-universal-attributes-drag-drop.md)
       - [Drag-and-Drop Sorting](arkui-ts/ts-universal-attributes-drag-sorting.md)
       - [Hover Effect](arkui-ts/ts-universal-attributes-hover-effect.md)
+      - [Click Sound Effect](arkui-ts/ts-universal-attributes-click-sound.md)
       - Touch Interactions<!--touch-interactions-->
         - [Touch Target](arkui-ts/ts-universal-attributes-touch-target.md)
         - [Hit Test Control](arkui-ts/ts-universal-attributes-hit-test-behavior.md)
@@ -203,6 +205,9 @@
       - [Popup Control](arkui-ts/ts-universal-attributes-popup.md)
       - [Tooltip Control](arkui-ts/ts-universal-attributes-tips.md)
       - [Menu Control](arkui-ts/ts-universal-attributes-menu.md)
+      <!--Del-->
+      - [Menu Control (System API)](arkui-ts/ts-universal-attributes-menu-sys.md)
+      <!--DelEnd-->
     - [Accessibility](arkui-ts/ts-universal-attributes-accessibility.md)
     - Transition<!--transition-->
       - [Modal Transition](arkui-ts/ts-universal-attributes-modal-transition.md)
@@ -275,6 +280,7 @@
     - [ArcScrollBar](arkui-ts/ts-basic-components-arcscrollbar.md)
     - [Scrollable Component Common APIs](arkui-ts/ts-container-scrollable-common.md)
     <!--Del-->
+    - [Grid (System API)](arkui-ts/ts-container-grid-sys.md)
     - [List (System API)](arkui-ts/ts-container-list-sys.md)
     <!--DelEnd-->
   - Navigation and Switching<!--navigation-and-switching-->
@@ -298,6 +304,9 @@
     - [Radio](arkui-ts/ts-basic-components-radio.md)
     - [Rating](arkui-ts/ts-basic-components-rating.md)
     - [Select](arkui-ts/ts-basic-components-select.md)
+    <!--Del-->    
+    - [Select (System API)](arkui-ts/ts-basic-components-select-sys.md)
+    <!--DelEnd-->
     - [Slider](arkui-ts/ts-basic-components-slider.md)
     - [ArcButton](arkui-ts/ohos-arkui-advanced-ArcButton.md)
     - [ArcSlider](arkui-ts/ohos-arkui-advanced-ArcSlider.md)
@@ -321,6 +330,7 @@
     <!--Del-->
     - [Text Component Common APIs (System API)](arkui-ts/ts-text-common-sys.md)
     - [TextInput (System API)](arkui-ts/ts-basic-components-textinput-sys.md)
+    - [TextArea (System API)](arkui-ts/ts-basic-components-textarea-sys.md)
     - [Styled String (System API)](arkui-ts/ts-universal-styled-string-sys.md)
     - [RichEditor (System API)](arkui-ts/ts-basic-components-richeditor-sys.md)
     <!--DelEnd-->

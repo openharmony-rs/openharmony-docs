@@ -51,10 +51,10 @@ import { selectionManager } from '@kit.BasicServicesKit';
 
 try {
   selectionManager.on('selectionCompleted', (info: selectionManager.SelectionInfo) => {
-    console.info(`SelectionInfo: ${JSON.stringify(info)}`);
+    console.info(`Enter the callback function.`);
   });
 } catch (err) {
-  console.error(`Failed to register selectionCompleted callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register selectionCompleted callback: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 
@@ -79,14 +79,14 @@ off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 import { selectionManager } from '@kit.BasicServicesKit';
 
 let selectionChangeCallback = (info: selectionManager.SelectionInfo) => {
-  console.info(`SelectionInfo: ${JSON.stringify(info)}`);
+  console.info(`Enter the callback function.`);
 };
 
 selectionManager.on('selectionCompleted', selectionChangeCallback);
 try {
   selectionManager.off('selectionCompleted', selectionChangeCallback);
 } catch (err) {
-  console.error(`Failed to unregister selectionCompleted: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister selectionCompleted: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 
@@ -125,7 +125,7 @@ selectionManager.on('selectionCompleted', async (info: selectionManager.Selectio
   try {
     let content = await selectionManager.getSelectionContent();
   } catch (err) {
-    console.error(`Failed to get selection content: ${JSON.stringify(err)}`);
+    console.error(`Failed to get selection content: ${err.code}, errormessage: ${err.message}`);
   }
 });
 ```
@@ -147,7 +147,7 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 | 参数名   | 类型        | 必填 | 说明                     |
 | ------- | ----------- | ---- | ------------------------ |
 | ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 当前划词面板依赖的上下文信息。 |
-| info    | [PanelInfo](./js-apis-selectionInput-selectionPanel.md)   | 是   | 划词面板信息。 |
+| info    | [PanelInfo](./js-apis-selectionInput-selectionPanel.md#panelinfo)   | 是   | 划词面板信息。 |
 
 **返回值：**
 | 类型   | 说明                                                                 |
@@ -197,7 +197,7 @@ class ServiceExtAbility extends SelectionExtensionAbility {
       .then((panel: selectionManager.Panel) => {
         console.info('Succeed in creating panel.');
       }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${JSON.stringify(err)}`);
+      console.error(`Failed to create panel: ${err.code}, errormessage: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -275,14 +275,14 @@ class ServiceExtAbility extends SelectionExtensionAbility {
             selectionManager.destroyPanel(selectionPanel).then(() => {
               console.info('Succeed in destroying panel.');
             }).catch((err: BusinessError) => {
-              console.error(`Failed to destroy panel: ${JSON.stringify(err)}`);
+              console.error(`Failed to destroy panel: ${err.code}, errormessage: ${err.message}`);
             });
           }
         } catch (err) {
-          console.error(`Failed to destroy panel: ${JSON.stringify(err)}`);
+          console.error(`Failed to destroy panel: ${err.code}, errormessage: ${err.message}`);
         }
       }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${JSON.stringify(err)}`);
+      console.error(`Failed to create panel: ${err.code}, errormessage: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -363,10 +363,10 @@ try {
   selectionPanel.setUiContent('pages/Index').then(() => {
     console.info('Succeeded in setting the content.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to setUiContent: ${JSON.stringify(err)}`);
+    console.error(`Failed to setUiContent: ${err.code}, errormessage: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to setUiContent: ${JSON.stringify(err)}`);
+  console.error(`Failed to setUiContent: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 
@@ -403,7 +403,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 selectionPanel.show().then(() => {
   console.info('Succeeded in showing the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to show panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to show panel: ${err.code}, errormessage: ${err.message}`);
 });
 ```
 
@@ -438,7 +438,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 selectionPanel.hide().then(() => {
   console.info('Succeeded in hiding the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to hide panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to hide panel: ${err.code}, errormessage: ${err.message}`);
 });
 ```
 
@@ -483,7 +483,7 @@ RelativeContainer() {
       selectionPanel.startMoving().then(() => {   // selectionPanel为createPanel创建出的panel实例
         console.info('Succeeded in startMoving the panel.');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to startMoving panel: ${JSON.stringify(err)}`);
+        console.error(`Failed to startMoving panel: ${err.code}, errormessage: ${err.message}`);
       });
     }
   }
@@ -491,11 +491,15 @@ RelativeContainer() {
 ```
 
 <!--Del-->
-### moveTo
+### moveTo<sup>(deprecated)</sup>
 
 moveTo(x: number, y: number): Promise\<void>
 
 移动划词面板至屏幕指定位置。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 20开始支持，从API version 24开始废弃。建议使用[moveToGlobalDisplay](#movetoglobaldisplay)替代。
 
 **系统接口：** 此接口为系统接口。
 
@@ -532,10 +536,10 @@ try {
   selectionPanel.moveTo(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+    console.error(`Failed to move panel: ${err.code}, errormessage: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to move panel: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 <!--DelEnd-->
@@ -581,10 +585,10 @@ try {
   selectionPanel.moveToGlobalDisplay(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+    console.error(`Failed to move panel: ${err.code}, errormessage: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to move panel: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 
@@ -613,7 +617,7 @@ try {
     console.info('Panel has destroyed.');
   });
 } catch (err) {
-  console.error(`Failed to register destroyed callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register destroyed callback: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 
@@ -640,7 +644,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 try {
   selectionPanel.off('destroyed');
 } catch (err) {
-  console.error(`Failed to unregister destroyed: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister destroyed: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 
@@ -669,7 +673,7 @@ try {
     console.info('Panel has hidden.');
   });
 } catch (err) {
-  console.error(`Failed to register hidden callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register hidden callback: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 
@@ -696,7 +700,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 try {
   selectionPanel.off('hidden');
 } catch (err) {
-  console.error(`Failed to unregister hidden: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister hidden: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 

@@ -133,6 +133,7 @@ Defines onscreen awareness capabilities (including awareness in a reading scenar
 |scenarioReading|Obtains the information about awareness in a reading scenario.|
 |scenarioShortVideo|Obtains the information about awareness in a short video scenario.|
 |scenarioTodo|Obtains the information about awareness in a to-do scenario.|
+|QuickSnap|Obtains the information about a single snapshot. **Usage specifications**: This capability is used only in the **trigger** API. It takes effect only when **capList** is set to **QuickSnap**. For other APIs, error code 401 is returned.|
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
 
@@ -173,7 +174,7 @@ Provides entity information perceived, including content, links, images, and oth
 | Name| Type  | Read-Only| Optional| Description                                    |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
 | entityName   | string | No  | No  | Name of the perceived entity, which is fixed.|
-| entityInfo   | Record<string, Object> | No  | No  | Entity information perceived, including content, links, images, and other types of entities.|
+| entityInfo   | Record<string, Object> | No  | No  | Entity information perceived , including content, links, images, and other types of entities.|
 
 
 ## OnscreenAwarenessInfo<sup>23+</sup>
@@ -336,9 +337,8 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
    ```
 
 ## onScreen.subscribe<sup>23+</sup>
-subscribe(capability: OnscreenAwarenessCap, 
-          callback: Callback&lt;OnscreenAwarenessInfo&gt;, 
-          options?: OnscreenAwarenessOptions): void
+
+subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwarenessInfo&gt;, options?: OnscreenAwarenessOptions): void
 
 Enables proactive awareness on screen content and subscribes to a screen awareness result.
 
@@ -400,8 +400,7 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
    ```
 ## onScreen.unsubscribe<sup>23+</sup>
 
-unsubscribe(capability: OnscreenAwarenessCap, 
-            callback?: Callback&lt;OnscreenAwarenessInfo&gt;): void
+unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwarenessInfo&gt;): void
 
 Disables proactive awareness on screen content and unsubscribes from a screen awareness result.
 
@@ -451,8 +450,7 @@ try {
 
 ## onScreen.trigger<sup>23+</sup>
 
-trigger(capability: OnscreenAwarenessCap, 
-        options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo&gt;
+unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwarenessInfo&gt;): void
 
 Proactively triggers screen content awareness and obtains the current screen awareness result.
 
@@ -475,6 +473,7 @@ Proactively triggers screen content awareness and obtains the current screen awa
   | Type                          | Description        |
   | ---------------------------- | ---------- |
   | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | Promise used to return the onscreen awareness result.|
+  
 **Error codes**
 
 For details about the error codes, see [User Status Awareness Error Codes](errorcode-userStatus.md) and [Universal Error Codes](../errorcode-universal.md).
