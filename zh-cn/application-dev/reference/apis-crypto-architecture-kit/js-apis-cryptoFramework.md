@@ -163,6 +163,28 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 >
 > 在Poly1305模式加密时，需从[doFinal()](#dofinal)或[doFinalSync()](#dofinalsync12)输出的[DataBlob](#datablob)末尾提取16字节，作为解密时[init()](#init-1)或[initSync()](#initsync12)方法的参数[Poly1305ParamsSpec](#poly1305paramsspec22)中的authTag。
 
+## AeadParamsSpec<sup>26.0.0+</sup>
+
+加解密参数[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
+
+适用于[AES算法](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#aes)CCM分组模式。
+
+**原子化服务API：** 从版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+| 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
+| ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
+| nonce      | Uint8Array | 否   | 否   | 指明加解密参数nonce，对于AES-CCM长度为5-13字节。                              |
+| authenticatedData     | Uint8Array | 否   | 是   | 指明加解密参数aad，长度为任意字节。                             |
+| tagLen | int | 否   | 是   | 指定加解密参数authTag长度，对于AES-CCM若不填则长度默认为12字节。 |
+
+> **说明：**
+>
+> 传入[init()](#init-1)方法前需要指定其algName属性（来源于父类[ParamsSpec](#paramsspec)）。
+>
+> 在AES-CCM模式使用该Spec加密时，若加密传入了tag的长度，则解密时，必须传入同等长度。加密时如果调[update()](#update)或[updateSync()](#updatesync12)传入明文，[doFinal()](#dofinal)或[doFinalSync()](#dofinalsync12)传入null，将俩个结果相拼才能传入解密流程。解密时只能调[update()](#update)或[updateSync()](#updatesync12)、[doFinal()](#dofinal)或[doFinalSync()](#dofinalsync12)传入全部密文获取解密数据。
+
 ## CryptoMode
 
 表示加解密操作的枚举。
@@ -932,6 +954,45 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | -------- | ---------------------- |
 | 801 | this operation is not supported. |
 | 17620001 | memory operation failed. |
+| 17630001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function testGenerateAesKey() {
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+  let symKey = await symKeyGenerator.generateSymKey();
+  let encodedKey = symKey.getEncoded();
+  console.info('key hex: ' + encodedKey.data);
+}
+```
+
+### getKeySize
+
+getKeySize(): int
+
+同步方法，获取密钥的字节长度。密钥可以是对称密钥、公钥或私钥。公钥格式需符合ASN.1语法、X.509规范和DER编码；私钥格式需符合ASN.1语法、PKCS#8规范和DER编码。
+
+**原子化服务API：** 从版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Key
+
+**返回值：**
+
+| 类型                  | 说明                     |
+| --------------------- | ------------------------ |
+| int | 获取密钥的字节长度，单位是bit |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620001 | memory operation failed. |
+| 17620002 | failed to convert parameters between arkts and c. |
 | 17630001 | crypto operation error. |
 
 **示例：**
