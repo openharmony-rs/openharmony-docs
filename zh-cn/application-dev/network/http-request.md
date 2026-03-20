@@ -551,8 +551,8 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 > 配置优先级规则：组件配置（component-config）> 域名配置（domain-config）> 基础配置（base-config），优先级高的配置会覆盖优先级低的规则。
 
 
-```json
-554// src/main/resources/base/profile/network_config.json
+```json5
+// src/main/resources/base/profile/network_config.json
 {
   "network-security-config": {
     "base-config": {
