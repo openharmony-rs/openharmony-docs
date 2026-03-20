@@ -8,7 +8,7 @@
 
 不同包类型的用途和构建流程存在差异，对不同包类型使用混淆时，开发者需要注意不同事项。本文针对[HAP](../quick-start/hap-package.md)、[HAR](../quick-start/har-package.md)和[HSP](../quick-start/in-app-hsp.md)三种包类型，分别提供混淆建议，帮助开发者高效使用混淆。简要对应关系如下：**HAP**为应用安装与运行的功能模块，适用于**应用端功能开发与发布**；**HAR**为静态共享包，适用于**组件化、能力沉淀与多模块/多工程复用**；**HSP**为应用内动态共享包，适用于**同一应用内多模块在运行时共享代码与资源**。
 
-为了对混淆在不同包类型下的行为有更清晰的理解，建议开发者在对不同包类型进行配置前，充分了解[混淆原理](./source-obfuscation.md)及[混淆开启流程](./source-obfuscation-guide.md#开启混淆步骤)，并优先阅读[Stage模型应用程序包结构](../quick-start/application-package-structure-stage.md)（了解不同包类型之间的差异点）。
+为了对混淆在不同包类型下的行为有更清晰的理解，建议开发者在对不同包类型进行配置前，充分了解[混淆原理](./source-obfuscation.md)及[开启源码混淆步骤](./source-obfuscation-guide.md#开启源码混淆步骤)，并优先阅读[Stage模型应用程序包结构](../quick-start/application-package-structure-stage.md)（了解不同包类型之间的差异点）。
 
 ## 推荐混淆功能
 
@@ -22,7 +22,7 @@
 开启混淆功能后，需配置白名单以保证应用运行功能正常。
 
 - 对于新开发的应用，建议直接打开以上选项，在开发迭代过程中增加白名单配置。
-- 对于已开发一定功能的应用，建议按照以上顺序逐步打开各个选项，对比不同选项的混淆产物，熟悉新增选项的具体效果，参考[混淆选项配置指导](source-obfuscation-guide.md#混淆选项配置指导)排查适配。
+- 对于已开发一定功能的应用，建议按照以上顺序逐步打开各个选项，对比不同选项的混淆产物，熟悉新增选项的具体效果，参考[配置混淆选项](source-obfuscation-guide.md#配置混淆选项)章节排查适配。
 
 当应用功能调试正常后，可继续开启代码压缩（`-compact`）与日志删除（`-remove-log`、`-remove-nosideeffects-calls`）等功能，以增强代码混淆效果，然后发布release应用包。
 
@@ -56,7 +56,7 @@
 
 ### HAR包通用建议
 
-1. HAR包的开发者需充分了解[三种混淆配置文件](source-obfuscation-guide.md#三种混淆配置文件)以及[混淆规则的合并策略](source-obfuscation.md#混淆规则合并策略)，以及在被HAP包使用时的[HAP包混淆建议](#hap包混淆建议)中的注意事项，确保被应用依赖时本模块所有功能正常。
+1. HAR包的开发者需充分了解[混淆配置文件](source-obfuscation-guide.md#混淆配置文件)以及[混淆规则的合并策略](source-obfuscation.md#混淆规则合并策略)，以及在被HAP包使用时的[HAP包混淆建议](#hap包混淆建议)中的注意事项，确保被应用依赖时本模块所有功能正常。
 2. 由于HAR包会影响使用它的主模块的混淆流程，**无论HAR包是否开启混淆，都需配置 `consumer-rules.txt`**，用于声明需传递给依赖方、并最终写入发布 `obfuscation.txt` 的规则。**可写入 `obfuscation.txt` 的混淆选项与保留选项范围、合并方式**见[混淆规则合并策略](source-obfuscation.md#混淆规则合并策略)，以确保主模块在开启混淆时，HAR包的功能保持正常。
 3. 由于consumer配置的传递性，**HAR包开发者不应在其中配置开启混淆的能力，而应仅配置保留白名单的规则。为减少对依赖方的影响，建议仅使用`-keep-global-name`和`-keep-property-name`两种白名单配置。**
 
@@ -95,7 +95,7 @@
 
 ### HSP包通用建议
 
-1. HSP包的开发者需充分了解[三种混淆配置文件](source-obfuscation-guide.md#三种混淆配置文件)以及[混淆规则的合并策略](source-obfuscation.md#混淆规则合并策略)，以及在被HAP包使用时的[HAP包混淆建议](#hap包混淆建议)中的注意事项，确保被应用依赖时本模块所有功能正常。
+1. HSP包的开发者需充分了解[混淆配置文件](source-obfuscation-guide.md#混淆配置文件)以及[混淆规则的合并策略](source-obfuscation.md#混淆规则合并策略)，以及在被HAP包使用时的[HAP包混淆建议](#hap包混淆建议)中的注意事项，确保被应用依赖时本模块所有功能正常。
 2. 由于HSP包是独立构建，并且只会构建一次，因此要重点关注模块内部的混淆效果，确保其他模块正常调用接口即可。
 3. 由于consumer配置的传递性，**HSP包开发者不应在其中配置开启混淆的能力，而应仅配置保留白名单的规则。为了减少对依赖方的影响，建议仅使用`-keep-global-name`和`-keep-property-name`两种白名单配置**。
 
