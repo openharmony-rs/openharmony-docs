@@ -33,7 +33,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Wifi_ResultCode](#wifi_resultcode) | Wifi_ResultCode | 定义WIFI接口返回值的错误码。|
+| [Wifi_ResultCode](#wifi_resultcode) | Wifi_ResultCode | 定义WIFI接口返回值的错误码。 |
 | [OH_WifiConnState](#oh_wificonnstate) | OH_WifiConnState | 定义WLAN连接状态。 |
 | [OH_WifiChannelWidth](#oh_wifichannelwidth) | OH_WifiChannelWidth | 定义当前连接热点的信道带宽。 |
 | [OH_WifiStandard](#oh_wifistandard) | OH_WifiStandard | 当前连接热点的Wi-Fi标准。 |
