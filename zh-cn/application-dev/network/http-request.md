@@ -552,7 +552,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 
 ```json
-// src/main/resources/base/profile/network_config.json
+554// src/main/resources/base/profile/network_config.json
 {
   "network-security-config": {
     "base-config": {
