@@ -25718,6 +25718,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2NotifyOnError.ets",
+				"functions":[
+					{
+						"end_line":84,
+						"name":"persistence_v2_notifyOnError",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
