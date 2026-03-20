@@ -757,11 +757,13 @@ struct RelativeGuideLineExample {
 
 ## 多个组件的屏障
 
-屏障（barrier）是容器内一组指定组件在指定方向上的公共最远边界。例如，一组组件下方的屏障是它们底部最靠下的位置，可以理解为坐标取min/max。使用屏障可以实现组件不与一组参考组件中的任何一个重叠等效果。
+屏障（barrier）是容器的一种动态参考边界，它基于一组指定组件的实际位置，计算出它们在特定方向上的公共最远边界。当需要让某个组件参照多个组件的集体边界时使用，例如实现“位于这些组件右侧”或“不与其他任何组件重叠”等效果。
 
 屏障可以有上下左右四个方向。垂直方向（TOP，BOTTOM）的屏障仅能作为组件的水平方向锚点，用作垂直方向锚点时值为0；水平方向（LEFT，RIGHT）的屏障仅能作为组件的垂直方向锚点，用作水平方向锚点时值为0。
 
-如下代码定义了两个屏障，分别是参考组件row1和row2各自右侧边界与底部边界。使用这两个屏障作为row3和row4的锚点，可以方便地避免组件间出现不必要的重叠。
+与静态的guideline不同，barrier会随参照组件位置变化而自动更新，只需定义实际需要的方向即可。
+
+在下列示例代码中，item1，item2，item3三个组件可以视为由一个隐形的矩形区域包围着，outer1基于这个“隐形区域”的底部边界进行布局，位于该区域的下方；outer2基于这个“隐形区域”的右侧边界进行布局，位于该区域的右侧。
 
 <!-- @[testRelativeContainerComponentBarrier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentBarrier.ets) -->
 
@@ -881,4 +883,4 @@ struct Index {
 }
 ```
 
-![relative container](figures/relativecontainer5.png)
+![relative container](figures/relativecontainer10.png)
