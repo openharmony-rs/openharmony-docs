@@ -101,7 +101,7 @@ on(type: 'change', callback: Callback&lt;MediaQueryResult&gt;): void
 
 **示例：** 
 
-  详见[off示例](#offchange)。
+  详见[off('change')](#offchange)示例。
 
 ### off('change')
 
