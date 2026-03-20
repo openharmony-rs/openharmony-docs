@@ -167,9 +167,7 @@ test(a2);
 删除对console.*语句的调用，要求console.*语句返回值未被调用，
 ArkTS-Sta的字节码混淆删除对`console.*（console.toString()除外）`和`hilog.info，hilog.error，hilog.debug，hilog.fatal，hilog.warn`语句的调用，要求上述语句返回值未被调用，效果如下：
 
-<!-- @[optionExample_removeLog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
-
-<!-- @[staticArkGuardExample_removelog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->   
+<!-- @[optionExample_removeLog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts)  @[staticArkGuardExample_removelog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->      
 
 ``` TypeScript
 // 混淆前：
