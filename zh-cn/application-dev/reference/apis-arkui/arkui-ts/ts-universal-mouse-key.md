@@ -12,9 +12,9 @@
 
 ## onMouse
 
-ArkTS-Dyn: onMouse(event: (event: MouseEvent) => void)
+ArkTS-Dyn: onMouse(event: (event: MouseEvent) => void): T
 
-ArkTS-Sta: onMouse(event: ((event: MouseEvent) => void) | undefined)
+ArkTS-Sta: onMouse(event: ((event: MouseEvent) => void) | undefined): this
 
 当前组件被鼠标按键点击时或者鼠标在组件上悬浮移动时，触发该回调。
 
@@ -30,8 +30,13 @@ ArkTS-Sta: onMouse(event: ((event: MouseEvent) => void) | undefined)
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| event | ArkTS-Dyn: [MouseEvent](#mouseevent对象说明) <br/>ArkTS-Sta: [MouseEvent](#mouseevent对象说明) \|&nbsp;undefined | 是   | 返回触发事件时的时间戳、鼠标按键、动作、鼠标位置在整个屏幕上的坐标和相对于当前组件的坐标。 |
+| event | ArkTS-Dyn: (event: [MouseEvent](#mouseevent对象说明)) => void <br/>ArkTS-Sta: ((event: [MouseEvent](#mouseevent对象说明)) => void) \|&nbsp;undefined | 是   | 返回触发事件时的时间戳、鼠标按键、动作、鼠标位置在整个屏幕上的坐标和相对于当前组件的坐标。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## MouseEvent对象说明
 

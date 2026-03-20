@@ -18,9 +18,9 @@
 
 ## onFocus
 
-ArkTS-Dyn: onFocus(event: () => void)
+ArkTS-Dyn: onFocus(event: () => void): T
 
-ArkTS-Sta: onFocus(event: (() => void) | undefined)
+ArkTS-Sta: onFocus(event: (() => void) | undefined): this
 
 当前组件获取焦点时触发的回调。
 
@@ -32,11 +32,23 @@ ArkTS-Sta: onFocus(event: (() => void) | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：** 
+
+| 参数名 | 类型                          | 必填 | 说明               |
+| ------ | ----------------------------- | ---- | ------------------ |
+| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \| undefined |  是   | onFocus的回调函数，表示组件已获焦。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
+
 ## onBlur
 
-ArkTS-Dyn: onBlur(event: () => void)
+ArkTS-Dyn: onBlur(event: () => void): T
 
-ArkTS-Sta: onBlur(event: (() => void) | undefined)
+ArkTS-Sta: onBlur(event: (() => void) | undefined): this
 
 当前组件失去焦点时触发的回调。
 
@@ -48,6 +60,17 @@ ArkTS-Sta: onBlur(event: (() => void) | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：** 
+
+| 参数名 | 类型                          | 必填 | 说明               |
+| ------ | ----------------------------- | ---- | ------------------ |
+| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \| undefined |  是   | onBlur的回调函数，表示组件已失焦。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## 示例
 

@@ -34,7 +34,7 @@ ArkTS-Sta: addGesture(gesture: GestureHandler, priority?: GesturePriority, mask?
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| gesture  |  [GestureHandler\<T>](./ts-gesturehandler.md#gesturehandlert) | 是   | 手势处理器对象。 |
+| gesture  |  ArkTS-Dyn: [GestureHandler\<T>](./ts-gesturehandler.md#gesturehandlert)<br/>ArkTS-Sta: [GestureHandler](./ts-gesturehandler.md#gesturehandler) | 是   | 手势处理器对象。 |
 | priority  |  [GesturePriority](./ts-gesturehandler.md#gesturepriority枚举说明) | 否   | 绑定手势的优先级。<br>默认值：GesturePriority.NORMAL |
 | mask  |  [GestureMask](./ts-gesture-settings.md#gesturemask枚举说明) | 否   | 事件响应设置。<br>默认值：GestureMask.Normal |
 
@@ -58,7 +58,7 @@ ArkTS-Sta: addParallelGesture(gesture: GestureHandler, mask?: GestureMask): void
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| gesture  |  [GestureHandler\<T>](./ts-gesturehandler.md#gesturehandlert) | 是   | 手势处理器对象。 |
+| gesture  |  ArkTS-Dyn: [GestureHandler\<T>](./ts-gesturehandler.md#gesturehandlert)<br/>ArkTS-Sta: [GestureHandler](./ts-gesturehandler.md#gesturehandler) | 是   | 手势处理器对象。 |
 | mask  |  [GestureMask](./ts-gesture-settings.md#gesturemask枚举说明) | 否   | 事件响应设置。<br>默认值：GestureMask.Normal |
 
 ### removeGestureByTag
