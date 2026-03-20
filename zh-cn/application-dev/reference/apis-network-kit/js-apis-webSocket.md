@@ -1347,6 +1347,8 @@ onHeaderReceive(callback: Callback\<ResponseHeaders\>): void
 
 订阅HTTP响应头事件，使用callback方式作为异步方法。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
 **系统能力**：SystemCapability.Communication.NetStack
 
 **参数：**
@@ -1402,6 +1404,8 @@ offHeaderReceive(callback?: Callback\<ResponseHeaders\>): void
 > **说明：**
 >
 > 可以指定传入onHeaderReceive中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -2020,6 +2024,8 @@ onConnect(callback: Callback\<WebSocketConnection\>): void
 
 订阅WebSocketServer的连接事件（客户端与服务端建链成功），使用callback方式作为异步方法。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
 **系统能力**：SystemCapability.Communication.NetStack
 
 **参数：**
@@ -2079,6 +2085,8 @@ offConnect(callback?: Callback\<WebSocketConnection\>): void
 >
 > 可以指定传入onConnect中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
 **系统能力**：SystemCapability.Communication.NetStack
 
 **参数：**
@@ -2133,6 +2141,8 @@ localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
 onMessageReceive(callback: Callback\<WebSocketMessage\>): void
 
 订阅WebSocketServer的接收客户端消息的事件，使用callback方式作为异步方法。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -2193,6 +2203,8 @@ offMessageReceive(callback?: Callback\<WebSocketMessage\>): void
 >
 > 可以指定传入onMessageReceive中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
 **系统能力**：SystemCapability.Communication.NetStack
 
 **参数：**
@@ -2247,6 +2259,8 @@ localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeR
 onWebSocketServerClose(callback: ClientConnectionCloseCallback): void
 
 订阅WebSocketServer的关闭事件，使用callback方式作为异步方法。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -2307,6 +2321,8 @@ offWebSocketServerClose(callback?: ClientConnectionCloseCallback): void
 >
 > 可以指定传入onWebSocketServerClose中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
 **系统能力**：SystemCapability.Communication.NetStack
 
 **参数：**
@@ -2361,6 +2377,8 @@ localServer.on('error', (err: BusinessError) => {
 onWebSocketServerError(callback: ErrorCallback): void
 
 订阅WebSocketServer的Error事件，使用callback方式作为异步方法。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -2420,6 +2438,8 @@ offWebSocketServerError(callback?: ErrorCallback): void
 > **说明：**
 >
 > 可以指定传入onWebSocketServerError中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
