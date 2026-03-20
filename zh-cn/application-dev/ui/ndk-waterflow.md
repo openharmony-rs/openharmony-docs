@@ -201,17 +201,17 @@ private:
 
 } // namespace NativeModule
 
-#endif //MYAPPLICATION_FLOWITEMADAPTER_H
+#endif // MYAPPLICATION_FLOWITEMADAPTER_H
 ```
 
 ## 创建分组
-使用WaterflowSection类管理[waterflow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)中的分组，其中SectionOption用于描述一个分段的各项配置信息。在类的构造函数中创建[ArkUI_WaterFlowSectionOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-waterflowsectionoption.md)对象，在析构函数中将其销毁。
+使用WaterflowSection类管理[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)中的分组，其中SectionOption用于描述一个分段的各项配置信息。在类的构造函数中创建[ArkUI_WaterFlowSectionOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-waterflowsectionoption.md)对象，在析构函数中将其销毁。
 
 
 <!-- @[worterflow_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/WaterflowSection.h) -->
 
 ``` C
-//WaterflowSection.h
+// WaterflowSection.h
 
 #ifndef MYAPPLICATION_WATERFLOWSECTION_H
 #define MYAPPLICATION_WATERFLOWSECTION_H
