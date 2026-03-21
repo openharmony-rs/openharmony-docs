@@ -992,9 +992,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**: 系统授权（system_grant）
 
-**支持设备**: PC/2in1
+**支持设备**: PC/2in1 | Tablet
 
 **起始版本**: 22
+
+**变更信息：** 从API 24开始，增加支持在平板上申请。
 
 ## ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 
