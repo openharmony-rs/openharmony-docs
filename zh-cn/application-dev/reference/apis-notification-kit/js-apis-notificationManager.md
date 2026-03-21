@@ -1753,11 +1753,13 @@ class MyAbility extends UIAbility {
 }
 ```
 
-## notificationManager.openNotificationSettingsWithResult<sup>26+</sup>
+## notificationManager.openNotificationSettingsWithResult
 
 openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<NotificationSetting\>
 
 拉起应用的通知设置界面，该页面以半模态形式呈现，可用于设置通知开关、通知提醒方式等。使用Promise异步回调, 当半模态窗口关闭时返回用户设置的状态。
+
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1948,10 +1950,10 @@ notificationManager.isGeofenceEnabled().then((data: boolean) => {
 | ---------------- | ------- | ---- | ---- | ------------------------------------------- |
 | vibrationEnabled | boolean | 否   |  否  | 表示是否开启振动。<br/> - true：开启。<br/> - false：关闭。 |
 | soundEnabled     | boolean | 否   |  否  | 表示是否开启响铃。<br/> - true：开启。<br/> - false：关闭。 |
-| lockScreenEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示是否开启锁屏通知。<br/> - true：开启。<br/> - false：关闭。 |
-| bannerEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示是否开启横幅通知。<br/> - true：开启。<br/> - false：关闭。 |
-| badgeNumberEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示是否开启通知角标数字展示。<br/> - true：开启。<br/> - false：关闭。 |
-| notificationEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示应用通知使能状态。<br/> - true：开启。<br/> - false：关闭。 |
+| lockScreenEnabled     | boolean | 否   |  是  | 表示是否开启锁屏通知。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
+| bannerEnabled     | boolean | 否   |  是  | 表示是否开启横幅通知。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
+| badgeNumberEnabled     | boolean | 否   |  是  | 表示是否开启通知角标数字展示。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
+| notificationEnabled<sup>     | boolean | 否   |  是  | 表示应用通知使能状态。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
 
 ## BundleOption
 
