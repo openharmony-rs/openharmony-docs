@@ -95,17 +95,19 @@ Timestamp:2025-05-17 19:17:07.000
 
 从**API version 24**开始支持页面切换日志配置。当应用发生崩溃时，系统可以收集并上报页面切换日志，帮助开发者定位问题。
 
-### configEventPolicy接口和参数设置说明
+### configEventPolicy接口说明
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [configEventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| 配置页面切换日志，在[EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 设置为[appCrashPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appcrashpolicy24)。 |
+| [configEventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| 设置崩溃事件策略参数接口，支持开启崩溃事件的页面切换日志采集。 |
 
-### appCrashPolicy参数设置说明
+### configEventPolicy接口参数设置说明
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| pageSwitchLogEnable | boolean | 否 | true：启用页面切换日志；false：不启用页面切换日志。缺省时默认为false。 |
+开发者可以通过设置[EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 的参数来开启崩溃事件的页面切换日志采集。
+
+| 名称       | 类型    | 只读 | 可选 | 说明                                         |
+| ---------- | ------- | ---- | ---- | ------------------------------------------ |
+| appCrashPolicy | [AppCrashPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appcrashpolicy24) | 否 | 是   | 崩溃事件配置策略。 |
 
 **参数设置示例**
 
