@@ -1832,7 +1832,7 @@ request方法回调函数的返回值类型。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS模式 ：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 ### 属性
 
@@ -2374,9 +2374,9 @@ TLS配置。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本 ：**  18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本 ：**  22
+**ArkTS-Sta起始版本：** 22
 
 | 类型         | 说明                                          |
 | ---------- | ------------------------------------------- |
