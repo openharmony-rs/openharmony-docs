@@ -2473,11 +2473,11 @@ localServer.offWebSocketServerError();
 
 **ArkTS-Sta起始版本：** 22
 
-| 名称 | 类型   | 必填 | 说明                |
-| ------ | ------ | ---- |-------------------|
-| certPath   | string  | 是   | 证书路径。             |
-| keyPath | string | 是   | 证书密钥的路径。          |
-| keyPassword | string | 否   | 证书密钥的密码。缺省为空字符串。 |
+| 名称 | 类型   | 只读 |可选| 说明                |
+| ------ | ------ | ---- |---|----------------|
+| certPath   | string  | 否   |否 |证书路径。             |
+| keyPath | string | 否   |否| 证书密钥的路径。          |
+| keyPassword | string | 否   |是| 证书密钥的密码。缺省为空字符串。 |
 
 ## ProxyConfiguration<sup>12+</sup>
 type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
