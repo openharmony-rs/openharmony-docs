@@ -101,7 +101,7 @@ FormComponent (value: FormInfo)
 
 | 参数名    | 参数类型                        | 只读 | 可选 | 参数描述                     |
 | --------- | ------------------------------- | ---- | ---- | ------------------------------ |
-| errcode        | number                 | 否  | 否   | [错误码](../../apis-form-kit/errorcode-form.md)。                                        |
+|  errcode        | ArkTS-Dyn: number <br> ArkTS-Sta: int                 | 否  | 否   | [错误码](../../apis-form-kit/errorcode-form.md)。                                        |
 | msg      | string            | 否       | 否   | 错误信息。                             |
 
 ## RouterCallbackInfo<sup>23+</sup>对象说明
