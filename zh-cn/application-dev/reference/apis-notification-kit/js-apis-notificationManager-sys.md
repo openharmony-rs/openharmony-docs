@@ -6612,7 +6612,7 @@ getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[BundleNoti
 
 | 类型            | 说明                                   |
 | --------------- | -------------------------------------- |
-| Promise\<[BundleNotificationStatistics](#bundlenotificationstatistics26)[]\> | Promise对象。返回指定应用列表的通知统计信息。 |
+| Promise\<[BundleNotificationStatistics](#bundlenotificationstatistics)[]\> | Promise对象。返回指定应用列表的通知统计信息。 |
 
 **错误码**：
 
