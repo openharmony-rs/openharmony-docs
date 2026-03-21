@@ -138,7 +138,7 @@ Wi-Fi标准枚举。
 | 枚举项 | 描述 |
 | -------- | -------- |
 | OH_WIFI_STANDARD_UNDEFINED = 0 | 无效的Wi-Fi标准。 |
-| OH_WIFI_STANDARD_11A =| 1 | 802.11a Wi-Fi标准。 |
+| OH_WIFI_STANDARD_11A = 1 | 802.11a Wi-Fi标准。 |
 | OH_WIFI_STANDARD_11B = 2 | 802.11b Wi-Fi标准。 |
 | OH_WIFI_STANDARD_11G = 3 | 802.11g Wi-Fi标准。 |
 | OH_WIFI_STANDARD_11N = 4 | 802.11n Wi-Fi标准。 |
