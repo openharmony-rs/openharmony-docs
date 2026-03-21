@@ -200,7 +200,7 @@ getSysResourceManager(): ResourceManager
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -246,7 +246,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                   | 值  | 说明   |
 | -------------------- | ---- | ---- |
@@ -261,16 +261,16 @@ try {
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
-<!--RP1-->
+
 | 名称                   | 值  | 说明   |
 | -------------------- | ---- | ---- |
-| DEVICE_TYPE_PHONE    | 0x00 | 手机。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 20   |
-| DEVICE_TYPE_TABLET   | 0x01 | 平板。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 20   |
-| DEVICE_TYPE_CAR      | 0x02 | 车机。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 20   |
-| DEVICE_TYPE_TV       | 0x04 | 智慧屏。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 20  |
-| DEVICE_TYPE_WEARABLE | 0x06 | 智能手表。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 20   |
-| DEVICE_TYPE_2IN1<sup>11+</sup>     | 0x07 | PC/2in1。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 20   |
-<!--RP1End-->
+| DEVICE_TYPE_PHONE    | 0x00 | 手机。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23   |
+| DEVICE_TYPE_TABLET   | 0x01 | 平板。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23   |
+| DEVICE_TYPE_CAR      | 0x02 | 车机。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23   |
+| DEVICE_TYPE_PC       | 0x03 | 电脑。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23   |
+| DEVICE_TYPE_TV       | 0x04 | 智慧屏。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| DEVICE_TYPE_WEARABLE | 0x06 | 智能手表。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23   |
+| DEVICE_TYPE_2IN1<sup>11+</sup>     | 0x07 | PC/2in1。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23   |
 
 ## ScreenDensity
 
@@ -282,7 +282,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 值  | 说明         |
 | -------------- | ---- | ---------- |
@@ -304,7 +304,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值   | 说明       |
 | ----- | ---- | ---------- |
@@ -320,13 +320,13 @@ try {
 
 | 名称                        | 类型                            | 只读 | 可选 | 说明               |
 | --------------------------- | ------------------------------- | ---- | ---- | ------------------ |
-| direction                   | [Direction](#direction)         | 否   | 否   | 屏幕方向。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 20         |
-| locale                      | string                          | 否   | 否   | 语言文字国家地区。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 20 |
-| deviceType<sup>12+</sup>    | [DeviceType](#devicetype)       | 否   | 否   | 设备类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20         |
-| screenDensity<sup>12+</sup> | [ScreenDensity](#screendensity) | 否   | 否   | 屏幕密度。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20         |
-| colorMode<sup>12+</sup>     | [ColorMode](#colormode12)       | 否   | 否   | 颜色模式。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20        |
-| mcc<sup>12+</sup>           | ArkTS-Dyn: number </br> ArkTS-Sta: int | 否   | 否   | 移动国家码。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20       |
-| mnc<sup>12+</sup>           | ArkTS-Dyn: number </br> ArkTS-Sta: int | 否   | 否   | 移动网络码。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20       |
+| direction                   | [Direction](#direction)         | 否   | 否   | 屏幕方向。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23         |
+| locale                      | string                          | 否   | 否   | 语言文字国家地区。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23 |
+| deviceType<sup>12+</sup>    | [DeviceType](#devicetype)       | 否   | 否   | 设备类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23         |
+| screenDensity<sup>12+</sup> | [ScreenDensity](#screendensity) | 否   | 否   | 屏幕密度。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23         |
+| colorMode<sup>12+</sup>     | [ColorMode](#colormode12)       | 否   | 否   | 颜色模式。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23        |
+| mcc<sup>12+</sup>           | ArkTS-Dyn: number </br> ArkTS-Sta: int | 否   | 否   | 移动国家码。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23       |
+| mnc<sup>12+</sup>           | ArkTS-Dyn: number </br> ArkTS-Sta: int | 否   | 否   | 移动网络码。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23       |
 
 
 
@@ -340,7 +340,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型                            | 只读   | 可选   | 说明       |
 | ------------- | ------------------------------- | ---- | ---- | -------- |
@@ -358,7 +358,7 @@ type RawFileDescriptor = _RawFileDescriptor
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型    | 说明   |
 | ------  | ---- | 
@@ -374,7 +374,7 @@ type Resource = _Resource
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型    | 说明   |
 | ------  | ---- | 
@@ -480,7 +480,7 @@ ArkTS-Sta: getStringSync(resId: long, ...args: (string | double)[]): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -501,7 +501,7 @@ ArkTS-Sta: getStringSync(resId: long, ...args: (string | double)[]): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。  |
 | 9001001  | Invalid resource ID.                               |
 | 9001002  | No matching resource is found based on the resource ID.                 |
 | 9001006  | The resource is referenced cyclically.                    |
@@ -651,7 +651,7 @@ ArkTS-Sta: getStringByNameSync(resName: string, ...args: (string | double)[]): s
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -672,7 +672,7 @@ ArkTS-Sta: getStringByNameSync(resName: string, ...args: (string | double)[]): s
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。              |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -749,7 +749,7 @@ ArkTS-Sta: getStringValue(resId: long, callback: _AsyncCallback&lt;string&gt;): 
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -765,7 +765,7 @@ ArkTS-Sta: getStringValue(resId: long, callback: _AsyncCallback&lt;string&gt;): 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
-| 9001001  | If the module resId invalid.             |
+| 9001001  | Invalid resource ID.             |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.         |
 
@@ -851,7 +851,7 @@ ArkTS-Sta: getStringValue(resId: long): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -952,7 +952,7 @@ getStringByName(resName: string, callback: _AsyncCallback&lt;string&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1051,7 +1051,7 @@ getStringByName(resName: string): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1153,7 +1153,7 @@ ArkTS-Sta: getStringArrayValueSync(resId: long): Array&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1252,7 +1252,7 @@ getStringArrayByNameSync(resName: string): Array&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1352,7 +1352,7 @@ ArkTS-Sta: getStringArrayValue(resId: long, callback: _AsyncCallback&lt;Array&lt
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1462,7 +1462,7 @@ ArkTS-Sta: getStringArrayValue(resId: long): Promise&lt;Array&lt;string&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1571,7 +1571,7 @@ getStringArrayByName(resName: string, callback: _AsyncCallback&lt;Array&lt;strin
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1678,7 +1678,7 @@ getStringArrayByName(resName: string): Promise&lt;Array&lt;string&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1792,7 +1792,7 @@ ArkTS-Sta: getIntPluralStringValueSync(resId: long, num: int, ...args: (string |
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1908,7 +1908,7 @@ ArkTS-Sta: getIntPluralStringByNameSync(resName: string, num: int, ...args: (str
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -2023,7 +2023,7 @@ ArkTS-Sta: getDoublePluralStringValueSync(resId: long, num: double, ...args: (st
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -2139,7 +2139,7 @@ ArkTS-Sta: getDoublePluralStringByNameSync(resName: string, num: double, ...args
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -2250,7 +2250,7 @@ ArkTS-Sta: getMediaContentSync(resId: long, density?: int): Uint8Array
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2350,7 +2350,7 @@ ArkTS-Sta: getMediaByNameSync(resName: string, density?: int): Uint8Array
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2449,7 +2449,7 @@ ArkTS-Sta: getMediaContent(resId: long, callback: _AsyncCallback&lt;Uint8Array&g
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -2539,7 +2539,7 @@ ArkTS-Sta: getMediaContent(resId: long, density: int, callback: _AsyncCallback&l
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -2628,7 +2628,7 @@ ArkTS-Sta: getMediaContent(resId: long): Promise&lt;Uint8Array&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -2717,7 +2717,7 @@ ArkTS-Sta: getMediaContent(resId: long, density: int): Promise&lt;Uint8Array&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -2805,7 +2805,7 @@ getMediaByName(resName: string, callback: _AsyncCallback&lt;Uint8Array&gt;): voi
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -2892,7 +2892,7 @@ ArkTS-Sta: getMediaByName(resName: string, density: int, callback: _AsyncCallbac
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -2978,7 +2978,7 @@ getMediaByName(resName: string): Promise&lt;Uint8Array&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -3066,7 +3066,7 @@ ArkTS-Sta: getMediaByName(resName: string, density: int): Promise&lt;Uint8Array&
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -3155,7 +3155,7 @@ ArkTS-Sta: getMediaContentBase64Sync(resId: long, density?: int): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -3255,7 +3255,7 @@ ArkTS-Sta: getMediaBase64ByNameSync(resName: string, density?: int): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -3354,7 +3354,7 @@ ArkTS-Sta: getMediaContentBase64(resId: long, callback: _AsyncCallback&lt;string
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3442,7 +3442,7 @@ ArkTS-Sta: getMediaContentBase64(resId: long, density: int, callback: _AsyncCall
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -3531,7 +3531,7 @@ ArkTS-Sta: getMediaContentBase64(resId: long): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -3620,7 +3620,7 @@ ArkTS-Sta: getMediaContentBase64(resId: long, density: int): Promise&lt;string&g
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -3708,7 +3708,7 @@ getMediaBase64ByName(resName: string, callback: _AsyncCallback&lt;string&gt;): v
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -3799,7 +3799,7 @@ ArkTS-Sta: getMediaBase64ByName(resName: string, density: int, callback: _AsyncC
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -3885,7 +3885,7 @@ getMediaBase64ByName(resName: string): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -3973,7 +3973,7 @@ ArkTS-Sta: getMediaBase64ByName(resName: string, density: int): Promise&lt;strin
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -4062,7 +4062,7 @@ ArkTS-Sta: getDrawableDescriptor(resId: long, density?: int, type?: int): Drawab
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4178,7 +4178,7 @@ ArkTS-Sta: getDrawableDescriptorByName(resName: string, density?: int, type?: in
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4294,7 +4294,7 @@ ArkTS-Sta: getBoolean(resId: long): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -4389,7 +4389,7 @@ getBooleanByName(resName: string): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -4479,7 +4479,7 @@ getNumber(resId: number): number
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[getInt](#getint20)和[getDouble](#getdouble20)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getInt](#getint23)和[getDouble](#getdouble23)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4570,7 +4570,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### getInt<sup>20+</sup>
+### getInt<sup>23+</sup>
 
 getInt(resId: long): int
 
@@ -4584,7 +4584,7 @@ getInt(resId: long): int
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -4645,7 +4645,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### getDouble<sup>20+</sup>
+### getDouble<sup>23+</sup>
 
 getDouble(resId: long): double
 
@@ -4659,7 +4659,7 @@ getDouble(resId: long): double
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -4729,7 +4729,7 @@ getNumberByName(resName: string): number
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[getIntByName](#getintbyname20)和[getDoubleByName](#getdoublebyname20)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getIntByName](#getintbyname23)和[getDoubleByName](#getdoublebyname23)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4820,7 +4820,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### getIntByName<sup>20+</sup>
+### getIntByName<sup>23+</sup>
 
 getIntByName(resName: string): int
 
@@ -4834,7 +4834,7 @@ getIntByName(resName: string): int
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -4894,7 +4894,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### getDoubleByName<sup>20+</sup>
+### getDoubleByName<sup>23+</sup>
 
 getDoubleByName(resName: string): double
 
@@ -4908,7 +4908,7 @@ getDoubleByName(resName: string): double
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -4984,7 +4984,7 @@ ArkTS-Sta: getColorSync(resId: long) : long
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5081,7 +5081,7 @@ ArkTS-Sta: getColorByNameSync(resName: string) : long
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5177,7 +5177,7 @@ ArkTS-Sta: getColor(resId: long, callback: _AsyncCallback&lt;long&gt;): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5193,7 +5193,7 @@ ArkTS-Sta: getColor(resId: long, callback: _AsyncCallback&lt;long&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
-| 9001001  | If the module resId invalid.             |
+| 9001001  | Invalid resource ID.             |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.         |
 
@@ -5279,7 +5279,7 @@ ArkTS-Sta: getColor(resId: long): Promise&lt;long&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5386,7 +5386,7 @@ ArkTS-Sta: getColorByName(resName: string, callback: _AsyncCallback&lt;long&gt;)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5487,7 +5487,7 @@ ArkTS-Sta: getColorByName(resName: string): Promise&lt;long&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5591,7 +5591,7 @@ getRawFileContentSync(path: string): Uint8Array
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5668,7 +5668,7 @@ getRawFileContent(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;): voi
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -5752,7 +5752,7 @@ getRawFileContent(path: string): Promise&lt;Uint8Array&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -5841,7 +5841,7 @@ getRawFileListSync(path: string): Array\<string>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5928,7 +5928,7 @@ getRawFileList(path: string, callback: _AsyncCallback&lt;Array\<string\>&gt;): v
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -6020,7 +6020,7 @@ getRawFileList(path: string): Promise&lt;Array\<string\>&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -6117,7 +6117,7 @@ getRawFdSync(path: string): RawFileDescriptor
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6198,7 +6198,7 @@ getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -6294,7 +6294,7 @@ getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -6385,7 +6385,7 @@ closeRawFdSync(path: string): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6400,7 +6400,7 @@ closeRawFdSync(path: string): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
-| 9001005  | The resource not found by path.          |
+| 9001005  | Invalid relative path.          |
 
 **示例：**
 
@@ -6462,7 +6462,7 @@ closeRawFd(path: string, callback: _AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -6478,7 +6478,7 @@ closeRawFd(path: string, callback: _AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
-| 9001005  | The resource not found by path.          |
+| 9001005  | Invalid relative path.          |
 
 **示例：**
 
@@ -6550,7 +6550,7 @@ closeRawFd(path: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -6639,7 +6639,7 @@ getConfigurationSync(): Configuration
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6697,7 +6697,7 @@ getConfiguration(callback: _AsyncCallback&lt;Configuration&gt;): void
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -6771,7 +6771,7 @@ getConfiguration(): Promise&lt;Configuration&gt;
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6838,7 +6838,7 @@ getDeviceCapabilitySync(): DeviceCapability
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6896,7 +6896,7 @@ getDeviceCapability(callback: _AsyncCallback&lt;DeviceCapability&gt;): void
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -6970,7 +6970,7 @@ getDeviceCapability(): Promise&lt;DeviceCapability&gt;
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7041,7 +7041,7 @@ addResource(path: string): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7118,7 +7118,7 @@ removeResource(path: string): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7193,7 +7193,7 @@ getLocales(includeSystem?: boolean): Array\<string>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7206,6 +7206,14 @@ getLocales(includeSystem?: boolean): Array\<string>
 | 类型                        | 说明          |
 | ------------------------- | ----------- |
 | Array\<string> | 返回获取的语言列表，列表中的字符串由语言、脚本（可选）、地区（可选），按照顺序使用中划线“-”连接组成。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
 
 **示例：**
 
@@ -7295,7 +7303,7 @@ ArkTS-Sta: getSymbol(resId: long): long
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7381,7 +7389,7 @@ ArkTS-Sta: getSymbolByName(resName: string): long
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7464,7 +7472,7 @@ isRawDir(path: string): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7561,7 +7569,7 @@ getOverrideResourceManager(configuration?: Configuration): ResourceManager
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7643,7 +7651,7 @@ getOverrideConfiguration(): Configuration
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7711,7 +7719,7 @@ updateOverrideConfiguration(configuration: Configuration): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7787,6 +7795,8 @@ release()
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **示例：**
@@ -7807,6 +7817,8 @@ getString(resId: number, callback: AsyncCallback&lt;string&gt;): void
 > **说明：**
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getStringValue](#getstringvalue9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -7840,6 +7852,8 @@ getString(resId: number): Promise&lt;string&gt;
 > **说明：**
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getStringValue](#getstringvalue9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -7878,6 +7892,8 @@ getStringSync(resource: Resource): string
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringByNameSync](#getstringbynamesync9)或[getStringSync](#getstringsync9)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -7949,6 +7965,8 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getStringByNameSync](#getstringbynamesync10)或[getStringSync](#getstringsync10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -8022,6 +8040,8 @@ getStringValue(resource: Resource, callback: _AsyncCallback&lt;string&gt;): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -8087,6 +8107,8 @@ getStringValue(resource: Resource): Promise&lt;string&gt;
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -8144,6 +8166,8 @@ getStringArray(resId: number, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getStringArrayValue](#getstringarrayvalue9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：** 
@@ -8176,6 +8200,8 @@ getStringArray(resId: number): Promise&lt;Array&lt;string&gt;&gt;
 > **说明：**
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getStringArrayValue](#getstringarrayvalue9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -8215,6 +8241,8 @@ getStringArrayValueSync(resource: Resource): Array&lt;string&gt;
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getStringArrayByNameSync](#getstringarraybynamesync10)或[getStringArrayValueSync](#getstringarrayvaluesync10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -8290,6 +8318,8 @@ getStringArrayValue(resource: Resource, callback: _AsyncCallback&lt;Array&lt;str
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -8358,6 +8388,8 @@ getStringArrayValue(resource: Resource): Promise&lt;Array&lt;string&gt;&gt;
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringArrayByName](#getstringarraybyname9-1)或[getStringArrayValue](#getstringarrayvalue9-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -8431,6 +8463,8 @@ getMedia(resId: number, callback: AsyncCallback&lt;Uint8Array&gt;): void
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getMediaContent](#getmediacontent9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：** 
@@ -8462,6 +8496,8 @@ getMedia(resId: number): Promise&lt;Uint8Array&gt;
 > **说明：**
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getMediaContent](#getmediacontent9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -8502,6 +8538,8 @@ getMediaContentSync(resource: Resource, density?: number): Uint8Array
 
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -8569,6 +8607,8 @@ getMediaContent(resource: Resource, callback: _AsyncCallback&lt;Uint8Array&gt;):
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -8626,6 +8666,8 @@ getMediaContent(resource: Resource, density: number, callback: _AsyncCallback&lt
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaByName](#getmediabyname10)或[getMediaContent](#getmediacontent10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -8685,6 +8727,8 @@ getMediaContent(resource: Resource): Promise&lt;Uint8Array&gt;
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getMediaByName](#getmediabyname9-1)或[getMediaContent](#getmediacontent9-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -8747,6 +8791,8 @@ getMediaContent(resource: Resource, density: number): Promise&lt;Uint8Array&gt;
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -8807,6 +8853,8 @@ getMediaBase64(resId: number, callback: AsyncCallback&lt;string&gt;): void
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getMediaContentBase64](#getmediacontentbase649)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：** 
@@ -8839,6 +8887,8 @@ getMediaBase64(resId: number): Promise&lt;string&gt;
 > **说明：**
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getMediaContentBase64](#getmediacontentbase649-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -8877,6 +8927,8 @@ getMediaContentBase64Sync(resource: Resource, density?: number): string
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaBase64ByNameSync](#getmediabase64bynamesync10)或[getMediaContentBase64Sync](#getmediacontentbase64sync10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -8943,6 +8995,8 @@ getMediaContentBase64(resource: Resource, callback: _AsyncCallback&lt;string&gt;
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -9000,6 +9054,8 @@ getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallb
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaBase64ByName](#getmediabase64byname10)或[getMediaContentBase64](#getmediacontentbase6410)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -9059,6 +9115,8 @@ getMediaContentBase64(resource: Resource): Promise&lt;string&gt;
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getMediaBase64ByName](#getmediabase64byname9-1)或[getMediaContentBase64](#getmediacontentbase649-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -9121,6 +9179,8 @@ getMediaContentBase64(resource: Resource, density: number): Promise&lt;string&gt
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -9181,6 +9241,8 @@ getDrawableDescriptor(resource: Resource, density?: number, type?: number): Draw
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getDrawableDescriptorByName](#getdrawabledescriptorbyname10)或[getDrawableDescriptor](#getdrawabledescriptor10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -9257,6 +9319,8 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -9345,6 +9409,8 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -9432,6 +9498,8 @@ getPluralStringValueSync(resId: number, num: number): string
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：** 
@@ -9508,6 +9576,8 @@ getPluralStringValueSync(resource: Resource, num: number): string
 > 从API version 10开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -9594,6 +9664,8 @@ getPluralStringByNameSync(resName: string, num: number): string
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：** 
@@ -9671,6 +9743,8 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback&lt;str
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：** 
@@ -9742,6 +9816,8 @@ getPluralStringValue(resId: number, num: number): Promise&lt;string&gt;
 > 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -9818,6 +9894,8 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback&l
 > 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -9898,6 +9976,8 @@ getPluralStringValue(resource: Resource, num: number): Promise&lt;string&gt;
 > 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -9983,6 +10063,8 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback&lt;
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：** 
@@ -10053,6 +10135,8 @@ getPluralStringByName(resName: string, num: number): Promise&lt;string&gt;
 > 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringByNameSync](#getintpluralstringbynamesync18)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -10128,6 +10212,8 @@ getPluralString(resId: number, num: number): Promise&lt;string&gt;
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：** 
@@ -10170,6 +10256,8 @@ getPluralString(resId: number, num: number, callback: AsyncCallback&lt;string&gt
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：** 
@@ -10206,6 +10294,8 @@ getBoolean(resource: Resource): boolean
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getBooleanByName](#getbooleanbyname9)或[getBoolean](#getboolean9)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -10276,6 +10366,8 @@ getNumber(resource: Resource): number
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getNumberByName](#getnumberbyname9)或[getNumber](#getnumber9)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -10349,6 +10441,8 @@ getColorSync(resource: Resource): number
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -10419,6 +10513,8 @@ getColor(resource: Resource, callback: _AsyncCallback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -10483,6 +10579,8 @@ getColor(resource: Resource): Promise&lt;number&gt;
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getColorByName](#getcolorbyname10-1)或[getColor](#getcolor10-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -10552,6 +10650,8 @@ getSymbol(resource: Resource): number
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -10610,6 +10710,8 @@ getRawFile(path: string, callback: AsyncCallback&lt;Uint8Array&gt;): void
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getRawFileContent](#getrawfilecontent9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：** 
@@ -10644,6 +10746,8 @@ getRawFile(path: string): Promise&lt;Uint8Array&gt;
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getRawFileContent](#getrawfilecontent9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -10683,6 +10787,8 @@ getRawFileDescriptor(path: string, callback: AsyncCallback&lt;RawFileDescriptor&
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getRawFd](#getrawfd9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：** 
@@ -10718,6 +10824,8 @@ getRawFileDescriptor(path: string): Promise&lt;RawFileDescriptor&gt;
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getRawFd](#getrawfd9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -10758,6 +10866,8 @@ closeRawFileDescriptor(path: string, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[closeRawFd](#closerawfd9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：** 
@@ -10791,6 +10901,8 @@ closeRawFileDescriptor(path: string): Promise&lt;void&gt;
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[closeRawFd](#closerawfd9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -10826,6 +10938,8 @@ getSystemResourceManager(): ResourceManager
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[resourceManager.getSysResourceManager](#resourcemanagergetsysresourcemanager20)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -10864,19 +10978,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 ## AsyncCallback<sup>(deprecated)</sup>
 
-  ```ts
-  AsyncCallback<T> {
-    (err: Error, data: T): void;
-  }
-  ```
-
-异步回调函数，携带错误参数和异步返回值。
-
-> **说明：**
+> **说明**
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)替代。
 
+### (err: Error, data: T)<sup>(deprecated)</sup>
+
+(err: Error, data: T): void;
+
+异步回调函数，携带错误参数和异步返回值。
+
+> **说明**
+>
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                         |
 | ---- | ------------------------------------------------------------ | ---- | ---------------------------- |

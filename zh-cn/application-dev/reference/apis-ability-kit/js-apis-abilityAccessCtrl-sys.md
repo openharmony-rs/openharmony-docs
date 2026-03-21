@@ -1270,26 +1270,13 @@ atManager.requestPermissionsFromUserWithWindowId(context, windowId, ['ohos.permi
 });
 ```
 
-### PermissionRequestToggleStatus<sup>12+</sup>
-
-表示指定权限对应的弹窗开关状态的枚举。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 22
-
-| 名称               |    值 | 说明        |
-| ------------------ | ----- | ----------- |
-| CLOSED  | 0    | 表示关闭状态。 |
-| OPEN | 1     | 表示开启状态。 |
-
 ### queryStatusByPermission
 
 queryStatusByPermission(permissionList: Array&lt;Permissions&gt;): Promise&lt;Array&lt;PermissionStatusInfo&gt;&gt;
 
 根据权限列表查询所有已请求过该权限的应用及其权限状态。使用Promise异步回调。当查询的数据结果的大小超过50000条时，返回12100015错误码。
+
+**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -1366,6 +1353,8 @@ ArkTS-Sta: queryStatusByTokenID(tokenIDList: Array&lt;int&gt;): Promise&lt;Array
 
 根据应用tokenID列表查询其所有的权限状态。使用Promise异步回调。当查询的数据结果的大小超过50000条时，返回12100015错误码。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1435,9 +1424,11 @@ atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.
 });
 ```
 
-### PermissionStatusInfo
+## PermissionStatusInfo
 
 表示权限状态信息。
+
+**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -1455,3 +1446,18 @@ atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 否   | 否   | 权限名称。 |
 | grantStatus    | [GrantStatus](js-apis-abilityAccessCtrl.md#grantstatus) | 否   | 否   | 权限授权状态。 |
 | grantFlags     | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗。用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
+
+## PermissionRequestToggleStatus<sup>12+</sup>
+
+表示指定权限对应的弹窗开关状态的枚举。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称               |    值 | 说明        |
+| ------------------ | ----- | ----------- |
+| CLOSED  | 0    | 表示关闭状态。 |
+| OPEN | 1     | 表示开启状态。 |

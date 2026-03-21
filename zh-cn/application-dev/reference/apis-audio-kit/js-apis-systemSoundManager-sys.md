@@ -2770,7 +2770,7 @@ systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value: int
 });
 ```
 
-## RingtonePlayer<sup>10+</sup>
+## RingtonePlayer
 
 type RingtonePlayer = _RingtonePlayer;
 
@@ -2802,7 +2802,7 @@ type SystemTonePlayer = _SystemTonePlayer;
 |-----------------|-----------|
 | _SystemTonePlayer | 系统提示音播放器。 |
 
-## RingtoneOptions<sup>10+</sup>
+## RingtoneOptions
 
 type RingtoneOptions = _RingtoneOptions;
 

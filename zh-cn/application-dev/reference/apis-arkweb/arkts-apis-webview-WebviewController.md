@@ -2164,6 +2164,7 @@ runJavaScript(script: string, callback : AsyncCallback\<string>): void
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 17100003 | Calling a JS method that returns an empty ArrayBuffer via runJavaScript.                        |
 
 **示例：**
 
@@ -2314,6 +2315,7 @@ runJavaScript(script: string): Promise\<string>
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 17100003 | Calling a JS method that returns an empty ArrayBuffer via runJavaScript.                        |
 
 **示例：**
 
@@ -18731,7 +18733,7 @@ setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcar
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. JSON string exceeds 10MB limit.<br/>3.JSON parsing failed (syntax errors, etc.)<br/>4. UrlPermissionList field is missing.<br/>5. URL rule validation failed:<br/>- scheme must be http or https.<br/>- host cannot be empty.<br/>- port must be between 0-65535.<br/>- path length cannot exceed 65536 characters. |
+| 401      | Parameter error, possible causes:<br/>1. Mandatory parameters are left unspecified<br/>2. JSON string exceeds 10MB limit<br/>3. JSON parsing failed (syntax errors, etc.)<br/>4. UrlPermissionList field is missing<br/>5. URL rule validation failed:<br/>- scheme must be http or https<br/>- host cannot be empty<br/>- port must be between 0-65535<br/>- path length cannot exceed 65536 characters |
 | 17100001 | Initialization error. The WebviewController must be associated with a Web component. |
 
 **示例：**

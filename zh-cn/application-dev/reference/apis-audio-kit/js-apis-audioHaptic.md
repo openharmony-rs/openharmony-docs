@@ -75,7 +75,7 @@ let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.get
 >
 > 开发者需要确保fd是可用的文件描述符，且offset和length的值都是正确的。
 
-**系统能力：**: SystemCapability.Multimedia.AudioHaptic.Core
+**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -109,8 +109,8 @@ ArkTS-Sta: registerSource(audioUri: string, hapticUri: string): Promise&lt;int&g
 
 | 参数名   | 类型                                      | 必填 | 说明                     |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| audioUri  | string                                  | 是   | 音频资源的Uri。对普通时延模式，音频资源格式和路径格式的支持可参考[media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)；对低时延模式，音频资源格式支持可参考[SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool)，路径格式需满足[文件管理模块open函数](../apis-core-file-kit/js-apis-file-fs.md#fsopen)的要求。对两种时延模式，均建议传入文件的绝对路径。           |
-| hapticUri | string                                  | 是   | 振动资源的Uri。振动资源格式支持可参考[vibrator](../apis-sensor-service-kit/js-apis-vibrator.md#hapticfiledescriptor10)，路径格式需满足[文件管理模块open函数](../apis-core-file-kit/js-apis-file-fs.md#fsopen)的要求。建议传入文件的绝对路径。         |
+| audioUri  | string                                  | 是   | 音频资源的Uri。对普通时延模式，音频资源格式和路径格式的支持可参考[media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)；对低时延模式，音频资源格式支持可参考[SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool)，路径格式需满足[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)的要求。对两种时延模式，均建议传入文件的绝对路径。           |
+| hapticUri | string                                  | 是   | 振动资源的Uri。振动资源格式支持可参考[HapticFileDescriptor](../apis-sensor-service-kit/js-apis-vibrator.md#hapticfiledescriptor10)，路径格式需满足[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)的要求。建议传入文件的绝对路径。         |
 
 **返回值：**
 
@@ -173,7 +173,7 @@ ArkTS-Sta: registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: Au
 > 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 
 
-**系统能力：**: SystemCapability.Multimedia.AudioHaptic.Core
+**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
 **ArkTS-Dyn起始版本：** 20
 

@@ -198,7 +198,7 @@ addAll(set: LightWeightSet&lt;T&gt;): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The addAll method cannot be bound. |
 
 **示例：**
@@ -246,7 +246,7 @@ hasAll(set: LightWeightSet&lt;T&gt;): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The hasAll method cannot be bound. |
 
 **示例：**
@@ -342,7 +342,7 @@ ArkTS-Sta: increaseCapacityTo(minimumCapacity: int): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of minimumCapacity is out of range. |
 | 10200011 | The increaseCapacityTo method cannot be bound. |
 
@@ -443,13 +443,13 @@ lightWeightSet.add("sparrow");
 let result = lightWeightSet.remove("sparrow");
 ```
 
-### remove<sup>20+</sup>
+### remove<sup>23+</sup>
 
 remove(key: T): T \| undefined
 
 删除并返回指定key对应的元素。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -498,7 +498,7 @@ ArkTS-Sta: removeAt(index: int): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
+| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指定下标。需要小于等于INT32_MAX即2147483647。 |
 
 **返回值：**
 
@@ -512,7 +512,7 @@ ArkTS-Sta: removeAt(index: int): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The removeAt method cannot be bound. |
 
 **示例：**
@@ -543,7 +543,7 @@ getValueAt(index: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 指定下标。需要小于等于INT32_MAX即2147483647。 |
 
 **返回值：**
 
@@ -587,7 +587,7 @@ getValueAt(index: int): T \| undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | int | 是 | 指定下标。需要小于等于int32_max（即2147483647）。 |
+| index | int | 是 | 指定下标。需要小于等于INT32_MAX（即2147483647）。 |
 
 **返回值：**
 
@@ -1028,7 +1028,7 @@ equal(obj: Object): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 当obj为仅含string或number的LightWeightSet或数组，且对象内部元素构成相同时，返回true；其它情况返回false。 |
+| boolean | 当obj为仅含string或number的LightWeightSet或数组，且对象内部元素构成相同时，返回true；其他情况返回false。 |
 
 **错误码：**
 
