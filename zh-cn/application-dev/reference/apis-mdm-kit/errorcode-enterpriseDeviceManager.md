@@ -587,9 +587,10 @@ Failed to enable or disable the activation lock.
 
 **可能原因**
 
-<!--RP1-->设备不支持激活锁服务。<!--RP1End-->
-
+<!--RP1-->设备不支持激活锁服务。
+<!--RP1End-->
 
 **处理步骤**
 
-<!--RP2-->设备不支持激活锁服务。<!--RP2End-->
+<!--RP2-->设备不支持激活锁服务。
+<!--RP2End-->
