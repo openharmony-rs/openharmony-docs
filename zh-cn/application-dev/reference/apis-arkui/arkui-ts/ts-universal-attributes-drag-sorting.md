@@ -28,7 +28,7 @@ ArkTS-Sta: onMove(handler: OnMoveHandler | undefined): this
 
 | 参数名 | 类型      | 必填 | 说明       |
 | ------ | --------- | ---- | ---------- |
-| handler  | ArkTS-Dyn: Optional\<[OnMoveHandler](#onmovehandler)\> <br/>ArkTS-Sta: OnMoveHandler \| undefined | 是   | 拖拽动作。 |
+| handler  | ArkTS-Dyn: Optional\<[OnMoveHandler](#onmovehandler)\> <br/>ArkTS-Sta: [OnMoveHandler](#onmovehandler) \| undefined | 是   | 拖拽动作。 |
 
 **返回值：** 
 
@@ -56,7 +56,7 @@ onMove(handler: OnMoveHandler | undefined, eventHandler: ItemDragEventHandler): 
 
 | 参数名 | 类型      | 必填 | 说明       |
 | ------ | --------- | ---- | ---------- |
-| handler  | Optional\<[OnMoveHandler](#onmovehandler)\> <br/>ArkTS-Sta: OnMoveHandler \| undefined | 是   | 拖拽动作。 |
+| handler  | Optional\<[OnMoveHandler](#onmovehandler)\> <br/>ArkTS-Sta: [OnMoveHandler](#onmovehandler) \| undefined | 是   | 拖拽动作。 |
 | eventHandler  | [ItemDragEventHandler](#itemdrageventhandler20) | 是   | 拖拽发生时产生的回调。 |
 
 **返回值：** 
