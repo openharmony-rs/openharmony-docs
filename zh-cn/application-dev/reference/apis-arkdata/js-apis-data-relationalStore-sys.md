@@ -1223,3 +1223,95 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
   }
 }
 ```
+
+## retainDeviceData<sup>24+</sup>
+
+retainDeviceData(retainDevices?: Record<string, Array<string>>): Promise<void>
+
+删除对应单版本分布式数据表中对应设备同步过来的数据，使用Promise异步回调。
+
+不支持对多设备协同表进行删除。
+
+要删除数据越多，执行所需的时间越长。
+
+> **说明：**
+>
+> 入参允许为空，数据库表名对应的设备id列表也允许为空，但是数据库表名和设备id不允许为空字符串。
+> 
+> 入参如果为空，则删除当前数据库中所有单版本分布式表中全量同步数据。
+> 
+> 入参中如果数据库表名对应的设备id列表为空，则删除该表下全量同步数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名       | 类型                                                               | 必填 | 说明                                       |
+| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
+| retainDevices  | Record<string, Array<string>> |  否  | 指定要删除的分布式数据库表名和对应的设备id。|
+
+**返回值：**
+
+| 类型          | 说明                       |
+| -------------- | ------------------------ |
+| Promise\<void> | 无返回结果的Promise对象。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800011     | The current operation failed because the database is corrupted.                    |
+| 14800014     | The target instance is already closed.                            |
+| 14800021     | SQLite: Generic error.                                                  |
+| 14800024     | SQLite: The database file is locked.                                    |
+| 14800042     | The database does not exist. Possible causes: 1. The database is deleted; 2. The database is not created. |
+| 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|
+
+
+## updateDistributedInfo<sup>24+</sup>
+
+updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise&lt;number&gt;
+
+更新分布式表的日志信息，使用Promise异步回调。
+
+不支持对多设备协同表进行删除。
+
+要更新数据越多，执行所需的时间越长。
+
+> **说明：**
+>
+> 入参info和predicates中若要传入设备id信息，则设备id必须是当前设备组网状态下的设备id。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名       | 类型                                                               | 必填 | 说明                                       |
+| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
+| info  | [DistributedInfo](arkts-apis-data-relationalStore-i.md#distributedinfo24) |  是  | 指定要更新的分布式表的日志信息。|
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。        |
+
+**返回值：**
+
+| 类型          | 说明                       |
+| -------------- | ------------------------ |
+| Promise&lt;number&gt; | Promise对象。如果操作成功，返回更新的数据个数，否则返回-1。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800011     | The current operation failed because the database is corrupted.                    |
+| 14800014     | The target instance is already closed.                            |
+| 14800015  | The database does not respond. |
+| 14800021     | SQLite: Generic error.                                                  |
+| 14800024     | SQLite: The database file is locked.                                    |
+| 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|

@@ -369,3 +369,26 @@ export default class EntryAbility extends UIAbility {
 | ------------------ | --- | ---------------------------------------- |
 | DEVICE_COLLABORATION | 0  | 多设备协同表，各设备的数据将被隔离存储在独立的分布式表中，而非写入本地表，分布式表名为在原来表名前拼接对端设备的DeviceID标识符。|
 | SINGLE_VERSION  | 1   | 单版本表，数据通过分布式数据管理框架直接写入对端设备的本地表中。|
+
+## DistributedOrigin<sup>24+</sup>
+
+表示数据来源。请使用枚举名称而非枚举值。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+| 名称           | 值   | 说明                               |
+| -------------- | ---- | ---------------------------------- |
+| ORI_LOCAL       | 0   | 表示本地数据。      |
+| ORI_CLOUD       | 1   | 表示云端同步的数据。     |
+| ORI_REMOTE      | 2   | 表示端端同步的数据。 |
+
+## DistributedField<sup>24+</sup>
+
+用于谓词查询条件的特殊字段。请使用枚举名称而非枚举值。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+| 名称           | 值   | 说明                               |
+| -------------- | ---- | ---------------------------------- |
+| ORIGIN_FIELD      | '#_origin'     | 用于分布式数据库表对应log表查找或更新时指定数据来源的字段名。    |
+| ORIGIN_ORIDEVICE  | '#_ori_device' | 用于分布式数据库表对应log表查找或更新时指定数据产生端的设备信息。|

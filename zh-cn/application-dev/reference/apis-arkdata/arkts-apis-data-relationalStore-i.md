@@ -249,3 +249,14 @@ export default class EntryAbility extends UIAbility {
 | --------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | changed   | number                                                         | 是   | 否   | 表示受影响的行数量。                                         |
 | resultSet | [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | 是 | 否 | 表示受影响数据的结果集。默认返回1024行，最大支持32766行，超出部分将被丢弃。 |
+
+## DistributedInfo<sup>24+</sup>
+
+记录分布式表的日志信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| flag | [DistributedOrigin](arkts-apis-data-relationalStore-e.md#distributedorigin24) | 否 | 是 | 表示数据来源。ORI_LOCAL表示本地数据；ORI_CLOUD表示云端同步的数据；ORI_DEVICE表示端端同步的数据。 |
+| oriDevice | string | 否 | 是 | 表示数据产生者的设备信息。 |
