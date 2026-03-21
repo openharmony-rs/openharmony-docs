@@ -555,9 +555,9 @@ ArkTS-Dyn: requestInStream(url: string, callback: AsyncCallback\<number\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本 ：** 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本 ：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -655,9 +655,9 @@ ArkTS-Dyn: requestInStream(url: string, options: HttpRequestOptions, callback: A
 
 **系统能力**：SystemCapability.Communication.NetStack
 
- **ArkTS-Dyn起始版本 ：** 10
+ **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本 ：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2335,9 +2335,9 @@ TLS加密版本及套件配置。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本 ：**  18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本 ：**  22
+**ArkTS-Sta起始版本：** 22
 
 | 名称            | 类型                              | 只读  | 可选  | 说明           |
 | ------------- | ------------------------------- | --- | --- | ------------ |
