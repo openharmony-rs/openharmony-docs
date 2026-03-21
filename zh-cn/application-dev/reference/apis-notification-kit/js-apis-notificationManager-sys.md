@@ -6586,19 +6586,21 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 });
 ```
 
-## notificationManager.getNotificationStatisticsByBundle<sup>26+</sup>
+## notificationManager.getNotificationStatisticsByBundle
 
-getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[BundleNotificationStatistics](#bundlenotificationstatistics26)[]\>
+getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[BundleNotificationStatistics](#bundlenotificationstatistics)[]\>
 
 批量获取指定应用列表的通知统计信息，使用Promise异步回调。
 
-**系统能力**：SystemCapability.Notification.Notification
+**起始版本**：26.0.0
 
-**设备行为差异**：该接口仅在Phone/PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
-**系统接口**：此接口为系统接口。
+**设备行为差异**：该接口仅在Phone/PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -6877,9 +6879,11 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | reminderFlags | number | 否 | 否 | 表示通知提醒方式的标志位。 |
 | silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
 
-## BundleNotificationStatistics<sup>26+</sup>
+## BundleNotificationStatistics
 
 描述指定应用通知统计信息。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7041,11 +7045,13 @@ type MonitorEvent = _MonitorEvent
 | STATUS_APPLICATION_DEFINED | 1<<4 | 仅应用自定义。 |
 | STATUS_ALL_PRIORITY | 1<<5 | 全部通知优先。 |
 
-## GroupInfo <sup>26+</sup>
+## GroupInfo
 
 type GroupInfo = _GroupInfo
 
 组通知定制信息。
+
+**起始版本**：26.0.0
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -7055,4 +7061,4 @@ type GroupInfo = _GroupInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| [_GroupInfo](js-apis-inner-notification-notificationRequest-sys.md#groupinfo26) | 组通知定制信息的类型。 |
+| [_GroupInfo](js-apis-inner-notification-notificationRequest-sys.md#groupinfo) | 组通知定制信息的类型。 |
