@@ -34,7 +34,7 @@ ArkTS-Sta: createNetConnection(netSpecifier?: NetSpecifier, timeout?: int): NetC
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -79,7 +79,7 @@ getDefaultNet(callback: AsyncCallback\<NetHandle>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -142,7 +142,7 @@ getDefaultNet(): Promise\<NetHandle>
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -184,7 +184,7 @@ getDefaultNetSync(): NetHandle
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -225,7 +225,7 @@ setAppHttpProxy(httpProxy: HttpProxy): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -267,7 +267,7 @@ getDefaultHttpProxy(callback: AsyncCallback\<HttpProxy>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -324,7 +324,7 @@ getDefaultHttpProxy(): Promise\<HttpProxy>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -378,7 +378,7 @@ getAppNet(callback: AsyncCallback\<NetHandle>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -436,7 +436,7 @@ getAppNet(): Promise\<NetHandle>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **返回值：**
 
@@ -490,7 +490,7 @@ getAppNetSync(): NetHandle
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **返回值：**
 
@@ -527,7 +527,7 @@ setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -604,7 +604,7 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -683,7 +683,7 @@ getAllNets(callback: AsyncCallback&lt;Array&lt;NetHandle&gt;&gt;): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -744,7 +744,7 @@ getAllNets(): Promise&lt;Array&lt;NetHandle&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -794,7 +794,7 @@ getAllNetsSync(): Array&lt;NetHandle&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -832,7 +832,7 @@ getConnectionProperties(netHandle: NetHandle, callback: AsyncCallback\<Connectio
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -907,7 +907,7 @@ getConnectionProperties(netHandle: NetHandle): Promise\<ConnectionProperties>
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -979,7 +979,7 @@ getConnectionPropertiesSync(netHandle: NetHandle): ConnectionProperties
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1059,7 +1059,7 @@ getNetCapabilities(netHandle: NetHandle, callback: AsyncCallback\<NetCapabilitie
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1141,7 +1141,7 @@ getNetCapabilities(netHandle: NetHandle): Promise\<NetCapabilities>
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1220,7 +1220,7 @@ getNetCapabilitiesSync(netHandle: NetHandle): NetCapabilities
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1299,7 +1299,7 @@ isDefaultNetMetered(callback: AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -1354,7 +1354,7 @@ isDefaultNetMetered(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **返回值：**
 
@@ -1394,7 +1394,7 @@ isDefaultNetMeteredSync(): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **返回值：**
 
@@ -1432,7 +1432,7 @@ hasDefaultNet(callback: AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1487,7 +1487,7 @@ hasDefaultNet(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1527,7 +1527,7 @@ hasDefaultNetSync(): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1566,7 +1566,7 @@ reportNetConnected(netHandle: NetHandle, callback: AsyncCallback&lt;void&gt;): v
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -1625,7 +1625,7 @@ reportNetConnected(netHandle: NetHandle): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -1674,7 +1674,7 @@ reportNetDisconnected(netHandle: NetHandle, callback: AsyncCallback&lt;void&gt;)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -1719,7 +1719,7 @@ reportNetDisconnected(netHandle: NetHandle): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -1770,7 +1770,7 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>>): 
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -1835,7 +1835,7 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress\>\>
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -1895,7 +1895,7 @@ addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<voi
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -1960,7 +1960,7 @@ addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -2028,7 +2028,7 @@ removeCustomDnsRule(host: string, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -2092,7 +2092,7 @@ removeCustomDnsRule(host: string): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -2157,7 +2157,7 @@ clearCustomDnsRules(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -2218,7 +2218,7 @@ clearCustomDnsRules(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **返回值：**
 
@@ -2276,7 +2276,7 @@ setPacUrl(pacUrl: string): void
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -2314,7 +2314,7 @@ getPacUrl(): string
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26
 
 **返回值：**
 
@@ -2351,6 +2351,10 @@ setNetExtAttribute(netHandle: NetHandle, netExtAttribute: string): Promise\<void
 **需要权限**：ohos.permission.SET_NET_EXT_ATTRIBUTE
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -2409,6 +2413,10 @@ setNetExtAttributeSync(netHandle: NetHandle, netExtAttribute: string): void
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 26
+
 **参数：**
 
 | 参数名    | 类型                                              | 必填 | 说明                                                         |
@@ -2449,6 +2457,10 @@ getNetExtAttribute(netHandle: NetHandle): Promise\<string\>
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -2501,6 +2513,10 @@ getNetExtAttributeSync(netHandle: NetHandle): string
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
