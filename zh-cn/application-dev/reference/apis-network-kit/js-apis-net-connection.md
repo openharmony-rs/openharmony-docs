@@ -3602,7 +3602,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 值   | 说明                   |
 | ------------------------ | ---- | ---------------------- |
@@ -3622,7 +3622,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 |            名称         | 值   | 说明        |
 | ----------------------- | ---- | ---------- |
@@ -3640,7 +3640,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 必填 | 说明                      |
 | ------ | ------ | --- |------------------------- |
@@ -3660,7 +3660,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                     | 类型                                | 必填  | 说明                                                         |
 | ----------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
@@ -3729,7 +3729,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                    | 类型                                 | 必填  | 说明                                                         |
 | ----------------------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -3744,7 +3744,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 类型                                | 必填 | 说明                     |
 | --------------------- | ---------------------------------- | --- | ------------------------ |
@@ -3761,7 +3761,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -3778,7 +3778,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -3795,7 +3795,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称          |                类型                 | 必填 |               说明                     |
 | ------------- | ----------------------------------- | ----|--------------------------------------- |
@@ -3814,7 +3814,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                        | 必填 |     说明      |
 | -------------- | --------------------------- | --- |-------------- |
@@ -3833,7 +3833,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称         |           类型            | 必填 |        说明         |
 | ------------ | ------------------------- |---- |-------------------- |
@@ -3850,7 +3850,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 |  名称   | 类型   |必填|            说明              |
 | ------- | ------ | -- |---------------------------- |
