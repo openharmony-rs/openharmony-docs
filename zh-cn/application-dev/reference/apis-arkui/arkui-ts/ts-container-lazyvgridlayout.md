@@ -105,13 +105,62 @@ rowsGap(value: LengthMetrics): T
 
 ## 事件
 
-仅支持[通用事件](ts-component-general-events.md)。
+除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
+
+### onVisibleIndexesChange
+
+onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined)
+
+设置onVisibleIndexesChange回调函数。当LazyVGridLayout可视区域内子组件的索引值发生变化时触发回调，返回可视区域内子组件的起始索引值和结束索引值。使用callback异步回调。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                       |
+| ------ | ------ | ---- | -------------------------- |
+| callback  | [OnVisibleIndexesChangeCallback](#onvisibleindexeschangecallback)&nbsp;\|&nbsp;undefined | 是  | onVisibleIndexesChange事件的回调函数。方法入参为undefined时，取消监听。 |
+
+## OnVisibleIndexesChangeCallback
+
+ArkTS-Dyn: OnVisibleIndexesChangeCallback = (start: number, end: number) => void
+
+ArkTS-Sta: OnVisibleIndexesChangeCallback = (start: int, end: int) => void
+
+LazyVGridLayout可视区域内子组件的索引值发生变化时触发的回调类型。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                  |
+| ------ | ------ | ---- | ------------------------------------- |
+| start  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 当前可视区域内子组件的起始索引。可视区域内无子组件或者LazyVGridLayout内无子组件时返回-1。 |
+| end  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 当前可视区域内子组件的结束索引。可视区域内无子组件或者LazyVGridLayout内无子组件时返回-1。 |
 
 ## 示例
 
-该示例通过WaterFlow和LazyVGridLayout实现懒加载网格布局。
+该示例通过[WaterFlow](ts-container-waterflow.md)和[LazyVGridLayout](ts-container-lazyvgridlayout.md)实现懒加载网格布局，并通过[onVisibleIndexesChange](#onvisibleindexeschange)在显示区域发生变化时回调索引。
 
-MyDataSource实现了[LazyForEach](ts-rendering-control-lazyforeach.md)数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给LazyVGridLayout提供子组件。 
+MyDataSource实现了[LazyForEach](ts-rendering-control-lazyforeach.md)数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给LazyVGridLayout提供子组件。
+
+从API版本26.0.0开始，新增onVisibleIndexesChange事件。
 
 <!--code_no_check-->
 ```ts
@@ -138,6 +187,10 @@ struct LazyVGridLayoutSample1 {
         }
         .columnsTemplate('1fr')
         .rowsGap(LengthMetrics.vp(10))
+        // 从API版本26.0.0开始，新增onVisibleIndexesChange事件。
+        .onVisibleIndexesChange((start: number, end: number) => {
+          console.info('visible indexes: start= ' + 'start,' + 'end= ' + 'end');
+      })
 
         LazyVGridLayout() {
           LazyForEach(this.arr2, (item:number)=>{
