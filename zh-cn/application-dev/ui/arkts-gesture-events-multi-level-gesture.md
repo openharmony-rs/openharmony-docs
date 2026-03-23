@@ -16,7 +16,7 @@
 
 [触摸事件](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md)（onTouch事件）是所有手势组成的基础，有Down，Move，Up，Cancel四种。手势均由触摸事件组成，例如，点击为Down+Up，滑动为Down+一系列Move+Up。触摸事件具有最特殊性：
 
-1.监听了onTouch事件的组件。在手指落下被触摸时均会收到onTouch事件的回调，被触摸受到触摸热区和触摸控制影响。
+1.监听了onTouch事件的组件，在手指落下被触摸时均会收到onTouch事件的回调，被触摸受到触摸热区和触摸控制影响。
 
 2.onTouch事件的回调是闭环的。若一个组件收到了手指Id为0的Down事件，后续也会收到手指Id为0的Move事件和Up事件。
 

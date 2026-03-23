@@ -8,6 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 本模块提供基于人机接口协议（Human Interface Device Profile，[HID](../../connectivity/terminology.md#hid)）技术的蓝牙人机交互能力，支持获取连接状态等方法。
+
 当本端设备被注册为HID设备的角色时，可以使用[HidDeviceProfile](#hiddeviceprofile23)相关接口，且仅支持与传统蓝牙类型设备连接和交互。
 
 > **说明：**
@@ -173,14 +174,14 @@ let descriptors: Uint8Array = new Uint8Array([
     0xA1, 0x01,        // 应用集合开始
     
     // 按键字段定义
-    0x05, 0x07,        //   切换到键盘/键区
-    0x19, 0x00,        //   定义最小按键码为0（无按键）
-    0x29, 0x01,        //   定义最大按键码为1（只支持2个值）
-    0x15, 0x00,        //   逻辑最小值0（数据范围下限）
-    0x25, 0x01,        //   逻辑最大值1（数据范围上限）
-    0x75, 0x08,        //   每个字段八位
-    0x95, 0x01,        //   只有一个字段
-    0x81, 0x00,        //   输入字段，类型为数据数据组
+    0x05, 0x07,        // 切换到键盘/键区
+    0x19, 0x00,        // 定义最小按键码为0（无按键）
+    0x29, 0x01,        // 定义最大按键码为1（只支持2个值）
+    0x15, 0x00,        // 逻辑最小值0（数据范围下限）
+    0x25, 0x01,        // 逻辑最大值1（数据范围上限）
+    0x75, 0x08,        // 每个字段八位
+    0x95, 0x01,        // 只有一个字段
+    0x81, 0x00,        // 定义输入字段：数据字段，值为按键数组
     
     // 结束设备定义
     0xC0               // 应用集合结束
@@ -604,7 +605,7 @@ try {
 
 offSetReport(callback?: Callback&lt;SetReportData&gt;): void
 
-取消订阅主机向HID设备发出的SET_REPORT传输请求事件的回调。使用callback异步回调。
+取消订阅主机向HID设备发出的[SET_REPORT](../../connectivity/terminology.md#hid)传输请求事件的回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -1039,7 +1040,7 @@ try {
 | RSP_NOT_READY          | 1 | 设备未准备好处理请求。建议主机稍后重试。  |
 | RSP_INVALID_REPORT_ID  | 2 | 无效的报告ID。建议主机确认当前支持的ID列表，并使用正确的ID重发消息。         |
 | RSP_UNSUPPORTED_REQ    | 3 | 当前请求不支持，建议主机检查当前请求类型或报告类型是否在当前协议模式下被本端支持。       |
-| RSP_INVALID_PARAM      | 4 | 无效参数。建议主机检查请求中的参数是否超出本端s声明的范围或不符合报告描述符的定义。             |
+| RSP_INVALID_PARAM      | 4 | 无效参数。建议主机检查请求中的参数是否超出本端声明的范围或不符合报告描述符的定义。             |
 | RSP_UNKNOWN            |14 | 未知错误原因。建议主机记录错误上下文并重试。         |
 
 ## ProtocolType<sup>23+</sup>

@@ -25,10 +25,10 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃。
+  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_LOCKED_BOOT_COMPLETED](commonEventManager-definitions.md#common_event_locked_boot_completed)替代。
 
   - 值：usual.event.LOCKED_BOOT_COMPLETED
-  - 订阅者所需权限：ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
+  - 订阅者所需权限：无
 
 * COMMON_EVENT_SHUTDOWN<sup>(deprecated)</sup> 提示设备正在关闭并将继续直至最终关闭。
 

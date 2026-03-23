@@ -484,7 +484,7 @@ async function testFunction(size: number) {
       writeSize: size,
       waitTime: 180
     });
-    return result;
+    console.info(`fileSystemServiceRequest result: ${result}`);
   } catch (error) {
     let err: BusinessError = error as BusinessError;
     console.error(`fileSystemServiceRequest err:` + err);

@@ -530,7 +530,7 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 
 onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackData) => void
 
-Called when the enabling status of the priority notification changes.
+Called when the enabling state of the priority notification changes.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -545,7 +545,6 @@ Called when the enabling status of the priority notification changes.
 **Example**
 
 ```ts
-import { notificationSubscribe } from '@kit.NotificationKit';
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onEnabledPriorityChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationCallbackData) => {
     console.info(`onEnabledPriorityChanged: ${JSON.stringify(callbackData)}`);
@@ -562,7 +561,7 @@ try {
 
 onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByBundleCallbackData) => void
 
-Called when the enabling status of the application priority notification changes.
+Called when the enabling state of the application priority notification changes.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -577,10 +576,41 @@ Called when the enabling status of the application priority notification changes
 **Example**
 
 ```ts
-import { notificationSubscribe } from '@kit.NotificationKit';
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onEnabledPriorityByBundleChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationByBundleCallbackData) => {
     console.info(`onEnabledPriorityByBundleChanged: ${JSON.stringify(callbackData)}`);
+  }
+};
+try {
+  notificationSubscribe.subscribe(subscriber);
+} catch (error) {
+  console.error("subscribe failed");
+}
+```
+
+## Attribute
+
+Callback function for notifications of system property value changes.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type   | Read Only| Optional| Description            |
+| ------ | ------- | ---- | --- | ---------------- |
+| onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | No| Yes| Notification information that carries the system property value.|
+
+**Example**
+
+```ts
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onSystemUpdate: (data: notificationSubscribe.SubscribeCallbackData) => {
+    let req = data.request;
+    console.info(`onSystemUpdate callback req.priorityType: ${req.priorityNotificationType}`);
   }
 };
 try {
@@ -635,11 +665,9 @@ try {
 
 ## BadgeEnabledChangedCallback<sup>12+</sup>
 
-### (data: EnabledNotificationCallbackData)<sup>12+</sup>
+type BadgeEnabledChangedCallback = (data: EnabledNotificationCallbackData) => void
 
-(data: EnabledNotificationCallbackData): void
-
-Defines a callback function to listen for the enabling status changes of the application badge.
+Defines a callback function to listen for the enabling state changes of the application badge.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -672,3 +700,19 @@ Defines a callback function to listen for the enabling status changes of the app
 | bundle      | string | Yes  | No  | Bundle name of the application.|
 | uid         | number | Yes  | No  | UID of the application. |
 | enableStatus | [PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | Yes | No | Whether the priority notification for an application is enabled.<br> - **DISABLE**: The priority notification is disabled.<br> - **ENABLE_BY_INTELLIGENT**: The priority notification can be enabled through intelligent recognition, user keyword matching, or application rule matching.<br> - **ENABLE**: The priority notification is enabled for all applications.|
+
+## SystemUpdateCallback<sup>23+</sup>
+
+type SystemUpdateCallback = (data: SubscribeCallbackData) => void
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name      | Type  | Mandatory| Description        |
+| ----------- | ------ | ---- | ------------ |
+| data | [SubscribeCallbackData](#subscribecallbackdata) | Yes| Notification information that carries the system property value.|

@@ -15,7 +15,7 @@
 >
 >    \- 对于Lite Wearable设备类型，该模块长期维护，正常使用。
 >
->    \- 对于支持该模块的其他设备类型，该模块从API Version 6开始不再维护，建议使用[`@ohos.batteryInfo`](js-apis-battery-info.md)替代。
+>    \- 对于支持该模块的其他设备类型，该模块从API Version 6开始不再维护，建议使用[@ohos.batteryInfo](js-apis-battery-info.md)替代。
 >
 >- 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -48,7 +48,7 @@ getStatus(options?: GetStatusOptions): void;
 ```js
 Battery.getStatus({
     success: (data: BatteryResponse) => {
-        console.log('success get battery level:' + data.level);
+        console.info('success get battery level:' + data.level);
     },
     fail: (data: string, code: number) => {
         console.error('fail to get battery level code:' + code + ', data: ' + data);
