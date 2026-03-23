@@ -1,3 +1,4 @@
+
 # crypto_signature.h
 
 <!--Kit: Crypto Architecture Kit-->
@@ -106,7 +107,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify *
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | 用于生成验签实例的算法名称。<br> 例如"RSA1024\|PKCS1\|SHA256" |
+| const char *algoName | 用于生成验签实例的算法名称。<br> 例如"RSA1024|PKCS1|SHA256" |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) **verify | 指向验签实例的指针。 |
 
 **返回：**
@@ -143,7 +144,6 @@ OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pu
 **参考：**
 
 [OH_CryptoVerify_Update](capi-crypto-signature-h.md#oh_cryptoverify_update)
-
 [OH_CryptoVerify_Final](capi-crypto-signature-h.md#oh_cryptoverify_final)
 
 
@@ -170,12 +170,11 @@ OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | CRYPTO_SUCCESS：操作成功。<br>         CRYPTO_INVALID_PARAMS：参数无效。<br>         CRYPTO_NOT_SUPPORTED：操作不支持。<br>         CRYPTO_MEMORY_ERROR：内存错误。<br>         CRYPTO_OPERATION_ERROR：调用三方算法库API出错。 |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | CRYPTO_SUCCESS：操作成功。<br>         CRYPTO_INVALID_PARAMS：参数无效。<br>         CRYPTO_NOT_SUPPORTED：操作不支持。<br>         CRYPTO_MEMORY_ERROR：内存错误。<br>         CRYPTO_INVALID_CALL：（从API版本26.0.0开始支持）无效的函数调用。<br>         CRYPTO_OPERATION_ERROR：调用三方算法库API出错。 |
 
 **参考：**
 
 [OH_CryptoVerify_Init](capi-crypto-signature-h.md#oh_cryptoverify_init)
-
 [OH_CryptoVerify_Final](capi-crypto-signature-h.md#oh_cryptoverify_final)
 
 
@@ -203,12 +202,11 @@ bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_Dat
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | true表示验签通过，false表示验签失败。 |
+| bool | 表示验签是否通过，true表示验签通过，false表示验签失败。 |
 
 **参考：**
 
 [OH_CryptoVerify_Init](capi-crypto-signature-h.md#oh_cryptoverify_init)
-
 [OH_CryptoVerify_Update](capi-crypto-signature-h.md#oh_cryptoverify_update)
 
 
@@ -236,7 +234,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | CRYPTO_SUCCESS：操作成功。<br>         CRYPTO_INVALID_PARAMS：参数无效。<br>         CRYPTO_NOT_SUPPORTED：操作不支持。<br>         CRYPTO_MEMORY_ERROR：内存错误。<br>         CRYPTO_OPERATION_ERROR：调用三方算法库API出错。 |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | CRYPTO_SUCCESS：操作成功。<br>         CRYPTO_INVALID_PARAMS：参数无效。<br>         CRYPTO_NOT_SUPPORTED：操作不支持。<br>         CRYPTO_MEMORY_ERROR：内存错误。<br>         CRYPTO_INVALID_CALL：（从API版本26.0.0开始支持）无效的函数调用。<br>         CRYPTO_OPERATION_ERROR：调用三方算法库API出错。 |
 
 ### OH_CryptoVerify_GetAlgoName()
 
@@ -348,7 +346,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sig
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | 用于生成签名实例的算法名称。<br> 例如"RSA\|PKCS1\|SHA384"、"ECC\|SHA384"。 |
+| const char *algoName | 用于生成签名实例的算法名称。<br> 例如"RSA|PKCS1|SHA384"、"ECC|SHA384"。 |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) **sign | 签名实例。 |
 
 **返回：**
@@ -385,7 +383,6 @@ OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privK
 **参考：**
 
 [OH_CryptoSign_Update](capi-crypto-signature-h.md#oh_cryptosign_update)
-
 [OH_CryptoSign_Final](capi-crypto-signature-h.md#oh_cryptosign_final)
 
 
@@ -412,12 +409,11 @@ OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | CRYPTO_SUCCESS：操作成功。<br>         CRYPTO_NOT_SUPPORTED：操作不支持。<br>         CRYPTO_MEMORY_ERROR：内存错误。<br>         CRYPTO_PARAMETER_CHECK_FAILED：参数检查失败。<br>         CRYPTO_OPERATION_ERROR：调用三方算法库API出错。 |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | CRYPTO_SUCCESS：操作成功。<br>         CRYPTO_NOT_SUPPORTED：操作不支持。<br>         CRYPTO_MEMORY_ERROR：内存错误。<br>         CRYPTO_PARAMETER_CHECK_FAILED：参数检查失败。<br>         CRYPTO_INVALID_CALL：（从API版本26.0.0开始支持）无效的函数调用。<br>         CRYPTO_OPERATION_ERROR：调用三方算法库API出错。 |
 
 **参考：**
 
 [OH_CryptoSign_Init](capi-crypto-signature-h.md#oh_cryptosign_init)
-
 [OH_CryptoSign_Final](capi-crypto-signature-h.md#oh_cryptosign_final)
 
 
@@ -450,7 +446,6 @@ OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob 
 **参考：**
 
 [OH_CryptoSign_Init](capi-crypto-signature-h.md#oh_cryptosign_init)
-
 [OH_CryptoSign_Update](capi-crypto-signature-h.md#oh_cryptosign_update)
 
 
