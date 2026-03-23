@@ -17,6 +17,9 @@
 | --------------------- | ---------------- |
 | MSVIDEO1<sup>22+</sup>| [OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | WMV3<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_WMV3](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MJPEG <sup>22+</sup>| [OH_AVCODEC_MIMETYPE_VIDEO_MJPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MSVIDEO1<sup>22+</sup>| [OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| WMV3<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_WMV3](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | MJPEG<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MJPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | MPEG2 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | MPEG4 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG4](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
