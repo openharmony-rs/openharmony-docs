@@ -11,7 +11,7 @@ appRecovery模块提供了应用在故障状态下的恢复能力。
 
 > **说明：**
 > 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。API9仅支持单进程中单Ability的应用恢复。API10支持进程中包含多个Ability的场景。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。API9仅支持单进程中单Ability的应用恢复。API10支持进程中包含多个Ability的场景。API24支持CPP_CRASH时重启。
 
 ## 导入模块
 ```ts
@@ -31,7 +31,7 @@ import { appRecovery } from '@kit.AbilityKit';
 | ALWAYS_RESTART   | 0    | 总是重启应用。 |
 | RESTART_WHEN_JS_CRASH   | 0x0001    | 发生JS_CRASH时重启应用。 |
 | RESTART_WHEN_APP_FREEZE   | 0x0002    | 发生APP_FREEZE时重启应用。 |
-| RESTART_WHEN_CPP_CRASH    | 0x0004    | 发生CPP_CRASH时重启应用(此值从 API version 24 开始支持)。 |
+| RESTART_WHEN_CPP_CRASH    | 0x0004    | 发生CPP_CRASH时重启应用。 |
 | NO_RESTART           | 0xFFFF    | 总是不重启应用。 |
 
 ## SaveOccasionFlag
