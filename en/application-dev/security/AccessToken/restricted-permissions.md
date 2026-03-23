@@ -993,6 +993,34 @@ Allows an application to obtain and manage the media resources playing on a devi
 
 **Since**: 23
 
+## ohos.permission.MANAGE_RECENT_SNAPSHOT
+
+Allows an application to set the preview thumbnail when a mouse hovers over the icon in the Dock.
+
+<!--RP64--><!--RP64End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PC/2in1
+
+**Since**: 26
+
+## ohos.permission.SET_WINDOW_ALPHA
+
+Allows an application to set the window background transparency.
+
+<!--RP64--><!--RP64End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PC/2in1
+
+**Since**: 26
+
 ## ohos.permission.MANAGE_CALL_FOR_DEVICES
 
 Allows an application to manage call status, such as retieving incoming call numbers, answering, rejecting, and ending calls.
