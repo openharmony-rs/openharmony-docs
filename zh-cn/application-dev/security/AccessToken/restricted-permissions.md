@@ -992,9 +992,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**: 系统授权（system_grant）
 
-**支持设备**: PC/2in1
+**支持设备**: PC/2in1 | Tablet
 
 **起始版本**: 22
+
+**变更信息：** 从API 24开始，增加支持在平板上申请。
 
 ## ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 
@@ -1067,5 +1069,33 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **授权方式**：系统授权（system_grant）
 
 **支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：24
+
+## ohos.permission.ALLOW_ACCESSORY_ACCESS
+
+允许应用使用配件接入服务完成配件关联和自动唤醒等功能。
+
+<!--RP70--><!--RP70End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car
+
+**起始版本**：24
+
+## ohos.permission.CHECK_CALL_LOG
+ 	 
+允许应用根据特定条件(手机号码、通话时长)，查询指定时间内系统是否存在匹配的通话记录。
+
+<!--RP71--><!--RP71End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
 
 **起始版本**：24

@@ -19,7 +19,7 @@
   - [@ohos.resourceschedule.deviceStandby (Device Standby) (System API)](js-apis-resourceschedule-deviceStandby-sys.md)
   - [@ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)](js-apis-resourceschedule-deviceUsageStatistics-sys.md)
   <!--DelEnd-->
-  - application<!--background-tasks-arkts-application-->
+  - Application<!--background-tasks-arkts-application-->
     - [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)
     <!--Del-->
     - [WorkSchedulerExtensionContext (System API)](js-apis-WorkSchedulerExtensionContext-sys.md)

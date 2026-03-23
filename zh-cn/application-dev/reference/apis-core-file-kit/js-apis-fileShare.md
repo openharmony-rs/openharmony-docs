@@ -102,6 +102,8 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
+>
+> 可以组合授予多个权限。只能对已获取到的临时权限进行持久化授权，否则会报错。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -146,7 +148,7 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
       let uris = await documentPicker.select(DocumentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0], 
-        // 可以组合授予多个权限，例如读写授权可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
+        // 可以组合授予多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
         operationMode: fileShare.OperationMode.READ_MODE
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -177,6 +179,8 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
+>
+> 可以组合取消多个权限。只能对已持久化的权限进行取消持久化，否则会报错。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -221,7 +225,7 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
       let uris = await documentPicker.select(DocumentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0], 
-        // 可以组合授予多个权限，例如读写授权可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
+        // 可以组合取消多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -252,6 +256,8 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
+>
+> 可以组合使能多个权限。只能对已持久化的权限进行使能，否则会报错。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -293,7 +299,7 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
       let uri = "file://docs/storage/Users/username/tmp.txt";
       let policyInfo: fileShare.PolicyInfo = {
         uri: uri,
-        // 可以组合授予多个权限，例如读写授权可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
+        // 可以组合使能多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -327,6 +333,8 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
+>
+> 可以组合取消使能多个权限。只能对已持久化的权限进行取消使能，否则会报错。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -368,7 +376,7 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
       let uri = "file://docs/storage/Users/username/tmp.txt";
       let policyInfo: fileShare.PolicyInfo = {
         uri: uri,
-        // 可以组合授予多个权限，例如读写授权可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
+        // 可以组合取消使能多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -434,7 +442,7 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
       let uris = await documentPicker.select(documentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0], 
-        // 可以组合授予多个权限，例如读写授权可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
+        // 可以组合校验多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];

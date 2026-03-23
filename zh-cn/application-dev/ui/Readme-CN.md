@@ -285,6 +285,8 @@
     - [动画概述](ndk-use-animation.md)
     - [使用动画开发指导](ndk-use-animation-scene.md)
   - 构建布局<!--arkts-build-layout-ndk-->
+    - [使用布局组件](ndk-layout-container.md)
+    - [设置通用布局属性](ndk-common-attribute-layout.md)
     - [使用列表](ndk-loading-long-list.md)
     - [使用瀑布流](ndk-waterflow.md)
     - [使用网格](ndk-grid.md)
@@ -294,6 +296,7 @@
       - [输入框文本事件监听](ndk-textarea-event.md)
   - 使用选择类组件<!--arkts-build-picker-ndk-->
       - [使用滑动选择器Picker](ndk-picker.md)
+  - [显示图片（Image）](ndk-image-component.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
   - [构建表单组件](ndk-build-form-components.md)
   - 构建导航类组件<!--arkts-build-navigation-ndk-->

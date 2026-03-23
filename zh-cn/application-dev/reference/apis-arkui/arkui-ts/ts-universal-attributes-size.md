@@ -417,7 +417,7 @@ struct SizeExample {
           .textAlign(TextAlign.Center)
           .size({ width: 'calc(50% + 50vp)', height: 'calc(50%)' })
           // width和height设置百分比时，以父容器的width和height作为基础值。calc的宽度计算结果与上方的两个text宽度之和相等。
-      }.width("100%").height(100)
+      }.width('100%').height(100)
     }
     .width('100%')
     .margin({ top: 5 })
@@ -498,8 +498,8 @@ struct SafeAreaPaddingExample {
     Column() {
       Column() {
         Column()
-          .width("100%")
-          .height("100%")
+          .width('100%')
+          .height('100%')
           .backgroundColor(Color.Pink)
       }
       .width(200)
@@ -543,8 +543,8 @@ struct SafeAreaPaddingExample {
     Column() {
       Column() {
         Column()
-          .width("100%")
-          .height("100%")
+          .width('100%')
+          .height('100%')
           .backgroundColor(Color.Pink)
       }
       .width(200)
@@ -575,7 +575,7 @@ struct LayoutPolicyExample {
     Column() {
       Column() {
         // matchParent生效时，当前组件会与其父组件内容区大小（180vp * 180vp）相等，同时依旧受自身constraintSize（150vp * 150vp）约束，因此当前组件大小为150vp * 150vp
-        Text("matchParent")
+        Text('matchParent')
         Flex()
           .backgroundColor('rgb(0, 74, 175)')
           .width(LayoutPolicy.matchParent)
@@ -583,7 +583,7 @@ struct LayoutPolicyExample {
           .constraintSize({ maxWidth: 150, maxHeight: 150 })
 
         // wrapContent生效时，当前组件会与其子组件大小（300vp * 300vp）相等，但不能超过父组件内容大小（180vp * 180vp）且会受自身constraintSize（250vp * 250vp）约束，因此当前组件大小为180vp * 180vp
-        Text("wrapContent")
+        Text('wrapContent')
         Row() {
           Flex()
             .width(300)
@@ -595,7 +595,7 @@ struct LayoutPolicyExample {
         .constraintSize({ maxWidth: 250, maxHeight: 250 })
 
         // 从API version 20开始，layoutPolicy支持wrapContent和fixAtIdealSize。fixAtIdealSize生效时，当前组件会与其子组件大小（300vp * 300vp）相等，可以超过父组件内容大小（180vp * 180vp）但会受自身constraintSize（250vp * 250vp）约束，因此当前组件大小为250vp * 250vp
-        Text("fixAtIdealSize")
+        Text('fixAtIdealSize')
 
         Row() {
           Flex()
@@ -611,8 +611,8 @@ struct LayoutPolicyExample {
       .height(200)
       .padding(10)
     }
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
 ```
