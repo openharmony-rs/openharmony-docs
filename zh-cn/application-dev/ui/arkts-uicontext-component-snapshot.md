@@ -95,7 +95,7 @@ export struct ScrollSnapshot {
 
 ``` TypeScript
 /**
- * 归滚动截图，直到滚动到底，最后合并所有截图
+ * 递归滚动截图，直到滚动到底，最后合并所有截图
  */
 async scrollSnapAndMerge() {
   try {
@@ -123,7 +123,7 @@ async scrollSnapAndMerge() {
     }
   } catch (err) {
     let error = err as BusinessError;
-    Logger.error(TAG, `scrollSnapAndMerge err, errCode: ${error.code}, error mesage: ${error.message}`);
+    Logger.error(TAG, `scrollSnapAndMerge err, errCode: ${error.code}, error message: ${error.message}`);
   }
 }
 ```
