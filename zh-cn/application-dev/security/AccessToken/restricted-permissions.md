@@ -996,9 +996,9 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.MANAGE_RECENT_SNAPSHOT
 
-允许应用设置在Dock栏悬停显示的预览缩略图.
+允许应用设置在Dock栏悬停显示的预览缩略图。
 
-<!--RP64--><!--RP64End-->
+<!--RP72--><!--RP72End-->
 
 **权限级别**: system_basic
 
@@ -1006,13 +1006,13 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **支持设备**: PC/2in1
 
-**起始版本**: 26
+**起始版本**: 26.0.0
 
 ## ohos.permission.SET_WINDOW_ALPHA
 
-允许应用设置窗口透明度.
+允许应用设置窗口透明度。
 
-<!--RP64--><!--RP64End-->
+<!--RP73--><!--RP73End-->
 
 **权限级别**: system_basic
 
@@ -1020,7 +1020,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **支持设备**: PC/2in1
 
-**起始版本**: 26
+**起始版本**: 26.0.0
 
 ## ohos.permission.MANAGE_CALL_FOR_DEVICES
 

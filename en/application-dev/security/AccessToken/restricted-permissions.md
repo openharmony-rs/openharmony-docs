@@ -1005,7 +1005,7 @@ Allows an application to set the preview thumbnail when a mouse hovers over the 
 
 **Supported devices**: PC/2in1
 
-**Since**: 26
+**Since**: 26.0.0
 
 ## ohos.permission.SET_WINDOW_ALPHA
 
@@ -1019,7 +1019,7 @@ Allows an application to set the window background transparency.
 
 **Supported devices**: PC/2in1
 
-**Since**: 26
+**Since**: 26.0.0
 
 ## ohos.permission.MANAGE_CALL_FOR_DEVICES
 
