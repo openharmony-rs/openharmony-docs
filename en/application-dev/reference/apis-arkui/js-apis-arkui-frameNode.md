@@ -2409,7 +2409,7 @@ See [Example of Adopting a Node as an Affiliate](#example-of-adopting-a-node-as-
 
 removeAdoptedChild(child: FrameNode): void
 
-Removes a previously adopted node.
+Removes a previously-adopted affiliated node.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
