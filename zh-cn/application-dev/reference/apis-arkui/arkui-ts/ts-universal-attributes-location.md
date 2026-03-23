@@ -93,7 +93,7 @@ position(value: Position | Edges | LocalizedEdges): T
 > **说明：**
 > 
 > - position对位置的影响作用在组件的尺寸测量完成之后。
-> - 当父组件为[Row](./ts-container-row.md)、[Column](./ts-container-column.md)或[Flex](./ts-container-flex.md)时，设置position的子组件不占位。
+> - 当父组件为[Row](./ts-container-row.md)、[Column](./ts-container-column.md)或[Flex](./ts-container-flex.md)时，设置position的子组件不占位。在上述场景中，如果父组件包含的所有子组件均设置了position，此时父组件尺寸无法通过其他子组件确定，将基于尺寸(0, 0)进行布局测算。
 > - Position类型基于父组件内容区左上角确定位置；Edges类型基于父组件内容区四边确定位置，top/left/right/bottom分别为组件各边距离父组件内容区相应边的边距，通过边距来确定组件相对于父组件内容区的位置；LocalizedEdges类型基于父组件内容区四边确定位置，支持镜像模式。
 > - 本属性适用于置顶显示、悬浮按钮等组件在父组件中位置固定的场景。
 > - 本属性不支持在宽高为零的布局组件上设置。
