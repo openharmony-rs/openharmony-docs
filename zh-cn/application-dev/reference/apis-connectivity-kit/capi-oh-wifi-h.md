@@ -204,25 +204,25 @@ Struct OH_WifiLinkedInfo
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 否 | 否 | 热点的SSID（Service Set Identifier 服务集标识符），用于获取当前设备已连接的Wi-Fi热点的公开名称（即无线网络的名称），编码格式为UTF-8。<br>长度 WIFI_MAX_SSID_LEN = 18。 |
-| bssid | string | 否 | 否 | 热点的BSSID（Basic Service Set Identifier 基本服务集标识符）即无线网络的MAC地址。如果应用已请求 ohos.permission.GET_WIFI_PEERS_MAC 权限，则返回的bssid为真实BSSID地址；否则为随机设备地址。<br>格式："AA:BB:CC:DD:EE:FF"<br>最大长度 WIFI_MAC_LEN = 33。 |
-| rssi | number | 否 | 否 | 热点的信号强度(dBm)。RSSI（Received Signal Strength Indicator，接收信号强度指示）。 |
-| band | number | 否 | 否 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 |
-| linkSpeed | number | 否 | 否 | WLAN接入点的上行速度单位Mbps。 |
-| rxLinkSpeed | number | 否 | 否 | WLAN接入点的下行速度单位Mbps。 |
-| maxSupportedTxLinkSpeed | number | 否 | 否 | 当前支持的最大上行速率单位Mbps。 |
-| maxSupportedRxLinkSpeed | number | 否 | 否 | 当前支持的最大下行速率单位Mbps。 |
-| frequency | number | 否 | 否 | WLAN接入点的频率，单位MHz。 |
-| isHidden | boolean | 否 | 否 | WLAN接入点是否是隐藏网络，true表示是隐藏网络，false表示不是隐藏网络。 |
-| isRestricted | boolean | 否 | 否 | WLAN接入点是否限制数据量，true表示限制，false表示不限制。 |
-| macType | number | 否 | 否 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。 |
-| macAddress | string | 否 | 否 | 设备的MAC地址。当 macType 为 1 时需要请求 ohos.permission.GET_WIFI_LOCAL_MAC 权限。<br>格式："AA:BB:CC:DD:EE:FF"<br>长度 WIFI_MAC_LEN = 18。 |
-| ipAddress | number | 否 | 否 | WLAN连接的IP地址。 |
+| ssid | char[] | 否 | 否 | 热点的SSID（Service Set Identifier 服务集标识符），用于获取当前设备已连接的Wi-Fi热点的公开名称（即无线网络的名称），编码格式为UTF-8。<br>长度 WIFI_MAX_SSID_LEN = 18。 |
+| bssid | char[] | 否 | 否 | 热点的BSSID（Basic Service Set Identifier 基本服务集标识符）即无线网络的MAC地址。如果应用已请求 ohos.permission.GET_WIFI_PEERS_MAC 权限，则返回的bssid为真实BSSID地址；否则为随机设备地址。<br>格式："AA:BB:CC:DD:EE:FF"<br>最大长度 WIFI_MAC_LEN = 33。 |
+| rssi | int32_t | 否 | 否 | 热点的信号强度(dBm)。RSSI（Received Signal Strength Indicator，接收信号强度指示）。 |
+| band | int32_t | 否 | 否 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 |
+| linkSpeed | int32_t | 否 | 否 | WLAN接入点的上行速度单位Mbps。 |
+| rxLinkSpeed | int32_t | 否 | 否 | WLAN接入点的下行速度单位Mbps。 |
+| maxSupportedTxLinkSpeed | int32_t | 否 | 否 | 当前支持的最大上行速率单位Mbps。 |
+| maxSupportedRxLinkSpeed | int32_t | 否 | 否 | 当前支持的最大下行速率单位Mbps。 |
+| frequency | int32_t | 否 | 否 | WLAN接入点的频率，单位MHz。 |
+| isHidden | bool | 否 | 否 | WLAN接入点是否是隐藏网络，true表示是隐藏网络，false表示不是隐藏网络。 |
+| isRestricted | bool | 否 | 否 | WLAN接入点是否限制数据量，true表示限制，false表示不限制。 |
+| macType | int32_t | 否 | 否 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。 |
+| macAddress | char[] | 否 | 否 | 设备的MAC地址。当 macType 为 1 时需要请求 ohos.permission.GET_WIFI_LOCAL_MAC 权限。<br>格式："AA:BB:CC:DD:EE:FF"<br>长度 WIFI_MAC_LEN = 18。 |
+| ipAddress | uint32_t | 否 | 否 | WLAN连接的IP地址。 |
 | connState | [OH_WifiConnState](capi-oh-wifi-h.md#oh_wificonnstate) | 否 | 否 | WLAN连接状态。详情见 OH_WifiConnState。 |
 | channelWidth | [OH_WifiChannelWidth](capi-oh-wifi-h.md#oh_wifichannelwidth) | 否 | 否 | 当前连接热点的信道带宽。详情见 OH_WifiChannelWidth。 |
 | wifiStandard | [OH_WifiStandard](capi-oh-wifi-h.md#oh_wifistandard) | 否 | 否 | 当前连接热点的Wi-Fi标准。详情见 OH_WifiStandard。 |
 | supportedWifiCategory | [OH_WifiCategory](capi-oh-wifi-h.md#oh_wificategory) | 否 | 否 | 热点支持的最高Wi-Fi级别。详情见 OH_WifiCategory。 |
-| isHiLinkNetwork | boolean | 否 | 否 | 热点是否支持hilink，true表示支持，false表示不支持。 |
+| isHiLinkNetwork | bool | 否 | 否 | 热点是否支持hilink，true表示支持，false表示不支持。 |
 | wifiLinkType | [OH_WifiLinkType](capi-oh-wifi-h.md#oh_wifilinktype) | 否 | 否 | Wi-Fi7连接类型。详情见 OH_WifiLinkType。 |
 
 ## 函数说明
