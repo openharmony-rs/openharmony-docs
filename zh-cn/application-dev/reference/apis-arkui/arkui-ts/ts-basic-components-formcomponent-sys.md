@@ -117,10 +117,10 @@ FormComponent (value: FormInfo)
 | 参数名    | 参数类型                        | 只读 | 可选 | 参数描述                                                                |
 | --------- | ------------------------------- | ---- | ---- | ----------------------------------------------------------------------- |
 | action      | string            | 否 | 否           | 事件类型。                             |
-| bundleName      | string            | 否 | 是          | 卡片所属包的Bundle名称。                             |
-| moduleName      | string            | 否 | 是          | 卡片所属模块的模块名称。                             |
-| abilityName      | string            | 否 | 是          | 卡片所属的Ability名称。                             |
-| params      | string            | 否 | 是          | 卡片事件携带参数内容。                             |
+| bundleName      | string            | 否 | 否          | 卡片所属包的Bundle名称。                             |
+| moduleName      | string            | 否 | 否          | 卡片所属模块的模块名称。                             |
+| abilityName      | string            | 否 | 否          | 卡片所属的Ability名称。                             |
+| params      | string            | 否 | 否          | 卡片事件携带参数内容。                             |
 
 ## FormDimension
 
