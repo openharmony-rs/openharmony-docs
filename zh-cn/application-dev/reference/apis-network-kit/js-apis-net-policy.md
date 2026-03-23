@@ -77,11 +77,13 @@ policy.showAppNetPolicySettings(context).then(() => {
 )
 ```
 
-## policy.getNetAccessPolicy<sup>26+</sup>
+## policy.getNetAccessPolicy
 
-getNetAccessPolicy(): Promise\<NetAccessPolicy>;
+getNetAccessPolicy(): Promise\<NetAccessPolicy>
 
-查询自身应用的联网策略（是否允许使用蜂窝、Wi-Fi网络上网）。使用Promise异步回调。
+查询自身应用的联网策略（是否允许使用蜂窝、Wi-Fi网络上网），可在设备中“设置 > 移动网络 > 流量管理 > 应用联网”中查看。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -91,7 +93,7 @@ getNetAccessPolicy(): Promise\<NetAccessPolicy>;
 
 | 类型                                                    | 说明                          |
 | ------------------------------------------------------- | ----------------------------- |
-| Promise\<NetAccessPolicy>  |Promise对象。返回应用自身联网策略。|
+| Promise\<[NetAccessPolicy](#netaccesspolicy26)>  |Promise对象。返回应用自身联网策略。|
 
 **示例：**
 ```ts
@@ -106,9 +108,11 @@ policy.getNetAccessPolicy().then((policyInfo: policy.NetAccessPolicy) => {
 ```
 
 
-## NetAccessPolicy<sup>26+</sup>
+## NetAccessPolic
 
 应用联网策略信息。
+
+**起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
