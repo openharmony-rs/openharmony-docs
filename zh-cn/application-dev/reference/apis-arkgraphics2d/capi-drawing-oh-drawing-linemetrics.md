@@ -26,8 +26,8 @@ typedef struct OH_Drawing_LineMetrics {...} OH_Drawing_LineMetrics
 
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| double ascender                                              | 文字相对于基线以上的高度。                                   |
-| double descender                                             | 文字相对于基线以下的高度。                                   |
+| double ascender                                              | 文字相对于基线以上取绝对值后的高度。                                   |
+| double descender                                             | 文字相对于基线以下取绝对值后的高度。                                   |
 | double capHeight                                             | 大写字母的高度。                                             |
 | double xHeight                                               | 小写字母的高度。                                             |
 | double width                                                 | 文字宽度。                                                   |
