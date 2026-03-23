@@ -314,7 +314,7 @@ struct PolygonExample {
 }
 ```
 
-![zh-cn_image_0000001174582856](figures/zh-cn_image_0000001174582856.png)
+![en-us_image_0000001174582856](figures/en-us_image_0000001174582856.png)
 
 ### Example 2: Drawing a Polygon with Different Parameter Types for Width and Height
 
