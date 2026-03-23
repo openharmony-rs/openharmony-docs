@@ -2581,10 +2581,6 @@ ArkTS-Dyn: type ResponseHeaders = {
 | ------ | ------------------------------------------------------------ |
 | ArkTS-Dyn: {[k:string]:string \| string[] \| undefined}<br>ArkTS-Sta: Record\<string, string \| string[] \| undefined\> | ArkTS-Dyn: header数据类型为键值对、字符串或者undefined。<br>ArkTS-Sta: header数据类型为键值对，键为字符串，值为字符串、字符串数组或者undefined。 |
 
-| 名称 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-|  [k:string]  | string \| string[] \| undefined | 否   | 键值对形式存储。其键的类型为字符，可取任意值，其值的类型为字符、字符数组或undefined。 |
-
 ## close错误码说明
 
 发送给服务端的错误码可以自行定义，下面的列表仅供参考。
