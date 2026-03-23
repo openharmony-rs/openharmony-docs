@@ -5868,18 +5868,12 @@ resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
-| 错误码ID | 错误信息                               |
-| -------- | ---------------------------------------- |
-| 
-
-
-
- | The API does not support concurrent calls. |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.                   |
 | 17000004 | The window or component is invisible or destroyed.           |
-| 17000005 | This operation is not supported.         |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-
-**示例：**
+| 17000005 | This operation is not supported.                             |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ```ts
 // xxx.test.ets
