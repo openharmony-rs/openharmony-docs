@@ -654,7 +654,7 @@ hdc install [-cwd path|-r|-s|-w waitingTime|-u userId|-p|-g|-h] src
 | -w | 可选参数，安装HAP时指定bm工具等待时间，最短的等待时长为180s，最长的等待时长为600s，默认缺省为180s。 |
 | -u | 可选参数，指定[用户](../tools/bm-tool.md#userid)，默认在当前活跃用户下安装应用。 |
 | -p | 可选参数，指定待安装的HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。从API version 22开始，支持指定待安装的APP路径，也可指定只存在一个APP的文件夹路径。 |
-| -g | 可选参数，安装调试包时支持授予[user_grant权限](../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)和[manual_settings权限](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)。仅对开发者模式下的调试包生效。debug应用更新为release应用时取消授予的[user_grant权限](../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)和[manual_settings权限](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权) |
+| -g | 可选参数，安装调试包时支持[用户授权](../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)和[手动设置授权](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)。<br>仅对[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)生效，debug应用更新为release应用时取消授予的用户授权和手动设置授权。<br>**说明**：从API version 24开始，支持该参数。 |
 | -h | 可选参数，显示bm模块[安装命令（install）](../tools/bm-tool.md#安装命令install)帮助信息。 |
 
 **返回信息**：
@@ -706,7 +706,7 @@ $ hdc -p install D:\hap_dir
 [Info]App install path:D:\hap_dir msg:install bundle successfully.
 AppMod finish
 
-# 安装调试包时自动授予所有权限
+# 安装example.hap包示例（安装签名证书类型为debug版本应用时自动授予用户授权和手动设置授权）
 $ hdc install -g D:\example.hap
 [Info]App install path:D:\example.hap msg:install bundle successfully.
 AppMod finish
