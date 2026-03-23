@@ -34,10 +34,10 @@ import { appRecovery } from '@kit.AbilityKit';
 | 名称       | 值   | 说明       |
 | ---------- | ---- | ---------- |
 | ALWAYS_RESTART   | 0    | 总是重启应用。 <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
-| RESTART_WHEN_JS_CRASH   | 0x0001    | 发生JS_CRASH时重启应用。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| RESTART_WHEN_APP_FREEZE   | 0x0002    | 发生APP_FREEZE时重启应用。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| RESTART_WHEN_JS_CRASH   | 0x0001    | 发生JS_CRASH时重启应用。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| RESTART_WHEN_APP_FREEZE   | 0x0002    | 发生APP_FREEZE时重启应用。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | RESTART_WHEN_CPP_CRASH<sup>24</sup>    | 0x0004    | 发生CPP_CRASH时重启应用。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
-| NO_RESTART           | 0xFFFF    | 总是不重启应用。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| NO_RESTART           | 0xFFFF    | 总是不重启应用。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## SaveOccasionFlag
 
