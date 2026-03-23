@@ -9,7 +9,7 @@
 system.request部件主要给应用提供上传下载文件的基础能力。
 
 > **说明：**
-> - 从API Version 9开始所有接口不再维护，推荐使用新接口[`@ohos.request`](js-apis-request.md)。
+> - 从API Version 9开始所有接口不再维护，推荐使用新接口[@ohos.request](js-apis-request.md)。
 > 
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 

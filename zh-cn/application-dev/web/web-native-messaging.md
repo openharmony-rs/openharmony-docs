@@ -275,7 +275,7 @@ function sendMessageToNative() {
            "description": "webNativeMessaging",
            "type": "webNativeMessaging",
            "exported": true,
-           "srcEntry": "./ets/MyWebNativeMessageExtAbility/ MyWebNativeMessageExtAbility.ets"
+           "srcEntry": "./ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets"
          }
        ]
      }

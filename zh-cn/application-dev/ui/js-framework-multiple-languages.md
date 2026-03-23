@@ -190,4 +190,4 @@ ar-AE.json
 
 ## 获取语言
 
-获取语言功能请参考[@ohos.app.ability.Configuration (Configuration)](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)。
+获取语言功能请参考[@ohos.app.ability.Configuration (环境变量)](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)。

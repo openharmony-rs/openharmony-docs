@@ -37,7 +37,7 @@
   <!--DelEnd-->
 - ArkTS组件<!--avsession-comp-->
   - [@ohos.multimedia.avCastPicker (投播组件)](ohos-multimedia-avcastpicker.md)
-  - [@ohos.multimedia.avInputCastPicker（录音设备选择组件）](ohos-multimedia-avinputcastpicker.md)
+  - [@ohos.multimedia.avInputCastPicker (录音设备选择组件)](ohos-multimedia-avinputcastpicker.md)
 - C API<!--avsession-c-->
   - 模块<!--avsession-module-->
     - [OHAVSession](capi-ohavsession.md)
@@ -60,8 +60,8 @@
     - [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md)
     - [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md)
     - [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md)
-    - [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-deviceinfo.md)
-    - [AVSession_DeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md)
+    - [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md)
+    - [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md)
 - 错误码<!--avsession-arkts-errcode-->
   - [媒体会话管理错误码](errorcode-avsession.md)
   - [音频模板错误码](errorcode-avsession-avmusictemplate.md)
