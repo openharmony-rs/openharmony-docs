@@ -1670,6 +1670,7 @@ httpRequest.offDataSendProgress();
 | usingProtocol<sup>9+</sup>   | [HttpProtocol](#httpprotocol9)  | 否   | 是   | 使用协议。默认值由系统自动指定。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | usingProxy<sup>10+</sup>     | boolean \| [HttpProxy](js-apis-net-connection.md#httpproxy10)               | 否   | 是   | HTTP代理配置，该项不配置时表示不使用代理。<br />- 当usingProxy为布尔类型true时，使用默认网络代理，为false时，不使用代理。<br />- 当usingProxy为HttpProxy类型时，使用指定网络代理。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | caPath<sup>10+</sup>     | string               | 否   | 是   | 如果设置了此参数，系统将使用用户指定路径的CA证书（开发者需保证该路径下CA证书的可访问性），否则将使用系统预设CA证书。<br />系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。目前仅支持后缀名为.pem的文本格式证书。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| caData<sup>20+</sup>     | string               | 否  | 是  | 如果设置了此参数且证书有效，系统将使用用户指定的CA证书和系统预设的CA证书；否则仅使用系统预设的CA证书。如果同时设置了caPath和caData，caData将被系统忽略。目前仅支持传入.pem格式的证书内容，最大长度为8000字节。仅支持传入单证书，不支持证书链传入。<br />系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | resumeFrom<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 是   | 用于设置下载起始位置，该参数只能用于GET方法，不能用于其他。HTTP标准（RFC 7233第3.1节）允许服务器忽略范围请求。<br />- 使用HTTP PUT时，不能使用该选项，因为该选项可能与其他选项冲突。<br />- 取值范围是：[1，4294967296（4GB）]，超出范围则不生效。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | resumeTo<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 是   | 用于设置下载结束位置，该参数只能用于GET方法，不能用于其他。HTTP标准（RFC 7233第3.1节）允许服务器忽略范围请求。<br />- 使用HTTP PUT时，不能使用该选项，因为该选项可能与其他选项冲突。<br />- 取值范围是：[1，4294967296（4GB）]，超出范围则不生效。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | clientCert<sup>11+</sup> | [ClientCert](#clientcert11) | 否 | 是   | 支持传输客户端证书。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -1682,6 +1683,12 @@ httpRequest.offDataSendProgress();
 | remoteValidation<sup>18+</sup> | [RemoteValidation](#remotevalidation18)                             | 否 | 是   | 证书颁发机构（CA），用于验证远程服务器的身份。如果未设置此字段，系统CA将用于验证远程服务器的标识。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 18<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | tlsOptions<sup>18+</sup> | [TlsOptions](#tlsoptions18)                                         | 否 | 是   | TLS配置。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 18<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | serverAuthentication<sup>18+</sup> | [ServerAuthentication](#serverauthentication18)                     | 否 | 是   | 安全连接期间的服务器身份验证配置。默认不认证。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 18<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| sslType<sup>20+</sup> | [SslType](#ssltype20) | 否 | 是 | 使用安全通信协议TLS（默认）或TLCP。如果使用TLCP，相关的选项（如caPath、clientCert和clientEncCert）必须赋有效值。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| clientEncCert<sup>20+</sup> | [ClientCert](#clientcert11) | 否 | 是 | 支持应用程序传入客户端证书，使服务器能够进行验证客户端的加密身份。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| customMethod<sup>23+</sup> | string | 否 | 是 | 支持自定义请求方法，例如实现WebDAV扩展协议，当与method同时配置时，customMethod优先级更高。<br />- 默认值为空字符串，最大长度128个字符，超出则不生效。<br />- 当customMethod符合WebDAV扩展协议请求方式，但服务器不支持时，本次请求的服务器响应码通常为405或501（实际结果与服务器具体行为有关）。<br />- 当customMethod不符合WebDAV扩展协议请求方式时，本次请求的服务器响应码通常为400或405（实际结果与服务器具体行为有关）。 |
+| maxRedirects<sup>23+</sup> | number | 否 | 是 | 支持针对HttpRequest指定最大跳转次数。<br />- 默认值为30次。<br />- 取值范围是：[0，2147483647]，设置0即为关闭重定向，当服务器的重定向次数超过设置的最大重定向次数时会返回错误码2300047。超出此范围该配置不生效，配置默认值30。 |
+| sniHostName<sup>23+</sup> | string | 否 | 是 | 支持客户端通过配置SNI（Server Name Indication，服务器名称指示）在TLS握手阶段向服务器声明目标域名，使服务器能够根据域名选择对应的SSL/TLS证书进行加密通信。<br />- 默认值为空字符串，sniHostName参数长度上限为255个字符。若超出长度限制或设置为空字符串，该设置将不会生效。 |
+| pathPreference<sup>23+</sup> |[PathPreference](#pathpreference23) | 否 | 是 |支持HTTP请求指定特定激活的网络。 |
 
 ## RequestMethod
 
@@ -2589,3 +2596,392 @@ TLS1.0及以上版本支持的加密套件。
 | 'TLS_RSA_WITH_AES_128_CBC_SHA'         | 表示值的类型为字符串，可取'TLS_RSA_WITH_AES_128_CBC_SHA'。         |
 | 'TLS_RSA_WITH_AES_256_CBC_SHA'         | 表示值的类型为字符串，可取'TLS_RSA_WITH_AES_256_CBC_SHA'。         |
 | 'TLS_RSA_WITH_3DES_EDE_CBC_SHA'        | 表示值的类型为字符串，可取'TLS_RSA_WITH_3DES_EDE_CBC_SHA'。        |
+
+## SslType<sup>20+</sup>
+
+type SslType = 'TLS' | 'TLCP'
+
+安全通信协议。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+| 类型   | 说明                                   |
+| ------ | -------------------------------------- |
+| 'TLS' | 表示使用TLS安全通信协议，值固定为'TLS'字符串。   |
+| 'TLCP' | 表示使用TLCP安全通信协议，值固定为'TLCP'字符串。<br>**说明**：<br>（1）证书支持字符串的规格：<br> - UTF8String（英文字符集）<br> - PrintableString<br>  - IA5String<br>从API Version 22开始支持：<br> - TeletexString<br>（2）证书支持扩展的规格：<br> - BasicConstraints（OID 2.5.29.19）<br> - KeyUsage（OID2.5.29.15）<br> - SubjectKeyIdentifier（OID2.5.29.14）<br> - AuthorityKeyIdentifier（OID2.5.29.35）<br>从API Version 22开始支持：<br> - SubjectAltName（OID 2.5.29.17）<br> - ExtendedKeyUsage（OID 2.5.29.37）<br/> |
+
+## InterceptorType<sup>22+</sup>
+
+HTTP拦截器的类型枚举。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+| 名称   | 值 |说明                                   |
+| ------ | --|-------------------------------------- |
+| INITIAL_REQUEST |'INITIAL_REQUEST' |在初始HTTP请求组装完成后拦截。|
+| REDIRECTION | 'REDIRECTION' |当收到重定向响应时拦截。|
+| CACHE_CHECKED | 'READ_CACHE' |在检查并且命中HTTP缓存时拦截。|
+| NETWORK_CONNECT | 'CONNECT_NETWORK' |在网络请求将要发出前拦截。|
+| FINAL_RESPONSE | 'FINAL_RESPONSE' |在获取最终HTTP响应时拦截。|
+
+## HttpRequestContext<sup>22+</sup>
+
+HTTP请求上下文数据。该对象实例在拦截器的[interceptorHandle](#interceptorhandle22)方法中作为参数传入，开发者可以通过该对象获取和修改HTTP请求的相关信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+### 属性
+
+| 名称   | 类型 |只读 |可选 |说明                      |
+| --   | -- |-- |-- |--                      |
+| url   | string |否 |否 |HTTP拦截器从HTTP请求中获取到的URL，支持在拦截器中进行修改。|
+| header   | Object |否 |否 |HTTP拦截器从HTTP请求中获取到的请求头，支持在拦截器中进行修改。|
+| body   | Object |否 |否 |HTTP拦截器从HTTP请求中获取到的请求体，支持在拦截器中进行修改。|
+
+## ChainContinue<sup>22+</sup>
+
+type ChainContinue = boolean
+
+是否继续处理拦截器链。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+| 类型   | 说明                                    |
+| ------ | -------------------------------------- |
+| boolean | true表示继续处理拦截器链，false表示终止并返回HTTP响应。                   |
+
+## HttpInterceptor<sup>22+</sup>
+
+HTTP拦截器接口。用户可以实现此接口来定义拦截处理函数。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+### 属性
+
+| 名称   | 类型 |只读 |可选 |说明                      |
+| --   | -- |-- |-- |--                      |
+| interceptorType   | [InterceptorType](#interceptortype22)|否 |否 |拦截器类型，定义此拦截器何时被调用。                      |
+
+
+### interceptorHandle<sup>22+</sup>
+
+interceptorHandle(reqContext: HttpRequestContext, rspContext: HttpResponse): Promise\<ChainContinue\>
+
+拦截HTTP处理过程并进行所需的更改。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名   | 类型 | 必填 |说明                      |
+| --   | -- | -- | --                      |
+| reqContext   | [HttpRequestContext](#httprequestcontext22) |是 |经过HTTP拦截器的请求参数的上下文。                      |
+| rspContext   | [HttpResponse](#httpresponse) |是 |经过HTTP拦截器的返回结果的上下文。                      |
+
+**返回值：**
+
+| 类型   | 说明                                   |
+| ------ | -------------------------------------- |
+| Promise\<[ChainContinue](#chaincontinue22)\> | 继续HTTP处理或终止并返回HTTP响应。   |
+
+**示例：**
+
+```ts
+import { http } from '@kit.NetworkKit';
+
+// 创建自定义拦截器
+class CustomInterceptor implements http.HttpInterceptor {
+  interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
+
+  async interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // 在初始请求阶段添加认证头
+    reqContext.header['Authorization'] = 'Bearer token';
+    console.info('Interceptor: Added authorization header');
+    return true; // 继续处理拦截器链
+  }
+}
+
+let customInterceptor = new CustomInterceptor();
+```
+
+## HttpInterceptorChain<sup>22+</sup>
+
+HTTP拦截器链。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**示例：**
+
+```ts
+import { http } from '@kit.NetworkKit';
+
+let interceptorChain = new http.HttpInterceptorChain();
+```
+
+### addChain<sup>22+</sup>
+
+addChain(chain: HttpInterceptor[]): boolean
+
+向HTTP客户端添加拦截器。
+
+> **说明：**
+>
+> 拦截器链中不能包含相同类型的拦截器实例。如果传入相同类型的拦截器，会抛出错误码2300802（Duplicated interceptor type in the chain）。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名   | 类型   |必填   |说明   |
+| ------ | ------ | ------ | ------ |
+| chain | [HttpInterceptor](#httpinterceptor22)[] | 是 | 拦截器实例组成的拦截链，支持传入单个或者多个不同类型的拦截器。 |
+
+**返回值：**
+
+| 类型   | 说明                                   |
+| ------ | -------------------------------------- |
+| boolean | 拦截器是否添加成功。true表示拦截器添加成功，false表示拦截器没有添加成功。                   |
+
+**错误码：**
+
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
+HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
+
+| 错误码ID    | 错误信息                                               |
+| ------      | --------------------------------------                |
+| 2300801 | Parameter type not supported by the interceptor.          |
+| 2300802 | Duplicated interceptor type in the chain.                 |
+| 2300999 | Internal error.                                           |
+
+**示例：**
+
+```ts
+import { http } from '@kit.NetworkKit';
+
+// 创建认证拦截器
+class AuthInterceptor implements http.HttpInterceptor {
+  interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
+
+  async interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // 在初始请求阶段添加认证头
+    reqContext.header['Authorization'] = 'Bearer token';
+    console.info('Interceptor: Added authorization header');
+    return true; // 继续处理拦截器链
+  }
+}
+
+class LoggingInterceptor implements http.HttpInterceptor {
+  interceptorType: http.InterceptorType = http.InterceptorType.FINAL_RESPONSE;
+
+  async interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // 在最终响应阶段记录日志
+    console.info(`LoggingInterceptor: Request to ${reqContext.url} completed with status ${rspContext.responseCode}`);
+    return true; // 继续处理拦截器链
+  }
+}
+
+// 创建拦截器链并应用到请求
+let interceptorChain = new http.HttpInterceptorChain();
+let authInterceptor = new AuthInterceptor();
+let loggingInterceptor = new LoggingInterceptor();
+
+// 添加拦截器到链中
+try {
+  let success = interceptorChain.addChain([authInterceptor, loggingInterceptor]);
+  if (!success) {
+    console.error('Failed to add interceptor chain');
+  }
+} catch (e) {
+  console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
+}
+```
+
+### getChain<sup>22+</sup>
+
+getChain(): HttpInterceptor[]
+
+获取当前拦截器链中的所有拦截器实例。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**返回值：**
+
+| 类型   | 说明                                     |
+| ------ | --------------------------------------   |
+| [HttpInterceptor](#httpinterceptor22)[] | 返回通过[addChain](#addchain22)方法添加的所有拦截器实例。             |
+
+**示例：**
+
+```ts
+import { http } from '@kit.NetworkKit';
+
+// 创建自定义拦截器
+class CustomInterceptor implements http.HttpInterceptor {
+  interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
+
+  async interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // 在初始请求阶段添加认证头
+    reqContext.header['Authorization'] = 'Bearer token';
+    console.info('Interceptor: Added authorization header');
+    return true; // 继续处理拦截器链
+  }
+}
+
+// 创建拦截器链并应用到请求
+let interceptorChain = new http.HttpInterceptorChain();
+let customInterceptor = new CustomInterceptor();
+
+// 添加拦截器到链中
+try {
+  let success = interceptorChain.addChain([customInterceptor]);
+  if (!success) {
+    console.error('Failed to add interceptor chain');
+  }
+} catch (e) {
+  console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
+}
+
+// 获取当前拦截器链中的所有拦截器
+let chain = interceptorChain.getChain();
+console.info(`Current interceptor chain has ${chain.length} interceptors`);
+```
+
+### apply<sup>22+</sup>
+
+apply(httpRequest: HttpRequest): boolean
+
+将拦截器链附加到目标HTTP请求。每个HTTP请求实例只能附加一个拦截器链。
+
+> **说明：**
+>
+> 将拦截器链附加到[HttpRequest](#httprequest)实例后，当该实例发起HTTP请求时，会触发已附加的拦截器链中相应类型的拦截器。<br>
+> 更多使用HTTP请求触发拦截器功能，可以参考[HTTP拦截器功能代码示例](../../network/http-request.md#http拦截器)。<br>
+> HTTP拦截器相关能力仅支持[HttpRequest.request](#request)接口，目前暂不支持[HttpRequest.requestInStream](#requestinstream10)(流式传输)接口。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名   | 类型   |必填   |说明   |
+| ------ | ------ | ------ | ------ |
+| httpRequest | [HttpRequest](#httprequest) | 是 | 要发起HTTP请求的[HttpRequest](#httprequest)。 |
+
+**返回值：**
+
+| 类型   | 说明                                   |
+| ------ | -------------------------------------- |
+| boolean | 拦截器是否附加成功。true表示拦截器附加成功，false表示拦截器没有附加成功。                   |
+
+**错误码：**
+
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
+HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
+
+| 错误码ID    | 错误信息                                               |
+| ------      | --------------------------------------                |
+| 2300801 | Parameter type not supported by the interceptor.          |
+| 2300999 | Internal error.                                           |
+
+**示例：**
+
+```ts
+import { http } from '@kit.NetworkKit';
+
+// 创建认证拦截器
+class AuthInterceptor implements http.HttpInterceptor {
+  interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
+
+  async interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // 在初始请求阶段添加认证头
+    reqContext.header['Authorization'] = 'Bearer token';
+    console.info('Interceptor: Added authorization header');
+    return true; // 继续处理拦截器链
+  }
+}
+
+class LoggingInterceptor implements http.HttpInterceptor {
+  interceptorType: http.InterceptorType = http.InterceptorType.FINAL_RESPONSE;
+
+  async interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // 在最终响应阶段记录日志
+    console.info(`LoggingInterceptor: Request to ${reqContext.url} completed with status ${rspContext.responseCode}`);
+    return true; // 继续处理拦截器链
+  }
+}
+
+// 创建拦截器链
+let interceptorChain = new http.HttpInterceptorChain();
+let authInterceptor = new AuthInterceptor();
+let loggingInterceptor = new LoggingInterceptor();
+
+// 创建HTTP请求
+let httpRequest = http.createHttp();
+
+try {
+  // 添加拦截器到链中
+  let success = interceptorChain.addChain([authInterceptor, loggingInterceptor]);
+  if (!success) {
+    console.error('Failed to add interceptor chain');
+  }
+
+  // 将拦截器链应用到HTTP请求
+  let applySuccess = interceptorChain.apply(httpRequest);
+  if (!applySuccess) {
+    console.error('Failed to apply interceptor chain');
+  }
+} catch (e) {
+  console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
+}
+
+// 发起HTTP请求。如需使用拦截，仅支持通过request接口发起请求
+httpRequest.request("EXAMPLE_URL", {
+  method: http.RequestMethod.GET,
+  header: { 'Content-Type': 'application/json' }
+}, (err: Error, data: http.HttpResponse) => {
+  if (!err) {
+    console.info('Request completed with response code: ' + data.responseCode);
+  } else {
+    console.error('Request failed: ' + JSON.stringify(err));
+  }
+  httpRequest.destroy();
+});
+```
+## PathPreference<sup>23+</sup>
+
+type PathPreference = 'auto' | 'primaryCellular' | 'secondaryCellular'
+
+HTTP请求指定特定网络的类型枚举。
+
+> **说明：**
+>
+> 推荐在网络并发等场景下使用。<br>
+> 当指定的网络没有激活时，系统按照指定默认网络处理。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+
+| 类型   | 说明                                   |
+| ------ | -------------------------------------- |
+| 'auto' |表示HTTP请求指定默认的网络连接。|
+| 'primaryCellular' |表示在蜂窝网络激活的场景下，HTTP请求指定默认的蜂窝网络连接。|
+| 'secondaryCellular' |表示在双蜂窝网络激活的场景下，HTTP请求指定副卡的蜂窝网络连接。|
