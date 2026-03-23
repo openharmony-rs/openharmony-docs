@@ -3215,7 +3215,7 @@ static detectEncoding(bytes: Uint8Array): EncodingInfo
 
 | 类型      | 说明                                       |
 | ------- | ---------------------------------------- |
-| [EncodingInfo](#encodinginfo26) | 编码信息，包含编码名称和置信度。 |
+| [EncodingInfo](#encodinginfo2) | 编码信息，包含编码名称和置信度。 |
 
 **示例：**
   ```ts
