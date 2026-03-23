@@ -218,12 +218,12 @@ Struct OH_WifiLinkedInfo
 | macType | number | 否 | 否 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。 |
 | macAddress | string | 否 | 否 | 设备的MAC地址。当 macType 为 1 时需要请求 ohos.permission.GET_WIFI_LOCAL_MAC 权限。<br>格式："AA:BB:CC:DD:EE:FF"<br>长度 WIFI_MAC_LEN = 18。 |
 | ipAddress | number | 否 | 否 | WLAN连接的IP地址。 |
-| connState | [OH_WifiConnState](#oh_wificonnstate) | 否 | 否 | WLAN连接状态。详情见 OH_WifiConnState。 |
-| channelWidth | [OH_WifiChannelWidth](#oh_wifichannelwidth) | 否 | 否 | 当前连接热点的信道带宽。详情见 OH_WifiChannelWidth。 |
-| wifiStandard | [OH_WifiStandard](#oh_wifistandard) | 否 | 否 | 当前连接热点的Wi-Fi标准。详情见 OH_WifiStandard。 |
-| supportedWifiCategory | [OH_WifiCategory](#oh_wificategory) | 否 | 否 | 热点支持的最高Wi-Fi级别。详情见 OH_WifiCategory。 |
+| connState | [OH_WifiConnState](capi-oh-wifi-h.md#oh_wificonnstate) | 否 | 否 | WLAN连接状态。详情见 OH_WifiConnState。 |
+| channelWidth | [OH_WifiChannelWidth](capi-oh-wifi-h.md#oh_wifichannelwidth) | 否 | 否 | 当前连接热点的信道带宽。详情见 OH_WifiChannelWidth。 |
+| wifiStandard | [OH_WifiStandard](capi-oh-wifi-h.md#oh_wifistandard) | 否 | 否 | 当前连接热点的Wi-Fi标准。详情见 OH_WifiStandard。 |
+| supportedWifiCategory | [OH_WifiCategory](capi-oh-wifi-h.md#oh_wificategory) | 否 | 否 | 热点支持的最高Wi-Fi级别。详情见 OH_WifiCategory。 |
 | isHiLinkNetwork | boolean | 否 | 否 | 热点是否支持hilink，true表示支持，false表示不支持。 |
-| wifiLinkType | [OH_WifiLinkType](#oh_wifilinktype) | 否 | 否 | Wi-Fi7连接类型。详情见 OH_WifiLinkType。 |
+| wifiLinkType | [OH_WifiLinkType](capi-oh-wifi-h.md#oh_wifilinktype) | 否 | 否 | Wi-Fi7连接类型。详情见 OH_WifiLinkType。 |
 
 ## 函数说明
 
