@@ -3311,7 +3311,58 @@ createNode(context: UIContext, nodeType: 'Flex'): Flex
 typeNode.createNode(uiContext, 'Flex');
 ```
 
+### Swiper<sup>23+</sup>
+
+type Swiper = SwiperFrameNode
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[Swiper](#swiper)。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [SwiperFrameNode](#swiperframenode23) | Swiper类型的FrameNode节点。 |
+
+### SwiperFrameNode<sup>23+</sup>
+
+SwiperFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明[Swiper](./arkui-ts/ts-container-swiper.md)类型的FrameNode。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+### initialize<sup>23+</sup>
+
+abstract initialize(controller?: SwiperController): SwiperAttribute
+
+初始化Swiper组件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| controller | [SwiperController](../apis-arkui/arkui-ts/ts-container-swiper.md#swipercontroller) | 否   | 给组件绑定一个控制器。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| SwiperAttribute | 返回Swiper组件的属性设置对象。 |
+
 ### Swiper<sup>12+</sup>
+
 type Swiper = TypedFrameNode&lt;SwiperInterface, SwiperAttribute&gt;
 
 Swiper类型的FrameNode节点类型。
@@ -3320,11 +3371,18 @@ Swiper类型的FrameNode节点类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[SwiperFrameNode](#swiperframenode23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 | 类型                                                   | 说明                                                         |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
 | TypedFrameNode&lt;SwiperInterface, SwiperAttribute&gt; | 提供Swiper类型FrameNode节点。<br/>**说明：**<br/> SwiperInterface用于[TypedFrameNode](#typedframenode12)的[initialize](#属性)接口的入参，入参为Swiper组件的构造函数类型。 <br/> SwiperAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Swiper组件的属性设置对象。 |
 
 ### createNode('Swiper')<sup>12+</sup>
+
 createNode(context: UIContext, nodeType: 'Swiper'): Swiper
 
 创建Swiper类型的FrameNode节点。
@@ -3332,6 +3390,12 @@ createNode(context: UIContext, nodeType: 'Swiper'): Swiper
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[createSwiperNode](#createswipernode23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -3353,6 +3417,87 @@ createNode(context: UIContext, nodeType: 'Swiper'): Swiper
 ```ts
 typeNode.createNode(uiContext, 'Swiper');
 ```
+
+### createSwiperNode<sup>24+</sup>
+
+createSwiperNode(context: UIContext, options?: FrameNodeOptions): Swiper
+
+创建Swiper类型的FrameNode节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[createNode('Swiper')](#createnodeswiper12)。
+
+**ArkTS-Dyn起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+| options |[FrameNodeOptions](#framenodeoptions24) | 否 | 创建Swiper类型的FrameNode节点。 |
+
+### getAttribute('Swiper')<sup>20+</sup>
+
+getAttribute(node: FrameNode, nodeType: 'Swiper'): SwiperAttribute | undefined
+
+获取Swiper节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[getSwiperAttribute](#getswiperattribute24)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | 是   | 获取属性时所需的目标节点。 |
+| nodeType | 'Swiper' | 是 | 获取Swiper节点类型的属性。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| SwiperAttribute&nbsp;\|&nbsp;undefined | Swiper节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例：**
+
+请参考[createNode('Swiper')<sup>12+</sup>示例](#createnodeswiper12)。
+
+### getSwiperAttribute<sup>24+</sup>
+
+getSwiperAttribute(node: FrameNode): SwiperAttribute | undefined
+
+获取Swiper节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[getAttribute('Swiper')](#getattributeswiper20)。
+
+**ArkTS-Dyn起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | 是   | 获取属性时所需的目标节点。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| SwiperAttribute&nbsp;\|&nbsp;undefined | Swiper节点类型的属性，若获取失败，则返回undefined。 |
+
 ### Progress<sup>12+</sup>
 type Progress = TypedFrameNode&lt;ProgressInterface, ProgressAttribute&gt;
 

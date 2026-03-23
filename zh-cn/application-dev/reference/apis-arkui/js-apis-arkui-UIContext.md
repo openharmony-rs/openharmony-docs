@@ -4847,15 +4847,37 @@ on(type: 'navDestinationUpdate', callback: Callback\<observer.NavDestinationInfo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onNavDestinationUpdate<sup>23+</sup>](#onnavdestinationupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                | 是   | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 是   | 回调函数。返回当前的NavDestination组件状态。                 |
+
+### onNavDestinationUpdate<sup>23+</sup>
+
+onNavDestinationUpdate(callback: Callback\<observer.NavDestinationInfo>): void
+
+监听NavDestination组件的状态变化。使用Callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta模式。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationUpdate')](#onnavdestinationupdate11)。
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 是   | 回调函数。返回当前的NavDestination组件状态。                 |
 
 **示例：**
@@ -4921,9 +4943,11 @@ off(type: 'navDestinationUpdate', callback?: Callback\<observer.NavDestinationIn
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offNavDestinationUpdate<sup>23+</sup>](#offnavdestinationupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
@@ -4936,6 +4960,26 @@ off(type: 'navDestinationUpdate', callback?: Callback\<observer.NavDestinationIn
 
 参考[uiObserver.on('navDestinationUpdate')](#onnavdestinationupdate11)示例。
 
+### offNavDestinationUpdate<sup>23+</sup>
+
+offNavDestinationUpdate(callback?: Callback\<observer.NavDestinationInfo\>): void
+
+取消监听NavDestination组件的状态变化。使用Callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta模式。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('navDestinationUpdate')](#offnavdestinationupdate11)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 否   | 需要取消的监听回调，不传参数时，取消所有的Navigation监听回调。                 |
+
 ### on('navDestinationUpdate')<sup>11+</sup>
 
 on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback: Callback\<observer.NavDestinationInfo\>): void
@@ -4946,9 +4990,11 @@ on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callbac
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onNavDestinationUpdate<sup>23+</sup>](#onnavdestinationupdate23-1)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
@@ -4957,6 +5003,27 @@ on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callbac
 | type     | string                                                       | 是   | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
 | options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | 是   | 指定监听的Navigation的id。                                   |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | 是   | 回调函数。返回当前的NavDestination组件状态。                 |
+
+### onNavDestinationUpdate<sup>23+</sup>
+
+onNavDestinationUpdate(options: observer.NavDestinationSwitchObserverOptions, callback: Callback<observer.NavDestinationInfo>): void
+
+监听NavDestination组件的状态变化。使用Callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationUpdate')](#onnavdestinationupdate11-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| options  | [observer.NavDestinationSwitchObserverOptions](js-apis-arkui-observer.md#navdestinationswitchobserveroptions12) | 是   | 指定监听的Navigation的id。                                               |
+| callback | Callback\<[observer.NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 是   | 回调函数。返回当前的NavDestination组件状态。                             |
 
 **示例：**
 
@@ -5019,9 +5086,11 @@ off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callba
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offNavDestinationUpdate<sup>23+</sup>](#offnavdestinationupdate23-1)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
@@ -5031,15 +5100,34 @@ off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callba
 | options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | 是   | 指定监听的Navigation的id。                                   |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | 否   |需要取消的监听回调，不传参数时，取消该Navigation上所有的监听回调。                 |
 
+### offNavDestinationUpdate<sup>23+</sup>
+
+offNavDestinationUpdate(options: observer.NavDestinationSwitchObserverOptions, callback?: Callback\<observer.NavDestinationInfo\>): void
+
+取消监听NavDestination组件的状态变化。使用Callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta模式。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('navDestinationUpdate')](#offnavdestinationupdate11-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| options  | observer.[NavDestinationSwitchObserverOptions](js-apis-arkui-observer.md#navdestinationswitchobserveroptions12) | 是   | 指定监听的Navigation的id。                                               |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 否   | 回调函数。返回当前的NavDestination组件状态。                             |
+
 **示例：**
 
 参考[uiObserver.on('navDestinationUpdate')](#onnavdestinationupdate11-1)示例。
 
 ### on('navDestinationUpdateByUniqueId')<sup>20+</sup>
 
-ArkTS-Dyn: on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback: Callback\<observer.NavDestinationInfo\>): void
-
-ArkTS-Sta: on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: int, callback: Callback\<observer.NavDestinationInfo\>): void
+on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback: Callback\<observer.NavDestinationInfo\>): void
 
 通过Navigation的uniqueId监听NavDestination组件的状态变化，uniqueId可通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。
 
@@ -5047,16 +5135,39 @@ ArkTS-Sta: on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: int, c
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 22
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onNavDestinationUpdateByUniqueId<sup>23+</sup>](#onnavdestinationupdatebyuniqueid23)。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：** 
 
 | 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                               | 是   | 监听事件，固定为'navDestinationUpdateByUniqueId'，即NavDestination组件的状态变化。 |
-| navigationUniqueId  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 指定监听的Navigation的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
+| navigationUniqueId  | number | 是   | 指定监听的Navigation的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 是   | 回调函数。返回当前的NavDestination组件状态。                             |
+
+### onNavDestinationUpdateByUniqueId<sup>23+</sup>
+
+onNavDestinationUpdateByUniqueId(navigationUniqueId: int, callback: Callback\<observer.NavDestinationInfo\>): void
+
+通过Navigation的uniqueId监听NavDestination组件的状态变化，uniqueId可通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。使用Callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationUpdateByUniqueId')](#onnavdestinationupdatebyuniqueid20)。
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| navigationUniqueId  | int | 是   | 指定监听的Navigation的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 是   | 回调函数。返回当前的NavDestination组件状态。                             |
 
 **示例：**
@@ -5125,8 +5236,7 @@ struct Index {
 
 ### off('navDestinationUpdateByUniqueId')<sup>20+</sup>
 
-ArkTS-Dyn: off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback?: Callback\<observer.NavDestinationInfo\>): void
-ArkTS-Sta: off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: int, callback?: Callback\<observer.NavDestinationInfo\>): void
+off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback?: Callback\<observer.NavDestinationInfo\>): void
 
 取消通过navigationUniqueId监听NavDestination组件的变化。
 
@@ -5134,7 +5244,31 @@ ArkTS-Sta: off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: int, 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offNavDestinationUpdateByUniqueId](#offnavdestinationupdatebyuniqueid23)。
+
 **ArkTS-Dyn起始版本：** 20
+
+**参数：** 
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                               | 是   | 监听事件，固定为'navDestinationUpdateByUniqueId'，即NavDestination组件的状态变化。 |
+| navigationUniqueId  | number | 是   | 指定监听的[Navigation](arkui-ts/ts-basic-components-navigation.md)的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 否   | 需要取消的监听回调，不传参数时，取消该Navigation上所有的监听回调。                             |
+
+### offNavDestinationUpdateByUniqueId<sup>23+</sup>
+
+offNavDestinationUpdateByUniqueId(navigationUniqueId: int, callback?: Callback\<observer.NavDestinationInfo\>): void
+
+取消通过navigationUniqueId监听NavDestination组件的变化。使用Callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('navDestinationUpdateByUniqueId')d](#offnavdestinationupdatebyuniqueid20)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -5142,7 +5276,7 @@ ArkTS-Sta: off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: int, 
 
 | 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
-| type     | string                                                               | 是   | 监听事件，固定为'navDestinationUpdateByUniqueId'，即NavDestination组件的状态变化。 |
+| navigationUniqueId  | int | 是   | 指定监听的[Navigation](arkui-ts/ts-basic-components-navigation.md)的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 否   | 需要取消的监听回调，不传参数时，取消该Navigation上所有的监听回调。                             |
 
 **示例：**
@@ -5314,15 +5448,18 @@ struct Index {
 ### on('routerPageUpdate')<sup>11+</sup>
 
 on(type: 'routerPageUpdate', callback: Callback\<observer.RouterPageInfo\>): void
+
 监听router中page页面的状态变化。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onRouterPageUpdate](#onrouterpageupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
@@ -5353,7 +5490,11 @@ off(type: 'routerPageUpdate', callback?: Callback\<observer.RouterPageInfo\>): v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offRouterPageUpdate](#offrouterpageupdate23)。
+
+**ArkTS-Dyn起始版本：** 11 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -5983,7 +6124,11 @@ on(type: 'navDestinationSwitch', callback: Callback\<observer.NavDestinationSwit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onNavDestinationSwitch](#onnavdestinationswitch23)。
+
+**ArkTS-Dyn起始版本：** 12 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -6057,7 +6202,11 @@ off(type: 'navDestinationSwitch', callback?: Callback\<observer.NavDestinationSw
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offNavDestinationSwitch](#offnavdestinationswitch23)。
+
+**ArkTS-Dyn起始版本：** 12 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -6152,7 +6301,11 @@ off(type: 'navDestinationSwitch', observerOptions: observer.NavDestinationSwitch
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offNavDestinationSwitch](#offnavdestinationswitch23)。
+
+**ArkTS-Dyn起始版本：** 12 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -6564,7 +6717,11 @@ on(type: 'tabContentUpdate', callback: Callback\<observer.TabContentInfo\>): voi
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onTabContentUpdate](#ontabcontentupdate23)。
+
+**ArkTS-Dyn起始版本：** 12 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -6632,7 +6789,11 @@ off(type: 'tabContentUpdate', callback?: Callback\<observer.TabContentInfo\>): v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offTabContentUpdate](#offtabcontentupdate23)。
+
+**ArkTS-Dyn起始版本：** 12 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -14760,6 +14921,10 @@ setFrameRateRange(range: ExpectedFrameRateRange): void
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型         | 必填   | 说明   |
@@ -14825,6 +14990,10 @@ getFrameRateRange(): ExpectedFrameRateRange
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

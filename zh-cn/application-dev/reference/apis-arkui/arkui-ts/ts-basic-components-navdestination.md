@@ -118,7 +118,7 @@ ArkTS-Sta: hideTitleBar(hide: boolean | undefined, animated: boolean | undefined
 
 ArkTS-Dyn: toolbarConfiguration(toolbarParam: Array&lt;ToolbarItem&gt; | CustomBuilder, options?: NavigationToolbarOptions)
 
-ArkTS-Sta: toolbarConfiguration(toolbarParam: Array&lt;ToolbarItem&gt; | CustomBuilder | undefined, options?: NavigationToolbarOptions)
+ArkTS-Sta: toolbarConfiguration(toolbarParam: Array&lt;ToolbarItem&gt; | CustomBuilder | undefined, options?: NavigationToolbarOptions | undefined)
 
 设置工具栏内容。未调用本接口时不显示工具栏。
 
@@ -135,7 +135,7 @@ ArkTS-Sta: toolbarConfiguration(toolbarParam: Array&lt;ToolbarItem&gt; | CustomB
 | 参数名       | 类型                                                         | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | toolbarParam | ArkTS-Dyn: &nbsp;Array&lt;[ToolbarItem](ts-basic-components-navigation.md#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: &nbsp;Array&lt;[ToolbarItem](ts-basic-components-navigation.md#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) \| undefined| 是   | 工具栏内容。<br/>使用Array&lt;[ToolbarItem](ts-basic-components-navigation.md#toolbaritem10)&gt;写法设置的工具栏有如下特性：<br/>-工具栏所有选项均分底部工具栏，在每个均分内容区布局文本和图标。<br/>-文本超长时，若工具栏选项个数小于5个，优先拓展选项的宽度，工具栏最大宽度与屏幕等宽，其次逐级缩小，缩小之后换行，最后截断。<br/>-竖屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标中，点击更多图标，可以展示剩余内容。横屏时，如果为[Split](ts-basic-components-navigation.md#navigationmode9枚举说明)模式，仍按照竖屏规则显示，如果为[Stack](ts-basic-components-navigation.md#navigationmode9枚举说明)模式需配合menus属性的Array&lt;[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt;使用，底部工具栏会自动隐藏，同时底部工具栏所有选项移动至页面右上角菜单。<br/>使用[CustomBuilder](ts-types.md#custombuilder8)写法为用户自定义工具栏选项，除均分底部工具栏外不具备以上功能。 |
-| options      | [NavigationToolbarOptions](ts-basic-components-navigation.md#navigationtoolbaroptions11) | 否   | 工具栏选项。包含工具栏背景颜色、工具栏背景模糊样式及模糊选项、工具栏背景属性、工具栏布局方式、是否隐藏工具栏的文本、工具栏更多图标的菜单选项。                                                 |
+| options      | ArkTS-Dyn: [NavigationToolbarOptions](ts-basic-components-navigation.md#navigationtoolbaroptions11)<br/>ArkTS-Sta: [NavigationToolbarOptions](ts-basic-components-navigation.md#navigationtoolbaroptions11) \| undefined | 否   | 工具栏选项。包含工具栏背景颜色、工具栏背景模糊样式及模糊选项、工具栏背景属性、工具栏布局方式、是否隐藏工具栏的文本、工具栏更多图标的菜单选项。                                                 |
 
 > **说明：**
 >
@@ -530,7 +530,7 @@ ArkTS-Sta: preferredOrientation(orientation: Orientation | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| orientation  | ArkTS-Sta: [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;[Orientation](../arkts-apis-window-e.md#orientation9)&gt;<br/> ArkTS-Sta: Orientation \| undefined| 是   | NavDestination页面对应的Orientation。 |
+| orientation  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;[Orientation](../arkts-apis-window-e.md#orientation9)&gt;<br/> ArkTS-Sta: Orientation \| undefined| 是   | NavDestination页面对应的Orientation。 |
 
 ### enableStatusBar<sup>19+</sup>
 
@@ -799,7 +799,7 @@ ArkTS-Sta: onBackPressed(callback:&nbsp;(()&nbsp;=&gt;&nbsp;boolean) | undefined
 
 | 参数名    | 类型   | 必填 | 说明                                       |
 | --------- | ------ | ---- | ------------------------------------------ |
-| callback | ArkTS-Dyn: () => boolean<br/>ArkTS-Sta: () => boolean \| undefined | 是   | 当与Navigation绑定的导航控制器中存在内容时，此回调生效。当点击返回键时，触发该回调。 |
+| callback | ArkTS-Dyn: () => boolean<br/>ArkTS-Sta: (() => boolean) \| undefined | 是   | 当与Navigation绑定的导航控制器中存在内容时，此回调生效。当点击返回键时，触发该回调。 |
 
 ### onReady<sup>11+</sup>
 
@@ -976,8 +976,7 @@ getConfigInRouteMap(): RouteMapConfig |undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [RouteMapConfig](#routemapconfig12) | 当前页面路由配置信息。 |
-| undefined | 当该页面不是通过路由表配置时返回undefined。 |
+| [RouteMapConfig](#routemapconfig12) \| undefined | 当前页面路由配置信息。当该页面不是通过路由表配置时返回undefined。 |
 
 ## RouteMapConfig<sup>12+</sup>
 
@@ -1057,6 +1056,8 @@ NavDestination可见性生命周期变化的原因。
 
 NavDestination自定义动画接口。
 
+**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 15
@@ -1076,6 +1077,8 @@ NavDestination自定义动画接口。
 type NavDestinationTransitionDelegate = (operation: NavigationOperation, isEnter: boolean) => Array\<NavDestinationTransition> | undefined
 
 NavDestination自定义转场动画的代理函数。
+
+**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
