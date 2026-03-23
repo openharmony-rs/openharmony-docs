@@ -101,7 +101,7 @@ import { policy } from '@kit.NetworkKit';
 import { BusinessError } from '@ohos.base';
 
 policy.getNetAccessPolicy().then((policyInfo: policy.NetAccessPolicy) => {
-  console.log(`getNetAccessPolicy success. WiFi: ${policyInfo.allowWiFi}, Cellular: ${policyInfo.allowCellular}`);
+  console.info(`getNetAccessPolicy success. WiFi: ${policyInfo.allowWiFi}, Cellular: ${policyInfo.allowCellular}`);
 }).catch((err: BusinessError) => {
   console.error(`getNetAccessPolicy fail. error info: ${err.code} - ${err.message}`);
 });
