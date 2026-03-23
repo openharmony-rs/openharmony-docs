@@ -50,6 +50,7 @@
 | [uint32_t OH_Drawing_GetFontCountFromFile(const char* fontSrc)](#oh_drawing_getfontcountfromfile) | 获取字体文件中包含的字体数量。 |
 | [uint32_t OH_Drawing_GetFontCountFromBuffer(uint8_t* fontBuffer, size_t length)](#oh_drawing_getfontcountfrombuffer) | 获取字体缓存数据中包含的字体数量。 |
 | [OH_Drawing_String* OH_Drawing_GetFontPathsByType(OH_Drawing_SystemFontType fontType, size_t* pathCount)](#oh_drawing_getfontpathsbytype) | 获取指定字体类型的所有字体文件路径。 |
+| [void OH_Drawing_DestroyFontFullDescriptor(const OH_Drawing_FontFullDescriptor* descriptor)](#oh_drawing_destroyfontfulldescriptor) | 释放字体描述符指针占用内存。本函数可用于释放由OH_Drawing_GetFontFullDescriptorByFullName接口获取的字体描述符指针。 |
 
 ## 枚举类型说明
 
@@ -580,3 +581,21 @@ OH_Drawing_String* OH_Drawing_GetFontPathsByType(OH_Drawing_SystemFontType fontT
 | 类型 | 说明 |
 | -- | -- |
 | [OH_Drawing_String*](capi-drawing-oh-drawing-string.md) | 返回一个字体路径对象OH_Drawing_String列表。不再需要时，请使用free释放该对象指针以及每个OH_Drawing_String对象内部持有的指针。 |
+
+### OH_Drawing_DestroyFontFullDescriptor()
+
+```c
+void OH_Drawing_DestroyFontFullDescriptor(const OH_Drawing_FontFullDescriptor* descriptor)
+```
+
+**描述**
+
+释放字体描述符指针占用内存。本函数可用于释放由OH_Drawing_GetFontFullDescriptorByFullName接口获取的字体描述符指针。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)* descriptor | 表示指向字体描述符对象[OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)的指针。 |
