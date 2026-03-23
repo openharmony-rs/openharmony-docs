@@ -20,7 +20,7 @@
 
 使用@media来引入查询语句，具体规则如下：
 
-```
+```css
 @media [media-type] [and|or] [(media-feature)] {
   CSS-Code;
 }
