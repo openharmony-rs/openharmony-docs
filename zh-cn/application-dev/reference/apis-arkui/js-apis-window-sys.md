@@ -1270,7 +1270,7 @@ createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, p
 
 | 类型 | 说明 |
 | -------------------------------- | ------------------------------------ |
-| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前创建的窗口对象。 |
+| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前创建的子窗口对象。 |
 
 **错误码：**
 
