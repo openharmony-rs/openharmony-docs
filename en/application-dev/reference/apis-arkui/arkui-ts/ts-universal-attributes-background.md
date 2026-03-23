@@ -20,7 +20,7 @@ Sets the background of the component. Since API version 20, this API supports th
 
 >**NOTE**
 >
-> - Events related to node mounting and unmounting, such as [onAppear](./ts-universal-events-show-hide.md#onappear) and [onDisappear](./ts-universal-events-show-hide.md#ondisappear), are not supported.
+> - Events related to node mounting and unmounting, such as [onAppear](./ts-universal-events-show-hide.md#onappear) and [onDisAppear](./ts-universal-events-show-hide.md#ondisappear), are not supported.
 >
 > - This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20 only if the input parameter type of **content** is ResourceColor.
 
@@ -157,7 +157,7 @@ Sets the background image of the component.
 
 | Name| Type                                           | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap<sup>12+</sup>](../../apis-image-kit/arkts-apis-image-PixelMap.md)          | Yes  | Image address. The value can be network image resource addresses, local image resource addresses, Base64 strings, or PixelMap resources, but cannot be addresses of SVG and GIF images.|
+| src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap<sup>12+</sup>](../../apis-image-kit/arkts-apis-image-PixelMap.md)          | Yes  | Image address, which can be the address of an online or local image, a Base64 encoded string, or a pixel map. SVG and GIF images are not supported.|
 | repeat | [ImageRepeat](ts-appendix-enums.md#imagerepeat) | No  | Whether the background image is repeated. By default, the background image is not repeated. If the set image has a transparent background and **backgroundColor** is set, the image is overlaid on the background color.|
 
 **Return value**
@@ -186,7 +186,7 @@ Sets the background image of the component. Compared with [backgroundImage](#bac
 
 | Name| Type                                           | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)          | Yes  | Image address. The value can be network image resource addresses, local image resource addresses, Base64 strings, or PixelMap resources, but cannot be addresses of SVG images, or animated images such as GIF and WebP.|
+| src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)          | Yes  | Image address, which can be the address of an online or local image, a Base64 encoded string, or a pixel map. SVG, GIF, and WebP formats are not supported.|
 | options | [BackgroundImageOptions](ts-universal-attributes-image-effect.md#backgroundimageoptions18) | No  | Background image options.|
 
 **Return value**
@@ -662,7 +662,6 @@ This example shows how to configure basic background styles by setting **backgro
 @Entry
 @Component
 struct BackgroundExample {
-
   build() {
     Column({ space: 5 }) {
       Text('background color').fontSize(9).width('90%').fontColor(0xCCCCCC)
@@ -670,7 +669,7 @@ struct BackgroundExample {
 
       Text('background image repeat along X').fontSize(9).width('90%').fontColor(0xCCCCCC)
       Row()
-        // Replace $r('app.media.image') with the image resource file you use.
+      // Replace $r('app.media.image') with the image resource file you use.
         .backgroundImage($r('app.media.image'), ImageRepeat.X)
         .backgroundImageSize({ width: '250px', height: '140px' })
         .width('90%')
@@ -679,7 +678,7 @@ struct BackgroundExample {
 
       Text('background image repeat along Y').fontSize(9).width('90%').fontColor(0xCCCCCC)
       Row()
-        // Replace $r('app.media.image') with the image resource file you use.
+      // Replace $r('app.media.image') with the image resource file you use.
         .backgroundImage($r('app.media.image'), ImageRepeat.Y)
         .backgroundImageSize({ width: '500px', height: '120px' })
         .width('90%')
@@ -688,7 +687,8 @@ struct BackgroundExample {
 
       Text('background image size').fontSize(9).width('90%').fontColor(0xCCCCCC)
       Row()
-        .width('90%').height(150)
+        .width('90%')
+        .height(150)
         // Replace $r('app.media.image') with the image resource file you use.
         .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
         .backgroundImageSize({ width: 1000, height: 500 })
@@ -729,7 +729,7 @@ struct BackgroundExample {
 }
 ```
 
-![en-us_image_0000001211898502](figures/en-us_image_0000001211898502.png)
+![en-us_image_0000001219982703](figures/en-us_image_0000001219982703.png)
 
 ### Example 2: Setting the Background Blur Style
 
@@ -771,9 +771,10 @@ This example shows how to set the component background using **background**.
 @Entry
 @Component
 struct BackgroundExample {
-  @Builder renderBackground() {
+  @Builder
+  renderBackground() {
     Column() {
-      Progress({value : 50})
+      Progress({ value: 50 })
     }
   }
 
@@ -783,7 +784,7 @@ struct BackgroundExample {
         .width(100)
         .height(40)
         .fontColor("#FFF")
-        .position({x:50, y:80})
+        .position({ x: 50, y: 80 })
         .textAlign(TextAlign.Center)
         .backgroundColor(Color.Green)
     }

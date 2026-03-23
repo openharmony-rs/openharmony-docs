@@ -44,13 +44,13 @@ Describes the named route options.
 | Name                        | Type                                                        | Read-Only| Optional| Description                                                        |
 | ------------------------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | routeName                      | string                                                       | No | Yes| Name of the target named route.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| storage                        | [LocalStorage](../../../ui/state-management/arkts-localstorage.md) | No| Yes | Stores page-level UI status.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| useSharedStorage<sup>12+</sup> | boolean                                                      | No | Yes| Whether to use the LocalStorage instance passed by [loadContent](../arkts-apis-window-WindowStage.md#loadcontent9). The default value is **false**. **true**: Use the shared LocalStorage instance. **false**: Do not use the shared LocalStorage instance.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| storage                        | [LocalStorage](../../../ui/state-management/arkts-localstorage.md) | No| Yes | Stores page-level UI status. If no value is passed, the framework creates a new **LocalStorage** instance as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| useSharedStorage<sup>12+</sup> | boolean                                                      | No | Yes| Whether to use the **LocalStorage** instance passed by [loadContent](../arkts-apis-window-WindowStage.md#loadcontent9). The default value is **false**. **true**: Use the shared **LocalStorage** instance. **false**: Do not use the shared **LocalStorage** instance.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 **Example**
 
 ```ts
-@Entry({routeName: 'myPage'})
+@Entry({ routeName: 'myPage' })
 @Component
 struct Index {
   build() {
