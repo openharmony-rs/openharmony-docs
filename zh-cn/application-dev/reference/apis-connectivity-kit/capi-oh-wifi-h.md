@@ -27,7 +27,7 @@
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | WIFI_MAX_SSID_LEN | 33 | SSID最大长度（32 + \0）。 |
-| WIFI_MAC_LEN | 18 | MAC地址或BSSID长度。 |
+| WIFI_MAC_LEN | 18 | MAC地址或BSSID长度（17 + \0）。 |
       
 ### 枚举
 
