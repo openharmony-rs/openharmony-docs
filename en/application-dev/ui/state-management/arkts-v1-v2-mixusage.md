@@ -12,7 +12,7 @@ To facilitate smooth migration to state management V2, constraints on the mixed 
 
 > **NOTE**
 > 
-> In this topic, the symbol "->" is used to indicate the transfer of variables. For example, "V1 -> V2" indicates that the state variable of V1 is transferred to the V2.
+> In this topic, the symbol "->" is used to indicate the passing of variables. For example, "V1 -> V2" indicates that a state variable of V1 is passed to the V2.
 
 
 ## Constraints
@@ -184,6 +184,7 @@ In the following example:
   - In V1, if a non-\@Track decorated property is used in the UI, an error is reported during runtime.
   - In V2, if a non-\@Track decorated property is used in the UI, no error is reported, but the UI does not respond to updates.
 
+<!-- @[state_mixed_scene_observed_class_v1_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneObservedClassV1V2.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -205,7 +206,7 @@ struct CompV1 {
         .onClick(() => {
           this.observedClass.name += 'a'; // Trigger refresh.
         })
-      // Call UIUtils.enableV2Compatibility to enable the state variable of V1 to be observed in @ComponentV2.
+      // Call UIUtils.enableV2Compatibility to enable V1 state variables to have the observation capability in @ComponentV2.
       CompV2({ observedClass: UIUtils.enableV2Compatibility(this.observedClass) })
     }
   }
@@ -217,7 +218,7 @@ struct CompV2 {
 
   build() {
     Column() {
-      // After the observation capability of V2 is enabled for the state variable of V1, the first-layer changes can be observed in V2.
+      // After V2 observation capabilities are enabled for V1 state variables, their top-level property changes can be observed in V2.
       Text(`@Param observedClass: ${this.observedClass.name}`)
         .onClick(() => {
           this.observedClass.name += '!'; // Refresh

@@ -20,7 +20,8 @@
 > - “是否允许三方应用实现”是指：三方应用能否继承该类型ExtensionAbility实现自己的业务逻辑。
 > - “是否有独立Extension沙箱”是指：该类型ExtensionAbility的沙箱是否与主应用沙箱相对独立、不可互相访问。
 
-| ExtensionAbility类型                 | 功能描述 | 是否允许三<br/>方应用实现                  | 是否有独立<br/>Extension沙箱 |
+<!--Table: 20%; 50%; 15%; 15%-->
+| ExtensionAbility类型                 | 功能描述 | 是否允许三方应用实现                  | 是否有独立Extension沙箱 |
 |--------------------------------------|---------|-------------------------------------------|-----------------------|
 | [FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)  | 卡片扩展能力，用于提供[服务卡片](../form/formkit-overview.md)的相关能力。|  是 | 否 |
 | [WorkSchedulerExtensionAbility](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md) | 延时任务扩展能力，用于提供[延迟任务](../task-management/work-scheduler.md)的相关能力。      | 是 | 否 |
@@ -61,6 +62,7 @@
 >
 > - ServiceExtensionAbility（仅系统应用涉及）、DataShareExtensionAbility（仅系统应用涉及）与所有UIAbility均运行在同一个独立进程（主进程）。
 > - UIExtensionAbility以及继承该类型的ExtensionAbility可以通过module.json5配置文件中的[extensionProcessMode](../quick-start/module-configuration-file.md#extensionabilities标签)字段，配置进程运行模式。
+> - AppServiceExtensionAbility可以通过module.json5配置文件中的[extensionProcessMode](../quick-start/module-configuration-file.md#extensionabilities标签)字段，配置进程运行模式。
 
 ## 访问指定类型的ExtensionAbility组件
 

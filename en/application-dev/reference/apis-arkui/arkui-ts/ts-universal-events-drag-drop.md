@@ -31,7 +31,7 @@ To enable drag and drop for other components that support drag actions, set thei
 
 onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T
 
-In a gesture-based drag scenario, this callback is triggered when a user long‑presses a draggable component for more than 500 ms and then moves the finger more than 10 vp. In a mouse‑drag scenario, it is triggered when the left mouse button is pressed on a draggable component and moved more than 1 vp.
+In a gesture-based drag scenario, this callback is triggered when a user long-presses a draggable component for more than 500 ms and then moves the finger more than 10 vp. In a mouse-drag scenario, it is triggered when the left mouse button is pressed on a draggable component and moved more than 1 vp.
 
 For components that provide drag and drop capabilities by default, a custom **onDragStart** event, if set, is executed and:
 - If a custom drag preview is returned, it is used in place of the default drag preview.
@@ -198,7 +198,7 @@ Triggered when the dragging of the component bound to the event ends.
 
 onPreDrag(callback: Callback\<PreDragStatus>): T
 
-Triggered when the component enters a state prior to a gesture-based drag operation. For details about the state prior to the  drag-and-drop operation, see [PreDragStatus](#predragstatus12). This API cannot be triggered in mouse-based drag scenarios.
+Triggered when the component enters a state prior to a gesture-based drag operation. For details about the state prior to the drag-and-drop operation, see [PreDragStatus](#predragstatus12). This API cannot be triggered in mouse-based drag scenarios.
 
 > **NOTE**
 >
@@ -224,7 +224,7 @@ Triggered when the component enters a state prior to a gesture-based drag operat
 
 onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configuration?: DragSpringLoadingConfiguration): T
 
-The component bound to this event can be used as serve as a drag‑response target with hover detection capability. When the dragged object hovers over the target, the callback is triggered. Only one target can become the responder at any time, and child components always have higher response priority.
+The component bound to this event can be used as a drag-response target with hover detection capability. When the dragged object hovers over the target, the callback is triggered. Only one target can become the responder at any time, and child components always have higher response priority.
 
 For details about the hover detection triggering mechanism and usage, see [Spring Loading (Hover Detection) Support](../../../ui/arkts-common-events-drag-event.md#spring-loading-hover-detection-support).
 
@@ -280,8 +280,8 @@ Configures the style of the preview image during custom drag operations.
 
 | Name         | Type  | Description                                      |
 | ------------- | ------ | ---------------------------------------- |
-| selectedIndex | number | Index of the dragged item in the parent container. The value of **selectedindex** starts from **0**.<br>This parameter takes effect only in the drag event of the [ListItem](ts-container-listitem.md) component.|
-| insertIndex   | number | Index of the element into which the dragged item is dropped in the **List** component. The value of **insertIndex** starts from **0**.<br>This parameter takes effect only in the drag event of the [List](ts-container-list.md) component.|
+| selectedIndex | number | Index of the dragged item in the parent container. The value of **selectedindex** starts from **0**.<br>This parameter takes effect only in the drag event of the [ListItem](ts-container-listitem.md) component. Otherwise, **undefined** is returned.|
+| insertIndex   | number | Index of the element into which the dragged item is dropped in the **List** component. The value of **insertIndex** starts from **0**.<br>This parameter takes effect only in the drag event of the [List](ts-container-list.md) component. Otherwise, **undefined** is returned.|
 
 ## DragEvent<sup>7+</sup>
 
@@ -449,7 +449,7 @@ Obtains the dragging velocity along the main axis.
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| number | Dragging velocity along the main axis. The value is the arithmetic square root of the sum of the squares of the velocities along the x‑axis and y‑axis, in vp.|
+| number | Dragging velocity along the main axis. The value is the arithmetic square root of the sum of the squares of the velocities along the x-axis and y-axis, in vp.|
 
 ### getWindowX<sup>10+</sup>
 
@@ -726,7 +726,7 @@ Obtains the y-coordinate of the drag point relative to the upper left corner of 
 
 ## DragResult<sup>10+</sup>
 
-Defines the result of a drag operation and the drop‑selection state of a component.
+Defines the result of a drag operation and the drop-selection state of a component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1149,7 +1149,7 @@ struct DropAnimationExample {
         .margin({ left: 15 })
         .border({ color: Color.Black, width: 1 })
         .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-        // onDrop callback, which is used to obtain the information (size included ) of the dragged image, update the display, and enable and execute the custom drop animation.
+        // onDrop callback, which is used to obtain the information (size included) of the dragged image, update the display, and enable and execute the custom drop animation.
         .onDrop((dragEvent: DragEvent) => {
           let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
           let rect: Rectangle = dragEvent.getPreviewRect();
@@ -1300,7 +1300,7 @@ struct ImageExample {
 ```
 ### Example 4: Obtaining the Screen ID for the Drag Event
 
-In API version 20 and later versions, this example shows how to obtain the drag event by calling the onDrag*XXX* (not **onDragEnd**) API and obtain the screen ID by calling the [getDisplayId](#getdisplayid20) API in the drag event.
+In API version 20 and later versions, this example shows how to obtain the drag event by calling the **onDrag*XXX*** (not **onDragEnd**) API and obtain the screen ID by calling the [getDisplayId](#getdisplayid20) API in the drag event.
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -1479,7 +1479,7 @@ struct Index {
 
 ### Example 5: Obtaining the Package Name and Cross-Device Status
 
-In API version 20 and later versions, this example shows how to obtain the drag event by calling the onDrag*XXX* API, obtain the package name by calling the [getDragSource](#getdragsource20) API in the drag event, and obtain the cross-device status by calling the **isRemote** API.
+In API version 20 and later versions, this example shows how to obtain the drag event by calling the **onDrag*XXX*** API, obtain the package name by calling the [getDragSource](#getdragsource20) API in the drag event, and obtain the cross-device status by calling the **isRemote** API.
 
 ```ts
 @Entry
@@ -1778,7 +1778,7 @@ struct VideoExample {
         .border({ width: 1 })
       }
 
-      Button('Cancel data transfer')
+      Button('Cancel Data Transfer')
         .onClick(() => {
           try {
             this.getUIContext().getDragController().cancelDataLoading(this.udKey);
@@ -1791,4 +1791,4 @@ struct VideoExample {
   }
 }
 ```
-
+![DragEvent_setDataLoadParams](figures/dragLoading.gif)

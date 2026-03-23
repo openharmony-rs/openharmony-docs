@@ -45,3 +45,21 @@ The current drawing context is not bound to any **Canvas** component.
 **Solution**
 
 Bind the drawing context to a **Canvas** component and then call the [getContext2DFromDrawingContext](./arkui-ts/ts-canvasrenderingcontext2d.md#getcontext2dfromdrawingcontext23) method.
+
+## 103704 OffscreenCanvas Detached from the Tree
+
+**Error Message**
+
+OffscreenCanvas object is detached.
+
+**Description**
+
+[OffscreenCanvas](./arkui-ts/ts-components-offscreencanvas.md) has been detached from the tree.
+
+**Possible Causes**
+
+The current operation is not supported because **OffscreenCanvas** has been detached from the tree.
+
+**Solution**
+
+Attach the current node to the tree before performing the operation.

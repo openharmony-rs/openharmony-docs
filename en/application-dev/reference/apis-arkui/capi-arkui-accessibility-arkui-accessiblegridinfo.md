@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_AccessibleGridInfo
 
 ## Overview
 
-Configures grid layout attributes for specific components including **List**, **Flex**, **Select**, and **Swiper**.
+Configures the grid layout attributes of a specific component (such as [List](arkui-ts/ts-container-list.md), [Flex](arkui-ts/ts-container-flex.md), [Select](arkui-ts/ts-basic-components-select.md), or [Swiper](arkui-ts/ts-container-swiper.md)).
 
 **Since**: 13
 
@@ -26,6 +26,6 @@ Configures grid layout attributes for specific components including **List**, **
 
 | Name| Description|
 | -- | -- |
-| int32_t rowCount | Number of rows of the component.|
-| int32_t columnCount | Number of columns of the component.|
+| int32_t rowCount | Number of rows of the component. The value is an integer greater than 0.|
+| int32_t columnCount | Number of columns of the component. The value is an integer greater than 0.|
 | int32_t selectionMode | Selection mode. If the value is **0**, only a single row in the grid can be selected. If the value is not 0, multiple rows can be selected.|

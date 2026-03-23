@@ -25,7 +25,7 @@ HTTP请求结构体。
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t requestId | HTTP请求的Id。 |
+| uint32_t requestId | HTTP请求的ID。 |
 | char *url | HTTP请求的URL。 |
 | [Http_RequestOptions](capi-netstack-http-requestoptions.md) *options | HTTP请求配置，指向Http_RequestOptions的指针，参考[Http_RequestOptions](capi-netstack-http-requestoptions.md)。 |
 

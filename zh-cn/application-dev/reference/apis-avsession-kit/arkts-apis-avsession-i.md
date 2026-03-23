@@ -71,6 +71,8 @@
 | drmSchemes<sup>12+</sup>        | Array\<string>         | 否   | 是   | 当前session支持的DRM方案，取值为DRM方案uuid。|
 | skipIntervals<sup>11+</sup>  | [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)        | 否   | 是   | 快进快退支持的时间间隔。默认为SECONDS_15，即15秒。                            |
 |displayTags<sup>11+</sup>     | number                           | 否   | 是   | 媒体资源的金标类型，取值参考[DisplayTag](arkts-apis-avsession-e.md#displaytag11)。      |
+| rewindSkipIntervals | [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)        | 否   | 是   | 快退支持的时间间隔。默认为SECONDS_15，即15秒。<br>系统会使用此值作为快退操作的时间间隔，而非skipIntervals的值。<br>若未设置此参数，快退操作的时间间隔仍会沿用skipIntervals的值。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本**：26.0.0|
+| fastForwardSkipIntervals</sup> | [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)        | 否   | 是   | 快进支持的时间间隔。默认为SECONDS_15，即15秒。<br>系统会使用此值作为快进操作的时间间隔，而非skipIntervals的值。<br>若未设置此参数，快进操作的时间间隔仍会沿用skipIntervals的值。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本**：26.0.0|
 
 ## AVMediaDescription<sup>10+</sup>
 
@@ -188,7 +190,7 @@
 | castCategory   | [AVCastCategory](arkts-apis-avsession-e.md#avcastcategory10)        | 否 | 否   | 投播的类别。  <br> **系统能力：** SystemCapability.Multimedia.AVSession.Core  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | deviceId   | string | 否 | 否   | 播放设备的ID。<br> **系统能力：** SystemCapability.Multimedia.AVSession.Core  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | deviceName | string | 否  | 否   | 播放设备的名称。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| deviceType | DeviceType | 否 | 否   | 播放设备的类型。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| deviceType | [DeviceType](arkts-apis-avsession-e.md#devicetype10) | 否 | 否   | 播放设备的类型。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | supportedProtocols<sup>11+</sup> | number | 否 | 是  | 播放设备支持的协议。<br>默认为TYPE_LOCAL,具体取值来自[ProtocolType](arkts-apis-avsession-e.md#protocoltype11)，可以是protocolType中的某个协议或者多个协议的组合。<br>设备仅支持一种协议，返回对应枚举值；设备支持多种协议，返回对应枚举值之和。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast   <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | supportedDrmCapabilities<sup>12+</sup> | Array\<string> | 否 | 是 | 播放设备支持的DRM能力。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast   <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | manufacturer<sup>13+</sup> | string | 否 | 是  | 播放设备生产厂家。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast  <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。|

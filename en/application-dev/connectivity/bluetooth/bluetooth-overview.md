@@ -32,7 +32,7 @@ During Bluetooth service development, two types of address are defined.
 
 - Bluetooth device address type defined by the Bluetooth subsystem. The actual MAC address of a Bluetooth device belongs to user private information. During device discovery, the Bluetooth subsystem assigns a virtual MAC address to each Bluetooth device and saves the mapping between the virtual MAC address and the actual MAC address.
 
-- Bluetooth device address type defined by the Bluetooth protocol. The Bluetooth device address type defined by the Bluetooth protocol are classified into two subtypes: public address and random address. Traditional Bluetooth devices use public addresses, while Bluetooth Low Energy (BLE) devices can use public addresses or random addresses. Random addresses include static random addresses and private random addresses. Private random addresses are further classified into non-resolvable private addresses and resolvable private addresses. The following table describes each address type.
+- Bluetooth device address type defined by the Bluetooth protocol. The Bluetooth device address type defined by the Bluetooth protocol are classified into two subtypes: public address and random address. Classic Bluetooth devices use public addresses, while Bluetooth Low Energy (BLE) devices can use public addresses or random addresses. Random addresses include static random addresses and private random addresses. Private random addresses are further classified into non-resolvable private addresses and resolvable private addresses. The following table describes each address type.
 
 | Type               | Description    |
 | ------------------ |  ------ |

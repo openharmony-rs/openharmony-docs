@@ -5066,7 +5066,7 @@ setTargetDeviceStatus(deviceType: string, status: number): Promise\<void\>
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| deviceType | string | 是   | 设备类型。当前仅支持`headset`（可穿戴式音频设备）、`liteWearable`（轻量级智能穿戴设备）、`wearable`（智能穿戴设备）、`current`（本设备）。 |
+| deviceType | string | 是   | 设备类型。当前仅支持`headset`（可穿戴式音频设备）、`liteWearable`（轻量级智能穿戴设备）、`wearable`（智能穿戴设备）、`glasses`（智能眼镜设备）、`current`（本设备）。 |
 | status | number | 是   | 设备状态。<br>- bit0：设备是否正在被使用。0表示未使用，1表示使用中。<br>- bit1：当前设备使用者是否为机主。0表示为非机主，1表示为机主。<br>- bit2：设备是否处于勿扰模式。0表示处于非勿扰模式，1表示处于勿扰模式。 |
 
 **返回值：**
@@ -6141,7 +6141,7 @@ notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').t
 });
 ```
 
-## isPriorityIntelligentEnabled<sup>23+</sup>
+## notificationManager.isPriorityIntelligentEnabled<sup>23+</sup>
 
 isPriorityIntelligentEnabled(): Promise\<boolean\>
 
@@ -6186,7 +6186,7 @@ notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
 });
 ```
 
-## setPriorityIntelligentEnabled<sup>23+</sup>
+## notificationManager.setPriorityIntelligentEnabled<sup>23+</sup>
 
 setPriorityIntelligentEnabled(enable: boolean): Promise\<void\>
 
@@ -6237,7 +6237,7 @@ notificationManager.setPriorityIntelligentEnabled(false).then(() => {
 });
 ```
 
-## getPriorityEnabledByBundles<sup>23+</sup>
+## notificationManager.getPriorityEnabledByBundles<sup>23+</sup>
 
 getPriorityEnabledByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, boolean\>\>
 
@@ -6294,7 +6294,7 @@ notificationManager.getPriorityEnabledByBundles(bundles).then((switches: Map<not
 ```
 
 
-## setPriorityEnabledByBundles<sup>23+</sup>
+## notificationManager.setPriorityEnabledByBundles<sup>23+</sup>
 
 setPriorityEnabledByBundles(switches: Map\<BundleOption, boolean\>): Promise\<void\>
 
@@ -6348,7 +6348,7 @@ notificationManager.setPriorityEnabledByBundles(switches).then(() => {
 });
 ```
 
-## getPriorityStrategyByBundles<sup>23+</sup>
+## notificationManager.getPriorityStrategyByBundles<sup>23+</sup>
 
 getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, number\>\>;
 
@@ -6404,7 +6404,7 @@ notificationManager.getPriorityStrategyByBundles(bundles).then((strategies: Map<
 });
 ```
 
-## setPriorityStrategyByBundles<sup>23+</sup>
+## notificationManager.setPriorityStrategyByBundles<sup>23+</sup>
 
 setPriorityStrategyByBundles(strategies: Map\<BundleOption, number\>): Promise\<void\>
 
@@ -6971,3 +6971,19 @@ type MonitorEvent = _MonitorEvent
 | STATUS_USER_DEFINED | 1<<3 | 仅用户自定义。 |
 | STATUS_APPLICATION_DEFINED | 1<<4 | 仅应用自定义。 |
 | STATUS_ALL_PRIORITY | 1<<5 | 全部通知优先。 |
+
+## GroupInfo <sup>26+</sup>
+
+type GroupInfo = _GroupInfo
+
+组通知定制信息。
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_GroupInfo](js-apis-inner-notification-notificationRequest-sys.md#groupinfo26) | 组通知定制信息的类型。 |

@@ -40,7 +40,7 @@ Declares the APIs for accessing Native XComponent features.
 | [OH_NativeXComponent_ExtraMouseEventInfo](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md) | OH_NativeXComponent_ExtraMouseEventInfo | Provides an encapsulated instance of extended mouse event information.|
 | [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) | OH_ArkUI_SurfaceHolder | Provides an encapsulated **OH_ArkUI_SurfaceHolder** instance.|
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md) | OH_ArkUI_SurfaceCallback | Defines surface lifecycle callback functions.|
-| [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md) | OHNativeWindow | Provides an encapsulated **NativeWindow** instance.|
+| [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md) | OHNativeWindow | Provides an encapsulated **NativeWindow** instance.|
 | [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md) | ArkUI_XComponentSurfaceConfig | Defines the surface configuration for the **XComponent**, which specifies whether the **XComponent**'s surface should be treated as opaque during rendering.|
 
 ### Enums
@@ -373,8 +373,8 @@ Obtains the size of the surface held by the ArkUI XComponent.
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | Pointer to an [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance.|
 | const void* window | Handle to the **NativeWindow** instance.|
-| uint64_t* width | Pointer to the width of the current surface.|
-| uint64_t* height | Pointer to the height of the current surface.|
+| uint64_t* width | Pointer to the width of the current surface. Unit: vp.|
+| uint64_t* height | Pointer to the height of the current surface. Unit: vp.|
 
 **Returns**
 
@@ -402,8 +402,8 @@ Obtains the offset of the surface held by the XComponent relative to the upper l
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | Pointer to an [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance.|
 | const void* window | Handle to the **NativeWindow** instance.|
-| double* x | Pointer to the x-coordinate of the current surface relative to the upper left corner of the **XComponent**'s parent component.|
-| double* y | Pointer to the y-coordinate of the current surface relative to the upper left corner of the **XComponent**'s parent component.|
+| double* x | Pointer to the x-coordinate of the current surface relative to the upper left corner of the **XComponent**'s parent component. Unit: vp.|
+| double* y | Pointer to the y-coordinate of the current surface relative to the upper left corner of the **XComponent**'s parent component. Unit: vp.|
 
 **Returns**
 
@@ -1248,7 +1248,6 @@ Attaches the UI component created through the native API of ArkUI to this **OH_N
 
 **Substitute**: [OH_ArkUI_NodeContent_AddNode](capi-native-node-h.md#oh_arkui_nodecontent_addnode)
 
-
 **Parameters**
 
 | Name| Description|
@@ -1278,7 +1277,6 @@ Detaches the native component of ArkUI from this **OH_NativeXComponent** instanc
 **Deprecated from**: 20
 
 **Substitute**: [OH_ArkUI_NodeContent_RemoveNode](capi-native-node-h.md#oh_arkui_nodecontent_removenode)
-
 
 **Parameters**
 
@@ -1438,7 +1436,7 @@ int32_t OH_NativeXComponent_GetTouchEventSourceType(OH_NativeXComponent* compone
 **Description**
 
 
-Obtains the touch event source type of an **OH_NativeXComponent** instance.
+Obtains the touch event source type of an ArkUI XComponent instance.
 
 **Since**: 12
 
@@ -1769,7 +1767,7 @@ Sets the size change callback event in the surface lifecycle callbacks.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)* callback | Pointer to the surface lifecycle callback.|
-| void (\*onSurfaceChanged)(OH_ArkUI_SurfaceHolder* surfaceHolder, uint64_t width, uint64_t height) | Callback event triggered when the surface size changes. - **surfaceHolder**: pointer to the target [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) instance. - **width**: new width of the surface after the size change. - **height**: new height of the surface after the size change.|
+| void (\*onSurfaceChanged)(OH_ArkUI_SurfaceHolder* surfaceHolder, uint64_t width, uint64_t height) | Callback event triggered when the surface size changes. - **surfaceHolder**: pointer to the target [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) instance. - **width**: new width of the surface after the size change. Unit: vp. - **height**: new height of the surface after the size change. Unit: vp.|
 
 ### OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent()
 
@@ -1870,7 +1868,7 @@ Obtains the **NativeWindow** instance associated with an [OH_ArkUI_SurfaceHolder
 
 | Type                 | Description|
 |---------------------| -- |
-| [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)* | **NativeWindow** instance associated with the [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) instance.|
+| [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)* | **NativeWindow** instance associated with the [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) instance.|
 
 ### OH_ArkUI_XComponent_SetAutoInitialize()
 

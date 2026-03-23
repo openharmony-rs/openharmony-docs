@@ -1,4 +1,4 @@
-# class (ExifMetadata)
+# Class (ExifMetadata)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->

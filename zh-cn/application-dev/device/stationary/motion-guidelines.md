@@ -10,7 +10,7 @@
 
 当应用需要获取用户动作时，可以调用motion模块，例如判断用户当前是用左手还是右手操作设备屏幕。
 
-详细的接口介绍请参考[Motion接口](../../reference/apis-multimodalawareness-kit/js-apis-awareness-motion.md)。
+详细的接口介绍请参考[@ohos.multimodalAwareness.motion (动作感知能力)](../../reference/apis-multimodalawareness-kit/js-apis-awareness-motion.md)。
 
 从API version 15开始，支持获取操作手状态。从API version 20开始，支持获取握持手状态。
 
