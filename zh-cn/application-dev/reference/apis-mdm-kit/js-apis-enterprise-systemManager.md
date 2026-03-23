@@ -1229,7 +1229,7 @@ try {
 
 setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string): Promise&lt;void&gt;
 
-禁用/启用设备激活锁。设备激活锁被禁用后，将无法使用查找设备功能。
+禁用/启用设备激活锁。设备激活锁被禁用后，将无法使用查找设备功能。该功能只适用于特定设备<!--RP5--><!--RP5End-->。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1245,7 +1245,7 @@ setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string)
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | isDisabled | boolean | 是 | 是否禁用激活锁。true表示禁用，false表示启用。 |
-| credential | string | 否 | 禁用凭据。当设置禁用时该参数必须填写有效凭据<!--RP5--><!--RP5End-->，设置启用时为空。|
+| credential | string | 否 | 禁用凭据。当设置禁用时该参数必须填写有效凭据<!--RP6--><!--RP6End-->，设置启用时为空。|
 
 **返回值：**
 
