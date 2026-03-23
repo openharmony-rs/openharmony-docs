@@ -223,7 +223,6 @@ connectAgentExtensionAbility(want: Want, agentId: string, callback: AgentExtensi
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service fled to communicate with dependency module. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000073 | The app clone index is invalid. |
-| 16000110 | The app is not in the kiosk mode whitelist. |
 | 35600001 | The specified agentId does not exist. |
 | 35600003 | Maximum connections from the same caller have been reached. |
 
