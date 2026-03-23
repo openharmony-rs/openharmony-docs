@@ -282,6 +282,7 @@ ArkTS-Sta: bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType\> \
 | minKeyboardAvoidDistance<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单避让软键盘的最小距离。<br /> **说明：** <br />未设置、设置为负数或undefined时，按照8vp处理。仅在keyboardAvoidMode设置为避让软键盘时生效。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
 | scrollBar | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 | 设置菜单滚动条状态。 <br />默认值：BarState.Auto <br />未设置或者设置为undefined时，按照BarState.Auto处理。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 | maxHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单显示的最大高度。<br /> **说明：** 默认最大高度是可用高度的80%。<br />设置为0或负数以及设置为undefined时，按照默认最大高度处理。设置的菜单最大高度不能超过可用高度的100%。<br />预览图场景下不支持此能力，菜单按默认最大高度显示。<br />如果菜单所有选项的实际高度之和小于设定的高度，菜单的高度按实际高度显示。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| targetSpace | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单与目标组件之间的间距。<br /> **说明：** <br />- 同时使用targetSpace与offset时，两者会叠加生效。推荐使用targetSpace设置菜单与目标的间距，使用offset设置菜单弹出位置的偏移量。<br />- 二级菜单会避让targetSpace范围。<br />- 设置为负数或undefined时，菜单与目标组件之间的间距为默认8vp，且子菜单不避让targetSpace。<br />- targetSpace属性在存在默认placement时可直接生效，无默认placement的场景，需配合placement属性使用才可生效。<br />- anchorPosition的优先级要高于targetSpace。<br />- 不支持设置百分比。<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 **表1：同时设置offset与placement时菜单的偏移位置**
 
@@ -2792,3 +2793,102 @@ struct Index {
 ```
 
 ![maxHeight-menu](figures/menuMaxHeight.png)
+
+### 示例23 （设置菜单与目标组件间距）
+     
+该示例通过设置[ContextMenuOptions](#contextmenuoptions10)中的targetSpace属性，介绍如何增加菜单与目标组件之间的间距。
+      
+从API版本26.0.0开始，在ContextMenuOptions中新增了targetSpace属性。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+      
+@Entry
+@Component
+struct Alone {
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项1' })
+         MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项2' })
+         MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项3' })
+    }
+  }
+
+  build() {
+    Column() {
+      Stack() {
+        Column()
+          .width(120 + 40 * 2)
+          .height(120 + 40 * 2)
+          .borderWidth(2)
+          .borderColor(Color.Orange)
+          .borderStyle(BorderStyle.Dotted)
+
+        Image($r('app.media.startIcon'))
+          .width(120)
+          .height(120)
+          .bindMenu(this.MyMenu,
+            {
+              targetSpace: LengthMetrics.vp(40)
+            })
+      }.height('75%')
+      .width('100%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, Button, ClickEvent, Menu, Stack, MenuItem, Image, Color, MenuItemOptions, MenuOptions, BorderStyle, $r } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Alone {
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项1' } as MenuItemOptions)
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项2' } as MenuItemOptions)
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项3' } as MenuItemOptions)
+    }
+  }
+
+  build() {
+    Column() {
+      Stack() {
+        Column()
+          .width(120 + 40 * 2)
+          .height(120 + 40 * 2)
+          .borderWidth(2)
+          .borderColor(Color.Orange)
+          .borderStyle(BorderStyle.Dotted)
+
+        Image($r('app.media.startIcon'))
+          .width(120)
+          .height(120)
+          .bindMenu(this.MyMenu,
+            {
+              targetSpace: LengthMetrics.vp(40)
+            } as MenuOptions)
+      }.height('75%')
+      .width('100%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![targetSpaceMenu](figures/targetSpaceMenu.png)
