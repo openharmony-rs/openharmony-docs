@@ -166,7 +166,7 @@ Wi-Fi类别枚举。
 | OH_WIFI_CATEGORY_WIFI7 = 4 | Wi-Fi 7 类别。 |
 | OH_WIFI_CATEGORY_WIFI7_PLUS = 5 | Wi-Fi 7+ 类别。 |
 
-### WifiLinkType
+### OH_WifiLinkType
 
 ```c
 enum OH_WifiLinkType
