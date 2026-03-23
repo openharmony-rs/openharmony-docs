@@ -15,9 +15,7 @@
 当前支持的解码能力如下：
 | 视频解码类型       | 视频解码格式的MIME类型   |
 | --------------------- | ---------------- |
-| MSVIDEO1<sup>22+</sup>| [OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| WMV3<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_WMV3](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| MJPEG <sup>22+</sup>| [OH_AVCODEC_MIMETYPE_VIDEO_MJPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| OH_AVCODEC_MIMETYPE_VIDEO_CINEPAK<sup>24+</sup> | Cinepak视频编解码器的MIME类型。|
 | MSVIDEO1<sup>22+</sup>| [OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | WMV3<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_WMV3](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | MJPEG<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MJPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
