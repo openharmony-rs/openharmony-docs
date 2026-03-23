@@ -1400,7 +1400,7 @@ requestEnableNotification(context: UIAbilityContext, callback: AsyncCallback\<vo
 > **说明：**
 >
 > - 仅当应用界面加载完成后（即调用[loadContent](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#loadcontent)成功），方可使用该接口。
-> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult26)二次申请授权，拉起通知管理弹窗。
+> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult)二次申请授权，拉起通知管理弹窗。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1465,7 +1465,7 @@ requestEnableNotification(context: UIAbilityContext): Promise\<void\>
 > **说明：**
 >
 > - 仅当应用界面加载完成后（即调用[loadContent](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#loadcontent)成功），方可使用该接口。
-> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult26)二次申请授权，拉起通知管理弹窗。
+> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult)二次申请授权，拉起通知管理弹窗。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
