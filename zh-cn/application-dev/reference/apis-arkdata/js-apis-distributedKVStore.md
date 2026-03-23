@@ -220,19 +220,31 @@ import { distributedKVStore } from '@kit.ArkData';
 
 用于提供创建数据库的配置信息。
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称          | 类型                        | 只读 | 可选 | 说明                                                         |
 | --------------- | -------------- | ---- | ----| -------------------------|
-| createIfMissing | boolean                         | 否    | 是  | 当数据库文件不存在时是否创建数据库，true为创建，false为不创建，默认为true。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
-| encrypt         | boolean                         | 否    | 是   | 设置数据库文件是否加密，true为加密，false为不加密，默认为false。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
-| backup          | boolean                         | 否    | 是   | 设置数据库文件是否备份，true为备份，false为不备份，默认为true。 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
-| autoSync        | boolean                         | 否    | 是   | 设置数据库是否支持跨设备自动同步。默认为false，即只支持手动同步。配置为true，<!--RP1-->即只支持在[跨设备Call调用实现的多端协同](../../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)中生效，其他场景无法生效。<!--RP1End--><br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core<br>**需要权限**： ohos.permission.DISTRIBUTED_DATASYNC |
-| kvStoreType     | [KVStoreType](#kvstoretype)     | 否    | 是   | 设置要创建的数据库类型，默认为DEVICE_COLLABORATION，即多设备协同数据库。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
-| securityLevel   | [SecurityLevel](#securitylevel) | 否    | 否   | 设置数据库安全级别。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
-| schema          | [Schema](#schema)               | 否    | 是   | 设置定义存储在数据库中的值，默认为undefined，即不使用Schema。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
+| createIfMissing | boolean                         | 否    | 是  | 当数据库文件不存在时是否创建数据库，true为创建，false为不创建，默认为true。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+| encrypt         | boolean                         | 否    | 是   | 设置数据库文件是否加密，true为加密，false为不加密，默认为false。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+| backup          | boolean                         | 否    | 是   | 设置数据库文件是否备份，true为备份，false为不备份，默认为true。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+| autoSync        | boolean                         | 否    | 是   | 设置数据库是否支持跨设备自动同步。默认为false，即只支持手动同步。配置为true，<!--RP1-->即只支持在[跨设备Call调用实现的多端协同](../../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)中生效，其他场景无法生效。<!--RP1End--><br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core<br>**需要权限**： ohos.permission.DISTRIBUTED_DATASYNC |
+| kvStoreType     | [KVStoreType](#kvstoretype)     | 否    | 是   | 设置要创建的数据库类型，默认为DEVICE_COLLABORATION，即多设备协同数据库。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+| securityLevel   | [SecurityLevel](#securitylevel) | 否    | 否   | 设置数据库安全级别。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+| schema          | [Schema](#schema)               | 否    | 是   | 设置定义存储在数据库中的值，默认为undefined，即不使用Schema。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
+| rootDir<sup>24+</sup> | string                         | 否    | 是  | 设置数据库文件存储路径，不设置即为默认路径（context.databaseDir）。不能设置空字符串，创建数据库和删除数据库时目录必须有访问权限且存在，关闭数据库不校验此参数。<br> **ArkTS-Dyn起始版本：** 24 <br> **ArkTS-Sta起始版本：** 24 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
+
+## BackupConfig<sup>24+</sup>
+
+用于备份数据库的配置信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称          | 类型                        | 只读 | 可选 | 说明                                                         |
+| --------------| -------------- | ---- | ----| -------------------------|
+| fileName      | string         | 否 | 否 | 备份数据库的名称，无长度限制，不能包含特殊字符'/'。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
+| filePath      | string         | 否 | 否 | 备份数据库的路径，无长度限制。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
 
 ## Schema
 
@@ -638,7 +650,9 @@ try {
     backup: false,
     autoSync: false,
     kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-    securityLevel: distributedKVStore.SecurityLevel.S3
+    securityLevel: distributedKVStore.SecurityLevel.S3,
+    // 从API version 24开始，可使用rootDir指定数据库存储路径
+    rootDir: "/data/storage/el2/database/entry"
   };
   kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then((store: distributedKVStore.SingleKVStore) => {
     console.info("Succeeded in getting KVStore");
@@ -665,7 +679,9 @@ try {
     backup: false,
     autoSync: false,
     kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-    securityLevel: distributedKVStore.SecurityLevel.S3
+    securityLevel: distributedKVStore.SecurityLevel.S3,
+    // 从API version 24开始，可使用rootDir指定数据库存储路径
+    rootDir: "/data/storage/el2/database/entry"
   };
   kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then((store: distributedKVStore.SingleKVStore) => {
     console.info("Succeeded in getting KVStore");
@@ -795,9 +811,9 @@ try {
 
 ### closeKVStore
 
-closeKVStore(appId: string, storeId: string): Promise&lt;void&gt;
+closeKVStore(appId: string, storeId: string, kvConfig?: Options): Promise&lt;void&gt;
 
-通过storeId的值关闭指定的分布式键值数据库，使用Promise异步回调。
+通过storeId的值关闭指定的分布式键值数据库，如果使用kvConfig参数，关闭的是指定路径下的分布式键值数据库，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -811,12 +827,13 @@ closeKVStore(appId: string, storeId: string): Promise&lt;void&gt;
 | ------- | -------- | ---- | ------------------------------------------------------------ |
 | appId   | string   | 是   | 应用的BundleName，不可为空且长度不大于256。                           |
 | storeId | string   | 是   | 要关闭的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
+| kvConfig<sup>24+</sup> | [Options](#options)  | 否   | 要关闭的数据库的配置信息，默认为空。 |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -842,7 +859,9 @@ const options: distributedKVStore.Options = {
   autoSync: false,
   kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
   schema: undefined,
-  securityLevel: distributedKVStore.SecurityLevel.S3
+  securityLevel: distributedKVStore.SecurityLevel.S3,
+  // 从API version 24开始，可使用rootDir指定数据库存储路径
+  rootDir: "/data/storage/el2/database/entry"
 }
 try {
   kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then(async (store: distributedKVStore.SingleKVStore | null) => {
@@ -851,8 +870,8 @@ try {
     kvStore = null;
     store = null;
     if (kvManager != undefined) {
-      // appId为createKVManager中的appId
-      kvManager.closeKVStore(appId, 'storeId').then(() => {
+      // appId为createKVManager中的appId, 如果options中没有配置rootDir，closeKVStore不需要options参数
+      kvManager.closeKVStore(appId, 'storeId', options).then(() => {
         console.info('Succeeded in closing KVStore');
       }).catch((err: BusinessError) => {
         console.error(`Failed to close KVStore.code is ${err.code},message is ${err.message}`);
@@ -881,7 +900,9 @@ const options: distributedKVStore.Options = {
   autoSync: false,
   kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
   schema: undefined,
-  securityLevel: distributedKVStore.SecurityLevel.S3
+  securityLevel: distributedKVStore.SecurityLevel.S3,
+  // 从API version 24开始，可使用rootDir指定数据库存储路径
+  rootDir: "/data/storage/el2/database/entry"
 }
 try {
   kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then(async (store: distributedKVStore.SingleKVStore | null) => {
@@ -889,7 +910,8 @@ try {
     kvStore = store;
     kvStore = null;
     store = null;
-    kvManager.closeKVStore('appId', 'storeId').then(() => {
+    // appId为createKVManager中的appId, 如果options中没有配置rootDir，closeKVStore不需要options参数
+    kvManager.closeKVStore(appId, 'storeId', options).then(() => {
       console.info('Succeeded in closing KVStore');
     }).catch((err) => {
       console.error(`Failed to close KVStore.code is ${err.code},message is ${err.message}`);
@@ -1021,9 +1043,9 @@ try {
 
 ### deleteKVStore
 
-deleteKVStore(appId: string, storeId: string): Promise&lt;void&gt;
+deleteKVStore(appId: string, storeId: string, kvConfig?: Options): Promise&lt;void&gt;
 
-通过storeId的值删除指定的分布式键值数据库，使用Promise异步回调。
+通过storeId的值删除指定的分布式键值数据库，如果使用kvConfig参数，删除的是指定路径下的分布式键值数据库，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1037,12 +1059,13 @@ deleteKVStore(appId: string, storeId: string): Promise&lt;void&gt;
 | ------- | -------- | ---- | ------------------------------------------------------------ |
 | appId   | string   | 是   | 应用的BundleName，不可为空且长度不大于256。                           |
 | storeId | string   | 是   | 要删除的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
+| kvConfig<sup>24+</sup> | [Options](#options)  | 否   | 要删除的数据库的配置信息，默认为空。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1069,7 +1092,9 @@ const options: distributedKVStore.Options = {
   autoSync: false,
   kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
   schema: undefined,
-  securityLevel: distributedKVStore.SecurityLevel.S3
+  securityLevel: distributedKVStore.SecurityLevel.S3,
+  // 从API version 24开始，可使用rootDir指定数据库存储路径
+  rootDir: "/data/storage/el2/database/entry"
 }
 try {
   kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then(async (store: distributedKVStore.SingleKVStore | null) => {
@@ -1078,8 +1103,8 @@ try {
     kvStore = null;
     store = null;
     if (kvManager != undefined) {
-      // appId为createKVManager中的appId
-      kvManager.deleteKVStore(appId, 'storeId').then(() => {
+      // appId为createKVManager中的appId, 如果options中没有配置rootDir，deleteKVStore不需要options参数
+      kvManager.deleteKVStore(appId, 'storeId', options).then(() => {
         console.info('Succeeded in deleting KVStore');
       }).catch((err: BusinessError) => {
         console.error(`Failed to delete KVStore.code is ${err.code},message is ${err.message}`);
@@ -1108,7 +1133,9 @@ const options: distributedKVStore.Options = {
   autoSync: false,
   kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
   schema: undefined,
-  securityLevel: distributedKVStore.SecurityLevel.S3
+  securityLevel: distributedKVStore.SecurityLevel.S3,
+  // 从API version 24开始，可使用rootDir指定数据库存储路径
+  rootDir: "/data/storage/el2/database/entry"
 }
 try {
   kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then( (store: distributedKVStore.SingleKVStore | null) => {
@@ -1116,7 +1143,8 @@ try {
     kvStore = store;
     kvStore = null;
     store = null;
-    kvManager.deleteKVStore('appId', 'storeId').then(() => {
+    // appId为createKVManager中的appId, 如果options中没有配置rootDir，deleteKVStore不需要options参数
+    kvManager.deleteKVStore(appId, 'storeId', options).then(() => {
       console.info('Succeeded in deleting KVStore');
     }).catch((err) => {
       console.error(`Failed to delete KVStore.code is ${err.code},message is ${err.message}`);
@@ -6402,6 +6430,83 @@ try {
 }
 ```
 
+### backupEx<sup>24+</sup>
+
+backupEx(backupConfig:BackupConfig): Promise&lt;void&gt;
+
+以指定名称和路径备份数据库，使用Promise异步回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                                         |
+| ------ | -------- | ---- | ------------------------------------------------------------ |
+| backupConfig   | [BackupConfig](#backupconfig24)  | 是   | 备份数据库的信息（名称和路径）。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)。
+
+| **错误码ID** | **错误信息**                           |
+| ------------ | -------------------------------------- |
+| 15100000     | Input parameters do not meet the API requirements, such as invalid value ranges, length limits, or incorrect formats. |
+| 15100005     | Database or result set already closed. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const backupConfig: distributedKVStore.BackupConfig = {
+  fileName: 'BK001',
+  filePath: '/data/storage/el2/database'
+};
+try {
+  kvStore.backupEx(backupConfig).then(() => {
+    console.info(`Succeeded in backupping data`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to backup.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+
+const backupConfig: distributedKVStore.BackupConfig = {
+  fileName: 'BK001',
+  filePath: '/data/storage/el2/database'
+};
+try {
+  kvStore?.backupEx(backupConfig).then(() => {
+    console.info(`Succeeded in backupping data`);
+  }).catch((err) => {
+    console.error(`Failed to backup.code is ${err.code},message is ${err.message}`);
+  })
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### restore
 
 restore(file:string, callback: AsyncCallback&lt;void&gt;):void
@@ -6551,6 +6656,83 @@ try {
     }
   });
 } catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+### restoreEx<sup>24+</sup>
+
+restoreEx(backupConfig:BackupConfig): Promise&lt;void&gt;
+
+从指定的数据库文件恢复数据库，使用Promise异步回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                                         |
+| ------ | -------- | ---- | ------------------------------------------------------------ |
+| backupConfig   | [BackupConfig](#backupconfig24)  | 是   | 备份数据库的信息（名称和路径）。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)。
+
+| **错误码ID** | **错误信息**                           |
+| ------------ | -------------------------------------- |
+| 15100000     | Input parameters do not meet the API requirements, such as invalid value ranges, length limits, or incorrect formats. |
+| 15100005     | Database or result set already closed. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const backupConfig: distributedKVStore.BackupConfig = {
+  fileName: 'BK001',
+  filePath: '/data/storage/el2/database'
+};
+try {
+  kvStore.restoreEx(backupConfig).then(() => {
+    console.info(`Succeeded in restoring data`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to restore.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+
+const backupConfig: distributedKVStore.BackupConfig = {
+  fileName: 'BK001',
+  filePath: '/data/storage/el2/database'
+};
+try {
+  kvStore?.restoreEx(backupConfig).then(() => {
+    console.info(`Succeeded in restoring data`);
+  }).catch((err) => {
+    console.error(`Failed to restore.code is ${err.code},message is ${err.message}`);
+  })
+} catch (e) {
+  let error = e as BusinessError;
   console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
@@ -6710,6 +6892,82 @@ try {
     console.error(`Failed to delete Backup.code is ${err.code},message is ${err.message}`);
   })
 } catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+### deleteBackupEx<sup>24+</sup>
+
+deleteBackupEx(backupConfig:BackupConfig): Promise&lt;void&gt;
+
+根据指定名称和路径删除备份文件，使用Promise异步回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型            | 必填 | 说明                                                         |
+| ------ | ------------------- | ---- | ------------------------------------------------------------ |
+| backupConfig   | [BackupConfig](#backupconfig24)  | 是   | 备份数据库的信息（名称和路径）。 |
+
+**返回值：**
+
+| 类型                                         | 说明                                            |
+| -------------------------------------------- | ----------------------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)。
+
+| **错误码ID** | **错误信息**                           |
+| ------------ | -------------------------------------- |
+| 15100000     | Input parameters do not meet the API requirements, such as invalid value ranges, length limits, or incorrect formats. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const backupConfig: distributedKVStore.BackupConfig = {
+  fileName: 'BK001',
+  filePath: '/data/storage/el2/database'
+};
+try {
+  kvStore.deleteBackupEx(backupConfig).then(() => {
+    console.info(`Succeed in deleting Backup.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to delete Backup.code is ${err.code},message is ${err.message}`);
+  })
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+
+const backupConfig: distributedKVStore.BackupConfig = {
+  fileName: 'BK001',
+  filePath: '/data/storage/el2/database'
+};
+try {
+  kvStore?.deleteBackupEx(backupConfig).then(() => {
+    console.info(`Succeed in deleting Backup`);
+  }).catch((err) => {
+    console.error(`Failed to delete Backup.code is ${err.code},message is ${err.message}`);
+  })
+} catch (e) {
+  let error = e as BusinessError;
   console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```

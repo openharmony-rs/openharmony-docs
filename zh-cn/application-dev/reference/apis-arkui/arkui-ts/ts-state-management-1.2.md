@@ -1163,7 +1163,7 @@ envProp具体使用，详见[从UI中访问Environment参数](../../../ui/state-
 
 static envProps(props: EnvPropsOptions[]): void
 
-和[envProp](#envprop)类似，不同点在于参数为数组，可以一次性初始化多个数据。建议在应用启动时调用，将系统环境变量批量存入[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中。
+和[envProp](#envprop)类似，不同点在于参数为数组，可以一次性初始化多个数据。建议在应用启动时调用，将系统环境变量批量存入[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中。需注意的是，如果传入的dafultValue为[ColorMode](../../../ui/state-management-static/arkts-static-environment.md#environment内置参数)、[LayoutDirection](../../../ui/state-management-static/arkts-static-environment.md#environment内置参数)类型，或是数字，则需额外指定其具体类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1175,12 +1175,16 @@ static envProps(props: EnvPropsOptions[]): void
 
 **示例：**
 ```ts
-import { Environment } from '@ohos.arkui.stateManagement';
+import { Environment, LayoutDirection, ColorMode } from '@kit.ArkUI';
 
-Environment.envProps([{ key: 'accessibilityEnabled', defaultValue: 'default' }, {
-  key: 'languageCode',
-  defaultValue: 'en'
-}, { key: 'prop', defaultValue: 'hhhh' }]);
+Environment.envProps([
+  { key: 'accessibilityEnabled', defaultValue: 'default' },
+  { key: 'languageCode', defaultValue: 'en' },
+  { key: 'prop', defaultValue: 'hhhh' },
+  { key: 'colorMode', defaultValue: ColorMode.DARK as int },
+  { key: 'layoutDirection', defaultValue: LayoutDirection.RTL as int },
+  { key: 'info', defaultValue: 100 as long },
+]);
 ```
 
 ### keys

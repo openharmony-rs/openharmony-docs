@@ -1648,7 +1648,7 @@ getPhotoPickerComponentDefaultAlbumName(): Promise&lt;string&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 24
 

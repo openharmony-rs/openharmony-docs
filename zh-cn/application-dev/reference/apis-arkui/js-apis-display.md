@@ -1305,7 +1305,7 @@ import { Callback } from '@kit.BasicServicesKit';
 /**
  * 注册监听的callback参数要采用对象传递。
  * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
-*/
+ */
 let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
   console.info(`Listening enabled. Data: ${data}`);
 };
@@ -1354,7 +1354,7 @@ import { Callback } from '@kit.BasicServicesKit';
 /**
  * 注册监听的callback参数要采用对象传递.
  * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
-*/
+ */
 let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
   console.info(`Listening enabled. Data: ${data}`);
 };
@@ -2055,7 +2055,7 @@ import { Callback } from '@kit.BasicServicesKit';
 /**
  * 注册监听的callback参数要采用对象传递。
  * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
-*/
+ */
 let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
   console.info(`Listening enabled. Data: ${data}`);
 }; 
@@ -2104,7 +2104,7 @@ import { Callback } from '@kit.BasicServicesKit';
 /**
  * 注册监听的callback参数要采用对象传递.
  * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
-*/
+ */
 let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
   console.info(`Listening enabled. Data: ${data}`);
 }; 
@@ -2405,7 +2405,7 @@ ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string): Promise&lt
 ArkTS-Dyn示例：
 
 ```ts
-//Index.ets
+// Index.ets
 import display from '@ohos.display'
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2466,6 +2466,8 @@ ArkTS-Sta: makeUnique(screenId:long): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Window.SessionManager
 
 **需要权限**：ohos.permission.ACCESS_VIRTUAL_SCREEN
+
+**设备行为差异**：该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
 **ArkTS-Dyn起始版本：** 16
 

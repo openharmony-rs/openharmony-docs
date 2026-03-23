@@ -797,7 +797,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 第三方应用程序实现此接口来渲染要打印的文件。
 
-### onStartLayoutWrite
+### onStartLayoutWrite<sup>11+</sup>
 
 ArkTS-Dyn: onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttributes, fd: number, writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void
 
@@ -885,7 +885,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 }
 ```
 
-### onJobStateChanged
+### onJobStateChanged<sup>11+</sup>
 
 onJobStateChanged(jobId: string, state: PrintDocumentAdapterState): void
 
@@ -2165,6 +2165,10 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;, callback: AsyncCallback
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -2207,6 +2211,10 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;): Promise&lt;void&gt;
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -2253,6 +2261,10 @@ stopDiscoverPrinter(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -2291,6 +2303,10 @@ stopDiscoverPrinter(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
@@ -2326,6 +2342,10 @@ connectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -2367,6 +2387,10 @@ connectPrinter(printerId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -2407,19 +2431,23 @@ print.connectPrinter(printerId).then(() => {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | printerId | string | 否 | 否 | 表示打印机ID。 |
 | jobName | string | 否 | 否 | 表示打印任务名称。 |
 | documentFormat | [PrintDocumentFormat](#printdocumentformat23) | 否 | 否 | 表示打印数据格式。 |
 | docFlavor | [DocFlavor](#docflavor23) | 否 | 否 | 表示打印数据来源形式。 |
-| copyNumber | number | 否 | 否 | 表示文件列表副本数。 |
+| copyNumber | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示文件列表副本数。 |
 | isLandscape | boolean | 否 | 否 | 表示是否横向打印。true表示横向打印，false表示纵向打印。默认值为false。 |
 | colorMode | [PrintColorMode](#printcolormode11) | 否 | 否 | 表示色彩模式。 |
 | duplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 否 | 表示单双面打印模式。 |
 | pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | 否 | 否 | 表示选定的页面尺寸。 |
 | jobId | string | 否 | 是 | 表示打印任务的唯一标识符。 |
-| fdList | Array&lt;number&gt; | 否 | 是 | 表示待打印文件fd列表。 |
+| fdList | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 否 | 是 | 表示待打印文件fd列表。 |
 | binaryData | Uint8Array | 否 | 是 | 表示待打印二进制数据。 |
 | printQuality | [PrintQuality](#printquality14) | 否 | 是 | 表示打印质量。 |
 | mediaType | string | 否 | 是 | 表示打印纸张类型。 |
@@ -2430,7 +2458,7 @@ print.connectPrinter(printerId).then(() => {
 | isSequential | boolean | 否 | 是 | 表示是否按照页面顺序打印。 |
 | options | string | 否 | 是 | 表示以JSON格式字符串化的对象。 |
 
-## startPrint<sup>23+</sup>
+## print.startPrint<sup>23+</sup>
 
 startPrint(job: PrintJobData): Promise&lt;void&gt;
 
@@ -2500,6 +2528,10 @@ print.startPrint(printJobData).then(() => {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | DOCUMENT_FORMAT_AUTO | 0 | 表示自动检测格式。 |
@@ -2516,6 +2548,10 @@ print.startPrint(printJobData).then(() => {
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |

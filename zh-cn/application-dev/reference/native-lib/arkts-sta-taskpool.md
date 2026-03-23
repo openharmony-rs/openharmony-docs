@@ -411,11 +411,114 @@ function taskpoolTest() {
 taskpoolTest();
 ```
 
+## taskpool.getTask
+
+getTask(taskId: int, taskName?: string): Task | undefined
+
+通过taskId与taskName获取对应的Task实例。  
+如果传入的taskId查询不到对应的Task实例，则会返回undefined；  
+如果传入的taskId能够查询到对应的Task实例，但是调用getTask方法的线程和创建Task实例的线程不一致，则会返回undefined；  
+如果传入了taskId和taskName，通过taskId查询到的Task实例的name和传入的taskName不一致，则会返回undefined。
+
+**参数：**
+
+| 参数名  | 类型          | 必填 | 说明                 |
+| ------ | ------------- | ---- | -------------------- |
+| taskId   | int      | 是   | 任务的标识符。无单位。值为标识任务的一个正值。 |
+| taskName   | string | 否   | 任务名称，无长度限制和其他格式要求。默认值为undefined。 |
+
+**返回值：**
+
+| 类型             | 说明                              |
+| ---------------- | --------------------------------- |
+| Task \| undefined  | Task对象或undefined，符合条件时，返回Task对象；否则返回undefined。 |
+
+**示例：**
+
+```ts
+import hilog from '@ohos.hilog';
+
+function addNum(num1: int, num2: int) {
+  return num1 + num2;
+}
+
+function dealTask() {
+  let task1:taskpool.Task = new taskpool.Task(addNum, 1, 2);
+  let task2:taskpool.Task | undefined = taskpool.getTask(task1.taskId);
+  if (task2 === undefined) {
+    hilog.info(0x0000, "testTag", "getTask failed");
+    return;
+  }
+
+  taskpool.execute(task2).then((result) => {
+    hilog.info(0x0000, "testTag", "result: " + result); // task2 result: 3
+  })
+}
+```
+
+## taskpool.cancel
+
+cancel(taskId: int): void
+
+取消任务池中的任务。当任务在taskpool等待队列中，取消该任务后该任务将不再执行，并返回任务被取消的异常。如果任务已经在工作线程中执行，取消操作不会影响任务的继续执行。可以通过isCanceled检查任务是否被取消并作出相应处理。
+
+**参数：**
+
+| 参数名  | 类型          | 必填 | 说明                 |
+| ------ | ------------- | ---- | -------------------- |
+| taskId   | int | 是   | 任务的标识符。无单位。值为标识任务的一个正值。 |
+
+**错误信息：**
+
+| 错误信息                            | 说明                               |
+| ---------------------------------- | ---------------------------------- |
+| task is not executed or has been executed. | 任务未执行或已执行完成。<br>可能原因：取消的任务未通过调用taskpool.execute等接口开始执行。<br>处理步骤：在取消任务前，确保任务已开始执行且未执行结束。如果无法保证，需要捕获异常。 |
+
+**示例：**
+
+```ts
+import hilog from '@ohos.hilog';
+
+function inspectStatus(arg: int): int {
+  // 第一次检查任务是否已经取消并作出响应
+  if (taskpool.Task.isCanceled()) {
+    hilog.info(0x0000, "testTag", "task has been canceled before 2s sleep.");
+    return arg + 2;
+  }
+  // 2s sleep
+  let t = Date.now();
+  while (Date.now() - t < 2000) {}
+  // 第二次检查任务是否已经取消并作出响应
+  if (taskpool.Task.isCanceled()) {
+    hilog.info(0x0000, "testTag", "task has been canceled after 2s sleep.");
+    return arg + 3;
+  }
+  return arg + 1;
+}
+
+function concurrentFunc() {
+  let task: taskpool.Task = new taskpool.Task(inspectStatus, 100);
+  taskpool.execute(task).then((res: Any) => {
+    hilog.info(0x0000, "testTag", "taskpool test result: " + res);
+  });
+  // 1s后取消task
+  setTimeout(() => {
+    try {
+      taskpool.cancel(task.taskId);
+    } catch (e) {
+      hilog.info(0x0000, "testTag", "taskpool: cancel error: " + e);
+    }
+  }, 1000);
+}
+
+concurrentFunc();
+```
+
 ## taskpool.cancel
 
 cancel(task: Task): void
 
-取消任务池中的任务。当任务在taskpool等待队列中，取消该任务后该任务将不再执行，并返回任务被取消的异常。如果任务已经在工作线程中执行，取消操作不会影响任务的继续执行，执行结果将在catch分支返回。可以通过isCanceled检查任务是否被取消并作出相应处理。taskpool.cancel对之前调用的taskpool.execute或taskpool.executeDelayed生效。
+取消任务池中的任务。当任务在taskpool等待队列中，取消该任务后该任务将不再执行，并返回任务被取消的异常。如果任务已经在工作线程中执行，取消操作不会影响任务的继续执行。可以通过isCanceled检查任务是否被取消并作出相应处理。
 
 **参数：**
 
@@ -428,7 +531,7 @@ cancel(task: Task): void
 | 错误信息                            | 说明                               |
 | ---------------------------------- | ---------------------------------- |
 | sequenceRunner task has been executed. | 串行队列任务已执行完成。<br>可能原因：取消已执行完成的串行队列任务。<br>处理步骤：取消任务前，确保任务不是已执行完成的串行队列任务。无法保证时，需要捕获异常。  |
-| task is not executed or has been executed. | 任务未通过调用taskpool.execute等接口开始执行或已执行完成。<br>可能原因：取消的任务未通过调用taskpool.execute等接口开始执行。<br>：在取消任务前，确保任务已开始执行且未执行结束。如果无法保证，需要捕获异常。 |
+| task is not executed or has been executed. | 任务未执行或已执行完成。<br>可能原因：取消的任务未通过调用taskpool.execute等接口开始执行。<br>处理步骤：在取消任务前，确保任务已开始执行且未执行结束。如果无法保证，需要捕获异常。 |
 
 **正在执行的任务取消示例：**
 
