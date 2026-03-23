@@ -221,7 +221,7 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 | Name  | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
 | type     | string                | Yes  | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change events.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, all subscriptions to the specified event are canceled.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 
@@ -507,7 +507,7 @@ Represents the information about the avoidance area of the window.
 | Name| Type                | Read-Only| Optional| Description       |
 | ------ | -------------------- | ----- | ---- | ------------------ |
 | type   | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | No| No| Type of the avoidance area of the window.|
-| area   | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7)     | No| No| Area where the window cannot be displayed.|
+| area   | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7)     | No| No| Avoidance area for the content of the window.|
 
 ## WindowProxyProperties<sup>14+</sup>
 

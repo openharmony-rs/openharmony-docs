@@ -1422,7 +1422,7 @@ Defines virtual screen parameters.
 
 ## Screen
 
-Implements a Screen instance.
+Defines the [physical screen](../../displaymanager/display-terminology.md#physical-screen) instance.
 
 Before calling any API in Screen, you must use [getAllScreens()](#screengetallscreens) or [createVirtualScreen()](#screencreatevirtualscreen) to obtain a Screen instance.
 
