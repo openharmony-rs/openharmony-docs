@@ -1243,8 +1243,7 @@ try {
 
 ## window.createSubWindowAndBindParent<sup>24+</sup>
 
-createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext,
- 	     parentWindowEventListener: WindowEventListener): Promise\<Window\>
+createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, parentWindowEventListener: WindowEventListener): Promise\<Window\>
 
 创建一个子窗，并绑定父窗。使用Promise异步回调。
 
