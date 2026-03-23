@@ -47210,7 +47210,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/customlayout/CustomLayoutBasic.ets",
 				"functions":[
 					{
-						"end_line":107,
+						"end_line":106,
 						"name":"CustomLayoutBasic",
 						"start_line":16
 					}
