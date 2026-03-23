@@ -35,7 +35,7 @@
 + scrollBy：相对当前滚动位置滚动一定距离（正数向下/右，负数向上/左）。
 
   ```javascript
-  window.scrollBy(deltaX, deltaY);//deltaX是元素要在横轴上滚动的距离，deltaY是元素要在纵轴上滚动的距离。
+  window.scrollBy(deltaX, deltaY);// deltaX是元素要在横轴上滚动的距离，deltaY是元素要在纵轴上滚动的距离。
   ```
   渐进式滚动（如“阅读更多”按钮）。
   ```javascript
@@ -45,7 +45,7 @@
   ```
 + scrollTo：将页面滚动到绝对坐标位置。
   ```javascript
-  window.scrollTo(x, y);//X是你想要显示在左上角的元素沿水平轴的像素，Y是你想要显示在左上角的元素沿垂直轴的像素。
+  window.scrollTo(x, y);// X是你想要显示在左上角的元素沿水平轴的像素，Y是你想要显示在左上角的元素沿垂直轴的像素。
   ```
   (1) 返回页面顶部。
   ```javascript
@@ -53,7 +53,7 @@
   ```
   (2) 跳转到页面特定位置。
   ```javascript
-  window.scrollTo(0, 500); //滚动到某个固定像素位置（如：500px)
+  window.scrollTo(0, 500); // 滚动到某个固定像素位置（如：500px)
   ```
 
 ## 点击状态栏回顶
