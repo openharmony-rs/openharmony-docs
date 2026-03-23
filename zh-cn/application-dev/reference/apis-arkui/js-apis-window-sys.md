@@ -1246,7 +1246,7 @@ try {
 createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext,
  	     parentWindowEventListener: WindowEventListener): Promise\<Window\>
 
-创建一个子窗，并为其绑定指定父窗。使用Promise异步回调。
+创建一个子窗，并绑定父窗。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
