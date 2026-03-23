@@ -38,7 +38,7 @@
 | [OH_WifiChannelWidth](#oh_wifichannelwidth) | OH_WifiChannelWidth | 定义当前连接热点的信道带宽。 |
 | [OH_WifiStandard](#oh_wifistandard) | OH_WifiStandard | 当前连接热点的Wi-Fi标准。 |
 | [OH_WifiCategory](#oh_wificategory) | OH_WifiCategory | 热点支持的最高Wi-Fi级别。 |
-| [OH_WifiLinkType](#oh_wifilinketype) | OH_WifiLinkType | Wi-Fi7连接类型。 |
+| [OH_WifiLinkType](#oh_wifilinktype) | OH_WifiLinkType | Wi-Fi7连接类型。 |
 
 ### 结构体
 
