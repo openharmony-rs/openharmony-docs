@@ -93,7 +93,7 @@ getNetAccessPolicy(): Promise\<NetAccessPolicy>
 
 | 类型                                                    | 说明                          |
 | ------------------------------------------------------- | ----------------------------- |
-| Promise\<[NetAccessPolicy](#netaccesspolicy26)>  |Promise对象。返回应用自身联网策略。|
+| Promise\<[NetAccessPolicy](#netaccesspolicy)>  |Promise对象。返回应用自身联网策略。|
 
 **示例：**
 ```ts
