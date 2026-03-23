@@ -36,7 +36,7 @@
 | appName    | string | 是  | 是 | 标识应用的名称。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中label获取。 |
 | appIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是  | 否 | 应用包的分身索引标识，仅在分身应用中生效。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中appIndex获取。 |
 
-## UserGrantSetting<sup>26+</sup>
+## UserGrantSetting
 
 描述用户授权的设置信息。
 
@@ -44,9 +44,9 @@
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**ArkTS-Dyn起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称   | 类型   | 只读 | 可选 | 说明   |
 | ------ | ------ | ----| -- |  ------ |
