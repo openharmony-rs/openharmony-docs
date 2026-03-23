@@ -292,12 +292,14 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Chip({
+        // 设置前缀图标属性。
         prefixIcon: {
           // 'app.media.chips'仅作示例，请替换为实际使用图片。
           src: $r('app.media.chips'),
           size: { width: 16, height: 16 },
           fillColor: Color.Red
         },
+        // 设置文本属性。
         label: {
           text: '操作块',
           fontSize: 12,
@@ -305,6 +307,7 @@ struct Index {
           fontFamily: 'HarmonyOS Sans',
           labelMargin: { left: 20, right: 30 }
         },
+        // 设置后缀图标属性。
         suffixIcon: {
           // 'app.media.close'仅作示例，请替换为实际使用图片。
           src: $r('app.media.close'),
@@ -338,12 +341,14 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Chip({
+        // 设置前缀图标属性。
         prefixIcon: {
           // 'app.media.chips'仅作示例，请替换为实际使用图片。
           src: $r('app.media.chips'),
           size: { width: 16, height: 16 },
           fillColor: Color.Blue
         },
+        // 设置文本属性。
         label: {
           text: '操作块',
           fontSize: 12,
@@ -378,12 +383,14 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Chip({
+        // 设置前缀图标属性。
         prefixIcon: {
           // 'app.media.chips'仅作示例，请替换为实际使用图片。
           src: $r('app.media.chips'),
           size: { width: 16, height: 16 },
           fillColor: Color.Blue
         },
+        // 设置文本属性。
         label: {
           text: '操作块',
           fontSize: 12,
@@ -423,6 +430,7 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Chip({
+        // 设置前缀图标属性。
         prefixIcon: {
           // 'app.media.chips'仅作示例，请替换为实际使用图片。
           src: $r('app.media.chips'),
@@ -430,6 +438,7 @@ struct Index {
           fillColor: Color.Blue,
           activatedFillColor: $r('sys.color.ohos_id_color_text_primary_contrary')
         },
+        // 设置文本属性。
         label: {
           text: '操作块',
           fontSize: 12,
@@ -452,7 +461,7 @@ struct Index {
           console.info('chip on clicked');
         }
       })
-
+ 	  // 点击“改变激活状态”，用于控制操作块的激活与关闭。
       Button('改变激活状态')
         .onClick(() => {
           this.isActivated = !this.isActivated;
@@ -467,7 +476,7 @@ struct Index {
 
 ### 示例5（设置symbol类型图标）
 
-Chip组件的前缀、后缀图标使用symbol类型资源展示。
+Chip组件的前缀图标使用symbol类型资源展示。
 
 ```ts
 import { Chip, ChipSize, SymbolGlyphModifier } from '@kit.ArkUI';
@@ -480,10 +489,12 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Chip({
+        // 设置前缀图标属性，symbol类型。
         prefixSymbol: {
           normal: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontSize(16).fontColor([Color.Green]),
           activated: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontSize(16).fontColor([Color.Red]),
         },
+        // 设置文本属性。
         label: {
           text: '操作块',
           fontSize: 12,
@@ -532,12 +543,14 @@ struct ChipPage {
     Column() {
       Chip({
         direction: Direction.Rtl,
+        // 设置前缀图标属性。
         prefixIcon: {
           // 'app.media.chips'仅作示例，请替换为实际使用图片。
           src: $r('app.media.chips'),
           size: { width: 16, height: 16 },
           fillColor: Color.Red,
         },
+        // 设置文本属性。
         label: {
           text: '操作块',
           fontSize: 12,
@@ -545,6 +558,7 @@ struct ChipPage {
           fontFamily: 'HarmonyOS Sans',
           localizedLabelMargin: { start: LengthMetrics.vp(20), end: LengthMetrics.vp(20) },
         },
+        // 设置后缀图标属性。
         suffixIcon: {
           // 'app.media.close'仅作示例，请替换为实际使用图片。
           src: $r('app.media.close'),
