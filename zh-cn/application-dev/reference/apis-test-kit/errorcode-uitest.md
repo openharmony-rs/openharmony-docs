@@ -32,7 +32,7 @@ Initialization failed.
 ## 17000002 当前无法调用
 **错误信息**
 
-The async function is not called with await.
+The API does not support concurrent calls.
 
 **错误描述**
 
