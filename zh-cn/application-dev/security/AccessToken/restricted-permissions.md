@@ -1055,17 +1055,3 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**: PC/2in1
 
 **起始版本**: 24
-
-## ohos.permission.ALLOW_ACCESSORY_ACCESS
-
-允许应用使用配件接入服务完成配件关联和自动唤醒等功能。
-
-<!--RP70--><!--RP70End-->
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**支持设备**：Phone | PC/2in1 | Tablet | Car
-
-**起始版本**：24
