@@ -4,7 +4,7 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 如果需要重复拉起PhotoViewPicker，需要先销毁创建的前一个PhotoViewPicker。销毁方式支持：1. 跟随[组件导航(Navigation) (推荐)](../../../application-dev/ui/arkts-navigation-navigation.md)销毁的能力。2. 跟随进程销毁的能力。
+> - 如果需要重复拉起PhotoViewPicker，需要先销毁创建的前一个PhotoViewPicker。销毁方式支持：1. 跟随[NavDestination](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)销毁的能力。2. 跟随进程销毁的能力。
 
 图库选择器对象用于支持选择图片、视频等用户场景。使用前，需先创建PhotoViewPicker实例。
 
