@@ -1072,6 +1072,7 @@ struct Index {
 }
 ```
 
+![touchPointer.gif](figures/touchPointer.gif)
 
 ### Example 11: Implementing Transition Effects Between Floating Images and Drag Previews
 This example demonstrates how to implement different transition effects between floating images and drag previews by configuring [DraggingSizeChangeEffect](#draggingsizechangeeffect19), supported since API version 19.
@@ -1164,6 +1165,7 @@ struct Index {
 }
 ```
 
+![sizeChangeEffect.gif](figures/sizeChangeEffect.gif)
 
 ### Example 12: Setting Dropping of a Custom Component
 In API version 23 and later, this example demonstrates how to implement the drag-and-drop function for a custom component by passing a type through the component's [onDragStart](ts-universal-events-drag-drop.md#ondragstart) API and setting the target component's [allowDrop](#allowdrop) attribute to allow dropping of that type.

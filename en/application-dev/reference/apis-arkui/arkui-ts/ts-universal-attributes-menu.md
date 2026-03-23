@@ -1317,6 +1317,7 @@ struct Index {
 
 ```
 
+![bindMenu-CustomBuilder](figures/bindMenuWithCustomBuilder.gif)
 
 ### Sample 19: Displaying Different Menus Based on the Trigger Mode
 
@@ -1368,6 +1369,7 @@ struct Index {
 
 ```
 
+![bindContextMenuWithType](figures/bindContextMenuWithType.gif)
 
 ### Example 20: Setting the Menu to Avoid the Soft Keyboard
 
@@ -1506,4 +1508,4 @@ struct Index {
 }
 ```
 
-
+![anchorPositionMenu](figures/anchorPositionMenu.gif)
