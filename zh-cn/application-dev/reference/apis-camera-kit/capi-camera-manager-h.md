@@ -90,8 +90,8 @@ typedef void (*OH_CameraManager_StatusCallback)(Camera_Manager* cameraManager, C
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_Manager\* cameraManager | 传递回调的Camera_Manager。 |
-| [Camera_StatusInfo](capi-oh-camera-camera-statusinfo.md)\* status | 每个相机设备的状态信息。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 传递回调的Camera_Manager。 |
+| [Camera_StatusInfo](capi-oh-camera-camera-statusinfo.md)* status | 每个相机设备的状态信息。 |
 
 ### OH_CameraManager_TorchStatusCallback()
 
@@ -109,8 +109,8 @@ typedef void (*OH_CameraManager_TorchStatusCallback)(Camera_Manager* cameraManag
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_Manager\* cameraManager | 传递回调的Camera_Manager。 |
-| [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md)\* status | 手电筒的状态信息。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 传递回调的Camera_Manager。 |
+| [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md)* status | 手电筒的状态信息。 |
 
 ### OH_CameraManager_OnFoldStatusInfoChange()
 
@@ -128,8 +128,8 @@ typedef void (*OH_CameraManager_OnFoldStatusInfoChange)(Camera_Manager* cameraMa
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_Manager\* cameraManager | 传递回调的Camera_Manager。 |
-| [Camera_FoldStatusInfo](capi-oh-camera-camera-foldstatusinfo.md)\* foldStatusInfo | 设备的折叠状态信息。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 传递回调的Camera_Manager。 |
+| [Camera_FoldStatusInfo](capi-oh-camera-camera-foldstatusinfo.md)* foldStatusInfo | 设备的折叠状态信息。 |
 
 ### OH_CameraManager_RegisterCallback()
 
@@ -968,7 +968,9 @@ Camera_ErrorCode OH_CameraManager_GetCameraDevice(Camera_Manager* cameraManager,
 
 **描述**
 
-根据相机位置和相机类型查询指定的相机。获取指定[Camera_Position](capi-camera-h.md#camera_position)和[Camera_Type](capi-camera-h.md#camera_type)的相机镜头，如果该接口返回值为CAMERA_SERVICE_FATAL_ERROR，表示当前设备未查询到该镜头。
+根据相机位置和相机类型查询指定的相机。
+
+获取指定[Camera_Position](capi-camera-h.md#camera_position)和[Camera_Type](capi-camera-h.md#camera_type)的相机镜头，如果该接口返回值为CAMERA_SERVICE_FATAL_ERROR，表示当前设备未查询到该镜头。
 
 **起始版本：** 18
 
