@@ -72,7 +72,7 @@ FormComponent (value: FormInfo)
 | --------- | ------------------------------- | ---- | ---- | ----------------------------------------------------------------------- |
 | id        | ArkTS-Dyn: number <br> ArkTS-Sta: long                |   否   |  否   | 卡片标识。<br/>**说明：**<br>如果获取到的id为-1，说明id大于等于2^53，需要使用idString获取。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 | idString      | string            |   否   |  否   | 卡片标识（string类型）。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23                             |
-| isLocked<sup>18+</sup>  |boolean  |   否   |  否   | 标识卡片是否为[管控状态](../../apis-form-kit/js-apis-app-form-formHost-sys.md#updateformlockedstate18)，true表示管控状态，false表示非管控状态。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23     |
+| isLocked<sup>22+</sup>  |boolean  |   否   |  否   | 标识卡片是否为[管控状态](../../apis-form-kit/js-apis-app-form-formHost-sys.md#updateformlockedstate18)，true表示管控状态，false表示非管控状态。<br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23     |
 
 ## FormSize<sup>18+</sup>对象说明
 
