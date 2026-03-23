@@ -258,6 +258,7 @@ Gainmap图单个通道的数据内容，参考ISO 21496-1。
 | exifMetadata            | [ExifMetadata](arkts-apis-image-ExifMetadata.md) | 否   | 是   | Exif元数据。                    |
 | makerNoteHuaweiMetadata | [MakerNoteHuaweiMetadata](arkts-apis-image-MakerNoteHuaweiMetadata.md) | 否   | 是   | 来自Huawei相机的照片元数据。 |
 | heifsMetadata | [HeifsMetadata](arkts-apis-image-HeifsMetadata.md) | 否   | 是   | HEIF序列图像元数据类，用于存储图像的元数据。 |
+| webPMetadata<sup>24+</sup> | [WebPMetadata](arkts-apis-image-WebPMetadata.md) | 否   | 是   | WebP图像元数据类，用于存储图像的元数据。 |
 
 ## HdrGainmapMetadata<sup>12+</sup>
 
