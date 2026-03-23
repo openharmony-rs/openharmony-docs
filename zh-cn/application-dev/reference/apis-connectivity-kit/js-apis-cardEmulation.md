@@ -321,14 +321,6 @@ let isDefaultService = cardEmulation.isDefaultService(appName, cardEmulation.Car
 
 提供HCE卡模拟的实现，主要包括接收对端读卡设备的APDU数据，并响应APDU数据到对端读卡设备。使用HCE相关接口前，必须先判断设备是否支持HCE卡模拟能力。
 
-**示例：**
-
-<!--code_no_check_fa-->
-```js
-// 适用于轻量级智能穿戴设备
-var hceService = new cardEmulation.HceService();
-```
-
 ### startHCE<sup>(deprecated)</sup>
 
 startHCE(aidList: string[]): boolean
@@ -354,7 +346,11 @@ startHCE(aidList: string[]): boolean
 | ------- | -------------------------------------- |
 | boolean | true: 启动HCE功能或HCE已启动，&nbsp;false: 启动失败。 |
 
-**示例：**
+**ArkTS示例：**
+
+示例请参见[on](#on8)接口的示例。
+
+**JS示例：**
 
 ```xml
 <!-- 适用于轻量级智能穿戴设备 -->
@@ -461,7 +457,11 @@ stopHCE(): boolean
 | ------- | -------------------------------------- |
 | boolean | true: 禁用HCE功能或HCE已禁用，false: 禁用失败。 |
 
-**示例：**
+**ArkTS示例：**
+
+示例请参见[on](#on8)接口的示例。
+
+**JS示例：**
 
 ```xml
 <!-- 适用于轻量级智能穿戴设备 -->
@@ -575,7 +575,7 @@ on(type: 'hceCmd', callback: AsyncCallback\<number[]>): void
 |401 | Invalid parameter.                 |
 |801 | Capability not supported.          |
 
-**示例：**
+**ArkTS示例：**
 ```js
 // 适用于除轻量级智能穿戴产品之外其它设备
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -609,7 +609,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-**示例：**
+**JS示例：**
 <!--code_no_check_fa-->
 ```js
 // 适用于轻量级智能穿戴设备
@@ -648,69 +648,6 @@ export default {
   onDestroy() {
   }
   // 生命周期内的其它功能
-}
-```
-
-**js示例：**
-
-```xml
-<!-- 适用于轻量级智能穿戴设备 -->
-<!-- xxx.hml -->
-<div class="container">
-    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
-        测试
-    </text>
-    <input type="button" value="on" style="width: 240px; height: 50px; margin: 5px;" onclick="onClick"></input>
-</div>
-```
-
-```css
-/* 适用于轻量级智能穿戴设备 */
-/* xxx.css */
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  left: 0px;
-  top: 0px;
-  width: 454px;
-  height: 454px;
-}
-.title {
-  font-size: 100px;
-  text-align: center;
-  width: 200px;
-  height: 100px;
-}
-.button {
-  font-size: 30px;
-  text-align: center;
-  width: 200px;
-  height: 100px;
-}
-```
-
-```js
-// 适用于轻量级智能穿戴设备
-// xxx.js
-import cardEmulation from '@ohos.nfc.cardEmulation';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-export default  {
-    data: {
-        fontSize: '30px',
-        fontColor: '#FF1AFF00',
-    },
-    onClick() {
-        var hceService = new cardEmulation.HceService();
-        hceService.on("hceCmd", (err, res) => {
-            if(err.data === 0) {
-                console.info('callback => Operation hceCmd succeeded. Data: ${JSON.stringify(res)}');
-            } else {
-                console.info('callback => Operation hceCmd failed. Cause: ${JSON.stringify(err.data)}');
-            }
-        })
-    }
 }
 ```
 
@@ -796,7 +733,11 @@ sendResponse(responseApdu: number[]): void
 | ------------ | -------- | ---- | -------------------------------------------------- |
 | responseApdu | number[] | 是   | 发送到对端读卡设备的符合APDU协议的数据，每个number十六进制表示，范围是0x00~0xFF。 |
 
-**示例：**
+**ArkTS示例：**
+
+示例请参见[transmit](#transmit9)接口的示例。
+
+**JS示例：**
 
 ```xml
 <!-- 适用于轻量级智能穿戴设备 -->
