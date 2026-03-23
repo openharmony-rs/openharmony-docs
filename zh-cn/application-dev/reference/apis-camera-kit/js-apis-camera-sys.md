@@ -2936,7 +2936,7 @@ getSupportedColorEffects(): Array\<ColorEffectType\>
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 202             |  Not System Application.                 |
-| 7400103         |  Session not config.   |
+| 7400103         |  Session not config, only throw in session usage.  |
 
 **示例：**
 
@@ -3061,8 +3061,8 @@ getSupportedPortraitEffects(): Array\<PortraitEffect\>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                |
-| 202             |  Session not config, only throw in session usage.   |
+| 202                 |  Not System Application.        |
+| 7400103             |  Session not config, only throw in session usage.   |
 
 **示例：**
 
@@ -3195,8 +3195,8 @@ getSupportedVirtualApertures(): Array\<number\>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                             |
-| 202             |  Session not config, only throw in session usage.  |
+| 202         |  Not System Application.                           |
+| 7400103     |  Session not config, only throw in session usage.  |
 
 **示例：**
 
@@ -5449,7 +5449,7 @@ setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.    |
-| 7400103                |  Session not config.                                   |
+| 7400103                |  Session not config, only throw in session usage.             |
 
 **示例：**
 
