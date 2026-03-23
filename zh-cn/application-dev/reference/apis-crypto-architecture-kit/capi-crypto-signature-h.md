@@ -1,4 +1,3 @@
-
 # crypto_signature.h
 
 <!--Kit: Crypto Architecture Kit-->
@@ -107,7 +106,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify *
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | 用于生成验签实例的算法名称。<br> 例如"RSA1024|PKCS1|SHA256" |
+| const char *algoName | 用于生成验签实例的算法名称。<br> 例如"RSA1024\|PKCS1\|SHA256" |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) **verify | 指向验签实例的指针。 |
 
 **返回：**
@@ -144,6 +143,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pu
 **参考：**
 
 [OH_CryptoVerify_Update](capi-crypto-signature-h.md#oh_cryptoverify_update)
+
 [OH_CryptoVerify_Final](capi-crypto-signature-h.md#oh_cryptoverify_final)
 
 
@@ -346,7 +346,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sig
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | 用于生成签名实例的算法名称。<br> 例如"RSA|PKCS1|SHA384"、"ECC|SHA384"。 |
+| const char *algoName | 用于生成签名实例的算法名称。<br> 例如"RSA\|PKCS1\|SHA384"、"ECC\|SHA384"。 |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) **sign | 签名实例。 |
 
 **返回：**
@@ -414,6 +414,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob
 **参考：**
 
 [OH_CryptoSign_Init](capi-crypto-signature-h.md#oh_cryptosign_init)
+
 [OH_CryptoSign_Final](capi-crypto-signature-h.md#oh_cryptosign_final)
 
 
@@ -446,6 +447,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob 
 **参考：**
 
 [OH_CryptoSign_Init](capi-crypto-signature-h.md#oh_cryptosign_init)
+
 [OH_CryptoSign_Update](capi-crypto-signature-h.md#oh_cryptosign_update)
 
 
