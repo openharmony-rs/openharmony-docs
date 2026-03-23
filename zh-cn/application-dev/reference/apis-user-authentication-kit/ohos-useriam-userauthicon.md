@@ -35,6 +35,7 @@ import { userAuth, UserAuthIcon } from '@kit.UserAuthenticationKit';
 
 ## UserAuthIcon
 
+```ts
 UserAuthIcon({
   authParam: userAuth.AuthParam,
   widgetParam: userAuth.WidgetParam,
@@ -43,6 +44,7 @@ UserAuthIcon({
   onIconClick?: ()=>void,
   onAuthResult: (result: userAuth.UserAuthResult)=>void
 })
+```
 
 **装饰器类型：**\@Component
 
