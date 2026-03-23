@@ -49,7 +49,7 @@
 | certificateManager        | finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMResult>) : void     | 使用callback方式完成数据的签名操作。        |
 | certificateManager        | finish(handle: Uint8Array, signature?: Uint8Array) : Promise\<CMResult> | 使用Promise方式完成数据的签名、验签操作。 |
 | certificateManager        | abort(handle: Uint8Array, callback: AsyncCallback\<void>) : void         | 使用callback方式中止签名、验签操作。        |
-| certificateManager        | abort(handle: Uint8Array) : Promise\<void> | 使用promise方式中止签名、验签操作。 |
+| certificateManager        | abort(handle: Uint8Array) : Promise\<void> | 使用Promise方式中止签名、验签操作。 |
 
 ## 开发步骤
 
