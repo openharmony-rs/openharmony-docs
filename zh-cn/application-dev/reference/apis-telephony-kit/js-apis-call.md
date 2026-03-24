@@ -261,7 +261,7 @@ makeCall\(phoneNumber: string, options?: MakeCallOptions\): Promise\<void\>
 ```ts
 import { call } from '@kit.TelephonyKit';
 
-//设置通话结束后是否返回当前App
+// 设置通话结束后是否返回当前App
 let makeOptions: call.MakeCallOptions = {
   isHideDialScreen: true
 }
