@@ -1184,7 +1184,7 @@ let inputMethodId: string = "target inputMethod id";
 settings.openInputMethodDetail(context, bundleName, inputMethodId);
 ```
 
-## settings.openBiometricsSettingsPage<sup>23+</sup>
+## settings.openBiometricsSettingsPage<sup>24+</sup>
 
 openBiometricsSettingsPage(context: Context): void
 
