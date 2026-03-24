@@ -65,7 +65,7 @@
    <!-- @[manager_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
    ``` TypeScript
-   import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+   import { avMusicTemplate } from '@kit.AVSessionKit';
    // ...
    
    export class TemplateManager {
@@ -117,7 +117,7 @@
    <!-- @[template_register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
    ``` TypeScript
-   import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+   import { avMusicTemplate } from '@kit.AVSessionKit';
    // ...
    
    export class TemplateManager {
@@ -238,7 +238,7 @@
    <!-- @[set_user_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
    ``` TypeScript
-   import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+   import { avMusicTemplate } from '@kit.AVSessionKit';
    // ...
    
    export class TemplateManager {
@@ -280,7 +280,7 @@
    <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
    ``` TypeScript
-   import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+   import { avMusicTemplate } from '@kit.AVSessionKit';
    // ...
    
    export class TemplateManager {
