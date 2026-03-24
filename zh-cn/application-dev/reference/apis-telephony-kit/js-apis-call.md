@@ -227,7 +227,7 @@ makeCall\(phoneNumber: string, options?: MakeCallOptions\): Promise\<void\>
 
 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。只支持在UIAbility中调用。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Applications.Contacts
 
