@@ -4472,7 +4472,7 @@ const minDuration = 60;
 const withinTime = 2 * 60 *60;
 
 // 调用接口查询
-contact.hasMatchedCallLog(context, phoneNumber, minDuration，withinTime).then((hasMatch:boolean) => {
+contact.hasMatchedCallLog(context, phoneNumber, minDuration, withinTime).then((hasMatch:boolean) => {
   console.info(`Has matched call log: ${hasMatch}`);
 });
 ```
