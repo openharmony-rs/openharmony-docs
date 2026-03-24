@@ -4423,7 +4423,7 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number, wi
 
 检查是否有符合条件的通话记录，仅针对运营商通话。使用Promise异步回调。
 
-**原子化服务API**：从API version 24 开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.CHECK_CALL_LOG
 
@@ -4435,14 +4435,14 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number, wi
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
 | context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                  | 是   | 联系人的电话号码。                                           |
-| minDuration      | number                      | 是   | 最短通话时长，单位秒。       |
-| withinTime       | number | 是   | 表示从当前时间开始计算，通话的起始时间和结束时间应在此时间范围内，单位为秒。最多可设置6小时，超过6小时的默认以6小时查询               |
+| minDuration      | number                      | 是   | 最短通话时长，单位为秒。       |
+| withinTime       | number | 是   | 表示从当前时间开始计算，通话的起始时间和结束时间应在此时间范围内，单位为秒。最多可设置6小时，超过6小时的默认以6小时查询。               |
 
 **返回值：**
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象，返回是否有符合条件的通话记录。 |
+| Promise&lt;boolean&gt; | Promise对象，返回是否有符合条件的通话记录，true代表有符合条件的，false代表没有。 |
 
 **错误码：**
 
@@ -4464,7 +4464,7 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number, wi
 import { contact } from '@kit.ContactsKit';
 import { common } from '@kit.AbilityKit';
 
-// 请在组件内获取context。
+// 请在组件内获取context
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 const phoneNumber = '13812345678'；
@@ -4483,7 +4483,7 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number): P
 
 检查是否有符合条件的通话记录，默认查询6小时以内的通话记录，仅针对运营商通话。使用Promise异步回调。
 
-**原子化服务API**：从API version 24 开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.CHECK_CALL_LOG
 
@@ -4495,13 +4495,13 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number): P
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
 | context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                  | 是   | 联系人的电话号码。                                           |
-| minDuration      | number                      | 是   | 最短通话时长，单位秒。       |
+| minDuration      | number                      | 是   | 最短通话时长，单位为秒。       |
 
 **返回值：**
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象，返回是否有符合条件的通话记录。 |
+| Promise&lt;boolean&gt; | Promise对象，返回是否有符合条件的通话记录，true代表有符合条件的，false代表没有。 |
 
 **错误码：**
 
@@ -4523,10 +4523,10 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number): P
 import { contact } from '@kit.ContactsKit';
 import { common } from '@kit.AbilityKit';
 
-// 请在组件内获取context。
+// 请在组件内获取context
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-const phoneNumber = '13812345678'；
+const phoneNumber = '13812345678';
 const minDuration = 60;
 // 调用接口查询，默认查询6小时以内的通话记录
 contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:boolean) => {
