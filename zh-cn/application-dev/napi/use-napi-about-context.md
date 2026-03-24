@@ -400,6 +400,7 @@
     ```ts
     // index.ets
     import testNapi from "libentry.so"
+
     // 该接口用于执行模块plugin1或plugin2中的GetLocation方法
     function getLocation(func: () => number) {
         return func();
