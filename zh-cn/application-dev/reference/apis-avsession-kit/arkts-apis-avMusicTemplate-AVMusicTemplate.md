@@ -166,13 +166,6 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryMainTabs();
-  }
-
-  /**
    * 模拟获取主界面的所有TAB。
    *
    * @returns Promise类型MediaTab数组。
@@ -220,7 +213,20 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
 **示例：**
 
-请参考[onQueryMainTabs](#onquerymaintabs)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryMainTabs();
+  }
+}
+```
 
 ## onQueryMediaTabContent
 
@@ -272,13 +278,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryMediaTabContent(this.queryMediaTabContentEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryMediaTabContent();
   }
 
   /**
@@ -363,7 +362,20 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
 **示例：**
 
-请参考[onQueryMediaTabContent](#onquerymediatabcontent)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryMediaTabContent();
+  }
+}
+```
 
 ## onQueryMediaEntity
 
@@ -416,13 +428,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryMediaEntity(this.queryMediaEntityEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryMediaEntity();
   }
 
   /**
@@ -492,7 +497,20 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 
 **示例：**
 
-请参考[onQueryMediaEntity](#onquerymediaentity)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryMediaEntity();
+  }
+}
+```
 
 ## onQueryCompilation
 
@@ -545,13 +563,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryCompilation(this.queryCompilationEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryCompilation();
   }
 
   /**
@@ -621,7 +632,20 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 
 **示例：**
 
-请参考[onQueryCompilation](#onquerycompilation)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryCompilation();
+  }
+}
+```
 
 ## onQueryPlaylist
 
@@ -674,13 +698,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryPlaylist(this.queryPlaylistEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryPlaylist();
   }
 
   /**
@@ -750,7 +767,20 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 
 **示例：**
 
-请参考[onQueryPlaylist](#onqueryplaylist)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryPlaylist();
+  }
+}
+```
 
 ## onQueryCurrentSingle
 
@@ -802,13 +832,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryCurrentSingle(this.queryCurrentSingleEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryCurrentSingle();
   }
 
   /**
@@ -890,7 +913,20 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 
 **示例：**
 
-请参考[onQueryCurrentSingle](#onquerycurrentsingle)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryCurrentSingle();
+  }
+}
+```
 
 ## onQueryCompilationByKeyword
 
@@ -943,13 +979,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryCompilationByKeyword(this.queryCompilationByKeywordEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryCompilationByKeyword();
   }
 
   /**
@@ -1019,7 +1048,20 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 
 **示例：**
 
-请参考[onQueryCompilationByKeyword](#onquerycompilationbykeyword)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryCompilationByKeyword();
+  }
+}
+```
 
 ## onQueryMediaEntityByKeyword
 
@@ -1072,13 +1114,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryMediaEntityByKeyword(this.queryMediaEntityByKeywordEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryMediaEntityByKeyword();
   }
 
   /**
@@ -1148,7 +1183,20 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 
 **示例：**
 
-请参考[onQueryMediaEntityByKeyword](#onquerymediaentitybykeyword)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryMediaEntityByKeyword();
+  }
+}
+```
 
 ## onQueryRecommendMediaEntityList
 
@@ -1204,13 +1252,6 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryRecommendMediaEntityList();
-  }
-
-  /**
    * 模拟获取媒体数据。
    *
    * @returns 媒体数据。
@@ -1258,7 +1299,20 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 
 **示例：**
 
-请参考[onQueryRecommendMediaEntityList](#onqueryrecommendmediaentitylist)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryRecommendMediaEntityList();
+  }
+}
+```
 
 ## onQueryHotWords
 
@@ -1311,13 +1365,6 @@ export class TemplateManager {
   private registerListener() {
     this.template?.onQueryHotWords(this.queryHotWordsEvent);
   }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryHotWords();
-  }
 }
 ```
 
@@ -1349,7 +1396,20 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 
 **示例：**
 
-请参考[onQueryHotWords](#onqueryhotwords)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryHotWords();
+  }
+}
+```
 
 ## onQuerySearchHistory
 
@@ -1402,13 +1462,6 @@ export class TemplateManager {
   private registerListener() {
     this.template?.onQuerySearchHistory(this.querySearchHistoryEvent);
   }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offClearSearchHistory();
-  }
 }
 ```
 
@@ -1440,7 +1493,20 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 
 **示例：**
 
-请参考[onQuerySearchHistory](#onquerysearchhistory)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQuerySearchHistory();
+  }
+}
+```
 
 ## onClearSearchHistory
 
@@ -1495,13 +1561,6 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offClearSearchHistory();
-  }
-
-  /**
    * 模拟操作结果。
    *
    * @returns 操作结果。
@@ -1543,7 +1602,20 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 
 **示例：**
 
-请参考[onClearSearchHistory](#onclearsearchhistory)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offClearSearchHistory();
+  }
+}
+```
 
 ## onLogin
 
@@ -1599,13 +1671,6 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offLogin();
-  }
-
-  /**
    * 模拟创建二维码信息数组。
    *
    * @returns Promise类型的二维码信息数组。
@@ -1653,7 +1718,20 @@ offLogin(callback?: LoginEvent): void
 
 **示例：**
 
-请参考[onLogin](#onlogin)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offLogin();
+  }
+}
+```
 
 ## onRequestDialogInfo
 
@@ -1706,13 +1784,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onRequestDialogInfo(this.requestDialogInfoEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offRequestDialogInfo();
   }
 
   /**
@@ -1769,7 +1840,20 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
 **示例：**
 
-请参考[onRequestDialogInfo](#onrequestdialoginfo)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offRequestDialogInfo();
+  }
+}
+```
 
 ## onHandleMemberPurchase
 
@@ -1822,13 +1906,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onHandleMemberPurchase(this.handleMemberPurchaseEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offHandleMemberPurchase();
   }
 
   /**
@@ -1885,7 +1962,20 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 
 **示例：**
 
-请参考[onHandleMemberPurchase](#onhandlememberpurchase)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offHandleMemberPurchase();
+  }
+}
+```
 
 ## onQueryMemberPurchase
 
@@ -1942,13 +2032,6 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryMemberPurchase();
-  }
-
-  /**
    * 模拟查询会员购买信息。
    *
    * @returns Promise类型的购买会员信息数组。
@@ -1993,7 +2076,20 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 
 **示例：**
 
-请参考[onQueryMemberPurchase](#onquerymemberpurchase)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryMemberPurchase();
+  }
+}
+```
 
 ## onQueryCustomContent
 
@@ -2046,13 +2142,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryCustomContent(this.queryCustomContentEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryCustomContent();
   }
 
   /**
@@ -2117,7 +2206,20 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 
 **示例：**
 
-请参考[onQueryCustomContent](#onquerycustomcontent)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryCustomContent();
+  }
+}
+```
 
 ## onDownloadMediaEntity
 
@@ -2171,13 +2273,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onDownloadMediaEntity(this.downloadMediaEntityEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offDownloadMediaEntity();
   }
 
   /**
@@ -2244,7 +2339,20 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 
 **示例：**
 
-请参考[onDownloadMediaEntity](#ondownloadmediaentity)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offDownloadMediaEntity();
+  }
+}
+```
 
 ## onSettingsChange
 
@@ -2300,13 +2408,6 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offSettingsChange();
-  }
-
-  /**
    * 模拟设置改变。
    *
    * @returns Promise类型的设置条目。
@@ -2353,7 +2454,20 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 
 **示例：**
 
-请参考[onSettingsChange](#onsettingschange)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offSettingsChange();
+  }
+}
+```
 
 ## onProblemAndAdvice
 
@@ -2408,13 +2522,6 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offProblemAndAdvice();
-  }
-
-  /**
    * 模拟操作结果。
    *
    * @returns 操作结果。
@@ -2456,7 +2563,20 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
 **示例：**
 
-请参考[onProblemAndAdvice](#onproblemandadvice)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offProblemAndAdvice();
+  }
+}
+```
 
 ## onPlayForSearch
 
@@ -2512,13 +2632,6 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offPlayForSearch();
-  }
-
-  /**
    * 模拟操作结果。
    *
    * @returns 操作结果。
@@ -2560,7 +2673,20 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 
 **示例：**
 
-请参考[onPlayForSearch](#onplayforsearch)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offPlayForSearch();
+  }
+}
+```
 
 ## onExecuteAction
 
@@ -2611,13 +2737,7 @@ export class TemplateManager {
    * 注册监听。
    */
   private registerListener() {
-    this.template?.onExecuteAction(this.executeActionEvent);  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offExecuteAction();
+    this.template?.onExecuteAction(this.executeActionEvent);
   }
 }
 ```
@@ -2650,7 +2770,20 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 
 **示例：**
 
-请参考[onExecuteAction](#onexecuteaction)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offExecuteAction();
+  }
+}
+```
 
 ## onPlayMediaEntity
 
@@ -2696,13 +2829,6 @@ export class TemplateManager {
     private registerListener() {
         this.template?.onPlayMediaEntity(this.playMediaEntityEvent);
     }
-
-    /**
-     * 注销监听。
-     */
-    public unregisterListener() {
-        this.template?.offPlayMediaEntity();
-    }
 }
 ```
 
@@ -2735,7 +2861,20 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 
 **示例：**
 
-请参考[onPlayMediaEntity](#onplaymediaentity)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offPlayMediaEntity();
+  }
+}
+```
 
 ## onFavoriteMediaEntity
 
@@ -2791,13 +2930,6 @@ export class TemplateManager {
     }
 
     /**
-     * 注销监听。
-     */
-    public unregisterListener() {
-        this.template?.offFavoriteMediaEntity();
-    }
-
-    /**
      * 模拟操作结果。
      *
      * @returns 操作结果。
@@ -2809,8 +2941,8 @@ export class TemplateManager {
         return operResult;
     };
 }
-
 ```
+
 ## offFavoriteMediaEntity
 
 offFavoriteMediaEntity(callback?: FavoriteMediaEntityEvent): void
@@ -2839,7 +2971,20 @@ offFavoriteMediaEntity(callback?: FavoriteMediaEntityEvent): void
 
 **示例：**
 
-请参考[onFavoriteMediaEntity](#onfavoritemediaentity)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offFavoriteMediaEntity();
+  }
+}
+```
 
 ## setUserInfo
 
@@ -3301,7 +3446,30 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
 **示例：**
 
-请参考[onDownloadMediaEntity](#ondownloadmediaentity)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 下载状态，进度刷新。
+   */
+  public setDownloadMediaEntityStatus(mediaEntity: avMusicTemplate.MediaEntity) {
+    this.template?.setDownloadMediaEntityStatus(mediaEntity);
+  };
+
+  /**
+   * 模拟下载过程。
+   *
+   * @param mediaEntity 媒体实体。
+   */
+  private async downloadMediaEntity(mediaEntity: avMusicTemplate.MediaEntity) {
+    // 下载完成之后。
+    this.setDownloadMediaEntityStatus(mediaEntity);
+  };
+}
+```
 
 ## setCustomElements
 
