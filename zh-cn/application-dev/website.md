@@ -2386,10 +2386,8 @@
             - [AbilityStartCallback](reference/apis-ability-kit/js-apis-inner-application-abilityStartCallback.md)
             - [AbilityStateData](reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md)
             - [AgentCard](reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)
-            - [AgentExtensionConnectCallback](reference/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback.md)
             - [AgentExtensionContext (智能体扩展组件上下文)](reference/apis-ability-kit/js-apis-inner-application-agentExtensionContext.md)
             - [AgentHostProxy](reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)
-            - [AgentProxy](reference/apis-ability-kit/js-apis-inner-application-agentProxy.md)
             - [ApplicationContext (应用上下文)](reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)
             - [ApplicationStateObserver](reference/apis-ability-kit/js-apis-inner-application-applicationStateObserver.md)
             - [AppServiceExtensionContext (应用后台服务扩展组件上下文)](reference/apis-ability-kit/js-apis-inner-application-appServiceExtensionContext.md)
@@ -2449,6 +2447,8 @@
             - [UIExtensionContext(系统接口)](reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext-sys.md)
             - [ViewData(系统接口)](reference/apis-ability-kit/js-apis-inner-application-viewData-sys.md)
             - [AutoFillRect(系统接口)](reference/apis-ability-kit/js-apis-inner-application-autoFillRect-sys.md)
+            - [AgentExtensionConnectCallback（系统接口）](reference/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md)
+            - [AgentProxy（系统接口）](reference/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)
             <!--DelEnd-->
           - bundleManager<!--bundlemanager-->
             - [abilityInfo](reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md)
