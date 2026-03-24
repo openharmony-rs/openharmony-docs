@@ -27,9 +27,6 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值   | 说明       |
 | ---------- | ---- | ---------- |
