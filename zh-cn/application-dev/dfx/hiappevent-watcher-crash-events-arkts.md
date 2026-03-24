@@ -78,7 +78,7 @@
         }
       };
       // 开发者可以设置崩溃日志配置参数
-      hiAppEvent.setEventPolicy(switchLogPolicy).then(() => {
+      hiAppEvent.configEventPolicy(switchLogPolicy).then(() => {
         hilog.info(0x0000, 'testTag', `HiAppEvent success to config event policy.`);
       }).catch((err: BusinessError) => {
         hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
