@@ -232,29 +232,33 @@ import { window } from '@kit.ArkUI';
 
 ## WindowAnchorInfo<sup>24+</sup>
 
-小艺协同时，用于维持与目标窗口相对位置的锚点参数
+用于保持与目标窗口相对位置的窗口锚点参数配置。
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 | 名称             | 类型                                                                     | 只读 | 可选 | 说明                                                         |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| anchorType             | [WindowAnchor](arkts-apis-window-e.md#windowAnchor20)                 | 否   | 否   | 用于保持相对位置的锚点类型|
-| offsetX             |     number           | 否   | 是   | 用于设置两个窗口锚点之间的X轴偏移量|
-| offsetY             |     number           | 否   | 是   | 用于设置两个窗口锚点之间的y轴偏移量|
+| anchorType             | [WindowAnchor](arkts-apis-window-e.md#windowanchor20)                 | 否   | 否   | 用于保持相对位置的锚点类型。|
+| offsetX             |     number           | 否   | 是   | 一级子窗锚点与主窗锚点位置的X轴偏移量，单位为px。仅支持整数输入，默认值为0。|
+| offsetY             |     number           | 否   | 是   | 一级子窗锚点与主窗锚点位置的y轴偏移量，单位为px。仅支持整数输入，默认值为0。|
 
 ## SubWindowAttachOptions<sup>24+</sup>
 
-小艺协同时，用于描述子窗口布局附加操作的参数
+子窗口与主窗口保持相对位置不变时的参数。
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 | 名称             | 类型                                                                     | 只读 | 可选 | 说明                                                         |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| currentLayoutMode             | string               | 否   | 是   | 子窗当前模式|
-| parentWindowSizeChangecallback             |     Callback&lt;[Size](arkts-apis-window-i.md#size7)&gt;           | 否   | 否   | 父窗大小变化的回调|
-| parentWindowStatusChangecallback             |     Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt;           | 否   | 否   | 父窗模式变化的回调|
+| currentLayoutMode             | string               | 否   | 是   | 子窗当前模式。若不传，则默认为空字符串。|
+| parentWindowSizeChangecallback             |     Callback&lt;[Size](arkts-apis-window-i.md#size7)&gt;           | 否   | 是   | 父窗大小变化的回调。默认不传，无法收到父窗大小变化通知。|
+| parentWindowStatusChangecallback             |     Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt;           | 否   | 是   | 默认不传，无法收到父窗模式变化通知。|
 
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
@@ -591,123 +595,6 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to set window layout mode. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
-## window.attachLayoutToParentWindow<sup>9+</sup>
-attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWindowAttachOptions): Promise&lt;void&gt;
-
-设置一级子窗与主窗保持相对位置不变。使用Promise异步回调
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明           |
-| -------- | ------------------------- | ---- | -------------- |
-| anchorInfo       | [WindowAnchorInfo](#windowAnchorInfo24)                    | 是   | 设置子窗的锚点参数 |
-| attachOptions       | [SubWindowAttachOptions](#windowlayoutmode9)                    | 是   | 设置子窗布局的附加参数 |
-
-**返回值：**
-
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------------------- |
-| 801     | Capability not supported. Function attachLayoutToParentWindow can not work correctly due to limited device capabilities.|
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
-| 1300003 | This window manager service works abnormally.|
-| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. The current window's parent window is not a main window; 3. Only level-1 subwindows are supported.|
-| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is maximized.|
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let anchorInfo : window.WindowAnchorInfo = {
-    anchorType: window.WindowAnchor.TOP_START,
-    offsetX: 0,
-    offsetY: 0
-  };
-  let attachOptions: window.SubWindowAttachOptions = {
-    currentLayoutMode: "layoutMode",
-    parentWindowSizeChangeCallback:(data: Size) => {
-      console.info(`Succeeded accept parentWindow size change, width: ${data.width}, height: ${data.height}`);
-    },
-    parentWindowStatusChangeCallback:(type: WindowStatusType) => {
-      console.info(`Succeeded accept parentWindow status change, statueType: ${type}`);
-    }
-  }
-  let promise = window.attachLayoutToParentWindow(anchorInfo, attachOptions);
-  promise.then(() => {
-    console.info('Succeeded in attach to the main window');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed attach to the main window. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed attach to the main window. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-## window.detachLayoutToParentWindow<sup>9+</sup>
-detachLayoutToParentWindow(): Promise&lt;void&gt;
-
-设置一级子窗解除与主窗保持相对位置不变。使用Promise异步回调
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明           |
-| -------- | ------------------------- | ---- | -------------- |
-| anchorInfo       | [WindowAnchorInfo](#windowlayoutmode9)                    | 是   | 设置子窗的锚点参数 |
-| attachOptions       | [SubWindowAttachOptions](#windowlayoutmode9)                    | 是   | 设置子窗布局的附加参数 |
-
-**返回值：**
-
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------------------- |
-| 801     | Capability not supported. Function attachLayoutToParentWindow can not work correctly due to limited device capabilities.|
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
-| 1300003 | This window manager service works abnormally.|
-| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. The current window's parent window is not a main window; 3. Only level-1 subwindows are supported.|
-| 1300010 | The operation in the current window status is invalid. Possible cause:  Possible cause: The subwindow is not attached to the main window.|
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let promise = window.detachLayoutToParentWindow();
-  promise.then(() => {
-    console.info('Succeeded detach to the main window');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed detach to the main window. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed detach to the main window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -1761,6 +1648,168 @@ export default class EntryAbility extends UIAbility {
       } catch (exception) {
         console.error(`Failed to set the window mode. Cause code: ${exception.code}, message: ${exception.message}`);
       }
+    });
+  }
+}
+```
+
+## attachLayoutToParentWindow<sup>24+</sup>
+attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWindowAttachOptions): Promise&lt;void&gt;
+
+设置一级子窗与主窗保持相对位置不变。使用Promise异步回调。
+
+该相对位置通过一级子窗与主窗之间的锚点的偏移量表示，子窗和主窗使用的窗口锚点相同。
+
+1、只支持非最大化一级子窗使用该接口。
+
+2、当子窗调用该接口后，立即使其显示位置跟随主窗并保持相对位置不变，除非调用[detachLayoutToParentWindow()](#detachlayouttoparentwindow24)接口解绑，否则效果将持续。
+
+3、当子窗调用该接口后，再调用[moveWindowTo()](arkts-apis-window-window#movewindowto9)、[maximize()](arkts-apis-window-window#maximize12)修改窗口位置或大小的接口将不生效。
+
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在支持自由窗口的设备上可调用且不报错（当设备处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时正常调用并生效；当设备不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时调用此接口不生效不报错，设备切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效），在其他设备上调用返回801错误码。
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明           |
+| -------- | ------------------------- | ---- | -------------- |
+| anchorInfo       | [WindowAnchorInfo](#windowanchorinfo24)                    | 否   | 一级子窗与主窗保持相对位置不变时的锚点参数。若不传，默认逻辑参考[WindowAnchorInfo](#windowanchorinfo24)。 |
+| attachOptions       | [SubWindowAttachOptions](#subwindowattachoptions24)                    | 否   | 设置子窗布局的附加参数。若不传，默认逻辑参考[SubWindowAttachOptions](#subwindowattachoptions24)。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function attachLayoutToParentWindow can not work correctly due to limited device capabilities.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
+| 1300003 | This window manager service works abnormally.|
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. The current window's parent window is not a main window; 3. Only level-1 subwindows are supported.|
+| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is maximized.|
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (loadError: BusinessError) => {
+      if (loadError.code) {
+        console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
+        return;
+      }
+      console.info("Succeeded in loading the content.");
+      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+        if (subWindow == null) {
+          console.error("Failed to create the subWindow. Cause: The data is empty");
+          return;
+        }
+        let anchorInfo : window.WindowAnchorInfo = {
+          anchorType: window.WindowAnchor.TOP_START,
+          offsetX: 0,
+          offsetY: 0
+        };
+        let attachOptions: window.SubWindowAttachOptions = {
+          parentWindowSizeChangeCallback:(data: Size) => {
+            console.info(`Successfully accepted parentWindow size change, width: ${data.width}, height: ${data.height}`);
+          },
+          parentWindowStatusChangeCallback:(type: WindowStatusType) => {
+            console.info(`Successfully accepted parentWindow status change, statusType: ${type}`);
+          }
+        }
+        subWindow.attachLayoutToParentWindow(anchorInfo, attachOptions).then(() => {
+          console.info("Succeeded in attaching to the main window");
+        }).catch((error: BusinessError) => {
+          console.error(`attachLayoutToParentWindow failed. ${error.code} ${error.message}`);
+        })
+      }).catch((error: BusinessError) => {
+        console.error(`createSubWindow failed. ${error.code} ${error.message}`);
+      })
+    });
+  }
+}
+```
+## detachLayoutToParentWindow<sup>24+</sup>
+detachLayoutToParentWindow(): Promise&lt;void&gt;
+
+解除一级子窗与主窗保持相对位置不变的协同关系。使用Promise异步回调。
+
+1、子窗调用接口时需保持子窗处于协同状态。
+
+2、调用接口解除协同后，子窗将保持协同时的位置，可对子窗进行拖拽、拖动修改子窗大小、位置。
+
+3、解除协同后，调用[moveWindowTo()](arkts-apis-window-window#movewindowto9)、[maximize()](arkts-apis-window-window#maximize12)修改窗口位置或大小的接口将生效。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function detachLayoutToParentWindow can not work correctly due to limited device capabilities.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
+| 1300003 | This window manager service works abnormally.|
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. Only level-1 subwindows are supported.|
+| 1300010 | The operation in the current window status is invalid. Possible cause:  Possible cause: The subwindow is not attached to the main window.|
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (loadError: BusinessError) => {
+      if (loadError.code) {
+        console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
+        return;
+      }
+      console.info("Succeeded in loading the content.");
+      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+        if (subWindow == null) {
+          console.error("Failed to create the subWindow. Cause: The data is empty");
+          return;
+        }
+        subWindow.detachLayoutToParentWindow().then(() => {
+          console.info("Succeeded in detaching to the main window");
+        }).catch((error: BusinessError) => {
+          console.error(`detachLayoutToParentWindow failed. ${error.code} ${error.message}`);
+        })
+      }).catch((error: BusinessError) => {
+        console.error(`createSubWindow failed. ${error.code} ${error.message}`);
+      })
     });
   }
 }
