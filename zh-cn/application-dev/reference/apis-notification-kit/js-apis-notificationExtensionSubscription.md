@@ -106,7 +106,7 @@ try {
 }
 ```
 
-## notificationExtensionSubscription.openSubscriptionSettingsWithResult<sup>26+</sup>
+## notificationExtensionSubscription.openSubscriptionSettingsWithResult
 
 openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGrantSetting\>
 
@@ -118,9 +118,9 @@ openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGran
 
 **需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
 
-**ArkTS-Dyn起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -132,7 +132,7 @@ openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGran
 
 | 类型     | 说明 | 
 | ------- |--|
-| Promise\<[UserGrantSetting](#usergrantsetting26)\> | Promise对象，返回用户设置的授权的结果。 | 
+| Promise\<[UserGrantSetting](#usergrantsetting)\> | Promise对象，返回用户设置的授权的结果。 |
 
 **错误码：**
 
@@ -545,7 +545,7 @@ type GrantedBundleInfo = _GrantedBundleInfo
 | --- | --- |
 | [_GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | 授权应用的包信息。 |
 
-## UserGrantSetting<sup>26+</sup>
+## UserGrantSetting
  	 
 type UserGrantSetting = _UserGrantSetting
 
@@ -555,10 +555,10 @@ type UserGrantSetting = _UserGrantSetting
 
 **系统能力**： SystemCapability.Notification.Notification
 
-**ArkTS-Dyn起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 类型 | 说明 |
 | --- | --- |
-| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting26) | 用户授权的设置信息。 |
+| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting) | 用户授权的设置信息。 |

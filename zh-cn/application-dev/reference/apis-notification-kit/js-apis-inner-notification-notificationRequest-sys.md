@@ -30,7 +30,7 @@
 | notDistributed<sup>18+</sup> | boolean | 否 | 是 | 通知是否不进行全场景跨设备协同显示，默认为false。<br/>**说明**:<br/>该字段与forceDistributed字段互斥，当两者同时为true时，仅notDistributed字段生效。<br/>-&nbsp;设置为true时：通知仅在本设备上显示。<br/>-&nbsp;设置为false时：通知将在所有协同设备上显示。<br>**系统接口**: 此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23|
 | forceDistributed<sup>18+</sup> | boolean | 否 | 是 | 通知是否强制进行全场景跨设备协同显示，默认为false。<br/>**说明**:<br/>仅当应用在跨设备协同管控名单中且notDistributed为false时，该字段才会生效。通过读取notification_config.json文件（文件配置路径见：[notification_config_parse.h](https://gitcode.com/openharmony/notification_distributed_notification_service/blob/master/services/ans/include/notification_config_parse.h) 中的NOTIFICATION_CONFIG_FILE属性）中的collaborationFilter字段，查看是否包含应用的UID或包名。如果包含，说明是在应用跨设备协同管控名单中。<br>-&nbsp;设置为true时：通知将在所有协同设备上显示。<br/>-&nbsp;设置为false时：通知将按照协同管控名单显示。<br>**系统接口**: 此接口为系统接口。<br/> **ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23|
 | extendInfo<sup>20+</sup> | ArkTS-Dyn: Record<string, Object><br/>ArkTS-Sta: Record<string, RecordData>| 否 | 是 | 系统应用发布通知时的自定义扩展参数。<br>**系统接口**: 此接口为系统接口。<br/> **ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
-| groupInfo<sup>26+</sup> | [GroupInfo](#groupinfo26) | 否 | 是 | 组通知定制信息。默认为空。<br>**模型约束**: 此接口仅可在Stage模型下使用。<br>**系统接口**: 此接口为系统接口。<br/> **ArkTS-Dyn起始版本**：26<br/>**ArkTS-Sta起始版本**：26 |
+| groupInfo | [GroupInfo](#groupinfo) | 否 | 是 | 组通知定制信息。默认为空。<br>**模型约束**: 此接口仅可在Stage模型下使用。<br>**系统接口**: 此接口为系统接口。<br/> **ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
 
 ## DistributedOptions<sup>8+</sup>
 
@@ -194,7 +194,7 @@
 | condition | [Geofence](#geofence23) | 否 | 否 | 条件具体描述。 |
 | displayTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 条件触发实况的展示时间，单位：秒，取值范围：[15, 1800]，默认值为900。 |
 
-## GroupInfo<sup>26+</sup>
+## GroupInfo
 
 组通知信息。
 
@@ -204,9 +204,9 @@
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本**：26
+**ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTS-Sta起始版本**：26
+**ArkTS-Sta起始版本**：26.0.0
 
 | 名称                 | 类型                 | 只读 | 可选 | 说明                                     |
 | -------------------- | -------------------- | ---- | ---- | ---------------------------------------- |
