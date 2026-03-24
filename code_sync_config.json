@@ -12841,24 +12841,24 @@
 						"start_line":212
 					},
 					{
-						"end_line":217,
-						"name":"remove_node_evect_receiver",
-						"start_line":215
-					},
-					{
 						"end_line":180,
 						"name":"register_global_event",
 						"start_line":112
 					},
 					{
-						"end_line":211,
-						"name":"unregister_node_event_receicer",
-						"start_line":209
-					},
-					{
 						"end_line":87,
 						"name":"shade_change_event",
 						"start_line":58
+					},
+					{
+						"end_line":218,
+						"name":"remove_node_event_receiver",
+						"start_line":216
+					},
+					{
+						"end_line":212,
+						"name":"unregister_node_event_receiver",
+						"start_line":210
 					}
 				]
 			},
