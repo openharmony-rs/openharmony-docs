@@ -17,7 +17,7 @@ appRecovery模块提供了应用在故障状态下的恢复能力。
 >
 > API10支持进程中包含多个Ability的场景。
 >
-> API24支持CPP_CRASH时重启。
+> API24支持发生CPP_CRASH时应用恢复。
 
 ## 导入模块
 ```ts
