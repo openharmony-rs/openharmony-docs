@@ -662,6 +662,7 @@
     - [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md)
     - [ArkUI_TextChangeEvent](capi-arkui-nativemodule-arkui-textchangeevent.md)
     - [ArkUI_NativeNodeAPI_1](capi-arkui-nativemodule-arkui-nativenodeapi-1.md)
+    - [OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md)
     - [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md)
     - [ArkUI_NodeAdapter*](capi-arkui-nativemodule-arkui-nodeadapter8h.md)
     - [ArkUI_NodeAdapterEvent](capi-arkui-nativemodule-arkui-nodeadapterevent.md)

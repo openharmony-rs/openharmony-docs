@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从版本26.0.0开始，算法库支持RC4对称密钥加解密。
+从API版本26.0.0开始，算法库支持RC4对称密钥加解密。
 
 对应的算法规格请参见[对称密钥加解密算法规格：RC4](crypto-sym-encrypt-decrypt-spec.md#rc4)。
 

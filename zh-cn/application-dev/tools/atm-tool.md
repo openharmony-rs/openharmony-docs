@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-Access Token Manager (程序访问控制管理工具，简称atm工具)，是用于查询<!--Del-->或设置<!--DelEnd-->应用进程的权限、使用类型等信息的工具，为开发者提供了根据tokenid、包名、进程名等信息进行访问控制管理的能力。
+Access Token Manager (程序访问控制管理工具，简称atm工具)，是用于查询<!--Del-->或设置<!--DelEnd-->应用进程的权限、使用类型等信息的工具，为开发者提供了根据tokenId、包名、进程名等信息进行访问控制管理的能力。
 
 ## 环境说明
 在使用本工具前，开发者需要先获取[hdc工具](../dfx/hdc.md)，执行hdc shell。
@@ -40,8 +40,8 @@ atm perm [-h] [-g -i <token-id> -p <permission-name>] [-c -i <token-id> -p <perm
 | 参数                                               | 参数说明                  | 
 | -------------------------------------------------- | ---------------------- | 
 | -h                                        | 帮助信息。atm perm支持的命令集合。 |
-| -g&nbsp;-i \<token-id\>&nbsp;-p \<permission-name\> | -g、-i、-p均为必选参数，通过应用进程的tokenid授予指定权限。返回是否成功。    | 
-| -c&nbsp;-i \<token-id\>&nbsp;-p \<permission-name\> | -c、-i、-p均为必选参数，通过应用进程的tokenid取消指定权限。返回是否成功。    | 
+| -g&nbsp;-i \<token-id\>&nbsp;-p \<permission-name\> | -g、-i、-p均为必选参数，通过应用进程的tokenId授予指定权限。返回是否成功。    | 
+| -c&nbsp;-i \<token-id\>&nbsp;-p \<permission-name\> | -c、-i、-p均为必选参数，通过应用进程的tokenId取消指定权限。返回是否成功。    | 
 
 示例：
 
@@ -116,26 +116,27 @@ atm toggle -u -o -i 0
 
 <!--RP1-->
 ```bash
-atm dump [-h] [-t [-i <token-id>] [-b <bundle-name>] [-n <process-name>]] [-r [-i <token-id>] [-p <permission-name>]] [-v [-i <token-id>] [-p <permission-name>]]
+atm dump [-h] [-t [-i <token-id>] [-b <bundle-name>] [-n <process-name>] [-p <permission-name>]] [-r [-i <token-id>] [-p <permission-name>]] [-v [-i <token-id>] [-p <permission-name>]]
 ```
 <!--RP1End-->
 
-下表所列命令中，-t<!--Del-->、-r、-v<!--DelEnd-->为必选参数，-i、-b、-n、-p为可选参数。<!--Del-->对atm dump -r和atm dump -v命令，-i和-p参数可以组合使用；<!--DelEnd-->对atm dump -t命令，-i、-b、-n参数只能单独使用。
+下表所列命令中，-t<!--Del-->、-r、-v<!--DelEnd-->为必选参数，-i、-b、-n、-p为可选参数。<!--Del-->对atm dump -r和atm dump -v命令，-i和-p参数可以组合使用；<!--DelEnd-->对atm dump -t命令，-i、-b、-n、-p参数只能单独使用。
 
 | 参数                                          | 参数说明                                                 | 
 | ----------------------------------------------- | ---------------------------------------------------- | 
 | -d                                     | 必选参数，查询系统中所有的权限定义。                               | 
 | -d&nbsp;-p \<permission-name\>              | 可选参数，通过权限名，查询权限定义。                              | 
 | -h                                     | 帮助信息。                              | 
-| -t                                     | 必选参数，查询系统中所有应用进程信息。                             | 
-| -t&nbsp;-i \<token-id\>                     | 可选参数，通过应用进程的tokenid，查询该应用的基本信息以及对应的[权限信息](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。             | 
+| -t                                     | 必选参数，查询系统中所有进程的tokenId。                             | 
+| -t&nbsp;-i \<token-id\>                     | 可选参数，通过进程的tokenId，查询该进程的基本信息以及对应的[权限信息](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。             | 
 | -t&nbsp;-b \<bundle-name\>                  |  可选参数，通过应用进程的包名bundle-name，查询该应用的基本信息以及对应的[权限信息](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。     | 
-| -t&nbsp;-n \<process-name\>                 |  可选参数，通过应用进程的进程名process-name，查询该应用的基本信息以及对应的[权限信息](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。  |
+| -t&nbsp;-n \<process-name\>                 |  可选参数，通过进程名process-name，查询该进程的基本信息以及对应的[权限信息](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。  |
+| -t&nbsp;-p \<permission-name\>                 |  可选参数，通过权限名，查询申请该权限的应用进程的tokenId。<br>**说明**：从版本26.0.0开始，支持该参数。  |
 | <!--DelRow-->-r                        |  必选参数，查询系统内的所有[权限使用记录](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。                           | 
-| <!--DelRow-->-r&nbsp;-i \<token-id\>        | 可选参数，通过应用进程的tokenid，查询该应用的[权限使用记录](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。        | 
+| <!--DelRow-->-r&nbsp;-i \<token-id\>        | 可选参数，通过应用进程的tokenId，查询该应用的[权限使用记录](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。        | 
 | <!--DelRow-->-r&nbsp;-p \<permission-name\> | 可选参数，通过权限名，查询该权限的[使用记录](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。                        |
 | <!--DelRow-->-v                                     | 必选参数，查询系统中所有应用进程的权限使用类型。                    | 
-| <!--DelRow-->-v&nbsp;-i \<token-id\>                     | 可选参数，通过应用进程的tokenid，查询该应用的权限使用类型。         | 
+| <!--DelRow-->-v&nbsp;-i \<token-id\>                     | 可选参数，通过应用进程的tokenId，查询该应用的权限使用类型。         | 
 | <!--DelRow-->-v&nbsp;-p \<permission-name\>              | 可选参数，通过权限名，查询该权限的使用类型。                        | 
 
 示例：
@@ -160,14 +161,14 @@ atm dump -d -p *********
 #显示atm dump的帮助信息
 atm dump -h
 
-#查询系统中所有应用进程的tokenid和包名
+#查询系统中所有进程的tokenId
 atm dump -t
 
-#按tokenid查询权限信息
+#按tokenId查询权限信息
 atm dump -t -i *********
 # 执行结果
 # {
-#   "tokenID": 672078897,
+#   "tokenId": 672078897,
 #   "processName": "samgr",
 #   "apl": 2,
 #   "permStateList": [
@@ -183,7 +184,7 @@ atm dump -t -i *********
 atm dump -t -b ohos.telephony.resources
 # 执行结果
 # {
-#   "tokenID": 537280686,
+#   "tokenId": 537280686,
 #   "tokenAttr": 1,
 #   "ver": 1,
 #   "userId": 100,
@@ -201,6 +202,15 @@ atm dump -t -b ohos.telephony.resources
 #   ]
 # }
 
+#按权限名查询申请该权限的所有应用进程的tokenId和包名
+atm dump -t -p ohos.permission.CAMERA
+# 执行结果
+# Permission: ohos.permission.CAMERA
+# Total Tokens: 1
+
+# 537538306: com.ohos.camera
+
+
 #按进程名查询权限信息
 atm dump -t -n *********
 ```
@@ -216,13 +226,13 @@ atm dump -v
 #   "usedType": 0,
 # }
 
-#按应用tokenid查询权限使用类型
+#按应用tokenId查询权限使用类型
 atm dump -v -i *********
 
 #按权限名查询权限使用类型
 atm dump -v -p ohos.permission.CAMERA
 
-#按应用tokenid和权限名查询权限使用类型
+#按应用tokenId和权限名查询权限使用类型
 atm dump -v -i ********* -p ohos.permission.CAMERA
 
 #查询系统内的所有权限使用记录
@@ -263,13 +273,13 @@ atm dump -r
 #   ]
 # }
 
-#按应用tokenid查询权限使用记录
+#按应用tokenId查询权限使用记录
 atm dump -r -i *********
 
 #按权限名查询权限使用记录
 atm dump -r -p ohos.permission.CAMERA
 
-#按应用tokenid和权限名查询权限使用记录
+#按应用tokenId和权限名查询权限使用记录
 atm dump -r -i ********* -p ohos.permission.CAMERA
 ```
 <!--DelEnd-->

@@ -47,13 +47,13 @@ Obtains the area where this window cannot be displayed, for example, the system 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type |[window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | Yes| Type of the area.|
+| type |[window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | Yes| Type of the avoidance area.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-|[window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | Area where the window cannot be displayed.|
+|[window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | Avoidance area for the content of the host window.|
 
 **Error codes**
 
@@ -84,7 +84,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaInfo&gt;): void
 
-Subscribes to the event indicating changes to the area where the window cannot be displayed.
+Subscribes to events of system avoidance area changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,7 +95,7 @@ Subscribes to the event indicating changes to the area where the window cannot b
 | Name| Type| Mandatory| Description|
 | ------ | ---- | ---- | ---- |
 | type   | string | Yes| Event type. The value is fixed at **'avoidAreaChange'**, indicating the event of changes to the area where the window cannot be displayed.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | Yes| Callback used to return the area information.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | Yes| Callback function that receives the information about the current avoidance area.|
 
 **Error codes**
 
@@ -127,7 +127,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
-Unsubscribes from the event indicating changes to the area where the window cannot be displayed.
+Unsubscribes from events of system avoidance area changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -221,7 +221,7 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 | Name  | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
 | type     | string                | Yes  | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change events.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, all subscriptions to the specified event are canceled.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 
@@ -363,7 +363,7 @@ Creates a subwindow for this window proxy. This API uses a promise to return the
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). and [Window Error Codes](errorcode-window.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
 | ID| Error Message|
 | ------- | ------------------------------ |
@@ -578,7 +578,7 @@ Enumerates event types.
 
 ## AvoidAreaInfo
 
-Describes the information about the area where the window cannot be displayed.
+Represents the information about the avoidance area of the window.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -586,8 +586,8 @@ Describes the information about the area where the window cannot be displayed.
 
 | Name| Type                | Read-Only| Optional| Description       |
 | ------ | -------------------- | ----- | ---- | ------------------ |
-| type   | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | No| No| Type of the area where the window cannot be displayed.|
-| area   | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7)     | No| No| Area where the window cannot be displayed.|
+| type   | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | No| No| Type of the avoidance area of the window.|
+| area   | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7)     | No| No| Avoidance area for the content of the window.|
 
 ## WindowProxyProperties<sup>14+</sup>
 
@@ -746,7 +746,7 @@ This example shows how to use all the available APIs in the [EmbeddedUIExtension
         })
         Button("Obtain Avoid Area Info").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let avoidArea: window.AvoidArea | undefined = this.extensionWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-          console.info(`System avoid area: ${JSON.stringify(avoidArea)}`);
+          console.info(`Avoidance area: ${JSON.stringify(avoidArea)}`);
         })
         Button("Create Subwindow").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let subWindowOpts: window.SubWindowOptions = {

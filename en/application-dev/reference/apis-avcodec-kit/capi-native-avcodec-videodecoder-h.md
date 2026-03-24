@@ -252,12 +252,11 @@ Parameter verification rules are as follows:
 | OH_MD_KEY_HEIGHT     | AV_ERR_OK       | AV_ERR_INVALID_VAL       | AV_ERR_INVALID_VAL     |
 | OH_MD_KEY_PIXEL_FORMAT [OH_AVPixelFormat](capi-native-avformat-h.md#oh_avpixelformat)   | AV_ERR_OK       | AV_ERR_UNSUPPORT       | AV_ERR_OK      |
 | OH_MD_KEY_FRAME_RATE | AV_ERR_OK       | AV_ERR_INVALID_VAL       | AV_ERR_OK     |
-| OH_MD_KEY_ROTATION [OH_MD_KEY_ROTATION](capi-native-avcodec-base-h.md#variables)| AV_ERR_OK       | AV_ERR_INVALID_VAL       | AV_ERR_OK      |
+| [OH_MD_KEY_ROTATION](capi-native-avcodec-base-h.md#variables)| AV_ERR_OK       | AV_ERR_INVALID_VAL       | AV_ERR_OK      |
 
 
-> **NOTE**
->
-> You are advised to set the parameters based on the maximum resolution supported by the instance. Otherwise, an exception may occur when streams with the resolution higher than the maximum resolution are to be decoded. This setting directly affects the memory usage of the application.
+>**NOTE**
+>You are advised to set the parameters based on the maximum resolution supported by the instance. Otherwise, an exception may occur when streams with the resolution higher than the maximum resolution are to be decoded. This setting directly affects the memory usage of the application.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoDecoder
 

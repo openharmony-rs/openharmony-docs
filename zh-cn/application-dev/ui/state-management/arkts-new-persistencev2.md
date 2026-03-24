@@ -405,6 +405,9 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 12、globalConnect仅支持设置EL1-EL5加密级别，否则会抛出运行时异常，从API version 23开始，将返回错误码[140106](../../reference/apis-arkui/errorcode-stateManagement.md#140106-使用persistencev2存储数据到不支持的加密级别)，示例见[使用globalConnect存储数据](#使用globalconnect存储数据)。
 
+13、当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。在API 版本 26.0.0以前，开发者无法获取旧的序列化数据，进而无法判断自己的数据结构有哪些改变。
+- 从API 版本 26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyonerror获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
+
 ## globalConnect支持的类型
 
 ### globalConnect顶层持久化数据类型及非顶层数据类型
@@ -1068,6 +1071,85 @@ struct Page1 {
 *   开发者直接启动newModule，分别修改globalConnect1和connect2绑定的变量，例如将childId都改成5。
 * 应用退出并清空后台，启动模块entry，通过跳转按键启动newModule，会发现globalConnect1值为5，而connect2值为0未修改。
 * globalConnect为应用级别存储，对于一个key，整个应用在对应加密分区只有一份存储路径；connect为module级别的存储路径，会因为module的启动方式不同而在各自的加密分区对应不同的存储路径。
+
+### 通过notifyOnError获取旧的序列化数据
+
+当存储数据的结构与当前数据的结构不同时，可能会导致反序列化失败。从API 版本 26.0.0开始，开发者可通过向notifyOnError的入参回调中加入oldValue参数来获取存于磁盘的旧的序列化数据，从而直观感知到数据结构的差异。
+
+<!-- @[persistence_v2_notifyOnError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2NotifyOnError.ets) -->
+
+``` TypeScript
+import { PersistenceV2, Type } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+// 接受序列化失败的回调
+PersistenceV2.notifyOnError((key: string, reason: string, msg: string, oldValue?: string) => {
+  hilog.error(DOMAIN, 'testTag', '%{public}s',
+    `error key: ${key}, reason: ${reason}, message: ${msg}, oldValue: ${oldValue}`);
+});
+
+@ObservedV2
+class SampleInfo {
+  @Trace public info: boolean = true;
+  @Trace public propertyName: string = 'Hello';
+}
+
+@ObservedV2
+class SampleChild {
+  // 起始时childInfo类型为SampleInfo，使用connect/globalConnect将其存储到磁盘
+  @Type(SampleInfo)
+  @Trace public childInfo: SampleInfo = new SampleInfo();
+  // 将childInfo类型切换为number，并重新运行
+  // @Trace public childInfo: number = 0;
+  public groupId: number = 1;
+}
+
+@ObservedV2
+export class Sample {
+  // 对于复杂对象需要@Type修饰，确保序列化成功
+  @Type(SampleChild)
+  @Trace public father: SampleChild = new SampleChild();
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local refresh: number = 0;
+  // 调用connect或globalConnect存储
+  @Local p: Sample = PersistenceV2.connect(Sample, 'connectSample', () => new Sample())!;
+  // @Local p: Sample = PersistenceV2.globalConnect({ type: Sample, key: 'connectSample', defaultCreator: () => new Sample() })!;
+
+  build() {
+    Column({ space: 5 }) {
+      // 显示数据
+      Text('Key connectSample: ' + this.p.father.groupId.toString())
+        .onClick(() => {
+          this.p.father.groupId += 1;
+        })
+        .fontSize(25)
+        .fontColor(Color.Red)
+
+      // save接口
+      // 未被@Trace装饰的变量需要借助状态变量refresh才能刷新
+      Text('save key connect3: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
+        .onClick(() => {
+          // 未被@Trace保存的对象无法自动存储，需要调用save存储
+          this.p.father.groupId += 1;
+          PersistenceV2.save('connectSample');
+          this.refresh += 1;
+        })
+        .fontSize(25)
+    }
+    .width('100%')
+  }
+}
+```
+起始时，SampleChild中的childInfo变量类型为SampleInfo，正常存储后，将childInfo变量的类型切换为number，并赋值为1，之后再次启动程序，此时会由于存储数据的结构与当前数据的结构不一致，导致数据反序列化失败。此时会通过notifyOnError中写入的回调，将磁盘中存储的旧的序列化数据打印出来。即在Error日志中显示：
+```text
+error key: connectSample, reason: serialization, message: TypeError: Receiver is not a JSObject, oldValue: {"father":{"childInfo":{"info":true,"propertyName":"Hello"},"groupId":1}}
+```
 
 ## 使用建议
 

@@ -1171,6 +1171,54 @@ notificationManager.getActiveNotifications().then((data: Array<notificationManag
 });
 ```
 
+## notificationManager.getNotificationParameters<sup>24+</sup>
+
+getNotificationParameters(id: number, label?: string): Promise\<NotificationParameters\>
+
+Obtains some information about the **wantAgent** field in [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1). This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Parameters**
+
+| Name | Type  | Mandatory| Description    |
+| ----- | ------ | ---- | -------- |
+| id    | number | Yes  | Notification ID.  |
+| label | string | No  | Notification label. This parameter is left empty by default.|
+
+**Return value**
+
+| Type                                                        | Description                                   |
+| ------------------------------------------------------------ | --------------------------------------- |
+| Promise\<[NotificationParameters](js-apis-inner-notification-notificationRequest.md#notificationparameters24)\> | Promise used to return some information about **wantAgent**.|
+
+**Error codes**
+
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.   |
+| 1600007  | The notification does not exist.    |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let id: number = 0;
+let label: string = "";
+notificationManager.getNotificationParameters(id, label).then((data: notificationManager.NotificationParameters) => {
+  console.info(`Succeeded in getting notification parameters, data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get notification parameters. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## notificationManager.cancelGroup
 
 cancelGroup(groupName: string, callback: AsyncCallback\<void\>): void
@@ -1352,7 +1400,7 @@ Requests notification to be enabled for this application. You can call this API 
 > **NOTE**
 >
 > - This API can be called only after the application UI is loaded (that is, [loadContent](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#loadcontent) is successfully called).
-> - When an application uses **requestEnableNotification()** to display a dialog box for notification authorization and the user rejects the authorization, the application cannot use this API to open the dialog box again. However, it can call [openNotificationSettings](#notificationmanageropennotificationsettings13) to open the notification management dialog box.
+> - When an application uses **requestEnableNotification()** to display a dialog box for notification authorization and the user rejects the authorization, the application cannot use this API to open the dialog box again. However, it can call [openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult26) to open the notification management dialog box.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1417,7 +1465,7 @@ Requests notification to be enabled for this application. You can call this API 
 > **NOTE**
 >
 > - This API can be called only after the application UI is loaded (that is, [loadContent](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#loadcontent) is successfully called).
-> - When an application uses **requestEnableNotification()** to display a dialog box for notification authorization and the user rejects the authorization, the application cannot use this API to open the dialog box again. However, it can call [openNotificationSettings](#notificationmanageropennotificationsettings13) to open the notification management dialog box.
+> - When an application uses **requestEnableNotification()** to display a dialog box for notification authorization and the user rejects the authorization, the application cannot use this API to open the dialog box again. However, it can call [openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult26) to open the notification management dialog box.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1705,6 +1753,66 @@ class MyAbility extends UIAbility {
 }
 ```
 
+## notificationManager.openNotificationSettingsWithResult<sup>26+</sup>
+
+openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<NotificationSetting\>
+
+Opens the notification settings page of the application, which is displayed in semi-modal mode and can be used to set the notification enabling and notification mode. This API uses a promise to return the result. When the semi-modal window is closed, the user-defined status is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.NotificationSettings
+
+**Parameters**
+
+| Name  | Type                    | Mandatory| Description                |
+| -------- | ------------------------ | ---- |--------------------|
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes  | Ability context bound to the notification settings page.|
+
+**Return value**
+
+| Type     | Description       | 
+|---------|-----------|
+| Promise\<[NotificationSetting](#notificationsetting20)\> | Promise used to return the result.| 
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                     |
+| 1600003  | Failed to connect to the service.          |
+| 1600018  | The notification settings window is already displayed.           |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class MyAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', `Failed to load the content. Cause: ${JSON.stringify(err) ?? ''}`);
+        return;
+      }
+      hilog.info(0x0000, 'testTag', `Succeeded in loading the content. Data: ${JSON.stringify(data) ?? ''}`);
+      notificationManager.openNotificationSettingsWithResult(this.context).then((data) => {
+        hilog.info(0x0000, 'testTag', `[ANS] openNotificationSettingsWithResult success, data: ${JSON.stringify(data)}`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `[ANS] openNotificationSettingsWithResult failed, code is ${err.code}, message is ${err.message}`);
+      });
+    });
+  }
+}
+```
+
 ## notificationManager.getNotificationSetting<sup>20+</sup>
 
 getNotificationSetting(): Promise\<NotificationSetting\>
@@ -1832,7 +1940,7 @@ Enumerates the notification slot types.
 
 ## NotificationSetting<sup>20+</sup>
 
-Describes notification settings, including whether to enable vibration and ringtone.
+Describes the setting status of the notification mode switch.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1840,6 +1948,10 @@ Describes notification settings, including whether to enable vibration and ringt
 | ---------------- | ------- | ---- | ---- | ------------------------------------------- |
 | vibrationEnabled | boolean | No  |  No | Whether to enable vibration.<br> - **true**: enabled.<br> - **false**: disable.|
 | soundEnabled     | boolean | No  |  No | Whether to enable ringtone.<br> - **true**: enabled.<br> - **false**: disable.|
+| lockScreenEnabled<sup>26+</sup>     | boolean | No  |  Yes | Whether to enable lock screen notification.<br> - **true**: enabled.<br> - **false**: disable.|
+| bannerEnabled<sup>26+</sup>     | boolean | No  |  Yes | Whether to enable banner notification.<br> - **true**: enabled.<br> - **false**: disable.|
+| badgeNumberEnabled<sup>26+</sup>     | boolean | No  |  Yes | Whether to enable the display of notification badges.<br> - **true**: enabled.<br> - **false**: disable.|
+| notificationEnabled<sup>26+</sup>     | boolean | No  |  Yes | Whether to enable the application notification.<br> - **true**: enabled.<br> - **false**: disable.|
 
 ## BundleOption
 

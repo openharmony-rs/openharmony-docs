@@ -87,6 +87,24 @@ Allows an application to interact across local accounts.
 
 **Changelog**: This permission is available only to system applications in API versions 7 to 13. From API version 14, it is available to normal enterprise applications.
 
+## ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+Allows an application to query the identifiers (such as names and IDs) of specified or all local accounts.
+
+With this permission, the application can query the identifiers (such as names and IDs) of the all local accounts in the system.
+Based on the obtained identities, the application can further access or manage the target local accounts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: General
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.GET_RUNNING_INFO
 
 Allows an application to obtain running status information of another application.

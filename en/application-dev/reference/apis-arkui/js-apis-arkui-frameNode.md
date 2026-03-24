@@ -1,9 +1,9 @@
 # FrameNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 **FrameNode** represents an entity node in the component tree. It can be used by a [NodeController](./js-apis-arkui-nodeController.md) to mount a [BuilderNode](./js-apis-arkui-builderNode.md) (that holds the FrameNode) to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) or mount a [RenderNode](./js-apis-arkui-renderNode.md) to another FrameNode. For best practices, see [Dynamic Component Creation: Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012).
@@ -185,7 +185,7 @@ struct Index {
 
 isModifiable(): boolean
 
-Checks whether the current FrameNode is modifiable.
+Checks whether this FrameNode is modifiable.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -195,7 +195,7 @@ Checks whether the current FrameNode is modifiable.
 
 | Type   | Description                                                                                                                                 |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| boolean | Whether the current FrameNode is modifiable.<br>The value **true** means that the FrameNode is modifiable, and **false** means the opposite.<br>Returns **false** if the node is a system component proxy node in a [custom component node](../../ui/arkts-user-defined-node.md#custom-component-node-framenode) or the node has been [disposed](#dispose12).<br>When **false** is returned, the current FrameNode does not support operations such as [appendChild](#appendchild12), [insertChildAfter](#insertchildafter12), [removeChild](#removechild12), [clearChildren](#clearchildren12), [createAnimation](#createanimation20), and [cancelAnimations](#cancelanimations20).|
+| boolean | Whether this FrameNode is modifiable.<br>The value **true** means that the FrameNode is modifiable, and **false** means the opposite.<br>Returns **false** if the node is a system component proxy node in a [custom component node](../../ui/arkts-user-defined-node.md#custom-component-node-framenode) or the node has been [disposed](#dispose12).<br>When **false** is returned, the current FrameNode does not support operations such as [appendChild](#appendchild12), [insertChildAfter](#insertchildafter12), [removeChild](#removechild12), [clearChildren](#clearchildren12), [createAnimation](#createanimation20), and [cancelAnimations](#cancelanimations20).|
 
 **Example**
 
@@ -1188,7 +1188,7 @@ See [Example of Node Operations](#example-of-node-operations).
 
 getId(): string
 
-Obtains the node ID set by the user (the [ID](./arkui-ts/ts-universal-attributes-component-id.md) set in the universal attributes).
+Obtains the node ID set by the user, which is the same as the value of the [component ID](./arkui-ts/ts-universal-attributes-component-id.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1198,7 +1198,7 @@ Obtains the node ID set by the user (the [ID](./arkui-ts/ts-universal-attributes
 
 | Type                                                          | Description                                                                 |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| string | Node ID set by the user (the [ID](./arkui-ts/ts-universal-attributes-component-id.md) set in the universal attributes).|
+| string | Node ID set by the user, which is the same as the value of the [component ID](./arkui-ts/ts-universal-attributes-component-id.md).|
 
 **Example**
 
@@ -4614,7 +4614,7 @@ See [Scroll Event Example](#scroll-event-example).
 
 bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll'): void
 
-Binds the [Scroller](arkui-ts/ts-container-scroll.md#scroller) to the [Scroll](#scroll12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds the [Scroller](arkui-ts/ts-container-scroll.md#scroller) to the [Scroll](#scroll12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -5449,7 +5449,7 @@ See the example for [createNode('List')](#createnodelist12).
 
 bindController(node: FrameNode, controller: Scroller, nodeType: 'List'): void
 
-Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [List](#list12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [List](#list12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -6118,7 +6118,7 @@ See the example for [createNode('WaterFlow')](#createnodewaterflow12).
 
 bindController(node: FrameNode, controller: Scroller, nodeType: 'WaterFlow'): void
 
-Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [WaterFlow](#waterflow12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [WaterFlow](#waterflow12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -6699,7 +6699,7 @@ See the example for [createNode('Grid')](#createnodegrid14).
 
 bindController(node: FrameNode, controller: Scroller, nodeType: 'Grid'): void
 
-Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [Grid](#grid14) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [Grid](#grid14) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

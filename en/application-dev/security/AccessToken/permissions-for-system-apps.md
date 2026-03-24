@@ -5598,3 +5598,103 @@ Allows a system application to connect to the Agent.
 **Supported devices**: general devices
 
 **Since**: 24
+
+### ohos.permission.READ_APP_PROTECTION_RECORD
+
+Allows a system application to read application protection records.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
+
+### ohos.permission.WRITE_APP_PROTECTION_RECORD
+
+Allows a system application to modify application protection records.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
+
+### ohos.permission.READ_SPAM_SHIELD_SETTING
+
+Allows a system application to read the spam shield settings.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Valid since**: 26.0.0
+
+### ohos.permission.WRITE_SPAM_SHIELD_SETTING
+
+Allows a system application to modify the spam shield settings.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Valid since**: 26.0.0
+
+## ohos.permission.EXEMPT_MOTION_SENSORS_RESTRICTION
+
+Allows an application to bypass sensor controls.
+
+With the permission, the application can always use sensors.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 24
+
+## ohos.permission.ENCRYPT_VOLUME_MANAGER
+ 	 
+Allows an application to call the API of storage manager for managing volume encryption.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
+
+**Since**: 24
+
+## ohos.permission.ODD_MANAGER
+
+Allows an application to call the API of storage manager for managing optical disc burning.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
+
+**Since**: 24

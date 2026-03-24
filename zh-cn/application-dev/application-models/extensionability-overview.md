@@ -62,6 +62,7 @@
 >
 > - ServiceExtensionAbility（仅系统应用涉及）、DataShareExtensionAbility（仅系统应用涉及）与所有UIAbility均运行在同一个独立进程（主进程）。
 > - UIExtensionAbility以及继承该类型的ExtensionAbility可以通过module.json5配置文件中的[extensionProcessMode](../quick-start/module-configuration-file.md#extensionabilities标签)字段，配置进程运行模式。
+> - AppServiceExtensionAbility可以通过module.json5配置文件中的[extensionProcessMode](../quick-start/module-configuration-file.md#extensionabilities标签)字段，配置进程运行模式。
 
 ## 访问指定类型的ExtensionAbility组件
 

@@ -29,7 +29,7 @@
 
 ## 开发指导
 
-详细的API说明请参考[API文档](../../reference/apis-avcodec-kit/capi-native-avmuxer-h.md)。
+详细的API说明请参考[native_avmuxer.h](../../reference/apis-avcodec-kit/capi-native-avmuxer-h.md)。
 
 > **说明：**
 >

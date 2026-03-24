@@ -7513,7 +7513,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption): Promise&lt;RequestResult&gt;
 
-以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则期约立即兑现，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则期约将在sendMessageRequest返回时兑现，回复内容在reply报文里。
+以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则期约立即兑现，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则期约将在sendMessageRequest返回时兑现，回复内容在reply报文里。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -7544,7 +7544,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): Promise&lt;SendRequestResult&gt;
 
-以同步或异步方式向对端进程发送MessageParcel消息。如果为选项设置了异步模式，则期约立即兑现，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则期约将在sendRequest返回时兑现，回复内容在reply报文里。
+以同步或异步方式向对端进程发送MessageParcel消息。如果为选项设置了异步模式，则期约立即兑现，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则期约将在sendRequest返回时兑现，回复内容在reply报文里。使用Promise异步回调。
 
 > **说明：**
 >
@@ -7891,7 +7891,7 @@ try {
 
 sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption): Promise&lt;RequestResult&gt;
 
-以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则期约立即兑现，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则期约将在sendMessageRequest返回时兑现，回复内容在reply报文里。
+以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则期约立即兑现，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则期约将在sendMessageRequest返回时兑现，回复内容在reply报文里。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -8001,7 +8001,7 @@ try {
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): Promise&lt;SendRequestResult&gt;
 
-以同步或异步方式向对端进程发送MessageParcel消息。如果为选项设置了异步模式，则期约立即兑现，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则期约将在sendRequest返回时兑现，回复内容在reply报文里。
+以同步或异步方式向对端进程发送MessageParcel消息。如果为选项设置了异步模式，则期约立即兑现，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则期约将在sendRequest返回时兑现，回复内容在reply报文里。使用Promise异步回调。
 
 > **说明：**
 >
@@ -8915,7 +8915,7 @@ if (proxy != undefined) {
   | TF_SYNC       | number | 是    | 否    | 同步调用标识。                                                            |
   | TF_ASYNC      | number | 是    | 否    | 异步调用标识。                                                            |
   | TF_ACCEPT_FDS | number | 是    | 否    | 指示sendMessageRequest<sup>9+</sup>接口可以传递文件描述符。               |
-  | TF_WAIT_TIME  | number | 是    | 否    | RPC等待时间(单位/秒)，IPC场景下无效。默认等待为8秒（不建议修改等待时间）。 |
+  | TF_WAIT_TIME  | number | 是    | 否    | RPC等待时间（单位：秒），IPC场景下无效。默认等待为8秒（不建议修改等待时间）。 |
 
 ### constructor<sup>9+</sup>
 
@@ -8956,7 +8956,7 @@ MessageOption构造函数。
   | 参数名    | 类型   | 必填 | 说明                                          |
   | --------- | ------ | ---- | --------------------------------------------- |
   | syncFlags | number | 否   | 同步调用或异步调用标志，同步调用标志：0；异步调用标志：1。默认同步调用。        |
-  | waitTime  | number | 否   | 调用rpc最长等待时间。默认TF_WAIT_TIME。 |
+  | waitTime  | number | 否   | 调用rpc最长等待时间（单位：秒）。默认TF_WAIT_TIME。 |
 
 **示例：**
 
@@ -9103,7 +9103,7 @@ getWaitTime(): number
 
   | 类型   | 说明              |
   | ------ | ----------------- |
-  | number | rpc最长等待时间。默认TF_WAIT_TIME。 |
+  | number | rpc最长等待时间（单位：秒）。默认TF_WAIT_TIME。 |
 
 **示例：**
 
@@ -9135,7 +9135,7 @@ setWaitTime(waitTime: number): void
 
   | 参数名   | 类型   | 必填 | 说明                  |
   | -------- | ------ | ---- | --------------------- |
-  | waitTime | number | 是   | rpc调用最长等待时间，上限为3000秒。 |
+  | waitTime | number | 是   | rpc调用最长等待时间（单位：秒），上限为3000秒。 |
 
 **示例：**
 
@@ -9716,7 +9716,7 @@ try {
 
 sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption): Promise&lt;RequestResult&gt;
 
-以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则期约立即兑现，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则期约将在sendMessageRequest返回时兑现，回复内容在reply报文里。
+以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则期约立即兑现，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则期约将在sendMessageRequest返回时兑现，回复内容在reply报文里。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -9793,7 +9793,7 @@ try {
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): Promise&lt;SendRequestResult&gt;
 
-以同步或异步方式向对端进程发送MessageParcel消息。如果为选项设置了异步模式，则期约立即兑现，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则期约将在sendRequest返回时兑现，回复内容在reply报文里。
+以同步或异步方式向对端进程发送MessageParcel消息。如果为选项设置了异步模式，则期约立即兑现，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则期约将在sendRequest返回时兑现，回复内容在reply报文里。使用Promise异步回调。
 
 > **说明：**
 >

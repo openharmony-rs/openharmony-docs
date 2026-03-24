@@ -263,6 +263,8 @@ int32_t (*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute
 
 Sets attributes. You are advised to call this API in the main thread.
 
+In actual service scenarios, if the attributes set for a component contain the heap memory you apply for, ensure that the component is no longer used before calling the corresponding release API. For example, **NODE_TEXT_CONTENT_WITH_STYLED_STRING** in [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype).
+
 **Since**: 12
 
 **Parameters**

@@ -75,7 +75,7 @@
 
 ## 开发指导
 
-详细的API说明请参考[API文档](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md)。
+详细的API说明请参考[native_avcodec_videoencoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md)。
 
 如下为视频编码调用关系图：
 
