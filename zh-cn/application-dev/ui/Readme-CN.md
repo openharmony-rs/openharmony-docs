@@ -309,6 +309,7 @@
   - ArkTS-Sta与ArkTS-Dyn的UI互操作<!--ui-arkts-sta-interop-dyn-->
     - [UI互操作概述](arkts-dyn-sta-ui-interop.md)
     - [UI互操作声明文件规范](arkts-ui-interop-declaration-spec.md)
+    - [UI集合类型互操作(Array/Map/Set)](arkts-ui-interop-builtin-collection.md)
     - UI构建互操作<!--ui-arkts-sta-interop-dyn-build-->
       - [在ArkTS-Sta中使用ArkTS-Dyn的自定义组件](arkts-sta-interop-dyn-component.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的自定义构建函数（@Builder）](arkts-sta-interop-dyn-builder.md)
