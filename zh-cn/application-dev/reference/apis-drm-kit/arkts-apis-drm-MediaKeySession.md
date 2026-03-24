@@ -67,7 +67,7 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 // pssh数据为版权保护系统描述头，封装在加密码流中，mp4文件中位于pssh box、dash码流中位于mpd及mp4的pssh box、hls+ts的码流位于m3u8及每个ts片段中，请按实际值传入。
 let uint8pssh = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.generateMediaKeyRequest("video/avc", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE).then((mediaKeyRequest: drm.MediaKeyRequest) =>{
-  console.log('generateMediaKeyRequest' + mediaKeyRequest);
+  console.info('generateMediaKeyRequest' + mediaKeyRequest);
 }).catch((err: BusinessError) => {
   console.error(`generateMediaKeyRequest: ERROR: ${err}`);
 });
@@ -139,7 +139,7 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 // mediaKeyResponse是从DRM服务获取的媒体密钥响应，按实际值填入。
 let mediaKeyResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint8Array) => {
-  console.log('processMediaKeyResponse:' + mediaKeyId);
+  console.info('processMediaKeyResponse:' + mediaKeyId);
 }).catch((err: BusinessError) => {
   console.error(`processMediaKeyResponse: ERROR: ${err}`);
 });
@@ -243,7 +243,7 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 // mediaKeyResponse是从DRM服务获取的媒体密钥响应，按实际值填入。
 let mediaKeyResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint8Array) => {
-  console.log('processMediaKeyResponse:' + mediaKeyId);
+  console.info('processMediaKeyResponse:' + mediaKeyId);
 }).catch((err: BusinessError) => {
   console.error(`processMediaKeyResponse: ERROR: ${err}`);
 });
@@ -326,7 +326,7 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 // mediaKeyId是processMediaKeyResponse或getOfflineMediaKeyIds接口返回的媒体密钥标识，请按实际值传入。
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.generateOfflineReleaseRequest(mediaKeyId).then((offlineReleaseRequest: Uint8Array) => {
-  console.log('generateOfflineReleaseRequest:' + offlineReleaseRequest);
+  console.info('generateOfflineReleaseRequest:' + offlineReleaseRequest);
 }).catch((err: BusinessError) => {
   console.error(`generateOfflineReleaseRequest: ERROR: ${err}`);
 });
@@ -399,14 +399,14 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 // mediaKeyId是processMediaKeyResponse或getOfflineMediaKeyIds接口返回的媒体密钥标识，请按实际长度申请内存。
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.generateOfflineReleaseRequest(mediaKeyId).then((offlineReleaseRequest: Uint8Array) => {
-  console.log('generateOfflineReleaseRequest:' + offlineReleaseRequest);
+  console.info('generateOfflineReleaseRequest:' + offlineReleaseRequest);
 }).catch((err: BusinessError) => {
   console.error(`generateOfflineReleaseRequest: ERROR: ${err}`);
 });
 // offlineReleaseResponse是从DRM服务获取的离线媒体密钥释放响应，请按实际长度申请内存。
 let offlineReleaseResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.processOfflineReleaseResponse(mediaKeyId, offlineReleaseResponse).then(() => {
-  console.log('processOfflineReleaseResponse');
+  console.info('processOfflineReleaseResponse');
 }).catch((err: BusinessError) => {
   console.error(`processOfflineReleaseResponse: ERROR: ${err}`);
 });
@@ -485,7 +485,7 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 // mediaKeyId是processMediaKeyResponse或getOfflineMediaKeyIds接口返回的媒体密钥标识，请按实际数据传入。
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.restoreOfflineMediaKeys(mediaKeyId).then(() => {
-  console.log("restoreOfflineMediaKeys");
+  console.info("restoreOfflineMediaKeys");
 }).catch((err: BusinessError) => {
   console.error(`restoreOfflineMediaKeys: ERROR: ${err}`);
 });
