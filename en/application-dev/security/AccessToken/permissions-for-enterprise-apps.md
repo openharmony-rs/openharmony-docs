@@ -515,7 +515,7 @@ With this permission, the application can call **spaceManager.subscribeEvent** o
 
 ## ohos.permission.SCAN_REMEDIATE_VIRUS
  	 
- Allows an  application to scan for and remediate viruses.
+ Allows an application to scan for and remediate viruses.
 
  This permission is only available to antivirus apps.
 
