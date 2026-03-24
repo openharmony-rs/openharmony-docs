@@ -646,7 +646,7 @@ accessibilityStateDescription(description: string | Resource | undefined): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前对象。 |
 
 ## accessibilityActionOptions<sup>23+</sup>
 
@@ -670,7 +670,7 @@ accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前对象。 |
 
 ## 示例
 
