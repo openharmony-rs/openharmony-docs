@@ -1228,7 +1228,9 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 表示数据来源。请使用枚举名称而非枚举值。
 
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 | 名称           | 值   | 说明                               |
 | -------------- | ---- | ---------------------------------- |
@@ -1240,7 +1242,9 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 用于谓词查询条件的特殊字段。请使用枚举名称而非枚举值。
 
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 | 名称           | 值   | 说明                               |
 | -------------- | ---- | ---------------------------------- |
@@ -1251,6 +1255,8 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 记录分布式表的日志信息。
 
+**模型约束：** 此接口仅在Stage模型下可用。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1260,7 +1266,7 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 ## retainDeviceData<sup>24+</sup>
 
-retainDeviceData(retainDevices?: Record<string, Array<string>>): Promise<void>
+retainDeviceData(retainDevices?: Record\<string, Array<string>>): Promise<void>
 
 删除对应单版本分布式数据表中对应设备同步过来的数据，使用Promise异步回调。
 
@@ -1278,6 +1284,8 @@ retainDeviceData(retainDevices?: Record<string, Array<string>>): Promise<void>
 >
 > 入参中传入的设备id是所要保留的远端数据的设备id，除去传入的设备id同步数据以及本设备写入数据以外的数据会被删除。
 
+**模型约束：** 此接口仅在Stage模型下可用。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -1290,7 +1298,7 @@ retainDeviceData(retainDevices?: Record<string, Array<string>>): Promise<void>
 
 | 类型          | 说明                       |
 | -------------- | ------------------------ |
-| Promise\<void> | 无返回结果的Promise对象。  |
+| Promise\<void> | Promise对象，无返回结果。  |
 
 **错误码：**
 
@@ -1356,6 +1364,8 @@ updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise
 > **说明：**
 >
 > 入参info和predicates中若要传入设备id信息，则设备id必须是当前设备组网状态下的设备id。
+
+**模型约束：** 此接口仅在Stage模型下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
