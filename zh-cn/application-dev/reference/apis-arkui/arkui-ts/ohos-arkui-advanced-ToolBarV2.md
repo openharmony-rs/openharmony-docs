@@ -8,6 +8,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件仅可在Stage模型下使用。
 > 
 > - 该组件不支持在Wearable设备上使用。
 
@@ -114,7 +116,9 @@ ToolBarV2Item的构造函数。
 
 ## ToolBarV2ItemAction
 
-type ToolBarV2ItemAction = (index: number) => void
+ArkTS-Dyn: type ToolBarV2ItemAction = (index: number) => void
+
+ArkTS-Sta: type ToolBarV2ItemAction = (index: int) => void
 
 工具栏子项点击事件回调类型。
 
@@ -130,7 +134,7 @@ type ToolBarV2ItemAction = (index: number) => void
 
 | 参数名   | 类型     | 必填 | 说明 |
 |:------|:-------|:---|----|
-| index | number | 是  |工具栏子项点击事件的回调。<br /> -index: 表示触发事件的工具栏子项索引。    |
+| index | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是  |工具栏子项点击事件的回调。<br /> -index: 表示触发事件的工具栏子项索引。    |
 
 ## ToolBarV2ItemText
 

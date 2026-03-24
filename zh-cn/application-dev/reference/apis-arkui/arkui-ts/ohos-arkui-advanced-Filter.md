@@ -10,6 +10,8 @@
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 该组件不支持在Wearable设备上使用。
 
 
@@ -46,7 +48,7 @@ Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParam
 | multiFilters | Array&lt;[FilterParams](#filterparams)&gt; | 是   | ArkTS-Dyn: \@Prop<br>ArkTS-Sta: \@PropRef | 多条件筛选列表。 |
 | additionFilters | [FilterParams](#filterparams) | 否   | ArkTS-Dyn: \@Prop<br>ArkTS-Sta: \@PropRef | 附加快捷筛选项。 |
 | filterType | [FilterType](#filtertype) | 否   | ArkTS-Dyn: \@Prop<br>ArkTS-Sta: \@PropRef | 筛选器的样式类型。 |
-| onFilterChanged | (filterResults: Array&lt;[FilterResult](#filterresult)&gt;)&nbsp;=&gt;&nbsp;void | 是   | - | 用户点击后的回调事件。回调函数的参数为选中的筛选项结果列表。|
+| onFilterChanged | ArkTS-Dyn: (filterResults: Array&lt;[FilterResult](#filterresult)&gt;)&nbsp;=&gt;&nbsp;void <br/>ArkTS-Sta: [OnFilterChangedCallback](#onfilterchangedcallback23) | 是   | - | 用户点击后的回调事件。回调函数的参数为选中的筛选项结果列表。|
 | container | ()=&gt;void | 是   | \@BuilderParam | 筛选结果展示区域自定义内容，通过尾随闭包形式传入。 |
 
 ## FilterParams
@@ -94,6 +96,27 @@ Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParam
 | name | [ResourceStr](ts-types.md#resourcestr) | 是 | 筛选项维度名称。<br/>默认值：空字符串。<br/>**说明**：如果文本大于列宽时，文本被截断。                       |
 | index | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 该维度筛选项选中项目的索引值。<br/>取值范围：大于等于-1的整数。<br/>默认值：-1，没有选中项。若设置数值小于-1，按没有选中项处理。 |
 | value | [ResourceStr](ts-types.md#resourcestr) | 是 | 该维度筛选项选中项目的值。<br/>默认值：空字符串。<br/>**说明**：如果文本大于列宽时，文本被截断。                  |
+
+
+## OnFilterChangedCallback<sup>23+</sup>
+
+type OnFilterChangedCallback = (filterResults: Array\<FilterResult\>) => void
+
+用户点击筛选后的回调事件。回调函数的参数为选中的筛选项结果列表。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型  | 必填 | 说明                       |
+| ------ | ------ | ---- | -------------------------- |
+| filterResults| Array\<[FilterResult](#filterresult)\> | 是   | 选中的筛选项结果列表。 |
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。

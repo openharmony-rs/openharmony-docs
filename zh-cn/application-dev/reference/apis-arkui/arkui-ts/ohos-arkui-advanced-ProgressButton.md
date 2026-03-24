@@ -10,6 +10,8 @@
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 该组件不支持在Wearable设备上使用。
 
 
@@ -27,7 +29,7 @@ import { ProgressButton } from '@kit.ArkUI';
 ArkTS-Dyn: ProgressButton({progress: number, content: ResourceStr, progressButtonWidth?: Length, clickCallback: () => void, enable:
 boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
 
-ArkTS-Sta: ProgressButton({progress: int, content: ResourceStr, progressButtonWidth?: Length, clickCallback: () => void, enable:
+ArkTS-Sta: ProgressButton({progress: double, content: ResourceStr, progressButtonWidth?: Length, clickCallback: () => void, enable:
 boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
 
 **装饰器类型：**\@Component
@@ -36,7 +38,7 @@ boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: Lengt
 
 | 名称                                | 类型                                                            | 必填 | 装饰器类型  | 说明                                                                                                                                   |
 |-----------------------------------|---------------------------------------------------------------|----|--------|--------------------------------------------------------------------------------------------------------------------------------------|
-| progress                          | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                      | 是  | ArkTS-Dyn: \@Prop<br>ArkTS-Sta: \@PropRef | 下载按钮的当前进度值。<br/>取值范围：[0,100]。设置小于0的数值时置为0，设置大于100的数值置为100。<br/>默认值：0。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| progress                          | ArkTS-Dyn: number<br/>ArkTS-Sta: double                                                      | 是  | ArkTS-Dyn: \@Prop<br>ArkTS-Sta: \@PropRef | 下载按钮的当前进度值。<br/>取值范围：[0,100]。设置小于0的数值时置为0，设置大于100的数值置为100。<br/>默认值：0。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | content                           | [ResourceStr](ts-types.md#resourcestr)                        | 是  | ArkTS-Dyn: \@Prop<br>ArkTS-Sta: \@PropRef | 下载按钮的文本。<br/>默认值：空字符串。<br/>**说明**：最长显示组件宽度，超出部分用省略号代替。从API version 20开始，支持Resource类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | progressButtonWidth               | [Length](ts-types.md#length)                                  | 否  | -      | 下载按钮的宽度，单位vp。<br/>取值范围：大于等于44vp。<br/>默认值：44vp。小于默认值和非法值设置为默认值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | clickCallback                     | () => void                                                 | 是  | -      | 下载按钮的点击回调。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
@@ -52,7 +54,7 @@ boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: Lengt
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
 
