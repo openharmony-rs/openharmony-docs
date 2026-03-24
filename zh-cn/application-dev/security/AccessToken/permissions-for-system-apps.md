@@ -5698,3 +5698,17 @@
 **支持设备**：General
 
 **起始版本**：24
+
+## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
+
+允许应用订阅通知服务。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
+**起始版本**：26.0.0
