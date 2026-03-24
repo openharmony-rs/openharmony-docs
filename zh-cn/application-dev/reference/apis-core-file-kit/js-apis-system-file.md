@@ -152,7 +152,7 @@ success返回值：
 | -------- | -------- | -------- |
 | uri | string | 文件的&nbsp;uri。 |
 | lastModifiedTime | number | 文件上一次保存时的时间戳，显示从1970/01/01&nbsp;00:00:00&nbsp;GMT到当前时间的毫秒数。 |
-| length | number | 文件的大小，单位为字节。 |
+| length | number | 文件的大小，单位为Byte。 |
 | type | string | 文件的类型，可选值为：<br/>-&nbsp;dir：目录；<br/>-&nbsp;file：文件。 |
 
 fail返回错误代码：
@@ -209,7 +209,7 @@ success返回值：
 | 参数名 | 类型 | 说明 |
 | -------- | -------- | -------- |
 | uri | string | 文件的uri。 |
-| length | number | 文件字节长。 |
+| length | number | 文件长度，单位为Byte。 |
 | lastModifiedTime | number | 文件保存时的时间戳，从1970/01/01&nbsp;00:00:00到当前时间的毫秒数。 |
 | type | string | 文件类型，可选值为：<br/>-&nbsp;dir：目录；<br/>-&nbsp;file：文件。 |
 | subFiles | Array | 文件列表。 |
@@ -358,7 +358,7 @@ writeArrayBuffer(Object): void
 | -------- | -------- | -------- | -------- |
 | uri | string | 是 | 本地文件uri，如果文件不存在会创建文件。 |
 | buffer | Uint8Array | 是 | 写入的Buffer。 |
-| position | number | 否 | 文件开始写入数据的位置的偏移量，默认为0。 |
+| position | number | 否 | 文件开始写入数据的位置的偏移量，单位为Byte，默认为0。 |
 | append | boolean | 否 | 是否追加模式，默认为false。当设置为true时，position参数无效。true为追加，false为不追加。 |
 | success | Function | 否 | 接口调用成功的回调函数。 |
 | fail | Function | 否 | 接口调用失败的回调函数。 |
@@ -378,7 +378,7 @@ export default {
   writeArrayBuffer() {       
     file.writeArrayBuffer({           
       uri: 'internal://app/test',           
-      buffer: new Uint8Array(8), //buffer为Uint8Array类型           
+      buffer: new Uint8Array(8),// buffer为Uint8Array类型
       success: function() {                
         console.info('call writeArrayBuffer success.');            
       },           
@@ -409,8 +409,8 @@ readText(Object): void
 | -------- | -------- | -------- | -------- |
 | uri | string | 是 | 本地文件uri。 |
 | encoding | string | 否 | 编码格式，缺省为UTF-8。 |
-| position | number | 否 | 读取的起始位置，默认值为文件的起始位置。 |
-| length | number | 否 | 读取的长度，默认值为4096。 |
+| position | number | 否 | 读取的起始位置，单位为Byte，默认值为文件的起始位置。 |
+| length | number | 否 | 读取的长度，单位为Byte，默认值为4096。 |
 | success | Function | 否 | 接口调用成功的回调函数。 |
 | fail | Function | 否 | 接口调用失败的回调函数。 |
 | complete | Function | 否 | 接口调用结束的回调函数。 |
@@ -466,8 +466,8 @@ readArrayBuffer(Object): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | uri | string | 是 | 本地文件uri。 |
-| position | number | 否 | 读取的起始位置，缺省为文件的起始位置。 |
-| length | number | 否 | 需要读取的长度，缺省则读取到文件结尾。 |
+| position | number | 否 | 读取的起始位置，单位为Byte，缺省为文件的起始位置。 |
+| length | number | 否 | 需要读取的长度，单位为Byte，缺省则读取到文件结尾。 |
 | success | Function | 否 | 接口调用成功的回调函数。 |
 | fail | Function | 否 | 接口调用失败的回调函数。 |
 | complete | Function | 否 | 接口调用结束的回调函数。 |
