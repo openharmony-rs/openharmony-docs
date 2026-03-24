@@ -108,7 +108,7 @@ enum OH_HiCollie_Freeze_Type
 
 定义FreezeCallback返回的冻屏类型。
 
-**起始版本：** 18
+**起始版本：** 24
 
 | 枚举项 | 描述 |
 | -- | -- |
