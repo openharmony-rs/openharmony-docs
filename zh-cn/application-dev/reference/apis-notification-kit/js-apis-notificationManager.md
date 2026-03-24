@@ -1953,7 +1953,7 @@ notificationManager.isGeofenceEnabled().then((data: boolean) => {
 | lockScreenEnabled     | boolean | 否   |  是  | 表示是否开启锁屏通知。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
 | bannerEnabled     | boolean | 否   |  是  | 表示是否开启横幅通知。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
 | badgeNumberEnabled     | boolean | 否   |  是  | 表示是否开启通知角标数字展示。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
-| notificationEnabled<sup>     | boolean | 否   |  是  | 表示应用通知使能状态。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
+| notificationEnabled     | boolean | 否   |  是  | 表示应用通知使能状态。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
 
 ## BundleOption
 
