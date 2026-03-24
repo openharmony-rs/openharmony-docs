@@ -2086,6 +2086,186 @@ try {
 ]
 ```
 
+
+
+## applicationManager.addAllowedNotificationBundles
+
+addAllowedNotificationBundles(admin: Want, bundleNames: Array\<string\>, accountId: number): void
+
+添加允许发送通知的应用名单。设置通知白名单后，不在此名单内的应用无法发送通知。
+> **说明：**
+>
+> 1.如果Kiosk模式与通知白名单策略同时设置，那么设置Kiosk模式的应用与通知白名单中的应用都可以发送通知。<br>
+> 2.当已经通过[setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)设置了禁用设备通知能力时，再通过本接口设置通知白名单，会抛出错误码9200010。<br>
+> 3.通知白名单对系统服务不生效，系统服务始终可以发送通知。系统应用受通知白名单管控。<br>
+> 4.支持跨用户设置，设置后跨用户立即生效。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定允许发送通知的应用。最多支持200个应用。|
+| accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br>accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let bundleNames: Array<string> = ['com.example.notificationapp'];
+
+try {
+  applicationManager.addAllowedNotificationBundles(wantTemp, bundleNames, 100);
+  console.info('Succeeded in adding allowed notification bundles.');
+} catch (err) {
+  console.error(`Failed to add allowed notification bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## applicationManager.removeAllowedNotificationBundles
+
+removeAllowedNotificationBundles(admin: Want, bundleNames: Array\<string\>, accountId: number): void
+
+从允许发送通知的应用名单中移除应用。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要移除的应用。|
+| accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let bundleNames: Array<string> = ['com.example.notificationapp'];
+
+try {
+  applicationManager.removeAllowedNotificationBundles(wantTemp, bundleNames, 100);
+  console.info('Succeeded in removing allowed notification bundles.');
+} catch (err) {
+  console.error(`Failed to remove allowed notification bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## applicationManager.getAllowedNotificationBundles
+
+getAllowedNotificationBundles(admin: Want \| null, accountId: number): Array\<string\>
+
+获取允许发送通知的应用名单。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 否   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
+| accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br>accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
+
+**返回值：**
+
+| 类型                | 说明                             |
+| ------------------- | -------------------------------- |
+| Array&lt;string&gt; | 返回允许发送通知的应用包名数组。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: Array<string> = applicationManager.getAllowedNotificationBundles(wantTemp, 100);
+  console.info(`Succeeded in getting allowed notification bundles, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get allowed notification bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## KioskFeature<sup>20+</sup>
 
 Kiosk模式的特征。

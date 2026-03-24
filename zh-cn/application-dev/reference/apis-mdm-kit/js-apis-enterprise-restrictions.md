@@ -69,7 +69,7 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 |mobileData<sup>20+</sup>|蜂窝数据能力，当前仅支持手机、平板设备使用。|ohos.permission.ENTERPRISE_MANAGE_NETWORK|
 |airplaneMode<sup>20+</sup>|飞行模式能力，当前仅支持手机、平板设备使用。|ohos.permission.ENTERPRISE_MANAGE_NETWORK|
 |vpn<sup>20+</sup>|Virtual Private Network（虚拟专用网络），VPN能力。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
-|notification<sup>20+</sup>|设备通知能力。禁用后，由系统应用和三方应用发出的通知将不会显示，而系统服务通知能力不受影响。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|notification<sup>20+</sup>|设备通知能力。禁用后，由系统应用和三方应用发出的通知将不会显示，而系统服务通知能力不受影响。当此设备已经通过[addAllowedNotificationBundles](./js-apis-enterprise-applicationManager.md#applicationmanageraddallowednotificationbundles)设置了应用通知白名单之后，再通过此接口禁用设备通知能力，会抛出错误码9200010。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |nfc<sup>20+</sup>|Near Field Communication（近距离无线通信），NFC能力，当前仅支持手机、平板设备使用。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |privateSpace<sup>20+</sup>|创建隐私空间能力，当前仅支持手机、平板使用。对已创建的隐私空间无效。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |telephoneCall<sup>20+</sup>|设备通话能力，禁用后电话无法呼入和呼出。当前仅支持手机、平板设备使用。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
