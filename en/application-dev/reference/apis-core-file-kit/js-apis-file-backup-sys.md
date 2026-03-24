@@ -261,7 +261,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 13600001 | IPC error.                       |
 | 13900005 | I/O error.                      |
 | 13900011 | Out of memory.                   |
-| 13900020 | Invalid argument.                |
 | 13900025 | No space left on device.         |
 | 13900042 | Unknown error.                   |
 
@@ -646,7 +645,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 13600001 | IPC error.                                                                                      |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
@@ -1221,7 +1219,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example of a JSON string returned asynchronously:**
 
-```json
+```json5
 {
  "scanned": [ // Scanned application. The result will not be returned in the next callback.
      {
@@ -2197,6 +2195,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], infos?: string[]): Promise&lt;void&gt;
 
 Appends the applications whose data needs to be restored. From API version 12, the optional parameter **infos** is added to carry information about each application to be restored. The mappings between **infos** and **bundlesToBackup** are identified by index.
+
 Currently, the obtained **SessionRestore** instance can be called only once in the entire restore process. This API uses a promise to return the result.
 
 > **NOTE**
@@ -3529,7 +3528,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example of a JSON string returned asynchronously:**
 
-```json
+```json5
 {
  "scanned": [ // Scanned application. The result will not be returned in the next callback.
      {
