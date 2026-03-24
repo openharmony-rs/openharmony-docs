@@ -218,6 +218,8 @@ connectAgentExtensionAbility(want: Want, agentId: string, callback: AgentExtensi
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000008 | The crowdtesting application expires. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by enterprise device management (EDM). |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service fled to communicate with dependency module. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000073 | The app clone index is invalid. |
