@@ -4481,7 +4481,7 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration，withinTime).then((
 
 hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number): Promise&lt;boolean&gt;
 
-检查是否有符合条件的通话记录，仅针对运营商通话。使用Promise异步回调。
+检查是否有符合条件的通话记录，默认查询6小时以内的通话记录，仅针对运营商通话。使用Promise异步回调。
 
 **原子化服务API**：从API version 24 开始，该接口支持在原子化服务中使用。
 
