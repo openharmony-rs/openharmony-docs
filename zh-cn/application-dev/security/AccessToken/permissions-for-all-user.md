@@ -98,8 +98,7 @@
    - 申请前台模糊位置权限：[ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location)。
    - 申请前台精确位置权限：[ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location)和[ohos.permission.LOCATION](#ohospermissionlocation)。
 2. 应用调用[requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)拉起弹窗向用户申请对应的前台位置权限。
-3. 当用户点击弹窗授予前台位置权限后，应用调用[requestPermissionOnSetting()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)拉起权限设置弹窗，引导用户授权。
-4. 用户可在弹窗中点击授予用户后台位置权限。
+3. 当用户点击弹窗禁止前台位置权限后，应用调用[requestPermissionOnSetting()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)拉起权限设置弹窗，引导用户授权。
 
 当前系统提供了长时任务机制，对于需要在后台使用位置的应用，结合自身业务场景，可通过申请LOCATION类型的长时任务和前台位置权限的方式在后台获取位置，而不必申请后台位置权限。请参考：[长时任务指导](../../task-management/continuous-task.md)。
 
