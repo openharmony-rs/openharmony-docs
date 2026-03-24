@@ -43,10 +43,6 @@ type QueryMainTabsEvent = () => Promise<MediaTab[]>
 | ------------------------------------------------------------ | ----------------------------------- |
 | Promise<[MediaTab](arkts-apis-avMusicTemplate-i.md#mediatab)[]> | Promise对象，返回媒体标签页的集合。 |
 
-**示例：**
-
-请参考[onQueryMainTabs](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerymaintabs)的示例。
-
 ## QueryMediaTabContentEvent
 
 type QueryMediaTabContentEvent = (tabId: string) => Promise&lt;MediaTabContent&gt;
@@ -69,10 +65,6 @@ type QueryMediaTabContentEvent = (tabId: string) => Promise&lt;MediaTabContent&g
 | ------------------------------------------------------------ | --------------------------------- |
 | Promise<[MediaTabContent](arkts-apis-avMusicTemplate-i.md#mediatabcontent)> | Promise对象，返回媒体标签页内容。 |
 
-**示例：**
-
-请参考[onQueryMediaTabContent](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerymediatabcontent)的示例。
-
 ## QueryMediaEntityEvent
 
 type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise&lt;PageMediaEntity&gt;
@@ -94,10 +86,6 @@ type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise&lt;PageM
 | 类型                                                         | 说明                                      |
 | ------------------------------------------------------------ | ----------------------------------------- |
 | Promise<[PageMediaEntity](arkts-apis-avMusicTemplate-i.md#pagemediaentity)> | Promise对象，返回查询的媒体实体分页对象。 |
-
-**示例：**
-
-请参考[onQueryMediaEntity](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerymediaentity)的示例。
 
 ## QueryCompilationEvent
 
@@ -122,10 +110,6 @@ type QueryCompilationEvent = (compilationId: string, pageIndex: number) => Promi
 | ------------------------------------------------------------ | ----------------------------------------- |
 | Promise<[PageMediaEntity](arkts-apis-avMusicTemplate-i.md#pagemediaentity)> | Promise对象，返回查询的合集媒体实体对象。 |
 
-**示例：**
-
-请参考[onQueryCompilation](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerycompilation)的示例。
-
 ## QueryPlaylistEvent
 
 type QueryPlaylistEvent = (pageIndex: number, sort: Sort) => Promise&lt;PageMediaEntity&gt;
@@ -149,10 +133,6 @@ type QueryPlaylistEvent = (pageIndex: number, sort: Sort) => Promise&lt;PageMedi
 | ------------------------------------------------------------ | ------------------------------------------- |
 | Promise<[PageMediaEntity](arkts-apis-avMusicTemplate-i.md#pagemediaentity)> | Promise对象，返回查询的播放列表的分页对象。 |
 
-**示例：**
-
-请参考[onQueryPlaylist](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onqueryplaylist)的示例。
-
 ## QueryCurrentSingleEvent
 
 type QueryCurrentSingleEvent = () => Promise&lt;Single&gt;
@@ -168,10 +148,6 @@ type QueryCurrentSingleEvent = () => Promise&lt;Single&gt;
 | 类型                                                         | 说明                          |
 | ------------------------------------------------------------ | ----------------------------- |
 | Promise<[Single](arkts-apis-avMusicTemplate-i.md#single)> | Promise对象，返回Single对象。 |
-
-**示例：**
-
-请参考[onQueryCurrentSingle](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerycurrentsingle)的示例。
 
 ## QueryCompilationByKeywordEvent
 
@@ -194,10 +170,6 @@ type QueryCompilationByKeywordEvent = (keyword: string) => Promise&lt;Compilatio
 | 类型                                                         | 说明                                      |
 | ------------------------------------------------------------ | ----------------------------------------- |
 | Promise<[Compilation](arkts-apis-avMusicTemplate-i.md#compilation)[]> | Promise对象，返回与关键字相关的合集数组。 |
-
-**示例：**
-
-请参考[onQueryCompilationByKeyword](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerycompilationbykeyword)的示例。
 
 ## QueryMediaEntityByKeywordEvent
 
@@ -223,10 +195,6 @@ type QueryMediaEntityByKeywordEvent = (keyword: string, searchType: EntityType, 
 | ------------------------------------------------------------ | ------------------------------------------------- |
 | Promise<[PageMediaEntity](arkts-apis-avMusicTemplate-i.md#pagemediaentity)> | Promise对象，返回关键字相关的媒体实体的分页对象。 |
 
-**示例：**
-
-请参考[onQueryMediaEntityByKeyword](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerymediaentitybykeyword)的示例。
-
 ## QueryRecommendMediaEntityListEvent
 
 type QueryRecommendMediaEntityListEvent = () => Promise&lt;MediaEntity[]&gt;
@@ -242,10 +210,6 @@ type QueryRecommendMediaEntityListEvent = () => Promise&lt;MediaEntity[]&gt;
 | 类型                                                         | 说明                                    |
 | ------------------------------------------------------------ | --------------------------------------- |
 | Promise<[MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity)[]> | Promise对象，返回推荐的媒体实例的数组。 |
-
-**示例：**
-
-请参考[onQueryRecommendMediaEntityList](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onqueryrecommendmediaentitylist)的示例。
 
 ## QueryHotWordsEvent
 
@@ -263,10 +227,6 @@ type QueryHotWordsEvent = () => Promise&lt;string[]&gt;
 | ----------------- | ----------------------------- |
 | Promise<string[]> | Promise对象，返回热词的数组。 |
 
-**示例：**
-
-请参考[onQueryHotWords](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onqueryhotwords)的示例。
-
 ## QuerySearchHistoryEvent
 
 type QuerySearchHistoryEvent = () => Promise&lt;string[]&gt;
@@ -283,10 +243,6 @@ type QuerySearchHistoryEvent = () => Promise&lt;string[]&gt;
 | ----------------- | --------------------------------- |
 | Promise<string[]> | Promise对象，返回搜索历史的数组。 |
 
-**示例：**
-
-请参考[onQuerySearchHistory](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerysearchhistory)的示例。
-
 ## ClearSearchHistoryEvent
 
 type ClearSearchHistoryEvent = () => Promise&lt;OperResult&gt;
@@ -302,10 +258,6 @@ type ClearSearchHistoryEvent = () => Promise&lt;OperResult&gt;
 | 类型                                                         | 说明                                            |
 | ------------------------------------------------------------ | ----------------------------------------------- |
 | Promise<[OperResult](arkts-apis-avMusicTemplate-i.md#operresult)> | Promise对象，返回清除搜索历史的操作结果的对象。 |
-
-**示例：**
-
-请参考[onClearSearchHistory](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onclearsearchhistory)的示例。
 
 ## LoginEvent
 
@@ -329,10 +281,6 @@ type LoginEvent = (controlType: LoginType, id?: string) => Promise&lt;QrCodeInfo
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
 | Promise<[QrCodeInfo](arkts-apis-avMusicTemplate-i.md#qrcodeinfo)[]> | Promise对象，返回二维码信息的数组。 |
-
-**示例：**
-
-请参考[onLogin](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onlogin)的示例。
 
 ## LoginType
 
@@ -374,10 +322,6 @@ type RequestDialogInfoEvent = (actionType: DialogActionType, actionInfo?: Dialog
 | ------------------------------------------------------------ | ----------------------------- |
 | Promise<[DialogInfo](arkts-apis-avMusicTemplate-i.md#dialoginfo)> | Promise对象，返回对话框信息。 |
 
-**示例：**
-
-请参考[onRequestDialogInfo](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onrequestdialoginfo)的示例。
-
 ## DialogActionType
 
 type DialogActionType = 'open' | 'close' | 'refresh'
@@ -416,10 +360,6 @@ type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise&lt;Dialog
 | ------------------------------------------------------------ | ----------------------------- |
 | Promise<[DialogInfo](arkts-apis-avMusicTemplate-i.md#dialoginfo)> | Promise对象，返回对话框信息。 |
 
-**示例：**
-
-请参考[onHandleMemberPurchase](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onhandlememberpurchase)的示例。
-
 ## QueryMemberPurchaseEvent
 
 type QueryMemberPurchaseEvent = (memberPurchaseType: MemberPurchaseType) => Promise&lt;MemberPurchaseInfo[]&gt;
@@ -442,10 +382,6 @@ type QueryMemberPurchaseEvent = (memberPurchaseType: MemberPurchaseType) => Prom
 | ------------------------------------------------------------ | ------------------------------------- |
 | Promise<[MemberPurchaseInfo](arkts-apis-avMusicTemplate-i.md#memberpurchaseinfo)[]> | Promise对象，返回会员购买信息的数组。 |
 
-**示例：**
-
-请参考[onQueryMemberPurchase](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerymemberpurchase)的示例。
-
 ## QueryCustomContentEvent
 
 type QueryCustomContentEvent = (queryType: CustomType[]) => Promise&lt;CustomElement&gt;
@@ -467,10 +403,6 @@ type QueryCustomContentEvent = (queryType: CustomType[]) => Promise&lt;CustomEle
 | 类型                                                         | 说明                                    |
 | ------------------------------------------------------------ | --------------------------------------- |
 | Promise<[CustomElement](arkts-apis-avMusicTemplate-i.md#customelement)> | Promise对象，返回我的页面的自定义元素。 |
-
-**示例：**
-
-请参考[onQueryCustomContent](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerycustomcontent)的示例。
 
 ## CustomType
 
@@ -512,10 +444,6 @@ type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: 
 | ------------------------------------------------------------ | --------------------------------------------- |
 | Promise<[OperResult](arkts-apis-avMusicTemplate-i.md#operresult)> | Promise对象，返回下载媒体实体的操作结果对象。 |
 
-**示例：**
-
-请参考[onDownloadMediaEntity](arkts-apis-avMusicTemplate-AVMusicTemplate.md#ondownloadmediaentity)的示例。
-
 ## DownloadControlType
 
 type DownloadControlType = 'startDownload' | 'deleteDownload' | 'resumeDownload' | 'pauseDownload'
@@ -555,10 +483,6 @@ type SettingsChangeEvent = (settingItem: SettingItem) => Promise&lt;SettingItem&
 | ------------------------------------------------------------ | --------------------------------- |
 | Promise<[SettingItem](arkts-apis-avMusicTemplate-i.md#settingitem)> | Promise对象，返回变更过的设置项。 |
 
-**示例：**
-
-请参考[onSettingsChange](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onsettingschange)的示例。
-
 ## ProblemAndAdviceEvent
 
 type ProblemAndAdviceEvent = (advice: string) => Promise&lt;OperResult&gt;
@@ -580,10 +504,6 @@ type ProblemAndAdviceEvent = (advice: string) => Promise&lt;OperResult&gt;
 | 类型                                                         | 说明                                        |
 | ------------------------------------------------------------ | ------------------------------------------- |
 | Promise<[OperResult](arkts-apis-avMusicTemplate-i.md#operresult)> | Promise对象，返回问题和建议的操作结果对象。 |
-
-**示例：**
-
-请参考[onProblemAndAdvice](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onproblemandadvice)的示例。
 
 ## PlayForSearchEvent
 
@@ -608,10 +528,6 @@ type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) =>
 | ------------------------------------------------------------ | ------------------------------------- |
 | Promise<[OperResult](arkts-apis-avMusicTemplate-i.md#operresult)> | Promise对象，返回搜播的操作结果对象。 |
 
-**示例：**
-
-请参考[onPlayForSearch](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onplayforsearch)的示例。
-
 ## ExecuteActionEvent
 
 type ExecuteActionEvent = (actionType: string, params: string) => Promise&lt;string&gt;
@@ -635,10 +551,6 @@ type ExecuteActionEvent = (actionType: string, params: string) => Promise&lt;str
 | --------------------- | ------------------------------------- |
 | Promise&lt;string&gt; | Promise对象，返回执行操作的结果对象。 |
 
-**示例：**
-
-请参考[onExecuteAction](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onexecuteaction)的示例。
-
 ## PlayMediaEntityEvent
 
 type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise&lt;void&gt;
@@ -660,10 +572,6 @@ type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise&lt;void&gt;
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**示例：**
-
-请参考[onPlayMediaEntity](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onplaymediaentity)的示例。
 
 ## FavoriteMediaEntityEvent
 
@@ -687,10 +595,6 @@ type FavoriteMediaEntityEvent = (actionType: MediaFavoriteType, mediaEntity: Med
 | 类型                      | 说明                                          |
 | ------------------------- | --------------------------------------------- |
 | Promise&lt;OperResult&gt; | Promise对象，返回收藏媒体实体的操作结果对象。 |
-
-**示例：**
-
-请参考[onFavoriteMediaEntity](arkts-apis-avMusicTemplate-AVMusicTemplate.md#onfavoritemediaentity)的示例。
 
 ## MediaFavoriteType
 
@@ -756,10 +660,6 @@ type ReportDialogCommandEvent = (type: DialogControlType, buttonInfo: DialogInfo
 | type       | [DialogControlType](#dialogcontroltype)                      | 是   | 对话框控制类型。 |
 | buttonInfo | [DialogInfo](arkts-apis-avMusicTemplate-i.md#dialoginfo) | 是   | 对话框信息。     |
 
-**示例：**
-
-请参考[onDialogCommandChange](arkts-apis-avMusicTemplate-AVMusicTemplateController.md#ondialogcommandchange)的示例。
-
 ## ReportTabContentEvent
 
 type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => void
@@ -776,10 +676,6 @@ type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => voi
 | ---------- | ------------------------------------------------------------ | ---- | -------------- |
 | tabId      | string                                                       | 是   | 标签页的ID。   |
 | tabContent | [MediaTabContent](arkts-apis-avMusicTemplate-i.md#mediatabcontent) | 是   | 标签页的内容。 |
-
-**示例：**
-
-请参考[onTabContentChange](arkts-apis-avMusicTemplate-AVMusicTemplateController.md#ontabcontentchange)的示例。
 
 ## ReportCustomElementsChangeEvent
 
@@ -799,10 +695,6 @@ type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: Cust
 | customType    | [CustomType](#customtype)                               | 是   | 自定义类型。 |
 | customElement | [CustomElement](arkts-apis-avMusicTemplate-i.md#customelement) | 是   | 自定义元素。 |
 
-**示例：**
-
-请参考[onCustomElementsChange](arkts-apis-avMusicTemplate-AVMusicTemplateController.md#oncustomelementschange)的示例。
-
 ## ReportExecuteActionEvent
 
 type ReportExecuteActionEvent = (actionType: string, params: string) => void
@@ -820,10 +712,6 @@ type ReportExecuteActionEvent = (actionType: string, params: string) => void
 | actionType | string | 是   | 操作类型。       |
 | params     | string | 是   | 执行动作的信息。 |
 
-**示例：**
-
-请参考[onReportExecuteAction](arkts-apis-avMusicTemplate-AVMusicTemplateController.md#onreportexecuteaction)的示例。
-
 ## ReportExecuteAbilityEvent
 
 type ReportExecuteAbilityEvent = (want: WantAgent) => void
@@ -839,7 +727,3 @@ type ReportExecuteAbilityEvent = (want: WantAgent) => void
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
 | want   | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 是   | 三方页面启动信息。 |
-
-**示例：**
-
-请参考[onExtensionAbilityChange](arkts-apis-avMusicTemplate-AVMusicTemplateController.md#onextensionabilitychange)的示例。

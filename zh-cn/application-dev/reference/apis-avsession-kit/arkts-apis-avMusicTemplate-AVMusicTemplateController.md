@@ -1897,7 +1897,7 @@ offCurrentSingleChange(callback?: Callback&lt;Single&gt;): void
 
 **示例：**
 
-```
+```ts
 import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class ControllerManager {
