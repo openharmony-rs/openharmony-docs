@@ -87,7 +87,7 @@ try {
   console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
 }
 ```
-UserGrantSetting
+
 ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
