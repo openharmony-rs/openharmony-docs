@@ -4467,9 +4467,9 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-const phoneNumber = '13812345678'；
+const phoneNumber = '13812345678';
 const minDuration = 60;
-const withinTime = 2 * 60 *60；
+const withinTime = 2 * 60 *60;
 
 // 调用接口查询
 contact.hasMatchedCallLog(context, phoneNumber, minDuration，withinTime).then((hasMatch:boolean) => {
