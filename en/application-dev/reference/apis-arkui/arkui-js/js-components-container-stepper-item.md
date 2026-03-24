@@ -49,7 +49,7 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | font-size | &lt;length&gt; | - | No| Text size.|
 | allow-scale | boolean | true | No| Whether the font size changes with the system's font size settings.|
 | font-style | string | normal | No| Text font style. Available values are as follows:<br>- **normal**: standard font style<br>- **italic**: italic font style|
-| font-weight | number\|string | normal | No| Text font weight. The number value must be an exact multiple of 100 ranging from 100 to 900. The default value is 400. A larger value indicates a bigger weight. Available values of the string type are **lighter**, **normal**, **bold**, or **bolder**.|
+| font-weight | number \| string | normal | No| Text font weight. The number value must be an exact multiple of 100 ranging from 100 to 900. The default value is 400. A larger value indicates a bigger weight. Available values of the string type are **lighter**, **normal**, **bold**, or **bolder**.|
 | text-decoration | string | none | No| Text decoration. Available values are as follows:<br>- **underline**: An underline is used.<br>- **line-through**: A strikethrough is used.<br>- **none**: The standard text is used.|
 | font-family | string | sans-serif | No| Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-components-common-customizing-font.md) is used for the text.|
 
