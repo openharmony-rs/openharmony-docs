@@ -3587,13 +3587,15 @@ TCP状态。
 | LISTEN      | 10 | 服务端监听，等待客户端连接。 |
 | CLOSING     | 11 | 双方同时发送FIN，互相等待ACK。   |
   
-  ## PacketsType<sup>26+</sup>
+  ## PacketsType
 
 网络探测数据包类型。
 
+**起始版本**：26.0.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
   
-  **系统能力：** SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -3887,7 +3889,7 @@ UDP端口状态信息。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | maxJumpNumber | number | 否 | 是 | 最大跳数，最大值为30，默认值为30。 |
-| packetsType | [PacketsType](#packetstype26) | 否 | 是 | 探测使用的数据包类型，默认为NETCONN_PACKETS_ICMP。 |
+| packetsType | [PacketsType](#packetstype) | 否 | 是 | 探测使用的数据包类型，默认为NETCONN_PACKETS_ICMP。 |
   
 
 ## TraceRouteInfo
