@@ -22,29 +22,29 @@
 
 ## 汇总
 
-### 常量
+### 宏定义
 
-| 名称 | 值 | 说明 |
-| -------- | -------- | -------- |
-| WIFI_MAX_SSID_LEN | 33 | SSID最大长度（32 + \0）。 |
-| WIFI_MAC_LEN | 18 | MAC地址或BSSID长度（17 + \0）。 |
+| 名称 | 描述 |
+| -------- | -------- |
+| WIFI_MAX_SSID_LEN 33 | [OH_WifiLinkedInfo](capi-oh-wifi-h.md#oh_wifilinktype) 成员变量ssid数组的长度（32 + \0）。 |
+| WIFI_MAC_LEN 18 | [OH_WifiLinkedInfo](capi-oh-wifi-h.md#oh_wifilinktype) 成员变量macAddress数组或bssid数组的长度（17 + \0）。 |
       
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [Wifi_ResultCode](#wifi_resultcode) | Wifi_ResultCode | 定义WIFI接口返回值的错误码。 |
-| [OH_WifiConnState](#oh_wificonnstate) | OH_WifiConnState | 定义WLAN连接状态。 |
+| [OH_WifiConnState](#oh_wificonnstate) | OH_WifiConnState | 定义WIFI连接状态。 |
 | [OH_WifiChannelWidth](#oh_wifichannelwidth) | OH_WifiChannelWidth | 定义当前连接热点的信道带宽。 |
-| [OH_WifiStandard](#oh_wifistandard) | OH_WifiStandard | 当前连接热点的Wi-Fi标准。 |
-| [OH_WifiCategory](#oh_wificategory) | OH_WifiCategory | 热点支持的最高Wi-Fi级别。 |
-| [OH_WifiLinkType](#oh_wifilinktype) | OH_WifiLinkType | Wi-Fi7连接类型。 |
+| [OH_WifiStandard](#oh_wifistandard) | OH_WifiStandard | 当前连接热点的WIFI标准。 |
+| [OH_WifiCategory](#oh_wificategory) | OH_WifiCategory | 热点支持的最高WIFI级别。 |
+| [OH_WifiLinkType](#oh_wifilinktype) | OH_WifiLinkType | WIFI7连接类型。 |
 
 ### 结构体
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_WifiLinkedInfo](#oh_wifilinkedinfo) | 提供WLAN连接的相关信息。可以获取当前设备已连接的Wi-Fi热点的信息。 |
+| [OH_WifiLinkedInfo](#oh_wifilinkedinfo) | 提供WLAN连接的相关信息。可以获取当前设备已连接的WIFI热点的信息。 |
 
 ### 函数
 
@@ -75,7 +75,7 @@ enum Wifi_ResultCode
 | WIFI_INVALID_PARAM = 401 | 参数错误。<br> 可能原因：1.输入参数为空指针；2.参数数值超出定义范围。 |
 | WIFI_NOT_SUPPORTED = 801 | 该功能不支持。由于设备能力有限，无法调用该函数。 |
 | WIFI_OPERATION_FAILED = 2501000 | 操作失败。<br> 可能原因：服务内部执行失败。 |
-| WIFI_STA_DISABLED = 2501001 | STA服务未拉起。<br> 可能原因：WiFi未打开。<br>**起始版本：** 21 |
+| WIFI_STA_DISABLED = 2501001 | STA服务未拉起。<br> 可能原因：WIFI未打开。<br>**起始版本：** 21 |
 
 
 ### OH_WifiConnState
@@ -92,7 +92,7 @@ WLAN连接状态。
 
 | 枚举项 | 描述 |
 | -------- | -------- |
-| OH_WIFI_CONN_SCANNING = 0 | 设备正在搜索可用的AP。 |
+| OH_WIFI_CONN_SCANNING = 0 | 设备正在搜索可用的热点。 |
 | OH_WIFI_CONN_CONNECTING = 1| 正在建立WLAN连接。 |
 | OH_WIFI_CONN_AUTHENTICATING = 2 | WLAN连接正在认证中。 |
 | OH_WIFI_CONN_OBTAINING_IPADDR = 3 | 正在获取WLAN连接的IP地址。 |
@@ -116,11 +116,11 @@ WLAN信道带宽。
 
 | 枚举项 | 描述 |
 | -------- | -------- |
-| OH_WIFI_WIDTH_20MHZ = 0 | 20 MHz 信道带宽。 |
-| OH_WIFI_WIDTH_40MHZ = 1 | 40 MHz 信道带宽。 |
-| OH_WIFI_WIDTH_80MHZ = 2 | 80 MHz 信道带宽。 |
-| OH_WIFI_WIDTH_160MHZ = 3 | 160 MHz 信道带宽。 |
-| OH_WIFI_WIDTH_80MHZ_PLUS = 4 | 80 + 80 MHz 信道带宽。 |
+| OH_WIFI_WIDTH_20MHZ = 0 | 20MHz信道带宽。 |
+| OH_WIFI_WIDTH_40MHZ = 1 | 40MHz信道带宽。 |
+| OH_WIFI_WIDTH_80MHZ = 2 | 80MHz信道带宽。 |
+| OH_WIFI_WIDTH_160MHZ = 3 | 160MHz信道带宽。 |
+| OH_WIFI_WIDTH_80MHZ_PLUS = 4 | 双80MHz信道带宽。 |
 | OH_WIFI_WIDTH_INVALID = 5 | 无效的信道带宽。 |
 
 ### OH_WifiStandard
@@ -131,20 +131,20 @@ enum OH_WifiStandard
 
 **描述**
 
-Wi-Fi标准枚举。
+WIFI标准枚举。
 
 **起始版本：** 24
 
 | 枚举项 | 描述 |
 | -------- | -------- |
-| OH_WIFI_STANDARD_UNDEFINED = 0 | 无效的Wi-Fi标准。 |
-| OH_WIFI_STANDARD_11A = 1 | 802.11a Wi-Fi标准。 |
-| OH_WIFI_STANDARD_11B = 2 | 802.11b Wi-Fi标准。 |
-| OH_WIFI_STANDARD_11G = 3 | 802.11g Wi-Fi标准。 |
-| OH_WIFI_STANDARD_11N = 4 | 802.11n Wi-Fi标准。 |
-| OH_WIFI_STANDARD_11AC = 5 | 802.11ac Wi-Fi标准。 |
-| OH_WIFI_STANDARD_11AX = 6 | 802.11ax Wi-Fi标准。 |
-| OH_WIFI_STANDARD_11AD = 7 | 802.11ad Wi-Fi标准。 |
+| OH_WIFI_STANDARD_UNDEFINED = 0 | 无效的WIFI标准。 |
+| OH_WIFI_STANDARD_11A = 1 | 802.11a WIFI标准。 |
+| OH_WIFI_STANDARD_11B = 2 | 802.11b WIFI标准。 |
+| OH_WIFI_STANDARD_11G = 3 | 802.11g WIFI标准。 |
+| OH_WIFI_STANDARD_11N = 4 | 802.11n WIFI标准。 |
+| OH_WIFI_STANDARD_11AC = 5 | 802.11ac WIFI标准。 |
+| OH_WIFI_STANDARD_11AX = 6 | 802.11ax WIFI标准。 |
+| OH_WIFI_STANDARD_11AD = 7 | 802.11ad WIFI标准。 |
 
 ### OH_WifiCategory
 
@@ -154,17 +154,17 @@ enum OH_WifiCategory
 
 **描述**
 
-Wi-Fi类别枚举。
+WIFI类别枚举。
 
 **起始版本：** 24
 
 |枚举项 | 描述 |
 | -------- | -------- |
 | OH_WIFI_CATEGORY_DEFAULT = 1 | 默认类别。 |
-| OH_WIFI_CATEGORY_WIFI6 = 2 | Wi-Fi 6 类别。 |
-| OH_WIFI_CATEGORY_WIFI6_PLUS = 3 | Wi-Fi 6+ 类别。 |
-| OH_WIFI_CATEGORY_WIFI7 = 4 | Wi-Fi 7 类别。 |
-| OH_WIFI_CATEGORY_WIFI7_PLUS = 5 | Wi-Fi 7+ 类别。 |
+| OH_WIFI_CATEGORY_WIFI6 = 2 | WIFI6类别。 |
+| OH_WIFI_CATEGORY_WIFI6_PLUS = 3 | WIFI6+类别。 |
+| OH_WIFI_CATEGORY_WIFI7 = 4 | WIFI类别。 |
+| OH_WIFI_CATEGORY_WIFI7_PLUS = 5 | WIFI7+类别。 |
 
 ### OH_WifiLinkType
 
@@ -174,7 +174,7 @@ enum OH_WifiLinkType
 
 **描述**
 
-Wi-Fi连接类型。
+WIFI连接类型。
 
 **起始版本：** 24
 
@@ -182,11 +182,11 @@ Wi-Fi连接类型。
 | -------- | -------- |
 | OH_WIFI_LINK_DISCONNECT = -1 | 未连接。 |
 | OH_WIFI_LINK_DEFAULT_LINK = 0 | 默认连接。 |
-| OH_WIFI_LINK_WIFI7_SINGLE_LINK = 1 | Wi-Fi7单链连接。 |
-| OH_WIFI_LINK_WIFI7_MLSR = 2 | Wi-Fi7 MLSR。 |
-| OH_WIFI_LINK_WIFI7_EMLSR = 3 | Wi-Fi7 EMLSR。 |
-| OH_WIFI_LINK_WIFI7_STR = 4 | Wi-Fi7 STR。 |
-| OH_WIFI_LINK_WIFI7_LEGACY = 5 | Wi-Fi7 传统模式（非MLO）。 |
+| OH_WIFI_LINK_WIFI7_SINGLE_LINK = 1 | WIFI7单链连接。 |
+| OH_WIFI_LINK_WIFI7_MLSR = 2 | WIFI7 MLSR（Multi-Link Operation 多链路单射频）。 |
+| OH_WIFI_LINK_WIFI7_EMLSR = 3 | WIFI7 EMLSR（Enhanced Multi-Link Single Radio 增强型多链路单射频）。 |
+| OH_WIFI_LINK_WIFI7_STR = 4 | WIFI7 STR（Simultaneousmit and Receive 同时发送与接收）。 |
+| OH_WIFI_LINK_WIFI7_LEGACY = 5 | WIFI7 传统模式。 |
 
 ## 结构体说明
 
@@ -198,13 +198,13 @@ Struct OH_WifiLinkedInfo
 
 **描述**
 
-提供WLAN连接的相关信息。可以获取当前设备已连接的Wi-Fi热点的信息。
+提供WLAN连接的相关信息。可以获取当前设备已连接的WIFI热点的信息。
 
 **起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | char[] | 否 | 否 | 热点的SSID（Service Set Identifier 服务集标识符），用于获取当前设备已连接的Wi-Fi热点的公开名称（即无线网络的名称），编码格式为UTF-8。<br>长度 WIFI_MAX_SSID_LEN = 18。 |
+| ssid | char[] | 否 | 否 | 热点的SSID（Service Set Identifier 服务集标识符），用于获取当前设备已连接的WIFI热点的公开名称（即无线网络的名称），编码格式为UTF-8。<br>长度 WIFI_MAX_SSID_LEN = 18。 |
 | bssid | char[] | 否 | 否 | 热点的BSSID（Basic Service Set Identifier 基本服务集标识符）即无线网络的MAC地址。如果应用已请求 ohos.permission.GET_WIFI_PEERS_MAC 权限，则返回的bssid为真实BSSID地址；否则为随机设备地址。<br>格式："AA:BB:CC:DD:EE:FF"<br>最大长度 WIFI_MAC_LEN = 33。 |
 | rssi | int32_t | 否 | 否 | 热点的信号强度(dBm)。RSSI（Received Signal Strength Indicator，接收信号强度指示）。 |
 | band | int32_t | 否 | 否 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 |
@@ -220,10 +220,10 @@ Struct OH_WifiLinkedInfo
 | ipAddress | uint32_t | 否 | 否 | WLAN连接的IP地址。 |
 | connState | [OH_WifiConnState](capi-oh-wifi-h.md#oh_wificonnstate) | 否 | 否 | WLAN连接状态。详情见 OH_WifiConnState。 |
 | channelWidth | [OH_WifiChannelWidth](capi-oh-wifi-h.md#oh_wifichannelwidth) | 否 | 否 | 当前连接热点的信道带宽。详情见 OH_WifiChannelWidth。 |
-| wifiStandard | [OH_WifiStandard](capi-oh-wifi-h.md#oh_wifistandard) | 否 | 否 | 当前连接热点的Wi-Fi标准。详情见 OH_WifiStandard。 |
-| supportedWifiCategory | [OH_WifiCategory](capi-oh-wifi-h.md#oh_wificategory) | 否 | 否 | 热点支持的最高Wi-Fi级别。详情见 OH_WifiCategory。 |
+| wifiStandard | [OH_WifiStandard](capi-oh-wifi-h.md#oh_wifistandard) | 否 | 否 | 当前连接热点的WIFI标准。详情见 OH_WifiStandard。 |
+| supportedWifiCategory | [OH_WifiCategory](capi-oh-wifi-h.md#oh_wificategory) | 否 | 否 | 热点支持的最高WIFI级别。详情见 OH_WifiCategory。 |
 | isHiLinkNetwork | bool | 否 | 否 | 热点是否支持hilink，true表示支持，false表示不支持。 |
-| wifiLinkType | [OH_WifiLinkType](capi-oh-wifi-h.md#oh_wifilinktype) | 否 | 否 | Wi-Fi7连接类型。详情见 OH_WifiLinkType。 |
+| wifiLinkType | [OH_WifiLinkType](capi-oh-wifi-h.md#oh_wifilinktype) | 否 | 否 | WIFI7连接类型。详情见 OH_WifiLinkType。 |
 
 ## 函数说明
 
@@ -276,7 +276,7 @@ Wifi_ResultCode OH_Wifi_GetDeviceMacAddress(char *macAddr, unsigned int *macAddr
 
 | 类型 | 说明 |
 | -- | -- |
-| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | 返回操作结果，详细定义参见[Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode)。<br>     [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) 成功获取设备MAC地址。<br>     [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) 权限拒绝。<br>     [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) 不支持该能力。<br>     [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) 输入参数macAddr是空指针。<br>     [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) 内部执行失败。<br>     [WIFI_STA_DISABLED](capi-oh-wifi-h.md#wifi_resultcode) Wi-Fi STA模式未启用。 |
+| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | 返回操作结果，详细定义参见[Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode)。<br>     [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) 成功获取设备MAC地址。<br>     [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) 权限拒绝。<br>     [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) 不支持该能力。<br>     [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) 输入参数macAddr是空指针。<br>     [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) 内部执行失败。<br>     [WIFI_STA_DISABLED](capi-oh-wifi-h.md#wifi_resultcode) WIFI STA模式未启用。 |
 
 ### OH_Wifi_GetLinkedInfo()
 
@@ -306,4 +306,4 @@ Wifi_ResultCode OH_Wifi_GetLinkedInfo(OH_WifiLinkedInfo *info)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | 返回操作结果，详细定义参见[Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode)。<br>     [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) 成功获取WiFi连接信息。<br>     [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) 权限拒绝。<br>     [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) 不支持该能力。<br>     [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) 输入参数info是空指针。<br>     [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) 内部执行失败。 |
+| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | 返回操作结果，详细定义参见[Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode)。<br>     [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) 成功获取WIFI连接信息。<br>     [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) 权限拒绝。<br>     [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) 不支持获取连接信息。<br>     [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) 输入参数info是空指针。<br>     [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) 内部执行失败。 |
