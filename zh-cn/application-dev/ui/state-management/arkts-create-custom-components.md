@@ -606,56 +606,15 @@ struct MyComponent {
 >
 > ArkUI给自定义组件设置样式时，相当于给ChildComponent套了一个不可见的容器组件，这些样式是设置在容器组件上，而非直接设置给ChildComponent的Button组件。渲染结果显示，背景颜色红色并没有直接设置到Button上，而是设置在Button所在的不可见容器组件上。
 
-## 限制条件
-
-### V1自定义组件不支持静态代码块
-
-静态代码块用于初始化静态属性。
-- 在\@Component或\@CustomDialog装饰的自定义组件中编写静态代码块时，该代码不会被执行。从API version 22开始，添加对静态代码块的校验，编译期告警提示静态代码块不生效。
-
-  <!-- @[Static_code_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV1.ets) --> 
-  
-  ``` TypeScript
-  @Component
-  struct MyComponent {
-    static a: string = '';
-    // 静态代码块不生效，a的值仍为空字符串''
-    static {
-      this.a = 'hello world';
-    }
-    // ...
-  }
-  ```
-
-
-- 在\@ComponentV2装饰的自定义组件中支持使用。
-
-  <!-- @[Static_code_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV2.ets) --> 
-  
-  ``` TypeScript
-  @ComponentV2
-  struct MyComponent {
-    static a: string = '';
-    // 静态代码块生效，a的值变为'hello world'
-    static {
-      this.a = 'hello world';
-    }
-    // ...
-  }
-  ```
-
-### \@Component与\@ComponentV2混用
-
-在将\@Component装饰的自定义组件与\@ComponentV2装饰的自定义组件混合使用时，<!--RP1-->可参考[状态管理V1和V2混用场景](./arkts-v1-v2-mixusage-before-api-version.md)<!--RP1End-->。
-
 ### 自定义组件支持跨Ability迁移
 
-API version 24前，自定义组件不支持跨Ability迁移，自定义组件实例在跨Ability后，改变自定义组件的状态变量将无法触发UI组件刷新。
+API version 24前，自定义组件不支持跨Ability迁移，自定义组件实例在跨Ability后，改变自定义组件的状态变量将无法触发UI组件刷新。需要注意，在系统升级API version 24之前，即使在module.json5配置了```"enableCustomComponentCrossAbility"```为```"true"```，该能力也不会生效。
 
-API version 24开始，可在应用工程的module.json5配置文件中配置metadata标签来使能自定义组件支持跨Ability迁移。具体配置方式为如下。
+API version 24开始，可在应用工程的module.json5配置文件中配置metadata标签来使能自定义组件支持跨Ability迁移。具体配置方式如下。
 
-```json
-// module.json5
+<!-- @[EnableCustomComponentCrossAbility_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/module.json5) -->
+
+``` JSON5
 "metadata": [
   {
     "name": "enableCustomComponentCrossAbility",
@@ -666,8 +625,9 @@ API version 24开始，可在应用工程的module.json5配置文件中配置met
 
 需要注意，不建议在原Ability的onBackground阶段异步修改迁移组件中的状态变量，此时状态变量可以被赋值，但无法触发关联组件的刷新。
 
-```typescript
-// EntryAbility.ets
+<!-- @[EnableCustomComponentCrossAbility_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -701,8 +661,9 @@ export default class EntryAbility extends UIAbility {
 
 下面的示例包含了创建新的Ability流程，具体示例可参考[starAbility](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)。
 
-```typescript
-// Index.ets
+<!-- @[EnableCustomComponentCrossAbility_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { MyNodeController } from './MyNodeController';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { common, Want } from '@kit.AbilityKit';
@@ -759,8 +720,9 @@ struct Index {
 }
 ```
 
-```typescript
-// MyNodeController.ets
+<!-- @[EnableCustomComponentCrossAbility_MyNodeController](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/pages/MyNodeController.ets) -->
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -829,8 +791,9 @@ struct ComponentUnderBuilderNode {
 }
 ```
 
-```typescript
-// ExtraAbility.ets
+<!-- @[EnableCustomComponentCrossAbility_ExtraAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/extraability/ExtraAbility.ets) -->
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -838,6 +801,7 @@ import { window } from '@kit.ArkUI';
 const DOMAIN = 0x0000;
 
 export default class ExtraAbility extends UIAbility {
+
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/ExtraIndex', (err) => {
       if (err.code) {
@@ -850,8 +814,9 @@ export default class ExtraAbility extends UIAbility {
 }
 ```
 
-```typescript
-// ExtraIndex.ets
+<!-- @[EnableCustomComponentCrossAbility_ExtraIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/pages/ExtraIndex.ets) -->
+
+``` TypeScript
 import { MyNodeController } from './MyNodeController';
 
 @Entry
@@ -881,5 +846,47 @@ struct ExtraIndex {
   }
 }
 ```
+
+## 限制条件
+
+### V1自定义组件不支持静态代码块
+
+静态代码块用于初始化静态属性。
+- 在\@Component或\@CustomDialog装饰的自定义组件中编写静态代码块时，该代码不会被执行。从API version 22开始，添加对静态代码块的校验，编译期告警提示静态代码块不生效。
+
+  <!-- @[Static_code_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV1.ets) --> 
+  
+  ``` TypeScript
+  @Component
+  struct MyComponent {
+    static a: string = '';
+    // 静态代码块不生效，a的值仍为空字符串''
+    static {
+      this.a = 'hello world';
+    }
+    // ...
+  }
+  ```
+
+
+- 在\@ComponentV2装饰的自定义组件中支持使用。
+
+  <!-- @[Static_code_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV2.ets) --> 
+  
+  ``` TypeScript
+  @ComponentV2
+  struct MyComponent {
+    static a: string = '';
+    // 静态代码块生效，a的值变为'hello world'
+    static {
+      this.a = 'hello world';
+    }
+    // ...
+  }
+  ```
+
+### \@Component与\@ComponentV2混用
+
+在将\@Component装饰的自定义组件与\@ComponentV2装饰的自定义组件混合使用时，<!--RP1-->可参考[状态管理V1和V2混用场景](./arkts-v1-v2-mixusage-before-api-version.md)<!--RP1End-->。
 
 <!--no_check-->
