@@ -236,7 +236,7 @@ makeCall\(phoneNumber: string, options?: MakeCallOptions\): Promise\<void\>
 | 参数名      | 类型   | 必填 | 说明       |
 | ----------- | ------ | ---- | ---------- |
 | phoneNumber | string | 是   | 电话号码。 |
-| options | [MakeCallOptions](#makecalloptions) | 否   | 通话参数。 |
+| options | [MakeCallOptions](#makecalloptions24) | 否   | 通话参数。 |
 
 **返回值：**
 
