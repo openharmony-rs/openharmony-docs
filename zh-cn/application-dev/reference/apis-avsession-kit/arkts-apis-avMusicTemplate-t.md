@@ -716,7 +716,7 @@ type ReportExecuteActionEvent = (actionType: string, params: string) => void
 
 type ReportExecuteAbilityEvent = (want: WantAgent) => void
 
-通知音频模板控制方拉起指定三方应用界面的信息的事件。
+通知音频模板控制方拉起指定媒体应用界面事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -726,4 +726,4 @@ type ReportExecuteAbilityEvent = (want: WantAgent) => void
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| want   | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 是   | 三方页面启动信息。 |
+| want   | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 是   | 媒体应用页面启动信息。 |
