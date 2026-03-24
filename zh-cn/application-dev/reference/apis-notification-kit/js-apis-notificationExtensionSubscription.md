@@ -170,7 +170,9 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 
 try {
-  notificationExtensionSubscription.openSubscriptionSettingsWithResult(this.context as common.UIAbilityContext).then((data) => {
+  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
     console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
   }).catch((e:Error) => {
     let error = e as BusinessError
