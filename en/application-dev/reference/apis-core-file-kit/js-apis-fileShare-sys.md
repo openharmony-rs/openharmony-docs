@@ -38,7 +38,7 @@ Grants the permissions on a user file to an application. This API uses an asynch
 | uri   | string| Yes  | URI of the file under user directory.|
 | bundleName   | string| Yes  | Application to be granted with the permissions.  |
 | flag   | [wantConstant.Flags](../apis-ability-kit/js-apis-app-ability-wantConstant.md#flags) | Yes  | Permissions to grant.    |
- | callback | AsyncCallback&lt;void&gt;| Yes   | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt;| Yes   | Callback used to return the result.|
 
 **Error codes**
 
@@ -170,6 +170,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 202      | The caller is not a system application.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
+| 13900042 | Out of memory.|
 
 **Example**
 
