@@ -478,7 +478,7 @@ indicatorStyle(value?: IndicatorStyle)
 | ------ | --------------------------------------------------- | ---- | ------------ |
 | value  | [IndicatorStyle](#indicatorstyledeprecated对象说明) | 否   | 导航点样式。 |
 
-### displayCount<sup>11+</sup>
+### displayCount<sup>8+</sup>
 
 displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean)
 
@@ -517,9 +517,9 @@ displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 11
-
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[displayCount](#displaycount23)。
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -576,9 +576,9 @@ displayCount(value: number | string | SwiperAutoFill | ItemFillPolicy, swipeByGr
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 22
-
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[displayCount](#displaycount23)。
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -598,7 +598,7 @@ displayCount(value: number | string | SwiperAutoFill | ItemFillPolicy, swipeByGr
 
 ### displayCount<sup>23+</sup>
 
-displayCount(value: int | string | SwiperAutoFill | ItemFillPolicy | undefined, swipeByGroup?: boolean)
+displayCount(value: int | string | SwiperAutoFill | ItemFillPolicy | undefined, swipeByGroup?: boolean | undefined)
 
 设置Swiper视窗内元素显示个数。
 
@@ -631,7 +631,7 @@ displayCount(value: int | string | SwiperAutoFill | ItemFillPolicy | undefined, 
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[displayCount<sup>11+</sup>](#displaycount11)和[displayCount<sup>11+</sup>](#displaycount22)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[displayCount<sup>8+</sup>](#displaycount8)和[displayCount<sup>22+</sup>](#displaycount22)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -640,7 +640,7 @@ displayCount(value: int | string | SwiperAutoFill | ItemFillPolicy | undefined, 
 | 参数名                     | 类型                                                                                                                 | 必填 | 说明                                                         |
 | -------------------------- | ------------------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value                      | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[SwiperAutoFill](#swiperautofill10)&nbsp;\|&nbsp;[ItemFillPolicy](ts-appendix-enums.md#itemfillpolicy)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[SwiperAutoFill](#swiperautofill10)&nbsp;\|&nbsp;[ItemFillPolicy](ts-appendix-enums.md#itemfillpolicy)&nbsp;\|&nbsp;undefined | 是   | 视窗内显示的子元素个数。<br/> 默认值：1<br/>取值范围：(0, +∞)，设置小于等于0的值时，按照默认值处理。 |
-| swipeByGroup | boolean                                                                                          | 否   | 是否按组进行翻页。如果设为true，在翻页时会按组进行翻页，每组内子元素的数量为displayCount value的值；如果为false，则为默认翻页行为，即按照子元素进行翻页。<br/> 默认值：false |
+| swipeByGroup | boolean \| undefined                     | 否   | 是否按组进行翻页。如果设为true，在翻页时会按组进行翻页，每组内子元素的数量为displayCount value的值；如果为false，则为默认翻页行为，即按照子元素进行翻页。<br/> 默认值：false |
 
 > **说明：**
 >
@@ -733,7 +733,7 @@ ArkTS-Sta: nextMargin(value: Length | undefined, ignoreBlank?: boolean | undefin
 
 ArkTS-Dyn: prevMargin(value: Length, ignoreBlank?: boolean)
 
-ArkTS-Sta: prevMargin(value: Length | undefined, ignoreBlank?: boolean)
+ArkTS-Sta: prevMargin(value: Length | undefined, ignoreBlank?: boolean | undefined)
 
 设置前边距，用于露出前一项的一小部分，使用效果可以参考[示例1设置导航点交互及翻页动效](#示例1设置导航点交互及翻页动效)。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
 
@@ -883,10 +883,10 @@ Swiper在主轴上的尺寸大小模式枚举。
 
 | 名称                               | 说明                                                         |
 | ---------------------------------- | ------------------------------------------------------------ |
-| Stretch<sup>(deprecated)</sup>     | Swiper滑动一页的宽度为Swiper组件自身的宽度。<br>从API version 10开始不再维护，建议使用STRETCH代替。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
-| AutoLinear<sup>(deprecated)</sup>  | Swiper滑动一页的宽度为子组件宽度中的最大值。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br>从API version 10开始不再维护，建议使用[Scroller.scrollTo](ts-container-scroll.md#scrollto)代替。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
-| STRETCH<sup>10+</sup>              | Swiper滑动一页的宽度为Swiper组件自身的宽度。<br/>**卡片能力：** 从API version 7开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| AUTO_LINEAR<sup>(deprecated)</sup> | Swiper滑动一页的宽度为视窗内最左侧子组件的宽度。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br/>从API version 10开始支持，从API version 12开始不再维护，建议使用[Scroller.scrollTo](ts-container-scroll.md#scrollto)代替。<br/>**卡片能力：** 从API version 7开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
+| Stretch<sup>(deprecated)</sup>     | Swiper滑动一页的宽度为Swiper组件自身的宽度。<br>从API version 10开始不再维护，建议使用STRETCH代替。<br/>**卡片能力：** 从API version 7开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
+| AutoLinear<sup>(deprecated)</sup>  | Swiper滑动一页的宽度为子组件宽度中的最大值。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br>从API version 10开始不再维护，建议使用[Scroller.scrollTo](ts-container-scroll.md#scrollto)代替。<br/>**卡片能力：** 从API version 7开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
+| STRETCH<sup>10+</sup>              | Swiper滑动一页的宽度为Swiper组件自身的宽度。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| AUTO_LINEAR<sup>(deprecated)</sup> | Swiper滑动一页的宽度为视窗内最左侧子组件的宽度。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br/>从API version 10开始支持，从API version 12开始不再维护，建议使用[Scroller.scrollTo](ts-container-scroll.md#scrollto)代替。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
 
 ## SwiperNestedScrollMode<sup>11+</sup>枚举说明
 
@@ -1116,7 +1116,9 @@ startFakeDrag(): boolean
 
 ### fakeDragBy<sup>23+</sup>
 
-fakeDragBy(offset: number): boolean
+ArkTS-Dyn: fakeDragBy(offset: number): boolean
+
+ArkTS-Sta: fakeDragBy(offset: float): boolean
 
 设置模拟拖拽的拖拽距离。
 
@@ -1144,7 +1146,7 @@ fakeDragBy(offset: number): boolean
 
 | 参数名   | 类型   | 必填   | 说明                                                  |
 | -----  | ------ | ---- | -------------------------------------------------------- |
-| offset | number | 是   | 需要模拟拖拽的拖拽距离。<br/>正数表示向布局起点拖拽；负数表示向布局终点方向拖拽。|
+| offset | ArkTS-Dyn: number<br/>ArkTS-Sta: float | 是   | 需要模拟拖拽的拖拽距离。<br/>正数表示向布局起点拖拽；负数表示向布局终点方向拖拽。|
 
 **返回值：**
 
@@ -1377,7 +1379,6 @@ ArkTS-Sta: bottom(bottom: LengthMetrics | Length | undefined, ignoreSize: boolea
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
-
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
@@ -2373,6 +2374,8 @@ Swiper滑动时触发的回调，参数可参考[SwiperContentTransitionProxy](#
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：** 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
 | selectedIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 当前选中页面的索引。 |
@@ -2476,6 +2479,14 @@ Swiper自定义切换动画执行过程中，返回给开发者的proxy对象。
 **ArkTS-Sta起始版本：** 23
 
 ### 属性
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | --- | ---- | --- |

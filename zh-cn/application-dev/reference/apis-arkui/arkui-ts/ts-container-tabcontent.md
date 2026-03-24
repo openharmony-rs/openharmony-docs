@@ -28,6 +28,10 @@ TabContent()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 ## 属性
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
@@ -264,7 +268,7 @@ indicator(value: IndicatorStyle): SubTabBarStyle
 
 ### indicator<sup>23+</sup>
 
-indicator(value: SubTabBarIndicatorStyle): SubTabBarStyle
+indicator(style: SubTabBarIndicatorStyle): SubTabBarStyle
 
 设置选中子页签的下划线风格。子页签的下划线风格仅在水平模式下有效。
 
@@ -282,7 +286,7 @@ indicator(value: SubTabBarIndicatorStyle): SubTabBarStyle
 
 | 参数名 | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [SubTabBarIndicatorStyle](#subtabbarindicatorstyle23对象说明) | 是   | 选中子页签的下划线风格对象。 |
+| style | [SubTabBarIndicatorStyle](#subtabbarindicatorstyle23对象说明) | 是   | 选中子页签的下划线风格对象。 |
 
 **返回值：**
 
@@ -290,7 +294,7 @@ indicator(value: SubTabBarIndicatorStyle): SubTabBarStyle
 | ------- | ------------------------------------------------------------ |
 | [SubTabBarStyle](#subtabbarstyle9) | 返回SubTabBarStyle对象本身。 |
 
-### indicator<sup>10+</sup>
+### indicator<sup>22+</sup>
 
 indicator(value: IndicatorStyle | DrawableTabBarIndicator): SubTabBarStyle
 
@@ -304,7 +308,7 @@ indicator(value: IndicatorStyle | DrawableTabBarIndicator): SubTabBarStyle
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[indicator<sup>23+</sup>](#indicator23-1)。
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -320,7 +324,7 @@ indicator(value: IndicatorStyle | DrawableTabBarIndicator): SubTabBarStyle
 
 ### indicator<sup>23+</sup>
 
-indicator(value: SubTabBarIndicatorStyle | DrawableTabBarIndicator)
+indicator(value: SubTabBarIndicatorStyle | DrawableTabBarIndicator): SubTabBarStyle
 
 设置选中子页签的下划线风格。子页签的下划线风格仅在水平模式下有效。
 
@@ -330,7 +334,7 @@ indicator(value: SubTabBarIndicatorStyle | DrawableTabBarIndicator)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[indicator<sup>10+</sup>](#indicator10-12)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[indicator<sup>22+</sup>](#indicator22)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -540,9 +544,9 @@ id(value: string): SubTabBarStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 10
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------------------------------- |
@@ -1055,9 +1059,9 @@ type DrawableDescriptor = DrawableDescriptor
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 22
 
 | 类型     | 说明       |
 | ------ | ---------- |
@@ -1081,7 +1085,7 @@ ArkTS-Sta: onWillShow(event: VoidCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1103,7 +1107,7 @@ ArkTS-Sta: onWillHide(event: VoidCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

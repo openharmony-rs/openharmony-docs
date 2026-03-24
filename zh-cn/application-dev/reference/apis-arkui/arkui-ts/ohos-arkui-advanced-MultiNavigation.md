@@ -134,6 +134,32 @@ pushPathByName(name: string, param: Object, animated?: boolean, policy?: SplitPo
 
 ### pushPathByName
 
+pushPathByName(name: string, param: Object, onPop?: base.Callback\<PopInfo>, animated?: boolean, policy?: SplitPolicy): void
+
+将name指定的NavDestination页面信息入栈，传递的数据为param，添加onPop回调接收入栈页面出栈时的返回结果，并进行处理。
+
+**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[pushPathByName<sup>23+</sup>](#pushpathbyname23)。
+
+**ArkTS-Dyn起始版本：** 14
+
+**参数：**
+
+|  参数名   |             类型                | 必填 | 说明           |
+|:---------:|:-------------------------------------------------------------:|:------:|------|
+|   name    |                            string                             |   是    | NavDestination页面名称。   |
+|   param   |                            Object                             |   是    | NavDestination页面详细参数。 |
+|   onPop   | base.[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[PopInfo](ts-basic-components-navigation.md#popinfo11)>  |   否    | Callback回调，用于页面出栈时触发该回调处理返回结果。 |
+| animated  |                            boolean                            |   否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
+|  policy   |                          [SplitPolicy](#splitpolicy枚举说明)                          |   否    | 当前入栈页面的策略。默认值：DETAIL_PAGE       |
+
+### pushPathByName<sup>23+</sup>
+
 pushPathByName(name: string, param: Object, onPop?: Callback\<PopInfo>, animated?: boolean, policy?: SplitPolicy): void
 
 将name指定的NavDestination页面信息入栈，传递的数据为param，添加onPop回调接收入栈页面出栈时的返回结果，并进行处理。
@@ -142,7 +168,9 @@ pushPathByName(name: string, param: Object, onPop?: Callback\<PopInfo>, animated
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[pushPathByName](#pushpathbyname)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -861,7 +889,9 @@ MultiNavigation用以加载NavDestination的方法。
 
 **ArkTS-Dyn起始版本：** 14
 
-| 名称 | 类型 | 必填 | 说明 |
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明 |
 | --------------- | ------ |------ |------ |
 |name | string |是| 路由页面的标识符。 |
 | param | object | 否 | 路由跳转创建页面时传递的参数。 |
@@ -880,7 +910,9 @@ type OnNavigationModeChangeCallback = (mode: NavigationMode) => void
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型                                                         | 必填 | 说明                           |
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                           |
 | ---- | ------------------------------------------------------------ | ---- | ------------------------------ |
 | mode | [NavigationMode](./ts-basic-components-navigation.md#navigationmode9枚举说明) | 是   | 当回调触发时的NavigationMode。 |
 
@@ -898,7 +930,9 @@ type OnHomeShowOnTopCallback = (name: string) => void
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型   | 必填 | 说明                       |
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明                       |
 | ---- | ------ | ---- | -------------------------- |
 | name | string | 是   | 显示在栈顶的页面的标识符。 |
 

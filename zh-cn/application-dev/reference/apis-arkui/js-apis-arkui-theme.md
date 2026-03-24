@@ -175,6 +175,8 @@ ArkTS-Sta：需确保在页面build前执行。因运行于静态类型上下文
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：** 
+
 | 参数名       | 类型                           | 必填 | 说明             |
 |--------------|------------------------------|------|----------------|
 | theme | ArkTS-Dyn: [CustomTheme](#customtheme)<br/>ArkTS-Sta: [CustomTheme](#customtheme) \| undefined  | 是  | 表示设置的自定义主题风格。 |
