@@ -108,7 +108,7 @@ policy.getNetAccessPolicy().then((policyInfo: policy.NetAccessPolicy) => {
 ```
 
 
-## NetAccessPolic
+## NetAccessPolicy
 
 应用联网策略信息。
 
