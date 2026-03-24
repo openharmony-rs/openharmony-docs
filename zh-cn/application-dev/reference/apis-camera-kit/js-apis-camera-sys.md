@@ -3292,7 +3292,7 @@ getSupportedPhysicalApertures(): Array\<PhysicalAperture\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3494,7 +3494,7 @@ setBeauty(type: BeautyType, value: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3542,7 +3542,7 @@ getBeauty(type: BeautyType): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -5352,7 +5352,7 @@ isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -5401,7 +5401,7 @@ getExposureMeteringMode(): ExposureMeteringMode
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -5444,7 +5444,7 @@ setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
