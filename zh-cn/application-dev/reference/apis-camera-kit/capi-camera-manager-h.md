@@ -419,7 +419,7 @@ Camera_ErrorCode OH_CameraManager_DeleteSupportedCameraOutputCapability(Camera_M
 
 **描述**
 
-删除支持的输出功能。
+删除支持的输出能力。
 
 **起始版本：** 11
 
