@@ -1119,7 +1119,7 @@ if (store != undefined) {
 
 getFloat32Array(columnIndex: number): Float32Array
 
-以浮点数组的形式获取当前行中指定列的值，仅可在[向量数据库](#storeconfig)下可用。
+以浮点数组的形式获取当前行中指定列的值，仅可在向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
