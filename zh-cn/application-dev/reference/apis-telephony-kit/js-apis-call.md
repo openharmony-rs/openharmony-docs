@@ -236,7 +236,7 @@ makeCall\(phoneNumber: string, options?: MakeCallOptions\): Promise\<void\>
 | 参数名      | 类型   | 必填 | 说明       |
 | ----------- | ------ | ---- | ---------- |
 | phoneNumber | string | 是   | 电话号码。 |
-| options | MakeCallOptions | 否   | 电话号码。 |
+| options | [MakeCallOptions](#makecalloptions) | 否   | 通话参数。 |
 
 **返回值：**
 
@@ -1030,7 +1030,7 @@ call.rejectCall((err: BusinessError) => {
 | CALL_STATE_ANSWERED<sup>11+</sup> | 3    | 表示来电已经接听。 |
 
 
-## MakeCallOptions
+## MakeCallOptions<sup>24+</sup>
 
 拨打电话的可选参数。
 
@@ -1038,7 +1038,7 @@ call.rejectCall((err: BusinessError) => {
 
 |        名称              | 类型                               | 只读 | 可选 | 说明                                                                                             |
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
-| isHideDialScreen               | boolean                            | 否   | 是   | 是否隐藏拨号界面   |
+| isHideDialScreen               | boolean                            | 否   | 是   | 是否隐藏拨号界面，true表示隐藏，false表示不隐藏   |
 
 
 ## TelCallState<sup>21+</sup>
