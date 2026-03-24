@@ -2601,7 +2601,7 @@ connection.getSystemNetPortStates().then((data: connection.NetPortStatesInfo) =>
 });
 ```
 
-## connection.queryTraceRoute<sup>26+</sup>
+## connection.queryTraceRoute
 
 queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise\<TraceRouteInfo[]\>
 
@@ -2610,6 +2610,8 @@ queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise\<Trace
 > **说明：**
 >
 > 应用调用该接口需申请精确位置权限。<!--RP1-->根据[申请位置权限开发指导](../../device/location/location-permission-guidelines.md)<!--RP1End-->，调用方需同时申请ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION。
+
+**起始版本**：26.0.0
 
 **需要权限**：ohos.permission.INTERNET、ohos.permission.ACCESS_NET_TRACE_INFO、ohos.permission.LOCATION和ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2622,13 +2624,13 @@ queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise\<Trace
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | destination | string | 是 | 目标域名或IP地址，例如www.example.com、8.8.8.8。 |
-| option | [TraceRouteOptions](#tracerouteoptions26) | 否 | 路由跟踪的选项参数，缺省则使用默认配置。 |
+| option | [TraceRouteOptions](#tracerouteoptions) | 否 | 路由跟踪的选项参数，缺省则使用默认配置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<[TraceRouteInfo](#tracerouteinfo26)[]\> | Promise对象，返回路由跟踪信息数组。 |
+| Promise\<[TraceRouteInfo](#tracerouteinfo)[]\> | Promise对象，返回路由跟踪信息数组。 |
 
 **错误码：**
 
@@ -2660,7 +2662,7 @@ connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[
 ```
 
 
-## connection.queryProbeResult<sup>26+</sup>
+## connection.queryProbeResult
 
 queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInfo\>
 
@@ -2669,6 +2671,8 @@ queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInf
 > **说明：**
 >
 > 此接口用于对目标主机进行一段持续时间的网络探测，以获取丢包率和RTT信息。
+
+**起始版本**：26.0.0
 
 **需要权限**：ohos.permission.INTERNET。
 
@@ -2687,7 +2691,7 @@ queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInf
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<[ProbeResultInfo](#proberesultinfo26)\> | Promise对象，返回探测结果信息。 |
+| Promise\<[ProbeResultInfo](#proberesultinfo)\> | Promise对象，返回探测结果信息。 |
 
 **错误码：**
 以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
@@ -3870,9 +3874,11 @@ UDP端口状态信息。
 | udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的UDP信息。   |
   
  
-## TraceRouteOptions<sup>26+</sup>
+## TraceRouteOptions
 
 路由跟踪的选项。
+
+**起始版本**：26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
   
@@ -3884,9 +3890,11 @@ UDP端口状态信息。
 | packetsType | [PacketsType](#packetstype26) | 否 | 是 | 探测使用的数据包类型，默认为NETCONN_PACKETS_ICMP。 |
   
 
-## TraceRouteInfo<sup>26+</sup>
+## TraceRouteInfo
 
 路由跟踪信息。
+
+**起始版本**：26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
   
@@ -3899,9 +3907,11 @@ UDP端口状态信息。
 | rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。每一跳发送5个探测报文，数组元素依次为这些探测报文RTT中的最小值、平均值、最大值、标准差。 |
   
 
-## ProbeResultInfo<sup>26+</sup>
+## ProbeResultInfo
 
 网络探测结果信息。
+
+**起始版本**：26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
   
@@ -3910,4 +3920,4 @@ UDP端口状态信息。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | lossRate | number | 否 | 否 | 丢包率，取值范围0-100。例如，100表示100%丢包，50表示50%丢包。 |
-| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。对目的主机发送多个探测报文，探测报文数量由[queryProbeResult](#connectionqueryproberesult26)接口中duration参数决定。数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。 |
+| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。对目的主机发送多个探测报文，探测报文数量由[queryProbeResult](#connectionqueryproberesult)接口中duration参数决定。数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。 |
