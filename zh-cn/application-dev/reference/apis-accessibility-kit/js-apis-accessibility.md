@@ -1680,6 +1680,8 @@ onSeniorModeStateChange(callback: Callback&lt;boolean&gt;): void
 
 监听关怀模式启用状态变化事件。使用callback异步回调。
 
+**起始版本：** 26.0.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
@@ -2320,6 +2322,8 @@ offSeniorModeStateChange(callback?: Callback&lt;boolean&gt;): void
 
 取消监听关怀模式变化事件。使用callback异步回调。
 
+**起始版本：** 26.0.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
@@ -2854,6 +2858,8 @@ struct Index {
 isSeniorModeEnabled(): Promise&lt;boolean&gt;
 
 判断关怀模式是否开启。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
