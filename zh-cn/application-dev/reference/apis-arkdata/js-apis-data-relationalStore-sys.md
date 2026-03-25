@@ -1248,8 +1248,8 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 | 名称           | 值   | 说明                               |
 | -------------- | ---- | ---------------------------------- |
-| ORIGIN_FIELD      | '#_origin'     | 用于分布式数据库表对应log表查找或更新时指定数据来源的字段名。    |
-| ORIGIN_ORIDEVICE  | '#_ori_device' | 用于分布式数据库表对应log表查找或更新时指定数据产生端的设备信息。|
+| ORIGIN      | '#_origin'     | 用于分布式数据库表对应log表查找或更新时指定数据来源的字段名。    |
+| ORIGIN_ORIDEVICE  | '#_ori_device' | 用于分布式数据库表对应log表查找或更新时指定数据产生端的设备信息，该值传入若为空，则表示local设备；若不为空，则表示remote设备。|
 
 ## DistributedInfo<sup>24+</sup>
 
@@ -1261,12 +1261,12 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| flag | [DistributedOrigin](#distributedorigin24) | 否 | 是 | 表示数据来源。ORI_LOCAL表示本地数据；ORI_CLOUD表示云端同步的数据；ORI_DEVICE表示端端同步的数据。 |
-| oriDevice | string | 否 | 是 | 表示数据产生者的设备信息。 |
+| flag | [DistributedOrigin](#distributedorigin24) | 否 | 是 | 表示数据来源。ORI_LOCAL表示本地数据；ORI_CLOUD表示云端同步的数据；ORI_DEVICE表示端端同步的数据，无默认值 |
+| oriDevice | string | 否 | 是 | 表示数据产生者的设备信息，可通过DistributedServiceKit模块接口获取可信设备列表中的设备id，无默认值。 |
 
 ## retainDeviceData<sup>24+</sup>
 
-retainDeviceData(retainDevices?: Record\<string, Array<string>>): Promise<void>
+retainDeviceData(retainDevices?: Record\<string, Array<string>>): Promise\<void>
 
 删除对应单版本分布式数据表中对应设备同步过来的数据，使用Promise异步回调。
 
@@ -1292,7 +1292,7 @@ retainDeviceData(retainDevices?: Record\<string, Array<string>>): Promise<void>
 
 | 参数名       | 类型                                                               | 必填 | 说明                                       |
 | ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
-| retainDevices  | Record<string, Array<string>> |  否  | 指定要删除的分布式数据库表名和对应的设备id。|
+| retainDevices  | Record<string, Array<string>> |  否  | 指定要删除的分布式数据库表名和对应的设备id，无默认值，不传入则删除当前数据库中所有单版本分布式表中全量同步数据。|
 
 **返回值：**
 
@@ -1332,7 +1332,7 @@ async function removeExceptDeviceData(store : relationalStore.RdbStore){
   if (devices.length === 0) {
     console.error('removeExceptDeviceData no device to remove');
   }
-  console.error(`removeExceptDeviceData, length is ${devices.length}`);
+  console.info(`removeExceptDeviceData, length is ${devices.length}`);
   if (store != undefined && devices.length > 0) {
     try {
       const tableAndDevice: Record<string, string[]> = {};
@@ -1340,10 +1340,10 @@ async function removeExceptDeviceData(store : relationalStore.RdbStore){
       if (devices.length != 0) {
         devices1.push(devices[0]);
       }
-      console.error(`removeExceptDeviceData, length is ${devices1[0]}`);
+      console.info(`removeExceptDeviceData, device is ${devices1[0]}`);
       tableAndDevice['EMPLOYEE'] = devices1;
       await store.retainDeviceData(tableAndDevice);
-      console.error(`removeExceptDeviceData success`);
+      console.info(`removeExceptDeviceData success`);
     } catch (e) {
       console.error(`removeExceptDeviceData failed, code is ${e.code},message is ${e.message}`);
     }
@@ -1392,7 +1392,7 @@ updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise
 | 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
 | 14800011     | The current operation failed because the database is corrupted.                    |
 | 14800014     | The target instance is already closed.                            |
-| 14800015  | The database does not respond. |
+| 14800015     | The database does not respond. |
 | 14800021     | SQLite: Generic error.                                                  |
 | 14800024     | SQLite: The database file is locked.                                    |
 | 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|
@@ -1413,7 +1413,7 @@ async function updateDistributedInfoInsert(store : relationalStore.RdbStore){
   if (devices.length === 0) {
     console.error('updateDistributedInfoInsert no device to remove');
   }
-  console.error(`updateDistributedInfoInsert, length is ${devices.length}`);
+  console.info(`updateDistributedInfoInsert, length is ${devices.length}`);
   if (store != undefined && devices.length > 0) {
     try {
       const DISTRIBUTEDINFOINSERT:relationalStore.DistributedInfo = {
@@ -1424,7 +1424,7 @@ async function updateDistributedInfoInsert(store : relationalStore.RdbStore){
       predicates.equalTo(relationalStore.DistributedField.ORIGIN, relationalStore.DistributedOrigin.ORI_LOCAL);
       predicates.equalTo(relationalStore.DistributedField.ORIGIN_ORIDEVICE, "");
       await store.updateDistributedInfo(DISTRIBUTEDINFOINSERT, predicates);
-      console.error(`updateDistributedInfoInsert success`);
+      console.info(`updateDistributedInfoInsert success`);
     } catch (e) {
       console.error(`updateDistributedInfoInsert failed, code is ${e.code},message is ${e.message}`);
     }
@@ -1441,7 +1441,7 @@ async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
       predicates.equalTo(relationalStore.DistributedField.ORIGIN, relationalStore.DistributedOrigin.ORI_LOCAL);
       predicates.notEqualTo(relationalStore.DistributedField.ORIGIN_ORIDEVICE, "");
       await store.updateDistributedInfo(DISTRIBUTEDINFOUPDATE, predicates);
-      console.error(`updateDistributedInfoUpdate success`);
+      console.info(`updateDistributedInfoUpdate success`);
     } catch (e) {
       console.error(`updateDistributedInfoUpdate failed, code is ${e.code},message is ${e.message}`);
     }
