@@ -46,7 +46,7 @@ You can use the $r syntax in the application development files .hml and .js to f
 
 | Attribute| Type| Description|
 | -------- | -------- | -------- |
-| $r | (key: string) =&gt; string | Obtains the resource content that matches the specific qualifiers, Example: **$r('strings.hello')**<br>Parameter description:<br>- **key**: key value defined in the resource qualifier file, for example, **strings.hello**.|
+| $r | (key:&nbsp;string)&nbsp;=&gt;&nbsp;string | Obtains the resource content that matches the specific qualifiers, Example: **$r('strings.hello')**<br>Parameter description:<br>- **key**: key value defined in the resource qualifier file, for example, **strings.hello**.|
 
 **Example of res-defaults.json:**<br>
 
@@ -68,7 +68,7 @@ resources/res-dark.json:
         "clockFace": "common/dark_face.png"
     },
     "colors": {
-	"background": "#000000"
+    "background": "#000000"
     }
 }
 ```
@@ -81,7 +81,7 @@ resources/res-defaults.json:
         "clockFace": "common/face.png"
     },
     "colors": {
-	"background": "#ffffff"
+    "background": "#ffffff"
     }
 }
 ```

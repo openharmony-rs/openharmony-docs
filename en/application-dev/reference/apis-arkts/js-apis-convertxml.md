@@ -101,7 +101,9 @@ Converts XML text to an object of the object type. This method can parse large X
 
 > **NOTE**
 >
-> In Windows, a new line is usually represented by the carriage return (CR) followed by the line feed (LF). However, the object obtained by calling this API uses only the LF to indicate a new line.
+> - If the input XML text cannot be parsed as an object of the object type, an error message is displayed and an object that contains only the XML tag header will be returned.
+>
+> - In Windows, a new line is usually represented by the carriage return (CR) followed by the line feed (LF). However, the object obtained by calling this API uses only the LF to indicate a new line.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 

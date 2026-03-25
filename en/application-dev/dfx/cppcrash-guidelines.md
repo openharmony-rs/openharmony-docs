@@ -14,7 +14,7 @@ After a process crashes, the system detects the crash, captures crash informatio
 
 - **Signal**
 
-  A mechanism for inter-process communication in POSIX-compliant operating systems. It provides asynchronous notifications that interrupt the target process's normal control flow.
+  A mechanism for inter-process communication in POSIX-compliant operating systems.
 
 - **Signal handler**
 
@@ -467,7 +467,7 @@ Module name:crasher_cpp            <- Module name
 Timestamp:2024-05-06 20:10:51.000  <- Timestamp when the fault occurs
 Pid:9623   <- Process ID
 Uid:0         <- User ID
-HiTraceId:a92ab1c7eae68fa  <- HiTraceId. (Optional. If the fault thread does not have HiTraceId, it is not printed.)
+HiTraceId:a92ab1c7eae68fa  <- HiTraceId (Optional. If the fault thread does not have HiTraceId, it is not printed.)
 Process name:./crasher_cpp         <- Process name
 Process life time:1s               <- Process life time
 Process Memory(kB): 11902(Rss)     <- Memory used by the process.
@@ -526,7 +526,7 @@ Module name:crasher_cpp                <- Module name
 Timestamp:2024-05-06 20:18:24.000      <- Timestamp when the fault occurs
 Pid:9838                               <- Process ID
 Uid:0                                  <- User ID
-HiTraceId:a92ab1c7eae68fa  <- HiTraceId. (Optional. If the fault thread does not have HiTraceId, it is not printed.)
+HiTraceId:a92ab1c7eae68fa  <- HiTraceId (Optional. If the fault thread does not have HiTraceId, it is not printed.)
 Process name:./crasher_cpp             <- Process name
 Process life time:2s                   <- Process life time
 Process Memory(kB): 11902(Rss)     <- Memory used by the process.
@@ -556,7 +556,7 @@ Module name:crasher_cpp                   <- Module name
 Timestamp:2024-05-06 20:27:23.2035266415  <- Timestamp when the fault occurs
 Pid:10026                                 <- Process ID
 Uid:0                                     <- User ID
-HiTraceId:a92ab1c7eae68fa  <- HiTraceId. (Optional. If the fault thread does not have HiTraceId, it is not printed.)
+HiTraceId:a92ab1c7eae68fa  <- HiTraceId (Optional. If the fault thread does not have HiTraceId, it is not printed.)
 Process name:./crasher_cpp                <- Process name
 Process life time:1s                      <- Process life time
 Process Memory(kB): 11902(Rss)            <- Memory used by the process
@@ -603,7 +603,7 @@ Module name:crasher_cpp                     <- Module name
 Timestamp:2024-05-06 20:28:24.000           <- Timestamp when the fault occurs
 Pid:9838                                    <- Process ID
 Uid:0                                       <- User ID
-HiTraceId:a92ab1c7eae68fa  <- HiTraceId. (Optional. If the fault thread does not have HiTraceId, it is not printed.)
+HiTraceId:a92ab1c7eae68fa  <- HiTraceId (Optional. If the fault thread does not have HiTraceId, it is not printed.)
 Process name:./crasher_cpp                  <- Process name
 Process life time:2s                        <- Process life time
 Process Memory(kB): 11902(Rss)            <- Memory used by the process

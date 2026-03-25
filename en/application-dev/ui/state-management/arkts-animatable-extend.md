@@ -8,7 +8,7 @@
 
 The @AnimatableExtend decorator enables animation capabilities for normally non-animatable component properties. During animation execution, frame-by-frame callbacks are executed to change the values of non-animatable properties to allow them to achieve animation effects. Additionally, you can implement frame-by-frame layout effects by changing the values of animatable properties in the per-frame callback function.
 
-- Animatable property: A property is considered animatable if, when its method is called before the **animation** attribute, changing its value triggers the animation effect specified by **animation**. Examples include **height**, **width**, **backgroundColor**, **translate**, and **fontSize** (of the **Text** component).
+- Animatable property: A property is considered animatable if, when its method is called before the [animation](../arkts-animation.md) attribute, changing its value triggers the animation effect specified by **animation**. Examples include **height**, **width**, **backgroundColor**, **translate**, and **fontSize** (of the **Text** component).
 
 - Non-animatable property: A property is non-animatable if, when its method is called before the **animation** attribute, changing its value does not trigger the animation effect specified by **animation**. For example, the **points** property of the **Polyline** component is a non-animatable.
 
@@ -18,7 +18,7 @@ The @AnimatableExtend decorator enables animation capabilities for normally non-
 >
 > This decorator can be used in atomic services since API version 11.
 
-## Usage Rules
+## How to Use
 
 
 ### Syntax
@@ -35,9 +35,9 @@ The @AnimatableExtend decorator enables animation capabilities for normally non-
 - The function body of an \@AnimatableExtend decorated function can only access attribute methods of the component type specified within the parentheses of @AnimatableExtend.
 
 ### Available APIs
-The **AnimatableArithmetic\<T\>** API defines the animation operation rules for non-number data types. To animate non-number data (such as arrays, structs, and colors), implement the addition, subtraction, multiplication, and equality judgment functions in the **AnimatableArithmetic\<T\>** API.
-In this way, the data can be involved in an interpolation operation of the animation and identify whether the data changes, that is, the non-number data is defined as the types that implement the **AnimatableArithmetic\<T\>** API.
-| Name| Input Parameter Type| Return Value Type| Description
+The **AnimatableArithmetic\<T\>** API defines the animation operation rules for non-number data types. To animate non-number data (such as arrays, structs, and colors), you need to implement the addition, subtraction, multiplication, and equality checking functions in the **AnimatableArithmetic\<T\>** API. This enables the data to participate in animation interpolation calculations and to detect whether the data has changed. that is, the non-number data is defined as the types that implement the **AnimatableArithmetic\<T\>** API.
+
+| Name| Input Parameter Type| Return Value Type| Description|
 | -------- | -------- |-------- |-------- |
 | plus | AnimatableArithmetic\<T\> | AnimatableArithmetic\<T\> | Defines the addition rule of the data type.|
 | subtract | AnimatableArithmetic\<T\> | AnimatableArithmetic\<T\> | Defines the subtraction rule of the data type.|

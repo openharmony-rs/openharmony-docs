@@ -14,15 +14,15 @@
   - [@ohos.telephony.radio (网络搜索)](js-apis-radio.md)
   - [@ohos.telephony.sim (SIM卡管理)](js-apis-sim.md)
   - [@ohos.telephony.sms (短信服务)](js-apis-sms.md)
+  - [@ohos.telephony.vcard (VCard模块)](js-apis-vcard.md)
     <!--Del-->
-  - [@ohos.telephony.call (拨打电话)（系统接口）](js-apis-call-sys.md)
-  - [@ohos.telephony.data (蜂窝数据)（系统接口）](js-apis-telephony-data-sys.md)
-  - [@ohos.telephony.esim (eSIM卡管理)（系统接口）](js-apis-esim-sys.md)
-  - [@ohos.telephony.observer (observer)（系统接口）](js-apis-observer-sys.md)
+  - [@ohos.telephony.call (拨打电话)(系统接口)](js-apis-call-sys.md)
+  - [@ohos.telephony.data (蜂窝数据)(系统接口)](js-apis-telephony-data-sys.md)
+  - [@ohos.telephony.esim (eSIM卡管理) (系统接口)](js-apis-esim-sys.md)
+  - [@ohos.telephony.observer (observer)(系统接口)](js-apis-observer-sys.md)
   - [@ohos.telephony.radio (网络搜索)（系统接口）](js-apis-radio-sys.md)
   - [@ohos.telephony.sim (SIM卡管理)（系统接口）](js-apis-sim-sys.md)
   - [@ohos.telephony.sms (短信服务)（系统接口）](js-apis-sms-sys.md)
-  - [@ohos.telephony.vcard (VCard模块)（系统接口）](js-apis-vcard-sys.md)
     <!--DelEnd-->
 - C API<!--telephony-c-->
   - 模块<!--telephony-module-->

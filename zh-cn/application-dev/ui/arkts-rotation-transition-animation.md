@@ -89,17 +89,18 @@ struct rotation {
 }
 ```
 
-监听窗口旋转的同步事件windowsSizeChange来实现视图的切换。例如可在EntryAbility.ets文件的[onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)方法中添加处理逻辑以获取屏幕的显示方向。
+监听窗口旋转的同步事件windowSizeChange来实现视图的切换。例如可在EntryAbility.ets文件的[onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)方法中添加处理逻辑以获取屏幕的显示方向。
 <!-- @[window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
+import { display, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
 const TAG: string = 'EntryAbility';
-// ···
+// ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // ···
+    // ...
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
     let mainWindow: window.Window;
     try {
@@ -123,7 +124,7 @@ const TAG: string = 'EntryAbility';
       hilog.error(DOMAIN, TAG, '%{public}s', 'error');
       return;
     }
-    // ···
+    // ...
 
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
@@ -134,7 +135,7 @@ const TAG: string = 'EntryAbility';
     });
   }
 
-// ···
+  // ...
 ```
 
 需要在项目的module.json5文件中的abilities列表里添加"orientation"，指定为"auto_rotation"。

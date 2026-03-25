@@ -49,7 +49,8 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 1. 获取设备使用信息之前，需要检查是否已经配置请求相应的权限。
 
-    系统提供的设备使用信息统计的权限是ohos.permission.BUNDLE_ACTIVE_INFO
+    系统提供的设备使用信息统计的权限是ohos.permission.BUNDLE_ACTIVE_INFO。
+
     具体配置方式请参考[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
 2. 通过指定起始和结束时间查询所有应用的事件集合，需要配置ohos.permission.BUNDLE_ACTIVE_INFO权限。
@@ -188,7 +189,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
         }
     });
 
-    //同步方式
+    // 同步方式
     let priorityGroup = usageStatistics.queryAppGroupSync();
 
     ```
@@ -214,7 +215,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
         }
     });
 
-    //同步方式
+    // 同步方式
     let isIdleState = usageStatistics.isIdleStateSync("com.ohos.camera");
     ```
 

@@ -9,18 +9,18 @@
 
 This topic provides signing and signature verification development cases with the following algorithms:
 
-- [Key algorithm ECC256 and digest algorithm SHA-256](#ecc256sha256)
-- [Key algorithm SM2 and digest algorithm SM3](#sm2sm3)
-- [Key algorithm SM2 and digest algorithm NoDigest](#sm2nodigest)
-- [Key algorithm RSA, digest algorithm SHA-256, and padding mode PSS](#rsasha256pss)
-- [Key algorithm RSA, digest algorithm SHA-256, and padding mode PKCS #1 v1.5](#rsasha256pkcs1_v1_5)
-- [Key algorithm RSA, digest algorithm SHA-384, and padding mode PSS](#rsa2048sha384pss)
+- The key algorithm is ECC256 and digest algorithm is SHA-256. For details, see [ECC256/SHA-256](#ecc256sha-256).
+- The key algorithm is SM2 and digest algorithm is SM3. For details, see [SM2/SM3](#sm2sm3).
+- The key algorithm is SM2 and digest algorithm is NoDigest. For details, see [SM2/NoDigest](#sm2nodigest).
+- The key algorithm is RSA, digest algorithm is SHA-256, and padding mode is PSS. For details, see [RSA/SHA-256/PSS](#rsasha-256pss).
+- The key algorithm is RSA, digest algorithm is SHA-256, and padding mode is PKCS1_V1_5. For details, see [RSA/SHA-256/PKCS1_V1_5](#rsasha-256pkcs1_v1_5).
+- The key algorithm is RSA, digest algorithm is SHA-384, and padding mode is PSS. For details, see [RSA2048/SHA-384/PSS](#rsa2048sha-384pss).
 <!--RP1--><!--RP1End-->
 
 For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-signing-signature-verification-overview.md#supported-algorithms).
 
 
-## Add the dynamic library in the CMake script.
+## Linking the Dynamic Library in the CMake Script
 ```txt
 target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```
@@ -54,7 +54,7 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 
 2. Obtain the signature to be verified.
 
-3. Use [OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset) to [set algorithm parameters](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset).
+3. Use [OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset) to set algorithm parameters.
 
 4. Use [OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession) to initialize a key session and obtain the session handle.
 
@@ -68,7 +68,7 @@ When a key is no longer used, you need to call [OH_Huks_DeleteKeyItem](../../ref
 
 ## Development Cases
 
-### ECC256/SHA256
+### ECC256/SHA-256
 <!-- @[key_algorithm_ecc_sha256_sign_verify_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/cpp/ecc_sha256_sign_verify.cpp) -->
 
 ``` C++
@@ -578,7 +578,7 @@ napi_value SignVerifyKeySM2NoDigest(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
-### RSA/SHA256/PSS
+### RSA/SHA-256/PSS
 <!-- @[key_algorithm_rsa_sha256_pss_sign_verify_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/cpp/rsa_sha256_pss_sign_verify.cpp) -->
 
 ``` C++
@@ -750,7 +750,7 @@ napi_value SignVerifyKeyRsaSha256Pss(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
-### RSA/SHA256/PKCS1_V1_5
+### RSA/SHA-256/PKCS1_V1_5
 <!-- @[key_algorithm_rsa_sha256_pkcs1_v1_5_sign_verify_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/cpp/rsa_sha256_pkcs1_v1_5_sign_verify.cpp) -->
 
 ``` C++
@@ -922,7 +922,7 @@ napi_value SignVerifyKeyRsaSha256Pkcs1V15(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
-### RSA2048/SHA384/PSS
+### RSA2048/SHA-384/PSS
 <!-- @[key_algorithm_rsa_sha384_pss_sign_verify_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/cpp/rsa_sha384_pss_sign_verify.cpp) -->
 
 ``` C++

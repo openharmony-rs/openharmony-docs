@@ -22,10 +22,10 @@ sendableContextManager模块提供Context与[SendableContext](js-apis-inner-appl
 - 主线程向子线程传递Sendable数据时，需要将Context转换为SendableContext。
 - 子线程使用Sendable数据时，需要将SendableContext转换为Context。
 
-这里的Context与[createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext12)方法创建的Context不同，具体差异如下：
+这里的Context与[createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext)方法创建的Context不同，具体差异如下：
 - 与SendableContext相互转换的Context：ArkTS并发实例持有的应用侧Context是不同的实例，底层对应同一个Context对象。当一个实例中Context属性和方法被修改时，相关实例中的Context属性和方法将会同步修改。其中，Context实例中的eventHub属性比较特殊，不同实例中的eventHub是独立的对象，不支持跨ArkTS实例使用。如果需要使用[EventHub](./js-apis-inner-application-eventHub.md)跨实例传递数据，可以通过[setEventHubMultithreadingEnabled](#sendablecontextmanagerseteventhubmultithreadingenabled20)启用跨线程数据传递功能。
 
-- 通过[createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext12)创建的Context：ArkTS并发实例持有的应用侧Context是不同的实例，底层对应不同的Context对象。
+- 通过[createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext)创建的Context：ArkTS并发实例持有的应用侧Context是不同的实例，底层对应不同的Context对象。
 
 ## 约束限制
 
@@ -550,7 +550,7 @@ workerPort.onmessage = (e: MessageEvents) => {
   let object: SendableObject = e.data;
   let sendableContext: sendableContextManager.SendableContext = object.sendableContext;
   if (object.contextName == 'EntryAbilityContext') {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'convert to uiability context.');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'convert to UIAbility context.');
     try {
       let context: common.UIAbilityContext = sendableContextManager.convertToUIAbilityContext(sendableContext);
       // 获取context后获取沙箱路径
@@ -592,7 +592,7 @@ setEventHubMultithreadingEnabled(context: common.Context, enabled: boolean): voi
 
 **示例：**
 
-主线程启用[Context](./js-apis-inner-application-context.md)中[EventHub](./js-apis-inner-application-eventHub.md)的跨线程通信能力，并将Context转换为[SenableContext](js-apis-inner-application-sendableContext.md)后发送到[Worker](../apis-arkts/js-apis-worker.md)线程。
+主线程启用[Context](./js-apis-inner-application-context.md)中[EventHub](./js-apis-inner-application-eventHub.md)的跨线程通信能力，并将Context转换为[SendableContext](js-apis-inner-application-sendableContext.md)后发送到[Worker](../apis-arkts/js-apis-worker.md)线程。
 
 ```ts
 import { common, sendableContextManager } from '@kit.AbilityKit';

@@ -57,25 +57,32 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
    The length of the random number to generate ranges from **1** to **INT_MAX**, in bytes.
 
 - Return the result using **await**:
-  ```ts
+  <!-- @[secure_hard_ware_random_number_generation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/ets/pages/Await.ets) -->
+  
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   async function doRand() {
-    let rand = cryptoFramework.createRandom();
-    rand.enableHardwareEntropy();
-    let seed = new Uint8Array([1, 2, 3]);
-    rand.setSeed({ data: seed });
-    let len = 12;
-    let randOutput = await rand.generateRandom(len);
-    console.info('rand output:' + randOutput.data);
-  }
+      let rand = cryptoFramework.createRandom();
+      rand.enableHardwareEntropy();
+      let seed = new Uint8Array([1, 2, 3]);
+      rand.setSeed({ data: seed });
+      let len = 12;
+      let randOutput = await rand.generateRandom(len);
+      console.info('rand output: ' + randOutput.data);
+    }
   ```
 
+
 - Return the result synchronously:
-  ```ts
+  <!-- @[secure_hard_ware_random_number_generation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/ets/pages/Sync.ets) -->
+  
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   function doRandBySync() {
     let rand = cryptoFramework.createRandom();
     rand.enableHardwareEntropy();
@@ -83,13 +90,13 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
     try {
       let randData = rand.generateRandomSync(len);
       if (randData.data.length !== 0) {
-        console.info("[Sync]: rand result: " + randData.data);
+        console.info('[Sync]: rand result: ' + randData.data);
       } else {
-        console.error("[Sync]: get rand result fail!");
+        console.error('[Sync]: get rand result: fail!');
       }
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`do rand failed, ${e.code}, ${e.message}`);
+      console.error(`do rand failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```

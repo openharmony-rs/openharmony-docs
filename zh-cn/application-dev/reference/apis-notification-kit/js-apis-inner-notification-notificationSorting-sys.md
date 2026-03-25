@@ -1,4 +1,4 @@
-# NotificationSorting(系统接口)
+# NotificationSorting (系统接口)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @michael_woo888-->
@@ -14,7 +14,7 @@
 >
 > 本模块为系统接口。
 
-## 属性
+## NotificationSorting
 
 **系统能力**：SystemCapability.Notification.Notification
 

@@ -41,7 +41,7 @@
 | [long OH_ResourceManager_GetRawFileSize(RawFile *rawFile)](#oh_resourcemanager_getrawfilesize) | 获取rawfile长度，单位为long。 |
 | [long OH_ResourceManager_GetRawFileRemainingLength(const RawFile *rawFile)](#oh_resourcemanager_getrawfileremaininglength) | 获取rawfile的剩余长度，单位为long。 |
 | [void OH_ResourceManager_CloseRawFile(RawFile *rawFile)](#oh_resourcemanager_closerawfile) | 关闭已打开的[RawFile](capi-rawfile-rawfile.md) 以及释放所有相关联的资源。 |
-| [long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)](#oh_resourcemanager_getrawfileoffset) | 获取rawfile当前的偏移量，单位为long。rawfile当前的偏移量。 |
+| [long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)](#oh_resourcemanager_getrawfileoffset) | 获取rawfile当前的偏移量，单位为long。 |
 | [bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDescriptor &descriptor)](#oh_resourcemanager_getrawfiledescriptor) | 基于偏移量（单位为long）和文件长度（单位为long）打开rawfile，并获取rawfile文件描述符。打开的文件描述符被用于读取rawfile。(API12废弃) |
 | [bool OH_ResourceManager_GetRawFileDescriptorData(const RawFile *rawFile, RawFileDescriptor *descriptor)](#oh_resourcemanager_getrawfiledescriptordata) | 基于偏移量（单位为long）和文件长度（单位为long）打开rawfile，并获取rawfile文件描述符。打开的文件描述符被用于读取rawfile。 |
 | [bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descriptor)](#oh_resourcemanager_releaserawfiledescriptor) | 关闭rawfile文件描述符。已打开的文件描述符在使用完以后必须释放，防止文件描述符泄露。(API12废弃) |
@@ -193,7 +193,7 @@ long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)
 
 **描述**
 
-获取rawfile当前的偏移量，单位为long。rawfile当前的偏移量。
+获取rawfile当前的偏移量，单位为long。
 
 **起始版本：** 8
 

@@ -24,7 +24,9 @@ import { resourceManager } from '@kit.LocalizationKit';
 ## How to Use
 
 Since API version 9, the stage model allows an application to obtain a **ResourceManager** object via **Context**. You do not need to import the module.
+
 In the FA model, you need to import the module and then call [getResourceManager](#resourcemanagergetresourcemanager) to obtain a **ResourceManager** object.
+
 For details about how to reference context in the stage model, see [Context in the Stage Model](../../application-models/application-context-stage.md).
 
 ```ts
@@ -427,7 +429,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/string.json
 {
   "string": [
@@ -494,7 +496,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/string.json
 {
   "string": [
@@ -559,7 +561,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/string.json
 {
   "string": [
@@ -626,7 +628,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001008  | Failed to format the resource obtained based on the resource Name. |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/string.json
 {
   "string": [
@@ -686,7 +688,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.         |
 
 **Example (stage)**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/string.json
 {
   "string": [
@@ -750,7 +752,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/string.json
 {
   "string": [
@@ -807,7 +809,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/string.json
 {
   "string": [
@@ -871,7 +873,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/string.json
 {
   "string": [
@@ -933,7 +935,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -1002,7 +1004,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -1066,7 +1068,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -1135,7 +1137,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -1198,7 +1200,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -1267,7 +1269,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -1343,7 +1345,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -1427,7 +1429,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001008  | Failed to format the resource obtained based on the resource name. |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -1511,7 +1513,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -1595,7 +1597,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001008  | Failed to format the resource obtained based on the resource name. |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -2924,7 +2926,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/boolean.json
 {
   "boolean": [
@@ -2989,7 +2991,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/boolean.json
 {
   "boolean": [
@@ -3054,7 +3056,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/integer.json
 {
   "integer": [
@@ -3066,7 +3068,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 }
 ```
 
-```json
+```json5
 // Resource file path: src/main/resources/base/element/float.json
 {
   "float": [
@@ -3146,7 +3148,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/integer.json
 {
   "integer": [
@@ -3158,7 +3160,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 }
 ```
 
-```json
+```json5
 // Resource file path: src/main/resources/base/element/float.json
 {
   "float": [
@@ -3237,7 +3239,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/color.json
 {
   "color": [
@@ -3303,7 +3305,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/color.json
 {
   "color": [
@@ -3363,7 +3365,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.         |
 
 **Example (stage)**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/color.json
 {
   "color": [
@@ -3427,7 +3429,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/color.json
 {
   "color": [
@@ -3487,7 +3489,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/color.json
 {
   "color": [
@@ -3551,7 +3553,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/color.json
 {
   "color": [
@@ -5053,7 +5055,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/string.json
 {
   "string": [
@@ -5126,7 +5128,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/string.json
 {
   "string": [
@@ -5191,7 +5193,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/string.json
 {
   "string": [
@@ -5390,7 +5392,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -5459,7 +5461,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -5533,7 +5535,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -6434,7 +6436,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -6521,7 +6523,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -6605,7 +6607,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -6684,7 +6686,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -6767,7 +6769,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -6839,7 +6841,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -6916,7 +6918,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -6989,7 +6991,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -7074,7 +7076,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -7151,7 +7153,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -7227,7 +7229,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -7381,7 +7383,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/boolean.json
 {
   "boolean": [
@@ -7451,7 +7453,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/integer.json
 {
   "integer": [
@@ -7523,7 +7525,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/color.json
 {
   "color": [
@@ -7588,7 +7590,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/color.json
 {
   "color": [
@@ -7658,7 +7660,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-```json
+```json5
 // Resource file path: src/main/resources/base/element/color.json
 {
   "color": [
@@ -8038,7 +8040,7 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
 
 - Content of the **app.string.test** file:
 
-  ```json
+  ```json5
   // Resource file path: src/main/resources/base/element/string.json
   {
     "string": [
@@ -8050,7 +8052,7 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
   }
   ```
 
-  ```json
+  ```json5
   // Resource file path: src/main/resources/base/element/string.json
   {
     "string": [
@@ -8064,7 +8066,7 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
 
 - Content of the **app.strarray.test** file:
 
-  ```json
+  ```json5
   // Resource file path: src/main/resources/base/element/strarray.json
   {
     "strarray": [
@@ -8081,7 +8083,7 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
   ```
 
 - Content of the **app.plural.test** file:
-  ```json
+  ```json5
   // Resource file path: src/main/resources/base/element/plural.json
   {
     "plural": [
@@ -8104,7 +8106,7 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
 
 - Content of the **app.plural.format_test** file:
 
-  ```json
+  ```json5
   // Resource file path: src/main/resources/base/element/plural.json
   {
     "plural": [
@@ -8126,7 +8128,7 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
   ```
 
 - Content of the **app.boolean.boolean_test** file:
-  ```json
+  ```json5
   // Resource file path: src/main/resources/base/element/boolean.json
   {
     "boolean": [
@@ -8139,7 +8141,7 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
   ```
 
 - Content of the **integer_test** and **float_test** files:
-  ```json
+  ```json5
   // Resource file path: src/main/resources/base/element/integer.json
   {
     "integer": [
@@ -8151,7 +8153,7 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
   }
   ```
 
-  ```json
+  ```json5
   // Resource file path: src/main/resources/base/element/float.json
   {
     "float": [
@@ -8163,7 +8165,7 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
   }
   ```
 - Content of the **app.color.test** file:
-  ```json
+  ```json5
   // Resource file path: src/main/resources/base/element/color.json
   {
     "color": [

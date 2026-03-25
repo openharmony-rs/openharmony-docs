@@ -118,7 +118,7 @@ borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T
 
 borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
 
-设置边框的圆角半径。圆角大小受组件尺寸限制，最大值为组件宽或高的一半。
+设置边框的圆角半径。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -130,7 +130,7 @@ borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| value  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12)<sup>12+</sup> | 是   | 设置元素的边框圆角半径，支持百分比，百分比依据组件宽度，最大值为组件宽或高的一半。设置圆角后，可搭配[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性进行裁剪，避免子组件超出组件自身。|
+| value  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12)<sup>12+</sup> | 是   | 设置元素的边框圆角半径，支持百分比，百分比依据组件宽度。设置圆角后，可搭配[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性进行裁剪，避免子组件超出组件自身。<br/>设置四个不同圆角值，若某个圆角值超过高度或者宽度最小值一半时，按值的比例绘制异形圆角。|
 
 **返回值：**
 
@@ -142,7 +142,7 @@ borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
 
 borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses, type?: RenderStrategy): T
 
-设置边框的圆角半径和绘制圆角的模式。圆角大小受组件尺寸限制，最大值为组件宽或高的一半。
+设置边框的圆角半径和绘制圆角的模式。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -399,3 +399,36 @@ struct RenderStrategyExample {
 设置在线绘制模式（上方）以及离屏绘制模式（下方）的示例图如下：
 
 ![离屏绘制](figures/renderStrategy.jpg)
+
+### 示例4（设置异形圆角）
+
+该示例通过[borderRadius](#borderradius)设置四个不同圆角值。当其中一个圆角值超过高度或宽度最小值的一半时，按值的比例绘制异形圆角。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct BorderExample {
+  build() {
+    Column() {
+      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
+        Text('Text')
+          .borderWidth(5)
+          .borderColor(0xAFEEEE)
+          .borderRadius({
+            topLeft: 2000,
+            topRight: 10,
+            bottomLeft: 30,
+            bottomRight: 50
+          })
+          .width(100)
+          .height(100)
+          .textAlign(TextAlign.Center)
+          .fontSize(16)
+      }
+    }
+  }
+}
+```
+
+![borderRadius](figures/borderRadius.png)

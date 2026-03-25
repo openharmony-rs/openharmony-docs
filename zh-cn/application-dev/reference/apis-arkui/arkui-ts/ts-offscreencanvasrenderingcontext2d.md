@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-使用OffscreenCanvasRenderingContext2D在Canvas上进行离屏绘制，绘制对象可以是矩形、文本、图片等。离屏绘制是指将需要绘制的内容先绘制在缓存区，然后将其转换成图片，一次性绘制到Canvas上。离屏绘制使用CPU进行绘制，绘制速度较慢，对绘制速度有要求的场景应避免使用离屏绘制。
+使用OffscreenCanvasRenderingContext2D在Canvas上进行离屏绘制，绘制对象可以是形状、文本、图片等。离屏绘制是指将需要绘制的内容先绘制在缓存区，然后将其转换成图片，一次性绘制到Canvas上。离屏绘制使用CPU进行绘制，绘制速度较慢，对绘制速度有要求的场景应避免使用离屏绘制。
 
 >  **说明：**
 >
@@ -76,7 +76,7 @@ constructor(width: number, height: number, settings?: RenderingContextSettings, 
 
 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | 否 | 否 | <br/>-&nbsp;类型为string时，表示设置填充区域的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置填充区域的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值设置无效。<br/> |
+| string&nbsp;\|&nbsp;number<sup>10+</sup>&nbsp;\|&nbsp;[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | 否 | 否 | <br/>-&nbsp;类型为string时，表示设置填充区域的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置填充区域的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值设置无效。<br/> |
 
 ```ts
 // xxx.ets
@@ -93,7 +93,7 @@ struct FillStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // 使用string设置fillStyle属性
           offContext.fillStyle = '#0000ff'
@@ -125,7 +125,7 @@ struct FillStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // 使用number设置fillStyle属性
           offContext.fillStyle = 0x0000FF
@@ -172,14 +172,14 @@ struct LineWidthExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // 设置lineWidth属性
           offContext.lineWidth = 5
           offContext.strokeRect(25, 25, 85, 105)
           let image = this.offCanvas.transferToImageBitmap()
           this.context.transferFromImageBitmap(image)
-      })
+        })
     }
     .width('100%')
     .height('100%')
@@ -202,7 +202,7 @@ struct LineWidthExample {
 
 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | 否 | 否 | <br/>-&nbsp;类型为string时，表示设置线条使用的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置线条使用的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值设置无效。<br/> |
+| string&nbsp;\|&nbsp;number<sup>10+</sup>&nbsp;\|&nbsp;[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | 否 | 否 | <br/>-&nbsp;类型为string时，表示设置线条使用的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置线条使用的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值设置无效。<br/> |
 
 ```ts
 // xxx.ets
@@ -219,7 +219,7 @@ struct StrokeStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 10
           // 使用string设置strokeStyle属性
@@ -252,7 +252,7 @@ struct StrokeStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 10
           // 使用number设置strokeStyle属性
@@ -300,7 +300,7 @@ struct LineCapExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 8
           offContext.beginPath()
@@ -351,7 +351,7 @@ struct LineJoinExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.beginPath()
           offContext.lineWidth = 8
@@ -403,7 +403,7 @@ struct MiterLimit {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 8
           offContext.lineJoin = 'miter'
@@ -428,9 +428,11 @@ struct MiterLimit {
 
 ### font
 
-设置文本绘制中的字体样式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。API version 20及以后支持注册过的自定义字体（只能在主线程使用，不支持在worker线程中使用；DevEco Studio的预览器不支持显示自定义字体）。
+设置文本绘制中的字体样式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
 
 语法：ctx.font&nbsp;=&nbsp;'font-style&nbsp;font-weight&nbsp;font-size&nbsp;font-family'<br/>-&nbsp;font-style(可选)，用于指定字体样式，支持如下几种样式：'normal','italic'。<br/>-&nbsp;font-weight(可选)，用于指定字体的粗细，支持如下几种类型：'normal',&nbsp;'bold',&nbsp;'bolder',&nbsp;'lighter',&nbsp;100,&nbsp;200,&nbsp;300,&nbsp;400,&nbsp;500,&nbsp;600,&nbsp;700,&nbsp;800,&nbsp;900。<br/>-&nbsp;font-size(可选)，指定字号和行高，单位支持px、vp。使用时需要添加单位。<br/>-&nbsp;font-family(可选)，指定字体系列，支持如下几种类型：'sans-serif',&nbsp;'serif',&nbsp;'monospace'。
+
+从API version 20开始，支持通过该接口设置注册过的自定义字体（只能在主线程使用，不支持在worker线程中使用；DevEco Studio的预览器不支持显示自定义字体）。自定义字体注册有以下两种方式。一种是通过ArkUI的异步接口this.uiContext.getFont().[registerFont](../arkts-apis-uicontext-font.md#registerfont)注册，调用后立即绘制可能会导致自定义字体不生效。另一种是直接调用字体引擎的fontCollection.[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口来注册自定义字体到字体引擎。在直接调用字体引擎接口注册自定义字体时，fontCollection的实例需要是text.FontCollection.getGlobalInstance()，因为组件默认会从该实例加载字体。如果使用其他实例，可能会导致自定义字体不生效。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -442,9 +444,6 @@ struct MiterLimit {
 | ------ | ---------- | -------------- | ---------------------------------------- |
 | string | 否 | 否 | 默认值：'normal normal 14px sans-serif' |
 
-> **说明：**
->
-> 自定义字体注册有以下两种方式。一种是通过ArkUI的异步接口this.uiContext.getFont().[registerFont](../arkts-apis-uicontext-font.md#registerfont)注册，调用后立即绘制可能会导致自定义字体不生效。另一种是直接调用字体引擎的fontCollection.[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口来注册自定义字体到字体引擎。在直接调用字体引擎接口注册自定义字体时，fontCollection的实例需要是text.FontCollection.getGlobalInstance()，因为组件默认会从该实例加载字体。如果使用其他实例，可能会导致自定义字体不生效。
 
 ```ts
 import { text } from '@kit.ArkGraphics2D';
@@ -649,7 +648,7 @@ struct GlobalAlpha {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.fillStyle = 'rgb(0,0,255)'
           offContext.fillRect(0, 0, 50, 50)
@@ -699,10 +698,10 @@ struct LineDashOffset {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.arc(100, 75, 50, 0, 6.28)
-          offContext.setLineDash([10,20])
+          offContext.setLineDash([10, 20])
           // 设置lineDashOffset属性
           offContext.lineDashOffset = 10.0
           offContext.stroke()
@@ -941,7 +940,7 @@ struct ShadowBlur {
         .width('100%')
         .height('100%')
         .backgroundColor('rgb(213,213,213)')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // 设置shadowBlur属性
           offContext.shadowBlur = 30
@@ -1039,7 +1038,7 @@ struct ShadowOffsetX {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.shadowBlur = 10
           // 设置shadowOffsetX属性
@@ -1089,7 +1088,7 @@ struct ShadowOffsetY {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.shadowBlur = 10
           // 设置shadowOffsetY属性
@@ -1141,11 +1140,11 @@ struct ImageSmoothingEnabled {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // 设置imageSmoothingEnabled属性
           offContext.imageSmoothingEnabled = false
-          offContext.drawImage(this.img,0,0,400,200)
+          offContext.drawImage(this.img, 0, 0, 400, 200)
           let image = this.offCanvas.transferToImageBitmap()
           this.context.transferFromImageBitmap(image)
       })
@@ -1192,7 +1191,7 @@ justifyContent: FlexAlign.Center }) {
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let offctx = offContext
             offctx.imageSmoothingEnabled = true
@@ -1243,7 +1242,7 @@ justifyContent: FlexAlign.Center }) {
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let offctx = offContext
             offctx.font = '48px serif';
@@ -1395,6 +1394,75 @@ justifyContent: FlexAlign.Center }) {
 
 ![letterSpacingDemo](figures/letterSpacingDemo.jpeg)
 
+
+### antialias<sup>24+</sup>
+
+用于设置绘制图形和文本时是否开启抗锯齿。设置此接口会覆盖[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)中的抗锯齿效果，未通过该接口设置时，默认值为undefined，与[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)中的抗锯齿效果保持一致。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ------ | ------ |
+| boolean | 否 | 否 | 设置绘制图形和文本时是否开启抗锯齿。<br/>true表示开启抗锯齿；false表示不开启抗锯齿。<br/>值为undefined时，与[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)中的抗锯齿效果保持一致。 |
+
+**示例：** 
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct AntialiasDemoOff {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          let offContext = this.offCanvas.getContext("2d", this.settings);
+          let anti = offContext.antialias;
+          console.info(`current antialias is ${anti}`);
+          // 设置antialias属性为非抗锯齿
+          offContext.antialias = false;
+          offContext.strokeStyle = 'rgb(0,0,0)';
+          offContext.lineWidth = 2;
+          offContext.beginPath();
+          offContext.arc(150, 150, 100, 0, Math.PI);
+          offContext.stroke();
+          offContext.font = 'normal bold 30vp monospace';
+          offContext.fillText("Hello World", 20, 100);
+          anti = offContext.antialias;
+          console.info(`current antialias is ${anti}`);
+
+          // 设置antialias属性为抗锯齿
+          offContext.antialias = true;
+          offContext.beginPath();
+          offContext.arc(150, 350, 100, 0, Math.PI);
+          offContext.stroke();
+          offContext.font = 'normal bold 30vp monospace';
+          offContext.fillText("Hello World", 20, 300);
+          anti = offContext.antialias;
+          console.info(`current antialias is ${anti}`);
+          let image = this.offCanvas.transferToImageBitmap();
+          this.context.transferFromImageBitmap(image);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![AntialiasDemo](figures/AntialiasOffDemo.jpeg)
+
 ## 方法
 
 
@@ -1436,9 +1504,9 @@ fillRect(x: number, y: number, w: number, h: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('rgb(213,213,213)')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.fillRect(30,30,100,100)
+            offContext.fillRect(30, 30, 100, 100)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
          })
@@ -1490,7 +1558,7 @@ strokeRect(x: number, y: number, w: number, h: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.strokeRect(30, 30, 200, 150)
             let image = this.offCanvas.transferToImageBitmap()
@@ -1544,14 +1612,14 @@ clearRect(x: number, y: number, w: number, h: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = 'rgb(0,0,255)'
-            offContext.fillRect(20,20,200,200)
-            offContext.clearRect(30,30,150,100)
+            offContext.fillRect(20, 20, 200, 200)
+            offContext.clearRect(30, 30, 150, 100)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
-        })
+          })
       }
       .width('100%')
       .height('100%')
@@ -1600,7 +1668,7 @@ fillText(text: string, x: number, y: number, maxWidth?: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.font = '30px sans-serif'
             offContext.fillText("Hello World!", 20, 100)
@@ -1655,7 +1723,7 @@ strokeText(text: string, x: number, y: number, maxWidth?: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.font = '55px sans-serif'
             offContext.strokeText("Hello World!", 20, 60)
@@ -1929,7 +1997,7 @@ moveTo(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.moveTo(10, 10)
@@ -1984,7 +2052,7 @@ lineTo(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.moveTo(10, 10)
@@ -2032,7 +2100,7 @@ closePath(): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
               let offContext = this.offCanvas.getContext("2d", this.settings)
               offContext.beginPath()
               offContext.moveTo(30, 30)
@@ -2311,7 +2379,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.arc(100, 75, 50, 0, 6.28)
@@ -2368,7 +2436,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
 
             // 切线
@@ -2459,7 +2527,7 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.ellipse(200, 200, 50, 100, Math.PI * 0.25, Math.PI * 0.5, Math.PI * 2, false)
@@ -2518,7 +2586,7 @@ rect(x: number, y: number, w: number, h: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.rect(20, 20, 100, 100) // Create a 100*100 rectangle at (20, 20)
             offContext.stroke()
@@ -2670,7 +2738,7 @@ fill(fillRule?: CanvasFillRule): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = '#000000'
             offContext.rect(20, 20, 100, 100) // Create a 100*100 rectangle at (20, 20)
@@ -2723,7 +2791,7 @@ struct Fill {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           let region = new Path2D()
           region.moveTo(30, 90)
@@ -2783,7 +2851,7 @@ clip(fillRule?: CanvasFillRule): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.rect(0, 0, 100, 200)
             offContext.stroke()
@@ -2838,7 +2906,7 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let region = new Path2D()
             region.moveTo(30, 90)
@@ -2891,7 +2959,7 @@ reset(): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = '#0000ff'
             offContext.fillRect(20, 20, 150, 100)
@@ -2939,16 +3007,16 @@ saveLayer(): void
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = "#0000ff"
-            offContext.fillRect(50,100,300,100)
+            offContext.fillRect(50, 100, 300, 100)
             offContext.fillStyle = "#00ffff"
-            offContext.fillRect(50,150,300,100)
+            offContext.fillRect(50, 150, 300, 100)
             offContext.globalCompositeOperation = 'destination-over'
             offContext.saveLayer()
             offContext.globalCompositeOperation = 'source-over'
             offContext.fillStyle = "#ff0000"
-            offContext.fillRect(100,50,100,300)
+            offContext.fillRect(100, 50, 100, 300)
             offContext.fillStyle = "#00ff00"
-            offContext.fillRect(150,50,100,300)
+            offContext.fillRect(150, 50, 100, 300)
             offContext.restoreLayer()
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
@@ -3054,7 +3122,7 @@ rotate(angle: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.rotate(45 * Math.PI / 180)
             offContext.fillRect(70, 20, 50, 50)
@@ -3107,7 +3175,7 @@ scale(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.lineWidth = 3
             offContext.strokeRect(30, 30, 50, 50)
@@ -3249,7 +3317,7 @@ setTransform方法使用的参数和transform()方法相同，但setTransform()�
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = 'rgb(255,0,0)'
             offContext.fillRect(0, 0, 100, 100)
@@ -3305,7 +3373,7 @@ setTransform(transform?: Matrix2D): void
           .width('230vp')
           .height('160vp')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext1.fillRect(100, 20, 50, 50);
             this.offcontext1.setTransform(1, 0.5, -0.5, 1, 10, 10);
             this.offcontext1.fillRect(100, 20, 50, 50);
@@ -3317,7 +3385,7 @@ setTransform(transform?: Matrix2D): void
           .width('230vp')
           .height('160vp')
           .backgroundColor('#0ffff0')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext2.fillRect(100, 20, 50, 50);
             let storedTransform = this.offcontext1.getTransform();
             this.offcontext2.setTransform(storedTransform);
@@ -3360,9 +3428,11 @@ getTransform(): Matrix2D
   struct TransFormDemo {
     private settings: RenderingContextSettings = new RenderingContextSettings(true);
     private context1: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    private offcontext1: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
+    private offcontext1: OffscreenCanvasRenderingContext2D =
+      new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
     private context2: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    private offcontext2: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
+    private offcontext2: OffscreenCanvasRenderingContext2D =
+      new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -3371,9 +3441,9 @@ getTransform(): Matrix2D
           .width('230vp')
           .height('120vp')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext1.fillRect(50, 50, 50, 50);
-            this.offcontext1.setTransform(1.2, Math.PI/8, Math.PI/6, 0.5, 30, -25);
+            this.offcontext1.setTransform(1.2, Math.PI / 8, Math.PI / 6, 0.5, 30, -25);
             this.offcontext1.fillRect(50, 50, 50, 50);
             let image = this.offcontext1.transferToImageBitmap();
             this.context1.transferFromImageBitmap(image);
@@ -3383,14 +3453,12 @@ getTransform(): Matrix2D
           .width('230vp')
           .height('120vp')
           .backgroundColor('#0ffff0')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext2.fillRect(50, 50, 50, 50);
             let storedTransform = this.offcontext1.getTransform();
-            console.info("Matrix [scaleX = " + storedTransform.scaleX + ", scaleY = " + storedTransform.scaleY +
-            ", rotateX = " + storedTransform.rotateX + ", rotateY = " + storedTransform.rotateY +
-            ", translateX = " + storedTransform.translateX + ", translateY = " + storedTransform.translateY + "]")
+            console.info(`Matrix [scaleX = ${storedTransform.scaleX}, scaleY = ${storedTransform.scaleY}, rotateX = ${storedTransform.rotateX}, rotateY = ${storedTransform.rotateY}, translateX = ${storedTransform.translateX}, translateY = ${storedTransform.translateY}]`)
             this.offcontext2.setTransform(storedTransform);
-            this.offcontext2.fillRect(50,50,50,50);
+            this.offcontext2.fillRect(50, 50, 50, 50);
             let image = this.offcontext2.transferToImageBitmap();
             this.context2.transferFromImageBitmap(image);
           })
@@ -3439,7 +3507,7 @@ translate(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillRect(10, 10, 50, 50)
             offContext.translate(70, 70)
@@ -3801,11 +3869,11 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.drawImage(this.img,0,0,130,130)
+            offContext.drawImage(this.img, 0, 0, 130, 130)
             let imageData = offContext.getImageData(50,50,130,130)
-            offContext.putImageData(imageData,150,150)
+            offContext.putImageData(imageData, 150, 150)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
           })
@@ -4096,7 +4164,7 @@ toDataURL(type?: string, quality?: any): string
           .height(100)
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.fillRect(0,0,100,100)
+            offContext.fillRect(0, 0, 100, 100)
             this.dataURL = offContext.toDataURL()
           })
         Text(this.dataURL)
@@ -4202,7 +4270,7 @@ restore(): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.save() // save the default state
             offContext.fillStyle = "#00ff00"
@@ -4250,7 +4318,7 @@ save(): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.save() // save the default state
             offContext.fillStyle = "#00ff00"
@@ -4313,7 +4381,7 @@ createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGrad
           .width('100%')
           .height('100%')
           .backgroundColor('rgb(213,213,213)')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let grad = offContext.createLinearGradient(50,0, 300,100)
             grad.addColorStop(0.0, 'rgb(39,135,217)')
@@ -4380,7 +4448,7 @@ createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number,
           .width('100%')
           .height('100%')
           .backgroundColor('rgb(213,213,213)')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let grad = offContext.createRadialGradient(200,200,50, 200,200,200)
             grad.addColorStop(0.0, 'rgb(39,135,217)')
@@ -4441,7 +4509,7 @@ struct OffscreenCanvasConicGradientPage {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffffff')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           let grad = offContext.createConicGradient(0, 50, 80)
           grad.addColorStop(0.0, '#ff0000')

@@ -30,7 +30,7 @@ publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback\<number>):
 
 > **说明：**
 >
-> 该接口需要申请通知弹窗权限[NotificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
+> 该接口需要申请通知弹窗权限[notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
 >
 > <!--RP1--><!--RP1End-->
 
@@ -84,7 +84,7 @@ publishReminder(reminderReq: ReminderRequest): Promise\<number>
 
 > **说明：**
 >
-> 该接口需要申请通知弹窗权限[NotificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
+> 该接口需要申请通知弹窗权限[notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
 >
 > <!--RP1--><!--RP1End-->
 
@@ -870,6 +870,8 @@ subscribeReminderState(callback: Callback\<Array\<ReminderState>>): Promise\<voi
 
 订阅代理提醒状态。使用Promise异步回调。
 
+**需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -901,11 +903,11 @@ subscribeReminderState(callback: Callback\<Array\<ReminderState>>): Promise\<voi
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-reminderStateCallback(states: Array<reminderAgentManager.ReminderState>) {
+function reminderStateCallback(states: Array<reminderAgentManager.ReminderState>) {
   console.info('length is : ' + states.length);
 }
 
-reminderAgentManager.subscribeReminderState(this.reminderStateCallback).then(() => {
+reminderAgentManager.subscribeReminderState(reminderStateCallback).then(() => {
   console.info('subscribe succeed');
 }).catch((err: BusinessError) => {
   console.error('promise err code:' + err.code + ' message:' + err.message);
@@ -936,11 +938,10 @@ unsubscribeReminderState(callback?: Callback\<Array\<ReminderState>>): Promise\<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[reminderAgentManager错误码](errorcode-reminderAgentManager.md)。
+以下错误码的详细介绍请参见[reminderAgentManager错误码](errorcode-reminderAgentManager.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | ---------------------------- |
-| 201      | Permission denied.           |
 | 1700007  | If the input parameter is not valid parameter. |
 
 **示例：**
@@ -949,11 +950,11 @@ unsubscribeReminderState(callback?: Callback\<Array\<ReminderState>>): Promise\<
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-reminderStateCallback(states: Array<reminderAgentManager.ReminderState>) {
+function reminderStateCallback(states: Array<reminderAgentManager.ReminderState>) {
   console.info('length is : ' + states.length);
 }
 
-reminderAgentManager.unsubscribeReminderState(this.reminderStateCallback).then(() => {
+reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => {
   console.info('unsubscribe succeed');
 }).catch((err: BusinessError) => {
   console.error('promise err code:' + err.code + ' message:' + err.message);
@@ -1079,8 +1080,8 @@ ReminderRequestCalendar extends ReminderRequest
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | dateTime | [LocalDateTime](#localdatetime) | 否 | 否 | 指明提醒的目标时间。 |
-| repeatMonths | Array\<number> | 否 | 是 | 指明重复提醒的月份，范围：[1, 12]。 |
-| repeatDays | Array\<number> | 否 | 是 | 指明重复提醒的日期，范围：[1, 31]。 |
+| repeatMonths | Array\<number> | 否 | 是 | 指明重复提醒的月份，范围：[1, 12]。需和repeatDays一起使用。 |
+| repeatDays | Array\<number> | 否 | 是 | 指明重复提醒的日期，范围：[1, 31]。需和repeatMonths一起使用。 |
 | daysOfWeek<sup>11+</sup> | Array\<number> | 否 | 是 | 指明每周哪几天需要重复提醒。范围为周一到周日，对应数字为1到7。 |
 | endDateTime<sup>12+</sup> | [LocalDateTime](#localdatetime) | 否 | 是 | 指明提醒的结束时间。 |
 

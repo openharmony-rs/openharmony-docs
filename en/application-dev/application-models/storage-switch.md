@@ -7,7 +7,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-  | API in the [FA Model](ability-terminology.md#fa-model)| Corresponding .d.ts File in the [Stage Model](ability-terminology.md#stage-model)| Corresponding API in the Stage Model| 
+| API in the [FA Model](ability-terminology.md#fa-model)| Corresponding .d.ts File in the [Stage Model](ability-terminology.md#stage-model)| Corresponding API in the Stage Model| 
 | -------- | -------- | -------- |
 | GetStorageOptions | There is no corresponding API in the stage model.| The stage model uses **Preferences** to replace **Storage** and has redesigned the input parameters.| 
 | SetStorageOptions | There is no corresponding API in the stage model.| The stage model uses **Preferences** to replace **Storage** and has redesigned the input parameters.| 

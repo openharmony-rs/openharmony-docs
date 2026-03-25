@@ -37,7 +37,9 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 
 ### 设置屏幕捕获Picker
 
-从API version 20开始支持设置屏幕捕获Picker。
+从API version 20开始，支持在PC/2in1设备上设置屏幕捕获Picker。
+
+从API version 23开始，支持在Phone/Tablet设备上设置屏幕捕获Picker。
 
 使用[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置是否弹出屏幕捕获Picker。
 
@@ -83,7 +85,7 @@ OH_AVScreenCapture_SetMicrophoneEnabled(capture, isMic);
 
 
 ```c++
-//  value值设为0，表示全屏屏蔽模式。value值设为1，表示窗口屏蔽模式。默认为全屏屏蔽模式。
+// value值设为0，表示全屏屏蔽模式。value值设为1，表示窗口屏蔽模式。默认为全屏屏蔽模式。
 int value = 0;
 OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
 OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, value);

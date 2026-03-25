@@ -257,7 +257,7 @@ import router from '@system.router';
 class J{
   getLength() {
     let size = router.getLength();
-    console.log('pages stack size = ' + size);
+    console.info('pages stack size = ' + size);
   }
 }
 export default new J()
@@ -284,9 +284,9 @@ import router from '@system.router';
 class K{
   getState() {
     let page = router.getState();
-    console.log('current index = ' + page.index);
-    console.log('current name = ' + page.name);
-    console.log('current path = ' + page.path);
+    console.info('current index = ' + page.index);
+    console.info('current name = ' + page.name);
+    console.info('current path = ' + page.path);
   }
 }
 export default new K()
@@ -315,10 +315,10 @@ class L{
     router.enableAlertBeforeBackPage({
       message: 'Message Info',
       success: ()=> {
-        console.log('success');
+        console.info('success');
       },
       cancel: ()=> {
-        console.log('cancel');
+        console.info('cancel');
       }
     });
   }
@@ -348,10 +348,10 @@ class Z{
   disableAlertBeforeBackPage() {
     router.disableAlertBeforeBackPage({
       success: ()=> {
-        console.log('success');
+        console.info('success');
       },
       cancel: ()=> {
-        console.log('cancel');
+        console.info('cancel');
       }
     });
   }
@@ -424,3 +424,179 @@ Defines the **DisableAlertBeforeBackPage** parameter.
 | Name         | Type| Description          |
 | ------------- | -------- | -------------- |
 | [key: string] | object   | List of routing parameters.|
+
+## Example
+
+This example shows the redirection feature of the router.[replace](#routerreplace) API in the web-like paradigm.
+
+The following describes the tree structure:
+```text
+pages
+├─ index
+│  ├─ index.css
+│  ├─ index.hml
+│  └─ index.js
+└─ routerPages
+   ├─ routerPage.css
+   ├─ routerPage.hml
+   └─ routerPage.js
+```
+```css
+/* index.css */
+.page {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #050816;
+}
+
+.page-name {
+  width: 78%;
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+  color: #f8fafc;
+}
+
+.tips {
+  width: 82%;
+  margin-top: 12px;
+  font-size: 12px;
+  text-align: center;
+  color: #cbd5e1;
+}
+
+.status {
+  width: 82%;
+  margin-top: 8px;
+  font-size: 12px;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.action-button {
+  width: 190px;
+  height: 42px;
+  margin-top: 22px;
+  border-radius: 21px;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+}
+```
+```hml
+<!--index.hml-->
+<div class="page">
+    <text class="page-name">{{ pageName }}</text>
+    <text class="tips">{{ tips }}</text>
+    <text class="status">{{ statusText }}</text>
+    <input class="action-button" type="button" value="Replace to routerPage" onclick="replaceToRouterPage"></input>
+</div>
+```
+```js
+// index.js
+import router from '@system.router';
+
+export default {
+    data: {
+        pageName: 'Index Page',
+        tips: 'Tap the button to replace this page.',
+        statusText: 'Current page: index'
+    },
+    replaceToRouterPage: function() {
+        router.replace({
+            uri: 'pages/routerPages/routerPage',
+            params: {
+                data1: 'This page was opened by router.replace().'
+            }
+        });
+    }
+}
+```
+```css
+/* routerPage.css */
+.page {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #050816;
+}
+
+.page-name {
+  width: 78%;
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+  color: #f8fafc;
+}
+
+.tips {
+  width: 82%;
+  margin-top: 12px;
+  font-size: 12px;
+  text-align: center;
+  color: #cbd5e1;
+}
+
+.status {
+  width: 82%;
+  margin-top: 8px;
+  font-size: 12px;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.action-button {
+  width: 190px;
+  height: 42px;
+  margin-top: 22px;
+  border-radius: 21px;
+  background-color: #16a34a;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+}
+```
+```hml
+<!--routerPage.hml-->
+<div class="page">
+    <text class="page-name">{{ pageName }}</text>
+    <text class="tips">{{ tips }}</text>
+    <text class="status">{{ statusText }}</text>
+    <input class="action-button" type="button" value="Replace to index" onclick="replaceToIndex"></input>
+</div>
+```
+```js
+// routerPage.js
+import router from '@system.router';
+
+export default {
+    data: {
+        pageName: 'Router Page',
+        tips: 'Tap the button to replace this page and return home.',
+        statusText: 'Current page: routerPage',
+        data1: 'Waiting for router.replace params.'
+    },
+    onInit: function() {
+        if (this.data1) {
+            this.statusText = this.data1;
+        }
+    },
+    replaceToIndex: function() {
+        router.replace({
+            uri: 'pages/index/index'
+        });
+    }
+}
+```
+
+![system_router_web_like.gif](figures/systemRouterWebLikeDemo.gif)

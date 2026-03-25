@@ -14,6 +14,7 @@ The **ArcListItem** component is used to display individual child components in 
 > - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
 > - This component can be used only as a child of [ArcList](ts-container-arclist.md).
 > - When this component is used with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), its child components are created when it is created. When this component is used with [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) or [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), or when the parent component is [ArcList](ts-container-arclist.md), its child components are created when it is laid out.
+> - This component can be used on phones, PCs, 2-in-1 devices, tablets, TVs, and wearables. In API version 22 and earlier versions, a compilation warning will be reported when this component is used on phones, PCs, 2-in-1 devices, tablets, and TVs, but the component can still run properly.
 
 ## Modules to Import
 
@@ -42,8 +43,6 @@ This component can contain a single child component.
 
 ## APIs
 
-### ArcListItem
-
 ArcListItem()
 
 Creates an item for the **ArcList** component.
@@ -70,7 +69,7 @@ Sets whether to enable auto-scaling for the **ArcListItem** component.
 
 | Name| Type              | Mandatory| Description                                       |
 | ------ | ------------------ | ---- | ------------------------------------------- |
-| enable | Optional\<boolean> | Yes  | Whether to enable auto-scaling.<br>**true**: Enable auto-scaling.<br>**false**: Disable auto-scaling.<br>Default value: **true**.|
+| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable auto-scaling.<br>**true**: Enable auto-scaling.<br>**false**: Disable auto-scaling.<br>Default value: **true**.|
 
 ### swipeAction
 
@@ -86,7 +85,7 @@ Sets the swipe action item displayed when the **ArcListItem** component is swipe
 
 | Name | Type                                                        | Mandatory| Description                   |
 | ------- | ------------------------------------------------------------ | ---- | ----------------------- |
-| options | [Optional\<SwipeActionOptions>](ts-container-listitem.md#swipeactionoptions9) | Yes  | Swipe action item displayed when the **ArcListItem** component is swiped out from the screen edge.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[SwipeActionOptions](ts-container-listitem.md#swipeactionoptions9)&gt;| Yes  | Swipe action item displayed when the **ArcListItem** component is swiped out from the screen edge.|
 
 ## Example
 
@@ -102,7 +101,7 @@ import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute } from '@k
 @Component
 struct ArcListItemExample {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  private watchSize: string = '466px'; // Default watch size: 466*466
+  private watchSize: string = '466px'; // Default watch size: 466 x 466
   private itemSize: string = '414px' // Item width
 
   @Builder

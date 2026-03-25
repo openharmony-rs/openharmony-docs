@@ -763,6 +763,46 @@ CONFIG
 ```
 The **malloc_disable** parameter is used in the command to filter the native heap stack data. If the **restrace_tag** parameter does not contain **RES_GPU_CL_IMAGE**, the GPU memory allocation stack of the OpenCL image type is not captured.
 
+
+Since API version 23, the call stack of **napi_ref** created by a specified process can be captured, and weak references are not captured.
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 30 \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  save_file: false
+  smb_pages: 16384
+  max_stack_depth: 20
+  pid: 11237
+  string_compressed: true
+  fp_unwind: true
+  blocked: true
+  callframe_compress: true
+  record_accurately: true
+  offline_symbolization: true
+  startup_mode: false
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_ARK_GLOBAL_HANDLE"
+  }
+}
+CONFIG
+```
+
 ## FAQs
 
 ### What should I do if an exception occurs during profiling?

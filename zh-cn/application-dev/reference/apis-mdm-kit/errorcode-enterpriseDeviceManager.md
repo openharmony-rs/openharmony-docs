@@ -40,7 +40,7 @@ The administrator application does not have permission to manage the device.
 
 **可能原因**
 
-激活成了DA管理器，但调用了SDA管理器接口。
+已激活为DA管理器，但调用了SDA管理器接口。
 
 **处理步骤**
 
@@ -315,6 +315,24 @@ The ability does not exist.
 1. 检查want中的bundleName和abilityName是否正确。
 2. 检查传入的Ability对外是否可见。
 
+## 9200016 服务超时
+
+**错误信息**
+
+Service timeout.
+
+**错误描述**
+
+当服务超时时，方法将返回该错误码。
+
+**可能原因**
+
+服务超时。
+
+**处理步骤**
+
+服务超时，请稍后重试。
+
 ## 9201001 管理证书失败
 
 **错误信息**
@@ -492,3 +510,87 @@ The certificate does not exist.
 **处理步骤**
 
 检查卸载的证书是否存在。
+
+## 9201009 日志收集任务创建失败
+
+**错误信息**
+
+Collecting logs, please try again later.
+
+**错误描述**
+
+当企业设备管理创建日志收集任务失败时，会产生此错误码。
+
+**可能原因**
+
+当已有一个日志收集任务正在执行时，调用了[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口创建日志收集任务。
+
+**处理步骤**
+
+等前一个日志收集任务完成（即收到[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23)回调）后，再调用[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口创建日志收集任务。
+
+## 9201010 以太网网络接口配置失败
+
+**错误信息**
+
+Ethernet configuration failed. Ethernet device not connected.
+
+**错误描述**
+
+以太网配置失败，或以太网设备未连接。
+
+**可能原因**
+
+该错误码表示以太网配置失败，可能原因如下。
+
+1. 网卡未启用。
+2. 网卡名输入错误。
+3. 配置参数错误。
+
+**处理步骤**
+
+1. 检查网卡是否启用。
+2. 检查输入的网卡名是否正确。
+3. 检查配置的参数是否正确。
+
+## 9201011 禁用凭据无效
+
+**错误信息**
+
+The credential of the activation lock is invalid.
+
+**错误描述**
+
+禁用凭据无效。
+
+**可能原因**
+
+1. 传入的禁用凭据格式不正确。
+2. 传入的禁用凭据字段值不正确。
+3. 传入的禁用凭据非当前设备对应的凭据。
+
+**处理步骤**
+
+1. 检查禁用凭据格式是否正确。
+2. 检查禁用凭据各字段值是否正确。
+3. 检查禁用凭据是否是当前设备对应的禁用凭据。
+
+## 9201012 禁用或启用激活锁失败
+
+**错误信息**
+
+Failed to enable or disable the activation lock.
+
+**错误描述**
+
+禁用或启用激活锁失败。
+
+**可能原因**
+
+<!--RP1-->设备不支持激活锁服务。
+<!--RP1End-->
+
+**处理步骤**
+
+<!--RP2-->设备不支持激活锁服务。
+<!--RP2End-->

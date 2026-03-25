@@ -80,5 +80,4 @@ Enumerates the display modes of an [EmbeddableUIAbility](js-apis-app-ability-emb
 | ----------------------------------- |---|--------------|
 | WINDOW        | 0 | An independent window is used to show the ability startup. |
 | EMBEDDED_FULL       | 1 | An embedded full-screen is used to show the ability startup.|
-
-<!--no_check-->
+| EMBEDDED_HALF<sup>23+</sup>       | 2 | An embedded half-screen is used to show the ability startup.|

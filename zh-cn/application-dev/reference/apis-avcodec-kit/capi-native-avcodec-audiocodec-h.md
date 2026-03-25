@@ -160,7 +160,7 @@ OH_AVErrCode OH_AudioCodec_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallbac
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向OH_AVCodec实例的指针。 |
-| [OH_AVCodecCallback](capi-codecbase-oh-avcodecasynccallback.md) callback | 所有回调函数的集合，请参见[OH_AVCodecCallback](capi-codecbase-oh-avcodecasynccallback.md)。 |
+| [OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md) callback | 所有回调函数的集合。 |
 | void *userData | 用户特定数据。 |
 
 **返回：**

@@ -4,30 +4,34 @@
 <!--Owner: @liwenzhen3-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @zhang_yixin13-->
 
 This topic provides migration guidance for component state variables across different scenarios.
+
 | V1 Decorator               | V2 Decorator                 |
 |------------------------|--------------------------|
-| [\@State](./arkts-state.md)                 | No external initialization: [\@Local](./arkts-new-local.md)<br>One-time external initialization: [\@Param](./arkts-new-param.md) + [\@Once](./arkts-new-once.md)|
+| [\@State](./arkts-state.md)                 | No external initialization: [\@Local](./arkts-new-local.md)<br>One-time external initialization: [\@Param](./arkts-new-param.md) or [\@Once](./arkts-new-once.md)|
 | [\@Prop](./arkts-prop.md)                   | [\@Param](./arkts-new-param.md)                   |
-| [\@Link](./arkts-link.md)                  | [\@Param](./arkts-new-param.md)[\@Event](./arkts-new-event.md)    |
-|  [\@ObjectLink](./arkts-observed-and-objectlink.md)           |[\@Param](./arkts-new-param.md)[\@Event](./arkts-new-event.md)                   |
+| [\@Link](./arkts-link.md)                  | [\@Param](./arkts-new-param.md)/[\@Event](./arkts-new-event.md)    |
+|  [\@ObjectLink](./arkts-observed-and-objectlink.md)           |[\@Param](./arkts-new-param.md)/[\@Event](./arkts-new-event.md)                   |
 |  [\@Provide](./arkts-provide-and-consume.md)               |[\@Provider](./arkts-new-provider-and-consumer.md)                | 
 | [\@Consume](./arkts-provide-and-consume.md)               |[\@Consumer](./arkts-new-provider-and-consumer.md)                |
 | [\@Watch](./arkts-watch.md)               |[\@Monitor](./arkts-new-monitor.md)                |
 | No computed property capability (manual recalculation required)| [\@Computed](./arkts-new-computed.md)                |
 
+
 ## Migration Examples
 
-### \@State->\@Local
+### \@State -> \@Local
 
 **Migration Rules**
 
 In V1, \@State decorates internal component state variables. V2 provides \@Local as its replacement, but with significant differences in observation capabilities and initialization rules. The migration strategies for different use scenarios are as follows:
 
 - Primitive types: For primitive type variables, directly replace \@State with \@Local.
-- Complex types: In V1, @State can observe the top-level property changes of a complex object. In V2, \@Local can observe only the changes of the object itself. To listen for the internal property changes of an object, you can use \@ObservedV2 and \@Trace together.
+
+- Complex types: In V1, \@State can observe the top-level property changes of a complex object. In V2, \@Local can observe only the changes of the object itself. To listen for the internal property changes of an object, you can use \@ObservedV2 and \@Trace together.
+
 - External initialization: \@State in V1 supports initialization from external values, while \@Local in V2 prohibits external initialization. If an initial value needs to be passed in externally, you can use the \@Param and \@Once decorators.
 
 **Example**
@@ -38,11 +42,15 @@ For primitive type variables, \@State in V1 can be replaced with \@Local in V2.
 
 V1:
 
-```ts
+<!-- @[Child1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV1.ets) -->
+
+``` TypeScript
+const INITIAL_VALUE = 10;
+
 @Entry
 @Component
 struct Child {
-  @State val: number = 10;
+  @State val: number = INITIAL_VALUE;
 
   build() {
     Text(this.val.toString())
@@ -52,11 +60,15 @@ struct Child {
 
 V2:
 
-```ts
+<!-- @[Child2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV2.ets) -->
+
+``` TypeScript
+const INITIAL_VALUE = 10;
+
 @Entry
 @ComponentV2
 struct Child {
-  @Local val: number = 10;
+  @Local val: number = INITIAL_VALUE;
 
   build() {
     Text(this.val.toString())
@@ -66,18 +78,22 @@ struct Child {
 
 **Complex Types**
 
-In V1, \@State can observe changes in the top-level properties of complex objects. In V2, however, \@Local can only observe changes to the object itself, not its internal properties. To solve this issue, you need to add \@ObservedV2 to the class and add \@Trace to target properties.  
+In V1, \@State can observe changes in the top-level properties of complex objects. In V2, however, \@Local can only observe changes to the object itself, not its internal properties. To solve this issue, you need to add \@ObservedV2 to the class and add \@Trace to target properties. In this way, V2 can listen for property changes inside the object.
 
 V1:
 
-```ts
+<!-- @[example1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateComplexV1.ets) -->
+
+``` TypeScript
+const INITIAL_VALUE = 10;
+
 class Child {
-  value: number = 10;
+  public value: number = INITIAL_VALUE;
 }
 
 @Component
 @Entry
-struct example {
+struct Example {
   @State child: Child = new Child();
 
   build() {
@@ -95,21 +111,25 @@ struct example {
 
 V2 migration policy: Use \@ObservedV2 and \@Trace.
 
-```ts
+<!-- @[example2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateComplexV2.ets) -->
+
+``` TypeScript
+const INITIAL_VALUE = 10;
+
 @ObservedV2
 class Child {
-  @Trace public value: number = 10;
+  @Trace public value: number = INITIAL_VALUE;
 }
 
 @ComponentV2
 @Entry
-struct example {
+struct Example {
+  // @Local can only observe the object itself. Add @ObservedV2 and @Trace to Child to enable observation of internal properties.
   @Local child: Child = new Child();
 
   build() {
     Column() {
       Text(this.child.value.toString())
-      // @Local can only observe the object itself. Add @ObservedV2 and @Trace to Child to enable observation of internal properties.
       Button('value+1')
         .onClick(() => {
           this.child.value++;
@@ -125,7 +145,9 @@ In V1, \@State enables variables to be initialized from outside the component. I
 
 V1:
 
-```ts
+<!-- @[Parent5_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateExternalInitializationV1.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   @State value: number = 0;
@@ -149,7 +171,9 @@ struct Parent {
 
 V2 migration policy: Use \@Param and \@Once.
 
-```ts
+<!-- @[Parent6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateExternalInitializationV2.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   @Param @Once value: number = 0;
@@ -171,6 +195,7 @@ struct Parent {
 }
 ```
 
+
 ### \@Link -> \@Param/\@Event
 
 **Migration Rules**
@@ -181,7 +206,11 @@ In V1, \@Link allows two-way binding between parent and child components. For mi
 
 V1:
 
-```ts
+<!-- @[Parent7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV1.ets) -->
+
+``` TypeScript
+const INITIAL_MYVAL = 10;
+
 @Component
 struct Child {
   // @Link enables two-way data synchronization.
@@ -201,7 +230,7 @@ struct Child {
 @Entry
 @Component
 struct Parent {
-  @State myVal: number = 10;
+  @State myVal: number = INITIAL_MYVAL;
 
   build() {
     Column() {
@@ -214,7 +243,11 @@ struct Parent {
 
 V2 migration policy: Use \@Param and \@Event.
 
-```ts
+<!-- @[Parent8_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV2.ets) -->
+
+``` TypeScript
+const INITIAL_MYVAL = 10;
+
 @ComponentV2
 struct Child {
   // Combining @Param with @Event enables two-way data synchronization.
@@ -235,7 +268,7 @@ struct Child {
 @Entry
 @ComponentV2
 struct Parent {
-  @Local myVal: number = 10
+  @Local myVal: number = INITIAL_MYVAL;
 
   build() {
     Column() {
@@ -246,14 +279,17 @@ struct Parent {
 }
 ```
 
+
 ### \@Prop -> \@Param
 
 **Migration Rules**
 
-In V1, the \@Prop decorator allows child components to receive and modify parent-passed parameters. In V2, \@Param replaces \@Prop. However, \@Param decorated parameters are read-only and cannot be modified in the child component. Depending on the scenario, there are several migration strategies:
+In V1, the \@Prop decorator allows child components to receive and modify parent-passed parameters. In V2, \@Param replaces \@Prop. However, \@Param decorated parameters are read-only and cannot be modified in the child component. Depending on the scenario, there are 3 migration strategies:
 
 - Primitive types: For primitive type parameters, replace \@Prop with \@Param.
+
 - Complex types: For complex objects requiring strict one-way data flow, perform a deep copy to prevent the child component from modifying the parent's data.
+
 - Variable modification by the child component: Use \@Once to allow one-time local modification. Note that if \@Once is used, the current child component is initialized only once, and changes from the parent component cannot be synchronized to the child component.
 
 **Example**
@@ -264,7 +300,9 @@ For primitive type variables, \@Prop in V1 can be replaced with \@Param in V2.
 
 V1:
 
-```ts
+<!-- @[Parent9_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV1.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   @Prop value: number;
@@ -287,7 +325,9 @@ struct Parent {
 
 V2:
 
-```ts
+<!-- @[Parent10_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV2.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   @Param value: number = 0;
@@ -307,16 +347,22 @@ struct Parent {
   }
 }
 ```
+
 **Complex Types**
 
 In V2, to enforce strict one-way data flow and prevent child components from modifying parent data, you must use a deep copy when passing complex objects with \@Param. This prevents the transfer of object references.
 
 V1:
 
-```ts
+<!-- @[Parent11_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV1.ets) -->
+
+``` TypeScript
+const APPLE_INITIAL_COUNT = 5;
+const ORANGE_INITIAL_COUNT = 10;
+
 class Fruit {
-  apple: number = 5;
-  orange: number = 10;
+  public apple: number = APPLE_INITIAL_COUNT;
+  public orange: number = ORANGE_INITIAL_COUNT;
 }
 
 @Component
@@ -357,11 +403,16 @@ struct Parent {
 
 V2:
 
-```ts
+<!-- @[Parent12_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV2.ets) --> 
+
+``` TypeScript
+const APPLE_INITIAL_COUNT = 5;
+const ORANGE_INITIAL_COUNT = 10;
+
 @ObservedV2
 class Fruit {
-  @Trace apple: number = 5;
-  @Trace orange: number = 10;
+  @Trace public apple: number = APPLE_INITIAL_COUNT;
+  @Trace public orange: number = ORANGE_INITIAL_COUNT;
 
   // Use a deep copy to prevent the child component from modifying parent data.
   clone(): Fruit {
@@ -415,7 +466,9 @@ In V1, child components can modify \@Prop decorated variables. However, in V2, \
 
 V1:
 
-```ts
+<!-- @[Parent13_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarV1.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   // @Prop allows direct modification of the variable.
@@ -445,7 +498,9 @@ struct Parent {
 
 V2 migration policy: Use \@Param and \@Once.
 
-```ts
+<!-- @[Parent14_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarV2.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   // @Param used together with @Once enables local modification.
@@ -476,10 +531,15 @@ struct Parent {
 In V1, a child component can modify its @Prop decorated variables. These changes are applied locally and are not synced to the parent component. When the parent's data source updates, the child component receives the update and its local \@Prop values are overwritten.
 
 V1:
+
 - Changes to **localValue** in the child component **Child** are not synchronized to the parent component **Parent**.
 - When **Parent** updates **value**, **Child** is notified and its **localValue** is overwritten.
 
-```ts
+<!-- @[Parent15_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV1.ets) -->
+
+``` TypeScript
+const PARENT_INITIAL_STATE_VALUE = 10;
+
 @Component
 struct Child {
   @Prop localValue: number = 0;
@@ -499,7 +559,7 @@ struct Child {
 @Entry
 @Component
 struct Parent {
-  @State value: number = 10;
+  @State value: number = PARENT_INITIAL_STATE_VALUE;
 
   build() {
     Column() {
@@ -513,14 +573,23 @@ struct Parent {
   }
 }
 ```
+
 In V2, \@Param cannot be modified locally. When used with \@Once, the value is synchronized only once. In contrast, \@Monitor enables a writable local copy in the child component while still receiving updates from the parent component.
 
 V2:
+
 - When **Parent** is updated, it notifies the child component and triggers the **onValueChange** callback decorated with \@Monitor. This callback assigns the new value to **localValue** in the child component.
 - Modifications to **localValue** remain local and are not propagated to **Parent**.
 - Subsequent updates from **Parent** will overwrite **localValue** in the child component.
 
-```ts
+<!-- @[Parent16_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV2.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+const PARENT_INITIAL_LOCAL_VALUE = 10;
+
 @ComponentV2
 struct Child {
   @Local localValue: number = 0;
@@ -528,7 +597,7 @@ struct Child {
 
   @Monitor('value')
   onValueChange(mon: IMonitor) {
-    console.info(`value has been changed from ${mon.value()?.before} to ${mon.value()?.now}`);
+    hilog.info(DOMAIN, TAG, `value has been changed from ${mon.value()?.before} to ${mon.value()?.now}`);
     // When the parent component's value changes, the child component receives an update notification, triggering the @Monitor decorated callback, which overwrites the local value with the new value from the parent.
     this.localValue = this.value;
   }
@@ -548,7 +617,7 @@ struct Child {
 @Entry
 @ComponentV2
 struct Parent {
-  @Local value: number = 10;
+  @Local value: number = PARENT_INITIAL_LOCAL_VALUE;
 
   build() {
     Column() {
@@ -563,16 +632,23 @@ struct Parent {
 }
 ```
 
+
 ### \@Provide/\@Consume -> \@Provider/\@Consumer
+
 **Migration Rules**
 
 The functionality of \@Provide and \@Consume in V1 is largely similar to \@Provider and \@Consumer in V2, making them generally interchangeable. However, several key differences may require adjustments depending on your implementation.
-Key differences:
+
+In V1, @Provide and @Consume enable data sharing between parent and child components. They can be matched by alias or attribute name, with \@Consume depending on the parent component's \@Provide. Local initialization is not supported before API version 20. In V2, \@Provider and \@Consumer enhance these features, offering more flexible data sharing. Key improvements are as follows:
 
 - Syntax requirement: In V1, \@Provide and \@Consume can be used without parentheses () if no alias is specified. In V2, \@Provider and \@Consumer must always be followed by parentheses (), whether or not an alias is specified.
+
 - Matching rules: In V1, \@Provide and \@Consume can be matched by alias or variable name. In V2, matching is performed only by alias. Once an alias is specified, it becomes the exclusive matching key.
+
 - Local initialization: In V1, \@Consume depends on the parent component's @Provide and does not support local initialization before API version 20. Since API version 20, local default values are used if no matching @Provide is found. For details, see [Setting Default Values for @Consume Decorated Variables](./arkts-provide-and-consume.md#setting-default-values-for-consume-decorated-variables). In V2, \@Consumer supports local initialization by default, using the local value if no matching \@Provider is available.
-- Initialization from the parent component: In V1, \@Provide can be directly initialized from the parent component. In V2, \@Provider does not support external initialization. You must use @Param with @Once to receive the initial value from the parent and assign it to \@Provider.
+
+- Initialization from the parent component: In V1, \@Provide can be directly initialized from the parent component. In V2, \@Provider does not support external initialization. You must use @Param with \@Once to receive the initial value from the parent and assign it to \@Provider.
+
 - Overriding support: In V1, \@Provide requires explicit **allowOverride** to support overriding. In V2, \@Provider supports overriding by default. \@Consumer automatically resolves to the nearest \@Provider in the component tree.
 
 **Example**
@@ -583,7 +659,9 @@ In V1, \@Provide and \@Consume can be matched by alias or variable name. In V2, 
 
 V1:
 
-```ts
+<!-- @[Parent17_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAliasV1.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   // Both alias and variable name can be used as matching keys.
@@ -613,7 +691,9 @@ struct Parent {
 
 V2:
 
-```ts
+<!-- @[Parent18_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAliasV2.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   // The alias is the exclusive matching key. If the alias exists, the variable name cannot be used for matching.
@@ -647,7 +727,9 @@ In V1 prior to API version 20, \@Consume decorated variables cannot be locally i
 
 V1:
 
-```ts
+<!-- @[Parent19_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideConsumeNoInitV1.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   // @Consume prohibits local initialization. If no matching @Provide is found, an exception is thrown.
@@ -673,7 +755,9 @@ struct Parent {
 
 V2:
 
-```ts
+<!-- @[Parent20_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideConsumeInitV2.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   // @Consumer allows local initialization. The local default value will be used when \@Provider is not found.
@@ -701,11 +785,15 @@ In V1, \@Provide allows initialization from the parent component, and initial va
 
 V1:
 
-```ts
+<!-- @[Parent21_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentInitV1.ets) -->
+
+``` TypeScript
+const STATE_INITIAL_PARENT_VALUE = 42;
+
 @Entry
 @Component
 struct Parent {
-  @State parentValue: number = 42;
+  @State parentValue: number = STATE_INITIAL_PARENT_VALUE;
 
   build() {
     Column() {
@@ -729,11 +817,15 @@ struct Child {
 
 V2:
 
-```ts
+<!-- @[Parent22_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentNoInitV2.ets) -->
+
+``` TypeScript
+const LOCAL_INITIAL_PARENT_VALUE = 42;
+
 @Entry
 @ComponentV2
 struct Parent {
-  @Local parentValue: number = 42;
+  @Local parentValue: number = LOCAL_INITIAL_PARENT_VALUE;
 
   build() {
     Column() {
@@ -758,15 +850,20 @@ struct Child {
 
 **Overriding Support**
 
-In V1, \@Provide requires explicit **allowOverride** to support overriding. In V2, \@Provider supports overriding by default. \@Consumer automatically resolves to the nearest \@Provider in the component tree.
+In V1, \@Provide does not support overriding by default and cannot override an ancestor component's \@Provide with the same name. To enable overriding, configure **allowOverride**. In V2, \@Provider supports overriding by default. \@Consumer automatically resolves to the nearest \@Provider in the component tree.
 
 V1:
 
-```ts
+<!-- @[GrandParent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideNoAllowOverrideV1.ets) --> 
+
+``` TypeScript
+const GRANDPARENT_REVIEW_VOTES_INITIAL = 40;
+const PARENT_REVIEW_VOTES_INITIAL = 20;
+
 @Entry
 @Component
 struct GrandParent {
-  @Provide('reviewVotes') reviewVotes: number = 40;
+  @Provide('reviewVotes') reviewVotes: number = GRANDPARENT_REVIEW_VOTES_INITIAL;
 
   build() {
     Column() {
@@ -778,7 +875,7 @@ struct GrandParent {
 @Component
 struct Parent {
   // @Provide does not support overriding by default. To enable overriding, use **allowOverride**.
-  @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = 20;
+  @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = PARENT_REVIEW_VOTES_INITIAL;
 
   build() {
     Child()
@@ -797,11 +894,16 @@ struct Child {
 
 V2:
 
-```ts
+<!-- @[GrandParent2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAllowOverrideV2.ets) -->
+
+``` TypeScript
+const GRANDPARENT_REVIEW_VOTES_INITIAL = 40;
+const PARENT_REVIEW_VOTES_INITIAL = 20;
+
 @Entry
 @ComponentV2
 struct GrandParent {
-  @Provider('reviewVotes') reviewVotes: number = 40;
+  @Provider('reviewVotes') reviewVotes: number = GRANDPARENT_REVIEW_VOTES_INITIAL;
 
   build() {
     Column() {
@@ -813,7 +915,7 @@ struct GrandParent {
 @ComponentV2
 struct Parent {
   // @Provider supports overriding by default. @Consumer searches for the nearest @Provider upwards.
-  @Provider() reviewVotes: number = 20;
+  @Provider() reviewVotes: number = PARENT_REVIEW_VOTES_INITIAL;
 
   build() {
     Child()
@@ -830,13 +932,17 @@ struct Child {
 }
 ```
 
+
 ### \@Watch -> \@Monitor
+
 **Migration Rules**
 
 In V1, \@Watch observes state variable changes and triggers specified callbacks. In V2, \@Monitor replaces \@Watch, offering more flexible change detection with access to both previous and current variable values. The migration policies for different use scenarios are as follows:
 
 - Single-variable listening: Directly replace \@Watch with \@Monitor.
+
 - Multi-variable listening: In V1, \@Watch cannot access the previous value of the variable before the change. In V2, \@Monitor can listen for multiple variables at the same time and can access the values of the variables before and after the change.
+
 **Example**
 
 **Single-Variable Listening**
@@ -845,14 +951,21 @@ Use \@Monitor of V2 instead of \@Watch of V1.
 
 V1:
 
-```ts
+<!-- @[WatchExample1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchSingleVarV1.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+
 @Entry
 @Component
-struct watchExample {
+struct WatchExample {
   @State @Watch('onAppleChange') apple: number = 0;
 
   onAppleChange(): void {
-    console.info('apple count changed to ' + this.apple);
+    hilog.info(DOMAIN, TAG, 'apple count changed to ' + this.apple);
   }
 
   build() {
@@ -869,15 +982,22 @@ struct watchExample {
 
 V2:
 
-```ts
+<!-- @[MonitorExample1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchSingleVarV2.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+
 @Entry
 @ComponentV2
-struct monitorExample {
+struct MonitorExample {
   @Local apple: number = 0;
 
   @Monitor('apple')
   onFruitChange(monitor: IMonitor) {
-    console.info(`apple changed from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    hilog.info(DOMAIN, TAG, `apple changed from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
   build() {
@@ -898,20 +1018,27 @@ In V1, each \@Watch callback function can monitor only one variable and cannot o
 
 V1:
 
-```ts
+<!-- @[WatchExample2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchMoreVarV1.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+
 @Entry
 @Component
-struct watchExample {
+struct WatchExample {
   @State @Watch('onAppleChange') apple: number = 0;
   @State @Watch('onOrangeChange') orange: number = 0;
 
   // @Watch callback, which is used to listen for only a single variable but cannot obtain the value before change.
   onAppleChange(): void {
-    console.info('apple count changed to ' + this.apple);
+    hilog.info(DOMAIN, TAG, 'apple count changed to ' + this.apple);
   }
 
   onOrangeChange(): void {
-    console.info('orange count changed to ' + this.orange);
+    hilog.info(DOMAIN, TAG, 'orange count changed to ' + this.orange);
   }
 
   build() {
@@ -929,14 +1056,22 @@ struct watchExample {
     }
   }
 }
+
 ```
 
 V2:
 
-```ts
+<!-- @[MonitorExample2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchMoreVarV2.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+
 @Entry
 @ComponentV2
-struct monitorExample {
+struct MonitorExample {
   @Local apple: number = 0;
   @Local orange: number = 0;
 
@@ -944,7 +1079,7 @@ struct monitorExample {
   @Monitor('apple','orange')
   onFruitChange(monitor: IMonitor) {
     monitor.dirty.forEach((name: string) => {
-      console.info(`${name} changed from ${monitor.value(name)?.before} to ${monitor.value(name)?.now}`);
+      hilog.info(DOMAIN, TAG, `${name} changed from ${monitor.value(name)?.before} to ${monitor.value(name)?.now}`);
     });
   }
 
@@ -964,7 +1099,10 @@ struct monitorExample {
   }
 }
 ```
-### \@Computed
+
+
+### Repeated Calculation -> \@Computed Property
+
 **Migration Rules**
 
 V1 lacks computed property support, leading to redundant calculations during UI re-renders. To address this, V2 introduces the \@Computed decorator, allowing you to optimize and cache expensive computations.
@@ -973,7 +1111,9 @@ V1:
 
 In the following example, each time the **lastName** value changes, the **Text** component is re-rendered and **this.lastName +' ' + this.firstName** needs to be computed repeatedly.
 
-```ts
+<!-- @[ComputedV1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ComputedV1.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Index {
@@ -997,7 +1137,9 @@ V2:
 
 When \@Computed is used, the computation is triggered only once each time the **lastName** value changes.
 
-```ts
+<!-- @[ComputedV2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ComputedV2.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
@@ -1017,6 +1159,98 @@ struct Index {
         this.lastName += 'a';
       })
     }
+  }
+}
+```
+
+
+### Two-way Binding Migration from $$ to !!
+
+In state management V1, [$$](./arkts-two-way-sync.md) is recommended for implementing two-way binding for built-in components. In state management V2, [!!](./arkts-new-binding.md) is recommended for implementing two-way binding.
+
+> **NOTE**
+> 
+> The **!!** syntax is supported since API version 12.
+
+**Migration policies**
+
+For system component parameters, replace **$$** in V1 with **!!** in V2.
+
+V1:
+
+<!-- @[sync_state_manager_$$](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct TextInputExample {
+  @State text: string = '';
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column({ space: 20 }) {
+      Text(this.text)
+      TextInput({ text: $$this.text, placeholder: 'input your word...', controller: this.controller })
+        .placeholderColor(Color.Grey)
+        .placeholderFont({ size: 14, weight: 400 })
+        .caretColor(Color.Blue)
+        .width(300)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+V2 migration policy: Change the decorator to V1 and replace **$$** with **!!**.
+
+<!-- @[sync_state_manager_!!](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExampleV2.ets) -->
+
+``` TypeScript
+@Entry
+@ComponentV2
+struct TextInputExampleV2 {
+  @Local text: string = '';
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column({ space: 20 }) {
+      Text(this.text)
+      // Use !! to replace $$ in V2.
+      TextInput({ text: this.text!!, placeholder: 'input your word...', controller: this.controller })
+        .placeholderColor(Color.Grey)
+        .placeholderFont({ size: 14, weight: 400 })
+        .caretColor(Color.Blue)
+        .width(300)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+``` TypeScript
+@Entry
+@ComponentV2
+struct TextInputExampleV2 {
+  @Local text: string = '';
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column({ space: 20 }) {
+      Text(this.text)
+      // Use !! to replace $$ in V2.
+      TextInput({ text: this.text!!, placeholder: 'input your word...', controller: this.controller })
+        .placeholderColor(Color.Grey)
+        .placeholderFont({ size: 14, weight: 400 })
+        .caretColor(Color.Blue)
+        .width(300)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```

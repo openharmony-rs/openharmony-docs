@@ -33,10 +33,10 @@ The [\<svg>](../reference/apis-arkui/arkui-js/js-components-svg.md) component us
 ```
 
 
-![en-us_image_0000001232162340](figures/en-us_image_0000001232162340.png)
+![en-us_image_0000001181511962](figures/en-us_image_0000001181511962.png)
 
 
-> **NOTE**
+> **Note:**
 > - M/m = moveto   The **x** and **y** parameters indicate the destination X and Y coordinates of a point. The **M** command only moves the brush, but does not draw a line between two points. Therefore, the **M** command is often used at the beginning of a path to indicate the start point.
 >
 > - L/l = lineto   The **x** and **y** parameters indicate the X and Y coordinates of a point. The **L** command draws a line between the current position and the destination position (the previous point of the brush).

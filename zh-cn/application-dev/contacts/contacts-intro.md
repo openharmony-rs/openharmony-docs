@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 Contacts Kit（联系人服务）可以帮助开发者轻松实现联系人的增删改查等功能。该Kit提供了一系列API，可以让开发者在应用中快速集成联系人管理功能。
 
-详情请参考[@ohos.contact API](../reference/apis-contacts-kit/js-apis-contact.md)。
+详情请参考[@ohos.contact (联系人)](../reference/apis-contacts-kit/js-apis-contact.md)文档。
 
 
 ## 能力范围
@@ -120,3 +120,8 @@ struct Contact {
   }
 }
 ```
+
+
+<!--RP3-->
+
+<!--RP3End-->

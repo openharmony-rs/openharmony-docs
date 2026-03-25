@@ -70,7 +70,7 @@ import { fileShare } from '@kit.CoreFileKit';
 | 名称  | 类型  | 只读 | 可选 | 说明                                                   |
 |------|-------|------|-----|------------------------------------------------------|
 | uri| string | 否   | 否 | 需要授予或使能权限的URI。                                       |
-| operationMode | number | 否   | 否 | 授予或使能权限的URI访问模式，参考[OperationMode](#operationmode11)。 |
+| operationMode | number | 否   | 否 | 授予或使能权限的URI访问模式，参考[OperationMode](#operationmode11)，如需授予多个权限，可以组合使用，例如使用READ_MODE \| WRITE_MODE授予读写权限。 |
 
 ## PathPolicyInfo<sup>15+</sup>
 
@@ -98,10 +98,12 @@ import { fileShare } from '@kit.CoreFileKit';
 
 persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-异步方法对所选择的多个文件或目录URI持久化授权，以promise形式返回结果。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+异步方法对所选择的多个文件或目录URI持久化授权，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
+>
+> 可以组合授予多个权限。只能对已获取到的临时权限进行持久化授权，否则会报错。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -121,7 +123,7 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。 
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。 
  
 如果存在URI授权失败，则抛出13900001错误码，且失败URI信息将抛出异常data属性中以Array<[PolicyErrorResult](#policyerrorresult11)>形式提供错误信息。
 
@@ -146,7 +148,7 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
       let uris = await documentPicker.select(DocumentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0], 
-        // 读写授权可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
+        // 可以组合授予多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
         operationMode: fileShare.OperationMode.READ_MODE
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -173,10 +175,12 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
-异步方法对所选择的多个文件或目录uri取消持久化授权，以promise形式返回结果。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+异步方法对所选择的多个文件或目录uri取消持久化授权，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
+>
+> 可以组合取消多个权限。只能对已持久化的权限进行取消持久化，否则会报错。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -196,7 +200,7 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。  
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。  
 
 如果存在URI取消授权失败，则抛出13900001错误码，且失败URI信息将抛出异常data属性中以Array<[PolicyErrorResult](#policyerrorresult11)>形式提供错误信息。
 
@@ -221,6 +225,7 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
       let uris = await documentPicker.select(DocumentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0], 
+        // 可以组合取消多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -247,10 +252,12 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
 activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-异步方法使能多个已经永久授权过的文件或目录，以promise形式返回结果。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+异步方法使能多个已经永久授权过的文件或目录，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
+>
+> 可以组合使能多个权限。只能对已持久化的权限进行使能，否则会报错。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -270,7 +277,7 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。 
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。 
 
 如果存在URI使能权限失败，则抛出13900001错误码，且失败URI信息将抛出异常data属性中以Array<[PolicyErrorResult](#policyerrorresult11)>形式提供错误信息。
 
@@ -292,6 +299,7 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
       let uri = "file://docs/storage/Users/username/tmp.txt";
       let policyInfo: fileShare.PolicyInfo = {
         uri: uri,
+        // 可以组合使能多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -321,10 +329,12 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-异步方法取消使能授权过的多个文件或目录，以promise形式返回结果。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+异步方法取消使能授权过的多个文件或目录，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
+>
+> 可以组合取消使能多个权限。只能对已持久化的权限进行取消使能，否则会报错。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -344,7 +354,7 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
 
 如果存在URI取消使能权限失败，则抛出13900001错误码，且失败URI信息将抛出异常data属性中以Array<[PolicyErrorResult](#policyerrorresult11)>形式提供错误信息。
 
@@ -366,6 +376,7 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
       let uri = "file://docs/storage/Users/username/tmp.txt";
       let policyInfo: fileShare.PolicyInfo = {
         uri: uri,
+        // 可以组合取消使能多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -392,7 +403,7 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;boolean&gt;&gt;
 
-异步方法校验所选择的多个文件或目录URI持久化授权，以promise形式返回结果。
+异步方法校验所选择的多个文件或目录URI持久化授权，使用Promise异步回调。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -410,7 +421,7 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
@@ -431,6 +442,7 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
       let uris = await documentPicker.select(documentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0], 
+        // 可以组合校验多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];

@@ -24,6 +24,8 @@ import { DistributedExtensionAbility} from '@kit.DistributedServiceKit';
 
 ### 属性
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称    | 类型                          | 只读 | 可选 | 说明                                                       |
@@ -35,6 +37,8 @@ import { DistributedExtensionAbility} from '@kit.DistributedServiceKit';
 onCreate(want: Want): void
 
 Extension生命周期回调，在创建时回调，执行初始化业务逻辑操作。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -64,6 +68,8 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 onCollaborate(wantParam: Record <string, Object>) : AbilityConstant.CollaborateResult
 
 多设备协作场景下返回协作结果的回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -104,6 +110,8 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 onDestroy(): void
 
 Extension生命周期回调，在销毁时回调，执行资源清理等操作。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 

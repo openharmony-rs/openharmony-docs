@@ -109,7 +109,8 @@ Enumerates the RDB store error codes.
 | RDB_E_SQLITE_CANT_OPEN = (E_BASE + 60)                       | SQLite: unable to open the database file.<br>**Since**: 18    |
 | RDB_E_SQLITE_TOO_BIG = (E_BASE + 61)                         | SQLite: TEXT or BLOB exceeds the limit.<br>**Since**: 18|
 | RDB_E_SQLITE_MISMATCH = (E_BASE + 62)                        | SQLite: data types mismatch.<br>**Since**: 18        |
-| RDB_E_DATA_TYPE_NULL = (E_BASE + 63)                         | The data to be stored is empty.<br>**Since**: 18                    |
-| RDB_E_TYPE_MISMATCH = (E_BASE + 64)                          | The data type is incorrect.<br>**Since**: 18                  |
-| RDB_E_SQLITE_CONSTRAINT = (E_BASE + 65)                      | SQLite error code: SQLite constraint.<br>**Since**: 18        |
-| RDB_E_SUB_LIMIT_REACHED = (E_BASE + 66) | The number of subscriptions exceeds the upper limit.<br>**Since**: 22|
+| RDB_E_DATA_TYPE_NULL = (E_BASE + 63)                         | The data to be stored is null.<br>**Since**: 18                    |
+| RDB_E_TYPE_MISMATCH = (E_BASE + 64)                          | Data types mismatch.<br>**Since**: 18                  |
+| RDB_E_SQLITE_CONSTRAINT = (E_BASE + 65)                      | SQLite: SQLite constraint.<br>**Since**: 18        |
+| RDB_E_SUB_LIMIT_REACHED = (E_BASE + 66) | The subscription limit has been reached.<br>**Since**: 22|
+| RDB_E_SQLITE_ERROR = (E_BASE + 67) | SQLite error. Possible causes include syntax errors. For example, the specified table or column does not exist.<br>**Since**: 23|

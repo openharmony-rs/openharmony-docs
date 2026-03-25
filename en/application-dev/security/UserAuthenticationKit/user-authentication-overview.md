@@ -67,7 +67,7 @@ The user authentication framework consists of the following:
 
 2. Unified user authentication framework: consists of authentication SAs and drivers, responsible for scheduling various authentication capabilities and the user authentication widget to complete user authentication requests initiated by services through the unified user authentication APIs.
 
-3. User authentication widget: provides interactive authentication interfaces for different authentication modes to ensure consistent user authentication experience.
+3. User authentication widget: provides interactive authentication interfaces for different authentication modes to ensure consistent user authentication experience. This widget can be called by the unified user authentication framework.
 
 4. Authentication capabilities: enable identity verification based on lock screen passwords, facial characteristics, and fingerprints under the scheduling of the unified user authentication framework.
 
@@ -122,12 +122,12 @@ The lower the FAR, the higher the FRR, which increases the authentication securi
 
 Conversely, the higher FAR, the lower the FRR, which decreases the authentication security but increases convenience.
 
-| Authentication Trust Level| Metrics|
+| Authentication Capability Level| Metrics|
 | -------- | -------- |
-| ATL4 | FAR ≤ 0.0001%, SAR ≤ 3% when FRR = 10%|
-| ATL3 | FAR ≤ 0.002%, SAR ≤ 7% when FRR = 10%|
-| ATL2 | FAR ≤ 0.002%, 7% < SAR ≤ 20% when FRR = 10%|
-| ATL1 | FAR ≤ 1%, 7% < SAR ≤ 20% when FRR = 10%|
+| ACL4 | FAR ≤ 0.0001%, SAR ≤ 3% when FRR = 10%|
+| ACL3 | FAR ≤ 0.002%, SAR ≤ 7% when FRR = 10%|
+| ACL2 | FAR ≤ 0.002%, 7% < SAR ≤ 20% when FRR = 10%|
+| ACL1 | FAR ≤ 1%, 7% < SAR ≤ 20% when FRR = 10%|
 
 Generally, the biometric authentication system comprises five execution units: source data collection, biometric feature extraction, biometric feature storage, biometric feature comparison, and authentication result issuance. The following Executor Security Levels (ESLs) are defined for the execution units.
 
@@ -154,3 +154,5 @@ The following table lists the mappings between AuthTrustLevels and ACLs & ASLs.
 - The built-in user authentication widget must be used when a third-party application needs to use the authentication capability of the system.
 
 - Third-party applications are not allowed to initiate user authentication requests in the background.
+
+<!--RP2--><!--RP2End-->

@@ -332,9 +332,11 @@ The image filter can be implemented based on the pen or brush. For details about
 Currently, only the following two types of image filters are supported:
 
 - Image filter based on the color filter
+
   You can use the **createFromColorFilter()** API to implement this type of image filter. This API takes two parameters: **colorFilter** and **imageFilter**. That is, the effect of the color filter is superimposed on the image filter. **imageFilter** can be empty, which means that only the color filter effect is added.
 
 - Image filter with a given blur effect
+
   You can use the **createBlurImageFilter()** API to implement this type of image filter. This API takes four parameters: **sigmaX**, **sigmaY**, **cTileMode**, and **imageFilter**. **sigmaX** and **sigmaY** are the standard deviations of the blur, **cTileMode** is the tiling mode, and **imageFilter** is the input image filter.
 
   The final effect is to blur the input image filter **imageFilter**. That is, the filter effect can be superimposed. **imageFilter** can be empty, which means that only the blur effect is added.

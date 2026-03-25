@@ -50,9 +50,9 @@
     - [@ohos.data.distributedData (分布式数据管理)](js-apis-distributed-data.md)
     - [@ohos.data.rdb (关系型数据库)](js-apis-data-rdb.md)
     - [@ohos.data.storage (轻量级存储)](js-apis-data-storage.md)
-    - [@system.storage数据存储](js-apis-system-storage.md)
+    - [@system.storage (数据存储)](js-apis-system-storage.md)
     - data/rdb<!--data-rdb-->
-      - [resultSet结果集](js-apis-data-resultset.md)
+      - [resultSet (结果集)](js-apis-data-resultset.md)
 - ArkTS 组件<!--arkdata-comp-->
   - [@ohos.data.UdmfComponents (内容卡片)](js-apis-data-UdmfComponents.md)
 - C API<!--arkdata-c-->
@@ -86,6 +86,7 @@
   - 结构体<!--arkdata-struct-->
     - [OH_Cursor](capi-rdb-oh-cursor.md)
     - [OH_Predicates](capi-rdb-oh-predicates.md)
+    - [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)
     - [OH_VObject](capi-rdb-oh-vobject.md)
     - [OH_VBucket](capi-rdb-oh-vbucket.md)
     - [OH_Rdb_Config](capi-rdb-oh-rdb-config.md)

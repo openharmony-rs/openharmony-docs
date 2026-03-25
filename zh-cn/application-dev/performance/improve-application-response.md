@@ -298,11 +298,11 @@ struct StackExample2 {
 
 当Text('New Page')隐藏状态时开始抓取耗时，此时点击按钮显示Text('New Page')组件时结束抓取，此时引起了兄弟节点中ForEach中的文本测量，Text总共创建个数为stack容器1个Text+兄弟节点中ForEach中的100个Text，共101个，Text总耗时为3ms。
 
-![img](./figures/improve_application_responese_1.png)
+![img](./figures/improve_application_response_1.png)
 
 基于上例，将Stack容器指定宽高，相同操作抓取耗时，此时没有引起父组件兄弟节点的布局计算和测量更新，仅有Stack容器中的1个Text创建耗时，Text总耗时为255μs。
 
-![img](./figures/improve_application_responses_2.png)
+![img](./figures/improve_application_response_2.png)
 
 可见，对于可以指定宽高的容器可以限制刷新范围。
 

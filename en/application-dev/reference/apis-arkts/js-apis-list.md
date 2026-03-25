@@ -581,7 +581,7 @@ Sorts elements in this List.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| comparator | [ListComparatorFn\<T\>](#listcomparatorfnt22) | Yes| Callback used to return the result.<br> There has been a compatibility change since API version 22. In API version 21 and earlier versions, the type is `(firstValue: T, secondValue: T) => number`.|
+| comparator | [ListComparatorFn\<T\>](#listcomparatorfnt23) | Yes| Callback used to return the result.<br> There has been a compatibility change since API version 23. In API version 22 and earlier versions, the type is `(firstValue: T, secondValue: T) => number`.|
 
 **Error codes**
 
@@ -927,13 +927,13 @@ while(!temp.done) {
 // value: 4
 ```
 
-### ListComparatorFn\<T\><sup>22+</sup>
+### ListComparatorFn\<T\><sup>23+</sup>
 
 type ListComparatorFn\<T\> = (firstValue: T, secondValue: T) => number
 
 Callback function of the **sort** method in List.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Utils.Lang
 

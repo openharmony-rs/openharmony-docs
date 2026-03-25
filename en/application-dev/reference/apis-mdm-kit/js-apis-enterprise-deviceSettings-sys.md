@@ -10,13 +10,13 @@ The **deviceSettings** module provides APIs for setting enterprise devices, incl
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.deviceSettings](js-apis-enterprise-deviceSettings.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.deviceSettings](js-apis-enterprise-deviceSettings.md).
 
 ## Modules to Import
 
@@ -208,7 +208,7 @@ Installs a user certificate. This API uses a callback to return the result.
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
-| certificate    | [CertBlob](#certblob)     | Yes   | Certificate information. The certificate file must be stored in a path that can be accessed by the application, such as the application sandbox path.|
+| certificate    | [CertBlob](#certblob)     | Yes   | Certificate information. The certificate file must be stored in the path that the app has the permission to access, such as the app sandbox path. For details about the mapping between the app sandbox path and the actual physical path, see [Mappings Between App Sandbox Paths and Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).|
 | callback | AsyncCallback&lt;string&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.     |
 
 **Error codes**
@@ -276,7 +276,7 @@ Installs a user certificate. This API uses a promise to return the result.
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| certificate    | [CertBlob](#certblob)     | Yes   | Certificate information. The certificate file must be stored in a path that can be accessed by the application, such as the application sandbox path.|
+| certificate    | [CertBlob](#certblob)     | Yes   | Certificate information. The certificate file must be stored in the path that the app has the permission to access, such as the app sandbox path. For details about the mapping between the app sandbox path and the actual physical path, see [Mappings Between App Sandbox Paths and Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).|
 
 **Return value**
 
@@ -328,17 +328,6 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
   return;
 });
 ```
-
-## CertBlob
-
-Represents the certificate information.
-
-**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-| Name        | Type    | Read-Only| Optional| Description                           |
-| ----------- | --------| ----- | ---- | ------------------------------- |
-| inData | Uint8Array | No| No|Binary content of the certificate.|
-| alias | string | No| No|Certificate alias.|
 
 ## deviceSettings.uninstallUserCertificate
 
@@ -573,6 +562,17 @@ try {
   console.error(`Failed to get power policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## CertBlob
+
+Represents the certificate information.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+| Name        | Type    | Read-Only| Optional| Description                           |
+| ----------- | --------| ----- | ---- | ------------------------------- |
+| inData | Uint8Array | No| No|Binary content of the certificate.|
+| alias | string | No| No|Certificate alias. The value length must be less than 40 characters.|
 
 ## PowerPolicy<sup>11+</sup>
 

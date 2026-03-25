@@ -151,7 +151,7 @@ Provides functions such as event injection and status query.
 | [Input_Result OH_Input_GetAxisEventDisplayId(const Input_AxisEvent* axisEvent, int32_t* displayId)](#oh_input_getaxiseventdisplayid) | - | Obtains the screen ID of an axis event.|
 | [Input_Result OH_Input_AddKeyEventMonitor(Input_KeyEventCallback callback)](#oh_input_addkeyeventmonitor) | - | Adds a listener for key events.|
 | [Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback)](#oh_input_addmouseeventmonitor) | - | Adds a listener for mouse events, including mouse click and movement events, but not scroll wheel events. Scroll wheel events are axis events.|
-| [Input_Result OH_Input_AddTouchEventMonitor(Input_TouchEventCallback callback)](#oh_input_addtoucheventmonitor) | - | Adds a listener for touch events.|
+| [Input_Result OH_Input_AddTouchEventMonitor(Input_TouchEventCallback callback)](#oh_input_addtoucheventmonitor) | - | Adds a listener for touch input events.|
 | [Input_Result OH_Input_AddAxisEventMonitorForAll(Input_AxisEventCallback callback)](#oh_input_addaxiseventmonitorforall) | - | Adds a listener for all types of axis events, which are defined in [InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype).|
 | [Input_Result OH_Input_AddAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback)](#oh_input_addaxiseventmonitor) | - | Adds a listener for the specified type of axis events, which are defined in [InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype).|
 | [Input_Result OH_Input_RemoveKeyEventMonitor(Input_KeyEventCallback callback)](#oh_input_removekeyeventmonitor) | - | Removes the listener for key events.|
@@ -166,7 +166,7 @@ Provides functions such as event injection and status query.
 | [Input_Result OH_Input_GetIntervalSinceLastInput(int64_t *timeInterval)](#oh_input_getintervalsincelastinput) | - | Obtains the interval since the last system input event.|
 | [Input_Hotkey *OH_Input_CreateHotkey(void)](#oh_input_createhotkey) | - | Creates a hotkey object. You can call [OH_Input_DestroyHotkey](#oh_input_destroyhotkey) to destroy a hotkey object.|
 | [void OH_Input_DestroyHotkey(Input_Hotkey **hotkey)](#oh_input_destroyhotkey) | - | Destroys a hotkey object.|
-| [void OH_Input_SetPreKeys(Input_Hotkey *hotkey, int32_t *preKeys, int32_t size)](#oh_input_setprekeys) | - | Sets the modifier key.|
+| [void OH_Input_SetPreKeys(Input_Hotkey *hotkey, int32_t *preKeys, int32_t size)](#oh_input_setprekeys) | - | Sets the modifier keys.|
 | [Input_Result OH_Input_GetPreKeys(const Input_Hotkey *hotkey, int32_t **preKeys, int32_t *preKeyCount)](#oh_input_getprekeys) | - | Obtains the modifier key.|
 | [void OH_Input_SetFinalKey(Input_Hotkey* hotkey, int32_t finalKey)](#oh_input_setfinalkey) | - | Sets the modified key.|
 | [Input_Result OH_Input_GetFinalKey(const Input_Hotkey* hotkey, int32_t *finalKeyCode)](#oh_input_getfinalkey) | - | Obtains the modified key.|
@@ -2010,7 +2010,7 @@ Requests the permission for [OH_Input_InjectKeyEvent](capi-oh-input-manager-h.md
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | Result code. For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br>      INPUT_SUCCESS = 0: Operation success. The application waits for the user authorization result and returns the authorization status through a callback.<br>      INPUT_PARAMETER_ERROR = 401: Parameter error. The callback parameter is empty.<br>      INPUT_DEVICE_NOT_SUPPORTED = 801: Function not supported.<br>      INPUT_SERVICE_EXCEPTION = 3800001: Server error.<br>      INPUT_INJECTION_AUTHORIZING = 3900005: Permission being granted.<br>      INPUT_INJECTION_OPERATION_FREQUENT = 3900006: Repeated request. The application continuously requests permission authorization at an interval of no more than 3 seconds.<br>      INPUT_INJECTION_AUTHORIZED = 3900007: Permission granted.<br>      INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008: Permission granted to other applications.|
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | Result code. For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br>      INPUT_SUCCESS = 0: Operation success. The application waits for the user authorization result and returns the authorization status through a callback.<br>      INPUT_PARAMETER_ERROR = 401: Parameter error. The callback parameter is empty.<br>      INPUT_DEVICE_NOT_SUPPORTED = 801: Function not supported.<br>      INPUT_SERVICE_EXCEPTION = 3800001: Service error.<br>      INPUT_INJECTION_AUTHORIZING = 3900005: Permission being granted.<br>      INPUT_INJECTION_OPERATION_FREQUENT = 3900006: Repeated request. The application continuously requests permission authorization at an interval of no more than 3 seconds.<br>      INPUT_INJECTION_AUTHORIZED = 3900007: Permission granted.<br>      INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008: Permission granted to other applications.|
 
 ### OH_Input_QueryAuthorizedStatus()
 
@@ -2035,7 +2035,7 @@ Queries the injection permission authorization status of the current application
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | Result code. For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br>      INPUT_SUCCESS = 0: Operation success.<br>      INPUT_PARAMETER_ERROR = 401: Parameter error. The status parameter is empty.<br>      INPUT_SERVICE_EXCEPTION = 3800001: Server error.|
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | Result code. For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br>      INPUT_SUCCESS = 0: Operation success.<br>      INPUT_PARAMETER_ERROR = 401: Parameter error. The status parameter is empty.<br>      INPUT_SERVICE_EXCEPTION = 3800001: Service error.|
 
 ### OH_Input_CreateAxisEvent()
 
@@ -2604,6 +2604,8 @@ Adds a listener for key events.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 
@@ -2635,6 +2637,8 @@ This API can be called only when the screen recording scenario is in use. Otherw
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 
@@ -2663,6 +2667,8 @@ Adds a listener for touch input events.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
+
+<!--RP2--><!--RP2End-->
 
 **Since**: 12
 
@@ -2693,6 +2699,8 @@ Adds a listener for all types of axis events, which are defined in [InputEvent_A
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 
@@ -2721,6 +2729,8 @@ Adds a listener for the specified type of axis events, which are defined in [Inp
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
+
+<!--RP2--><!--RP2End-->
 
 **Since**: 12
 
@@ -2752,6 +2762,8 @@ Removes the listener for key events.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 
@@ -2780,6 +2792,8 @@ Removes the listener for mouse events.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
+
+<!--RP2--><!--RP2End-->
 
 **Since**: 12
 
@@ -2810,6 +2824,8 @@ Removes the listener for touch events.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 
@@ -2839,6 +2855,8 @@ Removes the listener for all types of axis events.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 
@@ -2867,6 +2885,8 @@ Removes the listener for the specified type of axis events, which are defined in
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
+
+<!--RP2--><!--RP2End-->
 
 **Since**: 12
 
@@ -2898,6 +2918,8 @@ Adds an interceptor for key events. If multiple interceptors are added, only the
 
 **Required permission**: ohos.permission.INTERCEPT_INPUT_EVENT
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 
@@ -2927,6 +2949,8 @@ Adds an interceptor for input events, including mouse, touch, and axis events. I
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permission**: ohos.permission.INTERCEPT_INPUT_EVENT
+
+<!--RP2--><!--RP2End-->
 
 **Since**: 12
 
@@ -2958,6 +2982,8 @@ Removes the interceptor for key events.
 
 **Required permission**: ohos.permission.INTERCEPT_INPUT_EVENT
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 **Return value**
@@ -2979,6 +3005,8 @@ Removes the interceptor for input events, including mouse, touch, and axis event
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permission**: ohos.permission.INTERCEPT_INPUT_EVENT
+
+<!--RP2--><!--RP2End-->
 
 **Since**: 12
 
@@ -3013,7 +3041,7 @@ Obtains the interval since the last system input event.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Status code of the **OH_Input_GetIntervalSinceLastInput** function,<br>[INPUT_SUCCESS](#input_result) if the interval is obtained successfully; [INPUT_SERVICE_EXCEPTION](#input_result) if the interval fails to be obtained; [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect.|
+| [Input_Result](#input_result) | Status code of the **OH_Input_GetIntervalSinceLastInput** function,<br>[INPUT_SUCCESS](#input_result) if the interval is obtained successfully; [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal; [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect.|
 
 ### OH_Input_CreateHotkey()
 
@@ -3170,6 +3198,8 @@ Creates an [Input_Hotkey](capi-input-input-hotkey.md) array. You can call [OH_In
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
+**Device behavior differences**: This API has no effect on wearables, but can be properly called on other devices.
+
 **Since**: 14
 
 
@@ -3183,7 +3213,7 @@ Creates an [Input_Hotkey](capi-input-input-hotkey.md) array. You can call [OH_In
 
 | Type| Description|
 | -- | -- |
-| [Input_Hotkey](capi-input-input-hotkey.md) | Error codes of the **OH_Input_CreateAllSystemHotkeys** function.<br>         which is [INPUT_SUCCESS](#input_result) if the operation is successful.|
+| [Input_Hotkey](capi-input-input-hotkey.md) | Error codes of the **OH_Input_CreateAllSystemHotkeys** function,<br>         which is [INPUT_SUCCESS](#input_result) if the operation is successful.|
 
 ### OH_Input_DestroyAllSystemHotkeys()
 
@@ -3218,6 +3248,8 @@ Input_Result OH_Input_GetAllSystemHotkeys(Input_Hotkey **hotkey, int32_t *count)
 Obtains all configured hotkeys.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
+
+**Device behavior differences**: This API has no effect on wearables, but can be properly called on other devices.
 
 **Since**: 14
 
@@ -3296,6 +3328,8 @@ Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyC
 Subscribes to hotkey events. This API is not applicable to wearables and lite wearables.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Since**: 14
 
@@ -3436,7 +3470,7 @@ Obtains the IDs of all input devices.
 | -- | -- |
 | int32_t *deviceIds | List of input device IDs.|
 | int32_t inSize | Size of the input device ID list.|
-| int32_t *outSize | Length of the input device ID list. The value must be less than or equal to the value of **inSize**.|
+| int32_t *outSize | Length of the output device ID list. The value must be less than or equal to the value of **inSize**.|
 
 **Return value**
 
@@ -3521,7 +3555,7 @@ Input_Result OH_Input_GetKeyboardType(int32_t deviceId, int32_t *keyboardType)
 
 **Description**
 
-Obtains the keyboard type of an input device.
+Obtains the keyboard type of the input device.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -3776,6 +3810,8 @@ Injects a touch event by using coordinates in the relative coordinate system wit
 This API does not take effect if the event injection permission is not granted.
 
 Since API version 20, you are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices, but has no effect on other devices.
 
 **Since**: 12
 
@@ -4210,6 +4246,8 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 
 Obtains the coordinates of the mouse pointer on the current screen.
 
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 3900010 is returned.
+
 **Since**: 20
 
 **Parameters**
@@ -4269,6 +4307,8 @@ You can call [OH_Input_RemoveKeyEventHook](#oh_input_removekeyeventhook) to remo
 
 **Required permissions**: ohos.permission.HOOK_KEY_EVENT
 
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
+
 **Since**: 21
 
 **Parameters**
@@ -4297,6 +4337,8 @@ Removes the hook function for key event interception.
 This API is usually used together with [OH_Input_AddKeyEventHook](#oh_input_addkeyeventhook).
 
 **Since**: 21
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Parameters**
 
@@ -4327,13 +4369,15 @@ Successful redispatch requires correct mapping of events. If one or more [KEY_AC
 If only the [KEY_ACTION_UP](#input_keyeventaction) or [KEY_ACTION_CANCEL](#input_keyeventaction) key events are redispatched, the API call is successful, but the dispatch is not actually performed.<br>
 If the redispatched event is not intercepted by the hook function, the API call is successful, but the dispatch is not actually performed.
 
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
+
 **Since**: 21
 
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| int32_t eventId | ID of the key event. which can be obtained through [OH_Input_GetKeyEventId](#oh_input_getkeyeventid).|
+| int32_t eventId | ID of the key event, which can be obtained through [OH_Input_GetKeyEventId](#oh_input_getkeyeventid).|
 
 **Return value**
 
@@ -4351,6 +4395,8 @@ Input_Result OH_Input_SetPointerVisible(bool visible)
 **Description**
 
 Sets the visible status of the mouse pointer in the current window.
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Since**: 22
 
@@ -4377,6 +4423,8 @@ Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)
 
 Obtains the mouse pointer style of the specified window.
 
+**Device behavior differences**: This API has no effect on wearables, but can be properly called on other devices.
+
 **Since**: 22
 
 **Parameters**
@@ -4402,6 +4450,8 @@ Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)
 **Description**
 
 Sets the mouse pointer style of the specified window.
+
+**Device behavior differences**: This API has no effect on wearables, but can be properly called on other devices.
 
 **Since**: 22
 
@@ -4599,6 +4649,8 @@ Sets the custom mouse pointer style.
 
 The cursor may be switched back to the system style in the following cases: application window layout change, hot zone switching, page redirection, moving of the cursor out of the window and then back to the window, or moving of the cursor in different areas of the window. In this case, you need to reset the cursor style.
 
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
+
 **Since**: 22
 
 **Parameters**
@@ -4613,7 +4665,7 @@ The cursor may be switched back to the system style in the following cases: appl
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br> [INPUT_INVALID_WINDOWID](#input_result) if the window ID is invalid;<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the device is not supported;<br> [INPUT_SERVICE_EXCEPTION](#input_result) if a service exception occurs; Possible causes: 1. The horizontal or vertical coordinate of the custom mouse pointer's focus is greater than the width or height of the custom mouse pixel map. 2. The system service is abnormal. Try again.|
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br> [INPUT_INVALID_WINDOWID](#input_result) if the window ID is invalid;<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the device is not supported;<br> [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
 
 ### OH_Input_CursorInfo_Create()
 
@@ -4624,8 +4676,6 @@ struct Input_CursorInfo* OH_Input_CursorInfo_Create()
 **Description**
 
 Creates a mouse pointer information object. You can call [OH_Input_CursorInfo_Destroy](#oh_input_cursorinfo_destroy) to destroy a mouse pointer information object.
-
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
 **Since**: 22
 
@@ -4645,8 +4695,6 @@ void OH_Input_CursorInfo_Destroy(Input_CursorInfo** cursorInfo)
 
 Destroys the mouse pointer information object.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
-
 **Since**: 22
 
 **Parameters**
@@ -4664,8 +4712,6 @@ Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* v
 **Description**
 
 Obtains the pointer visible status of the specified mouse pointer information object.
-
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
 **Since**: 22
 
@@ -4692,8 +4738,6 @@ Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_Po
 
 Obtains the pointer style of the specified mouse pointer information object.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
-
 **Since**: 22
 
 **Parameters**
@@ -4718,8 +4762,6 @@ Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int3
 **Description**
 
 Obtains the pointer size level of the specified mouse pointer information object.
-
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
 **Since**: 22
 
@@ -4746,8 +4788,6 @@ Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t
 
 Obtains the pointer color of the specified mouse pointer information object.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
-
 **Since**: 22
 
 **Parameters**
@@ -4772,8 +4812,6 @@ Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mou
 **Description**
 
 Obtains the mouse pointer information of the mouse event, including the pointer visible status, pointer style, pointer size level, and pointer color.
-
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
 **Since**: 22
 
@@ -4800,7 +4838,7 @@ Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNat
 
 Obtains the mouse pointer information, including the pointer visible status, pointer style, pointer size level, and pointer color. If the **pixelmap** parameter is not empty and the pointer style is [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle), the **PixelMap** object of the pointer is returned.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**Device behavior differences**: This API has no effect on wearables, but can be properly called on other devices.
 
 **Since**: 22
 

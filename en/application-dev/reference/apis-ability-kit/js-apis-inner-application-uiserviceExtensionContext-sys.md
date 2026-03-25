@@ -165,8 +165,7 @@ class UIEntryAbility extends UIServiceExtensionAbility {
 
 ## UIServiceExtensionContext.startAbilityByType
 
-startAbilityByType(type: string, wantParam: Record&lt;string, Object&gt;,
-    abilityStartCallback: AbilityStartCallback): Promise&lt;void&gt;
+startAbilityByType(type: string, wantParam: Record&lt;string, Object&gt;, abilityStartCallback: AbilityStartCallback): Promise&lt;void&gt;
 
 Starts a [UIAbility](js-apis-app-ability-uiAbility.md) or [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) based on the type of the target ability. This API can be called only by applications running in the foreground. This API uses a promise to return the result.
 
@@ -229,10 +228,10 @@ struct SubIndex {
                 encodeURI('xxx@example.com')], // Email address of the CC recipient. Multiple values are separated by commas (,). The array content is URL-encoded using the **encodeURI()** method.
               'bcc': [encodeURI('xxx@example.com'),
                 encodeURI('xxx@example.com')], // Email address of the BCC recipient. Multiple values are separated by commas (,). The array content is URL-encoded using the **encodeURI()** method.
-              'subject': encodeURI ('email subject'), // Email subject, which is URL-encoded using the **encodeURI()** method.
-              'body': encodeURI ('email body'), // Email body, which is URL-encoded using the **encodeURI()** method.
+              'subject': encodeURI('Email subject'), // Email subject. The content is URL encoded using encodeURI().
+              'body': encodeURI('Email body'), // Email body. The content is URL encoded using encodeURI().
               'ability.params.stream': [encodeURI ('attachment uri1'),
-                encodeURI ('attachment uri2') ], // Attachment URI. Multiple values are separated by commas (,). The array content is URL-encoded using the **encodeURI()** method.
+                encodeURI ('attachment uri2') ], // Attachment URI. Multiple values are separated by commas (,). The array content is URL-encoded using the encodeURI() method.
               'ability.want.params.uriPermissionFlag': 1
             };
             let abilityStartCallback: common.AbilityStartCallback = {

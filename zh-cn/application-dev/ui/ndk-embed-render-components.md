@@ -370,7 +370,7 @@
 
 在进行如下代码开发前，请参考[接入ArkTS页面](ndk-access-the-arkts-page.md)，创建前置工程。
 
-完整示例请参考[native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)。
+<!--RP1-->完整示例请参考[native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)。<!--RP1End-->
 
 1. NDK初始化组件环境，并创建对应的渲染节点根节点。
 

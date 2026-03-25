@@ -54,6 +54,9 @@
 
 - 分布式组件管理框架在协同过程中不会对传输内容进行审查。涉及隐私敏感数据时，建议业务通过弹框提醒等方式提醒用户。
 
+<!--RP2-->
+<!--RP2End-->
+
 
 ## 环境准备
 
@@ -119,7 +122,7 @@ import {abilityConnectionManager, distributedDeviceManager } from '@kit.Distribu
 
 **发现设备**
 
-设备A上的应用，需要发现并选择设备B的networkId来作为协同接口的入参。可调用分布式设备管理模块接口，进行对端设备的发现和选择，详情可参考[分布式设备管理模块](devicemanager-guidelines.md)进行开发。
+设备A上的应用，需要发现并选择设备B的networkId来作为协同接口的入参。可调用分布式设备管理模块接口，进行对端设备的发现和选择，详情可参考[分布式设备管理开发指南](devicemanager-guidelines.md)进行开发。
 
 
 **应用间创建会话并进行连接**
@@ -383,4 +386,4 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 **解决措施**
 
-应用[申请长时任务](../task-management/continuous-task.md)，消除此限制。
+应用申请[长时任务(ArkTS)](../task-management/continuous-task.md)，消除此限制。

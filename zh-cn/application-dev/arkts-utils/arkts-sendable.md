@@ -11,7 +11,7 @@
 
 ArkTS提供了Sendable对象类型，在并发通信时支持通过引用传递来解决上述问题。
 
-Sendable对象可共享，跨线程前后指向同一个JS对象。如果包含JS或Native内容，可以直接共享。如果底层是Native实现，则需要确保线程安全性。通信过程如下图所示：
+Sendable对象可共享，跨线程前后指向同一个JS对象。如果Sendable对象通过调用Napi接口与一个Native对象绑定，当共享传递Sendable对象时，其绑定的Native对象也会一并共享传递。通信过程如下图所示：
 
 ![sendable](figures/sendable.png)
 

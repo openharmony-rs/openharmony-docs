@@ -43,6 +43,7 @@ The following table lists the APIs for setting the drawing effect using a brush.
    ```
 
 2. Use the brush to set basic drawing effects, such as setting the fill color and enabling the anti-aliasing effect.
+
    You can call **setColor()** to set the fill color.
 
    <!-- @[arkts_graphics_draw_brush_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->

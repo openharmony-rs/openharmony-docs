@@ -12,13 +12,13 @@
 
 ## 开发步骤及注意事项
 
-详细的API说明请参考[AVTranscoder API参考](../../reference/apis-media-kit/arkts-apis-media-AVTranscoder.md)。
+详细的API说明请参考[AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-AVTranscoder.md)。
 
 > **说明：**
 >
 > 如需对转码后的文件进行转发、上传、转存等处理，应用须收到complete事件后调用系统接口await avTranscoder.release()，以保证视频文件完整性。
 
-1. 创建AVTranscoder实例。
+1. 创建[AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavtranscoder12)实例。
 
    ```ts
    import { media } from '@kit.MediaKit';
@@ -92,7 +92,7 @@
    > 
    > - 如果使用本地资源转码，必须确认资源文件可用，并使用应用沙箱路径访问对应资源，参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
    > 
-   > - 应通过Context属性获取应用文件路径，建议使用getUIContext获取UIContext实例，并使用getHostContext调用绑定实例的getContext，请参考[获取Context](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)。
+   > - 应通过Context属性获取应用文件路径，建议使用getUIContext获取UIContext实例，并使用getHostContext调用绑定实例的getContext，请参考[getHostContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)。
    >
    > - 如果使用ResourceManager.getRawFd()打开HAP资源文件描述符，使用方法可参考[ResourceManager API参考](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
 
@@ -274,13 +274,13 @@
    ```
 10. 完整的【开始转码-暂停转码-恢复转码-转码完成】流程
 
-   ```ts
-   async avTranscoderDemo() {
-     await this.startTranscoderingProcess(); // 开始转码。
-     await this.pauseTranscoderingProcess(); // 暂停转码。
-     await this.resumeTranscoderingProcess(); // 恢复转码。
-   }
-   ```
+    ```ts
+    async avTranscoderDemo() {
+      await this.startTranscoderingProcess(); // 开始转码。
+      await this.pauseTranscoderingProcess(); // 暂停转码。
+      await this.resumeTranscoderingProcess(); // 恢复转码。
+    }
+    ```
 
 ## 运行示例工程
 

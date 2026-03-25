@@ -795,12 +795,12 @@ sppListen(name: string, option: SppOption, callback: AsyncCallback&lt;number&gt;
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 function serverSocket(code : BusinessError, number : number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth serverSocket Number: ' + number);
+    console.info(`bluetooth serverSocket Number: ${number}`);
     serverNumber = number;
   }
 }
@@ -831,20 +831,20 @@ sppAccept(serverSocket: number, callback: AsyncCallback&lt;number&gt;): void
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 function serverSocket(code : BusinessError, number : number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth serverSocket Number: ' + number);
+    console.info(`bluetooth serverSocket Number: ${number}`);
     serverNumber = number;
   }
 }
 let clientNumber = -1;
 function acceptClientSocket(code : BusinessError, number : number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth clientSocket Number: ' + number);
+    console.info(`bluetooth clientSocket Number: ${number}`);
     // 获取的clientNumber用作服务端后续读/写操作socket的id。
     clientNumber = number;
   }
@@ -883,7 +883,7 @@ function clientSocket(code : BusinessError, number : number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
@@ -912,12 +912,12 @@ sppCloseServerSocket(socket: number): void
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 function serverSocket(code : BusinessError, number : number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth serverSocket Number: ' + number);
+    console.info(`bluetooth serverSocket Number: ${number}`);
     serverNumber = number;
   }
 }
@@ -951,7 +951,7 @@ function clientSocket(code : BusinessError, number : number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
@@ -992,7 +992,7 @@ function clientSocket(code : BusinessError, number : number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
@@ -1001,9 +1001,9 @@ let data = new Uint8Array(arrayBuffer);
 data[0] = 123;
 let ret : boolean = bluetooth.sppWrite(clientNumber, arrayBuffer);
 if (ret) {
-  console.log('spp write successfully');
+  console.info('spp write successfully');
 } else {
-  console.log('spp write failed');
+  console.error('spp write failed');
 }
 ```
 
@@ -1040,13 +1040,12 @@ function clientSocket(code : BusinessError, number : number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
 function dataRead(dataBuffer : ArrayBuffer) {
   let data = new Uint8Array(dataBuffer);
-  console.log('bluetooth data is: ' + data[0]);
 }
 bluetooth.on('sppRead', clientNumber, dataRead);
 ```
@@ -1084,7 +1083,7 @@ function clientSocket(code : BusinessError, number : number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
@@ -1877,9 +1876,9 @@ let gattService : bluetooth.GattService = {serviceUuid:'00001810-0000-1000-8000-
 let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
 let ret : boolean = gattServer.addService(gattService);
 if (ret) {
-   console.log("add service successfully");
+   console.info("add service successfully");
 } else {
-   console.log("add service failed");
+   console.error("add service failed");
 }
 ```
 
@@ -2029,9 +2028,9 @@ let serverResponse : bluetooth.ServerResponse = {
 let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
 let ret : boolean = gattServer.sendResponse(serverResponse);
 if (ret) {
-  console.log('bluetooth sendResponse successfully');
+  console.info('bluetooth sendResponse successfully');
 } else {
-  console.log('bluetooth sendResponse failed');
+  console.error('bluetooth sendResponse failed');
 }
 ```
 
@@ -2077,9 +2076,9 @@ function ReadCharacteristicReq(CharacteristicReadReq : bluetooth.CharacteristicR
 
   let ret : boolean = gattServer.sendResponse(serverResponse);
   if (ret) {
-    console.log('bluetooth sendResponse successfully');
+    console.info('bluetooth sendResponse successfully');
   } else {
-    console.log('bluetooth sendResponse failed');
+    console.error('bluetooth sendResponse failed');
   }
 }
 
@@ -2164,9 +2163,9 @@ function WriteCharacteristicReq(CharacteristicWriteReq : bluetooth.Characteristi
 
   let ret : boolean = gattServer.sendResponse(serverResponse);
   if (ret) {
-    console.log('bluetooth sendResponse successfully');
+    console.info('bluetooth sendResponse successfully');
   } else {
-    console.log('bluetooth sendResponse failed');
+    console.error('bluetooth sendResponse failed');
   }
 }
 
@@ -2248,9 +2247,9 @@ function ReadDescriptorReq(DescriptorReadReq : bluetooth.DescriptorReadReq) {
 
   let ret : boolean = gattServer.sendResponse(serverResponse);
   if (ret) {
-    console.log('bluetooth sendResponse successfully');
+    console.info('bluetooth sendResponse successfully');
   } else {
-    console.log('bluetooth sendResponse failed');
+    console.error('bluetooth sendResponse failed');
   }
 }
 
@@ -2334,9 +2333,9 @@ function WriteDescriptorReq(DescriptorWriteReq : bluetooth.DescriptorWriteReq) {
 
   let ret : boolean = gattServer.sendResponse(serverResponse);
   if (ret) {
-    console.log('bluetooth sendResponse successfully');
+    console.info('bluetooth sendResponse successfully');
   } else {
-    console.log('bluetooth sendResponse failed');
+    console.error('bluetooth sendResponse failed');
   }
 }
 
@@ -2560,15 +2559,15 @@ client端获取蓝牙低功耗设备的所有服务，即服务发现 。
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 // callback 模式
 function getServices(code : BusinessError, gattServices : Array<bluetooth.GattService>) {
   if (code.code == 0) {
-      console.log('bluetooth code is ' + code.code);
-      console.log("bluetooth services size is ", gattServices.length);
+      console.info(`bluetooth code is ${code.code}`);
+      console.info(`bluetooth services size is ${gattServices.length}`);
 
       for (let i = 0; i < gattServices.length; i++) {
-        console.log('bluetooth serviceUuid is ' + gattServices[i].serviceUuid);
+        console.info(`bluetooth serviceUuid is ${gattServices[i].serviceUuid}`);
       }
   }
 }
@@ -2637,14 +2636,13 @@ client端读取蓝牙低功耗设备特定服务的特征值。
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 function readCcc(code : BusinessError, BLECharacteristic : bluetooth.BLECharacteristic) {
   if (code.code != 0) {
       return;
   }
-  console.log('bluetooth characteristic uuid: ' + BLECharacteristic.characteristicUuid);
+  console.info(`bluetooth characteristic uuid: ${BLECharacteristic.characteristicUuid}`);
   let value = new Uint8Array(BLECharacteristic.characteristicValue);
-  console.log('bluetooth characteristic value: ' + value[0] +','+ value[1]+','+ value[2]+','+ value[3]);
 }
 
 let device : bluetooth.GattClientDevice = bluetooth.BLE.createGattClientDevice('XX:XX:XX:XX:XX:XX');
@@ -2744,14 +2742,13 @@ client端读取蓝牙低功耗设备特定的特征包含的描述符。
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 function readDesc(code : BusinessError, BLEDescriptor : bluetooth.BLEDescriptor) {
   if (code.code != 0) {
       return;
   }
-  console.log('bluetooth descriptor uuid: ' + BLEDescriptor.descriptorUuid);
+  console.info(`bluetooth descriptor uuid: ${BLEDescriptor.descriptorUuid}`);
   let value = new Uint8Array(BLEDescriptor.descriptorValue);
-  console.log('bluetooth descriptor value: ' + value[0] +','+ value[1]+','+ value[2]+','+ value[3]);
 }
 
 let device : bluetooth.GattClientDevice = bluetooth.BLE.createGattClientDevice('XX:XX:XX:XX:XX:XX');
@@ -2850,9 +2847,9 @@ let characteristic : bluetooth.BLECharacteristic = {serviceUuid: '00001810-0000-
   characteristicValue: bufferCCC, descriptors:descriptors};
 let retWriteCcc : boolean = device.writeCharacteristicValue(characteristic);
 if (retWriteCcc) {
-  console.log('write characteristic successfully');
+  console.info('write characteristic successfully');
 } else {
-  console.log('write characteristic failed');
+  console.error('write characteristic failed');
 }
 ```
 
@@ -2894,9 +2891,9 @@ let descriptor : bluetooth.BLEDescriptor = {serviceUuid: '00001810-0000-1000-800
   descriptorUuid: '00002903-0000-1000-8000-00805F9B34FB', descriptorValue: bufferDesc};
 let retWriteDesc : boolean = device.writeDescriptorValue(descriptor);
 if (retWriteDesc) {
-  console.log('bluetooth write descriptor successfully');
+  console.info('bluetooth write descriptor successfully');
 } else {
-  console.log('bluetooth write descriptor failed');
+  console.error('bluetooth write descriptor failed');
 }
 ```
 
@@ -3077,7 +3074,7 @@ client端订阅蓝牙低功耗设备的连接状态变化事件。
 
 ```js
 function ConnectStateChanged(state : bluetooth.BLEConnectChangedState) {
-  console.log('bluetooth connect state changed');
+  console.info('bluetooth connect state changed');
   let connectState : bluetooth.ProfileConnectionState = state.state;
 }
 let device : bluetooth.GattClientDevice = bluetooth.BLE.createGattClientDevice('XX:XX:XX:XX:XX:XX');

@@ -108,7 +108,7 @@ ar-AE.json
   | 参数   | 类型          | 必填 | 描述                                                         |
   | ------ | ------------- | ---- | ------------------------------------------------------------ |
   | path   | string        | 是   | 资源路径。                                                   |
-  | params | Array \| Object | 否   | 运行时用来替换占位符的实际内容，占位符分为两种：<br/>- 具名占位符，例如{name}。实际内容必须用Object类型指定，例如：```$t('strings.object', {name:'Hello world'})```。 <br> - 数字占位符，例如{0}。实际内容必须用Array类型指定，例如：```$t('strings.array', ['Hello world']```。 |
+  | params | Array \| Object | 否   | 运行时用来替换占位符的实际内容，占位符分为两种：<br/>- 具名占位符，例如{name}。实际内容必须用Object类型指定，例如：```$t('strings.object', {name:'Hello world'})```。 <br> - 数字占位符，例如{0}。实际内容必须用Array类型指定，例如：```$t('strings.array', ['Hello world'])```。 |
 
 - 简单格式化示例代码
   ```html
@@ -190,4 +190,4 @@ ar-AE.json
 
 ## 获取语言
 
-获取语言功能请参考[@ohos.app.ability.Configuration (Configuration)](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)。
+获取语言功能请参考[@ohos.app.ability.Configuration (环境变量)](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)。

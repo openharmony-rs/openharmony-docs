@@ -595,6 +595,6 @@ Touch the **photo** button on the device screen, select an image, and touch **OK
 
 The following sample is provided to help you better understand how to develop image classification applications using MindSpore Lite:
 
-- [MindSpore Lite Application Development Based on Native APIs (C/C++) (API 11)] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo)
+- [MindSpore Lite Application Development Based on Native APIs (C/C++) (API 11)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo)
 
 <!--RP1--><!--RP1End-->

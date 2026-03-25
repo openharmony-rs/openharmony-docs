@@ -21,6 +21,16 @@ MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHe
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
+## 属性
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称           | 类型    | 只读   | 可选  | 说明   |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | 是    | 否   | 用于[MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)类型校验。<br>如果类（如MediaAlbumChangeRequest）对象可以访问，就说明该类是MediaChangeRequest的实现类。 |
+
 ## constructor<sup>11+</sup>
 
 constructor(album: Album)

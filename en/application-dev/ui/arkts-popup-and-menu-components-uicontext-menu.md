@@ -31,7 +31,7 @@ To display a menu, call the [openMenu](../reference/apis-arkui/arkts-apis-uicont
 
 ### Creating a ComponentContent Instance
 
-When using **openMenu**, you need to provide a [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md) instance to define the menu content. **wrapBuilder(buildText)** encapsulates the custom component, and **new Params(this.message)** is the input parameter for the custom component. This parameter is optional and can be a basic data type.
+Use the **openMenu** API to display a menu and define **ComponentContent** to customize the menu content. For details about the specifications, see [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md).
 
   <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
 
@@ -40,7 +40,7 @@ When using **openMenu**, you need to provide a [ComponentContent](../reference/a
     new ComponentContent(this.getUIContext(), wrapBuilder(buildText), this.message);
   ```
 
-If your **wrapBuilder** includes other components (such as [Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md) or [Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)), the [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#componentcontent-1) constructor must include four parameters, and the **options** parameter must be **{ nestingBuilderSupported: true }**.
+If **wrapBuilder** contains other components (such as [Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md) and [Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)), you need to set [nestingBuilderSupported](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12) to **true** when creating a **ComponentContent**.
 
  <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
 
@@ -99,15 +99,61 @@ If your **wrapBuilder** includes other components (such as [Popup](../reference/
 
 ### Providing Bound Component Information
 
-When calling **openMenu**, you must provide the [TargetInfo](../reference/apis-arkui/arkts-apis-uicontext-i.md#targetinfo18) of the bound component. Without a valid target, the menu won't display.
+When calling **openMenu**, you must provide the [TargetInfo](../reference/apis-arkui/arkts-apis-uicontext-i.md#targetinfo18) of the bound component. If no valid target is passed, the menu cannot be displayed.
 
- <!-- @[frame_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+Currently, there are two ways to set the target node:
 
- ``` TypeScript
- let frameNode: FrameNode | null = this.getUIContext().getFrameNodeByUniqueId(this.getUniqueId());
- let targetId = frameNode?.getChild(0)?.getUniqueId();
- ```
-
+- If **id** is a number, you should set it to the component's **UniqueID**, whose uniqueness is guaranteed by the system.
+  
+   <!-- @[frame_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+   
+   ``` TypeScript
+   let frameNode: FrameNode | null = this.getUIContext().getFrameNodeByUniqueId(this.getUniqueId());
+   let targetId = frameNode?.getChild(0)?.getUniqueId();
+   ```
+   
+- If **id** is a string, you should set it to the component's universal attribute [id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id). If the uniqueness of the ID cannot be ensured due to multiple-team development or reused custom component, you can set the **componentId** attribute to specify the ID range to accurately specify the target node. In this case, the **componentId** attribute can be set to the parent component or the **UniqueID** of the custom component.
+  
+   <!-- @[openMenuWithTargetIdString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/OpenMenuWithTargetIdString.ets) -->
+   
+   ``` TypeScript
+   build() {
+     NavDestination() {
+       Column() {
+         Row() {
+           Button('button1')
+             .id(this.targetIdString)
+         }
+   
+         Row() {
+           Button('button2')
+             .id(this.targetIdString)
+         }
+   
+         Button('openMenu')
+           .onClick(() => {
+             let frameNode: FrameNode | null = this.uiContext.getFrameNodeByUniqueId(this.getUniqueId());
+             let componentId = frameNode?.getChild(1)?.getChild(0)?.getChild(1)?.getUniqueId();
+             if (componentId == undefined) {
+               this.componentId = 0;
+             } else {
+               this.componentId = componentId;
+             }
+             this.promptAction.openMenu(this.contentNode, { id: this.targetIdString, componentId: this.componentId }, {
+               enableArrow: true
+             })
+               .then(() => {
+                 hilog.info(0x0000, 'openMenuWithTargetIdString', 'openMenu success');
+               })
+               .catch((err: BusinessError) => {
+                 hilog.error(0x0000, 'openMenuWithTargetIdString', 'openMenu error: ' + err.code + ' ' + err.message);
+               });
+           })
+       }
+     }
+   }
+   ```
+   
 
 ### Customizing the Menu Style
 

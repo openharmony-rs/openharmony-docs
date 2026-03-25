@@ -41,9 +41,9 @@
    
    ``` TypeScript
    notificationManager.isSupportTemplate('downloadTemplate').then((data: boolean) => {
-     let isSupportTpl: boolean = data; // isSupportTpl的值为true表示支持downloadTemplate模板类通知，false表示不支持
+     let isSupportTemplate: boolean = data; // isSupportTemplate的值为true表示支持downloadTemplate模板类通知，false表示不支持
      hilog.info(DOMAIN_NUMBER, TAG,
-       `Succeeded in supporting download template notification. data is ${isSupportTpl}`);
+       `Succeeded in supporting download template notification. data is ${isSupportTemplate}`);
    }).catch((err: BusinessError) => {
      hilog.error(DOMAIN_NUMBER, TAG,
        `Failed to support download template notification. Code is ${err.code}, message is ${err.message}`);

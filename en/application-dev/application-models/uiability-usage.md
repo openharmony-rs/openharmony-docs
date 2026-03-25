@@ -37,7 +37,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 > **NOTE**
->
 > When you create UIAbility in DevEco Studio, the UIAbility instance loads the **Index** page as its startup page. Therefore, you only need to replace the **Index** page path with the required startup page path.
 
 
@@ -67,26 +66,26 @@ The [getHostContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#g
 - Import the context module and define the **context** variable in the component.
 
   <!-- @[Page_EventHub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/EventHubPage.ets) -->
-
+  
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
-
+  
   @Entry
   @Component
   struct EventHubPage {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
+  
     startAbilityTest(): void {
       let want: Want = {
         // Want parameter information.
-      // ···
+        // ...
       };
       this.context.startAbility(want);
     }
-
+  
     // Page display.
     build() {
-      // ···
+      // ...
     }
   }
   ```
@@ -95,10 +94,10 @@ The [getHostContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#g
 
   
   <!-- @[basicUsage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/BasicUsage.ets) -->
-
+  
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
-  // ···
+  // ...
   
   @Entry
   @Component
@@ -107,14 +106,14 @@ The [getHostContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#g
       let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       let want: Want = {
         // Want parameter information.
-      // ···
+        // ...
       };
       context.startAbility(want);
     }
-
+  
     // Page display.
     build() {
-      // ···
+      // ...
     }
   }
   ```
@@ -127,18 +126,19 @@ The [getHostContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#g
   import { common, Want } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-
+  
   const DOMAIN = 0x0000;
-
+  
   @Entry
   @Component
   struct BasicUsage {
-    // ···
+    // ...
+  
     // Page display.
     build() {
-      // ···
       Column() {
-        // ···
+        // ...
+  
         Button('FuncAbilityB')
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -159,9 +159,9 @@ The [getHostContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#g
               hilog.error(DOMAIN, 'terminateSelf', `terminateSelf failed, code is ${code}, message is ${message}.`);
             }
           })
-        // ···
+          // ...
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -179,12 +179,12 @@ When the launcher ability (UIAbilityA) starts the target ability (UIAbilityB) us
     ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
+    
     @Entry
     @Component
     struct Index {
       @State context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
+    
       build() {
         List({ space: 4 }) {
           ListItem() {
@@ -192,23 +192,23 @@ When the launcher ability (UIAbilityA) starts the target ability (UIAbilityB) us
               this.context.terminateSelf()
             })
               .width('100%')
-
+    
           }
-
+    
           ListItem() {
-            // The value of app.string.Start_UIAbilityB in the resource file is 'Start UIAbilityB'.
+            // Replace $r('app.string.Start_UIAbilityB') with the actual resource file. In this example, the value in the resource file is "Start UIAbilityB".
             Button($r('app.string.Start_UIAbilityB'))
               .onClick((event: ClickEvent) => {
-              let want: Want = {
-                bundleName: this.context.abilityInfo.bundleName,
-                abilityName: 'UIAbilityB',
-              };
-
-              this.context.startAbility(want, (err: BusinessError) => {
-                if (err.code) {
-                  console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}.`);
-                }
-              });
+                let want: Want = {
+                  bundleName: this.context.abilityInfo.bundleName,
+                  abilityName: 'UIAbilityB',
+                };
+    
+                this.context.startAbility(want, (err: BusinessError) => {
+                  if (err.code) {
+                    console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}.`);
+                  }
+                });
             })
               .width('100%')
           }

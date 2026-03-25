@@ -71,7 +71,7 @@ export default {
     onload() {
         var surfaceId = this.$element('xcomponent').getXComponentSurfaceId();
         camera.createPreviewOutput(surfaceId).then((previewOutput) => {
-            console.log('Promise returned with the PreviewOutput instance');
+            console.info('Promise returned with the PreviewOutput instance');
         })
     }
 }

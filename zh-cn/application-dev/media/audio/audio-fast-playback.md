@@ -86,6 +86,13 @@ static OH_AudioData_Callback_Result MyOnWriteData_New(
 {
     // 将待播放的数据，按audioDataSize长度写入audioData。
     // 如果开发者不希望播放某段audioData，返回AUDIO_DATA_CALLBACK_RESULT_INVALID即可。
+    int32_t readCount = fread(audioData, audioDataSize, 1, g_fp);
+    if (readCount < 0) {
+        return AUDIO_DATA_CALLBACK_RESULT_INVALID;
+    }
+    if (feof(g_fp)) {
+        fseek(g_fp, 0, SEEK_SET);
+    }
     return AUDIO_DATA_CALLBACK_RESULT_VALID;
 }
 // ...

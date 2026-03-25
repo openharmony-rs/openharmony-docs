@@ -1,4 +1,4 @@
-# NDK支持多线程创建组件
+# 使用多线程NDK接口并行化构建UI页面
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
@@ -94,9 +94,7 @@
 
 - 在非UI线程调用多线程NDK接口操作处于Attached状态的组件。
 
-<!--Del-->
-多线程NDK适配过程中遇到的更多问题可以参考[NDK开发常见问题](../faqs/faqs-ndk.md)。
-<!--DelEnd-->
+多线程NDK适配过程中遇到的更多问题可以参考[UI并行化常见问题](multi-thread-ui-build-faq.md)。
 
 ## 多线程NDK接口集合规格
 
@@ -177,7 +175,7 @@
 | [ArkUI_IntOffset](../reference/apis-arkui/capi-arkui-nativemodule-arkui-intoffset.md)(\* [getLayoutPosition](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getlayoutposition) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | 获取node节点布局完成后的位置。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回默认值。 |
 | int32_t(\* [measureNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#measurenode) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_LayoutConstraint](../reference/apis-arkui/capi-arkui-nativemodule-arkui-layoutconstraint.md) \*Constraint) | 对node节点进行测算，可以通过getMeasuredSize获取测算后的大小。节点所在组件树内所有Free节点的状态转换为Attached。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
 | int32_t(\* [layoutNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#layoutnode) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, int32_t positionX, int32_t positionY) | 对node节点进行布局并传递该组件相对父组件的期望位置。节点所在组件树内所有Free节点的状态转换为Attached。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| void(\* [markDirty](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#markdirty) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeDirtyFlag](../reference/apis-arkui/capi-native-node-h.md#arkui_nodedirtyflag) dirtyFlag) | 强制标记node节点需要重新测算、布局或绘制。节点所在组件树内所有Free节点的状态转换为Attached。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口调用不生效。 |
+| void(\* [markDirty](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#markdirty) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeDirtyFlag](../reference/apis-arkui/capi-native-node-h.md#arkui_nodedirtyflag) dirtyFlag) | 强制标记node节点重新执行测量、布局或者绘制的区域。节点所在组件树内所有Free节点的状态转换为Attached。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口调用不生效。 |
 
 ## 多线程NDK接口使用示例
 
@@ -361,9 +359,8 @@ napi_value CreateNodeTreeOnMultiThread(napi_env env, napi_callback_info info);
 napi_value DisposeNodeTreeOnMultiThread(napi_env env, napi_callback_info info);
 } // namespace NativeModule
 
-#endif //MYAPPLICATION_CREATENODE_H
+#endif // MYAPPLICATION_CREATENODE_H
 ```
- 
 
 ``` cpp
 // CreateNode.cpp
@@ -635,8 +632,10 @@ static napi_module demoModule = {
 extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
 ```
 
-## 相关实例
+## 示例代码
 
 如下实例展示了在高负载组件创建场景下如何使用多线程NDK接口，将组件创建任务拆分成多个子任务，分派给多个线程并发执行来优化页面跳转场景的响应时延和完成时延。
 
+<!--RP1-->
 [使用NDK多线程创建UI组件](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/NdkBuildOnMultiThread)
+<!--RP1End-->

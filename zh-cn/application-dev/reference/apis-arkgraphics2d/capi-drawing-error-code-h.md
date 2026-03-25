@@ -59,6 +59,13 @@ enum OH_Drawing_ErrorCode
 | OH_DRAWING_ERROR_ALLOCATION_FAILED = 26200002 |  内存分配失败。<br>**起始版本：** 13 |
 | OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH = 26200003 |  输入属性id无匹配的函数。<br>**起始版本：** 21 |
 | OH_DRAWING_ERROR_INCORRECT_PARAMETER = 26200004 |  输入参数不正确，例如入参的指针为空。<br>**起始版本：** 22 |
+| OH_DRAWING_ERROR_FILE_NOT_FOUND = 26200005 |  文件未找到，指定的文件不存在或路径不正确。<br>**起始版本：** 23 |
+| OH_DRAWING_ERROR_OPEN_FILE_FAILED = 26200006 |  打开文件失败，权限不足或I/O问题造成。<br>**起始版本：** 23 |
+| OH_DRAWING_ERROR_FILE_SEEK_FAILED = 26200007 |  文件定位失败。系统无法重新定位文件读取指针。<br>**起始版本：** 23 |
+| OH_DRAWING_ERROR_GET_FILE_SIZE_FAILED = 26200008 |  获取文件大小失败，系统无法获取文件大小信息。<br>**起始版本：** 23 |
+| OH_DRAWING_ERROR_READ_FILE_FAILED = 26200009 |  读取文件失败，文件无法完整读取或包含不可读数据。<br>**起始版本：** 23 |
+| OH_DRAWING_ERROR_EMPTY_FILE = 26200010 |  文件为空，指定的字体文件为空，不包含有效数据。<br>**起始版本：** 23 |
+| OH_DRAWING_ERROR_FILE_CORRUPTED = 26200011 |  文件损坏，文件内容无效或损坏，无法解析。<br>**起始版本：** 23 |
 
 ## 函数说明
 

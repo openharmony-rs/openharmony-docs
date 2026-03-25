@@ -6,12 +6,12 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-The **NotificationSubscriberExtensionContext** module provides the context for the NotificationSubscriberExtensionAbility.
+The **NotificationSubscriberExtensionContext** module provides the context for the **NotificationSubscriberExtensionAbility**.
 
 > **NOTE**
 > 
-> - The initial APIs of this module are supported since API version 22.
-> - The APIs of this module can be used only in the stage model.
+> The initial APIs of this module are supported since API version 22. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -21,6 +21,6 @@ import { NotificationSubscriberExtensionContext } from '@kit.NotificationKit';
 
 ## NotificationSubscriberExtensionContext
 
-**NotificationSubscriberExtensionContext** inherits from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md) and provides the context for the NotificationSubscriberExtensionAbility.
+**NotificationSubscriberExtensionContext** inherits from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md) and provides the context for the **NotificationSubscriberExtensionAbility**.
 
 **System capability**: SystemCapability.Notification.Notification

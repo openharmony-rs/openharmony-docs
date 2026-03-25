@@ -14,6 +14,7 @@ Since API version 16, NDK APIs provides functions for registering and unregister
 
 
 The following example is based on the [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md) section, supplementing related event listening.
+
 It implements layout and drawing completion event registration logic in the **ArkUITextNode** object.
 <!-- @[arkUITestNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUITextNode.h) -->
 

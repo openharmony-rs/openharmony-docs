@@ -557,7 +557,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
   console.info('getCurrentTopAbility callback');
   ability = data;
   let state = abilityDelegator.getAbilityState(ability);
-  console.info('getAbilityState ${state}');
+  console.info(`getAbilityState ${state}`);
 });
 ```
 
@@ -973,7 +973,7 @@ printSync(msg: string): void
 
 | 参数名 | 类型   | 必填 | 说明       |
 | ------ | ------ | ---- | ---------- |
-| msg    | string | 是   | 日志字符串。 |
+| msg    | string | 是   | 日志字符串。字符串最大长度为10000。 |
 
 **错误码**：
 
@@ -1009,7 +1009,7 @@ print(msg: string, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明               |
 | -------- | -------------------- | ---- | ------------------ |
-| msg      | string               | 是   | 日志字符串。         |
+| msg      | string               | 是   | 日志字符串。字符串最大长度为10000。         |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当打印日志信息到单元测试终端控制台成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -1041,7 +1041,7 @@ print(msg: string): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明       |
 | ------ | ------ | ---- | ---------- |
-| msg    | string | 是   | 日志字符串。 |
+| msg    | string | 是   | 日志字符串。字符串最大长度为10000。 |
 
 **返回值：**
 
@@ -1150,7 +1150,7 @@ executeShellCommand(cmd: string, timeoutSecs?: number): Promise\<ShellCmdResult>
 | 参数名      | 类型   | 必填 | 说明                          |
 | ----------- | ------ | ---- | ----------------------------- |
 | cmd         | string | 是   | shell命令字符串。               |
-| timeoutSecs | number | 否   | 设定命令超时时间，单位秒（s）。 |
+| timeoutSecs | number | 否   | 设定命令超时时间，单位秒（s）。默认值为0，表示不设置超时时间。 |
 
 **返回值：**
 

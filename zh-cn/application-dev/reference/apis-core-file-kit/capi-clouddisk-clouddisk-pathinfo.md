@@ -8,6 +8,8 @@
 
 ```c
 typedef struct CloudDisk_PathInfo {...} CloudDisk_PathInfo
+typedef struct CloudDisk_PathInfo CloudDisk_FieldInfo
+typedef struct CloudDisk_PathInfo CloudDisk_SyncFolderPath
 ```
 
 ## 概述

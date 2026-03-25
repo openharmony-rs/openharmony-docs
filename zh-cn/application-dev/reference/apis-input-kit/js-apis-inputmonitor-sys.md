@@ -1580,7 +1580,7 @@ on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEven
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[按键监听错误码](./errorcode-inputmonitor.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[按键前置监听错误码](./errorcode-inputmonitor.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1746,6 +1746,144 @@ try {
   const code = (error as BusinessError).code;
   const message = (error as BusinessError).message;
   console.error(`queryTouchEvents failed, error code: ${code}, message: ${message}.`);
+}
+```
+
+## inputMonitor.on('swipeInward')<sup>12+</sup>
+
+on(type: 'swipeInward', receiver: Callback&lt;SwipeInward&gt;): void
+
+监听向内滑动事件。使用callback异步回调。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**参数：**
+
+| 参数名   | 类型                                                        | 必填 | 说明                                 |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
+| type     | string                                                      | 是   | 输入事件类型，取唯一值'SwipeInward'。 |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt;    | 是   | 回调函数，返回[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt;。         |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied, non-system app called system api.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputMonitor.on('swipelnward', (SwipeInward) => {
+              console.info(`Monitor on success ${JSON.stringify(SwipeInward)}`);
+              return false;
+            });
+          } catch (error) {
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.off('swipeInward')<sup>12+</sup>
+
+off(type: 'swipeInward', receiver?: Callback&lt;SwipeInward&gt;): void
+
+取消监听向内滑动事件。使用callback异步回调。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 输入事件类型，取值'swipeInward'。                    |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor, SwipeInward } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        // 取消监听单个回调函数
+        let callback = (swipeInward: SwipeInward) => {
+          console.info(`Monitor on success ${JSON.stringify(swipeInward)}`);
+          return false;
+        };
+        try {
+          inputMonitor.on('swipeInward', callback);
+          inputMonitor.off("swipeInward", callback);
+          console.info(`Monitor off success`);
+        } catch (error) {
+          console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        }
+      })
+  }
+}
+}
+```
+
+```js
+import { inputMonitor, SwipeInward } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        // 取消监听所有回调函数
+        let callback = (swipeInward: SwipeInward) => {
+          console.info(`Monitor on success ${JSON.stringify(swipeInward)}`);
+          return false;
+        };
+        try {
+          inputMonitor.on('swipeInward', callback);
+          inputMonitor.off("swipeInward");
+          console.info(`Monitor off success`);
+        } catch (error) {
+          console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        }
+      })
+  }
+}
 }
 ```
 

@@ -96,6 +96,19 @@ Enumerates call states.
 | [call.CallState](js-apis-call.md#callstate) | Call state. (Only the **CALL_STATE_OFFHOOK** state is reported during an outgoing call.)|
 
 
+## CCallState<sup>23+</sup>
+
+type CCallState = call.CCallState
+
+Enumerates carrier call states.
+
+**System capability**: SystemCapability.Telephony.StateRegistry
+
+|       Type      |            Description            |
+| ---------------- | --------------------------- |
+| [call.CCallState](js-apis-call.md#ccallstate23) | Call state (of the carrier).|
+
+
 ## CardType
 
 type CardType = sim.CardType
@@ -168,7 +181,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 observer.on('networkStateChange', (data: observer.NetworkState) => {
-    console.log("on networkStateChange, data:" + JSON.stringify(data));
+    console.info("on networkStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -211,7 +224,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('networkStateChange', options, (data: observer.NetworkState) => {
-    console.log("on networkStateChange, data:" + JSON.stringify(data));
+    console.info("on networkStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -251,7 +264,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let callback: (data: observer.NetworkState) => void = (data: observer.NetworkState) => {
-    console.log("on networkStateChange, data:" + JSON.stringify(data));
+    console.info("on networkStateChange, data:" + JSON.stringify(data));
 }
 observer.on('networkStateChange', callback);
 // You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
@@ -292,7 +305,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { radio } from '@kit.TelephonyKit';
 
 observer.on('signalInfoChange', (data: Array<radio.SignalInformation>) => {
-    console.log("on signalInfoChange, data:" + JSON.stringify(data));
+    console.info("on signalInfoChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -334,7 +347,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('signalInfoChange', options, (data: Array<radio.SignalInformation>) => {
-    console.log("on signalInfoChange, data:" + JSON.stringify(data));
+    console.info("on signalInfoChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -376,7 +389,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { radio } from '@kit.TelephonyKit';
 
 let callback: (data: Array<radio.SignalInformation>) => void = (data: Array<radio.SignalInformation>) => {
-    console.log("on signalInfoChange, data:" + JSON.stringify(data));
+    console.info("on signalInfoChange, data:" + JSON.stringify(data));
 }
 observer.on('signalInfoChange', callback);
 // You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
@@ -517,7 +530,7 @@ Registers an observer for extended call status change events. This API uses an a
 
 | Name  | Type                                          | Mandatory| Description                                                       |
 | -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
-| type     | string                                        | Yes  | Extended call status change event. This field has a fixed value of **callStateChange**.               |
+| type     | string                                        | Yes  | Extended call status change event. This field has a fixed value of **callStateChangeEx**.               |
 | callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\> | Yes  | Callback used to return the result,<br>which is the **TelCallState** object.<br>|
 | options  | [ObserverOptions](#observeroptions11)                              | No| Event subscription parameters.               |
 
@@ -624,7 +637,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 observer.on('cellularDataConnectionStateChange', (data: observer.DataConnectionStateInfo) => {
-    console.log("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -664,7 +677,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('cellularDataConnectionStateChange', options, (data: observer.DataConnectionStateInfo) => {
-    console.log("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -704,7 +717,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let callback: (data: observer.DataConnectionStateInfo) => void = (data: observer.DataConnectionStateInfo) => {
-    console.log("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
 }
 observer.on('cellularDataConnectionStateChange', callback);
 // You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
@@ -746,7 +759,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { data } from '@kit.TelephonyKit';
 
 observer.on('cellularDataFlowChange', (data: data.DataFlowType) => {
-    console.log("on cellularDataFlowChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -788,7 +801,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('cellularDataFlowChange', options, (data: data.DataFlowType) => {
-    console.log("on cellularDataFlowChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -830,7 +843,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { data } from '@kit.TelephonyKit';
 
 let callback: (data: data.DataFlowType) => void = (data: data.DataFlowType) => {
-    console.log("on cellularDataFlowChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
 }
 observer.on('cellularDataFlowChange', callback);
 // You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
@@ -874,7 +887,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 observer.on('simStateChange', (data: observer.SimStateData) => {
-    console.log("on simStateChange, data:" + JSON.stringify(data));
+    console.info("on simStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -914,7 +927,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('simStateChange', options, (data: observer.SimStateData) => {
-    console.log("on simStateChange, data:" + JSON.stringify(data));
+    console.info("on simStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -954,7 +967,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let callback: (data: observer.SimStateData) => void = (data: observer.SimStateData) => {
-    console.log("on simStateChange, data:" + JSON.stringify(data));
+    console.info("on simStateChange, data:" + JSON.stringify(data));
 }
 observer.on('simStateChange', callback);
 // You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
@@ -993,7 +1006,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 observer.on('iccAccountInfoChange', () => {
-    console.log("on iccAccountInfoChange success");
+    console.info("on iccAccountInfoChange success");
 });
 ```
 
@@ -1033,7 +1046,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let callback: () => void = () => {
-    console.log("on iccAccountInfoChange success");
+    console.info("on iccAccountInfoChange success");
 }
 observer.on('iccAccountInfoChange', callback);
 // You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
@@ -1041,6 +1054,174 @@ observer.off('iccAccountInfoChange', callback);
 observer.off('iccAccountInfoChange');
 ```
 
+
+## observer.onGetSimActiveState<sup>23+</sup>
+
+onGetSimActiveState\(slotId: number, callback: Callback\<boolean\>\): void
+
+Registers an observer for SIM card activation state changes. This API uses an asynchronous callback to return the execution result.
+
+**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+
+**System capability**: SystemCapability.Telephony.StateRegistry
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| slotId   | number            | Yes   | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2.   |
+|callback  | Callback&lt;boolean&gt;|Yes| This API uses a callback to return the result.<br>- **true**: activated.<br>- **false**: not activated.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied                         |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+let sislotId = 0;
+let simActiveState: Callback<boolean> = (isSimActive: boolean) => {
+    console.info(`simActiveState slotId ${JSON.stringify(isSimActive)}`);
+}
+observer.onGetSimActiveState(sislotId, simActiveState);
+```
+
+## observer.offGetSimActiveState<sup>23+</sup>
+
+offGetSimActiveState\(callback?: Callback\<boolean\>\): void
+
+Unregisters an observer for SIM card activation state changes. This API uses an asynchronous callback to return the execution result.
+
+**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+
+**System capability**: SystemCapability.Telephony.StateRegistry
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+|callback  | Callback&lt;boolean&gt;|No| This API uses a callback to return the result.<br>- **true**: activated.<br>- **false**: not activated.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied                         |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+let simActiveState: Callback<boolean> = (isSimActive: boolean) => {
+    console.info(`simActiveState slotId ${JSON.stringify(isSimActive)}`);
+}
+observer.offGetSimActiveState(simActiveState);
+```
+
+## observer.onCCallStateChange<sup>23+</sup>
+
+onCCallStateChange\(callback: Callback\<CCallStateInfo\>, options?: ObserverOptions): void
+
+Subscribes to the carrier call state changes and obtains the call number. This method uses an asynchronous callback to return the execution result.
+
+**System capability**: SystemCapability.Telephony.StateRegistry
+
+**Required permissions**: ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+**Parameters**
+
+|     Name           |         Type     | Mandatory| Description                                   |
+| ------------------- | ------------------| ---- | --------------------------------------- |
+| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | Yes  | Callback used to return the result,<br>The application can obtain CCallState.<br>|
+| options  | [ObserverOptions](#observeroptions11)                  | No| Event subscription parameters.               |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied                         |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
+
+**Example**
+
+```ts
+import { call, observer } from '@kit.TelephonyKit';
+
+let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
+    console.info("onCCallStateChange, data:" + JSON.stringify(data));
+}
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+
+observer.onCCallStateChange(callback, options);
+observer.onCCallStateChange(callback);
+```
+
+## observer.offCCallStateChange<sup>23+</sup>
+
+offCCallStateChange\(callback?: Callback\<CCallStateInfo\>\): void
+
+Cancels the listening on the carrier call status and obtaining of the call number by a third-party application. This method uses an asynchronous callback to return the result.
+
+**System capability**: SystemCapability.Telephony.StateRegistry
+
+**Required permissions**: ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+**Parameters**
+
+|     Name           |         Type     | Mandatory| Description                                   |
+| ------------------- | ------------------| ---- | --------------------------------------- |
+| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | No  | Callback used to return the result.<br>The application can obtain CCallState.<br>|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied                         |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
+
+**Example**
+
+```ts
+import { call, observer } from '@kit.TelephonyKit';
+
+let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
+    console.info("onCCallStateChange, data:" + JSON.stringify(data));
+}
+
+observer.offCCallStateChange(callback);
+observer.offCCallStateChange();
+```
 
 ## LockReason<sup>8+</sup>
 
@@ -1088,6 +1269,18 @@ Defines information about the call status.
 | ------------------- | -------------------------------------- | ---- | ---- | -------- |
 | state               | [CallState](js-apis-call.md#callstate) | No  | No  | Call type.|
 | number              | string                                 | No  | No  | Phone number.|
+
+
+## CCallStateInfo<sup>23+</sup>
+
+Defines information about the call status.
+
+**System capability**: SystemCapability.Telephony.StateRegistry
+
+|     Name           |                 Type                   | Read-Only| Optional| Description    |
+| ------------------- | -------------------------------------- | ---- | ---- | -------- |
+| state               | [CCallState](js-apis-call.md#ccallstate23) | No  | No  | Call type.|
+| teleNumber              | string                                 | No  | No  | Phone number.|
 
 
 ## DataConnectionStateInfo<sup>11+</sup>

@@ -1,8 +1,8 @@
 # 企业类应用可用权限
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -36,7 +36,7 @@
 
 **起始版本**：10
 
-**变更信息**：API 10-14时，其权限级别为system_core，仅面向MDM应用开放；从API 14开始，权限级别变更为system_basic，开发范围变更为企业普通应用。
+**变更信息**：API 10-14时，其权限级别为system_core，仅面向MDM应用开放；从API 14开始，权限级别变更为system_basic，开放范围变更为企业普通应用。
 
 ## ohos.permission.FILE_GUARD_MANAGER
 
@@ -53,7 +53,7 @@
 
 **起始版本**：10
 
-**变更信息**：API 10-14时，其权限级别为system_core，仅面向MDM应用开放；从API 14开始，权限级别变更为system_basic，开发范围变更为企业普通应用。
+**变更信息**：API 10-14时，其权限级别为system_core，仅面向MDM应用开放；从API 14开始，权限级别变更为system_basic，开放范围变更为企业普通应用。
 
 ## ohos.permission.FILE_GUARD_FILE_WRITE
 
@@ -86,6 +86,23 @@
 **起始版本**：7
 
 **变更信息**：API 7-13该权限仅向系统应用开放；从API 14开始，开放范围从系统应用变更为企业普通应用。
+
+## ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+允许应用查询指定或所有本地账号的身份标识（如名称、ID）。
+
+获取该权限后，应用可查询系统中指定或所有本地账号的身份标识。基于获取的身份标识，应用可进一步访问或管理目标本地账号。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：General
+
+**起始版本**：26.0.0
 
 ## ohos.permission.GET_RUNNING_INFO
 
@@ -402,9 +419,9 @@
 
 ## ohos.permission.SUPPORT_INSTALL_ON_U1
 
-允许应用安装在1用户。
+允许企业普通应用安装在特定用户下。
 
-1用户是支持三方应用单例运行的用户。
+特定用户是支持应用单例运行的用户。
 
 **权限级别**：system_basic
 
@@ -512,6 +529,23 @@
 **支持设备**：PC/2in1
 
 **起始版本**：20
+
+## ohos.permission.SCAN_REMEDIATE_VIRUS
+ 	 
+允许应用执行病毒扫描和处置操作。
+ 	 
+此权限仅面向杀毒软件开放申请。
+ 	 
+**权限级别**：system_basic
+ 	 
+**授权方式**：系统授权（system_grant）
+ 	 
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+ 	 
+**支持设备**：PC/2in1
+ 	 
+**起始版本**：24
 
 ## ohos.permission.sec.ACCESS_UDID
 

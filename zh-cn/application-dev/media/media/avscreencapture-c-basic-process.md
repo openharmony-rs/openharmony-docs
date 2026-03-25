@@ -45,7 +45,7 @@
 
 在CMake脚本中链接动态库：
 
-```
+```CMake
 target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffer.so libnative_media_core.so) 
 ```
 
@@ -95,7 +95,7 @@ OH_AudioCaptureInfo innerCapInfo = {
     .audioChannels = 2,
     .audioSource = OH_ALL_PLAYBACK
 };
-// 录屏音频输出规格配置。
+// 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
 OH_AudioEncInfo audioEncInfo = {
     .audioBitrate = 48000,
     .audioCodecformat = OH_AAC_LC
@@ -135,7 +135,7 @@ OH_VideoInfo videoInfo = {
 
 ### 初始化AVScreenCapture实例配置
 
-AVScreenCapture实例的配置[OH_AVScreenRecorderConfig](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencaptureconfig.md)，包括录制数据格式[OH_VideoInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videoinfo.md)、音视频采集参数[OH_AudioInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-audioinfo.md)、录屏模式[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)等，录屏模式包含OH_CAPTURE_HOME_SCREEN、OH_CAPTURE_SPECIFIED_SCREEN、OH_CAPTURE_SPECIFIED_WINDOW。
+AVScreenCapture实例的配置信息为[OH_AVScreenCaptureConfig](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencaptureconfig.md)，包括录制数据格式[OH_VideoInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videoinfo.md)、音视频采集参数[OH_AudioInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-audioinfo.md)、录屏模式[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)等，录屏模式包含OH_CAPTURE_HOME_SCREEN、OH_CAPTURE_SPECIFIED_SCREEN、OH_CAPTURE_SPECIFIED_WINDOW。
 
 配置完成后通过[OH_AVScreenCapture_Init](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_init)将配置项设置到[OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)中。
 
@@ -143,11 +143,11 @@ AVScreenCapture实例的配置[OH_AVScreenRecorderConfig](../../reference/apis-m
 > 在PC/2in1设备上，根据不同的录屏模式会有不同弹窗表现，详情见[PC/2in1弹窗模式配置说明](#pc2in1弹窗模式配置说明)。
 
 ```c++
-// 初始化录屏，传入配置信息OH_AVScreenRecorderConfig。
+// 初始化录屏，传入配置信息OH_AVScreenCaptureConfig。
 OH_AVScreenCaptureConfig config = {
     .dataType = OH_ORIGINAL_STREAM,
     .audioInfo = audioInfo,
-    .captureMode = OH_CAPTURE_HOME_SCREEN, //录屏模式设置。
+    .captureMode = OH_CAPTURE_HOME_SCREEN, // 录屏模式设置。
     .videoInfo = videoInfo
 };
 OH_AVScreenCapture_Init(capture, config);
@@ -359,6 +359,30 @@ config.videoInfo.videoCapInfo.displayId = 0;
 vector<int32_t> missionIds = {60, 61}; // 表示期望同时录制60、61号窗口。
 config.videoInfo.videoCapInfo.missionIDs = &missionIds[0];
 config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
+```
+
+## Phone/Tablet弹窗模式配置说明
+
+从API version 23开始，支持在设备Phone/Tablet上通过策略控制是否弹出选择共享内容弹窗。
+
+在PC/2in1设备上，是否弹出选择共享内容弹窗受录制模式控制，在Phone/Tablet设备上可以通过[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)配置选择共享内容弹窗模式，无需指定录制模式。
+
+```c++
+// 创建AVScreenCapture对象
+OH_AVScreenCapture* capture = OH_AVScreenCapture_Create();
+
+// 创建CaptureStrategy对象。
+OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+
+// 设置是否弹出屏幕捕获Picker。
+// 设置为true，代表录屏启动后统一弹出Picker。
+OH_AVScreenCapture_StrategyForPickerPopUp(strategy, true);
+
+// 设置CaptureStrategy到AVScreenCapture实例。
+OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+
+// 释放CaptureStrategy对象。
+OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 ```
 
 ## 更多资源

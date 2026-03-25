@@ -11,7 +11,7 @@ Check whether a key exists.
 
 The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 
-## Add the dynamic library in the CMake script.
+## Linking the Dynamic Library in the CMake Script
 ```txt
 target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```
@@ -20,7 +20,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 1. Specify the key alias. For details about the naming rules, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
 
-2. Initialize the key property set to specify the [key property tag](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag) for query. By default, this parameter is left empty.
+2. Initialize the key property set. This is used to specify the properties for querying a key. To query a single key or non-group key, this set can be left empty.
 
 3. Call [OH_Huks_IsKeyItemExist](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_iskeyitemexist) to check whether the key exists.
 
@@ -102,4 +102,3 @@ static napi_value IsKeyExist(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
-<!--no_check-->

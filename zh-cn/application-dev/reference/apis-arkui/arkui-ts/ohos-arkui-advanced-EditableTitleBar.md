@@ -14,11 +14,13 @@
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 如果EditableTitleBar设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到EditableTitleBar本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议EditableTitleBar设置通用属性和通用事件。
 
 ## 导入模块
 
-```
+```ts
 import { EditableTitleBar } from '@kit.ArkUI';
 ```
 
@@ -340,7 +342,9 @@ struct Index1 {
 ![zh-cn_image_editabletitlebar_example03](figures/zh-cn_image_editabletitlebar_example03.png)
 
 ### 示例4（左侧图标设置为默认焦点）
-从API version 18开始，该示例通过设置标题栏属性leftIconDefaultFocus使左侧图标默认获焦。
+在获焦状态下，该示例通过设置标题栏属性leftIconDefaultFocus使左侧图标默认获焦。
+
+从API version 18开始，在[EditableTitleBar](#editabletitlebar-1)中新增leftIconDefaultFocus接口。
 ```ts
 
 import { Prompt, EditableLeftIconType, EditableTitleBar } from '@kit.ArkUI';
@@ -352,7 +356,7 @@ struct Index {
     Column() {
       EditableTitleBar({
         leftIconStyle: EditableLeftIconType.Back,
-        leftIconDefaultFocus: true, //设置左侧图标默认获焦。
+        leftIconDefaultFocus: true, // 设置左侧图标默认获焦。
         title: '编辑页面',
         menuItems: [],
         onSave: () => {
@@ -368,7 +372,9 @@ struct Index {
 ![editabletitlebarDefaultFocus01](figures/editabletitlebarDefaultFocus01.png)
 
 ### 示例5（右侧自定义图标设置为默认焦点）
-从API version 18开始，该示例通过设置标题栏右侧图标属性defaultFocus使右侧图标默认获焦。
+在获焦状态下，该示例通过设置标题栏右侧图标属性defaultFocus使右侧图标默认获焦。
+
+从API version 18开始，在[EditableTitleBarMenuItem](#editabletitlebarmenuitem)中新增defaultFocus接口。
 ```ts
 
 import { Prompt, EditableLeftIconType, EditableTitleBar } from '@kit.ArkUI';

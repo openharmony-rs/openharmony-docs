@@ -1,7 +1,7 @@
 # 通用事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -13,7 +13,7 @@
 
 - 事件绑定在组件上，当组件达到事件触发条件时，会执行JS中对应的事件回调函数，实现页面UI视图和页面JS逻辑层的交互。
 
-- 事件回调函数中通过参数可以携带额外的信息，如组件上的数据对象dataset，事件特有的回调参数。
+- 事件回调函数中通过参数可以携带额外的信息，如组件上的数据对象[dataSet](#target对象6)、事件特有的回调参数。
 
 
 相对于私有事件，大部分组件都可以绑定如下事件。
@@ -251,9 +251,11 @@ setDragImage(pixelMap: PixelMap, offsetX: number,offsetY: number): boolean
 import image from '@ohos.multimedia.image';
 
 export default {
+    // 生成96x96尺寸的PixelMap，创建颜色缓冲区并填充随机色值，配置PixelMap参数后生成实例
     createPixelMap() {
         let color = new ArrayBuffer(4 * 96 * 96);
         var buffer = new Uint8Array(color);
+        // 循环填充缓冲区色值
         for (var i = 0; i < buffer.length; i++) {
             buffer[i] = (i + 1) % 255;
         }
@@ -266,6 +268,7 @@ export default {
                 height: 96, width: 96
             }
         }
+        // 调用image.createPixelMap生成PixelMap实例
         const promise = image.createPixelMap(color, opts);
         promise.then((data) => {
             console.error('-create pixelMap has info message:' + JSON.stringify(data));
@@ -274,10 +277,12 @@ export default {
         })
     },
 
+    // 初始化方法，调用createPixelMap生成PixelMap
     onInit() {
         this.createPixelMap()
     },
-
+    
+    // 拖拽开始回调，设置拖拽预览图为生成的PixelMap，偏移量为(50, 50)
     dragStart(e) {
         e.dataTransfer.setDragImage(this.pixelMapReader, 50, 50);
     }

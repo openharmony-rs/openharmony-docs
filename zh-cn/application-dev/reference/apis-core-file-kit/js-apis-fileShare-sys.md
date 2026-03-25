@@ -38,7 +38,7 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags, ca
 | uri   | string| 是   | 公共目录文件uri。 |
 | bundleName   | string| 是   | 分享目标的包名。   |
 | flag   | [wantConstant.Flags](../apis-ability-kit/js-apis-app-ability-wantConstant.md#flags) | 是   | 授权的权限。     |
- | callback | AsyncCallback&lt;void&gt;| 是    | 异步授权之后的回调。 |
+| callback | AsyncCallback&lt;void&gt;| 是    | 异步授权之后的回调。 |
 
 **错误码：**
 
@@ -138,7 +138,7 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags): P
 
 checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, policyType: PolicyType): Promise&lt;Array&lt;boolean&gt;&gt;
 
-异步方法校验所选择的多个文件或目录是否有临时或持久化授权，以promise形式返回结果。
+异步方法校验所选择的多个文件或目录是否有临时或持久化授权，使用Promise异步回调。
 
 **需要权限：** ohos.permission.CHECK_SANDBOX_POLICY
 
@@ -162,7 +162,7 @@ checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, poli
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
@@ -170,6 +170,7 @@ checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, poli
 | 202      | The caller is not a system application.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
+| 13900042 | Out of memory.|
 
 **示例：**
 
@@ -232,11 +233,11 @@ grantUriPermission(policies: Array&lt;PolicyInfo&gt;, targetBundleName: string, 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 201      | Permission verification failed.|
 | 202      | The caller is not a system application.|
 | 801      | Capability not supported. |
 | 13900001      | Operation not permitted. |

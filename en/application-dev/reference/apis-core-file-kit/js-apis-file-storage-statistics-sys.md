@@ -284,7 +284,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | The input parameter is invalid. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
@@ -319,7 +319,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 ## storageStatistics.getBundleStats<sup>9+</sup>
 
-getBundleStats(packageName: string,  callback: AsyncCallback&lt;BundleStats&gt;, index?: number): void
+getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, index?: number): void
 
 Obtains the storage space of an application, in bytes. This API uses an asynchronous callback to return the result.
 
@@ -345,7 +345,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | The input parameter is invalid. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
@@ -902,5 +902,49 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     console.info("listUserdataDirInfo successfully.");
   }).catch((err: BusinessError) => {
     console.error(`listUserdataDirInfo failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+  ```
+  
+## storageStatistics.getSystemDataSize<sup>24+</sup>
+
+getSystemDataSize(): Promise&lt;number&gt;
+
+Obtains the total system data size. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.STORAGE_MANAGER
+
+**System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Return value**
+
+| Type                  | Description   |
+| --------------------- | :---- |
+|  Promise&lt;number&gt; | Promise used to return the total system data size, in bytes.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600018 | Failed to query the system data size. |
+
+**Example**
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  storageStatistics.getSystemDataSize().then((systemDataSize: number) => {
+    console.info("getSystemDataSize successfully: " + JSON.stringify(systemDataSize));
+  }).catch((err: BusinessError) => {
+    console.error(`getSystemDataSize failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```

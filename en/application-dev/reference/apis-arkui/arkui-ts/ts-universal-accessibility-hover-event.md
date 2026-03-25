@@ -80,7 +80,9 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
 
 onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback): T
 
-This callback is triggered if a finger touch occurs within the component area while an accessibility service is running, but the accessibility system finds no focusable elements within the component hierarchy. It then returns an accessibility hover event. This callback only supports finger touches. It has no effect in the following senarios: [UIExtension](../../apis-arkui/js-apis-arkui-uiExtension.md), [Web](../../apis-arkweb/arkts-basic-components-web.md), <!--Del-->[FormComponent](ts-basic-components-formcomponent-sys.md), <!--DelEnd-->and [XComponent](ts-basic-components-xcomponent.md) integrated with a third-party UI framework.  
+This callback is triggered if a finger touch occurs within the component area while an accessibility service is running, but the accessibility system finds no focusable elements within the component hierarchy. It then returns an accessibility hover event. This callback only supports finger touches. It has no effect in the following scenarios: [UIExtension](../../apis-arkui/js-apis-arkui-uiExtension.md), [Web](../../apis-arkweb/arkts-basic-components-web.md), <!--Del-->[FormComponent](ts-basic-components-formcomponent-sys.md), <!--DelEnd-->and [XComponent](ts-basic-components-xcomponent.md) integrated with a third-party UI framework.  
+
+The main reasons why a component cannot be identified as focusable by the accessibility hover event are as follows: The [accessibilityLevel](ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**; the component has no text and no [accessibilityText](ts-universal-attributes-accessibility.md#accessibilitytext) configured, and does not support the tap or long press operation.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -149,7 +151,9 @@ struct OnAccessibilityHoverEventExample {
 
 ### Example 2: Capturing a Touch Event on a Non-Focusable Component
 
-This example shows how to capture touch events from a component that cannot receive focus in accessibility mode and display event details in the text area below.
+This example shows how to capture touch events from a component that cannot receive focus in accessibility mode using the **onAccessibilityHoverTransparent** API and display event details in the text area below.
+
+Starting from API version 20, the [onAccessibilityHoverTransparent](#onaccessibilityhovertransparent20) API with the input parameter **AccessibilityTransparentCallback** has been added.
 
 ```ts
 @Entry
@@ -171,15 +175,19 @@ struct TestExample {
     .height('100%')
     .onAccessibilityHoverTransparent((event?: TouchEvent) => {
       if (event) {
+        // Triggered on finger press.
         if (event.type === TouchType.HOVER_ENTER) {
           this.eventType = 'HOVER_ENTER';
         }
+        // Triggered on touch move.
         if (event.type === TouchType.HOVER_MOVE) {
           this.eventType = 'HOVER_MOVE';
         }
+        // Triggered on hand raise.
         if (event.type === TouchType.HOVER_EXIT) {
           this.eventType = 'HOVER_EXIT';
         }
+        // Cancel the current event.
         if (event.type === TouchType.HOVER_CANCEL) {
           this.eventType = 'HOVER_CANCEL';
         }

@@ -5,13 +5,13 @@
 <!--Owner: @liujiaxing2024-->
 <!--Designer: @junjie_shi-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 HiAppEvent提供了事件订阅接口，用于订阅并接收应用产生的事件。
 
 ## 接口说明
 
-API接口的使用说明，包括参数使用限制和取值范围，请参考[HiAppEvent C API文档](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
+API接口的使用说明，包括参数使用限制和取值范围，请参考[hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
 
 **订阅接口功能介绍**：
 
@@ -99,7 +99,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
 1. 订阅事件。分别使用OnReceive类型观察者、OnTrigger类型观察者的订阅方式。
    - 订阅崩溃事件（系统事件），采用OnReceive类型观察者的订阅方式，观察者接收到事件后会立即触发OnReceive()回调。编辑“napi_init.cpp”文件，定义OnReceive类型观察者相关方法：
 
-    <!-- @[AppEvent_Crash_C++_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
+    <!-- @[AppEvent_Crash_C++_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     // 定义变量，用来缓存创建的观察者的指针。
@@ -107,7 +107,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
     
     static void OnReceive1(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups, uint32_t groupLen)
     {
-        OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onReceive callback form C API \n");
+        OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onReceive callback from C API \n");
         for (int i = 0; i < groupLen; ++i) {
             for (int j = 0; j < appEventGroups[i].infoLen; ++j) {
                 OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo.domain=%{public}s",
@@ -146,7 +146,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
         const char *names[] = {EVENT_APP_CRASH};
         // 开发者订阅感兴趣的事件，此处订阅了系统事件。
         OH_HiAppEvent_SetAppEventFilter(eventWatcherR1, DOMAIN_OS, 0, names, 1);
-        // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceive1回调。
+        // 开发者设置已实现的回调函数，观察者接收到事件后会立即触发OnReceive1回调。
         OH_HiAppEvent_SetWatcherOnReceive(eventWatcherR1, OnReceive1);
         // 使观察者开始监听订阅的事件。
         OH_HiAppEvent_AddWatcher(eventWatcherR1);
@@ -156,7 +156,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
 
    - 订阅按钮点击事件（应用事件），采用OnTrigger类型观察者的订阅方式。需满足OH_HiAppEvent_SetTriggerCondition()设置的条件，才能触发OnTrigger()回调。编辑 “napi_init.cpp”文件，定义OnTrigger类型观察者相关方法：
 
-    <!-- @[AppEvent_Click_C++_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
+    <!-- @[AppEvent_Click_C++_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     // 定义变量，用来缓存创建的观察者的指针。
@@ -165,7 +165,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
     static void OnTake1(const char *const *events, uint32_t eventLen)
     {
         Json::Reader reader(Json::Features::strictMode());
-        OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onTrigger callback form C API \n");
+        OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onTrigger callback from C API \n");
         for (int i = 0; i < eventLen; ++i) {
             OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo=%{public}s", events[i]);
             Json::Value eventInfo;
@@ -326,7 +326,7 @@ Button('writeEvent C++')
 2. 搜索关键字“AppEvents”，在HiLog窗口查看应用处理崩溃事件数据的日志：
 
    ```text
-   AppEvents HiAppEvent success to read events with onReceive callback form C API
+   AppEvents HiAppEvent success to read events with onReceive callback from C API
    AppEvents HiAppEvent eventInfo.domain=OS
    AppEvents HiAppEvent eventInfo.name=APP_CRASH
    AppEvents HiAppEvent eventInfo.eventType=1
@@ -338,7 +338,7 @@ Button('writeEvent C++')
 3. 点击“writeEvent C++”按钮，触发按钮点击事件。搜索关键字“AppEvents”，在HiLog窗口查看应用处理按钮点击事件数据的日志：
 
    ```text
-   AppEvents HiAppEvent success to read events with onTrigger callback form C API
+   AppEvents HiAppEvent success to read events with onTrigger callback from C API
    AppEvents HiAppEvent eventInfo={"domain_":"button","name_":"click","type_":4,"time_":1750947007108,"tz_":"","pid_":64750,"tid_":64750,"clickTime":1750947007}
    AppEvents HiAppEvent eventInfo.domain=button
    AppEvents HiAppEvent eventInfo.name=click

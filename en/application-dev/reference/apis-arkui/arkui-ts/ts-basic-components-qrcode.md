@@ -1,9 +1,9 @@
 # QRCode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **QRCode** component is used to display a QR code.
@@ -24,6 +24,8 @@ Not supported
 
 QRCode(value: ResourceStr)
 
+Creates a **QRCode** component. The displayed QR code can be scanned to obtain the encoded string information.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -34,7 +36,7 @@ QRCode(value: ResourceStr)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) | Yes| Content of the QR code. A maximum of 512 characters are supported. If this limit is exceeded, the first 512 characters are used.<br>The Resource type is supported since API version 20.<br>**NOTE**<br>The value must be valid and cannot be **null**, **undefined**, or empty. If any of these invalid values are provided, the generated QR code will be invalid.|
+| value | [ResourceStr](ts-types.md#resourcestr) | Yes| Content of the QR code. A maximum of 512 characters are supported. If this limit is exceeded, the first 512 characters are used.<br>The Resource type is supported since API version 20.<br>**NOTE**<br>If this parameter is set to **null**, it is equivalent to passing the string **"null"**. If it is set to **undefined**, it is equivalent to passing the string **"undefined"**. Passing an empty string will result in an invalid QR code.|
 
 ## Attributes
 
@@ -90,7 +92,7 @@ Sets the opacity of the QR code content. The minimum value is 0, and the maximum
 
 | Name| Type                                                | Mandatory| Description                                    |
 | ------ | ---------------------------------------------------- | ---- | ---------------------------------------- |
-| value  | number \| [Resource](ts-types.md#resource) | Yes  | Opacity of the QR code content.<br>Default value: **1**<br>Value range: [0, 1]. If the value is out of the range, the default value is used.|
+| value  | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Opacity of the QR code content.<br>Default value: **1**<br>Value range: [0, 1]. If the value is out of the range, the default value is used.|
 
 
 ## Events
@@ -150,7 +152,7 @@ struct QRCodeExample {
         // Replace $r('app.media.ocean') with the image resource file you use.
         Image($r('app.media.ocean'))
         // Set the QR code background color to transparent.
-        QRCode(this.value).width(200).height(200).backgroundColor("#00ffffff")
+        QRCode(this.value).width(200).height(200).backgroundColor('#00ffffff')
       }.width(200).height(200)
     }.width('100%').margin({ top: 5 })
   }

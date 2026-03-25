@@ -49,7 +49,7 @@
 
 ## 接口说明
 
-以下是关系型数据库持久化功能的相关接口，大部分为异步接口。异步接口均有callback和Promise两种返回形式，下表均以callback形式为例，更多接口及使用方式请见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
+以下是关系型数据库持久化功能的相关接口，更多接口及使用方式请见[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
 
 | 接口名称 | 描述 | 
 | -------- | -------- |
@@ -142,7 +142,7 @@
        // 当前数据库存在并且版本为1，数据库需要从1版本升级到2版本
        if (storeVersion === 1) {
          // version = 1：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS)
-         //=> version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
+         // => version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
          try {
            await transaction.execute('ALTER TABLE EMPLOYEE ADD COLUMN IDENTITY UNLIMITED INT');
            storeVersion = 2;
@@ -157,7 +157,7 @@
        // 当前数据库存在并且版本为2，数据库需要从2版本升级到3版本
        if (storeVersion === 2) {
          // version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
-         //=> version = 3：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
+         // => version = 3：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
          try {
            await transaction.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
            storeVersion = 3;

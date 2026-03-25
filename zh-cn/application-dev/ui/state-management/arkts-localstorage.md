@@ -160,7 +160,7 @@ LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了
 
 - 当装饰的数据类型为class或者Object时，可以观察到对象整体赋值和对象属性变化（详见[从ui内部使用localstorage](#从ui内部使用localstorage)）。
 
-- 当装饰的对象是数组时，可以观察到数组添加、删除、更新数组单元的变化。
+- 当装饰的对象是数组时，可以观察到数组添加、删除、更新数组单元的变化。详见[装饰Array类型变量](#装饰array类型变量)。
 
 - 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。详见[装饰Date类型变量](#装饰date类型变量)。
 
@@ -237,7 +237,7 @@ link1.set(49); // 双向同步: link1.get() == link2.get() == prop.get() == 49
 
 - \@LocalStorageLink绑定LocalStorage对给定的属性，建立双向数据同步。
 
-<!-- @[localtorage_page_one_double_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageOneDoubleSYN.ets) -->
+<!-- @[localStorage_page_one_double_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageOneDoubleSYN.ets) -->
 
 ``` TypeScript
 class Data {
@@ -312,7 +312,7 @@ struct Parent {
 
 - ChildOne组件中，Text绑定的storagePropTwo 依旧显示47。
 
-<!-- @[localtorage_page_two_sigle_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoSigleSYN.ets) -->
+<!-- @[localStorage_page_two_single_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoSingleSYN.ets) -->
 
 ``` TypeScript
 // 创建新实例并使用给定对象初始化
@@ -356,7 +356,7 @@ struct ChildOne {
 
 下面的示例展示了\@LocalStorageLink装饰的数据和LocalStorage双向同步的场景：
 
-<!-- @[localtorage_page_two_way_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoWaySYN.ets) -->
+<!-- @[localStorage_page_two_way_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoWaySYN.ets) -->
 
 ``` TypeScript
 // 构造LocalStorage实例
@@ -403,7 +403,7 @@ ChildFour自定义组件中的变化：
 
 playCountLink的刷新会同步回LocalStorage，并且引起兄弟组件和父组件相应的刷新。
 
-<!-- @[localtorage_page_four_state_variable_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFourStateVariableSYN.ets) -->
+<!-- @[localStorage_page_four_state_variable_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFourStateVariableSYN.ets) -->
 
 ``` TypeScript
 let count: Record<string, number> = { 'countStorage': 1 };
@@ -522,7 +522,7 @@ export default class EntryAbility extends UIAbility {
 
 在下面的用例中，PageFiveShare页面中的propA通过使用共享的LocalStorage实例。点击Button跳转到PageFiveShareChange页面，点击Change propA改变propA的值，back回PageFiveShare页面后，页面中propA的值也同步修改。
 
-<!-- @[localtorage_page_five_share](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShare.ets) -->
+<!-- @[localStorage_page_five_share](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShare.ets) -->
 
 ``` TypeScript
 // PageFiveShare.ets
@@ -555,7 +555,7 @@ struct PageFiveShare {
 ```
 
 
-<!-- @[localtorage_page_five_share2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShareChange.ets) -->
+<!-- @[localStorage_page_five_share2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShareChange.ets) -->
 
 ``` TypeScript
 
@@ -639,7 +639,7 @@ struct PageFiveShareChange {
 > 如果定义的属性不需要从父组件初始化变量，则第一个参数需要传{}。
 > 作为构造参数传给子组件的LocalStorage实例在初始化时就会被决定，可以通过@LocalStorageLink或者LocalStorage的API修改LocalStorage实例中保存的属性值，但LocalStorage实例自身不能被动态修改。
 
-<!-- @[localtorage_page_six_local_storage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorage.ets) -->
+<!-- @[localStorage_page_six_local_storage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorage.ets) -->
 
 ``` TypeScript
 let localStorageOne: LocalStorage = new LocalStorage();
@@ -687,7 +687,7 @@ struct ChildSix {
 
 1. 当自定义组件没有定义属性时，可以只传入一个LocalStorage实例作为入参。
 
-   <!-- @[localtorage_page_six_local_storageA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageA.ets) -->
+   <!-- @[localStorage_page_six_local_storageA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageA.ets) -->
    
    ``` TypeScript
    let localStorageInstance: LocalStorage = new LocalStorage();
@@ -731,7 +731,7 @@ struct ChildSix {
 
 2. 当定义的属性不需要从父组件初始化变量时，第一个参数需要传{}。
 
-   <!-- @[localtorage_page_six_local_storageB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageB.ets) -->
+   <!-- @[localStorage_page_six_local_storageB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageB.ets) -->
    
    ``` TypeScript
    let localStorageBOne: LocalStorage = new LocalStorage();
@@ -792,7 +792,7 @@ struct ChildSix {
 
 - NavigationContentMsgStack自定义组件中的Text组件，共享对应自定义组件树上LocalStorage实例绑定的propA的值。
 
-<!-- @[localtorage_page_my_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageMyNavigation.ets) -->
+<!-- @[localStorage_page_my_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageMyNavigation.ets) -->
 
 ``` TypeScript
 let localStorageA: LocalStorage = new LocalStorage();
@@ -943,7 +943,7 @@ struct NavigationContentMsgStack {
 
 在下面的示例中，变量linkA的类型为number | null，变量linkB的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
 
-<!-- @[localtorage_page_local_storage_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageLocalStorageLink.ets) -->
+<!-- @[localStorage_page_local_storage_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageLocalStorageLink.ets) -->
 
 ``` TypeScript
 @Component
@@ -1011,6 +1011,58 @@ struct LinkIndex {
 }
 ```
 
+### 装饰Array类型变量
+
+在下面的示例中，\@LocalStorageLink装饰的message类型为`number[]`，点击Button改变message的值，UI会随之刷新。
+
+<!-- @[localStorage_local_array_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalArraySample.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @LocalStorageLink('array') message: number[] = [0, 1, 2, 3];
+
+  build() {
+    Column() {
+      ForEach(this.message, (item: number) => {
+        Text(`${item}`)
+          .fontSize(20)
+          .margin(10)
+      })
+      // 新增数组元素，触发UI刷新
+      Button('Push element')
+        .onClick(() => {
+          this.message.push(4);
+        })
+        .width(300)
+        .margin(10)
+      // 删除数组元素，触发UI刷新
+      Button('Pop element')
+        .onClick(() => {
+          this.message.pop();
+        })
+        .width(300)
+        .margin(10)
+      // 对数组整体重新赋值，触发UI刷新
+      Button('Reset array')
+        .onClick(() => {
+          this.message = [9, 8, 7, 6];
+        })
+        .width(300)
+        .margin(10)
+      // 更新数组元素，触发UI刷新
+      Button('Modify element[0]')
+        .onClick(() => {
+          this.message[0] = 10;
+        })
+        .width(300)
+        .margin(10)
+    }
+  }
+}
+```
+
 ### 装饰Date类型变量
 
 > **说明：**
@@ -1019,7 +1071,7 @@ struct LinkIndex {
 
 在下面的示例中，\@LocalStorageLink装饰的selectedDate类型为Date，点击Button改变selectedDate的值，UI会随之刷新。
 
-<!-- @[localtorage_local_date_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalDateSample.ets) -->
+<!-- @[localStorage_local_date_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalDateSample.ets) -->
 
 ``` TypeScript
 @Entry
@@ -1067,7 +1119,7 @@ struct LocalDateSample {
 
 在下面的示例中，\@LocalStorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，UI会随之刷新。
 
-<!-- @[localtorage_local_map_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalMapSample.ets) -->
+<!-- @[localStorage_local_map_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalMapSample.ets) -->
 
 ``` TypeScript
 @Entry
@@ -1114,7 +1166,7 @@ struct LocalMapSample {
 
 在下面的示例中，\@LocalStorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，UI会随之刷新。
 
-<!-- @[localtorage_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalSetSample.ets) -->
+<!-- @[localStorage_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalSetSample.ets) -->
 
 ``` TypeScript
 @Entry
@@ -1156,7 +1208,7 @@ struct LocalSetSample {
 
 ### 自定义组件外改变状态变量
 
-<!-- @[localtorage_change_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/ChangeLocalSetSample.ets) -->
+<!-- @[localStorage_change_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/ChangeLocalSetSample.ets) -->
 
 ``` TypeScript
 let storageChange = new LocalStorage();

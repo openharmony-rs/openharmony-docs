@@ -201,10 +201,10 @@ Failed to install the HAPs because they have different configuration information
 Calling the [install](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall) API of the installer module to install the bundle fails because the HAPs have different configuration information. When [BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall) throws this error code, an internal error code, for example, [8519687], is added to the error message to pinpoint the reason for the error.
 
 **Possible Causes**<br>
-The fields under **app** in the profiles of these HAPs are inconsistent.
+The field information or signature information under the **app** tag in the configuration files of multiple HAP bundles is inconsistent.
 
 **Solution**<br>
-Check whether the fields under **app** are the same.
+Check whether the field information under the **app** tag in the configuration files of multiple HAP bundles is consistent or whether the [signingConfigs](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app#section153288223224) configuration of the project is the same across all bundles.
 
 ## 17700016 Bundle Installation Failure Due to Insufficient System Disk Space
 
@@ -242,9 +242,9 @@ Ensure that the version of the bundle to install is not earlier than the version
 
 2. To query the version of a newly installed application, use DevEco Studio to open the HAP or HSP file and check the value of **versionCode** in the **module.json** file.
 
-    ![Example](figures/hap_verisonCode.PNG)
+    ![Example](figures/hap_versionCode.PNG)
 
-3. For a installed third-party application whose signing certificate distribution type is **app_gallery** or signing certificate type is **debug**, downgrade installation is supported when the newly installed version is lower than the current version. For details about the parameter configuration, you can refer to the description of **parameters** in [InstallParam](js-apis-installer-sys.md#installparam).
+3. For an installed third-party application whose signing certificate distribution type is **app_gallery** or signing certificate type is **debug**, downgrade installation is supported when the newly installed version is lower than the current version. For details about the parameter configuration, you can refer to the description of **parameters** in [InstallParam](js-apis-installer-sys.md#installparam).
 
 ## 17700018 Bundle Installation Failure Because the Dependent Module Does Not Exist
 
@@ -704,8 +704,7 @@ Failed to install the HAP because an enterprise normal/MDM bundle cannot be inst
 The current device prohibits the installation of enterprise MDM applications or standard enterprise applications.
 
 **Possible Causes**<br>
-The current device does not allow the installation of applications with the following two distribution types in the [profile signing file](../../security/app-provision-structure.md): **enterprise_mdm** (enterprise MDM application) and **enterprise_normal** (standard enterprise application).
-For details about the distribution types, see [ApplicationInfo.appDistributionType](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).
+The current device does not allow the installation of applications with the following two distribution types in the [profile signing file](../../security/app-provision-structure.md): **enterprise_mdm** (enterprise MDM application) and **enterprise_normal** (standard enterprise application). For details about the distribution types, see [ApplicationInfo.appDistributionType](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).
 
 **Solution**<br>
 Change the distribution type in the profile signing file.
@@ -1068,7 +1067,7 @@ The source paths are invalid.
 3. None of the paths can be resolved to the intended location.
 
 **Solution**<br>
-Pass in a valid path that does not include the special sequence **../**.
+Pass a valid path that does not include the special sequence **../**.
 
 ## 17700081 Invalid Destination Path
 
@@ -1084,7 +1083,7 @@ The destination path is invalid.
 3. The destination path cannot be resolved to the intended location.
 
 **Solution**<br>
-Pass in a valid path that does not include the special sequence **../**.
+Pass a valid path that does not include the special sequence **../**.
 
 ## 17700082 User Authentication Failed
 

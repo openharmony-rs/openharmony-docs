@@ -33,6 +33,8 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
 
 > **NOTE**
 >
+> The HiLog APIs are not signal-safe functions. Do not call the HiLog APIs in signal processing functions.
+>
 > If the set log level is lower than the [global log level](hilog.md#displaying-and-setting-log-levels), the **OH_LOG_SetMinLogLevel()** setting does not take effect.
 >
 > In the debug applications, the **OH_LOG_SetMinLogLevel()** and **OH_LOG_SetLogLevel()** functions do not take effect.
@@ -99,7 +101,7 @@ The maximum size of a log file is 4096 bytes. Excess content will be discarded.
    #undef LOG_DOMAIN
    #undef LOG_TAG
    #define LOG_DOMAIN 0x3200 // Global domain, which identifies the service domain.
-   #define LOG_TAG "MY_TAG" // Global tag, which identifies the module log tag.
+   #define LOG_TAG "MY_TAG"   // Global tag, which identifies the module log tag.
    ```
 
 3. Print logs.
@@ -150,7 +152,7 @@ static void Test(void)
    // 1. Register a callback.
    OH_LOG_SetCallback(MyHiLog);
     
-   // 2. Call the hilog API to print logs. Logs are output to HiLog and returned to MyHiLog() through the registered callback. Then, MyHiLog() is called to process the logs.
+   // 2. Call the HiLog API to print logs. Logs are output to HiLog and returned to MyHiLog() through the registered callback. Then, MyHiLog() is called to process the logs.
    OH_LOG_INFO(LOG_APP, "hello world");
 }
 ```
