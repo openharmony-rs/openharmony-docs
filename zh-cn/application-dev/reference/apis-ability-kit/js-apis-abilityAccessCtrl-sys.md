@@ -25,6 +25,8 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 
 管理访问控制模块的实例。
 
+AtManager接口调用依赖于tokenID，系统应用可通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)或[bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取tokenID。
+
 ### grantUserGrantedPermission
 
 ArkTS-Dyn: grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permissionFlags: number): Promise&lt;void&gt;
@@ -80,7 +82,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 1;
 atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('grantUserGrantedPermission success');
@@ -95,7 +97,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: int = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: int = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: int = 1;
 atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('grantUserGrantedPermission success');
@@ -154,7 +156,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 1;
 atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
   if (err) {
@@ -171,7 +173,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: int = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: int = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: int = 1;
 atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError | null): void => {
   if (err) {
@@ -237,7 +239,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 1;
 atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('revokeUserGrantedPermission success');
@@ -252,7 +254,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: int = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: int = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: int = 1;
 atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('revokeUserGrantedPermission success');
@@ -311,7 +313,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 1;
 atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
   if (err) {
@@ -328,7 +330,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: int = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: int = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: int = 1;
 atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError | null): void => {
   if (err) {
@@ -393,7 +395,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 atManager.getPermissionFlags(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS').then((data: number) => {
   console.info(`getPermissionFlags success, result: ${data}`);
 }).catch((err: BusinessError) => {
@@ -407,7 +409,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: int = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: int = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 atManager.getPermissionFlags(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS').then((data: int) => {
   console.info(`getPermissionFlags success, result: ${data}`);
 }).catch((err: BusinessError): void => {
@@ -677,7 +679,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 atManager.getPermissionsStatus(tokenID, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.PermissionStatus>) => {
   console.info(`getPermissionsStatus success, result: ${data}`);
 }).catch((err: BusinessError) => {
@@ -691,7 +693,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: int = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: int = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 atManager.getPermissionsStatus(tokenID, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.PermissionStatus>) => {
   console.info(`getPermissionsStatus success, result: ${data}`);
 }).catch((err: BusinessError): void => {
@@ -988,7 +990,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 atManager.requestPermissionOnApplicationSetting(tokenID).then(() => {
   console.info('requestPermissionOnApplicationSetting success');
 }).catch((err: BusinessError) => {
@@ -1002,7 +1004,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: int = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: int = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 atManager.requestPermissionOnApplicationSetting(tokenID).then(() => {
   console.info('requestPermissionOnApplicationSetting success');
 }).catch((err: BusinessError): void => {
@@ -1066,7 +1068,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 2;
 atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('grantPermission success');
@@ -1081,7 +1083,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: int = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: int = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: int = 2;
 atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('grantPermission success');
@@ -1146,7 +1148,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 2;
 // 不终止应用进程
 atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, false).then(() => {
@@ -1168,7 +1170,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: int = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: int = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: int = 2;
 // 不终止应用进程
 atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, false).then(() => {
@@ -1400,7 +1402,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let tokenIDList: Array<number> = [tokenID];
 atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.PermissionStatusInfo>) => {
   console.info('queryStatusByTokenID success, data: ' + JSON.stringify(data));
@@ -1415,7 +1417,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: int = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: int = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let tokenIDList: Array<int> = [tokenID];
 atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.PermissionStatusInfo>) => {
   console.info('queryStatusByTokenID success, data: ' + JSON.stringify(data));
