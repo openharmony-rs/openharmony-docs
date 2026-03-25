@@ -24,7 +24,7 @@ typedef struct {...} OH_Predicates
 
 | 名称       | 描述                             |
 | ---------- | -------------------------------- |
-| int64_t id | H_Predicates结构体的唯一标识符。 |
+| int64_t id | OH_Predicates结构体的唯一标识符。 |
 
 ### 成员函数
 

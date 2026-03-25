@@ -42,7 +42,7 @@
 | [OHNativeWindow* OH_NativeImage_AcquireNativeWindow(OH_NativeImage* image)](#oh_nativeimage_acquirenativewindow) | - | 获取与OH_NativeImage相关联的OHNativeWindow指针。<br>本接口为非线程安全类型接口。<br>OH_NativeImage析构时会将对应的OHNativeWindow实例释放。若从本接口获取OHNativeWindow指针，当OH_NativeImage实例释放时，请将获取到的OHNativeWindow指针置空，防止后续产生野指针。 |
 | [int32_t OH_NativeImage_AttachContext(OH_NativeImage* image, uint32_t textureId)](#oh_nativeimage_attachcontext) | - | 将OH_NativeImage实例附加到当前OpenGL ES上下文，且该OpenGL ES纹理会绑定到GL_TEXTURE_EXTERNAL_OES, 并通过OH_NativeImage进行更新。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeImage_DetachContext(OH_NativeImage* image)](#oh_nativeimage_detachcontext) | - | 将OH_NativeImage实例从当前OpenGL ES上下文分离。<br>本接口为非线程安全类型接口。 |
-| [int32_t OH_NativeImage_UpdateSurfaceImage(OH_NativeImage* image)](#oh_nativeimage_updatesurfaceimage) | - | 通过OH_NativeImage获取最新帧更新相关联的OpenGL ES纹理。<br>本接口需要在Opengl ES环境上下文的线程中调用。<br>本接口需要在接收到[OH_OnFrameAvailableListener](capi-oh-nativeimage-oh-onframeavailablelistener.md)回调后调用。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeImage_UpdateSurfaceImage(OH_NativeImage* image)](#oh_nativeimage_updatesurfaceimage) | - | 通过OH_NativeImage获取最新帧更新相关联的OpenGL ES纹理。<br>本接口需要在OpenGL ES环境上下文的线程中调用。<br>本接口需要在接收到[OH_OnFrameAvailableListener](capi-oh-nativeimage-oh-onframeavailablelistener.md)回调后调用。<br>本接口为非线程安全类型接口。 |
 | [int64_t OH_NativeImage_GetTimestamp(OH_NativeImage* image)](#oh_nativeimage_gettimestamp) | - | 获取最近调用OH_NativeImage_UpdateSurfaceImage的纹理图像的相关时间戳。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeImage_GetTransformMatrix(OH_NativeImage* image, float matrix[16])](#oh_nativeimage_gettransformmatrix) | - | 获取最近调用OH_NativeImage_UpdateSurfaceImage的纹理图像的变化矩阵。 |
 | [int32_t OH_NativeImage_GetSurfaceId(OH_NativeImage* image, uint64_t* surfaceId)](#oh_nativeimage_getsurfaceid) | - | 获取OH_NativeImage的surface编号。<br>本接口为非线程安全类型接口。 |
@@ -206,7 +206,7 @@ int32_t OH_NativeImage_UpdateSurfaceImage(OH_NativeImage* image)
 
 **描述**
 
-通过OH_NativeImage获取最新帧更新相关联的OpenGL ES纹理。<br>本接口需要在Opengl ES环境上下文的线程中调用。<br>本接口需要在接收到[OH_OnFrameAvailableListener](capi-oh-nativeimage-oh-onframeavailablelistener.md)回调后调用。<br>本接口为非线程安全类型接口。
+通过OH_NativeImage获取最新帧更新相关联的OpenGL ES纹理。<br>本接口需要在OpenGL ES环境上下文的线程中调用。<br>本接口需要在接收到[OH_OnFrameAvailableListener](capi-oh-nativeimage-oh-onframeavailablelistener.md)回调后调用。<br>本接口为非线程安全类型接口。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
@@ -701,7 +701,7 @@ int32_t OH_NativeImage_ReleaseTextImage(OH_NativeImage* image)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeImage_GetColorSpace()
 
@@ -730,7 +730,7 @@ int32_t OH_NativeImage_GetColorSpace(OH_NativeImage* image, OH_NativeBuffer_Colo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image，colorSpace是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image，colorSpace是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeImage_AcquireLatestNativeWindowBuffer()
 
@@ -772,7 +772,7 @@ int32_t OH_NativeImage_AcquireLatestNativeWindowBuffer(OH_NativeImage* image, OH
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image，nativeWindowBuffer或fenceFd是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>没有buffer可以消费时返回NATIVE_ERROR_NO_BUFFER。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image，nativeWindowBuffer或fenceFd是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>没有buffer可以消费时返回NATIVE_ERROR_NO_BUFFER。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeImage_IsReleased()
 
@@ -801,7 +801,7 @@ int32_t OH_NativeImage_IsReleased(OH_NativeImage* image, bool* isReleased)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image或isReleased为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image或isReleased为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeImage_Release()
 
@@ -829,4 +829,4 @@ int32_t OH_NativeImage_Release(OH_NativeImage* image)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |

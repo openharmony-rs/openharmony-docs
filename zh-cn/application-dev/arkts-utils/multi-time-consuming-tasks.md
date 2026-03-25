@@ -73,7 +73,7 @@
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
              .onClick(() => {
-               let iconItemSourceList: IconItemSource[][] = [];
+               let iconItemSourceList: IconItemSource[] = [];
    
                let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
                taskGroup.addTask(new taskpool.Task(loadPicture, 30));

@@ -16,13 +16,13 @@ Web组件根据[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webv
    ```json
    "requestPermissions":[
       {
-        "name" : "ohos.permission.LOCATION" // 精准定位
+        "name" : "ohos.permission.LOCATION"
       },
       {
-        "name" : "ohos.permission.APPROXIMATELY_LOCATION" // 模糊定位
+        "name" : "ohos.permission.APPROXIMATELY_LOCATION"
       },
       {
-        "name" : "ohos.permission.LOCATION_IN_BACKGROUND" // 后台定位
+        "name" : "ohos.permission.LOCATION_IN_BACKGROUND"
       }
     ]
    ```
@@ -139,7 +139,7 @@ Web组件根据[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webv
   ```
 
 ## 管理位置权限
-通过Web组件的[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md)类管理网页的位置权限，提供了新增（[allowGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation)）、查看（[getAccessibleGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation)）和删除（[deleteAllGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deleteallgeolocation)）网页位置权限的方法。例如查看网页是否已申请位置权限、将网页已申请的位置权限删除。
+通过Web组件的[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md)类管理网页的位置权限，提供了新增（[allowGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation)）、查看（[getAccessibleGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation)）和删除（[deleteGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deletegeolocation)）网页位置权限的方法。例如查看网页是否已申请位置权限、将网页已申请的位置权限删除。
 
 
 ```ts
