@@ -2612,7 +2612,7 @@ offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                 |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| callback | [ReportExecuteAbilityEvent](arkts-apis-avMusicTemplate-t.md#reportexecuteabilityevent) | 否   | 通知音频模板控制方拉起特定三方应用界面的事件回调。不填该参数则注销该类型对应的所有回调。 |
+| callback | [ReportExecuteAbilityEvent](arkts-apis-avMusicTemplate-t.md#reportexecuteabilityevent) | 否   | 通知音频模板控制方拉起指定的媒体应用界面的事件回调。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
