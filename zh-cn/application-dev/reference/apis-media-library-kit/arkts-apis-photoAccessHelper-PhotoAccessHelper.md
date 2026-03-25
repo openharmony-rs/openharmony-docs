@@ -2213,7 +2213,6 @@ setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise&lt;
 
 配置资产兼容能力。系统对于特殊的资产进行兼容性处理，如果你希望获得原始资产需要像系统注册兼容性能力。
 
-**需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 ​**模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2249,10 +2248,10 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     try {
-    let cfg : photoAccessHelper.AssetCompatibleAbility = {
+    let cfg : photoAccessHelper.AssetCompatibleCapability = {
         supportedHighResolution : true,
     };
-    await phAccessHelper.setAssetCompatibleAbility( fg);
+    await phAccessHelper.setAssetCompatibleAbility(cfg);
   } catch (err) {
     console.info('failed to setAssetCompatibleAbility err');
   }
