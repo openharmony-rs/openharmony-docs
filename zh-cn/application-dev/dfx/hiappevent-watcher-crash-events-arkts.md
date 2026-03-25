@@ -61,7 +61,6 @@
         "extend_pc_lr_printing": true, // 使能扩展打印pc和lr寄存器附近的内存值
         "log_file_cutoff_sz_bytes": 1024000, // 截断崩溃日志到1000KB
         "simplify_vma_printing": true // 使能精简打印maps
-        "merge_cppcrash_app_log": true // 使能拼接三方应用日志
       };
       // 开发者可以设置崩溃日志配置参数
       hiAppEvent.setEventConfig(hiAppEvent.event.APP_CRASH, crashConfigParams).then(() => {
