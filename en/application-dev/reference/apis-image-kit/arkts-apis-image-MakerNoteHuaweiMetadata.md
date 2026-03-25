@@ -405,3 +405,4 @@ async function makerNoteHuaweiSetBlob(context: Context) {
   }
 }
 ```
+<!--no_check-->
