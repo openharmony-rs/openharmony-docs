@@ -119,7 +119,7 @@ statistics.off('netStatsChange');
 
 getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsInfo>): void
 
-Obtain the historical data traffic of the specified NIC. This API uses an asynchronous callback to return the result.
+Obtains the historical data traffic of the specified NIC. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -182,7 +182,7 @@ if (iFaceInfo) {
 
 getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 
-Obtain the historical data traffic of the specified NIC. This API uses a promise to return the result.
+Obtains the historical data traffic of the specified NIC. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -245,7 +245,7 @@ if (iFaceInfo) {
 
 getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback\<NetStatsInfo>): void
 
-Obtain the historical data traffic of the specified application. This API uses an asynchronous callback to return the result.
+Obtains the historical data traffic of the specified application. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -317,7 +317,7 @@ statistics.getTrafficStatsByUid(
 
 getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 
-Obtain the historical data traffic of the specified application. This API uses a promise to return the result.
+Obtains the historical data traffic of the specified application. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -377,7 +377,7 @@ statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInf
 
 getTrafficStatsByNetwork(networkInfo: NetworkInfo): Promise\<UidNetStatsInfo>
 
-Obtain the traffic statistics of all applications on the specified network within the specified period. This API uses a promise to return the result.
+Obtains the traffic statistics of all applications on the specified network within the specified period. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -435,7 +435,7 @@ statistics.getTrafficStatsByNetwork(networkInfo).then((statsInfo: statistics.Uid
 
 getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Promise\<NetStatsInfoSequence>
 
-Obtain the traffic statistics of the specified application on the specified network within the specified period. This method uses a promise to return the result.
+Obtains the traffic statistics of the specified application on the specified network within the specified period. This method uses a promise to return the result.
 
 **System API**: This is a system API.
 
