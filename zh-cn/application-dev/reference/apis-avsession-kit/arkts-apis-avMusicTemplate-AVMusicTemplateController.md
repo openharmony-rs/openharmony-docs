@@ -1702,7 +1702,7 @@ offUserInfoChange(callback?: Callback&lt;UserInfo&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | Callback<[UserInfo](arkts-apis-avMusicTemplate-i.md#userinfo)> | 否   | Callback类型的回调。返回用户信息。不填该参数则注销该类型对应的所有回调。 |
+| callback | Callback<[UserInfo](arkts-apis-avMusicTemplate-i.md#userinfo)> | 否   | 回调函数，返回用户信息。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -1883,7 +1883,7 @@ offCurrentSingleChange(callback?: Callback&lt;Single&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                     |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| callback | Callback<[Single](arkts-apis-avMusicTemplate-i.md#single)> | 否   | Callback类型的回调。返回当前单曲的信息。不填该参数则注销该类型对应的所有回调。 |
+| callback | Callback<[Single](arkts-apis-avMusicTemplate-i.md#single)> | 否   | 回调函数，返回当前单曲的信息。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -1974,7 +1974,7 @@ offMediaEntitiesChange(callback?: Callback&lt;MediaEntity[]&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback<[MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity)[]> | 否   | Callback类型的回调。返回媒体实体数组。不填该参数则注销该类型对应的所有回调。 |
+| callback | Callback<[MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity)[]> | 否   | 回调函数，返回媒体实体数组。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2156,7 +2156,7 @@ offPlaylistChange(callback?: Callback&lt;PageMediaEntity&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                         |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------- |
-| callback | Callback<[PageMediaEntity](arkts-apis-avMusicTemplate-i.md#pagemediaentity)> | 否   | Callback类型的回调。返回标签页媒体实体信息。不填该参数则注销该类型对应的所有回调。 |
+| callback | Callback<[PageMediaEntity](arkts-apis-avMusicTemplate-i.md#pagemediaentity)> | 否   | 回调函数，返回标签页媒体实体信息。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2247,7 +2247,7 @@ offDownloadMediaEntityStatusChange(callback?: Callback&lt;MediaEntity&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback<[MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity)> | 否   | Callback类型的回调。返回媒体实体信息。不填该参数则注销该类型对应的所有回调。 |
+| callback | Callback<[MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity)> | 否   | 回调函数，返回媒体实体信息。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -2612,7 +2612,7 @@ offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                 |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| callback | [ReportExecuteAbilityEvent](arkts-apis-avMusicTemplate-t.md#reportexecuteabilityevent) | 否   | 通知音频模板控制方拉起特定三方应用界面的事件回调。不填该参数则注销该类型对应的所有回调。 |
+| callback | [ReportExecuteAbilityEvent](arkts-apis-avMusicTemplate-t.md#reportexecuteabilityevent) | 否   | 通知音频模板控制方拉起指定的媒体应用界面的事件回调。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
