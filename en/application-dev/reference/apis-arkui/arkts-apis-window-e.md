@@ -308,8 +308,8 @@ Enumerates the modality types of the child window.
 
 | Name                | Value     | Description      |
 | -------------------- | ------ | ---------- |
-| WINDOW_MODALITY      | 0      | Window-modal. Select this value when you want the parent window not to respond to user interactions.|
-| APPLICATION_MODALITY | 1      | Application-modal.<br> Select this value when other instances of the application should also not respond to user operations.<br> **Device behavior differences**: This enumeration can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.|
+| WINDOW_MODALITY      | 0      | Select this value when only the parent window should not respond to user operations.|
+| APPLICATION_MODALITY | 1      |  Select this value when other instances of the application should also not respond to user operations.<br> **Device behavior differences**: This enumeration can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.|
 
 ## ScreenshotEventType<sup>20+</sup>
 

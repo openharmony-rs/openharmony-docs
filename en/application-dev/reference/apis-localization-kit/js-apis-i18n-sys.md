@@ -14,7 +14,7 @@
 >
 >  - Since API version 11, some APIs of this module are supported in ArkTS widgets.
 >
->  - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.i18n (Internationalization)](js-apis-intl.md).
+>  - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.i18n (Internationalization)](js-apis-i18n.md).
 
 
 ## Modules to Import
@@ -176,7 +176,7 @@ Sets whether to use the 24-hour clock.
 
 | Name   | Type     | Mandatory  | Description                                      |
 | ------ | ------- | ---- | ---------------------------------------- |
-| option | boolean | Yes   | Whether to use the 24-hour clock. The value **true** means to use the 24-hour clock, the the value **false** means the opposite.|
+| option | boolean | Yes   | Whether to use the 24-hour clock. The value **true** indicates yes, and the value **false** indicates no.|
 
 **Error codes**
 
@@ -436,7 +436,7 @@ Obtains the collation modes supported by the system and their names. If the syst
 
 | Type                    | Description   |
 | ---------------------- | ----- |
-| Map&lt;string, string&gt; | Collation modes supported by the system and their names. The **Map** object employs the key-value format, where the key is a string that indicates the collation mode, and the value is a string that indicates its name. The range of supported collation modes is subject to the system language.|
+| Map&lt;string, string&gt; | Collation modes supported by the system and their names. The **Map** object employs the key-value format, where the key is a string that indicates the collation mode, and the value is a string that indicates its name. The range of supported collation modes depends on the system language.|
 
 **Error codes**
 
@@ -551,7 +551,7 @@ Obtains the numbering systems supported by the system and examples. The examples
 
 | Type                    | Description   |
 | ---------------------- | ----- |
-| Map&lt;string, string&gt; | Numbering systems supported by the system and examples. The **Map** object employs the key-value format, where the key is a string that indicates the numbering system, and the value indicates an example. The range of supported numbering systems is subject to the system language.|
+| Map&lt;string, string&gt; | Numbering systems supported by the system and examples. The **Map** object employs the key-value format, where the key is a string that indicates the numbering system, and the value indicates an example. The range of supported numbering systems depends on the system language.|
 
 **Error codes**
 
