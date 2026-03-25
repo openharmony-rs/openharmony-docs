@@ -577,7 +577,7 @@ NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arku
            console.info('TestTag', 'get NavParam, its desc: ' + (param as NavParam).desc);
            return;
          }
-         console.info('TestTag', 'param not instance of NavParam');;
+         console.info('TestTag', 'param not instance of NavParam');
        })
      }
    }
