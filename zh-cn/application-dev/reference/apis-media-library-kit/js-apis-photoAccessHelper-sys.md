@@ -3914,7 +3914,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     await phAccessHelper.setAssetCompatibleCapability(bundleName, capability);
   } catch (err) {
-    console.info('failed to setAssetCompatibleAbility err');
+    console.info('failed to setAssetCompatibleCapability err');
   }
 }
 ```
@@ -3923,7 +3923,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getAssetCompatibleCapability(bundleName: string): Promise<AssetCompatibleCapability>
 
-根据bundleName获取资产兼容能力。当您将文件提供给应用程序时，您可以获取兼容性能力，并决定是否根据兼容性能力进行兼容性转换。
+根据bundleName获取资产兼容能力。应用程序获取文件时，可判断是否进行兼容性转换。
 
 ​**模型约束**：此接口仅可在Stage模型下使用。
 
@@ -3941,7 +3941,7 @@ getAssetCompatibleCapability(bundleName: string): Promise<AssetCompatibleCapabil
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise<[AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24)> | 返回指定的资产兼容性功能。 |
+| Promise<[AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24)> | 返回指定的资产兼容功能。 |
 
 **错误码：**
 
