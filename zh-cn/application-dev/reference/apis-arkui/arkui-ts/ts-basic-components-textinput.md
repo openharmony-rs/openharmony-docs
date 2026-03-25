@@ -979,7 +979,7 @@ ArkTS-Sta: decoration(value: TextDecorationOptions | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12对象说明)<br/>ArkTS-Sta: [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12对象说明) \| undefined | 是   | 文本装饰线对象。<br />默认值：{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>} |
+| value  | ArkTS-Dyn: [TextDecorationOptions](ts-types.md#textdecorationoptions12对象说明)<br/>ArkTS-Sta: [TextDecorationOptions](ts-types.md#textdecorationoptions12对象说明) \| undefined | 是   | 文本装饰线对象。<br />默认值：{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID,<br/>&nbsp;thicknessScale:&nbsp;1.0<br/>} |
 
 ### letterSpacing<sup>12+</sup>
 
