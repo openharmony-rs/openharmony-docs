@@ -27,7 +27,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [CaptureSession_Callbacks](capi-oh-camera-capturesession-callbacks.md) | CaptureSession_Callbacks | 捕获会话的回调。 |
-| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md) | Camera_CaptureSession | 捕获会话对象。<br> 可以使用{@link OH_CameraManager_CreateCaptureSession}方法创建指针。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md) | Camera_CaptureSession | 捕获会话对象。<br> 可以使用[OH_CameraManager_CreateCaptureSession](capi-camera-manager-h.md#oh_cameramanager_createcapturesession)方法创建指针。 |
 
 ### 函数
 
@@ -43,7 +43,7 @@
 | [Camera_ErrorCode OH_CaptureSession_UnregisterCallback(Camera_CaptureSession* session, CaptureSession_Callbacks* callback)](#oh_capturesession_unregistercallback) | - | 注销捕获会话事件回调。 |
 | [Camera_ErrorCode OH_CaptureSession_RegisterSmoothZoomInfoCallback(Camera_CaptureSession* session, OH_CaptureSession_OnSmoothZoomInfo smoothZoomInfoCallback)](#oh_capturesession_registersmoothzoominfocallback) | - | 注册平滑变焦信息事件回调。 |
 | [Camera_ErrorCode OH_CaptureSession_UnregisterSmoothZoomInfoCallback(Camera_CaptureSession* session, OH_CaptureSession_OnSmoothZoomInfo smoothZoomInfoCallback)](#oh_capturesession_unregistersmoothzoominfocallback) | - | 注销平滑变焦信息事件回调。 |
-| [Camera_ErrorCode OH_CaptureSession_SetSessionMode(Camera_CaptureSession* session, Camera_SceneMode sceneMode)](#oh_capturesession_setsessionmode) | - | 设置会话模式。<br> 此接口不能在[OH_CaptureSession_BeginConfig](capi-capture-session-h.md#oh_capturesession_beginconfig)之后使用。<br> 建议在使用{@link OH_CameraManager_CreateCaptureSession}后立即使用此接口。 |
+| [Camera_ErrorCode OH_CaptureSession_SetSessionMode(Camera_CaptureSession* session, Camera_SceneMode sceneMode)](#oh_capturesession_setsessionmode) | - | 设置会话模式。<br> 此接口不能在[OH_CaptureSession_BeginConfig](capi-capture-session-h.md#oh_capturesession_beginconfig)之后使用。<br> 建议在使用[OH_CameraManager_CreateCaptureSession](capi-camera-manager-h.md#oh_cameramanager_createcapturesession)后立即使用此接口。 |
 | [Camera_ErrorCode OH_CaptureSession_AddSecureOutput(Camera_CaptureSession* session, Camera_PreviewOutput* previewOutput)](#oh_capturesession_addsecureoutput) | - | 把其中一条PreviewOutput标记成安全输出。 |
 | [Camera_ErrorCode OH_CaptureSession_BeginConfig(Camera_CaptureSession* session)](#oh_capturesession_beginconfig) | - | 开始捕获会话配置。 |
 | [Camera_ErrorCode OH_CaptureSession_CommitConfig(Camera_CaptureSession* session)](#oh_capturesession_commitconfig) | - | 提交捕获会话配置。 |
@@ -68,7 +68,7 @@
 | [Camera_ErrorCode OH_CaptureSession_RegisterFlashStateChangeCallback(const Camera_CaptureSession* session, OH_CaptureSession_OnFlashStateChange flashStateChange)](#oh_capturesession_registerflashstatechangecallback) | - | 注册闪光灯状态变更事件回调。 |
 | [Camera_ErrorCode OH_CaptureSession_UnregisterFlashStateChangeCallback(const Camera_CaptureSession* session, OH_CaptureSession_OnFlashStateChange flashStateChange)](#oh_capturesession_unregisterflashstatechangecallback) | - | 注销闪光灯状态变更回调。 |
 | [Camera_ErrorCode OH_CaptureSession_IsExposureModeSupported(Camera_CaptureSession* session, Camera_ExposureMode exposureMode, bool* isSupported)](#oh_capturesession_isexposuremodesupported) | - | 检查是否支持指定的曝光模式。 |
-| [Camera_ErrorCode OH_CaptureSession_GetExposureMode(Camera_CaptureSession* session, Camera_ExposureMode* exposureMode)](#oh_capturesession_getexposuremode) | - | 获取当前曝光模式。如果未通过{link OH_CaptureSession_SetExposureMode}接口进行设置，则直接调用该接口查询当前曝光模式，会返回无效值。 |
+| [Camera_ErrorCode OH_CaptureSession_GetExposureMode(Camera_CaptureSession* session, Camera_ExposureMode* exposureMode)](#oh_capturesession_getexposuremode) | - | 获取当前曝光模式。 |
 | [Camera_ErrorCode OH_CaptureSession_SetExposureMode(Camera_CaptureSession* session, Camera_ExposureMode exposureMode)](#oh_capturesession_setexposuremode) | - | 设置曝光模式。 |
 | [Camera_ErrorCode OH_CaptureSession_GetMeteringPoint(Camera_CaptureSession* session, Camera_Point* point)](#oh_capturesession_getmeteringpoint) | - | 获取当前测量点。 |
 | [Camera_ErrorCode OH_CaptureSession_SetMeteringPoint(Camera_CaptureSession* session, Camera_Point point)](#oh_capturesession_setmeteringpoint) | - | 设置计量区域的中心点。 |
@@ -173,7 +173,7 @@ typedef void (*OH_CaptureSession_OnFocusStateChange)(Camera_CaptureSession* sess
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_CaptureSession\* session | 传递回调的Camera_CaptureSession实例。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 传递回调的Camera_CaptureSession实例。 |
 | [Camera_FocusState](capi-camera-h.md#camera_focusstate) focusState | 回调传递的会话焦点状态。 |
 
 ### OH_CaptureSession_OnError()
@@ -192,7 +192,7 @@ typedef void (*OH_CaptureSession_OnError)(Camera_CaptureSession* session, Camera
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_CaptureSession\* session | 传递回调的Camera_CaptureSession实例。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 传递回调的Camera_CaptureSession实例。 |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) errorCode | 捕获会话的错误码。 |
 
 **参考：**
@@ -216,7 +216,7 @@ typedef void (*OH_CaptureSession_OnSmoothZoomInfo)(Camera_CaptureSession* sessio
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_CaptureSession\* session | 传递回调的Camera_CaptureSession实例。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 传递回调的Camera_CaptureSession实例。 |
 | [Camera_SmoothZoomInfo](capi-oh-camera-camera-smoothzoominfo.md)\* smoothZoomInfo | 回调传递的平滑变焦参数信息。 |
 
 ### OH_CaptureSession_OnAutoDeviceSwitchStatusChange()
@@ -235,7 +235,7 @@ typedef void (*OH_CaptureSession_OnAutoDeviceSwitchStatusChange)(Camera_CaptureS
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_CaptureSession\* session | 传递回调的Camera_CaptureSession实例。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 传递回调的Camera_CaptureSession实例。 |
 | [Camera_AutoDeviceSwitchStatusInfo](capi-oh-camera-camera-autodeviceswitchstatusinfo.md)\* autoDeviceSwitchStatusInfo | 回调传递的设备切换状态信息。 |
 
 ### OH_CaptureSession_OnSystemPressureLevelChange()
@@ -254,7 +254,7 @@ typedef void (*OH_CaptureSession_OnSystemPressureLevelChange)(Camera_CaptureSess
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_CaptureSession\* session | 传递回调的Camera_CaptureSession实例。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 传递回调的Camera_CaptureSession实例。 |
 | [Camera_SystemPressureLevel](capi-camera-h.md#camera_systempressurelevel) systemPressureLevel | 回调传递的系统压力等级。 |
 
 ### OH_CaptureSession_OnControlCenterEffectStatusChange()
@@ -273,7 +273,7 @@ typedef void (*OH_CaptureSession_OnControlCenterEffectStatusChange)(Camera_Captu
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_CaptureSession\* session | 传递回调的Camera_CaptureSession实例。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 传递回调的Camera_CaptureSession实例。 |
 | [Camera_ControlCenterStatusInfo](capi-oh-camera-camera-controlcenterstatusinfo.md)\* controlCenterStatusInfo | 回调传递的相机控制器效果激活状态。 |
 
 ### OH_CaptureSession_RegisterCallback()
@@ -384,7 +384,7 @@ Camera_ErrorCode OH_CaptureSession_SetSessionMode(Camera_CaptureSession* session
 
 **描述**
 
-设置会话模式。<br> 此接口不能在[OH_CaptureSession_BeginConfig](capi-capture-session-h.md#oh_capturesession_beginconfig)之后使用。<br> 建议在使用{@link OH_CameraManager_CreateCaptureSession}后立即使用此接口。
+设置会话模式。<br> 此接口不能在[OH_CaptureSession_BeginConfig](capi-capture-session-h.md#oh_capturesession_beginconfig)之后使用。<br> 建议在使用[OH_CameraManager_CreateCaptureSession](capi-camera-manager-h.md#oh_cameramanager_createcapturesession)后立即使用此接口。
 
 **起始版本：** 12
 
@@ -1000,7 +1000,7 @@ Camera_ErrorCode OH_CaptureSession_GetExposureMode(Camera_CaptureSession* sessio
 
 **描述**
 
-获取当前曝光模式。如果未通过{link OH_CaptureSession_SetExposureMode}接口进行设置，则直接调用该接口查询当前曝光模式，会返回无效值。
+获取当前曝光模式。如果未通过[OH_CaptureSession_SetExposureMode](capi-capture-session-h.md#oh_capturesession_setexposuremode)接口进行设置，则直接调用该接口查询当前曝光模式，会返回无效值。
 
 **起始版本：** 11
 
@@ -2247,7 +2247,7 @@ Camera_ErrorCode OH_CaptureSession_DeleteColorSpaces(Camera_CaptureSession* sess
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| OH_NativeBuffer_ColorSpace* colorSpace | 如果方法调用成功，将删除的OH_NativeBuffer_ColorSpace列表。 |
+| [OH_NativeBuffer_ColorSpace](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_colorspace)* colorSpace | 如果方法调用成功，将删除的OH_NativeBuffer_ColorSpace列表。 |
 
 **返回：**
 
@@ -2272,7 +2272,7 @@ Camera_ErrorCode OH_CaptureSession_GetActiveColorSpace(Camera_CaptureSession* se
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| OH_NativeBuffer_ColorSpace* colorSpace | 当前的OH_NativeBuffer_ColorSpace。 |
+| [OH_NativeBuffer_ColorSpace](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_colorspace)* colorSpace | 当前的OH_NativeBuffer_ColorSpace。 |
 
 **返回：**
 
@@ -2297,7 +2297,7 @@ Camera_ErrorCode OH_CaptureSession_SetActiveColorSpace(Camera_CaptureSession* se
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| OH_NativeBuffer_ColorSpace colorSpace | 要设置的目标OH_NativeBuffer_ColorSpace。 |
+| [OH_NativeBuffer_ColorSpace](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_colorspace) colorSpace | 要设置的目标OH_NativeBuffer_ColorSpace。 |
 
 **返回：**
 
@@ -2850,7 +2850,7 @@ Camera_ErrorCode OH_CaptureSession_UnregisterControlCenterEffectStatusChangeCall
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_CaptureSession\* session | 指向Camera_CaptureSession实例的指针。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 指向Camera_CaptureSession实例的指针。 |
 | bool isMacroDetected | 是否进入超级微距，true表示进入超级微距，false表示未进入超级微距。 |
 
 ### OH_CaptureSession_RegisterMacroStatusChangeCallback()
@@ -2919,7 +2919,7 @@ typedef void (*OH_CaptureSession_OnIsoChange)(Camera_CaptureSession* session, in
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_CaptureSession\* session | 指向Camera_CaptureSession的指针。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 指向Camera_CaptureSession的指针。 |
 | int32_t isoValue | 回调中获取的感光度（ISO）的值。 |
 
 ### OH_CaptureSession_RegisterIsoChangeCallback()
