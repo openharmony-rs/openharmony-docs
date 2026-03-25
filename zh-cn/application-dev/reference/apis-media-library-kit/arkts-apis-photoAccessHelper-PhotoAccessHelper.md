@@ -2248,10 +2248,10 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     try {
-    let cfg : photoAccessHelper.AssetCompatibleCapability = {
+    let capability : photoAccessHelper.AssetCompatibleCapability = {
         supportedHighResolution : true,
     };
-    await phAccessHelper.setAssetCompatibleAbility(cfg);
+    await phAccessHelper.setAssetCompatibleCapability(capability);
   } catch (err) {
     console.info('failed to setAssetCompatibleAbility err');
   }
