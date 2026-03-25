@@ -12,8 +12,7 @@
 
 > **说明：**
 >
-> - 本模块仅适用于API version 23及以上版本的Car设备。
-> - 在创建项目时Device type项需要选择Car。
+> 本功能仅支持在API version 23及以上版本的Car设备工程中使用。创建工程时，请在Device type中选择“Car”。
 
 ## 基本概念
 
