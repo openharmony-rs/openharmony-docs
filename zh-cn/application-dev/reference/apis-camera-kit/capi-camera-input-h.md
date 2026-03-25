@@ -270,7 +270,7 @@ Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Camera_Input实例。 |
-| bool* isVariable | 查询不同折叠状态下相机物理镜头角度是否可变。true表示可变，false表示不可变。 |
+| bool* isVariable | 查询设备不同折叠状态下，相机物理镜头角度是否可变。true表示可变，false表示不可变。 |
 
 **返回：**
 
