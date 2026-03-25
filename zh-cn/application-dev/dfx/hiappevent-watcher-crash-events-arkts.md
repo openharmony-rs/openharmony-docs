@@ -233,45 +233,8 @@
           JSON.parse('');
         })
       ```
-    - 构造MergeLogNativeCrash拼接应用日志类型崩溃
 
-      编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，导入依赖模块。示例代码如下：
-
-      <!-- @[Native_CrashEvent_Log_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
-
-      ``` TypeScript
-      import { fileIo } from '@kit.CoreFileKit';
-      ```
-
-      编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加按钮并在其onClick函数中构造崩溃场景，以触发崩溃事件。示例代码如下：
-
-      <!-- @[Native_CrashEvent_Log](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
-
-      ``` TypeScript
-      Button('MergeLogNativeCrash')
-      .type(ButtonType.Capsule)
-      .margin({
-        top: 20
-      })
-      .backgroundColor('#0D9FFB')
-      .width('80%')
-      .height('5%')
-      .onClick(() => {
-        // 模拟创建 applog，假设应用包名为 com.samples.eventsub
-        let filePath : string = "/data/storage/el2/log/com.samples.eventsub_CppCrash_AppMerge.log";
-        let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-        let str: string = "only test for merge app log!";
-
-        let writeLen = fileIo.writeSync(file.fd, str);
-        console.info("hiappevent write data to file succeed and size is:" + writeLen);
-        fileIo.closeSync(file);
-
-        // 在按钮点击函数中构造一个crash场景，触发应用崩溃事件
-        testNapi.testNullptr();
-      })
-       ```
-
-5. 点击DevEco Studio界面的运行按钮，启动应用工程。在应用界面中点击“NativeCrash”或“JsError”或“MergeLogNativeCrash”按钮，触发崩溃事件。系统根据崩溃类型生成相应的日志并进行回调。
+5. 点击DevEco Studio界面的运行按钮，启动应用工程。在应用界面中点击“NativeCrash”或“JsError”按钮，触发崩溃事件。系统根据崩溃类型生成相应的日志并进行回调。
 
 > **说明：**
 >
