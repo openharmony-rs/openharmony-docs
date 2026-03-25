@@ -2742,4 +2742,3 @@ Obtains the playback loudness.
 ```ts
 let loudnessGain = audioRenderer.getLoudnessGain();
 ```
-<!--no_check-->
