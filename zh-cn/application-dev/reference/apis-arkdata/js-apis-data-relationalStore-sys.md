@@ -1111,6 +1111,193 @@ if (store != undefined) {
 }
 ```
 
+### retainDeviceData<sup>24+</sup>
+
+retainDeviceData(retainDevices?: Record\<string, Array\<string>>): Promise\<void>
+
+删除对应[单版本表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表中对应设备同步过来的数据，使用Promise异步回调。
+
+不支持对[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表进行删除。
+
+要删除数据越多，执行所需的时间越长。
+
+> **说明：**
+>
+> 入参允许为空，数据库表名对应的设备id列表也允许为空，但是数据库表名和设备id不允许为空字符串。
+> 
+> 入参如果为空，则删除当前数据库中所有单版本分布式表中全量同步数据。
+> 
+> 入参中如果数据库表名对应的设备id列表为空，则删除该表下全量同步数据。
+>
+> 除去传入的设备id同步数据以及本设备写入数据以外的数据会被删除。 
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名       | 类型                                                               | 必填 | 说明                                       |
+| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
+| retainDevices  | Record<string, Array\<string>> |  否  | 指定要删除的分布式数据库表名和对应的设备id，无默认值，不传入则删除当前数据库中所有单版本分布式表中全量同步数据。|
+
+**返回值：**
+
+| 类型          | 说明                       |
+| -------------- | ------------------------ |
+| Promise\<void> | Promise对象，无返回结果。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800011     | The current operation failed because the database is corrupted.                    |
+| 14800014     | The target instance is already closed.                            |
+| 14800021     | SQLite: Generic error.                                                  |
+| 14800024     | SQLite: The database file is locked.                                    |
+| 14800042     | The database does not exist. Possible causes: 1. The database is deleted; 2. The database is not created. |
+| 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|
+
+**示例：**
+
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+
+async function removeExceptDeviceData(store : relationalStore.RdbStore){
+  const deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication4');
+  const deviceList = deviceManager.getAvailableDeviceListSync();
+  const devices: string[] = [];
+  deviceList.forEach(item => {
+    if (item.networkId) {
+      devices.push(item.networkId);
+    }
+  });
+  if (devices.length === 0) {
+    console.error('removeExceptDeviceData no device to remove');
+  }
+  console.info(`removeExceptDeviceData, length is ${devices.length}`);
+  if (store != undefined && devices.length > 0) {
+    try {
+      const tableAndDevice: Record<string, string[]> = {};
+      const devices1: string[] = [];
+      if (devices.length != 0) {
+        devices1.push(devices[0]);
+      }
+      console.info(`removeExceptDeviceData, device is ${devices1[0]}`);
+      tableAndDevice['EMPLOYEE'] = devices1;
+      await store.retainDeviceData(tableAndDevice);
+      console.info(`removeExceptDeviceData success`);
+    } catch (e) {
+      console.error(`removeExceptDeviceData failed, code is ${e.code},message is ${e.message}`);
+    }
+  }
+}
+```
+
+### updateDistributedInfo<sup>24+</sup>
+
+updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise&lt;number&gt;
+
+更新单版本表模式分布式表的日志信息，使用Promise异步回调。
+
+不支持对多设备协同表模式分布式数据表进行更新。
+
+要更新数据越多，执行所需的时间越长。
+
+> **说明：**
+>
+> 入参info中若要传入设备id信息，则设备id必须是已与当前设备建立网络连接的设备id。
+>
+> 入参predicates中若要传入[ORIGIN_ORIDEVICE](#distributedinfo24)，则只允许使用等于空或不等于空。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名       | 类型                                                               | 必填 | 说明                                       |
+| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
+| info  | [DistributedInfo](#distributedinfo24) |  是  | 指定要更新的分布式表的日志信息。|
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。        |
+
+**返回值：**
+
+| 类型          | 说明                       |
+| -------------- | ------------------------ |
+| Promise&lt;number&gt; | Promise对象。如果操作成功，返回更新的数据个数，否则返回-1。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800011     | The current operation failed because the database is corrupted.                    |
+| 14800014     | The target instance is already closed.                            |
+| 14800015     | The database does not respond. |
+| 14800021     | SQLite: Generic error.                                                  |
+| 14800024     | SQLite: The database file is locked.                                    |
+| 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|
+
+**示例：**
+
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+async function updateDistributedInfoInsert(store : relationalStore.RdbStore){
+  const deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication4');
+  const deviceList = deviceManager.getAvailableDeviceListSync();
+  const devices: string[] = [];
+  deviceList.forEach(item => {
+    if (item.networkId) {
+      devices.push(item.networkId);
+    }
+  });
+  if (devices.length === 0) {
+    console.error('updateDistributedInfoInsert no device to remove');
+  }
+  console.info(`updateDistributedInfoInsert, length is ${devices.length}`);
+  if (store != undefined && devices.length > 0) {
+    try {
+      const DISTRIBUTEDINFOINSERT:relationalStore.DistributedInfo = {
+        flag: relationalStore.DistributedOrigin.ORI_REMOTE,
+        oriDevice: devices[0]
+      }
+      const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+      predicates.equalTo(relationalStore.DistributedField.ORIGIN, relationalStore.DistributedOrigin.ORI_LOCAL);
+      predicates.equalTo(relationalStore.DistributedField.ORIGIN_ORIDEVICE, "");
+      await store.updateDistributedInfo(DISTRIBUTEDINFOINSERT, predicates);
+      console.info(`updateDistributedInfoInsert success`);
+    } catch (e) {
+      console.error(`updateDistributedInfoInsert failed, code is ${e.code},message is ${e.message}`);
+    }
+  }
+}
+
+async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
+  if (store != undefined) {
+    try {
+      const DISTRIBUTEDINFOUPDATE:relationalStore.DistributedInfo = {
+        flag: relationalStore.DistributedOrigin.ORI_REMOTE,
+      }
+      const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+      predicates.equalTo(relationalStore.DistributedField.ORIGIN, relationalStore.DistributedOrigin.ORI_LOCAL);
+      predicates.notEqualTo(relationalStore.DistributedField.ORIGIN_ORIDEVICE, "");
+      await store.updateDistributedInfo(DISTRIBUTEDINFOUPDATE, predicates);
+      console.info(`updateDistributedInfoUpdate success`);
+    } catch (e) {
+      console.error(`updateDistributedInfoUpdate failed, code is ${e.code},message is ${e.message}`);
+    }
+  }
+}
+```
+
 ## ResultSet
 
 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
@@ -1234,9 +1421,9 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 | 名称           | 值   | 说明                               |
 | -------------- | ---- | ---------------------------------- |
-| ORI_LOCAL       | 0   | 表示本地数据。      |
-| ORI_CLOUD       | 1   | 表示云端同步的数据。     |
-| ORI_REMOTE      | 2   | 表示端端同步的数据。 |
+| ORI_LOCAL       |  0  | 表示本地数据。      |
+| ORI_CLOUD       |  1  | 表示云端同步的数据。     |
+| ORI_REMOTE      |  2  | 表示端端同步的数据。 |
 
 ## DistributedField<sup>24+</sup>
 
@@ -1249,7 +1436,7 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 | 名称           | 值   | 说明                               |
 | -------------- | ---- | ---------------------------------- |
 | ORIGIN      | '#_origin'     | 用于分布式数据库表对应log表查找或更新时指定数据来源的字段名。    |
-| ORIGIN_ORIDEVICE  | '#_ori_device' | 用于分布式数据库表对应log表查找或更新时指定数据产生端的设备信息，该值传入若为空，则表示local设备；若不为空，则表示remote设备。|
+| ORIGIN_ORIDEVICE  | '#_ori_device' | 用于分布式数据库表对应log表查找或更新时指定数据产生者的设备id，该值传入若为空，则表示本地设备；若不为空，则表示其他组网设备。|
 
 ## DistributedInfo<sup>24+</sup>
 
@@ -1261,190 +1448,5 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| flag | [DistributedOrigin](#distributedorigin24) | 否 | 是 | 表示数据来源。ORI_LOCAL表示本地数据；ORI_CLOUD表示云端同步的数据；ORI_DEVICE表示端端同步的数据，无默认值 |
-| oriDevice | string | 否 | 是 | 表示数据产生者的设备信息，可通过DistributedServiceKit模块接口获取可信设备列表中的设备id，无默认值。 |
-
-## retainDeviceData<sup>24+</sup>
-
-retainDeviceData(retainDevices?: Record\<string, Array<string>>): Promise\<void>
-
-删除对应单版本分布式数据表中对应设备同步过来的数据，使用Promise异步回调。
-
-不支持对多设备协同表进行删除。
-
-要删除数据越多，执行所需的时间越长。
-
-> **说明：**
->
-> 入参允许为空，数据库表名对应的设备id列表也允许为空，但是数据库表名和设备id不允许为空字符串。
-> 
-> 入参如果为空，则删除当前数据库中所有单版本分布式表中全量同步数据。
-> 
-> 入参中如果数据库表名对应的设备id列表为空，则删除该表下全量同步数据。
->
-> 入参中传入的设备id是所要保留的远端数据的设备id，除去传入的设备id同步数据以及本设备写入数据以外的数据会被删除。
-
-**模型约束：** 此接口仅在Stage模型下可用。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**参数：**
-
-| 参数名       | 类型                                                               | 必填 | 说明                                       |
-| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
-| retainDevices  | Record<string, Array<string>> |  否  | 指定要删除的分布式数据库表名和对应的设备id，无默认值，不传入则删除当前数据库中所有单版本分布式表中全量同步数据。|
-
-**返回值：**
-
-| 类型          | 说明                       |
-| -------------- | ------------------------ |
-| Promise\<void> | Promise对象，无返回结果。  |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
-
-| **错误码ID** | **错误信息**                                                             |
-| ------------ | ----------------------------------------------------------------------- |
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
-| 14800011     | The current operation failed because the database is corrupted.                    |
-| 14800014     | The target instance is already closed.                            |
-| 14800021     | SQLite: Generic error.                                                  |
-| 14800024     | SQLite: The database file is locked.                                    |
-| 14800042     | The database does not exist. Possible causes: 1. The database is deleted; 2. The database is not created. |
-| 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|
-
-**示例：**
-
-```ts
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-
-async function removeExceptDeviceData(store : relationalStore.RdbStore){
-  const deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication4');
-  const deviceList = deviceManager.getAvailableDeviceListSync();
-  const devices: string[] = [];
-  deviceList.forEach(item => {
-    if (item.networkId) {
-      devices.push(item.networkId);
-    }
-  });
-  if (devices.length === 0) {
-    console.error('removeExceptDeviceData no device to remove');
-  }
-  console.info(`removeExceptDeviceData, length is ${devices.length}`);
-  if (store != undefined && devices.length > 0) {
-    try {
-      const tableAndDevice: Record<string, string[]> = {};
-      const devices1: string[] = [];
-      if (devices.length != 0) {
-        devices1.push(devices[0]);
-      }
-      console.info(`removeExceptDeviceData, device is ${devices1[0]}`);
-      tableAndDevice['EMPLOYEE'] = devices1;
-      await store.retainDeviceData(tableAndDevice);
-      console.info(`removeExceptDeviceData success`);
-    } catch (e) {
-      console.error(`removeExceptDeviceData failed, code is ${e.code},message is ${e.message}`);
-    }
-  }
-}
-```
-
-## updateDistributedInfo<sup>24+</sup>
-
-updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise&lt;number&gt;
-
-更新分布式表的日志信息，使用Promise异步回调。
-
-不支持对多设备协同表进行删除。
-
-要更新数据越多，执行所需的时间越长。
-
-> **说明：**
->
-> 入参info和predicates中若要传入设备id信息，则设备id必须是当前设备组网状态下的设备id。
-
-**模型约束：** 此接口仅在Stage模型下可用。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**参数：**
-
-| 参数名       | 类型                                                               | 必填 | 说明                                       |
-| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
-| info  | [DistributedInfo](#distributedinfo24) |  是  | 指定要更新的分布式表的日志信息。|
-| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。        |
-
-**返回值：**
-
-| 类型          | 说明                       |
-| -------------- | ------------------------ |
-| Promise&lt;number&gt; | Promise对象。如果操作成功，返回更新的数据个数，否则返回-1。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
-
-| **错误码ID** | **错误信息**                                                             |
-| ------------ | ----------------------------------------------------------------------- |
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
-| 14800011     | The current operation failed because the database is corrupted.                    |
-| 14800014     | The target instance is already closed.                            |
-| 14800015     | The database does not respond. |
-| 14800021     | SQLite: Generic error.                                                  |
-| 14800024     | SQLite: The database file is locked.                                    |
-| 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|
-
-**示例：**
-
-```ts
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-async function updateDistributedInfoInsert(store : relationalStore.RdbStore){
-  const deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication4');
-  const deviceList = deviceManager.getAvailableDeviceListSync();
-  const devices: string[] = [];
-  deviceList.forEach(item => {
-    if (item.networkId) {
-      devices.push(item.networkId);
-    }
-  });
-  if (devices.length === 0) {
-    console.error('updateDistributedInfoInsert no device to remove');
-  }
-  console.info(`updateDistributedInfoInsert, length is ${devices.length}`);
-  if (store != undefined && devices.length > 0) {
-    try {
-      const DISTRIBUTEDINFOINSERT:relationalStore.DistributedInfo = {
-        flag: relationalStore.DistributedOrigin.ORI_REMOTE,
-        oriDevice: devices[0]
-      }
-      const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
-      predicates.equalTo(relationalStore.DistributedField.ORIGIN, relationalStore.DistributedOrigin.ORI_LOCAL);
-      predicates.equalTo(relationalStore.DistributedField.ORIGIN_ORIDEVICE, "");
-      await store.updateDistributedInfo(DISTRIBUTEDINFOINSERT, predicates);
-      console.info(`updateDistributedInfoInsert success`);
-    } catch (e) {
-      console.error(`updateDistributedInfoInsert failed, code is ${e.code},message is ${e.message}`);
-    }
-  }
-}
-
-async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
-  if (store != undefined) {
-    try {
-      const DISTRIBUTEDINFOUPDATE:relationalStore.DistributedInfo = {
-        flag: relationalStore.DistributedOrigin.ORI_REMOTE,
-      }
-      const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
-      predicates.equalTo(relationalStore.DistributedField.ORIGIN, relationalStore.DistributedOrigin.ORI_LOCAL);
-      predicates.notEqualTo(relationalStore.DistributedField.ORIGIN_ORIDEVICE, "");
-      await store.updateDistributedInfo(DISTRIBUTEDINFOUPDATE, predicates);
-      console.info(`updateDistributedInfoUpdate success`);
-    } catch (e) {
-      console.error(`updateDistributedInfoUpdate failed, code is ${e.code},message is ${e.message}`);
-    }
-  }
-}
-```
+| flag | [DistributedOrigin](#distributedorigin24) | 否 | 是 | 表示数据来源，不传入则保持原有数值。 |
+| oriDevice | string | 否 | 是 | 表示数据产生者的设备id，不传入则保持原有设备id。 |
