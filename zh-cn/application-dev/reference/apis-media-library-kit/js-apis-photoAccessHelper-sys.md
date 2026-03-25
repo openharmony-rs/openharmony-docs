@@ -3909,10 +3909,10 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let bundleName = "com.test.example";
-    let cfg : photoAccessHelper.AssetCompatibleAbility = {
+    let capability : photoAccessHelper.AssetCompatibleCapability = {
         supportedHighResolution : true,
     };
-    await phAccessHelper.setAssetCompatibleAbility(bundleName, cfg);
+    await phAccessHelper.setAssetCompatibleCapability(bundleName, capability);
   } catch (err) {
     console.info('failed to setAssetCompatibleAbility err');
   }
@@ -3962,7 +3962,7 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let bundleName = "com.test.example";
-    let config : photoAccessHelper.AssetCompatibleAbility = await phAccessHelper.getAssetCompatibleCapability(bundleName);
+    let capability : photoAccessHelper.AssetCompatibleCapability = await phAccessHelper.getAssetCompatibleCapability(bundleName);
   } catch (err) {
     console.info('failed to getAssetCompatibleCapability err');
   }
