@@ -77,7 +77,7 @@ enum HiCollie_ErrorCode
 | HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004 | 无效的函数执行超时时间阈值。<br>**起始版本：** 18                  |
 | HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005 | 函数执行超时检测接入进程错误。<br>**起始版本：** 18                 |
 | HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006 | 用于保存返回的计时器id的指针不应为NULL。<br>**起始版本：** 18         |
-| OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007 | 定义FreezeCallback返回的冻屏类型<br>**起始版本：** 18         |
+| OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007 | 定义FreezeCallback返回的冻屏类型<br>**起始版本：** 24         |
 
 ### HiCollie_Flag
 
@@ -384,13 +384,13 @@ typedef size_t (*OH_HiCollie_FreezeCallback)(OH_HiCollie_Freeze_Type type, void*
 | -- | -- |
 | [OH_HiCollie_Freeze_Type](capi-hicollie-h.md#oh_hicollie_freeze_type) type | 冻屏事件类型 |
 | void* buffer | 系统提供log buffer，其中的内容将被迁移到APP_FREEZE或APP_HICOLLIE hiappevent当中。 |
-| size_t size | 可以使用缓冲区大小。 |
+| size_t size | 可以使用缓冲区大小，64kb， 如果超过上限，可能导致应用crash。|
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| size_t | 已使用的缓冲区大小。|
+| size_t | 已使用的缓冲区大小，应用需返回真实使用大小，如果超过上限，系统可能返回为空。|
 
 ### OH_HiCollie_SetFreezeCallback()
 
@@ -424,7 +424,7 @@ HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)
 
 **描述**
 
-报告一个从非主应用进程的事件卡死。此时会生成APP_HICOLLIE事件，调用者进程可能不会被杀死。
+报告一个卡死事件。此时会生成APP_HICOLLIE事件。
 
 **起始版本：** 24
 
@@ -433,6 +433,7 @@ HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)
 | 参数项 | 描述 |
 | -- | -- |
 | bool isFreezeEvent | True，将报告BUSINESS_THREAD_BLOCK_6S，False，将报告BUSINESS_THREAD_BLOCK_3S |
+注：BUSINESS_THREAD_BLOCK_3S、BUSINESS_THREAD_BLOCK_6S等同于BUSSINESS_THREAD_BLOCK_3S、BUSSINESS_THREAD_BLOCK_6S，后续会统一事件检测类型
 
 **返回：**
 
